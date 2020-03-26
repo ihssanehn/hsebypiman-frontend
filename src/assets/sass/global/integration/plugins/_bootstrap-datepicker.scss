@@ -10,7 +10,7 @@
     width: 265px;
     padding: 10px;
 
-    @include kt-not-rounded {
+    @include tf-not-rounded {
         border-radius: 0;
     }
     
@@ -28,28 +28,28 @@
         width: 35px;
         height: 35px;
     
-        @include kt-rounded {
+        @include tf-rounded {
             border-radius: 3px;
         }
     
-        @include kt-not-rounded {
+        @include tf-not-rounded {
             border-radius: 0;
         }
     }
     
     thead {
         th {
-            color: kt-base-color(label, 2);
+            color: tf-base-color(label, 2);
 
             &.prev,
             &.datepicker-switch,
             &.next {
                 font-weight: 500;
-                color: kt-base-color(label, 2);
+                color: tf-base-color(label, 2);
             
                 i {
                     font-size: 1.2rem;
-                    color: kt-base-color(label, 2);
+                    color: tf-base-color(label, 2);
             
                     &:before {
                         line-height: 0;
@@ -58,12 +58,12 @@
                 }
             
                 &:hover {
-                    background: kt-base-color(grey, 1) !important;
+                    background: tf-base-color(grey, 1) !important;
                 }
             }
 
             &.dow {
-                color: kt-base-color(label, 3);
+                color: tf-base-color(label, 3);
                 font-weight: 500;
             }
         }
@@ -72,33 +72,33 @@
     tbody {
         tr > td {
             &.day {
-                color: kt-base-color(label, 3);
+                color: tf-base-color(label, 3);
                 
                 &:hover {
-                    background: kt-base-color(grey, 2);
-                    color: kt-base-color(label, 3);
+                    background: tf-base-color(grey, 2);
+                    color: tf-base-color(label, 3);
                 }
                 
                 &.old {
-                    color: kt-base-color(label, 2);
+                    color: tf-base-color(label, 2);
                 }
                 
                 &.new {
-                    color: kt-base-color(label, 3);
+                    color: tf-base-color(label, 3);
                 }
                 
                 &.selected,
                 &.selected:hover,
                 &.active,
                 &.active:hover {
-                    background: kt-state-color(primary, base);
-                    color: kt-state-color(primary, inverse);
+                    background: tf-state-color(primary, base);
+                    color: tf-state-color(primary, inverse);
                 }
 
                 &.today {
                     position: relative;
-                    background: rgba(kt-state-color(brand, base), 0.7) !important;
-                    color: kt-state-color(brand, inverse) !important;
+                    background: rgba(tf-state-color(brand, base), 0.7) !important;
+                    color: tf-state-color(brand, inverse) !important;
                 
                     &:before {
                         content: '';
@@ -106,7 +106,7 @@
                         border: solid transparent;
                         border-width: 0 0 7px 7px;
                         border-bottom-color: #ffffff;
-                        border-top-color: kt-base-color(grey, 2);
+                        border-top-color: tf-base-color(grey, 2);
                         position: absolute;
                         bottom: 4px;
                         right: 4px;
@@ -114,7 +114,7 @@
                 }
 
                 &.range {
-                    background: kt-base-color(grey, 1);
+                    background: tf-base-color(grey, 1);
                 }
             }
             
@@ -122,10 +122,10 @@
             span.hour,
             span.minute,
             span.month {
-                color: kt-base-color(label, 3);
+                color: tf-base-color(label, 3);
 
                 &:hover {
-                    background: kt-base-color(grey, 1);
+                    background: tf-base-color(grey, 1);
                 }
                 
                 &.focused,
@@ -133,8 +133,8 @@
                 &.active:hover,
                 &.active.focused:hover,
                 &.active {
-                    background: kt-state-color(primary, base);
-                    color: kt-state-color(brand, inverse);
+                    background: tf-state-color(primary, base);
+                    color: tf-state-color(brand, inverse);
                 }
             }
         }
@@ -144,20 +144,20 @@
         tr > th {
             &.today,
             &.clear {
-                @include kt-rounded {
+                @include tf-rounded {
                     border-radius: 3px;
                 }
                 font-weight: 500;
 
                 &:hover {
-                    background: kt-base-color(grey, 2);
+                    background: tf-base-color(grey, 2);
                 }
             }
         }
     }
 
     &.datepicker-inline {
-        border: 1px solid kt-base-color(grey, 2);
+        border: 1px solid tf-base-color(grey, 2);
     }
 }
 
@@ -167,7 +167,7 @@
     }
 
     input {
-        @include kt-not-rounded {
+        @include tf-not-rounded {
             border-radius: 0 !important;
         }
         text-align: left;

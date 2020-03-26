@@ -8,8 +8,8 @@
 
 
 // State colors
-$kt-state-colors: (
-    // Metronic states
+$tf-state-colors: (
+    // CVTI - HSE states
     brand: (
         base: #366cf3,
         inverse: #ffffff
@@ -47,24 +47,24 @@ $kt-state-colors: (
 );
 
 // Layout
-$kt-aside-default-width: 245px;
-$kt-aside-offcanvas-width: 255px;
+$tf-aside-default-width: 245px;
+$tf-aside-offcanvas-width: 255px;
 
 // Page padding
-$kt-page-padding: (
+$tf-page-padding: (
 	desktop: 30px,
 	mobile: 15px
 );
 
 // Page container
-$kt-page-container-width: 1380px; //  fixed page width
-$kt-page-fluid-container-padding: 60px; // fluid page padding
+$tf-page-container-width: 1380px; //  fixed page width
+$tf-page-fluid-container-padding: 60px; // fluid page padding
 
 // Body color
-$kt-page-body-bg-color: #f9f9fc;  // page body bg color
+$tf-page-body-bg-color: #f9f9fc;  // page body bg color
 
 // Subheader config
-$kt-subheader: (
+$tf-subheader: (
 	toggle: (
 		width: 20px,
 		height: 22px,
@@ -74,8 +74,8 @@ $kt-subheader: (
 		radius: 2px,
 		color: (
 			default: rgba(#fff, 0.7),
-			hover: kt-brand-color(),
-			active: kt-brand-color()
+			hover: tf-brand-color(),
+			active: tf-brand-color()
 		)
 	)
 );

@@ -5,59 +5,59 @@
 
 
 
-.kt-separator {
+.tf-separator {
     height: 0;
     margin: 20px 0;
-    border-bottom: 1px solid kt-base-color(grey, 2);
+    border-bottom: 1px solid tf-base-color(grey, 2);
 
     // Dashed style
-    &.kt-separator--border-dashed,
-    &.kt-separator--dashed {
-        border-bottom: 1px dashed kt-base-color(grey, 2);
+    &.tf-separator--border-dashed,
+    &.tf-separator--dashed {
+        border-bottom: 1px dashed tf-base-color(grey, 2);
     }
 
-    &.kt-separator--border-2x {
+    &.tf-separator--border-2x {
         border-bottom-width: 2px;
     }
 
     // No border
-    &.kt-separator--space {
+    &.tf-separator--space {
         border-bottom: 0;
     }
 
     // Sizing
-    &.kt-separator--space-sm,
-    &.kt-separator--sm {
+    &.tf-separator--space-sm,
+    &.tf-separator--sm {
         margin: 0.5rem 0;
     }
 
-    &.kt-separator--space-md,
-    &.kt-separator--md {
+    &.tf-separator--space-md,
+    &.tf-separator--md {
         margin: 2rem 0;
     }
 
-    &.kt-separator--space-lg,
-    &.kt-separator--lg {
+    &.tf-separator--space-lg,
+    &.tf-separator--lg {
         margin: 2.5rem 0;
     }
 
-    &.kt-separator--space-xl,
-    &.kt-separator--xl {
+    &.tf-separator--space-xl,
+    &.tf-separator--xl {
         margin: 3rem 0;
     }
 
-    &.kt-separator--fit {
-        margin-left: -(kt-get($kt-portlet, space, desktop));
-        margin-right: -(kt-get($kt-portlet, space, desktop));
+    &.tf-separator--fit {
+        margin-left: -(tf-get($tf-portlet, space, desktop));
+        margin-right: -(tf-get($tf-portlet, space, desktop));
     }
 
     // States
-    @each $name, $color in $kt-state-colors {
-        &.kt-separator--#{$name} {
-            border-bottom: 1px solid kt-get($color, base);
+    @each $name, $color in $tf-state-colors {
+        &.tf-separator--#{$name} {
+            border-bottom: 1px solid tf-get($color, base);
 
-            &.kt-separator--dashed {
-                border-bottom: 1px dashed kt-get($color, base);
+            &.tf-separator--dashed {
+                border-bottom: 1px dashed tf-get($color, base);
             }
         }
     }

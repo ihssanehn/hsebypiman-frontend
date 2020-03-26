@@ -8,29 +8,29 @@
 // Base
 .modal {
     .modal-content {
-        @include kt-rounded {
-            border-radius: $kt-border-radius;
+        @include tf-rounded {
+            border-radius: $tf-border-radius;
         }
 
         .modal-header {
             .modal-title {
                 font-weight: 500;
                 font-size: 1.3rem;
-                color: kt-base-color(label, 4);
+                color: tf-base-color(label, 4);
 
                 small {
                     font-weight: 400;
                     font-size: 0.9rem;
-                    color: kt-base-color(label, 2);
+                    color: tf-base-color(label, 2);
                 }
             }
 
             .close {
                 outline:none !important;
-                color: kt-base-color(label, 2);
+                color: tf-base-color(label, 2);
 
-                @include kt-close-icon();
-                @include kt-hover-transition();
+                @include tf-close-icon();
+                @include tf-hover-transition();
 
                 &:before {
                     font-size: 1.3rem;
@@ -41,7 +41,7 @@
                 }
 
                 &:hover {
-                    color: kt-brand-color();
+                    color: tf-brand-color();
                 }
             }
         }
@@ -68,16 +68,16 @@
         margin: 0;
         box-shadow: 0px 0px 60px -15px rgba(0, 0, 0, 0.2);
 
-        @include kt-rounded {
-            border-radius: $kt-border-radius;
+        @include tf-rounded {
+            border-radius: $tf-border-radius;
         }
 
-        @include kt-tablet-and-mobile {
+        @include tf-tablet-and-mobile {
             bottom: 10px;
             right: 10px;
         }
 
-        @include kt-mobile {
+        @include tf-mobile {
             max-width: 90%;
         }
 
@@ -87,14 +87,14 @@
             width: auto;
             margin: 0;
 
-            @include kt-rounded {
-                border-radius: $kt-border-radius;
+            @include tf-rounded {
+                border-radius: $tf-border-radius;
             }
 
             .modal-content {
                 border: 0;
-                @include kt-rounded {
-                    border-radius: $kt-border-radius;
+                @include tf-rounded {
+                    border-radius: $tf-border-radius;
                 }
             }
         }
@@ -126,8 +126,8 @@
     }
 }
 
-@include kt-media-above(xl) {
+@include tf-media-above(xl) {
     .modal-dialog.modal-xl {
-        max-width: kt-media-breakpoint(xl) - 100px;
+        max-width: tf-media-breakpoint(xl) - 100px;
     }
 }

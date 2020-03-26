@@ -137,7 +137,7 @@ const routes: Routes = [
 			provide: MAT_DIALOG_DEFAULT_OPTIONS,
 			useValue: {
 				hasBackdrop: true,
-				panelClass: 'kt-mat-dialog-container__wrapper',
+				panelClass: 'tf-mat-dialog-container__wrapper',
 				height: 'auto',
 				width: '900px'
 			}

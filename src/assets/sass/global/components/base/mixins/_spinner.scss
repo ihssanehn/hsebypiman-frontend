@@ -4,28 +4,28 @@
 
 
 
-@mixin kt-spinner-size($size) {
+@mixin tf-spinner-size($size) {
 	&:before {
-		width: kt-get($kt-spinner-config, size, $size);
-  		height: kt-get($kt-spinner-config, size, $size);
-  		margin-top: -(kt-get($kt-spinner-config, size, $size)/2);
+		width: tf-get($tf-spinner-config, size, $size);
+  		height: tf-get($tf-spinner-config, size, $size);
+  		margin-top: -(tf-get($tf-spinner-config, size, $size)/2);
   	}
 
-	&.kt-spinner--center {
+	&.tf-spinner--center {
 		&:before {
 			left: 50%;
-  			margin-left: -(kt-get($kt-spinner-config, size, $size)/2);
+  			margin-left: -(tf-get($tf-spinner-config, size, $size)/2);
 		}
 	}
 
-	&.kt-spinner--left {
+	&.tf-spinner--left {
 		&:before {
 			left: 0;
 			right: auto;
 		}
 	}
 
-	&.kt-spinner--right {
+	&.tf-spinner--right {
 		&:before {
 			left: auto;
 			right: 0;
@@ -33,7 +33,7 @@
 	}
 }
 
-@mixin kt-spinner-skin($color) {
+@mixin tf-spinner-skin($color) {
 	&:before {
     	border: 2px solid $color;
 		border-right: 2px solid transparent;

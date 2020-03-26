@@ -5,14 +5,14 @@
 
 
 
-@mixin kt-offcanvas-base($class, $layout) {
-	$width: kt-get($layout, self, width);
+@mixin tf-offcanvas-base($class, $layout) {
+	$width: tf-get($layout, self, width);
 	$transition: left 0.3s ease, right 0.3s ease;
 
 	// Base
 	.#{$class} {
 		//display: block !important;
-		z-index: kt-get($layout, self, zindex);
+		z-index: tf-get($layout, self, zindex);
 		position: fixed;
 		-webkit-overflow-scrolling: touch;
 		top: 0;
@@ -30,7 +30,7 @@
 			left: 0;
 		}
 
-		@include kt-hack-ie {
+		@include tf-hack-ie {
 			transition: none !important;
 		}
 	}
@@ -50,18 +50,18 @@
 	}
 
 	// Close icon
-	@if kt-get($layout, close) != null {
+	@if tf-get($layout, close) != null {
 		// Mobile close button
 		.#{$class}-close {
-			width:  kt-get($layout, close, size);
-			height: kt-get($layout, close, size);
+			width:  tf-get($layout, close, size);
+			height: tf-get($layout, close, size);
 			top: 1px;
-			z-index: kt-get($layout, self, zindex) + 1;
+			z-index: tf-get($layout, self, zindex) + 1;
 			transition: $transition;
 			position: fixed;
 			border: 0;
 			box-shadow: none;
-			@include kt-rounded {
+			@include tf-rounded {
 				border-radius: 3px;
 			}
 			cursor: pointer;
@@ -70,36 +70,36 @@
 			justify-content: center;
 			align-items: center;
 
-			@include kt-hack-ie {
+			@include tf-hack-ie {
 				transition: none !important;
 			}
 
 			> i {
 				line-height: 0;
-				font-size: kt-get($layout, close, font-size);
+				font-size: tf-get($layout, close, font-size);
 			}
 
 			&:hover {
 				text-decoration: none;
 			}
 
-			left: - (kt-get($layout, close, size));
+			left: - (tf-get($layout, close, size));
 
 			// Pull from right
 			.#{$class}--right & {
 				left: auto;
-				right: - (kt-get($layout, close, size));
+				right: - (tf-get($layout, close, size));
 			}
 
 			.#{$class}--on & {
 				transition: $transition;
-				left: $width - kt-get($layout, close, size) - 1px;
+				left: $width - tf-get($layout, close, size) - 1px;
 			}
 
 			// Pull from right
 			.#{$class}--on.#{$class}--right & {
 				left: auto;
-				right: $width - kt-get($layout, close, size) - 1px;
+				right: $width - tf-get($layout, close, size) - 1px;
 			}
 		}
 	}
@@ -112,93 +112,93 @@
 		bottom: 0;
 		right: 0;
 		overflow: hidden;
-		z-index: kt-get($layout, self, zindex) - 1;
+		z-index: tf-get($layout, self, zindex) - 1;
 		background: rgba(#000000, 0.1);
-		animation: kt-animate-fade-in .3s linear 1;
+		animation: tf-animate-fade-in .3s linear 1;
 	}
 }
 
-@mixin kt-offcanvas-skin($class, $skin) {
+@mixin tf-offcanvas-skin($class, $skin) {
 	.#{$class} {
-		@if (kt-has($skin, self, bg-color)) {
-			background: kt-get($skin, self, bg-color);
+		@if (tf-has($skin, self, bg-color)) {
+			background: tf-get($skin, self, bg-color);
 		}
 
-		@if (kt-has($skin, self, shadow)) {
-			box-shadow: kt-get($skin, self, shadow);
+		@if (tf-has($skin, self, shadow)) {
+			box-shadow: tf-get($skin, self, shadow);
 		}
 	}
 
 	.#{$class}-overlay {
-		background: kt-get($skin, overlay, bg-color);
+		background: tf-get($skin, overlay, bg-color);
 	}
 
-	@if (kt-has($skin, close)) {
+	@if (tf-has($skin, close)) {
 		.#{$class}-close {
-			background-color: kt-get($skin, close, bg-color, default);
+			background-color: tf-get($skin, close, bg-color, default);
 
 			> i {
-				color: kt-get($skin, close, icon-color, default);
+				color: tf-get($skin, close, icon-color, default);
 			}
 
 			&:hover {
-				background-color: kt-get($skin, close, bg-color, hover);
+				background-color: tf-get($skin, close, bg-color, hover);
 
 				> i {
-					color: kt-get($skin, close, icon-color, hover);
+					color: tf-get($skin, close, icon-color, hover);
 				}
 			}
 		}
 	}
 }
 
-@mixin kt-offcanvas-build($class, $mode, $config) {
+@mixin tf-offcanvas-build($class, $mode, $config) {
 	// close icon
 	.#{$class}-close {
 		display: none;
 	}
 
 	@if $mode == default {
-		@include kt-offcanvas-base($class, kt-get($config, layout));
-		@include kt-offcanvas-skin($class, kt-get($config, skin));
+		@include tf-offcanvas-base($class, tf-get($config, layout));
+		@include tf-offcanvas-skin($class, tf-get($config, skin));
 	}
 
 	@if $mode == desktop {
-		@include kt-desktop {
-			@include kt-offcanvas-base($class, kt-get($config, layout));
-			@include kt-offcanvas-skin($class, kt-get($config, skin));
+		@include tf-desktop {
+			@include tf-offcanvas-base($class, tf-get($config, layout));
+			@include tf-offcanvas-skin($class, tf-get($config, skin));
 		}
 	}
 
 	@if $mode == desktop-and-tablet {
-		@include kt-desktop-and-tablet {
-			@include kt-offcanvas-base($class, kt-get($config, layout));
-			@include kt-offcanvas-skin($class, kt-get($config, skin));
+		@include tf-desktop-and-tablet {
+			@include tf-offcanvas-base($class, tf-get($config, layout));
+			@include tf-offcanvas-skin($class, tf-get($config, skin));
 		}
 	}
 
 	@if $mode == tablet {
-		@include kt-tablet {
-			@include kt-offcanvas-base($class, kt-get($config, layout));
-			@include kt-offcanvas-skin($class, kt-get($config, skin));
+		@include tf-tablet {
+			@include tf-offcanvas-base($class, tf-get($config, layout));
+			@include tf-offcanvas-skin($class, tf-get($config, skin));
 		}
 	}
 
 	@if $mode == tablet-and-mobile {
-		@include kt-tablet-and-mobile {
-			@include kt-offcanvas-base($class, kt-get($config, layout));
-			@include kt-offcanvas-skin($class, kt-get($config, skin));
+		@include tf-tablet-and-mobile {
+			@include tf-offcanvas-base($class, tf-get($config, layout));
+			@include tf-offcanvas-skin($class, tf-get($config, skin));
 		}
 	}
 
 	@if $mode == mobile {
-		@include kt-mobile {
-			@include kt-offcanvas-base($class, kt-get($config, layout));
-			@include kt-offcanvas-skin($class, kt-get($config, skin));
+		@include tf-mobile {
+			@include tf-offcanvas-base($class, tf-get($config, layout));
+			@include tf-offcanvas-skin($class, tf-get($config, skin));
 		}
 	}
 
-	@include kt-responsive-below(kt-get($config, layout, self, width) + 50px) {
+	@include tf-responsive-below(tf-get($config, layout, self, width) + 50px) {
 		.#{$class} {
 			width: 90% !important;
 		}

@@ -4,7 +4,7 @@
 
 
 
-.kt-badge {
+.tf-badge {
 	padding: 0;
 	margin: 0;
 	display: inline-flex;
@@ -16,32 +16,32 @@
 	font-size: 0.8rem;
 
 	// Font options
-	&.kt-badge--bold {
+	&.tf-badge--bold {
 		font-weight: 500;
 	}
 
-	&.kt-badge--bolder {
+	&.tf-badge--bolder {
 		font-weight: 600;
 	}
 
-	&.kt-badge--boldest {
+	&.tf-badge--boldest {
 		font-weight: 700;
 	}
 
 	// Sizing
-	&.kt-badge--md {
+	&.tf-badge--md {
 		height: 24px;
 		width: 24px;
 		font-size: 0.9rem;
 	}
 
-	&.kt-badge--lg {
+	&.tf-badge--lg {
 		height: 35px;
 		width: 35px;
 		font-size: 1rem;
 	}
 
-	&.kt-badge--xl {
+	&.tf-badge--xl {
 		height: 50px;
 		width: 50px;
 		font-size: 1.1rem;
@@ -49,13 +49,13 @@
 	}
 
 	// Pics
-	&.kt-badge__pics {
+	&.tf-badge__pics {
 		display: flex;
 		justify-content: flex-start;
 		align-items: center;
 		width: 100%;
 
-		.kt-badge__pic {
+		.tf-badge__pic {
 			border-radius: 50%;
 			width: 2.5rem;
 			height: 2.5rem;
@@ -80,7 +80,7 @@
 				width: 100%;
 			}
 
-			&.kt-badge__pic--last {
+			&.tf-badge__pic--last {
 				font-size: 1rem;
 				font-weight: 500;
 			}
@@ -88,67 +88,67 @@
 	}
 
 	// State colors
-	@each $name, $color in $kt-state-colors {
-	  &.kt-badge--#{$name} {
-	    color: kt-get($color, inverse);
-			background: kt-get($color, base);
+	@each $name, $color in $tf-state-colors {
+	  &.tf-badge--#{$name} {
+	    color: tf-get($color, inverse);
+			background: tf-get($color, base);
 	  }
 
-	  &.kt-badge--outline.kt-badge--#{$name} {
+	  &.tf-badge--outline.tf-badge--#{$name} {
 	    background: transparent;
-	    color: kt-get($color, base);
-			border: 1px solid kt-get($color, base);
+	    color: tf-get($color, base);
+			border: 1px solid tf-get($color, base);
 
-			&.kt-badge--outline-2x {
-				border: 2px solid kt-get($color, base);
+			&.tf-badge--outline-2x {
+				border: 2px solid tf-get($color, base);
 			}
 	  }
 	}
 
 	// State colors
-	@each $name, $color in $kt-state-colors {
-	    &.kt-badge--unified-#{$name} {
-	    	color: kt-get($color, base);
-			background: rgba(kt-get($color, base), 0.1);
+	@each $name, $color in $tf-state-colors {
+	    &.tf-badge--unified-#{$name} {
+	    	color: tf-get($color, base);
+			background: rgba(tf-get($color, base), 0.1);
 	    }
 	}
 
 	// Inline mode
-	&.kt-badge--inline {
+	&.tf-badge--inline {
 		height: auto;
 		width: auto;
 		padding: 0.15rem 0.75rem;
 
 		// Sizing
-		&.kt-badge--md {
+		&.tf-badge--md {
 			padding: 0.8rem 0.6rem;
 		}
 
-		&.kt-badge--lg {
+		&.tf-badge--lg {
 			padding: 0.9rem 0.7rem;
 		}
 
-		&.kt-badge--xl {
+		&.tf-badge--xl {
 			padding: 1rem 0.8rem;
 		}
 
-		@include kt-rounded {
+		@include tf-rounded {
 			border-radius: 2px;
 		}
 	}
 
 	// Pill mode
-	&.kt-badge--pill {
+	&.tf-badge--pill {
 		border-radius: 2rem;
 	}
 
 	// Rounded
-	&.kt-badge--rounded {
-		border-radius: $kt-border-radius;
+	&.tf-badge--rounded {
+		border-radius: $tf-border-radius;
 	}
 
 	// Dot style
-	&.kt-badge--dot {
+	&.tf-badge--dot {
 	    display: inline-block;
 		line-height: 6px;
 		min-height: 6px;
@@ -159,7 +159,7 @@
     	vertical-align: middle;
     	text-align: center;
 
-		&.kt-badge--sm {
+		&.tf-badge--sm {
 			line-height: 4px;
 			min-height: 4px;
     		min-width: 4px;
@@ -167,7 +167,7 @@
 			width: 4px;
 		}
 
-		&.kt-badge--lg {
+		&.tf-badge--lg {
 			line-height: 8px;
 			min-height: 8px;
     		min-width: 8px;
@@ -175,7 +175,7 @@
 			width: 8px;
 		}
 
-		&.kt-badge--xl {
+		&.tf-badge--xl {
 			line-height: 10px;
 			min-height: 10px;
     		min-width: 10px;
@@ -185,12 +185,12 @@
 	}
 
 	// Square mode
-	&.kt-badge--square {
+	&.tf-badge--square {
 		border-radius: 0;
 	}
 
 	// Elevated mode
-	&.kt-badge--elevate {
+	&.tf-badge--elevate {
 		box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
 	}
 }

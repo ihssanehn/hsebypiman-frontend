@@ -12,7 +12,7 @@ import { environment } from '@env/environment';
 
 
 @Component({
-	selector: 'kt-userside-profile',
+	selector: 'tf-userside-profile',
 	templateUrl: './userside-profile.component.html',
 })
 export class UserSideProfileComponent implements OnInit {

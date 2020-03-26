@@ -1,5 +1,5 @@
-<div perfectScrollbar [ngStyle]="{'max-height': '50vh'}" class="kt-timeline-v2">
-	<div class="kt-timeline-v2__items kt-padding-top-25 kt-padding-bottom-30">
+<div perfectScrollbar [ngStyle]="{'max-height': '50vh'}" class="tf-timeline-v2">
+	<div class="tf-timeline-v2__items tf-padding-top-25 tf-padding-bottom-30">
 		<ng-container *ngFor="let item of data">
 			<ng-container [ngTemplateOutlet]="itemTemplate" [ngTemplateOutletContext]="{item: item}"></ng-container>
 		</ng-container>
@@ -7,13 +7,13 @@
 </div>
 
 <ng-template #itemTemplate let-item="item">
-	<div class="kt-timeline-v2__item">
-		<span class="kt-timeline-v2__item-time">{{item.time}}</span>
-		<div class="kt-timeline-v2__item-cricle">
+	<div class="tf-timeline-v2__item">
+		<span class="tf-timeline-v2__item-time">{{item.time}}</span>
+		<div class="tf-timeline-v2__item-cricle">
 			<i [ngClass]="item.icon ? item.icon :'fa fa-genderless'"></i>
 		</div>
-		<div class="kt-timeline-v2__item-text kt-padding-top-5" [innerHTML]="item.text"></div>
+		<div class="tf-timeline-v2__item-text tf-padding-top-5" [innerHTML]="item.text"></div>
 
-		<div class="kt-list-pics kt-list-pics--sm kt-padding-l-20" [innerHTML]="item.attachment"></div>
+		<div class="tf-list-pics tf-list-pics--sm tf-padding-l-20" [innerHTML]="item.attachment"></div>
 	</div>
 </ng-template>

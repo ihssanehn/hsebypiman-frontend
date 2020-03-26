@@ -121,7 +121,7 @@ export class SnackBarOverviewExample {
 };
 
 @Component({
-	selector: 'kt-snackbar',
+	selector: 'tf-snackbar',
 	templateUrl: './snackbar.component.html',
 	styles: [`
 	`]

@@ -449,7 +449,7 @@ export interface StateGroup {
 }
 
 @Component({
-	selector: 'kt-autocomplete',
+	selector: 'tf-autocomplete',
 	templateUrl: './autocomplete.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	styles: [`

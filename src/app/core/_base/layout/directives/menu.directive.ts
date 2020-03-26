@@ -14,8 +14,8 @@ export interface MenuOptions {
  * Configure menu
  */
 @Directive({
-	selector: '[ktMenu]',
-	exportAs: 'ktMenu',
+	selector: '[tfMenu]',
+	exportAs: 'tfMenu',
 })
 export class MenuDirective implements AfterViewInit {
 	// Public propeties

@@ -81,7 +81,7 @@ export class PaginatorConfigurableExample {
 };
 
 @Component({
-	selector: 'kt-paginator',
+	selector: 'tf-paginator',
 	templateUrl: './paginator.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush
 })

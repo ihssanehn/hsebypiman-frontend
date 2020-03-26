@@ -2,7 +2,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-	selector: 'kt-mail',
+	selector: 'tf-mail',
 	templateUrl: './mail.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -1,16 +1,16 @@
-<kt-notice [icon]="'flaticon-warning kt-font-primary'">
+<tf-notice [icon]="'flaticon-warning tf-font-primary'">
 	For more info please check the components's official demos & documentation	
-	<a class="kt-link" href="https://ng-bootstrap.github.io/#/components/accordion/examples" target="_blank">demos & documentation</a>
-</kt-notice>
+	<a class="tf-link" href="https://ng-bootstrap.github.io/#/components/accordion/examples" target="_blank">demos & documentation</a>
+</tf-notice>
 
 <div class="row">
 	<div class="col-xl-6">
-		<kt-material-preview [viewItem]="exampleAccordion">
-			<div class="kt-section">
-				<h3 class="kt-section__heading">Self closing</h3>
-				<span class="kt-section__sub">
+		<tf-material-preview [viewItem]="exampleAccordion">
+			<div class="tf-section">
+				<h3 class="tf-section__heading">Self closing</h3>
+				<span class="tf-section__sub">
 				</span>
-				<div class="kt-section__content">
+				<div class="tf-section__content">
 					<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
 						<ngb-panel>
 							<ng-template ngbPanelTitle>
@@ -40,9 +40,9 @@
 					</ngb-accordion>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 
-		<kt-material-preview [viewItem]="exampleOneOpenPanelAtAHome">
+		<tf-material-preview [viewItem]="exampleOneOpenPanelAtAHome">
 			<ngb-accordion [closeOthers]="true" activeIds="static-1">
 				<ngb-panel id="static-1">
 					<ng-template ngbPanelTitle>
@@ -70,9 +70,9 @@
 					</ng-template>
 				</ngb-panel>
 			</ngb-accordion>
-		</kt-material-preview>
+		</tf-material-preview>
 
-		<kt-material-preview [viewItem]="exampleTogglePanels">
+		<tf-material-preview [viewItem]="exampleTogglePanels">
 			<ngb-accordion #acc11="ngbAccordion">
 				<ngb-panel id="toggle-11">
 					<ng-template ngbPanelTitle>
@@ -92,17 +92,17 @@
 				</ngb-panel>
 			</ngb-accordion>
 
-			<div class="kt-separator kt-separator--dashed"></div>
+			<div class="tf-separator tf-separator--dashed"></div>
 
 			<button class="btn btn-primary" (click)="acc11.toggle('toggle-11')">Toggle first</button>&nbsp;
 			<button class="btn btn-info" (click)="acc11.toggle('toggle-22')">Toggle second</button>
 
-		</kt-material-preview>
+		</tf-material-preview>
 
 	</div>
 
 	<div class="col-xl-6">
-		<kt-material-preview [viewItem]="examplePreventPanelToggle">
+		<tf-material-preview [viewItem]="examplePreventPanelToggle">
 			<ngb-accordion (panelChange)="beforeChange($event)">
 				<ngb-panel id="preventchange-1">
 					<ng-template ngbPanelTitle>
@@ -129,14 +129,14 @@
 					</ng-template>
 				</ngb-panel>
 			</ngb-accordion>
-		</kt-material-preview>
+		</tf-material-preview>
 
-		<kt-material-preview [viewItem]="exampleGlobalConfigurationOfAccordions">
-			<div class="kt-section">
-				<span class="kt-section__sub">
+		<tf-material-preview [viewItem]="exampleGlobalConfigurationOfAccordions">
+			<div class="tf-section">
+				<span class="tf-section__sub">
 					This accordion uses customized default values.
 				</span>
-				<div class="kt-section__content">
+				<div class="tf-section__content">
 					<ngb-accordion #acc33="ngbAccordion" activeIds="config-panel-one" [closeOthers]="'true'" [type]="'info'">
 
 						<ngb-panel id="config-panel-one">
@@ -158,6 +158,6 @@
 					</ngb-accordion>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 	</div>
 </div>

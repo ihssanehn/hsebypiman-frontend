@@ -15,7 +15,7 @@ import {environment} from '@env/environment';
 import { AuthNoticeService, AuthService} from '../../../../core/auth';
 
 @Component({
-	selector: 'kt-login',
+	selector: 'tf-login',
 	templateUrl: './login.component.html',
 	encapsulation: ViewEncapsulation.None
 })

@@ -3,8 +3,8 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 const demo = {
 	beforeCodeTitle: 'Demo',
 	htmlCode: `
-<div class="kt-section">
-  <div class="kt-section__content">
+<div class="tf-section">
+  <div class="tf-section__content">
     <button type="button"
       class="btn btn-primary"
       (click)="isCollapsed = !isCollapsed"
@@ -37,7 +37,7 @@ export class NgbdCollapseBasic {
 };
 
 @Component({
-	selector: 'kt-collapse',
+	selector: 'tf-collapse',
 	templateUrl: './collapse.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

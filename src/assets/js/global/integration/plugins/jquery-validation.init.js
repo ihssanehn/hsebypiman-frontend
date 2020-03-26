@@ -38,7 +38,7 @@ jQuery.validator.setDefaults({
                 element.after(error);
             } else {                                                   //Checkbox & radios
                 if (element.is(':checkbox')) {
-                    element.closest('.kt-checkbox').find('> span').after(error);
+                    element.closest('.tf-checkbox').find('> span').after(error);
                 } else {
                     element.after(error);
                 }                

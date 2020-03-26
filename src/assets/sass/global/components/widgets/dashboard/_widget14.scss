@@ -5,52 +5,52 @@
 
 
  
-.kt-widget14 {
-    padding: kt-get($kt-portlet, space, desktop);
+.tf-widget14 {
+    padding: tf-get($tf-portlet, space, desktop);
 
-    &.kt-widget14--no-padding {
+    &.tf-widget14--no-padding {
         padding: 0;
     }
 
-    .kt-widget14__header {
+    .tf-widget14__header {
         padding: 0.5rem 0 1.1rem 0;
         margin-bottom: 0.5rem;
 
-        .kt-widget14__title {
+        .tf-widget14__title {
             font-size: 1.3rem;
             font-weight: 500;
             margin-bottom: 0;
-            color: kt-base-color(label, 3);
+            color: tf-base-color(label, 3);
         }
 
-        .kt-widget14__desc {
+        .tf-widget14__desc {
             display: inline-block;
             margin-top: 0.2rem;
-            color: kt-base-color(label, 2);
+            color: tf-base-color(label, 2);
         }             
     }
 
-    .kt-widget14__content {
+    .tf-widget14__content {
         display: flex;         
         align-items: center;       
     }
 
-    .kt-widget14__legends {
+    .tf-widget14__legends {
         padding-left: 2rem;  
         flex-grow: 1;
             
-        .kt-widget14__legend {
+        .tf-widget14__legend {
             display: flex;          
             align-items: center;  
 
-            .kt-widget14__bullet {
+            .tf-widget14__bullet {
                 width: 1.5rem;
                 height: 0.45rem;                   
                 border-radius: 1.1rem;                                         
             }
                     
-            .kt-widget14__stats {
-                color: kt-base-color(label, 2);
+            .tf-widget14__stats {
+                color: tf-base-color(label, 2);
                 font-weight: 500;
                 flex: 1; 
                 padding-left: 1rem;
@@ -62,10 +62,10 @@
         }    
     }
 
-    .kt-widget14__chart {
+    .tf-widget14__chart {
         position: relative;   
 
-        .kt-widget14__stat {
+        .tf-widget14__stat {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -76,7 +76,7 @@
             top: 0;
             font-size: 2.2rem;
             font-weight: 500;
-            color: kt-base-color(label, 1);
+            color: tf-base-color(label, 1);
             opacity: 0.7; 
         } 
 
@@ -87,11 +87,11 @@
     }    
 } 
 
-@include kt-tablet-and-mobile {
-    .kt-widget14 {
-        padding: kt-get($kt-portlet, space, mobile);
+@include tf-tablet-and-mobile {
+    .tf-widget14 {
+        padding: tf-get($tf-portlet, space, mobile);
 
-        .kt-widget14__legends {
+        .tf-widget14__legends {
             padding-left: 0.5rem;      
         }
     }

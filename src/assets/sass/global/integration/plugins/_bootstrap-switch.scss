@@ -81,17 +81,17 @@
 
     // Label
     .bootstrap-switch-label {
-        color: kt-base-color(label, 2);
+        color: tf-base-color(label, 2);
         background: #fff;
     }
 
     // State colors
-    @each $name, $color in $kt-state-colors {
+    @each $name, $color in $tf-state-colors {
         .bootstrap-switch-handle-on.bootstrap-switch-#{$name},
         .bootstrap-switch-handle-off.bootstrap-switch-#{$name} {
-            background-color: kt-get($color, base);
-            border-color: kt-get($color, base);
-            color: kt-get($color, inverse);
+            background-color: tf-get($color, base);
+            border-color: tf-get($color, base);
+            color: tf-get($color, inverse);
         } 
     }
 
@@ -100,7 +100,7 @@
     .bootstrap-switch-handle-off.bootstrap-switch-default {
         background-color: $input-border-color;
         border-color: $input-border-color;
-        color: kt-base-color(label, 2);
+        color: tf-base-color(label, 2);
     }
 }
 

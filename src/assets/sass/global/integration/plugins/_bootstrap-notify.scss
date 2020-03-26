@@ -13,29 +13,29 @@
         right: 10px !important;
         padding: 0.25rem 0 0 2rem;
 
-        @include kt-close-icon();
+        @include tf-close-icon();
         font-weight: 300;
 
         &:before {
             font-size: 1.1rem;
             color: #fff;
             opacity: 0.7;
-            @include kt-transition();
+            @include tf-transition();
         }
 
         &:hover {
             &:before {
                 opacity: 1;
-                @include kt-transition();
+                @include tf-transition();
             }
         }
     }
 
-    @include kt-tablet {
+    @include tf-tablet {
         max-width: 70%;
     }
 
-    @include kt-mobile {
+    @include tf-mobile {
         max-width: 90%;
     }
 
@@ -43,11 +43,11 @@
     &[data-notify-position=bottom-center] {
         width: 30%;
 
-        @include kt-tablet {
+        @include tf-tablet {
             width: 70%;
         }
 
-        @include kt-mobile {
+        @include tf-mobile {
             width: 90%;
         }
     }
@@ -56,8 +56,8 @@
         position: absolute;
     }
 
-    @include kt-icons-style( font-size, (lineawesome: 1.8rem, fontawesome: 1.6rem, flaticon: 1.8rem) );
-    @include kt-icons-style( margin-top, (lineawesome: -0.1rem, fontawesome: -0.1rem, flaticon: -0.4rem) );
+    @include tf-icons-style( font-size, (lineawesome: 1.8rem, fontawesome: 1.6rem, flaticon: 1.8rem) );
+    @include tf-icons-style( margin-top, (lineawesome: -0.1rem, fontawesome: -0.1rem, flaticon: -0.4rem) );
 
     [data-notify=title] {
         display: block;

@@ -115,7 +115,7 @@ const changeEvent = {
 	beforeCodeTitle: 'Change event binding',
 	htmlCode: `
 <mat-checkbox [(ngModel)]="myValue" (change)="changeValueEvent()">Check me!</mat-checkbox>\n
-<div class="kt-separator kt-separator--dashed"></div>\n
+<div class="tf-separator tf-separator--dashed"></div>\n
 <span>Checked: <mark>{{ myValue }}</mark></span>`,
 	tsCode: `
 import {Component} from '@angular/core';\n
@@ -135,7 +135,7 @@ export class CheckboxChangeEventExample {
 	isCodeVisible: false
 };
 @Component({
-	selector: 'kt-checkbox',
+	selector: 'tf-checkbox',
 	templateUrl: './checkbox.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	styles: [

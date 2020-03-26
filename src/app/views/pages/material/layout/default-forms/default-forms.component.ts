@@ -13,7 +13,7 @@ export class State {
 }
 
 @Component({
-	selector: 'kt-default-forms',
+	selector: 'tf-default-forms',
 	templateUrl: './default-forms.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	styles: [`
@@ -25,7 +25,7 @@ export class State {
 		width: 100%;
 	  }
 
-	 .kt-checkbox-inline > mat-checkbox {
+	 .tf-checkbox-inline > mat-checkbox {
 		 padding-right: 20px;
 	 }
 	`]

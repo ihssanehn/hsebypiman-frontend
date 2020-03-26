@@ -11,15 +11,15 @@
 // Layout config
 @import "../../global/layout/config.scss";
 
-.kt-error-v4 {
+.tf-error-v4 {
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
 
-    .kt-error_container {
+    .tf-error_container {
 
-        .kt-error_number {
+        .tf-error_number {
             font-size: 15.7rem;
             margin-left: 14.3rem;
             margin-top: 11.4rem;
@@ -27,14 +27,14 @@
             color: #84D49E;
         }
 
-        .kt-error_title {
+        .tf-error_title {
             margin: -70px 0 2% 14.3rem;
             font-size: 10rem;
             font-weight: 700;
             color: #84D49E;
         }
 
-        .kt-error_description {
+        .tf-error_description {
             margin-left: 15rem;
             font-size: 2.5rem;
             margin: -70px 0 2% 14.8rem;
@@ -44,23 +44,23 @@
     }
 }
 
-@include kt-tablet {
-    .kt-error-v4 {
-        .kt-error_container {
-            .kt-error_number {
+@include tf-tablet {
+    .tf-error-v4 {
+        .tf-error_container {
+            .tf-error_number {
                 font-size: 12rem;
                 margin-left: 7rem;
                 margin-top: 8rem;
                 font-weight: 700;
             }
 
-            .kt-error_title {
+            .tf-error_title {
                 margin: -40px 0 2% 7rem;
                 font-size: 7rem;
                 font-weight: 700;
             }
 
-            .kt-error_description {
+            .tf-error_description {
                 margin-left: 15rem;
                 font-size: 2rem;
                 margin: -40px 0 2% 7.3rem;
@@ -70,23 +70,23 @@
     }
 }
 
-@include kt-mobile() {
-    .kt-error-v4 {
-        .kt-error_container {
+@include tf-mobile() {
+    .tf-error-v4 {
+        .tf-error_container {
             text-align: center;
 
-            .kt-error_number {
+            .tf-error_number {
                 font-size: 9rem;
                 margin: 4rem auto 0 auto;
             }
 
-            .kt-error_title {
+            .tf-error_title {
                 margin: 0.3rem auto;
                 text-align: center;
                 font-size: 5rem;
             }
 
-            .kt-error_description {
+            .tf-error_description {
                 text-align: center;
                 font-size: 2rem;
                 margin: 0.3rem auto;

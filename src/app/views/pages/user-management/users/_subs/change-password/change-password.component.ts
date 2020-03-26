@@ -7,7 +7,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 
 
 @Component({
-	selector: 'kt-change-password',
+	selector: 'tf-change-password',
 	templateUrl: './change-password.component.html',
 	styleUrls: ['./change-password.component.scss']
 	// changeDetection: ChangeDetectionStrategy.OnPush,

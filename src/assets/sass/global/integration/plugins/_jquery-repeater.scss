@@ -4,8 +4,8 @@
 
 
 
-.kt-repeater{
-	.kt-repeater__row{
+.tf-repeater{
+	.tf-repeater__row{
 		display:flex;
 		flex-wrap:wrap;
 
@@ -13,7 +13,7 @@
 			flex: 1;
 		}
 
-		.kt-repeater__close{
+		.tf-repeater__close{
 			background-color: transparent;
 			border: none;
 		}
@@ -23,7 +23,7 @@
 		}
 	}
 
-	.kt-repeater__item{
+	.tf-repeater__item{
 		position:relative;
 
 		.btn-icon{
@@ -43,7 +43,7 @@
 		}
 	}
 
-	.kt-repeater__close {
+	.tf-repeater__close {
 		&--align-right{
 			position: absolute;
 			top: 0;

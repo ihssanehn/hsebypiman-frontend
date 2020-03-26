@@ -12,7 +12,7 @@ import { DataTableItemModel, DataTableService } from '../../../../../../core/_ba
 import { DataTableDataSource } from './data-table.data-source';
 
 @Component({
-	selector: 'kt-data-table',
+	selector: 'tf-data-table',
 	templateUrl: './data-table.component.html',
 	styleUrls: ['./data-table.component.scss']
 })

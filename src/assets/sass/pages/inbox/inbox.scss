@@ -12,7 +12,7 @@
 @import "../../global/layout/config.scss";
 
 // Config for aside
-$kt-aside-config: (
+$tf-aside-config: (
 	offcanvas: (
 		layout: (
 			self: (
@@ -30,32 +30,32 @@ $kt-aside-config: (
 			),
 			close: (
 				bg-color: (
-					default: kt-base-color(grey, 1),
+					default: tf-base-color(grey, 1),
 					hover: transparent
 				),
 				icon-color: (
-					default: kt-base-color(label, 2),
-					hover: kt-brand-color()
+					default: tf-base-color(label, 2),
+					hover: tf-brand-color()
 				)
 			)
 		)
 	)
 );
 
-$kt-inbox-icon-color: #8e96b8;
-$kt-inbox-hover-bg: #f2f3f7;
+$tf-inbox-icon-color: #8e96b8;
+$tf-inbox-hover-bg: #f2f3f7;
 
 // Base
-.kt-inbox {
+.tf-inbox {
 	// Icon
-	.kt-inbox__icon {
-		@include kt-btn-reset();
+	.tf-inbox__icon {
+		@include tf-btn-reset();
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		height: 35px;
 		width: 35px;
-		background-color: kt-base-color(grey, 1);
+		background-color: tf-base-color(grey, 1);
 		transition: all 0.3s ease;
 		cursor: pointer;
 		margin: 0;
@@ -65,7 +65,7 @@ $kt-inbox-hover-bg: #f2f3f7;
 			font-size: 1.1rem;
 		}
 
-		&.kt-inbox__icon--sm {
+		&.tf-inbox__icon--sm {
 			height: 26px;
 			width: 26px;
 
@@ -74,7 +74,7 @@ $kt-inbox-hover-bg: #f2f3f7;
 			}
 		}
 
-		&.kt-inbox__icon--md {
+		&.tf-inbox__icon--md {
 			height: 30px;
 			width: 30px;
 
@@ -83,46 +83,46 @@ $kt-inbox-hover-bg: #f2f3f7;
 			}
 		}
 
-		&.kt-inbox__icon--light {
+		&.tf-inbox__icon--light {
 			background-color: transparent;
 		}
 
-		@include kt-rounded {
-			border-radius: $kt-border-radius;
+		@include tf-rounded {
+			border-radius: $tf-border-radius;
 		}
 
 		i {
-			color: $kt-inbox-icon-color;
+			color: $tf-inbox-icon-color;
 		}
 
-		@include kt-svg-icon-color($kt-inbox-icon-color);
+		@include tf-svg-icon-color($tf-inbox-icon-color);
 
-		&.kt-inbox__icon--active,
+		&.tf-inbox__icon--active,
 		&:hover {
 			transition: all 0.3s ease;
-			background-color: kt-base-color(grey, 2);
+			background-color: tf-base-color(grey, 2);
 
-			&.kt-inbox__icon--light {
+			&.tf-inbox__icon--light {
 				background-color: transparent;
 			}
 
 			i {
-				color: kt-brand-color();
+				color: tf-brand-color();
 			}
 
-			@include kt-svg-icon-color(kt-brand-color());
+			@include tf-svg-icon-color(tf-brand-color());
 		}
 
 		// Back
-		&.kt-inbox__icon--back {
+		&.tf-inbox__icon--back {
 			background-color: transparent;
 
 			i {
-				color: $kt-inbox-icon-color;
+				color: $tf-inbox-icon-color;
 				font-size: 1.5rem;
 			}
 
-			@include kt-svg-icon-color($kt-inbox-icon-color);
+			@include tf-svg-icon-color($tf-inbox-icon-color);
 
 			svg {
 				height: 32px;
@@ -133,83 +133,83 @@ $kt-inbox-hover-bg: #f2f3f7;
 				background-color: transparent;
 
 				i {
-					color: kt-brand-color();
+					color: tf-brand-color();
 				}
 
-				@include kt-svg-icon-color(kt-brand-color());
+				@include tf-svg-icon-color(tf-brand-color());
 			}
 		}
 	}
 
 	// Aside
-	.kt-inbox__aside {
+	.tf-inbox__aside {
 		padding: 40px 20px;
 		width: 275px;
 
-		.kt-inbox__compose {
+		.tf-inbox__compose {
 			margin: 0 20px;
 			padding: 0.9rem 0;
 		}
 
-		.kt-inbox__nav {
+		.tf-inbox__nav {
 			margin-top: 1.2rem;
 
-			.kt-nav {
-				.kt-nav__item {
+			.tf-nav {
+				.tf-nav__item {
 					margin-bottom: 0.5rem;
 
-					.kt-nav__link {
+					.tf-nav__link {
 						padding: 0.75rem 20px;
 
-						@include kt-rounded {
-							border-radius: $kt-border-radius;
+						@include tf-rounded {
+							border-radius: $tf-border-radius;
 						}
 
 						i {
-							color: $kt-inbox-icon-color;
+							color: $tf-inbox-icon-color;
 						}
 
-						@include kt-svg-icon-color($kt-inbox-icon-color);
+						@include tf-svg-icon-color($tf-inbox-icon-color);
 
-						.kt-nav__link-icon {
+						.tf-nav__link-icon {
 							text-align: center;
 							margin: 0 0.7rem 0 -0.23rem;
 						}
 
-						.kt-nav__link-text {
+						.tf-nav__link-text {
 							font-weight: 500;
-							color: kt-base-color(label, 2);
+							color: tf-base-color(label, 2);
 						}
 					}
 
 					&:last-child {
 						margin-bottom: 0;
 
-						.kt-nav__link {
-							.kt-nav__link-icon {
+						.tf-nav__link {
+							.tf-nav__link-icon {
 								font-size: 0.9rem;
 							}
 						}
 					}
 
 					&.hover,
-					&.kt-nav__item--selected,
-					&.kt-nav__item--active {
-						.kt-nav__link {
-							background-color: kt-base-color(grey, 1);
+					&.tf-nav__item--selected,
+					&.tf-nav__item--active {
+						.tf-nav__link {
+							background-color: tf-base-color(grey, 1);
 
-							@include kt-rounded {
-								border-radius: $kt-border-radius;
+							@include tf-rounded {
+								border-radius: $tf-border-radius;
 							}
 
 							i {
-								color: kt-brand-color();
+								color: tf-brand-color();
 							}
 
-							@include kt-svg-icon-color(kt-brand-color());
+							@include tf-svg-icon-color(tf-brand-color());
 
-							.kt-nav__link-text {
-								color: kt-brand-color();
+							.tf-nav__link-text {
+								color: tf-brand-color();
 							}
 						}
 					}
@@ -219,88 +219,88 @@ $kt-inbox-hover-bg: #f2f3f7;
 	}
 
 	// List
-	.kt-inbox__list {
+	.tf-inbox__list {
 		display: none;
 		padding: 0;
 
-		@include kt-desktop {
-			margin-left: kt-get($kt-page-padding, desktop);
+		@include tf-desktop {
+			margin-left: tf-get($tf-page-padding, desktop);
 		}
 
-		&.kt-inbox__list--shown {
+		&.tf-inbox__list--shown {
 			display: flex;
 		}
 
-		.kt-inbox__items {
+		.tf-inbox__items {
 			padding: 0;
 
-			.kt-inbox__item {
+			.tf-inbox__item {
 				display: none;
 				align-items: flex-start;
-				padding: 12px kt-get($kt-portlet, space, desktop);
+				padding: 12px tf-get($tf-portlet, space, desktop);
 				transition: all 0.3s ease;
 				cursor: pointer;
 
-				.kt-inbox__info {
+				.tf-inbox__info {
 					display: flex;
 
-					@include kt-hack-ie  {
+					@include tf-hack-ie  {
 						 padding: 8px 0;
 					}
 
-					@include kt-hack-ie  {
+					@include tf-hack-ie  {
 						 min-width: 210px;
 					}
 
-					.kt-inbox__actions {
+					.tf-inbox__actions {
 						display: flex;
 						margin-right: 10px;
 						align-items: center;
 
-						@include kt-hack-ie  {
+						@include tf-hack-ie  {
 							 min-width: 70px;
 						}
 
-						.kt-checkbox {
+						.tf-checkbox {
 							margin: 0;
 							padding: 0;
 							margin-right: 10px;
 						}
 
-						.kt-inbox__icon {
+						.tf-inbox__icon {
 							height: 22px;
 							width: 22px;
 
 							i {
 								font-size: 1rem;
-								color: kt-base-color(grey, 2);
+								color: tf-base-color(grey, 2);
 							}
 
 							&:hover {
 								i {
-									color: rgba(kt-state-color(warning), 0.5) !important;
+									color: rgba(tf-state-color(warning), 0.5) !important;
 								}
 							}
 
-							&.kt-inbox__icon--on {
+							&.tf-inbox__icon--on {
 								i {
-									color: kt-state-color(warning) !important;
+									color: tf-state-color(warning) !important;
 								}
 							}
 						}
 					}
 
-					.kt-inbox__sender {
+					.tf-inbox__sender {
 						display: flex;
 						align-items: center;
 						margin-right: 30px;
 						width: 175px;
 
-						@include kt-hack-ie  {
+						@include tf-hack-ie  {
 							 min-width: 175px;
 						}
 
-						.kt-media {
+						.tf-media {
 							margin-right: 10px;
 							min-width: 30px !important;
 
@@ -309,112 +309,112 @@ $kt-inbox-hover-bg: #f2f3f7;
 							}
 						}
 
-						.kt-inbox__author {
+						.tf-inbox__author {
 							font-size: 1rem;
-							color: kt-base-color(label, 3);
+							color: tf-base-color(label, 3);
 							font-weight: 500;
 						}
 
-						@include kt-media-below(1400px) {
+						@include tf-media-below(1400px) {
 							display: block;
 							width: 70px;
 							margin-right: 10px;
 
-							.kt-inbox__author {
+							.tf-inbox__author {
 								display: block;
 							}
 
-							.kt-media {
+							.tf-media {
 								margin-bottom: 5px;
 							}
 						}
 					}
 				}
 
-				.kt-inbox__details {
+				.tf-inbox__details {
 					flex-grow: 1;
 					margin-top: 5px;
 
-					@include kt-hack-ie  {
+					@include tf-hack-ie  {
   						width: 0;
 							height: 0;
 					}
 
-					.kt-inbox__message {
-						.kt-inbox__subject {
+					.tf-inbox__message {
+						.tf-inbox__subject {
 							font-size: 1rem;
-							color: kt-base-color(label, 4);
+							color: tf-base-color(label, 4);
 							font-weight: 400;
 						}
 
-						.kt-inbox__summary {
+						.tf-inbox__summary {
 							font-size: 1rem;
-							color: kt-base-color(label, 1);
+							color: tf-base-color(label, 1);
 							font-weight: 400;
 							text-overflow: ellipsis;
 						}
 					}
 
-					.kt-inbox__labels {
+					.tf-inbox__labels {
 						display: flex;
 						margin-top: 5px;
 
-						.kt-inbox__label {
+						.tf-inbox__label {
 							margin-right: 5px;
 						}
 					}
 				}
 
-				.kt-inbox__datetime {
+				.tf-inbox__datetime {
 					font-size: 1rem;
-					color: kt-base-color(label, 1);
+					color: tf-base-color(label, 1);
 					font-weight: 400;
 					margin-left: 20px;
 					margin-top: 5px;
 					width: 85px;
 					text-align: right;
 
-					@include kt-media-below(1400px) {
+					@include tf-media-below(1400px) {
 						width: 70px;
 					}
 				}
 
 				&:hover,
-				&.kt-inbox__item--selected {
+				&.tf-inbox__item--selected {
 					transition: all 0.3s ease;
-					background-color: $kt-inbox-hover-bg;
+					background-color: $tf-inbox-hover-bg;
 
-					.kt-inbox__info {
-						.kt-inbox__actions {
-							.kt-inbox__icon {
+					.tf-inbox__info {
+						.tf-inbox__actions {
+							.tf-inbox__icon {
 								i {
 									font-size: 1rem;
-									color: kt-base-color(grey, 3);
+									color: tf-base-color(grey, 3);
 								}
 							}
 						}
 					}
 				}
 
-				&.kt-inbox__item--unread {
-					.kt-inbox__sender {
-						.kt-inbox__author {
-							color: kt-base-color(label, 4);
+				&.tf-inbox__item--unread {
+					.tf-inbox__sender {
+						.tf-inbox__author {
+							color: tf-base-color(label, 4);
 							font-weight: 600;
 						}
 					}
 
-					.kt-inbox__details {
-						.kt-inbox__message {
-							.kt-inbox__subject {
-								color: kt-base-color(label, 4);
+					.tf-inbox__details {
+						.tf-inbox__message {
+							.tf-inbox__subject {
+								color: tf-base-color(label, 4);
 								font-weight: 600;
 							}
 						}
 					}
 
-					.kt-inbox__datetime {
-						color: kt-base-color(label, 4);
+					.tf-inbox__datetime {
+						color: tf-base-color(label, 4);
 						font-weight: 600;
 					}
 				}
@@ -422,31 +422,31 @@ $kt-inbox-hover-bg: #f2f3f7;
 
 			// Item types
 			&[data-type="inbox"] {
-				.kt-inbox__item[data-type="inbox"] {
+				.tf-inbox__item[data-type="inbox"] {
 					display: flex;
 				}
 			}
 
 			&[data-type="marked"] {
-				.kt-inbox__item[data-type="marked"] {
+				.tf-inbox__item[data-type="marked"] {
 					display: flex;
 				}
 			}
 
 			&[data-type="draft"] {
-				.kt-inbox__item[data-type="draft"] {
+				.tf-inbox__item[data-type="draft"] {
 					display: flex;
 				}
 			}
 
 			&[data-type="sent"] {
-				.kt-inbox__item[data-type="sent"] {
+				.tf-inbox__item[data-type="sent"] {
 					display: flex;
 				}
 			}
 
 			&[data-type="trash"] {
-				.kt-inbox__item[data-type="trash"] {
+				.tf-inbox__item[data-type="trash"] {
 					display: flex;
 				}
 			}
@@ -454,7 +454,7 @@ $kt-inbox-hover-bg: #f2f3f7;
 	}
 
 	// Toolbar
-	.kt-inbox__toolbar {
+	.tf-inbox__toolbar {
 		position: relative;
 		display: flex;
 		flex-grow: 1;
@@ -462,63 +462,63 @@ $kt-inbox-hover-bg: #f2f3f7;
 		justify-content: space-between;
 		flex-wrap: wrap;
 
-		.kt-inbox__actions {
+		.tf-inbox__actions {
 			display: flex;
 			align-items: center;
 			margin-right: 1rem;
 
-			.kt-inbox__check {
+			.tf-inbox__check {
 				display: flex;
 				align-items: center;
 
-				.kt-checkbox {
+				.tf-checkbox {
 					margin: 0;
 					padding-left: 0;
 				}
 
-				.kt-inbox__icon {
+				.tf-inbox__icon {
 					margin-left: 0;
 				}
 			}
 
-			.kt-inbox__panel {
+			.tf-inbox__panel {
 				display: none;
 				flex-wrap: wrap;
 			}
 
-			&.kt-inbox__actions--expanded {
-				.kt-inbox__panel {
+			&.tf-inbox__actions--expanded {
+				.tf-inbox__panel {
 					display: flex;
 				}
 			}
 
-			.kt-inbox__icon {
+			.tf-inbox__icon {
 				margin-right: 0.5rem;
 
-				&.kt-inbox__icon--back {
+				&.tf-inbox__icon--back {
 					margin-right: 2.5rem;
 				}
 			}
 		}
 
-		.kt-inbox__controls {
+		.tf-inbox__controls {
 			display: flex;
 			align-items: center;
 			margin-left: 1rem;
 
-			.kt-inbox__icon {
+			.tf-inbox__icon {
 				margin-left: 0.5rem;
 			}
 
-			.kt-inbox__sort {
+			.tf-inbox__sort {
 				margin-left: 0.5rem;
 			}
 
-			.kt-inbox__pages {
+			.tf-inbox__pages {
 				margin-left: 0.5rem;
 
-				.kt-inbox__perpage {
-					color: kt-base-color(label, 2);
+				.tf-inbox__perpage {
+					color: tf-base-color(label, 2);
 					font-size: 1rem;
 					font-weight: 500;
 					margin-right: 1rem;
@@ -528,37 +528,37 @@ $kt-inbox-hover-bg: #f2f3f7;
 
 					&:hover {
 						transition: all 0.3s ease;
-						color: kt-brand-color();
+						color: tf-brand-color();
 					}
 				}
 			}
 		}
 
-		.kt-inbox__search {
+		.tf-inbox__search {
 			width: 300px;
 
-			@include kt-media-above(1600px) {
+			@include tf-media-above(1600px) {
 				position: absolute;
 				left: 50%;
 				width: 300px;
 				margin-left: -150px;
 
-				@include kt-hack-ie {
+				@include tf-hack-ie {
 					top: 18px;
 				}
 			}
 
-			@include kt-media-below(1599px) {
+			@include tf-media-below(1599px) {
 				width: 175px;
 			}
 
 			.input-group {
 				.input-group-text {
 					border: none;
-					background-color: $kt-inbox-hover-bg;
+					background-color: $tf-inbox-hover-bg;
 					padding: 0 0.65rem 0 1rem;
 
-					.kt-svg-icon {
+					.tf-svg-icon {
 						height: 22px;
 						width: 22px;
 					}
@@ -571,51 +571,51 @@ $kt-inbox-hover-bg: #f2f3f7;
 				.form-control {
 					height: 44px;
 					border: none;
-					background-color: $kt-inbox-hover-bg;
+					background-color: $tf-inbox-hover-bg;
 
-					@include kt-tablet-and-mobile {
+					@include tf-tablet-and-mobile {
 						height: 40px;
 					}
 				}
 			}
 		}
 
-		.kt-inbox__sep {
+		.tf-inbox__sep {
 			display: flex;
 			height: 1rem;
 			width: 1rem;
 		}
 
-		//kt-media-breakpoint(lg),
-		@include kt-media-below(1450px) {
+		//tf-media-breakpoint(lg),
+		@include tf-media-below(1450px) {
 			position: static;
 
-			.kt-inbox__search {
+			.tf-inbox__search {
 				order: 1;
-				margin-top: kt-get($kt-portlet, space, desktop);
+				margin-top: tf-get($tf-portlet, space, desktop);
 				margin-bottom: 10px;
 				flex-grow: 1;
 				width: 100%;
 			}
 
-			.kt-inbox__actions {
+			.tf-inbox__actions {
 				margin-top: 10px;
 				margin-bottom: 10px;
 			}
 
-			.kt-inbox__controls {
+			.tf-inbox__controls {
 				margin-top: 10px;
 				margin-bottom: 10px;
 			}
 
-			&.kt-inbox__toolbar--extended {
-				.kt-inbox__actions {
+			&.tf-inbox__toolbar--extended {
+				.tf-inbox__actions {
 					order: 2;
 					margin-bottom: 10px;
 					justify-content: flex-first;
 				}
 
-				.kt-inbox__controls {
+				.tf-inbox__controls {
 					order: 2;
 					margin-bottom: 10px;
 					justify-content: flex-end;
@@ -625,51 +625,51 @@ $kt-inbox-hover-bg: #f2f3f7;
 	}
 
 	// View
-	.kt-inbox__view {
+	.tf-inbox__view {
 		padding: 0;
 		display: none;
 
-		@include kt-desktop {
-			margin-left: kt-get($kt-page-padding, desktop);
+		@include tf-desktop {
+			margin-left: tf-get($tf-page-padding, desktop);
 		}
 
 		// Shown
-		&.kt-inbox__view--shown {
+		&.tf-inbox__view--shown {
 			display: flex;
 		}
 
 		// Subject
-		.kt-inbox__subject {
+		.tf-inbox__subject {
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
 			flex-wrap: wrap;
-			padding: 0 kt-get($kt-portlet, space, desktop);
+			padding: 0 tf-get($tf-portlet, space, desktop);
 
-			.kt-inbox__title {
+			.tf-inbox__title {
 				margin-right: 1rem;
 				display: flex;
 				align-items: center;
 
-				.kt-inbox__text {
+				.tf-inbox__text {
 					margin: 0;
 					padding: 0;
-					color: kt-base-color(label, 3);
+					color: tf-base-color(label, 3);
 					font-size: 1.4rem;
 					font-weight: 500;
 				}
 
-				.kt-inbox__label {
+				.tf-inbox__label {
 					margin-left: 0.75rem;
 				}
 			}
 
-			.kt-inbox__actions {
+			.tf-inbox__actions {
 				display: flex;
 				align-items: center;
 				margin: 10px 0;
 
-				.kt-inbox__icon {
+				.tf-inbox__icon {
 					margin-left: 0.5rem;
 
 					&:first-child {
@@ -680,14 +680,14 @@ $kt-inbox-hover-bg: #f2f3f7;
 		}
 
 		// Reply
-		.kt-inbox__reply {
+		.tf-inbox__reply {
 			margin-top: 30px;
 			margin-bottom: 10px;
 			display: flex;
 			flex-direction: column;
-			padding: 0 kt-get($kt-portlet, space, desktop);
+			padding: 0 tf-get($tf-portlet, space, desktop);
 
-			.kt-inbox__actions {
+			.tf-inbox__actions {
 				display: flex;
 
 				.btn {
@@ -695,91 +695,91 @@ $kt-inbox-hover-bg: #f2f3f7;
 				}
 			}
 
-			.kt-inbox__form {
+			.tf-inbox__form {
 				display: none;
 			}
 
-			&.kt-inbox__reply--on {
-				.kt-inbox__actions {
+			&.tf-inbox__reply--on {
+				.tf-inbox__actions {
 					display: none;
 				}
 
-				.kt-inbox__form {
+				.tf-inbox__form {
 					display: flex;
 				}
 			}
 		}
 
 		// Messages
-		.kt-inbox__messages {
+		.tf-inbox__messages {
 			margin-top: 15px;
 
 			// Message
-			.kt-inbox__message {
+			.tf-inbox__message {
 				// Base
-				padding: 0 kt-get($kt-portlet, space, desktop) 15px kt-get($kt-portlet, space, desktop);
+				padding: 0 tf-get($tf-portlet, space, desktop) 15px tf-get($tf-portlet, space, desktop);
 				margin-bottom: 15px;
 
 				&:last-child {
 					margin-bottom: 0;
 				}
 
-				@include kt-rounded {
-					border-radius: $kt-border-radius;
+				@include tf-rounded {
+					border-radius: $tf-border-radius;
 					box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.05);
 				}
 
 				// Head
-				.kt-inbox__head {
+				.tf-inbox__head {
 					display: flex;
 					align-items: center;
 					cursor: pointer;
 
-					.kt-media {
+					.tf-media {
 						margin-right: 1.2rem;
 					}
 
-					.kt-inbox__info {
+					.tf-inbox__info {
 						display: flex;
 						flex-direction: column;
 						flex-wrap: wrap;
 						padding: 0.5rem 0.5rem 0.5rem 0;
 						flex-grow: 1;
 
-						.kt-inbox__author {
+						.tf-inbox__author {
 							display: flex;
 							align-items: center;
 							flex-wrap: wrap;
 
-							.kt-inbox__name {
-								color: kt-base-color(label, 4);
+							.tf-inbox__name {
+								color: tf-base-color(label, 4);
 								font-weight: 600;
 								font-size: 1.1rem;
 								margin-right: 0.5rem;
 							}
 
-							.kt-inbox__status {
-								color: kt-base-color(label, 1);
+							.tf-inbox__status {
+								color: tf-base-color(label, 1);
 								font-weight: 500;
 
 								a {
 									font-size: 0.9rem;
 								}
 
-								.kt-badge {
+								.tf-badge {
 									margin-right: 0.4rem;
 									margin-bottom: 0.1rem;
 								}
 							}
 						}
 
-						.kt-inbox__details {
+						.tf-inbox__details {
 							display: flex;
 
-							.kt-inbox__tome {
+							.tf-inbox__tome {
 								display: none;
 
-								.kt-inbox__details {
+								.tf-inbox__details {
 									padding: 20px 0;
 
 									td {
@@ -789,64 +789,64 @@ $kt-inbox-hover-bg: #f2f3f7;
 										&:nth-child(1) {
 											width: 30px;
 											text-align: right;
-											color: kt-base-color(label, 1);
+											color: tf-base-color(label, 1);
 										}
 
 										&:nth-child(2) {
 											text-align: left;
-											color: kt-base-color(label, 3);
+											color: tf-base-color(label, 3);
 											font-weight: 500;
 										}
 									}
 								}
 
-								.kt-inbox__label {
-									color: kt-base-color(label, 2);
+								.tf-inbox__label {
+									color: tf-base-color(label, 2);
 									font-weight: 400;
 									font-size: 1rem;
 
 									i {
 										margin-left: 0.5rem;
 										font-size: 0.7rem;
-										color: kt-base-color(label, 2);
+										color: tf-base-color(label, 2);
 									}
 								}
 							}
 
-							.kt-inbox__desc {
-								color: kt-base-color(label, 2);
+							.tf-inbox__desc {
+								color: tf-base-color(label, 2);
 								font-weight: 400;
 								font-size: 1rem;
 							}
 						}
 					}
 
-					.kt-inbox__actions {
+					.tf-inbox__actions {
 						display: flex;
 						align-items: center;
 
-						.kt-inbox__datetime {
-							color: kt-base-color(label, 1);
+						.tf-inbox__datetime {
+							color: tf-base-color(label, 1);
 							font-weight: 500;
 							font-size: 1rem;
 							margin-right: 1.5rem;
 						}
 
-						.kt-inbox__group {
+						.tf-inbox__group {
 							display: flex;
 						}
 
-						.kt-inbox__icon {
-							&.kt-inbox__icon--label {
+						.tf-inbox__icon {
+							&.tf-inbox__icon--label {
 								&:hover {
 									i {
-										color: rgba(kt-state-color(warning), 0.5) !important;
+										color: rgba(tf-state-color(warning), 0.5) !important;
 									}
 								}
 
-								&.kt-inbox__icon--on {
+								&.tf-inbox__icon--on {
 									i {
-										color: kt-state-color(warning) !important;
+										color: tf-state-color(warning) !important;
 									}
 								}
 							}
@@ -855,22 +855,22 @@ $kt-inbox-hover-bg: #f2f3f7;
 				}
 
 				// Body
-				.kt-inbox__body {
+				.tf-inbox__body {
 					display: none;
 					padding:  1rem 0;
 				}
 
 				// Message expanded
-				&.kt-inbox__message--expanded {
+				&.tf-inbox__message--expanded {
 					// Head
-					.kt-inbox__head {
-						.kt-inbox__info {
-							.kt-inbox__details {
-								.kt-inbox__tome {
+					.tf-inbox__head {
+						.tf-inbox__info {
+							.tf-inbox__details {
+								.tf-inbox__tome {
 									display: flex;
 								}
 
-								.kt-inbox__desc {
+								.tf-inbox__desc {
 									display: none;
 								}
 							}
@@ -878,65 +878,65 @@ $kt-inbox-hover-bg: #f2f3f7;
 					}
 
 					// Body
-					.kt-inbox__body {
+					.tf-inbox__body {
 						display: block;
 					}
 				}
 
 				// Message reply
-				&.kt-inbox__message--reply {
-					.kt-inbox__reply {
+				&.tf-inbox__message--reply {
+					.tf-inbox__reply {
 						display: flex;
 					}
 				}
 			}
 
-			.kt-inbox__reply {
+			.tf-inbox__reply {
 				margin-bottom: 30px;
 			}
 		}
 	}
 
 	// Form
-	.kt-inbox__form {
+	.tf-inbox__form {
 		display: flex;
 		flex-direction: column;
 		box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.1);
 
-		.kt-inbox__head {
+		.tf-inbox__head {
 			display: flex;
 			flex-wrap: wrap;
 			align-items: center;
 			justify-content: space-between;
-			padding: 20px kt-get($kt-portlet, space, desktop) - 10px 20px kt-get($kt-portlet, space, desktop);
-			border-bottom: 1px solid kt-base-color(grey, 2);
+			padding: 20px tf-get($tf-portlet, space, desktop) - 10px 20px tf-get($tf-portlet, space, desktop);
+			border-bottom: 1px solid tf-base-color(grey, 2);
 
-			.kt-inbox__title {
+			.tf-inbox__title {
 				margin-right: 10px;
 				font-size: 1.2rem;
 				font-weight: 500;
-				color: kt-base-color(label, 3);
+				color: tf-base-color(label, 3);
 			}
 
-			.kt-inbox__actions {
+			.tf-inbox__actions {
 				display: flex;
 
-				.kt-inbox__icon {
+				.tf-inbox__icon {
 					margin-left: 5px;
 				}
 			}
 		}
 
-		.kt-inbox__body {
+		.tf-inbox__body {
 			padding: 0 0 10px 0;
 
-			.kt-inbox__to {
+			.tf-inbox__to {
 				display: flex;
 				min-height: 50px;
 				align-items: center;
-				padding: 10px kt-get($kt-portlet, space, desktop);
+				padding: 10px tf-get($tf-portlet, space, desktop);
 
-				.kt-inbox__wrapper {
+				.tf-inbox__wrapper {
 					display: flex;
 					flex-direction: column;
 					flex-grow: 1;
@@ -950,27 +950,27 @@ $kt-inbox-hover-bg: #f2f3f7;
 					}
 				}
 
-				.kt-inbox__field {
+				.tf-inbox__field {
 					display: flex;
 					align-items: center;
 					width: 100%;
 					padding: 0;
 
-					&.kt-inbox__field--cc,
-					&.kt-inbox__field--bcc {
+					&.tf-inbox__field--cc,
+					&.tf-inbox__field--bcc {
 						display: none;
 						margin-top: 5px;
 					}
 
-					.kt-inbox__label {
+					.tf-inbox__label {
 						font-weight:400;
 						font-size: 1rem;
 						width: 40px;
 						min-width: 40px;
-						color: kt-base-color(label, 2);
+						color: tf-base-color(label, 2);
 					}
 
-					.kt-inbox__input {
+					.tf-inbox__input {
 						flex-grow: 1;
 
 						input {
@@ -986,19 +986,19 @@ $kt-inbox-hover-bg: #f2f3f7;
 							padding-left: 0;
 							padding-right: 0;
 
-							@include kt-input-placeholder(kt-base-color(label, 2));
-							color: kt-base-color(label, 2);
+							@include tf-input-placeholder(tf-base-color(label, 2));
+							color: tf-base-color(label, 2);
 						}
 					}
 
-					.kt-inbox__tools {
+					.tf-inbox__tools {
 						display: flex;
 						align-items: center;
 						margin-left: 1rem;
 
-						.kt-inbox__tool {
+						.tf-inbox__tool {
 							font-size: 1rem;
-							color: kt-base-color(label, 1);
+							color: tf-base-color(label, 1);
 							font-weight: 500;
 							margin-left: 10px;
 							cursor: pointer;
@@ -1006,37 +1006,37 @@ $kt-inbox-hover-bg: #f2f3f7;
 					}
 				}
 
-				&.kt-inbox__to--cc {
-					.kt-inbox__tools {
-						.kt-inbox__tool:nth-child(1) {
+				&.tf-inbox__to--cc {
+					.tf-inbox__tools {
+						.tf-inbox__tool:nth-child(1) {
 							display: none;
 						}
 					}
 
-					.kt-inbox__field.kt-inbox__field--cc {
+					.tf-inbox__field.tf-inbox__field--cc {
 						display: flex;
 					}
 				}
 
-				&.kt-inbox__to--bcc {
-					.kt-inbox__tools {
-						.kt-inbox__tool:nth-child(2) {
+				&.tf-inbox__to--bcc {
+					.tf-inbox__tools {
+						.tf-inbox__tool:nth-child(2) {
 							display: none;
 						}
 					}
 
-					.kt-inbox__field.kt-inbox__field--bcc {
+					.tf-inbox__field.tf-inbox__field--bcc {
 						display: flex;
 					}
 				}
 			}
 
-			.kt-inbox__subject {
+			.tf-inbox__subject {
 				display: flex;
 				min-height: 50px;
 				align-items: center;
-				padding: 0 kt-get($kt-portlet, space, desktop);
-				border-top: 1px solid kt-base-color(grey, 2);
+				padding: 0 tf-get($tf-portlet, space, desktop);
+				border-top: 1px solid tf-base-color(grey, 2);
 
 				.form-control {
 					border: 0;
@@ -1046,17 +1046,17 @@ $kt-inbox-hover-bg: #f2f3f7;
 					font-weight:400;
 					font-size: 1rem;
 
-					@include kt-input-placeholder(kt-base-color(label, 2));
-					color: kt-base-color(label, 2);
+					@include tf-input-placeholder(tf-base-color(label, 2));
+					color: tf-base-color(label, 2);
 				}
 			}
 
-			.kt-inbox__text {
-				padding: 10px kt-get($kt-portlet, space, desktop);
+			.tf-inbox__text {
+				padding: 10px tf-get($tf-portlet, space, desktop);
 				padding-bottom: 0;
 				font-weight:400;
 				font-size: 1rem;
-				color: kt-base-color(label, 2);
+				color: tf-base-color(label, 2);
 			}
 
 			.ql-container.ql-snow  {
@@ -1067,14 +1067,14 @@ $kt-inbox-hover-bg: #f2f3f7;
 				.ql-editor {
 					font-weight:400;
 					font-size: 1rem;
-					color: kt-base-color(label, 2);
-					padding: 15px kt-get($kt-portlet, space, desktop);
-					font-family: kt-get($kt-font-families, regular);
+					color: tf-base-color(label, 2);
+					padding: 15px tf-get($tf-portlet, space, desktop);
+					font-family: tf-get($tf-font-families, regular);
 
 					&.ql-blank {
 						&:before {
-							left: kt-get($kt-portlet, space, desktop);
-							color: kt-base-color(label, 1);
+							left: tf-get($tf-portlet, space, desktop);
+							color: tf-base-color(label, 1);
 							font-weight: 400;
 							font-style: normal;
 						}
@@ -1088,8 +1088,8 @@ $kt-inbox-hover-bg: #f2f3f7;
 				align-items: center;
 				border-radius: 0;
 				border: 0;
-				border-top: 1px solid kt-base-color(grey, 2);
-				border-bottom: 1px solid kt-base-color(grey, 2);
+				border-top: 1px solid tf-base-color(grey, 2);
+				border-bottom: 1px solid tf-base-color(grey, 2);
 				padding-left: 18px;
 
 				.ql-picker-label {
@@ -1097,28 +1097,28 @@ $kt-inbox-hover-bg: #f2f3f7;
 					&:before {
 						font-weight:400;
 						font-size: 1rem;
-						color: kt-base-color(label, 2);
-						font-family: kt-get($kt-font-families, regular);
+						color: tf-base-color(label, 2);
+						font-family: tf-get($tf-font-families, regular);
 					}
 				}
 			}
 
-			.kt-inbox__attachments {
+			.tf-inbox__attachments {
 				min-width: 500px;
     			display: inline-block;
-				padding: 0 kt-get($kt-portlet, space, desktop);
+				padding: 0 tf-get($tf-portlet, space, desktop);
 			}
 		}
 
-		.kt-inbox__foot {
+		.tf-inbox__foot {
 			display: flex;
 			flex-wrap: wrap;
 			align-items: center;
 			width: 100%;
-			padding: 20px kt-get($kt-portlet, space, desktop) - 10px 20px kt-get($kt-portlet, space, desktop);
-			border-top: 1px solid kt-base-color(grey, 2);
+			padding: 20px tf-get($tf-portlet, space, desktop) - 10px 20px tf-get($tf-portlet, space, desktop);
+			border-top: 1px solid tf-base-color(grey, 2);
 
-			.kt-inbox__primary {
+			.tf-inbox__primary {
 				display: flex;
 				flex-grow: 1;
 				align-items: center;
@@ -1137,14 +1137,14 @@ $kt-inbox-hover-bg: #f2f3f7;
 					}
 				}
 
-				.kt-inbox__panel {
+				.tf-inbox__panel {
 					display: flex;
 					align-items: center;
 					margin-left: 1rem;
 				}
 			}
 
-			.kt-inbox__secondary {
+			.tf-inbox__secondary {
 				display: flex;
 				align-items: center;
 				margin: 0;
@@ -1153,32 +1153,32 @@ $kt-inbox-hover-bg: #f2f3f7;
 	}
 
 	// Portlet head
-	.kt-portlet__head {
+	.tf-portlet__head {
 		min-height: 80px !important;
-		padding: 10px kt-get($kt-portlet, space, desktop);
+		padding: 10px tf-get($tf-portlet, space, desktop);
 	}
 }
 
 // Tablet and mobile mode
-@include kt-tablet-and-mobile {
+@include tf-tablet-and-mobile {
 	// Inbox
-	.kt-inbox {
+	.tf-inbox {
 		display: flex;
 		flex-wrap: wrap;
 
 		// Aside
-		.kt-inbox__aside {
+		.tf-inbox__aside {
 			background: #fff;
 			margin: 0;
 
-			.kt-inbox__compose {
+			.tf-inbox__compose {
 				margin: 0;
 			}
 
-			.kt-inbox__nav {
-				.kt-nav {
-					.kt-nav__item {
-						.kt-nav__link {
+			.tf-inbox__nav {
+				.tf-nav {
+					.tf-nav__item {
+						.tf-nav__link {
 							padding: 0.75rem 10px;
 						}
 					}
@@ -1187,74 +1187,74 @@ $kt-inbox-hover-bg: #f2f3f7;
 		}
 
 		// Toolbar
-		.kt-inbox__toolbar {
+		.tf-inbox__toolbar {
 			position: static;
 
-			.kt-inbox__search {
+			.tf-inbox__search {
 				margin: 10px 0;
 			}
 
-			.kt-inbox__actions {
+			.tf-inbox__actions {
 				margin: 10px 0;
 			}
 
-			.kt-inbox__controls {
+			.tf-inbox__controls {
 				margin: 10px 0;
 			}
 		}
 
 		// List
-		.kt-inbox__list {
-			.kt-inbox__items {
+		.tf-inbox__list {
+			.tf-inbox__items {
 				overflow: auto;
 
-				.kt-inbox__item {
+				.tf-inbox__item {
 					min-width: 500px;
 					//flex-wrap: wrap;
-					padding: 10px kt-get($kt-portlet, space, mobile);
+					padding: 10px tf-get($tf-portlet, space, mobile);
 					margin-bottom: 15px;
 				}
 			}
 
 			// Portlet head
-			.kt-portlet__head {
+			.tf-portlet__head {
 				min-height: 60px !important;
-				padding: 10px kt-get($kt-portlet, space, mobile);
+				padding: 10px tf-get($tf-portlet, space, mobile);
 			}
 		}
 
 		// View
-		.kt-inbox__view {
-			.kt-inbox__subject {
-				padding: 10px kt-get($kt-portlet, space, mobile);
+		.tf-inbox__view {
+			.tf-inbox__subject {
+				padding: 10px tf-get($tf-portlet, space, mobile);
 
-				.kt-inbox__title {
+				.tf-inbox__title {
 					display: block;
 
-					.kt-inbox__text {
+					.tf-inbox__text {
 						display: inline;
 					}
 				}
 			}
 
-			.kt-inbox__messages {
-				padding: 10px kt-get($kt-portlet, space, mobile);
+			.tf-inbox__messages {
+				padding: 10px tf-get($tf-portlet, space, mobile);
 
-				.kt-inbox__message {
+				.tf-inbox__message {
 					padding: 0 10px 5px 10px;
     				margin-bottom: 15px;
 
-					.kt-inbox__head {
-						.kt-media {
+					.tf-inbox__head {
+						.tf-media {
 							span {
 								width: 26px;
     							height: 26px;
 							}
 						}
 
-						.kt-inbox__info {
-							.kt-inbox__details {
-								.kt-inbox__desc {
+						.tf-inbox__info {
+							.tf-inbox__details {
+								.tf-inbox__desc {
 									display: none;
 								}
 							}
@@ -1263,75 +1263,75 @@ $kt-inbox-hover-bg: #f2f3f7;
 				}
 			}
 
-			.kt-inbox__reply {
-				padding: 10px kt-get($kt-portlet, space, mobile);
+			.tf-inbox__reply {
+				padding: 10px tf-get($tf-portlet, space, mobile);
 				overflow: auto;
 			}
 		}
 
 		// Form
-		.kt-inbox__form {
+		.tf-inbox__form {
 			min-width: 400px;
-			.kt-inbox__body {
-				.kt-inbox__to {
-					padding: 10px kt-get($kt-portlet, space, mobile);
+			.tf-inbox__body {
+				.tf-inbox__to {
+					padding: 10px tf-get($tf-portlet, space, mobile);
 				}
 
-				.kt-inbox__subject {
-					padding: 10px kt-get($kt-portlet, space, mobile);
+				.tf-inbox__subject {
+					padding: 10px tf-get($tf-portlet, space, mobile);
 				}
 
-				.kt-inbox__text {
-					padding: 10px kt-get($kt-portlet, space, mobile);
+				.tf-inbox__text {
+					padding: 10px tf-get($tf-portlet, space, mobile);
 				}
 
 				.ql-container.ql-snow  {
 					.ql-editor {
-						padding: 15px kt-get($kt-portlet, space, mobile);
+						padding: 15px tf-get($tf-portlet, space, mobile);
 
 						&.ql-blank {
 							&:before {
-								left: kt-get($kt-portlet, space, mobile);
+								left: tf-get($tf-portlet, space, mobile);
 							}
 						}
 					}
 				}
 
-				.kt-inbox__attachments {
+				.tf-inbox__attachments {
 					min-width: auto;
-					padding: 0 kt-get($kt-portlet, space, mobile);
+					padding: 0 tf-get($tf-portlet, space, mobile);
 				}
 			}
 		}
 
 		// Portlet head
-		.kt-portlet__head {
+		.tf-portlet__head {
 			min-height: 60px !important;
-			padding: 10px kt-get($kt-portlet, space, mobile);
+			padding: 10px tf-get($tf-portlet, space, mobile);
 		}
 	}
 }
 
 // Mobile mode
-@include kt-mobile {
+@include tf-mobile {
 	// Inbox
-	.kt-inbox {
+	.tf-inbox {
 		// View
-		.kt-inbox__view {
-			.kt-inbox__messages {
-				.kt-inbox__message {
-					.kt-inbox__head {
+		.tf-inbox__view {
+			.tf-inbox__messages {
+				.tf-inbox__message {
+					.tf-inbox__head {
 						flex-wrap: wrap;
 
-						.kt-media {
+						.tf-media {
 
 						}
 
-						.kt-inbox__info {
+						.tf-inbox__info {
 
 						}
 
-						.kt-inbox__actions {
+						.tf-inbox__actions {
 							flex-grow: 1;
 							justify-content: space-between;
 						}
@@ -1339,12 +1339,12 @@ $kt-inbox-hover-bg: #f2f3f7;
 				}
 			}
 
-			.kt-inbox__reply {
-				padding: 10px kt-get($kt-portlet, space, mobile);
+			.tf-inbox__reply {
+				padding: 10px tf-get($tf-portlet, space, mobile);
 			}
 		}
 	}
 }
 
 // Aside  offcanvas
-@include kt-offcanvas-build(kt-inbox__aside, tablet-and-mobile, kt-get($kt-aside-config, offcanvas) );
+@include tf-offcanvas-build(tf-inbox__aside, tablet-and-mobile, tf-get($tf-aside-config, offcanvas) );

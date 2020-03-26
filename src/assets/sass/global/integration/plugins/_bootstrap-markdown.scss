@@ -6,15 +6,15 @@
 
 
 // Base
-@mixin kt-bootstrap-markdown-base() {
+@mixin tf-bootstrap-markdown-base() {
     .md-editor {
-        @include kt-rounded {
-            border-radius: $kt-border-radius;
+        @include tf-rounded {
+            border-radius: $tf-border-radius;
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
         }
 
-        @include kt-not-rounded {
+        @include tf-not-rounded {
             border-radius: 0 !important;
         }
 
@@ -26,12 +26,12 @@
         }
 
         .md-header {
-            @include kt-rounded {
-                border-top-left-radius: $kt-border-radius;
-                border-top-right-radius: $kt-border-radius;
+            @include tf-rounded {
+                border-top-left-radius: $tf-border-radius;
+                border-top-right-radius: $tf-border-radius;
             }
 
-            @include kt-not-rounded {
+            @include tf-not-rounded {
                 border-radius: 0 !important;
             }
 
@@ -40,16 +40,16 @@
 
                 .btn {
                     background: white;
-                    border: 1px solid kt-base-color(grey, 2);
-                    color: kt-base-color(label, 2);
-                    @include kt-transition();
+                    border: 1px solid tf-base-color(grey, 2);
+                    color: tf-base-color(label, 2);
+                    @include tf-transition();
 
                     &:hover,
                     &:focus,
                     &:active,
                     &.active {
-                        @include kt-transition();
-                        color: kt-base-color(label, 3);
+                        @include tf-transition();
+                        color: tf-base-color(label, 3);
                         background: transparent;
                     }
                 }
@@ -60,7 +60,7 @@
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
 
-            @include kt-not-rounded {
+            @include tf-not-rounded {
                 border-radius: 0 !important;
             }
         }
@@ -70,7 +70,7 @@
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
 
-            @include kt-not-rounded {
+            @include tf-not-rounded {
                 border-radius: 0 !important;
             }
         }
@@ -78,7 +78,7 @@
 }
 
 // Skin
-@mixin kt-bootstrap-markdown-skin() {
+@mixin tf-bootstrap-markdown-skin() {
     .md-editor {
         border: 1px solid $input-border-color; 
 
@@ -89,16 +89,16 @@
 
         .md-footer, 
         .md-header {
-            background: kt-base-color(grey, 1);
+            background: tf-base-color(grey, 1);
         }
 
         > textarea {
-            background: kt-base-color(grey, 1);
+            background: tf-base-color(grey, 1);
         }
 
         &.active {
             > textarea {
-                background: kt-base-color(grey, 1);
+                background: tf-base-color(grey, 1);
             }
         }
     }
@@ -106,19 +106,19 @@
     // Validation
     .is-valid {
         .md-editor {
-            border-color: kt-state-color(success, base);
+            border-color: tf-state-color(success, base);
         }
     }
 
     .is-invalid {
         .md-editor {
-            border-color: kt-state-color(danger, base);
+            border-color: tf-state-color(danger, base);
         }
     }
 }
 
-@mixin kt-bootstrap-markdown-validation-state($state, $color) {
-    .kt-form.kt-form--state .has-#{$state} {
+@mixin tf-bootstrap-markdown-validation-state($state, $color) {
+    .tf-form.tf-form--state .has-#{$state} {
         .md-editor {
             border: 1px solid $color; 
         }
@@ -127,7 +127,7 @@
 
 
 // Base
-@include kt-bootstrap-markdown-base();
+@include tf-bootstrap-markdown-base();
 
 // Skin
-@include kt-bootstrap-markdown-skin();
+@include tf-bootstrap-markdown-skin();

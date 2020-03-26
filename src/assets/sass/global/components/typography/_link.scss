@@ -5,7 +5,7 @@
 
 
 
-.kt-link {
+.tf-link {
     text-decoration: none;
   	position: relative;
   	display: inline-block;
@@ -29,11 +29,11 @@
     	}
     }
 
-    @include kt-link-color(kt-get($kt-font-color, link, default), kt-get($kt-font-color, link, hover));
+    @include tf-link-color(tf-get($tf-font-color, link, default), tf-get($tf-font-color, link, hover));
 
-    @each $name, $color in $kt-state-colors {
-        &.kt-link--#{$name} {
-            @include kt-link-color(kt-get($color, base), darken(kt-get($color, base), 10%));
+    @each $name, $color in $tf-state-colors {
+        &.tf-link--#{$name} {
+            @include tf-link-color(tf-get($color, base), darken(tf-get($color, base), 10%));
         }
     }
 }

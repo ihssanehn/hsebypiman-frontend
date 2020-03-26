@@ -13,8 +13,8 @@ export interface HeaderOptions {
  * Configure Header
  */
 @Directive({
-	selector: '[ktHeader]',
-	exportAs: 'ktHeader',
+	selector: '[tfHeader]',
+	exportAs: 'tfHeader',
 })
 export class HeaderDirective implements AfterViewInit {
 	@Input() options: HeaderOptions = {};
@@ -53,10 +53,10 @@ export class HeaderDirective implements AfterViewInit {
 		if (this.el.nativeElement.getAttribute('data-ktheader-minimize') == '1') {
 			objectPath.set(this.options, 'minimize', {
 				desktop: {
-					on: 'kt-header--minimize'
+					on: 'tf-header--minimize'
 				},
 				mobile: {
-					on: 'kt-header--minimize'
+					on: 'tf-header--minimize'
 				}
 			});
 			objectPath.set(this.options, 'offset', {

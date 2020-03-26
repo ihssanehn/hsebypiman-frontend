@@ -14,7 +14,7 @@ interface LanguageFlag {
 }
 
 @Component({
-	selector: 'kt-language-selector',
+	selector: 'tf-language-selector',
 	templateUrl: './language-selector.component.html',
 })
 export class LanguageSelectorComponent implements OnInit {

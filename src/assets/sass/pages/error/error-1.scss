@@ -11,38 +11,38 @@
 // Layout config
 @import "../../global/layout/config.scss";
 
-.kt-error-v1 {
+.tf-error-v1 {
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
 
-    .kt-error-v1__container {
-        .kt-error-v1__number {
+    .tf-error-v1__container {
+        .tf-error-v1__number {
             font-size: 150px;
             margin-left: 80px;
             margin-top: 9rem;
             font-weight: 700;
-            color: kt-base-color(label, 3);
+            color: tf-base-color(label, 3);
         }
 
-        .kt-error-v1__desc {
+        .tf-error-v1__desc {
             font-size:  1.5rem;
             margin-left: 80px;
-            color: kt-base-color(label, 2);
+            color: tf-base-color(label, 2);
         }
     }
 }
 
-@include kt-mobile() {
-    .kt-error-v1 {
-        .kt-error-v1__container {
-            .kt-error-v1__number {
+@include tf-mobile() {
+    .tf-error-v1 {
+        .tf-error-v1__container {
+            .tf-error-v1__number {
                 margin: 120px 0 0 3rem;
                 font-size: 8rem;
             }
 
-            .kt-error-v1__desc {
+            .tf-error-v1__desc {
                 margin-left: 3rem;
                 padding-right: 0.5rem;
             }

@@ -20,9 +20,9 @@ body {
     margin: 0px;
     padding: 0px;
 
-    font-size: kt-get($kt-font-size, size, desktop);
-    font-weight: kt-get($kt-font-size, weight);
-    font-family: #{kt-get($kt-font-families, regular)};
+    font-size: tf-get($tf-font-size, size, desktop);
+    font-weight: tf-get($tf-font-size, weight);
+    font-family: #{tf-get($tf-font-families, regular)};
 
     -ms-text-size-adjust: 100%; // 2
     -webkit-font-smoothing: antialiased;
@@ -43,7 +43,7 @@ body {
 body {
     display: flex;
     flex-direction: column;
-    color: kt-get($kt-font-color, text);
+    color: tf-get($tf-font-color, text);
 }
 
 // Angular integration
@@ -89,16 +89,16 @@ canvas {
 /* set button(top and bottom of the scrollbar) */
 ::-webkit-scrollbar-button {display:none}
 
-@include kt-tablet {
+@include tf-tablet {
     html,
     body {
-        font-size: kt-get($kt-font-size, size, tablet);
+        font-size: tf-get($tf-font-size, size, tablet);
     }
 }
 
-@include kt-mobile {
+@include tf-mobile {
     html,
     body {
-        font-size: kt-get($kt-font-size, size, mobile);
+        font-size: tf-get($tf-font-size, size, mobile);
     }
 }

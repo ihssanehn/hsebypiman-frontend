@@ -17,7 +17,7 @@ import { select, Store } from '@ngrx/store';
 import { AppState } from '../../../core/reducers';
 
 @Component({
-	selector: 'kt-base',
+	selector: 'tf-base',
 	templateUrl: './base.component.html',
 	styleUrls: ['./base.component.scss'],
 	encapsulation: ViewEncapsulation.None

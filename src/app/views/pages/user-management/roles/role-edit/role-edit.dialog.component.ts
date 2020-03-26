@@ -24,7 +24,7 @@ import {
 import { delay } from 'rxjs/operators';
 
 @Component({
-	selector: 'kt-role-edit-dialog',
+	selector: 'tf-role-edit-dialog',
 	templateUrl: './role-edit.dialog.component.html',
 	changeDetection: ChangeDetectionStrategy.Default,
 })

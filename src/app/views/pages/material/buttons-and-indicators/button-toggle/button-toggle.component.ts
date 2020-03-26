@@ -76,7 +76,7 @@ export class ButtonToggleExclusiveExample {}`,
 };
 
 @Component({
-	selector: 'kt-button-toggle',
+	selector: 'tf-button-toggle',
 	templateUrl: './button-toggle.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	styles: [`

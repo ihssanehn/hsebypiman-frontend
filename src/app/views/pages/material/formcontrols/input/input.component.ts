@@ -431,7 +431,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 }
 
 @Component({
-	selector: 'kt-input',
+	selector: 'tf-input',
 	templateUrl: './input.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	styles: [`

@@ -10,8 +10,8 @@ import { WikipediaService } from './wikipedia.service';
 const simpleTypeahead = {
 	beforeCodeTitle: 'Simple Typeahead',
 	htmlCode: `
-<div class="kt-section">
-<div class="kt-section__sub">
+<div class="tf-section">
+<div class="tf-section__sub">
 A typeahead example that gets values from a static
 <code>string[]</code>
 <ul>
@@ -22,14 +22,14 @@ A typeahead example that gets values from a static
   <li>limits to 10 results</li>
 </ul>
 </div>
-<div class="kt-section__content">
+<div class="tf-section__content">
 <label for="typeahead-basic">Search for a state:</label>
 <input id="typeahead-basic" type="text" class="form-control" [(ngModel)]="model" [ngbTypeahead]="search" />
 </div>
 </div>
-<div class="kt-separator kt-separator--dashed"></div>
-<div class="kt-section">
-<div class="kt-section__sub">
+<div class="tf-separator tf-separator--dashed"></div>
+<div class="tf-section">
+<div class="tf-section__sub">
 <pre>Model: {{ model | json }}</pre>
 </div>
 </div>
@@ -71,8 +71,8 @@ public model: any;\n
 const openOnFocus = {
 	beforeCodeTitle: 'Open on focus',
 	htmlCode: `
-<div class="kt-section">
-<div class="kt-section__sub">
+<div class="tf-section">
+<div class="tf-section__sub">
 It is possible to get the focus events with the current input value to emit results on focus with a great flexibility.
 In this simple example, a search is done no matter the content of the input:
 <ul>
@@ -81,16 +81,16 @@ In this simple example, a search is done no matter the content of the input:
   <li>it will limit the display to 10 results in all cases</li>
 </ul>
 </div>
-<div class="kt-section__content">
+<div class="tf-section__content">
 <label for="typeahead-focus">Search for a state:</label>
 <input id="typeahead-focus" type="text" class="form-control" [(ngModel)]="model" [ngbTypeahead]="search"
   (focus)="focus$.next($event.target.value)" (click)="click$.next($event.target.value)" #instance="ngbTypeahead" />
 </div>
 </div>
 
-<div class="kt-separator kt-separator--dashed"></div>
-<div class="kt-section">
-<div class="kt-section__sub">
+<div class="tf-separator tf-separator--dashed"></div>
+<div class="tf-section">
+<div class="tf-section__sub">
 <pre>Model: {{ model | json }}</pre>
 </div>
 </div>
@@ -142,19 +142,19 @@ search = (text$: Observable<string>) => {
 const formattedResults = {
 	beforeCodeTitle: 'Formatted results',
 	htmlCode: `
-<div class="kt-section">
-<div class="kt-section__sub">
+<div class="tf-section">
+<div class="tf-section__sub">
 A typeahead example that uses a formatter function for string results
 </div>
-<div class="kt-section__content">
+<div class="tf-section__content">
 <label for="typeahead-format">Search for a state:</label>
 <input id="typeahead-format" type="text" class="form-control" [(ngModel)]="model" [ngbTypeahead]="search"
   [resultFormatter]="formatter" />
 </div>
 </div>
-<div class="kt-separator kt-separator--dashed"></div>
-<div class="kt-section">
-<div class="kt-section__sub">
+<div class="tf-separator tf-separator--dashed"></div>
+<div class="tf-section">
+<div class="tf-section__sub">
 <pre>Model: {{ model | json }}</pre>
 </div>
 </div>
@@ -198,8 +198,8 @@ export class NgbdTypeaheadFormat {
 const wikipediaSearch = {
 	beforeCodeTitle: 'Wikipedia search',
 	htmlCode: `
-<div class="kt-section">
-  <div class="kt-section__sub">
+<div class="tf-section">
+  <div class="tf-section__sub">
     A typeahead example that gets values from the
     <code>WikipediaService</code>
     <ul>
@@ -211,7 +211,7 @@ const wikipediaSearch = {
       <li><code>catch</code> operator to display an error message in case of connectivity issue</li>
     </ul>
   </div>
-  <div class="kt-section__content">
+  <div class="tf-section__content">
     <div class="form-group">
       <label for="typeahead-http">Search for a wiki page:</label>
       <input id="typeahead-http" type="text" class="form-control" [class.is-invalid]="searchFailed" [(ngModel)]="model"
@@ -221,9 +221,9 @@ const wikipediaSearch = {
     </div>
   </div>
 </div>
-<div class="kt-separator kt-separator--dashed"></div>
-<div class="kt-section">
-  <div class="kt-section__sub">
+<div class="tf-separator tf-separator--dashed"></div>
+<div class="tf-section">
+  <div class="tf-section__sub">
     <pre>Model: {{ model | json }}</pre>
   </div>
 </div>
@@ -296,11 +296,11 @@ export class NgbdTypeaheadHttp {
 const templateForResults = {
 	beforeCodeTitle: 'Template for results',
 	htmlCode: `
-<div class="kt-section">
-  <div class="kt-section__sub">
+<div class="tf-section">
+  <div class="tf-section__sub">
     A typeahead example that uses custom template for results display and uses object as a model
   </div>
-  <div class="kt-section__content">
+  <div class="tf-section__content">
     <ng-template #rt let-r="result" let-t="term">
       <img [src]="'https://upload.wikimedia.org/wikipedia/commons/thumb/' + r['flag']" width="16"> {{ r.name}}
     </ng-template>
@@ -309,9 +309,9 @@ const templateForResults = {
       [ngbTypeahead]="search" [resultTemplate]="rt" [inputFormatter]="formatter" />
   </div>
 </div>
-<div class="kt-separator kt-separator--dashed"></div>
-<div class="kt-section">
-  <div class="kt-section__sub">
+<div class="tf-separator tf-separator--dashed"></div>
+<div class="tf-section">
+  <div class="tf-section__sub">
     <pre>Model: {{ model | json }}</pre>
   </div>
 </div>
@@ -400,11 +400,11 @@ export class NgbdTypeaheadTemplate {
 const globalConfigurationOfTypeaheads = {
 	beforeCodeTitle: 'Global configuration of progress typeaheads',
 	htmlCode: `
-<div class="kt-section">
-  <div class="kt-section__sub">
+<div class="tf-section">
+  <div class="tf-section__sub">
     This typeahead shows a hint when the input matches because the default values have been customized.
   </div>
-  <div class="kt-section__content">
+  <div class="tf-section__content">
     <label for="typeahead-config">Search for a state:</label>
     <input id="typeahead-config" type="text" class="form-control" [(ngModel)]="model" [ngbTypeahead]="search" />
   </div>
@@ -515,7 +515,7 @@ const states = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'C
 	'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
 
 @Component({
-	selector: 'kt-typehead',
+	selector: 'tf-typehead',
 	templateUrl: './typehead.component.html',
 	styles: [`.form-control { width: 300px; }`],
 	changeDetection: ChangeDetectionStrategy.OnPush,

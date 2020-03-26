@@ -4,7 +4,7 @@ import {Component} from '@angular/core';
 import {LayoutConfigService, OffcanvasOptions} from '../../../../core/_base/layout';
 
 @Component({
-	selector: 'kt-sticky-toolbar',
+	selector: 'tf-sticky-toolbar',
 	templateUrl: './sticky-toolbar.component.html',
 	styleUrls: ['./sticky-toolbar.component.scss'],
 })
@@ -12,9 +12,9 @@ export class StickyToolbarComponent {
 	// Public properties
 	demoPanelOptions: OffcanvasOptions = {
 		overlay: true,
-		baseClass: 'kt-demo-panel',
-		closeBy: 'kt_demo_panel_close',
-		toggleBy: 'kt_demo_panel_toggle',
+		baseClass: 'tf-demo-panel',
+		closeBy: 'tf_demo_panel_close',
+		toggleBy: 'tf_demo_panel_toggle',
 	};
 
 	baseHref: string;

@@ -179,7 +179,7 @@ export class NgbdCarouselConfig implements OnInit {
 };
 
 @Component({
-	selector: 'kt-carousel',
+	selector: 'tf-carousel',
 	templateUrl: './carousel.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	providers: [ NgbCarouselConfig ]  // add NgbCarouselConfig to the component providers

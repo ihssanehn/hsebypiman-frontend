@@ -20,8 +20,8 @@ export interface SparklineChartOptions {
  * Configure sparkline chart
  */
 @Directive({
-	selector: '[ktSparklineChart]',
-	exportAs: 'ktSparklineChart'
+	selector: '[tfSparklineChart]',
+	exportAs: 'tfSparklineChart'
 })
 export class SparklineChartDirective implements AfterViewInit {
 	// Public properties

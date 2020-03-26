@@ -42,7 +42,7 @@ export class BottomSheetOverviewExampleSheet {
 
 
 @Component({
-	selector: 'kt-bottom-sheet',
+	selector: 'tf-bottom-sheet',
 	templateUrl: './bottom-sheet.component.html'
 })
 export class BottomSheetComponent implements OnInit {

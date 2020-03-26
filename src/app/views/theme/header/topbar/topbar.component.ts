@@ -2,7 +2,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-	selector: 'kt-topbar',
+	selector: 'tf-topbar',
 	templateUrl: './topbar.component.html',
 	styleUrls: ['./topbar.component.scss'],
 })

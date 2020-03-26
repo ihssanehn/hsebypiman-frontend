@@ -23,7 +23,7 @@
 
 	tr.table-active {
 		td, th {
-			color: kt-state-color(primary, inverse);
+			color: tf-state-color(primary, inverse);
 		}
 	}
 
@@ -38,7 +38,7 @@
 	&.table-head-solid {
 		thead {
 			th, td {
-				background-color: kt-base-color(grey, 1);
+				background-color: tf-base-color(grey, 1);
 			}
 		}
 	}
@@ -49,28 +49,28 @@
 			color: #9392a0;
 
 			&:nth-child(even){
-				background-color: kt-base-color(grey,1);	
+				background-color: tf-base-color(grey,1);	
 			}	
 
 			td.table-row-title{
-				color: kt-base-color(label, 4);
+				color: tf-base-color(label, 4);
 			}
 		}
 
 		thead{
 			tr{
-				background-color: rgba(kt-state-color(brand, base), 0.15);
-				color: kt-state-color(brand, base);
+				background-color: rgba(tf-state-color(brand, base), 0.15);
+				color: tf-state-color(brand, base);
 			}
 		}
 
-		@each $name, $color in $kt-state-colors{
+		@each $name, $color in $tf-state-colors{
 
 			&--#{$name}{
 				thead{
 					tr{
-						color: kt-state-color(#{$name}, base);
-						background-color: rgba(kt-state-color(#{$name}, base), 0.15);
+						color: tf-state-color(#{$name}, base);
+						background-color: rgba(tf-state-color(#{$name}, base), 0.15);
 					}
 				}
 			}

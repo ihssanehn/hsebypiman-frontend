@@ -5,8 +5,8 @@
 
 
 
-@mixin kt-burger-icon-build($class, $config) {
-	$space: kt-get($config, thickness) + kt-get($config, space);
+@mixin tf-burger-icon-build($class, $config) {
+	$space: tf-get($config, thickness) + tf-get($config, space);
 
 	.#{$class} {
 		display: inline-block;
@@ -23,23 +23,23 @@
 	    cursor: pointer;
 	    background: none;
 	    outline: none !important;	    
-	  	width: kt-get($config, width);
-	  	height: kt-get($config, height);
-	    transition: all kt-get($config, transition-duration) ease;
+	  	width: tf-get($config, width);
+	  	height: tf-get($config, height);
+	    transition: all tf-get($config, transition-duration) ease;
 		
 		span {
 	  		display: block;
 	  		position: absolute;
-	  		top: (kt-get($config, height) / 2) - (kt-get($config, thickness)) + 1px;
-	  		height: kt-get($config, thickness);
-	  		min-height: kt-get($config, thickness);
+	  		top: (tf-get($config, height) / 2) - (tf-get($config, thickness)) + 1px;
+	  		height: tf-get($config, thickness);
+	  		min-height: tf-get($config, thickness);
 	  		width: 100%;
 	  		
-	  		@include kt-rounded {
-	  			border-radius: kt-get($config, radius);
+	  		@include tf-rounded {
+	  			border-radius: tf-get($config, radius);
 	  		}
 
-	  		transition: all kt-get($config, transition-duration) ease;
+	  		transition: all tf-get($config, transition-duration) ease;
 
 	  		&::before,
 	  		&::after {
@@ -47,15 +47,15 @@
 			  	display: block;
 			  	left: 0;
 			  	width: 100%;
-			  	height: kt-get($config, thickness);
-			  	min-height: kt-get($config, thickness);
+			  	height: tf-get($config, thickness);
+			  	min-height: tf-get($config, thickness);
 			  	content: "";
 
-			  	@include kt-rounded {
-			  		border-radius: kt-get($config, radius);
+			  	@include tf-rounded {
+			  		border-radius: tf-get($config, radius);
 			  	}
 
-			  	transition: all kt-get($config, transition-duration) ease;
+			  	transition: all tf-get($config, transition-duration) ease;
 	  		}
 
 	  		&::before {
@@ -71,14 +71,14 @@
 	    &.#{$class}--left {
 	    	span {
 	    		&:before {
-	    			transition: all kt-get($config, transition-duration) ease;
+	    			transition: all tf-get($config, transition-duration) ease;
 	    			left: auto;
 	    			right: 0px;
 	    			width: 50%;
 	    		}
 
 	    		&:after {
-	    			transition: all kt-get($config, transition-duration) ease;
+	    			transition: all tf-get($config, transition-duration) ease;
 	    			left: auto;
 	    			right: 0px;
 	    			width: 75%;
@@ -91,7 +91,7 @@
 		    		&:after, 
 		    		&:before {
 		    			width: 100%;
-		    			transition: all kt-get($config, transition-duration) ease;
+		    			transition: all tf-get($config, transition-duration) ease;
 		    		}
 		    	}
 	    	}
@@ -100,14 +100,14 @@
 		    &.#{$class}--active {
 		    	span {
 		    		&:before {
-		    			transition: all kt-get($config, transition-duration) ease;
+		    			transition: all tf-get($config, transition-duration) ease;
 		    			left: 0px;
 		    			right: auto;
 		    			width: 50%;
 		    		}
 
 		    		&:after {
-		    			transition: all kt-get($config, transition-duration) ease;
+		    			transition: all tf-get($config, transition-duration) ease;
 		    			left: 0px;
 		    			right: auto;
 		    			width: 75%;
@@ -123,14 +123,14 @@
 		    		left: 0px;
 		    		right: auto;
 		    		width: 50%;
-		    		transition: width kt-get($config, transition-duration) ease;
+		    		transition: width tf-get($config, transition-duration) ease;
 		    	}
 
 		    	&:after {
 		    		left: 0px;
 		    		right: auto;
 		    		width: 75%;
-		    		transition: width kt-get($config, transition-duration) ease;
+		    		transition: width tf-get($config, transition-duration) ease;
 		    	}
 		    }
 
@@ -140,7 +140,7 @@
 		    		&:after, 
 		    		&:before {
 		    			width: 100%;
-		    			transition: width kt-get($config, transition-duration) ease;
+		    			transition: width tf-get($config, transition-duration) ease;
 		    		}
 		    	}
 	    	}
@@ -152,14 +152,14 @@
 		    			left: auto;
 	    				right: 0px;
 		    			width: 50%;
-		    			transition: width kt-get($config, transition-duration) ease;
+		    			transition: width tf-get($config, transition-duration) ease;
 		    		}
 
 		    		&:after {
 		    			left: auto;
 	    				right: 0px;
 		    			width: 75%;
-		    			transition: width kt-get($config, transition-duration) ease;
+		    			transition: width tf-get($config, transition-duration) ease;
 		    		}
 		    	}
 		    }
@@ -167,36 +167,36 @@
 	}
 }
 
-@mixin kt-burger-icon-skin($class, $config) {
+@mixin tf-burger-icon-skin($class, $config) {
 	.#{$class} {
 		span {
-	 		background: kt-get($config, default);
+	 		background: tf-get($config, default);
 
 	  		&::before,
 	  		&::after {
-			  	background: kt-get($config, default);
+			  	background: tf-get($config, default);
 	  		}
 		}
 
 	    //active & hover state 
 	    &:hover {	   
 	    	span { 	
-		    	background: kt-get($config, hover);
+		    	background: tf-get($config, hover);
 
 		    	&::before,
 		  		&::after {
-		  			background: kt-get($config, hover);
+		  			background: tf-get($config, hover);
 		  		}
 		  	}
 	    }
 
 	    &.#{$class}--active {
 	    	span { 	
-		    	background: kt-get($config, active);
+		    	background: tf-get($config, active);
 
 		    	&::before,
 		  		&::after {
-		  			background: kt-get($config, active);
+		  			background: tf-get($config, active);
 		  		}
 		  	}
 	    }

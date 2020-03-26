@@ -12,8 +12,8 @@ export interface OffcanvasOptions {
  * Setup off Convas
  */
 @Directive({
-	selector: '[ktOffcanvas]',
-	exportAs: 'ktOffcanvas',
+	selector: '[tfOffcanvas]',
+	exportAs: 'tfOffcanvas',
 })
 export class OffcanvasDirective implements AfterViewInit {
 	// Public properties

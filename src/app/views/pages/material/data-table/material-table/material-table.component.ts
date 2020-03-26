@@ -894,7 +894,7 @@ function createNewUser(id: number): UserData {
 }
 
 @Component({
-	selector: 'kt-material-table',
+	selector: 'tf-material-table',
 	templateUrl: './material-table.component.html',
 	changeDetection: ChangeDetectionStrategy.Default,
 	styles: [`

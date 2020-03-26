@@ -101,7 +101,7 @@ export class ToolbarMultiExample {}
 	isExampleExpanded: true
 };
 @Component({
-	selector: 'kt-toolbar',
+	selector: 'tf-toolbar',
 	templateUrl: './toolbar.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	styles: [`

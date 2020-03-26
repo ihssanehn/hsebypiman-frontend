@@ -4,49 +4,49 @@
 
 
 
-$kt-head-skin-light-bg-color: #f9fafe;
+$tf-head-skin-light-bg-color: #f9fafe;
 
-.kt-head {
+.tf-head {
 	padding: 2.5rem 1rem;
 	margin: 0;
 	background-size: cover;
 	background-repeat: no-repeat;
 
     // Modifiers
-    &.kt-head--space-sm {
+    &.tf-head--space-sm {
         padding: 1.5rem 1rem;
     }
 
-    &.kt-head--space-lg {
+    &.tf-head--space-lg {
         padding: 3rem 1rem;
     }
 
-    &.kt-head--fit-x {
+    &.tf-head--fit-x {
         padding-left: 0;
         padding-right: 0;
     }
 
-    &.kt-head--fit-b {
+    &.tf-head--fit-b {
         padding-bottom: 0 !important;
     }
 
-    &.kt-head--fit-t {
+    &.tf-head--fit-t {
         padding-top: 0 !important;
     }
 
-    &.kt-head--space-bottom-sm {
+    &.tf-head--space-bottom-sm {
         padding-bottom: 1rem;
     }
 
     // Elements
-    .kt-head__title {
+    .tf-head__title {
         font-size: 1.3rem;
         font-weight: 500;
         text-align: center;
         margin: 0;
     }
 
-    .kt-head__sub {
+    .tf-head__sub {
     	margin-top: 0.5rem;
     	font-size: 1rem;
         font-weight: 400;
@@ -54,12 +54,12 @@ $kt-head-skin-light-bg-color: #f9fafe;
     }
 
     // Skins
-    &.kt-head--skin-dark {
-    	.kt-head__title {
+    &.tf-head--skin-dark {
+    	.tf-head__title {
     		color: #fff;
     	}
 
-    	.kt-head__sub {
+    	.tf-head__sub {
     		color: darken(#fff, 6%);
     	}
 
@@ -87,15 +87,15 @@ $kt-head-skin-light-bg-color: #f9fafe;
         }
     }	
 
-    &.kt-head--skin-light {
-        background-color: $kt-head-skin-light-bg-color;
+    &.tf-head--skin-light {
+        background-color: $tf-head-skin-light-bg-color;
 
-    	.kt-head__title {
-    		color: kt-base-color(label, 3);
+    	.tf-head__title {
+    		color: tf-base-color(label, 3);
     	}
 
-    	.kt-head__sub {
-    		color: kt-base-color(label, 2);
+    	.tf-head__sub {
+    		color: tf-base-color(label, 2);
     	}
     }
 
@@ -106,15 +106,15 @@ $kt-head-skin-light-bg-color: #f9fafe;
 }
 
 .dropdown-menu:not(.dropdown-menu-top-unround) {
-    .kt-head {
-        @include kt-rounded {
-            border-top-left-radius: $kt-border-radius;
-            border-top-right-radius: $kt-border-radius;
+    .tf-head {
+        @include tf-rounded {
+            border-top-left-radius: $tf-border-radius;
+            border-top-right-radius: $tf-border-radius;
         }
     }
 }
 
 // Util classes
-.kt-head-skin-light-bg-color {
-    background-color: $kt-head-skin-light-bg-color;
+.tf-head-skin-light-bg-color {
+    background-color: $tf-head-skin-light-bg-color;
 }

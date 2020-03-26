@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
-	selector: 'kt-notification',
+	selector: 'tf-notification',
 	templateUrl: './notification.component.html',
 	styleUrls: ['notification.component.scss']
 })

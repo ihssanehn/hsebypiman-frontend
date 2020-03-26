@@ -1,18 +1,18 @@
-<kt-notice [icon]="'flaticon-warning kt-font-primary'">
+<tf-notice [icon]="'flaticon-warning tf-font-primary'">
 	For more info please check the components's official demos & documentation 
-	<a class="kt-link" href="https://material.angular.io/components/sort/overview" target="_blank">demos & documentation</a>
-</kt-notice>
+	<a class="tf-link" href="https://material.angular.io/components/sort/overview" target="_blank">demos & documentation</a>
+</tf-notice>
 
 
-<kt-material-preview [viewItem]="exampleBasic">
-	<div class="kt-section">
-		<p class="kt-section__sub">
+<tf-material-preview [viewItem]="exampleBasic">
+	<div class="tf-section">
+		<p class="tf-section__sub">
 			The
 			<mark>matSort</mark> and
 			<mark>mat-sort-header</mark> are used, respectively, to add sorting state and display to tabular data.
 		</p>
-		<div class="kt-separator kt-separator--dashed"></div>
-		<div class="kt-section__content">
+		<div class="tf-separator tf-separator--dashed"></div>
+		<div class="tf-section__content">
 			<table  #sort1="matSort" (matSortChange)="sortData($event)" matSort>
 				<tr>
 					<th mat-sort-header="name">Dessert (100g)</th>
@@ -33,11 +33,11 @@
 
 		</div>
 	</div>
-</kt-material-preview>
+</tf-material-preview>
 
-<kt-material-preview [viewItem]="exampleConfig">
-	<div class="kt-section">
-		<div class="kt-section__content">
+<tf-material-preview [viewItem]="exampleConfig">
+	<div class="tf-section">
+		<div class="tf-section__content">
 
 			<div class="example-container mat-elevation-z8">
 				<mat-table #table [dataSource]="dataSource" #sort2="matSort" matSort>
@@ -74,4 +74,4 @@
 
 		</div>
 	</div>
-</kt-material-preview>
+</tf-material-preview>

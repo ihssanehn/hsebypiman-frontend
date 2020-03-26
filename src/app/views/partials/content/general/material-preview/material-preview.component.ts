@@ -2,7 +2,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-	selector: 'kt-material-preview',
+	selector: 'tf-material-preview',
 	templateUrl: './material-preview.component.html',
 	styleUrls: ['./material-preview.component.scss'],
 })

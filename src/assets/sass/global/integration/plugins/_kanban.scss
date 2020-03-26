@@ -13,72 +13,72 @@
 
 	.kanban-board {
 		width: calc(20% - 1.25rem) !important;
-		border-radius: $kt-border-radius;
+		border-radius: $tf-border-radius;
 		margin-bottom: 1.25rem;
 		margin-right: 1.25rem !important;
-		background-color: kt-base-color(grey, 1);
+		background-color: tf-base-color(grey, 1);
 
 		.kanban-title-board {
 			font-weight: 600;
 			font-size: 1.2rem;
 		}
 
-		@each $name, $color in $kt-state-colors{
+		@each $name, $color in $tf-state-colors{
 			.#{$name}{
-				background-color: kt-state-color(#{$name}, base);
-				color: kt-state-color(#{$name}, inverse);
+				background-color: tf-state-color(#{$name}, base);
+				color: tf-state-color(#{$name}, inverse);
 			}
 
 			.#{$name}-light{
-				background-color: rgba(kt-state-color(#{$name}, base), 0.1);
-				color: kt-state-color(#{$name}, base);
+				background-color: rgba(tf-state-color(#{$name}, base), 0.1);
+				color: tf-state-color(#{$name}, base);
 			}
 		}
 
-		@include kt-minimal-desktop-and-below{
+		@include tf-minimal-desktop-and-below{
 			width: calc(33% - 1.25rem) !important;
 		}
 
-		@include kt-tablet-and-mobile{
+		@include tf-tablet-and-mobile{
 			width: calc(50% - 1.25rem) !important;
 		}
 
-		@include kt-mobile{
+		@include tf-mobile{
 			width: 100% !important;
 			margin-right: 0 !important;
 		}
 	}
 
 	.kanban-board-header{
-		border-top-left-radius: $kt-border-radius;
-		border-top-right-radius: $kt-border-radius;
+		border-top-left-radius: $tf-border-radius;
+		border-top-right-radius: $tf-border-radius;
 	}
 
 	.kanban-item {
-		border-radius: $kt-border-radius;
+		border-radius: $tf-border-radius;
 		font-weight: 500;
 		box-shadow: 0px 0px 13px 0px rgba(#000, 0.05);
 
-		@each $name, $color in $kt-state-colors{
+		@each $name, $color in $tf-state-colors{
 			&[data-class="#{$name}"]{
-				background-color: rgba(kt-state-color(#{$name}, base), 0.1);
-				color: kt-state-color(#{$name}, base);
+				background-color: rgba(tf-state-color(#{$name}, base), 0.1);
+				color: tf-state-color(#{$name}, base);
 				box-shadow: none;
 			}
 		}
 	}
 }
 
-.kt-kanban__badge{
+.tf-kanban__badge{
 	display: flex;
 	align-content: center;
 
-	.kt-kanban__title{
+	.tf-kanban__title{
 		font-weight: 500;
 		margin-bottom: 0.5rem;
 	}
 
-	.kt-kanban__image{
+	.tf-kanban__image{
 		margin-right: 1.25rem;
 		flex: 0 0 50px;
 	}

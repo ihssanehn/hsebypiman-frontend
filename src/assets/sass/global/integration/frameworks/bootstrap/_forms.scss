@@ -87,7 +87,7 @@
 
 // Input Group
 .input-group {
-	@include kt-icons-size((lineawesome: 1.4rem, fontawesome: 1.2rem, flaticon: 1.2rem));
+	@include tf-icons-size((lineawesome: 1.4rem, fontawesome: 1.2rem, flaticon: 1.2rem));
 
 	i {
 		color: $input-group-icon-color;

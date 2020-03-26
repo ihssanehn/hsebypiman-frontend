@@ -14,14 +14,14 @@
     padding: 20px;
 	text-align: center;
 	cursor: pointer;
-    border: 2px dashed kt-base-color(grey, 2);
+    border: 2px dashed tf-base-color(grey, 2);
 
-    @include kt-rounded {
-		border-radius: $kt-border-radius;
+    @include tf-rounded {
+		border-radius: $tf-border-radius;
 	}
 
     .dropzone-msg-title {
-		color: kt-base-color(label, 3);
+		color: tf-base-color(label, 3);
 		margin: 0 0 5px 0;
 		padding: 0;
 		font-weight: 500;
@@ -29,23 +29,23 @@
 	}
 
     .dropzone-msg-desc {
-        color: kt-base-color(label, 2);
+        color: tf-base-color(label, 2);
         font-weight: 400;
 		font-size: 1rem;
 	}
 
     .dz-preview {
 		.dz-image {
-			@include kt-rounded {
-				border-radius: $kt-border-radius;
+			@include tf-rounded {
+				border-radius: $tf-border-radius;
 			}
 		}
     }
 
 	// State colors
-	@each $name, $color in $kt-state-colors {
+	@each $name, $color in $tf-state-colors {
 		&.dropzone-#{$name} {
-			border-color: kt-get($color, base);
+			border-color: tf-get($color, base);
 		}
 	}
 }
@@ -71,8 +71,8 @@
         align-items: center;
         margin-top: 0.75rem;
 
-        @include kt-rounded {
-            border-radius: $kt-border-radius;
+        @include tf-rounded {
+            border-radius: $tf-border-radius;
             padding: 0.5rem 1rem;
             background-color: darken(#f8f9fc, 1%);
         }
@@ -83,14 +83,14 @@
             .dropzone-filename {
                 font-size: 0.9rem;
                 font-weight: 500;
-                color: kt-base-color(label, 3);
+                color: tf-base-color(label, 3);
                 text-overflow: ellipsis;
                 margin-right: 0.5rem;
 
                 b {
                     font-size: 0.9rem;
                     font-weight: 500;
-                    color: kt-base-color(label, 1);
+                    color: tf-base-color(label, 1);
                 }
             }
 
@@ -98,7 +98,7 @@
                 margin-top: 0.25rem;
                 font-size: 0.9rem;
                 font-weight: 400;
-                color: kt-state-color(danger);
+                color: tf-state-color(danger);
                 text-overflow: ellipsis;
             }
         }
@@ -129,12 +129,12 @@
 
                 i {
                     font-size: 0.8rem;
-                    color: kt-base-color(label, 1);
+                    color: tf-base-color(label, 1);
                 }
 
                 &:hover {
                     i {
-                        color: kt-brand-color();
+                        color: tf-brand-color();
                     }
                 }
             }

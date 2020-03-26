@@ -5,17 +5,17 @@
 
 
 
-.kt-demo-icon  {
+.tf-demo-icon  {
     margin-bottom: 20px; 
     display: flex;
     align-items: center;
     padding: 20px;
 
-    @include kt-rounded {
-        border-radius: $kt-border-radius;
+    @include tf-rounded {
+        border-radius: $tf-border-radius;
     }
 
-    .kt-demo-icon__preview {
+    .tf-demo-icon__preview {
         display: flex;
         padding-right: 20px;
         flex: 0 0 40px;  
@@ -27,8 +27,8 @@
         }
     }
 
-    .kt-demo-icon__class {
-        color: kt-base-color(label, 2);
+    .tf-demo-icon__class {
+        color: tf-base-color(label, 2);
         display: flex;
         flex-grow: 1;
         padding: 0;
@@ -37,10 +37,10 @@
     }
 
     &:hover {
-        background-color: kt-base-color(grey, 1);
+        background-color: tf-base-color(grey, 1);
     }
 
-    &.kt-demo-icon--overlay {
+    &.tf-demo-icon--overlay {
         position: relative;
 
         svg {
@@ -48,7 +48,7 @@
             width: 40px;
         }
 
-        .kt-demo-icon__overlay {
+        .tf-demo-icon__overlay {
             position: absolute;
             top: 0;
             bottom: 0;
@@ -73,7 +73,7 @@
         &:hover {
             background-color: transparent;
 
-            .kt-demo-icon__overlay {
+            .tf-demo-icon__overlay {
                 transition: all 0.3 ease;
                 opacity: 1;
             }

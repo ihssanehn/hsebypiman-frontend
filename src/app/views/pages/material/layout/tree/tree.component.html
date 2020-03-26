@@ -1,19 +1,19 @@
-<kt-notice [icon]="'flaticon-warning kt-font-primary'">
+<tf-notice [icon]="'flaticon-warning tf-font-primary'">
 	For more info please check the components's official demos & documentation
-	<a class="kt-link" href="https://material.angular.io/components/tree/overview" target="_blank">demos & documentation</a>
-</kt-notice>
+	<a class="tf-link" href="https://material.angular.io/components/tree/overview" target="_blank">demos & documentation</a>
+</tf-notice>
 
 <div class="row">
 	
 	<div class="col-xl-6">
-		<kt-material-preview [viewItem]="exampleTreeWithDynamicData">
-			<div class="kt-section">
-				<span class="kt-section__sub">
+		<tf-material-preview [viewItem]="exampleTreeWithDynamicData">
+			<div class="tf-section">
+				<span class="tf-section__sub">
 					The
 					<code>mat-tree</code> provides a Material Design styled tree that can be used to display hierarchy data.
 				</span>
-				<div class="kt-separator kt-separator--dashed"></div>
-				<div class="kt-section__content">
+				<div class="tf-separator tf-separator--dashed"></div>
+				<div class="tf-section__content">
 					<mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
 						<mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
 							<button mat-icon-button disabled></button>
@@ -31,11 +31,11 @@
 					</mat-tree>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 
-		<kt-material-preview [viewItem]="exampleTreeWithFlatNodes">
-			<div class="kt-section">
-				<div class="kt-section__content">
+		<tf-material-preview [viewItem]="exampleTreeWithFlatNodes">
+			<div class="tf-section">
+				<div class="tf-section__content">
 					<mat-tree [dataSource]="dataSource2" [treeControl]="treeControl2">
 						<mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>
 							<button mat-icon-button disabled></button>
@@ -54,13 +54,13 @@
 
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 
 	</div>
 	<div class="col-xl-6">
-		<kt-material-preview [viewItem]="exampleTreeWithCheckboxes">
-			<div class="kt-section">
-				<div class="kt-section__content">
+		<tf-material-preview [viewItem]="exampleTreeWithCheckboxes">
+			<div class="tf-section">
+				<div class="tf-section__content">
 					<mat-tree [dataSource]="dataSource3" [treeControl]="treeControl3">
 						<mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>
 							<button mat-icon-button disabled></button>
@@ -89,11 +89,11 @@
 					</mat-tree>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 
-		<kt-material-preview [viewItem]="exampleTreeWithPartiallyLoadedData">
-			<div class="kt-section">
-				<div class="kt-section__content">
+		<tf-material-preview [viewItem]="exampleTreeWithPartiallyLoadedData">
+			<div class="tf-section">
+				<div class="tf-section__content">
 					<mat-tree [dataSource]="dataSource4" [treeControl]="treeControl4">
 						<!-- Leaf node -->
 						<mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
@@ -119,6 +119,6 @@
 					</mat-tree>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 	</div>
 </div>

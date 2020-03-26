@@ -5,14 +5,14 @@
 
 
 
-$kt-header-fixed-zindex: kt-get($kt-header-config, base, desktop, fixed, zindex);
+$tf-header-fixed-zindex: tf-get($tf-header-config, base, desktop, fixed, zindex);
 
-$kt-aside-menu-dropdown-submenu-width: 245px;
+$tf-aside-menu-dropdown-submenu-width: 245px;
 
-$kt-aside-config: (
+$tf-aside-config: (
 	base: (
 		default: (
-			width: $kt-aside-default-width,
+			width: $tf-aside-default-width,
 			bg-color: transparent,
 			shadow: none,
 		),
@@ -55,7 +55,7 @@ $kt-aside-config: (
 					),
 					bg-color: (
 						default: darken(#f8f8fb, 5%),
-						hover: kt-brand-color()
+						hover: tf-brand-color()
 					)
 				)
 			)
@@ -65,8 +65,8 @@ $kt-aside-config: (
 	menu: (
 		// base parameters required to build the base menu
 		base:	(
-			class: kt-aside-menu, // menu element class name
-			parent-class: kt-aside, // manu parent aside element class name
+			class: tf-aside-menu, // menu element class name
+			parent-class: tf-aside, // manu parent aside element class name
 			mode: general, // menu mode: general or tablet-and-mobile
 		),
 
@@ -265,7 +265,7 @@ $kt-aside-config: (
 						// item itself
 						self: (
 							margin: 0, 
-							zindex:	$kt-header-fixed-zindex - 1,
+							zindex:	$tf-header-fixed-zindex - 1,
 						),
 
 						// submenu
@@ -274,8 +274,8 @@ $kt-aside-config: (
 							self: (
 								// submenu base styles
 								padding: 20px 0,
-								width: $kt-aside-menu-dropdown-submenu-width,
-								parent-width: $kt-aside-default-width,
+								width: $tf-aside-menu-dropdown-submenu-width,
+								parent-width: $tf-aside-default-width,
 								border-radius: 4px,
 
 								// submenu animation
@@ -417,10 +417,10 @@ $kt-aside-config: (
 							icon: (
 								font-color:	(
 									default: #cacad2,
-									open: kt-brand-color(),
-									expanded: kt-brand-color(),
-									active: kt-brand-color(),
-									hover: kt-brand-color()
+									open: tf-brand-color(),
+									expanded: tf-brand-color(),
+									active: tf-brand-color(),
+									hover: tf-brand-color()
 								),
 							),		
 
@@ -429,19 +429,19 @@ $kt-aside-config: (
 								dot: (
 									bg-color: (
 										default: #cacad2,
-										open: kt-brand-color(),
-										expanded: kt-brand-color(),
-										active: kt-brand-color(),
-										hover: kt-brand-color()
+										open: tf-brand-color(),
+										expanded: tf-brand-color(),
+										active: tf-brand-color(),
+										hover: tf-brand-color()
 									)
 								),
 								line: (
 									bg-color: (
 										default: #cacad2,
-										open: kt-brand-color(),
-										expanded: kt-brand-color(),
-										active: kt-brand-color(),
-										hover: kt-brand-color()
+										open: tf-brand-color(),
+										expanded: tf-brand-color(),
+										active: tf-brand-color(),
+										hover: tf-brand-color()
 									)
 								)							
 							),					
@@ -450,10 +450,10 @@ $kt-aside-config: (
 							text:	(
 								font-color:	(
 									default: #5d5b6f,
-									open: kt-brand-color(),
-									expanded: kt-brand-color(),
-									active: kt-brand-color(),
-									hover: kt-brand-color()
+									open: tf-brand-color(),
+									expanded: tf-brand-color(),
+									active: tf-brand-color(),
+									hover: tf-brand-color()
 								)	
 							),
 
@@ -461,10 +461,10 @@ $kt-aside-config: (
 							arrow:	(
 								font-color:	(
 									default: #cacad2,
-									open: kt-brand-color(),
-									expanded: kt-brand-color(),
-									active: kt-brand-color(),
-									hover: kt-brand-color()
+									open: tf-brand-color(),
+									expanded: tf-brand-color(),
+									active: tf-brand-color(),
+									hover: tf-brand-color()
 								)
 							)
 						),
@@ -509,9 +509,9 @@ $kt-aside-config: (
 									icon:	(
 										font-color:	(
 											default: #cacad2,
-											open: kt-brand-color(),
-											active: kt-brand-color(),
-											hover: kt-brand-color()
+											open: tf-brand-color(),
+											active: tf-brand-color(),
+											hover: tf-brand-color()
 										)
 									),		
 									// link bullet
@@ -519,19 +519,19 @@ $kt-aside-config: (
 										dot: (
 											bg-color: (
 												default: #cacad2,
-												open: kt-brand-color(),
-												expanded: kt-brand-color(),
-												active: kt-brand-color(),
-												hover: kt-brand-color()
+												open: tf-brand-color(),
+												expanded: tf-brand-color(),
+												active: tf-brand-color(),
+												hover: tf-brand-color()
 											)
 										),
 										line: (
 											bg-color: (
 												default: #cacad2,
-												open: kt-brand-color(),
-												expanded: kt-brand-color(),
-												active: kt-brand-color(),
-												hover: kt-brand-color()
+												open: tf-brand-color(),
+												expanded: tf-brand-color(),
+												active: tf-brand-color(),
+												hover: tf-brand-color()
 											)
 										)							
 									),						
@@ -539,18 +539,18 @@ $kt-aside-config: (
 									text: (
 										font-color:	(
 											default: #73718b,
-											open: kt-brand-color(),
-											active: kt-brand-color(),
-											hover: kt-brand-color()
+											open: tf-brand-color(),
+											active: tf-brand-color(),
+											hover: tf-brand-color()
 										)	
 									),
 									// link arrow
 									arrow:	(
 										font-color:	(
 											default: #cacad2,
-											open: kt-brand-color(),
-											active: kt-brand-color(),
-											hover: kt-brand-color()
+											open: tf-brand-color(),
+											active: tf-brand-color(),
+											hover: tf-brand-color()
 										)
 									)
 								)
@@ -628,7 +628,7 @@ $kt-aside-config: (
 										font-color:	(
 											default: lighten(#8c8ea4, 10%),
 											open: lighten(#8c8ea4, 5%),
-											active: kt-brand-color(),
+											active: tf-brand-color(),
 											hover: lighten(#8c8ea4, 5%)
 										)
 									),		
@@ -639,7 +639,7 @@ $kt-aside-config: (
 												default: lighten(#8c8ea4, 10%),
 												open: lighten(#8c8ea4, 5%),
 												expanded: lighten(#8c8ea4, 5%),
-												active: kt-brand-color(),
+												active: tf-brand-color(),
 												hover: lighten(#8c8ea4, 5%)
 											)
 										),
@@ -648,7 +648,7 @@ $kt-aside-config: (
 												default: lighten(#8c8ea4, 10%),
 												open: lighten(#8c8ea4, 5%),
 												expanded: lighten(#8c8ea4, 5%),
-												active: kt-brand-color(),
+												active: tf-brand-color(),
 												hover: lighten(#8c8ea4, 5%)
 											)
 										)							
@@ -659,7 +659,7 @@ $kt-aside-config: (
 										font-color:	(
 											default: darken(#868aa8, 10%),
 											open: darken(#868aa8, 15%),
-											active: kt-brand-color(),
+											active: tf-brand-color(),
 											hover: darken(#868aa8, 15%)
 										)	
 									),
@@ -669,7 +669,7 @@ $kt-aside-config: (
 										font-color:	(
 											default: lighten(#8c8ea4, 10%),
 											open: lighten(#8c8ea4, 5%),
-											active: kt-brand-color(),
+											active: tf-brand-color(),
 											hover: lighten(#8c8ea4, 5%)
 										)
 									)

@@ -207,7 +207,7 @@ function compare(a, b, isAsc) {
 }
 
 @Component({
-	selector: 'kt-sort-header',
+	selector: 'tf-sort-header',
 	templateUrl: './sort-header.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	styles: [`

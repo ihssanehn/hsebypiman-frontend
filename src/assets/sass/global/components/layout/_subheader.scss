@@ -5,7 +5,7 @@
 
 
 // Config
-$kt-subheader-config: (
+$tf-subheader-config: (
 	fixed: (
 		height: 54px
 	),
@@ -17,21 +17,21 @@ $kt-subheader-config: (
 		space: 4px,
 		radius: 2px,
 		color: (
-			default: kt-base-color(label, 2),
-			hover: kt-brand-color(),
-			active: kt-brand-color()
+			default: tf-base-color(label, 2),
+			hover: tf-brand-color(),
+			active: tf-brand-color()
 		)
 	)
 );
 
 // Base
-.kt-subheader {
+.tf-subheader {
 	background-color: #fff;
 	display: flex;
 	align-items: stretch;
 	margin: 10px 0;
 
-	.kt-container {
+	.tf-container {
 		display: flex;
 		justify-content: space-between;
 		align-items: stretch;
@@ -61,7 +61,7 @@ $kt-subheader-config: (
 	}
 
 	// Main
-	.kt-subheader__main {
+	.tf-subheader__main {
 		display: flex;
 		justify-content: flex-start;
 		align-items: center;
@@ -77,12 +77,12 @@ $kt-subheader-config: (
 		}
 
 		// Mobile Toggler
-		.kt-subheader__mobile-toggle {
+		.tf-subheader__mobile-toggle {
 			display: none;
 		}
 
 		// Title
-		.kt-subheader__title {
+		.tf-subheader__title {
 			margin: 0;
 			padding: 0 1rem 0 0;
 			font-size: 1.2rem;
@@ -94,12 +94,12 @@ $kt-subheader-config: (
 			small {
 				padding-left: 0.25rem;
 				font-size: 0.9rem;
-				color: kt-base-color(label, 2);
+				color: tf-base-color(label, 2);
 			}
 		}
 
 		// Desc
-		.kt-subheader__desc {
+		.tf-subheader__desc {
 			padding: 0 0.5rem 0 0;
 			font-size: 1rem;
 			font-weight: 500;
@@ -107,7 +107,7 @@ $kt-subheader-config: (
 		}
 
 		// Separator
-		.kt-subheader__separator {
+		.tf-subheader__separator {
 			display: block;
 			width: 12px;
 			height: 4px;
@@ -115,14 +115,14 @@ $kt-subheader-config: (
 			background: #e7e8ef;
 			margin: 0 1rem 0 0;
 
-			&.kt-subheader__separator--v {
+			&.tf-subheader__separator--v {
 				width: 1px;
 				height: 22px;
 			}
 		}
 
 		// Breadcrumbs
-		.kt-subheader__breadcrumbs {
+		.tf-subheader__breadcrumbs {
 			display: flex;
 			align-items: center;
 			list-style-type: none;
@@ -130,9 +130,9 @@ $kt-subheader-config: (
 			margin: 0;
 			padding: 0;
 
-			.kt-subheader__breadcrumbs-home {
+			.tf-subheader__breadcrumbs-home {
 				padding: 0px 0.65rem 0px 0px;
-				@include kt-transition();
+				@include tf-transition();
 
 				> i {
 					font-size: 1rem;
@@ -141,36 +141,36 @@ $kt-subheader-config: (
 
 				&:hover {
 					> i {
-						@include kt-transition();
-						color: kt-brand-color();
+						@include tf-transition();
+						color: tf-brand-color();
 					}
 				}
 
-				&.kt-subheader__breadcrumbs-home--active {
+				&.tf-subheader__breadcrumbs-home--active {
 					> i {
-						color: kt-brand-color();
+						color: tf-brand-color();
 					}
 				}
 			}
 
-			.kt-subheader__breadcrumbs-link {
+			.tf-subheader__breadcrumbs-link {
 				padding: 0 0.35rem 0 0;
 				font-size: 1rem;
 				font-weight: 500;
 				color: #959cb6;
 
 				&:hover {
-					color: kt-brand-color();
+					color: tf-brand-color();
 				}
 
-				&.kt-subheader__breadcrumbs-link--active {
-					color: kt-brand-color();
+				&.tf-subheader__breadcrumbs-link--active {
+					color: tf-brand-color();
 				}
 
-				@include kt-hover-transition();
+				@include tf-hover-transition();
 			}
 
-			.kt-subheader__breadcrumbs-separator {
+			.tf-subheader__breadcrumbs-separator {
 				display: flex;
 				justify-content: content;
 				align-items: center;
@@ -188,14 +188,14 @@ $kt-subheader-config: (
 		}
 
 		// Group
-		.kt-subheader__group {
+		.tf-subheader__group {
 			display: flex;
 			align-items: center;
 		}
 	}
 
 	// Toolbar
-	.kt-subheader__toolbar {
+	.tf-subheader__toolbar {
 		display: flex;
 		justify-content: flex-end;
 		align-items: center;
@@ -208,7 +208,7 @@ $kt-subheader-config: (
 	}
 
 	// Primary button
-	.kt-subheader__btn-primary {
+	.tf-subheader__btn-primary {
 		background: #f2f3f7;
 		color: #959cb6;
 		font-weight: 500;
@@ -221,19 +221,19 @@ $kt-subheader-config: (
 		&.active,
 		&:active,
 		&:focus {
-			color: kt-brand-color(inverse);
-			background: kt-brand-color();
+			color: tf-brand-color(inverse);
+			background: tf-brand-color();
 
 			i {
-				color: kt-brand-color(inverse);
+				color: tf-brand-color(inverse);
 			}
 
-			@include kt-svg-icon-color(kt-brand-color(inverse));
+			@include tf-svg-icon-color(tf-brand-color(inverse));
 		}
 	}
 
 	// Secondary button
-	.kt-subheader__btn-secondary {
+	.tf-subheader__btn-secondary {
 		color: #959cb6;
 		font-weight: 500;
 
@@ -241,37 +241,37 @@ $kt-subheader-config: (
 			color: #aab1df;
 		}
 
-		@include kt-svg-icon-color(#aab1df);
+		@include tf-svg-icon-color(#aab1df);
 
 		&:hover,
 		&.active,
 		&:active,
 		&:focus {
 			background: #f2f3f7;
-			color: kt-brand-color();
-			@include kt-svg-icon-color(kt-brand-color());
+			color: tf-brand-color();
+			@include tf-svg-icon-color(tf-brand-color());
 		}
 	}
 
 	// Daterange
-	.kt-subheader__btn-daterange {
+	.tf-subheader__btn-daterange {
 		background: #f2f3f7;
 
-		.kt-subheader__btn-daterange-title {
+		.tf-subheader__btn-daterange-title {
 			display: inline-block;
 			color: #959cb6;
 			font-weight: 500;
 		}
 
-		.kt-subheader__btn-daterange-date {
+		.tf-subheader__btn-daterange-date {
 			display: inline-block;
-			color: kt-brand-color();
+			color: tf-brand-color();
 			margin-right: 0.75rem;
 			font-weight: 500;
 		}
 
 		i {
-			color: kt-brand-color();
+			color: tf-brand-color();
 		}
 
 
@@ -282,13 +282,13 @@ $kt-subheader-config: (
 			background: #f2f3f7;
 
 			i {
-				color: kt-brand-color();
+				color: tf-brand-color();
 			}
 		}
 	}
 
 	// Search
-	.kt-subheader__search {
+	.tf-subheader__search {
 		width: 175px;
 		display: inline-block;
 
@@ -299,42 +299,42 @@ $kt-subheader-config: (
 			border-color: #f2f3f7 !important;
 		}
 
-		.kt-input-icon__icon {
+		.tf-input-icon__icon {
 			i {
 				font-size: 1.2rem;
-				color: kt-base-color(label, 2);
+				color: tf-base-color(label, 2);
 			}
 		}
 	}
 
 	// Solid style
-	.kt-subheader--solid & {
-		margin: 0 0 kt-get($kt-page-padding, desktop) 0;
-		min-height: kt-get($kt-subheader-config, fixed, height);
+	.tf-subheader--solid & {
+		margin: 0 0 tf-get($tf-page-padding, desktop) 0;
+		min-height: tf-get($tf-subheader-config, fixed, height);
 	}
 
 	// Transparent style
-	.kt-subheader--transparent & {
+	.tf-subheader--transparent & {
 		background-color: transparent;
 
 		// Main
-		.kt-subheader__main {
-			.kt-subheader__separator {
+		.tf-subheader__main {
+			.tf-subheader__separator {
 				background: darken(#e7e8ef, 4%);
 			}
 
-			.kt-subheader__breadcrumbs {
-				.kt-subheader__breadcrumbs-home {
+			.tf-subheader__breadcrumbs {
+				.tf-subheader__breadcrumbs-home {
 					> i {
 						color: darken(#c5cbe7, 4%);
 					}
 				}
 
-				.kt-subheader__breadcrumbs-link {
+				.tf-subheader__breadcrumbs-link {
 					color: #959cb6;
 				}
 
-				.kt-subheader__breadcrumbs-separator {
+				.tf-subheader__breadcrumbs-separator {
 					&:after {
 						background: darken(#e7e8ef, 4%);
 					}
@@ -343,7 +343,7 @@ $kt-subheader-config: (
 		}
 
 		// Primary button
-		.kt-subheader__btn-primary {
+		.tf-subheader__btn-primary {
 			background: darken(#eaecf2, 3%);
 			color: #959cb6;
 
@@ -351,25 +351,25 @@ $kt-subheader-config: (
 				color: #959cb6;
 			}
 
-			@include kt-svg-icon-color(#959cb6);
+			@include tf-svg-icon-color(#959cb6);
 
 			&:hover,
 			&.active,
 			&:active,
 			&:focus {
-				background: kt-brand-color();
-				color: kt-brand-color(inverse);
+				background: tf-brand-color();
+				color: tf-brand-color(inverse);
 
 				i {
-					color: kt-brand-color(inverse);
+					color: tf-brand-color(inverse);
 				}
 
-				@include kt-svg-icon-color(kt-brand-color(inverse));
+				@include tf-svg-icon-color(tf-brand-color(inverse));
 			}
 		}
 
 		// Secondary button
-		.kt-subheader__btn-secondary {
+		.tf-subheader__btn-secondary {
 			color: darken(#959cb6, 3%);
 
 			i {
@@ -385,7 +385,7 @@ $kt-subheader-config: (
 		}
 
 		// Daterange
-		.kt-subheader__btn-daterange {
+		.tf-subheader__btn-daterange {
 			background: darken(#eaecf2, 3%);
 
 			&:hover,
@@ -397,7 +397,7 @@ $kt-subheader-config: (
 		}
 
 		// Search
-		.kt-subheader__search {
+		.tf-subheader__search {
 			.form-control {
 				background: #eaecf2;
 				border-color: #eaecf2 !important;
@@ -406,51 +406,51 @@ $kt-subheader-config: (
 	}
 }
 
-@include kt-tablet-and-mobile {
+@include tf-tablet-and-mobile {
 	// Subheader
-	.kt-subheader {
+	.tf-subheader {
 		margin: 2px 0;
 
 		// Main
-		.kt-subheader__main {
+		.tf-subheader__main {
 			// Mobile Toggler
-			@include kt-burger-icon-build(kt-subheader__mobile-toggle, kt-get($kt-subheader-config, toggle));
-			@include kt-burger-icon-skin(kt-subheader__mobile-toggle, kt-get($kt-subheader-config, toggle, color));
+			@include tf-burger-icon-build(tf-subheader__mobile-toggle, tf-get($tf-subheader-config, toggle));
+			@include tf-burger-icon-skin(tf-subheader__mobile-toggle, tf-get($tf-subheader-config, toggle, color));
 
-			.kt-subheader__mobile-toggle {
+			.tf-subheader__mobile-toggle {
 				display: inline-block;
 				margin-right: 1rem;
 			}
 
 			// Title
-			.kt-subheader__title {
+			.tf-subheader__title {
 				padding: 0.5rem 1.25rem 0.5rem 0;
 			}
 
 			// Breadcrumbs
-			.kt-subheader__breadcrumbs {
+			.tf-subheader__breadcrumbs {
 				padding: 0.5rem 0;
 			}
 		}
 
 		// Toolbar
-		.kt-subheader__toolbar {
+		.tf-subheader__toolbar {
 			padding: 0.5rem 0;
 		}
 
 		// Light style
-		.kt-subheader--transparent & {
+		.tf-subheader--transparent & {
 			background-color: transparent;
 		}
 	}
 }
 
-@include kt-mobile {
+@include tf-mobile {
 	// Subheader
-	.kt-subheader {
+	.tf-subheader {
 
 		// Toolbar
-		.kt-subheader__toolbar {
+		.tf-subheader__toolbar {
 			padding-top: 0.5rem;
 		}
 	}

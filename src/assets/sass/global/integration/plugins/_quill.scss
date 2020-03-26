@@ -6,11 +6,11 @@
 
 // Base
 .ql-toolbar.ql-snow {
-    border: 1px solid kt-base-color(grey, 2);
+    border: 1px solid tf-base-color(grey, 2);
 
-    @include kt-rounded {
-        border-top-left-radius: $kt-border-radius;
-        border-top-right-radius: $kt-border-radius;
+    @include tf-rounded {
+        border-top-left-radius: $tf-border-radius;
+        border-top-right-radius: $tf-border-radius;
     }
 
     button {
@@ -18,7 +18,7 @@
         &:focus,
         &:hover {
             .ql-stroke {
-                stroke: kt-brand-color();
+                stroke: tf-brand-color();
             }
         }
     }
@@ -26,7 +26,7 @@
     .ql-picker-label {
         &.ql-active,
         &:hover {
-            color:  kt-brand-color();
+            color:  tf-brand-color();
         }
     }
 
@@ -34,18 +34,18 @@
         &.ql-selected,
         &.ql-active,
         &:hover {
-            color:  kt-brand-color();
+            color:  tf-brand-color();
         }
     }
 }
 
 .ql-container.ql-snow {
-    border: 1px solid kt-base-color(grey, 2);
+    border: 1px solid tf-base-color(grey, 2);
     border-top: 0;
 
-    @include kt-rounded {
-        border-bottom-left-radius: $kt-border-radius;
-        border-bottom-right-radius: $kt-border-radius;
+    @include tf-rounded {
+        border-bottom-left-radius: $tf-border-radius;
+        border-bottom-right-radius: $tf-border-radius;
     }
 }
 
@@ -57,12 +57,12 @@
 
             .ql-picker-label {
                 border-color: transparent !important;
-                color:  kt-brand-color();
+                color:  tf-brand-color();
                 outline: none !important;
 
                 &.ql-active,
                 &:hover {
-                    color:  kt-brand-color();
+                    color:  tf-brand-color();
                 }
             }
 
@@ -71,8 +71,8 @@
                 padding: 0.5rem 1rem;
                 box-shadow: $dropdown-box-shadow;
 
-                @include kt-rounded {
-                    border-radius: $kt-border-radius;
+                @include tf-rounded {
+                    border-radius: $tf-border-radius;
                 }
             }
         }
@@ -83,18 +83,18 @@
         padding: 0.5rem 1rem;
         box-shadow: $dropdown-box-shadow;
 
-        @include kt-rounded {
-            border-radius: $kt-border-radius;
+        @include tf-rounded {
+            border-radius: $tf-border-radius;
         }
 
         input[type=text] {
-            @include kt-input-reset();
-            border: 1px solid kt-base-color(grey, 2);
+            @include tf-input-reset();
+            border: 1px solid tf-base-color(grey, 2);
             color: $input-plaintext-color;
             outline: none !important;
 
-            @include kt-rounded {
-                border-radius: $kt-border-radius;
+            @include tf-rounded {
+                border-radius: $tf-border-radius;
             }
 
             &:active,
@@ -104,16 +104,16 @@
         }
 
         .ql-preview {
-            color: kt-base-color(label, 2);
+            color: tf-base-color(label, 2);
         }
 
         .ql-action {
             transition: color 0.3s ease;
-            color: kt-base-color(label, 2);
+            color: tf-base-color(label, 2);
 
             &:hover {
                 transition: color 0.3s ease;
-                color:  kt-brand-color();
+                color:  tf-brand-color();
             }
         }
 
@@ -126,7 +126,7 @@
     }
 
     .ql-editor {
-        color: kt-base-color(label, 2);
+        color: tf-base-color(label, 2);
     }
 
     .ql-editor pre.ql-syntax {
@@ -134,8 +134,8 @@
         color: #f8f8f2;
         overflow: visible;
 
-        @include kt-rounded {
-            border-radius: $kt-border-radius;
+        @include tf-rounded {
+            border-radius: $tf-border-radius;
         }
     }
 }

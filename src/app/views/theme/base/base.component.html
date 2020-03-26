@@ -1,34 +1,34 @@
 <!-- begin:: Page -->
 <ng-container *ngIf="selfLayout !== 'blank'; else blankLayout">
 	<!-- begin:: Header Mobile -->
-	<kt-header-mobile></kt-header-mobile>
+	<tf-header-mobile></tf-header-mobile>
 	<!-- end:: Header Mobile -->
 
-	<div class="kt-grid kt-grid--hor kt-grid--root" >
+	<div class="tf-grid tf-grid--hor tf-grid--root" >
 		<!-- begin::Body -->
 		<!-- begin:: Header -->
-		<kt-header></kt-header>
+		<tf-header></tf-header>
 		<!-- end:: Header -->
-		<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
+		<div class="tf-grid__item tf-grid__item--fluid tf-grid tf-grid--ver tf-page">
 			<!-- begin:: Aside Left -->
 			<ng-container *ngIf="asideDisplay">
-				<button class="kt-aside-close" id="kt_aside_close_btn"><i class="la la-close"></i></button>
-				<kt-aside-left></kt-aside-left>
+				<button class="tf-aside-close" id="tf_aside_close_btn"><i class="la la-close"></i></button>
+				<tf-aside-left></tf-aside-left>
 			</ng-container>
 			<!-- end:: Aside Left -->
 
-			<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
+			<div class="tf-grid__item tf-grid__item--fluid tf-grid tf-grid--hor tf-wrapper" id="tf_wrapper">
 				
 
 				<!-- begin:: Content -->
-				<div class="kt-content kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_body">
-					<div class="kt-content kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+				<div class="tf-content tf-grid__item tf-grid__item--fluid tf-grid tf-grid--hor" id="tf_body">
+					<div class="tf-content tf-grid__item tf-grid__item--fluid tf-grid tf-grid--hor" id="tf_content">
 						<!-- begin:: Content Head -->
-						<!-- <kt-subheader *ngIf="subheaderDisplay"></kt-subheader> -->
+						<!-- <tf-subheader *ngIf="subheaderDisplay"></tf-subheader> -->
 						<!-- end:: Content Head -->
 
 						<!-- begin:: Content Body -->
-						<div ktContentAnimate class="kt-container kt-grid__item kt-grid__item--fluid" [ngClass]="{'kt-container--fluid': fluid}">
+						<div tfContentAnimate class="tf-container tf-grid__item tf-grid__item--fluid" [ngClass]="{'tf-container--fluid': fluid}">
 							<router-outlet></router-outlet>
 						</div>
 						<!-- end:: Content Body -->
@@ -36,14 +36,14 @@
 				</div>
 				<!-- end:: Content -->
 
-				<kt-footer></kt-footer>
+				<tf-footer></tf-footer>
 			</div>
 		</div>
 		<!-- end:: Body -->
 
-		<kt-quick-panel></kt-quick-panel>
-		<kt-scroll-top></kt-scroll-top>
-		<kt-sticky-toolbar></kt-sticky-toolbar>
+		<tf-quick-panel></tf-quick-panel>
+		<tf-scroll-top></tf-scroll-top>
+		<tf-sticky-toolbar></tf-sticky-toolbar>
 	</div>
 </ng-container>
 <!-- end:: Page -->

@@ -1,29 +1,29 @@
 <!-- begin:: Content Head -->
-<div class="kt-subheader kt-grid__item" [ngClass]="{'kt-container--clear': clear}" [hidden]="subheaderService.disabled$ | async" id="kt_subheader">
-	<div class="kt-container" [ngClass]="{'kt-container--fluid': fluid}">
-		<div class="kt-subheader__main">
-			<h3 *ngIf="title" class="kt-subheader__title">{{title}}</h3>
-			<h4 *ngIf="desc" class="kt-subheader__desc">{{desc}}</h4>
-			<div class="kt-subheader__breadcrumbs" *ngIf="breadcrumbs.length > 0">
-				<span class="kt-subheader__separator" [hidden]="true"></span>
-				<a class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
+<div class="tf-subheader tf-grid__item" [ngClass]="{'tf-container--clear': clear}" [hidden]="subheaderService.disabled$ | async" id="tf_subheader">
+	<div class="tf-container" [ngClass]="{'tf-container--fluid': fluid}">
+		<div class="tf-subheader__main">
+			<h3 *ngIf="title" class="tf-subheader__title">{{title}}</h3>
+			<h4 *ngIf="desc" class="tf-subheader__desc">{{desc}}</h4>
+			<div class="tf-subheader__breadcrumbs" *ngIf="breadcrumbs.length > 0">
+				<span class="tf-subheader__separator" [hidden]="true"></span>
+				<a class="tf-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
 				<ng-container *ngFor="let item of breadcrumbs">
-					<span class="kt-subheader__breadcrumbs-separator"></span>
-					<a [routerLink]="item.page" [queryParams]="item.queryParams" class="kt-subheader__breadcrumbs-link">
+					<span class="tf-subheader__breadcrumbs-separator"></span>
+					<a [routerLink]="item.page" [queryParams]="item.queryParams" class="tf-subheader__breadcrumbs-link">
 						{{item.title}}
 					</a>
 				</ng-container>
-				<!-- <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">Active link</span> -->
+				<!-- <span class="tf-subheader__breadcrumbs-link tf-subheader__breadcrumbs-link--active">Active link</span> -->
 			</div>
 		</div>
-		<div class="kt-subheader__toolbar">
-			<div class="kt-subheader__wrapper">
-				<a href="javascript:;" class="btn kt-subheader__btn-secondary">
+		<div class="tf-subheader__toolbar">
+			<div class="tf-subheader__wrapper">
+				<a href="javascript:;" class="btn tf-subheader__btn-secondary">
 					Reports
 				</a>
 
 				<div ngbDropdown [placement]="'bottom-right'" class="dropdown dropdown-inline">
-					<a ngbDropdownToggle href="javascript:;" class="btn btn-danger kt-subheader__btn-options">
+					<a ngbDropdownToggle href="javascript:;" class="btn btn-danger tf-subheader__btn-options">
 						Products
 					</a>
 					<div ngbDropdownMenu class="dropdown-menu dropdown-menu-right">

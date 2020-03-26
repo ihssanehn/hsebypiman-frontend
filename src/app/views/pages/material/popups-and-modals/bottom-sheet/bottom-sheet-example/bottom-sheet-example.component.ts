@@ -3,7 +3,7 @@ import { MatBottomSheet, MatBottomSheetRef } from '@angular/material';
 
 
 @Component({
-	selector: 'kt-bottom-sheet-example',
+	selector: 'tf-bottom-sheet-example',
 	templateUrl: './bottom-sheet-example.component.html'
 })
 export class BottomSheetExampleComponent {

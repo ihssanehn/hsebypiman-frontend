@@ -1,14 +1,14 @@
-kt-base {
+tf-base {
 	opacity: 0;
 	height: 100%;
 
-	.kt-grid--root {
+	.tf-grid--root {
 		height: 100%;
 	}
 }
 
-.kt-page--loaded {
-	kt-base {
+.tf-page--loaded {
+	tf-base {
 		opacity: 1;
 		transition: opacity 1s ease-in-out;
 	}

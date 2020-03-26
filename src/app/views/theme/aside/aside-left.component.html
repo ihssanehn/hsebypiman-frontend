@@ -1,17 +1,17 @@
 <!-- BEGIN: Left Aside -->
-<div ktOffcanvas [options]="menuCanvasOptions" class="kt-aside kt-aside--fixed kt-grid__item kt-grid kt-grid--desktop kt-grid--hor-desktop" id="kt_aside">
-	<!-- <kt-brand></kt-brand> -->
+<div tfOffcanvas [options]="menuCanvasOptions" class="tf-aside tf-aside--fixed tf-grid__item tf-grid tf-grid--desktop tf-grid--hor-desktop" id="tf_aside">
+	<!-- <tf-brand></tf-brand> -->
 	
 	<!--begin: User bar -->
-	<kt-userside-profile></kt-userside-profile>
+	<tf-userside-profile></tf-userside-profile>
 	<!--end: User bar -->
 	<!-- BEGIN: Aside Menu -->
-	<div class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper">
-		<div #asideMenu ktMenu [options]="menuOptions" id="kt_aside_menu" class="kt-aside-menu kt-aside-menu--dropdown"
+	<div class="tf-aside-menu-wrapper tf-grid__item tf-grid__item--fluid" id="tf_aside_menu_wrapper">
+		<div #asideMenu tfMenu [options]="menuOptions" id="tf_aside_menu" class="tf-aside-menu tf-aside-menu--dropdown"
 			[attr.data-ktmenu-dropdown]="1"
 			(mouseenter)="mouseEnter($event)"
 			(mouseleave)="mouseLeave($event)">
-			<ul class="kt-menu__nav" [ngClass]="htmlClassService.getClasses('aside_menu_nav', true)">
+			<ul class="tf-menu__nav" [ngClass]="htmlClassService.getClasses('aside_menu_nav', true)">
 				<ng-container [ngTemplateOutlet]="menuListTemplate"></ng-container>
 			</ul>
 		</div>
@@ -43,26 +43,26 @@
 		[ngbTooltip]="item.tooltip" data-placement="right">
 
 		<!-- if menu item hasn't submenu -->
-		<a *ngIf="!item.submenu" [routerLink]="item.page" class="kt-menu__link kt-menu__toggle">
+		<a *ngIf="!item.submenu" [routerLink]="item.page" class="tf-menu__link tf-menu__toggle">
 			<ng-container [ngTemplateOutlet]="menuItemTextTemplate"
 				[ngTemplateOutletContext]="{ item: item, parentItem: parentItem }"></ng-container>
 		</a>
 		<!-- if menu item has sumnenu child  -->
-		<a *ngIf="item.submenu" class="kt-menu__link kt-menu__toggle">
+		<a *ngIf="item.submenu" class="tf-menu__link tf-menu__toggle">
 			<ng-container [ngTemplateOutlet]="menuItemTextTemplate"
 				[ngTemplateOutletContext]="{ item: item, parentItem: parentItem }"></ng-container>
 		</a>
 
 		<!-- if menu item has submenu child then recursively call new menu item component -->
-		<div *ngIf="item.submenu" class="kt-menu__submenu">
-			<span class="kt-menu__arrow"></span>
-			<div *ngIf="item['custom-class'] === 'kt-menu__item--submenu-fullheight'" class="kt-menu__wrapper">
+		<div *ngIf="item.submenu" class="tf-menu__submenu">
+			<span class="tf-menu__arrow"></span>
+			<div *ngIf="item['custom-class'] === 'tf-menu__item--submenu-fullheight'" class="tf-menu__wrapper">
 				<!-- wrap submenu to full height -->
 				<ng-container [ngTemplateOutlet]="menuSubmenuTemplate"
 					[ngTemplateOutletContext]="{ item: item, parentItem: parentItem }"></ng-container>
 			</div>
 			<!-- normal submenu -->
-			<ng-container *ngIf="item['custom-class'] !== 'kt-menu__item--submenu-fullheight'"
+			<ng-container *ngIf="item['custom-class'] !== 'tf-menu__item--submenu-fullheight'"
 				[ngTemplateOutlet]="menuSubmenuTemplate"
 				[ngTemplateOutletContext]="{ item: item, parentItem: parentItem }">
 			</ng-container>
@@ -72,7 +72,7 @@
 </ng-template>
 
 <ng-template #menuSubmenuTemplate let-item="item" let-parentItem="parentItem">
-	<ul class="kt-menu__subnav">
+	<ul class="tf-menu__subnav">
 		<ng-container *ngFor="let child of item.submenu">
 			<ng-container *ngIf="child.section" [ngTemplateOutlet]="menuItemSectionTemplate"
 				[ngTemplateOutletContext]="{ item: child, parentItem: item }"></ng-container>
@@ -86,21 +86,21 @@
 
 <ng-template #menuItemTextTemplate let-item="item" let-parentItem="parentItem">
 	<!-- if menu item has icon -->
-	<i *ngIf="item.icon" class="kt-menu__link-icon" [ngClass]="item.icon"></i>
+	<i *ngIf="item.icon" class="tf-menu__link-icon" [ngClass]="item.icon"></i>
 
 	<!-- if menu item using bullet -->
-	<i *ngIf="parentItem && parentItem.bullet === 'dot'" class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+	<i *ngIf="parentItem && parentItem.bullet === 'dot'" class="tf-menu__link-bullet tf-menu__link-bullet--dot">
 		<span></span>
 	</i>
-	<i *ngIf="parentItem && parentItem.bullet === 'line'" class="kt-menu__link-bullet kt-menu__link-bullet--line">
+	<i *ngIf="parentItem && parentItem.bullet === 'line'" class="tf-menu__link-bullet tf-menu__link-bullet--line">
 		<span></span>
 	</i>
 
 	<!-- menu item title text -->
-	<span class="kt-menu__link-text text-center" [translate]="item.translate">{{item.title}}</span>
+	<span class="tf-menu__link-text text-center" [translate]="item.translate">{{item.title}}</span>
 	<!-- menu item with badge -->
-	<span *ngIf="item.badge" class="kt-menu__link-badge">
-		<span class="kt-badge" [ngClass]="item.badge.type">{{item.badge.value}}</span>
+	<span *ngIf="item.badge" class="tf-menu__link-badge">
+		<span class="tf-badge" [ngClass]="item.badge.type">{{item.badge.value}}</span>
 	</span>
 </ng-template>
 

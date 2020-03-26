@@ -9,7 +9,7 @@ import { AppState } from '../../../../../core/reducers';
 import { User } from '../../../../../core/auth';
 
 @Component({
-	selector: 'kt-user-profile3',
+	selector: 'tf-user-profile3',
 	templateUrl: './user-profile3.component.html',
 })
 export class UserProfile3Component implements OnInit {

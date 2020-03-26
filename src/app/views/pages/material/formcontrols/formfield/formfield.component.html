@@ -1,13 +1,13 @@
-<kt-notice [icon]="'flaticon-warning kt-font-primary'">
+<tf-notice [icon]="'flaticon-warning tf-font-primary'">
 	For more info please check the components's official demos & documentation
-	<a class="kt-link" href="https://material.angular.io/components/form-field/overview" target="_blank">demos & documentation</a>
-</kt-notice>
+	<a class="tf-link" href="https://material.angular.io/components/form-field/overview" target="_blank">demos & documentation</a>
+</tf-notice>
 
 <div class="row">
 	<div class="col-xl-6">
-		<kt-material-preview [viewItem]="exampleSimpleFormField">
-			<div class="kt-section">
-				<span class="kt-section__sub">
+		<tf-material-preview [viewItem]="exampleSimpleFormField">
+			<div class="tf-section">
+				<span class="tf-section__sub">
 					<code>mat-form-field</code> is a component used to wrap several Angular Material components and apply common Text field styles such as the underline, floating label, and hint messages.
 					<br /> The following Angular Material components are designed to work inside a
 					<code>mat-form-field</code>:
@@ -23,7 +23,7 @@
 					</ul>
 
 				</span>
-				<div class="kt-separator kt-separator--dashed"></div>
+				<div class="tf-separator tf-separator--dashed"></div>
 				<div class="example-container">
 					<mat-form-field>
 						<input matInput placeholder="Input">
@@ -43,10 +43,10 @@
 					</mat-form-field>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 
-		<kt-material-preview [viewItem]="exampleFormFieldWithLabel">
-			<div class="kt-section">
+		<tf-material-preview [viewItem]="exampleFormFieldWithLabel">
+			<div class="tf-section">
 				<div class="example-container">
 					<form class="example-container" [formGroup]="options">
 						<mat-checkbox formControlName="hideRequired">Hide required marker</mat-checkbox>
@@ -84,16 +84,16 @@
 					</mat-form-field>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 
-		<kt-material-preview [viewItem]="exampleFormFieldWithHints">
-			<div class="kt-section">
+		<tf-material-preview [viewItem]="exampleFormFieldWithHints">
+			<div class="tf-section">
 				<div class="example-container">
 					<mat-form-field hintLabel="Max 10 characters">
 						<input matInput #input maxlength="10" placeholder="Enter some input">
 						<mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
 					</mat-form-field>
-					<div class="kt-separator kt-separator--dashed"></div>
+					<div class="tf-separator tf-separator--dashed"></div>
 					<mat-form-field>
 						<mat-select placeholder="Select me">
 							<mat-option value="option">Option</mat-option>
@@ -102,12 +102,12 @@
 					</mat-form-field>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 	</div>
 	<div class="col-xl-6">
 
-		<kt-material-preview [viewItem]="exampleFormFieldWithErrorMessages">
-			<div class="kt-section">
+		<tf-material-preview [viewItem]="exampleFormFieldWithErrorMessages">
+			<div class="tf-section">
 				<div class="example-container">
 					<mat-form-field>
 						<input matInput placeholder="Enter your email" [formControl]="email" required>
@@ -115,10 +115,10 @@
 					</mat-form-field>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 
-		<kt-material-preview [viewItem]="exampleFormFieldWithPrefixSuffix">
-			<div class="kt-section">
+		<tf-material-preview [viewItem]="exampleFormFieldWithPrefixSuffix">
+			<div class="tf-section">
 				<div class="example-container">
 					<mat-form-field>
 						<input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
@@ -131,10 +131,10 @@
 					</mat-form-field>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 
-		<kt-material-preview [viewItem]="exampleFormFieldTheming">
-			<div class="kt-section">
+		<tf-material-preview [viewItem]="exampleFormFieldTheming">
+			<div class="tf-section">
 				<div class="example-container">
 					<form class="example-container" [formGroup]="options2" [style.fontSize.px]="getFontSize()">
 						<mat-form-field [color]="options2.value.color">
@@ -151,10 +151,10 @@
 					</form>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 
-		<kt-material-preview [viewItem]="exampleFormFieldAppearanceVariants">
-			<div class="kt-section">
+		<tf-material-preview [viewItem]="exampleFormFieldAppearanceVariants">
+			<div class="tf-section">
 				<div class="example-container">
 					<p>
 						<mat-form-field appearance="legacy">
@@ -191,6 +191,6 @@
 
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 	</div>
 </div>

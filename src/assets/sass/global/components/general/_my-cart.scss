@@ -5,19 +5,19 @@
 
 
 
-.kt-mycart {
-    .kt-mycart__head {
+.tf-mycart {
+    .tf-mycart__head {
         display: flex;
         justify-content: space-between;
         padding: 2.8rem 2rem;
         background-position: center;  
         background-size: cover;
 
-        .kt-mycart__info {
+        .tf-mycart__info {
             display: flex;
             align-items: center;
 
-            .kt-mycart__icon {
+            .tf-mycart__icon {
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -31,12 +31,12 @@
                     position: absolute;                  
                 }
 
-                @include kt-rounded {
+                @include tf-rounded {
                     border-radius: 4px;
                 }
             }
 
-            .kt-mycart__title {
+            .tf-mycart__title {
                 padding-left: 1rem;
                 color: #fff;
                 font-size: 1.3rem;
@@ -45,7 +45,7 @@
             }
         }
 
-        .kt-mycart__button {
+        .tf-mycart__button {
             display: flex;  
             align-items: center;
 
@@ -55,50 +55,50 @@
         }
     }
 
-    .kt-mycart__body {
+    .tf-mycart__body {
         margin: 0.5rem 0;
 
-        .kt-mycart__item {
-            border-bottom: 1px solid kt-base-color(grey, 2);
+        .tf-mycart__item {
+            border-bottom: 1px solid tf-base-color(grey, 2);
 
-            .kt-mycart__container {
+            .tf-mycart__container {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
                 padding: 1.5rem 2rem;                
 
-                .kt-mycart__info {
-                    .kt-mycart__title {
+                .tf-mycart__info {
+                    .tf-mycart__title {
                         color: #5e5b70;
                         font-size: 1.1rem;
                         font-weight: 500;
                     }
 
-                    .kt-mycart__desc {
+                    .tf-mycart__desc {
                         padding: 0.5rem 0;
-                        color: kt-base-color(label, 2);
+                        color: tf-base-color(label, 2);
                         font-weight: 400;
                     }
 
-                    .kt-mycart__action {
+                    .tf-mycart__action {
                         display: flex;
                         align-items: center;                          
 
-                        .kt-mycart__price {
+                        .tf-mycart__price {
                             margin-right: 0.5rem;
-                            color: kt-base-color(label, 3);
+                            color: tf-base-color(label, 3);
                             font-size: 1.2rem;
                             font-weight: 500;
                         }
 
-                        .kt-mycart__text {
-                            color: kt-base-color(label, 2);
+                        .tf-mycart__text {
+                            color: tf-base-color(label, 2);
                             font-weight: 400;
                         }
 
-                        .kt-mycart__quantity {
+                        .tf-mycart__quantity {
                             margin-left: 0.5rem;
-                            color: kt-base-color(label, 3);
+                            color: tf-base-color(label, 3);
                             font-size: 1.2rem;
                             font-weight: 500;
                         }
@@ -123,7 +123,7 @@
                     }
                 }
 
-                .kt-mycart__pic {
+                .tf-mycart__pic {
                     width: 5rem;                    
 
                     img {   
@@ -144,15 +144,15 @@
         }    
     }
 
-    .kt-mycart__footer {       
+    .tf-mycart__footer {       
         padding: 0.4rem 2rem 1.5rem 2rem;
 
-        .kt-mycart__section { 
+        .tf-mycart__section { 
             display: flex;
             align-items: center;
             justify-content: space-between;
 
-            .kt-mycart__subtitel {
+            .tf-mycart__subtitel {
                 span {
                     display: block;
                     color: #5e5b70;
@@ -170,11 +170,11 @@
                 } 
             }
 
-            .kt-mycart__prices {
+            .tf-mycart__prices {
                 span {
                     display: block;
                     text-align: right;
-                    color: kt-base-color(label, 2);
+                    color: tf-base-color(label, 2);
                     font-size: 1.2rem;
                     font-weight: 500;
 
@@ -190,7 +190,7 @@
             }
         } 
         
-        .kt-mycart__button {
+        .tf-mycart__button {
             margin: 1.5rem 0 0.8rem 0;
         }
     }

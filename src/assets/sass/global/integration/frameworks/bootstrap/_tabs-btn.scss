@@ -5,7 +5,7 @@
 
 // Base
 .nav-pills.nav-tabs-btn {
-    @include kt-clearfix();
+    @include tf-clearfix();
     display: flex;
     justify-content: center; 
 
@@ -47,7 +47,7 @@
         font-size: 1rem;
         font-weight: 400;
 
-        @include kt-icons-style(font-size, (fontawesome: 1.2rem, lineawesome: 1.3rem, flaticon: 1.4rem) );
+        @include tf-icons-style(font-size, (fontawesome: 1.2rem, lineawesome: 1.3rem, flaticon: 1.4rem) );
 
         i {
             vertical-align: middle;
@@ -72,7 +72,7 @@
     }
 
     // Portlet Tabs
-    .kt-portlet--tabs & {
+    .tf-portlet--tabs & {
         margin: 0 0 -1px 0;
 
         &.nav-tabs-btn-2x {
@@ -117,30 +117,30 @@
 
         .nav-link-icon {
             i {
-               color: kt-base-color(label, 1);
+               color: tf-base-color(label, 1);
            }
        }
 
        .nav-link-title {
-           color: kt-base-color(label, 2);
+           color: tf-base-color(label, 2);
        }           
    }
 
    // state colors
-   @each $name, $color in $kt-state-colors {
+   @each $name, $color in $tf-state-colors {
         &.nav-pills-btn-#{$name} {                  
             a.nav-link {
                 &.active {
-                    background-color: kt-get($color, base);
+                    background-color: tf-get($color, base);
 
                     .nav-link-icon {
                         i {
-                            color: kt-get($color, inverse) !important;
+                            color: tf-get($color, inverse) !important;
                         }
                     }
 
                     .nav-link-title {
-                       color: kt-get($color, inverse) !important;
+                       color: tf-get($color, inverse) !important;
                     } 
                }                    
            }
@@ -150,7 +150,7 @@
 
 
 // Mobile Mode
-@include kt-mobile {
+@include tf-mobile {
     .nav-pills.nav-tabs-btn {    
         .nav {
             .nav-item {

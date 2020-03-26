@@ -5,7 +5,7 @@ import { LayoutConfigService } from '../../../core/_base/layout';
 import { HtmlClassService } from '../html-class.service';
 
 @Component({
-	selector: 'kt-brand',
+	selector: 'tf-brand',
 	templateUrl: './brand.component.html',
 	styleUrls: ['brand.component.scss']
 })

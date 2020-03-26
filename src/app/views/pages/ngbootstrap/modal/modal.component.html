@@ -1,16 +1,16 @@
-<kt-notice [icon]="'flaticon-warning kt-font-primary'">
+<tf-notice [icon]="'flaticon-warning tf-font-primary'">
 	For more info please check the components's official demos & documentation 
-	<a class="kt-link" href="https://ng-bootstrap.github.io/#/components/alert/examples" target="_blank">demos & documentation</a>
-</kt-notice>
+	<a class="tf-link" href="https://ng-bootstrap.github.io/#/components/alert/examples" target="_blank">demos & documentation</a>
+</tf-notice>
 
 <div class="row">
 	<div class="col-xl-6">
-		<kt-material-preview [viewItem]="exampleModalWithDefaultOptions">
-			<div class="kt-section">
-				<span *ngIf="closeResult" class="kt-section__sub">
+		<tf-material-preview [viewItem]="exampleModalWithDefaultOptions">
+			<div class="tf-section">
+				<span *ngIf="closeResult" class="tf-section__sub">
 					<pre>{{closeResult}}</pre>
 				</span>
-				<div class="kt-section__content">
+				<div class="tf-section__content">
 					<ng-template #content let-c="close" let-d="dismiss">
 						<div class="modal-header">
 							<h4 class="modal-title">Basic demo</h4>
@@ -29,26 +29,26 @@
 					<button class="btn btn-primary" (click)="open(content)">Launch demo modal</button>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 
-		<kt-material-preview [viewItem]="exampleComponentsAsContent">
+		<tf-material-preview [viewItem]="exampleComponentsAsContent">
 
-			<div class="kt-section">
-				<div class="kt-section__sub">
+			<div class="tf-section">
+				<div class="tf-section__sub">
 					<p>You can pass an existing component as content of the modal window. In this case remember to add content component as an
 						<code>entryComponents</code> section of your
 						<code>NgModule</code>.
 					</p>
 				</div>
-				<div class="kt-section__content">
+				<div class="tf-section__content">
 					<button class="btn btn-info" (click)="open2()">Launch demo modal</button>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 
-		<kt-material-preview [viewItem]="exampleModalWithCustomClass">
-			<div class="kt-section">
-				<div class="kt-section__content">
+		<tf-material-preview [viewItem]="exampleModalWithCustomClass">
+			<div class="tf-section">
+				<div class="tf-section__content">
 					<ng-template #content3 let-c="close" let-d="dismiss">
 						<div class="modal-header">
 							<h4 class="modal-title">Modal title</h4>
@@ -68,12 +68,12 @@
 					<button class="btn btn-focus" (click)="open3(content3)">Launch demo modal</button>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 
 
-		<kt-material-preview [viewItem]="exampleScrollableFixedContent">
-			<div class="kt-section">
-				<div class="kt-section__content">
+		<tf-material-preview [viewItem]="exampleScrollableFixedContent">
+			<div class="tf-section">
+				<div class="tf-section__content">
 					<ng-template #content4 let-c="close" let-d="dismiss">
 						<div class="modal-header">
 							<h4 class="modal-title">Scrollable fixed content</h4>
@@ -96,11 +96,11 @@
 					<button class="btn btn-metal" (click)="open(content4)">Launch demo modal</button>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 
-		<kt-material-preview [viewItem]="exampleScrollingLongContent">
-			<div class="kt-section">
-				<div class="kt-section__content">
+		<tf-material-preview [viewItem]="exampleScrollingLongContent">
+			<div class="tf-section">
+				<div class="tf-section__content">
 					<ng-template #content5 let-c="close" let-d="dismiss">
 						<div class="modal-header">
 							<h4 class="modal-title">Scrollable long content</h4>
@@ -139,14 +139,14 @@
 					<button class="btn btn-brand" (click)="open(content5)">Launch demo modal</button>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 
 	</div>
 
 	<div class="col-xl-6">
-		<kt-material-preview [viewItem]="exampleLargeModal">
-			<div class="kt-section">
-				<div class="kt-section__content">
+		<tf-material-preview [viewItem]="exampleLargeModal">
+			<div class="tf-section">
+				<div class="tf-section__content">
 					<ng-template #content6 let-c="close" let-d="dismiss">
 						<div class="modal-header">
 							<h4 class="modal-title">Modal title</h4>
@@ -167,11 +167,11 @@
 					<button class="btn btn-success" (click)="openLarge(content6)">Launch demo modal</button>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 
-		<kt-material-preview [viewItem]="exampleSmallModal">
-			<div class="kt-section">
-				<div class="kt-section__content">
+		<tf-material-preview [viewItem]="exampleSmallModal">
+			<div class="tf-section">
+				<div class="tf-section__content">
 					<ng-template #content7 let-c="close" let-d="dismiss">
 						<div class="modal-header">
 							<h4 class="modal-title">Modal title</h4>
@@ -192,11 +192,11 @@
 					<button class="btn btn-warning" (click)="openSmall(content7)">Launch demo modal</button>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 
-		<kt-material-preview [viewItem]="exampleVerticallyCentered">
-			<div class="kt-section">
-				<div class="kt-section__content">
+		<tf-material-preview [viewItem]="exampleVerticallyCentered">
+			<div class="tf-section">
+				<div class="tf-section__content">
 					<ng-template #content8 let-c="close" let-d="dismiss">
 						<div class="modal-header">
 							<h4 class="modal-title">Modal title</h4>
@@ -217,6 +217,6 @@
 					<button class="btn btn-danger" (click)="openCentred(content7)">Launch demo modal</button>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 	</div>
 </div>

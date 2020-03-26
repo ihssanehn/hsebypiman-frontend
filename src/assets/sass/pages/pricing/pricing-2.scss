@@ -11,15 +11,15 @@
 // Layout config
 @import "../../global/layout/config.scss";
 
-.kt-pricing-2 {
+.tf-pricing-2 {
 	padding: 0 0 2.86rem 0;
 
-	.kt-pricing-2__head {
+	.tf-pricing-2__head {
 		text-align: center;
 		background-color: #22B9FF;
 		padding: 8.57rem 0 25rem 0;
 
-		.kt-pricing-2__title {
+		.tf-pricing-2__title {
 			text-align:center;
 			margin-top: -3.57rem;
 		}
@@ -33,29 +33,29 @@
 			  	margin-right: -0.21rem;
 				padding: 1rem 1.93rem 1rem 1.93rem;
 				background: #fff;
-				color: kt-base-color(label, 2);
+				color: tf-base-color(label, 2);
 
 				&.active {
-					background: kt-brand-color();
-					color: kt-brand-color(inverse);
+					background: tf-brand-color();
+					color: tf-brand-color(inverse);
 				}
 			}
 		}
 	}
 
-	.kt-pricing-2__content {
-		.kt-pricing-2__container {
+	.tf-pricing-2__content {
+		.tf-pricing-2__container {
 			margin: 0 auto;
 			max-width: 75%;
 			margin-top: -21.64rem;
 
-			.kt-pricing-2__items {
+			.tf-pricing-2__items {
 				background-color: #fff;
 				position: relative;
 				text-align: center;
 				padding: 2.14rem 0.71rem 2.14rem 0.71rem;
 
-				.kt-pricing-2__item {
+				.tf-pricing-2__item {
 					border-right: 1px solid #e1f1ff;
 					width: 100%;
 
@@ -63,13 +63,13 @@
 						border-right: none;
 					}
 
-					.kt-pricing-2__visual {
+					.tf-pricing-2__visual {
 						position: relative;
 						margin-top: 6.8rem;
 						left: 50%;
     					transform: translateX(-50%) translateY(-50%);
 
-						.kt-pricing-2__hexagon {
+						.tf-pricing-2__hexagon {
 							height: 0;
 							background: #F4FCFF;
 							left: 50%;
@@ -103,7 +103,7 @@
 							}
 						}
 
-						.kt-pricing-2__icon {
+						.tf-pricing-2__icon {
 							margin-top: 0.8rem;
 							left: 50%;
     						transform: translateX(-50%) translateY(-50%);
@@ -115,37 +115,37 @@
 						}
 					}
 
-					.kt-pricing-2__subtitle {
+					.tf-pricing-2__subtitle {
 						margin-top: 17.1rem;
 						font-size: 1.64rem;
-						color: kt-base-color(label, 3);
+						color: tf-base-color(label, 3);
 					}
 
-					.kt-pricing-2__features {
+					.tf-pricing-2__features {
 						margin: 2.14rem 0 1.8rem;
 						line-height: 2.2;
 
 						> span {
 						  	display: block;
-						  	color: kt-base-color(label, 2);
+						  	color: tf-base-color(label, 2);
 						  	font-weight: 500;
 						  }
 					}
 
-					.kt-pricing-2__price {
+					.tf-pricing-2__price {
 						font-size: 3.21rem;
 						font-weight: 600;
-						color: kt-base-color(label, 3);
+						color: tf-base-color(label, 3);
 					}
 
-					.kt-pricing-2__label {
+					.tf-pricing-2__label {
 						margin: 0.64rem 0 0 0.35rem;
 						font-size: 25px;
 						position: absolute;
-						color: kt-base-color(label, 2);
+						color: tf-base-color(label, 2);
 					}
 
-					.kt-pricing-2__btn {
+					.tf-pricing-2__btn {
 						margin: 2.14rem auto 2.14rem auto;
 
 						> .btn {
@@ -159,16 +159,16 @@
 	 }
 }
 
-@include kt-minimal-desktop() {
-	.kt-pricing-2 {
-		.kt-pricing-2__content {
+@include tf-minimal-desktop() {
+	.tf-pricing-2 {
+		.tf-pricing-2__content {
 			padding: 0 2.14rem 0 2.14rem;
 
-			.kt-pricing-2__container {
+			.tf-pricing-2__container {
 				max-width: 90%;
 
-				.kt-pricing-2__items {
-					.kt-pricing-2__item {
+				.tf-pricing-2__items {
+					.tf-pricing-2__item {
 				    	border-right: 1px solid #e1f1ff;
 				    	padding-left: 0.71rem;
 				    	padding-right: 0.71rem;
@@ -177,7 +177,7 @@
 						border-right: none;
 					}
 
-						.kt-pricing-2__btn {
+						.tf-pricing-2__btn {
 							margin: 1.43rem auto 3.6rem auto;
 						}
 				    }
@@ -187,17 +187,17 @@
 	}
 }
 
-@include kt-tablet() {
-	.kt-pricing-2 {
-		.kt-pricing-2__content {
+@include tf-tablet() {
+	.tf-pricing-2 {
+		.tf-pricing-2__content {
 			padding: 0 2.14rem 0 2.14rem;
 
-			.kt-pricing-2__container {
+			.tf-pricing-2__container {
 				max-width: 90%;
 
-				.kt-pricing-2__items {
+				.tf-pricing-2__items {
 
-				    .kt-pricing-2__item {
+				    .tf-pricing-2__item {
 				    	border-bottom: 1px solid #e1f1ff;
 				    	border-right: none;
 				    	padding-left: 0.71rem;
@@ -209,7 +209,7 @@
 							margin-bottom: 0;
 						}
 
-						.kt-pricing-2__btn {
+						.tf-pricing-2__btn {
 							margin: 1.43rem auto 3.6rem auto;
 						}
 				    }
@@ -219,10 +219,10 @@
 	}
 }
 
-@include kt-mobile() {
-	.kt-pricing-2 {
-		.kt-pricing-2__head {
-			.kt-pricing-2__title {
+@include tf-mobile() {
+	.tf-pricing-2 {
+		.tf-pricing-2__head {
+			.tf-pricing-2__title {
 				top: 4%;
 
 				> h1 {
@@ -239,12 +239,12 @@
 			}
 	    }
 
-		.kt-pricing-2__content {
-			.kt-pricing-2__container {
+		.tf-pricing-2__content {
+			.tf-pricing-2__container {
 				width: 100%;
 
-				.kt-pricing-2__items {
-				    .kt-pricing-2__item {
+				.tf-pricing-2__items {
+				    .tf-pricing-2__item {
 				    	border-bottom: 1px solid #e1f1ff;
 				    	border-right: none;
 				    	padding-left: 0.71rem;
@@ -256,7 +256,7 @@
 							margin-bottom: 0;
 						}
 
-						.kt-pricing-2__btn {
+						.tf-pricing-2__btn {
 							margin: 1.43rem auto 3.6rem auto;
 						}
 				    }

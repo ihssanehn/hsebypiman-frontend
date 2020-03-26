@@ -104,7 +104,7 @@ export class SidenavAutosizeExample {
 	};
 
 @Component({
-	selector: 'kt-sidenav',
+	selector: 'tf-sidenav',
 	templateUrl: './sidenav.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	styles: [`

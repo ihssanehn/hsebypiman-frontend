@@ -4,7 +4,7 @@
 
 
 
-@mixin kt-link-color($default, $hover) {
+@mixin tf-link-color($default, $hover) {
    	color: $default;
 
     &:hover {

@@ -5,41 +5,41 @@
 
 
 // Base
-.kt-pulse {
+.tf-pulse {
     position: relative;
     
-    .kt-pulse__ring {
+    .tf-pulse__ring {
         display: block;
         border-radius: 40px;
         height: 40px;
         width: 40px;
         position: absolute;
-        animation: kt-pulse 3.5s ease-out;
+        animation: tf-pulse 3.5s ease-out;
         animation-iteration-count: infinite; 
         opacity: 0;
         border-width: 3px;
         border-style: solid;
-        border-color: kt-base-color(grey, 4);
+        border-color: tf-base-color(grey, 4);
 
-        @include kt-hack-ie {
+        @include tf-hack-ie {
             top: 2px;
             left: 2px;
         }
     }
 
     // State Colors 
-    @each $name, $color in $kt-state-colors {
-        &.kt-pulse--#{$name} {
-            .kt-pulse__ring {
-                //background-color: rgba(kt-get($color, base), 0.8);
-                border-color: rgba(kt-get($color, base), 0.8);
+    @each $name, $color in $tf-state-colors {
+        &.tf-pulse--#{$name} {
+            .tf-pulse__ring {
+                //background-color: rgba(tf-get($color, base), 0.8);
+                border-color: rgba(tf-get($color, base), 0.8);
             }
         }
     }    
 }
 
 
-@keyframes kt-pulse {
+@keyframes tf-pulse {
     0% {-webkit-transform: scale(0.1, 0.1); opacity: 0.0;}
     60% {-webkit-transform: scale(0.1, 0.1); opacity: 0.0;}
     65% {opacity: 1;}

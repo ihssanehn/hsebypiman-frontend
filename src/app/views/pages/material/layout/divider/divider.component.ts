@@ -91,7 +91,7 @@ export class DividerListExample {}
 	};
 
 @Component({
-	selector: 'kt-divider',
+	selector: 'tf-divider',
 	templateUrl: './divider.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	styles: [`

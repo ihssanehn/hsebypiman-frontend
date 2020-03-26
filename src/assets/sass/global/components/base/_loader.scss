@@ -6,7 +6,7 @@
 
 
 // Config
-$kt-loader-config: (
+$tf-loader-config: (
 	default: (
 		size: 1.4rem,
 		width: 2px
@@ -22,26 +22,26 @@ $kt-loader-config: (
 );
 
 // Base
-@mixin kt-loader-base() {
+@mixin tf-loader-base() {
 	// Spinner markup
-	.kt-loader {
+	.tf-loader {
 	    display: inline-block;
-	    width: kt-get($kt-loader-config, default, size);
-	    height: kt-get($kt-loader-config, default, size);
+	    width: tf-get($tf-loader-config, default, size);
+	    height: tf-get($tf-loader-config, default, size);
 	    margin: 0 auto;
 	    border-radius: 100%;  
-	    background-color: kt-base-color(grey, 1);
+	    background-color: tf-base-color(grey, 1);
 	    opacity: 0;
-	    animation: kt-loader-scaleout 0.9s infinite ease-in-out;
+	    animation: tf-loader-scaleout 0.9s infinite ease-in-out;
 
-	    &.kt-loader--lg {
-			width: kt-get($kt-loader-config, lg, size);
-	    	height: kt-get($kt-loader-config, lg, size);
+	    &.tf-loader--lg {
+			width: tf-get($tf-loader-config, lg, size);
+	    	height: tf-get($tf-loader-config, lg, size);
 		}
 
-		&.kt-loader--sm {
-			width: kt-get($kt-loader-config, sm, size);
-	    	height: kt-get($kt-loader-config, sm, size);
+		&.tf-loader--sm {
+			width: tf-get($tf-loader-config, sm, size);
+	    	height: tf-get($tf-loader-config, sm, size);
 		}
 
 		.btn & {
@@ -51,14 +51,14 @@ $kt-loader-config: (
 	}
 
 	// States
-	@each $name, $color in $kt-state-colors {
-        .kt-loader.kt-loader--#{$name} {
-            background-color: kt-get($color, base);
+	@each $name, $color in $tf-state-colors {
+        .tf-loader.tf-loader--#{$name} {
+            background-color: tf-get($color, base);
         }
     }
 
 	// Spinner animation
-	@keyframes kt-loader-scaleout {
+	@keyframes tf-loader-scaleout {
 	    0% { 
 	        opacity: 0.3;
 	        transform: scale(0);
@@ -70,9 +70,9 @@ $kt-loader-config: (
 	}
 }
 
-@mixin kt-loader-skin($color) {
+@mixin tf-loader-skin($color) {
 	background-color: $color;
 }
 
 // Build
-@include kt-loader-base();
+@include tf-loader-base();

@@ -104,13 +104,13 @@ export class HtmlClassService {
 		}
 
 		if (objectPath.has(this.config, 'width')) {
-			document.body.classList.add('kt-page--' + objectPath.get(this.config, 'width'));
+			document.body.classList.add('tf-page--' + objectPath.get(this.config, 'width'));
 		}
 
 		// Offcanvas directions
-		document.body.classList.add('kt-quick-panel--right');
-		document.body.classList.add('kt-demo-panel--right');
-		document.body.classList.add('kt-offcanvas-panel--right');
+		document.body.classList.add('tf-quick-panel--right');
+		document.body.classList.add('tf-demo-panel--right');
+		document.body.classList.add('tf-offcanvas-panel--right');
 	}
 
 	/**
@@ -125,16 +125,16 @@ export class HtmlClassService {
 	private initHeader() {
 		// Fixed header
 		if (objectPath.get(this.config, 'header.self.fixed.desktop.enabled')) {
-			document.body.classList.add('kt-header--fixed');
-			objectPath.push(this.classes, 'header', 'kt-header--fixed');
-			document.body.classList.add('kt-header--minimize-' + objectPath.get(this.config, 'header.self.fixed.desktop.mode'));
+			document.body.classList.add('tf-header--fixed');
+			objectPath.push(this.classes, 'header', 'tf-header--fixed');
+			document.body.classList.add('tf-header--minimize-' + objectPath.get(this.config, 'header.self.fixed.desktop.mode'));
 		} else {
-			document.body.classList.add('kt-header--static');
+			document.body.classList.add('tf-header--static');
 		}
 
 		if (objectPath.get(this.config, 'header.self.fixed.mobile')) {
-			document.body.classList.add('kt-header-mobile--fixed');
-			objectPath.push(this.classes, 'header_mobile', 'kt-header-mobile--fixed');
+			document.body.classList.add('tf-header-mobile--fixed');
+			objectPath.push(this.classes, 'header_mobile', 'tf-header-mobile--fixed');
 		}
 	}
 
@@ -144,15 +144,15 @@ export class HtmlClassService {
 	private initSubheader() {
 		// Fixed content head
 		if (objectPath.get(this.config, 'subheader.fixed')) {
-			document.body.classList.add('kt-subheader--fixed');
+			document.body.classList.add('tf-subheader--fixed');
 		}
 
 		if (objectPath.get(this.config, 'subheader.display')) {
-			document.body.classList.add('kt-subheader--enabled');
+			document.body.classList.add('tf-subheader--enabled');
 		}
 
 		if (objectPath.has(this.config, 'subheader.style')) {
-			document.body.classList.add('kt-subheader--' + objectPath.get(this.config, 'subheader.style'));
+			document.body.classList.add('tf-subheader--' + objectPath.get(this.config, 'subheader.style'));
 		}
 	}
 
@@ -164,34 +164,34 @@ export class HtmlClassService {
 			return;
 		}
 
-		document.body.classList.add('kt-aside--enabled');
+		document.body.classList.add('tf-aside--enabled');
 
 		if (objectPath.get(this.config, 'aside.self.skin')) {
-			objectPath.push(this.classes, 'aside', 'kt-aside--skin-' + objectPath.get(this.config, 'aside.self.skin'));
-			document.body.classList.add('kt-aside--skin-' + objectPath.get(this.config, 'aside.self.skin'));
-			objectPath.push(this.classes, 'aside_menu', 'kt-aside-menu--skin-' + objectPath.get(this.config, 'aside.self.skin'));
+			objectPath.push(this.classes, 'aside', 'tf-aside--skin-' + objectPath.get(this.config, 'aside.self.skin'));
+			document.body.classList.add('tf-aside--skin-' + objectPath.get(this.config, 'aside.self.skin'));
+			objectPath.push(this.classes, 'aside_menu', 'tf-aside-menu--skin-' + objectPath.get(this.config, 'aside.self.skin'));
 
-			document.body.classList.add('kt-aside__brand--skin-' + objectPath.get(this.config, 'aside.self.skin'));
-			objectPath.push(this.classes, 'brand', 'kt-aside__brand--skin-' + objectPath.get(this.config, 'aside.self.skin'));
+			document.body.classList.add('tf-aside__brand--skin-' + objectPath.get(this.config, 'aside.self.skin'));
+			objectPath.push(this.classes, 'brand', 'tf-aside__brand--skin-' + objectPath.get(this.config, 'aside.self.skin'));
 		}
 
 		// Fixed Aside
 		if (objectPath.get(this.config, 'aside.self.fixed')) {
-			document.body.classList.add('kt-aside--fixed');
-			objectPath.push(this.classes, 'aside', 'kt-aside--fixed');
+			document.body.classList.add('tf-aside--fixed');
+			objectPath.push(this.classes, 'aside', 'tf-aside--fixed');
 		} else {
-			document.body.classList.add('kt-aside--static');
+			document.body.classList.add('tf-aside--static');
 		}
 
 		// Default fixed
 		if (objectPath.get(this.config, 'aside.self.minimize.default')) {
-			document.body.classList.add('kt-aside--minimize');
+			document.body.classList.add('tf-aside--minimize');
 		}
 
 		// Menu
 		// Dropdown Submenu
 		if (objectPath.get(this.config, 'aside.self.fixed') !== true && objectPath.get(this.config, 'aside.menu.dropdown')) {
-			objectPath.push(this.classes, 'aside_menu', 'kt-aside-menu--dropdown');
+			objectPath.push(this.classes, 'aside_menu', 'tf-aside-menu--dropdown');
 			// enable menu dropdown
 		}
 	}
@@ -201,15 +201,15 @@ export class HtmlClassService {
 	 */
 	private initAsideSecondary() {
 		if (objectPath.get(this.config, 'aside-secondary.self.display')) {
-			document.body.classList.add('kt-aside-secondary--enabled');
+			document.body.classList.add('tf-aside-secondary--enabled');
 		}
 
 		if (objectPath.get(this.config, 'aside-secondary.self.expanded') === true && objectPath.get(this.config, 'aside-secondary.self.layout') !== 'layout-2') {
-			document.body.classList.add('kt-aside-secondary--expanded');
+			document.body.classList.add('tf-aside-secondary--expanded');
 		}
 
 		if (objectPath.get(this.config, 'aside-secondary.self.layout') === 'layout-3') {
-			document.body.classList.add('kt-aside-secondary--static');
+			document.body.classList.add('tf-aside-secondary--static');
 		}
 	}
 

@@ -6,9 +6,9 @@
 
 
 // Base
-@mixin kt-bootstrap-select-base() {
-    $kt-general-padding: 10px 15px;
-    $kt-title-padding: 10px 15px;
+@mixin tf-bootstrap-select-base() {
+    $tf-general-padding: 10px 15px;
+    $tf-title-padding: 10px 15px;
 
     // Bootstrap select base
    .bootstrap-select {
@@ -17,7 +17,7 @@
             outline: none !important;
             padding: $input-btn-padding-y $input-btn-padding-x;
 
-            @include kt-rounded {
+            @include tf-rounded {
                 border-radius: $input-border-radius !important;
             }
 
@@ -30,7 +30,7 @@
                 margin-right: -2px;
                 font-size: 0.6rem;
                 display: inline-block;
-                @include kt-flaticon2-icon(kt-get($kt-action-bold-icons, down));
+                @include tf-flaticon2-icon(tf-get($tf-action-bold-icons, down));
             }
 
             &:before {
@@ -46,14 +46,14 @@
                     display: block;
                     position: relative;
                     outline: none !important;
-                    padding: $kt-general-padding;
+                    padding: $tf-general-padding;
 
                     &:hover {
                         text-decoration: none;
                     }
 
                     // icons
-                    @include kt-icons-size((fontawesome: 1.2rem, lineawesome: 1.2rem, flaticon: 1.1rem));
+                    @include tf-icons-size((fontawesome: 1.2rem, lineawesome: 1.2rem, flaticon: 1.1rem));
 
                     i {
                         vertical-align: middle;
@@ -63,7 +63,7 @@
                 &.selected {
                     > a {
                         span.check-mark {
-                            @include kt-la-icon('\f17b');
+                            @include tf-la-icon('\f17b');
                             top: 50%;
                             position: absolute;
                             margin-top: - (0.85rem / 2);
@@ -87,13 +87,13 @@
                 }
 
                 &.no-results {
-                    padding: $kt-general-padding;
+                    padding: $tf-general-padding;
                 }
             }
         }
 
         .popover-title {
-            padding: $kt-title-padding;
+            padding: $tf-title-padding;
             margin-bottom: 5px;
 
             .close {
@@ -104,13 +104,13 @@
         .bs-searchbox,
         .bs-actionsbox,
         .bs-donebutton {
-            padding: $kt-title-padding;
+            padding: $tf-title-padding;
         }
     }
 }
 
 // Skin
-@mixin kt-bootstrap-select-skin() {
+@mixin tf-bootstrap-select-skin() {
     // Bootstrap select base
    .bootstrap-select {
         // dropdown button
@@ -136,8 +136,8 @@
                 }
 
                 .filter-option {
-                    @include kt-icons {
-                        color: kt-base-color(label, 2);
+                    @include tf-icons {
+                        color: tf-base-color(label, 2);
                     }
                 }
             }
@@ -146,9 +146,9 @@
                 color:  $input-placeholder-color;
 
                 // state colors
-                @each $name, $color in $kt-state-colors {
+                @each $name, $color in $tf-state-colors {
                     &.btn-#{$name} {
-                        color: kt-get($color, inverse);
+                        color: tf-get($color, inverse);
 
                         > .filter-option {
                             opacity: 0.8;
@@ -172,14 +172,14 @@
         // Validation
         &.is-invalid {
             .btn.dropdown-toggle {
-                border-color: kt-state-color(danger, base);
+                border-color: tf-state-color(danger, base);
 
             }
         }
 
         &.is-valid {
             .btn.dropdown-toggle {
-                border-color: kt-state-color(success, base);
+                border-color: tf-state-color(success, base);
             }
         }
 
@@ -188,48 +188,48 @@
             > li {
                 > a {
                     .text {
-                        color: kt-base-color(label, 3);
+                        color: tf-base-color(label, 3);
 
                         small {
-                            color: kt-base-color(label, 1);
+                            color: tf-base-color(label, 1);
                         }
                     }
 
                     span.check-mark {
-                        color: kt-base-color(label, 2);
+                        color: tf-base-color(label, 2);
                     }
 
-                    @include kt-icons {
-                        color: kt-base-color(label, 1);
+                    @include tf-icons {
+                        color: tf-base-color(label, 1);
                     }
                 }
 
                 &.selected,
                 &:hover {
                     > a {
-                        background: kt-base-color(grey, 1);
+                        background: tf-base-color(grey, 1);
 
                         .text {
-                            color: kt-base-color(label, 3);
+                            color: tf-base-color(label, 3);
                         }
 
-                        @include kt-icons {
-                            color: kt-base-color(label, 1);
+                        @include tf-icons {
+                            color: tf-base-color(label, 1);
                         }
 
                         span.check-mark {
-                            color: kt-base-color(label, 2);
+                            color: tf-base-color(label, 2);
                         }
                     }
                 }
 
                 &.dropdown-header {
-                     color: kt-base-color(label, 2);
+                     color: tf-base-color(label, 2);
                 }
 
                 &.selected {
                     > a {
-                        background: kt-base-color(grey, 1);
+                        background: tf-base-color(grey, 1);
                     }
                 }
 
@@ -240,36 +240,36 @@
                 }
 
                 &.divider {
-                    border-bottom: 1px solid kt-base-color(grey, 1);
+                    border-bottom: 1px solid tf-base-color(grey, 1);
                 }
 
                 &.active:not(.selected) {
                     > a {
-                        background: kt-state-color(primary, base);
+                        background: tf-state-color(primary, base);
 
                         .text {
-                            color: kt-state-color(primary, inverse);
+                            color: tf-state-color(primary, inverse);
                         }
 
-                        @include kt-icons {
-                            color: kt-state-color(primary, inverse);
+                        @include tf-icons {
+                            color: tf-state-color(primary, inverse);
                         }
 
                         span.check-mark {
-                            color: kt-state-color(primary, inverse);
+                            color: tf-state-color(primary, inverse);
                         }
                     }
                 }
 
                 &.no-results {
-                    color: kt-base-color(label, 2);
+                    color: tf-base-color(label, 2);
                 }
             }
         }
 
         // menu header
         .popover-title {
-            background: kt-base-color(grey, 1);
+            background: tf-base-color(grey, 1);
             border: 0;
         }
 
@@ -281,7 +281,7 @@
 
 
 // Base
-@include kt-bootstrap-select-base();
+@include tf-bootstrap-select-base();
 
 // Skin
-@include kt-bootstrap-select-skin();
+@include tf-bootstrap-select-skin();

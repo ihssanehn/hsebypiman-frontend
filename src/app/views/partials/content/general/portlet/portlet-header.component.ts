@@ -1,4 +1,4 @@
-import { KtDialogService, StickyDirective } from '../../../../../core/_base/layout';
+import { TfDialogService, StickyDirective } from '../../../../../core/_base/layout';
 // Angular
 import {
 	AfterViewInit,
@@ -17,19 +17,19 @@ import {
 import { Observable, Subscription } from 'rxjs';
 
 @Component({
-	selector: 'kt-portlet-header',
+	selector: 'tf-portlet-header',
 	styleUrls: ['portlet-header.component.scss'],
 	template: `
-		<div class="kt-portlet__head-label" [hidden]="noTitle">
-			<span class="kt-portlet__head-icon" #refIcon [hidden]="hideIcon">
-				<ng-content *ngIf="!icon" select="[ktPortletIcon]"></ng-content>
+		<div class="tf-portlet__head-label" [hidden]="noTitle">
+			<span class="tf-portlet__head-icon" #refIcon [hidden]="hideIcon">
+				<ng-content *ngIf="!icon" select="[tfPortletIcon]"></ng-content>
 				<i *ngIf="icon" [ngClass]="icon"></i>
 			</span>
-			<ng-content *ngIf="!title" select="[ktPortletTitle]"></ng-content>
-			<h3 *ngIf="title" class="kt-portlet__head-title" [innerHTML]="title"></h3>
+			<ng-content *ngIf="!title" select="[tfPortletTitle]"></ng-content>
+			<h3 *ngIf="title" class="tf-portlet__head-title" [innerHTML]="title"></h3>
 		</div>
-		<div class="kt-portlet__head-toolbar" #refTools [hidden]="hideTools">
-			<ng-content select="[ktPortletTools]"></ng-content>
+		<div class="tf-portlet__head-toolbar" #refTools [hidden]="hideTools">
+			<ng-content select="[tfPortletTools]"></ng-content>
 		</div>`
 })
 export class PortletHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
@@ -48,8 +48,8 @@ export class PortletHeaderComponent implements OnInit, AfterViewInit, OnDestroy 
 	@Input() viewLoading$: Observable<boolean>;
 	viewLoading = false;
 
-	@HostBinding('class') classes = 'kt-portlet__head';
-	@HostBinding('attr.ktSticky') stickyDirective: StickyDirective;
+	@HostBinding('class') classes = 'tf-portlet__head';
+	@HostBinding('attr.tfSticky') stickyDirective: StickyDirective;
 
 	@ViewChild('refIcon', {static: true}) refIcon: ElementRef;
 	hideIcon: boolean;
@@ -61,7 +61,7 @@ export class PortletHeaderComponent implements OnInit, AfterViewInit, OnDestroy 
 	private subscriptions: Subscription[] = [];
 	private isScrollDown = false;
 
-	constructor(private el: ElementRef, @Inject(PLATFORM_ID) private platformId: string, private ktDialogService: KtDialogService) {
+	constructor(private el: ElementRef, @Inject(PLATFORM_ID) private platformId: string, private TfDialogService: TfDialogService) {
 		this.stickyDirective = new StickyDirective(this.el, this.platformId);
 	}
 
@@ -82,9 +82,9 @@ export class PortletHeaderComponent implements OnInit, AfterViewInit, OnDestroy 
 		if (this.sticky) {
 			Promise.resolve(null).then(() => {
 				// get boundary top margin for sticky header
-				const headerElement = document.querySelector('.kt-header') as HTMLElement;
-				const subheaderElement = document.querySelector('.kt-subheader') as HTMLElement;
-				const headerMobileElement = document.querySelector('.kt-header-mobile') as HTMLElement;
+				const headerElement = document.querySelector('.tf-header') as HTMLElement;
+				const subheaderElement = document.querySelector('.tf-subheader') as HTMLElement;
+				const headerMobileElement = document.querySelector('.tf-header-mobile') as HTMLElement;
 
 				let height = 0;
 
@@ -94,15 +94,15 @@ export class PortletHeaderComponent implements OnInit, AfterViewInit, OnDestroy 
 						height += headerMobileElement.offsetHeight;
 					} else {
 						// desktop header
-						if (document.body.classList.contains('kt-header--minimize-topbar')) {
+						if (document.body.classList.contains('tf-header--minimize-topbar')) {
 							// hardcoded minimized header height
 							height = 60;
 						} else {
 							// normal fixed header
-							if (document.body.classList.contains('kt-header--fixed')) {
+							if (document.body.classList.contains('tf-header--fixed')) {
 								height += headerElement.offsetHeight;
 							}
-							if (document.body.classList.contains('kt-subheader--fixed')) {
+							if (document.body.classList.contains('tf-subheader--fixed')) {
 								height += subheaderElement.offsetHeight;
 							}
 						}
@@ -151,12 +151,12 @@ export class PortletHeaderComponent implements OnInit, AfterViewInit, OnDestroy 
 
 	toggleLoading(_incomingValue: boolean) {
 		this.viewLoading = _incomingValue;
-		if (_incomingValue && !this.ktDialogService.checkIsShown()) {
-			this.ktDialogService.show();
+		if (_incomingValue && !this.TfDialogService.checkIsShown()) {
+			this.TfDialogService.show();
 		}
 
-		if (!this.viewLoading && this.ktDialogService.checkIsShown()) {
-			this.ktDialogService.hide();
+		if (!this.viewLoading && this.TfDialogService.checkIsShown()) {
+			this.TfDialogService.hide();
 		}
 	}
 

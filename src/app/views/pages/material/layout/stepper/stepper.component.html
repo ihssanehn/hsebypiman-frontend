@@ -1,17 +1,17 @@
-<kt-notice [icon]="'flaticon-warning kt-font-primary'">
+<tf-notice [icon]="'flaticon-warning tf-font-primary'">
 	For more info please check the components's official demos & documentation 
-	<a class="kt-link" href="https://material.angular.io/components/list/overview" target="_blank">demos & documentation</a>
-</kt-notice>
+	<a class="tf-link" href="https://material.angular.io/components/list/overview" target="_blank">demos & documentation</a>
+</tf-notice>
 
 <div class="row">
 	<div class="col-xl-6">
-		<kt-material-preview [viewItem]="exampleBasicStepper">
-			<div class="kt-section">
-				<span class="kt-section__sub">
+		<tf-material-preview [viewItem]="exampleBasicStepper">
+			<div class="tf-section">
+				<span class="tf-section__sub">
 					Angular Material's stepper provides a wizard-like workflow by dividing content into logical steps.
 				</span>
-				<div class="kt-separator kt-separator--dashed"></div>
-				<div class="kt-section__content">
+				<div class="tf-separator tf-separator--dashed"></div>
+				<div class="tf-section__content">
 					<mat-vertical-stepper>
 						<mat-step label="Step 1">
 							Content 1
@@ -22,15 +22,15 @@
 					</mat-vertical-stepper>
 				</div>
 			</div>
-		</kt-material-preview>
-		<kt-material-preview [viewItem]="exampleHorizontalStepper">
-			<div class="kt-section">
-				<span class="kt-section__sub">
+		</tf-material-preview>
+		<tf-material-preview [viewItem]="exampleHorizontalStepper">
+			<div class="tf-section">
+				<span class="tf-section__sub">
 					The only difference is the orientation of stepper.
 					<code>&lt;mat-horizontal-steppert&gt;</code> selector can be used to create a horizontal stepper
 				</span>
-				<div class="kt-separator kt-separator--dashed"></div>
-				<div class="kt-section__content">
+				<div class="tf-separator tf-separator--dashed"></div>
+				<div class="tf-section__content">
 					<mat-horizontal-stepper>
 						<mat-step label="Step 1">
 							Content 1
@@ -41,12 +41,12 @@
 					</mat-horizontal-stepper>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 	</div>
 	<div class="col-xl-6">
-		<kt-material-preview [viewItem]="exampleStepperOverview">
-			<div class="kt-section">
-				<div class="kt-section__content">
+		<tf-material-preview [viewItem]="exampleStepperOverview">
+			<div class="tf-section">
+				<div class="tf-section__content">
 					<button mat-raised-button (click)="isLinear = true" id="toggle-linear">Enable linear mode</button>
 
 					<mat-horizontal-stepper [linear]="isLinear" #stepper="matHorizontalStepper">
@@ -85,6 +85,6 @@
 
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 	</div>
 </div>

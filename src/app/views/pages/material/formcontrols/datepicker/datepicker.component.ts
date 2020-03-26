@@ -468,7 +468,7 @@ const moment = _rollupMoment || _moment;
 
 
 @Component({
-	selector: 'kt-datepicker',
+	selector: 'tf-datepicker',
 	templateUrl: './datepicker.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	styles: [`

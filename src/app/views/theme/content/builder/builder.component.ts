@@ -5,7 +5,7 @@ import { NgForm } from '@angular/forms';
 import { LayoutConfigModel, LayoutConfigService } from '../../../../core/_base/layout';
 
 @Component({
-	selector: 'kt-builder',
+	selector: 'tf-builder',
 	templateUrl: './builder.component.html',
 	styleUrls: ['./builder.component.scss']
 })

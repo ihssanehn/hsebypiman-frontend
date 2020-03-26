@@ -123,7 +123,7 @@ export class ProgressSpinnerColorizedExample {}`,
 };
 
 @Component({
-	selector: 'kt-progress-spinner',
+	selector: 'tf-progress-spinner',
 	templateUrl: './progress-spinner.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	styles: [`

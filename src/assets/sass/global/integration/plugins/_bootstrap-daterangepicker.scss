@@ -9,14 +9,14 @@
     padding: 0;
     margin: 0;
     width: auto;
-    box-shadow: $kt-dropdown-shadow;
-    border-radius: $kt-border-radius;
+    box-shadow: $tf-dropdown-shadow;
+    border-radius: $tf-border-radius;
     border: 0;
-    font-family: #{kt-get($kt-font-families, regular)};
-    z-index: $kt-dropdown-zindex;
+    font-family: #{tf-get($tf-font-families, regular)};
+    z-index: $tf-dropdown-zindex;
 
     .modal-open & {
-        z-index: $kt-modal-zindex + 1;
+        z-index: $tf-modal-zindex + 1;
     }
 
     &:after,
@@ -24,7 +24,7 @@
         display: none;
     }
 
-    @include kt-not-rounded {
+    @include tf-not-rounded {
         border-radius: 0 !important;
     }
 
@@ -38,13 +38,13 @@
             padding: 0.7rem 1.75rem;
             font-weight: 400;
             font-size: 1rem;
-            color: kt-base-color(label, 3);
+            color: tf-base-color(label, 3);
             transition: color 0.3s ease;
 
             &:hover,
             &.active {
-                background-color: kt-base-color(grey, 1);
-                color: kt-brand-color();
+                background-color: tf-base-color(grey, 1);
+                color: tf-brand-color();
                 transition: color 0.3s ease;
             }
         }
@@ -52,7 +52,7 @@
 
     &.show-calendar {
         .ranges {
-            border-right: 1px solid kt-base-color(grey, 2);
+            border-right: 1px solid tf-base-color(grey, 2);
         }
     }
 
@@ -70,7 +70,7 @@
 
     .drp-buttons {
         padding: 1rem 1.75rem;
-        border-top: 1px solid kt-base-color(grey, 2);
+        border-top: 1px solid tf-base-color(grey, 2);
 
        .btn {
             font-size: 0.9rem;
@@ -78,8 +78,8 @@
             padding: 0.5rem 1rem;
             border-radius: 0;
 
-            @include kt-rounded {
-                border-radius: $kt-border-radius;
+            @include tf-rounded {
+                border-radius: $tf-border-radius;
             }
         }
     }
@@ -97,18 +97,18 @@
         th {
             font-weight: 500;
             font-size: 1rem;
-            color: kt-base-color(label, 3);
+            color: tf-base-color(label, 3);
 
             &.month {
                 font-weight: 400;
-                color: kt-base-color(label, 2);
+                color: tf-base-color(label, 2);
             }
 
             &.next,
             &.prev {
                 span {
                     border-width: 0 1px 1px 0;
-                    border-color: kt-base-color(label, 2);
+                    border-color: tf-base-color(label, 2);
                 }
             }
 
@@ -127,19 +127,19 @@
 
         td {
             font-size: 1rem;
-            color: kt-base-color(label, 3);
+            color: tf-base-color(label, 3);
 
             &.available.off {
-                color: kt-base-color(label, 1);
+                color: tf-base-color(label, 1);
             }
 
             &.active {
-                background-color: kt-brand-color();
-                color: kt-brand-color(inverse);
+                background-color: tf-brand-color();
+                color: tf-brand-color(inverse);
                 border-radius: 0;
 
-                @include kt-rounded {
-                    border-radius: $kt-border-radius;
+                @include tf-rounded {
+                    border-radius: $tf-border-radius;
                 }
 
                 &.start-date {
@@ -153,8 +153,8 @@
                 }
 
                 &.start-date.end-date {
-                    @include kt-rounded {
-                        border-radius: $kt-border-radius;
+                    @include tf-rounded {
+                        border-radius: $tf-border-radius;
                     }
                 }
             }
@@ -163,27 +163,27 @@
             &.today.active {
                 border-radius: 0;
 
-                @include kt-rounded {
-                    border-radius: $kt-border-radius;
+                @include tf-rounded {
+                    border-radius: $tf-border-radius;
                 }
 
-                background: rgba(kt-state-color(brand, base), 0.7) !important;
-                color: kt-state-color(brand, inverse) !important;
+                background: rgba(tf-state-color(brand, base), 0.7) !important;
+                color: tf-state-color(brand, inverse) !important;
             }
 
             &.in-range.available:not(.active):not(.off):not(.today) {
-                background-color: kt-base-color(grey, 1);
-                color: kt-base-color(label, 3);
+                background-color: tf-base-color(grey, 1);
+                color: tf-base-color(label, 3);
             }
         }
     }
 
     select {
-        @include kt-rounded {
-            border-radius: $kt-border-radius;
+        @include tf-rounded {
+            border-radius: $tf-border-radius;
         }
         background: transparent !important;
-        border-color: kt-base-color(grey, 2);
-        color: kt-base-color(label, 3);
+        border-color: tf-base-color(grey, 2);
+        color: tf-base-color(label, 3);
     }
 }

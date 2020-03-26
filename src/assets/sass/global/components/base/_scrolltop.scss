@@ -5,7 +5,7 @@
 
 
 // Base
-.kt-scrolltop {
+.tf-scrolltop {
     display: none;
     justify-content: center;
     align-items: center;
@@ -16,13 +16,13 @@
     right: 20px;
     cursor: pointer;     
     z-index: 100;
-    background: kt-brand-color();
+    background: tf-brand-color();
     box-shadow: 0 0 15px 1px rgba(69,65,78, 0.2);
     opacity: 0;
-    @include kt-transition();
+    @include tf-transition();
 
-    @include kt-rounded {
-        border-radius: $kt-border-radius;
+    @include tf-rounded {
+        border-radius: $tf-border-radius;
     }
 
     svg {
@@ -32,36 +32,36 @@
 
     > i {
         font-size: 1.3rem;
-        color: kt-brand-color(inverse);
+        color: tf-brand-color(inverse);
     }          
 
-    @include kt-svg-icon-color(kt-brand-color(inverse));
+    @include tf-svg-icon-color(tf-brand-color(inverse));
 
     &:hover {
         > i {
-            color: kt-brand-color(inverse);
+            color: tf-brand-color(inverse);
         }
     }
 
-    .kt-scrolltop--on & {
+    .tf-scrolltop--on & {
         opacity: 0.3;     
-        animation: kt-scrolltop-show-animation .4s ease-out 1;
+        animation: tf-scrolltop-show-animation .4s ease-out 1;
         display: flex; 
 
         &:hover {
-            @include kt-transition();
+            @include tf-transition();
             opacity: 1;
         }
     }
 
-    @include kt-tablet-and-mobile {
+    @include tf-tablet-and-mobile {
         bottom: 30px;  
         right: 15px;
     }
 }
 
 // Animations
-@keyframes kt-scrolltop-show-animation {
+@keyframes tf-scrolltop-show-animation {
     from   { margin-bottom: -15px }
     to { margin-bottom: 0; }
 }

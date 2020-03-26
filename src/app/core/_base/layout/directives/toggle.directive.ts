@@ -11,8 +11,8 @@ export interface ToggleOptions {
  * Toggle
  */
 @Directive({
-	selector: '[ktToggle]',
-	exportAs: 'ktToggle'
+	selector: '[tfToggle]',
+	exportAs: 'tfToggle'
 })
 export class ToggleDirective implements AfterViewInit {
 	// Public properties

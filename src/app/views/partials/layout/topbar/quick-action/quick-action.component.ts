@@ -2,7 +2,7 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 
 @Component({
-	selector: 'kt-quick-action',
+	selector: 'tf-quick-action',
 	templateUrl: './quick-action.component.html',
 })
 export class QuickActionComponent implements OnInit, AfterViewInit {
@@ -47,6 +47,6 @@ export class QuickActionComponent implements OnInit, AfterViewInit {
 	}
 
 	onSVGInserted(svg) {
-		svg.classList.add('kt-svg-icon', 'kt-svg-icon--success', 'kt-svg-icon--lg');
+		svg.classList.add('tf-svg-icon', 'tf-svg-icon--success', 'tf-svg-icon--lg');
 	}
 }

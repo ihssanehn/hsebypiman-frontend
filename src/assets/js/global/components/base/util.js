@@ -970,7 +970,7 @@ var KTUtil = function() {
                 return;
             }
 
-            if (!el.getAttribute('kt-hidden-' + prop) || cache === false) {
+            if (!el.getAttribute('tf-hidden-' + prop) || cache === false) {
                 var value;
 
                 // the element is hidden so:
@@ -987,12 +987,12 @@ var KTUtil = function() {
                 el.style.cssText = css;
 
                 // store it in cache
-                el.setAttribute('kt-hidden-' + prop, value);
+                el.setAttribute('tf-hidden-' + prop, value);
 
                 return parseFloat(value);
             } else {
                 // store it in cache
-                return parseFloat(el.getAttribute('kt-hidden-' + prop));
+                return parseFloat(el.getAttribute('tf-hidden-' + prop));
             }
         },
 
@@ -1478,7 +1478,7 @@ var KTUtil = function() {
                 if (ps) {
                     ps.update();
                 } else {
-                    KTUtil.addClass(element, 'kt-scroll');
+                    KTUtil.addClass(element, 'tf-scroll');
                     ps = new PerfectScrollbar(element, {
                         wheelSpeed: 0.5,
                         swipeEasing: true,
@@ -1577,7 +1577,7 @@ KTUtil.ready(function() {
     KTUtil.init();
 });
 
-// CSS3 Transitions only after page load(.kt-page-loading class added to body tag and remove with JS on page load)
+// CSS3 Transitions only after page load(.tf-page-loading class added to body tag and remove with JS on page load)
 window.onload = function() {
-    KTUtil.removeClass(KTUtil.get('body'), 'kt-page--loading');
+    KTUtil.removeClass(KTUtil.get('body'), 'tf-page--loading');
 }

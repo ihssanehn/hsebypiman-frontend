@@ -168,7 +168,7 @@ export class ListSectionsExample {
 		isExampleExpanded: true
 	};
 @Component({
-	selector: 'kt-stepper',
+	selector: 'tf-stepper',
 	templateUrl: './stepper.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush
 })

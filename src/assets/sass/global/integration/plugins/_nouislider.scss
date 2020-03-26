@@ -6,9 +6,9 @@
 
 
 // Base
-@mixin kt-nouislider-base() {
+@mixin tf-nouislider-base() {
     .noUi-target {
-        @include kt-not-rounded {
+        @include tf-not-rounded {
            border-radius: 0 !important;
         }
         
@@ -58,18 +58,18 @@
 
         // State colors
         &.nouislider {
-            @each $name, $color in $kt-state-colors {
+            @each $name, $color in $tf-state-colors {
                 &.nouislider-connect-#{$name} {
                     .noUi-connect {
-                        background: kt-get($color, base);
+                        background: tf-get($color, base);
                     }
                 }
 
                 &.nouislider-handle-#{$name} {
                     .noUi-handle {
                         border: 0;
-                        background: kt-get($color, base);
-                        box-shadow: 0 3px 6px -3px kt-get($color, base);
+                        background: tf-get($color, base);
+                        box-shadow: 0 3px 6px -3px tf-get($color, base);
                     }
                 }
             }   
@@ -78,18 +78,18 @@
 }
 
 // Skin
-@mixin kt-nouislider-skin() {
+@mixin tf-nouislider-skin() {
     .noUi-target {
         border: 1px solid $input-border-color;  
-        background: kt-base-color(grey, 1);
+        background: tf-base-color(grey, 1);
         box-shadow:none; 
 
         .noUi-connect {
-            background: kt-state-color(brand, base);
+            background: tf-state-color(brand, base);
         }  
 
         .noUi-handle {
-            border: 1px solid kt-base-color(grey, 1);
+            border: 1px solid tf-base-color(grey, 1);
             box-shadow: 0 3px 6px -3px rgba(#000, 0.7);
         }
     }    
@@ -97,7 +97,7 @@
 
 
 // Base
-@include kt-nouislider-base();
+@include tf-nouislider-base();
 
 // Skin
-@include kt-nouislider-skin();
+@include tf-nouislider-skin();

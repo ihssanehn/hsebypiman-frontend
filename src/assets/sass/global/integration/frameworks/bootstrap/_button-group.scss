@@ -9,12 +9,12 @@
 		border-radius: 2rem;
 		overflow: hidden;
 
-		@each $name, $color in $kt-state-colors {
+		@each $name, $color in $tf-state-colors {
 			.btn-#{$name}{
 				@if $name == 'metal'{
-					color: kt-get($color, base);
-		  			background-color: kt-get($color, inverse);
-		  			border-color: kt-get($color, inverse);
+					color: tf-get($color, base);
+		  			background-color: tf-get($color, inverse);
+		  			border-color: tf-get($color, inverse);
 				} 			
 				border-width: 1px;
 				border-style: solid;				
@@ -24,9 +24,9 @@
 			  	&:active,
 			  	&:hover {
 			  		@if $name == 'metal'{
-			  			color: kt-get($color, inverse);
-						background-color: kt-get($color, base);
-						border-color: kt-get($color, base);
+			  			color: tf-get($color, inverse);
+						background-color: tf-get($color, base);
+						border-color: tf-get($color, base);
 			  		}
 			  	}
 			}
@@ -37,7 +37,7 @@
 		box-shadow: $btn-elevate-shadow-1;
 	}
 
-	@include kt-mobile{
+	@include tf-mobile{
 		&.btn-pill{
 			border-radius: 0;
 

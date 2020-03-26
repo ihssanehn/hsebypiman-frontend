@@ -3,11 +3,11 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
-	selector: 'kt-modal3',
+	selector: 'tf-modal3',
 	template: `
 		<div class="col-xl-12">
 			<div class="col-xl-12">
-				<div class="kt-modal3__container">
+				<div class="tf-modal3__container">
 					<h1 mat-dialog-title>Favorite Animal</h1>
 					<h2 mat-dialog-title>Install Angular</h2>
 					<mat-dialog-content>
@@ -39,11 +39,11 @@ export class Modal3Component {
 }
 
 @Component({
-	selector: 'kt-modal2',
+	selector: 'tf-modal2',
 	template: `
 		<div class="col-xl-12">
 			<div class="col-xl-12">
-				<div class="kt-modal2__container">
+				<div class="tf-modal2__container">
 					<h1 mat-dialog-title>Favorite Animal</h1>
 					<div mat-dialog-content>
 						My favorite animal is:
@@ -70,7 +70,7 @@ export class Modal2Component {
 }
 
 @Component({
-	selector: 'kt-modal',
+	selector: 'tf-modal',
 	template: `
 		<div class="col-xl-12">
 			<div class="col-xl-12">
@@ -273,7 +273,7 @@ export interface DialogData {
 }
 
 @Component({
-	selector: 'kt-dialog',
+	selector: 'tf-dialog',
 	templateUrl: './dialog.component.html',
 	changeDetection: ChangeDetectionStrategy.Default,
 

@@ -2,7 +2,7 @@
 import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 
 @Component({
-	selector: 'kt-search-dropdown',
+	selector: 'tf-search-dropdown',
 	templateUrl: './search-dropdown.component.html',
 })
 export class SearchDropdownComponent implements OnInit {
@@ -40,15 +40,15 @@ export class SearchDropdownComponent implements OnInit {
 				text: 'Documents',
 				type: 0
 			}, {
-				icon: '<i class="flaticon-interface-3 kt-font-warning">',
+				icon: '<i class="flaticon-interface-3 tf-font-warning">',
 				text: 'Annual finance report',
 				type: 1
 			}, {
-				icon: '<i class="flaticon-share kt-font-success"></i>',
+				icon: '<i class="flaticon-share tf-font-success"></i>',
 				text: 'Company meeting schedule',
 				type: 1
 			}, {
-				icon: '<i class="flaticon-paper-plane kt-font-info"></i>',
+				icon: '<i class="flaticon-paper-plane tf-font-info"></i>',
 				text: 'Project quotations',
 				type: 1
 			}, {
@@ -74,15 +74,15 @@ export class SearchDropdownComponent implements OnInit {
 				text: 'Files',
 				type: 0
 			}, {
-				icon: '<i class="flaticon-lifebuoy kt-font-warning"></i>',
+				icon: '<i class="flaticon-lifebuoy tf-font-warning"></i>',
 				text: 'Revenue report',
 				type: 1
 			}, {
-				icon: '<i class="flaticon-coins kt-font-primary"></i>',
+				icon: '<i class="flaticon-coins tf-font-primary"></i>',
 				text: 'Anual finance report',
 				type: 1
 			}, {
-				icon: '<i class="flaticon-calendar kt-font-danger"></i>',
+				icon: '<i class="flaticon-calendar tf-font-danger"></i>',
 				text: 'Tax calculations',
 				type: 1
 			}

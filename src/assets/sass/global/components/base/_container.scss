@@ -5,31 +5,31 @@
 
 
 // Base
-.kt-container {
+.tf-container {
     &,
-    &.kt-container--fluid {
+    &.tf-container--fluid {
         width: 100%;
         margin: 0;
     }
 
-    &.kt-container--fit {
+    &.tf-container--fit {
         padding: 0 !important;
     }
 
-    &.kt-container--fit-left {
+    &.tf-container--fit-left {
         padding-left: 0 !important;
     }
 
-    &.kt-container--fit-right {
+    &.tf-container--fit-right {
         padding-right: 0 !important;
     }
 }
-@media (min-width: #{$kt-page-container-width + (2 * kt-get($kt-page-padding, desktop)) - 1px}) {
-    .kt-container {
-        width: $kt-page-container-width;
+@media (min-width: #{$tf-page-container-width + (2 * tf-get($tf-page-padding, desktop)) - 1px}) {
+    .tf-container {
+        width: $tf-page-container-width;
         margin: 0 auto;
 
-        &.kt-container--fluid {
+        &.tf-container--fluid {
             width: 100%;
             margin: 0;
         }

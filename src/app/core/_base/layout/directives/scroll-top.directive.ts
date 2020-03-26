@@ -10,7 +10,7 @@ export interface ScrollTopOptions {
  * Scroll to top
  */
 @Directive({
-	selector: '[ktScrollTop]'
+	selector: '[tfScrollTop]'
 })
 export class ScrollTopDirective implements AfterViewInit {
 	// Public properties

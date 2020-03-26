@@ -4,19 +4,19 @@
 
 
 
-.kt-notes {
-    .kt-notes__items {
+.tf-notes {
+    .tf-notes__items {
         margin: 0;
         padding: 0;
 
-        .kt-notes__item {            
+        .tf-notes__item {            
             left: 8px;               
-            border-left: 2px solid kt-base-color(grey, 2);
+            border-left: 2px solid tf-base-color(grey, 2);
             padding:0 0 50px 45px;
             position:relative; 
             margin: 0 5px 0 17px;       
 
-            .kt-notes__media {              
+            .tf-notes__media {              
                 position: absolute;
                 top: 0;
                 left: -25.5px;                
@@ -25,32 +25,32 @@
                     max-width: 50px;
                     max-height: 50px;
 
-                    @include kt-rounded {
+                    @include tf-rounded {
                         border-radius: 50%;
                     }
                 }
 
-                .kt-notes__icon {                
+                .tf-notes__icon {                
                     display: flex;
                     justify-content: center;
                     align-items: center;    
                     width: 50px;
                     height: 50px; 
                     background-color: #fff; 
-                    border: 2px solid kt-base-color(grey, 2);                    
+                    border: 2px solid tf-base-color(grey, 2);                    
                     
-                    @include kt-rounded {
+                    @include tf-rounded {
                         border-radius: 50%;
                     } 
 
                     i {   
-                        color:  kt-base-color(label, 2);
+                        color:  tf-base-color(label, 2);
                         font-size: 1.8rem;                  
                     }
                                   
                 }
                 
-                .kt-notes__user {
+                .tf-notes__user {
                     display: flex;
                     justify-content: center;
                     align-items: center;    
@@ -58,62 +58,62 @@
                     height: 50px;  
                     font-size: 1.2rem; 
                     background-color: #fff;
-                    border: 2px solid kt-base-color(grey, 2);    
-                    color:  kt-base-color(label, 2);                
+                    border: 2px solid tf-base-color(grey, 2);    
+                    color:  tf-base-color(label, 2);                
                     
-                    @include kt-rounded {
+                    @include tf-rounded {
                         border-radius: 50%;
                     }                     
                 }
 
-                .kt-notes__circle {
+                .tf-notes__circle {
                     width: 25px;
                     height: 25px;
                     display: block;
-                    border: 2px solid kt-base-color(grey, 2);
+                    border: 2px solid tf-base-color(grey, 2);
                     margin-left: 12px;
                     background-color: #fff;
 
-                    @include kt-rounded {
+                    @include tf-rounded {
                         border-radius: 50%;
                     }                   
                 }
             }
 
-            .kt-notes__content {                 
+            .tf-notes__content {                 
                 background-color: #F7F8FC;
                 padding: 0.5rem 1rem 1rem 1.5rem;
 
-                .kt-notes__section {
+                .tf-notes__section {
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
 
-                    .kt-notes__info {
+                    .tf-notes__info {
                         display: flex;          
                         flex-flow: wrap;
                         align-items: baseline;
 
-                        .kt-notes__title {
+                        .tf-notes__title {
                             font-size: 1.1rem;
-                            color: kt-base-color(label, 3);
+                            color: tf-base-color(label, 3);
                             font-weight: 500;
                             padding-right: 0.5rem;
     
                             &:hover {
-                                color: kt-brand-color();
+                                color: tf-brand-color();
                                 transition: color 0.3s ease;
                             }
                         }
     
-                        .kt-notes__desc {
-                            color: kt-base-color(label, 2);
+                        .tf-notes__desc {
+                            color: tf-base-color(label, 2);
                             font-weight: 400; 
                             padding-right: 1rem;
                         }                                    
                     }           
                     
-                    .kt-notes__dropdown {
+                    .tf-notes__dropdown {
                         .btn-icon {
                             width: 26px;
                             height: 26px;
@@ -121,16 +121,16 @@
                     }
                 }
 
-                .kt-notes__body {
-                    color: kt-base-color(label, 2);
+                .tf-notes__body {
+                    color: tf-base-color(label, 2);
                     font-weight: 400;                     
                     padding-right: 3rem;
                     padding-top: 0.5rem;
                     display: block;                   
                 }                      
 
-                @include kt-rounded {
-					border-radius: $kt-border-radius;
+                @include tf-rounded {
+					border-radius: $tf-border-radius;
 				}                
 
                 &:after {
@@ -152,12 +152,12 @@
                 border-left:0;
             }               
             
-            &.kt-notes__item--clean {
-                .kt-notes__content {  
+            &.tf-notes__item--clean {
+                .tf-notes__content {  
                     background-color: #fff;
                     padding: 0;
                     
-                    .kt-notes__info {
+                    .tf-notes__info {
                         //margin-top: -0.5rem;
                     }
 
@@ -168,9 +168,9 @@
             }
         }
 
-        .kt-notes__item:last-child {
-            .kt-notes__media {
-                .kt-notes__circle {
+        .tf-notes__item:last-child {
+            .tf-notes__media {
+                .tf-notes__circle {
                     margin-left: 14px; 
                 }
             }
@@ -179,16 +179,16 @@
 }
 
 
-@include kt-tablet-and-mobile {
-    .kt-notes {
-        .kt-notes__items {
-            .kt-notes__item {
+@include tf-tablet-and-mobile {
+    .tf-notes {
+        .tf-notes__items {
+            .tf-notes__item {
                 margin: 0 7px 0 17px;
 
-                .kt-notes__content {
+                .tf-notes__content {
                     padding: 0.5rem 1rem 0.7rem 1rem;
                     
-                    .kt-notes__desc {                           
+                    .tf-notes__desc {                           
                         padding-top: 0.5rem;
                         display: block;                     
                     }

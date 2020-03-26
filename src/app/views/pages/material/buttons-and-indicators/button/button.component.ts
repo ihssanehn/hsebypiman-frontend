@@ -176,7 +176,7 @@ export class ButtonTypesExample {}`,
 };
 
 @Component({
-	selector: 'kt-button',
+	selector: 'tf-button',
 	templateUrl: './button.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	styles: [`

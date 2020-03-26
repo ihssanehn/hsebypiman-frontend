@@ -5,12 +5,12 @@ const checkboxButtons = {
 	beforeCodeTitle: 'Checkbox buttons',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	htmlCode: `
-<div class="kt-section">
-  <span class="kt-section__sub">
+<div class="tf-section">
+  <span class="tf-section__sub">
     Click buttons to get the result:
     <pre>{{modelFirst | json}}</pre>
   </span>
-  <div class="kt-section__content">
+  <div class="tf-section__content">
     <div class="btn-group btn-group-toggle">
       <label class="btn-primary" ngbButtonLabel>
         <input type="checkbox" ngbButton [(ngModel)]="modelFirst.left"> Left (pre-checked)
@@ -46,12 +46,12 @@ export class NgbdButtonsCheckbox {
 const checkboxButtonsReactiveForms = {
 	beforeCodeTitle: 'Checkbox buttons (Reactive Forms)',
 	htmlCode: `
-<div class="kt-section">
-  <span class="kt-section__sub">
+<div class="tf-section">
+  <span class="tf-section__sub">
     Click buttons to get the result:
     <pre>{{checkboxGroupForm.value | json}}</pre>
   </span>
-  <div class="kt-section__content">
+  <div class="tf-section__content">
     <form [formGroup]="checkboxGroupForm">
       <div class="btn-group btn-group-toggle">
         <label class="btn-warning" ngbButtonLabel>
@@ -89,12 +89,12 @@ export class NgbdButtonsCheckbox {
 const radioButtons = {
 	beforeCodeTitle: 'Radio buttons',
 	htmlCode: `
-<div class="kt-section">
-  <span class="kt-section__sub">
+<div class="tf-section">
+  <span class="tf-section__sub">
     Click buttons to get the result:
     <pre>{{secondModel}}</pre>
   </span>
-  <div class="kt-section__content">
+  <div class="tf-section__content">
     <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="secondModel">
       <label ngbButtonLabel class="btn-primary">
         <input ngbButton type="radio" [value]="1"> Left (pre-checked)
@@ -127,12 +127,12 @@ export class NgbdButtonsRadio {
 const radioButtonsReactiveForms = {
 	beforeCodeTitle: 'Radio buttons (Reactive Forms)',
 	htmlCode: `
-<div class="kt-section">
-  <span class="kt-section__sub">
+<div class="tf-section">
+  <span class="tf-section__sub">
     Click buttons to get the result:
     <pre>{{radioGroupForm.value['model']}}</pre>
   </span>
-  <div class="kt-section__content">
+  <div class="tf-section__content">
     <form [formGroup]="radioGroupForm">
       <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" formControlName="model">
         <label ngbButtonLabel class="btn-warning">
@@ -174,7 +174,7 @@ export class NgbdButtonsRadioreactive implements OnInit {
 };
 
 @Component({
-	selector: 'kt-buttons',
+	selector: 'tf-buttons',
 	templateUrl: './buttons.component.html'
 })
 export class ButtonsComponent implements OnInit {

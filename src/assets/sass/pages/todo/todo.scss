@@ -12,7 +12,7 @@
 @import "../../global/layout/config.scss";
 
 // Config for aside
-$kt-todo-aside-config: (
+$tf-todo-aside-config: (
 	offcanvas: (
 		layout: (
 			self: (
@@ -30,71 +30,71 @@ $kt-todo-aside-config: (
 			),
 			close: (
 				bg-color: (
-					default: kt-base-color(grey, 1),
+					default: tf-base-color(grey, 1),
 					hover: transparent
 				),
 				icon-color: (
-					default: kt-base-color(label, 2),
-					hover: kt-brand-color()
+					default: tf-base-color(label, 2),
+					hover: tf-brand-color()
 				)
 			)
 		)
 	)
 );
 
-$kt-todo-icon-color: #8e96b8;
-$kt-todo-hover-bg: #f2f3f7;
+$tf-todo-icon-color: #8e96b8;
+$tf-todo-hover-bg: #f2f3f7;
 
 // Base
-.kt-todo {
+.tf-todo {
 	// Content
-	.kt-todo__content {
+	.tf-todo__content {
 		width: 100%;
 	}
 
 	// Aside
-	.kt-todo__aside {
+	.tf-todo__aside {
 		padding: 20px;
 		width: 275px;
 
-		@include kt-desktop {
-			margin-right: kt-get($kt-page-padding, desktop);
+		@include tf-desktop {
+			margin-right: tf-get($tf-page-padding, desktop);
 		}
 
-		.kt-todo__nav {
-			.kt-nav {
-				.kt-nav__item {
+		.tf-todo__nav {
+			.tf-nav {
+				.tf-nav__item {
 					margin-bottom: 0.5rem;
 
-		          	.kt-nav__link-title {
+		          	.tf-nav__link-title {
 		            	padding-left: 1.9rem;
 		            	font-weight: 600;
-						color: kt-base-color(label, 4);
+						color: tf-base-color(label, 4);
 		            	font-size: 1.1rem;
 		            	padding-left: 1.9rem;
 		            	font-weight: 600;
-						color: kt-base-color(label, 4);
+						color: tf-base-color(label, 4);
 		            	font-size: 1.1rem;
 		          	}
 
-					.kt-nav__link {
+					.tf-nav__link {
 						padding: 0.6rem 20px;
 
-						@include kt-rounded {
-							border-radius: $kt-border-radius;
+						@include tf-rounded {
+							border-radius: $tf-border-radius;
 						}
 
 						i {
-							color: $kt-todo-icon-color;
+							color: $tf-todo-icon-color;
 						}
 
-						@include kt-svg-icon-color($kt-todo-icon-color);
+						@include tf-svg-icon-color($tf-todo-icon-color);
 
-						.kt-nav__link-icon {
+						.tf-nav__link-icon {
 							text-align: center;
 							margin: 0 0.7rem 0 -0.23rem;
 
-			              	&.kt-nav__link-icon--size {
+			              	&.tf-nav__link-icon--size {
 			                	font-size: 0.9rem;
 			                	color: #93a2dd;
 			              	}
@@ -109,41 +109,41 @@ $kt-todo-hover-bg: #f2f3f7;
 			            	}
 						}
 
-						.kt-nav__link-text {
+						.tf-nav__link-text {
 							font-weight: 500;
-							color: kt-base-color(label, 3);
+							color: tf-base-color(label, 3);
 						}
 					}
 
 					&:last-child {
 						margin-bottom: 0;
 
-						.kt-nav__link {
-							.kt-nav__link-icon {
+						.tf-nav__link {
+							.tf-nav__link-icon {
 								font-size: 0.9rem;
 							}
 						}
 					}
 
 					&.hover,
-					&.kt-nav__item--selected,
-					&.kt-nav__item--active {
+					&.tf-nav__item--selected,
+					&.tf-nav__item--active {
 
-						.kt-nav__link {
-							background-color: kt-base-color(grey, 1);
+						.tf-nav__link {
+							background-color: tf-base-color(grey, 1);
 
-							@include kt-rounded {
-								border-radius: $kt-border-radius;
+							@include tf-rounded {
+								border-radius: $tf-border-radius;
 							}
 
 							i {
-								color: kt-brand-color();
+								color: tf-brand-color();
 							}
 
-							@include kt-svg-icon-color(kt-brand-color());
+							@include tf-svg-icon-color(tf-brand-color());
 
-							.kt-nav__link-text {
-								color: kt-brand-color();
+							.tf-nav__link-text {
+								color: tf-brand-color();
 							}
 						}
 					}
@@ -153,23 +153,23 @@ $kt-todo-hover-bg: #f2f3f7;
 	}
 
   	// Header
-  	.kt-todo__header {
+  	.tf-todo__header {
 	  	padding: 13px 25px;
 	  	display: flex;
 	  	flex-wrap: wrap;
 	  	align-items: center;
 	  	width: 100%;
 
-	  	.kt-todo__title {
+	  	.tf-todo__title {
 	    	margin: 0;
 	    	font-size: 1.4rem;
 	    	padding-right: 2rem;
 	    	font-weight: 600;
-	    	color: kt-base-color(label, 3);
+	    	color: tf-base-color(label, 3);
 	  	}
 
 		// Nav
-    	.kt-todo__nav {
+    	.tf-todo__nav {
 			padding: 0;
 		  	flex-grow: 1;
 		  	margin-top: 0.2rem;
@@ -178,39 +178,39 @@ $kt-todo-hover-bg: #f2f3f7;
 				margin-right: 1rem;
 			}
 
-      		.kt-todo__link {
+      		.tf-todo__link {
 				padding: 0.5rem 1.2rem;
 				font-weight: 500;
-				color: kt-base-color(label, 2);
+				color: tf-base-color(label, 2);
 
 				&:not(:first-child):not(:last-child) {
 					margin: 0 0.2rem;
 				}
 
 				    &:hover,
-				    &.kt-todo__link--selected,
-				    &.kt-todo__link--active {
-				      	background-color: kt-base-color(grey, 1);
-				      	color: kt-brand-color();
+				    &.tf-todo__link--selected,
+				    &.tf-todo__link--active {
+				      	background-color: tf-base-color(grey, 1);
+				      	color: tf-brand-color();
 
-			      		@include kt-rounded {
-			        		border-radius: $kt-border-radius;
+			      		@include tf-rounded {
+			        		border-radius: $tf-border-radius;
 			      		}
 			    	}
 
-      			@include kt-rounded {
-          			border-radius: $kt-border-radius;
+      			@include tf-rounded {
+          			border-radius: $tf-border-radius;
         		}
       		}
 		}
 
 		// Users
-    	.kt-todo__users {
+    	.tf-todo__users {
 			line-height: 0;
 			display: flex;
 			align-items: center;
 
-	        .kt-media {
+	        .tf-media {
 	        	position: relative;
 	        	z-index: 0;
 
@@ -220,20 +220,20 @@ $kt-todo-hover-bg: #f2f3f7;
 	      	}
 	    }
 
-		@include kt-tablet-and-mobile {
+		@include tf-tablet-and-mobile {
 			padding: 10px 15px;
 		}
   	}
 
 	// Icon
-	.kt-todo__icon {
-		@include kt-btn-reset();
+	.tf-todo__icon {
+		@include tf-btn-reset();
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		height: 35px;
 		width: 35px;
-		background-color: kt-base-color(grey, 1);
+		background-color: tf-base-color(grey, 1);
 		transition: all 0.3s ease;
 		cursor: pointer;
 		margin: 0;
@@ -243,7 +243,7 @@ $kt-todo-hover-bg: #f2f3f7;
 			font-size: 1.1rem;
 		}
 
-		&.kt-todo__icon--sm {
+		&.tf-todo__icon--sm {
 			height: 26px;
 			width: 26px;
 
@@ -252,7 +252,7 @@ $kt-todo-hover-bg: #f2f3f7;
 			}
 		}
 
-		&.kt-todo__icon--md {
+		&.tf-todo__icon--md {
 			height: 30px;
 			width: 30px;
 
@@ -261,46 +261,46 @@ $kt-todo-hover-bg: #f2f3f7;
 			}
 		}
 
-		&.kt-todo__icon--light {
+		&.tf-todo__icon--light {
 			background-color: transparent;
 		}
 
-		@include kt-rounded {
-			border-radius: $kt-border-radius;
+		@include tf-rounded {
+			border-radius: $tf-border-radius;
 		}
 
 		i {
-			color: $kt-todo-icon-color;
+			color: $tf-todo-icon-color;
 		}
 
-		@include kt-svg-icon-color($kt-todo-icon-color);
+		@include tf-svg-icon-color($tf-todo-icon-color);
 
-		&.kt-todo__icon--active,
+		&.tf-todo__icon--active,
 		&:hover {
 			transition: all 0.3s ease;
-			background-color: kt-base-color(grey, 2);
+			background-color: tf-base-color(grey, 2);
 
-			&.kt-todo__icon--light {
+			&.tf-todo__icon--light {
 				background-color: transparent;
 			}
 
 			i {
-				color: kt-brand-color();
+				color: tf-brand-color();
 			}
 
-			@include kt-svg-icon-color(kt-brand-color());
+			@include tf-svg-icon-color(tf-brand-color());
 		}
 
 		// Back
-		&.kt-todo__icon--back {
+		&.tf-todo__icon--back {
 			background-color: transparent;
 
 			i {
-				color: $kt-todo-icon-color;
+				color: $tf-todo-icon-color;
 				font-size: 1.5rem;
 			}
 
-			@include kt-svg-icon-color($kt-todo-icon-color);
+			@include tf-svg-icon-color($tf-todo-icon-color);
 
 			svg {
 				height: 32px;
@@ -311,51 +311,51 @@ $kt-todo-hover-bg: #f2f3f7;
 				background-color: transparent;
 
 				i {
-					color: kt-brand-color();
+					color: tf-brand-color();
 				}
 
-				@include kt-svg-icon-color(kt-brand-color());
+				@include tf-svg-icon-color(tf-brand-color());
 			}
 		}
 	}
 
 	// List
-	.kt-todo__list {
+	.tf-todo__list {
 		display: flex !important;
 		padding: 0;
 
 		// Head
-		.kt-todo__head {
+		.tf-todo__head {
 			// Toolbar
-			.kt-todo__toolbar {
+			.tf-todo__toolbar {
 				position: relative;
 				display: flex;
 				flex-grow: 1;
 				align-items: center;
 				justify-content: space-between;
 				flex-wrap: wrap;
-				padding: 0 kt-get($kt-portlet, space, desktop);
+				padding: 0 tf-get($tf-portlet, space, desktop);
 
-				.kt-todo__actions {
+				.tf-todo__actions {
 					display: flex;
 					align-items: center;
 					margin-right: 1rem;
 
-					.kt-todo__check {
+					.tf-todo__check {
 						display: flex;
 						align-items: center;
 
-						.kt-checkbox {
+						.tf-checkbox {
 							margin: 0;
 							padding-left: 0;
 						}
 
-						.kt-todo__icon {
+						.tf-todo__icon {
 							margin-left: 0;
 						}
 					}
 
-					.kt-todo__panel {
+					.tf-todo__panel {
 						display: none;
 						flex-wrap: wrap;
 					}
@@ -364,38 +364,38 @@ $kt-todo-hover-bg: #f2f3f7;
 						padding: 0.6rem 1rem;
 					}
 
-					&.kt-todo__actions--expanded {
-						.kt-todo__panel {
+					&.tf-todo__actions--expanded {
+						.tf-todo__panel {
 							display: flex;
 						}
 					}
 
-					.kt-todo__icon {
+					.tf-todo__icon {
 						margin-right: 0.5rem;
 
-						&.kt-todo__icon--back {
+						&.tf-todo__icon--back {
 							margin-right: 2.5rem;
 						}
 					}
 				}
 
-				.kt-todo__controls {
+				.tf-todo__controls {
 					display: flex;
 					align-items: center;
 					margin: 0.4rem 0;
 
-					.kt-todo__icon {
+					.tf-todo__icon {
 						margin-left: 0.5rem;
 					}
 
 
-					.kt-todo__sort {
+					.tf-todo__sort {
 						margin-left: 0.5rem;
 					}
 
-					.kt-todo__pages {
-						.kt-todo__perpage {
-							color: kt-base-color(label, 2);
+					.tf-todo__pages {
+						.tf-todo__perpage {
+							color: tf-base-color(label, 2);
 							font-size: 1rem;
 							font-weight: 500;
 							margin-right: 1rem;
@@ -405,13 +405,13 @@ $kt-todo-hover-bg: #f2f3f7;
 
 							&:hover {
 								transition: all 0.3s ease;
-								color: kt-brand-color();
+								color: tf-brand-color();
 							}
 						}
 					}
 				}
 
-				.kt-todo__sep {
+				.tf-todo__sep {
 					display: flex;
 					height: 1rem;
 					width: 1rem;
@@ -420,80 +420,80 @@ $kt-todo-hover-bg: #f2f3f7;
 		}
 
 		// Body
-		.kt-todo__body {
+		.tf-todo__body {
 			padding: 20px 0 0 0 ;
 
-			.kt-todo__items {
+			.tf-todo__items {
 				padding: 0;
 				margin-bottom: 15px;
 
-				.kt-todo__item {
+				.tf-todo__item {
 					display: flex;
 					align-items: flex-start;
-					padding: 12px kt-get($kt-portlet, space, desktop);
+					padding: 12px tf-get($tf-portlet, space, desktop);
 					transition: all 0.3s ease;
 					cursor: pointer;
 
-					.kt-todo__info {
+					.tf-todo__info {
 						display: flex;
 
-						@include kt-hack-ie  {
+						@include tf-hack-ie  {
 							 padding: 8px 0;
 						}
 
-						@include kt-hack-ie  {
+						@include tf-hack-ie  {
 							 min-width: 210px;
 						}
 
-						.kt-todo__actions {
+						.tf-todo__actions {
 							display: flex;
 							margin: 0.3rem 10px 0 0;
 							align-items: center;
 
-							@include kt-hack-ie  {
+							@include tf-hack-ie  {
 								 min-width: 70px;
 							}
 
-							.kt-checkbox {
+							.tf-checkbox {
 								margin: 0;
 								padding: 0;
 								margin-right: 10px;
 							}
 
-							.kt-todo__icon {
+							.tf-todo__icon {
 								height: 22px;
 								width: 22px;
 
 								i {
 									font-size: 1rem;
-									color: kt-base-color(grey, 2);
+									color: tf-base-color(grey, 2);
 								}
 
 								&:hover {
 									i {
-										color: rgba(kt-state-color(warning), 0.5) !important;
+										color: rgba(tf-state-color(warning), 0.5) !important;
 									}
 								}
 
-								&.kt-todo__icon--on {
+								&.tf-todo__icon--on {
 									i {
-										color: kt-state-color(warning) !important;
+										color: tf-state-color(warning) !important;
 									}
 								}
 							}
 						}
 
-						.kt-todo__sender {
+						.tf-todo__sender {
 							display: flex;
 							align-items: center;
 							margin-right: 30px;
 							width: 175px;
 
-							@include kt-hack-ie  {
+							@include tf-hack-ie  {
 								 min-width: 175px;
 							}
 
-							.kt-media {
+							.tf-media {
 								margin-right: 10px;
 								min-width: 30px !important;
 
@@ -502,112 +502,112 @@ $kt-todo-hover-bg: #f2f3f7;
 								}
 							}
 
-							.kt-todo__author {
+							.tf-todo__author {
 								font-size: 1rem;
-								color: kt-base-color(label, 3);
+								color: tf-base-color(label, 3);
 								font-weight: 500;
 							}
 
-							@include kt-media-below(1400px) {
+							@include tf-media-below(1400px) {
 								display: block;
 								width: 70px;
 								margin-right: 10px;
 
-								.kt-todo__author {
+								.tf-todo__author {
 									display: block;
 								}
 
-								.kt-media {
+								.tf-media {
 									margin-bottom: 5px;
 								}
 							}
 						}
 					}
 
-					.kt-todo__details {
+					.tf-todo__details {
 						flex-grow: 1;
 						margin-top: 5px;
 
-						@include kt-hack-ie  {
+						@include tf-hack-ie  {
 	  						width: 0;
 								height: 0;
 						}
 
-						.kt-todo__message {
-							.kt-todo__subject {
+						.tf-todo__message {
+							.tf-todo__subject {
 								font-size: 1rem;
-								color: kt-base-color(label, 3);
+								color: tf-base-color(label, 3);
 								font-weight: 500;
 							}
 
-							.kt-todo__summary {
+							.tf-todo__summary {
 								font-size: 1rem;
-								color: kt-base-color(label, 1);
+								color: tf-base-color(label, 1);
 								font-weight: 400;
 								text-overflow: ellipsis;
 							}
 						}
 
-						.kt-todo__labels {
+						.tf-todo__labels {
 							display: flex;
 							margin-top: 5px;
 
-							.kt-todo__label {
+							.tf-todo__label {
 								margin-right: 5px;
 							}
 						}
 					}
 
-					.kt-todo__datetime {
+					.tf-todo__datetime {
 						font-size: 1rem;
-						color: kt-base-color(label, 1);
+						color: tf-base-color(label, 1);
 						font-weight: 400;
 						margin-right: 1rem;
 						margin-top: 5px;
 						width: 85px;
 						text-align: right;
 
-						@include kt-media-below(1400px) {
+						@include tf-media-below(1400px) {
 							width: 70px;
 						}
 					}
 
 					&:hover,
-					&.kt-todo__item--selected {
+					&.tf-todo__item--selected {
 						transition: all 0.3s ease;
-						background-color: kt-base-color(grey, 1);
+						background-color: tf-base-color(grey, 1);
 
-						.kt-todo__info {
-							.kt-todo__actions {
-								.kt-todo__icon {
+						.tf-todo__info {
+							.tf-todo__actions {
+								.tf-todo__icon {
 									i {
 										font-size: 1rem;
-										color: kt-base-color(grey, 3);
+										color: tf-base-color(grey, 3);
 									}
 								}
 							}
 						}
 					}
 
-					&.kt-todo__item--unread {
-						.kt-todo__sender {
-							.kt-todo__author {
-								color: kt-base-color(label, 4);
+					&.tf-todo__item--unread {
+						.tf-todo__sender {
+							.tf-todo__author {
+								color: tf-base-color(label, 4);
 								font-weight: 600;
 							}
 						}
 
-						.kt-todo__details {
-							.kt-todo__message {
-								.kt-todo__subject {
-									color: kt-base-color(label, 3);
+						.tf-todo__details {
+							.tf-todo__message {
+								.tf-todo__subject {
+									color: tf-base-color(label, 3);
 									font-weight: 600;
 								}
 							}
 						}
 
-						.kt-todo__datetime {
-							color: kt-base-color(label, 4);
+						.tf-todo__datetime {
+							color: tf-base-color(label, 4);
 							font-weight: 600;
 						}
 					}
@@ -616,30 +616,30 @@ $kt-todo-hover-bg: #f2f3f7;
 		}
 
 		// Foot
-		.kt-todo__foot {
+		.tf-todo__foot {
 			margin-top: 10px;
 
-			.kt-todo__toolbar {
+			.tf-todo__toolbar {
 				float: right;
 
-				.kt-todo__controls {
+				.tf-todo__controls {
 					display: flex;
 					align-items: center;
 					margin-left: 1rem;
 
-					.kt-todo__icon {
+					.tf-todo__icon {
 						margin-left: 0.5rem;
 					}
 
-					.kt-todo__sort {
+					.tf-todo__sort {
 						margin-left: 0.5rem;
 					}
 
-					.kt-todo__pages {
+					.tf-todo__pages {
 						margin-left: 0.5rem;
 
-						.kt-todo__perpage {
-							color: kt-base-color(label, 2);
+						.tf-todo__perpage {
+							color: tf-base-color(label, 2);
 							font-size: 1rem;
 							font-weight: 500;
 							margin-right: 1rem;
@@ -649,40 +649,40 @@ $kt-todo-hover-bg: #f2f3f7;
 
 							&:hover {
 								transition: all 0.3s ease;
-								color: kt-brand-color();
+								color: tf-brand-color();
 							}
 						}
 					}
 				}
 			}
 
-			padding: 0 kt-get($kt-portlet, space, desktop);
+			padding: 0 tf-get($tf-portlet, space, desktop);
 		}
 	}
 
 	// View
-	.kt-todo__view {
+	.tf-todo__view {
 		padding: 0;
 		display: flex !important;
 
 		// Wrapper
-		.kt-todo__wrapper {
+		.tf-todo__wrapper {
 			display: flex;
 	        justify-content: space-between;
 	        flex-direction: column;
 	        height: 100%;
-			padding-bottom: kt-get($kt-portlet, space, desktop);
+			padding-bottom: tf-get($tf-portlet, space, desktop);
 
-			@include kt-tablet-and-mobile {
-				padding-bottom: kt-get($kt-portlet, space, mobile);
+			@include tf-tablet-and-mobile {
+				padding-bottom: tf-get($tf-portlet, space, mobile);
 			}
 
 			// Head
-			.kt-todo__head {
+			.tf-todo__head {
 				width: 100%;
 
 				// toolbar
-				.kt-todo__toolbar {
+				.tf-todo__toolbar {
 					cursor: pointer;
 					padding-top: 0.9rem;
 					width: 100%;
@@ -690,46 +690,46 @@ $kt-todo-hover-bg: #f2f3f7;
 	  				flex-wrap: wrap;
 
 					// hide the back button on desktop
-					.kt-todo__icon.kt-todo__icon--back {
+					.tf-todo__icon.tf-todo__icon--back {
 						display: none;
 					}
 
-					.kt-todo__info {
+					.tf-todo__info {
 						display: flex;
 						align-items: center;
 						flex-grow: 1;
 
-						.kt-media {
+						.tf-media {
 							margin-right: 0.7rem;
 						}
 
-						.kt-todo__name {
-							color: kt-base-color(label, 4);
+						.tf-todo__name {
+							color: tf-base-color(label, 4);
 							font-weight: 600;
 							font-size: 1.1rem;
 							padding-right: 0.5rem;
 
 							&:hover {
-					        	color: kt-brand-color();
+					        	color: tf-brand-color();
 					        	transition: all 0.3s ease;
 					      	}
 						}
 					}
 
-					.kt-todo__details {
+					.tf-todo__details {
 						display: flex;
 						align-items: center;
 						flex-wrap: wrap;
 						padding: 0.5rem 0;
 
-						.kt-todo__icon {
+						.tf-todo__icon {
 							margin: 0.4rem 0.5rem 0.4rem 0;
 							font-size: 0.7rem;
-							color: kt-brand-color();
+							color: tf-brand-color();
 						}
 
-						.kt-todo__desc {
-							color: kt-base-color(label, 2);
+						.tf-todo__desc {
+							color: tf-base-color(label, 2);
 							font-weight: 400;
 							font-size: 1rem;
 						}
@@ -743,12 +743,12 @@ $kt-todo-hover-bg: #f2f3f7;
 						}
 					}
 
-					.kt-todo__actions {
+					.tf-todo__actions {
 						display: flex;
 						align-items: center;
 
-						.kt-todo__datetime {
-							color: kt-base-color(label, 1);
+						.tf-todo__datetime {
+							color: tf-base-color(label, 1);
 							font-weight: 500;
 							font-size: 1rem;
 							margin-right: 1.5rem;
@@ -758,37 +758,37 @@ $kt-todo-hover-bg: #f2f3f7;
 			}
 
 			// Body
-			.kt-todo__body {
-				padding-bottom: kt-get($kt-portlet, space, desktop);
+			.tf-todo__body {
+				padding-bottom: tf-get($tf-portlet, space, desktop);
 				flex-grow: 1;
 
-				.kt-todo__title {
+				.tf-todo__title {
 					padding-top: 1rem;
 
-					.kt-todo__text {
-						color: kt-base-color(label, 4);
+					.tf-todo__text {
+						color: tf-base-color(label, 4);
 						font-size: 1.5rem;
 						font-weight: 600;
 						margin-top: 1rem;
 						display: block;
 					}
 
-					.kt-todo__labels {
+					.tf-todo__labels {
 						display: flex;
 						align-items: center;
 						padding: 0.8rem 0 2rem 0;
 
-						.kt-todo__label {
+						.tf-todo__label {
 							display: flex;
 							align-items: center;
 
-							.kt-todo__dot  {
+							.tf-todo__dot  {
 								padding-right: 0.5rem;
 								font-size: 1.2rem;
 							}
 
-							.kt-todo__text{
-								color: kt-base-color(label, 1);
+							.tf-todo__text{
+								color: tf-base-color(label, 1);
 								font-weight: 500;
 								font-size: 1rem;
 								margin: 0;
@@ -801,22 +801,22 @@ $kt-todo-hover-bg: #f2f3f7;
 					}
 
 					&:hover {
-				        color: kt-brand-color();
+				        color: tf-brand-color();
 				        transition: all 0.3s ease;
 				    }
 				}
 
-				.kt-todo__desc{
+				.tf-todo__desc{
 					padding-bottom: 10px;
 					display: block;
-					color: kt-base-color(label, 1);
+					color: tf-base-color(label, 1);
 					font-weight: 500;
 				}
 
-				.kt-todo__files {
+				.tf-todo__files {
 					padding-top: 10px;
 
-					.kt-todo__file {
+					.tf-todo__file {
 						display: block;
 						padding-top: 0.7rem;
 
@@ -825,56 +825,56 @@ $kt-todo-hover-bg: #f2f3f7;
 						}
 
 						a {
-							color: kt-base-color(label, 2);
+							color: tf-base-color(label, 2);
 							font-weight: 500;
 
 							&:hover {
-					        	color: kt-brand-color();
+					        	color: tf-brand-color();
 					        	transition: all 0.3s ease;
 					      	}
 						}
 					}
 				}
 
-				.kt-todo__comments {
+				.tf-todo__comments {
 					padding-bottom: 20px;
 
-					.kt-todo__comment {
+					.tf-todo__comment {
 						padding-top: 3rem;
 
 						&:last-child {
 							padding-top: 2rem;
 						}
 
-						.kt-todo__box {
+						.tf-todo__box {
 							display: flex;
 							align-items: center;
 
-							.kt-media {
+							.tf-media {
 								margin-right: 1rem;
 							}
 
-							.kt-todo__username {
+							.tf-todo__username {
 								flex-grow: 1;
-								color: kt-base-color(label, 3);
+								color: tf-base-color(label, 3);
 								font-weight: 500;
 
 								&:hover {
-					        		color: kt-brand-color();
+					        		color: tf-brand-color();
 					        		transition: all 0.3s ease;
 					      		}
 							}
 
-							.kt-todo__date {
-								color: kt-base-color(label, 1);
+							.tf-todo__date {
+								color: tf-base-color(label, 1);
 								font-weight: 500;
 							}
 						}
 
-						.kt-todo__text {
+						.tf-todo__text {
 							padding-left: 3.3rem;
 							display: block;
-							color: kt-base-color(label, 1);
+							color: tf-base-color(label, 1);
 							font-weight: 500;
 						}
 					}
@@ -882,42 +882,42 @@ $kt-todo-hover-bg: #f2f3f7;
 			}
 
 			// Foot
-			.kt-todo__foot {
-				.kt-todo__form {
+			.tf-todo__foot {
+				.tf-todo__form {
 					margin-top: 20px;
 					display: flex;
 					flex-direction: column;
-					border: 1px solid kt-base-color(grey, 2);
+					border: 1px solid tf-base-color(grey, 2);
 
-					@include kt-rounded {
-						border-radius: $kt-border-radius;
+					@include tf-rounded {
+						border-radius: $tf-border-radius;
 					}
 
-					.kt-todo__head {
+					.tf-todo__head {
 						display: flex;
 						flex-wrap: wrap;
 						align-items: center;
 						justify-content: space-between;
-						padding: 20px kt-get($kt-portlet, space, desktop) - 10px 20px kt-get($kt-portlet, space, desktop);
-						border-bottom: 1px solid kt-base-color(grey, 2);
+						padding: 20px tf-get($tf-portlet, space, desktop) - 10px 20px tf-get($tf-portlet, space, desktop);
+						border-bottom: 1px solid tf-base-color(grey, 2);
 
-						.kt-todo__title {
+						.tf-todo__title {
 							margin-right: 10px;
 							font-size: 1.2rem;
 							font-weight: 500;
-							color: kt-base-color(label, 3);
+							color: tf-base-color(label, 3);
 						}
 
-						.kt-todo__actions {
+						.tf-todo__actions {
 							display: flex;
 
-							.kt-todo__icon {
+							.tf-todo__icon {
 								margin-left: 5px;
 							}
 						}
 					}
 
-					.kt-todo__body {
+					.tf-todo__body {
 						padding: 0 0 10px 0;
 
 						.ql-container.ql-snow  {
@@ -928,14 +928,14 @@ $kt-todo-hover-bg: #f2f3f7;
 							.ql-editor {
 								font-weight:400;
 								font-size: 1rem;
-								color: kt-base-color(label, 2);
-								padding: 15px kt-get($kt-portlet, space, desktop);
-								font-family: kt-get($kt-font-families, regular);
+								color: tf-base-color(label, 2);
+								padding: 15px tf-get($tf-portlet, space, desktop);
+								font-family: tf-get($tf-font-families, regular);
 
 								&.ql-blank {
 									&:before {
-										left: kt-get($kt-portlet, space, desktop);
-										color: kt-base-color(label, 1);
+										left: tf-get($tf-portlet, space, desktop);
+										color: tf-base-color(label, 1);
 										font-weight: 400;
 										font-style: normal;
 									}
@@ -950,7 +950,7 @@ $kt-todo-hover-bg: #f2f3f7;
 							border-radius: 0;
 							border: 0;
 							border-top: 0;
-							border-bottom: 1px solid kt-base-color(grey, 2);
+							border-bottom: 1px solid tf-base-color(grey, 2);
 							padding-left: 18px;
 
 							.ql-picker-label {
@@ -958,32 +958,32 @@ $kt-todo-hover-bg: #f2f3f7;
 								&:before {
 									font-weight:400;
 									font-size: 1rem;
-									color: kt-base-color(label, 2);
-									font-family: kt-get($kt-font-families, regular);
+									color: tf-base-color(label, 2);
+									font-family: tf-get($tf-font-families, regular);
 								}
 							}
 						}
 
-						.kt-todo__attachments {							
+						.tf-todo__attachments {							
 
-							@include kt-tablet-and-mobile {
+							@include tf-tablet-and-mobile {
 								width: 100%;
 							}
 
 							display: inline-block;
-							padding: 0 kt-get($kt-portlet, space, desktop);
+							padding: 0 tf-get($tf-portlet, space, desktop);
 						}
 					}
 
-					.kt-todo__foot {
+					.tf-todo__foot {
 						display: flex;
 						flex-wrap: wrap;
 						align-items: center;
 						width: 100%;
-						padding: 20px kt-get($kt-portlet, space, desktop) - 10px 20px kt-get($kt-portlet, space, desktop);
-						//border-top: 1px solid kt-base-color(grey, 2);
+						padding: 20px tf-get($tf-portlet, space, desktop) - 10px 20px tf-get($tf-portlet, space, desktop);
+						//border-top: 1px solid tf-base-color(grey, 2);
 
-						.kt-todo__primary {
+						.tf-todo__primary {
 							display: flex;
 							flex-grow: 1;
 							align-items: center;
@@ -1002,14 +1002,14 @@ $kt-todo-hover-bg: #f2f3f7;
 								}
 							}
 
-							.kt-todo__panel {
+							.tf-todo__panel {
 								display: flex;
 								align-items: center;
 								margin-left: 1rem;
 							}
 						}
 
-						.kt-todo__secondary {
+						.tf-todo__secondary {
 							display: flex;
 							align-items: center;
 							margin: 0;
@@ -1021,33 +1021,33 @@ $kt-todo-hover-bg: #f2f3f7;
 	}
 
 	// Portlet head
-	.kt-portlet__head {
+	.tf-portlet__head {
 		min-height: 80px !important;
-		padding: 10px kt-get($kt-portlet, space, desktop);
+		padding: 10px tf-get($tf-portlet, space, desktop);
 	}
 }
 
 // Tablet and mobile mode
-@include kt-tablet-and-mobile {
+@include tf-tablet-and-mobile {
 	// Inbox
-	.kt-todo {
+	.tf-todo {
 		display: flex;
 		flex-wrap: wrap;
 		padding: 0;
 
 		// Aside
-		.kt-todo__aside {
+		.tf-todo__aside {
 			background: #fff;
 			margin: 0;
 
-			.kt-todo__nav {
-				.kt-nav {
-					.kt-nav__item {
-            			.kt-nav__link-title {
+			.tf-todo__nav {
+				.tf-nav {
+					.tf-nav__item {
+            			.tf-nav__link-title {
                 			padding-left: 1.2rem;
             			}
 
-						.kt-nav__link {
+						.tf-nav__link {
 							padding: 0.75rem 10px;
 						}
 					}
@@ -1056,85 +1056,85 @@ $kt-todo-hover-bg: #f2f3f7;
 		}
 
 		// List
-		.kt-todo__list {
+		.tf-todo__list {
 			display: flex;
 
-			&.kt-todo__list--hidden {
+			&.tf-todo__list--hidden {
 				display: none;
 			}
 
 			// Portlet head
-			.kt-portlet__head {
+			.tf-portlet__head {
 				min-height: 60px !important;
-				padding: 10px kt-get($kt-portlet, space, mobile);
+				padding: 10px tf-get($tf-portlet, space, mobile);
 			}
 
 			// Head
-			.kt-todo__head {
+			.tf-todo__head {
 				padding: 0;
 
 				// Toolbar
-				.kt-todo__toolbar {
-					padding: 10px kt-get($kt-portlet, space, mobile);
+				.tf-todo__toolbar {
+					padding: 10px tf-get($tf-portlet, space, mobile);
 				}
 			}
 
 			// Body
-			.kt-todo__body {
-				.kt-todo__items {
+			.tf-todo__body {
+				.tf-todo__items {
 					overflow: auto;
 					margin-bottom: 15px;
 
-					.kt-todo__item {
+					.tf-todo__item {
 						min-width: 500px;
-						padding: 10px kt-get($kt-portlet, space, mobile);
+						padding: 10px tf-get($tf-portlet, space, mobile);
 					}
 				}
 			}
 
 			// Foot
-			.kt-todo__foot {
-				padding: 0 kt-get($kt-portlet, space, mobile);
+			.tf-todo__foot {
+				padding: 0 tf-get($tf-portlet, space, mobile);
 			}
 		}
 
 		// View
-		.kt-todo__view {
+		.tf-todo__view {
 			display: none;
 
 			// Head
-			.kt-todo__head {
+			.tf-todo__head {
 				// toolbar
-				.kt-todo__toolbar {
+				.tf-todo__toolbar {
 					// show the back button on desktop
-					.kt-todo__icon.kt-todo__icon--back {
+					.tf-todo__icon.tf-todo__icon--back {
 						display: flex;
 					}
 				}
 			}
 
 			// Shown
-			&.kt-todo__view--shown {
+			&.tf-todo__view--shown {
 				display: flex;
 			}
 		}
 
 		// Portlet head
-		.kt-portlet__head {
+		.tf-portlet__head {
 			min-height: 60px !important;
-			padding: 10px kt-get($kt-portlet, space, mobile);
+			padding: 10px tf-get($tf-portlet, space, mobile);
 		}
 	}
 }
 
 // Mobile mode
-@include kt-mobile {
+@include tf-mobile {
 	// Inbox
-	.kt-todo {
+	.tf-todo {
 		// Toolbar
-		.kt-todo__head {
+		.tf-todo__head {
 			// Nav
-	    	.kt-todo__nav {
+	    	.tf-todo__nav {
 				.btn {
 					margin-right: 0.2rem;
 				}
@@ -1143,4 +1143,4 @@ $kt-todo-hover-bg: #f2f3f7;
 	}
 }
 // Aside  offcanvas
-@include kt-offcanvas-build(kt-todo__aside, tablet-and-mobile, kt-get($kt-todo-aside-config, offcanvas) );
+@include tf-offcanvas-build(tf-todo__aside, tablet-and-mobile, tf-get($tf-todo-aside-config, offcanvas) );

@@ -3,7 +3,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { Role, AuthService } from '@app/core/auth';
 
 @Component({
-    selector: 'kt-user-filter',
+    selector: 'tf-user-filter',
     templateUrl: './user-filter.component.html',
     styleUrls: ['./user-filter.component.scss'],
     providers: [{

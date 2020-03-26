@@ -19,7 +19,7 @@ import { HtmlClassService } from '../html-class.service';
 
 
 @Component({
-	selector: 'kt-header',
+	selector: 'tf-header',
 	templateUrl: './header.component.html',
 	styleUrls: ['./header.component.scss'],
 })
@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 	menuHeaderDisplay: boolean;
 	fluid: boolean;
 
-	@ViewChild('ktHeader', {static: true}) ktHeader: ElementRef;
+	@ViewChild('tfHeader', {static: true}) tfHeader: ElementRef;
 
 	/**
 	 * Component constructor
@@ -84,12 +84,12 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 		// animate the header minimize the height on scroll down
 		if (objectPath.get(config, 'header.self.fixed.desktop.enabled') || objectPath.get(config, 'header.self.fixed.desktop')) {
 			// header minimize on scroll down
-			this.ktHeader.nativeElement.setAttribute('data-ktheader-minimize', '1');
+			this.tfHeader.nativeElement.setAttribute('data-ktheader-minimize', '1');
 		}
 	}
 
 	ngAfterViewInit(): void {
 		// keep header element in the service
-		this.layoutRefService.addElement('header', this.ktHeader.nativeElement);
+		this.layoutRefService.addElement('header', this.tfHeader.nativeElement);
 	}
 }

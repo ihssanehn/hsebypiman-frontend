@@ -5,7 +5,7 @@
 
 
 
-.kt-list-pics {
+.tf-list-pics {
 	> a {
 		margin-right: 0.25rem;
 
@@ -13,13 +13,13 @@
 			width: 3.36rem;
 			border-radius: 50%;
 
-			@include kt-rounded {
+			@include tf-rounded {
 				border-radius: 3px;
 			}
 		}			
 	}
 	
-	&.kt-list-pics--circle {
+	&.tf-list-pics--circle {
 		> a {
 			> img {								 
 				width: 3.36rem;
@@ -28,7 +28,7 @@
 		}
 	}
 
-	&.kt-list-pics--sm {
+	&.tf-list-pics--sm {
 		> a {
 			> img {					
 				width: 2.14rem;					
@@ -36,7 +36,7 @@
 		}
 	}
 
-	&.kt-list-pics-rounded--sm {
+	&.tf-list-pics-rounded--sm {
 		> a {
 			> img {					
 				width: 2.14rem;				

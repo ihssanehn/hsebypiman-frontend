@@ -5,25 +5,25 @@
 
 
 
-.kt-list-timeline {
-    .kt-list-timeline__group {
+.tf-list-timeline {
+    .tf-list-timeline__group {
         margin: 0 0 2rem 0;
     }
 
-    .kt-list-timeline__heading {
+    .tf-list-timeline__heading {
         margin: 0 0 1.25rem 0;
         font-weight: 700;
         font-size: 1rem;
         text-transform: uppercase;
     }
     
-    .kt-list-timeline__items {
+    .tf-list-timeline__items {
         position: relative;
         padding: 0;
         margin: 0;
 
         &:before {
-            background-color: kt-base-color(grey, 2);
+            background-color: tf-base-color(grey, 2);
             position: absolute;
             display: block;
             content: '';
@@ -34,7 +34,7 @@
             left: 3px;
         }
 
-        .kt-list-timeline__item {
+        .tf-list-timeline__item {
             position: relative;
             display: table;
             table-layout: fixed;
@@ -64,14 +64,14 @@
                 }
             }
 
-            .kt-list-timeline__badge {
+            .tf-list-timeline__badge {
                 text-align: left;
                 vertical-align: middle;
                 display: table-cell;
                 position: relative;
                 width: 20px;
                 &:before {
-                    background-color: kt-base-color(grey, 2);
+                    background-color: tf-base-color(grey, 2);
                     position: absolute;
                     display: block;
                     content: '';
@@ -83,48 +83,48 @@
                     border-radius: 100%;
                 }
 
-                @each $name, $color in $kt-state-colors {
-                    &.kt-list-timeline__badge--#{$name} {
+                @each $name, $color in $tf-state-colors {
+                    &.tf-list-timeline__badge--#{$name} {
                         &:before {
-                            background-color: kt-get($color, base);
+                            background-color: tf-get($color, base);
                         }
                     }
                 }
             }
 
-            .kt-list-timeline__icon {
+            .tf-list-timeline__icon {
                 text-align: left;
                 vertical-align: middle;
                 display: table-cell;
                 width: 30px;
                 padding: 0 5px 0 0;
                 line-height: 0;
-                color: kt-base-color(label, 2);
+                color: tf-base-color(label, 2);
             }
 
-            @include kt-icons-size( (fontawesome: 1.2rem, lineawesome: 1.6rem, flaticon: 1.6rem));
+            @include tf-icons-size( (fontawesome: 1.2rem, lineawesome: 1.6rem, flaticon: 1.6rem));
             
-            .kt-list-timeline__text {
+            .tf-list-timeline__text {
                 display: table-cell;
                 text-align: left;
                 vertical-align: middle;
                 width: 100%;
                 padding: 0 0 0 5px;
                 font-size: 1rem;
-                color: kt-base-color(label, 3);
+                color: tf-base-color(label, 3);
                 &:hover {
                     text-decoration: none;
                 }
             }
             
-            .kt-list-timeline__time {
+            .tf-list-timeline__time {
                 display: table-cell;
                 text-align: right;
                 vertical-align: middle;
                 width: 80px;
                 padding: 0 0 0 5px;
                 font-size: 0.9rem;
-                color: kt-base-color(label, 2);
+                color: tf-base-color(label, 2);
             }
             
             &:first-child {
@@ -144,11 +144,11 @@
                 }
             }
             
-            &.kt-list-timeline__item--read {
-                .kt-list-timeline__badge,
-                .kt-list-timeline__icon,
-                .kt-list-timeline__text,
-                .kt-list-timeline__time {
+            &.tf-list-timeline__item--read {
+                .tf-list-timeline__badge,
+                .tf-list-timeline__icon,
+                .tf-list-timeline__text,
+                .tf-list-timeline__time {
                     opacity: 0.5;
                 }
             }

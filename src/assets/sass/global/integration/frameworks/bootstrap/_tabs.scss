@@ -14,8 +14,8 @@
 			padding: 0.75rem 1.25rem;
 			font-size: 1rem;
 			font-weight: 400;
-			@include kt-transition();
-			@include kt-icons-style(font-size, (fontawesome: 1.2rem, lineawesome: 1.3rem, flaticon: 1.4rem) );
+			@include tf-transition();
+			@include tf-icons-style(font-size, (fontawesome: 1.2rem, lineawesome: 1.3rem, flaticon: 1.4rem) );
 			font-size: 1rem;
 			font-weight: 400;
 
@@ -29,7 +29,7 @@
 			&.active,
 			&:active,
 			&:hover {
-				@include kt-transition();
+				@include tf-transition();
 			}
 		}
 	}
@@ -39,36 +39,36 @@
 .nav-tabs {
 	.nav-item {
 		.nav-link {
-			color: kt-brand-color();
+			color: tf-brand-color();
 			
 			i {
-				color: kt-brand-color();
+				color: tf-brand-color();
 			}     
 			
 			&.active,
 			&:active,
 			&:hover {
-				color: kt-brand-color();
+				color: tf-brand-color();
 
 				i {
-					color: kt-brand-color();
+					color: tf-brand-color();
 				}
 			}
 
 			&.disabled {
-				color: kt-base-color(label, 2);
+				color: tf-base-color(label, 2);
 
 				i {
-					color: kt-base-color(label, 2);
+					color: tf-base-color(label, 2);
 				}
 			}
 		}
 
 		&.show > .nav-link {
-			color: kt-brand-color();
+			color: tf-brand-color();
 
 			i {
-				color: kt-brand-color();
+				color: tf-brand-color();
 			}
 		}
 	}
@@ -84,19 +84,19 @@
 		}
 
 		.nav-link {
-			color: kt-base-color(label, 3);
+			color: tf-base-color(label, 3);
 
 			&:active,
 			&.active,
 			&.active:hover {
-				background-color: kt-brand-color();
-				color: kt-brand-color(inverse);
+				background-color: tf-brand-color();
+				color: tf-brand-color(inverse);
 			}
 		}
 
 		&.show > .nav-link {
-			background-color: kt-brand-color();
-			color: kt-brand-color(inverse);
+			background-color: tf-brand-color();
+			color: tf-brand-color(inverse);
 		}
 	}
 
@@ -127,14 +127,14 @@
 				&:active,
 				&.active,
 				&.active:hover {
-					background-color: rgba(kt-brand-color(), 0.1);
-					color: kt-brand-color();
+					background-color: rgba(tf-brand-color(), 0.1);
+					color: tf-brand-color();
 				}
 			}
 	
 			&.show > .nav-link {
-				background-color: rgba(kt-brand-color(), 0.1);
-				color: kt-brand-color();
+				background-color: rgba(tf-brand-color(), 0.1);
+				color: tf-brand-color();
 			}
 		}
 	}

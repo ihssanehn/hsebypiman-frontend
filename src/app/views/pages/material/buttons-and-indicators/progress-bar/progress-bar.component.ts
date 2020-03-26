@@ -171,7 +171,7 @@ export class ProgressBarConfigurableExample {
 };
 
 @Component({
-	selector: 'kt-progress-bar',
+	selector: 'tf-progress-bar',
 	templateUrl: './progress-bar.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	styles: [`

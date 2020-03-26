@@ -11,7 +11,7 @@ import { User, Role, AuthService } from "../../../../../core/auth";
 // import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { NgxPermissionsService } from 'ngx-permissions';
 @Component({
-	selector: "kt-user-edit",
+	selector: "tf-user-edit",
 	templateUrl: "./user-edit.component.html",
 	styleUrls: ['./user-edit.component.scss']
 })

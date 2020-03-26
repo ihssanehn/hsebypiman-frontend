@@ -4,42 +4,42 @@
 
 
 
-.kt-infobox{
+.tf-infobox{
 	padding:1.5rem;
 
-	.kt-infobox__title{
+	.tf-infobox__title{
 		font-size: 2rem;
-		color: kt-base-color(label, 4);
+		color: tf-base-color(label, 4);
 	}
 
-	.kt-infobox__subtitle {
+	.tf-infobox__subtitle {
 		font-size: 1.3rem;
 		font-weight: 400;
-		color: kt-base-color(label, 4);
+		color: tf-base-color(label, 4);
 		margin-bottom: 1.2rem;
 	}
 
-	.kt-infobox__header{
+	.tf-infobox__header{
 		margin-bottom: 2rem;
 		display: flex;
 		align-items: center;
 
-		.kt-infobox__badge{
+		.tf-infobox__badge{
 			margin: auto 0 auto auto;
 			font-size: 1rem;
 			font-weight: 500;
 			padding: 0.5rem 1rem;
 			border-radius: 5px;
-			color: kt-state-color(brand, base);
-			background-color: rgba(kt-state-color(brand, base), 0.15);
+			color: tf-state-color(brand, base);
+			background-color: rgba(tf-state-color(brand, base), 0.15);
 		}
 	}
 
-	.kt-infobox__body{
-		.kt-infobox__section{
+	.tf-infobox__body{
+		.tf-infobox__section{
 			margin-bottom: 2rem;
 
-			.kt-infobox__content{
+			.tf-infobox__content{
 				font-weight: 400;
 				color: #9392a0;
 				font-size: 1.15rem;
@@ -62,10 +62,10 @@
 			}
 		}
 
-		.kt-nav{
-			.kt-nav__item{
-				.kt-nav__link{
-					.kt-nav__link-text{
+		.tf-nav{
+			.tf-nav__item{
+				.tf-nav__link{
+					.tf-nav__link-text{
 						font-size: 1.25rem;
 					}
 				}
@@ -95,14 +95,14 @@
 		}
 	}
 
-	@each $name, $color in $kt-state-colors {
+	@each $name, $color in $tf-state-colors {
 		&--#{$name}{
 
-			.kt-infobox__header{
+			.tf-infobox__header{
 
-				.kt-infobox__badge{
-					color: kt-state-color(#{$name}, base);
-					background-color: rgba(kt-state-color(#{$name}, base), 0.15);
+				.tf-infobox__badge{
+					color: tf-state-color(#{$name}, base);
+					background-color: rgba(tf-state-color(#{$name}, base), 0.15);
 				}
 			}
 		}

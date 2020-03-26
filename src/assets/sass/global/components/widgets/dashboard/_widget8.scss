@@ -5,14 +5,14 @@
 
 
 
-.kt-widget8 {
+.tf-widget8 {
     
     // Item
-    .kt-widget8__item {
+    .tf-widget8__item {
         display: flex;             
           
 
-        .kt-widget8__pic {
+        .tf-widget8__pic {
                                                
 
             > img {
@@ -22,31 +22,31 @@
         }
 
         // Info
-        .kt-widget8__info {
+        .tf-widget8__info {
             padding-left: 1rem;                
             font-size: 1rem;             
 
             // Username
-            .kt-widget8__username {
-                color: kt-base-color(label, 3);
+            .tf-widget8__username {
+                color: tf-base-color(label, 3);
                 font-size: 1.2rem;
                 font-weight: 500;                      
             }
 
             // Description
-            .kt-widget8__desc {
+            .tf-widget8__desc {
                 font-size: 1rem;  
-                color: kt-base-color(label, 2);
+                color: tf-base-color(label, 2);
             }                 
         }
 
         // Action
-        .kt-widget8__action {
+        .tf-widget8__action {
                                  
         }  
 
         
-        border-bottom: 0.07rem dashed kt-base-color(grey, 2);
+        border-bottom: 0.07rem dashed tf-base-color(grey, 2);
 
         &:last-child {
             border-bottom: 0;

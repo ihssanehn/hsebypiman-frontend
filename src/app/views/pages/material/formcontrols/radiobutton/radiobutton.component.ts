@@ -107,7 +107,7 @@ const labelPosition = {
   <mat-radio-button  value="Illinois">Illinois</mat-radio-button>
   <mat-radio-button  value="Kansas">Kansas</mat-radio-button>
 </mat-radio-group>
-<div class="kt-separator kt-separator--dashed"></div>
+<div class="tf-separator tf-separator--dashed"></div>
 <mat-slide-toggle (change)="changeLablesPositions()">Slide labels position</mat-slide-toggle>`,
 	tsCode: `
 import {Component} from '@angular/core';\n
@@ -140,7 +140,7 @@ const changeEvent = {
   <mat-radio-button  value="Illinois">Illinois</mat-radio-button>
   <mat-radio-button  value="Kansas">Kansas</mat-radio-button>
 </mat-radio-group>
-<div class="kt-separator kt-separator--dashed" *ngIf="state"></div>
+<div class="tf-separator tf-separator--dashed" *ngIf="state"></div>
 <span *ngIf="state">Welcome to <mark>{{ state }}</mark>!</span>`,
 	tsCode: `
 import {Component} from '@angular/core';\n
@@ -166,7 +166,7 @@ export class RadioChangeEventExample {
 };
 
 @Component({
-	selector: 'kt-radiobutton',
+	selector: 'tf-radiobutton',
 	templateUrl: './radiobutton.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	styles: [`

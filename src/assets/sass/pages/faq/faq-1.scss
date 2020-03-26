@@ -11,35 +11,35 @@
 // Layout config
 @import "../../global/layout/config.scss";
 
-.kt-faq-v1 {
-    .kt-nav {
-        .kt-nav__item {
+.tf-faq-v1 {
+    .tf-nav {
+        .tf-nav__item {
             padding: 0.5rem 0;
 
-            .kt-nav__link {
+            .tf-nav__link {
                 background-color: transparent !important;
 
-                > .kt-nav__link-text {
+                > .tf-nav__link-text {
                     font-size: 1.1rem;
                     font-weight: 500;
-                    color: kt-base-color(label, 2);
+                    color: tf-base-color(label, 2);
                     transition: color 0.3s ease;
                 }
             }
 
             &:hover,
-            &.kt-nav__item--active {
-                > .kt-nav__link {
+            &.tf-nav__item--active {
+                > .tf-nav__link {
 
-                    > .kt-nav__link-text {
-                        color: kt-brand-color();
+                    > .tf-nav__link-text {
+                        color: tf-brand-color();
                         transition: color 0.3s ease;
                     }
                 }
             }
 
-            .kt-nav__sub {
-                .kt-nav__item {
+            .tf-nav__sub {
+                .tf-nav__item {
                     padding: 0.25rem 0;
                 }
             }

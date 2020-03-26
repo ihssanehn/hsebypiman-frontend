@@ -5,7 +5,7 @@
 
 
 
-@function kt-unitless($number) {
+@function tf-unitless($number) {
     @if type-of($number) == 'number' and not unitless($number) {
         @return $number / ($number * 0 + 1);
     }
@@ -13,7 +13,7 @@
     @return $number;
 }
 
-@function kt-get($map, $keys...) {
+@function tf-get($map, $keys...) {
     @if length($keys) == 1 {
         $keys: nth($keys, 1);
     }
@@ -33,7 +33,7 @@
                 }
             }
             @else {
-                @return kt-get-warning($warn, $get, nth($keys, $i));
+                @return tf-get-warning($warn, $get, nth($keys, $i));
             }
         }
     }
@@ -41,7 +41,7 @@
     @return $get;
 }
 
-@function kt-has($map, $keys...) {
+@function tf-has($map, $keys...) {
     @if length($keys) == 1 {
         $keys: nth($keys, 1);
     }
@@ -74,7 +74,7 @@
     }
 }
 
-@function kt-get-warning($warn, $get, $key) {
+@function tf-get-warning($warn, $get, $key) {
     @if $get == null {
         @warn "Map has no value for key search `#{$warn}`";
     }
@@ -84,7 +84,7 @@
     @return null;
 }
 
-@function kt-display-color($color) {
+@function tf-display-color($color) {
     @if (lightness( $color ) > 50) {
       @return darken($color, 50%);
     }
@@ -93,25 +93,25 @@
     }
 }
 
-@function kt-state-color($name, $type: null) {
+@function tf-state-color($name, $type: null) {
     @if ($type == null) {
         $type: base;
     }
 
-    @return kt-get($kt-state-colors, $name, $type);
+    @return tf-get($tf-state-colors, $name, $type);
 }
 
-@function kt-brand-color($type: null) {
-    @return kt-state-color(brand, $type);
+@function tf-brand-color($type: null) {
+    @return tf-state-color(brand, $type);
 }
 
-@function kt-base-color($type, $level) {
-    @return kt-get($kt-base-colors, $type, $level);
+@function tf-base-color($type, $level) {
+    @return tf-get($tf-base-colors, $type, $level);
 }
 
-@function kt-media-breakpoint($type) {
-    @if (kt-has($kt-media-breakpoints, $type)) {
-        @return kt-get($kt-media-breakpoints, $type);
+@function tf-media-breakpoint($type) {
+    @if (tf-has($tf-media-breakpoints, $type)) {
+        @return tf-get($tf-media-breakpoints, $type);
     } @else {
         @return $type;
     }

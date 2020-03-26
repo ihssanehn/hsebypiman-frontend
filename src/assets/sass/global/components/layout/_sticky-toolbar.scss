@@ -4,7 +4,7 @@
 
 
 
-.kt-sticky-toolbar {
+.tf-sticky-toolbar {
     width: 46px;
     position: fixed;
     top: 30%;
@@ -14,18 +14,18 @@
     margin: 0;
     z-index: 50;
     background: #fff;
-    box-shadow: $kt-dropdown-shadow;
+    box-shadow: $tf-dropdown-shadow;
 
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 
-    @include kt-rounded {
+    @include tf-rounded {
         border-radius: 3px 0 0 3px;
     }
 
-    .kt-sticky-toolbar__item {
+    .tf-sticky-toolbar__item {
         margin:0;
         padding: 5px;
         text-align: center; 
@@ -38,7 +38,7 @@
             width: 30px;
             height: 30px;
 
-            @include kt-rounded {
+            @include tf-rounded {
                 border-radius: 3px;
             }
 
@@ -58,20 +58,20 @@
             }
         }
 
-        @each $name, $color in $kt-state-colors {
-            &.kt-sticky-toolbar__item--#{$name} {
+        @each $name, $color in $tf-state-colors {
+            &.tf-sticky-toolbar__item--#{$name} {
                 > a {   
                     > i {
-                        color: kt-get($color, base);
+                        color: tf-get($color, base);
                     }
                 }
     
                 &:hover {
                     > a {
-                        background: kt-get($color, base);
+                        background: tf-get($color, base);
     
                         > i {                        
-                            color: kt-get($color, inverse);
+                            color: tf-get($color, inverse);
                         }
                     }
                 }

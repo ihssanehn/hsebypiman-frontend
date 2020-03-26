@@ -185,7 +185,7 @@ export class TooltipManualExample {}
 	};
 
 @Component({
-	selector: 'kt-material-tooltip',
+	selector: 'tf-material-tooltip',
 	templateUrl: './material-tooltip.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -1,79 +1,79 @@
-<kt-notice [icon]="'flaticon-warning kt-font-primary'">
+<tf-notice [icon]="'flaticon-warning tf-font-primary'">
 	For more info please check the components's official demos & documentation 
-	<a class="kt-link" href="https://ng-bootstrap.github.io/#/components/timepicker/examples" target="_blank">demos & documentation</a>
-</kt-notice>
+	<a class="tf-link" href="https://ng-bootstrap.github.io/#/components/timepicker/examples" target="_blank">demos & documentation</a>
+</tf-notice>
 <div class="row">
 	<div class="col-xl-6">
 
-		<kt-material-preview [viewItem]="exampleTimepicker">
-			<div class="kt-section">
-				<div class="kt-section__content">
+		<tf-material-preview [viewItem]="exampleTimepicker">
+			<div class="tf-section">
+				<div class="tf-section__content">
 					<ngb-timepicker [(ngModel)]="time"></ngb-timepicker>
 				</div>
 			</div>
-			<div class="kt-separator kt-separator--dashed"></div>
+			<div class="tf-separator tf-separator--dashed"></div>
 
-			<div class="kt-section">
-				<div class="kt-section__content">
+			<div class="tf-section">
+				<div class="tf-section__content">
 					<pre>Selected time: {{time | json}}</pre>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 
-		<kt-material-preview [viewItem]="exampleMeridian">
-			<div class="kt-section">
-				<div class="kt-section__content">
+		<tf-material-preview [viewItem]="exampleMeridian">
+			<div class="tf-section">
+				<div class="tf-section__content">
 					<ngb-timepicker [(ngModel)]="time2" [meridian]="meridian"></ngb-timepicker>
 					<button class="btn btn-sm btn-{{meridian ? 'success' : 'danger'}}" (click)="toggleMeridian()">
 						Meridian - {{meridian ? "ON" : "OFF"}}
 					</button>
 				</div>
 			</div>
-			<div class="kt-separator kt-separator--dashed"></div>
-			<div class="kt-section">
-				<div class="kt-section__content">
+			<div class="tf-separator tf-separator--dashed"></div>
+			<div class="tf-section">
+				<div class="tf-section__content">
 					<pre>Selected time: {{time2 | json}}</pre> </div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 
-		<kt-material-preview [viewItem]="exampleSeconds">
-			<div class="kt-section">
-				<div class="kt-section__content">
+		<tf-material-preview [viewItem]="exampleSeconds">
+			<div class="tf-section">
+				<div class="tf-section__content">
 					<ngb-timepicker [(ngModel)]="time3" [seconds]="seconds"></ngb-timepicker>
 					<button class="btn btn-sm btn-{{seconds ? 'success' : 'danger'}}" (click)="toggleSeconds()">
 						Seconds - {{seconds ? "ON" : "OFF"}}
 					</button>
 				</div>
 			</div>
-			<div class="kt-separator kt-separator--dashed"></div>
-			<div class="kt-section">
-				<div class="kt-section__content">
+			<div class="tf-separator tf-separator--dashed"></div>
+			<div class="tf-section">
+				<div class="tf-section__content">
 					<pre>Selected time: {{time3 | json}}</pre>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 
 
-		<kt-material-preview [viewItem]="exampleSpinners">
-			<div class="kt-section">
-				<div class="kt-section__content">
+		<tf-material-preview [viewItem]="exampleSpinners">
+			<div class="tf-section">
+				<div class="tf-section__content">
 					<ngb-timepicker [(ngModel)]="time7" [spinners]="spinners"></ngb-timepicker>
 				</div>
 			</div>
-			<div class="kt-separator kt-separator--dashed"></div>
-			<div class="kt-section">
-				<div class="kt-section__content">
-					<button class="kt-t-1 btn btn-sm btn-{{spinners ? 'success' : 'danger'}}" (click)="toggleSpinners()">
+			<div class="tf-separator tf-separator--dashed"></div>
+			<div class="tf-section">
+				<div class="tf-section__content">
+					<button class="tf-t-1 btn btn-sm btn-{{spinners ? 'success' : 'danger'}}" (click)="toggleSpinners()">
 						Spinners - {{spinners ? "ON" : "OFF"}}
 					</button>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 	</div>
 	<div class="col-xl-6">
-		<kt-material-preview [viewItem]="exampleCustomSteps">
-			<div class="kt-section">
-				<div class="kt-section__content">
+		<tf-material-preview [viewItem]="exampleCustomSteps">
+			<div class="tf-section">
+				<div class="tf-section__content">
 					<ngb-timepicker [(ngModel)]="time4" [seconds]="true" [hourStep]="hourStep" [minuteStep]="minuteStep" [secondStep]="secondStep"></ngb-timepicker>
 					<div class="row">
 						<div class="col-sm-3">
@@ -91,20 +91,20 @@
 					</div>
 				</div>
 			</div>
-			<div class="kt-separator kt-separator--dashed"></div>
-			<div class="kt-section">
-				<div class="kt-section__content">
+			<div class="tf-separator tf-separator--dashed"></div>
+			<div class="tf-section">
+				<div class="tf-section__content">
 					<pre>Selected time: {{time4 | json}}</pre>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 
-		<kt-material-preview [viewItem]="exampleCustomValidation">
-			<div class="kt-section">
-				<span class="kt-section__sub">
+		<tf-material-preview [viewItem]="exampleCustomValidation">
+			<div class="tf-section">
+				<span class="tf-section__sub">
 					Illustrates custom validation, you have to select time between 12:00 and 13:59
 				</span>
-				<div class="kt-section__content">
+				<div class="tf-section__content">
 					<div class="form-group">
 						<ngb-timepicker [(ngModel)]="time5" [formControl]="ctrl" required></ngb-timepicker>
 						<div *ngIf="ctrl.valid" class="small form-text text-success">Great choice</div>
@@ -116,23 +116,23 @@
 					</div>
 				</div>
 			</div>
-			<div class="kt-separator kt-separator--dashed"></div>
-			<div class="kt-section">
-				<div class="kt-section__content">
+			<div class="tf-separator tf-separator--dashed"></div>
+			<div class="tf-section">
+				<div class="tf-section__content">
 					<pre>Selected time: {{time5 | json}}</pre>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 
-		<kt-material-preview [viewItem]="exampleGlobalConfigurationOfTimepickers">
-			<div class="kt-section">
-				<span class="kt-section__sub">
+		<tf-material-preview [viewItem]="exampleGlobalConfigurationOfTimepickers">
+			<div class="tf-section">
+				<span class="tf-section__sub">
 					This timepicker uses customized default values.
 				 </span>
-				<div class="kt-section__content">
+				<div class="tf-section__content">
 					<ngb-timepicker [(ngModel)]="time6" [seconds]="'true'" [spinners]="'false'"></ngb-timepicker>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 	</div>
 </div>

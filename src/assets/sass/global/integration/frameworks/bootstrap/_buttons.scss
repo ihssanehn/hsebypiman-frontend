@@ -26,21 +26,21 @@ button.btn {
 .btn.btn-clean {
 	border-color: transparent;
 	background: transparent;
-	color: kt-base-color(shape, 3);
+	color: tf-base-color(shape, 3);
 
 	i {
-		color: kt-base-color(shape, 3);
+		color: tf-base-color(shape, 3);
 	}
 
 	.show > &,
 	&.active,
 	&:active,
 	&:hover {
-		color: kt-brand-color();
-		background: kt-base-color(shape, 1);
+		color: tf-brand-color();
+		background: tf-base-color(shape, 1);
 
 		i {
-			color: kt-brand-color();
+			color: tf-brand-color();
 		}
 	}
 }
@@ -49,11 +49,11 @@ button.btn {
 .btn.btn-default {
 	border: 0;
 	background: transparent;
-	color: kt-base-color(label, 2);
-	border: 1px solid kt-base-color(shape, 2);
+	color: tf-base-color(label, 2);
+	border: 1px solid tf-base-color(shape, 2);
 
 	i {
-		color: kt-base-color(shape, 3);
+		color: tf-base-color(shape, 3);
 	}
 
 	.show > &,
@@ -61,12 +61,12 @@ button.btn {
 	&:active,
 	&:hover {
 		i {
-			color: kt-brand-color(inverse);
+			color: tf-brand-color(inverse);
 		}
 
-		color: kt-brand-color(inverse);
-		background: kt-brand-color();
-		border-color: kt-brand-color();
+		color: tf-brand-color(inverse);
+		background: tf-brand-color();
+		border-color: tf-brand-color();
 	}
 }
 
@@ -88,10 +88,10 @@ button.btn {
 }
 
 // Button states
-@each $name, $color in join($kt-state-colors, $kt-social-colors) {
+@each $name, $color in join($tf-state-colors, $tf-social-colors) {
     .btn-#{$name} {
-		@include button-variant(kt-get($color, base), kt-get($color, base));
-		color: kt-get($color, inverse);
+		@include button-variant(tf-get($color, base), tf-get($color, base));
+		color: tf-get($color, inverse);
 
         @if $name == light {
 	        .show > &.dropdown-toggle,
@@ -99,8 +99,8 @@ button.btn {
 			&.active,
 			&:active,
 			&:hover {
-				background-color: kt-base-color(grey, 1);
-				border-color: kt-base-color(grey, 1);
+				background-color: tf-base-color(grey, 1);
+				border-color: tf-base-color(grey, 1);
 			}
 		}
 
@@ -110,7 +110,7 @@ button.btn {
     		&:before {
                 display: block;
                 content: ' ';
-                border-left: 1px solid kt-get($color, inverse);
+                border-left: 1px solid tf-get($color, inverse);
                 position: absolute;
                 top: 3px;
                 left: -1px;
@@ -130,25 +130,25 @@ button.btn {
 }
 
 // Outline states
-@each $name, $color in $kt-state-colors {
+@each $name, $color in $tf-state-colors {
     .btn-outline-#{$name} {
-        @include button-outline-variant(kt-get($color, base), kt-get($color, inverse));
+        @include button-outline-variant(tf-get($color, base), tf-get($color, inverse));
     }
 }
 
 // Hover states
-@each $name, $color in $kt-state-colors {
+@each $name, $color in $tf-state-colors {
     .btn-hover-#{$name} {
     	//background: transparent;
-    	//color: kt-get($color, base);
+    	//color: tf-get($color, base);
 
     	.show > &,
 	  	&.active,
 	  	&:active,
 	  	&:hover {
-			color: kt-get($color, inverse);
-			background-color: kt-get($color, base);
-			border-color: kt-get($color, base);
+			color: tf-get($color, inverse);
+			background-color: tf-get($color, base);
+			border-color: tf-get($color, base);
 		}
     }
 
@@ -163,17 +163,17 @@ button.btn {
 	  	&.active,
 	  	&:active,
 	  	&:hover {
-	  		color: kt-get($color, base);
-			border-color: kt-get($color, base);
+	  		color: tf-get($color, base);
+			border-color: tf-get($color, base);
 			background-color: transparent;
 		}
     }
 }
 
 // Font states
-@each $name, $color in $kt-state-colors {
+@each $name, $color in $tf-state-colors {
 	.btn-font-#{$name} {
-		color: kt-get($color, base);
+		color: tf-get($color, base);
     }
 
     .btn-font-hover-#{$name} {
@@ -181,20 +181,20 @@ button.btn {
 	  	&.active,
 	  	&:active,
 	  	&:hover {
-			color: kt-get($color, base);
+			color: tf-get($color, base);
 		}
     }
 }
 
 // Secondary outline button
 .btn.btn-outline-secondary {
-  	color: darken(kt-get($theme-colors, secondary), 50%);
+  	color: darken(tf-get($theme-colors, secondary), 50%);
 
   	.show > &,
   	&.active,
   	&:active,
   	&:hover {
-  		background-color: kt-get($theme-colors, secondary);
+  		background-color: tf-get($theme-colors, secondary);
   		//color: #fff;
   	}
 }
@@ -212,8 +212,8 @@ button.btn {
 		}
 	}
 
-	@each $name, $color in $kt-state-colors {
-		$base-color: kt-get($color, base);
+	@each $name, $color in $tf-state-colors {
+		$base-color: tf-get($color, base);
 
 		@if $name == light {
 			$base-color: #999999;
@@ -355,7 +355,7 @@ button.btn {
 	//display: inline-flex;
 	align-items: center;
 
-	@include kt-icons-size((lineawesome: 1.5rem, fontawesome: 1.2rem, flaticon: 1.2rem));
+	@include tf-icons-size((lineawesome: 1.5rem, fontawesome: 1.2rem, flaticon: 1.2rem));
 
 	i {
 		padding-right: 0.5rem;
@@ -364,7 +364,7 @@ button.btn {
 	}
 
 	&.btn-sm {
-		@include kt-icons-size((lineawesome: 1.3rem, fontawesome: 1rem, flaticon: 1rem));
+		@include tf-icons-size((lineawesome: 1.3rem, fontawesome: 1rem, flaticon: 1rem));
 
 		i {
 			padding-right: 0.35rem;
@@ -372,7 +372,7 @@ button.btn {
 	}
 
 	&.btn-lg {
-		@include kt-icons-size((lineawesome: 1.7rem, fontawesome: 1.4rem, flaticon: 1.3rem));
+		@include tf-icons-size((lineawesome: 1.7rem, fontawesome: 1.4rem, flaticon: 1.3rem));
 
 		i {
 			padding-right: 0.75rem;
@@ -382,8 +382,8 @@ button.btn {
 
 // Label button
 .btn.btn-label {
-	background-color: kt-base-color(shape, 1);
-	color: kt-brand-color();
+	background-color: tf-base-color(shape, 1);
+	color: tf-brand-color();
 	cursor: text !important;
 }
 
@@ -396,22 +396,22 @@ input.btn.btn-label {
 	&:focus,
 	&:hover,
 	&.active {
-	    background-color: kt-brand-color();
-	    color: kt-brand-color(inverse);
+	    background-color: tf-brand-color();
+	    color: tf-brand-color(inverse);
 	}
 }
 
 // Label button states
-@each $name, $color in join($kt-state-colors, $kt-social-colors) {
+@each $name, $color in join($tf-state-colors, $tf-social-colors) {
 	.btn.btn-label-#{$name} {
-		background-color: rgba(kt-get($color, base), 0.1);
-		color: kt-get($color, base);
+		background-color: rgba(tf-get($color, base), 0.1);
+		color: tf-get($color, base);
 		cursor: text !important;
 	}
 
 	.btn.btn-label-#{$name}-o2 {
-		background-color: rgba(kt-get($color, base), 0.2);
-		color: kt-get($color, base);
+		background-color: rgba(tf-get($color, base), 0.2);
+		color: tf-get($color, base);
 		cursor: text !important;
 	}
 
@@ -423,8 +423,8 @@ input.btn.btn-label {
 		&:focus,
 		&:hover,
 		&.active {
-		    background-color: kt-get($color, base);
-		    color: kt-get($color, inverse);
+		    background-color: tf-get($color, base);
+		    color: tf-get($color, inverse);
 		}
 	}
 }
@@ -468,30 +468,30 @@ input.btn.btn-label {
 
 	// Icon sizing
 	&.btn-icon-sm {
-		@include kt-icons-size((lineawesome: 1.25rem, fontawesome: 1.15rem, flaticon: 1.15rem));
+		@include tf-icons-size((lineawesome: 1.25rem, fontawesome: 1.15rem, flaticon: 1.15rem));
 	}
 
 	// Icon sizing
 	&.btn-icon-md {
-		@include kt-icons-size((lineawesome: 1.3rem, fontawesome: 1.2rem, flaticon: 1.2rem));
+		@include tf-icons-size((lineawesome: 1.3rem, fontawesome: 1.2rem, flaticon: 1.2rem));
 	}
 
 	&.btn-icon-lg {
-		@include kt-icons-size((lineawesome: 1.4rem, fontawesome: 1.4rem, flaticon: 1.4rem));
+		@include tf-icons-size((lineawesome: 1.4rem, fontawesome: 1.4rem, flaticon: 1.4rem));
 	}
 
 	// Icon button states
-	@each $name, $color in $kt-state-colors {
+	@each $name, $color in $tf-state-colors {
 	    &.btn-#{$name} {
 	        i {
-	        	color: kt-get($color, inverse);
+	        	color: tf-get($color, inverse);
 	        }
 
 	        &:focus,
 	        &:hover,
 	        &.active {
 	        	i {
-	        		color: kt-get($color, inverse);
+	        		color: tf-get($color, inverse);
 	        	}
 	        }
 	    }
@@ -522,9 +522,9 @@ input.btn.btn-label {
 }
 
 // Button with spinner
-.btn.kt-spinner {
+.btn.tf-spinner {
 	& {
-		&:not(.kt-spinner--center) {
+		&:not(.tf-spinner--center) {
 			padding-left: 3 * $input-btn-padding-x;
 
 			&:before {
@@ -533,7 +533,7 @@ input.btn.btn-label {
 		}
 
 		// Right
-		&.kt-spinner--right {
+		&.tf-spinner--right {
 			padding-left: $input-btn-padding-x;
 			padding-right: 3 * $input-btn-padding-x;
 
@@ -544,8 +544,8 @@ input.btn.btn-label {
 		}
 	}
 
-	&.kt-spinner--sm {
-		&:not(.kt-spinner--center) {
+	&.tf-spinner--sm {
+		&:not(.tf-spinner--center) {
 			padding-left: 2.5 * $input-btn-padding-x;
 
 			&:before {
@@ -554,7 +554,7 @@ input.btn.btn-label {
 		}
 
 		// Right
-		&.kt-spinner--right {
+		&.tf-spinner--right {
 			padding-left: $input-btn-padding-x;
 			padding-right: 2.5 * $input-btn-padding-x;
 
@@ -565,8 +565,8 @@ input.btn.btn-label {
 		}
 	}
 
-	&.kt-spinner--lg {
-		&:not(.kt-spinner--center) {
+	&.tf-spinner--lg {
+		&:not(.tf-spinner--center) {
 			padding-left: 3.5 * $input-btn-padding-x;
 
 			&:before {
@@ -575,7 +575,7 @@ input.btn.btn-label {
 		}
 
 		// Right
-		&.kt-spinner--right {
+		&.tf-spinner--right {
 			padding-left: $input-btn-padding-x;
 			padding-right: 3.5 * $input-btn-padding-x;
 

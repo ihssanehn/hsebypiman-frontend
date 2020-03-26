@@ -3,7 +3,7 @@ import { NgModule, } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-// Metronic
+// CVTI - HSE
 import { PartialsModule } from '../../partials/partials.module';
 import { CoreModule } from '../../../core/core.module';
 import { WizardComponent } from './wizard.component';

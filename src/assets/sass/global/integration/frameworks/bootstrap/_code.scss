@@ -5,10 +5,10 @@
 
 
 code {
-    background-color: kt-base-color(grey, 1);
+    background-color: tf-base-color(grey, 1);
     padding: 0.15rem 0.25rem;
 
-    @include kt-rounded {
-        border-radius: $kt-border-radius;
+    @include tf-rounded {
+        border-radius: $tf-border-radius;
     }
 }

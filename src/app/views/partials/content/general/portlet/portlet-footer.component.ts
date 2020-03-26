@@ -2,13 +2,13 @@
 import { Component, HostBinding, Input, OnInit } from '@angular/core';
 
 @Component({
-	selector: 'kt-portlet-footer',
+	selector: 'tf-portlet-footer',
 	template: `
 		<ng-content></ng-content>`
 })
 export class PortletFooterComponent implements OnInit {
 	// Public properties
-	@HostBinding('class') classList = 'kt-portlet__foot';
+	@HostBinding('class') classList = 'tf-portlet__foot';
 	@Input() class: string;
 
 	/**

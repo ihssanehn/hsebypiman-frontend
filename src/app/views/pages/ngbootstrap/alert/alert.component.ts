@@ -97,22 +97,22 @@ export interface IAlert {
 const selfClosingAlert = {
 	beforeCodeTitle: 'Self-Closing Alert',
 	htmlCode: `
-<div class="kt-section">
-  <h3 class="kt-section__heading">Self closing</h3>
-  <span class="kt-section__sub">
+<div class="tf-section">
+  <h3 class="tf-section__heading">Self closing</h3>
+  <span class="tf-section__sub">
     Static self-closing alert that disappears after 20 seconds (refresh the page if it has already disappeared)
   </span>
-  <div class="kt-section__content">
+  <div class="tf-section__content">
     <ngb-alert *ngIf="!staticAlertClosed" (close)="staticAlertClosed = true">Check out our awesome new features!</ngb-alert>
   </div>
 </div>
-<div class="kt-separator kt-separator--dashed"></div>
-<div class="kt-section">
-  <h3 class="kt-section__heading">Change message</h3>
-  <span class="kt-section__sub">
+<div class="tf-separator tf-separator--dashed"></div>
+<div class="tf-section">
+  <h3 class="tf-section__heading">Change message</h3>
+  <span class="tf-section__sub">
     Show a self-closing success message that disappears after 5 seconds.
   </span>
-  <div class="kt-section__content">
+  <div class="tf-section__content">
     <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = null">{{ successMessage }}</ngb-alert>
       <p>
         <button class="btn btn-primary" (click)="changeSuccessMessage()">Change message</button>
@@ -149,11 +149,11 @@ export class NgbdAlertSelfclosing implements OnInit {
 const customAlert = {
 	beforeCodeTitle: 'Custom Alert',
 	htmlCode: `
-<div class="kt-section">
-  <span class="kt-section__sub">
+<div class="tf-section">
+  <span class="tf-section__sub">
     Show a custom alert that can be styled via CSS or SCSS.
   </span>
-  <div class="kt-section__content">
+  <div class="tf-section__content">
     <ngb-alert type="custom" [dismissible]="false">
       <strong>Whoa!</strong> This is a custom alert.</ngb-alert>
   </div>
@@ -208,7 +208,7 @@ export class NgbdAlertConfig {
 
 
 @Component({
-	selector: 'kt-alert',
+	selector: 'tf-alert',
 	templateUrl: './alert.component.html',
 	styles: [
 		`

@@ -16,9 +16,9 @@ export interface PortletOptions {
 }
 
 @Component({
-	selector: 'kt-portlet',
+	selector: 'tf-portlet',
 	templateUrl: './portlet.component.html',
-	exportAs: 'ktPortlet'
+	exportAs: 'tfPortlet'
 })
 export class PortletComponent implements OnInit, AfterViewInit {
 	// Public properties

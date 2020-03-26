@@ -1,7 +1,7 @@
 // import login css
 @import "sass/pages/login/login-1";
 
-kt-auth, .kt-login {
+tf-auth, .tf-login {
 	height: 100%;
 
 	.mat-form-field {
@@ -9,7 +9,7 @@ kt-auth, .kt-login {
 	}
 
 	// add extra right padding when displaying spinner in button
-	.kt-spinner {
+	.tf-spinner {
 		padding-right: 3rem !important;
 	}
 }

@@ -85,8 +85,8 @@
 
     // Brand skin
     &.tooltip-brand {
-        $m-bg-color: kt-brand-color();
-        $m-font-color: kt-brand-color(inverse);
+        $m-bg-color: tf-brand-color();
+        $m-font-color: tf-brand-color(inverse);
 
         .tooltip-inner {
             color: $m-font-color; 

@@ -8,7 +8,7 @@ import { LayoutConfigService, SparklineChartOptions } from '../../../core/_base/
 import { Widget4Data } from '../../partials/content/widgets/widget4/widget4.component';
 
 @Component({
-	selector: 'kt-dashboard',
+	selector: 'tf-dashboard',
 	templateUrl: './dashboard.component.html',
 	styleUrls: ['dashboard.component.scss'],
 })
@@ -55,7 +55,7 @@ export class DashboardComponent implements OnInit {
 		this.widget4_1 = shuffle([
 			{
 				pic: './assets/media/files/doc.svg',
-				title: 'Metronic Documentation',
+				title: 'CVTI - HSE Documentation',
 				url: 'https://keenthemes.com.my/metronic',
 			}, {
 				pic: './assets/media/files/jpg.svg',
@@ -116,47 +116,47 @@ export class DashboardComponent implements OnInit {
 		// @ts-ignore
 		this.widget4_3 = shuffle([
 			{
-				icon: 'flaticon-pie-chart-1 kt-font-info',
-				title: 'Metronic v6 has been arrived!',
+				icon: 'flaticon-pie-chart-1 tf-font-info',
+				title: 'CVTI - HSE v6 has been arrived!',
 				url: 'https://keenthemes.com.my/metronic',
 				value: '+$500',
-				valueColor: 'kt-font-info'
+				valueColor: 'tf-font-info'
 			}, {
-				icon: 'flaticon-safe-shield-protection kt-font-success',
-				title: 'Metronic community meet-up 2019 in Rome.',
+				icon: 'flaticon-safe-shield-protection tf-font-success',
+				title: 'CVTI - HSE community meet-up 2019 in Rome.',
 				url: 'https://keenthemes.com.my/metronic',
 				value: '+$1260',
-				valueColor: 'kt-font-success'
+				valueColor: 'tf-font-success'
 			}, {
-				icon: 'flaticon2-line-chart kt-font-danger',
-				title: 'Metronic Angular 8 version will be landing soon..',
+				icon: 'flaticon2-line-chart tf-font-danger',
+				title: 'CVTI - HSE Angular 8 version will be landing soon..',
 				url: 'https://keenthemes.com.my/metronic',
 				value: '+$1080',
-				valueColor: 'kt-font-danger'
+				valueColor: 'tf-font-danger'
 			}, {
-				icon: 'flaticon2-pie-chart-1 kt-font-primary',
-				title: 'ale! Purchase Metronic at 70% off for limited time',
+				icon: 'flaticon2-pie-chart-1 tf-font-primary',
+				title: 'ale! Purchase CVTI - HSE at 70% off for limited time',
 				url: 'https://keenthemes.com.my/metronic',
 				value: '70% Off!',
-				valueColor: 'kt-font-primary'
+				valueColor: 'tf-font-primary'
 			}, {
-				icon: 'flaticon2-rocket kt-font-brand',
-				title: 'Metronic VueJS version is in progress. Stay tuned!',
+				icon: 'flaticon2-rocket tf-font-brand',
+				title: 'CVTI - HSE VueJS version is in progress. Stay tuned!',
 				url: 'https://keenthemes.com.my/metronic',
 				value: '+134',
-				valueColor: 'kt-font-brand'
+				valueColor: 'tf-font-brand'
 			}, {
-				icon: 'flaticon2-notification kt-font-warning',
-				title: 'Black Friday! Purchase Metronic at ever lowest 90% off for limited time',
+				icon: 'flaticon2-notification tf-font-warning',
+				title: 'Black Friday! Purchase CVTI - HSE at ever lowest 90% off for limited time',
 				url: 'https://keenthemes.com.my/metronic',
 				value: '70% Off!',
-				valueColor: 'kt-font-warning'
+				valueColor: 'tf-font-warning'
 			}, {
-				icon: 'flaticon2-file kt-font-focus',
-				title: 'Metronic React version is in progress.',
+				icon: 'flaticon2-file tf-font-focus',
+				title: 'CVTI - HSE React version is in progress.',
 				url: 'https://keenthemes.com.my/metronic',
 				value: '+13%',
-				valueColor: 'kt-font-focus'
+				valueColor: 'tf-font-focus'
 			},
 		]);
 		// @ts-ignore
@@ -164,38 +164,38 @@ export class DashboardComponent implements OnInit {
 			{
 				pic: './assets/media/client-logos/logo5.png',
 				title: 'Trump Themes',
-				desc: 'Make Metronic Development',
+				desc: 'Make CVTI - HSE Development',
 				url: 'https://keenthemes.com.my/metronic',
 				value: '+$2500',
-				valueColor: 'kt-font-brand'
+				valueColor: 'tf-font-brand'
 			}, {
 				pic: './assets/media/client-logos/logo4.png',
 				title: 'StarBucks',
 				desc: 'Good Coffee & Snacks',
 				url: 'https://keenthemes.com.my/metronic',
 				value: '-$290',
-				valueColor: 'kt-font-brand'
+				valueColor: 'tf-font-brand'
 			}, {
 				pic: './assets/media/client-logos/logo3.png',
 				title: 'Phyton',
 				desc: 'A Programming Language',
 				url: 'https://keenthemes.com.my/metronic',
 				value: '+$17',
-				valueColor: 'kt-font-brand'
+				valueColor: 'tf-font-brand'
 			}, {
 				pic: './assets/media/client-logos/logo2.png',
 				title: 'GreenMakers',
 				desc: 'Make Green Development',
 				url: 'https://keenthemes.com.my/metronic',
 				value: '-$2.50',
-				valueColor: 'kt-font-brand'
+				valueColor: 'tf-font-brand'
 			}, {
 				pic: './assets/media/client-logos/logo1.png',
 				title: 'FlyThemes',
 				desc: 'A Let\'s Fly Fast Again Language',
 				url: 'https://keenthemes.com.my/metronic',
 				value: '+200',
-				valueColor: 'kt-font-brand'
+				valueColor: 'tf-font-brand'
 			},
 		]);
 	}

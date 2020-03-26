@@ -12,12 +12,12 @@
 @import "../../global/layout/config.scss";
 
 // Base
-.kt-sc-faq-2 {
+.tf-sc-faq-2 {
 	display: flex;
 	flex-direction: column;
 	position: relative;
 
-	.kt-sc__bg{
+	.tf-sc__bg{
 		$portlet-padding: 0;
 		position: absolute;
 		top:$portlet-padding;
@@ -31,7 +31,7 @@
 		padding-right: 70px;
 		overflow:hidden;
 
-		.kt-svg-icon{
+		.tf-svg-icon{
 			height: 110%;
 			width: auto;
 			transform: translateY(50px);
@@ -44,7 +44,7 @@
 			bottom: 0;
 			padding-right: 0;
 
-			.kt-svg-icon{
+			.tf-svg-icon{
 				height: auto;
 				width: 100%;
 				fill: rgba(103,112,153, 0.04);
@@ -53,25 +53,25 @@
 		}
 	}
 
-	.kt-sc__top{
+	.tf-sc__top{
 		position: relative;
 		z-index: 1;
 
-		.kt-sc__content{
+		.tf-sc__content{
 			margin-right: 50%;
 			display: flex;
 			align-items: center;
 			padding: 6rem 3rem;
 
-			.kt-sc__title{
-				color: kt-base-color(label, 4);
+			.tf-sc__title{
+				color: tf-base-color(label, 4);
 				font-size: 2.15rem;
 				font-weight: 600;
 				margin-right: 3.5rem;
 				margin-bottom: 0;
 			}
 
-			.kt-sc__form {
+			.tf-sc__form {
 
 				.input-group{
 					width: 380px;
@@ -82,7 +82,7 @@
 						border-bottom-right-radius: 0;
 						border: none;
 						padding: 0.65rem 2rem;
-						background-color: kt-state-color(brand, inverse);
+						background-color: tf-state-color(brand, inverse);
 					}
 
 					.form-control{
@@ -97,32 +97,32 @@
 	}
 }
 
-@include kt-tablet-and-mobile(){
+@include tf-tablet-and-mobile(){
 
-	.kt-sc-2{
+	.tf-sc-2{
 
-		.kt-sc__bg{
+		.tf-sc__bg{
 			opacity: 0.2;
 
-			.kt-svg-icon{
+			.tf-svg-icon{
 				transform: translateY(0);
 			}
 		}
 
-		.kt-sc__top{
+		.tf-sc__top{
 			min-height: auto;
 
-			.kt-sc__content{
+			.tf-sc__content{
 				flex-direction: column;
 				padding: 4rem 0;
 				margin-right: 0;
 				min-height: auto;
 
-				.kt-sc__title{
+				.tf-sc__title{
 					margin-bottom: 2rem;
 				}
 
-				.kt-sc__form {
+				.tf-sc__form {
 
 					.input-group{
 						width: 100%;

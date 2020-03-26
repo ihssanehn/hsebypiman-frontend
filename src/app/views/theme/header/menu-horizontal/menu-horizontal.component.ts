@@ -25,7 +25,7 @@ import {
 import { HtmlClassService } from '../../html-class.service';
 
 @Component({
-	selector: 'kt-menu-horizontal',
+	selector: 'tf-menu-horizontal',
 	templateUrl: './menu-horizontal.component.html',
 	styleUrls: ['./menu-horizontal.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
@@ -53,11 +53,11 @@ export class MenuHorizontalComponent implements OnInit, AfterViewInit {
 
 	offcanvasOptions: OffcanvasOptions = {
 		overlay: true,
-		baseClass: 'kt-header-menu-wrapper',
-		closeBy: 'kt_header_menu_mobile_close_btn',
+		baseClass: 'tf-header-menu-wrapper',
+		closeBy: 'tf_header_menu_mobile_close_btn',
 		toggleBy: {
-			target: 'kt_header_mobile_toggler',
-			state: 'kt-header-mobile__toolbar-toggler--active'
+			target: 'tf_header_mobile_toggler',
+			state: 'tf-header-mobile__toolbar-toggler--active'
 		}
 	};
 
@@ -115,28 +115,28 @@ export class MenuHorizontalComponent implements OnInit, AfterViewInit {
 	 * @param item: any
 	 */
 	getItemCssClasses(item) {
-		let classes = 'kt-menu__item';
+		let classes = 'tf-menu__item';
 
 		if (objectPath.get(item, 'submenu')) {
-			classes += ' kt-menu__item--submenu';
+			classes += ' tf-menu__item--submenu';
 		}
 
 		if (!item.submenu && this.isMenuItemIsActive(item)) {
-			classes += ' kt-menu__item--active kt-menu__item--here';
+			classes += ' tf-menu__item--active tf-menu__item--here';
 		}
 
 		if (item.submenu && this.isMenuItemIsActive(item)) {
-			classes += ' kt-menu__item--open kt-menu__item--here';
+			classes += ' tf-menu__item--open tf-menu__item--here';
 		}
 
 		if (objectPath.get(item, 'resizer')) {
-			classes += ' kt-menu__item--resize';
+			classes += ' tf-menu__item--resize';
 		}
 
 		const menuType = objectPath.get(item, 'submenu.type') || 'classic';
 		if ((objectPath.get(item, 'root') && menuType === 'classic')
 			|| parseInt(objectPath.get(item, 'submenu.width'), 10) > 0) {
-			classes += ' kt-menu__item--rel';
+			classes += ' tf-menu__item--rel';
 		}
 
 		const customClass = objectPath.get(item, 'custom-class');
@@ -145,7 +145,7 @@ export class MenuHorizontalComponent implements OnInit, AfterViewInit {
 		}
 
 		if (objectPath.get(item, 'icon-only')) {
-			classes += ' kt-menu__item--icon-only';
+			classes += ' tf-menu__item--icon-only';
 		}
 
 		return classes;
@@ -178,24 +178,24 @@ export class MenuHorizontalComponent implements OnInit, AfterViewInit {
 		const alignment = objectPath.get(item, 'alignment') || 'right';
 
 		if (alignment) {
-			classes += ' kt-menu__submenu--' + alignment;
+			classes += ' tf-menu__submenu--' + alignment;
 		}
 
 		const type = objectPath.get(item, 'type') || 'classic';
 		if (type === 'classic') {
-			classes += ' kt-menu__submenu--classic';
+			classes += ' tf-menu__submenu--classic';
 		}
 		if (type === 'tabs') {
-			classes += ' kt-menu__submenu--tabs';
+			classes += ' tf-menu__submenu--tabs';
 		}
 		if (type === 'mega') {
 			if (objectPath.get(item, 'width')) {
-				classes += ' kt-menu__submenu--fixed';
+				classes += ' tf-menu__submenu--fixed';
 			}
 		}
 
 		if (objectPath.get(item, 'pull')) {
-			classes += ' kt-menu__submenu--pull';
+			classes += ' tf-menu__submenu--pull';
 		}
 
 		return classes;

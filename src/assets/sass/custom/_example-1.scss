@@ -7,14 +7,14 @@
 
 .my-custom-style {
     padding: 1rem 0.5rem;
-    color: kt-brand-color();
+    color: tf-brand-color();
 
     .my-custom-element {
         margin-left: 1rem;
     }
 }
 
-@include kt-tablet-and-mobile {
+@include tf-tablet-and-mobile {
     .my-custom-style {
         padding: 0.5rem 0.25rem;
 

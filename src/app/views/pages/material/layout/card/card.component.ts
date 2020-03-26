@@ -99,7 +99,7 @@ export class CardImageExample {}
 	isExampleExpanded: true
 };
 @Component({
-	selector: 'kt-card',
+	selector: 'tf-card',
 	templateUrl: './card.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	styles: [`

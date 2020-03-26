@@ -42,20 +42,20 @@
 		<ng-container matColumnDef="cStatus">
 			<th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
 			<td mat-cell *matCellDef="let product">
-				<span class="kt-badge kt-badge--inline kt-badge--pill kt-badge--{{ getItemCssClassByStatus(product.cStatus) }} kt-badge--wide">{{ getItemStatusString(product.cStatus) }}</span>
+				<span class="tf-badge tf-badge--inline tf-badge--pill tf-badge--{{ getItemCssClassByStatus(product.cStatus) }} tf-badge--wide">{{ getItemStatusString(product.cStatus) }}</span>
 			</td>
 		</ng-container>
 
 		<ng-container matColumnDef="cCondition">
 			<th mat-header-cell *matHeaderCellDef mat-sort-header>Condition</th>
 			<td mat-cell *matCellDef="let product">
-				<span class="kt-badge kt-badge--{{ getItemCssClassByCondition(product.cCondition) }} kt-badge--dot"></span>&nbsp;
-				<span class="kt--font-bold kt-font-{{ getItemCssClassByCondition(product.cCondition) }}">{{ getItemConditionString(product.cCondition) }}</span>
+				<span class="tf-badge tf-badge--{{ getItemCssClassByCondition(product.cCondition) }} tf-badge--dot"></span>&nbsp;
+				<span class="tf--font-bold tf-font-{{ getItemCssClassByCondition(product.cCondition) }}">{{ getItemConditionString(product.cCondition) }}</span>
 			</td>
 		</ng-container>
 
 		<ng-container matColumnDef="actions">
-			<th mat-header-cell *matHeaderCellDef width="106px" class="kt-pl-13">
+			<th mat-header-cell *matHeaderCellDef width="106px" class="tf-pl-13">
 				Actions
 			</th>
 			<td mat-cell *matCellDef="let product">

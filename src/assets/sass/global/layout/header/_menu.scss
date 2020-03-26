@@ -6,19 +6,19 @@
 
 
 // Build desktop menu
-@include kt-menu-hor-build-layout(kt-get($kt-header-config, menu, desktop));
-@include kt-menu-hor-build-skin(kt-get($kt-header-config, menu, desktop), default);
+@include tf-menu-hor-build-layout(tf-get($tf-header-config, menu, desktop));
+@include tf-menu-hor-build-skin(tf-get($tf-header-config, menu, desktop), default);
 
 // Build mobile menu
-@include kt-menu-ver-build-layout(kt-get($kt-header-config, menu, tablet-and-mobile));
-@include kt-menu-ver-build-skin(kt-get($kt-header-config, menu, tablet-and-mobile), default);
+@include tf-menu-ver-build-layout(tf-get($tf-header-config, menu, tablet-and-mobile));
+@include tf-menu-ver-build-skin(tf-get($tf-header-config, menu, tablet-and-mobile), default);
 
 // Header menu mobile offcanvas
-@include kt-offcanvas-build(kt-header-menu-wrapper, tablet-and-mobile, kt-get($kt-header-config, menu, offcanvas-mobile));
+@include tf-offcanvas-build(tf-header-menu-wrapper, tablet-and-mobile, tf-get($tf-header-config, menu, offcanvas-mobile));
 
 // General mode
-.kt-header-menu-wrapper {
-	.kt-header-toolbar {
+.tf-header-menu-wrapper {
+	.tf-header-toolbar {
 		.btn.btn-custom {
 			background-color: #e7e8ef;
 			border-color: #e7e8ef;
@@ -41,9 +41,9 @@
 }
 
 // Desktop mode(1024px and above)
-@include kt-desktop() {
+@include tf-desktop() {
 	// Header default mode
-	.kt-header-menu-wrapper {
+	.tf-header-menu-wrapper {
 		display: flex;
 		width: 100%;
 		align-items: center;
@@ -52,26 +52,26 @@
 		// margin-left: 40px;
 
 		// Menu
-		.kt-header-menu {
-			.kt-menu__nav {
-				> .kt-menu__item {
+		.tf-header-menu {
+			.tf-menu__nav {
+				> .tf-menu__item {
 					margin: auto 1.25rem;
 					// Link
-					> .kt-menu__link {
+					> .tf-menu__link {
 						padding: 0.75rem 0;
 						position: relative;
 						border-bottom: 2.5px solid transparent;
-						@include kt-rounded {
-							// border-radius: $kt-border-radius;
+						@include tf-rounded {
+							// border-radius: $tf-border-radius;
 						}
 					}
 
 					// Active state
-					&.kt-menu__item--here,
-					&.kt-menu__item--active {
-						> .kt-menu__link{
+					&.tf-menu__item--here,
+					&.tf-menu__item--active {
+						> .tf-menu__link{
 							border-image: linear-gradient(to right, #20b1d3 31%, #5adeb9) 1;
-							> .kt-menu__link-text{
+							> .tf-menu__link-text{
 								font-weight: 800;
 							}
 						}
@@ -79,9 +79,9 @@
 
 					// Hover state
 					&:hover,
-					&.kt-menu__item--open,
-					&.kt-menu__item--hover {
-						> .kt-menu__link {
+					&.tf-menu__item--open,
+					&.tf-menu__item--hover {
+						> .tf-menu__link {
 							border-bottom: 2.5px solid;
 							border-image: linear-gradient(to right, #20b1d3 31%, #5adeb9) 1;
 						}
@@ -92,30 +92,30 @@
 	}	
 
 	// Header minimize mode
-	.kt-header--fixed.kt-header--minimize {
-		.kt-header-menu-wrapper  {
-			.kt-header-menu {
-				.kt-menu__nav {
-					> .kt-menu__item {
+	.tf-header--fixed.tf-header--minimize {
+		.tf-header-menu-wrapper  {
+			.tf-header-menu {
+				.tf-menu__nav {
+					> .tf-menu__item {
 						// Link
-						> .kt-menu__link {
-							> .kt-menu__link-icon {
+						> .tf-menu__link {
+							> .tf-menu__link-icon {
 								color: lighten(#6c7293, 3%);
 							}
 
-							> .kt-menu__link-text {
+							> .tf-menu__link-text {
 								color: #6c7293;
 							}
 
-							> .kt-menu__link-arrow {
+							> .tf-menu__link-arrow {
 								color: lighten(#6c7293, 3%);
 							}
 						}
 
 						// Active state
-						&.kt-menu__item--here,
-						&.kt-menu__item--active {
-							> .kt-menu__link {
+						&.tf-menu__item--here,
+						&.tf-menu__item--active {
+							> .tf-menu__link {
 								border-bottom: 2.5px solid;
 								border-image: linear-gradient(to right, #20b1d3 31%, #5adeb9) 1;
 							}
@@ -123,9 +123,9 @@
 
 						// Hover state
 						&:hover,
-						&.kt-menu__item--open,
-						&.kt-menu__item--hover {
-							> .kt-menu__link {
+						&.tf-menu__item--open,
+						&.tf-menu__item--hover {
+							> .tf-menu__link {
 								border-bottom: 2.5px solid;
 								border-image: linear-gradient(to right, #20b1d3 31%, #5adeb9) 1;
 							}
@@ -138,12 +138,12 @@
 }
 
 // Media range(above 1024px and below 1200px)
-@include kt-media-range(lg, xl) {
-	.kt-header-menu-wrapper {
-		.kt-header-menu {
-			.kt-menu__nav {
-				> .kt-menu__item {
-					> .kt-menu__link {
+@include tf-media-range(lg, xl) {
+	.tf-header-menu-wrapper {
+		.tf-header-menu {
+			.tf-menu__nav {
+				> .tf-menu__item {
+					> .tf-menu__link {
 						padding: 0.75rem 0.75rem;
 					}
 				}
@@ -153,10 +153,10 @@
 }
 
 // Tablet and mobile mode(1024px and below)
-@include kt-media-below(lg) {
-	.kt-header-menu-wrapper {
-		.kt-header-menu {
-			.kt-menu__nav {
+@include tf-media-below(lg) {
+	.tf-header-menu-wrapper {
+		.tf-header-menu {
+			.tf-menu__nav {
 				margin-bottom: 0;
 				padding-bottom: 10px;
 			}

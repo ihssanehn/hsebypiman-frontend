@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
  *
  */
 @Directive({
-	selector: '[ktContentAnimate]'
+	selector: '[tfContentAnimate]'
 })
 export class ContentAnimateDirective implements OnInit, OnDestroy {
 	// Public properties

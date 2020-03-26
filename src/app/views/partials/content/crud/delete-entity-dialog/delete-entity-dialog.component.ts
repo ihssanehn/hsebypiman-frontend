@@ -3,7 +3,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
-	selector: 'kt-delete-entity-dialog',
+	selector: 'tf-delete-entity-dialog',
 	templateUrl: './delete-entity-dialog.component.html'
 })
 export class DeleteEntityDialogComponent implements OnInit {

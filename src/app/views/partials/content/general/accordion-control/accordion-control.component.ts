@@ -30,7 +30,7 @@ export class AccordionControlPanelContentDirective {
  */
 @Directive({
 	// tslint:disable-next-line:directive-selector
-	selector: 'kt-accordion-control-panel'
+	selector: 'tf-accordion-control-panel'
 })
 export class AccordionControlPanelDirective implements AfterContentChecked {
 	/**
@@ -45,7 +45,7 @@ export class AccordionControlPanelDirective implements AfterContentChecked {
 	 *  An optional id for the panel. The id should be unique.
 	 *  If not provided, it will be auto-generated.
 	 */
-	@Input() id = `kt-accordion-control-panel-${nextId++}`;
+	@Input() id = `tf-accordion-control-panel-${nextId++}`;
 
 	/**
 	 * A flag telling if the panel is currently open
@@ -112,7 +112,7 @@ export interface AccordionControlPanelChangeEvent {
  * It can assure that only one panel can be opened at a time.
  */
 @Component({
-	selector: 'kt-accordion-control',
+	selector: 'tf-accordion-control',
 	exportAs: 'AccordionControl',
 	host: {
 		role: 'tablist',

@@ -1,23 +1,23 @@
 <!-- begin: Header -->
-<div ktHeader #ktHeader class="kt-header kt-header--fixed" [ngClass]="htmlClassService.getClasses('header', true)" id="kt_header">
-	<ngb-progressbar class="kt-loading-bar" *ngIf="(loader.progress$|async) > 0" [value]="loader.progress$|async" height="3px"></ngb-progressbar>
+<div tfHeader #tfHeader class="tf-header tf-header--fixed" [ngClass]="htmlClassService.getClasses('header', true)" id="tf_header">
+	<ngb-progressbar class="tf-loading-bar" *ngIf="(loader.progress$|async) > 0" [value]="loader.progress$|async" height="3px"></ngb-progressbar>
 	
-	<div class="kt-container kt-container-header" [ngClass]="{'kt-container--fluid': fluid}" >
+	<div class="tf-container tf-container-header" [ngClass]="{'tf-container--fluid': fluid}" >
 		<div class="brand-container">
 			<!-- begin:: Brand -->
-			<kt-brand></kt-brand>
+			<tf-brand></tf-brand>
 			<!-- end:: Brand -->
 		</div>
 
-		<div class="kt-container">
+		<div class="tf-container">
 			<!-- begin: Header Menu -->
-			<kt-menu-horizontal></kt-menu-horizontal>
+			<tf-menu-horizontal></tf-menu-horizontal>
 			<!-- end: Header Menu -->
 	
 			<!-- begin:: Header Topbar -->
 			<!-- empty div to fix topbar to stay on the right when menu-horizontal is hidden -->
 			<div *ngIf="!menuHeaderDisplay"></div>
-			<kt-topbar></kt-topbar>
+			<tf-topbar></tf-topbar>
 			<!-- end:: Header Topbar -->
 		</div>
 	</div>

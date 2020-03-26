@@ -1,91 +1,91 @@
-<kt-user-filter [(ngModel)]="filter" (change)="getUsers()"></kt-user-filter>
-<kt-portlet>
-	<kt-portlet-header [title]="'Users list'" [class]="'kt-portlet__head--lg'">
-		<ng-container ktPortletTools>
+<tf-user-filter [(ngModel)]="filter" (change)="getUsers()"></tf-user-filter>
+<tf-portlet>
+	<tf-portlet-header [title]="'Users list'" [class]="'tf-portlet__head--lg'">
+		<ng-container tfPortletTools>
 			<button [routerLink]="['../users/add']" mat-raised-button color="primary" matTooltip="Create new User">
 				New user
 			</button>
 		</ng-container>
-	</kt-portlet-header>
-	<kt-portlet-body>
+	</tf-portlet-header>
+	<tf-portlet-body>
 
-		<div class="kt-datatable kt-datatable--default kt-datatable--brand kt-datatable--loaded">
+		<div class="tf-datatable tf-datatable--default tf-datatable--brand tf-datatable--loaded">
 			
 			<table class="table" style="display: block;" *ngIf="usersResult">
-				<thead class="kt-datatable__head">
-					<tr class="kt-datatable__row" style="left: 0px;">
+				<thead class="tf-datatable__head">
+					<tr class="tf-datatable__row" style="left: 0px;">
 						<td data-field="RecordID"
-							class="kt-datatable__cell--center kt-datatable__cell kt-datatable__cell--check checkbox"
+							class="tf-datatable__cell--center tf-datatable__cell tf-datatable__cell--check checkbox"
 							style="
 							min-width: 32px;
 							width: 67px">
 							<span style="width: 20px;"><label
-									class="kt-checkbox kt-checkbox--single kt-checkbox--all kt-checkbox--solid"><input
+									class="tf-checkbox tf-checkbox--single tf-checkbox--all tf-checkbox--solid"><input
 										type="checkbox"
 										[checked]="selection.selected.length == usersResult.data.length" />&nbsp;<span></span></label></span>
 						</td>
-						<td data-field="Username" class="kt-datatable__cell kt-datatable__cell--sort" style="width:10%">
-							<span class="kt-font-bolder">{{'AUTH.INPUT.USERNAME' | translate}}</span>
+						<td data-field="Username" class="tf-datatable__cell tf-datatable__cell--sort" style="width:10%">
+							<span class="tf-font-bolder">{{'AUTH.INPUT.USERNAME' | translate}}</span>
 						</td>
 						<td data-field="Email"
-							class="kt-datatable__cell kt-datatable__cell--sort kt-datatable__cell--sort" style="width:10%">
-							<span class="kt-font-bolder">{{'AUTH.INPUT.EMAIL' | translate}}</span>
+							class="tf-datatable__cell tf-datatable__cell--sort tf-datatable__cell--sort" style="width:10%">
+							<span class="tf-font-bolder">{{'AUTH.INPUT.EMAIL' | translate}}</span>
 						</td>
-						<td data-field="FullName" class="kt-datatable__cell kt-datatable__cell--sort" style="width:10%">
-							<span class="kt-font-bolder">{{'AUTH.INPUT.FULLNAME' | translate}}</span>
+						<td data-field="FullName" class="tf-datatable__cell tf-datatable__cell--sort" style="width:10%">
+							<span class="tf-font-bolder">{{'AUTH.INPUT.FULLNAME' | translate}}</span>
 						</td>
-						<td data-field="Code" class="kt-datatable__cell kt-datatable__cell--sort" style="width:10%">
-							<span class="kt-font-bolder">{{'AUTH.INPUT.CODE' | translate}}</span>
+						<td data-field="Code" class="tf-datatable__cell tf-datatable__cell--sort" style="width:10%">
+							<span class="tf-font-bolder">{{'AUTH.INPUT.CODE' | translate}}</span>
 						</td>
 						<td data-field="Actions" data-autohide-disabled="false"
-							class="kt-datatable__cell kt-datatable__cell--sort" style="width:10%">
-							<span class="kt-font-bolder">{{'AUTH.INPUT.PHONE' | translate}}</span>
+							class="tf-datatable__cell tf-datatable__cell--sort" style="width:10%">
+							<span class="tf-font-bolder">{{'AUTH.INPUT.PHONE' | translate}}</span>
 						</td>
 
 						<td data-field="Actions" data-autohide-disabled="false"
-							class="kt-datatable__cell kt-datatable__cell--sort" style="width:10%">
-							<span class="kt-font-bolder">Role</span>
+							class="tf-datatable__cell tf-datatable__cell--sort" style="width:10%">
+							<span class="tf-font-bolder">Role</span>
 						</td>
 
 						<td data-field="Delivery" data-autohide-disabled="false"
-							class="kt-datatable__cell kt-datatable__cell--sort" style="width:10%">
-							<span class="kt-font-bolder">Actions</span>
+							class="tf-datatable__cell tf-datatable__cell--sort" style="width:10%">
+							<span class="tf-font-bolder">Actions</span>
 						</td>
 					</tr>
 				</thead>
-				<tbody class="kt-datatable__body">
+				<tbody class="tf-datatable__body">
 					<tr *ngFor="let user of usersResult?.data;let i = index"
-						class="kt-datatable__row kt-datatable__row--even">
-						<td class="kt-datatable__cell--center kt-datatable__cell kt-datatable__cell--check checkbox"
+						class="tf-datatable__row tf-datatable__row--even">
+						<td class="tf-datatable__cell--center tf-datatable__cell tf-datatable__cell--check checkbox"
 							data-field="Checked" style="width:67px" (click)="$event.stopPropagation()">
 							<span class="checkbox-width"><label style="width: 20px;"
-									class="kt-checkbox kt-checkbox--single kt-checkbox--solid"><input
+									class="tf-checkbox tf-checkbox--single tf-checkbox--solid"><input
 										(click)="selection.toggle(costing)" [checked]="selection.isSelected(costing)"
 										type="checkbox" value="71" />&nbsp;<span></span></label></span>
 						</td>
-						<td data-field="Number" class="kt-datatable__cell" style="width:15%">
+						<td data-field="Number" class="tf-datatable__cell" style="width:15%">
 							<span>{{user.username}}</span>
 						</td>
-						<td class="kt-datatable__cell--sorted kt-datatable__cell" data-field="Customer" style="width:17%">
+						<td class="tf-datatable__cell--sorted tf-datatable__cell" data-field="Customer" style="width:17%">
 							<span>{{user.email}}</span>
 						</td>
-						<td data-field="Fullname" class="kt-datatable__cell" style="width:15%">
+						<td data-field="Fullname" class="tf-datatable__cell" style="width:15%">
 							<span>{{user.fullname}}</span>
 						</td>
-						<td data-field="Code" class="kt-datatable__cell" style="width:10%">
+						<td data-field="Code" class="tf-datatable__cell" style="width:10%">
 							<span>{{user.code}}</span>
 						</td>
-						<td data-field="Phone" class="kt-datatable__cell" style="width:15%">
+						<td data-field="Phone" class="tf-datatable__cell" style="width:15%">
 							<span>{{user.phone}}</span>
 						</td>
-						<td data-field="Status" class="kt-datatable__cell" style="width:17%">
-							<span class="kt-badge kt-badge--dot"
-								[ngClass]="{'Administrator':'kt-badge--info','Manager':'kt-badge--success','Guest':'kt-badge--danger'}[user.role.title]"></span>&nbsp;
-							<span class="kt-font-bold "
-								[ngClass]="{'Administrator':'kt-font-info','Manager':'kt-font-success','Guest':'kt-font-danger'}[user.role.title]">{{user.role.title}}</span>
+						<td data-field="Status" class="tf-datatable__cell" style="width:17%">
+							<span class="tf-badge tf-badge--dot"
+								[ngClass]="{'Administrator':'tf-badge--info','Manager':'tf-badge--success','Guest':'tf-badge--danger'}[user.role.title]"></span>&nbsp;
+							<span class="tf-font-bold "
+								[ngClass]="{'Administrator':'tf-font-info','Manager':'tf-font-success','Guest':'tf-font-danger'}[user.role.title]">{{user.role.title}}</span>
 
 						</td>
-						<td data-field="Actions" class="kt-datatable__cell" style="width:10%">
+						<td data-field="Actions" class="tf-datatable__cell" style="width:10%">
 							<span style="overflow: visible; position: relative; width: 110px;">
 								<a title="Edit details" (click)="editUser(user.id)"
 									class="btn btn-sm btn-clean btn-icon btn-icon-md">
@@ -105,6 +105,6 @@
 				<!-- <nz-empty nzNotFoundContent="No matching result" *ngIf="usersResult?.data?.length == 0"></nz-empty> -->
 			</table>
 		</div>
-		<!-- <kt-pagination (change)="changePagination()" [(ngModel)]="pagination" ngDefaultControl></kt-pagination> -->
-	</kt-portlet-body>
-</kt-portlet>
+		<!-- <tf-pagination (change)="changePagination()" [(ngModel)]="pagination" ngDefaultControl></tf-pagination> -->
+	</tf-portlet-body>
+</tf-portlet>

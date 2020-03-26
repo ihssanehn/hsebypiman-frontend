@@ -10,7 +10,7 @@ export interface ISearchResult {
 }
 
 @Component({
-	selector: 'kt-search-result',
+	selector: 'tf-search-result',
 	templateUrl: './search-result.component.html',
 	styleUrls: ['./search-result.component.scss']
 })

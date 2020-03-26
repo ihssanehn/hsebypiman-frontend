@@ -4,7 +4,7 @@
 
 
 
-.kt-user-card {
+.tf-user-card {
     display: flex;
     align-items: center;
     background-size: cover;
@@ -13,54 +13,54 @@
     background-color: #f9fafe;
 
     // Elements
-    .kt-user-card__avatar {
-        .kt-badge,
+    .tf-user-card__avatar {
+        .tf-badge,
         img {
             width: 60px;
             height: 60px;
 
-            @include kt-rounded {
+            @include tf-rounded {
                 border-radius: 4px;
             }
         }
 
-        .kt-badge {
+        .tf-badge {
             font-size: 2.2rem;
         }
     }
 
-    .kt-user-card__name {
+    .tf-user-card__name {
         flex-grow: 1;
-        color: kt-base-color(label, 3);
+        color: tf-base-color(label, 3);
         font-size: 1.3rem;
         font-weight: 500;
         padding-left: 1rem;
     }
 
-    .kt-user-card__badge {
+    .tf-user-card__badge {
         padding-left: 0.5rem;
     }
 
     // Skins
-    &.kt-user-card--skin-light {
-        .kt-user-card__name {
-            color: kt-base-color(label, 3);
+    &.tf-user-card--skin-light {
+        .tf-user-card__name {
+            color: tf-base-color(label, 3);
         }
 
-        .kt-user-card__avatar {
-            .kt-badge {
+        .tf-user-card__avatar {
+            .tf-badge {
                 //background-color: rgba(#fff, 0.1);
             }
         }
     }
 
-    &.kt-user-card--skin-dark {
-        .kt-user-card__name {
+    &.tf-user-card--skin-dark {
+        .tf-user-card__name {
             color: #fff;
         }
 
-        .kt-user-card__avatar {
-            .kt-badge {
+        .tf-user-card__avatar {
+            .tf-badge {
                 background-color: rgba(#fff, 0.1);
             }
         }
@@ -68,25 +68,25 @@
 }
 
 
-@include kt-tablet-and-mobile {
-    .kt-user-card {
+@include tf-tablet-and-mobile {
+    .tf-user-card {
         padding: 1rem 1rem;
 
         // Elements
-        .kt-user-card__avatar {
-            .kt-badge,
+        .tf-user-card__avatar {
+            .tf-badge,
             img {
                 width: 40px;
                 height: 40px;
             }
         }
 
-        .kt-user-card__name {
+        .tf-user-card__name {
             font-size: 1.1rem;
             padding-left: 0.5rem;
         }
 
-        .kt-user-card__badge {
+        .tf-user-card__badge {
             padding-left: 0.5rem;
         }
     }

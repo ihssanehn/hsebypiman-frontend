@@ -1,44 +1,44 @@
-<kt-notice [icon]="'flaticon-warning kt-font-primary'">
+<tf-notice [icon]="'flaticon-warning tf-font-primary'">
 	For more info please check the components's official demos & documentation 
-	<a class="kt-link" href="https://material.angular.io/components/slide-toggle/overview" target="_blank">demos & documentation</a>
-</kt-notice>
+	<a class="tf-link" href="https://material.angular.io/components/slide-toggle/overview" target="_blank">demos & documentation</a>
+</tf-notice>
 
 <div class="row">
 	<div class="col-xl-6">
-		<kt-material-preview [viewItem]="exampleBasicSlideToggles">
-			<div class="kt-section">
-				<span class="kt-section__sub">
+		<tf-material-preview [viewItem]="exampleBasicSlideToggles">
+			<div class="tf-section">
+				<span class="tf-section__sub">
 					<code>mat-slide-toggle</code> is an
 					<mark>on/off</mark> control that can be toggled via clicking or dragging.
 				</span>
-				<div class="kt-separator kt-separator--dashed"></div>
+				<div class="tf-separator tf-separator--dashed"></div>
 				<div class="example-container">
 					<mat-slide-toggle>Slide me!</mat-slide-toggle>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 
-		<kt-material-preview [viewItem]="exampleLabelPositions">
-			<div class="kt-section">
-				<p class="kt-section__sub">
+		<tf-material-preview [viewItem]="exampleLabelPositions">
+			<div class="tf-section">
+				<p class="tf-section__sub">
 					<code>@Input() labelPosition: 'before' | 'after'</code> Whether the label should appear after or before the slide-toggle. Defaults to 'after'
 				</p>
-				<p class="kt-section__sub">
+				<p class="tf-section__sub">
 					<code>@Output() change: EventEmitter&lt;MatSlideToggleChange&gt;</code> An event will be dispatched each time the slide-toggle changes its value.
 				</p>
-				<div class="kt-separator kt-separator--dashed"></div>
+				<div class="tf-separator tf-separator--dashed"></div>
 				<div class="example-container">
 					<mat-slide-toggle [labelPosition]="labelPosition">Slide me!</mat-slide-toggle>
-					<div class="kt-separator kt-separator--dashed"></div>
+					<div class="tf-separator tf-separator--dashed"></div>
 					<mat-slide-toggle (change)="changeLablesPositions()">Slide labels position</mat-slide-toggle>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 
 	</div>
 	<div class="col-xl-6">
-		<kt-material-preview [viewItem]="exampleConfigurableSlideToggle">
-			<div class="kt-section">
+		<tf-material-preview [viewItem]="exampleConfigurableSlideToggle">
+			<div class="tf-section">
 				<div class="example-container">
 					<section class="example-section">
 						<label class="example-margin">Color:</label>
@@ -54,15 +54,15 @@
 							</mat-radio-button>
 						</mat-radio-group>
 					</section>
-					<div class="kt-separator kt-separator--dashed"></div>
+					<div class="tf-separator tf-separator--dashed"></div>
 					<section class="example-section">
 						<mat-checkbox class="example-margin" [(ngModel)]="checked">Checked</mat-checkbox>
 					</section>
-					<div class="kt-separator kt-separator--dashed"></div>
+					<div class="tf-separator tf-separator--dashed"></div>
 					<section class="example-section">
 						<mat-checkbox class="example-margin" [(ngModel)]="disabled">Disabled</mat-checkbox>
 					</section>
-					<div class="kt-separator kt-separator--dashed"></div>
+					<div class="tf-separator tf-separator--dashed"></div>
 					<h5 class="example-h2">Result</h5>
 					<section class="example-section">
 						<mat-slide-toggle class="example-margin" [color]="color" [checked]="checked" [disabled]="disabled">
@@ -72,6 +72,6 @@
 				</div>
 			</div>
 
-		</kt-material-preview>
+		</tf-material-preview>
 	</div>
 </div>

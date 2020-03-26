@@ -5,20 +5,20 @@
 
 
 
-.kt-widget17 {
-    .kt-widget17__visual {
-        @include kt-rounded {
-            border-top-left-radius: $kt-border-radius;
-            border-top-right-radius: $kt-border-radius; 
+.tf-widget17 {
+    .tf-widget17__visual {
+        @include tf-rounded {
+            border-top-left-radius: $tf-border-radius;
+            border-top-right-radius: $tf-border-radius; 
         }
 
-        .kt-widget17__chart {
+        .tf-widget17__chart {
             position: relative;
             padding-top: 8rem;
         }
     }
          
-    .kt-widget17__stats {
+    .tf-widget17__stats {
         display: column;
         margin: -4.3rem auto 0 auto;       
         position: relative;
@@ -26,10 +26,10 @@
         
 
         // Items
-        .kt-widget17__items {
+        .tf-widget17__items {
             display: flex;              
 
-            .kt-widget17__item {
+            .tf-widget17__item {
                 padding: 2rem; 
                 flex: 1;
                 overflow: hidden;                
@@ -39,7 +39,7 @@
                 cursor: pointer;
                 transition: all 0.3s ease;
 
-                .kt-widget17__icon {
+                .tf-widget17__icon {
                     display: block;         
                         
                     > i {
@@ -53,18 +53,18 @@
                     }
                 }
 
-                .kt-widget17__subtitle {
+                .tf-widget17__subtitle {
                     display: block;                    
                     margin-top: 0.75rem;                  
                     font-size: 1.2rem;
                     font-weight: 500; 
-                    color: kt-base-color(label, 3);
+                    color: tf-base-color(label, 3);
                 } 
 
-                .kt-widget17__desc {
+                .tf-widget17__desc {
                     display: block;               
                     font-size: 1rem;
-                    color: kt-base-color(label, 2);
+                    color: tf-base-color(label, 2);
                 }   
                 
                 &:hover {
@@ -76,11 +76,11 @@
     }
 }        
  
-@include kt-mobile {
-    .kt-widget17 {
-        .kt-widget17__stats {
-            .kt-widget17__items {
-                .kt-widget17__item {
+@include tf-mobile {
+    .tf-widget17 {
+        .tf-widget17__stats {
+            .tf-widget17__items {
+                .tf-widget17__item {
                     padding-left: 0.5rem;
                 }
             }

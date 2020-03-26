@@ -4,7 +4,7 @@ import { Directive, ElementRef, HostListener, Renderer2 } from '@angular/core';
  * Listen Tab click
  */
 @Directive({
-	selector: '[ktTabClickEvent]'
+	selector: '[tfTabClickEvent]'
 })
 export class TabClickEventDirective {
 	/**

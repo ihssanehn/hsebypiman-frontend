@@ -4,7 +4,7 @@
 
 
 
-@mixin kt-media-size($image-size, $font-size) {
+@mixin tf-media-size($image-size, $font-size) {
     img {
         width: 100%;
         max-width: $image-size; 
@@ -20,7 +20,7 @@
         }
     }
 
-    &.kt-media--fixed {
+    &.tf-media--fixed {
         width: $image-size; 
         height: $image-size;
 

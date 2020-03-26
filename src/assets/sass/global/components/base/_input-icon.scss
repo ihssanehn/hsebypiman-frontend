@@ -6,7 +6,7 @@
 
 
 // Config
-$kt-input-icon: (
+$tf-input-icon: (
 	default: (
 		width: 3.2rem,
 		font-size: (
@@ -34,25 +34,25 @@ $kt-input-icon: (
 );
 
 // Base
-.kt-input-icon {
+.tf-input-icon {
     position: relative;
     padding: 0;
     width: 100%;
 
     // icon input sizing
-    > .kt-input-icon__icon {
+    > .tf-input-icon__icon {
         position: absolute;
         height: 100%;
         display: flex;
         justify-content: center;
         top: 0;
-        width: kt-get($kt-input-icon, default, width);
+        width: tf-get($tf-input-icon, default, width);
 
-        &.kt-input-icon__icon--left {
+        &.tf-input-icon__icon--left {
             left: 0;
         }
 
-        &.kt-input-icon__icon--right {
+        &.tf-input-icon__icon--right {
             right: 0;
         }
 
@@ -67,70 +67,70 @@ $kt-input-icon: (
                 align-items: center;    
                 justify-content: center;
                 line-height: 0;
-                color: kt-base-color(label, 2);
+                color: tf-base-color(label, 2);
             }
         }
 
         // set icon sizes
-        @include kt-icons-size( kt-get($kt-input-icon, default, font-size) );
+        @include tf-icons-size( tf-get($tf-input-icon, default, font-size) );
     }
 
-    .form-control.form-control-lg + .kt-input-icon__icon {
-        width: kt-get($kt-input-icon, lg, width);
+    .form-control.form-control-lg + .tf-input-icon__icon {
+        width: tf-get($tf-input-icon, lg, width);
 
         // set icon sizes
-        @include kt-icons-size( kt-get($kt-input-icon, lg, font-size) );
+        @include tf-icons-size( tf-get($tf-input-icon, lg, font-size) );
     }
 
-    .form-control.form-control-sm ~ .kt-input-icon__icon {
-        width: kt-get($kt-input-icon, sm, width);
+    .form-control.form-control-sm ~ .tf-input-icon__icon {
+        width: tf-get($tf-input-icon, sm, width);
 
         // set icon sizes
-        @include kt-icons-size( kt-get($kt-input-icon, sm, font-size) );
+        @include tf-icons-size( tf-get($tf-input-icon, sm, font-size) );
     }
 
     // icon input alignments
-    &.kt-input-icon--left {
+    &.tf-input-icon--left {
         .form-control {
-            padding-left: (kt-get($kt-input-icon, default, width) - 0.4rem);
+            padding-left: (tf-get($tf-input-icon, default, width) - 0.4rem);
 
             &.form-control-lg {
-                padding-left: (kt-get($kt-input-icon, lg, width) - 0.6rem);
+                padding-left: (tf-get($tf-input-icon, lg, width) - 0.6rem);
             }
 
             &.form-control-sm {
-                padding-left: (kt-get($kt-input-icon, sm, width) - 0.2rem);
+                padding-left: (tf-get($tf-input-icon, sm, width) - 0.2rem);
             }
         }
     }
 
-    &.kt-input-icon--right {
+    &.tf-input-icon--right {
         .form-control {
-            padding-right: (kt-get($kt-input-icon, default, width) - 0.4rem);
+            padding-right: (tf-get($tf-input-icon, default, width) - 0.4rem);
 
             &.form-control-lg {
-                padding-right: (kt-get($kt-input-icon, lg, width) - 0.6rem);
+                padding-right: (tf-get($tf-input-icon, lg, width) - 0.6rem);
             }
 
             &.form-control-sm {
-                padding-right: (kt-get($kt-input-icon, sm, width) - 0.2rem);
+                padding-right: (tf-get($tf-input-icon, sm, width) - 0.2rem);
             }
         }
     }
 
     // fixed width icon inputs        
-    &.kt-input-icon--fixed {
+    &.tf-input-icon--fixed {
         display: inline-block;
-        width: kt-get($kt-input-icon, default, fixed);
+        width: tf-get($tf-input-icon, default, fixed);
     }
 
-    &.kt-input-icon--fixed-large {
+    &.tf-input-icon--fixed-large {
         display: inline-block;
-        width: kt-get($kt-input-icon, lg, fixed);
+        width: tf-get($tf-input-icon, lg, fixed);
     }
 
-    &.kt-input-icon--fixed-small {
+    &.tf-input-icon--fixed-small {
         display: inline-block;
-        width: kt-get($kt-input-icon, sm, fixed);
+        width: tf-get($tf-input-icon, sm, fixed);
     }  
 }

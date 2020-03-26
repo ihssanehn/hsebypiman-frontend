@@ -4,8 +4,8 @@ import { NgbProgressbarConfig } from '@ng-bootstrap/ng-bootstrap';
 const contextualProgressBars = {
 		beforeCodeTitle: 'Contextual progress bars',
 		htmlCode: `
-<div class="kt-section">
-  <div class="kt-section__content">
+<div class="tf-section">
+  <div class="tf-section__content">
     <p>
       <ngb-progressbar type="success" [value]="25"></ngb-progressbar>
     </p>
@@ -42,8 +42,8 @@ export class NgbdProgressbarBasic {}
 const progressBarsWithCurrentValueLabels = {
 		beforeCodeTitle: 'Progress bars with current value labels',
 		htmlCode: `
-<div class="kt-section">
-  <div class="kt-section__content">
+<div class="tf-section">
+  <div class="tf-section__content">
     <p>
       <ngb-progressbar showValue="true" type="success" [value]="25"></ngb-progressbar>
     </p>
@@ -80,8 +80,8 @@ export class NgbdProgressbarShowvalue {
 const stripedProgressBars = {
 		beforeCodeTitle: 'Striped progress bars',
 		htmlCode: `
-<div class="kt-section">
-  <div class="kt-section__content">
+<div class="tf-section">
+  <div class="tf-section__content">
     <p>
       <ngb-progressbar type="success" [value]="25" [striped]="true"></ngb-progressbar>
     </p>
@@ -113,8 +113,8 @@ export class NgbdProgressbarStriped {
 const progressBarsWithCustomLabels = {
 		beforeCodeTitle: 'Progress bars with custom labels',
 		htmlCode: `
-<div class="kt-section">
-  <div class="kt-section__content">
+<div class="tf-section">
+  <div class="tf-section__content">
     <p>
       <ngb-progressbar type="success" [value]="25">25</ngb-progressbar>
     </p>
@@ -155,8 +155,8 @@ export class NgbdProgressbarLabels {
 const progressBarsWithHeight = {
 		beforeCodeTitle: 'Progress bars with height',
 		htmlCode: `
-<div class="kt-section">
-  <div class="kt-section__content">
+<div class="tf-section">
+  <div class="tf-section__content">
     <p>
       <ngb-progressbar type="success" [value]="25">default</ngb-progressbar>
     </p>
@@ -194,8 +194,8 @@ export class NgbdProgressbarHeight {
 const globalConfigurationOfProgressBars = {
 		beforeCodeTitle: 'Global configuration of progress bars',
 		htmlCode: `
-<div class="kt-section">
-  <div class="kt-section__content">
+<div class="tf-section">
+  <div class="tf-section__content">
     <p>This progress bar uses the customized default values.</p>
     <p><ngb-progressbar value="250"></ngb-progressbar></p>
 	<p>This progress bar uses the customized default values, but changes the type using an input.</p>
@@ -227,7 +227,7 @@ export class NgbdProgressbarConfig {
 	};
 
 @Component({
-	selector: 'kt-progressbar',
+	selector: 'tf-progressbar',
 	templateUrl: './progressbar.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	styles: [`

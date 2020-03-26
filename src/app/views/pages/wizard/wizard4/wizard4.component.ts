@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
-	selector: 'kt-wizard4',
+	selector: 'tf-wizard4',
 	templateUrl: './wizard4.component.html',
 	styleUrls: ['./wizard4.component.scss']
 })

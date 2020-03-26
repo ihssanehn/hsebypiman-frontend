@@ -1,16 +1,16 @@
-<kt-notice [icon]="'flaticon-warning kt-font-primary'">
+<tf-notice [icon]="'flaticon-warning tf-font-primary'">
 	For more info please check the components's official demos & documentation
-	<a class="kt-link" href="https://material.angular.io/components/autocomplete/overview" target="_blank">demos & documentation</a>
-</kt-notice>
+	<a class="tf-link" href="https://material.angular.io/components/autocomplete/overview" target="_blank">demos & documentation</a>
+</tf-notice>
 
 <div class="row">
 	<div class="col-xl-6">
-		<kt-material-preview [viewItem]="exampleSimpleAutocomplete">
-			<div class="kt-section">
-				<span class="kt-section__sub">The autocomplete is a normal text input enhanced by a panel of suggested options.
+		<tf-material-preview [viewItem]="exampleSimpleAutocomplete">
+			<div class="tf-section">
+				<span class="tf-section__sub">The autocomplete is a normal text input enhanced by a panel of suggested options.
 				</span>
-				<div class="kt-separator kt-separator--dashed"></div>
-				<div class="kt-section__content">
+				<div class="tf-separator tf-separator--dashed"></div>
+				<div class="tf-section__content">
 					<form class="example-form">
 						<mat-form-field class="example-full-width">
 							<input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto1">
@@ -23,16 +23,16 @@
 					</form>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 
-		<kt-material-preview [viewItem]="exampleAddingACustomFilter">
-			<div class="kt-section">
-				<span class="kt-section__sub">
+		<tf-material-preview [viewItem]="exampleAddingACustomFilter">
+			<div class="tf-section">
+				<span class="tf-section__sub">
 					At this point, the autocomplete panel should be toggleable on focus and options should be selectable. But if we want our options to filter when we type, we need to add a custom filter.
 				</span>
-				<div class="kt-separator kt-separator--dashed"></div>
+				<div class="tf-separator tf-separator--dashed"></div>
 
-				<div class="kt-section__content">
+				<div class="tf-section__content">
 					<form class="example-form">
 						<mat-form-field class="example-full-width">
 							<input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl2" [matAutocomplete]="auto2">
@@ -45,17 +45,17 @@
 					</form>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 
-		<kt-material-preview [viewItem]="exampleSettingSeparateControlAndDisplayValues">
-			<div class="kt-section">
-				<span class="kt-section__sub">
+		<tf-material-preview [viewItem]="exampleSettingSeparateControlAndDisplayValues">
+			<div class="tf-section">
+				<span class="tf-section__sub">
 					If you want the option's control value (what is saved in the form) to be different than the option's display value (what is displayed in the text field), you'll need to set the
 					<code>displayWith</code> property on your autocomplete element. A common use case for this might be if you want to save your data as an object, but display just one of the option's string properties. To make this work, create a function on your component class that maps the control value to the desired display value. Then bind it to the autocomplete's
 					<code>displayWith</code> property.
 				</span>
-				<div class="kt-separator kt-separator--dashed"></div>
-				<div class="kt-section__content">
+				<div class="tf-separator tf-separator--dashed"></div>
+				<div class="tf-section__content">
 					<form class="example-form">
 						<mat-form-field class="example-full-width">
 							<input type="text" placeholder="Assignee" aria-label="Assignee" matInput [formControl]="myControl33" [matAutocomplete]="auto33">
@@ -68,22 +68,22 @@
 					</form>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 	</div>
 
 	<div class="col-xl-6">
 
-		<kt-material-preview [viewItem]="exampleAutomaticallyHighlightingTheFirstOption">
-			<div class="kt-section">
-				<span class="kt-section__sub">
+		<tf-material-preview [viewItem]="exampleAutomaticallyHighlightingTheFirstOption">
+			<div class="tf-section">
+				<span class="tf-section__sub">
 					If your use case requires for the first autocomplete option to be highlighted when the user opens the panel, you can do so by setting the
 					<code>autoActiveFirstOption</code> input on the
 					<code>mat-autocomplete</code> component. This behavior can be configured globally using the
 					<code>MAT_AUTOCOMPLETE_DEFAULT_OPTIONS</code> injection token.
 				</span>
-				<div class="kt-separator kt-separator--dashed"></div>
+				<div class="tf-separator tf-separator--dashed"></div>
 
-				<div class="kt-section__content">
+				<div class="tf-section__content">
 					<form class="example-form">
 						<mat-form-field class="example-full-width">
 							<input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl44" [matAutocomplete]="auto44">
@@ -96,18 +96,18 @@
 					</form>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 
-		<kt-material-preview [viewItem]="exampleAutocompleteOverview">
-			<div class="kt-section">
-				<span class="kt-section__sub">
+		<tf-material-preview [viewItem]="exampleAutocompleteOverview">
+			<div class="tf-section">
+				<span class="tf-section__sub">
 					If your use case requires for the first autocomplete option to be highlighted when the user opens the panel, you can do so by setting the
 					<code>autoActiveFirstOption</code> input on the
 					<code>mat-autocomplete</code> component. This behavior can be configured globally using the
 					<code>MAT_AUTOCOMPLETE_DEFAULT_OPTIONS</code> injection token.
 				</span>
-				<div class="kt-separator kt-separator--dashed"></div>
-				<div class="kt-section__content">
+				<div class="tf-separator tf-separator--dashed"></div>
+				<div class="tf-section__content">
 					<form class="example-form">
 						<mat-form-field class="example-full-width">
 							<input matInput placeholder="State" aria-label="State" [matAutocomplete]="auto55" [formControl]="stateCtrl">
@@ -127,15 +127,15 @@
 				</div>
 			</div>
 
-		</kt-material-preview>
+		</tf-material-preview>
 
-		<kt-material-preview [viewItem]="exampleOptionGroupsAutocomplete">
-			<div class="kt-section">
-				<span class="kt-section__sub">
+		<tf-material-preview [viewItem]="exampleOptionGroupsAutocomplete">
+			<div class="tf-section">
+				<span class="tf-section__sub">
 					<code>mat-option</code>can be collected into groups using the mat-optgroup element:
 				</span>
-				<div class="kt-separator kt-separator--dashed"></div>
-				<div class="kt-section__content">
+				<div class="tf-separator tf-separator--dashed"></div>
+				<div class="tf-section__content">
 					<form [formGroup]="stateForm">
 						<mat-form-field>
 							<input type="text" 
@@ -155,6 +155,6 @@
 					</form>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 	</div>
 </div>

@@ -162,7 +162,7 @@ export class MenuCustomizingExample {}
 	};
 
 @Component({
-	selector: 'kt-menu',
+	selector: 'tf-menu',
 	templateUrl: './menu.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

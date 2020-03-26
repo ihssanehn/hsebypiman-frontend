@@ -5,11 +5,11 @@ import { NgbModal, NgbActiveModal, ModalDismissReasons, NgbModalOptions } from '
 const modalWithDefaultOptions = {
 	beforeCodeTitle: 'Modal with default options',
 	htmlCode: `
-<div class="kt-section">
-  <span *ngIf="closeResult" class="kt-section__sub">
+<div class="tf-section">
+  <span *ngIf="closeResult" class="tf-section__sub">
     <pre>{{closeResult}}</pre>
   </span>
-  <div class="kt-section__content">
+  <div class="tf-section__content">
     <ng-template #content let-c="close" let-d="dismiss">
       <div class="modal-header">
         <h4 class="modal-title">Basic demo</h4>
@@ -70,14 +70,14 @@ export class NgbdModalBasic {
 const componentsAsContent = {
 	beforeCodeTitle: 'Components as content',
 	htmlCode: `
-<div class="kt-section">
-  <div class="kt-section__sub">
+<div class="tf-section">
+  <div class="tf-section__sub">
     <p>You can pass an existing component as content of the modal window. In this case remember to add content component as an
       <code>entryComponents</code> section of your
       <code>NgModule</code>.
     </p>
   </div>
-  <div class="kt-section__content">
+  <div class="tf-section__content">
     <button class="btn btn-info" (click)="open2()">Launch demo modal</button>
   </div>
 </div>
@@ -126,8 +126,8 @@ export class NgbdModalComponent {
 const modalWithCustomClass = {
 	beforeCodeTitle: 'Modal with custom class',
 	htmlCode: `
-<div class="kt-section">
-  <div class="kt-section__content">
+<div class="tf-section">
+  <div class="tf-section__content">
     <ng-template #content let-c="close" let-d="dismiss">
       <div class="modal-header">
         <h4 class="modal-title">Modal title</h4>
@@ -179,8 +179,8 @@ export class NgbdModalCustomclass {
 const scrollableFixedContent = {
 	beforeCodeTitle: 'Scrollable fixed content',
 	htmlCode: `
-<div class="kt-section">
-  <div class="kt-section__content">
+<div class="tf-section">
+  <div class="tf-section__content">
     <ng-template #content let-c="close" let-d="dismiss">
       <div class="modal-header">
         <h4 class="modal-title">Scrollable fixed content</h4>
@@ -238,8 +238,8 @@ export class NgbdModalScrollableFixedContent {
 const scrollingLongContent = {
 	beforeCodeTitle: 'Scrolling long content',
 	htmlCode: `
-<div class="kt-section">
-  <div class="kt-section__content">
+<div class="tf-section">
+  <div class="tf-section__content">
     <ng-template #content5 let-c="close" let-d="dismiss">
       <div class="modal-header">
         <h4 class="modal-title">Scrollable fixed content</h4>
@@ -316,8 +316,8 @@ export class NgbdModalScrollinglongcontent {
 const largeModal = {
 	beforeCodeTitle: 'Large modal',
 	htmlCode: `
-<div class="kt-section">
-  <div class="kt-section__content">
+<div class="tf-section">
+  <div class="tf-section__content">
     <ng-template #content6 let-c="close" let-d="dismiss">
       <div class="modal-header">
         <h4 class="modal-title">Modal title</h4>
@@ -364,8 +364,8 @@ export class NgbdModalLargeModal {
 const smallModal = {
 	beforeCodeTitle: 'Small modal',
 	htmlCode: `
-<div class="kt-section">
-  <div class="kt-section__content">
+<div class="tf-section">
+  <div class="tf-section__content">
     <ng-template #content7 let-c="close" let-d="dismiss">
       <div class="modal-header">
         <h4 class="modal-title">Modal title</h4>
@@ -412,8 +412,8 @@ export class NgbdModalSmallmodal {
 const verticallyCentered = {
 	beforeCodeTitle: 'Vertically centered',
 	htmlCode: `
-<div class="kt-section">
-  <div class="kt-section__content">
+<div class="tf-section">
+  <div class="tf-section__content">
     <ng-template #content8 let-c="close" let-d="dismiss">
       <div class="modal-header">
         <h4 class="modal-title">Modal title</h4>
@@ -457,7 +457,7 @@ export class NgbdModalVerticallycentered {
 
 
 @Component({
-  selector: 'kt-ngbd-modal-content',
+  selector: 'tf-ngbd-modal-content',
   template: `
     <div class="modal-header">
       <h4 class="modal-title">Hi there!</h4>
@@ -479,7 +479,7 @@ export class NgbdModalContentComponent {
 }
 
 @Component({
-	selector: 'kt-modal',
+	selector: 'tf-modal',
 	templateUrl: './modal.component.html',
 	encapsulation: ViewEncapsulation.None,
   styles: [`

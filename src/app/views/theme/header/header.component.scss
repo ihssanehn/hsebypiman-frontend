@@ -1,6 +1,6 @@
 :host {
 	::ng-deep {
-		.kt-loading-bar {
+		.tf-loading-bar {
 			position: absolute;
 			top: 0;
 			left: 0;
@@ -12,17 +12,17 @@
 			}
 		}
 
-		.kt-header__topbar-item {
+		.tf-header__topbar-item {
 			height: 100%;
 		}
 
 		@media (min-width: 1025px) {
-			.kt-header__topbar, .kt-header__topbar-item-wrapper {
+			.tf-header__topbar, .tf-header__topbar-item-wrapper {
 				height: 100%;
 			}
 		}
-		.kt-header{
-			.kt-container.kt-container-header{
+		.tf-header{
+			.tf-container.tf-container-header{
 				margin: 0;
 				padding: 0;
 				width: 100%;
@@ -31,7 +31,7 @@
 					display: flex;
 					justify-content: center;
 				}
-				.kt-container{
+				.tf-container{
 					width:1380px;
 				}
 			}

@@ -3,14 +3,14 @@
 //
 
 
-.kt-iconbox{
+.tf-iconbox{
 	padding: 1.5rem;
 
-	.kt-iconbox__body{
+	.tf-iconbox__body{
 		display: flex;
 		flex-wrap: nowrap;
 
-		.kt-iconbox__icon{
+		.tf-iconbox__icon{
 			$svg-size: 50px;
 			flex: 0 0 $svg-size;
 			padding-right: 20px;
@@ -21,20 +21,20 @@
 			}
 		}
 
-		.kt-iconbox__desc{
+		.tf-iconbox__desc{
 			display: flex;
 			flex-direction: column;
 
-			.kt-iconbox__title{
+			.tf-iconbox__title{
 				font-size: 1.55rem;
-				color: kt-base-color(label, 4);
+				color: tf-base-color(label, 4);
 
-				.kt-link{
-					color: kt-base-color(label, 4);
+				.tf-link{
+					color: tf-base-color(label, 4);
 				}
 			}
 
-			.kt-iconbox__content{
+			.tf-iconbox__content{
 				font-size: 1.1rem;
 				font-weight: 400;
 				color: #9392a0;
@@ -42,7 +42,7 @@
 		}
 	}
 
-	a.kt-iconbox__body {
+	a.tf-iconbox__body {
 		cursor: pointer;
 	}
 
@@ -94,30 +94,30 @@
 		}
 	}
 
-	@each $name, $color in $kt-state-colors{
+	@each $name, $color in $tf-state-colors{
 
 		&--#{$name}{
 
-			.kt-iconbox__body{
+			.tf-iconbox__body{
 
-				.kt-iconbox__icon{
+				.tf-iconbox__icon{
 
 					svg{
 						g {
 			                [fill] {
-			                    fill: kt-get($color, base) !important;
+			                    fill: tf-get($color, base) !important;
 			                }
 			            }
 					}
 				}
 			}
 
-			&.kt-iconbox--animate,
-			&.kt-iconbox--animate-slow,
-			&.kt-iconbox--animate-slower,
-			&.kt-iconbox--animate-fast,
-			&.kt-iconbox--animate-faster{
-				background-color: rgba(kt-state-color(#{$name}), 0.07) !important;
+			&.tf-iconbox--animate,
+			&.tf-iconbox--animate-slow,
+			&.tf-iconbox--animate-slower,
+			&.tf-iconbox--animate-fast,
+			&.tf-iconbox--animate-faster{
+				background-color: rgba(tf-state-color(#{$name}), 0.07) !important;
 			}
 		}
 	}

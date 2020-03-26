@@ -5,47 +5,47 @@
 
 
 
-@include kt-desktop {
+@include tf-desktop {
 	// Content
-	.kt-content {
-		padding: kt-get($kt-page-padding, desktop) 0;
+	.tf-content {
+		padding: tf-get($tf-page-padding, desktop) 0;
 
 		// Content fit
-		&.kt-content--fit-top {
+		&.tf-content--fit-top {
 			padding-top: 0;
 		}
 
-		&.kt-content--fit-bottom {
+		&.tf-content--fit-bottom {
 			padding-bottom: 0;
 		}
 
 		// Subheader enabled
-		.kt-subheader--enabled.kt-subheader--transparent:not(.kt-subheader--fixed) & {
+		.tf-subheader--enabled.tf-subheader--transparent:not(.tf-subheader--fixed) & {
 			padding-top: 0;
 		}
 
 		// Fixed footer
-		.kt-footer--fixed & {
-			padding-bottom: kt-get($kt-footer-config, self, fixed, height);
+		.tf-footer--fixed & {
+			padding-bottom: tf-get($tf-footer-config, self, fixed, height);
 		}
 	}
 }
 
-@include kt-tablet-and-mobile {
-	.kt-content {
-		padding: kt-get($kt-page-padding, mobile)  0;
+@include tf-tablet-and-mobile {
+	.tf-content {
+		padding: tf-get($tf-page-padding, mobile)  0;
 
 		// Content fit
-		&.kt-content--fit-top {
+		&.tf-content--fit-top {
 			padding-top: 0;
 		}
 
-		&.kt-content--fit-bottom {
+		&.tf-content--fit-bottom {
 			padding-bottom: 0;
 		}
 
 		// Subheader enabled
-		.kt-subheader--enabled.kt-subheader--transparent & {
+		.tf-subheader--enabled.tf-subheader--transparent & {
 			padding-top: 0;
 		}
 	}

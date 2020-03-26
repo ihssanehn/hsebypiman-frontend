@@ -72,7 +72,7 @@ background: lightblue;
 };
 
 @Component({
-	selector: 'kt-grid-list',
+	selector: 'tf-grid-list',
 	templateUrl: './grid-list.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	styles: [`

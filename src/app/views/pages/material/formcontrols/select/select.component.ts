@@ -420,7 +420,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   }
 
 @Component({
-	selector: 'kt-select',
+	selector: 'tf-select',
 	templateUrl: './select.component.html',
 	styles: [`
 	.example-additional-selection {

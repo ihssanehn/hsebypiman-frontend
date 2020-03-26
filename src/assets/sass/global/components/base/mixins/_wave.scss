@@ -6,10 +6,10 @@
 
 @mixin wave($important:""){
 	@if $important != "" {
-   		background-color: kt-base-color(grey, 1) !important;
+   		background-color: tf-base-color(grey, 1) !important;
 	}
 	@else {
-		background-color: kt-base-color(grey, 1);
+		background-color: tf-base-color(grey, 1);
 	}	
 	overflow: hidden;
 	position: relative;

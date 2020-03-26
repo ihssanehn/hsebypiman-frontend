@@ -12,36 +12,36 @@
 @import "../../global/layout/config.scss";
 
 // Login Base
-.kt-login.kt-login--v2 {
+.tf-login.tf-login--v2 {
     background-size: cover;
     background-repeat: no-repeat;
 
     // Login Area
-    .kt-login__wrapper {
+    .tf-login__wrapper {
         padding: 6% 2rem 1rem 2rem;
         margin: 0 auto 2rem auto;
         overflow: hidden;
 
-        .kt-login__container {
+        .tf-login__container {
             width: 430px;
             margin: 0 auto;
 
-            .kt-login__logo {
+            .tf-login__logo {
                 text-align: center;
                 margin: 0 auto 4rem auto;
             }
 
-            .kt-login__head {
+            .tf-login__head {
                 margin-top: 1rem;
 
-                .kt-login__title {
+                .tf-login__title {
                     text-align: center;
                     font-size: 1.5rem;
                     font-weight: 500;
                     color: #fff;
                 }
 
-                .kt-login__desc {
+                .tf-login__desc {
                     margin-top: 1.5rem;
                     text-align: center;
                     font-size: 1.1rem;
@@ -50,7 +50,7 @@
                 }
             }
 
-            .kt-form {
+            .tf-form {
                 margin: 4rem auto;
 
                 .input-group {
@@ -67,7 +67,7 @@
                     margin-top: 1.5rem;
                     background: rgba(#4322A7, 0.4);
                     color: #fff;
-                    @include kt-input-placeholder(rgba(#fff, 0.7));
+                    @include tf-input-placeholder(rgba(#fff, 0.7));
                 }
 
                 .form-control.is-valid + .valid-feedback,
@@ -77,14 +77,14 @@
                     padding-left: 1.6rem;
                 }
 
-                .kt-login__extra {
+                .tf-login__extra {
                     padding-left: 7px;
                     padding-right: 7px;
                     margin: 15px auto;
                     color: rgba(#fff, 0.6);
                     font-size: 1rem;
 
-                    .kt-checkbox {
+                    .tf-checkbox {
                         font-size: 1rem;
 
                         > span {
@@ -100,7 +100,7 @@
                         }
                     }
 
-                    .kt-login__link {
+                    .tf-login__link {
                         font-size: 1rem;
                         color: rgba(#fff, 0.6);
 
@@ -110,12 +110,12 @@
                     }
                 }
 
-                .kt-login__actions {
+                .tf-login__actions {
                     text-align: center;
                     margin-top: 7%;
 
-                    .kt-login__btn-primary,
-                    .kt-login__btn-secondary {
+                    .tf-login__btn-primary,
+                    .tf-login__btn-secondary {
                         height: 46px;
                         display: inline-block;
                         text-align: center;
@@ -135,7 +135,7 @@
                         }
                     }
 
-                    .kt-login__btn-secondary {
+                    .tf-login__btn-secondary {
                         color: rgba(#fff, 0.4);
                         border-color: rgba(#fff, 0.3);
 
@@ -149,17 +149,17 @@
                 }
             }
 
-            .kt-login__account {
+            .tf-login__account {
                 text-align: center;
                 margin-top: 2rem;
 
-                .kt-login__account-msg {
+                .tf-login__account-msg {
                     font-size: 1.1rem;
                     font-weight: 500;
                     color: #bbabf1;
                 }
 
-                .kt-login__account-link {
+                .tf-login__account-link {
                     font-size: 1.1rem;
                     font-weight: 500;
                 }
@@ -169,64 +169,64 @@
 }
 
 // Login Modes
-.kt-login.kt-login--v2{
-    &.kt-login--signin {
-        .kt-login__signup {
+.tf-login.tf-login--v2{
+    &.tf-login--signin {
+        .tf-login__signup {
             display: none;
         }
 
-        .kt-login__signin {
+        .tf-login__signin {
             display: block;
         }
 
-        .kt-login__forgot {
+        .tf-login__forgot {
             display: none;
         }
     }
 
-    &.kt-login--signup {
-        .kt-login__signup {
+    &.tf-login--signup {
+        .tf-login__signup {
             display: block;
         }
 
-        .kt-login__signin {
+        .tf-login__signin {
             display: none;
         }
 
-        .kt-login__forgot {
+        .tf-login__forgot {
             display: none;
         }
 
-        .kt-login__account {
+        .tf-login__account {
             display: none;
         }
     }
 
-    &.kt-login--forgot {
-        .kt-login__signup {
+    &.tf-login--forgot {
+        .tf-login__signup {
             display: none;
         }
 
-        .kt-login__signin {
+        .tf-login__signin {
             display: none;
         }
 
-        .kt-login__forgot {
+        .tf-login__forgot {
             display: block;
         }
     }
 }
 
-@include kt-tablet-and-mobile {
-    .kt-login.kt-login--v2 {
-        .kt-login__wrapper {
+@include tf-tablet-and-mobile {
+    .tf-login.tf-login--v2 {
+        .tf-login__wrapper {
             padding-top: 5rem;
             width: 100%;
 
-             .kt-login__container {
+             .tf-login__container {
                 margin: 0 auto;
 
-                .kt-login__account {
+                .tf-login__account {
                     margin-top: 10rem;
                 }
             }
@@ -234,17 +234,17 @@
     }
 }
 
-@include kt-mobile() {
-    .kt-login.kt-login--v2{
-        .kt-login__wrapper {
+@include tf-mobile() {
+    .tf-login.tf-login--v2{
+        .tf-login__wrapper {
             width: 100%;
 
-            .kt-login__container {
+            .tf-login__container {
                 width: 100%;
                 max-width: 400px;
                 margin: 0 auto;
 
-                .kt-form {
+                .tf-form {
                     width: 100%;
                     margin: 0 auto;
 
@@ -253,13 +253,13 @@
                     }
                 }
 
-                .kt-login__actions {
-                    .kt-login__btn-submit {
+                .tf-login__actions {
+                    .tf-login__btn-submit {
                         padding: 0.8rem 3rem;
                     }
                 }
 
-                .kt-login__account {
+                .tf-login__account {
                     margin-top: 1.5rem;
                 }
             }

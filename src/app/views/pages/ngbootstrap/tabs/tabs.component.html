@@ -1,13 +1,13 @@
-<kt-notice [icon]="'flaticon-warning kt-font-primary'">
+<tf-notice [icon]="'flaticon-warning tf-font-primary'">
 	For more info please check the components's official demos & documentation 
-	<a class="kt-link" href="https://ng-bootstrap.github.io/#/components/tabs/examples" target="_blank">demos & documentation</a>
-</kt-notice>
+	<a class="tf-link" href="https://ng-bootstrap.github.io/#/components/tabs/examples" target="_blank">demos & documentation</a>
+</tf-notice>
 
 <div class="row">
 	<div class="col-xl-6">
-		<kt-material-preview [viewItem]="exampleTabset">
-			<div class="kt-section">
-				<div class="kt-section__content">
+		<tf-material-preview [viewItem]="exampleTabset">
+			<div class="tf-section">
+				<div class="tf-section__content">
 					<ngb-tabset>
 						<ngb-tab title="Simple">
 							<ng-template ngbTabContent>
@@ -29,11 +29,11 @@
 					</ngb-tabset>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 
-		<kt-material-preview [viewItem]="examplePills">
-			<div class="kt-section">
-				<div class="kt-section__content">
+		<tf-material-preview [viewItem]="examplePills">
+			<div class="tf-section">
+				<div class="tf-section__content">
 					<ngb-tabset type="pills">
 						<ngb-tab title="Simple">
 							<ng-template ngbTabContent>
@@ -55,11 +55,11 @@
 					</ngb-tabset>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 
-		<kt-material-preview [viewItem]="exampleSelectAnActiveTabById">
-			<div class="kt-section">
-				<div class="kt-section__content">
+		<tf-material-preview [viewItem]="exampleSelectAnActiveTabById">
+			<div class="tf-section">
+				<div class="tf-section__content">
 					<ngb-tabset #t="ngbTabset">
 						<ngb-tab id="tab-selectbyid1" title="Simple">
 							<ng-template ngbTabContent>
@@ -76,19 +76,19 @@
 					</ngb-tabset>
 				</div>
 			</div>
-			<div class="kt-separator kt-separator--dashed"></div>
-			<div class="kt-section">
-				<div class="kt-section__content">
+			<div class="tf-separator tf-separator--dashed"></div>
+			<div class="tf-section">
+				<div class="tf-section__content">
 
 					<button class="btn btn-primary" (click)="t.select('tab-selectbyid2')">Selected tab with "tab-selectbyid2" id</button>
 
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 
-		<kt-material-preview [viewItem]="examplePreventTabChange">
-			<div class="kt-section">
-				<div class="kt-section__content">
+		<tf-material-preview [viewItem]="examplePreventTabChange">
+			<div class="tf-section">
+				<div class="tf-section__content">
 					<ngb-tabset (tabChange)="beforeChange($event)">
 						<ngb-tab id="tab-preventchange1" title="Simple">
 							<ng-template ngbTabContent>
@@ -108,15 +108,15 @@
 					</ngb-tabset>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 
 	</div>
 	<div class="col-xl-6">
 
 
-		<kt-material-preview [viewItem]="exampleNavJustification">
-			<div class="kt-section">
-				<div class="kt-section__content">
+		<tf-material-preview [viewItem]="exampleNavJustification">
+			<div class="tf-section">
+				<div class="tf-section__content">
 					<ngb-tabset [justify]="currentJustify">
 						<ngb-tab title="Simple">
 							<ng-template ngbTabContent>
@@ -138,9 +138,9 @@
 					</ngb-tabset>
 				</div>
 			</div>
-			<div class="kt-separator kt-separator--dashed"></div>
-			<div class="kt-section">
-				<div class="kt-section__content">
+			<div class="tf-separator tf-separator--dashed"></div>
+			<div class="tf-section">
+				<div class="tf-section__content">
 					<div class="btn-group btn-group-toggle" ngbRadioGroup [(ngModel)]="currentJustify">
 						<label ngbButtonLabel class="btn-primary btn-sm">
 							<input ngbButton type="radio" value="start">Start
@@ -160,12 +160,12 @@
 					</div>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 
 
-		<kt-material-preview [viewItem]="exampleNavOrientation">
-			<div class="kt-section">
-				<div class="kt-section__content">
+		<tf-material-preview [viewItem]="exampleNavOrientation">
+			<div class="tf-section">
+				<div class="tf-section__content">
 					<ngb-tabset type="pills" [orientation]="currentOrientation">
 						<ngb-tab title="Simple">
 							<ng-template ngbTabContent>
@@ -187,9 +187,9 @@
 					</ngb-tabset>
 				</div>
 			</div>
-			<div class="kt-separator kt-separator--dashed"></div>
-			<div class="kt-section">
-				<div class="kt-section__content">
+			<div class="tf-separator tf-separator--dashed"></div>
+			<div class="tf-section">
+				<div class="tf-section__content">
 
 					<div class="btn-group btn-group-toggle" ngbRadioGroup [(ngModel)]="currentOrientation">
 						<label ngbButtonLabel class="btn-outline-primary btn-sm">
@@ -201,11 +201,11 @@
 					</div>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 
-		<kt-material-preview [viewItem]="exampleglobalConfigurationOfTabs">
-			<div class="kt-section">
-				<div class="kt-section__content">
+		<tf-material-preview [viewItem]="exampleglobalConfigurationOfTabs">
+			<div class="tf-section">
+				<div class="tf-section__content">
 					<ngb-tabset type="pills" [justify]="globalJustify">
 						<ngb-tab title="One">
 							<ng-template ngbTabContent>
@@ -220,6 +220,6 @@
 					</ngb-tabset>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 	</div>
 </div>

@@ -4,78 +4,78 @@
 
 
 
-.kt-heading {
+.tf-heading {
 	font-size: 1.3rem;
 	font-weight: 500;
 	padding: 0;
 	margin: 1.75rem 0;
-	color: kt-base-color(label, 4);
+	color: tf-base-color(label, 4);
 
-	&.kt-heading--center {
+	&.tf-heading--center {
 		text-align: center;
 	}
 
-	&.kt-heading--right {
+	&.tf-heading--right {
 		text-align: right;
 	}
 
-	&.kt-heading--space-sm {
+	&.tf-heading--space-sm {
 		margin-top: 1rem;
 		margin-bottom: 1rem;
 	}
 
-	&.kt-heading--space-md {
+	&.tf-heading--space-md {
 		margin-top: 2rem;
 		margin-bottom: 2rem;
 	}
 
-	&.kt-heading--space-lg {
+	&.tf-heading--space-lg {
 		margin-top: 2.5rem;
 		margin-bottom: 2.5rem;
 	}
 
-	&.kt-heading--space-xl {
+	&.tf-heading--space-xl {
 		margin-top: 3rem;
 		margin-bottom: 3rem;
 	}
 
-	&.kt-heading--sm {
+	&.tf-heading--sm {
 		font-size: 1.2rem;
 	}
 
-	&.kt-heading--md {
+	&.tf-heading--md {
 		font-size: 1.4rem;
 	}
 
-	&.kt-heading--lg {
+	&.tf-heading--lg {
 		font-size: 1.6rem;
 	}
 
-	&.kt-heading--xl {
+	&.tf-heading--xl {
 		font-size: 2rem;
 	}
 
-	&.kt-heading--xxl {
+	&.tf-heading--xxl {
 		font-size: 3rem;
 	}
 
-	&.kt-heading--medium{
+	&.tf-heading--medium{
 		font-weight: 600;
 	}
-	&.kt-heading--bold{
+	&.tf-heading--bold{
 		font-weight: 700;
 	}
-	&.kt-heading--bolder{
+	&.tf-heading--bolder{
 		font-weight: 900;
 	}
-	&.kt-heading--thin{
+	&.tf-heading--thin{
 		font-weight: 300;
 	}
 
-	&.kt-heading--no-top-margin{
+	&.tf-heading--no-top-margin{
 		margin-top: 0;
 	}
-	&.kt-heading--no-bottok-margin{
+	&.tf-heading--no-bottok-margin{
 		margin-bottom: 0;
 	}
 }

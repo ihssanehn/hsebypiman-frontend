@@ -16,7 +16,7 @@ import { LayoutConfigService, MenuAsideService, MenuOptions, OffcanvasOptions } 
 import { HtmlClassService } from '../html-class.service';
 
 @Component({
-	selector: 'kt-aside-left',
+	selector: 'tf-aside-left',
 	templateUrl: './aside-left.component.html',
 	styleUrls: ['./aside-left.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush
@@ -30,12 +30,12 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 	outsideTm: any;
 
 	menuCanvasOptions: OffcanvasOptions = {
-		baseClass: 'kt-aside',
+		baseClass: 'tf-aside',
 		overlay: true,
-		closeBy: 'kt_aside_close_btn',
+		closeBy: 'tf_aside_close_btn',
 		toggleBy: {
-			target: 'kt_aside_mobile_toggler',
-			state: 'kt-header-mobile__toolbar-toggler--active'
+			target: 'tf_aside_mobile_toggler',
+			state: 'tf-header-mobile__toolbar-toggler--active'
 		}
 	};
 
@@ -50,7 +50,7 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 				default: 'dropdown',
 				// whenever body has this class switch the menu mode to dropdown
 				state: {
-					body: 'kt-aside--minimize',
+					body: 'tf-aside--minimize',
 					mode: 'dropdown'
 				}
 			},
@@ -149,7 +149,7 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 	 */
 	mouseEnter(e: Event) {
 		// check if the left aside menu is fixed
-		if (document.body.classList.contains('kt-aside--fixed')) {
+		if (document.body.classList.contains('tf-aside--fixed')) {
 			if (this.outsideTm) {
 				clearTimeout(this.outsideTm);
 				this.outsideTm = null;
@@ -157,10 +157,10 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 
 			this.insideTm = setTimeout(() => {
 				// if the left aside menu is minimized
-				if (document.body.classList.contains('kt-aside--minimize') && KTUtil.isInResponsiveRange('desktop')) {
+				if (document.body.classList.contains('tf-aside--minimize') && KTUtil.isInResponsiveRange('desktop')) {
 					// show the left aside menu
-					this.render.removeClass(document.body, 'kt-aside--minimize');
-					this.render.addClass(document.body, 'kt-aside--minimize-hover');
+					this.render.removeClass(document.body, 'tf-aside--minimize');
+					this.render.addClass(document.body, 'tf-aside--minimize-hover');
 				}
 			}, 50);
 		}
@@ -171,7 +171,7 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 	 * @param e Event
 	 */
 	mouseLeave(e: Event) {
-		if (document.body.classList.contains('kt-aside--fixed')) {
+		if (document.body.classList.contains('tf-aside--fixed')) {
 			if (this.insideTm) {
 				clearTimeout(this.insideTm);
 				this.insideTm = null;
@@ -179,10 +179,10 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 
 			this.outsideTm = setTimeout(() => {
 				// if the left aside menu is expand
-				if (document.body.classList.contains('kt-aside--minimize-hover') && KTUtil.isInResponsiveRange('desktop')) {
+				if (document.body.classList.contains('tf-aside--minimize-hover') && KTUtil.isInResponsiveRange('desktop')) {
 					// hide back the left aside menu
-					this.render.removeClass(document.body, 'kt-aside--minimize-hover');
-					this.render.addClass(document.body, 'kt-aside--minimize');
+					this.render.removeClass(document.body, 'tf-aside--minimize-hover');
+					this.render.addClass(document.body, 'tf-aside--minimize');
 				}
 			}, 100);
 		}
@@ -193,18 +193,18 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 	 * @param item: any
 	 */
 	getItemCssClasses(item) {
-		let classes = 'kt-menu__item';
+		let classes = 'tf-menu__item';
 
 		if (objectPath.get(item, 'submenu')) {
-			classes += ' kt-menu__item--submenu';
+			classes += ' tf-menu__item--submenu';
 		}
 
 		if (!item.submenu && this.isMenuItemIsActive(item)) {
-			classes += ' kt-menu__item--active kt-menu__item--here';
+			classes += ' tf-menu__item--active tf-menu__item--here';
 		}
 
 		if (item.submenu && this.isMenuItemIsActive(item)) {
-			classes += ' kt-menu__item--open kt-menu__item--here';
+			classes += ' tf-menu__item--open tf-menu__item--here';
 		}
 
 		// custom class for menu item
@@ -214,7 +214,7 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 		}
 
 		if (objectPath.get(item, 'icon-only')) {
-			classes += ' kt-menu__item--icon-only';
+			classes += ' tf-menu__item--icon-only';
 		}
 
 		return classes;

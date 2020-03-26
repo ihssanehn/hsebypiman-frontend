@@ -1,22 +1,22 @@
 <!--begin::Head-->
-<div class="kt-login__head">
-	<span class="kt-login__signup-label">Don't have an account yet?</span>&nbsp;&nbsp;
-	<a href="javascript:;" routerLink="/auth/register" class="kt-link kt-login__signup-link">{{ 'AUTH.GENERAL.SIGNUP_BUTTON' | translate }}</a>
+<div class="tf-login__head">
+	<span class="tf-login__signup-label">Don't have an account yet?</span>&nbsp;&nbsp;
+	<a href="javascript:;" routerLink="/auth/register" class="tf-link tf-login__signup-link">{{ 'AUTH.GENERAL.SIGNUP_BUTTON' | translate }}</a>
 </div>
 <!--end::Head-->
 
 <!--begin::Body-->
-<div class="kt-login__body">
+<div class="tf-login__body">
 	<!--begin::Signin-->
-	<div class="kt-login__form">
-		<div class="kt-login__title">
+	<div class="tf-login__form">
+		<div class="tf-login__title">
 			<h3>Sign In</h3>
 		</div>
 
-		<kt-auth-notice></kt-auth-notice>
+		<tf-auth-notice></tf-auth-notice>
 
 		<!--begin::Form-->
-		<form class="kt-form" [formGroup]="loginForm" autocomplete="off">
+		<form class="tf-form" [formGroup]="loginForm" autocomplete="off">
 			<div class="form-group">
 				<mat-form-field>
 					<mat-label>{{ 'AUTH.INPUT.EMAIL' | translate }}</mat-label>
@@ -51,19 +51,19 @@
 				</mat-form-field>
 			</div>
 			<!--begin::Action-->
-			<div class="kt-login__actions">
-				<a href="javascript:;" routerLink="/auth/forgot-password" class="kt-link kt-login__link-forgot">
+			<div class="tf-login__actions">
+				<a href="javascript:;" routerLink="/auth/forgot-password" class="tf-link tf-login__link-forgot">
 					{{ 'AUTH.GENERAL.FORGOT_BUTTON' | translate }}
 				</a>
-				<button (click)="submit()" [ngClass]="{'kt-spinner kt-spinner--right kt-spinner--md kt-spinner--light': loading}" id="kt_login_signin_submit" class="btn btn-primary btn-elevate kt-login__btn-primary">{{ 'AUTH.LOGIN.BUTTON' | translate }}</button>
+				<button (click)="submit()" [ngClass]="{'tf-spinner tf-spinner--right tf-spinner--md tf-spinner--light': loading}" id="tf_login_signin_submit" class="btn btn-primary btn-elevate tf-login__btn-primary">{{ 'AUTH.LOGIN.BUTTON' | translate }}</button>
 			</div>
 			<!--end::Action-->
 		</form>
 		<!--end::Form-->
 
 		<!--begin::Divider-->
-		<div class="kt-login__divider">
-			<div class="kt-divider">
+		<div class="tf-login__divider">
+			<div class="tf-divider">
 				<span></span>
 				<span>OR</span>
 				<span></span>

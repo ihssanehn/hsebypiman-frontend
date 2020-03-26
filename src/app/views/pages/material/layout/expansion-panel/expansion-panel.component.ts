@@ -188,7 +188,7 @@ export class ExpansionStepsExample {
 	};
 
 @Component({
-	selector: 'kt-expansion-panel',
+	selector: 'tf-expansion-panel',
 	templateUrl: './expansion-panel.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	styles: [`

@@ -99,7 +99,7 @@ const labelPositions = {
 		beforeCodeTitle: 'Label positions and \'Change\' event binding examples',
 		htmlCode: `
 <mat-slide-toggle [labelPosition]="labelPosition">Slide me!</mat-slide-toggle>
-<div class="kt-separator kt-separator--dashed"></div>
+<div class="tf-separator tf-separator--dashed"></div>
 <mat-slide-toggle (change)="changeLablesPositions()">Slide labels position</mat-slide-toggle>`,
 		tsCode: `
 import {Component} from '@angular/core';\n
@@ -119,7 +119,7 @@ export class SlideToggleLabelPositionsExample {\n
 		isCodeVisible: false
 	};
 @Component({
-	selector: 'kt-slidertoggle',
+	selector: 'tf-slidertoggle',
 	templateUrl: './slidertoggle.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	styles: [`

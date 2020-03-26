@@ -6,7 +6,7 @@ import { LayoutConfigService } from '../../../core/_base/layout';
 import * as objectPath from 'object-path';
 
 @Component({
-	selector: 'kt-subheader',
+	selector: 'tf-subheader',
 	templateUrl: './subheader.component.html',
 })
 export class SubheaderComponent implements OnInit {

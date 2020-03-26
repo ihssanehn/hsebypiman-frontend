@@ -5,7 +5,7 @@
 
 
 // Base
-.kt-pagination {
+.tf-pagination {
     display: flex;
     align-items: center; 
     flex-wrap: wrap;
@@ -13,13 +13,13 @@
     margin: 0;
     padding: 0;   
     
-    .kt-pagination__links, .kt-pagination__links li a {
+    .tf-pagination__links, .tf-pagination__links li a {
         display: flex;   
         justify-content: center;
         align-items: center;
     }
     
-    .kt-pagination__links {
+    .tf-pagination__links {
         list-style-type: none;
         margin: 0;
         padding: 0;          
@@ -31,13 +31,13 @@
             margin-right: 0.5rem;
             
 
-            @include kt-rounded {
+            @include tf-rounded {
                 border-radius: 4px;
             }
 
             a {
                 font-weight: 500;
-                color: kt-base-color(label, 2);
+                color: tf-base-color(label, 2);
                 font-size: 1rem;
                 padding: 0 0.2rem; 
                 display: flex;
@@ -53,15 +53,15 @@
 
         
 
-        .kt-pagination__link--active {     
+        .tf-pagination__link--active {     
             a {
-                color: kt-brand-color(inverse);
+                color: tf-brand-color(inverse);
             }
         }       
     }
 
     // Toolbar
-    .kt-pagination__toolbar {
+    .tf-pagination__toolbar {
         margin: 0;
         display: flex;
         align-items: center;
@@ -82,29 +82,29 @@
         .pagination__desc {
             flex-grow: 1;
             font-weight: 500; 
-            color: kt-base-color(label, 2);
+            color: tf-base-color(label, 2);
         }
     }
 
-    @each $name, $color in $kt-state-colors {
-        &.kt-pagination--#{$name} {   
+    @each $name, $color in $tf-state-colors {
+        &.tf-pagination--#{$name} {   
             
-            .kt-pagination__links {
-                .kt-pagination__link--first, .kt-pagination__link--next, .kt-pagination__link--prev, .kt-pagination__link--last {
-                    background: rgba(kt-get($color, base), 0.1);     
+            .tf-pagination__links {
+                .tf-pagination__link--first, .tf-pagination__link--next, .tf-pagination__link--prev, .tf-pagination__link--last {
+                    background: rgba(tf-get($color, base), 0.1);     
                 }
 
-                .kt-pagination__link--active {
-                    background: kt-get($color, base);
+                .tf-pagination__link--active {
+                    background: tf-get($color, base);
                 }
 
                 li {
                     &:hover {
-                        background: kt-get($color, base);
+                        background: tf-get($color, base);
                         transition: color 0.3s ease;
 
                         a {
-                            color: kt-brand-color(inverse);
+                            color: tf-brand-color(inverse);
 
                             i {
                                 color: #fff !important; 
@@ -113,9 +113,9 @@
                     }
                 }
             }  
-            .kt-pagination__toolbar {
+            .tf-pagination__toolbar {
                 .form-control {
-                    background: rgba(kt-get($color, base), 0.1);                                   
+                    background: rgba(tf-get($color, base), 0.1);                                   
                 }                
             }
         }
@@ -123,13 +123,13 @@
     
 
     // Circle style links
-    &.kt-pagination--circle {
-        .kt-pagination__links {
+    &.tf-pagination--circle {
+        .tf-pagination__links {
             li {
                 min-width: 30px;
                 min-height: 30px;
 
-                @include kt-rounded {
+                @include tf-rounded {
                     border-radius: 50%;
                 }
             }
@@ -137,8 +137,8 @@
     }
 
     // Sizing options
-    &.kt-pagination--lg {
-        .kt-pagination__links {
+    &.tf-pagination--lg {
+        .tf-pagination__links {
             li {
                 a {                   
                     font-size: 1.3rem;                            
@@ -149,7 +149,7 @@
             }
         }
 
-        .kt-pagination__toolbar {   
+        .tf-pagination__toolbar {   
             .form-control {                           
                 height: 35px;                           
                 font-size: 1.2rem;
@@ -158,8 +158,8 @@
         }
     }
 
-    &.kt-pagination--sm {
-        .kt-pagination__links {
+    &.tf-pagination--sm {
+        .tf-pagination__links {
             li {
                 a {                   
                     font-size: 1rem;                            
@@ -170,7 +170,7 @@
             }
         }
 
-        .kt-pagination__toolbar {   
+        .tf-pagination__toolbar {   
             .form-control {                           
                 height: 25px;                           
                 font-size: 0.9rem;                     
@@ -180,9 +180,9 @@
 }
 
 
-@include kt-mobile {
-    .kt-pagination {        
-        .kt-pagination__links {
+@include tf-mobile {
+    .tf-pagination {        
+        .tf-pagination__links {
             display: flex;
             flex-wrap: wrap;
 
@@ -197,7 +197,7 @@
             } 
         }        
        
-        .kt-pagination__toolbar {
+        .tf-pagination__toolbar {
             .form-control {                           
                 height: 25px;                             
                 font-size: 0.9rem; 

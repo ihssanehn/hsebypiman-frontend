@@ -1,6 +1,6 @@
 
-.kt-timeline-3 .kt-timeline-3__inner {
-	.kt-timeline-3__item {
+.tf-timeline-3 .tf-timeline-3__inner {
+	.tf-timeline-3__item {
 		min-height: 30px;
 		border-left: 3px solid #586bd8;
 		padding-left: 15px;
@@ -9,13 +9,13 @@
 			display: none;
 		}
 
-		.kt-timeline-3__item-time {
+		.tf-timeline-3__item-time {
 			padding-top: 0;
 			position: static;
 		}
 	}
 
-	.kt-timeline-3__item-child {
+	.tf-timeline-3__item-child {
 		margin-left: 27px;
 		.mat-checkbox:not(.mat-checkbox-disabled).mat-accent
 			.mat-checkbox-ripple
@@ -28,8 +28,8 @@
 
 
 // timeline
-.kt-list-timeline {
-	.kt-list-timeline__items {
+.tf-list-timeline {
+	.tf-list-timeline__items {
 		position: relative;
 		padding: 0;
 		margin: 0;
@@ -44,7 +44,7 @@
 			left: 3px;
 			background-color: #ebedf2;
 		}
-		.kt-list-timeline__item {
+		.tf-list-timeline__item {
 			position: relative;
 			display: table;
 			table-layout: fixed;
@@ -55,7 +55,7 @@
 				padding-top: 0;
 				margin-top: 0;
 			}
-			.kt-list-timeline__badge {
+			.tf-list-timeline__badge {
 				text-align: left;
 				vertical-align: middle;
 				display: table-cell;
@@ -105,14 +105,14 @@
 				left: 3px;
 				background-color: #fff !important;
 			}
-			.kt-list-timeline__text {
+			.tf-list-timeline__text {
 				display: table-cell;
 				text-align: left;
 				vertical-align: middle;
 				width: 100%;
 				padding: 0 5px 0 0;
 				font-size: 1rem;
-				.kt-badge {
+				.tf-badge {
 					font-size: 0.8rem;
 					line-height: 20px;
 					min-height: 20px;
@@ -129,7 +129,7 @@
 		}
 	}
 	&--user-role {
-		.kt-list-timeline__items {
+		.tf-list-timeline__items {
 			&:before {
 				background-color: transparent;
 			}
@@ -141,7 +141,7 @@
 
 
 // badge
-.kt-badge {
+.tf-badge {
 	background: #eaeaea;
 	color: #444;
 	font-size: 0.8rem;
@@ -172,7 +172,7 @@
 	}
 }
 
-.kt-list-timeline__badge--primary:before {
+.tf-list-timeline__badge--primary:before {
 	background-color: #5867dd !important;
 	color: #fff;
 }
@@ -180,11 +180,11 @@
 
 
 
-.kt-form.kt-form--group-seperator-dashed .kt-form__group {
+.tf-form.tf-form--group-seperator-dashed .tf-form__group {
 	border-bottom: 1px dashed #ebedf2;
 }
 
-.kt-timeline-3 .kt-timeline-3__items .kt-timeline-3__item {
+.tf-timeline-3 .tf-timeline-3__items .tf-timeline-3__item {
 	display: table;
 	position: relative;
 	margin-bottom: 1.75rem;
@@ -193,28 +193,28 @@
 
 
 // Role permissions
-.kt-timeline-3 {
-	.kt-timeline-3__items--rolePermissions {
-		.kt-timeline-3__item {
+.tf-timeline-3 {
+	.tf-timeline-3__items--rolePermissions {
+		.tf-timeline-3__item {
 			display: block !important;
 			border-left: 0;
 			margin-bottom: 0 !important;
 			&-child {
 				border-left: 0;
 			}
-			.kt-timeline-3__item-time {
+			.tf-timeline-3__item-time {
 				position: static !important;
 			}
 		}
 	}
 }
-.kt-bg-grey {
+.tf-bg-grey {
 	background-color: #f7f8fa;
 }
-.kt-border-bottom-grey {
+.tf-border-bottom-grey {
 	border-bottom: 1px solid #eceff5;
 }
-.kt-py-15 {
+.tf-py-15 {
 	padding-top: 15px;
 	padding-bottom: 15px;
 }

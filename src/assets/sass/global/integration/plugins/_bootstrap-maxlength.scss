@@ -6,11 +6,11 @@
 
 
 // Base
-@mixin kt-bootstrap-maxlength-base() {
+@mixin tf-bootstrap-maxlength-base() {
  	.bootstrap-maxlength {
  		z-index: 1040 !important;
 
- 		&.kt-badge {
+ 		&.tf-badge {
  			display: inline-flex !important;
  		} 		
 
@@ -21,4 +21,4 @@
 }
 
 // Base
-@include kt-bootstrap-maxlength-base();
+@include tf-bootstrap-maxlength-base();

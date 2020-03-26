@@ -6,12 +6,12 @@
 
 
 // Base
-@mixin kt-bootstrap-timepicker-base() {
+@mixin tf-bootstrap-timepicker-base() {
     .bootstrap-timepicker-widget {
         left: auto;
         width: 175px;
 
-        @include kt-not-rounded {
+        @include tf-not-rounded {
             border-radius: 0;
         }
 
@@ -19,19 +19,19 @@
         .bootstrap-timepicker-minute,
         .bootstrap-timepicker-meridian,
         .bootstrap-timepicker-second {
-            @include kt-input-reset();
+            @include tf-input-reset();
         }
 
         table td {
         
-            @include kt-not-rounded {
+            @include tf-not-rounded {
                 border-radius: 0 !important;
             }
 
             > a {
                 border: 0;   	
 
-                @include kt-not-rounded {
+                @include tf-not-rounded {
                     border-radius: 0 !important;
                 }			
 
@@ -44,23 +44,23 @@
 }
 
 // Component Skin
-@mixin kt-bootstrap-timepicker-skin() {
+@mixin tf-bootstrap-timepicker-skin() {
     .bootstrap-timepicker-widget {
         .bootstrap-timepicker-hour,
         .bootstrap-timepicker-minute,
         .bootstrap-timepicker-meridian,
         .bootstrap-timepicker-second {
-            color: kt-base-color(label, 3);
+            color: tf-base-color(label, 3);
         }
 
         table td > a {
             .la {
                 font-size: 1.2rem;
-                color: kt-base-color(label, 2);
+                color: tf-base-color(label, 2);
             }
 
             &:hover {
-                background: kt-base-color(grey, 1);
+                background: tf-base-color(grey, 1);
             }              
         }
     }
@@ -68,7 +68,7 @@
 
 
 // Base
-@include kt-bootstrap-timepicker-base();
+@include tf-bootstrap-timepicker-base();
 
 // Skin
-@include kt-bootstrap-timepicker-skin();
+@include tf-bootstrap-timepicker-skin();

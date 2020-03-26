@@ -5,8 +5,8 @@
 
 
 
-.kt-widget__files {  
-  .kt-widget__media {
+.tf-widget__files {  
+  .tf-widget__media {
     text-align: center;
 
     img {
@@ -17,7 +17,7 @@
         fill: rgba(40, 42, 60, 0.2);
     }
 
-    .kt-widget__icon {
+    .tf-widget__icon {
       height: 5rem;
       display: block;
       text-align: center;
@@ -29,20 +29,20 @@
     }
   }
 
-  .kt-widget__desc {
+  .tf-widget__desc {
     text-align: center;
     display: block;
     font-weight: 500;
-    color: kt-base-color(label, 3);
+    color: tf-base-color(label, 3);
     font-size: 1.2rem;
     padding-top: 5rem;
 
     &:hover {
-      color: kt-brand-color();
+      color: tf-brand-color();
       transition: all 0.3s ease;
     }
 
-    &.kt-widget__desc--m {
+    &.tf-widget__desc--m {
       padding-top: 1rem;
       margin-bottom: 4rem;
     }

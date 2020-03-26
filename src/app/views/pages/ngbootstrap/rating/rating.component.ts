@@ -5,10 +5,10 @@ import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 const basicDemo = {
 		beforeCodeTitle: 'Basic demo',
 		htmlCode: `
-<div class="kt-section">
-  <div class="kt-section__content">
+<div class="tf-section">
+  <div class="tf-section__content">
     <ngb-rating [(rate)]="currentRate"></ngb-rating>
-    <div class="kt-separator kt-separator--dashed"></div>
+    <div class="tf-separator tf-separator--dashed"></div>
     <pre>Rate: <b>{{currentRate}}</b></pre>
   </div>
 </div>
@@ -31,16 +31,16 @@ export class NgbdRatingBasic {
 const eventsAndReadonlyRatings = {
 		beforeCodeTitle: 'Events and readonly ratings',
 		htmlCode: `
-<div class="kt-section">
-  <div class="kt-section__content">
+<div class="tf-section">
+  <div class="tf-section__content">
     <pre>Selected: <b>{{selected}}</b></pre>
     <pre>Hovered: <b>{{hovered}}</b></pre>
     <ngb-rating [(rate)]="selected" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="readonly"></ngb-rating>
   </div>
 </div>
-<div class="kt-separator kt-separator--dashed"></div>
-<div class="kt-section">
-  <div class="kt-section__content">
+<div class="tf-separator tf-separator--dashed"></div>
+<div class="tf-section">
+  <div class="tf-section__content">
     <button class="btn btn-sm btn-{{readonly ? 'danger' : 'success'}}" (click)="readonly = !readonly">
       {{ readonly ? "readonly" : "editable"}}
     </button>
@@ -67,11 +67,11 @@ export class NgbdRatingEvents {
 const customStarTemplate = {
 		beforeCodeTitle: 'Custom star template',
 		htmlCode: `
-<div class="kt-section">
-  <span class="kt-section__sub">
+<div class="tf-section">
+  <span class="tf-section__sub">
     Custom rating template provided as child element
   </span>
-  <div class="kt-section__content">
+  <div class="tf-section__content">
     <ngb-rating [(rate)]="currentRate1">
       <ng-template let-fill="fill" let-index="index">
         <span class="star" [class.filled]="fill === 100" [class.bad]="index < 3">&#9733;</span>
@@ -79,9 +79,9 @@ const customStarTemplate = {
 	</ngb-rating>
   </div>
 </div>
-<div class="kt-separator kt-separator--dashed"></div>
-<div class="kt-section">
-  <div class="kt-section__content">
+<div class="tf-separator tf-separator--dashed"></div>
+<div class="tf-section">
+  <div class="tf-section__content">
     <pre>Rate: <b>{{currentRate1}}</b></pre>
   </div>
 </div>
@@ -118,11 +118,11 @@ export class NgbdRatingTemplate {
 const customDecimalRating = {
 		beforeCodeTitle: 'Custom decimal rating',
 		htmlCode: `
-<div class="kt-section">
-  <span class="kt-section__sub">
+<div class="tf-section">
+  <span class="tf-section__sub">
     Custom rating template provided via a variable. Shows fine-grained rating display
   </span>
-  <div class="kt-section__content">
+  <div class="tf-section__content">
     <ng-template #t let-fill="fill">
       <span class="star2" [class.full]="fill === 100">
         <span class="half" [style.width.%]="fill">&hearts;</span>&hearts;
@@ -131,9 +131,9 @@ const customDecimalRating = {
     <ngb-rating [(rate)]="currentRate2" [starTemplate]="t" [readonly]="true" max="5"></ngb-rating>
   </div>
 </div>
-<div class="kt-separator kt-separator--dashed"></div>
-<div class="kt-section">
-  <div class="kt-section__content">
+<div class="tf-separator tf-separator--dashed"></div>
+<div class="tf-section">
+  <div class="tf-section__content">
     <pre>Rate: <b>{{currentRate2}}</b></pre>
     <button class="btn btn-sm btn-primary" (click)="currentRate2 = 1.35">1.35</button>
     <button class="btn btn-sm btn-primary" (click)="currentRate2 = 4.72">4.72</button>
@@ -174,11 +174,11 @@ export class NgbdRatingDecimal {
 const formIntegration = {
 		beforeCodeTitle: 'Form integration',
 		htmlCode: `
-<div class="kt-section">
-  <span class="kt-section__sub">
+<div class="tf-section">
+  <span class="tf-section__sub">
     NgModel and reactive forms can be used without the 'rate' binding
   </span>
-  <div class="kt-section__content">
+  <div class="tf-section__content">
     <div class="form-group">
 	  <ngb-rating [formControl]="ctrl"></ngb-rating>
       <div class="form-text small">
@@ -188,9 +188,9 @@ const formIntegration = {
     </div>
   </div>
 </div>
-<div class="kt-section">
-  <span class="kt-section__sub">Model: <b>{{ ctrl.value }}</b></span>
-  <div class="kt-section__content">
+<div class="tf-section">
+  <span class="tf-section__sub">Model: <b>{{ ctrl.value }}</b></span>
+  <div class="tf-section__content">
     <button class="btn btn-sm btn-{{ ctrl.disabled ? 'danger' : 'success'}}" (click)="toggle()">
       {{ ctrl.disabled ? "control disabled" : " control enabled" }}
     </button>
@@ -223,11 +223,11 @@ export class NgbdRatingForm {
 const globalConfigurationOfRatings = {
 		beforeCodeTitle: 'Global configuration of ratings',
 		htmlCode: `
-<div class="kt-section">
-  <span class="kt-section__sub">
+<div class="tf-section">
+  <span class="tf-section__sub">
     This rating uses customized default values.
   </span>
-  <div class="kt-section__content">
+  <div class="tf-section__content">
     <ngb-rating [rate]="3" max="5" [readonly]="true"></ngb-rating>
   </div>
 </div>
@@ -254,7 +254,7 @@ export class NgbdRatingConfig {
 
 
 @Component({
-	selector: 'kt-rating',
+	selector: 'tf-rating',
 	templateUrl: './rating.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	styles: [`

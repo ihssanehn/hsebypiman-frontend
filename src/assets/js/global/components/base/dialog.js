@@ -54,12 +54,12 @@ var KTDialog = function(options) {
             element = document.createElement("DIV");
             KTUtil.setHTML(element, the.options.message);
             
-            KTUtil.addClass(element, 'kt-dialog kt-dialog--shown');
-            KTUtil.addClass(element, 'kt-dialog--' + the.options.state);
-            KTUtil.addClass(element, 'kt-dialog--' + the.options.type); 
+            KTUtil.addClass(element, 'tf-dialog tf-dialog--shown');
+            KTUtil.addClass(element, 'tf-dialog--' + the.options.state);
+            KTUtil.addClass(element, 'tf-dialog--' + the.options.type); 
 
             if (the.options.placement == 'top center') {
-                KTUtil.addClass(element, 'kt-dialog--top-center');
+                KTUtil.addClass(element, 'tf-dialog--top-center');
             }
 
             body.appendChild(element);

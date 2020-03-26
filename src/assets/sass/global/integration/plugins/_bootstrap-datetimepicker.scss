@@ -11,7 +11,7 @@
     padding: 10px;
     left: auto;
 
-    @include kt-not-rounded {
+    @include tf-not-rounded {
         border-radius: 0 !important;
     }
     
@@ -29,7 +29,7 @@
         border-radius: 3px;
         font-weight: normal;
     
-        @include kt-not-rounded {
+        @include tf-not-rounded {
             border-radius: 0 !important;
         }
     }
@@ -43,21 +43,21 @@
             &.prev,
             &.switch,
             &.next {
-                color: kt-base-color(label, 2);
+                color: tf-base-color(label, 2);
                 font-weight: 500;
 
                 .glyphicon {
-                    color: kt-base-color(label, 2);
+                    color: tf-base-color(label, 2);
                 }
                 
                 &:hover {
-                    background: kt-base-color(grey, 1) !important;
+                    background: tf-base-color(grey, 1) !important;
                 }
             }
 
             &.dow {
                 font-weight: 500;
-                color: kt-base-color(label, 3);
+                color: tf-base-color(label, 3);
             }
             
             &.next,
@@ -97,33 +97,33 @@
     tbody {
         tr>td {
             span {
-                color: kt-base-color(label, 3);
+                color: tf-base-color(label, 3);
             }
             &.day {
-                color: kt-base-color(label, 3);
+                color: tf-base-color(label, 3);
 
                 &:hover {
-                    background: kt-base-color(grey, 1);
+                    background: tf-base-color(grey, 1);
                 }
 
                 &.old {
-                    color: kt-base-color(label, 2);
+                    color: tf-base-color(label, 2);
                 }
 
                 &.new {
-                    color: kt-base-color(label, 3);
+                    color: tf-base-color(label, 3);
                 }
 
                 &.selected,
                 &.active {
-                    background: kt-state-color(primary, base);
-                    color: kt-state-color(primary, inverse);
+                    background: tf-state-color(primary, base);
+                    color: tf-state-color(primary, inverse);
                 }
 
                 &.today {
                     position: relative;
-                    background: rgba(kt-state-color(brand, base), 0.7) !important;
-                    color: kt-state-color(brand, inverse) !important;
+                    background: rgba(tf-state-color(brand, base), 0.7) !important;
+                    color: tf-state-color(brand, inverse) !important;
                 
                     &:before {
                         content: '';
@@ -131,7 +131,7 @@
                         border: solid transparent;
                         border-width: 0 0 7px 7px;
                         border-bottom-color: #ffffff;
-                        border-top-color: kt-base-color(grey, 2);
+                        border-top-color: tf-base-color(grey, 2);
                         position: absolute;
                         bottom: 4px;
                         right: 4px;
@@ -139,7 +139,7 @@
                 }
 
                 &.range {
-                    background: kt-base-color(grey, 1);
+                    background: tf-base-color(grey, 1);
                 }
             }
 
@@ -147,17 +147,17 @@
             span.hour,
             span.minute,
             span.month {
-                color: kt-base-color(label, 3);
+                color: tf-base-color(label, 3);
 
                 &.focused,
                 &:hover {
-                    background: kt-base-color(grey, 1);
+                    background: tf-base-color(grey, 1);
                 }
 
                 &.active:hover,
                 &.active {
-                    background: kt-state-color(primary, base);
-                    color: kt-state-color(primary, inverse);
+                    background: tf-state-color(primary, base);
+                    color: tf-state-color(primary, inverse);
                 }
             }
         }
@@ -167,21 +167,21 @@
         tr>th {
             &.today,
             &.clear {
-                @include kt-rounded {
+                @include tf-rounded {
                     border-radius: 3px;
                 }
 
                 font-weight: 500;
 
                 &:hover {
-                    background-color: kt-base-color(grey, 1);
+                    background-color: tf-base-color(grey, 1);
                 }
             }
         }
     }
 
     &.datetimepicker-inline {
-        border: 1px solid kt-base-color(grey, 1);
+        border: 1px solid tf-base-color(grey, 1);
     }
 }
 

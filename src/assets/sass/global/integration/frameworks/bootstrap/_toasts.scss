@@ -64,7 +64,7 @@
     .toast-title {
         font-size: 0.9rem;
         font-weight: 500;
-        color: kt-base-color(label, 3);
+        color: tf-base-color(label, 3);
         margin-right: auto !important;       
     }
 
@@ -73,19 +73,19 @@
         margin-left: 0.5rem;
         font-size: 0.85rem;
         font-weight: 400;
-        color: kt-base-color(label, 3);
+        color: tf-base-color(label, 3);
     }
 
     // Icon
     .toast-icon {
         margin-right: 0.5rem;
         font-size: 1.2rem;
-        color: kt-base-color(label, 2);
+        color: tf-base-color(label, 2);
     }
 
     // Close
     .toast-close {
-        @include kt-button-reset();
+        @include tf-button-reset();
         
         margin-left: 1rem;
         display: flex;
@@ -94,7 +94,7 @@
 
         i {
             font-size: 1.1rem; 
-            color: kt-base-color(label, 2);
+            color: tf-base-color(label, 2);
             &:before {
                 line-height: 0;
                 vertical-align: middle;
@@ -103,7 +103,7 @@
 
         &:hover {
             i {
-                color: kt-brand-color();
+                color: tf-brand-color();
             }
         }
     }    

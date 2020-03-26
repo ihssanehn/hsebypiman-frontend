@@ -16,7 +16,7 @@ import { SubheaderService } from '../../../../../core/_base/layout';
 import { Paginate } from '@app/core/_base/layout/models/paginate.model';
 
 @Component({
-	selector: 'kt-users-list',
+	selector: 'tf-users-list',
 	templateUrl: './users-list.component.html',
 	styleUrls: ['./users-list.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush

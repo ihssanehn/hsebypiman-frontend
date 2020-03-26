@@ -1,23 +1,23 @@
-<div class="kt-portlet" [ngClass]="{ 'kt-portlet--body-progress' : viewLoading, 'kt-portlet--body-progress-overlay' : loadingAfterSubmit }">
-    <div class="kt-portlet__head kt-portlet__head__custom" *ngIf="role">
-        <div class="kt-portlet__head-label">
-            <h3 class="kt-portlet__head-title">{{getTitle()}}</h3>
+<div class="tf-portlet" [ngClass]="{ 'tf-portlet--body-progress' : viewLoading, 'tf-portlet--body-progress-overlay' : loadingAfterSubmit }">
+    <div class="tf-portlet__head tf-portlet__head__custom" *ngIf="role">
+        <div class="tf-portlet__head-label">
+            <h3 class="tf-portlet__head-title">{{getTitle()}}</h3>
         </div>
     </div>
     <div *ngIf="role">
-        <div class="kt-form">
-            <div class="kt-portlet__body">
+        <div class="tf-form">
+            <div class="tf-portlet__body">
 
-                <div class="kt-portlet__body-progress">
+                <div class="tf-portlet__body-progress">
                     <mat-spinner [diameter]="20"></mat-spinner>
                 </div>
 
-                <kt-alert *ngIf="hasFormErrors" type="warn" [duration]="30000" [showCloseButton]="true" (close)="onAlertClose($event)">
+                <tf-alert *ngIf="hasFormErrors" type="warn" [duration]="30000" [showCloseButton]="true" (close)="onAlertClose($event)">
                     Oh snap! Change a few things up and try submitting again.
-                </kt-alert>
+                </tf-alert>
 
-                <div class="form-group kt-form__group row d-block">
-                    <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                <div class="form-group tf-form__group row d-block">
+                    <div class="col-lg-4 tf-margin-bottom-20-mobile">
                         <mat-form-field class="mat-form-field-fluid">
                             <input matInput 
                                 [disabled]="role.isCoreRole"
@@ -32,31 +32,31 @@
                         </mat-form-field>
                     </div>
                 </div>
-                <div class="kt-separator kt-separator--dashed"></div>
-                <h6 class="kt-section__heading">
+                <div class="tf-separator tf-separator--dashed"></div>
+                <h6 class="tf-section__heading">
                     Permissions:
                 </h6>
-                <div class="form-group kt-form__group row">
-                    <div class="col-lg-12 kt-margin-bottom-20-mobile">
-                        <div class="kt-timeline-3 mb-5">
-                            <div class="kt-timeline-3__items kt-timeline-3__items--rolePermissions">
-                                <div *ngFor="let _rootRole of rolePermissions" class="kt-timeline-3__inner">
+                <div class="form-group tf-form__group row">
+                    <div class="col-lg-12 tf-margin-bottom-20-mobile">
+                        <div class="tf-timeline-3 mb-5">
+                            <div class="tf-timeline-3__items tf-timeline-3__items--rolePermissions">
+                                <div *ngFor="let _rootRole of rolePermissions" class="tf-timeline-3__inner">
                                     
                                     <!-- {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}} -->
                                     <!-- <button mat-icon-button>
                                         <mat-icon class="mat-icon-rtl-mirror">expand_more</mat-icon>
                                     </button> -->
-                                    <div class="kt-timeline-3__item kt-border-bottom-grey kt-py-15 kt-bg-grey">
-                                        <span class="kt-timeline-3__item-time">
+                                    <div class="tf-timeline-3__item tf-border-bottom-grey tf-py-15 tf-bg-grey">
+                                        <span class="tf-timeline-3__item-time">
                                             <mat-checkbox [(ngModel)]="_rootRole.isSelected"
                                                 (change)="isSelectedChanged($event, _rootRole)"
                                                 [disabled]="role.isCoreRole">{{ _rootRole.title }}</mat-checkbox> 
                                         </span>
                                     </div>
-                                    <div class="d-flex align-items-center kt-border-bottom-grey kt-py-15 kt-bg-grey">
-                                        <div class="kt-timeline-3__item kt-timeline-3__item-child"
+                                    <div class="d-flex align-items-center tf-border-bottom-grey tf-py-15 tf-bg-grey">
+                                        <div class="tf-timeline-3__item tf-timeline-3__item-child"
                                             *ngFor="let _childRole of _rootRole._children">
-                                            <span class="kt-timeline-3__item-time">
+                                            <span class="tf-timeline-3__item-time">
                                                 <mat-checkbox [(ngModel)]="_childRole.isSelected"
                                                     (change)="isSelectedChanged($event, _childRole)"
                                                     [disabled]="role.isCoreRole">{{ _childRole.title }}</mat-checkbox>
@@ -69,8 +69,8 @@
                     </div>
                 </div>
             </div>
-            <div class="kt-portlet__foot kt-portlet__foot--fit kt-portlet__no-border">
-                <div class="kt-form__actions kt-form__actions--solid">
+            <div class="tf-portlet__foot tf-portlet__foot--fit tf-portlet__no-border">
+                <div class="tf-form__actions tf-form__actions--solid">
                     <div class="row text-right">
                         <div class="col-lg-12">
                             <button type="button" mat-raised-button [mat-dialog-close]="data.animal" cdkFocusInitial matTooltip="Cancel changes">

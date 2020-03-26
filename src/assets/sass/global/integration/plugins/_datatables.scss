@@ -6,7 +6,7 @@
 
 
 // Base
-@mixin kt-datatables-base() {
+@mixin tf-datatables-base() {
     // Pagination colors
     $page-size: 2.25rem;
 
@@ -26,7 +26,7 @@
                 vertical-align: middle;
 
                 // Row checkbox
-                .kt-checkbox {
+                .tf-checkbox {
                     margin-top: 0.3rem;
                     margin-bottom: 0;
                 }
@@ -98,7 +98,7 @@
                     > .page-link {
                         border-radius: 3px;
 
-                        @include kt-not-rounded {
+                        @include tf-not-rounded {
                             border-radius: 0;
                         }
 
@@ -166,14 +166,14 @@
             }
         }
 
-        @include kt-tablet-and-mobile {
+        @include tf-tablet-and-mobile {
             .dataTables_pager {
                 margin-top: 1rem;
                 text-align: center;
             }
         }
 
-        @include kt-mobile {
+        @include tf-mobile {
             .dataTables_paginate {
                 margin-left: 0 !important;
 
@@ -202,16 +202,16 @@
                 width: 18px;
                 margin-top: -9px;
                 font-size: 18px;             
-                color: kt-state-color(brand, base);
+                color: tf-state-color(brand, base);
                 border: 0;
                 background-color: transparent;
 
-                @include kt-la-icon-self('\f2c3');
+                @include tf-la-icon-self('\f2c3');
             }
 
             tr.parent > td:first-child:before {
-                @include kt-la-icon-self('\f28f');
-                color: kt-state-color(brand, base);
+                @include tf-la-icon-self('\f28f');
+                color: tf-state-color(brand, base);
                 background-color: transparent;
             }
         }
@@ -269,15 +269,15 @@
     }
 }
 
-@mixin kt-datatables-skin() {
+@mixin tf-datatables-skin() {
     // Pagination colors
     $base_color: #f4f3f8;
     $page-default: darken($base-color, 3%);
-    $page-default-font: kt-base-color(label, 3);
-    $page-hover: kt-state-color(brand, base);
-    $page-hover-font: kt-state-color(brand, inverse);
-    $page-active: kt-state-color(brand, base);
-    $page-active-font: kt-state-color(brand, inverse);
+    $page-default-font: tf-base-color(label, 3);
+    $page-hover: tf-state-color(brand, base);
+    $page-hover-font: tf-state-color(brand, inverse);
+    $page-active: tf-state-color(brand, base);
+    $page-active-font: tf-state-color(brand, inverse);
     
     // Base wrapper
     .dataTables_wrapper {
@@ -285,21 +285,21 @@
         .dataTable {
             // General
             th, td {
-                color: kt-base-color(label, 3);
+                color: tf-base-color(label, 3);
             }
 
             // Row selected
             .selected {
                 th, td {
-                    background-color: kt-base-color(grey, 1);
-                    color: kt-base-color(label, 3);
+                    background-color: tf-base-color(grey, 1);
+                    color: tf-base-color(label, 3);
                 }
             }
 
             // Group
             .group {
                 th, td {
-                    background-color: kt-base-color(grey, 1);
+                    background-color: tf-base-color(grey, 1);
                 }
             }
         }
@@ -354,7 +354,7 @@
 
 // Build
 // Base
-@include kt-datatables-base();
+@include tf-datatables-base();
 
 // Skin
-@include kt-datatables-skin();
+@include tf-datatables-skin();

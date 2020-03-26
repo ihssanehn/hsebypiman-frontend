@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'kt-my-page',
+  selector: 'tf-my-page',
   templateUrl: './my-page.component.html',
   styleUrls: ['./my-page.component.scss']
 })

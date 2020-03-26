@@ -1,14 +1,14 @@
-<kt-notice [icon]="'flaticon-warning kt-font-primary'">
+<tf-notice [icon]="'flaticon-warning tf-font-primary'">
 	The layout builder helps to configure the layout with preferred options and preview it in real time.
 	The configured layout options will be saved until you change or reset them.
-	To use the layout builder choose the layout options and click the <code>Preview</code> button to preview the changes.	<a class="kt-link" href="https://ng-bootstrap.github.io/#/components/progressbar/examples" target="_blank">demos & documentation</a>
-</kt-notice>
+	To use the layout builder choose the layout options and click the <code>Preview</code> button to preview the changes.	<a class="tf-link" href="https://ng-bootstrap.github.io/#/components/progressbar/examples" target="_blank">demos & documentation</a>
+</tf-notice>
 
-<form class="kt-form kt-form--label-right" novalidate #form="ngForm" (ngSubmit)="submitPreview($event)">
-	<kt-portlet [class]="'kt-portlet--tabs'">
-		<kt-portlet-header [noTitle]="true">
-			<ng-container ktPortletTools>
-				<ul ktTabClickEvent class="nav nav-tabs nav-tabs-line nav-tabs-bold nav-tabs-line-left nav-tabs-line-primary" role="tablist">
+<form class="tf-form tf-form--label-right" novalidate #form="ngForm" (ngSubmit)="submitPreview($event)">
+	<tf-portlet [class]="'tf-portlet--tabs'">
+		<tf-portlet-header [noTitle]="true">
+			<ng-container tfPortletTools>
+				<ul tfTabClickEvent class="nav nav-tabs nav-tabs-line nav-tabs-bold nav-tabs-line-left nav-tabs-line-primary" role="tablist">
 					<li class="nav-item">
 						<a (click)="tab.select('tab-id-1')" class="nav-link active" href="javascript:;" role="tab">
 							Page
@@ -36,13 +36,13 @@
 					</li>
 				</ul>
 			</ng-container>
-		</kt-portlet-header>
-		<kt-portlet-body>
+		</tf-portlet-header>
+		<tf-portlet-body>
 			<ngb-tabset #tab="ngbTabset">
 				<ngb-tab id="tab-id-1">
 					<ng-template ngbTabContent>
-						<div class="kt-section kt-margin-t-30">
-							<div class="kt-section__body">
+						<div class="tf-section tf-margin-t-30">
+							<div class="tf-section__body">
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label">Page Loader:</label>
 									<div class="col-lg-9 col-xl-4">
@@ -61,12 +61,12 @@
 				</ngb-tab>
 				<ngb-tab id="tab-id-2">
 					<ng-template ngbTabContent>
-						<div class="kt-section kt-margin-t-30">
-							<div class="kt-section__body">
+						<div class="tf-section tf-margin-t-30">
+							<div class="tf-section__body">
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label">Fixed Desktop Header:</label>
 									<div class="col-lg-9 col-xl-4">
-										<span class="kt-switch kt-switch--icon-check">
+										<span class="tf-switch tf-switch--icon-check">
 											<label>
 												<input type="checkbox" name="builder[header][self][fixed][desktop][enabled]" [(ngModel)]="model.header.self.fixed.desktop.enabled" value="true"/>
 												<span></span>
@@ -91,7 +91,7 @@
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label">Fixed Mobile Header:</label>
 									<div class="col-lg-9 col-xl-6">
-										<span class="kt-switch kt-switch--icon-check">
+										<span class="tf-switch tf-switch--icon-check">
 											<label>
 												<input type="checkbox" name="builder[header][self][fixed][mobile]" [(ngModel)]="model.header.self.fixed.mobile" value="true"/>
 												<span></span>
@@ -101,12 +101,12 @@
 									</div>
 								</div>
 
-								<div class="kt-separator kt-separator--space-lg kt-separator--border-dashed"></div>
+								<div class="tf-separator tf-separator--space-lg tf-separator--border-dashed"></div>
 
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label">Header Menu Arrows:</label>
 									<div class="col-lg-9 col-xl-4">
-										<span class="kt-switch kt-switch--icon-check">
+										<span class="tf-switch tf-switch--icon-check">
 											<label>
 												<input type="checkbox" name="builder[header][menu][self][root-arrow]" [(ngModel)]="model.header.menu.self['root-arrow']" value="true"/>
 												<span></span>
@@ -131,12 +131,12 @@
 				</ngb-tab>
 				<ngb-tab id="tab-id-3">
 					<ng-template ngbTabContent>
-						<div class="kt-section kt-margin-t-30">
-							<div class="kt-section__body">
+						<div class="tf-section tf-margin-t-30">
+							<div class="tf-section__body">
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label">Display Subheader:</label>
 									<div class="col-lg-9 col-xl-4">
-										<span class="kt-switch kt-switch--icon-check">
+										<span class="tf-switch tf-switch--icon-check">
 										<label>
 									        <input type="checkbox" name="builder[subheader][display]" [(ngModel)]="model.subheader.display" value="true"/>
 									        <span></span>
@@ -161,8 +161,8 @@
 				</ngb-tab>
 				<ngb-tab id="tab-id-4">
 					<ng-template ngbTabContent>
-						<div class="kt-section kt-margin-t-30">
-							<div class="kt-section__body">
+						<div class="tf-section tf-margin-t-30">
+							<div class="tf-section__body">
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label">Width:</label>
 									<div class="col-lg-9 col-xl-4">
@@ -179,8 +179,8 @@
 				</ngb-tab>
 				<ngb-tab id="tab-id-6">
 					<ng-template ngbTabContent>
-						<div class="kt-section kt-margin-t-30">
-							<div class="kt-section__body">
+						<div class="tf-section tf-margin-t-30">
+							<div class="tf-section__body">
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label">Width:</label>
 									<div class="col-lg-9 col-xl-4">
@@ -196,9 +196,9 @@
 					</ng-template>
 				</ngb-tab>
 			</ngb-tabset>
-		</kt-portlet-body>
-		<kt-portlet-footer>
-			<div class="kt-form__actions">
+		</tf-portlet-body>
+		<tf-portlet-footer>
+			<div class="tf-form__actions">
 				<div class="row">
 					<div class="col-lg-4"></div>
 					<div class="col-lg-8">
@@ -214,16 +214,16 @@
 					</div>
 				</div>
 			</div>
-		</kt-portlet-footer>
-	</kt-portlet>
+		</tf-portlet-footer>
+	</tf-portlet>
 </form>
 
-<kt-portlet>
-	<kt-portlet-header [title]="'Generated Config <small>can be used for layout config in <code>/src/app/core/_config/layout.config.ts</code></small>'">
-	</kt-portlet-header>
-	<kt-portlet-body>
+<tf-portlet>
+	<tf-portlet-header [title]="'Generated Config <small>can be used for layout config in <code>/src/app/core/_config/layout.config.ts</code></small>'">
+	</tf-portlet-header>
+	<tf-portlet-body>
 		<div perfectScrollbar [ngStyle]="{'max-height': '50vh', 'position': 'relative'}">
 			<pre><code [highlight]="model|json"></code></pre>
 		</div>
-	</kt-portlet-body>
-</kt-portlet>
+	</tf-portlet-body>
+</tf-portlet>

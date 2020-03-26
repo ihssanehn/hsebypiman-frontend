@@ -1,13 +1,13 @@
 // Dialog
-.kt-mat-dialog-container__wrapper {
+.tf-mat-dialog-container__wrapper {
 	.mat-dialog-container {
 	   	padding: 0;
 	   	overflow-x: hidden;
 
-	   	.kt-portlet {
+	   	.tf-portlet {
 	       	margin-bottom: 0;
 	    	
-	       	.kt-portlet__body {
+	       	.tf-portlet__body {
 	       		overflow: auto;
 	       		max-height: 60vh;
 	       	}
@@ -15,11 +15,11 @@
 	}
 }
 
-.kt-mat-dialog-container__wrapper .mat-dialog-container {
+.tf-mat-dialog-container__wrapper .mat-dialog-container {
 	padding: 0;
 	overflow-x: hidden;
 
-	.kt-portlet {
+	.tf-portlet {
 		margin-bottom: 0;
 	}
 
@@ -33,14 +33,14 @@
 	margin-bottom: 0 !important;
 }
 
-@include kt-tablet-and-mobile {
+@include tf-tablet-and-mobile {
 	// Dialog
-	.kt-mat-dialog-container__wrapper {
+	.tf-mat-dialog-container__wrapper {
 		max-width: 90%;
 		
 		.mat-dialog-container {
-		   	.kt-portlet {
-		       	.kt-portlet__body {
+		   	.tf-portlet {
+		       	.tf-portlet__body {
 		       		overflow: auto;
 		       		max-height: 60vh; 
 		       	}
@@ -50,12 +50,12 @@
 }
 
 
-.kt-modal2__container {
+.tf-modal2__container {
 	padding-top: 24px;
 	padding-bottom: 24px;
 }
 
-.kt-modal3__container {
+.tf-modal3__container {
 	padding-top: 24px;
 	padding-bottom: 24px;
 }

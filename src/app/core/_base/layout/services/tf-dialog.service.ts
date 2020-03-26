@@ -4,23 +4,23 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
-export class KtDialogService {
-	private ktDialog: any;
+export class TfDialogService {
+	private tfDialog: any;
 	private currentState: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
 	// Public properties
 	constructor() {
-		this.ktDialog = new KTDialog({type: 'loader', placement: 'top center', message: 'Loading ...'});
+		this.tfDialog = new KTDialog({type: 'loader', placement: 'top center', message: 'Loading ...'});
 	}
 
 	show() {
 		this.currentState.next(true);
-		this.ktDialog.show();
+		this.tfDialog.show();
 	}
 
 	hide() {
 		this.currentState.next(false);
-		this.ktDialog.hide();
+		this.tfDialog.hide();
 	}
 
 	checkIsShown() {

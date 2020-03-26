@@ -6,16 +6,16 @@
 
 
 // widget6 
-.kt-widget6 {
-    .kt-widget6__head {
-        .kt-widget6__item {
+.tf-widget6 {
+    .tf-widget6__head {
+        .tf-widget6__item {
             display: flex; 
             align-items: center;            
             margin-bottom: 1.07rem;             
 
             > span {
                 font-size: 1rem;
-                color: kt-base-color(label, 2);
+                color: tf-base-color(label, 2);
                 font-weight: 400;
                 flex: 1;                 
                 text-align: left;
@@ -27,14 +27,14 @@
         }
     } 
 
-    .kt-widget6__body {
-        .kt-widget6__item {
+    .tf-widget6__body {
+        .tf-widget6__item {
             display: flex;             
             align-items: center;
             padding: 1.07rem 0;                                 
 
             > span {                     
-                color: kt-base-color(label, 3);
+                color: tf-base-color(label, 3);
                 font-weight: 400; 
                 flex: 1;                 
                 text-align: left;
@@ -45,7 +45,7 @@
                 }                 
             }  
 
-            border-bottom: 1px dashed kt-base-color(grey, 2);
+            border-bottom: 1px dashed tf-base-color(grey, 2);
 
             &:last-child {
                 border-bottom: 0;
@@ -53,8 +53,8 @@
         }
     } 
 
-    .kt-widget6__foot {
-        .kt-widget6__action {
+    .tf-widget6__foot {
+        .tf-widget6__action {
             text-align: right;
             margin-top: 1rem;
         }

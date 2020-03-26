@@ -5,9 +5,9 @@ import { NgbAccordionConfig } from '@ng-bootstrap/ng-bootstrap';
 const accordion = {
 		beforeCodeTitle: 'Accordion',
 		htmlCode: `
-<div class="kt-section">
-  <h3 class="kt-section__heading">Self closing</h3>
-  <div class="kt-section__content">
+<div class="tf-section">
+  <h3 class="tf-section__heading">Self closing</h3>
+  <div class="tf-section__content">
     <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
       <ngb-panel>
         <ng-template ngbPanelTitle>
@@ -156,7 +156,7 @@ const togglePanels = {
     </ng-template>
   </ngb-panel>
 </ngb-accordion>
-<div class="kt-separator kt-separator--dashed"></div>
+<div class="tf-separator tf-separator--dashed"></div>
 <button class="btn btn-primary" (click)="acc11.toggle('toggle-11')">Toggle first</button>
 <button class="btn btn-info" (click)="acc11.toggle('toggle-22')">Toggle second</button>
 	  `,
@@ -237,11 +237,11 @@ export class NgbdAccordionPreventchange {
 const globalConfigurationOfAccordions = {
 		beforeCodeTitle: 'Global configuration of accordions',
 		htmlCode: `
-<div class="kt-section">
-  <span class="kt-section__sub">
+<div class="tf-section">
+  <span class="tf-section__sub">
     This accordion uses customized default values.
   </span>
-  <div class="kt-section__content">
+  <div class="tf-section__content">
     <ngb-accordion #acc33="ngbAccordion" activeIds="config-panel-one">
       <ngb-panel id="config-panel-one">
         <ng-template ngbPanelTitle>
@@ -290,7 +290,7 @@ export class NgbdAccordionConfig {
 	};
 
 @Component({
-	selector: 'kt-accordion',
+	selector: 'tf-accordion',
 	templateUrl: './accordion.component.html',
 	styles: [`
 		.card-header--title {

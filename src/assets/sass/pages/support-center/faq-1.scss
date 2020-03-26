@@ -12,27 +12,27 @@
 @import "../../global/layout/config.scss";
 
 // Base
-.kt-sc-faq {
+.tf-sc-faq {
 	background-position: center top;
 	background-size: cover;
 	background-repeat: no-repeat;
 
-	.kt-sc__top{
+	.tf-sc__top{
 		display: flex;
 		padding: 6rem 0 10rem;
 		align-items: center;
 
-		.kt-sc__title {
+		.tf-sc__title {
 			margin-bottom: 0;
 			font-size: 1.85rem;
 			font-weight: 600;
-			color: kt-base-color(label, 4);
+			color: tf-base-color(label, 4);
 		}
 
-		.kt-sc__nav{
+		.tf-sc__nav{
 			margin: auto 0 auto auto;
 
-			.kt-link{
+			.tf-link{
 				font-size: 1.3rem;
 				font-weight: 400;
 			}

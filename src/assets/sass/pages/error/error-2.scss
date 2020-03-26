@@ -11,14 +11,14 @@
 // Layout config
 @import "../../global/layout/config.scss";
 
-.kt-error-v2 {
+.tf-error-v2 {
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
 
-    .kt-error_container {
-        .kt-error_title2 {
+    .tf-error_container {
+        .tf-error_title2 {
 
             > h1 {
                 font-size: 6rem;
@@ -28,7 +28,7 @@
             }
         }
 
-        .kt-error_desc {
+        .tf-error_desc {
             font-size: 2.5rem;
             text-align: center;
             display: block;
@@ -37,10 +37,10 @@
     }
 }
 
-@include kt-mobile() {
-    .kt-error-v2 {
-        .kt-error_container {
-            .kt-error_desc {
+@include tf-mobile() {
+    .tf-error-v2 {
+        .tf-error_container {
+            .tf-error_desc {
                 padding-left: 0.6rem;
                 padding-right: 0.6rem;
             }

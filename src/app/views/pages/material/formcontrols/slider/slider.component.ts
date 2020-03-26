@@ -140,7 +140,7 @@ const changeEvent = {
 	beforeCodeTitle: 'Change event binding',
 	htmlCode: `
 <mat-slider (change)="changeSlider()" [(ngModel)]="myValue" min="0" max="100" step="1"></mat-slider>
-<div class="kt-separator kt-separator--dashed" *ngIf="myValue"></div>
+<div class="tf-separator tf-separator--dashed" *ngIf="myValue"></div>
 <span *ngIf="myValue">Selected: <mark>{{ myValue }}</mark>%</span>
 `,
 	tsCode: `
@@ -165,7 +165,7 @@ export class SliderChangeEventExample {\n
 };
 
 @Component({
-	selector: 'kt-slider',
+	selector: 'tf-slider',
 	templateUrl: './slider.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	styles: [`

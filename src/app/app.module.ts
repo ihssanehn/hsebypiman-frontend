@@ -37,7 +37,7 @@ import { PartialsModule } from './views/partials/partials.module';
 import {
 	DataTableService,
 	// FakeApiService,
-	KtDialogService,
+	TfDialogService,
 	LayoutConfigService,
 	LayoutRefService,
 	MenuAsideService,
@@ -119,7 +119,7 @@ export function hljsLanguages(): HighlightLanguage[] {
 		LayoutRefService,
 		MenuConfigService,
 		PageConfigService,
-		KtDialogService,
+		TfDialogService,
 		DataTableService,
 		SplashScreenService,
 		{

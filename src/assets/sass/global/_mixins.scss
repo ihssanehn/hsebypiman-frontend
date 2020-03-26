@@ -5,7 +5,7 @@
 
 
 
-@mixin kt-clearfix() {
+@mixin tf-clearfix() {
 	&:before,
 	&:after {
 		content: " "; // 1
@@ -16,7 +16,7 @@
 	}
 }
 
-@mixin kt-button-reset() {
+@mixin tf-button-reset() {
     appearance: none;
     box-shadow: none;
     border-radius: none;
@@ -28,14 +28,14 @@
     padding: 0;
 }
 
-@mixin kt-input-reset() {
+@mixin tf-input-reset() {
 	border: 0;
 	background: none;
 	outline: none !important;
 	box-shadow: none;
 }
 
-@mixin kt-btn-reset() {
+@mixin tf-btn-reset() {
     border: 0;
     background: none;
     outline: none !important;
@@ -43,50 +43,50 @@
     outline: none !important;
 }
 
-@mixin kt-fix-fixed-position-lags() {
+@mixin tf-fix-fixed-position-lags() {
 	// webkit hack for smooth font view on fixed positioned elements
 	-webkit-backface-visibility:hidden;
 	backface-visibility:hidden;
 }
 
-@mixin kt-fix-animation-lags() {
+@mixin tf-fix-animation-lags() {
     transform: translateZ(0);
     -webkit-transform-style: preserve-3d;
 }
 
-@mixin kt-attr($attr, $value, $important: '') {
+@mixin tf-attr($attr, $value, $important: '') {
     @if  $value != null  {
         #{$attr}: #{$value} #{$important};
     }
 }
 
-@mixin kt-hack-ie {
+@mixin tf-hack-ie {
 	//IE10 and IE11
 	@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
 		@content;
 	}
 }
 
-@mixin kt-hack-edge-all {
+@mixin tf-hack-edge-all {
 	@supports (-ms-ime-align:auto) {
 		@content;
 	}
 }
 
-@mixin kt-rounded {
-    @if $kt-rounded == true {
+@mixin tf-rounded {
+    @if $tf-rounded == true {
        @content;
     }
 }
 
-@mixin kt-not-rounded {
-    @if $kt-rounded == false {
+@mixin tf-not-rounded {
+    @if $tf-rounded == false {
         @content;
     }
 }
 
 // Input placeholder color
-@mixin kt-input-placeholder($color) {
+@mixin tf-input-placeholder($color) {
     &::-moz-placeholder {
         color: $color;
         opacity: 1;
@@ -102,31 +102,31 @@
     // Safari and Chrome
 }
 
-@mixin kt-hover-transition {
-    transition: $kt-transition;
+@mixin tf-hover-transition {
+    transition: $tf-transition;
 
     &:hover {
-        transition: $kt-transition;
+        transition: $tf-transition;
     }
 }
 
-@mixin kt-transition {
-    transition: $kt-transition;
+@mixin tf-transition {
+    transition: $tf-transition;
 }
 
 // Icon Sizing
 // SASS Map:  (lineawesome: 1.1rem, fontawesome: 1.2rem, flaticon: 1.1rem)
-@mixin kt-icons-size($config) {
+@mixin tf-icons-size($config) {
     // Lineawesome
     [class^="la-"],
     [class*=" la-"] {
-        font-size: kt-get($config, lineawesome);
+        font-size: tf-get($config, lineawesome);
     }
 
     // Fontawesome
     [class^="fa-"],
     [class*=" fa-"] {
-        font-size: kt-get($config, fontawesome);
+        font-size: tf-get($config, fontawesome);
     }
 
     // Flaticon
@@ -134,23 +134,23 @@
     [class*=" flaticon-"],
     [class^="flaticon2-"],
     [class*=" flaticon2-"] {
-        font-size: kt-get($config, flaticon);
+        font-size: tf-get($config, flaticon);
     }
 }
 
 // Icon attr
 // SASS Map:  (lineawesome: 1.1rem, fontawesome: 1.2rem, flaticon: 1.1rem)
-@mixin kt-icons-style($attr, $config) {
+@mixin tf-icons-style($attr, $config) {
     // lineawesome
     [class^="la-"],
     [class*=" la-"] {
-        #{$attr}: kt-get($config, lineawesome);
+        #{$attr}: tf-get($config, lineawesome);
     }
 
     // Fontawesome
     [class^="fa-"],
     [class*=" fa-"] {
-        #{$attr}: kt-get($config, fontawesome);
+        #{$attr}: tf-get($config, fontawesome);
     }
 
     // Flaticon
@@ -158,12 +158,12 @@
     [class*=" flaticon-"],
     [class^="flaticon2-"],
     [class*=" flaticon2-"] {
-        #{$attr}: kt-get($config, flaticon);
+        #{$attr}: tf-get($config, flaticon);
     }
 }
 
 // SASS Map:  (lineawesome: 1.1rem, fontawesome: 1.2rem, flaticon: 1.1rem)
-@mixin kt-icons {
+@mixin tf-icons {
     [class^="la-"],
     [class*=" la-"],
     [class^="fa-"],
@@ -177,7 +177,7 @@
 }
 
 // Lineawesome icon
-@mixin kt-la-icon($icon) {
+@mixin tf-la-icon($icon) {
     font-family: "LineAwesome";
     text-decoration: inherit;
     text-rendering: optimizeLegibility;
@@ -191,13 +191,13 @@
     }
 }
 
-@mixin kt-la-icon-change($icon) {
+@mixin tf-la-icon-change($icon) {
     &:before {
         content: "#{$icon}";
     }
 }
 
-@mixin kt-flaticon2-icon($icon) {
+@mixin tf-flaticon2-icon($icon) {
     font-family: Flaticon2;
     font-style: normal;
     font-weight: normal;
@@ -213,7 +213,7 @@
 }
 
 // Lineawesome icon
-@mixin kt-la-icon-self($icon) {
+@mixin tf-la-icon-self($icon) {
     font-family: "LineAwesome";
     text-decoration: inherit;
     text-rendering: optimizeLegibility;
@@ -225,51 +225,51 @@
 }
 
 // Close icon
-@mixin kt-close-icon($self:null) {
+@mixin tf-close-icon($self:null) {
     @if $self == true {
-        @include kt-la-icon-self( kt-get($kt-action-icons, close) );
+        @include tf-la-icon-self( tf-get($tf-action-icons, close) );
     } @else {
-        @include kt-la-icon( kt-get($kt-action-icons, close) );
+        @include tf-la-icon( tf-get($tf-action-icons, close) );
     }
 }
 
 // Arrow icon
-@mixin kt-arrow-icon($dir, $self:null) {
+@mixin tf-arrow-icon($dir, $self:null) {
     @if $dir == down {
         @if $self == true {
-            @include kt-la-icon-self( kt-get($kt-action-icons, down) );
+            @include tf-la-icon-self( tf-get($tf-action-icons, down) );
         } @else {
-            @include kt-la-icon( kt-get($kt-action-icons, down) );
+            @include tf-la-icon( tf-get($tf-action-icons, down) );
         }
     }
 
     @if $dir == up {
         @if $self == true {
-            @include kt-la-icon-self( kt-get($kt-action-icons, up) );
+            @include tf-la-icon-self( tf-get($tf-action-icons, up) );
         } @else {
-            @include kt-la-icon( kt-get($kt-action-icons, up) );
+            @include tf-la-icon( tf-get($tf-action-icons, up) );
         }
     }
 
     @if $dir == left {
         @if $self == true {
-            @include kt-la-icon-self( kt-get($kt-action-icons, left) );
+            @include tf-la-icon-self( tf-get($tf-action-icons, left) );
         } @else {
-            @include kt-la-icon( kt-get($kt-action-icons, left) );
+            @include tf-la-icon( tf-get($tf-action-icons, left) );
         }
     }
 
     @if $dir == right {
         @if $self == true {
-            @include kt-la-icon-self( kt-get($kt-action-icons, right) );
+            @include tf-la-icon-self( tf-get($tf-action-icons, right) );
         } @else {
-            @include kt-la-icon( kt-get($kt-action-icons, right) );
+            @include tf-la-icon( tf-get($tf-action-icons, right) );
         }
     }
 }
 
 // Svg icon color
-@mixin kt-svg-icon-color($color) {
+@mixin tf-svg-icon-color($color) {
     g {
         [fill] {
             transition: fill 0.3s ease;
@@ -290,97 +290,97 @@
 // Layout Breakpoints
 // Define the minimum and maximum dimensions at which your layout will change, adapting to different screen sizes, for use in media queries.
 
-@mixin kt-media-below($width) {
-    @media (max-width: #{kt-media-breakpoint($width)}) {
+@mixin tf-media-below($width) {
+    @media (max-width: #{tf-media-breakpoint($width)}) {
         @content;
     }
 }
 
-@mixin kt-media-above($width) {
-    @media (min-width: #{kt-media-breakpoint($width) + 1px}) {
+@mixin tf-media-above($width) {
+    @media (min-width: #{tf-media-breakpoint($width) + 1px}) {
         @content;
     }
 }
 
-@mixin kt-media-range($from, $to) {
-    @media (min-width: #{kt-media-breakpoint($from) + 1px}) and (max-width: #{kt-media-breakpoint($to)}) {
+@mixin tf-media-range($from, $to) {
+    @media (min-width: #{tf-media-breakpoint($from) + 1px}) and (max-width: #{tf-media-breakpoint($to)}) {
         @content;
     }
 }
 
-@mixin kt-minimal-desktop {
-    @media (min-width: #{kt-media-breakpoint(lg) + 1px}) and (max-width: #{kt-media-breakpoint(xl)}) {
+@mixin tf-minimal-desktop {
+    @media (min-width: #{tf-media-breakpoint(lg) + 1px}) and (max-width: #{tf-media-breakpoint(xl)}) {
         @content;
     }
 }
 
-@mixin kt-minimal-desktop-and-below {
-    @media (max-width: #{kt-media-breakpoint(xl)}) {
+@mixin tf-minimal-desktop-and-below {
+    @media (max-width: #{tf-media-breakpoint(xl)}) {
         @content;
     }
 }
 
-@mixin kt-desktop {
-    @media (min-width: #{kt-media-breakpoint(lg) + 1px}) {
+@mixin tf-desktop {
+    @media (min-width: #{tf-media-breakpoint(lg) + 1px}) {
         @content;
     }
 }
 
-@mixin kt-desktop-xl {
-    @media (min-width: #{kt-media-breakpoint(xl) + 1px}) {
+@mixin tf-desktop-xl {
+    @media (min-width: #{tf-media-breakpoint(xl) + 1px}) {
         @content;
     }
 }
 
-@mixin kt-desktop-xxl {
-    @media (min-width: #{kt-media-breakpoint(xxl) + 1px}) {
+@mixin tf-desktop-xxl {
+    @media (min-width: #{tf-media-breakpoint(xxl) + 1px}) {
         @content;
     }
 }
 
-@mixin kt-desktop-and-tablet {
-    @media (min-width: #{kt-media-breakpoint(md) + 1px}) {
+@mixin tf-desktop-and-tablet {
+    @media (min-width: #{tf-media-breakpoint(md) + 1px}) {
         @content;
     }
 }
 
-@mixin kt-tablet {
-    @media (min-width: #{kt-media-breakpoint(md) + 1px}) and (max-width: #{kt-media-breakpoint(lg)}) {
+@mixin tf-tablet {
+    @media (min-width: #{tf-media-breakpoint(md) + 1px}) and (max-width: #{tf-media-breakpoint(lg)}) {
         @content;
     }
 }
 
-@mixin kt-tablet-and-mobile {
-    @media (max-width: #{kt-media-breakpoint(lg)}) {
+@mixin tf-tablet-and-mobile {
+    @media (max-width: #{tf-media-breakpoint(lg)}) {
         @content;
     }
 }
 
-@mixin kt-mobile {
-    @media (max-width: #{kt-media-breakpoint(md)}) {
+@mixin tf-mobile {
+    @media (max-width: #{tf-media-breakpoint(md)}) {
         @content;
     }
 }
 
-@mixin kt-mobile-sm {
-    @media (max-width: #{kt-media-breakpoint(sm)}) {
+@mixin tf-mobile-sm {
+    @media (max-width: #{tf-media-breakpoint(sm)}) {
         @content;
     }
 }
 
-@mixin kt-responsive-below($width) {
+@mixin tf-responsive-below($width) {
     @media (max-width: #{$width}) {
       @content;
     }
 }
 
-@mixin kt-responsive-above($width) {
+@mixin tf-responsive-above($width) {
     @media (min-width: #{$width}) {
       @content;
     }
 }
 
-@mixin kt-responsive-range($from, $to) {
+@mixin tf-responsive-range($from, $to) {
     @media (min-width: #{$from}) and (max-width: #{$to}) {
       @content;
     }

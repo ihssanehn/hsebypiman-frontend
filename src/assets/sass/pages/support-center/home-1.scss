@@ -13,29 +13,29 @@
 
 
 // Base
-.kt-sc {
+.tf-sc {
 	background-position: center top;
 	background-size: cover;
 	background-repeat: no-repeat;
 	margin-bottom: 2rem;
 
-	.kt-sc__top {
+	.tf-sc__top {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 		padding-top: 2rem;
 		padding-bottom: 2rem;
-		border-bottom: 1px solid kt-state-color(brand, inverse);
+		border-bottom: 1px solid tf-state-color(brand, inverse);
 
-		.kt-sc__title {
+		.tf-sc__title {
 			margin-bottom: 0;
 			font-size: 1.45rem;
-			color: kt-base-color(label, 4);
+			color: tf-base-color(label, 4);
 		}
 
-		.kt-sc__nav {
+		.tf-sc__nav {
 
-			.kt-link{
+			.tf-link{
 				margin-left: 2rem;
 				font-size: 1.1rem;
 				font-weight: 400;
@@ -47,7 +47,7 @@
 		}
 	}
 
-	.kt-sc__bottom{
+	.tf-sc__bottom{
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -55,11 +55,11 @@
 		padding-top: 10rem;
 		padding-bottom: 10rem;
 
-		.kt-sc__heading{
+		.tf-sc__heading{
 			margin-bottom: 4rem;
 		}
 
-		.kt-sc__form {
+		.tf-sc__form {
 			.input-group{
 				width: 630px;
 				box-shadow: 0px 0px 9px 0px rgba(122,104,181,0.09);
@@ -69,7 +69,7 @@
 					border-bottom-right-radius: 0;
 					border: none;
 					padding: 0.65rem 2rem;
-					background-color: kt-state-color(brand, inverse);
+					background-color: tf-state-color(brand, inverse);
 				}
 
 				.form-control{
@@ -84,15 +84,15 @@
 }
 
 
-@include kt-tablet-and-mobile(){
-	.kt-sc {
-		.kt-content--fit-top & {
+@include tf-tablet-and-mobile(){
+	.tf-sc {
+		.tf-content--fit-top & {
 			margin-top: -15px;
 		}
 
-		.kt-sc__top{
-			.kt-sc__nav {
-				.kt-link{
+		.tf-sc__top{
+			.tf-sc__nav {
+				.tf-link{
 					margin-left: 1rem;
 
 					&:first-child{
@@ -102,8 +102,8 @@
 			}
 		}
 
-		.kt-sc__bottom{
-			.kt-sc__form{
+		.tf-sc__bottom{
+			.tf-sc__form{
 				.input-group{
 					width:100%;
 				}

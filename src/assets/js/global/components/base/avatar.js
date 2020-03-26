@@ -49,8 +49,8 @@ var KTAvatar = function(elementId, options) {
             the.events = [];
 
             the.input = KTUtil.find(element, 'input[type="file"]');
-            the.holder = KTUtil.find(element, '.kt-avatar__holder');
-            the.cancel = KTUtil.find(element, '.kt-avatar__cancel');
+            the.holder = KTUtil.find(element, '.tf-avatar__holder');
+            the.cancel = KTUtil.find(element, '.tf-avatar__cancel');
             the.src = KTUtil.css(the.holder, 'backgroundImage');
 
             // merge default and user defined options
@@ -72,7 +72,7 @@ var KTAvatar = function(elementId, options) {
 	                }
 	                reader.readAsDataURL(the.input.files[0]);
 
-	                KTUtil.addClass(the.element, 'kt-avatar--changed');
+	                KTUtil.addClass(the.element, 'tf-avatar--changed');
 	            }
             });
 
@@ -80,7 +80,7 @@ var KTAvatar = function(elementId, options) {
             KTUtil.addEvent(the.cancel, 'click', function(e) {
                 e.preventDefault();
 
-	            KTUtil.removeClass(the.element, 'kt-avatar--changed');
+	            KTUtil.removeClass(the.element, 'tf-avatar--changed');
 	            KTUtil.css(the.holder, 'background-image', the.src);
 	            the.input.value = "";
             });

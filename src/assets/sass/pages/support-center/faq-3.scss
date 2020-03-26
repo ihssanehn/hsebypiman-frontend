@@ -13,25 +13,25 @@
 
 
 // Base
-.kt-sc-faq-3 {
+.tf-sc-faq-3 {
 	text-align: center;
 	padding: 3rem 0 0;
 
-	.kt-sc__title{
-		color: kt-base-color(label, 4);
+	.tf-sc__title{
+		color: tf-base-color(label, 4);
 		font-size: 2.2rem;
 		font-weight: 600;
 		margin-bottom: 1.2rem;
 	}
 
-	.kt-sc__subtitle{
+	.tf-sc__subtitle{
 		font-size: 1.4rem;
 		color: #9392a0;
 		margin-bottom: 0.5rem;
 		font-weight: 400;
 	}
 
-	.kt-sc__bg{
+	.tf-sc__bg{
 
 		svg{
 			width: 550px;
@@ -39,7 +39,7 @@
 		}
 	}
 
-	&.kt-negative-spacing{
+	&.tf-negative-spacing{
 		margin-top: -15px;
 		padding-top: 0;
 	}
@@ -82,10 +82,10 @@
 	}
 }
 
-@include kt-tablet-and-mobile(){
-	.kt-sc-faq-3 {
+@include tf-tablet-and-mobile(){
+	.tf-sc-faq-3 {
 
-		.kt-sc__bg{
+		.tf-sc__bg{
 
 			svg{
 				width: 100%;

@@ -5,33 +5,33 @@
 
 
 
-@mixin kt-grid-generate($mode) {
+@mixin tf-grid-generate($mode) {
 	$mode-class: '';
 	$mode-dir: '';
 
 	// Grid mode
 	@if ($mode == general) {
-		$mode-class: ":not(.kt-grid--desktop):not(.kt-grid--desktop-and-tablet):not(.kt-grid--tablet):not(.kt-grid--tablet-and-mobile):not(.kt-grid--mobile)";
+		$mode-class: ":not(.tf-grid--desktop):not(.tf-grid--desktop-and-tablet):not(.tf-grid--tablet):not(.tf-grid--tablet-and-mobile):not(.tf-grid--mobile)";
 	} @else {
-		$mode-class: ".kt-grid--" + $mode;
+		$mode-class: ".tf-grid--" + $mode;
 		$mode-dir: "-" + $mode;
 	}
 
 	// Horizontal grid
-	.kt-grid.kt-grid--hor#{$mode-dir}#{$mode-class} {
+	.tf-grid.tf-grid--hor#{$mode-dir}#{$mode-class} {
 		display: flex;
 		flex-direction: column;
 
-		&.kt-grid--root {
+		&.tf-grid--root {
 			flex: 1;
 			-ms-flex: 1 0 0px; // IE10-11 fix
 		}
 		
-		> .kt-grid__item {
+		> .tf-grid__item {
 			flex: none;
 
-			&.kt-grid__item--fluid,
-			&.kt-grid__item--fluid#{$mode-dir} {
+			&.tf-grid__item--fluid,
+			&.tf-grid__item--fluid#{$mode-dir} {
 				flex: 1 0 auto;
 				//-ms-flex: 1 0 0px;  // IE10-11 fix
 			}	
@@ -39,32 +39,32 @@
 
 		// flex ordering
 		@for $i from 1 through 12 {
-			> .kt-grid__item.kt-grid__item--order-#{$i}#{$mode-dir} {
+			> .tf-grid__item.tf-grid__item--order-#{$i}#{$mode-dir} {
 				order: $i;
 			}
 		}
 	}
 
 	// Vertical grid
-	.kt-grid.kt-grid--ver#{$mode-dir}#{$mode-class} {
+	.tf-grid.tf-grid--ver#{$mode-dir}#{$mode-class} {
 		display: flex;
 		flex-direction: row;
 
-		&.kt-grid--root {
+		&.tf-grid--root {
 			flex: 1;
 			-ms-flex: 1 0 0px;  // IE10-11 fix
 		}
 		 
-		> .kt-grid__item {
+		> .tf-grid__item {
 			flex: 0 0 auto;
 
-			&.kt-grid__item--fluid,
-			&.kt-grid__item--fluid#{$mode-dir} {
+			&.tf-grid__item--fluid,
+			&.tf-grid__item--fluid#{$mode-dir} {
 				flex: 1 auto; 
 				-ms-flex: 1 0 0px;  // IE10-11 fix
 				min-width: 0;
 
-				@include kt-hack-ie {
+				@include tf-hack-ie {
 					min-width: none;  // IE10-11 fix
 				}				
 			}			 
@@ -72,44 +72,44 @@
 
 		// flex ordering
 		@for $i from 1 through 12 {
-			> .kt-grid__item.kt-grid__item--order-#{$i}#{$mode-dir} {
+			> .tf-grid__item.tf-grid__item--order-#{$i}#{$mode-dir} {
 				order: $i;
 			}
 		}
 	}	 
 
 	// Grid item order
-	.kt-grid {
+	.tf-grid {
 		// horizontal items aligment
-		&.kt-grid--center {
+		&.tf-grid--center {
 			align-content: center;
 		}	
 
-		&.kt-grid--stretch {
+		&.tf-grid--stretch {
 			align-items: stretch;
 		}	
 
 		// vertical item alignment
-		> .kt-grid__item {
+		> .tf-grid__item {
 			max-width:100%;
 			
-			&.kt-grid__item--top {
+			&.tf-grid__item--top {
 				align-self: flex-start;
 			}
 
-			&.kt-grid__item--middle {
+			&.tf-grid__item--middle {
 				align-self: center;
 			}
 		 
 
-			&.kt-grid__item--bottom {
+			&.tf-grid__item--bottom {
 				align-self: flex-end;
 			}
 		}
 
 		// flex ordering
 		@for $i from 1 through 12 {
-			> .kt-grid__item.kt-grid__item--order-#{$i} {
+			> .tf-grid__item.tf-grid__item--order-#{$i} {
 				order: $i;
 			}
 		}

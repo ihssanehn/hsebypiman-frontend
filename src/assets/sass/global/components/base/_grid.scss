@@ -5,28 +5,28 @@
 
 
 
-@include kt-grid-generate(general);
+@include tf-grid-generate(general);
 
-@include kt-desktop {
-	@include kt-grid-generate(desktop);
+@include tf-desktop {
+	@include tf-grid-generate(desktop);
 }
 
-@include kt-desktop-xl {
-	@include kt-grid-generate(desktop-xl);
+@include tf-desktop-xl {
+	@include tf-grid-generate(desktop-xl);
 }
 
-@include kt-desktop-and-tablet {
-	@include kt-grid-generate(desktop-and-tablet);
+@include tf-desktop-and-tablet {
+	@include tf-grid-generate(desktop-and-tablet);
 }
 
-@include kt-tablet {
-	@include kt-grid-generate(tablet);
+@include tf-tablet {
+	@include tf-grid-generate(tablet);
 }
 
-@include kt-tablet-and-mobile {
-	@include kt-grid-generate(tablet-and-mobile);
+@include tf-tablet-and-mobile {
+	@include tf-grid-generate(tablet-and-mobile);
 }
 
-@include kt-mobile {
-	@include kt-grid-generate(mobile);
+@include tf-mobile {
+	@include tf-grid-generate(mobile);
 }

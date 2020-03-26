@@ -1,66 +1,66 @@
-<kt-portlet>
-	<kt-portlet-body>
+<tf-portlet>
+	<tf-portlet-body>
 
 		<!--begin: Wizard -->
-		<div #wizard class="kt-wizard-v4" id="kt_wizard_v4" data-ktwizard-state="step-first">
+		<div #wizard class="tf-wizard-v4" id="tf_wizard_v4" data-ktwizard-state="step-first">
 			<!--begin: Form Wizard Nav -->
-			<div class="kt-wizard-v4__nav">
-				<div class="kt-wizard-v4__nav-items">
-					<a class="kt-wizard-v4__nav-item" href="javascript:;" data-ktwizard-type="step" data-ktwizard-state="current">
-						<div class="kt-wizard-v4__nav-body">
-							<div class="kt-wizard-v4__nav-number">
+			<div class="tf-wizard-v4__nav">
+				<div class="tf-wizard-v4__nav-items">
+					<a class="tf-wizard-v4__nav-item" href="javascript:;" data-ktwizard-type="step" data-ktwizard-state="current">
+						<div class="tf-wizard-v4__nav-body">
+							<div class="tf-wizard-v4__nav-number">
 								1
 							</div>
-							<div class="kt-wizard-v4__nav-label">
-								<div class="kt-wizard-v4__nav-label-title">
+							<div class="tf-wizard-v4__nav-label">
+								<div class="tf-wizard-v4__nav-label-title">
 									Add Account
 								</div>
-								<div class="kt-wizard-v4__nav-label-desc">
+								<div class="tf-wizard-v4__nav-label-desc">
 									Create Custom Account
 								</div>
 							</div>
 						</div>
 					</a>
-					<a class="kt-wizard-v4__nav-item" href="javascript:;" data-ktwizard-type="step">
-						<div class="kt-wizard-v4__nav-body">
-							<div class="kt-wizard-v4__nav-number">
+					<a class="tf-wizard-v4__nav-item" href="javascript:;" data-ktwizard-type="step">
+						<div class="tf-wizard-v4__nav-body">
+							<div class="tf-wizard-v4__nav-number">
 								2
 							</div>
-							<div class="kt-wizard-v4__nav-label">
-								<div class="kt-wizard-v4__nav-label-title">
+							<div class="tf-wizard-v4__nav-label">
+								<div class="tf-wizard-v4__nav-label-title">
 									Your Address
 								</div>
-								<div class="kt-wizard-v4__nav-label-desc">
+								<div class="tf-wizard-v4__nav-label-desc">
 									Setup Your Address
 								</div>
 							</div>
 						</div>
 					</a>
-					<a class="kt-wizard-v4__nav-item" href="javascript:;" data-ktwizard-type="step">
-						<div class="kt-wizard-v4__nav-body">
-							<div class="kt-wizard-v4__nav-number">
+					<a class="tf-wizard-v4__nav-item" href="javascript:;" data-ktwizard-type="step">
+						<div class="tf-wizard-v4__nav-body">
+							<div class="tf-wizard-v4__nav-number">
 								3
 							</div>
-							<div class="kt-wizard-v4__nav-label">
-								<div class="kt-wizard-v4__nav-label-title">
+							<div class="tf-wizard-v4__nav-label">
+								<div class="tf-wizard-v4__nav-label-title">
 									Make Payment
 								</div>
-								<div class="kt-wizard-v4__nav-label-desc">
+								<div class="tf-wizard-v4__nav-label-desc">
 									Add Payment Options
 								</div>
 							</div>
 						</div>
 					</a>
-					<a class="kt-wizard-v4__nav-item" href="javascript:;" data-ktwizard-type="step">
-						<div class="kt-wizard-v4__nav-body">
-							<div class="kt-wizard-v4__nav-number">
+					<a class="tf-wizard-v4__nav-item" href="javascript:;" data-ktwizard-type="step">
+						<div class="tf-wizard-v4__nav-body">
+							<div class="tf-wizard-v4__nav-number">
 								4
 							</div>
-							<div class="kt-wizard-v4__nav-label">
-								<div class="kt-wizard-v4__nav-label-title">
+							<div class="tf-wizard-v4__nav-label">
+								<div class="tf-wizard-v4__nav-label-title">
 									Completed
 								</div>
-								<div class="kt-wizard-v4__nav-label-desc">
+								<div class="tf-wizard-v4__nav-label-desc">
 									Review and Submit
 								</div>
 							</div>
@@ -70,17 +70,17 @@
 			</div>
 			<!--end: Form Wizard Nav -->
 
-			<div class="kt-portlet">
-				<div class="kt-portlet__body kt-portlet__body--fit">
-					<div class="kt-grid">
-						<div class="kt-grid__item kt-grid__item--fluid kt-wizard-v4__wrapper">
+			<div class="tf-portlet">
+				<div class="tf-portlet__body tf-portlet__body--fit">
+					<div class="tf-grid">
+						<div class="tf-grid__item tf-grid__item--fluid tf-wizard-v4__wrapper">
 							<!--begin: Form Wizard Form-->
-							<form class="kt-form" id="kt_form">
+							<form class="tf-form" id="tf_form">
 								<!--begin: Form Wizard Step 1-->
-								<div class="kt-wizard-v4__content" data-ktwizard-type="step-content" data-ktwizard-state="current">
-									<div class="kt-heading kt-heading--md">Enter your Account Details</div>
-									<div class="kt-form__section kt-form__section--first">
-										<div class="kt-wizard-v4__form">
+								<div class="tf-wizard-v4__content" data-ktwizard-type="step-content" data-ktwizard-state="current">
+									<div class="tf-heading tf-heading--md">Enter your Account Details</div>
+									<div class="tf-form__section tf-form__section--first">
+										<div class="tf-wizard-v4__form">
 											<div class="form-group">
 												<label>First Name</label>
 												<input type="text" class="form-control" name="fname" [(ngModel)]="model.fname" placeholder="First Name" value="John">
@@ -114,10 +114,10 @@
 								<!--end: Form Wizard Step 1-->
 
 								<!--begin: Form Wizard Step 2-->
-								<div class="kt-wizard-v4__content" data-ktwizard-type="step-content">
-									<div class="kt-heading kt-heading--md">Setup Your Address</div>
-									<div class="kt-form__section kt-form__section--first">
-										<div class="kt-wizard-v4__form">
+								<div class="tf-wizard-v4__content" data-ktwizard-type="step-content">
+									<div class="tf-heading tf-heading--md">Setup Your Address</div>
+									<div class="tf-form__section tf-form__section--first">
+										<div class="tf-wizard-v4__form">
 											<div class="form-group">
 												<label>Address Line 1</label>
 												<input type="text" class="form-control" name="address1" [(ngModel)]="model.address1" placeholder="Address Line 1" value="Address Line 1">
@@ -416,10 +416,10 @@
 								<!--end: Form Wizard Step 2-->
 
 								<!--begin: Form Wizard Step 3-->
-								<div class="kt-wizard-v4__content" data-ktwizard-type="step-content">
-									<div class="kt-heading kt-heading--md">Enter your Payment Details</div>
-									<div class="kt-form__section kt-form__section--first">
-										<div class="kt-wizard-v4__form">
+								<div class="tf-wizard-v4__content" data-ktwizard-type="step-content">
+									<div class="tf-heading tf-heading--md">Enter your Payment Details</div>
+									<div class="tf-form__section tf-form__section--first">
+										<div class="tf-wizard-v4__form">
 											<div class="row">
 												<div class="col-xl-6">
 													<div class="form-group">
@@ -465,35 +465,35 @@
 								<!--end: Form Wizard Step 3-->
 
 								<!--begin: Form Wizard Step 4-->
-								<div class="kt-wizard-v4__content" data-ktwizard-type="step-content">
-									<div class="kt-heading kt-heading--md">Review your Details and Submit</div>
-									<div class="kt-form__section kt-form__section--first">
-										<div class="kt-wizard-v4__review">
-											<div class="kt-wizard-v4__review-item">
-												<div class="kt-wizard-v4__review-title">
+								<div class="tf-wizard-v4__content" data-ktwizard-type="step-content">
+									<div class="tf-heading tf-heading--md">Review your Details and Submit</div>
+									<div class="tf-form__section tf-form__section--first">
+										<div class="tf-wizard-v4__review">
+											<div class="tf-wizard-v4__review-item">
+												<div class="tf-wizard-v4__review-title">
 													Your Account Details
 												</div>
-												<div class="kt-wizard-v4__review-content">
+												<div class="tf-wizard-v4__review-content">
 													John Wick<br/>
 													Phone: +61412345678<br/>
 													Email: johnwick@reeves.com
 												</div>
 											</div>
-											<div class="kt-wizard-v4__review-item">
-												<div class="kt-wizard-v4__review-title">
+											<div class="tf-wizard-v4__review-item">
+												<div class="tf-wizard-v4__review-title">
 													Your Address Details
 												</div>
-												<div class="kt-wizard-v4__review-content">
+												<div class="tf-wizard-v4__review-content">
 													Address Line 1<br/>
 													Address Line 2<br/>
 													Melbourne 3000, VIC, Australia
 												</div>
 											</div>
-											<div class="kt-wizard-v4__review-item">
-												<div class="kt-wizard-v4__review-title">
+											<div class="tf-wizard-v4__review-item">
+												<div class="tf-wizard-v4__review-title">
 													Payment Details
 												</div>
-												<div class="kt-wizard-v4__review-content">
+												<div class="tf-wizard-v4__review-content">
 													Card Number: xxxx xxxx xxxx 1111<br/>
 													Card Name: John Wick<br/>
 													Card Expiry: 01/21
@@ -505,14 +505,14 @@
 								<!--end: Form Wizard Step 4-->
 
 								<!--begin: Form Actions -->
-								<div class="kt-form__actions">
-									<div class="btn btn-secondary btn-md btn-tall btn-wide kt-font-bold kt-font-transform-u" data-ktwizard-type="action-prev">
+								<div class="tf-form__actions">
+									<div class="btn btn-secondary btn-md btn-tall btn-wide tf-font-bold tf-font-transform-u" data-ktwizard-type="action-prev">
 										Previous
 									</div>
-									<div (click)="onSubmit()" class="btn btn-success btn-md btn-tall btn-wide kt-font-bold kt-font-transform-u" data-ktwizard-type="action-submit">
+									<div (click)="onSubmit()" class="btn btn-success btn-md btn-tall btn-wide tf-font-bold tf-font-transform-u" data-ktwizard-type="action-submit">
 										Submit
 									</div>
-									<div class="btn btn-brand btn-md btn-tall btn-wide kt-font-bold kt-font-transform-u" data-ktwizard-type="action-next">
+									<div class="btn btn-brand btn-md btn-tall btn-wide tf-font-bold tf-font-transform-u" data-ktwizard-type="action-next">
 										Next Step
 									</div>
 								</div>
@@ -526,5 +526,5 @@
 		</div>
 		<!--end: Wizard -->
 
-	</kt-portlet-body>
-</kt-portlet>
+	</tf-portlet-body>
+</tf-portlet>

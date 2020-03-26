@@ -6,16 +6,16 @@
 
 
 // Base
-@mixin kt-sweetalert-base() {
+@mixin tf-sweetalert-base() {
 	html.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown),
 	body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
     	overflow-y: initial !important;
 
-    	&:not(.kt-sweetalert2--nopadding) {
+    	&:not(.tf-sweetalert2--nopadding) {
     		padding-right: 0 !important;
     	}
 
-    	@include kt-hack-ie {
+    	@include tf-hack-ie {
 			overflow: visible;
 		}
 	}
@@ -23,8 +23,8 @@
 	.swal2-popup {
 		padding: 2rem;
 
-		@include kt-rounded {
-			border-radius: $kt-border-radius;
+		@include tf-rounded {
+			border-radius: $tf-border-radius;
 		}
 
 		.swal2-icon {
@@ -67,25 +67,25 @@
 	}
 }
 
-@mixin kt-sweetalert-skin() {
+@mixin tf-sweetalert-skin() {
 	.swal2-container.swal2-shown {
     	background-color: rgba(0, 0, 0, 0.2);
 	}
 
     .swal2-popup {
 		.swal2-title {
-			color: kt-base-color(label, 4);
+			color: tf-base-color(label, 4);
 		}
 
 		.swal2-content {
-			color: kt-base-color(label, 2);
+			color: tf-base-color(label, 2);
 		}
 	}
 }
 
 // Build
 // Base
-@include kt-sweetalert-base();
+@include tf-sweetalert-base();
 
 // Skin
-@include kt-sweetalert-skin();
+@include tf-sweetalert-skin();

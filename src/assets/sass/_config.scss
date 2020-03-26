@@ -9,7 +9,7 @@
 
 // Layout Breakpoints(bootstrap responsive breakpoints)
 // Define the minimum and maximum dimensions at which your layout will change, adapting to different screen sizes, for use in media queries.
-$kt-media-breakpoints: (
+$tf-media-breakpoints: (
     // Extra small screen / phone
     xs: 0,
 
@@ -27,13 +27,13 @@ $kt-media-breakpoints: (
 ) !default;
 
 // Global rounded border mode
-$kt-rounded: true !default;
+$tf-rounded: true !default;
 
 // Border Radius
-$kt-border-radius: 4px !default;
+$tf-border-radius: 4px !default;
 
 // Core icon codes(lineawesome icons: https://icons8.com/line-awesome)
-$kt-action-icons: (
+$tf-action-icons: (
     close: '\f191',
     down: '\f110',
     up: '\f113',
@@ -44,7 +44,7 @@ $kt-action-icons: (
 ) !default;
 
 // Core bold icon codes(lineawesome icons: https://keenthemes.com/metronic/preview/default/components/icons/flaticon.html)
-$kt-action-bold-icons: (
+$tf-action-bold-icons: (
     down: '\f1a3',
     up: '\f1a5',
     left: '\f1a4',
@@ -53,27 +53,27 @@ $kt-action-bold-icons: (
 ) !default;
 
 // Elevate shadow
-$kt-elevate-shadow: 0px 0px 13px 0px rgba(82,63,105,0.05) !default;
-$kt-elevate-shadow-2: 0px 0px 13px 0px rgba(82,63,105,0.1) !default;
+$tf-elevate-shadow: 0px 0px 13px 0px rgba(82,63,105,0.05) !default;
+$tf-elevate-shadow-2: 0px 0px 13px 0px rgba(82,63,105,0.1) !default;
 
 // Dropdown shadow
-$kt-dropdown-shadow: 0px 0px 50px 0px rgba(82,63,105, 0.15) !default;
+$tf-dropdown-shadow: 0px 0px 50px 0px rgba(82,63,105, 0.15) !default;
 
 // Custom scrollbar color
-$kt-scroll-color: darken(#ebedf2, 6%) !default;
+$tf-scroll-color: darken(#ebedf2, 6%) !default;
 
 // Transition
-$kt-transition: all 0.3s !default;
+$tf-transition: all 0.3s !default;
 
 // Modal Z-index
-$kt-modal-zindex: 1050 !default;
+$tf-modal-zindex: 1050 !default;
 
 // dropdown Z-index
-$kt-dropdown-zindex: 95 !default;
+$tf-dropdown-zindex: 95 !default;
 
 // State Color
-$kt-state-colors: (
-    // Metronic states
+$tf-state-colors: (
+    // CVTI - HSE states
     brand: (
         base: #5d78ff,
         inverse: #ffffff
@@ -112,7 +112,7 @@ $kt-state-colors: (
 
 
 // Base colors
-$kt-base-colors: (
+$tf-base-colors: (
     label: (
         1: #a2a5b9,
         2: #74788d,
@@ -134,7 +134,7 @@ $kt-base-colors: (
 ) !default;
 
 // Social network colors(see: https://brandcolors.net/)
-$kt-social-colors: (
+$tf-social-colors: (
     facebook: (
         base: #3b5998,
         inverse: #ffffff
@@ -166,13 +166,13 @@ $kt-social-colors: (
 ) !default;
 
 // Root Font Settings
-$kt-font-families: (
+$tf-font-families: (
     regular: unquote('Poppins, Helvetica, sans-serif'),
     heading: unquote('Poppins, Helvetica, sans-serif')
 ) !default;
 
 // Root Font Settings
-$kt-font-size: (
+$tf-font-size: (
     size: (
         desktop: 13px,
         tablet: 12px,
@@ -182,16 +182,16 @@ $kt-font-size: (
 ) !default;
 
 // General Link Settings
-$kt-font-color: (
+$tf-font-color: (
     text: #646c9a,
     link: (
-        default: kt-state-color(brand),
-        hover: darken(kt-state-color(brand), 6%)
+        default: tf-state-color(brand),
+        hover: darken(tf-state-color(brand), 6%)
     )
 ) !default;
 
 // Portlet settings
-$kt-portlet: (
+$tf-portlet: (
     min-height: (
         default: (
             desktop: 60px,
@@ -218,19 +218,19 @@ $kt-portlet: (
         desktop: 20px,
         mobile: 20px
     ),
-    border-color: kt-base-color(grey, 2),
+    border-color: tf-base-color(grey, 2),
     bg-color: #ffffff,
     shadow: 0px 0px 30px 0px rgba(82,63,105,0.05)
 ) !default;
 
 // Page padding
-$kt-page-padding: (
+$tf-page-padding: (
 	desktop: 25px,
 	mobile: 15px
 ) !default;
 
 // Page container width
-$kt-page-container-width: 1380px !default;
+$tf-page-container-width: 1380px !default;
 
 // Custom Scroll(Perfect Scrollbar) size
-$kt-custom-scroll-size: 4px !default;
+$tf-custom-scroll-size: 4px !default;

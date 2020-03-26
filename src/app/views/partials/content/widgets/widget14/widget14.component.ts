@@ -6,7 +6,7 @@ import { LayoutConfigService } from '../../../../../core/_base/layout';
 import { Chart } from 'chart.js/dist/Chart.min.js';
 
 @Component({
-	selector: 'kt-widget14',
+	selector: 'tf-widget14',
 	templateUrl: './widget14.component.html',
 	styleUrls: ['./widget14.component.scss'],
 })

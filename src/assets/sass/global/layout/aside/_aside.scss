@@ -4,26 +4,26 @@
 
 
 
-$kt-aside-icon-border-color:  rgba(#fff, 0.2);
-$kt-aside-icon-border-hover-color:  rgba(#fff, 0.5);
-$kt-aside-icon-color: rgba(#fff, 0.85);
+$tf-aside-icon-border-color:  rgba(#fff, 0.2);
+$tf-aside-icon-border-hover-color:  rgba(#fff, 0.5);
+$tf-aside-icon-color: rgba(#fff, 0.85);
 
-$kt-aside-minimize-icon-border-color: #e7e8f4;
-$kt-aside-minimize-icon-border-hover-color: #d7d8e9;
+$tf-aside-minimize-icon-border-color: #e7e8f4;
+$tf-aside-minimize-icon-border-hover-color: #d7d8e9;
 
-$kt-aside-icon-size: 42px;
-$kt-aside-minimize-icon-size: 34px;
-$kt-aside-mobile-icon-size: 34px;
+$tf-aside-icon-size: 42px;
+$tf-aside-minimize-icon-size: 34px;
+$tf-aside-mobile-icon-size: 34px;
 
-.kt-aside {
-	width: kt-get($kt-aside-config, base, default, width);
-	background-color: kt-get($kt-aside-config, base, default, bg-color);
-	box-shadow: kt-get($kt-aside-config, base, default, shadow);
+.tf-aside {
+	width: tf-get($tf-aside-config, base, default, width);
+	background-color: tf-get($tf-aside-config, base, default, bg-color);
+	box-shadow: tf-get($tf-aside-config, base, default, shadow);
 
 	// User profile
-	&.kt-aside__userside-item--user {
+	&.tf-aside__userside-item--user {
 		// Welcome
-		.kt-aside__userside-welcome {
+		.tf-aside__userside-welcome {
 			display: flex;
 			align-self: center;
 			padding: 0 0.55rem 0 0;
@@ -33,7 +33,7 @@ $kt-aside-mobile-icon-size: 34px;
 		}
 
 		// Username
-		.kt-aside__userside-username {
+		.tf-aside__userside-username {
 			display: flex;
 			align-self: center;
 			padding: 0 0.55rem 0 0;
@@ -43,9 +43,9 @@ $kt-aside-mobile-icon-size: 34px;
 		}
 
 		// Wrapper
-		.kt-aside__userside-wrapper {
+		.tf-aside__userside-wrapper {
 			// User pic placeholder
-			.kt-aside__userside-icon {
+			.tf-aside__userside-icon {
 				background-color: rgba(#fff, 0.1);
 
 				b {
@@ -58,10 +58,10 @@ $kt-aside-mobile-icon-size: 34px;
 			// User pic
 			img {
 				align-self: center;
-				height: $kt-aside-icon-size;
+				height: $tf-aside-icon-size;
 				
-				@include kt-rounded {
-					border-radius: $kt-border-radius;
+				@include tf-rounded {
+					border-radius: $tf-border-radius;
 				}
 			}
 		}		
@@ -69,9 +69,9 @@ $kt-aside-mobile-icon-size: 34px;
 		&:hover,
 		&.show {
 			// Wrapper
-			.kt-aside__userside-wrapper {
+			.tf-aside__userside-wrapper {
 				// User pic placeholder
-				.kt-aside__userside-icon {
+				.tf-aside__userside-icon {
 					background-color: rgba(#fff, 0.2);
 				}
 			}
@@ -79,4 +79,4 @@ $kt-aside-mobile-icon-size: 34px;
 	}
 }
 
-@include kt-offcanvas-build(kt-aside, tablet-and-mobile, kt-get($kt-aside-config, base, offcanvas-mobile));
+@include tf-offcanvas-build(tf-aside, tablet-and-mobile, tf-get($tf-aside-config, base, offcanvas-mobile));

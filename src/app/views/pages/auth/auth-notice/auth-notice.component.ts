@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs';
 import { AuthNotice, AuthNoticeService } from '../../../../core/auth/';
 
 @Component({
-	selector: 'kt-auth-notice',
+	selector: 'tf-auth-notice',
 	templateUrl: './auth-notice.component.html',
 })
 export class AuthNoticeComponent implements OnInit, OnDestroy {

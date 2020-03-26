@@ -6,7 +6,7 @@
 
 
 .tagify {
-    @include kt-rounded {
+    @include tf-rounded {
         border-radius: $input-border-radius;
     }
 
@@ -30,13 +30,13 @@
     }
 
     .tagify__tag {
-        background-color: kt-base-color(grey, 2);
+        background-color: tf-base-color(grey, 2);
         display: inline-flex;
         align-items: center;
         padding: 0 0.5rem;
 
-        @include kt-rounded {
-            border-radius: $kt-border-radius;
+        @include tf-rounded {
+            border-radius: $tf-border-radius;
         }
 
         div {
@@ -44,7 +44,7 @@
             padding-right: 0.25rem;
 
             .tagify__tag-text {
-                color: kt-base-color(label, 2);
+                color: tf-base-color(label, 2);
                 font-weight: 400;
             }
 
@@ -64,14 +64,14 @@
             margin-top: -2px;
 
             &:after {
-                @include kt-flaticon2-icon(kt-get($kt-action-bold-icons, close));
+                @include tf-flaticon2-icon(tf-get($tf-action-bold-icons, close));
                 font-size: 0.6rem;
-                color: kt-base-color(label, 1);
+                color: tf-base-color(label, 1);
             }
 
             &:hover {
                 background: transparent;
-                color: kt-brand-color();
+                color: tf-brand-color();
 
                 & + div > span {
                     opacity: .4;
@@ -80,24 +80,24 @@
         }
 
         // State colors
-        @each $name, $color in $kt-state-colors {
+        @each $name, $color in $tf-state-colors {
             &.tagify__tag--#{$name} {
-                 background-color: rgba(kt-get($color, base), 0.1);
+                 background-color: rgba(tf-get($color, base), 0.1);
 
                  div {
                      .tagify__tag-text {
-                         color: kt-get($color, base);
+                         color: tf-get($color, base);
                      }
                  }
 
                  .tagify__tag__removeBtn {
                      &:after {
-                         color: kt-get($color, base);
+                         color: tf-get($color, base);
                      }
 
                      &:hover {
                          background: transparent;
-                         color: kt-get($color, inverse);
+                         color: tf-get($color, inverse);
 
                          & + div > span {
                              opacity: .3;
@@ -142,26 +142,26 @@
     background: #fff;
     border: 0 !important;
     padding: 0.75rem 0;
-    z-index: $kt-dropdown-zindex;
+    z-index: $tf-dropdown-zindex;
 
     .modal-open & {
-        z-index: $kt-modal-zindex + 1;
+        z-index: $tf-modal-zindex + 1;
     }
 
-    @include kt-rounded {
-        border-radius: $kt-border-radius;
+    @include tf-rounded {
+        border-radius: $tf-border-radius;
     }
 
     .tagify__dropdown__item {
-        color: kt-base-color(label, 2);
+        color: tf-base-color(label, 2);
         border-radius: 0;
         padding: 0.75rem 1.5rem;
         margin: 0;
         box-shadow: none;
 
         &.tagify__dropdown__item--active {
-            background: kt-base-color(grey, 1);
-            color: kt-brand-color();
+            background: tf-base-color(grey, 1);
+            color: tf-brand-color();
         }
     }
 }

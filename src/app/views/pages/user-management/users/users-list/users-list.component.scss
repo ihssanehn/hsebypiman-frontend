@@ -33,32 +33,32 @@
   }
 }
 
-.kt-datatable__row--even:hover {
+.tf-datatable__row--even:hover {
   cursor: pointer;
 }
 
-.kt-datatable__row > .kt-datatable__cell .kt-checkbox.kt-checkbox--solid > span,
-.kt-datatable
-  > .kt-datatable__table
-  > .kt-datatable__body
-  .kt-datatable__row
-  > .kt-datatable__cell
-  .kt-checkbox.kt-checkbox--solid
+.tf-datatable__row > .tf-datatable__cell .tf-checkbox.tf-checkbox--solid > span,
+.tf-datatable
+  > .tf-datatable__table
+  > .tf-datatable__body
+  .tf-datatable__row
+  > .tf-datatable__cell
+  .tf-checkbox.tf-checkbox--solid
   > span,
-.kt-datatable
-  > .kt-datatable__table
-  > .kt-datatable__foot
-  .kt-datatable__row
-  > .kt-datatable__cell
-  .kt-checkbox.kt-checkbox--solid
+.tf-datatable
+  > .tf-datatable__table
+  > .tf-datatable__foot
+  .tf-datatable__row
+  > .tf-datatable__cell
+  .tf-checkbox.tf-checkbox--solid
   > span {
   background: #f0f3ff;
 }
 
-.kt-datatable
-  > .kt-datatable__table
-  > .kt-datatable__body
-  .kt-datatable__row
-  > .kt-datatable__cell{
+.tf-datatable
+  > .tf-datatable__table
+  > .tf-datatable__body
+  .tf-datatable__row
+  > .tf-datatable__cell{
       vertical-align:middle;
   }

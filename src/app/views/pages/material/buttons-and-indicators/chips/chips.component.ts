@@ -137,7 +137,7 @@ export class ChipsStackedExample {
 };
 
 @Component({
-	selector: 'kt-chips',
+	selector: 'tf-chips',
 	templateUrl: './chips.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	styles: [`

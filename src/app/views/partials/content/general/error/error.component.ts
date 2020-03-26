@@ -2,7 +2,7 @@
 import { Component, HostBinding, Input } from '@angular/core';
 
 @Component({
-	selector: 'kt-error',
+	selector: 'tf-error',
 	templateUrl: './error.component.html',
 	styleUrls: ['./error.component.scss']
 })
@@ -23,5 +23,5 @@ export class ErrorComponent {
 	// return back button title
 	@Input() return = 'Return back';
 
-	@HostBinding('class') classes = 'kt-grid kt-grid--ver kt-grid--root';
+	@HostBinding('class') classes = 'tf-grid tf-grid--ver tf-grid--root';
 }

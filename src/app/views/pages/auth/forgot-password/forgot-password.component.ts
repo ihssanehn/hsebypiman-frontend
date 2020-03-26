@@ -11,7 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { AuthNoticeService, AuthService } from '../../../../core/auth';
 
 @Component({
-	selector: 'kt-forgot-password',
+	selector: 'tf-forgot-password',
 	templateUrl: './forgot-password.component.html',
 	encapsulation: ViewEncapsulation.None
 })

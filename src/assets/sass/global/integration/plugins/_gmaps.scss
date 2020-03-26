@@ -6,15 +6,15 @@
 
 
 // Mixins
-@mixin kt-gmaps-base() {
+@mixin tf-gmaps-base() {
     // Spinner markup
-    .kt-gmaps {
+    .tf-gmaps {
         /* important!  bootstrap sets max-width on img to 100% which conflicts with google map canvas*/
         img {
             max-width: none; 
         }
 
-        &.kt-gmaps--static{
+        &.tf-gmaps--static{
             > div {
                 background-repeat: no-repeat ;
                 background-position: 50% 50% ;
@@ -25,4 +25,4 @@
 }
 
 // Build
-@include kt-gmaps-base();
+@include tf-gmaps-base();

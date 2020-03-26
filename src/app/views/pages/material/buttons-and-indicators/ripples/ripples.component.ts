@@ -70,7 +70,7 @@ export class RippleOverviewExample {
 };
 
 @Component({
-	selector: 'kt-ripples',
+	selector: 'tf-ripples',
 	templateUrl: './ripples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush
 })

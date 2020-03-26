@@ -6,7 +6,7 @@ import { delay } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 @Component({
-	selector: 'kt-action-natification',
+	selector: 'tf-action-natification',
 	templateUrl: './action-notification.component.html',
 	changeDetection: ChangeDetectionStrategy.Default
 

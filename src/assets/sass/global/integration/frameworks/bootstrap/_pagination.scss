@@ -27,7 +27,7 @@
 				align-items: center;
 				font-size: 1.2rem;
 				margin: 0 0.1rem;
-				@include kt-transition;
+				@include tf-transition;
 			}
 
 			&.active,
@@ -35,8 +35,8 @@
 			&:focus{
 
 				.page-link{
-					background-color: kt-state-color(brand, base);
-					color: kt-state-color(brand, inverse);
+					background-color: tf-state-color(brand, base);
+					color: tf-state-color(brand, inverse);
 				}
 			}
 		}

@@ -1,42 +1,42 @@
-<kt-notice [icon]="'flaticon-warning kt-font-primary'">
+<tf-notice [icon]="'flaticon-warning tf-font-primary'">
 	For more info please check the components's official demos & documentation 
-	<a class="kt-link" href="https://ng-bootstrap.github.io/#/components/pagination/examples" target="_blank">demos & documentation</a>
-</kt-notice>
+	<a class="tf-link" href="https://ng-bootstrap.github.io/#/components/pagination/examples" target="_blank">demos & documentation</a>
+</tf-notice>
 <div class="row">
 	<div class="col-xl-6">
-		<kt-material-preview [viewItem]="exampleQuickAndEasyPopovers">
-			<div class="kt-section">
-				<div class="kt-section__content">
+		<tf-material-preview [viewItem]="exampleQuickAndEasyPopovers">
+			<div class="tf-section">
+				<div class="tf-section__content">
 					<button type="button" class="btn btn-success" placement="right" ngbPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." popoverTitle="Popover on right">
 						Popover on right
 					</button>&nbsp;
-					<button type="button" class="btn btn-primary kt-btn--wide" placement="top" ngbPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." popoverTitle="Popover on top">
+					<button type="button" class="btn btn-primary tf-btn--wide" placement="top" ngbPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." popoverTitle="Popover on top">
 						Popover on top
 					</button>
 					
-					<div class="kt-separator kt-separator--dashed"></div>
+					<div class="tf-separator tf-separator--dashed"></div>
 					<button type="button" 
-						class="btn btn-danger kt-btn--wide"
+						class="btn btn-danger tf-btn--wide"
 						placement="left" 
 						ngbPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." 
 						popoverTitle="Popover on left">
 						Popover on left
 					</button>&nbsp;
-					<button type="button" class="btn btn-info kt-btn--wide" placement="bottom" ngbPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." popoverTitle="Popover on bottom">
+					<button type="button" class="btn btn-info tf-btn--wide" placement="bottom" ngbPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." popoverTitle="Popover on bottom">
 						Popover on bottom
 					</button>
 					
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 
-		<kt-material-preview [viewItem]="exampleHTMLAndBindingsInPopovers">
-			<div class="kt-section">
-				<div class="kt-section__sub">
+		<tf-material-preview [viewItem]="exampleHTMLAndBindingsInPopovers">
+			<div class="tf-section">
+				<div class="tf-section__sub">
 					Popovers can contain any arbitrary HTML, Angular bindings and even directives! Simply enclose desired content in a
 					<code>&lt;ng-template&gt;</code> element.
 				</div>
-				<div class="kt-section__content">
+				<div class="tf-section__content">
 					<ng-template #popContent>
 						<span>Hello</span>,
 						<b>{{name}}</b>!
@@ -46,28 +46,28 @@
 					</button>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 
-		<kt-material-preview [viewItem]="exampleCustomAndManualTriggers">
-			<div class="kt-section">
-				<div class="kt-section__sub">
+		<tf-material-preview [viewItem]="exampleCustomAndManualTriggers">
+			<div class="tf-section">
+				<div class="tf-section__sub">
 					You can easily override open and close triggers by specifying event names (separated by
 					<code>:</code>) in the
 					<code>triggers</code> property.
 				</div>
-				<div class="kt-section__content">
+				<div class="tf-section__content">
 					<button type="button" class="btn btn-primary" ngbPopover="You see, I show up on hover!" triggers="mouseenter:mouseleave" popoverTitle="Pop title">
 						Hover over me!
 					</button>
 				</div>
 			</div>
-			<div class="kt-separator kt-separator--dashed"></div>
+			<div class="tf-separator tf-separator--dashed"></div>
 
-			<div class="kt-section">
-				<span class="kt-section__sub">
+			<div class="tf-section">
+				<span class="tf-section__sub">
 					Alternatively you can take full manual control over popover opening / closing events.
 				</span>
-				<div class="kt-section__content">
+				<div class="tf-section__content">
 					<button type="button" class="btn btn-success" ngbPopover="What a great tip!" triggers="manual" #p="ngbPopover" (click)="p.open()" popoverTitle="Pop title">
 						Click me to open a popover
 					</button>&nbsp;
@@ -76,14 +76,14 @@
 					</button>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 
-		<kt-material-preview [viewItem]="exampleContextAndManualTriggers">
-			<div class="kt-section">
-				<span class="kt-section__sub">
+		<tf-material-preview [viewItem]="exampleContextAndManualTriggers">
+			<div class="tf-section">
+				<span class="tf-section__sub">
 					You can optionally pass in a context when manually triggering a popover.
 				</span>
-				<div class="kt-section__content">
+				<div class="tf-section__content">
 					<ng-template #popContent let-greeting="greeting">{{greeting}},
 						<b>{{name1}}</b>!</ng-template>
 					<p>
@@ -101,34 +101,34 @@
 					</button>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 	</div>
 	<div class="col-xl-6">
-		<kt-material-preview [viewItem]="examplePopoverVisibilityEvents">
-			<div class="kt-section">
-				<div class="kt-section__content">
+		<tf-material-preview [viewItem]="examplePopoverVisibilityEvents">
+			<div class="tf-section">
+				<div class="tf-section__content">
 					<button type="button" class="btn btn-primary" placement="top" ngbPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." popoverTitle="Popover on top" #popover="ngbPopover">
 						Open Popover
 					</button>
 				</div>
 			</div>
-			<div class="kt-separator kt-separator--dashed"></div>
-			<div class="kt-section">
-				<div class="kt-section__sub">
+			<div class="tf-separator tf-separator--dashed"></div>
+			<div class="tf-section">
+				<div class="tf-section__sub">
 					Popover is currently:
 					<code>{{ popover.isOpen() ? 'open' : 'closed' }}</code>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 
-		<kt-material-preview [viewItem]="examplePopoverVisibilityEvents">
-			<div class="kt-section">
-				<div class="kt-section__sub">
+		<tf-material-preview [viewItem]="examplePopoverVisibilityEvents">
+			<div class="tf-section">
+				<div class="tf-section__sub">
 					Set the
 					<code>container</code> property to "body" to have the popover be appended to the body instead of the triggering element's parent. This option is useful if the element triggering the popover is inside an element that clips its contents (i.e.
 					<code>overflow: hidden</code>).
 				</div>
-				<div class="kt-section__content">
+				<div class="tf-section__content">
 					<div class='row'>
 						<div class='card'>
 							<button type="button" class="btn btn-outline-info" ngbPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
@@ -142,16 +142,16 @@
 					</div>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 
-		<kt-material-preview [viewItem]="exampleGlobalConfigurationOfPopovers">
-			<div class="kt-section">
-				<div class="kt-section__content">
+		<tf-material-preview [viewItem]="exampleGlobalConfigurationOfPopovers">
+			<div class="tf-section">
+				<div class="tf-section__content">
 					<button type="button" class="btn btn-success" ngbPopover="This popover gets its inputs from the customized configuration" popoverTitle="Customized popover" placement="right" triggers="hover">
 						Customized popover
 					</button>
 				</div>
 			</div>
-		</kt-material-preview>
+		</tf-material-preview>
 	</div>
 </div>

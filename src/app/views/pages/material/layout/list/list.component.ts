@@ -127,7 +127,7 @@ export class ListSectionsExample {
 	};
 
 @Component({
-	selector: 'kt-list',
+	selector: 'tf-list',
 	templateUrl: './list.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	styles: [`

@@ -15,7 +15,7 @@ export interface Widget4Data {
 }
 
 @Component({
-	selector: 'kt-widget4',
+	selector: 'tf-widget4',
 	templateUrl: './widget4.component.html',
 	styleUrls: ['./widget4.component.scss']
 })
@@ -46,7 +46,7 @@ export class Widget4Component implements OnInit {
 			this.data = shuffle([
 				{
 					pic: './assets/media/files/doc.svg',
-					title: 'Metronic Documentation',
+					title: 'CVTI - HSE Documentation',
 					url: 'https://keenthemes.com.my/metronic',
 				}, {
 					pic: './assets/media/files/jpg.svg',

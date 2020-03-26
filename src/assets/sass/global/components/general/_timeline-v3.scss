@@ -5,8 +5,8 @@
 
 
 
-.kt-timeline-v3 {
-    .kt-timeline-v3__item {
+.tf-timeline-v3 {
+    .tf-timeline-v3__item {
         display: table;
         margin-bottom: 1rem;
         position: relative; // state bar
@@ -22,7 +22,7 @@
             content: "";
         }
         
-        .kt-timeline-v3__item-time {
+        .tf-timeline-v3__item-time {
             display: table-cell;
             vertical-align: top;
             padding-top: 0.6rem;
@@ -31,23 +31,23 @@
             position: absolute;
             text-align: right;
             width: 3.57rem;
-            color: kt-base-color(label, 2);
+            color: tf-base-color(label, 2);
         } 
         
         // Description
-        .kt-timeline-v3__item-desc {
+        .tf-timeline-v3__item-desc {
             display: table-cell;
             width: 100%;
             vertical-align: top;
             padding-left: 7rem;
             
-            .kt-timeline-v3__item-text {
+            .tf-timeline-v3__item-text {
                 font-size: 1rem;
                 font-weight: 400;
-                color: kt-base-color(label, 2);
+                color: tf-base-color(label, 2);
             }
-            .kt-timeline-v3__item-user-name {
-                .kt-timeline-v3__itek-link {
+            .tf-timeline-v3__item-user-name {
+                .tf-timeline-v3__itek-link {
                     font-size: 0.9rem;
                     text-decoration: none;
                 }
@@ -55,19 +55,19 @@
         } 
         
         // States
-        @each $name, $color in $kt-state-colors {
-            &.kt-timeline-v3__item--#{$name} {
+        @each $name, $color in $tf-state-colors {
+            &.tf-timeline-v3__item--#{$name} {
                 &:before {
-                    background: kt-get($color, base);
+                    background: tf-get($color, base);
                 }
             }
         }
     }
 }
 
-@include kt-mobile() {
-    .kt-timeline-v3 {
-        .kt-timeline-v3__item {
+@include tf-mobile() {
+    .tf-timeline-v3 {
+        .tf-timeline-v3__item {
             margin-left: 0;
         }
     }

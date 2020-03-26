@@ -6,7 +6,7 @@
 
 
 // Config
-$kt-spinner-config: (
+$tf-spinner-config: (
 	size: (
 		sm: 16px,
 		md: 20px,
@@ -15,7 +15,7 @@ $kt-spinner-config: (
 );
 
 // Spinner Default
-.kt-spinner {
+.tf-spinner {
 	position: relative;
 
 	&:before {
@@ -28,41 +28,41 @@ $kt-spinner-config: (
     }
 
   	// Sizes  	
-  	&.kt-spinner--sm {
-  		@include kt-spinner-size(sm);
+  	&.tf-spinner--sm {
+  		@include tf-spinner-size(sm);
   	}
   	
-  	@include kt-spinner-size(md);
+  	@include tf-spinner-size(md);
   	
-  	&.kt-spinner--lg {
-  		@include kt-spinner-size(lg);
+  	&.tf-spinner--lg {
+  		@include tf-spinner-size(lg);
   	}
 
   	// Default Style
   	&:before {
-        animation: kt-spinner .5s linear infinite;
+        animation: tf-spinner .5s linear infinite;
     }
 
   	// State Colors 
-    @each $name, $color in $kt-state-colors {
-        &.kt-spinner--#{$name} {
+    @each $name, $color in $tf-state-colors {
+        &.tf-spinner--#{$name} {
             &:before {
-                border: 2px solid kt-get($color, base);
+                border: 2px solid tf-get($color, base);
                 border-right: 2px solid transparent;
             }
         }
     }
 
     // Input mode
-    &.kt-spinner--input {
-        &.kt-spinner--right {
+    &.tf-spinner--input {
+        &.tf-spinner--right {
             &:before {
                 left: auto;
                 right: $input-btn-padding-x;
             }
         }
 
-        &.kt-spinner--left {
+        &.tf-spinner--left {
             &:before {
                 right: auto;
                 left: $input-btn-padding-x;
@@ -71,18 +71,18 @@ $kt-spinner-config: (
     }
 
     // Spinner Default
-    &.kt-spinner--v2 {
+    &.tf-spinner--v2 {
       	// Default Style
       	&:before {
-           animation: kt-spinner .5s linear infinite;
+           animation: tf-spinner .5s linear infinite;
        }
 
       	// State Colors 
-        @each $name, $color in $kt-state-colors {
-            &.kt-spinner--#{$name} {
+        @each $name, $color in $tf-state-colors {
+            &.tf-spinner--#{$name} {
                 &:before {
-                    border: 2px solid lighten(kt-get($color, base), 30%);
-                    border-top-color: darken(kt-get($color, base), 3%);
+                    border: 2px solid lighten(tf-get($color, base), 30%);
+                    border-top-color: darken(tf-get($color, base), 3%);
                 }
             }
         }
@@ -90,7 +90,7 @@ $kt-spinner-config: (
 }
 
 // Animations
-@keyframes kt-spinner {
+@keyframes tf-spinner {
     to {
         transform: rotate(360deg);
     }

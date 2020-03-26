@@ -1184,7 +1184,7 @@ export class LoadmoreDatabase {
  * @title Tree with dynamic data
  */
 @Component({
-	selector: 'kt-tree',
+	selector: 'tf-tree',
 	templateUrl: './tree.component.html',
 	styles: [`
 	.example-tree-progress-bar {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-	selector: 'kt-ngbootstrap',
+	selector: 'tf-ngbootstrap',
 	templateUrl: './ngbootstrap.component.html',
 })
 export class NgbootstrapComponent implements OnInit {

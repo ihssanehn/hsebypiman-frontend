@@ -5,7 +5,7 @@
 
 
 // Base
-@mixin kt-summernote-base() {
+@mixin tf-summernote-base() {
     .note-popover {
         display: none;
     }   
@@ -17,8 +17,8 @@
             position: static;
         }
         
-        @include kt-rounded {
-            border-radius: $kt-border-radius;
+        @include tf-rounded {
+            border-radius: $tf-border-radius;
         }
 
         .modal {
@@ -35,9 +35,9 @@
         .panel-heading.note-toolbar {
             padding: 5px 10px 10px 10px;
             
-            @include kt-rounded {
-                border-top-left-radius: $kt-border-radius;
-                border-top-right-radius: $kt-border-radius;
+            @include tf-rounded {
+                border-top-left-radius: $tf-border-radius;
+                border-top-right-radius: $tf-border-radius;
             }
 
             .btn {
@@ -84,17 +84,17 @@
 }
 
 // Skin
-@mixin kt-summernote-skin() {
+@mixin tf-summernote-skin() {
     .note-editor {
         &.note-frame {
             border: 1px solid $input-border-color; 
 
             .panel-heading.note-toolbar {
-                background: kt-base-color(grey, 1);
+                background: tf-base-color(grey, 1);
             }
         
             .note-statusbar {
-                background: kt-base-color(grey, 1);
+                background: tf-base-color(grey, 1);
             }
         }
 
@@ -102,13 +102,13 @@
             .note-btn-group {
                 .btn {
                     background: white;
-                    border: 1px solid kt-base-color(grey, 2);
+                    border: 1px solid tf-base-color(grey, 2);
 
                     i {
                         vertical-align: initial;
                         line-height: initial;
                         padding-right: 0;
-                        color: kt-base-color(label, 2);
+                        color: tf-base-color(label, 2);
                     }
 
                     &:hover,
@@ -116,7 +116,7 @@
                     &:active,
                     &.active {
                         background: transparent;
-                        color: kt-base-color(label, 3);
+                        color: tf-base-color(label, 3);
                     }
                 }
             }
@@ -126,7 +126,7 @@
     .note-editable {
         .table.table-bordered {
             th,td {
-                border: 1px solid kt-base-color(grey, 3);
+                border: 1px solid tf-base-color(grey, 3);
             }
         }
     }
@@ -134,19 +134,19 @@
     // Validation
     .is-valid {
         .note-editor {
-            border-color: kt-state-color(success, base);
+            border-color: tf-state-color(success, base);
         }
     }
 
     .is-invalid {
         .note-editor {
-            border-color: kt-state-color(danger, base);
+            border-color: tf-state-color(danger, base);
         }
     }
 }
 
 // Base
-@include kt-summernote-base();
+@include tf-summernote-base();
 
 // Skin
-@include kt-summernote-skin();
+@include tf-summernote-skin();

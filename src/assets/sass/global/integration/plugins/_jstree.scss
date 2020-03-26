@@ -7,12 +7,12 @@
 // Base
 .jstree-default {
     .jstree-anchor {
-        color: kt-base-color(label, 1);
+        color: tf-base-color(label, 1);
         padding: 0 8px 0 4px;
     }
 
     .jstree-icon {
-        color: kt-base-color(label, 1);
+        color: tf-base-color(label, 1);
         
         font-size: 1.3rem;
 
@@ -31,32 +31,32 @@
         opacity: 0.7;
 
         .jstree-icon {
-            color: kt-base-color(label, 1);
+            color: tf-base-color(label, 1);
         }
     }
 
     .jstree-clicked {
         border: 0;
-        background: kt-base-color(grey, 1);
+        background: tf-base-color(grey, 1);
         box-shadow: none;
     }
     
     .jstree-hovered {
         border: 0;
-        background-color: kt-base-color(grey, 1);
+        background-color: tf-base-color(grey, 1);
         box-shadow: none;
     }
     
     .jstree-wholerow-clicked,
     .jstree-wholerow-clicked {
-        background: kt-base-color(grey, 2);
+        background: tf-base-color(grey, 2);
         box-shadow: none;
     }
     
     .jstree-wholerow-hovered,
     &.jstree-wholerow .jstree-wholerow-hovered {
         border: 0;
-        background-color: kt-base-color(grey, 1);
+        background-color: tf-base-color(grey, 1);
         box-shadow: none;
     }
 }
@@ -90,13 +90,13 @@
     padding: 0.5rem 0;
     min-width: 150px;
     font-size: 1rem;
-    font-family: #{kt-get($kt-font-families, regular)};
+    font-family: #{tf-get($tf-font-families, regular)};
     background: #fff;
     box-shadow: $dropdown-box-shadow;
     border: 0;
 
-    @include kt-rounded {
-        border-radius: $kt-border-radius;
+    @include tf-rounded {
+        border-radius: $tf-border-radius;
     }
     
     li {
@@ -127,8 +127,8 @@
     .vakata-context-hover>a,
     li a:hover {
         margin: 0;
-        background-color: kt-base-color(grey, 1);
-        color: kt-brand-color();
+        background-color: tf-base-color(grey, 1);
+        color: tf-brand-color();
         box-shadow: none;
     
         .span,
@@ -143,17 +143,17 @@
     margin: 0;
     border: 0;
     height: 2px;
-    background-color: kt-base-color(grey, 2);
+    background-color: tf-base-color(grey, 2);
 }
 
 .jstree-rename-input {
     outline: none !important;
     padding: 2px 6px !important;
     margin-right: -4px !important;
-    background-color: kt-base-color(grey, 1) !important;
-    border: 1px solid kt-base-color(grey, 1) !important;
+    background-color: tf-base-color(grey, 1) !important;
+    border: 1px solid tf-base-color(grey, 1) !important;
 
-    @include kt-rounded {
+    @include tf-rounded {
         border-radius: 4px;
     }
 }

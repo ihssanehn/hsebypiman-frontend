@@ -5,8 +5,8 @@ import { NgbTabsetConfig } from '@ng-bootstrap/ng-bootstrap';
 const tabset = {
 		beforeCodeTitle: 'Tabset',
 		htmlCode: `
-<div class="kt-section">
-  <div class="kt-section__content">
+<div class="tf-section">
+  <div class="tf-section__content">
   <ngb-tabset>
     <ngb-tab title="Simple">
       <ng-template ngbTabContent>
@@ -59,8 +59,8 @@ export class NgbdTabsetBasic { }
 const pills = {
 		beforeCodeTitle: 'Pills',
 		htmlCode: `
-<div class="kt-section">
-  <div class="kt-section__content">
+<div class="tf-section">
+  <div class="tf-section__content">
   <ngb-tabset type="pills">
     <ngb-tab title="Simple">
       <ng-template ngbTabContent>
@@ -114,8 +114,8 @@ export class NgbdTabsetPills { }
 const selectAnActiveTabById = {
 		beforeCodeTitle: 'Select an active tab by id',
 		htmlCode: `
-<div class="kt-section">
-  <div class="kt-section__content">
+<div class="tf-section">
+  <div class="tf-section__content">
     <ngb-tabset #t="ngbTabset">
       <ngb-tab id="tab-selectbyid1" title="Simple">
         <ng-template ngbTabContent>
@@ -139,9 +139,9 @@ const selectAnActiveTabById = {
     </ngb-tabset>
   </div>
 </div>
-<div class="kt-separator kt-separator--dashed"></div>
-<div class="kt-section">
-  <div class="kt-section__content">
+<div class="tf-separator tf-separator--dashed"></div>
+<div class="tf-section">
+  <div class="tf-section__content">
 	<button class="btn btn-outline-primary" (click)="t.select('tab-selectbyid2')">Selected tab with "tab-selectbyid2"
       id</button>
   </div>
@@ -163,8 +163,8 @@ export class NgbdTabsetSelectbyid {
 const preventTabChange = {
 		beforeCodeTitle: 'Prevent tab change',
 		htmlCode: `
-<div class="kt-section">
-  <div class="kt-section__content">
+<div class="tf-section">
+  <div class="tf-section__content">
     <ngb-tabset (tabChange)="beforeChange($event)">
       <ngb-tab id="tab-preventchange1" title="Simple">
         <ng-template ngbTabContent>
@@ -222,8 +222,8 @@ export class NgbdTabsetPreventchange {
 const navJustification = {
 		beforeCodeTitle: 'Nav justification',
 		htmlCode: `
-<div class="kt-section">
-  <div class="kt-section__content">
+<div class="tf-section">
+  <div class="tf-section__content">
     <ngb-tabset [justify]="currentJustify">
       <ngb-tab title="Simple">
         <ng-template ngbTabContent>
@@ -258,9 +258,9 @@ const navJustification = {
     </ngb-tabset>
   </div>
 </div>
-<div class="kt-separator kt-separator--dashed"></div>
-<div class="kt-section">
-  <div class="kt-section__content">
+<div class="tf-separator tf-separator--dashed"></div>
+<div class="tf-section">
+  <div class="tf-section__content">
     <div class="btn-group btn-group-toggle" ngbRadioGroup [(ngModel)]="currentJustify">
       <label ngbButtonLabel class="btn-outline-primary btn-sm">
         <input ngbButton type="radio" value="start">Start
@@ -298,8 +298,8 @@ export class NgbdTabsetJustify {
 const navOrientation = {
 		beforeCodeTitle: 'Nav orientation',
 		htmlCode: `
-<div class="kt-section">
-  <div class="kt-section__content">
+<div class="tf-section">
+  <div class="tf-section__content">
     <ngb-tabset type="pills" [orientation]="currentOrientation">
       <ngb-tab title="Simple">
         <ng-template ngbTabContent>
@@ -335,9 +335,9 @@ const navOrientation = {
     </ngb-tabset>
   </div>
 </div>
-<div class="kt-separator kt-separator--dashed"></div>
-<div class="kt-section">
-  <div class="kt-section__content">
+<div class="tf-separator tf-separator--dashed"></div>
+<div class="tf-section">
+  <div class="tf-section__content">
     <div class="btn-group btn-group-toggle" ngbRadioGroup [(ngModel)]="currentOrientation">
       <label ngbButtonLabel class="btn-outline-primary btn-sm">
         <input ngbButton type="radio" value="horizontal">Horizontal
@@ -367,8 +367,8 @@ export class NgbdTabsetOrientation {
 const globalConfigurationOfTabs = {
 		beforeCodeTitle: 'Global configuration of tabs',
 		htmlCode: `
-<div class="kt-section">
-  <div class="kt-section__content">
+<div class="tf-section">
+  <div class="tf-section__content">
     <ngb-tabset>
       <ngb-tab title="One">
         <ng-template ngbTabContent>
@@ -405,7 +405,7 @@ export class NgbdTabsetConfig {
 	};
 
 @Component({
-	selector: 'kt-tabs',
+	selector: 'tf-tabs',
 	templateUrl: './tabs.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	providers: [NgbTabsetConfig] // add NgbTabsetConfig to the component providers

@@ -176,7 +176,7 @@ export class TabsTemplateLabelExample {}
 	};
 
 @Component({
-	selector: 'kt-material-tabs',
+	selector: 'tf-material-tabs',
 	templateUrl: './material-tabs.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	styles: [`

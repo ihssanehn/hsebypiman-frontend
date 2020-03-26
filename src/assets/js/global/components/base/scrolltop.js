@@ -16,7 +16,7 @@ var KTScrolltop = function(elementId, options) {
     var defaultOptions = {
         offset: 300,
         speed: 600,
-        toggleClass: 'kt-scrolltop--on'
+        toggleClass: 'tf-scrolltop--on'
     };
 
     ////////////////////////////

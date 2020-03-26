@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 
 @Component({
-	selector: 'kt-snack-bar-component-example-snack',
+	selector: 'tf-snack-bar-component-example-snack',
 	template: `
 	<span class="example-pizza-party">Pizza party!!! 🍕</span>
 	`,

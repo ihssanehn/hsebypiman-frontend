@@ -5,13 +5,13 @@
 
 
 
-// CSS3 Transitions only after page load(.kt-page-loading class added to body tag and remove with JS on page load)
-.kt-page--loading * {
+// CSS3 Transitions only after page load(.tf-page-loading class added to body tag and remove with JS on page load)
+.tf-page--loading * {
     transition: none !important;
 }
 
 // Base
-.kt-page-loader {
+.tf-page-loader {
 	background: #fff;
 	position: fixed;
 	top: 0;
@@ -21,13 +21,13 @@
 	z-index: 1000;
    	display: none;
 
-   	.kt-page--loading & {
+   	.tf-page--loading & {
 		display: flex;
 		justify-content: center;
    		align-items: center;
 	}
 
-	&.kt-page-loader--non-block {
+	&.tf-page-loader--non-block {
 		background: transparent;
 		display: none;
 		position: fixed;
@@ -37,12 +37,12 @@
 		bottom: auto;
 		width: auto;
 
-		.kt-page--loading-non-block & {
+		.tf-page--loading-non-block & {
 			display: inline-block;
 		}
 	}
 
-	&.kt-page-loader--logo {
+	&.tf-page-loader--logo {
 		flex-direction: column;
 		align-items: center;
 
@@ -50,7 +50,7 @@
 			display: block;
 		}
 
-		.kt-spinner {
+		.tf-spinner {
 			margin-top: 3rem;
 
 			&:before {

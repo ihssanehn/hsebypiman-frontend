@@ -5,7 +5,7 @@
 
 
 // Config
-$kt-app-config: (
+$tf-app-config: (
 	aside: (
 		offcanvas: (
 			layout: (
@@ -24,12 +24,12 @@ $kt-app-config: (
                 ),
                 close: (
                     bg-color: (
-                        default: kt-base-color(grey, 1),
+                        default: tf-base-color(grey, 1),
                         hover: transparent
                     ),
                     icon-color: (
-                        default: kt-base-color(label, 2),
-                        hover: kt-brand-color()
+                        default: tf-base-color(label, 2),
+                        hover: tf-brand-color()
                     )
                 )
 			)
@@ -38,89 +38,89 @@ $kt-app-config: (
 );
 
 // General Mode
-.kt-app {
+.tf-app {
     // Aside
-    .kt-app__aside {
+    .tf-app__aside {
         // Default size
-        @include kt-app-aside-width(350px);
+        @include tf-app-aside-width(350px);
 
         // Small size
-        &.kt-app__aside--sm {
-            @include kt-app-aside-width(250px);
+        &.tf-app__aside--sm {
+            @include tf-app-aside-width(250px);
         }
 
         // Large size
-        &.kt-app__aside--lg {
-            @include kt-app-aside-width(450px);
+        &.tf-app__aside--lg {
+            @include tf-app-aside-width(450px);
         }
 
         // Extra large size
-        &.kt-app__aside--xl {
-            @include kt-app-aside-width(600px);
+        &.tf-app__aside--xl {
+            @include tf-app-aside-width(600px);
         }
     }
 
     // Content
-    .kt-app__content {
+    .tf-app__content {
         margin-left: $grid-gutter-width;
     }
 
     // Detail
-    .kt-app__detail {
+    .tf-app__detail {
         margin-left: $grid-gutter-width;
 
 		// Default size
-        @include kt-app-detail-width(550px);
+        @include tf-app-detail-width(550px);
 
         // Small size
-        &.kt-app__detail--sm {
-            @include kt-app-detail-width(400px);
+        &.tf-app__detail--sm {
+            @include tf-app-detail-width(400px);
         }
 
         // Large size
-        &.kt-app__detail--lg {
-            @include kt-app-detail-width(700px);
+        &.tf-app__detail--lg {
+            @include tf-app-detail-width(700px);
         }
 
         // Extra large size
-        &.kt-app__detail--xl {
-            @include kt-app-detail-width(850px);
+        &.tf-app__detail--xl {
+            @include tf-app-detail-width(850px);
         }
     }
 }
 
 // Tablet & Mobile Mode.
-.kt-app {
-     // Media range 1024px and below(see: $kt-media-breakpoints in sass/theme/_config.scss and sass/themes/core/_mixins.scss)
-     @include kt-tablet-and-mobile {
-        .kt-app__aside {
+.tf-app {
+     // Media range 1024px and below(see: $tf-media-breakpoints in sass/theme/_config.scss and sass/themes/core/_mixins.scss)
+     @include tf-tablet-and-mobile {
+        .tf-app__aside {
             padding: 35px 15px 15px 15px;
             background-color: #ffffff;
 
-            .kt-portlet {
+            .tf-portlet {
                 box-shadow: 0px 0px 30px 0px rgba(82,63,105, 0.1);
             }
 
-            &.kt-app__aside--fit {
+            &.tf-app__aside--fit {
                 padding: 20px 0 0 0;
 
-                .kt-portlet {
+                .tf-portlet {
                     box-shadow:none;
                 }
             }
         }
 
         // Content
-        .kt-app__content {
+        .tf-app__content {
             margin-left: 0;
         }
 
         // Detail
-        .kt-app__detail {
+        .tf-app__detail {
             margin-left:0;
         }
     }
 }
 
 // App aside  offcanvas
-@include kt-offcanvas-build(kt-app__aside, tablet-and-mobile, kt-get($kt-app-config, aside, offcanvas) );
+@include tf-offcanvas-build(tf-app__aside, tablet-and-mobile, tf-get($tf-app-config, aside, offcanvas) );

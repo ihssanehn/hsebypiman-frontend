@@ -7,14 +7,14 @@ import { NgbTimepickerConfig } from '@ng-bootstrap/ng-bootstrap';
 const timepicker = {
 		beforeCodeTitle: 'Timepicker',
 		htmlCode: `
-<div class="kt-section">
-  <div class="kt-section__content">
+<div class="tf-section">
+  <div class="tf-section__content">
     <ngb-timepicker [(ngModel)]="time"></ngb-timepicker>
   </div>
 </div>
-<div class="kt-separator kt-separator--dashed"></div>
-<div class="kt-section">
-  <div class="kt-section__content">
+<div class="tf-separator tf-separator--dashed"></div>
+<div class="tf-section">
+  <div class="tf-section__content">
     <pre>Selected time: {{time | json}}</pre>
   </div>
 </div>
@@ -37,17 +37,17 @@ export class NgbdTimepickerBasic {
 const meridian = {
 		beforeCodeTitle: 'Meridian',
 		htmlCode: `
-<div class="kt-section">
-  <div class="kt-section__content">
+<div class="tf-section">
+  <div class="tf-section__content">
     <ngb-timepicker [(ngModel)]="time" [meridian]="meridian"></ngb-timepicker>
     <button class="btn btn-sm btn-{{meridian ? 'success' : 'danger'}}" (click)="toggleMeridian()">
       Meridian - {{meridian ? "ON" : "OFF"}}
     </button>
   </div>
 </div>
-<div class="kt-separator kt-separator--dashed"></div>
-<div class="kt-section">
-  <div class="kt-section__content">
+<div class="tf-separator tf-separator--dashed"></div>
+<div class="tf-section">
+  <div class="tf-section__content">
 	<pre>Selected time: {{time | json}}</pre>
   </div>
 </div>
@@ -75,17 +75,17 @@ export class NgbdTimepickerMeridian {
 const seconds = {
 		beforeCodeTitle: 'Seconds',
 		htmlCode: `
-<div class="kt-section">
-  <div class="kt-section__content">
+<div class="tf-section">
+  <div class="tf-section__content">
     <ngb-timepicker [(ngModel)]="time" [seconds]="seconds"></ngb-timepicker>
     <button class="btn btn-sm btn-{{seconds ? 'success' : 'danger'}}" (click)="toggleSeconds()">
       Seconds - {{seconds ? "ON" : "OFF"}}
     </button>
   </div>
 </div>
-<div class="kt-separator kt-separator--dashed"></div>
-<div class="kt-section">
-  <div class="kt-section__content">
+<div class="tf-separator tf-separator--dashed"></div>
+<div class="tf-section">
+  <div class="tf-section__content">
     <pre>Selected time: {{time | json}}</pre>
   </div>
 </div>
@@ -112,15 +112,15 @@ export class NgbdTimepickerSeconds {
 const spinners = {
 		beforeCodeTitle: 'Spinners',
 		htmlCode: `
-<div class="kt-section">
-  <div class="kt-section__content">
+<div class="tf-section">
+  <div class="tf-section__content">
     <ngb-timepicker [(ngModel)]="time" [spinners]="spinners"></ngb-timepicker>
   </div>
 </div>
-<div class="kt-separator kt-separator--dashed"></div>
-<div class="kt-section">
-  <div class="kt-section__content">
-    <button class="kt-t-1 btn btn-sm btn-{{spinners ? 'success' : 'danger'}}" (click)="toggleSpinners()">
+<div class="tf-separator tf-separator--dashed"></div>
+<div class="tf-section">
+  <div class="tf-section__content">
+    <button class="tf-t-1 btn btn-sm btn-{{spinners ? 'success' : 'danger'}}" (click)="toggleSpinners()">
       Spinners - {{spinners ? "ON" : "OFF"}}
     </button>
   </div>
@@ -150,8 +150,8 @@ export class NgbdTimepickerSpinners {
 const customSteps = {
 		beforeCodeTitle: 'Custom steps',
 		htmlCode: `
-<div class="kt-section">
-  <div class="kt-section__content">
+<div class="tf-section">
+  <div class="tf-section__content">
 	<ngb-timepicker [(ngModel)]="time" [seconds]="true" [hourStep]="hourStep" [minuteStep]="minuteStep"
       [secondStep]="secondStep"></ngb-timepicker>
      <div class="row">
@@ -170,9 +170,9 @@ const customSteps = {
       </div>
     </div>
 </div>
-<div class="kt-separator kt-separator--dashed"></div>
-<div class="kt-section">
-  <div class="kt-section__content">
+<div class="tf-separator tf-separator--dashed"></div>
+<div class="tf-section">
+  <div class="tf-section__content">
   <pre>Selected time: {{time | json}}</pre>
   </div>
 </div>
@@ -198,11 +198,11 @@ export class NgbdTimepickerSteps {
 const customValidation = {
 		beforeCodeTitle: 'Custom validation',
 		htmlCode: `
-<div class="kt-section">
-  <span class="kt-section__sub">
+<div class="tf-section">
+  <span class="tf-section__sub">
 	Illustrates custom validation, you have to select time between 12:00 and 13:59
   </span>
-  <div class="kt-section__content">
+  <div class="tf-section__content">
     <div class="form-group">
       <ngb-timepicker [(ngModel)]="time" [formControl]="ctrl" required></ngb-timepicker>
 	  <div *ngIf="ctrl.valid" class="small form-text text-success">Great choice</div>
@@ -213,9 +213,9 @@ const customValidation = {
     </div>
   </div>
 </div>
-<div class="kt-separator kt-separator--dashed"></div>
-<div class="kt-section">
-  <div class="kt-section__content">
+<div class="tf-separator tf-separator--dashed"></div>
+<div class="tf-section">
+  <div class="tf-section__content">
     <pre>Selected time: {{time | json}}</pre>
   </div>
 </div>
@@ -252,11 +252,11 @@ export class NgbdTimepickerValidation {
 const globalConfigurationOfTimepickers = {
 		beforeCodeTitle: 'Global configuration of timepickers',
 		htmlCode: `
-<div class="kt-section">
-  <span class="kt-section__sub">
+<div class="tf-section">
+  <span class="tf-section__sub">
 	This timepicker uses customized default values.
   </span>
-  <div class="kt-section__content">
+  <div class="tf-section__content">
     <ngb-timepicker [(ngModel)]="time" [seconds]="'true'" [spinners]="'false'"></ngb-timepicker>
   </div>
 </div>
@@ -284,7 +284,7 @@ export class NgbdTimepickerConfig {
 	};
 
 @Component({
-	selector: 'kt-timepicker',
+	selector: 'tf-timepicker',
 	templateUrl: './timepicker.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	providers: [NgbTimepickerConfig] // add NgbTimepickerConfig to the component providers

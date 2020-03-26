@@ -27,7 +27,7 @@ import { RoleEditDialogComponent } from '../role-edit/role-edit.dialog.component
 // https://v5.material.angular.io/components/table/overview#sorting
 // https://www.youtube.com/watch?v=NSt9CI3BXv4
 @Component({
-	selector: 'kt-roles-list',
+	selector: 'tf-roles-list',
 	templateUrl: './roles-list.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush
 })

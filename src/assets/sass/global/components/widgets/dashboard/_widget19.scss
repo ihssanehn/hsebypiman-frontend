@@ -5,11 +5,11 @@
 
 
 
-.kt-widget19 {
-    .kt-widget19__pic {
-        @include kt-rounded {
-            border-top-left-radius: $kt-border-radius;
-            border-top-right-radius: $kt-border-radius; 
+.tf-widget19 {
+    .tf-widget19__pic {
+        @include tf-rounded {
+            border-top-left-radius: $tf-border-radius;
+            border-top-right-radius: $tf-border-radius; 
         }
         
         position: relative;
@@ -20,7 +20,7 @@
             width: 100%;
         }
 
-        .kt-widget19__shadow {
+        .tf-widget19__shadow {
             position: absolute;
             top: 70%;
             bottom: 0;
@@ -29,87 +29,87 @@
             background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, .1) 40%, rgba(0, 0, 0, .5) 90%) no-repeat scroll 0 0;
         }
 
-        .kt-widget19__title {
+        .tf-widget19__title {
             position: absolute;
             bottom: 0;
             display: block;
             z-index: 1;
-            padding-left: kt-get($kt-portlet, space, desktop);
-            padding-bottom: kt-get($kt-portlet, space, desktop) / 2;
-            color: kt-base-color(label, 3);
+            padding-left: tf-get($tf-portlet, space, desktop);
+            padding-bottom: tf-get($tf-portlet, space, desktop) / 2;
+            color: tf-base-color(label, 3);
         }
 
-        .kt-widget19__labels {
+        .tf-widget19__labels {
             position: absolute;
-            top: kt-get($kt-portlet, space, desktop);
-            left: kt-get($kt-portlet, space, desktop);
+            top: tf-get($tf-portlet, space, desktop);
+            left: tf-get($tf-portlet, space, desktop);
         }
 
-        @include kt-tablet-and-mobile {
-            .kt-widget19__labels {
-                top: kt-get($kt-portlet, space, mobile);
-                left: kt-get($kt-portlet, space, mobile);
+        @include tf-tablet-and-mobile {
+            .tf-widget19__labels {
+                top: tf-get($tf-portlet, space, mobile);
+                left: tf-get($tf-portlet, space, mobile);
             }
         }
     }
           
-    .kt-widget19__wrapper {
+    .tf-widget19__wrapper {
         margin-bottom: 1rem;
 
-        .kt-widget19__content {
+        .tf-widget19__content {
             display: flex;
             justify-content: space-between;
             align-items: center;               
             margin: 0 0 1.75rem 0;                               
 
-            .kt-widget19__userpic {
+            .tf-widget19__userpic {
                 > img {
                     width: 3.2rem;                        
                     border-radius: 100%;
                 }
             }
 
-            .kt-widget19__info {
+            .tf-widget19__info {
                 padding-left: 1rem;
                 flex-grow: 1;        
                 display: flex;
                 flex-direction: column;       
 
-                .kt-widget19__username {
+                .tf-widget19__username {
                     font-size: 1.1rem;                  
                     font-weight: 500; 
-                    color: kt-base-color(label, 3);
+                    color: tf-base-color(label, 3);
                     transition: color 0.3s ease;
 
                     &:hover {
-                        color: kt-brand-color();
+                        color: tf-brand-color();
                         transition: color 0.3s ease;
                     }
                 } 
 
-                .kt-widget19__time {
+                .tf-widget19__time {
                     font-size: 1rem;
                     font-weight: 400;
-                    color: kt-base-color(label, 2);
+                    color: tf-base-color(label, 2);
                 } 
             }
 
-            .kt-widget19__stats{
+            .tf-widget19__stats{
                 font-size: 1rem;
                 font-weight: 500;
 
-                .kt-widget19__number {
+                .tf-widget19__number {
                     font-size: 1.4rem;
                     font-weight: 700;
                 }   
 
-                .kt-widget19__comment {
+                .tf-widget19__comment {
                     font-size: 0.9rem;
-                    color: kt-base-color(label, 2);
+                    color: tf-base-color(label, 2);
                     transition: color 0.3s ease;
 
                     &:hover {
-                        color: kt-brand-color();
+                        color: tf-brand-color();
                         transition: color 0.3s ease;
                     }
                 }  
@@ -121,15 +121,15 @@
             }
         }
 
-        .kt-widget19__text {
+        .tf-widget19__text {
             text-align: justify;
-            color: kt-base-color(label, 2);
+            color: tf-base-color(label, 2);
             font-size: 1.1rem;
             font-weight: 400;
         }
     }   
 
-    .kt-widget19__action {
+    .tf-widget19__action {
         margin-top: 1.5rem;
     }  
 } 

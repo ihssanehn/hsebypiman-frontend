@@ -5,7 +5,7 @@
 
 
 // Skin
-@mixin kt-perfect-scrollbar-skin($color) {
+@mixin tf-perfect-scrollbar-skin($color) {
     .ps {
         > .ps__rail-x {
             background: transparent;
@@ -60,7 +60,7 @@
     }
 }
 
-@mixin kt-perfect-scrollbar-ver-size($size) {
+@mixin tf-perfect-scrollbar-ver-size($size) {
     .ps {
         > .ps__rail-y {
             //right: $size;
@@ -74,8 +74,8 @@
             > .ps__thumb-y {
                 //right: 0;
                 width: $size;
-                border-radius: $kt-border-radius;
-                @include kt-not-rounded {
+                border-radius: $tf-border-radius;
+                @include tf-not-rounded {
                     border-radius: 0;
                 }
 
@@ -89,7 +89,7 @@
     }
 }
 
-@mixin kt-perfect-scrollbar-hor-size($size) {
+@mixin tf-perfect-scrollbar-hor-size($size) {
     .ps {
         > .ps__rail-x {
             height: $size;
@@ -102,8 +102,8 @@
             > .ps__thumb-x {
                 top: 0;
                 height: $size;
-                border-radius: $kt-border-radius;
-                @include kt-not-rounded {
+                border-radius: $tf-border-radius;
+                @include tf-not-rounded {
                     border-radius: 0;
                 }
 

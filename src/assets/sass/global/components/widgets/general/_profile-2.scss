@@ -4,28 +4,28 @@
 
 
 
-.kt-widget {
-    &.kt-widget--user-profile-2 {  
+.tf-widget {
+    &.tf-widget--user-profile-2 {  
         display: flex;
         justify-content: space-between;
         flex-direction: column;
         height: 100%;      
 
-        .kt-widget__head {
+        .tf-widget__head {
             display: flex;
             align-items: center; 
             margin-top: -45px;           
 
-            .kt-widget__media {
-                .kt-widget__img {
+            .tf-widget__media {
+                .tf-widget__img {
                     max-width: 90px;                     
 
-                    @include kt-rounded {
+                    @include tf-rounded {
                         border-radius: 50%;
                     }                    
                 }                 
                 
-                .kt-widget__pic {
+                .tf-widget__pic {
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -33,59 +33,59 @@
                     height: 90px;                                
                     font-size: 1.5rem;                
                     
-                    @include kt-rounded {
+                    @include tf-rounded {
                         border-radius: 50%;
                     }
 
-                    @each $name, $color in $kt-state-colors {
-                        &.kt-widget__pic--#{$name} {                        
-                            background: rgba(kt-get($color, base), 0.1);                      
+                    @each $name, $color in $tf-state-colors {
+                        &.tf-widget__pic--#{$name} {                        
+                            background: rgba(tf-get($color, base), 0.1);                      
                         }
                     } 
                 }
             }
 
-            .kt-widget__info {
+            .tf-widget__info {
                 padding-left: 1rem;
 
-                .kt-widget__username {
+                .tf-widget__username {
                     font-size: 1.4rem;
-                    color: kt-base-color(label, 4);
+                    color: tf-base-color(label, 4);
                     font-weight: 500;
 
                     &:hover {
-                        color: kt-brand-color();
+                        color: tf-brand-color();
                         transition: color 0.3s ease;
                     }
                 }
 
-                .kt-widget__titel {
+                .tf-widget__titel {
                     font-size: 1.4rem;
-                    color: kt-base-color(label, 4);
+                    color: tf-base-color(label, 4);
                     font-weight: 500;
 
                     &:hover {
-                        color: kt-brand-color();
+                        color: tf-brand-color();
                         transition: color 0.3s ease;
                     }
                 }
 
-                .kt-widget__desc {
+                .tf-widget__desc {
                     display: block;
                     font-weight: 500;
                     font-size: 1.1rem;
                     padding-top: 0.4rem;       
-                    color: kt-base-color(label, 2);                
+                    color: tf-base-color(label, 2);                
                 }
             }     
         }
 
-        .kt-widget__body {              
+        .tf-widget__body {              
             flex: 1;
 
-            .kt-widget__section {            
+            .tf-widget__section {            
                 padding: 1rem 0 1rem 0;             
-                color: kt-base-color(label, 3);
+                color: tf-base-color(label, 3);
                 font-weight: 400;                     
                     
                 a {               
@@ -93,37 +93,37 @@
                 }           
             }
 
-            .kt-widget__content {
+            .tf-widget__content {
                 display: flex;
 
-                .kt-widget__stats {
+                .tf-widget__stats {
                     display: flex;
                     align-items: center;
                     flex-grow: 1;
                     padding-bottom: 1.7rem;
 
-                    .kt-widget__icon {                   
+                    .tf-widget__icon {                   
 
                         i {
                             font-size: 2.7rem;
-                            color: kt-base-color(label, 1);
+                            color: tf-base-color(label, 1);
                             font-weight: 400;
                         }
                     }
 
-                    .kt-widget__details {
+                    .tf-widget__details {
                         padding-left: 1rem;
 
-                        .kt-widget__title {
+                        .tf-widget__title {
                             display: block;
-                            color: kt-base-color(label, 3);
+                            color: tf-base-color(label, 3);
                             font-weight: 500;  
                             font-size: 0.95rem;   
                         }
 
-                        .kt-widget__value {
+                        .tf-widget__value {
                             display: block;
-                            color: kt-base-color(label, 4);
+                            color: tf-base-color(label, 4);
                             font-weight: 600;
                             font-size: 1.2rem;
                         }
@@ -131,27 +131,27 @@
                 }
             }
 
-            .kt-widget__item {                
+            .tf-widget__item {                
                 padding: 0.7rem 0;
 
-                .kt-widget__contact {
+                .tf-widget__contact {
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
                     padding-bottom: 0.5rem;
 
-                    .kt-widget__label {
-                        color: kt-base-color(label, 4);
+                    .tf-widget__label {
+                        color: tf-base-color(label, 4);
                         font-weight: 600;
                     }
 
-                    .kt-widget__data {
-                        color: kt-base-color(label, 2);
+                    .tf-widget__data {
+                        color: tf-base-color(label, 2);
                         font-weight: 400;                       
                     }
 
-                    a.kt-widget__data:hover {                        
-                        color: kt-brand-color();
+                    a.tf-widget__data:hover {                        
+                        color: tf-brand-color();
                         transition: color 0.3s ease;                         
                     }
 
@@ -162,7 +162,7 @@
             }
         }
 
-        .kt-widget__footer {
+        .tf-widget__footer {
             margin-top: 2rem;                        
 
             .btn {
@@ -176,18 +176,18 @@
 }
 
 
-@include kt-mobile {
-    .kt-widget {
-        &.kt-widget--user-profile-2 {
-            .kt-widget__head{
+@include tf-mobile {
+    .tf-widget {
+        &.tf-widget--user-profile-2 {
+            .tf-widget__head{
                 margin-top: -30px;  
 
-                .kt-widget__media {
-                    .kt-widget__img {
+                .tf-widget__media {
+                    .tf-widget__img {
                         max-width: 60px;  
                     } 
                    
-                   .kt-widget__pic {
+                   .tf-widget__pic {
                         max-width: 60px;
                         max-height: 60px;                     
                         font-size: 1.2rem;

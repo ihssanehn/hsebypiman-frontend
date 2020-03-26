@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { LayoutConfigService, ToggleOptions } from '../../../../core/_base/layout';
 
 @Component({
-	selector: 'kt-header-mobile',
+	selector: 'tf-header-mobile',
 	templateUrl: './header-mobile.component.html',
 	styleUrls: ['./header-mobile.component.scss']
 })
@@ -15,8 +15,8 @@ export class HeaderMobileComponent implements OnInit {
 
 	toggleOptions: ToggleOptions = {
 		target: 'body',
-		targetState: 'kt-header__topbar--mobile-on',
-		togglerState: 'kt-header-mobile__toolbar-topbar-toggler--active'
+		targetState: 'tf-header__topbar--mobile-on',
+		togglerState: 'tf-header-mobile__toolbar-topbar-toggler--active'
 	};
 
 	/**

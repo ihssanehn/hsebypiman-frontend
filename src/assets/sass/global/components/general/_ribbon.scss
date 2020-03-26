@@ -4,20 +4,20 @@
 
 
 
-.kt-ribbon {
+.tf-ribbon {
 	position: relative;
 
-	.kt-ribbon__target {
+	.tf-ribbon__target {
 		display: flex;
   		justify-content: center;
 		align-items: center;
 		padding: 5px 10px;
 		position: absolute;
 		z-index: 1;
-		background-color: kt-state-color(brand, base);
-		color: kt-state-color(brand, inverse);
+		background-color: tf-state-color(brand, base);
+		color: tf-state-color(brand, inverse);
 		
-		>.kt-ribbon__inner {
+		>.tf-ribbon__inner {
 			z-index: -1;
 			position: absolute;
 			padding:0;
@@ -28,12 +28,12 @@
 		}
 		
 		&:after{
-			border-color: darken(kt-state-color(brand, base), 30%);
+			border-color: darken(tf-state-color(brand, base), 30%);
 		}
 	}
 
 	&--ver {
-		.kt-ribbon__target{
+		.tf-ribbon__target{
 			padding: 5px 10px;
 			width: 36px;
 			height: 46px;
@@ -43,43 +43,43 @@
 
 	// Styles
 	&--shadow {
-		.kt-ribbon__target{
+		.tf-ribbon__target{
 			box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.4);
 		}	
 	}
 
-	&.kt-ribbon--round {
-		&.kt-ribbon--top {
-			.kt-ribbon__target {
-				border-top-right-radius: $kt-border-radius; 
-				border-top-left-radius: $kt-border-radius;
+	&.tf-ribbon--round {
+		&.tf-ribbon--top {
+			.tf-ribbon__target {
+				border-top-right-radius: $tf-border-radius; 
+				border-top-left-radius: $tf-border-radius;
 			}
 		}
 		
-		&.kt-ribbon--bottom {
-			.kt-ribbon__target {
-				border-bottom-right-radius: $kt-border-radius;
-				border-bottom-left-radius: $kt-border-radius;
+		&.tf-ribbon--bottom {
+			.tf-ribbon__target {
+				border-bottom-right-radius: $tf-border-radius;
+				border-bottom-left-radius: $tf-border-radius;
 			}
 		}
 
-		&.kt-ribbon--left {
-			.kt-ribbon__target {
-				border-top-left-radius: $kt-border-radius;
-				border-bottom-left-radius: $kt-border-radius;
+		&.tf-ribbon--left {
+			.tf-ribbon__target {
+				border-top-left-radius: $tf-border-radius;
+				border-bottom-left-radius: $tf-border-radius;
 			}
 		}
 		
-		&.kt-ribbon--right {
-			.kt-ribbon__target {
-				border-top-right-radius: $kt-border-radius;
-				border-bottom-right-radius: $kt-border-radius;
+		&.tf-ribbon--right {
+			.tf-ribbon__target {
+				border-top-right-radius: $tf-border-radius;
+				border-bottom-right-radius: $tf-border-radius;
 			}
 		}
 	}
 
 	&--border-ver {
-		.kt-ribbon__target{
+		.tf-ribbon__target{
 			&:after {
 				border-top:none;
 				border-bottom:none;
@@ -96,7 +96,7 @@
 	}
 	
 	&--border-hor {
-		.kt-ribbon__target{
+		.tf-ribbon__target{
 			&:after {
 				border-top:1px solid;
 				border-bottom:1px solid;
@@ -113,7 +113,7 @@
 	}
 
 	&--border-dash-ver {
-		.kt-ribbon__target{
+		.tf-ribbon__target{
 			&:after{
 				border-top:none;
 				border-bottom:none;
@@ -132,7 +132,7 @@
 	}
 	
 	&--border-dash-hor {
-		.kt-ribbon__target{
+		.tf-ribbon__target{
 			&:after{
 				border-top:1px solid;
 				border-bottom:1px solid;
@@ -151,11 +151,11 @@
 	}
 
 	&--clip {	
-		&.kt-ribbon--left {
-			.kt-ribbon__target {
+		&.tf-ribbon--left {
+			.tf-ribbon__target {
 				left: -10px;
 				
-				.kt-ribbon__inner {
+				.tf-ribbon__inner {
 					&:before,
 					&:after {
 						content: '';
@@ -174,11 +174,11 @@
 			}
 		}
 
-		&.kt-ribbon--right {
-			.kt-ribbon__target {
+		&.tf-ribbon--right {
+			.tf-ribbon__target {
 				right: -10px;
 				
-				.kt-ribbon__inner {
+				.tf-ribbon__inner {
 					&:before,
 					&:after {
 						content: '';
@@ -199,8 +199,8 @@
 	}
 
 	&--flag {
-		.kt-ribbon__target {
-			>.kt-ribbon__inner {				
+		.tf-ribbon__target {
+			>.tf-ribbon__inner {				
 				&:after {
 					border-left: 18px solid;
 					border-right: 18px solid;
@@ -217,24 +217,24 @@
 	}
 
 	// State colors
-	@each $name, $color in $kt-state-colors{
+	@each $name, $color in $tf-state-colors{
 		&--#{$name} {
-			.kt-ribbon__target {
-				background-color: kt-state-color(#{$name}, base);
-				color: kt-state-color(#{$name}, inverse);
+			.tf-ribbon__target {
+				background-color: tf-state-color(#{$name}, base);
+				color: tf-state-color(#{$name}, inverse);
 	
 				&:after{
-					border-color: rgba(kt-state-color(#{$name}, inverse), 0.5);
+					border-color: rgba(tf-state-color(#{$name}, inverse), 0.5);
 				}
 
-				>.kt-ribbon__inner{
-					background-color: kt-state-color(#{$name}, base);
-					color: kt-state-color(#{$name}, inverse);
+				>.tf-ribbon__inner{
+					background-color: tf-state-color(#{$name}, base);
+					color: tf-state-color(#{$name}, inverse);
 		
 					&:after {
 						border-color: transparent;
-						border-left-color: kt-state-color(#{$name}, base);
-						border-right-color: kt-state-color(#{$name}, base);
+						border-left-color: tf-state-color(#{$name}, base);
+						border-right-color: tf-state-color(#{$name}, base);
 					}
 				}
 			}			

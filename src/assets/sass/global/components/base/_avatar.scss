@@ -5,11 +5,11 @@
 
 
 // Base
-.kt-avatar {
+.tf-avatar {
 	position: relative;
 	display: inline-block;
 
-	.kt-avatar__holder {
+	.tf-avatar__holder {
 		width: 120px;
 		height: 120px;
 		border-radius: 3px;
@@ -17,7 +17,7 @@
 		background-size: cover;
 	}
 
-	.kt-avatar__upload {
+	.tf-avatar__upload {
 		cursor: pointer;
 		display:flex;
 		align-items: center;
@@ -39,23 +39,23 @@
 		}
 
 		i {
-			color: kt-brand-color();
+			color: tf-brand-color();
 			font-size: 0.9rem;
 		}
 
 
-		@include kt-transition();
+		@include tf-transition();
 		&:hover{
-			@include kt-transition();
-			background-color: kt-brand-color();
+			@include tf-transition();
+			background-color: tf-brand-color();
 
 			i {
-				color: kt-brand-color(inverse);
+				color: tf-brand-color(inverse);
 			}
 		}
 	}
 
-	.kt-avatar__cancel {
+	.tf-avatar__cancel {
 		cursor: pointer;
 		align-items: center;
 		justify-content: center;
@@ -71,38 +71,38 @@
 		display: none;
 
 		i {
-			@include kt-transition();
-			color: kt-base-color(label, 2);
+			@include tf-transition();
+			color: tf-base-color(label, 2);
 			font-size: 0.9rem;
 		}
 		
 		&:hover{
 			i {
-				@include kt-transition();
-				color: kt-brand-color();
+				@include tf-transition();
+				color: tf-brand-color();
 			}
 		}
 	}
 
-	&.kt-avatar--changed {
-		.kt-avatar__cancel {
+	&.tf-avatar--changed {
+		.tf-avatar__cancel {
 			display: flex;
 		}
 	}
 
 	// States
-	@each $name, $color in $kt-state-colors {
-		&.kt-avatar--#{$name} {
-			.kt-avatar__upload {
+	@each $name, $color in $tf-state-colors {
+		&.tf-avatar--#{$name} {
+			.tf-avatar__upload {
 				i {
-					color: kt-get($color, base);
+					color: tf-get($color, base);
 				}
 
 				&:hover{
-					background-color: kt-get($color, base);
+					background-color: tf-get($color, base);
 
 					i {
-						color: kt-get($color, inverse);
+						color: tf-get($color, inverse);
 					}
 				}
 			}	
@@ -110,25 +110,25 @@
 	}
 
 	// Circle style
-	&.kt-avatar--circle {
-		.kt-avatar__holder {
+	&.tf-avatar--circle {
+		.tf-avatar__holder {
 			border-radius: 50%;
 		}
 
-		.kt-avatar__upload {
+		.tf-avatar__upload {
 			right: 0px;
 			top: 5px;
 		}
 
-		.kt-avatar__cancel {
+		.tf-avatar__cancel {
 			right: 3px;
 			bottom: 10px;
 		}
 	}
 
 	// Bordered style
-	&.kt-avatar--outline {
-		.kt-avatar__holder {
+	&.tf-avatar--outline {
+		.tf-avatar__holder {
 			border: 3px solid #ffffff;
 			box-shadow: 0px 0px 13px 0px rgba(#000000, 0.1);
 		}

@@ -6,7 +6,7 @@
 
 
 
-$kt-offcanvas-panel: (
+$tf-offcanvas-panel: (
 	self: (
 		bg-color: #fff,
 		shadow: 0px 0px 28px 0px rgba(82,63,105,0.13),
@@ -36,74 +36,74 @@ $kt-offcanvas-panel: (
 );
 
 // Base
-.kt-offcanvas-panel {
-	background-color: kt-get($kt-offcanvas-panel, self, bg-color);
-	box-shadow: kt-get($kt-offcanvas-panel, self, shadow);
+.tf-offcanvas-panel {
+	background-color: tf-get($tf-offcanvas-panel, self, bg-color);
+	box-shadow: tf-get($tf-offcanvas-panel, self, shadow);
 	padding: 2.5rem;
 
 	// Head
-	.kt-offcanvas-panel__head {
+	.tf-offcanvas-panel__head {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		margin-bottom: 2rem;
 
-		.kt-offcanvas-panel__title {
+		.tf-offcanvas-panel__title {
 			font-size:  1.4rem;
 			font-weight: 500;
-			color: kt-base-color(label, 4);
+			color: tf-base-color(label, 4);
 			margin: 0;
 			padding: 0;
 
 			small {
-				color: kt-base-color(label, 2);
+				color: tf-base-color(label, 2);
 				font-size: 1rem;
 			}
 		}
 
-		.kt-offcanvas-panel__close {
+		.tf-offcanvas-panel__close {
 			display: flex;
 			justify-content: center;
 			align-items: center;
 			width: 28px;
 			height: 28px;
-			background-color: kt-base-color(grey, 1);
-			@include kt-transition();
+			background-color: tf-base-color(grey, 1);
+			@include tf-transition();
 
 			i {
-				@include kt-transition();
+				@include tf-transition();
 				font-size: 0.8rem;
-				color: kt-base-color(label, 2);
+				color: tf-base-color(label, 2);
 			}
 
-			@include kt-rounded {
-				border-radius: $kt-border-radius;
+			@include tf-rounded {
+				border-radius: $tf-border-radius;
 			}
 
 			&:hover {
-				@include kt-transition();
-				background-color: kt-brand-color();
+				@include tf-transition();
+				background-color: tf-brand-color();
 
 				i {
-					@include kt-transition();
-					color: kt-brand-color(inverse);
+					@include tf-transition();
+					color: tf-brand-color(inverse);
 				}
 			}
 		}
 	}	
 
 	// Content
-	.kt-offcanvas-panel__body {
+	.tf-offcanvas-panel__body {
 		position: relative;
 
-		.kt-offcanvas-panel__section {
+		.tf-offcanvas-panel__section {
 			padding: 0;
 			font-size: 1.3rem;
 			font-weight: 500;
-			color: kt-base-color(label, 3);
+			color: tf-base-color(label, 3);
 			margin: 2rem 0 1.5rem 0;
 
-			&.kt-offcanvas-panel__section--first {
+			&.tf-offcanvas-panel__section--first {
 				margin-top: 0;
 			}
 		}
@@ -111,12 +111,12 @@ $kt-offcanvas-panel: (
 }
 
 // Build offcanvas mode
-@include kt-offcanvas-build(kt-offcanvas-panel, default, kt-get($kt-offcanvas-panel, self, offcanvas) );
+@include tf-offcanvas-build(tf-offcanvas-panel, default, tf-get($tf-offcanvas-panel, self, offcanvas) );
 
 // Desktop view
-@include kt-desktop {
-	.kt-offcanvas-panel {
-		.kt-offcanvas-panel__body {
+@include tf-desktop {
+	.tf-offcanvas-panel {
+		.tf-offcanvas-panel__body {
 			padding-right: 1.5rem;
 			margin-right: -1.5rem;
 		}
@@ -124,8 +124,8 @@ $kt-offcanvas-panel: (
 }
 
 // Mobile view
-@include kt-tablet-and-mobile {
-	.kt-offcanvas-panel {
+@include tf-tablet-and-mobile {
+	.tf-offcanvas-panel {
 		padding: 1rem;
 	}
 }

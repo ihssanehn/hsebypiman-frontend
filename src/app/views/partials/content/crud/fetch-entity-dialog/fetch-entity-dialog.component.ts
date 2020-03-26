@@ -3,7 +3,7 @@ import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
-	selector: 'kt-fetch-entity-dialog',
+	selector: 'tf-fetch-entity-dialog',
 	templateUrl: './fetch-entity-dialog.component.html'
 })
 export class FetchEntityDialogComponent {

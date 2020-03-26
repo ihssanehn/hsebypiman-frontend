@@ -56,7 +56,7 @@ export class IconSvgExample {
 };
 
 @Component({
-	selector: 'kt-icon',
+	selector: 'tf-icon',
 	templateUrl: './icon.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush
 })

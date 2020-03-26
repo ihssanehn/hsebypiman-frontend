@@ -4,7 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormControl } from '@angular/forms';
 
 @Component({
-	selector: 'kt-update-status-dialog',
+	selector: 'tf-update-status-dialog',
 	templateUrl: './update-status-dialog.component.html'
 })
 export class UpdateStatusDialogComponent implements OnInit {

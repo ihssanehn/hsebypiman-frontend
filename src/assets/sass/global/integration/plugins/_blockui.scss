@@ -16,20 +16,20 @@
         box-shadow: none;
     }
 
-    @include kt-rounded {
-        border-radius: $kt-border-radius;
+    @include tf-rounded {
+        border-radius: $tf-border-radius;
     }
 
     >span {
-        color: kt-base-color(label, 2);
+        color: tf-base-color(label, 2);
         display: table-cell;
         vertical-align: middle;
         padding: 0.75rem 1.2rem;
         font-size: 1rem;
         font-weight: 400;
         
-        >.kt-loader,
-        >.kt-spinner {
+        >.tf-loader,
+        >.tf-spinner {
             margin-right: 1.25rem;
         }
     }

@@ -12,7 +12,7 @@ import { Permission } from '../../../core/auth';
 
 const userManagementPermissionId = 2;
 @Component({
-	selector: 'kt-user-management',
+	selector: 'tf-user-management',
 	templateUrl: './user-management.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush
 })

@@ -5,7 +5,7 @@
 
 
 
-.kt-widget11 {
+.tf-widget11 {
     .table-responsive {
         overflow-y: hidden;
     }
@@ -20,7 +20,7 @@
                     vertical-align: top;
                     border-top: 0;
                     font-weight: 500;
-                    color: kt-base-color(label, 2);
+                    color: tf-base-color(label, 2);
                 }
             }     
         }
@@ -34,7 +34,7 @@
                     padding-right: 0.5rem;    
                     padding-top: 20px;                                                      
                     vertical-align: top;   
-                    color: kt-base-color(label, 3);
+                    color: tf-base-color(label, 3);
 
                     > label {
                         right: 0;
@@ -42,7 +42,7 @@
                         vertical-align: top;
                     }
 
-                    .kt-widget11__chart {
+                    .tf-widget11__chart {
                         position: relative;
                         margin-top: -0.6rem;
                     }
@@ -52,29 +52,29 @@
                     }                  
                 }
 
-                .kt-widget11__title {
+                .tf-widget11__title {
                     font-size: 1.1rem;
                     font-weight: 500; 
                     display: block;
-                    color: kt-base-color(label, 3);
+                    color: tf-base-color(label, 3);
                     transition: color .3s ease;
 
                     &:hover {
-                        color: kt-brand-color();
+                        color: tf-brand-color();
                         transition: color .3s ease;
                     }
 
                     > span {
-                        color: kt-base-color(label, 2);
+                        color: tf-base-color(label, 2);
                     }
                 }
 
-                .kt-widget11__sub {
+                .tf-widget11__sub {
                     display: block;
                     font-size: 1rem;
                 }
 
-                border-bottom: 1px dashed kt-base-color(grey, 2);
+                border-bottom: 1px dashed tf-base-color(grey, 2);
 
                 &:last-child {
                     border: 0;

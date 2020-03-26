@@ -11,8 +11,8 @@
     padding: 1rem 2rem;;
     margin: 0 0 $grid-gutter-width 0;
 
-    @include kt-rounded {
-        border-radius: $kt-border-radius;
+    @include tf-rounded {
+        border-radius: $tf-border-radius;
     }
 
     .alert-icon {
@@ -63,73 +63,73 @@
     }
 
     // States
-    @each $name, $color in $kt-state-colors {
+    @each $name, $color in $tf-state-colors {
     	&.alert-#{$name} {
-	        background: kt-get($kt-state-colors, $name, base);
-	        border: 1px solid kt-get($kt-state-colors, $name, base);
-	        color: kt-get($kt-state-colors, $name, inverse);
+	        background: tf-get($tf-state-colors, $name, base);
+	        border: 1px solid tf-get($tf-state-colors, $name, base);
+	        color: tf-get($tf-state-colors, $name, inverse);
 
 	        .alert-icon {
 		        i {
-		            color: kt-get($kt-state-colors, $name, inverse);
+		            color: tf-get($tf-state-colors, $name, inverse);
 		        }
 		    }
 
 		    .alert-text {
-		        color: kt-get($kt-state-colors, $name, inverse);
+		        color: tf-get($tf-state-colors, $name, inverse);
 
 		        hr {
-				    border-top-color: kt-get($kt-state-colors, $name, inverse);
+				    border-top-color: tf-get($tf-state-colors, $name, inverse);
 				    opacity: 0.4;
 				}
 		    }
 
 	    	.alert-close {
 	    		i {
-	    			color: kt-get($kt-state-colors, $name, inverse);
+	    			color: tf-get($tf-state-colors, $name, inverse);
 	    		}
 	    	}
 	    }
 
 	    &.alert-outline-#{$name} {
-	        border: 1px solid kt-get($kt-state-colors, $name, base);
-	        color: kt-get($kt-state-colors, $name, base);
+	        border: 1px solid tf-get($tf-state-colors, $name, base);
+	        color: tf-get($tf-state-colors, $name, base);
 
 	        .alert-icon {
 		        i {
-		            color: kt-get($kt-state-colors, $name, base);
+		            color: tf-get($tf-state-colors, $name, base);
 		        }
 		    }
 
 		    .alert-text {
-		        color: kt-get($kt-state-colors, $name, base);
+		        color: tf-get($tf-state-colors, $name, base);
 		    }
 
 	    	.alert-close {
 	    		i {
-	    			color: kt-get($kt-state-colors, $name, base);
+	    			color: tf-get($tf-state-colors, $name, base);
 	    		}
 	    	}
         }
 
         &.alert-solid-#{$name} {
-            background: rgba(kt-get($kt-state-colors, $name, base), 0.1);
+            background: rgba(tf-get($tf-state-colors, $name, base), 0.1);
 	        border-color: transparent;
-	        color: kt-get($kt-state-colors, $name, base);
+	        color: tf-get($tf-state-colors, $name, base);
 
 	        .alert-icon {
 		        i {
-		            color: kt-get($kt-state-colors, $name, base);
+		            color: tf-get($tf-state-colors, $name, base);
 		        }
 		    }
 
 		    .alert-text {
-		        color: kt-get($kt-state-colors, $name, base);
+		        color: tf-get($tf-state-colors, $name, base);
 		    }
 
 	    	.alert-close {
 	    		i {
-	    			color: kt-get($kt-state-colors, $name, base);
+	    			color: tf-get($tf-state-colors, $name, base);
 	    		}
 	    	}
 	    }
@@ -139,12 +139,12 @@
     &.alert-secondary {
         .alert-icon {
             i {
-                color: kt-base-color(label, 2);
+                color: tf-base-color(label, 2);
             }
         }
 
         .alert-text {
-            color: kt-base-color(label, 3);
+            color: tf-base-color(label, 3);
         }
     }
 

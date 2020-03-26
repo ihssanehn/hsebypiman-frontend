@@ -6,7 +6,7 @@
 
 
 // Base
-@mixin kt-bootstrap-typeahead-base() {
+@mixin tf-bootstrap-typeahead-base() {
     .typeahead {
         .twitter-typeahead {
             display: block !important;
@@ -21,8 +21,8 @@
 
             border-radius: 0;
 
-            @include kt-rounded {
-                border-radius: $kt-border-radius;
+            @include tf-rounded {
+                border-radius: $tf-border-radius;
             }
 
             .tt-dataset {
@@ -36,7 +36,7 @@
 }
 
 // Skin
-@mixin kt-bootstrap-typeahead-skin() {
+@mixin tf-bootstrap-typeahead-skin() {
     .typeahead {
         .form-control {
             &.tt-hint {
@@ -50,20 +50,20 @@
 
         .tt-menu {
             background: white;
-            box-shadow: $kt-dropdown-shadow;
+            box-shadow: $tf-dropdown-shadow;
 
             .tt-dataset {
                 .tt-suggestion {
-                    color: kt-base-color(label, 3);
+                    color: tf-base-color(label, 3);
                     cursor: pointer;
 
                     .tt-highlight {
-                        color: kt-base-color(label, 4);
+                        color: tf-base-color(label, 4);
                         font-weight: 500;
                     }
 
                     &:hover {
-                        background: kt-base-color(grey, 1);
+                        background: tf-base-color(grey, 1);
                     }
                 }
             }
@@ -73,7 +73,7 @@
 
 
 // Base
-@include kt-bootstrap-typeahead-base();
+@include tf-bootstrap-typeahead-base();
 
 // Light
-@include kt-bootstrap-typeahead-skin();
+@include tf-bootstrap-typeahead-skin();

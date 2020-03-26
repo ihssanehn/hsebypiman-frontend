@@ -17,7 +17,7 @@ import { AuthService } from './core/auth';
 
 @Component({
 	// tslint:disable-next-line:component-selector
-	selector: 'body[kt-root]',
+	selector: 'body[tf-root]',
 	templateUrl: './app.component.html',
 	styleUrls: ['./app.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush
@@ -67,7 +67,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
 				// to display back the body content
 				setTimeout(() => {
-					document.body.classList.add('kt-page--loaded');
+					document.body.classList.add('tf-page--loaded');
 				}, 500);
 			}
 		});

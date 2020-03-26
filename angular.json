@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "metronic": {
+    "cvtihse": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -81,18 +81,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "metronic:build"
+            "browserTarget": "cvtihse:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "metronic:build:production"
+              "browserTarget": "cvtihse:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "metronic:build"
+            "browserTarget": "cvtihse:build"
           }
         },
         "test": {
@@ -125,7 +125,7 @@
         }
       }
     },
-    "metronic-e2e": {
+    "cvtihse-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -134,11 +134,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "metronic:serve"
+            "devServerTarget": "cvtihse:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "metronic:serve:production"
+              "devServerTarget": "cvtihse:serve:production"
             }
           }
         },
@@ -154,5 +154,5 @@
       }
     }
   },
-  "defaultProject": "metronic"
+  "defaultProject": "cvtihse"
 }

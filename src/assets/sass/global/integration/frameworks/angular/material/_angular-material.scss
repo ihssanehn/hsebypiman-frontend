@@ -13,9 +13,9 @@
 // hue. Available color palettes: https://material.io/design/color/
 
 $mat-primary: (
-	100: lighten(kt-get($kt-state-colors, brand, base), 8%),
-	500: kt-get($kt-state-colors, brand, base),
-	700: darken(kt-get($kt-state-colors, brand, base), 8%),
+	100: lighten(tf-get($tf-state-colors, brand, base), 8%),
+	500: tf-get($tf-state-colors, brand, base),
+	700: darken(tf-get($tf-state-colors, brand, base), 8%),
 	contrast: (
 		100: $dark-primary-text,
 		500: $light-primary-text,
@@ -24,9 +24,9 @@ $mat-primary: (
 );
 
 $mat-accent: (
-	100: lighten(kt-get($kt-state-colors, primary, base), 8%),
-	500: kt-get($kt-state-colors, primary, base),
-	700: darken(kt-get($kt-state-colors, primary, base), 8%),
+	100: lighten(tf-get($tf-state-colors, primary, base), 8%),
+	500: tf-get($tf-state-colors, primary, base),
+	700: darken(tf-get($tf-state-colors, primary, base), 8%),
 	contrast: (
 		100: $dark-primary-text,
 		500: $light-primary-text,
@@ -35,9 +35,9 @@ $mat-accent: (
 );
 
 $mat-warn: (
-	100: lighten(kt-get($kt-state-colors, danger, base), 8%),
-	500: kt-get($kt-state-colors, danger, base),
-	700: darken(kt-get($kt-state-colors, danger, base), 8%),
+	100: lighten(tf-get($tf-state-colors, danger, base), 8%),
+	500: tf-get($tf-state-colors, danger, base),
+	700: darken(tf-get($tf-state-colors, danger, base), 8%),
 	contrast: (
 		100: $dark-primary-text,
 		500: $light-primary-text,
@@ -60,7 +60,7 @@ $angular-app-theme: (
 	is-dark: false,
 	foreground: (
 		base: black,
-		divider: kt-base-color(grey, 4),
+		divider: tf-base-color(grey, 4),
 		dividers: $dark-dividers,
 		disabled: $dark-disabled-text,
 		disabled-button: rgba(black, 0.26),

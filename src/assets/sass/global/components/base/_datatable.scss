@@ -6,37 +6,37 @@
 
 
 // Base
-@mixin kt-datatable-base() {
+@mixin tf-datatable-base() {
 	// Pagination
 	$page-size: 2.25rem;
-	$table-space: kt-get($kt-portlet, space, desktop);
-	$table-space-mobile: kt-get($kt-portlet, space, mobile);
+	$table-space: tf-get($tf-portlet, space, desktop);
+	$table-space-mobile: tf-get($tf-portlet, space, mobile);
 
-	.kt-datatable {
+	.tf-datatable {
 		display: none;
 	}
 
-	.kt-datatable.kt-datatable--default {
+	.tf-datatable.tf-datatable--default {
 		display: block;
 		margin-bottom: $table-space;
 
 		// Base
-		> .kt-datatable__table {
+		> .tf-datatable__table {
 			border-collapse: collapse;
 			overflow: hidden;
 			display: none;
 			width: 100%;
 
-			> .kt-datatable__head,
-			> .kt-datatable__body,
-			> .kt-datatable__foot {
+			> .tf-datatable__head,
+			> .tf-datatable__body,
+			> .tf-datatable__foot {
 				visibility: hidden;
 				display: block;
 
-				.kt-datatable__row {
+				.tf-datatable__row {
 					width: 100%;
 
-					> .kt-datatable__cell {
+					> .tf-datatable__cell {
 						// Row cell base
 						vertical-align: middle;
 						padding: 10px;
@@ -54,14 +54,14 @@
 							//font-size: 1.4rem;
 						}
 
-						&.kt-datatable__cell--left {
+						&.tf-datatable__cell--left {
 							text-align: left;
 							> span {
 								text-align: left;
 							}
 						}
 
-						&.kt-datatable__cell--right {
+						&.tf-datatable__cell--right {
 							text-align: right;
 							> span {
 								text-align: right;
@@ -71,14 +71,14 @@
 							}
 						}
 
-						&.kt-datatable__cell--center {
+						&.tf-datatable__cell--center {
 							text-align: center;
 							> span {
 								text-align: center;
 							}
 						}
 
-						&.kt-datatable__cell--sort {
+						&.tf-datatable__cell--sort {
 							cursor: pointer;
 
 							i {
@@ -86,7 +86,7 @@
 							}
 						}
 
-						&.kt-datatable__cell--resizing {
+						&.tf-datatable__cell--resizing {
 							cursor: col-resize;
 						}
 
@@ -97,13 +97,13 @@
 						}
 
 						// Row checkbox
-						&.kt-datatable__cell--check {
+						&.tf-datatable__cell--check {
 							text-align: center;
 
 							> span {
 								overflow: visible;
 
-								> .kt-checkbox {
+								> .tf-checkbox {
 									top: 2px;
 									padding: 0;
 									margin: 0 0 0 0;
@@ -112,11 +112,11 @@
 						}
 
 						// Row details 
-						&.kt-datatable__toggle-detail {
+						&.tf-datatable__toggle-detail {
 							> span {
 								width: 12px;
 							}
-							> .kt-datatable__toggle-detail {
+							> .tf-datatable__toggle-detail {
 								display: inline-block;
 								text-align: right;
 
@@ -155,15 +155,15 @@
 					}
 				}
 
-				> .kt-datatable__lock {
+				> .tf-datatable__lock {
 					border: 0;
 				}
 			}
 
-			> .kt-datatable__head,
-			> .kt-datatable__foot {
-				.kt-datatable__row {
-					> .kt-datatable__cell {
+			> .tf-datatable__head,
+			> .tf-datatable__foot {
+				.tf-datatable__row {
+					> .tf-datatable__cell {
 						> span {
 							font-weight: 500;
 							vertical-align: middle;
@@ -172,9 +172,9 @@
 				}
 			}
 
-			> .kt-datatable__head {
-				.kt-datatable__row {
-					> .kt-datatable__cell {
+			> .tf-datatable__head {
+				.tf-datatable__row {
+					> .tf-datatable__cell {
 						padding: 16px 10px;
 
 						> span {
@@ -191,18 +191,18 @@
 				}
 			}
 
-			> .kt-datatable__body {
+			> .tf-datatable__body {
 				&.ps {
 					padding-bottom: 0;
 				}
 
-				.kt-datatable__row {
-					> .kt-datatable__cell {
+				.tf-datatable__row {
+					> .tf-datatable__cell {
 						font-weight: regular;
 
-						&.kt-datatable__cell--check {
+						&.tf-datatable__cell--check {
 							> span {
-								> .kt-checkbox {
+								> .tf-checkbox {
 									top: 1px;
 								}
 							}
@@ -210,16 +210,16 @@
 					}
 				}
 
-				.kt-datatable__row-detail {
+				.tf-datatable__row-detail {
 					display: block;
-					.kt-datatable__detail {
+					.tf-datatable__detail {
 						display: block;
 						padding: 0 ($table-space + 35px);
 
-						.kt-datatable__row {
+						.tf-datatable__row {
 							display: table-row;
 
-							> .kt-datatable__cell {
+							> .tf-datatable__cell {
 								padding: 8px 12px;
 								text-align: left;
 								vertical-align: top;
@@ -244,20 +244,20 @@
 		}
 
 		// Error message
-		&.kt-datatable--error {
-			.kt-datatable__body {
+		&.tf-datatable--error {
+			.tf-datatable__body {
 				padding: 30px;
 				text-align: center;
 			}
 		}
 
 		// Lock state
-		&.kt-datatable--lock {
-			> .kt-datatable__table {
-				> .kt-datatable__head,
-				> .kt-datatable__body,
-				> .kt-datatable__foot {
-					> .kt-datatable__lock {
+		&.tf-datatable--lock {
+			> .tf-datatable__table {
+				> .tf-datatable__head,
+				> .tf-datatable__body,
+				> .tf-datatable__foot {
+					> .tf-datatable__lock {
 						display: inline-block;
 						position: relative;
 						vertical-align: top;
@@ -268,24 +268,24 @@
 		}
 
 		// Loaded state
-		&.kt-datatable--loaded {
+		&.tf-datatable--loaded {
 			display: block;
 
-			> .kt-datatable__table {
+			> .tf-datatable__table {
 				display: block;
 
-				> .kt-datatable__head,
-				> .kt-datatable__body,
-				> .kt-datatable__foot {
+				> .tf-datatable__head,
+				> .tf-datatable__body,
+				> .tf-datatable__foot {
 					visibility: visible;
 					display: block;
 					position: relative;
 
-					.kt-datatable__row {
+					.tf-datatable__row {
 						display: table;
 						table-layout: initial;
 
-						> .kt-datatable__cell {
+						> .tf-datatable__cell {
 							//display: table-cell;
 						}
 					}
@@ -294,31 +294,31 @@
 		}
 
 		// Scrollable state
-		&.kt-datatable--scroll {
-			> .kt-datatable__table {
+		&.tf-datatable--scroll {
+			> .tf-datatable__table {
 				display: block;
 
-				> .kt-datatable__head,
-				> .kt-datatable__body,
-				> .kt-datatable__foot {
+				> .tf-datatable__head,
+				> .tf-datatable__body,
+				> .tf-datatable__foot {
 				}
 
-				> .kt-datatable__head,
-				> .kt-datatable__foot {
+				> .tf-datatable__head,
+				> .tf-datatable__foot {
 					overflow: hidden;
 
-					.kt-datatable__row {
+					.tf-datatable__row {
 						position: relative;
 					}
 				}
 
-				> .kt-datatable__body {
+				> .tf-datatable__body {
 					overflow: hidden;
 				}
 			}
 		}
 
-		> .kt-datatable__pager {
+		> .tf-datatable__pager {
 			margin: 0px;
 			padding: $table-space;
 			padding-bottom: 0;
@@ -326,11 +326,11 @@
 			justify-content: space-between;
 			flex-wrap: wrap;
 
-			&.kt-datatable__pager--top {
+			&.tf-datatable__pager--top {
 				margin-bottom: 20px;
 			}
 
-			> .kt-datatable__pager-nav {
+			> .tf-datatable__pager-nav {
 				margin: 0;
 				padding: 0;
 				display: flex;
@@ -344,7 +344,7 @@
 						margin-right: 0;
 					}
 
-					> .kt-datatable__pager-link {
+					> .tf-datatable__pager-link {
 						cursor: pointer;
 						display: flex;
 						justify-content: center;
@@ -354,7 +354,7 @@
 						padding: 0.5rem;
 						border-radius: 3px;
 
-						@include kt-not-rounded {
+						@include tf-not-rounded {
 							border-radius: 0;
 						}
 
@@ -369,29 +369,29 @@
 							display: inline-block;
 						}
 
-						&.kt-datatable__pager-link--more-prev,
-						&.kt-datatable__pager-link--more-next {
+						&.tf-datatable__pager-link--more-prev,
+						&.tf-datatable__pager-link--more-next {
 							font-weight: 600;
 						}
 					}
 
-					> .kt-pager-input {
+					> .tf-pager-input {
 						height: $page-size;
 						width: 3.5rem;
 						text-align: center;
 
-						@include kt-rounded {
+						@include tf-rounded {
 							border-radius: 3px !important;
 						}
 					}
 				}
 			}
 
-			> .kt-datatable__pager-info {
+			> .tf-datatable__pager-info {
 				display: flex;
 				align-items: center;
 
-				.kt-datatable__pager-size {
+				.tf-datatable__pager-size {
 					margin-right: 10px;
 
 					.btn.dropdown-toggle {
@@ -399,7 +399,7 @@
 						height: $page-size;
 						padding: 0.45rem 1rem;
 
-						@include kt-not-rounded {
+						@include tf-not-rounded {
 							border-radius: 0 !important;
 						}
 					}
@@ -412,18 +412,18 @@
 		}
 
 		// Subtable
-		&.kt-datatable--subtable {
-			> .kt-datatable__table {
+		&.tf-datatable--subtable {
+			> .tf-datatable__table {
 				margin-bottom: 0;
 				
-				> .kt-datatable__head,
-				> .kt-datatable__body,
-				> .kt-datatable__foot {
-					.kt-datatable__row {
+				> .tf-datatable__head,
+				> .tf-datatable__body,
+				> .tf-datatable__foot {
+					.tf-datatable__row {
 						//width: 100%;
 					}
 
-					.kt-datatable__toggle-subtable {
+					.tf-datatable__toggle-subtable {
 						display: flex;
 						justify-content: center;
 						align-items: center;
@@ -438,15 +438,15 @@
 						}
 					}
 
-					.kt-datatable__row-subtable {
+					.tf-datatable__row-subtable {
 						display: table;
 						width: 100%;
 
-						> .kt-datatable__subtable {
+						> .tf-datatable__subtable {
 							padding: 20px;
 
-							> .kt-datatable {
-								> .kt-datatable__pager {
+							> .tf-datatable {
+								> .tf-datatable__pager {
 									padding-top: 10px;
 									padding-bottom: 10px;
 								}
@@ -458,16 +458,16 @@
 		}
 	}
 
-	@include kt-mobile {
-		.kt-datatable.kt-datatable--default {
+	@include tf-mobile {
+		.tf-datatable.tf-datatable--default {
 			margin-bottom: $table-space-mobile;
 
-			> .kt-datatable__table {
-				> .kt-datatable__head,
-				> .kt-datatable__body,
-				> .kt-datatable__foot {
-					.kt-datatable__row {
-						> .kt-datatable__cell {
+			> .tf-datatable__table {
+				> .tf-datatable__head,
+				> .tf-datatable__body,
+				> .tf-datatable__foot {
+					.tf-datatable__row {
+						> .tf-datatable__cell {
 							&:first-child {
 								padding-left: $table-space-mobile;
 							}
@@ -480,12 +480,12 @@
 				}
 			}
 
-			> .kt-datatable__pager {
+			> .tf-datatable__pager {
 				margin: 0;
 				padding: $table-space-mobile $table-space-mobile $table-space-mobile/2 $table-space-mobile;
 
-				.kt-datatable__pager-nav,
-				.kt-datatable__pager-info {
+				.tf-datatable__pager-nav,
+				.tf-datatable__pager-info {
 					margin-top: 10px;
 				}
 			}
@@ -494,94 +494,94 @@
 }
 
 // Skin
-@mixin kt-datatable-skin() {
-	.kt-datatable {
+@mixin tf-datatable-skin() {
+	.tf-datatable {
 		// Base color
 		$base_color: #f9fbfe;
 
 		// Scrollbar
-		$scrollbar_color: darken(kt-base-color(shape, 2), 3%);
+		$scrollbar_color: darken(tf-base-color(shape, 2), 3%);
 
 		// Table
 		$base_bg: #fff;
 
 		// Head
 		$head_cell_bg: transparent;
-		$head_cell_color: kt-base-color(label, 3);
-		$head_cell_sorted_color: kt-state-color(brand);
-		$head_cell_icon_color: kt-state-color(brand);
+		$head_cell_color: tf-base-color(label, 3);
+		$head_cell_sorted_color: tf-state-color(brand);
+		$head_cell_icon_color: tf-state-color(brand);
 
 		// Checkbox
-		$checkbox_bg: kt-base-color(shape, 1);
-		$checkbox_checked_bg: kt-base-color(shape, 2);
+		$checkbox_bg: tf-base-color(shape, 1);
+		$checkbox_checked_bg: tf-base-color(shape, 2);
 
 		// Row colors
-		$row-border-color: kt-base-color(shape, 1);
+		$row-border-color: tf-base-color(shape, 1);
 		$row-even: transparent;
 		$row-hover: transparent;
-		$row-active: kt-base-color(grey, 1);
+		$row-active: tf-base-color(grey, 1);
 
 		// Body cell
-		$body_cell_font_color: kt-base-color(label, 3);
+		$body_cell_font_color: tf-base-color(label, 3);
 
 		// Lock table shadow
 		$lock-shadow: 0px 0px 17px 5px rgba(113, 106, 202, 0.14);
 
 		// Subtable
-		$subtable_toggle_icon: kt-state-color(brand);
+		$subtable_toggle_icon: tf-state-color(brand);
 		$subtable_expanded: $row-active;
 		$subtable_pager_pagel: $base-color;
 		$subtable_shadow: 0px 0px 15px 1px rgba(113, 106, 202, 0.1);
 
-		$detail_icon_color: kt-state-color(brand); //kt-base-color(shape, 2);
-	    $detail_icon_color_hover: kt-state-color(brand);
+		$detail_icon_color: tf-state-color(brand); //tf-base-color(shape, 2);
+	    $detail_icon_color_hover: tf-state-color(brand);
 
 		// Pagination colors
-		$page-default: kt-base-color(shape, 1);
-		$page-default-font: kt-base-color(shape, 3);
-		$page-hover: kt-state-color(brand);
-		$page-hover-font: kt-state-color(brand, inverse);
-		$page-active: kt-state-color(brand);
-		$page-active-font: kt-state-color(brand, inverse);
+		$page-default: tf-base-color(shape, 1);
+		$page-default-font: tf-base-color(shape, 3);
+		$page-hover: tf-state-color(brand);
+		$page-hover-font: tf-state-color(brand, inverse);
+		$page-active: tf-state-color(brand);
+		$page-active-font: tf-state-color(brand, inverse);
 
-		$page-info: kt-base-color(shape, 1);
-		$page-info-font: kt-base-color(shape, 3);
-		$page-info-hover: kt-state-color(brand);
-		$page-info-hover-font: kt-state-color(brand, inverse);
+		$page-info: tf-base-color(shape, 1);
+		$page-info-font: tf-base-color(shape, 3);
+		$page-info-hover: tf-state-color(brand);
+		$page-info-hover-font: tf-state-color(brand, inverse);
 
 		// Base Table
-		> .kt-datatable__table {
+		> .tf-datatable__table {
 			background-color: $base_bg;
 			//border-bottom: 1px solid $row-border-color;
 
 			// General
-			> .kt-datatable__head,
-			> .kt-datatable__body,
-			> .kt-datatable__foot {
-				> .kt-datatable__lock {
-					&.kt-datatable__lock--left {
+			> .tf-datatable__head,
+			> .tf-datatable__body,
+			> .tf-datatable__foot {
+				> .tf-datatable__lock {
+					&.tf-datatable__lock--left {
 						z-index: 1;
 						box-shadow: $lock-shadow;
 					}
 
-					&.kt-datatable__lock--right {
+					&.tf-datatable__lock--right {
 						box-shadow: $lock-shadow;
 					}
 
-					&.kt-datatable__lock--scroll {
+					&.tf-datatable__lock--scroll {
 						position: relative;
 					}
 				}
 
-				.kt-datatable__row {
+				.tf-datatable__row {
 					border-bottom: 1px solid $row-border-color;
 
-					> .kt-datatable__cell {
-						.kt-checkbox.kt-checkbox--solid > span {
+					> .tf-datatable__cell {
+						.tf-checkbox.tf-checkbox--solid > span {
 							background: $checkbox_bg;
 						}
 
-						.kt-checkbox.kt-checkbox--solid > input:checked ~ span {
+						.tf-checkbox.tf-checkbox--solid > input:checked ~ span {
 							background: $checkbox_checked_bg;
 						}
 					}
@@ -589,8 +589,8 @@
 			}
 
 			// Body
-			> .kt-datatable__body {
-				.kt-datatable__toggle-detail {
+			> .tf-datatable__body {
+				.tf-datatable__toggle-detail {
 					vertical-align: middle;
 					i {
 						transition: color 0.3s ease; 
@@ -603,7 +603,7 @@
 					}
 
 					&:hover,
-					&.kt-datatable__toggle-detail--active {
+					&.tf-datatable__toggle-detail--active {
 						i {
 							transition: color 0.3s ease;  
 							color: $detail_icon_color_hover; 
@@ -611,8 +611,8 @@
 					}
 				}
 
-				.kt-datatable__row-detail {
-					.kt-datatable__detail {
+				.tf-datatable__row-detail {
+					.tf-datatable__detail {
 						table {
 							border-left: 1px solid $row-border-color;
 							border-right: 1px solid $row-border-color;
@@ -622,10 +622,10 @@
 			}
 
 			// Head & Foot
-			> .kt-datatable__head,
-			> .kt-datatable__foot {
-				.kt-datatable__row {
-					> .kt-datatable__cell {
+			> .tf-datatable__head,
+			> .tf-datatable__foot {
+				.tf-datatable__row {
+					> .tf-datatable__cell {
 						background: $head_cell_bg;
 
 						> span {
@@ -636,9 +636,9 @@
 			}
 
 			// Head
-			> .kt-datatable__head {
-				.kt-datatable__row {
-					> .kt-datatable__cell {
+			> .tf-datatable__head {
+				.tf-datatable__row {
+					> .tf-datatable__cell {
 						> span {
 							> i {
 								color: $head_cell_icon_color;
@@ -649,9 +649,9 @@
 			}
 
 			// Error message
-			&.kt-datatable--error {
-				.kt-datatable__body {
-					.kt-datatable__error {
+			&.tf-datatable--error {
+				.tf-datatable__body {
+					.tf-datatable__error {
 
 					}
 				}
@@ -659,18 +659,18 @@
 		}
 
 		// Pagination
-		> .kt-datatable__pager {
-			> .kt-datatable__pager-nav {
+		> .tf-datatable__pager {
+			> .tf-datatable__pager-nav {
 				> li {
-					> .kt-datatable__pager-link {
+					> .tf-datatable__pager-link {
 						color: $page-default-font;
 
-						@include kt-transition();
+						@include tf-transition();
 
-						&.kt-datatable__pager-link--first,
-						&.kt-datatable__pager-link--prev,
-						&.kt-datatable__pager-link--next,
-						&.kt-datatable__pager-link--last {
+						&.tf-datatable__pager-link--first,
+						&.tf-datatable__pager-link--prev,
+						&.tf-datatable__pager-link--next,
+						&.tf-datatable__pager-link--last {
 							background: $page-default;
 
 							&:hover {
@@ -680,31 +680,31 @@
 						}
 
 						&:hover {
-							@include kt-transition();
+							@include tf-transition();
 							background: $page-hover;
 							color: $page-hover-font;
 						}
 
-						&.kt-datatable__pager-link--active {
+						&.tf-datatable__pager-link--active {
 							background: $page-active;
 							color: $page-active-font;
 						}
 
-						&.kt-datatable__pager-link--disabled,
-						&.kt-datatable__pager-link--disabled:hover {
+						&.tf-datatable__pager-link--disabled,
+						&.tf-datatable__pager-link--disabled:hover {
 							color: $page-default-font;
 							background: $page-default;
 							opacity: 0.3;
 						}
 					}
 
-					> .kt-pager-input {
-						@include kt-transition();
+					> .tf-pager-input {
+						@include tf-transition();
 						background: $page-default;
 						border-color: $page-default;
 
 						&:focus {
-							@include kt-transition();
+							@include tf-transition();
 							background: $page-hover;
 							border-color: $page-hover;
 						}
@@ -712,8 +712,8 @@
 				}
 			}
 
-			> .kt-datatable__pager-info {
-				.kt-datatable__pager-size {
+			> .tf-datatable__pager-info {
+				.tf-datatable__pager-size {
 					.btn.dropdown-toggle {
 						font-size: 1rem;
 						font-weight: 500;
@@ -742,7 +742,7 @@
 						z-index: 100;
 
 						.modal & {
-							z-index: $kt-modal-zindex + 1;
+							z-index: $tf-modal-zindex + 1;
 						}
 					}
 				}
@@ -750,19 +750,19 @@
 		}
 
 		// Subtable
-		&.kt-datatable--subtable {
-			> .kt-datatable__table {
-				> .kt-datatable__body {
-					.kt-datatable__toggle-subtable {
+		&.tf-datatable--subtable {
+			> .tf-datatable__table {
+				> .tf-datatable__body {
+					.tf-datatable__toggle-subtable {
 						> i {
 							color: $subtable_toggle_icon;
 						}
 					}
 
-					.kt-datatable__row-subtable {
+					.tf-datatable__row-subtable {
 						border-top: 0;
 
-						.kt-datatable__pager {
+						.tf-datatable__pager {
 							//background: $subtable_pager_pagel;
 						}
 					}
@@ -771,40 +771,40 @@
 		}
 
 		// Default Skin
-		&.kt-datatable--default {
+		&.tf-datatable--default {
 			// Base Table
-			> .kt-datatable__table {
-				> .kt-datatable__body {
-					.kt-datatable__row {
-						> .kt-datatable__cell {
+			> .tf-datatable__table {
+				> .tf-datatable__body {
+					.tf-datatable__row {
+						> .tf-datatable__cell {
 							transition: background 0.3s ease;
 
 							> span {
 								color: $body_cell_font_color;
 							}
 
-							&.kt-datatable__cell--hover {
+							&.tf-datatable__cell--hover {
 								transition: background 0.3s ease;
 								background: $row-hover;
 							}
 						}
 
-						&.kt-datatable__row--even {
-							> .kt-datatable__cell {
+						&.tf-datatable__row--even {
+							> .tf-datatable__cell {
 								background: $row-even;
 							}
 						}
 
-						&.kt-datatable__row--active {
-							> .kt-datatable__cell {
+						&.tf-datatable__row--active {
+							> .tf-datatable__cell {
 								background: $row-active;
 							}
 						}
 
-						&.kt-datatable__row--hover:not(.kt-datatable__row--active) {
+						&.tf-datatable__row--hover:not(.tf-datatable__row--active) {
 							transition: background 0.3s ease;
 							
-							> .kt-datatable__cell {
+							> .tf-datatable__cell {
 								transition: background 0.3s ease;
 								background: $row-hover;
 							}
@@ -812,11 +812,11 @@
 					}
 				}
 
-				> .kt-datatable__head,
-				> .kt-datatable__foot {
-					.kt-datatable__row {
-						> .kt-datatable__cell {
-							&.kt-datatable__cell--sorted {
+				> .tf-datatable__head,
+				> .tf-datatable__foot {
+					.tf-datatable__row {
+						> .tf-datatable__cell {
+							&.tf-datatable__cell--sorted {
 								> span {
 									color: $head_cell_sorted_color;
 								}
@@ -828,30 +828,30 @@
 			}
 
 			// Subtable
-			&.kt-datatable--subtable {
-				> .kt-datatable__table {
-					> .kt-datatable__body {
-						.kt-datatable__row {
-							&.kt-datatable__row--subtable-expanded {
-								> .kt-datatable__cell {
+			&.tf-datatable--subtable {
+				> .tf-datatable__table {
+					> .tf-datatable__body {
+						.tf-datatable__row {
+							&.tf-datatable__row--subtable-expanded {
+								> .tf-datatable__cell {
 									background: $subtable_expanded !important;
 								}
 							}
 						}
 
-						.kt-datatable__row-subtable {
+						.tf-datatable__row-subtable {
 							background: $row-even;
 
-							> .kt-datatable__subtable {
-								> .kt-datatable {
+							> .tf-datatable__subtable {
+								> .tf-datatable {
 									box-shadow: $subtable_shadow;
 								}
 							}
 
-							&.kt-datatable__row-loading {
-								> .kt-datatable__subtable {
-									> .kt-datatable {
-										> .kt-datatable__table {
+							&.tf-datatable__row-loading {
+								> .tf-datatable__subtable {
+									> .tf-datatable {
+										> .tf-datatable__table {
 											background: $row-even;
 										}
 									}
@@ -878,7 +878,7 @@
 
 // Build
 // Base
-@include kt-datatable-base();
+@include tf-datatable-base();
 
 // Skin
-@include kt-datatable-skin();
+@include tf-datatable-skin();
