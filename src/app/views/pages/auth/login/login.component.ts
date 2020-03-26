@@ -128,19 +128,18 @@ export class LoginComponent implements OnInit, OnDestroy {
 		this.auth
 			.login(authData.email, authData.password)
 			.subscribe(user=>{
-				console.log(user);
+				
 				if(user){
 					localStorage.setItem(environment.authTokenKey, user.access_token);
 					this.loading = false;
 					this.router.navigateByUrl(this.returnUrl);
-					console.log('here');
-					// this.cdr.markForCheck();
+					this.cdr.markForCheck();
 				}
 			},
 			err => {
 				// this.notificationService.error('Bad credentials', this.translate.instant('AUTH.VALIDATION.INVALID_LOGIN'));
 				this.loading = false;
-				// this.cdr.markForCheck();
+				this.cdr.markForCheck();
 			});
 	}
 

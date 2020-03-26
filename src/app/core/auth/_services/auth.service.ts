@@ -12,8 +12,10 @@ import { NgxPermissionsService } from 'ngx-permissions';
 import { Router } from '@angular/router';
 
 
-const API_PERMISSION_URL = 'api/permissions';
-const API_ROLES_URL = 'api/roles';
+
+const API_USERS_URL = environment.apiBaseUrl + "users";
+const API_PERMISSION_URL = environment.apiBaseUrl + "permissions";
+const API_ROLES_URL = environment.apiBaseUrl + "roles";
 
 @Injectable()
 export class AuthService extends HttpService {
@@ -25,115 +27,134 @@ export class AuthService extends HttpService {
         super();
     }
 
-    private currentUserSubject = new BehaviorSubject<User>(null);
+    
+	private currentUserSubject = new BehaviorSubject<User>(null);
 	public currentUser = this.currentUserSubject
 		.asObservable()
 		.pipe(distinctUntilChanged());
-    
-    // Authentication/Authorization
-    login(email: string, password: string): Observable<User> {
-        return this.http.post<User>(`${this.baseUrl}auth/login`, { email, password });
-    }
 
-    getUserByToken(): Observable<User> {
+	// Authentication/Authorization
+	login(email: string, password: string): Observable<User> {
+		return this.http.post<User>(`${this.baseUrl}auth/login`, {
+			email,
+			password
+		});
+	}
+
+	getUserByToken(): Observable<User> {
 		return this.http.get<User>(`${this.baseUrl}auth/user`);
-    }
-
-    register(user: User): Observable<any> {
-        const httpHeaders = new HttpHeaders();
-        httpHeaders.set('Content-Type', 'application/json');
-        return this.http.post<User>(`${this.baseUrl}auth/`, user, { headers: httpHeaders })
-            .pipe(
-                map((res: User) => {
-                    return res;
-                }),
-                catchError(err => {
-                    return null;
-                })
-            );
-    }
-
-    /*
-     * Submit forgot password request
-     *
-     * @param {string} email
-     * @returns {Observable<any>}
-     */
-    public requestPassword(email: string): Observable<any> {
-    	return this.http.get(`${this.baseUrl}auth/` + '/forgot?=' + email)
-    		.pipe(catchError(this.handleError('forgot-password', []))
-	    );
-    }
-
-
-    getAllUsers(): Observable<User[]> {
-		return this.http.get<User[]>(`${this.baseUrl}auth/`);
-    }
-
-    getUserById(userId: number): Observable<User> {
-		return this.http.get<User>(`${this.baseUrl}auth/` + `/${userId}`);
 	}
 
+	updateProfile(payload): Observable<User> {
+		return this.http
+			.put<any>(`${this.baseUrl}auth/user`, payload)
+			.pipe(map(result => result));
+	}
 
-    // DELETE => delete the user from the server
+	logout(): Observable<any> {
+		return this.http.post(`${this.baseUrl}auth/logout`, {});
+	}
+
+	register(user: User): Observable<any> {
+		const httpHeaders = new HttpHeaders();
+		httpHeaders.set("Content-Type", "application/json");
+		return this.http
+			.post<User>(API_USERS_URL, user, { headers: httpHeaders })
+			.pipe(
+				map((res: User) => {
+					return res;
+				}),
+				catchError(err => {
+					return null;
+				})
+			);
+	}
+
+	/*
+	 * Submit forgot password request
+	 *
+	 * @param {string} email
+	 * @returns {Observable<any>}
+	 */
+	public requestPassword(email: string): Observable<any> {
+		return this.http
+			.get(API_USERS_URL + "/forgot?=" + email)
+			.pipe(catchError(this.handleError("forgot-password", [])));
+	}
+
+	getAllUsers(): Observable<User[]> {
+        return this.http.get<User[]>(API_USERS_URL);
+        // .pipe(
+		// 	map((res: any) =>
+		// 		// res.items.map((user: User) => new User().deserialize(user))
+		// 	),
+		// 	catchError(err => {
+		// 		return null;
+		// 	})
+		// );
+	}
+
+	// getUsersPaginate(filter = {}): Observable<Paginate<User>> {
+	// 	return this.http.post<Paginate<User>>(`${this.baseUrl}users/paginate`, { ...filter });
+	// }
+
+	getUserById(userId: number): Observable<User> {
+		return this.http.get<User>(API_USERS_URL + `/${userId}`)
+	}
+
+	// DELETE => delete the user from the server
 	deleteUser(userId: number) {
-		const url = `${`${this.baseUrl}auth/`}/${userId}`;
+		const url = `${API_USERS_URL}/${userId}`;
 		return this.http.delete(url);
-    }
+	}
 
-    // UPDATE => PUT: update the user on the server
 	updateUser(_user: User): Observable<any> {
-        const httpHeaders = new HttpHeaders();
-        httpHeaders.set('Content-Type', 'application/json');
-		      return this.http.put(`${this.baseUrl}auth/`, _user, { headers: httpHeaders });
+		return this.http.put<any>(`${this.baseUrl}users/` + _user.id, _user).pipe(map(result => result));
 	}
 
-    // CREATE =>  POST: add a new user to the server
+	// CREATE =>  POST: add a new user to the server
 	createUser(user: User): Observable<User> {
-    	const httpHeaders = new HttpHeaders();
-     httpHeaders.set('Content-Type', 'application/json');
-		   return this.http.post<User>(`${this.baseUrl}auth/`, user, { headers: httpHeaders});
+		return this.http.post<User>(`${this.baseUrl}users`, user);
 	}
 
-    // Method from server should return QueryResultsModel(items: any[], totalsCount: number)
+	// Method from server should return QueryResultsModel(items: any[], totalsCount: number)
 	// items => filtered/sorted result
 	findUsers(queryParams: QueryParamsModel): Observable<QueryResultsModel> {
-        const httpHeaders = new HttpHeaders();
-        httpHeaders.set('Content-Type', 'application/json');
-		      return this.http.post<QueryResultsModel>(`${this.baseUrl}auth/` + '/findUsers', queryParams, { headers: httpHeaders});
-    }
-
-    // Permission
-    getAllPermissions(): Observable<Permission[]> {
+		const httpHeaders = new HttpHeaders();
+		httpHeaders.set("Content-Type", "application/json");
+		return this.http.post<QueryResultsModel>(
+			API_USERS_URL + "/search",
+			queryParams,
+			{ headers: httpHeaders }
+		);
+	}
+	// Permission
+	getAllPermissions(): Observable<Permission[]> {
 		return this.http.get<Permission[]>(API_PERMISSION_URL);
-    }
-
-    getRolePermissions(roleId: number): Observable<Permission[]> {
-        return this.http.get<Permission[]>(API_PERMISSION_URL + '/getRolePermission?=' + roleId);
-    }
-
-    // Roles
-    getAllRoles(): Observable<Role[]> {
-        return this.http.get<Role[]>(API_ROLES_URL);
-    }
-
-    getRoleById(roleId: number): Observable<Role> {
-		return this.http.get<Role>(API_ROLES_URL + `/${roleId}`);
-    }
-
-    // CREATE =>  POST: add a new role to the server
-	createRole(role: Role): Observable<Role> {
-		// Note: Add headers if needed (tokens/bearer)
-        const httpHeaders = new HttpHeaders();
-        httpHeaders.set('Content-Type', 'application/json');
-		      return this.http.post<Role>(API_ROLES_URL, role, { headers: httpHeaders});
+	}	// Roles
+	getAllRoles(): Observable<Role[]> {
+		return this.http.get<Role[]>(API_ROLES_URL);
 	}
 
-    // UPDATE => PUT: update the role on the server
+	getRoleById(roleId: number): Observable<Role> {
+		return this.http.get<Role>(API_ROLES_URL + `/${roleId}`);
+	}
+
+	// CREATE =>  POST: add a new role to the server
+	createRole(role: Role): Observable<Role> {
+		// Note: Add headers if needed (tokens/bearer)
+		const httpHeaders = new HttpHeaders();
+		httpHeaders.set("Content-Type", "application/json");
+		return this.http.post<Role>(API_ROLES_URL, role, {
+			headers: httpHeaders
+		});
+	}
+
+	// UPDATE => PUT: update the role on the server
 	updateRole(role: Role): Observable<any> {
-        const httpHeaders = new HttpHeaders();
-        httpHeaders.set('Content-Type', 'application/json');
-		      return this.http.put(API_ROLES_URL, role, { headers: httpHeaders });
+		const httpHeaders = new HttpHeaders();
+		httpHeaders.set("Content-Type", "application/json");
+		return this.http.put(API_ROLES_URL, role, { headers: httpHeaders });
 	}
 
 	// DELETE => delete the role from the server
@@ -142,52 +163,60 @@ export class AuthService extends HttpService {
 		return this.http.delete<Role>(url);
 	}
 
-    // Check Role Before deletion
-    isRoleAssignedToUsers(roleId: number): Observable<boolean> {
-        return this.http.get<boolean>(API_ROLES_URL + '/checkIsRollAssignedToUser?roleId=' + roleId);
-    }
-
-    findRoles(queryParams: QueryParamsModel): Observable<QueryResultsModel> {
-        // This code imitates server calls
-        const httpHeaders = new HttpHeaders();
-        httpHeaders.set('Content-Type', 'application/json');
-		      return this.http.post<QueryResultsModel>(API_ROLES_URL + '/findRoles', queryParams, { headers: httpHeaders});
+	// Check Role Before deletion
+	isRoleAssignedToUsers(roleId: number): Observable<boolean> {
+		return this.http.get<boolean>(
+			API_ROLES_URL + "/checkIsRollAssignedToUser?roleId=" + roleId
+		);
 	}
 
- 	/*
- 	 * Handle Http operation that failed.
- 	 * Let the app continue.
-     *
-	 * @param operation - name of the operation that failed
- 	 * @param result - optional value to return as the observable result
- 	 */
-    private handleError<T>(operation = 'operation', result?: any) {
-        return (error: any): Observable<any> => {
-            // TODO: send the error to remote logging infrastructure
-            console.error(error); // log to console instead
+	findRoles(queryParams: QueryParamsModel): Observable<QueryResultsModel> {
+		// This code imitates server calls
+		const httpHeaders = new HttpHeaders();
+		httpHeaders.set("Content-Type", "application/json");
+		return this.http.post<QueryResultsModel>(
+			API_ROLES_URL + "/search",
+			queryParams,
+			{ headers: httpHeaders }
+		);
+	}
 
-            // Let the app keep running by returning an empty result.
-            return of(result);
-        };
-    }
 
-    registerPermissions(user: User) {
+
+	registerPermissions(user: User) {
 		this.currentUserSubject.next(user);
 		// this.permissionsService.loadPermissions([user.role.slug]);
-    }
-    
-    async populate() {
+	}
+
+
+
+	async populate() {
 		const userToken = localStorage.getItem(environment.authTokenKey);
 		if (userToken) {
-            console.log('yes');
 			let user = await this.getUserByToken().toPromise();
 			this.registerPermissions(user);
 			return true;
 		} else {
-            console.log('no');
 			localStorage.removeItem(environment.authTokenKey);
 			this.router.navigate(['/auth/login']);
 			return false;
 		}
+	}
+
+	/*
+	 * Handle Http operation that failed.
+	 * Let the app continue.
+	 *
+	 * @param operation - name of the operation that failed
+	 * @param result - optional value to return as the observable result
+	 */
+	private handleError<T>(operation = "operation", result?: any) {
+		return (error: any): Observable<any> => {
+			// TODO: send the error to remote logging infrastructure
+			console.error(error); // log to console instead
+
+			// Let the app keep running by returning an empty result.
+			return of(result);
+		};
 	}
 }

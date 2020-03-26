@@ -14,7 +14,7 @@ export class MenuConfig {
 					title: 'Chantiers',
 					root: true,
 					alignment: 'left',
-					page: '/chantier',
+					page: '/chantiers/list',
 					translate: 'MENU.CHANTIER',
 				},
 				{

@@ -6,16 +6,16 @@
 
 .tf-header__brand {
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: center;
 	align-content: flex-begin;
 	flex-direction: row;
 	padding: 0;
 	position: relative;
+	width: tf-get($tf-aside-config, base, default, width);
 
 	.tf-header__brand-logo {
 		display: flex;
-		justify-content: flex-begin;
 		align-items: flex-end;
 	}
 

@@ -47,12 +47,13 @@ $tf-state-colors: (
 );
 
 // Layout
-$tf-aside-default-width: 245px;
+$tf-aside-default-width: 278px;
+$tf-aside-padding-y: 15px;
 $tf-aside-offcanvas-width: 255px;
 
 // Page padding
 $tf-page-padding: (
-	desktop: 30px,
+	desktop: 15px,
 	mobile: 15px
 );
 

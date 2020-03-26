@@ -57,7 +57,7 @@ export class UserSideProfileComponent implements OnInit {
 	 * Log out
 	 */
 	logout() {
-		// this.authService.logout().toPromise();
+		this.authService.logout().toPromise();
 		localStorage.removeItem(environment.authTokenKey);
 		this.router.navigate(['/auth/login']);
 	}

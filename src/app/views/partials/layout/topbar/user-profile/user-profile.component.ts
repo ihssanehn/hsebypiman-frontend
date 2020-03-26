@@ -45,20 +45,20 @@ export class UserProfileComponent implements OnInit {
 	 * On init
 	 */
 	async ngOnInit() {
-		this.user = await this.authService.getUserByToken().toPromise();
-		this.cdr.detectChanges();
+		// this.user = await this.authService.getUserByToken().toPromise();
+		// this.cdr.detectChanges();
 	}
 
 	viewProfile(){
-		console.log(this.user);
-		this.router.navigate([`profile/${this.user.id}`]);
+		// console.log(this.user);
+		// this.router.navigate([`profile/${this.user.id}`]);
 	}
 	/**
 	 * Log out
 	 */
 	logout() {
 		// this.authService.logout().toPromise();
-		localStorage.removeItem(environment.authTokenKey);
-		this.router.navigate(['/auth/login']);
+		// localStorage.removeItem(environment.authTokenKey);
+		// this.router.navigate(['/auth/login']);
 	}
 }
