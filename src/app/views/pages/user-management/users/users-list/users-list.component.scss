@@ -1,0 +1,64 @@
+@import "~assets/sass/config";
+
+:host {
+  tr {
+    td {
+      .checkbox {
+        width: 32px;
+        max-width: 32px;
+        span {
+          width: 20px;
+        }
+      }
+      span {
+        // font-size: 13px !important;
+        color: #595d6e;
+        font-size: 11px !important;
+      }
+    }
+    .checkbox {
+      width: 32px;
+      max-width: 32px;
+      span {
+        width: 20px;
+      }
+    }
+  }
+  thead {
+    td {
+      span {
+        color: #595d6e;
+      }
+    }
+  }
+}
+
+.kt-datatable__row--even:hover {
+  cursor: pointer;
+}
+
+.kt-datatable__row > .kt-datatable__cell .kt-checkbox.kt-checkbox--solid > span,
+.kt-datatable
+  > .kt-datatable__table
+  > .kt-datatable__body
+  .kt-datatable__row
+  > .kt-datatable__cell
+  .kt-checkbox.kt-checkbox--solid
+  > span,
+.kt-datatable
+  > .kt-datatable__table
+  > .kt-datatable__foot
+  .kt-datatable__row
+  > .kt-datatable__cell
+  .kt-checkbox.kt-checkbox--solid
+  > span {
+  background: #f0f3ff;
+}
+
+.kt-datatable
+  > .kt-datatable__table
+  > .kt-datatable__body
+  .kt-datatable__row
+  > .kt-datatable__cell{
+      vertical-align:middle;
+  }

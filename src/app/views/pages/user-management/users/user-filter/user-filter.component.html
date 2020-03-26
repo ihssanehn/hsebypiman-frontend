@@ -1,0 +1,48 @@
+<div class="kt-grid__item kt-grid__item--fluid">
+	<div class="row">
+		<div class="col-md-12">
+
+			<div class="kt-portlet">
+				<div class="kt-portlet__head kt-portlet__head--lg" >
+					<div class="kt-portlet__head-label">
+						<h3 class="kt-portlet__head-title">{{'FILTER.TITLE' | translate}}</h3>
+					</div>
+					<div class="kt-portlet__head-toolbar">
+						<a class="btn btn-clean kt-margin-r-10" (click)="hidden = !hidden">
+							<div *ngIf="hidden">
+								<i class="la la-arrow-down"></i>
+								<span class="kt-hidden-mobile">{{'FILTER.SHOW' | translate}}</span>   
+							</div>
+							<div *ngIf="!hidden">
+								<i class="la la-arrow-up"></i>
+								<span class="kt-hidden-mobile">{{'FILTER.HIDE' | translate}}</span>
+							</div>
+						</a>
+					</div>
+				</div>
+
+				<form class="kt-form" *ngIf="!hidden">
+					<div class="kt-portlet__body">
+						<div class="form-group row">
+							<div class="col-lg-3">
+								<label>{{'FILTER.KEYWORD' | translate}}:</label>
+								<!-- <nz-input-group [nzSuffix]="suffixIconSearch" *ngIf="filter">
+									<input type="text" [(ngModel)]="filter.keyword" (input)="submit()" name="keyword" nz-input placeholder="{{'FILTER.SEARCH_KEYWORD' | translate}}"/>
+								</nz-input-group> -->
+								<ng-template #suffixIconSearch>
+									<i class="la la-search"  (click)="submit()" style="cursor : pointer"></i>
+								</ng-template>
+								<span class="form-text text-muted">{{'FILTER.SEARCH_KEYWORD' | translate}} ...</span>
+							</div>
+
+							
+						</div>
+					</div>
+				</form>
+
+
+			</div>
+
+		</div>
+	</div>
+</div>

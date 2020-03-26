@@ -1,0 +1,92 @@
+<kt-portlet>
+	<kt-portlet-header [title]="getComponentTitle()" [class]="'kt-portlet__head--lg'">
+		<ng-container ktPortletTools>
+			<a [routerLink]="['../../']" class="btn btn-secondary kt-margin-r-10" mat-raised-button
+				matTooltip="Back to the users list">
+				<i class="la la-arrow-left"></i>
+				<span class="kt-hidden-mobile">Back</span>
+			</a>
+		</ng-container>
+	</kt-portlet-header>
+
+	<kt-portlet-body>
+		<div *ngIf="loaded" class="form-card">
+			<form [formGroup]="userForm" class="kt-form kt-form--group-seperator-dashed ">
+				<div class="kt-wizard-v4__content" data-ktwizard-type="step-content" data-ktwizard-state="current">
+					<div class="kt-heading kt-heading--md">
+						Enter Account Details
+					</div>
+					<div class="kt-form__section kt-form__section--first">
+						<div class="kt-wizard-v4__form">
+							<div class="row">
+								<div class="col-xl-6">
+									<div class="form-group">
+										<label>Username</label>
+										<input type="text" class="form-control" name="fname" [formControl]="username"
+											placeholder="Username" />
+									</div>
+								</div>
+								<div class="col-xl-6">
+									<div class="form-group">
+										<label>Email</label>
+										<input type="email" class="form-control" name="email" [formControl]="email"
+											placeholder="Email" />
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xl-6">
+									<div class="form-group">
+										<label>First Name</label>
+										<input type="text" class="form-control" name="lname" [formControl]="firstname"
+											placeholder="First name" />
+									</div>
+								</div>
+								<div class="col-xl-6">
+									<div class="form-group">
+										<label>Last Name</label>
+										<input type="text" class="form-control" name="lname" [formControl]="lastname"
+											placeholder="Last name" />
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-xl-6">
+									<div class="form-group">
+										<label>Phone</label>
+										<input type="tel" class="form-control" name="phone" [formControl]="phone"
+											placeholder="phone" value="+61412345678" />
+									</div>
+								</div>
+								<div class="col-xl-6" *ngxPermissionsOnly="['ADMIN']">
+									<div class="form-group">
+										<label for="exampleSelect1">Rôle</label>
+										<!-- <ng-select [items]="allRoles" [formControl]="role" bindLabel="title"
+											[bindValue]="id" [clearable]="false">
+										</ng-select> -->
+									</div>
+								</div>
+							</div>
+							<div class="form-group row" *ngIf="!editMode">
+								<div class="col-lg-6">
+									<label>New password :</label>
+									<input type="password" class="form-control" [formControl]="password" [ngClass]="{'is-invalid' : (password.value !== confirmPassword.value) && confirmPassword.touched}" placeholder="New password" /> 
+								</div> 
+								<div class="col-lg-6">
+									<label>Confirm password :</label>
+									<input type="password"  class="form-control" [formControl]="confirmPassword" [ngClass]="{'is-invalid' : (password.value !== confirmPassword.value) && confirmPassword.touched}"  placeholder="Confirm password" />
+								</div> 
+							</div>
+							<button class="btn btn-primary float-right" (click)="onSubmit(false)">
+								Save User
+							</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</kt-portlet-body>
+</kt-portlet>
+
+<kt-change-password *ngIf="editMode" [user]="user"></kt-change-password>

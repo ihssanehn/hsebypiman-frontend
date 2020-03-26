@@ -1,0 +1,18 @@
+@import "../../../../../../assets/sass/config";
+@import "../../../../../../assets/sass/global/init";
+@import "sass/pages/wizard/wizard-1";
+
+:host {
+	.form-card {
+		position: relative;
+		background-color: $kt-wizard-v1-form-inner-bg;
+		margin: 2rem 9rem;
+		.kt-heading {
+			margin: 0 0 1.75rem 0;
+		}
+		&.embedded {
+			box-shadow: none;
+			padding: 1rem 2rem;
+		}
+	}
+}

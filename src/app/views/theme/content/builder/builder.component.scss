@@ -1,0 +1,10 @@
+:host {
+	::ng-deep {
+		ngb-tabset > .nav-tabs {
+			display: none;
+		}
+	}
+}
+#kt_content{
+	padding-top: 40px;
+}

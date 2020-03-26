@@ -1,0 +1,82 @@
+//
+// Aside
+//
+
+
+
+$kt-aside-icon-border-color:  rgba(#fff, 0.2);
+$kt-aside-icon-border-hover-color:  rgba(#fff, 0.5);
+$kt-aside-icon-color: rgba(#fff, 0.85);
+
+$kt-aside-minimize-icon-border-color: #e7e8f4;
+$kt-aside-minimize-icon-border-hover-color: #d7d8e9;
+
+$kt-aside-icon-size: 42px;
+$kt-aside-minimize-icon-size: 34px;
+$kt-aside-mobile-icon-size: 34px;
+
+.kt-aside {
+	width: kt-get($kt-aside-config, base, default, width);
+	background-color: kt-get($kt-aside-config, base, default, bg-color);
+	box-shadow: kt-get($kt-aside-config, base, default, shadow);
+
+	// User profile
+	&.kt-aside__userside-item--user {
+		// Welcome
+		.kt-aside__userside-welcome {
+			display: flex;
+			align-self: center;
+			padding: 0 0.55rem 0 0;
+			font-weight: 500;
+			font-size: 0.9rem;
+			color: rgba(#fff, 0.5);
+		}
+
+		// Username
+		.kt-aside__userside-username {
+			display: flex;
+			align-self: center;
+			padding: 0 0.55rem 0 0;
+			font-weight: 500;
+			font-size: 1rem;
+			color: rgba(#fff, 0.85);
+		}
+
+		// Wrapper
+		.kt-aside__userside-wrapper {
+			// User pic placeholder
+			.kt-aside__userside-icon {
+				background-color: rgba(#fff, 0.1);
+
+				b {
+					font-size: 1.4rem;
+					font-weight: 500;
+					color: #fff;
+				}
+			}
+
+			// User pic
+			img {
+				align-self: center;
+				height: $kt-aside-icon-size;
+				
+				@include kt-rounded {
+					border-radius: $kt-border-radius;
+				}
+			}
+		}		
+
+		&:hover,
+		&.show {
+			// Wrapper
+			.kt-aside__userside-wrapper {
+				// User pic placeholder
+				.kt-aside__userside-icon {
+					background-color: rgba(#fff, 0.2);
+				}
+			}
+		}
+	}
+}
+
+@include kt-offcanvas-build(kt-aside, tablet-and-mobile, kt-get($kt-aside-config, base, offcanvas-mobile));
