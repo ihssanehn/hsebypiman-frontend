@@ -8,6 +8,7 @@ import { Store, select } from '@ngrx/store';
 // AppState
 import { AppState } from '../../../core/reducers';
 // Auth
+import {ChantierService} from '@app/core/services';
 
 @Component({
 	selector: 'tf-chantiers',

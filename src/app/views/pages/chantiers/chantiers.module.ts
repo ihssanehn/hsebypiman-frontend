@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+// Core Module
+import { CoreModule } from '../../../core/core.module';
 // NGRX
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -20,6 +22,7 @@ import { ChantiersComponent } from './chantiers.component';
 import { ChantiersListComponent } from './chantiers-list/chantiers-list.component';
 import { ChantierEditComponent } from './chantier-edit/chantier-edit.component';
 import { ChantierAddComponent } from './chantier-add/chantier-add.component';
+import {NgbDropdownModule, NgbTabsetModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 
 // Material
 import {
@@ -86,10 +89,11 @@ const routes: Routes = [
 		CommonModule,
 		HttpClientModule,
 		PartialsModule,
+		CoreModule,
 		RouterModule.forChild(routes),
 		FormsModule,
 		ReactiveFormsModule,
-		TranslateModule.forChild(),
+		TranslateModule,
 		NgxPermissionsModule.forChild(),
 		MatButtonModule,
 		MatMenuModule,
@@ -111,7 +115,10 @@ const routes: Routes = [
 		MatExpansionModule,
 		MatTabsModule,
 		MatTooltipModule,
-		MatDialogModule
+		MatDialogModule,
+		NgbDropdownModule,
+		NgbTabsetModule,
+		NgbTooltipModule
 	],
 	providers: [
 		InterceptService,

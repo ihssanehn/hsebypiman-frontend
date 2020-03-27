@@ -1,10 +1,15 @@
 // Angular
 import { BrowserModule, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
-import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule, LOCALE_ID } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GestureConfig, MatProgressSpinnerModule } from '@angular/material';
+
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr);
+
 import { OverlayModule } from '@angular/cdk/overlay';
 // Angular in memory
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -34,22 +39,12 @@ import { ThemeModule } from './views/theme/theme.module';
 // Partials
 import { PartialsModule } from './views/partials/partials.module';
 // Layout Services
-import {
-	DataTableService,
-	// FakeApiService,
-	TfDialogService,
-	LayoutConfigService,
-	LayoutRefService,
-	MenuAsideService,
-	MenuConfigService,
-	MenuHorizontalService,
-	PageConfigService,
-	SplashScreenService,
-	SubheaderService
-} from './core/_base/layout';
+// FakeApiService
+import {DataTableService,TfDialogService,LayoutConfigService,LayoutRefService,MenuAsideService,MenuConfigService,MenuHorizontalService,PageConfigService,SplashScreenService,SubheaderService} from './core/_base/layout';
 // Auth
 import { AuthModule } from './views/pages/auth/auth.module';
 import { AuthService } from './core/auth';
+import { ChantierService } from './core/services';
 // CRUD
 import { HttpUtilsService, LayoutUtilsService, TypesUtilsService } from './core/_base/crud';
 // Config
@@ -114,7 +109,12 @@ export function hljsLanguages(): HighlightLanguage[] {
 	],
 	exports: [],
 	providers: [
+		{
+			provide: LOCALE_ID,
+			useValue: 'fr-FR'
+		},
 		AuthService,
+		ChantierService,
 		LayoutConfigService,
 		LayoutRefService,
 		MenuConfigService,
@@ -148,7 +148,7 @@ export function hljsLanguages(): HighlightLanguage[] {
 		TypesUtilsService,
 		LayoutUtilsService,
 	],
-	bootstrap: [AppComponent]
+	bootstrap: [AppComponent],
 })
 export class AppModule {
 }

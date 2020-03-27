@@ -22,6 +22,7 @@ export { MenuOptions } from './directives/menu.directive';
 
 // Pipes
 export { FirstLetterPipe } from './pipes/first-letter.pipe';
+export { FullNamePipe, InitialesPipe } from './pipes/user-name.pipe';
 export { GetObjectPipe } from './pipes/get-object.pipe';
 export { JoinPipe } from './pipes/join.pipe';
 export { SafePipe } from './pipes/safe.pipe';

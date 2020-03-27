@@ -5,6 +5,11 @@ export const locale = {
 		TRANSLATOR: {
 			SELECT: 'Select your language',
 		},
+		ACTION:{
+			ADD:'Add',
+			EDIT:'Edit',
+			DELETE:'Delete'
+		},
 		MENU: {
 			NEW: 'new',
 			ACTIONS: 'Actions',
@@ -66,6 +71,18 @@ export const locale = {
 				MAX_LENGTH_FIELD: 'Maximum field length:',
 				INVALID_FIELD: 'Field is not valid',
 			}
+		},
+		CHANTIERS:{
+			NUMBER:'Numéro',
+			CLIENT:'Client',
+			NAME:'Nom du chantier',
+			STATUS:'Statut',
+			CHIEF:'Chargé d\'affaire',
+			BUDGET:'Budget',
+			ARCOUNT:'Quantité A.R',
+			LASTAR:'Dernière A.R',
+			VSCOUNT:'Quantité V.S',
+			LASTVS:'Dernière V.S',
 		},
 		ECOMMERCE: {
 			COMMON: {

@@ -19,6 +19,8 @@ import {
 	StickyDirective,
 	TabClickEventDirective,
 	TimeElapsedPipe,
+	FullNamePipe,
+	InitialesPipe,
 	ToggleDirective
 } from './_base/layout';
 
@@ -41,6 +43,8 @@ import {
 		GetObjectPipe,
 		SafePipe,
 		FirstLetterPipe,
+		InitialesPipe,
+		FullNamePipe
 	],
 	exports: [
 		// directives
@@ -59,6 +63,8 @@ import {
 		GetObjectPipe,
 		SafePipe,
 		FirstLetterPipe,
+		FullNamePipe,
+		InitialesPipe,
 	],
 	providers: [
 		 {provide: 'ParameterService', useClass: environment.isMockEnabled ? HttpParameterService : HttpParameterService}

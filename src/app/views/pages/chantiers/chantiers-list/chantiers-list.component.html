@@ -1,9 +1,84 @@
-<tf-portlet class="tf-portlet--height-fluid">
-  <div class="row">
-    <div class="col-md-12">
-      <h4>
-        chantiers-list works!
-      </h4>
-    </div>
-  </div>
+<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
+	<tf-portlet-body class="tf-portlet__body--fit" style="padding: 15px;" *ngIf="chantiersList">
+    
+    <table mat-table [dataSource]="chantiersList.data">
+      <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+                
+      <!-- Position Column -->
+      <ng-container matColumnDef="number">
+        <th mat-header-cell *matHeaderCellDef> {{'CHANTIERS.NUMBER' | translate}} </th>
+        <td mat-cell *matCellDef="let chantier"> {{chantier.numero}} </td>
+      </ng-container>
+      <!-- Position Column -->
+      <ng-container matColumnDef="client">
+        <th mat-header-cell *matHeaderCellDef> {{'CHANTIERS.CLIENT' | translate}} </th>
+        <td mat-cell *matCellDef="let chantier"> {{chantier.client}} </td>
+      </ng-container>
+      <!-- Position Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> {{'CHANTIERS.NAME' | translate}} </th>
+        <td mat-cell *matCellDef="let chantier"> {{chantier.nom}} </td>
+      </ng-container>
+      <!-- Position Column -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> {{'CHANTIERS.STATUS' | translate}} </th>
+        <td mat-cell *matCellDef="let chantier"> {{chantier.status?.libelle}} </td>
+      </ng-container>
+      <!-- Position Column -->
+      <ng-container matColumnDef="charge_affaire">
+        <th mat-header-cell *matHeaderCellDef> {{'CHANTIERS.CHIEF' | translate}} </th>
+        <td mat-cell *matCellDef="let chantier"> {{chantier.charge_affaire | initiales}} </td>
+      </ng-container>
+      <!-- Position Column -->
+      <ng-container matColumnDef="montant">
+        <th mat-header-cell *matHeaderCellDef> {{'CHANTIERS.BUDGET' | translate}} </th>
+        <td mat-cell *matCellDef="let chantier"> {{chantier.montant | currency:'EUR':'€'}} </td>
+      </ng-container>
+      <!-- Position Column -->
+      <ng-container matColumnDef="ars_count">
+        <th mat-header-cell *matHeaderCellDef> {{'CHANTIERS.ARCOUNT' | translate}} </th>
+        <td mat-cell *matCellDef="let chantier"> {{chantier.ars_count}} </td>
+      </ng-container>
+      <!-- Position Column -->
+      <ng-container matColumnDef="latest_ar">
+        <th mat-header-cell *matHeaderCellDef> {{'CHANTIERS.LASTAR' | translate}} </th>
+        <td mat-cell *matCellDef="let chantier"> {{chantier.latest_ar?.date | date:'dd/MM/yyyy'}} </td>
+      </ng-container>
+      <!-- Position Column -->
+      <ng-container matColumnDef="vss_count">
+        <th mat-header-cell *matHeaderCellDef> {{'CHANTIERS.VSCOUNT' | translate}} </th>
+        <td mat-cell *matCellDef="let chantier"> {{chantier.vss_count}} </td>
+      </ng-container>
+      <!-- Position Column -->
+      <ng-container matColumnDef="latest_vs">
+        <th mat-header-cell *matHeaderCellDef> {{'CHANTIERS.LASTVS' | translate}} </th>
+        <td mat-cell *matCellDef="let chantier"> {{chantier.latest_vs?.date | date:'dd/MM/yyyy'}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let chantier"> 
+          <div ngbDropdown placement="bottom-right" class="d-inline-block">
+            <div ngbDropdownToggle><i class="flaticon-more"></i></div>
+            <div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround ">
+              <!-- *ngxPermissionsOnly="['ADMIN']" -->
+                <button ngbDropdownItem class="tf-margin-left-3" (click)="editChantier(chantier)"
+                  ><i class="la la-edit text-primary"></i>
+                  {{'ACTION.EDIT' | translate}}
+                </button>
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+
+  
+      <tr mat-header-row *matHeaderRowDef="displayedChantierColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedChantierColumns;"></tr>
+    </table>
+  
+    <tf-pagination (change)="changePagination()" [(ngModel)]="pagination" ngDefaultControl></tf-pagination>
+  
+	</tf-portlet-body>
 </tf-portlet>
