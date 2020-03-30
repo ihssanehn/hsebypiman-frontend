@@ -24,12 +24,12 @@
     content: none;
 }
 
-@include tf-tablet-and-mobile {
-    .my-custom-style {
-        padding: 0.5rem 0.25rem;
+// @include tf-tablet-and-mobile {
+//     .my-custom-style {
+//         padding: 0.5rem 0.25rem;
 
-        .my-custom-element {
-            margin-left: 0.5rem;
-        }
-    }
-}
+//         .my-custom-element {
+//             margin-left: 0.5rem;
+//         }
+//     }
+// }
