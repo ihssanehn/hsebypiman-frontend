@@ -3,6 +3,8 @@ import { RouterModule } from '@angular/router';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import {NgSelectModule} from '@ng-select/ng-select';
 import {
 	MatAutocompleteModule,
 	MatButtonModule,
@@ -117,6 +119,7 @@ import { PaginationComponent } from './content/general/pagination/pagination.com
 	exports: [
 		WidgetModule,
 		PortletModule,
+		NgSelectModule,
 
 		ScrollTopComponent,
 		NoticeComponent,
@@ -165,7 +168,7 @@ import { PaginationComponent } from './content/general/pagination/pagination.com
 		CoreModule,
 		PortletModule,
 		WidgetModule,
-
+		NgSelectModule,
 		// angular material modules
 		MatButtonModule,
 		MatMenuModule,

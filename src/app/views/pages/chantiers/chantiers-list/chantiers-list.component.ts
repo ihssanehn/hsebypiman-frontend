@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ChangeDetectorRef, Input, AfterContentInit, ViewChildren, QueryList } from '@angular/core';
-import {ChantierService} from '@app/core/services';
+import { ChantierService } from '@app/core/services';
 import { Paginate } from '@app/core/_base/layout/models/paginate.model';
-import {ChantierModel} from '@app/core/models/chantier.model';
+import { Chantier } from '@app/core/models';
 import { TranslateService } from '@ngx-translate/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ChantierTableDataSource } from './table-chantiers.data-source';
@@ -13,7 +13,7 @@ import { ChantierTableDataSource } from './table-chantiers.data-source';
 })
 export class ChantiersListComponent implements OnInit {
 
-  public chantiersList : Paginate<ChantierModel>;
+  public chantiersList : Paginate<Chantier>;
   pagination: any = {
 		page: 1,
 		total: 10,
@@ -63,6 +63,7 @@ export class ChantiersListComponent implements OnInit {
 	}
 
 	editChantier(chantier){
+		this.router.navigate(['../edit', chantier.id], { relativeTo: this.activatedRoute });
 		console.log('éditer le chantier n°'+chantier.id);
 	}
 

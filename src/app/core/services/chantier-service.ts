@@ -6,7 +6,7 @@ import { QueryParamsModel, QueryResultsModel } from '../_base/crud';
 import { environment } from '@env/environment';
 import { HttpService } from '@app/core/services/http-service';
 import { NgxPermissionsService } from 'ngx-permissions';
-import {ChantierModel} from '@app/core/models/chantier.model';
+import {Chantier} from '@app/core/models/chantier.model';
 import {Paginate} from '@app/core/_base/layout/models/paginate.model'
 import { Router } from '@angular/router';
 
@@ -21,16 +21,16 @@ export class ChantierService extends HttpService{
     }
 
     getAll(){
-        return this.http.get<Paginate<ChantierModel>>(this.baseUrl);
+        return this.http.get<Paginate<Chantier>>(this.baseUrl);
     }
-    getAllItems(): Observable<ChantierModel[]> {
-		return this.http.get<ChantierModel[]>(`${this.baseUrl}costings`);
+    getAllItems(): Observable<Chantier[]> {
+		return this.http.get<Chantier[]>(`${this.baseUrl}costings`);
 	}
     get(chantier_id){
         return this.http.get(this.baseUrl+chantier_id);
     }
     search(params){
-        return this.http.post<Paginate<ChantierModel>>(this.baseUrl+'search', {...params});
+        return this.http.post<Paginate<Chantier>>(this.baseUrl+'search', {...params});
     }
     create(chantier){
         return this.http.post(this.baseUrl+'create', chantier);

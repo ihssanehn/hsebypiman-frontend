@@ -47,7 +47,7 @@ $tf-state-colors: (
 );
 
 // Layout
-$tf-aside-default-width: 278px;
+$tf-aside-default-width: calc(14.5 * 100vw / 100);
 $tf-aside-padding-y: 15px;
 $tf-aside-offcanvas-width: 255px;
 
@@ -58,7 +58,7 @@ $tf-page-padding: (
 );
 
 // Page container
-$tf-page-container-width: 1380px; //  fixed page width
+$tf-page-container-width: calc(85.5 * 100vw / 100); //  fixed page width
 $tf-page-fluid-container-padding: 60px; // fluid page padding
 
 // Body color

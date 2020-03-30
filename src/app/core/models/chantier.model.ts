@@ -1,5 +1,7 @@
 
-export class ChantierModel {
+import {Ar} from './ar.model'
+
+export class Chantier {
     _id?: number;
     nom?: String;
     type_id?: number;
@@ -17,10 +19,11 @@ export class ChantierModel {
     date_demarrage?: Date;
     charge_affaire_id?: number;
     charge_affaire?: any;
-    ars?: Array<any>;
-    latest_ar?: any;
+    ars?: Array<Ar>;
+    latest_ar?: Ar;
     ars_count?: number;
     vss?: Array<any>;
     latest_vs?: any;
     vss_count?: number;
+    ar?: Ar;
 }

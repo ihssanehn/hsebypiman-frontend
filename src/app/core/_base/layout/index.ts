@@ -9,6 +9,7 @@ export { ContentAnimateDirective } from './directives/content-animate.directive'
 export { HeaderDirective } from './directives/header.directive';
 export { MenuDirective } from './directives/menu.directive';
 export { StickyDirective } from './directives/sticky.directive';
+export { NgSelectFormFieldControlDirective } from './directives/ng-select.directive';
 
 // Models
 export { DataTableItemModel } from './models/datatable-item.model';

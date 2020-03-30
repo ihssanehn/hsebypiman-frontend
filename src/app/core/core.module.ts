@@ -10,6 +10,7 @@ import {
 	FirstLetterPipe,
 	GetObjectPipe,
 	HeaderDirective,
+	NgSelectFormFieldControlDirective,
 	JoinPipe,
 	MenuDirective,
 	OffcanvasDirective,
@@ -36,6 +37,7 @@ import {
 		TabClickEventDirective,
 		SparklineChartDirective,
 		ContentAnimateDirective,
+		NgSelectFormFieldControlDirective,
 		StickyDirective,
 		// pipes
 		TimeElapsedPipe,
@@ -56,6 +58,7 @@ import {
 		TabClickEventDirective,
 		SparklineChartDirective,
 		ContentAnimateDirective,
+		NgSelectFormFieldControlDirective,
 		StickyDirective,
 		// pipes
 		TimeElapsedPipe,

@@ -5,6 +5,7 @@ export class User extends BaseModel {
     id: number;
     nom: string;
     prenom: string;
+    fullname: string;
     password?: string;
     email?: string;
     fonction_id?: number;

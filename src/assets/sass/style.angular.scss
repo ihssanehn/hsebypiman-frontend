@@ -24,7 +24,8 @@
 @import "~@angular/material/theming";
 @import "global/integration/frameworks/angular/material/angular-material";
 @import "global/integration/frameworks/angular/material/include";
-
+@import "~@ng-select/ng-select/themes/material.theme.css";
+@import "custom/ng-select";
 // 3: Components include
 @import "global/include.angular";
 ////////////////////////////////////////////////////////////////

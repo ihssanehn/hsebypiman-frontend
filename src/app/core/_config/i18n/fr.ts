@@ -8,6 +8,7 @@ export const locale = {
 		ACTION:{
 			ADD:'Ajouter',
 			EDIT:'Modifier',
+			READ:'Consulter',
 			DELETE:'Supprimer'
 		},
 		MENU: {
@@ -76,13 +77,21 @@ export const locale = {
 			NUMBER:'Numéro',
 			CLIENT:'Client',
 			NAME:'Nom du chantier',
+			ADRESS:'Adresse du chantier',
+			TYPE:'Type',
 			STATUS:'Statut',
+			CONTACT:'Contact',
+			DATE_DEMARRAGE:'Date de démarage chantier',
+			AR: 'Analyse de risque',
 			CHIEF:'Chargé d\'affaire',
 			BUDGET:'Budget',
 			ARCOUNT:'Quantité A.R',
 			LASTAR:'Dernière A.R',
 			VSCOUNT:'Quantité V.S',
 			LASTVS:'Dernière V.S',
+			FORM:{
+				CREATE:'Créer un nouveau chantier'
+			}
 		},
 		ECOMMERCE: {
 			COMMON: {
@@ -123,7 +132,12 @@ export const locale = {
 					UPDATE_MESSAGE: 'Le client a été mis à jour',
 					ADD_MESSAGE: 'Le client a été créé'
 				}
-			}
+			},
+		},
+		COMMON:{
+			CITY:'Ville',
+			POSTCODE:'Code Postal',
+			COUNTRY:'Pays',
 		}
 	}
 };

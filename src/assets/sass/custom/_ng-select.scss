@@ -5,13 +5,23 @@
 //
 
 
-.my-custom-style {
-    padding: 1rem 0.5rem;
-    color: tf-brand-color();
+.ng-select.ng-select-single .ng-select-container{
+    min-height: auto;
 
-    .my-custom-element {
-        margin-left: 1rem;
+    .ng-value-container, 
+    .ng-value-container .ng-value {    
+        min-height: auto;
+        padding: 0;
+        border-top-width: 0.3em;
+    } 
+    .ng-select-container .ng-arrow-wrapper{
+        bottom: 30px;
     }
+
+
+}
+.ng-select .ng-select-container:after{
+    content: none;
 }
 
 @include tf-tablet-and-mobile {

@@ -38,13 +38,14 @@ import { CoreModule } from './core/core.module';
 import { ThemeModule } from './views/theme/theme.module';
 // Partials
 import { PartialsModule } from './views/partials/partials.module';
+import { NgSelectModule } from '@ng-select/ng-select';
 // Layout Services
 // FakeApiService
 import {DataTableService,TfDialogService,LayoutConfigService,LayoutRefService,MenuAsideService,MenuConfigService,MenuHorizontalService,PageConfigService,SplashScreenService,SubheaderService} from './core/_base/layout';
 // Auth
 import { AuthModule } from './views/pages/auth/auth.module';
 import { AuthService } from './core/auth';
-import { ChantierService } from './core/services';
+import { ChantierService, TypeService, StatusService, CategorieService } from './core/services';
 // CRUD
 import { HttpUtilsService, LayoutUtilsService, TypesUtilsService } from './core/_base/crud';
 // Config
@@ -115,6 +116,9 @@ export function hljsLanguages(): HighlightLanguage[] {
 		},
 		AuthService,
 		ChantierService,
+		TypeService, 
+		StatusService, 
+		CategorieService,
 		LayoutConfigService,
 		LayoutRefService,
 		MenuConfigService,
