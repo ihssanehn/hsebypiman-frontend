@@ -20,6 +20,8 @@ import {
 	StickyDirective,
 	TabClickEventDirective,
 	TimeElapsedPipe,
+	DateTimeMessagePipe, 
+	DateMessagePipe,
 	FullNamePipe,
 	InitialesPipe,
 	ToggleDirective
@@ -41,6 +43,8 @@ import {
 		StickyDirective,
 		// pipes
 		TimeElapsedPipe,
+		DateTimeMessagePipe, 
+		DateMessagePipe,
 		JoinPipe,
 		GetObjectPipe,
 		SafePipe,
@@ -62,6 +66,8 @@ import {
 		StickyDirective,
 		// pipes
 		TimeElapsedPipe,
+		DateTimeMessagePipe, 
+		DateMessagePipe,
 		JoinPipe,
 		GetObjectPipe,
 		SafePipe,

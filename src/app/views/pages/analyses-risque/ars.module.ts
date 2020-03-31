@@ -22,7 +22,6 @@ import { ArsComponent } from './ars.component';
 import { ArsListComponent } from './ars-list/ars-list.component';
 import { ArEditComponent } from './ar-edit/ar-edit.component';
 import { ArAddComponent } from './ar-add/ar-add.component';
-import { ArForm1Component } from './ar-form-1/ar-form-1.component';
 import {NgbDropdownModule, NgbTabsetModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 
 // Material
@@ -149,7 +148,6 @@ const routes: Routes = [
 		ArsListComponent,
 		ArEditComponent,
 		ArAddComponent,
-		ArForm1Component
 	]
 })
 export class ArsModule {}

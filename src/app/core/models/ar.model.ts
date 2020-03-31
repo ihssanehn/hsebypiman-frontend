@@ -1,6 +1,6 @@
 
 export class Ar {
-    _id?: number;
+    id?: number;
     code?: string;
     chantier_id?: number;
     date?: Date;

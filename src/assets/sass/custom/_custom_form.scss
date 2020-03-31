@@ -34,6 +34,22 @@
     display: flex;
     flex-flow: row wrap;
     align-items: center;
+    justify-content: space-between;
+    .mat-radio-container{
+        width: 15px !important;
+        height: 15px !important;
+        .mat-radio-outer-circle, .mat-radio-inner-circle{
+            width: 15px !important;
+            height: 15px !important;
+        }
+        .mat-radio-ripple{
+            border-radius: 50%;
+            left: calc(50% - 15px) !important;
+            top: calc(50% - 15px) !important;
+            height: 30px !important;
+            width: 30px !important;
+        }
+    }
 }
 .row.form-row{
     margin-bottom: 1em;

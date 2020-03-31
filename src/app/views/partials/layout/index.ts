@@ -26,6 +26,7 @@ export { UserProfile2Component } from './topbar/user-profile2/user-profile2.comp
 export { UserProfile3Component } from './topbar/user-profile3/user-profile3.component';
 // ASIDE
 export { UserSideProfileComponent } from './aside/userside-profile/userside-profile.component';
+export { ArFormComponent } from './ar-form/ar-form.component';
 
 // Models
 export { ISearchResult } from './search-result/search-result.component';

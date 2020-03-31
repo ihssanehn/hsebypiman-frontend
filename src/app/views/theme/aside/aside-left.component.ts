@@ -232,4 +232,7 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 
 		return toggle;
 	}
+	goToAddChantier(){
+		this.router.navigateByUrl('chantiers/add')
+	}
 }

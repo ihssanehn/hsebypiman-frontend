@@ -2,7 +2,7 @@
 import {Ar} from './ar.model'
 
 export class Chantier {
-    _id?: number;
+    id?: number;
     nom?: String;
     type_id?: number;
     type?: any;

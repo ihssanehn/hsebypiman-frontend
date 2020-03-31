@@ -13,7 +13,7 @@
 						<mat-datepicker-toggle matSuffix [for]="date_picker"></mat-datepicker-toggle>
 						<mat-datepicker #date_picker></mat-datepicker>
 					</mat-form-field>
-					<mat-radio-group class="col-xl-3 mat-form-field ng-tns-c14-2 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-legacy mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label" formContolName="a_prevoir_compagnons">
+					<mat-radio-group class="col-xl-3 col-md-4 mat-form-field ng-tns-c14-2 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-legacy mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label" formContolName="a_prevoir_compagnons">
 						<div class="mat-form-field-wrapper">
 							<div class="mat-form-field-flex">
 								<div class="mat-form-field-infix">
@@ -107,14 +107,14 @@
 											<span class="mat-form-field-label-wrapper">
 												<label class="mat-form-field-label">{{'ARS.HORAIRES' | translate}}</label>
 											</span>
-                      <div class="horaire-box">
-                        <div>
-                          <input class="form-control" type="time" name="heure_ouverture" formControlName="heure_ouverture"/>
-                        </div>
-                        <span>A </span>
-                        <div>
-                          <input class="form-control" type="time" name="heure_fermeture" formControlName="heure_fermeture" placeholder=""/>
-                        </div>
+											<div class="horaire-box">
+												<div>
+													<input class="form-control" type="time" name="heure_ouverture" formControlName="heure_ouverture" />
+												</div>
+												<span>A </span>
+												<div>
+													<input class="form-control" type="time" name="heure_fermeture" formControlName="heure_fermeture" placeholder="" />
+												</div>
 											</div>
 										</div>
 									</div>

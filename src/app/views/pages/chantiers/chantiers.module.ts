@@ -18,7 +18,6 @@ import { HttpUtilsService, TypesUtilsService, InterceptService, LayoutUtilsServi
 // Shared
 import { ActionNotificationComponent } from '../../partials/content/crud';
 // Components
-import { ArForm1Component } from '../analyses-risque/ar-form-1/ar-form-1.component';
 import { ChantiersComponent } from './chantiers.component';
 import { ChantiersListComponent } from './chantiers-list/chantiers-list.component';
 import { ChantierEditComponent } from './chantier-edit/chantier-edit.component';
@@ -142,15 +141,14 @@ const routes: Routes = [
 		LayoutUtilsService
 	],
 	entryComponents: [
-		ActionNotificationComponent,
-		ArForm1Component
+		ActionNotificationComponent
+		// 
 	],
 	declarations: [
 		ChantiersComponent,
 		ChantiersListComponent,
 		ChantierEditComponent,
 		ChantierAddComponent,
-		ArForm1Component
 	]
 })
 export class ChantiersModule {}

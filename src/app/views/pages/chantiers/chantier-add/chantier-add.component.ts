@@ -96,7 +96,7 @@ export class ChantierAddComponent implements OnInit {
 		this.cdr.detectChanges();
   }
   
-  onSubmit(){
+  onSubmit(event){
     console.log(this.chantierForm);
   }
 
