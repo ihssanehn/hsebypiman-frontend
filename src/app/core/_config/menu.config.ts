@@ -429,6 +429,8 @@ export class MenuConfig {
 			self: {},
 			items:[
 			{
+				bullet: 'dot',
+				icon: 'flaticon2-browser-2',
 				title: 'Dashboards',
 				root: true,
 				alignment: 'left',
