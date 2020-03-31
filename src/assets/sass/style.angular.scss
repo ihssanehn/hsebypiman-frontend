@@ -25,7 +25,6 @@
 @import "global/integration/frameworks/angular/material/angular-material";
 @import "global/integration/frameworks/angular/material/include";
 @import "~@ng-select/ng-select/themes/material.theme.css";
-@import "custom/custom_form";
 // 3: Components include
 @import "global/include.angular";
 ////////////////////////////////////////////////////////////////
@@ -54,3 +53,5 @@
 @import "global/layout/content/content";
 
 @import "global/layout/footer/footer";
+
+@import "custom/custom_form";
