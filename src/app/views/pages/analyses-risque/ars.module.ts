@@ -18,11 +18,11 @@ import { HttpUtilsService, TypesUtilsService, InterceptService, LayoutUtilsServi
 // Shared
 import { ActionNotificationComponent } from '../../partials/content/crud';
 // Components
-import { ArForm1Component } from '../analyses-risque/ar-form-1/ar-form-1.component';
-import { ChantiersComponent } from './chantiers.component';
-import { ChantiersListComponent } from './chantiers-list/chantiers-list.component';
-import { ChantierEditComponent } from './chantier-edit/chantier-edit.component';
-import { ChantierAddComponent } from './chantier-add/chantier-add.component';
+import { ArsComponent } from './ars.component';
+import { ArsListComponent } from './ars-list/ars-list.component';
+import { ArEditComponent } from './ar-edit/ar-edit.component';
+import { ArAddComponent } from './ar-add/ar-add.component';
+import { ArForm1Component } from './ar-form-1/ar-form-1.component';
 import {NgbDropdownModule, NgbTabsetModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 
 // Material
@@ -55,31 +55,31 @@ import {
 const routes: Routes = [
 	{
 		path: '',
-		component: ChantiersComponent,
+		component: ArsComponent,
 		children: [
 			{
 				path: 'list',
-				component: ChantiersListComponent
+				component: ArsListComponent
 			},
 			{
 				path: 'list:id',
-				component: ChantiersListComponent
+				component: ArsListComponent
 			},
 			{
 				path: 'add',
-				component: ChantierAddComponent
+				component: ArAddComponent
 			},
 			{
 				path: 'add:id',
-				component: ChantierAddComponent
+				component: ArAddComponent
 			},
 			{
 				path: 'edit',
-				component: ChantierEditComponent
+				component: ArEditComponent
 			},
 			{
 				path: 'edit/:id',
-				component: ChantierEditComponent
+				component: ArEditComponent
 			},
 		]
 	}
@@ -119,7 +119,7 @@ const routes: Routes = [
 		MatDialogModule,
 		NgbDropdownModule,
 		NgbTabsetModule,
-		NgbTooltipModule,
+		NgbTooltipModule
 	],
 	providers: [
 		InterceptService,
@@ -143,14 +143,13 @@ const routes: Routes = [
 	],
 	entryComponents: [
 		ActionNotificationComponent,
-		ArForm1Component
 	],
 	declarations: [
-		ChantiersComponent,
-		ChantiersListComponent,
-		ChantierEditComponent,
-		ChantierAddComponent,
+		ArsComponent,
+		ArsListComponent,
+		ArEditComponent,
+		ArAddComponent,
 		ArForm1Component
 	]
 })
-export class ChantiersModule {}
+export class ArsModule {}

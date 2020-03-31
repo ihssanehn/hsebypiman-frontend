@@ -10,6 +10,9 @@ body {
 	background-color: $tf-page-body-bg-color;
 	background-position: auto top;
 	background-repeat: no-repeat;
+	background-image: url('../media/cta-hse/bkg-header.png');
+	background-position: center top;
+	background-size: 100% 375px;
 
 	// Container
 	.tf-container {
@@ -17,6 +20,10 @@ body {
 			width: 100%;
 		}
 	}
+}
+
+body.tf-header--minimize{
+	background-position: center -110px;
 }
 
 // Subheader

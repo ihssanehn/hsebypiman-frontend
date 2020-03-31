@@ -94,7 +94,11 @@ export class ChantierAddComponent implements OnInit {
 		});
 		this.loaded = true;
 		this.cdr.detectChanges();
-	}
+  }
+  
+  onSubmit(){
+    console.log(this.chantierForm);
+  }
 
   
   
