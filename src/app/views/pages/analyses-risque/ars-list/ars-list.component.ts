@@ -6,9 +6,9 @@ import { TranslateService } from '@ngx-translate/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'tf-Ars-list',
-  templateUrl: './Ars-list.component.html',
-  styleUrls: ['./Ars-list.component.scss']
+  selector: 'tf-ars-list',
+  templateUrl: './ars-list.component.html',
+  styleUrls: ['./ars-list.component.scss']
 })
 export class ArsListComponent implements OnInit {
 
