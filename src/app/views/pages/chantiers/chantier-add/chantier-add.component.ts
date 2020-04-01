@@ -19,8 +19,6 @@ export class ChantierAddComponent implements OnInit {
   
   chantier: Chantier;
   chantierForm: FormGroup;
-  types: Type[];
-  users: User[];
 	// allRoles: Role[];
 	loaded = false;
 	editMode: boolean = false;
@@ -42,21 +40,7 @@ export class ChantierAddComponent implements OnInit {
 
   ngOnInit() {
     this.chantier = new Chantier();
-    this.createForm();
-    this.getTypes();
-    this.getUsers();
-    
-  }
-
-  async getTypes(){
-    this.types = await this.typeService.getAllFromModel('Chantier').toPromise();
-    this.cdr.detectChanges();
-    this.cdr.markForCheck();
-  }
-  async getUsers(){
-    this.users = await this.authService.getAllUsers().toPromise();
-    this.cdr.detectChanges();
-    this.cdr.markForCheck();
+    this.createForm();    
   }
 
   createForm() {
