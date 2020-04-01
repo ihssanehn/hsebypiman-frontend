@@ -26,7 +26,8 @@ export { UserProfile2Component } from './topbar/user-profile2/user-profile2.comp
 export { UserProfile3Component } from './topbar/user-profile3/user-profile3.component';
 // ASIDE
 export { UserSideProfileComponent } from './aside/userside-profile/userside-profile.component';
-export { ArForm1Component } from './ar-form/ar-form-1/ar-form-1.component';
+export { ArForm1Component } from './analyse-risque/form/ar-form-1/ar-form-1.component';
+export { ChantierFormComponent } from './chantier/form/chantier-form/chantier-form.component';
 
 // Models
 export { ISearchResult } from './search-result/search-result.component';

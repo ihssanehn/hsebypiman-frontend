@@ -71,7 +71,8 @@ export const locale = {
 				MIN_LENGTH_FIELD: 'Minimum field length:',
 				MAX_LENGTH_FIELD: 'Maximum field length:',
 				INVALID_FIELD: 'Field is not valid',
-			}
+			},
+			LOGOUT: 'Sign out'
 		},
 		CHANTIERS:{
 			NUMBER:'Numéro',
@@ -93,47 +94,23 @@ export const locale = {
 				CREATE:'Créer un nouveau chantier'
 			}
 		},
-		ECOMMERCE: {
-			COMMON: {
-				SELECTED_RECORDS_COUNT: 'Selected records count: ',
-				ALL: 'All',
-				SUSPENDED: 'Suspended',
-				ACTIVE: 'Active',
-				FILTER: 'Filter',
-				BY_STATUS: 'by Status',
-				BY_TYPE: 'by Type',
-				BUSINESS: 'Business',
-				INDIVIDUAL: 'Individual',
-				SEARCH: 'Search',
-				IN_ALL_FIELDS: 'in all fields'
-			},
-			ECOMMERCE: 'eCommerce',
-			CUSTOMERS: {
-				CUSTOMERS: 'Customers',
-				CUSTOMERS_LIST: 'Customers list',
-				NEW_CUSTOMER: 'New Customer',
-				DELETE_CUSTOMER_SIMPLE: {
-					TITLE: 'Customer Delete',
-					DESCRIPTION: 'Are you sure to permanently delete this customer?',
-					WAIT_DESCRIPTION: 'Customer is deleting...',
-					MESSAGE: 'Customer has been deleted'
-				},
-				DELETE_CUSTOMER_MULTY: {
-					TITLE: 'Customers Delete',
-					DESCRIPTION: 'Are you sure to permanently delete selected customers?',
-					WAIT_DESCRIPTION: 'Customers are deleting...',
-					MESSAGE: 'Selected customers have been deleted'
-				},
-				UPDATE_STATUS: {
-					TITLE: 'Status has been updated for selected customers',
-					MESSAGE: 'Selected customers status have successfully been updated'
-				},
-				EDIT: {
-					UPDATE_MESSAGE: 'Customer has been updated',
-					ADD_MESSAGE: 'Customer has been created'
-				}
-			}
-		},
+		ARS:{
+			DATE: 'Date de l\'analyse de risque',
+			PREVOIR_COMPAGNONS:'A prévoir pour les compagnons',
+			DATE_ACCUEIL_SECU:'Date de l\'accueil sécurité',
+			REALISATEUR:'Personne en charge de réaliser l\'accueil',
+			TEL_REALISATEUR:'Numéro de téléphone',
+			DATE_VALIDITE:'Date de validité de l\'accueuil sécurité',
+			NUM_SECOURS:'Numéro en cas d\'accident ou incendie',
+			CONTACT_INTERNE_SECOURS:'Personne CVTI à contacter en cas d\'accident',
+			TEL_CONTACT_INTERNE_SECOURS:'Numéro de téléphone',
+			CONTACT_CLIENT_CHEF_CHANTIER:'Nom Chef de chantier client',
+			TEL_CONTACT_CLIENT_CHEF_CHANTIER:'Numéro de téléphone',
+			CONTACT_CLIENT_HSE:'Interlocuteur HSE ou SPS',
+			TEL_CONTACT_CLIENT_HSE:'Numéro de téléphone',
+			HORAIRES:'Heures de travail du chantier',
+			COURANT:'Courant mis à disposition',
+		},														
 		COMMON:{
 			CITY:'Ville',
 			POSTCODE:'Code Postal',

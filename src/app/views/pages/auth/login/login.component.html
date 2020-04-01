@@ -1,8 +1,8 @@
 <!--begin::Head-->
-<div class="tf-login__head">
+<!-- <div class="tf-login__head">
 	<span class="tf-login__signup-label">Don't have an account yet?</span>&nbsp;&nbsp;
 	<a href="javascript:;" routerLink="/auth/register" class="tf-link tf-login__signup-link">{{ 'AUTH.GENERAL.SIGNUP_BUTTON' | translate }}</a>
-</div>
+</div> -->
 <!--end::Head-->
 
 <!--begin::Body-->
@@ -20,7 +20,7 @@
 			<div class="form-group">
 				<mat-form-field>
 					<mat-label>{{ 'AUTH.INPUT.EMAIL' | translate }}</mat-label>
-					<input matInput type="email" placeholder="{{ 'AUTH.INPUT.EMAIL' | translate }}" formControlName="email" autocomplete="off"/>
+					<input matInput class="form-control" type="email" placeholder="{{ 'AUTH.INPUT.EMAIL' | translate }}" formControlName="email" autocomplete="off"/>
 					<mat-error *ngIf="isControlHasError('email','required')">
 						<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 					</mat-error>
@@ -38,7 +38,7 @@
 			<div class="form-group">
 				<mat-form-field>
 					<mat-label>{{ 'AUTH.INPUT.PASSWORD' | translate }}</mat-label>
-					<input matInput type="password" placeholder="{{ 'AUTH.INPUT.PASSWORD' | translate }}" formControlName="password" autocomplete="off"/>
+					<input matInput class="form-control" type="password" placeholder="{{ 'AUTH.INPUT.PASSWORD' | translate }}" formControlName="password" autocomplete="off"/>
 					<mat-error *ngIf="isControlHasError('password','required')">
 						<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 					</mat-error>

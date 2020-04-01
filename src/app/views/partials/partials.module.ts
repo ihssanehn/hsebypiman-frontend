@@ -67,6 +67,7 @@ import {
 	UserProfileComponent,
 	UserSideProfileComponent,
 	ArForm1Component,
+	ChantierFormComponent,
 } from './layout';
 // General
 import { NoticeComponent } from './content/general/notice/notice.component';
@@ -114,6 +115,7 @@ import { PaginationComponent } from './content/general/pagination/pagination.com
 		UserProfile3Component,
 		UserSideProfileComponent,
 		ArForm1Component,
+		ChantierFormComponent,
 		CartComponent,
 
 		ErrorComponent,
@@ -156,6 +158,7 @@ import { PaginationComponent } from './content/general/pagination/pagination.com
 		UserProfile3Component,
 		UserSideProfileComponent,
 		ArForm1Component,
+		ChantierFormComponent,
 		CartComponent,
 
 		ErrorComponent,
