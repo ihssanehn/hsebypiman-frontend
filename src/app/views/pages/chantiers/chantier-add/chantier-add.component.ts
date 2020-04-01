@@ -97,7 +97,8 @@ export class ChantierAddComponent implements OnInit {
   }
   
   onSubmit(event){
-    console.log(this.chantierForm);
+    console.log(this.chantierForm.value);
+    // this.chantierService.add()
   }
 
   

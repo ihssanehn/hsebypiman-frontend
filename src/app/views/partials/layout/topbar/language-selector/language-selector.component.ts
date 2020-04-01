@@ -25,6 +25,11 @@ export class LanguageSelectorComponent implements OnInit {
 	language: LanguageFlag;
 	languages: LanguageFlag[] = [
 		{
+			lang: 'fr',
+			name: 'French',
+			flag: './assets/media/flags/195-france.svg'
+		},
+		{
 			lang: 'en',
 			name: 'English',
 			flag: './assets/media/flags/260-united-kingdom.svg'
@@ -49,11 +54,7 @@ export class LanguageSelectorComponent implements OnInit {
 			name: 'German',
 			flag: './assets/media/flags/162-germany.svg'
 		},
-		{
-			lang: 'fr',
-			name: 'French',
-			flag: './assets/media/flags/195-france.svg'
-		},
+		
 	];
 
 	/**
@@ -87,6 +88,7 @@ export class LanguageSelectorComponent implements OnInit {
 	 * @param lang: any
 	 */
 	setLanguage(lang) {
+		console.log(lang);
 		this.languages.forEach((language: LanguageFlag) => {
 			if (language.lang === lang) {
 				language.active = true;

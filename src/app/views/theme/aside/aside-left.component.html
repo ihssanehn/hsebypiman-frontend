@@ -101,7 +101,7 @@
 	</i>
 
 	<!-- menu item title text -->
-	<span class="tf-menu__link-text text-center" [translate]="item.translate">{{item.title}}</span>
+	<span class="tf-menu__link-text" [translate]="item.translate">{{item.title}}</span>
 	<!-- menu item with badge -->
 	<span *ngIf="item.badge" class="tf-menu__link-badge">
 		<span class="tf-badge" [ngClass]="item.badge.type">{{item.badge.value}}</span>

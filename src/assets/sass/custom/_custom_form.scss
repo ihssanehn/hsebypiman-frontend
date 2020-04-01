@@ -1,9 +1,3 @@
-//
-// Custom Example 1 Style
-// Here you can put your custom sass code, use global SASS mixings and variables to override the theme or add new styles according to your requirements.
-// Most of the changes can be achieved via global or layout level sass variable changes.
-//
-
 
 .ng-select.ng-select-single .ng-select-container{
     min-height: auto;
@@ -34,7 +28,7 @@
     display: flex;
     flex-flow: row wrap;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     .mat-radio-container{
         width: 15px !important;
         height: 15px !important;

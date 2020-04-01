@@ -3,10 +3,10 @@ import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'tf-ar-form',
-  templateUrl: './ar-form.component.html',
-  styleUrls: ['./ar-form.component.scss']
+  templateUrl: './ar-form-1.component.html',
+  styleUrls: ['./ar-form-1.component.scss']
 })
-export class ArFormComponent implements OnInit {
+export class ArForm1Component implements OnInit {
 
   @Input() arForm: FormBuilder;
   constructor() { }

@@ -66,19 +66,13 @@
 								<mat-form-field class="col-xl-2" [floatLabel]="'always'">
 									<mat-label>{{'CHANTIERS.CHIEF' | translate}}</mat-label>
 									<ng-select ngSelectMat class="form-control mat-select" [items]="users" formControlName="charge_affaire_id" bindLabel="fullname"
-										[bindValue]="id" [clearable]="false">
+										bindValue="id" [clearable]="false">
 									</ng-select>
 								</mat-form-field>
 							</div>
-							<!-- <ng-select [items]="allRoles" [formControl]="role" bindLabel="title"
-											[bindValue]="id" [clearable]="false">
-										</ng-select> -->
-
-							
 						</div>
 					</div>
 				</div>
-
 			</div>
 		</tf-portlet-body>
 	</tf-portlet>
