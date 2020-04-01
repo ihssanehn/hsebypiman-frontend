@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 
 export class ArService extends HttpService{
 
-    baseUrl = environment.apiBaseUrl+'chantiers/';
+    baseUrl = environment.apiBaseUrl+'ar/';
     constructor(
         private http: HttpClient,
         private router: Router
