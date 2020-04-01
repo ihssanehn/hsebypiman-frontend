@@ -2,12 +2,10 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
 import { CommonModule } from '@angular/common';
+import * as moment from 'moment';
 
 import { TranslateService } from '@ngx-translate/core';
 import { ChantierService, TypeService } from '@app/core/services';
-import { Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
-import { Paginate } from '@app/core/_base/layout/models/paginate.model';
 import { Chantier, Type } from '@app/core/models';
 import { NgxPermissionsService } from 'ngx-permissions';
 import { AuthService, User } from '@app/core/auth';
@@ -27,6 +25,7 @@ export class ChantierAddComponent implements OnInit {
 	loaded = false;
 	editMode: boolean = false;
   // Private properties
+  errors;
   
   constructor(
 		private activatedRoute: ActivatedRoute,
@@ -96,11 +95,40 @@ export class ChantierAddComponent implements OnInit {
 		this.cdr.detectChanges();
   }
   
-  onSubmit(event){
-    console.log(this.chantierForm.value);
-    // this.chantierService.add()
+  async onSubmit(event){
+    try {
+      let result;
+
+      let form = {...this.chantierForm.value};
+      form.date_demarrage = this.setDateFormat(form.date_demarrage)
+      form.ar.date = this.setDateFormat(form.date);
+      form.ar.date_accueil_secu = this.setDateFormat(form.ar.date_accueil_secu);
+      form.ar.date_demarrage = this.setDateFormat(form.ar.date_demarrage);
+      form.ar.date_validite = this.setDateFormat(form.ar.date_validite);
+  
+
+			this.chantierService.create(form)
+        .toPromise()
+        .then((chantier) => {
+          this.errors = false; 
+          this.cdr.markForCheck();
+          this.router.navigateByUrl('./list');
+        })
+        .catch(err =>{
+          if(err.status === 422)
+            this.chantierForm = { ...err.error};
+            this.errors = true;
+        });
+        
+      this.cdr.markForCheck();
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+
   }
 
-  
-  
+  setDateFormat(date){
+    return moment(date).format('YYYY-MM-DD');
+  }
 }
