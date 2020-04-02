@@ -9,6 +9,8 @@ import { ChantierService, TypeService } from '@app/core/services';
 import { Chantier, Type } from '@app/core/models';
 import { NgxPermissionsService } from 'ngx-permissions';
 import { AuthService, User } from '@app/core/auth';
+import { MatSnackBar } from '@angular/material';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'tf-chantier-add',
@@ -35,7 +37,8 @@ export class ChantierAddComponent implements OnInit {
 		private authService: AuthService,
 		private cdr: ChangeDetectorRef,
 		private permissionsService : NgxPermissionsService,
-		private translate:TranslateService,
+    private translate:TranslateService,
+    public snackBar: MatSnackBar,
   ) { }
 
   ngOnInit() {
@@ -58,21 +61,21 @@ export class ChantierAddComponent implements OnInit {
       charge_affaire_id: [null, Validators.required],
       ar: this.chantierFB.group({
         date: [null, Validators.compose([])],
-        a_prevoir_compagnons:['', Validators.compose([])],
+        a_prevoir_compagnons:[null, Validators.compose([])],
         date_accueil_secu:[null, Validators.compose([])],
-        realisateur:['', Validators.compose([])],
-        tel_realisateur:['', Validators.compose([])],
+        realisateur:[null, Validators.compose([])],
+        tel_realisateur:[null, Validators.compose([])],
         date_validite:[null, Validators.compose([])],
-        num_secours:['', Validators.compose([])],
+        num_secours:[null, Validators.compose([])],
         contact_interne_secours:[null, Validators.compose([])],
-        tel_contact_interne_secours:['', Validators.compose([])],
-        contact_client_chef_chtr:['', Validators.compose([])],
-        tel_contact_client_chef_chtr:['', Validators.compose([])],
-        contact_client_hse:['', Validators.compose([])],
-        tel_contact_client_hse:['', Validators.compose([])],
-        heure_ouverture:['', Validators.compose([])],
-        heure_fermeture:['', Validators.compose([])],
-        courant_dispo:['', Validators.compose([])],
+        tel_contact_interne_secours:[null, Validators.compose([])],
+        contact_client_chef_chtr:[null, Validators.compose([])],
+        tel_contact_client_chef_chtr:[null, Validators.compose([])],
+        contact_client_hse:[null, Validators.compose([])],
+        tel_contact_client_hse:[null, Validators.compose([])],
+        heure_ouverture:[null, Validators.compose([])],
+        heure_fermeture:[null, Validators.compose([])],
+        courant_dispo:[null, Validators.compose([])],
       })
 		});
 		this.loaded = true;
@@ -85,23 +88,59 @@ export class ChantierAddComponent implements OnInit {
 
       let form = {...this.chantierForm.value};
       form.date_demarrage = this.setDateFormat(form.date_demarrage)
-      form.ar.date = this.setDateFormat(form.date);
+      form.ar.date = this.setDateFormat(form.ar.date);
       form.ar.date_accueil_secu = this.setDateFormat(form.ar.date_accueil_secu);
       form.ar.date_demarrage = this.setDateFormat(form.ar.date_demarrage);
       form.ar.date_validite = this.setDateFormat(form.ar.date_validite);
   
+      if(
+        !form.ar.date &&
+        !form.ar.a_prevoir_compagnons &&
+        !form.ar.date_accueil_secu &&
+        !form.ar.realisateur &&
+        !form.ar.tel_realisateur &&
+        !form.ar.date_validite &&
+        !form.ar.num_secours &&
+        !form.ar.contact_interne_secours &&
+        !form.ar.tel_contact_interne_secours &&
+        !form.ar.contact_client_chef_chtr &&
+        !form.ar.tel_contact_client_chef_chtr &&
+        !form.ar.contact_client_hse &&
+        !form.ar.tel_contact_client_hse &&
+        !form.ar.heure_ouverture &&
+        !form.ar.heure_fermeture && !form.ar.courant_dispo
+      ){
+        form.ar = null;
+      }
 
 			this.chantierService.create(form)
         .toPromise()
         .then((chantier) => {
           this.errors = false; 
           this.cdr.markForCheck();
-          this.router.navigateByUrl('./list');
+          
+          Swal.fire({
+            icon: 'success',
+            title: 'Entité ajoutée avec succès',
+            showConfirmButton: false,
+            timer: 1500
+          }).then(() => {
+            this.router.navigate(['/chantiers/list']);
+          });
         })
-        .catch(err =>{
+        .catch(err =>{ 
+
+          Swal.fire({
+            icon: 'error',
+            title: 'Echec! une erreur est survenue',
+            showConfirmButton: false,
+            timer: 1500
+          });
+
           if(err.status === 422)
             this.chantierForm = { ...err.error};
             this.errors = true;
+
         });
         
       this.cdr.markForCheck();
@@ -113,6 +152,8 @@ export class ChantierAddComponent implements OnInit {
   }
 
   setDateFormat(date){
-    return moment(date).format('YYYY-MM-DD');
+      return date ? moment(date).format('YYYY-MM-DD') : null;
   }
+
+  
 }

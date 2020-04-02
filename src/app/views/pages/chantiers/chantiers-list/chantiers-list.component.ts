@@ -6,6 +6,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import {fromEvent, Subscription} from 'rxjs';
 import { ChantierTableDataSource } from './table-chantiers.data-source';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'tf-chantiers-list',
@@ -63,9 +64,30 @@ export class ChantiersListComponent implements OnInit {
 		this.getChantiers();
 	}
 
-	editChantier(chantier){
-		this.router.navigate(['../edit', chantier.id], { relativeTo: this.activatedRoute });
-		console.log('éditer le chantier n°'+chantier.id);
-	}
+	// editChantier(chantier){
+	// 	this.router.navigate(['../edit', chantier.id], { relativeTo: this.activatedRoute });
+	// 	console.log('éditer le chantier n°'+chantier.id);
+	// }
 
+	viewChantier(chantierId){
+		Swal.fire({
+			title:'Désolé cette fonctionnalité n\'a pas encore été implémentée',
+            showConfirmButton: false,
+            timer: 1500
+		})
+	}
+	editChantier(chantierId){
+		Swal.fire({
+			title:'Désolé cette fonctionnalité n\'a pas encore été implémentée',
+			showConfirmButton: false,
+            timer: 1500
+		})
+	}
+	deleteChantier(chantierId){
+		Swal.fire({
+			title:'Désolé cette fonctionnalité n\'a pas encore été implémentée',
+			showConfirmButton: false,
+            timer: 1500
+		})
+	}
 }
