@@ -57,6 +57,11 @@ const routes: Routes = [
 		component: ChantiersComponent,
 		children: [
 			{
+				path: '',
+				redirectTo: 'list',
+				pathMatch: 'full'
+			},
+			{
 				path: 'list',
 				component: ChantiersListComponent
 			},

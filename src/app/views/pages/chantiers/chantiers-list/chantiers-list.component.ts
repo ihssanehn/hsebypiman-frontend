@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef, Input, AfterContentInit, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef, ElementRef, Input, AfterContentInit, ViewChildren, QueryList } from '@angular/core';
 import { ChantierService } from '@app/core/services';
 import { Paginate } from '@app/core/_base/layout/models/paginate.model';
 import { Chantier } from '@app/core/models';
 import { TranslateService } from '@ngx-translate/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import {fromEvent, Subscription} from 'rxjs';
 import { ChantierTableDataSource } from './table-chantiers.data-source';
 
 @Component({
@@ -13,6 +14,8 @@ import { ChantierTableDataSource } from './table-chantiers.data-source';
 })
 export class ChantiersListComponent implements OnInit {
 
+  private searchSubscription: Subscription;
+  public keywordSearch = '';
   public chantiersList : Paginate<Chantier>;
   pagination: any = {
 		page: 1,
@@ -30,6 +33,8 @@ export class ChantiersListComponent implements OnInit {
 	};
 	displayedChantierColumns=['number','client','name','status','charge_affaire','montant','ars_count','latest_ar','vss_count','latest_vs','action'];
 
+	@ViewChild('searchInput') searchInput: ElementRef;
+	searchUnreached: boolean;
   	constructor(
 		private router: Router,
 		private activatedRoute: ActivatedRoute,

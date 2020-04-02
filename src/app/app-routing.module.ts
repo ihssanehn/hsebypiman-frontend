@@ -59,8 +59,8 @@ const routes: Routes = [
 				}
 			},
 			{path: 'error/:type', component: ErrorPageComponent},
-			{path: '', redirectTo: 'dashboard', pathMatch: 'full'},
-			{path: '**', redirectTo: 'dashboard', pathMatch: 'full'}
+			{path: '', redirectTo: 'chantiers/list', pathMatch: 'full'},
+			{path: '**', redirectTo: 'chantiers/list', pathMatch: 'full'}
 		]
 	},
 

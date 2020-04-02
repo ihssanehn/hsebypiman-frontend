@@ -68,6 +68,7 @@ import {
 	UserSideProfileComponent,
 	ArForm1Component,
 	ChantierFormComponent,
+	CommingSoonComponent,
 } from './layout';
 // General
 import { NoticeComponent } from './content/general/notice/notice.component';
@@ -120,6 +121,7 @@ import { PaginationComponent } from './content/general/pagination/pagination.com
 
 		ErrorComponent,
 		PaginationComponent,
+		CommingSoonComponent,
 	],
 	exports: [
 		WidgetModule,
@@ -163,7 +165,7 @@ import { PaginationComponent } from './content/general/pagination/pagination.com
 
 		ErrorComponent,
 		PaginationComponent,
-
+		CommingSoonComponent,
 	],
 	imports: [
 		CommonModule,

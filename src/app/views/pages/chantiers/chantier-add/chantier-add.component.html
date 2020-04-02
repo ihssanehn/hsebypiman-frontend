@@ -3,7 +3,7 @@
 </div>
 <form [formGroup]="chantierForm" class="tf-form tf-form--group-seperator-dashed ">
 	<tf-chantier-form [chantierForm]="chantierForm"></tf-chantier-form>
-	<tf-ar-form [arForm]="chantierForm.controls['ar']" ></tf-ar-form>
+	<tf-ar-form-1 [arForm]="chantierForm.controls['ar']" ></tf-ar-form-1>
 	<button class="btn btn-primary float-right" (click)="onSubmit(false)">
 		{{'ACTION.SAVE' | translate}}
 	</button>

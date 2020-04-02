@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 
 @Component({
-  selector: 'tf-ar-form',
+  selector: 'tf-ar-form-1',
   templateUrl: './ar-form-1.component.html',
   styleUrls: ['./ar-form-1.component.scss']
 })
