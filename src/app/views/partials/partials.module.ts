@@ -68,6 +68,7 @@ import {
 	UserSideProfileComponent,
 	ArForm1Component,
 	ChantierFormComponent,
+	ChantierFiltersComponent,
 	CommingSoonComponent,
 } from './layout';
 // General
@@ -117,8 +118,9 @@ import { PaginationComponent } from './content/general/pagination/pagination.com
 		UserSideProfileComponent,
 		ArForm1Component,
 		ChantierFormComponent,
+		ChantierFiltersComponent,
 		CartComponent,
-
+		
 		ErrorComponent,
 		PaginationComponent,
 		CommingSoonComponent,
@@ -161,8 +163,9 @@ import { PaginationComponent } from './content/general/pagination/pagination.com
 		UserSideProfileComponent,
 		ArForm1Component,
 		ChantierFormComponent,
+		ChantierFiltersComponent,
 		CartComponent,
-
+		
 		ErrorComponent,
 		PaginationComponent,
 		CommingSoonComponent,

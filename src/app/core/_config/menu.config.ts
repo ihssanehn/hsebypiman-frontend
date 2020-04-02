@@ -21,7 +21,7 @@ export class MenuConfig {
 					title: 'AnalyseRisque',
 					root: true,
 					alignment: 'left',
-					page: '/analyse-risque',
+					page: '/analyse-risque/list',
 					translate: 'MENU.ANALYSERISQUE',
 				},
 				{
@@ -429,7 +429,6 @@ export class MenuConfig {
 			self: {},
 			items:[
 			{
-				bullet: 'dot',
 				icon: 'flaticon2-browser-2',
 				title: 'Dashboards',
 				root: true,
@@ -443,16 +442,14 @@ export class MenuConfig {
 				alignment: 'left',
 				page: '/chantiers/list',
 				translate: 'MENU.CHANTIER',
-				bullet: 'dot',
 				icon: 'flaticon2-browser-2',
 			},
 			{
 				title: 'AnalyseRisque',
 				root: true,
 				alignment: 'left',
-				page: '/analyse-risque',
+				page: '/analyse-risque/list',
 				translate: 'MENU.ANALYSERISQUE',
-				bullet: 'dot',
 				icon: 'flaticon2-digital-marketing',
 			},
 			{
@@ -461,7 +458,6 @@ export class MenuConfig {
 				alignment: 'left',
 				page: '/visite-securite',
 				translate: 'MENU.VISITESECURITE',
-				bullet: 'dot',
 				icon: 'flaticon2-list-2',
 			},
 			{
@@ -470,7 +466,6 @@ export class MenuConfig {
 				alignment: 'left',
 				page: '/plan-action',
 				translate: 'MENU.PLANACTION',
-				bullet: 'dot',
 				icon: 'flaticon2-user-outline-symbol',
 			},
 			{
@@ -479,7 +474,6 @@ export class MenuConfig {
 				alignment: 'left',
 				page: '/salaries',
 				translate: 'MENU.SALARIES',
-				bullet: 'dot',
 				icon: 'flaticon2-list-2',
 			},
 			{
@@ -488,7 +482,6 @@ export class MenuConfig {
 				alignment: 'left',
 				page: '/sous-traitants',
 				translate: 'MENU.SOUSTRAITANTS',
-				bullet: 'dot',
 				icon: 'flaticon2-mail-1',
 			},
 			{
@@ -497,7 +490,6 @@ export class MenuConfig {
 				alignment: 'left',
 				page: '/admin',
 				translate: 'MENU.ADMIN',
-				bullet: 'dot',
 				icon: 'flaticon2-mail-1',
 			},
 		]

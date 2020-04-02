@@ -244,6 +244,18 @@ export const locale = {
 				PLACEHOLDER:'',
 				TITLE:'Pays'
 			},
-		}
+		},
+		FILTER : {
+			TITLE : "Filtres",
+			SHOW : "Afficher",
+			HIDE : "Cacher",
+			SEARCH : "Rechercher",
+			KEYWORD : "Rechercher",
+			SELECT_ROLE : "Selectionnez un role",
+			SEARCH_KEYWORD : "Recherche par mot clé",
+			STATUS : "Statut",
+			SELECT_STATUS : "Sélectionnez un status",
+			CREATION_DATE : "Date de création"
+		},
 	}
 };

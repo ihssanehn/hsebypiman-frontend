@@ -25,6 +25,10 @@ const routes: Routes = [
 				loadChildren: () => import('@app/views/pages/chantiers/chantiers.module').then(m => m.ChantiersModule)
 			},
 			{
+				path: 'analyse-risque',
+				loadChildren: () => import('@app/views/pages/analyses-risque/ars.module').then(m => m.ArsModule)
+			},
+			{
 				path: 'mail',
 				loadChildren: () => import('@app/views/pages/apps/mail/mail.module').then(m => m.MailModule)
 			},

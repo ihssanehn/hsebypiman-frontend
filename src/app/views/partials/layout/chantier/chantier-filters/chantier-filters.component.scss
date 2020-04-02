@@ -1,0 +1,9 @@
+:host::ng-deep {
+    .block-header-filters{
+        display: flex;
+        flex-grow: 1;
+        flex-direction: column;
+        margin-bottom: 20px;
+        border-radius: 4px;
+    }
+}

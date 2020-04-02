@@ -1,0 +1,25 @@
+
+<form class="col-md-12 tf-form" *ngIf="filter">
+	<!--begin::Form-->
+	<div class="form-group row">
+		<div class="col-md-12">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">
+						<mat-icon style="height:19px; width: 19px;">search</mat-icon>
+					</span>
+				</div>
+				<input #searchInput type="text" class="form-control" name="keyword" placeholder="{{'FILTER.SEARCH_KEYWORD' | translate}}">
+				<div class="input-group-append">
+					<span class="input-group-text">
+						<span ><i (click)="clear($event)" [ngStyle]="{'display': 'flex'}" class="la la-close tf-quick-search__close"></i></span>
+					</span>
+					<span class="input-group-text">
+						<span  (click)="hidden = !hidden">Recherche Avancée <i [ngStyle]="{'display': 'flex'}"></i></span>
+					</span>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</form>
