@@ -29,6 +29,10 @@ const routes: Routes = [
 				loadChildren: () => import('@app/views/pages/analyses-risque/ars.module').then(m => m.ArsModule)
 			},
 			{
+				path: 'visite-securite',
+				loadChildren: () => import('@app/views/pages/visites-securite/vs.module').then(m => m.VsModule)
+			},
+			{
 				path: 'mail',
 				loadChildren: () => import('@app/views/pages/apps/mail/mail.module').then(m => m.MailModule)
 			},

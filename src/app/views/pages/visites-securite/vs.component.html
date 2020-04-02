@@ -1,0 +1,195 @@
+<!-- <div class="row">
+	<div class="col-xl-6">
+		<div class="row row-full-height">
+			<div class="col-sm-12 col-md-12 col-lg-6">
+				<tf-portlet [class]="'tf-portlet--height-fluid-half tf-portlet--border-bottom-brand'">
+					<tf-portlet-body [class]="'tf-portlet__body--fluid'">
+						<tf-widget26 [value]="570" [desc]="'Total Sales'" [options]="chartOptions1"></tf-widget26>
+					</tf-portlet-body>
+				</tf-portlet>
+
+				<div class="tf-space-20"></div>
+
+				<tf-portlet [class]="'tf-portlet--height-fluid-half tf-portlet--border-bottom-brand'">
+					<tf-portlet-body [class]="'tf-portlet__body--fluid'">
+						<tf-widget26 [value]="640" [desc]="'Completed Transactions'" [options]="chartOptions2"></tf-widget26>
+					</tf-portlet-body>
+				</tf-portlet>
+			</div>
+
+			<div class="col-sm-12 col-md-12 col-lg-6">
+				<tf-portlet [class]="'tf-portlet--height-fluid-half tf-portlet--border-bottom-brand'">
+					<tf-portlet-body [class]="'tf-portlet__body--fluid'">
+						<tf-widget26 [value]="'234+'" [desc]="'Transactions'" [options]="chartOptions3"></tf-widget26>
+					</tf-portlet-body>
+				</tf-portlet>
+
+				<div class="tf-space-20"></div>
+
+				<tf-portlet [class]="'tf-portlet--height-fluid-half tf-portlet--border-bottom-brand'">
+					<tf-portlet-body [class]="'tf-portlet__body--fluid'">
+						<tf-widget26 [value]="'4.4M$'" [desc]="'Paid Comissions'" [options]="chartOptions4"></tf-widget26>
+					</tf-portlet-body>
+				</tf-portlet>
+			</div>
+		</div>
+	</div>
+	<div class="col-xl-6">
+		<tf-portlet [class]="'tf-portlet--height-fluid'">
+			<tf-portlet-header [title]="'Order Statistics'">
+				<ng-container tfPortletTools>
+					<tf-context-menu2></tf-context-menu2>
+				</ng-container>
+			</tf-portlet-header>
+			<tf-portlet-body>
+				<tf-widget12></tf-widget12>
+			</tf-portlet-body>
+		</tf-portlet>
+	</div>
+</div>
+
+
+<tf-portlet>
+	<tf-portlet-body [class]="'tf-portlet__body--fit'">
+		<div class="row row-no-padding row-col-separator-xl">
+			<div class="col-xl-4">
+				<tf-widget1></tf-widget1>
+			</div>
+			<div class="col-xl-4">
+				<tf-widget14 [title]="'Daily Sales'" [desc]="'Check out each collumn for more details'"></tf-widget14>
+			</div>
+			<div class="col-xl-4">
+				<tf-widget14 [title]="'Revenue Change'" [desc]="'Revenue change breakdown by cities'"></tf-widget14>
+			</div>
+		</div>
+	</tf-portlet-body>
+</tf-portlet>
+
+<div class="row">
+	<div class="col-xl-4">
+		<tf-portlet [class]="'tf-portlet--height-fluid'">
+			<tf-portlet-header [title]="'Download Files'">
+				<ng-container tfPortletTools>
+					<tf-context-menu2></tf-context-menu2>
+				</ng-container>
+			</tf-portlet-header>
+			<tf-portlet-body>
+				<tf-widget4 [data]="widget4_1">
+					<ng-template #actionTemplate let-item="item">
+						<div class="tf-widget4__tools">
+							<a href="javascript:;" class="btn btn-clean btn-icon btn-sm">
+								<i class="flaticon2-download-symbol-of-down-arrow-in-a-rectangle"></i>
+							</a>
+						</div>
+					</ng-template>
+				</tf-widget4>
+			</tf-portlet-body>
+		</tf-portlet>
+	</div>
+	<div class="col-xl-4">
+		<tf-portlet [class]="'tf-portlet--height-fluid'">
+			<tf-portlet-header [title]="'New Users'">
+				<ng-container tfPortletTools>
+					<tf-context-menu2></tf-context-menu2>
+				</ng-container>
+			</tf-portlet-header>
+			<tf-portlet-body>
+				<tf-widget4 [data]="widget4_2">
+					<ng-template #actionTemplate let-item="item">
+						<a href="javascript:;" class="btn btn-sm" [ngClass]="item.buttonClass">Follow</a>
+					</ng-template>
+				</tf-widget4>
+			</tf-portlet-body>
+		</tf-portlet>
+	</div>
+	<div class="col-xl-4">
+		<tf-portlet [class]="'tf-portlet--height-fluid'">
+			<tf-portlet-header [title]="'Latest Updates'">
+				<ng-container tfPortletTools>
+					<tf-context-menu2></tf-context-menu2>
+				</ng-container>
+			</tf-portlet-header>
+			<tf-portlet-body>
+				<tf-widget4 [data]="widget4_3">
+					<ng-template #actionTemplate let-item="item">
+						<span class="tf-widget4__number" [ngClass]="item.valueColor">{{item.value}}</span>
+					</ng-template>
+				</tf-widget4>
+			</tf-portlet-body>
+		</tf-portlet>
+	</div>
+</div>
+
+
+<div class="row">
+	<div class="col-xl-8">
+		<tf-portlet [class]="'tf-portlet--height-fluid'">
+			<tf-portlet-header [title]="'Exclusive Datatable'" [class]="'tf-portlet__head--lg tf-portlet__head--noborder tf-portlet__head--break-sm'">
+				<ng-container tfPortletTools>
+					<tf-context-menu></tf-context-menu>
+				</ng-container>
+			</tf-portlet-header>
+			<tf-portlet-body [class]="'tf-portlet__body--fit'">
+				<tf-data-table></tf-data-table>
+			</tf-portlet-body>
+		</tf-portlet>
+	</div>
+	<div class="col-xl-4">
+		<tf-portlet [class]="'tf-portlet--height-fluid'">
+			<tf-portlet-header [title]="'Authors Profit'">
+				<ng-container tfPortletTools>
+					<tf-context-menu2></tf-context-menu2>
+				</ng-container>
+			</tf-portlet-header>
+			<tf-portlet-body>
+				<tf-widget4 [data]="widget4_4">
+					<ng-template #actionTemplate let-item="item">
+						<span class="tf-widget4__number" [ngClass]="item.valueColor">{{item.value}}</span>
+					</ng-template>
+				</tf-widget4>
+			</tf-portlet-body>
+		</tf-portlet>
+	</div>
+</div>
+
+
+<div class="row">
+	<div class="col-xl-8">
+		<tf-portlet [class]="'tf-portlet--height-fluid'">
+			<tf-portlet-header [title]="'Best Sellers'">
+				<ng-container tfPortletTools>
+					<tf-context-menu2></tf-context-menu2>
+				</ng-container>
+			</tf-portlet-header>
+			<tf-portlet-body>
+				<tf-widget5></tf-widget5>
+			</tf-portlet-body>
+		</tf-portlet>
+	</div>
+	<div class="col-xl-4">
+		<tf-portlet [class]="'tf-portlet--height-fluid'">
+			<tf-portlet-header [title]="'Recent Activities'">
+				<ng-container tfPortletTools>
+					<tf-context-menu2></tf-context-menu2>
+				</ng-container>
+			</tf-portlet-header>
+			<tf-portlet-body>
+				<tf-timeline2></tf-timeline2>
+			</tf-portlet-body>
+		</tf-portlet>
+	</div>
+</div>
+
+
+
+<tf-portlet>
+	<tf-portlet-header>
+		<ng-container tfPortletTitle>
+		</ng-container>
+		<ng-container tfPortletTools>
+		</ng-container>
+	</tf-portlet-header>
+	<tf-portlet-body></tf-portlet-body>
+	<tf-portlet-footer></tf-portlet-footer>
+</tf-portlet> -->
+<tf-comming-soon></tf-comming-soon>
