@@ -21,7 +21,7 @@ export class ChantierFiltersComponent implements AfterViewInit, OnInit, OnDestro
 
   loading = false;
   hidden = true;
-  data;
+  data: boolean = false;
   filter = {
     keyword: "",
     dateRange: [],
@@ -47,6 +47,7 @@ export class ChantierFiltersComponent implements AfterViewInit, OnInit, OnDestro
           distinctUntilChanged(),
       )
       .subscribe((text:string)=>{
+        this.data = this.searchInput.nativeElement.value.length > 0 ? true : false;
         this.filter.keyword = this.searchInput.nativeElement.value;
         this.submit();
       });
@@ -56,11 +57,6 @@ export class ChantierFiltersComponent implements AfterViewInit, OnInit, OnDestro
     this.change.emit(this.filter);
   }
 
-  submitDebounce(){
-    setTimeout(() => {
-      this.submit();
-    }, 3000);
-  }
 
   onChange: (_: any) => void = (_: any) => { };
 
@@ -95,6 +91,7 @@ export class ChantierFiltersComponent implements AfterViewInit, OnInit, OnDestro
   }
   
   clear(){
+    this.data = false;
     this.searchInput.nativeElement.value = '';
     this.filter.keyword = null;
     this.submit();
