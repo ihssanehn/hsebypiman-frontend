@@ -121,7 +121,7 @@ export class ChantierAddComponent implements OnInit {
           
           Swal.fire({
             icon: 'success',
-            title: 'Entité ajoutée avec succès',
+            title: 'Chantié créé avec succès',
             showConfirmButton: false,
             timer: 1500
           }).then(() => {
@@ -132,7 +132,7 @@ export class ChantierAddComponent implements OnInit {
 
           Swal.fire({
             icon: 'error',
-            title: 'Echec! une erreur est survenue',
+            title: 'Echec! le formulaire est incomplet',
             showConfirmButton: false,
             timer: 1500
           });
