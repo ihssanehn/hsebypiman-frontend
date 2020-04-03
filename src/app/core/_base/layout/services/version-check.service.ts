@@ -11,7 +11,7 @@ export class VersionCheckService {
     /**
      * Checks in every set frequency the version of frontend application
      * @param url
-     * @param {number} frequency - in milliseconds, defaults to 60 minutes
+     * @param {number} frequency - in milliseconds, defaults to 5 seconds
      */
     public initVersionCheck(url, frequency = 1000 * 5) {
         console.log('init');
