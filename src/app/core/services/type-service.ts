@@ -6,7 +6,8 @@ import { QueryParamsModel, QueryResultsModel } from '../_base/crud';
 import { environment } from '@env/environment';
 import { HttpService } from '@app/core/services/http-service';
 import { NgxPermissionsService } from 'ngx-permissions';
-import { Type } from '@app/core/models/';
+import { Type } from '@app/core/models/type.model';
+import { Chantier } from '@app/core/models/chantier.model';
 import { Paginate } from '@app/core/_base/layout/models/paginate.model'
 import { Router } from '@angular/router';
 
@@ -24,7 +25,7 @@ export class TypeService extends HttpService{
         return this.http.get<Array<Type>>(this.baseUrl);
     }
     getAllFromModel(model){
-        return this.http.get<Array<Type>>(this.baseUrl+'?model='+model);
+        return this.http.get<Array<Type>>(this.baseUrl);
     }
     get(item_id){
         return this.http.get(this.baseUrl+item_id);
