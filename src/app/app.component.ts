@@ -58,7 +58,6 @@ export class AppComponent implements OnInit, OnDestroy {
 	async ngOnInit() {
 		// enable/disable loader
 		this.loader = this.layoutConfigService.getConfig('loader.enabled');
-		this.versionCheckService.initVersionCheck(environment.versionCheckURL)
 
 		const routerSubscription = this.router.events.subscribe(event => {
 			if (event instanceof NavigationEnd) {
@@ -67,7 +66,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
 				// scroll to top on every route change
 				window.scrollTo(0, 0);
-
+				
+				this.versionCheckService.checkVersion(environment.versionCheckURL)
 				// to display back the body content
 				setTimeout(() => {
 					document.body.classList.add('tf-page--loaded');

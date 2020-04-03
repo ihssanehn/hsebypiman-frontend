@@ -13,18 +13,18 @@ export class VersionCheckService {
      * @param url
      * @param {number} frequency - in milliseconds, defaults to 5 seconds
      */
-    public initVersionCheck(url, frequency = 1000 * 5) {
-        console.log('init');
-        setInterval(() => {
-            this.checkVersion(url);
-        }, frequency);
-    }
+    // public initVersionCheck(url, frequency = 1000 * 5) {
+    //     console.log('init');
+    //     setInterval(() => {
+    //         this.checkVersion(url);
+    //     }, frequency);
+    // }
 
     /**
      * Will do the call and check if the hash has changed or not
      * @param url
      */
-    private checkVersion(url) {
+    public checkVersion(url) {
         // timestamp these requests to invalidate caches
         this.http.get(url + '?t=' + new Date().getTime())
             // .first()
