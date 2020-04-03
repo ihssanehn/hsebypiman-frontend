@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 // Core Module
 import { CoreModule } from '../../../core/core.module';
 import { PartialsModule } from '../../partials/partials.module';
-import { VsComponent } from './vs.component';
+import { SousTraitantsComponent } from './sous-traitants.component';
 
 @NgModule({
 	imports: [
@@ -15,14 +15,14 @@ import { VsComponent } from './vs.component';
 		RouterModule.forChild([
 			{
 				path: '',
-				component: VsComponent
+				component: SousTraitantsComponent
 			},
 		]),
 	],
 	providers: [],
 	declarations: [
-		VsComponent,
+		SousTraitantsComponent,
 	]
 })
-export class VsModule {
+export class SousTraitantsModule {
 }

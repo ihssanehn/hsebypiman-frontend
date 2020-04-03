@@ -25,12 +25,28 @@ const routes: Routes = [
 				loadChildren: () => import('@app/views/pages/chantiers/chantiers.module').then(m => m.ChantiersModule)
 			},
 			{
-				path: 'analyse-risque',
+				path: 'analyses-risque',
 				loadChildren: () => import('@app/views/pages/analyses-risque/ars.module').then(m => m.ArsModule)
 			},
 			{
-				path: 'visite-securite',
-				loadChildren: () => import('@app/views/pages/visites-securite/vs.module').then(m => m.VsModule)
+				path: 'visites-securite',
+				loadChildren: () => import('@app/views/pages/visites-securite/visites-securite.module').then(m => m.VisitesSecuriteModule)
+			},
+			{
+				path: 'plans-action',
+				loadChildren: () => import('@app/views/pages/plans-action/plans-action.module').then(m => m.PlansActionModule)
+			},
+			{
+				path: 'salaries',
+				loadChildren: () => import('@app/views/pages/salaries/salaries.module').then(m => m.SalariesModule)
+			},
+			{
+				path: 'sous-traitants',
+				loadChildren: () => import('@app/views/pages/sous-traitants/sous-traitants.module').then(m => m.SousTraitantsModule)
+			},
+			{
+				path: 'admin',
+				loadChildren: () => import('@app/views/pages/admin/admin.module').then(m => m.AdminModule)
 			},
 			{
 				path: 'mail',

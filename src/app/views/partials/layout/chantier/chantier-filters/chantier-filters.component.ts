@@ -2,8 +2,9 @@ import { ChangeDetectorRef, Component, OnInit, AfterViewInit, EventEmitter, Outp
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { fromEvent, of, Subscription } from 'rxjs';
 import { debounceTime,map,distinctUntilChanged,filter, tap } from 'rxjs/operators';
-// import { Status } from '@app/core/_base/layout/models/status.model';
-// import { StatusService } from '@app/core/_base/layout/services/status.service';
+import { DomSanitizer } from '@angular/platform-browser';
+import { MatIconRegistry } from '@angular/material';
+
 @Component({
   selector: 'tf-chantier-filters',
   templateUrl: './chantier-filters.component.html',
@@ -35,7 +36,12 @@ export class ChantierFiltersComponent implements AfterViewInit, OnInit, OnDestro
   @Output() change = new EventEmitter();
   constructor(
     // private statusService: StatusService
-  ) {}
+		iconRegistry: MatIconRegistry, 
+		sanitizer: DomSanitizer
+  ) {
+		iconRegistry.addSvgIcon(
+      'search',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/search.svg'));
+  }
 
   async ngOnInit(){}
 

@@ -8,6 +8,8 @@ import {fromEvent, Subscription} from 'rxjs';
 import { ChantierTableDataSource } from './table-chantiers.data-source';
 import Swal from 'sweetalert2';
 
+
+
 @Component({
   selector: 'tf-chantiers-list',
   templateUrl: './chantiers-list.component.html',
@@ -38,7 +40,9 @@ export class ChantiersListComponent implements OnInit {
 		protected chantierService:ChantierService,
 		protected cdr:ChangeDetectorRef,
 		private translate:TranslateService,
-  	) {}
+  	) {
+		  
+	}
 
   	ngOnInit() {
     	this.getChantiers();
