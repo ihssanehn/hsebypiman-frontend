@@ -1,19 +1,12 @@
-import {
-	AfterViewInit,
-	ChangeDetectionStrategy,
-	ChangeDetectorRef,
-	Component,
-	ElementRef,
-	OnInit,
-	Renderer2,
-	ViewChild
-} from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { filter } from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
 import * as objectPath from 'object-path';
 // Layout
 import { LayoutConfigService, MenuAsideService, MenuOptions, OffcanvasOptions } from '../../../core/_base/layout';
 import { HtmlClassService } from '../html-class.service';
+import { MatIconRegistry } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
 	selector: 'tf-aside-left',
@@ -80,8 +73,16 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 		public layoutConfigService: LayoutConfigService,
 		private router: Router,
 		private render: Renderer2,
-		private cdr: ChangeDetectorRef
+		private cdr: ChangeDetectorRef,
+		iconRegistry: MatIconRegistry, 
+		sanitizer: DomSanitizer
 	) {
+		iconRegistry.addSvgIcon('close-eye',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-close-see.svg'));
+		iconRegistry.addSvgIcon('dashboard',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-dashboard.svg'));
+		iconRegistry.addSvgIcon('chantier',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-chantier.svg'));
+		iconRegistry.addSvgIcon('visite-de-securite',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-visite-de-securite.svg'));
+		iconRegistry.addSvgIcon('plan-daction',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-plan-daction.svg'));
+		iconRegistry.addSvgIcon('administration',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-administration.svg'));
 	}
 
 	ngAfterViewInit(): void {

@@ -276,6 +276,8 @@
 				// Due-tone icon
 				svg {
 					@include tf-svg-icon-color(tf-get($item, link, icon, font-color, active));
+					// @include tf-attr(color, tf-get($item, link, icon, font-color, active));
+					
 				}
 			}
 
@@ -439,6 +441,9 @@
 			margin: 0;
 			list-style: none;
 			padding: tf-get($layout, default, self, padding);
+			display: flex;
+			flex-flow: row wrap;
+			justify-content: space-between;
 
 			// Base markup
 			.tf-menu__scroll {
@@ -497,7 +502,8 @@
 			.tf-menu__item {
 				display: flex;
 				flex-direction: column;
-				flex-grow: 1;
+				// flex-grow: 1;
+				flex: 0 0 45%;
 				float: none;
 				padding: 0;
 
@@ -506,7 +512,9 @@
 				> .tf-menu__link {
 					display: flex;
 					flex-grow: 1;
-					align-items: stretch;
+					// align-items: stretch;
+					align-items: center;
+					flex-direction: column;
 					margin: 0;
 					padding: 0;
 					text-decoration: none;
