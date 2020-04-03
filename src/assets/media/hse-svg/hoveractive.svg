@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="prefix__hoveractive" width="80" height="2.5" viewBox="0 0 80 2.5">
+    <defs>
+        <linearGradient id="prefix__linear-gradient" x1=".306" x2="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#20b1d3"/>
+            <stop offset="1" stop-color="#5adeb9"/>
+        </linearGradient>
+    </defs>
+    <rect id="prefix__hoveractive-2" width="80" height="2.5" data-name="hoveractive" rx="1.25"/>
+</svg>

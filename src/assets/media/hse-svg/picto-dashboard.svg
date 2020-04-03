@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="prefix__picto-dashboard" width="30" height="30" viewBox="0 0 30 30">
+    <defs>
+        <style>
+            .prefix__cls-1{fill:#004fc2}
+        </style>
+    </defs>
+    <rect id="prefix__Rectangle_632" width="14.182" height="9.818" class="prefix__cls-1" data-name="Rectangle 632" rx="1"/>
+    <rect id="prefix__Rectangle_635" width="14.182" height="8.182" class="prefix__cls-1" data-name="Rectangle 635" rx="1" transform="translate(15.818 21.818)"/>
+    <rect id="prefix__Rectangle_633" width="14.182" height="19.091" class="prefix__cls-1" data-name="Rectangle 633" rx="1" transform="translate(0 10.909)"/>
+    <rect id="prefix__Rectangle_634" width="14.182" height="20.727" class="prefix__cls-1" data-name="Rectangle 634" rx="1" transform="translate(15.818)"/>
+</svg>

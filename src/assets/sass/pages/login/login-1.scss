@@ -13,19 +13,20 @@
 
 // Login Base
 .tf-login.tf-login--v1 {
+    background-repeat: no-repeat;
+    background-size: cover;
     // Aside
     .tf-login__aside {
         width: 605px;
         padding: 3rem 3.5rem;
-        background-repeat: no-repeat;
-        background-size: cover;
 
         .tf-login__logo {
             display: flex;
         }
 
         .tf-login__title {
-            color: #ffffff;
+            color: transparent;
+            // color: #ffffff;
             font-size: 2rem;
             font-weight: 500;
         }
