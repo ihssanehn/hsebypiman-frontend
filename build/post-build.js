@@ -17,6 +17,7 @@ const versionFilePath = path.join(__dirname + '/../dist/assets/data/version.json
 
 let mainHash = '';
 let mainBundleFile = '';
+let hashVersionRewrite = '';
 
 // RegExp to find main.bundle.js, even if it doesn't include a hash in it's name (dev build)
 let mainBundleRegexp = /^main.?([a-z0-9]*)?(\.bundle)?.js$/;
