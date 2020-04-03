@@ -55,3 +55,4 @@ yarn.lock
 
 src/environments/environment.dev.ts
 src/environments/environment.ts
+version.json

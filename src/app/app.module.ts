@@ -41,7 +41,7 @@ import { PartialsModule } from './views/partials/partials.module';
 import { NgSelectModule } from '@ng-select/ng-select';
 // Layout Services
 // FakeApiService
-import {DataTableService,TfDialogService,LayoutConfigService,LayoutRefService,MenuAsideService,MenuConfigService,MenuHorizontalService,PageConfigService,SplashScreenService,SubheaderService} from './core/_base/layout';
+import {DataTableService,TfDialogService,LayoutConfigService,VersionCheckService,LayoutRefService,MenuAsideService,MenuConfigService,MenuHorizontalService,PageConfigService,SplashScreenService,SubheaderService} from './core/_base/layout';
 // Auth
 import { AuthModule } from './views/pages/auth/auth.module';
 import { AuthService } from './core/auth';
@@ -126,6 +126,7 @@ export function hljsLanguages(): HighlightLanguage[] {
 		PageConfigService,
 		TfDialogService,
 		DataTableService,
+		VersionCheckService,
 		SplashScreenService,
 		{
 			provide: PERFECT_SCROLLBAR_CONFIG,
