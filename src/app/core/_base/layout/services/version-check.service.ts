@@ -32,12 +32,12 @@ export class VersionCheckService {
                 (response: any) => {
                     const hash = response.hash;
                     const hashChanged = this.hasHashChanged(this.currentHash, hash);
-                    console.log(response.hash, this.currentHash);
 
                     // If new version, do something
                     if (hashChanged) {
-                        console.log('hash changed');
-                        // location.reload();
+
+                        location.reload();
+                        console.log('locationReloaded');
                         // for an example: location.reload();
                     }
                     // store the new hash so we wouldn't trigger versionChange again
