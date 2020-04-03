@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 
 export class StatusService extends HttpService{
 
-    baseUrl = environment.apiBaseUrl+'status/';
+    baseUrl = environment.apiBaseUrl+'status';
     constructor(
         private http: HttpClient,
         private router: Router
@@ -27,16 +27,16 @@ export class StatusService extends HttpService{
         return this.http.get<Array<Status>>(this.baseUrl+'?model='+model);
     }
     get(item_id){
-        return this.http.get(this.baseUrl+item_id);
+        return this.http.get(this.baseUrl+'/'+item_id);
     }
     create(item){
-        return this.http.post(this.baseUrl+'create', item);
+        return this.http.post(this.baseUrl+'/'+'create', item);
     }
     update(item_id, item){
-        return this.http.put(this.baseUrl+item_id, item);
+        return this.http.put(this.baseUrl+'/'+item_id, item);
     }
     delete(item_id){
-        return this.http.delete(this.baseUrl+item_id);
+        return this.http.delete(this.baseUrl+'/'+item_id);
     }
     
 

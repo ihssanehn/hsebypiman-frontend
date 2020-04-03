@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 
 export class ChantierService extends HttpService{
 
-    baseUrl = environment.apiBaseUrl+'chantiers/';
+    baseUrl = environment.apiBaseUrl+'chantiers';
     constructor(
         private http: HttpClient,
         private router: Router
@@ -24,22 +24,22 @@ export class ChantierService extends HttpService{
         return this.http.get<Paginate<Chantier>>(this.baseUrl);
     }
     getAllItems(): Observable<Chantier[]> {
-		return this.http.get<Chantier[]>(`${this.baseUrl}costings`);
+		return this.http.get<Chantier[]>(`${this.baseUrl}`);
 	}
     get(chantier_id){
-        return this.http.get(this.baseUrl+chantier_id);
+        return this.http.get(this.baseUrl+'/'+chantier_id);
     }
     search(params){
-        return this.http.post<Paginate<Chantier>>(this.baseUrl+'search', {...params});
+        return this.http.post<Paginate<Chantier>>(this.baseUrl+'/'+'search', {...params});
     }
     create(chantier){
-        return this.http.post(this.baseUrl+'create', chantier);
+        return this.http.post(this.baseUrl+'/'+'create', chantier);
     }
     update(chantier_id, chantier){
-        return this.http.put(this.baseUrl+chantier_id, chantier);
+        return this.http.put(this.baseUrl+'/'+chantier_id, chantier);
     }
     delete(chantier_id){
-        return this.http.delete(this.baseUrl+chantier_id);
+        return this.http.delete(this.baseUrl+'/'+chantier_id);
     }
     
 

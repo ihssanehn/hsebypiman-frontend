@@ -11,7 +11,9 @@ import { TranslateService } from '@ngx-translate/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../../core/reducers';
 // Auth
+import { DomSanitizer } from '@angular/platform-browser';
 import {environment} from '@env/environment';
+import { MatIconRegistry } from '@angular/material';
 import { AuthNoticeService, AuthService} from '../../../../core/auth';
 
 @Component({
@@ -26,6 +28,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 	isLoggedIn$: Observable<boolean>;
 	errors: any = [];
 	logo: string;
+	hide: boolean = true;
 
 	private unsubscribe: Subject<any>;
 	private returnUrl: any;
@@ -51,9 +54,17 @@ export class LoginComponent implements OnInit, OnDestroy {
 		private store: Store<AppState>,
 		private fb: FormBuilder,
 		private cdr: ChangeDetectorRef,
-		private route: ActivatedRoute
+		private route: ActivatedRoute,
+		iconRegistry: MatIconRegistry, 
+		sanitizer: DomSanitizer
+
 	) {
 		this.unsubscribe = new Subject();
+		
+		iconRegistry.addSvgIcon(
+			'close-eye',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-close-see.svg'));
+		iconRegistry.addSvgIcon(
+			'open-eye',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-open-see.svg'));
 	}
 
 	/**

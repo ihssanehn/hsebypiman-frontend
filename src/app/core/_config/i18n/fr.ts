@@ -41,7 +41,7 @@ export const locale = {
 				CONTACT: 'Contact',
 			},
 			LOGIN: {
-				TITLE: 'Créer un compte',
+				TITLE: 'Accéder à la <b>plateforme</b>',
 				BUTTON: 'Se Connecter',
 			},
 			FORGOT: {
@@ -50,7 +50,7 @@ export const locale = {
 				SUCCESS: 'Your account has been successfully reset.'
 			},
 			REGISTER: {
-				TITLE: 'Sign Up',
+				TITLE: 'Créer un compte',
 				DESC: 'Enter your details to create your account',
 				SUCCESS: 'Your account has been successfuly registered.'
 			},
