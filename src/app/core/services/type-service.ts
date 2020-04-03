@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 
 export class TypeService extends HttpService{
 
-    baseUrl = environment.apiBaseUrl+'types/';
+    baseUrl = environment.apiBaseUrl+'types';
     constructor(
         private http: HttpClient,
         private router: Router
@@ -25,13 +25,13 @@ export class TypeService extends HttpService{
         return this.http.get<Array<Type>>(this.baseUrl);
     }
     getAllFromModel(model){
-        return this.http.get<Array<Type>>(this.baseUrl);
+        return this.http.get<Array<Type>>(this.baseUrl+'?model='+model);
     }
     get(item_id){
         return this.http.get(this.baseUrl+item_id);
     }
     create(item){
-        return this.http.post(this.baseUrl+'create', item);
+        return this.http.post(this.baseUrl+'/create', item);
     }
     update(item_id, item){
         return this.http.put(this.baseUrl+item_id, item);
