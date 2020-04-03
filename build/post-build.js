@@ -57,7 +57,7 @@ readDir(path.join(__dirname, '../dist/'))
     const mainFilepath = path.join(__dirname, '../dist/', mainBundleFile);
     return readFile(mainFilepath, 'utf8')
       .then(mainFileData => {
-        const replacedFile = mainFileData.replace('{{POST_BUILD_ENTERS_HASH_HERE}}', mainHash);
+        const replacedFile = mainFileData.replace('{{POST_BUILD_ENTERS_HASH_HERE}}', hashVersionRewrite);
         return writeFile(mainFilepath, replacedFile);
       });
   }).catch(err => {
