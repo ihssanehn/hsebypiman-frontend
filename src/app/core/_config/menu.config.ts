@@ -22,7 +22,7 @@ export class MenuConfig {
 					root: true,
 					alignment: 'left',
 					page: '/analyses-risque/list',
-					translate: 'MENU.ANALYSERISQUE',
+					translate: 'MENU.ANALYSERISQUE'
 				},
 				{
 					title: 'VisiteSecurite',

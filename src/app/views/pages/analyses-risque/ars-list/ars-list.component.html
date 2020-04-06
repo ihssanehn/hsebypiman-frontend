@@ -52,12 +52,12 @@
 
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef></th>
-        <td mat-cell *matCellDef="let chantier"> 
+        <td mat-cell *matCellDef="let ar"> 
           <div ngbDropdown placement="bottom-right" class="d-inline-block">
             <div ngbDropdownToggle><i class="flaticon-more"></i></div>
             <div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround ">
               <!-- *ngxPermissionsOnly="['ADMIN']" -->
-                <button ngbDropdownItem class="tf-margin-left-3" (click)="editChantier(chantier)"
+                <button ngbDropdownItem class="tf-margin-left-3" (click)="editAr(ar)"
                   ><i class="la la-edit text-primary"></i>
                   {{'ACTION.EDIT' | translate}}
                 </button>

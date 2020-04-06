@@ -93,6 +93,26 @@ export const locale = {
 				CREATE:'Créer un nouveau chantier'
 			}
 		},
+		ARS:{
+			NUMBER:'Numéro',
+			CLIENT:'Client',
+			NAME:'Nom du chantier',
+			ADRESS:'Adresse du chantier',
+			TYPE:'Type',
+			STATUS:'Statut',
+			CONTACT:'Contact',
+			DATE_DEMARRAGE:'Date de démarage chantier',
+			AR: 'Analyse de risque',
+			CHIEF:'Chargé d\'affaire',
+			BUDGET:'Budget',
+			ARCOUNT:'Quantité A.R',
+			LASTAR:'Dernière A.R',
+			VSCOUNT:'Quantité V.S',
+			LASTVS:'Dernière V.S',
+			FORM:{
+				CREATE:'Créer une nouvelle analyse de risque'
+			}
+		},
 		ECOMMERCE: {
 			COMMON: {
 				SELECTED_RECORDS_COUNT: 'Nombre d\'enregistrements sélectionnés: ',
