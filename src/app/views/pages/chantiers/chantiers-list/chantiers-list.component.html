@@ -5,10 +5,7 @@
 	<tf-portlet-body class="tf-portlet__body--fit" style="padding: 15px;" *ngIf="chantiersList">
     
     <table mat-table [dataSource]="chantiersList.data">
-      <!--- Note that these columns can be defined in any order.
-                The actual rendered columns are set as a property on the row definition" -->
-                
-      <!-- Position Column -->
+      <!-- number Column -->
       <ng-container matColumnDef="number">
         <th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('numero')">
           {{'CHANTIERS.NUMBER.TITLE' | translate}} 
@@ -16,47 +13,52 @@
         </th>
         <td mat-cell *matCellDef="let chantier"> {{chantier.numero}} </td>
       </ng-container>
-      <!-- Position Column -->
+      <!-- client Column -->
       <ng-container matColumnDef="client">
         <th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('client')">
-          {{'CHANTIERS.CLIENT.TITLE' | translate}} <i class="fa" [ngClass]="isOrderedBy('numero') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('client') && {opacity:1}"></i>
+          {{'CHANTIERS.CLIENT.TITLE' | translate}} 
+          <i class="fa" [ngClass]="isOrderedBy('client') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('client') && {opacity:1}"></i>
         </th>
         <td mat-cell *matCellDef="let chantier"> {{chantier.client}} </td>
       </ng-container>
-      <!-- Position Column -->
+      <!-- name Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('nom')">
-          {{'CHANTIERS.NAME.TITLE' | translate}} <i class="fa" [ngClass]="isOrderedBy('numero') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('nom') && {opacity:1}"></i>
+          {{'CHANTIERS.NAME.TITLE' | translate}} 
+          <i class="fa" [ngClass]="isOrderedBy('nom') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('nom') && {opacity:1}"></i>
         </th>
         <td mat-cell *matCellDef="let chantier"> {{chantier.nom}} </td>
       </ng-container>
-      <!-- Position Column -->
+      <!-- status Column -->
       <ng-container matColumnDef="status">
         <th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('status.libelle')"> 
             {{'CHANTIERS.STATUS.TITLE' | translate}} 
-            <i class="fa" [ngClass]="isOrderedBy('numero') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('status.libelle') && {opacity:1}"></i>
+            <i class="fa" [ngClass]="isOrderedBy('status.libelle') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('status.libelle') && {opacity:1}"></i>
         </th>
         <td mat-cell *matCellDef="let chantier" class="text-center" [ngStyle]="chantier.status && chantier.status.color && {'color':chantier.status.color}"> {{chantier.status?.libelle}} </td>
       </ng-container>
-      <!-- Position Column -->
+      <!-- charge_affaire Column -->
       <ng-container matColumnDef="charge_affaire">
         <th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder(['users.nom', 'users.prenom'])"> 
           {{'CHANTIERS.CHIEF.TITLE' | translate}} 
-          <i class="fa" [ngClass]="isOrderedBy('numero') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy(['users.nom', 'users.prenom']) && {opacity:1}"></i>
+          <i class="fa" [ngClass]="isOrderedBy(['users.nom', 'users.prenom']) && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy(['users.nom', 'users.prenom']) && {opacity:1}"></i>
         </th>
         <td mat-cell *matCellDef="let chantier" class="text-center"> {{chantier.charge_affaire.nom+' '+chantier.charge_affaire.prenom}} </td>
       </ng-container>
-      <!-- Position Column -->
+      <!-- montant Column -->
       <ng-container matColumnDef="montant">
-        <th mat-header-cell *matHeaderCellDef class="text-center"> {{'CHANTIERS.BUDGET.TITLE' | translate}} </th>
+        <th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('montant')">
+          {{'CHANTIERS.BUDGET.TITLE' | translate}}
+          <i class="fa" [ngClass]="isOrderedBy('montant') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('montant') && {opacity:1}"></i>
+        </th>
         <td mat-cell *matCellDef="let chantier" class="text-center"> {{chantier.montant | currency:'EUR':'€'}} </td>
       </ng-container>
-      <!-- Position Column -->
+      <!-- ars_count Column -->
       <ng-container matColumnDef="ars_count">
         <th mat-header-cell *matHeaderCellDef class="text-center"> {{'CHANTIERS.ARCOUNT.TITLE' | translate}} </th>
         <td mat-cell *matCellDef="let chantier" class="text-center"> {{chantier.ars_count}} </td>
       </ng-container>
-      <!-- Position Column -->
+      <!-- latest_ar Column -->
       <ng-container matColumnDef="latest_ar">
         <th mat-header-cell *matHeaderCellDef class="text-center"> {{'CHANTIERS.LASTAR.TITLE' | translate}} </th>
         <td mat-cell *matCellDef="let chantier" class="text-center"> 
@@ -64,12 +66,12 @@
           <span *ngIf="chantier.ars_count == 0">-</span> 
         </td>
       </ng-container>
-      <!-- Position Column -->
+      <!-- vss_count Column -->
       <ng-container matColumnDef="vss_count">
         <th mat-header-cell *matHeaderCellDef class="text-center"> {{'CHANTIERS.VSCOUNT.TITLE' | translate}} </th>
         <td mat-cell *matCellDef="let chantier" class="text-center"> {{chantier.vss_count}} </td>
       </ng-container>
-      <!-- Position Column -->
+      <!-- latest_vs Column -->
       <ng-container matColumnDef="latest_vs">
         <th mat-header-cell *matHeaderCellDef class="text-center"> {{'CHANTIERS.LASTVS.TITLE' | translate}} </th>
         <td mat-cell *matCellDef="let chantier" class="text-center"> 

@@ -8,7 +8,6 @@ import {fromEvent, Subscription} from 'rxjs';
 import Swal from 'sweetalert2';
 
 
-
 @Component({
   selector: 'tf-chantiers-list',
   templateUrl: './chantiers-list.component.html',
