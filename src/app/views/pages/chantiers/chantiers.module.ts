@@ -22,7 +22,8 @@ import { ChantiersComponent } from './chantiers.component';
 import { ChantiersListComponent } from './chantiers-list/chantiers-list.component';
 import { ChantierEditComponent } from './chantier-edit/chantier-edit.component';
 import { ChantierAddComponent } from './chantier-add/chantier-add.component';
-import {NgbDropdownModule, NgbTabsetModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
+import { ChantierDetailComponent } from './chantier-detail/chantier-detail.component';
+import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
 // Material
 import {
@@ -60,6 +61,10 @@ const routes: Routes = [
 				path: '',
 				redirectTo: 'list',
 				pathMatch: 'full'
+			},
+			{
+				path:'detail/:id',
+				component: ChantierDetailComponent
 			},
 			{
 				path: 'list',
@@ -154,6 +159,7 @@ const routes: Routes = [
 		ChantiersListComponent,
 		ChantierEditComponent,
 		ChantierAddComponent,
+		ChantierDetailComponent
 	]
 })
 export class ChantiersModule {}

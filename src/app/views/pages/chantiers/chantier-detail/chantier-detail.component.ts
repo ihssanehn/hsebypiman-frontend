@@ -1,0 +1,103 @@
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
+import { BehaviorSubject, Observable, of, Subscription } from "rxjs";
+
+import { ChantierService, TypeService } from '@app/core/services';
+import { Paginate } from '@app/core/_base/layout/models/paginate.model';
+import { Chantier } from '@app/core/models';
+import { NgxPermissionsService } from 'ngx-permissions';
+
+import { DomSanitizer } from '@angular/platform-browser';
+import { MatIconRegistry } from '@angular/material';
+
+@Component({
+  selector: 'tf-chantier-detail',
+  templateUrl: './chantier-detail.component.html',
+  styleUrls: ['./chantier-detail.component.scss']
+})
+export class ChantierDetailComponent implements OnInit, OnDestroy {
+  
+  	chantier: Chantier;
+	chantierForm: FormGroup;
+	// allRoles: Role[];
+	loaded = false;
+	editMode: boolean = false;
+	// Private properties
+	private subscriptions: Subscription[] = [];
+
+	/**
+	 * Component constructor
+	 *
+	 * @param activatedRoute: ActivatedRoute
+	 * @param router: Router
+	 * @param chantierFB: FormBuilder
+	 * @param layoutUtilsService: LayoutUtilsService
+	 */
+	constructor(
+		private activatedRoute: ActivatedRoute,
+		private router: Router,
+		private chantierFB: FormBuilder,
+		// private notificationService: NzNotificationService,
+		private chantierService: ChantierService,
+		private cdr: ChangeDetectorRef,
+		private permissionsService : NgxPermissionsService,
+		iconRegistry: MatIconRegistry, 
+		sanitizer: DomSanitizer
+	) {
+		iconRegistry.addSvgIcon('status-encours',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/encours.svg'));
+		iconRegistry.addSvgIcon('status-termine',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/termine.svg'));
+		
+	}
+
+  	ngOnInit() {
+	  	const routeSubscription = this.activatedRoute.params.subscribe(
+		  	async params => {
+			  	const id = params.id;
+			  	if (id) {
+					this.getChantier(id);
+
+				} else {
+					this.router.navigateByUrl('/chantiers/list');
+				}
+			}
+		);
+	}
+
+  	async getChantier(chantierId){
+		try {
+			this.chantier = await this.chantierService.get(chantierId).toPromise();
+			this.cdr.markForCheck();
+		} catch (error) {
+			console.error(error);
+		}
+	}
+
+  	ngOnDestroy() {
+		this.subscriptions.forEach(sb => sb.unsubscribe());
+	}
+
+	/**
+	 * Redirect to list
+	 *
+	 */
+	goBackWithId() {
+		const url = `/chantiers/list`;
+		this.router.navigateByUrl(url, { relativeTo: this.activatedRoute });
+	}
+  
+	
+
+  	/**
+	 * Refresh user
+	 *
+	 * @param isNew: boolean
+	 * @param id: number
+	 */
+	refreshChantier(id) {
+		let url = this.router.url;
+		url = `/chantiers/edit/${id}`;
+		this.router.navigateByUrl(url, { relativeTo: this.activatedRoute });
+  }
+  
+}
