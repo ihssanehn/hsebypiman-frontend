@@ -1,0 +1,106 @@
+import { ChangeDetectorRef, Component, OnInit, AfterViewInit, EventEmitter, Output, OnDestroy, forwardRef, ViewChild, ElementRef, ContentChild } from '@angular/core';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { fromEvent, of, Subscription } from 'rxjs';
+import { debounceTime,map,distinctUntilChanged,filter, tap } from 'rxjs/operators';
+import { DomSanitizer } from '@angular/platform-browser';
+import { MatIconRegistry } from '@angular/material';
+
+@Component({
+  selector: 'tf-chantier-filters',
+  templateUrl: './chantier-filters.component.html',
+  styleUrls: ['./chantier-filters.component.scss'],
+  providers: [{
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => ChantierFiltersComponent),
+    multi: true
+  }]
+})
+export class ChantierFiltersComponent implements AfterViewInit, OnInit, OnDestroy {
+
+  
+  @ViewChild('searchInput', {static: false}) searchInput: ElementRef;
+
+  loading = false;
+  hidden = true;
+  data: boolean = false;
+  filter = {
+    keyword: "",
+    dateRange: [],
+    status_id: ""
+  };
+  statuses;
+
+	// Private properties
+  private readonly subscriptions: Subscription[] = [];
+  
+  @Output() change = new EventEmitter();
+  constructor(
+    // private statusService: StatusService
+		iconRegistry: MatIconRegistry, 
+		sanitizer: DomSanitizer
+  ) {
+		iconRegistry.addSvgIcon(
+      'search',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/search.svg'));
+  }
+
+  async ngOnInit(){}
+
+  async ngAfterViewInit() {
+    fromEvent(this.searchInput.nativeElement,'keyup')
+      .pipe(
+          filter(Boolean),
+          debounceTime(300),
+          distinctUntilChanged(),
+      )
+      .subscribe((text:string)=>{
+        this.data = this.searchInput.nativeElement.value.length > 0 ? true : false;
+        this.filter.keyword = this.searchInput.nativeElement.value;
+        this.submit();
+      });
+  }
+
+  submit() {
+    this.change.emit(this.filter);
+  }
+
+
+  onChange: (_: any) => void = (_: any) => { };
+
+
+  onTouched: () => void = () => { };
+
+
+  writeValue(value): void {
+    if (value) {
+      this.filter = value;
+    }
+  }
+
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  get value(): any {
+    return this.filter;
+  }
+  
+  /**
+	 * On destroy
+	 */
+	ngOnDestroy(): void {
+		this.subscriptions.forEach(sb => sb.unsubscribe());
+  }
+  
+  clear(){
+    this.data = false;
+    this.searchInput.nativeElement.value = '';
+    this.filter.keyword = null;
+    this.submit();
+  }
+  
+}

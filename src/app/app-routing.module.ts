@@ -29,6 +29,26 @@ const routes: Routes = [
 				loadChildren: () => import('@app/views/pages/analyses-risque/ars.module').then(m => m.ArsModule)
 			},
 			{
+				path: 'visites-securite',
+				loadChildren: () => import('@app/views/pages/visites-securite/visites-securite.module').then(m => m.VisitesSecuriteModule)
+			},
+			{
+				path: 'plans-action',
+				loadChildren: () => import('@app/views/pages/plans-action/plans-action.module').then(m => m.PlansActionModule)
+			},
+			{
+				path: 'salaries',
+				loadChildren: () => import('@app/views/pages/salaries/salaries.module').then(m => m.SalariesModule)
+			},
+			{
+				path: 'sous-traitants',
+				loadChildren: () => import('@app/views/pages/sous-traitants/sous-traitants.module').then(m => m.SousTraitantsModule)
+			},
+			{
+				path: 'admin',
+				loadChildren: () => import('@app/views/pages/admin/admin.module').then(m => m.AdminModule)
+			},
+			{
 				path: 'mail',
 				loadChildren: () => import('@app/views/pages/apps/mail/mail.module').then(m => m.MailModule)
 			},
@@ -63,8 +83,8 @@ const routes: Routes = [
 				}
 			},
 			{path: 'error/:type', component: ErrorPageComponent},
-			{path: '', redirectTo: 'dashboard', pathMatch: 'full'},
-			{path: '**', redirectTo: 'dashboard', pathMatch: 'full'}
+			{path: '', redirectTo: 'chantiers/list', pathMatch: 'full'},
+			{path: '**', redirectTo: 'chantiers/list', pathMatch: 'full'}
 		]
 	},
 

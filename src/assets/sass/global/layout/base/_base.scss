@@ -10,7 +10,7 @@ body {
 	background-color: $tf-page-body-bg-color;
 	background-position: auto top;
 	background-repeat: no-repeat;
-	background-image: url('../media/cta-hse/bkg-header.png');
+	background-image: url('../media/hse-png/bkg-header.png');
 	background-position: center top;
 	background-size: 100% 375px;
 
@@ -22,9 +22,9 @@ body {
 	}
 }
 
-body.tf-header--minimize{
-	background-position: center -110px;
-}
+// body.tf-header--minimize{
+	// background-position: center -110px;
+// }
 
 // Subheader
 .tf-subheader {

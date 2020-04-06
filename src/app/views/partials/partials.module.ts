@@ -67,6 +67,9 @@ import {
 	UserProfileComponent,
 	UserSideProfileComponent,
 	ArForm1Component,
+	ChantierFormComponent,
+	ChantierFiltersComponent,
+	CommingSoonComponent,
 } from './layout';
 // General
 import { NoticeComponent } from './content/general/notice/notice.component';
@@ -114,10 +117,13 @@ import { PaginationComponent } from './content/general/pagination/pagination.com
 		UserProfile3Component,
 		UserSideProfileComponent,
 		ArForm1Component,
+		ChantierFormComponent,
+		ChantierFiltersComponent,
 		CartComponent,
-
+		
 		ErrorComponent,
 		PaginationComponent,
+		CommingSoonComponent,
 	],
 	exports: [
 		WidgetModule,
@@ -156,11 +162,13 @@ import { PaginationComponent } from './content/general/pagination/pagination.com
 		UserProfile3Component,
 		UserSideProfileComponent,
 		ArForm1Component,
+		ChantierFormComponent,
+		ChantierFiltersComponent,
 		CartComponent,
-
+		
 		ErrorComponent,
 		PaginationComponent,
-
+		CommingSoonComponent,
 	],
 	imports: [
 		CommonModule,

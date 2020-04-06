@@ -29,7 +29,7 @@
 	
 			<!--begin: Navigation -->
 			<div class="tf-notification">
-				<a ngbDropdownItem routerLink="profile" href="javascript:;" class="tf-notification__item">
+				<!-- <a ngbDropdownItem routerLink="profile" href="javascript:;" class="tf-notification__item">
 					<div class="tf-notification__item-icon">
 						<i class="flaticon2-calendar-3 tf-font-success"></i>
 					</div>
@@ -67,8 +67,8 @@
 							Logs and notifications
 						</div>
 					</div>
-				</a>
-				<a ngbDropdownItem routerLink="profile" href="javascript:;" class="tf-notification__item">
+				</a> -->
+				<!-- <a ngbDropdownItem routerLink="profile" href="javascript:;" class="tf-notification__item">
 					<div class="tf-notification__item-icon">
 						<i class="flaticon2-hourglass tf-font-brand"></i>
 					</div>
@@ -80,9 +80,9 @@
 							latest tasks and projects
 						</div>
 					</div>
-				</a>
+				</a> -->
 				<div class="tf-notification__custom">
-					<a href="javascript:;" (click)="logout()" class="btn btn-outline-brand btn-upper btn-sm btn-bold">Sign Out</a>
+					<a href="javascript:;" (click)="logout()" class="btn btn-outline-brand btn-upper btn-sm btn-bold">{{'AUTH.LOGOUT' | translate}}</a>
 				</div>
 			</div>
 			<!--end: Navigation -->
@@ -114,7 +114,7 @@
 					</a>
 				</li>
 				<li class="tf-nav__item tf-nav__item--custom tf-margin-t-15">
-					<a (click)="logout()" class="btn btn-outline-brand btn-upper btn-sm btn-bold">Sign Out</a>
+					<a (click)="logout()" class="btn btn-outline-brand btn-upper btn-sm btn-bold">{{'AUTH.LOGOUT' | translate}}</a>
 				</li>
 			</ul>
 			<!--end: Navigation(alternative) -->

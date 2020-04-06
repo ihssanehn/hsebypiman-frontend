@@ -1,10 +1,12 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef, Input, AfterContentInit, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef, ElementRef, Input, AfterContentInit, ViewChildren, QueryList } from '@angular/core';
 import { ChantierService } from '@app/core/services';
 import { Paginate } from '@app/core/_base/layout/models/paginate.model';
 import { Chantier } from '@app/core/models';
 import { TranslateService } from '@ngx-translate/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ChantierTableDataSource } from './table-chantiers.data-source';
+import {fromEvent, Subscription} from 'rxjs';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'tf-chantiers-list',
@@ -22,7 +24,8 @@ export class ChantiersListComponent implements OnInit {
 	filter: any = {
 		per_page: this.pagination.pageSize,
 		page: this.pagination.page,
-		orders_by: [],
+		order_by: ['client'],
+		order_way: 'asc',
 		keyword: "",
 		dateRange: [],
 		status_id: "",
@@ -36,7 +39,9 @@ export class ChantiersListComponent implements OnInit {
 		protected chantierService:ChantierService,
 		protected cdr:ChangeDetectorRef,
 		private translate:TranslateService,
-  	) {}
+  	) {
+		  
+	}
 
   	ngOnInit() {
     	this.getChantiers();
@@ -62,9 +67,53 @@ export class ChantiersListComponent implements OnInit {
 		this.getChantiers();
 	}
 
-	editChantier(chantier){
-		this.router.navigate(['../edit', chantier.id], { relativeTo: this.activatedRoute });
-		console.log('éditer le chantier n°'+chantier.id);
+
+	viewChantier(chantierId){
+		Swal.fire({
+			title:'Désolé cette fonctionnalité n\'a pas encore été implémentée',
+            showConfirmButton: false,
+            timer: 1500
+		})
+	}
+	editChantier(chantierId){
+		Swal.fire({
+			title:'Désolé cette fonctionnalité n\'a pas encore été implémentée',
+			showConfirmButton: false,
+            timer: 1500
+		})
+	}
+	deleteChantier(chantierId){
+		Swal.fire({
+			title:'Désolé cette fonctionnalité n\'a pas encore été implémentée',
+			showConfirmButton: false,
+            timer: 1500
+		})
 	}
 
+	// Au click, défini order by et order way. Si le order_by est déjà actif, toggle du order_way. Sinon, order_way asc par défaut
+	setOrder(by){
+		console.log(this.filter)
+		if(this.isOrderedBy(by)){
+			this.toggleOrderWay()
+		}else{
+			this.filter.order_by = by;
+			this.filter.order_way = 'asc'; 
+		}
+    	this.getChantiers();
+	}
+
+	toggleOrderWay(){
+		if(this.filter.order_way == 'asc'){
+			this.filter.order_way = 'desc';
+		}else{
+			this.filter.order_way = 'asc'; 
+		}
+	}
+	isOrderedBy(by){
+		if(Array.isArray(by)){
+			return JSON.stringify(by) == JSON.stringify(this.filter.order_by)
+		}else{
+			return by == this.filter.order_by
+		}
+	}
 }

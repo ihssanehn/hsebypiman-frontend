@@ -86,7 +86,7 @@ $tf-aside-config: (
 					item: (
 						// item itself
 						self: (
-							margin:	0
+							margin:	0,
 						),
 
 						// item link
@@ -94,7 +94,8 @@ $tf-aside-config: (
 							// link itself
 							self: (
 								height: 44px,				
-								padding: 9px 20px
+								// padding: 9px 20px
+								padding: 10px
 							),					
 
 							// link icon
@@ -121,10 +122,10 @@ $tf-aside-config: (
 
 							// link text
 							text:	(
-								font-size: 1rem,
+								font-size: 1.2rem,
 								font-weight: 500,
 								font-transform:	initial,
-								text-transform: uppercase
+								text-transform: uppercase,
 							),
 
 							// link arrow
@@ -396,7 +397,7 @@ $tf-aside-config: (
 								default: null,
 								open: null,
 								expanded: null,
-								active: null,
+								active: #ddf5f4,
 								hover: null
 							)
 						),
@@ -417,11 +418,11 @@ $tf-aside-config: (
 							// link icon
 							icon: (
 								font-color:	(
-									default: #cacad2,
+									default: #004fc2,
 									open: tf-brand-color(),
 									expanded: tf-brand-color(),
-									active: tf-brand-color(),
-									hover: tf-brand-color()
+									active: #33b5ae,
+									hover: #33b5ae
 								),
 							),		
 
@@ -429,20 +430,20 @@ $tf-aside-config: (
 							bullet:	(
 								dot: (
 									bg-color: (
-										default: #cacad2,
+										default: #004fc2,
 										open: tf-brand-color(),
 										expanded: tf-brand-color(),
-										active: tf-brand-color(),
-										hover: tf-brand-color()
+										active: #33b5ae,
+										hover: #33b5ae
 									)
 								),
 								line: (
 									bg-color: (
-										default: #cacad2,
+										default: #004fc2,
 										open: tf-brand-color(),
 										expanded: tf-brand-color(),
-										active: tf-brand-color(),
-										hover: tf-brand-color()
+										active: #33b5ae,
+										hover: #33b5ae
 									)
 								)							
 							),					
@@ -453,8 +454,8 @@ $tf-aside-config: (
 									default: #5d5b6f,
 									open: tf-brand-color(),
 									expanded: tf-brand-color(),
-									active: tf-brand-color(),
-									hover: tf-brand-color()
+									active: #33b5ae,
+									hover: #33b5ae
 								)	
 							),
 
@@ -464,8 +465,8 @@ $tf-aside-config: (
 									default: #cacad2,
 									open: tf-brand-color(),
 									expanded: tf-brand-color(),
-									active: tf-brand-color(),
-									hover: tf-brand-color()
+									active: #33b5ae,
+									hover: #33b5ae
 								)
 							)
 						),

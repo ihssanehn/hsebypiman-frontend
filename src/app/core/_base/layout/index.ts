@@ -43,6 +43,7 @@ export { PageConfigService } from './services/page-config.service';
 export { SplashScreenService } from './services/splash-screen.service';
 export { SubheaderService } from './services/subheader.service';
 export { TfDialogService } from './services/tf-dialog.service';
+export { VersionCheckService } from './services/version-check.service';
 
 // Server
 // export { FakeApiService } from './server/fake-api/fake-api.service';

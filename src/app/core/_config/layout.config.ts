@@ -7,17 +7,17 @@ export class LayoutConfig {
 		self: {
 			layout: 'fluid', // fluid|boxed
 			body: {
-				'background-image': './assets/media/cta-hse/bkg-header.png',
+				'background-image': './assets/media/hse-png/bkg-header.png',
 				'background-position': 'center top',
 				'background-size': '100% 375px',
 			},
-			logo: './assets/media/cta-hse/logo-cvti-white.png',
+			logo: './assets/media/hse-png/logo-cvti-white.png',
 		},
 		// == Page Splash Screen loading
 		loader: {
 			enabled: true,
 			type: 'spinner-logo',
-			logo: './assets/media/cta-hse/logo.png',
+			logo: './assets/media/hse-png/logo.png',
 			message: 'Please wait...',
 		},
 		// == Colors for javascript

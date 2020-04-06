@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="292" height="292" viewBox="0 0 292 292">
+    <defs>
+        <filter id="prefix__bkg" width="292" height="292" x="0" y="0" filterUnits="userSpaceOnUse">
+            <feOffset dy="32"/>
+            <feGaussianBlur result="blur" stdDeviation="32"/>
+            <feFlood flood-opacity=".161"/>
+            <feComposite in2="blur" operator="in"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+    </defs>
+    <g id="prefix__element-design" transform="translate(96 64)">
+        <g transform="translate(-96 -64)">
+            <g id="prefix__bkg-2" data-name="bkg" transform="translate(96 64)" style="fill:#e49819;stroke:#f7f9fc;stroke-width:6px">
+                <circle cx="50" cy="50" r="50" style="stroke:none"/>
+                <circle cx="50" cy="50" r="47" style="fill:none"/>
+            </g>
+        </g>
+        <path id="prefix__Polygone_2" d="M12.5 3.744a3 3 0 0 1 4.992 0l9.394 14.092a3 3 0 0 1-2.5 4.664H5.606a3 3 0 0 1-2.5-4.664z" data-name="Polygone 2" transform="rotate(90 14.554 49.554)" style="fill:#fff"/>
+    </g>
+</svg>

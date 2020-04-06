@@ -32,7 +32,7 @@ export class ArsListComponent implements OnInit {
   	constructor(
 		private router: Router,
 		private activatedRoute: ActivatedRoute,
-		protected ArService:ArService,
+		protected arService:ArService,
 		protected cdr:ChangeDetectorRef,
 		private translate:TranslateService,
   	) {}
@@ -43,7 +43,7 @@ export class ArsListComponent implements OnInit {
   
   	async getArs(){
     	try {
-			this.arsList = await this.ArService.search(this.filter).toPromise();
+			this.arsList = await this.arService.search(this.filter).toPromise();
 			this.pagination = { ...this.pagination, total: this.arsList.total, page: this.arsList.current_page };
 			this.filter.page = this.pagination.page;
 			this.filter.per_page = this.pagination.pageSize;

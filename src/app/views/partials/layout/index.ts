@@ -1,3 +1,14 @@
+
+// Analyse de risque
+export { ArForm1Component } from './analyse-risque/form/ar-form-1/ar-form-1.component';
+
+// Chantier
+export { ChantierFormComponent } from './chantier/form/chantier-form/chantier-form.component';
+export { ChantierFiltersComponent } from './chantier/chantier-filters/chantier-filters.component';
+
+
+
+
 // Components
 export { ContextMenuComponent } from './context-menu/context-menu.component';
 export { ContextMenu2Component } from './context-menu2/context-menu2.component';
@@ -26,7 +37,7 @@ export { UserProfile2Component } from './topbar/user-profile2/user-profile2.comp
 export { UserProfile3Component } from './topbar/user-profile3/user-profile3.component';
 // ASIDE
 export { UserSideProfileComponent } from './aside/userside-profile/userside-profile.component';
-export { ArForm1Component } from './ar-form/ar-form-1/ar-form-1.component';
-
 // Models
 export { ISearchResult } from './search-result/search-result.component';
+// COMMING SOON
+export { CommingSoonComponent } from './comming-soon/comming-soon.component';

@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs';
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 // Layout
-import { LayoutConfigService, SplashScreenService, TranslationService } from './core/_base/layout';
+import { LayoutConfigService, SplashScreenService, TranslationService, VersionCheckService } from './core/_base/layout';
 // language list
 import { locale as frLang } from './core/_config/i18n/fr';
 import { locale as enLang } from './core/_config/i18n/en';
@@ -40,7 +40,9 @@ export class AppComponent implements OnInit, OnDestroy {
 				         private router: Router,
 				         private layoutConfigService: LayoutConfigService,
 						 private splashScreenService: SplashScreenService,
-						 private authService : AuthService) {
+						 private authService : AuthService,
+						 private versionCheckService : VersionCheckService
+	) {
 
 		// register translations
 		this.translationService.loadTranslations(frLang, enLang, chLang, esLang, jpLang, deLang);
@@ -64,7 +66,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
 				// scroll to top on every route change
 				window.scrollTo(0, 0);
-
+				
+				this.versionCheckService.checkVersion(environment.versionCheckURL)
 				// to display back the body content
 				setTimeout(() => {
 					document.body.classList.add('tf-page--loaded');

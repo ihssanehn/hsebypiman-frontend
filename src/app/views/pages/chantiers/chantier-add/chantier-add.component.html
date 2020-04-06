@@ -2,82 +2,9 @@
   
 </div>
 <form [formGroup]="chantierForm" class="tf-form tf-form--group-seperator-dashed ">
-	<tf-portlet>
-		<!-- <tf-portlet-header [title]="" [class]="'tf-portlet__head--lg'">
-		</tf-portlet-header> -->
-		<tf-portlet-body>
-			<div class="tf-heading tf-heading--lg" style="margin-top: 0;">
-				{{'CHANTIERS.FORM.CREATE' | translate}}
-			</div>
-			<div *ngIf="loaded">
-				<div class="tf-wizard-v4__content" data-ktwizard-type="step-content" data-ktwizard-state="current">
-					<div class="tf-form__section tf-form__section--first">
-						<div class="tf-wizard-v4__form">
-							<div class="row form-row">
-								<mat-form-field class="col-xl-4" [floatLabel]="'always'">
-									<mat-label>{{'CHANTIERS.NAME' | translate}}</mat-label>
-									<input class="form-control" matInput type="text" name="nom" formControlName="nom" placeholder="Saisir ici" />
-								</mat-form-field>
-								<mat-form-field class="col-xl-2" [floatLabel]="'always'">
-									<mat-label>{{'CHANTIERS.TYPE' | translate}}</mat-label>
-									<mat-select class="form-control" placeholder="" formControlName="type_id">
-										<mat-option *ngFor="let type of types" [value]="type.id">
-											{{ type.libelle }}
-										</mat-option>
-									</mat-select>
-								</mat-form-field>
-								<mat-form-field class="col-xl-2" [floatLabel]="'always'">
-									<mat-label>{{'CHANTIERS.CLIENT' | translate}}</mat-label>
-									<input matInput class="form-control" type="text" name="client" formControlName="client" placeholder="Saisir ici" />
-								</mat-form-field>
-								<mat-form-field class="col-xl-2" [floatLabel]="'always'">
-									<mat-label>{{'CHANTIERS.CONTACT' | translate}}</mat-label>
-									<input matInput class="form-control" type="text" name="contact" formControlName="contact" placeholder="Saisir ici" />
-								</mat-form-field>
-								<mat-form-field class="col-xl-1" [floatLabel]="'always'">
-									<mat-label>{{'CHANTIERS.BUDGET' | translate}}</mat-label>
-									<input matInput class="form-control" type="number" name="montant" formControlName="montant" placeholder="Saisir ici" />
-									<mat-icon matSuffix>euro_symbol</mat-icon>
-								</mat-form-field>
-							</div>
-							<div class="row form-row">
-								<mat-form-field class="col-xl-3" [floatLabel]="'always'">
-									<mat-label>{{'CHANTIERS.ADRESS' | translate}}</mat-label>
-									<input matInput class="form-control" type="text" name="adresse" formControlName="adresse" placeholder="Saisir ici" />
-								</mat-form-field>
-								<mat-form-field class="col-xl-2" [floatLabel]="'always'">
-									<mat-label>{{'COMMON.CITY' | translate}}</mat-label>
-									<input matInput class="form-control" type="text" name="ville" formControlName="ville" placeholder="Saisir ici" />
-								</mat-form-field>
-								<mat-form-field class="col-xl-1" [floatLabel]="'always'">
-									<mat-label>{{'COMMON.POSTCODE' | translate}}</mat-label>
-									<input matInput class="form-control" type="text" name="code_postal" formControlName="code_postal" placeholder="Saisir ici" />
-								</mat-form-field>
-								<mat-form-field class="col-xl-1" [floatLabel]="'always'">
-									<mat-label>{{'COMMON.COUNTRY' | translate}}</mat-label>
-									<input matInput class="form-control" type="text" name="pays" formControlName="pays" placeholder="Saisir ici" />
-								</mat-form-field>
-								<mat-form-field class="col-xl-2" [floatLabel]="'always'">
-									<mat-label>{{'CHANTIERS.DATE_DEMARRAGE' | translate}}</mat-label>
-									<input matInput class="form-control" [matDatepicker]="date_demarrage_picker" formControlName="date_demarrage" placeholder="DD/MM/YYYY">
-									<mat-datepicker-toggle matSuffix [for]="date_demarrage_picker"></mat-datepicker-toggle>
-									<mat-datepicker #date_demarrage_picker></mat-datepicker>
-								</mat-form-field>
-								<mat-form-field class="col-xl-2" [floatLabel]="'always'">
-									<mat-label>{{'CHANTIERS.CHIEF' | translate}}</mat-label>
-									<ng-select ngSelectMat class="form-control mat-select" [items]="users" formControlName="charge_affaire_id" bindLabel="fullname"
-										bindValue="id" [clearable]="false">
-									</ng-select>
-								</mat-form-field>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</tf-portlet-body>
-	</tf-portlet>
-	<tf-ar-form [arForm]="chantierForm.controls['ar']" ></tf-ar-form>
+	<tf-chantier-form [chantierForm]="chantierForm"></tf-chantier-form>
+	<tf-ar-form-1 [arForm]="chantierForm.controls['ar']" ></tf-ar-form-1>
 	<button class="btn btn-primary float-right" (click)="onSubmit(false)">
-		Save Chantier
+		{{'ACTION.SAVE' | translate}}
 	</button>
 </form>
