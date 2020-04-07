@@ -10,6 +10,7 @@ import { NgxPermissionsService } from 'ngx-permissions';
 
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'tf-chantier-detail',
@@ -98,6 +99,17 @@ export class ChantierDetailComponent implements OnInit, OnDestroy {
 		let url = this.router.url;
 		url = `/chantiers/edit/${id}`;
 		this.router.navigateByUrl(url, { relativeTo: this.activatedRoute });
-  }
+  	}
+
+  	editChantier(id){
+		this.router.navigateByUrl('chantiers/edit/'+id);
+	}
+	deleteChantier(id){
+		Swal.fire({
+			title:'Désolé cette fonctionnalité n\'a pas encore été implémentée',
+			showConfirmButton: false,
+            timer: 1500
+		})
+	}
   
 }

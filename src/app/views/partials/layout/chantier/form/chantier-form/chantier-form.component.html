@@ -2,7 +2,8 @@
 	<tf-portlet>
 		<tf-portlet-body>
 			<div class="tf-heading tf-heading--lg" style="margin-top: 0;">
-				{{'CHANTIERS.FORM.CREATE' | translate}}
+				<span *ngIf="edit">{{'MENU.SUB_CHANTIER.EDIT' | translate}} - {{chantierForm.get('nom').value}}</span> 
+				<span *ngIf="!edit">{{'CHANTIERS.FORM.CREATE' | translate}}</span>
 			</div>
 			<div>
 				<div class="tf-wizard-v4__content" data-ktwizard-type="step-content" data-ktwizard-state="current">

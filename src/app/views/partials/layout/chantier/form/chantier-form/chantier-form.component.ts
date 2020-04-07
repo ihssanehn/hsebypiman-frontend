@@ -16,6 +16,7 @@ export class ChantierFormComponent implements OnInit {
   users: User[];
 
   @Input() chantierForm: FormBuilder;
+  @Input() edit: Boolean;
   constructor(
     private typeService:TypeService,
     private authService:AuthService,

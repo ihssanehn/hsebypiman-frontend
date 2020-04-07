@@ -69,19 +69,11 @@ export class ChantiersListComponent implements OnInit {
 
 
 	viewChantier(chantierId){
-		// Swal.fire({
-		// 	title:'Désolé cette fonctionnalité n\'a pas encore été implémentée',
-        //     showConfirmButton: false,
-        //     timer: 1500
-		// })
 		this.router.navigateByUrl('chantiers/detail/'+chantierId);
 	}
 	editChantier(chantierId){
-		Swal.fire({
-			title:'Désolé cette fonctionnalité n\'a pas encore été implémentée',
-			showConfirmButton: false,
-            timer: 1500
-		})
+		
+		this.router.navigateByUrl('chantiers/edit/'+chantierId);
 	}
 	deleteChantier(chantierId){
 		Swal.fire({

@@ -1,11 +1,29 @@
-<div class="row row-filters" style="height: 69px;">
+<!-- <div class="row row-filters" style="height: 69px;">
   
-</div>
+</div> -->
 <tf-portlet class="tf-portlet--height-fluid mat-elevation-z8" id="portlet-chantier" *ngIf="chantier">
   <div class="tf-portlet-header ">
     <span class="title">
-      <a [routerLink]="['/chantiers/list']">{{'CHANTIERS.MENU.SUB_CHANTIER' | translate}}</a><span class="divider">></span><span class="id-item">{{chantier.nom}}</span>
+      <a [routerLink]="['/chantiers/list']">{{'MENU.SUB_CHANTIER.LIST' | translate}}</a><span class="divider">></span><span class="id-item">{{chantier.nom}}</span>
     </span>
+    <div ngbDropdown placement="bottom-right" class="d-inline-block pull-right">
+      <button ngbDropdownToggle mat-icon-button color="primary" matTooltip="Actions">
+        <mat-icon>more_vert</mat-icon>
+        <!-- <i class="flaticon-more"></i> -->
+      </button>
+      <div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
+        <!-- *ngxPermissionsOnly="['ADMIN']" -->
+        <button mat-icon-button color="accent" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editChantier(chantier.id)">
+          <mat-icon>edit</mat-icon>
+          <!-- <i class="flaticon-more"></i> -->
+        </button>
+        <button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteChantier(chantier.id)">
+          <mat-icon>delete</mat-icon>
+          <!-- <i class="flaticon-more"></i> -->
+        </button>
+          
+      </div>
+    </div>
   </div>
   <tf-portlet-body class="tf-portlet__body--fit">
     <div class="row">

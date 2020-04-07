@@ -18,7 +18,7 @@ export const locale = {
 			CHANTIER: 'Chantiers',
 			SUB_CHANTIER:{
 				DETAIL:'Détail du chantier',
-				ADD:'Ajouter un chantier',
+				ADD:'Ajouter un nouveau chantier',
 				EDIT:'Modifier le chantier',
 				LIST:'Liste des chantiers',
 			},

@@ -15,7 +15,7 @@ import { NgxPermissionsService } from 'ngx-permissions';
 })
 export class ChantierEditComponent implements OnInit, OnDestroy {
   
-  chantier: Chantier;
+  	chantier: Chantier;
 	chantierForm: FormGroup;
 	// allRoles: Role[];
 	loaded = false;
@@ -41,26 +41,43 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 		private permissionsService : NgxPermissionsService
 	) { }
 
-  ngOnInit() {
-    const routeSubscription = this.activatedRoute.params.subscribe(
+	ngOnInit() {
+		const routeSubscription = this.activatedRoute.params.subscribe(
 			async params => {
 				const id = params.id;
 				if (id) {
-					this.chantier = await this.chantierService
-						.get(id)
-						.toPromise();
-					this.createForm();
-
+					this.getChantier(id);
 				} else {
-					this.chantier = new Chantier();
-					// this.chantier.clear();
-					this.createForm();
+					this.router.navigateByUrl('/chantiers/list');
 				}
+				this.createForm();
 			}
-    );
-  }
-
-  ngOnDestroy() {
+		);
+	}
+	async getChantier(chantierId){
+		try {
+			this.chantier = await this.chantierService.get(chantierId).toPromise();
+			this.chantierForm = this.chantierFB.group({
+				nom: [this.chantier.nom, Validators.required],
+				type_id : [this.chantier.type_id, Validators.required],
+				adresse : [this.chantier.adresse, Validators.required],
+				ville : [this.chantier.ville, Validators.required],
+				code_postal : [this.chantier.code_postal, Validators.required],
+				pays : [this.chantier.pays, Validators.required],
+				client : [this.chantier.client, Validators.required],
+				contact : [this.chantier.contact, Validators.required],
+				montant : [this.chantier.montant, Validators.required],
+				date_demarrage : [this.chantier.date_demarrage, Validators.required],
+				charge_affaire_id : [this.chantier.charge_affaire_id, Validators.required],
+				status_id : [this.chantier.status_id, Validators.required],
+				numero : [this.chantier.numero, Validators.required],
+			});
+			this.cdr.markForCheck();
+		} catch (error) {
+			console.error(error);
+		}
+	}
+  	ngOnDestroy() {
 		this.subscriptions.forEach(sb => sb.unsubscribe());
 	}
 
@@ -73,9 +90,24 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 		this.router.navigateByUrl(url, { relativeTo: this.activatedRoute });
 	}
   
+	assignChantier(){
+
+	}
   	createForm() {
 		this.chantierForm = this.chantierFB.group({
-			nom: [this.chantier.nom, Validators.required],
+			nom: ['', Validators.required],
+			type_id : [null, Validators.required],
+			adresse : ['', Validators.required],
+			ville : ['', Validators.required],
+			code_postal : ['', Validators.required],
+			pays : ['', Validators.required],
+			client : ['', Validators.required],
+			contact : ['', Validators.required],
+			montant : ['', Validators.required],
+			date_demarrage : ['', Validators.required],
+			charge_affaire_id : [null, Validators.required],
+			status_id : [null, Validators.required],
+			numero : ['', Validators.required],
 		});
 		this.loaded = true;
 		this.cdr.detectChanges();

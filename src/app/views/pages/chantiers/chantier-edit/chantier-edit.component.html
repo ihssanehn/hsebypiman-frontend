@@ -1,6 +1,9 @@
 <div class="row row-filters" style="height: 69px;">
   
 </div>
-<p>
-  Edition du chantier n° {{chantier.id}}, {{chantier.nom}} works!
-</p>
+<form [formGroup]="chantierForm" class="tf-form tf-form--group-seperator-dashed ">
+	<tf-chantier-form [chantierForm]="chantierForm" [edit]="true"></tf-chantier-form>
+  <button class="btn btn-primary float-right" (click)="onSubmit(false)">
+		{{'ACTION.SAVE' | translate}}
+	</button>
+</form>
