@@ -61,9 +61,14 @@
 								</mat-form-field>
 								<mat-form-field class="col-xl-2">
 									<mat-label>{{'CHANTIERS.CHIEF.LABEL' | translate}}</mat-label>
-									<ng-select ngSelectMat class="form-control mat-select" [items]="users" formControlName="charge_affaire_id" bindLabel="fullname"
+									<!-- <ng-select ngSelectMat class="form-control mat-select" [items]="users" formControlName="charge_affaire_id" bindLabel="fullname"
 										bindValue="id" [clearable]="false">
-									</ng-select>
+									</ng-select> -->
+									<mat-select class="form-control" placeholder="" formControlName="charge_affaire_id">
+										<mat-option *ngFor="let user of users" [value]="user.id">
+											{{ user.fullname }}
+										</mat-option>
+									</mat-select>
 								</mat-form-field>
 							</div>
 						</div>

@@ -24,9 +24,9 @@ $mat-primary: (
 );
 
 $mat-accent: (
-	100: lighten(tf-get($tf-state-colors, primary, base), 8%),
-	500: tf-get($tf-state-colors, primary, base),
-	700: darken(tf-get($tf-state-colors, primary, base), 8%),
+	100: lighten(tf-get($tf-state-colors, warning, base), 8%),
+	500: tf-get($tf-state-colors, warning, base),
+	700: darken(tf-get($tf-state-colors, warning, base), 8%),
 	contrast: (
 		100: $dark-primary-text,
 		500: $light-primary-text,

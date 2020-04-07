@@ -120,6 +120,16 @@ export class NgSelectFormFieldControlDirective implements MatFormFieldControl < 
 	}
 	private _value: any;
 
+	@Input()
+	get label(): any {
+		return this._label;
+	}
+	set label(v: any) {
+		this._label = v;
+		this.stateChanges.next();
+	}
+	private _label: any;
+
 	constructor(
 		private host: NgSelectComponent,
 		@Optional() @Self() public ngControl: NgControl,
@@ -146,7 +156,7 @@ export class NgSelectFormFieldControlDirective implements MatFormFieldControl < 
 				this.ngControl.valueAccessor = this;
 			}
 			this.ngControl.valueChanges.pipe(untilDestroyed(this)).subscribe(v => {
-				console.log(v);
+				console.log(this);
 				this._value = v;
 				this.host.detectChanges();
 				this.stateChanges.next();
@@ -209,7 +219,6 @@ export class NgSelectFormFieldControlDirective implements MatFormFieldControl < 
 			this.host.focus();
 			this.host.open();
 		}
-
 	}
 	writeValue(obj: any): void {
 		// this.value = obj;

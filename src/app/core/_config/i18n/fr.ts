@@ -10,7 +10,8 @@ export const locale = {
 			EDIT:'Modifier',
 			READ:'Consulter',
 			DELETE:'Supprimer',
-			SAVE:'Sauvegarder'
+			SAVE:'Sauvegarder',
+			CANCEL: 'Annuler'
 		},
 		MENU: {
 			NEW: 'Nouveau',

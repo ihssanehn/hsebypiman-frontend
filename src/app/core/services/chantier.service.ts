@@ -27,7 +27,7 @@ export class ChantierService extends HttpService{
 		return this.http.get<Chantier[]>(`${this.baseUrl}`);
 	}
     get(chantier_id){
-        return this.http.get(this.baseUrl+'/'+chantier_id);
+        return this.http.get<Chantier>(this.baseUrl+'/'+chantier_id);
     }
     search(params){
         return this.http.post<Paginate<Chantier>>(this.baseUrl+'/'+'search', {...params});

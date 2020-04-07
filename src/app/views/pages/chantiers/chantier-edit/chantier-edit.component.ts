@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
 import { BehaviorSubject, Observable, of, Subscription } from "rxjs";
 
+import { Location } from '@angular/common';
 import { ChantierService, TypeService } from '@app/core/services';
 import { Paginate } from '@app/core/_base/layout/models/paginate.model';
 import { Chantier } from '@app/core/models';
@@ -18,7 +19,7 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
   	chantier: Chantier;
 	chantierForm: FormGroup;
 	// allRoles: Role[];
-	loaded = false;
+	loaded: boolean = false;
 	editMode: boolean = false;
 	// Private properties
 	private subscriptions: Subscription[] = [];
@@ -38,7 +39,8 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 		// private notificationService: NzNotificationService,
 		private chantierService: ChantierService,
 		private cdr: ChangeDetectorRef,
-		private permissionsService : NgxPermissionsService
+		private permissionsService : NgxPermissionsService,
+		private location:Location
 	) { }
 
 	ngOnInit() {
@@ -46,32 +48,33 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 			async params => {
 				const id = params.id;
 				if (id) {
+					this.createForm();
 					this.getChantier(id);
 				} else {
 					this.router.navigateByUrl('/chantiers/list');
 				}
-				this.createForm();
 			}
 		);
 	}
 	async getChantier(chantierId){
 		try {
-			this.chantier = await this.chantierService.get(chantierId).toPromise();
+			var res = await this.chantierService.get(chantierId).toPromise();
 			this.chantierForm = this.chantierFB.group({
-				nom: [this.chantier.nom, Validators.required],
-				type_id : [this.chantier.type_id, Validators.required],
-				adresse : [this.chantier.adresse, Validators.required],
-				ville : [this.chantier.ville, Validators.required],
-				code_postal : [this.chantier.code_postal, Validators.required],
-				pays : [this.chantier.pays, Validators.required],
-				client : [this.chantier.client, Validators.required],
-				contact : [this.chantier.contact, Validators.required],
-				montant : [this.chantier.montant, Validators.required],
-				date_demarrage : [this.chantier.date_demarrage, Validators.required],
-				charge_affaire_id : [this.chantier.charge_affaire_id, Validators.required],
-				status_id : [this.chantier.status_id, Validators.required],
-				numero : [this.chantier.numero, Validators.required],
+				nom: [res.nom, Validators.required],
+				type_id : [res.type_id, Validators.required],
+				adresse : [res.adresse, Validators.required],
+				ville : [res.ville, Validators.required],
+				code_postal : [res.code_postal, Validators.required],
+				pays : [res.pays, Validators.required],
+				client : [res.client, Validators.required],
+				contact : [res.contact, Validators.required],
+				montant : [res.montant, Validators.required],
+				date_demarrage : [res.date_demarrage, Validators.required],
+				charge_affaire_id : [res.charge_affaire_id, Validators.required],
+				status_id : [res.status_id, Validators.required],
+				numero : [res.numero, Validators.required],
 			});
+			this.loaded = true;
 			this.cdr.markForCheck();
 		} catch (error) {
 			console.error(error);
@@ -89,11 +92,8 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 		const url = `/chantiers/list`;
 		this.router.navigateByUrl(url, { relativeTo: this.activatedRoute });
 	}
-  
-	assignChantier(){
 
-	}
-  	createForm() {
+	createForm() {
 		this.chantierForm = this.chantierFB.group({
 			nom: ['', Validators.required],
 			type_id : [null, Validators.required],
@@ -109,8 +109,6 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 			status_id : [null, Validators.required],
 			numero : ['', Validators.required],
 		});
-		this.loaded = true;
-		this.cdr.detectChanges();
 	}
 
   	/**
@@ -123,6 +121,10 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 		let url = this.router.url;
 		url = `/chantiers/edit/${id}`;
 		this.router.navigateByUrl(url, { relativeTo: this.activatedRoute });
-  }
+  	}
   
+	  
+	cancel(){
+		this.location.back();
+	}
 }
