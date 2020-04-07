@@ -163,8 +163,9 @@ export const locale = {
 			TYPE:'Type',
 			STATUS:'Statut',
 			CONTACT:'Contact',
-			DATE_DEMARRAGE:'Date de démarage chantier',
+			DATE_DEMARRAGE:'Date de démarage chantier pour CVTI',
 			AR: 'Analyse de risque',
+			EMPLOYEE:'Nom du salarié CVTI réalisant la visite commune',
 			CHIEF:'Chargé d\'affaire',
 			BUDGET:'Budget',
 			ARCOUNT:'Quantité A.R',
@@ -318,7 +319,8 @@ export const locale = {
 			SEARCH_KEYWORD : "Recherche par mot clé",
 			STATUS : "Statut",
 			SELECT_STATUS : "Sélectionnez un status",
-			CREATION_DATE : "Date de création"
+			CREATION_DATE : "Date de création",
+			SEARCH_CHANTIER : "Recherche un chantier",
 		},
 	}
 };

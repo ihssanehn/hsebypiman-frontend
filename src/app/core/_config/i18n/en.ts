@@ -116,7 +116,11 @@ export const locale = {
 			COURANT:'Courant mis à disposition',
 		},														
 		COMMON:{
-			CITY:'Ville',
+			CITY:{
+				LABEL:'Ville',
+				PLACEHOLDER:'',
+				TITLE:'Ville'
+			},
 			POSTCODE:'Code Postal',
 			COUNTRY:'Pays',
 		}

@@ -4,13 +4,15 @@ import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms"
 import { CommonModule } from '@angular/common';
 
 import { TranslateService } from '@ngx-translate/core';
-import { ArService, TypeService } from '@app/core/services';
+import { ArService, TypeService, ChantierService } from '@app/core/services';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { Paginate } from '@app/core/_base/layout/models/paginate.model';
-import { Ar, Type } from '@app/core/models';
+import { Ar, Type, Chantier } from '@app/core/models';
 import { NgxPermissionsService } from 'ngx-permissions';
 import { AuthService, User } from '@app/core/auth';
+import { DomSanitizer } from '@angular/platform-browser';
+import { MatIconRegistry } from '@angular/material';
 
 @Component({
   selector: 'tf-ar-add',
@@ -25,7 +27,12 @@ export class ArAddComponent implements OnInit {
   users: User[];
 	// allRoles: Role[];
 	loaded = false;
-	editMode: boolean = false;
+  editMode: boolean = false;
+  filter = {
+    keyword: "",
+  }
+  public chantiersList : Paginate<Chantier>;
+  public chantier : Chantier;
   // Private properties
   
   constructor(
@@ -35,11 +42,18 @@ export class ArAddComponent implements OnInit {
 		// private notificationService: NzNotificationService,
 		private arService: ArService,
 		private typeService: TypeService,
-		private authService: AuthService,
+    private authService: AuthService,
+    protected chantierService:ChantierService,
 		private cdr: ChangeDetectorRef,
 		private permissionsService : NgxPermissionsService,
-		private translate:TranslateService,
-  ) { }
+    private translate:TranslateService,
+    iconRegistry: MatIconRegistry, 
+    sanitizer: DomSanitizer
+  ) {
+
+    iconRegistry.addSvgIcon(
+      'search',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/search.svg'));
+   }
 
   ngOnInit() {
     this.ar = new Ar();
@@ -81,7 +95,24 @@ export class ArAddComponent implements OnInit {
 		});
 		this.loaded = true;
 		this.cdr.detectChanges();
-	}
+  }
+  
+  searchForChantier(keyword: string){
+    this.filter.keyword = keyword;
+    console.log(keyword);
+    this.getChantier();
+    console.log(this.chantiersList);
+    console.log(this.chantier);
+  }
+
+  async getChantier(){
+    try {
+      this.chantiersList = await this.chantierService.search(this.filter).toPromise();
+      this.chantier = this.chantiersList.data[0];
+		} catch (error) {
+			console.error(error);
+		}
+  }
 
   
   
