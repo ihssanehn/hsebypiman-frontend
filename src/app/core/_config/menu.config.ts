@@ -444,6 +444,33 @@ export class MenuConfig {
 						alignment: 'left',
 						page: '/dashboard',
 						translate: 'MENU.DASHBOARD',
+					},
+					{
+						title: 'Chantiers',
+						root: true,
+						alignment: 'left',
+						page: '/chantiers/list',
+						translate: 'MENU.CHANTIER',
+						icon: 'chantier',
+						// icon: 'flaticon2-browser-2',
+					},
+					{
+						title: 'Analyse de risque',
+						root: true,
+						alignment: 'left',
+						page: '/analyses-risque/list',
+						translate: 'MENU.CHANTIER',
+						icon: 'chantier',
+						// icon: 'flaticon2-browser-2',
+					},
+					{
+						title: 'Admin',
+						root: true,
+						alignment: 'left',
+						page: '/admin',
+						translate: 'MENU.ADMIN',
+						icon: 'administration',
+						// icon: 'flaticon2-mail-1',
 					}
 				]
 			},
@@ -455,6 +482,7 @@ export class MenuConfig {
 					page: '/chantier/add',
 					translate: 'MENU.DASHBOARD',
 				},
+				
 				items: [
 					{
 						icon: 'dashboard',
