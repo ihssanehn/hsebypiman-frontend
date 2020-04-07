@@ -433,7 +433,7 @@ export class MenuConfig {
 					root: true,
 					alignment: 'left',
 					page: '/analyses-risque/add',
-					translate: 'MENU.DASHBOARD',
+					translate: 'MENU.BTN.NEWAR',
 				},
 				items: [
 					{
@@ -479,8 +479,8 @@ export class MenuConfig {
 					title: 'Nouveau chantier',
 					root: true,
 					alignment: 'left',
-					page: '/chantier/add',
-					translate: 'MENU.DASHBOARD',
+					page: '/chantiers/add',
+					translate: 'MENU.BTN.NEWCHANTIER',
 				},
 				
 				items: [
@@ -518,8 +518,8 @@ export class MenuConfig {
 					title: 'Nouveau chantier',
 					root: true,
 					alignment: 'left',
-					page: '/chantier/add',
-					translate: 'MENU.CHANTIER.NEW',
+					page: '/chantiers/add',
+					translate: 'MENU.BTN.NEWCHANTIER',
 				},
 				items: [
 					{

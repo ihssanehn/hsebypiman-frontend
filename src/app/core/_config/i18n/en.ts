@@ -26,6 +26,10 @@ export const locale = {
 			SALARIES: 'Salariés',
 			SOUSTRAITANTS: 'Sous-traiants',
 			ADMIN: 'Admin',
+			BTN:{
+				NEWAR: 'New risk analysis',
+				NEWCHANTIER: 'New construction site'
+			}
 		},
 		AUTH: {
 			GENERAL: {
