@@ -14,19 +14,51 @@ export const locale = {
 		},
 		MENU: {
 			NEW: 'Nouveau',
-			ACTIONS: 'Actes',
-			CREATE_POST: 'Créer un nouveau Post',
-			PAGES: 'Pages',
-			FEATURES: 'Fonctionnalités',
-			APPS: 'Applications',
 			DASHBOARD: 'Tableau de Bord',
-			CHANTIER: 'Chantier',
-			ANALYSERISQUE: 'Analyse de risque',
-			VISITESECURITE: 'Visite de Sécurité',
+			CHANTIER: 'Chantiers',
+			SUB_CHANTIER:{
+				DETAIL:'Détail du chantier',
+				ADD:'Ajouter un chantier',
+				EDIT:'Modifier le chantier',
+				LIST:'Liste des chantiers',
+			},
+			ANALYSERISQUE: 'Analyses de risque',
+			SUB_ANALYSERISQUE:{
+				DETAIL:'Détail de l\'analyse de risque',
+				ADD:'Ajouter une analyse de risque',
+				EDIT:'Modifier l\'analyse de risque',
+				LIST:'Liste des analyses de risque',
+			},
+			VISITESECURITE: 'Visites de Sécurité',
+			SUB_VISITESECURITE:{
+				DETAIL:'Détail de la visite de Sécurité',
+				ADD:'Ajouter une visite de Sécurité',
+				EDIT:'Modifier la visite de Sécurité',
+				LIST:'Liste des visites de Sécurité',
+			},
 			PLANACTION: 'Plan d\'action',
+			SUB_PLANACTION:{
+				DETAIL:'Détail de l\'action',
+				ADD:'Ajouter une action',
+				EDIT:'Modifier l\'action',
+				LIST:'Liste des actions',
+			},
 			SALARIES: 'Salariés',
-			SOUSTRAITANTS: 'Sous-traiants',
+			SUB_SALARIES:{
+				DETAIL:'Détail du salarié',
+				ADD:'Ajouter un salarié',
+				EDIT:'Modifier le salarié',
+				LIST:'Liste des salariés',
+			},
+			SOUSTRAITANTS: 'Sous-traitants',
+			SUB_SOUSTRAITANTS:{
+				DETAIL:'Détail du sous-traitant',
+				ADD:'Ajouter un sous-traitant',
+				EDIT:'Modifier le sous-traitant',
+				LIST:'Liste des sous-traitants',
+			},
 			ADMIN: 'Admin',
+			SUB_ADMIN:{},
 		},
 		AUTH: {
 			GENERAL: {
@@ -79,73 +111,109 @@ export const locale = {
 			NUMBER:{
 				LABEL:'Numéro',
 				PLACEHOLDER:'',
-				TITLE:'Numéro'
+				TITLE:'Numéro du chantier',
+				SHORTTITLE:'Numéro'
 			},
 			CLIENT:{
 				LABEL:'Client',
 				PLACEHOLDER:'',
-				TITLE:'Client'
+				TITLE:'Client',
+				SHORTTITLE:'Client'
 			},
 			NAME:{
 				LABEL:'Nom du chantier',
 				PLACEHOLDER:'',
-				TITLE:'Nom du chantier'
+				TITLE:'Nom du chantier',
+				SHORTTITLE: 'Nom'
 			},
 			ADRESS:{
 				LABEL:'Adresse du chantier',
 				PLACEHOLDER:'',
-				TITLE:'Adresse du chantier'
+				TITLE:'Adresse du chantier',
+				SHORTTITLE: 'Adresse'
 			},
 			TYPE:{
 				LABEL:'Type',
 				PLACEHOLDER:'',
-				TITLE:'Type'
+				TITLE:'Type',
+				SHORTTITLE:'Type'
 			},
 			STATUS:{
 				LABEL:'Statut',
 				PLACEHOLDER:'',
-				TITLE:'Statut'
+				TITLE:'Statut actuel du chantier',
+				SHORTTITLE:'Statut'
 			},
 			CONTACT:{
 				LABEL:'Contact',
 				PLACEHOLDER:'',
-				TITLE:'Contact'
+				TITLE:'Contact',
+				SHORTTITLE:'Contact',
 			},
 			DATE_DEMARRAGE:{
 				LABEL:'Date de démarage chantier',
 				PLACEHOLDER:'',
-				TITLE:'Date de démarage chantier'
+				TITLE:'Date de démarage chantier',
+				SHORTTITLE:'Date de démarage',
 			},
 			AR: 'Analyse de risque',
 			CHIEF:{
 				LABEL:'Chargé d\'affaire',
 				PLACEHOLDER:'',
-				TITLE:'Chargé d\'affaire'
+				TITLE:'Chargé d\'affaire',
+				SHORTTITLE:'Nom',
 			},
 			BUDGET:{
 				LABEL:'Budget',
 				PLACEHOLDER:'',
-				TITLE:'Budget'
+				TITLE:'Budget',
+				SHORTTITLE:'Montant',
 			},
 			ARCOUNT:{
 				LABEL:'Quantité A.R',
 				PLACEHOLDER:'',
-				TITLE:'Quantité A.R'
+				TITLE:'Quantité A.R',
+				SHORTTITLE:'Nombre d\'analyses',
 			},
 			LASTAR:{
 				LABEL:'Dernière A.R',
 				PLACEHOLDER:'',
-				TITLE:'Dernière A.R'
+				TITLE:'Dernière A.R',
+				SHORTTITLE:'Dernière A.R',
+			},
+			NEXTAR:{
+				LABEL:'Prochaine A.R',
+				PLACEHOLDER:'',
+				TITLE:'Prochaine analyse de prévue',
+				SHORTTITLE:'Prochaine analyse',
+			},
+			ARS:{
+				PLACEHOLDER:'',
+				TITLE:'Prochaine analyse de prévue',
+				SHORTTITLE:'Prochaine analyse',
 			},
 			VSCOUNT:{
 				LABEL:'Quantité V.S',
 				PLACEHOLDER:'',
-				TITLE:'Quantité V.S'
+				TITLE:'Quantité V.S',
+				SHORTTITLE:'Nombre de visites',
 			},
 			LASTVS:{
 				LABEL:'Dernière V.S',
 				PLACEHOLDER:'',
-				TITLE:'Dernière V.S'
+				TITLE:'Dernière V.S',
+				SHORTTITLE:'Dernière V.S',
+			},
+			NEXTVS:{
+				LABEL:'Prochaine V.S',
+				PLACEHOLDER:'',
+				TITLE:'Prochaine V.S',
+				SHORTTITLE:'Prochaine visite de prévue',
+			},
+			VSS:{
+				PLACEHOLDER:'',
+				TITLE:'Visites passées',
+				SHORTTITLE:'Visites passées',
 			},
 			FORM:{
 				CREATE:'Créer un nouveau chantier'
@@ -155,94 +223,124 @@ export const locale = {
 			DATE:{
 				LABEL:'Date de l\'analyse de risque',
 				PLACEHOLDER:'',
-				TITLE:'Date de l\'analyse de risque'
+				TITLE:'Date de l\'analyse de risque',
+				SHORTTITLE:'Date de l\'analyse de risque',
 			},
 			PREVOIR_COMPAGNONS:{
 				LABEL:'A prévoir pour les compagnons',
 				PLACEHOLDER:'',
-				TITLE:'A prévoir pour les compagnons'
+				TITLE:'A prévoir pour les compagnons',
+				SHORTTITLE:'A prévoir pour les compagnons',
 			},
 			DATE_ACCUEIL_SECU:{
 				LABEL:'Date de l\'accueil sécurité',
 				PLACEHOLDER:'',
-				TITLE:'Date de l\'accueil sécurité'
+				TITLE:'Date de l\'accueil sécurité',
+				SHORTTITLE:'Date de l\'accueil sécurité',
 			},
 			REALISATEUR:{
 				LABEL:'Personne en charge de réaliser l\'accueil',
 				PLACEHOLDER:'',
-				TITLE:'Personne en charge de réaliser l\'accueil'
+				TITLE:'Personne en charge de réaliser l\'accueil',
+				SHORTTITLE:'Personne en charge de réaliser l\'accueil',
 			},
 			TEL_REALISATEUR:{
 				LABEL:'Numéro de téléphone',
 				PLACEHOLDER:'',
-				TITLE:'Numéro de téléphone'
+				TITLE:'Numéro de téléphone',
+				SHORTTITLE:'Numéro de téléphone',
 			},
 			DATE_VALIDITE:{
 				LABEL:'Date de validité de l\'accueuil sécurité',
 				PLACEHOLDER:'',
-				TITLE:'Date de validité de l\'accueuil sécurité'
+				TITLE:'Date de validité de l\'accueuil sécurité',
+				SHORTTITLE:'Date de validité de l\'accueuil sécurité',
 			},
 			NUM_SECOURS:{
 				LABEL:'Numéro en cas d\'accident ou incendie',
 				PLACEHOLDER:'',
-				TITLE:'Numéro en cas d\'accident ou incendie'
+				TITLE:'Numéro en cas d\'accident ou incendie',
+				SHORTTITLE:'En cas d\'accident ou incendie',
 			},
 			CONTACT_INTERNE_SECOURS:{
 				LABEL:'Personne CVTI à contacter en cas d\'accident',
 				PLACEHOLDER:'',
-				TITLE:'Personne CVTI à contacter en cas d\'accident'
+				TITLE:'Personne CVTI à contacter en cas d\'accident',
+				SHORTTITLE:'Personne CVTI en cas d\'accident',
 			},
 			TEL_CONTACT_INTERNE_SECOURS:{
 				LABEL:'Numéro de téléphone',
 				PLACEHOLDER:'',
-				TITLE:'Numéro de téléphone'
+				TITLE:'Numéro de téléphone',
+				SHORTTITLE:'Numéro de téléphone',
 			},
 			CONTACT_CLIENT_CHEF_CHANTIER:{
 				LABEL:'Nom Chef de chantier client',
 				PLACEHOLDER:'',
-				TITLE:'Nom Chef de chantier client'
+				TITLE:'Nom Chef de chantier client',
+				SHORTTITLE:'Nom Chef de chantier client',
 			},
 			TEL_CONTACT_CLIENT_CHEF_CHANTIER:{
 				LABEL:'Numéro de téléphone',
 				PLACEHOLDER:'',
-				TITLE:'Numéro de téléphone'
+				TITLE:'Numéro de téléphone',
+				SHORTTITLE:'Numéro de téléphone',
 			},
 			CONTACT_CLIENT_HSE:{
 				LABEL:'Interlocuteur HSE ou SPS',
 				PLACEHOLDER:'',
-				TITLE:'Interlocuteur HSE ou SPS'
+				TITLE:'Interlocuteur HSE ou SPS',
+				SHORTTITLE:'Interlocuteur HSE ou SPS',
 			},
 			TEL_CONTACT_CLIENT_HSE:{
 				LABEL:'Numéro de téléphone',
 				PLACEHOLDER:'',
-				TITLE:'Numéro de téléphone'
+				TITLE:'Numéro de téléphone',
+				SHORTTITLE:'Numéro de téléphone',
 			},
 			HORAIRES:{
 				LABEL:'Heures de travail du chantier',
 				PLACEHOLDER:'',
-				TITLE:'Heures de travail du chantier'
+				TITLE:'Heures de travail du chantier',
+				SHORTTITLE:'Heures de travail du chantier',
 			},
 			COURANT:{
 				LABEL:'Courant mis à disposition',
 				PLACEHOLDER:'',
-				TITLE:'Courant mis à disposition'
+				TITLE:'Courant mis à disposition',
+				SHORTTITLE:'Courant mis à disposition',
 			},
 		},
 		COMMON:{
 			CITY:{
 				LABEL:'Ville',
 				PLACEHOLDER:'',
-				TITLE:'Ville'
+				TITLE:'Ville',
+				SHORTTITLE:'Ville',
 			},
 			POSTCODE:{
 				LABEL:'Code Postal',
 				PLACEHOLDER:'',
-				TITLE:'Code Postal'
+				TITLE:'Code Postal',
+				SHORTTITLE:'Code Postal',
 			},
 			COUNTRY:{
 				LABEL:'Pays',
 				PLACEHOLDER:'',
-				TITLE:'Pays'
+				TITLE:'Pays',
+				SHORTTITLE:'Pays',
+			},
+			UPDATED_AT:{
+				TITLE:'Mise à jour des informations',
+				SHORTTITLE:'Mis à jour le'
+			},
+			CREATED_AT:{
+				TITLE:'Créé le',
+				SHORTTITLE:'Créé le'
+			},
+			ARCHIEVED_AT:{
+				TITLE:'Archivé le',
+				SHORTTITLE:'Archivé le'
 			},
 		},
 		FILTER : {

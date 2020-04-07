@@ -34,10 +34,12 @@
                     padding: 2em 2em 0;    
                     height: 100%;
                     // justify-content: space-between;
+                    p{
+                        text-align: right;
+                    }
                     .label{
                         color: #c9c9c9;
-                        width: 20%;
-                        text-align: right;
+                        text-align: left;
                     }
                     .blue{
                         color: #33b5ae;
