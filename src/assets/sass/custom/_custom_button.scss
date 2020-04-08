@@ -1,4 +1,5 @@
 
+// MatSuccess
 .mat-button.mat-success,
 .mat-stroked-button.mat-success {
     color: tf-get($tf-state-colors, success, base);
@@ -19,3 +20,26 @@
 .mat-icon-button.mat-success {
   color:tf-get($tf-state-colors, success, base);
 }
+
+// MatInfo
+.mat-button.mat-info,
+.mat-stroked-button.mat-info {
+    color: tf-get($tf-state-colors, info, optional);
+}
+.mat-button.mat-info:hover,
+.mat-stroked-button.mat-info:hover {
+  background-color: #f0fff3;
+}
+
+.mat-raised-button.mat-info,
+.mat-flat-button.mat-info,
+.mat-fab.mat-info,
+.mat-mini-fab.mat-info {
+  color: tf-get($tf-state-colors, success, base);
+  background-color: tf-get($tf-state-colors, info, base);
+}
+
+.mat-icon-button.mat-info {
+  color:tf-get($tf-state-colors, info, optional);
+}
+// NEXT

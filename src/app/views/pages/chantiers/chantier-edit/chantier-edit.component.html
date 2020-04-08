@@ -1,12 +1,14 @@
-<div class="row row-filters" style="height: 69px;">
-  
-</div>
-<form [formGroup]="chantierForm" class="tf-form tf-form--group-seperator-dashed ">
-	<tf-chantier-form *ngIf="loaded" [chantierForm]="chantierForm" [edit]="true"></tf-chantier-form>
+<!-- <div class="row row-filters" style="height: 69px;">
+</div> -->
+<form [formGroup]="chantierForm" *ngIf="loaded; else loading" class="tf-form tf-form--group-seperator-dashed">
+	<tf-chantier-form [chantierForm]="chantierForm" [edit]="true"></tf-chantier-form>
   <button mat-raised-button color="success" class="float-right ml-4" (click)="onSubmit(false)">
 		{{'ACTION.SAVE' | translate}}
 	</button>
-  <button mat-raised-button color="accent" class="float-right ml-4" type="button" (click)="cancel()">
+  <button mat-raised-button color="info" class="float-right ml-4" type="button" (click)="cancel()">
 		{{'ACTION.CANCEL' | translate}}
 	</button>
 </form>
+<ng-template #loading>
+	Loading Chantier
+</ng-template>

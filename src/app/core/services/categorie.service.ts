@@ -32,8 +32,8 @@ export class CategorieService extends HttpService{
     create(item){
         return this.http.post(this.baseUrl+'/'+'create', item);
     }
-    update(item_id, item){
-        return this.http.put(this.baseUrl+'/'+item_id, item);
+    update(item){
+        return this.http.put(this.baseUrl+'/'+item.id, item);
     }
     delete(item_id){
         return this.http.delete(this.baseUrl+'/'+item_id);

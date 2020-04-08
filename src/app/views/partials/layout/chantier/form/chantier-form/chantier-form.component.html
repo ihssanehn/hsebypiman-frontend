@@ -2,7 +2,19 @@
 	<tf-portlet>
 		<tf-portlet-body>
 			<div class="tf-heading tf-heading--lg" style="margin-top: 0;">
-				<span *ngIf="edit">{{'MENU.SUB_CHANTIER.EDIT' | translate}} - {{chantierForm.get('nom').value}}</span> 
+				<div *ngIf="edit">
+					{{'MENU.SUB_CHANTIER.EDIT' | translate}} n°{{chantierForm.get('numero').value+' - '+chantierForm.get('nom').value}} 
+					<mat-form-field class="pull-right" style="font-size: 1rem;">
+						<mat-label>{{'CHANTIERS.STATUS.LABEL' | translate}}</mat-label>
+						<mat-select class="form-control" placeholder="" formControlName="status_id" (selectionChange)="setSelectedStatus($event)">
+							<mat-option *ngFor="let statu of status" [ngStyle]="statu.color && {'color':statu.color}" [value]="statu.id">
+								<span >
+									{{ statu.libelle }}
+								</span>
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</div>
 				<span *ngIf="!edit">{{'CHANTIERS.FORM.CREATE' | translate}}</span>
 			</div>
 			<div>
@@ -14,7 +26,7 @@
 									<mat-label>{{'CHANTIERS.NAME.LABEL' | translate}}</mat-label>
 									<input class="form-control" matInput type="text" name="nom" formControlName="nom" placeholder="Saisir ici" />
 								</mat-form-field>
-								<mat-form-field class="col-xl-2">
+								<mat-form-field class="col-xl-3">
 									<mat-label>{{'CHANTIERS.TYPE.LABEL' | translate}}</mat-label>
 									<mat-select class="form-control" placeholder="" formControlName="type_id">
 										<mat-option *ngFor="let type of types" [value]="type.id">
@@ -22,44 +34,20 @@
 										</mat-option>
 									</mat-select>
 								</mat-form-field>
-								<mat-form-field class="col-xl-2">
-									<mat-label>{{'CHANTIERS.CLIENT.LABEL' | translate}}</mat-label>
-									<input matInput class="form-control" type="text" name="client" formControlName="client" placeholder="Saisir ici" />
-								</mat-form-field>
-								<mat-form-field class="col-xl-2">
-									<mat-label>{{'CHANTIERS.CONTACT.LABEL' | translate}}</mat-label>
-									<input matInput class="form-control" type="text" name="contact" formControlName="contact" placeholder="Saisir ici" />
-								</mat-form-field>
-								<mat-form-field class="col-xl-1">
-									<mat-label>{{'CHANTIERS.BUDGET.LABEL' | translate}}</mat-label>
-									<input matInput class="form-control" type="number" name="montant" formControlName="montant" placeholder="Saisir ici" />
-									<mat-icon matSuffix>euro_symbol</mat-icon>
-								</mat-form-field>
-							</div>
-							<div class="row form-row">
 								<mat-form-field class="col-xl-3">
-									<mat-label>{{'CHANTIERS.ADRESS.LABEL' | translate}}</mat-label>
-									<input matInput class="form-control" type="text" name="adresse" formControlName="adresse" placeholder="Saisir ici" />
-								</mat-form-field>
-								<mat-form-field class="col-xl-2">
-									<mat-label>{{'COMMON.CITY.LABEL' | translate}}</mat-label>
-									<input matInput class="form-control" type="text" name="ville" formControlName="ville" placeholder="Saisir ici" />
-								</mat-form-field>
-								<mat-form-field class="col-xl-1">
-									<mat-label>{{'COMMON.POSTCODE.LABEL' | translate}}</mat-label>
-									<input matInput class="form-control" type="text" name="code_postal" formControlName="code_postal" placeholder="Saisir ici" />
-								</mat-form-field>
-								<mat-form-field class="col-xl-1">
-									<mat-label>{{'COMMON.COUNTRY.LABEL' | translate}}</mat-label>
-									<input matInput class="form-control" type="text" name="pays" formControlName="pays" placeholder="Saisir ici" />
-								</mat-form-field>
-								<mat-form-field class="col-xl-2">
 									<mat-label>{{'CHANTIERS.DATE_DEMARRAGE.LABEL' | translate}}</mat-label>
 									<input matInput class="form-control" [matDatepicker]="date_demarrage_picker" formControlName="date_demarrage" placeholder="DD/MM/YYYY">
 									<mat-datepicker-toggle matSuffix [for]="date_demarrage_picker"></mat-datepicker-toggle>
 									<mat-datepicker #date_demarrage_picker></mat-datepicker>
 								</mat-form-field>
 								<mat-form-field class="col-xl-2">
+									<mat-label>{{'CHANTIERS.BUDGET.LABEL' | translate}}</mat-label>
+									<input matInput class="form-control" type="number" name="montant" formControlName="montant" placeholder="Saisir ici" />
+									<mat-icon matSuffix>euro_symbol</mat-icon>
+								</mat-form-field>
+							</div>
+							<div class="row form-row">
+								<mat-form-field class="col-xl-4">
 									<mat-label>{{'CHANTIERS.CHIEF.LABEL' | translate}}</mat-label>
 									<!-- <ng-select ngSelectMat class="form-control mat-select" [items]="users" formControlName="charge_affaire_id" bindLabel="fullname"
 										bindValue="id" [clearable]="false">
@@ -69,6 +57,32 @@
 											{{ user.fullname }}
 										</mat-option>
 									</mat-select>
+								</mat-form-field>
+								<mat-form-field class="col-xl-3">
+									<mat-label>{{'CHANTIERS.CLIENT.LABEL' | translate}}</mat-label>
+									<input matInput class="form-control" type="text" name="client" formControlName="client" placeholder="Saisir ici" />
+								</mat-form-field>
+								<mat-form-field class="col-xl-3">
+									<mat-label>{{'CHANTIERS.CONTACT.LABEL' | translate}}</mat-label>
+									<input matInput class="form-control" type="text" name="contact" formControlName="contact" placeholder="Saisir ici" />
+								</mat-form-field>
+							</div>
+							<div class="row form-row">
+								<mat-form-field class="col-xl-4">
+									<mat-label>{{'CHANTIERS.ADRESS.LABEL' | translate}}</mat-label>
+									<input matInput class="form-control" type="text" name="adresse" formControlName="adresse" placeholder="Saisir ici" />
+								</mat-form-field>
+								<mat-form-field class="col-xl-3">
+									<mat-label>{{'COMMON.CITY.LABEL' | translate}}</mat-label>
+									<input matInput class="form-control" type="text" name="ville" formControlName="ville" placeholder="Saisir ici" />
+								</mat-form-field>
+								<mat-form-field class="col-xl-1">
+									<mat-label>{{'COMMON.POSTCODE.LABEL' | translate}}</mat-label>
+									<input matInput class="form-control" type="text" name="code_postal" formControlName="code_postal" placeholder="Saisir ici" />
+								</mat-form-field>
+								<mat-form-field class="col-xl-2">
+									<mat-label>{{'COMMON.COUNTRY.LABEL' | translate}}</mat-label>
+									<input matInput class="form-control" type="text" name="pays" formControlName="pays" placeholder="Saisir ici" />
 								</mat-form-field>
 							</div>
 						</div>

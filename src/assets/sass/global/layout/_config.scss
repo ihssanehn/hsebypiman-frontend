@@ -11,7 +11,7 @@
 $tf-state-colors: (
     // CVTI - HSE states
     brand: (
-        base: #366cf3,
+        base: #5d78ff,
         inverse: #ffffff
     ),
     light: (
@@ -25,23 +25,29 @@ $tf-state-colors: (
 
     // Bootstrap states
     primary: (
-        base: #5867dd,
+        // base: #5867dd,
+        base: #004FC2,
         inverse: #ffffff
     ),
     success: (
-        base: #1dc9b7,
+        // base: #0abb87, //1dc9b7,
+        base: #33b5ae, //1dc9b7,
         inverse: #ffffff
     ),
     info: (
-        base: #5578eb,
-        inverse: #ffffff
+        // base: #5578eb,
+        base: #DDF5F4,
+        inverse: #ffffff,
+        optional: #6beeea
     ),
     warning: (
-        base: #ffb822,
+        // base: #e49819,
+        base: #E49819,
         inverse: #111111
     ),
     danger: (
-        base: #fd397a,
+        // base: #fd397a,
+        base: #DD153E,
         inverse: #ffffff
     )
 );

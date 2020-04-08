@@ -4,22 +4,23 @@ import { Paginate } from '@app/core/_base/layout/models/paginate.model';
 import { Chantier } from '@app/core/models';
 import { TranslateService } from '@ngx-translate/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import {fromEvent, Subscription} from 'rxjs';
+import { fromEvent, Subscription } from 'rxjs';
 import Swal from 'sweetalert2';
 
 
 @Component({
-  selector: 'tf-chantiers-list',
-  templateUrl: './chantiers-list.component.html',
-  styleUrls: ['./chantiers-list.component.scss']
+	selector: 'tf-chantiers-list',
+	templateUrl: './chantiers-list.component.html',
+	styleUrls: ['./chantiers-list.component.scss']
 })
 export class ChantiersListComponent implements OnInit {
 
-  public chantiersList : Paginate<Chantier>;
-  pagination: any = {
+	public chantiersList: Paginate < Chantier > ;
+	pagination: any = {
 		page: 1,
 		total: 10,
-		pageSize: 10
+    pageSize: 10,
+    last_page: 1
 	};
 	filter: any = {
 		per_page: this.pagination.pageSize,
@@ -29,28 +30,33 @@ export class ChantiersListComponent implements OnInit {
 		keyword: "",
 		dateRange: [],
 		status_id: "",
-		params:[]
+		params: []
 	};
-	displayedChantierColumns=['number','client','name','status','charge_affaire','montant','ars_count','latest_ar','vss_count','latest_vs','action'];
+	displayedChantierColumns = ['number', 'client', 'name', 'status', 'charge_affaire', 'montant', 'ars_count', 'latest_ar', 'vss_count', 'latest_vs', 'action'];
 
-  	constructor(
+	constructor(
 		private router: Router,
 		private activatedRoute: ActivatedRoute,
-		protected chantierService:ChantierService,
-		protected cdr:ChangeDetectorRef,
-		private translate:TranslateService,
-  	) {
-		  
+		protected chantierService: ChantierService,
+		protected cdr: ChangeDetectorRef,
+		private translate: TranslateService,
+	) {
+
 	}
 
-  	ngOnInit() {
-    	this.getChantiers();
-  	}
-  
-  	async getChantiers(){
-    	try {
+	ngOnInit() {
+		this.getChantiers();
+	}
+
+	async getChantiers() {
+		try {
 			this.chantiersList = await this.chantierService.search(this.filter).toPromise();
-			this.pagination = { ...this.pagination, total: this.chantiersList.total, page: this.chantiersList.current_page };
+			this.pagination = {
+				...this.pagination,
+				total: this.chantiersList.total,
+        page: this.chantiersList.current_page,
+        last_page: this.chantiersList.last_page
+			};
 			this.filter.page = this.pagination.page;
 			this.filter.per_page = this.pagination.pageSize;
 			this.cdr.detectChanges();
@@ -58,54 +64,58 @@ export class ChantiersListComponent implements OnInit {
 		} catch (error) {
 			console.error(error);
 		}
-  	}
+	}
 
-  	changePagination() {
-		this.pagination = { ...this.pagination, pageSize: this.pagination.pageSize, total: this.pagination.total };
+	changePagination() {
+		this.pagination = {
+			...this.pagination,
+			pageSize: this.pagination.pageSize,
+			total: this.pagination.total
+		};
 		this.filter.page = this.pagination.page;
 		this.filter.per_page = this.pagination.pageSize;
 		this.getChantiers();
 	}
 
 
-	viewChantier(chantierId){
-		this.router.navigateByUrl('chantiers/detail/'+chantierId);
+	viewChantier(chantierId) {
+		this.router.navigateByUrl('chantiers/detail/' + chantierId);
 	}
-	editChantier(chantierId){
-		
-		this.router.navigateByUrl('chantiers/edit/'+chantierId);
+	editChantier(chantierId) {
+
+		this.router.navigateByUrl('chantiers/edit/' + chantierId);
 	}
-	deleteChantier(chantierId){
+	deleteChantier(chantierId) {
 		Swal.fire({
-			title:'Désolé cette fonctionnalité n\'a pas encore été implémentée',
+			title: 'Désolé cette fonctionnalité n\'a pas encore été implémentée',
 			showConfirmButton: false,
-            timer: 1500
+			timer: 1500
 		})
 	}
 
 	// Au click, défini order by et order way. Si le order_by est déjà actif, toggle du order_way. Sinon, order_way asc par défaut
-	setOrder(by){
+	setOrder(by) {
 		console.log(this.filter)
-		if(this.isOrderedBy(by)){
+		if (this.isOrderedBy(by)) {
 			this.toggleOrderWay()
-		}else{
+		} else {
 			this.filter.order_by = by;
-			this.filter.order_way = 'asc'; 
+			this.filter.order_way = 'asc';
 		}
-    	this.getChantiers();
+		this.getChantiers();
 	}
 
-	toggleOrderWay(){
-		if(this.filter.order_way == 'asc'){
+	toggleOrderWay() {
+		if (this.filter.order_way == 'asc') {
 			this.filter.order_way = 'desc';
-		}else{
-			this.filter.order_way = 'asc'; 
+		} else {
+			this.filter.order_way = 'asc';
 		}
 	}
-	isOrderedBy(by){
-		if(Array.isArray(by)){
+	isOrderedBy(by) {
+		if (Array.isArray(by)) {
 			return JSON.stringify(by) == JSON.stringify(this.filter.order_by)
-		}else{
+		} else {
 			return by == this.filter.order_by
 		}
 	}

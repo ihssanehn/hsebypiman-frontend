@@ -89,23 +89,28 @@ $tf-state-colors: (
 
     // Bootstrap states
     primary: (
-        base: #5867dd,
+        // base: #5867dd,
+        base: #004FC2,
         inverse: #ffffff
     ),
     success: (
-        base: #0abb87, //1dc9b7,
+        // base: #0abb87, //1dc9b7,
+        base: #55CEC7, //1dc9b7,
         inverse: #ffffff
     ),
     info: (
-        base: #5578eb,
+        // base: #5578eb,
+        base: #DDF5F4,
         inverse: #ffffff
     ),
     warning: (
-        base: #e49819,
+        // base: #e49819,
+        base: #E49819,
         inverse: #111111
     ),
     danger: (
-        base: #fd397a,
+        // base: #fd397a,
+        base: #DD153E,
         inverse: #ffffff
     )
 ) !default;

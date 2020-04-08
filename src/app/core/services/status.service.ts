@@ -21,7 +21,7 @@ export class StatusService extends HttpService{
     }
 
     getAll(){
-        return this.http.get<Array<Status>>(this.baseUrl);
+        return this.http.get<Status[]>(this.baseUrl);
     }
     getAllFromModel(model){
         return this.http.get<Array<Status>>(this.baseUrl+'?model='+model);
@@ -32,8 +32,8 @@ export class StatusService extends HttpService{
     create(item){
         return this.http.post(this.baseUrl+'/'+'create', item);
     }
-    update(item_id, item){
-        return this.http.put(this.baseUrl+'/'+item_id, item);
+    update(item){
+        return this.http.put(this.baseUrl+'/'+item.id, item);
     }
     delete(item_id){
         return this.http.delete(this.baseUrl+'/'+item_id);
