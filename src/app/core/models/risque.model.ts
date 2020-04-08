@@ -1,0 +1,14 @@
+
+import {User} from '@app/core/auth'
+import { CatRisque } from './catRisque.model';
+
+export class Risque {
+    _id?: number;
+    cat_risque?:CatRisque;
+    libelle?:string;
+    code?:string;
+    ordre?:number;
+    active?:boolean;
+    creator_id?:number;
+    creator?:User;
+}
