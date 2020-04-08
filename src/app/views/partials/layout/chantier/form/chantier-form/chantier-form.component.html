@@ -6,9 +6,9 @@
 					{{'MENU.SUB_CHANTIER.EDIT' | translate}} n°{{chantierForm.get('numero').value+' - '+chantierForm.get('nom').value}} 
 					<mat-form-field class="pull-right" style="font-size: 1rem;">
 						<mat-label>{{'CHANTIERS.STATUS.LABEL' | translate}}</mat-label>
-						<mat-select class="form-control" placeholder="" formControlName="status_id" (selectionChange)="setSelectedStatus($event)">
+						<mat-select class="form-control" placeholder="" formControlName="status_id" >
 							<mat-option *ngFor="let statu of status" [ngStyle]="statu.color && {'color':statu.color}" [value]="statu.id">
-								<span >
+								<span>
 									{{ statu.libelle }}
 								</span>
 							</mat-option>

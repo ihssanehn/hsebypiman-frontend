@@ -16,7 +16,6 @@ export class ChantierFormComponent implements OnInit {
   types: Type[];
   users: User[];
   status: Status[];
-  selectedStatusColor: String;
 
   @Input() chantierForm: FormGroup;
   @Input() edit: Boolean;
@@ -45,17 +44,7 @@ export class ChantierFormComponent implements OnInit {
   }
   async getStatus(){
     this.status = await this.statusService.getAllFromModel('Chantier').toPromise();
-    if(this.edit){
-      this.setSelectedStatus(this.chantierForm.controls['status_id'].value, true);
-    }
     this.cdr.detectChanges();
     this.cdr.markForCheck();
-  }
-  setSelectedStatus(item, init = false){
-    let key = init ? item : item.value;
-    let selectedStatus = this.status.filter(x => x.id == key)[0];
-
-    this.selectedStatusColor = selectedStatus.color;
-    console.log(this.selectedStatusColor);
   }
 }
