@@ -12,7 +12,9 @@ $tf-notification-item-padding-y: 1.1rem;
 	.tf-notification__item {
 		display: flex;
 		align-items: center;
-		padding: $tf-notification-item-padding-y $tf-notification-item-padding-x;
+		justify-content: center;
+		padding: 0;
+		// padding: $tf-notification-item-padding-y $tf-notification-item-padding-x;
 		border-bottom: 1px solid tf-base-color(grey, 1);
 		transition: background-color 0.3s ease;
 
@@ -89,8 +91,9 @@ $tf-notification-item-padding-y: 1.1rem;
 	.tf-notification__custom {
 		display: flex;
 		align-items: center;
-		border-top: 1px solid tf-base-color(grey, 1);
-		padding: ($tf-notification-item-padding-y + 0.5) $tf-notification-item-padding-x;
+		justify-content: center;
+		// border-top: 1px solid tf-base-color(grey, 1);
+		// padding: ($tf-notification-item-padding-y + 0.5) $tf-notification-item-padding-x;
 	}
 
 	&.tf-notification--fit {

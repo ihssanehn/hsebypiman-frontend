@@ -65,6 +65,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 	maxScrollbarLength: 300,
 };
 
+
+
 export function initializeLayoutConfig(appConfig: LayoutConfigService) {
 	// initialize app by loading default demo layout config
 	return () => {

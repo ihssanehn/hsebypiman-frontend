@@ -59,7 +59,7 @@
         <div class="card">
           <h3>Information CVTI</h3>
           <div class="box">
-            <p><span class="label pull-left">{{'CHANTIERS.DATE_DEMARRAGE.TITLE' | translate}}</span><br>{{chantier.date_demarrage}}</p>
+            <p><span class="label pull-left">{{'CHANTIERS.DATE_DEMARRAGE.TITLE' | translate}}</span><br>{{chantier.date_demarrage | date:'dd/MM/yyyy'}}</p>
             <p><span class="label pull-left">{{'ARS.REALISATEUR.TITLE' | translate}}</span><br>{{chantier.latest_ar?.realisateur}}</p>
           </div>
           <div class="box">

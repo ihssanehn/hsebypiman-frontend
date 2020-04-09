@@ -25,6 +25,7 @@ import { ChantierAddComponent } from './chantier-add/chantier-add.component';
 import { ChantierDetailComponent } from './chantier-detail/chantier-detail.component';
 import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
+
 // Material
 import {
 	MatInputModule,
@@ -48,8 +49,11 @@ import {
 	MatAutocompleteModule,
 	MAT_DIALOG_DEFAULT_OPTIONS,
 	MatSnackBarModule,
-	MatTooltipModule
+	MatTooltipModule,MAT_DATE_LOCALE, 
+	MAT_DATE_FORMATS,
+	DateAdapter
 } from '@angular/material';
+import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapter';
 
 
 const routes: Routes = [
@@ -94,6 +98,19 @@ const routes: Routes = [
 	}
 ];
 
+const MY_FORMAT = {
+	parse: {
+		dateInput: 'DD/MM/YYYY',
+	},
+	display: {
+		dateInput: 'DD/MM/YYYY',
+		monthYearLabel: 'MMM YYYY',
+		dateA11yLabel: 'DD/MM/YYYY',
+		monthYearA11yLabel: 'MMMM YYYY',
+	},
+};
+
+		
 @NgModule({
 	imports: [
 		CommonModule,
@@ -146,6 +163,9 @@ const routes: Routes = [
 				width: '900px'
 			}
 		},
+		{ provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
+		{ provide: MAT_DATE_FORMATS, useValue: MY_FORMAT },
+		{ provide: DateAdapter, useClass: CustomDateAdapter },
 		HttpUtilsService,
 		TypesUtilsService,
 		LayoutUtilsService
