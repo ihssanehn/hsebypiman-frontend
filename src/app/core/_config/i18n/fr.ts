@@ -190,7 +190,7 @@ export const locale = {
 			},
 			ARS:{
 				PLACEHOLDER:'',
-				TITLE:'Prochaine analyse de prévue',
+				TITLE:'Analyses passées',
 				SHORTTITLE:'Prochaine analyse',
 			},
 			VSCOUNT:{
