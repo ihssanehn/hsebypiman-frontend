@@ -75,7 +75,7 @@
       <ng-container matColumnDef="latest_vs">
         <th mat-header-cell *matHeaderCellDef class="text-center"> {{'CHANTIERS.LASTVS.TITLE' | translate}} </th>
         <td mat-cell *matCellDef="let chantier" class="text-center"> 
-          <span *ngIf="chantier.vss_count > 0">{{chantier.latest_vs?.date | date:'dd/MM/yyyy'}}</span> 
+          <span *ngIf="chantier.vss_count > 0">{{chantier.latest_vs?.date_visite | date:'dd/MM/yyyy'}}</span> 
           <span *ngIf="chantier.vss_count == 0">-</span> 
         </td>
       </ng-container>
