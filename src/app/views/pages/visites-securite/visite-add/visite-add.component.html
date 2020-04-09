@@ -1,0 +1,10 @@
+<!-- <div class="row row-filters" style="height: 69px;">
+  
+</div> -->
+<form [formGroup]="visiteForm" class="tf-form tf-form--group-seperator-dashed ">
+	<!-- <tf-visite-form [visiteForm]="visiteForm" [edit]="false"></tf-visite-form> -->
+	<!-- <tf-ar-form-1 [arForm]="visiteForm.controls['ar']" ></tf-ar-form-1> -->
+	<button mat-raised-button color="success" class="float-right" (click)="onSubmit(false)">
+		{{'ACTION.SAVE' | translate}}
+	</button>
+</form>
