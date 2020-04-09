@@ -4,7 +4,8 @@ import { APP_INITIALIZER, NgModule, LOCALE_ID } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { GestureConfig, MatProgressSpinnerModule } from '@angular/material';
+import { GestureConfig, MatProgressSpinnerModule,MAT_DATE_LOCALE, MAT_DATE_FORMATS, DateAdapter } from '@angular/material';
+import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapter';
 
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
@@ -45,11 +46,12 @@ import {DataTableService,TfDialogService,LayoutConfigService,VersionCheckService
 // Auth
 import { AuthModule } from './views/pages/auth/auth.module';
 import { AuthService } from './core/auth';
-import { ChantierService, TypeService, StatusService, CategorieService, ArService } from './core/services';
+import { ChantierService, TypeService, StatusService, CategorieService, ArService, VisiteService } from './core/services';
 // CRUD
 import { HttpUtilsService, LayoutUtilsService, TypesUtilsService } from './core/_base/crud';
 // Config
 import { LayoutConfig } from './core/_config/layout.config';
+
 // Highlight JS
 import { HIGHLIGHT_OPTIONS, HighlightLanguage } from 'ngx-highlightjs';
 import * as typescript from 'highlight.js/lib/languages/typescript';
@@ -65,7 +67,17 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 	maxScrollbarLength: 300,
 };
 
-
+const MY_FORMAT = {
+	parse: {
+		dateInput: 'DD/MM/YYYY',
+	},
+	display: {
+		dateInput: 'DD/MM/YYYY',
+		monthYearLabel: 'MMM YYYY',
+		dateA11yLabel: 'DD/MM/YYYY',
+		monthYearA11yLabel: 'MMMM YYYY',
+	},
+};
 
 export function initializeLayoutConfig(appConfig: LayoutConfigService) {
 	// initialize app by loading default demo layout config
@@ -122,6 +134,7 @@ export function hljsLanguages(): HighlightLanguage[] {
 		TypeService, 
 		StatusService, 
 		CategorieService,
+		VisiteService,
 		LayoutConfigService,
 		LayoutRefService,
 		MenuConfigService,
@@ -148,6 +161,9 @@ export function hljsLanguages(): HighlightLanguage[] {
 			provide: HIGHLIGHT_OPTIONS,
 			useValue: {languages: hljsLanguages}
 		},
+		{ provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
+		{ provide: MAT_DATE_FORMATS, useValue: MY_FORMAT },
+		{ provide: DateAdapter, useClass: CustomDateAdapter },
 		// template services
 		SubheaderService,
 		MenuHorizontalService,

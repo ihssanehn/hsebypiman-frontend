@@ -53,7 +53,7 @@ import {
 	MAT_DATE_FORMATS,
 	DateAdapter
 } from '@angular/material';
-import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapter';
+// import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapter';
 
 
 const routes: Routes = [
@@ -97,18 +97,6 @@ const routes: Routes = [
 		]
 	}
 ];
-
-const MY_FORMAT = {
-	parse: {
-		dateInput: 'DD/MM/YYYY',
-	},
-	display: {
-		dateInput: 'DD/MM/YYYY',
-		monthYearLabel: 'MMM YYYY',
-		dateA11yLabel: 'DD/MM/YYYY',
-		monthYearA11yLabel: 'MMMM YYYY',
-	},
-};
 
 		
 @NgModule({
@@ -163,9 +151,6 @@ const MY_FORMAT = {
 				width: '900px'
 			}
 		},
-		{ provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
-		{ provide: MAT_DATE_FORMATS, useValue: MY_FORMAT },
-		{ provide: DateAdapter, useClass: CustomDateAdapter },
 		HttpUtilsService,
 		TypesUtilsService,
 		LayoutUtilsService

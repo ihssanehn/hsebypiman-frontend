@@ -28,7 +28,7 @@ export class MenuConfig {
 					title: 'Visites securite',
 					root: true,
 					alignment: 'left',
-					page: '/visites-securite',
+					page: '/visites-securite/list',
 					translate: 'MENU.VISITESECURITE',
 				},
 				{

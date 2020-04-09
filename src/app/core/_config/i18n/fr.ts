@@ -312,6 +312,118 @@ export const locale = {
 				SHORTTITLE:'Courant mis à disposition',
 			},
 		},
+		VISITES:{
+			NUMBER:{
+				LABEL:'Numéro',
+				PLACEHOLDER:'',
+				TITLE:'Numéro du chantier',
+				SHORTTITLE:'Numéro'
+			},
+			CLIENT:{
+				LABEL:'Client',
+				PLACEHOLDER:'',
+				TITLE:'Client',
+				SHORTTITLE:'Client'
+			},
+			NAME:{
+				LABEL:'Nom du chantier',
+				PLACEHOLDER:'',
+				TITLE:'Nom du chantier',
+				SHORTTITLE: 'Nom'
+			},
+			ADRESS:{
+				LABEL:'Adresse du chantier',
+				PLACEHOLDER:'',
+				TITLE:'Adresse du chantier',
+				SHORTTITLE: 'Adresse'
+			},
+			TYPE:{
+				LABEL:'Type',
+				PLACEHOLDER:'',
+				TITLE:'Type',
+				SHORTTITLE:'Type'
+			},
+			STATUS:{
+				LABEL:'Statut',
+				PLACEHOLDER:'',
+				TITLE:'Statut actuel du chantier',
+				SHORTTITLE:'Statut'
+			},
+			CONTACT:{
+				LABEL:'Contact',
+				PLACEHOLDER:'',
+				TITLE:'Contact',
+				SHORTTITLE:'Contact',
+			},
+			DATE_DEMARRAGE:{
+				LABEL:'Date de démarage chantier',
+				PLACEHOLDER:'',
+				TITLE:'Date de démarage chantier',
+				SHORTTITLE:'Date de démarage',
+			},
+			AR: 'Analyse de risque',
+			CHIEF:{
+				LABEL:'Chargé d\'affaire',
+				PLACEHOLDER:'',
+				TITLE:'Chargé d\'affaire',
+				SHORTTITLE:'Nom',
+			},
+			BUDGET:{
+				LABEL:'Budget',
+				PLACEHOLDER:'',
+				TITLE:'Budget',
+				SHORTTITLE:'Montant',
+			},
+			ARCOUNT:{
+				LABEL:'Quantité A.R',
+				PLACEHOLDER:'',
+				TITLE:'Quantité A.R',
+				SHORTTITLE:'Nombre d\'analyses',
+			},
+			LASTAR:{
+				LABEL:'Dernière A.R',
+				PLACEHOLDER:'',
+				TITLE:'Dernière A.R',
+				SHORTTITLE:'Dernière A.R',
+			},
+			NEXTAR:{
+				LABEL:'Prochaine A.R',
+				PLACEHOLDER:'',
+				TITLE:'Prochaine analyse de prévue',
+				SHORTTITLE:'Prochaine analyse',
+			},
+			ARS:{
+				PLACEHOLDER:'',
+				TITLE:'Analyses passées',
+				SHORTTITLE:'Prochaine analyse',
+			},
+			VSCOUNT:{
+				LABEL:'Quantité V.S',
+				PLACEHOLDER:'',
+				TITLE:'Quantité V.S',
+				SHORTTITLE:'Nombre de visites',
+			},
+			LASTVS:{
+				LABEL:'Dernière V.S',
+				PLACEHOLDER:'',
+				TITLE:'Dernière V.S',
+				SHORTTITLE:'Dernière V.S',
+			},
+			NEXTVS:{
+				LABEL:'Prochaine V.S',
+				PLACEHOLDER:'',
+				TITLE:'Prochaine V.S',
+				SHORTTITLE:'Prochaine visite de prévue',
+			},
+			VSS:{
+				PLACEHOLDER:'',
+				TITLE:'Visites passées',
+				SHORTTITLE:'Visites passées',
+			},
+			FORM:{
+				CREATE:'Créer un nouveau chantier'
+			}
+		},
 		COMMON:{
 			CITY:{
 				LABEL:'Ville',
