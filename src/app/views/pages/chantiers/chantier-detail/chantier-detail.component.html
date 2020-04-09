@@ -60,13 +60,13 @@
           <h3>Information CVTI</h3>
           <div class="box">
             <p><span class="label pull-left">{{'CHANTIERS.DATE_DEMARRAGE.TITLE' | translate}}</span><br>{{chantier.date_demarrage}}</p>
-            <p><span class="label pull-left">{{'ARS.REALISATEUR.TITLE' | translate}}</span><br>{{chantier.latest_ar.realisateur}}</p>
+            <p><span class="label pull-left">{{'ARS.REALISATEUR.TITLE' | translate}}</span><br>{{chantier.latest_ar?.realisateur}}</p>
           </div>
           <div class="box">
             <h5><b>En cas</b> d'urgence</h5>
-            <p><span class="label pull-left mr-2">{{'ARS.NUM_SECOURS.SHORTTITLE' | translate}}</span><br><span class="blue">{{chantier.latest_ar.num_secours}}</span></p>
-            <p><span class="label pull-left mr-2">{{'ARS.CONTACT_INTERNE_SECOURS.SHORTTITLE' | translate}}</span><br><span class="blue">{{chantier.latest_ar.contact_interne_secours}}</span></p>
-            <p><span class="label pull-left mr-2">{{'ARS.TEL_CONTACT_INTERNE_SECOURS.SHORTTITLE' | translate}}</span><br><span class="blue">{{chantier.latest_ar.tel_contact_interne_secours}}</span></p>
+            <p><span class="label pull-left mr-2">{{'ARS.NUM_SECOURS.SHORTTITLE' | translate}}</span><br><span class="blue">{{chantier.latest_ar?.num_secours}}</span></p>
+            <p><span class="label pull-left mr-2">{{'ARS.CONTACT_INTERNE_SECOURS.SHORTTITLE' | translate}}</span><br><span class="blue">{{chantier.latest_ar?.contact_interne_secours}}</span></p>
+            <p><span class="label pull-left mr-2">{{'ARS.TEL_CONTACT_INTERNE_SECOURS.SHORTTITLE' | translate}}</span><br><span class="blue">{{chantier.latest_ar?.tel_contact_interne_secours}}</span></p>
           </div>
         </div>
       </div>
