@@ -67,6 +67,7 @@ import {
 	UserProfileComponent,
 	UserSideProfileComponent,
 	ArForm1Component,
+	ArForm2Component,
 	ChantierFormComponent,
 	ChantierFiltersComponent,
 	CommingSoonComponent,
@@ -124,6 +125,7 @@ import { PaginationComponent } from './content/general/pagination/pagination.com
 		ErrorComponent,
 		PaginationComponent,
 		CommingSoonComponent,
+		ArForm2Component,
 	],
 	exports: [
 		WidgetModule,
@@ -162,6 +164,7 @@ import { PaginationComponent } from './content/general/pagination/pagination.com
 		UserProfile3Component,
 		UserSideProfileComponent,
 		ArForm1Component,
+		ArForm2Component,
 		ChantierFormComponent,
 		ChantierFiltersComponent,
 		CartComponent,

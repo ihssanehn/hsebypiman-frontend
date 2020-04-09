@@ -5,6 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GestureConfig, MatProgressSpinnerModule } from '@angular/material';
+import { ReactiveFormsModule } from '@angular/forms'
 
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
@@ -45,7 +46,7 @@ import {DataTableService,TfDialogService,LayoutConfigService,VersionCheckService
 // Auth
 import { AuthModule } from './views/pages/auth/auth.module';
 import { AuthService } from './core/auth';
-import { ChantierService, TypeService, StatusService, CategorieService, ArService } from './core/services';
+import { ChantierService, TypeService, StatusService, CategorieService, ArService, CatRisqueService } from './core/services';
 // CRUD
 import { HttpUtilsService, LayoutUtilsService, TypesUtilsService } from './core/_base/crud';
 // Config
@@ -106,7 +107,8 @@ export function hljsLanguages(): HighlightLanguage[] {
 		TranslateModule.forRoot(),
 		MatProgressSpinnerModule,
 		InlineSVGModule.forRoot(),
-		ThemeModule
+		ThemeModule,
+		ReactiveFormsModule
 	],
 	exports: [],
 	providers: [
@@ -120,6 +122,7 @@ export function hljsLanguages(): HighlightLanguage[] {
 		TypeService, 
 		StatusService, 
 		CategorieService,
+		CatRisqueService,
 		LayoutConfigService,
 		LayoutRefService,
 		MenuConfigService,

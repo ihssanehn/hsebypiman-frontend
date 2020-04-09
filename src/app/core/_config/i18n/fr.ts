@@ -173,7 +173,38 @@ export const locale = {
 			VSCOUNT:'Quantité V.S',
 			LASTVS:'Dernière V.S',
 			FORM:{
-				CREATE:'Créer une nouvelle analyse de risque'
+				CREATE:'Créer une nouvelle analyse de risque',
+				RISKBLOCK:{
+					TITLE: 'Risques liés au chantier et moyens de préventions',
+					MSG: 'Obligatoirement port des EPI standard chez CVTI : casque, gants, vêtements couvrants, chaussures. Casquette tolérée pour le travail dans les faux plafonds (en fonction PDP du client). Si bruit port du casque antibruit pour les autres risques, adopter l’attitude suivante et cocher les actions à mener :'
+				},
+				PARKINGBLOCK:{
+					TITLE: 'Zone de stationnement des véhicules pendant le chantier'
+				},
+				STOCKBLOCK:{
+					TITLE: 'Zone de stockage matériel chantier'
+				},
+				EQBLOCK:{
+					TITLE: 'Equipement à prévoir sur le chantier'
+				},
+				MWBLOCK:{
+					TITLE: 'Suivi des travaux ',
+					WORKREGISTER:{
+						TITLE: 'Registre de travaux à signer ',
+						MSG: 'Si oui renseigner les informations ci-dessous en charge du registre'
+					},
+					SUBTITLE2: 'Balisage à prévoir sur la zone'
+				},
+				SIGNATURE:{
+					TITLE: 'Observation et signatures',
+					SUBTITLE: 'Observations des signataires sur les risques',
+					DECLARATION: 'J’ai pris connaissance de l’analyse de risque du chantier, du PPSPS ou du PDP et applique les moyens de préventions nécessaires : '
+				},
+				RISKS: 'Les risques',
+				ACTION: 'Action de prévention à mener',
+				COMMENT: 'Précisions à apporter',
+				CVTI_RESPONSIBLE: 'Nom du chargé d’affaire CVTI',
+				CA_ASSISTANT: 'Assistant CA'
 			},
 			DATE:{
 				LABEL:'Date de l\'analyse de risque',
@@ -308,6 +339,47 @@ export const locale = {
 				PLACEHOLDER:'',
 				TITLE:'Pays'
 			},
+			ADRESS:{
+				LABEL:'Adresse',
+				PLACEHOLDER:'',
+				TITLE:'Adresse'
+			},
+			NAME:{
+				LABEL:'Nom',
+				PLACEHOLDER:'',
+				TITLE:'Nom'
+			},
+			PHONENUMBER:{
+				LABEL:'Numéro de téléphone',
+				PLACEHOLDER:'',
+				TITLE:'Numéro de téléphone'
+			},
+			DATE:{
+				LABEL:'Date',
+				PLACEHOLDER:'',
+				TITLE:'Date'
+			},
+			NOM_PRENOM:{
+				LABEL:'Nom Prénom',
+				PLACEHOLDER:'',
+				TITLE:'Nom Prénom'
+			},
+			SOCIETE:{
+				LABEL:'Société',
+				PLACEHOLDER:'',
+				TITLE:'Société'
+			},
+			SIGNATURE:{
+				LABEL:'Signature',
+				PLACEHOLDER:'',
+				TITLE:'Signature'
+			},
+			REMARQUE:{
+				LABEL:'Remarques',
+				PLACEHOLDER:'',
+				TITLE:'Remarques'
+			}
+		
 		},
 		FILTER : {
 			TITLE : "Filtres",
