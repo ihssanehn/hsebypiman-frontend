@@ -112,7 +112,7 @@ export const locale = {
 			NUMBER:{
 				LABEL:'Numéro',
 				PLACEHOLDER:'',
-				TITLE:'Numéro du chantier',
+				TITLE:'N° du chantier',
 				SHORTTITLE:'Numéro'
 			},
 			CLIENT:{
