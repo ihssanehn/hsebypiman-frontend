@@ -378,6 +378,11 @@ export const locale = {
 				LABEL:'Remarques',
 				PLACEHOLDER:'',
 				TITLE:'Remarques'
+			},
+			CREATED_AT:{
+				LABEL:'Créée le',
+				PLACEHOLDER:'',
+				TITLE:'Créée le'
 			}
 		
 		},
