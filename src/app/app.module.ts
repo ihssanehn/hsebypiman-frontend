@@ -37,6 +37,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { ThemeModule } from './views/theme/theme.module';
+import { SignaturePadModule } from 'angular2-signaturepad';
 // Partials
 import { PartialsModule } from './views/partials/partials.module';
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -108,7 +109,8 @@ export function hljsLanguages(): HighlightLanguage[] {
 		MatProgressSpinnerModule,
 		InlineSVGModule.forRoot(),
 		ThemeModule,
-		ReactiveFormsModule
+		ReactiveFormsModule,
+		SignaturePadModule
 	],
 	exports: [],
 	providers: [

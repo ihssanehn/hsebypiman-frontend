@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SignaturePadModule } from 'angular2-signaturepad';
 
 import { TranslateModule } from '@ngx-translate/core';
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -206,6 +207,8 @@ import { PaginationComponent } from './content/general/pagination/pagination.com
 		MatTabsModule,
 		MatTooltipModule,
 		MatDialogModule,
+
+		SignaturePadModule,
 
 		// ng-bootstrap modules
 		NgbDropdownModule,

@@ -291,7 +291,12 @@
           <div class="col-xl-2 form-row-flex" >
 						<label>{{'COMMON.REMARQUE.LABEL' | translate}} </label>
 						<input class="form-control no_border" type="text" name="signature_comment" formControlName="commentaires" placeholder="Saisir ici" />
-					</div>
+          </div>
+
+          <div class="col-xl-2 form-row-flex" >
+            <signature-pad [options]="signaturePadOptions"  (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>
+          </div>
+          
         </div>
 
       </div>

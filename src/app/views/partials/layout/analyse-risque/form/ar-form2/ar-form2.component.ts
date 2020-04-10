@@ -1,9 +1,10 @@
-import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormArray } from '@angular/forms';
 import { CatRisqueService, EpiTypesService } from '@app/core/services';
 import { CatRisque } from '@app/core/models';
 import { EpiType } from '@app/core/models/epiType.model';
 import { User, AuthService } from '@app/core/auth';
+import { SignaturePad } from 'angular2-signaturepad/signature-pad';
 
 
 @Component({
@@ -13,6 +14,29 @@ import { User, AuthService } from '@app/core/auth';
 })
 export class ArForm2Component implements OnInit {
 
+  @ViewChild(SignaturePad,null) signaturePad: SignaturePad;
+  public signaturePadOptions: Object = { // passed through to szimek/signature_pad constructor
+    'minWidth': 5,
+    'canvasWidth': 250,
+    'canvasHeight': 100
+  };
+
+  ngAfterViewInit() {
+    // this.signaturePad is now available
+    this.signaturePad.set('minWidth', 5); // set szimek/signature_pad options at runtime
+    this.signaturePad.clear(); // invoke functions from szimek/signature_pad API
+  }
+ 
+  drawComplete() {
+    // will be notified of szimek/signature_pad's onEnd event
+    console.log(this.signaturePad.toDataURL());
+  }
+ 
+  drawStart() {
+    // will be notified of szimek/signature_pad's onBegin event
+    console.log('begin drawing');
+  }
+  
   displayedColumns: string[] = ['risks', 'actions', 'comments'];
   public risksList : Array<CatRisque>;
   public epiList : Array<EpiType>;
