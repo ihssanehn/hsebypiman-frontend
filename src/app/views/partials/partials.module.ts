@@ -82,6 +82,7 @@ import { WidgetModule } from './content/widgets/widget.module';
 import { InlineSVGModule } from 'ng-inline-svg';
 import { CartComponent } from './layout/topbar/cart/cart.component';
 import { PaginationComponent } from './content/general/pagination/pagination.component';
+import { NgxMaskModule} from 'ngx-mask';
 
 @NgModule({
 	declarations: [
@@ -208,6 +209,7 @@ import { PaginationComponent } from './content/general/pagination/pagination.com
 		NgbDropdownModule,
 		NgbTabsetModule,
 		NgbTooltipModule,
+		NgxMaskModule,
 	]
 })
 export class PartialsModule {

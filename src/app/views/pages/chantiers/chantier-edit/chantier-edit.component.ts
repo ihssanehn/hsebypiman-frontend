@@ -128,7 +128,7 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 
 			let form = {...this.chantierForm.value};
 			form.date_demarrage = form.date_demarrage ? moment(form.date_demarrage).format('YYYY-MM-DD') : null
-      form.id = this.chantier.id;
+			form.id = this.chantier.id;
 			this.chantierService.update(form)
 				.toPromise()
 				.then((chantier) => {
@@ -141,7 +141,7 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 						showConfirmButton: false,
 						timer: 1500
 					}).then(() => {
-            this.location.back();
+            			this.location.back();
 					});
 				})
 				.catch(err => {

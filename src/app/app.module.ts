@@ -5,6 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GestureConfig, MatProgressSpinnerModule } from '@angular/material';
+import { NgxMaskModule} from 'ngx-mask';
 
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
@@ -108,7 +109,10 @@ export function hljsLanguages(): HighlightLanguage[] {
 		TranslateModule.forRoot(),
 		MatProgressSpinnerModule,
 		InlineSVGModule.forRoot(),
-		ThemeModule
+		ThemeModule,
+		NgxMaskModule.forRoot({
+			decimalMarker: '.',
+		}),
 	],
 	exports: [],
 	providers: [

@@ -2,7 +2,7 @@
 </div> -->
 <form [formGroup]="chantierForm" *ngIf="loaded; else loading" class="tf-form tf-form--group-seperator-dashed">
 	<tf-chantier-form [chantierForm]="chantierForm" [edit]="true"></tf-chantier-form>
-  <button mat-raised-button color="success" class="float-right ml-4" (click)="onSubmit(false)">
+  <button mat-raised-button color="success" class="float-right ml-4" [disabled]="chantierForm.invalid" (click)="chantierForm.valid && onSubmit(false)">
 		{{'ACTION.SAVE' | translate}}
 	</button>
   <button mat-raised-button color="info" class="float-right ml-4" type="button" (click)="cancel()">

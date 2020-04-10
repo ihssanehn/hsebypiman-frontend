@@ -1,7 +1,8 @@
 import { NativeDateAdapter } from '@angular/material';
-
+import {Injectable} from '@angular/core';
 
 /** Adapts the native JS Date for use with cdk-based components that work with dates. */
+@Injectable()
 export class CustomDateAdapter extends NativeDateAdapter {
 
   parse(value: any): Date | null {

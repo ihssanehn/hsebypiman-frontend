@@ -54,6 +54,7 @@
         "ngx-clipboard": "^12.2.0",
         "ngx-daterangepicker-material": "2.1.9",
         "ngx-highlightjs": "^3.0.3",
+        "ngx-mask": "^8.*",
         "ngx-perfect-scrollbar": "^8.0.0",
         "ngx-permissions": "^7.0.3",
         "ngx-take-until-destroy": "^5.4.0",
