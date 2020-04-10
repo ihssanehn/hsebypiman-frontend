@@ -27,6 +27,7 @@ export { FullNamePipe, InitialesPipe } from './pipes/user-name.pipe';
 export { GetObjectPipe } from './pipes/get-object.pipe';
 export { JoinPipe } from './pipes/join.pipe';
 export { SafePipe } from './pipes/safe.pipe';
+export { TruncatePipe } from './pipes/truncate.pipe';
 export { TimeElapsedPipe } from './pipes/time-elapsed.pipe';
 export { DateTimeMessagePipe, DateMessagePipe } from './pipes/date-time-message.pipe';
 

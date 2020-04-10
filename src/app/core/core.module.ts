@@ -15,6 +15,7 @@ import {
 	MenuDirective,
 	OffcanvasDirective,
 	SafePipe,
+	TruncatePipe,
 	ScrollTopDirective,
 	SparklineChartDirective,
 	StickyDirective,
@@ -48,6 +49,7 @@ import {
 		JoinPipe,
 		GetObjectPipe,
 		SafePipe,
+		TruncatePipe,
 		FirstLetterPipe,
 		InitialesPipe,
 		FullNamePipe
@@ -71,6 +73,7 @@ import {
 		JoinPipe,
 		GetObjectPipe,
 		SafePipe,
+		TruncatePipe,
 		FirstLetterPipe,
 		FullNamePipe,
 		InitialesPipe,
