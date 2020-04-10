@@ -293,8 +293,25 @@
 						<input class="form-control no_border" type="text" name="signature_comment" formControlName="commentaires" placeholder="Saisir ici" />
           </div>
 
-          <div class="col-xl-2 form-row-flex" >
-            <signature-pad [options]="signaturePadOptions"  (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>
+          <div class="col-xl-2" >
+            <p class="font-weight-bold text-right" style="color:#55cec7">+ Ajouter une signataire</p>
+
+            <div class="form-row-flex">
+              <signature-pad [options]="signaturePadOptions"  (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>
+          
+              <div ngbDropdown placement="bottom-right" class="d-inline-block">
+                <div ngbDropdownToggle><i class="flaticon-more"></i></div>
+                <div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround ">
+                  <!-- *ngxPermissionsOnly="['ADMIN']" -->
+                    <button ngbDropdownItem class="tf-margin-left-3" (click)="editSignature()"
+                      ><i class="la la-edit text-primary"></i>
+                    </button>
+                    <button ngbDropdownItem class="tf-margin-left-3" (click)="deleteSignature()"
+                    ><i class="la la-edit text-primary"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
           
         </div>

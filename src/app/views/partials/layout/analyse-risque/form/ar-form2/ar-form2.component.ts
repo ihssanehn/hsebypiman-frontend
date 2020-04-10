@@ -14,36 +14,19 @@ import { SignaturePad } from 'angular2-signaturepad/signature-pad';
 })
 export class ArForm2Component implements OnInit {
 
+  @Input() arForm: FormGroup;
   @ViewChild(SignaturePad,null) signaturePad: SignaturePad;
-  public signaturePadOptions: Object = { // passed through to szimek/signature_pad constructor
+  public signaturePadOptions: Object = { 
     'minWidth': 5,
     'canvasWidth': 250,
     'canvasHeight': 100
   };
-
-  ngAfterViewInit() {
-    // this.signaturePad is now available
-    this.signaturePad.set('minWidth', 5); // set szimek/signature_pad options at runtime
-    this.signaturePad.clear(); // invoke functions from szimek/signature_pad API
-  }
- 
-  drawComplete() {
-    // will be notified of szimek/signature_pad's onEnd event
-    console.log(this.signaturePad.toDataURL());
-  }
- 
-  drawStart() {
-    // will be notified of szimek/signature_pad's onBegin event
-    console.log('begin drawing');
-  }
   
   displayedColumns: string[] = ['risks', 'actions', 'comments'];
   public risksList : Array<CatRisque>;
   public epiList : Array<EpiType>;
   public user : User;
   public curDate : Date;
-
-  @Input() arForm: FormGroup;
 
   constructor(
     private catRisqueService: CatRisqueService,
@@ -168,6 +151,34 @@ export class ArForm2Component implements OnInit {
     //     i++;
     //   });
     // }
+  }
+
+  editSignature(){
+
+  }
+
+  deleteSignature(){
+    this.signaturePad.clear();
+  }
+
+  ngAfterViewInit() {
+    // this.signaturePad is now available
+    this.signaturePad.set('minWidth', 5); // set szimek/signature_pad options at runtime
+    this.signaturePad.clear(); // invoke functions from szimek/signature_pad API
+  }
+ 
+  drawComplete() {
+    // will be notified of szimek/signature_pad's onEnd event
+    console.log(this.signaturePad.toDataURL());
+
+    (this.arForm.get('signature') as FormGroup)
+      .controls['signature']
+      .setValue(this.signaturePad.toDataURL());
+  }
+ 
+  drawStart() {
+    // will be notified of szimek/signature_pad's onBegin event
+    console.log('begin drawing');
   }
 
   // private addCheckboxes() {
