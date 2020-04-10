@@ -28,7 +28,7 @@ export class ArsListComponent implements OnInit {
 		status_id: "",
 		params:[]
 	};
-	displayedArColumns=['number','name',,'charge_affaire','status','sign_count','created_at','action'];
+	displayedArColumns=['number','name','charge_affaire','status','sign_count','created_at','action'];
 
   	constructor(
 		private router: Router,
