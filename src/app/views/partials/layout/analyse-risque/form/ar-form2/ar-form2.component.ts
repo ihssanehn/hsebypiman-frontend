@@ -1,12 +1,9 @@
 import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormArray } from '@angular/forms';
-import { CatRisqueService } from '@app/core/services';
+import { CatRisqueService, EpiTypesService } from '@app/core/services';
 import { CatRisque } from '@app/core/models';
-
-
-const ELEMENT_DATA: any[] = [
-  {risks: 1, actions: 'Hydrogen', comments: 1.0079}
-];
+import { EpiType } from '@app/core/models/epiType.model';
+import { User, AuthService } from '@app/core/auth';
 
 
 @Component({
@@ -18,29 +15,88 @@ export class ArForm2Component implements OnInit {
 
   displayedColumns: string[] = ['risks', 'actions', 'comments'];
   public risksList : Array<CatRisque>;
+  public epiList : Array<EpiType>;
+  public user : User;
+  public curDate : Date;
 
   @Input() arForm: FormGroup;
 
   constructor(
     private catRisqueService: CatRisqueService,
+    private epiTypesService: EpiTypesService,
+    private authService: AuthService,
     private cdr: ChangeDetectorRef,
   ) { 
-    
+    this.getCurrentUser();
+    this.getCatRisques();
+    this.getEpiTypes();
   }
 
   ngOnInit() {
-    this.getCatRisques();
+  }
+
+  initArForm(){
+    (this.arForm.get('signature') as FormGroup)
+      .controls['personnel_id']
+      .setValue(this.user.id);
+
+    (this.arForm.get('signature') as FormGroup)
+      .controls['personnel_fullname']
+      .setValue(this.user.fullname);
+
+    this.curDate = new Date();
+    (this.arForm.get('signature') as FormGroup)
+      .controls['date']
+      .setValue(this.curDate);
   }
 
   async getCatRisques(){
     this.risksList = await this.catRisqueService.getAll().toPromise();
-    //this.addCheckboxes();
+    this.cdr.detectChanges();
+    this.cdr.markForCheck();
+  }
+
+  async getEpiTypes(){
+    this.epiList = await this.epiTypesService.getAll().toPromise();
+    this.initArForm();
+    this.cdr.detectChanges();
+    this.cdr.markForCheck();
+  }
+
+  async getCurrentUser(){
+    this.user = await this.authService.getUserByToken().toPromise();
+    console.log(this.user);
     this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
 
   onRiskCheckChange(event) {
     const formArray: FormArray = this.arForm.get('risques') as FormArray;
+  
+    /* Selected */
+    if(event.checked){
+      // Add a new control in the arrayForm
+      formArray.push(new FormControl(event.source.value));
+    }
+    /* unselected */
+    else{
+      // find the unselected element
+      let i: number = 0;
+  
+      formArray.controls.forEach((ctrl: FormControl) => {
+        if(ctrl.value == event.source.value) {
+          // Remove the unselected element from the arrayForm
+          formArray.removeAt(i);
+          return;
+        }
+  
+        i++;
+      });
+    }
+  }
+
+  onEpiCheckChange(event) {
+    const formArray: FormArray = this.arForm.get('epis') as FormArray;
   
     /* Selected */
     if(event.checked){

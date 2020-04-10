@@ -6,3 +6,11 @@ table {
     display: flex;
     flex-direction: row;
 }
+
+.no_border{
+    border: none;
+}
+
+.form-row-flex label{
+    line-height: 3;
+}

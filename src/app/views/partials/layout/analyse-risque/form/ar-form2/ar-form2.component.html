@@ -56,51 +56,53 @@
 				<div class="tf-heading tf-heading--sm">
 					{{'ARS.FORM.RISKBLOCK.MSG' | translate}}
 				</div>
-                <div class="row form-row"></div>
-                
-                    <table mat-table [dataSource]="risksList" >
-                      
-                        <ng-container matColumnDef="risks">
-                          <th mat-header-cell *matHeaderCellDef> {{'ARS.FORM.RISKS' | translate}} </th>
-                          <td mat-cell *matCellDef="let element"> {{element.libelle}} </td>
-                        </ng-container>
-                      
-                        <ng-container matColumnDef="actions">
-                          <th mat-header-cell *matHeaderCellDef> {{'ARS.FORM.ACTION' | translate}} </th>
-                          <td mat-cell *matCellDef="let element"> 
-                            <div *ngFor="let risk of element.risques" >
-                                <mat-checkbox [value]="risk.id" (change)="onRiskCheckChange($event)">{{risk.libelle}}</mat-checkbox>
-                            </div>
-                          </td>
-                        </ng-container>
-                      
-                        <!-- Weight Column -->
-                        <ng-container matColumnDef="comments">
-                          <th mat-header-cell *matHeaderCellDef> {{'ARS.FORM.COMMENT' | translate}} </th>
-                          <td mat-cell *matCellDef="let element">  
-                            <div class="example-full-width">
-                                <mat-label>Leave a comment</mat-label>
-                                <textarea matInput (change)="onCommentCheckChange(element.id,$event)" placeholder="Saisir ici"></textarea>
-                              </div>
-                          </td>
-                        </ng-container>
-                      
-                      
-                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                    </table>
+            <div class="row form-row"></div>
+            
+                <table mat-table [dataSource]="risksList" >
+                  
+                    <ng-container matColumnDef="risks">
+                      <th mat-header-cell *matHeaderCellDef> {{'ARS.FORM.RISKS' | translate}} </th>
+                      <td mat-cell *matCellDef="let element"> {{element.libelle}} </td>
+                    </ng-container>
+                  
+                    <ng-container matColumnDef="actions">
+                      <th mat-header-cell *matHeaderCellDef> {{'ARS.FORM.ACTION' | translate}} </th>
+                      <td mat-cell *matCellDef="let element"> 
+                        <div class="m-2" *ngFor="let risk of element.risques" >
+                            <mat-checkbox [value]="risk.id" (change)="onRiskCheckChange($event)">{{risk.libelle}}</mat-checkbox>
+                        </div>
+                      </td>
+                    </ng-container>
+                  
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="comments">
+                      <th mat-header-cell *matHeaderCellDef> {{'ARS.FORM.COMMENT' | translate}} </th>
+                      <td mat-cell *matCellDef="let element">  
+                        <div class="example-full-width">
+                            <textarea class="form-control no_border" (change)="onCommentCheckChange(element.id,$event)" placeholder="Saisir ici"></textarea>
+                          </div>
+                      </td>
+                    </ng-container>
+                  
+                  
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
 
 			</div>
 		</div>
   </div>
   
+  <div class="tf-heading tf-heading--md">| 3 {{'ARS.FORM.EQBLOCK.TITLE' | translate}}</div>
   <div class="row">
 		<div class="col-md-12">
-			<div class="tf-card-form">
-				<div class="tf-heading tf-heading--sm">
-					3 {{'ARS.FORM.EQBLOCK.TITLE' | translate}}
-				</div>
-				<div class="form-row">
+			<div class="tf-card-form">        
+        <div class="form-row">
+          <div class="col-md-2" *ngFor="let epi of epiList" >
+            <mat-checkbox [value]="epi.id" (change)="onEpiCheckChange($event)">{{epi.libelle}}</mat-checkbox>
+          </div>
+        </div>
+				<!-- <div class="form-row">
 					<div class="col-xl-2" >
             <mat-checkbox>Nacelle élévatrice</mat-checkbox>
           </div>
@@ -136,7 +138,7 @@
           <div class="col-xl-2" >
             <mat-checkbox>Scie sabre</mat-checkbox>
           </div>
-				</div>
+				</div> -->
 			</div>
 		</div>
   </div>
@@ -270,26 +272,26 @@
         </div>
 
         <div class="row form-row" formGroupName="signature">
-          <mat-form-field class="col-xl-2" >
-						<mat-label>{{'COMMON.DATE.LABEL' | translate}}</mat-label>
-						<input class="form-control" matInput type="text" name="signature_date" formControlName='date' />
-          </mat-form-field>
-          <mat-form-field class="col-xl-2" >
-						<mat-label>{{'COMMON.NOM_PRENOM.LABEL' | translate}}</mat-label>
-						<input class="form-control" matInput type="text" name="signature_personnel" formControlName="personnel_id" placeholder="Saisir ici" />
-          </mat-form-field>
-          <mat-form-field class="col-xl-2" >
-						<mat-label>{{'COMMON.SOCIETE.LABEL' | translate}}</mat-label>
-						<input class="form-control" matInput type="text" name="signature_societe" formControlName="societe" placeholder="Saisir ici" />
-          </mat-form-field>
-          <mat-form-field class="col-xl-2" >
-						<mat-label>{{'COMMON.SIGNATURE.LABEL' | translate}}</mat-label>
-						<input class="form-control" matInput type="text" name="signature" formControlName="signature" placeholder="Saisir ici" />
-          </mat-form-field>
-          <mat-form-field class="col-xl-2" >
-						<mat-label>{{'COMMON.REMARQUE.LABEL' | translate}}</mat-label>
-						<input class="form-control" matInput type="text" name="signature_comment" formControlName="commentaires" placeholder="Saisir ici" />
-					</mat-form-field>
+          <div class="col-xl-2 form-row-flex" >
+            <label>{{'COMMON.DATE.LABEL' | translate}} </label>
+						<input class="form-control no_border" type="text" name="signature_date" [value]="curDate| date:'dd/MM/yyyy'" />
+          </div>
+          <div class="col-xl-2 form-row-flex" >
+            <label class="col-md-5">{{'COMMON.NOM_PRENOM.LABEL' | translate}} </label>
+						<input class="form-control no_border" type="text" name="signature_personnel" formControlName="personnel_fullname" placeholder="Saisir ici" />
+          </div>
+          <div class="col-xl-2 form-row-flex" >
+						<label>{{'COMMON.SOCIETE.LABEL' | translate}} </label>
+						<input class="form-control no_border" type="text" name="signature_societe" formControlName="societe" placeholder="Saisir ici" />
+          </div>
+          <div class="col-xl-2 form-row-flex" >
+						<label>{{'COMMON.SIGNATURE.LABEL' | translate}} </label>
+						<input class="form-control no_border" type="text" name="signature" formControlName="signature" placeholder="Saisir ici" />
+          </div>
+          <div class="col-xl-2 form-row-flex" >
+						<label>{{'COMMON.REMARQUE.LABEL' | translate}} </label>
+						<input class="form-control no_border" type="text" name="signature_comment" formControlName="commentaires" placeholder="Saisir ici" />
+					</div>
         </div>
 
       </div>

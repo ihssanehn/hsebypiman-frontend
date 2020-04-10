@@ -46,7 +46,7 @@ import {DataTableService,TfDialogService,LayoutConfigService,VersionCheckService
 // Auth
 import { AuthModule } from './views/pages/auth/auth.module';
 import { AuthService } from './core/auth';
-import { ChantierService, TypeService, StatusService, CategorieService, ArService, CatRisqueService } from './core/services';
+import { ChantierService, TypeService, StatusService, CategorieService, ArService, CatRisqueService, EpiTypesService } from './core/services';
 // CRUD
 import { HttpUtilsService, LayoutUtilsService, TypesUtilsService } from './core/_base/crud';
 // Config
@@ -123,6 +123,7 @@ export function hljsLanguages(): HighlightLanguage[] {
 		StatusService, 
 		CategorieService,
 		CatRisqueService,
+		EpiTypesService,
 		LayoutConfigService,
 		LayoutRefService,
 		MenuConfigService,

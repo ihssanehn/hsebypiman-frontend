@@ -80,7 +80,7 @@ export class ArAddComponent implements OnInit {
   createForm() {
 		this.arForm = this.arFB.group({
       date: [null, Validators.compose([])],
-      a_prevoir_compagnons:['', Validators.compose([])],
+      a_prevoir_compagnons:['0', Validators.compose([])],
       date_accueil_secu:[null, Validators.compose([])],
       realisateur:['', Validators.compose([])],
       tel_realisateur:['', Validators.compose([])],
@@ -105,13 +105,13 @@ export class ArAddComponent implements OnInit {
       zone_surv_balisee:[false, Validators.compose([])],
       prevoir_balisage_materiel:[false, Validators.compose([])],
 
-      a_signer_registre_travaux:['', Validators.compose([])],
+      a_signer_registre_travaux:['0', Validators.compose([])],
       nom_charge_registre:[null, Validators.compose([])],
       adresse_charge_registre:['', Validators.compose([])],
       ville_charge_registre:[null, Validators.compose([])],
       codepostal_charge_registre:['', Validators.compose([])],
       tel_charge_registre:['', Validators.compose([])],
-      a_prevoir_balisage:['', Validators.compose([])],
+      a_prevoir_balisage:['0', Validators.compose([])],
       nom_ca_cvti:['', Validators.compose([])],
       tel_ca_cvti:['', Validators.compose([])],
       assistant_ca:['', Validators.compose([])],
@@ -121,12 +121,14 @@ export class ArAddComponent implements OnInit {
       signature: this.arFB.group({
         date:['', Validators.compose([])],
         personnel_id:['', Validators.compose([])],
+        personnel_fullname:['', Validators.compose([])],
         societe:['', Validators.compose([])],
         signature:['', Validators.compose([])],
         commentaires:['', Validators.compose([])],
       }),
 
       risques:new FormArray([]),
+      epis:new FormArray([]),
 		});
 		this.loaded = true;
 		this.cdr.detectChanges();
@@ -153,10 +155,6 @@ export class ArAddComponent implements OnInit {
 
   async onSubmit(event){
 
-  //   const selectedOrderIds = this.arForm.value.risques;
-  // console.log(selectedOrderIds);
-  // console.log(this.arForm.value.prevoir_balisage_materiel);
-
     try {
       let result;
 
@@ -164,6 +162,7 @@ export class ArAddComponent implements OnInit {
       form.date = this.setDateFormat(form.date);
       form.date_accueil_secu = this.setDateFormat(form.date_accueil_secu);
       form.date_validite = this.setDateFormat(form.date_validite);
+      form.signature.date = this.setDateFormat(form.signature.date);
       form.chantier_id = this.chantier.id;
   
       if(
