@@ -16,6 +16,9 @@
         }
     }
 }
+.mat-cell.pointer{
+    cursor: pointer;
+}
 
 .mat-header-row {
     width: 100%;
@@ -23,4 +26,7 @@
 
 .mat-row {
     width: 100%;
+    &:hover{
+        background: #EEE !important ;
+    }
 }
