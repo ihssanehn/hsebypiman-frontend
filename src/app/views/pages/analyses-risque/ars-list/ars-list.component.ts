@@ -15,8 +15,9 @@ export class ArsListComponent implements OnInit {
   public arsList : Paginate<Ar>;
   pagination: any = {
 		page: 1,
+		last_page: 1,
 		total: 10,
-		pageSize: 10
+		pageSize: 10,
 	};
 	filter: any = {
 		per_page: this.pagination.pageSize,
@@ -27,7 +28,7 @@ export class ArsListComponent implements OnInit {
 		status_id: "",
 		params:[]
 	};
-	displayedArColumns=['number','name','status','charge_affaire','montant','ars_count','created_at','action'];
+	displayedArColumns=['number','name',,'charge_affaire','status','sign_count','created_at','action'];
 
   	constructor(
 		private router: Router,
@@ -45,7 +46,7 @@ export class ArsListComponent implements OnInit {
     	try {
 			this.arsList = await this.arService.search(this.filter).toPromise();
 			console.log(this.arsList);
-			this.pagination = { ...this.pagination, total: this.arsList.total, page: this.arsList.current_page };
+			this.pagination = { ...this.pagination, total: this.arsList.total, page: this.arsList.current_page, last_page: this.arsList.last_page };
 			this.filter.page = this.pagination.page;
 			this.filter.per_page = this.pagination.pageSize;
 			this.cdr.detectChanges();
@@ -56,7 +57,7 @@ export class ArsListComponent implements OnInit {
   	}
 
   	changePagination() {
-		this.pagination = { ...this.pagination, pageSize: this.pagination.pageSize, total: this.pagination.total };
+		this.pagination = { ...this.pagination, pageSize: this.pagination.pageSize, total: this.pagination.total, last_page: this.pagination.last_page };
 		this.filter.page = this.pagination.page;
 		this.filter.per_page = this.pagination.pageSize;
 		this.getArs();

@@ -54,8 +54,8 @@ export class ChantiersListComponent implements OnInit {
 			this.pagination = {
 				...this.pagination,
 				total: this.chantiersList.total,
-        page: this.chantiersList.current_page,
-        last_page: this.chantiersList.last_page
+				page: this.chantiersList.current_page,
+				last_page: this.chantiersList.last_page
 			};
 			this.filter.page = this.pagination.page;
 			this.filter.per_page = this.pagination.pageSize;
@@ -70,7 +70,8 @@ export class ChantiersListComponent implements OnInit {
 		this.pagination = {
 			...this.pagination,
 			pageSize: this.pagination.pageSize,
-			total: this.pagination.total
+			total: this.pagination.total,
+			last_page: this.pagination.last_page
 		};
 		this.filter.page = this.pagination.page;
 		this.filter.per_page = this.pagination.pageSize;
