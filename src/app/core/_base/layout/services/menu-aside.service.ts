@@ -11,6 +11,7 @@ import { MenuConfigService } from './menu-config.service';
 export class MenuAsideService {
 	// Public properties
 	menuList$: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+	menuBtnAdd: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
 
 	/**
 	 * Service constructor
@@ -26,7 +27,16 @@ export class MenuAsideService {
 	 */
 	loadMenu() {
 		// get menu list
-		const menuItems: any[] = objectPath.get(this.menuConfigService.getMenus(), 'aside.items');
+		const menuItems: any[] = objectPath.get(this.menuConfigService.getMenus(), 'aside.items.items');
+		const menuBtnAddItem: any[] = objectPath.get(this.menuConfigService.getMenus(), 'aside.items.btnAdd');
 		this.menuList$.next(menuItems);
+		this.menuBtnAdd.next(menuBtnAddItem);
+	}
+
+	loadMenuAside(path: string) {
+		const menuItems: any[] = objectPath.get(this.menuConfigService.getMenus(), path+'.items');
+		const menuBtnAddItem: any[] = objectPath.get(this.menuConfigService.getMenus(), path+'.btnAdd');
+		this.menuList$.next(menuItems);
+		this.menuBtnAdd.next(menuBtnAddItem);
 	}
 }

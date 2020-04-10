@@ -26,6 +26,10 @@ export const locale = {
 			SALARIES: 'Salariés',
 			SOUSTRAITANTS: 'Sous-traiants',
 			ADMIN: 'Admin',
+			BTN:{
+				NEWAR: 'New risk analysis',
+				NEWCHANTIER: 'New construction site'
+			}
 		},
 		AUTH: {
 			GENERAL: {
@@ -112,7 +116,11 @@ export const locale = {
 			COURANT:'Courant mis à disposition',
 		},														
 		COMMON:{
-			CITY:'Ville',
+			CITY:{
+				LABEL:'Ville',
+				PLACEHOLDER:'',
+				TITLE:'Ville'
+			},
 			POSTCODE:'Code Postal',
 			COUNTRY:'Pays',
 		}

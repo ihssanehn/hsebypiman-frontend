@@ -88,7 +88,7 @@ export class ArEditComponent implements OnInit, OnDestroy {
 	 */
 	refreshAr(id) {
 		let url = this.router.url;
-		url = `/ars/edit/${id}`;
+		url = `/analyses-risque/edit/${id}`;
 		this.router.navigateByUrl(url, { relativeTo: this.activatedRoute });
   }
   

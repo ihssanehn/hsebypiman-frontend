@@ -6,8 +6,8 @@
 	<tf-userside-profile></tf-userside-profile>
 	<!--end: User bar -->
 	
-	<button class="btn btn-brand tf-aside-btn" (click)="goToAddChantier()">
-		<span>Nouveau</span> chantier
+	<button class="btn btn-brand tf-aside-btn" (click)="goToAdd()">
+		{{menuAsideService.menuBtnAdd.value['title']}}
 	</button>
 	<!-- BEGIN: Aside Menu -->
 	<div class="tf-aside-menu-wrapper tf-grid__item tf-grid__item--fluid" id="tf_aside_menu_wrapper">

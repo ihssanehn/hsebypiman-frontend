@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SignaturePadModule } from 'angular2-signaturepad';
 
 import { TranslateModule } from '@ngx-translate/core';
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -67,6 +68,7 @@ import {
 	UserProfileComponent,
 	UserSideProfileComponent,
 	ArForm1Component,
+	ArForm2Component,
 	ChantierFormComponent,
 	ChantierFiltersComponent,
 	CommingSoonComponent,
@@ -125,6 +127,7 @@ import { NgxMaskModule} from 'ngx-mask';
 		ErrorComponent,
 		PaginationComponent,
 		CommingSoonComponent,
+		ArForm2Component,
 	],
 	exports: [
 		WidgetModule,
@@ -163,6 +166,7 @@ import { NgxMaskModule} from 'ngx-mask';
 		UserProfile3Component,
 		UserSideProfileComponent,
 		ArForm1Component,
+		ArForm2Component,
 		ChantierFormComponent,
 		ChantierFiltersComponent,
 		CartComponent,
@@ -204,6 +208,8 @@ import { NgxMaskModule} from 'ngx-mask';
 		MatTabsModule,
 		MatTooltipModule,
 		MatDialogModule,
+
+		SignaturePadModule,
 
 		// ng-bootstrap modules
 		NgbDropdownModule,
