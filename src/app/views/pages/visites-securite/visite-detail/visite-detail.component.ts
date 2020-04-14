@@ -45,19 +45,15 @@ export class VisiteDetailComponent implements OnInit, OnDestroy {
 		private permissionsService : NgxPermissionsService,
 		iconRegistry: MatIconRegistry, 
 		sanitizer: DomSanitizer
-	) {
-		iconRegistry.addSvgIcon('status-encours',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/encours.svg'));
-		iconRegistry.addSvgIcon('status-termine',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/termine.svg'));
-		
-	}
+	) {}
 
   	ngOnInit() {
 	  	const routeSubscription = this.activatedRoute.params.subscribe(
 		  	async params => {
 			  	const id = params.id;
 			  	if (id) {
-					// this.getVisite(id);
-					console.log(id);
+					this.getVisite(id);
+					// console.log(id);
 
 				} else {
 					this.router.navigateByUrl('/visites/list');

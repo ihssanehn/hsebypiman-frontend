@@ -364,10 +364,10 @@ export const locale = {
 			},
 		},
 		VISITES:{
-			NUMBER:{
+			CODE:{
 				LABEL:'Numéro',
 				PLACEHOLDER:'',
-				TITLE:'Numéro du chantier',
+				TITLE:'Numéro',
 				SHORTTITLE:'Numéro'
 			},
 			CLIENT:{
@@ -376,17 +376,11 @@ export const locale = {
 				TITLE:'Client',
 				SHORTTITLE:'Client'
 			},
-			NAME:{
+			CHANTIER:{
 				LABEL:'Nom du chantier',
 				PLACEHOLDER:'',
 				TITLE:'Nom du chantier',
 				SHORTTITLE: 'Nom'
-			},
-			ADRESS:{
-				LABEL:'Adresse du chantier',
-				PLACEHOLDER:'',
-				TITLE:'Adresse du chantier',
-				SHORTTITLE: 'Adresse'
 			},
 			TYPE:{
 				LABEL:'Type',
@@ -397,82 +391,29 @@ export const locale = {
 			STATUS:{
 				LABEL:'Statut',
 				PLACEHOLDER:'',
-				TITLE:'Statut actuel du chantier',
+				TITLE:'Statut de la visite',
 				SHORTTITLE:'Statut'
 			},
-			CONTACT:{
-				LABEL:'Contact',
+			REDACTEUR:{
+				LABEL:'Rédacteur',
 				PLACEHOLDER:'',
-				TITLE:'Contact',
-				SHORTTITLE:'Contact',
+				TITLE:'Rédacteur',
+				SHORTTITLE:'Rédacteur',
 			},
-			DATE_DEMARRAGE:{
-				LABEL:'Date de démarage chantier',
+			VISITED:{
+				LABEL:'Personne visité',
 				PLACEHOLDER:'',
-				TITLE:'Date de démarage chantier',
-				SHORTTITLE:'Date de démarage',
+				TITLE:'Personne visité',
+				SHORTTITLE:'Personne visité',
 			},
-			AR: 'Analyse de risque',
-			CHIEF:{
-				LABEL:'Chargé d\'affaire',
+			DATE_VISITE:{
+				LABEL:'Date de la visite',
 				PLACEHOLDER:'',
-				TITLE:'Chargé d\'affaire',
-				SHORTTITLE:'Nom',
-			},
-			BUDGET:{
-				LABEL:'Budget',
-				PLACEHOLDER:'',
-				TITLE:'Budget',
-				SHORTTITLE:'Montant',
-			},
-			ARCOUNT:{
-				LABEL:'Quantité A.R',
-				PLACEHOLDER:'',
-				TITLE:'Quantité A.R',
-				SHORTTITLE:'Nombre d\'analyses',
-			},
-			LASTAR:{
-				LABEL:'Dernière A.R',
-				PLACEHOLDER:'',
-				TITLE:'Dernière A.R',
-				SHORTTITLE:'Dernière A.R',
-			},
-			NEXTAR:{
-				LABEL:'Prochaine A.R',
-				PLACEHOLDER:'',
-				TITLE:'Prochaine analyse de prévue',
-				SHORTTITLE:'Prochaine analyse',
-			},
-			ARS:{
-				PLACEHOLDER:'',
-				TITLE:'Analyses passées',
-				SHORTTITLE:'Prochaine analyse',
-			},
-			VSCOUNT:{
-				LABEL:'Quantité V.S',
-				PLACEHOLDER:'',
-				TITLE:'Quantité V.S',
-				SHORTTITLE:'Nombre de visites',
-			},
-			LASTVS:{
-				LABEL:'Dernière V.S',
-				PLACEHOLDER:'',
-				TITLE:'Dernière V.S',
-				SHORTTITLE:'Dernière V.S',
-			},
-			NEXTVS:{
-				LABEL:'Prochaine V.S',
-				PLACEHOLDER:'',
-				TITLE:'Prochaine V.S',
-				SHORTTITLE:'Prochaine visite de prévue',
-			},
-			VSS:{
-				PLACEHOLDER:'',
-				TITLE:'Visites passées',
-				SHORTTITLE:'Visites passées',
+				TITLE:'Date de la visite',
+				SHORTTITLE:'Date de visite',
 			},
 			FORM:{
-				CREATE:'Créer un nouveau chantier'
+				CREATE:'Créer une nouvelle visite'
 			}
 		},
 		COMMON:{

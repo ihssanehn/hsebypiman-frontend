@@ -5,8 +5,8 @@ import { CommonModule } from '@angular/common';
 import * as moment from 'moment';
 
 import { TranslateService } from '@ngx-translate/core';
-import { VisiteService, TypeService } from '@app/core/services';
-import { Visite, Type } from '@app/core/models';
+import { VisiteService, TypeService, ChantierService } from '@app/core/services';
+import { Visite, Type, Chantier } from '@app/core/models';
 import { NgxPermissionsService } from 'ngx-permissions';
 import { AuthService, User } from '@app/core/auth';
 import { MatSnackBar } from '@angular/material';
@@ -23,7 +23,8 @@ export class VisiteAddComponent implements OnInit {
   visiteForm: FormGroup;
 	// allRoles: Role[];
 	loaded = false;
-	editMode: boolean = false;
+  editMode: boolean = false;
+  chantier: Chantier;
   // Private properties
   errors;
   
@@ -33,6 +34,7 @@ export class VisiteAddComponent implements OnInit {
 		private visiteFB: FormBuilder,
 		// private notificationService: NzNotificationService,
 		private visiteService: VisiteService,
+		private chantierService: ChantierService,
 		private typeService: TypeService,
 		private authService: AuthService,
 		private cdr: ChangeDetectorRef,
@@ -48,71 +50,41 @@ export class VisiteAddComponent implements OnInit {
 
   createForm() {
 		this.visiteForm = this.visiteFB.group({
-      nom: ['', Validators.required],
-      type_id: [null, Validators.required],
-      adresse: ['', Validators.required],
-      ville: ['', Validators.required],
-      code_postal: ['', Validators.required],
-      pays: ['', Validators.required],
-      client: ['', Validators.required],
-      contact: ['', Validators.required],
-      montant: ['', Validators.required],
-      date_demarrage: ['', Validators.required],
-      charge_affaire_id: [null, Validators.required],
-      ar: this.visiteFB.group({
-        date: [null, Validators.compose([])],
-        a_prevoir_compagnons:[null, Validators.compose([])],
-        date_accueil_secu:[null, Validators.compose([])],
-        realisateur:[null, Validators.compose([])],
-        tel_realisateur:[null, Validators.compose([])],
-        date_validite:[null, Validators.compose([])],
-        num_secours:[null, Validators.compose([])],
-        contact_interne_secours:[null, Validators.compose([])],
-        tel_contact_interne_secours:[null, Validators.compose([])],
-        contact_client_chef_chtr:[null, Validators.compose([])],
-        tel_contact_client_chef_chtr:[null, Validators.compose([])],
-        contact_client_hse:[null, Validators.compose([])],
-        tel_contact_client_hse:[null, Validators.compose([])],
-        heure_ouverture:[null, Validators.compose([])],
-        heure_fermeture:[null, Validators.compose([])],
-        courant_dispo:[null, Validators.compose([])],
-      })
+      'chantier_id': ['', Validators.required],
+      'salarie_id': [''],
+      'sous_traitant_id': [''],
+      'societe_ee': [''],
+      'redacteur_id': ['', Validators.required],
+      'date_visite': ['', Validators.required],
+      'is_validated_redacteur': ['', Validators.required],
+      'is_validated_visite': ['', Validators.required],
+      'validated_redacteur_at': ['', Validators.required],
+      'validated_visite_at': ['', Validators.required],
+      'presence_non_conformite': ['', Validators.required],
+      'has_rectification_imm': ['', Validators.required],
+      'avertissement': ['', Validators.required],
+      'type_id': ['', Validators.required],
+      'questions': [],
 		});
 		this.loaded = true;
 		this.cdr.detectChanges();
   }
   
+  onChantierSelected(chantierId: Number) {
+    this.getChantier(chantierId);
+  }
+
+  async getChantier(chantierId){
+    this.chantier = await this.chantierService.get(chantierId).toPromise();
+  }
+
   async onSubmit(event){
     try {
       let result;
 
       let form = {...this.visiteForm.value};
-      form.date_demarrage = this.setDateFormat(form.date_demarrage)
-      form.ar.date = this.setDateFormat(form.ar.date);
-      form.ar.date_accueil_secu = this.setDateFormat(form.ar.date_accueil_secu);
-      form.ar.date_demarrage = this.setDateFormat(form.ar.date_demarrage);
-      form.ar.date_validite = this.setDateFormat(form.ar.date_validite);
+      
   
-      if(
-        !form.ar.date &&
-        !form.ar.a_prevoir_compagnons &&
-        !form.ar.date_accueil_secu &&
-        !form.ar.realisateur &&
-        !form.ar.tel_realisateur &&
-        !form.ar.date_validite &&
-        !form.ar.num_secours &&
-        !form.ar.contact_interne_secours &&
-        !form.ar.tel_contact_interne_secours &&
-        !form.ar.contact_client_chef_chtr &&
-        !form.ar.tel_contact_client_chef_chtr &&
-        !form.ar.contact_client_hse &&
-        !form.ar.tel_contact_client_hse &&
-        !form.ar.heure_ouverture &&
-        !form.ar.heure_fermeture && !form.ar.courant_dispo
-      ){
-        form.ar = null;
-      }
-
 			this.visiteService.create(form)
         .toPromise()
         .then((visite) => {

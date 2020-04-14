@@ -92,19 +92,20 @@ export class VisiteEditComponent implements OnInit, OnDestroy {
 
 	createForm() {
 		this.visiteForm = this.visiteFB.group({
-			nom: ['', Validators.required],
-			type_id: [null, Validators.required],
-			adresse: ['', Validators.required],
-			ville: ['', Validators.required],
-			code_postal: ['', Validators.required],
-			pays: ['', Validators.required],
-			client: ['', Validators.required],
-			contact: ['', Validators.required],
-			montant: ['', Validators.required],
-			date_demarrage: ['', Validators.required],
-			charge_affaire_id: [null, Validators.required],
-			status_id: [null, Validators.required],
-			numero: ['', Validators.required],
+			code:['', Validators.required],
+			// nom: ['', Validators.required],
+			// type_id: [null, Validators.required],
+			// adresse: ['', Validators.required],
+			// ville: ['', Validators.required],
+			// code_postal: ['', Validators.required],
+			// pays: ['', Validators.required],
+			// client: ['', Validators.required],
+			// contact: ['', Validators.required],
+			// montant: ['', Validators.required],
+			// date_demarrage: ['', Validators.required],
+			// charge_affaire_id: [null, Validators.required],
+			// status_id: [null, Validators.required],
+			// numero: ['', Validators.required],
 		});
 	}
 

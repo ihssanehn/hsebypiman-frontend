@@ -25,14 +25,14 @@ export class VisitesListComponent implements OnInit {
 	filter: any = {
 		per_page: this.pagination.pageSize,
 		page: this.pagination.page,
-		order_by: 'created_at',
+		order_by: 'visite_securites.date_visite',
 		order_way: 'asc',
 		keyword: "",
 		dateRange: [],
 		status_id: "",
 		params: []
 	};
-	displayedVisiteColumns = ['number', 'client', 'name_chantier', 'status', 'charge_affaire', 'montant', 'ars_count', 'latest_ar'];
+	displayedVisiteColumns = ['code','client','type', 'redacteur', 'visite', 'date_visite', 'status', 'action'];
 
 	constructor(
 		private router: Router,
@@ -46,7 +46,6 @@ export class VisitesListComponent implements OnInit {
 
 	ngOnInit() {
 		this.getVisites();
-		console.log("here");
 	}
 
 	async getVisites() {
@@ -80,11 +79,11 @@ export class VisitesListComponent implements OnInit {
 
 
 	viewVisite(visiteId) {
-		this.router.navigateByUrl('visites/detail/' + visiteId);
+		this.router.navigateByUrl('visites-securite/detail/' + visiteId);
 	}
 	editVisite(visiteId) {
 
-		this.router.navigateByUrl('visites/edit/' + visiteId);
+		this.router.navigateByUrl('visites-securite/edit/' + visiteId);
 	}
 	deleteVisite(visiteId) {
 		Swal.fire({

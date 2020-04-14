@@ -474,6 +474,62 @@ export class MenuConfig {
 					}
 				]
 			},
+			vss: {
+				btnAdd: {
+					title: 'Nouvelle visite de sécurité',
+					root: true,
+					alignment: 'left',
+					page: '/visites-securite/add',
+					translate: 'MENU.BTN.NEWVS',
+				},
+				items: [
+					{
+						icon: 'dashboard',
+						// icon: 'flaticon2-browser-2',
+						title: 'Dashboards',
+						root: true,
+						alignment: 'left',
+						page: '/dashboard',
+						translate: 'MENU.DASHBOARD',
+					},
+					{
+						title: 'Chantiers',
+						root: true,
+						alignment: 'left',
+						page: '/chantiers/list',
+						translate: 'MENU.CHANTIER',
+						icon: 'chantier',
+						// icon: 'flaticon2-browser-2',
+					},
+					{
+						title: 'Visites de sécurité',
+						root: true,
+						alignment: 'left',
+						page: '/visites-securite/list',
+						translate: 'MENU.VISITESECURITE',
+						icon: 'visite-de-securite',
+						// icon: 'flaticon2-browser-2',
+					},
+					{
+						title: 'Plan d\'action',
+						root: true,
+						alignment: 'left',
+						page: '/plans-action',
+						translate: 'MENU.PLANACTION',
+						icon: 'plan-daction',
+						// icon: 'flaticon2-browser-2',
+					},
+					{
+						title: 'Admin',
+						root: true,
+						alignment: 'left',
+						page: '/admin',
+						translate: 'MENU.ADMIN',
+						icon: 'administration',
+						// icon: 'flaticon2-mail-1',
+					}
+				]
+			},
 			chantiers: {
 				btnAdd: {
 					title: 'Nouveau chantier',

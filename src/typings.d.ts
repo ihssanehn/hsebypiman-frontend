@@ -4,13 +4,13 @@ interface NodeModule {
 	id: string;
 }
 
-declare var KTMenu: any;
-declare var KTOffcanvas: any;
-declare var KTScrolltop: any;
-declare var KTHeader: any;
-declare var KTToggle: any;
-declare var KTUtil: any;
-declare var KTPortlet: any;
-declare var KTDialog: any;
-declare var KTWizard: any;
+declare var TFMenu: any;
+declare var TFOffcanvas: any;
+declare var TFScrolltop: any;
+declare var TFHeader: any;
+declare var TFToggle: any;
+declare var TFUtil: any;
+declare var TFPortlet: any;
+declare var TFDialog: any;
+declare var TFWizard: any;
 declare var Chart: any;

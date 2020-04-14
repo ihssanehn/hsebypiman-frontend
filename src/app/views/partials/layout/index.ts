@@ -6,6 +6,7 @@ export { ArForm2Component } from './analyse-risque/form/ar-form2/ar-form2.compon
 // Chantier
 export { ChantierFormComponent } from './chantier/form/chantier-form/chantier-form.component';
 export { ChantierFiltersComponent } from './chantier/chantier-filters/chantier-filters.component';
+export { SearchChantierHeaderComponent } from './chantier/form/search-chantier-header/search-chantier-header.component';
 
 
 

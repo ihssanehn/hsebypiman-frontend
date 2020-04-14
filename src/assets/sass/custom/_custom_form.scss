@@ -1,15 +1,25 @@
-
-.ng-select.ng-select-single .ng-select-container{
-    min-height: auto;
-
-    .ng-value-container, 
-    .ng-value-container .ng-value {    
+.ng-select.ng-select-single{ 
+    .ng-select-container{
         min-height: auto;
-        padding: 0;
-        border-top-width: 0;
-    } 
-    .ng-arrow-wrapper{
-        bottom: 4px;
+        .ng-clear-wrapper{
+            bottom: -1px;
+        }
+        .ng-value-container, 
+        .ng-value-container .ng-value {    
+            min-height: auto;
+            padding: 0;
+            border-top-width: 0;
+        } 
+        .ng-value-container .ng-input{
+            top: -1px;
+        }
+        
+        .ng-arrow-wrapper{
+            bottom: 3px;
+        }
+    }
+    .ng-dropdown-panel.ng-select-bottom{
+        top: calc(100% - 2px);
     }
 
 }

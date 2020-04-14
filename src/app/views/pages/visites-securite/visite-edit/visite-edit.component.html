@@ -1,10 +1,11 @@
 <!-- <div class="row row-filters" style="height: 69px;">
 </div> -->
 <form [formGroup]="visiteForm" *ngIf="loaded; else loading" class="tf-form tf-form--group-seperator-dashed">
-	<!-- <tf-visite-form [visiteForm]="visiteForm" [edit]="true"></tf-visite-form> -->
+  Modifier la visite {{visite.code}}
+  <!-- <tf-visite-form [visiteForm]="visiteForm" [edit]="true"></tf-visite-form> -->
   <button mat-raised-button color="success" class="float-right ml-4" (click)="onSubmit(false)">
-		{{'ACTION.SAVE' | translate}}
-	</button>
+	{{'ACTION.SAVE' | translate}}
+  </button>
   <button mat-raised-button color="info" class="float-right ml-4" type="button" (click)="cancel()">
 		{{'ACTION.CANCEL' | translate}}
 	</button>
