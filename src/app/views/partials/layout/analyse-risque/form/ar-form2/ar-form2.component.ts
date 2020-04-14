@@ -5,6 +5,8 @@ import { CatRisque } from '@app/core/models';
 import { EpiType } from '@app/core/models/epiType.model';
 import { User, AuthService } from '@app/core/auth';
 import { SignaturePad } from 'angular2-signaturepad/signature-pad';
+import { Observable } from 'rxjs';
+import { startWith, map } from 'rxjs/operators';
 
 
 @Component({
@@ -27,6 +29,9 @@ export class ArForm2Component implements OnInit {
   public epiList : Array<EpiType>;
   public user : User;
   public curDate : Date;
+  
+  public salaries : Array<User>;
+  filteredSalaries: Observable<Array<User>>;
 
   constructor(
     private catRisqueService: CatRisqueService,
@@ -35,27 +40,38 @@ export class ArForm2Component implements OnInit {
     private cdr: ChangeDetectorRef,
     private fb: FormBuilder
   ) { 
-    this.getCurrentUser();
+    this.getAllUsers();
     this.getCatRisques();
     this.getEpiTypes();
+    this.curDate = new Date();
   }
 
   ngOnInit() {
+    this.initFilteredSalaries();
   }
 
-  initArForm(){
-    // (this.arForm.get('signature') as FormGroup)
-    //   .controls['personnel_id']
-    //   .setValue(this.user.id);
+  initFilteredSalaries(){
+    this.signatures.controls.forEach(control => {
+      this.filteredSalaries = control.get('personnel').valueChanges.pipe(
+        startWith(''),
+        map(value => this._filter(value))
+      );
+    });
+  }
 
-    // (this.arForm.get('signature') as FormGroup)
-    //   .controls['personnel_fullname']
-    //   .setValue(this.user.fullname);
+  private _filter(value: string): Array<User> {
+    const filterValue = this._normalizeValue(value);
+    return this.salaries.filter(salary => 
+      this._normalizeValue(salary.fullname).includes(filterValue)
+    );
+  }
 
-    // this.curDate = new Date();
-    // (this.arForm.get('signature') as FormGroup)
-    //   .controls['date']
-    //   .setValue(this.curDate);
+  private _normalizeValue(value: string): string {
+    return value.toLowerCase().replace(/\s/g, '');
+  }
+
+  displayFn(salary:User): string {
+    return salary ? salary.fullname : '';
   }
 
   get signatures() : FormArray {
@@ -64,9 +80,8 @@ export class ArForm2Component implements OnInit {
 
   newSignature(): FormGroup {
     return this.fb.group({
-      date:[''],
-      personnel_id:[''],
-      personnel_fullname:[''],
+      date:[new Date()],
+      personnel:[''],
       society:[''],
       signature:[''],
       commentaires:[''],
@@ -76,6 +91,7 @@ export class ArForm2Component implements OnInit {
 
   addSignatures() {
     this.signatures.push(this.newSignature());
+    this.initFilteredSalaries();
   }
 
   removeSignature(i:number) {
@@ -90,14 +106,13 @@ export class ArForm2Component implements OnInit {
 
   async getEpiTypes(){
     this.epiList = await this.epiTypesService.getAll().toPromise();
-    this.initArForm();
     this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
 
-  async getCurrentUser(){
-    this.user = await this.authService.getUserByToken().toPromise();
-    console.log(this.user);
+  async getAllUsers(){
+    this.salaries = await this.authService.getAllUsers().toPromise();
+    this.initFilteredSalaries();
     this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
@@ -188,8 +203,8 @@ export class ArForm2Component implements OnInit {
 
   ngAfterViewInit() {
     // this.signaturePad is now available
-    this.signaturePad.set('minWidth', 5); // set szimek/signature_pad options at runtime
-    this.signaturePad.clear(); // invoke functions from szimek/signature_pad API
+   // this.signaturePad.set('minWidth', 5); // set szimek/signature_pad options at runtime
+   // this.signaturePad.clear(); // invoke functions from szimek/signature_pad API
   }
  
   drawComplete() {

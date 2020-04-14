@@ -278,11 +278,16 @@
           <div class="row form-row" *ngFor="let signature of signatures.controls; let i=index" [formGroupName]="i" >
             <div class="col-xl-2 form-row-flex" >
               <label>{{'COMMON.DATE.LABEL' | translate}} </label>
-              <input class="form-control no_border" type="text" name="signature_date" [value]="curDate| date:'dd/MM/yyyy'" />
+              <label style="padding-left: 0.5em;">{{curDate| date:'dd/MM/yyyy'}}</label>
             </div>
             <div class="col-xl-3 form-row-flex" >
               <label>{{'COMMON.LASTNAME.LABEL' | translate}}&nbsp;{{'COMMON.FIRSTNAME.LABEL' | translate}} </label>
-              <input class="form-control col-xl-8 no_border" type="text" name="signature_personnel" formControlName="personnel_fullname" placeholder="Saisir ici" />
+              <input  class="form-control col-xl-8 no_border" type="text" name="signature_personnel" formControlName="personnel" placeholder="Saisir ici"  [matAutocomplete]="auto"/>
+              <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                <mat-option *ngFor="let salary of filteredSalaries | async" [value]="salary">
+                  {{salary.fullname}}
+                </mat-option>
+              </mat-autocomplete>
             </div>
 
             <div class="col-xl-2 form-row-flex" >
@@ -301,19 +306,22 @@
             <div class="col-xl-1" >
               <div class="sign-line-options">
                 <!-- <signature-pad [options]="signaturePadOptions"  (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad> -->
-            
                 <div ngbDropdown placement="bottom-right" class="d-inline-block">
-                  <div ngbDropdownToggle><i class="flaticon-more"></i></div>
-                  <div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround ">
+                  <button ngbDropdownToggle mat-icon-button color="secondary" matTooltip="Actions">
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                  <div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
                     <!-- *ngxPermissionsOnly="['ADMIN']" -->
-                      <button ngbDropdownItem class="tf-margin-left-3" (click)="editSignature()"
-                        ><i class="la la-edit text-primary"></i>
-                      </button>
-                      <button ngbDropdownItem class="tf-margin-left-3" (click)="removeSignature(i)"
-                      ><i class="la la-edit text-primary"></i>
+                    <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editSignature()">
+                      <mat-icon>edit</mat-icon>
                     </button>
+                    <button mat-icon-button color="accent" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="removeSignature(i)">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                      
                   </div>
                 </div>
+
               </div>
             </div>
             

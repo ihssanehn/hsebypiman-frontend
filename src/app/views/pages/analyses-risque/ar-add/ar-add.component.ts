@@ -120,23 +120,14 @@ export class ArAddComponent implements OnInit {
       observations:['', Validators.compose([])],
       signatures: this.arFB.array([
         this.arFB.group({
-          date:['', Validators.compose([])],
-          personnel_id:['', Validators.compose([])],
-          personnel_fullname:['', Validators.compose([])],
+          date:[new Date(), Validators.compose([])],
+          personnel:['', Validators.compose([])],
           society:['', Validators.compose([])],
           signature:['', Validators.compose([])],
           commentaires:['', Validators.compose([])],
           remarks:['', Validators.compose([])],
         })
       ]),
-      // signature: this.arFB.group({
-      //   date:['', Validators.compose([])],
-      //   personnel_id:['', Validators.compose([])],
-      //   personnel_fullname:['', Validators.compose([])],
-      //   societe:['', Validators.compose([])],
-      //   signature:['', Validators.compose([])],
-      //   commentaires:['', Validators.compose([])],
-      // }),
 
       risques:new FormArray([]),
       epis:new FormArray([]),
@@ -173,7 +164,7 @@ export class ArAddComponent implements OnInit {
       form.date = this.setDateFormat(form.date);
       form.date_accueil_secu = this.setDateFormat(form.date_accueil_secu);
       form.date_validite = this.setDateFormat(form.date_validite);
-      form.signature.date = this.setDateFormat(form.signature.date);
+     //form.signature.date = this.setDateFormat(form.signature.date);
       form.chantier_id = this.chantier.id;
   
       if(
