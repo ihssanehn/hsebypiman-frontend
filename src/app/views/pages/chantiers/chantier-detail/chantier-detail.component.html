@@ -7,41 +7,41 @@
       <a [routerLink]="['/chantiers/list']">{{'MENU.SUB_CHANTIER.LIST' | translate}}</a><span class="divider">></span><span class="id-item">{{chantier.nom}}</span>
     </span>
     <div ngbDropdown placement="bottom-right" class="d-inline-block pull-right">
-      <button ngbDropdownToggle mat-icon-button color="primary" matTooltip="Actions">
+      <button ngbDropdownToggle mat-icon-button color="primary" matTooltip="Actions" style="line-height: 0;height: 0;">
         <mat-icon>more_vert</mat-icon>
-        <!-- <i class="flaticon-more"></i> -->
       </button>
       <div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
-        <!-- *ngxPermissionsOnly="['ADMIN']" -->
         <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editChantier(chantier.id)">
           <mat-icon>edit</mat-icon>
-          <!-- <i class="flaticon-more"></i> -->
         </button>
         <button mat-icon-button color="accent" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteChantier(chantier.id)">
           <mat-icon>delete</mat-icon>
-          <!-- <i class="flaticon-more"></i> -->
         </button>
-          
       </div>
+    </div>
+    <div class="status-box mx-4 px-2 d-inline-block pull-right" [ngStyle]="chantier.status && chantier.status.color && {'color':chantier.status.color}">
+      <mat-icon svgIcon="{{chantier.status?.code == 'ENCOURS' ? 'status-encours':'status-termine'}}" class="status-icon mr-2"></mat-icon>
+      {{chantier.status?.libelle}}
     </div>
   </div>
   <tf-portlet-body class="tf-portlet__body--fit">
     <div class="row">
-      
-      
       <div class="col-md-4">
         <div class="card">
-          <h3>{{'CHANTIERS.STATUS.TITLE' | translate}}</h3>
-          <div class="box box-status">
-            <mat-icon svgIcon="{{chantier.status?.code == 'ENCOURS' ? 'status-encours':'status-termine'}}" style="width:100px;height:100px"></mat-icon>
-            <h2>{{chantier.status?.libelle}}</h2>
+          <h3>Informations générales</h3>
+          <div class="box">
+            <p><span class="label pull-left mr-2">{{'CHANTIERS.NAME.SHORTTITLE' | translate}}</span><span class="">{{chantier.nom}}</span></p>
+            <p><span class="label pull-left mr-2">{{'CHANTIERS.TYPE.SHORTTITLE' | translate}}</span><span class="">{{chantier.type?.libelle}}</span></p>
+            <p><span class="label pull-left mr-2">{{'CHANTIERS.DATE_DEMARRAGE.TITLE' | translate}}</span><span class="">{{chantier.date_demarrage | date:'dd/MM/yyyy'}}</span></p>
+            <p><span class="label pull-left mr-2">{{'CHANTIERS.CHIEF.TITLE' | translate}}</span><span class="">{{chantier.charge_affaire | fullName}}</span></p>
+            <p><span class="label pull-left mr-2">{{'CHANTIERS.BUDGET.SHORTTITLE' | translate}}</span><span class="">{{chantier.montant | currency:'EUR':'€'}}</span></p>
           </div>
           <div class="tf-divider">
-						<span></span>
+            <span></span>
           </div>
           <div class="box box-coords">
-            <h5><b>Coordonnées</b> chantier</h5>
-            <p><span class="label pull-left mr-2">{{'CHANTIERS.NAME.SHORTTITLE' | translate}}</span><span class="">{{chantier.nom}}</span></p>
+            <h5><b>Coordonnées chantier</b></h5>
+            <p><span class="label pull-left mr-2">{{'CHANTIERS.CLIENT.SHORTTITLE' | translate}}</span><span class="">{{chantier.client}}</span></p>
             <p><span class="label pull-left mr-2">{{'CHANTIERS.ADRESS.SHORTTITLE' | translate}}</span><span class="">{{chantier.adresse}}</span></p>
             <p><span class="label pull-left mr-2">{{'COMMON.CITY.SHORTTITLE' | translate}}</span><span class="">{{chantier.ville}}</span></p>
             <p><span class="label pull-left mr-2">{{'COMMON.POSTCODE.SHORTTITLE' | translate}}</span><span class="">{{chantier.code_postal}}</span></p>
@@ -57,13 +57,12 @@
       </div>
       <div class="col-md-3">
         <div class="card">
-          <h3>Information CVTI</h3>
+        <h3>Informations sécurité</h3>
           <div class="box">
-            <p><span class="label pull-left">{{'CHANTIERS.DATE_DEMARRAGE.TITLE' | translate}}</span><br>{{chantier.date_demarrage | date:'dd/MM/yyyy'}}</p>
             <p><span class="label pull-left">{{'ARS.REALISATEUR.TITLE' | translate}}</span><br>{{chantier.latest_ar?.realisateur}}</p>
           </div>
           <div class="box">
-            <h5><b>En cas</b> d'urgence</h5>
+            <h5><b>En cas d'urgence</b></h5>
             <p><span class="label pull-left mr-2">{{'ARS.NUM_SECOURS.SHORTTITLE' | translate}}</span><br><span class="blue">{{chantier.latest_ar?.num_secours}}</span></p>
             <p><span class="label pull-left mr-2">{{'ARS.CONTACT_INTERNE_SECOURS.SHORTTITLE' | translate}}</span><br><span class="blue">{{chantier.latest_ar?.contact_interne_secours}}</span></p>
             <p><span class="label pull-left mr-2">{{'ARS.TEL_CONTACT_INTERNE_SECOURS.SHORTTITLE' | translate}}</span><br><span class="blue">{{chantier.latest_ar?.tel_contact_interne_secours}}</span></p>
@@ -72,35 +71,7 @@
       </div>
       <div class="col-md-5">
         <div class="card">
-          <h3>Information générale</h3>
-          <div class="box">
-            <div class="row">
-              <div class="col-md-6">
-                <h5><b>{{'CHANTIERS.CLIENT.TITLE' | translate}}</b></h5>
-                <p><span class="label pull-left mr-2">{{'CHANTIERS.CLIENT.SHORTTITLE' | translate}}</span><span class="">{{chantier.client}}</span></p>
-              </div>
-              <div class="col-md-6">
-                <h5><b>{{'CHANTIERS.CHIEF.TITLE' | translate}}</b></h5>
-                <p><span class="label pull-left mr-2">{{'CHANTIERS.CHIEF.SHORTTITLE' | translate}}</span><span class="">{{chantier.charge_affaire | fullName}}</span></p>
-              </div>
-            </div>
-          </div>
-          <div class="box">  
-            <div class="row">
-              <div class="col-md-6">
-                <h5><b>{{'CHANTIERS.BUDGET.TITLE' | translate}}</b></h5>
-                <p><span class="label pull-left mr-2">{{'CHANTIERS.BUDGET.SHORTTITLE' | translate}}</span><span class="">{{chantier.montant | currency:'EUR':'€'}}</span></p>
-              </div>
-              <div class="col-md-6">
-                <h5><b>{{'CHANTIERS.TYPE.TITLE' | translate}}</b></h5>
-                <p><span class="label pull-left mr-2">{{'CHANTIERS.TYPE.SHORTTITLE' | translate}}</span><span class="">{{chantier.type?.libelle}}</span></p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="tf-divider h-5">
-            <span></span>
-          </div>
+          <h3>Suivi de chantier</h3>
           <div class="box box-ar-vs">
             <h5><b>Suivis analyses de risques</b><span class="pull-right">{{'CHANTIERS.ARCOUNT.SHORTTITLE' | translate}} : <span class="blue">{{chantier.ars.length}}</span></span></h5>
             <div class="row">
@@ -123,7 +94,19 @@
               <div class="col-md-6"><p class="text-right" *ngFor="let vs of chantier.vss">{{vs.date_visite | date:'dd/MM/yyyy'}}</p></div>
             </div>
           </div>
+          <!-- <div class="box box-status">
+            <mat-icon svgIcon="{{chantier.status?.code == 'ENCOURS' ? 'status-encours':'status-termine'}}" style="width:100px;height:100px"></mat-icon>
+            <h2>{{chantier.status?.libelle}}</h2>
+          </div> -->
         </div>
+      </div>
+    </div>
+    <div class="row mt-4" *ngIf="chantier.status.code != 'TERMINE'">
+      <div class="col-12">
+        <button mat-raised-button color="info" (click)="closeChantier(chantier.id)">
+          <mat-icon  svgIcon="status-termine" inline="true" style="width: 21px; margin-top: -6px; margin-right: 6px;"></mat-icon>
+          Clore le chantier
+        </button>
       </div>
     </div>
   </tf-portlet-body>

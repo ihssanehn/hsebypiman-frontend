@@ -42,6 +42,9 @@ export class ChantierService extends HttpService{
     delete(chantier_id){
         return this.http.delete(this.baseUrl+'/'+chantier_id);
     }
+    closeChantier(chantier_id){
+        return this.http.get<Chantier>(this.baseUrl+'/'+chantier_id+'/close-chantier');
+    }
     
 
 }
