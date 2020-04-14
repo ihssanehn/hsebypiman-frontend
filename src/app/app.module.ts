@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GestureConfig, MatProgressSpinnerModule } from '@angular/material';
 import { NgxMaskModule} from 'ngx-mask';
+import { ReactiveFormsModule } from '@angular/forms'
 
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
@@ -37,6 +38,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { ThemeModule } from './views/theme/theme.module';
+import { SignaturePadModule } from 'angular2-signaturepad';
 // Partials
 import { PartialsModule } from './views/partials/partials.module';
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -46,7 +48,7 @@ import {DataTableService,TfDialogService,LayoutConfigService,VersionCheckService
 // Auth
 import { AuthModule } from './views/pages/auth/auth.module';
 import { AuthService } from './core/auth';
-import { ChantierService, TypeService, StatusService, CategorieService, ArService } from './core/services';
+import { ChantierService, TypeService, StatusService, CategorieService, ArService, CatRisqueService, EpiTypesService } from './core/services';
 // CRUD
 import { HttpUtilsService, LayoutUtilsService, TypesUtilsService } from './core/_base/crud';
 // Config
@@ -113,6 +115,8 @@ export function hljsLanguages(): HighlightLanguage[] {
 		NgxMaskModule.forRoot({
 			decimalMarker: '.',
 		}),
+		ReactiveFormsModule,
+		SignaturePadModule
 	],
 	exports: [],
 	providers: [
@@ -126,6 +130,8 @@ export function hljsLanguages(): HighlightLanguage[] {
 		TypeService, 
 		StatusService, 
 		CategorieService,
+		CatRisqueService,
+		EpiTypesService,
 		LayoutConfigService,
 		LayoutRefService,
 		MenuConfigService,

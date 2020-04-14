@@ -233,7 +233,8 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 
 		return toggle;
 	}
-	goToAddChantier(){
-		this.router.navigateByUrl('chantiers/add')
+
+	goToAdd(){
+		this.router.navigateByUrl(this.menuAsideService.menuBtnAdd.value['page']);
 	}
 }

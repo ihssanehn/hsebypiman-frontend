@@ -60,6 +60,10 @@ export const locale = {
 			},
 			ADMIN: 'Admin',
 			SUB_ADMIN:{},
+			BTN:{
+				NEWAR: 'Nouvelle analyse de risque',
+				NEWCHANTIER: 'Nouveau chantier'
+			}
 		},
 		AUTH: {
 			GENERAL: {
@@ -221,6 +225,56 @@ export const locale = {
 			}
 		},
 		ARS:{
+			NUMBER:'Numéro',
+			CLIENT:'Client',
+			NAME:'Nom du chantier',
+			ADRESS:'Adresse du chantier',
+			TYPE:'Type',
+			STATUS:'Statut',
+			CONTACT:'Contact',
+			DATE_DEMARRAGE:'Date de démarage chantier pour CVTI',
+			AR: 'Analyse de risque',
+			EMPLOYEE:'Nom du salarié CVTI réalisant la visite commune',
+			CHIEF:'Chargé d\'affaire',
+			BUDGET:'Budget',
+			ARCOUNT:'Quantité A.R',
+			LASTAR:'Dernière A.R',
+			VSCOUNT:'Quantité V.S',
+			LASTVS:'Dernière V.S',
+			FORM:{
+				CREATE:'Créer une nouvelle analyse de risque',
+				RISKBLOCK:{
+					TITLE: 'Risques liés au chantier et moyens de préventions',
+					MSG: 'Obligatoirement port des EPI standard chez CVTI : casque, gants, vêtements couvrants, chaussures. Casquette tolérée pour le travail dans les faux plafonds (en fonction PDP du client). Si bruit port du casque antibruit pour les autres risques, adopter l’attitude suivante et cocher les actions à mener :'
+				},
+				PARKINGBLOCK:{
+					TITLE: 'Zone de stationnement des véhicules pendant le chantier'
+				},
+				STOCKBLOCK:{
+					TITLE: 'Zone de stockage matériel chantier'
+				},
+				EQBLOCK:{
+					TITLE: 'Equipement à prévoir sur le chantier'
+				},
+				MWBLOCK:{
+					TITLE: 'Suivi des travaux ',
+					WORKREGISTER:{
+						TITLE: 'Registre de travaux à signer ',
+						MSG: 'Si oui renseigner les informations ci-dessous en charge du registre'
+					},
+					SUBTITLE2: 'Balisage à prévoir sur la zone'
+				},
+				SIGNATURE:{
+					TITLE: 'Observation et signatures',
+					SUBTITLE: 'Observations des signataires sur les risques',
+					DECLARATION: 'J’ai pris connaissance de l’analyse de risque du chantier, du PPSPS ou du PDP et applique les moyens de préventions nécessaires : '
+				},
+				RISKS: 'Les risques',
+				ACTION: 'Action de prévention à mener',
+				COMMENT: 'Précisions à apporter',
+				CVTI_RESPONSIBLE: 'Nom du chargé d’affaire CVTI',
+				CA_ASSISTANT: 'Assistant CA'
+			},
 			DATE:{
 				LABEL:'Date de l\'analyse de risque',
 				PLACEHOLDER:'',
@@ -312,6 +366,47 @@ export const locale = {
 				SHORTTITLE:'Courant mis à disposition',
 			},
 		},
+		ECOMMERCE: {
+			COMMON: {
+				SELECTED_RECORDS_COUNT: 'Nombre d\'enregistrements sélectionnés: ',
+				ALL: 'All',
+				SUSPENDED: 'Suspended',
+				ACTIVE: 'Active',
+				FILTER: 'Filter',
+				BY_STATUS: 'by Status',
+				BY_TYPE: 'by Type',
+				BUSINESS: 'Business',
+				INDIVIDUAL: 'Individual',
+				SEARCH: 'Search',
+				IN_ALL_FIELDS: 'in all fields'
+			},
+			ECOMMERCE: 'éCommerce',
+			CUSTOMERS: {
+				CUSTOMERS: 'Les clients',
+				CUSTOMERS_LIST: 'Liste des clients',
+				NEW_CUSTOMER: 'Nouveau client',
+				DELETE_CUSTOMER_SIMPLE: {
+					TITLE: 'Suppression du client',
+					DESCRIPTION: 'Êtes-vous sûr de supprimer définitivement ce client?',
+					WAIT_DESCRIPTION: 'Le client est en train de supprimer ...',
+					MESSAGE: 'Le client a été supprimé'
+				},
+				DELETE_CUSTOMER_MULTY: {
+					TITLE: 'Supprimer les clients',
+					DESCRIPTION: 'Êtes-vous sûr de supprimer définitivement les clients sélectionnés?',
+					WAIT_DESCRIPTION: 'Les clients suppriment ...',
+					MESSAGE: 'Les clients sélectionnés ont été supprimés'
+				},
+				UPDATE_STATUS: {
+					TITLE: 'Le statut a été mis à jour pour les clients sélectionnés',
+					MESSAGE: 'Le statut des clients sélectionnés a été mis à jour avec succès'
+				},
+				EDIT: {
+					UPDATE_MESSAGE: 'Le client a été mis à jour',
+					ADD_MESSAGE: 'Le client a été créé'
+				}
+			}
+		},
 		COMMON:{
 			CITY:{
 				LABEL:'Ville',
@@ -343,6 +438,47 @@ export const locale = {
 				TITLE:'Archivé le',
 				SHORTTITLE:'Archivé le'
 			},
+			ADRESS:{
+				LABEL:'Adresse',
+				PLACEHOLDER:'',
+				TITLE:'Adresse'
+			},
+			NAME:{
+				LABEL:'Nom',
+				PLACEHOLDER:'',
+				TITLE:'Nom'
+			},
+			PHONENUMBER:{
+				LABEL:'Numéro de téléphone',
+				PLACEHOLDER:'',
+				TITLE:'Numéro de téléphone'
+			},
+			DATE:{
+				LABEL:'Date',
+				PLACEHOLDER:'',
+				TITLE:'Date'
+			},
+			NOM_PRENOM:{
+				LABEL:'Nom Prénom',
+				PLACEHOLDER:'',
+				TITLE:'Nom Prénom'
+			},
+			SOCIETE:{
+				LABEL:'Société',
+				PLACEHOLDER:'',
+				TITLE:'Société'
+			},
+			SIGNATURE:{
+				LABEL:'Signature',
+				PLACEHOLDER:'',
+				TITLE:'Signature'
+			},
+			REMARQUE:{
+				LABEL:'Remarques',
+				PLACEHOLDER:'',
+				TITLE:'Remarques'
+			}
+		
 		},
 		FILTER : {
 			TITLE : "Filtres",
@@ -354,7 +490,8 @@ export const locale = {
 			SEARCH_KEYWORD : "Recherche par mot clé",
 			STATUS : "Statut",
 			SELECT_STATUS : "Sélectionnez un status",
-			CREATION_DATE : "Date de création"
+			CREATION_DATE : "Date de création",
+			SEARCH_CHANTIER : "Recherche un chantier",
 		},
 	}
 };

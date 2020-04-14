@@ -1,0 +1,16 @@
+table {
+    width: 100%;
+}
+
+.form-row-flex{
+    display: flex;
+    flex-direction: row;
+}
+
+.no_border{
+    border: none;
+}
+
+.form-row-flex label{
+    line-height: 3;
+}

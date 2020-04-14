@@ -27,7 +27,7 @@ export class ArsListComponent implements OnInit {
 		status_id: "",
 		params:[]
 	};
-	displayedArColumns=[];
+	displayedArColumns=['number','name','status','charge_affaire','montant','ars_count','created_at','action'];
 
   	constructor(
 		private router: Router,
@@ -44,6 +44,7 @@ export class ArsListComponent implements OnInit {
   	async getArs(){
     	try {
 			this.arsList = await this.arService.search(this.filter).toPromise();
+			console.log(this.arsList);
 			this.pagination = { ...this.pagination, total: this.arsList.total, page: this.arsList.current_page };
 			this.filter.page = this.pagination.page;
 			this.filter.per_page = this.pagination.pageSize;

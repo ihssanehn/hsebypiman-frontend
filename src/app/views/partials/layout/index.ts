@@ -1,6 +1,7 @@
 
 // Analyse de risque
 export { ArForm1Component } from './analyse-risque/form/ar-form-1/ar-form-1.component';
+export { ArForm2Component } from './analyse-risque/form/ar-form2/ar-form2.component';
 
 // Chantier
 export { ChantierFormComponent } from './chantier/form/chantier-form/chantier-form.component';
