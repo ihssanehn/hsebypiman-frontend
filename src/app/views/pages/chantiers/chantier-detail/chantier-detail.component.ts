@@ -111,5 +111,45 @@ export class ChantierDetailComponent implements OnInit, OnDestroy {
             timer: 1500
 		})
 	}
+
+	closeChantier(chantierId){
+		
+		Swal.fire({
+			icon: 'warning',
+			title: 'Voulez vous vraiment clore ce chantier ?',
+			text:'Les analyses de risque et visites de chantier seront archivés.',
+			showConfirmButton: true,
+			showCancelButton: true,
+			cancelButtonText: 'Annuler',
+			confirmButtonText: 'Clore le chantier'
+		}).then(async response => {
+			if (response.value) {
+				try {
+					const res = await this.chantierService.closeChantier(chantierId).toPromise();
+					if (res) {
+						Swal.fire({
+							icon: 'success',
+							title: 'le chantier a été clos avec succès',
+							showConfirmButton: false,
+							timer: 1500
+						}).then(() => {
+							this.getChantier(chantierId);
+						});
+					} else {
+						throw new Error();
+					}
+				} catch (e) {
+					console.log(e);
+					Swal.fire({
+						icon: 'error',
+						title: 'Echec! une erreur est survenue',
+						showConfirmButton: false,
+						timer: 1500
+					});
+				}
+			}
+		});
+		
+	}
   
 }
