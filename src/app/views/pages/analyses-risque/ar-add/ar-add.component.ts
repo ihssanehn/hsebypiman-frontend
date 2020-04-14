@@ -118,14 +118,25 @@ export class ArAddComponent implements OnInit {
       tel_assistant_ca:['', Validators.compose([])],
 
       observations:['', Validators.compose([])],
-      signature: this.arFB.group({
-        date:['', Validators.compose([])],
-        personnel_id:['', Validators.compose([])],
-        personnel_fullname:['', Validators.compose([])],
-        societe:['', Validators.compose([])],
-        signature:['', Validators.compose([])],
-        commentaires:['', Validators.compose([])],
-      }),
+      signatures: this.arFB.array([
+        this.arFB.group({
+          date:['', Validators.compose([])],
+          personnel_id:['', Validators.compose([])],
+          personnel_fullname:['', Validators.compose([])],
+          society:['', Validators.compose([])],
+          signature:['', Validators.compose([])],
+          commentaires:['', Validators.compose([])],
+          remarks:['', Validators.compose([])],
+        })
+      ]),
+      // signature: this.arFB.group({
+      //   date:['', Validators.compose([])],
+      //   personnel_id:['', Validators.compose([])],
+      //   personnel_fullname:['', Validators.compose([])],
+      //   societe:['', Validators.compose([])],
+      //   signature:['', Validators.compose([])],
+      //   commentaires:['', Validators.compose([])],
+      // }),
 
       risques:new FormArray([]),
       epis:new FormArray([]),

@@ -458,10 +458,15 @@ export const locale = {
 				PLACEHOLDER:'',
 				TITLE:'Date'
 			},
-			NOM_PRENOM:{
-				LABEL:'Nom Prénom',
+			FIRSTNAME:{
+				LABEL:'Prénom',
 				PLACEHOLDER:'',
-				TITLE:'Nom Prénom'
+				TITLE:'Prénom'
+			},
+			LASTNAME:{
+				LABEL:'Nom',
+				PLACEHOLDER:'',
+				TITLE:'Nom'
 			},
 			SOCIETE:{
 				LABEL:'Société',

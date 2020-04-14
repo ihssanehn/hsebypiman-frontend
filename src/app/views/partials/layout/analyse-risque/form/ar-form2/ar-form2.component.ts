@@ -33,6 +33,7 @@ export class ArForm2Component implements OnInit {
     private epiTypesService: EpiTypesService,
     private authService: AuthService,
     private cdr: ChangeDetectorRef,
+    private fb: FormBuilder
   ) { 
     this.getCurrentUser();
     this.getCatRisques();
@@ -43,18 +44,42 @@ export class ArForm2Component implements OnInit {
   }
 
   initArForm(){
-    (this.arForm.get('signature') as FormGroup)
-      .controls['personnel_id']
-      .setValue(this.user.id);
+    // (this.arForm.get('signature') as FormGroup)
+    //   .controls['personnel_id']
+    //   .setValue(this.user.id);
 
-    (this.arForm.get('signature') as FormGroup)
-      .controls['personnel_fullname']
-      .setValue(this.user.fullname);
+    // (this.arForm.get('signature') as FormGroup)
+    //   .controls['personnel_fullname']
+    //   .setValue(this.user.fullname);
 
-    this.curDate = new Date();
-    (this.arForm.get('signature') as FormGroup)
-      .controls['date']
-      .setValue(this.curDate);
+    // this.curDate = new Date();
+    // (this.arForm.get('signature') as FormGroup)
+    //   .controls['date']
+    //   .setValue(this.curDate);
+  }
+
+  get signatures() : FormArray {
+    return this.arForm.get('signatures') as FormArray;
+  }
+
+  newSignature(): FormGroup {
+    return this.fb.group({
+      date:[''],
+      personnel_id:[''],
+      personnel_fullname:[''],
+      society:[''],
+      signature:[''],
+      commentaires:[''],
+      remarks:[''],
+    });
+  }
+
+  addSignatures() {
+    this.signatures.push(this.newSignature());
+  }
+
+  removeSignature(i:number) {
+    this.signatures.removeAt(i);
   }
 
   async getCatRisques(){
