@@ -6,3 +6,4 @@ export { Status } from './status.model';
 export { Risque } from './risque.model';
 export { CatRisque } from './catRisque.model';
 export { Visite } from './visite.model';
+
