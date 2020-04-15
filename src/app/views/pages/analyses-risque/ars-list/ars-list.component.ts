@@ -45,8 +45,12 @@ export class ArsListComponent implements OnInit {
   	async getArs(){
     	try {
 			this.arsList = await this.arService.search(this.filter).toPromise();
-			console.log(this.arsList);
-			this.pagination = { ...this.pagination, total: this.arsList.total, page: this.arsList.current_page, last_page: this.arsList.last_page };
+			this.pagination = { 
+				...this.pagination, 
+				total: this.arsList.total, 
+				page: this.arsList.current_page, 
+				last_page: this.arsList.last_page 
+			};
 			this.filter.page = this.pagination.page;
 			this.filter.per_page = this.pagination.pageSize;
 			this.cdr.detectChanges();
@@ -57,7 +61,12 @@ export class ArsListComponent implements OnInit {
   	}
 
   	changePagination() {
-		this.pagination = { ...this.pagination, pageSize: this.pagination.pageSize, total: this.pagination.total, last_page: this.pagination.last_page };
+		this.pagination = { 
+			...this.pagination, 
+			pageSize: this.pagination.pageSize, 
+			total: this.pagination.total, 
+			last_page: this.pagination.last_page 
+		};
 		this.filter.page = this.pagination.page;
 		this.filter.per_page = this.pagination.pageSize;
 		this.getArs();

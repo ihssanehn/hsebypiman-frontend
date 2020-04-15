@@ -238,6 +238,7 @@ export const locale = {
 			CHIEF:'Chargé d\'affaire',
 			BUDGET:'Budget',
 			SIGNATURECOUNT:'Signatures',
+			SIGNATAIRECOUNT:'Signataires',
 			FORM:{
 				CREATE:'Créer une nouvelle analyse de risque',
 				RISKBLOCK:{
