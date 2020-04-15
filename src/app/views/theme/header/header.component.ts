@@ -84,7 +84,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 		// animate the header minimize the height on scroll down
 		if (objectPath.get(config, 'header.self.fixed.desktop.enabled') || objectPath.get(config, 'header.self.fixed.desktop')) {
 			// header minimize on scroll down
-			this.tfHeader.nativeElement.setAttribute('data-ktheader-minimize', '1');
+			this.tfHeader.nativeElement.setAttribute('data-tfheader-minimize', '1');
 		}
 	}
 

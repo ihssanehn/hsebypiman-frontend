@@ -1,12 +1,12 @@
 // plugin setup
-var KTWizard = function(elementId, options) {
+var TFWizard = function(elementId, options) {
     // Main object
     var the = this;
     var init = false;
 
     // Get element object
-    var element = KTUtil.get(elementId);
-    var body = KTUtil.get('body');
+    var element = TFUtil.get(elementId);
+    var body = TFUtil.get('body');
 
     if (!element) {
         return;
@@ -28,8 +28,8 @@ var KTWizard = function(elementId, options) {
          */
 
         construct: function(options) {
-            if (KTUtil.data(element).has('wizard')) {
-                the = KTUtil.data(element).get('wizard');
+            if (TFUtil.data(element).has('wizard')) {
+                the = TFUtil.data(element).get('wizard');
             } else {
                 // reset menu
                 Plugin.init(options);
@@ -37,7 +37,7 @@ var KTWizard = function(elementId, options) {
                 // build menu
                 Plugin.build();
 
-                KTUtil.data(element).set('wizard', the);
+                TFUtil.data(element).set('wizard', the);
             }
 
             return the;
@@ -51,16 +51,16 @@ var KTWizard = function(elementId, options) {
             the.events = [];
 
             // merge default and user defined options
-            the.options = KTUtil.deepExtend({}, defaultOptions, options);
+            the.options = TFUtil.deepExtend({}, defaultOptions, options);
 
             // Elements
-            the.steps = KTUtil.findAll(element, '[data-ktwizard-type="step"]');
+            the.steps = TFUtil.findAll(element, '[data-tfwizard-type="step"]');
 
-            the.btnSubmit = KTUtil.find(element, '[data-ktwizard-type="action-submit"]');
-            the.btnNext = KTUtil.find(element, '[data-ktwizard-type="action-next"]');
-            the.btnPrev = KTUtil.find(element, '[data-ktwizard-type="action-prev"]');
-            the.btnLast = KTUtil.find(element, '[data-ktwizard-type="action-last"]');
-            the.btnFirst = KTUtil.find(element, '[data-ktwizard-type="action-first"]');
+            the.btnSubmit = TFUtil.find(element, '[data-tfwizard-type="action-submit"]');
+            the.btnNext = TFUtil.find(element, '[data-tfwizard-type="action-next"]');
+            the.btnPrev = TFUtil.find(element, '[data-tfwizard-type="action-prev"]');
+            the.btnLast = TFUtil.find(element, '[data-tfwizard-type="action-last"]');
+            the.btnFirst = TFUtil.find(element, '[data-tfwizard-type="action-first"]');
 
             // Variables
             the.events = [];
@@ -82,31 +82,31 @@ var KTWizard = function(elementId, options) {
          */
         build: function() {
             // Next button event handler
-            KTUtil.addEvent(the.btnNext, 'click', function(e) {
+            TFUtil.addEvent(the.btnNext, 'click', function(e) {
                 e.preventDefault();
                 Plugin.goTo(Plugin.getNextStep(), true);
             });
 
             // Prev button event handler
-            KTUtil.addEvent(the.btnPrev, 'click', function(e) {
+            TFUtil.addEvent(the.btnPrev, 'click', function(e) {
                 e.preventDefault();
                 Plugin.goTo(Plugin.getPrevStep(), true);
             });
 
             // First button event handler
-            KTUtil.addEvent(the.btnFirst, 'click', function(e) {
+            TFUtil.addEvent(the.btnFirst, 'click', function(e) {
                 e.preventDefault();
                 Plugin.goTo(1, true);
             });
 
             // Last button event handler
-            KTUtil.addEvent(the.btnLast, 'click', function(e) {
+            TFUtil.addEvent(the.btnLast, 'click', function(e) {
                 e.preventDefault();
                 Plugin.goTo(the.totalSteps, true);
             });
 
             if (the.options.clickableSteps === true) {
-                KTUtil.on(element, '[data-ktwizard-type="step"]', 'click', function() {
+                TFUtil.on(element, '[data-tfwizard-type="step"]', 'click', function() {
                     var index = Array.prototype.indexOf.call(the.steps, this) + 1;
                     if (index !== the.currentStep) {
                         Plugin.goTo(index, true);
@@ -231,45 +231,45 @@ var KTWizard = function(elementId, options) {
                 stepType = 'between';
             }
 
-            KTUtil.attr(the.element, 'data-ktwizard-state', stepType);
+            TFUtil.attr(the.element, 'data-tfwizard-state', stepType);
 
             // Steps
-            var steps = KTUtil.findAll(the.element, '[data-ktwizard-type="step"]');
+            var steps = TFUtil.findAll(the.element, '[data-tfwizard-type="step"]');
 
             if (steps && steps.length > 0) {
                 for (var i = 0, len = steps.length; i < len; i++) {
                     if (i == index) {
-                        KTUtil.attr(steps[i], 'data-ktwizard-state', 'current');
+                        TFUtil.attr(steps[i], 'data-tfwizard-state', 'current');
                     } else {
                         if (i < index) {
-                            KTUtil.attr(steps[i], 'data-ktwizard-state', 'done');
+                            TFUtil.attr(steps[i], 'data-tfwizard-state', 'done');
                         } else {
-                            KTUtil.attr(steps[i], 'data-ktwizard-state', 'pending');
+                            TFUtil.attr(steps[i], 'data-tfwizard-state', 'pending');
                         }
                     }
                 }
             }
 
             // Steps Info
-            var stepsInfo = KTUtil.findAll(the.element, '[data-ktwizard-type="step-info"]');
+            var stepsInfo = TFUtil.findAll(the.element, '[data-tfwizard-type="step-info"]');
             if (stepsInfo &&stepsInfo.length > 0) {
                 for (var i = 0, len = stepsInfo.length; i < len; i++) {
                     if (i == index) {
-                        KTUtil.attr(stepsInfo[i], 'data-ktwizard-state', 'current');
+                        TFUtil.attr(stepsInfo[i], 'data-tfwizard-state', 'current');
                     } else {
-                        KTUtil.removeAttr(stepsInfo[i], 'data-ktwizard-state');
+                        TFUtil.removeAttr(stepsInfo[i], 'data-tfwizard-state');
                     }
                 }
             }
 
             // Steps Content
-            var stepsContent = KTUtil.findAll(the.element, '[data-ktwizard-type="step-content"]');
+            var stepsContent = TFUtil.findAll(the.element, '[data-tfwizard-type="step-content"]');
             if (stepsContent&& stepsContent.length > 0) {
                 for (var i = 0, len = stepsContent.length; i < len; i++) {
                     if (i == index) {
-                        KTUtil.attr(stepsContent[i], 'data-ktwizard-state', 'current');
+                        TFUtil.attr(stepsContent[i], 'data-tfwizard-state', 'current');
                     } else {
-                        KTUtil.removeAttr(stepsContent[i], 'data-ktwizard-state');
+                        TFUtil.removeAttr(stepsContent[i], 'data-tfwizard-state');
                     }
                 }
             }
@@ -301,7 +301,7 @@ var KTWizard = function(elementId, options) {
          * Trigger events
          */
         eventTrigger: function(name, nested) {
-            //KTUtil.triggerCustomEvent(name);
+            //TFUtil.triggerCustomEvent(name);
             for (var i = 0; i < the.events.length; i++) {
                 var event = the.events[i];
                 if (event.name == name) {
@@ -433,5 +433,5 @@ var KTWizard = function(elementId, options) {
 
 // webpack support
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-    module.exports = KTWizard;
+    module.exports = TFWizard;
 }

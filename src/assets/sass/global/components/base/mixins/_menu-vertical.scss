@@ -854,7 +854,7 @@
 	.#{tf-get($base-config, parent-class)}--minimize .#{tf-get($base-config, class)},
 	.#{tf-get($base-config, class)}.#{tf-get($base-config, class)}--dropdown {
 		.tf-menu__nav {
-			.tf-menu__item:not([data-ktmenu-submenu-mode=accordion]) {
+			.tf-menu__item:not([data-tfmenu-submenu-mode=accordion]) {
 				> .tf-menu__link {
 					> .tf-menu__ver-arrow {
 						&:before {
@@ -976,7 +976,7 @@
 				}
 			}
 
-			> .tf-menu__item:not([data-ktmenu-submenu-mode=accordion]) {
+			> .tf-menu__item:not([data-tfmenu-submenu-mode=accordion]) {
 				&.tf-menu__item--hover {
 					> .tf-menu__submenu {
 						margin-left: tf-get($layout, dropdown, item, submenu, self, parent-width);
@@ -996,7 +996,7 @@
 	.#{tf-get($base-config, parent-class)}--minimize .#{tf-get($base-config, class)},
 	.#{tf-get($base-config, class)}.#{tf-get($base-config, class)}--dropdown {
 		.tf-menu__nav {
-			.tf-menu__item:not([data-ktmenu-submenu-mode=accordion]) {
+			.tf-menu__item:not([data-tfmenu-submenu-mode=accordion]) {
 				&.tf-menu__item--hover {
 					> .tf-menu__submenu {
 						background-color: tf-get($layout, dropdown, item, submenu, self, bg-color);
