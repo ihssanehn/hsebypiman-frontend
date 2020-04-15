@@ -70,8 +70,9 @@ import {
 	ArForm1Component,
 	ArForm2Component,
 	ChantierFormComponent,
-	SearchChantierHeaderComponent,
 	ChantierFiltersComponent,
+	SearchChantierHeaderComponent,
+	VsFormHeadComponent,
 	CommingSoonComponent,
 } from './layout';
 // General
@@ -124,6 +125,8 @@ import { NgxMaskModule} from 'ngx-mask';
 		ChantierFormComponent,
 		ChantierFiltersComponent,
 		SearchChantierHeaderComponent,
+		VsFormHeadComponent,
+
 		CartComponent,
 		
 		ErrorComponent,
@@ -172,6 +175,7 @@ import { NgxMaskModule} from 'ngx-mask';
 		ChantierFormComponent,
 		ChantierFiltersComponent,
 		SearchChantierHeaderComponent,
+		VsFormHeadComponent,
 		CartComponent,
 		
 		ErrorComponent,

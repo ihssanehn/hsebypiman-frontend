@@ -1,6 +1,19 @@
 <ng-template [formGroup]="visiteForm">
-
+    <div class="col-xl-4">
+        <h5>Visité sécurité N°</h5>
+        <mat-form-field>
+            <mat-label>{{'VISITES.REDACTEUR.LABEL'}}</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let user of users" [value]="user.id" [formControlName]="redacteur_id">
+                    {{user.fulname}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="col-xl-4">
+        
+    </div>
+    <div class="col-xl-4">
+        
+    </div>
 </ng-template>
-<div class="col-12">
-    
-</div>

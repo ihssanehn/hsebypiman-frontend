@@ -8,17 +8,17 @@ import { first } from 'rxjs/operators';
 
 
 @Component({
-  selector: 'tf-chantier-form',
-  templateUrl: './chantier-form.component.html',
-  styleUrls: ['./chantier-form.component.scss']
+  selector: 'tf-vs-form-head',
+  templateUrl: './vs-form-head.component.html',
+  styleUrls: ['./vs-form-head.component.scss']
 })
-export class ChantierFormComponent implements OnInit {
+export class VsFormHeadComponent implements OnInit {
 
   types: Type[];
   users: User[];
   status: Status[];
 
-  @Input() chantierForm: FormGroup;
+  @Input() visiteForm: FormGroup;
   @Input() edit: Boolean;
   constructor(
     private typeService:TypeService,
