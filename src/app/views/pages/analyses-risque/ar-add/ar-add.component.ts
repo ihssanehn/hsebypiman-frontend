@@ -70,7 +70,6 @@ export class ArAddComponent implements OnInit {
     this.createForm();
     this.getTypes();
     this.getUsers();
-   // this.getAllChantiers();
     this.initFilteredChantiers();
   }
 
@@ -176,17 +175,6 @@ export class ArAddComponent implements OnInit {
   async getChantier(chantierId: Number){
     try {
       this.chantier = await this.chantierService.get(chantierId).toPromise();
-      this.cdr.detectChanges();
-      this.cdr.markForCheck();
-		} catch (error) {
-			console.error(error);
-		}
-  }
-
-  async getAllChantiers(){
-    try {
-      this.chantiers = await this.chantierService.getAll().toPromise();
-      this.initFilteredChantiers();
       this.cdr.detectChanges();
       this.cdr.markForCheck();
 		} catch (error) {
