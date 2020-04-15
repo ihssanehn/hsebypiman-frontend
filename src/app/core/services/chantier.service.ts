@@ -22,7 +22,7 @@ export class ChantierService extends HttpService{
     }
 
     getAll(){
-        return this.http.get<Paginate<Chantier>>(this.baseUrl);
+        return this.http.get<Chantier[]>(this.baseUrl);
     }
     getAllItems(): Observable<Chantier[]> {
 		return this.http.get<Chantier[]>(`${this.baseUrl}`);

@@ -101,13 +101,13 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 		const config = this.layoutConfigService.getConfig();
 
 		if (objectPath.get(config, 'aside.menu.dropdown') !== true && objectPath.get(config, 'aside.self.fixed')) {
-			this.render.setAttribute(this.asideMenu.nativeElement, 'data-ktmenu-scroll', '1');
+			this.render.setAttribute(this.asideMenu.nativeElement, 'data-tfmenu-scroll', '1');
 		}
 
 		if (objectPath.get(config, 'aside.menu.dropdown')) {
-			this.render.setAttribute(this.asideMenu.nativeElement, 'data-ktmenu-dropdown', '1');
+			this.render.setAttribute(this.asideMenu.nativeElement, 'data-tfmenu-dropdown', '1');
 			// tslint:disable-next-line:max-line-length
-			this.render.setAttribute(this.asideMenu.nativeElement, 'data-ktmenu-dropdown-timeout', objectPath.get(config, 'aside.menu.submenu.dropdown.hover-timeout'));
+			this.render.setAttribute(this.asideMenu.nativeElement, 'data-tfmenu-dropdown-timeout', objectPath.get(config, 'aside.menu.submenu.dropdown.hover-timeout'));
 		}
 	}
 
@@ -158,7 +158,7 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 
 			this.insideTm = setTimeout(() => {
 				// if the left aside menu is minimized
-				if (document.body.classList.contains('tf-aside--minimize') && KTUtil.isInResponsiveRange('desktop')) {
+				if (document.body.classList.contains('tf-aside--minimize') && TFUtil.isInResponsiveRange('desktop')) {
 					// show the left aside menu
 					this.render.removeClass(document.body, 'tf-aside--minimize');
 					this.render.addClass(document.body, 'tf-aside--minimize-hover');
@@ -180,7 +180,7 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 
 			this.outsideTm = setTimeout(() => {
 				// if the left aside menu is expand
-				if (document.body.classList.contains('tf-aside--minimize-hover') && KTUtil.isInResponsiveRange('desktop')) {
+				if (document.body.classList.contains('tf-aside--minimize-hover') && TFUtil.isInResponsiveRange('desktop')) {
 					// hide back the left aside menu
 					this.render.removeClass(document.body, 'tf-aside--minimize-hover');
 					this.render.addClass(document.body, 'tf-aside--minimize');

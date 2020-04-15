@@ -281,7 +281,7 @@ export class NgbdDatepickerDisabled {
 	isExampleExpanded: true
 };
 
-const customDateAdapter = {
+const customMatDateAdapter = {
 	beforeCodeTitle: 'Custom date adapter',
 	htmlCode: `
 
@@ -689,7 +689,7 @@ export class DatepickerComponent implements OnInit {
 		this.exampleMultipleMonths = multipleMonths;
 		this.exampleRangeSelection = rangeSelection;
 		this.exampleDisabledDatepicker = disabledDatepicker;
-		this.exampleCustomDateAdapter = customDateAdapter;
+		this.exampleCustomDateAdapter = customMatDateAdapter;
 		this.exampleInternationalizationOfDatepickers = iternationalizationOfDatepickers;
 		this.exampleCustomDayView = customDayView;
 		this.exampleAlternativeCalendar = alternativeCalendars;

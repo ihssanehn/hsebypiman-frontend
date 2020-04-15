@@ -10,7 +10,7 @@ export class TfDialogService {
 
 	// Public properties
 	constructor() {
-		this.tfDialog = new KTDialog({type: 'loader', placement: 'top center', message: 'Loading ...'});
+		this.tfDialog = new TFDialog({type: 'loader', placement: 'top center', message: 'Loading ...'});
 	}
 
 	show() {

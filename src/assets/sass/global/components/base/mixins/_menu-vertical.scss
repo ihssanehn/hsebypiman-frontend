@@ -26,6 +26,7 @@
 			font-weight: tf-get($item, link, text, font-weight);
 			font-size: tf-get($item, link, text, font-size);
 			text-transform: tf-get($item, link, text, font-transform);
+			text-align: tf-get($item, link, text, text-align)
 		}
 
 		// menu item link's icon
@@ -259,6 +260,7 @@
 	&.tf-menu__item--active {
 		transition: background-color 0.3s;
 		@include tf-attr(background-color, tf-get($item, self, bg-color, active));
+		border-radius: 10px;
 
 		> .tf-menu__heading,
 		> .tf-menu__link {
@@ -543,6 +545,7 @@
 					.tf-menu__link-icon {
 						display: flex;
 						align-items: center;
+						justify-content: center;
 						line-height: 0;
 					}
 
@@ -562,6 +565,7 @@
 
 						&:before {
 							-webkit-transform: translate3d(0,0,0);
+							transform: translate3d(0,0,0);
 						}
 					}
 
@@ -850,7 +854,7 @@
 	.#{tf-get($base-config, parent-class)}--minimize .#{tf-get($base-config, class)},
 	.#{tf-get($base-config, class)}.#{tf-get($base-config, class)}--dropdown {
 		.tf-menu__nav {
-			.tf-menu__item:not([data-ktmenu-submenu-mode=accordion]) {
+			.tf-menu__item:not([data-tfmenu-submenu-mode=accordion]) {
 				> .tf-menu__link {
 					> .tf-menu__ver-arrow {
 						&:before {
@@ -972,7 +976,7 @@
 				}
 			}
 
-			> .tf-menu__item:not([data-ktmenu-submenu-mode=accordion]) {
+			> .tf-menu__item:not([data-tfmenu-submenu-mode=accordion]) {
 				&.tf-menu__item--hover {
 					> .tf-menu__submenu {
 						margin-left: tf-get($layout, dropdown, item, submenu, self, parent-width);
@@ -992,7 +996,7 @@
 	.#{tf-get($base-config, parent-class)}--minimize .#{tf-get($base-config, class)},
 	.#{tf-get($base-config, class)}.#{tf-get($base-config, class)}--dropdown {
 		.tf-menu__nav {
-			.tf-menu__item:not([data-ktmenu-submenu-mode=accordion]) {
+			.tf-menu__item:not([data-tfmenu-submenu-mode=accordion]) {
 				&.tf-menu__item--hover {
 					> .tf-menu__submenu {
 						background-color: tf-get($layout, dropdown, item, submenu, self, bg-color);

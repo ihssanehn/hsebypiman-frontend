@@ -1,0 +1,50 @@
+<div class="col-xl-3">
+    <div class="flex-layout">
+        <div class="form-group row">
+            <div class="col-md-12">
+                <h5>Choisir un chantier</h5>
+                <div class="form-group">
+                    <ng-select class="form-control" [items]="chantiers" bindLabel="nom" 
+                        [(ngModel)]="selectedChantier"
+                    ></ng-select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-xl-9">
+    <div class="row">
+        <mat-form-field class="col-xl-4">
+            <mat-label>{{'CHANTIERS.NUMBER.LABEL' | translate}}</mat-label>
+            <input matInput class="form-control" matInput type="text" [value]='selectedChantier?.numero'   />
+        </mat-form-field>
+        <mat-form-field class="col-xl-4">
+            <mat-label>{{'CHANTIERS.NAME.LABEL' | translate}}</mat-label>
+            <input matInput class="form-control" matInput type="text" [value]='selectedChantier?.nom'   />
+        </mat-form-field>
+        
+        <mat-form-field class="col-xl-4">
+            <mat-label>{{'CHANTIERS.DATE_DEMARRAGE.LABEL' | translate}}</mat-label>
+            <input matInput class="form-control" matInput type="text" [value]='selectedChantier?.date_demarrage'   />
+        </mat-form-field>
+    </div>
+    <div class="row">                            
+        <mat-form-field class="col-xl-4">
+            <mat-label>{{'CHANTIERS.NAME.LABEL' | translate}}</mat-label>
+            <input matInput class="form-control" matInput type="text" [value]='selectedChantier?.client'   />
+        </mat-form-field>
+        <mat-form-field class="col-xl-4">
+            <mat-label>{{'COMMON.ADRESS.LABEL' | translate}}</mat-label>
+            <input matInput class="form-control" matInput type="text" [value]='selectedChantier?.adresse'   />
+        </mat-form-field>
+        <mat-form-field class="col-xl-4">
+            <mat-label>{{'COMMON.CITY.LABEL' | translate}}</mat-label>
+            <input matInput class="form-control" matInput type="text" [value]='selectedChantier?.ville'   />
+        </mat-form-field>
+    </div>
+</div>
+<div class="col-xl-12 mt-4">
+    <button mat-raised-button [disabled]="!selectedChantier" color="primary" (click)="selectChantier()">
+        Sélectionner le chantier {{ selectedChantier?.nom }}
+    </button>
+</div>

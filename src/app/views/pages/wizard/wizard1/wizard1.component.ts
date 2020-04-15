@@ -41,7 +41,7 @@ export class Wizard1Component implements OnInit, AfterViewInit {
 
 	ngAfterViewInit(): void {
 		// Initialize form wizard
-		const wizard = new KTWizard(this.el.nativeElement, {
+		const wizard = new TFWizard(this.el.nativeElement, {
 			startStep: 1
 		});
 
@@ -57,7 +57,7 @@ export class Wizard1Component implements OnInit, AfterViewInit {
 		// Change event
 		wizard.on('change', () => {
 			setTimeout(() => {
-				KTUtil.scrollTop();
+				TFUtil.scrollTop();
 			}, 500);
 		});
 	}

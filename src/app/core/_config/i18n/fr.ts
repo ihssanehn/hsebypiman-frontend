@@ -364,6 +364,59 @@ export const locale = {
 				SHORTTITLE:'Courant mis à disposition',
 			},
 		},
+		VISITES:{
+			CODE:{
+				LABEL:'Numéro',
+				PLACEHOLDER:'',
+				TITLE:'Numéro',
+				SHORTTITLE:'Numéro'
+			},
+			CLIENT:{
+				LABEL:'Client',
+				PLACEHOLDER:'',
+				TITLE:'Client',
+				SHORTTITLE:'Client'
+			},
+			CHANTIER:{
+				LABEL:'Nom du chantier',
+				PLACEHOLDER:'',
+				TITLE:'Nom du chantier',
+				SHORTTITLE: 'Nom'
+			},
+			TYPE:{
+				LABEL:'Type',
+				PLACEHOLDER:'',
+				TITLE:'Type',
+				SHORTTITLE:'Type'
+			},
+			STATUS:{
+				LABEL:'Statut',
+				PLACEHOLDER:'',
+				TITLE:'Statut de la visite',
+				SHORTTITLE:'Statut'
+			},
+			REDACTEUR:{
+				LABEL:'Rédacteur',
+				PLACEHOLDER:'',
+				TITLE:'Rédacteur',
+				SHORTTITLE:'Rédacteur',
+			},
+			VISITED:{
+				LABEL:'Personne visité',
+				PLACEHOLDER:'',
+				TITLE:'Personne visité',
+				SHORTTITLE:'Personne visité',
+			},
+			DATE_VISITE:{
+				LABEL:'Date de la visite',
+				PLACEHOLDER:'',
+				TITLE:'Date de la visite',
+				SHORTTITLE:'Date de visite',
+			},
+			FORM:{
+				CREATE:'Créer une nouvelle visite'
+			}
+		},
 		COMMON:{
 			CITY:{
 				LABEL:'Ville',

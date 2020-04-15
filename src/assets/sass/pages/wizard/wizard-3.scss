@@ -75,7 +75,7 @@ $tf-wizard-v3-form-inner-bg: #ffffff;
 					}
 				}
 
-				&[data-ktwizard-state="current"] {
+				&[data-tfwizard-state="current"] {
 
 					&:after{
 						color: $tf-wizard-v3-step-highlight;
@@ -199,7 +199,7 @@ $tf-wizard-v3-form-inner-bg: #ffffff;
 					}
 				}
 
-				[data-ktwizard-type="action-prev"]{
+				[data-tfwizard-type="action-prev"]{
 					margin-right:auto;
 
 					@include tf-mobile-sm{
@@ -207,7 +207,7 @@ $tf-wizard-v3-form-inner-bg: #ffffff;
 					}
 				}
 
-				[data-ktwizard-type="action-next"]{
+				[data-tfwizard-type="action-next"]{
 					margin: auto 0 auto auto;
 
 					@include tf-mobile-sm{
@@ -234,34 +234,34 @@ $tf-wizard-v3-form-inner-bg: #ffffff;
 	}
 
 	// Step
-	[data-ktwizard-type="step"] {
-		&[data-ktwizard-state="current"] {
+	[data-tfwizard-type="step"] {
+		&[data-tfwizard-state="current"] {
 
 		}
 
-		&[data-ktwizard-state="done"] {
+		&[data-tfwizard-state="done"] {
 
 		}
 
-		&[data-ktwizard-state="pending"] {
+		&[data-tfwizard-state="pending"] {
 
 		}
 	}
 
 	// Step info
-	[data-ktwizard-type="step-info"] {
+	[data-tfwizard-type="step-info"] {
 		display: none;
 
-		&[data-ktwizard-state="current"] {
+		&[data-tfwizard-state="current"] {
 			display: block;
 		}
 	}
 
 	// Content states
-	[data-ktwizard-type="step-content"] {
+	[data-tfwizard-type="step-content"] {
 		display: none;
 
-		&[data-ktwizard-state="current"] {
+		&[data-tfwizard-state="current"] {
 			display: block;
 		}
 	}
@@ -269,57 +269,57 @@ $tf-wizard-v3-form-inner-bg: #ffffff;
 
  	// Action buttons states
 	& {
-		[data-ktwizard-type="action-prev"]{
+		[data-tfwizard-type="action-prev"]{
 			display: none;
 		}
 
-		[data-ktwizard-type="action-next"]{
+		[data-tfwizard-type="action-next"]{
 			display: inline-block;
 		}
 
-		[data-ktwizard-type="action-submit"]{
+		[data-tfwizard-type="action-submit"]{
 			display: none;
 		}
 	}
 
-	&[data-ktwizard-state="first"] {
-		[data-ktwizard-type="action-prev"]{
+	&[data-tfwizard-state="first"] {
+		[data-tfwizard-type="action-prev"]{
 			display: none;
 		}
 
-		[data-ktwizard-type="action-next"]{
+		[data-tfwizard-type="action-next"]{
 			display: inline-block;
 		}
 
-		[data-ktwizard-type="action-submit"]{
-			display: none;
-		}
-	}
-
-	&[data-ktwizard-state="between"] {
-		[data-ktwizard-type="action-prev"]{
-			display: inline-block;
-		}
-
-		[data-ktwizard-type="action-next"]{
-			display: inline-block;
-		}
-
-		[data-ktwizard-type="action-submit"]{
+		[data-tfwizard-type="action-submit"]{
 			display: none;
 		}
 	}
 
-	&[data-ktwizard-state="last"] {
-		[data-ktwizard-type="action-prev"]{
+	&[data-tfwizard-state="between"] {
+		[data-tfwizard-type="action-prev"]{
 			display: inline-block;
 		}
 
-		[data-ktwizard-type="action-next"]{
+		[data-tfwizard-type="action-next"]{
+			display: inline-block;
+		}
+
+		[data-tfwizard-type="action-submit"]{
+			display: none;
+		}
+	}
+
+	&[data-tfwizard-state="last"] {
+		[data-tfwizard-type="action-prev"]{
+			display: inline-block;
+		}
+
+		[data-tfwizard-type="action-next"]{
 			display: none;
 		}
 
-		[data-ktwizard-type="action-submit"]{
+		[data-tfwizard-type="action-submit"]{
 			display: inline-block;
 		}
 	}

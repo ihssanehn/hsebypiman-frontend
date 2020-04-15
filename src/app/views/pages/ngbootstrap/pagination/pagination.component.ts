@@ -227,7 +227,7 @@ export class NgbdPaginationConfig {
 	};
 
 @Component({
-	selector: 'kt-pagination',
+	selector: 'tf-pagination',
 	templateUrl: './pagination.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

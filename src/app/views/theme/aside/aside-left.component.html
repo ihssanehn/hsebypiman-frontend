@@ -12,7 +12,7 @@
 	<!-- BEGIN: Aside Menu -->
 	<div class="tf-aside-menu-wrapper tf-grid__item tf-grid__item--fluid" id="tf_aside_menu_wrapper">
 		<div #asideMenu tfMenu [options]="menuOptions" id="tf_aside_menu" class="tf-aside-menu tf-aside-menu--dropdown"
-			[attr.data-ktmenu-dropdown]="1"
+			[attr.data-tfmenu-dropdown]="1"
 			(mouseenter)="mouseEnter($event)"
 			(mouseleave)="mouseLeave($event)">
 			<ul class="tf-menu__nav" [ngClass]="htmlClassService.getClasses('aside_menu_nav', true)">
@@ -41,9 +41,9 @@
 
 <ng-template #menuItemInnerTemplate let-item="item" let-parentItem="parentItem">
 	<li [attr.aria-haspopup]="true"
-		[attr.data-ktmenu-submenu-toggle]="getItemAttrSubmenuToggle(item)"
-		[attr.data-ktmenu-submenu-mode]="item.mode"
-		[attr.data-ktmenu-dropdown-toggle-class]="item['dropdown-toggle-class']" [ngClass]="getItemCssClasses(item)"
+		[attr.data-tfmenu-submenu-toggle]="getItemAttrSubmenuToggle(item)"
+		[attr.data-tfmenu-submenu-mode]="item.mode"
+		[attr.data-tfmenu-dropdown-toggle-class]="item['dropdown-toggle-class']" [ngClass]="getItemCssClasses(item)"
 		[ngbTooltip]="item.tooltip" data-placement="right">
 
 		<!-- if menu item hasn't submenu -->

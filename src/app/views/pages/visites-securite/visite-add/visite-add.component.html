@@ -1,0 +1,18 @@
+<!-- <div class="row row-filters" style="height: 69px;">
+  
+</div> -->
+<form [formGroup]="visiteForm" class="tf-form tf-form--group-seperator-dashed ">
+	<tf-portlet>
+		<tf-portlet-body>
+			<div class="tf-heading tf-heading--md" style="margin-top: 0;">{{'VISITES.FORM.CREATE' | translate}}</div>
+			<tf-search-chantier-header class="row" (chantierSelected)="onChantierSelected($event)"  ></tf-search-chantier-header>
+		</tf-portlet-body>
+		<tf-portlet-body>
+			<tf-vs-form-head class="row" [visiteForm]="visiteForm" [edit]="true"></tf-vs-form-head>
+		</tf-portlet-body>
+	</tf-portlet>
+	
+	<button mat-raised-button color="success" class="float-right" (click)="onSubmit(false)">
+		{{'ACTION.SAVE' | translate}}
+	</button>
+</form>

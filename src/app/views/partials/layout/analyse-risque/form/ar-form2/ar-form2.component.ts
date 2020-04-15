@@ -8,7 +8,7 @@ import { SignaturePad } from 'angular2-signaturepad/signature-pad';
 
 
 @Component({
-  selector: 'kt-ar-form2',
+  selector: 'tf-ar-form2',
   templateUrl: './ar-form2.component.html',
   styleUrls: ['./ar-form2.component.scss']
 })
