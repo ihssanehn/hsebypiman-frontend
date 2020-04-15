@@ -103,7 +103,7 @@
     </div>
     <div class="row mt-4" *ngIf="chantier.status.code != 'TERMINE'">
       <div class="col-12">
-        <button mat-raised-button color="info" (click)="closeChantier(chantier.id)">
+        <button class="pull-right" mat-raised-button color="info" (click)="closeChantier(chantier.id)">
           <mat-icon  svgIcon="status-termine" inline="true" style="width: 21px; margin-top: -6px; margin-right: 6px;"></mat-icon>
           Clore le chantier
         </button>
