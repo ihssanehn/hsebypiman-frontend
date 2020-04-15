@@ -4,6 +4,7 @@ import { Paginate } from '@app/core/_base/layout/models/paginate.model';
 import { Ar } from '@app/core/models';
 import { TranslateService } from '@ngx-translate/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'tf-ars-list',
@@ -73,9 +74,18 @@ export class ArsListComponent implements OnInit {
 		this.getArs();
 	}
 
-	editAr(ar){
-		this.router.navigate(['../edit', ar.id], { relativeTo: this.activatedRoute });
-		console.log('éditer le Ar n°'+ar.id);
+	editAr(arId){
+		this.router.navigate(['../edit', arId], { relativeTo: this.activatedRoute });
+	}
+
+	viewAr(arId){}
+
+	deleteAr(arId){
+		Swal.fire({
+			title: 'Désolé cette fonctionnalité n\'a pas encore été implémentée',
+			showConfirmButton: false,
+			timer: 1500
+		})
 	}
 
 
@@ -97,7 +107,7 @@ export class ArsListComponent implements OnInit {
 			this.filter.order_way = 'asc';
 		}
 	}
-	
+
 	isOrderedBy(by) {
 		if (Array.isArray(by)) {
 			return JSON.stringify(by) == JSON.stringify(this.filter.order_by)
