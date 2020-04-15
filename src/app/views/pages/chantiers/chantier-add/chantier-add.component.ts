@@ -59,24 +59,6 @@ export class ChantierAddComponent implements OnInit {
       montant: ['', Validators.required],
       date_demarrage: ['', Validators.required],
       charge_affaire_id: [null, Validators.required],
-      ar: this.chantierFB.group({
-        date: [null, Validators.compose([])],
-        a_prevoir_compagnons:[null, Validators.compose([])],
-        date_accueil_secu:[null, Validators.compose([])],
-        realisateur:[null, Validators.compose([])],
-        tel_realisateur:[null, Validators.compose([])],
-        date_validite:[null, Validators.compose([])],
-        num_secours:[null, Validators.compose([])],
-        contact_interne_secours:[null, Validators.compose([])],
-        tel_contact_interne_secours:[null, Validators.compose([])],
-        contact_client_chef_chtr:[null, Validators.compose([])],
-        tel_contact_client_chef_chtr:[null, Validators.compose([])],
-        contact_client_hse:[null, Validators.compose([])],
-        tel_contact_client_hse:[null, Validators.compose([])],
-        heure_ouverture:[null, Validators.compose([])],
-        heure_fermeture:[null, Validators.compose([])],
-        courant_dispo:[null, Validators.compose([])],
-      })
 		});
 		this.loaded = true;
 		this.cdr.detectChanges();
@@ -85,34 +67,9 @@ export class ChantierAddComponent implements OnInit {
   async onSubmit(event){
     try {
       let result;
-
       let form = {...this.chantierForm.value};
       form.date_demarrage = this.setDateFormat(form.date_demarrage)
-      form.ar.date = this.setDateFormat(form.ar.date);
-      form.ar.date_accueil_secu = this.setDateFormat(form.ar.date_accueil_secu);
-      form.ar.date_demarrage = this.setDateFormat(form.ar.date_demarrage);
-      form.ar.date_validite = this.setDateFormat(form.ar.date_validite);
   
-      if(
-        !form.ar.date &&
-        !form.ar.a_prevoir_compagnons &&
-        !form.ar.date_accueil_secu &&
-        !form.ar.realisateur &&
-        !form.ar.tel_realisateur &&
-        !form.ar.date_validite &&
-        !form.ar.num_secours &&
-        !form.ar.contact_interne_secours &&
-        !form.ar.tel_contact_interne_secours &&
-        !form.ar.contact_client_chef_chtr &&
-        !form.ar.tel_contact_client_chef_chtr &&
-        !form.ar.contact_client_hse &&
-        !form.ar.tel_contact_client_hse &&
-        !form.ar.heure_ouverture &&
-        !form.ar.heure_fermeture && !form.ar.courant_dispo
-      ){
-        form.ar = null;
-      }
-
 			this.chantierService.create(form)
         .toPromise()
         .then((chantier) => {
