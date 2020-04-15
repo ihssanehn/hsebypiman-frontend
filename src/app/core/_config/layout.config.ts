@@ -17,7 +17,7 @@ export class LayoutConfig {
 		loader: {
 			enabled: true,
 			type: 'spinner-logo',
-			logo: './assets/media/hse-png/logo.png',
+			logo: './assets/media/hse-svg/logo-load.svg',
 			message: 'Please wait...',
 		},
 		// == Colors for javascript
