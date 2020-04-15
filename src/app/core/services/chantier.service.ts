@@ -27,6 +27,12 @@ export class ChantierService extends HttpService{
     getAllItems(): Observable<Chantier[]> {
 		return this.http.get<Chantier[]>(`${this.baseUrl}`);
 	}
+    getAllList(): Observable<Chantier[]> {
+		return this.http.get<Chantier[]>(`${this.baseUrl}/list`);
+	}
+    getAllClients(){
+		return this.http.get<String[]>(`${this.baseUrl}/clients`);
+	}
     get(chantier_id): Observable<Chantier>{
         return this.http.get<Chantier>(this.baseUrl+'/'+chantier_id);
     }

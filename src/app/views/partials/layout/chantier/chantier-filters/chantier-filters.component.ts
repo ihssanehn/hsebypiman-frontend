@@ -4,6 +4,9 @@ import { fromEvent, of, Subscription } from 'rxjs';
 import { debounceTime,map,distinctUntilChanged,filter, tap } from 'rxjs/operators';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
+import { ChantierService, TypeService, StatusService } from '@app/core/services';
+import { Chantier, Type, Status } from '@app/core/models';
+import { AuthService, User } from '@app/core/auth';
 
 @Component({
   selector: 'tf-chantier-filters',
@@ -15,6 +18,7 @@ import { MatIconRegistry } from '@angular/material';
     multi: true
   }]
 })
+
 export class ChantierFiltersComponent implements AfterViewInit, OnInit, OnDestroy {
 
   
@@ -23,10 +27,17 @@ export class ChantierFiltersComponent implements AfterViewInit, OnInit, OnDestro
   loading = false;
   hidden = true;
   data: boolean = false;
+  users: User[];
+  status: Status[];
+  types: Type[];
+  clients: String[];
   filter = {
     keyword: "",
     dateRange: [],
-    status_id: ""
+    status_id: "",
+    type_id: "",
+    client:"",
+    charge_affaire_id: null,
   };
   statuses;
 
@@ -35,15 +46,20 @@ export class ChantierFiltersComponent implements AfterViewInit, OnInit, OnDestro
   
   @Output() change = new EventEmitter();
   constructor(
-    // private statusService: StatusService
+    private statusService: StatusService,
+    private chantierService:ChantierService, 
+    private typeService:TypeService,
+    private authService:AuthService,
 		iconRegistry: MatIconRegistry, 
-		sanitizer: DomSanitizer
+    sanitizer: DomSanitizer,
   ) {
 		iconRegistry.addSvgIcon(
       'search',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/search.svg'));
   }
 
-  async ngOnInit(){}
+  async ngOnInit(){
+    this.getUsers();
+  }
 
   async ngAfterViewInit() {
     fromEvent(this.searchInput.nativeElement,'keyup')
@@ -58,6 +74,24 @@ export class ChantierFiltersComponent implements AfterViewInit, OnInit, OnDestro
         this.submit();
       });
   }
+
+
+  // Load ressources needed
+  async getUsers(){
+    this.users = await this.authService.getAllUsers().toPromise();
+  }
+  async getStatus(){
+    this.status = await this.statusService.getAllFromModel('Chantier').toPromise();
+  }
+  async getClients(){
+    this.clients = await this.chantierService.getAllClients().toPromise();
+  }
+  async getTypes(){
+    this.types = await this.typeService.getAllFromModel('Chantier').toPromise();
+  }
+
+  
+
 
   submit() {
     this.change.emit(this.filter);

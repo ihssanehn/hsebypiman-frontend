@@ -16,10 +16,47 @@
 						<span ><i *ngIf="data" [ngStyle]="{'display': 'flex'}" class="la la-close tf-quick-search__close"></i></span>
 					</span>
 					<span class="input-group-text" (click)="hidden = !hidden">
-						<!-- <span >Recherche Avancée <i class="fa pl-2" [ngClass]="hidden ? 'fa-caret-right':'fa-caret-down'"></i></span> -->
+						<span >Recherche Avancée <i class="fa pl-2" [ngClass]="hidden ? 'fa-caret-right':'fa-caret-down'"></i></span>
 					</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-12" *ngIf="!hidden">
+			<div class="row card card-filters">
+				<div class="col-3">
+					<mat-form-field>
+						<mat-label>{{'CHANTIERS.CHIEF.TITLE' | translate}}</mat-label>
+						<mat-select>
+							<mat-option *ngFor="let user of users" [value]="user.id" [(ngModel)]="charge_affaire_id">
+								{{user.fulname}}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</div>
+				<div class="col-3">
+					<mat-form-field>
+						<mat-label>{{'CHANTIERS.STATUS.TITLE' | translate}}</mat-label>
+						<mat-select>
+							<mat-option *ngFor="let statu of statuss" [value]="statu.id" [(ngModel)]="status_id">
+								{{statu.libelle}}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</div>
+				<div class="col-3">
+					<mat-form-field>
+						<mat-label>{{'CHANTIERS.TYPE.TITLE' | translate}}</mat-label>
+						<mat-select>
+							<mat-option *ngFor="let type of types" [value]="type.id" [(ngModel)]="charge_affaire_id">
+								{{type.libelle}}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
 				</div>
 			</div>
 		</div>
 	</div>
 </form>
+<!-- client,  -->
+<!-- période, budget, sansAr, sansVs, -->
