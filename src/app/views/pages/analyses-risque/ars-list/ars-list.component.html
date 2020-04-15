@@ -1,42 +1,54 @@
-<div class="row row-filters" style="height: 69px;">
-  
-</div>
+
+<tf-chantier-filters [(ngModel)]="filter" (change)="getArs()" class="row row-filters"></tf-chantier-filters>
 
 <tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
 	<tf-portlet-body class="tf-portlet__body--fit" style="padding: 15px;" *ngIf="arsList">
     
     <table mat-table [dataSource]="arsList.data">
-      <!--- Note that these columns can be defined in any order.
-                The actual rendered columns are set as a property on the row definition" -->
-                
-      <!-- Position Column -->
+
+      <!-- Number Column -->
       <ng-container matColumnDef="number">
-        <th mat-header-cell *matHeaderCellDef> {{'ARS.NUMBER' | translate}} </th>
+        <th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('code')">
+          {{'ARS.NUMBER' | translate}} 
+          <i class="fa" [ngClass]="isOrderedBy('code') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('code') && {'opacity': 1}"></i>
+        </th>
         <td mat-cell *matCellDef="let ar" class="pointer"> {{ar.code}} </td>
       </ng-container>
-      <!-- Position Column -->
+      <!-- Name Column -->
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> {{'CHANTIERS.CLIENT.TITLE' | translate}} - {{'CHANTIERS.NAME.TITLE' | translate}} </th>
+        <th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder(['chantiers.client', 'chantiers.nom'])"> 
+          {{'CHANTIERS.CLIENT.TITLE' | translate}} - {{'CHANTIERS.NAME.TITLE' | translate}}
+          <i class="fa" [ngClass]="isOrderedBy(['chantiers.client', 'chantiers.nom']) && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy(['chantiers.client', 'chantiers.nom']) && {'opacity': 1}"></i>
+        </th>
         <td mat-cell *matCellDef="let ar" class="pointer"> {{ar.chantier.client}} - {{ar.chantier.nom}} </td>
       </ng-container>
-      <!-- Position Column -->
+      <!-- CA Column -->
       <ng-container matColumnDef="charge_affaire">
-        <th mat-header-cell *matHeaderCellDef class="text-center"> {{'CHANTIERS.CHIEF.TITLE' | translate}} </th>
+        <th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder(['users.nom', 'users.prenom'])"> 
+          {{'CHANTIERS.CHIEF.TITLE' | translate}} 
+          <i class="fa" [ngClass]="isOrderedBy(['users.nom', 'users.prenom']) && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy(['users.nom', 'users.prenom']) && {opacity:1}"></i>
+        </th>
         <td mat-cell *matCellDef="let ar" class="text-center pointer"> {{ar.chantier.charge_affaire | initiales}} </td>
       </ng-container>
-      <!-- Position Column -->
+      <!-- Status Column -->
       <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef class="text-center"> {{'ARS.STATUS' | translate}} </th>
+        <th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('status.libelle')"> 
+          {{'ARS.STATUS' | translate}} 
+          <i class="fa" [ngClass]="isOrderedBy('status.libelle') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('status.libelle') && {opacity:1}"></i>
+        </th>
         <td mat-cell *matCellDef="let ar" class="text-center pointer"> {{ar.status?.libelle}} </td>
       </ng-container>
-      <!-- Position Column -->
+      <!-- Nbr Signatories Column -->
       <ng-container matColumnDef="sign_count" >
         <th mat-header-cell *matHeaderCellDef class="text-center"> {{'ARS.SIGNATAIRECOUNT' | translate}} </th>
         <td mat-cell *matCellDef="let ar" class="text-center pointer"> {{ar.signatures_count}} </td>
       </ng-container>
-      <!-- Position Column -->
+      <!-- Created at Column -->
       <ng-container matColumnDef="created_at" >
-        <th mat-header-cell *matHeaderCellDef class="text-center"> {{'COMMON.CREATED_AT.TITLE' | translate}} </th>
+        <th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('created_at')"> 
+          {{'COMMON.CREATED_AT.TITLE' | translate}} 
+          <i class="fa" [ngClass]="isOrderedBy('created_at') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('created_at') && {opacity:1}"></i>
+        </th>
         <td mat-cell *matCellDef="let ar" class="text-center pointer"> {{ar.created_at | date:'dd/MM/yyyy'}} </td>
       </ng-container>
 

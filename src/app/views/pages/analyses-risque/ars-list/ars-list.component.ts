@@ -22,11 +22,12 @@ export class ArsListComponent implements OnInit {
 	filter: any = {
 		per_page: this.pagination.pageSize,
 		page: this.pagination.page,
-		orders_by: [],
+		order_by: ['created_at'],
+		order_way: 'desc',
 		keyword: "",
 		dateRange: [],
 		status_id: "",
-		params:[]
+		params: []
 	};
 	displayedArColumns=['number','name','charge_affaire','status','sign_count','created_at','action'];
 
@@ -75,6 +76,34 @@ export class ArsListComponent implements OnInit {
 	editAr(ar){
 		this.router.navigate(['../edit', ar.id], { relativeTo: this.activatedRoute });
 		console.log('éditer le Ar n°'+ar.id);
+	}
+
+
+	setOrder(by) {
+		console.log(this.filter)
+		if (this.isOrderedBy(by)) {
+			this.toggleOrderWay()
+		} else {
+			this.filter.order_by = by;
+			this.filter.order_way = 'asc';
+		}
+		this.getArs();
+	}
+
+	toggleOrderWay() {
+		if (this.filter.order_way == 'asc') {
+			this.filter.order_way = 'desc';
+		} else {
+			this.filter.order_way = 'asc';
+		}
+	}
+	
+	isOrderedBy(by) {
+		if (Array.isArray(by)) {
+			return JSON.stringify(by) == JSON.stringify(this.filter.order_by)
+		} else {
+			return by == this.filter.order_by
+		}
 	}
 
 }
