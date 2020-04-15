@@ -1,15 +1,6 @@
 <form [formGroup]="arForm" class="tf-form tf-form--group-seperator-dashed ">
 
 	<tf-portlet>
-		<tf-portlet-header [title]="" [class]="'tf-portlet__head--lg'">
-			<!-- <ng-container tfPortletTools> -->
-			<!-- <a [routerLink]="['../../']" class="btn btn-secondary tf-margin-r-10" mat-raised-button
-					matTooltip="Back to the users list">
-					<i class="la la-arrow-left"></i>
-					<span class="tf-hidden-mobile">Back</span>
-				</a> -->
-			<!-- </ng-container> -->
-		</tf-portlet-header>
 
 		<tf-portlet-body style="flex-direction: row;">
 
@@ -64,10 +55,6 @@
 							</div>
 							<div class="row">
 								<div class="col-xl-4">
-									<mat-label>{{'ARS.DATE.LABEL' | translate}}</mat-label>
-									<input class="form-control" matInput type="text" [value]=''   />
-								</div>
-								<div class="col-xl-3">
 									<mat-label>{{'ARS.DATE_DEMARRAGE' | translate}}</mat-label>
 									<input class="form-control" matInput type="text" [value]='chantier?.date_demarrage'   />
 								</div>
@@ -75,7 +62,7 @@
 									<mat-label>{{'ARS.EMPLOYEE' | translate}}</mat-label>
 									<input class="form-control" matInput type="text" [value]='chantier?.contact'   />
 								</div>
-								<div class="col-xl-2">
+								<div class="col-xl-3">
 									<mat-label>{{'ARS.BUDGET' | translate}}</mat-label>
 									<input class="form-control" matInput type="text" [value]='chantier?.montant'   />
 								</div>
