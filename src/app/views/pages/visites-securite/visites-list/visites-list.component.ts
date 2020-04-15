@@ -79,11 +79,21 @@ export class VisitesListComponent implements OnInit {
 
 
 	viewVisite(visiteId) {
-		this.router.navigateByUrl('visites-securite/detail/' + visiteId);
+		// this.router.navigateByUrl('visites-securite/detail/' + visiteId);
+		Swal.fire({
+			title: 'Désolé cette fonctionnalité n\'a pas encore été implémentée',
+			showConfirmButton: false,
+			timer: 1500
+		})
 	}
 	editVisite(visiteId) {
 
-		this.router.navigateByUrl('visites-securite/edit/' + visiteId);
+		// this.router.navigateByUrl('visites-securite/edit/' + visiteId);
+		Swal.fire({
+			title: 'Désolé cette fonctionnalité n\'a pas encore été implémentée',
+			showConfirmButton: false,
+			timer: 1500
+		})
 	}
 	deleteVisite(visiteId) {
 		Swal.fire({
