@@ -37,6 +37,7 @@ export class InitialesPipe implements PipeTransform {
 	 */
 	transform(value: any, args?: any): any {
 		if(!value){return ''}
+		
 		return (value.prenom.split(' ').map(n => n[0]).join('')+value.nom.split(' ').map(n => n[0]).join('')+value.nom.split(' ').map(n => n[1]).join('')).toUpperCase(); 
 	}
 }

@@ -32,7 +32,7 @@ export class ChantiersListComponent implements OnInit {
 		status_id: "",
 		params: []
 	};
-	displayedChantierColumns = ['number', 'client', 'name', 'status', 'charge_affaire', 'montant', 'ars_count', 'latest_ar', 'vss_count', 'latest_vs', 'action'];
+	displayedChantierColumns = ['number', 'name', 'client', 'status', 'charge_affaire', 'montant', 'date_demarrage', 'ars_count', 'latest_ar', 'vss_count', 'latest_vs', 'action'];
 
 	constructor(
 		private router: Router,

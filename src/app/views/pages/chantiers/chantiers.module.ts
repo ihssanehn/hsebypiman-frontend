@@ -53,7 +53,7 @@ import {
 	MAT_DATE_FORMATS,
 	DateAdapter
 } from '@angular/material';
-// import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapter';
+import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapter';
 
 
 const routes: Routes = [
@@ -151,6 +151,9 @@ const routes: Routes = [
 				width: '900px'
 			}
 		},
+		
+		{ provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
+		{ provide: DateAdapter, useClass: CustomDateAdapter },
 		HttpUtilsService,
 		TypesUtilsService,
 		LayoutUtilsService

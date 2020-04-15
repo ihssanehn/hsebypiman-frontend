@@ -3,7 +3,6 @@
 </div> -->
 <form [formGroup]="chantierForm" class="tf-form tf-form--group-seperator-dashed ">
 	<tf-chantier-form [chantierForm]="chantierForm" [edit]="false"></tf-chantier-form>
-	<tf-ar-form-1 [arForm]="chantierForm.controls['ar']" ></tf-ar-form-1>
 	<button mat-raised-button [disabled]="chantierForm.invalid" color="success" class="float-right" (click)="chantierForm.valid && onSubmit(false)">
 		{{'ACTION.SAVE' | translate}}
 	</button>
