@@ -19,7 +19,12 @@
 										<mat-icon svgIcon="search"></mat-icon>
 									</span>
 								</div>
-								<input #searchInput type="text" class="form-control" name="keyword" placeholder="{{'FILTER.SEARCH_CHANTIER' | translate}}">
+								<input #searchInput type="text" class="form-control" name="keyword" placeholder="{{'FILTER.SEARCH_CHANTIER' | translate}}" [matAutocomplete]="auto">
+								<mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+									<mat-option *ngFor="let chantier of filteredChantiers | async" [value]="chantier">
+										{{chantier.nom}}
+									</mat-option>
+								</mat-autocomplete>
 							</div>
 						</div>
 					</div>
