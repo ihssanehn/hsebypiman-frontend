@@ -75,10 +75,21 @@ export class ArsListComponent implements OnInit {
 	}
 
 	editAr(arId){
-		this.router.navigate(['../edit', arId], { relativeTo: this.activatedRoute });
+		// this.router.navigate(['../edit', arId], { relativeTo: this.activatedRoute });
+		Swal.fire({
+			title: 'Désolé cette fonctionnalité n\'a pas encore été implémentée',
+			showConfirmButton: false,
+			timer: 1500
+		})
 	}
 
-	viewAr(arId){}
+	viewAr(arId){
+		Swal.fire({
+			title: 'Désolé cette fonctionnalité n\'a pas encore été implémentée',
+			showConfirmButton: false,
+			timer: 1500
+		})
+	}
 
 	deleteAr(arId){
 		Swal.fire({
