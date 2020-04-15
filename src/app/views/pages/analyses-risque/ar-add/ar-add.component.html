@@ -1,6 +1,13 @@
 <form [formGroup]="arForm" class="tf-form tf-form--group-seperator-dashed ">
 
-	<tf-portlet>
+	<tf-portlet id="portlet-chantier">
+		<div class="tf-portlet-header " >
+			<span class="title">
+			  <a [routerLink]="['/analyses-risque/list']">{{'MENU.HOME' | translate}}</a>
+			  <span class="divider">></span>
+			  <span class="id-item">{{'MENU.SUB_ANALYSERISQUE.ADD' | translate}}</span>
+			</span>
+		</div>
 
 		<tf-portlet-body style="flex-direction: row;">
 
@@ -19,9 +26,9 @@
 										<mat-icon svgIcon="search"></mat-icon>
 									</span>
 								</div>
-								<input #searchInput type="text" class="form-control" name="keyword" placeholder="{{'FILTER.SEARCH_CHANTIER' | translate}}" [matAutocomplete]="auto">
+								<input #searchInput type="text" [formControl]="searchControl" class="form-control" name="keyword" placeholder="{{'FILTER.SEARCH_CHANTIER' | translate}}" [matAutocomplete]="auto">
 								<mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-									<mat-option *ngFor="let chantier of filteredChantiers | async" [value]="chantier">
+									<mat-option *ngFor="let chantier of filteredChantiers | async" [value]="chantier" (click)="initFilteredChantiers()">
 										{{chantier.nom}}
 									</mat-option>
 								</mat-autocomplete>
@@ -30,7 +37,7 @@
 					</div>
 
 					<div class="col-xl-3">
-						<button class="btn btn-brand btn-search" (click)="searchForChantier(searchInput.value)">
+						<button class="btn btn-brand btn-search" (click)="searchForChantier()">
 							Lancer
 						</button>
 					</div>

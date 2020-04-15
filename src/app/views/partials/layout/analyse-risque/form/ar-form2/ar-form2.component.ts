@@ -40,14 +40,13 @@ export class ArForm2Component implements OnInit {
     private cdr: ChangeDetectorRef,
     private fb: FormBuilder
   ) { 
-    this.getAllUsers();
     this.getCatRisques();
     this.getEpiTypes();
     this.curDate = new Date();
   }
 
   ngOnInit() {
-    this.initFilteredSalaries();
+    this.getAllUsers();
   }
 
   initFilteredSalaries(){

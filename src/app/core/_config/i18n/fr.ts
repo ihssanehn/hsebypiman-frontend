@@ -26,7 +26,7 @@ export const locale = {
 			ANALYSERISQUE: 'Analyses de risque',
 			SUB_ANALYSERISQUE:{
 				DETAIL:'Détail de l\'analyse de risque',
-				ADD:'Ajouter une analyse de risque',
+				ADD:'Nouvelle analyse de risque de chantier',
 				EDIT:'Modifier l\'analyse de risque',
 				LIST:'Liste des analyses de risque',
 			},
@@ -59,6 +59,7 @@ export const locale = {
 				LIST:'Liste des sous-traitants',
 			},
 			ADMIN: 'Admin',
+			HOME: 'Accueil',
 			SUB_ADMIN:{},
 			BTN:{
 				NEWAR: 'Nouvelle analyse de risque',
