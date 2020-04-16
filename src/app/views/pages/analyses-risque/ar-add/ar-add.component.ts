@@ -133,6 +133,7 @@ export class ArAddComponent implements OnInit {
       nom_charge_registre:[null, Validators.required],
       adresse_charge_registre:['', Validators.required],
       ville_charge_registre:[null, Validators.required],
+      pays_charge_registre:[null, Validators.required],
       codepostal_charge_registre:['', Validators.required],
       tel_charge_registre:['', Validators.required],
       a_prevoir_balisage:['0', Validators.required],
