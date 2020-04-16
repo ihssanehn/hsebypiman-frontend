@@ -141,19 +141,6 @@ export class ArAddComponent implements OnInit {
       tel_ca_cvti:['', Validators.required],
       assistant_ca:['', Validators.required],
       tel_assistant_ca:['', Validators.required],
-
-      observations:['', Validators.required],
-      signatures: this.arFB.array([
-        this.arFB.group({
-          date:[new Date(), Validators.compose([])],
-          personnel:['', Validators.required],
-          society:['', Validators.compose([])],
-          signature:['', Validators.compose([])],
-          commentaires:['', Validators.compose([])],
-          remarks:['', Validators.compose([])],
-        })
-      ]),
-
       risques:new FormArray([]),
       epis:new FormArray([]),
 		});

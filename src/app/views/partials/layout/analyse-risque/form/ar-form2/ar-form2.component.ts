@@ -28,7 +28,7 @@ export class ArForm2Component implements OnInit {
   public risksList : Array<CatRisque>;
   public epiList : Array<EpiType>;
   public user : User;
-  public curDate : Date;
+  //public curDate : Date;
   
   public salaries : Array<User>;
   filteredSalaries: Observable<Array<User>>;
@@ -42,59 +42,11 @@ export class ArForm2Component implements OnInit {
   ) { 
     this.getCatRisques();
     this.getEpiTypes();
-    this.curDate = new Date();
+    //this.curDate = new Date();
   }
 
   ngOnInit() {
-    this.getAllUsers();
-  }
-
-  initFilteredSalaries(){
-    this.signatures.controls.forEach(control => {
-      this.filteredSalaries = control.get('personnel').valueChanges.pipe(
-        startWith(''),
-        map(value => this._filter(value))
-      );
-    });
-  }
-
-  private _filter(value: string): Array<User> {
-    const filterValue = value;
-    return this.salaries.filter(salary => 
-      this._normalizeValue(salary.fullname).includes(filterValue)
-    );
-  }
-
-  private _normalizeValue(value: string): string {
-    return value.toLowerCase().replace(/\s/g, '');
-  }
-
-  displayFn(salary:User): string {
-    return salary ? salary.fullname : '';
-  }
-
-  get signatures() : FormArray {
-    return this.arForm.get('signatures') as FormArray;
-  }
-
-  newSignature(): FormGroup {
-    return this.fb.group({
-      date:[new Date()],
-      personnel:[''],
-      society:[''],
-      signature:[''],
-      commentaires:[''],
-      remarks:[''],
-    });
-  }
-
-  addSignatures() {
-    this.signatures.push(this.newSignature());
-    this.initFilteredSalaries();
-  }
-
-  removeSignature(i:number) {
-    this.signatures.removeAt(i);
+    //this.getAllUsers();
   }
 
   async getCatRisques(){
@@ -190,6 +142,56 @@ export class ArForm2Component implements OnInit {
     //     i++;
     //   });
     // }
+  }
+
+
+  /** Signature */
+  initFilteredSalaries(){
+    this.signatures.controls.forEach(control => {
+      this.filteredSalaries = control.get('personnel').valueChanges.pipe(
+        startWith(''),
+        map(value => this._filter(value))
+      );
+    });
+  }
+
+  private _filter(value: string): Array<User> {
+    const filterValue = value;
+    return this.salaries.filter(salary => 
+      this._normalizeValue(salary.fullname).includes(filterValue)
+    );
+  }
+
+  private _normalizeValue(value: string): string {
+    return value.toLowerCase().replace(/\s/g, '');
+  }
+
+  displayFn(salary:User): string {
+    return salary ? salary.fullname : '';
+  }
+
+  get signatures() : FormArray {
+    return this.arForm.get('signatures') as FormArray;
+  }
+
+  newSignature(): FormGroup {
+    return this.fb.group({
+      date:[new Date()],
+      personnel:[''],
+      society:[''],
+      signature:[''],
+      commentaires:[''],
+      remarks:[''],
+    });
+  }
+
+  addSignatures() {
+    this.signatures.push(this.newSignature());
+    this.initFilteredSalaries();
+  }
+
+  removeSignature(i:number) {
+    this.signatures.removeAt(i);
   }
 
   editSignature(){

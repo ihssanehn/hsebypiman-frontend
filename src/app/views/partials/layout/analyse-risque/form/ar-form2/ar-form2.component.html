@@ -256,7 +256,7 @@
 		</div>
   </div>
 
-  <div class="tf-heading tf-heading--md">| 5 {{'ARS.FORM.SIGNATURE.TITLE' | translate}}</div>
+  <!-- <div class="tf-heading tf-heading--md">| 5 {{'ARS.FORM.SIGNATURE.TITLE' | translate}}</div>
   <div class="row">
 		<div class="col-md-12">
 			<div class="tf-card-form">
@@ -309,13 +309,12 @@
 
             <div class="col-xl-1" >
               <div class="sign-line-options">
-                <!-- <signature-pad [options]="signaturePadOptions"  (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad> -->
+                <signature-pad [options]="signaturePadOptions"  (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad> 
                 <div ngbDropdown placement="bottom-right" class="d-inline-block">
                   <button ngbDropdownToggle mat-icon-button color="secondary" matTooltip="Actions">
                     <mat-icon>more_vert</mat-icon>
                   </button>
                   <div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
-                    <!-- *ngxPermissionsOnly="['ADMIN']" -->
                     <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editSignature()">
                       <mat-icon>edit</mat-icon>
                     </button>
@@ -334,6 +333,6 @@
 
       </div>
     </div>
-  </div>
+  </div> -->
 
 </ng-container>
