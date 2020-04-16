@@ -59,7 +59,7 @@ export class ArForm2Component implements OnInit {
   }
 
   private _filter(value: string): Array<User> {
-    const filterValue = this._normalizeValue(value);
+    const filterValue = value;
     return this.salaries.filter(salary => 
       this._normalizeValue(salary.fullname).includes(filterValue)
     );

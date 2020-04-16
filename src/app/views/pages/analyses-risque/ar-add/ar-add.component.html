@@ -68,7 +68,7 @@
 							<div class="row">
 								<div class="col-xl-4">
 									<mat-label>{{'ARS.DATE_DEMARRAGE' | translate}}</mat-label>
-									<input class="form-control" matInput type="text" [value]='chantier?.date_demarrage'   />
+									<input class="form-control" matInput type="text" [value]='chantier?.date_demarrage| date:"dd/MM/yyyy"'   />
 								</div>
 								<div class="col-xl-3">
 									<mat-label>{{'ARS.EMPLOYEE' | translate}}</mat-label>
@@ -97,7 +97,7 @@
 	<kt-ar-form2 [arForm]="arForm" ></kt-ar-form2>
 	
 
-	<button class="btn btn-primary float-right" (click)="onSubmit(false)">
+	<button mat-raised-button [disabled]="arForm.invalid" class="btn float-right btn-save" (click)="arForm.valid && onSubmit(false)">
 		{{'ACTION.SAVE' | translate}}
 	</button>
 
