@@ -107,7 +107,7 @@ export class ArAddComponent implements OnInit {
   createForm() {
 		this.arForm = this.arFB.group({
       date: [null, Validators.required],
-      a_prevoir_compagnons:['0', Validators.required],
+      a_prevoir_compagnons:[null, Validators.required],
       date_accueil_secu:[null, Validators.required],
       realisateur:['', Validators.required],
       tel_realisateur:['', Validators.required],
@@ -132,14 +132,14 @@ export class ArAddComponent implements OnInit {
       zone_surv_balisee:[false, Validators.required],
       prevoir_balisage_materiel:[false, Validators.required],
 
-      a_signer_registre_travaux:['0', Validators.required],
+      a_signer_registre_travaux:[null, Validators.required],
       nom_charge_registre:[null, Validators.required],
       adresse_charge_registre:['', Validators.required],
       ville_charge_registre:[null, Validators.required],
       pays_charge_registre:[null, Validators.required],
       codepostal_charge_registre:['', Validators.required],
       tel_charge_registre:['', Validators.required],
-      a_prevoir_balisage:['0', Validators.required],
+      a_prevoir_balisage:[null, Validators.required],
       nom_ca_cvti:['', Validators.required],
       tel_ca_cvti:['', Validators.required],
       assistant_ca:['', Validators.required],

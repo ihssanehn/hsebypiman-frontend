@@ -48,8 +48,11 @@ import {
 	MatAutocompleteModule,
 	MAT_DIALOG_DEFAULT_OPTIONS,
 	MatSnackBarModule,
-	MatTooltipModule
+	MatTooltipModule,
+	MAT_DATE_LOCALE, 
+	DateAdapter
 } from '@angular/material';
+import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapter';
 
 
 
@@ -146,6 +149,8 @@ const routes: Routes = [
 				width: '900px'
 			}
 		},
+		{ provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
+		{ provide: DateAdapter, useClass: CustomDateAdapter },
 		HttpUtilsService,
 		TypesUtilsService,
 		LayoutUtilsService

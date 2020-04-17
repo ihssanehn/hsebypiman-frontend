@@ -13,6 +13,7 @@ import { Location } from '@angular/common';
 import moment from 'moment';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
+import { JsonResponse } from '@app/core/_base/layout/models/jsonResponse.model';
 
 @Component({
   selector: 'tf-ar-edit',
@@ -68,9 +69,9 @@ export class ArEditComponent implements OnInit, OnDestroy {
 					this.arService
 						.get(id)
 						.pipe(
-							tap(res=>{
-								this.arForm.patchValue(res.result.data);
-								this.formPathValues(res.result.data);
+							tap(ar=>{
+								this.arForm.patchValue(ar.result.data);
+								this.formPathValues(ar.result.data);
 							})
 						).subscribe( async res => {
 							this.ar = res.result.data;

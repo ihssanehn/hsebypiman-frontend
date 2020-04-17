@@ -20,7 +20,7 @@ export class Ar {
     tel_contact_client_hse?: string;
     heure_ouverture?: number;
     heure_fermeture?: number;
-    courant_Dispo?: string;
+    courant_dispo?: string;
     zone_part?: boolean;
     parking_salarie?: boolean;
     parking_spe_chtr?: boolean;

@@ -55,7 +55,8 @@ export class ArDetailComponent implements OnInit, OnDestroy {
 
 	async getAr(arId: Number){
 		try {
-			this.ar = await this.arService.get(arId).toPromise();
+			var res = await this.arService.get(arId).toPromise();
+			this.ar = res.result.data;
 			this.getChantier(this.ar.chantier_id);
 			this.cdr.markForCheck();
 		} catch (error) {
@@ -64,20 +65,23 @@ export class ArDetailComponent implements OnInit, OnDestroy {
 	}
 
 	async getCatRisques(){
-		this.risksList = await this.catRisqueService.getAll().toPromise();
+		var res = await this.catRisqueService.getAll().toPromise();
+		this.risksList = res.result.data;
 		this.cdr.detectChanges();
 		this.cdr.markForCheck();
 	}
 
 	async getEpiTypes(){
-		this.epiList = await this.epiTypesService.getAll().toPromise();
+		var res = await this.epiTypesService.getAll().toPromise();
+		this.epiList = res.result.data;
 		this.cdr.detectChanges();
 		this.cdr.markForCheck();
 	}
 
 	async getChantier(chantierId: Number){
 		try {
-			this.chantier = await this.chantierService.get(chantierId).toPromise();
+			var res = await this.chantierService.get(chantierId).toPromise();
+			this.chantier = res.result.data;
 			this.cdr.detectChanges();
 			this.cdr.markForCheck();
 		} catch (error) {
