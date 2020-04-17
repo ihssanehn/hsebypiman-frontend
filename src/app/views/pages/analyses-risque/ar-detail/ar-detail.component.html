@@ -276,7 +276,7 @@
                           <th mat-header-cell *matHeaderCellDef> {{'ARS.FORM.COMMENT' | translate}} </th>
                           <td mat-cell *matCellDef="let element">  
                             <div class="example-full-width">
-                                <textarea [readonly]="true" class="form-control no_border" ></textarea>
+                                <textarea [readonly]="true" class="form-control no_border" [value]="getCommentValue(element.id)" ></textarea>
                               </div>
                           </td>
                         </ng-container>

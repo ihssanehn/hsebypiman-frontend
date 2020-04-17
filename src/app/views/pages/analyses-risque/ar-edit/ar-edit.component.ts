@@ -100,6 +100,15 @@ export class ArEditComponent implements OnInit, OnDestroy {
 			epiFormArray.push(new FormControl(element.id));
 		});
 
+		const commentsFormArray: FormArray = this.arForm.get('comments') as FormArray;
+		ar.cat_risques.forEach(element => {
+			const commentGroup: FormGroup = this.arFB.group({
+				'cat_risque_id': element.id,
+				'commentaire': element.commentaire
+			});
+			commentsFormArray.push(commentGroup);
+		});
+
 		this.arForm.get('chantier_id').setValue(ar.chantier_id);
 		this.arForm.get('a_prevoir_compagnons').setValue(ar.a_prevoir_compagnons+'');
 		this.arForm.get('a_signer_registre_travaux').setValue(ar.a_signer_registre_travaux+'');
@@ -166,6 +175,7 @@ export class ArEditComponent implements OnInit, OnDestroy {
 			tel_assistant_ca:['', Validators.required],
 			risques:new FormArray([]),
 			epis:new FormArray([]),
+			comments:new FormArray([]),
 		});
 		this.loaded = true;
 		this.cdr.detectChanges();

@@ -7,6 +7,7 @@ import { User, AuthService } from '@app/core/auth';
 import { SignaturePad } from 'angular2-signaturepad/signature-pad';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
+import { elementEventFullName } from '@angular/compiler/src/view_compiler/view_compiler';
 
 
 @Component({
@@ -129,29 +130,30 @@ export class ArForm2Component implements OnInit {
   }
 
   onCommentCheckChange(id, event) {
-    
-    // const formArray: FormArray = this.arForm.get('comments') as FormArray;
-  
-    // /* Selected */
-    // if(event.source.value){
-    //   // Add a new control in the arrayForm
-    //   formArray.push(new FormControl(event.source.value));
-    // }
-    // /* unselected */
-    // else{
-    //   // find the unselected element
-    //   let i: number = 0;
-  
-    //   formArray.controls.forEach((ctrl: FormControl) => {
-    //     if(ctrl.value == event.source.value) {
-    //       // Remove the unselected element from the arrayForm
-    //       formArray.removeAt(i);
-    //       return;
-    //     }
-  
-    //     i++;
-    //   });
-    // }
+
+    const formArray: FormArray = this.arForm.get('comments') as FormArray;
+
+    if(event.target.value){
+      const commentGroup: FormGroup = this.fb.group({
+        'cat_risque_id': id,
+        'commentaire': event.target.value
+      });
+
+      formArray.push(commentGroup);
+    }
+  }
+
+  getCommentValue(id){
+
+    var commentValue = '';
+    const formValue = this.arForm.get('comments').value;
+    formValue.forEach(element => {
+      if(element.cat_risque_id == id){
+        commentValue = element.commentaire;
+      }
+    });
+
+    return commentValue;
   }
 
 

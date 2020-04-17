@@ -98,6 +98,18 @@ export class ArDetailComponent implements OnInit, OnDestroy {
 		const ids = this.ar.epi_types.map(item => item.id);
 		return ids.includes(epiId);
 	}
+
+	getCommentValue(id){
+
+		var commentValue = '';
+		this.ar.cat_risques.forEach(element => {
+		  if(element.id == id){
+			commentValue = element.commentaire;
+		  }
+		});
+	
+		return commentValue;
+	  }
   
 	ngOnDestroy() {
 			this.subscriptions.forEach(sb => sb.unsubscribe());

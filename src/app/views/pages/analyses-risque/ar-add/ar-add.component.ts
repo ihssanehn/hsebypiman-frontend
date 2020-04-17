@@ -146,6 +146,7 @@ export class ArAddComponent implements OnInit {
       tel_assistant_ca:['', Validators.required],
       risques:new FormArray([]),
       epis:new FormArray([]),
+      comments:new FormArray([]),
 		});
 		this.loaded = true;
 		this.cdr.detectChanges();
