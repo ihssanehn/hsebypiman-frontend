@@ -19,7 +19,7 @@ import { AuthService, User } from '@app/core/auth';
   }]
 })
 
-export class ChantierFiltersComponent implements AfterViewInit, OnInit, OnDestroy {
+export class ChantierFiltersComponent implements OnInit{
 
   
   @ViewChild('searchInput', {static: false}) searchInput: ElementRef;
@@ -32,7 +32,6 @@ export class ChantierFiltersComponent implements AfterViewInit, OnInit, OnDestro
   types: Type[];
   clients: String[];
   filter = {
-    keyword: "",
     dateRange: [],
     status_id: "",
     type_id: "",
@@ -41,10 +40,8 @@ export class ChantierFiltersComponent implements AfterViewInit, OnInit, OnDestro
   };
   statuses;
 
-	// Private properties
-  private readonly subscriptions: Subscription[] = [];
-  
   @Output() change = new EventEmitter();
+  @Output() openAdvancedSearch = new EventEmitter<Boolean>();
   constructor(
     private statusService: StatusService,
     private chantierService:ChantierService, 
@@ -57,22 +54,11 @@ export class ChantierFiltersComponent implements AfterViewInit, OnInit, OnDestro
       'search',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/search.svg'));
   }
 
-  async ngOnInit(){
+  ngOnInit(){
     this.getUsers();
-  }
-
-  async ngAfterViewInit() {
-    fromEvent(this.searchInput.nativeElement,'keyup')
-      .pipe(
-          filter(Boolean),
-          debounceTime(300),
-          distinctUntilChanged(),
-      )
-      .subscribe((text:string)=>{
-        this.data = this.searchInput.nativeElement.value.length > 0 ? true : false;
-        this.filter.keyword = this.searchInput.nativeElement.value;
-        this.submit();
-      });
+    this.getStatus();
+    this.getClients();
+    this.getTypes();
   }
 
 
@@ -90,51 +76,6 @@ export class ChantierFiltersComponent implements AfterViewInit, OnInit, OnDestro
     this.types = await this.typeService.getAllFromModel('Chantier').toPromise();
   }
 
-  
 
-
-  submit() {
-    this.change.emit(this.filter);
-  }
-
-
-  onChange: (_: any) => void = (_: any) => { };
-
-
-  onTouched: () => void = () => { };
-
-
-  writeValue(value): void {
-    if (value) {
-      this.filter = value;
-    }
-  }
-
-  registerOnChange(fn: any): void {
-    this.onChange = fn;
-  }
-
-
-  registerOnTouched(fn: any): void {
-    this.onTouched = fn;
-  }
-
-  get value(): any {
-    return this.filter;
-  }
-  
-  /**
-	 * On destroy
-	 */
-	ngOnDestroy(): void {
-		this.subscriptions.forEach(sb => sb.unsubscribe());
-  }
-  
-  clear(){
-    this.data = false;
-    this.searchInput.nativeElement.value = '';
-    this.filter.keyword = null;
-    this.submit();
-  }
   
 }
