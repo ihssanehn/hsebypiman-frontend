@@ -79,8 +79,7 @@ export class AuthService extends HttpService {
 	 */
 	public requestPassword(email: string): Observable<any> {
 		return this.http
-			.get(API_USERS_URL + "/forgot?=" + email)
-			.pipe(catchError(this.handleError("forgot-password", [])));
+			.post(this.baseUrl+ "auth/password-forgot", {"email":email});
 	}
 
 	getList(): Observable<JsonResponse<User[]>> {
