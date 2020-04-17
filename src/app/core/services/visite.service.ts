@@ -21,17 +21,14 @@ export class VisiteService extends HttpService{
         super()
     }
 
-    getAll(){
-        return this.http.get<Paginate<Visite>>(this.baseUrl);
+    getAll(params){
+        return this.http.post<Paginate<Visite>>(this.baseUrl, {...params});
     }
-    getAllItems(): Observable<Visite[]> {
+    getList(): Observable<Visite[]> {
 		return this.http.get<Visite[]>(`${this.baseUrl}`);
 	}
     get(visite_id): Observable<Visite>{
         return this.http.get<Visite>(this.baseUrl+'/'+visite_id);
-    }
-    search(params){
-        return this.http.post<Paginate<Visite>>(this.baseUrl+'/'+'search', {...params});
     }
     create(visite){
         return this.http.post(this.baseUrl+'/'+'create', visite);

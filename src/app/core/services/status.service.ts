@@ -21,10 +21,10 @@ export class StatusService extends HttpService{
     }
 
     getAll(){
-        return this.http.get<Status[]>(this.baseUrl);
+        return this.http.post<Status[]>(this.baseUrl, {});
     }
     getAllFromModel(model){
-        return this.http.get<Array<Status>>(this.baseUrl+'?model='+model);
+        return this.http.post<Status[]>(this.baseUrl, {'model': model});
     }
     get(item_id){
         return this.http.get(this.baseUrl+'/'+item_id);

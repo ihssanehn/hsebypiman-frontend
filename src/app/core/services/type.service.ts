@@ -22,10 +22,10 @@ export class TypeService extends HttpService{
     }
 
     getAll(){
-        return this.http.get<Array<Type>>(this.baseUrl);
+        return this.http.post<Type[]>(this.baseUrl, {});
     }
     getAllFromModel(model){
-        return this.http.get<Array<Type>>(this.baseUrl+'?model='+model);
+        return this.http.post<Type[]>(this.baseUrl, {'model': model});
     }
     get(item_id){
         return this.http.get(this.baseUrl+'/'+item_id);

@@ -20,17 +20,14 @@ export class ArService extends HttpService{
         super()
     }
 
-    getAll(){
-        return this.http.get<Paginate<Ar>>(this.baseUrl);
+    getAll(params){
+        return this.http.post<Paginate<Ar>>(this.baseUrl, {...params});
     }
-    getAllItems(): Observable<Ar[]> {
-		return this.http.get<Ar[]>(`${this.baseUrl}`);
+    getList(): Observable<Ar[]> {
+		return this.http.get<Ar[]>(this.baseUrl+'/mini');
 	}
     get(chantier_id){
         return this.http.get(this.baseUrl+'/'+chantier_id);
-    }
-    search(params){
-        return this.http.post<Paginate<Ar>>(this.baseUrl+'/'+'search', {...params});
     }
     create(chantier){
         return this.http.post(this.baseUrl+'/'+'create', chantier);

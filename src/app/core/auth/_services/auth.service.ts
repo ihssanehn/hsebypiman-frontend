@@ -82,8 +82,8 @@ export class AuthService extends HttpService {
 			.pipe(catchError(this.handleError("forgot-password", [])));
 	}
 
-	getAllUsers(): Observable<User[]> {
-        return this.http.get<User[]>(API_USERS_URL);
+	getList(): Observable<User[]> {
+        return this.http.get<User[]>(API_USERS_URL+"/mini");
         // .pipe(
 		// 	map((res: any) =>
 		// 		// res.items.map((user: User) => new User().deserialize(user))

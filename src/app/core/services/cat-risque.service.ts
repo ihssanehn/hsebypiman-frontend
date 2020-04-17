@@ -18,7 +18,7 @@ export class CatRisqueService extends HttpService{
   }
 
   getAll(){
-    return this.http.get<Array<CatRisque>>(this.baseUrl);
+    return this.http.post<CatRisque[]>(this.baseUrl, {});
   }
 
 }

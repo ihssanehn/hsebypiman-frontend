@@ -71,7 +71,7 @@ export class ArAddComponent implements OnInit {
   }
 
   async initFilteredChantiers(){
-    this.chantiers = await this.chantierService.getAll().toPromise();
+    this.chantiers = await this.chantierService.getList().toPromise();
     this.filteredChantiers = this.searchControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value))
@@ -96,7 +96,7 @@ export class ArAddComponent implements OnInit {
   }
 
   async getUsers(){
-    this.users = await this.authService.getAllUsers().toPromise();
+    this.users = await this.authService.getList().toPromise();
     this.cdr.detectChanges();
     this.cdr.markForCheck();
   }

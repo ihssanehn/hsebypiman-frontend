@@ -38,7 +38,7 @@ export class ChantierFormComponent implements OnInit {
     this.cdr.markForCheck();
   }
   async getUsers(){
-    this.users = await this.authService.getAllUsers().toPromise();
+    this.users = await this.authService.getList().toPromise();
     this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
