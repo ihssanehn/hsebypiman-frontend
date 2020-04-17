@@ -1,5 +1,4 @@
-<tf-comming-soon></tf-comming-soon>
-<form [formGroup]="arForm" class="invisible tf-form tf-form--group-seperator-dashed">
+<form [formGroup]="arForm" class="tf-form tf-form--group-seperator-dashed">
 
 	<tf-portlet id="portlet-chantier">
 		<div class="tf-portlet-header " >
@@ -51,33 +50,33 @@
 							<div class="row">
 								<div class="col-xl-4">
 									<mat-label>{{'ARS.NAME' | translate}}</mat-label>
-									<input class="form-control" matInput type="text" [value]='chantier?.nom'   />
+									<input class="form-control" matInput type="text" [value]='chantier?.nom' [readonly]="true"  />
 								</div>
 								<div class="col-xl-3">
 									<mat-label>{{'ARS.ADRESS' | translate}}</mat-label>
-									<input class="form-control" matInput type="text" [value]='chantier?.adresse'   />
+									<input class="form-control" matInput type="text" [value]='chantier?.adresse' [readonly]="true"  />
 								</div>
 								<div class="col-xl-3">
 									<mat-label>{{'COMMON.CITY.LABEL' | translate}}</mat-label>
-									<input class="form-control" matInput type="text" [value]='chantier?.ville'   />
+									<input class="form-control" matInput type="text" [value]='chantier?.ville' [readonly]="true"  />
 								</div>
 								<div class="col-xl-2">
 									<mat-label>{{'CHANTIERS.NUMBER.LABEL' | translate}}</mat-label>
-									<input class="form-control" matInput type="text" [value]='chantier?.numero'   />
+									<input class="form-control" matInput type="text" [value]='chantier?.numero' [readonly]="true"  />
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-xl-4">
 									<mat-label>{{'ARS.DATE_DEMARRAGE' | translate}}</mat-label>
-									<input class="form-control" matInput type="text" [value]='chantier?.date_demarrage| date:"dd/MM/yyyy"'   />
+									<input class="form-control" matInput type="text" [value]='chantier?.date_demarrage| date:"dd/MM/yyyy"' [readonly]="true"  />
 								</div>
 								<div class="col-xl-3">
 									<mat-label>{{'ARS.EMPLOYEE' | translate}}</mat-label>
-									<input class="form-control" matInput type="text" [value]='chantier?.contact'   />
+									<input class="form-control" matInput type="text" [value]='chantier?.contact' [readonly]="true"  />
 								</div>
 								<div class="col-xl-3">
 									<mat-label>{{'ARS.BUDGET' | translate}}</mat-label>
-									<input class="form-control" matInput type="text" [value]='chantier?.montant'   />
+									<input class="form-control" matInput type="text" [value]='chantier?.montant' [readonly]="true"  />
 								</div>
 							</div>
 							<div class="row">

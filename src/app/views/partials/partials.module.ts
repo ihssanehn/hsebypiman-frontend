@@ -69,6 +69,7 @@ import {
 	UserSideProfileComponent,
 	ArForm1Component,
 	ArForm2Component,
+	SearchChantierFormComponent,
 	ChantierFormComponent,
 	ChantierFiltersComponent,
 	SearchChantierHeaderComponent,
@@ -133,6 +134,7 @@ import { NgxMaskModule} from 'ngx-mask';
 		PaginationComponent,
 		CommingSoonComponent,
 		ArForm2Component,
+		SearchChantierFormComponent,
 	],
 	exports: [
 		WidgetModule,
@@ -172,6 +174,7 @@ import { NgxMaskModule} from 'ngx-mask';
 		UserSideProfileComponent,
 		ArForm1Component,
 		ArForm2Component,
+		SearchChantierFormComponent,
 		ChantierFormComponent,
 		ChantierFiltersComponent,
 		SearchChantierHeaderComponent,

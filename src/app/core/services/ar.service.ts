@@ -32,8 +32,8 @@ export class ArService extends HttpService{
     create(chantier){
         return this.http.post(this.baseUrl+'/'+'create', chantier);
     }
-    update(chantier_id, chantier){
-        return this.http.put(this.baseUrl+'/'+chantier_id, chantier);
+    update(chantier){
+        return this.http.put(this.baseUrl+'/'+chantier.id, chantier);
     }
     delete(chantier_id){
         return this.http.delete(this.baseUrl+'/'+chantier_id);

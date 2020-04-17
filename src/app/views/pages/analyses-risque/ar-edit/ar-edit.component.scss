@@ -1,0 +1,133 @@
+.flex-layout{
+    display: flex;
+}
+
+.search-icon-container{
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+.search-icon-container .mat-icon{
+    color: #23b3d1;
+    width: 14.9px;
+}
+
+.search-input-group .form-control {
+    background: transparent;
+    border: none;
+    height: 49px;
+}
+
+.btn-search{
+    width: 79px;
+    height: 45px;
+    border-radius: 8px;
+    background-color: #ddf5f4;
+    font-size: 15px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    color: #33b5ae;
+    border: none;
+}
+
+.tf-form__section input{
+    font-weight: bold;
+}
+
+:host::ng-deep {
+    #portlet-chantier{
+        color: black;
+        .tf-portlet{
+            margin-top: 5em;
+            border-radius: 8px;
+            background-color: #ffffff;
+            .tf-portlet-header{
+                font-weight: bolder;
+                padding: 25px 0 0 20px;
+                .title{
+                    a{
+                        color: #525252;
+                    }
+                    .divider{
+                        font-weight: bolder;
+                        color:#e49819;
+                        margin-left: 0.5em;
+                        margin-right: 0.5em;
+                    }
+                    .id-item{
+                        color: #171717;
+                        font-weight: bolder;
+                        padding-bottom: 0.2em;
+                        border-bottom: 2px solid #55cec7 ;
+                    }
+                }
+            }
+            
+            .tf-portlet__body{
+                padding: 20px;
+                font-weight: bolder;
+                margin-top: 1em;
+                margin-bottom: 2em;
+                > div:first-child{
+                    padding-left: 0;
+                }
+                .card{
+                    padding: 2em 2em 0;    
+                    height: 100%;
+                    // justify-content: space-between;
+                    p{
+                        text-align: right;
+                    }
+                    .label{
+                        color: #c9c9c9;
+                        text-align: left;
+                    }
+                    .blue{
+                        color: #33b5ae;
+                    }
+                    .tf-divider.h-5 span{
+                        height: 1em;
+                    }
+                    .box{
+                        padding-top: 1.5em;
+                        padding-bottom: 1.5em;
+                        h5{
+                            padding-bottom: 0.8em;
+                            border-bottom: 1px solid #EBECF1;
+                        }
+                        &.box-status{
+                            display: flex;
+                            flex-flow: column nowrap;
+                            align-items: center;
+                            .mat-icon{
+                                margin-top: 30px;
+                                margin-bottom: 30px;
+                                svg{
+                                    box-shadow: 0 32px 64px 0 rgba(0, 0, 0, 0.16);
+                                    border-radius: 50%;
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+    .btn-save{
+        width: 16%;
+        height: 45px;
+        border-radius: 8px;
+        background-color: #ddf5f4;
+        font-weight: bold;
+        color: #33b5ae;
+        box-shadow: none;
+    }
+    .tf-card-form{
+        box-shadow: none;
+        border-radius: 8px;
+        border: solid 1px #eaecf0;
+    }
+}
