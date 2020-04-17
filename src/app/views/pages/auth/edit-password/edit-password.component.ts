@@ -2,11 +2,12 @@ import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { tap, takeUntil, finalize } from 'rxjs/operators';
-import { AuthService, AuthNoticeService } from '@app/core/auth';
+import { AuthService, AuthNoticeService, User } from '@app/core/auth';
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
+import { environment } from '@env/environment';
 
 @Component({
   selector: 'tf-edit-password',
@@ -15,6 +16,7 @@ import { MatIconRegistry } from '@angular/material';
 })
 export class EditPasswordComponent implements OnInit, OnDestroy {
 
+  user: User;
   editPasswordForm: FormGroup;
 	loading = false;
 	errors: any = [];
@@ -43,6 +45,7 @@ export class EditPasswordComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.initEditPasswordForm();
+    this.getAuthUser();
   }
 
   initEditPasswordForm() {
@@ -58,6 +61,18 @@ export class EditPasswordComponent implements OnInit, OnDestroy {
 			])
 			]
 		}, {validator: this.checkPasswords });
+  }
+  
+  async getAuthUser() {
+		const userToken = localStorage.getItem(environment.authTokenKey);
+		if (userToken) {
+      var res = await this.authService.getUserByToken().toPromise();
+			this.user = res.result.data;
+		} else {
+			localStorage.removeItem(environment.authTokenKey);
+			this.router.navigate(['/auth/login']);
+			return false;
+		}
 	}
 
   /**
@@ -75,26 +90,25 @@ export class EditPasswordComponent implements OnInit, OnDestroy {
 
 		this.loading = true;
 
-    const password = controls.password.value;
-    console.log(password);
-    // TODO
-		// this.authService.resetPassword(password).pipe(
-		// 	tap(response => {
-		// 		if (response) {
-		// 			this.authNoticeService.setNotice(this.translate.instant('AUTH.EDIT.SUCCESS'), 'success');
-		// 			this.router.navigateByUrl('/auth/login');
-		// 		} else {
-		// 			this.authNoticeService.setNotice(this.translate.instant('AUTH.VALIDATION.NOT_FOUND', {
-    //         name: this.translate.instant('AUTH.INPUT.EMAIL')
-    //       }), 'danger');
-		// 		}
-		// 	}),
-		// 	takeUntil(this.unsubscribe),
-		// 	finalize(() => {
-		// 		this.loading = false;
-		// 		this.cdr.markForCheck();
-		// 	})
-		// ).subscribe();
+    this.user.password = controls.password.value;
+
+		this.authService.updateUser(this.user).pipe(
+			tap(response => {
+				if (response) {
+					this.authNoticeService.setNotice(this.translate.instant('AUTH.EDIT.SUCCESS'), 'success');
+					this.router.navigateByUrl('/auth/login');
+				} else {
+					this.authNoticeService.setNotice(this.translate.instant('AUTH.VALIDATION.NOT_FOUND', {
+            name: this.translate.instant('AUTH.INPUT.EMAIL')
+          }), 'danger');
+				}
+			}),
+			takeUntil(this.unsubscribe),
+			finalize(() => {
+				this.loading = false;
+				this.cdr.markForCheck();
+			})
+		).subscribe();
   }
   
 	/**

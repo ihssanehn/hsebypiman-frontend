@@ -11,6 +11,7 @@ export class User extends BaseModel {
     fonction_id?: number;
     access_token?: string;
     refresh_token?: string;
+    is_firstConnexion?: boolean;
 	role?: Role;
 
     clear(): void {

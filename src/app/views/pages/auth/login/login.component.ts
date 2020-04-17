@@ -143,8 +143,17 @@ export class LoginComponent implements OnInit, OnDestroy {
 				if(res){
 					localStorage.setItem(environment.authTokenKey, res.result.access_token);
 					this.loading = false;
-					this.router.navigateByUrl(this.returnUrl);
-					this.cdr.markForCheck();
+				
+					this.auth
+						.getUserByToken()
+						.subscribe(user=>{
+							if(user.result.data.is_firstConnexion){
+								this.router.navigateByUrl('/auth/edit-password');
+							}else{
+								this.router.navigateByUrl(this.returnUrl);
+							}
+							this.cdr.markForCheck();
+						})
 				}
 			},
 			err => {
