@@ -24,7 +24,7 @@ export class ChantierService extends HttpService{
     getAll(params){
         return this.http.post<Paginate<Chantier>>(this.baseUrl, {...params});
     }
-    getList(keyword){
+    getList(keyword = null){
         if(keyword){
             return this.http.get<Chantier[]>(this.baseUrl+'/mini');
         }else{

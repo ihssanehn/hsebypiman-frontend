@@ -29,7 +29,7 @@ export class SearchChantierHeaderComponent implements OnInit {
 
 
   async getChantiers(){
-    this.chantiers = await this.chantierService.getAllItems().toPromise();
+    this.chantiers = await this.chantierService.getList().toPromise();
     this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
