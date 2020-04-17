@@ -25,13 +25,12 @@ export class ChantierService extends HttpService{
     getAll(params){
         return this.http.post<JsonResponse<Paginate<Chantier>>>(this.baseUrl, {...params});
     }
-    getList(keyword = null){
-        if(keyword){
-            return this.http.get<JsonResponse<Chantier[]>>(this.baseUrl+'/mini');
-        }else{
-            return this.http.get<JsonResponse<Chantier[]>>(this.baseUrl+'/mini?keyword='+keyword);
-        }
-	}
+    getList(){
+        return this.http.get<JsonResponse<Chantier[]>>(this.baseUrl+'/mini');
+    }
+    getAllClients(){
+        return this.http.get<JsonResponse<any>>(this.baseUrl+'/clients');
+    }
     get(chantier_id): Observable<JsonResponse<Chantier>>{
         return this.http.get<JsonResponse<Chantier>>(this.baseUrl+'/'+chantier_id);
     }

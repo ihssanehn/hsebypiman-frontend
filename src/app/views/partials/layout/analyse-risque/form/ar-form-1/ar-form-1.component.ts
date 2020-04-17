@@ -9,6 +9,7 @@ import { FormBuilder } from '@angular/forms';
 export class ArForm1Component implements OnInit {
 
   @Input() arForm: FormBuilder;
+  @Input() edit: Boolean;
   constructor() { }
 
   ngOnInit() {

@@ -64,16 +64,20 @@ export class ChantierFiltersComponent implements OnInit{
 
   // Load ressources needed
   async getUsers(){
-    this.users = await this.authService.getAllUsers().toPromise();
+    var res = await this.authService.getList().toPromise();
+    this.users = res.result.data;
   }
   async getStatus(){
-    this.status = await this.statusService.getAllFromModel('Chantier').toPromise();
+    var res = await this.statusService.getAllFromModel('Chantier').toPromise();
+    this.status = res.result.data;
   }
   async getClients(){
-    this.clients = await this.chantierService.getAllClients().toPromise();
+    var res = await this.chantierService.getAllClients().toPromise();
+    this.clients = res.result.data;
   }
   async getTypes(){
-    this.types = await this.typeService.getAllFromModel('Chantier').toPromise();
+    var res = await this.typeService.getAllFromModel('Chantier').toPromise();
+    this.types = res.result.data;
   }
 
 

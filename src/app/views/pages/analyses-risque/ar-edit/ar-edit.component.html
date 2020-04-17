@@ -94,9 +94,9 @@
 
 	</tf-portlet>
 
-	<tf-ar-form-1 [arForm]="arForm" ></tf-ar-form-1>
+	<tf-ar-form-1 [arForm]="arForm" [edit]="false"></tf-ar-form-1>
 
-	<tf-ar-form2 [arForm]="arForm" ></tf-ar-form2>
+	<tf-ar-form2 [arForm]="arForm" [edit]="false"></tf-ar-form2>
 	
 
 	<button mat-raised-button [disabled]="arForm.invalid" class="btn float-right btn-save" (click)="arForm.valid && onSubmit(false)">

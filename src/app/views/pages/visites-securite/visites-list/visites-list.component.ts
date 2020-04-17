@@ -16,6 +16,7 @@ import Swal from 'sweetalert2';
 export class VisitesListComponent implements OnInit {
 
 	public visitesList: Paginate < Visite > ;
+	showFilters: boolean = false;
 	pagination: any = {
 		page: 1,
 		total: 10,

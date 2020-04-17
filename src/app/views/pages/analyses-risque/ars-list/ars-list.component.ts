@@ -30,6 +30,7 @@ export class ArsListComponent implements OnInit {
 		status_id: "",
 		params: []
 	};
+	showFilters: boolean= false;
 	displayedArColumns=['number','name','charge_affaire','status','sign_count','created_at','action'];
 
   	constructor(

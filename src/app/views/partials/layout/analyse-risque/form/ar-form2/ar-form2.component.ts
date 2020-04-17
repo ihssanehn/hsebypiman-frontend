@@ -17,6 +17,7 @@ import { startWith, map } from 'rxjs/operators';
 export class ArForm2Component implements OnInit {
 
   @Input() arForm: FormGroup;
+  @Input() edit: Boolean;
   @ViewChild(SignaturePad,null) signaturePad: SignaturePad;
   public signaturePadOptions: Object = { 
     'minWidth': 5,
