@@ -3,7 +3,7 @@ import {User} from '@app/core/auth'
 import { Risque } from './risque.model';
 
 export class CatRisque {
-    _id?: number;
+    id?: number;
     libelle?:string;
     code?:string;
     risques?:Array<Risque>;

@@ -195,7 +195,6 @@
 	</ng-container>
 
 	<ng-container>
-
 		<div class="row">
 			<div class="col-md-6">
 				<div class="tf-card-form">
@@ -275,7 +274,7 @@
 							<th mat-header-cell *matHeaderCellDef> {{'ARS.FORM.COMMENT' | translate}} </th>
 							<td mat-cell *matCellDef="let element">
 								<div class="example-full-width">
-									<textarea [readonly]="true" class="form-control no_border"></textarea>
+									<textarea [readonly]="true" class="form-control no_border" [value]="getCommentValue(element.id)"></textarea>
 								</div>
 							</td>
 						</ng-container>
@@ -323,13 +322,13 @@
 											<mat-radio-button value="0">Non</mat-radio-button>
 										</div>
 									</div>
-									<label>{{'ARS.FORM.MWBLOCK.WORKREGISTER.MSG' | translate}}</label>
+
 								</div>
 							</div>
 						</mat-radio-group>
 					</div>
 
-					<div class="row form-row">
+					<div class="row form-row" *ngIf="ar.a_signer_registre_travaux">
 						<mat-form-field class="col-xl-5">
 							<mat-label>{{'COMMON.ADRESS.LABEL' | translate}}</mat-label>
 							<input class="form-control" matInput [readonly]="true" type="text" name="adresse_charge_registre" [value]="ar.adresse_charge_registre" />
@@ -343,7 +342,7 @@
 							<input matInput [readonly]="true" class="form-control" type="text" name="codepostal_charge_registre" [value]="ar.codepostal_charge_registre" />
 						</mat-form-field>
 					</div>
-					<div class="row form-row">
+					<div class="row form-row" *ngIf="ar.a_signer_registre_travaux">
 						<mat-form-field class="col-xl-5">
 							<mat-label>{{'COMMON.NAME.LABEL' | translate}}</mat-label>
 							<input class="form-control" matInput [readonly]="true" type="text" name="nom_charge_registre" [value]="ar.nom_charge_registre" />
@@ -385,7 +384,7 @@
 								</mat-radio-group>
 							</div>
 						</div>
-						<div class="col-md-8">
+						<div class="col-md-8" *ngIf="ar.a_prevoir_balisage">
 							<div class="row form-row">
 								<mat-form-field class="col-xl-7">
 									<mat-label>{{'ARS.FORM.CVTI_RESPONSIBLE' | translate}}</mat-label>
@@ -412,225 +411,6 @@
 				</div>
 			</div>
 		</div>
-
-	</ng-container>
-
-	<div class="row">
-		<div class="col-md-6">
-			<div class="tf-card-form">
-				<div class="tf-heading tf-heading--sm">
-					1.4 {{'ARS.FORM.PARKINGBLOCK.TITLE' | translate}}
-				</div>
-				<div class="form-row">
-					<div class="col-xl-5">
-						<mat-checkbox [checked]="ar.zone_part">Pas de zone particulière</mat-checkbox>
-					</div>
-					<div class="col-xl-5">
-						<mat-checkbox [checked]="ar.parking_salarie">Sur parking spécial chantier</mat-checkbox>
-					</div>
-				</div>
-				<div class="form-row">
-					<div class="col-xl-5">
-						<mat-checkbox [checked]="ar.parking_spe_chtr">Sur parking salarié</mat-checkbox>
-					</div>
-					<div class="col-xl-5">
-						<mat-checkbox [checked]="ar.stat_arr">Stationnement en marche arrière</mat-checkbox>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-6">
-			<div class="tf-card-form">
-				<div class="tf-heading tf-heading--sm">
-					1.5 {{'ARS.FORM.STOCKBLOCK.TITLE' | translate}}
-				</div>
-				<div class="form-row">
-					<div class="col-xl-5">
-						<mat-checkbox [checked]="ar.algeco_cvti">ALGÉCO CVTI fermé d’un cadenas</mat-checkbox>
-					</div>
-					<div class="col-xl-5">
-						<mat-checkbox [checked]="ar.zone_ext_non_surv">Zone surveillée balisée dans le bâtiment</mat-checkbox>
-					</div>
-				</div>
-				<div class="form-row">
-					<div class="col-xl-5">
-						<mat-checkbox [checked]="ar.zone_surv_balisee">Zone extérieure sans surveillance</mat-checkbox>
-					</div>
-					<div class="col-xl-5">
-						<mat-checkbox [checked]="ar.prevoir_balisage_materiel">Prévoir balisage pour le matériel</mat-checkbox>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="tf-heading tf-heading--md">| 2 {{'ARS.FORM.RISKBLOCK.TITLE' | translate}}</div>
-	<div class="row">
-		<div class="col-md-12">
-			<div class="tf-card-form">
-				<div class="tf-heading tf-heading--sm">
-					{{'ARS.FORM.RISKBLOCK.MSG' | translate}}
-				</div>
-				<div class="row form-row"></div>
-
-				<table mat-table [dataSource]="risksList">
-
-					<ng-container matColumnDef="risks">
-						<th mat-header-cell *matHeaderCellDef> {{'ARS.FORM.RISKS' | translate}} </th>
-						<td mat-cell *matCellDef="let element"> {{element.libelle}} </td>
-					</ng-container>
-
-					<ng-container matColumnDef="actions">
-						<th mat-header-cell *matHeaderCellDef> {{'ARS.FORM.ACTION' | translate}} </th>
-						<td mat-cell *matCellDef="let element">
-							<div class="m-2" *ngFor="let risk of element.risques">
-								<mat-checkbox [value]="risk.id" [checked]="onRiskIsChecked(risk.id)">{{risk.libelle}}</mat-checkbox>
-							</div>
-						</td>
-					</ng-container>
-
-					<!-- Weight Column -->
-					<ng-container matColumnDef="comments">
-						<th mat-header-cell *matHeaderCellDef> {{'ARS.FORM.COMMENT' | translate}} </th>
-						<td mat-cell *matCellDef="let element">
-							<div class="example-full-width">
-								<textarea [readonly]="true" class="form-control no_border" [value]="getCommentValue(element.id)"></textarea>
-							</div>
-						</td>
-					</ng-container>
-
-
-					<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-					<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-				</table>
-
-			</div>
-		</div>
-	</div>
-
-	<div class="tf-heading tf-heading--md">| 3 {{'ARS.FORM.EQBLOCK.TITLE' | translate}}</div>
-	<div class="row">
-		<div class="col-md-12">
-			<div class="tf-card-form">
-				<div class="form-row">
-					<div class="col-md-2" *ngFor="let epi of epiList">
-						<mat-checkbox [value]="epi.id" [checked]="onEpiIsChecked(epi.id)">{{epi.libelle}}</mat-checkbox>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="tf-heading tf-heading--md">| 4 {{'ARS.FORM.MWBLOCK.TITLE' | translate}}</div>
-	<div class="row">
-		<div class="col-md-6">
-			<div class="tf-card-form">
-				<div class="tf-heading tf-heading--sm">
-					{{'ARS.FORM.MWBLOCK.WORKREGISTER.TITLE' | translate}}
-				</div>
-
-				<div class="row form-row">
-					<mat-radio-group [value]="ar.a_signer_registre_travaux+''" class="col-xl-12 col-md-12 mat-form-field ng-tns-c14-2 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-legacy mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label">
-						<div class="mat-form-field-wrapper">
-							<div class="mat-form-field-flex">
-								<div class="mat-form-field-infix col-md-3">
-									<span class="mat-form-field-label-wrapper">
-										<label class="mat-form-field-label"></label>
-									</span>
-									<div class="form-control mat-input-element mat-radio-box">
-										<mat-radio-button value="1">Oui</mat-radio-button>
-										<mat-radio-button value="0">Non</mat-radio-button>
-									</div>
-								</div>
-
-							</div>
-						</div>
-					</mat-radio-group>
-				</div>
-
-				<div class="row form-row" *ngIf="ar.a_signer_registre_travaux">
-					<mat-form-field class="col-xl-5">
-						<mat-label>{{'COMMON.ADRESS.LABEL' | translate}}</mat-label>
-						<input class="form-control" matInput [readonly]="true" type="text" name="adresse_charge_registre" [value]="ar.adresse_charge_registre" />
-					</mat-form-field>
-					<mat-form-field class="col-xl-4">
-						<mat-label>{{'COMMON.CITY.LABEL' | translate}}</mat-label>
-						<input class="form-control" matInput [readonly]="true" type="text" name="ville_charge_registre" [value]="ar.ville_charge_registre" />
-					</mat-form-field>
-					<mat-form-field class="col-xl-3">
-						<mat-label>{{'COMMON.POSTCODE.LABEL' | translate}}</mat-label>
-						<input matInput [readonly]="true" class="form-control" type="text" name="codepostal_charge_registre" [value]="ar.codepostal_charge_registre" />
-					</mat-form-field>
-				</div>
-				<div class="row form-row" *ngIf="ar.a_signer_registre_travaux">
-					<mat-form-field class="col-xl-5">
-						<mat-label>{{'COMMON.NAME.LABEL' | translate}}</mat-label>
-						<input class="form-control" matInput [readonly]="true" type="text" name="nom_charge_registre" [value]="ar.nom_charge_registre" />
-					</mat-form-field>
-					<mat-form-field class="col-xl-4">
-						<mat-label>{{'COMMON.PHONENUMBER.LABEL' | translate}}</mat-label>
-						<input class="form-control" matInput [readonly]="true" type="text" name="tel_charge_registre" [value]="ar.tel_charge_registre" />
-					</mat-form-field>
-					<mat-form-field class="col-xl-3">
-						<mat-label>{{'COMMON.COUNTRY.LABEL' | translate}}</mat-label>
-						<input class="form-control" matInput [readonly]="true" type="text" name="pays_charge_registre" [value]="ar.pays_charge_registre" />
-					</mat-form-field>
-				</div>
-
-			</div>
-		</div>
-		<div class="col-md-6">
-			<div class="tf-card-form">
-				<div class="tf-heading tf-heading--sm">
-					{{'ARS.FORM.MWBLOCK.SUBTITLE2' | translate}}
-				</div>
-				<div class="form-row-flex">
-					<div class="col-md-4">
-						<div class="row form-row">
-							<mat-radio-group [value]="ar.a_prevoir_balisage+''" class="col-xl-12 col-md-12 mat-form-field ng-tns-c14-2 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-legacy mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label">
-								<div class="mat-form-field-wrapper">
-									<div class="mat-form-field-flex">
-										<div class="mat-form-field-infix">
-											<span class="mat-form-field-label-wrapper">
-												<label class="mat-form-field-label"></label>
-											</span>
-											<div class="form-control mat-input-element mat-radio-box">
-												<mat-radio-button value="1">Oui</mat-radio-button>
-												<mat-radio-button value="0">Non</mat-radio-button>
-											</div>
-										</div>
-									</div>
-								</div>
-							</mat-radio-group>
-						</div>
-					</div>
-					<div class="col-md-8" *ngIf="ar.a_prevoir_balisage">
-						<div class="row form-row">
-							<mat-form-field class="col-xl-7">
-								<mat-label>{{'ARS.FORM.CVTI_RESPONSIBLE' | translate}}</mat-label>
-								<input class="form-control" matInput [readonly]="true" type="text" name="nom_ca_cvti" [value]="ar.nom_ca_cvti" />
-							</mat-form-field>
-							<mat-form-field class="col-xl-5">
-								<mat-label>{{'COMMON.PHONENUMBER.LABEL' | translate}}</mat-label>
-								<input class="form-control" matInput [readonly]="true" type="text" name="tel_ca_cvti" [value]="ar.tel_ca_cvti" />
-							</mat-form-field>
-						</div>
-						<div class="row form-row">
-							<mat-form-field class="col-xl-7">
-								<mat-label>{{'ARS.FORM.CA_ASSISTANT' | translate}}</mat-label>
-								<input class="form-control" matInput [readonly]="true" type="text" name="assistant_ca" [value]="ar.assistant_ca" />
-							</mat-form-field>
-							<mat-form-field class="col-xl-5">
-								<mat-label>{{'COMMON.PHONENUMBER.LABEL' | translate}}</mat-label>
-								<input class="form-control" matInput [readonly]="true" type="text" name="tel_assistant_ca" [value]="ar.tel_assistant_ca" />
-							</mat-form-field>
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</div>
 
 	</ng-container>
 

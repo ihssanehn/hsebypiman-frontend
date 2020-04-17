@@ -102,12 +102,10 @@ export class ArDetailComponent implements OnInit, OnDestroy {
 	getCommentValue(id){
 
 		var commentValue = '';
-		this.ar.cat_risques.forEach(element => {
-		  if(element.id == id){
-			commentValue = element.commentaire;
-		  }
-		});
-	
+		var cat_risques = this.ar.cat_risques.filter(x=>x.id == id);
+		if(cat_risques.length > 0){
+			commentValue = cat_risques[0].commentaire;
+		}
 		return commentValue;
 	  }
   

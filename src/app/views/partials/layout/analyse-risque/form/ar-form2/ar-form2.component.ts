@@ -145,7 +145,6 @@ export class ArForm2Component implements OnInit {
   }
 
   getCommentValue(id){
-
     var commentValue = '';
     const formValue = this.arForm.get('comments').value;
     formValue.forEach(element => {
