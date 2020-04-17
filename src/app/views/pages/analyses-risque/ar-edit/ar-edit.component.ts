@@ -258,7 +258,7 @@ export class ArEditComponent implements OnInit, OnDestroy {
 	  
 
 	async initFilteredChantiers(){
-		const res = await this.chantierService.getList().toPromise();
+		var res = await this.chantierService.getList().toPromise();
 		this.chantiers = res.result.data;
 		this.filteredChantiers = this.searchControl.valueChanges.pipe(
 			startWith(''),
@@ -286,7 +286,7 @@ export class ArEditComponent implements OnInit, OnDestroy {
 	
 	async getChantier(chantierId: Number){
 		try {
-			const res = await this.chantierService.get(chantierId).toPromise();
+			var res = await this.chantierService.get(chantierId).toPromise();
 			this.chantier = res.result.data;
 			this.cdr.detectChanges();
 			this.cdr.markForCheck();
