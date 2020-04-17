@@ -19,8 +19,8 @@ export class ChantiersListComponent implements OnInit {
 	pagination: any = {
 		page: 1,
 		total: 10,
-    pageSize: 10,
-    last_page: 1
+		pageSize: 10,
+		last_page: 1
 	};
 	filter: any = {
 		per_page: this.pagination.pageSize,
@@ -50,7 +50,8 @@ export class ChantiersListComponent implements OnInit {
 
 	async getChantiers() {
 		try {
-			this.chantiersList = await this.chantierService.search(this.filter).toPromise();
+			this.chantiersList = await this.chantierService.getAll(this.filter).toPromise();
+			
 			this.pagination = {
 				...this.pagination,
 				total: this.chantiersList.total,

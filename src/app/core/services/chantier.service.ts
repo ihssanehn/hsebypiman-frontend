@@ -21,17 +21,18 @@ export class ChantierService extends HttpService{
         super()
     }
 
-    getAll(){
-        return this.http.get<Chantier[]>(this.baseUrl);
+    getAll(params){
+        return this.http.post<Paginate<Chantier>>(this.baseUrl, {...params});
     }
-    getAllItems(): Observable<Chantier[]> {
-		return this.http.get<Chantier[]>(`${this.baseUrl}`);
+    getList(keyword){
+        if(keyword){
+            return this.http.get<Chantier[]>(this.baseUrl+'/mini');
+        }else{
+            return this.http.get<Chantier[]>(this.baseUrl+'/mini?keyword='+keyword);
+        }
 	}
     get(chantier_id): Observable<Chantier>{
         return this.http.get<Chantier>(this.baseUrl+'/'+chantier_id);
-    }
-    search(params){
-        return this.http.post<Paginate<Chantier>>(this.baseUrl+'/'+'search', {...params});
     }
     create(chantier){
         return this.http.post(this.baseUrl+'/'+'create', chantier);

@@ -33,7 +33,7 @@ export class ArAddComponent implements OnInit {
   filter = {
     keyword: "",
   }
-  public chantiersList : Paginate<Chantier>;
+  public chantiersList : Chantier[];
   public chantier : Chantier;
   // Private properties
   errors;
@@ -144,8 +144,8 @@ export class ArAddComponent implements OnInit {
 
   async getChantier(){
     try {
-      this.chantiersList = await this.chantierService.search(this.filter).toPromise();
-      this.chantier = this.chantiersList.data[0];
+      this.chantiersList = await this.chantierService.getList(this.filter.keyword).toPromise();
+      this.chantier = this.chantiersList[0];
       this.cdr.detectChanges();
       this.cdr.markForCheck();
 		} catch (error) {

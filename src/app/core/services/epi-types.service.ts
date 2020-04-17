@@ -18,6 +18,6 @@ export class EpiTypesService extends HttpService{
   }
 
   getAll(){
-    return this.http.get<Array<EpiType>>(this.baseUrl);
+    return this.http.post<Array<EpiType>>(this.baseUrl, {});
   }
 }
