@@ -325,13 +325,13 @@
                                             <mat-radio-button value="0">Non</mat-radio-button>
                       </div>
                     </div>
-                    <label>{{'ARS.FORM.MWBLOCK.WORKREGISTER.MSG' | translate}}</label>
-                                </div>
+    
+                </div>
                 </div>
               </mat-radio-group>
             </div>
             
-                    <div class="row form-row">
+                    <div class="row form-row" *ngIf="ar.a_signer_registre_travaux">
                         <mat-form-field class="col-xl-5" >
                             <mat-label>{{'COMMON.ADRESS.LABEL' | translate}}</mat-label>
                             <input class="form-control" matInput [readonly]="true" type="text" name="adresse_charge_registre" [value]="ar.adresse_charge_registre" />
@@ -345,7 +345,7 @@
                 <input matInput [readonly]="true" class="form-control" type="text" name="codepostal_charge_registre" [value]="ar.codepostal_charge_registre" />
               </mat-form-field>
                     </div>
-                    <div class="row form-row">
+                    <div class="row form-row" *ngIf="ar.a_signer_registre_travaux">
                         <mat-form-field class="col-xl-5" >
                             <mat-label>{{'COMMON.NAME.LABEL' | translate}}</mat-label>
                             <input class="form-control" matInput [readonly]="true" type="text" name="nom_charge_registre" [value]="ar.nom_charge_registre" />
@@ -388,7 +388,7 @@
                   </mat-radio-group>
                 </div>
               </div>
-              <div class="col-md-8">
+              <div class="col-md-8" *ngIf="ar.a_prevoir_balisage">
                 <div class="row form-row">
                   <mat-form-field class="col-xl-7" >
                     <mat-label>{{'ARS.FORM.CVTI_RESPONSIBLE' | translate}}</mat-label>
