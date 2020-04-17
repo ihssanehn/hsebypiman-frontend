@@ -206,7 +206,7 @@ export class ArEditComponent implements OnInit, OnDestroy {
 
 						Swal.fire({
 							icon: 'success',
-							title: 'Chantié mis à jour avec succès',
+							title: 'Analyse de risque mis à jour avec succès',
 							showConfirmButton: false,
 							timer: 2000
 						}).then(() => {
@@ -257,7 +257,7 @@ export class ArEditComponent implements OnInit, OnDestroy {
 	  
 
 	async initFilteredChantiers(){
-		this.chantiers = await this.chantierService.getAll().toPromise();
+		this.chantiers = await this.chantierService.getList().toPromise();
 		this.filteredChantiers = this.searchControl.valueChanges.pipe(
 			startWith(''),
 			map(value => this._filter(value))
