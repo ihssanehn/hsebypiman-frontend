@@ -1,3 +1,5 @@
+import { Risque } from './risque.model';
+import { EpiType } from './epiType.model';
 
 export class Ar {
     id?: number;
@@ -31,4 +33,21 @@ export class Ar {
     salarie_id?: number;
     status_id?: number;
     creator_id?: number;
+    a_signer_registre_travaux?: boolean;
+    a_prevoir_balisage?: boolean;
+    risques?: Array<Risque>;
+    epi_types?: Array<EpiType>;
+
+    adresse_charge_registre?: string;
+    ville_charge_registre?: string;
+    codepostal_charge_registre?: string;
+    nom_charge_registre?: string;
+    tel_charge_registre?: string;
+    pays_charge_registre?: string;
+    nom_ca_cvti?: string;
+    tel_ca_cvti?: string;
+    assistant_ca?: string;
+    tel_assistant_ca?: string;
+
+
 }

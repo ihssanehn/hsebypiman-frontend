@@ -76,25 +76,19 @@ export class ArsListComponent implements OnInit {
 	}
 
 	editAr(arId){
-		// this.router.navigate(['../edit', arId], { relativeTo: this.activatedRoute });
-		Swal.fire({
-			title: 'Désolé cette fonctionnalité n\'a pas encore été implémentée',
-			showConfirmButton: false,
-			timer: 1500
-		})
+		this.router.navigate(['../edit', arId], { relativeTo: this.activatedRoute });
 	}
 
 	viewAr(arId){
-		Swal.fire({
-			title: 'Désolé cette fonctionnalité n\'a pas encore été implémentée',
-			showConfirmButton: false,
-			timer: 1500
-		})
+		this.router.navigate(['../detail', arId], { relativeTo: this.activatedRoute });
 	}
 
-	deleteAr(arId){
+	async deleteAr(arId){
+		await this.arService.delete(arId).toPromise();
+		this.getArs();
 		Swal.fire({
-			title: 'Désolé cette fonctionnalité n\'a pas encore été implémentée',
+			icon: 'success',
+			title: 'Analyse de risque a été supprimé avec succès',
 			showConfirmButton: false,
 			timer: 1500
 		})

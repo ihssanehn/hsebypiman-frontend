@@ -22,6 +22,7 @@ import { ArsComponent } from './ars.component';
 import { ArsListComponent } from './ars-list/ars-list.component';
 import { ArEditComponent } from './ar-edit/ar-edit.component';
 import { ArAddComponent } from './ar-add/ar-add.component';
+import { ArDetailComponent } from './ar-detail/ar-detail.component';
 import {NgbDropdownModule, NgbTabsetModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 
 // Material
@@ -49,6 +50,7 @@ import {
 	MatSnackBarModule,
 	MatTooltipModule
 } from '@angular/material';
+
 
 
 const routes: Routes = [
@@ -79,6 +81,14 @@ const routes: Routes = [
 			{
 				path: 'edit/:id',
 				component: ArEditComponent
+			},
+			{
+				path: 'detail',
+				component: ArDetailComponent
+			},
+			{
+				path: 'detail/:id',
+				component: ArDetailComponent
 			},
 		]
 	}
@@ -148,6 +158,7 @@ const routes: Routes = [
 		ArsListComponent,
 		ArEditComponent,
 		ArAddComponent,
+		ArDetailComponent,
 	]
 })
 export class ArsModule {}
