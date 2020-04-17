@@ -8,7 +8,8 @@ import { HttpService } from '@app/core/services/http-service';
 import { NgxPermissionsService } from 'ngx-permissions';
 import { Type } from '@app/core/models/type.model';
 import { Chantier } from '@app/core/models/chantier.model';
-import { Paginate } from '@app/core/_base/layout/models/paginate.model'
+import { Paginate } from '@app/core/_base/layout/models/paginate.model';
+import {JsonResponse} from '@app/core/_base/layout/models/jsonResponse.model';
 import { Router } from '@angular/router';
 
 export class TypeService extends HttpService{
@@ -22,10 +23,10 @@ export class TypeService extends HttpService{
     }
 
     getAll(){
-        return this.http.post<Type[]>(this.baseUrl, {});
+        return this.http.post<JsonResponse<Type[]>>(this.baseUrl, {});
     }
     getAllFromModel(model){
-        return this.http.post<Type[]>(this.baseUrl, {'model': model});
+        return this.http.post<JsonResponse<Type[]>>(this.baseUrl, {'model': model});
     }
     get(item_id){
         return this.http.get(this.baseUrl+'/'+item_id);

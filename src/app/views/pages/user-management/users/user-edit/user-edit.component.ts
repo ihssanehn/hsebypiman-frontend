@@ -52,9 +52,10 @@ export class UserEditComponent implements OnInit, OnDestroy {
 			async params => {
 				const id = params.id;
 				if (id) {
-					this.user = await this.authService
+					var res = await this.authService
 						.getUserById(id)
 						.toPromise();
+					this.user = res.result.data;
 					this.initUser();
 					this.createForm();
 

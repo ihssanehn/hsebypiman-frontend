@@ -61,7 +61,7 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 							this.chantierForm.patchValue(chantier);
 						})
 					).subscribe( async res => {
-						this.chantier = res;
+						this.chantier = res.result.data;
 						this.loaded = true;
 						this.cdr.detectChanges();
 						this.cdr.markForCheck();

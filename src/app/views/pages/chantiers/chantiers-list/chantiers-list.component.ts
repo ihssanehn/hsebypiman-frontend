@@ -50,8 +50,8 @@ export class ChantiersListComponent implements OnInit {
 
 	async getChantiers() {
 		try {
-			this.chantiersList = await this.chantierService.getAll(this.filter).toPromise();
-			
+			var res = await this.chantierService.getAll(this.filter).toPromise();
+			this.chantiersList = res.result.data;
 			this.pagination = {
 				...this.pagination,
 				total: this.chantiersList.total,

@@ -33,17 +33,20 @@ export class ChantierFormComponent implements OnInit {
   }
 
   async getTypes(){
-    this.types = await this.typeService.getAllFromModel('Chantier').toPromise();
+    var res = await this.typeService.getAllFromModel('Chantier').toPromise();
+    this.types = res.result.data;
     this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
   async getUsers(){
-    this.users = await this.authService.getList().toPromise();
+    var res = await this.authService.getList().toPromise();
+    this.users = res.result.data;
     this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
   async getStatus(){
-    this.status = await this.statusService.getAllFromModel('Chantier').toPromise();
+    var res = await this.statusService.getAllFromModel('Chantier').toPromise();
+    this.status = res.result.data;
     this.cdr.detectChanges();
     this.cdr.markForCheck();
   }

@@ -8,6 +8,7 @@ import { HttpService } from '@app/core/services/http-service';
 import { NgxPermissionsService } from 'ngx-permissions';
 import { Categorie } from '@app/core/models/';
 import { Paginate } from '@app/core/_base/layout/models/paginate.model'
+import {JsonResponse} from '@app/core/_base/layout/models/jsonResponse.model'
 import { Router } from '@angular/router';
 
 export class CategorieService extends HttpService{
@@ -21,10 +22,10 @@ export class CategorieService extends HttpService{
     }
 
     getAll(){
-        return this.http.post<Array<Categorie>>(this.baseUrl, {});
+        return this.http.post<JsonResponse<Categorie[]>>(this.baseUrl, {});
     }
     getAllFromModel(model){
-        return this.http.post<Array<Categorie>>(this.baseUrl, {'model':model});
+        return this.http.post<JsonResponse<Categorie[]>>(this.baseUrl, {'model':model});
     }
     get(item_id){
         return this.http.get(this.baseUrl+'/'+item_id);

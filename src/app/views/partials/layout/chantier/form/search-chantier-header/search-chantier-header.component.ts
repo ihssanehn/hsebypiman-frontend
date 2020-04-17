@@ -29,7 +29,8 @@ export class SearchChantierHeaderComponent implements OnInit {
 
 
   async getChantiers(){
-    this.chantiers = await this.chantierService.getList().toPromise();
+    var res = await this.chantierService.getList().toPromise();
+    this.chantiers = res.result.data;
     this.cdr.detectChanges();
     this.cdr.markForCheck();
   }

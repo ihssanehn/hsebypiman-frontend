@@ -138,10 +138,10 @@ export class LoginComponent implements OnInit, OnDestroy {
 		};
 		this.auth
 			.login(authData.email, authData.password)
-			.subscribe(user=>{
+			.subscribe(res=>{
 				
-				if(user){
-					localStorage.setItem(environment.authTokenKey, user.access_token);
+				if(res){
+					localStorage.setItem(environment.authTokenKey, res.result.access_token);
 					this.loading = false;
 					this.router.navigateByUrl(this.returnUrl);
 					this.cdr.markForCheck();

@@ -7,7 +7,8 @@ import { environment } from '@env/environment';
 import { HttpService } from '@app/core/services/http-service';
 import { NgxPermissionsService } from 'ngx-permissions';
 import {Chantier} from '@app/core/models/chantier.model';
-import {Paginate} from '@app/core/_base/layout/models/paginate.model'
+import {Paginate} from '@app/core/_base/layout/models/paginate.model';
+import {JsonResponse} from '@app/core/_base/layout/models/jsonResponse.model';
 import { Router } from '@angular/router';
 
 @Injectable()
@@ -22,17 +23,17 @@ export class ChantierService extends HttpService{
     }
 
     getAll(params){
-        return this.http.post<Paginate<Chantier>>(this.baseUrl, {...params});
+        return this.http.post<JsonResponse<Paginate<Chantier>>>(this.baseUrl, {...params});
     }
     getList(keyword = null){
         if(keyword){
-            return this.http.get<Chantier[]>(this.baseUrl+'/mini');
+            return this.http.get<JsonResponse<Chantier[]>>(this.baseUrl+'/mini');
         }else{
-            return this.http.get<Chantier[]>(this.baseUrl+'/mini?keyword='+keyword);
+            return this.http.get<JsonResponse<Chantier[]>>(this.baseUrl+'/mini?keyword='+keyword);
         }
 	}
-    get(chantier_id): Observable<Chantier>{
-        return this.http.get<Chantier>(this.baseUrl+'/'+chantier_id);
+    get(chantier_id): Observable<JsonResponse<Chantier>>{
+        return this.http.get<JsonResponse<Chantier>>(this.baseUrl+'/'+chantier_id);
     }
     create(chantier){
         return this.http.post(this.baseUrl+'/'+'create', chantier);

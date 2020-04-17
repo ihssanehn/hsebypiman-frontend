@@ -67,12 +67,14 @@ export class ArAddComponent implements OnInit {
   }
 
   async getTypes(){
-    this.types = await this.typeService.getAllFromModel('Ar').toPromise();
+    var res = await this.typeService.getAllFromModel('Ar').toPromise();
+    this.types = res.result.data;
     this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
   async getUsers(){
-    this.users = await this.authService.getList().toPromise();
+    var res = await this.authService.getList().toPromise();
+    this.users = res.result.data;
     this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
@@ -144,7 +146,8 @@ export class ArAddComponent implements OnInit {
 
   async getChantier(){
     try {
-      this.chantiersList = await this.chantierService.getList(this.filter.keyword).toPromise();
+      var res = await this.chantierService.getList(this.filter.keyword).toPromise();
+      this.chantiersList = res.result.data;
       this.chantier = this.chantiersList[0];
       this.cdr.detectChanges();
       this.cdr.markForCheck();

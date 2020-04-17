@@ -45,7 +45,8 @@ export class UserSideProfileComponent implements OnInit {
 	 * On init
 	 */
 	async ngOnInit() {
-		this.user = await this.authService.getUserByToken().toPromise();
+		var res = await this.authService.getUserByToken().toPromise();
+		this.user = res.result.data;
 		this.cdr.detectChanges();
 	}
 

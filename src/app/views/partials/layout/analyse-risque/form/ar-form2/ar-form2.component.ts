@@ -75,20 +75,23 @@ export class ArForm2Component implements OnInit {
   }
 
   async getCatRisques(){
-    this.risksList = await this.catRisqueService.getAll().toPromise();
+    var res = await this.catRisqueService.getAll().toPromise();
+    this.risksList = res.result.data;
     this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
 
   async getEpiTypes(){
-    this.epiList = await this.epiTypesService.getAll().toPromise();
+    var res = await this.epiTypesService.getAll().toPromise();
+    this.epiList = res.result.data;
     this.initArForm();
     this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
 
   async getCurrentUser(){
-    this.user = await this.authService.getUserByToken().toPromise();
+    var res = await this.authService.getUserByToken().toPromise();
+    this.user = res.result.data;
     console.log(this.user);
     this.cdr.detectChanges();
     this.cdr.markForCheck();

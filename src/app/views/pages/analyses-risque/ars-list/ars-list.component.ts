@@ -46,7 +46,8 @@ export class ArsListComponent implements OnInit {
   
   	async getArs(){
     	try {
-			this.arsList = await this.arService.getAll(this.filter).toPromise();
+			var res = await this.arService.getAll(this.filter).toPromise();
+			this.arsList = res.result.data;
 			this.pagination = { 
 				...this.pagination, 
 				total: this.arsList.total, 

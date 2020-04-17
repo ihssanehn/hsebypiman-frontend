@@ -46,9 +46,10 @@ export class ArEditComponent implements OnInit, OnDestroy {
 			async params => {
 				const id = params.id;
 				if (id) {
-					this.ar = await this.arService
+					var res = await this.arService
 						.get(id)
 						.toPromise();
+					this.ar = res.result.data;
 					this.createForm();
 
 				} else {

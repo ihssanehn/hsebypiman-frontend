@@ -50,7 +50,8 @@ export class VisitesListComponent implements OnInit {
 
 	async getVisites() {
 		try {
-			this.visitesList = await this.visiteService.getAll(this.filter).toPromise();
+			var res = await this.visiteService.getAll(this.filter).toPromise();
+			this.visitesList = res.result.data;
 			this.pagination = {
 				...this.pagination,
 				total: this.visitesList.total,

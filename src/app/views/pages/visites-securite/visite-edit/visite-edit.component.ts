@@ -61,7 +61,7 @@ export class VisiteEditComponent implements OnInit, OnDestroy {
 							this.visiteForm.patchValue(visite);
 						})
 					).subscribe( async res => {
-						this.visite = res;
+						this.visite = res.result.data;
 						this.loaded = true;
 						this.cdr.detectChanges();
 						this.cdr.markForCheck();

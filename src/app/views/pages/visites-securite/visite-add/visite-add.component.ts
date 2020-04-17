@@ -75,7 +75,8 @@ export class VisiteAddComponent implements OnInit {
   }
 
   async getChantier(chantierId){
-    this.chantier = await this.chantierService.get(chantierId).toPromise();
+    var res = await this.chantierService.get(chantierId).toPromise();
+    this.chantier = res.result.data;
     // this.visiteForm.setValue('chantier_id':this.chantier.id);
     // this.visiteForm.setValue('redacteur_id':this.chantier.charge_affaire_id);
   }

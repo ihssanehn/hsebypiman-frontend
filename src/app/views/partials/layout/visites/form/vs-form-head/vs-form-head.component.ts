@@ -34,17 +34,20 @@ export class VsFormHeadComponent implements OnInit {
   }
 
   async getTypes(){
-    this.types = await this.typeService.getAllFromModel('Vs').toPromise();
+    var res = await this.typeService.getAllFromModel('Vs').toPromise();
+    this.types = res.result.data;
     this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
   async getUsers(){
-    this.users = await this.authService.getList().toPromise();
+    var res = await this.authService.getList().toPromise();
+    this.users = res.result.data;
     this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
   async getStatus(){
-    this.status = await this.statusService.getAllFromModel('Vs').toPromise();
+    var res = await this.statusService.getAllFromModel('Vs').toPromise();
+    this.status = res.result.data;
     this.cdr.detectChanges();
     this.cdr.markForCheck();
   }

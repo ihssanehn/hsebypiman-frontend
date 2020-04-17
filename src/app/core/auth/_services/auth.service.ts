@@ -9,6 +9,7 @@ import { QueryParamsModel, QueryResultsModel } from '../../_base/crud';
 import { environment } from '../../../../environments/environment';
 import { HttpService } from '@app/core/services/http-service';
 import { NgxPermissionsService } from 'ngx-permissions';
+import { JsonResponse } from '@app/core/_base/layout/models/jsonResponse.model';
 import { Router } from '@angular/router';
 
 
@@ -28,24 +29,24 @@ export class AuthService extends HttpService {
     }
 
     
-	private currentUserSubject = new BehaviorSubject<User>(null);
+	private currentUserSubject = new BehaviorSubject<JsonResponse<User>>(null);
 	public currentUser = this.currentUserSubject
 		.asObservable()
 		.pipe(distinctUntilChanged());
 
 	// Authentication/Authorization
-	login(email: string, password: string): Observable<User> {
-		return this.http.post<User>(`${this.baseUrl}auth/login`, {
+	login(email: string, password: string): Observable<JsonResponse<User>> {
+		return this.http.post<JsonResponse<User>>(`${this.baseUrl}auth/login`, {
 			email,
 			password
 		});
 	}
 
-	getUserByToken(): Observable<User> {
-		return this.http.get<User>(`${this.baseUrl}auth/user`);
+	getUserByToken(): Observable<JsonResponse<User>> {
+		return this.http.get<JsonResponse<User>>(`${this.baseUrl}auth/user`);
 	}
 
-	updateProfile(payload): Observable<User> {
+	updateProfile(payload): Observable<JsonResponse<User>> {
 		return this.http
 			.put<any>(`${this.baseUrl}auth/user`, payload)
 			.pipe(map(result => result));
@@ -59,9 +60,9 @@ export class AuthService extends HttpService {
 		const httpHeaders = new HttpHeaders();
 		httpHeaders.set("Content-Type", "application/json");
 		return this.http
-			.post<User>(API_USERS_URL, user, { headers: httpHeaders })
+			.post<JsonResponse<User>>(API_USERS_URL, user, { headers: httpHeaders })
 			.pipe(
-				map((res: User) => {
+				map((res: JsonResponse<User>) => {
 					return res;
 				}),
 				catchError(err => {
@@ -82,8 +83,8 @@ export class AuthService extends HttpService {
 			.pipe(catchError(this.handleError("forgot-password", [])));
 	}
 
-	getList(): Observable<User[]> {
-        return this.http.get<User[]>(API_USERS_URL+"/mini");
+	getList(): Observable<JsonResponse<User[]>> {
+        return this.http.get<JsonResponse<User[]>>(API_USERS_URL+"/mini");
         // .pipe(
 		// 	map((res: any) =>
 		// 		// res.items.map((user: User) => new User().deserialize(user))
@@ -98,8 +99,8 @@ export class AuthService extends HttpService {
 	// 	return this.http.post<Paginate<User>>(`${this.baseUrl}users/paginate`, { ...filter });
 	// }
 
-	getUserById(userId: number): Observable<User> {
-		return this.http.get<User>(API_USERS_URL + `/${userId}`)
+	getUserById(userId: number): Observable<JsonResponse<User>> {
+		return this.http.get<JsonResponse<User>>(API_USERS_URL + `/${userId}`)
 	}
 
 	// DELETE => delete the user from the server
@@ -113,8 +114,8 @@ export class AuthService extends HttpService {
 	}
 
 	// CREATE =>  POST: add a new user to the server
-	createUser(user: User): Observable<User> {
-		return this.http.post<User>(`${this.baseUrl}users`, user);
+	createUser(user: User): Observable<JsonResponse<User>> {
+		return this.http.post<JsonResponse<User>>(`${this.baseUrl}users`, user);
 	}
 
 	// Method from server should return QueryResultsModel(items: any[], totalsCount: number)
@@ -183,7 +184,7 @@ export class AuthService extends HttpService {
 
 
 
-	registerPermissions(user: User) {
+	registerPermissions(user: JsonResponse<User>) {
 		this.currentUserSubject.next(user);
 		// this.permissionsService.loadPermissions([user.role.slug]);
 	}

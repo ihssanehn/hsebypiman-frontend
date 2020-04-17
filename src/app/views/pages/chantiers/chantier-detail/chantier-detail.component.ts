@@ -67,7 +67,8 @@ export class ChantierDetailComponent implements OnInit, OnDestroy {
 
   	async getChantier(chantierId){
 		try {
-			this.chantier = await this.chantierService.get(chantierId).toPromise();
+			var res = await this.chantierService.get(chantierId).toPromise();
+			this.chantier = res.result.data;
 			this.cdr.markForCheck();
 		} catch (error) {
 			console.error(error);

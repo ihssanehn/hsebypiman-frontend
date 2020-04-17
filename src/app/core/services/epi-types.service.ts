@@ -4,6 +4,7 @@ import { HttpService } from '@app/core/services/http-service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { EpiType } from '../models/epiType.model';
+import {JsonResponse} from '@app/core/_base/layout/models/jsonResponse.model';
 
 
 export class EpiTypesService extends HttpService{
@@ -18,6 +19,6 @@ export class EpiTypesService extends HttpService{
   }
 
   getAll(){
-    return this.http.post<Array<EpiType>>(this.baseUrl, {});
+    return this.http.post<JsonResponse<EpiType[]>>(this.baseUrl, {});
   }
 }

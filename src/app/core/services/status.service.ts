@@ -7,7 +7,8 @@ import { environment } from '@env/environment';
 import { HttpService } from '@app/core/services/http-service';
 import { NgxPermissionsService } from 'ngx-permissions';
 import { Status } from '@app/core/models/';
-import { Paginate } from '@app/core/_base/layout/models/paginate.model'
+import { Paginate } from '@app/core/_base/layout/models/paginate.model';
+import {JsonResponse} from '@app/core/_base/layout/models/jsonResponse.model';
 import { Router } from '@angular/router';
 
 export class StatusService extends HttpService{
@@ -21,10 +22,10 @@ export class StatusService extends HttpService{
     }
 
     getAll(){
-        return this.http.post<Status[]>(this.baseUrl, {});
+        return this.http.post<JsonResponse<Status[]>>(this.baseUrl, {});
     }
     getAllFromModel(model){
-        return this.http.post<Status[]>(this.baseUrl, {'model': model});
+        return this.http.post<JsonResponse<Status[]>>(this.baseUrl, {'model': model});
     }
     get(item_id){
         return this.http.get(this.baseUrl+'/'+item_id);

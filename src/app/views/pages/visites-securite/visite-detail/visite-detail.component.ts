@@ -64,7 +64,8 @@ export class VisiteDetailComponent implements OnInit, OnDestroy {
 
   	async getVisite(visiteId){
 		try {
-			this.visite = await this.visiteService.get(visiteId).toPromise();
+			var res = await this.visiteService.get(visiteId).toPromise();
+			this.visite = res.result.data;
 			this.cdr.markForCheck();
 		} catch (error) {
 			console.error(error);

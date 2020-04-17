@@ -8,6 +8,7 @@ import { HttpService } from '@app/core/services/http-service';
 import { NgxPermissionsService } from 'ngx-permissions';
 import { Ar } from '@app/core/models/ar.model';
 import {Paginate} from '@app/core/_base/layout/models/paginate.model'
+import {JsonResponse} from '@app/core/_base/layout/models/jsonResponse.model'
 import { Router } from '@angular/router';
 
 export class ArService extends HttpService{
@@ -21,13 +22,13 @@ export class ArService extends HttpService{
     }
 
     getAll(params){
-        return this.http.post<Paginate<Ar>>(this.baseUrl, {...params});
+        return this.http.post<JsonResponse<Paginate<Ar>>>(this.baseUrl, {...params});
     }
-    getList(): Observable<Ar[]> {
-		return this.http.get<Ar[]>(this.baseUrl+'/mini');
+    getList(): Observable<JsonResponse<Ar[]>> {
+		return this.http.get<JsonResponse<Ar[]>>(this.baseUrl+'/mini');
 	}
     get(chantier_id){
-        return this.http.get(this.baseUrl+'/'+chantier_id);
+        return this.http.get<JsonResponse<Ar>>(this.baseUrl+'/'+chantier_id);
     }
     create(chantier){
         return this.http.post(this.baseUrl+'/'+'create', chantier);
