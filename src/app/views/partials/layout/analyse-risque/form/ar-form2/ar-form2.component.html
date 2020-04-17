@@ -69,7 +69,7 @@
                       <th mat-header-cell *matHeaderCellDef> {{'ARS.FORM.ACTION' | translate}} </th>
                       <td mat-cell *matCellDef="let element"> 
                         <div class="m-2" *ngFor="let risk of element.risques" >
-                            <mat-checkbox [value]="risk.id" (change)="onRiskCheckChange($event)">{{risk.libelle}}</mat-checkbox>
+                            <mat-checkbox [value]="risk.id" (change)="onRiskCheckChange($event)" [checked]="onRiskIsChecked(risk.id)">{{risk.libelle}}</mat-checkbox>
                         </div>
                       </td>
                     </ng-container>
@@ -99,7 +99,7 @@
 			<div class="tf-card-form">        
         <div class="form-row">
           <div class="col-md-2" *ngFor="let epi of epiList" >
-            <mat-checkbox [value]="epi.id" (change)="onEpiCheckChange($event)">{{epi.libelle}}</mat-checkbox>
+            <mat-checkbox [value]="epi.id" (change)="onEpiCheckChange($event)" [checked]="onEpiIsChecked(epi.id)" >{{epi.libelle}}</mat-checkbox>
           </div>
         </div>
 				<!-- <div class="form-row">

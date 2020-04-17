@@ -120,6 +120,14 @@ export class ArForm2Component implements OnInit {
     }
   }
 
+  onRiskIsChecked(riskId){
+    return this.arForm.get('risques').value.includes(riskId);
+  }
+
+  onEpiIsChecked(epiId){
+    return this.arForm.get('epis').value.includes(epiId);
+  }
+
   onCommentCheckChange(id, event) {
     
     // const formArray: FormArray = this.arForm.get('comments') as FormArray;
