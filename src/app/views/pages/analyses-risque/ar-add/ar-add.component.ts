@@ -1,6 +1,6 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators, FormControl, FormArray, NgModel, FormControlName } from "@angular/forms";
 import { CommonModule } from '@angular/common';
 import * as moment from 'moment';
 
@@ -22,6 +22,9 @@ import Swal from 'sweetalert2';
   styleUrls: ['./ar-add.component.scss']
 })
 export class ArAddComponent implements OnInit {
+
+  // Chantier search control
+  searchControl: FormControl = new FormControl();
   
   ar: Ar;
   arForm: FormGroup;
@@ -33,8 +36,9 @@ export class ArAddComponent implements OnInit {
   filter = {
     keyword: "",
   }
-  public chantiersList : Chantier[];
   public chantier : Chantier;
+  public chantiers : Array<Chantier>;
+  filteredChantiers: Observable<Array<Chantier>>;
   // Private properties
   errors;
   
@@ -63,7 +67,27 @@ export class ArAddComponent implements OnInit {
     this.createForm();
     this.getTypes();
     this.getUsers();
-    
+    this.initFilteredChantiers();
+  }
+
+  async initFilteredChantiers(){
+    var res = await this.chantierService.getList().toPromise();
+    this.chantiers = res.result.data;
+    this.filteredChantiers = this.searchControl.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value))
+    );
+  }
+
+  private _filter(value: string): Array<Chantier> {
+    const filterValue = value;
+    return this.chantiers.filter(chantier => 
+      this._normalizeValue(chantier.nom).includes(filterValue)
+    );
+  }
+
+  private _normalizeValue(value: String): string {
+    return value.toLowerCase().replace(/\s/g, '');
   }
 
   async getTypes(){
@@ -72,6 +96,7 @@ export class ArAddComponent implements OnInit {
     this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
+
   async getUsers(){
     var res = await this.authService.getList().toPromise();
     this.users = res.result.data;
@@ -81,54 +106,44 @@ export class ArAddComponent implements OnInit {
 
   createForm() {
 		this.arForm = this.arFB.group({
-      date: [null, Validators.compose([])],
-      a_prevoir_compagnons:['0', Validators.compose([])],
-      date_accueil_secu:[null, Validators.compose([])],
-      realisateur:['', Validators.compose([])],
-      tel_realisateur:['', Validators.compose([])],
-      date_validite:[null, Validators.compose([])],
-      num_secours:['', Validators.compose([])],
-      contact_interne_secours:[null, Validators.compose([])],
-      tel_contact_interne_secours:['', Validators.compose([])],
-      contact_client_chef_chtr:['', Validators.compose([])],
-      tel_contact_client_chef_chtr:['', Validators.compose([])],
-      contact_client_hse:['', Validators.compose([])],
-      tel_contact_client_hse:['', Validators.compose([])],
-      heure_ouverture:['', Validators.compose([])],
-      heure_fermeture:['', Validators.compose([])],
-      courant_dispo:['', Validators.compose([])],
+      date: [null, Validators.required],
+      a_prevoir_compagnons:['0', Validators.required],
+      date_accueil_secu:[null, Validators.required],
+      realisateur:['', Validators.required],
+      tel_realisateur:['', Validators.required],
+      date_validite:[null, Validators.required],
+      num_secours:['', Validators.required],
+      contact_interne_secours:[null, Validators.required],
+      tel_contact_interne_secours:['', Validators.required],
+      contact_client_chef_chtr:['', Validators.required],
+      tel_contact_client_chef_chtr:['', Validators.required],
+      contact_client_hse:['', Validators.required],
+      tel_contact_client_hse:['', Validators.required],
+      heure_ouverture:['', Validators.required],
+      heure_fermeture:['', Validators.required],
+      courant_dispo:['', Validators.required],
 
-      zone_part:[false, Validators.compose([])],
-      parking_salarie:[false, Validators.compose([])],
-      parking_spe_chtr:[false, Validators.compose([])],
-      stat_arr:[false, Validators.compose([])],
-      algeco_cvti:[false, Validators.compose([])],
-      zone_ext_non_surv:[false, Validators.compose([])],
-      zone_surv_balisee:[false, Validators.compose([])],
-      prevoir_balisage_materiel:[false, Validators.compose([])],
+      zone_part:[false, Validators.required],
+      parking_salarie:[false, Validators.required],
+      parking_spe_chtr:[false, Validators.required],
+      stat_arr:[false, Validators.required],
+      algeco_cvti:[false, Validators.required],
+      zone_ext_non_surv:[false, Validators.required],
+      zone_surv_balisee:[false, Validators.required],
+      prevoir_balisage_materiel:[false, Validators.required],
 
-      a_signer_registre_travaux:['0', Validators.compose([])],
-      nom_charge_registre:[null, Validators.compose([])],
-      adresse_charge_registre:['', Validators.compose([])],
-      ville_charge_registre:[null, Validators.compose([])],
-      codepostal_charge_registre:['', Validators.compose([])],
-      tel_charge_registre:['', Validators.compose([])],
-      a_prevoir_balisage:['0', Validators.compose([])],
-      nom_ca_cvti:['', Validators.compose([])],
-      tel_ca_cvti:['', Validators.compose([])],
-      assistant_ca:['', Validators.compose([])],
-      tel_assistant_ca:['', Validators.compose([])],
-
-      observations:['', Validators.compose([])],
-      signature: this.arFB.group({
-        date:['', Validators.compose([])],
-        personnel_id:['', Validators.compose([])],
-        personnel_fullname:['', Validators.compose([])],
-        societe:['', Validators.compose([])],
-        signature:['', Validators.compose([])],
-        commentaires:['', Validators.compose([])],
-      }),
-
+      a_signer_registre_travaux:['0', Validators.required],
+      nom_charge_registre:[null, Validators.required],
+      adresse_charge_registre:['', Validators.required],
+      ville_charge_registre:[null, Validators.required],
+      pays_charge_registre:[null, Validators.required],
+      codepostal_charge_registre:['', Validators.required],
+      tel_charge_registre:['', Validators.required],
+      a_prevoir_balisage:['0', Validators.required],
+      nom_ca_cvti:['', Validators.required],
+      tel_ca_cvti:['', Validators.required],
+      assistant_ca:['', Validators.required],
+      tel_assistant_ca:['', Validators.required],
       risques:new FormArray([]),
       epis:new FormArray([]),
 		});
@@ -136,19 +151,17 @@ export class ArAddComponent implements OnInit {
 		this.cdr.detectChanges();
   }
   
-  searchForChantier(keyword: string){
-    this.filter.keyword = keyword;
-    console.log(keyword);
-    this.getChantier();
-    console.log(this.chantiersList);
-    console.log(this.chantier);
+  searchForChantier(){
+    if(this.searchControl.value && this.searchControl.value.id){
+      this.initFilteredChantiers();
+      this.getChantier(this.searchControl.value.id);
+    }
   }
 
-  async getChantier(){
+  async getChantier(chantierId: Number){
     try {
-      var res = await this.chantierService.getList(this.filter.keyword).toPromise();
-      this.chantiersList = res.result.data;
-      this.chantier = this.chantiersList[0];
+      var res = await this.chantierService.get(chantierId).toPromise();
+      this.chantier = res.result.data;
       this.cdr.detectChanges();
       this.cdr.markForCheck();
 		} catch (error) {
@@ -161,67 +174,58 @@ export class ArAddComponent implements OnInit {
     try {
       let result;
 
-      let form = {...this.arForm.value};
-      form.date = this.setDateFormat(form.date);
-      form.date_accueil_secu = this.setDateFormat(form.date_accueil_secu);
-      form.date_validite = this.setDateFormat(form.date_validite);
-      form.signature.date = this.setDateFormat(form.signature.date);
-      form.chantier_id = this.chantier.id;
-  
-      if(
-        !form.date &&
-        !form.a_prevoir_compagnons &&
-        !form.date_accueil_secu &&
-        !form.realisateur &&
-        !form.tel_realisateur &&
-        !form.date_validite &&
-        !form.num_secours &&
-        !form.contact_interne_secours &&
-        !form.tel_contact_interne_secours &&
-        !form.contact_client_chef_chtr &&
-        !form.tel_contact_client_chef_chtr &&
-        !form.contact_client_hse &&
-        !form.tel_contact_client_hse &&
-        !form.heure_ouverture &&
-        !form.heure_fermeture && !form.courant_dispo
-      ){
-        form = null;
+      if(this.chantier)
+      {
+
+        let form = {...this.arForm.value};
+        form.date = this.setDateFormat(form.date);
+        form.date_accueil_secu = this.setDateFormat(form.date_accueil_secu);
+        form.date_validite = this.setDateFormat(form.date_validite);
+        form.chantier_id = this.chantier.id;
+
+
+        this.arService.create(form)
+          .toPromise()
+          .then((ar) => {
+            console.log(ar);
+            this.errors = false; 
+            this.cdr.markForCheck();
+            
+            Swal.fire({
+              icon: 'success',
+              title: 'Analyse de risque créée avec succès',
+              showConfirmButton: false,
+              timer: 1500
+            }).then(() => {
+              this.router.navigate(['/analyses-risque/list']);
+            });
+          })
+          .catch(err =>{ 
+
+            Swal.fire({
+              icon: 'error',
+              title: 'Echec! le formulaire est incomplet',
+              showConfirmButton: false,
+              timer: 2000
+            });
+
+            if(err.status === 422)
+              this.arForm = { ...err.error};
+              this.errors = true;
+
+          });
+          
+        this.cdr.markForCheck();
+
+      }else{
+        Swal.fire({
+          icon: 'error',
+          title: 'Echec! Veuillez sélectionner un chantier',
+          showConfirmButton: false,
+          timer: 2000
+        });
       }
 
-      console.log(form);
-
-			this.arService.create(form)
-        .toPromise()
-        .then((ar) => {
-          console.log(ar);
-          this.errors = false; 
-          this.cdr.markForCheck();
-          
-          Swal.fire({
-            icon: 'success',
-            title: 'Analyse de risque créée avec succès',
-            showConfirmButton: false,
-            timer: 1500
-          }).then(() => {
-            this.router.navigate(['/analyses-risque/list']);
-          });
-        })
-        .catch(err =>{ 
-
-          Swal.fire({
-            icon: 'error',
-            title: 'Echec! le formulaire est incomplet',
-            showConfirmButton: false,
-            timer: 1500
-          });
-
-          if(err.status === 422)
-            this.arForm = { ...err.error};
-            this.errors = true;
-
-        });
-        
-      this.cdr.markForCheck();
     } catch (error) {
       console.error(error);
       throw error;
@@ -232,6 +236,11 @@ export class ArAddComponent implements OnInit {
   setDateFormat(date){
       return date ? moment(date).format('YYYY-MM-DD') : null;
   }
+
+  displayFn(chantier:Chantier): String {
+    return chantier ? chantier.nom : '';
+  }
+
 
   
   
