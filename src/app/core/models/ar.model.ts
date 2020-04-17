@@ -1,5 +1,6 @@
 import { Risque } from './risque.model';
 import { EpiType } from './epiType.model';
+import { CatRisqueComment } from './catRisqueComment.model';
 
 export class Ar {
     id?: number;
@@ -37,6 +38,8 @@ export class Ar {
     a_prevoir_balisage?: boolean;
     risques?: Array<Risque>;
     epi_types?: Array<EpiType>;
+    cat_risques?: Array<CatRisqueComment>;
+
     adresse_charge_registre?: string;
     ville_charge_registre?: string;
     codepostal_charge_registre?: string;

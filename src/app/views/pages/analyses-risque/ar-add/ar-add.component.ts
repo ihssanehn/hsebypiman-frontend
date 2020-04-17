@@ -65,6 +65,7 @@ export class ArAddComponent implements OnInit {
   ngOnInit() {
     this.ar = new Ar();
     this.createForm();
+    this.setDynamicValidators();
     this.getTypes();
     this.getUsers();
     this.initFilteredChantiers();
@@ -133,22 +134,90 @@ export class ArAddComponent implements OnInit {
       prevoir_balisage_materiel:[false, Validators.required],
 
       a_signer_registre_travaux:[null, Validators.required],
-      nom_charge_registre:[null, Validators.required],
-      adresse_charge_registre:['', Validators.required],
-      ville_charge_registre:[null, Validators.required],
-      pays_charge_registre:[null, Validators.required],
-      codepostal_charge_registre:['', Validators.required],
-      tel_charge_registre:['', Validators.required],
+      nom_charge_registre:[null],
+      adresse_charge_registre:[''],
+      ville_charge_registre:[null],
+      pays_charge_registre:[null],
+      codepostal_charge_registre:[''],
+      tel_charge_registre:[''],
+
       a_prevoir_balisage:[null, Validators.required],
-      nom_ca_cvti:['', Validators.required],
-      tel_ca_cvti:['', Validators.required],
-      assistant_ca:['', Validators.required],
-      tel_assistant_ca:['', Validators.required],
+      nom_ca_cvti:[''],
+      tel_ca_cvti:[''],
+      assistant_ca:[''],
+      tel_assistant_ca:[''],
       risques:new FormArray([]),
       epis:new FormArray([]),
+      comments:new FormArray([]),
 		});
 		this.loaded = true;
 		this.cdr.detectChanges();
+  }
+
+  setDynamicValidators() {
+    const nom_ca_cvti = this.arForm.get('nom_ca_cvti');
+    const tel_ca_cvti = this.arForm.get('tel_ca_cvti');
+    const assistant_ca = this.arForm.get('assistant_ca');
+    const tel_assistant_ca = this.arForm.get('tel_assistant_ca');
+
+    const nom_charge_registre = this.arForm.get('nom_charge_registre');
+    const adresse_charge_registre = this.arForm.get('adresse_charge_registre');
+    const ville_charge_registre = this.arForm.get('ville_charge_registre');
+    const pays_charge_registre = this.arForm.get('pays_charge_registre');
+    const codepostal_charge_registre = this.arForm.get('codepostal_charge_registre');
+    const tel_charge_registre = this.arForm.get('tel_charge_registre');
+
+    this.arForm.get('a_prevoir_balisage').valueChanges
+      .subscribe(a_prevoir_balisage => {
+
+        if (a_prevoir_balisage === '1') {
+          nom_ca_cvti.setValidators([Validators.required]);
+          tel_ca_cvti.setValidators([Validators.required]);
+          assistant_ca.setValidators([Validators.required]);
+          tel_assistant_ca.setValidators([Validators.required]);
+        }
+
+        if (a_prevoir_balisage === '0') {
+          nom_ca_cvti.setValidators(null);
+          tel_ca_cvti.setValidators(null);
+          assistant_ca.setValidators(null);
+          tel_assistant_ca.setValidators(null);
+        }
+
+        nom_ca_cvti.updateValueAndValidity();
+        tel_ca_cvti.updateValueAndValidity();
+        assistant_ca.updateValueAndValidity();
+        tel_assistant_ca.updateValueAndValidity();
+      });
+
+    this.arForm.get('a_signer_registre_travaux').valueChanges
+      .subscribe(a_signer_registre_travaux => {
+
+        if (a_signer_registre_travaux === '1') {
+          nom_charge_registre.setValidators([Validators.required]);
+          adresse_charge_registre.setValidators([Validators.required]);
+          ville_charge_registre.setValidators([Validators.required]);
+          pays_charge_registre.setValidators([Validators.required]);
+          codepostal_charge_registre.setValidators([Validators.required]);
+          tel_charge_registre.setValidators([Validators.required]);
+        }
+
+        if (a_signer_registre_travaux === '0') {
+          nom_charge_registre.setValidators(null);
+          adresse_charge_registre.setValidators(null);
+          ville_charge_registre.setValidators(null);
+          pays_charge_registre.setValidators(null);
+          codepostal_charge_registre.setValidators(null);
+          tel_charge_registre.setValidators(null);
+        }
+
+        nom_charge_registre.updateValueAndValidity();
+        adresse_charge_registre.updateValueAndValidity();
+        ville_charge_registre.updateValueAndValidity();
+        pays_charge_registre.updateValueAndValidity();
+        codepostal_charge_registre.updateValueAndValidity();
+        tel_charge_registre.updateValueAndValidity();
+      });
   }
   
   searchForChantier(){
