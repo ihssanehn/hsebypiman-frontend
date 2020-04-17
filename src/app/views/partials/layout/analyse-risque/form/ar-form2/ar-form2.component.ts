@@ -46,7 +46,6 @@ export class ArForm2Component implements OnInit {
   }
 
   ngOnInit() {
-    //this.getAllUsers();
   }
 
   async getCatRisques(){
@@ -57,13 +56,6 @@ export class ArForm2Component implements OnInit {
 
   async getEpiTypes(){
     this.epiList = await this.epiTypesService.getAll().toPromise();
-    this.cdr.detectChanges();
-    this.cdr.markForCheck();
-  }
-
-  async getAllUsers(){
-    this.salaries = await this.authService.getAllUsers().toPromise();
-    this.initFilteredSalaries();
     this.cdr.detectChanges();
     this.cdr.markForCheck();
   }

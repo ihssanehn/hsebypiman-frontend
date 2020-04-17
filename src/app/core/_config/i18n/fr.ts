@@ -92,11 +92,17 @@ export const locale = {
 				DESC: 'Enter your details to create your account',
 				SUCCESS: 'Your account has been successfuly registered.'
 			},
+			EDIT: {
+				TITLE: 'Premier accès à votre compte',
+				DESC: 'Saisissez un nouveau mot de passe',
+				SUCCESS: 'Votre mot de passe a été modifié avec succès.'
+			},
 			INPUT: {
 				EMAIL: 'Email',
 				FULLNAME: 'Fullname',
 				PASSWORD: 'Mot de passe',
-				CONFIRM_PASSWORD: 'Confirm Password',
+				NEW_PASSWORD: 'Nouveau mot de passe',
+				CONFIRM_PASSWORD: 'Confirmation',
 				USERNAME: 'Nom d\'utilisateur'
 			},
 			VALIDATION: {
@@ -110,6 +116,7 @@ export const locale = {
 				MIN_LENGTH_FIELD: 'Minimum field length:',
 				MAX_LENGTH_FIELD: 'Maximum field length:',
 				INVALID_FIELD: 'Field is not valid',
+				NOT_SAME: 'Les mots de passe doivent correspondre'
 			},
 			LOGOUT: 'Se déconnecter'
 		},

@@ -20,6 +20,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { AuthNoticeComponent } from './auth-notice/auth-notice.component';
 // Auth
 import { AuthGuard, AuthService } from '../../../core/auth';
+import { EditPasswordComponent } from './edit-password/edit-password.component';
 
 const routes: Routes = [
 	{
@@ -39,6 +40,10 @@ const routes: Routes = [
 			{
 				path: 'forgot-password',
 				component: ForgotPasswordComponent,
+			},
+			{
+				path: 'edit-password',
+				component: EditPasswordComponent,
 			}
 		]
 	}
@@ -71,7 +76,8 @@ const routes: Routes = [
 		AuthComponent,
 		LoginComponent,
 		ForgotPasswordComponent,
-		AuthNoticeComponent
+		AuthNoticeComponent,
+		EditPasswordComponent
 	]
 })
 
