@@ -6,7 +6,8 @@ export { SearchChantierFormComponent } from './analyse-risque/form/search-chanti
 
 // Chantier
 export { ChantierFormComponent } from './chantier/form/chantier-form/chantier-form.component';
-export { ChantierFiltersComponent } from './chantier/chantier-filters/chantier-filters.component';
+// export { ChantierFiltersComponent } from './chantier/chantier-filters/chantier-filters.component';
+export { SearchListBarComponent } from './search-list-bar/search-list-bar.component';
 export { SearchChantierHeaderComponent } from './chantier/form/search-chantier-header/search-chantier-header.component';
 
 // VISITES

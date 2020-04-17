@@ -15,8 +15,8 @@
 					<span class="input-group-text" (click)="clear($event)" >
 						<span ><i *ngIf="data" [ngStyle]="{'display': 'flex'}" class="la la-close tf-quick-search__close"></i></span>
 					</span>
-					<span class="input-group-text" (click)="hidden = !hidden">
-						<!-- <span >Recherche Avancée <i class="fa pl-2" [ngClass]="hidden ? 'fa-caret-right':'fa-caret-down'"></i></span> -->
+					<span class="input-group-text" *ngIf="hasAdvancedSearch" (click)="toggleAdvancedSearch()">
+						<span >Recherche Avancée <i class="fa pl-2" [ngClass]="showFilters ? 'fa-caret-down':'fa-caret-right'"></i></span>
 					</span>
 				</div>
 			</div>

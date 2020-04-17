@@ -1,5 +1,11 @@
 <!-- <div  style="height: 69px;"> -->
-  <tf-chantier-filters [(ngModel)]="filter" (change)="getChantiers()" class="row row-filters"></tf-chantier-filters>
+  <tf-search-list-bar [(ngModel)]="filter" (change)="getChantiers()" [hasAdvancedSearch]="true" [showFilters]="showFilters" class="row row-filters"></tf-search-list-bar>
+  <tf-chantier-filters  *ngIf="showFilters" class="row row-filters"></tf-chantier-filters>
+  <div class="row" *ngIf="showFilters">
+    <div class="col-xl-12">
+      <h1>COucou</h1>
+    </div>
+  </div>
 <!-- </div> -->
 <tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
 	<tf-portlet-body class="tf-portlet__body--fit" style="padding: 15px;" *ngIf="chantiersList">

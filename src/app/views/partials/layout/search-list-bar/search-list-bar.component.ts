@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit, AfterViewInit, EventEmitter, Output, OnDestroy, forwardRef, ViewChild, ElementRef, ContentChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, AfterViewInit, EventEmitter, Output, OnDestroy, forwardRef, ViewChild, ElementRef, ContentChild, Input } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { fromEvent, of, Subscription } from 'rxjs';
 import { debounceTime,map,distinctUntilChanged,filter, tap } from 'rxjs/operators';
@@ -6,44 +6,47 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 
 @Component({
-  selector: 'tf-chantier-filters',
-  templateUrl: './chantier-filters.component.html',
-  styleUrls: ['./chantier-filters.component.scss'],
+  selector: 'tf-search-list-bar',
+  templateUrl: './search-list-bar.component.html',
+  styleUrls: ['./search-list-bar.component.scss'],
   providers: [{
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => ChantierFiltersComponent),
+    useExisting: forwardRef(() => SearchListBarComponent),
     multi: true
   }]
 })
-export class ChantierFiltersComponent implements AfterViewInit, OnInit, OnDestroy {
+
+export class SearchListBarComponent implements AfterViewInit, OnInit, OnDestroy {
 
   
   @ViewChild('searchInput', {static: false}) searchInput: ElementRef;
 
   loading = false;
-  hidden = true;
   data: boolean = false;
   filter = {
     keyword: "",
-    dateRange: [],
-    status_id: ""
   };
   statuses;
 
 	// Private properties
   private readonly subscriptions: Subscription[] = [];
   
+  @Input() hasAdvancedSearch: Boolean;
+  @Input() showFilters: Boolean;
   @Output() change = new EventEmitter();
+  // @Output() advancedSearchDisplayChange = new EventEmitter();
+
   constructor(
-    // private statusService: StatusService
 		iconRegistry: MatIconRegistry, 
-		sanitizer: DomSanitizer
+    sanitizer: DomSanitizer,
   ) {
 		iconRegistry.addSvgIcon(
       'search',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/search.svg'));
   }
 
-  async ngOnInit(){}
+  async ngOnInit(){
+    console.log(this.hasAdvancedSearch);
+  }
 
   async ngAfterViewInit() {
     fromEvent(this.searchInput.nativeElement,'keyup')
@@ -103,4 +106,8 @@ export class ChantierFiltersComponent implements AfterViewInit, OnInit, OnDestro
     this.submit();
   }
   
+  toggleAdvancedSearch(){
+    this.showFilters = !this.showFilters;
+    // this.advancedSearchDisplayChange.emit(this.showFilters);
+  }
 }

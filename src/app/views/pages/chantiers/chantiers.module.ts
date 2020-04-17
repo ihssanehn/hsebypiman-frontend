@@ -23,6 +23,7 @@ import { ChantiersListComponent } from './chantiers-list/chantiers-list.componen
 import { ChantierEditComponent } from './chantier-edit/chantier-edit.component';
 import { ChantierAddComponent } from './chantier-add/chantier-add.component';
 import { ChantierDetailComponent } from './chantier-detail/chantier-detail.component';
+import { ChantierFiltersComponent } from './chantier-filters/chantier-filters.component';
 import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -167,7 +168,8 @@ const routes: Routes = [
 		ChantiersListComponent,
 		ChantierEditComponent,
 		ChantierAddComponent,
-		ChantierDetailComponent
+		ChantierDetailComponent,
+		ChantierFiltersComponent,
 	]
 })
 export class ChantiersModule {}
