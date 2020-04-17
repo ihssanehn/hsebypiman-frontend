@@ -82,9 +82,12 @@ export class ArsListComponent implements OnInit {
 		this.router.navigate(['../detail', arId], { relativeTo: this.activatedRoute });
 	}
 
-	deleteAr(arId){
+	async deleteAr(arId){
+		await this.arService.delete(arId).toPromise();
+		this.getArs();
 		Swal.fire({
-			title: 'Désolé cette fonctionnalité n\'a pas encore été implémentée',
+			icon: 'success',
+			title: 'Analyse de risque a été supprimé avec succès',
 			showConfirmButton: false,
 			timer: 1500
 		})
