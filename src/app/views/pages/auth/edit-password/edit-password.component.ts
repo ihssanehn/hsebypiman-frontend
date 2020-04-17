@@ -96,7 +96,7 @@ export class EditPasswordComponent implements OnInit, OnDestroy {
 			tap(response => {
 				if (response) {
 					this.authNoticeService.setNotice(this.translate.instant('AUTH.EDIT.SUCCESS'), 'success');
-					this.router.navigateByUrl('/auth/login');
+					this.router.navigateByUrl('/');
 				} else {
 					this.authNoticeService.setNotice(this.translate.instant('AUTH.VALIDATION.NOT_FOUND', {
             name: this.translate.instant('AUTH.INPUT.EMAIL')

@@ -93,7 +93,7 @@ export const locale = {
 				SUCCESS: 'Your account has been successfuly registered.'
 			},
 			EDIT: {
-				TITLE: 'Premier accès à votre compte',
+				TITLE: 'Merci de modifier votre mot de passe',
 				DESC: 'Saisissez un nouveau mot de passe',
 				SUCCESS: 'Votre mot de passe a été modifié avec succès.'
 			},
