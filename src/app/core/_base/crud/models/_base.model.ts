@@ -1,8 +1,8 @@
 export class BaseModel {
 	// Edit
-	_isEditMode = false;
+	_isEditMode? = false;
 	// Log
-	_userId = 0; // Admin
-	_createdDate: string;
-	_updatedDate: string;
+	_userId? = 0; // Admin
+	_createdDate?: string;
+	_updatedDate?: string;
 }

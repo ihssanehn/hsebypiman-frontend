@@ -224,6 +224,7 @@ export const locale = {
 				SHORTTITLE:'Prochaine visite de prévue',
 			},
 			VSS:{
+				LABEL:'Visites Sécurités',
 				PLACEHOLDER:'',
 				TITLE:'Visites passées',
 				SHORTTITLE:'Visites passées',

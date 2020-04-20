@@ -89,6 +89,21 @@
 					</div>
 				</div>
 			</div>
+			<h5>Habilitations Nécessaires <span class="pull-right pointer" (click)="showHabs = !showHabs">{{showHabs ? 'masquer':'montrer'}}<i class="fa pl-2" [ngClass]="showHabs ? 'fa-caret-down':'fa-caret-right'"></i></span></h5>
+			<div *ngIf="showHabs">
+				<div class="row" *ngFor="let catHab of catHabs" >
+					<div class="col-12">
+						<h6>{{catHab.libelle}}</h6>
+					</div>
+					<div class="col-12">
+						<div class="row form-row">
+							<div class="col-md-3" *ngFor="let hab of catHab.habilitations">
+								<mat-checkbox [value]="hab.id" (change)="onHabCheckChange($event)" [checked]="onHabIsChecked(hab.id)">{{hab.libelle}}</mat-checkbox>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</tf-portlet-body>
 	</tf-portlet>
 </ng-container>

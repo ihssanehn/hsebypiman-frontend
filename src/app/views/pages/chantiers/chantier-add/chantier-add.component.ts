@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from "@angular/forms";
 import { CommonModule } from '@angular/common';
 import * as moment from 'moment';
 
@@ -43,7 +43,7 @@ export class ChantierAddComponent implements OnInit {
 
   ngOnInit() {
     this.chantier = new Chantier();
-    this.createForm();    
+    this.createForm();
   }
 
   createForm() {
@@ -59,6 +59,7 @@ export class ChantierAddComponent implements OnInit {
       montant: ['', Validators.required],
       date_demarrage: ['', Validators.required],
       charge_affaire_id: [null, Validators.required],
+      habilitations: new FormArray([]),
 		});
 		this.loaded = true;
 		this.cdr.detectChanges();
@@ -102,7 +103,7 @@ export class ChantierAddComponent implements OnInit {
         
       this.cdr.markForCheck();
     } catch (error) {
-      console.error(error);
+        console.error(error);
       throw error;
     }
 
