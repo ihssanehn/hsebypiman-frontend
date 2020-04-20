@@ -1,5 +1,5 @@
 <!-- <div  style="height: 69px;"> -->
-  <tf-search-list-bar [(ngModel)]="filter" (change)="getChantiers()" [hasAdvancedSearch]="false" [showFilters]="showFilters" class="row row-filters"></tf-search-list-bar>
+  <tf-search-list-bar [(ngModel)]="filter" (change)="getChantiers()" [hasAdvancedSearch]="true" [showFilters]="showFilters" class="row row-filters"></tf-search-list-bar>
   <tf-chantier-filters  *ngIf="showFilters" class="row row-filters"></tf-chantier-filters>
   <div class="row" *ngIf="showFilters">
     <div class="col-xl-12">
