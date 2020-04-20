@@ -1,5 +1,6 @@
 
 import {Ar} from './ar.model'
+import { Habilitation } from './habilitation.model';
 
 export class Chantier {
     id?: number;
@@ -26,4 +27,5 @@ export class Chantier {
     latest_vs?: any;
     vss_count?: number;
     ar?: Ar;
+    habilitations?: Habilitation[];
 }

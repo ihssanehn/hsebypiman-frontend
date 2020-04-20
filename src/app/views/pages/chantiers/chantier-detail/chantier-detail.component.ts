@@ -48,7 +48,6 @@ export class ChantierDetailComponent implements OnInit, OnDestroy {
 	) {
 		iconRegistry.addSvgIcon('status-encours',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/encours.svg'));
 		iconRegistry.addSvgIcon('status-termine',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/termine.svg'));
-		
 	}
 
   	ngOnInit() {

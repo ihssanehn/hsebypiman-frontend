@@ -34,6 +34,7 @@ export class ChantierFormComponent implements OnInit {
     this.getUsers();
     this.getStatus();
     this.getCatHabs();
+    this.showHabs = this.chantierForm.get('habilitations').value.length > 0;
   }
 
   async getTypes(){

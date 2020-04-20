@@ -1,6 +1,3 @@
-<!-- <div class="row row-filters" style="height: 69px;">
-  
-</div> -->
 <tf-portlet class="tf-portlet--height-fluid mat-elevation-z8" id="portlet-chantier" *ngIf="chantier">
   <div class="tf-portlet-header ">
     <span class="title">
@@ -14,7 +11,7 @@
         <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editChantier(chantier.id)">
           <mat-icon>edit</mat-icon>
         </button>
-        <button mat-icon-button color="accent" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteChantier(chantier.id)">
+        <button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteChantier(chantier.id)">
           <mat-icon>delete</mat-icon>
         </button>
       </div>
@@ -51,9 +48,7 @@
             <span></span>
           </div>
           <div class="box text-center">
-            <small>{{'COMMON.CREATED_AT.TITLE' | translate}} : {{chantier.created_at | date:'dd/MM/yyyy'}}</small>
-          </div>
-          <div class="box text-center">
+            <small>{{'COMMON.CREATED_AT.TITLE' | translate}} : {{chantier.created_at | date:'dd/MM/yyyy'}}</small><br>
             <small>{{'COMMON.UPDATED_AT.TITLE' | translate}} : {{chantier.updated_at | date:'dd/MM/yyyy'}}</small>
           </div>
         </div>
@@ -63,6 +58,8 @@
         <h3>Informations sécurité</h3>
           <div class="box">
             <p><span class="label pull-left">{{'ARS.REALISATEUR.TITLE' | translate}}</span><br>{{chantier.latest_ar?.realisateur}}</p>
+            <p><span class="label pull-left">{{'ARS.DATE_ACCUEIL_SECU.TITLE' | translate}}</span><br>{{chantier.latest_ar?.date_accueil_secu}}</p>
+            <p><span class="label pull-left">{{'ARS.DATE_VALIDITE.TITLE' | translate}}</span><br>{{chantier.latest_ar?.date_validite}}</p>
           </div>
           <div class="box">
             <h5><b>En cas d'urgence</b></h5>
@@ -97,10 +94,16 @@
               <div class="col-md-6"><p class="text-right" *ngFor="let vs of chantier.vss">{{vs.date_visite | date:'dd/MM/yyyy'}}</p></div>
             </div>
           </div>
-          <!-- <div class="box box-status">
-            <mat-icon svgIcon="{{chantier.status?.code == 'ENCOURS' ? 'status-encours':'status-termine'}}" style="width:100px;height:100px"></mat-icon>
-            <h2>{{chantier.status?.libelle}}</h2>
-          </div> -->
+        </div>
+      </div>
+      <div class="col-md-12 mt-4">
+        <div class="card">
+          <h5>Habilitations requises</h5>
+          <ul>
+            <li *ngFor="let hab of chantier.habilitations">
+              {{hab.libelle}}
+            </li>
+          </ul>
         </div>
       </div>
     </div>

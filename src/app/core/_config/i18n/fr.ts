@@ -58,6 +58,7 @@ export const locale = {
 				EDIT:'Modifier le sous-traitant',
 				LIST:'Liste des sous-traitants',
 			},
+			LIST: 'Liste',
 			ADMIN: 'Admin',
 			HOME: 'Accueil',
 			SUB_ADMIN:{},

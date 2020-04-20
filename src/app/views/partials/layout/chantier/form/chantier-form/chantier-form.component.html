@@ -89,7 +89,7 @@
 					</div>
 				</div>
 			</div>
-			<h5>Habilitations Nécessaires <span class="pull-right pointer" (click)="showHabs = !showHabs">{{showHabs ? 'masquer':'montrer'}}<i class="fa pl-2" [ngClass]="showHabs ? 'fa-caret-down':'fa-caret-right'"></i></span></h5>
+			<h5 (click)="showHabs = !showHabs" class="pointer">Habilitations Nécessaires <small class="pull-right">{{showHabs ? 'masquer':'montrer'}}<i class="fa pl-2" [ngClass]="showHabs ? 'fa-caret-down':'fa-caret-right'"></i></small></h5>
 			<div *ngIf="showHabs">
 				<div class="row" *ngFor="let catHab of catHabs" >
 					<div class="col-12">
