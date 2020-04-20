@@ -73,17 +73,17 @@ export class ChantierAddComponent implements OnInit {
   
 			this.chantierService.create(form)
         .toPromise()
-        .then((chantier) => {
+        .then((res) => {
           this.errors = false; 
           this.cdr.markForCheck();
-          
+          var chantier = res.result.data;
           Swal.fire({
             icon: 'success',
             title: 'Chantié créé avec succès',
             showConfirmButton: false,
             timer: 1500
           }).then(() => {
-            this.router.navigate(['/chantiers/list']);
+            this.router.navigate(['/chantiers/detail/' + chantier.id]);
           });
         })
         .catch(err =>{ 
