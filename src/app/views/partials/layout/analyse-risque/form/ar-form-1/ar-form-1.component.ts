@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'tf-ar-form-1',
@@ -8,11 +8,16 @@ import { FormBuilder } from '@angular/forms';
 })
 export class ArForm1Component implements OnInit {
 
-  @Input() arForm: FormBuilder;
+  @Input() arForm: FormGroup;
   @Input() edit: Boolean;
+
+  toppings = new FormControl();
+  toppingList: string[] = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
+
   constructor() { }
 
   ngOnInit() {
+    this.toppings = this.arForm.controls['accueil_secu_days'] as FormControl;
   }
 
 }
