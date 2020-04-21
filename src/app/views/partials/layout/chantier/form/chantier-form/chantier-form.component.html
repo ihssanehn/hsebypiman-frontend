@@ -127,9 +127,9 @@ fxLayoutAlign="center center" fxLayoutGap="10px">
 					</div>
 				</div>
 			</div>
-			<h5 (click)="showHabs = !showHabs" class="pointer">Habilitations Nécessaires <small class="pull-right">{{showHabs ? 'masquer':'montrer'}}<i class="fa pl-2" [ngClass]="showHabs ? 'fa-caret-down':'fa-caret-right'"></i></small></h5>
+			<h5 (click)="showHabs = !showHabs" class="pointer mb-4">Habilitations Nécessaires <small class="pull-right">{{showHabs ? 'masquer':'montrer'}}<i class="fa pl-2" [ngClass]="showHabs ? 'fa-caret-down':'fa-caret-right'"></i></small></h5>
 			<div *ngIf="showHabs">
-				<div class="row" *ngFor="let catHab of catHabs" >
+				<div class="row my-3" *ngFor="let catHab of catHabs" >
 					<div class="col-12">
 						<h6>{{catHab.libelle}}</h6>
 					</div>
