@@ -266,7 +266,7 @@ export const locale = {
 					TITLE: 'Suivi des travaux ',
 					WORKREGISTER:{
 						TITLE: 'Registre de travaux à signer ',
-						MSG: 'Si oui renseigner les informations ci-dessous en charge du registre'
+						MSG: 'Si oui renseigner les informations ci-dessous'
 					},
 					SUBTITLE2: 'Balisage à prévoir sur la zone'
 				},
@@ -278,6 +278,7 @@ export const locale = {
 				RISKS: 'Les risques',
 				ACTION: 'Action de prévention à mener',
 				COMMENT: 'Précisions à apporter',
+				REGISTRAR: 'Nom de la personne en charge du registre',
 				CVTI_RESPONSIBLE: 'Nom du chargé d’affaire CVTI',
 				CA_ASSISTANT: 'Assistant CA'
 			},
@@ -370,6 +371,36 @@ export const locale = {
 				PLACEHOLDER:'',
 				TITLE:'Courant mis à disposition',
 				SHORTTITLE:'Courant mis à disposition',
+			},
+			AS_DAYS:{
+				LABEL:'Jours d\'accueil sécurité',
+				PLACEHOLDER:'',
+				TITLE:'Jours d\'accueil sécurité',
+				SHORTTITLE:'Jours d\'accueil sécurité',
+			},
+			AS_HORAIRES:{
+				LABEL:'Horaire d\'accueil sécurité',
+				PLACEHOLDER:'',
+				TITLE:'Horaire d\'accueil sécurité',
+				SHORTTITLE:'Horaire d\'accueil sécurité',
+			},
+			QUOTIDIENNEMENT:{
+				LABEL:'Quotidiennement',
+				PLACEHOLDER:'',
+				TITLE:'Quotidiennement',
+				SHORTTITLE:'Quotidiennement',
+			},
+			DEMIJOURNEE:{
+				LABEL:'Par 1/2 journée',
+				PLACEHOLDER:'',
+				TITLE:'Par 1/2 journée',
+				SHORTTITLE:'Par 1/2 journée',
+			},
+			DEUXHEURES:{
+				LABEL:'Toute les 2h',
+				PLACEHOLDER:'',
+				TITLE:'Toute les 2h',
+				SHORTTITLE:'Toute les 2h',
 			},
 		},
 		VISITES:{

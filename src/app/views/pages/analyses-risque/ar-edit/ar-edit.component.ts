@@ -136,12 +136,14 @@ export class ArEditComponent implements OnInit, OnDestroy {
   	createForm() {
 		this.arForm = this.arFB.group({
 			chantier_id: [null, Validators.required],
-			date: [null, Validators.required],
 			a_prevoir_compagnons:['0', Validators.required],
 			date_accueil_secu:[null, Validators.required],
 			realisateur:['', Validators.required],
 			tel_realisateur:['', Validators.required],
 			date_validite:[null, Validators.required],
+			accueil_secu_days:[null, Validators.required],
+			accueil_secu_time_opening:['', Validators.required],
+			accueil_secu_time_closing:['', Validators.required],
 			num_secours:['', Validators.required],
 			contact_interne_secours:[null, Validators.required],
 			tel_contact_interne_secours:['', Validators.required],
@@ -163,6 +165,7 @@ export class ArEditComponent implements OnInit, OnDestroy {
 			prevoir_balisage_materiel:[false, Validators.required],
 	  
 			a_signer_registre_travaux:['0', Validators.required],
+			registre_signing_period:[null, Validators.required],
 			nom_charge_registre:[null, Validators.required],
 			adresse_charge_registre:['', Validators.required],
 			ville_charge_registre:[null, Validators.required],
@@ -270,7 +273,6 @@ export class ArEditComponent implements OnInit, OnDestroy {
 			{
 
 				let form = {...this.arForm.value};
-				form.date = this.setDateFormat(form.date);
 				form.date_accueil_secu = this.setDateFormat(form.date_accueil_secu);
 				form.date_validite = this.setDateFormat(form.date_validite);
 				form.chantier_id = this.chantier.id;

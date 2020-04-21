@@ -8,10 +8,10 @@
 				</div>
 				<div class="row form-row">
 					<mat-form-field class="col-xl-4" >
-						<mat-label>{{'ARS.DATE.LABEL' | translate}}</mat-label>
-						<input matInput class="form-control" [matDatepicker]="date_picker" formControlName="date" placeholder="DD/MM/YYYY">
-						<mat-datepicker-toggle matSuffix [for]="date_picker"></mat-datepicker-toggle>
-						<mat-datepicker #date_picker></mat-datepicker>
+						<mat-label>{{'ARS.DATE_ACCUEIL_SECU.LABEL' | translate}}</mat-label>
+						<input matInput class="form-control" [matDatepicker]="date_accueil_secu_picker" formControlName="date_accueil_secu" placeholder="DD/MM/YYYY">
+						<mat-datepicker-toggle matSuffix [for]="date_accueil_secu_picker"></mat-datepicker-toggle>
+						<mat-datepicker #date_accueil_secu_picker></mat-datepicker>
 					</mat-form-field>
 					<mat-radio-group  formControlName="a_prevoir_compagnons"
 						class="col-xl-4 mat-form-field ng-tns-c14-2 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-legacy mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label">
@@ -37,12 +37,40 @@
 					</mat-form-field>
 				</div>
 				<div class="row form-row">
-					<mat-form-field class="col-xl-4" >
-						<mat-label>{{'ARS.DATE_ACCUEIL_SECU.LABEL' | translate}}</mat-label>
-						<input matInput class="form-control" [matDatepicker]="date_accueil_secu_picker" formControlName="date_accueil_secu" placeholder="DD/MM/YYYY">
-						<mat-datepicker-toggle matSuffix [for]="date_accueil_secu_picker"></mat-datepicker-toggle>
-						<mat-datepicker #date_accueil_secu_picker></mat-datepicker>
+					<div class="col-xl-4 mat-form-field ng-tns-c14-2 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-legacy mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label" formContolName="a_prevoir_compagnons">
+						<div class="mat-form-field-wrapper">
+							<div class="mat-form-field-flex">
+								<div class="mat-form-field-infix">
+									<span class="mat-form-field-label-wrapper">
+										<label class="mat-form-field-label">{{'ARS.AS_HORAIRES.LABEL' | translate}}</label>
+									</span>
+									<div class="horaire-box">
+										<div>
+											<input class="form-control text-center" type="time" name="accueil_secu_time_opening" formControlName="accueil_secu_time_opening" />
+										</div>
+										<span>A </span>
+										<div>
+											<input class="form-control text-center" type="time" name="accueil_secu_time_closing" formControlName="accueil_secu_time_closing" placeholder="" />
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<mat-form-field class="col-xl-4">
+						<mat-label>{{'ARS.AS_DAYS.LABEL' | translate}}</mat-label>
+						<mat-select class="form-control" formControlName="accueil_secu_days" multiple>
+							<mat-select-trigger>
+								{{toppings.value ? toppings.value[0] : ''}}
+								<span *ngIf="toppings.value?.length > 1" class="additional-selection">
+								(+{{toppings.value.length - 1}} {{toppings.value?.length === 2 ? 'autre' : 'autres'}})
+								</span>
+							</mat-select-trigger>
+							<mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+						</mat-select>
 					</mat-form-field>
+				</div>
+				<div class="row form-row">
 					<mat-form-field class="col-xl-4" >
 						<mat-label>{{'ARS.REALISATEUR.LABEL' | translate}}</mat-label>
 						<input class="form-control" matInput type="text" name="realisateur" formControlName="realisateur" placeholder="Saisir ici" />
@@ -54,16 +82,16 @@
 				</div>
 				<div class="row form-row">
 					<mat-form-field class="col-xl-4" >
-						<mat-label>{{'ARS.NUM_SECOURS.LABEL' | translate}}</mat-label>
-						<input class="form-control" matInput type="text" name="num_secours" formControlName="num_secours" placeholder="Saisir ici" />
-					</mat-form-field>
-					<mat-form-field class="col-xl-4" >
 						<mat-label>{{'ARS.CONTACT_INTERNE_SECOURS.LABEL' | translate}}</mat-label>
 						<input class="form-control" matInput type="text" name="contact_interne_secours" formControlName="contact_interne_secours" placeholder="Saisir ici" />
 					</mat-form-field>
 					<mat-form-field class="col-xl-4" >
 						<mat-label>{{'ARS.TEL_CONTACT_INTERNE_SECOURS.LABEL' | translate}}</mat-label>
 						<input class="form-control" matInput type="text" name="tel_contact_interne_secours" formControlName="tel_contact_interne_secours" placeholder="Saisir ici" />
+					</mat-form-field>
+					<mat-form-field class="col-xl-4" >
+						<mat-label>{{'ARS.NUM_SECOURS.LABEL' | translate}}</mat-label>
+						<input class="form-control" matInput type="text" name="num_secours" formControlName="num_secours" placeholder="Saisir ici" />
 					</mat-form-field>
 				</div>
 			</div>

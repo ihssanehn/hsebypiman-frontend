@@ -107,12 +107,14 @@ export class ArAddComponent implements OnInit {
 
   createForm() {
 		this.arForm = this.arFB.group({
-      date: [null, Validators.required],
-      a_prevoir_compagnons:[null, Validators.required],
+      a_prevoir_compagnons:['0', Validators.required],
       date_accueil_secu:[null, Validators.required],
       realisateur:['', Validators.required],
       tel_realisateur:['', Validators.required],
       date_validite:[null, Validators.required],
+			accueil_secu_days:[null, Validators.required],
+			accueil_secu_time_opening:['', Validators.required],
+			accueil_secu_time_closing:['', Validators.required],
       num_secours:['', Validators.required],
       contact_interne_secours:[null, Validators.required],
       tel_contact_interne_secours:['', Validators.required],
@@ -133,7 +135,8 @@ export class ArAddComponent implements OnInit {
       zone_surv_balisee:[false, Validators.required],
       prevoir_balisage_materiel:[false, Validators.required],
 
-      a_signer_registre_travaux:[null, Validators.required],
+      a_signer_registre_travaux:['0', Validators.required],
+      registre_signing_period:[null],
       nom_charge_registre:[null],
       adresse_charge_registre:[''],
       ville_charge_registre:[null],
@@ -141,7 +144,7 @@ export class ArAddComponent implements OnInit {
       codepostal_charge_registre:[''],
       tel_charge_registre:[''],
 
-      a_prevoir_balisage:[null, Validators.required],
+      a_prevoir_balisage:['0', Validators.required],
       nom_ca_cvti:[''],
       tel_ca_cvti:[''],
       assistant_ca:[''],
@@ -247,7 +250,6 @@ export class ArAddComponent implements OnInit {
       {
 
         let form = {...this.arForm.value};
-        form.date = this.setDateFormat(form.date);
         form.date_accueil_secu = this.setDateFormat(form.date_accueil_secu);
         form.date_validite = this.setDateFormat(form.date_validite);
         form.chantier_id = this.chantier.id;
