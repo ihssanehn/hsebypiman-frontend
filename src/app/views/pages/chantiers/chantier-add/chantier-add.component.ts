@@ -66,7 +66,7 @@ export class ChantierAddComponent implements OnInit {
 		this.cdr.detectChanges();
   }
   
-  async onSubmit(event){
+  async onSubmit(){
     try {
       let result;
       let form = {...this.chantierForm.value};
