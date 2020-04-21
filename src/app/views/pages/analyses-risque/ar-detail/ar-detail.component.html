@@ -90,8 +90,8 @@
 					</div>
 					<div class="row form-row">
 						<mat-form-field class="col-xl-4">
-							<mat-label>{{'ARS.DATE.LABEL' | translate}}</mat-label>
-							<input matInput [readonly]="true" class="form-control" [value]="ar.date| date:'dd/MM/yyyy'">
+							<mat-label>{{'ARS.DATE_ACCUEIL_SECU.LABEL' | translate}}</mat-label>
+							<input matInput [readonly]="true" class="form-control" [value]="ar.date_accueil_secu| date:'dd/MM/yyyy'">
 						</mat-form-field>
 						<mat-radio-group [value]="ar.a_prevoir_compagnons+''" class="col-xl-4 mat-form-field ng-tns-c14-2 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-legacy mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label">
 							<div class="mat-form-field-wrapper">
@@ -113,11 +113,37 @@
 							<input matInput [readonly]="true" class="form-control" [value]="ar.date_validite| date:'dd/MM/yyyy'">
 						</mat-form-field>
 					</div>
+
 					<div class="row form-row">
-						<mat-form-field class="col-xl-4">
-							<mat-label>{{'ARS.DATE_ACCUEIL_SECU.LABEL' | translate}}</mat-label>
-							<input matInput [readonly]="true" class="form-control" [value]="ar.date_accueil_secu| date:'dd/MM/yyyy'">
-						</mat-form-field>
+						<div class="col-xl-4 mat-form-field ng-tns-c14-2 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-legacy mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label" formContolName="a_prevoir_compagnons">
+							<div class="mat-form-field-wrapper">
+								<div class="mat-form-field-flex">
+									<div class="mat-form-field-infix">
+										<span class="mat-form-field-label-wrapper">
+											<label class="mat-form-field-label">{{'ARS.AS_HORAIRES.LABEL' | translate}}</label>
+										</span>
+										<div class="horaire-box flex-layout">
+											<div>
+												<input [readonly]="true" class="form-control text-center" type="time" name="accueil_secu_time_opening" [value]="ar.accueil_secu_time_opening" />
+											</div>
+											<span style="padding: 1em;">A </span>
+											<div>
+												<input [readonly]="true" class="form-control text-center" type="time" name="accueil_secu_time_closing" [value]="ar.accueil_secu_time_closing" />
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<mat-chip-list>
+							<mat-label>{{'ARS.AS_DAYS.LABEL' | translate}}</mat-label>
+							<mat-chip  *ngFor="let as_day of ar.accueil_secu_days" class="additional-selection">{{as_day}} </mat-chip>
+						</mat-chip-list>
+
+					</div>
+
+					<div class="row form-row">
 						<mat-form-field class="col-xl-4">
 							<mat-label>{{'ARS.REALISATEUR.LABEL' | translate}}</mat-label>
 							<input class="form-control" matInput [readonly]="true" type="text" name="realisateur" [value]="ar.realisateur" />
@@ -129,16 +155,16 @@
 					</div>
 					<div class="row form-row">
 						<mat-form-field class="col-xl-4">
-							<mat-label>{{'ARS.NUM_SECOURS.LABEL' | translate}}</mat-label>
-							<input class="form-control" matInput [readonly]="true" type="text" name="num_secours" [value]="ar.num_secours" />
-						</mat-form-field>
-						<mat-form-field class="col-xl-4">
 							<mat-label>{{'ARS.CONTACT_INTERNE_SECOURS.LABEL' | translate}}</mat-label>
 							<input class="form-control" matInput [readonly]="true" type="text" name="contact_interne_secours" [value]="ar.contact_interne_secours" />
 						</mat-form-field>
 						<mat-form-field class="col-xl-4">
 							<mat-label>{{'ARS.TEL_CONTACT_INTERNE_SECOURS.LABEL' | translate}}</mat-label>
 							<input class="form-control" matInput [readonly]="true" type="text" name="tel_contact_interne_secours" [value]="ar.tel_contact_interne_secours" />
+						</mat-form-field>
+						<mat-form-field class="col-xl-4">
+							<mat-label>{{'ARS.NUM_SECOURS.LABEL' | translate}}</mat-label>
+							<input class="form-control" matInput [readonly]="true" type="text" name="num_secours" [value]="ar.num_secours" />
 						</mat-form-field>
 					</div>
 				</div>
@@ -336,36 +362,56 @@
 											<mat-radio-button value="0">Non</mat-radio-button>
 										</div>
 									</div>
+								</div>
+							</div>
+						</mat-radio-group>
+					</div>
 
+					<div class="row form-row">
+						<mat-radio-group  [value]="ar.registre_signing_period"
+						class="col-xl-12 col-md-12 mat-form-field ng-tns-c14-2 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-legacy mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label">
+							<div class="mat-form-field-wrapper">
+								<div class="mat-form-field-flex">
+									<div class="mat-form-field-infix">
+										<div class="form-control mat-input-element mat-radio-box">
+											<mat-radio-button value="quotidiennement">{{'ARS.QUOTIDIENNEMENT.LABEL' | translate}}</mat-radio-button>
+											<mat-radio-button value="par 1/2 journée">{{'ARS.DEMIJOURNEE.LABEL' | translate}}</mat-radio-button>
+											<mat-radio-button value="toute les 2h">{{'ARS.DEUXHEURES.LABEL' | translate}}</mat-radio-button>
+										</div>
+									</div>
 								</div>
 							</div>
 						</mat-radio-group>
 					</div>
 
 					<div class="row form-row" *ngIf="ar.a_signer_registre_travaux">
-						<mat-form-field class="col-xl-5">
-							<mat-label>{{'COMMON.ADRESS.LABEL' | translate}}</mat-label>
-							<input class="form-control" matInput [readonly]="true" type="text" name="adresse_charge_registre" [value]="ar.adresse_charge_registre" />
-						</mat-form-field>
-						<mat-form-field class="col-xl-4">
-							<mat-label>{{'COMMON.CITY.LABEL' | translate}}</mat-label>
-							<input class="form-control" matInput [readonly]="true" type="text" name="ville_charge_registre" [value]="ar.ville_charge_registre" />
-						</mat-form-field>
-						<mat-form-field class="col-xl-3">
-							<mat-label>{{'COMMON.POSTCODE.LABEL' | translate}}</mat-label>
-							<input matInput [readonly]="true" class="form-control" type="text" name="codepostal_charge_registre" [value]="ar.codepostal_charge_registre" />
-						</mat-form-field>
-					</div>
-					<div class="row form-row" *ngIf="ar.a_signer_registre_travaux">
-						<mat-form-field class="col-xl-5">
-							<mat-label>{{'COMMON.NAME.LABEL' | translate}}</mat-label>
+						<mat-form-field class="col-xl-7">
+							<mat-label>{{'ARS.FORM.REGISTRAR' | translate}}</mat-label>
 							<input class="form-control" matInput [readonly]="true" type="text" name="nom_charge_registre" [value]="ar.nom_charge_registre" />
 						</mat-form-field>
-						<mat-form-field class="col-xl-4">
+						<mat-form-field class="col-xl-5">
 							<mat-label>{{'COMMON.PHONENUMBER.LABEL' | translate}}</mat-label>
 							<input class="form-control" matInput [readonly]="true" type="text" name="tel_charge_registre" [value]="ar.tel_charge_registre" />
 						</mat-form-field>
-						<mat-form-field class="col-xl-3">
+					</div>
+	
+					<div class="row form-row" *ngIf="ar.a_signer_registre_travaux">
+						<mat-form-field class="col-xl-7">
+							<mat-label>{{'COMMON.ADRESS.LABEL' | translate}}</mat-label>
+							<input class="form-control" matInput [readonly]="true" type="text" name="adresse_charge_registre" [value]="ar.adresse_charge_registre" />
+						</mat-form-field>
+						<mat-form-field class="col-xl-5">
+							<mat-label>{{'COMMON.CITY.LABEL' | translate}}</mat-label>
+							<input class="form-control" matInput [readonly]="true" type="text" name="ville_charge_registre" [value]="ar.ville_charge_registre" />
+						</mat-form-field>
+					</div>
+	
+					<div class="row form-row" *ngIf="ar.a_signer_registre_travaux">
+						<mat-form-field class="col-xl-7">
+							<mat-label>{{'COMMON.POSTCODE.LABEL' | translate}}</mat-label>
+							<input matInput [readonly]="true" class="form-control" type="text" name="codepostal_charge_registre" [value]="ar.codepostal_charge_registre" />
+						</mat-form-field>
+						<mat-form-field class="col-xl-5">
 							<mat-label>{{'COMMON.COUNTRY.LABEL' | translate}}</mat-label>
 							<input class="form-control" matInput [readonly]="true" type="text" name="pays_charge_registre" [value]="ar.pays_charge_registre" />
 						</mat-form-field>

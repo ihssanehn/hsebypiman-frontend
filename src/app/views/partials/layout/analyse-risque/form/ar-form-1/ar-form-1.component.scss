@@ -3,8 +3,12 @@
     flex-flow: row nowrap;
     align-items: center;
     margin-top: 2px;
-    &>*{
-        flex: 1;
-        text-align: center;
+    span{
+        padding: 1em;
     }
+}
+
+.additional-selection {
+    opacity: 0.75;
+    font-size: 0.75em;
 }

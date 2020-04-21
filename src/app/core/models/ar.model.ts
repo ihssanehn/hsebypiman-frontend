@@ -39,6 +39,10 @@ export class Ar {
     risques?: Array<Risque>;
     epi_types?: Array<EpiType>;
     cat_risques?: Array<CatRisqueComment>;
+    accueil_secu_days?: Array<string>;
+    accueil_secu_time_opening?: number;
+    accueil_secu_time_closing?: number;
+    registre_signing_period?: string;
 
     adresse_charge_registre?: string;
     ville_charge_registre?: string;
