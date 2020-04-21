@@ -59,10 +59,10 @@
 							</button>
 						</mat-form-field>
 						<div class="col-xl-3 col-md-4 col-sm-6 col-xs-12">
-							<h6>{{'CHANTIERS.BUDGET.TITLE' | translate}}</h6>
+							<h6>{{'CHANTIERS.BUDGET.TITLE' | translate}} (en k€)</h6>
 							<mat-form-field class="col-md-6 col-xl-6">
 								<mat-label>Minimum :</mat-label>
-								<input matInput class="form-control" type="number" formControlName="montant_min" name="montant_min">
+								<input matInput class="form-control" mask="separator.2" type="string" formControlName="montant_min" name="montant_min">
 								<button mat-button *ngIf="formHasValue('montant_min')" matSuffix mat-icon-button 
 									aria-label="Clear" (click)="clearValue('montant_min'); $event.stopPropagation()">
 									<mat-icon>clear</mat-icon>
@@ -70,7 +70,7 @@
 							</mat-form-field>
 							<mat-form-field class="col-md-6 col-xl-6">
 								<mat-label>Maximum :</mat-label>
-								<input matInput class="form-control" type="number" formControlName="montant_max" name="montant_max">
+								<input matInput class="form-control" mask="separator.2" type="string" formControlName="montant_max" name="montant_max">
 								<button mat-button *ngIf="formHasValue('montant_max')" matSuffix mat-icon-button 
 									aria-label="Clear" (click)="clearValue('montant_max'); $event.stopPropagation()">
 									<mat-icon>clear</mat-icon>
@@ -96,6 +96,21 @@
 								<mat-datepicker #date_demarrage_end_picker></mat-datepicker>
 								<button mat-button *ngIf="formHasValue('date_demarrage_end')" matSuffix mat-icon-button 
 									aria-label="Clear" (click)="clearValue('date_demarrage_end'); $event.stopPropagation()">
+									<mat-icon>clear</mat-icon>
+								</button>
+							</mat-form-field>
+						</div>
+						<div class="col-xl-3 col-md-4 col-sm-6 col-xs-12">
+							<h6>&nbsp;</h6>
+							<mat-form-field>
+								<mat-label>{{'CHANTIERS.ARS.LABEL' | translate}}</mat-label>
+								<mat-select class="form-control" formControlName="analyse" name="analyse">
+									<mat-option *ngFor="let analyseOption of analyseOptions" [value]="analyseOption">
+										{{analyseOption}}
+									</mat-option>
+								</mat-select>
+								<button mat-button *ngIf="formHasValue('analyse')" matSuffix mat-icon-button 
+									aria-label="Clear" (click)="clearValue('analyse'); $event.stopPropagation()">
 									<mat-icon>clear</mat-icon>
 								</button>
 							</mat-form-field>

@@ -30,6 +30,10 @@ export class ChantierFiltersComponent implements OnInit, AfterViewInit
     'Avec',
     'Sans'
   ]
+  analyseOptions = [
+    'Avec',
+    'Sans'
+  ]
   statuses;
 
   @Output() change = new EventEmitter();
@@ -98,6 +102,7 @@ export class ChantierFiltersComponent implements OnInit, AfterViewInit
       date_demarrage_start:[null],
       date_demarrage_end:[null],
       visite:[null],
+      analyse:[null],
     })
   }
  
