@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
-import { CommonModule } from '@angular/common';
+import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from "@angular/forms";
+import { CommonModule, Location } from '@angular/common';
 import * as moment from 'moment';
 
 import { TranslateService } from '@ngx-translate/core';
@@ -35,7 +35,8 @@ export class ChantierAddComponent implements OnInit {
 		private chantierService: ChantierService,
 		private typeService: TypeService,
 		private authService: AuthService,
-		private cdr: ChangeDetectorRef,
+    private cdr: ChangeDetectorRef,
+    private location: Location,
 		private permissionsService : NgxPermissionsService,
     private translate:TranslateService,
     public snackBar: MatSnackBar,
@@ -43,7 +44,7 @@ export class ChantierAddComponent implements OnInit {
 
   ngOnInit() {
     this.chantier = new Chantier();
-    this.createForm();    
+    this.createForm();
   }
 
   createForm() {
@@ -59,12 +60,13 @@ export class ChantierAddComponent implements OnInit {
       montant: ['', Validators.required],
       date_demarrage: ['', Validators.required],
       charge_affaire_id: [null, Validators.required],
+      habilitations: new FormArray([]),
 		});
 		this.loaded = true;
 		this.cdr.detectChanges();
   }
   
-  async onSubmit(event){
+  async onSubmit(){
     try {
       let result;
       let form = {...this.chantierForm.value};
@@ -72,17 +74,17 @@ export class ChantierAddComponent implements OnInit {
   
 			this.chantierService.create(form)
         .toPromise()
-        .then((chantier) => {
+        .then((res) => {
           this.errors = false; 
           this.cdr.markForCheck();
-          
+          var chantier = res.result.data;
           Swal.fire({
             icon: 'success',
             title: 'Chantié créé avec succès',
             showConfirmButton: false,
             timer: 1500
           }).then(() => {
-            this.router.navigate(['/chantiers/list']);
+            this.router.navigate(['/chantiers/detail/' + chantier.id]);
           });
         })
         .catch(err =>{ 
@@ -102,12 +104,17 @@ export class ChantierAddComponent implements OnInit {
         
       this.cdr.markForCheck();
     } catch (error) {
-      console.error(error);
+        console.error(error);
       throw error;
     }
 
   }
 
+  
+	onCancel() {
+		this.location.back();
+  }
+  
   setDateFormat(date){
       return date ? moment(date).format('YYYY-MM-DD') : null;
   }

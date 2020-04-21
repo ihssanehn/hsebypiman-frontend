@@ -63,6 +63,14 @@ export class ArAddComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.activatedRoute.queryParams
+      .subscribe(params => {
+        if(params.chantier_id){
+          this.searchControl.setValue({id:params.chantier_id});
+          this.searchForChantier();
+        }
+      });
+      
     this.ar = new Ar();
     this.createForm();
     this.setDynamicValidators();

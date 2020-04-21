@@ -446,21 +446,12 @@ export class MenuConfig {
 						translate: 'MENU.DASHBOARD',
 					},
 					{
-						title: 'Chantiers',
-						root: true,
-						alignment: 'left',
-						page: '/chantiers/list',
-						translate: 'MENU.CHANTIER',
-						icon: 'chantier',
-						// icon: 'flaticon2-browser-2',
-					},
-					{
-						title: 'Analyse de risque',
+						title: 'Liste',
 						root: true,
 						alignment: 'left',
 						page: '/analyses-risque/list',
-						translate: 'MENU.CHANTIER',
-						icon: 'chantier',
+						translate: 'MENU.LIST',
+						icon: 'view_list',
 						// icon: 'flaticon2-browser-2',
 					},
 					{
@@ -469,7 +460,7 @@ export class MenuConfig {
 						alignment: 'left',
 						page: '/admin',
 						translate: 'MENU.ADMIN',
-						icon: 'administration',
+						icon: 'settings',
 						// icon: 'flaticon2-mail-1',
 					}
 				]
@@ -493,30 +484,12 @@ export class MenuConfig {
 						translate: 'MENU.DASHBOARD',
 					},
 					{
-						title: 'Chantiers',
-						root: true,
-						alignment: 'left',
-						page: '/chantiers/list',
-						translate: 'MENU.CHANTIER',
-						icon: 'chantier',
-						// icon: 'flaticon2-browser-2',
-					},
-					{
-						title: 'Visites de sécurité',
+						title: 'Liste',
 						root: true,
 						alignment: 'left',
 						page: '/visites-securite/list',
-						translate: 'MENU.VISITESECURITE',
-						icon: 'visite-de-securite',
-						// icon: 'flaticon2-browser-2',
-					},
-					{
-						title: 'Plan d\'action',
-						root: true,
-						alignment: 'left',
-						page: '/plans-action',
-						translate: 'MENU.PLANACTION',
-						icon: 'plan-daction',
+						translate: 'MENU.LIST',
+						icon: 'view_list',
 						// icon: 'flaticon2-browser-2',
 					},
 					{
@@ -525,7 +498,7 @@ export class MenuConfig {
 						alignment: 'left',
 						page: '/admin',
 						translate: 'MENU.ADMIN',
-						icon: 'administration',
+						icon: 'settings',
 						// icon: 'flaticon2-mail-1',
 					}
 				]
@@ -550,12 +523,12 @@ export class MenuConfig {
 						translate: 'MENU.DASHBOARD',
 					},
 					{
-						title: 'Chantiers',
+						title: 'Liste',
 						root: true,
 						alignment: 'left',
 						page: '/chantiers/list',
-						translate: 'MENU.CHANTIER',
-						icon: 'chantier',
+						translate: 'MENU.LIST',
+						icon: 'view_list',
 						// icon: 'flaticon2-browser-2',
 					},
 					{
@@ -564,7 +537,7 @@ export class MenuConfig {
 						alignment: 'left',
 						page: '/admin',
 						translate: 'MENU.ADMIN',
-						icon: 'administration',
+						icon: 'settings',
 						// icon: 'flaticon2-mail-1',
 					}
 				]

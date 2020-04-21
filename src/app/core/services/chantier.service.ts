@@ -35,7 +35,7 @@ export class ChantierService extends HttpService{
         return this.http.get<JsonResponse<Chantier>>(this.baseUrl+'/'+chantier_id);
     }
     create(chantier){
-        return this.http.post(this.baseUrl+'/'+'create', chantier);
+        return this.http.post<JsonResponse<Chantier>>(this.baseUrl+'/'+'create', chantier);
     }
     update(chantier){
         return this.http.put(this.baseUrl+'/'+chantier.id, chantier);

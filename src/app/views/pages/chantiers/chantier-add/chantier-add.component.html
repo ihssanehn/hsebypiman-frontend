@@ -1,9 +1,3 @@
-<!-- <div class="row row-filters" style="height: 69px;">
-  
-</div> -->
-<form [formGroup]="chantierForm" class="tf-form tf-form--group-seperator-dashed ">
-	<tf-chantier-form [chantierForm]="chantierForm" [edit]="false"></tf-chantier-form>
-	<button mat-raised-button [disabled]="chantierForm.invalid" color="success" class="float-right" (click)="chantierForm.valid && onSubmit(false)">
-		{{'ACTION.SAVE' | translate}}
-	</button>
-</form>
+
+<tf-chantier-form [chantierForm]="chantierForm" [edit]="false" (onSubmit)="onSubmit()" (onCancel)="onCancel()"></tf-chantier-form>
+	

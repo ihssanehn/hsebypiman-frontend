@@ -25,7 +25,7 @@ $mat-primary: (
 
 $mat-accent: (
 	100: lighten(tf-get($tf-state-colors, warning, base), 0%),
-	500: tf-get($tf-state-colors, danger, base),
+	500: tf-get($tf-state-colors, warning, base),
 	700: darken(tf-get($tf-state-colors, warning, base), 8%),
 	contrast: (
 		100: $dark-primary-text,
@@ -36,7 +36,7 @@ $mat-accent: (
 
 $mat-warn: (
 	100: lighten(tf-get($tf-state-colors, danger, base), 8%),
-	500: tf-get($tf-state-colors, warning, base),
+	500: tf-get($tf-state-colors, danger, base),
 	700: darken(tf-get($tf-state-colors, danger, base), 8%),
 	contrast: (
 		100: $dark-primary-text,

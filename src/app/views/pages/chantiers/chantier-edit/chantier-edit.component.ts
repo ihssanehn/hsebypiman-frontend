@@ -1,6 +1,6 @@
 import { Component,OnInit,OnDestroy,ChangeDetectorRef } from '@angular/core';
 import { Router,ActivatedRoute } from '@angular/router';
-import { FormBuilder,FormGroup,Validators,FormControl } from "@angular/forms";
+import { FormBuilder,FormGroup,Validators,FormControl, FormArray } from "@angular/forms";
 import { BehaviorSubject,Observable,of ,Subscription } from "rxjs";
 import { finalize, takeUntil, tap } from 'rxjs/operators';
 
@@ -57,8 +57,9 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 				const id = params.id;
 				if (id) {
 					this.chantierService.get(id).pipe(
-						tap(chantier=>{
-							this.chantierForm.patchValue(chantier);
+						tap(res=>{
+							this.chantierForm.patchValue(res.result.data);							
+							this.formPathValues(res.result.data);
 						})
 					).subscribe( async res => {
 						this.chantier = res.result.data;
@@ -105,9 +106,16 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 			charge_affaire_id: [null, Validators.required],
 			status_id: [null, Validators.required],
 			numero: ['', Validators.required],
+			habilitations: new FormArray([])
 		});
 	}
 
+	formPathValues(chantier){
+		const habformArray: FormArray = this.chantierForm.get('habilitations') as FormArray;
+		chantier.habilitations.forEach(element => {
+			habformArray.push(new FormControl(element.id));
+		});
+	}
 	/**
 	 * Refresh user
 	 *

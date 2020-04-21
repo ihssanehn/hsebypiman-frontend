@@ -1,6 +1,3 @@
-<!-- <div class="row row-filters" style="height: 69px;">
-  
-</div> -->
 <tf-portlet class="tf-portlet--height-fluid mat-elevation-z8" id="portlet-chantier" *ngIf="chantier">
   <div class="tf-portlet-header ">
     <span class="title">
@@ -14,7 +11,7 @@
         <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editChantier(chantier.id)">
           <mat-icon>edit</mat-icon>
         </button>
-        <button mat-icon-button color="accent" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteChantier(chantier.id)">
+        <button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteChantier(chantier.id)">
           <mat-icon>delete</mat-icon>
         </button>
       </div>
@@ -51,22 +48,32 @@
             <span></span>
           </div>
           <div class="box text-center">
+            <small>{{'COMMON.CREATED_AT.TITLE' | translate}} : {{chantier.created_at | date:'dd/MM/yyyy'}}</small><br>
             <small>{{'COMMON.UPDATED_AT.TITLE' | translate}} : {{chantier.updated_at | date:'dd/MM/yyyy'}}</small>
           </div>
         </div>
       </div>
       <div class="col-md-3">
-        <div class="card">
-        <h3>Informations sécurité</h3>
-          <div class="box">
-            <p><span class="label pull-left">{{'ARS.REALISATEUR.TITLE' | translate}}</span><br>{{chantier.latest_ar?.realisateur}}</p>
+        <div class="card" >
+          <h3>Informations sécurité</h3>
+          <div *ngIf="chantier.latest_ar; else noAr">
+              <div class="box">
+                <p><span class="label pull-left">{{'ARS.REALISATEUR.TITLE' | translate}}</span><br>{{chantier.latest_ar?.realisateur}}</p>
+                <p><span class="label pull-left">{{'ARS.DATE_ACCUEIL_SECU.TITLE' | translate}}</span><br>{{chantier.latest_ar?.date_accueil_secu}}</p>
+                <p><span class="label pull-left">{{'ARS.DATE_VALIDITE.TITLE' | translate}}</span><br>{{chantier.latest_ar?.date_validite}}</p>
+              </div>
+              <div class="box">
+                <h5><b>En cas d'urgence</b></h5>
+                <p><span class="label pull-left mr-2">{{'ARS.NUM_SECOURS.SHORTTITLE' | translate}}</span><br><span class="blue">{{chantier.latest_ar?.num_secours}}</span></p>
+                <p><span class="label pull-left mr-2">{{'ARS.CONTACT_INTERNE_SECOURS.SHORTTITLE' | translate}}</span><br><span class="blue">{{chantier.latest_ar?.contact_interne_secours}}</span></p>
+                <p><span class="label pull-left mr-2">{{'ARS.TEL_CONTACT_INTERNE_SECOURS.SHORTTITLE' | translate}}</span><br><span class="blue">{{chantier.latest_ar?.tel_contact_interne_secours}}</span></p>
+              </div>
           </div>
-          <div class="box">
-            <h5><b>En cas d'urgence</b></h5>
-            <p><span class="label pull-left mr-2">{{'ARS.NUM_SECOURS.SHORTTITLE' | translate}}</span><br><span class="blue">{{chantier.latest_ar?.num_secours}}</span></p>
-            <p><span class="label pull-left mr-2">{{'ARS.CONTACT_INTERNE_SECOURS.SHORTTITLE' | translate}}</span><br><span class="blue">{{chantier.latest_ar?.contact_interne_secours}}</span></p>
-            <p><span class="label pull-left mr-2">{{'ARS.TEL_CONTACT_INTERNE_SECOURS.SHORTTITLE' | translate}}</span><br><span class="blue">{{chantier.latest_ar?.tel_contact_interne_secours}}</span></p>
-          </div>
+          <ng-template #noAr>
+            <div class="box">
+              Aucune analyse de risque pour le moment
+            </div>
+          </ng-template>
         </div>
       </div>
       <div class="col-md-5">
@@ -85,27 +92,37 @@
           </div>
           <div class="box box-ar-vs">
             <h5><b>Suivis visites de sécurité</b><span class="pull-right">{{'CHANTIERS.VSCOUNT.SHORTTITLE' | translate}} : <span class="blue">{{chantier.vss.length}}</span></span></h5>
-            <div class="row">
+            <!-- <div class="row">
               <div class="col-md-6"><p><span class="label pull-left mr-2">{{'CHANTIERS.NEXTVS.TITLE' | translate}}</span></p></div>
               <div class="col-md-6"><p  class="text-right blue">{{chantier.latest_vs?.date_validite | date:'dd/MM/yyyy'}}</p></div>
-            </div>
+            </div> -->
             <div class="row">
               <div class="col-md-6"><p><span class="label pull-left mr-2">{{'CHANTIERS.VSS.TITLE' | translate}}</span></p></div>
               <div class="col-md-6"><p class="text-right" *ngFor="let vs of chantier.vss">{{vs.date_visite | date:'dd/MM/yyyy'}}</p></div>
             </div>
           </div>
-          <!-- <div class="box box-status">
-            <mat-icon svgIcon="{{chantier.status?.code == 'ENCOURS' ? 'status-encours':'status-termine'}}" style="width:100px;height:100px"></mat-icon>
-            <h2>{{chantier.status?.libelle}}</h2>
-          </div> -->
+        </div>
+      </div>
+      <div class="col-md-12 mt-4">
+        <div class="card">
+          <h5>Habilitations requises</h5>
+          <ul>
+            <li *ngFor="let hab of chantier.habilitations">
+              {{hab.libelle}}
+            </li>
+          </ul>
         </div>
       </div>
     </div>
     <div class="row mt-4" *ngIf="chantier.status.code != 'TERMINE'">
       <div class="col-12">
-        <button class="pull-right" mat-raised-button color="info" (click)="closeChantier(chantier.id)">
+        <button mat-raised-button color="info" (click)="closeChantier(chantier.id)">
           <mat-icon  svgIcon="status-termine" inline="true" style="width: 21px; margin-top: -6px; margin-right: 6px;"></mat-icon>
           Clore le chantier
+        </button>
+        <button mat-raised-button class="pull-right" color="info" (click)="addAr(chantier.id)">
+          <mat-icon inline="true" style="width: 21px; margin-top: -6px; margin-right: 6px;">add</mat-icon>
+          Créer Analyse de risque
         </button>
       </div>
     </div>

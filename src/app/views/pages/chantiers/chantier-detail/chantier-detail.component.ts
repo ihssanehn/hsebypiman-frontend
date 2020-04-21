@@ -48,7 +48,6 @@ export class ChantierDetailComponent implements OnInit, OnDestroy {
 	) {
 		iconRegistry.addSvgIcon('status-encours',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/encours.svg'));
 		iconRegistry.addSvgIcon('status-termine',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/termine.svg'));
-		
 	}
 
   	ngOnInit() {
@@ -153,4 +152,7 @@ export class ChantierDetailComponent implements OnInit, OnDestroy {
 		
 	}
   
+	addAr(chantierId){
+		this.router.navigate(['analyses-risque/add'], {queryParams:{chantier_id:chantierId}})
+	}
 }

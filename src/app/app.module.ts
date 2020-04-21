@@ -49,7 +49,7 @@ import {DataTableService,TfDialogService,LayoutConfigService,VersionCheckService
 // Auth
 import { AuthModule } from './views/pages/auth/auth.module';
 import { AuthService } from './core/auth';
-import { ChantierService, TypeService, StatusService, CategorieService, ArService, CatRisqueService, EpiTypesService, VisiteService } from './core/services';
+import { ChantierService, TypeService, StatusService, CategorieService, ArService, CatRisqueService, EpiTypesService, VisiteService, CatHabilitationService } from './core/services';
 // CRUD
 import { HttpUtilsService, LayoutUtilsService, TypesUtilsService } from './core/_base/crud';
 // Config
@@ -153,6 +153,7 @@ export function hljsLanguages(): HighlightLanguage[] {
 		DataTableService,
 		VersionCheckService,
 		SplashScreenService,
+		CatHabilitationService,
 		{
 			provide: PERFECT_SCROLLBAR_CONFIG,
 			useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG

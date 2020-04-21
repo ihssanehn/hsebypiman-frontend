@@ -28,9 +28,6 @@ export class ChantiersListComponent implements OnInit {
 		order_by: ['client'],
 		order_way: 'asc',
 		keyword: "",
-		dateRange: [],
-		status_id: "",
-		params: []
 	};
 	showFilters:Boolean = false;
 	displayedChantierColumns = ['number', 'name', 'client', 'status', 'charge_affaire', 'montant', 'date_demarrage', 'ars_count', 'latest_ar', 'vss_count', 'latest_vs', 'action'];
@@ -80,12 +77,10 @@ export class ChantiersListComponent implements OnInit {
 		this.getChantiers();
 	}
 
-
 	viewChantier(chantierId) {
 		this.router.navigateByUrl('chantiers/detail/' + chantierId);
 	}
 	editChantier(chantierId) {
-
 		this.router.navigateByUrl('chantiers/edit/' + chantierId);
 	}
 	deleteChantier(chantierId) {
@@ -121,5 +116,17 @@ export class ChantiersListComponent implements OnInit {
 		} else {
 			return by == this.filter.order_by
 		}
+	}
+
+	advancedSearchChanged($event){
+		this.showFilters = $event;
+	}
+
+	udpateFilters(filters){
+		for (let [key, value] of Object.entries(filters)) {
+			this.filter[key] = value;
+		}
+		console.log(this.filter);
+		this.getChantiers();
 	}
 }

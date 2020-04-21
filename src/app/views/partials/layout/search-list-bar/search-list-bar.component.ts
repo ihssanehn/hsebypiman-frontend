@@ -34,9 +34,11 @@ export class SearchListBarComponent implements AfterViewInit, OnInit, OnDestroy 
   @Input() hasAdvancedSearch: Boolean;
   @Input() showFilters: Boolean;
   @Output() change = new EventEmitter();
+  @Output() advancedSearchChange = new EventEmitter();
   // @Output() advancedSearchDisplayChange = new EventEmitter();
 
   constructor(
+		private cdr: ChangeDetectorRef,
 		iconRegistry: MatIconRegistry, 
     sanitizer: DomSanitizer,
   ) {
@@ -108,6 +110,6 @@ export class SearchListBarComponent implements AfterViewInit, OnInit, OnDestroy 
   
   toggleAdvancedSearch(){
     this.showFilters = !this.showFilters;
-    // this.advancedSearchDisplayChange.emit(this.showFilters);
+    this.advancedSearchChange.emit(this.showFilters);
   }
 }
