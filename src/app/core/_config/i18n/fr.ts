@@ -235,6 +235,28 @@ export const locale = {
 			}
 		},
 		ARS:{
+			CHANTIERS:{
+				NUMBER:'Numéro chantier',
+				NAME:'Nom du chantier',
+				ADRESS:'Adresse',
+				DATE_DEMARRAGE:'Date de démarage chantier',
+				BUDGET:'Budget chantier',
+				EMPLOYEE:'Salarié CVTI réalisant la visite commune',
+				FORM:{
+					SEARCH:{
+						TITLE:'Rechercher un chantier',
+						RESULT: {
+							TEXT1:'Un chantier trouvé',
+							TEXT2:'pour cette analyse de risque'
+						}
+					},
+					DETAIL:{
+						TITLE:'Analyse de risque',
+						SUBTITLE:'réalisée sur le chantier'
+					}
+
+				}
+			},
 			NUMBER:'Numéro',
 			CLIENT:'Client',
 			NAME:'Nom du chantier',
