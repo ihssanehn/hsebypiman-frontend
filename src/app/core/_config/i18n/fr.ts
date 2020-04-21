@@ -71,10 +71,10 @@ export const locale = {
 			GENERAL: {
 				OR: 'Ou',
 				SUBMIT_BUTTON: 'Soumettre',
-				NO_ACCOUNT: 'Ne pas avoir de compte?',
-				SIGNUP_BUTTON: 'Registre',
+				NO_ACCOUNT: 'Pas de compte',
+				SIGNUP_BUTTON: 'S\'enregistrer',
 				FORGOT_BUTTON: 'Mot de passe oublié',
-				BACK_BUTTON: 'Back',
+				BACK_BUTTON: 'Retour',
 				PRIVACY: 'Privacy',
 				LEGAL: 'Legal',
 				CONTACT: 'Contact',
@@ -84,9 +84,9 @@ export const locale = {
 				BUTTON: 'Se Connecter',
 			},
 			FORGOT: {
-				TITLE: 'Forgotten Password?',
-				DESC: 'Enter your email to reset your password',
-				SUCCESS: 'Your account has been successfully reset.'
+				TITLE: 'Mot de passe oublié ?',
+				DESC: 'Entrez votre email pour réinitialiser votre mot de passe',
+				SUCCESS: 'Votre mot de passe a bien été réinitialisé.'
 			},
 			REGISTER: {
 				TITLE: 'Créer un compte',
@@ -109,14 +109,14 @@ export const locale = {
 			VALIDATION: {
 				INVALID: '{{name}} n\'est pas valide',
 				REQUIRED: '{{name}} est requis',
-				MIN_LENGTH: '{{name}} minimum length is {{min}}',
-				AGREEMENT_REQUIRED: 'Accepting terms & conditions are required',
-				NOT_FOUND: 'The requested {{name}} is not found',
-				INVALID_LOGIN: 'The login detail is incorrect',
-				REQUIRED_FIELD: 'Required field',
-				MIN_LENGTH_FIELD: 'Minimum field length:',
-				MAX_LENGTH_FIELD: 'Maximum field length:',
-				INVALID_FIELD: 'Field is not valid',
+				MIN_LENGTH: '{{name}} doit avoir une longueur minimale de {{min}}',
+				AGREEMENT_REQUIRED: 'Vous devez accepter les termes et conditions',
+				NOT_FOUND: 'Le {{name}} requis n\'a pas été trouvé',
+				INVALID_LOGIN: 'Les informations de connection sont incorrectes',
+				REQUIRED_FIELD: 'champ requis',
+				MIN_LENGTH_FIELD: 'Longueur du champ minimale:',
+				MAX_LENGTH_FIELD: 'Longueur du champ maximale:',
+				INVALID_FIELD: 'champ non valide',
 				NOT_SAME: 'Les mots de passe doivent correspondre'
 			},
 			LOGOUT: 'Se déconnecter'

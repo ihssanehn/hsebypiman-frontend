@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormArray, FormControl } from '@angular/forms';
 import { Type, Status, CatHabilitation } from '@app/core/models';
 import { AuthService, User } from '@app/core/auth';
@@ -21,6 +21,8 @@ export class ChantierFormComponent implements OnInit {
 
   @Input() chantierForm: FormGroup;
   @Input() edit: Boolean;
+  @Output() onCancel = new EventEmitter();
+  @Output() onSubmit = new EventEmitter();
   constructor(
     private typeService:TypeService,
     private statusService:StatusService,
@@ -80,5 +82,30 @@ export class ChantierFormComponent implements OnInit {
   }
   onHabIsChecked(habId){
     return this.chantierForm.get('habilitations').value.includes(habId);
+  }
+  isFieldRequired(name){
+    return !!this.chantierForm.controls[name].validator(name).hasOwnProperty('required');
+  }
+  /**
+	 * Checking control validation
+	 *
+	 * @param controlName: string => Equals to formControlName
+	 * @param validationType: string => Equals to valitors name
+	 */
+	isControlHasError(controlName: string, validationType: string): boolean {
+		const control = this.chantierForm.controls[controlName];
+		if (!control) {
+			return false;
+		}
+
+		const result = control.hasError(validationType) && (control.dirty || control.touched);
+		return result;
+  }
+  
+  submitForm(){
+    this.onSubmit.emit()
+  }
+  cancelForm(){
+    this.onCancel.emit()
   }
 }

@@ -54,19 +54,26 @@
         </div>
       </div>
       <div class="col-md-3">
-        <div class="card">
-        <h3>Informations sécurité</h3>
-          <div class="box">
-            <p><span class="label pull-left">{{'ARS.REALISATEUR.TITLE' | translate}}</span><br>{{chantier.latest_ar?.realisateur}}</p>
-            <p><span class="label pull-left">{{'ARS.DATE_ACCUEIL_SECU.TITLE' | translate}}</span><br>{{chantier.latest_ar?.date_accueil_secu}}</p>
-            <p><span class="label pull-left">{{'ARS.DATE_VALIDITE.TITLE' | translate}}</span><br>{{chantier.latest_ar?.date_validite}}</p>
+        <div class="card" >
+          <h3>Informations sécurité</h3>
+          <div *ngIf="chantier.latest_ar; else noAr">
+              <div class="box">
+                <p><span class="label pull-left">{{'ARS.REALISATEUR.TITLE' | translate}}</span><br>{{chantier.latest_ar?.realisateur}}</p>
+                <p><span class="label pull-left">{{'ARS.DATE_ACCUEIL_SECU.TITLE' | translate}}</span><br>{{chantier.latest_ar?.date_accueil_secu}}</p>
+                <p><span class="label pull-left">{{'ARS.DATE_VALIDITE.TITLE' | translate}}</span><br>{{chantier.latest_ar?.date_validite}}</p>
+              </div>
+              <div class="box">
+                <h5><b>En cas d'urgence</b></h5>
+                <p><span class="label pull-left mr-2">{{'ARS.NUM_SECOURS.SHORTTITLE' | translate}}</span><br><span class="blue">{{chantier.latest_ar?.num_secours}}</span></p>
+                <p><span class="label pull-left mr-2">{{'ARS.CONTACT_INTERNE_SECOURS.SHORTTITLE' | translate}}</span><br><span class="blue">{{chantier.latest_ar?.contact_interne_secours}}</span></p>
+                <p><span class="label pull-left mr-2">{{'ARS.TEL_CONTACT_INTERNE_SECOURS.SHORTTITLE' | translate}}</span><br><span class="blue">{{chantier.latest_ar?.tel_contact_interne_secours}}</span></p>
+              </div>
           </div>
-          <div class="box">
-            <h5><b>En cas d'urgence</b></h5>
-            <p><span class="label pull-left mr-2">{{'ARS.NUM_SECOURS.SHORTTITLE' | translate}}</span><br><span class="blue">{{chantier.latest_ar?.num_secours}}</span></p>
-            <p><span class="label pull-left mr-2">{{'ARS.CONTACT_INTERNE_SECOURS.SHORTTITLE' | translate}}</span><br><span class="blue">{{chantier.latest_ar?.contact_interne_secours}}</span></p>
-            <p><span class="label pull-left mr-2">{{'ARS.TEL_CONTACT_INTERNE_SECOURS.SHORTTITLE' | translate}}</span><br><span class="blue">{{chantier.latest_ar?.tel_contact_interne_secours}}</span></p>
-          </div>
+          <ng-template #noAr>
+            <div class="box">
+              Aucune analyse de risque pour le moment
+            </div>
+          </ng-template>
         </div>
       </div>
       <div class="col-md-5">
@@ -85,10 +92,10 @@
           </div>
           <div class="box box-ar-vs">
             <h5><b>Suivis visites de sécurité</b><span class="pull-right">{{'CHANTIERS.VSCOUNT.SHORTTITLE' | translate}} : <span class="blue">{{chantier.vss.length}}</span></span></h5>
-            <div class="row">
+            <!-- <div class="row">
               <div class="col-md-6"><p><span class="label pull-left mr-2">{{'CHANTIERS.NEXTVS.TITLE' | translate}}</span></p></div>
               <div class="col-md-6"><p  class="text-right blue">{{chantier.latest_vs?.date_validite | date:'dd/MM/yyyy'}}</p></div>
-            </div>
+            </div> -->
             <div class="row">
               <div class="col-md-6"><p><span class="label pull-left mr-2">{{'CHANTIERS.VSS.TITLE' | translate}}</span></p></div>
               <div class="col-md-6"><p class="text-right" *ngFor="let vs of chantier.vss">{{vs.date_visite | date:'dd/MM/yyyy'}}</p></div>

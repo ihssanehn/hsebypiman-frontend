@@ -152,4 +152,7 @@ export class ChantierDetailComponent implements OnInit, OnDestroy {
 		
 	}
   
+	addAr(chantierId){
+		this.router.navigate(['analyses-risque/add'], {queryParams:{chantier_id:chantierId}})
+	}
 }

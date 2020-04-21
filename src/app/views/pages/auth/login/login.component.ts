@@ -157,7 +157,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 				}
 			},
 			err => {
-				// this.notificationService.error('Bad credentials', this.translate.instant('AUTH.VALIDATION.INVALID_LOGIN'));
+				this.authNoticeService.setNotice(this.translate.instant('AUTH.VALIDATION.INVALID_LOGIN'), 'danger');
 				this.loading = false;
 				this.cdr.markForCheck();
 			});

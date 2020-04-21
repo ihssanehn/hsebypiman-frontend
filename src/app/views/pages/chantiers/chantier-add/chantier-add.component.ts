@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from "@angular/forms";
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import * as moment from 'moment';
 
 import { TranslateService } from '@ngx-translate/core';
@@ -35,7 +35,8 @@ export class ChantierAddComponent implements OnInit {
 		private chantierService: ChantierService,
 		private typeService: TypeService,
 		private authService: AuthService,
-		private cdr: ChangeDetectorRef,
+    private cdr: ChangeDetectorRef,
+    private location: Location,
 		private permissionsService : NgxPermissionsService,
     private translate:TranslateService,
     public snackBar: MatSnackBar,
@@ -109,6 +110,11 @@ export class ChantierAddComponent implements OnInit {
 
   }
 
+  
+	onCancel() {
+		this.location.back();
+  }
+  
   setDateFormat(date){
       return date ? moment(date).format('YYYY-MM-DD') : null;
   }
