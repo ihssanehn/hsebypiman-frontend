@@ -24,6 +24,7 @@ import { ArEditComponent } from './ar-edit/ar-edit.component';
 import { ArAddComponent } from './ar-add/ar-add.component';
 import { ArDetailComponent } from './ar-detail/ar-detail.component';
 import {NgbDropdownModule, NgbTabsetModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
+import {MatChipsModule} from '@angular/material/chips';
 
 // Material
 import {
@@ -131,7 +132,8 @@ const routes: Routes = [
 		MatDialogModule,
 		NgbDropdownModule,
 		NgbTabsetModule,
-		NgbTooltipModule
+		NgbTooltipModule,
+		MatChipsModule
 	],
 	providers: [
 		InterceptService,
