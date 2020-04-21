@@ -202,6 +202,7 @@ export const locale = {
 				SHORTTITLE:'Prochaine analyse',
 			},
 			ARS:{
+				LABEL:'Analyses de risque',
 				PLACEHOLDER:'',
 				TITLE:'Analyses passées',
 				SHORTTITLE:'Prochaine analyse',
@@ -225,7 +226,7 @@ export const locale = {
 				SHORTTITLE:'Prochaine visite de prévue',
 			},
 			VSS:{
-				LABEL:'Visites Sécurités',
+				LABEL:'Visites Sécurité',
 				PLACEHOLDER:'',
 				TITLE:'Visites passées',
 				SHORTTITLE:'Visites passées',
