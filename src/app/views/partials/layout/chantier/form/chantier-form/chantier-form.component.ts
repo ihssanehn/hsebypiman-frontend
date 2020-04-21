@@ -102,8 +102,10 @@ export class ChantierFormComponent implements OnInit {
 		return result;
   }
   
-  submitForm(){
-    this.onSubmit.emit()
+  submitForm(bool){
+    if(bool){
+      this.onSubmit.emit()
+    }
   }
   cancelForm(){
     this.onCancel.emit()
