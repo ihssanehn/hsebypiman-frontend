@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 
 export class ArService extends HttpService{
 
-    baseUrl = environment.apiBaseUrl+'ars';
+    baseUrl = environment.apiBaseUrl+'analyses-risque';
     constructor(
         private http: HttpClient,
         private router: Router
