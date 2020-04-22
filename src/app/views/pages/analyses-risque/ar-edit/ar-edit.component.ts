@@ -111,7 +111,6 @@ export class ArEditComponent implements OnInit, OnDestroy {
 		});
 
 		this.arForm.get('chantier_id').setValue(ar.chantier_id);
-		this.arForm.get('a_prevoir_compagnons').setValue(ar.a_prevoir_compagnons+'');
 		this.arForm.get('a_signer_registre_travaux').setValue(ar.a_signer_registre_travaux+'');
 		this.arForm.get('a_prevoir_balisage').setValue(ar.a_prevoir_balisage+'');
 
@@ -136,7 +135,7 @@ export class ArEditComponent implements OnInit, OnDestroy {
   	createForm() {
 		this.arForm = this.arFB.group({
 			chantier_id: [null, Validators.required],
-			a_prevoir_compagnons:['0', Validators.required],
+			a_prevoir_compagnons:[false, Validators.required],
 			date_accueil_secu:[null, Validators.required],
 			realisateur:['', Validators.required],
 			tel_realisateur:['', Validators.required],

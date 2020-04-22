@@ -28,78 +28,94 @@
 }
 
 :host::ng-deep {
-    #portlet-chantier{
-        color: black;
-        .tf-portlet{
-            margin-top: 5em;
-            border-radius: 8px;
-            background-color: #ffffff;
-            .tf-portlet-header{
-                font-weight: bolder;
-                padding: 25px 0 0 20px;
-                .title{
-                    a{
-                        color: #525252;
-                    }
-                    .divider{
-                        font-weight: bolder;
-                        color:#e49819;
-                        margin-left: 0.5em;
-                        margin-right: 0.5em;
-                    }
-                    .id-item{
-                        color: #171717;
-                        font-weight: bolder;
-                        padding-bottom: 0.2em;
-                        border-bottom: 2px solid #55cec7 ;
-                    }
-                }
-            }
-            
-            .tf-portlet__body{
-                padding: 20px;
-                font-weight: bolder;
-                margin-top: 1em;
-                margin-bottom: 2em;
-                > div:first-child{
-                    padding-left: 0;
-                    // border-right: 1px solid #e2e5ec;
-                }
-                .tf-heading{
-                    margin-top: 0;
-                    span{
-                        color: #33b5ae;
+    .tf-form{
+        color: #525252;
+        #portlet-chantier{
+            color: black;
+            .tf-portlet{
+                margin-top: 5em;
+                border-radius: 8px;
+                background-color: #ffffff;
+                .tf-portlet-header{
+                    font-weight: bolder;
+                    padding: 25px 0 0 20px;
+                    .title{
+                        a{
+                            color: #525252;
+                        }
+                        .divider{
+                            font-weight: bolder;
+                            color:#e49819;
+                            margin-left: 0.5em;
+                            margin-right: 0.5em;
+                        }
+                        .id-item{
+                            color: #171717;
+                            font-weight: bolder;
+                            padding-bottom: 0.2em;
+                            border-bottom: 2px solid #55cec7 ;
+                        }
                     }
                 }
-                .v-divider{
-                    margin-left: 0.2em;
-                    margin-right: 2em;
-                    width:1px;
-                    border-left: 1px solid #e2e5ec;
-                }
-                .search-result-block{
-                    mat-label{
-                        font-weight: bold;
-                        color: #c6c9cc;
-                        font-size: 11px;
+                
+                .tf-portlet__body{
+                    padding: 20px;
+                    font-weight: bolder;
+                    margin-top: 1em;
+                    margin-bottom: 2em;
+                    > div:first-child{
+                        padding-left: 0;
+                        // border-right: 1px solid #e2e5ec;
+                    }
+                    .tf-heading{
+                        margin-top: 0;
+                        span{
+                            color: #33b5ae;
+                        }
+                    }
+                    .v-divider{
+                        margin-left: 0.2em;
+                        margin-right: 2em;
+                        width:1px;
+                        border-left: 1px solid #e2e5ec;
+                    }
+                    .search-result-block{
+                        mat-label{
+                            font-weight: bold;
+                            color: #c6c9cc;
+                            font-size: 11px;
+                        }
                     }
                 }
             }
         }
-    }
-    .btn-save{
-        width: 16%;
-        height: 45px;
-        border-radius: 8px;
-        background-color: #ddf5f4;
-        font-weight: bold;
-        color: #33b5ae;
-        box-shadow: none;
-    }
-    .tf-card-form{
-        box-shadow: none;
-        border-radius: 8px;
-        border: solid 1px #eaecf0;
+        .btn-save{
+            width: 16%;
+            height: 45px;
+            border-radius: 8px;
+            background-color: #ddf5f4;
+            font-weight: bold;
+            color: #33b5ae;
+            box-shadow: none;
+        }
+        .tf-card-form{
+            box-shadow: none;
+            border-radius: 8px;
+            border: solid 1px #eaecf0;
+        }
+        .mat-checkbox-disabled.mat-checkbox-checked .mat-checkbox-background{
+            background-color: #e49819;
+        }
+
+        .mat-radio-button.mat-radio-disabled.mat-radio-checked .mat-radio-outer-circle{
+            border-color:  #e49819;
+        }
+        .mat-radio-button.mat-radio-disabled .mat-radio-inner-circle{
+            background-color: #e49819;
+        }
+        .full-height{
+            min-height: 100px;
+        }
     }
     .chip-item{
         font-size: 11px;
