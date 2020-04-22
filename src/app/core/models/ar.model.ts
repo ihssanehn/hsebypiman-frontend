@@ -30,7 +30,7 @@ export class Ar {
     zone_ext_non_surv?: boolean;
     zone_surv_balisee?: boolean;
     prevoir_balisage_materiel?: boolean;
-    observations?: string;
+    observations_signature?: string;
     salarie_id?: number;
     status_id?: number;
     creator_id?: number;
