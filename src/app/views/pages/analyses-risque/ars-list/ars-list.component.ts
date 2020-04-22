@@ -123,4 +123,16 @@ export class ArsListComponent implements OnInit {
 		}
 	}
 
+	advancedSearchChanged($event){
+		this.showFilters = $event;
+	}
+
+	udpateFilters(filters){
+		for (let [key, value] of Object.entries(filters)) {
+			this.filter[key] = value;
+		}
+		console.log(this.filter);
+		this.getArs();
+	}
+
 }
