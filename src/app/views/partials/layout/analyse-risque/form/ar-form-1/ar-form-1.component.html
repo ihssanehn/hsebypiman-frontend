@@ -7,13 +7,15 @@
 					1.1 Accueil sécurité propre au client
 				</div>
 				<div class="row form-row">
+					<mat-slide-toggle class="col-xl-4" formControlName="a_prevoir_compagnons">{{'ARS.PREVOIR_COMPAGNONS.LABEL' | translate}}</mat-slide-toggle>
+				
 					<mat-form-field class="col-xl-4" >
 						<mat-label>{{'ARS.DATE_ACCUEIL_SECU.LABEL' | translate}}</mat-label>
 						<input matInput class="form-control" [matDatepicker]="date_accueil_secu_picker" formControlName="date_accueil_secu" placeholder="DD/MM/YYYY">
 						<mat-datepicker-toggle matSuffix [for]="date_accueil_secu_picker"></mat-datepicker-toggle>
 						<mat-datepicker #date_accueil_secu_picker></mat-datepicker>
 					</mat-form-field>
-					<mat-radio-group  formControlName="a_prevoir_compagnons"
+					<!-- <mat-radio-group  formControlName="a_prevoir_compagnons"
 						class="col-xl-4 mat-form-field ng-tns-c14-2 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-legacy mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label">
 						<div class="mat-form-field-wrapper">
 							<div class="mat-form-field-flex">
@@ -28,7 +30,7 @@
 								</div>
 							</div>
 						</div>
-					</mat-radio-group>
+					</mat-radio-group> -->
 					<mat-form-field class="col-xl-4" >
 						<mat-label>{{'ARS.DATE_VALIDITE.LABEL' | translate}}</mat-label>
 						<input matInput class="form-control" [matDatepicker]="date_validite_picker" formControlName="date_validite" placeholder="DD/MM/YYYY">
@@ -77,7 +79,7 @@
 					</mat-form-field>
 					<mat-form-field class="col-xl-4" >
 						<mat-label>{{'ARS.TEL_REALISATEUR.LABEL' | translate}}</mat-label>
-						<input class="form-control" matInput type="text" name="tel_realisateur" formControlName="tel_realisateur" placeholder="Saisir ici" />
+						<input class="form-control" matInput pattern="[0-9+ ]*" type="tel" name="tel_realisateur" formControlName="tel_realisateur" placeholder="Saisir ici" />
 					</mat-form-field>
 				</div>
 				<div class="row form-row">
@@ -87,11 +89,11 @@
 					</mat-form-field>
 					<mat-form-field class="col-xl-4" >
 						<mat-label>{{'ARS.TEL_CONTACT_INTERNE_SECOURS.LABEL' | translate}}</mat-label>
-						<input class="form-control" matInput type="text" name="tel_contact_interne_secours" formControlName="tel_contact_interne_secours" placeholder="Saisir ici" />
+						<input class="form-control" matInput pattern="[0-9+ ]*" type="tel" name="tel_contact_interne_secours" formControlName="tel_contact_interne_secours" placeholder="Saisir ici" />
 					</mat-form-field>
 					<mat-form-field class="col-xl-4" >
 						<mat-label>{{'ARS.NUM_SECOURS.LABEL' | translate}}</mat-label>
-						<input class="form-control" matInput type="text" name="num_secours" formControlName="num_secours" placeholder="Saisir ici" />
+						<input class="form-control" matInput pattern="[0-9+ ]*" type="tel" name="num_secours" formControlName="num_secours" placeholder="Saisir ici" />
 					</mat-form-field>
 				</div>
 			</div>
@@ -110,7 +112,7 @@
 							</mat-form-field>
 							<mat-form-field class="col-xl-6" >
 								<mat-label>{{'ARS.TEL_CONTACT_CLIENT_CHEF_CHANTIER.LABEL' | translate}}</mat-label>
-								<input class="form-control" matInput type="text" name="tel_contact_client_chef_chtr" formControlName="tel_contact_client_chef_chtr" placeholder="Saisir ici" />
+								<input class="form-control" matInput pattern="[0-9+ ]*" type="tel" name="tel_contact_client_chef_chtr" formControlName="tel_contact_client_chef_chtr" placeholder="Saisir ici" />
 							</mat-form-field>
 							<mat-form-field class="col-xl-6" >
 								<mat-label>{{'ARS.CONTACT_CLIENT_HSE.LABEL' | translate}}</mat-label>
@@ -118,7 +120,7 @@
 							</mat-form-field>
 							<mat-form-field class="col-xl-6" >
 								<mat-label>{{'ARS.TEL_CONTACT_CLIENT_HSE.LABEL' | translate}}</mat-label>
-								<input class="form-control" matInput type="text" name="tel_contact_client_hse" formControlName="tel_contact_client_hse" placeholder="Saisir ici" />
+								<input class="form-control" matInput pattern="[0-9+ ]*" type="tel" name="tel_contact_client_hse" formControlName="tel_contact_client_hse" placeholder="Saisir ici" />
 							</mat-form-field>
 						</div>
 					</div>
