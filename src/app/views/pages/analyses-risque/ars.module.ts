@@ -55,6 +55,7 @@ import {
 	DateAdapter
 } from '@angular/material';
 import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapter';
+import { ArFiltersComponent } from './ar-filters/ar-filters.component';
 
 
 
@@ -168,6 +169,7 @@ const routes: Routes = [
 		ArEditComponent,
 		ArAddComponent,
 		ArDetailComponent,
+		ArFiltersComponent,
 	]
 })
 export class ArsModule {}

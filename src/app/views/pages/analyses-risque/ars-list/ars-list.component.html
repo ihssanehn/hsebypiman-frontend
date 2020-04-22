@@ -1,5 +1,6 @@
 
-<tf-search-list-bar [(ngModel)]="filter" (change)="getArs()" [hasAdvancedSearch]="false" [showFilters]="showFilters" class="row row-filters"></tf-search-list-bar>
+<tf-search-list-bar [(ngModel)]="filter" (change)="getArs()" [hasAdvancedSearch]="true" [showFilters]="showFilters" (advancedSearchChange)="advancedSearchChanged($event)" class="row row-filters"></tf-search-list-bar>
+<tf-ar-filters *ngIf="showFilters" (change)="udpateFilters($event)" class="row" ></tf-ar-filters>
 
 <tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
 	<tf-portlet-body class="tf-portlet__body--fit" *ngIf="arsList">
@@ -70,7 +71,7 @@
       <!-- Observations Column -->
       <ng-container matColumnDef="observations" >
         <th mat-header-cell *matHeaderCellDef class="text-center"> {{'ARS.OBSERVATION' | translate}} </th>
-        <td mat-cell *matCellDef="let ar" class="text-center pointer" (click)="viewAr(ar.id)"> {{ar.observations ? 'Oui' : 'Non'}} </td>
+        <td mat-cell *matCellDef="let ar" class="text-center pointer" (click)="viewAr(ar.id)"> {{ar.observations_signature ? 'Oui' : 'Non'}} </td>
       </ng-container>
 
 
