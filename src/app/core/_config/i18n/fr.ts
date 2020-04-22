@@ -409,6 +409,12 @@ export const locale = {
 				TITLE:'Horaire d\'accueil sécurité',
 				SHORTTITLE:'Horaire d\'accueil sécurité',
 			},
+			ASIGNER:{
+				LABEL:'À signer',
+				PLACEHOLDER:'',
+				TITLE:'À signer',
+				SHORTTITLE:'À signer',
+			},
 			QUOTIDIENNEMENT:{
 				LABEL:'Quotidiennement',
 				PLACEHOLDER:'',
