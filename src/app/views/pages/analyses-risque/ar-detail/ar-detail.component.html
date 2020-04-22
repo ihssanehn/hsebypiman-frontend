@@ -7,6 +7,19 @@
 				<span class="divider">></span>
 				<span class="id-item">{{'MENU.SUB_ANALYSERISQUE.DETAIL' | translate}} n° {{ar.code}}</span>
 			</span>
+			<div ngbDropdown placement="bottom-right" class="d-inline-block pull-right">
+				<button ngbDropdownToggle mat-icon-button color="primary" matTooltip="Actions" style="line-height: 0;height: 0;">
+				  <mat-icon>more_vert</mat-icon>
+				</button>
+				<div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
+				  <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editAr(ar.id)">
+					<mat-icon>edit</mat-icon>
+				  </button>
+				  <button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteAr(ar.id)">
+					<mat-icon>delete</mat-icon>
+				  </button>
+				</div>
+			</div>
 		</div>
 
 		<tf-portlet-body *ngIf="chantier">
@@ -374,7 +387,10 @@
 							<div class="mat-form-field-wrapper">
 								<div class="mat-form-field-flex">
 									<div class="mat-form-field-infix">
-										<div class="form-control mat-input-element mat-radio-box">
+										<span class="mat-form-field-label-wrapper">
+											<label class="mat-form-field-label">{{'ARS.ASIGNER.LABEL' | translate}}</label>
+										</span>
+										<div class="form-control mat-input-element mat-radio-box" style="justify-content: end">
 											<mat-radio-button disabled value="quotidiennement">{{'ARS.QUOTIDIENNEMENT.LABEL' | translate}}</mat-radio-button>
 											<mat-radio-button disabled value="par 1/2 journée">{{'ARS.DEMIJOURNEE.LABEL' | translate}}</mat-radio-button>
 											<mat-radio-button disabled value="toute les 2h">{{'ARS.DEUXHEURES.LABEL' | translate}}</mat-radio-button>

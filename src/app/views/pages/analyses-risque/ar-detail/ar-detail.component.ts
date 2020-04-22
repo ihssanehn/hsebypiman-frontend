@@ -8,6 +8,7 @@ import { NgxPermissionsService } from 'ngx-permissions';
 import { tap } from 'rxjs/operators';
 import { Location } from '@angular/common';
 import { EpiType } from '@app/core/models/epiType.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'tf-ar-detail',
@@ -118,6 +119,21 @@ export class ArDetailComponent implements OnInit, OnDestroy {
 			this.router.navigateByUrl(url, { 
 				relativeTo: this.activatedRoute 
 			});
+	}
+
+	editAr(arId){
+		this.router.navigate(['/analyses-risque/edit', arId], { relativeTo: this.activatedRoute });
+	}
+
+	async deleteAr(arId){
+		await this.arService.delete(arId).toPromise();
+		Swal.fire({
+			icon: 'success',
+			title: 'Analyse de risque a été supprimé avec succès',
+			showConfirmButton: false,
+			timer: 1500
+		});
+		this.router.navigate(['/analyses-risque/list'], { relativeTo: this.activatedRoute });
 	}
 
 }
