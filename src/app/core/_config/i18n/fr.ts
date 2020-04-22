@@ -438,6 +438,12 @@ export const locale = {
 				PLACEHOLDER:'',
 				TITLE:'Nombre de signataires',
 				SHORTTITLE:'Signataires',
+			},
+			SIGNATAIRES:{
+				LABEL:'Signataires',
+				PLACEHOLDER:'',
+				TITLE:'Signataires',
+				SHORTTITLE:'Signataires',
 			}
 		},
 		VISITES:{
