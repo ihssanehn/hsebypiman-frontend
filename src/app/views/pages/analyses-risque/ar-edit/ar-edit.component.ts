@@ -31,11 +31,6 @@ export class ArEditComponent implements OnInit, OnDestroy {
 	private subscriptions: Subscription[] = [];
 	errors;
 
-	searchControl: FormControl = new FormControl();
-	public chantier : Chantier;
-	public chantiers : Array<Chantier>;
-	filteredChantiers: Observable<Array<Chantier>>;
-
 	/**
 	 * Component constructor
 	 *
@@ -86,7 +81,6 @@ export class ArEditComponent implements OnInit, OnDestroy {
 			}
 		);
 		this.subscriptions.push(routeSubscription);
-		this.initFilteredChantiers();
 	}
 
 	formPathValues(ar: Ar){
@@ -113,8 +107,6 @@ export class ArEditComponent implements OnInit, OnDestroy {
 		this.arForm.get('chantier_id').setValue(ar.chantier_id);
 		this.arForm.get('a_signer_registre_travaux').setValue(ar.a_signer_registre_travaux+'');
 		this.arForm.get('a_prevoir_balisage').setValue(ar.a_prevoir_balisage+'');
-
-		this.getChantier(ar.chantier_id);
 	}
 
   	ngOnDestroy() {
@@ -248,7 +240,7 @@ export class ArEditComponent implements OnInit, OnDestroy {
 			codepostal_charge_registre.updateValueAndValidity();
 			tel_charge_registre.updateValueAndValidity();
 		  });
-	  }
+	}
 
   	/**
 	 * Refresh user
@@ -266,15 +258,12 @@ export class ArEditComponent implements OnInit, OnDestroy {
 
 	async onSubmit(event) {
 		try {
-			let result;
+			let form = {...this.arForm.value};
 
-			if(this.chantier)
+			if(form.chantier_id)
 			{
-
-				let form = {...this.arForm.value};
 				form.date_accueil_secu = this.setDateFormat(form.date_accueil_secu);
 				form.date_validite = this.setDateFormat(form.date_validite);
-				form.chantier_id = this.chantier.id;
 				form.id = this.ar.id;
 				
 				this.arService.update(form)
@@ -333,49 +322,5 @@ export class ArEditComponent implements OnInit, OnDestroy {
 	cancel() {
 		this.location.back();
 	}
-	  
 
-	async initFilteredChantiers(){
-		var res = await this.chantierService.getList().toPromise();
-		this.chantiers = res.result.data;
-		this.filteredChantiers = this.searchControl.valueChanges.pipe(
-			startWith(''),
-			map(value => this._filter(value))
-		);
-	}
-	
-	private _filter(value: string): Array<Chantier> {
-		const filterValue = value;
-		return this.chantiers.filter(chantier => 
-		this._normalizeValue(chantier.nom).includes(filterValue)
-		);
-	}
-	
-	private _normalizeValue(value: String): string {
-		return value.toLowerCase().replace(/\s/g, '');
-	}
-	
-	searchForChantier(){
-		if(this.searchControl.value && this.searchControl.value.id){
-			this.initFilteredChantiers();
-			this.getChantier(this.searchControl.value.id);
-		}
-	}
-	
-	async getChantier(chantierId: Number){
-		try {
-			var res = await this.chantierService.get(chantierId).toPromise();
-			this.chantier = res.result.data;
-			this.cdr.detectChanges();
-			this.cdr.markForCheck();
-		} catch (error) {
-			console.error(error);
-		}
-	}
-	
-	displayFn(chantier: Chantier): String {
-		return chantier ? chantier.nom : '';
-	}
-
-  
 }

@@ -1,35 +1,71 @@
+.tf-portlet__body{
+    padding: 20px;
+    font-weight: bolder;
+    margin-top: 1em;
+    margin-bottom: 2em;
+    > div:first-child{
+        padding-left: 0;
+    }
+    .search-input-group{
+        .search-icon-container{
+            background: transparent;
+            border: 1px solid #e2e5ec;
+            border-right: none;
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+            padding: 10px;
+        }
+        .search-icon-container .mat-icon{
+            color: #23b3d1;
+            width: 14.9px;
+        }
+        .search-input{
+            border: 1px solid #e2e5ec;
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+            border-left: none;
+            padding-left: 0;
+            background: transparent;
+            height: 49px;
+        }
+    }
+    .btn-search{
+        width: 79px;
+        height: 48px;
+        border-radius: 8px;
+        background-color: #ddf5f4;
+        font-size: 15px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        color: #33b5ae;
+        border: none;
+    }
+    .v-divider{
+        margin-left: 0.2em;
+        margin-right: 1em;
+        width:1px;
+        border-left: 1px solid #e2e5ec;
+    }
+    .search-result-block{
+        mat-label{
+            font-weight: bold;
+            color: #c6c9cc;
+            font-size: 11px;
+        }
+    }
+    .result-msg{
+        font-size: 1em;
+        color: #171717;
+        span{
+            font-weight: bold;
+            color: #33b5ae;
+        }
+    }
+}
+
 .flex-layout{
     display: flex;
-}
-
-.search-icon-container{
-    background: transparent;
-    border: none;
-    padding: 0;
-}
-
-.search-icon-container .mat-icon{
-    color: #23b3d1;
-    width: 14.9px;
-}
-
-.search-input-group .form-control {
-    background: transparent;
-    border: none;
-    height: 49px;
-}
-
-.btn-search{
-    width: 79px;
-    height: 45px;
-    border-radius: 8px;
-    background-color: #ddf5f4;
-    font-size: 15px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    color: #33b5ae;
-    border: none;
 }
 
 .tf-form__section input{
