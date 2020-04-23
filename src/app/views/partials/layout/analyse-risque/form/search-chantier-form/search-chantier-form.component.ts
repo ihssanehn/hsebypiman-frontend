@@ -16,8 +16,7 @@ import { ActivatedRoute } from '@angular/router';
 export class SearchChantierFormComponent implements OnInit {
 
   @Input() arForm: FormGroup;
-  @Input() edit: Boolean;
-  @Input() detail: Boolean = false;
+  @Input() origin: string;
   
   private _data = new BehaviorSubject<Chantier>(null);
   @Input()
@@ -49,24 +48,29 @@ export class SearchChantierFormComponent implements OnInit {
 
   ngOnInit() {
     this.initFilteredChantiers();
-    if(this.edit){
+    
+    if(this.origin == 'edit'){
       this.getChantier(this.arForm.get('chantier_id').value);
     }else{
-      this.activatedRoute.queryParams
-      .subscribe(params => {
-        if(params.chantier_id){
-          this.searchControl.setValue({id:params.chantier_id});
-          this.searchForChantier();
+      if(this.origin == 'detail'){
+        this._data
+          .subscribe(x => {
+            if(this.data)
+            this.getChantier(this.data.id);
+        });
+      }else{
+        if(this.origin == 'add'){
+          this.activatedRoute.queryParams
+          .subscribe(params => {
+            if(params.chantier_id){
+              this.searchControl.setValue({id:params.chantier_id});
+              this.searchForChantier();
+            }
+          });
         }
-      });
+      }
     }
-    if(this.detail){
-      this._data
-        .subscribe(x => {
-          if(this.data)
-          this.getChantier(this.data.id);
-      });
-    }
+
   }
 
   ngAfterViewInit(){
@@ -104,7 +108,7 @@ export class SearchChantierFormComponent implements OnInit {
     try {
       var res = await this.chantierService.get(chantierId).toPromise();
       this.chantier = res.result.data;
-      if(!this.detail){
+      if(this.origin == 'add' || this.origin == 'edit'){
         this.arForm.controls.chantier_id.setValue(this.chantier.id);
       }
       this.cdr.detectChanges();

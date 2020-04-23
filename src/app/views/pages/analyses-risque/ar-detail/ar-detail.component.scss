@@ -120,5 +120,8 @@
                 width: 33%;
             }
         }
+        .mat-slide-toggle.mat-disabled{
+            opacity: 1;
+        }
     }
 }

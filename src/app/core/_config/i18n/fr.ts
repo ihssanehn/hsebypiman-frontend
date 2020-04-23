@@ -285,7 +285,7 @@ export const locale = {
 					TITLE: 'Zone de stockage matériel chantier'
 				},
 				EQBLOCK:{
-					TITLE: 'Equipement à prévoir sur le chantier'
+					TITLE: 'Equipements à prévoir sur le chantier'
 				},
 				MWBLOCK:{
 					TITLE: 'Suivi des travaux ',
