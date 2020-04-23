@@ -31,7 +31,7 @@ export class ArsListComponent implements OnInit {
 		params: []
 	};
 	showFilters: boolean= false;
-	displayedArColumns=['number','name','charge_affaire','status','sign_count','created_at','action'];
+	displayedArColumns=['number','client','chantier','charge_affaire','created_at','status','date_demarrage_chantier','sign_count','observations','action'];
 
   	constructor(
 		private router: Router,
@@ -121,6 +121,18 @@ export class ArsListComponent implements OnInit {
 		} else {
 			return by == this.filter.order_by
 		}
+	}
+
+	advancedSearchChanged($event){
+		this.showFilters = $event;
+	}
+
+	udpateFilters(filters){
+		for (let [key, value] of Object.entries(filters)) {
+			this.filter[key] = value;
+		}
+		console.log(this.filter);
+		this.getArs();
 	}
 
 }

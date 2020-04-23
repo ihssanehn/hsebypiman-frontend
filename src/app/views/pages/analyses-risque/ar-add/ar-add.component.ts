@@ -115,7 +115,7 @@ export class ArAddComponent implements OnInit {
 
   createForm() {
 		this.arForm = this.arFB.group({
-      a_prevoir_compagnons:['0', Validators.required],
+      a_prevoir_compagnons:[false, Validators.required],
       date_accueil_secu:[null, Validators.required],
       realisateur:['', Validators.required],
       tel_realisateur:['', Validators.required],
@@ -130,9 +130,9 @@ export class ArAddComponent implements OnInit {
       tel_contact_client_chef_chtr:['', Validators.required],
       contact_client_hse:['', Validators.required],
       tel_contact_client_hse:['', Validators.required],
-      heure_ouverture:['', Validators.required],
-      heure_fermeture:['', Validators.required],
-      courant_dispo:['', Validators.required],
+      heure_ouverture:['07:00', Validators.required],
+      heure_fermeture:['17:00', Validators.required],
+      courant_dispo:['230V / 50Hz', Validators.required],
 
       zone_part:[false, Validators.required],
       parking_salarie:[false, Validators.required],

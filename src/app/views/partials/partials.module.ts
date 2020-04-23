@@ -7,6 +7,7 @@ import { SignaturePadModule } from 'angular2-signaturepad';
 
 import { TranslateModule } from '@ngx-translate/core';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {
 	MatAutocompleteModule,
 	MatButtonModule,
@@ -229,6 +230,7 @@ import { NgxMaskModule} from 'ngx-mask';
 		NgbTabsetModule,
 		NgbTooltipModule,
 		NgxMaskModule,
+		MatSlideToggleModule,
 	]
 })
 export class PartialsModule {

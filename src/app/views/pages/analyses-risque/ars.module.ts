@@ -25,6 +25,7 @@ import { ArAddComponent } from './ar-add/ar-add.component';
 import { ArDetailComponent } from './ar-detail/ar-detail.component';
 import {NgbDropdownModule, NgbTabsetModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 // Material
 import {
@@ -54,6 +55,7 @@ import {
 	DateAdapter
 } from '@angular/material';
 import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapter';
+import { ArFiltersComponent } from './ar-filters/ar-filters.component';
 
 
 
@@ -133,7 +135,8 @@ const routes: Routes = [
 		NgbDropdownModule,
 		NgbTabsetModule,
 		NgbTooltipModule,
-		MatChipsModule
+		MatChipsModule,
+		MatSlideToggleModule
 	],
 	providers: [
 		InterceptService,
@@ -166,6 +169,7 @@ const routes: Routes = [
 		ArEditComponent,
 		ArAddComponent,
 		ArDetailComponent,
+		ArFiltersComponent,
 	]
 })
 export class ArsModule {}

@@ -271,7 +271,7 @@ export const locale = {
 			CHIEF:'Chargé d\'affaire',
 			BUDGET:'Budget',
 			SIGNATURECOUNT:'Signatures',
-			SIGNATAIRECOUNT:'Signataires',
+			OBSERVATION:'Observations',
 			FORM:{
 				CREATE:'Créer une nouvelle analyse de risque',
 				RISKBLOCK:{
@@ -409,6 +409,12 @@ export const locale = {
 				TITLE:'Horaire d\'accueil sécurité',
 				SHORTTITLE:'Horaire d\'accueil sécurité',
 			},
+			ASIGNER:{
+				LABEL:'À signer',
+				PLACEHOLDER:'',
+				TITLE:'À signer',
+				SHORTTITLE:'À signer',
+			},
 			QUOTIDIENNEMENT:{
 				LABEL:'Quotidiennement',
 				PLACEHOLDER:'',
@@ -427,6 +433,18 @@ export const locale = {
 				TITLE:'Toute les 2h',
 				SHORTTITLE:'Toute les 2h',
 			},
+			SIGNATAIRECOUNT:{
+				LABEL:'Nombre de signataires',
+				PLACEHOLDER:'',
+				TITLE:'Nombre de signataires',
+				SHORTTITLE:'Signataires',
+			},
+			SIGNATAIRES:{
+				LABEL:'Signataires',
+				PLACEHOLDER:'',
+				TITLE:'Signataires',
+				SHORTTITLE:'Signataires',
+			}
 		},
 		VISITES:{
 			CODE:{
@@ -505,8 +523,8 @@ export const locale = {
 				SHORTTITLE:'Mis à jour le'
 			},
 			CREATED_AT:{
-				LABEL:'Créé le',
-				TITLE:'Créé le',
+				LABEL:'Date de création',
+				TITLE:'Date de création',
 				SHORTTITLE:'Créé le'
 			},
 			ARCHIEVED_AT:{
