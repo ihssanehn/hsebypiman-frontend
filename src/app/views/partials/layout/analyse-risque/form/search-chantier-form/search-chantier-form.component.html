@@ -1,103 +1,69 @@
-<tf-portlet-body style="flex-direction: row;">
-
-    <div class="col-md-12 col-lg-4 col-xl-3">
-        <div class="tf-heading tf-heading--md" style="margin-top: 0;" *ngIf="origin!='detail'">
-            {{'ARS.CHANTIERS.FORM.SEARCH.TITLE' | translate}}
-        </div>
-        <div class="tf-heading tf-heading--md" *ngIf="origin=='detail'">
-            <span>{{'ARS.CHANTIERS.FORM.DETAIL.TITLE' | translate}}</span> {{'ARS.CHANTIERS.FORM.DETAIL.SUBTITLE' | translate}}
-        </div>
-        <div class="flex-layout" *ngIf="origin!='detail'">
-
-            <div class="form-group row">
-                <div class="col-md-12">
-                    <div class="input-group search-input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text search-icon-container">
-                                <mat-icon svgIcon="search"></mat-icon>
-                            </span>
-                        </div>
-                        <input #searchInput type="text" [formControl]="searchControl" class="form-control search-input" name="keyword" placeholder="{{'FILTER.SEARCH_CHANTIER' | translate}}" [matAutocomplete]="auto">
-                        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-                            <mat-option *ngFor="let chantier of filteredChantiers | async" [value]="chantier" (click)="initFilteredChantiers()">
-                                {{chantier.nom}}
-                            </mat-option>
-                        </mat-autocomplete>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3 col-lg-4">
-                <button class="btn btn-brand btn-search" (click)="searchForChantier()">
-                    Lancer
-                </button>
-            </div>
-        </div>
-        <div class="result-msg mb-4" *ngIf="chantier && origin!='detail'">
-            <span>{{'ARS.CHANTIERS.FORM.SEARCH.RESULT.TEXT1' | translate}}</span> {{'ARS.CHANTIERS.FORM.SEARCH.RESULT.TEXT2' | translate}}
-        </div>
-    </div>
-    <div class="v-divider" *ngIf="chantier && origin!='detail'"></div>
-    <div class="col-md-12 col-lg-8 col-xl-9  search-result-block" *ngIf="chantier">
-        <div class="tf-wizard-v4__content" data-tfwizard-type="step-content" data-tfwizard-state="current">
-            <div class="tf-form__section tf-form__section--first">
-                <div class="tf-wizard-v4__form">
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <div class="col-xl-12 mb-3">
-                                <mat-label>{{'ARS.CHANTIERS.NUMBER' | translate}}</mat-label>
-                                <p class="mt-2"><strong>{{chantier?.numero}}</strong></p>
-                            </div>
-                            <div class="col-xl-12 mb-3">
-                                <mat-label>{{'ARS.CHANTIERS.NAME' | translate}}</mat-label>
-                                <p class="mt-2"><strong>{{chantier?.nom}}</strong></p>
-                            </div>
-                        </div>
-                        <div class="v-divider"></div>
-                        <div class="col-sm-6">
-                            <div class="row">
-                                <div class="col-sm">
-                                    <div class="col-xl-12 mb-3">
-                                        <mat-label>{{'ARS.CHANTIERS.ADRESS' | translate}}</mat-label>
-                                        <p class="mt-2"><strong>{{chantier?.adresse}}</strong></p>
-                                    </div>
-                                    <div class="col-xl-12 mb-3">
-                                        <mat-label>{{'COMMON.POSTCODE.LABEL' | translate}}</mat-label>
-                                        <p class="mt-2"><strong>{{chantier?.code_postal}}</strong></p>
-                                    </div>
-                                </div>
-                                <div class="col-sm">
-                                    <div class="col-xl-12 mb-3">
-                                        <mat-label>{{'COMMON.CITY.LABEL' | translate}}</mat-label>
-                                        <p class="mt-2"><strong>{{chantier?.ville}}</strong></p>
-                                    </div>
-                                    <div class="col-xl-12 mb-3">
-                                        <mat-label>{{'COMMON.COUNTRY.LABEL' | translate}}</mat-label>
-                                        <p class="mt-2"><strong>{{chantier?.pays}}</strong></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="v-divider"></div>
-                        <div class="col-sm-3">
-                            <div class="col-xl-12 mb-3">
-                                <mat-label>{{'ARS.CHANTIERS.EMPLOYEE' | translate}}</mat-label>
-                                <p class="mt-2"><strong>{{chantier?.contact}}</strong></p>
-                            </div>
-                            <div class="col-xl-12 mb-3">
-                                <mat-label>{{'ARS.CHANTIERS.BUDGET' | translate}}</mat-label>
-                                <p class="mt-2"><strong>{{chantier?.montant}}</strong></p>
-                            </div>
-                            <div class="col-xl-12 mb-3">
-                                <mat-label>{{'ARS.CHANTIERS.DATE_DEMARRAGE' | translate}}</mat-label>
-                                <p class="mt-2"><strong>{{chantier?.date_demarrage}}</strong></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<tf-portlet-body>
+	<div class="row">
+		<div class="col-md-12" *ngIf="origin=='detail'">
+			<div class="tf-heading tf-heading--sm">
+				<span>{{'ARS.CHANTIERS.FORM.DETAIL.TITLE' | translate}}</span> {{'ARS.CHANTIERS.FORM.DETAIL.SUBTITLE' | translate}}
+			</div>
+		</div>
+		<div class="col-md-12 search-box" *ngIf="origin!='detail'">
+			<div class="mr-4">
+				<b>{{'ARS.CHANTIERS.FORM.SEARCH.TITLE' | translate}}</b>
+			</div>
+			<div class="search-layout ml-4">
+				<div class="form-group form-group-sm row col" >
+					<div class="input-group search-input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text search-icon-container">
+								<mat-icon svgIcon="search"></mat-icon>
+							</span>
+						</div>
+						<input #searchInput type="text" [formControl]="searchControl" class="form-control search-input" name="keyword" placeholder="{{'FILTER.SEARCH_CHANTIER' | translate}}" [matAutocomplete]="auto">
+						<mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+							<mat-option *ngFor="let chantier of filteredChantiers | async" [value]="chantier" (click)="initFilteredChantiers()" style="height: 2em;line-height: 2em;">
+								{{chantier.nom}}
+							</mat-option>
+						</mat-autocomplete>
+					</div>
+					<button class="btn btn-brand btn-sm btn-search ml-4" (click)="searchForChantier()">
+						Lancer
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-12 result-msg pb-3 my-3" *ngIf="chantier && origin!='detail'">
+			<span>{{'ARS.CHANTIERS.FORM.SEARCH.RESULT.TEXT1' | translate}}</span> {{'ARS.CHANTIERS.FORM.SEARCH.RESULT.TEXT2' | translate}}
+		</div>
+		<div class="col-md-12 mx-5 search-result-block" *ngIf="chantier">
+			<div class="row">
+				<div class="col-xl-3 col-lg-3 col-md-4 col-xs-6">
+					<mat-label>{{'ARS.CHANTIERS.NAME' | translate}}</mat-label>
+					<p class="mt-1"><strong>{{chantier?.nom}}</strong></p>
+				</div>
+				<div class="col-xl-3 col-lg-3 col-md-4 col-xs-6">
+					<mat-label>{{'ARS.CHANTIERS.NUMBER' | translate}}</mat-label>
+					<p class="mt-1"><strong>{{chantier?.numero}}</strong></p>
+				</div>
+				<div class="col-xl-3 col-lg-3 col-md-4 col-xs-6">
+					<mat-label>{{'CHANTIERS.CHIEF.LABEL' | translate}}</mat-label>
+					<p class="mt-1"><strong>{{chantier?.charge_affaire?.fullname}}</strong></p>
+				</div>
+				<div class="col-xl-3 col-lg-3 col-md-4 col-xs-6">
+					<mat-label>{{'ARS.CHANTIERS.BUDGET' | translate}}</mat-label>
+					<p class="mt-1"><strong>{{chantier?.montant}}</strong></p>
+				</div>
+				<div class="col-xl-3 col-lg-3 col-md-4 col-xs-6">
+					<mat-label>{{'ARS.CHANTIERS.DATE_DEMARRAGE' | translate}}</mat-label>
+					<p class="mt-1"><strong>{{chantier?.date_demarrage | date:'dd/MM/yyyy'}}</strong></p>
+				</div>
+				<div class="col-xl-3 col-lg-3 col-md-4 col-xs-6">
+					<mat-label>{{'CHANTIERS.CLIENT.LABEL' | translate}}</mat-label>
+					<p class="mt-1"><strong>{{chantier?.client}}</strong></p>
+				</div>
+				<div class="col-xl-6 col-lg-6 col-md-12">
+					<mat-label>{{'ARS.CHANTIERS.ADRESS' | translate}}</mat-label>
+					<p class="mt-1"><strong>{{chantier?.adresse}}, {{chantier?.code_postal}} {{chantier?.ville}} {{chantier?.pays}}</strong></p>
+				</div>
+			</div>
+		</div>
+	</div>
 </tf-portlet-body>

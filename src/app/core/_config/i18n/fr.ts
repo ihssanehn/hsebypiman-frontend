@@ -252,8 +252,8 @@ export const locale = {
 						}
 					},
 					DETAIL:{
-						TITLE:'Analyse de risque',
-						SUBTITLE:'réalisée sur le chantier'
+						TITLE:'Informations chantier',
+						SUBTITLE:''
 					}
 
 				}
