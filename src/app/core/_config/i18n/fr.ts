@@ -112,7 +112,7 @@ export const locale = {
 				MIN_LENGTH: '{{name}} doit avoir une longueur minimale de {{min}}',
 				AGREEMENT_REQUIRED: 'Vous devez accepter les termes et conditions',
 				NOT_FOUND: 'Le {{name}} requis n\'a pas été trouvé',
-				INVALID_LOGIN: 'Les informations de connection sont incorrectes',
+				INVALID_LOGIN: 'Les informations de connexion sont incorrectes',
 				REQUIRED_FIELD: 'champ requis',
 				MIN_LENGTH_FIELD: 'Longueur du champ minimale:',
 				MAX_LENGTH_FIELD: 'Longueur du champ maximale:',
