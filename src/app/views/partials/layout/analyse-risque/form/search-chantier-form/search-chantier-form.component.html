@@ -1,13 +1,13 @@
 <tf-portlet-body style="flex-direction: row;">
 
     <div class="col-md-12 col-lg-4 col-xl-3">
-        <div class="tf-heading tf-heading--md" style="margin-top: 0;" *ngIf="!detail">
+        <div class="tf-heading tf-heading--md" style="margin-top: 0;" *ngIf="origin!='detail'">
             {{'ARS.CHANTIERS.FORM.SEARCH.TITLE' | translate}}
         </div>
-        <div class="tf-heading tf-heading--md" *ngIf="detail">
+        <div class="tf-heading tf-heading--md" *ngIf="origin=='detail'">
             <span>{{'ARS.CHANTIERS.FORM.DETAIL.TITLE' | translate}}</span> {{'ARS.CHANTIERS.FORM.DETAIL.SUBTITLE' | translate}}
         </div>
-        <div class="flex-layout" *ngIf="!detail">
+        <div class="flex-layout" *ngIf="origin!='detail'">
 
             <div class="form-group row">
                 <div class="col-md-12">
@@ -33,11 +33,11 @@
                 </button>
             </div>
         </div>
-        <div class="result-msg mb-4" *ngIf="chantier && !detail">
+        <div class="result-msg mb-4" *ngIf="chantier && origin!='detail'">
             <span>{{'ARS.CHANTIERS.FORM.SEARCH.RESULT.TEXT1' | translate}}</span> {{'ARS.CHANTIERS.FORM.SEARCH.RESULT.TEXT2' | translate}}
         </div>
     </div>
-    <div class="v-divider" *ngIf="chantier && !detail"></div>
+    <div class="v-divider" *ngIf="chantier && origin!='detail'"></div>
     <div class="col-md-12 col-lg-8 col-xl-9  search-result-block" *ngIf="chantier">
         <div class="tf-wizard-v4__content" data-tfwizard-type="step-content" data-tfwizard-state="current">
             <div class="tf-form__section tf-form__section--first">
