@@ -115,10 +115,10 @@
         .full-height{
             min-height: 100px;
         }
-    }
-    .chip-item{
-        font-size: 11px;
-        min-height: 23px;
-        padding: 12px 10px;
+        .mat-table {
+            th.mat-header-cell {
+                width: 33%;
+            }
+        }
     }
 }
