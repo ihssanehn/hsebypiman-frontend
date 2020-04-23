@@ -134,7 +134,10 @@ export class ArForm2Component implements OnInit {
 
     const formArray: FormArray = this.arForm.get('comments') as FormArray;
 
+    this.removeRisqueComments(id, formArray);
+
     if(event.target.value){
+
       const commentGroup: FormGroup = this.fb.group({
         'cat_risque_id': id,
         'commentaire': event.target.value
@@ -142,6 +145,20 @@ export class ArForm2Component implements OnInit {
 
       formArray.push(commentGroup);
     }
+
+    console.log(formArray.value);
+  }
+
+  removeRisqueComments(id, formArray: FormArray){
+    let i: number = 0;
+    formArray.controls.forEach((ctrl: FormGroup) => {
+      if(ctrl.controls.cat_risque_id.value == id) {
+        formArray.removeAt(i);
+        return;
+      }
+
+      i++;
+    });
   }
 
   getCommentValue(id){
