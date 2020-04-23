@@ -338,10 +338,10 @@ export const locale = {
 				SHORTTITLE:'Numéro de téléphone',
 			},
 			DATE_VALIDITE:{
-				LABEL:'Date de validité de l\'accueuil sécurité',
+				LABEL:'Date de validité de l\'accueil sécurité',
 				PLACEHOLDER:'',
-				TITLE:'Date de validité de l\'accueuil sécurité',
-				SHORTTITLE:'Date de validité de l\'accueuil sécurité',
+				TITLE:'Date de validité de l\'accueil sécurité',
+				SHORTTITLE:'Date de validité de l\'accueil sécurité',
 			},
 			NUM_SECOURS:{
 				LABEL:'Numéro en cas d\'accident ou incendie',

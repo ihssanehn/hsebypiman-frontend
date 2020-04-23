@@ -20,4 +20,16 @@ export class ArForm1Component implements OnInit {
     this.toppings = this.arForm.controls['accueil_secu_days'] as FormControl;
   }
 
+  isFieldRequired(name){
+    return !!this.arForm.controls[name].validator(name).hasOwnProperty('required');
+  }
+
+  isControlHasError(controlName: string, validationType: string): boolean {
+    const control = this.arForm.controls[controlName];
+		if (!control) {
+			return false;
+		}
+    return control.hasError(validationType) && (control.dirty || control.touched);
+  }
+
 }

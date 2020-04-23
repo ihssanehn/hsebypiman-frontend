@@ -16,15 +16,21 @@
 				<div class="row form-row">
 					<mat-form-field class="col-xl-5" >
 						<mat-label>{{'ARS.DATE_ACCUEIL_SECU.LABEL' | translate}}</mat-label>
-						<input matInput class="form-control" [matDatepicker]="date_accueil_secu_picker" formControlName="date_accueil_secu" placeholder="DD/MM/YYYY">
+						<input matInput class="form-control" [matDatepicker]="date_accueil_secu_picker" formControlName="date_accueil_secu" placeholder="DD/MM/YYYY" [required]="isFieldRequired('date_accueil_secu')">
 						<mat-datepicker-toggle matSuffix [for]="date_accueil_secu_picker"></mat-datepicker-toggle>
 						<mat-datepicker #date_accueil_secu_picker></mat-datepicker>
+						<mat-error *ngIf="isControlHasError('date_accueil_secu','required')">
+							<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+						</mat-error>
 					</mat-form-field>
 					<mat-form-field class="col-xl-4" >
 						<mat-label>{{'ARS.DATE_VALIDITE.LABEL' | translate}}</mat-label>
-						<input matInput class="form-control" [matDatepicker]="date_validite_picker" formControlName="date_validite" placeholder="DD/MM/YYYY">
+						<input matInput class="form-control" [matDatepicker]="date_validite_picker" formControlName="date_validite" placeholder="DD/MM/YYYY" [required]="isFieldRequired('date_validite')">
 						<mat-datepicker-toggle matSuffix [for]="date_validite_picker"></mat-datepicker-toggle>
 						<mat-datepicker #date_validite_picker></mat-datepicker>
+						<mat-error *ngIf="isControlHasError('date_validite','required')">
+							<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+						</mat-error>
 					</mat-form-field>
 				</div>
 				<div class="row form-row">
@@ -41,7 +47,7 @@
 										</div>
 										<span>A </span>
 										<div>
-											<input class="form-control text-center" type="time" name="accueil_secu_time_closing" formControlName="accueil_secu_time_closing" placeholder="" />
+											<input class="form-control text-center" type="time" name="accueil_secu_time_closing" formControlName="accueil_secu_time_closing" />
 										</div>
 									</div>
 								</div>
@@ -50,7 +56,7 @@
 					</div>
 					<mat-form-field class="col-xl-7">
 						<mat-label>{{'ARS.AS_DAYS.LABEL' | translate}}</mat-label>
-						<mat-select class="form-control" formControlName="accueil_secu_days" multiple>
+						<mat-select class="form-control" formControlName="accueil_secu_days" multiple [required]="isFieldRequired('accueil_secu_days')">
 							<mat-select-trigger>
 								<mat-chip-list #chipList>
 									<mat-chip *ngFor="let as_day of toppings.value" class="chip-item">
@@ -60,30 +66,48 @@
 							</mat-select-trigger>
 							<mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
 						</mat-select>
+						<mat-error *ngIf="isControlHasError('accueil_secu_days','required')">
+							<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+						</mat-error>
 					</mat-form-field>
 				</div>
 				<div class="row form-row">
 					<mat-form-field class="col-xl-5" >
 						<mat-label>{{'ARS.REALISATEUR.LABEL' | translate}}</mat-label>
-						<input class="form-control" matInput type="text" name="realisateur" formControlName="realisateur" placeholder="Saisir ici" />
+						<input class="form-control" matInput type="text" name="realisateur" formControlName="realisateur" placeholder="Saisir ici" [required]="isFieldRequired('realisateur')"/>
+						<mat-error *ngIf="isControlHasError('realisateur','required')">
+							<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+						</mat-error>
 					</mat-form-field>
 					<mat-form-field class="col-xl-4" >
 						<mat-label>{{'ARS.TEL_REALISATEUR.LABEL' | translate}}</mat-label>
-						<input class="form-control" matInput pattern="[0-9+ ]*" type="tel" name="tel_realisateur" formControlName="tel_realisateur" placeholder="Saisir ici" />
+						<input class="form-control" matInput pattern="[0-9+ ]*" type="tel" name="tel_realisateur" formControlName="tel_realisateur" placeholder="Saisir ici" [required]="isFieldRequired('tel_realisateur')"/>
+						<mat-error *ngIf="isControlHasError('tel_realisateur','required')">
+							<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+						</mat-error>
 					</mat-form-field>
 				</div>
 				<div class="row form-row">
 					<mat-form-field class="col-xl-5" >
 						<mat-label>{{'ARS.CONTACT_INTERNE_SECOURS.LABEL' | translate}}</mat-label>
-						<input class="form-control" matInput type="text" name="contact_interne_secours" formControlName="contact_interne_secours" placeholder="Saisir ici" />
+						<input class="form-control" matInput type="text" name="contact_interne_secours" formControlName="contact_interne_secours" placeholder="Saisir ici" [required]="isFieldRequired('contact_interne_secours')"/>
+						<mat-error *ngIf="isControlHasError('contact_interne_secours','required')">
+							<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+						</mat-error>
 					</mat-form-field>
 					<mat-form-field class="col-xl-4" >
 						<mat-label>{{'ARS.TEL_CONTACT_INTERNE_SECOURS.LABEL' | translate}}</mat-label>
-						<input class="form-control" matInput pattern="[0-9+ ]*" type="tel" name="tel_contact_interne_secours" formControlName="tel_contact_interne_secours" placeholder="Saisir ici" />
+						<input class="form-control" matInput pattern="[0-9+ ]*" type="tel" name="tel_contact_interne_secours" formControlName="tel_contact_interne_secours" placeholder="Saisir ici" [required]="isFieldRequired('tel_contact_interne_secours')"/>
+						<mat-error *ngIf="isControlHasError('tel_contact_interne_secours','required')">
+							<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+						</mat-error>
 					</mat-form-field>
 					<mat-form-field class="col-xl-3" >
 						<mat-label>{{'ARS.NUM_SECOURS.LABEL' | translate}}</mat-label>
-						<input class="form-control" matInput pattern="[0-9+ ]*" type="tel" name="num_secours" formControlName="num_secours" placeholder="Saisir ici" />
+						<input class="form-control" matInput pattern="[0-9+ ]*" type="tel" name="num_secours" formControlName="num_secours" placeholder="Saisir ici" [required]="isFieldRequired('num_secours')" />
+						<mat-error *ngIf="isControlHasError('num_secours','required')">
+							<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+						</mat-error>
 					</mat-form-field>
 				</div>
 			</div>
@@ -98,19 +122,31 @@
 						<div class="row">
 							<mat-form-field class="col-xl-6" >
 								<mat-label>{{'ARS.CONTACT_CLIENT_CHEF_CHANTIER.LABEL' | translate}}</mat-label>
-								<input class="form-control" matInput type="text" name="contact_client_chef_chtr" formControlName="contact_client_chef_chtr" placeholder="Saisir ici" />
+								<input class="form-control" matInput type="text" name="contact_client_chef_chtr" formControlName="contact_client_chef_chtr" placeholder="Saisir ici" [required]="isFieldRequired('contact_client_chef_chtr')"/>
+								<mat-error *ngIf="isControlHasError('contact_client_chef_chtr','required')">
+									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+								</mat-error>
 							</mat-form-field>
 							<mat-form-field class="col-xl-6" >
 								<mat-label>{{'ARS.TEL_CONTACT_CLIENT_CHEF_CHANTIER.LABEL' | translate}}</mat-label>
-								<input class="form-control" matInput pattern="[0-9+ ]*" type="tel" name="tel_contact_client_chef_chtr" formControlName="tel_contact_client_chef_chtr" placeholder="Saisir ici" />
+								<input class="form-control" matInput pattern="[0-9+ ]*" type="tel" name="tel_contact_client_chef_chtr" formControlName="tel_contact_client_chef_chtr" placeholder="Saisir ici" [required]="isFieldRequired('tel_contact_client_chef_chtr')"/>
+								<mat-error *ngIf="isControlHasError('tel_contact_client_chef_chtr','required')">
+									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+								</mat-error>
 							</mat-form-field>
 							<mat-form-field class="col-xl-6" >
 								<mat-label>{{'ARS.CONTACT_CLIENT_HSE.LABEL' | translate}}</mat-label>
-								<input class="form-control" matInput type="text" name="contact_client_hse" formControlName="contact_client_hse" placeholder="Saisir ici" />
+								<input class="form-control" matInput type="text" name="contact_client_hse" formControlName="contact_client_hse" placeholder="Saisir ici" [required]="isFieldRequired('contact_client_hse')"/>
+								<mat-error *ngIf="isControlHasError('contact_client_hse','required')">
+									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+								</mat-error>
 							</mat-form-field>
 							<mat-form-field class="col-xl-6" >
 								<mat-label>{{'ARS.TEL_CONTACT_CLIENT_HSE.LABEL' | translate}}</mat-label>
-								<input class="form-control" matInput pattern="[0-9+ ]*" type="tel" name="tel_contact_client_hse" formControlName="tel_contact_client_hse" placeholder="Saisir ici" />
+								<input class="form-control" matInput pattern="[0-9+ ]*" type="tel" name="tel_contact_client_hse" formControlName="tel_contact_client_hse" placeholder="Saisir ici" [required]="isFieldRequired('tel_contact_client_hse')"/>
+								<mat-error *ngIf="isControlHasError('tel_contact_client_hse','required')">
+									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+								</mat-error>
 							</mat-form-field>
 						</div>
 					</div>
@@ -134,7 +170,7 @@
 												</div>
 												<span>A </span>
 												<div>
-													<input class="form-control text-center" type="time" name="heure_fermeture" formControlName="heure_fermeture" placeholder="" />
+													<input class="form-control text-center" type="time" name="heure_fermeture" formControlName="heure_fermeture" />
 												</div>
 											</div>
 										</div>
@@ -143,7 +179,10 @@
 							</div>
 							<mat-form-field class="col-xl-5" >
 								<mat-label>{{'ARS.COURANT.LABEL' | translate}}</mat-label>
-								<input class="form-control" matInput type="text" name="courant_dispo" formControlName="courant_dispo" placeholder="Ex: 180 kWh" />
+								<input class="form-control" matInput type="text" name="courant_dispo" formControlName="courant_dispo" placeholder="Ex: 180 kWh" [required]="isFieldRequired('courant_dispo')"/>
+								<mat-error *ngIf="isControlHasError('courant_dispo','required')">
+									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+								</mat-error>
 							</mat-form-field>
 						</div>
 					</div>
