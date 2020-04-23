@@ -56,6 +56,8 @@ import {
 } from '@angular/material';
 import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapter';
 import { ArFiltersComponent } from './ar-filters/ar-filters.component';
+import { ArSignaturesComponent } from './ar-signatures/ar-signatures.component';
+import { SignaturePadModule } from 'angular2-signaturepad';
 
 
 
@@ -136,7 +138,9 @@ const routes: Routes = [
 		NgbTabsetModule,
 		NgbTooltipModule,
 		MatChipsModule,
-		MatSlideToggleModule
+		MatSlideToggleModule,
+		SignaturePadModule
+
 	],
 	providers: [
 		InterceptService,
@@ -170,6 +174,7 @@ const routes: Routes = [
 		ArAddComponent,
 		ArDetailComponent,
 		ArFiltersComponent,
+		ArSignaturesComponent,
 	]
 })
 export class ArsModule {}

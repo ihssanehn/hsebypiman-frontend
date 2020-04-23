@@ -1,0 +1,112 @@
+<form [formGroup]="signatureForm" class="tf-form tf-form--group-seperator-dashed">
+
+    <div class="tf-heading tf-heading--md">| 5 {{'ARS.FORM.SIGNATURE.TITLE' | translate}}</div>
+    <div class="row">
+    <div class="col-md-12">
+        <div class="tf-card-form">
+            <div class="tf-heading tf-heading--sm">
+                {{'ARS.FORM.SIGNATURE.SUBTITLE' | translate}}
+            </div>
+
+            <!-- <div class="row form-row">
+                <mat-form-field appearance="outline"class="col-md-12" >
+                    <mat-label>Saisir ici votre observation</mat-label>
+                    <textarea matInput formControlName="observations" cdkTextareaAutosize cdkAutosizeMinRows=10 cdkAutosizeMaxRows=20></textarea>
+                </mat-form-field>
+            </div> -->
+
+            <div class="tf-heading tf-heading--sm">
+                {{'ARS.FORM.SIGNATURE.DECLARATION' | translate}}
+            </div>
+
+            <div>
+                <div class="row form-row">
+                    <div class="col-xl-2" >
+                        <mat-label>{{'COMMON.DATE.LABEL' | translate}} </mat-label>
+                        <p class="mt-2"><strong>{{signatureForm.value.date| date:'dd/MM/yyyy'}}</strong></p>
+                    </div>
+                    <div class="col-xl-2" >
+                        <mat-label>{{'COMMON.LASTNAME.LABEL' | translate}}&nbsp;{{'COMMON.FIRSTNAME.LABEL' | translate}} </mat-label>
+                        <p class="mt-2"><strong>{{signatureForm.value.personnel}}</strong></p>
+                    </div>
+
+                    <mat-form-field class="col-xl-2" >
+                        <mat-label>{{'COMMON.SOCIETE.LABEL' | translate}} </mat-label>
+                        <input class="form-control" matInput type="text" name="society" formControlName="society" placeholder="Saisir ici" />
+                    </mat-form-field>
+                    <mat-form-field class="col-xl-3" >
+                        <mat-label>{{'COMMON.REMARQUE.LABEL' | translate}} </mat-label>
+                        <input class="form-control" matInput type="text" name="commentaires" formControlName="commentaires" placeholder="Saisir ici" />
+                    </mat-form-field>
+
+                    <div class="col-xl-3 form-row-flex" >
+                        <label>{{'COMMON.SIGNATURE.LABEL' | translate}} </label>
+                        <div class="sign-line-options" style="border: 1px solid #e2e5ec;">
+                            <signature-pad [options]="signaturePadOptions"  (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad> 
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <!-- <div formArrayName="signatures">
+            <div>
+                <p class="font-weight-bold text-right add-signature-line-btn"><a (click)="addSignatures()">+ Ajouter un signataire</a></p>
+            </div>
+            <div class="row form-row" *ngFor="let signature of signatures.controls; let i=index" [formGroupName]="i" >
+                <div class="col-xl-2 form-row-flex" >
+                <label>{{'COMMON.DATE.LABEL' | translate}} </label>
+                <label style="padding-left: 0.5em;">{{curDate| date:'dd/MM/yyyy'}}</label>
+                </div>
+                <div class="col-xl-3 form-row-flex" >
+                <label>{{'COMMON.LASTNAME.LABEL' | translate}}&nbsp;{{'COMMON.FIRSTNAME.LABEL' | translate}} </label>
+                <input  class="form-control col-xl-8 no_border" type="text" name="signature_personnel" formControlName="personnel" placeholder="Saisir ici"  [matAutocomplete]="auto"/>
+                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                    <mat-option *ngFor="let salary of filteredSalaries | async" [value]="salary">
+                    {{salary.fullname}}
+                    </mat-option>
+                </mat-autocomplete>
+                </div>
+
+                <div class="col-xl-2 form-row-flex" >
+                <label>{{'COMMON.SOCIETE.LABEL' | translate}} </label>
+                <input class="form-control no_border" type="text" name="signature_societe" formControlName="society" placeholder="Saisir ici" />
+                </div>
+                <div class="col-xl-2 form-row-flex" >
+                <label>{{'COMMON.SIGNATURE.LABEL' | translate}} </label>
+                <input class="form-control no_border" type="text" name="signature" formControlName="signature" placeholder="Saisir ici" />
+                </div>
+                <div class="col-xl-2 form-row-flex" >
+                <label>{{'COMMON.REMARQUE.LABEL' | translate}} </label>
+                <input class="form-control no_border" type="text" name="signature_comment" formControlName="commentaires" placeholder="Saisir ici" />
+                </div>
+
+                <div class="col-xl-1" >
+                <div class="sign-line-options">
+                    <signature-pad [options]="signaturePadOptions"  (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad> 
+                    <div ngbDropdown placement="bottom-right" class="d-inline-block">
+                    <button ngbDropdownToggle mat-icon-button color="secondary" matTooltip="Actions">
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
+                        <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editSignature()">
+                        <mat-icon>edit</mat-icon>
+                        </button>
+                        <button mat-icon-button color="accent" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="removeSignature(i)">
+                        <mat-icon>delete</mat-icon>
+                        </button>
+                        
+                    </div>
+                    </div>
+
+                </div>
+                </div>
+                
+            </div>
+            </div> -->
+
+            </div>
+    </div>
+    </div>
+
+</form>
