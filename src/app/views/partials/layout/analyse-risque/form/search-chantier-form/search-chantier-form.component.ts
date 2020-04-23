@@ -1,11 +1,12 @@
 import { Component, OnInit, ChangeDetectorRef, Input, Sanitizer } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Chantier } from '@app/core/models';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 import { ChantierService } from '@app/core/services';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'tf-search-chantier-form',
@@ -16,6 +17,18 @@ export class SearchChantierFormComponent implements OnInit {
 
   @Input() arForm: FormGroup;
   @Input() edit: Boolean;
+  @Input() detail: Boolean = false;
+  //@Input() data: Chantier;
+  
+  private _data = new BehaviorSubject<Chantier>(null);
+  @Input()
+  set data(value) {
+      this._data.next(value);
+  };
+
+  get data() {
+      return this._data.getValue();
+  }
 
   searchControl: FormControl = new FormControl();
   
@@ -25,6 +38,7 @@ export class SearchChantierFormComponent implements OnInit {
 
 
   constructor(
+    private activatedRoute: ActivatedRoute,
     protected chantierService:ChantierService,
     private cdr: ChangeDetectorRef,
     iconRegistry: MatIconRegistry, 
@@ -36,14 +50,21 @@ export class SearchChantierFormComponent implements OnInit {
 
   ngOnInit() {
     this.initFilteredChantiers();
+    if(this.edit){
+      this.getChantier(this.arForm.get('chantier_id').value);
+    }
+    if(this.detail){
+      this._data
+        .subscribe(x => {
+          if(this.data)
+          this.getChantier(this.data.id);
+      });
+      
+    }
   }
 
   ngAfterViewInit(){
-    if(this.edit){
-      console.log(this.arForm);
-      console.log(this.arForm.get('chantier_id').value);
-      this.getChantier(this.arForm.get('chantier_id').value);
-    }
+
   }
 
   async initFilteredChantiers(){
@@ -77,6 +98,9 @@ export class SearchChantierFormComponent implements OnInit {
     try {
       var res = await this.chantierService.get(chantierId).toPromise();
       this.chantier = res.result.data;
+      if(!this.detail){
+        this.arForm.controls.chantier_id.setValue(this.chantier.id);
+      }
       this.cdr.detectChanges();
       this.cdr.markForCheck();
 		} catch (error) {

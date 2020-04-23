@@ -23,9 +23,6 @@ import Swal from 'sweetalert2';
 })
 export class ArAddComponent implements OnInit {
 
-  // Chantier search control
-  searchControl: FormControl = new FormControl();
-  
   ar: Ar;
   arForm: FormGroup;
   types: Type[];
@@ -36,17 +33,12 @@ export class ArAddComponent implements OnInit {
   filter = {
     keyword: "",
   }
-  public chantier : Chantier;
-  public chantiers : Array<Chantier>;
-  filteredChantiers: Observable<Array<Chantier>>;
   // Private properties
   errors;
   
   constructor(
-		private activatedRoute: ActivatedRoute,
 		private router: Router,
 		private arFB: FormBuilder,
-		// private notificationService: NzNotificationService,
 		private arService: ArService,
 		private typeService: TypeService,
     private authService: AuthService,
@@ -60,43 +52,14 @@ export class ArAddComponent implements OnInit {
 
     iconRegistry.addSvgIcon(
       'search',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/search.svg'));
-   }
+  }
 
   ngOnInit() {
-    this.activatedRoute.queryParams
-      .subscribe(params => {
-        if(params.chantier_id){
-          this.searchControl.setValue({id:params.chantier_id});
-          this.searchForChantier();
-        }
-      });
-      
     this.ar = new Ar();
     this.createForm();
     this.setDynamicValidators();
     this.getTypes();
     this.getUsers();
-    this.initFilteredChantiers();
-  }
-
-  async initFilteredChantiers(){
-    var res = await this.chantierService.getList().toPromise();
-    this.chantiers = res.result.data;
-    this.filteredChantiers = this.searchControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value))
-    );
-  }
-
-  private _filter(value: string): Array<Chantier> {
-    const filterValue = value;
-    return this.chantiers.filter(chantier => 
-      this._normalizeValue(chantier.nom).includes(filterValue)
-    );
-  }
-
-  private _normalizeValue(value: String): string {
-    return value.toLowerCase().replace(/\s/g, '');
   }
 
   async getTypes(){
@@ -115,6 +78,7 @@ export class ArAddComponent implements OnInit {
 
   createForm() {
 		this.arForm = this.arFB.group({
+      chantier_id: [null, Validators.required],
       a_prevoir_compagnons:[false, Validators.required],
       date_accueil_secu:[null, Validators.required],
       realisateur:['', Validators.required],
@@ -231,37 +195,15 @@ export class ArAddComponent implements OnInit {
       });
   }
   
-  searchForChantier(){
-    if(this.searchControl.value && this.searchControl.value.id){
-      this.initFilteredChantiers();
-      this.getChantier(this.searchControl.value.id);
-    }
-  }
-
-  async getChantier(chantierId: Number){
-    try {
-      var res = await this.chantierService.get(chantierId).toPromise();
-      this.chantier = res.result.data;
-      this.cdr.detectChanges();
-      this.cdr.markForCheck();
-		} catch (error) {
-			console.error(error);
-		}
-  }
-
   async onSubmit(event){
 
     try {
-      let result;
+      let form = {...this.arForm.value};
 
-      if(this.chantier)
+      if(form.chantier_id)
       {
-
-        let form = {...this.arForm.value};
         form.date_accueil_secu = this.setDateFormat(form.date_accueil_secu);
         form.date_validite = this.setDateFormat(form.date_validite);
-        form.chantier_id = this.chantier.id;
-
 
         this.arService.create(form)
           .toPromise()
@@ -316,11 +258,4 @@ export class ArAddComponent implements OnInit {
       return date ? moment(date).format('YYYY-MM-DD') : null;
   }
 
-  displayFn(chantier:Chantier): String {
-    return chantier ? chantier.nom : '';
-  }
-
-
-  
-  
 }

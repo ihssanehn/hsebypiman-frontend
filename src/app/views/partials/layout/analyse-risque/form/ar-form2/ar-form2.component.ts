@@ -156,6 +156,10 @@ export class ArForm2Component implements OnInit {
     return commentValue;
   }
 
+  isChecked(controlName: string){
+    return this.arForm.get(controlName).value == '1';
+  }
+
 
   /** Signature */
   initFilteredSalaries(){

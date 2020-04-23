@@ -45,3 +45,9 @@
   color:tf-get($tf-state-colors, info, optional);
 }
 // NEXT
+
+.chip-item{
+  font-size: 11px;
+  min-height: 23px!important;
+  padding: 12px 10px;
+}

@@ -6,79 +6,97 @@
 			<div class="card card-filters px-5 py-3">
 				<form novalidate [formGroup]="filterForm">
 					<div class="row">
-                        <mat-form-field class="col-xl-3 col-md-4 col-sm-6 col-xs-12">
-							<mat-label>{{'CHANTIERS.CLIENT.TITLE' | translate}}</mat-label>
-							<mat-select class="form-control"  formControlName="client" name="client">
-								<mat-option>Tous</mat-option>
-								<mat-option *ngFor="let client of clients" [value]="client">
-									{{client}}
-								</mat-option>
-							</mat-select>
-							<button mat-button *ngIf="formHasValue('client')" matSuffix mat-icon-button 
-								aria-label="Clear" (click)="clearValue('client'); $event.stopPropagation()">
-								<mat-icon>clear</mat-icon>
-							</button>
-                        </mat-form-field>
-                        <mat-form-field class="col-xl-3 col-md-4 col-sm-6 col-xs-12">
-							<mat-label>{{'CHANTIERS.NAME.TITLE' | translate}}
-							</mat-label>
-							<mat-select class="form-control" formControlName="chantier_id" name="chantier_id">
-								<mat-option *ngFor="let chantier of chantiers" [value]="chantier.id">
-									{{chantier.nom}}
-								</mat-option>
-							</mat-select>
-							<button mat-button *ngIf="formHasValue('chantier_id')" matSuffix mat-icon-button 
-								aria-label="Clear" (click)="clearValue('chantier_id'); $event.stopPropagation()">
-								<mat-icon>clear</mat-icon>
-							</button>
-						</mat-form-field>
-						<mat-form-field class="col-xl-3 col-md-4 col-sm-6 col-xs-12">
-							<mat-label>{{'CHANTIERS.CHIEF.TITLE' | translate}}
-							</mat-label>
-							<mat-select class="form-control" formControlName="charge_affaire_id" name="charge_affaire_id">
-								<mat-option *ngFor="let user of users" [value]="user.id">
-									{{user.fullname}}
-								</mat-option>
-							</mat-select>
-							<button mat-button *ngIf="formHasValue('charge_affaire_id')" matSuffix mat-icon-button 
-								aria-label="Clear" (click)="clearValue('charge_affaire_id'); $event.stopPropagation()">
-								<mat-icon>clear</mat-icon>
-							</button>
-						</mat-form-field>
-						<mat-form-field class="col-xl-3 col-md-4 col-sm-6 col-xs-12">
-							<mat-label>{{'ARS.STATUS' | translate}}</mat-label>
-							<mat-select class="form-control" formControlName="status_id" name="status_id">
-								<mat-option>Tous</mat-option>
-								<mat-option *ngFor="let statu of status" [value]="statu.id" >
-									{{statu.libelle}}
-								</mat-option>
-							</mat-select>
-							<button mat-button *ngIf="formHasValue('status_id')" matSuffix mat-icon-button 
-								aria-label="Clear" (click)="clearValue('status_id'); $event.stopPropagation()">
-								<mat-icon>clear</mat-icon>
-							</button>
-						</mat-form-field>
-						<mat-form-field class="col-xl-3 col-md-4 col-sm-6 col-xs-12">
-							<mat-label>{{'ARS.SIGNATAIRES.TITLE' | translate}}
-							</mat-label>
-							<mat-select class="form-control" formControlName="signatories_id" name="signatories_id">
-								<mat-option *ngFor="let user of users" [value]="user.id">
-									{{user.fullname}}
-								</mat-option>
-							</mat-select>
-							<button mat-button *ngIf="formHasValue('signatories_id')" matSuffix mat-icon-button 
-								aria-label="Clear" (click)="clearValue('signatories_id'); $event.stopPropagation()">
-								<mat-icon>clear</mat-icon>
-							</button>
-                        </mat-form-field>
-                        <mat-form-field class="col-xl-3 col-md-4 col-sm-6 col-xs-12">
-                            <mat-label>{{'ARS.NUMBER' | translate}}</mat-label>
-                            <input matInput class="form-control" type="string" formControlName="numero" name="numero">
-                            <button mat-button *ngIf="formHasValue('numero')" matSuffix mat-icon-button 
-                                aria-label="Clear" (click)="clearValue('numero'); $event.stopPropagation()">
-                                <mat-icon>clear</mat-icon>
-                            </button>
-                        </mat-form-field>
+						<div class="col-xl-3 col-md-4 col-sm-6 col-xs-12">
+							<h6>&nbsp;</h6>
+							<mat-form-field class="col-xl-12" style="padding:0">
+								<mat-label>{{'CHANTIERS.CLIENT.TITLE' | translate}}</mat-label>
+								<mat-select class="form-control"  formControlName="client" name="client">
+									<mat-option>Tous</mat-option>
+									<mat-option *ngFor="let client of clients" [value]="client">
+										{{client}}
+									</mat-option>
+								</mat-select>
+								<button mat-button *ngIf="formHasValue('client')" matSuffix mat-icon-button 
+									aria-label="Clear" (click)="clearValue('client'); $event.stopPropagation()">
+									<mat-icon>clear</mat-icon>
+								</button>
+							</mat-form-field>
+						</div>
+						<div class="col-xl-3 col-md-4 col-sm-6 col-xs-12">
+							<h6>&nbsp;</h6>
+							<mat-form-field class="col-xl-12" style="padding:0">
+								<mat-label>{{'CHANTIERS.NAME.TITLE' | translate}}
+								</mat-label>
+								<mat-select class="form-control" formControlName="chantier_id" name="chantier_id">
+									<mat-option *ngFor="let chantier of chantiers" [value]="chantier.id">
+										{{chantier.nom}}
+									</mat-option>
+								</mat-select>
+								<button mat-button *ngIf="formHasValue('chantier_id')" matSuffix mat-icon-button 
+									aria-label="Clear" (click)="clearValue('chantier_id'); $event.stopPropagation()">
+									<mat-icon>clear</mat-icon>
+								</button>
+							</mat-form-field>
+						</div>
+						<div class="col-xl-3 col-md-4 col-sm-6 col-xs-12">
+							<h6>&nbsp;</h6>
+							<mat-form-field class="col-xl-12" style="padding:0">
+								<mat-label>{{'CHANTIERS.CHIEF.TITLE' | translate}}
+								</mat-label>
+								<mat-select class="form-control" formControlName="charge_affaire_id" name="charge_affaire_id">
+									<mat-option *ngFor="let user of users" [value]="user.id">
+										{{user.fullname}}
+									</mat-option>
+								</mat-select>
+								<button mat-button *ngIf="formHasValue('charge_affaire_id')" matSuffix mat-icon-button 
+									aria-label="Clear" (click)="clearValue('charge_affaire_id'); $event.stopPropagation()">
+									<mat-icon>clear</mat-icon>
+								</button>
+							</mat-form-field>
+						</div>
+						<div class="col-xl-3 col-md-4 col-sm-6 col-xs-12">
+							<h6>&nbsp;</h6>
+							<mat-form-field class="col-xl-12" style="padding:0">
+								<mat-label>{{'ARS.STATUS' | translate}}</mat-label>
+								<mat-select class="form-control" formControlName="status_id" name="status_id">
+									<mat-option>Tous</mat-option>
+									<mat-option *ngFor="let statu of status" [value]="statu.id" >
+										{{statu.libelle}}
+									</mat-option>
+								</mat-select>
+								<button mat-button *ngIf="formHasValue('status_id')" matSuffix mat-icon-button 
+									aria-label="Clear" (click)="clearValue('status_id'); $event.stopPropagation()">
+									<mat-icon>clear</mat-icon>
+								</button>
+							</mat-form-field>
+						</div>
+						<div class="col-xl-3 col-md-4 col-sm-6 col-xs-12">
+							<h6>&nbsp;</h6>
+							<mat-form-field class="col-xl-12" style="padding:0">
+								<mat-label>{{'ARS.SIGNATAIRES.TITLE' | translate}}
+								</mat-label>
+								<mat-select class="form-control" formControlName="signatories_id" name="signatories_id">
+									<mat-option *ngFor="let user of users" [value]="user.id">
+										{{user.fullname}}
+									</mat-option>
+								</mat-select>
+								<button mat-button *ngIf="formHasValue('signatories_id')" matSuffix mat-icon-button 
+									aria-label="Clear" (click)="clearValue('signatories_id'); $event.stopPropagation()">
+									<mat-icon>clear</mat-icon>
+								</button>
+							</mat-form-field>
+						</div>
+						<div class="col-xl-3 col-md-4 col-sm-6 col-xs-12">
+							<h6>&nbsp;</h6>
+							<mat-form-field class="col-xl-12" style="padding:0">
+								<mat-label>{{'ARS.NUMBER' | translate}}</mat-label>
+								<input matInput class="form-control" type="string" formControlName="numero" name="numero">
+								<button mat-button *ngIf="formHasValue('numero')" matSuffix mat-icon-button 
+									aria-label="Clear" (click)="clearValue('numero'); $event.stopPropagation()">
+									<mat-icon>clear</mat-icon>
+								</button>
+							</mat-form-field>
+						</div>
 						<div class="col-xl-3 col-md-4 col-sm-6 col-xs-12">
 							<h6>&nbsp;</h6>
 							<mat-form-field class="col-xl-12" style="padding:0">
