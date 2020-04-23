@@ -18,7 +18,6 @@ export class SearchChantierFormComponent implements OnInit {
   @Input() arForm: FormGroup;
   @Input() edit: Boolean;
   @Input() detail: Boolean = false;
-  //@Input() data: Chantier;
   
   private _data = new BehaviorSubject<Chantier>(null);
   @Input()
@@ -52,6 +51,14 @@ export class SearchChantierFormComponent implements OnInit {
     this.initFilteredChantiers();
     if(this.edit){
       this.getChantier(this.arForm.get('chantier_id').value);
+    }else{
+      this.activatedRoute.queryParams
+      .subscribe(params => {
+        if(params.chantier_id){
+          this.searchControl.setValue({id:params.chantier_id});
+          this.searchForChantier();
+        }
+      });
     }
     if(this.detail){
       this._data
@@ -59,7 +66,6 @@ export class SearchChantierFormComponent implements OnInit {
           if(this.data)
           this.getChantier(this.data.id);
       });
-      
     }
   }
 
