@@ -221,6 +221,18 @@ export class ArFormComponent implements OnInit {
     return this.arForm.get(controlName).value == '1';
   }
 
+  isFieldRequired(name){
+    return !!this.arForm.controls[name].validator(name).hasOwnProperty('required');
+  }
+
+  isControlHasError(controlName: string, validationType: string): boolean {
+    const control = this.arForm.controls[controlName];
+		if (!control) {
+			return false;
+		}
+    return control.hasError(validationType) && (control.dirty || control.touched);
+  }
+
 
   /** Signature */
   initFilteredSalaries(){

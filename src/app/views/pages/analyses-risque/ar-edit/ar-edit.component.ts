@@ -152,7 +152,7 @@ export class ArEditComponent implements OnInit, OnDestroy {
 			courant_dispo:['230V / 50Hz', Validators.required],
 		  
 			a_signer_registre_travaux:['0', Validators.required],
-			registre_signing_period:[null],
+			registre_signing_period:['quotidiennement'],
 			nom_charge_registre:[null],
 			adresse_charge_registre:[''],
 			ville_charge_registre:[null],
