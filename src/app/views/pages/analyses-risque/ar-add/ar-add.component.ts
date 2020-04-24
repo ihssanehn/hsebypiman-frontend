@@ -98,15 +98,6 @@ export class ArAddComponent implements OnInit {
       heure_fermeture:['17:00', Validators.required],
       courant_dispo:['230V / 50Hz', Validators.required],
 
-      zone_part:[false, Validators.required],
-      parking_salarie:[false, Validators.required],
-      parking_spe_chtr:[false, Validators.required],
-      stat_arr:[false, Validators.required],
-      algeco_cvti:[false, Validators.required],
-      zone_ext_non_surv:[false, Validators.required],
-      zone_surv_balisee:[false, Validators.required],
-      prevoir_balisage_materiel:[false, Validators.required],
-
       a_signer_registre_travaux:['0', Validators.required],
       registre_signing_period:[null],
       nom_charge_registre:[null],
@@ -122,7 +113,8 @@ export class ArAddComponent implements OnInit {
       assistant_ca:[''],
       tel_assistant_ca:[''],
       risques:new FormArray([]),
-      epis:new FormArray([]),
+      equipements:new FormArray([]),
+      zones:new FormArray([]),
       comments:new FormArray([]),
 		});
 		this.loaded = true;

@@ -3,13 +3,13 @@ import { environment } from '@env/environment';
 import { HttpService } from '@app/core/services/http-service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { EpiType } from '../models/epiType.model';
+import { Equipement } from '../models/equipement.model';
 import {JsonResponse} from '@app/core/_base/layout/models/jsonResponse.model';
 
 
-export class EpiTypesService extends HttpService{
+export class EquipementService extends HttpService{
 
-  baseUrl = environment.apiBaseUrl+'epi-types';
+  baseUrl = environment.apiBaseUrl+'equipements';
 
   constructor(
     private http: HttpClient,
@@ -19,6 +19,6 @@ export class EpiTypesService extends HttpService{
   }
 
   getAll(){
-    return this.http.post<JsonResponse<EpiType[]>>(this.baseUrl, {});
+    return this.http.post<JsonResponse<Equipement[]>>(this.baseUrl, {});
   }
 }

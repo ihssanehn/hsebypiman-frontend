@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ArForm2Component } from './ar-form2.component';
+import { ArFormComponent } from './ar-form.component';
 
-describe('ArForm2Component', () => {
-  let component: ArForm2Component;
-  let fixture: ComponentFixture<ArForm2Component>;
+describe('ArFormComponent', () => {
+  let component: ArFormComponent;
+  let fixture: ComponentFixture<ArFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ArForm2Component ]
+      declarations: [ ArFormComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ArForm2Component);
+    fixture = TestBed.createComponent(ArFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

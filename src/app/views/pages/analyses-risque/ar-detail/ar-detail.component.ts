@@ -1,13 +1,12 @@
 import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
-import { Ar, Chantier, CatRisque } from '@app/core/models';
+import { Ar, Chantier, CatRisque, Equipement, Zone } from '@app/core/models';
 import { FormGroup, FormBuilder, FormArray, FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ArService, ChantierService, CatRisqueService, EpiTypesService } from '@app/core/services';
+import { ArService, ChantierService, CatRisqueService, EquipementService, ZoneService } from '@app/core/services';
 import { NgxPermissionsService } from 'ngx-permissions';
 import { tap } from 'rxjs/operators';
 import { Location } from '@angular/common';
-import { EpiType } from '@app/core/models/epiType.model';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -23,7 +22,9 @@ export class ArDetailComponent implements OnInit, OnDestroy {
 	public chantier : Chantier;
 	displayedColumns: string[] = ['risks', 'actions', 'comments'];
 	public risksList : Array<CatRisque>;
-	public epiList : Array<EpiType>;
+
+	public equipementList : Array<Equipement>;
+	public zonesList : Array<any>;
 
 	constructor(
 		private activatedRoute: ActivatedRoute,
@@ -35,10 +36,12 @@ export class ArDetailComponent implements OnInit, OnDestroy {
 		private location: Location,
 		protected chantierService: ChantierService,
 		private catRisqueService: CatRisqueService,
-		private epiTypesService: EpiTypesService,
+		private equipementService: EquipementService,
+		private zoneService: ZoneService,
 	) { 
 		this.getCatRisques();
-		this.getEpiTypes();
+		this.getEquipements();
+		this.getZones();
 	}
 
 	ngOnInit() {
@@ -72,9 +75,16 @@ export class ArDetailComponent implements OnInit, OnDestroy {
 		this.cdr.markForCheck();
 	}
 
-	async getEpiTypes(){
-		var res = await this.epiTypesService.getAll().toPromise();
-		this.epiList = res.result.data;
+	async getEquipements(){
+		var res = await this.equipementService.getAll().toPromise();
+		this.equipementList = res.result.data;
+		this.cdr.detectChanges();
+		this.cdr.markForCheck();
+	}
+
+	async getZones(){
+		var res = await this.zoneService.getList().toPromise();
+		this.zonesList = res.result.data;
 		this.cdr.detectChanges();
 		this.cdr.markForCheck();
 	}
@@ -95,10 +105,17 @@ export class ArDetailComponent implements OnInit, OnDestroy {
 		return ids.includes(riskId);
 	}
 	
-	onEpiIsChecked(epiId){
-		const ids = this.ar.epi_types.map(item => item.id);
-		return ids.includes(epiId);
+	onEquipementIsChecked(equipementId){
+		const ids = this.ar.equipements.map(item => item.id);
+		return ids.includes(equipementId);
 	}
+
+	
+	onZoneIsChecked(zoneId){
+		const ids = this.ar.zones.map(item => item.id);
+		return ids.includes(zoneId);
+	}
+
 
 	getCommentValue(id){
 

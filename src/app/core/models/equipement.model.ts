@@ -1,7 +1,7 @@
 
 import {User} from '@app/core/auth'
 
-export class EpiType {
+export class Equipement {
     id?: number;
     libelle?:string;
     code?:string;

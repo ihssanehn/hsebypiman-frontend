@@ -49,7 +49,7 @@ import {DataTableService,TfDialogService,LayoutConfigService,VersionCheckService
 // Auth
 import { AuthModule } from './views/pages/auth/auth.module';
 import { AuthService } from './core/auth';
-import { ChantierService, TypeService, StatusService, CategorieService, ArService, CatRisqueService, EpiTypesService, VisiteService, CatHabilitationService } from './core/services';
+import { ChantierService, TypeService, StatusService, CategorieService, ArService, CatRisqueService, EquipementService, VisiteService, CatHabilitationService, ZoneService } from './core/services';
 // CRUD
 import { HttpUtilsService, LayoutUtilsService, TypesUtilsService } from './core/_base/crud';
 // Config
@@ -143,7 +143,7 @@ export function hljsLanguages(): HighlightLanguage[] {
 		StatusService, 
 		CategorieService,
 		CatRisqueService,
-		EpiTypesService,
+		EquipementService,
 		VisiteService,
 		LayoutConfigService,
 		LayoutRefService,
@@ -154,6 +154,15 @@ export function hljsLanguages(): HighlightLanguage[] {
 		VersionCheckService,
 		SplashScreenService,
 		CatHabilitationService,
+		ZoneService,
+		
+		// template services
+		SubheaderService,
+		MenuHorizontalService,
+		MenuAsideService,
+		HttpUtilsService,
+		TypesUtilsService,
+		LayoutUtilsService,
 		{
 			provide: PERFECT_SCROLLBAR_CONFIG,
 			useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
@@ -175,13 +184,6 @@ export function hljsLanguages(): HighlightLanguage[] {
 		{ provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
 		{ provide: MAT_DATE_FORMATS, useValue: MY_FORMAT },
 		{ provide: DateAdapter, useClass: CustomDateAdapter },
-		// template services
-		SubheaderService,
-		MenuHorizontalService,
-		MenuAsideService,
-		HttpUtilsService,
-		TypesUtilsService,
-		LayoutUtilsService,
 	],
 	bootstrap: [AppComponent],
 })

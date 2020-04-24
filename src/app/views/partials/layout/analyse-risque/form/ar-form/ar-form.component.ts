@@ -1,24 +1,25 @@
 import { Component, OnInit, Input, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormArray } from '@angular/forms';
-import { CatRisqueService, EpiTypesService } from '@app/core/services';
-import { CatRisque } from '@app/core/models';
-import { EpiType } from '@app/core/models/epiType.model';
+import { CatRisqueService, EquipementService, ZoneService } from '@app/core/services';
+import { CatRisque, Equipement, Zone } from '@app/core/models';
 import { User, AuthService } from '@app/core/auth';
 import { SignaturePad } from 'angular2-signaturepad/signature-pad';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 import { elementEventFullName } from '@angular/compiler/src/view_compiler/view_compiler';
+import { ParseTreeResult } from '@angular/compiler';
 
 
 @Component({
-  selector: 'tf-ar-form2',
-  templateUrl: './ar-form2.component.html',
-  styleUrls: ['./ar-form2.component.scss']
+  selector: 'tf-ar-form',
+  templateUrl: './ar-form.component.html',
+  styleUrls: ['./ar-form.component.scss']
 })
-export class ArForm2Component implements OnInit {
+export class ArFormComponent implements OnInit {
 
   @Input() arForm: FormGroup;
   @Input() edit: Boolean;
+  @Input() origin: string;
   @ViewChild(SignaturePad,null) signaturePad: SignaturePad;
   public signaturePadOptions: Object = { 
     'minWidth': 5,
@@ -28,26 +29,33 @@ export class ArForm2Component implements OnInit {
   
   displayedColumns: string[] = ['risks', 'actions', 'comments'];
   public risksList : Array<CatRisque>;
-  public epiList : Array<EpiType>;
+  public zonesList : Array<any>;
+  public equipementList : Array<Equipement>;
   public user : User;
   //public curDate : Date;
-  
+  toppings = new FormControl();
+  toppingList: string[] = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
+  public parts = [1];
   public salaries : Array<User>;
   filteredSalaries: Observable<Array<User>>;
 
   constructor(
     private catRisqueService: CatRisqueService,
-    private epiTypesService: EpiTypesService,
+    private equipementService: EquipementService,
+    private zoneService: ZoneService,
     private authService: AuthService,
     private cdr: ChangeDetectorRef,
     private fb: FormBuilder
   ) { 
     this.getCatRisques();
-    this.getEpiTypes();
+    this.getEquipements();
+    this.getZones();
     //this.curDate = new Date();
   }
 
   ngOnInit() {
+    this.toppings = this.arForm.controls['accueil_secu_days'] as FormControl;
+    console.log(this.origin);
   }
 
   async getCatRisques(){
@@ -57,9 +65,16 @@ export class ArForm2Component implements OnInit {
     this.cdr.markForCheck();
   }
 
-  async getEpiTypes(){
-    var res = await this.epiTypesService.getAll().toPromise();
-    this.epiList = res.result.data;
+  async getZones(){
+    var res = await this.zoneService.getList().toPromise();
+    this.zonesList = res.result.data;
+    this.cdr.detectChanges();
+    this.cdr.markForCheck();
+  }
+
+  async getEquipements(){
+    var res = await this.equipementService.getAll().toPromise();
+    this.equipementList = res.result.data;
     this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
@@ -97,8 +112,33 @@ export class ArForm2Component implements OnInit {
     }
   }
 
-  onEpiCheckChange(event) {
-    const formArray: FormArray = this.arForm.get('epis') as FormArray;
+  onEquipementCheckChange(event) {
+    const formArray: FormArray = this.arForm.get('equipements') as FormArray;
+  
+    /* Selected */
+    if(event.checked){
+      // Add a new control in the arrayForm
+      formArray.push(new FormControl(event.source.value));
+    }
+    /* unselected */
+    else{
+      // find the unselected element
+      let i: number = 0;
+  
+      formArray.controls.forEach((ctrl: FormControl) => {
+        if(ctrl.value == event.source.value) {
+          // Remove the unselected element from the arrayForm
+          formArray.removeAt(i);
+          return;
+        }
+  
+        i++;
+      });
+    }
+  }
+
+  onZoneCheckChange(event) {
+    const formArray: FormArray = this.arForm.get('zones') as FormArray;
   
     /* Selected */
     if(event.checked){
@@ -126,8 +166,12 @@ export class ArForm2Component implements OnInit {
     return this.arForm.get('risques').value.includes(riskId);
   }
 
-  onEpiIsChecked(epiId){
-    return this.arForm.get('epis').value.includes(epiId);
+  onEquipementIsChecked(equipementId){
+    return this.arForm.get('equipements').value.includes(equipementId);
+  }
+
+  onZoneIsChecked(zoneId){
+    return this.arForm.get('zones').value.includes(zoneId);
   }
 
   onCommentCheckChange(id, event) {
@@ -268,4 +312,12 @@ export class ArForm2Component implements OnInit {
   //   });
   // }
 
+  partHided(key){
+    return !this.parts.includes(key);
+  }
+  showPart(key){
+    if(!this.parts.includes(key)){
+      this.parts.push(key);
+    }
+  }
 }

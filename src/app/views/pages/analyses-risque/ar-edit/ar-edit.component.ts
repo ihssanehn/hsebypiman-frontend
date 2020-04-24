@@ -90,9 +90,14 @@ export class ArEditComponent implements OnInit, OnDestroy {
 			riskformArray.push(new FormControl(element.id));
 		});
 
-		const epiFormArray: FormArray = this.arForm.get('epis') as FormArray;
-		ar.epi_types.forEach(element => {
-			epiFormArray.push(new FormControl(element.id));
+		const equipementFormArray: FormArray = this.arForm.get('equipements') as FormArray;
+		ar.equipements.forEach(element => {
+			equipementFormArray.push(new FormControl(element.id));
+		});
+		
+		const zoneFormArray: FormArray = this.arForm.get('zones') as FormArray;
+		ar.zones.forEach(element => {
+			zoneFormArray.push(new FormControl(element.id));
 		});
 
 		const commentsFormArray: FormArray = this.arForm.get('comments') as FormArray;
@@ -145,16 +150,7 @@ export class ArEditComponent implements OnInit, OnDestroy {
 			heure_ouverture:['07:00', Validators.required],
 			heure_fermeture:['17:00', Validators.required],
 			courant_dispo:['230V / 50Hz', Validators.required],
-	  
-			zone_part:[false, Validators.required],
-			parking_salarie:[false, Validators.required],
-			parking_spe_chtr:[false, Validators.required],
-			stat_arr:[false, Validators.required],
-			algeco_cvti:[false, Validators.required],
-			zone_ext_non_surv:[false, Validators.required],
-			zone_surv_balisee:[false, Validators.required],
-			prevoir_balisage_materiel:[false, Validators.required],
-	  
+		  
 			a_signer_registre_travaux:['0', Validators.required],
 			registre_signing_period:[null],
 			nom_charge_registre:[null],
@@ -170,7 +166,8 @@ export class ArEditComponent implements OnInit, OnDestroy {
 			assistant_ca:[''],
 			tel_assistant_ca:[''],
 			risques:new FormArray([]),
-			epis:new FormArray([]),
+			zones:new FormArray([]),
+			equipements:new FormArray([]),
 			comments:new FormArray([]),
 		});
 		this.loaded = true;

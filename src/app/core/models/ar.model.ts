@@ -1,6 +1,4 @@
-import { Risque } from './risque.model';
-import { EpiType } from './epiType.model';
-import { CatRisqueComment } from './catRisqueComment.model';
+import { Risque, Equipement, Zone, CatRisqueComment } from './';
 
 export class Ar {
     id?: number;
@@ -22,14 +20,7 @@ export class Ar {
     heure_ouverture?: number;
     heure_fermeture?: number;
     courant_dispo?: string;
-    zone_part?: boolean;
-    parking_salarie?: boolean;
-    parking_spe_chtr?: boolean;
-    stat_arr?: boolean;
-    algeco_cvti?: boolean;
-    zone_ext_non_surv?: boolean;
-    zone_surv_balisee?: boolean;
-    prevoir_balisage_materiel?: boolean;
+    
     observations_signature?: string;
     salarie_id?: number;
     status_id?: number;
@@ -37,7 +28,8 @@ export class Ar {
     a_signer_registre_travaux?: boolean;
     a_prevoir_balisage?: boolean;
     risques?: Array<Risque>;
-    epi_types?: Array<EpiType>;
+    equipements?: Array<Equipement>;
+    zones?: Array<Zone>;
     cat_risques?: Array<CatRisqueComment>;
     accueil_secu_days?: Array<string>;
     accueil_secu_time_opening?: number;
