@@ -1,99 +1,107 @@
-<form [formGroup]="signatureForm" class="tf-form tf-form--group-seperator-dashed" >
+<mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+        <div class="tf-heading tf-heading--md">| 5 {{'ARS.FORM.SIGNATURE_OBSERVATION.TITLE' | translate}}</div>
+    </mat-expansion-panel-header>
 
-    <div class="tf-heading tf-heading--md">| 5 {{'ARS.FORM.SIGNATURE_OBSERVATION.TITLE' | translate}}</div>
-    <div class="row">
-    <div class="col-md-12">
-        <div class="tf-card-form">
-            <div class="tf-heading tf-heading--sm">
-                {{'ARS.FORM.SIGNATURE.SUBTITLE' | translate}}
-            </div>
+    <form [formGroup]="signatureForm" class="tf-form tf-form--group-seperator-dashed" >
 
-            <div class="row form-row">
-                <div class="col-md-12 textarea-viewer" >
-                    <p class="mt-2">{{observation}}</p>
-                </div>
-            </div>
-
-            <ng-container *ngIf="!signatures.length">
+        <div class="row">
+        <div class="col-md-12">
+            <div class="tf-card-form">
                 <div class="tf-heading tf-heading--sm">
-                    {{'ARS.FORM.SIGNATURE.DECLARATION' | translate}}
+                    {{'ARS.FORM.SIGNATURE.SUBTITLE' | translate}}
                 </div>
-
-                <div>
-                    <div class="row form-row">
-                        <div class="col-xl-1" >
-                            <mat-label>{{'COMMON.DATE.LABEL' | translate}} </mat-label>
-                            <p class="mt-2"><strong>{{signatureForm.value.date| date:'dd/MM/yyyy'}}</strong></p>
-                        </div>
-                        <div class="col-xl-2" >
-                            <mat-label>{{'COMMON.LASTNAME.LABEL' | translate}}&nbsp;{{'COMMON.FIRSTNAME.LABEL' | translate}} </mat-label>
-                            <p class="mt-2"><strong>{{signatureForm.value.personnel?.fullname}}</strong></p>
-                        </div>
-
-                        <mat-form-field class="col-xl-2" >
-                            <mat-label>{{'COMMON.SOCIETE.LABEL' | translate}} </mat-label>
-                            <input class="form-control" matInput type="text" name="society" formControlName="society" placeholder="Saisir ici" />
-                        </mat-form-field>
-                        <mat-form-field class="col-xl-3" >
-                            <mat-label>{{'COMMON.REMARQUE.LABEL' | translate}} </mat-label>
-                            <input class="form-control" matInput type="text" name="commentaires" formControlName="commentaires" placeholder="Saisir ici" />
-                        </mat-form-field>
-
-                        <div class="col-xl-4 form-row-flex" >
-                            <label>{{'COMMON.SIGNATURE.LABEL' | translate}} </label>
-                            <button mat-icon-button color="accent" matTooltip="{{'ACTION.CLEAR' | translate}}" (click)="clearSignature()">
-                                <mat-icon>delete</mat-icon>
-                                </button>
-                            <div class="signature-container">
-                                <signature-pad id="sign_canvas" (window:resize)="resizeSignaturePad()" [options]="signaturePadOptions"  (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad> 
+    
+                <div class="row form-row">
+                    <div class="col-md-12 textarea-viewer" >
+                        <p class="mt-2">{{observation}}</p>
+                    </div>
+                </div>
+    
+                <ng-container *ngIf="!signatures.length">
+                    <div class="tf-heading tf-heading--sm">
+                        {{'ARS.FORM.SIGNATURE.DECLARATION' | translate}}
+                    </div>
+    
+                    <div>
+                        <div class="row form-row">
+                            <div class="col-xl-1" >
+                                <mat-label>{{'COMMON.DATE.LABEL' | translate}} </mat-label>
+                                <p class="mt-2"><strong>{{signatureForm.value.date| date:'dd/MM/yyyy'}}</strong></p>
+                            </div>
+                            <div class="col-xl-2" >
+                                <mat-label>{{'COMMON.LASTNAME.LABEL' | translate}}&nbsp;{{'COMMON.FIRSTNAME.LABEL' | translate}} </mat-label>
+                                <p class="mt-2"><strong>{{signatureForm.value.personnel?.fullname}}</strong></p>
+                            </div>
+    
+                            <mat-form-field class="col-xl-2" >
+                                <mat-label>{{'COMMON.SOCIETE.LABEL' | translate}} </mat-label>
+                                <input class="form-control" matInput type="text" name="society" formControlName="society" placeholder="Saisir ici" />
+                            </mat-form-field>
+                            <mat-form-field class="col-xl-3" >
+                                <mat-label>{{'COMMON.REMARQUE.LABEL' | translate}} </mat-label>
+                                <input class="form-control" matInput type="text" name="commentaires" formControlName="commentaires" placeholder="Saisir ici" />
+                            </mat-form-field>
+    
+                            <div class="col-xl-4 form-row-flex" >
+                                <label>{{'COMMON.SIGNATURE.LABEL' | translate}} </label>
+                                <button mat-icon-button color="accent" matTooltip="{{'ACTION.CLEAR' | translate}}" (click)="clearSignature()">
+                                    <mat-icon>delete</mat-icon>
+                                    </button>
+                                <div class="signature-container">
+                                    <signature-pad id="sign_canvas" (window:resize)="resizeSignaturePad()" [options]="signaturePadOptions"  (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad> 
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </ng-container>
-
-            <ng-container  *ngIf="signatures.length">
-                <div class="tf-heading tf-heading--sm mt-4">
-                    {{'ARS.FORM.SIGNATURE_OBSERVATION.SHORTTITLE' | translate}}
-                </div>
+                </ng-container>
     
-                <div>
-                    <div class="row form-row" *ngFor="let signature of signatures">
-                        <div class="col-xl-1" >
-                            <mat-label>{{'COMMON.DATE.LABEL' | translate}} </mat-label>
-                            <p class="mt-2"><strong>{{signature.date| date:'dd/MM/yyyy'}}</strong></p>
-                        </div>
-                        <div class="col-xl-2" >
-                            <mat-label>{{'COMMON.LASTNAME.LABEL' | translate}}&nbsp;{{'COMMON.FIRSTNAME.LABEL' | translate}} </mat-label>
-                            <p class="mt-2"><strong>{{signature.salarie?.fullname}}</strong></p>
-                        </div>
-    
-                        <div class="col-xl-2" >
-                            <mat-label>{{'COMMON.SOCIETE.LABEL' | translate}} </mat-label>
-                            <p class="mt-2"><strong>{{signature.society}}</strong></p>
-                        </div>
-                        <div class="col-xl-3" >
-                            <mat-label>{{'COMMON.REMARQUE.LABEL' | translate}} </mat-label>
-                            <p class="mt-2"><strong>{{signature.commentaires}}</strong></p>
-                        </div>
-    
-                        <div class="col-xl-4 form-row-flex" >
-                            <label>{{'COMMON.SIGNATURE.LABEL' | translate}} </label>
-                            <div class="signature-container">
-                                <img [src]="_sanitizer.bypassSecurityTrustResourceUrl(signature.signature)">
-                            </div>
-                        </div>
-                        
+                <ng-container  *ngIf="signatures.length">
+                    <div class="tf-heading tf-heading--sm mt-4">
+                        {{'ARS.FORM.SIGNATURE_OBSERVATION.SHORTTITLE' | translate}}
                     </div>
-                </div>
-            </ng-container>
-
+        
+                    <div>
+                        <div class="row form-row" *ngFor="let signature of signatures">
+                            <div class="col-xl-1" >
+                                <mat-label>{{'COMMON.DATE.LABEL' | translate}} </mat-label>
+                                <p class="mt-2"><strong>{{signature.date| date:'dd/MM/yyyy'}}</strong></p>
+                            </div>
+                            <div class="col-xl-2" >
+                                <mat-label>{{'COMMON.LASTNAME.LABEL' | translate}}&nbsp;{{'COMMON.FIRSTNAME.LABEL' | translate}} </mat-label>
+                                <p class="mt-2"><strong>{{signature.salarie?.fullname}}</strong></p>
+                            </div>
+        
+                            <div class="col-xl-2" >
+                                <mat-label>{{'COMMON.SOCIETE.LABEL' | translate}} </mat-label>
+                                <p class="mt-2"><strong>{{signature.society}}</strong></p>
+                            </div>
+                            <div class="col-xl-3" >
+                                <mat-label>{{'COMMON.REMARQUE.LABEL' | translate}} </mat-label>
+                                <p class="mt-2"><strong>{{signature.commentaires}}</strong></p>
+                            </div>
+        
+                            <div class="col-xl-4 form-row-flex" >
+                                <label>{{'COMMON.SIGNATURE.LABEL' | translate}} </label>
+                                <div class="signature-container">
+                                    <img [src]="_sanitizer.bypassSecurityTrustResourceUrl(signature.signature)">
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </ng-container>
+    
+            </div>
         </div>
-    </div>
-    </div>
+        </div>
+    
+        <button *ngIf="!signatures.length" mat-raised-button [disabled]="signatureForm.invalid" class="btn float-right btn-save" (click)="signatureForm.valid && onSubmit(false)">
+            {{'ACTION.SAVE' | translate}}
+        </button>
+    
+    </form>
+    
+</mat-expansion-panel>
 
-    <button *ngIf="!signatures.length" mat-raised-button [disabled]="signatureForm.invalid" class="btn float-right btn-save" (click)="signatureForm.valid && onSubmit(false)">
-		{{'ACTION.SAVE' | translate}}
-	</button>
 
-</form>
