@@ -87,7 +87,6 @@ export class ArFiltersComponent implements OnInit, AfterViewInit {
       date_creation_end:[null],
       date_demarrage_start:[null],
       date_demarrage_end:[null],
-      numero:[null],
       observation:[null],
     })
   }

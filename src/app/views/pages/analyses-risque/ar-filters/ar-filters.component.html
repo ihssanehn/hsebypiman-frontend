@@ -89,17 +89,6 @@
 						<div class="col-xl-3 col-md-4 col-sm-6 col-xs-12">
 							<h6>&nbsp;</h6>
 							<mat-form-field class="col-xl-12" style="padding:0">
-								<mat-label>{{'ARS.NUMBER' | translate}}</mat-label>
-								<input matInput class="form-control" type="string" formControlName="numero" name="numero">
-								<button mat-button *ngIf="formHasValue('numero')" matSuffix mat-icon-button 
-									aria-label="Clear" (click)="clearValue('numero'); $event.stopPropagation()">
-									<mat-icon>clear</mat-icon>
-								</button>
-							</mat-form-field>
-						</div>
-						<div class="col-xl-3 col-md-4 col-sm-6 col-xs-12">
-							<h6>&nbsp;</h6>
-							<mat-form-field class="col-xl-12" style="padding:0">
 								<mat-label>{{'ARS.OBSERVATION' | translate}}</mat-label>
 								<mat-select class="form-control" formControlName="observation" name="observation">
 									<mat-option *ngFor="let observationOption of observationsOptions" [value]="observationOption">

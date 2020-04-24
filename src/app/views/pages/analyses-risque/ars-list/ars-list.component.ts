@@ -26,9 +26,6 @@ export class ArsListComponent implements OnInit {
 		order_by: ['created_at'],
 		order_way: 'desc',
 		keyword: "",
-		dateRange: [],
-		status_id: "",
-		params: []
 	};
 	showFilters: boolean= false;
 	displayedArColumns=['number','client','chantier','charge_affaire','created_at','status','date_demarrage_chantier','sign_count','observations','action'];
