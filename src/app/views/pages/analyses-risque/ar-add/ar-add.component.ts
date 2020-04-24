@@ -112,6 +112,7 @@ export class ArAddComponent implements OnInit {
       tel_ca_cvti:[''],
       assistant_ca:[''],
       tel_assistant_ca:[''],
+      observations_signature:[''],
       risques:new FormArray([]),
       equipements:new FormArray([]),
       zones:new FormArray([]),

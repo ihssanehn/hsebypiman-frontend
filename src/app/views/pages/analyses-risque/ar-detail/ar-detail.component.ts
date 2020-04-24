@@ -26,6 +26,10 @@ export class ArDetailComponent implements OnInit, OnDestroy {
 	public equipementList : Array<Equipement>;
 	public zonesList : Array<any>;
 
+	/** Accordion */
+	public isExpanded = true;
+	public isHideToggle = false;
+	
 	constructor(
 		private activatedRoute: ActivatedRoute,
 		private router: Router,
@@ -55,6 +59,7 @@ export class ArDetailComponent implements OnInit, OnDestroy {
 				}
 			}
 		);
+		this.subscriptions.push(routeSubscription);
 	}
 
 	async getAr(arId: Number){

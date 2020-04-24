@@ -11,7 +11,8 @@ export const locale = {
 			READ:'Consulter',
 			DELETE:'Supprimer',
 			SAVE:'Sauvegarder',
-			CANCEL: 'Annuler'
+			CANCEL: 'Annuler',
+			CLEAR: 'Vider'
 		},
 		MENU: {
 			NEW: 'Nouveau',
@@ -296,9 +297,14 @@ export const locale = {
 					SUBTITLE2: 'Balisage à prévoir sur la zone'
 				},
 				SIGNATURE:{
+					TITLE: 'Observation',
+					SUBTITLE: 'Observations des signataires sur les risques',
+					DECLARATION: 'J’ai pris connaissance de l’analyse de risque du chantier, du PPSPS ou du PDP et applique les moyens de préventions nécessaires'
+				},
+				SIGNATURE_OBSERVATION:{
 					TITLE: 'Observation et signatures',
 					SUBTITLE: 'Observations des signataires sur les risques',
-					DECLARATION: 'J’ai pris connaissance de l’analyse de risque du chantier, du PPSPS ou du PDP et applique les moyens de préventions nécessaires : '
+					SHORTTITLE: 'Les signataires'
 				},
 				RISKS: 'Les risques',
 				ACTION: 'Action de prévention à mener',

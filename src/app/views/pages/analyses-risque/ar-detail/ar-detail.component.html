@@ -26,172 +26,165 @@
 
 	</tf-portlet>
 
-	<ng-container>
-		<div class="tf-heading tf-heading--md">| 1 Règles générales du chantier</div>
-		<div class="row">
-			<div class="col-md-7">
-				<div class="tf-card-form">
-					<div class="tf-heading tf-heading--sm">
-						1.1 Accueil sécurité propre au client
-					</div>
-					<div class="row form-row mb-4">
-						<mat-slide-toggle 
-						class="col-xl-12" 
-						labelPosition="before" 
-						disabled 
-						[checked]="ar.a_prevoir_compagnons?true:false">
-							{{'ARS.PREVOIR_COMPAGNONS.LABEL' | translate}}
-						</mat-slide-toggle>
-					</div>
-					<div class="row form-row">
-						<mat-form-field class="col-xl-5">
-							<mat-label>{{'ARS.DATE_ACCUEIL_SECU.LABEL' | translate}}</mat-label>
-							<input matInput [readonly]="true" class="form-control" [value]="ar.date_accueil_secu| date:'dd/MM/yyyy'">
-						</mat-form-field>
+	<mat-accordion [multi]="true" [hideToggle]="isHideToggle" displayMode='flat'>
+		<mat-expansion-panel [expanded]="isExpanded">
+			<mat-expansion-panel-header>
+				<div class="tf-heading tf-heading--md">| 1 Règles générales du chantier</div>
+			</mat-expansion-panel-header>
+			<div class="row">
+				<div class="col-md-7">
+					<div class="tf-card-form">
+						<div class="tf-heading tf-heading--sm">
+							1.1 Accueil sécurité propre au client
+						</div>
+						<div class="row form-row">
+							<mat-slide-toggle class="col-xl-4" disabled [checked]="ar.a_prevoir_compagnons?true:false">{{'ARS.PREVOIR_COMPAGNONS.LABEL' | translate}}</mat-slide-toggle>
 
-						<mat-form-field class="col-xl-4">
-							<mat-label>{{'ARS.DATE_VALIDITE.LABEL' | translate}}</mat-label>
-							<input matInput [readonly]="true" class="form-control" [value]="ar.date_validite| date:'dd/MM/yyyy'">
-						</mat-form-field>
-					</div>
+							<mat-form-field class="col-xl-4">
+								<mat-label>{{'ARS.DATE_ACCUEIL_SECU.LABEL' | translate}}</mat-label>
+								<input matInput [readonly]="true" class="form-control" [value]="ar.date_accueil_secu| date:'dd/MM/yyyy'">
+							</mat-form-field>
 
-					<div class="row form-row">
-						<div class="col-xl-5 mat-form-field ng-tns-c14-2 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-legacy mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label" formContolName="a_prevoir_compagnons">
-							<div class="mat-form-field-wrapper">
-								<div class="mat-form-field-flex">
-									<div class="mat-form-field-infix">
-										<span class="mat-form-field-label-wrapper">
-											<label class="mat-form-field-label">{{'ARS.AS_HORAIRES.LABEL' | translate}}</label>
-										</span>
-										<div class="horaire-box flex-layout mt-2">
-											<div>
-												<input [readonly]="true" class="form-control text-center" type="time" name="accueil_secu_time_opening" [value]="ar.accueil_secu_time_opening" />
-											</div>
-											<span style="padding: 1em;">A </span>
-											<div>
-												<input [readonly]="true" class="form-control text-center" type="time" name="accueil_secu_time_closing" [value]="ar.accueil_secu_time_closing" />
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
+							<mat-form-field class="col-xl-4">
+								<mat-label>{{'ARS.DATE_VALIDITE.LABEL' | translate}}</mat-label>
+								<input matInput [readonly]="true" class="form-control" [value]="ar.date_validite| date:'dd/MM/yyyy'">
+							</mat-form-field>
 						</div>
 
-						<div class="col-xl-7 mat-form-field ng-tns-c14-2 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-legacy mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label">
-							<div class="mat-form-field-wrapper">
-								<div class="mat-form-field-flex">
-									<div class="mat-form-field-infix">
-										<span class="mat-form-field-label-wrapper">
-											<label class="mat-form-field-label">{{'ARS.AS_DAYS.LABEL' | translate}}</label>
-										</span>
-										<div class="mt-2">
-											<mat-chip-list #chipList>
-												<mat-chip *ngFor="let as_day of ar.accueil_secu_days" class="chip-item">
-													{{as_day}}
-												</mat-chip>
-											</mat-chip-list>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="row form-row">
-						<mat-form-field class="col-xl-5">
-							<mat-label>{{'ARS.REALISATEUR.LABEL' | translate}}</mat-label>
-							<input class="form-control" matInput [readonly]="true" type="text" name="realisateur" [value]="ar.realisateur" />
-						</mat-form-field>
-						<mat-form-field class="col-xl-4">
-							<mat-label>{{'ARS.TEL_REALISATEUR.LABEL' | translate}}</mat-label>
-							<input class="form-control" matInput [readonly]="true" type="text" name="tel_realisateur" [value]="ar.tel_realisateur" />
-						</mat-form-field>
-					</div>
-					<div class="row form-row">
-						<mat-form-field class="col-xl-5">
-							<mat-label>{{'ARS.CONTACT_INTERNE_SECOURS.LABEL' | translate}}</mat-label>
-							<input class="form-control" matInput [readonly]="true" type="text" name="contact_interne_secours" [value]="ar.contact_interne_secours" />
-						</mat-form-field>
-						<mat-form-field class="col-xl-4">
-							<mat-label>{{'ARS.TEL_CONTACT_INTERNE_SECOURS.LABEL' | translate}}</mat-label>
-							<input class="form-control" matInput [readonly]="true" type="text" name="tel_contact_interne_secours" [value]="ar.tel_contact_interne_secours" />
-						</mat-form-field>
-						<mat-form-field class="col-xl-3">
-							<mat-label>{{'ARS.NUM_SECOURS.LABEL' | translate}}</mat-label>
-							<input class="form-control" matInput [readonly]="true" type="text" name="num_secours" [value]="ar.num_secours" />
-						</mat-form-field>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-5">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="tf-card-form">
-							<div class="tf-heading tf-heading--sm">
-								1.2 Contacts client
-							</div>
-							<div class="row">
-								<mat-form-field class="col-xl-6">
-									<mat-label>{{'ARS.CONTACT_CLIENT_CHEF_CHANTIER.LABEL' | translate}}</mat-label>
-									<input class="form-control" matInput [readonly]="true" type="text" name="contact_client_chef_chtr" [value]="ar.contact_client_chef_chtr" />
-								</mat-form-field>
-								<mat-form-field class="col-xl-6">
-									<mat-label>{{'ARS.TEL_CONTACT_CLIENT_CHEF_CHANTIER.LABEL' | translate}}</mat-label>
-									<input class="form-control" matInput [readonly]="true" type="text" name="tel_contact_client_chef_chtr" [value]="ar.tel_contact_client_chef_chtr" />
-								</mat-form-field>
-								<mat-form-field class="col-xl-6">
-									<mat-label>{{'ARS.CONTACT_CLIENT_HSE.LABEL' | translate}}</mat-label>
-									<input class="form-control" matInput [readonly]="true" type="text" name="contact_client_hse" [value]="ar.contact_client_hse" />
-								</mat-form-field>
-								<mat-form-field class="col-xl-6">
-									<mat-label>{{'ARS.TEL_CONTACT_CLIENT_HSE.LABEL' | translate}}</mat-label>
-									<input class="form-control" matInput [readonly]="true" type="text" name="tel_contact_client_hse" [value]="ar.tel_contact_client_hse" />
-								</mat-form-field>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12">
-						<div class="tf-card-form">
-							<div class="tf-heading tf-heading--sm">
-								1.3 Conditions générales du chantier
-							</div>
-							<div class="row">
-								<div class="col-xl-7 mat-form-field ng-tns-c14-2 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-legacy mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label" formContolName="a_prevoir_compagnons">
-									<div class="mat-form-field-wrapper">
-										<div class="mat-form-field-flex">
-											<div class="mat-form-field-infix">
-												<span class="mat-form-field-label-wrapper">
-													<label class="mat-form-field-label">{{'ARS.HORAIRES.LABEL' | translate}}</label>
-												</span>
-												<div class="horaire-box flex-layout mt-2">
-													<div>
-														<input [readonly]="true" class="form-control text-center" type="time" name="heure_ouverture" [value]="ar.heure_ouverture" />
-													</div>
-													<span style="padding: 1em;">A </span>
-													<div>
-														<input [readonly]="true" class="form-control text-center" type="time" name="heure_fermeture" [value]="ar.heure_fermeture" />
-													</div>
+						<div class="row form-row">
+							<div class="col-xl-4 mat-form-field ng-tns-c14-2 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-legacy mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label" formContolName="a_prevoir_compagnons">
+								<div class="mat-form-field-wrapper">
+									<div class="mat-form-field-flex">
+										<div class="mat-form-field-infix">
+											<span class="mat-form-field-label-wrapper">
+												<label class="mat-form-field-label">{{'ARS.AS_HORAIRES.LABEL' | translate}}</label>
+											</span>
+											<div class="horaire-box flex-layout mt-2">
+												<div>
+													<input [readonly]="true" class="form-control text-center" type="time" name="accueil_secu_time_opening" [value]="ar.accueil_secu_time_opening" />
+												</div>
+												<span style="padding: 1em;">A </span>
+												<div>
+													<input [readonly]="true" class="form-control text-center" type="time" name="accueil_secu_time_closing" [value]="ar.accueil_secu_time_closing" />
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
-								<mat-form-field class="col-xl-5">
-									<mat-label>{{'ARS.COURANT.LABEL' | translate}}</mat-label>
-									<input class="form-control" matInput [readonly]="true" type="text" name="courant_dispo" [value]="ar.courant_dispo" />
-								</mat-form-field>
+							</div>
+
+							<div class="col-xl-8 mat-form-field ng-tns-c14-2 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-legacy mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label">
+								<div class="mat-form-field-wrapper">
+									<div class="mat-form-field-flex">
+										<div class="mat-form-field-infix">
+											<span class="mat-form-field-label-wrapper">
+												<label class="mat-form-field-label">{{'ARS.AS_DAYS.LABEL' | translate}}</label>
+											</span>
+											<div class="mt-2">
+												<mat-chip-list #chipList>
+													<mat-chip *ngFor="let as_day of ar.accueil_secu_days" class="chip-item">
+														{{as_day}}
+													</mat-chip>
+												</mat-chip-list>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+						<div class="row form-row">
+							<mat-form-field class="col-xl-4">
+								<mat-label>{{'ARS.REALISATEUR.LABEL' | translate}}</mat-label>
+								<input class="form-control" matInput [readonly]="true" type="text" name="realisateur" [value]="ar.realisateur" />
+							</mat-form-field>
+							<mat-form-field class="col-xl-4">
+								<mat-label>{{'ARS.TEL_REALISATEUR.LABEL' | translate}}</mat-label>
+								<input class="form-control" matInput [readonly]="true" type="text" name="tel_realisateur" [value]="ar.tel_realisateur" />
+							</mat-form-field>
+						</div>
+						<div class="row form-row">
+							<mat-form-field class="col-xl-4">
+								<mat-label>{{'ARS.CONTACT_INTERNE_SECOURS.LABEL' | translate}}</mat-label>
+								<input class="form-control" matInput [readonly]="true" type="text" name="contact_interne_secours" [value]="ar.contact_interne_secours" />
+							</mat-form-field>
+							<mat-form-field class="col-xl-4">
+								<mat-label>{{'ARS.TEL_CONTACT_INTERNE_SECOURS.LABEL' | translate}}</mat-label>
+								<input class="form-control" matInput [readonly]="true" type="text" name="tel_contact_interne_secours" [value]="ar.tel_contact_interne_secours" />
+							</mat-form-field>
+							<mat-form-field class="col-xl-4">
+								<mat-label>{{'ARS.NUM_SECOURS.LABEL' | translate}}</mat-label>
+								<input class="form-control" matInput [readonly]="true" type="text" name="num_secours" [value]="ar.num_secours" />
+							</mat-form-field>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-5">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="tf-card-form">
+								<div class="tf-heading tf-heading--sm">
+									1.2 Contacts client
+								</div>
+								<div class="row">
+									<mat-form-field class="col-xl-6">
+										<mat-label>{{'ARS.CONTACT_CLIENT_CHEF_CHANTIER.LABEL' | translate}}</mat-label>
+										<input class="form-control" matInput [readonly]="true" type="text" name="contact_client_chef_chtr" [value]="ar.contact_client_chef_chtr" />
+									</mat-form-field>
+									<mat-form-field class="col-xl-6">
+										<mat-label>{{'ARS.TEL_CONTACT_CLIENT_CHEF_CHANTIER.LABEL' | translate}}</mat-label>
+										<input class="form-control" matInput [readonly]="true" type="text" name="tel_contact_client_chef_chtr" [value]="ar.tel_contact_client_chef_chtr" />
+									</mat-form-field>
+									<mat-form-field class="col-xl-6">
+										<mat-label>{{'ARS.CONTACT_CLIENT_HSE.LABEL' | translate}}</mat-label>
+										<input class="form-control" matInput [readonly]="true" type="text" name="contact_client_hse" [value]="ar.contact_client_hse" />
+									</mat-form-field>
+									<mat-form-field class="col-xl-6">
+										<mat-label>{{'ARS.TEL_CONTACT_CLIENT_HSE.LABEL' | translate}}</mat-label>
+										<input class="form-control" matInput [readonly]="true" type="text" name="tel_contact_client_hse" [value]="ar.tel_contact_client_hse" />
+									</mat-form-field>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="tf-card-form">
+								<div class="tf-heading tf-heading--sm">
+									1.3 Conditions générales du chantier
+								</div>
+								<div class="row">
+									<div class="col-xl-6 mat-form-field ng-tns-c14-2 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-legacy mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label" formContolName="a_prevoir_compagnons">
+										<div class="mat-form-field-wrapper">
+											<div class="mat-form-field-flex">
+												<div class="mat-form-field-infix">
+													<span class="mat-form-field-label-wrapper">
+														<label class="mat-form-field-label">{{'ARS.HORAIRES.LABEL' | translate}}</label>
+													</span>
+													<div class="horaire-box flex-layout mt-2">
+														<div>
+															<input [readonly]="true" class="form-control text-center" type="time" name="heure_ouverture" [value]="ar.heure_ouverture" />
+														</div>
+														<span style="padding: 1em;">A </span>
+														<div>
+															<input [readonly]="true" class="form-control text-center" type="time" name="heure_fermeture" [value]="ar.heure_fermeture" />
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<mat-form-field class="col-xl-6">
+										<mat-label>{{'ARS.COURANT.LABEL' | translate}}</mat-label>
+										<input class="form-control" matInput [readonly]="true" type="text" name="courant_dispo" [value]="ar.courant_dispo" />
+									</mat-form-field>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</ng-container>
-
-	<ng-container>
-		<div class="row">
-			<div class="col-md-6" *ngFor="let zoneType of zonesList |  keyvalue; let i = index">
-				<div class="tf-card-form">
+			<div class="row">
+				<div class="col-md-6" *ngFor="let zoneType of zonesList |  keyvalue; let i = index">
 					<div class="tf-heading tf-heading--sm">
 						1.{{i+4}} {{zoneType.key}}
 					</div>
@@ -202,196 +195,212 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="tf-heading tf-heading--md">| 2 {{'ARS.FORM.RISKBLOCK.TITLE' | translate}}</div>
-		<div class="row">
-			<div class="col-md-12">
-				<div class="tf-card-form">
-					<div class="tf-heading tf-heading--sm">
-						{{'ARS.FORM.RISKBLOCK.MSG' | translate}}
+		</mat-expansion-panel>
+	
+		<mat-expansion-panel [expanded]="isExpanded">
+			<mat-expansion-panel-header>
+				<div class="tf-heading tf-heading--md">| 2 {{'ARS.FORM.RISKBLOCK.TITLE' | translate}}</div>
+			</mat-expansion-panel-header>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="tf-card-form">
+						<div class="tf-heading tf-heading--sm">
+							{{'ARS.FORM.RISKBLOCK.MSG' | translate}}
+						</div>
+						<div class="row form-row"></div>
+	
+						<table mat-table [dataSource]="risksList">
+	
+							<ng-container matColumnDef="risks">
+								<th mat-header-cell *matHeaderCellDef> {{'ARS.FORM.RISKS' | translate}} </th>
+								<td mat-cell *matCellDef="let element"> {{element.libelle}} </td>
+							</ng-container>
+	
+							<ng-container matColumnDef="actions">
+								<th mat-header-cell *matHeaderCellDef> {{'ARS.FORM.ACTION' | translate}} </th>
+								<td mat-cell *matCellDef="let element">
+									<div class="m-2" *ngFor="let risk of element.risques">
+										<mat-checkbox disabled [value]="risk.id" [checked]="onRiskIsChecked(risk.id)">{{risk.libelle}}</mat-checkbox>
+									</div>
+								</td>
+							</ng-container>
+	
+							<ng-container matColumnDef="comments">
+								<th mat-header-cell *matHeaderCellDef> {{'ARS.FORM.COMMENT' | translate}} </th>
+								<td mat-cell *matCellDef="let element">
+									<div class="full-height">
+										<textarea [readonly]="true" class="form-control no_border" [value]="getCommentValue(element.id)"></textarea>
+									</div>
+								</td>
+							</ng-container>
+	
+	
+							<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+							<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+						</table>
+	
 					</div>
-					<div class="row form-row"></div>
-
-					<table mat-table [dataSource]="risksList">
-
-						<ng-container matColumnDef="risks">
-							<th mat-header-cell *matHeaderCellDef> {{'ARS.FORM.RISKS' | translate}} </th>
-							<td mat-cell *matCellDef="let element"> {{element.libelle}} </td>
-						</ng-container>
-
-						<ng-container matColumnDef="actions">
-							<th mat-header-cell *matHeaderCellDef> {{'ARS.FORM.ACTION' | translate}} </th>
-							<td mat-cell *matCellDef="let element">
-								<div class="m-2" *ngFor="let risk of element.risques">
-									<mat-checkbox disabled [value]="risk.id" [checked]="onRiskIsChecked(risk.id)">{{risk.libelle}}</mat-checkbox>
-								</div>
-							</td>
-						</ng-container>
-
-						<ng-container matColumnDef="comments">
-							<th mat-header-cell *matHeaderCellDef> {{'ARS.FORM.COMMENT' | translate}} </th>
-							<td mat-cell *matCellDef="let element">
-								<div class="full-height">
-									<textarea [readonly]="true" class="form-control no_border full-height" [value]="getCommentValue(element.id)"></textarea>
-								</div>
-							</td>
-						</ng-container>
-
-
-						<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-						<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-					</table>
-
 				</div>
 			</div>
-		</div>
+		</mat-expansion-panel>
 
-		<div class="tf-heading tf-heading--md">| 3 {{'ARS.FORM.EQBLOCK.TITLE' | translate}}</div>
-		<div class="row">
-			<div class="col-md-12">
-				<div class="tf-card-form">
-					<div class="form-row">
-						<div class="col-md-2" *ngFor="let equipement of equipementList">
-							<mat-checkbox disabled [value]="equipement.id" [checked]="onEquipementIsChecked(equipement.id)">{{equipement.libelle}}</mat-checkbox>
+		<mat-expansion-panel [expanded]="isExpanded">
+			<mat-expansion-panel-header>
+				<div class="tf-heading tf-heading--md">| 3 {{'ARS.FORM.EQBLOCK.TITLE' | translate}}</div>
+			</mat-expansion-panel-header>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="tf-card-form">
+						<div class="form-row">
+							<div class="col-md-2" *ngFor="let equipement of equipementList">
+								<mat-checkbox disabled [value]="equipement.id" [checked]="onEquipementIsChecked(equipement.id)">{{equipement.libelle}}</mat-checkbox>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		</mat-expansion-panel>
 
-		<div class="tf-heading tf-heading--md">| 4 {{'ARS.FORM.MWBLOCK.TITLE' | translate}}</div>
-		<div class="row">
-			<div class="col-md-6">
-				<div class="tf-card-form">
-					<div class="tf-heading tf-heading--sm">
-						{{'ARS.FORM.MWBLOCK.WORKREGISTER.TITLE' | translate}}
-					</div>
-					<div class="row form-row">
-						<mat-radio-group [value]="ar.a_signer_registre_travaux+''" class="col-xl-12 col-md-12 mat-form-field ng-tns-c14-2 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-legacy mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label">
-							<div class="mat-form-field-wrapper">
-								<div class="mat-form-field-flex">
-									<div class="mat-form-field-infix col-md-3">
-										<span class="mat-form-field-label-wrapper">
-											<label class="mat-form-field-label"></label>
-										</span>
-										<div class="form-control mat-input-element mat-radio-box">
-											<mat-radio-button disabled value="1">Oui</mat-radio-button>
-											<mat-radio-button disabled value="0">Non</mat-radio-button>
-										</div>
-									</div>
-								</div>
-							</div>
-						</mat-radio-group>
-					</div>
-
-					<div class="row form-row" *ngIf="ar.a_signer_registre_travaux">
-						<mat-radio-group  [value]="ar.registre_signing_period"
-						class="col-xl-12 col-md-12 mat-form-field ng-tns-c14-2 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-legacy mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label">
-							<div class="mat-form-field-wrapper">
-								<div class="mat-form-field-flex">
-									<div class="mat-form-field-infix">
-										<span class="mat-form-field-label-wrapper">
-											<label class="mat-form-field-label">{{'ARS.ASIGNER.LABEL' | translate}}</label>
-										</span>
-										<div class="form-control mat-input-element mat-radio-box" style="justify-content: end">
-											<mat-radio-button disabled value="quotidiennement">{{'ARS.QUOTIDIENNEMENT.LABEL' | translate}}</mat-radio-button>
-											<mat-radio-button disabled value="par 1/2 journée">{{'ARS.DEMIJOURNEE.LABEL' | translate}}</mat-radio-button>
-											<mat-radio-button disabled value="toute les 2h">{{'ARS.DEUXHEURES.LABEL' | translate}}</mat-radio-button>
-										</div>
-									</div>
-								</div>
-							</div>
-						</mat-radio-group>
-					</div>
-
-					<div class="row form-row" *ngIf="ar.a_signer_registre_travaux">
-						<mat-form-field class="col-xl-7">
-							<mat-label>{{'ARS.FORM.REGISTRAR' | translate}}</mat-label>
-							<input class="form-control" matInput [readonly]="true" type="text" name="nom_charge_registre" [value]="ar.nom_charge_registre" />
-						</mat-form-field>
-						<mat-form-field class="col-xl-5">
-							<mat-label>{{'COMMON.PHONENUMBER.LABEL' | translate}}</mat-label>
-							<input class="form-control" matInput [readonly]="true" type="text" name="tel_charge_registre" [value]="ar.tel_charge_registre" />
-						</mat-form-field>
-					</div>
+		<mat-expansion-panel [expanded]="isExpanded">
+			<mat-expansion-panel-header>
+				<div class="tf-heading tf-heading--md">| 4 {{'ARS.FORM.MWBLOCK.TITLE' | translate}}</div>
+			</mat-expansion-panel-header>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="tf-card-form">
+						<div class="tf-heading tf-heading--sm">
+							{{'ARS.FORM.MWBLOCK.WORKREGISTER.TITLE' | translate}}
+						</div>
 	
-					<div class="row form-row" *ngIf="ar.a_signer_registre_travaux">
-						<mat-form-field class="col-xl-7">
-							<mat-label>{{'COMMON.ADRESS.LABEL' | translate}}</mat-label>
-							<input class="form-control" matInput [readonly]="true" type="text" name="adresse_charge_registre" [value]="ar.adresse_charge_registre" />
-						</mat-form-field>
-						<mat-form-field class="col-xl-5">
-							<mat-label>{{'COMMON.CITY.LABEL' | translate}}</mat-label>
-							<input class="form-control" matInput [readonly]="true" type="text" name="ville_charge_registre" [value]="ar.ville_charge_registre" />
-						</mat-form-field>
-					</div>
-	
-					<div class="row form-row" *ngIf="ar.a_signer_registre_travaux">
-						<mat-form-field class="col-xl-7">
-							<mat-label>{{'COMMON.POSTCODE.LABEL' | translate}}</mat-label>
-							<input matInput [readonly]="true" class="form-control" type="text" name="codepostal_charge_registre" [value]="ar.codepostal_charge_registre" />
-						</mat-form-field>
-						<mat-form-field class="col-xl-5">
-							<mat-label>{{'COMMON.COUNTRY.LABEL' | translate}}</mat-label>
-							<input class="form-control" matInput [readonly]="true" type="text" name="pays_charge_registre" [value]="ar.pays_charge_registre" />
-						</mat-form-field>
-					</div>
-
-				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="tf-card-form">
-					<div class="tf-heading tf-heading--sm">
-						{{'ARS.FORM.MWBLOCK.SUBTITLE2' | translate}}
-					</div>
-					<div class="form-row-flex">
-						<div class="col-md-4">
-							<div class="row form-row">
-								<mat-radio-group [value]="ar.a_prevoir_balisage+''" class="col-xl-12 col-md-12 mat-form-field ng-tns-c14-2 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-legacy mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label">
-									<div class="mat-form-field-wrapper">
-										<div class="mat-form-field-flex">
-											<div class="mat-form-field-infix">
-												<span class="mat-form-field-label-wrapper">
-													<label class="mat-form-field-label"></label>
-												</span>
-												<div class="form-control mat-input-element mat-radio-box">
-													<mat-radio-button disabled value="1">Oui</mat-radio-button>
-													<mat-radio-button disabled value="0">Non</mat-radio-button>
-												</div>
+						<div class="row form-row">
+							<mat-radio-group [value]="ar.a_signer_registre_travaux+''" class="col-xl-12 col-md-12 mat-form-field ng-tns-c14-2 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-legacy mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label">
+								<div class="mat-form-field-wrapper">
+									<div class="mat-form-field-flex">
+										<div class="mat-form-field-infix col-md-3">
+											<span class="mat-form-field-label-wrapper">
+												<label class="mat-form-field-label"></label>
+											</span>
+											<div class="form-control mat-input-element mat-radio-box">
+												<mat-radio-button disabled value="1">Oui</mat-radio-button>
+												<mat-radio-button disabled value="0">Non</mat-radio-button>
 											</div>
 										</div>
 									</div>
-								</mat-radio-group>
-							</div>
+								</div>
+							</mat-radio-group>
 						</div>
-						<div class="col-md-8" *ngIf="ar.a_prevoir_balisage">
-							<div class="row form-row">
-								<mat-form-field class="col-xl-7">
-									<mat-label>{{'ARS.FORM.CVTI_RESPONSIBLE' | translate}}</mat-label>
-									<input class="form-control" matInput [readonly]="true" type="text" name="nom_ca_cvti" [value]="ar.nom_ca_cvti" />
-								</mat-form-field>
-								<mat-form-field class="col-xl-5">
-									<mat-label>{{'COMMON.PHONENUMBER.LABEL' | translate}}</mat-label>
-									<input class="form-control" matInput [readonly]="true" type="text" name="tel_ca_cvti" [value]="ar.tel_ca_cvti" />
-								</mat-form-field>
-							</div>
-							<div class="row form-row">
-								<mat-form-field class="col-xl-7">
-									<mat-label>{{'ARS.FORM.CA_ASSISTANT' | translate}}</mat-label>
-									<input class="form-control" matInput [readonly]="true" type="text" name="assistant_ca" [value]="ar.assistant_ca" />
-								</mat-form-field>
-								<mat-form-field class="col-xl-5">
-									<mat-label>{{'COMMON.PHONENUMBER.LABEL' | translate}}</mat-label>
-									<input class="form-control" matInput [readonly]="true" type="text" name="tel_assistant_ca" [value]="ar.tel_assistant_ca" />
-								</mat-form-field>
-							</div>
+	
+						<div class="row form-row">
+							<mat-radio-group  [value]="ar.registre_signing_period"
+							class="col-xl-12 col-md-12 mat-form-field ng-tns-c14-2 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-legacy mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label">
+								<div class="mat-form-field-wrapper">
+									<div class="mat-form-field-flex">
+										<div class="mat-form-field-infix">
+											<span class="mat-form-field-label-wrapper">
+												<label class="mat-form-field-label">{{'ARS.ASIGNER.LABEL' | translate}}</label>
+											</span>
+											<div class="form-control mat-input-element mat-radio-box" style="justify-content: end">
+												<mat-radio-button disabled value="quotidiennement">{{'ARS.QUOTIDIENNEMENT.LABEL' | translate}}</mat-radio-button>
+												<mat-radio-button disabled value="par 1/2 journée">{{'ARS.DEMIJOURNEE.LABEL' | translate}}</mat-radio-button>
+												<mat-radio-button disabled value="toute les 2h">{{'ARS.DEUXHEURES.LABEL' | translate}}</mat-radio-button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</mat-radio-group>
 						</div>
+	
+						<div class="row form-row" *ngIf="ar.a_signer_registre_travaux">
+							<mat-form-field class="col-xl-7">
+								<mat-label>{{'ARS.FORM.REGISTRAR' | translate}}</mat-label>
+								<input class="form-control" matInput [readonly]="true" type="text" name="nom_charge_registre" [value]="ar.nom_charge_registre" />
+							</mat-form-field>
+							<mat-form-field class="col-xl-5">
+								<mat-label>{{'COMMON.PHONENUMBER.LABEL' | translate}}</mat-label>
+								<input class="form-control" matInput [readonly]="true" type="text" name="tel_charge_registre" [value]="ar.tel_charge_registre" />
+							</mat-form-field>
+						</div>
+		
+						<div class="row form-row" *ngIf="ar.a_signer_registre_travaux">
+							<mat-form-field class="col-xl-7">
+								<mat-label>{{'COMMON.ADRESS.LABEL' | translate}}</mat-label>
+								<input class="form-control" matInput [readonly]="true" type="text" name="adresse_charge_registre" [value]="ar.adresse_charge_registre" />
+							</mat-form-field>
+							<mat-form-field class="col-xl-5">
+								<mat-label>{{'COMMON.CITY.LABEL' | translate}}</mat-label>
+								<input class="form-control" matInput [readonly]="true" type="text" name="ville_charge_registre" [value]="ar.ville_charge_registre" />
+							</mat-form-field>
+						</div>
+		
+						<div class="row form-row" *ngIf="ar.a_signer_registre_travaux">
+							<mat-form-field class="col-xl-7">
+								<mat-label>{{'COMMON.POSTCODE.LABEL' | translate}}</mat-label>
+								<input matInput [readonly]="true" class="form-control" type="text" name="codepostal_charge_registre" [value]="ar.codepostal_charge_registre" />
+							</mat-form-field>
+							<mat-form-field class="col-xl-5">
+								<mat-label>{{'COMMON.COUNTRY.LABEL' | translate}}</mat-label>
+								<input class="form-control" matInput [readonly]="true" type="text" name="pays_charge_registre" [value]="ar.pays_charge_registre" />
+							</mat-form-field>
+						</div>
+	
 					</div>
-
+				</div>
+				<div class="col-md-6">
+					<div class="tf-card-form">
+						<div class="tf-heading tf-heading--sm">
+							{{'ARS.FORM.MWBLOCK.SUBTITLE2' | translate}}
+						</div>
+						<div class="form-row-flex">
+							<div class="col-md-4">
+								<div class="row form-row">
+									<mat-radio-group [value]="ar.a_prevoir_balisage+''" class="col-xl-12 col-md-12 mat-form-field ng-tns-c14-2 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-legacy mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label">
+										<div class="mat-form-field-wrapper">
+											<div class="mat-form-field-flex">
+												<div class="mat-form-field-infix">
+													<span class="mat-form-field-label-wrapper">
+														<label class="mat-form-field-label"></label>
+													</span>
+													<div class="form-control mat-input-element mat-radio-box">
+														<mat-radio-button disabled value="1">Oui</mat-radio-button>
+														<mat-radio-button disabled value="0">Non</mat-radio-button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</mat-radio-group>
+								</div>
+							</div>
+							<div class="col-md-8" *ngIf="ar.a_prevoir_balisage">
+								<div class="row form-row">
+									<mat-form-field class="col-xl-7">
+										<mat-label>{{'ARS.FORM.CVTI_RESPONSIBLE' | translate}}</mat-label>
+										<input class="form-control" matInput [readonly]="true" type="text" name="nom_ca_cvti" [value]="ar.nom_ca_cvti" />
+									</mat-form-field>
+									<mat-form-field class="col-xl-5">
+										<mat-label>{{'COMMON.PHONENUMBER.LABEL' | translate}}</mat-label>
+										<input class="form-control" matInput [readonly]="true" type="text" name="tel_ca_cvti" [value]="ar.tel_ca_cvti" />
+									</mat-form-field>
+								</div>
+								<div class="row form-row">
+									<mat-form-field class="col-xl-7">
+										<mat-label>{{'ARS.FORM.CA_ASSISTANT' | translate}}</mat-label>
+										<input class="form-control" matInput [readonly]="true" type="text" name="assistant_ca" [value]="ar.assistant_ca" />
+									</mat-form-field>
+									<mat-form-field class="col-xl-5">
+										<mat-label>{{'COMMON.PHONENUMBER.LABEL' | translate}}</mat-label>
+										<input class="form-control" matInput [readonly]="true" type="text" name="tel_assistant_ca" [value]="ar.tel_assistant_ca" />
+									</mat-form-field>
+								</div>
+							</div>
+						</div>
+	
+					</div>
 				</div>
 			</div>
-		</div>
+		</mat-expansion-panel>
 
-	</ng-container>
+	</mat-accordion>
+
+	<tf-ar-signatures [data]="ar?.signatures" [observations]="ar?.observations_signature"></tf-ar-signatures>
 
 </form>

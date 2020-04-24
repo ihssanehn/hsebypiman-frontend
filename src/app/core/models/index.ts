@@ -11,4 +11,5 @@ export { CatHabilitation } from './catHabilitation.model';
 export { Visite } from './visite.model';
 export { Equipement } from './equipement.model';
 export { Zone } from './zone.model';
+export { Signature } from './signature.model';
 

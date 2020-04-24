@@ -79,14 +79,6 @@ export class ArFormComponent implements OnInit {
     this.cdr.markForCheck();
   }
 
-  async getCurrentUser(){
-    var res = await this.authService.getUserByToken().toPromise();
-    this.user = res.result.data;
-    console.log(this.user);
-    this.cdr.detectChanges();
-    this.cdr.markForCheck();
-  }
-
   onRiskCheckChange(event) {
     const formArray: FormArray = this.arForm.get('risques') as FormArray;
   
@@ -216,7 +208,14 @@ export class ArFormComponent implements OnInit {
 
     return commentValue;
   }
-
+  partHided(key){
+    return !this.parts.includes(key);
+  }
+  showPart(key){
+    if(!this.parts.includes(key)){
+      this.parts.push(key);
+    }
+  }
   isChecked(controlName: string){
     return this.arForm.get(controlName).value == '1';
   }
@@ -233,103 +232,4 @@ export class ArFormComponent implements OnInit {
     return control.hasError(validationType) && (control.dirty || control.touched);
   }
 
-
-  /** Signature */
-  initFilteredSalaries(){
-    this.signatures.controls.forEach(control => {
-      this.filteredSalaries = control.get('personnel').valueChanges.pipe(
-        startWith(''),
-        map(value => this._filter(value))
-      );
-    });
-  }
-
-  private _filter(value: string): Array<User> {
-    const filterValue = value;
-    return this.salaries.filter(salary => 
-      this._normalizeValue(salary.fullname).includes(filterValue)
-    );
-  }
-
-  private _normalizeValue(value: string): string {
-    return value.toLowerCase().replace(/\s/g, '');
-  }
-
-  displayFn(salary:User): string {
-    return salary ? salary.fullname : '';
-  }
-
-  get signatures() : FormArray {
-    return this.arForm.get('signatures') as FormArray;
-  }
-
-  newSignature(): FormGroup {
-    return this.fb.group({
-      date:[new Date()],
-      personnel:[''],
-      society:[''],
-      signature:[''],
-      commentaires:[''],
-      remarks:[''],
-    });
-  }
-
-  addSignatures() {
-    this.signatures.push(this.newSignature());
-    this.initFilteredSalaries();
-  }
-
-  removeSignature(i:number) {
-    this.signatures.removeAt(i);
-  }
-
-  editSignature(){
-
-  }
-
-  deleteSignature(){
-    this.signaturePad.clear();
-  }
-
-  ngAfterViewInit() {
-    // this.signaturePad is now available
-   // this.signaturePad.set('minWidth', 5); // set szimek/signature_pad options at runtime
-   // this.signaturePad.clear(); // invoke functions from szimek/signature_pad API
-  }
- 
-  drawComplete() {
-    // will be notified of szimek/signature_pad's onEnd event
-    console.log(this.signaturePad.toDataURL());
-
-    (this.arForm.get('signature') as FormGroup)
-      .controls['signature']
-      .setValue(this.signaturePad.toDataURL());
-  }
- 
-  drawStart() {
-    // will be notified of szimek/signature_pad's onBegin event
-    console.log('begin drawing');
-  }
-
-  // private addCheckboxes() {
-  //   this.risksList.forEach((value) => {
-  //     value.risques.forEach((o, i) => {
-  //       console.log(o['id']);
-  //       const control = new FormControl();
-  //       // (this.arForm.controls.risques as FormArray).push(control);
-  //       (this.arForm.controls.risques as FormArray).controls[o['id']] = control;
-  //     });
-
-  //     console.log(this.arForm.controls.risques);
-  //   });
-  // }
-
-  partHided(key){
-    return !this.parts.includes(key);
-  }
-  showPart(key){
-    if(!this.parts.includes(key)){
-      this.parts.push(key);
-    }
-  }
 }
