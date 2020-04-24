@@ -29,18 +29,32 @@ export class ArSignaturesComponent implements OnInit {
     return this._data.getValue();
   }
 
+  private _observations = new BehaviorSubject<string>(null);
+  @Input()
+  set observations(value) {
+      this._observations.next(value);
+  };
+  get observations() {
+    return this._observations.getValue();
+  }
+
   @ViewChild(SignaturePad,null) signaturePad: SignaturePad;
-  public signaturePadOptions: Object = { 
+  private canvas: Object = {
     'minWidth': 0.5,
-    'canvasWidth': 250,
-    'canvasHeight': 100
+    'canvasWidth': 500,
+    'canvasHeight': 150
+  }
+  public signaturePadOptions: Object = { 
+    'minWidth': this.canvas['minWidth'],
+    'canvasWidth': this.canvas['canvasWidth'],
+    'canvasHeight': this.canvas['canvasHeight'],
   };
 
   signatureForm: FormGroup;
-  public curDate : Date;
   public salaries : Array<User>;
   filteredSalaries: Observable<Array<User>>;
   public signatures : Array<Signature>;
+  public observation : string;
   errors;
 
   constructor(
@@ -54,7 +68,6 @@ export class ArSignaturesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.curDate = new Date();
     this.createForm();
     this.getCurrentUser();
 
@@ -75,6 +88,13 @@ export class ArSignaturesComponent implements OnInit {
       }
     );
 
+    this._observations
+    .subscribe(
+      x => {
+        if(this.observations)
+          this.observation = this.observations;
+      }
+    );
   }
 
   createForm() {
@@ -99,93 +119,35 @@ export class ArSignaturesComponent implements OnInit {
     this.cdr.markForCheck();
   }
 
-  // initFilteredSalaries(){
-  //   this.signatureForm.controls.forEach(control => {
-  //     this.filteredSalaries = control.get('personnel').valueChanges.pipe(
-  //       startWith(''),
-  //       map(value => this._filter(value))
-  //     );
-  //   });
-  // }
-
-  // private _filter(value: string): Array<User> {
-  //   const filterValue = value;
-  //   return this.salaries.filter(salary => 
-  //     this._normalizeValue(salary.fullname).includes(filterValue)
-  //   );
-  // }
-
-  // private _normalizeValue(value: string): string {
-  //   return value.toLowerCase().replace(/\s/g, '');
-  // }
-
-  // displayFn(salary:User): string {
-  //   return salary ? salary.fullname : '';
-  // }
-
-  // get signatures() : FormArray {
-  //   return this.signatureForm.get('signatures') as FormArray;
-  // }
-
-  newSignature(): FormGroup {
-    return this.fb.group({
-      date:[new Date()],
-      personnel:[''],
-      society:[''],
-      signature:[''],
-      commentaires:[''],
-      remarks:[''],
-    });
-  }
-
-  addSignatures() {
-    // this.signatures.push(this.newSignature());
-    // this.initFilteredSalaries();
+  resizeSignaturePad() {
+    var ratio = Math.max(window.devicePixelRatio || 1, 1);
+    this.signaturePad.set('canvasWidth', this.canvas['canvasWidth'] / ratio);
   }
 
   clearSignature(i:number) {
-    // this.signatures.removeAt(i);
     this.signaturePad.clear();
-    this.signatureForm
-    .controls['signature'].reset();
-    console.log( this.signatureForm
-      .controls['signature'].value);
-  }
-
-  editSignature(){
-
-  }
-
-  deleteSignature(){
-    this.signaturePad.clear();
+    this.signatureForm.controls['signature'].reset();
   }
 
   ngAfterViewInit() {
-    // this.signaturePad is now available
     if(!this.signatures){
-      this.signaturePad.set('minWidth', 0.5); // set szimek/signature_pad options at runtime
-      this.signaturePad.clear(); // invoke functions from szimek/signature_pad API
+      this.signaturePad.set('minWidth', 0.5);
+      this.signaturePad.clear();
     }
   }
  
   drawComplete() {
-    // will be notified of szimek/signature_pad's onEnd event
-    console.log(this.signaturePad.toDataURL());
-
     this.signatureForm
       .controls['signature']
       .setValue(this.signaturePad.toDataURL());
   }
  
   drawStart() {
-    // will be notified of szimek/signature_pad's onBegin event
-    console.log('begin drawing');
   }
 
   async onSubmit(event){
 
     try {
-
         let form = {...this.signatureForm.value};
         form.date = this.setDateFormat(form.date);
 

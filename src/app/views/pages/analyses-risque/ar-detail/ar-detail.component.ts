@@ -25,6 +25,10 @@ export class ArDetailComponent implements OnInit, OnDestroy {
 	public risksList : Array<CatRisque>;
 	public epiList : Array<EpiType>;
 
+	/** Accordion */
+	public isExpanded = true;
+	public isHideToggle = false;
+	
 	constructor(
 		private activatedRoute: ActivatedRoute,
 		private router: Router,

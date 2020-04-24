@@ -176,6 +176,7 @@ export class ArEditComponent implements OnInit, OnDestroy {
 			tel_ca_cvti:['', Validators.required],
 			assistant_ca:['', Validators.required],
 			tel_assistant_ca:['', Validators.required],
+			observations_signature:[''],
 			risques:new FormArray([]),
 			epis:new FormArray([]),
 			comments:new FormArray([]),

@@ -81,4 +81,26 @@
 .mat-input-element{
     font-size: 1em;
 }
- 
+.mat-expansion-panel{
+    border: none;
+    background-color: transparent;
+    box-shadow: none!important;
+    .mat-expansion-panel-header{
+        padding: 0 10px 0 0;
+        &:hover{
+            background: none!important;
+        }
+    }
+    .mat-expansion-panel-body{
+        padding: 0;
+    }
+}
+.textarea-viewer{
+    border: 1px solid #80808017;
+    border-radius: 0.4em;
+    padding: 1em!important;
+}
+.signature-container{
+    border: 1px solid #e2e5ec;
+    text-align: center;
+}
