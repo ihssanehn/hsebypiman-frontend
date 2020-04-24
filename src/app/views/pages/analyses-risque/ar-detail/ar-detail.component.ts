@@ -52,6 +52,7 @@ export class ArDetailComponent implements OnInit, OnDestroy {
 				}
 			}
 		);
+		this.subscriptions.push(routeSubscription);
 	}
 
 	async getAr(arId: Number){

@@ -8,4 +8,5 @@ export { Habilitation } from './habilitation.model';
 export { CatRisque } from './catRisque.model';
 export { CatHabilitation } from './catHabilitation.model';
 export { Visite } from './visite.model';
+export { Signature } from './signature.model';
 
