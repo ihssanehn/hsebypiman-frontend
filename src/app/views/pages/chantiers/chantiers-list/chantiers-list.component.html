@@ -4,10 +4,13 @@
   
 <!-- </div> -->
 <tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
-	<tf-portlet-body class="tf-portlet__body--fit" style="padding: 30px 15px;" *ngIf="chantiersList">
-    <div class="row">
+	<tf-portlet-body class="tf-portlet__body--fit" style="padding: 20px 15px;" *ngIf="chantiersList">
+    <div class="row px-2" >
       <div class="col">
-        <button class="pull-right" mat-raised-button (click)="exportList()">Exporter la liste</button>
+        <p>{{pagination.total}} résultats trouvés</p>
+      </div>
+      <div class="col">
+        <button class="pull-right btn-small mb-4" mat-raised-button color="info" (click)="exportList()">Exporter la liste</button>
       </div>
     </div>
     <table mat-table [dataSource]="chantiersList.data" >
