@@ -51,3 +51,10 @@
   min-height: 23px!important;
   padding: 12px 10px;
 }
+
+button.mat-button-base.btn-small{
+  line-height: 2rem;
+  .mat-button-wrapper{
+    font-size: 1rem;
+  }
+}

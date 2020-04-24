@@ -65,6 +65,13 @@ export class ChantiersListComponent implements OnInit {
 		}
 	}
 
+	exportList(){
+		var filters = {...this.filter};
+		filters.type="EXCEL";
+		console.log(filters);
+		return this.chantierService.export(filters);
+	}
+
 	changePagination() {
 		this.pagination = {
 			...this.pagination,
