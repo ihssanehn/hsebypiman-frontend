@@ -15,7 +15,6 @@ import {MenuAsideService } from '../../../core/_base/layout';
 @Component({
 	selector: 'tf-ars',
 	templateUrl: './ars.component.html',
-	styleUrls: ['./ars.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ArsComponent implements OnInit {
