@@ -44,7 +44,6 @@ export class ArService extends HttpService{
             .filter(key => filters[key])
             .map(key => key + '=' + filters[key])
             .join('&');
-        console.log(queryString);
         var url = this.baseUrl+'/export?'+queryString+'&token='+localStorage.getItem(environment.authTokenKey);
         window.open(url, '_blank');
     }

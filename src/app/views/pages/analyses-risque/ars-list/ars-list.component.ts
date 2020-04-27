@@ -135,7 +135,6 @@ export class ArsListComponent implements OnInit {
 	exportList(){
 		var filters = {...this.filter};
 		filters.type="EXCEL";
-		console.log(filters);
 		return this.arService.export(filters);
 	}
 
