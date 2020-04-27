@@ -4,6 +4,14 @@
 
 <tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
 	<tf-portlet-body class="tf-portlet__body--fit" *ngIf="arsList">
+    <div class="row px-2" >
+      <div class="col">
+        <p>{{pagination.total}} résultats trouvés</p>
+      </div>
+      <div class="col">
+        <button [disabled]="!pagination.total" class="pull-right btn-small mb-4" mat-raised-button color="info" (click)="exportList()">Exporter la liste</button>
+      </div>
+    </div>
     
     <table mat-table [dataSource]="arsList.data">
 

@@ -39,5 +39,14 @@ export class ArService extends HttpService{
     delete(chantier_id){
         return this.http.delete(this.baseUrl+'/'+chantier_id);
     }
+    export(filters){
+        var queryString = Object.keys(filters)
+            .filter(key => filters[key])
+            .map(key => key + '=' + filters[key])
+            .join('&');
+        console.log(queryString);
+        var url = this.baseUrl+'/export?'+queryString+'&token='+localStorage.getItem(environment.authTokenKey);
+        window.open(url, '_blank');
+    }
     
 }
