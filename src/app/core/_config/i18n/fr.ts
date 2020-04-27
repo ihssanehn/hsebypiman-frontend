@@ -12,7 +12,8 @@ export const locale = {
 			DELETE:'Supprimer',
 			SAVE:'Sauvegarder',
 			CANCEL: 'Annuler',
-			CLEAR: 'Vider'
+			CLEAR: 'Vider',
+			DUPLICATE: 'Dupliquer'
 		},
 		MENU: {
 			NEW: 'Nouveau',

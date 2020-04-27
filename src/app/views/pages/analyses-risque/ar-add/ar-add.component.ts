@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl, FormArray, NgModel, FormControlName } from "@angular/forms";
 import { CommonModule } from '@angular/common';
@@ -6,8 +6,8 @@ import * as moment from 'moment';
 
 import { TranslateService } from '@ngx-translate/core';
 import { ArService, TypeService, ChantierService } from '@app/core/services';
-import { Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
+import { Observable, Subscription } from 'rxjs';
+import { map, startWith, tap } from 'rxjs/operators';
 import { Paginate } from '@app/core/_base/layout/models/paginate.model';
 import { Ar, Type, Chantier } from '@app/core/models';
 import { NgxPermissionsService } from 'ngx-permissions';
@@ -21,7 +21,7 @@ import Swal from 'sweetalert2';
   templateUrl: './ar-add.component.html',
   styleUrls: ['./ar-add.component.scss']
 })
-export class ArAddComponent implements OnInit {
+export class ArAddComponent implements OnInit, OnDestroy {
 
   ar: Ar;
   arForm: FormGroup;
@@ -34,9 +34,11 @@ export class ArAddComponent implements OnInit {
     keyword: "",
   }
   // Private properties
+  private subscriptions: Subscription[] = [];
   errors;
   
   constructor(
+    private activatedRoute: ActivatedRoute,
 		private router: Router,
 		private arFB: FormBuilder,
 		private arService: ArService,
@@ -55,12 +57,75 @@ export class ArAddComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.ar = new Ar();
     this.createForm();
     this.setDynamicValidators();
+
+    const routeSubscription = this.activatedRoute.queryParams
+    .subscribe(
+      async params => {
+        const id = params.ar_id;
+        if(id){
+          this.arService
+          .get(id)
+          .pipe(
+            tap(
+              ar => {
+                this.arForm.patchValue(ar.result.data);
+                this.fillForm(ar.result.data);
+              }
+            )
+         )
+          .subscribe( async res => {
+            this.ar = res.result.data;
+            this.loaded = true;
+            this.cdr.detectChanges();
+            this.cdr.markForCheck();
+          });
+        }else{
+          this.ar = new Ar();
+        }
+      }
+    );
+    this.subscriptions.push(routeSubscription);
+
     this.getTypes();
     this.getUsers();
   }
+
+  ngOnDestroy() {
+		this.subscriptions.forEach(sb => sb.unsubscribe());
+	}
+
+  fillForm(ar: Ar){
+
+		const riskformArray: FormArray = this.arForm.get('risques') as FormArray;
+		ar.risques.forEach(element => {
+			riskformArray.push(new FormControl(element.id));
+		});
+
+		const equipementFormArray: FormArray = this.arForm.get('equipements') as FormArray;
+		ar.equipements.forEach(element => {
+			equipementFormArray.push(new FormControl(element.id));
+		});
+		
+		const zoneFormArray: FormArray = this.arForm.get('zones') as FormArray;
+		ar.zones.forEach(element => {
+			zoneFormArray.push(new FormControl(element.id));
+		});
+
+		const commentsFormArray: FormArray = this.arForm.get('comments') as FormArray;
+		ar.cat_risques.forEach(element => {
+			const commentGroup: FormGroup = this.arFB.group({
+				'cat_risque_id': element.id,
+				'commentaire': element.commentaire
+			});
+			commentsFormArray.push(commentGroup);
+		});
+
+		this.arForm.get('chantier_id').setValue(ar.chantier_id);
+		this.arForm.get('a_signer_registre_travaux').setValue(ar.a_signer_registre_travaux+'');
+		this.arForm.get('a_prevoir_balisage').setValue(ar.a_prevoir_balisage+'');
+	}
 
   async getTypes(){
     var res = await this.typeService.getAllFromModel('Ar').toPromise();

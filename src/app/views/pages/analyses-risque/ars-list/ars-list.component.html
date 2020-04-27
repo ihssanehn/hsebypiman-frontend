@@ -85,6 +85,9 @@
             </button>
             <div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
               <!-- *ngxPermissionsOnly="['ADMIN']" -->
+              <button mat-icon-button color="info" matTooltip="{{'ACTION.DUPLICATE' | translate}}" (click)="duplicateAr(ar.id)">
+                <mat-icon>file_copy</mat-icon>
+              </button>
               <button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}" (click)="viewAr(ar.id)">
                 <mat-icon>visibility</mat-icon>
               </button>

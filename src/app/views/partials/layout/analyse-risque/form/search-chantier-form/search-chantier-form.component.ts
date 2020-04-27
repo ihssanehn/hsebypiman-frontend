@@ -60,6 +60,9 @@ export class SearchChantierFormComponent implements OnInit {
         });
       }else{
         if(this.origin == 'add'){
+          if(this.arForm.get('chantier_id').value){
+            this.getChantier(this.arForm.get('chantier_id').value);
+          }
           this.activatedRoute.queryParams
           .subscribe(params => {
             if(params.chantier_id){

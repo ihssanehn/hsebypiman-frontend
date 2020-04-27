@@ -81,6 +81,10 @@ export class ArsListComponent implements OnInit {
 		this.router.navigate(['../detail', arId], { relativeTo: this.activatedRoute });
 	}
 
+	duplicateAr(arId){
+		this.router.navigate(['analyses-risque/add'], {queryParams:{ar_id:arId}})
+	}
+
 	async deleteAr(arId){
 		await this.arService.delete(arId).toPromise();
 		this.getArs();
