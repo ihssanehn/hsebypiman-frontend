@@ -26,6 +26,7 @@ import { ArDetailComponent } from './ar-detail/ar-detail.component';
 import {NgbDropdownModule, NgbTabsetModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {NgbPopoverModule} from '@ng-bootstrap/ng-bootstrap'
 
 // Material
 import {
@@ -139,8 +140,8 @@ const routes: Routes = [
 		NgbTooltipModule,
 		MatChipsModule,
 		MatSlideToggleModule,
-		SignaturePadModule
-
+		SignaturePadModule,
+		NgbPopoverModule
 	],
 	providers: [
 		InterceptService,
