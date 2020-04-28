@@ -3,5 +3,12 @@
         .tf-portlet__body{
             padding: 30px 15px;
         }
+        .popover-container{
+            position: absolute;
+            width: 5%;
+        }
+        ngb-popover-window{
+            width: 255px!important;
+        }
     }
 }
