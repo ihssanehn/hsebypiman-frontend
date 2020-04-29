@@ -447,7 +447,7 @@ export const locale = {
 				SHORTTITLE:'Signataires',
 			},
 			SIGNATAIRES:{
-				LABEL:'Signataires',
+				LABEL:'Signataires (avec / sans)',
 				PLACEHOLDER:'',
 				TITLE:'Signataires',
 				SHORTTITLE:'Signataires',

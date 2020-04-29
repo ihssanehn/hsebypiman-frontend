@@ -45,7 +45,7 @@
 								</mat-label>
 								<mat-select class="form-control" formControlName="charge_affaire_id" name="charge_affaire_id">
 									<mat-option *ngFor="let user of users" [value]="user.id">
-										{{user.fullname}}
+										{{user.trigramme}} - {{user.fullname}}
 									</mat-option>
 								</mat-select>
 								<button mat-button *ngIf="formHasValue('charge_affaire_id')" matSuffix mat-icon-button 
@@ -82,6 +82,21 @@
 								</mat-select>
 								<button mat-button *ngIf="formHasValue('signatories_id')" matSuffix mat-icon-button 
 									aria-label="Clear" (click)="clearValue('signatories_id'); $event.stopPropagation()">
+									<mat-icon>clear</mat-icon>
+								</button>
+							</mat-form-field>
+						</div>
+						<div class="col-xl-3 col-md-4 col-sm-6 col-xs-12">
+							<h6>&nbsp;</h6>
+							<mat-form-field class="col-xl-12" style="padding:0">
+								<mat-label>{{'ARS.SIGNATAIRES.LABEL' | translate}}</mat-label>
+								<mat-select class="form-control" formControlName="signatory" name="signatory">
+									<mat-option *ngFor="let signatoryOption of signatoriesOptions" [value]="signatoryOption">
+										{{signatoryOption}}
+									</mat-option>
+								</mat-select>
+								<button mat-button *ngIf="formHasValue('signatory')" matSuffix mat-icon-button 
+									aria-label="Clear" (click)="clearValue('signatory'); $event.stopPropagation()">
 									<mat-icon>clear</mat-icon>
 								</button>
 							</mat-form-field>
