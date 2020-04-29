@@ -82,7 +82,7 @@ export class SearchChantierFormComponent implements OnInit {
 
   async initFilteredChantiers(){
     var res = await this.chantierService.getList().toPromise();
-    this.chantiers = res.result.data;
+    this.chantiers = res.result.data.filter(item => item.montant >= 20000);
     this.filteredChantiers = this.searchControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value))

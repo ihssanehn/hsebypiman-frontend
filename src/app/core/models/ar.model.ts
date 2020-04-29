@@ -10,7 +10,6 @@ export class Ar {
     realisateur?: string;
     tel_realisateur?: string;
     date_validite?: Date;
-    num_secours?: string;
     contact_interne_secours?: string;
     tel_contact_interne_secours?: string;
     contact_client_chef_chtr?: string;

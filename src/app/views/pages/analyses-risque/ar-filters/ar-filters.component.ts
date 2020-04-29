@@ -24,7 +24,11 @@ export class ArFiltersComponent implements OnInit, AfterViewInit {
   observationsOptions = [
     'Avec',
     'Sans'
-  ]
+  ];
+  signatoriesOptions = [
+    'Avec',
+    'Sans'
+  ];
 
   constructor(
     private statusService: StatusService,
@@ -83,6 +87,7 @@ export class ArFiltersComponent implements OnInit, AfterViewInit {
       charge_affaire_id:[null],
       status_id:[null],
       signatories_id:[null],
+      signatory:[null],
       date_creation_start:[null],
       date_creation_end:[null],
       date_demarrage_start:[null],

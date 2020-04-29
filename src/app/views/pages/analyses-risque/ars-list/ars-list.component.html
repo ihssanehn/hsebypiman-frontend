@@ -73,12 +73,18 @@
       </ng-container>
       <!-- Nbr Signatories Column -->
       <ng-container matColumnDef="sign_count" >
-        <th mat-header-cell *matHeaderCellDef class="text-center"> {{'ARS.SIGNATAIRECOUNT.LABEL' | translate}} </th>
+        <th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('signatures_count')">
+          {{'ARS.SIGNATAIRECOUNT.LABEL' | translate}} 
+          <i class="fa" [ngClass]="isOrderedBy('signatures_count') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('signatures_count') && {opacity:1}"></i>
+        </th>
         <td mat-cell *matCellDef="let ar" class="text-center pointer" (click)="viewAr(ar.id)"> {{ar.signatures_count}} </td>
       </ng-container>
       <!-- Observations Column -->
       <ng-container matColumnDef="observations" >
-        <th mat-header-cell *matHeaderCellDef class="text-center"> {{'ARS.OBSERVATION' | translate}} </th>
+        <th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('observations_signature')"> 
+          {{'ARS.OBSERVATION' | translate}} 
+          <i class="fa" [ngClass]="isOrderedBy('observations_signature') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('observations_signature') && {opacity:1}"></i>
+        </th>
         <td mat-cell *matCellDef="let ar" class="text-center pointer" (click)="viewAr(ar.id)"> 
           <div class="popover-container">
             <a ngbPopover="{{ar.observations_signature}}" placement="top"

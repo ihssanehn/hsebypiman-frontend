@@ -86,14 +86,42 @@ export class ArsListComponent implements OnInit {
 	}
 
 	async deleteAr(arId){
-		await this.arService.delete(arId).toPromise();
-		this.getArs();
+
 		Swal.fire({
-			icon: 'success',
-			title: 'Analyse de risque a été supprimé avec succès',
-			showConfirmButton: false,
-			timer: 1500
-		})
+			icon: 'warning',
+			title: 'Voulez vous vraiment supprimer cette analyse de risque ?',
+			text:'L\'analyse de risque sera supprimée de façon permanente.',
+			showConfirmButton: true,
+			showCancelButton: true,
+			cancelButtonText: 'Annuler',
+			confirmButtonText: 'Supprimer'
+		}).then(async response => {
+			if (response.value) {
+				try {
+					const res = await this.arService.delete(arId).toPromise();
+					if (res) {
+						Swal.fire({
+							icon: 'success',
+							title: 'L\'analyse de risque a été supprimée avec succès',
+							showConfirmButton: false,
+							timer: 1500
+						}).then(() => {
+							this.getArs();
+						});
+					} else {
+						throw new Error();
+					}
+				} catch (e) {
+					console.log(e);
+					Swal.fire({
+						icon: 'error',
+						title: 'Echec! une erreur est survenue',
+						showConfirmButton: false,
+						timer: 1500
+					});
+				}
+			}
+		});
 	}
 
 
