@@ -27,7 +27,8 @@ export class ArAddComponent implements OnInit, OnDestroy {
   arForm: FormGroup;
   types: Type[];
   users: User[];
-	// allRoles: Role[];
+  // allRoles: Role[];
+  enableBtn = false;
 	loaded = false;
   editMode: boolean = false;
   filter = {
@@ -355,6 +356,12 @@ export class ArAddComponent implements OnInit, OnDestroy {
 
   setDateFormat(date){
       return date ? moment(date).format('YYYY-MM-DD') : null;
+  }
+
+  isLastStep(isLastStep: boolean): void{
+    if(isLastStep){
+      this.enableBtn = true;
+    }
   }
 
 }
