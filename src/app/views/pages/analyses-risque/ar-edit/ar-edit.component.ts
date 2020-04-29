@@ -110,6 +110,7 @@ export class ArEditComponent implements OnInit, OnDestroy {
 		});
 
 		this.arForm.get('chantier_id').setValue(ar.chantier_id);
+		this.arForm.get('a_prevoir_compagnons').setValue(ar.a_prevoir_compagnons+'');
 		this.arForm.get('a_signer_registre_travaux').setValue(ar.a_signer_registre_travaux+'');
 		this.arForm.get('a_prevoir_balisage').setValue(ar.a_prevoir_balisage+'');
 	}
@@ -132,15 +133,15 @@ export class ArEditComponent implements OnInit, OnDestroy {
   	createForm() {
 		this.arForm = this.arFB.group({
 			chantier_id: [null, Validators.required],
-			a_prevoir_compagnons:[false, Validators.required],
-			date_accueil_secu:[null, Validators.required],
-			realisateur:['', Validators.required],
-			tel_realisateur:['', Validators.required],
-			date_validite:[null, Validators.required],
-			accueil_secu_days:[null, Validators.required],
-			accueil_secu_time_opening:['', Validators.required],
-			accueil_secu_time_closing:['', Validators.required],
-			num_secours:['', Validators.required],
+			a_prevoir_compagnons:['0', Validators.required],
+			date_accueil_secu:[null],
+			realisateur:[''],
+			tel_realisateur:[''],
+			date_validite:[null],
+			accueil_secu_days:[null],
+			accueil_secu_time_opening:[''],
+			accueil_secu_time_closing:[''],
+
 			contact_interne_secours:[null, Validators.required],
 			tel_contact_interne_secours:['', Validators.required],
 			contact_client_chef_chtr:['', Validators.required],
@@ -187,6 +188,14 @@ export class ArEditComponent implements OnInit, OnDestroy {
 		const pays_charge_registre = this.arForm.get('pays_charge_registre');
 		const codepostal_charge_registre = this.arForm.get('codepostal_charge_registre');
 		const tel_charge_registre = this.arForm.get('tel_charge_registre');
+
+		const date_accueil_secu = this.arForm.get('date_accueil_secu');
+		const realisateur = this.arForm.get('realisateur');
+		const tel_realisateur = this.arForm.get('tel_realisateur');
+		const date_validite = this.arForm.get('date_validite');
+		const accueil_secu_days = this.arForm.get('accueil_secu_days');
+		const accueil_secu_time_opening = this.arForm.get('accueil_secu_time_opening');
+		const accueil_secu_time_closing = this.arForm.get('accueil_secu_time_closing');
 	
 		this.arForm.get('a_prevoir_balisage').valueChanges
 		  .subscribe(a_prevoir_balisage => {
@@ -238,6 +247,38 @@ export class ArEditComponent implements OnInit, OnDestroy {
 			pays_charge_registre.updateValueAndValidity();
 			codepostal_charge_registre.updateValueAndValidity();
 			tel_charge_registre.updateValueAndValidity();
+		  });
+
+		this.arForm.get('a_prevoir_compagnons').valueChanges
+		  .subscribe(a_prevoir_compagnons => {
+	
+			if (a_prevoir_compagnons === '1') {
+			  date_accueil_secu.setValidators([Validators.required]);
+			  realisateur.setValidators([Validators.required]);
+			  tel_realisateur.setValidators([Validators.required]);
+			  date_validite.setValidators([Validators.required]);
+			  accueil_secu_days.setValidators([Validators.required]);
+			  accueil_secu_time_opening.setValidators([Validators.required]);
+			  accueil_secu_time_closing.setValidators([Validators.required]);
+			}
+	
+			if (a_prevoir_compagnons === '0') {
+			  date_accueil_secu.setValidators(null);
+			  realisateur.setValidators(null);
+			  tel_realisateur.setValidators(null);
+			  date_validite.setValidators(null);
+			  accueil_secu_days.setValidators(null);
+			  accueil_secu_time_opening.setValidators(null);
+			  accueil_secu_time_closing.setValidators(null);
+			}
+	
+			date_accueil_secu.updateValueAndValidity();
+			realisateur.updateValueAndValidity();
+			tel_realisateur.updateValueAndValidity();
+			date_validite.updateValueAndValidity();
+			accueil_secu_days.updateValueAndValidity();
+			accueil_secu_time_opening.updateValueAndValidity();
+			accueil_secu_time_closing.updateValueAndValidity();
 		  });
 	}
 

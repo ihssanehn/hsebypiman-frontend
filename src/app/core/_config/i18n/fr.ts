@@ -357,9 +357,9 @@ export const locale = {
 				SHORTTITLE:'En cas d\'accident ou incendie',
 			},
 			CONTACT_INTERNE_SECOURS:{
-				LABEL:'Personne CVTI à contacter en cas d\'accident',
+				LABEL:'Personne CVTI',
 				PLACEHOLDER:'',
-				TITLE:'Personne CVTI à contacter en cas d\'accident',
+				TITLE:'Personne CVTI',
 				SHORTTITLE:'Personne CVTI en cas d\'accident',
 			},
 			TEL_CONTACT_INTERNE_SECOURS:{
