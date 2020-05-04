@@ -1,6 +1,8 @@
 
 import {Ar} from './ar.model'
 import { Habilitation } from './habilitation.model';
+import { Entreprise } from './entreprise.model';
+import {User} from '../auth';
 
 export class Chantier {
     id?: number;
@@ -18,8 +20,11 @@ export class Chantier {
     contact?: String;
     montant?: number;
     date_demarrage?: Date;
+    no_hab_required?:boolean;
     charge_affaire_id?: number;
-    charge_affaire?: any;
+    charge_affaire?: User;
+    resp_chiffrage_id?: number;
+    resp_chiffrage?: User;
     ars?: Array<Ar>;
     latest_ar?: Ar;
     ars_count?: number;
@@ -28,4 +33,5 @@ export class Chantier {
     vss_count?: number;
     ar?: Ar;
     habilitations?: Habilitation[];
+    entreprises?: Entreprise[];
 }

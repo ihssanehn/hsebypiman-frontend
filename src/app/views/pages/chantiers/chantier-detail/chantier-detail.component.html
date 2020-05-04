@@ -59,8 +59,8 @@
           <div *ngIf="chantier.latest_ar; else noAr">
               <div class="box">
                 <p><span class="label pull-left">{{'ARS.REALISATEUR.TITLE' | translate}}</span><br>{{chantier.latest_ar?.realisateur}}</p>
-                <p><span class="label pull-left">{{'ARS.DATE_ACCUEIL_SECU.TITLE' | translate}}</span><br>{{chantier.latest_ar?.date_accueil_secu}}</p>
-                <p><span class="label pull-left">{{'ARS.DATE_VALIDITE.TITLE' | translate}}</span><br>{{chantier.latest_ar?.date_validite}}</p>
+                <p><span class="label pull-left">{{'ARS.DATE_ACCUEIL_SECU.TITLE' | translate}}</span><br>{{chantier.latest_ar?.date_accueil_secu | date:'dd/MM/yyyy'}}</p>
+                <p><span class="label pull-left">{{'ARS.DATE_VALIDITE.TITLE' | translate}}</span><br>{{chantier.latest_ar?.date_validite | date:'dd/MM/yyyy'}}</p>
               </div>
               <div class="box">
                 <h5><b>En cas d'urgence</b></h5>

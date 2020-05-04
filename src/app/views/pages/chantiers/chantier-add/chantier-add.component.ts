@@ -45,6 +45,7 @@ export class ChantierAddComponent implements OnInit {
   ngOnInit() {
     this.chantier = new Chantier();
     this.createForm();
+    this.setDynamicValidators();
   }
 
   createForm() {
@@ -60,10 +61,17 @@ export class ChantierAddComponent implements OnInit {
       montant: ['', Validators.required],
       date_demarrage: ['', Validators.required],
       charge_affaire_id: [null, Validators.required],
-      habilitations: new FormArray([]),
-		});
+      resp_chiffrage_id: [null, Validators.required],
+      no_hab_required: [0, Validators.required],
+      habilitations: this.chantierFB.array([], Validators.required),
+      entreprises: this.chantierFB.array([])
+    });
 		this.loaded = true;
 		this.cdr.detectChanges();
+  }
+
+  setDynamicValidators(){
+    const no_hab_required = this.chantierForm.get('no_hab_required');
   }
   
   async onSubmit(){
@@ -71,6 +79,11 @@ export class ChantierAddComponent implements OnInit {
       let result;
       let form = {...this.chantierForm.value};
       form.date_demarrage = this.setDateFormat(form.date_demarrage)
+      if(form.entreprises.length > 0){
+        form.entreprises.forEach(x=>{
+          x.date = this.setDateFormat(x.date);
+        })
+      }
   
 			this.chantierService.create(form)
         .toPromise()
@@ -80,7 +93,7 @@ export class ChantierAddComponent implements OnInit {
           var chantier = res.result.data;
           Swal.fire({
             icon: 'success',
-            title: 'Chantié créé avec succès',
+            title: 'Chantier créé avec succès',
             showConfirmButton: false,
             timer: 1500
           }).then(() => {
@@ -109,7 +122,6 @@ export class ChantierAddComponent implements OnInit {
     }
 
   }
-
   
 	onCancel() {
 		this.location.back();
@@ -118,6 +130,5 @@ export class ChantierAddComponent implements OnInit {
   setDateFormat(date){
       return date ? moment(date).format('YYYY-MM-DD') : null;
   }
-
   
 }

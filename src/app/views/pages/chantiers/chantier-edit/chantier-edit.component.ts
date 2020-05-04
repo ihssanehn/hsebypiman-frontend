@@ -52,6 +52,7 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 	
 	ngOnInit() {
 		this.createForm();
+    	this.setDynamicValidators();
 		const routeSubscription = this.activatedRoute.params.subscribe(
 			async params => {
 				const id = params.id;
@@ -60,6 +61,8 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 						tap(res=>{
 							this.chantierForm.patchValue(res.result.data);							
 							this.formPathValues(res.result.data);
+							
+							this.chantierForm.controls['entreprises'].patchValue(res.result.data.entreprises);
 						})
 					).subscribe( async res => {
 						this.chantier = res.result.data;
@@ -106,15 +109,40 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 			charge_affaire_id: [null, Validators.required],
 			status_id: [null, Validators.required],
 			numero: ['', Validators.required],
-			habilitations: new FormArray([])
+			resp_chiffrage_id: [null, Validators.required],
+			no_hab_required: [0, Validators.required],
+			habilitations: this.chantierFB.array([], Validators.required),
+			entreprises: this.chantierFB.array([])
 		});
 	}
 
+	setDynamicValidators(){
+		const no_hab_required = this.chantierForm.get('no_hab_required');
+	}
+  
 	formPathValues(chantier){
 		const habformArray: FormArray = this.chantierForm.get('habilitations') as FormArray;
-		chantier.habilitations.forEach(element => {
-			habformArray.push(new FormControl(element.id));
-		});
+		if(chantier.no_hab_required){
+			habformArray.setValidators(null);
+			habformArray.disable();
+		}else{
+			chantier.habilitations.forEach(element => {
+				habformArray.push(new FormControl(element.id));
+			});
+		}
+
+		const ees: FormArray = this.chantierForm.get('entreprises') as FormArray;
+		chantier.entreprises.forEach(element =>{
+			ees.push(
+				this.chantierFB.group({
+					id:[element.id],
+					entreprise_id: [element.entreprise_id, Validators.required],
+					chiffre_affaire: [element.pivot.chiffre_affaire, Validators.required],
+					date: [element.pivot.date, Validators.required],
+				})
+			)
+		})
+		
 	}
 	/**
 	 * Refresh user
@@ -137,6 +165,11 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 			let form = {...this.chantierForm.value};
 			form.date_demarrage = form.date_demarrage ? moment(form.date_demarrage).format('YYYY-MM-DD') : null
 			form.id = this.chantier.id;
+			if(form.entreprises.length > 0){
+				form.entreprises.forEach(x=>{
+				x.date = this.setDateFormat(x.date);
+				})
+			}
 			this.chantierService.update(form)
 				.toPromise()
 				.then((chantier) => {

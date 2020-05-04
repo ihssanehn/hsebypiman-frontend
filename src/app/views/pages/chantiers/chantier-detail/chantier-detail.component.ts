@@ -153,6 +153,15 @@ export class ChantierDetailComponent implements OnInit, OnDestroy {
 	}
   
 	addAr(chantierId){
-		this.router.navigate(['analyses-risque/add'], {queryParams:{chantier_id:chantierId}})
+		if(this.chantier.montant < 20000){
+			Swal.fire({
+				icon: 'error',
+				title: 'Le montant du chantier est inférieur à 20K€, vous ne pouvez pas créer d\'Analyse de risque',
+				showConfirmButton: false,
+				timer: 4000
+			});
+		}else{
+			this.router.navigate(['analyses-risque/add'], {queryParams:{chantier_id:chantierId}})
+		}
 	}
 }

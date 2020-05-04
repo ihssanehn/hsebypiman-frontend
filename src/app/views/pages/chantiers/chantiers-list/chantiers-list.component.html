@@ -81,15 +81,15 @@
       <!-- ars_count Column -->
       <ng-container matColumnDef="ars_count">
         <th mat-header-cell *matHeaderCellDef class="text-center"> {{'CHANTIERS.ARCOUNT.TITLE' | translate}} </th>
-        <td mat-cell *matCellDef="let chantier" (click)="viewChantier(chantier.id)" class="text-center pointer"> {{chantier.ars_count}} </td>
+        <td mat-cell *matCellDef="let chantier" (click)="viewChantier(chantier.id)" class="text-center pointer"> {{chantier.montant > 20000 ? chantier.ars_count : '-'}} </td>
       </ng-container>
 
       <!-- latest_ar Column -->
       <ng-container matColumnDef="latest_ar">
         <th mat-header-cell *matHeaderCellDef class="text-center"> {{'CHANTIERS.LASTAR.TITLE' | translate}} </th>
         <td mat-cell *matCellDef="let chantier" (click)="viewChantier(chantier.id)" class="text-center pointer"> 
-          <span *ngIf="chantier.ars_count > 0">{{chantier.latest_ar?.date | date:'dd/MM/yyyy'}}</span> 
-          <span *ngIf="chantier.ars_count == 0">-</span> 
+          <span *ngIf="chantier.ars_count > 0 && chantier.montant >= 20000">{{chantier.latest_ar?.created_at | date:'dd/MM/yyyy'}}</span> 
+          <span *ngIf="chantier.ars_count == 0 || chantier.montant < 20000">-</span> 
         </td>
       </ng-container>
 

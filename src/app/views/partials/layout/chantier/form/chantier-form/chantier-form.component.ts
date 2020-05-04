@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ChangeDetectorRef, EventEmitter, Output } from '@angular/core';
-import { FormGroup, FormArray, FormControl } from '@angular/forms';
+import { FormGroup, FormArray, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Type, Status, CatHabilitation } from '@app/core/models';
 import { AuthService, User } from '@app/core/auth';
 import { TypeService, StatusService, CatHabilitationService } from '@app/core/services';
@@ -17,7 +17,6 @@ export class ChantierFormComponent implements OnInit {
   users: User[];
   status: Status[];
   catHabs: CatHabilitation[];
-  showHabs: Boolean = false;
 
   @Input() chantierForm: FormGroup;
   @Input() edit: Boolean;
@@ -25,6 +24,7 @@ export class ChantierFormComponent implements OnInit {
   @Output() onSubmit = new EventEmitter();
   constructor(
     private typeService:TypeService,
+    private fb: FormBuilder,
     private statusService:StatusService,
     private catHabilitationService:CatHabilitationService,
     private authService:AuthService,
@@ -36,7 +36,6 @@ export class ChantierFormComponent implements OnInit {
     this.getUsers();
     this.getStatus();
     this.getCatHabs();
-    this.showHabs = this.chantierForm.get('habilitations').value.length > 0;
   }
 
   async getTypes(){
@@ -64,6 +63,18 @@ export class ChantierFormComponent implements OnInit {
     this.cdr.markForCheck();
   }
 
+  onNoHabCheckChange(event){
+    const habs : FormArray = this.chantierForm.get('habilitations') as FormArray;;
+    if(this.chantierForm.get('no_hab_required').value){
+      habs.clear();
+      habs.setValidators(null);
+      habs.disable();
+    }else{
+      habs.setValidators([Validators.required]);
+      habs.enable();
+    }
+  }
+
   onHabCheckChange(event) {
     const formArray: FormArray = this.chantierForm.get('habilitations') as FormArray;
     if(event.checked){
@@ -85,6 +96,10 @@ export class ChantierFormComponent implements OnInit {
   }
   isFieldRequired(name){
     return !!this.chantierForm.controls[name].validator(name).hasOwnProperty('required');
+  }
+  isEEFieldRequired(name, index){
+    var ee = this.entreprises.controls[index] as FormGroup;
+    return !!ee.controls[name].validator(name) && ee.controls[name].validator(name).hasOwnProperty('required');
   }
   /**
 	 * Checking control validation
@@ -109,5 +124,24 @@ export class ChantierFormComponent implements OnInit {
   }
   cancelForm(){
     this.onCancel.emit()
+  }
+  addEntExt(){
+    this.entreprises.push(this.newEntreprises_externes);
+  }
+
+  get entreprises(): FormArray{
+    return this.chantierForm.get('entreprises') as FormArray;
+  }
+  get newEntreprises_externes(): FormGroup {
+    return this.fb.group({
+      'type_id':[null, [Validators.required]],
+      'entreprise_id':[null, [Validators.required]],
+      'chiffre_affaire':[null, [Validators]],
+      'date':[null, [Validators.required]]
+    });
+  }
+
+  removeEe(i){
+    this.entreprises.removeAt(i);
   }
 }

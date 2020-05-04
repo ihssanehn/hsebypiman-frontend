@@ -1,3 +1,5 @@
+import { noMonitor } from '@ngrx/store-devtools/src/config';
+
 // France
 export const locale = {
 	lang: 'fr',
@@ -161,9 +163,9 @@ export const locale = {
 				SHORTTITLE:'Statut'
 			},
 			CONTACT:{
-				LABEL:'Contact',
+				LABEL:'Contact Client',
 				PLACEHOLDER:'',
-				TITLE:'Contact',
+				TITLE:'Contact client',
 				SHORTTITLE:'Contact',
 			},
 			DATE_DEMARRAGE:{
@@ -177,6 +179,12 @@ export const locale = {
 				LABEL:'Chargé d\'affaire',
 				PLACEHOLDER:'',
 				TITLE:'Chargé d\'affaire',
+				SHORTTITLE:'Nom',
+			},
+			RESP_CHIFFRAGE:{
+				LABEL:'Responsable du chiffrage',
+				PLACEHOLDER:'',
+				TITLE:'Responsable du chiffrage',
 				SHORTTITLE:'Nom',
 			},
 			BUDGET:{
@@ -236,6 +244,27 @@ export const locale = {
 			FORM:{
 				CREATE:'Créer un nouveau chantier'
 			}
+		},
+		// Entreprises Externes
+		EES:{
+			NAME:{
+				LABEL: 'Nom',
+				PLACEHOLDER:'Saisir ici...',
+				TITLE: 'Nom',
+				SHORTTITLE:'Nom',
+			},
+			CA:{
+				LABEL: 'Chiffre d\'affaire',
+				PLACEHOLDER:'Saisir ici...',
+				TITLE: 'Chiffre d\'affaire',
+				SHORTTITLE:'CA',
+			},
+			DATE_DEMARRAGE:{
+				LABEL: 'Date de démarrage',
+				PLACEHOLDER:'Saisir ici...',
+				TITLE: 'Date de démarrage',
+				SHORTTITLE:'Date démarrage',
+			},
 		},
 		ARS:{
 			CHANTIERS:{

@@ -7,6 +7,7 @@ export { Risque } from './risque.model';
 export { Habilitation } from './habilitation.model';
 export { CatRisque } from './catRisque.model';
 export { CatRisqueComment } from './catRisqueComment.model';
+export { Entreprise } from './entreprise.model';
 export { CatHabilitation } from './catHabilitation.model';
 export { Visite } from './visite.model';
 export { Equipement } from './equipement.model';
