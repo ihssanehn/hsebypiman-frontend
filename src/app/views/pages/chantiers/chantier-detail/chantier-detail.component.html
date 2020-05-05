@@ -53,7 +53,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">
         <div class="card" >
           <h3>Informations sécurité</h3>
           <div *ngIf="chantier.latest_ar; else noAr">
@@ -92,7 +92,7 @@
           </ng-template>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-5">
         <div class="card">
           <h3>Suivi de chantier</h3>
           <div class="box box-ar-vs" style="flex: 1;">
@@ -115,7 +115,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-6 mt-4">
+      <div class="col-md-12 mt-4">
         <div class="card" *ngIf="chantier.entreprises.length; else noEntreprises">
           <h5>{{'CHANTIERS.EES.TITLE' | translate}}<small class="pull-right">{{'CHANTIERS.EECOUNT.SHORTTITLE' | translate}} : <span class="blue">{{chantier.entreprises.length}}</span></small></h5>
           <div class="px-5">
@@ -140,7 +140,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-6 mt-4">
+      <div class="col-md-12 mt-4">
         <div class="card" *ngIf="!chantier.no_hab_required; else noHabRequired">
           <h5> Habilitations obligatoires pour accéder au chantier <small class="pull-right">{{'CHANTIERS.HABCOUNT.SHORTTITLE' | translate}} : <span class="blue">{{chantier.habilitations.length}}</span></small></h5>
           <ul>

@@ -151,7 +151,7 @@
 							</button>
 						</h5>
 					</div>
-					<div class="col-12 my-2" *ngFor="let ent of chantierForm.get('entreprises').controls; let entIndex = index;">
+					<div class="col-12 my-2" *ngFor="let ent of entreprises.controls; let entIndex = index;">
 						<div [formGroupName]="entIndex" class="row">
 							<mat-form-field class="col-xl-2">
 								<mat-label>{{'EES.TYPE.LABEL' | translate}}</mat-label>
