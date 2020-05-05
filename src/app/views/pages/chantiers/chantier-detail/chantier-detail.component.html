@@ -26,7 +26,7 @@
       <div class="col-md-4">
         <div class="card">
           <h3>Informations générales</h3>
-          <div class="box">
+          <div class="box" style="flex:1">
             <p><span class="label pull-left mr-2">{{'CHANTIERS.NAME.SHORTTITLE' | translate}}</span><span class="">{{chantier.nom}}</span></p>
             <p><span class="label pull-left mr-2">{{'CHANTIERS.TYPE.SHORTTITLE' | translate}}</span><span class="">{{chantier.type?.libelle}}</span></p>
             <p><span class="label pull-left mr-2">{{'CHANTIERS.DATE_DEMARRAGE.TITLE' | translate}}</span><span class="">{{chantier.date_demarrage | date:'dd/MM/yyyy'}}</span></p>
@@ -36,7 +36,7 @@
           <div class="tf-divider">
             <span></span>
           </div>
-          <div class="box box-coords">
+          <div class="box box-coords" style="flex:1">
             <h5><b>Coordonnées chantier</b></h5>
             <p><span class="label pull-left mr-2">{{'CHANTIERS.CLIENT.SHORTTITLE' | translate}}</span><span class="">{{chantier.client}}</span></p>
             <p><span class="label pull-left mr-2">{{'CHANTIERS.ADRESS.SHORTTITLE' | translate}}</span><span class="">{{chantier.adresse}}</span></p>
@@ -53,19 +53,36 @@
           </div>
         </div>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-4">
         <div class="card" >
           <h3>Informations sécurité</h3>
           <div *ngIf="chantier.latest_ar; else noAr">
-              <div class="box">
-                <p><span class="label pull-left">{{'ARS.REALISATEUR.TITLE' | translate}}</span><br>{{chantier.latest_ar?.realisateur}}</p>
-                <p><span class="label pull-left">{{'ARS.DATE_ACCUEIL_SECU.TITLE' | translate}}</span><br>{{chantier.latest_ar?.date_accueil_secu | date:'dd/MM/yyyy'}}</p>
-                <p><span class="label pull-left">{{'ARS.DATE_VALIDITE.TITLE' | translate}}</span><br>{{chantier.latest_ar?.date_validite | date:'dd/MM/yyyy'}}</p>
+              <div class="box" style="flex: 1;">
+                <p><span class="label pull-left">{{'ARS.PREVOIR_COMPAGNONS.TITLE' | translate}}</span><br>{{chantier.latest_ar?.a_prevoir_compagnons ? 'Oui':'Non'}}</p>
+                <p *ngIf="chantier.latest_ar?.a_prevoir_compagnons"><span class="label pull-left">{{'ARS.REALISATEUR.TITLE' | translate}}</span><br>{{chantier.latest_ar?.realisateur}}</p>
+                <p *ngIf="chantier.latest_ar?.a_prevoir_compagnons"><span class="label pull-left">{{'ARS.DATE_ACCUEIL_SECU.TITLE' | translate}}</span><br>{{chantier.latest_ar?.date_accueil_secu | date:'dd/MM/yyyy'}}</p>
+                <p *ngIf="chantier.latest_ar?.a_prevoir_compagnons"><span class="label pull-left">{{'ARS.DATE_VALIDITE.TITLE' | translate}}</span><br>{{chantier.latest_ar?.date_validite | date:'dd/MM/yyyy'}}</p>
+                <div class="row" *ngIf="chantier.latest_ar?.a_prevoir_compagnons">
+                  <div class="col-12 ">
+                    <span class="label pull-left">{{'ARS.AS_DAYS.LABEL' | translate}}</span><br>
+                  </div>
+                  <div class="col-12 my-3">
+                    <mat-chip-list *ngIf="chantier.latest_ar.accueil_secu_days; else noSecuDays">
+                      <mat-chip *ngFor="let as_day of chantier.latest_ar.accueil_secu_days" class="chip-item">
+                        {{as_day}}
+                      </mat-chip>
+                    </mat-chip-list>
+                  </div>
+                </div>
+                <p><span class="label pull-left">{{'ARS.FORM.MWBLOCK.WORKREGISTER.TITLE' | translate}}</span><br>{{chantier.latest_ar?.a_signer_registre_travaux ? 'Oui':'Non'}}</p>
+                <p *ngIf="chantier.latest_ar?.a_signer_registre_travaux"><span class="label pull-left">{{'ARS.ASIGNER.LABEL' | translate}}</span><br>{{chantier.latest_ar?.registre_signing_period}}</p>
               </div>
-              <div class="box">
+              <div class="box" style="flex: 1;">
                 <h5><b>En cas d'urgence</b></h5>
                 <p><span class="label pull-left mr-2">{{'ARS.CONTACT_INTERNE_SECOURS.SHORTTITLE' | translate}}</span><br><span class="blue">{{chantier.latest_ar?.contact_interne_secours}}</span></p>
                 <p><span class="label pull-left mr-2">{{'ARS.TEL_CONTACT_INTERNE_SECOURS.SHORTTITLE' | translate}}</span><br><span class="blue">{{chantier.latest_ar?.tel_contact_interne_secours}}</span></p>
+                <p class="mt-3"><span class="label pull-left mr-2">{{'ARS.CONTACT_CLIENT_HSE.SHORTTITLE' | translate}}</span><br><span class="blue">{{chantier.latest_ar?.contact_client_hse}}</span></p>
+                <p><span class="label pull-left mr-2">{{'ARS.TEL_CONTACT_CLIENT_HSE.SHORTTITLE' | translate}}</span><br><span class="blue">{{chantier.latest_ar?.tel_contact_client_hse}}</span></p>
               </div>
           </div>
           <ng-template #noAr>
@@ -75,11 +92,11 @@
           </ng-template>
         </div>
       </div>
-      <div class="col-md-5">
+      <div class="col-md-4">
         <div class="card">
           <h3>Suivi de chantier</h3>
-          <div class="box box-ar-vs">
-            <h5><b>Suivis analyses de risques</b><span class="pull-right">{{'CHANTIERS.ARCOUNT.SHORTTITLE' | translate}} : <span class="blue">{{chantier.ars.length}}</span></span></h5>
+          <div class="box box-ar-vs" style="flex: 1;">
+            <h5><b>Suivis analyses de risques</b><small class="pull-right">{{'CHANTIERS.ARCOUNT.SHORTTITLE' | translate}} : <span class="blue">{{chantier.ars.length}}</span></small></h5>
             <div class="row">
               <div class="col-md-6"><p><span class="label pull-left mr-2">{{'CHANTIERS.NEXTAR.TITLE' | translate}}</span></p></div>
               <div class="col-md-6"><p  class="text-right blue">{{chantier.latest_ar?.date_validite | date:'dd/MM/yyyy'}}</p></div>
@@ -89,12 +106,8 @@
               <div class="col-md-6"><p class="text-right" *ngFor="let ar of chantier.ars">{{ar.date | date:'dd/MM/yyyy'}}</p></div>
             </div>
           </div>
-          <div class="box box-ar-vs">
-            <h5><b>Suivis visites de sécurité</b><span class="pull-right">{{'CHANTIERS.VSCOUNT.SHORTTITLE' | translate}} : <span class="blue">{{chantier.vss.length}}</span></span></h5>
-            <!-- <div class="row">
-              <div class="col-md-6"><p><span class="label pull-left mr-2">{{'CHANTIERS.NEXTVS.TITLE' | translate}}</span></p></div>
-              <div class="col-md-6"><p  class="text-right blue">{{chantier.latest_vs?.date_validite | date:'dd/MM/yyyy'}}</p></div>
-            </div> -->
+          <div class="box box-ar-vs" style="flex: 1;">
+            <h5><b>Suivis visites de sécurité</b><small class="pull-right">{{'CHANTIERS.VSCOUNT.SHORTTITLE' | translate}} : <span class="blue">{{chantier.vss.length}}</span></small></h5>
             <div class="row">
               <div class="col-md-6"><p><span class="label pull-left mr-2">{{'CHANTIERS.VSS.TITLE' | translate}}</span></p></div>
               <div class="col-md-6"><p class="text-right" *ngFor="let vs of chantier.vss">{{vs.date_visite | date:'dd/MM/yyyy'}}</p></div>
@@ -102,9 +115,34 @@
           </div>
         </div>
       </div>
-      <div class="col-md-12 mt-4">
-        <div class="card">
-          <h5>Habilitations requises</h5>
+      <div class="col-md-6 mt-4">
+        <div class="card" *ngIf="chantier.entreprises.length; else noEntreprises">
+          <h5>{{'CHANTIERS.EES.TITLE' | translate}}<small class="pull-right">{{'CHANTIERS.EECOUNT.SHORTTITLE' | translate}} : <span class="blue">{{chantier.entreprises.length}}</span></small></h5>
+          <div class="px-5">
+            <table class="table table-borderless table-sm table-striped px-4">
+              <thead>
+                <tr>
+                  <th scope="col">{{'EES.RAISON_SOCIALE.TITLE' | translate}}</th>
+                  <th class="text-center" scope="col">{{'EES.TYPE.TITLE' | translate}}</th>
+                  <th class="text-center" scope="col">{{'EES.CA.TITLE' | translate}}</th>
+                  <th class="text-center" scope="col">{{'EES.DATE_DEMARRAGE.TITLE' | translate}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let entreprise of chantier.entreprises">
+                  <th scope="row">{{entreprise.raison_sociale}}</th>
+                  <td class="text-center">{{entreprise.type.libelle}}</td>
+                  <td class="text-center">{{entreprise.pivot.chiffre_affaire | currency:'EUR':'€'}}</td>
+                  <td class="text-center">{{entreprise.pivot.date_demarrage | date:'dd/MM/yyyy'}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mt-4">
+        <div class="card" *ngIf="!chantier.no_hab_required; else noHabRequired">
+          <h5> Habilitations obligatoires pour accéder au chantier <small class="pull-right">{{'CHANTIERS.HABCOUNT.SHORTTITLE' | translate}} : <span class="blue">{{chantier.habilitations.length}}</span></small></h5>
           <ul>
             <li *ngFor="let hab of chantier.habilitations">
               {{hab.libelle}}
@@ -131,3 +169,18 @@
     </div>
   </tf-portlet-body>
 </tf-portlet>
+
+<ng-template #noEntreprises>
+  <div class="card">
+    <h5 class="mb-4">Aucune Entreprise Externe</h5>
+  </div>
+</ng-template>
+
+<ng-template #noHabRequired>
+  <div class="card">
+    <h5 class="mb-4">Aucune habilitations obligatoires pour accéder au chantier</h5>
+  </div>
+</ng-template>
+<ng-template #noSecuDays>
+  -
+</ng-template>

@@ -248,10 +248,16 @@ export const locale = {
 				SHORTTITLE:'Entreprises Externes',
 			},
 			EECOUNT:{
-				LABEL:'Quantité E.E',
+				LABEL:'Nombre d\'E.E',
 				PLACEHOLDER:'',
-				TITLE:'Quantité E.E',
+				TITLE:'Nombre d\'E.E',
 				SHORTTITLE:'Nombre d\'entreprises externes',
+			},
+			HABCOUNT:{
+				LABEL:'Nombre d\'habilitations',
+				PLACEHOLDER:'',
+				TITLE:'Nombre d\'habilitations',
+				SHORTTITLE:'Nombre d\'habilitations',
 			},
 			EE_PRESENCE:{
 				LABEL:'Présence d\'E.E',

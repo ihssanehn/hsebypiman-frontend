@@ -1,7 +1,7 @@
 :host::ng-deep {
     #portlet-chantier{
         color: black;
-        font-size:1.1em;
+        font-size:1em;
         font-weight: bolder;
         .tf-portlet{
             background-color: #f7f9fc;
@@ -36,7 +36,7 @@
             
             .tf-portlet__body{
                 padding: 20px;
-                font-weight: bolder;
+                font-weight: bold;
                 .card{
                     padding: 2em 2em 0;    
                     height: 100%;
@@ -85,4 +85,10 @@
             }
         }
     }
+}
+
+.badge-pill {
+    padding-right: 0.7em;
+    padding-left: 0.7em;
+    border-radius: 10rem;
 }
