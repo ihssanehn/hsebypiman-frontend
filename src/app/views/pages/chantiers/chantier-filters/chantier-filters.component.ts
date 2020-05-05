@@ -34,6 +34,10 @@ export class ChantierFiltersComponent implements OnInit, AfterViewInit
     'Avec',
     'Sans'
   ]
+  entrepriseOptions = [
+    'Avec',
+    'Sans'
+  ]
   statuses;
 
   @Output() change = new EventEmitter();
@@ -94,6 +98,7 @@ export class ChantierFiltersComponent implements OnInit, AfterViewInit
   initFiltersForm(){
     this.filterForm = this.fb.group({
       charge_affaire_id:[null],
+      resp_chiffrage_id:[null],
       status_id:[null],
       type_id:[null],
       client:[null],
@@ -103,6 +108,7 @@ export class ChantierFiltersComponent implements OnInit, AfterViewInit
       date_demarrage_end:[null],
       visite:[null],
       analyse:[null],
+      entreprise:[null],
     })
   }
  

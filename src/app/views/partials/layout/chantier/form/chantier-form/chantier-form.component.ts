@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, ChangeDetectorRef, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormArray, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { Type, Status, CatHabilitation } from '@app/core/models';
+import { Type, Status, CatHabilitation, Entreprise } from '@app/core/models';
 import { AuthService, User } from '@app/core/auth';
-import { TypeService, StatusService, CatHabilitationService } from '@app/core/services';
+import { TypeService, StatusService, CatHabilitationService, EntrepriseService } from '@app/core/services';
 import { first } from 'rxjs/operators';
 
 
@@ -13,10 +13,18 @@ import { first } from 'rxjs/operators';
 })
 export class ChantierFormComponent implements OnInit {
 
-  types: Type[];
-  users: User[];
-  status: Status[];
-  catHabs: CatHabilitation[];
+  typesList: Type[];
+  typesLoaded: boolean = false;
+  usersList: User[];
+  usersLoaded: boolean = false;
+  statusList: Status[];
+  statusLoaded: boolean = false;
+  catHabsList: CatHabilitation[];
+  catHabsLoaded: boolean = false;
+  entreprisesList: Entreprise[];
+  entreprisesLoaded: boolean = false;
+  entrepriseTypesList: Type[];
+  entrepriseTypesLoaded: boolean = false;
 
   @Input() chantierForm: FormGroup;
   @Input() edit: Boolean;
@@ -27,6 +35,7 @@ export class ChantierFormComponent implements OnInit {
     private fb: FormBuilder,
     private statusService:StatusService,
     private catHabilitationService:CatHabilitationService,
+    private entrepriseService: EntrepriseService,
     private authService:AuthService,
     private cdr: ChangeDetectorRef,
   ) { }
@@ -36,29 +45,67 @@ export class ChantierFormComponent implements OnInit {
     this.getUsers();
     this.getStatus();
     this.getCatHabs();
+    this.getEntreprises();
+    this.getEntrepriseTypes();
   }
 
   async getTypes(){
+    this.typesLoaded = false;
     var res = await this.typeService.getAllFromModel('Chantier').toPromise();
-    this.types = res.result.data;
+    if(res){
+      this.typesList = res.result.data;
+      this.typesLoaded = true;
+    }
     this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
   async getUsers(){
+    this.usersLoaded = false;
     var res = await this.authService.getList().toPromise();
-    this.users = res.result.data;
+    if(res){
+      this.usersList = res.result.data;
+      this.usersLoaded = true;
+    }
     this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
   async getStatus(){
+    this.statusLoaded = false;
     var res = await this.statusService.getAllFromModel('Chantier').toPromise();
-    this.status = res.result.data;
+    if(res){
+      this.statusList = res.result.data;
+      this.statusLoaded = true;
+    }
     this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
   async getCatHabs(){
+    this.catHabsLoaded = false;
     var res = await this.catHabilitationService.getAll().toPromise();
-    this.catHabs = res.result.data;
+    if(res){
+      this.catHabsList = res.result.data;
+      this.catHabsLoaded = true;
+    }
+    this.cdr.detectChanges();
+    this.cdr.markForCheck();
+  }
+  async getEntreprises(){
+    this.entreprisesLoaded = false;
+    var res = await this.entrepriseService.getAll({'grouped':true}).toPromise();
+    if(res){
+      this.entreprisesList = res.result.data;
+      this.entreprisesLoaded = true;
+    }
+    this.cdr.detectChanges();
+    this.cdr.markForCheck();
+  }
+  async getEntrepriseTypes(){
+    this.entrepriseTypesLoaded = false;
+    var res = await this.typeService.getAllFromModel('Entreprise').toPromise();
+    if(res){
+      this.entrepriseTypesList = res.result.data;
+      this.entrepriseTypesLoaded = true;
+    }
     this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
@@ -100,6 +147,7 @@ export class ChantierFormComponent implements OnInit {
   isEEFieldRequired(name, index){
     var ee = this.entreprises.controls[index] as FormGroup;
     return !!ee.controls[name].validator(name) && ee.controls[name].validator(name).hasOwnProperty('required');
+    return true;
   }
   /**
 	 * Checking control validation
@@ -126,22 +174,30 @@ export class ChantierFormComponent implements OnInit {
     this.onCancel.emit()
   }
   addEntExt(){
-    this.entreprises.push(this.newEntreprises_externes);
+    this.entreprises.push(this.newEntreprises);
   }
 
   get entreprises(): FormArray{
     return this.chantierForm.get('entreprises') as FormArray;
   }
-  get newEntreprises_externes(): FormGroup {
+  get newEntreprises(): FormGroup {
     return this.fb.group({
-      'type_id':[null, [Validators.required]],
+      'type_code':[null, [Validators.required]],
       'entreprise_id':[null, [Validators.required]],
       'chiffre_affaire':[null, [Validators]],
-      'date':[null, [Validators.required]]
+      'date_demarrage':[null, [Validators.required]]
     });
   }
 
   removeEe(i){
     this.entreprises.removeAt(i);
+  }
+  entHasCode(i){
+    if(!this.entrepriseTypesLoaded){
+      return false;
+    }
+    var entreprise : FormGroup = this.entreprises.controls[i] as FormGroup;
+    var code = entreprise.controls['type_code'].value;
+    return code;
   }
 }

@@ -135,10 +135,10 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 		chantier.entreprises.forEach(element =>{
 			ees.push(
 				this.chantierFB.group({
-					id:[element.id],
-					entreprise_id: [element.entreprise_id, Validators.required],
-					chiffre_affaire: [element.pivot.chiffre_affaire, Validators.required],
-					date: [element.pivot.date, Validators.required],
+					type_code:[element.type.code, Validators],
+					entreprise_id: [element.id, Validators.required],
+					chiffre_affaire: [element.pivot.chiffre_affaire, Validators],
+					date_demarrage: [element.pivot.date_demarrage, Validators],
 				})
 			)
 		})
@@ -167,7 +167,7 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 			form.id = this.chantier.id;
 			if(form.entreprises.length > 0){
 				form.entreprises.forEach(x=>{
-				x.date = this.setDateFormat(x.date);
+				x.date_demarrage = this.setDateFormat(x.date_demarrage);
 				})
 			}
 			this.chantierService.update(form)

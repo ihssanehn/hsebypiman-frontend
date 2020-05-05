@@ -8,7 +8,7 @@
 						<mat-form-field class="pull-right" style="font-size: 1rem;">
 							<mat-label>{{'CHANTIERS.STATUS.LABEL' | translate}}</mat-label>
 							<mat-select class="form-control" placeholder="" formControlName="status_id" [required]="isFieldRequired('status_id')">
-								<mat-option *ngFor="let statu of status" [ngStyle]="statu.color && {'color':statu.color}" [value]="statu.id">
+								<mat-option *ngFor="let statu of statusList" [ngStyle]="statu.color && {'color':statu.color}" [value]="statu.id">
 									<span>
 										{{ statu.libelle }}
 									</span>
@@ -36,7 +36,7 @@
 									<mat-form-field class="col-xl-3">
 										<mat-label>{{'CHANTIERS.TYPE.LABEL' | translate}}</mat-label>
 										<mat-select class="form-control" placeholder="" formControlName="type_id" [required]="isFieldRequired('type_id')">
-											<mat-option *ngFor="let type of types" [value]="type.id">
+											<mat-option *ngFor="let type of typesList" [value]="type.id">
 												{{ type.libelle }}
 											</mat-option>
 										</mat-select>
@@ -69,7 +69,7 @@
 										bindValue="id" [clearable]="false">
 									</ng-select> -->
 										<mat-select class="form-control" [required]="isFieldRequired('charge_affaire_id')" placeholder="" formControlName="charge_affaire_id">
-											<mat-option *ngFor="let user of users" [value]="user.id">
+											<mat-option *ngFor="let user of usersList" [value]="user.id">
 												{{ user.fullname }}
 											</mat-option>
 										</mat-select>
@@ -80,7 +80,7 @@
 									<mat-form-field class="col-xl-3">
 										<mat-label>{{'CHANTIERS.RESP_CHIFFRAGE.LABEL' | translate}}</mat-label>
 										<mat-select class="form-control" [required]="isFieldRequired('resp_chiffrage_id')" placeholder="" formControlName="resp_chiffrage_id">
-											<mat-option *ngFor="let user of users" [value]="user.id">
+											<mat-option *ngFor="let user of usersList" [value]="user.id">
 												{{ user.fullname }}
 											</mat-option>
 										</mat-select>
@@ -141,7 +141,7 @@
 		</tf-portlet>
 		<tf-portlet>
 			<tf-portlet-body>
-				<div formArrayName="entreprises_externes" class="row">
+				<div formArrayName="entreprises" class="row">
 					<div class="col-12">
 						<h5 class="mb-4">Entreprises externes
 							<button mat-button type="button" color="info" class="pull-right btn-small" (click)="addEntExt()">
@@ -151,16 +151,31 @@
 							</button>
 						</h5>
 					</div>
-					<div class="col-12 my-2" *ngFor="let ent of chantierForm.get('entreprises_externes').controls; let entIndex = index;">
+					<div class="col-12 my-2" *ngFor="let ent of chantierForm.get('entreprises').controls; let entIndex = index;">
 						<div [formGroupName]="entIndex" class="row">
-							<mat-form-field class="col-xl-3">
-								<mat-label>{{'EES.NAME.LABEL' | translate}}</mat-label>
-								<input matInput class="form-control" type="text" name="libelle" formControlName="libelle" [required]="isEEFieldRequired('libelle', entIndex)" placeholder="Saisir ici" />
-								<mat-error *ngIf="isControlHasError('libelle','required')">
+							<mat-form-field class="col-xl-2">
+								<mat-label>{{'EES.TYPE.LABEL' | translate}}</mat-label>
+								<mat-select class="form-control" formControlName="type_code" [required]="isEEFieldRequired('type_code', entIndex)">
+									<mat-option *ngFor="let type of entrepriseTypesList" [value]="type.code">
+										{{ type.libelle }}
+									</mat-option>
+								</mat-select>
+								<mat-error *ngIf="isControlHasError('type_code','required')">
+									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+								</mat-error>
+							</mat-form-field> 
+							<mat-form-field class="col-xl-3" *ngIf="entHasCode(entIndex)">
+								<mat-label>{{'EES.RAISON_SOCIALE.LABEL' | translate}}</mat-label>
+								<mat-select class="form-control" formControlName="entreprise_id" [required]="isEEFieldRequired('entreprise_id', entIndex)">
+									<mat-option *ngFor="let entreprise of entreprisesList[entHasCode(entIndex)]" [value]="entreprise.id">
+										{{ entreprise.raison_sociale }}
+									</mat-option>
+								</mat-select>
+								<mat-error *ngIf="isControlHasError('entreprise_id','required')">
 									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 								</mat-error>
 							</mat-form-field>
-							<mat-form-field class="col-xl-3">
+							<mat-form-field class="col-xl-3" *ngIf="entHasCode(entIndex)">
 								<mat-label>{{'EES.CA.LABEL' | translate}}</mat-label>
 								<input matInput mask="separator.2" class="form-control" type="string" name="chiffre_affaire" formControlName="chiffre_affaire" [required]="isEEFieldRequired('chiffre_affaire', entIndex)" placeholder="Saisir ici" />
 								<mat-icon matSuffix>euro_symbol</mat-icon>
@@ -168,12 +183,12 @@
 									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 								</mat-error>
 							</mat-form-field>
-							<mat-form-field class="col-xl-3">
+							<mat-form-field class="col-xl-3" *ngIf="entHasCode(entIndex)">
 								<mat-label>{{'EES.DATE_DEMARRAGE.LABEL' | translate}}</mat-label>
-								<input matInput class="form-control" [matDatepicker]="ee_date_picker" formControlName="date" [required]="isEEFieldRequired('date', entIndex)" placeholder="DD/MM/YYYY">
+								<input matInput class="form-control" [matDatepicker]="ee_date_picker" formControlName="date_demarrage" [required]="isEEFieldRequired('date_demarrage', entIndex)" placeholder="DD/MM/YYYY">
 								<mat-datepicker-toggle matSuffix [for]="ee_date_picker"></mat-datepicker-toggle>
 								<mat-datepicker #ee_date_picker></mat-datepicker>
-								<mat-error *ngIf="isControlHasError('date','required')">
+								<mat-error *ngIf="isControlHasError('date_demarrage','required')">
 									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 								</mat-error>
 							</mat-form-field>
@@ -197,7 +212,7 @@
 								<mat-checkbox (change)="onNoHabCheckChange($event)" formControlName="no_hab_required">Pas d'habilitation Nécessaire</mat-checkbox>
 							</div>
 						</div>
-						<div class="row my-3" *ngFor="let catHab of catHabs">
+						<div class="row my-3" *ngFor="let catHab of catHabsList">
 							<div class="col-12">
 								<h6>{{catHab.libelle}}</h6>
 							</div>

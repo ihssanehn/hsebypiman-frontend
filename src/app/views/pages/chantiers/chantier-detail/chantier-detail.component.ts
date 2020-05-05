@@ -156,7 +156,7 @@ export class ChantierDetailComponent implements OnInit, OnDestroy {
 		if(this.chantier.montant < 20000){
 			Swal.fire({
 				icon: 'error',
-				title: 'Le montant du chantier est inférieur à 20K€, vous ne pouvez pas créer d\'Analyse de risque',
+				title: 'Le montant du chantier est inférieur à 20K€, vous ne pouvez pas créer d\'analyse de risque',
 				showConfirmButton: false,
 				timer: 4000
 			});

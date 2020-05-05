@@ -11,7 +11,7 @@ import { Paginate } from '@app/core/_base/layout/models/paginate.model';
 import {JsonResponse} from '@app/core/_base/layout/models/jsonResponse.model';
 import { Router } from '@angular/router';
 
-export class StatusService extends HttpService{
+export class EntrepriseService extends HttpService{
 
     baseUrl = environment.apiBaseUrl+'entreprises';
     constructor(
@@ -21,8 +21,8 @@ export class StatusService extends HttpService{
         super()
     }
 
-    getAll(){
-        return this.http.post<JsonResponse<Status[]>>(this.baseUrl, {});
+    getAll(params){
+        return this.http.post<JsonResponse<Status[]>>(this.baseUrl, {...params});
     }
     getAllFromType(type){
         return this.http.post<JsonResponse<Status[]>>(this.baseUrl, {'type': type});

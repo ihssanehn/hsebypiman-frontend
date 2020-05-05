@@ -81,7 +81,7 @@ export class ChantierAddComponent implements OnInit {
       form.date_demarrage = this.setDateFormat(form.date_demarrage)
       if(form.entreprises.length > 0){
         form.entreprises.forEach(x=>{
-          x.date = this.setDateFormat(x.date);
+          x.date_demarrage = this.setDateFormat(x.date_demarrage);
         })
       }
   

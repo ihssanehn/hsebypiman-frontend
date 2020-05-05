@@ -241,17 +241,41 @@ export const locale = {
 				TITLE:'Visites passées',
 				SHORTTITLE:'Visites passées',
 			},
+			EES:{
+				LABEL:'Entreprises Externes',
+				PLACEHOLDER:'',
+				TITLE:'Entreprises Externes',
+				SHORTTITLE:'Entreprises Externes',
+			},
+			EECOUNT:{
+				LABEL:'Quantité E.E',
+				PLACEHOLDER:'',
+				TITLE:'Quantité E.E',
+				SHORTTITLE:'Nombre d\'entreprises externes',
+			},
+			EE_PRESENCE:{
+				LABEL:'Présence d\'E.E',
+				PLACEHOLDER:'',
+				TITLE:'Présence d\'E.E',
+				SHORTTITLE:'Présence d\'entreprises externes',
+			},
 			FORM:{
 				CREATE:'Créer un nouveau chantier'
 			}
 		},
 		// Entreprises Externes
 		EES:{
-			NAME:{
-				LABEL: 'Nom',
+			TYPE:{
+				LABEL: 'Type d\'entreprise',
 				PLACEHOLDER:'Saisir ici...',
-				TITLE: 'Nom',
-				SHORTTITLE:'Nom',
+				TITLE: 'Type d\'entreprise',
+				SHORTTITLE:'Type',
+			},
+			RAISON_SOCIALE:{
+				LABEL: 'Raison sociale',
+				PLACEHOLDER:'Saisir ici...',
+				TITLE: 'Raison sociale',
+				SHORTTITLE:'Raison sociale',
 			},
 			CA:{
 				LABEL: 'Chiffre d\'affaire',
