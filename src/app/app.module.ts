@@ -51,7 +51,7 @@ import { AuthModule } from './views/pages/auth/auth.module';
 import { AuthService } from './core/auth';
 import { 
 	ChantierService, TypeService, StatusService, CategorieService, ArService, CatRisqueService, EquipementService,
-	EntrepriseService, VisiteService, CatHabilitationService, ZoneService, SignatureService 
+	EntrepriseService, VisiteService, CatHabilitationService, ZoneService, SignatureService, HabilitationService 
 } from './core/services';
 // CRUD
 import { HttpUtilsService, LayoutUtilsService, TypesUtilsService } from './core/_base/crud';
@@ -64,6 +64,9 @@ import * as typescript from 'highlight.js/lib/languages/typescript';
 import * as scss from 'highlight.js/lib/languages/scss';
 import * as xml from 'highlight.js/lib/languages/xml';
 import * as json from 'highlight.js/lib/languages/json';
+
+import { NZ_I18N,en_US } from 'ng-zorro-antd';
+
 
 // tslint:disable-next-line:class-name
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -158,6 +161,7 @@ export function hljsLanguages(): HighlightLanguage[] {
 		VersionCheckService,
 		SplashScreenService,
 		CatHabilitationService,
+		HabilitationService,
 		ZoneService,
 		SignatureService,
 		
@@ -189,6 +193,8 @@ export function hljsLanguages(): HighlightLanguage[] {
 		{ provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
 		{ provide: MAT_DATE_FORMATS, useValue: MY_FORMAT },
 		{ provide: DateAdapter, useClass: CustomDateAdapter },
+		{ provide: NZ_I18N, useValue: en_US }
+
 	],
 	bootstrap: [AppComponent],
 })

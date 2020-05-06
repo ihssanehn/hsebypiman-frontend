@@ -58,6 +58,8 @@ import {
 	DateAdapter
 } from '@angular/material';
 import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapter';
+import { ChantierAdminComponent } from './chantier-admin/chantier-admin.component';
+
 
 
 const routes: Routes = [
@@ -97,6 +99,10 @@ const routes: Routes = [
 			{
 				path: 'edit/:id',
 				component: ChantierEditComponent
+			},
+			{
+				path: 'admin',
+				component: ChantierAdminComponent
 			},
 		]
 	}
@@ -140,7 +146,8 @@ const routes: Routes = [
 		MatDialogModule,
 		NgbDropdownModule,
 		NgbTabsetModule,
-		NgbTooltipModule,
+		NgbTooltipModule
+
 	],
 	providers: [
 		InterceptService,
@@ -176,6 +183,7 @@ const routes: Routes = [
 		ChantierAddComponent,
 		ChantierDetailComponent,
 		ChantierFiltersComponent,
+		ChantierAdminComponent,
 	]
 })
 export class ChantiersModule {}

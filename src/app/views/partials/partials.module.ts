@@ -32,7 +32,7 @@ import {
 	MatTooltipModule
 } from '@angular/material';
 // NgBootstrap
-import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 // Perfect Scrollbar
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 // Core module
@@ -90,6 +90,16 @@ import { InlineSVGModule } from 'ng-inline-svg';
 import { CartComponent } from './layout/topbar/cart/cart.component';
 import { PaginationComponent } from './content/general/pagination/pagination.component';
 import { NgxMaskModule} from 'ngx-mask';
+import { AdminListPortletComponent } from './layout/admin-list-portlet/admin-list-portlet.component';
+import { 
+		NzTableModule, 
+		NzInputModule, 
+		NzPopconfirmModule, 
+		NzDividerModule, 
+		NzIconModule 
+} from 'ng-zorro-antd';
+import { AdminAddModalComponent } from './layout/admin-add-modal/admin-add-modal.component';
+import { ScrollDispatchModule, ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
 	declarations: [
@@ -137,6 +147,8 @@ import { NgxMaskModule} from 'ngx-mask';
 		CommingSoonComponent,
 		ArFormComponent,
 		SearchChantierFormComponent,
+		AdminListPortletComponent,
+		AdminAddModalComponent,
 	],
 	exports: [
 		WidgetModule,
@@ -186,6 +198,8 @@ import { NgxMaskModule} from 'ngx-mask';
 		ErrorComponent,
 		PaginationComponent,
 		CommingSoonComponent,
+
+		AdminListPortletComponent,
 	],
 	imports: [
 		CommonModule,
@@ -229,8 +243,20 @@ import { NgxMaskModule} from 'ngx-mask';
 		NgbTooltipModule,
 		NgxMaskModule,
 		MatSlideToggleModule,
-		MatChipsModule
-	]
+		MatChipsModule,
+		NgbModalModule,
+
+		NzTableModule,
+		NzInputModule,
+		NzPopconfirmModule,
+		NzDividerModule,
+		NzIconModule,
+
+
+	],
+	entryComponents: [
+		AdminAddModalComponent
+	],
 })
 export class PartialsModule {
 }

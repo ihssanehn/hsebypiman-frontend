@@ -1,0 +1,25 @@
+:host {
+
+    &>.tf-portlet{
+
+        min-height : 330px;
+
+        .anticon {
+            vertical-align: 0;
+        }
+    
+        .ant-table-tbody > tr > td {
+            font-weight: 500;
+            font-size: 13px;
+        }
+    
+        /deep/ nz-divider {
+            .ant-divider-inner-text {
+                font-size: 1.5rem;
+            }
+        }
+        
+    }
+
+
+}
