@@ -90,6 +90,14 @@ import { InlineSVGModule } from 'ng-inline-svg';
 import { CartComponent } from './layout/topbar/cart/cart.component';
 import { PaginationComponent } from './content/general/pagination/pagination.component';
 import { NgxMaskModule} from 'ngx-mask';
+import { AdminListPortletComponent } from './layout/admin-list-portlet/admin-list-portlet.component';
+import { 
+		NzTableModule, 
+		NzInputModule, 
+		NzPopconfirmModule, 
+		NzDividerModule, 
+		NzIconModule 
+} from 'ng-zorro-antd';
 
 @NgModule({
 	declarations: [
@@ -137,6 +145,7 @@ import { NgxMaskModule} from 'ngx-mask';
 		CommingSoonComponent,
 		ArFormComponent,
 		SearchChantierFormComponent,
+		AdminListPortletComponent,
 	],
 	exports: [
 		WidgetModule,
@@ -186,6 +195,8 @@ import { NgxMaskModule} from 'ngx-mask';
 		ErrorComponent,
 		PaginationComponent,
 		CommingSoonComponent,
+
+		AdminListPortletComponent
 	],
 	imports: [
 		CommonModule,
@@ -229,7 +240,13 @@ import { NgxMaskModule} from 'ngx-mask';
 		NgbTooltipModule,
 		NgxMaskModule,
 		MatSlideToggleModule,
-		MatChipsModule
+		MatChipsModule,
+
+		NzTableModule,
+		NzInputModule,
+		NzPopconfirmModule,
+		NzDividerModule,
+		NzIconModule
 	]
 })
 export class PartialsModule {

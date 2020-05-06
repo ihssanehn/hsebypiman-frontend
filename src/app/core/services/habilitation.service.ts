@@ -8,9 +8,9 @@ import { CatHabilitation } from '@app/core/models/';
 import { map } from 'rxjs/operators';
 
 
-export class CatHabilitationService extends HttpService{
+export class HabilitationService extends HttpService{
 
-  baseUrl = environment.apiBaseUrl+'cat-habilitations';
+  baseUrl = environment.apiBaseUrl+'habilitations';
 
   constructor(
     private http: HttpClient,
@@ -19,25 +19,18 @@ export class CatHabilitationService extends HttpService{
     super()
   }
 
-  getAll(){
-    return this.http.post<JsonResponse<CatHabilitation[]>>(this.baseUrl, {});
-  }
-
-  get(id){
-    return this.http.get<any>(`${this.baseUrl}/${id}`)
-                    .pipe(map(result => result.result.data));
-  }
-
   create(payload){
-    return this.http.post<any>(`${this.baseUrl}`, payload);
+    return this.http.post<any>(`${this.baseUrl}/create`, payload);
   }
 
   update(id, payload){
-    return this.http.put<any>(`${this.baseUrl}/${id}`, payload);
+    return this.http.put<any>(`${this.baseUrl}/${id}`, payload)
+                    .pipe(map(result => result.result.data));
   }
 
   delete(id){
-    return this.http.delete(`${this.baseUrl}/${id}`);
+    return this.http.delete<any>(`${this.baseUrl}/${id}`)
+                    .pipe(map(result => result.result.data));
   }
 
 

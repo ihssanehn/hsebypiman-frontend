@@ -61,9 +61,6 @@ import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapte
 import { ChantierAdminComponent } from './chantier-admin/chantier-admin.component';
 
 
-import { NzInputModule, NzTableModule, NzPopconfirmModule, NzDividerModule, NzIconModule } from 'ng-zorro-antd';
-
-
 
 const routes: Routes = [
 	{
@@ -149,12 +146,7 @@ const routes: Routes = [
 		MatDialogModule,
 		NgbDropdownModule,
 		NgbTabsetModule,
-		NgbTooltipModule,
-		NzTableModule,
-		NzInputModule,
-		NzPopconfirmModule,
-		NzDividerModule,
-		NzIconModule
+		NgbTooltipModule
 
 	],
 	providers: [

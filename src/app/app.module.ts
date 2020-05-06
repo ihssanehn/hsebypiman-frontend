@@ -51,7 +51,7 @@ import { AuthModule } from './views/pages/auth/auth.module';
 import { AuthService } from './core/auth';
 import { 
 	ChantierService, TypeService, StatusService, CategorieService, ArService, CatRisqueService, EquipementService,
-	EntrepriseService, VisiteService, CatHabilitationService, ZoneService, SignatureService 
+	EntrepriseService, VisiteService, CatHabilitationService, ZoneService, SignatureService, HabilitationService 
 } from './core/services';
 // CRUD
 import { HttpUtilsService, LayoutUtilsService, TypesUtilsService } from './core/_base/crud';
@@ -161,6 +161,7 @@ export function hljsLanguages(): HighlightLanguage[] {
 		VersionCheckService,
 		SplashScreenService,
 		CatHabilitationService,
+		HabilitationService,
 		ZoneService,
 		SignatureService,
 		

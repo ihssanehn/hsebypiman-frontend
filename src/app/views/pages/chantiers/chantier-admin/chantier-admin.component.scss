@@ -10,19 +10,8 @@
 
     }
 
-    .anticon {
-        vertical-align: 0;
-    }
-
-    .ant-table-tbody > tr > td {
-        font-weight: 500;
-        font-size: 13px;
-    }
-
-    /deep/ nz-divider {
-        .ant-divider-inner-text {
-            font-size: 1.5rem;
-        }
+    .tf-separator.tf-separator--border-dashed, .tf-separator.tf-separator--dashed {
+        border-bottom: 1px dashed #dadcde;
     }
 
 }
