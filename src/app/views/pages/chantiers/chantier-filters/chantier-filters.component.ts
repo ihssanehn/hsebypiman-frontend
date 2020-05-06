@@ -7,6 +7,7 @@ import { MatIconRegistry } from '@angular/material';
 import { ChantierService, TypeService, StatusService } from '@app/core/services';
 import { Chantier, Type, Status } from '@app/core/models';
 import { AuthService, User } from '@app/core/auth';
+import * as moment from 'moment';
 
 
 @Component({
@@ -113,7 +114,11 @@ export class ChantierFiltersComponent implements OnInit, AfterViewInit
   }
  
   search(filters: any): void {
-    this.change.emit(filters);
+    var filter = {...this.filterForm.value}
+    filter.date_demarrage_start = this.parseDates(filter.date_demarrage_start);
+    filter.date_demarrage_end = this.parseDates(filter.date_demarrage_end);
+    console.log(filter);
+    this.change.emit(filter);
   }
 
   formHasValue(key){
@@ -121,5 +126,9 @@ export class ChantierFiltersComponent implements OnInit, AfterViewInit
   }
   clearValue(key){
     this.filterForm.get(key).patchValue(null);
+  }
+
+  parseDates(date){
+    return date ? moment(date, 'DD/MM/YYYY').format('YYYY-MM-DD') : date;
   }
 }
