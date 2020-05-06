@@ -178,7 +178,7 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 
 					Swal.fire({
 						icon: 'success',
-						title: 'Chantié mis à jour avec succès',
+						title: 'Chantier mis à jour avec succès',
 						showConfirmButton: false,
 						timer: 1500
 					}).then(() => {
