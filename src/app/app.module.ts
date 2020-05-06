@@ -74,15 +74,25 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 };
 
 const MY_FORMAT = {
+	// parse: {
+	// 	dateInput: 'DD/MM/YYYY',
+	// },
+	// display: {
+	// 	dateInput: 'DD/MM/YYYY',
+	// 	monthYearLabel: 'MMM YYYY',
+	// 	dateA11yLabel: 'DD/MM/YYYY',
+	// 	monthYearA11yLabel: 'MMMM YYYY',
+	// },
 	parse: {
-		dateInput: 'DD/MM/YYYY',
+		dateInput: {month: 'short', year: 'numeric', day: 'numeric'}
 	},
 	display: {
-		dateInput: 'DD/MM/YYYY',
-		monthYearLabel: 'MMM YYYY',
-		dateA11yLabel: 'DD/MM/YYYY',
-		monthYearA11yLabel: 'MMMM YYYY',
-	},
+		// dateInput: { month: 'short', year: 'numeric', day: 'numeric' },
+		dateInput: 'input',
+		monthYearLabel: {year: 'numeric', month: 'short'},
+		dateA11yLabel: {year: 'numeric', month: 'long', day: 'numeric'},
+		monthYearA11yLabel: {year: 'numeric', month: 'long'},
+	}
 };
 
 export function initializeLayoutConfig(appConfig: LayoutConfigService) {

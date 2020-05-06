@@ -73,7 +73,6 @@ export class ChantiersListComponent implements OnInit {
 	exportList(){
 		var filters = {...this.filter};
 		filters.type="EXCEL";
-		console.log(filters);
 		return this.chantierService.export(filters);
 	}
 
@@ -105,7 +104,6 @@ export class ChantiersListComponent implements OnInit {
 
 	// Au click, défini order by et order way. Si le order_by est déjà actif, toggle du order_way. Sinon, order_way asc par défaut
 	setOrder(by) {
-		console.log(this.filter)
 		if (this.isOrderedBy(by)) {
 			this.toggleOrderWay()
 		} else {
@@ -138,7 +136,6 @@ export class ChantiersListComponent implements OnInit {
 		for (let [key, value] of Object.entries(filters)) {
 			this.filter[key] = value;
 		}
-		console.log(this.filter);
 		this.getChantiers();
 	}
 }
