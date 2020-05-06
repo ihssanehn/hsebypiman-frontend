@@ -65,6 +65,9 @@ import * as scss from 'highlight.js/lib/languages/scss';
 import * as xml from 'highlight.js/lib/languages/xml';
 import * as json from 'highlight.js/lib/languages/json';
 
+import { NZ_I18N,en_US } from 'ng-zorro-antd';
+
+
 // tslint:disable-next-line:class-name
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 	wheelSpeed: 0.5,
@@ -189,6 +192,8 @@ export function hljsLanguages(): HighlightLanguage[] {
 		{ provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
 		{ provide: MAT_DATE_FORMATS, useValue: MY_FORMAT },
 		{ provide: DateAdapter, useClass: CustomDateAdapter },
+		{ provide: NZ_I18N, useValue: en_US }
+
 	],
 	bootstrap: [AppComponent],
 })

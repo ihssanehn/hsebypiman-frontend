@@ -58,6 +58,11 @@ import {
 	DateAdapter
 } from '@angular/material';
 import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapter';
+import { ChantierAdminComponent } from './chantier-admin/chantier-admin.component';
+
+
+import { NzInputModule, NzTableModule, NzPopconfirmModule, NzDividerModule, NzIconModule } from 'ng-zorro-antd';
+
 
 
 const routes: Routes = [
@@ -97,6 +102,10 @@ const routes: Routes = [
 			{
 				path: 'edit/:id',
 				component: ChantierEditComponent
+			},
+			{
+				path: 'admin',
+				component: ChantierAdminComponent
 			},
 		]
 	}
@@ -141,6 +150,12 @@ const routes: Routes = [
 		NgbDropdownModule,
 		NgbTabsetModule,
 		NgbTooltipModule,
+		NzTableModule,
+		NzInputModule,
+		NzPopconfirmModule,
+		NzDividerModule,
+		NzIconModule
+
 	],
 	providers: [
 		InterceptService,
@@ -176,6 +191,7 @@ const routes: Routes = [
 		ChantierAddComponent,
 		ChantierDetailComponent,
 		ChantierFiltersComponent,
+		ChantierAdminComponent,
 	]
 })
 export class ChantiersModule {}
