@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { NzTableComponent } from 'ng-zorro-antd';
 
 @Component({
   selector: 'tf-admin-list-portlet',
@@ -28,11 +29,15 @@ export class AdminListPortletComponent implements OnInit {
   @Output() 
   onDeleteChild = new EventEmitter<any>();
 
+  
+  @ViewChild('virtualTable', { static: false }) 
+  nzTableComponent: ElementRef;
+
+
   constructor() { }
 
   ngOnInit() {
   }
-
 
 
   saveItem(data : any): void {
@@ -52,6 +57,7 @@ export class AdminListPortletComponent implements OnInit {
   
   addChild(){
     this.item.children.push({edit: true})
+    // this.nzTableComponent.cdkVirtualScrollViewport.scrollToIndex(10);
   }
 
   saveChild(data : any): void {

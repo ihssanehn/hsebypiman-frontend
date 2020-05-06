@@ -29,11 +29,13 @@ export class CatHabilitationService extends HttpService{
   }
 
   create(payload){
-    return this.http.post<any>(`${this.baseUrl}`, payload);
+    return this.http.post<any>(`${this.baseUrl}/create`, payload)
+                    .pipe(map(result => result.result.data));
   }
 
   update(id, payload){
-    return this.http.put<any>(`${this.baseUrl}/${id}`, payload);
+    return this.http.put<any>(`${this.baseUrl}/${id}`, payload)
+                    .pipe(map(result => result.result.data));
   }
 
   delete(id){

@@ -32,7 +32,7 @@ import {
 	MatTooltipModule
 } from '@angular/material';
 // NgBootstrap
-import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 // Perfect Scrollbar
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 // Core module
@@ -98,6 +98,8 @@ import {
 		NzDividerModule, 
 		NzIconModule 
 } from 'ng-zorro-antd';
+import { AdminAddModalComponent } from './layout/admin-add-modal/admin-add-modal.component';
+import { ScrollDispatchModule, ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
 	declarations: [
@@ -146,6 +148,7 @@ import {
 		ArFormComponent,
 		SearchChantierFormComponent,
 		AdminListPortletComponent,
+		AdminAddModalComponent,
 	],
 	exports: [
 		WidgetModule,
@@ -196,7 +199,7 @@ import {
 		PaginationComponent,
 		CommingSoonComponent,
 
-		AdminListPortletComponent
+		AdminListPortletComponent,
 	],
 	imports: [
 		CommonModule,
@@ -241,13 +244,19 @@ import {
 		NgxMaskModule,
 		MatSlideToggleModule,
 		MatChipsModule,
+		NgbModalModule,
 
 		NzTableModule,
 		NzInputModule,
 		NzPopconfirmModule,
 		NzDividerModule,
-		NzIconModule
-	]
+		NzIconModule,
+
+
+	],
+	entryComponents: [
+		AdminAddModalComponent
+	],
 })
 export class PartialsModule {
 }

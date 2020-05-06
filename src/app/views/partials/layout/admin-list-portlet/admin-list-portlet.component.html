@@ -45,7 +45,8 @@
     <form class="tf-form tf-form--label-right">
         <div class="tf-portlet__body">
 
-        <nz-table nzSize="small" 
+        <nz-table   #virtualTable
+                    nzSize="small" 
                     [nzData]="item?.children" 
                     [nzFrontPagination]="false" 
                     [nzShowPagination]="false"

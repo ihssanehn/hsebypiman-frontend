@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CatHabilitationService, HabilitationService } from '@app/core/services';
-import { CatHabilitation } from '@app/core/models';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AdminAddModalComponent } from '@app/views/partials/layout/admin-add-modal/admin-add-modal.component';
 
 
 @Component({
@@ -14,7 +15,8 @@ export class ChantierAdminComponent implements OnInit {
 
   constructor(private catHabilitationService:CatHabilitationService,
               private habilitationService:HabilitationService,
-              private cdr: ChangeDetectorRef) { }
+              private cdr: ChangeDetectorRef,
+              private modalService: NgbModal) { }
 
   ngOnInit() {
     this.getCatHabs();
@@ -47,11 +49,27 @@ export class ChantierAdminComponent implements OnInit {
 		}
   }
 
+  async addCatHab(){
+    const modalRef = this.modalService.open(AdminAddModalComponent, {centered : true});
+    modalRef.componentInstance.title = "Ajouter une catégorie d'habilitation";
+    modalRef.result.then( payload => this.createCatHab(payload), payload => this.createCatHab(payload) );
+  }
+
+  async createCatHab(payload){
+    if(payload){
+        try {
+          var created = await this.catHabilitationService.create(payload).toPromise();
+          this.list.unshift(created);
+          this.cdr.markForCheck();
+        } catch (error) {
+          console.error(error);
+        }
+    }
+  }
 
   async updateCatHab(item){
     try {
-      var res = await this.catHabilitationService.update(item.id, item).toPromise();
-      let updated = res.result.data;
+      var updated = await this.catHabilitationService.update(item.id, item).toPromise();
       const index = this.list.findIndex(item => item.id === updated.id);
       this.list[index] = { ...this.list[index], ...updated };
       this.cdr.markForCheck();
@@ -62,7 +80,7 @@ export class ChantierAdminComponent implements OnInit {
 
   async deleteCatHab({id}){
     try {
-      var res = await this.catHabilitationService.delete(id).toPromise();
+      await this.catHabilitationService.delete(id).toPromise();
       const index = this.list.findIndex(item => item.id === id);
       this.list.splice(index, 1);
       this.cdr.markForCheck();
@@ -70,6 +88,7 @@ export class ChantierAdminComponent implements OnInit {
 			console.error(error);
 		}
   }
+
 
   async addHabilitation(item){
     try {
