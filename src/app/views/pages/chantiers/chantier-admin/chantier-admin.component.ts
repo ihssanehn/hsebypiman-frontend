@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CatHabilitationService, HabilitationService } from '@app/core/services';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AdminAddModalComponent } from '@app/views/partials/layout/admin-add-modal/admin-add-modal.component';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -83,6 +84,7 @@ export class ChantierAdminComponent implements OnInit {
       await this.catHabilitationService.delete(id).toPromise();
       const index = this.list.findIndex(item => item.id === id);
       this.list.splice(index, 1);
+      Swal.fire({ icon: 'success', title: "Catégorie d'habilitation archivée avec succès", showConfirmButton: false, timer: 1500 })
       this.cdr.markForCheck();
 		} catch (error) {
 			console.error(error);
@@ -112,6 +114,7 @@ export class ChantierAdminComponent implements OnInit {
   async deleteHabilitation({id, cat_hab_id}){
     try {
       await this.habilitationService.delete(id).toPromise();
+      Swal.fire({ icon: 'success', title: "L'habilitation est archivée avec succès", showConfirmButton: false, timer: 1500 })
       this.getCatHab({ id : cat_hab_id });
       this.cdr.markForCheck();
 		} catch (error) {
