@@ -160,7 +160,7 @@
 									1.3 Conditions générales du chantier
 								</div>
 								<div class="row">
-									<div class="col-xl-6 mat-form-field ng-tns-c14-2 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-legacy mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label" formContolName="a_prevoir_compagnons">
+									<div class="col-xl-6 col-md-12 mat-form-field ng-tns-c14-2 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-legacy mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label" formContolName="a_prevoir_compagnons">
 										<div class="mat-form-field-wrapper">
 											<div class="mat-form-field-flex">
 												<div class="mat-form-field-infix">
@@ -180,7 +180,7 @@
 											</div>
 										</div>
 									</div>
-									<mat-form-field class="col-xl-6">
+									<mat-form-field class="col-xl-6 col-md-12">
 										<mat-label>{{'ARS.COURANT.LABEL' | translate}}</mat-label>
 										<input class="form-control" matInput [readonly]="true" type="text" name="courant_dispo" [value]="ar.courant_dispo" />
 									</mat-form-field>
@@ -197,7 +197,7 @@
 							1.{{i+4}} {{zoneType.key}}
 						</div>
 						<div class="form-row row">
-							<div class="col-xl-6" *ngFor="let zone of zoneType.value">
+							<div class="col-xl-6 col-md-12" *ngFor="let zone of zoneType.value">
 								<mat-checkbox [value]="zone.id" disabled [checked]="onZoneIsChecked(zone.id)">{{zone.libelle}}</mat-checkbox>
 							</div>
 						</div>
@@ -261,7 +261,7 @@
 				<div class="col-md-12">
 					<div class="tf-card-form">
 						<div class="form-row">
-							<div class="col-md-2" *ngFor="let equipement of equipementList">
+							<div class="col-xl-2 col-md-3 col-sm-6 col-xs-12" *ngFor="let equipement of equipementList">
 								<mat-checkbox disabled [value]="equipement.id" [checked]="onEquipementIsChecked(equipement.id)">{{equipement.libelle}}</mat-checkbox>
 							</div>
 						</div>
@@ -278,28 +278,9 @@
 				<div class="col-md-6">
 					<div class="tf-card-form">
 						<div class="tf-heading tf-heading--sm">
-							{{'ARS.FORM.MWBLOCK.WORKREGISTER.TITLE' | translate}}
+							{{'ARS.FORM.MWBLOCK.WORKREGISTER.TITLE' | translate}}<mat-slide-toggle class="pull-right" [checked]="ar.a_signer_registre_travaux == 1 ? 'true':'false'" disabled></mat-slide-toggle>
 						</div>
-
-						<div class="row form-row">
-							<mat-radio-group [value]="ar.a_signer_registre_travaux+''" class="col-xl-12 col-md-12 mat-form-field ng-tns-c14-2 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-legacy mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label">
-								<div class="mat-form-field-wrapper">
-									<div class="mat-form-field-flex">
-										<div class="mat-form-field-infix col-md-3">
-											<span class="mat-form-field-label-wrapper">
-												<label class="mat-form-field-label"></label>
-											</span>
-											<div class="form-control mat-input-element mat-radio-box">
-												<mat-radio-button disabled value="1">Oui</mat-radio-button>
-												<mat-radio-button disabled value="0">Non</mat-radio-button>
-											</div>
-										</div>
-									</div>
-								</div>
-							</mat-radio-group>
-						</div>
-
-						<div class="row form-row" *ngIf="ar.a_signer_registre_travaux">
+						<div class="row form-row" [hidden]="!ar.a_signer_registre_travaux">
 							<mat-radio-group [value]="ar.registre_signing_period" class="col-xl-12 col-md-12 mat-form-field ng-tns-c14-2 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-legacy mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label">
 								<div class="mat-form-field-wrapper">
 									<div class="mat-form-field-flex">
@@ -317,8 +298,7 @@
 								</div>
 							</mat-radio-group>
 						</div>
-
-						<div class="row form-row" *ngIf="ar.a_signer_registre_travaux">
+						<div class="row form-row" [hidden]="!ar.a_signer_registre_travaux">
 							<mat-form-field class="col-xl-7">
 								<mat-label>{{'ARS.FORM.REGISTRAR' | translate}}</mat-label>
 								<input class="form-control" matInput [readonly]="true" type="text" name="nom_charge_registre" [value]="ar.nom_charge_registre" />
@@ -329,7 +309,7 @@
 							</mat-form-field>
 						</div>
 
-						<div class="row form-row" *ngIf="ar.a_signer_registre_travaux">
+						<div class="row form-row" [hidden]="!ar.a_signer_registre_travaux">
 							<mat-form-field class="col-xl-7">
 								<mat-label>{{'COMMON.ADRESS.LABEL' | translate}}</mat-label>
 								<input class="form-control" matInput [readonly]="true" type="text" name="adresse_charge_registre" [value]="ar.adresse_charge_registre" />
@@ -340,7 +320,7 @@
 							</mat-form-field>
 						</div>
 
-						<div class="row form-row" *ngIf="ar.a_signer_registre_travaux">
+						<div class="row form-row" [hidden]="!ar.a_signer_registre_travaux">
 							<mat-form-field class="col-xl-7">
 								<mat-label>{{'COMMON.POSTCODE.LABEL' | translate}}</mat-label>
 								<input matInput [readonly]="true" class="form-control" type="text" name="codepostal_charge_registre" [value]="ar.codepostal_charge_registre" />
@@ -356,29 +336,10 @@
 				<div class="col-md-6">
 					<div class="tf-card-form">
 						<div class="tf-heading tf-heading--sm">
-							{{'ARS.FORM.MWBLOCK.SUBTITLE2' | translate}}
+							{{'ARS.FORM.MWBLOCK.SUBTITLE2' | translate}}<mat-slide-toggle class="pull-right" [checked]="ar.a_prevoir_balisage == 1 ? 'true':'false'" disabled></mat-slide-toggle>
 						</div>
 						<div class="form-row-flex">
-							<div class="col-md-4">
-								<div class="row form-row">
-									<mat-radio-group [value]="ar.a_prevoir_balisage+''" class="col-xl-12 col-md-12 mat-form-field ng-tns-c14-2 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-legacy mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label">
-										<div class="mat-form-field-wrapper">
-											<div class="mat-form-field-flex">
-												<div class="mat-form-field-infix">
-													<span class="mat-form-field-label-wrapper">
-														<label class="mat-form-field-label"></label>
-													</span>
-													<div class="form-control mat-input-element mat-radio-box">
-														<mat-radio-button disabled value="1">Oui</mat-radio-button>
-														<mat-radio-button disabled value="0">Non</mat-radio-button>
-													</div>
-												</div>
-											</div>
-										</div>
-									</mat-radio-group>
-								</div>
-							</div>
-							<div class="col-md-8" *ngIf="ar.a_prevoir_balisage">
+							<div class="col-md-12" [hidden]="!ar.a_prevoir_balisage">
 								<div class="row form-row">
 									<mat-form-field class="col-xl-7">
 										<mat-label>{{'ARS.FORM.CVTI_RESPONSIBLE' | translate}}</mat-label>
@@ -401,7 +362,6 @@
 								</div>
 							</div>
 						</div>
-
 					</div>
 				</div>
 			</div>

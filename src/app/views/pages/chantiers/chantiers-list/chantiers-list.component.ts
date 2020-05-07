@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef, ElementRef, Input, AfterContentInit, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef, AfterViewInit, ElementRef, Input, AfterContentInit, ViewChildren, QueryList } from '@angular/core';
 import { ChantierService } from '@app/core/services';
 import { Paginate } from '@app/core/_base/layout/models/paginate.model';
 import { Chantier } from '@app/core/models';
@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 	templateUrl: './chantiers-list.component.html',
 	styleUrls: ['./chantiers-list.component.scss']
 })
-export class ChantiersListComponent implements OnInit {
+export class ChantiersListComponent implements OnInit, AfterViewInit {
 
 	public chantiersList: Paginate < Chantier > ;
 	pagination: any = {
@@ -29,7 +29,7 @@ export class ChantiersListComponent implements OnInit {
 		order_way: 'asc',
 		keyword: "",
 	};
-	showFilters:Boolean = false;
+	showFilters:Boolean = true;
 	displayedChantierColumns = [
 		'number', 'name', 'client', 'status', 'charge_affaire', 
 		'responsable_chiffrage', 'montant', 'date_demarrage',
@@ -48,6 +48,9 @@ export class ChantiersListComponent implements OnInit {
 	}
 
 	ngOnInit() {
+	}
+
+	ngAfterViewInit(){
 		this.getChantiers();
 	}
 

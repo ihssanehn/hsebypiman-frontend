@@ -17,6 +17,8 @@ import {
 	OffcanvasDirective,
 	SafePipe,
 	TruncatePipe,
+	DateEnToFrPipe, 
+	DateFrToEnPipe,
 	ScrollTopDirective,
 	SparklineChartDirective,
 	StickyDirective,
@@ -54,7 +56,9 @@ import {
 		TruncatePipe,
 		FirstLetterPipe,
 		InitialesPipe,
-		FullNamePipe
+		FullNamePipe,
+		DateEnToFrPipe, 
+		DateFrToEnPipe
 	],
 	exports: [
 		// directives
@@ -80,9 +84,13 @@ import {
 		FirstLetterPipe,
 		FullNamePipe,
 		InitialesPipe,
+		DateEnToFrPipe, 
+		DateFrToEnPipe,
 	],
 	providers: [
-		 {provide: 'ParameterService', useClass: environment.isMockEnabled ? HttpParameterService : HttpParameterService}
+		{provide: 'ParameterService', useClass: environment.isMockEnabled ? HttpParameterService : HttpParameterService},
+		DateEnToFrPipe, 
+		DateFrToEnPipe,
 	]
 })
 export class CoreModule {

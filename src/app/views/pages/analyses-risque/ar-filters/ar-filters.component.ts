@@ -6,6 +6,8 @@ import { EventEmitter } from '@angular/core';
 import { StatusService, ChantierService } from '@app/core/services';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
+import { debounceTime, map } from 'rxjs/operators';
+import { DateEnToFrPipe, DateFrToEnPipe } from '@app/core/_base/layout';
 
 @Component({
   selector: 'tf-ar-filters',
@@ -15,6 +17,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class ArFiltersComponent implements OnInit, AfterViewInit {
 
   @Output() change = new EventEmitter();
+
+
   
   filterForm: FormGroup;
   clients: String[];
@@ -36,6 +40,7 @@ export class ArFiltersComponent implements OnInit, AfterViewInit {
     private authService:AuthService,
     private fb: FormBuilder,
     private cdr: ChangeDetectorRef,
+    private dateFrToEnPipe:DateFrToEnPipe,
 		iconRegistry: MatIconRegistry, 
     sanitizer: DomSanitizer,
   ) {
@@ -49,7 +54,9 @@ export class ArFiltersComponent implements OnInit, AfterViewInit {
     this.getUsers();
     this.getStatus();
     this.initFiltersForm();
-    this.filterForm.valueChanges.subscribe(data => this.search(data));
+    this.filterForm.valueChanges.pipe(
+      debounceTime(500)
+    ).subscribe(data => this.search(data));
   }
   
   ngAfterViewInit(){
@@ -97,7 +104,14 @@ export class ArFiltersComponent implements OnInit, AfterViewInit {
   }
 
   search(filters: any): void {
-    this.change.emit(filters);
+    
+    var filter = {...this.filterForm.value}
+    filter.date_demarrage_start = this.dateFrToEnPipe.transform(filter.date_demarrage_start);
+    filter.date_demarrage_end = this.dateFrToEnPipe.transform(filter.date_demarrage_end);
+    filter.date_creation_start = this.dateFrToEnPipe.transform(filter.date_creation_start);
+    filter.date_creation_end = this.dateFrToEnPipe.transform(filter.date_creation_end);
+
+    this.change.emit(filter);
   }
 
   formHasValue(key){
@@ -106,6 +120,8 @@ export class ArFiltersComponent implements OnInit, AfterViewInit {
   clearValue(key){
     this.filterForm.get(key).patchValue(null);
   }
+
+
 
 
 }

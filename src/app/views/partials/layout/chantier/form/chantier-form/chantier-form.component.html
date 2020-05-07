@@ -46,12 +46,13 @@
 									</mat-form-field>
 									<mat-form-field class="col-xl-3">
 										<mat-label>{{'CHANTIERS.DATE_DEMARRAGE.LABEL' | translate}}</mat-label>
-										<input matInput class="form-control" [matDatepicker]="date_demarrage_picker" formControlName="date_demarrage" [required]="isFieldRequired('date_demarrage')" placeholder="DD/MM/YYYY">
+										<input matInput class="form-control" mask="d0/M0/0000" formControlName="date_demarrage" [required]="isFieldRequired('date_demarrage')" placeholder="DD/MM/YYYY">
+										<!-- <input matInput class="form-control" [matDatepicker]="date_demarrage_picker" formControlName="date_demarrage" [required]="isFieldRequired('date_demarrage')" placeholder="DD/MM/YYYY">
 										<mat-datepicker-toggle matSuffix [for]="date_demarrage_picker"></mat-datepicker-toggle>
 										<mat-datepicker #date_demarrage_picker></mat-datepicker>
 										<mat-error *ngIf="isControlHasError('date_demarrage','required')">
 											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-										</mat-error>
+										</mat-error> -->
 									</mat-form-field>
 									<mat-form-field class="col-xl-2">
 										<mat-label>{{'CHANTIERS.BUDGET.LABEL' | translate}}</mat-label>
@@ -185,12 +186,13 @@
 							</mat-form-field>
 							<mat-form-field class="col-xl-3" *ngIf="entHasCode(entIndex)">
 								<mat-label>{{'EES.DATE_DEMARRAGE.LABEL' | translate}}</mat-label>
-								<input matInput class="form-control" [matDatepicker]="ee_date_picker" formControlName="date_demarrage" [required]="isEEFieldRequired('date_demarrage', entIndex)" placeholder="DD/MM/YYYY">
+								<input matInput class="form-control" mask="d0/M0/0000" formControlName="date_demarrage" [required]="isEEFieldRequired('date_demarrage', entIndex)" placeholder="DD/MM/YYYY">
+								<!-- <input matInput class="form-control" [matDatepicker]="ee_date_picker" formControlName="date_demarrage" [required]="isEEFieldRequired('date_demarrage', entIndex)" placeholder="DD/MM/YYYY">
 								<mat-datepicker-toggle matSuffix [for]="ee_date_picker"></mat-datepicker-toggle>
 								<mat-datepicker #ee_date_picker></mat-datepicker>
 								<mat-error *ngIf="isControlHasError('date_demarrage','required')">
 									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-								</mat-error>
+								</mat-error> -->
 							</mat-form-field>
 							<div class="col-xl-1 col-actions">
 								<button mat-icon-button type="button" (click)="removeEe(entIndex)" class="btn-small" color="warn"><mat-icon>clear</mat-icon></button>

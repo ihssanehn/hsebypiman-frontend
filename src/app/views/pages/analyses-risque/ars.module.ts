@@ -27,6 +27,7 @@ import {NgbDropdownModule, NgbTabsetModule, NgbTooltipModule} from '@ng-bootstra
 import {MatChipsModule} from '@angular/material/chips';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {NgbPopoverModule} from '@ng-bootstrap/ng-bootstrap'
+import { NgxMaskModule } from 'ngx-mask';
 
 // Material
 import {
@@ -141,7 +142,8 @@ const routes: Routes = [
 		MatChipsModule,
 		MatSlideToggleModule,
 		SignaturePadModule,
-		NgbPopoverModule
+		NgbPopoverModule,		
+		NgxMaskModule,
 	],
 	providers: [
 		InterceptService,

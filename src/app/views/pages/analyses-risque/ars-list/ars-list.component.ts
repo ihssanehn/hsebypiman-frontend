@@ -28,7 +28,7 @@ export class ArsListComponent implements OnInit {
 		keyword: "",
 	};
 	showFilters: boolean= false;
-	displayedArColumns=['number','client','chantier','charge_affaire','created_at','status','date_demarrage_chantier','sign_count','observations','action'];
+	displayedArColumns=['number','chantier','client','charge_affaire','created_at','status','date_demarrage_chantier','sign_count','observations','action'];
 
   	constructor(
 		private router: Router,
