@@ -1,5 +1,5 @@
 <!--begin::Portlet-->
-<div class="tf-portlet tf-portlet--bordered item" data-ktportlet="true" id="kt_portlet_tools_3">
+<div class="tf-portlet tf-portlet--bordered item" [ngClass]="{'collapsed' : collapsed }" data-ktportlet="true" id="kt_portlet_tools_3">
 
     <div class="tf-portlet__head">
         <div class="tf-portlet__head-label">
@@ -26,7 +26,11 @@
         <div class="tf-portlet__head-toolbar">
 
             <div class="tf-portlet__head-group">
-                <a data-ktportlet-tool="toggle" class="btn btn-sm btn-icon btn-clean btn-icon-md"><i class="la la-angle-down"></i></a>
+
+                <a (click)="collapsed = !collapsed" [ngClass]="{'collapsed' : collapsed }" class="btn btn-sm btn-icon btn-clean btn-icon-md accordion" data-toggle="collapse" data-target="#group" aria-expanded="true">
+                    <i class="la la-angle-down"></i>
+                </a>
+
                 <a (click)="refreshItem(item)" class="btn btn-sm btn-icon btn-clean btn-icon-md">
                     <i class="la la-refresh"></i>
                 </a>
@@ -41,9 +45,9 @@
         </div>
     </div>
 
-    <!--begin::Form-->
-    <form class="tf-form tf-form--label-right">
-        <div class="tf-portlet__body">
+<div class="collapse" [ngClass]="{'show' : !collapsed }" data-parent="#group">
+
+    <div class="tf-portlet__body" >
 
         <nz-table   #virtualTable
                     nzSize="small" 
@@ -81,9 +85,8 @@
             </tbody>
         </nz-table>
 
+    </div>
+</div>
 
-        </div>
-    </form>
-    <!--end::Form-->
 </div>
 <!--end::Portlet-->
