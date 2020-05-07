@@ -2,6 +2,10 @@
 
     &>.tf-portlet{
 
+        &.collapsed {
+            min-height : 0;
+        }
+
         min-height : 330px;
 
         .anticon {
@@ -19,6 +23,18 @@
             }
         }
         
+    }
+
+    .accordion {
+        .la {
+            transition: all .3s;
+            transform: rotate(0);
+        }
+        &.collapsed {
+            .la {
+                transform: rotate(180deg);
+            }
+        }
     }
 
 

@@ -5,7 +5,9 @@
     <div class="d-flex justify-content-between">
       <h3 class="m-0">Habilitations</h3>
       <div class="">
-        <a data-ktportlet-tool="toggle" class="btn btn-sm btn-icon btn-clean btn-icon-md"><i class="la la-angle-down"></i></a>
+        <a [ngClass]="{'collapsed' : collapsed }" class="btn btn-sm btn-icon btn-clean btn-icon-md accordion" (click)="collapsed = !collapsed" data-toggle="collapse" data-target="#group" aria-expanded="true">
+          <i class="la la-angle-down"></i>
+        </a>
         <a (click)="addCatHab()" data-ktportlet-tool="add" class="btn btn-sm btn-icon btn-clean btn-icon-md">
           <i class="la la-plus"></i>
         </a>
@@ -14,7 +16,7 @@
     <div class="tf-separator tf-separator--border-dashed my-3"></div>
     
 
-    <div class="row">
+    <div class="row collapse" [ngClass]="{'show' : !collapsed }" data-parent="#group">
       <div *ngFor="let item of list" class="col-lg-6">
 
         <tf-admin-list-portlet  [item]="item" 
@@ -27,6 +29,8 @@
 
       </div>
     </div>
+
+
 	</div>
 </div>
 

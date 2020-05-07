@@ -32,7 +32,7 @@ import {
 	MatTooltipModule
 } from '@angular/material';
 // NgBootstrap
-import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule, NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // Perfect Scrollbar
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 // Core module
@@ -200,6 +200,7 @@ import { ScrollDispatchModule, ScrollingModule } from '@angular/cdk/scrolling';
 		CommingSoonComponent,
 
 		AdminListPortletComponent,
+		NgbModule
 	],
 	imports: [
 		CommonModule,
@@ -251,6 +252,8 @@ import { ScrollDispatchModule, ScrollingModule } from '@angular/cdk/scrolling';
 		NzPopconfirmModule,
 		NzDividerModule,
 		NzIconModule,
+
+		NgbModule
 
 
 	],
