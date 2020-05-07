@@ -36,8 +36,9 @@
 					<div class="tf-card-form">
 						<div class="tf-heading tf-heading--sm">
 							1.1 Accueil sécurité propre au client
+							<mat-slide-toggle [checked]="ar.a_prevoir_compagnons == 1"></mat-slide-toggle>
 						</div>
-						<div class="row form-row">
+						<!-- <div class="row form-row">
 							<mat-radio-group [value]="ar.a_prevoir_compagnons+''" class="col-xl-12 col-md-12 mat-form-field ng-tns-c14-2 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-legacy mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label">
 								<div class="mat-form-field-wrapper">
 									<div class="mat-form-field-flex">
@@ -53,7 +54,7 @@
 									</div>
 								</div>
 							</mat-radio-group>
-						</div>
+						</div> -->
 
 						<div class="row form-row" *ngIf="ar.a_prevoir_compagnons">
 							<mat-form-field class="col-xl-4">

@@ -101,6 +101,12 @@ export class ChantierDetailComponent implements OnInit, OnDestroy {
 		this.router.navigateByUrl(url, { relativeTo: this.activatedRoute });
   	}
 
+	goToArDetail(id){
+		let url = this.router.url;
+		url = `/analyses-risque/detail/${id}`;
+		this.router.navigateByUrl(url, { relativeTo: this.activatedRoute });
+	}
+
   	editChantier(id){
 		this.router.navigateByUrl('chantiers/edit/'+id);
 	}
