@@ -4,11 +4,15 @@
             padding: 30px 15px;
         }
         .popover-container{
-            position: absolute;
-            width: 5%;
+            // position: absolute;
+            // width: 5%;
         }
-        ngb-popover-window{
-            width: 255px!important;
+        .popover-container.commentaire{
+            // position: absolute;
+            // width: 5%;
+            ngb-popover-window{
+                width: 255px!important;
+            }
         }
     }
 }

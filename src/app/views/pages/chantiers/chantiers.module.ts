@@ -24,7 +24,7 @@ import { ChantierEditComponent } from './chantier-edit/chantier-edit.component';
 import { ChantierAddComponent } from './chantier-add/chantier-add.component';
 import { ChantierDetailComponent } from './chantier-detail/chantier-detail.component';
 import { ChantierFiltersComponent } from './chantier-filters/chantier-filters.component';
-import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule, NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxMaskModule } from 'ngx-mask';
 
 // Material
@@ -147,6 +147,7 @@ const routes: Routes = [
 		NgbDropdownModule,
 		NgbTabsetModule,
 		NgbTooltipModule,
+		NgbPopoverModule,
 		NgxMaskModule,
 	],
 	providers: [

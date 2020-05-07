@@ -238,9 +238,10 @@
 							<ng-container matColumnDef="comments">
 								<th mat-header-cell *matHeaderCellDef> {{'ARS.FORM.COMMENT' | translate}} </th>
 								<td mat-cell *matCellDef="let element">
-									<div class="full-height">
-										<textarea [readonly]="true" class="form-control no_border" [value]="getCommentValue(element.id)"></textarea>
-									</div>
+									<!-- <div class="full-height">
+										<textarea [readonly]="true" class="form-control no_border full-height" [value]=""></textarea>
+									</div> -->
+									{{getCommentValue(element.id)}}
 								</td>
 							</ng-container>
 

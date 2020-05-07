@@ -260,10 +260,10 @@
 							<!-- Weight Column -->
 							<ng-container matColumnDef="comments">
 								<th mat-header-cell *matHeaderCellDef> {{'ARS.FORM.COMMENT' | translate}} </th>
-								<td mat-cell *matCellDef="let element">
-									<div class="full-height">
+								<td mat-cell *matCellDef="let element" class="cell-textarea">
+									<!-- <div class="full-height"> -->
 										<textarea class="form-control no_border full-height" (change)="onCommentCheckChange(element.id,$event)" [value]="getCommentValue(element.id)" placeholder="Saisir ici"></textarea>
-									</div>
+									<!-- </div> -->
 								</td>
 							</ng-container>
 		
