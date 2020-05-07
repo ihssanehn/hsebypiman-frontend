@@ -14,4 +14,17 @@
         border-bottom: 1px dashed #dadcde;
     }
 
+    .accordion {
+        .la {
+            transition: all .3s;
+            transform: rotate(0);
+        }
+        &.collapsed {
+            .la {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+
 }
