@@ -11,6 +11,8 @@ export class AdminListPortletComponent implements OnInit {
   @Input()
   item: any;
 
+  
+
   @Output() 
   onSaveItem = new EventEmitter<any>();
 
@@ -28,10 +30,6 @@ export class AdminListPortletComponent implements OnInit {
 
   @Output() 
   onDeleteChild = new EventEmitter<any>();
-
-  
-  @ViewChild('virtualTable', { static: false }) 
-  nzTableComponent: ElementRef;
 
 
   constructor() { }

@@ -45,48 +45,48 @@
         </div>
     </div>
 
-<div class="collapse" [ngClass]="{'show' : !collapsed }" data-parent="#group">
+    <div class="collapse" [ngClass]="{'show' : !collapsed }" data-parent="#group">
 
-    <div class="tf-portlet__body" >
+        <div class="tf-portlet__body" >
 
-        <nz-table   #virtualTable
-                    nzSize="small" 
-                    [nzData]="item?.children" 
-                    [nzFrontPagination]="false" 
-                    [nzShowPagination]="false"
-                    [nzScroll]="{ y: '178px' }" >
-            <thead>
-            <tr>
-                <th nzWidth="70%">Libellé</th>
-                <th>Action</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let data of item?.children">
-                <ng-container *ngIf="!data.edit; else editTemplate">
-                    <td>{{ data?.libelle }}</td>
-                    <td>
-                        <a (click)="startEdit(data)" class="text-primary">Modifier</a>
-                        <nz-divider nzType="vertical"></nz-divider>
-                        <a nz-popconfirm nzTitle="Sure to delete?" class="text-danger" (nzOnConfirm)="deleteChild(data)">Supprimer</a>
-                    </td>
-                </ng-container>
-                <ng-template #editTemplate>
-                    <td>
-                        <input type="text" nz-input [(ngModel)]="data.libelle" name="name" />
-                    </td>
-                    <td>
-                        <a (click)="saveChild(data)" class="save" class="text-primary">Enregistrer</a>
-                        <nz-divider nzType="vertical"></nz-divider>
-                        <a (click)="cancelEdit(data)">Annuler</a>
-                    </td>
-                </ng-template>
-            </tr>
-            </tbody>
-        </nz-table>
+            <nz-table   #virtualTable
+                        nzSize="small" 
+                        [nzData]="item?.children" 
+                        [nzFrontPagination]="false" 
+                        [nzShowPagination]="false"
+                        [nzScroll]="{ y: '178px' }" >
+                <thead>
+                <tr>
+                    <th nzWidth="70%">Libellé</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let data of item?.children">
+                    <ng-container *ngIf="!data.edit; else editTemplate">
+                        <td>{{ data?.libelle }}</td>
+                        <td>
+                            <a (click)="startEdit(data)" class="text-primary">Modifier</a>
+                            <nz-divider nzType="vertical"></nz-divider>
+                            <a nz-popconfirm nzTitle="Sure to delete?" class="text-danger" (nzOnConfirm)="deleteChild(data)">Supprimer</a>
+                        </td>
+                    </ng-container>
+                    <ng-template #editTemplate>
+                        <td>
+                            <input type="text" nz-input [(ngModel)]="data.libelle" name="name" />
+                        </td>
+                        <td>
+                            <a (click)="saveChild(data)" class="save" class="text-primary">Enregistrer</a>
+                            <nz-divider nzType="vertical"></nz-divider>
+                            <a (click)="cancelEdit(data)">Annuler</a>
+                        </td>
+                    </ng-template>
+                </tr>
+                </tbody>
+            </nz-table>
 
+        </div>
     </div>
-</div>
 
 </div>
 <!--end::Portlet-->
