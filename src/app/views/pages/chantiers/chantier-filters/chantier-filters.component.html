@@ -8,7 +8,7 @@
 						</mat-label>
 						<mat-select class="form-control" formControlName="charge_affaire_id" name="charge_affaire_id">
 							<mat-option *ngFor="let user of users" [value]="user.id">
-								{{user.fullname}}
+								{{user.trigramme}} - {{user.fullname}}
 							</mat-option>
 						</mat-select>
 						<button mat-button *ngIf="formHasValue('charge_affaire_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('charge_affaire_id'); $event.stopPropagation()">
@@ -20,7 +20,7 @@
 						</mat-label>
 						<mat-select class="form-control" formControlName="resp_chiffrage_id" name="resp_chiffrage_id">
 							<mat-option *ngFor="let user of users" [value]="user.id">
-								{{user.fullname}}
+								{{user.trigramme}} - {{user.fullname}}
 							</mat-option>
 						</mat-select>
 						<button mat-button *ngIf="formHasValue('resp_chiffrage_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('resp_chiffrage_id'); $event.stopPropagation()">
