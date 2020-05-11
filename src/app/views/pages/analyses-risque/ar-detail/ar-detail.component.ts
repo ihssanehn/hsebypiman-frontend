@@ -8,6 +8,7 @@ import { NgxPermissionsService } from 'ngx-permissions';
 import { tap } from 'rxjs/operators';
 import { Location } from '@angular/common';
 import Swal from 'sweetalert2';
+import { union } from 'lodash';
 
 @Component({
   selector: 'tf-ar-detail',
@@ -22,6 +23,7 @@ export class ArDetailComponent implements OnInit, OnDestroy {
 	public chantier : Chantier;
 	displayedColumns: string[] = ['risks', 'actions', 'comments'];
 	public risksList : Array<CatRisque>;
+	public arRisksList : Array<CatRisque> = [];
 
 	public equipementList : Array<Equipement>;
 	public zonesList : Array<any>;
@@ -53,7 +55,7 @@ export class ArDetailComponent implements OnInit, OnDestroy {
 			async params => {
 				const id = params.id;
 				if (id) {
-					this.getAr(id)
+					this.getAr(id);
 				} else {
 					this.router.navigateByUrl('/analyses-risque/list');
 				}

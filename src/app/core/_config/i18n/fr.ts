@@ -337,7 +337,9 @@ export const locale = {
 				CREATE:'Créer une nouvelle analyse de risque',
 				RISKBLOCK:{
 					TITLE: 'Risques liés au chantier et moyens de préventions',
-					MSG: 'Obligatoirement port des EPI standard chez CVTI : casque, gants, vêtements couvrants, chaussures. Casquette tolérée pour le travail dans les faux plafonds (en fonction PDP du client). Si bruit port du casque antibruit pour les autres risques, adopter l’attitude suivante et cocher les actions à mener :'
+					MSG: 'Obligatoirement port des EPI standard chez CVTI : casque, gants, vêtements couvrants, chaussures. Casquette tolérée pour le travail dans les faux plafonds (en fonction PDP du client). Si bruit port du casque antibruit pour les autres risques, adopter l’attitude suivante et cocher les actions à mener :',
+					MSGDETAIL: 'Obligatoirement port des EPI standard chez CVTI : casque, gants, vêtements couvrants, chaussures. Casquette tolérée pour le travail dans les faux plafonds (en fonction PDP du client). Si bruit port du casque antibruit pour les autres risques, adopter l’attitude suivante :',
+					MSGDETAILNORISK: 'Obligatoirement port des EPI standard chez CVTI : casque, gants, vêtements couvrants, chaussures. Casquette tolérée pour le travail dans les faux plafonds (en fonction PDP du client). Si bruit port du casque antibruit.'
 				},
 				PARKINGBLOCK:{
 					TITLE: 'Zone de stationnement des véhicules pendant le chantier'

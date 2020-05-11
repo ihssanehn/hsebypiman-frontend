@@ -182,6 +182,8 @@ export class ArFormComponent implements OnInit {
       });
 
       formArray.push(commentGroup);
+    }else{
+      console.log(event.target);
     }
 
     console.log(formArray.value);

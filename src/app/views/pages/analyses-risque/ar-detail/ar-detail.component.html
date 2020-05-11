@@ -192,14 +192,14 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-6" *ngFor="let zoneType of zonesList |  keyvalue; let i = index">
+				<div class="col-md-6" *ngFor="let zoneType of ar.zonesGrouped |  keyvalue; let i = index">
 					<div class="tf-card-form">
 						<div class="tf-heading tf-heading--sm">
 							1.{{i+4}} {{zoneType.key}}
 						</div>
-						<div class="form-row row">
+						<div class="form-row row" *ngIf="zoneType.value.length > 0; else chantierNonConcerne">
 							<div class="col-xl-6 col-md-12" *ngFor="let zone of zoneType.value">
-								<mat-checkbox [value]="zone.id" disabled [checked]="onZoneIsChecked(zone.id)">{{zone.libelle}}</mat-checkbox>
+								<mat-checkbox [value]="zone.id" disabled [checked]="true">{{zone.libelle}}</mat-checkbox>
 							</div>
 						</div>
 					</div>
@@ -213,13 +213,13 @@
 			</mat-expansion-panel-header>
 			<div class="row">
 				<div class="col-md-12">
-					<div class="tf-card-form">
+					<div class="tf-card-form" *ngIf="ar.risksTree.length > 0; else noRisk ">
 						<div class="tf-heading tf-heading--sm">
-							{{'ARS.FORM.RISKBLOCK.MSG' | translate}}
+							{{'ARS.FORM.RISKBLOCK.MSGDETAIL' | translate}}
 						</div>
 						<div class="row form-row"></div>
 
-						<table mat-table [dataSource]="risksList">
+						<table mat-table [dataSource]="ar.risksTree" >
 
 							<ng-container matColumnDef="risks">
 								<th mat-header-cell *matHeaderCellDef> {{'ARS.FORM.RISKS' | translate}} </th>
@@ -229,9 +229,12 @@
 							<ng-container matColumnDef="actions">
 								<th mat-header-cell *matHeaderCellDef> {{'ARS.FORM.ACTION' | translate}} </th>
 								<td mat-cell *matCellDef="let element">
-									<div class="m-2" *ngFor="let risk of element.risques">
-										<mat-checkbox disabled [value]="risk.id" [checked]="onRiskIsChecked(risk.id)">{{risk.libelle}}</mat-checkbox>
+									<div class="m-2" *ngFor="let risk of element.risques" [hidden]="element.risques.length == 0">
+										<mat-checkbox disabled [value]="risk.id" [checked]="true">{{risk.libelle}}</mat-checkbox>
 									</div>
+									<span [hidden]="element.risques.length > 0">
+										-
+									</span>
 								</td>
 							</ng-container>
 
@@ -241,7 +244,7 @@
 									<!-- <div class="full-height">
 										<textarea [readonly]="true" class="form-control no_border full-height" [value]=""></textarea>
 									</div> -->
-									{{getCommentValue(element.id)}}
+									{{element.ar_cat_risque[0]?.commentaire}}
 								</td>
 							</ng-container>
 
@@ -262,9 +265,9 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="tf-card-form">
-						<div class="form-row">
-							<div class="col-xl-2 col-md-3 col-sm-6 col-xs-12" *ngFor="let equipement of equipementList">
-								<mat-checkbox disabled [value]="equipement.id" [checked]="onEquipementIsChecked(equipement.id)">{{equipement.libelle}}</mat-checkbox>
+						<div class="form-row" *ngIf="ar.equipements.length > 0; else noEquipement">
+							<div class="col-xl-2 col-md-3 col-sm-6 col-xs-12" *ngFor="let equipement of ar.equipements">
+								<mat-checkbox disabled [value]="equipement.id" [checked]="true">{{equipement.libelle}}</mat-checkbox>
 							</div>
 						</div>
 					</div>
@@ -374,3 +377,17 @@
 	</mat-accordion>
 
 </form>
+
+<ng-template #noEquipement>
+	Aucun équipement a prévoir
+</ng-template>
+<ng-template #chantierNonConcerne>
+	Chantier non concerné
+</ng-template>
+<ng-template #noRisk>
+	<div class="tf-card-form">
+		<div class="tf-heading tf-heading--sm">
+			{{'ARS.FORM.RISKBLOCK.MSGDETAILNORISK' | translate}}
+		</div>
+	</div>
+</ng-template>
