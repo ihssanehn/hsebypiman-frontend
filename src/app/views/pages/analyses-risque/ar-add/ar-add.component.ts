@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import * as moment from 'moment';
 
 import { TranslateService } from '@ngx-translate/core';
-import { ArService, TypeService, ChantierService } from '@app/core/services';
+import { ArService, TypeService, ChantierService, ParamsService } from '@app/core/services';
 import { Observable, Subscription } from 'rxjs';
 import { map, startWith, tap } from 'rxjs/operators';
 import { Paginate } from '@app/core/_base/layout/models/paginate.model';
@@ -15,6 +15,7 @@ import { AuthService, User } from '@app/core/auth';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import Swal from 'sweetalert2';
+import { Param } from '@app/core/models/param.model';
 
 @Component({
   selector: 'tf-ar-add',
@@ -27,6 +28,7 @@ export class ArAddComponent implements OnInit, OnDestroy {
   arForm: FormGroup;
   types: Type[];
   users: User[];
+  params: Param[];
   // allRoles: Role[];
   enableBtn = false;
 	loaded = false;
@@ -46,6 +48,7 @@ export class ArAddComponent implements OnInit, OnDestroy {
 		private typeService: TypeService,
     private authService: AuthService,
     protected chantierService:ChantierService,
+    protected paramsService:ParamsService,
 		private cdr: ChangeDetectorRef,
 		private permissionsService : NgxPermissionsService,
     private translate:TranslateService,
@@ -58,8 +61,7 @@ export class ArAddComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.createForm();
-    this.setDynamicValidators();
+    this.getParams();
 
     const routeSubscription = this.activatedRoute.queryParams
     .subscribe(
@@ -127,7 +129,19 @@ export class ArAddComponent implements OnInit, OnDestroy {
     this.arForm.get('a_prevoir_compagnons').setValue(ar.a_prevoir_compagnons+'');
 		this.arForm.get('a_signer_registre_travaux').setValue(ar.a_signer_registre_travaux+'');
 		this.arForm.get('a_prevoir_balisage').setValue(ar.a_prevoir_balisage+'');
-	}
+  }
+  
+  getParams(){
+    this.paramsService
+      .getValues()
+      .subscribe( async res => {
+        this.params = res.result.data;
+        this.createForm();
+        this.setDynamicValidators();
+        this.cdr.detectChanges();
+        this.cdr.markForCheck();
+      }); 
+  }
 
   async getTypes(){
     var res = await this.typeService.getAllFromModel('Ar').toPromise();
@@ -161,9 +175,9 @@ export class ArAddComponent implements OnInit, OnDestroy {
       tel_contact_client_chef_chtr:['', Validators.required],
       contact_client_hse:['', Validators.required],
       tel_contact_client_hse:['', Validators.required],
-      heure_ouverture:['07:00', Validators.required],
-      heure_fermeture:['17:00', Validators.required],
-      courant_dispo:['230V / 50Hz', Validators.required],
+      heure_ouverture:[this.params['heure_ouverture'], Validators.required],
+      heure_fermeture:[this.params['heure_fermeture'], Validators.required],
+      courant_dispo:[this.params['courant_dispo'], Validators.required],
 
       a_signer_registre_travaux:['0', Validators.required],
       registre_signing_period:['quotidiennement'],
