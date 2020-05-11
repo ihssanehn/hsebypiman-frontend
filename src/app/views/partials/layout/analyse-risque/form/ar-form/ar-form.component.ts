@@ -251,18 +251,7 @@ export class ArFormComponent implements OnInit {
 		}
     return control.hasError(validationType) && (control.dirty || control.touched);
   }
-
-  public findInvalidControls() {
-    const invalid = [];
-    const controls = this.arForm.controls;
-    for (const name in controls) {
-        if (controls[name].invalid) {
-            invalid.push(name);
-        }
-    }
-    return invalid;
-  }
-
+  
   updateToggleValue(event, controlName){
     console.log(event);
     if(event.checked){

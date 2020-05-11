@@ -266,7 +266,7 @@
 				<div class="col-md-12">
 					<div class="tf-card-form">
 						<div class="form-row" *ngIf="ar.equipements.length > 0; else noEquipement">
-							<div class="col-xl-2 col-md-3 col-sm-6 col-xs-12" *ngFor="let equipement of ar.equipements">
+							<div class="col-xl-3 col-md-4 col-sm-6 col-xs-12" *ngFor="let equipement of ar.equipements">
 								<mat-checkbox disabled [value]="equipement.id" [checked]="true">{{equipement.libelle}}</mat-checkbox>
 							</div>
 						</div>

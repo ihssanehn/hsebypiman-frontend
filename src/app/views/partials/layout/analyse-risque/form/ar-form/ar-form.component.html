@@ -286,7 +286,7 @@
 				<div class="col-md-12">
 					<div class="tf-card-form">
 						<div class="form-row">
-							<div class="col-xl-2 col-md-3 col-sm-4 col-xs-12" *ngFor="let equipement of equipementList">
+							<div class="col-xl-3 col-md-4 col-sm-6 col-xs-12" *ngFor="let equipement of equipementList">
 								<mat-checkbox [value]="equipement.id" (change)="onEquipementCheckChange($event)" [checked]="onEquipementIsChecked(equipement.id)">{{equipement.libelle}}</mat-checkbox>
 							</div>
 						</div>
@@ -464,10 +464,5 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	<div>
-		<pre>
-			{{findInvalidControls()}}
-		</pre>
 	</div>
 </ng-container>
