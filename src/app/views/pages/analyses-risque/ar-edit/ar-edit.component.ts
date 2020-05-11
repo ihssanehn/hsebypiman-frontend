@@ -148,9 +148,9 @@ export class ArEditComponent implements OnInit, OnDestroy {
 			tel_contact_client_chef_chtr:['', Validators.required],
 			contact_client_hse:['', Validators.required],
 			tel_contact_client_hse:['', Validators.required],
-			heure_ouverture:['07:00', Validators.required],
-			heure_fermeture:['17:00', Validators.required],
-			courant_dispo:['230V / 50Hz', Validators.required],
+			heure_ouverture:['', Validators.required],
+			heure_fermeture:['', Validators.required],
+			courant_dispo:['', Validators.required],
 		  
 			a_signer_registre_travaux:['0', Validators.required],
 			registre_signing_period:['quotidiennement'],
