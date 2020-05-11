@@ -29,7 +29,7 @@ export class ChantiersListComponent implements OnInit, AfterViewInit {
 		order_way: 'asc',
 		keyword: "",
 	};
-	showFilters:Boolean = true;
+	showFilters:Boolean = false;
 	displayedChantierColumns = [
 		'number', 'name', 'client', 'status', 'charge_affaire', 
 		'responsable_chiffrage', 'montant', 'date_demarrage',

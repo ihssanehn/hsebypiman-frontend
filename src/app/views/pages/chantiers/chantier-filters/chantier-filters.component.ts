@@ -83,8 +83,8 @@ export class ChantierFiltersComponent implements OnInit, AfterViewInit
   async getStatus(){
     var res = await this.statusService.getAllFromModel('Chantier').toPromise();
     this.status = res.result.data;
-    var status_termine = this.status.filter(x=>x.code == 'ENCOURS')[0].id;
-    this.filterForm.patchValue({'status_id':status_termine}, {onlySelf: true, emitEvent: true});
+    // var status_termine = this.status.filter(x=>x.code == 'ENCOURS')[0].id;
+    // this.filterForm.patchValue({'status_id':status_termine}, {onlySelf: true, emitEvent: true});
     this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
