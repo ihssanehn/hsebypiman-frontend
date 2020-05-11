@@ -30,7 +30,7 @@
 					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
 						<mat-label>{{'CHANTIERS.STATUS.TITLE' | translate}}</mat-label>
 						<mat-select class="form-control" formControlName="status_id" name="status_id">
-							<mat-option [value]="all">Tous les statuts</mat-option>
+							<mat-option [value]="'all'">Tous les statuts</mat-option>
 							<mat-option *ngFor="let statu of status" [value]="statu.id">
 								{{statu.libelle}}
 							</mat-option>

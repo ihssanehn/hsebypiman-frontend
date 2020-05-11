@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
 export class ChantierAdminComponent implements OnInit {
 
   list: any[];
+  collapsed: boolean = false;
 
   constructor(private catHabilitationService:CatHabilitationService,
               private habilitationService:HabilitationService,

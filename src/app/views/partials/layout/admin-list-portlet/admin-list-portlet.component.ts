@@ -33,6 +33,8 @@ export class AdminListPortletComponent implements OnInit {
   @ViewChild('virtualTable', { static: false }) 
   nzTableComponent: ElementRef;
 
+  
+  collapsed: boolean = false;
 
   constructor() { }
 
