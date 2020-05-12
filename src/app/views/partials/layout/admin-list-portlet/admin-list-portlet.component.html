@@ -14,7 +14,7 @@
             </ng-container>
 
             <ng-template #editTitle>
-                <input type="text" nz-input [(ngModel)]="item.libelle" name="title" [ngStyle]="{'width' : ((item.libelle.length + 1) * 8) + 'px' }" />
+                <input type="text" nz-input [(ngModel)]="item.libelle" name="title" [ngStyle]="{'width' : ((item.libelle.length + 2) * 8) + 'px' }" />
                 <div class="ml-1 d-inline-flex">
                     <i nz-icon nzType="check" (click)="saveItem(item)" nzTheme="outline" class="pointer text-success"></i>
                     <nz-divider nzType="vertical"></nz-divider>
