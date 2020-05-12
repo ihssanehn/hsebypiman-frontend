@@ -41,6 +41,18 @@
         }
     }
 
+    /deep/  .cdk-drag {
+        cursor : grab;
+    }
+
+    /deep/ .cdk-drag-preview {
+        display: table;
+      }
+
+    /deep/ .cdk-drag-placeholder {
+        opacity: 0;
+    }
+
 
 }
 

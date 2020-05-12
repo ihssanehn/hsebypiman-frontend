@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { NzTableComponent } from 'ng-zorro-antd';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'tf-admin-basic-list-portlet',
@@ -10,6 +11,9 @@ export class AdminBasicListPortletComponent implements OnInit {
 
   @Input()
   items: any;
+
+  @Input()
+  sortable: boolean = true;
 
   @Output() 
   onSaveItem = new EventEmitter<any>();
@@ -42,6 +46,13 @@ export class AdminBasicListPortletComponent implements OnInit {
     this.onDeleteItem.emit( data );
   }
   
+  dropItem(event: CdkDragDrop<string[]>): void {
+    if(this.sortable){
+      let data = { id : event.item.data.id, ordre :  event.currentIndex };
+      moveItemInArray(this.items, event.previousIndex, event.currentIndex);
+      this.saveItem(data);
+    }
+  }
 
 
   startEdit(data: any): void {
