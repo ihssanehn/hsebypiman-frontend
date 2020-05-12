@@ -23,8 +23,8 @@ export class HabilitationService extends HttpService{
     return this.http.post<any>(`${this.baseUrl}/create`, payload);
   }
 
-  update(id, payload){
-    return this.http.put<any>(`${this.baseUrl}/${id}`, payload)
+  update(payload){
+    return this.http.put<any>(`${this.baseUrl}/${payload.id}`, payload)
                     .pipe(map(result => result.result.data));
   }
 
