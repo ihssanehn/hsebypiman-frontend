@@ -1,14 +1,14 @@
 import { Component, OnInit, Injector, ChangeDetectorRef } from '@angular/core';
-import { ArBaseAdminComponent } from '../ar-base-admin/ar-base-admin.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TypeService, ZoneService, CatRisqueService, RisqueService } from '@app/core/services';
+import { AdminTemplateComponent } from '@app/views/partials/layout/admin-template/admin-template.component';
 
 @Component({
   selector: 'ar-risques-admin',
-  templateUrl: '../ar-base-admin/ar-base-admin.component.html',
-  styleUrls: ['../ar-base-admin/ar-base-admin.component.scss']
+  templateUrl: '../../../../partials/layout/admin-template/admin-template.component.html',
+  styleUrls: ['../../../../partials/layout/admin-template/admin-template.component.scss']
 })
-export class ArRisquesAdminComponent extends ArBaseAdminComponent implements OnInit {
+export class ArRisquesAdminComponent extends AdminTemplateComponent implements OnInit {
 
   cdr: ChangeDetectorRef;
   modalService: NgbModal;

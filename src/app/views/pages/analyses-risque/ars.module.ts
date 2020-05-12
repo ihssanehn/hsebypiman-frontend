@@ -61,7 +61,6 @@ import { ArSignaturesComponent } from './ar-signatures/ar-signatures.component';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { ArAdminComponent } from './ar-admin/ar-admin.component';
 import { ArZonesAdminComponent } from './ar-admin/ar-zones-admin/ar-zones-admin.component';
-import { ArBaseAdminComponent } from './ar-admin/ar-base-admin/ar-base-admin.component';
 import { ArRisquesAdminComponent } from './ar-admin/ar-risques-admin/ar-risques-admin.component';
 import { ArEquipementsAdminComponent } from './ar-admin/ar-equipements-admin/ar-equipements-admin.component';
 
@@ -187,7 +186,6 @@ const routes: Routes = [
 		ArSignaturesComponent,
 		ArAdminComponent,
 		ArZonesAdminComponent,
-		ArBaseAdminComponent,
 		ArRisquesAdminComponent,
 		ArEquipementsAdminComponent,
 	]

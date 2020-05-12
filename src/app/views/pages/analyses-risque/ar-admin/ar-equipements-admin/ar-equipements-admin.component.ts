@@ -1,13 +1,13 @@
 import { Component, OnInit, ChangeDetectorRef, Injector } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EquipementService } from '@app/core/services';
-import { ArBaseAdminComponent } from '../ar-base-admin/ar-base-admin.component';
+import { AdminTemplateComponent } from '@app/views/partials/layout/admin-template/admin-template.component';
 
 @Component({
   selector: 'ar-equipements-admin',
   templateUrl: './ar-equipements-admin.component.html'
 })
-export class ArEquipementsAdminComponent extends ArBaseAdminComponent implements OnInit {
+export class ArEquipementsAdminComponent extends AdminTemplateComponent implements OnInit {
 
   cdr: ChangeDetectorRef;
   modalService: NgbModal;

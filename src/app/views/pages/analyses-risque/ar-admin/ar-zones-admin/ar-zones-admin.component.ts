@@ -1,16 +1,14 @@
 import { Component, OnInit, ChangeDetectorRef, Injector } from '@angular/core';
 import { ZoneService, TypeService } from '@app/core/services';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import Swal from 'sweetalert2';
-import { AdminAddModalComponent } from '@app/views/partials/layout/admin-add-modal/admin-add-modal.component';
-import { ArBaseAdminComponent } from '../ar-base-admin/ar-base-admin.component';
+import { AdminTemplateComponent } from '@app/views/partials/layout/admin-template/admin-template.component';
 
 @Component({
   selector: 'ar-zones-admin',
-  templateUrl: '../ar-base-admin/ar-base-admin.component.html',
-  styleUrls: ['../ar-base-admin/ar-base-admin.component.scss']
+  templateUrl: '../../../../partials/layout/admin-template/admin-template.component.html',
+  styleUrls: ['../../../../partials/layout/admin-template/admin-template.component.scss']
 })
-export class ArZonesAdminComponent extends ArBaseAdminComponent  implements OnInit {
+export class ArZonesAdminComponent extends AdminTemplateComponent  implements OnInit {
 
   cdr: ChangeDetectorRef;
   modalService: NgbModal;
@@ -19,7 +17,7 @@ export class ArZonesAdminComponent extends ArBaseAdminComponent  implements OnIn
 
   tpl : any = {
     title : 'Zones',
-    collapsed : true,
+    collapsed : false,
     childCol : 6
   }
 

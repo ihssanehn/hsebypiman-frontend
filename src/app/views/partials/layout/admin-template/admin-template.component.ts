@@ -1,27 +1,27 @@
-import { Component, OnInit, ChangeDetectorRef, Injector } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, ChangeDetectorRef, Injector } from '@angular/core';
+import { NzTableComponent } from 'ng-zorro-antd';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AdminAddModalComponent } from '../admin-add-modal/admin-add-modal.component';
 import Swal from 'sweetalert2';
-import { AdminAddModalComponent } from '@app/views/partials/layout/admin-add-modal/admin-add-modal.component';
 
 @Component({
-  selector: 'ar-base-admin',
+  selector: 'tf-admin-template',
   template: ''
 })
-export class ArBaseAdminComponent implements OnInit {
+export class AdminTemplateComponent implements OnInit {
 
   cdr: ChangeDetectorRef;
   modalService: NgbModal;
   parentService: any;
   childService: any;
-
+  
   protected tpl : any = {
     title : 'Titre',
     collapsed : false,
     childCol : 6
   }
 
-  list: any[];
-
+  protected list: any[];
 
   constructor(injector : Injector) {}
 
@@ -147,5 +147,5 @@ export class ArBaseAdminComponent implements OnInit {
     const index = this.list.findIndex(item => item.id === item_id);
     return this.list[index].children.length;
   }
-
+  
 }

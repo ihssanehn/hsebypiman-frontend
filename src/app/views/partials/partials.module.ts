@@ -101,6 +101,7 @@ import {
 import { AdminAddModalComponent } from './layout/admin-add-modal/admin-add-modal.component';
 import { ScrollDispatchModule, ScrollingModule } from '@angular/cdk/scrolling';
 import { AdminBasicListPortletComponent } from './layout/admin-basic-list-portlet/admin-basic-list-portlet.component';
+import { AdminTemplateComponent } from './layout/admin-template/admin-template.component';
 
 @NgModule({
 	declarations: [
@@ -151,6 +152,7 @@ import { AdminBasicListPortletComponent } from './layout/admin-basic-list-portle
 		AdminListPortletComponent,
 		AdminBasicListPortletComponent,
 		AdminAddModalComponent,
+		AdminTemplateComponent
 	],
 	exports: [
 		WidgetModule,
@@ -203,7 +205,8 @@ import { AdminBasicListPortletComponent } from './layout/admin-basic-list-portle
 
 		AdminListPortletComponent,
 		AdminBasicListPortletComponent,
-		NgbModule
+		NgbModule,
+		AdminTemplateComponent
 	],
 	imports: [
 		CommonModule,
