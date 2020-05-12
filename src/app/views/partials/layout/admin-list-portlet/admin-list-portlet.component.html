@@ -5,7 +5,7 @@
         <div class="tf-portlet__head-label">
 
             <ng-container *ngIf="!item.edit; else editTitle">
-                <h3 class="tf-portlet__head-title">
+                <h3 class="tf-portlet__head-title pointer" (click)="collapsed = !collapsed">
                     {{ item?.libelle }}
                 </h3>
                 <div class="ml-1">
