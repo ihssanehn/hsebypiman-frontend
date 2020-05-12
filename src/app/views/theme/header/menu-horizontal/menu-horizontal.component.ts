@@ -8,7 +8,7 @@ import {
 	OnInit,
 	Renderer2
 } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router, ActivatedRoute } from '@angular/router';
 // RxJS
 import { filter } from 'rxjs/operators';
 // Object-Path
@@ -80,6 +80,7 @@ export class MenuHorizontalComponent implements OnInit, AfterViewInit {
 		private menuConfigService: MenuConfigService,
 		private layoutConfigService: LayoutConfigService,
 		private router: Router,
+		private activatedRoute: ActivatedRoute,
 		private render: Renderer2,
 		private cdr: ChangeDetectorRef
 	) {
@@ -214,7 +215,9 @@ export class MenuHorizontalComponent implements OnInit, AfterViewInit {
 			return false;
 		}
 
-		return this.currentRouteUrl.indexOf(item.page) !== -1;
+		var test = this.currentRouteUrl.split('/');
+		
+		return item.page.indexOf(test[1]) !== -1;
 	}
 
 	/**

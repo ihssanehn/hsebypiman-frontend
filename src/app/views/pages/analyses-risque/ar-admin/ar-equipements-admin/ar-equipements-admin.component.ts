@@ -5,6 +5,7 @@ import { AdminTemplateComponent } from '@app/views/partials/layout/admin-templat
 
 @Component({
   selector: 'ar-equipements-admin',
+  styleUrls: ['./ar-equipements-admin.component.scss'],
   templateUrl: './ar-equipements-admin.component.html'
 })
 export class ArEquipementsAdminComponent extends AdminTemplateComponent implements OnInit {
@@ -16,7 +17,7 @@ export class ArEquipementsAdminComponent extends AdminTemplateComponent implemen
 
   tpl : any = {
     title : 'Équipements',
-    collapsed : false,
+    collapsed : true,
     childCol : 12
   }
 

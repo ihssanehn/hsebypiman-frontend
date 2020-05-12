@@ -17,7 +17,7 @@ export class ArZonesAdminComponent extends AdminTemplateComponent  implements On
 
   tpl : any = {
     title : 'Zones',
-    collapsed : false,
+    collapsed : true,
     childCol : 6
   }
 
