@@ -33,8 +33,8 @@ export class CatHabilitationService extends HttpService{
                     .pipe(map(result => result.result.data));
   }
 
-  update(id, payload){
-    return this.http.put<any>(`${this.baseUrl}/${id}`, payload)
+  update(payload){
+    return this.http.put<any>(`${this.baseUrl}/${payload.id}`, payload)
                     .pipe(map(result => result.result.data));
   }
 

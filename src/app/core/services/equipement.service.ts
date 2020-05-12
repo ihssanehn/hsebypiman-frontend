@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Equipement } from '../models/equipement.model';
 import {JsonResponse} from '@app/core/_base/layout/models/jsonResponse.model';
+import { map } from 'rxjs/operators';
 
 
 export class EquipementService extends HttpService{
@@ -21,4 +22,21 @@ export class EquipementService extends HttpService{
   getAll(){
     return this.http.post<JsonResponse<Equipement[]>>(this.baseUrl, {});
   }
+
+  create(payload){
+    return this.http.post<any>(`${this.baseUrl}/create`, payload)
+                    .pipe(map(result => result.result.data));
+  }
+
+  update(payload){
+    return this.http.put<any>(`${this.baseUrl}/${payload.id}`, payload)
+                    .pipe(map(result => result.result.data));
+  }
+
+  delete(id){
+    return this.http.delete<any>(`${this.baseUrl}/${id}`)
+                    .pipe(map(result => result.result.data));
+  }
+
+
 }

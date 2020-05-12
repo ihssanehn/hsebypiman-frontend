@@ -100,6 +100,8 @@ import {
 } from 'ng-zorro-antd';
 import { AdminAddModalComponent } from './layout/admin-add-modal/admin-add-modal.component';
 import { ScrollDispatchModule, ScrollingModule } from '@angular/cdk/scrolling';
+import { AdminBasicListPortletComponent } from './layout/admin-basic-list-portlet/admin-basic-list-portlet.component';
+import { AdminTemplateComponent } from './layout/admin-template/admin-template.component';
 
 @NgModule({
 	declarations: [
@@ -148,7 +150,9 @@ import { ScrollDispatchModule, ScrollingModule } from '@angular/cdk/scrolling';
 		ArFormComponent,
 		SearchChantierFormComponent,
 		AdminListPortletComponent,
+		AdminBasicListPortletComponent,
 		AdminAddModalComponent,
+		AdminTemplateComponent
 	],
 	exports: [
 		WidgetModule,
@@ -200,7 +204,9 @@ import { ScrollDispatchModule, ScrollingModule } from '@angular/cdk/scrolling';
 		CommingSoonComponent,
 
 		AdminListPortletComponent,
-		NgbModule
+		AdminBasicListPortletComponent,
+		NgbModule,
+		AdminTemplateComponent
 	],
 	imports: [
 		CommonModule,

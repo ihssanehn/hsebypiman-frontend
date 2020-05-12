@@ -60,6 +60,10 @@ import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapte
 import { ArFiltersComponent } from './ar-filters/ar-filters.component';
 import { ArSignaturesComponent } from './ar-signatures/ar-signatures.component';
 import { SignaturePadModule } from 'angular2-signaturepad';
+import { ArAdminComponent } from './ar-admin/ar-admin.component';
+import { ArZonesAdminComponent } from './ar-admin/ar-zones-admin/ar-zones-admin.component';
+import { ArRisquesAdminComponent } from './ar-admin/ar-risques-admin/ar-risques-admin.component';
+import { ArEquipementsAdminComponent } from './ar-admin/ar-equipements-admin/ar-equipements-admin.component';
 
 
 
@@ -99,6 +103,10 @@ const routes: Routes = [
 			{
 				path: 'detail/:id',
 				component: ArDetailComponent
+			},
+			{
+				path: 'admin',
+				component: ArAdminComponent
 			},
 		]
 	}
@@ -178,6 +186,10 @@ const routes: Routes = [
 		ArDetailComponent,
 		ArFiltersComponent,
 		ArSignaturesComponent,
+		ArAdminComponent,
+		ArZonesAdminComponent,
+		ArRisquesAdminComponent,
+		ArEquipementsAdminComponent,
 	]
 })
 export class ArsModule {}

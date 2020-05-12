@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import { environment } from '@env/environment';
 import { HttpService } from '@app/core/services/http-service';
@@ -8,9 +9,9 @@ import { CatHabilitation } from '@app/core/models/';
 import { map } from 'rxjs/operators';
 
 
-export class HabilitationService extends HttpService{
+export class RisqueService extends HttpService{
 
-  baseUrl = environment.apiBaseUrl+'habilitations';
+  baseUrl = environment.apiBaseUrl+'risques';
 
   constructor(
     private http: HttpClient,
