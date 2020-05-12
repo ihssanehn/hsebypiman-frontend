@@ -1,16 +1,17 @@
+
 import { Injectable } from '@angular/core';
 import { environment } from '@env/environment';
 import { HttpService } from '@app/core/services/http-service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Router } from '@angular/router';
-import { Equipement } from '../models/equipement.model';
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 import {JsonResponse} from '@app/core/_base/layout/models/jsonResponse.model';
+import { Router } from '@angular/router';
+import { CatHabilitation } from '@app/core/models/';
 import { map } from 'rxjs/operators';
 
 
-export class EquipementService extends HttpService{
+export class RisqueService extends HttpService{
 
-  baseUrl = environment.apiBaseUrl+'equipements';
+  baseUrl = environment.apiBaseUrl+'risques';
 
   constructor(
     private http: HttpClient,
@@ -19,13 +20,8 @@ export class EquipementService extends HttpService{
     super()
   }
 
-  getAll(){
-    return this.http.post<JsonResponse<Equipement[]>>(this.baseUrl, {});
-  }
-
   create(payload){
-    return this.http.post<any>(`${this.baseUrl}/create`, payload)
-                    .pipe(map(result => result.result.data));
+    return this.http.post<any>(`${this.baseUrl}/create`, payload);
   }
 
   update(payload){

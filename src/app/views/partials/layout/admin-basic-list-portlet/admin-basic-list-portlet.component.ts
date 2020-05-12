@@ -2,14 +2,14 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef }
 import { NzTableComponent } from 'ng-zorro-antd';
 
 @Component({
-  selector: 'tf-admin-list-portlet',
-  templateUrl: './admin-list-portlet.component.html',
-  styleUrls: ['./admin-list-portlet.component.scss']
+  selector: 'tf-admin-basic-list-portlet',
+  templateUrl: './admin-basic-list-portlet.component.html',
+  styleUrls: ['./admin-basic-list-portlet.component.scss']
 })
-export class AdminListPortletComponent implements OnInit {
+export class AdminBasicListPortletComponent implements OnInit {
 
   @Input()
-  item: any;
+  items: any;
 
   @Output() 
   onSaveItem = new EventEmitter<any>();
@@ -20,14 +20,6 @@ export class AdminListPortletComponent implements OnInit {
   @Output() 
   onDeleteItem = new EventEmitter<any>();
 
-  @Output() 
-  onAddChild = new EventEmitter<any>();
-
-  @Output() 
-  onSaveChild = new EventEmitter<any>();
-
-  @Output() 
-  onDeleteChild = new EventEmitter<any>();
 
 
   constructor() { }
@@ -50,24 +42,6 @@ export class AdminListPortletComponent implements OnInit {
     this.onDeleteItem.emit( data );
   }
   
-  
-  addChild(){
-    this.item.children.push({edit: true})
-    // this.nzTableComponent.cdkVirtualScrollViewport.scrollToIndex(10);
-  }
-
-  saveChild(data : any): void {
-    if(!data.id)
-      this.onAddChild.emit( { ...data, parent_id : this.item.id} );
-    else
-      this.onSaveChild.emit( data );
-    data.edit = false;
-  }
-
-  deleteChild(data : any): void {
-    this.onDeleteChild.emit( { ...data, parent_id : this.item.id} );
-  }
-
 
 
   startEdit(data: any): void {
@@ -79,9 +53,6 @@ export class AdminListPortletComponent implements OnInit {
     data.edit = false;
     data.libelle = data.old; 
   }
-
-
-
 
 
 }

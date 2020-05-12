@@ -27,6 +27,14 @@ export class ZoneService extends HttpService{
     getAllFromModel(model){
         return this.http.post<JsonResponse<any>>(this.baseUrl, {'model': model});
     }
+
+    getByType(type_id){
+        return this.getAll().pipe(map(result => {
+            let list = result.result.data.filter( zone => zone.type_id === type_id )
+            return list;
+        }));
+    }
+
     getList(){
         return this.http.get<JsonResponse<any>>(this.baseUrl+'/mini');
     }

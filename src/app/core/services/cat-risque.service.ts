@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http'
 import {JsonResponse} from '@app/core/_base/layout/models/jsonResponse.model';
 import { Router } from '@angular/router';
 import { CatRisque } from '@app/core/models/';
+import { map } from 'rxjs/operators';
 
 
 export class CatRisqueService extends HttpService{
@@ -20,6 +21,21 @@ export class CatRisqueService extends HttpService{
 
   getAll(){
     return this.http.post<JsonResponse<CatRisque[]>>(this.baseUrl, {});
+  }
+  get(item_id){
+    return this.http.get<any>(this.baseUrl+'/'+item_id)
+                    .pipe(map(result => result.result.data));
+  }
+  create(item){
+      return this.http.post<any>(this.baseUrl+'/create', item)
+                      .pipe(map(result => result.result.data));
+  }
+  update(item){
+      return this.http.put<any>(this.baseUrl+'/'+item.id, item)
+                      .pipe(map(result => result.result.data));
+  }
+  delete(item_id){
+      return this.http.delete(this.baseUrl+'/'+item_id);
   }
 
 }
