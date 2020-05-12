@@ -15,7 +15,7 @@ export class ChantierHabilitationsAdminComponent extends AdminTemplateComponent 
   parentService: any;
   childService: any;
 
-  protected tpl : any = {
+  tpl : any = {
     title : 'Habilitations',
     collapsed : false,
     childCol : 6

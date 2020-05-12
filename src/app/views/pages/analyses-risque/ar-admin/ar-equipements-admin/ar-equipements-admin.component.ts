@@ -14,7 +14,7 @@ export class ArEquipementsAdminComponent extends AdminTemplateComponent implemen
   parentService: any;
   childService: any;
 
-  protected tpl : any = {
+  tpl : any = {
     title : 'Équipements',
     collapsed : false,
     childCol : 12

@@ -29,6 +29,7 @@ export class AdminListPortletComponent implements OnInit {
   @Output() 
   onDeleteChild = new EventEmitter<any>();
 
+  collapsed : boolean = false;
 
   constructor() { }
 

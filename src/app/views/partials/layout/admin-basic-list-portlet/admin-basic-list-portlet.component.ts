@@ -20,7 +20,7 @@ export class AdminBasicListPortletComponent implements OnInit {
   @Output() 
   onDeleteItem = new EventEmitter<any>();
 
-
+  collapsed : boolean = false;
 
   constructor() { }
 

@@ -15,7 +15,7 @@ export class ArRisquesAdminComponent extends AdminTemplateComponent implements O
   parentService: any;
   childService: any;
 
-  protected tpl : any = {
+  tpl : any = {
     title : 'Risques',
     collapsed : true,
     childCol : 6

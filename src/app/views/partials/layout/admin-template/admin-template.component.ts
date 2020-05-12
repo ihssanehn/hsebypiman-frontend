@@ -15,13 +15,13 @@ export class AdminTemplateComponent implements OnInit {
   parentService: any;
   childService: any;
   
-  protected tpl : any = {
+  tpl : any = {
     title : 'Titre',
     collapsed : false,
     childCol : 6
   }
 
-  protected list: any[];
+  list: any[];
 
   constructor(injector : Injector) {}
 
