@@ -185,7 +185,7 @@ export class ChantierFormComponent implements OnInit {
       'type_code':[null, [Validators.required]],
       'entreprise_id':[null, [Validators.required]],
       'chiffre_affaire':[null, [Validators]],
-      'date_demarrage':[null, [Validators.required]]
+      'date_demarrage':[null, [Validators]]
     });
   }
 

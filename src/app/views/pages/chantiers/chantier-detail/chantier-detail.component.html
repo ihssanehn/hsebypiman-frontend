@@ -32,6 +32,7 @@
             <p><span class="label pull-left mr-2">{{'CHANTIERS.DATE_DEMARRAGE.TITLE' | translate}}</span><span class="">{{chantier.date_demarrage | date:'dd/MM/yyyy'}}</span></p>
             <p><span class="label pull-left mr-2">{{'CHANTIERS.CHIEF.TITLE' | translate}}</span><span class="">{{chantier.charge_affaire | fullName}}</span></p>
             <p><span class="label pull-left mr-2">{{'CHANTIERS.BUDGET.SHORTTITLE' | translate}}</span><span class="">{{chantier.montant | currency:'EUR':'€'}}</span></p>
+            <p><span class="label pull-left mr-2">{{'CHANTIERS.RESP_CHIFFRAGE.TITLE' | translate}}</span><span class="">{{chantier.responsable_chiffrage | fullName}}</span></p>
           </div>
           <div class="tf-divider">
             <span></span>
@@ -103,7 +104,7 @@
             </div>
             <div class="row">
               <div class="col-md-6"><p><span class="label pull-left mr-2">{{'CHANTIERS.ARS.TITLE' | translate}}</span></p></div>
-              <div class="col-md-6"><p class="text-right" *ngFor="let ar of chantier.ars">{{ar.date | date:'dd/MM/yyyy'}}</p></div>
+              <div class="col-md-6"><p class="text-right" *ngFor="let ar of chantier.ars" ><a (click)="goToArDetail(ar.id)" alt="voir l'analyse de risque">{{ar.created_at | date:'dd/MM/yyyy'}}</a></p></div>
             </div>
           </div>
           <div class="box box-ar-vs" style="flex: 1;">
@@ -158,9 +159,9 @@
           Clore le chantier
         </button>
         <span class="pull-right" 
-          matTooltip="Le montant du chantier est inférieur à 20K€, vous ne pouvez pas créer d\'analyse de risque" 
-          [matTooltipDisabled]="this.chantier.montant >= 20000">
-          <button mat-raised-button color="info" (click)="addAr(chantier.id)" [disabled]="this.chantier.montant < 20000">
+          matTooltip="Le montant du chantier est inférieur ou égal à 20K€, vous ne pouvez pas créer d\'analyse de risque" 
+          [matTooltipDisabled]="this.chantier.montant > 20000">
+          <button mat-raised-button color="info" (click)="addAr(chantier.id)" [disabled]="this.chantier.montant <= 20000">
             <mat-icon inline="true" style="width: 21px; margin-top: -6px; margin-right: 6px;">add</mat-icon>
             Créer Analyse de risque
           </button>

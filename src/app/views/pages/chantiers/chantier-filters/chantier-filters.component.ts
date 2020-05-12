@@ -1,12 +1,13 @@
 import { ChangeDetectorRef, Component, OnInit, EventEmitter, Output, Input, forwardRef, AfterViewInit } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormBuilder, FormGroup } from '@angular/forms';
-import { fromEvent, of, Subscription } from 'rxjs';
-import { debounceTime,map,distinctUntilChanged,filter, tap } from 'rxjs/operators';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import { ChantierService, TypeService, StatusService } from '@app/core/services';
 import { Chantier, Type, Status } from '@app/core/models';
 import { AuthService, User } from '@app/core/auth';
+import * as moment from 'moment';
+import { debounceTime, map } from 'rxjs/operators';
+import { DateEnToFrPipe, DateFrToEnPipe } from '@app/core/_base/layout';
 
 
 @Component({
@@ -48,6 +49,7 @@ export class ChantierFiltersComponent implements OnInit, AfterViewInit
     private authService:AuthService,
     private fb: FormBuilder,
     private cdr: ChangeDetectorRef,
+    private dateFrToEnPipe:DateFrToEnPipe,
 		iconRegistry: MatIconRegistry, 
     sanitizer: DomSanitizer,
   ) {
@@ -61,10 +63,14 @@ export class ChantierFiltersComponent implements OnInit, AfterViewInit
     this.getClients();
     this.getTypes();
     this.initFiltersForm();
-    this.filterForm.valueChanges.subscribe(data => this.search(data));
+    this.filterForm.valueChanges.pipe(
+      debounceTime(500)
+    ).subscribe(data => this.search(data));
   }
   
   ngAfterViewInit(){
+
+
   }
 
   // Load ressources needed
@@ -77,8 +83,8 @@ export class ChantierFiltersComponent implements OnInit, AfterViewInit
   async getStatus(){
     var res = await this.statusService.getAllFromModel('Chantier').toPromise();
     this.status = res.result.data;
-    var status_termine = this.status.filter(x=>x.code == 'ENCOURS')[0].id;
-    this.filterForm.patchValue({'status_id':status_termine}, {onlySelf: true, emitEvent: false});
+    // var status_termine = this.status.filter(x=>x.code == 'ENCOURS')[0].id;
+    // this.filterForm.patchValue({'status_id':status_termine}, {onlySelf: true, emitEvent: true});
     this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
@@ -113,7 +119,11 @@ export class ChantierFiltersComponent implements OnInit, AfterViewInit
   }
  
   search(filters: any): void {
-    this.change.emit(filters);
+    var filter = {...this.filterForm.value}
+    filter.date_demarrage_start = this.dateFrToEnPipe.transform(filter.date_demarrage_start);
+    filter.date_demarrage_end = this.dateFrToEnPipe.transform(filter.date_demarrage_end);
+    console.log(filter);
+    this.change.emit(filter);
   }
 
   formHasValue(key){
@@ -122,4 +132,5 @@ export class ChantierFiltersComponent implements OnInit, AfterViewInit
   clearValue(key){
     this.filterForm.get(key).patchValue(null);
   }
+
 }

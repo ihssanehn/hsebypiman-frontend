@@ -9,7 +9,7 @@
 	display: flex;
 	flex-grow: 1;
 	flex-direction: column;
-	box-shadow: $tf-elevate-shadow;
+	box-shadow: $tf-elevate-shadow-2;
 	background-color: tf-get($tf-portlet, bg-color);
 	margin-bottom: tf-get($tf-portlet, bottom-space, desktop);
 

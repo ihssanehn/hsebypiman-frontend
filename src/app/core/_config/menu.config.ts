@@ -25,7 +25,7 @@ export class MenuConfig {
 					translate: 'MENU.ANALYSERISQUE',
 				},
 				{
-					title: 'Visites securite',
+					title: 'Visites sécurité',
 					root: true,
 					alignment: 'left',
 					page: '/visites-securite/list',
@@ -39,21 +39,21 @@ export class MenuConfig {
 					translate: 'MENU.PLANACTION',
 				},
 				{
-					title: 'Salaries',
+					title: 'Salariés',
 					root: true,
 					alignment: 'left',
 					page: '/salaries',
 					translate: 'MENU.SALARIES',
 				},
 				{
-					title: 'Sous-traitants',
+					title: 'Entreprises',
 					root: true,
 					alignment: 'left',
 					page: '/sous-traitants',
 					translate: 'MENU.SOUSTRAITANTS',
 				},
 				{
-					title: 'Admin',
+					title: 'Paramètres',
 					root: true,
 					alignment: 'left',
 					page: '/admin',

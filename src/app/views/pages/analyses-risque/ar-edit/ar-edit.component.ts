@@ -14,6 +14,7 @@ import moment from 'moment';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import { JsonResponse } from '@app/core/_base/layout/models/jsonResponse.model';
+import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
 
 @Component({
   selector: 'tf-ar-edit',
@@ -48,6 +49,8 @@ export class ArEditComponent implements OnInit, OnDestroy {
 		private permissionsService : NgxPermissionsService,
 		private location: Location,
 		protected chantierService:ChantierService,
+		protected dateFrToEnPipe:DateFrToEnPipe, 
+		protected dateEnToFrPipe:DateEnToFrPipe,
 		iconRegistry: MatIconRegistry, 
 		sanitizer: DomSanitizer
 	) {
@@ -66,8 +69,11 @@ export class ArEditComponent implements OnInit, OnDestroy {
 						.get(id)
 						.pipe(
 							tap(ar=>{
-								this.arForm.patchValue(ar.result.data);
-								this.formPathValues(ar.result.data);
+								var _ar = ar.result.data;
+								_ar.date_accueil_secu = this.dateEnToFrPipe.transform(_ar.date_accueil_secu);
+								_ar.date_validite = this.dateEnToFrPipe.transform(_ar.date_validite);
+								this.arForm.patchValue(_ar);
+								this.formPathValues(_ar);
 							})
 						).subscribe( async res => {
 							this.ar = res.result.data;
@@ -148,9 +154,9 @@ export class ArEditComponent implements OnInit, OnDestroy {
 			tel_contact_client_chef_chtr:['', Validators.required],
 			contact_client_hse:['', Validators.required],
 			tel_contact_client_hse:['', Validators.required],
-			heure_ouverture:['07:00', Validators.required],
-			heure_fermeture:['17:00', Validators.required],
-			courant_dispo:['230V / 50Hz', Validators.required],
+			heure_ouverture:['', Validators.required],
+			heure_fermeture:['', Validators.required],
+			courant_dispo:['', Validators.required],
 		  
 			a_signer_registre_travaux:['0', Validators.required],
 			registre_signing_period:['quotidiennement'],
@@ -208,10 +214,10 @@ export class ArEditComponent implements OnInit, OnDestroy {
 			}
 	
 			if (a_prevoir_balisage === '0') {
-			  nom_ca_cvti.setValidators(null);
-			  tel_ca_cvti.setValidators(null);
-			  assistant_ca.setValidators(null);
-			  tel_assistant_ca.setValidators(null);
+			  nom_ca_cvti.clearValidators();
+			  tel_ca_cvti.clearValidators();
+			  assistant_ca.clearValidators();
+			  tel_assistant_ca.clearValidators();
 			}
 	
 			nom_ca_cvti.updateValueAndValidity();
@@ -233,12 +239,12 @@ export class ArEditComponent implements OnInit, OnDestroy {
 			}
 	
 			if (a_signer_registre_travaux === '0') {
-			  nom_charge_registre.setValidators(null);
-			  adresse_charge_registre.setValidators(null);
-			  ville_charge_registre.setValidators(null);
-			  pays_charge_registre.setValidators(null);
-			  codepostal_charge_registre.setValidators(null);
-			  tel_charge_registre.setValidators(null);
+			  nom_charge_registre.clearValidators();
+			  adresse_charge_registre.clearValidators();
+			  ville_charge_registre.clearValidators();
+			  pays_charge_registre.clearValidators();
+			  codepostal_charge_registre.clearValidators();
+			  tel_charge_registre.clearValidators();
 			}
 	
 			nom_charge_registre.updateValueAndValidity();
@@ -263,13 +269,13 @@ export class ArEditComponent implements OnInit, OnDestroy {
 			}
 	
 			if (a_prevoir_compagnons === '0') {
-			  date_accueil_secu.setValidators(null);
-			  realisateur.setValidators(null);
-			  tel_realisateur.setValidators(null);
-			  date_validite.setValidators(null);
-			  accueil_secu_days.setValidators(null);
-			  accueil_secu_time_opening.setValidators(null);
-			  accueil_secu_time_closing.setValidators(null);
+			  date_accueil_secu.clearValidators();
+			  realisateur.clearValidators();
+			  tel_realisateur.clearValidators();
+			  date_validite.clearValidators();
+			  accueil_secu_days.clearValidators();
+			  accueil_secu_time_opening.clearValidators();
+			  accueil_secu_time_closing.clearValidators();
 			}
 	
 			date_accueil_secu.updateValueAndValidity();
@@ -302,8 +308,8 @@ export class ArEditComponent implements OnInit, OnDestroy {
 
 			if(form.chantier_id)
 			{
-				form.date_accueil_secu = this.setDateFormat(form.date_accueil_secu);
-				form.date_validite = this.setDateFormat(form.date_validite);
+				form.date_accueil_secu = this.dateFrToEnPipe.transform(form.date_accueil_secu);
+				form.date_validite = this.dateFrToEnPipe.transform(form.date_validite);
 				form.id = this.ar.id;
 				
 				this.arService.update(form)

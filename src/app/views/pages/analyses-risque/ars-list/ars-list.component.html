@@ -1,6 +1,6 @@
 
 <tf-search-list-bar [(ngModel)]="filter" (change)="getArs()" [hasAdvancedSearch]="true" [showFilters]="showFilters" (advancedSearchChange)="advancedSearchChanged($event)" class="row row-filters"></tf-search-list-bar>
-<tf-ar-filters *ngIf="showFilters" (change)="udpateFilters($event)" class="row" ></tf-ar-filters>
+<tf-ar-filters [hidden]="!showFilters" (change)="udpateFilters($event)" class="row" ></tf-ar-filters>
 
 <tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
 	<tf-portlet-body class="tf-portlet__body--fit" *ngIf="arsList">
@@ -12,122 +12,129 @@
         <button [disabled]="!pagination.total" class="pull-right btn-small mb-4" mat-raised-button color="info" (click)="exportList()">Exporter la liste</button>
       </div>
     </div>
-    
-    <table mat-table [dataSource]="arsList.data">
-
-      <!-- Number Column -->
-      <ng-container matColumnDef="number">
-        <th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('code')">
-          {{'ARS.NUMBER' | translate}} 
-          <i class="fa" [ngClass]="isOrderedBy('code') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('code') && {'opacity': 1}"></i>
-        </th>
-        <td mat-cell *matCellDef="let ar" class="pointer" (click)="viewAr(ar.id)"> {{ar.code}} </td>
-      </ng-container>
-      <!-- Client Column -->
-      <ng-container matColumnDef="client">
-        <th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('chantiers.client')"> 
-          {{'CHANTIERS.CLIENT.TITLE' | translate}}
-          <i class="fa" [ngClass]="isOrderedBy('chantiers.client') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('chantiers.client') && {'opacity': 1}"></i>
-        </th>
-        <td mat-cell *matCellDef="let ar" class="pointer" (click)="viewAr(ar.id)"> {{ar.chantier.client}} </td>
-      </ng-container>
-      <!-- Chantier Column -->
-      <ng-container matColumnDef="chantier">
-        <th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('chantiers.nom')"> 
-          {{'CHANTIERS.NAME.TITLE' | translate}}
-          <i class="fa" [ngClass]="isOrderedBy('chantiers.nom') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('chantiers.nom') && {'opacity': 1}"></i>
-        </th>
-        <td mat-cell *matCellDef="let ar" class="pointer" (click)="viewAr(ar.id)"> {{ar.chantier.nom}} </td>
-      </ng-container>
-      <!-- CA Column -->
-      <ng-container matColumnDef="charge_affaire">
-        <th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder(['users.nom', 'users.prenom'])"> 
-          {{'CHANTIERS.CHIEF.TITLE' | translate}} 
-          <i class="fa" [ngClass]="isOrderedBy(['users.nom', 'users.prenom']) && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy(['users.nom', 'users.prenom']) && {opacity:1}"></i>
-        </th>
-        <td mat-cell *matCellDef="let ar" class="text-center pointer" (click)="viewAr(ar.id)"> {{ar.chantier.charge_affaire | initiales}} </td>
-      </ng-container>
-      <!-- Created at Column -->
-      <ng-container matColumnDef="created_at" >
-        <th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('created_at')"> 
-          {{'COMMON.CREATED_AT.TITLE' | translate}} 
-          <i class="fa" [ngClass]="isOrderedBy('created_at') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('created_at') && {opacity:1}"></i>
-        </th>
-        <td mat-cell *matCellDef="let ar" class="text-center pointer" (click)="viewAr(ar.id)"> {{ar.created_at | date:'dd/MM/yyyy'}} </td>
-      </ng-container>
-      <!-- Status Column -->
-      <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('status.libelle')"> 
-          {{'ARS.STATUS' | translate}} 
-          <i class="fa" [ngClass]="isOrderedBy('status.libelle') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('status.libelle') && {opacity:1}"></i>
-        </th>
-        <td mat-cell *matCellDef="let ar" class="text-center pointer" (click)="viewAr(ar.id)" [ngStyle]="ar.status && ar.status.color && {'color':ar.status.color}"> {{ar.status?.libelle}} </td>
-      </ng-container>
-      <!-- Date demarrage chantier Column -->
-      <ng-container matColumnDef="date_demarrage_chantier" >
-        <th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('chantiers.date_demarrage')"> 
-          {{'CHANTIERS.DATE_DEMARRAGE.LABEL' | translate}} 
-          <i class="fa" [ngClass]="isOrderedBy('chantiers.date_demarrage') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('chantiers.date_demarrage') && {opacity:1}"></i>
-        </th>
-        <td mat-cell *matCellDef="let ar" class="text-center pointer" (click)="viewAr(ar.id)"> {{ar.chantier.date_demarrage | date:'dd/MM/yyyy'}} </td>
-      </ng-container>
-      <!-- Nbr Signatories Column -->
-      <ng-container matColumnDef="sign_count" >
-        <th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('signatures_count')">
-          {{'ARS.SIGNATAIRECOUNT.LABEL' | translate}} 
-          <i class="fa" [ngClass]="isOrderedBy('signatures_count') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('signatures_count') && {opacity:1}"></i>
-        </th>
-        <td mat-cell *matCellDef="let ar" class="text-center pointer" (click)="viewAr(ar.id)"> {{ar.signatures_count}} </td>
-      </ng-container>
-      <!-- Observations Column -->
-      <ng-container matColumnDef="observations" >
-        <th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('observations_signature')"> 
-          {{'ARS.OBSERVATION' | translate}} 
-          <i class="fa" [ngClass]="isOrderedBy('observations_signature') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('observations_signature') && {opacity:1}"></i>
-        </th>
-        <td mat-cell *matCellDef="let ar" class="text-center pointer" (click)="viewAr(ar.id)"> 
-          <div class="popover-container">
-            <a ngbPopover="{{ar.observations_signature}}" placement="top"
-            [openDelay]="100" [closeDelay]="100" triggers="mouseenter:mouseleave">
-              <mat-icon color="primary" *ngIf="ar.observations_signature" >done</mat-icon>
-              <mat-icon color="warn" *ngIf="!ar.observations_signature">clear</mat-icon>
-            </a>
-          </div>
-        </td>
-      </ng-container>
-
-
-      <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef></th>
-        <td mat-cell *matCellDef="let ar"> 
-          
-          <div ngbDropdown placement="bottom-right" class="d-inline-block">
-            <button ngbDropdownToggle mat-icon-button color="primary" matTooltip="Actions">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-            <div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
-              <!-- *ngxPermissionsOnly="['ADMIN']" -->
-              <button mat-icon-button color="info" matTooltip="{{'ACTION.DUPLICATE' | translate}}" (click)="duplicateAr(ar.id)">
-                <mat-icon>filter_none</mat-icon>
-              </button>
-              <button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}" (click)="viewAr(ar.id)">
-                <mat-icon>visibility</mat-icon>
-              </button>
-              <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editAr(ar.id)">
-                <mat-icon>edit</mat-icon>
-              </button>
-              <button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteAr(ar.id)">
-                <mat-icon>delete</mat-icon>
-              </button>
-                
+    <div class="table-responsive">
+      <table mat-table [dataSource]="arsList.data">
+          <!-- Number Column -->
+        <ng-container matColumnDef="number" sticky>
+          <th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('code')">
+            {{'ARS.NUMBER' | translate}} 
+            <i class="fa" [ngClass]="isOrderedBy('code') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('code') && {'opacity': 1}"></i>
+          </th>
+          <td mat-cell *matCellDef="let ar" class="pointer" (click)="viewAr(ar.id)"> {{ar.code}} </td>
+        </ng-container>
+        <!-- Chantier Column -->
+        <ng-container matColumnDef="chantier">
+          <th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('chantiers.nom')"> 
+            {{'CHANTIERS.NAME.TITLE' | translate}}
+            <i class="fa" [ngClass]="isOrderedBy('chantiers.nom') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('chantiers.nom') && {'opacity': 1}"></i>
+          </th>
+          <td mat-cell *matCellDef="let ar" class="pointer" (click)="viewAr(ar.id)"> {{ar.chantier.nom}} </td>
+        </ng-container>
+        <!-- Client Column -->
+        <ng-container matColumnDef="client">
+          <th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('chantiers.client')"> 
+            {{'CHANTIERS.CLIENT.TITLE' | translate}}
+            <i class="fa" [ngClass]="isOrderedBy('chantiers.client') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('chantiers.client') && {'opacity': 1}"></i>
+          </th>
+          <td mat-cell *matCellDef="let ar" class="pointer" (click)="viewAr(ar.id)"> {{ar.chantier.client}} </td>
+        </ng-container>
+        <!-- CA Column -->
+        <ng-container matColumnDef="charge_affaire">
+          <th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder(['users.nom', 'users.prenom'])"> 
+            {{'CHANTIERS.CHIEF.TITLE' | translate}} 
+            <i class="fa" [ngClass]="isOrderedBy(['users.nom', 'users.prenom']) && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy(['users.nom', 'users.prenom']) && {opacity:1}"></i>
+          </th>
+          <td mat-cell *matCellDef="let ar" class="text-center pointer" (click)="viewAr(ar.id)"> 
+            <div [matTooltipClass]="'custom-tooltip'" matTooltip="{{ar.chantier.charge_affaire | fullName}}"
+            [matTooltipShowDelay]="'100'"
+            [matTooltipHideDelay]="'100'"
+            [matTooltipPosition]="'above'">
+              {{ar.chantier.charge_affaire | initiales}} 
             </div>
-          </div>
-        </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedArColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedArColumns;"></tr>
-    </table>
+          </td>
+        </ng-container>
+        <!-- Created at Column -->
+        <ng-container matColumnDef="created_at" >
+          <th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('created_at')"> 
+            {{'COMMON.CREATED_AT.TITLE' | translate}} 
+            <i class="fa" [ngClass]="isOrderedBy('created_at') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('created_at') && {opacity:1}"></i>
+          </th>
+          <td mat-cell *matCellDef="let ar" class="text-center pointer" (click)="viewAr(ar.id)"> {{ar.created_at | date:'dd/MM/yyyy'}} </td>
+        </ng-container>
+        <!-- Status Column -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('status.libelle')"> 
+            {{'ARS.STATUS' | translate}} 
+            <i class="fa" [ngClass]="isOrderedBy('status.libelle') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('status.libelle') && {opacity:1}"></i>
+          </th>
+          <td mat-cell *matCellDef="let ar" class="text-center pointer" (click)="viewAr(ar.id)" [ngStyle]="ar.status && ar.status.color && {'color':ar.status.color}"> {{ar.status?.libelle}} </td>
+        </ng-container>
+        <!-- Date demarrage chantier Column -->
+        <ng-container matColumnDef="date_demarrage_chantier" >
+          <th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('chantiers.date_demarrage')"> 
+            {{'CHANTIERS.DATE_DEMARRAGE.LABEL' | translate}} 
+            <i class="fa" [ngClass]="isOrderedBy('chantiers.date_demarrage') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('chantiers.date_demarrage') && {opacity:1}"></i>
+          </th>
+          <td mat-cell *matCellDef="let ar" class="text-center pointer" (click)="viewAr(ar.id)"> {{ar.chantier.date_demarrage | date:'dd/MM/yyyy'}} </td>
+        </ng-container>
+        <!-- Nbr Signatories Column -->
+        <ng-container matColumnDef="sign_count" >
+          <th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('signatures_count')">
+            {{'ARS.SIGNATAIRECOUNT.LABEL' | translate}} 
+            <i class="fa" [ngClass]="isOrderedBy('signatures_count') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('signatures_count') && {opacity:1}"></i>
+          </th>
+          <td mat-cell *matCellDef="let ar" class="text-center pointer" (click)="viewAr(ar.id)"> {{ar.signatures_count}} </td>
+        </ng-container>
+        <!-- Observations Column -->
+        <ng-container matColumnDef="observations" >
+          <th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('observations_signature')"> 
+            {{'ARS.OBSERVATION' | translate}} 
+            <i class="fa" [ngClass]="isOrderedBy('observations_signature') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('observations_signature') && {opacity:1}"></i>
+          </th>
+          <td mat-cell *matCellDef="let ar" class="text-center pointer" (click)="viewAr(ar.id)"> 
+            <div [matTooltipClass]="'custom-tooltip'" matTooltip="{{ar.observations_signature}}"
+            [matTooltipShowDelay]="'100'"
+            [matTooltipHideDelay]="'100'"
+            [matTooltipPosition]="'above'">
+                <mat-icon color="primary" *ngIf="ar.observations_signature" >done</mat-icon>
+                <mat-icon color="warn" *ngIf="!ar.observations_signature">clear</mat-icon>
+            </div>
+          </td>
+        </ng-container>
+  
+  
+        <ng-container matColumnDef="action" stickyEnd>
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let ar"> 
+            
+            <div ngbDropdown placement="bottom-right" class="d-inline-block">
+              <button ngbDropdownToggle mat-icon-button color="primary" matTooltip="Actions">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
+                <!-- *ngxPermissionsOnly="['ADMIN']" -->
+                <button mat-icon-button color="info" matTooltip="{{'ACTION.DUPLICATE' | translate}}" (click)="duplicateAr(ar.id)">
+                  <mat-icon>filter_none</mat-icon>
+                </button>
+                <button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}" (click)="viewAr(ar.id)">
+                  <mat-icon>visibility</mat-icon>
+                </button>
+                <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editAr(ar.id)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteAr(ar.id)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+                  
+              </div>
+            </div>
+          </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedArColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedArColumns;"></tr>
+      </table>
+    </div>
   
     <tf-pagination (change)="changePagination()" [(ngModel)]="pagination" ngDefaultControl></tf-pagination>
   

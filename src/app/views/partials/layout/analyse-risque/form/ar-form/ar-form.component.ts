@@ -58,7 +58,6 @@ export class ArFormComponent implements OnInit {
 
   ngOnInit() {
     this.toppings = this.arForm.controls['accueil_secu_days'] as FormControl;
-    console.log(this.origin);
   }
 
   async getCatRisques(){
@@ -183,6 +182,8 @@ export class ArFormComponent implements OnInit {
       });
 
       formArray.push(commentGroup);
+    }else{
+      console.log(event.target);
     }
 
     console.log(formArray.value);
@@ -226,8 +227,21 @@ export class ArFormComponent implements OnInit {
     return this.arForm.get(controlName).value == '1';
   }
 
-  isFieldRequired(name){
-    return !!this.arForm.controls[name].validator(name).hasOwnProperty('required');
+  isFieldRequired(controlName){
+    if(this.arForm && this.arForm.controls[controlName]){
+      const control = this.arForm.controls[controlName]
+      const { validator } = control
+      if (validator) {
+          const validation = validator(new FormControl())
+          return validation !== null && validation.required === true
+      }
+    }
+    return false
+    // const control = this.arForm.controls[name];
+    // if(name == "nom_ca_cvti"){
+    //   console.log(control.validator(name))
+    // }
+    // return !!this.arForm.controls[name].validator(name).hasOwnProperty('required');
   }
 
   isControlHasError(controlName: string, validationType: string): boolean {
@@ -237,5 +251,14 @@ export class ArFormComponent implements OnInit {
 		}
     return control.hasError(validationType) && (control.dirty || control.touched);
   }
-
+  
+  updateToggleValue(event, controlName){
+    console.log(event);
+    if(event.checked){
+      this.arForm.controls[controlName].setValue('1');
+    }else{
+      this.arForm.controls[controlName].setValue('0');
+    }
+    console.log(this.arForm.controls[controlName].value)
+  }
 }

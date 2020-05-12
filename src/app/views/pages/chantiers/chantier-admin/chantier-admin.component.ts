@@ -12,7 +12,6 @@ import Swal from 'sweetalert2';
 })
 export class ChantierAdminComponent implements OnInit {
 
-
   constructor() { }
 
   ngOnInit() {}

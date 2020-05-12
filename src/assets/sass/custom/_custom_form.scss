@@ -83,7 +83,7 @@
 }
 .mat-expansion-panel{
     border: none;
-    background-color: transparent;
+    background-color: transparent !important;
     box-shadow: none!important;
     .mat-expansion-panel-header{
         padding: 0 10px 0 0;

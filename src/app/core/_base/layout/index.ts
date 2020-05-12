@@ -24,6 +24,7 @@ export { MenuOptions } from './directives/menu.directive';
 
 // Pipes
 export { FirstLetterPipe } from './pipes/first-letter.pipe';
+export { DateEnToFrPipe, DateFrToEnPipe } from './pipes/date-convert.pipe';
 export { FullNamePipe, InitialesPipe } from './pipes/user-name.pipe';
 export { GetObjectPipe } from './pipes/get-object.pipe';
 export { JoinPipe } from './pipes/join.pipe';

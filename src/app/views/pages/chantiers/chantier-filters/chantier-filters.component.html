@@ -1,169 +1,145 @@
-
-<form class="col-md-12 tf-form">
-	<!--begin::Form-->
-	<div class="row form-group">
-		<div class="col-md-12 ">
-			<div class="card card-filters px-5 py-3">
-				<form novalidate [formGroup]="filterForm">
-					<div class="row">
-						<mat-form-field class="col-xl-3 col-md-4 col-sm-6 col-xs-12">
-							<mat-label>{{'CHANTIERS.CHIEF.TITLE' | translate}}
-							</mat-label>
-							<mat-select class="form-control" formControlName="charge_affaire_id" name="charge_affaire_id">
-								<mat-option *ngFor="let user of users" [value]="user.id">
-									{{user.fullname}}
-								</mat-option>
-							</mat-select>
-							<button mat-button *ngIf="formHasValue('charge_affaire_id')" matSuffix mat-icon-button 
-								aria-label="Clear" (click)="clearValue('charge_affaire_id'); $event.stopPropagation()">
+<div class="col-md-12 tf-form">
+	<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
+		<tf-portlet-body class="tf-portlet__body--fit card-filters px-5 pt-4 pb-3" >
+			<form novalidate [formGroup]="filterForm">
+				<div class="row">
+					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
+						<mat-label>{{'CHANTIERS.CHIEF.TITLE' | translate}}
+						</mat-label>
+						<mat-select class="form-control" formControlName="charge_affaire_id" name="charge_affaire_id">
+							<mat-option *ngFor="let user of users" [value]="user.id">
+								{{user.trigramme}} - {{user.fullname}}
+							</mat-option>
+						</mat-select>
+						<button mat-button *ngIf="formHasValue('charge_affaire_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('charge_affaire_id'); $event.stopPropagation()">
+							<mat-icon>clear</mat-icon>
+						</button>
+					</mat-form-field>
+					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
+						<mat-label>{{'CHANTIERS.RESP_CHIFFRAGE.TITLE' | translate}}
+						</mat-label>
+						<mat-select class="form-control" formControlName="resp_chiffrage_id" name="resp_chiffrage_id">
+							<mat-option *ngFor="let user of users" [value]="user.id">
+								{{user.trigramme}} - {{user.fullname}}
+							</mat-option>
+						</mat-select>
+						<button mat-button *ngIf="formHasValue('resp_chiffrage_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('resp_chiffrage_id'); $event.stopPropagation()">
+							<mat-icon>clear</mat-icon>
+						</button>
+					</mat-form-field>
+					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
+						<mat-label>{{'CHANTIERS.STATUS.TITLE' | translate}}</mat-label>
+						<mat-select class="form-control" formControlName="status_id" name="status_id">
+							<mat-option [value]="'all'">Tous les statuts</mat-option>
+							<mat-option *ngFor="let statu of status" [value]="statu.id">
+								{{statu.libelle}}
+							</mat-option>
+						</mat-select>
+						<button mat-button *ngIf="formHasValue('status_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('status_id'); $event.stopPropagation()">
+							<mat-icon>clear</mat-icon>
+						</button>
+					</mat-form-field>
+					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
+						<mat-label>{{'CHANTIERS.TYPE.TITLE' | translate}}</mat-label>
+						<mat-select class="form-control" formControlName="type_id" name="type_id">
+							<mat-option>Tous</mat-option>
+							<mat-option *ngFor="let type of types" [value]="type.id">
+								{{type.libelle}}
+							</mat-option>
+						</mat-select>
+						<button mat-button *ngIf="formHasValue('type_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('type_id'); $event.stopPropagation()">
+							<mat-icon>clear</mat-icon>
+						</button>
+					</mat-form-field>
+					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
+						<mat-label>{{'CHANTIERS.CLIENT.TITLE' | translate}}</mat-label>
+						<mat-select class="form-control" formControlName="client" name="client">
+							<mat-option>Tous</mat-option>
+							<mat-option *ngFor="let client of clients" [value]="client">
+								{{client}}
+							</mat-option>
+						</mat-select>
+						<button mat-button *ngIf="formHasValue('client')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('client'); $event.stopPropagation()">
+							<mat-icon>clear</mat-icon>
+						</button>
+					</mat-form-field>
+					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
+						<mat-label>{{'CHANTIERS.ARS.LABEL' | translate}}</mat-label>
+						<mat-select class="form-control" formControlName="analyse" name="analyse">
+							<mat-option *ngFor="let analyseOption of analyseOptions" [value]="analyseOption">
+								{{analyseOption}}
+							</mat-option>
+						</mat-select>
+						<button mat-button *ngIf="formHasValue('analyse')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('analyse'); $event.stopPropagation()">
+							<mat-icon>clear</mat-icon>
+						</button>
+					</mat-form-field>
+					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
+						<mat-label>{{'CHANTIERS.VSS.LABEL' | translate}}</mat-label>
+						<mat-select class="form-control" formControlName="visite" name="visite">
+							<mat-option *ngFor="let visiteOption of visiteOptions" [value]="visiteOption">
+								{{visiteOption}}
+							</mat-option>
+						</mat-select>
+						<button mat-button *ngIf="formHasValue('visite')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('visite'); $event.stopPropagation()">
+							<mat-icon>clear</mat-icon>
+						</button>
+					</mat-form-field>
+					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
+						<mat-label>{{'CHANTIERS.EES.LABEL' | translate}}</mat-label>
+						<mat-select class="form-control" formControlName="entreprise" name="entreprise">
+							<mat-option *ngFor="let entrepriseOption of entrepriseOptions" [value]="entrepriseOption">
+								{{entrepriseOption}}
+							</mat-option>
+						</mat-select>
+						<button mat-button *ngIf="formHasValue('entreprise')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('entreprise'); $event.stopPropagation()">
+							<mat-icon>clear</mat-icon>
+						</button>
+					</mat-form-field>
+					<div class="col-xl-6 col-md-6 col-sm-6 col-xs-12">
+						<h6>{{'CHANTIERS.BUDGET.TITLE' | translate}}</h6>
+						<mat-form-field class="col-md-6 col-xl-6">
+							<mat-label>Minimum :</mat-label>
+							<input matInput class="form-control" suffix=" €" mask="separator.2" type="string" formControlName="montant_min" name="montant_min">
+							<button mat-button *ngIf="formHasValue('montant_min')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('montant_min'); $event.stopPropagation()">
 								<mat-icon>clear</mat-icon>
 							</button>
 						</mat-form-field>
-						<mat-form-field class="col-xl-3 col-md-4 col-sm-6 col-xs-12">
-							<mat-label>{{'CHANTIERS.RESP_CHIFFRAGE.TITLE' | translate}}
-							</mat-label>
-							<mat-select class="form-control" formControlName="resp_chiffrage_id" name="resp_chiffrage_id">
-								<mat-option *ngFor="let user of users" [value]="user.id">
-									{{user.fullname}}
-								</mat-option>
-							</mat-select>
-							<button mat-button *ngIf="formHasValue('resp_chiffrage_id')" matSuffix mat-icon-button 
-								aria-label="Clear" (click)="clearValue('resp_chiffrage_id'); $event.stopPropagation()">
+						<mat-form-field class="col-md-6 col-xl-6">
+							<mat-label>Maximum :</mat-label>
+							<input matInput class="form-control" suffix=" €" mask="separator.2" type="string" formControlName="montant_max" name="montant_max">
+							<button mat-button *ngIf="formHasValue('montant_max')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('montant_max'); $event.stopPropagation()">
 								<mat-icon>clear</mat-icon>
 							</button>
 						</mat-form-field>
-						<mat-form-field class="col-xl-3 col-md-4 col-sm-6 col-xs-12">
-							<mat-label>{{'CHANTIERS.STATUS.TITLE' | translate}}</mat-label>
-							<mat-select class="form-control" formControlName="status_id" name="status_id">
-								<mat-option>Tous</mat-option>
-								<mat-option *ngFor="let statu of status" [value]="statu.id" >
-									{{statu.libelle}}
-								</mat-option>
-							</mat-select>
-							<button mat-button *ngIf="formHasValue('status_id')" matSuffix mat-icon-button 
-								aria-label="Clear" (click)="clearValue('status_id'); $event.stopPropagation()">
-								<mat-icon>clear</mat-icon>
-							</button>
-						</mat-form-field>
-						<mat-form-field class="col-xl-3 col-md-4 col-sm-6 col-xs-12">
-							<mat-label>{{'CHANTIERS.TYPE.TITLE' | translate}}</mat-label>
-							<mat-select class="form-control" formControlName="type_id" name="type_id">
-								<mat-option>Tous</mat-option>
-								<mat-option *ngFor="let type of types" [value]="type.id" >
-									{{type.libelle}}
-								</mat-option>
-							</mat-select>
-							<button mat-button *ngIf="formHasValue('type_id')" matSuffix mat-icon-button 
-								aria-label="Clear" (click)="clearValue('type_id'); $event.stopPropagation()">
-								<mat-icon>clear</mat-icon>
-							</button>
-						</mat-form-field>
-						
 					</div>
-					<div class="row">
-						<mat-form-field class="col-xl-3 col-md-4 col-sm-6 col-xs-12">
-							<h6>&nbsp;</h6>
-							<mat-label>{{'CHANTIERS.CLIENT.TITLE' | translate}}</mat-label>
-							<mat-select class="form-control"  formControlName="client" name="client">
-								<mat-option>Tous</mat-option>
-								<mat-option *ngFor="let client of clients" [value]="client">
-									{{client}}
-								</mat-option>
-							</mat-select>
-							<button mat-button *ngIf="formHasValue('client')" matSuffix mat-icon-button 
-								aria-label="Clear" (click)="clearValue('client'); $event.stopPropagation()">
+					<div class="col-xl-6 col-md-6 col-sm-6 col-xs-12">
+						<h6>{{'CHANTIERS.DATE_DEMARRAGE.TITLE' | translate}}</h6>
+						<mat-form-field class="col-md-6 col-xl-6">
+							<mat-label>Entre le :</mat-label>
+							<input matInput class="form-control" mask="d0/M0/0000" formControlName="date_demarrage_start" placeholder="DD/MM/YYYY">
+							<!-- <input matInput [matDatepicker]="date_demarrage_start_picker" class="form-control" formControlName="date_demarrage_start" placeholder="DD/MM/YYYY">
+							<mat-datepicker-toggle matSuffix [for]="date_demarrage_start_picker"></mat-datepicker-toggle>
+							<mat-datepicker #date_demarrage_start_picker></mat-datepicker>
+							<button mat-button *ngIf="formHasValue('date_demarrage_start')" matSuffix mat-icon-button 
+								aria-label="Clear" (click)="clearValue('date_demarrage_start'); $event.stopPropagation()">
 								<mat-icon>clear</mat-icon>
-							</button>
+							</button> -->
 						</mat-form-field>
-						<div class="col-xl-3 col-md-4 col-sm-6 col-xs-12">
-							<h6>{{'CHANTIERS.BUDGET.TITLE' | translate}}</h6>
-							<mat-form-field class="col-md-6 col-xl-6">
-								<mat-label>Minimum :</mat-label>
-								<input matInput class="form-control" mask="separator.2" type="string" formControlName="montant_min" name="montant_min">
-								<button mat-button *ngIf="formHasValue('montant_min')" matSuffix mat-icon-button 
-									aria-label="Clear" (click)="clearValue('montant_min'); $event.stopPropagation()">
-									<mat-icon>clear</mat-icon>
-								</button>
-							</mat-form-field>
-							<mat-form-field class="col-md-6 col-xl-6">
-								<mat-label>Maximum :</mat-label>
-								<input matInput class="form-control" mask="separator.2" type="string" formControlName="montant_max" name="montant_max">
-								<button mat-button *ngIf="formHasValue('montant_max')" matSuffix mat-icon-button 
-									aria-label="Clear" (click)="clearValue('montant_max'); $event.stopPropagation()">
-									<mat-icon>clear</mat-icon>
-								</button>
-							</mat-form-field>
-						</div>
-						<div class="col-xl-3 col-md-4 col-sm-6 col-xs-12">
-							<h6>{{'CHANTIERS.DATE_DEMARRAGE.TITLE' | translate}}</h6>
-							<mat-form-field class="col-md-6 col-xl-6">
-								<mat-label>Entre le :</mat-label>
-								<input matInput class="form-control" [matDatepicker]="date_demarrage_start_picker" formControlName="date_demarrage_start" placeholder="DD/MM/YYYY">
-								<mat-datepicker-toggle matSuffix [for]="date_demarrage_start_picker"></mat-datepicker-toggle>
-								<mat-datepicker #date_demarrage_start_picker></mat-datepicker>
-								<button mat-button *ngIf="formHasValue('date_demarrage_start')" matSuffix mat-icon-button 
-									aria-label="Clear" (click)="clearValue('date_demarrage_start'); $event.stopPropagation()">
-									<mat-icon>clear</mat-icon>
-								</button>
-							</mat-form-field>
-							<mat-form-field class="col-md-6 col-xl-6">
-								<mat-label>Et le :</mat-label>
-								<input matInput class="form-control" [matDatepicker]="date_demarrage_end_picker" formControlName="date_demarrage_end" placeholder="DD/MM/YYYY">
-								<mat-datepicker-toggle matSuffix [for]="date_demarrage_end_picker"></mat-datepicker-toggle>
-								<mat-datepicker #date_demarrage_end_picker></mat-datepicker>
-								<button mat-button *ngIf="formHasValue('date_demarrage_end')" matSuffix mat-icon-button 
-									aria-label="Clear" (click)="clearValue('date_demarrage_end'); $event.stopPropagation()">
-									<mat-icon>clear</mat-icon>
-								</button>
-							</mat-form-field>
-						</div>
+						<mat-form-field class="col-md-6 col-xl-6">
+							<mat-label>Et le :</mat-label>
+							<input matInput class="form-control" mask="d0/M0/0000" formControlName="date_demarrage_end" placeholder="DD/MM/YYYY">
+							<!-- <input matInput [matDatepicker]="date_demarrage_end_picker" class="form-control" formControlName="date_demarrage_end" placeholder="DD/MM/YYYY">
+							<mat-datepicker-toggle matSuffix [for]="date_demarrage_end_picker"></mat-datepicker-toggle>
+							<mat-datepicker #date_demarrage_end_picker></mat-datepicker>
+							<button mat-button *ngIf="formHasValue('date_demarrage_end')" matSuffix mat-icon-button 
+								aria-label="Clear" (click)="clearValue('date_demarrage_end'); $event.stopPropagation()">
+								<mat-icon>clear</mat-icon>
+							</button> -->
+						</mat-form-field>
 					</div>
-					<div class="row">
-						<div class="col-xl-3 col-md-4 col-sm-6 col-xs-12">
-							<mat-form-field>
-								<mat-label>{{'CHANTIERS.ARS.LABEL' | translate}}</mat-label>
-								<mat-select class="form-control" formControlName="analyse" name="analyse">
-									<mat-option *ngFor="let analyseOption of analyseOptions" [value]="analyseOption">
-										{{analyseOption}}
-									</mat-option>
-								</mat-select>
-								<button mat-button *ngIf="formHasValue('analyse')" matSuffix mat-icon-button 
-									aria-label="Clear" (click)="clearValue('analyse'); $event.stopPropagation()">
-									<mat-icon>clear</mat-icon>
-								</button>
-							</mat-form-field>
-						</div>
-						<div class="col-xl-3 col-md-4 col-sm-6 col-xs-12">
-							<mat-form-field>
-								<mat-label>{{'CHANTIERS.VSS.LABEL' | translate}}</mat-label>
-								<mat-select class="form-control" formControlName="visite" name="visite">
-									<mat-option *ngFor="let visiteOption of visiteOptions" [value]="visiteOption">
-										{{visiteOption}}
-									</mat-option>
-								</mat-select>
-								<button mat-button *ngIf="formHasValue('visite')" matSuffix mat-icon-button 
-									aria-label="Clear" (click)="clearValue('visite'); $event.stopPropagation()">
-									<mat-icon>clear</mat-icon>
-								</button>
-							</mat-form-field>
-						</div>
-						<div class="col-xl-3 col-md-4 col-sm-6 col-xs-12">
-							<mat-form-field>
-								<mat-label>{{'CHANTIERS.EES.LABEL' | translate}}</mat-label>
-								<mat-select class="form-control" formControlName="entreprise" name="entreprise">
-									<mat-option *ngFor="let entrepriseOption of entrepriseOptions" [value]="entrepriseOption">
-										{{entrepriseOption}}
-									</mat-option>
-								</mat-select>
-								<button mat-button *ngIf="formHasValue('entreprise')" matSuffix mat-icon-button 
-									aria-label="Clear" (click)="clearValue('entreprise'); $event.stopPropagation()">
-									<mat-icon>clear</mat-icon>
-								</button>
-							</mat-form-field>
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-</form>
+				</div>
+			</form>
+		</tf-portlet-body>
+	</tf-portlet>
+</div>

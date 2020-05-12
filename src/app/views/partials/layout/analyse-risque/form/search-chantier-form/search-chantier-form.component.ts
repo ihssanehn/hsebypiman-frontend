@@ -6,7 +6,7 @@ import { startWith, map } from 'rxjs/operators';
 import { ChantierService } from '@app/core/services';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'tf-search-chantier-form',
@@ -39,6 +39,7 @@ export class SearchChantierFormComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     protected chantierService:ChantierService,
     private cdr: ChangeDetectorRef,
+    private router:Router,
     iconRegistry: MatIconRegistry, 
     sanitizer: DomSanitizer
   ) { 
@@ -82,7 +83,7 @@ export class SearchChantierFormComponent implements OnInit {
 
   async initFilteredChantiers(){
     var res = await this.chantierService.getList().toPromise();
-    this.chantiers = res.result.data.filter(item => item.montant >= 20000);
+    this.chantiers = res.result.data.filter(item => item.montant > 20000);
     this.filteredChantiers = this.searchControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value))
@@ -125,4 +126,9 @@ export class SearchChantierFormComponent implements OnInit {
     return chantier ? chantier.nom : '';
   }
 
+  goToChantier(id){
+    let url = this.router.url;
+		url = `/chantiers/detail/${id}`;
+		this.router.navigateByUrl(url, { relativeTo: this.activatedRoute });
+  }
 }

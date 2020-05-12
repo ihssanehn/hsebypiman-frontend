@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef, ElementRef, Input, AfterContentInit, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef, AfterViewInit, ElementRef, Input, AfterContentInit, ViewChildren, QueryList } from '@angular/core';
 import { ChantierService } from '@app/core/services';
 import { Paginate } from '@app/core/_base/layout/models/paginate.model';
 import { Chantier } from '@app/core/models';
@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 	templateUrl: './chantiers-list.component.html',
 	styleUrls: ['./chantiers-list.component.scss']
 })
-export class ChantiersListComponent implements OnInit {
+export class ChantiersListComponent implements OnInit, AfterViewInit {
 
 	public chantiersList: Paginate < Chantier > ;
 	pagination: any = {
@@ -48,6 +48,9 @@ export class ChantiersListComponent implements OnInit {
 	}
 
 	ngOnInit() {
+	}
+
+	ngAfterViewInit(){
 		this.getChantiers();
 	}
 
@@ -73,7 +76,6 @@ export class ChantiersListComponent implements OnInit {
 	exportList(){
 		var filters = {...this.filter};
 		filters.type="EXCEL";
-		console.log(filters);
 		return this.chantierService.export(filters);
 	}
 
@@ -105,7 +107,6 @@ export class ChantiersListComponent implements OnInit {
 
 	// Au click, défini order by et order way. Si le order_by est déjà actif, toggle du order_way. Sinon, order_way asc par défaut
 	setOrder(by) {
-		console.log(this.filter)
 		if (this.isOrderedBy(by)) {
 			this.toggleOrderWay()
 		} else {
@@ -138,7 +139,6 @@ export class ChantiersListComponent implements OnInit {
 		for (let [key, value] of Object.entries(filters)) {
 			this.filter[key] = value;
 		}
-		console.log(this.filter);
 		this.getChantiers();
 	}
 }

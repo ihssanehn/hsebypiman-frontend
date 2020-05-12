@@ -71,6 +71,7 @@
             box-shadow: none;
             border-radius: 8px;
             border: solid 1px #eaecf0;
+            background: white;
         }
         .mat-checkbox-disabled.mat-checkbox-checked .mat-checkbox-background{
             background-color: #e49819;
@@ -100,4 +101,8 @@
     .mat-row:hover{
         background-color: transparent!important;
     }
+    .full-height{
+        min-height: 100px;
+    }
+    
 }

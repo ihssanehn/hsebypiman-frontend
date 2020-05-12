@@ -101,6 +101,12 @@ export class ChantierDetailComponent implements OnInit, OnDestroy {
 		this.router.navigateByUrl(url, { relativeTo: this.activatedRoute });
   	}
 
+	goToArDetail(id){
+		let url = this.router.url;
+		url = `/analyses-risque/detail/${id}`;
+		this.router.navigateByUrl(url, { relativeTo: this.activatedRoute });
+	}
+
   	editChantier(id){
 		this.router.navigateByUrl('chantiers/edit/'+id);
 	}
@@ -153,10 +159,10 @@ export class ChantierDetailComponent implements OnInit, OnDestroy {
 	}
   
 	addAr(chantierId){
-		if(this.chantier.montant < 20000){
+		if(this.chantier.montant <= 20000){
 			Swal.fire({
 				icon: 'error',
-				title: 'Le montant du chantier est inférieur à 20K€, vous ne pouvez pas créer d\'analyse de risque',
+				title: 'Le montant du chantier est inférieur ou égal à 20K€, vous ne pouvez pas créer d\'analyse de risque',
 				showConfirmButton: false,
 				timer: 4000
 			});
