@@ -1,0 +1,51 @@
+<ng-container [formGroup]="entrepriseForm">
+	<form [formGroup]="entrepriseForm" autocomplete="off" class="tf-form tf-form--group-seperator-dashed " novalidate (ngSubmit)="submitForm(entrepriseForm.valid)" fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+		<tf-portlet>
+			<tf-portlet-body>
+				<div class="tf-heading tf-heading--lg" style="margin-top: 0;">
+					<div *ngIf="edit">
+						{{'MENU.SUB_ENTREPRISES.EDIT' | translate}} {{entrepriseForm.get('raison_sociale').value}}
+						
+					</div>
+					<span *ngIf="!edit">{{'MENU.SUB_ENTREPRISES.ADD' | translate}}</span>
+				</div>
+				<div>
+					<div class="tf-wizard-v4__content" data-tfwizard-type="step-content" data-tfwizard-state="current">
+						<div class="tf-form__section tf-form__section--first">
+							<div class="tf-wizard-v4__form">
+								<div class="row form-row">
+									<mat-form-field class="col-xl-4">
+										<mat-label>{{'EES.RAISON_SOCIALE.LABEL' | translate}}</mat-label>
+										<input class="form-control" matInput type="text" name="raison_sociale" formControlName="raison_sociale" placeholder="Saisir ici" [required]="isFieldRequired('raison_sociale')" />
+										<mat-error *ngIf="isControlHasError('raison_sociale','required')">
+											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+										</mat-error>
+									</mat-form-field>
+									<mat-form-field class="col-xl-3">
+										<mat-label>{{'EES.TYPE.LABEL' | translate}}</mat-label>
+										<mat-select class="form-control" placeholder="" formControlName="type_id" [required]="isFieldRequired('type_id')">
+											<mat-option *ngFor="let type of typesList" [value]="type.id">
+												{{ type.libelle }}
+											</mat-option>
+										</mat-select>
+										<mat-error *ngIf="isControlHasError('type_id','required')">
+											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+										</mat-error>
+									</mat-form-field>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</tf-portlet-body>
+		</tf-portlet>
+		<div>
+			<button mat-raised-button [disabled]="entrepriseForm.invalid" color="success" class="pull-right">
+				{{'ACTION.SAVE' | translate}}
+			</button>
+			<button type="button" mat-raised-button color="info" (click)="cancelForm()">
+				Cancel
+			</button>
+		</div>
+	</form>
+</ng-container>

@@ -91,7 +91,7 @@ export class ChantierFormComponent implements OnInit {
   }
   async getEntreprises(){
     this.entreprisesLoaded = false;
-    var res = await this.entrepriseService.getAll({'grouped':true}).toPromise();
+    var res = await this.entrepriseService.getListGrouped().toPromise();
     if(res){
       this.entreprisesList = res.result.data;
       this.entreprisesLoaded = true;
@@ -101,7 +101,7 @@ export class ChantierFormComponent implements OnInit {
   }
   async getEntrepriseTypes(){
     this.entrepriseTypesLoaded = false;
-    var res = await this.typeService.getAllFromModel('Entreprise').toPromise();
+    var res = await this.typeService.getAll({'model':'Entreprise'}).toPromise();
     if(res){
       this.entrepriseTypesList = res.result.data;
       this.entrepriseTypesLoaded = true;

@@ -48,9 +48,12 @@ export class AdminBasicListPortletComponent implements OnInit {
   
   dropItem(event: CdkDragDrop<string[]>): void {
     if(this.sortable){
-      let data = { id : event.item.data.id, ordre :  event.currentIndex };
+      let _dataIdx = this.items.findIndex(item => item.id === event.item.data.id); 
+      let _data = {...this.items[_dataIdx]};
+      _data.ordre = event.currentIndex;
+      // let data = { id : event.item.data.id, ordre :  event.currentIndex };
       moveItemInArray(this.items, event.previousIndex, event.currentIndex);
-      this.saveItem(data);
+      this.saveItem(_data);
     }
   }
 

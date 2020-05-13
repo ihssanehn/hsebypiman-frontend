@@ -1,0 +1,22 @@
+<div class="col-md-12 tf-form">
+	<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
+		<tf-portlet-body class="tf-portlet__body--fit card-filters px-5 pt-4 pb-3" >
+			<form novalidate [formGroup]="filterForm">
+				<div class="row">
+					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
+						<mat-label>{{'CHANTIERS.TYPE.TITLE' | translate}}</mat-label>
+						<mat-select class="form-control" formControlName="type_id" name="type_id">
+							<mat-option>Tous</mat-option>
+							<mat-option *ngFor="let type of types" [value]="type.id">
+								{{type.libelle}}
+							</mat-option>
+						</mat-select>
+						<button mat-button *ngIf="formHasValue('type_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('type_id'); $event.stopPropagation()">
+							<mat-icon>clear</mat-icon>
+						</button>
+					</mat-form-field>
+				</div>
+			</form>
+		</tf-portlet-body>
+	</tf-portlet>
+</div>

@@ -1,0 +1,8 @@
+<!-- <div class="row row-filters" style="height: 69px;">
+</div> -->
+<form [formGroup]="entrepriseForm" *ngIf="loaded; else loading" class="tf-form tf-form--group-seperator-dashed">
+	<tf-entreprise-form [entrepriseForm]="entrepriseForm" [edit]="true" (onSubmit)="onSubmit()" (onCancel)="cancel()"></tf-entreprise-form>
+</form>
+<ng-template #loading>
+	Loading Entreprise
+</ng-template>

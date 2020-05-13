@@ -22,6 +22,15 @@
         vertical-align: bottom;
     }
 
+    &.table-sm{
+        .mat-cell, .mat-footer-cell{
+            font-size: 0.9em;
+        }
+        .tr.mat-footer-row, tr.mat-row{
+            height: 35px !important;
+        }
+    }
+
     
 }
 

@@ -147,5 +147,9 @@ export class AdminTemplateComponent implements OnInit {
     const index = this.list.findIndex(item => item.id === item_id);
     return this.list[index].children.length;
   }
+
+  generateParentOrdre(){
+    return this.list.length
+  }
   
 }

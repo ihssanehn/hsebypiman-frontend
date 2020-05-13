@@ -47,7 +47,7 @@ export class SearchListBarComponent implements AfterViewInit, OnInit, OnDestroy 
   }
 
   async ngOnInit(){
-    console.log(this.hasAdvancedSearch);
+    // console.log(this.hasAdvancedSearch);
   }
 
   async ngAfterViewInit() {

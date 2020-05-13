@@ -55,12 +55,12 @@ export const locale = {
 				EDIT:'Modifier le salarié',
 				LIST:'Liste des salariés',
 			},
-			SOUSTRAITANTS: 'Sous-traitants',
-			SUB_SOUSTRAITANTS:{
-				DETAIL:'Détail du sous-traitant',
-				ADD:'Ajouter un sous-traitant',
-				EDIT:'Modifier le sous-traitant',
-				LIST:'Liste des sous-traitants',
+			ENTREPRISES: 'Entreprises',
+			SUB_ENTREPRISES:{
+				DETAIL:'Détail de l\'entreprise',
+				ADD:'Ajouter une entreprise',
+				EDIT:'Modifier l\'entreprise',
+				LIST:'Liste des entreprises',
 			},
 			LIST: 'Liste',
 			ADMIN: 'Admin',
@@ -68,7 +68,9 @@ export const locale = {
 			SUB_ADMIN:{},
 			BTN:{
 				NEWAR: 'Nouvelle analyse de risque',
-				NEWCHANTIER: 'Nouveau chantier'
+				NEWCHANTIER: 'Nouveau chantier',
+				NEWVS: 'Nouveau visite de sécurité',
+				NEWENTREPRISE: 'Nouvelle entreprise',
 			}
 		},
 		AUTH: {
@@ -271,30 +273,40 @@ export const locale = {
 		},
 		// Entreprises Externes
 		EES:{
-			TYPE:{
-				LABEL: 'Type d\'entreprise',
-				PLACEHOLDER:'Saisir ici...',
-				TITLE: 'Type d\'entreprise',
-				SHORTTITLE:'Type',
-			},
 			RAISON_SOCIALE:{
 				LABEL: 'Raison sociale',
 				PLACEHOLDER:'Saisir ici...',
 				TITLE: 'Raison sociale',
 				SHORTTITLE:'Raison sociale',
 			},
+			TYPE:{
+				LABEL: 'Type d\'entreprise',
+				PLACEHOLDER:'Saisir ici...',
+				TITLE: 'Type d\'entreprise',
+				SHORTTITLE:'Type',
+			},			
 			CA:{
 				LABEL: 'Chiffre d\'affaire',
 				PLACEHOLDER:'Saisir ici...',
 				TITLE: 'Chiffre d\'affaire',
 				SHORTTITLE:'CA',
 			},
+			CHANTIERS:{
+				LABEL: 'Chantiers',
+				TITLE: 'Chantiers',
+				SHORTTITLE:'Chantiers',
+			},
+			CHANTIERS_COUNT:{
+				LABEL: 'Nombre de chantiers',
+				TITLE: 'Nombre de chantiers',
+				SHORTTITLE:'Nbr chantiers',
+			},
 			DATE_DEMARRAGE:{
 				LABEL: 'Date de démarrage',
 				PLACEHOLDER:'Saisir ici...',
 				TITLE: 'Date de démarrage',
 				SHORTTITLE:'Date démarrage',
-			},
+			}
 		},
 		ARS:{
 			CHANTIERS:{
@@ -568,6 +580,12 @@ export const locale = {
 			}
 		},
 		COMMON:{
+			ADRESS:{
+				LABEL:'Adresse',
+				PLACEHOLDER:'',
+				TITLE:'Adresse',
+				SHORTTITLE:'Adresse'
+			},
 			CITY:{
 				LABEL:'Ville',
 				PLACEHOLDER:'',
@@ -590,6 +608,7 @@ export const locale = {
 				TITLE:'Mise à jour des informations',
 				SHORTTITLE:'Mis à jour le'
 			},
+			
 			CREATED_AT:{
 				LABEL:'Date de création',
 				TITLE:'Date de création',
@@ -599,11 +618,7 @@ export const locale = {
 				TITLE:'Archivé le',
 				SHORTTITLE:'Archivé le'
 			},
-			ADRESS:{
-				LABEL:'Adresse',
-				PLACEHOLDER:'',
-				TITLE:'Adresse'
-			},
+			
 			NAME:{
 				LABEL:'Nom',
 				PLACEHOLDER:'',

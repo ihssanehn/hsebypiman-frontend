@@ -49,8 +49,8 @@ export class MenuConfig {
 					title: 'Entreprises',
 					root: true,
 					alignment: 'left',
-					page: '/sous-traitants',
-					translate: 'MENU.SOUSTRAITANTS',
+					page: '/entreprises',
+					translate: 'MENU.ENTREPRISES',
 				},
 				{
 					title: 'Paramètres',
@@ -536,6 +536,45 @@ export class MenuConfig {
 						root: true,
 						alignment: 'left',
 						page: '/chantiers/admin',
+						translate: 'MENU.ADMIN',
+						icon: 'settings',
+						// icon: 'flaticon2-mail-1',
+					}
+				]
+			},
+			entreprises: {
+				btnAdd: {
+					title: 'Nouvelle entreprise',
+					root: true,
+					alignment: 'left',
+					page: '/entreprises/add',
+					translate: 'MENU.BTN.NEWENTREPRISE',
+				},
+				
+				items: [
+					{
+						icon: 'dashboard',
+						// icon: 'flaticon2-browser-2',
+						title: 'Dashboards',
+						root: true,
+						alignment: 'left',
+						page: '/dashboard',
+						translate: 'MENU.DASHBOARD',
+					},
+					{
+						title: 'Liste',
+						root: true,
+						alignment: 'left',
+						page: '/entreprises/list',
+						translate: 'MENU.LIST',
+						icon: 'view_list',
+						// icon: 'flaticon2-browser-2',
+					},
+					{
+						title: 'Admin',
+						root: true,
+						alignment: 'left',
+						page: '/entreprises/admin',
 						translate: 'MENU.ADMIN',
 						icon: 'settings',
 						// icon: 'flaticon2-mail-1',

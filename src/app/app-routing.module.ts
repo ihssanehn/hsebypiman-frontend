@@ -41,8 +41,8 @@ const routes: Routes = [
 				loadChildren: () => import('@app/views/pages/salaries/salaries.module').then(m => m.SalariesModule)
 			},
 			{
-				path: 'sous-traitants',
-				loadChildren: () => import('@app/views/pages/sous-traitants/sous-traitants.module').then(m => m.SousTraitantsModule)
+				path: 'entreprises',
+				loadChildren: () => import('@app/views/pages/entreprises/entreprises.module').then(m => m.EntreprisesModule)
 			},
 			{
 				path: 'admin',
