@@ -146,7 +146,7 @@ export class ArSignaturesComponent implements OnInit {
 
   async getEntreprises(){
     this.entreprisesLoaded = false;
-    var res = await this.entrepriseService.getAll({'grouped':false}).toPromise();
+    var res = await this.entrepriseService.getList().toPromise();
     if(res){
       this.entreprisesList = res.result.data;
       this.entreprisesLoaded = true;
