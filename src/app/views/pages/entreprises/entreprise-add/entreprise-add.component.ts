@@ -51,7 +51,11 @@ export class EntrepriseAddComponent implements OnInit {
   createForm() {
 		this.entrepriseForm = this.entrepriseFB.group({
       raison_sociale: ['', Validators.required],
-      type_id: [null, Validators.required]
+      type_id: [null, Validators.required],
+      adresse: ['', [Validators]],
+      ville: ['', [Validators]],
+      code_postal: ['', [Validators]],
+      pays: ['', [Validators]]
     });
 		this.loaded = true;
 		this.cdr.detectChanges();

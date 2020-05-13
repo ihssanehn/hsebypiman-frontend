@@ -33,6 +33,36 @@
 										</mat-error>
 									</mat-form-field>
 								</div>
+								<div class="row form-row">
+									<mat-form-field class="col-xl-4">
+										<mat-label>{{'COMMON.ADRESS.LABEL' | translate}}</mat-label>
+										<input matInput class="form-control" type="text" name="adresse" formControlName="adresse" [required]="isFieldRequired('adresse')" placeholder="Saisir ici" />
+										<mat-error *ngIf="isControlHasError('adresse','required')">
+											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+										</mat-error>
+									</mat-form-field>
+									<mat-form-field class="col-xl-3">
+										<mat-label>{{'COMMON.CITY.LABEL' | translate}}</mat-label>
+										<input matInput class="form-control" type="text" name="ville" formControlName="ville" [required]="isFieldRequired('ville')" placeholder="Saisir ici" />
+										<mat-error *ngIf="isControlHasError('ville','required')">
+											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+										</mat-error>
+									</mat-form-field>
+									<mat-form-field class="col-xl-1">
+										<mat-label>{{'COMMON.POSTCODE.LABEL' | translate}}</mat-label>
+										<input matInput class="form-control" type="text" name="code_postal" formControlName="code_postal" [required]="isFieldRequired('code_postal')" placeholder="Saisir ici" />
+										<mat-error *ngIf="isControlHasError('code_postal','required')">
+											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+										</mat-error>
+									</mat-form-field>
+									<mat-form-field class="col-xl-2">
+										<mat-label>{{'COMMON.COUNTRY.LABEL' | translate}}</mat-label>
+										<input matInput class="form-control" type="text" name="pays" formControlName="pays" [required]="isFieldRequired('pays')" placeholder="Saisir ici" />
+										<mat-error *ngIf="isControlHasError('pays','required')">
+											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+										</mat-error>
+									</mat-form-field>
+								</div>
 							</div>
 						</div>
 					</div>
