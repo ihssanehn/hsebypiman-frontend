@@ -102,6 +102,7 @@ import { AdminAddModalComponent } from './layout/admin-add-modal/admin-add-modal
 import { ScrollDispatchModule, ScrollingModule } from '@angular/cdk/scrolling';
 import { AdminBasicListPortletComponent } from './layout/admin-basic-list-portlet/admin-basic-list-portlet.component';
 import { AdminTemplateComponent } from './layout/admin-template/admin-template.component';
+import {DragDropModule} from '@angular/cdk/drag-drop'
 
 @NgModule({
 	declarations: [
@@ -259,7 +260,8 @@ import { AdminTemplateComponent } from './layout/admin-template/admin-template.c
 		NzDividerModule,
 		NzIconModule,
 
-		NgbModule
+		NgbModule,
+		DragDropModule
 
 
 	],

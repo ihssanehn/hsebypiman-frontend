@@ -16,27 +16,27 @@
                     <th>Action</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr *ngFor="let data of items">
-                    <ng-container *ngIf="!data.edit; else editTemplate">
-                        <td>{{ data?.libelle }}</td>
-                        <td>
-                            <a (click)="startEdit(data)" class="text-primary">Modifier</a>
-                            <nz-divider nzType="vertical"></nz-divider>
-                            <a nz-popconfirm nzTitle="Sure to delete?" class="text-danger" (nzOnConfirm)="deleteItem(data)">Supprimer</a>
-                        </td>
-                    </ng-container>
-                    <ng-template #editTemplate>
-                        <td>
-                            <input type="text" nz-input [(ngModel)]="data.libelle" name="name" />
-                        </td>
-                        <td>
-                            <a (click)="saveItem(data)" class="save" class="text-primary">Enregistrer</a>
-                            <nz-divider nzType="vertical"></nz-divider>
-                            <a (click)="cancelEdit(data)">Annuler</a>
-                        </td>
-                    </ng-template>
-                </tr>
+                <tbody cdkDropList (cdkDropListDropped)="dropItem($event)">
+                    <tr cdkDrag [cdkDragData]="data" *ngFor="let data of items">
+                        <ng-container *ngIf="!data.edit; else editTemplate">
+                            <td>{{ data?.libelle }}</td>
+                            <td>
+                                <a (click)="startEdit(data)" class="text-primary">Modifier</a>
+                                <nz-divider nzType="vertical"></nz-divider>
+                                <a nz-popconfirm nzTitle="Sure to delete?" class="text-danger" (nzOnConfirm)="deleteItem(data)">Supprimer</a>
+                            </td>
+                        </ng-container>
+                        <ng-template #editTemplate>
+                            <td>
+                                <input type="text" nz-input [(ngModel)]="data.libelle" name="name" />
+                            </td>
+                            <td>
+                                <a (click)="saveItem(data)" class="save" class="text-primary">Enregistrer</a>
+                                <nz-divider nzType="vertical"></nz-divider>
+                                <a (click)="cancelEdit(data)">Annuler</a>
+                            </td>
+                        </ng-template>
+                    </tr>
                 </tbody>
             </nz-table>
 
