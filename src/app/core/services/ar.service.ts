@@ -47,5 +47,8 @@ export class ArService extends HttpService{
         var url = this.baseUrl+'/export?'+queryString+'&token='+localStorage.getItem(environment.authTokenKey);
         window.open(url, '_blank');
     }
+    addSignatures(ar_id, signatures){
+        return this.http.post(this.baseUrl+'/'+ar_id+'/signatures', signatures);
+    }
     
 }
