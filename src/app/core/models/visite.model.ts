@@ -10,8 +10,7 @@ export class Visite {
     code?:String;
     chantier_id?:Number;
     salarie_id?:Number;
-    sous_traitant_id?:Number;
-    societe_ee?:String;
+    entreprise_id?:Number;
     redacteur_id?:Number;
     date_visite?:Date;
     is_validated_redacteur?:boolean;
@@ -26,7 +25,7 @@ export class Visite {
     creator_id?:Number;
     chantier?:Chantier;
     salarie?:User;
-    sous_traitant?:any;
+    entreprise?:any;
     redacteur?:User;
     type?:Type;
     status?:Status;

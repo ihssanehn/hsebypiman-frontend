@@ -48,23 +48,23 @@ export class VisiteAddComponent implements OnInit {
   ngOnInit() {
     this.visite = new Visite();
     this.createForm();    
+    this.setDynamicValidators();
   }
 
   createForm() {
 		this.visiteForm = this.visiteFB.group({
       'chantier_id': ['', Validators.required],
-      'salarie_id': [''],
-      'sous_traitant_id': [''],
-      'societe_ee': [''],
+      'salarie_id': ['', Validators.required],
+      'entreprise_id': ['', Validators.required],
       'redacteur_id': ['', Validators.required],
       'date_visite': ['', Validators.required],
-      'is_validated_redacteur': ['', Validators.required],
-      'is_validated_visite': ['', Validators.required],
-      'validated_redacteur_at': ['', Validators.required],
-      'validated_visite_at': ['', Validators.required],
-      'presence_non_conformite': ['', Validators.required],
-      'has_rectification_imm': ['', Validators.required],
-      'avertissement': ['', Validators.required],
+      // 'is_validated_redacteur': ['', Validators.required],
+      // 'is_validated_visite': ['', Validators.required],
+      // 'validated_redacteur_at': ['', Validators.required],
+      // 'validated_visite_at': ['', Validators.required],
+      'presence_non_conformite': [null, Validators.required],
+      'has_rectification_imm': [null, Validators.required],
+      'avertissement': [null, Validators.required],
       'type_id': ['', Validators.required],
       'questions': [],
 		});
@@ -72,6 +72,30 @@ export class VisiteAddComponent implements OnInit {
 		this.cdr.detectChanges();
   }
   
+  setDynamicValidators() {
+    const salarie_id = this.visiteForm.get('salarie_id');
+    const entreprise_id = this.visiteForm.get('entreprise_id');
+
+    this.visiteForm.get('salarie_id').valueChanges
+      .subscribe(salarie_id => {
+        console.log(salarie_id);
+        if (salarie_id != null) {
+          entreprise_id.setValidators(null);
+        }else{
+          entreprise_id.setValidators(Validators.required);
+        }
+      })
+    this.visiteForm.get('entreprise_id').valueChanges
+      .subscribe(entreprise_id => {
+
+        if (entreprise_id != null) {
+          salarie_id.setValidators(null);
+        }else{
+          salarie_id.setValidators(Validators.required);
+        }
+      })
+  }
+
   onChantierSelected(chantierId: Number) {
     this.getChantier(chantierId);
   }
