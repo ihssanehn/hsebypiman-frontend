@@ -1,9 +1,9 @@
 
 import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { Type, Status } from '@app/core/models';
+import { FormGroup, FormBuilder, AbstractControl, FormControl } from '@angular/forms';
 import { AuthService, User } from '@app/core/auth';
-import { TypeService, StatusService } from '@app/core/services';
+import { Type, Status, Entreprise } from '@app/core/models';
+import { TypeService, StatusService, EntrepriseService } from '@app/core/services';
 import { first } from 'rxjs/operators';
 
 
@@ -17,6 +17,7 @@ export class VsFormHeadComponent implements OnInit {
   types: Type[];
   users: User[];
   status: Status[];
+  entreprises: Entreprise[];
 
   @Input() visiteForm: FormGroup;
   @Input() edit: Boolean;
@@ -24,13 +25,17 @@ export class VsFormHeadComponent implements OnInit {
     private typeService:TypeService,
     private statusService:StatusService,
     private authService:AuthService,
+    private entrepriseService:EntrepriseService,
 		private cdr: ChangeDetectorRef,
   ) { }
 
   ngOnInit() {
+    console.log(this.visiteForm);
     this.getTypes();
     this.getUsers();
+    this.getCurrentUser();
     this.getStatus();
+    this.getEntreprises();
   }
 
   async getTypes(){
@@ -45,10 +50,70 @@ export class VsFormHeadComponent implements OnInit {
     this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
+	async getCurrentUser() {
+		var res = await this.authService.getUserByToken().toPromise();
+		this.visiteForm.get('redacteur_id').setValue(res.result.data.id);
+		this.cdr.detectChanges();
+	}
   async getStatus(){
     var res = await this.statusService.getAllFromModel('Vs').toPromise();
     this.status = res.result.data;
     this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
+  async getEntreprises(){
+    var res = await this.entrepriseService.getList().toPromise();
+    this.entreprises = res.result.data;
+    this.cdr.detectChanges();
+    this.cdr.markForCheck();
+  }
+
+  isFieldRequired(controlName){
+    if(this.visiteForm && this.visiteForm.controls[controlName]){
+      const control = this.visiteForm.controls[controlName]
+      const { validator } = control
+      if (validator) {
+          const validation = validator(new FormControl())
+          return validation !== null && validation.required === true
+      }
+    }
+  }
+
+  /**
+	 * Checking control validation
+	 *
+	 * @param controlName: string => Equals to formControlName
+	 * @param validationType: string => Equals to valitors name
+	 */
+	isControlHasError(controlName: string, validationType: string): boolean {
+		const control = this.visiteForm.controls[controlName];
+		if (!control) {
+			return false;
+		}
+
+		const result = control.hasError(validationType) && (control.dirty || control.touched);
+		return result;
+  }
+
+  
+  formHasValue(key){
+    return this.visiteForm.get(key).value ? true:false;
+  }
+  clearValue(key){
+    this.visiteForm.get(key).patchValue(null);
+  }
+  
+  isChecked(controlName: string){
+    return this.visiteForm.get(controlName).value == '1';
+  }
+
+  updateToggleValue(event, controlName){
+    if(event.checked){
+      this.visiteForm.controls[controlName].setValue('1');
+    }else{
+      this.visiteForm.controls[controlName].setValue('0');
+    }
+    console.log(this.visiteForm.controls[controlName].value)
+  }
+  
 }

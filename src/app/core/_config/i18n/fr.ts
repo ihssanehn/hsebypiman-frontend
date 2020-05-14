@@ -545,6 +545,12 @@ export const locale = {
 				TITLE:'Nom du chantier',
 				SHORTTITLE: 'Nom'
 			},
+			ENTREPRISE:{
+				LABEL:'Entreprise visitée',
+				PLACEHOLDER:'',
+				TITLE:'Entreprise visitée',
+				SHORTTITLE: 'Nom'
+			},
 			TYPE:{
 				LABEL:'Type',
 				PLACEHOLDER:'',
@@ -564,10 +570,10 @@ export const locale = {
 				SHORTTITLE:'Rédacteur',
 			},
 			VISITED:{
-				LABEL:'Personne visité',
+				LABEL:'Personne visitée',
 				PLACEHOLDER:'',
-				TITLE:'Personne visité',
-				SHORTTITLE:'Personne visité',
+				TITLE:'Personne visitée',
+				SHORTTITLE:'Personne visitée',
 			},
 			DATE_VISITE:{
 				LABEL:'Date de la visite',
@@ -577,6 +583,18 @@ export const locale = {
 			},
 			FORM:{
 				CREATE:'Créer une nouvelle visite'
+			},
+			PRESENCE_NC:{
+				LABEL:'Présence de non conformité',
+				LABEL_COMP:'Présence de non conformité'
+			},
+			HAS_RECTIF:{
+				LABEL:'Rectification immédiate faite',
+				LABEL_COMP:'(pas d\'action de CVTI en interne)'
+			},
+			AVERT:{
+				LABEL:'Avertissement',
+				LABEL_COMP:'(quand attitude non sécuritaire)'
 			}
 		},
 		COMMON:{

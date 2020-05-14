@@ -73,9 +73,10 @@ import {
 	SearchChantierFormComponent,
 	ChantierFormComponent,
 	// ChantierFiltersComponent,
-	SearchChantierHeaderComponent,
+	// SearchChantierHeaderComponent,
 	SearchListBarComponent,
 	VsFormHeadComponent,
+	VsFormBodyComponent,
 	CommingSoonComponent,
 } from './layout';
 // General
@@ -139,8 +140,9 @@ import {DragDropModule} from '@angular/cdk/drag-drop'
 		UserSideProfileComponent,
 		ChantierFormComponent,
 		// ChantierFiltersComponent,
-		SearchChantierHeaderComponent,
+		// SearchChantierHeaderComponent,
 		VsFormHeadComponent,
+		VsFormBodyComponent,
 		SearchListBarComponent,
 
 		CartComponent,
@@ -195,8 +197,9 @@ import {DragDropModule} from '@angular/cdk/drag-drop'
 		SearchChantierFormComponent,
 		ChantierFormComponent,
 		// ChantierFiltersComponent,
-		SearchChantierHeaderComponent,
+		// SearchChantierHeaderComponent,
 		VsFormHeadComponent,
+		VsFormBodyComponent,
 		SearchListBarComponent,
 		CartComponent,
 		

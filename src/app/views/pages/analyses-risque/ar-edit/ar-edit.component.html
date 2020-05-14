@@ -1,6 +1,6 @@
 <form [formGroup]="arForm" class="tf-form tf-form--group-seperator-dashed" *ngIf="ar">
 
-	<tf-portlet id="portlet-chantier">
+	<tf-portlet class="main-portlet-form" id="portlet-ar">
 		<div class="tf-portlet-header " >
 			<span class="title">
 			  <a [routerLink]="['/analyses-risque/list']">{{'MENU.HOME' | translate}}</a>
@@ -9,7 +9,7 @@
 			</span>
         </div>
         
-        <tf-search-chantier-form [arForm]="arForm" origin="edit"></tf-search-chantier-form>
+        <tf-search-chantier-form [form]="arForm" origin="edit"></tf-search-chantier-form>
 
 	</tf-portlet>
 

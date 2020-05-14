@@ -1,18 +1,17 @@
 
 // Analyse de risque
 export { ArFormComponent } from './analyse-risque/form/ar-form/ar-form.component';
-export { SearchChantierFormComponent } from './analyse-risque/form/search-chantier-form/search-chantier-form.component';
+// export { SearchChantierFormComponent } from './analyse-risque/form/search-chantier-form/search-chantier-form.component';
 
 // Chantier
 export { ChantierFormComponent } from './chantier/form/chantier-form/chantier-form.component';
 // export { ChantierFiltersComponent } from './chantier/chantier-filters/chantier-filters.component';
 export { SearchListBarComponent } from './search-list-bar/search-list-bar.component';
-export { SearchChantierHeaderComponent } from './chantier/form/search-chantier-header/search-chantier-header.component';
+export { SearchChantierFormComponent } from './chantier/form/search-chantier-form/search-chantier-form.component';
 
 // VISITES
 export { VsFormHeadComponent } from './visites/form/vs-form-head/vs-form-head.component';
-
-
+export { VsFormBodyComponent } from './visites/form/vs-form-body/vs-form-body.component';
 
 // Components
 export { ContextMenuComponent } from './context-menu/context-menu.component';
