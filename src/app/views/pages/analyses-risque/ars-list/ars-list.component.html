@@ -145,16 +145,19 @@
 </div> -->
 
 <mat-menu #actionMenu="matMenu" class="action-menu">
-  <button mat-icon-button color="info" matTooltip="{{'ACTION.DUPLICATE' | translate}}" (click)="duplicateAr(ar_id)">
+  <button mat-icon-button color="primary" matTooltip="{{'ACTION.SIGN' | translate}}" (click)="signAr(ar.id)">
     <mat-icon>filter_none</mat-icon>
   </button>
-  <button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}" (click)="viewAr(ar_id)">
+  <button mat-icon-button color="info" matTooltip="{{'ACTION.DUPLICATE' | translate}}" (click)="duplicateAr(ar.id)">
+    <mat-icon>filter_none</mat-icon>
+  </button>
+  <button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}" (click)="viewAr(ar.id)">
     <mat-icon>visibility</mat-icon>
   </button>
-  <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editAr(ar_id)">
+  <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editAr(ar.id)">
     <mat-icon>edit</mat-icon>
   </button>
-  <button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteAr(ar_id)">
+  <button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteAr(ar.id)">
     <mat-icon>delete</mat-icon>
   </button>
 </mat-menu>

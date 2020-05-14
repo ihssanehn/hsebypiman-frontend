@@ -85,6 +85,10 @@ export class ArsListComponent implements OnInit {
 		this.router.navigate(['analyses-risque/add'], {queryParams:{ar_id:arId}})
 	}
 
+	signAr(arId){
+		this.router.navigate(['../sign', arId], { relativeTo: this.activatedRoute });
+	}
+
 	async deleteAr(arId){
 
 		Swal.fire({

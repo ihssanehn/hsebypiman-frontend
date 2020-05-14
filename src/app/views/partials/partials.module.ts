@@ -29,7 +29,8 @@ import {
 	MatSortModule,
 	MatTableModule,
 	MatTabsModule,
-	MatTooltipModule
+	MatTooltipModule,
+	MatExpansionModule
 } from '@angular/material';
 // NgBootstrap
 import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule, NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -104,7 +105,8 @@ import { AdminBasicListPortletComponent } from './layout/admin-basic-list-portle
 import { AdminTemplateComponent } from './layout/admin-template/admin-template.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { SignatureAddComponent } from './layout/signature/signature-add/signature-add.component';
-import { SignatureListComponent } from './layout/signature/signature-list/signature-list.component'
+import { SignatureListComponent } from './layout/signature/signature-list/signature-list.component';
+import { ArDetailPanelsComponent } from './layout/analyse-risque/ar-detail-panels/ar-detail-panels.component'
 
 @NgModule({
 	declarations: [
@@ -157,7 +159,8 @@ import { SignatureListComponent } from './layout/signature/signature-list/signat
 		AdminAddModalComponent,
 		AdminTemplateComponent,
 		SignatureAddComponent,
-		SignatureListComponent
+		SignatureListComponent,
+		ArDetailPanelsComponent
 	],
 	exports: [
 		WidgetModule,
@@ -214,7 +217,8 @@ import { SignatureListComponent } from './layout/signature/signature-list/signat
 		AdminTemplateComponent,
 
 		SignatureAddComponent,
-		SignatureListComponent
+		SignatureListComponent,
+		ArDetailPanelsComponent
 	],
 	imports: [
 		CommonModule,
@@ -268,7 +272,9 @@ import { SignatureListComponent } from './layout/signature/signature-list/signat
 		NzIconModule,
 
 		NgbModule,
-		DragDropModule
+		DragDropModule,
+		
+		MatExpansionModule
 
 
 	],

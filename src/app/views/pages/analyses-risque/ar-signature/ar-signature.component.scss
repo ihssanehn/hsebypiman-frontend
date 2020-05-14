@@ -1,0 +1,108 @@
+.flex-layout{
+    display: flex;
+}
+
+.search-icon-container{
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+.search-icon-container .mat-icon{
+    color: #23b3d1;
+    width: 14.9px;
+}
+
+.search-input-group .form-control {
+    background: transparent;
+    border: none;
+    height: 49px;
+}
+
+.no_border{
+    border: none;
+}
+
+.tf-form__section input{
+    font-weight: bold;
+}
+
+:host::ng-deep {
+    .tf-form{
+        color: #525252;
+        #portlet-chantier{
+            color: black;
+            .tf-portlet{
+                border-radius: 8px;
+                background-color: #ffffff;
+                .tf-portlet-header{
+                    font-weight: bolder;
+                    padding: 25px 0 0 20px;
+                    .title{
+                        a{
+                            color: #525252;
+                        }
+                        .divider{
+                            font-weight: bolder;
+                            color:#e49819;
+                            margin-left: 0.5em;
+                            margin-right: 0.5em;
+                        }
+                        .id-item{
+                            color: #171717;
+                            font-weight: bolder;
+                            padding-bottom: 0.2em;
+                            border-bottom: 2px solid #55cec7 ;
+                        }
+                    }
+                }
+            }
+        }
+        .btn-save{
+            width: 16%;
+            height: 45px;
+            border-radius: 8px;
+            background-color: #ddf5f4;
+            font-weight: bold;
+            color: #33b5ae;
+            box-shadow: none;
+        }
+        .tf-card-form{
+            box-shadow: none;
+            border-radius: 8px;
+            border: solid 1px #eaecf0;
+            background: white;
+        }
+        .mat-checkbox-disabled.mat-checkbox-checked .mat-checkbox-background{
+            background-color: #e49819;
+        }
+
+        .mat-radio-button.mat-radio-disabled.mat-radio-checked .mat-radio-outer-circle{
+            border-color:  #e49819;
+        }
+        .mat-radio-button.mat-radio-disabled .mat-radio-inner-circle{
+            background-color: #e49819;
+        }
+        .full-height{
+            min-height: 100px;
+        }
+        .mat-table {
+            th.mat-header-cell {
+                width: 33%;
+            }
+        }
+        .mat-slide-toggle.mat-disabled{
+            opacity: 1;
+        }
+        .mat-row:hover{
+            background-color: transparent!important;
+        }
+    }
+    .mat-row:hover{
+        background-color: transparent!important;
+    }
+    .full-height{
+        min-height: 100px;
+    }
+    
+}

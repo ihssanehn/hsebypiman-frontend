@@ -51,15 +51,15 @@
 							</div>
 						</div>
 
-						<tf-signature-list 
-							[dataSource]="ar?.signatures"
-						></tf-signature-list>
+						<tf-signature-add 
+							[isSigned]="ar?.is_signed"
+						></tf-signature-add>
 
 					</div>
 				</div>
 			</div>
 		</mat-expansion-panel>
-	
+
 	</mat-accordion>
 
 </form>
