@@ -16,6 +16,7 @@ export class ArSignatureComponent extends ArDetailComponent implements OnInit {
 
   ngOnInit() {
     super.ngOnInit();
+    this.isDisableToggle = true;
   }
 
 }
