@@ -102,7 +102,9 @@ import { AdminAddModalComponent } from './layout/admin-add-modal/admin-add-modal
 import { ScrollDispatchModule, ScrollingModule } from '@angular/cdk/scrolling';
 import { AdminBasicListPortletComponent } from './layout/admin-basic-list-portlet/admin-basic-list-portlet.component';
 import { AdminTemplateComponent } from './layout/admin-template/admin-template.component';
-import {DragDropModule} from '@angular/cdk/drag-drop'
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import { SignatureAddComponent } from './layout/signature/signature-add/signature-add.component';
+import { SignatureListComponent } from './layout/signature/signature-list/signature-list.component'
 
 @NgModule({
 	declarations: [
@@ -153,7 +155,9 @@ import {DragDropModule} from '@angular/cdk/drag-drop'
 		AdminListPortletComponent,
 		AdminBasicListPortletComponent,
 		AdminAddModalComponent,
-		AdminTemplateComponent
+		AdminTemplateComponent,
+		SignatureAddComponent,
+		SignatureListComponent
 	],
 	exports: [
 		WidgetModule,
@@ -207,7 +211,10 @@ import {DragDropModule} from '@angular/cdk/drag-drop'
 		AdminListPortletComponent,
 		AdminBasicListPortletComponent,
 		NgbModule,
-		AdminTemplateComponent
+		AdminTemplateComponent,
+
+		SignatureAddComponent,
+		SignatureListComponent
 	],
 	imports: [
 		CommonModule,
