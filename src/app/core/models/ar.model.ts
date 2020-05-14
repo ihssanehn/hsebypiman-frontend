@@ -45,6 +45,5 @@ export class Ar {
     tel_ca_cvti?: string;
     assistant_ca?: string;
     tel_assistant_ca?: string;
-
-
+    is_signed?: boolean;
 }

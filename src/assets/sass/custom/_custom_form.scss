@@ -104,3 +104,22 @@
     border: 1px solid #e2e5ec;
     text-align: center;
 }
+
+.signature-line{
+    border: 1px solid #80808047;
+    padding: 1em;
+    border-radius: 8px;
+}
+
+.vertical-center{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.signature-viewer{
+    padding: 1em;
+    img{
+        width: 12em;
+    }
+}

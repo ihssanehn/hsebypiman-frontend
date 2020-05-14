@@ -372,7 +372,11 @@
 			</div>
 		</mat-expansion-panel>
 
-		<tf-ar-signatures [data]="ar?.signatures" [observations]="ar?.observations_signature"></tf-ar-signatures>
+		<tf-ar-signatures 
+			[data]="ar?.signatures" 
+			[observations]="ar?.observations_signature"
+			[isSigned]="ar?.is_signed">
+		</tf-ar-signatures>
 
 	</mat-accordion>
 

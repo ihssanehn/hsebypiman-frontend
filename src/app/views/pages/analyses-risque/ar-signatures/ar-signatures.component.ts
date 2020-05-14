@@ -7,8 +7,8 @@ import { startWith, map } from 'rxjs/operators';
 import moment from 'moment';
 import Swal from 'sweetalert2';
 import { Router, ActivatedRoute } from '@angular/router';
-import { SignatureService } from '@app/core/services';
-import { Signature } from '@app/core/models';
+import { SignatureService, EntrepriseService, ArService } from '@app/core/services';
+import { Signature, Entreprise } from '@app/core/models';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
@@ -28,7 +28,6 @@ export class ArSignaturesComponent implements OnInit {
   get data() {
     return this._data.getValue();
   }
-
   private _observations = new BehaviorSubject<string>(null);
   @Input()
   set observations(value) {
@@ -37,6 +36,7 @@ export class ArSignaturesComponent implements OnInit {
   get observations() {
     return this._observations.getValue();
   }
+  @Input() isSigned: boolean;
 
   @ViewChild(SignaturePad,null) signaturePad: SignaturePad;
   private canvas: Object = {
@@ -50,8 +50,13 @@ export class ArSignaturesComponent implements OnInit {
     'canvasHeight': this.canvas['canvasHeight'],
   };
 
-  signatureForm: FormGroup;
-  public salaries : Array<User>;
+  displayedColumns: string[] = ['date', 'fullname', 'entreprise', 'comments', 'signature'];
+  signaturesForm: FormArray;
+  currentUser : User;
+  signable_id : number;
+  salaries : Array<User>;
+  entreprisesList: Entreprise[];
+  entreprisesLoaded: boolean = false;
   filteredSalaries: Observable<Array<User>>;
   public signatures : Array<Signature>;
   public observation : string;
@@ -60,6 +65,8 @@ export class ArSignaturesComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private signatureService: SignatureService,
+    private arService: ArService,
+    private entrepriseService: EntrepriseService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private cdr: ChangeDetectorRef,
@@ -68,6 +75,7 @@ export class ArSignaturesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getEntreprises();
     this.createForm();
     this.getCurrentUser();
 
@@ -75,7 +83,13 @@ export class ArSignaturesComponent implements OnInit {
     .subscribe(
       async params => {
         if(params.id){
-          this.signatureForm.controls.ar_id.setValue(params.id);
+          this.signable_id = params.id;
+          if(!this.isSigned){
+            (this.signaturesForm as FormArray)
+            .controls[0]
+            .get('signable_id')
+            .setValue(params.id);
+          }
         }
       }
     );
@@ -98,23 +112,45 @@ export class ArSignaturesComponent implements OnInit {
   }
 
   createForm() {
-    this.signatureForm = this.fb.group({
-      ar_id:[null],
-      date:[new Date()],
-      personnel:[null],
-      personnel_id:[null],
-      society:[null],
-      signature:[null, Validators.required],
-      commentaires:[null],
-      remarks:[null],
-    });
+    this.signaturesForm = this.fb.array([]);
+
+    if(!this.isSigned){
+      this.signaturesForm.insert(0, 
+        this.fb.group({
+          signable_id:[null],
+          date:[this.setDateFormat(new Date())],
+          personnel:[null],
+          personnel_id:[null],
+          signataire_fullname:[null],
+          entreprise_id:[null],
+          signature:[null, Validators.required],
+          commentaires:[null],
+          remarks:[null],
+        })
+      );
+    }
+
   }
 
 
   async getCurrentUser(){
     var res = await this.authService.getUserByToken().toPromise();
-    this.signatureForm.controls.personnel_id.setValue(res.result.data.id);
-    this.signatureForm.controls.personnel.setValue(res.result.data);
+    this.currentUser = res.result.data;
+    if(!this.isSigned){
+      (this.signaturesForm as FormArray).controls[0].get('personnel_id').setValue(res.result.data.id);
+      (this.signaturesForm as FormArray ).controls[0].get('personnel').setValue(res.result.data);
+    }
+    this.cdr.detectChanges();
+    this.cdr.markForCheck();
+  }
+
+  async getEntreprises(){
+    this.entreprisesLoaded = false;
+    var res = await this.entrepriseService.getList().toPromise();
+    if(res){
+      this.entreprisesList = res.result.data;
+      this.entreprisesLoaded = true;
+    }
     this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
@@ -126,7 +162,7 @@ export class ArSignaturesComponent implements OnInit {
 
   clearSignature(i:number) {
     this.signaturePad.clear();
-    this.signatureForm.controls['signature'].reset();
+    this.signaturesForm.controls[i].get('signature').reset();
   }
 
   ngAfterViewInit() {
@@ -136,9 +172,9 @@ export class ArSignaturesComponent implements OnInit {
     }
   }
  
-  drawComplete() {
-    this.signatureForm
-      .controls['signature']
+  drawComplete(i:number) {
+    this.signaturesForm
+      .controls[i].get('signature')
       .setValue(this.signaturePad.toDataURL());
   }
  
@@ -148,10 +184,9 @@ export class ArSignaturesComponent implements OnInit {
   async onSubmit(event){
 
     try {
-        let form = {...this.signatureForm.value};
-        form.date = this.setDateFormat(form.date);
+        let form = {...this.signaturesForm.value};
 
-        this.signatureService.create(form)
+        this.arService.addSignatures(this.signable_id, form)
           .toPromise()
           .then((signature) => {
             console.log(signature);
@@ -177,7 +212,7 @@ export class ArSignaturesComponent implements OnInit {
             });
 
             if(err.status === 422)
-              this.signatureForm = { ...err.error};
+              this.signaturesForm = { ...err.error};
               this.errors = true;
 
           });
@@ -193,6 +228,34 @@ export class ArSignaturesComponent implements OnInit {
 
   setDateFormat(date){
     return date ? moment(date).format('YYYY-MM-DD') : null;
+  }
+
+  newSignature(): FormGroup {
+    return this.fb.group({
+      signable_id:[this.signable_id],
+      date:[this.setDateFormat(new Date())],
+      personnel:[null],
+      personnel_id:[null],
+      signataire_fullname:[null],
+      entreprise_id:[null, Validators.required],
+      signature:[null],
+      commentaires:[null],
+      remarks:[null],
+    });
+  }
+
+  addSignatures() {
+    this.signaturesForm.insert(0, this.newSignature());
+  }
+
+  removeSignature(i:number) {
+    this.signaturesForm.removeAt(i);
+  }
+
+  editSignature(){}
+
+  deleteSignature(){
+    this.signaturePad.clear();
   }
 
 }
