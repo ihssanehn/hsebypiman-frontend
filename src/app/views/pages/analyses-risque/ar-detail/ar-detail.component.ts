@@ -25,14 +25,14 @@ export class ArDetailComponent implements OnInit, OnDestroy {
 
 	loaded = false;
 
-	private subscriptions: Subscription[] = [];
+	protected subscriptions: Subscription[] = [];
 	
-	private activatedRoute: ActivatedRoute;
-	private arService: ArService;
-	private cdr: ChangeDetectorRef;
+	protected activatedRoute: ActivatedRoute;
+	protected cdr: ChangeDetectorRef;
 	protected router: Router;
 	protected chantierService: ChantierService;
-	
+	protected arService: ArService;
+
 
 	constructor(injector: Injector) {
 		this.activatedRoute = injector.get(ActivatedRoute);
@@ -103,6 +103,10 @@ export class ArDetailComponent implements OnInit, OnDestroy {
 
 	editAr(arId){
 		this.router.navigate(['/analyses-risque/edit', arId], { relativeTo: this.activatedRoute });
+	}
+
+	signAr(arId){
+		this.router.navigate(['/analyses-risque/sign', arId], { relativeTo: this.activatedRoute });
 	}
 
 }

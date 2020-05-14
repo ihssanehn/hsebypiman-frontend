@@ -51,6 +51,16 @@
 							</div>
 						</div>
 
+						<div class="col-12">
+							<button class="pull-right" *ngIf="!ar?.is_signed" mat-raised-button color="info" (click)="signAr(ar?.id)">
+								Signer l'analyse de risque
+							</button>
+							<button class="pull-right" *ngIf="ar?.is_signed" mat-raised-button color="info" (click)="signAr(ar?.id)">
+								Faire signer l'analyse de risque
+							</button>
+
+						  </div>
+
 						<tf-signature-list 
 							[dataSource]="ar?.signatures"
 						></tf-signature-list>
