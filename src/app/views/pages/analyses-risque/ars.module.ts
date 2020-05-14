@@ -58,7 +58,6 @@ import {
 } from '@angular/material';
 import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapter';
 import { ArFiltersComponent } from './ar-filters/ar-filters.component';
-import { ArSignaturesComponent } from './ar-signatures/ar-signatures.component';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { ArAdminComponent } from './ar-admin/ar-admin.component';
 import { ArZonesAdminComponent } from './ar-admin/ar-zones-admin/ar-zones-admin.component';
@@ -194,7 +193,6 @@ const routes: Routes = [
 		ArAddComponent,
 		ArDetailComponent,
 		ArFiltersComponent,
-		ArSignaturesComponent,
 		ArAdminComponent,
 		ArZonesAdminComponent,
 		ArRisquesAdminComponent,
