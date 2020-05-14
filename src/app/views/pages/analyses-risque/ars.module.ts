@@ -64,6 +64,7 @@ import { ArAdminComponent } from './ar-admin/ar-admin.component';
 import { ArZonesAdminComponent } from './ar-admin/ar-zones-admin/ar-zones-admin.component';
 import { ArRisquesAdminComponent } from './ar-admin/ar-risques-admin/ar-risques-admin.component';
 import { ArEquipementsAdminComponent } from './ar-admin/ar-equipements-admin/ar-equipements-admin.component';
+import { ArSignatureComponent } from './ar-signature/ar-signature.component';
 
 
 
@@ -103,6 +104,14 @@ const routes: Routes = [
 			{
 				path: 'detail/:id',
 				component: ArDetailComponent
+			},
+			{
+				path: 'sign',
+				component: ArSignatureComponent
+			},
+			{
+				path: 'sign/:id',
+				component: ArSignatureComponent
 			},
 			{
 				path: 'admin',
@@ -190,6 +199,7 @@ const routes: Routes = [
 		ArZonesAdminComponent,
 		ArRisquesAdminComponent,
 		ArEquipementsAdminComponent,
+		ArSignatureComponent,
 	]
 })
 export class ArsModule {}
