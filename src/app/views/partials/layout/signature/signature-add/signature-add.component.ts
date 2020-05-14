@@ -3,7 +3,7 @@ import { SignaturePad } from 'angular2-signaturepad/signature-pad';
 import { FormArray, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { User, AuthService } from '@app/core/auth';
 import { Entreprise } from '@app/core/models';
-import { ArService, EntrepriseService } from '@app/core/services';
+import { EntrepriseService } from '@app/core/services';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import Swal from 'sweetalert2';
@@ -18,7 +18,8 @@ export class SignatureAddComponent implements OnInit {
 
   @Input() isSigned: boolean;
 
-  signaturesForm: FormArray;
+  @Input() signaturesForm: FormArray;
+
   currentUser : User;
   signable_id : number;
   entreprisesList: Entreprise[];
@@ -40,10 +41,8 @@ export class SignatureAddComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private arService: ArService,
     private entrepriseService: EntrepriseService,
     private activatedRoute: ActivatedRoute,
-    private router: Router,
     private cdr: ChangeDetectorRef,
     private fb: FormBuilder,
     public _sanitizer: DomSanitizer
@@ -52,7 +51,6 @@ export class SignatureAddComponent implements OnInit {
   ngOnInit() {
 
     this.getEntreprises();
-    this.createForm();
     this.getCurrentUser();
 
     this.activatedRoute.params
@@ -73,30 +71,12 @@ export class SignatureAddComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.signaturePad.set('minWidth', 0.5);
-    this.signaturePad.clear();
-  }
-
-  createForm() {
-    
-    this.signaturesForm = this.fb.array([]);
-
     if(!this.isSigned){
-      this.signaturesForm.insert(0, 
-        this.fb.group({
-          signable_id:[null],
-          date:[this.setDateFormat(new Date())],
-          personnel:[null],
-          personnel_id:[null],
-          signataire_fullname:[null],
-          entreprise_id:[null],
-          signature:[null, Validators.required],
-          commentaires:[null],
-          remarks:[null],
-        })
-      );
+      this.signaturePad.set('minWidth', 0.5);
+      this.signaturePad.clear();
     }
   }
+
 
   async getCurrentUser(){
     var res = await this.authService.getUserByToken().toPromise();
@@ -156,52 +136,6 @@ export class SignatureAddComponent implements OnInit {
     this.signaturesForm
       .controls[i].get('signature')
       .setValue(this.signaturePad.toDataURL());
-  }
-
-
-  async onSubmit(event){
-
-    try {
-        let form = {...this.signaturesForm.value};
-
-        this.arService.addSignatures(this.signable_id, form)
-          .toPromise()
-          .then((signature) => {
-            console.log(signature);
-            this.errors = false; 
-            this.cdr.markForCheck();
-            
-            Swal.fire({
-              icon: 'success',
-              title: 'Votre signature a bien été prise en compte',
-              showConfirmButton: false,
-              timer: 1500
-            }).then(() => {
-              this.router.navigate(['/analyses-risque/list']);
-            });
-          })
-          .catch(err =>{ 
-
-            Swal.fire({
-              icon: 'error',
-              title: 'Echec! le formulaire est incomplet',
-              showConfirmButton: false,
-              timer: 2000
-            });
-
-            if(err.status === 422)
-              this.signaturesForm = { ...err.error};
-              this.errors = true;
-
-          });
-          
-        this.cdr.markForCheck();
-
-    } catch (error) {
-      console.error(error);
-      throw error;
-    }
-
   }
 
   setDateFormat(date){
