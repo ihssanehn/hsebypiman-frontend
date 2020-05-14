@@ -12,16 +12,24 @@
 			</span>
 		</div>
 		<tf-search-chantier-form [form]="visiteForm" origin="add" ></tf-search-chantier-form>
-		<div class="tf-divider">
+		<div class="tf-divider" *ngIf="visiteForm.get('chantier_id').value">
 			<span></span>
 		</div>
-		<tf-vs-form-head [visiteForm]="visiteForm" [edit]="false"></tf-vs-form-head>
-		<!-- (chantierSelected)="onChantierSelected($event)"  -->
+		<tf-vs-form-head [visiteForm]="visiteForm" [edit]="false" *ngIf="visiteForm.get('chantier_id').value"></tf-vs-form-head>
+
+		<tf-portlet-body *ngIf="visiteForm.get('chantier_id').value">
+			<div class="row">
+				<div class="col-12">
+					<button mat-raised-button color="success" class="float-right btn-small
+					" type="button" [disabled]="canDisplayQuestions" (click)="displayQuestions()">Commencer la visite</button>
+				</div>
+			</div>
+		</tf-portlet-body>
 	</tf-portlet>
 	
-	<tf-vs-form-body (onLastStep)="isLastStep($event)" [visiteForm]="visiteForm" origin="add" [edit]="true" *ngIf="visiteForm.get('chantier_id').value && visiteForm.get('type_id').value"></tf-vs-form-body>
+	<tf-vs-form-body (onLastStep)="isLastStep($event)" [visiteForm]="visiteForm" origin="add" [edit]="true" *ngIf="questionsDisplayed"></tf-vs-form-body>
 	
-	<button mat-raised-button color="success" class="float-right" (click)="onSubmit(false)">
+	<!-- <button mat-raised-button color="success" class="float-right" (click)="onSubmit(false)">
 		{{'ACTION.SAVE' | translate}}
-	</button>
+	</button> -->
 </form>

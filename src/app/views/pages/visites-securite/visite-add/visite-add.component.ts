@@ -23,11 +23,15 @@ export class VisiteAddComponent implements OnInit {
   
   visite: Visite;
   visiteForm: FormGroup;
+<<<<<<< HEAD
 	// allRoles: Role[];
   formStatus = new FormStatus();
+=======
+>>>>>>> perform visites
 	loaded = false;
   editMode: boolean = false;
   chantier: Chantier;
+  questionsDisplayed: boolean = false;
   // Private properties
   
   constructor(
@@ -54,9 +58,9 @@ export class VisiteAddComponent implements OnInit {
   createForm() {
 		this.visiteForm = this.visiteFB.group({
       'chantier_id': ['', Validators.required],
-      'salarie_id': ['', Validators.required],
-      'entreprise_id': ['', Validators.required],
-      'redacteur_id': ['', Validators.required],
+      'salarie_id': [{value:''}, Validators.required],
+      'entreprise_id': [{value:''}, Validators.required],
+      'redacteur_id': [{value:'', disabled:true}, Validators.required],
       'date_visite': ['', Validators.required],
       // 'is_validated_redacteur': ['', Validators.required],
       // 'is_validated_visite': ['', Validators.required],
@@ -78,20 +82,22 @@ export class VisiteAddComponent implements OnInit {
 
     this.visiteForm.get('salarie_id').valueChanges
       .subscribe(salarie_id => {
-        console.log(salarie_id);
         if (salarie_id != null) {
           entreprise_id.setValidators(null);
+          entreprise_id.disable();
         }else{
           entreprise_id.setValidators(Validators.required);
+          entreprise_id.enable();
         }
       })
     this.visiteForm.get('entreprise_id').valueChanges
       .subscribe(entreprise_id => {
-
         if (entreprise_id != null) {
           salarie_id.setValidators(null);
+          salarie_id.disable();
         }else{
           salarie_id.setValidators(Validators.required);
+          salarie_id.enable();
         }
       })
   }
@@ -157,5 +163,12 @@ export class VisiteAddComponent implements OnInit {
       return date ? moment(date).format('YYYY-MM-DD') : null;
   }
 
+  canDisplayQuestions(){
+    this.visiteForm.get('chantier_id').value && this.visiteForm.get('type_id').value;
+  }  
+
+  displayQuestions(){
+    this.questionsDisplayed = true;
+  }
   
 }

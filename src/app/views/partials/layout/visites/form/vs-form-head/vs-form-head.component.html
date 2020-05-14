@@ -35,7 +35,7 @@
                                     [matTooltipDisabled]="formHasValue('salarie_id')"
                                 >
                                     <mat-label>{{'VISITES.VISITED.LABEL' | translate}}</mat-label>
-                                    <mat-select class="form-control" placeholder="" formControlName="salarie_id" [disabled]="formHasValue('entreprise_id')" [required]="isFieldRequired('salarie_id')">
+                                    <mat-select class="form-control" placeholder="" formControlName="salarie_id" [required]="isFieldRequired('salarie_id')">
                                         <mat-option *ngFor="let user of users" [value]="user.id">
                                             {{ user | fullName }}
                                         </mat-option>
@@ -55,7 +55,7 @@
                                     [matTooltipDisabled]="formHasValue('entreprise_id')"
                                 >
                                     <mat-label>{{'VISITES.ENTREPRISE.LABEL' | translate}}</mat-label>
-                                    <mat-select class="form-control" placeholder="" formControlName="entreprise_id" [disabled]="formHasValue('salarie_id')" [required]="isFieldRequired('entreprise_id')">
+                                    <mat-select class="form-control" placeholder="" formControlName="entreprise_id" [required]="isFieldRequired('entreprise_id')">
                                         <mat-option *ngFor="let entreprise of entreprises" [value]="entreprise.id">
                                             {{ entreprise.raison_sociale }}
                                         </mat-option>
@@ -70,7 +70,7 @@
                                 <!-- SALARIE -->
                                 <mat-form-field class="col-xl-3">
                                     <mat-label>{{'VISITES.REDACTEUR.LABEL' | translate}}</mat-label>
-                                    <mat-select class="form-control" placeholder="" formControlName="redacteur_id" [disabled]="true" [required]="isFieldRequired('redacteur_id')">
+                                    <mat-select class="form-control" placeholder="" formControlName="redacteur_id" [required]="isFieldRequired('redacteur_id')">
                                         <mat-option *ngFor="let user of users" [value]="user.id">
                                             {{ user | fullName }}
                                         </mat-option>
