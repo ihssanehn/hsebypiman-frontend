@@ -1,11 +1,5 @@
 export class PageConfig {
 	public defaults: any = {
-		dashboard: {
-			page: {
-				title: 'Dashboard',
-				desc: 'Latest updates and statistic charts'
-			},
-		},
 		ngbootstrap: {
 			accordion: {
 				page: {title: 'Accordion', desc: ''}
