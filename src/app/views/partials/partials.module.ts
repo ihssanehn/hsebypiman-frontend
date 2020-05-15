@@ -29,7 +29,8 @@ import {
 	MatSortModule,
 	MatTableModule,
 	MatTabsModule,
-	MatTooltipModule
+	MatTooltipModule,
+	MatExpansionModule
 } from '@angular/material';
 // NgBootstrap
 import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule, NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -102,7 +103,10 @@ import { AdminAddModalComponent } from './layout/admin-add-modal/admin-add-modal
 import { ScrollDispatchModule, ScrollingModule } from '@angular/cdk/scrolling';
 import { AdminBasicListPortletComponent } from './layout/admin-basic-list-portlet/admin-basic-list-portlet.component';
 import { AdminTemplateComponent } from './layout/admin-template/admin-template.component';
-import {DragDropModule} from '@angular/cdk/drag-drop'
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import { SignatureAddComponent } from './layout/signature/signature-add/signature-add.component';
+import { SignatureListComponent } from './layout/signature/signature-list/signature-list.component';
+import { ArDetailPanelsComponent } from './layout/analyse-risque/ar-detail-panels/ar-detail-panels.component'
 
 @NgModule({
 	declarations: [
@@ -153,7 +157,10 @@ import {DragDropModule} from '@angular/cdk/drag-drop'
 		AdminListPortletComponent,
 		AdminBasicListPortletComponent,
 		AdminAddModalComponent,
-		AdminTemplateComponent
+		AdminTemplateComponent,
+		SignatureAddComponent,
+		SignatureListComponent,
+		ArDetailPanelsComponent
 	],
 	exports: [
 		WidgetModule,
@@ -207,7 +214,11 @@ import {DragDropModule} from '@angular/cdk/drag-drop'
 		AdminListPortletComponent,
 		AdminBasicListPortletComponent,
 		NgbModule,
-		AdminTemplateComponent
+		AdminTemplateComponent,
+
+		SignatureAddComponent,
+		SignatureListComponent,
+		ArDetailPanelsComponent
 	],
 	imports: [
 		CommonModule,
@@ -261,7 +272,9 @@ import {DragDropModule} from '@angular/cdk/drag-drop'
 		NzIconModule,
 
 		NgbModule,
-		DragDropModule
+		DragDropModule,
+		
+		MatExpansionModule
 
 
 	],

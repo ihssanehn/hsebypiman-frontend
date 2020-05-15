@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ArSignaturesComponent } from './ar-signatures.component';
+import { SignatureAddComponent } from './signature-add.component';
 
-describe('ArSignaturesComponent', () => {
-  let component: ArSignaturesComponent;
-  let fixture: ComponentFixture<ArSignaturesComponent>;
+describe('SignatureAddComponent', () => {
+  let component: SignatureAddComponent;
+  let fixture: ComponentFixture<SignatureAddComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ArSignaturesComponent ]
+      declarations: [ SignatureAddComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ArSignaturesComponent);
+    fixture = TestBed.createComponent(SignatureAddComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
