@@ -1,7 +1,15 @@
+.horaire-box{
+    display:flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    margin-top: 2px;
+    span{
+        padding: 1em;
+    }
+}
 :host {
 
     .tf-card-form{
-        box-shadow: none;
         border-radius: 8px;
         border: solid 1px #eaecf0;
         background: white;

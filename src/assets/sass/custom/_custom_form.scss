@@ -69,6 +69,9 @@
     display: flex;
     flex-grow: 1;
     flex-direction: column;
+    &.full-height{
+        height: calc(100% - 20px);
+    }
     .tf-heading{
         margin-top:0;
     }
@@ -85,6 +88,7 @@
     border: none;
     background-color: transparent !important;
     box-shadow: none!important;
+    overflow: visible!important;
     .mat-expansion-panel-header{
         padding: 0 10px 0 0;
         &:hover{
