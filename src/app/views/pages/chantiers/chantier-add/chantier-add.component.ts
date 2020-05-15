@@ -43,6 +43,7 @@ export class ChantierAddComponent implements OnInit {
 		private permissionsService : NgxPermissionsService,
     private translate:TranslateService,
     private dateFrToEnPipe:DateFrToEnPipe,
+    private dateEnToFrPipe:DateEnToFrPipe,
     public snackBar: MatSnackBar,
   ) { }
 
@@ -85,12 +86,8 @@ export class ChantierAddComponent implements OnInit {
     this.cdr.markForCheck();
 
     let form = {...this.chantierForm.value};
-    form.date_demarrage = this.dateFrToEnPipe.transform(form.date_demarrage)
-    if(form.entreprises.length > 0){
-      form.entreprises.forEach(x=>{
-        x.date_demarrage = this.dateFrToEnPipe.transform(x.date_demarrage);
-      })
-    }
+    
+    this.parseChantierDate(form, 'FrToEn');
 
     this.chantierService.create(form)
       .toPromise()
@@ -125,6 +122,15 @@ export class ChantierAddComponent implements OnInit {
         }
       });
   
+  }
+  
+  parseChantierDate(item, direction){
+		item.date_demarrage = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.date_demarrage) : this.dateEnToFrPipe.transform(item.date_demarrage);
+		if(item.entreprises.length > 0){
+			item.entreprises.forEach(x=>{
+				x.date_demarrage = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(x.date_demarrage) : this.dateEnToFrPipe.transform(x.pivot.date_demarrage);
+			})
+		}
   }
   
 	onCancel() {
