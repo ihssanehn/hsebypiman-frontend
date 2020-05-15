@@ -24,7 +24,6 @@ import {FormStatus} from '@app/core/_base/crud/models/form-status';
 
 export class ChantierEditComponent implements OnInit, OnDestroy {
 
-	errors;
 	chantierForm: FormGroup;
 	chantier: Chantier;
   	formStatus = new FormStatus();
@@ -52,6 +51,7 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 		private permissionsService: NgxPermissionsService,
 		private location: Location,
 		private dateFrToEnPipe:DateFrToEnPipe,
+		private dateEnToFrPipe:DateEnToFrPipe,
 		private subheaderService:SubheaderService,
 	) {	}
 	
@@ -64,9 +64,9 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 				if (id) {
 					this.chantierService.get(id).pipe(
 						tap(res=>{
+							this.parseChantierDate(res.result.data, 'EnToFr');
 							this.chantierForm.patchValue(res.result.data);							
 							this.formPathValues(res.result.data);
-							
 							this.chantierForm.controls['entreprises'].patchValue(res.result.data.entreprises);
 						})
 					).subscribe( async res => {
@@ -168,13 +168,9 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 			this.formStatus.onFormSubmitting();
 
 			let form = {...this.chantierForm.value};
-			form.date_demarrage = this.dateFrToEnPipe.transform(form.date_demarrage);
+			this.parseChantierDate(form, 'FrToEn');
 			form.id = this.chantier.id;
-			if(form.entreprises.length > 0){
-				form.entreprises.forEach(x=>{
-				x.date_demarrage = this.dateFrToEnPipe.transform(x.date_demarrage);
-				})
-			}
+			
 			this.chantierService.update(form)
 				.toPromise()
 				.then((chantier) => {
@@ -213,6 +209,15 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 		} catch (error) {
 			console.error(error);
 			throw error;
+		}
+	}
+
+	parseChantierDate(item, direction){
+		item.date_demarrage = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.date_demarrage) : this.dateEnToFrPipe.transform(item.date_demarrage);
+		if(item.entreprises.length > 0){
+			item.entreprises.forEach(x=>{
+				x.date_demarrage = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(x.date_demarrage) : this.dateEnToFrPipe.transform(x.pivot.date_demarrage);
+			})
 		}
 	}
 
