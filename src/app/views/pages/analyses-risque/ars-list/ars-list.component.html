@@ -122,28 +122,6 @@
 	</tf-portlet-body>
 </tf-portlet>
 
-<!-- <div ngbDropdown placement="bottom-right" class="d-inline-block invisible">
-  <button ngbDropdownToggle mat-icon-button color="primary" matTooltip="Actions">
-    <mat-icon>more_vert</mat-icon>
-  </button>
-  <div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
-    *ngxPermissionsOnly="['ADMIN']"
-    <button mat-icon-button color="info" matTooltip="{{'ACTION.DUPLICATE' | translate}}" (click)="duplicateAr(ar.id)">
-      <mat-icon>filter_none</mat-icon>
-    </button>
-    <button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}" (click)="viewAr(ar.id)">
-      <mat-icon>visibility</mat-icon>
-    </button>
-    <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editAr(ar.id)">
-      <mat-icon>edit</mat-icon>
-    </button>
-    <button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteAr(ar.id)">
-      <mat-icon>delete</mat-icon>
-    </button>
-      
-  </div>
-</div> -->
-
 <mat-menu #actionMenu="matMenu" class="action-menu">
   <button mat-icon-button color="primary" matTooltip="{{'ACTION.SIGN' | translate}}" (click)="signAr(ar.id)">
     <mat-icon>filter_none</mat-icon>
