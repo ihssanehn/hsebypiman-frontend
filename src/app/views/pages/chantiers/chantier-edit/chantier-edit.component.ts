@@ -10,6 +10,7 @@ import { Paginate } from '@app/core/_base/layout/models/paginate.model';
 import { Chantier } from '@app/core/models';
 import { NgxPermissionsService } from 'ngx-permissions';
 import { SubheaderService } from '@app/core/_base/layout/services/subheader.service';
+import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
 import * as moment from 'moment';
 import Swal from 'sweetalert2';
 
@@ -47,6 +48,7 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 		private cdr: ChangeDetectorRef,
 		private permissionsService: NgxPermissionsService,
 		private location: Location,
+		private dateFrToEnPipe:DateFrToEnPipe,
 		private subheaderService:SubheaderService,
 	) {	}
 	
@@ -163,11 +165,11 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 			let result;
 
 			let form = {...this.chantierForm.value};
-			form.date_demarrage = form.date_demarrage ? moment(form.date_demarrage).format('YYYY-MM-DD') : null
+			form.date_demarrage = this.dateFrToEnPipe.transform(form.date_demarrage);
 			form.id = this.chantier.id;
 			if(form.entreprises.length > 0){
 				form.entreprises.forEach(x=>{
-				x.date_demarrage = this.setDateFormat(x.date_demarrage);
+				x.date_demarrage = this.dateFrToEnPipe.transform(x.date_demarrage);
 				})
 			}
 			this.chantierService.update(form)
@@ -207,10 +209,6 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 			console.error(error);
 			throw error;
 		}
-	}
-
-	setDateFormat(date) {
-		return date ? moment(date).format('YYYY-MM-DD') : null;
 	}
 
 	cancel() {

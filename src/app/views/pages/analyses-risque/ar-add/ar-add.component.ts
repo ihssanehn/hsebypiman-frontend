@@ -15,6 +15,7 @@ import { AuthService, User } from '@app/core/auth';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import Swal from 'sweetalert2';
+import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
 import { Param } from '@app/core/models/param.model';
 
 @Component({
@@ -50,6 +51,7 @@ export class ArAddComponent implements OnInit, OnDestroy {
     protected chantierService:ChantierService,
     protected paramsService:ParamsService,
 		private cdr: ChangeDetectorRef,
+		private dateFrToEnPipe: DateFrToEnPipe,
 		private permissionsService : NgxPermissionsService,
     private translate:TranslateService,
     iconRegistry: MatIconRegistry, 
@@ -316,8 +318,8 @@ export class ArAddComponent implements OnInit, OnDestroy {
 
       if(form.chantier_id)
       {
-        form.date_accueil_secu = this.setDateFormat(form.date_accueil_secu);
-        form.date_validite = this.setDateFormat(form.date_validite);
+        form.date_accueil_secu = this.dateFrToEnPipe.transform(form.date_accueil_secu);
+        form.date_validite = this.dateFrToEnPipe.transform(form.date_validite);
 
         this.arService.create(form)
           .toPromise()
@@ -366,10 +368,6 @@ export class ArAddComponent implements OnInit, OnDestroy {
       throw error;
     }
 
-  }
-
-  setDateFormat(date){
-      return date ? moment(date).format('YYYY-MM-DD') : null;
   }
 
   isLastStep(isLastStep: boolean): void{

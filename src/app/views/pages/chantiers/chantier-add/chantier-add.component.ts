@@ -10,6 +10,7 @@ import { Chantier, Type } from '@app/core/models';
 import { NgxPermissionsService } from 'ngx-permissions';
 import { AuthService, User } from '@app/core/auth';
 import { MatSnackBar } from '@angular/material';
+import { DateEnToFrPipe, DateFrToEnPipe } from '@app/core/_base/layout';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -39,6 +40,7 @@ export class ChantierAddComponent implements OnInit {
     private location: Location,
 		private permissionsService : NgxPermissionsService,
     private translate:TranslateService,
+    private dateFrToEnPipe:DateFrToEnPipe,
     public snackBar: MatSnackBar,
   ) { }
 
@@ -78,10 +80,10 @@ export class ChantierAddComponent implements OnInit {
     try {
       let result;
       let form = {...this.chantierForm.value};
-      form.date_demarrage = this.setDateFormat(form.date_demarrage)
+      form.date_demarrage = this.dateFrToEnPipe.transform(form.date_demarrage)
       if(form.entreprises.length > 0){
         form.entreprises.forEach(x=>{
-          x.date_demarrage = this.setDateFormat(x.date_demarrage);
+          x.date_demarrage = this.dateFrToEnPipe.transform(x.date_demarrage);
         })
       }
   
@@ -125,10 +127,6 @@ export class ChantierAddComponent implements OnInit {
   
 	onCancel() {
 		this.location.back();
-  }
-  
-  setDateFormat(date){
-      return date ? moment(date).format('YYYY-MM-DD') : null;
   }
   
 }
