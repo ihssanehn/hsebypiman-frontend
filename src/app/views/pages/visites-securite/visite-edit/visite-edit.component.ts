@@ -12,6 +12,8 @@ import { NgxPermissionsService } from 'ngx-permissions';
 import { SubheaderService } from '@app/core/_base/layout/services/subheader.service';
 import * as moment from 'moment';
 import Swal from 'sweetalert2';
+import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
+import {FormStatus} from '@app/core/_base/crud/models/form-status';
 
 @Component({
 	selector: 'tf-visite-edit',
@@ -23,6 +25,7 @@ export class VisiteEditComponent implements OnInit, OnDestroy {
 
 	errors;
 	visiteForm: FormGroup;
+  	formStatus = new FormStatus();
 	visite: Visite;
 	// allRoles: Role[];
 	loaded: boolean = false;
@@ -125,15 +128,14 @@ export class VisiteEditComponent implements OnInit, OnDestroy {
 
 	async onSubmit(event) {
 		try {
-			let result;
-
+			this.formStatus.onFormSubmitting();
 			let form = {...this.visiteForm.value};
 			form.date_demarrage = form.date_demarrage ? moment(form.date_demarrage).format('YYYY-MM-DD') : null
-      form.id = this.visite.id;
+			  form.id = this.visite.id;
+			  
 			this.visiteService.update(form)
 				.toPromise()
 				.then((visite) => {
-					this.errors = false;
 					this.cdr.markForCheck();
 
 					Swal.fire({
@@ -142,7 +144,7 @@ export class VisiteEditComponent implements OnInit, OnDestroy {
 						showConfirmButton: false,
 						timer: 1500
 					}).then(() => {
-            this.location.back();
+            			this.location.back();
 					});
 				})
 				.catch(err => {
@@ -154,12 +156,14 @@ export class VisiteEditComponent implements OnInit, OnDestroy {
 						timer: 1500
 					});
 
-					if (err.status === 422)
-						this.visiteForm = {
-							...err.error
-						};
-					this.errors = true;
-
+					if(err.status === 422){
+						var messages = extractErrorMessagesFromErrorResponse(err);
+						this.formStatus.onFormSubmitResponse({success: false, messages: messages});
+						console.log(this.formStatus.errors, this.formStatus.canShowErrors());
+						this.cdr.detectChanges();
+						this.cdr.markForCheck();
+					}
+			
 				});
 
 			this.cdr.markForCheck();

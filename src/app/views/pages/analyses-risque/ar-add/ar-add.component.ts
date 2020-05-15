@@ -17,6 +17,8 @@ import { MatIconRegistry } from '@angular/material';
 import Swal from 'sweetalert2';
 import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
 import { Param } from '@app/core/models/param.model';
+import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
+import {FormStatus} from '@app/core/_base/crud/models/form-status';
 
 @Component({
   selector: 'tf-ar-add',
@@ -26,7 +28,8 @@ import { Param } from '@app/core/models/param.model';
 export class ArAddComponent implements OnInit, OnDestroy {
 
   ar: Ar;
-  arForm: FormGroup;
+  arForm: FormGroup
+  formStatus = new FormStatus();
   types: Type[];
   users: User[];
   params: Param[];
@@ -39,7 +42,6 @@ export class ArAddComponent implements OnInit, OnDestroy {
   }
   // Private properties
   private subscriptions: Subscription[] = [];
-  errors;
   
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -314,6 +316,7 @@ export class ArAddComponent implements OnInit, OnDestroy {
   async onSubmit(event){
 
     try {
+      this.formStatus.onFormSubmitting();
       let form = {...this.arForm.value};
 
       if(form.chantier_id)
@@ -325,7 +328,6 @@ export class ArAddComponent implements OnInit, OnDestroy {
           .toPromise()
           .then((ar) => {
             console.log(ar);
-            this.errors = false; 
             this.cdr.markForCheck();
             
             Swal.fire({
@@ -346,9 +348,13 @@ export class ArAddComponent implements OnInit, OnDestroy {
               timer: 2000
             });
 
-            if(err.status === 422)
-              this.arForm = { ...err.error};
-              this.errors = true;
+            if(err.status === 422){
+              var messages = extractErrorMessagesFromErrorResponse(err);
+              this.formStatus.onFormSubmitResponse({success: false, messages: messages});
+              console.log(this.formStatus.errors, this.formStatus.canShowErrors());
+              this.cdr.detectChanges();
+              this.cdr.markForCheck();
+            }
 
           });
           

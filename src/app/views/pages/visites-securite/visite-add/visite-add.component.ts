@@ -11,6 +11,8 @@ import { NgxPermissionsService } from 'ngx-permissions';
 import { AuthService, User } from '@app/core/auth';
 import { MatSnackBar } from '@angular/material';
 import Swal from 'sweetalert2';
+import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
+import {FormStatus} from '@app/core/_base/crud/models/form-status';
 
 @Component({
   selector: 'tf-visite-add',
@@ -22,11 +24,11 @@ export class VisiteAddComponent implements OnInit {
   visite: Visite;
   visiteForm: FormGroup;
 	// allRoles: Role[];
+  formStatus = new FormStatus();
 	loaded = false;
   editMode: boolean = false;
   chantier: Chantier;
   // Private properties
-  errors;
   
   constructor(
 		private activatedRoute: ActivatedRoute,
@@ -83,15 +85,12 @@ export class VisiteAddComponent implements OnInit {
 
   async onSubmit(event){
     try {
-      let result;
-
       let form = {...this.visiteForm.value};
-      
+      this.formStatus.onFormSubmitting();
   
 			this.visiteService.create(form)
         .toPromise()
         .then((visite) => {
-          this.errors = false; 
           this.cdr.markForCheck();
           
           Swal.fire({
@@ -112,9 +111,13 @@ export class VisiteAddComponent implements OnInit {
             timer: 1500
           });
 
-          if(err.status === 422)
-            this.visiteForm = { ...err.error};
-            this.errors = true;
+          if(err.status === 422){
+            var messages = extractErrorMessagesFromErrorResponse(err);
+            this.formStatus.onFormSubmitResponse({success: false, messages: messages});
+            console.log(this.formStatus.errors, this.formStatus.canShowErrors());
+            this.cdr.detectChanges();
+            this.cdr.markForCheck();
+          }
 
         });
         

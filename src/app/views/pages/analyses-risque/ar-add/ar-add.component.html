@@ -13,7 +13,7 @@
 	
 	</tf-portlet>
 
-	<tf-ar-form (onLastStep)="isLastStep($event)" [arForm]="arForm" origin="add" [edit]="true" *ngIf="arForm.get('chantier_id').value"></tf-ar-form>
+	<tf-ar-form (onLastStep)="isLastStep($event)" [arForm]="arForm" [formStatus]="formStatus" origin="add" [edit]="true" *ngIf="arForm.get('chantier_id').value"></tf-ar-form>
 	
 	<button mat-raised-button *ngIf="enableBtn" [disabled]="arForm.invalid" class="btn float-right btn-save" (click)="arForm.valid && onSubmit(false)">
 		{{'ACTION.SAVE' | translate}}

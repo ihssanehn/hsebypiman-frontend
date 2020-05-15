@@ -21,119 +21,108 @@
 					</div>
 					<span *ngIf="!edit">{{'CHANTIERS.FORM.CREATE' | translate}}</span>
 				</div>
-				<div>
-					<div class="tf-wizard-v4__content" data-tfwizard-type="step-content" data-tfwizard-state="current">
-						<div class="tf-form__section tf-form__section--first">
-							<div class="tf-wizard-v4__form">
-								<div class="row form-row">
-									<mat-form-field class="col-xl-4">
-										<mat-label>{{'CHANTIERS.NAME.LABEL' | translate}}</mat-label>
-										<input class="form-control" matInput type="text" name="nom" formControlName="nom" placeholder="Saisir ici" [required]="isFieldRequired('nom')" />
-										<mat-error *ngIf="isControlHasError('nom','required')">
-											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-										</mat-error>
-									</mat-form-field>
-									<mat-form-field class="col-xl-3">
-										<mat-label>{{'CHANTIERS.TYPE.LABEL' | translate}}</mat-label>
-										<mat-select class="form-control" placeholder="" formControlName="type_id" [required]="isFieldRequired('type_id')">
-											<mat-option *ngFor="let type of typesList" [value]="type.id">
-												{{ type.libelle }}
-											</mat-option>
-										</mat-select>
-										<mat-error *ngIf="isControlHasError('type_id','required')">
-											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-										</mat-error>
-									</mat-form-field>
-									<mat-form-field class="col-xl-3">
-										<mat-label>{{'CHANTIERS.DATE_DEMARRAGE.LABEL' | translate}}</mat-label>
-										<input matInput class="form-control" mask="d0/M0/0000" formControlName="date_demarrage" [required]="isFieldRequired('date_demarrage')" placeholder="DD/MM/YYYY">
-										<!-- <input matInput class="form-control" [matDatepicker]="date_demarrage_picker" formControlName="date_demarrage" [required]="isFieldRequired('date_demarrage')" placeholder="DD/MM/YYYY">
-										<mat-datepicker-toggle matSuffix [for]="date_demarrage_picker"></mat-datepicker-toggle>
-										<mat-datepicker #date_demarrage_picker></mat-datepicker>
-										<mat-error *ngIf="isControlHasError('date_demarrage','required')">
-											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-										</mat-error> -->
-									</mat-form-field>
-									<mat-form-field class="col-xl-2">
-										<mat-label>{{'CHANTIERS.BUDGET.LABEL' | translate}}</mat-label>
-										<input matInput mask="separator.2" class="form-control" type="string" name="montant" formControlName="montant" [required]="isFieldRequired('montant')" placeholder="Saisir ici" />
-										<mat-icon matSuffix>euro_symbol</mat-icon>
-										<mat-error *ngIf="isControlHasError('montant','required')">
-											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-										</mat-error>
-									</mat-form-field>
-								</div>
-								<div class="row form-row">
-									<mat-form-field class="col-xl-3">
-										<mat-label>{{'CHANTIERS.CHIEF.LABEL' | translate}}</mat-label>
-										<!-- <ng-select ngSelectMat class="form-control mat-select" [items]="users" formControlName="charge_affaire_id" bindLabel="fullname"
-										bindValue="id" [clearable]="false">
-									</ng-select> -->
-										<mat-select class="form-control" [required]="isFieldRequired('charge_affaire_id')" placeholder="" formControlName="charge_affaire_id">
-											<mat-option *ngFor="let user of usersList" [value]="user.id">
-												{{ user.fullname }}
-											</mat-option>
-										</mat-select>
-										<mat-error *ngIf="isControlHasError('charge_affaire_id','required')">
-											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-										</mat-error>
-									</mat-form-field>
-									<mat-form-field class="col-xl-3">
-										<mat-label>{{'CHANTIERS.RESP_CHIFFRAGE.LABEL' | translate}}</mat-label>
-										<mat-select class="form-control" [required]="isFieldRequired('resp_chiffrage_id')" placeholder="" formControlName="resp_chiffrage_id">
-											<mat-option *ngFor="let user of usersList" [value]="user.id">
-												{{ user.fullname }}
-											</mat-option>
-										</mat-select>
-										<mat-error *ngIf="isControlHasError('resp_chiffrage_id','required')">
-											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-										</mat-error>
-									</mat-form-field>
-									<mat-form-field class="col-xl-3">
-										<mat-label>{{'CHANTIERS.CLIENT.LABEL' | translate}}</mat-label>
-										<input matInput class="form-control" type="text" name="client" formControlName="client" [required]="isFieldRequired('client')" placeholder="Saisir ici" />
-										<mat-error *ngIf="isControlHasError('client','required')">
-											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-										</mat-error>
-									</mat-form-field>
-									<mat-form-field class="col-xl-3">
-										<mat-label>{{'CHANTIERS.CONTACT.LABEL' | translate}}</mat-label>
-										<input matInput class="form-control" type="text" name="contact" formControlName="contact" [required]="isFieldRequired('contact')" placeholder="Saisir ici" />
-										<mat-error *ngIf="isControlHasError('contact','required')">
-											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-										</mat-error>
-									</mat-form-field>
-								</div>
-								<div class="row form-row">
-									<mat-form-field class="col-xl-4">
-										<mat-label>{{'CHANTIERS.ADRESS.LABEL' | translate}}</mat-label>
-										<input matInput class="form-control" type="text" name="adresse" formControlName="adresse" [required]="isFieldRequired('adresse')" placeholder="Saisir ici" />
-										<mat-error *ngIf="isControlHasError('adresse','required')">
-											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-										</mat-error>
-									</mat-form-field>
-									<mat-form-field class="col-xl-3">
-										<mat-label>{{'COMMON.CITY.LABEL' | translate}}</mat-label>
-										<input matInput class="form-control" type="text" name="ville" formControlName="ville" [required]="isFieldRequired('ville')" placeholder="Saisir ici" />
-										<mat-error *ngIf="isControlHasError('ville','required')">
-											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-										</mat-error>
-									</mat-form-field>
-									<mat-form-field class="col-xl-1">
-										<mat-label>{{'COMMON.POSTCODE.LABEL' | translate}}</mat-label>
-										<input matInput class="form-control" type="text" name="code_postal" formControlName="code_postal" [required]="isFieldRequired('code_postal')" placeholder="Saisir ici" />
-										<mat-error *ngIf="isControlHasError('code_postal','required')">
-											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-										</mat-error>
-									</mat-form-field>
-									<mat-form-field class="col-xl-2">
-										<mat-label>{{'COMMON.COUNTRY.LABEL' | translate}}</mat-label>
-										<input matInput class="form-control" type="text" name="pays" formControlName="pays" [required]="isFieldRequired('pays')" placeholder="Saisir ici" />
-										<mat-error *ngIf="isControlHasError('pays','required')">
-											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-										</mat-error>
-									</mat-form-field>
-								</div>
+				<div class="tf-wizard-v4__content" data-tfwizard-type="step-content" data-tfwizard-state="current">
+					<div class="tf-form__section tf-form__section--first">
+						<div class="tf-wizard-v4__form">
+							<div class="row form-row">
+								<mat-form-field class="col-xl-4">
+									<mat-label>{{'CHANTIERS.NAME.LABEL' | translate}}</mat-label>
+									<input class="form-control" matInput type="text" name="nom" formControlName="nom" placeholder="Saisir ici" [required]="isFieldRequired('nom')" />
+									<mat-error *ngIf="isControlHasError('nom','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+								<mat-form-field class="col-xl-3">
+									<mat-label>{{'CHANTIERS.TYPE.LABEL' | translate}}</mat-label>
+									<mat-select class="form-control" placeholder="" formControlName="type_id" [required]="isFieldRequired('type_id')">
+										<mat-option *ngFor="let type of typesList" [value]="type.id">
+											{{ type.libelle }}
+										</mat-option>
+									</mat-select>
+									<mat-error *ngIf="isControlHasError('type_id','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+								<mat-form-field class="col-xl-3">
+									<mat-label>{{'CHANTIERS.DATE_DEMARRAGE.LABEL' | translate}}</mat-label>
+									<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" formControlName="date_demarrage" [required]="isFieldRequired('date_demarrage')" placeholder="DD/MM/YYYY">
+								</mat-form-field>
+								<mat-form-field class="col-xl-2">
+									<mat-label>{{'CHANTIERS.BUDGET.LABEL' | translate}}</mat-label>
+									<input matInput mask="separator.2" class="form-control" type="string" name="montant" formControlName="montant" [required]="isFieldRequired('montant')" placeholder="Saisir ici" />
+									<mat-icon matSuffix>euro_symbol</mat-icon>
+									<mat-error *ngIf="isControlHasError('montant','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+							</div>
+							<div class="row form-row">
+								<mat-form-field class="col-xl-3">
+									<mat-label>{{'CHANTIERS.CHIEF.LABEL' | translate}}</mat-label>
+									<mat-select class="form-control" [required]="isFieldRequired('charge_affaire_id')" placeholder="" formControlName="charge_affaire_id">
+										<mat-option *ngFor="let user of usersList" [value]="user.id">
+											{{ user.fullname }}
+										</mat-option>
+									</mat-select>
+									<mat-error *ngIf="isControlHasError('charge_affaire_id','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+								<mat-form-field class="col-xl-3">
+									<mat-label>{{'CHANTIERS.RESP_CHIFFRAGE.LABEL' | translate}}</mat-label>
+									<mat-select class="form-control" [required]="isFieldRequired('resp_chiffrage_id')" placeholder="" formControlName="resp_chiffrage_id">
+										<mat-option *ngFor="let user of usersList" [value]="user.id">
+											{{ user.fullname }}
+										</mat-option>
+									</mat-select>
+									<mat-error *ngIf="isControlHasError('resp_chiffrage_id','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+								<mat-form-field class="col-xl-3">
+									<mat-label>{{'CHANTIERS.CLIENT.LABEL' | translate}}</mat-label>
+									<input matInput class="form-control" type="text" name="client" formControlName="client" [required]="isFieldRequired('client')" placeholder="Saisir ici" />
+									<mat-error *ngIf="isControlHasError('client','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+								<mat-form-field class="col-xl-3">
+									<mat-label>{{'CHANTIERS.CONTACT.LABEL' | translate}}</mat-label>
+									<input matInput class="form-control" type="text" name="contact" formControlName="contact" [required]="isFieldRequired('contact')" placeholder="Saisir ici" />
+									<mat-error *ngIf="isControlHasError('contact','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+							</div>
+							<div class="row form-row">
+								<mat-form-field class="col-xl-4">
+									<mat-label>{{'CHANTIERS.ADRESS.LABEL' | translate}}</mat-label>
+									<input matInput class="form-control" type="text" name="adresse" formControlName="adresse" [required]="isFieldRequired('adresse')" placeholder="Saisir ici" />
+									<mat-error *ngIf="isControlHasError('adresse','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+								<mat-form-field class="col-xl-3">
+									<mat-label>{{'COMMON.CITY.LABEL' | translate}}</mat-label>
+									<input matInput class="form-control" type="text" name="ville" formControlName="ville" [required]="isFieldRequired('ville')" placeholder="Saisir ici" />
+									<mat-error *ngIf="isControlHasError('ville','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+								<mat-form-field class="col-xl-1">
+									<mat-label>{{'COMMON.POSTCODE.LABEL' | translate}}</mat-label>
+									<input matInput class="form-control" type="text" name="code_postal" formControlName="code_postal" [required]="isFieldRequired('code_postal')" placeholder="Saisir ici" />
+									<mat-error *ngIf="isControlHasError('code_postal','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+								<mat-form-field class="col-xl-2">
+									<mat-label>{{'COMMON.COUNTRY.LABEL' | translate}}</mat-label>
+									<input matInput class="form-control" type="text" name="pays" formControlName="pays" [required]="isFieldRequired('pays')" placeholder="Saisir ici" />
+									<mat-error *ngIf="isControlHasError('pays','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
 							</div>
 						</div>
 					</div>
@@ -186,13 +175,7 @@
 							</mat-form-field>
 							<mat-form-field class="col-xl-3" *ngIf="entHasCode(entIndex)">
 								<mat-label>{{'EES.DATE_DEMARRAGE.LABEL' | translate}}</mat-label>
-								<input matInput class="form-control" mask="d0/M0/0000" formControlName="date_demarrage" [required]="isEEFieldRequired('date_demarrage', entIndex)" placeholder="DD/MM/YYYY">
-								<!-- <input matInput class="form-control" [matDatepicker]="ee_date_picker" formControlName="date_demarrage" [required]="isEEFieldRequired('date_demarrage', entIndex)" placeholder="DD/MM/YYYY">
-								<mat-datepicker-toggle matSuffix [for]="ee_date_picker"></mat-datepicker-toggle>
-								<mat-datepicker #ee_date_picker></mat-datepicker>
-								<mat-error *ngIf="isControlHasError('date_demarrage','required')">
-									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-								</mat-error> -->
+								<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_demarrage" [required]="isEEFieldRequired('date_demarrage', entIndex)" placeholder="DD/MM/YYYY">
 							</mat-form-field>
 							<div class="col-xl-1 col-actions">
 								<button mat-icon-button type="button" (click)="removeEe(entIndex)" class="btn-small" color="warn"><mat-icon>clear</mat-icon></button>
@@ -230,6 +213,22 @@
 				</div>
 			</tf-portlet-body>
 		</tf-portlet>
+		<ng-container *ngIf="formStatus">
+			<div *ngIf="formStatus.canShowErrors()" class="alert alert-danger alert-dismissible fade show" role="alert">
+				<div><strong>Oups!</strong></div>
+				<div>
+					<ul *ngFor="let errors of formStatus.errors  |  keyvalue">
+						<li *ngFor="let error of errors.value">
+							{{error}}
+						</li>
+					</ul>
+				</div>
+			</div>			
+			<div *ngIf="formStatus.canShowSuccess()" class="alert alert-success" role="alert">
+				<div><strong>Success!</strong></div>
+				<div *ngFor="let message of formStatus.messages">{{ message }}</div>
+			</div>
+		</ng-container>
 		<div>
 			<button mat-raised-button [disabled]="chantierForm.invalid" color="success" class="pull-right">
 				{{'ACTION.SAVE' | translate}}

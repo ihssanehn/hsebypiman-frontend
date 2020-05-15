@@ -15,6 +15,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import { JsonResponse } from '@app/core/_base/layout/models/jsonResponse.model';
 import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
+import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
+import {FormStatus} from '@app/core/_base/crud/models/form-status';
 
 @Component({
   selector: 'tf-ar-edit',
@@ -25,6 +27,7 @@ export class ArEditComponent implements OnInit, OnDestroy {
   
   	public ar: Ar;
 	arForm: FormGroup;
+  	formStatus = new FormStatus();
 	// allRoles: Role[];
 	loaded = false;
 	editMode: boolean = false;
@@ -305,6 +308,7 @@ export class ArEditComponent implements OnInit, OnDestroy {
 	async onSubmit(event) {
 		try {
 			let form = {...this.arForm.value};
+			this.formStatus.onFormSubmitting();
 
 			if(form.chantier_id)
 			{
@@ -315,7 +319,6 @@ export class ArEditComponent implements OnInit, OnDestroy {
 				this.arService.update(form)
 					.toPromise()
 					.then((ar) => {
-						this.errors = false;
 						this.cdr.markForCheck();
 
 						Swal.fire({
@@ -336,11 +339,14 @@ export class ArEditComponent implements OnInit, OnDestroy {
 							timer: 2000
 						});
 
-						if (err.status === 422)
-							this.arForm = {
-								...err.error
-							};
-						this.errors = true;
+						if(err.status === 422){
+							var messages = extractErrorMessagesFromErrorResponse(err);
+							this.formStatus.onFormSubmitResponse({success: false, messages: messages});
+							console.log(this.formStatus.errors, this.formStatus.canShowErrors());
+							this.cdr.detectChanges();
+							this.cdr.markForCheck();
+						}
+				
 
 					});
 

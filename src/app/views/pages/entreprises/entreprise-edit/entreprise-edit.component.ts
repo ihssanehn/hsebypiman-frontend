@@ -12,6 +12,8 @@ import { NgxPermissionsService } from 'ngx-permissions';
 import { SubheaderService } from '@app/core/_base/layout/services/subheader.service';
 import * as moment from 'moment';
 import Swal from 'sweetalert2';
+import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
+import {FormStatus} from '@app/core/_base/crud/models/form-status';
 
 @Component({
 	selector: 'tf-entreprise-edit',
@@ -23,6 +25,7 @@ export class EntrepriseEditComponent implements OnInit, OnDestroy {
 
 	errors;
 	entrepriseForm: FormGroup;
+  	formStatus = new FormStatus();
 	entreprise: Entreprise;
 	// allRoles: Role[];
 	loaded: boolean = false;
@@ -122,15 +125,13 @@ export class EntrepriseEditComponent implements OnInit, OnDestroy {
 
 	async onSubmit(event) {
 		try {
-			let result;
-
+			this.formStatus.onFormSubmitting();
 			let form = {...this.entrepriseForm.value};
 			form.id = this.entreprise.id;
 			
 			this.entrepriseService.update(form)
 				.toPromise()
 				.then((entreprise) => {
-					this.errors = false;
 					this.cdr.markForCheck();
 
 					Swal.fire({
@@ -151,12 +152,14 @@ export class EntrepriseEditComponent implements OnInit, OnDestroy {
 						timer: 1500
 					});
 
-					if (err.status === 422)
-						this.entrepriseForm = {
-							...err.error
-						};
-					this.errors = true;
-
+					if(err.status === 422){
+						var messages = extractErrorMessagesFromErrorResponse(err);
+						this.formStatus.onFormSubmitResponse({success: false, messages: messages});
+						console.log(this.formStatus.errors, this.formStatus.canShowErrors());
+						this.cdr.detectChanges();
+						this.cdr.markForCheck();
+					}
+			
 				});
 
 			this.cdr.markForCheck();

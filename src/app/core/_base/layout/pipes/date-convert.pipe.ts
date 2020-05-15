@@ -1,6 +1,7 @@
 // Angular
 import { Pipe, PipeTransform } from '@angular/core';
 import * as moment from 'moment';
+import { MatExpansionPanelDescription } from '@angular/material';
 
 /**
  * Returns only first letter of string
@@ -20,8 +21,8 @@ export class DateFrToEnPipe implements PipeTransform {
 		if(!value){
 			return null
 		}
-		
-		return moment(value, 'DD/MM/YYYY').format('YYYY-MM-DD');
+
+		return moment(value, ['D/M/YYYY', 'DD/MM/YYYY']).format('YYYY-MM-DD') ;
 	}
 }
 /**

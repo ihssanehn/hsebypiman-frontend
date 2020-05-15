@@ -1,7 +1,7 @@
 <!-- <div class="row row-filters" style="height: 69px;">
 </div> -->
 <form [formGroup]="chantierForm" *ngIf="loaded; else loading" class="tf-form tf-form--group-seperator-dashed">
-	<tf-chantier-form [chantierForm]="chantierForm" [edit]="true" (onSubmit)="onSubmit()" (onCancel)="cancel()"></tf-chantier-form>
+	<tf-chantier-form [chantierForm]="chantierForm" [formStatus]="formStatus" [edit]="true" (onSubmit)="onSubmit()" (onCancel)="cancel()"></tf-chantier-form>
 </form>
 <ng-template #loading>
 	Loading Chantier
