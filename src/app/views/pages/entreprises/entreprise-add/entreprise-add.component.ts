@@ -11,6 +11,8 @@ import { NgxPermissionsService } from 'ngx-permissions';
 import { AuthService, User } from '@app/core/auth';
 import { MatSnackBar } from '@angular/material';
 import Swal from 'sweetalert2';
+import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
+import {FormStatus} from '@app/core/_base/crud/models/form-status';
 
 @Component({
   selector: 'tf-entreprise-add',
@@ -21,6 +23,7 @@ export class EntrepriseAddComponent implements OnInit {
   
   entreprise: Entreprise;
   entrepriseForm: FormGroup;
+  formStatus = new FormStatus();
 	// allRoles: Role[];
 	loaded = false;
 	editMode: boolean = false;
@@ -69,6 +72,7 @@ export class EntrepriseAddComponent implements OnInit {
     try {
       let result;
       let form = {...this.entrepriseForm.value};
+      this.formStatus.onFormSubmitting();
   
 			this.entrepriseService.create(form)
         .toPromise()
@@ -94,9 +98,13 @@ export class EntrepriseAddComponent implements OnInit {
             timer: 1500
           });
 
-          if(err.status === 422)
-            this.entrepriseForm = { ...err.error};
-            this.errors = true;
+          if(err.status === 422){
+            var messages = extractErrorMessagesFromErrorResponse(err);
+            this.formStatus.onFormSubmitResponse({success: false, messages: messages});
+            console.log(this.formStatus.errors, this.formStatus.canShowErrors());
+            this.cdr.detectChanges();
+            this.cdr.markForCheck();
+          }
 
         });
         

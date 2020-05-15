@@ -13,6 +13,8 @@ import { SubheaderService } from '@app/core/_base/layout/services/subheader.serv
 import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
 import * as moment from 'moment';
 import Swal from 'sweetalert2';
+import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
+import {FormStatus} from '@app/core/_base/crud/models/form-status';
 
 @Component({
 	selector: 'tf-chantier-edit',
@@ -25,6 +27,7 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 	errors;
 	chantierForm: FormGroup;
 	chantier: Chantier;
+  	formStatus = new FormStatus();
 	// allRoles: Role[];
 	loaded: boolean = false;
 	editMode: boolean = false;
@@ -162,7 +165,7 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 
 	async onSubmit(event) {
 		try {
-			let result;
+			this.formStatus.onFormSubmitting();
 
 			let form = {...this.chantierForm.value};
 			form.date_demarrage = this.dateFrToEnPipe.transform(form.date_demarrage);
@@ -175,7 +178,6 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 			this.chantierService.update(form)
 				.toPromise()
 				.then((chantier) => {
-					this.errors = false;
 					this.cdr.markForCheck();
 
 					Swal.fire({
@@ -196,11 +198,14 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 						timer: 1500
 					});
 
-					if (err.status === 422)
-						this.chantierForm = {
-							...err.error
-						};
-					this.errors = true;
+					if(err.status === 422){
+						var messages = extractErrorMessagesFromErrorResponse(err);
+						this.formStatus.onFormSubmitResponse({success: false, messages: messages});
+						console.log(this.formStatus.errors, this.formStatus.canShowErrors());
+						this.cdr.detectChanges();
+						this.cdr.markForCheck();
+					  }
+			
 
 				});
 

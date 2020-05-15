@@ -96,7 +96,7 @@
 						<h6>{{'COMMON.CREATED_AT.TITLE' | translate}}</h6>
 						<mat-form-field class="col-md-6 col-xl-6">
 							<mat-label>Entre le :</mat-label>
-							<input matInput class="form-control" mask="d0/M0/0000" formControlName="date_creation_start" placeholder="DD/MM/YYYY">
+							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_creation_start" placeholder="DD/MM/YYYY">
 							<!-- <input matInput class="form-control" [matDatepicker]="date_creation_start_picker" formControlName="date_creation_start" placeholder="DD/MM/YYYY">
 								<mat-datepicker-toggle matSuffix [for]="date_creation_start_picker"></mat-datepicker-toggle>
 								<mat-datepicker #date_creation_start_picker></mat-datepicker>
@@ -107,7 +107,7 @@
 						</mat-form-field>
 						<mat-form-field class="col-md-6 col-xl-6">
 							<mat-label>Et le :</mat-label>
-							<input matInput class="form-control" mask="d0/M0/0000" formControlName="date_creation_end" placeholder="DD/MM/YYYY">
+							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_creation_end" placeholder="DD/MM/YYYY">
 							<!-- <input matInput class="form-control" [matDatepicker]="date_creation_end_picker" formControlName="date_creation_end" placeholder="DD/MM/YYYY">
 								<mat-datepicker-toggle matSuffix [for]="date_creation_end_picker"></mat-datepicker-toggle>
 								<mat-datepicker #date_creation_end_picker></mat-datepicker>
@@ -121,7 +121,7 @@
 						<h6>{{'CHANTIERS.DATE_DEMARRAGE.TITLE' | translate}}</h6>
 						<mat-form-field class="col-md-6 col-xl-6">
 							<mat-label>Entre le :</mat-label>
-							<input matInput class="form-control" mask="d0/M0/0000" formControlName="date_demarrage_start" placeholder="DD/MM/YYYY">
+							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_demarrage_start" placeholder="DD/MM/YYYY">
 							<!-- <input matInput class="form-control" [matDatepicker]="date_demarrage_start_picker" formControlName="date_demarrage_start" placeholder="DD/MM/YYYY">
 							<mat-datepicker-toggle matSuffix [for]="date_demarrage_start_picker"></mat-datepicker-toggle>
 							<mat-datepicker #date_demarrage_start_picker></mat-datepicker>
@@ -131,7 +131,7 @@
 						</mat-form-field>
 						<mat-form-field class="col-md-6 col-xl-6">
 							<mat-label>Et le :</mat-label>
-							<input matInput class="form-control" mask="d0/M0/0000" formControlName="date_demarrage_end" placeholder="DD/MM/YYYY">
+							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_demarrage_end" placeholder="DD/MM/YYYY">
 							<!-- <input matInput class="form-control" [matDatepicker]="date_demarrage_end_picker" formControlName="date_demarrage_end" placeholder="DD/MM/YYYY">
 							<mat-datepicker-toggle matSuffix [for]="date_demarrage_end_picker"></mat-datepicker-toggle>
 							<mat-datepicker #date_demarrage_end_picker></mat-datepicker>

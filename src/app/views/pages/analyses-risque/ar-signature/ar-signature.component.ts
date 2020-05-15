@@ -5,6 +5,8 @@ import { ArService, ChantierService } from '@app/core/services';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import moment from 'moment';
 import Swal from 'sweetalert2';
+import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
+import {FormStatus} from '@app/core/_base/crud/models/form-status';
 
 @Component({
   selector: 'tf-ar-signature',
@@ -15,7 +17,7 @@ export class ArSignatureComponent extends ArDetailComponent implements OnInit {
 
   signaturesForm: FormArray;
 
-  errors;
+  formStatus = new FormStatus();
 
   private fb: FormBuilder;
   
@@ -70,12 +72,12 @@ export class ArSignatureComponent extends ArDetailComponent implements OnInit {
 
     try {
         let form = {...this.signaturesForm.value};
+        this.formStatus.onFormSubmitting();
 
         this.arService.addSignatures(this.ar.id, form)
           .toPromise()
           .then((signature) => {
             console.log(signature);
-            this.errors = false; 
             this.cdr.markForCheck();
             
             Swal.fire({
@@ -96,9 +98,13 @@ export class ArSignatureComponent extends ArDetailComponent implements OnInit {
               timer: 2000
             });
 
-            if(err.status === 422)
-              this.signaturesForm = { ...err.error};
-              this.errors = true;
+            if(err.status === 422){
+              var messages = extractErrorMessagesFromErrorResponse(err);
+              this.formStatus.onFormSubmitResponse({success: false, messages: messages});
+              console.log(this.formStatus.errors, this.formStatus.canShowErrors());
+              this.cdr.detectChanges();
+              this.cdr.markForCheck();
+            }
 
           });
           

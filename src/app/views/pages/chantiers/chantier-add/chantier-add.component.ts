@@ -11,6 +11,8 @@ import { NgxPermissionsService } from 'ngx-permissions';
 import { AuthService, User } from '@app/core/auth';
 import { MatSnackBar } from '@angular/material';
 import { DateEnToFrPipe, DateFrToEnPipe } from '@app/core/_base/layout';
+import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
+import {FormStatus} from '@app/core/_base/crud/models/form-status';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -26,7 +28,7 @@ export class ChantierAddComponent implements OnInit {
 	loaded = false;
 	editMode: boolean = false;
   // Private properties
-  errors;
+  formStatus = new FormStatus();
   
   constructor(
 		private activatedRoute: ActivatedRoute,
@@ -66,7 +68,8 @@ export class ChantierAddComponent implements OnInit {
       resp_chiffrage_id: [null, Validators.required],
       no_hab_required: [0, Validators.required],
       habilitations: this.chantierFB.array([], Validators.required),
-      entreprises: this.chantierFB.array([])
+      entreprises: this.chantierFB.array([]),
+      errors:this.chantierFB.array([]),
     });
 		this.loaded = true;
 		this.cdr.detectChanges();
@@ -77,52 +80,51 @@ export class ChantierAddComponent implements OnInit {
   }
   
   async onSubmit(){
-    try {
-      let result;
-      let form = {...this.chantierForm.value};
-      form.date_demarrage = this.dateFrToEnPipe.transform(form.date_demarrage)
-      if(form.entreprises.length > 0){
-        form.entreprises.forEach(x=>{
-          x.date_demarrage = this.dateFrToEnPipe.transform(x.date_demarrage);
-        })
-      }
-  
-			this.chantierService.create(form)
-        .toPromise()
-        .then((res) => {
-          this.errors = false; 
-          this.cdr.markForCheck();
-          var chantier = res.result.data;
-          Swal.fire({
-            icon: 'success',
-            title: 'Chantier créé avec succès',
-            showConfirmButton: false,
-            timer: 1500
-          }).then(() => {
-            this.router.navigate(['/chantiers/detail/' + chantier.id]);
-          });
-        })
-        .catch(err =>{ 
+    this.formStatus.onFormSubmitting();
+    this.cdr.detectChanges();
+    this.cdr.markForCheck();
 
-          Swal.fire({
-            icon: 'error',
-            title: 'Echec! le formulaire est incomplet',
-            showConfirmButton: false,
-            timer: 1500
-          });
-
-          if(err.status === 422)
-            this.chantierForm = { ...err.error};
-            this.errors = true;
-
-        });
-        
-      this.cdr.markForCheck();
-    } catch (error) {
-        console.error(error);
-      throw error;
+    let form = {...this.chantierForm.value};
+    form.date_demarrage = this.dateFrToEnPipe.transform(form.date_demarrage)
+    if(form.entreprises.length > 0){
+      form.entreprises.forEach(x=>{
+        x.date_demarrage = this.dateFrToEnPipe.transform(x.date_demarrage);
+      })
     }
 
+    this.chantierService.create(form)
+      .toPromise()
+      .then((res) => {
+        
+        this.cdr.markForCheck();
+        var chantier = res.result.data;
+        Swal.fire({
+          icon: 'success',
+          title: 'Chantier créé avec succès',
+          showConfirmButton: false,
+          timer: 1500
+        }).then(() => {
+          this.router.navigate(['/chantiers/detail/' + chantier.id]);
+        });
+      })
+      .catch(err =>{ 
+
+        Swal.fire({
+          icon: 'error',
+          title: 'Echec! le formulaire est incomplet',
+          showConfirmButton: false,
+          timer: 1500
+        });
+
+        if(err.status === 422){
+          var messages = extractErrorMessagesFromErrorResponse(err);
+          this.formStatus.onFormSubmitResponse({success: false, messages: messages});
+          console.log(this.formStatus.errors, this.formStatus.canShowErrors());
+          this.cdr.detectChanges();
+          this.cdr.markForCheck();
+        }
+      });
+  
   }
   
 	onCancel() {

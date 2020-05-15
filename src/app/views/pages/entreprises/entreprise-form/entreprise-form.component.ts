@@ -4,6 +4,7 @@ import { Type, Status, CatHabilitation, Entreprise } from '@app/core/models';
 import { AuthService, User } from '@app/core/auth';
 import { TypeService, StatusService, CatHabilitationService, EntrepriseService } from '@app/core/services';
 import { first } from 'rxjs/operators';
+import { FormStatus } from '@app/core/_base/crud/models/form-status';
 
 
 @Component({
@@ -17,6 +18,7 @@ export class EntrepriseFormComponent implements OnInit {
   typesLoaded: boolean = false;
 
   @Input() entrepriseForm: FormGroup;
+  @Input() formStatus: FormStatus;
   @Input() edit: Boolean;
   @Output() onCancel = new EventEmitter();
   @Output() onSubmit = new EventEmitter();

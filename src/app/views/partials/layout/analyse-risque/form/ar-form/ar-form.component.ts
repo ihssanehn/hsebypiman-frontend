@@ -9,6 +9,8 @@ import { EventEmitter } from '@angular/core';
 import { startWith, map } from 'rxjs/operators';
 import { elementEventFullName } from '@angular/compiler/src/view_compiler/view_compiler';
 import { ParseTreeResult } from '@angular/compiler';
+import { NgxMaskModule} from 'ngx-mask';
+import { FormStatus } from '@app/core/_base/crud/models/form-status';
 
 
 
@@ -20,6 +22,7 @@ import { ParseTreeResult } from '@angular/compiler';
 export class ArFormComponent implements OnInit {
 
   @Input() arForm: FormGroup;
+  @Input() formStatus: FormStatus;
   @Input() edit: Boolean;
   @Input() origin: string;
   @Output() onLastStep: EventEmitter<any> = new EventEmitter<any>();

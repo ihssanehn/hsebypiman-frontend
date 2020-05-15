@@ -13,7 +13,7 @@
 
 	</tf-portlet>
 
-	<tf-ar-form [arForm]="arForm" [edit]="true" origin="edit"></tf-ar-form>
+	<tf-ar-form [arForm]="arForm" [formStatus]="formStatus" [edit]="true" origin="edit"></tf-ar-form>
 	
 
 	<button mat-raised-button [disabled]="arForm.invalid" class="btn float-right btn-save" (click)="arForm.valid && onSubmit(false)">
