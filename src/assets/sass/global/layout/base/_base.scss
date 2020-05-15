@@ -28,12 +28,12 @@ body {
 
 // Subheader
 .tf-subheader {
-	padding: tf-get($tf-page-padding, desktop) 0 !important;
-	height: 120px;
+	padding-bottom: (2 * tf-get($tf-page-padding, desktop)) !important;
+	//height: 120px;
 
-	.tf-aside--enabled & {
-		margin-left: tf-get($tf-page-padding, desktop);
-	}
+	// .tf-aside--enabled & {
+	// 	margin-left: tf-get($tf-page-padding, desktop);
+	// }
 
 	// Title
 	.tf-subheader__title {
