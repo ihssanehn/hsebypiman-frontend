@@ -361,9 +361,6 @@ export class ArEditComponent implements OnInit, OnDestroy {
 		}
 	}
 
-	setDateFormat(date) {
-		return date ? moment(date).format('YYYY-MM-DD') : null;
-	}
 
 	cancel() {
 		this.location.back();
