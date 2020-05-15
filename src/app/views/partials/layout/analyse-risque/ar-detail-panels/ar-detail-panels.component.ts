@@ -91,4 +91,7 @@ export class ArDetailPanelsComponent implements OnInit {
   }
   
 
+  isChecked(controlName: string){
+    return this.ar[controlName] == '1';
+  }
 }

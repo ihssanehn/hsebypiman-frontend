@@ -7,7 +7,7 @@
             <div class="tf-card-form">
                 <div class="tf-heading tf-heading--sm">
                     1.1 Accueil sécurité propre au client
-                    <mat-slide-toggle [checked]="ar.a_prevoir_compagnons == 1" disabled></mat-slide-toggle>
+                    <mat-slide-toggle [checked]="isChecked('a_prevoir_compagnons')" disabled></mat-slide-toggle>
                 </div>
 
                 <div class="row form-row" *ngIf="ar.a_prevoir_compagnons">
@@ -234,7 +234,7 @@
         <div class="col-md-6">
             <div class="tf-card-form">
                 <div class="tf-heading tf-heading--sm">
-                    {{'ARS.FORM.MWBLOCK.WORKREGISTER.TITLE' | translate}}<mat-slide-toggle class="pull-right" [checked]="ar.a_signer_registre_travaux == 1 ? 'true':'false'" disabled></mat-slide-toggle>
+                    {{'ARS.FORM.MWBLOCK.WORKREGISTER.TITLE' | translate}}<mat-slide-toggle class="pull-right" [checked]="isChecked('a_signer_registre_travaux')" disabled></mat-slide-toggle>
                 </div>
                 <div class="row form-row" [hidden]="!ar.a_signer_registre_travaux">
                     <mat-radio-group [value]="ar.registre_signing_period" class="col-xl-12 col-md-12 mat-form-field ng-tns-c14-2 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-legacy mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label">
@@ -292,7 +292,7 @@
         <div class="col-md-6">
             <div class="tf-card-form">
                 <div class="tf-heading tf-heading--sm">
-                    {{'ARS.FORM.MWBLOCK.SUBTITLE2' | translate}}<mat-slide-toggle class="pull-right" [checked]="ar.a_prevoir_balisage == 1 ? 'true':'false'" disabled></mat-slide-toggle>
+                    {{'ARS.FORM.MWBLOCK.SUBTITLE2' | translate}}<mat-slide-toggle class="pull-right" [checked]="isChecked('a_prevoir_balisage')" disabled></mat-slide-toggle>
                 </div>
                 <div class="form-row-flex">
                     <div class="col-md-12" [hidden]="!ar.a_prevoir_balisage">

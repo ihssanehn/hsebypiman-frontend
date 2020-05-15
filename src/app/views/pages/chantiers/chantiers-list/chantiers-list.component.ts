@@ -16,6 +16,7 @@ import Swal from 'sweetalert2';
 export class ChantiersListComponent implements OnInit, AfterViewInit {
 
 	public chantiersList: Paginate < Chantier > ;
+	chantier_id: number;
 	pagination: any = {
 		page: 1,
 		total: 10,

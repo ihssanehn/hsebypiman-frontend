@@ -48,7 +48,7 @@
 					<td mat-cell *matCellDef="let entreprise">
 
 						<div ngbDropdown placement="bottom-right" class="d-inline-block">
-							<button mat-icon-button color="primary" matTooltip="Actions" [matMenuTriggerFor]="actionMenu" [matMenuTriggerData]="{item_id: entreprise.id}">
+							<button mat-icon-button color="primary" matTooltip="Actions" [matMenuTriggerFor]="actionMenu" (click)="entreprise_id = entreprise.id">
 								<mat-icon>more_vert</mat-icon>
 							</button>
 							
@@ -68,13 +68,13 @@
 
 <mat-menu #actionMenu="matMenu" class="action-menu">
 	<!-- *ngxPermissionsOnly="['ADMIN']" -->
-	<button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}" (click)="viewChantier(item_id)">
+	<button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}" (click)="viewEntreprise(entreprise_id)">
 		<mat-icon>visibility</mat-icon>
 	</button>
-	<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editChantier(item_id)">
+	<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editEntreprise(entreprise_id)">
 		<mat-icon>edit</mat-icon>
 	</button>
-	<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteChantier(item_id)">
+	<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteEntreprise(entreprise_id)">
 		<mat-icon>delete</mat-icon>
 	</button>
 </mat-menu>

@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
 export class ArsListComponent implements OnInit {
 
   public arsList : Paginate<Ar>;
+  ar_id: number;
   pagination: any = {
 		page: 1,
 		last_page: 1,

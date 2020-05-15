@@ -46,4 +46,7 @@ export class Ar {
     assistant_ca?: string;
     tel_assistant_ca?: string;
     is_signed?: boolean;
+
+    zonesGrouped?:Array<any>;
+    risksTree?:Array<any>;
 }

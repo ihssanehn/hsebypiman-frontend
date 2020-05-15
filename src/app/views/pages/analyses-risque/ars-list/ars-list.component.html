@@ -106,7 +106,7 @@
         <ng-container matColumnDef="action" stickyEnd>
           <th mat-header-cell *matHeaderCellDef></th>
           <td mat-cell *matCellDef="let ar"> 
-            <button mat-icon-button color="primary" matTooltip="Actions" [matMenuTriggerFor]="actionMenu" [matMenuTriggerData]="{ar_id: ar.id}">
+            <button mat-icon-button color="primary" matTooltip="Actions" [matMenuTriggerFor]="actionMenu" (click)="ar_id = ar.id">
               <mat-icon>more_vert</mat-icon>
             </button>
           </td>
@@ -123,19 +123,19 @@
 </tf-portlet>
 
 <mat-menu #actionMenu="matMenu" class="action-menu">
-  <button mat-icon-button color="primary" matTooltip="{{'ACTION.SIGN' | translate}}" (click)="signAr(ar.id)">
+  <button mat-icon-button color="primary" matTooltip="{{'ACTION.SIGN' | translate}}" (click)="signAr(ar_id)">
     <mat-icon>filter_none</mat-icon>
   </button>
-  <button mat-icon-button color="info" matTooltip="{{'ACTION.DUPLICATE' | translate}}" (click)="duplicateAr(ar.id)">
+  <button mat-icon-button color="info" matTooltip="{{'ACTION.DUPLICATE' | translate}}" (click)="duplicateAr(ar_id)">
     <mat-icon>filter_none</mat-icon>
   </button>
-  <button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}" (click)="viewAr(ar.id)">
+  <button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}" (click)="viewAr(ar_id)">
     <mat-icon>visibility</mat-icon>
   </button>
-  <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editAr(ar.id)">
+  <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editAr(ar_id)">
     <mat-icon>edit</mat-icon>
   </button>
-  <button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteAr(ar.id)">
+  <button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteAr(ar_id)">
     <mat-icon>delete</mat-icon>
   </button>
 </mat-menu>

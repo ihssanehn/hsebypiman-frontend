@@ -144,7 +144,7 @@
 				<ng-container matColumnDef="action" class="actionCol" stickyEnd>
 					<th mat-header-cell *matHeaderCellDef></th>
 					<td mat-cell *matCellDef="let chantier">
-						<button mat-icon-button color="primary" matTooltip="Actions" [matMenuTriggerFor]="actionMenu" [matMenuTriggerData]="{item_id: chantier.id}">
+						<button mat-icon-button color="primary" matTooltip="Actions" [matMenuTriggerFor]="actionMenu" (click)="chantier_id = chantier.id">
 							<mat-icon>more_vert</mat-icon>
 						</button>
 					</td>
@@ -164,13 +164,13 @@
 
 <mat-menu #actionMenu="matMenu" class="action-menu">
 	<!-- *ngxPermissionsOnly="['ADMIN']" -->
-	<button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}" (click)="viewChantier(item_id)">
+	<button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}" (click)="viewChantier(chantier_id)">
 		<mat-icon>visibility</mat-icon>
 	</button>
-	<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editChantier(item_id)">
+	<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editChantier(chantier_id)">
 		<mat-icon>edit</mat-icon>
 	</button>
-	<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteChantier(item_id)">
+	<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteChantier(chantier_id)">
 		<mat-icon>delete</mat-icon>
 	</button>
 </mat-menu>
