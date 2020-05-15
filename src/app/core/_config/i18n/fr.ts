@@ -245,16 +245,16 @@ export const locale = {
 				SHORTTITLE:'Visites passées',
 			},
 			EES:{
-				LABEL:'Entreprises Externes',
+				LABEL:'Entreprises extérieures',
 				PLACEHOLDER:'',
-				TITLE:'Entreprises Externes',
-				SHORTTITLE:'Entreprises Externes',
+				TITLE:'Entreprises extérieures',
+				SHORTTITLE:'Entreprises extérieures',
 			},
 			EECOUNT:{
 				LABEL:'Nombre d\'E.E',
 				PLACEHOLDER:'',
 				TITLE:'Nombre d\'E.E',
-				SHORTTITLE:'Nombre d\'entreprises externes',
+				SHORTTITLE:'Nombre d\'entreprises extérieures',
 			},
 			HABCOUNT:{
 				LABEL:'Nombre d\'habilitations',
@@ -266,7 +266,7 @@ export const locale = {
 				LABEL:'Présence d\'E.E',
 				PLACEHOLDER:'',
 				TITLE:'Présence d\'E.E',
-				SHORTTITLE:'Présence d\'entreprises externes',
+				SHORTTITLE:'Présence d\'entreprises extérieures',
 			},
 			FORM:{
 				CREATE:'Créer un nouveau chantier'

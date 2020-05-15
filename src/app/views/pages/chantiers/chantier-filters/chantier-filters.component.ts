@@ -2,8 +2,8 @@ import { ChangeDetectorRef, Component, OnInit, EventEmitter, Output, Input, forw
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormBuilder, FormGroup } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
-import { ChantierService, TypeService, StatusService } from '@app/core/services';
-import { Chantier, Type, Status } from '@app/core/models';
+import { ChantierService, TypeService, StatusService, EntrepriseService } from '@app/core/services';
+import { Chantier, Type, Status, Entreprise } from '@app/core/models';
 import { AuthService, User } from '@app/core/auth';
 import * as moment from 'moment';
 import { debounceTime, map } from 'rxjs/operators';
@@ -27,6 +27,7 @@ export class ChantierFiltersComponent implements OnInit, AfterViewInit
   status: Status[];
   types: Type[];
   clients: String[];
+  entreprises: Entreprise[];
   visiteOptions = [
     'Avec',
     'Sans'
@@ -45,6 +46,7 @@ export class ChantierFiltersComponent implements OnInit, AfterViewInit
   constructor(
     private statusService: StatusService,
     private chantierService:ChantierService, 
+    private entrepriseService:EntrepriseService, 
     private typeService:TypeService,
     private authService:AuthService,
     private fb: FormBuilder,
@@ -62,6 +64,7 @@ export class ChantierFiltersComponent implements OnInit, AfterViewInit
     this.getUsers();
     this.getClients();
     this.getTypes();
+    this.getEntreprises();
     this.initFiltersForm();
     this.filterForm.valueChanges.pipe(
       debounceTime(500)
@@ -77,6 +80,12 @@ export class ChantierFiltersComponent implements OnInit, AfterViewInit
   async getUsers(){
     var res = await this.authService.getList().toPromise();
     this.users = res.result.data;
+    this.cdr.detectChanges();
+    this.cdr.markForCheck();
+  }
+  async getEntreprises(){
+    var res = await this.entrepriseService.getList().toPromise();
+    this.entreprises = res.result.data;
     this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
@@ -103,6 +112,7 @@ export class ChantierFiltersComponent implements OnInit, AfterViewInit
   
   initFiltersForm(){
     this.filterForm = this.fb.group({
+      chantier_nom:[null],
       charge_affaire_id:[null],
       resp_chiffrage_id:[null],
       status_id:[null],
@@ -114,7 +124,8 @@ export class ChantierFiltersComponent implements OnInit, AfterViewInit
       date_demarrage_end:[null],
       visite:[null],
       analyse:[null],
-      entreprise:[null],
+      has_entreprise:[null],
+      entreprise_id:[null],
     })
   }
  

@@ -21,7 +21,7 @@
             font-size: 13px;
         }
     
-        /deep/ nz-divider {
+        ::ng-deep nz-divider {
             .ant-divider-inner-text {
                 font-size: 1.5rem;
             }
@@ -41,15 +41,15 @@
         }
     }
 
-    /deep/  .cdk-drag {
+    ::ng-deep  .cdk-drag {
         cursor : grab;
     }
 
-    /deep/ .cdk-drag-preview {
+    ::ng-deep .cdk-drag-preview {
         display: table;
       }
 
-    /deep/ .cdk-drag-placeholder {
+    ::ng-deep .cdk-drag-placeholder {
         opacity: 0;
     }
 

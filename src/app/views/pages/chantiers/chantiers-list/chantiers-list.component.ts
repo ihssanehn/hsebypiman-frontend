@@ -26,7 +26,7 @@ export class ChantiersListComponent implements OnInit, AfterViewInit {
 	filter: any = {
 		per_page: this.pagination.pageSize,
 		page: this.pagination.page,
-		order_by: ['client'],
+		order_by: ['created_at'],
 		order_way: 'asc',
 		keyword: "",
 	};

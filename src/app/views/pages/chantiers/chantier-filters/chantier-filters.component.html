@@ -4,6 +4,10 @@
 			<form novalidate [formGroup]="filterForm">
 				<div class="row">
 					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
+						<mat-label>{{'CHANTIERS.NAME.TITLE' | translate}}</mat-label>
+						<input class="form-control" matInput type="text" name="chantier_nom" formControlName="chantier_nom" placeholder="Saisir ici" />
+					</mat-form-field>
+					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
 						<mat-label>{{'CHANTIERS.CHIEF.TITLE' | translate}}
 						</mat-label>
 						<mat-select class="form-control" formControlName="charge_affaire_id" name="charge_affaire_id">
@@ -86,13 +90,24 @@
 						</button>
 					</mat-form-field>
 					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
-						<mat-label>{{'CHANTIERS.EES.LABEL' | translate}}</mat-label>
-						<mat-select class="form-control" formControlName="entreprise" name="entreprise">
+						<mat-label>{{'CHANTIERS.EES.SHORTTITLE' | translate}}</mat-label>
+						<mat-select class="form-control" formControlName="has_entreprise" name="has_entreprise">
 							<mat-option *ngFor="let entrepriseOption of entrepriseOptions" [value]="entrepriseOption">
 								{{entrepriseOption}}
 							</mat-option>
 						</mat-select>
-						<button mat-button *ngIf="formHasValue('entreprise')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('entreprise'); $event.stopPropagation()">
+						<button mat-button *ngIf="formHasValue('has_entreprise')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('has_entreprise'); $event.stopPropagation()">
+							<mat-icon>clear</mat-icon>
+						</button>
+					</mat-form-field>
+					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
+						<mat-label>{{'CHANTIERS.EES.LABEL' | translate}}</mat-label>
+						<mat-select class="form-control" formControlName="entreprise_id" name="entreprise_id">
+							<mat-option *ngFor="let entreprise of entreprises" [value]="entreprise.id">
+								{{entreprise.raison_sociale}}
+							</mat-option>
+						</mat-select>
+						<button mat-button *ngIf="formHasValue('entreprise_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('entreprise_id'); $event.stopPropagation()">
 							<mat-icon>clear</mat-icon>
 						</button>
 					</mat-form-field>
@@ -118,24 +133,10 @@
 						<mat-form-field class="col-md-6 col-xl-6">
 							<mat-label>Entre le :</mat-label>
 							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_demarrage_start" placeholder="DD/MM/YYYY">
-							<!-- <input matInput [matDatepicker]="date_demarrage_start_picker" class="form-control" formControlName="date_demarrage_start" placeholder="DD/MM/YYYY">
-							<mat-datepicker-toggle matSuffix [for]="date_demarrage_start_picker"></mat-datepicker-toggle>
-							<mat-datepicker #date_demarrage_start_picker></mat-datepicker>
-							<button mat-button *ngIf="formHasValue('date_demarrage_start')" matSuffix mat-icon-button 
-								aria-label="Clear" (click)="clearValue('date_demarrage_start'); $event.stopPropagation()">
-								<mat-icon>clear</mat-icon>
-							</button> -->
 						</mat-form-field>
 						<mat-form-field class="col-md-6 col-xl-6">
 							<mat-label>Et le :</mat-label>
 							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_demarrage_end" placeholder="DD/MM/YYYY">
-							<!-- <input matInput [matDatepicker]="date_demarrage_end_picker" class="form-control" formControlName="date_demarrage_end" placeholder="DD/MM/YYYY">
-							<mat-datepicker-toggle matSuffix [for]="date_demarrage_end_picker"></mat-datepicker-toggle>
-							<mat-datepicker #date_demarrage_end_picker></mat-datepicker>
-							<button mat-button *ngIf="formHasValue('date_demarrage_end')" matSuffix mat-icon-button 
-								aria-label="Clear" (click)="clearValue('date_demarrage_end'); $event.stopPropagation()">
-								<mat-icon>clear</mat-icon>
-							</button> -->
 						</mat-form-field>
 					</div>
 				</div>
