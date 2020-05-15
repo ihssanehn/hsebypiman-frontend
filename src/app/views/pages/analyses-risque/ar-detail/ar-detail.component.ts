@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, OnDestroy, Injector } from '@angular/core';
 import { Ar, Chantier, CatRisque, Equipement, Zone } from '@app/core/models';
 import { FormGroup, FormBuilder, FormArray, FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
@@ -17,37 +17,29 @@ import { union } from 'lodash';
 })
 export class ArDetailComponent implements OnInit, OnDestroy {
 
-  	public ar: Ar;
+  	ar: Ar;
+	chantier : Chantier;
+
+	isExpanded = true;
+	isDisableToggle = false;
+
 	loaded = false;
-	private subscriptions: Subscription[] = [];
-	public chantier : Chantier;
-	displayedColumns: string[] = ['risks', 'actions', 'comments'];
-	public risksList : Array<CatRisque>;
-	public arRisksList : Array<CatRisque> = [];
 
-	public equipementList : Array<Equipement>;
-	public zonesList : Array<any>;
-
-	/** Accordion */
-	public isExpanded = true;
-	public isHideToggle = false;
+	protected subscriptions: Subscription[] = [];
 	
-	constructor(
-		private activatedRoute: ActivatedRoute,
-		private router: Router,
-		private arFB: FormBuilder,
-		private arService: ArService,
-		private cdr: ChangeDetectorRef,
-		private permissionsService : NgxPermissionsService,
-		private location: Location,
-		protected chantierService: ChantierService,
-		private catRisqueService: CatRisqueService,
-		private equipementService: EquipementService,
-		private zoneService: ZoneService,
-	) { 
-		this.getCatRisques();
-		this.getEquipements();
-		this.getZones();
+	protected activatedRoute: ActivatedRoute;
+	protected cdr: ChangeDetectorRef;
+	protected router: Router;
+	protected chantierService: ChantierService;
+	protected arService: ArService;
+
+
+	constructor(injector: Injector) {
+		this.activatedRoute = injector.get(ActivatedRoute);
+		this.router = injector.get(Router);
+		this.arService = injector.get(ArService);
+		this.cdr = injector.get(ChangeDetectorRef);
+		this.chantierService = injector.get(ChantierService);
 	}
 
 	ngOnInit() {
@@ -75,27 +67,6 @@ export class ArDetailComponent implements OnInit, OnDestroy {
 		}
 	}
 
-	async getCatRisques(){
-		var res = await this.catRisqueService.getAll().toPromise();
-		this.risksList = res.result.data;
-		this.cdr.detectChanges();
-		this.cdr.markForCheck();
-	}
-
-	async getEquipements(){
-		var res = await this.equipementService.getAll().toPromise();
-		this.equipementList = res.result.data;
-		this.cdr.detectChanges();
-		this.cdr.markForCheck();
-	}
-
-	async getZones(){
-		var res = await this.zoneService.getList().toPromise();
-		this.zonesList = res.result.data;
-		this.cdr.detectChanges();
-		this.cdr.markForCheck();
-	}
-
 	async getChantier(chantierId: Number){
 		try {
 			var res = await this.chantierService.get(chantierId).toPromise();
@@ -107,48 +78,6 @@ export class ArDetailComponent implements OnInit, OnDestroy {
 		}
 	}
 
-	onRiskIsChecked(riskId){
-		const ids = this.ar.risques.map(item => item.id);
-		return ids.includes(riskId);
-	}
-	
-	onEquipementIsChecked(equipementId){
-		const ids = this.ar.equipements.map(item => item.id);
-		return ids.includes(equipementId);
-	}
-
-	
-	onZoneIsChecked(zoneId){
-		const ids = this.ar.zones.map(item => item.id);
-		return ids.includes(zoneId);
-	}
-
-
-	getCommentValue(id){
-
-		var commentValue = '';
-		var cat_risques = this.ar.cat_risques.filter(x=>x.id == id);
-		if(cat_risques.length > 0){
-			commentValue = cat_risques[0].commentaire;
-		}
-		return commentValue;
-	  }
-  
-	ngOnDestroy() {
-			this.subscriptions.forEach(sb => sb.unsubscribe());
-	}
-	
-	goBackWithId() {
-			const url = `/analyses-risque/list`;
-			this.router.navigateByUrl(url, { 
-				relativeTo: this.activatedRoute 
-			});
-	}
-
-	editAr(arId){
-		this.router.navigate(['/analyses-risque/edit', arId], { relativeTo: this.activatedRoute });
-	}
-
 	async deleteAr(arId){
 		await this.arService.delete(arId).toPromise();
 		Swal.fire({
@@ -158,6 +87,26 @@ export class ArDetailComponent implements OnInit, OnDestroy {
 			timer: 1500
 		});
 		this.router.navigate(['/analyses-risque/list'], { relativeTo: this.activatedRoute });
+	}
+
+
+	ngOnDestroy() {
+		this.subscriptions.forEach(sb => sb.unsubscribe());
+	}
+	
+	goBackWithId() {
+		const url = `/analyses-risque/list`;
+		this.router.navigateByUrl(url, { 
+			relativeTo: this.activatedRoute 
+		});
+	}
+
+	editAr(arId){
+		this.router.navigate(['/analyses-risque/edit', arId], { relativeTo: this.activatedRoute });
+	}
+
+	signAr(arId){
+		this.router.navigate(['/analyses-risque/sign', arId], { relativeTo: this.activatedRoute });
 	}
 
 }

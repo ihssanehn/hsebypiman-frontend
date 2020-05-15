@@ -113,6 +113,9 @@
               </button>
               <div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
                 <!-- *ngxPermissionsOnly="['ADMIN']" -->
+                <button mat-icon-button color="primary" matTooltip="{{'ACTION.SIGN' | translate}}" (click)="signAr(ar.id)">
+                  <mat-icon>filter_none</mat-icon>
+                </button>
                 <button mat-icon-button color="info" matTooltip="{{'ACTION.DUPLICATE' | translate}}" (click)="duplicateAr(ar.id)">
                   <mat-icon>filter_none</mat-icon>
                 </button>

@@ -1,0 +1,30 @@
+:host {
+
+    .tf-card-form{
+        box-shadow: none;
+        border-radius: 8px;
+        border: solid 1px #eaecf0;
+        background: white;
+    }
+    .mat-checkbox-disabled.mat-checkbox-checked .mat-checkbox-background{
+        background-color: #e49819;
+    }
+    .mat-radio-button.mat-radio-disabled.mat-radio-checked .mat-radio-outer-circle{
+        border-color:  #e49819;
+    }
+    .mat-radio-button.mat-radio-disabled .mat-radio-inner-circle{
+        background-color: #e49819;
+    }
+    .mat-row:hover{
+        background-color: transparent!important;
+    }
+    .mat-table {
+        th.mat-header-cell {
+            width: 33%;
+        }
+    }
+    .mat-slide-toggle.mat-disabled{
+        opacity: 1;
+    }
+
+}
