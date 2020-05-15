@@ -77,29 +77,9 @@
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let visite"> 
-          
-          <div ngbDropdown placement="bottom-right" class="d-inline-block">
-            <button ngbDropdownToggle mat-icon-button color="primary" matTooltip="Actions">
-              <mat-icon>more_vert</mat-icon>
-              <!-- <i class="flaticon-more"></i> -->
-            </button>
-            <div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
-              <!-- *ngxPermissionsOnly="['ADMIN']" -->
-              <button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}" (click)="viewVisite(visite.id)">
-                <mat-icon>visibility</mat-icon>
-                <!-- <i class="flaticon-more"></i> -->
-              </button>
-              <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editVisite(visite.id)">
-                <mat-icon>edit</mat-icon>
-                <!-- <i class="flaticon-more"></i> -->
-              </button>
-              <button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteVisite(visite.id)">
-                <mat-icon>delete</mat-icon>
-                <!-- <i class="flaticon-more"></i> -->
-              </button>
-                
-            </div>
-          </div>
+          <button mat-icon-button color="primary" matTooltip="Actions" [matMenuTriggerFor]="actionMenu" [matMenuTriggerData]="{item_id: visite.id}">
+            <mat-icon>more_vert</mat-icon>
+          </button>
         </td>
       </ng-container> 
       <tr mat-header-row *matHeaderRowDef="displayedVisiteColumns"></tr>
@@ -110,3 +90,16 @@
   
 	</tf-portlet-body>
 </tf-portlet>
+
+<mat-menu #actionMenu="matMenu" class="action-menu">
+      <!-- *ngxPermissionsOnly="['ADMIN']" -->
+      <button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}" (click)="viewVisite(visite.id)">
+        <mat-icon>visibility</mat-icon>
+      </button>
+      <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editVisite(visite.id)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteVisite(visite.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+</mat-menu>

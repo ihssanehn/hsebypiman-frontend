@@ -33,7 +33,12 @@
 
     
 }
-
+.mat-menu-panel.action-menu {
+    min-height: auto;
+    .mat-menu-content{
+        padding: 2px;
+    }
+}
 .th-order {
     cursor: pointer;
     position: relative;
