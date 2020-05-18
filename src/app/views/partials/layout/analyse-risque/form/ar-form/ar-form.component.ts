@@ -256,12 +256,10 @@ export class ArFormComponent implements OnInit {
   }
   
   updateToggleValue(event, controlName){
-    console.log(event);
     if(event.checked){
       this.arForm.controls[controlName].setValue('1');
     }else{
       this.arForm.controls[controlName].setValue('0');
     }
-    console.log(this.arForm.controls[controlName].value)
   }
 }

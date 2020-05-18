@@ -21,8 +21,13 @@ export class CategorieService extends HttpService{
         super()
     }
 
-    getAll(){
-        return this.http.post<JsonResponse<Categorie[]>>(this.baseUrl, {});
+    getAll(params = {}){
+        return this.http.post<JsonResponse<Categorie[]>>(this.baseUrl, {...params});
+    }
+    getAllAsAdmin(params = {}){
+        var extendparams = {...params}
+        extendparams['fromAdmin'] = true;
+        return this.http.post<JsonResponse<Categorie[]>>(this.baseUrl, {...extendparams});
     }
     getAllFromModel(model){
         return this.http.post<JsonResponse<Categorie[]>>(this.baseUrl, {'model':model});

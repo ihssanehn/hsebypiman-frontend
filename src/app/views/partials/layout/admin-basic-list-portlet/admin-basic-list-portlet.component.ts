@@ -68,5 +68,15 @@ export class AdminBasicListPortletComponent implements OnInit {
     data.libelle = data.old; 
   }
 
+  onCheckChange(event, data){
+    if(event.checked){
+      data.active = 1;
+    }else{
+      data.active = 0;
+    }
+  }
+  isActive(data){
+    return data.active == 1;
+  }
 
 }

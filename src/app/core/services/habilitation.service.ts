@@ -19,6 +19,15 @@ export class HabilitationService extends HttpService{
     super()
   }
 
+  getAll(params = {}){
+    return this.http.post<JsonResponse<any>>(this.baseUrl, {...params});
+  }
+  getAllAsAdmin(params = {}){
+    var extendparams = {...params}
+    extendparams['fromAdmin'] = true;
+    return this.http.post<JsonResponse<any>>(this.baseUrl, {...extendparams});
+  }
+
   create(payload){
     return this.http.post<any>(`${this.baseUrl}/create`, payload);
   }

@@ -19,8 +19,13 @@ export class CatHabilitationService extends HttpService{
     super()
   }
 
-  getAll(){
-    return this.http.post<JsonResponse<CatHabilitation[]>>(this.baseUrl, {});
+  getAll(params = {}){
+    return this.http.post<JsonResponse<CatHabilitation[]>>(this.baseUrl, {...params});
+  }
+  getAllAsAdmin(params = {}){
+    var extendparams = {...params}
+    extendparams['fromAdmin'] = true;
+    return this.http.post<JsonResponse<CatHabilitation[]>>(this.baseUrl, extendparams);
   }
 
   get(id){

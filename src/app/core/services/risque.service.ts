@@ -19,6 +19,16 @@ export class RisqueService extends HttpService{
   ) { 
     super()
   }
+  
+  
+  getAll(params = {}){
+    return this.http.post<JsonResponse<any>>(this.baseUrl, {...params});
+  }
+  getAllAsAdmin(params = {}){
+    var extendparams = {...params}
+    extendparams['fromAdmin'] = true;
+    return this.http.post<JsonResponse<any>>(this.baseUrl, {...extendparams});
+  }
 
   create(payload){
     return this.http.post<any>(`${this.baseUrl}/create`, payload);
@@ -34,5 +44,6 @@ export class RisqueService extends HttpService{
                     .pipe(map(result => result.result.data));
   }
 
+  
 
 }

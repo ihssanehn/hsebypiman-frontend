@@ -38,7 +38,7 @@ export class AdminTemplateComponent implements OnInit {
 
   async getList(){
     try {
-      var res = await this.parentService.getAll().toPromise();
+      var res = await this.parentService.getAllAsAdmin().toPromise();
       this.list = res.result.data.map( item => this.formatChildren(item) );
       this.cdr.markForCheck();
 		} catch (error) {

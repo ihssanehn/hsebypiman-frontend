@@ -21,9 +21,16 @@ export class ZoneService extends HttpService{
         super()
     }
 
-    getAll(){
-        return this.http.post<JsonResponse<any>>(this.baseUrl, {});
+    getAll(params = []){
+        return this.http.post<JsonResponse<any>>(this.baseUrl, {...params});
     }
+    
+    getAllAsAdmin(params = []){
+        var extendparams = {...params}
+        extendparams['fromAdmin'] = true;
+        return this.http.post<JsonResponse<any>>(this.baseUrl, {...extendparams});
+    }
+
     getAllFromModel(model){
         return this.http.post<JsonResponse<any>>(this.baseUrl, {'model': model});
     }

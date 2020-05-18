@@ -18,6 +18,6 @@ export class VisitesChantierComponent implements OnInit {
 	}
 
 	async ngOnInit(){
-		this.menuAsideService.loadMenuAside('aside.vss');
+		this.menuAsideService.loadMenuAside('aside.vss_chantier');
 	}
 }

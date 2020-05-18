@@ -77,8 +77,7 @@ export class VisiteChantierAddComponent implements OnInit {
     const salarie_id = this.visiteForm.get('salarie_id');
     const entreprise_id = this.visiteForm.get('entreprise_id');
 
-    this.visiteForm.get('salarie_id').valueChanges
-      .subscribe(salarie_id => {
+    this.visiteForm.get('salarie_id').valueChanges.subscribe(salarie_id => {
         if (salarie_id != null) {
           entreprise_id.setValidators(null);
           entreprise_id.disable();
@@ -86,9 +85,8 @@ export class VisiteChantierAddComponent implements OnInit {
           entreprise_id.setValidators(Validators.required);
           entreprise_id.enable();
         }
-      })
-    this.visiteForm.get('entreprise_id').valueChanges
-      .subscribe(entreprise_id => {
+    })
+    this.visiteForm.get('entreprise_id').valueChanges.subscribe(entreprise_id => {
         if (entreprise_id != null) {
           salarie_id.setValidators(null);
           salarie_id.disable();
@@ -96,7 +94,7 @@ export class VisiteChantierAddComponent implements OnInit {
           salarie_id.setValidators(Validators.required);
           salarie_id.enable();
         }
-      })
+    })
   }
 
   onChantierSelected(chantierId: Number) {

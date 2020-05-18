@@ -57,7 +57,8 @@
                         [nzScroll]="{ y: '178px' }" >
                 <thead>
                 <tr>
-                    <th nzWidth="70%">Libellé</th>
+                    <th nzWidth="60%">Libellé</th>
+                    <th nzWidth="15%" class="text-center">Afficher</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -65,6 +66,10 @@
                     <tr cdkDrag [cdkDragData]="data" *ngFor="let data of item?.children">
                         <ng-container *ngIf="!data.edit; else editTemplate">
                             <td>{{ data?.libelle }}</td>
+                            <td class="text-center">
+                                <mat-icon *ngIf="data.active == 1">visibility</mat-icon>
+                                <mat-icon *ngIf="data.active == 0">visibility_off</mat-icon>
+                            </td>
                             <td>
                                 <a (click)="startEdit(data)" class="text-primary">Modifier</a>
                                 <nz-divider nzType="vertical"></nz-divider>
@@ -74,6 +79,9 @@
                         <ng-template #editTemplate>
                             <td>
                                 <input type="text" nz-input [(ngModel)]="data.libelle" name="name" />
+                            </td>
+                            <td class="text-center">
+                                <mat-checkbox (change)="onCheckChange($event, data)" [checked]="isActive(data)"></mat-checkbox>
                             </td>
                             <td>
                                 <a (click)="saveChild(data)" class="save" class="text-primary">Enregistrer</a>

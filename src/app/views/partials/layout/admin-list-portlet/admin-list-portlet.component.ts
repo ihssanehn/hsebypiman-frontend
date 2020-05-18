@@ -94,6 +94,18 @@ export class AdminListPortletComponent implements OnInit {
   }
 
 
+  onCheckChange(event, data){
+    if(event.checked){
+      data.active = 1;
+    }else{
+      data.active = 0;
+    }
+    console.log(data)
+
+  }
+  isActive(data){
+    return data.active == 1;
+  }
 
 
 
