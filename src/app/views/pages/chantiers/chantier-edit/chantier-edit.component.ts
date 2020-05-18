@@ -68,6 +68,7 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 							this.chantierForm.patchValue(res.result.data);							
 							this.formPathValues(res.result.data);
 							this.chantierForm.controls['entreprises'].patchValue(res.result.data.entreprises);
+							console.log(this.chantierForm);
 						})
 					).subscribe( async res => {
 						this.chantier = res.result.data;
@@ -141,10 +142,20 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 			var entreprise = this.chantierFB.group({
 				type_code:[element.type.code, Validators],
 				entreprise_id: [element.id, Validators.required],
-				interimaire_id: [element.pivot.interimaire_id, Validators.required],
+				interimaire_id: [element.pivot.interimaire_id, Validators],
 				chiffre_affaire: [element.pivot.chiffre_affaire, Validators],
 				date_demarrage: [element.pivot.date_demarrage, Validators],
 			});
+
+			
+			if(entreprise.get('type_code').value == 'SOUS_TRAITANT'){
+				entreprise.get('interimaire_id').setValidators(null);
+				entreprise.get('chiffre_affaire').setValidators(Validators.required);
+			}else{
+				
+				entreprise.get('interimaire_id').setValidators(Validators.required);
+				entreprise.get('chiffre_affaire').setValidators(null);
+			}
 
 			entreprise.get('type_code').valueChanges.subscribe(code=>{
 				if(code == 'SOUS_TRAITANT'){
@@ -185,7 +196,7 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 			
 			this.chantierService.update(form)
 				.toPromise()
-				.then((chantier) => {
+				.then((res) => {
 					this.cdr.markForCheck();
 
 					Swal.fire({
@@ -194,7 +205,19 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 						showConfirmButton: false,
 						timer: 1500
 					}).then(() => {
-            			this.location.back();
+						var chantier = res.result.data;
+						if(chantier.info){
+							Swal.fire({
+								icon: chantier.info['code'],
+								title: chantier.info['message'],
+								showConfirmButton: false,
+								timer: 3000
+							}).then(() => {
+								this.location.back();
+							})
+						}else{
+							this.location.back();
+						}
 					});
 				})
 				.catch(err => {

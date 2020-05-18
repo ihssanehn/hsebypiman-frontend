@@ -139,7 +139,20 @@ export class ChantierDetailComponent implements OnInit, OnDestroy {
 							showConfirmButton: false,
 							timer: 1500
 						}).then(() => {
-							this.getChantier(chantierId);
+							var chantier = res.result.data;
+							if(chantier.info){
+								Swal.fire({
+									icon: chantier.info['code'],
+									title: chantier.info['message'],
+									showConfirmButton: false,
+									timer: 3000
+								}).then(() => {
+									this.getChantier(chantierId);
+								})
+							}else{
+								
+								this.getChantier(chantierId);
+							}
 						});
 					} else {
 						throw new Error();

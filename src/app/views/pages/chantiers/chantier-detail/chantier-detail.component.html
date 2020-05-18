@@ -3,7 +3,7 @@
     <span class="title">
       <a [routerLink]="['/chantiers/list']">{{'MENU.SUB_CHANTIER.LIST' | translate}}</a><span class="divider">></span><span class="id-item">{{chantier.nom}}</span>
     </span>
-    <div ngbDropdown placement="bottom-right" class="d-inline-block pull-right">
+    <div ngbDropdown placement="bottom-right" class="d-inline-block pull-right" *ngIf="chantier.status.code != 'TERMINE'">
       <button ngbDropdownToggle mat-icon-button color="primary" matTooltip="Actions" style="line-height: 0;height: 0;">
         <mat-icon>more_vert</mat-icon>
       </button>
