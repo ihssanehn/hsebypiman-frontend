@@ -222,7 +222,7 @@ export class ArFormComponent implements OnInit {
     if(!this.parts.includes(key)){
       this.parts.push(key);
     }
-    if(key == 5){
+    if(key == 4){
       this.onLastStep.emit(true);
     }
   }
