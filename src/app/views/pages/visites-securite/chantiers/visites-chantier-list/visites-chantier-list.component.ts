@@ -9,11 +9,11 @@ import Swal from 'sweetalert2';
 
 
 @Component({
-	selector: 'tf-visites-list',
-	templateUrl: './visites-list.component.html',
-	styleUrls: ['./visites-list.component.scss']
+	selector: 'tf-visites-chantier-list',
+	templateUrl: './visites-chantier-list.component.html',
+	styleUrls: ['./visites-chantier-list.component.scss']
 })
-export class VisitesListComponent implements OnInit {
+export class VisitesChantierListComponent implements OnInit {
 
 	public visitesList: Paginate < Visite > ;
 	visite_id: number;

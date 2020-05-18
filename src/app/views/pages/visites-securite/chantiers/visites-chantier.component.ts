@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 import { MenuAsideService, SubheaderService } from '@app/core/_base/layout';
 
 @Component({
-	selector: 'tf-visites-securite',
-	templateUrl: './visites-securite.component.html',
+	selector: 'tf-visites-chantier',
+	templateUrl: './visites-chantier.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class VisitesSecuriteComponent implements OnInit {
+export class VisitesChantierComponent implements OnInit {
 
 	constructor(
 		private router:Router,
@@ -18,6 +18,6 @@ export class VisitesSecuriteComponent implements OnInit {
 	}
 
 	async ngOnInit(){
-		this.subheaderService.loadSubheader('subheader.visites-securite');
+		this.menuAsideService.loadMenuAside('aside.vss');
 	}
 }

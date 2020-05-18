@@ -28,7 +28,7 @@ export class MenuConfig {
 					title: 'Visites sécurité',
 					root: true,
 					alignment: 'left',
-					page: '/visites-securite/list',
+					page: '/visites-securite/chantiers/list',
 					translate: 'MENU.VISITESECURITE',
 				},
 				{
@@ -431,19 +431,19 @@ export class MenuConfig {
 				items: [
 					{
 						title: 'Visites sécurité chantier',
-						page: '/visites-securite/list',
+						page: '/visites-securite/chantiers/list',
 					},
 					{
 						title: 'Visites sécurité véhicule',
-						page: '/visites-securite/visites-securite-vehicule/list',
+						page: '/visites-securite/vehicules/list',
 					},
 					{
 						title: 'Visites sécurité Epi',
-						page: '/visites-securite/visites-securite-epi/list',
+						page: '/visites-securite/epis/list',
 					},
 					{
 						title: 'Visites sécurité outillage',
-						page: '/visites-securite/visites-securite-outillage/list',
+						page: '/visites-securite/outillages/list',
 					}
 				]
 			}

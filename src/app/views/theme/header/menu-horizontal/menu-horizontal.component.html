@@ -43,32 +43,9 @@
 
 		<!-- if menu item has submenu child then recursively call new menu item component -->
 		<ng-container *ngIf="item.submenu">
-			<div class="tf-menu__submenu" [ngClass]="getItemMenuSubmenuClass(item)" [ngStyle]="{ 'width': item.submenu.width }">
-				<span class="tf-menu__arrow" [ngClass]="{ 'tf-menu__arrow--adjust': item.root }"></span>
-
-				<ul *ngIf="item.submenu?.length" class="tf-menu__subnav">
-					<ng-container *ngFor="let child of item.submenu">
-						<ng-container [ngTemplateOutlet]="menuTemplate" [ngTemplateOutletContext]="{ item: child, parentItem: item }">
-						</ng-container>
-					</ng-container>
-				</ul>
-
-				<ul *ngIf="item.submenu.items?.length" class="tf-menu__subnav">
-					<ng-container *ngFor="let child of item.submenu.items">
-						<ng-container [ngTemplateOutlet]="menuTemplate" [ngTemplateOutletContext]="{ item: child, parentItem: item }">
-						</ng-container>
-					</ng-container>
-				</ul>
-
-				<div *ngIf="item.submenu.type === 'mega' && item.submenu.columns?.length" class="tf-menu__subnav">
-					<ul class="tf-menu__content">
-						<ng-container *ngFor="let child of item.submenu.columns">
-							<ng-container [ngTemplateOutlet]="menuColumnTemplate" [ngTemplateOutletContext]="{ item: child }"></ng-container>
-						</ng-container>
-					</ul>
-				</div>
-
-			</div>
+			<a [routerLink]="item.page" class="tf-menu__link tf-menu__toggle">
+				<ng-container [ngTemplateOutlet]="menuItemInnerTemplate" [ngTemplateOutletContext]="{ item: item, parentItem: parentItem }"></ng-container>
+			</a>
 		</ng-container>
 	</li>
 </ng-template>

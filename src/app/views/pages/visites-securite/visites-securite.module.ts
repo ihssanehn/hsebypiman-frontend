@@ -14,44 +14,17 @@ import { TranslateModule } from '@ngx-translate/core';
 import { PartialsModule } from '../../partials/partials.module';
 import { NgxPermissionsModule, NgxPermissionsGuard } from 'ngx-permissions';
 // Services
-import { HttpUtilsService, TypesUtilsService, InterceptService, LayoutUtilsService} from '../../../core/_base/crud';
+import { HttpUtilsService, TypesUtilsService, InterceptService, LayoutUtilsService } from '../../../core/_base/crud';
 // Shared
 import { ActionNotificationComponent } from '../../partials/content/crud';
 // Components
 import { VisitesSecuriteComponent } from './visites-securite.component';
-import { VisitesListComponent } from './visites-list/visites-list.component';
-import { VisiteEditComponent } from './visite-edit/visite-edit.component';
-import { VisiteAddComponent } from './visite-add/visite-add.component';
-import { VisiteDetailComponent } from './visite-detail/visite-detail.component';
 import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 // Material
-import {
-	MatInputModule,
-	MatPaginatorModule,
-	MatProgressSpinnerModule,
-	MatSortModule,
-	MatTableModule,
-	MatSelectModule,
-	MatMenuModule,
-	MatProgressBarModule,
-	MatButtonModule,
-	MatCheckboxModule,
-	MatDialogModule,
-	MatTabsModule,
-	MatNativeDateModule,
-	MatCardModule,
-	MatRadioModule,
-	MatIconModule,
-	MatDatepickerModule,
-	MatExpansionModule,
-	MatAutocompleteModule,
-	MAT_DIALOG_DEFAULT_OPTIONS,
-	MatSnackBarModule,
-	MatTooltipModule,
-} from '@angular/material';
-
+import { MatInputModule,
+	MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatTableModule, MatSelectModule, MatMenuModule, MatProgressBarModule, MatButtonModule, MatCheckboxModule, MatDialogModule, MatTabsModule, MatNativeDateModule, MatCardModule, MatRadioModule, MatIconModule, MatDatepickerModule, MatExpansionModule, MatAutocompleteModule, MAT_DIALOG_DEFAULT_OPTIONS, MatSnackBarModule, MatTooltipModule, } from '@angular/material';
 
 const routes: Routes = [
 	{
@@ -59,45 +32,20 @@ const routes: Routes = [
 		component: VisitesSecuriteComponent,
 		children: [
 			{
-				path: '',
-				redirectTo: 'list',
-				pathMatch: 'full'
+				path: 'chantiers',
+				loadChildren: () => import('@app/views/pages/visites-securite/chantiers/visites-chantier.module').then(m => m.VisitesChantierModule)
 			},
-			{
-				path:'detail/:id',
-				component: VisiteDetailComponent
-			},
-			{
-				path: 'list',
-				component: VisitesListComponent
-			},
-			{
-				path: 'list:id',
-				component: VisitesListComponent
-			},
-			{
-				path: 'add',
-				component: VisiteAddComponent
-			},
-			{
-				path: 'add:id',
-				component: VisiteAddComponent
-			},
-			{
-				path: 'edit',
-				component: VisiteEditComponent
-			},
-			{
-				path: 'edit/:id',
-				component: VisiteEditComponent
-			},
+			// {
+			// 	path: 'vehicules/',
+			// 	loadChildren: () => import('@app/views/pages/visites-securite/chantiers/visites-chantier.module').then(m => m.VisitesChantierModule)
+			// },
 		]
 	}
 ];
 
 
 
-		
+
 @NgModule({
 	imports: [
 		CommonModule,
@@ -112,7 +60,7 @@ const routes: Routes = [
 		MatButtonModule,
 		MatMenuModule,
 		MatSelectModule,
-        MatInputModule,
+		MatInputModule,
 		MatTableModule,
 		MatAutocompleteModule,
 		MatRadioModule,
@@ -137,8 +85,8 @@ const routes: Routes = [
 	providers: [
 		InterceptService,
 		{
-        	provide: HTTP_INTERCEPTORS,
-       	 	useClass: InterceptService,
+			provide: HTTP_INTERCEPTORS,
+			useClass: InterceptService,
 			multi: true
 		},
 		{
@@ -159,11 +107,7 @@ const routes: Routes = [
 		// 
 	],
 	declarations: [
-		VisitesSecuriteComponent,
-		VisitesListComponent,
-		VisiteEditComponent,
-		VisiteAddComponent,
-		VisiteDetailComponent
+		VisitesSecuriteComponent
 	]
 })
 export class VisitesSecuriteModule {}

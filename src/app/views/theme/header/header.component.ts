@@ -27,6 +27,8 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 	// Public properties
 	menuHeaderDisplay: boolean;
 	fluid: boolean;
+	subheader_fluid: boolean;
+	subheader_clear: boolean;
 
 	@ViewChild('tfHeader', {static: true}) tfHeader: ElementRef;
 
@@ -74,6 +76,9 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 	 */
 	ngOnInit(): void {
 		const config = this.layoutConfigService.getConfig();
+		
+		this.subheader_fluid = objectPath.get(config, 'subheader.self.width') === 'fluid';
+		this.subheader_clear = objectPath.get(config, 'subheader.clear');
 
 		// get menu header display option
 		this.menuHeaderDisplay = objectPath.get(config, 'header.menu.self.display');

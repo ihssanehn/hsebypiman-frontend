@@ -216,8 +216,8 @@ export class MenuHorizontalComponent implements OnInit, AfterViewInit {
 		}
 
 		var test = this.currentRouteUrl.split('/');
-		
-		return item.page.indexOf(test[1]) !== -1;
+		var page = item.page.split('/');
+		return page[1] == test[1];
 	}
 
 	/**
