@@ -23,11 +23,8 @@ export class VisiteAddComponent implements OnInit {
   
   visite: Visite;
   visiteForm: FormGroup;
-<<<<<<< HEAD
 	// allRoles: Role[];
   formStatus = new FormStatus();
-=======
->>>>>>> perform visites
 	loaded = false;
   editMode: boolean = false;
   chantier: Chantier;
