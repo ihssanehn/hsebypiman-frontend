@@ -1,7 +1,4 @@
-
-import {Ar} from './ar.model'
-import { Habilitation } from './habilitation.model';
-import { Entreprise } from './entreprise.model';
+import { Habilitation, Entreprise, Status, Ar } from './';
 import {User} from '../auth';
 
 export class Chantier {
@@ -10,7 +7,7 @@ export class Chantier {
     type_id?: number;
     type?: any;
     status_id?: number;
-    status?: any;
+    status?: Status;
     numero?: String;
     adresse?: String;
     ville?: String;
