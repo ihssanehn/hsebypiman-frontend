@@ -7,7 +7,7 @@ import { ArService, TypeService, ChantierService } from '@app/core/services';
 import { Paginate } from '@app/core/_base/layout/models/paginate.model';
 import { Ar, Chantier } from '@app/core/models';
 import { NgxPermissionsService } from 'ngx-permissions';
-import { tap, startWith, map } from 'rxjs/operators';
+import { tap, startWith, map, distinctUntilChanged } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 import { Location } from '@angular/common';
 import moment from 'moment';
@@ -205,6 +205,73 @@ export class ArEditComponent implements OnInit, OnDestroy {
 		const accueil_secu_days = this.arForm.get('accueil_secu_days');
 		const accueil_secu_time_opening = this.arForm.get('accueil_secu_time_opening');
 		const accueil_secu_time_closing = this.arForm.get('accueil_secu_time_closing');
+
+		var contactsFields = [];
+		contactsFields[0] = [
+		  {
+			'name' : 'contact_interne_secours',
+			'control' : this.arForm.get('contact_interne_secours')
+		  },
+		  {
+			'name' : 'tel_contact_interne_secours',
+			'control' : this.arForm.get('tel_contact_interne_secours')
+		  }
+		];
+		contactsFields[1] = [
+		  {
+			'name' : 'contact_client_chef_chtr',
+			'control' : this.arForm.get('contact_client_chef_chtr')
+		  },
+		  {
+			'name' : 'tel_contact_client_chef_chtr',
+			'control' : this.arForm.get('tel_contact_client_chef_chtr')
+		  }
+		];
+		contactsFields[2] = [
+		  {
+			'name' : 'contact_client_hse',
+			'control' : this.arForm.get('contact_client_hse')
+		  },
+		  {
+			'name' : 'tel_contact_client_hse',
+			'control' : this.arForm.get('tel_contact_client_hse')
+		  }
+		];
+	
+		contactsFields.forEach((item, index) => {
+		  this.arForm.get(item[0].name).valueChanges
+		  .pipe(distinctUntilChanged())  
+		  .subscribe(field => {
+	
+			if (field !== '') {
+			  contactsFields.forEach((element, key) => {
+				if(key != index){
+				  element.forEach(control => {
+					control.control.setValidators(null);
+				  });
+				}
+			  });
+			}
+	
+			if (field === '') {
+			  contactsFields.forEach((element, key) => {
+				if(key != index){
+				  element.forEach(control => {
+					control.control.setValidators([Validators.required]);
+				  });
+				}
+			  });
+			}
+	
+			contactsFields.forEach((element, key) => {
+			  if(key !== index){
+				element.forEach(control => {
+				  control.control.updateValueAndValidity();
+				});
+			  }
+			});
+		  });
+		});
 	
 		this.arForm.get('a_prevoir_balisage').valueChanges
 		  .subscribe(a_prevoir_balisage => {
