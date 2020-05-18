@@ -38,13 +38,13 @@ export class ChantierService extends HttpService{
         return this.http.post<JsonResponse<Chantier>>(this.baseUrl+'/'+'create', chantier);
     }
     update(chantier){
-        return this.http.put(this.baseUrl+'/'+chantier.id, chantier);
+        return this.http.put<JsonResponse<Chantier>>(this.baseUrl+'/'+chantier.id, chantier);
     }
     delete(chantier_id){
         return this.http.delete(this.baseUrl+'/'+chantier_id);
     }
     closeChantier(chantier_id){
-        return this.http.get<Chantier>(this.baseUrl+'/'+chantier_id+'/close-chantier');
+        return this.http.get<JsonResponse<Chantier>>(this.baseUrl+'/'+chantier_id+'/close-chantier');
     }
     export(filters){
         var queryString = Object.keys(filters).map(key => key + '=' + filters[key]).join('&');

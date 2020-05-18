@@ -34,4 +34,5 @@ export class Chantier {
     ar?: Ar;
     habilitations?: Habilitation[];
     entreprises?: Entreprise[];
+    info?: Array<string>;
 }
