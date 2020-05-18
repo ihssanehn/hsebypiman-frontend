@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VisiteDetailComponent } from './visite-detail.component';
+import { VisiteChantierAddComponent } from './visite-chantier-add.component';
 
-describe('VisiteDetailComponent', () => {
-  let component: VisiteDetailComponent;
-  let fixture: ComponentFixture<VisiteDetailComponent>;
+describe('VisiteChantierAddComponent', () => {
+  let component: VisiteChantierAddComponent;
+  let fixture: ComponentFixture<VisiteChantierAddComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ VisiteDetailComponent ]
+      declarations: [ VisiteChantierAddComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VisiteDetailComponent);
+    fixture = TestBed.createComponent(VisiteChantierAddComponent);
     component = fixture.componentInstance;
     // fixture.markForCheck();
   });

@@ -15,11 +15,11 @@ import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
 import {FormStatus} from '@app/core/_base/crud/models/form-status';
 
 @Component({
-  selector: 'tf-visite-add',
-  templateUrl: './visite-add.component.html',
-  styleUrls: ['./visite-add.component.scss']
+  selector: 'tf-visite-chantier-add',
+  templateUrl: './visite-chantier-add.component.html',
+  styleUrls: ['./visite-chantier-add.component.scss']
 })
-export class VisiteAddComponent implements OnInit {
+export class VisiteChantierAddComponent implements OnInit {
   
   visite: Visite;
   visiteForm: FormGroup;

@@ -13,11 +13,11 @@ import { MatIconRegistry } from '@angular/material';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'tf-visite-detail',
-  templateUrl: './visite-detail.component.html',
-  styleUrls: ['./visite-detail.component.scss']
+  selector: 'tf-visite-chantier-detail',
+  templateUrl: './visite-chantier-detail.component.html',
+  styleUrls: ['./visite-chantier-detail.component.scss']
 })
-export class VisiteDetailComponent implements OnInit, OnDestroy {
+export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
   
   	visite: Visite;
 	visiteForm: FormGroup;

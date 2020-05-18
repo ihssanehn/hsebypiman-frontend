@@ -16,12 +16,12 @@ import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
 import {FormStatus} from '@app/core/_base/crud/models/form-status';
 
 @Component({
-	selector: 'tf-visite-edit',
-	templateUrl: './visite-edit.component.html',
-	styleUrls: ['./visite-edit.component.scss']
+	selector: 'tf-visite-chantier-edit',
+	templateUrl: './visite-chantier-edit.component.html',
+	styleUrls: ['./visite-chantier-edit.component.scss']
 })
 
-export class VisiteEditComponent implements OnInit, OnDestroy {
+export class VisiteChantierEditComponent implements OnInit, OnDestroy {
 
 	errors;
 	visiteForm: FormGroup;

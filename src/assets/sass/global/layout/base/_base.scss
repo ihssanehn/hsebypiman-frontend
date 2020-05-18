@@ -28,7 +28,9 @@ body {
 
 // Subheader
 .tf-subheader {
-	padding-bottom: (2 * tf-get($tf-page-padding, desktop)) !important;
+	// padding-bottom: (2 * tf-get($tf-page-padding, desktop)) !important;
+	padding-bottom: 0px !important;
+    margin-top: -50px;
 	//height: 120px;
 
 	// .tf-aside--enabled & {

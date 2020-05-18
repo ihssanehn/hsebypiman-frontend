@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VisitesListComponent } from './visites-list.component';
+import { VisiteChantierEditComponent } from './visite-chantier-edit.component';
 
-describe('VisitesListComponent', () => {
-  let component: VisitesListComponent;
-  let fixture: ComponentFixture<VisitesListComponent>;
+describe('VisiteChantierEditComponent', () => {
+  let component: VisiteChantierEditComponent;
+  let fixture: ComponentFixture<VisiteChantierEditComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ VisitesListComponent ]
+      declarations: [ VisiteChantierEditComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VisitesListComponent);
+    fixture = TestBed.createComponent(VisiteChantierEditComponent);
     component = fixture.componentInstance;
     // fixture.markForCheck();
   });
