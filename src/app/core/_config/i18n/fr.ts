@@ -297,6 +297,11 @@ export const locale = {
 				TITLE: 'Chantiers',
 				SHORTTITLE:'Chantiers',
 			},
+			INTERIMAIRE:{
+				LABEL: 'Intérimaire',
+				TITLE: 'Intérimaire',
+				SHORTTITLE:'Intérimaire',
+			},
 			CHANTIERS_COUNT:{
 				LABEL: 'Nombre de chantiers',
 				TITLE: 'Nombre de chantiers',

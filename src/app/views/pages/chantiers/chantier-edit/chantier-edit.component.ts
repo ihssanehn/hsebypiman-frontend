@@ -138,14 +138,26 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 
 		const ees: FormArray = this.chantierForm.get('entreprises') as FormArray;
 		chantier.entreprises.forEach(element =>{
-			ees.push(
-				this.chantierFB.group({
-					type_code:[element.type.code, Validators],
-					entreprise_id: [element.id, Validators.required],
-					chiffre_affaire: [element.pivot.chiffre_affaire, Validators],
-					date_demarrage: [element.pivot.date_demarrage, Validators],
-				})
-			)
+			var entreprise = this.chantierFB.group({
+				type_code:[element.type.code, Validators],
+				entreprise_id: [element.id, Validators.required],
+				interimaire_id: [element.pivot.interimaire_id, Validators.required],
+				chiffre_affaire: [element.pivot.chiffre_affaire, Validators],
+				date_demarrage: [element.pivot.date_demarrage, Validators],
+			});
+
+			entreprise.get('type_code').valueChanges.subscribe(code=>{
+				if(code == 'SOUS_TRAITANT'){
+					entreprise.get('interimaire_id').setValidators(null);
+					entreprise.get('chiffre_affaire').setValidators(Validators.required);
+				}else{
+					
+					entreprise.get('interimaire_id').setValidators(Validators.required);
+					entreprise.get('chiffre_affaire').setValidators(null);
+				}
+			})
+			
+			ees.push(entreprise)
 		})
 		
 	}
