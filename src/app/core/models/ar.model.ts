@@ -23,6 +23,7 @@ export class Ar {
     observations_signature?: string;
     salarie_id?: number;
     status_id?: number;
+    status?: any;
     creator_id?: number;
     a_signer_registre_travaux?: boolean;
     a_prevoir_balisage?: boolean;

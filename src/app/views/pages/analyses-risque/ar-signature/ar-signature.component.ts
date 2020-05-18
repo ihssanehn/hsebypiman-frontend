@@ -59,10 +59,14 @@ export class ArSignatureComponent extends ArDetailComponent implements OnInit {
   async getAr(arId: Number){
 		try {
 			var res = await this.arService.get(arId).toPromise();
-			this.ar = res.result.data;
-      this.getChantier(this.ar.chantier_id);
-      this.createForm();
-			this.cdr.markForCheck();
+      this.ar = res.result.data;
+      if(this.ar.status.code == "ARCHIV"){
+        this.goBack();
+      }else{
+        this.getChantier(this.ar.chantier_id);
+        this.createForm();
+        this.cdr.markForCheck();
+      }
 		} catch (error) {
 			console.error(error);
 		}
@@ -120,5 +124,12 @@ export class ArSignatureComponent extends ArDetailComponent implements OnInit {
   setDateFormat(date){
     return date ? moment(date).format('YYYY-MM-DD') : null;
   }
+
+  goBack() {
+		const url = `/analyses-risque/list`;
+		this.router.navigateByUrl(url, { 
+			relativeTo: this.activatedRoute 
+		});
+	}
 
 }
