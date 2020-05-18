@@ -24,6 +24,8 @@ export class ChantierFormComponent implements OnInit {
   catHabsLoaded: boolean = false;
   entreprisesList: Entreprise[];
   entreprisesLoaded: boolean = false;
+  interimairesList: User[];
+  interimairesLoaded: boolean = false;
   entrepriseTypesList: Type[];
   entrepriseTypesLoaded: boolean = false;
 
@@ -49,6 +51,7 @@ export class ChantierFormComponent implements OnInit {
     this.getCatHabs();
     this.getEntreprises();
     this.getEntrepriseTypes();
+    this.getInterimaires();
   }
 
   async getTypes(){
@@ -107,6 +110,16 @@ export class ChantierFormComponent implements OnInit {
     if(res){
       this.entrepriseTypesList = res.result.data;
       this.entrepriseTypesLoaded = true;
+    }
+    this.cdr.detectChanges();
+    this.cdr.markForCheck();
+  }
+  async getInterimaires(){
+    this.interimairesLoaded = false;
+    var res = await this.authService.getAll({'categorie_code':'INTERIMAIRE', 'paginate':false}).toPromise();
+    if(res){
+      this.interimairesList = res.result.data;
+      this.interimairesLoaded = true;
     }
     this.cdr.detectChanges();
     this.cdr.markForCheck();
@@ -183,12 +196,24 @@ export class ChantierFormComponent implements OnInit {
     return this.chantierForm.get('entreprises') as FormArray;
   }
   get newEntreprises(): FormGroup {
-    return this.fb.group({
+
+    var new_entreprise = this.fb.group({
       'type_code':[null, [Validators.required]],
       'entreprise_id':[null, [Validators.required]],
+      'interimaire_id':[null, [Validators]],
       'chiffre_affaire':[null, [Validators]],
       'date_demarrage':[null, [Validators]]
     });
+    new_entreprise.get('type_code').valueChanges.subscribe(code=>{
+      if(code == 'SOUS_TRAITANT'){
+        new_entreprise.get('interimaire_id').setValidators(null);
+        new_entreprise.get('chiffre_affaire').setValidators(Validators.required);
+      }else{
+        new_entreprise.get('interimaire_id').setValidators(Validators.required);
+        new_entreprise.get('chiffre_affaire').setValidators(null);
+      }
+    })
+    return new_entreprise;
   }
 
   removeEe(i){

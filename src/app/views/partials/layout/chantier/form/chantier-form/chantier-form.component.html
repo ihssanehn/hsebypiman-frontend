@@ -165,11 +165,22 @@
 									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 								</mat-error>
 							</mat-form-field>
-							<mat-form-field class="col-xl-3" *ngIf="entHasCode(entIndex)">
+							<mat-form-field class="col-xl-3" *ngIf="entHasCode(entIndex) == 'SOUS_TRAITANT'">
 								<mat-label>{{'EES.CA.LABEL' | translate}}</mat-label>
 								<input matInput mask="separator.2" class="form-control" type="string" name="chiffre_affaire" formControlName="chiffre_affaire" [required]="isEEFieldRequired('chiffre_affaire', entIndex)" placeholder="Saisir ici" />
 								<mat-icon matSuffix>euro_symbol</mat-icon>
 								<mat-error *ngIf="isControlHasError('chiffre_affaire','required')">
+									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+								</mat-error>
+							</mat-form-field>
+							<mat-form-field class="col-xl-3" *ngIf="entHasCode(entIndex) == 'INTERIM'">
+								<mat-label>{{'EES.INTERIMAIRE.LABEL' | translate}}</mat-label>
+								<mat-select class="form-control" formControlName="interimaire_id" [required]="isEEFieldRequired('interimaire_id', entIndex)">
+									<mat-option *ngFor="let user of interimairesList" [value]="user.id">
+										{{ user | fullName }}
+									</mat-option>
+								</mat-select>
+								<mat-error *ngIf="isControlHasError('interimaire_id','required')">
 									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 								</mat-error>
 							</mat-form-field>

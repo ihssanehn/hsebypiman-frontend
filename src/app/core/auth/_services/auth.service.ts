@@ -94,6 +94,10 @@ export class AuthService extends HttpService {
 		// );
 	}
 
+	getAll(params): Observable<JsonResponse<any>>{
+		return this.http.post<JsonResponse<User[]>>(API_USERS_URL, {...params});
+	}
+
 	// getUsersPaginate(filter = {}): Observable<Paginate<User>> {
 	// 	return this.http.post<Paginate<User>>(`${this.baseUrl}users/paginate`, { ...filter });
 	// }
