@@ -74,9 +74,10 @@ import {
 	SearchChantierFormComponent,
 	ChantierFormComponent,
 	// ChantierFiltersComponent,
-	SearchChantierHeaderComponent,
+	// SearchChantierHeaderComponent,
 	SearchListBarComponent,
 	VsFormHeadComponent,
+	VsFormBodyComponent,
 	CommingSoonComponent,
 } from './layout';
 // General
@@ -143,8 +144,9 @@ import { ArDetailPanelsComponent } from './layout/analyse-risque/ar-detail-panel
 		UserSideProfileComponent,
 		ChantierFormComponent,
 		// ChantierFiltersComponent,
-		SearchChantierHeaderComponent,
+		// SearchChantierHeaderComponent,
 		VsFormHeadComponent,
+		VsFormBodyComponent,
 		SearchListBarComponent,
 
 		CartComponent,
@@ -202,8 +204,9 @@ import { ArDetailPanelsComponent } from './layout/analyse-risque/ar-detail-panel
 		SearchChantierFormComponent,
 		ChantierFormComponent,
 		// ChantierFiltersComponent,
-		SearchChantierHeaderComponent,
+		// SearchChantierHeaderComponent,
 		VsFormHeadComponent,
+		VsFormBodyComponent,
 		SearchListBarComponent,
 		CartComponent,
 		

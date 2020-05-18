@@ -1,19 +1,104 @@
-<ng-template [formGroup]="visiteForm">
-    <div class="col-xl-4">
-        <h5>Visité sécurité N°</h5>
-        <mat-form-field>
-            <mat-label>{{'VISITES.REDACTEUR.LABEL'}}</mat-label>
-            <mat-select>
-                <mat-option *ngFor="let user of users" [value]="user.id" [formControlName]="redacteur_id">
-                    {{user.fulname}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
+<tf-portlet-body>
+
+    <div class="row">
+        <div class="col-12">
+            <h5>
+                <span *ngIf="edit">Visité sécurité N°</span>
+                <span *ngIf="!edit">Nouvelle visite</span>
+            </h5>
+        </div>
+        <div class="col-12">
+            <form [formGroup]="visiteForm" autocomplete="off" class="tf-form tf-form--group-seperator-dashed " novalidate (ngSubmit)="submitForm(visiteForm.valid)" fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+                <div class="tf-wizard-v4__content" data-tfwizard-type="step-content" data-tfwizard-state="current">
+                    <div class="tf-form__section tf-form__section--first">
+                        <div class="tf-wizard-v4__form">
+                            <div class="row form-row">
+
+                                
+                                <!-- TYPE -->
+                                <mat-form-field class="col-xl-3">
+                                    <mat-label>{{'VISITES.TYPE.LABEL' | translate}}</mat-label>
+                                    <mat-select class="form-control" placeholder="" formControlName="type_id" [required]="isFieldRequired('type_id')">
+                                        <mat-option *ngFor="let type of types" [value]="type.id">
+                                            {{ type.libelle }}
+                                        </mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="isControlHasError('type_id','required')">
+                                        <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                                    </mat-error>
+                                </mat-form-field>
+
+
+                                <!-- SALARIE -->
+                                <mat-form-field class="col-xl-3" 
+                                    matTooltip="Vous ne pouvez pas sélectionner un salarié si une entreprise est déjà sélectionnée" 
+                                    [matTooltipDisabled]="formHasValue('salarie_id')"
+                                >
+                                    <mat-label>{{'VISITES.VISITED.LABEL' | translate}}</mat-label>
+                                    <mat-select class="form-control" placeholder="" formControlName="salarie_id" [required]="isFieldRequired('salarie_id')">
+                                        <mat-option *ngFor="let user of users" [value]="user.id">
+                                            {{ user | fullName }}
+                                        </mat-option>
+                                    </mat-select>
+                                    <button mat-button *ngIf="formHasValue('salarie_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('salarie_id'); $event.stopPropagation()">
+                                        <mat-icon>clear</mat-icon>
+                                    </button>
+                                    <mat-error *ngIf="isControlHasError('salarie_id','required')">
+                                        <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                                    </mat-error>
+                                </mat-form-field>
+
+
+                                <!-- ENTREPRISE -->
+                                <mat-form-field class="col-xl-3"
+                                    matTooltip="Vous ne pouvez pas sélectionner une entreprise si un salarié est déjà sélectionné" 
+                                    [matTooltipDisabled]="formHasValue('entreprise_id')"
+                                >
+                                    <mat-label>{{'VISITES.ENTREPRISE.LABEL' | translate}}</mat-label>
+                                    <mat-select class="form-control" placeholder="" formControlName="entreprise_id" [required]="isFieldRequired('entreprise_id')">
+                                        <mat-option *ngFor="let entreprise of entreprises" [value]="entreprise.id">
+                                            {{ entreprise.raison_sociale }}
+                                        </mat-option>
+                                    </mat-select>
+                                    <button mat-button *ngIf="formHasValue('entreprise_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('entreprise_id'); $event.stopPropagation()">
+                                        <mat-icon>clear</mat-icon>
+                                    </button>
+                                    <mat-error *ngIf="isControlHasError('entreprise_id','required')">
+                                        <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                                <!-- SALARIE -->
+                                <mat-form-field class="col-xl-3">
+                                    <mat-label>{{'VISITES.REDACTEUR.LABEL' | translate}}</mat-label>
+                                    <mat-select class="form-control" placeholder="" formControlName="redacteur_id" [required]="isFieldRequired('redacteur_id')">
+                                        <mat-option *ngFor="let user of users" [value]="user.id">
+                                            {{ user | fullName }}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            
+                            <div class="row form-row">
+                                <div class="col-xl-4 st-group">
+                                    <span class="st-label">{{'VISITES.PRESENCE_NC.LABEL' | translate}}</span>
+                                    <mat-slide-toggle color="warn" [checked]="isChecked('presence_non_conformite')" (change)="updateToggleValue($event, 'presence_non_conformite')">
+                                    </mat-slide-toggle>
+                                </div>
+                                <div class="col-xl-4 st-group">
+                                    <span class="st-label">{{'VISITES.HAS_RECTIF.LABEL' | translate}}<br>{{'VISITES.HAS_RECTIF.LABEL_COMP' | translate}}</span>
+                                    <mat-slide-toggle color="warn" [checked]="isChecked('has_rectification_imm')" (change)="updateToggleValue($event, 'has_rectification_imm')">
+                                    </mat-slide-toggle>
+                                </div>
+                                <div class="col-xl-4 st-group">
+                                    <span class="st-label">{{'VISITES.AVERT.LABEL' | translate}}<br>{{'VISITES.AVERT.LABEL_COMP' | translate}}</span>
+                                    <mat-slide-toggle color="warn" [checked]="isChecked('avertissement')" (change)="updateToggleValue($event, 'avertissement')">
+                                    </mat-slide-toggle>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
-    <div class="col-xl-4">
-        
-    </div>
-    <div class="col-xl-4">
-        
-    </div>
-</ng-template>
+</tf-portlet-body>

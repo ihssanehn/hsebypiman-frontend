@@ -425,6 +425,30 @@ export class MenuConfig {
 				// },
 			]
 		},
+
+		subheader: {
+			'visites-securite': {
+				items: [
+					{
+						title: 'Visites sécurité chantier',
+						page: '/visites-securite/list',
+					},
+					{
+						title: 'Visites sécurité véhicule',
+						page: '/visites-securite/visites-securite-vehicule/list',
+					},
+					{
+						title: 'Visites sécurité Epi',
+						page: '/visites-securite/visites-securite-epi/list',
+					},
+					{
+						title: 'Visites sécurité outillage',
+						page: '/visites-securite/visites-securite-outillage/list',
+					}
+				]
+			}
+		},
+
 		aside: {
 			self: {},
 			ars: {

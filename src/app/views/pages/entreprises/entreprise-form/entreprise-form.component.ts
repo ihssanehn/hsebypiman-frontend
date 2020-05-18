@@ -1,9 +1,7 @@
 import { Component, OnInit, Input, ChangeDetectorRef, EventEmitter, Output } from '@angular/core';
-import { FormGroup, FormArray, FormControl, Validators, FormBuilder, AbstractControl } from '@angular/forms';
-import { Type, Status, CatHabilitation, Entreprise } from '@app/core/models';
-import { AuthService, User } from '@app/core/auth';
-import { TypeService, StatusService, CatHabilitationService, EntrepriseService } from '@app/core/services';
-import { first } from 'rxjs/operators';
+import { FormGroup, AbstractControl } from '@angular/forms';
+import { Type,  } from '@app/core/models';
+import { TypeService, } from '@app/core/services';
 import { FormStatus } from '@app/core/_base/crud/models/form-status';
 
 
@@ -24,11 +22,6 @@ export class EntrepriseFormComponent implements OnInit {
   @Output() onSubmit = new EventEmitter();
   constructor(
     private typeService:TypeService,
-    private fb: FormBuilder,
-    private statusService:StatusService,
-    private catHabilitationService:CatHabilitationService,
-    private entrepriseService: EntrepriseService,
-    private authService:AuthService,
     private cdr: ChangeDetectorRef,
   ) { }
 
@@ -48,9 +41,7 @@ export class EntrepriseFormComponent implements OnInit {
   }
 
   isFieldRequired(name){
-    // return !!this.entrepriseForm.controls[name].validator(name).hasOwnProperty('required');
     const validator = this.entrepriseForm.get(name).validator({} as AbstractControl);
-    console.log(validator);
     if (validator && validator.required) {
       return true;
     }
