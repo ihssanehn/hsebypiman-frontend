@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ChangeDetectorRef, EventEmitter, Output } from '@angular/core';
-import { FormGroup, AbstractControl } from '@angular/forms';
+import { FormGroup, AbstractControl, FormControl } from '@angular/forms';
 import { Type,  } from '@app/core/models';
 import { TypeService, } from '@app/core/services';
 import { FormStatus } from '@app/core/_base/crud/models/form-status';
@@ -40,11 +40,16 @@ export class EntrepriseFormComponent implements OnInit {
     this.cdr.markForCheck();
   }
 
-  isFieldRequired(name){
-    const validator = this.entrepriseForm.get(name).validator({} as AbstractControl);
-    if (validator && validator.required) {
-      return true;
+  isFieldRequired(controlName){
+    if(this.entrepriseForm && this.entrepriseForm.controls[controlName]){
+      const control = this.entrepriseForm.controls[controlName]
+      const { validator } = control
+      if (validator) {
+          const validation = validator(new FormControl())
+          return validation !== null && validation.required === true
+      }
     }
+    return false
   }
 
   /**

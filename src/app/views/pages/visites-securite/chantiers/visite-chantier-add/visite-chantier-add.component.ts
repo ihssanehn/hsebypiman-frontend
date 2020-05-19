@@ -55,9 +55,9 @@ export class VisiteChantierAddComponent implements OnInit {
   createForm() {
 		this.visiteForm = this.visiteFB.group({
       'chantier_id': ['', Validators.required],
-      'salarie_id': [{value:''}, Validators.required],
-      'entreprise_id': [{value:''}, Validators.required],
-      'redacteur_id': [{value:'', disabled:true}, Validators.required],
+      'salarie_id': [{value:null, disabled:false}, Validators.required],
+      'entreprise_id': [{value:null, disabled:false}, Validators.required],
+      'redacteur_id': [{value:null, disabled:true}, Validators.required],
       'date_visite': ['', Validators.required],
       // 'is_validated_redacteur': ['', Validators.required],
       // 'is_validated_visite': ['', Validators.required],
@@ -67,7 +67,7 @@ export class VisiteChantierAddComponent implements OnInit {
       'has_rectification_imm': [null, Validators.required],
       'avertissement': [null, Validators.required],
       'type_id': ['', Validators.required],
-      'questions': [],
+      'questions': this.visiteFB.array([]),
 		});
 		this.loaded = true;
 		this.cdr.detectChanges();
@@ -80,19 +80,19 @@ export class VisiteChantierAddComponent implements OnInit {
     this.visiteForm.get('salarie_id').valueChanges.subscribe(salarie_id => {
         if (salarie_id != null) {
           entreprise_id.setValidators(null);
-          entreprise_id.disable();
+          entreprise_id.disable({onlySelf:true, emitEvent:false});
         }else{
           entreprise_id.setValidators(Validators.required);
-          entreprise_id.enable();
+          entreprise_id.enable({onlySelf:true, emitEvent:false});
         }
-    })
-    this.visiteForm.get('entreprise_id').valueChanges.subscribe(entreprise_id => {
+      })
+      this.visiteForm.get('entreprise_id').valueChanges.subscribe(entreprise_id => {
         if (entreprise_id != null) {
           salarie_id.setValidators(null);
-          salarie_id.disable();
+          salarie_id.disable({onlySelf:true, emitEvent:false});
         }else{
           salarie_id.setValidators(Validators.required);
-          salarie_id.enable();
+          salarie_id.enable({onlySelf:true, emitEvent:false});
         }
     })
   }
@@ -104,8 +104,6 @@ export class VisiteChantierAddComponent implements OnInit {
   async getChantier(chantierId){
     var res = await this.chantierService.get(chantierId).toPromise();
     this.chantier = res.result.data;
-    // this.visiteForm.setValue('chantier_id':this.chantier.id);
-    // this.visiteForm.setValue('redacteur_id':this.chantier.charge_affaire_id);
   }
 
   async onSubmit(event){
@@ -139,7 +137,6 @@ export class VisiteChantierAddComponent implements OnInit {
           if(err.status === 422){
             var messages = extractErrorMessagesFromErrorResponse(err);
             this.formStatus.onFormSubmitResponse({success: false, messages: messages});
-            console.log(this.formStatus.errors, this.formStatus.canShowErrors());
             this.cdr.detectChanges();
             this.cdr.markForCheck();
           }
@@ -158,8 +155,13 @@ export class VisiteChantierAddComponent implements OnInit {
       return date ? moment(date).format('YYYY-MM-DD') : null;
   }
 
-  canDisplayQuestions(){
-    this.visiteForm.get('chantier_id').value && this.visiteForm.get('type_id').value;
+  cantDisplayQuestions(){
+    var test: boolean = this.visiteForm.get('chantier_id').invalid ||
+      this.visiteForm.get('type_id').invalid ||
+      this.visiteForm.get('salarie_id').invalid || 
+      this.visiteForm.get('entreprise_id').invalid;
+
+    return test;
   }  
 
   displayQuestions(){
