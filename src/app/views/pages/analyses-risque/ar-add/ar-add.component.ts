@@ -427,13 +427,12 @@ export class ArAddComponent implements OnInit, OnDestroy {
 
     this.arService.create(form)
       .toPromise()
-      .then((ar) => {
-        console.log(ar);
+      .then((result) => {
+        console.log(result);
         this.cdr.markForCheck();
-
         var message = null;
-        if(!this.chantier.is_all_ars_signed){
-          message = 'Une analyse de risque sans signature a été archivée.';
+        if(result.message.code != 'done'){
+          message = result.message.content;
         }
         this.fireNotifAfterSave(message);
   
