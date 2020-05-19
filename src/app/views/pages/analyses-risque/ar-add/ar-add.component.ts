@@ -358,18 +358,11 @@ export class ArAddComponent implements OnInit, OnDestroy {
 
       if(form.chantier_id)
       {
-        if(!this.chantier.is_all_ars_signed){
-          this.fireAlertBeforeSave(
+        if(!this.chantier.is_all_ars_archived){
+          this.fireNotifBeforeSave(
             form,
-            'Il y une autre analyse de risque pour ce chantier, qui n\'a pas encore été signée!'
+            'Une autre analyse de risque est disponible et va être archivée.'
           );
-        }
-        else if(!this.chantier.is_all_ars_archived){
-          this.fireAlertBeforeSave(
-            form,
-            'Il y une autre analyse de risque pour ce chantier, Elle va être archivée dès que vous cliquez sur confirmer.'
-          );
-
         }else{
           this.save(form);
         }
@@ -390,7 +383,7 @@ export class ArAddComponent implements OnInit, OnDestroy {
 
   }
 
-  fireAlertBeforeSave(form, message){
+  fireNotifBeforeSave(form, message){
     Swal.fire({
       icon: 'warning',
       title: 'Voulez vous vraiment créer une nouvelle analyse de risque ?',
@@ -416,6 +409,18 @@ export class ArAddComponent implements OnInit, OnDestroy {
     });
   }
 
+  fireNotifAfterSave(message = null){
+    Swal.fire({
+      icon: 'success',
+      title: 'Analyse de risque créée avec succès',
+      text: message,
+      showConfirmButton: false,
+      timer: 2000
+    }).then(() => {
+      this.router.navigate(['/analyses-risque/list']);
+    });
+  }
+
   async save(form){
     form.date_accueil_secu = this.dateFrToEnPipe.transform(form.date_accueil_secu);
     form.date_validite = this.dateFrToEnPipe.transform(form.date_validite);
@@ -425,15 +430,13 @@ export class ArAddComponent implements OnInit, OnDestroy {
       .then((ar) => {
         console.log(ar);
         this.cdr.markForCheck();
-        
-        Swal.fire({
-          icon: 'success',
-          title: 'Analyse de risque créée avec succès',
-          showConfirmButton: false,
-          timer: 1500
-        }).then(() => {
-          this.router.navigate(['/analyses-risque/list']);
-        });
+
+        var message = null;
+        if(!this.chantier.is_all_ars_signed){
+          message = 'Une analyse de risque sans signature a été archivée.';
+        }
+        this.fireNotifAfterSave(message);
+  
       })
       .catch(err =>{ 
 
