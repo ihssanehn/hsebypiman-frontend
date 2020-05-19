@@ -36,7 +36,7 @@ export class ArZonesAdminComponent extends AdminTemplateComponent  implements On
   }
 
   async getList(){
-    let res = await this.parentService.getAllFromModel('Zone').toPromise();
+    let res = await this.parentService.getAllAsAdmin({model:'Zone'}).toPromise();
     this.list = res.result.data.map( (type:any) => { this.initChildren(type); return type })
     for (let item of this.list) {
       item['children'] = await this.getZones(item.id);

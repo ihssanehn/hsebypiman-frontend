@@ -66,6 +66,14 @@
 					<mat-label>{{'ARS.CHANTIERS.ADRESS' | translate}}</mat-label>
 					<p class="mt-1"><strong>{{chantier?.adresse}}, {{chantier?.code_postal}} {{chantier?.ville}} {{chantier?.pays}}</strong></p>
 				</div>
+				<div class="col-xl-12 col-lg-12 col-md-12">
+					<mat-label>{{'CHANTIERS.HABILITATIONS.TITLE' | translate}}</mat-label>
+					<p class="mt-1">
+						<strong class="mr-2" *ngFor="let hab of chantier.habilitations;">
+							{{hab.libelle}}
+						</strong>
+					</p>
+				</div>
 			</div>
 		</div>
 	</div>

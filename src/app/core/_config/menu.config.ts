@@ -489,12 +489,12 @@ export class MenuConfig {
 					}
 				]
 			},
-			vss: {
+			vss_chantier: {
 				btnAdd: {
-					title: 'Nouvelle visite de sécurité',
+					title: 'Nouvelle visite de sécurité chantier',
 					root: true,
 					alignment: 'left',
-					page: '/visites-securite/add',
+					page: '/visites-securite/chantiers/add',
 					translate: 'MENU.BTN.NEWVS',
 				},
 				items: [
@@ -511,7 +511,7 @@ export class MenuConfig {
 						title: 'Liste',
 						root: true,
 						alignment: 'left',
-						page: '/visites-securite/list',
+						page: '/visites-securite/chantiers/list',
 						translate: 'MENU.LIST',
 						icon: 'view_list',
 						// icon: 'flaticon2-browser-2',

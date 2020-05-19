@@ -2,10 +2,10 @@
 	<div class="d-flex justify-content-between pointer" (click)="tpl.collapsed = !tpl.collapsed" >
 		<h3 class="m-0">{{ tpl?.title }}</h3>
 		<div class="">
-			<a [ngClass]="{'collapsed' : tpl?.collapsed }" class="btn btn-sm btn-icon btn-clean btn-icon-md accordion" data-toggle="collapse" data-target="#group" aria-expanded="true">
+			<a [ngClass]="{'collapsed' : tpl?.collapsed }" matTooltip="Réduire" class="btn btn-sm btn-icon btn-clean btn-icon-md accordion" data-toggle="collapse" data-target="#group" aria-expanded="true">
 				<i class="la la-angle-down"></i>
 			</a>
-			<a (click)="$event.stopPropagation(); addItem()" data-ktportlet-tool="add" class="btn btn-sm btn-icon btn-clean btn-icon-md">
+			<a (click)="$event.stopPropagation(); addItem()" matTooltip="Ajouter" data-ktportlet-tool="add" class="btn btn-sm btn-icon btn-clean btn-icon-md">
 				<i class="la la-plus"></i>
 			</a>
 		</div>

@@ -17,10 +17,14 @@ export class ParamsService extends HttpService{
       super()
   }
 
-  getAll(){
-      return this.http.post<JsonResponse<Param[]>>(this.baseUrl, {});
+  getAll(params = {}){
+    return this.http.post<JsonResponse<Param[]>>(this.baseUrl, {...params});
   }
-
+  getAllAsAdmin(params = {}){
+    var extendparams = {...params}
+    extendparams['fromAdmin'] = true;
+    return this.http.post<JsonResponse<Param[]>>(this.baseUrl, {...extendparams});
+  }
   getValues() {
     return this.http.get<JsonResponse<Param[]>>(this.baseUrl+'/mini');
   }

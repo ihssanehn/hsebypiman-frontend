@@ -21,8 +21,13 @@ export class StatusService extends HttpService{
         super()
     }
 
-    getAll(){
-        return this.http.post<JsonResponse<Status[]>>(this.baseUrl, {});
+    getAll(params = {}){
+        return this.http.post<JsonResponse<Status[]>>(this.baseUrl, {...params});
+    }
+    getAllAsAdmin(params = {}){
+        var extendparams = {...params}
+        extendparams['fromAdmin'] = true;
+        return this.http.post<JsonResponse<Status[]>>(this.baseUrl, {...extendparams});
     }
     getAllFromModel(model){
         return this.http.post<JsonResponse<Status[]>>(this.baseUrl, {'model': model});

@@ -98,7 +98,8 @@ import {
 		NzInputModule, 
 		NzPopconfirmModule, 
 		NzDividerModule, 
-		NzIconModule 
+		NzIconModule,
+		NzCheckboxModule
 } from 'ng-zorro-antd';
 import { AdminAddModalComponent } from './layout/admin-add-modal/admin-add-modal.component';
 import { ScrollDispatchModule, ScrollingModule } from '@angular/cdk/scrolling';
@@ -273,7 +274,7 @@ import { ArDetailPanelsComponent } from './layout/analyse-risque/ar-detail-panel
 		NzPopconfirmModule,
 		NzDividerModule,
 		NzIconModule,
-
+		NzCheckboxModule,
 		NgbModule,
 		DragDropModule,
 		

@@ -19,8 +19,13 @@ export class CatQuestionService extends HttpService{
     super()
   }
 
-  getAll(params){
+  getAll(params = {}){
     return this.http.post<JsonResponse<CatQuestion[]>>(this.baseUrl, {...params});
+  }
+  getAllAsAdmin(params = {}){
+    var extendparams = {...params}
+    extendparams['fromAdmin'] = true;
+    return this.http.post<JsonResponse<CatQuestion[]>>(this.baseUrl, {...extendparams});
   }
 
   get(id){

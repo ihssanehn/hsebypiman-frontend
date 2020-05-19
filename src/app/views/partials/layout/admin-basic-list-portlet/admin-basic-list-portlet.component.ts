@@ -67,6 +67,12 @@ export class AdminBasicListPortletComponent implements OnInit {
     data.edit = false;
     data.libelle = data.old; 
   }
-
+  toggleVisibility(item){
+    if(item.active == 1){
+      item.active = 0;
+    }else{
+      item.active = 1
+    };
+  }
 
 }

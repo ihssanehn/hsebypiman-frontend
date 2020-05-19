@@ -19,8 +19,13 @@ export class EquipementService extends HttpService{
     super()
   }
 
-  getAll(){
-    return this.http.post<JsonResponse<Equipement[]>>(this.baseUrl, {});
+  getAll(params = {}){
+    return this.http.post<JsonResponse<Equipement[]>>(this.baseUrl, {...params});
+  }
+  getAllAsAdmin(params = {}){
+    var extendparams = {...params}
+    extendparams['fromAdmin'] = true;
+    return this.http.post<JsonResponse<Equipement[]>>(this.baseUrl, {...extendparams});
   }
 
   create(payload){

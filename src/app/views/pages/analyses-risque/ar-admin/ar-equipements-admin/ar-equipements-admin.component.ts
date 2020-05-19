@@ -33,7 +33,7 @@ export class ArEquipementsAdminComponent extends AdminTemplateComponent implemen
 
   async getList(){
     try {
-      var res = await this.parentService.getAll().toPromise();
+      var res = await this.parentService.getAllAsAdmin().toPromise();
       this.list = res.result.data;
       this.cdr.markForCheck();
 		} catch (error) {

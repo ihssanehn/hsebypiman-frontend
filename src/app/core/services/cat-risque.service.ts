@@ -19,8 +19,13 @@ export class CatRisqueService extends HttpService{
     super()
   }
 
-  getAll(){
-    return this.http.post<JsonResponse<CatRisque[]>>(this.baseUrl, {});
+  getAll(params = {}){
+    return this.http.post<JsonResponse<CatRisque[]>>(this.baseUrl, {...params = {}});
+  }
+  getAllAsAdmin(params = {}){
+    var extendparams = {...params}
+    extendparams['fromAdmin'] = true;
+    return this.http.post<JsonResponse<CatRisque[]>>(this.baseUrl, {...extendparams});
   }
   get(item_id){
     return this.http.get<any>(this.baseUrl+'/'+item_id)

@@ -2,23 +2,23 @@
 <div class="tf-portlet tf-portlet--bordered item" [ngClass]="{'collapsed' : collapsed }" data-ktportlet="true" id="kt_portlet_tools_3">
 
     <div class="tf-portlet__head">
-        <div class="tf-portlet__head-label">
+        <div class="tf-portlet__head-label" style="flex:1; justify-content: space-between">
 
             <ng-container *ngIf="!item.edit; else editTitle">
                 <h3 class="tf-portlet__head-title pointer" (click)="collapsed = !collapsed">
                     {{ item?.libelle }}
                 </h3>
-                <div class="ml-1">
-                    <i nz-icon nzType="edit" (click)="startEdit(item)" nzTheme="outline" class="pointer"></i>
+                <div class="mx-2">
+                    <i class="fa" [ngClass]="item?.active ? 'fa-eye text-success':'fa-eye-slash'"></i>
                 </div>
             </ng-container>
 
             <ng-template #editTitle>
                 <input type="text" nz-input [(ngModel)]="item.libelle" name="title" [ngStyle]="{'width' : ((item.libelle.length + 2) * 8) + 'px', 'min-width' : '100px' }" />
-                <div class="ml-1 d-inline-flex">
-                    <i nz-icon nzType="check" (click)="saveItem(item)" nzTheme="outline" class="pointer text-success"></i>
-                    <nz-divider nzType="vertical"></nz-divider>
-                    <i nz-icon nzType="close" (click)="cancelEdit(item)" nzTheme="outline" class="pointer"></i>
+                <div class="mx-2">
+                    <a (click)="toggleVisibility(item)" class="btn btn-sm btn-icon btn-clean btn-icon-md">
+                        <i class="fa" [ngClass]="item?.active ? 'fa-eye':'fa-eye-slash'"></i>
+                    </a>
                 </div>
             </ng-template>
         </div>
@@ -26,20 +26,21 @@
         <div class="tf-portlet__head-toolbar">
 
             <div class="tf-portlet__head-group">
-
-                <a (click)="collapsed = !collapsed" [ngClass]="{'collapsed' : collapsed }" class="btn btn-sm btn-icon btn-clean btn-icon-md accordion" data-toggle="collapse" data-target="#group" aria-expanded="true">
-                    <i class="la la-angle-down"></i>
-                </a>
-
-                <a (click)="refreshItem(item)" class="btn btn-sm btn-icon btn-clean btn-icon-md">
-                    <i class="la la-refresh"></i>
-                </a>
-                <a (click)="addChild()" data-ktportlet-tool="add" class="btn btn-sm btn-icon btn-clean btn-icon-md">
-                <i class="la la-plus"></i>
-                </a>
-                <a (nzOnConfirm)="deleteItem(item)" nz-popconfirm nzPopconfirmTitle="Are you sure delete this item ?" class="btn btn-sm btn-icon btn-clean btn-icon-md">
-                    <i class="la la-trash"></i>
-                </a>
+                <ng-container *ngIf="!item.edit; else editActions">
+                    <button mat-icon-button color="primary" matTooltip="Actions" [matMenuTriggerFor]="actionMenu" (click)="selectedItem = item" >
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <a (click)="collapsed = !collapsed" matTooltip="Réduire" [ngClass]="{'collapsed' : collapsed }" class="btn btn-sm btn-icon btn-clean btn-icon-md accordion" data-toggle="collapse" data-target="#group" aria-expanded="true">
+                        <i class="la la-angle-down"></i>
+                    </a>
+                </ng-container>
+                <ng-template #editActions>
+                    <div class="ml-1 d-inline-flex">
+                        <i nz-icon nzType="check" matTooltip="Enregistrer" (click)="saveItem(item)" nzTheme="outline" class="pointer text-success"></i>
+                        <nz-divider nzType="vertical"></nz-divider>
+                        <i nz-icon nzType="close" matTooltip="Annuler" (click)="cancelEdit(item)" nzTheme="outline" class="pointer"></i>
+                    </div>
+                </ng-template>
             </div>
 
         </div>
@@ -58,6 +59,7 @@
                 <thead>
                 <tr>
                     <th nzWidth="70%">Libellé</th>
+                    <th nzWidth="15%" class="text-center">Afficher</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -65,20 +67,36 @@
                     <tr cdkDrag [cdkDragData]="data" *ngFor="let data of item?.children">
                         <ng-container *ngIf="!data.edit; else editTemplate">
                             <td>{{ data?.libelle }}</td>
+                            <td class="text-center">
+                                <i class="fa" [ngClass]="data?.active ? 'fa-eye text-success':'fa-eye-slash'"></i>
+                            </td>
                             <td>
-                                <a (click)="startEdit(data)" class="text-primary">Modifier</a>
+                                <a (click)="startEdit(data)" matTooltip="Modifier" class="text-primary">
+                                    <i nz-icon nzType="edit"  nzTheme="outline" class="pointer"></i>
+                                </a>
                                 <nz-divider nzType="vertical"></nz-divider>
-                                <a nz-popconfirm nzTitle="Sure to delete?" class="text-danger" (nzOnConfirm)="deleteChild(data)">Supprimer</a>
+                                <a nz-popconfirm nzTitle="Sure to delete?" matTooltip="Supprimer"  class="text-danger" (nzOnConfirm)="deleteChild(data)">
+                                    <i class="la la-trash"></i>
+                                </a>
                             </td>
                         </ng-container>
                         <ng-template #editTemplate>
                             <td>
                                 <input type="text" nz-input [(ngModel)]="data.libelle" name="name" />
                             </td>
+                            <td class="text-center">
+                                <a (click)="toggleVisibility(data)" class="btn btn-sm btn-icon btn-clean btn-icon-md">
+                                    <i class="fa" [ngClass]="data?.active ? 'fa-eye':'fa-eye-slash'"></i>
+                                </a>
+                            </td>
                             <td>
-                                <a (click)="saveChild(data)" class="save" class="text-primary">Enregistrer</a>
+                                <a (click)="saveChild(data)" matTooltip="Enregistrer" class="save" class="text-primary">
+                                    <i nz-icon nzType="check" nzTheme="outline"></i>
+                                </a>
                                 <nz-divider nzType="vertical"></nz-divider>
-                                <a (click)="cancelEdit(data)">Annuler</a>
+                                <a (click)="cancelEdit(data)" matTooltip="Annuler">
+                                    <i nz-icon nzType="close" nzTheme="outline"></i>
+                                </a>
                             </td>
                         </ng-template>
                     </tr>
@@ -89,4 +107,31 @@
     </div>
 
 </div>
+<mat-menu #actionMenu="matMenu" class="action-menu">
+    <!-- *ngxPermissionsOnly="['ADMIN']" -->
+    <a (click)="startEdit(selectedItem)" matTooltip="Modifier" class="btn btn-sm btn-icon btn-clean btn-icon-md">
+        <i nz-icon nzType="edit"  nzTheme="outline" class="pointer"></i>
+    </a>
+    <a (click)="addChild()" data-ktportlet-tool="add" matTooltip="Ajouter" class="btn btn-sm btn-icon btn-clean btn-icon-md">
+    <i class="la la-plus"></i>
+    </a>
+    <a (click)="refreshItem(selectedItem)" matTooltip="Raffraîchir" class="btn btn-sm btn-icon btn-clean btn-icon-md">
+        <i class="la la-refresh"></i>
+    </a>
+    <a (nzOnConfirm)="deleteItem(selectedItem)" matTooltip="Supprimer" nz-popconfirm nzPopconfirmTitle="Are you sure delete this item ?" class="btn btn-sm btn-icon btn-clean btn-icon-md">
+        <i class="la la-trash"></i>
+    </a>
+	<!-- <button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}" (click)="refreshItem(item)">
+		<mat-icon>visibility</mat-icon>
+	</button>
+	<button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}" (click)="refreshItem(item)">
+		<mat-icon>visibility</mat-icon>
+	</button>
+	<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editChantier(selectedChantier.id)" *ngIf="selectedChantier?.status?.code != 'TERMINE'">
+		<mat-icon>edit</mat-icon>
+	</button>
+	<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteChantier(selectedChantier.id)" *ngIf="selectedChantier?.status?.code != 'TERMINE'">
+		<mat-icon>delete</mat-icon>
+	</button> -->
+</mat-menu>
 <!--end::Portlet-->

@@ -22,8 +22,13 @@ export class TypeService extends HttpService{
         super()
     }
 
-    getAll(params){
+    getAll(params = {}){
         return this.http.post<JsonResponse<Type[]>>(this.baseUrl, {...params});
+    }
+    getAllAsAdmin(params = {}){
+        var extendparams = {...params}
+        extendparams['fromAdmin'] = true;
+        return this.http.post<JsonResponse<Type[]>>(this.baseUrl, {...extendparams});
     }
     getAllFromModel(model){
         return this.http.post<JsonResponse<Type[]>>(this.baseUrl, {'model': model});

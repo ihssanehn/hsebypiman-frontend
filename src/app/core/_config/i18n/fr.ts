@@ -262,6 +262,12 @@ export const locale = {
 				TITLE:'Nombre d\'habilitations',
 				SHORTTITLE:'Nombre d\'habilitations',
 			},
+			HABILITATIONS:{
+				LABEL:'Habilitations obligatoires pour accéder au chantier',
+				PLACEHOLDER:'',
+				TITLE:'Habilitations obligatoires pour accéder au chantier',
+				SHORTTITLE:'Habilitations obligatoires',
+			},
 			EE_PRESENCE:{
 				LABEL:'Présence d\'E.E',
 				PLACEHOLDER:'',
