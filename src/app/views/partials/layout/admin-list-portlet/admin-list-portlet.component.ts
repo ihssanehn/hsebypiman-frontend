@@ -34,6 +34,7 @@ export class AdminListPortletComponent implements OnInit {
   onDeleteChild = new EventEmitter<any>();
 
   collapsed : boolean = false;
+  selectedItem;
 
   constructor() { }
 
@@ -57,7 +58,7 @@ export class AdminListPortletComponent implements OnInit {
   
   
   addChild(){
-    this.item.children.push({edit: true})
+    this.item.children.push({edit: true, id:"-1"})
     // this.nzTableComponent.cdkVirtualScrollViewport.scrollToIndex(10);
   }
 
@@ -77,36 +78,37 @@ export class AdminListPortletComponent implements OnInit {
     if(this.sortable){
       let data = { id : event.item.data.id, ordre :  event.currentIndex };
       moveItemInArray(this.item.children, event.previousIndex, event.currentIndex);
-      this.saveChild(data);
+      if(data.id != -1){this.saveChild(data)};
     }
   }
 
 
 
   startEdit(data: any): void {
-    data.old  = data.libelle; 
+    data.old_lib = data.libelle; 
+    data.old_activ = data.active;
     data.edit = true;
   }
 
   cancelEdit(data : any): void {
-    data.edit = false;
-    data.libelle = data.old; 
-  }
-
-
-  onCheckChange(event, data){
-    if(event.checked){
-      data.active = 1;
+    if(data.id >= 0){
+      data.edit = false;
+      data.libelle = data.old_lib; 
+      data.active = data.old_activ ;
     }else{
-      data.active = 0;
+      var idx = this.item.children.map(function(x) {return x.id; }).indexOf(data.id);
+      this.item.children.splice(idx, 1);
     }
-    console.log(data)
-
-  }
-  isActive(data){
-    return data.active == 1;
   }
 
+
+  toggleVisibility(item){
+    if(item.active == 1){
+      item.active = 0;
+    }else{
+      item.active = 1
+    };
+  }
 
 
 }
