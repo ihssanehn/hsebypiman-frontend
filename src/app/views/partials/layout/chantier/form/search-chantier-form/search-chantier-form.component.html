@@ -31,15 +31,7 @@
 			</div>
 		</div>
 		<div class="col-md-12 result-msg pb-3 my-3" *ngIf="chantier && origin!='detail'">
-			<div *ngIf="!chantier.is_all_ars_signed">
-				<span>{{'ARS.CHANTIERS.FORM.SEARCH.NOTIF.AR_NOT_SIGNED_FOUND.TEXT1' | translate}}</span> 
-				{{'ARS.CHANTIERS.FORM.SEARCH.NOTIF.AR_NOT_SIGNED_FOUND.TEXT2' | translate}}
-			</div>
-			<div *ngIf="chantier.is_all_ars_signed && !chantier.is_all_ars_archived">
-				<span>{{'ARS.CHANTIERS.FORM.SEARCH.NOTIF.AR_NOT_ARCHIVED_FOUND.TEXT1' | translate}}</span> 
-				{{'ARS.CHANTIERS.FORM.SEARCH.NOTIF.AR_NOT_ARCHIVED_FOUND.TEXT2' | translate}}
-			</div>
-			<div *ngIf="chantier.is_all_ars_signed && chantier.is_all_ars_archived">
+			<div>
 				<span>{{'ARS.CHANTIERS.FORM.SEARCH.NOTIF.STANDARD.TEXT1' | translate}}</span> 
 				{{'ARS.CHANTIERS.FORM.SEARCH.NOTIF.STANDARD.TEXT2' | translate}}
 			</div>
