@@ -156,8 +156,16 @@ export class ChantierFormComponent implements OnInit {
   onHabIsChecked(habId){
     return this.chantierForm.get('habilitations').value.includes(habId);
   }
-  isFieldRequired(name){
-    return !!this.chantierForm.controls[name].validator(name).hasOwnProperty('required');
+  isFieldRequired(controlName){
+    if(this.chantierForm && this.chantierForm.controls[controlName]){
+      const control = this.chantierForm.controls[controlName]
+      const { validator } = control
+      if (validator) {
+          const validation = validator(new FormControl())
+          return validation !== null && validation.required === true
+      }
+    }
+    return false
   }
   isEEFieldRequired(name, index){
     var ee = this.entreprises.controls[index] as FormGroup;
