@@ -330,11 +330,22 @@ export const locale = {
 				EMPLOYEE:'Salarié CVTI réalisant la visite commune',
 				FORM:{
 					SEARCH:{
-						TITLE:'Rechercher un chantier',
-						RESULT: {
-							TEXT1:'Un chantier trouvé',
-							TEXT2:'pour cette analyse de risque'
-						}
+						LABEL:'Rechercher un chantier',
+						NOTIF: {
+							STANDARD: {
+								TEXT1:'Un chantier trouvé',
+								TEXT2:'pour cette analyse de risque'
+							},
+							AR_NOT_SIGNED_FOUND: {
+								TEXT1:'Il y une autre analyse de risque',
+								TEXT2:'pour ce chantier, qui n\'a pas encore été signée'
+							},
+							AR_NOT_ARCHIVED_FOUND: {
+								TEXT1:'Une autre analyse de risque trouvée',
+								TEXT2:'pour ce chantier, Elle va être archivée dès que vous en créez une nouvelle'
+							}
+						},
+
 					},
 					DETAIL:{
 						TITLE:'Informations chantier',

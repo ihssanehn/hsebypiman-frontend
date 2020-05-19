@@ -23,6 +23,7 @@ export class Ar {
     observations_signature?: string;
     salarie_id?: number;
     status_id?: number;
+    status?: any;
     creator_id?: number;
     a_signer_registre_travaux?: boolean;
     a_prevoir_balisage?: boolean;
@@ -41,10 +42,6 @@ export class Ar {
     nom_charge_registre?: string;
     tel_charge_registre?: string;
     pays_charge_registre?: string;
-    nom_ca_cvti?: string;
-    tel_ca_cvti?: string;
-    assistant_ca?: string;
-    tel_assistant_ca?: string;
     is_signed?: boolean;
 
     zonesGrouped?:Array<any>;

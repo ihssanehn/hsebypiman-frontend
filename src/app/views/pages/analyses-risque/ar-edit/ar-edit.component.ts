@@ -7,7 +7,7 @@ import { ArService, TypeService, ChantierService } from '@app/core/services';
 import { Paginate } from '@app/core/_base/layout/models/paginate.model';
 import { Ar, Chantier } from '@app/core/models';
 import { NgxPermissionsService } from 'ngx-permissions';
-import { tap, startWith, map } from 'rxjs/operators';
+import { tap, startWith, map, distinctUntilChanged } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 import { Location } from '@angular/common';
 import moment from 'moment';
@@ -171,10 +171,7 @@ export class ArEditComponent implements OnInit, OnDestroy {
 			tel_charge_registre:[''],
 
 			a_prevoir_balisage:['0', Validators.required],
-			nom_ca_cvti:['', Validators.required],
-			tel_ca_cvti:['', Validators.required],
-			assistant_ca:['', Validators.required],
-			tel_assistant_ca:['', Validators.required],
+
 			observations_signature:[''],
 			risques:new FormArray([]),
 			zones:new FormArray([]),
@@ -186,11 +183,6 @@ export class ArEditComponent implements OnInit, OnDestroy {
 	}
 
 	setDynamicValidators() {
-		const nom_ca_cvti = this.arForm.get('nom_ca_cvti');
-		const tel_ca_cvti = this.arForm.get('tel_ca_cvti');
-		const assistant_ca = this.arForm.get('assistant_ca');
-		const tel_assistant_ca = this.arForm.get('tel_assistant_ca');
-	
 		const nom_charge_registre = this.arForm.get('nom_charge_registre');
 		const adresse_charge_registre = this.arForm.get('adresse_charge_registre');
 		const ville_charge_registre = this.arForm.get('ville_charge_registre');
@@ -205,29 +197,73 @@ export class ArEditComponent implements OnInit, OnDestroy {
 		const accueil_secu_days = this.arForm.get('accueil_secu_days');
 		const accueil_secu_time_opening = this.arForm.get('accueil_secu_time_opening');
 		const accueil_secu_time_closing = this.arForm.get('accueil_secu_time_closing');
+
+		var contactsFields = [];
+		contactsFields[0] = [
+		  {
+			'name' : 'contact_interne_secours',
+			'control' : this.arForm.get('contact_interne_secours')
+		  },
+		  {
+			'name' : 'tel_contact_interne_secours',
+			'control' : this.arForm.get('tel_contact_interne_secours')
+		  }
+		];
+		contactsFields[1] = [
+		  {
+			'name' : 'contact_client_chef_chtr',
+			'control' : this.arForm.get('contact_client_chef_chtr')
+		  },
+		  {
+			'name' : 'tel_contact_client_chef_chtr',
+			'control' : this.arForm.get('tel_contact_client_chef_chtr')
+		  }
+		];
+		contactsFields[2] = [
+		  {
+			'name' : 'contact_client_hse',
+			'control' : this.arForm.get('contact_client_hse')
+		  },
+		  {
+			'name' : 'tel_contact_client_hse',
+			'control' : this.arForm.get('tel_contact_client_hse')
+		  }
+		];
 	
-		this.arForm.get('a_prevoir_balisage').valueChanges
-		  .subscribe(a_prevoir_balisage => {
+		contactsFields.forEach((item, index) => {
+		  this.arForm.get(item[0].name).valueChanges
+		  .pipe(distinctUntilChanged())  
+		  .subscribe(field => {
 	
-			if (a_prevoir_balisage === '1') {
-			  nom_ca_cvti.setValidators([Validators.required]);
-			  tel_ca_cvti.setValidators([Validators.required]);
-			  assistant_ca.setValidators([Validators.required]);
-			  tel_assistant_ca.setValidators([Validators.required]);
+			if (field !== '') {
+			  contactsFields.forEach((element, key) => {
+				if(key != index){
+				  element.forEach(control => {
+					control.control.setValidators(null);
+				  });
+				}
+			  });
 			}
 	
-			if (a_prevoir_balisage === '0') {
-			  nom_ca_cvti.clearValidators();
-			  tel_ca_cvti.clearValidators();
-			  assistant_ca.clearValidators();
-			  tel_assistant_ca.clearValidators();
+			if (field === '') {
+			  contactsFields.forEach((element, key) => {
+				if(key != index){
+				  element.forEach(control => {
+					control.control.setValidators([Validators.required]);
+				  });
+				}
+			  });
 			}
 	
-			nom_ca_cvti.updateValueAndValidity();
-			tel_ca_cvti.updateValueAndValidity();
-			assistant_ca.updateValueAndValidity();
-			tel_assistant_ca.updateValueAndValidity();
+			contactsFields.forEach((element, key) => {
+			  if(key !== index){
+				element.forEach(control => {
+				  control.control.updateValueAndValidity();
+				});
+			  }
+			});
 		  });
+		});
 	
 		this.arForm.get('a_signer_registre_travaux').valueChanges
 		  .subscribe(a_signer_registre_travaux => {

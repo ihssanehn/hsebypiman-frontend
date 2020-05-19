@@ -7,7 +7,7 @@
 		</div>
 		<div class="col-md-12 search-box" *ngIf="origin!='detail'">
 			<div class="mr-4">
-				<b>{{'ARS.CHANTIERS.FORM.SEARCH.TITLE' | translate}}</b>
+				<b>{{'ARS.CHANTIERS.FORM.SEARCH.LABEL' | translate}}</b>
 			</div>
 			<div class="search-layout ml-4">
 				<div class="form-group form-group-sm row col" >
@@ -31,8 +31,18 @@
 			</div>
 		</div>
 		<div class="col-md-12 result-msg pb-3 my-3" *ngIf="chantier && origin!='detail'">
-			<span>{{'ARS.CHANTIERS.FORM.SEARCH.RESULT.TEXT1' | translate}}</span> 
-			<!-- {{'ARS.CHANTIERS.FORM.SEARCH.RESULT.TEXT2' | translate}} -->
+			<div *ngIf="!chantier.is_all_ars_signed">
+				<span>{{'ARS.CHANTIERS.FORM.SEARCH.NOTIF.AR_NOT_SIGNED_FOUND.TEXT1' | translate}}</span> 
+				{{'ARS.CHANTIERS.FORM.SEARCH.NOTIF.AR_NOT_SIGNED_FOUND.TEXT2' | translate}}
+			</div>
+			<div *ngIf="chantier.is_all_ars_signed && !chantier.is_all_ars_archived">
+				<span>{{'ARS.CHANTIERS.FORM.SEARCH.NOTIF.AR_NOT_ARCHIVED_FOUND.TEXT1' | translate}}</span> 
+				{{'ARS.CHANTIERS.FORM.SEARCH.NOTIF.AR_NOT_ARCHIVED_FOUND.TEXT2' | translate}}
+			</div>
+			<div *ngIf="chantier.is_all_ars_signed && chantier.is_all_ars_archived">
+				<span>{{'ARS.CHANTIERS.FORM.SEARCH.NOTIF.STANDARD.TEXT1' | translate}}</span> 
+				{{'ARS.CHANTIERS.FORM.SEARCH.NOTIF.STANDARD.TEXT2' | translate}}
+			</div>
 		</div>
 		<div class="col-md-12 px-5 search-result-block" *ngIf="chantier">
 			<div class="row">
