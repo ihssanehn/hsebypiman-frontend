@@ -28,12 +28,13 @@ export class ArSignatureComponent extends ArDetailComponent implements OnInit {
 
   ngOnInit() {
     super.ngOnInit();
-    this.isDisableToggle = true;
     this.loaded = false;
   }
 
   createForm() {
     
+    this.isDisableToggle = !this.ar.is_signed;
+    this.isExpanded = !this.ar.is_signed;
     this.signaturesForm = this.fb.array([]);
 
     if(!this.ar.is_signed){
