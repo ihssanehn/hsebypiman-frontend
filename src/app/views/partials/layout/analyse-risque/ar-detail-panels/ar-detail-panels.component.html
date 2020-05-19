@@ -294,30 +294,6 @@
                 <div class="tf-heading tf-heading--sm">
                     {{'ARS.FORM.MWBLOCK.SUBTITLE2' | translate}}<mat-slide-toggle class="pull-right" [checked]="isChecked('a_prevoir_balisage')" disabled></mat-slide-toggle>
                 </div>
-                <div class="form-row-flex">
-                    <div class="col-md-12" [hidden]="!ar.a_prevoir_balisage">
-                        <div class="row form-row">
-                            <mat-form-field class="col-xl-7">
-                                <mat-label>{{'ARS.FORM.CVTI_RESPONSIBLE' | translate}}</mat-label>
-                                <input class="form-control" matInput [readonly]="true" type="text" name="nom_ca_cvti" [value]="ar.nom_ca_cvti" />
-                            </mat-form-field>
-                            <mat-form-field class="col-xl-5">
-                                <mat-label>{{'COMMON.PHONENUMBER.LABEL' | translate}}</mat-label>
-                                <input class="form-control" matInput [readonly]="true" type="text" name="tel_ca_cvti" [value]="ar.tel_ca_cvti" />
-                            </mat-form-field>
-                        </div>
-                        <div class="row form-row">
-                            <mat-form-field class="col-xl-7">
-                                <mat-label>{{'ARS.FORM.CA_ASSISTANT' | translate}}</mat-label>
-                                <input class="form-control" matInput [readonly]="true" type="text" name="assistant_ca" [value]="ar.assistant_ca" />
-                            </mat-form-field>
-                            <mat-form-field class="col-xl-5">
-                                <mat-label>{{'COMMON.PHONENUMBER.LABEL' | translate}}</mat-label>
-                                <input class="form-control" matInput [readonly]="true" type="text" name="tel_assistant_ca" [value]="ar.tel_assistant_ca" />
-                            </mat-form-field>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

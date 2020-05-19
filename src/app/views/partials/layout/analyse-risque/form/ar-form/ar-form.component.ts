@@ -240,11 +240,6 @@ export class ArFormComponent implements OnInit {
       }
     }
     return false
-    // const control = this.arForm.controls[name];
-    // if(name == "nom_ca_cvti"){
-    //   console.log(control.validator(name))
-    // }
-    // return !!this.arForm.controls[name].validator(name).hasOwnProperty('required');
   }
 
   isControlHasError(controlName: string, validationType: string): boolean {

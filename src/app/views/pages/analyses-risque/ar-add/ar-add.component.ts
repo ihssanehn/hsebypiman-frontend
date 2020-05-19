@@ -194,10 +194,7 @@ export class ArAddComponent implements OnInit, OnDestroy {
       tel_charge_registre:[''],
 
       a_prevoir_balisage:['0', Validators.required],
-      nom_ca_cvti:[''],
-      tel_ca_cvti:[''],
-      assistant_ca:[''],
-      tel_assistant_ca:[''],
+
       observations_signature:[''],
       risques:new FormArray([]),
       equipements:new FormArray([]),
@@ -209,11 +206,6 @@ export class ArAddComponent implements OnInit, OnDestroy {
   }
 
   setDynamicValidators() {
-    const nom_ca_cvti = this.arForm.get('nom_ca_cvti');
-    const tel_ca_cvti = this.arForm.get('tel_ca_cvti');
-    const assistant_ca = this.arForm.get('assistant_ca');
-    const tel_assistant_ca = this.arForm.get('tel_assistant_ca');
-
     const nom_charge_registre = this.arForm.get('nom_charge_registre');
     const adresse_charge_registre = this.arForm.get('adresse_charge_registre');
     const ville_charge_registre = this.arForm.get('ville_charge_registre');
@@ -295,29 +287,6 @@ export class ArAddComponent implements OnInit, OnDestroy {
         });
       });
     });
-
-    this.arForm.get('a_prevoir_balisage').valueChanges
-      .subscribe(a_prevoir_balisage => {
-
-        if (a_prevoir_balisage === '1') {
-          nom_ca_cvti.setValidators([Validators.required]);
-          tel_ca_cvti.setValidators([Validators.required]);
-          assistant_ca.setValidators([Validators.required]);
-          tel_assistant_ca.setValidators([Validators.required]);
-        }
-
-        if (a_prevoir_balisage === '0') {
-          nom_ca_cvti.setValidators(null);
-          tel_ca_cvti.setValidators(null);
-          assistant_ca.setValidators(null);
-          tel_assistant_ca.setValidators(null);
-        }
-
-        nom_ca_cvti.updateValueAndValidity();
-        tel_ca_cvti.updateValueAndValidity();
-        assistant_ca.updateValueAndValidity();
-        tel_assistant_ca.updateValueAndValidity();
-      });
 
     this.arForm.get('a_signer_registre_travaux').valueChanges
       .subscribe(a_signer_registre_travaux => {

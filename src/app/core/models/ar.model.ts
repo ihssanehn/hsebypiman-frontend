@@ -42,10 +42,6 @@ export class Ar {
     nom_charge_registre?: string;
     tel_charge_registre?: string;
     pays_charge_registre?: string;
-    nom_ca_cvti?: string;
-    tel_ca_cvti?: string;
-    assistant_ca?: string;
-    tel_assistant_ca?: string;
     is_signed?: boolean;
 
     zonesGrouped?:Array<any>;

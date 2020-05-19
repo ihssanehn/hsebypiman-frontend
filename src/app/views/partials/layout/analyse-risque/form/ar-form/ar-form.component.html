@@ -359,40 +359,6 @@
 							{{'ARS.FORM.MWBLOCK.SUBTITLE2' | translate}}
 							<mat-slide-toggle [checked]="isChecked('a_prevoir_balisage')" (change)="updateToggleValue($event, 'a_prevoir_balisage')" class="pull-right"></mat-slide-toggle>
 						</div>
-		
-						<div class="row form-row" [hidden]="!isChecked('a_prevoir_balisage')">
-							<mat-form-field class="col-xl-7">
-								<mat-label>{{'ARS.FORM.CVTI_RESPONSIBLE' | translate}}</mat-label>
-								<input class="form-control" matInput type="text" name="nom_ca_cvti" formControlName="nom_ca_cvti" placeholder="Saisir ici" [required]="isFieldRequired('nom_ca_cvti')"/>
-								<mat-error *ngIf="isControlHasError('nom_ca_cvti','required')">
-									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-								</mat-error>
-							</mat-form-field>
-							<mat-form-field class="col-xl-5">
-								<mat-label>{{'COMMON.PHONENUMBER.LABEL' | translate}}</mat-label>
-								<input class="form-control" matInput type="text" name="tel_ca_cvti" formControlName="tel_ca_cvti" placeholder="Saisir ici" [required]="isFieldRequired('tel_ca_cvti')"/>
-								<mat-error *ngIf="isControlHasError('tel_ca_cvti','required')">
-									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-								</mat-error>
-							</mat-form-field>
-						</div>
-		
-						<div class="row form-row" [hidden]="!isChecked('a_prevoir_balisage')">
-							<mat-form-field class="col-xl-7">
-								<mat-label>{{'ARS.FORM.CA_ASSISTANT' | translate}}</mat-label>
-								<input class="form-control" matInput type="text" name="assistant_ca" formControlName="assistant_ca" placeholder="Saisir ici" [required]="isFieldRequired('assistant_ca')"/>
-								<mat-error *ngIf="isControlHasError('assistant_ca','required')">
-									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-								</mat-error>
-							</mat-form-field>
-							<mat-form-field class="col-xl-5">
-								<mat-label>{{'COMMON.PHONENUMBER.LABEL' | translate}}</mat-label>
-								<input class="form-control" matInput type="text" name="tel_assistant_ca" formControlName="tel_assistant_ca" placeholder="Saisir ici" [required]="isFieldRequired('tel_assistant_ca')"/>
-								<mat-error *ngIf="isControlHasError('tel_assistant_ca','required')">
-									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-								</mat-error>
-							</mat-form-field>
-						</div>
 					</div>
 				</div>
 			</div>
