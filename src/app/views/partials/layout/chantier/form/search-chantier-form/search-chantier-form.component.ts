@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef, Input, Sanitizer } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, Input, Sanitizer, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Chantier } from '@app/core/models';
 import { Observable, BehaviorSubject } from 'rxjs';
@@ -7,6 +7,7 @@ import { ChantierService } from '@app/core/services';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'tf-search-chantier-form',
@@ -23,10 +24,11 @@ export class SearchChantierFormComponent implements OnInit {
   set data(value) {
       this._data.next(value);
   };
-
   get data() {
       return this._data.getValue();
   }
+
+  @Output() onDisplayChantier: EventEmitter<Chantier> = new EventEmitter<Chantier>();
 
   searchControl: FormControl = new FormControl();
   
@@ -112,6 +114,7 @@ export class SearchChantierFormComponent implements OnInit {
     try {
       var res = await this.chantierService.get(chantierId).toPromise();
       this.chantier = res.result.data;
+      this.onDisplayChantier.emit(this.chantier);
       if(this.origin == 'add' || this.origin == 'edit'){
         this.form.controls.chantier_id.setValue(this.chantier.id);
       }

@@ -7,7 +7,7 @@ import * as moment from 'moment';
 import { TranslateService } from '@ngx-translate/core';
 import { ArService, TypeService, ChantierService, ParamsService } from '@app/core/services';
 import { Observable, Subscription } from 'rxjs';
-import { map, startWith, tap } from 'rxjs/operators';
+import { map, startWith, tap, distinctUntilChanged } from 'rxjs/operators';
 import { Paginate } from '@app/core/_base/layout/models/paginate.model';
 import { Ar, Type, Chantier } from '@app/core/models';
 import { NgxPermissionsService } from 'ngx-permissions';
@@ -28,6 +28,7 @@ import {FormStatus} from '@app/core/_base/crud/models/form-status';
 export class ArAddComponent implements OnInit, OnDestroy {
 
   ar: Ar;
+  chantier: Chantier;
   arForm: FormGroup
   formStatus = new FormStatus();
   types: Type[];
@@ -193,10 +194,7 @@ export class ArAddComponent implements OnInit, OnDestroy {
       tel_charge_registre:[''],
 
       a_prevoir_balisage:['0', Validators.required],
-      nom_ca_cvti:[''],
-      tel_ca_cvti:[''],
-      assistant_ca:[''],
-      tel_assistant_ca:[''],
+
       observations_signature:[''],
       risques:new FormArray([]),
       equipements:new FormArray([]),
@@ -208,11 +206,6 @@ export class ArAddComponent implements OnInit, OnDestroy {
   }
 
   setDynamicValidators() {
-    const nom_ca_cvti = this.arForm.get('nom_ca_cvti');
-    const tel_ca_cvti = this.arForm.get('tel_ca_cvti');
-    const assistant_ca = this.arForm.get('assistant_ca');
-    const tel_assistant_ca = this.arForm.get('tel_assistant_ca');
-
     const nom_charge_registre = this.arForm.get('nom_charge_registre');
     const adresse_charge_registre = this.arForm.get('adresse_charge_registre');
     const ville_charge_registre = this.arForm.get('ville_charge_registre');
@@ -228,28 +221,72 @@ export class ArAddComponent implements OnInit, OnDestroy {
     const accueil_secu_time_opening = this.arForm.get('accueil_secu_time_opening');
     const accueil_secu_time_closing = this.arForm.get('accueil_secu_time_closing');
 
-    this.arForm.get('a_prevoir_balisage').valueChanges
-      .subscribe(a_prevoir_balisage => {
+    var contactsFields = [];
+    contactsFields[0] = [
+      {
+        'name' : 'contact_interne_secours',
+        'control' : this.arForm.get('contact_interne_secours')
+      },
+      {
+        'name' : 'tel_contact_interne_secours',
+        'control' : this.arForm.get('tel_contact_interne_secours')
+      }
+    ];
+    contactsFields[1] = [
+      {
+        'name' : 'contact_client_chef_chtr',
+        'control' : this.arForm.get('contact_client_chef_chtr')
+      },
+      {
+        'name' : 'tel_contact_client_chef_chtr',
+        'control' : this.arForm.get('tel_contact_client_chef_chtr')
+      }
+    ];
+    contactsFields[2] = [
+      {
+        'name' : 'contact_client_hse',
+        'control' : this.arForm.get('contact_client_hse')
+      },
+      {
+        'name' : 'tel_contact_client_hse',
+        'control' : this.arForm.get('tel_contact_client_hse')
+      }
+    ];
 
-        if (a_prevoir_balisage === '1') {
-          nom_ca_cvti.setValidators([Validators.required]);
-          tel_ca_cvti.setValidators([Validators.required]);
-          assistant_ca.setValidators([Validators.required]);
-          tel_assistant_ca.setValidators([Validators.required]);
+    contactsFields.forEach((item, index) => {
+      this.arForm.get(item[0].name).valueChanges
+      .pipe(distinctUntilChanged())  
+      .subscribe(field => {
+
+        if (field !== '') {
+          contactsFields.forEach((element, key) => {
+            if(key != index){
+              element.forEach(control => {
+                control.control.setValidators(null);
+              });
+            }
+          });
         }
 
-        if (a_prevoir_balisage === '0') {
-          nom_ca_cvti.setValidators(null);
-          tel_ca_cvti.setValidators(null);
-          assistant_ca.setValidators(null);
-          tel_assistant_ca.setValidators(null);
+        if (field === '') {
+          contactsFields.forEach((element, key) => {
+            if(key != index){
+              element.forEach(control => {
+                control.control.setValidators([Validators.required]);
+              });
+            }
+          });
         }
 
-        nom_ca_cvti.updateValueAndValidity();
-        tel_ca_cvti.updateValueAndValidity();
-        assistant_ca.updateValueAndValidity();
-        tel_assistant_ca.updateValueAndValidity();
+        contactsFields.forEach((element, key) => {
+          if(key !== index){
+            element.forEach(control => {
+              control.control.updateValueAndValidity();
+            });
+          }
+        });
       });
+    });
 
     this.arForm.get('a_signer_registre_travaux').valueChanges
       .subscribe(a_signer_registre_travaux => {
@@ -321,44 +358,21 @@ export class ArAddComponent implements OnInit, OnDestroy {
 
       if(form.chantier_id)
       {
-        form.date_accueil_secu = this.dateFrToEnPipe.transform(form.date_accueil_secu);
-        form.date_validite = this.dateFrToEnPipe.transform(form.date_validite);
+        if(!this.chantier.is_all_ars_signed){
+          this.fireAlertBeforeSave(
+            form,
+            'Il y une autre analyse de risque pour ce chantier, qui n\'a pas encore été signée!'
+          );
+        }
+        else if(!this.chantier.is_all_ars_archived){
+          this.fireAlertBeforeSave(
+            form,
+            'Il y une autre analyse de risque pour ce chantier, Elle va être archivée dès que vous cliquez sur confirmer.'
+          );
 
-        this.arService.create(form)
-          .toPromise()
-          .then((ar) => {
-            console.log(ar);
-            this.cdr.markForCheck();
-            
-            Swal.fire({
-              icon: 'success',
-              title: 'Analyse de risque créée avec succès',
-              showConfirmButton: false,
-              timer: 1500
-            }).then(() => {
-              this.router.navigate(['/analyses-risque/list']);
-            });
-          })
-          .catch(err =>{ 
-
-            Swal.fire({
-              icon: 'error',
-              title: 'Echec! le formulaire est incomplet',
-              showConfirmButton: false,
-              timer: 2000
-            });
-
-            if(err.status === 422){
-              var messages = extractErrorMessagesFromErrorResponse(err);
-              this.formStatus.onFormSubmitResponse({success: false, messages: messages});
-              console.log(this.formStatus.errors, this.formStatus.canShowErrors());
-              this.cdr.detectChanges();
-              this.cdr.markForCheck();
-            }
-
-          });
-          
-        this.cdr.markForCheck();
+        }else{
+          this.save(form);
+        }
 
       }else{
         Swal.fire({
@@ -374,6 +388,79 @@ export class ArAddComponent implements OnInit, OnDestroy {
       throw error;
     }
 
+  }
+
+  fireAlertBeforeSave(form, message){
+    Swal.fire({
+      icon: 'warning',
+      title: 'Voulez vous vraiment créer une nouvelle analyse de risque ?',
+      text: message,
+      showConfirmButton: true,
+      showCancelButton: true,
+      cancelButtonText: 'Annuler',
+      confirmButtonText: 'Confirmer'
+    }).then(async response => {
+      if (response.value) {
+        try {
+          this.save(form);
+        } catch (e) {
+          console.log(e);
+          Swal.fire({
+            icon: 'error',
+            title: 'Echec! une erreur est survenue',
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }
+      }
+    });
+  }
+
+  async save(form){
+    form.date_accueil_secu = this.dateFrToEnPipe.transform(form.date_accueil_secu);
+    form.date_validite = this.dateFrToEnPipe.transform(form.date_validite);
+
+    this.arService.create(form)
+      .toPromise()
+      .then((ar) => {
+        console.log(ar);
+        this.cdr.markForCheck();
+        
+        Swal.fire({
+          icon: 'success',
+          title: 'Analyse de risque créée avec succès',
+          showConfirmButton: false,
+          timer: 1500
+        }).then(() => {
+          this.router.navigate(['/analyses-risque/list']);
+        });
+      })
+      .catch(err =>{ 
+
+        Swal.fire({
+          icon: 'error',
+          title: 'Echec! le formulaire est incomplet',
+          showConfirmButton: false,
+          timer: 2000
+        });
+
+        if(err.status === 422){
+          var messages = extractErrorMessagesFromErrorResponse(err);
+          this.formStatus.onFormSubmitResponse({success: false, messages: messages});
+          console.log(this.formStatus.errors, this.formStatus.canShowErrors());
+          this.cdr.detectChanges();
+          this.cdr.markForCheck();
+        }
+
+      });
+      
+    this.cdr.markForCheck();
+  }
+
+  getChantier(chantier: Chantier): void{
+    if(chantier){
+      this.chantier = chantier;
+    }
   }
 
   isLastStep(isLastStep: boolean): void{

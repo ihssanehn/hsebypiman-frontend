@@ -9,7 +9,11 @@
 			</span>
 		</div>
 
-		<tf-search-chantier-form [form]="arForm" origin="add"></tf-search-chantier-form>
+		<tf-search-chantier-form 
+			(onDisplayChantier)="getChantier($event)"
+			[form]="arForm" 
+			origin="add">
+		</tf-search-chantier-form>
 	
 	</tf-portlet>
 

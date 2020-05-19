@@ -32,4 +32,6 @@ export class Chantier {
     habilitations?: Habilitation[];
     entreprises?: Entreprise[];
     info?: Array<string>;
+    is_all_ars_archived?: boolean;
+    is_all_ars_signed?: boolean;
 }
