@@ -28,6 +28,7 @@ import {FormStatus} from '@app/core/_base/crud/models/form-status';
 export class ArAddComponent implements OnInit, OnDestroy {
 
   ar: Ar;
+  chantier: Chantier;
   arForm: FormGroup
   formStatus = new FormStatus();
   types: Type[];
@@ -388,44 +389,21 @@ export class ArAddComponent implements OnInit, OnDestroy {
 
       if(form.chantier_id)
       {
-        form.date_accueil_secu = this.dateFrToEnPipe.transform(form.date_accueil_secu);
-        form.date_validite = this.dateFrToEnPipe.transform(form.date_validite);
+        if(!this.chantier.is_all_ars_signed){
+          this.fireAlertBeforeSave(
+            form,
+            'Il y une autre analyse de risque pour ce chantier, qui n\'a pas encore été signée!'
+          );
+        }
+        else if(!this.chantier.is_all_ars_archived){
+          this.fireAlertBeforeSave(
+            form,
+            'Il y une autre analyse de risque pour ce chantier, Elle va être archivée dès que vous cliquez sur confirmer.'
+          );
 
-        this.arService.create(form)
-          .toPromise()
-          .then((ar) => {
-            console.log(ar);
-            this.cdr.markForCheck();
-            
-            Swal.fire({
-              icon: 'success',
-              title: 'Analyse de risque créée avec succès',
-              showConfirmButton: false,
-              timer: 1500
-            }).then(() => {
-              this.router.navigate(['/analyses-risque/list']);
-            });
-          })
-          .catch(err =>{ 
-
-            Swal.fire({
-              icon: 'error',
-              title: 'Echec! le formulaire est incomplet',
-              showConfirmButton: false,
-              timer: 2000
-            });
-
-            if(err.status === 422){
-              var messages = extractErrorMessagesFromErrorResponse(err);
-              this.formStatus.onFormSubmitResponse({success: false, messages: messages});
-              console.log(this.formStatus.errors, this.formStatus.canShowErrors());
-              this.cdr.detectChanges();
-              this.cdr.markForCheck();
-            }
-
-          });
-          
-        this.cdr.markForCheck();
+        }else{
+          this.save(form);
+        }
 
       }else{
         Swal.fire({
@@ -441,6 +419,79 @@ export class ArAddComponent implements OnInit, OnDestroy {
       throw error;
     }
 
+  }
+
+  fireAlertBeforeSave(form, message){
+    Swal.fire({
+      icon: 'warning',
+      title: 'Voulez vous vraiment créer une nouvelle analyse de risque ?',
+      text: message,
+      showConfirmButton: true,
+      showCancelButton: true,
+      cancelButtonText: 'Annuler',
+      confirmButtonText: 'Confirmer'
+    }).then(async response => {
+      if (response.value) {
+        try {
+          this.save(form);
+        } catch (e) {
+          console.log(e);
+          Swal.fire({
+            icon: 'error',
+            title: 'Echec! une erreur est survenue',
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }
+      }
+    });
+  }
+
+  async save(form){
+    form.date_accueil_secu = this.dateFrToEnPipe.transform(form.date_accueil_secu);
+    form.date_validite = this.dateFrToEnPipe.transform(form.date_validite);
+
+    this.arService.create(form)
+      .toPromise()
+      .then((ar) => {
+        console.log(ar);
+        this.cdr.markForCheck();
+        
+        Swal.fire({
+          icon: 'success',
+          title: 'Analyse de risque créée avec succès',
+          showConfirmButton: false,
+          timer: 1500
+        }).then(() => {
+          this.router.navigate(['/analyses-risque/list']);
+        });
+      })
+      .catch(err =>{ 
+
+        Swal.fire({
+          icon: 'error',
+          title: 'Echec! le formulaire est incomplet',
+          showConfirmButton: false,
+          timer: 2000
+        });
+
+        if(err.status === 422){
+          var messages = extractErrorMessagesFromErrorResponse(err);
+          this.formStatus.onFormSubmitResponse({success: false, messages: messages});
+          console.log(this.formStatus.errors, this.formStatus.canShowErrors());
+          this.cdr.detectChanges();
+          this.cdr.markForCheck();
+        }
+
+      });
+      
+    this.cdr.markForCheck();
+  }
+
+  getChantier(chantier: Chantier): void{
+    if(chantier){
+      this.chantier = chantier;
+    }
   }
 
   isLastStep(isLastStep: boolean): void{
