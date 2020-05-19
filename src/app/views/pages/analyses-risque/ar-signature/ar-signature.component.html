@@ -34,7 +34,7 @@
 			[isDisableToggle]="isDisableToggle" 
 		></tf-ar-detail-panels>
 
-		<mat-expansion-panel [expanded]="isExpanded" [disabled]="isDisableToggle">
+		<mat-expansion-panel [expanded]="true" [disabled]="isDisableToggle">
 			<mat-expansion-panel-header>
 				<div class="tf-heading tf-heading--md">| 5 {{'ARS.FORM.SIGNATURE_OBSERVATION.TITLE' | translate}}</div>
             </mat-expansion-panel-header>
@@ -57,7 +57,11 @@
                             <tf-signature-add 
                                 [signaturesForm]="signaturesForm"
                                 [isSigned]="ar?.is_signed"
-                            ></tf-signature-add>
+							></tf-signature-add>
+							
+							<tf-signature-list 
+								[dataSource]="ar?.signatures"
+							></tf-signature-list>
 
                         </div>
                     </div>
