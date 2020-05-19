@@ -30,7 +30,6 @@ export class VsFormHeadComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.visiteForm);
     this.getTypes();
     this.getUsers();
     this.getCurrentUser();
@@ -113,7 +112,6 @@ export class VsFormHeadComponent implements OnInit {
     }else{
       this.visiteForm.controls[controlName].setValue('0');
     }
-    console.log(this.visiteForm.controls[controlName].value)
   }
   
 }
