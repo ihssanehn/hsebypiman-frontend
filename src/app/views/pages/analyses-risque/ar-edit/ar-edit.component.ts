@@ -343,7 +343,7 @@ export class ArEditComponent implements OnInit, OnDestroy {
 
 	async onSubmit(event) {
 		try {
-			let form = {...this.arForm.value};
+			let form = {...this.arForm.getRawValue()};
 			this.formStatus.onFormSubmitting();
 
 			if(form.chantier_id)

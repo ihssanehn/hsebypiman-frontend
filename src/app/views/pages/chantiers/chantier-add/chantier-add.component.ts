@@ -85,7 +85,7 @@ export class ChantierAddComponent implements OnInit {
     this.cdr.detectChanges();
     this.cdr.markForCheck();
 
-    let form = {...this.chantierForm.value};
+    let form = {...this.chantierForm.getRawValue()};
     
     this.parseChantierDate(form, 'FrToEn');
 

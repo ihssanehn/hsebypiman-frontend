@@ -83,7 +83,7 @@ export class EntrepriseFiltersComponent implements OnInit, AfterViewInit
   }
  
   search(filters: any): void {
-    var filter = {...this.filterForm.value}
+    var filter = {...this.filterForm.getRawValue()}
     this.change.emit(filter);
   }
 

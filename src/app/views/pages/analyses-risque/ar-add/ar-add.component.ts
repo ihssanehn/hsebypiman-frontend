@@ -354,7 +354,7 @@ export class ArAddComponent implements OnInit, OnDestroy {
 
     try {
       this.formStatus.onFormSubmitting();
-      let form = {...this.arForm.value};
+      let form = {...this.arForm.getRawValue()};
 
       if(form.chantier_id)
       {

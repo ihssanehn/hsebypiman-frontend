@@ -76,7 +76,7 @@ export class ArSignatureComponent extends ArDetailComponent implements OnInit {
   async onSubmit(event){
 
     try {
-        let form = {...this.signaturesForm.value};
+        let form = {...this.signaturesForm.getRawValue()};
         this.formStatus.onFormSubmitting();
 
         this.arService.addSignatures(this.ar.id, form)

@@ -126,7 +126,7 @@ export class EntrepriseEditComponent implements OnInit, OnDestroy {
 	async onSubmit(event) {
 		try {
 			this.formStatus.onFormSubmitting();
-			let form = {...this.entrepriseForm.value};
+			let form = {...this.entrepriseForm.getRawValue()};
 			form.id = this.entreprise.id;
 			
 			this.entrepriseService.update(form)

@@ -71,7 +71,7 @@ export class EntrepriseAddComponent implements OnInit {
   async onSubmit(){
     try {
       let result;
-      let form = {...this.entrepriseForm.value};
+      let form = {...this.entrepriseForm.getRawValue()};
       this.formStatus.onFormSubmitting();
   
 			this.entrepriseService.create(form)

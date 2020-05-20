@@ -240,7 +240,7 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 
 	async onSubmit(event) {
 		this.formStatus.onFormSubmitting();
-		let form = {...this.chantierForm.value};
+		let form = {...this.chantierForm.getRawValue()};
 		if(form.status_id != this.chantier.status_id && this.chantier.status.code == 'ENCOURS' && !this.chantier.is_all_ars_archived){
 			this.fireBeforeSave(form)
 		}else{
