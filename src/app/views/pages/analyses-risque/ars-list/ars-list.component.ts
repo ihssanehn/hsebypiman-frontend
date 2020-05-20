@@ -83,7 +83,18 @@ export class ArsListComponent implements OnInit {
 	}
 
 	duplicateAr(arId){
-		this.router.navigate(['analyses-risque/add'], {queryParams:{ar_id:arId}})
+		Swal.fire({
+			icon: 'warning',
+			title: 'Êtes vous sur de vouloir archiver le dernier AR ?',
+			showConfirmButton: true,
+			showCancelButton: true,
+			cancelButtonText: 'Annuler',
+			confirmButtonText: 'Confirmer'
+		}).then(async response => {
+			if (response.value) {
+				this.router.navigate(['analyses-risque/add'], {queryParams:{ar_id:arId}})
+			}
+		});
 	}
 
 	signAr(arId){
