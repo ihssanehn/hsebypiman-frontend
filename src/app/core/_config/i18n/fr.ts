@@ -607,6 +607,14 @@ export const locale = {
 			FORM:{
 				CREATE:'Créer une nouvelle visite'
 			},
+			KO_SOLVED_COUNT:{
+				SHORTTITLE: 'Nbr de NC traitées',
+				TITLE: 'Nombre de non conformité traitées'
+			},
+			KO_UNSOLVED_COUNT:{
+				SHORTTITLE: 'Nbr de NC à traiter',
+				TITLE: 'Nombre de non conformité à traiter'
+			},
 			PRESENCE_NC:{
 				LABEL:'Présence de non conformité',
 				LABEL_COMP:'Présence de non conformité'
@@ -618,7 +626,7 @@ export const locale = {
 			AVERT:{
 				LABEL:'Avertissement',
 				LABEL_COMP:'(quand attitude non sécuritaire)'
-			}
+			},
 		},
 		COMMON:{
 			ADRESS:{

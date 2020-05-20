@@ -1,5 +1,5 @@
 
-import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder, AbstractControl, FormControl, Validators, FormArray } from '@angular/forms';
 import { AuthService, User } from '@app/core/auth';
 import { CatQuestion } from '@app/core/models';
@@ -19,6 +19,8 @@ export class VsFormBodyComponent implements OnInit {
 
   @Input() visiteForm: FormGroup;
   @Input() edit: Boolean;
+  @Output() onCancel = new EventEmitter();
+  @Output() onSubmit = new EventEmitter();
   constructor(
     private catQuestionService:CatQuestionService,
     private authService:AuthService,
@@ -43,6 +45,42 @@ export class VsFormBodyComponent implements OnInit {
     }
   }
 
+  parseQuestions(item){
+    if(item.length > 0){
+      const questionFormArray = this.visiteForm.get('questions') as FormArray
+      for (let i = 0; i < item.length; i++) {
+        const catQ = item[i]; 
+        for (let j = 0; j < catQ.questions.length; j++) {
+          const q = catQ.questions[j];
+          const question = this.fb.group({
+            'id': [q.id],
+            'libelle': [q.libelle],
+            'pivot': this.fb.group({
+              'note':[{value:null, disabled:false}, Validators.required],
+              'date_remise_conf':[{value:null, disabled:false}],
+              'observation':[{value:'', disabled:false}]
+            })
+          })
+
+          const pivot = question.get('pivot') as FormGroup;
+          const note = pivot.get('note') as FormControl;
+          const date_remise_conf = pivot.get('date_remise_conf') as FormControl;
+
+          note.valueChanges.subscribe(note=>{
+            if(note == 2){
+              date_remise_conf.enable({emitEvent:false, onlySelf:true})
+            }else{
+              date_remise_conf.disable({emitEvent:false, onlySelf:true})
+              date_remise_conf.setValue(null);
+            }
+          })
+
+          questionFormArray.push(question)
+        }
+      }
+    }
+  }
+
   partHided(partId){
     console.log(partId);
     return true;
@@ -54,6 +92,7 @@ export class VsFormBodyComponent implements OnInit {
   setNote(question_id, note){
     const p = this.getPivot(question_id)
     p.get('note').setValue(note);
+    console.log(this.visiteForm);
   }
 
   hasNote(question_id, note){
@@ -64,17 +103,17 @@ export class VsFormBodyComponent implements OnInit {
   getQuestion(question_id): FormGroup{
     const questions = this.visiteForm.get('questions') as FormArray;
       if(!questions) return null;
-    const q = questions.controls.filter(x=>x.get('id').value == question_id)[0] as FormGroup;
-      if(!q) return null;
-
-      return q;
+    const qIdx = questions.controls.map(x=>{return x.get('id').value}).indexOf(question_id);
+    const q = questions.at(qIdx) as FormGroup; 
+    return q;
   }
 
   getPivot(question_id): FormGroup{
     const q = this.getQuestion(question_id)
+      if(!q) return null;
     const p = q.get('pivot') as FormGroup;
       if(!p) return null;
-
-      return p;
+    return p;
   }
+
 }
