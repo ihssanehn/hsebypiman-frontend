@@ -397,7 +397,6 @@ export class ArAddComponent implements OnInit, OnDestroy {
         try {
           this.save(form);
         } catch (e) {
-          console.log(e);
           Swal.fire({
             icon: 'error',
             title: 'Echec! une erreur est survenue',
@@ -428,7 +427,6 @@ export class ArAddComponent implements OnInit, OnDestroy {
     this.arService.create(form)
       .toPromise()
       .then((result) => {
-        console.log(result);
         this.cdr.markForCheck();
         var message = null;
         if(result.message.code != 'done'){
@@ -449,7 +447,6 @@ export class ArAddComponent implements OnInit, OnDestroy {
         if(err.status === 422){
           var messages = extractErrorMessagesFromErrorResponse(err);
           this.formStatus.onFormSubmitResponse({success: false, messages: messages});
-          console.log(this.formStatus.errors, this.formStatus.canShowErrors());
           this.cdr.detectChanges();
           this.cdr.markForCheck();
         }

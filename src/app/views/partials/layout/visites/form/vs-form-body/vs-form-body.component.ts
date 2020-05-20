@@ -33,7 +33,6 @@ export class VsFormBodyComponent implements OnInit {
       type_id: this.visiteForm.get('type_id').value,
       paginate:false
     }
-    console.log(params);
     var res = await this.catQuestionService.getAll(params).toPromise();
     this.catQuestionsList = res.result.data;
     this.cdr.detectChanges();

@@ -53,8 +53,6 @@ export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 			  	const id = params.id;
 			  	if (id) {
 					this.getVisite(id);
-					// console.log(id);
-
 				} else {
 					this.router.navigateByUrl('/visites/list');
 				}

@@ -117,7 +117,6 @@ export class ArsListComponent implements OnInit {
 						throw new Error();
 					}
 				} catch (e) {
-					console.log(e);
 					Swal.fire({
 						icon: 'error',
 						title: 'Echec! une erreur est survenue',
@@ -131,7 +130,6 @@ export class ArsListComponent implements OnInit {
 
 
 	setOrder(by) {
-		console.log(this.filter)
 		if (this.isOrderedBy(by)) {
 			this.toggleOrderWay()
 		} else {
@@ -165,7 +163,6 @@ export class ArsListComponent implements OnInit {
 		for (let [key, value] of Object.entries(filters)) {
 			this.filter[key] = value;
 		}
-		console.log(this.filter);
 		this.getArs();
 	}
 

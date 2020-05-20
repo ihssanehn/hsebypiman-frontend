@@ -50,7 +50,6 @@ export class UserProfileComponent implements OnInit {
 	}
 
 	viewProfile(){
-		// console.log(this.user);
 		// this.router.navigate([`profile/${this.user.id}`]);
 	}
 	/**

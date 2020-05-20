@@ -82,7 +82,6 @@ export class ArSignatureComponent extends ArDetailComponent implements OnInit {
         this.arService.addSignatures(this.ar.id, form)
           .toPromise()
           .then((signature) => {
-            console.log(signature);
             this.cdr.markForCheck();
             
             Swal.fire({
@@ -106,7 +105,6 @@ export class ArSignatureComponent extends ArDetailComponent implements OnInit {
             if(err.status === 422){
               var messages = extractErrorMessagesFromErrorResponse(err);
               this.formStatus.onFormSubmitResponse({success: false, messages: messages});
-              console.log(this.formStatus.errors, this.formStatus.canShowErrors());
               this.cdr.detectChanges();
               this.cdr.markForCheck();
             }

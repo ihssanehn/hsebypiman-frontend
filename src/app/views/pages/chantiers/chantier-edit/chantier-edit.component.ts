@@ -68,7 +68,6 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 							this.chantierForm.patchValue(res.result.data);							
 							this.formPathValues(res.result.data);
 							this.chantierForm.controls['entreprises'].patchValue(res.result.data.entreprises);
-							console.log(this.chantierForm);
 						})
 					).subscribe( async res => {
 						this.chantier = res.result.data;
@@ -232,7 +231,6 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 				if(err.status === 422){
 					var messages = extractErrorMessagesFromErrorResponse(err);
 					this.formStatus.onFormSubmitResponse({success: false, messages: messages});
-					console.log(this.formStatus.errors, this.formStatus.canShowErrors());
 					this.cdr.detectChanges();
 					this.cdr.markForCheck();
 				}

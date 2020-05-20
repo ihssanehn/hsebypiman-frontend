@@ -101,14 +101,12 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
 				res=>{
 				
 					if(res){
-						console.log(res);
 						this.authNoticeService.setNotice(this.translate.instant('AUTH.FORGOT.SUCCESS'), 'success');
 						this.router.navigateByUrl('/auth/login');
 						this.loading = false;
 					}
 				},
 				err => {
-					console.log(err);
 					this.authNoticeService.setNotice(this.translate.instant('AUTH.VALIDATION.NOT_FOUND', {name: this.translate.instant('AUTH.INPUT.EMAIL')}), 'danger');
 					// this.notificationService.error('Bad credentials', this.translate.instant('AUTH.VALIDATION.INVALID_LOGIN'));
 					this.loading = false;

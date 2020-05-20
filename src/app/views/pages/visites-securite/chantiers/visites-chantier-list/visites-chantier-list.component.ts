@@ -108,7 +108,6 @@ export class VisitesChantierListComponent implements OnInit {
 
 	// Au click, défini order by et order way. Si le order_by est déjà actif, toggle du order_way. Sinon, order_way asc par défaut
 	setOrder(by) {
-		console.log(this.filter)
 		if (this.isOrderedBy(by)) {
 			this.toggleOrderWay()
 		} else {
