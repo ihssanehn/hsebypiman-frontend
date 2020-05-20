@@ -38,10 +38,47 @@ export class VsFormBodyComponent implements OnInit {
     var res = await this.catQuestionService.getAll(params).toPromise();
     if(res){
       this.catQuestionsList = res.result.data;
+      this.parseQuestions(res.result.data);
       this.cdr.detectChanges();
       this.cdr.markForCheck();
     }
   }
+
+  parseQuestions(item){
+    if(item.length > 0){
+      const questionFormArray = this.visiteForm.get('questions') as FormArray
+      for (let i = 0; i < item.length; i++) {
+        const catQ = item[i]; 
+        for (let j = 0; j < catQ.questions.length; j++) {
+          const q = catQ.questions[j];
+          const question = this.fb.group({
+            id: [{value:q.id, disabled:true}],
+            pivot: this.fb.group({
+              'note':[{value:null, disabled:false}, Validators.required],
+              'date_remise_conf':[{value:null, disabled:false}],
+              'commentaires':[{value:'', disabled:false}]
+            })
+          })
+
+          const pivot = question.get('pivot') as FormGroup;
+          const note = pivot.get('note') as FormControl;
+          const date_remise_conf = pivot.get('date_remise_conf') as FormControl;
+
+          note.valueChanges.subscribe(note=>{
+            if(note == 2){
+              date_remise_conf.enable({emitEvent:false, onlySelf:true})
+            }else{
+              date_remise_conf.disable({emitEvent:false, onlySelf:true})
+              date_remise_conf.setValue(null);
+            }
+          })
+
+          questionFormArray.push(question)
+        }
+      }
+    }
+  }
+
 
   partHided(partId){
     console.log(partId);
