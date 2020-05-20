@@ -14,13 +14,22 @@
         <td mat-cell *matCellDef="let visite"  (click)="viewVisite(visite.id)" class="pointer"> {{visite.code}} </td>
       </ng-container>
 
-      <!-- client - nom de chantier Column -->
-      <ng-container matColumnDef="client">
-        <th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder(['chantiers.client', 'chantiers.nom', 'visite_securites.code'])">
-          {{'VISITES.CLIENT.TITLE' | translate}} - {{'VISITES.CHANTIER.TITLE' | translate}} 
-          <i class="fa" [ngClass]="isOrderedBy(['chantiers.client', 'chantiers.nom', 'visite_securites.code']) && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy(['chantiers.client', 'chantiers.nom', 'visite_securites.code']) && {opacity:1}"></i>
+      <!-- nom de chantier Column -->
+      <ng-container matColumnDef="chantier">
+        <th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder(['chantiers.nom', 'visite_securites.code'])">
+          {{'VISITES.CHANTIER.TITLE' | translate}} 
+          <i class="fa" [ngClass]="isOrderedBy(['chantiers.nom', 'visite_securites.code']) && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy(['chantiers.nom', 'visite_securites.code']) && {opacity:1}"></i>
         </th>
-        <td mat-cell *matCellDef="let visite"  (click)="viewVisite(visite.id)" class="pointer"> {{visite.chantier.client+' '+visite.chantier.nom | truncate:35}}</td>
+        <td mat-cell *matCellDef="let visite"  (click)="viewVisite(visite.id)" class="pointer"> {{visite.chantier.nom | truncate:35}}</td>
+      </ng-container>
+
+      <!-- client Column -->
+      <ng-container matColumnDef="client">
+        <th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder(['chantiers.client', 'visite_securites.code'])">
+          {{'VISITES.CLIENT.TITLE' | translate}}
+          <i class="fa" [ngClass]="isOrderedBy(['chantiers.client', 'visite_securites.code']) && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy(['chantiers.client', 'visite_securites.code']) && {opacity:1}"></i>
+        </th>
+        <td mat-cell *matCellDef="let visite"  (click)="viewVisite(visite.id)" class="pointer"> {{visite.chantier.client | truncate:35}}</td>
       </ng-container>
 
       <!-- type Column -->
@@ -38,7 +47,7 @@
           {{'VISITES.REDACTEUR.TITLE' | translate}} 
           <i class="fa" [ngClass]="isOrderedBy(['redacteurs.nom', 'redacteurs.prenom']) && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy(['redacteurs.nom', 'redacteurs.prenom']) && {opacity:1}"></i>
         </th>
-        <td mat-cell *matCellDef="let visite"  (click)="viewVisite(visite.id)" class="pointer" > {{visite.redacteur.nom+' '+visite.redacteur.prenom}} </td>
+        <td mat-cell *matCellDef="let visite"  (click)="viewVisite(visite.id)" class="pointer" > {{visite.redacteur?.fullname }} </td>
       </ng-container>
 
       <!-- visite Column -->
@@ -48,7 +57,7 @@
           <i class="fa" [ngClass]="isOrderedBy('visited') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('visited') && {opacity:1}"></i>
         </th>
         <td mat-cell *matCellDef="let visite"  (click)="viewVisite(visite.id)" class="pointer" > 
-          <span *ngIf="visite.visited.type != 'societe'; else societe_ee">{{visite.visited.fullname}}</span>
+          <span *ngIf="visite.visited.type != 'societe'; else societe_ee">{{visite.visited?.fullname}}</span>
           <ng-template #societe_ee>
             {{visite.visited}}
           </ng-template>
@@ -72,6 +81,24 @@
             <i class="fa" [ngClass]="isOrderedBy('status.libelle') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('status.libelle') && {opacity:1}"></i>
         </th>
         <td mat-cell *matCellDef="let visite"  (click)="viewVisite(visite.id)" class="pointer text-center" [ngStyle]="visite.status && visite.status.color && {'color':visite.status.color}"> {{visite.status?.libelle}} </td>
+      </ng-container>
+
+      <!-- ko_solved Column -->
+      <ng-container matColumnDef="ko_solved_count">
+        <th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('ko_solved_count')"> 
+          {{'VISITES.KO_SOLVED_COUNT.SHORTTITLE' | translate}} 
+          <i class="fa" [ngClass]="isOrderedBy('ko_solved_count') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('ko_solved_count') && {opacity:1}"></i>
+        </th>
+        <td mat-cell *matCellDef="let visite"  (click)="viewVisite(visite.id)" class="pointer text-center"> {{visite.ko_solved_count}} </td>
+      </ng-container>
+
+      <!-- ko_unsolved Column -->
+      <ng-container matColumnDef="ko_unsolved_count">
+        <th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('ko_unsolved_count')"> 
+          {{'VISITES.KO_UNSOLVED_COUNT.SHORTTITLE' | translate}} 
+          <i class="fa" [ngClass]="isOrderedBy('ko_unsolved_count') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('ko_unsolved_count') && {opacity:1}"></i>
+        </th>
+        <td mat-cell *matCellDef="let visite"  (click)="viewVisite(visite.id)" class="pointer text-center"> {{visite.ko_unsolved_count}} </td>
       </ng-container>
 
       <ng-container matColumnDef="action">

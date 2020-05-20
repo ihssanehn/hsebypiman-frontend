@@ -32,7 +32,6 @@ export class VsFormHeadComponent implements OnInit {
   ngOnInit() {
     this.getTypes();
     this.getUsers();
-    this.getCurrentUser();
     this.getStatus();
     this.getEntreprises();
   }
@@ -49,11 +48,6 @@ export class VsFormHeadComponent implements OnInit {
     this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
-	async getCurrentUser() {
-		var res = await this.authService.getUserByToken().toPromise();
-		this.visiteForm.get('redacteur_id').setValue(res.result.data.id);
-		this.cdr.detectChanges();
-	}
   async getStatus(){
     var res = await this.statusService.getAllFromModel('Vs').toPromise();
     this.status = res.result.data;
