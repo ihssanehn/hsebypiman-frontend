@@ -165,7 +165,7 @@ export class ArAddComponent implements OnInit, OnDestroy {
   createForm() {
 		this.arForm = this.arFB.group({
       chantier_id: [null, Validators.required],
-      a_prevoir_compagnons:['0', Validators.required],
+      a_prevoir_compagnons:['1', Validators.required],
       date_accueil_secu:[null],
       realisateur:[''],
       tel_realisateur:[''],
