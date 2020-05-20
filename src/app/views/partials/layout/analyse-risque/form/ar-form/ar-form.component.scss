@@ -42,7 +42,7 @@
 }
 
 .full-height{
-    min-height: 160px;
+    min-height: 135px;
 }
 
 .mat-row:hover{
@@ -71,5 +71,7 @@
     .tf-heading{
         margin-bottom: 0;
     }
-    
+    mat-radio-button{
+        padding: 0.8rem 0 0 1rem;
+    }
 }
