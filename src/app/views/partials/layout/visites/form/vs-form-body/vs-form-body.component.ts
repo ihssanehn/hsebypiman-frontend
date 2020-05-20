@@ -40,7 +40,7 @@ export class VsFormBodyComponent implements OnInit {
     var res = await this.catQuestionService.getAll(params).toPromise();
     if(res){
       this.catQuestionsList = res.result.data;
-      this.parseQuestions(this.catQuestionsList);
+      this.parseQuestions(res.result.data);
       this.cdr.detectChanges();
       this.cdr.markForCheck();
     }
