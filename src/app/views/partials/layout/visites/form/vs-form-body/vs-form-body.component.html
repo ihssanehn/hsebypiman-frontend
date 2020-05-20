@@ -1,4 +1,15 @@
 <ng-container [formGroup]="visiteForm">
+	<div class="row sticky-top justify-content-md-center">
+		<div class="col-6">
+			<div class="tf-card-form">
+				<div class="row">
+					<div class="col-4 text-center">Nbr de OK : <b>{{getNotes().ok}}</b></div>
+					<div class="col-4 text-center">Nbr de KO : <b>{{getNotes().ko}}</b></div>
+					<div class="col-4 text-center">Nbr de SO : <b>{{getNotes().so}}</b></div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class="row" [hidden]="origin == 'add' && partHided(i)" *ngFor="let catQuestion of catQuestionsList; let i = index">
 		<div class="col-12">
 			<div class="tf-heading tf-heading--md">| {{i+1}} {{catQuestion.libelle}}</div>
@@ -11,7 +22,7 @@
 							<div class="col-3">Commentaire</div>
 							<div class="col-2">Date de mise en conformité</div>
 						</div>
-						<div class="row align-items-center" *ngFor="let question of catQuestion.questions; let j = index ">
+						<div class="row align-items-center" *ngFor="let question of catQuestion.questions; let j = index " [ngClass]="{'text-danger':getPivot(question.id).invalid}">
 							<ng-container [formGroup]="getPivot(question.id)" >
 								<div class="col-5">
 									<span class="p2-pl-12">
