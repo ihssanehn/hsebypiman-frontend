@@ -49,6 +49,7 @@ export class VsFormBodyComponent implements OnInit {
   parseQuestions(item){
     if(item.length > 0){
       const questionFormArray = this.visiteForm.get('questions') as FormArray
+
       for (let i = 0; i < item.length; i++) {
         const catQ = item[i]; 
         for (let j = 0; j < catQ.questions.length; j++) {
@@ -70,9 +71,14 @@ export class VsFormBodyComponent implements OnInit {
           note.valueChanges.subscribe(note=>{
             if(note == 2){
               date_remise_conf.enable({emitEvent:false, onlySelf:true})
+              this.visiteForm.get('presence_non_conformite').setValue(true);
             }else{
               date_remise_conf.disable({emitEvent:false, onlySelf:true})
               date_remise_conf.setValue(null);
+              var nbr_ko = this.getNotes().ko;
+              if(nbr_ko == 0 && this.visiteForm.get('presence_non_conformite').value == true){
+                this.visiteForm.get('presence_non_conformite').setValue(false);
+              }
             }
           })
 
@@ -83,7 +89,7 @@ export class VsFormBodyComponent implements OnInit {
   }
 
   partHided(partId){
-    console.log(partId);
+    // console.log(partId);
     return true;
   }
   showPart(partId){
@@ -115,6 +121,18 @@ export class VsFormBodyComponent implements OnInit {
     const p = q.get('pivot') as FormGroup;
       if(!p) return null;
     return p;
+  }
+
+  getNotes(){
+    const test = this.visiteForm.get('questions').value;
+    var ok = test.filter(x=>x.pivot.note == 1).length
+    var ko = test.filter(x=>x.pivot.note == 2).length
+    var ko_unsolved = test.filter(x=>x.pivot.note == 2 && !x.pivot.date_remise_conf).length
+    var ko_solved = test.filter(x=>x.pivot.note == 2 && x.pivot.date_remise_conf).length
+    var so = test.filter(x=>x.pivot.note == 3).length
+    var total = test.length;
+    
+    return {'ok':ok, 'ko':ko, 'so':so, 'ko_unsolved':ko_unsolved, 'ko_solved':ko_solved, 'total':total};
   }
 
 }
