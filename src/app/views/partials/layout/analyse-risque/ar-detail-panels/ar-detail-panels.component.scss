@@ -29,5 +29,13 @@
     .mat-slide-toggle.mat-disabled{
         opacity: 1;
     }
+    .tf-card-form{
+        .tf-heading{
+            margin-bottom: 0;
+        }
+        mat-radio-button{
+            padding: 0.8rem 0 0 1rem;
+        }
+    }
 
 }
