@@ -38,7 +38,7 @@ export class VsFormHeadComponent implements OnInit {
 
   async getTypes(){
     var res = await this.typeService.getAllFromModel('Vs').toPromise();
-    this.types = res.result.data;
+    this.types = res.result.data.filter(x=>{return x.code == 'C' || x.code == 'SAV'});
     this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
