@@ -126,7 +126,7 @@ export class EntrepriseEditComponent implements OnInit, OnDestroy {
 	async onSubmit(event) {
 		try {
 			this.formStatus.onFormSubmitting();
-			let form = {...this.entrepriseForm.value};
+			let form = {...this.entrepriseForm.getRawValue()};
 			form.id = this.entreprise.id;
 			
 			this.entrepriseService.update(form)
@@ -155,7 +155,6 @@ export class EntrepriseEditComponent implements OnInit, OnDestroy {
 					if(err.status === 422){
 						var messages = extractErrorMessagesFromErrorResponse(err);
 						this.formStatus.onFormSubmitResponse({success: false, messages: messages});
-						console.log(this.formStatus.errors, this.formStatus.canShowErrors());
 						this.cdr.detectChanges();
 						this.cdr.markForCheck();
 					}

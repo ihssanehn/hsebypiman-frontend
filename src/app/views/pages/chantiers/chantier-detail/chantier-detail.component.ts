@@ -10,7 +10,7 @@ import { NgxPermissionsService } from 'ngx-permissions';
 
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
-import Swal from 'sweetalert2';
+import Swal, { SweetAlertIcon } from 'sweetalert2';
 
 @Component({
   selector: 'tf-chantier-detail',
@@ -130,45 +130,30 @@ export class ChantierDetailComponent implements OnInit, OnDestroy {
 			confirmButtonText: 'Clore le chantier'
 		}).then(async response => {
 			if (response.value) {
-				try {
-					const res = await this.chantierService.closeChantier(chantierId).toPromise();
-					if (res) {
-						Swal.fire({
-							icon: 'success',
-							title: 'le chantier a été clos avec succès',
-							showConfirmButton: false,
-							timer: 1500
-						}).then(() => {
-							var chantier = res.result.data;
-							if(chantier.info){
-								Swal.fire({
-									icon: chantier.info['code'],
-									title: chantier.info['message'],
-									showConfirmButton: false,
-									timer: 3000
-								}).then(() => {
-									this.getChantier(chantierId);
-								})
-							}else{
-								
-								this.getChantier(chantierId);
-							}
-						});
-					} else {
-						throw new Error();
-					}
-				} catch (e) {
-					console.log(e);
+				const res = await this.chantierService.closeChantier(chantierId)
+				.toPromise()
+				.then(res=>{
+					var code = res.message.code as SweetAlertIcon;
+					var message = res.message.content != 'done' ? '<b class="text-'+code+'">'+res.message.content+'</b>' : null; 
+					Swal.fire({
+						icon: code,
+						title: 'le chantier a été clos avec succès',
+						showConfirmButton: false,
+						html: message,
+						timer: code == 'success' ? 1500 : 3000
+					}).then(() => {
+						this.getChantier(chantierId);
+					})
+				}).catch(e => {
 					Swal.fire({
 						icon: 'error',
 						title: 'Echec! une erreur est survenue',
 						showConfirmButton: false,
 						timer: 1500
 					});
-				}
+				});
 			}
 		});
-		
 	}
   
 	addAr(chantierId){

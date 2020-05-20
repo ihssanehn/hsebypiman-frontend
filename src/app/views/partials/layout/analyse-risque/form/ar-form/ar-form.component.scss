@@ -42,7 +42,7 @@
 }
 
 .full-height{
-    min-height: 160px;
+    min-height: 135px;
 }
 
 .mat-row:hover{
@@ -52,5 +52,26 @@
 .mat-table {
     th.mat-header-cell {
         width: 33%;
+    }
+    .mat-row{
+        .cell-textarea{
+            position: relative;
+            height: 55px;
+            textarea{
+                height: 95%;
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
+        }
+    }
+}
+
+.tf-card-form{
+    .tf-heading{
+        margin-bottom: 0;
+    }
+    mat-radio-button{
+        padding: 0.8rem 0 0 1rem;
     }
 }

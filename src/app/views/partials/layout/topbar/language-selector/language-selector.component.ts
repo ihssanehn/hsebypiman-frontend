@@ -88,7 +88,6 @@ export class LanguageSelectorComponent implements OnInit {
 	 * @param lang: any
 	 */
 	setLanguage(lang) {
-		console.log(lang);
 		this.languages.forEach((language: LanguageFlag) => {
 			if (language.lang === lang) {
 				language.active = true;

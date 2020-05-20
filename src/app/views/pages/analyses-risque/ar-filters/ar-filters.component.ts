@@ -105,7 +105,7 @@ export class ArFiltersComponent implements OnInit, AfterViewInit {
 
   search(filters: any): void {
     
-    var filter = {...this.filterForm.value}
+    var filter = {...this.filterForm.getRawValue()}
     filter.date_demarrage_start = this.dateFrToEnPipe.transform(filter.date_demarrage_start);
     filter.date_demarrage_end = this.dateFrToEnPipe.transform(filter.date_demarrage_end);
     filter.date_creation_start = this.dateFrToEnPipe.transform(filter.date_creation_start);

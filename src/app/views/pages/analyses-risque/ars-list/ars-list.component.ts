@@ -83,7 +83,18 @@ export class ArsListComponent implements OnInit {
 	}
 
 	duplicateAr(arId){
-		this.router.navigate(['analyses-risque/add'], {queryParams:{ar_id:arId}})
+		Swal.fire({
+			icon: 'warning',
+			title: 'Êtes vous sur de vouloir archiver le dernier AR ?',
+			showConfirmButton: true,
+			showCancelButton: true,
+			cancelButtonText: 'Annuler',
+			confirmButtonText: 'Confirmer'
+		}).then(async response => {
+			if (response.value) {
+				this.router.navigate(['analyses-risque/add'], {queryParams:{ar_id:arId}})
+			}
+		});
 	}
 
 	signAr(arId){
@@ -117,7 +128,6 @@ export class ArsListComponent implements OnInit {
 						throw new Error();
 					}
 				} catch (e) {
-					console.log(e);
 					Swal.fire({
 						icon: 'error',
 						title: 'Echec! une erreur est survenue',
@@ -131,7 +141,6 @@ export class ArsListComponent implements OnInit {
 
 
 	setOrder(by) {
-		console.log(this.filter)
 		if (this.isOrderedBy(by)) {
 			this.toggleOrderWay()
 		} else {
@@ -165,7 +174,6 @@ export class ArsListComponent implements OnInit {
 		for (let [key, value] of Object.entries(filters)) {
 			this.filter[key] = value;
 		}
-		console.log(this.filter);
 		this.getArs();
 	}
 

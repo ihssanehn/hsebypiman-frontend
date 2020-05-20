@@ -71,7 +71,7 @@ export class EntrepriseAddComponent implements OnInit {
   async onSubmit(){
     try {
       let result;
-      let form = {...this.entrepriseForm.value};
+      let form = {...this.entrepriseForm.getRawValue()};
       this.formStatus.onFormSubmitting();
   
 			this.entrepriseService.create(form)
@@ -101,7 +101,6 @@ export class EntrepriseAddComponent implements OnInit {
           if(err.status === 422){
             var messages = extractErrorMessagesFromErrorResponse(err);
             this.formStatus.onFormSubmitResponse({success: false, messages: messages});
-            console.log(this.formStatus.errors, this.formStatus.canShowErrors());
             this.cdr.detectChanges();
             this.cdr.markForCheck();
           }

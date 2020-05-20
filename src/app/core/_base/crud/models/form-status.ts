@@ -20,9 +20,7 @@ interface IShowMessages {
      * Determines if error messages can be shown
      */
     canShowErrors() {
-      console.log(this.getErrorsLength());
       return this.showMessages.error && this.errors && this.getErrorsLength() > 0 && !this.submitted;
-
     }
   
     /**

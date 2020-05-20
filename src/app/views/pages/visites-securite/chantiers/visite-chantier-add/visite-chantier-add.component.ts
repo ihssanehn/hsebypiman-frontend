@@ -1,18 +1,19 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
-import { CommonModule } from '@angular/common';
+import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from "@angular/forms";
+import { CommonModule, Location } from '@angular/common';
 import * as moment from 'moment';
 
 import { TranslateService } from '@ngx-translate/core';
-import { VisiteService, TypeService, ChantierService } from '@app/core/services';
-import { Visite, Type, Chantier } from '@app/core/models';
+import { VisiteService, TypeService, ChantierService, CatQuestionService } from '@app/core/services';
+import { Visite, Type, Chantier, CatQuestion } from '@app/core/models';
 import { NgxPermissionsService } from 'ngx-permissions';
 import { AuthService, User } from '@app/core/auth';
 import { MatSnackBar } from '@angular/material';
 import Swal from 'sweetalert2';
 import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
 import {FormStatus} from '@app/core/_base/crud/models/form-status';
+import { DateFrToEnPipe } from '@app/core/_base/layout';
 
 @Component({
   selector: 'tf-visite-chantier-add',
@@ -25,9 +26,11 @@ export class VisiteChantierAddComponent implements OnInit {
   visiteForm: FormGroup;
 	// allRoles: Role[];
   formStatus = new FormStatus();
-	loaded = false;
+  loaded = false;
+  invalid = [];
   editMode: boolean = false;
   chantier: Chantier;
+  currentUser: User;
   questionsDisplayed: boolean = false;
   // Private properties
   
@@ -37,37 +40,42 @@ export class VisiteChantierAddComponent implements OnInit {
 		private visiteFB: FormBuilder,
 		// private notificationService: NzNotificationService,
 		private visiteService: VisiteService,
-		private chantierService: ChantierService,
-		private typeService: TypeService,
-		private authService: AuthService,
-		private cdr: ChangeDetectorRef,
-		private permissionsService : NgxPermissionsService,
-    private translate:TranslateService,
+    private chantierService: ChantierService,
+    private location: Location,
+    private authService:AuthService,
+    private cdr: ChangeDetectorRef,
     public snackBar: MatSnackBar,
+    private dateFrToEnPipe:DateFrToEnPipe
   ) { }
 
   ngOnInit() {
     this.visite = new Visite();
     this.createForm();    
     this.setDynamicValidators();
+    this.getCurrentUser();
   }
 
+	async getCurrentUser() {
+		var res = await this.authService.getUserByToken().toPromise().then(res=>{this.visiteForm.get('redacteur_id').setValue(res.result.data.id)});
+		this.cdr.detectChanges();
+  }
+  
   createForm() {
 		this.visiteForm = this.visiteFB.group({
       'chantier_id': ['', Validators.required],
-      'salarie_id': [{value:''}, Validators.required],
-      'entreprise_id': [{value:''}, Validators.required],
-      'redacteur_id': [{value:'', disabled:true}, Validators.required],
-      'date_visite': ['', Validators.required],
+      'salarie_id': [{value:null, disabled:false}, Validators.required],
+      'entreprise_id': [{value:null, disabled:false}, Validators.required],
+      'redacteur_id': [{value:null, disabled:true}, Validators.required],
+      'date_visite': [moment().format('YYYY-MM-DD'), Validators.required],
       // 'is_validated_redacteur': ['', Validators.required],
       // 'is_validated_visite': ['', Validators.required],
       // 'validated_redacteur_at': ['', Validators.required],
       // 'validated_visite_at': ['', Validators.required],
-      'presence_non_conformite': [null, Validators.required],
-      'has_rectification_imm': [null, Validators.required],
-      'avertissement': [null, Validators.required],
-      'type_id': ['', Validators.required],
-      'questions': [],
+      'presence_non_conformite': [{value:false, disabled: true}],
+      'has_rectification_imm': [{value:false, disabled: true}],
+      'avertissement': [{value:false, disabled: false}],
+      'type_id': [null, Validators.required],
+      'questions': this.visiteFB.array([]),
 		});
 		this.loaded = true;
 		this.cdr.detectChanges();
@@ -80,19 +88,19 @@ export class VisiteChantierAddComponent implements OnInit {
     this.visiteForm.get('salarie_id').valueChanges.subscribe(salarie_id => {
         if (salarie_id != null) {
           entreprise_id.setValidators(null);
-          entreprise_id.disable();
+          entreprise_id.disable({onlySelf:true, emitEvent:false});
         }else{
           entreprise_id.setValidators(Validators.required);
-          entreprise_id.enable();
+          entreprise_id.enable({onlySelf:true, emitEvent:false});
         }
-    })
-    this.visiteForm.get('entreprise_id').valueChanges.subscribe(entreprise_id => {
+      })
+      this.visiteForm.get('entreprise_id').valueChanges.subscribe(entreprise_id => {
         if (entreprise_id != null) {
           salarie_id.setValidators(null);
-          salarie_id.disable();
+          salarie_id.disable({onlySelf:true, emitEvent:false});
         }else{
           salarie_id.setValidators(Validators.required);
-          salarie_id.enable();
+          salarie_id.enable({onlySelf:true, emitEvent:false});
         }
     })
   }
@@ -104,27 +112,27 @@ export class VisiteChantierAddComponent implements OnInit {
   async getChantier(chantierId){
     var res = await this.chantierService.get(chantierId).toPromise();
     this.chantier = res.result.data;
-    // this.visiteForm.setValue('chantier_id':this.chantier.id);
-    // this.visiteForm.setValue('redacteur_id':this.chantier.charge_affaire_id);
   }
 
   async onSubmit(event){
     try {
-      let form = {...this.visiteForm.value};
+      let form = {...this.visiteForm.getRawValue()};
       this.formStatus.onFormSubmitting();
-  
-			this.visiteService.create(form)
+      this.parseDates(form);
+      console.log(form);
+
+      this.visiteService.create(form)
         .toPromise()
         .then((visite) => {
           this.cdr.markForCheck();
           
           Swal.fire({
             icon: 'success',
-            title: 'Chantié créé avec succès',
+            title: 'Visite créée avec succès',
             showConfirmButton: false,
             timer: 1500
           }).then(() => {
-            this.router.navigate(['/visites/list']);
+            this.router.navigate(['/visites-securite/chantiers/list']);
           });
         })
         .catch(err =>{ 
@@ -139,7 +147,6 @@ export class VisiteChantierAddComponent implements OnInit {
           if(err.status === 422){
             var messages = extractErrorMessagesFromErrorResponse(err);
             this.formStatus.onFormSubmitResponse({success: false, messages: messages});
-            console.log(this.formStatus.errors, this.formStatus.canShowErrors());
             this.cdr.detectChanges();
             this.cdr.markForCheck();
           }
@@ -154,16 +161,39 @@ export class VisiteChantierAddComponent implements OnInit {
 
   }
 
-  setDateFormat(date){
-      return date ? moment(date).format('YYYY-MM-DD') : null;
-  }
+  cantDisplayQuestions(){
+    var test: boolean = this.visiteForm.get('chantier_id').invalid ||
+      this.visiteForm.get('type_id').invalid ||
+      this.visiteForm.get('salarie_id').invalid || 
+      this.visiteForm.get('entreprise_id').invalid;
 
-  canDisplayQuestions(){
-    this.visiteForm.get('chantier_id').value && this.visiteForm.get('type_id').value;
+    return test;
   }  
 
   displayQuestions(){
     this.questionsDisplayed = true;
   }
+
+  parseDates(form){
+    form.questions.forEach(x=>{
+      x.pivot.date_remise_conf = this.dateFrToEnPipe.transform(x.pivot.date_remise_conf);
+    })
+  }
+
+  onCancel() {
+		this.location.back();
+  }
+
+  public findInvalidControls() {
+    const questions = this.visiteForm.controls.questions as FormGroup;
+    const controls = questions.controls;
+    const invalid = [];
+    for (const name in controls) {
+        if (controls[name].invalid) {
+            invalid.push(name, controls[name].value);
+        }
+    }
+    return invalid;
+}
   
 }

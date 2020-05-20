@@ -343,7 +343,7 @@ export class ArEditComponent implements OnInit, OnDestroy {
 
 	async onSubmit(event) {
 		try {
-			let form = {...this.arForm.value};
+			let form = {...this.arForm.getRawValue()};
 			this.formStatus.onFormSubmitting();
 
 			if(form.chantier_id)
@@ -378,7 +378,6 @@ export class ArEditComponent implements OnInit, OnDestroy {
 						if(err.status === 422){
 							var messages = extractErrorMessagesFromErrorResponse(err);
 							this.formStatus.onFormSubmitResponse({success: false, messages: messages});
-							console.log(this.formStatus.errors, this.formStatus.canShowErrors());
 							this.cdr.detectChanges();
 							this.cdr.markForCheck();
 						}

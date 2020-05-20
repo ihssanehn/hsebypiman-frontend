@@ -28,8 +28,6 @@ export class DashboardComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		console.log('here2');
-
 		this.chartOptions1 = {
 			data: [10, 14, 18, 11, 9, 12, 14, 17, 18, 14],
 			color: this.layoutConfigService.getConfig('colors.state.brand'),

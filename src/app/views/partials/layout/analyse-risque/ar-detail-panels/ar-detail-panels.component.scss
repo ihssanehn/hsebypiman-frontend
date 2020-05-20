@@ -9,11 +9,6 @@
 }
 :host {
 
-    .tf-card-form{
-        border-radius: 8px;
-        border: solid 1px #eaecf0;
-        background: white;
-    }
     .mat-checkbox-disabled.mat-checkbox-checked .mat-checkbox-background{
         background-color: #e49819;
     }
@@ -33,6 +28,14 @@
     }
     .mat-slide-toggle.mat-disabled{
         opacity: 1;
+    }
+    .tf-card-form{
+        .tf-heading{
+            margin-bottom: 0;
+        }
+        mat-radio-button{
+            padding: 0.8rem 0 0 1rem;
+        }
     }
 
 }

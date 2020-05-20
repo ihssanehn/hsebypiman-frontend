@@ -129,7 +129,7 @@ export class VisiteChantierEditComponent implements OnInit, OnDestroy {
 	async onSubmit(event) {
 		try {
 			this.formStatus.onFormSubmitting();
-			let form = {...this.visiteForm.value};
+			let form = {...this.visiteForm.getRawValue()};
 			form.date_demarrage = form.date_demarrage ? moment(form.date_demarrage).format('YYYY-MM-DD') : null
 			  form.id = this.visite.id;
 			  
@@ -159,7 +159,6 @@ export class VisiteChantierEditComponent implements OnInit, OnDestroy {
 					if(err.status === 422){
 						var messages = extractErrorMessagesFromErrorResponse(err);
 						this.formStatus.onFormSubmitResponse({success: false, messages: messages});
-						console.log(this.formStatus.errors, this.formStatus.canShowErrors());
 						this.cdr.detectChanges();
 						this.cdr.markForCheck();
 					}

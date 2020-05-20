@@ -31,10 +31,10 @@ export class ArService extends HttpService{
         return this.http.get<JsonResponse<Ar>>(this.baseUrl+'/'+chantier_id);
     }
     create(chantier){
-        return this.http.post(this.baseUrl+'/'+'create', chantier);
+        return this.http.post<JsonResponse<Ar>>(this.baseUrl+'/'+'create', chantier);
     }
     update(chantier){
-        return this.http.put(this.baseUrl+'/'+chantier.id, chantier);
+        return this.http.put<JsonResponse<Ar>>(this.baseUrl+'/'+chantier.id, chantier);
     }
     delete(chantier_id){
         return this.http.delete(this.baseUrl+'/'+chantier_id);

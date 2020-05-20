@@ -130,10 +130,9 @@ export class ChantierFiltersComponent implements OnInit, AfterViewInit
   }
  
   search(filters: any): void {
-    var filter = {...this.filterForm.value}
+    var filter = {...this.filterForm.getRawValue()}
     filter.date_demarrage_start = this.dateFrToEnPipe.transform(filter.date_demarrage_start);
     filter.date_demarrage_end = this.dateFrToEnPipe.transform(filter.date_demarrage_end);
-    console.log(filter);
     this.change.emit(filter);
   }
 

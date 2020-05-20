@@ -12,7 +12,7 @@ import { NgxPermissionsService } from 'ngx-permissions';
 import { SubheaderService } from '@app/core/_base/layout/services/subheader.service';
 import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
 import * as moment from 'moment';
-import Swal from 'sweetalert2';
+import Swal, { SweetAlertIcon } from 'sweetalert2';
 import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
 import {FormStatus} from '@app/core/_base/crud/models/form-status';
 
@@ -68,7 +68,6 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 							this.chantierForm.patchValue(res.result.data);							
 							this.formPathValues(res.result.data);
 							this.chantierForm.controls['entreprises'].patchValue(res.result.data.entreprises);
-							console.log(this.chantierForm);
 						})
 					).subscribe( async res => {
 						this.chantier = res.result.data;
@@ -186,64 +185,66 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 		});
 	}
 
-	async onSubmit(event) {
-		try {
-			this.formStatus.onFormSubmitting();
-
-			let form = {...this.chantierForm.value};
-			this.parseChantierDate(form, 'FrToEn');
-			form.id = this.chantier.id;
-			
-			this.chantierService.update(form)
-				.toPromise()
-				.then((res) => {
-					this.cdr.markForCheck();
-
-					Swal.fire({
-						icon: 'success',
-						title: 'Chantier mis à jour avec succès',
-						showConfirmButton: false,
-						timer: 1500
-					}).then(() => {
-						var chantier = res.result.data;
-						if(chantier.info){
-							Swal.fire({
-								icon: chantier.info['code'],
-								title: chantier.info['message'],
-								showConfirmButton: false,
-								timer: 3000
-							}).then(() => {
-								this.location.back();
-							})
-						}else{
-							this.location.back();
-						}
-					});
+	fireBeforeSave(form){
+		Swal.fire({
+			icon: 'warning',
+			title: 'Voulez vous vraiment clore ce chantier ?',
+			text:'Les analyses de risque et visites de chantier seront archivés.',
+			showConfirmButton: true,
+			showCancelButton: true,
+			cancelButtonText: 'Annuler',
+			confirmButtonText: 'Clore le chantier'
+		}).then(async response => {
+			if (response.value) {
+				this.saveForm(form);
+			}
+		})
+	}
+	
+	saveForm(form){
+		this.parseChantierDate(form, 'FrToEn');
+		form.id = this.chantier.id;
+		this.chantierService.update(form)
+			.toPromise()
+			.then((res) => {
+				var code = res.message.code as SweetAlertIcon;
+				var message = res.message.content != 'done' ? '<b class="text-'+code+'">'+res.message.content+'</b>' : null; 
+				Swal.fire({
+					icon: code,
+					title: 'Chantier mis à jour avec succès',
+					showConfirmButton: false,
+					html: message,
+					timer: code == 'success' ? 1500 : 3000
+				}).then(() => {
+					this.location.back();
 				})
-				.catch(err => {
-
-					Swal.fire({
-						icon: 'error',
-						title: 'Echec! le formulaire est incomplet',
-						showConfirmButton: false,
-						timer: 1500
-					});
-
-					if(err.status === 422){
-						var messages = extractErrorMessagesFromErrorResponse(err);
-						this.formStatus.onFormSubmitResponse({success: false, messages: messages});
-						console.log(this.formStatus.errors, this.formStatus.canShowErrors());
-						this.cdr.detectChanges();
-						this.cdr.markForCheck();
-					  }
-			
-
+				this.cdr.markForCheck();
+			})
+			.catch(err => {
+				Swal.fire({
+					icon: 'error',
+					title: 'Echec! le formulaire est incomplet',
+					showConfirmButton: false,
+					timer: 1500
 				});
 
-			this.cdr.markForCheck();
-		} catch (error) {
-			console.error(error);
-			throw error;
+				if(err.status === 422){
+					var messages = extractErrorMessagesFromErrorResponse(err);
+					this.formStatus.onFormSubmitResponse({success: false, messages: messages});
+					this.cdr.detectChanges();
+					this.cdr.markForCheck();
+				}
+			});
+		this.cdr.markForCheck();
+	}
+
+	async onSubmit(event) {
+		this.formStatus.onFormSubmitting();
+		let form = {...this.chantierForm.getRawValue()};
+		if(form.status_id != this.chantier.status_id && this.chantier.status.code == 'ENCOURS' && !this.chantier.is_all_ars_archived){
+			this.fireBeforeSave(form)
+		}else{
+			this.saveForm(form)
 		}
 	}
 
