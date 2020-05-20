@@ -53,6 +53,18 @@
     th.mat-header-cell {
         width: 33%;
     }
+    .mat-row{
+        .cell-textarea{
+            position: relative;
+            height: 55px;
+            textarea{
+                height: 95%;
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
+        }
+    }
 }
 
 .tf-card-form{
