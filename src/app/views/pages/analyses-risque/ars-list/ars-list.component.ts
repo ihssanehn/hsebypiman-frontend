@@ -85,7 +85,7 @@ export class ArsListComponent implements OnInit {
 	duplicateAr(arId){
 		Swal.fire({
 			icon: 'warning',
-			title: 'Êtes vous sur de vouloir archiver le dernier AR ?',
+			title: 'Êtes vous sur de vouloir archiver la dernière analyse de risque ?',
 			showConfirmButton: true,
 			showCancelButton: true,
 			cancelButtonText: 'Annuler',
