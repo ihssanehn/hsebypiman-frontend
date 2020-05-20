@@ -1,12 +1,12 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from "@angular/forms";
 import { CommonModule } from '@angular/common';
 import * as moment from 'moment';
 
 import { TranslateService } from '@ngx-translate/core';
-import { VisiteService, TypeService, ChantierService } from '@app/core/services';
-import { Visite, Type, Chantier } from '@app/core/models';
+import { VisiteService, TypeService, ChantierService, CatQuestionService } from '@app/core/services';
+import { Visite, Type, Chantier, CatQuestion } from '@app/core/models';
 import { NgxPermissionsService } from 'ngx-permissions';
 import { AuthService, User } from '@app/core/auth';
 import { MatSnackBar } from '@angular/material';
@@ -40,6 +40,7 @@ export class VisiteChantierAddComponent implements OnInit {
 		private chantierService: ChantierService,
 		private typeService: TypeService,
 		private authService: AuthService,
+		private catQuestionService: CatQuestionService,
 		private cdr: ChangeDetectorRef,
 		private permissionsService : NgxPermissionsService,
     private translate:TranslateService,
@@ -50,8 +51,56 @@ export class VisiteChantierAddComponent implements OnInit {
     this.visite = new Visite();
     this.createForm();    
     this.setDynamicValidators();
+    this.getCatQuestions();
   }
 
+  async getCatQuestions(){
+    var params = {
+      type_id: this.visiteForm.get('type_id').value,
+      paginate:false
+    }
+    var res = await this.catQuestionService.getAll(params).toPromise();
+    if(res){
+      this.parseQuestions(res.result.data);
+      this.cdr.detectChanges();
+      this.cdr.markForCheck();
+    }
+  }
+
+  parseQuestions(item){
+    if(item.length > 0){
+      const questionFormArray = this.visiteForm.get('questions') as FormArray
+      for (let i = 0; i < item.length; i++) {
+        const catQ = item[i]; 
+        for (let j = 0; j < catQ.questions.length; j++) {
+          const q = catQ.questions[j];
+          const question = this.visiteFB.group({
+            id: [{value:q.id, disabled:true}],
+            pivot: this.visiteFB.group({
+              'note':[{value:null, disabled:false}, Validators.required],
+              'date_remise_conf':[{value:null, disabled:false}],
+              'commentaires':[{value:'', disabled:false}]
+            })
+          })
+
+          const pivot = question.get('pivot') as FormGroup;
+          const note = pivot.get('note') as FormControl;
+          const date_remise_conf = pivot.get('date_remise_conf') as FormControl;
+
+          note.valueChanges.subscribe(note=>{
+            if(note == 2){
+              date_remise_conf.enable({emitEvent:false, onlySelf:true})
+            }else{
+              date_remise_conf.disable({emitEvent:false, onlySelf:true})
+              date_remise_conf.setValue(null);
+            }
+          })
+
+          questionFormArray.push(question)
+        }
+      }
+    }
+  }
   createForm() {
 		this.visiteForm = this.visiteFB.group({
       'chantier_id': ['', Validators.required],
