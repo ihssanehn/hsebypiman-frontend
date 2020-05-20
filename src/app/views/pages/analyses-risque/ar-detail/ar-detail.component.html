@@ -41,11 +41,11 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="tf-card-form">
-						<div class="tf-heading tf-heading--sm">
+						<div class="tf-heading tf-heading--sm" [hidden]="!ar?.observations_signature">
 							{{'ARS.FORM.SIGNATURE.SUBTITLE' | translate}}
 						</div>
 	
-						<div class="row form-row">
+						<div class="row form-row" [hidden]="!ar?.observations_signature">
 							<div class="col-md-12 textarea-viewer">
 								<p class="mt-2">{{ar?.observations_signature}}</p>
 							</div>

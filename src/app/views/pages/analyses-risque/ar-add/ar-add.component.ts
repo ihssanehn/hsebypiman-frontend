@@ -14,7 +14,7 @@ import { NgxPermissionsService } from 'ngx-permissions';
 import { AuthService, User } from '@app/core/auth';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
-import Swal from 'sweetalert2';
+import Swal, { SweetAlertIcon } from 'sweetalert2';
 import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
 import { Param } from '@app/core/models/param.model';
 import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
@@ -408,13 +408,16 @@ export class ArAddComponent implements OnInit, OnDestroy {
     });
   }
 
-  fireNotifAfterSave(message = null){
+  fireNotifAfterSave(res:any){
+    var code = res.message.code as SweetAlertIcon;
+		var message = res.message.content != 'done' ? '<b class="text-'+code+'">'+res.message.content+'</b>' : null; 
+						
     Swal.fire({
-      icon: 'success',
+      icon: code,
       title: 'Analyse de risque créée avec succès',
-      text: message,
       showConfirmButton: false,
-      timer: 2000
+      html: message,
+      timer: code == 'success' ? 1500 : 3000
     }).then(() => {
       this.router.navigate(['/analyses-risque/list']);
     });
@@ -426,14 +429,10 @@ export class ArAddComponent implements OnInit, OnDestroy {
 
     this.arService.create(form)
       .toPromise()
-      .then((result) => {
+      .then((res:any) => {
+        console.log(res);
         this.cdr.markForCheck();
-        var message = null;
-        if(result.message.code != 'done'){
-          message = result.message.content;
-        }
-        this.fireNotifAfterSave(message);
-  
+        this.fireNotifAfterSave(res)
       })
       .catch(err =>{ 
 
