@@ -72,7 +72,7 @@ export class VisiteChantierAddComponent implements OnInit {
       // 'validated_redacteur_at': ['', Validators.required],
       // 'validated_visite_at': ['', Validators.required],
       'presence_non_conformite': [{value:false, disabled: true}],
-      'has_rectification_imm': [{value:false, disabled: true}],
+      'has_rectification_imm': [{value:false, disabled: false}],
       'avertissement': [{value:false, disabled: false}],
       'type_id': [null, Validators.required],
       'questions': this.visiteFB.array([]),
@@ -182,6 +182,10 @@ export class VisiteChantierAddComponent implements OnInit {
 
   onCancel() {
 		this.location.back();
+  }
+
+  questionsLoaded(){
+    return this.visiteForm.get('questions').value.length > 0
   }
 
   public findInvalidControls() {

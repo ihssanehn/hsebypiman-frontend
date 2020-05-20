@@ -81,17 +81,17 @@
                             <div class="row form-row">
                                 <div class="col-xl-4 st-group">
                                     <span class="st-label">{{'VISITES.PRESENCE_NC.LABEL' | translate}}</span>
-                                    <mat-slide-toggle color="warn" [checked]="isChecked('presence_non_conformite')" (change)="updateToggleValue($event, 'presence_non_conformite')">
+                                    <mat-slide-toggle color="warn" formControlName="presence_non_conformite">
                                     </mat-slide-toggle>
                                 </div>
                                 <div class="col-xl-4 st-group">
                                     <span class="st-label">{{'VISITES.HAS_RECTIF.LABEL' | translate}}<br>{{'VISITES.HAS_RECTIF.LABEL_COMP' | translate}}</span>
-                                    <mat-slide-toggle color="warn" [checked]="isChecked('has_rectification_imm')" (change)="updateToggleValue($event, 'has_rectification_imm')">
+                                    <mat-slide-toggle color="warn" formControlName="has_rectification_imm">
                                     </mat-slide-toggle>
                                 </div>
                                 <div class="col-xl-4 st-group">
                                     <span class="st-label">{{'VISITES.AVERT.LABEL' | translate}}<br>{{'VISITES.AVERT.LABEL_COMP' | translate}}</span>
-                                    <mat-slide-toggle color="warn" [checked]="isChecked('avertissement')" (change)="updateToggleValue($event, 'avertissement')">
+                                    <mat-slide-toggle color="warn" formControlName="avertissement">
                                     </mat-slide-toggle>
                                 </div>
                             </div>
