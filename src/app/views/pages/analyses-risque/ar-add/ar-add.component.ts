@@ -54,7 +54,8 @@ export class ArAddComponent implements OnInit, OnDestroy {
     protected chantierService:ChantierService,
     protected paramsService:ParamsService,
 		private cdr: ChangeDetectorRef,
-		private dateFrToEnPipe: DateFrToEnPipe,
+    private dateFrToEnPipe: DateFrToEnPipe,
+    protected dateEnToFrPipe:DateEnToFrPipe,
 		private permissionsService : NgxPermissionsService,
     private translate:TranslateService,
     iconRegistry: MatIconRegistry, 
@@ -78,6 +79,9 @@ export class ArAddComponent implements OnInit, OnDestroy {
           .pipe(
             tap(
               ar => {
+                var _ar = ar.result.data;
+								_ar.date_accueil_secu = this.dateEnToFrPipe.transform(_ar.date_accueil_secu);
+								_ar.date_validite = this.dateEnToFrPipe.transform(_ar.date_validite);
                 this.arForm.patchValue(ar.result.data);
                 this.fillForm(ar.result.data);
               }
