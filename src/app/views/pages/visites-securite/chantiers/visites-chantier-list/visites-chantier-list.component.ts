@@ -83,21 +83,10 @@ export class VisitesChantierListComponent implements OnInit {
 
 
 	viewVisite(visiteId) {
-		// this.router.navigateByUrl('visites-securite/detail/' + visiteId);
-		Swal.fire({
-			title: 'Désolé cette fonctionnalité n\'a pas encore été implémentée',
-			showConfirmButton: false,
-			timer: 1500
-		})
+		this.router.navigate(['../detail', visiteId], { relativeTo: this.activatedRoute });
 	}
 	editVisite(visiteId) {
-
-		// this.router.navigateByUrl('visites-securite/edit/' + visiteId);
-		Swal.fire({
-			title: 'Désolé cette fonctionnalité n\'a pas encore été implémentée',
-			showConfirmButton: false,
-			timer: 1500
-		})
+		this.router.navigate(['../edit', visiteId], { relativeTo: this.activatedRoute });
 	}
 	deleteVisite(visiteId) {
 		Swal.fire({

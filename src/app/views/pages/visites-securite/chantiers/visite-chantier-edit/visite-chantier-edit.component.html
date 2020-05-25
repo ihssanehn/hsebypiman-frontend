@@ -1,15 +1,44 @@
-<!-- <div class="row row-filters" style="height: 69px;">
-</div> -->
-<form [formGroup]="visiteForm" *ngIf="loaded; else loading" class="tf-form tf-form--group-seperator-dashed">
-  Modifier la visite {{visite.code}}
-  <!-- <tf-visite-form [visiteForm]="visiteForm" [edit]="true"></tf-visite-form> -->
-  <button mat-raised-button color="success" class="float-right ml-4" (click)="onSubmit(false)">
-	{{'ACTION.SAVE' | translate}}
-  </button>
-  <button mat-raised-button color="info" class="float-right ml-4" type="button" (click)="cancel()">
-		{{'ACTION.CANCEL' | translate}}
-	</button>
+
+<form [formGroup]="visiteForm" class="tf-form tf-form--group-seperator-dashed" *ngIf="visite">
+	<tf-portlet class="main-portlet-form" id="portlet-vs">
+		<div class="tf-portlet-header">
+			<span class="title">
+				<a [routerLink]="['/visites-securite/list']">{{'MENU.HOME' | translate}}</a>
+				<span class="divider">></span>
+			  <span class="id-item">{{'MENU.SUB_VISITESECURITE.ADD' | translate}}</span>
+			</span>
+		</div>
+		<tf-search-chantier-form [form]="visiteForm" origin="edit" ></tf-search-chantier-form>
+		<div class="tf-divider" *ngIf="visiteForm.get('chantier_id').value">
+			<span></span>
+		</div>
+		<tf-vs-form-head [visiteForm]="visiteForm" [edit]="true" *ngIf="visiteForm.get('chantier_id').value"></tf-vs-form-head>
+	</tf-portlet>
+	
+	<tf-vs-form-body [visiteForm]="visiteForm" origin="edit"  [isDisableToggle]="true" [edit]="true"></tf-vs-form-body>
+	
+<ng-container *ngIf="formStatus">
+		<div *ngIf="formStatus.canShowErrors()" class="alert alert-danger alert-dismissible fade show" role="alert">
+			<div><strong>Oups!</strong></div>
+			<div>
+				<ul *ngFor="let errors of formStatus.errors  |  keyvalue">
+					<li *ngFor="let error of errors.value">
+						{{error}}
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div *ngIf="formStatus.canShowSuccess()" class="alert alert-success" role="alert">
+			<div><strong>Success!</strong></div>
+			<div *ngFor="let message of formStatus.messages">{{ message }}</div>
+		</div>
+	</ng-container>
+	<div>
+		<button mat-raised-button [disabled]="visiteForm.invalid || !questionsLoaded()" (click)="onSubmit(visiteForm.valid)" color="success" class="pull-right">
+			{{'ACTION.SAVE' | translate}}
+		</button>
+		<button type="button" mat-raised-button color="info" (click)="onCancel()">
+			Cancel
+		</button>
+	</div>
 </form>
-<ng-template #loading>
-	Loading Visite
-</ng-template>

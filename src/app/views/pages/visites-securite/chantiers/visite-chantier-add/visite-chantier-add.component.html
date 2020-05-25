@@ -27,7 +27,7 @@
 		</tf-portlet-body>
 	</tf-portlet>
 	
-	<tf-vs-form-body [visiteForm]="visiteForm" origin="add" [edit]="true" *ngIf="questionsDisplayed"></tf-vs-form-body>
+	<tf-vs-form-body [visiteForm]="visiteForm" origin="add" [edit]="true" [isDisableToggle]="true" *ngIf="questionsDisplayed"></tf-vs-form-body>
 	
 	<ng-container *ngIf="formStatus">
 		<div *ngIf="formStatus.canShowErrors()" class="alert alert-danger alert-dismissible fade show" role="alert">

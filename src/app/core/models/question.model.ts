@@ -12,4 +12,5 @@ export class Question {
     active?:boolean;
     creator_id?:number;
     creator?:User;
+    pivot?:any;
 }

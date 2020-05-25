@@ -1,111 +1,165 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
-import { BehaviorSubject, Observable, of, Subscription } from "rxjs";
+import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from "@angular/forms";
+import { Location } from '@angular/common';
+import * as moment from 'moment';
+import { Subscription } from "rxjs";
+import { tap } from 'rxjs/operators';
 
-import { VisiteService, TypeService } from '@app/core/services';
-import { Paginate } from '@app/core/_base/layout/models/paginate.model';
-import { Visite } from '@app/core/models';
-import { NgxPermissionsService } from 'ngx-permissions';
-
-import { DomSanitizer } from '@angular/platform-browser';
-import { MatIconRegistry } from '@angular/material';
+import { VisiteService, ChantierService } from '@app/core/services';
+import { Visite, Chantier } from '@app/core/models';
+import { AuthService, User } from '@app/core/auth';
+import { MatSnackBar } from '@angular/material';
 import Swal from 'sweetalert2';
+import { extractErrorMessagesFromErrorResponse } from '@app/core/_base/crud';
+import { FormStatus } from '@app/core/_base/crud/models/form-status';
+import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
+
 
 @Component({
-  selector: 'tf-visite-chantier-detail',
-  templateUrl: './visite-chantier-detail.component.html',
-  styleUrls: ['./visite-chantier-detail.component.scss']
+	selector: 'tf-visite-chantier-detail',
+	templateUrl: './visite-chantier-detail.component.html',
+	styleUrls: ['./visite-chantier-detail.component.scss']
 })
 export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
-  
-  	visite: Visite;
+
+
+	public visite: Visite;
 	visiteForm: FormGroup;
 	// allRoles: Role[];
+	formStatus = new FormStatus();
 	loaded = false;
+	invalid = [];
 	editMode: boolean = false;
-	// Private properties
+	chantier: Chantier;
+	currentUser: User;
+	questionsDisplayed: boolean = false;
 	private subscriptions: Subscription[] = [];
 
-	/**
-	 * Component constructor
-	 *
-	 * @param activatedRoute: ActivatedRoute
-	 * @param router: Router
-	 * @param visiteFB: FormBuilder
-	 * @param layoutUtilsService: LayoutUtilsService
-	 */
+	// Private properties
+
 	constructor(
 		private activatedRoute: ActivatedRoute,
 		private router: Router,
 		private visiteFB: FormBuilder,
 		// private notificationService: NzNotificationService,
 		private visiteService: VisiteService,
+		private chantierService: ChantierService,
+		private location: Location,
+		private authService: AuthService,
 		private cdr: ChangeDetectorRef,
-		private permissionsService : NgxPermissionsService,
-		iconRegistry: MatIconRegistry, 
-		sanitizer: DomSanitizer
+		public snackBar: MatSnackBar,
+		private dateFrToEnPipe: DateFrToEnPipe,
+		private dateEnToFrPipe: DateEnToFrPipe
 	) {}
 
-  	ngOnInit() {
-	  	const routeSubscription = this.activatedRoute.params.subscribe(
-		  	async params => {
-			  	const id = params.id;
-			  	if (id) {
-					this.getVisite(id);
+	ngOnInit() {
+		this.createForm();
+		const routeSubscription = this.activatedRoute.params.subscribe(
+			async params => {
+				const id = params.id;
+				if (id) {
+					this.visiteService.get(id).pipe(
+						tap(res => {
+							var _visite = res.result.data
+							this.parseVisitesDate(_visite, 'EnToFr');
+							this.visiteForm.patchValue(_visite);
+							this.formPathValues(_visite);
+							this.visiteForm.disable();
+						})
+					).subscribe(async res => {
+						this.visite = res.result.data;
+						this.loaded = true;
+						this.cdr.detectChanges();
+						this.cdr.markForCheck();
+					});
+
 				} else {
-					this.router.navigateByUrl('/visites/list');
+					this.router.navigateByUrl('/chantiers/list');
 				}
-			}
-		);
+			});
+
+		this.subscriptions.push(routeSubscription);
+		this.getCurrentUser();
+
 	}
 
-  	async getVisite(visiteId){
-		try {
-			var res = await this.visiteService.get(visiteId).toPromise();
-			this.visite = res.result.data;
-			this.cdr.markForCheck();
-		} catch (error) {
-			console.error(error);
+	ngOnDestroy() {
+		this.subscriptions.forEach(sb => sb.unsubscribe());
+	}
+	async getCurrentUser() {
+		var res = await this.authService.getUserByToken().toPromise().then(res => {
+			this.visiteForm.get('redacteur_id').setValue(res.result.data.id)
+		});
+		this.cdr.detectChanges();
+	}
+
+	createForm() {
+		this.visiteForm = this.visiteFB.group({
+			'id': [{value: null, disabled: true}, Validators.required],
+			'chantier_id': [null, Validators.required],
+			'salarie_id': [{value: null, disabled: false}, Validators.required],
+			'entreprise_id': [{value: null, disabled: false}, Validators.required],
+			'redacteur_id': [{value: null, disabled: true}, Validators.required],
+			'date_visite': [moment().format('YYYY-MM-DD'), Validators.required],
+			'presence_non_conformite': [{value: false, disabled: true }],
+			'has_rectification_imm': [{value: false, disabled: false }],
+			'avertissement': [{value: false, disabled: false }],
+			'type_id': [null, Validators.required],
+			'questions': this.visiteFB.array([]),
+		});
+		this.loaded = true;
+		this.cdr.detectChanges();
+	}
+
+	parseVisitesDate(item, direction) {
+		item.date_visite = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.date_visite) : this.dateEnToFrPipe.transform(item.date_visite);
+		if (item.questions.length > 0) {
+			item.questions.forEach(x => {
+				x.pivot.date_remise_conf = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(x.pivot.date_remise_conf) : this.dateEnToFrPipe.transform(x.pivot.date_remise_conf);
+			})
 		}
 	}
 
-  	ngOnDestroy() {
-		this.subscriptions.forEach(sb => sb.unsubscribe());
+	formPathValues(visite) {
+
+		const questionsFormArray: FormArray = this.visiteForm.get('questions') as FormArray;
+		visite.questions.forEach(element => {
+			var question = this.visiteFB.group({
+				'id': [element.id],
+				'libelle': [element.libelle],
+				'pivot': this.visiteFB.group({
+					'note': [{value: "" + element.pivot.note, disabled: false }, Validators.required],
+					'date_remise_conf': [{value: element.pivot.date_remise_conf, disabled: false }],
+					'observation': [{value: element.pivot.observation, disabled: false }]
+				})
+			});
+			questionsFormArray.push(question);
+		})
 	}
 
-	/**
-	 * Redirect to list
-	 *
-	 */
-	goBackWithId() {
-		const url = `/visites/list`;
-		this.router.navigateByUrl(url, { relativeTo: this.activatedRoute });
+	onChantierSelected(chantierId: Number) {
+		this.getChantier(chantierId);
 	}
-  
-	
 
-  	/**
-	 * Refresh user
-	 *
-	 * @param isNew: boolean
-	 * @param id: number
-	 */
-	// refreshVisite(id) {
-	// 	let url = this.router.url;
-	// 	url = `/visites/edit/${id}`;
-	// 	this.router.navigateByUrl(url, { relativeTo: this.activatedRoute });
-  	// }
+	async getChantier(chantierId) {
+		var res = await this.chantierService.get(chantierId).toPromise();
+		this.chantier = res.result.data;
+	}
 
-  	// editVisite(id){
-	// 	this.router.navigateByUrl('visites/edit/'+id);
-	// }
-	// deleteVisite(id){
-	// 	Swal.fire({
-	// 		title:'Désolé cette fonctionnalité n\'a pas encore été implémentée',
-	// 		showConfirmButton: false,
-    //         timer: 1500
-	// 	})
-	// }
-  
+	questionsLoaded() {
+		return this.visiteForm.get('questions').value.length > 0
+	}
+
+	editVisite(visiteId) {
+		this.router.navigate(['../edit', visiteId], { relativeTo: this.activatedRoute });
+	}
+	deleteVisite(visiteId) {
+		Swal.fire({
+			title: 'Désolé cette fonctionnalité n\'a pas encore été implémentée',
+			showConfirmButton: false,
+			timer: 1500
+		})
+	}
+
 }

@@ -18,9 +18,13 @@ export class VsFormBodyComponent implements OnInit {
   catQuestionsList: CatQuestion[];
 
   @Input() visiteForm: FormGroup;
+  @Input() isDisableToggle: boolean;
   @Input() edit: Boolean;
   @Output() onCancel = new EventEmitter();
   @Output() onSubmit = new EventEmitter();
+  
+  public isExpanded : boolean = true;
+  
   constructor(
     private catQuestionService:CatQuestionService,
     private authService:AuthService,
@@ -47,42 +51,44 @@ export class VsFormBodyComponent implements OnInit {
   }
 
   parseQuestions(item){
-    if(item.length > 0){
-      const questionFormArray = this.visiteForm.get('questions') as FormArray
-
-      for (let i = 0; i < item.length; i++) {
-        const catQ = item[i]; 
-        for (let j = 0; j < catQ.questions.length; j++) {
-          const q = catQ.questions[j];
-          const question = this.fb.group({
-            'id': [q.id],
-            'libelle': [q.libelle],
-            'pivot': this.fb.group({
-              'note':[{value:null, disabled:false}, Validators.required],
-              'date_remise_conf':[{value:null, disabled:false}],
-              'observation':[{value:'', disabled:false}]
+    if(!this.edit){
+      if(item.length > 0){
+        const questionFormArray = this.visiteForm.get('questions') as FormArray
+  
+        for (let i = 0; i < item.length; i++) {
+          const catQ = item[i]; 
+          for (let j = 0; j < catQ.questions.length; j++) {
+            const q = catQ.questions[j];
+            const question = this.fb.group({
+              'id': [q.id],
+              'libelle': [q.libelle],
+              'pivot': this.fb.group({
+                'note':[{value:null, disabled:false}, Validators.required],
+                'date_remise_conf':[{value:null, disabled:false}],
+                'observation':[{value:'', disabled:false}]
+              })
             })
-          })
-
-          const pivot = question.get('pivot') as FormGroup;
-          const note = pivot.get('note') as FormControl;
-          const date_remise_conf = pivot.get('date_remise_conf') as FormControl;
-
-          note.valueChanges.subscribe(note=>{
-            if(note == 2){
-              date_remise_conf.enable({emitEvent:false, onlySelf:true})
-              this.visiteForm.get('presence_non_conformite').setValue(true);
-            }else{
-              date_remise_conf.disable({emitEvent:false, onlySelf:true})
-              date_remise_conf.setValue(null);
-              var nbr_ko = this.getNotes().ko;
-              if(nbr_ko == 0 && this.visiteForm.get('presence_non_conformite').value == true){
-                this.visiteForm.get('presence_non_conformite').setValue(false);
+  
+            const pivot = question.get('pivot') as FormGroup;
+            const note = pivot.get('note') as FormControl;
+            const date_remise_conf = pivot.get('date_remise_conf') as FormControl;
+  
+            note.valueChanges.subscribe(note=>{
+              if(note == 2){
+                date_remise_conf.enable({emitEvent:false, onlySelf:true})
+                this.visiteForm.get('presence_non_conformite').setValue(true);
+              }else{
+                date_remise_conf.disable({emitEvent:false, onlySelf:true})
+                date_remise_conf.setValue(null);
+                var nbr_ko = this.getNotes().ko;
+                if(nbr_ko == 0 && this.visiteForm.get('presence_non_conformite').value == true){
+                  this.visiteForm.get('presence_non_conformite').setValue(false);
+                }
               }
-            }
-          })
-
-          questionFormArray.push(question)
+            })
+  
+            questionFormArray.push(question)
+          }
         }
       }
     }
