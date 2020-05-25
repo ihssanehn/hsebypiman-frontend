@@ -124,13 +124,28 @@ export class AdminTemplateComponent implements OnInit {
 
   async deleteChild({id, parent_id}, confirm? : any){
     try {
-      await this.childService.delete(id).toPromise();
-      Swal.fire({ icon: 'success', 
-                  title: ( confirm ? confirm.title :  '...'), 
-                  showConfirmButton: false, 
-                  timer: 1500 
-                })
-      this.getItem({ id : parent_id });
+      await this.childService.delete(id)
+        .toPromise()
+        .then((res:any) => {
+          Swal.fire({ icon: 'success', 
+            title: ( confirm ? confirm.title :  '...'), 
+            showConfirmButton: false, 
+            timer: 1500 
+          })
+          this.getItem({ id : parent_id });
+        })
+        .catch(err =>{ 
+
+          Swal.fire({
+            icon: 'error',
+            title: 'Impossible de supprimer cette ligne',
+            showConfirmButton: false,
+            timer: 2000
+          });
+  
+        });
+
+      
       this.cdr.markForCheck();
 		} catch (error) {
 			console.error(error);
