@@ -214,7 +214,7 @@
                 <div class="col-md-12">
                     <div class="tf-card-form">
                         <div class="form-row" *ngIf="ar.equipements.length > 0; else noEquipement">
-                            <div class="col-xl-3 col-md-4 col-sm-6 col-xs-12" *ngFor="let equipement of ar.equipements">
+                            <div class="col-12" *ngFor="let equipement of ar.equipements">
                                 <mat-checkbox disabled [value]="equipement.id" [checked]="true">{{equipement.libelle}}</mat-checkbox>
                             </div>
                         </div>
@@ -235,7 +235,7 @@
                             {{'ARS.FORM.MWBLOCK.WORKREGISTER.TITLE' | translate}}<mat-slide-toggle class="pull-right" [checked]="isChecked('a_signer_registre_travaux')" disabled></mat-slide-toggle>
                         </div>
                         <div class="row mt-3" [hidden]="!ar.a_signer_registre_travaux">
-                            <div class="row form-row col-md-2">
+                            <div class="row form-row col-md-12">
                                 <mat-radio-group [value]="ar.registre_signing_period" class="col-xl-12 col-md-12 mat-form-field ng-tns-c14-2 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-legacy mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label">
                                     <div class="mat-form-field-wrapper">
                                         <div class="mat-form-field-flex">
@@ -253,7 +253,7 @@
                                     </div>
                                 </mat-radio-group>
                             </div>
-                            <div class="row form-row col-md-10">
+                            <div class="row form-row col-md-12">
                                 <mat-form-field class="col-xl-4">
                                     <mat-label>{{'ARS.FORM.REGISTRAR' | translate}}</mat-label>
                                     <input class="form-control" matInput [readonly]="true" type="text" name="nom_charge_registre" [value]="ar.nom_charge_registre" />

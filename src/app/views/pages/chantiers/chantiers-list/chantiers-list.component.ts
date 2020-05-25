@@ -33,7 +33,7 @@ export class ChantiersListComponent implements OnInit, AfterViewInit {
 	showFilters:Boolean = false;
 	displayedChantierColumns = [
 		'number', 'name', 'client', 'status', 'charge_affaire', 
-		'responsable_chiffrage', 'montant', 'date_demarrage',
+		'responsable_chiffrage', 'montant', 'created_at', 'date_demarrage',
 		'ee_presence', 'ars_count', 'latest_ar', 'vss_count',
 		'latest_vs', 'action'
 	];
