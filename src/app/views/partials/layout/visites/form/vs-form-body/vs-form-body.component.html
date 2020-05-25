@@ -11,7 +11,7 @@
 		</div>
 	</div>
 	
-	<div class="row" [hidden]="origin == 'add' && partHided(i)" *ngFor="let catQuestion of catQuestionsList; let i = index">
+	<div class="row" *ngFor="let catQuestion of catQuestionsList; let i = index">
 		<div class="col-12">
 			<mat-expansion-panel [expanded]="isExpanded" [disabled]="isDisableToggle">
 				<mat-expansion-panel-header>
@@ -60,9 +60,6 @@
 					</div>
 				</div>
 			</mat-expansion-panel>
-		</div>
-		<div class="col-12 mb-4">
-			<button mat-raised-button type="button" class="pull-right btn-small" color="info" *ngIf="partHided('i') && origin=='add'" (click)="showPart('i')">Suite</button>
 		</div>
 	</div>
 </ng-container>

@@ -19,6 +19,7 @@ export class VsFormBodyComponent implements OnInit {
 
   @Input() visiteForm: FormGroup;
   @Input() isDisableToggle: boolean;
+  @Input() origin: string;
   @Input() edit: Boolean;
   @Output() onCancel = new EventEmitter();
   @Output() onSubmit = new EventEmitter();
@@ -51,7 +52,7 @@ export class VsFormBodyComponent implements OnInit {
   }
 
   parseQuestions(item){
-    if(!this.edit){
+    if(this.origin == "add"){
       if(item.length > 0){
         const questionFormArray = this.visiteForm.get('questions') as FormArray
   
@@ -63,7 +64,7 @@ export class VsFormBodyComponent implements OnInit {
               'id': [q.id],
               'libelle': [q.libelle],
               'pivot': this.fb.group({
-                'note':[{value:null, disabled:false}, Validators.required],
+                'note':[{value:1, disabled:false}, Validators.required],
                 'date_remise_conf':[{value:null, disabled:false}],
                 'observation':[{value:'', disabled:false}]
               })
@@ -148,5 +149,6 @@ export class VsFormBodyComponent implements OnInit {
     
     return {'ok':ok, 'ko':ko, 'so':so, 'ko_unsolved':ko_unsolved, 'ko_solved':ko_solved, 'total':total};
   }
+
 
 }
