@@ -55,32 +55,30 @@ export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 
 	ngOnInit() {
 		this.initForm();
-		const routeSubscription = this.activatedRoute.params.subscribe(
-			async params => {
-				const id = params.id;
-				if (id) {
-					this.visiteService.get(id).pipe(
-						tap(res => {
-							var _visite = res.result.data
-							this.parseVisitesDate(_visite, 'EnToFr');
-							this.visiteForm.patchValue(_visite);
-							this.patchQuestionsForm(_visite);
-							this.visiteForm.disable();
-						})
-					).subscribe(async res => {
-						this.visite = res.result.data;
-						this.loaded = true;
-						this.cdr.detectChanges();
-						this.cdr.markForCheck();
-					});
+		const routeSubscription = this.activatedRoute.params.subscribe(async params => {
+			const id = params.id;
+			if (id) {
+				this.visiteService.get(id).pipe(
+					tap(res => {
+						var _visite = res.result.data
+						this.parseVisitesDate(_visite, 'EnToFr');
+						this.visiteForm.patchValue(_visite);
+						this.patchQuestionsForm(_visite);
+						this.visiteForm.disable();
+					})
+				).subscribe(async res => {
+					this.visite = res.result.data;
+					this.loaded = true;
+					this.cdr.detectChanges();
+					this.cdr.markForCheck();
+				});
 
-				} else {
-					this.router.navigateByUrl('/chantiers/list');
-				}
-			});
+			} else {
+				this.router.navigateByUrl('/chantiers/list');
+			}
+		});
 
 		this.subscriptions.push(routeSubscription);
-
 	}
 
 	ngOnDestroy() {
@@ -145,5 +143,5 @@ export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 			timer: 1500
 		})
 	}
-
+	
 }

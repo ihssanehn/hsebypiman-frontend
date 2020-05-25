@@ -90,7 +90,7 @@ export class VisiteChantierEditComponent implements OnInit, OnDestroy {
 	async getCurrentUser() {
 		var res = await this.authService.getUserByToken().toPromise().then(res=>{this.visiteForm.get('redacteur_id').setValue(res.result.data.id)});
 		this.cdr.detectChanges();
-  	}
+  }
   
   createForm() {
 		this.visiteForm = this.visiteFB.group({

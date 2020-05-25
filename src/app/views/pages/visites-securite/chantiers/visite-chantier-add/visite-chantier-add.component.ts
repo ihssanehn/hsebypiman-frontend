@@ -76,6 +76,18 @@ export class VisiteChantierAddComponent implements OnInit {
       'avertissement': [{value:false, disabled: false}],
       'type_id': [null, Validators.required],
       'questions': this.visiteFB.array([]),
+      'signature_redacteur': this.visiteFB.group({
+        'date':[null, Validators.required],
+        'signature': [null, Validators.required]
+      }),
+      'signature_visite': this.visiteFB.group({
+        'date':[null, Validators.required],
+        'signature': [null, Validators.required]
+      }),
+      'signature_resp_hse': this.visiteFB.group({
+        'date':[{value:null, disabled:true}],
+        'signature': [{value:null, disabled:true}]
+      }),
 		});
 		this.loaded = true;
 		this.cdr.detectChanges();

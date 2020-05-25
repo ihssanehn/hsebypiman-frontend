@@ -12,6 +12,7 @@ export { SearchChantierFormComponent } from './chantier/form/search-chantier-for
 // VISITES
 export { VsFormHeadComponent } from './visites/form/vs-form-head/vs-form-head.component';
 export { VsFormBodyComponent } from './visites/form/vs-form-body/vs-form-body.component';
+export { VsFormSignaturesComponent } from './visites/form/vs-form-signatures/vs-form-signatures.component';
 
 // Components
 export { ContextMenuComponent } from './context-menu/context-menu.component';
@@ -45,3 +46,7 @@ export { UserSideProfileComponent } from './aside/userside-profile/userside-prof
 export { ISearchResult } from './search-result/search-result.component';
 // COMMING SOON
 export { CommingSoonComponent } from './comming-soon/comming-soon.component';
+
+export { SignatureAddComponent } from './signature/signature-add/signature-add.component';
+export { SignatureListComponent } from './signature/signature-list/signature-list.component';
+export { ArDetailPanelsComponent } from './analyse-risque/ar-detail-panels/ar-detail-panels.component'

@@ -78,7 +78,11 @@ import {
 	SearchListBarComponent,
 	VsFormHeadComponent,
 	VsFormBodyComponent,
+	VsFormSignaturesComponent,
 	CommingSoonComponent,
+	SignatureAddComponent,
+	SignatureListComponent,
+	ArDetailPanelsComponent,
 } from './layout';
 // General
 import { NoticeComponent } from './content/general/notice/notice.component';
@@ -106,9 +110,6 @@ import { ScrollDispatchModule, ScrollingModule } from '@angular/cdk/scrolling';
 import { AdminBasicListPortletComponent } from './layout/admin-basic-list-portlet/admin-basic-list-portlet.component';
 import { AdminTemplateComponent } from './layout/admin-template/admin-template.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
-import { SignatureAddComponent } from './layout/signature/signature-add/signature-add.component';
-import { SignatureListComponent } from './layout/signature/signature-list/signature-list.component';
-import { ArDetailPanelsComponent } from './layout/analyse-risque/ar-detail-panels/ar-detail-panels.component'
 
 @NgModule({
 	declarations: [
@@ -148,6 +149,7 @@ import { ArDetailPanelsComponent } from './layout/analyse-risque/ar-detail-panel
 		// SearchChantierHeaderComponent,
 		VsFormHeadComponent,
 		VsFormBodyComponent,
+		VsFormSignaturesComponent,
 		SearchListBarComponent,
 
 		CartComponent,
@@ -208,6 +210,7 @@ import { ArDetailPanelsComponent } from './layout/analyse-risque/ar-detail-panel
 		// SearchChantierHeaderComponent,
 		VsFormHeadComponent,
 		VsFormBodyComponent,
+		VsFormSignaturesComponent,
 		SearchListBarComponent,
 		CartComponent,
 		
