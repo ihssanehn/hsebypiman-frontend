@@ -89,14 +89,28 @@ export class AdminTemplateComponent implements OnInit {
 
   async deleteItem({id}, confirm? : any){
     try {
-      await this.parentService.delete(id).toPromise();
-      const index = this.list.findIndex(item => item.id === id);
-      this.list.splice(index, 1);
-      Swal.fire({ icon: 'success', 
-                  title: ( confirm ? confirm.title :  '...'), 
-                  showConfirmButton: false, 
-                  timer: 1500 
-                })
+      await this.parentService.delete(id)
+        .toPromise()
+        .then((res:any) => {
+          Swal.fire({ icon: 'success', 
+            title: ( confirm ? confirm.title :  '...'), 
+            showConfirmButton: false, 
+            timer: 1500 
+          })
+          const index = this.list.findIndex(item => item.id === id);
+          this.list.splice(index, 1);
+        })
+        .catch(err =>{ 
+
+          Swal.fire({
+            icon: 'error',
+            title: 'Impossible de supprimer cette ligne',
+            showConfirmButton: false,
+            timer: 2000
+          });
+  
+        });
+        
       this.cdr.markForCheck();
 		} catch (error) {
 			console.error(error);
