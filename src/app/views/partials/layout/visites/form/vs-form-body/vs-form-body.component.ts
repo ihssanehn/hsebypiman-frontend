@@ -128,6 +128,14 @@ export class VsFormBodyComponent implements OnInit {
       if(!p) return null;
     return p;
   }
+  getPivotObs(question_id){
+    const p = this.getPivot(question_id);
+    return p ? p.get('observation').value : null;
+  }
+  getPivotDate(question_id){
+    const p = this.getPivot(question_id);
+    return p ? p.get('date_remise_conf').value : null;
+  }
 
   getNotes(){
     const test = this.visiteForm.get('questions').value;
