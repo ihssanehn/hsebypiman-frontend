@@ -119,7 +119,6 @@ export class VisiteChantierAddComponent implements OnInit {
       let form = {...this.visiteForm.getRawValue()};
       this.formStatus.onFormSubmitting();
       this.parseDates(form);
-      console.log(form);
 
       this.visiteService.create(form)
         .toPromise()
@@ -196,8 +195,8 @@ export class VisiteChantierAddComponent implements OnInit {
         if (controls[name].invalid) {
             invalid.push(name, controls[name].value);
         }
-    }
-    return invalid;
-}
+      }
+      return invalid;
+  }
   
 }
