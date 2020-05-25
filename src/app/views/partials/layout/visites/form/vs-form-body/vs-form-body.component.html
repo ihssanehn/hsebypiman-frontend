@@ -41,11 +41,17 @@
 										</mat-radio-group>
 									</div>
 									<div class="col-3">
-										<textarea class="form-control" rows="2" formControlName="observation"></textarea>
+										<textarea class="form-control" rows="2" formControlName="observation" *ngIf="!this.visiteForm.disabled; else observationValue"></textarea>
+										<ng-template #observationValue>
+											{{getPivotObs(question.id)}}
+										</ng-template>
 									</div>
 									<div class="col-2">
 										<div class="dropdown">
-											<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" placeholder="DD/MM/YYYY" formControlName="date_remise_conf">
+											<input matInput class="form-control" *ngIf="!this.visiteForm.disabled; else dateValue" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" placeholder="DD/MM/YYYY" formControlName="date_remise_conf">
+											<ng-template #dateValue>
+												{{getPivotDate(question.id)}}
+											</ng-template>
 										</div>
 									</div>
 								</ng-container>

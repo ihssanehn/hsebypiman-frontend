@@ -54,7 +54,7 @@ export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 	) {}
 
 	ngOnInit() {
-		this.createForm();
+		this.initForm();
 		const routeSubscription = this.activatedRoute.params.subscribe(
 			async params => {
 				const id = params.id;
@@ -64,7 +64,7 @@ export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 							var _visite = res.result.data
 							this.parseVisitesDate(_visite, 'EnToFr');
 							this.visiteForm.patchValue(_visite);
-							this.formPathValues(_visite);
+							this.patchQuestionsForm(_visite);
 							this.visiteForm.disable();
 						})
 					).subscribe(async res => {
@@ -80,21 +80,14 @@ export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 			});
 
 		this.subscriptions.push(routeSubscription);
-		this.getCurrentUser();
 
 	}
 
 	ngOnDestroy() {
 		this.subscriptions.forEach(sb => sb.unsubscribe());
 	}
-	async getCurrentUser() {
-		var res = await this.authService.getUserByToken().toPromise().then(res => {
-			this.visiteForm.get('redacteur_id').setValue(res.result.data.id)
-		});
-		this.cdr.detectChanges();
-	}
 
-	createForm() {
+	initForm() {
 		this.visiteForm = this.visiteFB.group({
 			'id': [{value: null, disabled: true}, Validators.required],
 			'chantier_id': [null, Validators.required],
@@ -121,7 +114,7 @@ export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 		}
 	}
 
-	formPathValues(visite) {
+	patchQuestionsForm(visite) {
 
 		const questionsFormArray: FormArray = this.visiteForm.get('questions') as FormArray;
 		visite.questions.forEach(element => {
@@ -138,21 +131,12 @@ export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 		})
 	}
 
-	onChantierSelected(chantierId: Number) {
-		this.getChantier(chantierId);
-	}
-
-	async getChantier(chantierId) {
-		var res = await this.chantierService.get(chantierId).toPromise();
-		this.chantier = res.result.data;
-	}
-
 	questionsLoaded() {
 		return this.visiteForm.get('questions').value.length > 0
 	}
 
 	editVisite(visiteId) {
-		this.router.navigate(['../edit', visiteId], { relativeTo: this.activatedRoute });
+		this.router.navigate(['visites-securite/chantiers/edit', visiteId]);
 	}
 	deleteVisite(visiteId) {
 		Swal.fire({

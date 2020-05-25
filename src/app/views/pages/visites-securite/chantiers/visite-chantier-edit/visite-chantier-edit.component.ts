@@ -211,7 +211,7 @@ export class VisiteChantierEditComponent implements OnInit, OnDestroy {
             showConfirmButton: false,
             timer: 1500
           }).then(() => {
-            this.router.navigate(['/visites-securite/chantiers/list']);
+            this.location.back();
           });
         })
         .catch(err =>{ 
