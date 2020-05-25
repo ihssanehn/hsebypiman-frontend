@@ -180,3 +180,16 @@
         width: 50%;
     }
 }
+
+.mat-checkbox-disabled.mat-checkbox-checked .mat-checkbox-background{
+    background-color: #e49819;
+}
+.mat-radio-button.mat-radio-disabled.mat-radio-checked .mat-radio-outer-circle{
+    border-color:  #e49819;
+}
+.mat-radio-button.mat-radio-disabled .mat-radio-inner-circle{
+    background-color: #e49819;
+}
+.mat-row:hover{
+    background-color: transparent!important;
+}

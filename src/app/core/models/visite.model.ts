@@ -1,9 +1,6 @@
 
-import {Ar} from './ar.model'
-import { Chantier } from './chantier.model';
+import {Ar, Chantier, Type, Status, Question } from './'
 import { User } from '../auth';
-import { Type } from './type.model';
-import { Status } from './status.model';
 
 export class Visite {
     id?:Number;
@@ -30,4 +27,5 @@ export class Visite {
     type?:Type;
     status?:Status;
     creator?:User;
+    questions?:Array<Question>;
 }

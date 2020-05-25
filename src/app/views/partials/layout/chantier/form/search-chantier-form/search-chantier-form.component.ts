@@ -53,7 +53,9 @@ export class SearchChantierFormComponent implements OnInit {
     this.initFilteredChantiers();
     
     if(this.origin == 'edit'){
-      this.getChantier(this.form.get('chantier_id').value);
+      if(this.form.get('chantier_id').value){
+        this.getChantier(this.form.get('chantier_id').value);
+      }
     }else{
       if(this.origin == 'detail'){
         this._data
