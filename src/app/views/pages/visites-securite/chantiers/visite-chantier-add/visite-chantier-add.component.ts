@@ -32,6 +32,7 @@ export class VisiteChantierAddComponent implements OnInit {
   chantier: Chantier;
   currentUser: User;
   questionsDisplayed: boolean = false;
+  showSignatures: boolean = false;
   // Private properties
   
   constructor(
@@ -183,6 +184,7 @@ export class VisiteChantierAddComponent implements OnInit {
 
   displayQuestions(){
     this.questionsDisplayed = true;
+    this.visiteForm.get('type_id').disable();
   }
 
   parseDates(form){
@@ -210,5 +212,13 @@ export class VisiteChantierAddComponent implements OnInit {
       }
       return invalid;
   }
-  
+
+  questionsAnswerd(){
+    const questionsList = this.visiteForm.get('questions');
+    return questionsList.value.length > 0 && questionsList.valid
+  }  
+
+  displaySignature(){
+    this.showSignatures = !this.showSignatures
+  }
 }

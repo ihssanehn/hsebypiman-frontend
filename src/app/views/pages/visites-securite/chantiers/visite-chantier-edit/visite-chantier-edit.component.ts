@@ -155,10 +155,11 @@ export class VisiteChantierEditComponent implements OnInit, OnDestroy {
         }
       })
 
-      note.setValue(""+element.pivot.note)
+      note.setValue(element.pivot.note);
 
       questionsFormArray.push(question);
     })
+
   }
   
   setDynamicValidators() {

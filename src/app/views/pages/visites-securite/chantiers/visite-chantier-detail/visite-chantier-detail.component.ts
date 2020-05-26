@@ -28,9 +28,11 @@ export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 	visiteForm: FormGroup;
 	// allRoles: Role[];
 	formStatus = new FormStatus();
+	isDisableToggle: boolean = false;
 	loaded = false;
 	invalid = [];
 	editMode: boolean = false;
+	showSignatures: boolean = false;
 	chantier: Chantier;
 	currentUser: User;
 	questionsDisplayed: boolean = false;
@@ -64,7 +66,7 @@ export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 						this.parseVisitesDate(_visite, 'EnToFr');
 						this.visiteForm.patchValue(_visite);
 						this.patchQuestionsForm(_visite);
-						this.visiteForm.disable();
+						// this.visiteForm.disable();
 					})
 				).subscribe(async res => {
 					this.visite = res.result.data;
@@ -88,16 +90,29 @@ export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 	initForm() {
 		this.visiteForm = this.visiteFB.group({
 			'id': [{value: null, disabled: true}, Validators.required],
-			'chantier_id': [null, Validators.required],
+			'chantier_id': [{value:null, disabled:true}, Validators.required],
 			'salarie_id': [{value: null, disabled: false}, Validators.required],
 			'entreprise_id': [{value: null, disabled: false}, Validators.required],
 			'redacteur_id': [{value: null, disabled: true}, Validators.required],
-			'date_visite': [moment().format('YYYY-MM-DD'), Validators.required],
+			'date_visite': [{value:moment().format('YYYY-MM-DD'), disabled: true}, Validators.required],
 			'presence_non_conformite': [{value: false, disabled: true }],
 			'has_rectification_imm': [{value: false, disabled: false }],
 			'avertissement': [{value: false, disabled: false }],
-			'type_id': [null, Validators.required],
+			'type_id': [{value:null, disabled:true}, Validators.required],
 			'questions': this.visiteFB.array([]),
+			'is_validate_resp_hse': [{value:null, disabled:true}],
+			'signature_redacteur': this.visiteFB.group({
+				'date':[{value:null, disabled:true}, Validators.required],
+				'signature': [{value:null, disabled:true}, Validators.required]
+			  }),
+			  'signature_visite': this.visiteFB.group({
+				'date':[{value:null, disabled:true}, Validators.required],
+				'signature': [{value:null, disabled:true}, Validators.required]
+			  }),
+			  'signature_resp_hse': this.visiteFB.group({
+				'date':[{value:null, disabled:true}],
+				'signature': [{value:null, disabled:true}]
+			  }),
 		});
 		this.loaded = true;
 		this.cdr.detectChanges();
@@ -117,16 +132,32 @@ export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 		const questionsFormArray: FormArray = this.visiteForm.get('questions') as FormArray;
 		visite.questions.forEach(element => {
 			var question = this.visiteFB.group({
-				'id': [element.id],
-				'libelle': [element.libelle],
+				'id': [{value:element.id, disabled:true}],
+				'libelle': [{value:element.libelle, disabled:true}],
 				'pivot': this.visiteFB.group({
-					'note': [{value: "" + element.pivot.note, disabled: false }, Validators.required],
-					'date_remise_conf': [{value: element.pivot.date_remise_conf, disabled: false }],
-					'observation': [{value: element.pivot.observation, disabled: false }]
+					'note': [{value:element.pivot.note, disabled: true }, Validators.required],
+					'date_remise_conf': [{value: element.pivot.date_remise_conf, disabled: true }],
+					'observation': [{value: element.pivot.observation, disabled: true }]
 				})
 			});
 			questionsFormArray.push(question);
 		})
+
+		const signatureRedacteur = this.visiteForm.get('signature_redacteur') as FormGroup;
+		if(visite.signatureRedacteur){
+			signatureRedacteur.patchValue(visite.signatureRedacteur);
+		}
+		const signatureVisite = this.visiteForm.get('signature_visite') as FormGroup;
+		if(visite.signatureVisite){
+			signatureVisite.patchValue(visite.signatureVisite);
+		}
+		const signatureRespHse = this.visiteForm.get('signature_resp_hse') as FormGroup;
+		if(visite.signatureRespHse){
+			signatureRespHse.patchValue(visite.signatureRespHse);
+		}
+
+		this.showSignatures = true;
+
 	}
 
 	questionsLoaded() {
