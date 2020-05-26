@@ -12,9 +12,7 @@
                 <div class="tf-wizard-v4__content" data-tfwizard-type="step-content" data-tfwizard-state="current">
                     <div class="tf-form__section tf-form__section--first">
                         <div class="tf-wizard-v4__form">
-                            <div class="row form-row">
-
-                                
+                            <div class="row form-row justify-content-md-center">
                                 <!-- TYPE -->
                                 <mat-form-field class="col-xl-3">
                                     <mat-label>{{'VISITES.TYPE.LABEL' | translate}}</mat-label>
@@ -27,10 +25,8 @@
                                         <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
                                     </mat-error>
                                 </mat-form-field>
-
-
                                 <!-- SALARIE -->
-                                <mat-form-field class="col-xl-3" 
+                                <mat-form-field class="col-xl-3" *ngIf="origin == 'add' || formHasValue('salarie_id')"
                                     matTooltip="Vous ne pouvez pas sélectionner un salarié si une entreprise est déjà sélectionnée" 
                                     [matTooltipDisabled]="formHasValue('salarie_id')"
                                 >
@@ -40,7 +36,7 @@
                                             {{ user | fullName }}
                                         </mat-option>
                                     </mat-select>
-                                    <button mat-button *ngIf="formHasValue('salarie_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('salarie_id'); $event.stopPropagation()">
+                                    <button mat-button *ngIf="formHasValue('salarie_id') && !visiteForm.get('salarie_id').disabled" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('salarie_id'); $event.stopPropagation()">
                                         <mat-icon>clear</mat-icon>
                                     </button>
                                     <mat-error *ngIf="isControlHasError('salarie_id','required')">
@@ -50,7 +46,7 @@
 
 
                                 <!-- ENTREPRISE -->
-                                <mat-form-field class="col-xl-3"
+                                <mat-form-field class="col-xl-3" *ngIf="origin == 'add' || formHasValue('entreprise_id')"
                                     matTooltip="Vous ne pouvez pas sélectionner une entreprise si un salarié est déjà sélectionné" 
                                     [matTooltipDisabled]="formHasValue('entreprise_id')"
                                 >
@@ -60,7 +56,7 @@
                                             {{ entreprise.raison_sociale }}
                                         </mat-option>
                                     </mat-select>
-                                    <button mat-button *ngIf="formHasValue('entreprise_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('entreprise_id'); $event.stopPropagation()">
+                                    <button mat-button *ngIf="formHasValue('entreprise_id') && !visiteForm.get('entreprise_id').disabled" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('entreprise_id'); $event.stopPropagation()">
                                         <mat-icon>clear</mat-icon>
                                     </button>
                                     <mat-error *ngIf="isControlHasError('entreprise_id','required')">
@@ -76,24 +72,6 @@
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
-                            </div>
-                            
-                            <div class="row form-row">
-                                <div class="col-xl-4 st-group">
-                                    <span class="st-label">{{'VISITES.PRESENCE_NC.LABEL' | translate}}</span>
-                                    <mat-slide-toggle color="warn" formControlName="presence_non_conformite">
-                                    </mat-slide-toggle>
-                                </div>
-                                <div class="col-xl-4 st-group">
-                                    <span class="st-label">{{'VISITES.HAS_RECTIF.LABEL' | translate}}<br>{{'VISITES.HAS_RECTIF.LABEL_COMP' | translate}}</span>
-                                    <mat-slide-toggle color="warn" formControlName="has_rectification_imm">
-                                    </mat-slide-toggle>
-                                </div>
-                                <div class="col-xl-4 st-group">
-                                    <span class="st-label">{{'VISITES.AVERT.LABEL' | translate}}<br>{{'VISITES.AVERT.LABEL_COMP' | translate}}</span>
-                                    <mat-slide-toggle color="warn" formControlName="avertissement">
-                                    </mat-slide-toggle>
-                                </div>
                             </div>
                         </div>
                     </div>

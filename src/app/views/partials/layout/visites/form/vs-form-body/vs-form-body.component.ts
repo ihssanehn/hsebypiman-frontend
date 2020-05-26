@@ -21,8 +21,7 @@ export class VsFormBodyComponent implements OnInit {
   @Input() isDisableToggle: boolean;
   @Input() origin: string;
   @Input() edit: Boolean;
-  @Output() onCancel = new EventEmitter();
-  @Output() onSubmit = new EventEmitter();
+  @Output() dateUpdated = new EventEmitter();
   
   public isExpanded : boolean = true;
   
@@ -146,9 +145,23 @@ export class VsFormBodyComponent implements OnInit {
     var ko_solved = test.filter(x=>x.pivot.note == 2 && x.pivot.date_remise_conf).length
     var so = test.filter(x=>x.pivot.note == 3).length
     var total = test.length;
-    
     return {'ok':ok, 'ko':ko, 'so':so, 'ko_unsolved':ko_unsolved, 'ko_solved':ko_solved, 'total':total};
   }
 
-
+  enableDate(i){
+    this.getPivot(i).get('date_remise_conf').enable();
+  }
+  canEditDate(i){
+    return this.origin != 'add' && this.getPivot(i).get('note').value == 2 && this.getPivot(i).get('date_remise_conf').value == null
+  }
+  updateDate(i){
+    this.getPivot(i).get('date_remise_conf').disable();
+    if(this.getPivot(i).get('date_remise_conf').value){
+      this.dateUpdated.emit(true);
+    }
+  }
+  cancelDate(i){
+    this.getPivot(i).get('date_remise_conf').setValue(null);
+    this.getPivot(i).get('date_remise_conf').disable();
+  }
 }

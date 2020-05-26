@@ -23,7 +23,7 @@ import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
 })
 export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 
-
+	canValidateHse: boolean = true;
 	public visite: Visite;
 	visiteForm: FormGroup;
 	// allRoles: Role[];
@@ -91,13 +91,13 @@ export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 		this.visiteForm = this.visiteFB.group({
 			'id': [{value: null, disabled: true}, Validators.required],
 			'chantier_id': [{value:null, disabled:true}, Validators.required],
-			'salarie_id': [{value: null, disabled: false}, Validators.required],
-			'entreprise_id': [{value: null, disabled: false}, Validators.required],
+			'salarie_id': [{value: null, disabled: true}, Validators.required],
+			'entreprise_id': [{value: null, disabled: true}, Validators.required],
 			'redacteur_id': [{value: null, disabled: true}, Validators.required],
 			'date_visite': [{value:moment().format('YYYY-MM-DD'), disabled: true}, Validators.required],
 			'presence_non_conformite': [{value: false, disabled: true }],
-			'has_rectification_imm': [{value: false, disabled: false }],
-			'avertissement': [{value: false, disabled: false }],
+			'has_rectification_imm': [{value: false, disabled: true }],
+			'avertissement': [{value: false, disabled: true }],
 			'type_id': [{value:null, disabled:true}, Validators.required],
 			'questions': this.visiteFB.array([]),
 			'is_validate_resp_hse': [{value:null, disabled:true}],
@@ -140,20 +140,24 @@ export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 					'observation': [{value: element.pivot.observation, disabled: true }]
 				})
 			});
+
+			if(element.pivot.note == 2){
+				this.visiteForm.get('presence_non_conformite').setValue(true);
+			}
 			questionsFormArray.push(question);
 		})
 
 		const signatureRedacteur = this.visiteForm.get('signature_redacteur') as FormGroup;
-		if(visite.signatureRedacteur){
-			signatureRedacteur.patchValue(visite.signatureRedacteur);
+		if(visite.signRedacteur){
+			signatureRedacteur.patchValue(visite.signRedacteur);
 		}
 		const signatureVisite = this.visiteForm.get('signature_visite') as FormGroup;
-		if(visite.signatureVisite){
-			signatureVisite.patchValue(visite.signatureVisite);
+		if(visite.signVisite){
+			signatureVisite.patchValue(visite.signVisite);
 		}
 		const signatureRespHse = this.visiteForm.get('signature_resp_hse') as FormGroup;
-		if(visite.signatureRespHse){
-			signatureRespHse.patchValue(visite.signatureRespHse);
+		if(visite.signRespHse){
+			signatureRespHse.patchValue(visite.signRespHse);
 		}
 
 		this.showSignatures = true;
@@ -174,5 +178,50 @@ export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 			timer: 1500
 		})
 	}
+
+	async onSubmit(event){
+		try {
+		  let form = {...this.visiteForm.getRawValue()};
+		  this.formStatus.onFormSubmitting();
+		  this.parseVisitesDate(form, 'FrToEn');
+	
+		  this.visiteService.update(form)
+			.toPromise()
+			.then((visite) => {
+			  this.cdr.markForCheck();
+			  
+			  Swal.fire({
+				icon: 'success',
+				title: 'Visite mise à jour avec succès',
+				showConfirmButton: false,
+				timer: 1500
+			  });
+			})
+			.catch(err =>{ 
+	
+			  Swal.fire({
+				icon: 'error',
+				title: 'Echec! le formulaire est incomplet',
+				showConfirmButton: false,
+				timer: 1500
+			  });
+	
+			  if(err.status === 422){
+				var messages = extractErrorMessagesFromErrorResponse(err);
+				this.formStatus.onFormSubmitResponse({success: false, messages: messages});
+				this.cdr.detectChanges();
+				this.cdr.markForCheck();
+			  }
+	
+			});
+			
+		  this.cdr.markForCheck();
+		} catch (error) {
+		  console.error(error);
+		  throw error;
+		}
+	}
+	
+
 	
 }

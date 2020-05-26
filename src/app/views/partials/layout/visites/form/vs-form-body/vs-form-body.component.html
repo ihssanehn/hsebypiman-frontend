@@ -1,8 +1,25 @@
 <ng-container [formGroup]="visiteForm">
 	<div class="row sticky-top justify-content-md-center">
-		<div class="col-6">
+		<div class="col-10">
 			<div class="tf-card-form">
 				<div class="row">
+					<div class="col-xl-4 st-group">
+						<span class="st-label">{{'VISITES.PRESENCE_NC.LABEL' | translate}}</span>
+						<mat-slide-toggle color="warn" formControlName="presence_non_conformite">
+						</mat-slide-toggle>
+					</div>
+					<div class="col-xl-4 st-group">
+						<span class="st-label">{{'VISITES.HAS_RECTIF.LABEL' | translate}}<br>{{'VISITES.HAS_RECTIF.LABEL_COMP' | translate}}</span>
+						<mat-slide-toggle color="warn" formControlName="has_rectification_imm">
+						</mat-slide-toggle>
+					</div>
+					<div class="col-xl-4 st-group">
+						<span class="st-label">{{'VISITES.AVERT.LABEL' | translate}}<br>{{'VISITES.AVERT.LABEL_COMP' | translate}}</span>
+						<mat-slide-toggle color="warn" formControlName="avertissement">
+						</mat-slide-toggle>
+					</div>
+				</div>
+				<div class="row mt-4">
 					<div class="col-4 text-center">Nbr de OK : <b>{{getNotes().ok}}</b></div>
 					<div class="col-4 text-center">Nbr de KO : <b>{{getNotes().ko}}</b></div>
 					<div class="col-4 text-center">Nbr de SO : <b>{{getNotes().so}}</b></div>
@@ -48,13 +65,21 @@
 									</div>
 									<div class="col-2">
 										<div class="dropdown">
-											<input matInput class="form-control" *ngIf="!this.visiteForm.disabled; else dateValue" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" placeholder="DD/MM/YYYY" formControlName="date_remise_conf">
-											<ng-template #dateValue>
-												{{getPivotDate(question.id)}}
+											<input matInput *ngIf="origin == 'add'; else detailMode" class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" placeholder="DD/MM/YYYY" formControlName="date_remise_conf">
+											<ng-template #detailMode>
+												<div class="edit-date-block">
+													<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" placeholder="DD/MM/YYYY" formControlName="date_remise_conf">
+													<button mat-icon-button color="info" *ngIf="canEditDate(question.id) && getPivot(question.id).get('date_remise_conf').disabled" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="enableDate(question.id)">
+														<i nz-icon nzType="edit" nzTheme="outline"></i>
+													</button>
+													<button mat-icon-button color="success" *ngIf="!getPivot(question.id).get('date_remise_conf').disabled" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="updateDate(question.id)">
+														<i nz-icon nzType="check"  nzTheme="outline"></i>
+													</button>
+													<button mat-icon-button color="warn" *ngIf="!getPivot(question.id).get('date_remise_conf').disabled" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="cancelDate(question.id)">
+														<i nz-icon nzType="close" nzTheme="outline"></i>
+													</button>
+												</div>
 											</ng-template>
-											<span *ngIf="origin!='add'" class="pull-right pointer" (click)="updateQuestionDate(i)">
-												<mat-icon color="warn">edit</mat-icon>
-											</span>
 										</div>
 									</div>
 								</ng-container>

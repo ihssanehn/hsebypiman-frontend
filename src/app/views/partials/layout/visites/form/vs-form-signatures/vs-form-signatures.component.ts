@@ -20,10 +20,11 @@ export class VsFormSignaturesComponent implements OnInit, AfterViewInit {
   @Input() visiteForm: FormGroup;
   @Input() isDisableToggle: boolean;
   @Input() origin: string;
-  @Output() onCancel = new EventEmitter();
-  @Output() onSubmit = new EventEmitter();
+  @Input() canValidateHse: boolean;
+  @Output() hseSigned = new EventEmitter();
   
   public isExpanded : boolean = true;
+  public startSignHse : boolean = false;
 
   @ViewChild('sign_canvas_redacteur', null) signaturePad1: SignaturePad;
   @ViewChild('sign_canvas_visite', null) signaturePad2: SignaturePad;
@@ -124,6 +125,11 @@ export class VsFormSignaturesComponent implements OnInit, AfterViewInit {
       .setValue(this.signaturePad3.toDataURL());
 
     this.visiteForm.controls[i].get('date').setValue(moment().format('YYYY-MM-DD'));
+
+    this.visiteForm.controls[i].get('signature').disable();
+    this.canValidateHse = false;
+    this.startSignHse = false;
+    this.hseSigned.emit(true);
   }
 
   showSignature(i){
@@ -133,6 +139,27 @@ export class VsFormSignaturesComponent implements OnInit, AfterViewInit {
     .controls[i].get('signature')
     .value : false
   }
-  
 
+  isDisabledHseSignature(){
+    return this.visiteForm
+    .controls['signature_resp_hse'].get('signature')
+    .disabled ? this.visiteForm
+    .controls['signature_resp_hse'].get('signature')
+    .disabled : false
+  }
+
+  canShowHse(){;
+    return this.startSignHse || this.showSignature('signature_resp_hse');
+  }
+  
+	validateHse(){
+		if(this.startSignHse){
+			this.visiteForm.controls['signature_resp_hse'].get('signature').disable();
+			this.startSignHse = false;
+		}else{
+			this.visiteForm.controls['signature_resp_hse'].get('signature').enable();
+			this.startSignHse = true;
+		}
+		this.cdr.markForCheck();
+	}
 }
