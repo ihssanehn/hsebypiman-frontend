@@ -64,7 +64,7 @@ export class VsFormBodyComponent implements OnInit {
               'id': [q.id],
               'libelle': [q.libelle],
               'pivot': this.fb.group({
-                'note':[{value:1, disabled:false}, Validators.required],
+                'note':[{value:null, disabled:false}, Validators.required],
                 'date_remise_conf':[{value:null, disabled:false}],
                 'observation':[{value:'', disabled:false}]
               })

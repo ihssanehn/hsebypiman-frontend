@@ -35,9 +35,9 @@
 									</div>
 									<div class="col-2 d-inline-flex" style="justify-content: space-around;">
 										<mat-radio-group aria-label="Select an option" formControlName="note">
-											<mat-radio-button value="1">OK</mat-radio-button>
-											<mat-radio-button value="2">KO</mat-radio-button>
-											<mat-radio-button value="3">SO</mat-radio-button>
+											<mat-radio-button [value]="1">OK</mat-radio-button>
+											<mat-radio-button [value]="2">KO</mat-radio-button>
+											<mat-radio-button [value]="3">SO</mat-radio-button>
 										</mat-radio-group>
 									</div>
 									<div class="col-3">
@@ -52,6 +52,9 @@
 											<ng-template #dateValue>
 												{{getPivotDate(question.id)}}
 											</ng-template>
+											<span *ngIf="origin!='add'" class="pull-right pointer" (click)="updateQuestionDate(i)">
+												<mat-icon color="warn">edit</mat-icon>
+											</span>
 										</div>
 									</div>
 								</ng-container>

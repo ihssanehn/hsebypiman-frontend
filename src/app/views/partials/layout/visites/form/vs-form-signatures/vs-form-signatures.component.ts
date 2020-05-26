@@ -1,18 +1,19 @@
 
-import { Component, OnInit, Input, ChangeDetectorRef, EventEmitter, Output, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef, EventEmitter, Output, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, AbstractControl, FormControl, Validators, FormArray } from '@angular/forms';
 import { AuthService, User } from '@app/core/auth';
 import { CatQuestion } from '@app/core/models';
 import { CatQuestionService } from '@app/core/services';
 import { SignaturePad } from 'angular2-signaturepad/signature-pad';
 import moment from 'moment';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'tf-vs-form-signatures',
   templateUrl: './vs-form-signatures.component.html',
   styleUrls: ['./vs-form-signatures.component.scss']
 })
-export class VsFormSignaturesComponent implements OnInit {
+export class VsFormSignaturesComponent implements OnInit, AfterViewInit {
 
   catQuestionsList: CatQuestion[];
 
@@ -27,6 +28,10 @@ export class VsFormSignaturesComponent implements OnInit {
   @ViewChild('sign_canvas_redacteur', null) signaturePad1: SignaturePad;
   @ViewChild('sign_canvas_visite', null) signaturePad2: SignaturePad;
   @ViewChild('sign_canvas_resp_hse', null) signaturePad3: SignaturePad;
+
+  @ViewChild('signatureContainer1', null) signatureContainer1: ElementRef;
+  @ViewChild('signatureContainer2', null) signatureContainer2: ElementRef;
+  @ViewChild('signatureContainer3', null) signatureContainer3: ElementRef;
 
   private canvas: Object = {
     'minWidth': 0.5,
@@ -44,15 +49,21 @@ export class VsFormSignaturesComponent implements OnInit {
     private authService:AuthService,
     private cdr: ChangeDetectorRef,
     private fb: FormBuilder,
+    public _sanitizer: DomSanitizer
+
   ) { }
 
   ngOnInit() {
-    // if(this.origin == 'add'){
-    //   // this.signaturePad1.off();
-    //   // this.signaturePad2.off();
-    //   // this.signaturePad3.off();
-    // }
-    console.log(this.signaturePad1);
+  }
+
+  ngAfterViewInit() {
+    
+    if(this.origin == 'add'){
+      var width = this.signatureContainer2.nativeElement.offsetWidth - 1;
+      if(this.signaturePad1){this.signaturePad1.set('canvasWidth', width)};
+      if(this.signaturePad2){this.signaturePad2.set('canvasWidth', width)};
+      if(this.signaturePad3){this.signaturePad3.set('canvasWidth', width)};
+    }
   }
 
   // PAD1
@@ -115,6 +126,13 @@ export class VsFormSignaturesComponent implements OnInit {
     this.visiteForm.controls[i].get('date').setValue(moment().format('YYYY-MM-DD'));
   }
 
+  showSignature(i){
+    return this.visiteForm
+    .controls[i].get('signature')
+    .value ? this.visiteForm
+    .controls[i].get('signature')
+    .value : false
+  }
   
 
 }

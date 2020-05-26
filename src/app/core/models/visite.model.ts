@@ -1,5 +1,5 @@
 
-import {Ar, Chantier, Type, Status, Question } from './'
+import {Ar, Chantier, Type, Status, Question, Signature } from './'
 import { User } from '../auth';
 
 export class Visite {
@@ -28,4 +28,7 @@ export class Visite {
     status?:Status;
     creator?:User;
     questions?:Array<Question>;
+    signatureRedacteur?:Signature;
+    signatureVisite?:Signature;
+    signatureRespHse?:Signature;
 }

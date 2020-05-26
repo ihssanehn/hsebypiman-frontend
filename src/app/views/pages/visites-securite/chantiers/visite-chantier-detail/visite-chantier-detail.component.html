@@ -28,6 +28,13 @@
 		<tf-vs-form-head [visiteForm]="visiteForm" [edit]="true" *ngIf="visiteForm.get('chantier_id').value"></tf-vs-form-head>
 	</tf-portlet>
 	
-	<tf-vs-form-body [visiteForm]="visiteForm" [origin]="'detail'" [isDisableToggle]="false" ></tf-vs-form-body>
+	<tf-vs-form-body [visiteForm]="visiteForm" [origin]="'detail'" [isDisableToggle]="isDisableToggle" ></tf-vs-form-body>
+
+	<mat-expansion-panel [expanded]="isExpanded" [disabled]="isDisableToggle">
+		<mat-expansion-panel-header>
+			<div class="tf-heading tf-heading--md">| Signatures</div>
+		</mat-expansion-panel-header>
+		<tf-vs-form-signatures [visiteForm]="visiteForm" [origin]="'detail'" [isDisableToggle]="true" *ngIf="showSignatures"></tf-vs-form-signatures>
+	</mat-expansion-panel>
 
 </form>
