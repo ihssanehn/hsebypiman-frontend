@@ -37,22 +37,20 @@ export class ArSignatureComponent extends ArDetailComponent implements OnInit {
     this.isExpanded = !this.ar.is_signed;
     this.signaturesForm = this.fb.array([]);
 
-    if(!this.ar.is_signed){
-      this.signaturesForm.insert(0, 
-        this.fb.group({
-          signable_id:[null],
-          date:[this.setDateFormat(new Date())],
-          personnel:[null],
-          personnel_id:[null],
-          signataire_fullname:[null],
-          entreprise_id:[null],
-          signature:[null, Validators.required],
-          commentaires:[null],
-          remarks:[null],
-        })
-      );
-    }
-
+    this.signaturesForm.insert(0, 
+      this.fb.group({
+        signable_id:[null],
+        date:[this.setDateFormat(new Date())],
+        personnel:[null],
+        personnel_id:[null],
+        signataire_fullname:[null],
+        entreprise_id:[null],
+        signature:[null, Validators.required],
+        commentaires:[null],
+        remarks:[null],
+      })
+    );
+    
     this.loaded = true;
 		this.cdr.detectChanges();
   }
