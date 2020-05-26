@@ -58,7 +58,7 @@ export class AdminListPortletComponent implements OnInit {
   
   
   addChild(){
-    this.item.children.push({edit: true, id:"-1"})
+    this.item.children.push({edit: true})
     // this.nzTableComponent.cdkVirtualScrollViewport.scrollToIndex(10);
   }
 

@@ -20,7 +20,7 @@ export class ArDetailComponent implements OnInit, OnDestroy {
   	ar: Ar;
 	chantier : Chantier;
 
-	isExpanded = true;
+	isExpanded = false;
 	isDisableToggle = false;
 
 	loaded = false;
