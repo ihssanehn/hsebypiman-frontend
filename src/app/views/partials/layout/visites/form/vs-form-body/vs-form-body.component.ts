@@ -19,9 +19,9 @@ export class VsFormBodyComponent implements OnInit {
 
   @Input() visiteForm: FormGroup;
   @Input() isDisableToggle: boolean;
+  @Input() origin: string;
   @Input() edit: Boolean;
-  @Output() onCancel = new EventEmitter();
-  @Output() onSubmit = new EventEmitter();
+  @Output() dateUpdated = new EventEmitter();
   
   public isExpanded : boolean = true;
   
@@ -51,7 +51,7 @@ export class VsFormBodyComponent implements OnInit {
   }
 
   parseQuestions(item){
-    if(!this.edit){
+    if(this.origin == "add"){
       if(item.length > 0){
         const questionFormArray = this.visiteForm.get('questions') as FormArray
   
@@ -128,6 +128,14 @@ export class VsFormBodyComponent implements OnInit {
       if(!p) return null;
     return p;
   }
+  getPivotObs(question_id){
+    const p = this.getPivot(question_id);
+    return p ? p.get('observation').value : null;
+  }
+  getPivotDate(question_id){
+    const p = this.getPivot(question_id);
+    return p ? p.get('date_remise_conf').value : null;
+  }
 
   getNotes(){
     const test = this.visiteForm.get('questions').value;
@@ -137,8 +145,23 @@ export class VsFormBodyComponent implements OnInit {
     var ko_solved = test.filter(x=>x.pivot.note == 2 && x.pivot.date_remise_conf).length
     var so = test.filter(x=>x.pivot.note == 3).length
     var total = test.length;
-    
     return {'ok':ok, 'ko':ko, 'so':so, 'ko_unsolved':ko_unsolved, 'ko_solved':ko_solved, 'total':total};
   }
 
+  enableDate(i){
+    this.getPivot(i).get('date_remise_conf').enable();
+  }
+  canEditDate(i){
+    return this.origin != 'add' && this.getPivot(i).get('note').value == 2 && this.getPivot(i).get('date_remise_conf').value == null
+  }
+  updateDate(i){
+    this.getPivot(i).get('date_remise_conf').disable();
+    if(this.getPivot(i).get('date_remise_conf').value){
+      this.dateUpdated.emit(true);
+    }
+  }
+  cancelDate(i){
+    this.getPivot(i).get('date_remise_conf').setValue(null);
+    this.getPivot(i).get('date_remise_conf').disable();
+  }
 }

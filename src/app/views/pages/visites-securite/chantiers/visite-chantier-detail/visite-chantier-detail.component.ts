@@ -23,14 +23,16 @@ import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
 })
 export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 
-
+	canValidateHse: boolean = true;
 	public visite: Visite;
 	visiteForm: FormGroup;
 	// allRoles: Role[];
 	formStatus = new FormStatus();
+	isDisableToggle: boolean = false;
 	loaded = false;
 	invalid = [];
 	editMode: boolean = false;
+	showSignatures: boolean = false;
 	chantier: Chantier;
 	currentUser: User;
 	questionsDisplayed: boolean = false;
@@ -54,59 +56,63 @@ export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 	) {}
 
 	ngOnInit() {
-		this.createForm();
-		const routeSubscription = this.activatedRoute.params.subscribe(
-			async params => {
-				const id = params.id;
-				if (id) {
-					this.visiteService.get(id).pipe(
-						tap(res => {
-							var _visite = res.result.data
-							this.parseVisitesDate(_visite, 'EnToFr');
-							this.visiteForm.patchValue(_visite);
-							this.formPathValues(_visite);
-							this.visiteForm.disable();
-						})
-					).subscribe(async res => {
-						this.visite = res.result.data;
-						this.loaded = true;
-						this.cdr.detectChanges();
-						this.cdr.markForCheck();
-					});
+		this.initForm();
+		const routeSubscription = this.activatedRoute.params.subscribe(async params => {
+			const id = params.id;
+			if (id) {
+				this.visiteService.get(id).pipe(
+					tap(res => {
+						var _visite = res.result.data
+						this.parseVisitesDate(_visite, 'EnToFr');
+						this.visiteForm.patchValue(_visite);
+						this.patchQuestionsForm(_visite);
+						// this.visiteForm.disable();
+					})
+				).subscribe(async res => {
+					this.visite = res.result.data;
+					this.loaded = true;
+					this.cdr.detectChanges();
+					this.cdr.markForCheck();
+				});
 
-				} else {
-					this.router.navigateByUrl('/chantiers/list');
-				}
-			});
+			} else {
+				this.router.navigateByUrl('/chantiers/list');
+			}
+		});
 
 		this.subscriptions.push(routeSubscription);
-		this.getCurrentUser();
-
 	}
 
 	ngOnDestroy() {
 		this.subscriptions.forEach(sb => sb.unsubscribe());
 	}
-	async getCurrentUser() {
-		var res = await this.authService.getUserByToken().toPromise().then(res => {
-			this.visiteForm.get('redacteur_id').setValue(res.result.data.id)
-		});
-		this.cdr.detectChanges();
-	}
 
-	createForm() {
+	initForm() {
 		this.visiteForm = this.visiteFB.group({
 			'id': [{value: null, disabled: true}, Validators.required],
-			'chantier_id': [null, Validators.required],
-			'salarie_id': [{value: null, disabled: false}, Validators.required],
-			'entreprise_id': [{value: null, disabled: false}, Validators.required],
+			'chantier_id': [{value:null, disabled:true}, Validators.required],
+			'salarie_id': [{value: null, disabled: true}, Validators.required],
+			'entreprise_id': [{value: null, disabled: true}, Validators.required],
 			'redacteur_id': [{value: null, disabled: true}, Validators.required],
-			'date_visite': [moment().format('YYYY-MM-DD'), Validators.required],
+			'date_visite': [{value:moment().format('YYYY-MM-DD'), disabled: true}, Validators.required],
 			'presence_non_conformite': [{value: false, disabled: true }],
-			'has_rectification_imm': [{value: false, disabled: false }],
-			'avertissement': [{value: false, disabled: false }],
-			'type_id': [null, Validators.required],
+			'has_rectification_imm': [{value: false, disabled: true }],
+			'avertissement': [{value: false, disabled: true }],
+			'type_id': [{value:null, disabled:true}, Validators.required],
 			'questions': this.visiteFB.array([]),
+			'is_validate_resp_hse': [{value:null, disabled:true}],
+			'signature_redacteur': this.visiteFB.group({
+				'date':[{value:null, disabled:true}, Validators.required],
+				'signature': [{value:null, disabled:true}, Validators.required]
+			  }),
+			  'signature_visite': this.visiteFB.group({
+				'date':[{value:null, disabled:true}, Validators.required],
+				'signature': [{value:null, disabled:true}, Validators.required]
+			  }),
+			  'signature_resp_hse': this.visiteFB.group({
+				'date':[{value:null, disabled:true}],
+				'signature': [{value:null, disabled:true}]
+			  }),
 		});
 		this.loaded = true;
 		this.cdr.detectChanges();
@@ -121,30 +127,41 @@ export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 		}
 	}
 
-	formPathValues(visite) {
+	patchQuestionsForm(visite) {
 
 		const questionsFormArray: FormArray = this.visiteForm.get('questions') as FormArray;
 		visite.questions.forEach(element => {
 			var question = this.visiteFB.group({
-				'id': [element.id],
-				'libelle': [element.libelle],
+				'id': [{value:element.id, disabled:true}],
+				'libelle': [{value:element.libelle, disabled:true}],
 				'pivot': this.visiteFB.group({
-					'note': [{value: "" + element.pivot.note, disabled: false }, Validators.required],
-					'date_remise_conf': [{value: element.pivot.date_remise_conf, disabled: false }],
-					'observation': [{value: element.pivot.observation, disabled: false }]
+					'note': [{value:element.pivot.note, disabled: true }, Validators.required],
+					'date_remise_conf': [{value: element.pivot.date_remise_conf, disabled: true }],
+					'observation': [{value: element.pivot.observation, disabled: true }]
 				})
 			});
+
+			if(element.pivot.note == 2){
+				this.visiteForm.get('presence_non_conformite').setValue(true);
+			}
 			questionsFormArray.push(question);
 		})
-	}
 
-	onChantierSelected(chantierId: Number) {
-		this.getChantier(chantierId);
-	}
+		const signatureRedacteur = this.visiteForm.get('signature_redacteur') as FormGroup;
+		if(visite.signRedacteur){
+			signatureRedacteur.patchValue(visite.signRedacteur);
+		}
+		const signatureVisite = this.visiteForm.get('signature_visite') as FormGroup;
+		if(visite.signVisite){
+			signatureVisite.patchValue(visite.signVisite);
+		}
+		const signatureRespHse = this.visiteForm.get('signature_resp_hse') as FormGroup;
+		if(visite.signRespHse){
+			signatureRespHse.patchValue(visite.signRespHse);
+		}
 
-	async getChantier(chantierId) {
-		var res = await this.chantierService.get(chantierId).toPromise();
-		this.chantier = res.result.data;
+		this.showSignatures = true;
+
 	}
 
 	questionsLoaded() {
@@ -152,7 +169,7 @@ export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 	}
 
 	editVisite(visiteId) {
-		this.router.navigate(['../edit', visiteId], { relativeTo: this.activatedRoute });
+		this.router.navigate(['visites-securite/chantiers/edit', visiteId]);
 	}
 	deleteVisite(visiteId) {
 		Swal.fire({
@@ -162,4 +179,49 @@ export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 		})
 	}
 
+	async onSubmit(event){
+		try {
+		  let form = {...this.visiteForm.getRawValue()};
+		  this.formStatus.onFormSubmitting();
+		  this.parseVisitesDate(form, 'FrToEn');
+	
+		  this.visiteService.update(form)
+			.toPromise()
+			.then((visite) => {
+			  this.cdr.markForCheck();
+			  
+			  Swal.fire({
+				icon: 'success',
+				title: 'Visite mise à jour avec succès',
+				showConfirmButton: false,
+				timer: 1500
+			  });
+			})
+			.catch(err =>{ 
+	
+			  Swal.fire({
+				icon: 'error',
+				title: 'Echec! le formulaire est incomplet',
+				showConfirmButton: false,
+				timer: 1500
+			  });
+	
+			  if(err.status === 422){
+				var messages = extractErrorMessagesFromErrorResponse(err);
+				this.formStatus.onFormSubmitResponse({success: false, messages: messages});
+				this.cdr.detectChanges();
+				this.cdr.markForCheck();
+			  }
+	
+			});
+			
+		  this.cdr.markForCheck();
+		} catch (error) {
+		  console.error(error);
+		  throw error;
+		}
+	}
+	
+
+	
 }

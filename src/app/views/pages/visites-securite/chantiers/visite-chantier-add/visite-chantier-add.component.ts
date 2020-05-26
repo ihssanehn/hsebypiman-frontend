@@ -32,6 +32,7 @@ export class VisiteChantierAddComponent implements OnInit {
   chantier: Chantier;
   currentUser: User;
   questionsDisplayed: boolean = false;
+  showSignatures: boolean = false;
   // Private properties
   
   constructor(
@@ -76,6 +77,18 @@ export class VisiteChantierAddComponent implements OnInit {
       'avertissement': [{value:false, disabled: false}],
       'type_id': [null, Validators.required],
       'questions': this.visiteFB.array([]),
+      'signature_redacteur': this.visiteFB.group({
+        'date':[null, Validators.required],
+        'signature': [null, Validators.required]
+      }),
+      'signature_visite': this.visiteFB.group({
+        'date':[null, Validators.required],
+        'signature': [null, Validators.required]
+      }),
+      'signature_resp_hse': this.visiteFB.group({
+        'date':[{value:null, disabled:true}],
+        'signature': [{value:null, disabled:true}]
+      }),
 		});
 		this.loaded = true;
 		this.cdr.detectChanges();
@@ -171,6 +184,7 @@ export class VisiteChantierAddComponent implements OnInit {
 
   displayQuestions(){
     this.questionsDisplayed = true;
+    this.visiteForm.get('type_id').disable();
   }
 
   parseDates(form){
@@ -198,5 +212,13 @@ export class VisiteChantierAddComponent implements OnInit {
       }
       return invalid;
   }
-  
+
+  questionsAnswerd(){
+    const questionsList = this.visiteForm.get('questions');
+    return questionsList.value.length > 0 && questionsList.valid
+  }  
+
+  displaySignature(){
+    this.showSignatures = !this.showSignatures
+  }
 }

@@ -90,7 +90,7 @@ export class VisiteChantierEditComponent implements OnInit, OnDestroy {
 	async getCurrentUser() {
 		var res = await this.authService.getUserByToken().toPromise().then(res=>{this.visiteForm.get('redacteur_id').setValue(res.result.data.id)});
 		this.cdr.detectChanges();
-  	}
+  }
   
   createForm() {
 		this.visiteForm = this.visiteFB.group({
@@ -155,10 +155,11 @@ export class VisiteChantierEditComponent implements OnInit, OnDestroy {
         }
       })
 
-      note.setValue(""+element.pivot.note)
+      note.setValue(element.pivot.note);
 
       questionsFormArray.push(question);
     })
+
   }
   
   setDynamicValidators() {
@@ -211,7 +212,7 @@ export class VisiteChantierEditComponent implements OnInit, OnDestroy {
             showConfirmButton: false,
             timer: 1500
           }).then(() => {
-            this.router.navigate(['/visites-securite/chantiers/list']);
+            this.location.back();
           });
         })
         .catch(err =>{ 

@@ -20,6 +20,7 @@ export class VsFormHeadComponent implements OnInit {
   entreprises: Entreprise[];
 
   @Input() visiteForm: FormGroup;
+  @Input() origin: string;
   @Input() edit: Boolean;
   constructor(
     private typeService:TypeService,

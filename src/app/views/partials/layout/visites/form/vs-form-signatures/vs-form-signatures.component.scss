@@ -1,4 +1,10 @@
 
+// .signature-container{
+//     margin: 2em auto;
+//     // max-width: 400px;
+//     border: 1px solid red;
+// }
+
 :host {
 
     
@@ -16,23 +22,6 @@
         }
         mat-radio-button{
             padding: 0.8rem 0 0 1rem;
-        }
-    }
-
-    .edit-date-block{
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: space-between;
-        input{
-            flex: 1;
-        }
-    }
-
-    .st-group {
-        justify-content: center;
-        
-        .st-label{
-           width: auto;
         }
     }
 }
