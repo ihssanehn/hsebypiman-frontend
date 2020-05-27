@@ -44,15 +44,19 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="tf-card-form">
-                            <div class="tf-heading tf-heading--sm" [hidden]="!ar?.observations_signature">
+                            <div class="tf-heading tf-heading--sm">
                                 {{'ARS.FORM.SIGNATURE.SUBTITLE' | translate}}
                             </div>
         
-                            <div class="row form-row">
-                                <div class="col-md-12 textarea-viewer" [hidden]="!ar?.observations_signature">
+                            <div class="row form-row" *ngIf="ar?.observations_signature; else noObservation">
+                                <div class="col-md-12 textarea-viewer">
                                     <p class="mt-2">{{ar?.observations_signature}}</p>
-                                </div>
-                            </div>
+								</div>
+							</div>
+
+							<ng-template #noObservation>
+								<div class="col-md-12 mb-4">Aucune observation</div>
+							</ng-template>
 
                             <tf-signature-add 
                                 [signaturesForm]="signaturesForm"

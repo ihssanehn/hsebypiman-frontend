@@ -389,12 +389,12 @@ export const locale = {
 				},
 				SIGNATURE:{
 					TITLE: 'Observation',
-					SUBTITLE: 'Observations des signataires sur les risques',
+					SUBTITLE: 'Observations complémentaires',
 					DECLARATION: 'J’ai pris connaissance de l’analyse de risque du chantier, du PPSPS ou du PDP et applique les moyens de préventions nécessaires'
 				},
 				SIGNATURE_OBSERVATION:{
 					TITLE: 'Observation et signatures',
-					SUBTITLE: 'Observations des signataires sur les risques',
+					SUBTITLE: 'Observations complémentaires',
 					SHORTTITLE: 'Les signataires'
 				},
 				RISKS: 'Les risques',

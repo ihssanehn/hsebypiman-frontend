@@ -41,15 +41,19 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="tf-card-form">
-						<div class="tf-heading tf-heading--sm" [hidden]="!ar?.observations_signature">
+						<div class="tf-heading tf-heading--sm">
 							{{'ARS.FORM.SIGNATURE.SUBTITLE' | translate}}
 						</div>
 	
-						<div class="row form-row" [hidden]="!ar?.observations_signature">
+						<div class="row form-row" *ngIf="ar?.observations_signature; else noObservation">
 							<div class="col-md-12 textarea-viewer">
 								<p class="mt-2">{{ar?.observations_signature}}</p>
 							</div>
 						</div>
+						
+						<ng-template #noObservation>
+							<div class="col-md-12">Aucune observation</div>
+						</ng-template>
 
 						<div *ngIf="ar.status.code != 'ARCHIV'" class="col-12">
 							<button class="pull-right" *ngIf="!ar?.is_signed" mat-raised-button color="info" (click)="signAr(ar?.id)">

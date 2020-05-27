@@ -33,8 +33,8 @@ export class ArSignatureComponent extends ArDetailComponent implements OnInit {
 
   createForm() {
     
-    this.isDisableToggle = !this.ar.is_signed;
-    this.isExpanded = !this.ar.is_signed;
+    this.isDisableToggle = true;
+    this.isExpanded = true;
     this.signaturesForm = this.fb.array([]);
 
     this.signaturesForm.insert(0, 
