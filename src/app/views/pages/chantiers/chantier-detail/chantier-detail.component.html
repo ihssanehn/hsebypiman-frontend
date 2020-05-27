@@ -93,31 +93,55 @@
           </ng-template>
         </div>
       </div>
-      <div class="col-md-5">
+      <div class="col-5">
         <div class="card">
           <h3>Suivi de chantier</h3>
           <div class="box box-ar-vs" style="flex: 1;">
-            <h5><b>Suivis analyses de risques</b><small class="pull-right">{{'CHANTIERS.ARCOUNT.SHORTTITLE' | translate}} : <span class="blue">{{chantier.ars.length}}</span></small></h5>
-            <div class="row">
-              <div class="col-md-6"><p><span class="label pull-left mr-2">{{'CHANTIERS.NEXTAR.TITLE' | translate}}</span></p></div>
-              <div class="col-md-6"><p  class="text-right blue">{{chantier.latest_ar?.date_validite | date:'dd/MM/yyyy'}}</p></div>
-            </div>
-            <div class="row">
-              <div class="col-md-6"><p><span class="label pull-left mr-2">{{'CHANTIERS.ARS.TITLE' | translate}}</span></p></div>
-              <div class="col-md-6"><p class="text-right" *ngFor="let ar of chantier.ars" ><a (click)="goToArDetail(ar.id)" alt="voir l'analyse de risque">{{ar.created_at | date:'dd/MM/yyyy'}}</a></p></div>
-            </div>
+            <h5><b>Suivis analyses de risques</b><small class="pull-right">{{'CHANTIERS.AR_COUNT.SHORTTITLE' | translate}} : <span class="blue">{{chantier.ars.length}}</span></small></h5>
+            <ng-container *ngIf="chantier.ars.length > 0; else noArs">
+              <div class="row">
+                <div class="col-12 my-2"><p><span class="label">{{'CHANTIERS.AR_INPROGRESS.TITLE' | translate}}</span></p></div>
+                <ng-container *ngIf="chantier.latest_ar?.status?.code != 'ARCHIVE'; else noArInProgress">
+                  <div class="col-5"><p class="blue">{{chantier.latest_ar?.code}}</p></div>
+                  <div class="col-5"><p class="blue">{{chantier.latest_ar?.created_at | date:'dd/MM/yyyy'}}</p></div>
+                  <div class="col-2" ><a (click)="goToArDetail(chantier.latest_ar.id)" alt="voir l'analyse de risque"><mat-icon color="primary">visibility</mat-icon></a></div>
+                </ng-container>
+                <ng-template #noArInProgress>
+                  <div class="col-12">Aucune Analyse de risque en cours</div>
+                </ng-template>
+              </div>
+              <div class="row">
+                <div class="col-12 my-2"><p><span class="label">{{'CHANTIERS.ARS_HISTORY.TITLE' | translate}}</span></p></div>
+                <ng-container *ngFor="let ar of chantier.ars">
+                  <div class="col-5"><p>{{ar.code}}</p></div>
+                  <div class="col-5"><p>{{ar.created_at | date:'dd/MM/yyyy'}}</p></div>
+                  <div class="col-2" ><a (click)="goToArDetail(ar.id)" alt="voir l'analyse de risque"><mat-icon color="primary">visibility</mat-icon></a></div>
+                </ng-container>
+              </div>
+            </ng-container>
+            <ng-template #noArs>
+              <div class="row">
+                <div class="col-12">
+                  <p>Aucune analyse</p>
+                </div>
+              </div>
+            </ng-template>
           </div>
           <div class="box box-ar-vs" style="flex: 1;">
-            <h5><b>Suivis visites de sécurité</b><small class="pull-right">{{'CHANTIERS.VSCOUNT.SHORTTITLE' | translate}} : <span class="blue">{{chantier.vss.length}}</span></small></h5>
+            <h5><b>Suivis visites de sécurité</b><small class="pull-right">{{'CHANTIERS.VS_COUNT.SHORTTITLE' | translate}} : <span class="blue">{{chantier.vss.length}}</span></small></h5>
             <div class="row">
-              <div class="col-md-6"><p><span class="label pull-left mr-2">{{'CHANTIERS.VSS.TITLE' | translate}}</span></p></div>
-              <div class="col-md-6"><p class="text-right" *ngFor="let vs of chantier.vss">{{vs.date_visite | date:'dd/MM/yyyy'}}</p></div>
+              <div class="col-md-12 my-2"><p><span class="label">{{'CHANTIERS.VSS.TITLE' | translate}}</span></p></div>
+              <ng-container *ngFor="let vs of chantier.vss">
+                <div class="col-md-5"><p>{{vs.code}}</p></div>
+                <div class="col-md-5"><p>{{vs.date_visite | date:'dd/MM/yyyy'}}</p></div>
+                <div class="col-md-2"><a (click)="goToVsDetail(vs.id)" alt="voir la visite"><mat-icon color="primary">visibility</mat-icon></a></div>
+              </ng-container>
             </div>
           </div>
         </div>
       </div>
       <div class="col-md-12 mt-4">
-        <div class="card" *ngIf="chantier.entreprises.length; else noEntreprises">
+        <div class="card" *ngIf="chantier.entreprises.length > 0; else noEntreprises">
           <h5>{{'CHANTIERS.EES.TITLE' | translate}}<small class="pull-right">{{'CHANTIERS.EECOUNT.SHORTTITLE' | translate}} : <span class="blue">{{chantier.entreprises.length}}</span></small></h5>
           <div class="px-5">
             <table class="table table-borderless table-sm table-striped px-4">
