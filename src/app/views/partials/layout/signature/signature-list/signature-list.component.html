@@ -1,9 +1,9 @@
-<ng-container *ngIf="signatures.length">
+<ng-container>
     <div class="tf-heading tf-heading--sm mt-4">
         {{'ARS.FORM.SIGNATURE_OBSERVATION.SHORTTITLE' | translate}}
     </div>
 
-    <table mat-table [dataSource]="signatures">
+    <table mat-table [dataSource]="signatures" *ngIf="signatures.length; else noSignatures">
 
         <ng-container matColumnDef="date">
             <th mat-header-cell *matHeaderCellDef> {{'COMMON.DATE.LABEL' | translate}} </th>
@@ -40,5 +40,9 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
     </table>
+
+    <ng-template #noSignatures>
+        <div class="col-md-12">Aucun signataire</div>
+    </ng-template>
 
 </ng-container>
