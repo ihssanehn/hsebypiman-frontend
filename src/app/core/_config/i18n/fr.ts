@@ -196,7 +196,7 @@ export const locale = {
 				TITLE:'Budget',
 				SHORTTITLE:'Montant',
 			},
-			ARCOUNT:{
+			AR_COUNT:{
 				LABEL:'Quantité A.R',
 				PLACEHOLDER:'',
 				TITLE:'Quantité A.R',
@@ -208,11 +208,11 @@ export const locale = {
 				TITLE:'Dernière A.R',
 				SHORTTITLE:'Dernière A.R',
 			},
-			NEXTAR:{
-				LABEL:'Prochaine A.R',
+			AR_INPROGRESS:{
+				LABEL:'A.R en cours',
 				PLACEHOLDER:'',
-				TITLE:'Prochaine analyse de prévue',
-				SHORTTITLE:'Prochaine analyse',
+				TITLE:'Analyse de risque en cours',
+				SHORTTITLE:'A.R en cours',
 			},
 			ARS:{
 				LABEL:'Analyses de risque',
@@ -220,23 +220,17 @@ export const locale = {
 				TITLE:'Analyses passées',
 				SHORTTITLE:'Prochaine analyse',
 			},
-			VSCOUNT:{
+			VS_COUNT:{
 				LABEL:'Quantité V.S',
 				PLACEHOLDER:'',
 				TITLE:'Quantité V.S',
 				SHORTTITLE:'Nombre de visites',
 			},
-			LASTVS:{
+			LAST_VS:{
 				LABEL:'Dernière V.S',
 				PLACEHOLDER:'',
 				TITLE:'Dernière V.S',
 				SHORTTITLE:'Dernière V.S',
-			},
-			NEXTVS:{
-				LABEL:'Prochaine V.S',
-				PLACEHOLDER:'',
-				TITLE:'Prochaine V.S',
-				SHORTTITLE:'Prochaine visite de prévue',
 			},
 			VSS:{
 				LABEL:'Visites Sécurité',
