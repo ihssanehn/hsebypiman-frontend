@@ -109,7 +109,7 @@
 				<!-- ars_count Column -->
 				<ng-container matColumnDef="ars_count">
 					<th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('ars_count')">
-						{{'CHANTIERS.ARCOUNT.TITLE' | translate}}
+						{{'CHANTIERS.AR_COUNT.TITLE' | translate}}
 						<i class="fa" [ngClass]="isOrderedBy('ars_count') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('ars_count') && {opacity:1}"></i>
 					</th>
 					<td mat-cell *matCellDef="let chantier" (click)="viewChantier(chantier.id)" class="text-center pointer"> {{chantier.montant > 20000 ? chantier.ars_count : '-'}} </td>
@@ -127,7 +127,7 @@
 				<!-- vss_count Column -->
 				<ng-container matColumnDef="vss_count">
 					<th mat-header-cell *matHeaderCellDef class="text-center" (click)="setOrder('vss_count')">
-						{{'CHANTIERS.VSCOUNT.TITLE' | translate}}
+						{{'CHANTIERS.VS_COUNT.TITLE' | translate}}
 						<i class="fa" [ngClass]="isOrderedBy('vss_count') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('vss_count') && {opacity:1}"></i>
 					</th>
 					<td mat-cell *matCellDef="let chantier" (click)="viewChantier(chantier.id)" class="text-center pointer"> {{chantier.vss_count}} </td>
