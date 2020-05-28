@@ -5,7 +5,6 @@ export class JsonResponse<T>{
     };
     result : {
         data?: T;
-        access_token?:string 
     };
     code : number;
     execution_time : number;

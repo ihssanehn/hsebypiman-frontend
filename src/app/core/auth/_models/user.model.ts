@@ -12,6 +12,8 @@ export class User extends BaseModel {
     fonction_id?: number;
     access_token?: string;
     refresh_token?: string;
+    // sirh_token?: string;
+    // sirh_access?: string;
     is_firstConnexion?: boolean;
 	role?: Role;
 

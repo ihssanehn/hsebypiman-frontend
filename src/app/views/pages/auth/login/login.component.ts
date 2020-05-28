@@ -141,7 +141,10 @@ export class LoginComponent implements OnInit, OnDestroy {
 			.subscribe(res=>{
 				
 				if(res){
-					localStorage.setItem(environment.authTokenKey, res.result.access_token);
+					localStorage.setItem(environment.authTokenKey, res.result.data.access_token);
+					// localStorage.setItem(environment.sirhAuthTokenKey, res.result.data.sirh_token);
+					// localStorage.setItem(environment.sirhApiBaseUrl, res.result.data.sirh_access);
+
 					this.loading = false;
 				
 					this.auth
