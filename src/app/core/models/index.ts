@@ -3,6 +3,7 @@ export { Ar } from './ar.model';
 export { Type } from './type.model';
 export { Categorie } from './categorie.model';
 export { Status } from './status.model';
+export { Epi } from './epi.model';
 export { Risque } from './risque.model';
 export { CatRisque } from './catRisque.model';
 export { CatRisqueComment } from './catRisqueComment.model';
