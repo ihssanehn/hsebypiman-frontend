@@ -131,140 +131,121 @@ export const locale = {
 		CHANTIERS:{
 			NUMBER:{
 				LABEL:'Numéro',
-				PLACEHOLDER:'',
 				TITLE:'N° du chantier',
 				SHORTTITLE:'Numéro'
 			},
 			CLIENT:{
 				LABEL:'Client',
-				PLACEHOLDER:'',
 				TITLE:'Client',
 				SHORTTITLE:'Client'
 			},
 			NAME:{
 				LABEL:'Nom du chantier',
-				PLACEHOLDER:'',
 				TITLE:'Nom du chantier',
 				SHORTTITLE: 'Nom'
 			},
 			ADRESS:{
 				LABEL:'Adresse du chantier',
-				PLACEHOLDER:'',
 				TITLE:'Adresse du chantier',
 				SHORTTITLE: 'Adresse'
 			},
 			TYPE:{
 				LABEL:'Type',
-				PLACEHOLDER:'',
 				TITLE:'Type',
 				SHORTTITLE:'Type'
 			},
 			STATUS:{
 				LABEL:'Statut',
-				PLACEHOLDER:'',
 				TITLE:'Statut actuel du chantier',
 				SHORTTITLE:'Statut'
 			},
 			CONTACT:{
 				LABEL:'Contact Client',
-				PLACEHOLDER:'',
 				TITLE:'Contact client',
 				SHORTTITLE:'Contact',
 			},
 			DATE_DEMARRAGE:{
 				LABEL:'Date de démarage chantier',
-				PLACEHOLDER:'',
 				TITLE:'Date de démarage chantier',
 				SHORTTITLE:'Date de démarage',
 			},
 			AR: 'Analyse de risque',
 			CHIEF:{
 				LABEL:'Chargé d\'affaire',
-				PLACEHOLDER:'',
 				TITLE:'Chargé d\'affaire',
 				SHORTTITLE:'Nom',
 			},
 			RESP_CHIFFRAGE:{
 				LABEL:'Responsable du chiffrage',
-				PLACEHOLDER:'',
 				TITLE:'Responsable du chiffrage',
 				SHORTTITLE:'Nom',
 			},
 			BUDGET:{
 				LABEL:'Budget',
-				PLACEHOLDER:'',
 				TITLE:'Budget',
 				SHORTTITLE:'Montant',
 			},
 			AR_COUNT:{
 				LABEL:'Quantité A.R',
-				PLACEHOLDER:'',
 				TITLE:'Quantité A.R',
 				SHORTTITLE:'Nombre d\'analyses',
 			},
 			LASTAR:{
 				LABEL:'Dernière A.R',
-				PLACEHOLDER:'',
 				TITLE:'Dernière A.R',
 				SHORTTITLE:'Dernière A.R',
 			},
 			AR_INPROGRESS:{
 				LABEL:'A.R en cours',
-				PLACEHOLDER:'',
 				TITLE:'Analyse de risque en cours',
 				SHORTTITLE:'A.R en cours',
 			},
+			ARS_HISTORY:{
+				TITLE:'Historique des Analyses de risque',
+				SHORTTITLE:'Historique des A.R',
+			},
 			ARS:{
 				LABEL:'Analyses de risque',
-				PLACEHOLDER:'',
 				TITLE:'Analyses passées',
 				SHORTTITLE:'Prochaine analyse',
 			},
 			VS_COUNT:{
 				LABEL:'Quantité V.S',
-				PLACEHOLDER:'',
 				TITLE:'Quantité V.S',
 				SHORTTITLE:'Nombre de visites',
 			},
 			LAST_VS:{
 				LABEL:'Dernière V.S',
-				PLACEHOLDER:'',
 				TITLE:'Dernière V.S',
 				SHORTTITLE:'Dernière V.S',
 			},
 			VSS:{
 				LABEL:'Visites Sécurité',
-				PLACEHOLDER:'',
 				TITLE:'Visites passées',
 				SHORTTITLE:'Visites passées',
 			},
 			EES:{
 				LABEL:'Entreprises extérieures',
-				PLACEHOLDER:'',
 				TITLE:'Entreprises extérieures',
 				SHORTTITLE:'Entreprises extérieures',
 			},
 			EECOUNT:{
 				LABEL:'Nombre d\'E.E',
-				PLACEHOLDER:'',
 				TITLE:'Nombre d\'E.E',
 				SHORTTITLE:'Nombre d\'entreprises extérieures',
 			},
 			HABCOUNT:{
 				LABEL:'Nombre d\'habilitations',
-				PLACEHOLDER:'',
 				TITLE:'Nombre d\'habilitations',
 				SHORTTITLE:'Nombre d\'habilitations',
 			},
 			HABILITATIONS:{
 				LABEL:'Habilitations obligatoires pour accéder au chantier',
-				PLACEHOLDER:'',
 				TITLE:'Habilitations obligatoires pour accéder au chantier',
 				SHORTTITLE:'Habilitations obligatoires',
 			},
 			EE_PRESENCE:{
 				LABEL:'Présence d\'E.E',
-				PLACEHOLDER:'',
 				TITLE:'Présence d\'E.E',
 				SHORTTITLE:'Présence d\'entreprises extérieures',
 			},
@@ -406,139 +387,116 @@ export const locale = {
 			},
 			DATE:{
 				LABEL:'Date de l\'analyse de risque',
-				PLACEHOLDER:'',
 				TITLE:'Date de l\'analyse de risque',
 				SHORTTITLE:'Date de l\'analyse de risque',
 			},
 			PREVOIR_COMPAGNONS:{
 				LABEL:'A prévoir pour les compagnons',
-				PLACEHOLDER:'',
 				TITLE:'A prévoir pour les compagnons',
 				SHORTTITLE:'A prévoir pour les compagnons',
 			},
 			DATE_ACCUEIL_SECU:{
 				LABEL:'Date de l\'accueil sécurité',
-				PLACEHOLDER:'',
 				TITLE:'Date de l\'accueil sécurité',
 				SHORTTITLE:'Date de l\'accueil sécurité',
 			},
 			REALISATEUR:{
 				LABEL:'Personne en charge de réaliser l\'accueil',
-				PLACEHOLDER:'',
 				TITLE:'Personne en charge de réaliser l\'accueil',
 				SHORTTITLE:'Personne en charge de réaliser l\'accueil',
 			},
 			TEL_REALISATEUR:{
 				LABEL:'Numéro de téléphone',
-				PLACEHOLDER:'',
 				TITLE:'Numéro de téléphone',
 				SHORTTITLE:'Numéro de téléphone',
 			},
 			DATE_VALIDITE:{
 				LABEL:'Date de validité de l\'accueil sécurité',
-				PLACEHOLDER:'',
 				TITLE:'Date de validité de l\'accueil sécurité',
 				SHORTTITLE:'Date de validité de l\'accueil sécurité',
 			},
 			NUM_SECOURS:{
 				LABEL:'Numéro en cas d\'accident ou incendie',
-				PLACEHOLDER:'',
 				TITLE:'Numéro en cas d\'accident ou incendie',
 				SHORTTITLE:'En cas d\'accident ou incendie',
 			},
 			CONTACT_INTERNE_SECOURS:{
 				LABEL:'Personne CVTI',
-				PLACEHOLDER:'',
 				TITLE:'Personne CVTI',
 				SHORTTITLE:'Personne CVTI en cas d\'accident',
 			},
 			TEL_CONTACT_INTERNE_SECOURS:{
 				LABEL:'Numéro de téléphone',
-				PLACEHOLDER:'',
 				TITLE:'Numéro de téléphone',
 				SHORTTITLE:'Numéro de téléphone',
 			},
 			CONTACT_CLIENT_CHEF_CHANTIER:{
 				LABEL:'Nom Chef de chantier client',
-				PLACEHOLDER:'',
 				TITLE:'Nom Chef de chantier client',
 				SHORTTITLE:'Nom Chef de chantier client',
 			},
 			TEL_CONTACT_CLIENT_CHEF_CHANTIER:{
 				LABEL:'Numéro de téléphone',
-				PLACEHOLDER:'',
 				TITLE:'Numéro de téléphone',
 				SHORTTITLE:'Numéro de téléphone',
 			},
 			CONTACT_CLIENT_HSE:{
 				LABEL:'Interlocuteur HSE ou SPS',
-				PLACEHOLDER:'',
 				TITLE:'Interlocuteur HSE ou SPS',
 				SHORTTITLE:'Interlocuteur HSE ou SPS',
 			},
 			TEL_CONTACT_CLIENT_HSE:{
 				LABEL:'Numéro de téléphone',
-				PLACEHOLDER:'',
 				TITLE:'Numéro de téléphone',
 				SHORTTITLE:'Numéro de téléphone',
 			},
 			HORAIRES:{
 				LABEL:'Heures de travail du chantier',
-				PLACEHOLDER:'',
 				TITLE:'Heures de travail du chantier',
 				SHORTTITLE:'Heures de travail du chantier',
 			},
 			COURANT:{
 				LABEL:'Courant mis à disposition',
-				PLACEHOLDER:'',
 				TITLE:'Courant mis à disposition',
 				SHORTTITLE:'Courant mis à disposition',
 			},
 			AS_DAYS:{
 				LABEL:'Jours d\'accueil sécurité',
-				PLACEHOLDER:'',
 				TITLE:'Jours d\'accueil sécurité',
 				SHORTTITLE:'Jours d\'accueil sécurité',
 			},
 			AS_HORAIRES:{
 				LABEL:'Horaire d\'accueil sécurité',
-				PLACEHOLDER:'',
 				TITLE:'Horaire d\'accueil sécurité',
 				SHORTTITLE:'Horaire d\'accueil sécurité',
 			},
 			ASIGNER:{
 				LABEL:'À signer',
-				PLACEHOLDER:'',
 				TITLE:'À signer',
 				SHORTTITLE:'À signer',
 			},
 			QUOTIDIENNEMENT:{
 				LABEL:'Quotidiennement',
-				PLACEHOLDER:'',
 				TITLE:'Quotidiennement',
 				SHORTTITLE:'Quotidiennement',
 			},
 			DEMIJOURNEE:{
 				LABEL:'Par 1/2 journée',
-				PLACEHOLDER:'',
 				TITLE:'Par 1/2 journée',
 				SHORTTITLE:'Par 1/2 journée',
 			},
 			DEUXHEURES:{
 				LABEL:'Toute les 2h',
-				PLACEHOLDER:'',
 				TITLE:'Toute les 2h',
 				SHORTTITLE:'Toute les 2h',
 			},
 			SIGNATAIRECOUNT:{
 				LABEL:'Nombre de signataires',
-				PLACEHOLDER:'',
 				TITLE:'Nombre de signataires',
 				SHORTTITLE:'Signataires',
 			},
 			SIGNATAIRES:{
 				LABEL:'Signataires (avec / sans)',
-				PLACEHOLDER:'',
 				TITLE:'Signataires',
 				SHORTTITLE:'Signataires',
 			}
@@ -546,55 +504,46 @@ export const locale = {
 		VISITES:{
 			CODE:{
 				LABEL:'Numéro',
-				PLACEHOLDER:'',
 				TITLE:'Numéro',
 				SHORTTITLE:'Numéro'
 			},
 			CLIENT:{
 				LABEL:'Client',
-				PLACEHOLDER:'',
 				TITLE:'Client',
 				SHORTTITLE:'Client'
 			},
 			CHANTIER:{
 				LABEL:'Nom du chantier',
-				PLACEHOLDER:'',
 				TITLE:'Nom du chantier',
 				SHORTTITLE: 'Nom'
 			},
 			ENTREPRISE:{
 				LABEL:'Entreprise visitée',
-				PLACEHOLDER:'',
 				TITLE:'Entreprise visitée',
 				SHORTTITLE: 'Nom'
 			},
 			TYPE:{
 				LABEL:'Type',
-				PLACEHOLDER:'',
 				TITLE:'Type',
 				SHORTTITLE:'Type'
 			},
 			STATUS:{
 				LABEL:'Statut',
-				PLACEHOLDER:'',
 				TITLE:'Statut de la visite',
 				SHORTTITLE:'Statut'
 			},
 			REDACTEUR:{
 				LABEL:'Rédacteur',
-				PLACEHOLDER:'',
 				TITLE:'Rédacteur',
 				SHORTTITLE:'Rédacteur',
 			},
 			VISITED:{
 				LABEL:'Personne visitée',
-				PLACEHOLDER:'',
 				TITLE:'Personne visitée',
 				SHORTTITLE:'Personne visitée',
 			},
 			DATE_VISITE:{
 				LABEL:'Date de la visite',
-				PLACEHOLDER:'',
 				TITLE:'Date de la visite',
 				SHORTTITLE:'Date de visite',
 			},
@@ -625,25 +574,21 @@ export const locale = {
 		COMMON:{
 			ADRESS:{
 				LABEL:'Adresse',
-				PLACEHOLDER:'',
 				TITLE:'Adresse',
 				SHORTTITLE:'Adresse'
 			},
 			CITY:{
 				LABEL:'Ville',
-				PLACEHOLDER:'',
 				TITLE:'Ville',
 				SHORTTITLE:'Ville',
 			},
 			POSTCODE:{
 				LABEL:'Code Postal',
-				PLACEHOLDER:'',
 				TITLE:'Code Postal',
 				SHORTTITLE:'Code Postal',
 			},
 			COUNTRY:{
 				LABEL:'Pays',
-				PLACEHOLDER:'',
 				TITLE:'Pays',
 				SHORTTITLE:'Pays',
 			},
@@ -664,42 +609,34 @@ export const locale = {
 			
 			NAME:{
 				LABEL:'Nom',
-				PLACEHOLDER:'',
 				TITLE:'Nom'
 			},
 			PHONENUMBER:{
 				LABEL:'Numéro de téléphone',
-				PLACEHOLDER:'',
 				TITLE:'Numéro de téléphone'
 			},
 			DATE:{
 				LABEL:'Date',
-				PLACEHOLDER:'',
 				TITLE:'Date'
 			},
 			FIRSTNAME:{
 				LABEL:'Prénom',
-				PLACEHOLDER:'',
 				TITLE:'Prénom'
 			},
 			LASTNAME:{
 				LABEL:'Nom',
-				PLACEHOLDER:'',
 				TITLE:'Nom'
 			},
 			SOCIETE:{
 				LABEL:'Société',
-				PLACEHOLDER:'',
 				TITLE:'Société'
 			},
 			SIGNATURE:{
 				LABEL:'Signature',
-				PLACEHOLDER:'',
 				TITLE:'Signature'
 			},
 			REMARQUE:{
 				LABEL:'Remarques',
-				PLACEHOLDER:'',
 				TITLE:'Remarques'
 			}
 		
