@@ -53,7 +53,7 @@ export class VisiteEpiDetailComponent implements OnInit, OnDestroy {
 		public snackBar: MatSnackBar,
 		private dateFrToEnPipe: DateFrToEnPipe,
 		private dateEnToFrPipe: DateEnToFrPipe
-	) {}
+	) { }
 
 	ngOnInit() {
 		this.initForm();
@@ -89,30 +89,30 @@ export class VisiteEpiDetailComponent implements OnInit, OnDestroy {
 
 	initForm() {
 		this.visiteForm = this.visiteFB.group({
-			'id': [{value: null, disabled: true}, Validators.required],
-			'epi_id': [{value:null, disabled:true}, Validators.required],
-			'salarie_id': [{value: null, disabled: true}, Validators.required],
-			'entreprise_id': [{value: null, disabled: true}, Validators.required],
-			'redacteur_id': [{value: null, disabled: true}, Validators.required],
-			'date_visite': [{value:moment().format('YYYY-MM-DD'), disabled: true}, Validators.required],
-			'presence_non_conformite': [{value: false, disabled: true }],
-			'has_rectification_imm': [{value: false, disabled: true }],
-			'avertissement': [{value: false, disabled: true }],
-			'type_id': [{value:null, disabled:true}, Validators.required],
+			'id': [{ value: null, disabled: true }, Validators.required],
+			'epi_id': [{ value: null, disabled: true }, Validators.required],
+			'salarie_id': [{ value: null, disabled: true }, Validators.required],
+			'entreprise_id': [{ value: null, disabled: true }, Validators.required],
+			'redacteur_id': [{ value: null, disabled: true }, Validators.required],
+			'date_visite': [{ value: moment().format('YYYY-MM-DD'), disabled: true }, Validators.required],
+			'presence_non_conformite': [{ value: false, disabled: true }],
+			'has_rectification_imm': [{ value: false, disabled: true }],
+			'avertissement': [{ value: false, disabled: true }],
+			'type_id': [{ value: null, disabled: true }, Validators.required],
 			'questions': this.visiteFB.array([]),
-			'is_validate_resp_hse': [{value:null, disabled:true}],
+			'is_validate_resp_hse': [{ value: null, disabled: true }],
 			'signature_redacteur': this.visiteFB.group({
-				'date':[{value:null, disabled:true}, Validators.required],
-				'signature': [{value:null, disabled:true}, Validators.required]
-			  }),
-			  'signature_visite': this.visiteFB.group({
-				'date':[{value:null, disabled:true}, Validators.required],
-				'signature': [{value:null, disabled:true}, Validators.required]
-			  }),
-			  'signature_resp_hse': this.visiteFB.group({
-				'date':[{value:null, disabled:true}],
-				'signature': [{value:null, disabled:true}]
-			  }),
+				'date': [{ value: null, disabled: true }, Validators.required],
+				'signature': [{ value: null, disabled: true }, Validators.required]
+			}),
+			'signature_visite': this.visiteFB.group({
+				'date': [{ value: null, disabled: true }, Validators.required],
+				'signature': [{ value: null, disabled: true }, Validators.required]
+			}),
+			'signature_resp_hse': this.visiteFB.group({
+				'date': [{ value: null, disabled: true }],
+				'signature': [{ value: null, disabled: true }]
+			}),
 		});
 		this.loaded = true;
 		this.cdr.detectChanges();
@@ -132,31 +132,31 @@ export class VisiteEpiDetailComponent implements OnInit, OnDestroy {
 		const questionsFormArray: FormArray = this.visiteForm.get('questions') as FormArray;
 		visite.questions.forEach(element => {
 			var question = this.visiteFB.group({
-				'id': [{value:element.id, disabled:true}],
-				'libelle': [{value:element.libelle, disabled:true}],
+				'id': [{ value: element.id, disabled: true }],
+				'libelle': [{ value: element.libelle, disabled: true }],
 				'pivot': this.visiteFB.group({
-					'note': [{value:element.pivot.note, disabled: true }, Validators.required],
-					'date_remise_conf': [{value: element.pivot.date_remise_conf, disabled: true }],
-					'observation': [{value: element.pivot.observation, disabled: true }]
+					'note': [{ value: element.pivot.note, disabled: true }, Validators.required],
+					'date_remise_conf': [{ value: element.pivot.date_remise_conf, disabled: true }],
+					'observation': [{ value: element.pivot.observation, disabled: true }]
 				})
 			});
 
-			if(element.pivot.note == 2){
+			if (element.pivot.note == 2) {
 				this.visiteForm.get('presence_non_conformite').setValue(true);
 			}
 			questionsFormArray.push(question);
 		})
 
 		const signatureRedacteur = this.visiteForm.get('signature_redacteur') as FormGroup;
-		if(visite.signRedacteur){
+		if (visite.signRedacteur) {
 			signatureRedacteur.patchValue(visite.signRedacteur);
 		}
 		const signatureVisite = this.visiteForm.get('signature_visite') as FormGroup;
-		if(visite.signVisite){
+		if (visite.signVisite) {
 			signatureVisite.patchValue(visite.signVisite);
 		}
 		const signatureRespHse = this.visiteForm.get('signature_resp_hse') as FormGroup;
-		if(visite.signRespHse){
+		if (visite.signRespHse) {
 			signatureRespHse.patchValue(visite.signRespHse);
 		}
 
@@ -179,49 +179,49 @@ export class VisiteEpiDetailComponent implements OnInit, OnDestroy {
 		})
 	}
 
-	async onSubmit(event){
+	async onSubmit(event) {
 		try {
-		  let form = {...this.visiteForm.getRawValue()};
-		  this.formStatus.onFormSubmitting();
-		  this.parseVisitesDate(form, 'FrToEn');
-	
-		  this.visiteService.update(form)
-			.toPromise()
-			.then((visite) => {
-			  this.cdr.markForCheck();
-			  
-			  Swal.fire({
-				icon: 'success',
-				title: 'Visite mise à jour avec succès',
-				showConfirmButton: false,
-				timer: 1500
-			  });
-			})
-			.catch(err =>{ 
-	
-			  Swal.fire({
-				icon: 'error',
-				title: 'Echec! le formulaire est incomplet',
-				showConfirmButton: false,
-				timer: 1500
-			  });
-	
-			  if(err.status === 422){
-				var messages = extractErrorMessagesFromErrorResponse(err);
-				this.formStatus.onFormSubmitResponse({success: false, messages: messages});
-				this.cdr.detectChanges();
-				this.cdr.markForCheck();
-			  }
-	
-			});
-			
-		  this.cdr.markForCheck();
+			let form = { ...this.visiteForm.getRawValue() };
+			this.formStatus.onFormSubmitting();
+			this.parseVisitesDate(form, 'FrToEn');
+
+			this.visiteService.update(form)
+				.toPromise()
+				.then((visite) => {
+					this.cdr.markForCheck();
+
+					Swal.fire({
+						icon: 'success',
+						title: 'Visite mise à jour avec succès',
+						showConfirmButton: false,
+						timer: 1500
+					});
+				})
+				.catch(err => {
+
+					Swal.fire({
+						icon: 'error',
+						title: 'Echec! le formulaire est incomplet',
+						showConfirmButton: false,
+						timer: 1500
+					});
+
+					if (err.status === 422) {
+						var messages = extractErrorMessagesFromErrorResponse(err);
+						this.formStatus.onFormSubmitResponse({ success: false, messages: messages });
+						this.cdr.detectChanges();
+						this.cdr.markForCheck();
+					}
+
+				});
+
+			this.cdr.markForCheck();
 		} catch (error) {
-		  console.error(error);
-		  throw error;
+			console.error(error);
+			throw error;
 		}
 	}
-	
 
-	
+
+
 }

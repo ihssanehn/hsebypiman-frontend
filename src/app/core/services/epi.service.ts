@@ -6,18 +6,21 @@ import { QueryParamsModel, QueryResultsModel } from '../_base/crud';
 import { environment } from '@env/environment';
 import { HttpService } from '@app/core/services/http-service';
 import { NgxPermissionsService } from 'ngx-permissions';
-import { Epi } from '@app/core/models/';
-import { Paginate } from '@app/core/_base/layout/models/paginate.model';
-import { JsonResponse } from '@app/core/_base/layout/models/jsonResponse.model';
+import {Epi} from '@app/core/models/epi.model';
+import {Paginate} from '@app/core/_base/layout/models/paginate.model';
+import {JsonResponse} from '@app/core/_base/layout/models/jsonResponse.model';
 import { Router } from '@angular/router';
 
-export class EpiService{
+@Injectable()
+export class EpiService extends HttpService{
 
     baseUrl = environment.apiBaseUrl+'epis';
     constructor(
         private http: HttpClient,
         private router: Router
-    ){}
+    ) {
+        super()
+    }
 
     getAll(params){
         return this.http.post<JsonResponse<Paginate<Epi>>>(this.baseUrl, {...params});
@@ -25,21 +28,25 @@ export class EpiService{
     getList(){
         return this.http.get<JsonResponse<Epi[]>>(this.baseUrl+'/mini');
     }
-    getListGrouped(){
-        return this.http.get<JsonResponse<Epi[]>>(this.baseUrl+'/mini?grouped=true');
+    get(epi_id): Observable<JsonResponse<Epi>>{
+        return this.http.get<JsonResponse<Epi>>(this.baseUrl+'/'+epi_id);
     }
-    get(item_id){
-        return this.http.get<JsonResponse<Epi>>(this.baseUrl+'/'+item_id);
+    create(epi){
+        return this.http.post<JsonResponse<Epi>>(this.baseUrl+'/'+'create', epi);
     }
-    create(item){
-        return this.http.post<JsonResponse<Epi>>(this.baseUrl+'/'+'create', item);
+    update(epi){
+        return this.http.put<JsonResponse<Epi>>(this.baseUrl+'/'+epi.id, epi);
     }
-    update(item){
-        return this.http.put<JsonResponse<Epi>>(this.baseUrl+'/'+item.id, item);
+    delete(epi_id){
+        return this.http.delete(this.baseUrl+'/'+epi_id);
     }
-    delete(item_id){
-        return this.http.delete<JsonResponse<Epi>>(this.baseUrl+'/'+item_id);
+    closeEpi(epi_id){
+        return this.http.get<JsonResponse<Epi>>(this.baseUrl+'/'+epi_id+'/close-epi');
     }
-    
-
+    export(filters){
+        var queryString = Object.keys(filters).map(key => key + '=' + filters[key]).join('&');
+        console.log(queryString);
+        var url = this.baseUrl+'/export?'+queryString+'&token='+localStorage.getItem(environment.authTokenKey);
+        window.open(url, '_blank');
+    }
 }

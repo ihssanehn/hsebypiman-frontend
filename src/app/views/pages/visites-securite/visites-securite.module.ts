@@ -35,10 +35,10 @@ const routes: Routes = [
 				path: 'chantiers',
 				loadChildren: () => import('@app/views/pages/visites-securite/chantiers/visites-chantier.module').then(m => m.VisitesChantierModule)
 			},
-			// {
-			// 	path: 'vehicules/',
-			// 	loadChildren: () => import('@app/views/pages/visites-securite/chantiers/visites-chantier.module').then(m => m.VisitesChantierModule)
-			// },
+			{
+				path: 'epis',
+				loadChildren: () => import('@app/views/pages/visites-securite/epis/visites-epi.module').then(m => m.VisitesEpiModule)
+			},
 		]
 	}
 ];

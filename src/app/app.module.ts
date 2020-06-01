@@ -175,6 +175,7 @@ export function hljsLanguages(): HighlightLanguage[] {
 		CatQuestionService,
 		HabilitationService,
 		ZoneService,
+		EpiService,
 		SignatureService,
 		ParamsService,
 		

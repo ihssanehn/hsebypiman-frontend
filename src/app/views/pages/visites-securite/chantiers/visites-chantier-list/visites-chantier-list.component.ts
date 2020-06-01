@@ -29,6 +29,7 @@ export class VisitesChantierListComponent implements OnInit {
 		page: this.pagination.page,
 		order_by: 'visite_securites.date_visite',
 		order_way: 'asc',
+		model: "Chantier",
 		keyword: "",
 		dateRange: [],
 		status_id: "",
@@ -121,4 +122,16 @@ export class VisitesChantierListComponent implements OnInit {
 			return by == this.filter.order_by
 		}
 	}
+
+	advancedSearchChanged($event){
+		this.showFilters = $event;
+	}
+
+	udpateFilters(filters){
+		for (let [key, value] of Object.entries(filters)) {
+			this.filter[key] = value;
+		}
+		this.getVisites();
+	}
+
 }

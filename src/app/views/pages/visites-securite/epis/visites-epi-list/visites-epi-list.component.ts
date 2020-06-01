@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 	templateUrl: './visites-epi-list.component.html',
 	styleUrls: ['./visites-epi-list.component.scss']
 })
-export class VisitesepiListComponent implements OnInit {
+export class VisitesEpiListComponent implements OnInit {
 
 	public visitesList: Paginate < Visite > ;
 	visite_id: number;
@@ -29,12 +29,13 @@ export class VisitesepiListComponent implements OnInit {
 		page: this.pagination.page,
 		order_by: 'visite_securites.date_visite',
 		order_way: 'asc',
+		model:'Epi',
 		keyword: "",
 		dateRange: [],
 		status_id: "",
 		params: []
 	};
-	displayedVisiteColumns = ['code','epi', 'client','type', 'redacteur', 'visite', 'date_visite', 'ko_solved_count', 'ko_unsolved_count', 'action'];
+	displayedVisiteColumns = ['code','epi', 'epi_cat', 'redacteur', 'visite', 'date_visite', 'ko_solved_count', 'ko_unsolved_count', 'action'];
 
 
 	constructor(
@@ -83,10 +84,20 @@ export class VisitesepiListComponent implements OnInit {
 
 
 	viewVisite(visiteId) {
-		this.router.navigate(['../detail', visiteId], { relativeTo: this.activatedRoute });
+		// this.router.navigate(['../detail', visiteId], { relativeTo: this.activatedRoute });
+		Swal.fire({
+			title: 'Désolé cette fonctionnalité n\'a pas encore été implémentée',
+			showConfirmButton: false,
+			timer: 1500
+		})
 	}
 	editVisite(visiteId) {
-		this.router.navigate(['../edit', visiteId], { relativeTo: this.activatedRoute });
+		// this.router.navigate(['../edit', visiteId], { relativeTo: this.activatedRoute });
+		Swal.fire({
+			title: 'Désolé cette fonctionnalité n\'a pas encore été implémentée',
+			showConfirmButton: false,
+			timer: 1500
+		})
 	}
 	deleteVisite(visiteId) {
 		Swal.fire({

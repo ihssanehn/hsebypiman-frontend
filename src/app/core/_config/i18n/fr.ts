@@ -571,6 +571,18 @@ export const locale = {
 				LABEL_COMP:'(quand attitude non sécuritaire)'
 			},
 		},
+		EPIS:{
+			CODE:{
+				TITLE : 'Code',
+				SHORTTITLE : 'Code',
+				LABEL : 'Code',
+			},
+			CATEGORIE:{
+				TITLE : 'Catégorie',
+				SHORTTITLE : 'Catégorie',
+				LABEL : 'Catégorie',
+			},
+		},
 		COMMON:{
 			ADRESS:{
 				LABEL:'Adresse',

@@ -194,7 +194,6 @@ export class AuthService extends HttpService {
 
 
 	registerNewToken(res: JsonResponse<User>){
-		console.log(res)
 		if(res.result.data.refresh_token){
 			localStorage.setItem(environment.authTokenKey, res.result.data.refresh_token);
 		}

@@ -1,4 +1,5 @@
-<tf-search-list-bar [(ngModel)]="filter" (change)="getVisites()" [hasAdvancedSearch]="false" [showFilters]="showFilters" class="row row-filters"></tf-search-list-bar>
+<tf-search-list-bar [(ngModel)]="filter" (change)="getVisites()" [hasAdvancedSearch]="true" [showFilters]="showFilters" (advancedSearchChange)="advancedSearchChanged($event)" class="row row-filters"></tf-search-list-bar>
+<tf-visite-chantier-filters [hidden]="!showFilters" (change)="udpateFilters($event)" class="row"></tf-visite-chantier-filters>
 
 <tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
 	<tf-portlet-body class="tf-portlet__body--fit" style="padding: 15px;" *ngIf="visitesList">
@@ -20,7 +21,7 @@
           {{'VISITES.CHANTIER.TITLE' | translate}} 
           <i class="fa" [ngClass]="isOrderedBy(['chantiers.nom', 'visite_securites.code']) && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy(['chantiers.nom', 'visite_securites.code']) && {opacity:1}"></i>
         </th>
-        <td mat-cell *matCellDef="let visite"  (click)="viewVisite(visite.id)" class="pointer"> {{visite.chantier.nom | truncate:35}}</td>
+        <td mat-cell *matCellDef="let visite"  (click)="viewVisite(visite.id)" class="pointer"> {{visite.visitable.nom | truncate:35}}</td>
       </ng-container>
 
       <!-- client Column -->
@@ -29,7 +30,7 @@
           {{'VISITES.CLIENT.TITLE' | translate}}
           <i class="fa" [ngClass]="isOrderedBy(['chantiers.client', 'visite_securites.code']) && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy(['chantiers.client', 'visite_securites.code']) && {opacity:1}"></i>
         </th>
-        <td mat-cell *matCellDef="let visite"  (click)="viewVisite(visite.id)" class="pointer"> {{visite.chantier.client | truncate:35}}</td>
+        <td mat-cell *matCellDef="let visite"  (click)="viewVisite(visite.id)" class="pointer"> {{visite.visitable.client | truncate:35}}</td>
       </ng-container>
 
       <!-- type Column -->

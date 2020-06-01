@@ -1,11 +1,12 @@
 
-import {Ar, Chantier, Type, Status, Question, Signature } from './'
+import {Ar, Chantier, Type, Status, Question, Signature, Epi } from './'
 import { User } from '../auth';
 
 export class Visite {
     id?:Number;
     code?:String;
-    chantier_id?:Number;
+    visitable_id?:Number;
+    visitable_type?:string;
     salarie_id?:Number;
     entreprise_id?:Number;
     redacteur_id?:Number;
@@ -20,7 +21,11 @@ export class Visite {
     type_id?:Number;
     status_id?:Number;
     creator_id?:Number;
+    chantier_id?:Number;
     chantier?:Chantier;
+    epi_id?:Number;
+    epi?:Epi;
+    visitable?:any;
     salarie?:User;
     entreprise?:any;
     redacteur?:User;

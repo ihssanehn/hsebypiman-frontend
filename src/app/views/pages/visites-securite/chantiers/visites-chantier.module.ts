@@ -19,11 +19,13 @@ import { HttpUtilsService, TypesUtilsService, InterceptService, LayoutUtilsServi
 import { ActionNotificationComponent } from '@app/views/partials/content/crud';
 // Components
 import { VisitesChantierComponent } from './visites-chantier.component';
+import { VisiteChantierFiltersComponent } from './visite-chantier-filters/visite-chantier-filters.component';
 import { VisitesChantierListComponent } from './visites-chantier-list/visites-chantier-list.component';
 import { VisiteChantierEditComponent } from './visite-chantier-edit/visite-chantier-edit.component';
 import { VisiteChantierAddComponent } from './visite-chantier-add/visite-chantier-add.component';
 import { VisiteChantierDetailComponent } from './visite-chantier-detail/visite-chantier-detail.component';
 import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxMaskModule } from 'ngx-mask';
 
 
 // Material
@@ -45,10 +47,6 @@ const routes: Routes = [
 			},
 			{
 				path: 'list',
-				component: VisitesChantierListComponent
-			},
-			{
-				path: 'list:id',
 				component: VisitesChantierListComponent
 			},
 			{
@@ -109,6 +107,7 @@ const routes: Routes = [
 		NgbDropdownModule,
 		NgbTabsetModule,
 		NgbTooltipModule,
+		NgxMaskModule,
 	],
 	providers: [
 		InterceptService,
@@ -139,6 +138,7 @@ const routes: Routes = [
 		VisitesChantierListComponent,
 		VisiteChantierEditComponent,
 		VisiteChantierAddComponent,
+		VisiteChantierFiltersComponent,
 		VisiteChantierDetailComponent
 	]
 })

@@ -201,6 +201,9 @@ export class VisiteEpiEditComponent implements OnInit, OnDestroy {
       this.formStatus.onFormSubmitting();
       this.parseVisitesDate(form, 'FrToEn');
 
+      form.visitable_id = form.epi_id;
+      form.visitable_type = 'Epi';
+
       this.visiteService.update(form)
         .toPromise()
         .then((visite) => {

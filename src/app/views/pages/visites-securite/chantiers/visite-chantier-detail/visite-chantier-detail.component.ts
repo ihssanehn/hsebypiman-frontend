@@ -65,11 +65,15 @@ export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 						var _visite = res.result.data
 						this.parseVisitesDate(_visite, 'EnToFr');
 						this.visiteForm.patchValue(_visite);
+						this.visiteForm.get('chantier_id').setValue(_visite.visitable_id);
 						this.patchQuestionsForm(_visite);
 						// this.visiteForm.disable();
 					})
 				).subscribe(async res => {
-					this.visite = res.result.data;
+					var _visite = res.result.data;
+					_visite.chantier_id = _visite.visitable_id;
+					_visite.chantier = _visite.visitable;
+					this.visite = _visite;
 					this.loaded = true;
 					this.cdr.detectChanges();
 					this.cdr.markForCheck();
@@ -148,16 +152,16 @@ export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 		})
 
 		const signatureRedacteur = this.visiteForm.get('signature_redacteur') as FormGroup;
-		if(visite.signRedacteur){
-			signatureRedacteur.patchValue(visite.signRedacteur);
+		if(visite.sign_redacteur){
+			signatureRedacteur.patchValue(visite.sign_redacteur);
 		}
 		const signatureVisite = this.visiteForm.get('signature_visite') as FormGroup;
-		if(visite.signVisite){
-			signatureVisite.patchValue(visite.signVisite);
+		if(visite.sign_visite){
+			signatureVisite.patchValue(visite.sign_visite);
 		}
 		const signatureRespHse = this.visiteForm.get('signature_resp_hse') as FormGroup;
-		if(visite.signRespHse){
-			signatureRespHse.patchValue(visite.signRespHse);
+		if(visite.sign_resp_hse){
+			signatureRespHse.patchValue(visite.sign_resp_hse);
 		}
 
 		this.showSignatures = true;
@@ -184,6 +188,8 @@ export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 		  let form = {...this.visiteForm.getRawValue()};
 		  this.formStatus.onFormSubmitting();
 		  this.parseVisitesDate(form, 'FrToEn');
+		  form.visitable_id = form.chantier_id;
+		  form.visitable_type = 'App\\Models\\Chantier';
 	
 		  this.visiteService.update(form)
 			.toPromise()

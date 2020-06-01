@@ -132,6 +132,9 @@ export class VisiteEpiAddComponent implements OnInit {
       let form = { ...this.visiteForm.getRawValue() };
       this.formStatus.onFormSubmitting();
       this.parseDates(form);
+      
+      form.visitable_id = form.epi_id;
+      form.visitable_type = 'Epi';
 
       this.visiteService.create(form)
         .toPromise()

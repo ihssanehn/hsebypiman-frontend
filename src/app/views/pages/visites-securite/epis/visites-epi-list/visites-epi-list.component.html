@@ -16,29 +16,20 @@
 
       <!-- nom de epi Column -->
       <ng-container matColumnDef="epi">
-        <th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder(['epis.nom', 'visite_securites.code'])">
-          {{'VISITES.epi.TITLE' | translate}} 
-          <i class="fa" [ngClass]="isOrderedBy(['epis.nom', 'visite_securites.code']) && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy(['epis.nom', 'visite_securites.code']) && {opacity:1}"></i>
+        <th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder(['epis.code', 'visite_securites.code'])">
+          {{'EPIS.CODE.TITLE' | translate}} 
+          <i class="fa" [ngClass]="isOrderedBy(['epis.code', 'visite_securites.code']) && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy(['epis.code', 'visite_securites.code']) && {opacity:1}"></i>
         </th>
-        <td mat-cell *matCellDef="let visite"  (click)="viewVisite(visite.id)" class="pointer"> {{visite.epi.nom | truncate:35}}</td>
+        <td mat-cell *matCellDef="let visite"  (click)="viewVisite(visite.id)" class="pointer"> {{visite.visitable.code | truncate:35}}</td>
       </ng-container>
 
       <!-- client Column -->
-      <ng-container matColumnDef="client">
-        <th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder(['epis.client', 'visite_securites.code'])">
-          {{'VISITES.CLIENT.TITLE' | translate}}
-          <i class="fa" [ngClass]="isOrderedBy(['epis.client', 'visite_securites.code']) && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy(['epis.client', 'visite_securites.code']) && {opacity:1}"></i>
+      <ng-container matColumnDef="epi_cat">
+        <th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder(['epis.categorie.libelle', 'visite_securites.code'])">
+          {{'EPIS.CATEGORIE.TITLE' | translate}}
+          <i class="fa" [ngClass]="isOrderedBy(['epis.categorie.libelle', 'visite_securites.code']) && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy(['epis.categorie.libelle', 'visite_securites.code']) && {opacity:1}"></i>
         </th>
-        <td mat-cell *matCellDef="let visite"  (click)="viewVisite(visite.id)" class="pointer"> {{visite.epi.client | truncate:35}}</td>
-      </ng-container>
-
-      <!-- type Column -->
-      <ng-container matColumnDef="type">
-        <th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('types.libelle')"> 
-            {{'VISITES.TYPE.SHORTTITLE' | translate}} 
-            <i class="fa" [ngClass]="isOrderedBy('types.libelle') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('types.libelle') && {opacity:1}"></i>
-        </th>
-        <td mat-cell *matCellDef="let visite"  (click)="viewVisite(visite.id)" class="pointer text-center" [ngStyle]="visite.type && visite.type.color && {'color':visite.type.color}"> {{visite.type?.libelle}} </td>
+        <td mat-cell *matCellDef="let visite"  (click)="viewVisite(visite.id)" class="pointer"> {{visite.visitable.categorie.libelle | truncate:35}}</td>
       </ng-container>
 
       <!-- redacteur Column -->

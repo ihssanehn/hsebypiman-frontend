@@ -64,6 +64,7 @@ export class VisiteChantierEditComponent implements OnInit, OnDestroy {
               var _visite = res.result.data
               this.parseVisitesDate(_visite, 'EnToFr');
               this.visiteForm.patchValue(_visite);
+              this.visiteForm.get('chantier_id').setValue(_visite.visitable_id);
               this.formPathValues(_visite);
               
             })
@@ -200,6 +201,8 @@ export class VisiteChantierEditComponent implements OnInit, OnDestroy {
       let form = {...this.visiteForm.getRawValue()};
       this.formStatus.onFormSubmitting();
       this.parseVisitesDate(form, 'FrToEn');
+      form.visitable_id = form.chantier_id;
+      form.visitable_type = 'App\\Models\\Chantier';
 
       this.visiteService.update(form)
         .toPromise()

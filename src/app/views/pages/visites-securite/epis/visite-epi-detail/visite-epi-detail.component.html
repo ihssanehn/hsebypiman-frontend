@@ -21,11 +21,11 @@
 				</div>
 			</div>
 		</div>
-		<tf-search-epi-form [data]="visite.epi" origin="detail" ></tf-search-epi-form>
-		<div class="tf-divider" *ngIf="visiteForm.get('epi_id').value">
+		<!-- <tf-search-epi-form [data]="visite.epi" origin="detail" ></tf-search-epi-form> -->
+		<!-- <div class="tf-divider" *ngIf="visiteForm.get('epi_id').value">
 			<span></span>
 		</div>
-		<tf-vs-form-head [visiteForm]="visiteForm" [origin]="'detail'" *ngIf="visiteForm.get('epi_id').value"></tf-vs-form-head>
+		<tf-vs-form-head [visiteForm]="visiteForm" [origin]="'detail'" *ngIf="visiteForm.get('epi_id').value"></tf-vs-form-head> -->
 	</tf-portlet>
 	
 	<tf-vs-form-body [visiteForm]="visiteForm" (dateUpdated)="onSubmit()" [origin]="'detail'" [isDisableToggle]="isDisableToggle" ></tf-vs-form-body>

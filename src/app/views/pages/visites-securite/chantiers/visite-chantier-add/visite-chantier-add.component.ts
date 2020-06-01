@@ -132,6 +132,8 @@ export class VisiteChantierAddComponent implements OnInit {
       let form = {...this.visiteForm.getRawValue()};
       this.formStatus.onFormSubmitting();
       this.parseDates(form);
+      form.visitable_id = form.chantier_id;
+      form.visitable_type = 'App\\Models\\Chantier';
 
       this.visiteService.create(form)
         .toPromise()

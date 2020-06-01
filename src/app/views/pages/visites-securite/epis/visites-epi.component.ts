@@ -8,7 +8,7 @@ import { MenuAsideService, SubheaderService } from '@app/core/_base/layout';
 	templateUrl: './visites-epi.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class VisitesepiComponent implements OnInit {
+export class VisitesEpiComponent implements OnInit {
 
 	constructor(
 		private router:Router,

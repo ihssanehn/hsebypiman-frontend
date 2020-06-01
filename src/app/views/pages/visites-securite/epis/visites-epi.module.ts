@@ -18,8 +18,8 @@ import { HttpUtilsService, TypesUtilsService, InterceptService, LayoutUtilsServi
 // Shared
 import { ActionNotificationComponent } from '@app/views/partials/content/crud';
 // Components
-import { VisitesepiComponent } from './visites-epi.component';
-import { VisitesepiListComponent } from './visites-epi-list/visites-epi-list.component';
+import { VisitesEpiComponent } from './visites-epi.component';
+import { VisitesEpiListComponent } from './visites-epi-list/visites-epi-list.component';
 import { VisiteEpiEditComponent } from './visite-epi-edit/visite-epi-edit.component';
 import { VisiteEpiAddComponent } from './visite-epi-add/visite-epi-add.component';
 import { VisiteEpiDetailComponent } from './visite-epi-detail/visite-epi-detail.component';
@@ -28,11 +28,12 @@ import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootst
 
 // Material
 import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatTableModule, MatSelectModule, MatMenuModule, MatProgressBarModule, MatButtonModule, MatCheckboxModule, MatDialogModule, MatTabsModule, MatNativeDateModule, MatCardModule, MatRadioModule, MatIconModule, MatDatepickerModule, MatExpansionModule, MatAutocompleteModule, MAT_DIALOG_DEFAULT_OPTIONS, MatSnackBarModule, MatTooltipModule, } from '@angular/material';
+import { NgxMaskModule } from 'ngx-mask';
 
 const routes: Routes = [
 	{
 		path: '',
-		component: VisitesepiComponent,
+		component: VisitesEpiComponent,
 		children: [
 			{
 				path: '',
@@ -45,11 +46,7 @@ const routes: Routes = [
 			},
 			{
 				path: 'list',
-				component: VisitesepiListComponent
-			},
-			{
-				path: 'list:id',
-				component: VisitesepiListComponent
+				component: VisitesEpiListComponent
 			},
 			{
 				path: 'add',
@@ -109,6 +106,7 @@ const routes: Routes = [
 		NgbDropdownModule,
 		NgbTabsetModule,
 		NgbTooltipModule,
+		NgxMaskModule,
 	],
 	providers: [
 		InterceptService,
@@ -135,11 +133,11 @@ const routes: Routes = [
 		// 
 	],
 	declarations: [
-		VisitesepiComponent,
-		VisitesepiListComponent,
+		VisitesEpiComponent,
+		VisitesEpiListComponent,
 		VisiteEpiEditComponent,
 		VisiteEpiAddComponent,
 		VisiteEpiDetailComponent
 	]
 })
-export class VisitesepiModule {}
+export class VisitesEpiModule {}
