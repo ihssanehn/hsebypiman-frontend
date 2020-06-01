@@ -187,18 +187,26 @@ export class AuthService extends HttpService {
 
 
 
-	registerPermissions(user: JsonResponse<User>) {
-		this.currentUserSubject.next(user);
+	registerPermissions(res: JsonResponse<User>) {
+		this.currentUserSubject.next(res);
 		// this.permissionsService.loadPermissions([user.role.slug]);
 	}
 
 
+	registerNewToken(res: JsonResponse<User>){
+		console.log(res)
+		if(res.result.data.refresh_token){
+			localStorage.setItem(environment.authTokenKey, res.result.data.refresh_token);
+		}
+
+	}
 
 	async populate() {
 		const userToken = localStorage.getItem(environment.authTokenKey);
 		if (userToken) {
-			let user = await this.getUserByToken().toPromise();
-			this.registerPermissions(user);
+			let res = await this.getUserByToken().toPromise();
+			this.registerPermissions(res);
+			this.registerNewToken(res);
 			return true;
 		} else {
 			localStorage.removeItem(environment.authTokenKey);
