@@ -52,8 +52,17 @@ export class InterceptService implements HttpInterceptor {
 				   if (error.status === 401 ) {
 					   switch (error.error.message) {
 						   case "token_expired":
+							   localStorage.removeItem(environment.authTokenKey);
+							   this.router.navigate(['/auth/login']);
 						   case "token_invalid":
+							   localStorage.removeItem(environment.authTokenKey);
+							   this.router.navigate(['/auth/login']);
 						   case "token_absent":
+							   localStorage.removeItem(environment.authTokenKey);
+							   this.router.navigate(['/auth/login']);
+						   case "token_blacklisted":
+							   localStorage.removeItem(environment.authTokenKey);
+							   this.router.navigate(['/auth/login']);
 						   case "Unauthenticated.":
 							   localStorage.removeItem(environment.authTokenKey);
 							   this.router.navigate(['/auth/login']);

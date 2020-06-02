@@ -1,0 +1,64 @@
+<!-- <div class="row row-filters" style="height: 69px;">
+  
+</div> -->
+<!-- <tf-comming-soon></tf-comming-soon> -->
+<form [formGroup]="visiteForm" class="tf-form tf-form--group-seperator-dashed" >
+	<tf-portlet class="main-portlet-form" id="portlet-vs">
+		<div class="tf-portlet-header">
+			<span class="title">
+				<a [routerLink]="['/visites-securite/list']">{{'MENU.HOME' | translate}}</a>
+				<span class="divider">></span>
+			  <span class="id-item">{{'MENU.SUB_VISITESECURITE.ADD' | translate}}</span>
+			</span>
+		</div>
+		<!-- <tf-search-vehicule-form [form]="visiteForm" origin="add" ></tf-search-vehicule-form> -->
+		<div class="tf-divider" *ngIf="visiteForm.get('vehicule_id').value">
+			<span></span>
+		</div>
+		<tf-vs-form-head [visiteForm]="visiteForm" [origin]="'add'" *ngIf="visiteForm.get('vehicule_id').value"></tf-vs-form-head>
+
+		<tf-portlet-body *ngIf="visiteForm.get('vehicule_id').value">
+			<div class="row">
+				<div class="col-12">
+					<button mat-raised-button color="success" class="float-right btn-small" 
+					type="button" [disabled]="cantDisplayQuestions()" (click)="displayQuestions()">Commencer la visite</button>
+				</div>
+			</div>
+		</tf-portlet-body>
+	</tf-portlet>
+	
+	<tf-vs-form-body [visiteForm]="visiteForm" [origin]="'add'" [isDisableToggle]="true" *ngIf="questionsDisplayed"></tf-vs-form-body>
+	
+	<div *ngIf="!showSignatures">
+		<button mat-raised-button [disabled]="!questionsAnswerd()" (click)="displaySignature()" color="success" class="pull-right">
+			Signer
+		</button>
+	</div>
+	
+	<tf-vs-form-signatures [visiteForm]="visiteForm" [origin]="'add'" [canValidateHse]="false" [isDisableToggle]="true" *ngIf="showSignatures"></tf-vs-form-signatures>
+	
+	<ng-container *ngIf="formStatus">
+		<div *ngIf="formStatus.canShowErrors()" class="alert alert-danger alert-dismissible fade show" role="alert">
+			<div><strong>Oups!</strong></div>
+			<div>
+				<ul *ngFor="let errors of formStatus.errors  |  keyvalue">
+					<li *ngFor="let error of errors.value">
+						{{error}}
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div *ngIf="formStatus.canShowSuccess()" class="alert alert-success" role="alert">
+			<div><strong>Success!</strong></div>
+			<div *ngFor="let message of formStatus.messages">{{ message }}</div>
+		</div>
+	</ng-container>
+	<div *ngIf="!visiteForm.invalid && questionsLoaded() && showSignatures">
+		<button mat-raised-button [disabled]="visiteForm.invalid || !questionsLoaded() || !showSignatures" (click)="onSubmit(visiteForm.valid)" color="success" class="pull-right">
+			{{'ACTION.SAVE' | translate}}
+		</button>
+		<button type="button" mat-raised-button color="info" (click)="onCancel()">
+			Annuler
+		</button>
+	</div>
+</form>

@@ -565,6 +565,82 @@ export class MenuConfig {
 					}
 				]
 			},
+			vss_vehicule: {
+				btnAdd: {
+					title: 'Nouvelle visite de sécurité Véhicule',
+					root: true,
+					alignment: 'left',
+					page: '/visites-securite/vehicules/add',
+					translate: 'MENU.BTN.NEWVS',
+				},
+				items: [
+					{
+						icon: 'dashboard',
+						// icon: 'flaticon2-browser-2',
+						title: 'Dashboards',
+						root: true,
+						alignment: 'left',
+						page: '/dashboard',
+						translate: 'MENU.DASHBOARD',
+					},
+					{
+						title: 'Liste',
+						root: true,
+						alignment: 'left',
+						page: '/visites-securite/vehicules/list',
+						translate: 'MENU.LIST',
+						icon: 'view_list',
+						// icon: 'flaticon2-browser-2',
+					},
+					{
+						title: 'Admin',
+						root: true,
+						alignment: 'left',
+						page: '/admin',
+						translate: 'MENU.ADMIN',
+						icon: 'settings',
+						// icon: 'flaticon2-mail-1',
+					}
+				]
+			},
+			vss_outillage: {
+				btnAdd: {
+					title: 'Nouvelle visite de sécurité Outillage',
+					root: true,
+					alignment: 'left',
+					page: '/visites-securite/outillages/add',
+					translate: 'MENU.BTN.NEWVS',
+				},
+				items: [
+					{
+						icon: 'dashboard',
+						// icon: 'flaticon2-browser-2',
+						title: 'Dashboards',
+						root: true,
+						alignment: 'left',
+						page: '/dashboard',
+						translate: 'MENU.DASHBOARD',
+					},
+					{
+						title: 'Liste',
+						root: true,
+						alignment: 'left',
+						page: '/visites-securite/outillages/list',
+						translate: 'MENU.LIST',
+						icon: 'view_list',
+						// icon: 'flaticon2-browser-2',
+					},
+					{
+						title: 'Admin',
+						root: true,
+						alignment: 'left',
+						page: '/admin',
+						translate: 'MENU.ADMIN',
+						icon: 'settings',
+						// icon: 'flaticon2-mail-1',
+					}
+				]
+			},
 			chantiers: {
 				btnAdd: {
 					title: 'Nouveau chantier',

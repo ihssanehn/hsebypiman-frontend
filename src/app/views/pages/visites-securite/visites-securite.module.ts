@@ -39,6 +39,14 @@ const routes: Routes = [
 				path: 'epis',
 				loadChildren: () => import('@app/views/pages/visites-securite/epis/visites-epi.module').then(m => m.VisitesEpiModule)
 			},
+			{
+				path: 'vehicules',
+				loadChildren: () => import('@app/views/pages/visites-securite/vehicules/visites-vehicule.module').then(m => m.VisitesVehiculeModule)
+			},
+			{
+				path: 'outillages',
+				loadChildren: () => import('@app/views/pages/visites-securite/outillages/visites-outillage.module').then(m => m.VisitesOutillageModule)
+			},
 		]
 	}
 ];
