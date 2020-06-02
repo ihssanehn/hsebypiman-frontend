@@ -5,8 +5,8 @@ import { CommonModule, Location } from '@angular/common';
 import * as moment from 'moment';
 
 import { TranslateService } from '@ngx-translate/core';
-import { VisiteService, TypeService, ChantierService, CatQuestionService } from '@app/core/services';
-import { Visite, Type, Chantier, CatQuestion } from '@app/core/models';
+import { VisiteChantierService, TypeService, ChantierService, CatQuestionService } from '@app/core/services';
+import { VisiteChantier, Type, Chantier, CatQuestion } from '@app/core/models';
 import { NgxPermissionsService } from 'ngx-permissions';
 import { AuthService, User } from '@app/core/auth';
 import { MatSnackBar } from '@angular/material';
@@ -22,7 +22,7 @@ import { DateFrToEnPipe } from '@app/core/_base/layout';
 })
 export class VisiteChantierAddComponent implements OnInit {
   
-  visite: Visite;
+  visite: VisiteChantier;
   visiteForm: FormGroup;
 	// allRoles: Role[];
   formStatus = new FormStatus();
@@ -40,7 +40,7 @@ export class VisiteChantierAddComponent implements OnInit {
 		private router: Router,
 		private visiteFB: FormBuilder,
 		// private notificationService: NzNotificationService,
-		private visiteService: VisiteService,
+		private visiteService: VisiteChantierService,
     private chantierService: ChantierService,
     private location: Location,
     private authService:AuthService,
@@ -50,7 +50,7 @@ export class VisiteChantierAddComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.visite = new Visite();
+    this.visite = new VisiteChantier();
     this.createForm();    
     this.setDynamicValidators();
     this.getCurrentUser();
@@ -132,8 +132,6 @@ export class VisiteChantierAddComponent implements OnInit {
       let form = {...this.visiteForm.getRawValue()};
       this.formStatus.onFormSubmitting();
       this.parseDates(form);
-      form.visitable_id = form.chantier_id;
-      form.visitable_type = 'App\\Models\\Chantier';
 
       this.visiteService.create(form)
         .toPromise()

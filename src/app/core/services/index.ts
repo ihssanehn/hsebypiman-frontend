@@ -1,6 +1,7 @@
 export { ChantierService } from './chantier.service'
 export { ArService } from './ar.service'
-export { VisiteService } from './visite.service'
+export { VisiteEpiService } from './visite-epi.service'
+export { VisiteChantierService } from './visite-chantier.service'
 export { TypeService } from './type.service'
 export { CategorieService } from './categorie.service'
 export { StatusService } from './status.service'

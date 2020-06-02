@@ -6,8 +6,8 @@ import * as moment from 'moment';
 import { Subscription } from "rxjs";
 import { tap } from 'rxjs/operators';
 
-import { VisiteService, ChantierService} from '@app/core/services';
-import { Visite, Chantier } from '@app/core/models';
+import { VisiteChantierService, ChantierService} from '@app/core/services';
+import { VisiteChantier, Chantier } from '@app/core/models';
 import { AuthService, User } from '@app/core/auth';
 import { MatSnackBar } from '@angular/material';
 import Swal from 'sweetalert2';
@@ -22,7 +22,7 @@ import { DateFrToEnPipe , DateEnToFrPipe} from '@app/core/_base/layout';
 })
 export class VisiteChantierEditComponent implements OnInit, OnDestroy {
   
-  public visite: Visite;
+  public visite: VisiteChantier;
   visiteForm: FormGroup;
 	// allRoles: Role[];
   formStatus = new FormStatus();
@@ -41,7 +41,7 @@ export class VisiteChantierEditComponent implements OnInit, OnDestroy {
 		private router: Router,
 		private visiteFB: FormBuilder,
 		// private notificationService: NzNotificationService,
-		private visiteService: VisiteService,
+		private visiteService: VisiteChantierService,
     private chantierService: ChantierService,
     private location: Location,
     private authService:AuthService,
@@ -64,7 +64,6 @@ export class VisiteChantierEditComponent implements OnInit, OnDestroy {
               var _visite = res.result.data
               this.parseVisitesDate(_visite, 'EnToFr');
               this.visiteForm.patchValue(_visite);
-              this.visiteForm.get('chantier_id').setValue(_visite.visitable_id);
               this.formPathValues(_visite);
               
             })
@@ -201,8 +200,6 @@ export class VisiteChantierEditComponent implements OnInit, OnDestroy {
       let form = {...this.visiteForm.getRawValue()};
       this.formStatus.onFormSubmitting();
       this.parseVisitesDate(form, 'FrToEn');
-      form.visitable_id = form.chantier_id;
-      form.visitable_type = 'App\\Models\\Chantier';
 
       this.visiteService.update(form)
         .toPromise()

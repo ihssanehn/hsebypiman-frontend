@@ -12,7 +12,7 @@ export { Habilitation } from './habilitation.model';
 export { CatHabilitation } from './catHabilitation.model';
 export { Question } from './question.model';
 export { CatQuestion } from './catQuestion.model';
-export { Visite } from './visite.model';
+export { VisiteChantier, VisiteEpi } from './visite.model';
 export { Equipement } from './equipement.model';
 export { Zone } from './zone.model';
 export { Signature } from './signature.model';

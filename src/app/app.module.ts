@@ -51,7 +51,8 @@ import { AuthModule } from './views/pages/auth/auth.module';
 import { AuthService } from './core/auth';
 import { 
 	ChantierService, TypeService, StatusService, CategorieService, ArService, CatRisqueService, EquipementService,
-	EntrepriseService, VisiteService, CatHabilitationService, CatQuestionService, ZoneService, SignatureService, HabilitationService, RisqueService, ParamsService, EpiService
+	EntrepriseService, VisiteEpiService, VisiteChantierService, CatHabilitationService, CatQuestionService, ZoneService, SignatureService, 
+	HabilitationService, RisqueService, ParamsService, EpiService
 } from './core/services';
 // CRUD
 import { HttpUtilsService, LayoutUtilsService, TypesUtilsService } from './core/_base/crud';
@@ -162,7 +163,8 @@ export function hljsLanguages(): HighlightLanguage[] {
 		RisqueService,
 		EquipementService,
 		EntrepriseService,
-		VisiteService,
+		VisiteEpiService,
+		VisiteChantierService,
 		LayoutConfigService,
 		LayoutRefService,
 		MenuConfigService,

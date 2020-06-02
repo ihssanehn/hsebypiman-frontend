@@ -88,8 +88,8 @@ export class VisiteChantierFiltersComponent implements OnInit, AfterViewInit
     this.cdr.markForCheck();
   }
   async getTypes(){
-    var res = await this.typeService.getAllFromModel('Vs').toPromise();
-    this.types = res.result.data.filter(x=>{return x.code == 'C' || x.code == 'SAV'});
+    var res = await this.typeService.getAllFromModel('VsChantier').toPromise();
+    this.types = res.result.data;
     this.cdr.detectChanges();
     this.cdr.markForCheck();
   }

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ChangeDetectorRef, ElementRef, Input, AfterContentInit, ViewChildren, QueryList } from '@angular/core';
-import { VisiteService } from '@app/core/services';
+import { VisiteEpiService } from '@app/core/services';
 import { Paginate } from '@app/core/_base/layout/models/paginate.model';
-import { Visite } from '@app/core/models';
+import { VisiteEpi } from '@app/core/models';
 import { TranslateService } from '@ngx-translate/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { fromEvent, Subscription } from 'rxjs';
@@ -15,7 +15,7 @@ import Swal from 'sweetalert2';
 })
 export class VisitesEpiListComponent implements OnInit {
 
-	public visitesList: Paginate < Visite > ;
+	public visitesList: Paginate < VisiteEpi > ;
 	visite_id: number;
 	showFilters: boolean = false;
 	pagination: any = {
@@ -27,9 +27,8 @@ export class VisitesEpiListComponent implements OnInit {
 	filter: any = {
 		per_page: this.pagination.pageSize,
 		page: this.pagination.page,
-		order_by: 'visite_securites.date_visite',
+		order_by: 'visites_epi.date_visite',
 		order_way: 'asc',
-		model:'Epi',
 		keyword: "",
 		dateRange: [],
 		status_id: "",
@@ -41,7 +40,7 @@ export class VisitesEpiListComponent implements OnInit {
 	constructor(
 		private router: Router,
 		private activatedRoute: ActivatedRoute,
-		protected visiteService: VisiteService,
+		protected visiteService: VisiteEpiService,
 		protected cdr: ChangeDetectorRef,
 		private translate: TranslateService,
 	) {

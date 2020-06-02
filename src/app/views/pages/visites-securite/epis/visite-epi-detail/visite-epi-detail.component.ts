@@ -6,8 +6,8 @@ import * as moment from 'moment';
 import { Subscription } from "rxjs";
 import { tap } from 'rxjs/operators';
 
-import { VisiteService, EpiService } from '@app/core/services';
-import { Visite, Epi } from '@app/core/models';
+import { VisiteEpiService, EpiService } from '@app/core/services';
+import { VisiteEpi, Epi } from '@app/core/models';
 import { AuthService, User } from '@app/core/auth';
 import { MatSnackBar } from '@angular/material';
 import Swal from 'sweetalert2';
@@ -24,7 +24,7 @@ import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
 export class VisiteEpiDetailComponent implements OnInit, OnDestroy {
 
 	canValidateHse: boolean = true;
-	public visite: Visite;
+	public visite: VisiteEpi;
 	visiteForm: FormGroup;
 	// allRoles: Role[];
 	formStatus = new FormStatus();
@@ -45,7 +45,7 @@ export class VisiteEpiDetailComponent implements OnInit, OnDestroy {
 		private router: Router,
 		private visiteFB: FormBuilder,
 		// private notificationService: NzNotificationService,
-		private visiteService: VisiteService,
+		private visiteService: VisiteEpiService,
 		private epiService: EpiService,
 		private location: Location,
 		private authService: AuthService,

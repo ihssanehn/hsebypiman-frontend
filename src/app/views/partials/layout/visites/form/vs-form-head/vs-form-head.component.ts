@@ -38,8 +38,8 @@ export class VsFormHeadComponent implements OnInit {
   }
 
   async getTypes(){
-    var res = await this.typeService.getAllFromModel('Vs').toPromise();
-    this.types = res.result.data.filter(x=>{return x.code == 'C' || x.code == 'SAV'});
+    var res = await this.typeService.getAllFromModel('VsChantier').toPromise();
+    this.types = res.result.data
     this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
@@ -50,7 +50,7 @@ export class VsFormHeadComponent implements OnInit {
     this.cdr.markForCheck();
   }
   async getStatus(){
-    var res = await this.statusService.getAllFromModel('Vs').toPromise();
+    var res = await this.statusService.getAllFromModel('VsChantier').toPromise();
     this.status = res.result.data;
     this.cdr.detectChanges();
     this.cdr.markForCheck();

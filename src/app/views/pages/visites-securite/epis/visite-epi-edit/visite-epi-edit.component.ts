@@ -6,8 +6,8 @@ import * as moment from 'moment';
 import { Subscription } from "rxjs";
 import { tap } from 'rxjs/operators';
 
-import { VisiteService, EpiService} from '@app/core/services';
-import { Visite, Epi } from '@app/core/models';
+import { VisiteEpiService, EpiService} from '@app/core/services';
+import { VisiteEpi, Epi } from '@app/core/models';
 import { AuthService, User } from '@app/core/auth';
 import { MatSnackBar } from '@angular/material';
 import Swal from 'sweetalert2';
@@ -22,7 +22,7 @@ import { DateFrToEnPipe , DateEnToFrPipe} from '@app/core/_base/layout';
 })
 export class VisiteEpiEditComponent implements OnInit, OnDestroy {
   
-  public visite: Visite;
+  public visite: VisiteEpi;
   visiteForm: FormGroup;
 	// allRoles: Role[];
   formStatus = new FormStatus();
@@ -41,7 +41,7 @@ export class VisiteEpiEditComponent implements OnInit, OnDestroy {
 		private router: Router,
 		private visiteFB: FormBuilder,
 		// private notificationService: NzNotificationService,
-		private visiteService: VisiteService,
+		private visiteService: VisiteEpiService,
     private epiService: EpiService,
     private location: Location,
     private authService:AuthService,
@@ -200,9 +200,6 @@ export class VisiteEpiEditComponent implements OnInit, OnDestroy {
       let form = {...this.visiteForm.getRawValue()};
       this.formStatus.onFormSubmitting();
       this.parseVisitesDate(form, 'FrToEn');
-
-      form.visitable_id = form.epi_id;
-      form.visitable_type = 'Epi';
 
       this.visiteService.update(form)
         .toPromise()
