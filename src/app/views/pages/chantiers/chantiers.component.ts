@@ -9,7 +9,7 @@ import { Store, select } from '@ngrx/store';
 import { AppState } from '../../../core/reducers';
 // Auth
 import {ChantierService} from '@app/core/services';
-import {MenuAsideService } from '../../../core/_base/layout';
+import {MenuAsideService, SubheaderService } from '../../../core/_base/layout';
 
 @Component({
 	selector: 'tf-chantiers',
@@ -27,6 +27,7 @@ export class ChantiersComponent implements OnInit {
 	 */
 	constructor(
 		public menuAsideService: MenuAsideService,
+		public subheaderService: SubheaderService,
 		private router: Router
 	) {
 	}
@@ -36,5 +37,6 @@ export class ChantiersComponent implements OnInit {
 	 */
 	ngOnInit() {
 		this.menuAsideService.loadMenuAside('aside.chantiers');
+		this.subheaderService.loadSubheader('');
 	}
 }
