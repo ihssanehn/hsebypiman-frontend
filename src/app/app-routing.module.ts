@@ -14,62 +14,62 @@ const routes: Routes = [
 	{
 		path: '',
 		component: BaseComponent,
-		canActivate: [AuthGuard],
+		// canActivate: [AuthGuard],
 		children: [
 			{
 				path: 'dashboard',
 				loadChildren: () => import('@app/views/pages/dashboard/dashboard.module').then(m => m.DashboardModule),
-				canActivate: [AuthGuard],
+				// canActivate: [AuthGuard],
 			},
 			{
 				path: 'chantiers',
 				loadChildren: () => import('@app/views/pages/chantiers/chantiers.module').then(m => m.ChantiersModule),
-				canActivate: [AuthGuard],
+				// canActivate: [AuthGuard],
 			},
 			{
 				path: 'analyses-risque',
 				loadChildren: () => import('@app/views/pages/analyses-risque/ars.module').then(m => m.ArsModule),
-				canActivate: [AuthGuard],
+				// canActivate: [AuthGuard],
 			},
 			{
 				path: 'visites-securite',
 				loadChildren: () => import('@app/views/pages/visites-securite/visites-securite.module').then(m => m.VisitesSecuriteModule),
-				canActivate: [AuthGuard],
+				// canActivate: [AuthGuard],
 			},
 			{
 				path: 'plans-action',
 				loadChildren: () => import('@app/views/pages/plans-action/plans-action.module').then(m => m.PlansActionModule),
-				canActivate: [AuthGuard],
+				// canActivate: [AuthGuard],
 			},
 			{
 				path: 'salaries',
 				loadChildren: () => import('@app/views/pages/salaries/salaries.module').then(m => m.SalariesModule),
-				canActivate: [AuthGuard],
+				// canActivate: [AuthGuard],
 			},
 			{
 				path: 'entreprises',
 				loadChildren: () => import('@app/views/pages/entreprises/entreprises.module').then(m => m.EntreprisesModule),
-				canActivate: [AuthGuard],
+				// canActivate: [AuthGuard],
 			},
 			{
 				path: 'admin',
 				loadChildren: () => import('@app/views/pages/admin/admin.module').then(m => m.AdminModule),
-				canActivate: [AuthGuard],
+				// canActivate: [AuthGuard],
 			},
 			{
 				path: 'mail',
 				loadChildren: () => import('@app/views/pages/apps/mail/mail.module').then(m => m.MailModule),
-				canActivate: [AuthGuard],
+				// canActivate: [AuthGuard],
 			},
 			{
 				path: 'ngbootstrap',
 				loadChildren: () => import('@app/views/pages/ngbootstrap/ngbootstrap.module').then(m => m.NgbootstrapModule),
-				canActivate: [AuthGuard],
+				// canActivate: [AuthGuard],
 			},
 			{
 				path: 'material',
 				loadChildren: () => import('@app/views/pages/material/material.module').then(m => m.MaterialModule),
-				canActivate: [AuthGuard],
+				// canActivate: [AuthGuard],
 			},
 			// {
 			// 	path: 'user-management',
