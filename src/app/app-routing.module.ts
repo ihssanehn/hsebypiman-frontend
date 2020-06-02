@@ -61,24 +61,10 @@ const routes: Routes = [
 				loadChildren: () => import('@app/views/pages/apps/mail/mail.module').then(m => m.MailModule),
 				// canActivate: [AuthGuard],
 			},
-			{
-				path: 'ngbootstrap',
-				loadChildren: () => import('@app/views/pages/ngbootstrap/ngbootstrap.module').then(m => m.NgbootstrapModule),
-				// canActivate: [AuthGuard],
-			},
-			{
-				path: 'material',
-				loadChildren: () => import('@app/views/pages/material/material.module').then(m => m.MaterialModule),
-				// canActivate: [AuthGuard],
-			},
 			// {
 			// 	path: 'user-management',
 			// 	loadChildren: () => import('@app/views/pages/user-management/user-management.module').then(m => m.UserManagementModule)
 			// },
-			{
-				path: 'wizard',
-				loadChildren: () => import('@app/views/pages/wizard/wizard.module').then(m => m.WizardModule)
-			},
 			{
 				path: 'builder',
 				loadChildren: () => import('@app/views/theme/content/builder/builder.module').then(m => m.BuilderModule)
