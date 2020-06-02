@@ -109,4 +109,19 @@ export class ArDetailComponent implements OnInit, OnDestroy {
 		this.router.navigate(['/analyses-risque/sign', arId], { relativeTo: this.activatedRoute });
 	}
 
+	duplicateAr(arId){
+		Swal.fire({
+			icon: 'warning',
+			title: 'Êtes vous sur de vouloir archiver la dernière analyse de risque de ce chantier ?',
+			showConfirmButton: true,
+			showCancelButton: true,
+			cancelButtonText: 'Annuler',
+			confirmButtonText: 'Confirmer'
+		}).then(async response => {
+			if (response.value) {
+				this.router.navigate(['analyses-risque/add'], {queryParams:{ar_id:arId}})
+			}
+		});
+	}
+
 }

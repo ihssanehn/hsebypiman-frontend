@@ -71,8 +71,8 @@
 				<div class="col-xl-12 col-lg-12 col-md-12">
 					<mat-label>{{'CHANTIERS.HABILITATIONS.TITLE' | translate}}</mat-label>
 					<p class="mt-1">
-						<strong class="mr-2" *ngFor="let hab of chantier.habilitations;">
-							{{hab.libelle}}
+						<strong *ngFor="let hab of chantier.habilitations; let last = last">
+							{{hab.libelle}} <span *ngIf="!last" class="mx-2">|</span> 
 						</strong>
 					</p>
 				</div>

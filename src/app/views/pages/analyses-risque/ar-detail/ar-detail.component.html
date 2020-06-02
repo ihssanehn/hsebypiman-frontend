@@ -7,16 +7,19 @@
 				<span class="divider">></span>
 				<span class="id-item">{{'MENU.SUB_ANALYSERISQUE.DETAIL' | translate}} n° {{ar.code}}</span>
 			</span>
-			<div ngbDropdown placement="bottom-right" class="d-inline-block pull-right">
+			<div ngbDropdown placement="bottom-right" class="d-inline-block pull-right"  *ngIf="ar.chantier?.status.code != 'TERMINE'">
 				<button ngbDropdownToggle mat-icon-button color="primary" matTooltip="Actions" style="line-height: 0;height: 0;">
 					<mat-icon>more_vert</mat-icon>
 				</button>
 				<div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
-					<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editAr(ar.id)">
+					<!-- <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editAr(ar.id)">
 						<mat-icon>edit</mat-icon>
 					</button>
 					<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteAr(ar.id)">
 						<mat-icon>delete</mat-icon>
+					</button> -->
+					<button mat-icon-button color="info" matTooltip="{{'ACTION.DUPLICATE' | translate}}" (click)="duplicateAr(ar.id)">
+						<mat-icon>filter_none</mat-icon>
 					</button>
 				</div>
 			</div>
