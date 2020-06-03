@@ -17,8 +17,8 @@ export class ArRisquesAdminComponent extends AdminTemplateComponent implements O
 
   tpl : any = {
     title : 'Risques',
-    deletedMessage: 'Suppression impossible car la selection comprend un élément affecté dans des analyses de risque',
-    deletedChildMessage: 'Suppression impossible car la selection est affectée dans des analyses de risque',
+    deletedMessage: 'Suppression impossible car la selection comprend un élément affecté à une ou plusieurs analyses de risque',
+    deletedChildMessage: 'Suppression impossible car la selection est affectée à une ou plusieurs analyses de risque',
     collapsed : true,
     childCol : 6
   }

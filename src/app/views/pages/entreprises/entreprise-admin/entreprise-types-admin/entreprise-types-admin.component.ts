@@ -17,6 +17,8 @@ export class EntrepriseTypesAdminComponent extends AdminTemplateComponent implem
 
   tpl : any = {
     title : 'Types d\'entreprise',
+    deletedMessage: 'Suppression impossible car la selection comprend un élément affecté à une ou plusieurs entreprises',
+    deletedChildMessage: 'Suppression impossible car la selection est affectée à une ou plusieurs entreprises',
     collapsed : false,
     childCol : 12
   }

@@ -1,11 +1,11 @@
 <tf-portlet-body>
 
     <div class="row">
-        <div class="col-12">
-            <h5>
-                <span *ngIf="edit">Visité sécurité N°</span>
-                <span *ngIf="!edit">Nouvelle visite</span>
-            </h5>
+        <div class="col-12 mb-2">
+            <div class="tf-heading tf-heading--sm">
+                <span *ngIf="origin != 'add'">Visité sécurité N° {{visiteForm.get('code').value}}</span>
+                <span *ngIf="origin == 'add'">Nouvelle visite</span>
+			</div>
         </div>
         <div class="col-12">
             <form [formGroup]="visiteForm" autocomplete="off" class="tf-form tf-form--group-seperator-dashed " novalidate fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
