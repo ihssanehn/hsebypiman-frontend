@@ -8,6 +8,7 @@ import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EventEmitter } from '@angular/core';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'tf-search-chantier-form',
@@ -107,8 +108,25 @@ export class SearchChantierFormComponent implements OnInit {
 
   searchForChantier(){
     if(this.searchControl.value && this.searchControl.value.id){
-      this.initFilteredChantiers();
-      this.getChantier(this.searchControl.value.id);
+      if(!this.searchControl.value.is_all_ars_archived){
+        Swal.fire({
+          icon: 'warning',
+          title: 'Vous allez dupliquer cette Analyse de risque',
+          html: '<p class="text-warning"><b>L\'analyse de risque en cours sur ce chantier sera archivée</b></p><p>Voulez-vous continuer ?</p>',
+          showConfirmButton: true,
+          showCancelButton: true,
+          cancelButtonText: 'Annuler',
+          confirmButtonText: 'Confirmer'
+        }).then(async response => {
+          if (response.value) {
+            this.initFilteredChantiers();
+            this.getChantier(this.searchControl.value.id);
+          }
+        });
+      }else{
+        this.initFilteredChantiers();
+        this.getChantier(this.searchControl.value.id);
+      }
     }
   }
 

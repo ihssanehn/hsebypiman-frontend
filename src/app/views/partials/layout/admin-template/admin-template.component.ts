@@ -17,6 +17,8 @@ export class AdminTemplateComponent implements OnInit {
   
   tpl : any = {
     title : 'Titre',
+    deletedMessage: 'Suppression impossible car la selection contient un élément affecté à un élément',
+    deletedChildMessage: 'Suppression impossible car la selection est affectée à un élément',
     collapsed : false,
     childCol : 6
   }
@@ -27,6 +29,7 @@ export class AdminTemplateComponent implements OnInit {
 
   ngOnInit() {
     this.getList();
+
   }
 
   initChildren(item){
@@ -104,9 +107,9 @@ export class AdminTemplateComponent implements OnInit {
 
           Swal.fire({
             icon: 'error',
-            title: 'Impossible de supprimer cette ligne',
+            title: this.tpl.deletedMessage,
             showConfirmButton: false,
-            timer: 2000
+            timer: 3000
           });
   
         });
@@ -152,9 +155,9 @@ export class AdminTemplateComponent implements OnInit {
 
           Swal.fire({
             icon: 'error',
-            title: 'Impossible de supprimer cette ligne',
+            title: this.tpl.deletedChildMessage,
             showConfirmButton: false,
-            timer: 2000
+            timer: 3000
           });
   
         });

@@ -94,7 +94,7 @@
 
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef></th>
-        <td mat-cell *matCellDef="let visite"> 
+        <td mat-cell *matCellDef="let visite" class="text-right"> 
           <button mat-icon-button color="primary" matTooltip="Actions" [matMenuTriggerFor]="actionMenu" (click)="visite_id = visite.id">
             <mat-icon>more_vert</mat-icon>
           </button>

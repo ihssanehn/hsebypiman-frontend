@@ -17,6 +17,8 @@ export class ChantierHabilitationsAdminComponent extends AdminTemplateComponent 
 
   tpl : any = {
     title : 'Habilitations',
+    deletedMessage: 'Suppression impossible car la selection comprend un élément affecté dans des chantiers',
+    deletedChildMessage: 'Suppression impossible car la selection est affectée dans des chantiers',
     collapsed : false,
     childCol : 6
   }

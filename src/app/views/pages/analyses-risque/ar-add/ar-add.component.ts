@@ -362,15 +362,14 @@ export class ArAddComponent implements OnInit, OnDestroy {
 
       if(form.chantier_id)
       {
-        if(!this.chantier.is_all_ars_archived){
-          this.fireNotifBeforeSave(
-            form,
-            'Une autre analyse de risque est disponible et va être archivée.'
-          );
-        }else{
-          this.save(form);
-        }
-
+        // if(!this.chantier.is_all_ars_archived){
+        //   this.fireNotifBeforeSave(
+        //     form,
+        //     'Une autre analyse de risque est disponible et va être archivée.'
+        //   );
+        // }else{
+          // }
+        this.save(form);
       }else{
         Swal.fire({
           icon: 'error',
@@ -387,30 +386,7 @@ export class ArAddComponent implements OnInit, OnDestroy {
 
   }
 
-  fireNotifBeforeSave(form, message){
-    Swal.fire({
-      icon: 'warning',
-      title: 'Voulez vous vraiment créer une nouvelle analyse de risque ?',
-      text: message,
-      showConfirmButton: true,
-      showCancelButton: true,
-      cancelButtonText: 'Annuler',
-      confirmButtonText: 'Confirmer'
-    }).then(async response => {
-      if (response.value) {
-        try {
-          this.save(form);
-        } catch (e) {
-          Swal.fire({
-            icon: 'error',
-            title: 'Echec! une erreur est survenue',
-            showConfirmButton: false,
-            timer: 1500
-          });
-        }
-      }
-    });
-  }
+  
 
   fireNotifAfterSave(res:any){
     var code = res.message.code as SweetAlertIcon;

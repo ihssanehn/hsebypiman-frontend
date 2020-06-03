@@ -1,4 +1,4 @@
-import { Risque, Equipement, Zone, CatRisqueComment } from './';
+import { Risque, Equipement, Zone, CatRisqueComment, Chantier } from './';
 
 export class Ar {
     id?: number;
@@ -43,7 +43,7 @@ export class Ar {
     tel_charge_registre?: string;
     pays_charge_registre?: string;
     is_signed?: boolean;
-
+    chantier?: Chantier;
     zonesGrouped?:Array<any>;
     risksTree?:Array<any>;
 }

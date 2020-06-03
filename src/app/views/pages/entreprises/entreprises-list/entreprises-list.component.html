@@ -45,7 +45,7 @@
 
 				<ng-container matColumnDef="action" class="actionCol" stickyEnd>
 					<th mat-header-cell *matHeaderCellDef></th>
-					<td mat-cell *matCellDef="let entreprise">
+					<td mat-cell *matCellDef="let entreprise" class="text-right">
 
 						<div ngbDropdown placement="bottom-right" class="d-inline-block">
 							<button mat-icon-button color="primary" matTooltip="Actions" [matMenuTriggerFor]="actionMenu" (click)="entreprise_id = entreprise.id">

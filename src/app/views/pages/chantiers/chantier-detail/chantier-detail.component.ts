@@ -165,7 +165,21 @@ export class ChantierDetailComponent implements OnInit, OnDestroy {
 				timer: 4000
 			});
 		}else{
-			this.router.navigate(['analyses-risque/add'], {queryParams:{chantier_id:chantierId}})
+			if(!this.chantier.is_all_ars_archived){
+				Swal.fire({
+					icon: 'warning',
+					title: 'Vous allez créer une Analyse de risque',
+					html: '<p class="text-warning"><b>L\'analyse de risque en cours sur ce chantier sera archivée</b></p><p>Voulez-vous continuer ?</p>',
+					showConfirmButton: true,
+					showCancelButton: true,
+					cancelButtonText: 'Annuler',
+					confirmButtonText: 'Confirmer'
+				}).then(async response => {
+					if (response.value) {
+						this.router.navigate(['analyses-risque/add'], {queryParams:{chantier_id:chantierId}})
+					}
+				});
+			}
 		}
 	}
 }

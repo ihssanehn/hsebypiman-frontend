@@ -36,20 +36,33 @@ export class ArSignatureComponent extends ArDetailComponent implements OnInit {
     this.isDisableToggle = true;
     this.isExpanded = true;
     this.signaturesForm = this.fb.array([]);
+    var newForm = this.fb.group({
+      signable_id:[null],
+      date:[this.setDateFormat(new Date())],
+      personnel:[null],
+      personnel_id:[null],
+      signataire_fullname:[null, [Validators.required]],
+      entreprise_id:[null, [Validators.required]],
+      signature:[null, [Validators.required]],
+      commentaires:[null],
+      remarks:[null],
+    });
 
-    this.signaturesForm.insert(0, 
-      this.fb.group({
-        signable_id:[null],
-        date:[this.setDateFormat(new Date())],
-        personnel:[null],
-        personnel_id:[null],
-        signataire_fullname:[null],
-        entreprise_id:[null],
-        signature:[null, Validators.required],
-        commentaires:[null],
-        remarks:[null],
-      })
-    );
+    newForm.get('personnel_id').valueChanges.subscribe(x=>{
+      if(x){
+        newForm.controls['entreprise_id'].clearValidators();
+        newForm.controls['entreprise_id'].updateValueAndValidity();
+        newForm.controls['signataire_fullname'].clearValidators();
+        newForm.controls['signataire_fullname'].updateValueAndValidity();
+
+        this.cdr.detectChanges();
+        this.cdr.markForCheck();
+      }
+    })
+
+    this.signaturesForm.insert(0, newForm);
+
+    
     
     this.loaded = true;
 		this.cdr.detectChanges();
@@ -72,7 +85,6 @@ export class ArSignatureComponent extends ArDetailComponent implements OnInit {
 	}
 
   async onSubmit(event){
-
     try {
         let form = {...this.signaturesForm.getRawValue()};
         this.formStatus.onFormSubmitting();

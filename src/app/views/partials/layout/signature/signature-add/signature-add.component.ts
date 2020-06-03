@@ -49,7 +49,6 @@ export class SignatureAddComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
     this.getEntreprises();
     this.getCurrentUser();
 
@@ -82,8 +81,8 @@ export class SignatureAddComponent implements OnInit {
     var res = await this.authService.getUserByToken().toPromise();
     this.currentUser = res.result.data;
     if(!this.isSigned){
-      (this.signaturesForm as FormArray).controls[0].get('personnel_id').setValue(res.result.data.id);
-      (this.signaturesForm as FormArray ).controls[0].get('personnel').setValue(res.result.data);
+      (this.signaturesForm as FormArray).controls[0].get('personnel_id').setValue(res.result.data.id, {onlySelf: true, emitEvent: true });
+      (this.signaturesForm as FormArray ).controls[0].get('personnel').setValue(res.result.data, {onlySelf: true, emitEvent: true });
     }
     this.cdr.detectChanges();
     this.cdr.markForCheck();
@@ -110,9 +109,9 @@ export class SignatureAddComponent implements OnInit {
       date:[this.setDateFormat(new Date())],
       personnel:[null],
       personnel_id:[null],
-      signataire_fullname:[null],
+      signataire_fullname:[null, Validators.required],
       entreprise_id:[null, Validators.required],
-      signature:[null],
+      signature:[null, Validators.required],
       commentaires:[null],
       remarks:[null],
     });

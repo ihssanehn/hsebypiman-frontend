@@ -6,6 +6,7 @@ import { CatQuestion } from '@app/core/models';
 import { CatQuestionService } from '@app/core/services';
 import { first } from 'rxjs/operators';
 import { FakeApiService } from '@app/core/_base/layout/server/fake-api/fake-api.service';
+import moment from 'moment';
 
 
 @Component({
@@ -16,6 +17,7 @@ import { FakeApiService } from '@app/core/_base/layout/server/fake-api/fake-api.
 export class VsFormBodyComponent implements OnInit {
 
   catQuestionsList: CatQuestion[];
+  today;
 
   @Input() visiteForm: FormGroup;
   @Input() isDisableToggle: boolean;
@@ -34,6 +36,7 @@ export class VsFormBodyComponent implements OnInit {
 
   ngOnInit() {
     this.getCatQuestions();
+    this.today = moment().format('DD/MM/YYYY');
   }
 
   async getCatQuestions(){
@@ -164,4 +167,6 @@ export class VsFormBodyComponent implements OnInit {
     this.getPivot(i).get('date_remise_conf').setValue(null);
     this.getPivot(i).get('date_remise_conf').disable();
   }
+
+  
 }

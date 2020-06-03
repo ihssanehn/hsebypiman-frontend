@@ -14,18 +14,17 @@
                     <mat-label>{{'COMMON.DATE.LABEL' | translate}} </mat-label>
                     <p class="mt-2"><strong>{{signaturesForm.controls[i].value.date| date:'dd/MM/yyyy'}}</strong></p>
                 </div>
-
-                <div class="col-xl-2 " *ngIf="signaturesForm.controls[i].value.personnel">
+                <div class="col-xl-2 " *ngIf="signaturesForm.controls[i].controls['personnel'].value">
                     <mat-label>{{'COMMON.LASTNAME.LABEL' | translate}}&nbsp;{{'COMMON.FIRSTNAME.LABEL' | translate}} </mat-label>
-                    <p class="mt-2"><strong>{{signaturesForm.controls[i].value.personnel?.fullname}}</strong></p>
+                    <p class="mt-2"><strong>{{signaturesForm.controls[i].controls['personnel'].value?.fullname}}</strong></p>
                 </div>
 
-                <mat-form-field class="col-xl-2 " *ngIf="!signaturesForm.controls[i].value.personnel">
+                <mat-form-field class="col-xl-2 " *ngIf="!signaturesForm.controls[i].controls['personnel'].value">
                     <mat-label>{{'COMMON.LASTNAME.LABEL' | translate}}&nbsp;{{'COMMON.FIRSTNAME.LABEL' | translate}} </mat-label>
                     <input class="form-control" matInput type="text" name="signataire_fullname" formControlName="signataire_fullname" placeholder="Saisir ici" />
                 </mat-form-field>
 
-                <mat-form-field class="col-xl-2 ">
+                <mat-form-field class="col-xl-2 " *ngIf="!signaturesForm.controls[i].controls['personnel'].value">
                     <mat-label>{{'COMMON.SOCIETE.LABEL' | translate}} </mat-label>
                     <mat-select class="form-control" formControlName="entreprise_id" name="entreprise_id">
                         <mat-option *ngFor="let entreprise of entreprisesList" [value]="entreprise.id">
@@ -34,7 +33,7 @@
                     </mat-select>
                 </mat-form-field>
 
-                <mat-form-field class="col-xl-2 ">
+                <mat-form-field [ngClass]="signaturesForm.controls[i].controls['personnel'].value ? 'col-xl-4':'col-xl-2'">
                     <mat-label>{{'COMMON.REMARQUE.LABEL' | translate}} </mat-label>
                     <input class="form-control" matInput type="text" name="commentaires" formControlName="commentaires" placeholder="Saisir ici" />
                 </mat-form-field>

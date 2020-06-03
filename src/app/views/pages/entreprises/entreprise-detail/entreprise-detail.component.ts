@@ -24,10 +24,7 @@ export class EntrepriseDetailComponent implements OnInit, OnDestroy {
 	// allRoles: Role[];
 	loaded = false;
 	editMode: boolean = false;
-	displayedEEChantiersColumns = [
-		'number', 'name', 'client', 'status', 'charge_affaire', 
-		'date_demarrage', 'date_demarrage_ee', 'ca_ee'
-	];
+	displayedEEChantiersColumns: Array<any>;
 	// Private properties
 	private subscriptions: Subscription[] = [];
 
@@ -72,7 +69,21 @@ export class EntrepriseDetailComponent implements OnInit, OnDestroy {
 		try {
 			var res = await this.entrepriseService.get(entrepriseId).toPromise();
 			this.entreprise = res.result.data;
-			this.cdr.markForCheck();
+			if(this.entreprise.type.code == 'INTERIM'){
+				this.displayedEEChantiersColumns = [
+					'number', 'name', 'client', 'status', 'charge_affaire', 
+					'date_demarrage', 'date_demarrage_ee', 'interimaire'
+				];
+				this.cdr.markForCheck();
+
+			}else{
+				this.displayedEEChantiersColumns = [
+					'number', 'name', 'client', 'status', 'charge_affaire', 
+					'date_demarrage', 'date_demarrage_ee', 'ca_ee'
+				];
+				this.cdr.markForCheck();
+
+			}
 		} catch (error) {
 			console.error(error);
 		}
@@ -120,6 +131,9 @@ export class EntrepriseDetailComponent implements OnInit, OnDestroy {
 			showConfirmButton: false,
             timer: 1500
 		})
+	}
+	viewChantier(chantierId) {
+		this.router.navigateByUrl('chantiers/detail/' + chantierId);
 	}
 
 }

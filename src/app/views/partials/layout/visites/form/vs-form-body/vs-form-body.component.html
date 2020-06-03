@@ -5,24 +5,24 @@
 				<div class="row">
 					<div class="col-xl-4 st-group">
 						<span class="st-label">{{'VISITES.PRESENCE_NC.LABEL' | translate}}</span>
-						<mat-slide-toggle color="warn" formControlName="presence_non_conformite">
+						<mat-slide-toggle color="accent" formControlName="presence_non_conformite">
 						</mat-slide-toggle>
 					</div>
 					<div class="col-xl-4 st-group">
 						<span class="st-label">{{'VISITES.HAS_RECTIF.LABEL' | translate}}<br>{{'VISITES.HAS_RECTIF.LABEL_COMP' | translate}}</span>
-						<mat-slide-toggle color="warn" formControlName="has_rectification_imm">
+						<mat-slide-toggle color="accent" formControlName="has_rectification_imm">
 						</mat-slide-toggle>
 					</div>
 					<div class="col-xl-4 st-group">
 						<span class="st-label">{{'VISITES.AVERT.LABEL' | translate}}<br>{{'VISITES.AVERT.LABEL_COMP' | translate}}</span>
-						<mat-slide-toggle color="warn" formControlName="avertissement">
+						<mat-slide-toggle color="accent" formControlName="avertissement">
 						</mat-slide-toggle>
 					</div>
 				</div>
 				<div class="row mt-4">
-					<div class="col-4 text-center">Nbr de OK : <b>{{getNotes().ok}}</b></div>
-					<div class="col-4 text-center">Nbr de KO : <b>{{getNotes().ko}}</b></div>
-					<div class="col-4 text-center">Nbr de SO : <b>{{getNotes().so}}</b></div>
+					<div class="col-4 text-center">Nbr de <b>OK</b> : <b>{{getNotes().ok}}</b></div>
+					<div class="col-4 text-center">Nbr de <b>KO</b> : <b>{{getNotes().ko}}</b></div>
+					<div class="col-4 text-center">Nbr de <b>SO</b> : <b>{{getNotes().so}}</b></div>
 				</div>
 			</div>
 		</div>
@@ -58,14 +58,19 @@
 										</mat-radio-group>
 									</div>
 									<div class="col-3">
-										<textarea class="form-control" rows="2" formControlName="observation" *ngIf="!this.visiteForm.disabled; else observationValue"></textarea>
+										<textarea class="form-control" rows="2" formControlName="observation" *ngIf="!getPivot(question.id).get('observation').disabled; else observationValue"></textarea>
 										<ng-template #observationValue>
 											{{getPivotObs(question.id)}}
 										</ng-template>
 									</div>
 									<div class="col-2">
 										<div class="dropdown">
-											<input matInput *ngIf="origin == 'add'; else detailMode" class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" placeholder="DD/MM/YYYY" formControlName="date_remise_conf">
+											<ng-container *ngIf="origin == 'add'; else detailMode" >
+												<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" placeholder="DD/MM/YYYY" formControlName="date_remise_conf">
+												<a class="text-primary" (click)="getPivot(question.id).controls['date_remise_conf'].setValue(today)">
+													<i>date du jour</i>
+												</a>
+											</ng-container>
 											<ng-template #detailMode>
 												<div class="edit-date-block">
 													<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" placeholder="DD/MM/YYYY" formControlName="date_remise_conf">
@@ -79,6 +84,9 @@
 														<i nz-icon nzType="close" nzTheme="outline"></i>
 													</button>
 												</div>
+												<a class="text-primary"  *ngIf="!getPivot(question.id).get('date_remise_conf').disabled" (click)="getPivot(question.id).controls['date_remise_conf'].setValue(today)">
+													<i>date du jour</i>
+												</a>
 											</ng-template>
 										</div>
 									</div>

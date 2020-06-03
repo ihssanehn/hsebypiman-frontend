@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectorRef, Injector } from '@angular/core';
 import { ZoneService, TypeService } from '@app/core/services';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AdminTemplateComponent } from '@app/views/partials/layout/admin-template/admin-template.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ar-zones-admin',
@@ -17,6 +18,8 @@ export class ArZonesAdminComponent extends AdminTemplateComponent  implements On
 
   tpl : any = {
     title : 'Zones',
+    deletedMessage: 'Suppression impossible car la selection comprend un élément affecté dans des analyse de risque',
+    deletedChildMessage: 'Suppression impossible car la selection est affectée dans des analyse de risque',
     collapsed : true,
     childCol : 6
   }

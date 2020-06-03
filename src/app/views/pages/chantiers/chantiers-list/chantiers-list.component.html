@@ -144,7 +144,7 @@
 	
 				<ng-container matColumnDef="action" stickyEnd >
 					<th mat-header-cell *matHeaderCellDef></th>
-					<td mat-cell *matCellDef="let chantier">
+					<td mat-cell *matCellDef="let chantier" class="text-right">
 						<button mat-icon-button color="primary" matTooltip="Actions" [matMenuTriggerFor]="actionMenu" [matMenuTriggerData]="chantier" (click)="selectedChantier = chantier">
 							<mat-icon>more_vert</mat-icon>
 						</button>

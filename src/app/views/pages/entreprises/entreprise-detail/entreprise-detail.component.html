@@ -99,9 +99,18 @@
                       <td mat-cell *matCellDef="let chantier" (click)="viewChantier(chantier.id)" class="text-center pointer"> {{chantier.pivot.date_demarrage | date:'dd/MM/yyyy'}} </td>
                     </ng-container>
                     <!-- ca_ee Column -->
-                    <ng-container matColumnDef="ca_ee">
+                    <ng-container matColumnDef="ca_ee" >
                       <th mat-header-cell *matHeaderCellDef class="text-center">{{'EES.CA.SHORTTITLE' | translate}} de l'EE</th>
                       <td mat-cell *matCellDef="let chantier" (click)="viewChantier(chantier.id)" class="text-center pointer"> {{chantier.pivot.chiffre_affaire | currency:'EUR':'€'}} </td>
+                    </ng-container>
+                    <!-- ca_ee Column -->
+                    <ng-container matColumnDef="interimaire" >
+                      <th mat-header-cell *matHeaderCellDef class="text-center">{{'EES.INTERIMAIRE.SHORTTITLE' | translate}}</th>
+                      <td mat-cell *matCellDef="let chantier" (click)="viewChantier(chantier.id)" class="text-center pointer">
+                        <div [matTooltipClass]="'custom-tooltip'" matTooltip="{{chantier.pivot.interimaire | fullName}}" [matTooltipShowDelay]="'100'" [matTooltipHideDelay]="'100'" [matTooltipPosition]="'above'">
+                          {{chantier.pivot.interimaire?.trigramme}}
+                        </div>
+                      </td>
                     </ng-container>
   
                     <tr mat-header-row *matHeaderRowDef="displayedEEChantiersColumns"></tr>

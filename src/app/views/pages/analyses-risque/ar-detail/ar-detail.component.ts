@@ -60,7 +60,7 @@ export class ArDetailComponent implements OnInit, OnDestroy {
 		try {
 			var res = await this.arService.get(arId).toPromise();
 			this.ar = res.result.data;
-			this.getChantier(this.ar.chantier_id);
+			// this.getChantier(this.ar.chantier_id);
 			this.cdr.markForCheck();
 		} catch (error) {
 			console.error(error);
@@ -109,19 +109,22 @@ export class ArDetailComponent implements OnInit, OnDestroy {
 		this.router.navigate(['/analyses-risque/sign', arId], { relativeTo: this.activatedRoute });
 	}
 
-	duplicateAr(arId){
-		Swal.fire({
-			icon: 'warning',
-			title: 'Êtes vous sur de vouloir archiver la dernière analyse de risque de ce chantier ?',
-			showConfirmButton: true,
-			showCancelButton: true,
-			cancelButtonText: 'Annuler',
-			confirmButtonText: 'Confirmer'
-		}).then(async response => {
-			if (response.value) {
-				this.router.navigate(['analyses-risque/add'], {queryParams:{ar_id:arId}})
-			}
-		});
+	duplicateAr(){
+		if(!this.ar.chantier.is_all_ars_archived){
+			Swal.fire({
+				icon: 'warning',
+				title: 'Vous allez dupliquer cette Analyse de risque',
+				html: '<p class="text-warning"><b>L\'analyse de risque en cours sur ce chantier sera archivée</b></p><p>Voulez-vous continuer ?</p>',
+				showConfirmButton: true,
+				showCancelButton: true,
+				cancelButtonText: 'Annuler',
+				confirmButtonText: 'Confirmer'
+			}).then(async response => {
+				if (response.value) {
+					this.router.navigate(['analyses-risque/add'], {queryParams:{ar_id:this.ar.id}})
+				}
+			});
+		}
 	}
 
 }
