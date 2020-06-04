@@ -124,6 +124,10 @@
     padding-left: 0;
     font-size: 1em;
 }
+.mat-form-field .mat-select.mat-select-disabled.disabled-no-arrow .mat-select-arrow {
+    color: rgba(0, 0, 0, 0);
+}
+
 .mat-input-element{
     font-size: 1em;
 }

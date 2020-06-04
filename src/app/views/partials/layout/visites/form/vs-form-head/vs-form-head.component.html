@@ -5,6 +5,9 @@
             <div class="tf-heading tf-heading--sm">
                 <span *ngIf="origin != 'add'">Visité sécurité N° {{visiteForm.get('code').value}}</span>
                 <span *ngIf="origin == 'add'">Nouvelle visite</span>
+                <span class="date-visite pull-right">
+                    Date de visite : {{visiteForm.get('date_visite').value}}
+                </span>
 			</div>
         </div>
         <div class="col-12">
@@ -66,7 +69,7 @@
                                 <!-- SALARIE -->
                                 <mat-form-field class="col-xl-3">
                                     <mat-label>{{'VISITES.REDACTEUR.LABEL' | translate}}</mat-label>
-                                    <mat-select class="form-control" placeholder="" formControlName="redacteur_id" [required]="isFieldRequired('redacteur_id')">
+                                    <mat-select class="form-control disabled-no-arrow" placeholder="" formControlName="redacteur_id" [required]="isFieldRequired('redacteur_id')">
                                         <mat-option *ngFor="let user of users" [value]="user.id">
                                             {{ user | fullName }}
                                         </mat-option>
