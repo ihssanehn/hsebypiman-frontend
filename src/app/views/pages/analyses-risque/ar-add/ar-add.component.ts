@@ -73,6 +73,7 @@ export class ArAddComponent implements OnInit, OnDestroy {
     .subscribe(
       async params => {
         const id = params.ar_id;
+        const chantier_id = params.chantier_id;
         if(id){
           this.arService
           .get(id)
@@ -89,6 +90,24 @@ export class ArAddComponent implements OnInit, OnDestroy {
          )
           .subscribe( async res => {
             this.ar = res.result.data;
+            this.loaded = true;
+            this.cdr.detectChanges();
+            this.cdr.markForCheck();
+          });
+        }else if(chantier_id){
+          this.chantierService.get(chantier_id)
+          .pipe(
+            tap(
+              res => {
+                this.ar = new Ar();
+              }
+            )
+          )
+          .subscribe( async res => {
+            this.chantier = res.result.data;
+            this.ar.chantier_id = this.chantier.id;
+            this.ar.chantier = this.chantier;
+            this.arForm.patchValue(this.ar);
             this.loaded = true;
             this.cdr.detectChanges();
             this.cdr.markForCheck();
