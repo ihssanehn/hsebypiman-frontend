@@ -27,7 +27,7 @@ export class ChantiersListComponent implements OnInit, AfterViewInit {
 		per_page: this.pagination.pageSize,
 		page: this.pagination.page,
 		order_by: ['created_at'],
-		order_way: 'asc',
+		order_way: 'desc',
 		keyword: "",
 	};
 	showFilters:Boolean = false;
