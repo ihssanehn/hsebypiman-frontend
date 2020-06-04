@@ -38,12 +38,12 @@
 					<div class="col-12">
 						<div class="tf-card-form">
 							<div class="row mb-2">
-								<div class="col-5">Question</div>
-								<div class="col-2 text-center">Note</div>
+								<div class="col-4">Question</div>
+								<div class="col-3 text-center">Note</div>
 								<div class="col-3">Commentaire</div>
 								<div class="col-2">Date de mise en conformité</div>
 							</div>
-							<div class="row align-items-center" *ngFor="let question of catQuestion.questions; let j = index " [ngClass]="{'text-danger':getPivot(question.id).invalid}">
+							<div class="row align-items-center" *ngFor="let question of catQuestion.questions; let j = index; let last = last" [ngClass]="{'text-danger':getPivot(question.id).invalid}">
 								<ng-container [formGroup]="getPivot(question.id)" >
 									<div class="col-5">
 										<span class="p2-pl-12">
@@ -91,6 +91,11 @@
 										</div>
 									</div>
 								</ng-container>
+								<div class="col-12 my-2">
+									<div class="tf-divider" *ngIf="!last">
+										<span></span>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
