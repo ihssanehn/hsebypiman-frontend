@@ -21,7 +21,7 @@
 				</div>
 			</div>
 		</div>
-		<tf-search-chantier-form [data]="visite.chantier" origin="detail" ></tf-search-chantier-form>
+		<tf-search-chantier-form [parent]="'vs'" [data]="visite.chantier" origin="detail" ></tf-search-chantier-form>
 		<div class="tf-divider" *ngIf="visiteForm.get('chantier_id').value">
 			<span></span>
 		</div>

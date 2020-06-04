@@ -75,7 +75,8 @@ export class ArSignatureComponent extends ArDetailComponent implements OnInit {
       if(this.ar.status.code == "ARCHIV"){
         this.goBack();
       }else{
-        this.getChantier(this.ar.chantier_id);
+        this.chantier = this.ar.chantier
+        // this.getChantier(this.ar.chantier_id);
         this.createForm();
         this.cdr.markForCheck();
       }

@@ -60,6 +60,7 @@ export class ArDetailComponent implements OnInit, OnDestroy {
 		try {
 			var res = await this.arService.get(arId).toPromise();
 			this.ar = res.result.data;
+			this.chantier = this.ar.chantier
 			// this.getChantier(this.ar.chantier_id);
 			this.cdr.markForCheck();
 		} catch (error) {

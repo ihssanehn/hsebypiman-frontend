@@ -7,7 +7,7 @@
 				<span class="id-item">{{'MENU.SUB_VISITESECURITE.EDIT' | translate}}</span>
 			</span>
 		</div>
-		<tf-search-chantier-form [form]="visiteForm" origin="edit"></tf-search-chantier-form>
+		<tf-search-chantier-form [parent]="'vs'" [form]="visiteForm" origin="edit"></tf-search-chantier-form>
 		<div class="tf-divider" *ngIf="visiteForm.get('chantier_id').value">
 			<span></span>
 		</div>

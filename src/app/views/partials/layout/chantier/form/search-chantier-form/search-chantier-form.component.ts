@@ -18,6 +18,7 @@ import Swal from 'sweetalert2';
 export class SearchChantierFormComponent implements OnInit {
 
   @Input() form: FormGroup;
+  @Input() parent: string;
   @Input() origin: string;
   
   private _data = new BehaviorSubject<Chantier>(null);
@@ -52,23 +53,14 @@ export class SearchChantierFormComponent implements OnInit {
 
   ngOnInit() {
     this.initFilteredChantiers();
-    
-    if(this.origin == 'edit'){
-      if(this.form.get('chantier_id').value){
-        this.getChantier(this.form.get('chantier_id').value);
-      }
-    }else{
-      if(this.origin == 'detail'){
-        this._data
-          .subscribe(x => {
-            if(this.data)
-            this.getChantier(this.data.id);
-        });
-      }else{
-        if(this.origin == 'add'){
-          if(this.form.get('chantier_id').value){
-            this.getChantier(this.form.get('chantier_id').value);
-          }
+
+    switch(this.origin){
+      case 'add':
+        if(this.form.get('chantier').value){
+          this.chantier = this.form.get('chantier').value
+          this.origin = 'edit';
+        }else if(this.form.get('chantier_id').value){
+          this.getChantier(this.form.get('chantier_id').value);
           this.activatedRoute.queryParams
           .subscribe(params => {
             if(params.chantier_id){
@@ -77,7 +69,20 @@ export class SearchChantierFormComponent implements OnInit {
             }
           });
         }
-      }
+        break;
+      case 'edit':
+        if(this.form.get('chantier').value){
+          this.chantier = this.form.get('chantier').value
+        }else if(this.form.get('chantier_id').value){
+          this.getChantier(this.form.get('chantier_id').value);
+        }
+        break;
+      case 'detail':
+        this._data.subscribe(x => {
+          if(this.data)
+          this.chantier = this.data;
+        });
+        break;
     }
 
   }
@@ -108,7 +113,7 @@ export class SearchChantierFormComponent implements OnInit {
 
   searchForChantier(){
     if(this.searchControl.value && this.searchControl.value.id){
-      if(!this.searchControl.value.is_all_ars_archived){
+      if(!this.searchControl.value.is_all_ars_archived && this.parent == "ar"){
         Swal.fire({
           icon: 'warning',
           title: 'Vous allez dupliquer cette Analyse de risque',
