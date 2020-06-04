@@ -93,6 +93,7 @@ export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 			'id': [{value: null, disabled: true}, Validators.required],
 			'code': [{value:null, disabled:true}],
 			'chantier_id': [{value:null, disabled:true}, Validators.required],
+			'chantier': [''],
 			'salarie_id': [{value: null, disabled: true}, Validators.required],
 			'entreprise_id': [{value: null, disabled: true}, Validators.required],
 			'redacteur_id': [{value: null, disabled: true}, Validators.required],

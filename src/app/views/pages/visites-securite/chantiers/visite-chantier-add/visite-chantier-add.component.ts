@@ -64,6 +64,7 @@ export class VisiteChantierAddComponent implements OnInit {
   createForm() {
 		this.visiteForm = this.visiteFB.group({
       'chantier_id': ['', Validators.required],
+      'chantier': [''],
       'salarie_id': [{value:null, disabled:false}, Validators.required],
       'entreprise_id': [{value:null, disabled:false}, Validators.required],
       'redacteur_id': [{value:null, disabled:true}, Validators.required],
