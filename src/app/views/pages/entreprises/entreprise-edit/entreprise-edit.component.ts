@@ -29,6 +29,7 @@ export class EntrepriseEditComponent implements OnInit, OnDestroy {
 	entreprise: Entreprise;
 	// allRoles: Role[];
 	loaded: boolean = false;
+	formloading: boolean = false;
 	editMode: boolean = false;
 	// Private properties
 	private subscriptions: Subscription[] = [];
@@ -125,6 +126,7 @@ export class EntrepriseEditComponent implements OnInit, OnDestroy {
 
 	async onSubmit(event) {
 		try {
+			this.formloading = true;
 			this.formStatus.onFormSubmitting();
 			let form = {...this.entrepriseForm.getRawValue()};
 			form.id = this.entreprise.id;
@@ -132,6 +134,7 @@ export class EntrepriseEditComponent implements OnInit, OnDestroy {
 			this.entrepriseService.update(form)
 				.toPromise()
 				.then((entreprise) => {
+					this.formloading = false;
 					this.cdr.markForCheck();
 
 					Swal.fire({
@@ -144,6 +147,7 @@ export class EntrepriseEditComponent implements OnInit, OnDestroy {
 					});
 				})
 				.catch(err => {
+					this.formloading = false;
 
 					Swal.fire({
 						icon: 'error',
@@ -163,6 +167,7 @@ export class EntrepriseEditComponent implements OnInit, OnDestroy {
 
 			this.cdr.markForCheck();
 		} catch (error) {
+			this.formloading = false;
 			console.error(error);
 			throw error;
 		}

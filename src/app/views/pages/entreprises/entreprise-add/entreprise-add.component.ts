@@ -24,6 +24,7 @@ export class EntrepriseAddComponent implements OnInit {
   entreprise: Entreprise;
   entrepriseForm: FormGroup;
   formStatus = new FormStatus();
+  formloading: Boolean = false;
 	// allRoles: Role[];
 	loaded = false;
 	editMode: boolean = false;
@@ -71,12 +72,14 @@ export class EntrepriseAddComponent implements OnInit {
   async onSubmit(){
     try {
       let result;
+      this.formloading = true;
       let form = {...this.entrepriseForm.getRawValue()};
       this.formStatus.onFormSubmitting();
   
 			this.entrepriseService.create(form)
         .toPromise()
         .then((res) => {
+          this.formloading = false;
           this.errors = false; 
           this.cdr.markForCheck();
           var entreprise = res.result.data;
@@ -90,6 +93,7 @@ export class EntrepriseAddComponent implements OnInit {
           });
         })
         .catch(err =>{ 
+          this.formloading = false;
 
           Swal.fire({
             icon: 'error',
@@ -109,7 +113,8 @@ export class EntrepriseAddComponent implements OnInit {
         
       this.cdr.markForCheck();
     } catch (error) {
-        console.error(error);
+      this.formloading = false;
+      console.error(error);
       throw error;
     }
 

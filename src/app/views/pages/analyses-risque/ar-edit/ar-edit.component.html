@@ -16,7 +16,7 @@
 	<tf-ar-form [arForm]="arForm" [formStatus]="formStatus" [edit]="true" origin="edit"></tf-ar-form>
 	
 
-	<button mat-raised-button [disabled]="arForm.invalid" class="btn float-right btn-save" (click)="arForm.valid && onSubmit(false)">
+	<button mat-raised-button [ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': formloading}" [disabled]="formloading || arForm.invalid" class="btn float-right btn-save" (click)="arForm.valid && onSubmit(false)">
 		{{'ACTION.SAVE' | translate}}
 	</button>
 

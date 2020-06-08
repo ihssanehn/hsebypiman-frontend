@@ -32,6 +32,7 @@ export class ChantierFormComponent implements OnInit {
   @Input() chantierForm: FormGroup;
   @Input() formStatus: FormStatus;
   @Input() edit: Boolean;
+  @Input() formloading: Boolean;
   @Output() onCancel = new EventEmitter();
   @Output() onSubmit = new EventEmitter();
   constructor(

@@ -18,6 +18,7 @@ export class ArSignatureComponent extends ArDetailComponent implements OnInit {
   signaturesForm: FormArray;
 
   formStatus = new FormStatus();
+  formloading: boolean= false;
 
   private fb: FormBuilder;
   
@@ -87,6 +88,7 @@ export class ArSignatureComponent extends ArDetailComponent implements OnInit {
 
   async onSubmit(event){
     try {
+      this.formloading = true;
         let form = {...this.signaturesForm.getRawValue()};
         this.formStatus.onFormSubmitting();
 
@@ -94,6 +96,7 @@ export class ArSignatureComponent extends ArDetailComponent implements OnInit {
           .toPromise()
           .then((signature) => {
             this.cdr.markForCheck();
+            this.formloading = false;
             
             Swal.fire({
               icon: 'success',
@@ -106,6 +109,7 @@ export class ArSignatureComponent extends ArDetailComponent implements OnInit {
           })
           .catch(err =>{ 
 
+            this.formloading = false;
             Swal.fire({
               icon: 'error',
               title: 'Echec! le formulaire est incomplet',

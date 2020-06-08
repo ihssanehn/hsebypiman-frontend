@@ -28,6 +28,7 @@ export class VisiteChantierAddComponent implements OnInit {
   formStatus = new FormStatus();
   loaded = false;
   invalid = [];
+  formloading: boolean = false;
   editMode: boolean = false;
   chantier: Chantier;
   currentUser: User;
@@ -130,6 +131,7 @@ export class VisiteChantierAddComponent implements OnInit {
 
   async onSubmit(event){
     try {
+      this.formloading = true;
       let form = {...this.visiteForm.getRawValue()};
       this.formStatus.onFormSubmitting();
       this.parseDates(form);
@@ -137,6 +139,7 @@ export class VisiteChantierAddComponent implements OnInit {
       this.visiteService.create(form)
         .toPromise()
         .then((visite) => {
+          this.formloading = false;
           this.cdr.markForCheck();
           
           Swal.fire({
@@ -149,6 +152,7 @@ export class VisiteChantierAddComponent implements OnInit {
           });
         })
         .catch(err =>{ 
+          this.formloading = false;
 
           Swal.fire({
             icon: 'error',
@@ -168,6 +172,7 @@ export class VisiteChantierAddComponent implements OnInit {
         
       this.cdr.markForCheck();
     } catch (error) {
+      this.formloading = false;
       console.error(error);
       throw error;
     }

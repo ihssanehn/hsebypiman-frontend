@@ -28,6 +28,7 @@ export class ArEditComponent implements OnInit, OnDestroy {
   	public ar: Ar;
 	arForm: FormGroup;
   	formStatus = new FormStatus();
+	formloading: boolean= false;
 	// allRoles: Role[];
 	loaded = false;
 	editMode: boolean = false;
@@ -348,6 +349,8 @@ export class ArEditComponent implements OnInit, OnDestroy {
 
 			if(form.chantier_id)
 			{
+				
+  				this.formloading=true;
 				form.date_accueil_secu = this.dateFrToEnPipe.transform(form.date_accueil_secu);
 				form.date_validite = this.dateFrToEnPipe.transform(form.date_validite);
 				form.id = this.ar.id;
@@ -356,7 +359,7 @@ export class ArEditComponent implements OnInit, OnDestroy {
 					.toPromise()
 					.then((ar) => {
 						this.cdr.markForCheck();
-
+						this.formloading=false;
 						Swal.fire({
 							icon: 'success',
 							title: 'Analyse de risque mis à jour avec succès',
@@ -367,7 +370,7 @@ export class ArEditComponent implements OnInit, OnDestroy {
 						});
 					})
 					.catch(err => {
-
+						this.formloading=false;
 						Swal.fire({
 							icon: 'error',
 							title: 'Echec! le formulaire est incomplet',
@@ -388,6 +391,8 @@ export class ArEditComponent implements OnInit, OnDestroy {
 				this.cdr.markForCheck();
 
 			}else{
+				
+				this.formloading = false;
 				Swal.fire({
 				icon: 'error',
 				title: 'Echec! Veuillez sélectionner un chantier',
@@ -397,6 +402,8 @@ export class ArEditComponent implements OnInit, OnDestroy {
 			}
 
 		} catch (error) {
+			
+			this.formloading = false;
 			console.error(error);
 			throw error;
 		}

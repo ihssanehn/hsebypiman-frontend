@@ -27,6 +27,7 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 	chantierForm: FormGroup;
 	chantier: Chantier;
   	formStatus = new FormStatus();
+	formloading: boolean = false;
 	// allRoles: Role[];
 	loaded: boolean = false;
 	editMode: boolean = false;
@@ -202,11 +203,15 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 	}
 	
 	saveForm(form){
+		
+        this.formloading = true;
 		this.parseChantierDate(form, 'FrToEn');
 		form.id = this.chantier.id;
 		this.chantierService.update(form)
 			.toPromise()
 			.then((res) => {
+				
+				this.formloading = false;
 				var code = res.message.code as SweetAlertIcon;
 				var message = res.message.content != 'done' ? '<b class="text-'+code+'">'+res.message.content+'</b>' : null; 
 				Swal.fire({
@@ -221,6 +226,8 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 				this.cdr.markForCheck();
 			})
 			.catch(err => {
+				
+				this.formloading = false;
 				Swal.fire({
 					icon: 'error',
 					title: 'Echec! le formulaire est incomplet',
@@ -239,6 +246,7 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 	}
 
 	async onSubmit(event) {
+		
 		this.formStatus.onFormSubmitting();
 		let form = {...this.chantierForm.getRawValue()};
 		if(form.status_id != this.chantier.status_id && this.chantier.status.code == 'ENCOURS' && !this.chantier.is_all_ars_archived){

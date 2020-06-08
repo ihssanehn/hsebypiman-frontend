@@ -31,6 +31,7 @@ export class ArAddComponent implements OnInit, OnDestroy {
   chantier: Chantier;
   arForm: FormGroup
   formStatus = new FormStatus();
+  formloading: boolean= false;
   types: Type[];
   users: User[];
   params: Param[];
@@ -379,7 +380,7 @@ export class ArAddComponent implements OnInit, OnDestroy {
     try {
       this.formStatus.onFormSubmitting();
       let form = {...this.arForm.getRawValue()};
-
+      
       if(form.chantier_id)
       {
         // if(!this.chantier.is_all_ars_archived){
@@ -424,6 +425,8 @@ export class ArAddComponent implements OnInit, OnDestroy {
   }
 
   async save(form){
+    
+    this.formloading = true;
     form.date_accueil_secu = this.dateFrToEnPipe.transform(form.date_accueil_secu);
     form.date_validite = this.dateFrToEnPipe.transform(form.date_validite);
 
@@ -431,11 +434,14 @@ export class ArAddComponent implements OnInit, OnDestroy {
       .toPromise()
       .then((res:any) => {
         console.log(res);
+        
+        this.formloading = false;
         this.cdr.markForCheck();
         this.fireNotifAfterSave(res)
       })
       .catch(err =>{ 
 
+        this.formloading = false;
         Swal.fire({
           icon: 'error',
           title: 'Echec! le formulaire est incomplet',

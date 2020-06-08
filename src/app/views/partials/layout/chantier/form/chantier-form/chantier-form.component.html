@@ -241,7 +241,7 @@
 			</div>
 		</ng-container>
 		<div>
-			<button mat-raised-button [disabled]="chantierForm.invalid" color="success" class="pull-right">
+			<button mat-raised-button [disabled]="formloading || chantierForm.invalid" [ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': formloading}" color="success" class="pull-right">
 				{{'ACTION.SAVE' | translate}}
 			</button>
 			<button type="button" mat-raised-button color="info" (click)="cancelForm()">

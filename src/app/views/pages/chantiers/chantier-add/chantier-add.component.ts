@@ -24,6 +24,7 @@ export class ChantierAddComponent implements OnInit {
   
   chantier: Chantier;
   chantierForm: FormGroup;
+  formloading: boolean = false;
 	// allRoles: Role[];
 	loaded = false;
 	editMode: boolean = false;
@@ -81,6 +82,8 @@ export class ChantierAddComponent implements OnInit {
   }
   
   async onSubmit(){
+    
+    this.formloading=true;
     this.formStatus.onFormSubmitting();
     this.cdr.detectChanges();
     this.cdr.markForCheck();
@@ -95,6 +98,7 @@ export class ChantierAddComponent implements OnInit {
         
         this.cdr.markForCheck();
         var chantier = res.result.data;
+        this.formloading=false;
         Swal.fire({
           icon: 'success',
           title: 'Chantier créé avec succès',
@@ -105,7 +109,8 @@ export class ChantierAddComponent implements OnInit {
         });
       })
       .catch(err =>{ 
-
+        
+        this.formloading=false;
         Swal.fire({
           icon: 'error',
           title: 'Echec! le formulaire est incomplet',

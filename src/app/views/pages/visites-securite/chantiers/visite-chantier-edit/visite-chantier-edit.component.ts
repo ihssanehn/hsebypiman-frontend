@@ -28,6 +28,7 @@ export class VisiteChantierEditComponent implements OnInit, OnDestroy {
   formStatus = new FormStatus();
   loaded = false;
   invalid = [];
+  formloading: boolean = false;
   editMode: boolean = false;
   chantier: Chantier;
   currentUser: User;
@@ -195,6 +196,7 @@ export class VisiteChantierEditComponent implements OnInit, OnDestroy {
 
   async onSubmit(event){
     try {
+      this.formloading = true;
       let form = {...this.visiteForm.getRawValue()};
       this.formStatus.onFormSubmitting();
       this.parseVisitesDate(form, 'FrToEn');
@@ -202,6 +204,7 @@ export class VisiteChantierEditComponent implements OnInit, OnDestroy {
       this.visiteService.update(form)
         .toPromise()
         .then((visite) => {
+          this.formloading = false;
           this.cdr.markForCheck();
           
           Swal.fire({
@@ -214,6 +217,7 @@ export class VisiteChantierEditComponent implements OnInit, OnDestroy {
           });
         })
         .catch(err =>{ 
+          this.formloading = false;
 
           Swal.fire({
             icon: 'error',
@@ -233,6 +237,7 @@ export class VisiteChantierEditComponent implements OnInit, OnDestroy {
         
       this.cdr.markForCheck();
     } catch (error) {
+      this.formloading = false;
       console.error(error);
       throw error;
     }

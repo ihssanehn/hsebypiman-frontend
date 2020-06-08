@@ -67,7 +67,7 @@
                     </div>
                 </div>
             
-                <button mat-raised-button [disabled]="signaturesForm?.invalid" class="btn float-right btn-save" (click)="signaturesForm?.valid && onSubmit(false)">
+                <button mat-raised-button [ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': formloading}" [disabled]="formloading || signaturesForm?.invalid" class="btn float-right btn-save" (click)="signaturesForm?.valid && onSubmit(false)">
                     {{'ACTION.SAVE' | translate}}
                 </button>
 

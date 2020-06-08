@@ -10,7 +10,7 @@
 		<tf-entreprise-form [entrepriseForm]="entrepriseForm" [formStatus]="formStatus" [edit]="false"></tf-entreprise-form>
 	</tf-portlet>
 	<div>
-		<button mat-raised-button [disabled]="entrepriseForm.invalid" color="success" class="pull-right">
+		<button mat-raised-button [ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': formloading}" [disabled]="formloading || entrepriseForm.invalid" color="success" class="pull-right">
 			{{'ACTION.SAVE' | translate}}
 		</button>
 		<button type="button" mat-raised-button color="info" (click)="onCancel()">
