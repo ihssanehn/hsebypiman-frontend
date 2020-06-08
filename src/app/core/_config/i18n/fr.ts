@@ -517,6 +517,16 @@ export const locale = {
 				TITLE:'Nom du chantier',
 				SHORTTITLE: 'Nom'
 			},
+			VEHICULE:{
+				LABEL:'Nom de vehicule',
+				TITLE:'Nom de vehicule',
+				SHORTTITLE: 'Nom'
+			},
+			MARQUE:{
+				LABEL:'Marque de vehicule',
+				TITLE:'Marque de vehicule',
+				SHORTTITLE: 'Marque'
+			},
 			ENTREPRISE:{
 				LABEL:'Entreprise visitée',
 				TITLE:'Entreprise visitée',

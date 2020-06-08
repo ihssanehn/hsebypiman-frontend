@@ -43,7 +43,7 @@ const routes: Routes = [
 			},
 			{
 				path: 'list',
-				component: VisitesVehiculeComponent
+				component: VisitesVehiculeListComponent
 			},
 			{
 				path: 'detail/:id',
