@@ -34,7 +34,7 @@ export class VisitesVehiculeListComponent implements OnInit {
 		status_id: "",
 		params: []
 	};
-	displayedVisiteColumns = ['code','vehicule', 'client','type', 'redacteur', 'visite', 'date_visite', 'ko_solved_count', 'ko_unsolved_count', 'action'];
+	displayedVisiteColumns = ['code','vehicule', 'marque','type', 'redacteur', 'visite', 'date_visite', 'ko_solved_count', 'ko_unsolved_count', 'action'];
 
 
 	constructor(
