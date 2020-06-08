@@ -24,6 +24,8 @@ import { VisitesChantierListComponent } from './visites-chantier-list/visites-ch
 import { VisiteChantierEditComponent } from './visite-chantier-edit/visite-chantier-edit.component';
 import { VisiteChantierAddComponent } from './visite-chantier-add/visite-chantier-add.component';
 import { VisiteChantierDetailComponent } from './visite-chantier-detail/visite-chantier-detail.component';
+import { VisiteChantierAdminComponent } from './visite-chantier-admin/visite-chantier-admin.component';
+import { VisiteQuestionsChantierAdminComponent } from './visite-chantier-admin/visite-questions-chantier-admin/visite-questions-chantier-admin.component';
 import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxMaskModule } from 'ngx-mask';
 
@@ -64,6 +66,10 @@ const routes: Routes = [
 			{
 				path: 'edit/:id',
 				component: VisiteChantierEditComponent
+			},
+			{
+				path: 'admin',
+				component: VisiteChantierAdminComponent
 			},
 		]
 	}
@@ -139,7 +145,9 @@ const routes: Routes = [
 		VisiteChantierEditComponent,
 		VisiteChantierAddComponent,
 		VisiteChantierFiltersComponent,
-		VisiteChantierDetailComponent
+		VisiteChantierDetailComponent,
+		VisiteChantierAdminComponent,
+		VisiteQuestionsChantierAdminComponent
 	]
 })
 export class VisitesChantierModule {}

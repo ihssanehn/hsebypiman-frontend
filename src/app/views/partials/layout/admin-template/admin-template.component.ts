@@ -20,7 +20,7 @@ export class AdminTemplateComponent implements OnInit {
     deletedMessage: 'Suppression impossible car la selection contient un élément affecté à un élément',
     deletedChildMessage: 'Suppression impossible car la selection est affectée à un élément',
     collapsed : false,
-    childCol : 6
+    childCol : 6,
   }
 
   list: any[];
@@ -29,7 +29,6 @@ export class AdminTemplateComponent implements OnInit {
 
   ngOnInit() {
     this.getList();
-
   }
 
   initChildren(item){
@@ -39,9 +38,9 @@ export class AdminTemplateComponent implements OnInit {
 
   formatChildren(item){}
 
-  async getList(){
+  async getList(params = {}){
     try {
-      var res = await this.parentService.getAllAsAdmin().toPromise();
+      var res = await this.parentService.getAllAsAdmin(params).toPromise();
       this.list = res.result.data.map( item => this.formatChildren(item) );
       this.cdr.markForCheck();
 		} catch (error) {
@@ -183,5 +182,5 @@ export class AdminTemplateComponent implements OnInit {
   generateParentOrdre(){
     return this.list.length
   }
-  
+
 }

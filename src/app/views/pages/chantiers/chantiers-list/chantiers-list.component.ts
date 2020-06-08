@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef, AfterViewInit, ElementRef, Input, AfterContentInit, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef, AfterViewInit, OnDestroy, Input, AfterContentInit, ViewChildren, QueryList } from '@angular/core';
 import { ChantierService } from '@app/core/services';
 import { Paginate } from '@app/core/_base/layout/models/paginate.model';
 import { Chantier } from '@app/core/models';
@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 	templateUrl: './chantiers-list.component.html',
 	styleUrls: ['./chantiers-list.component.scss']
 })
-export class ChantiersListComponent implements OnInit, AfterViewInit {
+export class ChantiersListComponent implements OnInit, AfterViewInit, OnDestroy {
 
 	public chantiersList: Paginate < Chantier > ;
 	selectedChantier: Chantier;
@@ -55,6 +55,11 @@ export class ChantiersListComponent implements OnInit, AfterViewInit {
 		this.getChantiers();
 	}
 
+
+	ngOnDestroy(){
+		this.cdr.detach();
+	}
+
 	async getChantiers() {
 		try {
 			var res = await this.chantierService.getAll(this.filter).toPromise();
@@ -67,13 +72,15 @@ export class ChantiersListComponent implements OnInit, AfterViewInit {
 			};
 			this.filter.page = this.pagination.page;
 			this.filter.per_page = this.pagination.pageSize;
-			this.cdr.detectChanges();
+			if(!this.cdr['destroyed']){ 
+				this.cdr.detectChanges();
+			}
+
 			this.cdr.markForCheck();
 		} catch (error) {
 			console.error(error);
 		}
 	}
-
 	exportList(){
 		var filters = {...this.filter};
 		filters.type="EXCEL";

@@ -4,7 +4,7 @@ import { HttpService } from '@app/core/services/http-service';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import {JsonResponse} from '@app/core/_base/layout/models/jsonResponse.model';
 import { Router } from '@angular/router';
-import { CatQuestion } from '@app/core/models/';
+import { Question } from '@app/core/models/';
 import { map } from 'rxjs/operators';
 
 

@@ -2,7 +2,7 @@
 import {User} from '@app/core/auth'
 
 export class Type {
-    _id?: number;
+    id?: number;
     libelle?:string;
     code?:string;
     color?:string;

@@ -80,13 +80,11 @@ export class ChantierFiltersComponent implements OnInit, AfterViewInit
   async getUsers(){
     var res = await this.authService.getList().toPromise();
     this.users = res.result.data;
-    this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
   async getEntreprises(){
     var res = await this.entrepriseService.getList().toPromise();
     this.entreprises = res.result.data;
-    this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
   async getStatus(){
@@ -94,19 +92,16 @@ export class ChantierFiltersComponent implements OnInit, AfterViewInit
     this.status = res.result.data;
     // var status_termine = this.status.filter(x=>x.code == 'ENCOURS')[0].id;
     // this.filterForm.patchValue({'status_id':status_termine}, {onlySelf: true, emitEvent: true});
-    this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
   async getClients(){
     var res = await this.chantierService.getAllClients().toPromise();
     this.clients = res.result.data;
-    this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
   async getTypes(){
     var res = await this.typeService.getAllFromModel('Chantier').toPromise();
     this.types = res.result.data;
-    this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
   
