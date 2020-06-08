@@ -44,8 +44,8 @@ const routes: Routes = [
 			},
 			{
 				path: 'list',
-				component: VisitesOutillageComponent,
-				// component: VisitesOutillageListComponent
+				//component: VisitesOutillageComponent,
+				component: VisitesOutillageListComponent
 			},
 			{
 				path: 'detail/:id',

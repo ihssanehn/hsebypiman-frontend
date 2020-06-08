@@ -18,29 +18,12 @@
       <!-- nom de outillage Column -->
       <ng-container matColumnDef="outillage">
         <th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder(['outillages.nom', 'visites_outillage.code'])">
-          {{'VISITES.CHANTIER.TITLE' | translate}} 
+          {{'OUTILLAGE.LABEL.TITLE' | translate}} 
           <i class="fa" [ngClass]="isOrderedBy(['outillages.nom', 'visites_outillage.code']) && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy(['outillages.nom', 'visites_outillage.code']) && {opacity:1}"></i>
         </th>
-        <td mat-cell *matCellDef="let visite"  (click)="viewVisite(visite.id)" class="pointer"> {{visite.outillage.nom | truncate:35}}</td>
+        <td mat-cell *matCellDef="let visite"  (click)="viewVisite(visite.id)" class="pointer"> {{visite.outillage.libelle | truncate:35}}</td>
       </ng-container>
 
-      <!-- client Column -->
-      <ng-container matColumnDef="client">
-        <th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder(['outillages.client', 'visites_outillage.code'])">
-          {{'VISITES.CLIENT.TITLE' | translate}}
-          <i class="fa" [ngClass]="isOrderedBy(['outillages.client', 'visites_outillage.code']) && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy(['outillages.client', 'visites_outillage.code']) && {opacity:1}"></i>
-        </th>
-        <td mat-cell *matCellDef="let visite"  (click)="viewVisite(visite.id)" class="pointer"> {{visite.outillage.client | truncate:35}}</td>
-      </ng-container>
-
-      <!-- type Column -->
-      <ng-container matColumnDef="type">
-        <th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('types.libelle')"> 
-            {{'VISITES.TYPE.SHORTTITLE' | translate}} 
-            <i class="fa" [ngClass]="isOrderedBy('types.libelle') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('types.libelle') && {opacity:1}"></i>
-        </th>
-        <td mat-cell *matCellDef="let visite"  (click)="viewVisite(visite.id)" class="pointer text-center" [ngStyle]="visite.type && visite.type.color && {'color':visite.type.color}"> {{visite.type?.libelle}} </td>
-      </ng-container>
 
       <!-- redacteur Column -->
       <ng-container matColumnDef="redacteur">
@@ -54,7 +37,7 @@
       <!-- visite Column -->
       <ng-container matColumnDef="visite">
         <th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('visited')">
-          {{'VISITES.VISITED.TITLE' | translate}}
+          {{'OUTILLAGE.PROPRIETAIRE.TITLE' | translate}}
           <i class="fa" [ngClass]="isOrderedBy('visited') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('visited') && {opacity:1}"></i>
         </th>
         <td mat-cell *matCellDef="let visite"  (click)="viewVisite(visite.id)" class="pointer" > 

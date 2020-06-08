@@ -583,6 +583,18 @@ export const locale = {
 				LABEL : 'Catégorie',
 			},
 		},
+		OUTILLAGE : {
+			LABEL:{
+				TITLE : 'Équipement',
+				SHORTTITLE : 'Équipement',
+				LABEL : 'Équipement',
+			},
+			PROPRIETAIRE : {
+				TITLE : 'Propriétaire',
+				SHORTTITLE : 'Propriétaire',
+				LABEL : 'Propriétaire'
+			}
+		},
 		COMMON:{
 			ADRESS:{
 				LABEL:'Adresse',
