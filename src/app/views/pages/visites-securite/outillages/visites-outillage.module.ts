@@ -49,13 +49,13 @@ const routes: Routes = [
 			},
 			{
 				path: 'detail/:id',
-				component: VisitesOutillageComponent
-				// component: VisiteOutillageDetailComponent
+				//component: VisitesOutillageComponent
+				component: VisiteOutillageDetailComponent
 			},
 			{
 				path: 'add',
-				component: VisitesOutillageComponent
-				// component: VisiteOutillageAddComponent
+				//component: VisitesOutillageComponent
+				component: VisiteOutillageAddComponent
 			},
 			{
 				path: 'add:id',
