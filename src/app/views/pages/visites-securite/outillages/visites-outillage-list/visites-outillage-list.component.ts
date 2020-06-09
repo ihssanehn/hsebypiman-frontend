@@ -34,7 +34,7 @@ export class VisitesOutillageListComponent implements OnInit {
 		status_id: "",
 		params: []
 	};
-	displayedVisiteColumns = ['code','outillage', 'client','type', 'redacteur', 'visite', 'date_visite', 'ko_solved_count', 'ko_unsolved_count', 'action'];
+	displayedVisiteColumns = ['code','outillage', 'redacteur', 'visite', 'date_visite', 'ko_solved_count', 'ko_unsolved_count', 'action'];
 
 
 	constructor(
@@ -88,12 +88,23 @@ export class VisitesOutillageListComponent implements OnInit {
 	editVisite(visiteId) {
 		this.router.navigate(['../edit', visiteId], { relativeTo: this.activatedRoute });
 	}
-	deleteVisite(visiteId) {
-		Swal.fire({
-			title: 'Désolé cette fonctionnalité n\'a pas encore été implémentée',
-			showConfirmButton: false,
-			timer: 1500
-		})
+	async deleteVisite(visiteId) {
+		this.visiteService.delete(visiteId).toPromise().then(res => {
+			Swal.fire({
+				title: 'Cette visite a correctement été supprimée',
+				showConfirmButton: false,
+				icon : 'success',
+				timer: 1500
+			});
+			this.getVisites();
+		}).catch(err => {
+			Swal.fire({
+				title: "Cette visite n'a pas pu être supprimée",
+				showConfirmButton: false,
+				icon : 'error',
+				timer: 1500
+			});
+		});
 	}
 
 	// Au click, défini order by et order way. Si le order_by est déjà actif, toggle du order_way. Sinon, order_way asc par défaut

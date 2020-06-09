@@ -91,6 +91,7 @@ export class VisiteOutillageDetailComponent implements OnInit, OnDestroy {
 	initForm() {
 		this.visiteForm = this.visiteFB.group({
 			'id': [{value: null, disabled: true}, Validators.required],
+			'code' : [{value : null, disabled:true}, Validators.required],
 			'outillage_id': [{value:null, disabled:true}, Validators.required],
 			'salarie_id': [{value: null, disabled: true}, Validators.required],
 			'entreprise_id': [{value: null, disabled: true}, Validators.required],
@@ -172,12 +173,23 @@ export class VisiteOutillageDetailComponent implements OnInit, OnDestroy {
 	editVisite(visiteId) {
 		this.router.navigate(['visites-securite/outillages/edit', visiteId]);
 	}
-	deleteVisite(visiteId) {
-		Swal.fire({
-			title: 'Désolé cette fonctionnalité n\'a pas encore été implémentée',
-			showConfirmButton: false,
-			timer: 1500
-		})
+	async deleteVisite(visiteId) {
+		this.visiteService.delete(visiteId).toPromise().then(res => {
+			Swal.fire({
+				title: 'Cette visite a correctement été supprimée',
+				showConfirmButton: false,
+				icon : 'success',
+				timer: 1500
+			});
+			this.router.navigate(['/visites-securite/outillages/list']);
+		}).catch(err => {
+			Swal.fire({
+				title: "Cette visite n'a pas pu être supprimée",
+				showConfirmButton: false,
+				icon : 'error',
+				timer: 1500
+			});
+		});
 	}
 
 	async onSubmit(event){

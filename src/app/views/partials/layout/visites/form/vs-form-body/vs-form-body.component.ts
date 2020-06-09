@@ -36,6 +36,7 @@ export class VsFormBodyComponent implements OnInit {
 
   ngOnInit() {
     this.today = moment().format('DD/MM/YYYY');
+    console.log(this.visiteForm);
   }
 
   partHided(partId){
