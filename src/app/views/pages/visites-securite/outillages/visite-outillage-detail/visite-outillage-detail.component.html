@@ -28,7 +28,7 @@
 		<tf-vs-form-head [visiteForm]="visiteForm" [origin]="'detail'" *ngIf="visiteForm.get('outillage_id').value"></tf-vs-form-head>
 	</tf-portlet>
 	
-	<tf-vs-form-body [visiteForm]="visiteForm" (dateUpdated)="onSubmit()" [origin]="'detail'" [isDisableToggle]="isDisableToggle" ></tf-vs-form-body>
+	<tf-vs-form-body [visiteForm]="visiteForm" [catQuestionsList]="catQuestionsList" (dateUpdated)="onSubmit()" [origin]="'detail'" [isDisableToggle]="isDisableToggle" ></tf-vs-form-body>
 
 	<tf-vs-form-signatures [visiteForm]="visiteForm" [origin]="'detail'" (hseSigned)="onSubmit()" [canValidateHse]="canValidateHse" [isDisableToggle]="true" *ngIf="showSignatures"></tf-vs-form-signatures>
 

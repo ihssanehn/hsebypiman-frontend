@@ -33,6 +33,7 @@ export class VisiteOutillageAddComponent implements OnInit {
   currentUser: User;
   questionsDisplayed: boolean = false;
   showSignatures: boolean = false;
+  catQuestionsList: CatQuestion[];
   // Private properties
   
   constructor(
@@ -42,6 +43,7 @@ export class VisiteOutillageAddComponent implements OnInit {
 		// private notificationService: NzNotificationService,
 		private visiteService: VisiteOutillageService,
     private outillageService: OutillageService,
+    private catQuestionsService : CatQuestionService,
     private location: Location,
     private authService:AuthService,
     private cdr: ChangeDetectorRef,
@@ -54,16 +56,25 @@ export class VisiteOutillageAddComponent implements OnInit {
     this.createForm();    
     this.setDynamicValidators();
     this.getCurrentUser();
+    this.getQuestions();
   }
 
 	async getCurrentUser() {
 		var res = await this.authService.getUserByToken().toPromise().then(res=>{this.visiteForm.get('redacteur_id').setValue(res.result.data.id)});
 		this.cdr.detectChanges();
   }
+
+  async getQuestions(){
+    this.catQuestionsService.getAll({code : 'OUTIL'}).toPromise().then(res => {
+      this.catQuestionsList = res.result.data
+    });
+    console.log(this.visiteForm);
+  }
   
   createForm() {
 		this.visiteForm = this.visiteFB.group({
       'outillage_id': ['', Validators.required],
+      'code' : [{value : null, disabled : false},Validators.required],
       'salarie_id': [{value:null, disabled:false}, Validators.required],
       'entreprise_id': [{value:null, disabled:false}, Validators.required],
       'redacteur_id': [{value:null, disabled:true}, Validators.required],

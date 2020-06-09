@@ -7,7 +7,7 @@ import { Subscription } from "rxjs";
 import { tap } from 'rxjs/operators';
 
 import { VisiteOutillageService, OutillageService } from '@app/core/services';
-import { VisiteOutillage, Outillage } from '@app/core/models';
+import { VisiteOutillage, Outillage, CatQuestion } from '@app/core/models';
 import { AuthService, User } from '@app/core/auth';
 import { MatSnackBar } from '@angular/material';
 import Swal from 'sweetalert2';
@@ -36,6 +36,7 @@ export class VisiteOutillageDetailComponent implements OnInit, OnDestroy {
 	outillage: Outillage;
 	currentUser: User;
 	questionsDisplayed: boolean = false;
+	catQuestionsList : CatQuestion[];
 	private subscriptions: Subscription[] = [];
 
 	// Private properties
@@ -66,6 +67,7 @@ export class VisiteOutillageDetailComponent implements OnInit, OnDestroy {
 						this.parseVisitesDate(_visite, 'EnToFr');
 						this.visiteForm.patchValue(_visite);
 						this.patchQuestionsForm(_visite);
+						this.catQuestionsList = res.result.data.catQuestionsList;
 						// this.visiteForm.disable();
 					})
 				).subscribe(async res => {

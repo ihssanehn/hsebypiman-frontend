@@ -11,7 +11,7 @@
 			  <span class="id-item">{{'MENU.SUB_VISITESECURITE.ADD' | translate}}</span>
 			</span>
 		</div>
-		<!-- <tf-search-outillage-form [form]="visiteForm" origin="add" ></tf-search-outillage-form> -->
+		<tf-search-outillage-form [form]="visiteForm" origin="add" ></tf-search-outillage-form>
 		<div class="tf-divider" *ngIf="visiteForm.get('outillage_id').value">
 			<span></span>
 		</div>
@@ -27,7 +27,7 @@
 		</tf-portlet-body>
 	</tf-portlet>
 	
-	<tf-vs-form-body [visiteForm]="visiteForm" [origin]="'add'" [isDisableToggle]="true" *ngIf="questionsDisplayed"></tf-vs-form-body>
+	<tf-vs-form-body [visiteForm]="visiteForm" [origin]="'add'" [catQuestionsList]="catQuestionsList" [isDisableToggle]="true" *ngIf="questionsDisplayed"></tf-vs-form-body>
 	
 	<div *ngIf="!showSignatures">
 		<button mat-raised-button [disabled]="!questionsAnswerd()" (click)="displaySignature()" color="success" class="pull-right">

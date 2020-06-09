@@ -88,6 +88,7 @@ export class VisiteOutillage {
     signatureRedacteur?:Signature;
     signatureVisite?:Signature;
     signatureRespHse?:Signature;
+	catQuestionsList: CatQuestion[];
 }
 export class VisiteVehicule {
     id?:Number;

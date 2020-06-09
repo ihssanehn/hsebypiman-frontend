@@ -49,4 +49,8 @@ export class OutillageService extends HttpService{
         var url = this.baseUrl+'/export?'+queryString+'&token='+localStorage.getItem(environment.authTokenKey);
         window.open(url, '_blank');
     }
+
+    getAllMateriels(){
+        return this.http.post<JsonResponse<any[]>>(`${environment.apiBaseUrl}materiels`, {});
+    }
 }
