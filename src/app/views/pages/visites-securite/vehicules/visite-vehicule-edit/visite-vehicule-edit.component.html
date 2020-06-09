@@ -11,7 +11,7 @@
 		<div class="tf-divider" *ngIf="visiteForm.get('vehicule_id').value">
 			<span></span>
 		</div>
-		<tf-vs-form-head [visiteForm]="visiteForm" [edit]="true" *ngIf="visiteForm.get('vehicule_id').value"></tf-vs-form-head>
+		<tf-vs-form-head [visiteForm]="visiteForm" [edit]="true" [model]="'VsVehicule'" *ngIf="visiteForm.get('vehicule_id').value"></tf-vs-form-head>
 	</tf-portlet>
 
 	<tf-vs-form-body [visiteForm]="visiteForm" [origin]="'edit'" [isDisableToggle]="true" [edit]="true"></tf-vs-form-body>

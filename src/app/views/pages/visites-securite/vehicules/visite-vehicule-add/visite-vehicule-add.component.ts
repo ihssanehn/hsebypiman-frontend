@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
 import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
 import {FormStatus} from '@app/core/_base/crud/models/form-status';
 import { DateFrToEnPipe } from '@app/core/_base/layout';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'tf-visite-vehicule-add',
@@ -24,6 +25,7 @@ export class VisiteVehiculeAddComponent implements OnInit {
   
   visite: VisiteVehicule;
   visiteForm: FormGroup;
+  catQuestionsList: CatQuestion[];
 	// allRoles: Role[];
   formStatus = new FormStatus();
   loaded = false;
@@ -42,6 +44,7 @@ export class VisiteVehiculeAddComponent implements OnInit {
 		// private notificationService: NzNotificationService,
 		private visiteService: VisiteVehiculeService,
     private vehiculeService: VehiculeService,
+    private catQuestionService: CatQuestionService,
     private location: Location,
     private authService:AuthService,
     private cdr: ChangeDetectorRef,
@@ -183,9 +186,77 @@ export class VisiteVehiculeAddComponent implements OnInit {
     return test;
   }  
 
-  displayQuestions(){
-    this.questionsDisplayed = true;
-    this.visiteForm.get('type_id').disable();
+  async displayQuestions(){
+    var params = {
+      type_id: this.visiteForm.get('type_id').value,
+      paginate:false
+    }
+    await this.catQuestionService.getAll(params).pipe(
+      tap(res=>{
+        this.catQuestionsList = res.result.data;
+        this.parseQuestions(res.result.data);
+
+      })
+    ).subscribe(res=>{
+      this.questionsDisplayed = true;
+      this.visiteForm.get('type_id').disable();
+      this.cdr.markForCheck();
+
+    });
+
+  }
+
+  parseQuestions(item){
+    if(item.length > 0){
+      const questionFormArray = this.visiteForm.get('questions') as FormArray
+
+      for (let i = 0; i < item.length; i++) {
+        const catQ = item[i]; 
+        for (let j = 0; j < catQ.questions.length; j++) {
+          const q = catQ.questions[j];
+          const question = this.visiteFB.group({
+            'id': [q.id],
+            'libelle': [q.libelle],
+            'pivot': this.visiteFB.group({
+              'note':[{value:null, disabled:false}, Validators.required],
+              'date_remise_conf':[{value:null, disabled:false}],
+              'observation':[{value:'', disabled:false}]
+            })
+          })
+
+          const pivot = question.get('pivot') as FormGroup;
+          const note = pivot.get('note') as FormControl;
+          const date_remise_conf = pivot.get('date_remise_conf') as FormControl;
+
+          note.valueChanges.subscribe(note=>{
+            if(note == 2){
+              date_remise_conf.enable({emitEvent:false, onlySelf:true})
+              this.visiteForm.get('presence_non_conformite').setValue(true);
+            }else{
+              date_remise_conf.disable({emitEvent:false, onlySelf:true})
+              date_remise_conf.setValue(null);
+              var nbr_ko = this.getNotes().ko;
+              if(nbr_ko == 0 && this.visiteForm.get('presence_non_conformite').value == true){
+                this.visiteForm.get('presence_non_conformite').setValue(false);
+              }
+            }
+          })
+
+          questionFormArray.push(question)
+        }
+      }
+    }
+  }
+
+  getNotes(){
+    const test = this.visiteForm.get('questions').value;
+    var ok = test.filter(x=>x.pivot.note == 1).length
+    var ko = test.filter(x=>x.pivot.note == 2).length
+    var ko_unsolved = test.filter(x=>x.pivot.note == 2 && !x.pivot.date_remise_conf).length
+    var ko_solved = test.filter(x=>x.pivot.note == 2 && x.pivot.date_remise_conf).length
+    var so = test.filter(x=>x.pivot.note == 3).length
+    var total = test.length;
+    return {'ok':ok, 'ko':ko, 'so':so, 'ko_unsolved':ko_unsolved, 'ko_solved':ko_solved, 'total':total};
   }
 
   parseDates(form){
