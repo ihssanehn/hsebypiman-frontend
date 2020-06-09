@@ -8,15 +8,15 @@
 			</span>
 		</div>
 
-		<tf-search-vehicule-form [form]="visiteForm" origin="add" ></tf-search-vehicule-form>
+		<tf-add-vehicule-form [form]="visiteForm" origin="add" ></tf-add-vehicule-form>
 
-		<div class="tf-divider" *ngIf="visiteForm.get('vehicule_id').value">
+		<div class="tf-divider" *ngIf="visiteForm.get('vehicule').value">
 			<span></span>
 		</div>
 
-		<tf-vs-form-head [visiteForm]="visiteForm" [origin]="'add'" [model]="'VsVehicule'" *ngIf="visiteForm.get('vehicule_id').value"></tf-vs-form-head>
+		<tf-vs-form-head [visiteForm]="visiteForm" [origin]="'add'" [model]="'VsVehicule'" *ngIf="visiteForm.get('vehicule').value"></tf-vs-form-head>
 
-		<tf-portlet-body *ngIf="visiteForm.get('vehicule_id').value">
+		<tf-portlet-body *ngIf="visiteForm.get('vehicule').value">
 			<div class="row">
 				<div class="col-12">
 					<button mat-raised-button color="success" class="float-right btn-small" 

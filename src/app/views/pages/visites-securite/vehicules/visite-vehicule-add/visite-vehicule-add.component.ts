@@ -66,16 +66,11 @@ export class VisiteVehiculeAddComponent implements OnInit {
   
   createForm() {
 		this.visiteForm = this.visiteFB.group({
-      'vehicule_id': ['', Validators.required],
-      'vehicule': [''],
+      'vehicule': ['', Validators.required],
       'salarie_id': [{value:null, disabled:false}, Validators.required],
       'entreprise_id': [{value:null, disabled:false}, Validators.required],
       'redacteur_id': [{value:null, disabled:true}, Validators.required],
       'date_visite': [moment().format('YYYY-MM-DD'), Validators.required],
-      // 'is_validated_redacteur': ['', Validators.required],
-      // 'is_validated_visite': ['', Validators.required],
-      // 'validated_redacteur_at': ['', Validators.required],
-      // 'validated_visite_at': ['', Validators.required],
       'presence_non_conformite': [{value:false, disabled: true}],
       'has_rectification_imm': [{value:false, disabled: false}],
       'avertissement': [{value:false, disabled: false}],
@@ -178,7 +173,7 @@ export class VisiteVehiculeAddComponent implements OnInit {
   }
 
   cantDisplayQuestions(){
-    var test: boolean = this.visiteForm.get('vehicule_id').invalid ||
+    var test: boolean = this.visiteForm.get('vehicule').invalid ||
       this.visiteForm.get('type_id').invalid ||
       this.visiteForm.get('salarie_id').invalid || 
       this.visiteForm.get('entreprise_id').invalid;

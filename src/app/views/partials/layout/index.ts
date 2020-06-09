@@ -10,7 +10,7 @@ export { SearchListBarComponent } from './search-list-bar/search-list-bar.compon
 export { SearchChantierFormComponent } from './chantier/form/search-chantier-form/search-chantier-form.component';
 
 // Vehicule
-export { SearchVehiculeFormComponent } from './vehicule/form/search-vehicule-form/search-vehicule-form.component';
+export { AddVehiculeFormComponent } from './vehicule/form/add-vehicule-form/add-vehicule-form.component'; 
 
 // VISITES
 export { VsFormHeadComponent } from './visites/form/vs-form-head/vs-form-head.component';
