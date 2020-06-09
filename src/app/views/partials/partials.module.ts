@@ -83,6 +83,7 @@ import {
 	SignatureAddComponent,
 	SignatureListComponent,
 	ArDetailPanelsComponent,
+	SearchVehiculeFormComponent
 } from './layout';
 // General
 import { NoticeComponent } from './content/general/notice/notice.component';
@@ -165,7 +166,8 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 		AdminTemplateComponent,
 		SignatureAddComponent,
 		SignatureListComponent,
-		ArDetailPanelsComponent
+		ArDetailPanelsComponent,
+		SearchVehiculeFormComponent
 	],
 	exports: [
 		WidgetModule,
@@ -225,7 +227,8 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 
 		SignatureAddComponent,
 		SignatureListComponent,
-		ArDetailPanelsComponent
+		ArDetailPanelsComponent,
+		SearchVehiculeFormComponent
 	],
 	imports: [
 		CommonModule,
