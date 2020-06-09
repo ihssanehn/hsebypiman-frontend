@@ -69,8 +69,8 @@ const routes: Routes = [
 			},
 			{
 				path: 'edit/:id',
-				component: VisitesOutillageComponent
-				// component: VisiteOutillageEditComponent
+				//component: VisitesOutillageComponent
+				component: VisiteOutillageEditComponent
 			},
 		]
 	}
