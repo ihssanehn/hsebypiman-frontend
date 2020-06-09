@@ -44,18 +44,18 @@ const routes: Routes = [
 			},
 			{
 				path: 'list',
-				component: VisitesOutillageComponent,
-				// component: VisitesOutillageListComponent
+				//component: VisitesOutillageComponent,
+				component: VisitesOutillageListComponent
 			},
 			{
 				path: 'detail/:id',
-				component: VisitesOutillageComponent
-				// component: VisiteOutillageDetailComponent
+				//component: VisitesOutillageComponent
+				component: VisiteOutillageDetailComponent
 			},
 			{
 				path: 'add',
-				component: VisitesOutillageComponent
-				// component: VisiteOutillageAddComponent
+				//component: VisitesOutillageComponent
+				component: VisiteOutillageAddComponent
 			},
 			{
 				path: 'add:id',
@@ -69,8 +69,8 @@ const routes: Routes = [
 			},
 			{
 				path: 'edit/:id',
-				component: VisitesOutillageComponent
-				// component: VisiteOutillageEditComponent
+				//component: VisitesOutillageComponent
+				component: VisiteOutillageEditComponent
 			},
 		]
 	}

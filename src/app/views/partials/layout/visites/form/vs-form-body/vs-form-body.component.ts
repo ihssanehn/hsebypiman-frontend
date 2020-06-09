@@ -37,6 +37,7 @@ export class VsFormBodyComponent implements OnInit {
   ngOnInit() {
     this.getCatQuestions();
     this.today = moment().format('DD/MM/YYYY');
+    console.log(this.visiteForm);
   }
 
   async getCatQuestions(){
