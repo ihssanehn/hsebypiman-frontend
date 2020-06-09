@@ -1,17 +1,14 @@
-<!-- <div class="row row-filters" style="height: 69px;">
-  
-</div> -->
-<!-- <tf-comming-soon></tf-comming-soon> -->
 <form [formGroup]="visiteForm" class="tf-form tf-form--group-seperator-dashed" >
 	<tf-portlet class="main-portlet-form" id="portlet-vs">
 		<div class="tf-portlet-header">
 			<span class="title">
-				<a [routerLink]="['/visites-securite/list']">{{'MENU.HOME' | translate}}</a>
+				<a [routerLink]="['/visites-securite/list']">{{'MENU.SUB_VISITESECURITE.LIST' | translate}}</a>
 				<span class="divider">></span>
 			  <span class="id-item">{{'MENU.SUB_VISITESECURITE.ADD' | translate}}</span>
 			</span>
 		</div>
-		<!-- <tf-search-vehicule-form [form]="visiteForm" origin="add" ></tf-search-vehicule-form> -->
+
+		<tf-search-vehicule-form [form]="visiteForm" origin="add" ></tf-search-vehicule-form>
 		<div class="tf-divider" *ngIf="visiteForm.get('vehicule_id').value">
 			<span></span>
 		</div>

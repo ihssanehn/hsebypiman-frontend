@@ -580,6 +580,22 @@ export const locale = {
 				LABEL:'Avertissement',
 				LABEL_COMP:'(quand attitude non sécuritaire)'
 			},
+			SEARCH_VEHICULE:{
+				LABEL:'Rechercher un vehicule',
+				TITLE:'Rechercher un vehicule',
+				SHORTTITLE: 'Rechercher'
+			},
+			DETAIL_VEHICULE:{
+				LABEL:'Informations vehicule',
+				TITLE:'Informations vehicule',
+				SUBTITLE: '',
+				SHORTTITLE: 'Informations'
+			},
+			VEHICULE_FOUND:{
+				LABEL:'Un vehicule trouvé',
+				TITLE:'Un vehicule trouvé',
+				SHORTTITLE: 'Un vehicule trouvé'
+			},
 		},
 		EPIS:{
 			CODE:{

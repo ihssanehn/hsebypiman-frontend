@@ -64,6 +64,7 @@ export class VisiteVehiculeAddComponent implements OnInit {
   createForm() {
 		this.visiteForm = this.visiteFB.group({
       'vehicule_id': ['', Validators.required],
+      'vehicule': [''],
       'salarie_id': [{value:null, disabled:false}, Validators.required],
       'entreprise_id': [{value:null, disabled:false}, Validators.required],
       'redacteur_id': [{value:null, disabled:true}, Validators.required],
