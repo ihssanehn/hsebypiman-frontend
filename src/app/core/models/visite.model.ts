@@ -1,5 +1,5 @@
 
-import {Ar, Chantier, Type, Status, Question, Signature, Epi, Outillage, Vehicule } from './'
+import {Ar, Chantier, Type, Status, Question, Signature, Epi, Outillage, Vehicule, CatQuestion } from './'
 import { User } from '../auth';
 
 export class VisiteChantier {
@@ -29,6 +29,7 @@ export class VisiteChantier {
     status?:Status;
     creator?:User;
     questions?:Array<Question>;
+    catQuestionsList?:Array<CatQuestion>;
     signatureRedacteur?:Signature;
     signatureVisite?:Signature;
     signatureRespHse?:Signature;

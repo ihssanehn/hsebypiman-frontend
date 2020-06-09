@@ -6,8 +6,8 @@ import * as moment from 'moment';
 import { Subscription } from "rxjs";
 import { tap } from 'rxjs/operators';
 
-import { VisiteChantierService, ChantierService } from '@app/core/services';
-import { VisiteChantier, Chantier } from '@app/core/models';
+import { VisiteChantierService, ChantierService, CatQuestionService } from '@app/core/services';
+import { VisiteChantier, Chantier , CatQuestion} from '@app/core/models';
 import { AuthService, User } from '@app/core/auth';
 import { MatSnackBar } from '@angular/material';
 import Swal from 'sweetalert2';
@@ -33,6 +33,7 @@ export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 	invalid = [];
 	editMode: boolean = false;
 	showSignatures: boolean = false;
+	catQuestionsList: CatQuestion[];
 	chantier: Chantier;
 	currentUser: User;
 	questionsDisplayed: boolean = false;
@@ -66,6 +67,7 @@ export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 						this.parseVisitesDate(_visite, 'EnToFr');
 						this.visiteForm.patchValue(_visite);
 						this.patchQuestionsForm(_visite);
+						this.catQuestionsList = res.result.data.catQuestionsList;
 						// this.visiteForm.disable();
 					})
 				).subscribe(async res => {
