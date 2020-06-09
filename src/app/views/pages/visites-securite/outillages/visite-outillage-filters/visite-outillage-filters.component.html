@@ -3,10 +3,7 @@
 		<tf-portlet-body class="tf-portlet__body--fit card-filters px-5 pt-4 pb-3" >
 			<form novalidate [formGroup]="filterForm">
 				<div class="row">
-					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
-						<mat-label>{{'CHANTIERS.NAME.TITLE' | translate}}</mat-label>
-						<input class="form-control" matInput type="text" name="outillage_nom" formControlName="outillage_nom" placeholder="Saisir ici" />
-					</mat-form-field>
+					
 					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
 						<mat-label>{{'VISITES.TYPE.TITLE' | translate}}</mat-label>
 						<mat-select class="form-control" formControlName="type_id" name="type_id">
@@ -78,7 +75,7 @@
 							<mat-icon>clear</mat-icon>
 						</button>
 					</mat-form-field> -->
-					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
+					<!-- <mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
 						<mat-label>{{'VISITES.ENTREPRISE.LABEL' | translate}}</mat-label>
 						<mat-select class="form-control" formControlName="entreprise_id" name="entreprise_id">
 							<mat-option *ngFor="let entreprise of entreprises" [value]="entreprise.id">
@@ -88,7 +85,7 @@
 						<button mat-button *ngIf="formHasValue('entreprise_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('entreprise_id'); $event.stopPropagation()">
 							<mat-icon>clear</mat-icon>
 						</button>
-					</mat-form-field>
+					</mat-form-field> -->
 					
 					<div class="col-xl-6 col-md-6 col-sm-6 col-xs-12">
 						<h6>{{'VISITES.DATE_VISITE.TITLE' | translate}}</h6>
