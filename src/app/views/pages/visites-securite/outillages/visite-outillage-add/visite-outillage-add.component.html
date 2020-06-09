@@ -12,12 +12,12 @@
 			</span>
 		</div>
 		<tf-search-outillage-form [form]="visiteForm" origin="add" (onDisplayOutillage)="onOutillageSelected($event)"></tf-search-outillage-form>
-		<div class="tf-divider" *ngIf="visiteForm.get('outillage_id').value">
+		<div class="tf-divider" *ngIf="visiteForm.get('outillage_code').value">
 			<span></span>
 		</div>
-		<!-- <tf-vs-form-head [visiteForm]="visiteForm" [origin]="'add'" *ngIf="visiteForm.get('outillage_id').value"></tf-vs-form-head> -->
+		<!-- <tf-vs-form-head [visiteForm]="visiteForm" [origin]="'add'" *ngIf="visiteForm.get('outillage_code').value"></tf-vs-form-head> -->
 
-		<tf-portlet-body *ngIf="visiteForm.get('outillage_id').value">
+		<tf-portlet-body *ngIf="visiteForm.get('outillage_code').value">
 			<div class="row">
 				<div class="col-12">
 					<button mat-raised-button color="success" class="float-right btn-small" 

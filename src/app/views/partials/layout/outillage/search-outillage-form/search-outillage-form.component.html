@@ -17,14 +17,14 @@
 								<mat-icon svgIcon="search"></mat-icon>
 							</span>
 						</div>
-						<input #searchInput type="text" [formControl]="searchControl" class="form-control search-input" name="keyword" placeholder="{{'FILTER.SEARCH_OUTILLAGE' | translate}}" [matAutocomplete]="auto">
-						<mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+						<input #searchInput type="text" [formControl]="searchControl" class="form-control search-input" name="keyword" placeholder="{{'FILTER.SEARCH_OUTILLAGE' | translate}}">
+						<!-- <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
 							<mat-option *ngFor="let outillage of filteredOutillages | async" [value]="outillage" (click)="initFilteredOutillages()" style="height: 2em;line-height: 2em;">
 								{{outillage.libelle}} | {{outillage.personnel[0]?.nom || "Unasigned"}} {{outillage.personnel[0]?.prenom}}
 							</mat-option>
-						</mat-autocomplete>
+						</mat-autocomplete> -->
 					</div>
-					<button class="btn btn-brand btn-sm btn-search ml-4" (click)="searchForOutillage()">
+					<button class="btn btn-brand btn-sm btn-search ml-4" (click)="onSubmit()">
 						Lancer
 					</button>
 				</div>

@@ -54,7 +54,6 @@ export class VisiteOutillageAddComponent implements OnInit {
   ngOnInit() {
     this.visite = new VisiteOutillage();
     this.createForm();    
-    this.setDynamicValidators();
     this.getCurrentUser();
     this.getQuestions();
   }
@@ -72,7 +71,7 @@ export class VisiteOutillageAddComponent implements OnInit {
   
   createForm() {
 		this.visiteForm = this.visiteFB.group({
-      'outillage_id': ['', Validators.required],
+      'outillage_code': ['', Validators.required],
       'code' : [{value : null, disabled : false},Validators.required],
       'salarie_id': [{value:null, disabled:false}, Validators.required],
       'entreprise_id': [{value:null, disabled:false}, Validators.required],
@@ -104,40 +103,12 @@ export class VisiteOutillageAddComponent implements OnInit {
 		this.cdr.detectChanges();
   }
   
-  setDynamicValidators() {
-    const salarie_id = this.visiteForm.get('salarie_id');
-    const entreprise_id = this.visiteForm.get('entreprise_id');
 
-    this.visiteForm.get('salarie_id').valueChanges.subscribe(salarie_id => {
-        if (salarie_id != null) {
-          entreprise_id.setValidators(null);
-          entreprise_id.disable({onlySelf:true, emitEvent:false});
-        }else{
-          entreprise_id.setValidators(Validators.required);
-          entreprise_id.enable({onlySelf:true, emitEvent:false});
-        }
-      })
-      this.visiteForm.get('entreprise_id').valueChanges.subscribe(entreprise_id => {
-        if (entreprise_id != null) {
-          salarie_id.setValidators(null);
-          salarie_id.disable({onlySelf:true, emitEvent:false});
-        }else{
-          salarie_id.setValidators(Validators.required);
-          salarie_id.enable({onlySelf:true, emitEvent:false});
-        }
-    })
-  }
-
-  onOutillageSelected(materiel: any) {
-    this.outillage = materiel;
-    this.visiteForm.get('outillage_id').setValue(materiel.id);
+  onOutillageSelected(code: string) {
+    this.visiteForm.get('outillage_code').setValue(code);
     this.displayQuestions();
   }
 
-  async getOutillage(outillageId){
-    var res = await this.outillageService.getMaterielById(outillageId).toPromise();
-    this.outillage = res.result.data;
-  }
 
   async onSubmit(event){
     try {
@@ -186,7 +157,7 @@ export class VisiteOutillageAddComponent implements OnInit {
   }
 
   cantDisplayQuestions(){
-    var test: boolean = this.visiteForm.get('outillage_id').invalid ||
+    var test: boolean = this.visiteForm.get('outillage_code').invalid ||
       this.visiteForm.get('type_id').invalid ||
       this.visiteForm.get('salarie_id').invalid || 
       this.visiteForm.get('entreprise_id').invalid;

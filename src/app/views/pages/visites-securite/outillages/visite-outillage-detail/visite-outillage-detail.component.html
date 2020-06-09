@@ -22,10 +22,10 @@
 			</div>
 		</div>
 		<!-- <tf-search-outillage-form [data]="visite.outillage" origin="detail" ></tf-search-outillage-form> -->
-		<div class="tf-divider" *ngIf="visiteForm.get('outillage_id').value">
+		<div class="tf-divider" *ngIf="visiteForm.get('outillage_code').value">
 			<span></span>
 		</div>
-		<tf-vs-form-head [visiteForm]="visiteForm" [origin]="'detail'" *ngIf="visiteForm.get('outillage_id').value"></tf-vs-form-head>
+		<tf-vs-form-head [visiteForm]="visiteForm" [origin]="'detail'" *ngIf="visiteForm.get('outillage_code').value"></tf-vs-form-head>
 	</tf-portlet>
 	
 	<tf-vs-form-body [visiteForm]="visiteForm" [catQuestionsList]="catQuestionsList" (dateUpdated)="onSubmit()" [origin]="'detail'" [isDisableToggle]="isDisableToggle" ></tf-vs-form-body>

@@ -77,7 +77,7 @@ export class VisiteOutillage {
     type_id?:Number;
     status_id?:Number;
     creator_id?:Number;
-    outillage_id?:Number;
+    outillage_code?:String;
     outillage?:Outillage;
     salarie?:User;
     redacteur?:User;
