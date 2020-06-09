@@ -59,14 +59,14 @@ const routes: Routes = [
 				path: 'add:id',
 				component: VisiteChantierAddComponent
 			},
-			{
-				path: 'edit',
-				component: VisiteChantierEditComponent
-			},
-			{
-				path: 'edit/:id',
-				component: VisiteChantierEditComponent
-			},
+			// {
+			// 	path: 'edit',
+			// 	component: VisiteChantierEditComponent
+			// },
+			// {
+			// 	path: 'edit/:id',
+			// 	component: VisiteChantierEditComponent
+			// },
 			{
 				path: 'admin',
 				component: VisiteChantierAdminComponent
