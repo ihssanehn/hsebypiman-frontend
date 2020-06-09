@@ -53,4 +53,8 @@ export class OutillageService extends HttpService{
     getAllMateriels(){
         return this.http.post<JsonResponse<any[]>>(`${environment.apiBaseUrl}materiels`, {});
     }
+
+    getMaterielById(materielId){
+        return this.http.get<JsonResponse<any>>(`${environment.apiBaseUrl}materiels/${materielId}`);
+    }
 }

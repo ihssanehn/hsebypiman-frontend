@@ -68,7 +68,6 @@ export class VisiteOutillageAddComponent implements OnInit {
     this.catQuestionsService.getAll({code : 'OUTIL'}).toPromise().then(res => {
       this.catQuestionsList = res.result.data
     });
-    console.log(this.visiteForm);
   }
   
   createForm() {
@@ -129,12 +128,14 @@ export class VisiteOutillageAddComponent implements OnInit {
     })
   }
 
-  onOutillageSelected(outillageId: Number) {
-    this.getOutillage(outillageId);
+  onOutillageSelected(materiel: any) {
+    this.outillage = materiel;
+    this.visiteForm.get('outillage_id').setValue(materiel.id);
+    this.displayQuestions();
   }
 
   async getOutillage(outillageId){
-    var res = await this.outillageService.get(outillageId).toPromise();
+    var res = await this.outillageService.getMaterielById(outillageId).toPromise();
     this.outillage = res.result.data;
   }
 

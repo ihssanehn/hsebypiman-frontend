@@ -28,7 +28,7 @@ export class SearchOutillageFormComponent implements OnInit {
       return this._data.getValue();
   }
 
-  @Output() onDisplayOutillage: EventEmitter<Outillage> = new EventEmitter<Outillage>();
+  @Output() onDisplayOutillage: EventEmitter<any> = new EventEmitter<any>();
 
   searchControl: FormControl = new FormControl();
   
@@ -133,7 +133,7 @@ export class SearchOutillageFormComponent implements OnInit {
 
   async getOutillage(outillageId: Number){
     try {
-      var res = await this.outillageService.get(outillageId).toPromise();
+      var res = await this.outillageService.getMaterielById(outillageId).toPromise();
       this.outillage = res.result.data;
       this.onDisplayOutillage.emit(this.outillage);
       if(this.origin == 'add' || this.origin == 'edit'){

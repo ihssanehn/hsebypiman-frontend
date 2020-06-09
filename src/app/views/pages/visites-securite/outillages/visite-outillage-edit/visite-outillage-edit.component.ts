@@ -6,7 +6,7 @@ import * as moment from 'moment';
 import { Subscription } from "rxjs";
 import { tap } from 'rxjs/operators';
 
-import { VisiteOutillageService, OutillageService} from '@app/core/services';
+import { VisiteOutillageService, OutillageService, CatQuestionService} from '@app/core/services';
 import { VisiteOutillage, Outillage } from '@app/core/models';
 import { AuthService, User } from '@app/core/auth';
 import { MatSnackBar } from '@angular/material';
@@ -32,6 +32,7 @@ export class VisiteOutillageEditComponent implements OnInit, OnDestroy {
   outillage: Outillage;
   currentUser: User;
   questionsDisplayed: boolean = false;
+  catQuestionsList;
 	private subscriptions: Subscription[] = [];
 
   // Private properties
@@ -43,6 +44,7 @@ export class VisiteOutillageEditComponent implements OnInit, OnDestroy {
 		// private notificationService: NzNotificationService,
 		private visiteService: VisiteOutillageService,
     private outillageService: OutillageService,
+    private catQuestionsService : CatQuestionService,
     private location: Location,
     private authService:AuthService,
     private cdr: ChangeDetectorRef,
@@ -54,7 +56,7 @@ export class VisiteOutillageEditComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.createForm();    
     this.setDynamicValidators();
-	
+    this.getQuestions();
     const routeSubscription = this.activatedRoute.params.subscribe(
       async params => {
         const id = params.id;
@@ -91,7 +93,11 @@ export class VisiteOutillageEditComponent implements OnInit, OnDestroy {
 		var res = await this.authService.getUserByToken().toPromise().then(res=>{this.visiteForm.get('redacteur_id').setValue(res.result.data.id)});
 		this.cdr.detectChanges();
   }
-  
+  async getQuestions(){
+    this.catQuestionsService.getAll({code : 'OUTIL'}).toPromise().then(res => {
+      this.catQuestionsList = res.result.data
+    });
+  }
   createForm() {
 		this.visiteForm = this.visiteFB.group({
       'id': [{value:null, disabled:true}, Validators.required],
