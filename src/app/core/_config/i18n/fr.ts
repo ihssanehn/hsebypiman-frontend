@@ -595,11 +595,6 @@ export const locale = {
 				LABEL:'Un véhicule saisi',
 				TITLE:'Un véhicule saisi',
 				SHORTTITLE: 'Un véhicule saisi'
-			},
-		},
-		EPIS:{
-			CODE:{
-				TITLE : 'Code',
 				SHORTTITLE : 'Code',
 				LABEL : 'Code',
 			},
@@ -704,7 +699,7 @@ export const locale = {
 			CREATION_DATE : "Date de création",
 			SEARCH_CHANTIER : "Recherche un chantier",
 			SEARCH_OUTILLAGE : "Numéro d'identification de l'outil",
-			ADD_VEHICULE : "Saisir un vehicule",
+			ADD_VEHICULE : "Numéro d'identification de véhicule",
 		},
 	}
 };
