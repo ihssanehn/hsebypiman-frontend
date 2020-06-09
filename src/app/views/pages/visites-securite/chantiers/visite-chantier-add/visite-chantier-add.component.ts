@@ -78,7 +78,7 @@ export class VisiteChantierAddComponent implements OnInit {
       // 'validated_redacteur_at': ['', Validators.required],
       // 'validated_visite_at': ['', Validators.required],
       'presence_non_conformite': [{value:false, disabled: true}],
-      'has_rectification_imm': [{value:false, disabled: false}],
+      'has_rectification_imm': [{value:false, disabled: true}],
       'avertissement': [{value:false, disabled: false}],
       'type_id': [null, Validators.required],
       'questions': this.visiteFB.array([]),
@@ -243,6 +243,15 @@ export class VisiteChantierAddComponent implements OnInit {
               if(nbr_ko == 0 && this.visiteForm.get('presence_non_conformite').value == true){
                 this.visiteForm.get('presence_non_conformite').setValue(false);
               }
+            }
+          })
+
+          pivot.valueChanges.subscribe(pivot=>{
+            var nbr_ko_unsolved = this.getNotes().ko_unsolved;
+            if(nbr_ko_unsolved > 0){
+              this.visiteForm.get('has_rectification_imm').setValue(true)
+            }else{
+              this.visiteForm.get('has_rectification_imm').setValue(false);
             }
           })
 

@@ -11,14 +11,14 @@
 				<button ngbDropdownToggle mat-icon-button color="primary" matTooltip="Actions" style="line-height: 0;height: 0;">
 				  <mat-icon>more_vert</mat-icon>
 				</button>
-				<div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
+				<!-- <div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
 				  <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editVisite(visite.id)">
 					<mat-icon>edit</mat-icon>
 				  </button>
 				  <button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteVisite(visite.id)">
 					<mat-icon>delete</mat-icon>
 				  </button>
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<tf-search-chantier-form [parent]="'vs'" [data]="visite.chantier" origin="detail" ></tf-search-chantier-form>
