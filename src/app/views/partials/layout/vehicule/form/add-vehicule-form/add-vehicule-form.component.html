@@ -1,0 +1,35 @@
+<tf-portlet-body>
+	<div class="row">
+		<div class="col-md-12" *ngIf="origin=='detail'">
+			<div class="tf-heading tf-heading--sm">
+				<span>{{'VISITES.DETAIL_VEHICULE.TITLE' | translate}}</span> {{'VISITES.DETAIL_VEHICULE.SUBTITLE' | translate}}
+			</div>
+		</div>
+		<div class="col-md-12 search-box" *ngIf="origin!='detail'">
+			<div class="mr-4">
+				<b>{{'VISITES.ADD_VEHICULE.LABEL' | translate}}</b>
+			</div>
+			<div class="search-layout ml-4">
+				<div class="form-group form-group-sm row col" >
+					<div class="input-group search-input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text search-icon-container">
+								<mat-icon svgIcon="search"></mat-icon>
+							</span>
+						</div>
+						<input #searchInput type="text" [formControl]="addControl" class="form-control search-input" name="keyword" placeholder="{{'FILTER.ADD_VEHICULE' | translate}}">
+					</div>
+					<button class="btn btn-brand btn-sm btn-search ml-4" (click)="addVehicule()">
+						Lancer
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-12 result-msg pt-4" *ngIf="vehicule && origin!='detail'">
+			<div>
+				<span>{{'VISITES.VEHICULE_FOUND.LABEL' | translate}}</span> : {{vehicule}}
+			</div>
+		</div>
+
+	</div>
+</tf-portlet-body>

@@ -580,10 +580,10 @@ export const locale = {
 				LABEL:'Avertissement',
 				LABEL_COMP:'(quand attitude non sécuritaire)'
 			},
-			SEARCH_VEHICULE:{
-				LABEL:'Rechercher un vehicule',
-				TITLE:'Rechercher un vehicule',
-				SHORTTITLE: 'Rechercher'
+			ADD_VEHICULE:{
+				LABEL:'Saisir un vehicule',
+				TITLE:'Saisir un vehicule',
+				SHORTTITLE: 'Saisir'
 			},
 			DETAIL_VEHICULE:{
 				LABEL:'Informations vehicule',
@@ -592,9 +592,9 @@ export const locale = {
 				SHORTTITLE: 'Informations'
 			},
 			VEHICULE_FOUND:{
-				LABEL:'Un vehicule trouvé',
-				TITLE:'Un vehicule trouvé',
-				SHORTTITLE: 'Un vehicule trouvé'
+				LABEL:'Un vehicule saisi',
+				TITLE:'Un vehicule saisi',
+				SHORTTITLE: 'Un vehicule saisi'
 			},
 		},
 		EPIS:{
@@ -703,6 +703,7 @@ export const locale = {
 			SELECT_STATUS : "Sélectionnez un status",
 			CREATION_DATE : "Date de création",
 			SEARCH_CHANTIER : "Recherche un chantier",
+			ADD_VEHICULE : "Saisir un vehicule",
 		},
 	}
 };
