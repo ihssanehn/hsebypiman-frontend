@@ -264,8 +264,10 @@ export class VisiteChantierAddComponent implements OnInit {
 
   parseDates(form){
     form.date_visite = this.dateFrToEnPipe.transform(form.date_visite);
-    form.questions.forEach(x=>{
-      x.pivot.date_remise_conf = this.dateFrToEnPipe.transform(x.pivot.date_remise_conf);
+    form.catQuestionsList.forEach(cat=>{
+      cat.questions.forEach(x=>{
+        x.pivot.date_remise_conf = this.dateFrToEnPipe.transform(x.pivot.date_remise_conf);
+      })
     })
   }
 

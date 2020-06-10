@@ -62,7 +62,7 @@
 										<div class="dropdown">
 											<ng-container *ngIf="origin == 'add'; else detailMode" >
 												<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" placeholder="DD/MM/YYYY" formControlName="date_remise_conf">
-												<a class="text-primary" (click)="getPivot(question.id,i).controls['date_remise_conf'].setValue(today)">
+												<a class="text-primary" (click)="getPivot(question.id,i).controls['note'].value == 2 && getPivot(question.id,i).controls['date_remise_conf'].setValue(today)">
 													<i>date du jour</i>
 												</a>
 											</ng-container>
