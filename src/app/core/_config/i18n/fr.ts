@@ -581,20 +581,20 @@ export const locale = {
 				LABEL_COMP:'(quand attitude non sécuritaire)'
 			},
 			ADD_VEHICULE:{
-				LABEL:'Saisir un véhicule',
-				TITLE:'Saisir un véhicule',
-				SHORTTITLE: 'Saisir'
+				LABEL:'Numéro d\'identification du véhicule',
+				TITLE:'Numéro d\'identification du véhicule',
+				SHORTTITLE: 'Numéro d\'identificatio'
 			},
 			DETAIL_VEHICULE:{
-				LABEL:'Informations véhicule',
-				TITLE:'Informations véhicule',
+				LABEL:'Numéro d\'identification du véhicule',
+				TITLE:'Numéro d\'identification du véhicule',
 				SUBTITLE: '',
-				SHORTTITLE: 'Informations'
+				SHORTTITLE: 'Numéro d\'identification du véhicule'
 			},
 			VEHICULE_FOUND:{
-				LABEL:'Un véhicule saisi',
-				TITLE:'Un véhicule saisi',
-				SHORTTITLE: 'Un véhicule saisi'
+				LABEL:'Numéro d\'identification du véhicule saisi',
+				TITLE:'Numéro d\'identification du véhicule saisi',
+				SHORTTITLE: 'Numéro d\'identification du véhicule saisi'
 			},
 		},
 		EPIS:{

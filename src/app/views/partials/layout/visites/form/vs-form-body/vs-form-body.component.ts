@@ -36,15 +36,12 @@ export class VsFormBodyComponent implements OnInit {
 
   ngOnInit() {
     this.today = moment().format('DD/MM/YYYY');
-    //console.log(this.visiteForm);
   }
 
   partHided(partId) {
-    // console.log(partId);
     return true;
   }
   showPart(partId) {
-    //console.log(partId)
   }
 
   setNote(question_id, cat_index, note) {
@@ -84,7 +81,6 @@ export class VsFormBodyComponent implements OnInit {
   getNotes() {
     const test = this.visiteForm.get('catQuestionsList').value
     var questions = test.reduce((prev, curr)=> prev.concat(curr.questions), []);
-
     var ok = questions.filter(x => x.pivot.note == 1).length
     var ko = questions.filter(x => x.pivot.note == 2).length
     var ko_unsolved = questions.filter(x => x.pivot.note == 2 && !x.pivot.date_remise_conf).length
