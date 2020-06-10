@@ -36,21 +36,17 @@ export class VsFormBodyComponent implements OnInit {
 
   ngOnInit() {
     this.today = moment().format('DD/MM/YYYY');
-    //console.log(this.visiteForm);
   }
 
   partHided(partId) {
-    // console.log(partId);
     return true;
   }
   showPart(partId) {
-    //console.log(partId)
   }
 
   setNote(question_id, cat_index, note) {
     const p = this.getPivot(question_id, cat_index)
     p.get('note').setValue(note);
-    console.log(this.visiteForm);
   }
 
   hasNote(question_id, cat_index, note) {
@@ -68,7 +64,6 @@ export class VsFormBodyComponent implements OnInit {
 
   getPivot(question_id, cat_index): FormGroup {
     const q = this.getQuestion(question_id, cat_index)
-    console.log((this.visiteForm.get('catQuestionsList') as FormArray).at(cat_index));
     if (!q) return null;
     const p = q.get('pivot') as FormGroup;
     if (!p) return null;
@@ -84,13 +79,15 @@ export class VsFormBodyComponent implements OnInit {
   }
 
   getNotes() {
-    const test = this.visiteForm.get('questions').value;
-    var ok = test.filter(x => x.pivot.note == 1).length
-    var ko = test.filter(x => x.pivot.note == 2).length
-    var ko_unsolved = test.filter(x => x.pivot.note == 2 && !x.pivot.date_remise_conf).length
-    var ko_solved = test.filter(x => x.pivot.note == 2 && x.pivot.date_remise_conf).length
-    var so = test.filter(x => x.pivot.note == 3).length
-    var total = test.length;
+    const test = this.visiteForm.get('catQuestionsList').value
+    var questions = test.reduce((prev, curr)=> prev.concat(curr.questions), []);
+    
+    var ok = questions.filter(x => x.pivot.note == 1).length
+    var ko = questions.filter(x => x.pivot.note == 2).length
+    var ko_unsolved = questions.filter(x => x.pivot.note == 2 && !x.pivot.date_remise_conf).length
+    var ko_solved = questions.filter(x => x.pivot.note == 2 && x.pivot.date_remise_conf).length
+    var so = questions.filter(x => x.pivot.note == 3).length
+    var total = questions.length;
     return { 'ok': ok, 'ko': ko, 'so': so, 'ko_unsolved': ko_unsolved, 'ko_solved': ko_solved, 'total': total };
   }
 

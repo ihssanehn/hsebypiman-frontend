@@ -76,6 +76,7 @@ export class VisiteVehiculeAddComponent implements OnInit {
       'avertissement': [{value:false, disabled: false}],
       'type_id': [null, Validators.required],
       'questions': this.visiteFB.array([]),
+      'catQuestionsList' : this.visiteFB.array([]),
       'signature_redacteur': this.visiteFB.group({
         'date':[null, Validators.required],
         'signature': [null, Validators.required]
@@ -203,21 +204,23 @@ export class VisiteVehiculeAddComponent implements OnInit {
 
   parseQuestions(item){
     if(item.length > 0){
-      const questionFormArray = this.visiteForm.get('questions') as FormArray
 
-      for (let i = 0; i < item.length; i++) {
-        const catQ = item[i]; 
-        for (let j = 0; j < catQ.questions.length; j++) {
-          const q = catQ.questions[j];
-          const question = this.visiteFB.group({
-            'id': [q.id],
-            'libelle': [q.libelle],
+      const catQuestionsListFormArray: FormArray = this.visiteForm.get('catQuestionsList') as FormArray;
+      const questionFormArray = this.visiteForm.get('questions') as FormArray;
+
+      item.forEach((element, i) => {
+        let questionsArrayFB = []
+
+        element.questions.forEach(quest => {
+          var question = this.visiteFB.group({
+            'id': [quest.id],
+            'libelle': [quest.libelle],
             'pivot': this.visiteFB.group({
               'note':[{value:null, disabled:false}, Validators.required],
               'date_remise_conf':[{value:null, disabled:false}],
               'observation':[{value:'', disabled:false}]
             })
-          })
+          });
 
           const pivot = question.get('pivot') as FormGroup;
           const note = pivot.get('note') as FormControl;
@@ -237,21 +240,43 @@ export class VisiteVehiculeAddComponent implements OnInit {
             }
           })
 
+          pivot.valueChanges.subscribe(pivot=>{
+            var nbr_ko_unsolved = this.getNotes().ko_unsolved;
+            if(nbr_ko_unsolved > 0){
+              this.visiteForm.get('has_rectification_imm').setValue(true)
+            }else{
+              this.visiteForm.get('has_rectification_imm').setValue(false);
+            }
+          })
+
+          questionsArrayFB.push(question);
           questionFormArray.push(question)
-        }
-      }
+        })
+
+        var cat = this.visiteFB.group({
+          'id': [element.id],
+          'libelle': [element.libelle],
+          'code': [ element.code],
+          'questions': this.visiteFB.array(questionsArrayFB)
+        })
+
+        catQuestionsListFormArray.push(cat);
+      })
+
     }
   }
 
   getNotes(){
-    const test = this.visiteForm.get('questions').value;
-    var ok = test.filter(x=>x.pivot.note == 1).length
-    var ko = test.filter(x=>x.pivot.note == 2).length
-    var ko_unsolved = test.filter(x=>x.pivot.note == 2 && !x.pivot.date_remise_conf).length
-    var ko_solved = test.filter(x=>x.pivot.note == 2 && x.pivot.date_remise_conf).length
-    var so = test.filter(x=>x.pivot.note == 3).length
-    var total = test.length;
-    return {'ok':ok, 'ko':ko, 'so':so, 'ko_unsolved':ko_unsolved, 'ko_solved':ko_solved, 'total':total};
+    const test = this.visiteForm.get('catQuestionsList').value
+    var questions = test.reduce((prev, curr)=> prev.concat(curr.questions), []);
+    
+    var ok = questions.filter(x => x.pivot.note == 1).length
+    var ko = questions.filter(x => x.pivot.note == 2).length
+    var ko_unsolved = questions.filter(x => x.pivot.note == 2 && !x.pivot.date_remise_conf).length
+    var ko_solved = questions.filter(x => x.pivot.note == 2 && x.pivot.date_remise_conf).length
+    var so = questions.filter(x => x.pivot.note == 3).length
+    var total = questions.length;
+    return { 'ok': ok, 'ko': ko, 'so': so, 'ko_unsolved': ko_unsolved, 'ko_solved': ko_solved, 'total': total };
   }
 
   parseDates(form){
@@ -281,7 +306,7 @@ export class VisiteVehiculeAddComponent implements OnInit {
   }
 
   questionsAnswerd(){
-    const questionsList = this.visiteForm.get('questions');
+    const questionsList = this.visiteForm.get('catQuestionsList');
     return questionsList.value.length > 0 && questionsList.valid
   }  
 
