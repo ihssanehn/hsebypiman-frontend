@@ -34,7 +34,7 @@ export class VisitesChantierListComponent implements OnInit {
 		status_id: "",
 		params: []
 	};
-	displayedVisiteColumns = ['code','chantier', 'client','type', 'redacteur', 'visite', 'date_visite', 'ko_solved_count', 'ko_unsolved_count', 'action'];
+	displayedVisiteColumns = ['code','chantier', 'client','type', 'redacteur', 'visite', 'entreprise', 'date_visite', 'ko_solved_count', 'ko_unsolved_count', 'action'];
 
 
 	constructor(

@@ -16,6 +16,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class VsFormSignaturesComponent implements OnInit, AfterViewInit {
 
   catQuestionsList: CatQuestion[];
+  needHseValidation: false;
+
 
   @Input() visiteForm: FormGroup;
   @Input() isDisableToggle: boolean;

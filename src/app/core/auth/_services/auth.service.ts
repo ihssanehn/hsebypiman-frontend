@@ -34,6 +34,9 @@ export class AuthService extends HttpService {
 		.asObservable()
 		.pipe(distinctUntilChanged());
 
+	getCurrentUser(){
+		return this.currentUser;
+	}
 	// Authentication/Authorization
 	login(email: string, password: string): Observable<JsonResponse<User>> {
 		return this.http.post<JsonResponse<User>>(`${this.baseUrl}auth/login`, {

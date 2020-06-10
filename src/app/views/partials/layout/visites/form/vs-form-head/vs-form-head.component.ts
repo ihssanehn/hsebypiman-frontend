@@ -1,6 +1,6 @@
 
 import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
-import { FormGroup, FormBuilder, AbstractControl, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, AbstractControl, FormControl, Validators } from '@angular/forms';
 import { AuthService, User } from '@app/core/auth';
 import { Type, Status, Entreprise } from '@app/core/models';
 import { TypeService, StatusService, EntrepriseService } from '@app/core/services';
@@ -18,6 +18,10 @@ export class VsFormHeadComponent implements OnInit {
   users: User[];
   status: Status[];
   entreprises: Entreprise[];
+  entreprisesGrouped: any;
+  entrepriseSelected: Entreprise = null;
+  interimairesList: User[];
+  redacteur: User;
 
   @Input() visiteForm: FormGroup;
   @Input() origin: string;
@@ -27,38 +31,59 @@ export class VsFormHeadComponent implements OnInit {
     private statusService:StatusService,
     private authService:AuthService,
     private entrepriseService:EntrepriseService,
-		private cdr: ChangeDetectorRef,
+    private cdr: ChangeDetectorRef,
   ) { }
 
+
+  
   ngOnInit() {
+
+    console.log();
+    this.authService.getCurrentUser().subscribe((value)=>{console.log(value)})
     this.getTypes();
     this.getUsers();
     this.getStatus();
+    this.getInterimaires();
     this.getEntreprises();
+    this.setDynamicEntreprise();
   }
 
   async getTypes(){
     var res = await this.typeService.getAllFromModel('VsChantier').toPromise();
     this.types = res.result.data
-    this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
   async getUsers(){
     var res = await this.authService.getList().toPromise();
     this.users = res.result.data;
-    this.cdr.detectChanges();
     this.cdr.markForCheck();
+    this.redacteur = this.users.filter(x=>x.id == this.visiteForm.get('redacteur_id').value)[0];
   }
   async getStatus(){
     var res = await this.statusService.getAllFromModel('VsChantier').toPromise();
     this.status = res.result.data;
-    this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
   async getEntreprises(){
     var res = await this.entrepriseService.getList().toPromise();
     this.entreprises = res.result.data;
-    this.cdr.detectChanges();
+    this.entreprisesGrouped = this.entreprises.reduce((r,{type})=>{
+      if(!r.some(o=>o.name==type.libelle)){
+        r.push(
+          {
+            name:type.libelle,
+          entreprises:this.entreprises.filter(v=>v.type.id==type.id)});
+      }
+      return r;
+    },[]);
+    this.cdr.markForCheck();
+  }
+
+  async getInterimaires(){
+    var res = await this.authService.getAll({'categorie_code':'INTERIMAIRE', 'paginate':false}).toPromise();
+    if(res){
+      this.interimairesList = res.result.data;
+    }
     this.cdr.markForCheck();
   }
 
@@ -73,6 +98,7 @@ export class VsFormHeadComponent implements OnInit {
     }
   }
 
+  
   /**
 	 * Checking control validation
 	 *
@@ -107,6 +133,46 @@ export class VsFormHeadComponent implements OnInit {
     }else{
       this.visiteForm.controls[controlName].setValue('0');
     }
+  }
+
+  entHasCode(){
+    if(!this.entrepriseSelected){
+      return false;
+    }
+    return this.entrepriseSelected.type.code
+  }
+
+  setDynamicEntreprise(){
+    this.visiteForm.get('entreprise_id').valueChanges.subscribe(entreprise_id=>{
+      if (entreprise_id!=null){
+        var entrepriseSelected = this.entreprises.filter(x=> x.id == entreprise_id)[0];
+        if(entrepriseSelected.type.code == 'INTERIM'){
+          this.visiteForm.get('nom_prenom').setValue(null);
+          this.visiteForm.get('nom_prenom').setValidators(null);
+    
+          this.visiteForm.get('interimaire_id').setValue(null);
+          this.visiteForm.get('interimaire_id').setValidators(Validators.required);
+          
+          this.getInterimaires();
+
+        }else{
+          this.visiteForm.get('interimaire_id').setValue(null);
+          this.visiteForm.get('interimaire_id').setValidators(null);
+    
+          this.visiteForm.get('nom_prenom').setValidators(Validators.required);
+        }
+        this.entrepriseSelected = entrepriseSelected;
+      }else{
+        this.entrepriseSelected = null;
+        this.visiteForm.get('nom_prenom').setValue(null);
+        this.visiteForm.get('nom_prenom').setValidators(null);
+        this.visiteForm.get('interimaire_id').setValue(null);
+        this.visiteForm.get('interimaire_id').setValidators(null);
+      }
+
+      this.visiteForm.get('nom_prenom').updateValueAndValidity();
+      this.visiteForm.get('interimaire_id').updateValueAndValidity();
+    })
   }
   
 }
