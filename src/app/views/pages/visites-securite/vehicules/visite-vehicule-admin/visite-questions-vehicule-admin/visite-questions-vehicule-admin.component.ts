@@ -44,7 +44,7 @@ export class VisiteQuestionsVehiculeAdminComponent extends AdminTemplateComponen
   }
 
   async addItem(){
-    super.addItem("Ajouter une catégorie de question");  
+    super.addItem("Ajouter une catégorie de question", {type_id : this._type.id});  
   }
 
   async getList(item){
