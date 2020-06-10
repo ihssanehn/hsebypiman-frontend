@@ -5,7 +5,6 @@ import { User } from '../auth';
 export class VisiteChantier {
     id?:Number;
     code?:String;
-    vehicule?:String;
     salarie_id?:Number;
     entreprise_id?:Number;
     redacteur_id?:Number;
@@ -107,13 +106,14 @@ export class VisiteVehicule {
     status_id?:Number;
     creator_id?:Number;
     outillage_id?:Number;
-    vehicule?:Vehicule;
+    vehicule?:String;
     salarie?:User;
     redacteur?:User;
     type?:Type;
     status?:Status;
     creator?:User;
     questions?:Array<Question>;
+    catQuestionsList?:Array<CatQuestion>;
     signatureRedacteur?:Signature;
     signatureVisite?:Signature;
     signatureRespHse?:Signature;

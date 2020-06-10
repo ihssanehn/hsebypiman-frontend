@@ -47,8 +47,7 @@ const routes: Routes = [
 			},
 			{
 				path: 'detail/:id',
-				// component: VisiteVehiculeDetailComponent
-				component: VisitesVehiculeComponent
+				component: VisiteVehiculeDetailComponent
 			},
 			{
 				path: 'add',

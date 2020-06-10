@@ -7,7 +7,7 @@ import { Subscription } from "rxjs";
 import { tap } from 'rxjs/operators';
 
 import { VisiteVehiculeService, VehiculeService } from '@app/core/services';
-import { VisiteVehicule, Vehicule } from '@app/core/models';
+import { VisiteVehicule, Vehicule, CatQuestion } from '@app/core/models';
 import { AuthService, User } from '@app/core/auth';
 import { MatSnackBar } from '@angular/material';
 import Swal from 'sweetalert2';
@@ -33,6 +33,7 @@ export class VisiteVehiculeDetailComponent implements OnInit, OnDestroy {
 	invalid = [];
 	editMode: boolean = false;
 	showSignatures: boolean = false;
+	catQuestionsList: CatQuestion[];
 	vehicule: Vehicule;
 	currentUser: User;
 	questionsDisplayed: boolean = false;
@@ -66,6 +67,7 @@ export class VisiteVehiculeDetailComponent implements OnInit, OnDestroy {
 						this.parseVisitesDate(_visite, 'EnToFr');
 						this.visiteForm.patchValue(_visite);
 						this.patchQuestionsForm(_visite);
+						this.catQuestionsList = res.result.data.catQuestionsList;
 						// this.visiteForm.disable();
 					})
 				).subscribe(async res => {
@@ -91,7 +93,8 @@ export class VisiteVehiculeDetailComponent implements OnInit, OnDestroy {
 	initForm() {
 		this.visiteForm = this.visiteFB.group({
 			'id': [{value: null, disabled: true}, Validators.required],
-			'vehicule_id': [{value:null, disabled:true}, Validators.required],
+			'code': [{value:null, disabled:true}],
+			'vehicule': [{value:null, disabled:true}, Validators.required],
 			'salarie_id': [{value: null, disabled: true}, Validators.required],
 			'entreprise_id': [{value: null, disabled: true}, Validators.required],
 			'redacteur_id': [{value: null, disabled: true}, Validators.required],
