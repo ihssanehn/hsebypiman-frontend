@@ -4,6 +4,14 @@
 			<div class="tf-heading tf-heading--sm">
 				<span>{{'VISITES.DETAIL_VEHICULE.TITLE' | translate}}</span> {{'VISITES.DETAIL_VEHICULE.SUBTITLE' | translate}}
 			</div>
+			<div class="col-md-12 px-5 search-result-block" *ngIf="vehicule">
+				<div class="col-xl-3 col-lg-3 col-md-4 col-xs-6">
+					<mat-label>{{'VISITES.VEHICULE.LABEL' | translate}}</mat-label>
+					<span class="ml-2">
+						<strong>{{vehicule}}</strong>
+					</span>
+				</div>
+			</div>
 		</div>
 		<div class="col-md-12 search-box" *ngIf="origin!='detail'">
 			<div class="mr-4">
