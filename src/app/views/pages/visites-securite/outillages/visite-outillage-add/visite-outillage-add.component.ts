@@ -33,6 +33,7 @@ export class VisiteOutillageAddComponent implements OnInit {
   currentUser: User;
   questionsDisplayed: boolean = false;
   showSignatures: boolean = false;
+  catQuestionsList: CatQuestion[];
   // Private properties
   
   constructor(
@@ -42,6 +43,7 @@ export class VisiteOutillageAddComponent implements OnInit {
 		// private notificationService: NzNotificationService,
 		private visiteService: VisiteOutillageService,
     private outillageService: OutillageService,
+    private catQuestionsService : CatQuestionService,
     private location: Location,
     private authService:AuthService,
     private cdr: ChangeDetectorRef,
@@ -52,19 +54,28 @@ export class VisiteOutillageAddComponent implements OnInit {
   ngOnInit() {
     this.visite = new VisiteOutillage();
     this.createForm();    
-    this.setDynamicValidators();
     this.getCurrentUser();
+    this.getQuestions();
   }
 
 	async getCurrentUser() {
 		var res = await this.authService.getUserByToken().toPromise().then(res=>{this.visiteForm.get('redacteur_id').setValue(res.result.data.id)});
 		this.cdr.detectChanges();
   }
+
+  async getQuestions(){
+    this.catQuestionsService.getAll({code : 'OUTIL'}).toPromise().then(res => {
+      this.catQuestionsList = res.result.data;
+      this.patchQuestionsForm();
+    });
+  }
   
   createForm() {
 		this.visiteForm = this.visiteFB.group({
-      'outillage_id': ['', Validators.required],
+      'outillage_code': ['', Validators.required],
+      'code' : [{value : null, disabled : false},Validators.required],
       'salarie_id': [{value:null, disabled:false}, Validators.required],
+      'catQuestionsList' : this.visiteFB.array([]),
       'entreprise_id': [{value:null, disabled:false}, Validators.required],
       'redacteur_id': [{value:null, disabled:true}, Validators.required],
       'date_visite': [moment().format('YYYY-MM-DD'), Validators.required],
@@ -93,39 +104,41 @@ export class VisiteOutillageAddComponent implements OnInit {
 		this.loaded = true;
 		this.cdr.detectChanges();
   }
-  
-  setDynamicValidators() {
-    const salarie_id = this.visiteForm.get('salarie_id');
-    const entreprise_id = this.visiteForm.get('entreprise_id');
 
-    this.visiteForm.get('salarie_id').valueChanges.subscribe(salarie_id => {
-        if (salarie_id != null) {
-          entreprise_id.setValidators(null);
-          entreprise_id.disable({onlySelf:true, emitEvent:false});
-        }else{
-          entreprise_id.setValidators(Validators.required);
-          entreprise_id.enable({onlySelf:true, emitEvent:false});
-        }
+
+  patchQuestionsForm() {
+		
+		const catQuestionsListFormArray: FormArray = this.visiteForm.get('catQuestionsList') as FormArray;
+		this.catQuestionsList.forEach((element, i) => {
+			let questionsArrayFB = []
+			element.questions.forEach(quest => {
+				var question = this.visiteFB.group({
+					'id': [quest.id],
+					'libelle': [quest.libelle],
+					'pivot': this.visiteFB.group({
+						'note': [null, Validators.required],
+						'date_remise_conf': [null],
+						'observation': ['']
+					})
+				});
+				questionsArrayFB.push(question);			
+			})
+			var cat = this.visiteFB.group({
+				'id': [element.id],
+				'libelle': [element.libelle],
+				'code': [ element.code],
+				'questions': this.visiteFB.array(questionsArrayFB)
       })
-      this.visiteForm.get('entreprise_id').valueChanges.subscribe(entreprise_id => {
-        if (entreprise_id != null) {
-          salarie_id.setValidators(null);
-          salarie_id.disable({onlySelf:true, emitEvent:false});
-        }else{
-          salarie_id.setValidators(Validators.required);
-          salarie_id.enable({onlySelf:true, emitEvent:false});
-        }
+      console.log(cat);
+			catQuestionsListFormArray.push(cat);
     })
   }
 
-  onOutillageSelected(outillageId: Number) {
-    this.getOutillage(outillageId);
+  onOutillageSelected(code: string) {
+    this.visiteForm.get('outillage_code').setValue(code);
+    this.displayQuestions();
   }
 
-  async getOutillage(outillageId){
-    var res = await this.outillageService.get(outillageId).toPromise();
-    this.outillage = res.result.data;
-  }
 
   async onSubmit(event){
     try {
@@ -174,7 +187,7 @@ export class VisiteOutillageAddComponent implements OnInit {
   }
 
   cantDisplayQuestions(){
-    var test: boolean = this.visiteForm.get('outillage_id').invalid ||
+    var test: boolean = this.visiteForm.get('outillage_code').invalid ||
       this.visiteForm.get('type_id').invalid ||
       this.visiteForm.get('salarie_id').invalid || 
       this.visiteForm.get('entreprise_id').invalid;

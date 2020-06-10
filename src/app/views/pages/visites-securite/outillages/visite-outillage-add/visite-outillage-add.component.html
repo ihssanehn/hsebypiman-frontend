@@ -11,13 +11,13 @@
 			  <span class="id-item">{{'MENU.SUB_VISITESECURITE.ADD' | translate}}</span>
 			</span>
 		</div>
-		<!-- <tf-search-outillage-form [form]="visiteForm" origin="add" ></tf-search-outillage-form> -->
-		<div class="tf-divider" *ngIf="visiteForm.get('outillage_id').value">
+		<tf-search-outillage-form [form]="visiteForm" origin="add" (onDisplayOutillage)="onOutillageSelected($event)"></tf-search-outillage-form>
+		<div class="tf-divider" *ngIf="visiteForm.get('outillage_code').value">
 			<span></span>
 		</div>
-		<tf-vs-form-head [visiteForm]="visiteForm" [origin]="'add'" *ngIf="visiteForm.get('outillage_id').value"></tf-vs-form-head>
+		<!-- <tf-vs-form-head [visiteForm]="visiteForm" [origin]="'add'" *ngIf="visiteForm.get('outillage_code').value"></tf-vs-form-head> -->
 
-		<tf-portlet-body *ngIf="visiteForm.get('outillage_id').value">
+		<tf-portlet-body *ngIf="visiteForm.get('outillage_code').value">
 			<div class="row">
 				<div class="col-12">
 					<button mat-raised-button color="success" class="float-right btn-small" 
@@ -27,7 +27,7 @@
 		</tf-portlet-body>
 	</tf-portlet>
 	
-	<tf-vs-form-body [visiteForm]="visiteForm" [origin]="'add'" [isDisableToggle]="true" *ngIf="questionsDisplayed"></tf-vs-form-body>
+	<tf-vs-form-body [visiteForm]="visiteForm" [origin]="'add'" [catQuestionsList]="catQuestionsList" [isDisableToggle]="true" *ngIf="questionsDisplayed"></tf-vs-form-body>
 	
 	<div *ngIf="!showSignatures">
 		<button mat-raised-button [disabled]="!questionsAnswerd()" (click)="displaySignature()" color="success" class="pull-right">

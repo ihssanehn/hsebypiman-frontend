@@ -8,13 +8,13 @@
 			</span>
 		</div>
 		<!-- <tf-search-outillage-form [form]="visiteForm" origin="edit"></tf-search-outillage-form> -->
-		<div class="tf-divider" *ngIf="visiteForm.get('outillage_id').value">
+		<div class="tf-divider" *ngIf="visiteForm.get('outillage_code').value">
 			<span></span>
 		</div>
-		<tf-vs-form-head [visiteForm]="visiteForm" [edit]="true" *ngIf="visiteForm.get('outillage_id').value"></tf-vs-form-head>
+		<tf-vs-form-head [visiteForm]="visiteForm" [edit]="true" *ngIf="visiteForm.get('outillage_code').value"></tf-vs-form-head>
 	</tf-portlet>
 
-	<tf-vs-form-body [visiteForm]="visiteForm" [origin]="'edit'" [isDisableToggle]="true" [edit]="true"></tf-vs-form-body>
+	<tf-vs-form-body [visiteForm]="visiteForm" [origin]="'edit'" [catQuestionsList]="catQuestionsList" [isDisableToggle]="true" [edit]="true"></tf-vs-form-body>
 
 	<ng-container *ngIf="formStatus">
 		<div *ngIf="formStatus.canShowErrors()" class="alert alert-danger alert-dismissible fade show" role="alert">

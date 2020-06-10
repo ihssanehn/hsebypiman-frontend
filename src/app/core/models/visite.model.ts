@@ -77,7 +77,7 @@ export class VisiteOutillage {
     type_id?:Number;
     status_id?:Number;
     creator_id?:Number;
-    outillage_id?:Number;
+    outillage_code?:String;
     outillage?:Outillage;
     salarie?:User;
     redacteur?:User;
@@ -88,6 +88,7 @@ export class VisiteOutillage {
     signatureRedacteur?:Signature;
     signatureVisite?:Signature;
     signatureRespHse?:Signature;
+	catQuestionsList: CatQuestion[];
 }
 export class VisiteVehicule {
     id?:Number;

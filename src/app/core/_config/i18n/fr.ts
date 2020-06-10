@@ -677,6 +677,7 @@ export const locale = {
 			SELECT_STATUS : "Sélectionnez un status",
 			CREATION_DATE : "Date de création",
 			SEARCH_CHANTIER : "Recherche un chantier",
+			SEARCH_OUTILLAGE : "Numéro d'identification de l'outil"
 		},
 	}
 };

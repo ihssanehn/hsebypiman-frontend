@@ -7,7 +7,7 @@ import { Subscription } from "rxjs";
 import { tap } from 'rxjs/operators';
 
 import { VisiteOutillageService, OutillageService } from '@app/core/services';
-import { VisiteOutillage, Outillage } from '@app/core/models';
+import { VisiteOutillage, Outillage, CatQuestion } from '@app/core/models';
 import { AuthService, User } from '@app/core/auth';
 import { MatSnackBar } from '@angular/material';
 import Swal from 'sweetalert2';
@@ -36,6 +36,7 @@ export class VisiteOutillageDetailComponent implements OnInit, OnDestroy {
 	outillage: Outillage;
 	currentUser: User;
 	questionsDisplayed: boolean = false;
+	catQuestionsList: CatQuestion[];
 	private subscriptions: Subscription[] = [];
 
 	// Private properties
@@ -53,7 +54,7 @@ export class VisiteOutillageDetailComponent implements OnInit, OnDestroy {
 		public snackBar: MatSnackBar,
 		private dateFrToEnPipe: DateFrToEnPipe,
 		private dateEnToFrPipe: DateEnToFrPipe
-	) {}
+	) { }
 
 	ngOnInit() {
 		this.initForm();
@@ -66,6 +67,7 @@ export class VisiteOutillageDetailComponent implements OnInit, OnDestroy {
 						this.parseVisitesDate(_visite, 'EnToFr');
 						this.visiteForm.patchValue(_visite);
 						this.patchQuestionsForm(_visite);
+						this.catQuestionsList = res.result.data.catQuestionsList;
 						// this.visiteForm.disable();
 					})
 				).subscribe(async res => {
@@ -90,31 +92,32 @@ export class VisiteOutillageDetailComponent implements OnInit, OnDestroy {
 
 	initForm() {
 		this.visiteForm = this.visiteFB.group({
-			'id': [{value: null, disabled: true}, Validators.required],
-			'code' : [{value : null, disabled:true}, Validators.required],
-			'outillage_id': [{value:null, disabled:true}, Validators.required],
-			'salarie_id': [{value: null, disabled: true}, Validators.required],
-			'entreprise_id': [{value: null, disabled: true}, Validators.required],
-			'redacteur_id': [{value: null, disabled: true}, Validators.required],
-			'date_visite': [{value:moment().format('YYYY-MM-DD'), disabled: true}, Validators.required],
-			'presence_non_conformite': [{value: false, disabled: true }],
-			'has_rectification_imm': [{value: false, disabled: true }],
-			'avertissement': [{value: false, disabled: true }],
-			'type_id': [{value:null, disabled:true}, Validators.required],
+			'id': [{ value: null, disabled: true }, Validators.required],
+			'code': [{ value: null, disabled: true }, Validators.required],
+			'outillage_code': [{ value: null, disabled: true }, Validators.required],
+			'salarie_id': [{ value: null, disabled: true }, Validators.required],
+			'entreprise_id': [{ value: null, disabled: true }, Validators.required],
+			'redacteur_id': [{ value: null, disabled: true }, Validators.required],
+			'date_visite': [{ value: moment().format('YYYY-MM-DD'), disabled: true }, Validators.required],
+			'presence_non_conformite': [{ value: false, disabled: true }],
+			'has_rectification_imm': [{ value: false, disabled: true }],
+			'avertissement': [{ value: false, disabled: true }],
+			'type_id': [{ value: null, disabled: true }, Validators.required],
 			'questions': this.visiteFB.array([]),
-			'is_validate_resp_hse': [{value:null, disabled:true}],
+			'catQuestionsList': this.visiteFB.array([]),
+			'is_validate_resp_hse': [{ value: null, disabled: true }],
 			'signature_redacteur': this.visiteFB.group({
-				'date':[{value:null, disabled:true}, Validators.required],
-				'signature': [{value:null, disabled:true}, Validators.required]
-			  }),
-			  'signature_visite': this.visiteFB.group({
-				'date':[{value:null, disabled:true}, Validators.required],
-				'signature': [{value:null, disabled:true}, Validators.required]
-			  }),
-			  'signature_resp_hse': this.visiteFB.group({
-				'date':[{value:null, disabled:true}],
-				'signature': [{value:null, disabled:true}]
-			  }),
+				'date': [{ value: null, disabled: true }, Validators.required],
+				'signature': [{ value: null, disabled: true }, Validators.required]
+			}),
+			'signature_visite': this.visiteFB.group({
+				'date': [{ value: null, disabled: true }, Validators.required],
+				'signature': [{ value: null, disabled: true }, Validators.required]
+			}),
+			'signature_resp_hse': this.visiteFB.group({
+				'date': [{ value: null, disabled: true }],
+				'signature': [{ value: null, disabled: true }]
+			}),
 		});
 		this.loaded = true;
 		this.cdr.detectChanges();
@@ -131,34 +134,41 @@ export class VisiteOutillageDetailComponent implements OnInit, OnDestroy {
 
 	patchQuestionsForm(visite) {
 
-		const questionsFormArray: FormArray = this.visiteForm.get('questions') as FormArray;
-		visite.questions.forEach(element => {
-			var question = this.visiteFB.group({
-				'id': [{value:element.id, disabled:true}],
-				'libelle': [{value:element.libelle, disabled:true}],
-				'pivot': this.visiteFB.group({
-					'note': [{value:element.pivot.note, disabled: true }, Validators.required],
-					'date_remise_conf': [{value: element.pivot.date_remise_conf, disabled: true }],
-					'observation': [{value: element.pivot.observation, disabled: true }]
-				})
-			});
-
-			if(element.pivot.note == 2){
-				this.visiteForm.get('presence_non_conformite').setValue(true);
-			}
-			questionsFormArray.push(question);
+		const catQuestionsListFormArray: FormArray = this.visiteForm.get('catQuestionsList') as FormArray;
+		visite.catQuestionsList.forEach((element, i) => {
+			let questionsArrayFB = []
+			element.questions.forEach(quest => {
+				var question = this.visiteFB.group({
+					'id': [{ value: quest.id, disabled: true }],
+					'libelle': [{ value: quest.libelle, disabled: true }],
+					'pivot': this.visiteFB.group({
+						'note': [{ value: quest.pivot.note, disabled: true }, Validators.required],
+						'date_remise_conf': [{ value: quest.pivot.date_remise_conf, disabled: true }],
+						'observation': [{ value: quest.pivot.observation, disabled: true }]
+					})
+				});
+				questionsArrayFB.push(question);			
+			})
+			var cat = this.visiteFB.group({
+				'id': [{value :element.id, disabled: true}],
+				'libelle': [{value:element.libelle, disabled: true}],
+				'code': [{value : element.code, disabled: true}],
+				'questions': this.visiteFB.array(questionsArrayFB)
+			})
+			catQuestionsListFormArray.push(cat);
+			
 		})
 
 		const signatureRedacteur = this.visiteForm.get('signature_redacteur') as FormGroup;
-		if(visite.sign_redacteur){
+		if (visite.sign_redacteur) {
 			signatureRedacteur.patchValue(visite.sign_redacteur);
 		}
 		const signatureVisite = this.visiteForm.get('signature_visite') as FormGroup;
-		if(visite.sign_visite){
+		if (visite.sign_visite) {
 			signatureVisite.patchValue(visite.sign_visite);
 		}
 		const signatureRespHse = this.visiteForm.get('signature_resp_hse') as FormGroup;
-		if(visite.sign_resp_hse){
+		if (visite.sign_resp_hse) {
 			signatureRespHse.patchValue(visite.sign_resp_hse);
 		}
 
@@ -178,7 +188,7 @@ export class VisiteOutillageDetailComponent implements OnInit, OnDestroy {
 			Swal.fire({
 				title: 'Cette visite a correctement été supprimée',
 				showConfirmButton: false,
-				icon : 'success',
+				icon: 'success',
 				timer: 1500
 			});
 			this.router.navigate(['/visites-securite/outillages/list']);
@@ -186,55 +196,55 @@ export class VisiteOutillageDetailComponent implements OnInit, OnDestroy {
 			Swal.fire({
 				title: "Cette visite n'a pas pu être supprimée",
 				showConfirmButton: false,
-				icon : 'error',
+				icon: 'error',
 				timer: 1500
 			});
 		});
 	}
 
-	async onSubmit(event){
+	async onSubmit(event) {
 		try {
-		  let form = {...this.visiteForm.getRawValue()};
-		  this.formStatus.onFormSubmitting();
-		  this.parseVisitesDate(form, 'FrToEn');
-	
-		  this.visiteService.update(form)
-			.toPromise()
-			.then((visite) => {
-			  this.cdr.markForCheck();
-			  
-			  Swal.fire({
-				icon: 'success',
-				title: 'Visite mise à jour avec succès',
-				showConfirmButton: false,
-				timer: 1500
-			  });
-			})
-			.catch(err =>{ 
-	
-			  Swal.fire({
-				icon: 'error',
-				title: 'Echec! le formulaire est incomplet',
-				showConfirmButton: false,
-				timer: 1500
-			  });
-	
-			  if(err.status === 422){
-				var messages = extractErrorMessagesFromErrorResponse(err);
-				this.formStatus.onFormSubmitResponse({success: false, messages: messages});
-				this.cdr.detectChanges();
-				this.cdr.markForCheck();
-			  }
-	
-			});
-			
-		  this.cdr.markForCheck();
+			let form = { ...this.visiteForm.getRawValue() };
+			this.formStatus.onFormSubmitting();
+			this.parseVisitesDate(form, 'FrToEn');
+
+			this.visiteService.update(form)
+				.toPromise()
+				.then((visite) => {
+					this.cdr.markForCheck();
+
+					Swal.fire({
+						icon: 'success',
+						title: 'Visite mise à jour avec succès',
+						showConfirmButton: false,
+						timer: 1500
+					});
+				})
+				.catch(err => {
+
+					Swal.fire({
+						icon: 'error',
+						title: 'Echec! le formulaire est incomplet',
+						showConfirmButton: false,
+						timer: 1500
+					});
+
+					if (err.status === 422) {
+						var messages = extractErrorMessagesFromErrorResponse(err);
+						this.formStatus.onFormSubmitResponse({ success: false, messages: messages });
+						this.cdr.detectChanges();
+						this.cdr.markForCheck();
+					}
+
+				});
+
+			this.cdr.markForCheck();
 		} catch (error) {
-		  console.error(error);
-		  throw error;
+			console.error(error);
+			throw error;
 		}
 	}
-	
 
-	
+
+
 }

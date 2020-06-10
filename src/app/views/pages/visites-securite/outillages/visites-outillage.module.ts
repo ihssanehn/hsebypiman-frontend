@@ -62,16 +62,16 @@ const routes: Routes = [
 				component: VisitesOutillageComponent
 				// component: VisiteOutillageAddComponent
 			},
-			{
-				path: 'edit',
-				component: VisitesOutillageComponent
-				// component: VisiteOutillageEditComponent
-			},
-			{
-				path: 'edit/:id',
-				//component: VisitesOutillageComponent
-				component: VisiteOutillageEditComponent
-			},
+			// {
+			// 	path: 'edit',
+			// 	component: VisitesOutillageComponent
+			// 	// component: VisiteOutillageEditComponent
+			// },
+			// {
+			// 	path: 'edit/:id',
+			// 	//component: VisitesOutillageComponent
+			// 	component: VisiteOutillageEditComponent
+			// },
 		]
 	}
 ];
