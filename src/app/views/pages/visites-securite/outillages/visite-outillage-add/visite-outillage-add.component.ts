@@ -65,7 +65,8 @@ export class VisiteOutillageAddComponent implements OnInit {
 
   async getQuestions(){
     this.catQuestionsService.getAll({code : 'OUTIL'}).toPromise().then(res => {
-      this.catQuestionsList = res.result.data
+      this.catQuestionsList = res.result.data;
+      this.patchQuestionsForm();
     });
   }
   
@@ -74,6 +75,7 @@ export class VisiteOutillageAddComponent implements OnInit {
       'outillage_code': ['', Validators.required],
       'code' : [{value : null, disabled : false},Validators.required],
       'salarie_id': [{value:null, disabled:false}, Validators.required],
+      'catQuestionsList' : this.visiteFB.array([]),
       'entreprise_id': [{value:null, disabled:false}, Validators.required],
       'redacteur_id': [{value:null, disabled:true}, Validators.required],
       'date_visite': [moment().format('YYYY-MM-DD'), Validators.required],
@@ -102,7 +104,35 @@ export class VisiteOutillageAddComponent implements OnInit {
 		this.loaded = true;
 		this.cdr.detectChanges();
   }
-  
+
+
+  patchQuestionsForm() {
+		
+		const catQuestionsListFormArray: FormArray = this.visiteForm.get('catQuestionsList') as FormArray;
+		this.catQuestionsList.forEach((element, i) => {
+			let questionsArrayFB = []
+			element.questions.forEach(quest => {
+				var question = this.visiteFB.group({
+					'id': [quest.id],
+					'libelle': [quest.libelle],
+					'pivot': this.visiteFB.group({
+						'note': [null, Validators.required],
+						'date_remise_conf': [null],
+						'observation': ['']
+					})
+				});
+				questionsArrayFB.push(question);			
+			})
+			var cat = this.visiteFB.group({
+				'id': [element.id],
+				'libelle': [element.libelle],
+				'code': [ element.code],
+				'questions': this.visiteFB.array(questionsArrayFB)
+      })
+      console.log(cat);
+			catQuestionsListFormArray.push(cat);
+    })
+  }
 
   onOutillageSelected(code: string) {
     this.visiteForm.get('outillage_code').setValue(code);

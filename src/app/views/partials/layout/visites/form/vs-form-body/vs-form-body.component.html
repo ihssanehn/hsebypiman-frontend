@@ -38,8 +38,8 @@
 								<div class="col-3">Commentaire</div>
 								<div class="col-2">Date de mise en conformité</div>
 							</div>
-							<div class="row align-items-center" *ngFor="let question of catQuestion.questions; let j = index; let last = last" [ngClass]="{'text-danger':getPivot(question.id).invalid}">
-								<ng-container [formGroup]="getPivot(question.id)" >
+							<div class="row align-items-center" *ngFor="let question of catQuestion.questions; let j = index; let last = last" [ngClass]="{'text-danger':getPivot(question.id, i).invalid}">
+								<ng-container [formGroup]="getPivot(question.id, i)" >
 									<div class="col-5">
 										<span class="p2-pl-12">
 											{{(i+1) +'.'+(j+1)}} - {{question.libelle}}
@@ -53,16 +53,16 @@
 										</mat-radio-group>
 									</div>
 									<div class="col-3">
-										<textarea class="form-control" rows="2" formControlName="observation" *ngIf="!getPivot(question.id).get('observation').disabled; else observationValue"></textarea>
+										<textarea class="form-control" rows="2" formControlName="observation" *ngIf="!getPivot(question.id,i).get('observation').disabled; else observationValue"></textarea>
 										<ng-template #observationValue>
-											{{getPivotObs(question.id)}}
+											{{getPivotObs(question.id, i)}}
 										</ng-template>
 									</div>
 									<div class="col-2">
 										<div class="dropdown">
 											<ng-container *ngIf="origin == 'add'; else detailMode" >
 												<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" placeholder="DD/MM/YYYY" formControlName="date_remise_conf">
-												<a class="text-primary" (click)="getPivot(question.id).controls['date_remise_conf'].setValue(today)">
+												<a class="text-primary" (click)="getPivot(question.id,i).controls['date_remise_conf'].setValue(today)">
 													<i>date du jour</i>
 												</a>
 											</ng-container>
