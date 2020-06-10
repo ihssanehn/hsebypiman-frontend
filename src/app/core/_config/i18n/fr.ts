@@ -518,13 +518,13 @@ export const locale = {
 				SHORTTITLE: 'Nom'
 			},
 			VEHICULE:{
-				LABEL:'Nom de vehicule',
-				TITLE:'Nom de vehicule',
+				LABEL:'Nom de véhicule',
+				TITLE:'Nom de véhicule',
 				SHORTTITLE: 'Nom'
 			},
 			MARQUE:{
-				LABEL:'Marque de vehicule',
-				TITLE:'Marque de vehicule',
+				LABEL:'Marque de véhicule',
+				TITLE:'Marque de véhicule',
 				SHORTTITLE: 'Marque'
 			},
 			ENTREPRISE:{
@@ -581,20 +581,20 @@ export const locale = {
 				LABEL_COMP:'(quand attitude non sécuritaire)'
 			},
 			ADD_VEHICULE:{
-				LABEL:'Saisir un vehicule',
-				TITLE:'Saisir un vehicule',
+				LABEL:'Saisir un véhicule',
+				TITLE:'Saisir un véhicule',
 				SHORTTITLE: 'Saisir'
 			},
 			DETAIL_VEHICULE:{
-				LABEL:'Informations vehicule',
-				TITLE:'Informations vehicule',
+				LABEL:'Informations véhicule',
+				TITLE:'Informations véhicule',
 				SUBTITLE: '',
 				SHORTTITLE: 'Informations'
 			},
 			VEHICULE_FOUND:{
-				LABEL:'Un vehicule saisi',
-				TITLE:'Un vehicule saisi',
-				SHORTTITLE: 'Un vehicule saisi'
+				LABEL:'Un véhicule saisi',
+				TITLE:'Un véhicule saisi',
+				SHORTTITLE: 'Un véhicule saisi'
 			},
 		},
 		EPIS:{
