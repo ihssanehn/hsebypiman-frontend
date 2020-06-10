@@ -129,7 +129,6 @@ export class VisiteOutillageAddComponent implements OnInit {
 				'code': [ element.code],
 				'questions': this.visiteFB.array(questionsArrayFB)
       })
-      console.log(cat);
 			catQuestionsListFormArray.push(cat);
     })
   }
@@ -211,7 +210,8 @@ export class VisiteOutillageAddComponent implements OnInit {
   }
 
   questionsLoaded(){
-    return this.visiteForm.get('questions').value.length > 0
+    return this.visiteForm.get('catQuestionsList').value.length > 0;
+    console.log(this.visiteForm);
   }
 
   public findInvalidControls() {
@@ -227,8 +227,8 @@ export class VisiteOutillageAddComponent implements OnInit {
   }
 
   questionsAnswerd(){
-    const questionsList = this.visiteForm.get('questions');
-    return questionsList.value.length > 0 && questionsList.valid
+    const questionsList = this.visiteForm.get('catQuestionsList');
+    return questionsList.value.length > 0 && !questionsList.invalid
   }  
 
   displaySignature(){
