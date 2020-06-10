@@ -5,7 +5,6 @@ import { User } from '../auth';
 export class VisiteChantier {
     id?:Number;
     code?:String;
-    vehicule?:String;
     salarie_id?:Number;
     entreprise_id?:Number;
     redacteur_id?:Number;
