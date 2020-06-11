@@ -236,12 +236,9 @@ import { VisiteQuestionOutillageAdminComponent } from './layout/outillage/visite
 		SignatureListComponent,
 		ArDetailPanelsComponent,
 		SearchOutillageFormComponent,
-<<<<<<< src/app/views/partials/partials.module.ts
 		SearchSalarieFormComponent,
-		VisiteQuestionOutillageAdminComponent
-=======
+		VisiteQuestionOutillageAdminComponent,
 		AddVehiculeFormComponent
->>>>>>> src/app/views/partials/partials.module.ts
 	],
 	imports: [
 		CommonModule,
