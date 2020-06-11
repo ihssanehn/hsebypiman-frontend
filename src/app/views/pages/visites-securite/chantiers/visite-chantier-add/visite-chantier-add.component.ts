@@ -92,7 +92,6 @@ export class VisiteChantierAddComponent implements OnInit {
       }),
 		});
 		this.loaded = true;
-		this.cdr.detectChanges();
   }
   
   setDynamicValidators() {
@@ -165,7 +164,6 @@ export class VisiteChantierAddComponent implements OnInit {
           if(err.status === 422){
             var messages = extractErrorMessagesFromErrorResponse(err);
             this.formStatus.onFormSubmitResponse({success: false, messages: messages});
-            this.cdr.detectChanges();
             this.cdr.markForCheck();
           }
 

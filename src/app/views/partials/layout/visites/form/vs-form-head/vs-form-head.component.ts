@@ -3,7 +3,7 @@ import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormBuilder, AbstractControl, FormControl, Validators } from '@angular/forms';
 import { AuthService, User } from '@app/core/auth';
 import { Type, Status, Entreprise } from '@app/core/models';
-import { TypeService, StatusService, EntrepriseService } from '@app/core/services';
+import { TypeService, StatusService, EntrepriseService, UserService } from '@app/core/services';
 import { first } from 'rxjs/operators';
 
 
@@ -30,7 +30,7 @@ export class VsFormHeadComponent implements OnInit {
   constructor(
     private typeService:TypeService,
     private statusService:StatusService,
-    private authService:AuthService,
+    private userService:UserService,
     private entrepriseService:EntrepriseService,
     private cdr: ChangeDetectorRef,
   ) { 
@@ -57,7 +57,7 @@ export class VsFormHeadComponent implements OnInit {
     this.cdr.markForCheck();
   }
   async getUsers(){
-    var res = await this.authService.getList().toPromise();
+    var res = await this.userService.getList().toPromise();
     this.users = res.result.data;
     this.cdr.markForCheck();
     this.redacteur = this.users.filter(x=>x.id == this.visiteForm.get('redacteur_id').value)[0];
@@ -87,7 +87,7 @@ export class VsFormHeadComponent implements OnInit {
   }
 
   async getInterimaires(){
-    var res = await this.authService.getAll({'categorie_code':'INTERIMAIRE', 'paginate':false}).toPromise();
+    var res = await this.userService.getAll({'categorie_code':'INTERIMAIRE', 'paginate':false}).toPromise();
     if(res){
       this.interimairesList = res.result.data;
     }

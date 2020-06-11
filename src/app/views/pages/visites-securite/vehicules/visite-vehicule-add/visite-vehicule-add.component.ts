@@ -50,26 +50,23 @@ export class VisiteVehiculeAddComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     public snackBar: MatSnackBar,
     private dateFrToEnPipe:DateFrToEnPipe
-  ) { }
+  ) {
+		this.authService.currentUser.subscribe(x=> this.currentUser = x);
+   }
 
   ngOnInit() {
     this.visite = new VisiteVehicule();
     this.createForm();    
     this.setDynamicValidators();
-    this.getCurrentUser();
   }
 
-	async getCurrentUser() {
-		var res = await this.authService.getUserByToken().toPromise().then(res=>{this.visiteForm.get('redacteur_id').setValue(res.result.data.id)});
-		this.cdr.detectChanges();
-  }
   
   createForm() {
 		this.visiteForm = this.visiteFB.group({
       'vehicule': ['', Validators.required],
       'salarie_id': [{value:null, disabled:false}, Validators.required],
       'entreprise_id': [{value:null, disabled:false}, Validators.required],
-      'redacteur_id': [{value:null, disabled:true}, Validators.required],
+      'redacteur_id': [{value:this.currentUser.id, disabled:true}, Validators.required],
       'date_visite': [moment().format('YYYY-MM-DD'), Validators.required],
       'presence_non_conformite': [{value:false, disabled: true}],
       'has_rectification_imm': [{value:false, disabled: false}],
@@ -91,7 +88,6 @@ export class VisiteVehiculeAddComponent implements OnInit {
       }),
 		});
 		this.loaded = true;
-		this.cdr.detectChanges();
   }
   
   setDynamicValidators() {
@@ -159,7 +155,6 @@ export class VisiteVehiculeAddComponent implements OnInit {
           if(err.status === 422){
             var messages = extractErrorMessagesFromErrorResponse(err);
             this.formStatus.onFormSubmitResponse({success: false, messages: messages});
-            this.cdr.detectChanges();
             this.cdr.markForCheck();
           }
 

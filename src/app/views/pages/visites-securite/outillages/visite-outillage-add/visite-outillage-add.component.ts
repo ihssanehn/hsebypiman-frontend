@@ -49,18 +49,13 @@ export class VisiteOutillageAddComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     public snackBar: MatSnackBar,
     private dateFrToEnPipe:DateFrToEnPipe
-  ) { }
+  ) { 
+		this.authService.currentUser.subscribe(x=> this.currentUser = x);}
 
   ngOnInit() {
     this.visite = new VisiteOutillage();
     this.createForm();    
-    this.getCurrentUser();
     this.getQuestions();
-  }
-
-	async getCurrentUser() {
-		var res = await this.authService.getUserByToken().toPromise().then(res=>{this.visiteForm.get('redacteur_id').setValue(res.result.data.id)});
-		this.cdr.detectChanges();
   }
 
   async getQuestions(){
@@ -76,7 +71,7 @@ export class VisiteOutillageAddComponent implements OnInit {
       'code' : [{value : null, disabled : false},Validators.required],
       'salarie_id': [{value:null, disabled:false}, Validators.required],
       'catQuestionsList' : this.visiteFB.array([]),
-      'entreprise_id': [{value:null, disabled:false}, Validators.required],
+      'entreprise_id': [{value:this.currentUser.id, disabled:false}, Validators.required],
       'redacteur_id': [{value:null, disabled:true}, Validators.required],
       'date_visite': [moment().format('YYYY-MM-DD'), Validators.required],
       // 'is_validated_redacteur': ['', Validators.required],
@@ -102,7 +97,6 @@ export class VisiteOutillageAddComponent implements OnInit {
       }),
 		});
 		this.loaded = true;
-		this.cdr.detectChanges();
   }
 
 
@@ -172,7 +166,6 @@ export class VisiteOutillageAddComponent implements OnInit {
           if(err.status === 422){
             var messages = extractErrorMessagesFromErrorResponse(err);
             this.formStatus.onFormSubmitResponse({success: false, messages: messages});
-            this.cdr.detectChanges();
             this.cdr.markForCheck();
           }
 

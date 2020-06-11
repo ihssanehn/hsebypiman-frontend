@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component, OnInit, EventEmitter, Output, Input, forw
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormBuilder, FormGroup } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
-import { OutillageService, TypeService, StatusService, EntrepriseService } from '@app/core/services';
+import { OutillageService, TypeService, StatusService, EntrepriseService, UserService } from '@app/core/services';
 import { Outillage, Type, Status, Entreprise } from '@app/core/models';
 import { AuthService, User } from '@app/core/auth';
 import * as moment from 'moment';
@@ -48,7 +48,7 @@ export class VisiteOutillageFiltersComponent implements OnInit, AfterViewInit
     private outillageService:OutillageService, 
     private entrepriseService:EntrepriseService, 
     private typeService:TypeService,
-    private authService:AuthService,
+    private userService:UserService,
     private fb: FormBuilder,
     private cdr: ChangeDetectorRef,
     private dateFrToEnPipe:DateFrToEnPipe,
@@ -76,21 +76,18 @@ export class VisiteOutillageFiltersComponent implements OnInit, AfterViewInit
 
   // Load ressources needed
   async getUsers(){
-    var res = await this.authService.getList().toPromise();
+    var res = await this.userService.getList().toPromise();
     this.users = res.result.data;
-    this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
   async getEntreprises(){
     var res = await this.entrepriseService.getList().toPromise();
     this.entreprises = res.result.data;
-    this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
   async getTypes(){
     var res = await this.typeService.getAllFromModel('VsOutillage').toPromise();
     this.types = res.result.data;
-    this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
   

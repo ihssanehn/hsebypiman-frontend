@@ -23,7 +23,6 @@ export class VisiteVehiculeAdminComponent implements OnInit {
   async getTypes(){
       var res = await this.typeService.getAllFromModel('VsVehicule').toPromise();
       this.types = res.result.data
-      this.cdr.detectChanges();
       this.cdr.markForCheck();
   }
 

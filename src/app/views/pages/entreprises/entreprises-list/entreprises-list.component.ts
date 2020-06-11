@@ -64,7 +64,9 @@ export class EntreprisesListComponent implements OnInit, AfterViewInit {
 			};
 			this.filter.page = this.pagination.page;
 			this.filter.per_page = this.pagination.pageSize;
-			this.cdr.detectChanges();
+			if(!this.cdr['destroyed']){ 
+				this.cdr.detectChanges();
+			}
 			this.cdr.markForCheck();
 		} catch (error) {
 			console.error(error);

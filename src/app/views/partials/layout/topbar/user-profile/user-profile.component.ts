@@ -46,7 +46,9 @@ export class UserProfileComponent implements OnInit {
 	 */
 	async ngOnInit() {
 		// this.user = await this.authService.getUserByToken().toPromise();
-		// this.cdr.detectChanges();
+		// if(!this.cdr['destroyed']){ 
+		// 	this.cdr.detectChanges();
+		// }
 	}
 
 	viewProfile(){
