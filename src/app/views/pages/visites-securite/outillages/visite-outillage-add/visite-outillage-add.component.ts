@@ -64,7 +64,7 @@ export class VisiteOutillageAddComponent implements OnInit {
   }
 
   async getQuestions(){
-    this.catQuestionsService.getAll({code : 'OUTIL'}).toPromise().then(res => {
+    this.catQuestionsService.getAll({code : 'OUTIL_ELEC'}).toPromise().then(res => {
       this.catQuestionsList = res.result.data;
       this.patchQuestionsForm();
     });
@@ -132,6 +132,14 @@ export class VisiteOutillageAddComponent implements OnInit {
 			catQuestionsListFormArray.push(cat);
     })
   }
+
+  onUserSelected(form){
+    this.visiteForm.get('outillage_code').setValue(form.get('outillage_code'));
+    this.visiteForm.patchValue(form);
+    console.log(form);
+    this.displayQuestions();
+  }
+
 
   onOutillageSelected(code: string) {
     this.visiteForm.get('outillage_code').setValue(code);

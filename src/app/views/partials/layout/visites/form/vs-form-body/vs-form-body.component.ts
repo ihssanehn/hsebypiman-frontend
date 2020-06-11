@@ -68,7 +68,6 @@ export class VsFormBodyComponent implements OnInit {
 
   getPivot(question_id, cat_index): FormGroup {
     const q = this.getQuestion(question_id, cat_index)
-    console.log((this.visiteForm.get('catQuestionsList') as FormArray).at(cat_index));
     if (!q) return null;
     const p = q.get('pivot') as FormGroup;
     if (!p) return null;

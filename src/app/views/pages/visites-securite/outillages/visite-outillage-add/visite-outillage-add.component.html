@@ -13,11 +13,11 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<tf-search-salarie-form [form]="visiteForm" origin="add"></tf-search-salarie-form>
+				<tf-search-salarie-form [form]="visiteForm" origin="add" (onUserSelected)="onUserSelected($event)"></tf-search-salarie-form>
 
 			</div>
 			<div class="col-md-12">
-				<tf-search-outillage-form [form]="visiteForm" origin="add" (onDisplayOutillage)="onOutillageSelected($event)"></tf-search-outillage-form>
+				<!-- <tf-search-outillage-form [form]="visiteForm" origin="add" (onDisplayOutillage)="onOutillageSelected($event)"></tf-search-outillage-form> -->
 			</div>
 		</div>
 		<div class="tf-divider" *ngIf="visiteForm.get('outillage_code').value">

@@ -266,6 +266,7 @@ import { SearchSalarieFormComponent } from './layout/outillage/search-salarie-fo
 		MatTabsModule,
 		MatTooltipModule,
 		MatDialogModule,
+		MatInputModule,
 
 		SignaturePadModule,
 

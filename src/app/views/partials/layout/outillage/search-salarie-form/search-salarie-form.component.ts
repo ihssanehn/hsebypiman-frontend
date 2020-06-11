@@ -1,8 +1,10 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AuthService, User } from '@app/core/auth';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
+import { TypeService } from '@app/core/services';
+import { Type } from '@app/core/models';
 
 @Component({
   selector: 'tf-search-salarie-form',
@@ -20,16 +22,28 @@ export class SearchSalarieFormComponent implements OnInit {
   filteredSalaries : Observable<User[]>
   salaries: User[];
   salarie : User;
-  constructor(private salarieService : AuthService) { }
+  types : Type[];
+  constructor(private salarieService : AuthService,
+    private cdr : ChangeDetectorRef,
+    private typeService : TypeService) { }
 
   async ngOnInit() {
     this.salaries = (await this.salarieService.getList().toPromise()).result.data;
-    this.initFilteredSalaries()
+    this.initFilteredSalaries();
+    this.getTypes();
+  }
+
+  async getTypes(){
+    var res = await this.typeService.getAllFromModel('VsOutillage').toPromise();
+    this.types = res.result.data
+    this.cdr.detectChanges();
+    this.cdr.markForCheck();
   }
 
 
+
   onSubmit(){
-    this.onUserSelected.emit(this.salarie);
+    this.onUserSelected.emit(this.form);
   }
 
 
@@ -55,5 +69,36 @@ export class SearchSalarieFormComponent implements OnInit {
 
   displayFn(user: User): String {
     return user ? user.nom +' '+ user.prenom : '';
+  }
+
+  isFieldRequired(controlName){
+    if(this.form && this.form.controls[controlName]){
+      const control = this.form.controls[controlName]
+      const { validator } = control
+      if (validator) {
+          const validation = validator(new FormControl())
+          return validation !== null && validation.required === true
+      }
+    }
+  }
+
+  clearValue(key){
+    this.form.get(key).patchValue(null);
+  }
+
+  /**
+	 * Checking control validation
+	 *
+	 * @param controlName: string => Equals to formControlName
+	 * @param validationType: string => Equals to valitors name
+	 */
+	isControlHasError(controlName: string, validationType: string): boolean {
+		const control = this.form.controls[controlName];
+		if (!control) {
+			return false;
+		}
+
+		const result = control.hasError(validationType) && (control.dirty || control.touched);
+		return result;
   }
 }

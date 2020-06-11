@@ -56,18 +56,6 @@
                     
                 }
             }       
-            .btn-search{
-                // width: 79px;
-                height: 30px;
-                border-radius: 8px;
-                background-color: #ddf5f4;
-                font-size: 1em;
-                font-weight: bold;
-                font-stretch: normal;
-                font-style: normal;
-                color: #33b5ae;
-                border: none;
-            }
         }
     }
     .search-result-block{
@@ -91,4 +79,17 @@
 
 .tf-form__section input{
     font-weight: bold;
+}
+
+.btn-search{
+    // width: 79px;
+    height: 30px;
+    border-radius: 8px;
+    background-color: #ddf5f4;
+    font-size: 1em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    color: #33b5ae;
+    border: none;
 }
