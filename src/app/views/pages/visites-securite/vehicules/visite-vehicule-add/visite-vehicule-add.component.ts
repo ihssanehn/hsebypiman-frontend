@@ -86,6 +86,7 @@ export class VisiteVehiculeAddComponent implements OnInit {
         'date':[{value:null, disabled:true}],
         'signature': [{value:null, disabled:true}]
       }),
+      'img_canvas': [{value:null, disabled:true}]
 		});
 		this.loaded = true;
   }

@@ -16,6 +16,7 @@ export { AddVehiculeFormComponent } from './vehicule/form/add-vehicule-form/add-
 export { VsFormHeadComponent } from './visites/form/vs-form-head/vs-form-head.component';
 export { VsFormBodyComponent } from './visites/form/vs-form-body/vs-form-body.component';
 export { VsFormSignaturesComponent } from './visites/form/vs-form-signatures/vs-form-signatures.component';
+export { VsVehiculeFormImgComponent } from './visites/form/vs-vehicule/vs-vehicule-form-img/vs-vehicule-form-img.component';
 
 // Components
 export { ContextMenuComponent } from './context-menu/context-menu.component';

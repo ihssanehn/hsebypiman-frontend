@@ -114,6 +114,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import { SearchOutillageFormComponent } from './layout/outillage/search-outillage-form/search-outillage-form.component';
 import { SearchSalarieFormComponent } from './layout/outillage/search-salarie-form/search-salarie-form.component';
 import { VisiteQuestionOutillageAdminComponent } from './layout/outillage/visite-question-outillage-admin/visite-question-outillage-admin.component';
+import { VsVehiculeFormImgComponent } from './layout/visites/form/vs-vehicule/vs-vehicule-form-img/vs-vehicule-form-img.component';
 
 @NgModule({
 	declarations: [
@@ -174,7 +175,8 @@ import { VisiteQuestionOutillageAdminComponent } from './layout/outillage/visite
 
 		SearchSalarieFormComponent,
 		VisiteQuestionOutillageAdminComponent,
-		AddVehiculeFormComponent
+		AddVehiculeFormComponent,
+		VsVehiculeFormImgComponent
 	],
 	exports: [
 		WidgetModule,
@@ -238,7 +240,8 @@ import { VisiteQuestionOutillageAdminComponent } from './layout/outillage/visite
 		SearchOutillageFormComponent,
 		SearchSalarieFormComponent,
 		VisiteQuestionOutillageAdminComponent,
-		AddVehiculeFormComponent
+		AddVehiculeFormComponent,
+		VsVehiculeFormImgComponent
 	],
 	imports: [
 		CommonModule,
