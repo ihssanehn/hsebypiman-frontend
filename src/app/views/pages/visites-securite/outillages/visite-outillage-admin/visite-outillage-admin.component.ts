@@ -23,6 +23,7 @@ export class VisiteOutillageAdminComponent implements OnInit {
   async getTypes(){
       var res = await this.typeService.getAllFromModel('VsOutillage').toPromise();
       this.types = res.result.data
+      console.log(this.types);
       this.cdr.detectChanges();
       this.cdr.markForCheck();
   }

@@ -73,6 +73,10 @@ const routes: Routes = [
 			// 	//component: VisitesOutillageComponent
 			// 	component: VisiteOutillageEditComponent
 			// },
+			{
+				path: 'admin',
+				component: VisiteOutillageAdminComponent
+			},
 		]
 	}
 ];

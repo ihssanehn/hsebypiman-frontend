@@ -112,6 +112,7 @@ import { AdminTemplateComponent } from './layout/admin-template/admin-template.c
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { SearchOutillageFormComponent } from './layout/outillage/search-outillage-form/search-outillage-form.component';
 import { SearchSalarieFormComponent } from './layout/outillage/search-salarie-form/search-salarie-form.component';
+import { VisiteQuestionOutillageAdminComponent } from './layout/outillage/visite-question-outillage-admin/visite-question-outillage-admin.component';
 
 @NgModule({
 	declarations: [
@@ -169,7 +170,8 @@ import { SearchSalarieFormComponent } from './layout/outillage/search-salarie-fo
 		SignatureListComponent,
 		ArDetailPanelsComponent,
 		SearchOutillageFormComponent,
-		SearchSalarieFormComponent
+		SearchSalarieFormComponent,
+		VisiteQuestionOutillageAdminComponent
 	],
 	exports: [
 		WidgetModule,
@@ -231,7 +233,8 @@ import { SearchSalarieFormComponent } from './layout/outillage/search-salarie-fo
 		SignatureListComponent,
 		ArDetailPanelsComponent,
 		SearchOutillageFormComponent,
-		SearchSalarieFormComponent
+		SearchSalarieFormComponent,
+		VisiteQuestionOutillageAdminComponent
 	],
 	imports: [
 		CommonModule,
