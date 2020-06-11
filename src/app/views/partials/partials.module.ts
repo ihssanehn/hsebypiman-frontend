@@ -83,6 +83,7 @@ import {
 	SignatureAddComponent,
 	SignatureListComponent,
 	ArDetailPanelsComponent,
+	AddVehiculeFormComponent
 } from './layout';
 // General
 import { NoticeComponent } from './content/general/notice/notice.component';
@@ -167,7 +168,8 @@ import { SearchOutillageFormComponent } from './layout/outillage/search-outillag
 		SignatureAddComponent,
 		SignatureListComponent,
 		ArDetailPanelsComponent,
-		SearchOutillageFormComponent
+		SearchOutillageFormComponent,
+		AddVehiculeFormComponent
 	],
 	exports: [
 		WidgetModule,
@@ -228,7 +230,8 @@ import { SearchOutillageFormComponent } from './layout/outillage/search-outillag
 		SignatureAddComponent,
 		SignatureListComponent,
 		ArDetailPanelsComponent,
-		SearchOutillageFormComponent
+		SearchOutillageFormComponent,
+		AddVehiculeFormComponent
 	],
 	imports: [
 		CommonModule,

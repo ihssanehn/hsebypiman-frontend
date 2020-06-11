@@ -17,20 +17,11 @@
 
       <!-- nom de vehicule Column -->
       <ng-container matColumnDef="vehicule">
-        <th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder(['vehicules.nom', 'visites_vehicule.code'])">
-          {{'VISITES.CHANTIER.TITLE' | translate}} 
-          <i class="fa" [ngClass]="isOrderedBy(['vehicules.nom', 'visites_vehicule.code']) && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy(['vehicules.nom', 'visites_vehicule.code']) && {opacity:1}"></i>
+        <th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder(['visites_vehicule.vehicule', 'visites_vehicule.code'])">
+          {{'VISITES.VEHICULE.TITLE' | translate}} 
+          <i class="fa" [ngClass]="isOrderedBy(['visites_vehicule.vehicule', 'visites_vehicule.code']) && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy(['visites_vehicule.vehicule', 'visites_vehicule.code']) && {opacity:1}"></i>
         </th>
-        <td mat-cell *matCellDef="let visite"  (click)="viewVisite(visite.id)" class="pointer"> {{visite.vehicule.nom | truncate:35}}</td>
-      </ng-container>
-
-      <!-- client Column -->
-      <ng-container matColumnDef="client">
-        <th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder(['vehicules.client', 'visites_vehicule.code'])">
-          {{'VISITES.CLIENT.TITLE' | translate}}
-          <i class="fa" [ngClass]="isOrderedBy(['vehicules.client', 'visites_vehicule.code']) && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy(['vehicules.client', 'visites_vehicule.code']) && {opacity:1}"></i>
-        </th>
-        <td mat-cell *matCellDef="let visite"  (click)="viewVisite(visite.id)" class="pointer"> {{visite.vehicule.client | truncate:35}}</td>
+        <td mat-cell *matCellDef="let visite"  (click)="viewVisite(visite.id)" class="pointer"> {{visite.vehicule | truncate:35}}</td>
       </ng-container>
 
       <!-- type Column -->
@@ -123,9 +114,6 @@
   <!-- *ngxPermissionsOnly="['ADMIN']" -->
   <button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}" (click)="viewVisite(visite_id)">
     <mat-icon>visibility</mat-icon>
-  </button>
-  <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editVisite(visite_id)">
-    <mat-icon>edit</mat-icon>
   </button>
   <button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteVisite(visite_id)">
     <mat-icon>delete</mat-icon>

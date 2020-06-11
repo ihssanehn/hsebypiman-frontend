@@ -26,6 +26,7 @@ export class VsFormHeadComponent implements OnInit {
   @Input() visiteForm: FormGroup;
   @Input() origin: string;
   @Input() edit: Boolean;
+  @Input() model: string;
   constructor(
     private typeService:TypeService,
     private statusService:StatusService,
@@ -45,11 +46,14 @@ export class VsFormHeadComponent implements OnInit {
     this.getStatus();
     this.getInterimaires();
     this.getEntreprises();
-    this.setDynamicEntreprise();
+    
+    if(origin == 'VsChantier'){
+      this.setDynamicEntreprise();
+    }
   }
 
   async getTypes(){
-    var res = await this.typeService.getAllFromModel('VsChantier').toPromise();
+    var res = await this.typeService.getAllFromModel(this.model).toPromise();
     this.types = res.result.data
     this.cdr.markForCheck();
   }
