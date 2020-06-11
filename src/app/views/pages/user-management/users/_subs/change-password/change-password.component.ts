@@ -46,7 +46,7 @@ export class ChangePasswordComponent implements OnInit {
 		const newUser = new User();
 		newUser.password = this.password.value;
 		newUser.id = this.user.id;
-		// await this.authService.updateUser(newUser).toPromise();
+		// await this.userService.updateUser(newUser).toPromise();
 		// this.notificationService.success("Success", message);
 	}
 
