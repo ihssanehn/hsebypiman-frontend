@@ -16,6 +16,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class VsFormSignaturesComponent implements OnInit, AfterViewInit {
 
   catQuestionsList: CatQuestion[];
+  needHseValidation: false;
+
 
   @Input() visiteForm: FormGroup;
   @Input() isDisableToggle: boolean;
@@ -125,7 +127,6 @@ export class VsFormSignaturesComponent implements OnInit, AfterViewInit {
       .setValue(this.signaturePad3.toDataURL());
 
     this.visiteForm.controls[i].get('date').setValue(moment().format('YYYY-MM-DD'));
-    console.log(this.visiteForm.controls[i]);
 
   }
 

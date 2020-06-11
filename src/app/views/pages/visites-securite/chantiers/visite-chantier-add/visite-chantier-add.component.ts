@@ -51,19 +51,17 @@ export class VisiteChantierAddComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     public snackBar: MatSnackBar,
     private dateFrToEnPipe:DateFrToEnPipe
-  ) { }
+  ) { 
+    
+		this.authService.currentUser.subscribe(x=> this.currentUser = x);
+  }
 
   ngOnInit() {
     this.visite = new VisiteChantier();
     this.createForm();    
     this.setDynamicValidators();
-    this.getCurrentUser();
   }
 
-	async getCurrentUser() {
-		var res = await this.authService.getUserByToken().toPromise().then(res=>{this.visiteForm.get('redacteur_id').setValue(res.result.data.id)});
-		this.cdr.detectChanges();
-  }
   
   createForm() {
 		this.visiteForm = this.visiteFB.group({
@@ -71,17 +69,15 @@ export class VisiteChantierAddComponent implements OnInit {
       'chantier': [''],
       'salarie_id': [{value:null, disabled:false}, Validators.required],
       'entreprise_id': [{value:null, disabled:false}, Validators.required],
-      'redacteur_id': [{value:null, disabled:true}, Validators.required],
+      'interimaire_id': [{value:null, disabled:false}],
+      'nom_prenom': [{value:null, disabled:false}],
+      'redacteur_id': [{value:this.currentUser.id, disabled:true}, Validators.required],
       'date_visite': [moment().format('DD/MM/YYYY'), Validators.required],
-      // 'is_validated_redacteur': ['', Validators.required],
-      // 'is_validated_visite': ['', Validators.required],
-      // 'validated_redacteur_at': ['', Validators.required],
-      // 'validated_visite_at': ['', Validators.required],
       'presence_non_conformite': [{value:false, disabled: true}],
       'has_rectification_imm': [{value:false, disabled: true}],
       'avertissement': [{value:false, disabled: false}],
       'type_id': [null, Validators.required],
-      'questions': this.visiteFB.array([]),
+      'catQuestionsList': this.visiteFB.array([]),
       'signature_redacteur': this.visiteFB.group({
         'date':[null, Validators.required],
         'signature': [null, Validators.required]
@@ -96,7 +92,6 @@ export class VisiteChantierAddComponent implements OnInit {
       }),
 		});
 		this.loaded = true;
-		this.cdr.detectChanges();
   }
   
   setDynamicValidators() {
@@ -138,6 +133,8 @@ export class VisiteChantierAddComponent implements OnInit {
       let form = {...this.visiteForm.getRawValue()};
       this.formStatus.onFormSubmitting();
       this.parseDates(form);
+      form.presence_non_conformite = this.getPresenceNc();
+      form.has_rectification_imm = this.getHasRectifImmediate();
 
       this.visiteService.create(form)
         .toPromise()
@@ -167,7 +164,6 @@ export class VisiteChantierAddComponent implements OnInit {
           if(err.status === 422){
             var messages = extractErrorMessagesFromErrorResponse(err);
             this.formStatus.onFormSubmitResponse({success: false, messages: messages});
-            this.cdr.detectChanges();
             this.cdr.markForCheck();
           }
 
@@ -183,12 +179,18 @@ export class VisiteChantierAddComponent implements OnInit {
   }
 
   cantDisplayQuestions(){
+
     var test: boolean = this.visiteForm.get('chantier_id').invalid ||
       this.visiteForm.get('type_id').invalid ||
       this.visiteForm.get('salarie_id').invalid || 
-      this.visiteForm.get('entreprise_id').invalid;
+      this.visiteForm.get('entreprise_id').invalid ||
+      this.visiteForm.get('interimaire_id').invalid || 
+      this.visiteForm.get('nom_prenom').invalid;
 
     return test;
+
+
+    
   }  
 
   async displayQuestions(){
@@ -200,72 +202,68 @@ export class VisiteChantierAddComponent implements OnInit {
       tap(res=>{
         this.catQuestionsList = res.result.data;
         this.parseQuestions(res.result.data);
-
       })
     ).subscribe(res=>{
       this.questionsDisplayed = true;
       this.visiteForm.get('type_id').disable();
       this.cdr.markForCheck();
-
     });
   }
 
   parseQuestions(item){
     if(item.length > 0){
-      const questionFormArray = this.visiteForm.get('questions') as FormArray
-
-      for (let i = 0; i < item.length; i++) {
-        const catQ = item[i]; 
-        for (let j = 0; j < catQ.questions.length; j++) {
-          const q = catQ.questions[j];
-          const question = this.visiteFB.group({
-            'id': [q.id],
-            'libelle': [q.libelle],
+      const catQuestionsListFormArray = this.visiteForm.get('catQuestionsList') as FormArray
+      
+      this.catQuestionsList.forEach((element, i) => {
+        let questionsArrayFB = []
+        element.questions.forEach(quest => {
+          var question = this.visiteFB.group({
+            'id': [quest.id],
+            'libelle': [quest.libelle],
             'pivot': this.visiteFB.group({
-              'note':[{value:null, disabled:false}, Validators.required],
-              'date_remise_conf':[{value:null, disabled:false}],
-              'observation':[{value:'', disabled:false}]
+              'note': [null, Validators.required],
+              'date_remise_conf': [null],
+              'observation': ['']
             })
-          })
+          });
 
-          const pivot = question.get('pivot') as FormGroup;
-          const note = pivot.get('note') as FormControl;
-          const date_remise_conf = pivot.get('date_remise_conf') as FormControl;
+          this.setPivotRules(question)
+          questionsArrayFB.push(question);			
+        })
+        var cat = this.visiteFB.group({
+          'id': [element.id],
+          'libelle': [element.libelle],
+          'code': [ element.code],
+          'questions': this.visiteFB.array(questionsArrayFB)
+        })
 
-          note.valueChanges.subscribe(note=>{
-            if(note == 2){
-              date_remise_conf.enable({emitEvent:false, onlySelf:true})
-              this.visiteForm.get('presence_non_conformite').setValue(true);
-            }else{
-              date_remise_conf.disable({emitEvent:false, onlySelf:true})
-              date_remise_conf.setValue(null);
-              var nbr_ko = this.getNotes().ko;
-              if(nbr_ko == 0 && this.visiteForm.get('presence_non_conformite').value == true){
-                this.visiteForm.get('presence_non_conformite').setValue(false);
-              }
-            }
-          })
-
-          pivot.valueChanges.subscribe(pivot=>{
-            var nbr_ko_unsolved = this.getNotes().ko_unsolved;
-            if(nbr_ko_unsolved > 0){
-              this.visiteForm.get('has_rectification_imm').setValue(true)
-            }else{
-              this.visiteForm.get('has_rectification_imm').setValue(false);
-            }
-          })
-
-          questionFormArray.push(question)
-        }
-      }
+        catQuestionsListFormArray.push(cat)
+      })
+      
     }
   }
 
+  setPivotRules(question){
+    const pivot = question.get('pivot') as FormGroup;
+    const note = pivot.get('note') as FormControl;
+    const date_remise_conf = pivot.get('date_remise_conf') as FormControl;
+
+    note.valueChanges.subscribe(note=>{
+      if(note == 2){
+        date_remise_conf.enable({emitEvent:false, onlySelf:true})
+      }else{
+        date_remise_conf.disable({emitEvent:false, onlySelf:true})
+        date_remise_conf.setValue(null);
+      }      
+    })
+  }
 
   parseDates(form){
     form.date_visite = this.dateFrToEnPipe.transform(form.date_visite);
-    form.questions.forEach(x=>{
-      x.pivot.date_remise_conf = this.dateFrToEnPipe.transform(x.pivot.date_remise_conf);
+    form.catQuestionsList.forEach(cat=>{
+      cat.questions.forEach(x=>{
+        x.pivot.date_remise_conf = this.dateFrToEnPipe.transform(x.pivot.date_remise_conf);
+      })
     })
   }
 
@@ -274,7 +272,7 @@ export class VisiteChantierAddComponent implements OnInit {
   }
 
   questionsLoaded(){
-    return this.visiteForm.get('questions').value.length > 0
+    return this.visiteForm.get('catQuestionsList').value.length > 0
   }
 
   public findInvalidControls() {
@@ -290,7 +288,7 @@ export class VisiteChantierAddComponent implements OnInit {
   }
 
   questionsAnswerd(){
-    const questionsList = this.visiteForm.get('questions');
+    const questionsList = this.visiteForm.get('catQuestionsList');
     return questionsList.value.length > 0 && questionsList.valid
   }  
 
@@ -298,15 +296,25 @@ export class VisiteChantierAddComponent implements OnInit {
     this.showSignatures = !this.showSignatures
   }
 
-  getNotes(){
-    const test = this.visiteForm.get('questions').value;
-    var ok = test.filter(x=>x.pivot.note == 1).length
-    var ko = test.filter(x=>x.pivot.note == 2).length
-    var ko_unsolved = test.filter(x=>x.pivot.note == 2 && !x.pivot.date_remise_conf).length
-    var ko_solved = test.filter(x=>x.pivot.note == 2 && x.pivot.date_remise_conf).length
-    var so = test.filter(x=>x.pivot.note == 3).length
-    var total = test.length;
-    return {'ok':ok, 'ko':ko, 'so':so, 'ko_unsolved':ko_unsolved, 'ko_solved':ko_solved, 'total':total};
+  getNotes() {
+    const test = this.visiteForm.get('catQuestionsList').value
+    var questions = test.reduce((prev, curr)=> prev.concat(curr.questions), []);
+
+    var ok = questions.filter(x => x.pivot.note == 1).length
+    var ko = questions.filter(x => x.pivot.note == 2).length
+    var ko_unsolved = questions.filter(x => x.pivot.note == 2 && !x.pivot.date_remise_conf).length
+    var ko_solved = questions.filter(x => x.pivot.note == 2 && x.pivot.date_remise_conf).length
+    var so = questions.filter(x => x.pivot.note == 3).length
+    var total = questions.length;
+    return { 'ok': ok, 'ko': ko, 'so': so, 'ko_unsolved': ko_unsolved, 'ko_solved': ko_solved, 'total': total };
+  }
+
+  getPresenceNc(){
+    return this.getNotes().ko > 0;
+  }
+
+  getHasRectifImmediate(){
+    return this.getNotes().ko > 0 && this.getNotes().ko_unsolved == 0
   }
 
 }

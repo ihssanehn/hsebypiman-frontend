@@ -143,7 +143,6 @@ export class SearchChantierFormComponent implements OnInit {
       if(this.origin == 'add' || this.origin == 'edit'){
         this.form.controls.chantier_id.setValue(this.chantier.id);
       }
-      this.cdr.detectChanges();
       this.cdr.markForCheck();
 		} catch (error) {
 			console.error(error);

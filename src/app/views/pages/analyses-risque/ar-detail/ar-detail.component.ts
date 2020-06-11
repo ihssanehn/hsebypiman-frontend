@@ -72,7 +72,6 @@ export class ArDetailComponent implements OnInit, OnDestroy {
 		try {
 			var res = await this.chantierService.get(chantierId).toPromise();
 			this.chantier = res.result.data;
-			this.cdr.detectChanges();
 			this.cdr.markForCheck();
 		} catch (error) {
 			console.error(error);

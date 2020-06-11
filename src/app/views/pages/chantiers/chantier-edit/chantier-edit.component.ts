@@ -73,7 +73,6 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 					).subscribe( async res => {
 						this.chantier = res.result.data;
 						this.loaded = true;
-						this.cdr.detectChanges();
 						this.cdr.markForCheck();
 					});
 
@@ -238,7 +237,6 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 				if(err.status === 422){
 					var messages = extractErrorMessagesFromErrorResponse(err);
 					this.formStatus.onFormSubmitResponse({success: false, messages: messages});
-					this.cdr.detectChanges();
 					this.cdr.markForCheck();
 				}
 			});

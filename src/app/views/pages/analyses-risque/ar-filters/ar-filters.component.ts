@@ -1,9 +1,9 @@
 import { Component, OnInit, AfterViewInit, Output, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Chantier, Status } from '@app/core/models';
-import { User, AuthService } from '@app/core/auth';
+import { User} from '@app/core/auth';
 import { EventEmitter } from '@angular/core';
-import { StatusService, ChantierService } from '@app/core/services';
+import { StatusService, ChantierService, UserService } from '@app/core/services';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import { debounceTime, map } from 'rxjs/operators';
@@ -37,7 +37,7 @@ export class ArFiltersComponent implements OnInit, AfterViewInit {
   constructor(
     private statusService: StatusService,
     private chantierService:ChantierService, 
-    private authService:AuthService,
+    private userService:UserService,
     private fb: FormBuilder,
     private cdr: ChangeDetectorRef,
     private dateFrToEnPipe:DateFrToEnPipe,
@@ -65,25 +65,21 @@ export class ArFiltersComponent implements OnInit, AfterViewInit {
   async getClients(){
     var res = await this.chantierService.getAllClients().toPromise();
     this.clients = res.result.data;
-    this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
   async getChantiers(){
     var res = await this.chantierService.getList().toPromise();
     this.chantiers = res.result.data;
-    this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
   async getUsers(){
-    var res = await this.authService.getList().toPromise();
+    var res = await this.userService.getList().toPromise();
     this.users = res.result.data;
-    this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
   async getStatus(){
     var res = await this.statusService.getAllFromModel('Ar').toPromise();
     this.status = res.result.data;
-    this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
 

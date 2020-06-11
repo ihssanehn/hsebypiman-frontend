@@ -74,7 +74,6 @@ export class ChantierAddComponent implements OnInit {
       errors:this.chantierFB.array([]),
     });
 		this.loaded = true;
-		this.cdr.detectChanges();
   }
 
   setDynamicValidators(){
@@ -85,7 +84,6 @@ export class ChantierAddComponent implements OnInit {
     
     this.formloading=true;
     this.formStatus.onFormSubmitting();
-    this.cdr.detectChanges();
     this.cdr.markForCheck();
 
     let form = {...this.chantierForm.getRawValue()};
@@ -121,7 +119,6 @@ export class ChantierAddComponent implements OnInit {
         if(err.status === 422){
           var messages = extractErrorMessagesFromErrorResponse(err);
           this.formStatus.onFormSubmitResponse({success: false, messages: messages});
-          this.cdr.detectChanges();
           this.cdr.markForCheck();
         }
       });

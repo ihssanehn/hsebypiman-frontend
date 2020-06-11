@@ -27,7 +27,6 @@ export class VisiteChantierAdminComponent implements OnInit {
   async getTypes(){
       var res = await this.typeService.getAllFromModel('VsChantier').toPromise();
       this.types = res.result.data
-      this.cdr.detectChanges();
       this.cdr.markForCheck();
   }
   getTpl(type){

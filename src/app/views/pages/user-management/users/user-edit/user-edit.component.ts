@@ -199,7 +199,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
 	 * @param withBack: boolean
 	 */
 	async addUser(_user: User, withBack: boolean = false) {
-		// const addSubscription = this.authService.createUser(_user).subscribe(newUser => {
+		// const addSubscription = this.userService.createUser(_user).subscribe(newUser => {
 		// 	const message = `New user successfully has been added.`;
 		// 	// this.notificationService.success("Success", message);
 		// 	this.goBackWithId();
@@ -219,7 +219,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
 	 * @param withBack: boolean
 	 */
 	updateUser(_user: User, withBack: boolean = false) {
-		// this.authService.updateUser(_user).toPromise();
+		// this.userService.updateUser(_user).toPromise();
 		// const message = `User successfully has been saved.`;
 		// // this.notificationService.success("Success", message);
 		// if (withBack) {

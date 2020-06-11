@@ -5,7 +5,7 @@
 		</mat-expansion-panel-header>
 		
 		<div class="row">
-			<div class="col-12 mb-4 text-right">
+			<div class="col-12 mb-4 text-right" *ngIf="needHseValidation">
 				<button mat-raised-button *ngIf="canValidateHse" (click)="validateHse()" color="{{startSignHse ? 'accent':'success'}}" class="btn-small">
 					{{startSignHse ? 'Annuler':'Validation HSE'}}
 				</button>
@@ -60,29 +60,31 @@
 					</div>
 				</div>
 			</div>
-			<div *ngIf="canShowHse()" class="col-4">
-				<div class="tf-card-form">
-					<h5>Signature du responsable hse</h5>
-					<div class="row form-row">
-						<div class="col-xl-12 mb-4">
-							<mat-label>{{'COMMON.DATE.LABEL' | translate}} </mat-label>
-							<span class="ml-2"><strong>{{visiteForm.controls['signature_resp_hse'].controls['date'].value | date:'dd/MM/yyyy'}}</strong></span>
-						</div>
-						<div class="col-xl-12 form-row-flex">
-							<label>{{'COMMON.SIGNATURE.LABEL' | translate}} </label>
-							<button mat-icon-button *ngIf="!isDisabledHseSignature()" color="accent" matTooltip="{{'ACTION.CLEAR' | translate}}" (click)="clearSignature3('signature_resp_hse')">
-								<mat-icon>delete</mat-icon>
-							</button>
-							<div class="signature-container" #signatureContainer3 *ngIf="!isDisabledHseSignature()">
-								<signature-pad #sign_canvas_resp_hse (window:resize)="resizeSignaturePad3()" [options]="signaturePadOptions" (onEndEvent)="drawComplete3('signature_resp_hse')"></signature-pad>
+			<ng-container *ngIf="needHseValidation">
+				<div *ngIf="canShowHse()" class="col-4">
+					<div class="tf-card-form">
+						<h5>Signature du responsable hse</h5>
+						<div class="row form-row">
+							<div class="col-xl-12 mb-4">
+								<mat-label>{{'COMMON.DATE.LABEL' | translate}} </mat-label>
+								<span class="ml-2"><strong>{{visiteForm.controls['signature_resp_hse'].controls['date'].value | date:'dd/MM/yyyy'}}</strong></span>
 							</div>
-							<div class="signature-viewer" *ngIf="isDisabledHseSignature()">
-								<img [src]="_sanitizer.bypassSecurityTrustResourceUrl(showSignature('signature_resp_hse'))" *ngIf="showSignature('signature_resp_hse')" width="100%">
+							<div class="col-xl-12 form-row-flex">
+								<label>{{'COMMON.SIGNATURE.LABEL' | translate}} </label>
+								<button mat-icon-button *ngIf="!isDisabledHseSignature()" color="accent" matTooltip="{{'ACTION.CLEAR' | translate}}" (click)="clearSignature3('signature_resp_hse')">
+									<mat-icon>delete</mat-icon>
+								</button>
+								<div class="signature-container" #signatureContainer3 *ngIf="!isDisabledHseSignature()">
+									<signature-pad #sign_canvas_resp_hse (window:resize)="resizeSignaturePad3()" [options]="signaturePadOptions" (onEndEvent)="drawComplete3('signature_resp_hse')"></signature-pad>
+								</div>
+								<div class="signature-viewer" *ngIf="isDisabledHseSignature()">
+									<img [src]="_sanitizer.bypassSecurityTrustResourceUrl(showSignature('signature_resp_hse'))" *ngIf="showSignature('signature_resp_hse')" width="100%">
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			</ng-container>
 		</div>
 	</mat-expansion-panel>
 </ng-container>

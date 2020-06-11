@@ -7,7 +7,7 @@ import { Subscription } from "rxjs";
 import { tap } from 'rxjs/operators';
 
 import { VisiteVehiculeService, VehiculeService } from '@app/core/services';
-import { VisiteVehicule, Vehicule } from '@app/core/models';
+import { VisiteVehicule, Vehicule, CatQuestion } from '@app/core/models';
 import { AuthService, User } from '@app/core/auth';
 import { MatSnackBar } from '@angular/material';
 import Swal from 'sweetalert2';
@@ -33,6 +33,7 @@ export class VisiteVehiculeDetailComponent implements OnInit, OnDestroy {
 	invalid = [];
 	editMode: boolean = false;
 	showSignatures: boolean = false;
+	catQuestionsList: CatQuestion[];
 	vehicule: Vehicule;
 	currentUser: User;
 	questionsDisplayed: boolean = false;
@@ -66,13 +67,13 @@ export class VisiteVehiculeDetailComponent implements OnInit, OnDestroy {
 						this.parseVisitesDate(_visite, 'EnToFr');
 						this.visiteForm.patchValue(_visite);
 						this.patchQuestionsForm(_visite);
+						this.catQuestionsList = res.result.data.catQuestionsList;
 						// this.visiteForm.disable();
 					})
 				).subscribe(async res => {
 					var _visite = res.result.data;
 					this.visite = _visite;
 					this.loaded = true;
-					this.cdr.detectChanges();
 					this.cdr.markForCheck();
 				});
 
@@ -91,7 +92,8 @@ export class VisiteVehiculeDetailComponent implements OnInit, OnDestroy {
 	initForm() {
 		this.visiteForm = this.visiteFB.group({
 			'id': [{value: null, disabled: true}, Validators.required],
-			'vehicule_id': [{value:null, disabled:true}, Validators.required],
+			'code': [{value:null, disabled:true}],
+			'vehicule': [{value:null, disabled:true}, Validators.required],
 			'salarie_id': [{value: null, disabled: true}, Validators.required],
 			'entreprise_id': [{value: null, disabled: true}, Validators.required],
 			'redacteur_id': [{value: null, disabled: true}, Validators.required],
@@ -101,6 +103,7 @@ export class VisiteVehiculeDetailComponent implements OnInit, OnDestroy {
 			'avertissement': [{value: false, disabled: true }],
 			'type_id': [{value:null, disabled:true}, Validators.required],
 			'questions': this.visiteFB.array([]),
+			'catQuestionsList' : this.visiteFB.array([]),
 			'is_validate_resp_hse': [{value:null, disabled:true}],
 			'signature_redacteur': this.visiteFB.group({
 				'date':[{value:null, disabled:true}, Validators.required],
@@ -116,7 +119,6 @@ export class VisiteVehiculeDetailComponent implements OnInit, OnDestroy {
 			  }),
 		});
 		this.loaded = true;
-		this.cdr.detectChanges();
 	}
 
 	parseVisitesDate(item, direction) {
@@ -130,22 +132,35 @@ export class VisiteVehiculeDetailComponent implements OnInit, OnDestroy {
 
 	patchQuestionsForm(visite) {
 
+		const catQuestionsListFormArray: FormArray = this.visiteForm.get('catQuestionsList') as FormArray;
 		const questionsFormArray: FormArray = this.visiteForm.get('questions') as FormArray;
-		visite.questions.forEach(element => {
-			var question = this.visiteFB.group({
-				'id': [{value:element.id, disabled:true}],
-				'libelle': [{value:element.libelle, disabled:true}],
-				'pivot': this.visiteFB.group({
-					'note': [{value:element.pivot.note, disabled: true }, Validators.required],
-					'date_remise_conf': [{value: element.pivot.date_remise_conf, disabled: true }],
-					'observation': [{value: element.pivot.observation, disabled: true }]
-				})
-			});
 
-			if(element.pivot.note == 2){
-				this.visiteForm.get('presence_non_conformite').setValue(true);
-			}
-			questionsFormArray.push(question);
+		visite.catQuestionsList.forEach((element, i) => {
+			let questionsArrayFB = []
+			element.questions.forEach(quest => {
+				var question = this.visiteFB.group({
+					'id': [{ value: quest.id, disabled: true }],
+					'libelle': [{ value: quest.libelle, disabled: true }],
+					'pivot': this.visiteFB.group({
+						'note': [{ value: quest.pivot.note, disabled: true }, Validators.required],
+						'date_remise_conf': [{ value: quest.pivot.date_remise_conf, disabled: true }],
+						'observation': [{ value: quest.pivot.observation, disabled: true }]
+					})
+				});
+
+				if(quest.pivot.note == 2){
+					this.visiteForm.get('presence_non_conformite').setValue(true);
+				}
+				questionsFormArray.push(question);
+				questionsArrayFB.push(question);
+			})
+			var cat = this.visiteFB.group({
+				'id': [{value :element.id, disabled: true}],
+				'libelle': [{value:element.libelle, disabled: true}],
+				'code': [{value : element.code, disabled: true}],
+				'questions': this.visiteFB.array(questionsArrayFB)
+			})
+			catQuestionsListFormArray.push(cat);
 		})
 
 		const signatureRedacteur = this.visiteForm.get('signature_redacteur') as FormGroup;
@@ -210,7 +225,6 @@ export class VisiteVehiculeDetailComponent implements OnInit, OnDestroy {
 			  if(err.status === 422){
 				var messages = extractErrorMessagesFromErrorResponse(err);
 				this.formStatus.onFormSubmitResponse({success: false, messages: messages});
-				this.cdr.detectChanges();
 				this.cdr.markForCheck();
 			  }
 	

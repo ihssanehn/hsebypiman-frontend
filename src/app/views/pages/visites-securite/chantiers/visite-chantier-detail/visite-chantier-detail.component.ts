@@ -74,7 +74,6 @@ export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 					var _visite = res.result.data;
 					this.visite = _visite;
 					this.loaded = true;
-					this.cdr.detectChanges();
 					this.cdr.markForCheck();
 				});
 
@@ -92,27 +91,29 @@ export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 
 	initForm() {
 		this.visiteForm = this.visiteFB.group({
-			'id': [{value: null, disabled: true}, Validators.required],
+			'id': [{value: null, disabled: true}],
 			'code': [{value:null, disabled:true}],
-			'chantier_id': [{value:null, disabled:true}, Validators.required],
+			'chantier_id': [{value:null, disabled:true}],
 			'chantier': [''],
-			'salarie_id': [{value: null, disabled: true}, Validators.required],
-			'entreprise_id': [{value: null, disabled: true}, Validators.required],
-			'redacteur_id': [{value: null, disabled: true}, Validators.required],
-			'date_visite': [{value:moment().format('YYYY-MM-DD'), disabled: true}, Validators.required],
+			'salarie_id': [{value: null, disabled: true}],
+			'entreprise_id': [{value: null, disabled: true}],
+			'interimaire_id': [{value: null, disabled: true}],
+			'nom_prenom': [{value: null, disabled: true}],
+			'redacteur_id': [{value: null, disabled: true}],
+			'date_visite': [{value:moment().format('YYYY-MM-DD'), disabled: true}],
 			'presence_non_conformite': [{value: false, disabled: true }],
 			'has_rectification_imm': [{value: false, disabled: true }],
 			'avertissement': [{value: false, disabled: true }],
-			'type_id': [{value:null, disabled:true}, Validators.required],
-			'questions': this.visiteFB.array([]),
+			'type_id': [{value:null, disabled:true}],
+			'catQuestionsList': this.visiteFB.array([]),
 			'is_validate_resp_hse': [{value:null, disabled:true}],
 			'signature_redacteur': this.visiteFB.group({
-				'date':[{value:null, disabled:true}, Validators.required],
-				'signature': [{value:null, disabled:true}, Validators.required]
+				'date':[{value:null, disabled:true}],
+				'signature': [{value:null, disabled:true}]
 			  }),
 			  'signature_visite': this.visiteFB.group({
-				'date':[{value:null, disabled:true}, Validators.required],
-				'signature': [{value:null, disabled:true}, Validators.required]
+				'date':[{value:null, disabled:true}],
+				'signature': [{value:null, disabled:true}]
 			  }),
 			  'signature_resp_hse': this.visiteFB.group({
 				'date':[{value:null, disabled:true}],
@@ -120,7 +121,6 @@ export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 			  }),
 		});
 		this.loaded = true;
-		this.cdr.detectChanges();
 	}
 
 	parseVisitesDate(item, direction) {
@@ -134,22 +134,29 @@ export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 
 	patchQuestionsForm(visite) {
 
-		const questionsFormArray: FormArray = this.visiteForm.get('questions') as FormArray;
-		visite.questions.forEach(element => {
-			var question = this.visiteFB.group({
-				'id': [{value:element.id, disabled:true}],
-				'libelle': [{value:element.libelle, disabled:true}],
-				'pivot': this.visiteFB.group({
-					'note': [{value:element.pivot.note, disabled: true }, Validators.required],
-					'date_remise_conf': [{value: element.pivot.date_remise_conf, disabled: true }],
-					'observation': [{value: element.pivot.observation, disabled: true }]
-				})
-			});
-
-			if(element.pivot.note == 2){
-				this.visiteForm.get('presence_non_conformite').setValue(true);
-			}
-			questionsFormArray.push(question);
+		const catQuestionsListFormArray: FormArray = this.visiteForm.get('catQuestionsList') as FormArray;
+		visite.catQuestionsList.forEach((element, i) => {
+			let questionsArrayFB = []
+			element.questions.forEach(quest => {
+				var question = this.visiteFB.group({
+					'id': [{ value: quest.id, disabled: true }],
+					'libelle': [{ value: quest.libelle, disabled: true }],
+					'pivot': this.visiteFB.group({
+						'note': [{ value: quest.pivot.note, disabled: true }],
+						'date_remise_conf': [{ value: quest.pivot.date_remise_conf, disabled: true }],
+						'observation': [{ value: quest.pivot.observation, disabled: true }]
+					})
+				});
+				questionsArrayFB.push(question);			
+			})
+			var cat = this.visiteFB.group({
+				'id': [{value :element.id, disabled: true}],
+				'libelle': [{value:element.libelle, disabled: true}],
+				'code': [{value : element.code, disabled: true}],
+				'questions': this.visiteFB.array(questionsArrayFB)
+			})
+			catQuestionsListFormArray.push(cat);
+			
 		})
 
 		const signatureRedacteur = this.visiteForm.get('signature_redacteur') as FormGroup;
@@ -166,22 +173,10 @@ export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 		}
 
 		this.showSignatures = true;
-
 	}
 
 	questionsLoaded() {
-		return this.visiteForm.get('questions').value.length > 0
-	}
-
-	editVisite(visiteId) {
-		this.router.navigate(['visites-securite/chantiers/edit', visiteId]);
-	}
-	deleteVisite(visiteId) {
-		Swal.fire({
-			title: 'Désolé cette fonctionnalité n\'a pas encore été implémentée',
-			showConfirmButton: false,
-			timer: 1500
-		})
+		return this.visiteForm.get('catQuestionsList').value.length > 0
 	}
 
 	async onSubmit(event){
@@ -214,7 +209,6 @@ export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 			  if(err.status === 422){
 				var messages = extractErrorMessagesFromErrorResponse(err);
 				this.formStatus.onFormSubmitResponse({success: false, messages: messages});
-				this.cdr.detectChanges();
 				this.cdr.markForCheck();
 			  }
 	
@@ -228,5 +222,17 @@ export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 	}
 	
 
+	getNotes() {
+		const test = this.visiteForm.get('catQuestionsList').value
+		var questions = test.reduce((prev, curr)=> prev.concat(curr.questions), []);
+	
+		var ok = questions.filter(x => x.pivot.note == 1).length
+		var ko = questions.filter(x => x.pivot.note == 2).length
+		var ko_unsolved = questions.filter(x => x.pivot.note == 2 && !x.pivot.date_remise_conf).length
+		var ko_solved = questions.filter(x => x.pivot.note == 2 && x.pivot.date_remise_conf).length
+		var so = questions.filter(x => x.pivot.note == 3).length
+		var total = questions.length;
+		return { 'ok': ok, 'ko': ko, 'so': so, 'ko_unsolved': ko_unsolved, 'ko_solved': ko_solved, 'total': total };
+	  }
 	
 }

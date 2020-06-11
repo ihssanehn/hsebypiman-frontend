@@ -5,12 +5,12 @@
 				<div class="row">
 					<div class="col-xl-6 st-group">
 						<span class="st-label">{{'VISITES.PRESENCE_NC.LABEL' | translate}}</span>
-						<mat-slide-toggle color="accent" formControlName="presence_non_conformite">
+						<mat-slide-toggle color="accent" [checked]="getPresenceNc()">
 						</mat-slide-toggle>
 					</div>
 					<div class="col-xl-6 st-group">
 						<span class="st-label">{{'VISITES.HAS_RECTIF.LABEL' | translate}}<br>{{'VISITES.HAS_RECTIF.LABEL_COMP' | translate}}</span>
-						<mat-slide-toggle color="accent" formControlName="has_rectification_imm">
+						<mat-slide-toggle color="accent" [checked]="getHasRectifImmediate()">
 						</mat-slide-toggle>
 					</div>
 				</div>
@@ -62,13 +62,13 @@
 										<div class="dropdown">
 											<ng-container *ngIf="origin == 'add'; else detailMode" >
 												<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" placeholder="DD/MM/YYYY" formControlName="date_remise_conf">
-												<a class="text-primary" (click)="getPivot(question.id,i).controls['date_remise_conf'].setValue(today)">
+												<a class="text-primary" (click)="getPivot(question.id,i).controls['note'].value == 2 && getPivot(question.id,i).controls['date_remise_conf'].setValue(today)">
 													<i>date du jour</i>
 												</a>
 											</ng-container>
 											<ng-template #detailMode>
 												<div class="edit-date-block">
-													<input matInput disabled class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" placeholder="DD/MM/YYYY" formControlName="date_remise_conf">
+													<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" placeholder="DD/MM/YYYY" formControlName="date_remise_conf">
 												</div>
 											</ng-template>
 										</div>

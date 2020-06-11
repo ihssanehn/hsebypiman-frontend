@@ -34,7 +34,7 @@ export class VisitesChantierListComponent implements OnInit {
 		status_id: "",
 		params: []
 	};
-	displayedVisiteColumns = ['code','chantier', 'client','type', 'redacteur', 'visite', 'date_visite', 'ko_solved_count', 'ko_unsolved_count', 'action'];
+	displayedVisiteColumns = ['code','chantier', 'client','type', 'redacteur', 'visite', 'entreprise', 'date_visite', 'ko_solved_count', 'ko_unsolved_count', 'action'];
 
 
 	constructor(
@@ -63,7 +63,9 @@ export class VisitesChantierListComponent implements OnInit {
 			};
 			this.filter.page = this.pagination.page;
 			this.filter.per_page = this.pagination.pageSize;
-			this.cdr.detectChanges();
+			if(!this.cdr['destroyed']){ 
+				this.cdr.detectChanges();
+			}
 			this.cdr.markForCheck();
 		} catch (error) {
 			console.error(error);

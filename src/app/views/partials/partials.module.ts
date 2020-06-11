@@ -83,6 +83,7 @@ import {
 	SignatureAddComponent,
 	SignatureListComponent,
 	ArDetailPanelsComponent,
+	AddVehiculeFormComponent
 } from './layout';
 // General
 import { NoticeComponent } from './content/general/notice/notice.component';
@@ -170,8 +171,10 @@ import { VisiteQuestionOutillageAdminComponent } from './layout/outillage/visite
 		SignatureListComponent,
 		ArDetailPanelsComponent,
 		SearchOutillageFormComponent,
+
 		SearchSalarieFormComponent,
-		VisiteQuestionOutillageAdminComponent
+		VisiteQuestionOutillageAdminComponent,
+		AddVehiculeFormComponent
 	],
 	exports: [
 		WidgetModule,
@@ -233,8 +236,12 @@ import { VisiteQuestionOutillageAdminComponent } from './layout/outillage/visite
 		SignatureListComponent,
 		ArDetailPanelsComponent,
 		SearchOutillageFormComponent,
+<<<<<<< src/app/views/partials/partials.module.ts
 		SearchSalarieFormComponent,
 		VisiteQuestionOutillageAdminComponent
+=======
+		AddVehiculeFormComponent
+>>>>>>> src/app/views/partials/partials.module.ts
 	],
 	imports: [
 		CommonModule,

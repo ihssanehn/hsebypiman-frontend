@@ -72,7 +72,6 @@ export class EntrepriseFiltersComponent implements OnInit, AfterViewInit
   async getTypes(){
     var res = await this.typeService.getAllFromModel('Entreprise').toPromise();
     this.types = res.result.data;
-    this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
   

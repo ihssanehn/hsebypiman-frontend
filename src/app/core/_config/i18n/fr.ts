@@ -517,6 +517,16 @@ export const locale = {
 				TITLE:'Nom du chantier',
 				SHORTTITLE: 'Nom'
 			},
+			VEHICULE:{
+				LABEL:'Nom de véhicule',
+				TITLE:'Nom de véhicule',
+				SHORTTITLE: 'Nom'
+			},
+			MARQUE:{
+				LABEL:'Marque de véhicule',
+				TITLE:'Marque de véhicule',
+				SHORTTITLE: 'Marque'
+			},
 			ENTREPRISE:{
 				LABEL:'Entreprise visitée',
 				TITLE:'Entreprise visitée',
@@ -569,6 +579,22 @@ export const locale = {
 			AVERT:{
 				LABEL:'Avertissement',
 				LABEL_COMP:'(quand attitude non sécuritaire)'
+			},
+			ADD_VEHICULE:{
+				LABEL:'Numéro d\'identification du véhicule',
+				TITLE:'Numéro d\'identification du véhicule',
+				SHORTTITLE: 'Numéro d\'identificatio'
+			},
+			DETAIL_VEHICULE:{
+				LABEL:'Numéro d\'identification du véhicule',
+				TITLE:'Numéro d\'identification du véhicule',
+				SUBTITLE: '',
+				SHORTTITLE: 'Numéro d\'identification du véhicule'
+			},
+			VEHICULE_FOUND:{
+				LABEL:'Numéro d\'identification du véhicule saisi',
+				TITLE:'Numéro d\'identification du véhicule saisi',
+				SHORTTITLE: 'Numéro d\'identification du véhicule saisi'
 			},
 		},
 		EPIS:{
@@ -678,7 +704,8 @@ export const locale = {
 			CREATION_DATE : "Date de création",
 			SEARCH_CHANTIER : "Recherche un chantier",
 			SEARCH_OUTILLAGE : "Numéro d'identification de l'outil",
-			SEARCH_SALARIE : "Rechercher un salarié"
+			SEARCH_SALARIE : "Rechercher un salarié",
+			ADD_VEHICULE : "Numéro d'identification du véhicule",
 		},
 	}
 };

@@ -71,7 +71,6 @@ export class VisiteChantierEditComponent implements OnInit, OnDestroy {
           ).subscribe( async res => {
             this.visite = res.result.data;
             this.loaded = true;
-            this.cdr.detectChanges();
             this.cdr.markForCheck();
           });
 
@@ -81,17 +80,11 @@ export class VisiteChantierEditComponent implements OnInit, OnDestroy {
       });
 
     this.subscriptions.push(routeSubscription);
-    this.getCurrentUser();
-
   }
 
   ngOnDestroy() {
 		this.subscriptions.forEach(sb => sb.unsubscribe());
 	}
-	async getCurrentUser() {
-		var res = await this.authService.getUserByToken().toPromise().then(res=>{this.visiteForm.get('redacteur_id').setValue(res.result.data.id)});
-		this.cdr.detectChanges();
-  }
   
   createForm() {
 		this.visiteForm = this.visiteFB.group({
@@ -110,7 +103,6 @@ export class VisiteChantierEditComponent implements OnInit, OnDestroy {
       'questions': this.visiteFB.array([]),
 		});
 		this.loaded = true;
-		this.cdr.detectChanges();
   	}
   
   parseVisitesDate(item, direction){
@@ -229,7 +221,6 @@ export class VisiteChantierEditComponent implements OnInit, OnDestroy {
           if(err.status === 422){
             var messages = extractErrorMessagesFromErrorResponse(err);
             this.formStatus.onFormSubmitResponse({success: false, messages: messages});
-            this.cdr.detectChanges();
             this.cdr.markForCheck();
           }
 

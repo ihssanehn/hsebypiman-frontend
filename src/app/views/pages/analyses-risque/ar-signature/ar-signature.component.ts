@@ -56,7 +56,6 @@ export class ArSignatureComponent extends ArDetailComponent implements OnInit {
         newForm.controls['signataire_fullname'].clearValidators();
         newForm.controls['signataire_fullname'].updateValueAndValidity();
 
-        this.cdr.detectChanges();
         this.cdr.markForCheck();
       }
     })
@@ -66,7 +65,6 @@ export class ArSignatureComponent extends ArDetailComponent implements OnInit {
     
     
     this.loaded = true;
-		this.cdr.detectChanges();
   }
 
   async getAr(arId: Number){
@@ -120,7 +118,6 @@ export class ArSignatureComponent extends ArDetailComponent implements OnInit {
             if(err.status === 422){
               var messages = extractErrorMessagesFromErrorResponse(err);
               this.formStatus.onFormSubmitResponse({success: false, messages: messages});
-              this.cdr.detectChanges();
               this.cdr.markForCheck();
             }
 

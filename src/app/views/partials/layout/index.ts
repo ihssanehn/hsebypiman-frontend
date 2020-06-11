@@ -9,6 +9,9 @@ export { ChantierFormComponent } from './chantier/form/chantier-form/chantier-fo
 export { SearchListBarComponent } from './search-list-bar/search-list-bar.component';
 export { SearchChantierFormComponent } from './chantier/form/search-chantier-form/search-chantier-form.component';
 
+// Vehicule
+export { AddVehiculeFormComponent } from './vehicule/form/add-vehicule-form/add-vehicule-form.component'; 
+
 // VISITES
 export { VsFormHeadComponent } from './visites/form/vs-form-head/vs-form-head.component';
 export { VsFormBodyComponent } from './visites/form/vs-form-body/vs-form-body.component';
