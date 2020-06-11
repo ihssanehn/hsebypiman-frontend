@@ -45,8 +45,8 @@ export class VsFormHeadComponent implements OnInit {
     this.getUsers();
     this.getStatus();
     this.getInterimaires();
-    this.getEntreprises();
     if(this.model == 'VsChantier'){
+      this.getEntreprises();
       this.setDynamicEntreprise();
     }
   }
