@@ -34,7 +34,7 @@ export class VisitesVehiculeListComponent implements OnInit {
 		status_id: "",
 		params: []
 	};
-	displayedVisiteColumns = ['code','vehicule', 'client','type', 'redacteur', 'visite', 'date_visite', 'ko_solved_count', 'ko_unsolved_count', 'action'];
+	displayedVisiteColumns = ['code', 'vehicule', 'type', 'redacteur', 'visite', 'date_visite', 'ko_solved_count', 'ko_unsolved_count', 'action'];
 
 
 	constructor(
@@ -85,9 +85,7 @@ export class VisitesVehiculeListComponent implements OnInit {
 	viewVisite(visiteId) {
 		this.router.navigate(['../detail', visiteId], { relativeTo: this.activatedRoute });
 	}
-	editVisite(visiteId) {
-		this.router.navigate(['../edit', visiteId], { relativeTo: this.activatedRoute });
-	}
+
 	deleteVisite(visiteId) {
 		Swal.fire({
 			title: 'Désolé cette fonctionnalité n\'a pas encore été implémentée',
