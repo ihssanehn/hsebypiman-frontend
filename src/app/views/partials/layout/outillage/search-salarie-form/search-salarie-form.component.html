@@ -82,8 +82,8 @@
                     </div>
                 </div>
             </form>
-            <button class="btn btn-brand btn-sm btn-search mr-4 float-right" (click)="onSubmit()">
-                Lancer
+            <button class="btn btn-brand btn-sm btn-search mr-4 float-right" [disabled]="cantDisplayQuestions()" (click)="onSubmit()">
+                Commencer la visite
             </button>
         </div>
     </div>

@@ -36,7 +36,7 @@ export class VsFormBodyComponent implements OnInit {
 
   ngOnInit() {
     this.today = moment().format('DD/MM/YYYY');
-    //console.log(this.visiteForm);
+    console.log(this.catQuestionsList)
   }
 
   partHided(partId) {
@@ -50,7 +50,6 @@ export class VsFormBodyComponent implements OnInit {
   setNote(question_id, cat_index, note) {
     const p = this.getPivot(question_id, cat_index)
     p.get('note').setValue(note);
-    console.log(this.visiteForm);
   }
 
   hasNote(question_id, cat_index, note) {

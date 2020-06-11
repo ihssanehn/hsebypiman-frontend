@@ -47,6 +47,14 @@ export class SearchSalarieFormComponent implements OnInit {
   }
 
 
+  cantDisplayQuestions(){
+    var test: boolean = this.form.get('outillage_code').invalid ||
+      this.form.get('type_id').invalid ||
+      this.form.get('salarie_id').invalid
+
+    return test;
+  }  
+
   async initFilteredSalaries(){
     var res = await this.salarieService.getList().toPromise();
     this.salaries = res.result.data;
@@ -55,6 +63,7 @@ export class SearchSalarieFormComponent implements OnInit {
       map(value => this._filter(value))
     );
   }
+
 
   private _filter(value: string): Array<User> {
     const filterValue = value;

@@ -55,7 +55,7 @@ export class VisiteOutillageAddComponent implements OnInit {
     this.visite = new VisiteOutillage();
     this.createForm();    
     this.getCurrentUser();
-    this.getQuestions();
+    // this.getQuestions();
   }
 
 	async getCurrentUser() {
@@ -64,10 +64,8 @@ export class VisiteOutillageAddComponent implements OnInit {
   }
 
   async getQuestions(){
-    this.catQuestionsService.getAll({code : 'OUTIL_ELEC'}).toPromise().then(res => {
-      this.catQuestionsList = res.result.data;
-      this.patchQuestionsForm();
-    });
+    this.catQuestionsList = (await this.catQuestionsService.getAll({type_id : this.visiteForm.get('type_id').value}).toPromise()).result.data;
+    this.patchQuestionsForm();
   }
   
   createForm() {
@@ -133,18 +131,15 @@ export class VisiteOutillageAddComponent implements OnInit {
     })
   }
 
-  onUserSelected(form){
-    this.visiteForm.get('outillage_code').setValue(form.get('outillage_code'));
+  async onUserSelected(form){
+    // this.visiteForm.get('outillage_code').setValue(form.get('outillage_code'));
     this.visiteForm.patchValue(form);
-    console.log(form);
+
+    await this.getQuestions();
     this.displayQuestions();
+    console.log(this.questionsDisplayed);
   }
 
-
-  onOutillageSelected(code: string) {
-    this.visiteForm.get('outillage_code').setValue(code);
-    this.displayQuestions();
-  }
 
 
   async onSubmit(event){
@@ -193,14 +188,7 @@ export class VisiteOutillageAddComponent implements OnInit {
 
   }
 
-  cantDisplayQuestions(){
-    var test: boolean = this.visiteForm.get('outillage_code').invalid ||
-      this.visiteForm.get('type_id').invalid ||
-      this.visiteForm.get('salarie_id').invalid || 
-      this.visiteForm.get('entreprise_id').invalid;
-
-    return test;
-  }  
+ 
 
   displayQuestions(){
     this.questionsDisplayed = true;
