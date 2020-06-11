@@ -634,7 +634,7 @@ export class MenuConfig {
 						title: 'Admin',
 						root: true,
 						alignment: 'left',
-						page: '/visites-securite/vehicules/admin',
+						page: '/visites-securite/outillages/admin',
 						translate: 'MENU.ADMIN',
 						icon: 'settings',
 						// icon: 'flaticon2-mail-1',

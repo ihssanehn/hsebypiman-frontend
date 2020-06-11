@@ -55,14 +55,13 @@ export class VisiteOutillageAddComponent implements OnInit {
   ngOnInit() {
     this.visite = new VisiteOutillage();
     this.createForm();    
-    this.getQuestions();
+    this.getCurrentUser();
+    // this.getQuestions();
   }
 
   async getQuestions(){
-    this.catQuestionsService.getAll({code : 'OUTIL'}).toPromise().then(res => {
-      this.catQuestionsList = res.result.data;
-      this.patchQuestionsForm();
-    });
+    this.catQuestionsList = (await this.catQuestionsService.getAll({type_id : this.visiteForm.get('type_id').value}).toPromise()).result.data;
+    this.patchQuestionsForm();
   }
   
   createForm() {
@@ -123,15 +122,19 @@ export class VisiteOutillageAddComponent implements OnInit {
 				'code': [ element.code],
 				'questions': this.visiteFB.array(questionsArrayFB)
       })
-      console.log(cat);
 			catQuestionsListFormArray.push(cat);
     })
   }
 
-  onOutillageSelected(code: string) {
-    this.visiteForm.get('outillage_code').setValue(code);
+  async onUserSelected(form){
+    // this.visiteForm.get('outillage_code').setValue(form.get('outillage_code'));
+    this.visiteForm.patchValue(form);
+
+    await this.getQuestions();
     this.displayQuestions();
+    console.log(this.questionsDisplayed);
   }
+
 
 
   async onSubmit(event){
@@ -179,14 +182,7 @@ export class VisiteOutillageAddComponent implements OnInit {
 
   }
 
-  cantDisplayQuestions(){
-    var test: boolean = this.visiteForm.get('outillage_code').invalid ||
-      this.visiteForm.get('type_id').invalid ||
-      this.visiteForm.get('salarie_id').invalid || 
-      this.visiteForm.get('entreprise_id').invalid;
-
-    return test;
-  }  
+ 
 
   displayQuestions(){
     this.questionsDisplayed = true;
@@ -204,7 +200,8 @@ export class VisiteOutillageAddComponent implements OnInit {
   }
 
   questionsLoaded(){
-    return this.visiteForm.get('questions').value.length > 0
+    return this.visiteForm.get('catQuestionsList').value.length > 0;
+    console.log(this.visiteForm);
   }
 
   public findInvalidControls() {
@@ -220,8 +217,8 @@ export class VisiteOutillageAddComponent implements OnInit {
   }
 
   questionsAnswerd(){
-    const questionsList = this.visiteForm.get('questions');
-    return questionsList.value.length > 0 && questionsList.valid
+    const questionsList = this.visiteForm.get('catQuestionsList');
+    return questionsList.value.length > 0 && !questionsList.invalid
   }  
 
   displaySignature(){

@@ -704,6 +704,7 @@ export const locale = {
 			CREATION_DATE : "Date de création",
 			SEARCH_CHANTIER : "Recherche un chantier",
 			SEARCH_OUTILLAGE : "Numéro d'identification de l'outil",
+			SEARCH_SALARIE : "Rechercher un salarié",
 			ADD_VEHICULE : "Numéro d'identification du véhicule",
 		},
 	}

@@ -31,6 +31,7 @@ import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootst
 // Material
 import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatTableModule, MatSelectModule, MatMenuModule, MatProgressBarModule, MatButtonModule, MatCheckboxModule, MatDialogModule, MatTabsModule, MatNativeDateModule, MatCardModule, MatRadioModule, MatIconModule, MatDatepickerModule, MatExpansionModule, MatAutocompleteModule, MAT_DIALOG_DEFAULT_OPTIONS, MatSnackBarModule, MatTooltipModule, } from '@angular/material';
 import { NgxMaskModule } from 'ngx-mask';
+import { VisiteOutillageAdminComponent } from './visite-outillage-admin/visite-outillage-admin.component';
 
 const routes: Routes = [
 	{
@@ -72,6 +73,10 @@ const routes: Routes = [
 			// 	//component: VisitesOutillageComponent
 			// 	component: VisiteOutillageEditComponent
 			// },
+			{
+				path: 'admin',
+				component: VisiteOutillageAdminComponent
+			},
 		]
 	}
 ];
@@ -146,7 +151,8 @@ const routes: Routes = [
 		VisiteOutillageEditComponent,
 		VisiteOutillageAddComponent,
 		VisiteOutillageDetailComponent,
-		VisiteOutillageFiltersComponent
+		VisiteOutillageFiltersComponent,
+		VisiteOutillageAdminComponent
 	]
 })
 export class VisitesOutillageModule {}
