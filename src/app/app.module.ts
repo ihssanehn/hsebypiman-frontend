@@ -50,9 +50,9 @@ import {DataTableService,TfDialogService,LayoutConfigService,VersionCheckService
 import { AuthModule } from './views/pages/auth/auth.module';
 import { AuthService } from './core/auth';
 import { 
-	ChantierService, TypeService, StatusService, CategorieService, ArService, CatRisqueService, EquipementService,
+	ChantierService, TypeService, StatusService, ActionService, CategorieService, ArService, CatRisqueService, EquipementService,
 	EntrepriseService, VisiteEpiService, VisiteChantierService, CatHabilitationService, CatQuestionService, ZoneService, SignatureService, QuestionService,
-	HabilitationService, RisqueService, ParamsService, EpiService, VisiteOutillageService, VisiteVehiculeService, OutillageService, VehiculeService, UserService
+	HabilitationService, RisqueService, ParamsService, EpiService, VisiteOutillageService, VisiteVehiculeService, OutillageService, UserService
 } from './core/services';
 // CRUD
 import { HttpUtilsService, LayoutUtilsService, TypesUtilsService } from './core/_base/crud';
@@ -153,23 +153,36 @@ export function hljsLanguages(): HighlightLanguage[] {
 			provide: LOCALE_ID,
 			useValue: 'fr-FR'
 		},
+
+		// WORK
 		AuthService,
-		ChantierService,
 		ArService,
-		TypeService, 
-		StatusService, 
+		ActionService,
 		CategorieService,
+		CatHabilitationService, 
+		CatQuestionService,
 		CatRisqueService,
-		RisqueService,
+		ChantierService,
 		EquipementService,
 		EntrepriseService,
+		EpiService,
+		HabilitationService,
+		OutillageService,
+		ParamsService,
+		QuestionService,
+		RisqueService,
+		SignatureService,
+		StatusService, 
+		TypeService, 
 		UserService,
-		VisiteEpiService,
 		VisiteChantierService,
+		VisiteEpiService,
 		VisiteOutillageService,
 		VisiteVehiculeService,
-		OutillageService,
-		VehiculeService,
+		ZoneService,
+		
+
+		// CONFIG & Helpers
 		LayoutConfigService,
 		LayoutRefService,
 		MenuConfigService,
@@ -178,14 +191,6 @@ export function hljsLanguages(): HighlightLanguage[] {
 		DataTableService,
 		VersionCheckService,
 		SplashScreenService,
-		CatHabilitationService, 
-		CatQuestionService,
-		QuestionService,
-		HabilitationService,
-		ZoneService,
-		EpiService,
-		SignatureService,
-		ParamsService,
 		
 		// template services
 		SubheaderService,
