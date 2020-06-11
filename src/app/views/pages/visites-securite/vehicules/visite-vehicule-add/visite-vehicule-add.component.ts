@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
 import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
 import {FormStatus} from '@app/core/_base/crud/models/form-status';
 import { DateFrToEnPipe } from '@app/core/_base/layout';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'tf-visite-vehicule-add',
@@ -24,6 +25,7 @@ export class VisiteVehiculeAddComponent implements OnInit {
   
   visite: VisiteVehicule;
   visiteForm: FormGroup;
+  catQuestionsList: CatQuestion[];
 	// allRoles: Role[];
   formStatus = new FormStatus();
   loaded = false;
@@ -42,6 +44,7 @@ export class VisiteVehiculeAddComponent implements OnInit {
 		// private notificationService: NzNotificationService,
 		private visiteService: VisiteVehiculeService,
     private vehiculeService: VehiculeService,
+    private catQuestionService: CatQuestionService,
     private location: Location,
     private authService:AuthService,
     private cdr: ChangeDetectorRef,
@@ -63,20 +66,17 @@ export class VisiteVehiculeAddComponent implements OnInit {
   
   createForm() {
 		this.visiteForm = this.visiteFB.group({
-      'vehicule_id': ['', Validators.required],
+      'vehicule': ['', Validators.required],
       'salarie_id': [{value:null, disabled:false}, Validators.required],
       'entreprise_id': [{value:null, disabled:false}, Validators.required],
       'redacteur_id': [{value:null, disabled:true}, Validators.required],
       'date_visite': [moment().format('YYYY-MM-DD'), Validators.required],
-      // 'is_validated_redacteur': ['', Validators.required],
-      // 'is_validated_visite': ['', Validators.required],
-      // 'validated_redacteur_at': ['', Validators.required],
-      // 'validated_visite_at': ['', Validators.required],
       'presence_non_conformite': [{value:false, disabled: true}],
       'has_rectification_imm': [{value:false, disabled: false}],
       'avertissement': [{value:false, disabled: false}],
       'type_id': [null, Validators.required],
       'questions': this.visiteFB.array([]),
+      'catQuestionsList' : this.visiteFB.array([]),
       'signature_redacteur': this.visiteFB.group({
         'date':[null, Validators.required],
         'signature': [null, Validators.required]
@@ -174,7 +174,7 @@ export class VisiteVehiculeAddComponent implements OnInit {
   }
 
   cantDisplayQuestions(){
-    var test: boolean = this.visiteForm.get('vehicule_id').invalid ||
+    var test: boolean = this.visiteForm.get('vehicule').invalid ||
       this.visiteForm.get('type_id').invalid ||
       this.visiteForm.get('salarie_id').invalid || 
       this.visiteForm.get('entreprise_id').invalid;
@@ -182,9 +182,101 @@ export class VisiteVehiculeAddComponent implements OnInit {
     return test;
   }  
 
-  displayQuestions(){
-    this.questionsDisplayed = true;
-    this.visiteForm.get('type_id').disable();
+  async displayQuestions(){
+    var params = {
+      type_id: this.visiteForm.get('type_id').value,
+      paginate:false
+    }
+    await this.catQuestionService.getAll(params).pipe(
+      tap(res=>{
+        this.catQuestionsList = res.result.data;
+        this.parseQuestions(res.result.data);
+
+      })
+    ).subscribe(res=>{
+      this.questionsDisplayed = true;
+      this.visiteForm.get('type_id').disable();
+      this.cdr.markForCheck();
+
+    });
+
+  }
+
+  parseQuestions(item){
+    if(item.length > 0){
+
+      const catQuestionsListFormArray: FormArray = this.visiteForm.get('catQuestionsList') as FormArray;
+      const questionFormArray = this.visiteForm.get('questions') as FormArray;
+
+      item.forEach((element, i) => {
+        let questionsArrayFB = []
+
+        element.questions.forEach(quest => {
+          var question = this.visiteFB.group({
+            'id': [quest.id],
+            'libelle': [quest.libelle],
+            'pivot': this.visiteFB.group({
+              'note':[{value:null, disabled:false}, Validators.required],
+              'date_remise_conf':[{value:null, disabled:false}],
+              'observation':[{value:'', disabled:false}]
+            })
+          });
+
+          const pivot = question.get('pivot') as FormGroup;
+          const note = pivot.get('note') as FormControl;
+          const date_remise_conf = pivot.get('date_remise_conf') as FormControl;
+
+          note.valueChanges.subscribe(note=>{
+            if(note == 2){
+              date_remise_conf.enable({emitEvent:false, onlySelf:true})
+              this.visiteForm.get('presence_non_conformite').setValue(true);
+            }else{
+              date_remise_conf.disable({emitEvent:false, onlySelf:true})
+              date_remise_conf.setValue(null);
+              var nbr_ko = this.getNotes().ko;
+              if(nbr_ko == 0 && this.visiteForm.get('presence_non_conformite').value == true){
+                this.visiteForm.get('presence_non_conformite').setValue(false);
+              }
+            }
+          })
+
+          pivot.valueChanges.subscribe(pivot=>{
+            var nbr_ko_unsolved = this.getNotes().ko_unsolved;
+            if(nbr_ko_unsolved > 0){
+              this.visiteForm.get('has_rectification_imm').setValue(true)
+            }else{
+              this.visiteForm.get('has_rectification_imm').setValue(false);
+            }
+          })
+
+          questionsArrayFB.push(question);
+          questionFormArray.push(question)
+        })
+
+        var cat = this.visiteFB.group({
+          'id': [element.id],
+          'libelle': [element.libelle],
+          'code': [ element.code],
+          'questions': this.visiteFB.array(questionsArrayFB)
+        })
+
+        catQuestionsListFormArray.push(cat);
+      })
+
+    }
+  }
+
+  getNotes(){
+    const test = this.visiteForm.get('catQuestionsList').value
+    var questions = test.reduce((prev, curr)=> prev.concat(curr.questions), []);
+    
+    var ok = questions.filter(x => x.pivot.note == 1).length
+    var ko = questions.filter(x => x.pivot.note == 2).length
+    var ko_unsolved = questions.filter(x => x.pivot.note == 2 && !x.pivot.date_remise_conf).length
+    var ko_solved = questions.filter(x => x.pivot.note == 2 && x.pivot.date_remise_conf).length
+    var so = questions.filter(x => x.pivot.note == 3).length
+    var total = questions.length;
+    return { 'ok': ok, 'ko': ko, 'so': so, 'ko_unsolved': ko_unsolved, 'ko_solved': ko_solved, 'total': total };
   }
 
   parseDates(form){
@@ -214,7 +306,7 @@ export class VisiteVehiculeAddComponent implements OnInit {
   }
 
   questionsAnswerd(){
-    const questionsList = this.visiteForm.get('questions');
+    const questionsList = this.visiteForm.get('catQuestionsList');
     return questionsList.value.length > 0 && questionsList.valid
   }  
 

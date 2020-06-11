@@ -107,13 +107,14 @@ export class VisiteVehicule {
     status_id?:Number;
     creator_id?:Number;
     outillage_id?:Number;
-    vehicule?:Vehicule;
+    vehicule?:String;
     salarie?:User;
     redacteur?:User;
     type?:Type;
     status?:Status;
     creator?:User;
     questions?:Array<Question>;
+    catQuestionsList?:Array<CatQuestion>;
     signatureRedacteur?:Signature;
     signatureVisite?:Signature;
     signatureRespHse?:Signature;

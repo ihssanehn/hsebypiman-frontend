@@ -7,11 +7,11 @@
 				<span class="id-item">{{'MENU.SUB_VISITESECURITE.ADD' | translate}}</span>
 			</span>
 		</div>
-		<!-- <tf-search-vehicule-form [form]="visiteForm" origin="edit"></tf-search-vehicule-form> -->
+		<!-- <tf-add-vehicule-form [form]="visiteForm" origin="edit"></tf-add-vehicule-form> -->
 		<div class="tf-divider" *ngIf="visiteForm.get('vehicule_id').value">
 			<span></span>
 		</div>
-		<tf-vs-form-head [visiteForm]="visiteForm" [edit]="true" *ngIf="visiteForm.get('vehicule_id').value"></tf-vs-form-head>
+		<tf-vs-form-head [visiteForm]="visiteForm" [edit]="true" [model]="'VsVehicule'" *ngIf="visiteForm.get('vehicule_id').value"></tf-vs-form-head>
 	</tf-portlet>
 
 	<tf-vs-form-body [visiteForm]="visiteForm" [origin]="'edit'" [isDisableToggle]="true" [edit]="true"></tf-vs-form-body>

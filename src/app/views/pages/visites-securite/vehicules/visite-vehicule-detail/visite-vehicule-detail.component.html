@@ -3,7 +3,7 @@
 	<tf-portlet class="main-portlet-form" id="portlet-vs">
 		<div class="tf-portlet-header">
 			<span class="title">
-				<a [routerLink]="['/visites-securite/list']">{{'MENU.HOME' | translate}}</a>
+				<a [routerLink]="['/visites-securite/list']">{{'MENU.SUB_VISITESECURITE.LIST' | translate}}</a>
 				<span class="divider">></span>
 			  <span class="id-item">{{'MENU.SUB_VISITESECURITE.DETAIL' | translate}}</span>
 			</span>
@@ -12,23 +12,20 @@
 				  <mat-icon>more_vert</mat-icon>
 				</button>
 				<div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
-				  <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editVisite(visite.id)">
-					<mat-icon>edit</mat-icon>
-				  </button>
 				  <button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteVisite(visite.id)">
 					<mat-icon>delete</mat-icon>
 				  </button>
 				</div>
 			</div>
 		</div>
-		<!-- <tf-search-vehicule-form [data]="visite.vehicule" origin="detail" ></tf-search-vehicule-form> -->
-		<div class="tf-divider" *ngIf="visiteForm.get('vehicule_id').value">
+		<tf-add-vehicule-form [data]="visite.vehicule" origin="detail" ></tf-add-vehicule-form>
+		<div class="tf-divider" *ngIf="visiteForm.get('vehicule').value">
 			<span></span>
 		</div>
-		<tf-vs-form-head [visiteForm]="visiteForm" [origin]="'detail'" *ngIf="visiteForm.get('vehicule_id').value"></tf-vs-form-head>
+		<tf-vs-form-head [visiteForm]="visiteForm" [origin]="'detail'" [model]="'VsVehicule'" *ngIf="visiteForm.get('vehicule').value"></tf-vs-form-head>
 	</tf-portlet>
 	
-	<tf-vs-form-body [visiteForm]="visiteForm" (dateUpdated)="onSubmit()" [origin]="'detail'" [isDisableToggle]="isDisableToggle" ></tf-vs-form-body>
+	<tf-vs-form-body [visiteForm]="visiteForm" [catQuestionsList]="catQuestionsList" (dateUpdated)="onSubmit()" [origin]="'detail'" [isDisableToggle]="isDisableToggle" ></tf-vs-form-body>
 
 	<tf-vs-form-signatures [visiteForm]="visiteForm" [origin]="'detail'" (hseSigned)="onSubmit()" [canValidateHse]="canValidateHse" [isDisableToggle]="true" *ngIf="showSignatures"></tf-vs-form-signatures>
 
