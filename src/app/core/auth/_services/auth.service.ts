@@ -63,20 +63,20 @@ export class AuthService extends HttpService {
 		return this.http.post(`${this.baseUrl}auth/logout`, {});
 	}
 
-	register(user: User): Observable<any> {
-		const httpHeaders = new HttpHeaders();
-		httpHeaders.set("Content-Type", "application/json");
-		return this.http
-			.post<JsonResponse<User>>(API_USERS_URL, user, { headers: httpHeaders })
-			.pipe(
-				map((res: JsonResponse<User>) => {
-					return res;
-				}),
-				catchError(err => {
-					return null;
-				})
-			);
-	}
+	// register(user: User): Observable<any> {
+	// 	const httpHeaders = new HttpHeaders();
+	// 	httpHeaders.set("Content-Type", "application/json");
+	// 	return this.http
+	// 		.post<JsonResponse<User>>(API_USERS_URL, user, { headers: httpHeaders })
+	// 		.pipe(
+	// 			map((res: JsonResponse<User>) => {
+	// 				return res;
+	// 			}),
+	// 			catchError(err => {
+	// 				return null;
+	// 			})
+	// 		);
+	// }
 
 	/*
 	 * Submit forgot password request
@@ -89,44 +89,6 @@ export class AuthService extends HttpService {
 			.post(this.baseUrl+ "auth/password-forgot", {"email":email});
 	}
 
-	getList(): Observable<JsonResponse<User[]>> {
-        return this.http.get<JsonResponse<User[]>>(API_USERS_URL+"/mini");
-        // .pipe(
-		// 	map((res: any) =>
-		// 		// res.items.map((user: User) => new User().deserialize(user))
-		// 	),
-		// 	catchError(err => {
-		// 		return null;
-		// 	})
-		// );
-	}
-
-	getAll(params): Observable<JsonResponse<any>>{
-		return this.http.post<JsonResponse<User[]>>(API_USERS_URL, {...params});
-	}
-
-	// getUsersPaginate(filter = {}): Observable<Paginate<User>> {
-	// 	return this.http.post<Paginate<User>>(`${this.baseUrl}users/paginate`, { ...filter });
-	// }
-
-	getUserById(userId: number): Observable<JsonResponse<User>> {
-		return this.http.get<JsonResponse<User>>(API_USERS_URL + `/${userId}`)
-	}
-
-	// DELETE => delete the user from the server
-	deleteUser(userId: number) {
-		const url = `${API_USERS_URL}/${userId}`;
-		return this.http.delete(url);
-	}
-
-	updateUser(_user: User): Observable<any> {
-		return this.http.put<any>(`${this.baseUrl}users/` + _user.id, _user).pipe(map(result => result));
-	}
-
-	// CREATE =>  POST: add a new user to the server
-	createUser(user: User): Observable<JsonResponse<User>> {
-		return this.http.post<JsonResponse<User>>(`${this.baseUrl}users`, user);
-	}
 
 	// Method from server should return QueryResultsModel(items: any[], totalsCount: number)
 	// items => filtered/sorted result
