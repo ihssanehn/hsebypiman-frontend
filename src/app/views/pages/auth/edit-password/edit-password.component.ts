@@ -2,7 +2,8 @@ import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { tap, takeUntil, finalize } from 'rxjs/operators';
-import { AuthService, AuthNoticeService, User } from '@app/core/auth';
+import { AuthService, AuthNoticeService, User,  } from '@app/core/auth';
+import { UserService } from '@app/core/services';
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -27,10 +28,11 @@ export class EditPasswordComponent implements OnInit, OnDestroy {
 
   constructor(
     private authService: AuthService,
+    private userService: UserService,
     public authNoticeService: AuthNoticeService,
-		private translate: TranslateService,
-		private router: Router,
-		private fb: FormBuilder,
+	private translate: TranslateService,
+	private router: Router,
+	private fb: FormBuilder,
     private cdr: ChangeDetectorRef,
     iconRegistry: MatIconRegistry, 
 		sanitizer: DomSanitizer
@@ -92,7 +94,7 @@ export class EditPasswordComponent implements OnInit, OnDestroy {
 
     this.user.password = controls.password.value;
 
-		this.authService.updateUser(this.user).pipe(
+		this.userService.updateUser(this.user).pipe(
 			tap(response => {
 				if (response) {
 					this.authNoticeService.setNotice(this.translate.instant('AUTH.EDIT.SUCCESS'), 'success');
