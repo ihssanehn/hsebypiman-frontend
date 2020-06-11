@@ -55,7 +55,7 @@ export class VisiteOutillageAddComponent implements OnInit {
   ngOnInit() {
     this.visite = new VisiteOutillage();
     this.createForm();    
-    this.getCurrentUser();
+    //this.getCurrentUser();
     // this.getQuestions();
   }
 
