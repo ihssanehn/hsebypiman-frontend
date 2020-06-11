@@ -520,12 +520,7 @@ export const locale = {
 			VEHICULE:{
 				LABEL:'Nom de véhicule',
 				TITLE:'Nom de véhicule',
-				SHORTTITLE: 'Nom'
-			},
-			MARQUE:{
-				LABEL:'Marque de véhicule',
-				TITLE:'Marque de véhicule',
-				SHORTTITLE: 'Marque'
+				SHORTTITLE: 'Véhicule'
 			},
 			ENTREPRISE:{
 				LABEL:'Entreprise visitée',
