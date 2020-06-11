@@ -54,8 +54,7 @@ export class VisiteOutillageAddComponent implements OnInit {
 
   ngOnInit() {
     this.visite = new VisiteOutillage();
-    this.createForm();    
-    this.getCurrentUser();
+    this.createForm();
     // this.getQuestions();
   }
 
@@ -70,8 +69,8 @@ export class VisiteOutillageAddComponent implements OnInit {
       'code' : [{value : null, disabled : false},Validators.required],
       'salarie_id': [{value:null, disabled:false}, Validators.required],
       'catQuestionsList' : this.visiteFB.array([]),
-      'entreprise_id': [{value:this.currentUser.id, disabled:false}, Validators.required],
-      'redacteur_id': [{value:null, disabled:true}, Validators.required],
+      'entreprise_id': [{value:null, disabled:false}, Validators.required],
+      'redacteur_id': [{value:this.currentUser.id, disabled:true}, Validators.required],
       'date_visite': [moment().format('YYYY-MM-DD'), Validators.required],
       // 'is_validated_redacteur': ['', Validators.required],
       // 'is_validated_visite': ['', Validators.required],

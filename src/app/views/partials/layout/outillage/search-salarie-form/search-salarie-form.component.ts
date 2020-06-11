@@ -3,7 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { AuthService, User } from '@app/core/auth';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
-import { TypeService } from '@app/core/services';
+import { TypeService, UserService } from '@app/core/services';
 import { Type } from '@app/core/models';
 
 @Component({
@@ -23,7 +23,7 @@ export class SearchSalarieFormComponent implements OnInit {
   salaries: User[];
   salarie : User;
   types : Type[];
-  constructor(private salarieService : AuthService,
+  constructor(private salarieService : UserService,
     private cdr : ChangeDetectorRef,
     private typeService : TypeService) { }
 
