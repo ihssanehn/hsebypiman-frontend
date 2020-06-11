@@ -46,7 +46,10 @@ export class SignatureAddComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     private fb: FormBuilder,
     public _sanitizer: DomSanitizer
-  ) { }
+  ) {
+    
+		this.authService.currentUser.subscribe(x=> this.currentUser = x);
+   }
 
   ngOnInit() {
     this.getEntreprises();
@@ -78,14 +81,10 @@ export class SignatureAddComponent implements OnInit {
 
 
   async getCurrentUser(){
-    var res = await this.authService.getUserByToken().toPromise();
-    this.currentUser = res.result.data;
     if(!this.isSigned){
-      (this.signaturesForm as FormArray).controls[0].get('personnel_id').setValue(res.result.data.id, {onlySelf: true, emitEvent: true });
-      (this.signaturesForm as FormArray ).controls[0].get('personnel').setValue(res.result.data, {onlySelf: true, emitEvent: true });
+      (this.signaturesForm as FormArray).controls[0].get('personnel_id').setValue(this.currentUser.id, {onlySelf: true, emitEvent: true });
+      (this.signaturesForm as FormArray ).controls[0].get('personnel').setValue(this.currentUser, {onlySelf: true, emitEvent: true });
     }
-    this.cdr.detectChanges();
-    this.cdr.markForCheck();
   }
 
   async getEntreprises(){
@@ -95,7 +94,6 @@ export class SignatureAddComponent implements OnInit {
       this.entreprisesList = res.result.data;
       this.entreprisesLoaded = true;
     }
-    this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
 

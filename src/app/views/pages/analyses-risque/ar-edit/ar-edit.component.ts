@@ -82,7 +82,6 @@ export class ArEditComponent implements OnInit, OnDestroy {
 						).subscribe( async res => {
 							this.ar = res.result.data;
 							this.loaded = true;
-							this.cdr.detectChanges();
 							this.cdr.markForCheck();
 						});
 				} else {
@@ -180,7 +179,6 @@ export class ArEditComponent implements OnInit, OnDestroy {
 			comments:new FormArray([]),
 		});
 		this.loaded = true;
-		this.cdr.detectChanges();
 	}
 
 	setDynamicValidators() {
@@ -381,7 +379,6 @@ export class ArEditComponent implements OnInit, OnDestroy {
 						if(err.status === 422){
 							var messages = extractErrorMessagesFromErrorResponse(err);
 							this.formStatus.onFormSubmitResponse({success: false, messages: messages});
-							this.cdr.detectChanges();
 							this.cdr.markForCheck();
 						}
 				

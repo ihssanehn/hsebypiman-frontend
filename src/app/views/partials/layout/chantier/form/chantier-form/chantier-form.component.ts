@@ -62,7 +62,6 @@ export class ChantierFormComponent implements OnInit {
       this.typesList = res.result.data;
       this.typesLoaded = true;
     }
-    this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
   async getUsers(){
@@ -72,7 +71,6 @@ export class ChantierFormComponent implements OnInit {
       this.usersList = res.result.data;
       this.usersLoaded = true;
     }
-    this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
   async getStatus(){
@@ -82,7 +80,6 @@ export class ChantierFormComponent implements OnInit {
       this.statusList = res.result.data;
       this.statusLoaded = true;
     }
-    this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
   async getCatHabs(){
@@ -92,7 +89,6 @@ export class ChantierFormComponent implements OnInit {
       this.catHabsList = res.result.data;
       this.catHabsLoaded = true;
     }
-    this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
   async getEntreprises(){
@@ -102,7 +98,6 @@ export class ChantierFormComponent implements OnInit {
       this.entreprisesList = res.result.data;
       this.entreprisesLoaded = true;
     }
-    this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
   async getEntrepriseTypes(){
@@ -112,7 +107,6 @@ export class ChantierFormComponent implements OnInit {
       this.entrepriseTypesList = res.result.data;
       this.entrepriseTypesLoaded = true;
     }
-    this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
   async getInterimaires(){
@@ -122,7 +116,6 @@ export class ChantierFormComponent implements OnInit {
       this.interimairesList = res.result.data;
       this.interimairesLoaded = true;
     }
-    this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
 

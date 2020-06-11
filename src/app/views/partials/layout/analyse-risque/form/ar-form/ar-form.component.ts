@@ -66,21 +66,18 @@ export class ArFormComponent implements OnInit {
   async getCatRisques(){
     var res = await this.catRisqueService.getAll().toPromise();
     this.risksList = res.result.data;
-    this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
 
   async getZones(){
     var res = await this.zoneService.getList().toPromise();
     this.zonesList = res.result.data;
-    this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
 
   async getEquipements(){
     var res = await this.equipementService.getAll().toPromise();
     this.equipementList = res.result.data;
-    this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
 

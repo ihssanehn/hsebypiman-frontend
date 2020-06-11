@@ -63,7 +63,9 @@ export class VisitesVehiculeListComponent implements OnInit {
 			};
 			this.filter.page = this.pagination.page;
 			this.filter.per_page = this.pagination.pageSize;
-			this.cdr.detectChanges();
+			if(!this.cdr['destroyed']){ 
+				this.cdr.detectChanges();
+			}
 			this.cdr.markForCheck();
 		} catch (error) {
 			console.error(error);

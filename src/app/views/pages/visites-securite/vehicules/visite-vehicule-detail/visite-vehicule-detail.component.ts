@@ -74,7 +74,6 @@ export class VisiteVehiculeDetailComponent implements OnInit, OnDestroy {
 					var _visite = res.result.data;
 					this.visite = _visite;
 					this.loaded = true;
-					this.cdr.detectChanges();
 					this.cdr.markForCheck();
 				});
 
@@ -120,7 +119,6 @@ export class VisiteVehiculeDetailComponent implements OnInit, OnDestroy {
 			  }),
 		});
 		this.loaded = true;
-		this.cdr.detectChanges();
 	}
 
 	parseVisitesDate(item, direction) {
@@ -227,7 +225,6 @@ export class VisiteVehiculeDetailComponent implements OnInit, OnDestroy {
 			  if(err.status === 422){
 				var messages = extractErrorMessagesFromErrorResponse(err);
 				this.formStatus.onFormSubmitResponse({success: false, messages: messages});
-				this.cdr.detectChanges();
 				this.cdr.markForCheck();
 			  }
 	

@@ -69,7 +69,9 @@ export class UsersListComponent implements OnInit {
 		this.pagination = { ...this.pagination, total: this.usersResult.total, page: this.usersResult.current_page };
 		this.filter.page = this.pagination.page;
 		this.filter.per_page = this.pagination.pageSize;
-		this.cdr.detectChanges();
+		if(!this.cdr['destroyed']){ 
+			this.cdr.detectChanges();
+		}
 	}
 
 	changePagination(){

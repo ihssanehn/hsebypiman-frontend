@@ -92,7 +92,6 @@ export class ArAddComponent implements OnInit, OnDestroy {
           .subscribe( async res => {
             this.ar = res.result.data;
             this.loaded = true;
-            this.cdr.detectChanges();
             this.cdr.markForCheck();
           });
         }else if(chantier_id){
@@ -110,7 +109,6 @@ export class ArAddComponent implements OnInit, OnDestroy {
             this.ar.chantier = this.chantier;
             this.arForm.patchValue(this.ar);
             this.loaded = true;
-            this.cdr.detectChanges();
             this.cdr.markForCheck();
           });
         }else{
@@ -167,7 +165,6 @@ export class ArAddComponent implements OnInit, OnDestroy {
         this.params = res.result.data;
         this.createForm();
         this.setDynamicValidators();
-        this.cdr.detectChanges();
         this.cdr.markForCheck();
       }); 
   }
@@ -175,14 +172,12 @@ export class ArAddComponent implements OnInit, OnDestroy {
   async getTypes(){
     var res = await this.typeService.getAllFromModel('Ar').toPromise();
     this.types = res.result.data;
-    this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
 
   async getUsers(){
     var res = await this.authService.getList().toPromise();
     this.users = res.result.data;
-    this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
 
@@ -227,7 +222,6 @@ export class ArAddComponent implements OnInit, OnDestroy {
       comments:new FormArray([]),
 		});
 		this.loaded = true;
-		this.cdr.detectChanges();
   }
 
   setDynamicValidators() {
@@ -452,7 +446,6 @@ export class ArAddComponent implements OnInit, OnDestroy {
         if(err.status === 422){
           var messages = extractErrorMessagesFromErrorResponse(err);
           this.formStatus.onFormSubmitResponse({success: false, messages: messages});
-          this.cdr.detectChanges();
           this.cdr.markForCheck();
         }
 

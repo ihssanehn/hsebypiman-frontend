@@ -36,7 +36,6 @@ export class EntrepriseFormComponent implements OnInit {
       this.typesList = res.result.data;
       this.typesLoaded = true;
     }
-    this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
 

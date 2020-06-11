@@ -78,19 +78,16 @@ export class VisiteVehiculeFiltersComponent implements OnInit, AfterViewInit
   async getUsers(){
     var res = await this.authService.getList().toPromise();
     this.users = res.result.data;
-    this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
   async getEntreprises(){
     var res = await this.entrepriseService.getList().toPromise();
     this.entreprises = res.result.data;
-    this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
   async getTypes(){
     var res = await this.typeService.getAllFromModel('VsVehicule').toPromise();
     this.types = res.result.data;
-    this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
   

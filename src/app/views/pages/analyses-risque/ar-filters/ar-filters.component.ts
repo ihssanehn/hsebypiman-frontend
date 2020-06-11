@@ -65,25 +65,21 @@ export class ArFiltersComponent implements OnInit, AfterViewInit {
   async getClients(){
     var res = await this.chantierService.getAllClients().toPromise();
     this.clients = res.result.data;
-    this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
   async getChantiers(){
     var res = await this.chantierService.getList().toPromise();
     this.chantiers = res.result.data;
-    this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
   async getUsers(){
     var res = await this.authService.getList().toPromise();
     this.users = res.result.data;
-    this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
   async getStatus(){
     var res = await this.statusService.getAllFromModel('Ar').toPromise();
     this.status = res.result.data;
-    this.cdr.detectChanges();
     this.cdr.markForCheck();
   }
 
