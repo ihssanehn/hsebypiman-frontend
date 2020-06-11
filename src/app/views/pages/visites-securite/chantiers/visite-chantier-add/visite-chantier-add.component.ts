@@ -51,19 +51,17 @@ export class VisiteChantierAddComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     public snackBar: MatSnackBar,
     private dateFrToEnPipe:DateFrToEnPipe
-  ) { }
+  ) { 
+    
+		this.authService.currentUser.subscribe(x=> this.currentUser = x);
+  }
 
   ngOnInit() {
     this.visite = new VisiteChantier();
     this.createForm();    
     this.setDynamicValidators();
-    this.getCurrentUser();
   }
 
-	async getCurrentUser() {
-		var res = await this.authService.getUserByToken().toPromise().then(res=>{this.visiteForm.get('redacteur_id').setValue(res.result.data.id)});
-		this.cdr.detectChanges();
-  }
   
   createForm() {
 		this.visiteForm = this.visiteFB.group({
@@ -73,7 +71,7 @@ export class VisiteChantierAddComponent implements OnInit {
       'entreprise_id': [{value:null, disabled:false}, Validators.required],
       'interimaire_id': [{value:null, disabled:false}],
       'nom_prenom': [{value:null, disabled:false}],
-      'redacteur_id': [{value:null, disabled:true}, Validators.required],
+      'redacteur_id': [{value:this.currentUser.id, disabled:true}, Validators.required],
       'date_visite': [moment().format('DD/MM/YYYY'), Validators.required],
       'presence_non_conformite': [{value:false, disabled: true}],
       'has_rectification_imm': [{value:false, disabled: true}],

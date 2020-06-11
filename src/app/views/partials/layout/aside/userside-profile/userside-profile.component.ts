@@ -9,6 +9,7 @@ import { AppState } from '../../../../../core/reducers';
 import { User, AuthService } from '../../../../../core/auth';
 import { Router } from '@angular/router';
 import { environment } from '@env/environment';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 
 @Component({
@@ -17,7 +18,7 @@ import { environment } from '@env/environment';
 })
 export class UserSideProfileComponent implements OnInit {
 	// Public properties
-	user$: Observable<User>;
+	user$: User;
 	user: User;
 
 	@Input() avatar = true;
@@ -35,6 +36,7 @@ export class UserSideProfileComponent implements OnInit {
 		private cdr : ChangeDetectorRef,
 		private router: Router,
 	) {
+		this.authService.currentUser.subscribe(x=> this.user$ = x);
 	}
 
 	/**
@@ -45,6 +47,7 @@ export class UserSideProfileComponent implements OnInit {
 	 * On init
 	 */
 	async ngOnInit() {
+		console.log(this.user$)
 		var res = await this.authService.getUserByToken().toPromise();
 		this.user = res.result.data;
 		this.cdr.detectChanges();

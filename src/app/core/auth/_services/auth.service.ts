@@ -29,24 +29,28 @@ export class AuthService extends HttpService {
     }
 
     
-	private currentUserSubject = new BehaviorSubject<JsonResponse<User>>(null);
+	private currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
 	public currentUser = this.currentUserSubject
 		.asObservable()
 		.pipe(distinctUntilChanged());
 
-	getCurrentUser(){
-		return this.currentUser;
+	public get currentUserValue(): User{
+		return this.currentUserSubject.value;
 	}
 	// Authentication/Authorization
 	login(email: string, password: string): Observable<JsonResponse<User>> {
-		return this.http.post<JsonResponse<User>>(`${this.baseUrl}auth/login`, {
-			email,
-			password
-		});
+		return this.http.post<JsonResponse<User>>(`${this.baseUrl}auth/login`, {email,password});
 	}
 
-	getUserByToken(): Observable<JsonResponse<User>> {
-		return this.http.get<JsonResponse<User>>(`${this.baseUrl}auth/user`);
+	getUserByToken(){
+		return this.http.get<JsonResponse<User>>(`${this.baseUrl}auth/user`)
+		.pipe(
+			map(res=> {
+				localStorage.setItem('currentUser', JSON.stringify(res.result.data));
+				this.currentUserSubject.next(res.result.data);
+				return res;
+			})
+		);
 	}
 
 	updateProfile(payload): Observable<JsonResponse<User>> {
@@ -191,7 +195,7 @@ export class AuthService extends HttpService {
 
 
 	registerPermissions(res: JsonResponse<User>) {
-		this.currentUserSubject.next(res);
+		
 		// this.permissionsService.loadPermissions([user.role.slug]);
 	}
 

@@ -92,27 +92,29 @@ export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 
 	initForm() {
 		this.visiteForm = this.visiteFB.group({
-			'id': [{value: null, disabled: true}, Validators.required],
+			'id': [{value: null, disabled: true}],
 			'code': [{value:null, disabled:true}],
-			'chantier_id': [{value:null, disabled:true}, Validators.required],
+			'chantier_id': [{value:null, disabled:true}],
 			'chantier': [''],
-			'salarie_id': [{value: null, disabled: true}, Validators.required],
-			'entreprise_id': [{value: null, disabled: true}, Validators.required],
-			'redacteur_id': [{value: null, disabled: true}, Validators.required],
-			'date_visite': [{value:moment().format('YYYY-MM-DD'), disabled: true}, Validators.required],
+			'salarie_id': [{value: null, disabled: true}],
+			'entreprise_id': [{value: null, disabled: true}],
+			'interimaire_id': [{value: null, disabled: true}],
+			'nom_prenom': [{value: null, disabled: true}],
+			'redacteur_id': [{value: null, disabled: true}],
+			'date_visite': [{value:moment().format('YYYY-MM-DD'), disabled: true}],
 			'presence_non_conformite': [{value: false, disabled: true }],
 			'has_rectification_imm': [{value: false, disabled: true }],
 			'avertissement': [{value: false, disabled: true }],
-			'type_id': [{value:null, disabled:true}, Validators.required],
+			'type_id': [{value:null, disabled:true}],
 			'catQuestionsList': this.visiteFB.array([]),
 			'is_validate_resp_hse': [{value:null, disabled:true}],
 			'signature_redacteur': this.visiteFB.group({
-				'date':[{value:null, disabled:true}, Validators.required],
-				'signature': [{value:null, disabled:true}, Validators.required]
+				'date':[{value:null, disabled:true}],
+				'signature': [{value:null, disabled:true}]
 			  }),
 			  'signature_visite': this.visiteFB.group({
-				'date':[{value:null, disabled:true}, Validators.required],
-				'signature': [{value:null, disabled:true}, Validators.required]
+				'date':[{value:null, disabled:true}],
+				'signature': [{value:null, disabled:true}]
 			  }),
 			  'signature_resp_hse': this.visiteFB.group({
 				'date':[{value:null, disabled:true}],
@@ -142,7 +144,7 @@ export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 					'id': [{ value: quest.id, disabled: true }],
 					'libelle': [{ value: quest.libelle, disabled: true }],
 					'pivot': this.visiteFB.group({
-						'note': [{ value: quest.pivot.note, disabled: true }, Validators.required],
+						'note': [{ value: quest.pivot.note, disabled: true }],
 						'date_remise_conf': [{ value: quest.pivot.date_remise_conf, disabled: true }],
 						'observation': [{ value: quest.pivot.observation, disabled: true }]
 					})
