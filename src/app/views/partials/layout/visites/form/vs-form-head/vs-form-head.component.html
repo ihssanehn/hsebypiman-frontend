@@ -3,11 +3,11 @@
     <div class="row">
         <div class="col-12 mb-2">
             <div class="tf-heading tf-heading--sm">
-                <span *ngIf="origin != 'add'">Visité sécurité N° {{visiteForm.get('code').value}}</span>
+                <span *ngIf="origin != 'add'">Visité sécurité N° {{visiteForm.get('code')?.value}}</span>
                 <span *ngIf="origin == 'add'">Nouvelle visite</span>
                 <span class="date-visite pull-right">
                     <small>Rédacteur : {{redacteur | fullName}} </small><br>
-                    <small>Date de visite : {{visiteForm.get('date_visite').value}}</small>
+                    <small>Date de visite : {{visiteForm.get('date_visite')?.value}}</small>
                 </span>
             </div>
         </div>

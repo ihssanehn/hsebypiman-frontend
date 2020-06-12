@@ -85,12 +85,12 @@ export class VisitesEpiListComponent implements OnInit {
 
 
 	viewVisite(visiteId) {
-		// this.router.navigate(['../detail', visiteId], { relativeTo: this.activatedRoute });
-		Swal.fire({
-			title: 'Désolé cette fonctionnalité n\'a pas encore été implémentée',
-			showConfirmButton: false,
-			timer: 1500
-		})
+		this.router.navigate(['../detail', visiteId], { relativeTo: this.activatedRoute });
+		// Swal.fire({
+		// 	title: 'Désolé cette fonctionnalité n\'a pas encore été implémentée',
+		// 	showConfirmButton: false,
+		// 	timer: 1500
+		// })
 	}
 	editVisite(visiteId) {
 		// this.router.navigate(['../edit', visiteId], { relativeTo: this.activatedRoute });

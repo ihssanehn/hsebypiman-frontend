@@ -40,7 +40,7 @@ export class VsFormHeadComponent implements OnInit {
 
   
   ngOnInit() {
-
+    console.log(this.visiteForm);
     this.getTypes();
     this.getUsers();
     this.getStatus();
@@ -124,7 +124,8 @@ export class VsFormHeadComponent implements OnInit {
 
   
   formHasValue(key){
-    return this.visiteForm.get(key).value ? true:false;
+    console.log(key);
+    return this.visiteForm.get(key) && this.visiteForm.get(key).value ? true:false;
   }
   clearValue(key){
     this.visiteForm.get(key).patchValue(null);

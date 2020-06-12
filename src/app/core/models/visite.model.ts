@@ -60,6 +60,7 @@ export class VisiteEpi {
     signatureRedacteur?:Signature;
     signatureVisite?:Signature;
     signatureRespHse?:Signature;
+	catQuestionsList: any;
 }
 export class VisiteOutillage {
     id?:Number;
