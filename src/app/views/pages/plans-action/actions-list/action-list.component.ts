@@ -10,8 +10,8 @@ import Swal from 'sweetalert2';
 
 @Component({
 	selector: 'tf-actions-list',
-	templateUrl: './actions-list.component.html',
-	styleUrls: ['./actions-list.component.scss']
+	templateUrl: './action-list.component.html',
+	styleUrls: ['./action-list.component.scss']
 })
 export class ActionsListComponent implements OnInit, AfterViewInit, OnDestroy {
 
@@ -32,10 +32,9 @@ export class ActionsListComponent implements OnInit, AfterViewInit, OnDestroy {
 	};
 	showFilters:Boolean = false;
 	displayedActionColumns = [
-		'number', 'name', 'client', 'status', 'charge_affaire', 
-		'responsable_chiffrage', 'montant', 'created_at', 'date_demarrage',
-		'ee_presence', 'ars_count', 'latest_ar', 'vss_count',
-		'latest_vs', 'action'
+		'number', 'type', 'risque', 'name', 
+		'objectif', 'pilote', 'delai', 'status', 
+		'realisation', 'efficacite', 'commentaires', 'action'
 	];
 
 	constructor(
@@ -105,10 +104,10 @@ export class ActionsListComponent implements OnInit, AfterViewInit, OnDestroy {
 	}
 
 	viewAction(actionId) {
-		this.router.navigateByUrl('actions/detail/' + actionId);
+		this.router.navigateByUrl('plans-action/detail/' + actionId);
 	}
 	editAction(actionId) {
-		this.router.navigateByUrl('actions/edit/' + actionId);
+		this.router.navigateByUrl('plans-action/edit/' + actionId);
 	}
 	deleteAction(actionId) {
 		Swal.fire({

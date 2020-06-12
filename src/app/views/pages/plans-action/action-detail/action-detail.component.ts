@@ -130,58 +130,58 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 			confirmButtonText: 'Clore le action'
 		}).then(async response => {
 			if (response.value) {
-				const res = await this.actionService.closeAction(actionId)
-				.toPromise()
-				.then(res=>{
-					var code = res.message.code as SweetAlertIcon;
-					var message = res.message.content != 'done' ? '<b class="text-'+code+'">'+res.message.content+'</b>' : null; 
-					Swal.fire({
-						icon: code,
-						title: 'le action a été clos avec succès',
-						showConfirmButton: false,
-						html: message,
-						timer: code == 'success' ? 1500 : 3000
-					}).then(() => {
-						this.getAction(actionId);
-					})
-				}).catch(e => {
-					Swal.fire({
-						icon: 'error',
-						title: 'Echec! une erreur est survenue',
-						showConfirmButton: false,
-						timer: 1500
-					});
-				});
+				// const res = await this.actionService.closeAction(actionId)
+				// .toPromise()
+				// .then(res=>{
+				// 	var code = res.message.code as SweetAlertIcon;
+				// 	var message = res.message.content != 'done' ? '<b class="text-'+code+'">'+res.message.content+'</b>' : null; 
+				// 	Swal.fire({
+				// 		icon: code,
+				// 		title: 'le action a été clos avec succès',
+				// 		showConfirmButton: false,
+				// 		html: message,
+				// 		timer: code == 'success' ? 1500 : 3000
+				// 	}).then(() => {
+				// 		this.getAction(actionId);
+				// 	})
+				// }).catch(e => {
+				// 	Swal.fire({
+				// 		icon: 'error',
+				// 		title: 'Echec! une erreur est survenue',
+				// 		showConfirmButton: false,
+				// 		timer: 1500
+				// 	});
+				// });
 			}
 		});
 	}
   
 	addAr(actionId){
-		if(this.action.montant <= 20000){
-			Swal.fire({
-				icon: 'error',
-				title: 'Le montant du action est inférieur ou égal à 20K€, vous ne pouvez pas créer d\'analyse de risque',
-				showConfirmButton: false,
-				timer: 4000
-			});
-		}else{
-			if(!this.action.is_all_ars_archived){
-				Swal.fire({
-					icon: 'warning',
-					title: 'Vous allez créer une Analyse de risque',
-					html: '<p class="text-warning"><b>L\'analyse de risque en cours sur ce action sera archivée</b></p><p>Voulez-vous continuer ?</p>',
-					showConfirmButton: true,
-					showCancelButton: true,
-					cancelButtonText: 'Annuler',
-					confirmButtonText: 'Confirmer'
-				}).then(async response => {
-					if (response.value) {
-						this.router.navigate(['analyses-risque/add'], {queryParams:{action_id:actionId}})
-					}
-				});
-			}else{
-				this.router.navigate(['analyses-risque/add'], {queryParams:{action_id:actionId}});
-			}
-		}
+		// if(this.action.montant <= 20000){
+		// 	Swal.fire({
+		// 		icon: 'error',
+		// 		title: 'Le montant du action est inférieur ou égal à 20K€, vous ne pouvez pas créer d\'analyse de risque',
+		// 		showConfirmButton: false,
+		// 		timer: 4000
+		// 	});
+		// }else{
+		// 	if(!this.action.is_all_ars_archived){
+		// 		Swal.fire({
+		// 			icon: 'warning',
+		// 			title: 'Vous allez créer une Analyse de risque',
+		// 			html: '<p class="text-warning"><b>L\'analyse de risque en cours sur ce action sera archivée</b></p><p>Voulez-vous continuer ?</p>',
+		// 			showConfirmButton: true,
+		// 			showCancelButton: true,
+		// 			cancelButtonText: 'Annuler',
+		// 			confirmButtonText: 'Confirmer'
+		// 		}).then(async response => {
+		// 			if (response.value) {
+		// 				this.router.navigate(['analyses-risque/add'], {queryParams:{action_id:actionId}})
+		// 			}
+		// 		});
+		// 	}else{
+		// 		this.router.navigate(['analyses-risque/add'], {queryParams:{action_id:actionId}});
+		// 	}
+		// }
 	}
 }

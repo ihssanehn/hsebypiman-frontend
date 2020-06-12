@@ -60,26 +60,26 @@ export class ActionEditComponent implements OnInit, OnDestroy {
 		this.createForm();
     	this.setDynamicValidators();
 		const routeSubscription = this.activatedRoute.params.subscribe(
-			async params => {
-				const id = params.id;
-				if (id) {
-					this.actionService.get(id).pipe(
-						tap(res=>{
-							this.parseActionDate(res.result.data, 'EnToFr');
-							this.actionForm.patchValue(res.result.data);							
-							this.formPathValues(res.result.data);
-							this.actionForm.controls['entreprises'].patchValue(res.result.data.entreprises);
-						})
-					).subscribe( async res => {
-						this.action = res.result.data;
-						this.loaded = true;
-						this.cdr.markForCheck();
-					});
+			// async params => {
+			// 	const id = params.id;
+			// 	if (id) {
+			// 		this.actionService.get(id).pipe(
+			// 			tap(res=>{
+			// 				this.parseActionDate(res.result.data, 'EnToFr');
+			// 				this.actionForm.patchValue(res.result.data);							
+			// 				this.formPathValues(res.result.data);
+			// 				this.actionForm.controls['entreprises'].patchValue(res.result.data.entreprises);
+			// 			})
+			// 		).subscribe( async res => {
+			// 			this.action = res.result.data;
+			// 			this.loaded = true;
+			// 			this.cdr.markForCheck();
+			// 		});
 
-				} else {
-					this.router.navigateByUrl('/actions/list');
-				}
-			}
+			// 	} else {
+			// 		this.router.navigateByUrl('/actions/list');
+			// 	}
+			// }
 		);
 		this.subscriptions.push(routeSubscription);
   	}
@@ -247,11 +247,11 @@ export class ActionEditComponent implements OnInit, OnDestroy {
 		
 		this.formStatus.onFormSubmitting();
 		let form = {...this.actionForm.getRawValue()};
-		if(form.status_id != this.action.status_id && this.action.status.code == 'ENCOURS' && !this.action.is_all_ars_archived){
-			this.fireBeforeSave(form)
-		}else{
-			this.saveForm(form)
-		}
+		// if(form.status_id != this.action.status_id && this.action.status.code == 'ENCOURS' && !this.action.is_all_ars_archived){
+		// 	this.fireBeforeSave(form)
+		// }else{
+		// 	this.saveForm(form)
+		// }
 	}
 
 	parseActionDate(item, direction){
