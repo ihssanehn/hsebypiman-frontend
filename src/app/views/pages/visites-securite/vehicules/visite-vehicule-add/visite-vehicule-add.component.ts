@@ -123,6 +123,11 @@ export class VisiteVehiculeAddComponent implements OnInit {
   //   this.vehicule = res.result.data;
   // }
 
+  async onUserSelected(form){
+    this.visiteForm.patchValue(form);
+    this.displayQuestions();
+  }
+
   async onSubmit(event){
     try {
       let form = {...this.visiteForm.getRawValue()};
