@@ -233,7 +233,6 @@ import { VsVehiculeFormImgComponent } from './layout/visites/form/vs-vehicule/vs
 		AdminBasicListPortletComponent,
 		NgbModule,
 		AdminTemplateComponent,
-
 		SignatureAddComponent,
 		SignatureListComponent,
 		ArDetailPanelsComponent,
