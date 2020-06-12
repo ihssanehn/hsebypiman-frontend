@@ -112,6 +112,9 @@ import { AdminBasicListPortletComponent } from './layout/admin-basic-list-portle
 import { AdminTemplateComponent } from './layout/admin-template/admin-template.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { SearchOutillageFormComponent } from './layout/outillage/search-outillage-form/search-outillage-form.component';
+import { SearchSalarieFormComponent } from './layout/outillage/search-salarie-form/search-salarie-form.component';
+import { VisiteQuestionOutillageAdminComponent } from './layout/outillage/visite-question-outillage-admin/visite-question-outillage-admin.component';
+import { VsVehiculeFormImgComponent } from './layout/visites/form/vs-vehicule/vs-vehicule-form-img/vs-vehicule-form-img.component';
 
 @NgModule({
 	declarations: [
@@ -169,7 +172,11 @@ import { SearchOutillageFormComponent } from './layout/outillage/search-outillag
 		SignatureListComponent,
 		ArDetailPanelsComponent,
 		SearchOutillageFormComponent,
-		AddVehiculeFormComponent
+
+		SearchSalarieFormComponent,
+		VisiteQuestionOutillageAdminComponent,
+		AddVehiculeFormComponent,
+		VsVehiculeFormImgComponent
 	],
 	exports: [
 		WidgetModule,
@@ -226,12 +233,14 @@ import { SearchOutillageFormComponent } from './layout/outillage/search-outillag
 		AdminBasicListPortletComponent,
 		NgbModule,
 		AdminTemplateComponent,
-
 		SignatureAddComponent,
 		SignatureListComponent,
 		ArDetailPanelsComponent,
 		SearchOutillageFormComponent,
-		AddVehiculeFormComponent
+		SearchSalarieFormComponent,
+		VisiteQuestionOutillageAdminComponent,
+		AddVehiculeFormComponent,
+		VsVehiculeFormImgComponent
 	],
 	imports: [
 		CommonModule,
@@ -266,6 +275,7 @@ import { SearchOutillageFormComponent } from './layout/outillage/search-outillag
 		MatTabsModule,
 		MatTooltipModule,
 		MatDialogModule,
+		MatInputModule,
 
 		SignaturePadModule,
 

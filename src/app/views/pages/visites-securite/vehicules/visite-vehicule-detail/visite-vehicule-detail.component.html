@@ -24,6 +24,8 @@
 		</div>
 		<tf-vs-form-head [visiteForm]="visiteForm" [origin]="'detail'" [model]="'VsVehicule'" *ngIf="visiteForm.get('vehicule').value"></tf-vs-form-head>
 	</tf-portlet>
+
+	<tf-vs-vehicule-form-img [visiteForm]="visiteForm" [origin]="'detail'" ></tf-vs-vehicule-form-img>
 	
 	<tf-vs-form-body [visiteForm]="visiteForm" [catQuestionsList]="catQuestionsList" (dateUpdated)="onSubmit()" [origin]="'detail'" [isDisableToggle]="isDisableToggle" ></tf-vs-form-body>
 

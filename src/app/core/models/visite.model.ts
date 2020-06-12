@@ -118,4 +118,5 @@ export class VisiteVehicule {
     signatureRedacteur?:Signature;
     signatureVisite?:Signature;
     signatureRespHse?:Signature;
+    img_canvas?: string;
 }
