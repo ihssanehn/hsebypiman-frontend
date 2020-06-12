@@ -186,11 +186,7 @@ export class VisiteChantierAddComponent implements OnInit {
       this.visiteForm.get('entreprise_id').invalid ||
       this.visiteForm.get('interimaire_id').invalid || 
       this.visiteForm.get('nom_prenom').invalid;
-
-    return test;
-
-
-    
+    return test;  
   }  
 
   async displayQuestions(){

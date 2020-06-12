@@ -9,10 +9,11 @@
                     <small>Rédacteur : {{redacteur | fullName}} </small><br>
                     <small>Date de visite : {{visiteForm.get('date_visite').value}}</small>
                 </span>
-			</div>
+            </div>
         </div>
         <div class="col-12">
-            <form [formGroup]="visiteForm" autocomplete="off" class="tf-form tf-form--group-seperator-dashed " novalidate fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+            <form [formGroup]="visiteForm" autocomplete="off" class="tf-form tf-form--group-seperator-dashed "
+                novalidate fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
                 <div class="tf-wizard-v4__content" data-tfwizard-type="step-content" data-tfwizard-state="current">
                     <div class="tf-form__section tf-form__section--first">
                         <div class="tf-wizard-v4__form">
@@ -20,7 +21,8 @@
                                 <!-- TYPE -->
                                 <mat-form-field class="col-xl-3">
                                     <mat-label>{{'VISITES.TYPE.LABEL' | translate}}</mat-label>
-                                    <mat-select class="form-control" placeholder="" formControlName="type_id" [required]="isFieldRequired('type_id')">
+                                    <mat-select class="form-control" placeholder="" formControlName="type_id"
+                                        [required]="isFieldRequired('type_id')">
                                         <mat-option *ngFor="let type of types" [value]="type.id">
                                             {{ type.libelle }}
                                         </mat-option>
@@ -31,16 +33,40 @@
                                 </mat-form-field>
                                 <!-- SALARIE -->
                                 <mat-form-field class="col-xl-3" *ngIf="origin == 'add' || formHasValue('salarie_id')"
-                                    matTooltip="Vous ne pouvez pas sélectionner un salarié si une entreprise est déjà sélectionnée" 
-                                    [matTooltipDisabled]="formHasValue('salarie_id')"
-                                >
+                                    matTooltip="Vous ne pouvez pas sélectionner un salarié si une entreprise est déjà sélectionnée"
+                                    [matTooltipDisabled]="formHasValue('salarie_id')">
                                     <mat-label>{{'VISITES.VISITED.LABEL' | translate}}</mat-label>
-                                    <mat-select class="form-control" placeholder="" formControlName="salarie_id" [required]="isFieldRequired('salarie_id')">
+                                    <mat-select class="form-control" placeholder="" formControlName="salarie_id"
+                                        [required]="isFieldRequired('salarie_id')">
                                         <mat-option *ngFor="let user of users" [value]="user.id">
                                             {{ user | fullName }}
                                         </mat-option>
                                     </mat-select>
-                                    <button mat-button *ngIf="formHasValue('salarie_id') && !visiteForm.get('salarie_id').disabled" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('salarie_id'); $event.stopPropagation()">
+                                    <button mat-button
+                                        *ngIf="formHasValue('salarie_id') && !visiteForm.get('salarie_id').disabled"
+                                        matSuffix mat-icon-button aria-label="Clear"
+                                        (click)="clearValue('salarie_id'); $event.stopPropagation()">
+                                        <mat-icon>clear</mat-icon>
+                                    </button>
+                                    <mat-error *ngIf="isControlHasError('salarie_id','required')">
+                                        <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                                <!-- OUTILLAGE -->
+                                <mat-form-field class="col-xl-3" *ngIf="origin == 'detail' && formHasValue('outillage_code')"
+                                    matTooltip=""
+                                    [matTooltipDisabled]="formHasValue('outillage_code')">
+                                    <mat-label>{{'OUTILLAGE.OUTIL.LABEL' | translate}}</mat-label>
+                                    <mat-select class="form-control" placeholder="" formControlName="outillage_code"
+                                        [required]="isFieldRequired('outillage_code')">
+                                        <mat-option [value]="visiteForm.get('outillage_code').value">
+                                            {{ visiteForm.get('outillage_code').value}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <button mat-button
+                                        *ngIf="formHasValue('salarie_id') && !visiteForm.get('salarie_id').disabled"
+                                        matSuffix mat-icon-button aria-label="Clear"
+                                        (click)="clearValue('salarie_id'); $event.stopPropagation()">
                                         <mat-icon>clear</mat-icon>
                                     </button>
                                     <mat-error *ngIf="isControlHasError('salarie_id','required')">
@@ -48,21 +74,27 @@
                                     </mat-error>
                                 </mat-form-field>
 
-
                                 <!-- ENTREPRISE -->
-                                <mat-form-field class="col-xl-3" *ngIf="model == 'VsChantier' && (origin == 'add' || formHasValue('entreprise_id'))"
+                                <mat-form-field class="col-xl-3" 
+                                    *ngIf="model == 'VsChantier' && (origin == 'add' || formHasValue('entreprise_id'))"
                                     matTooltip="Vous ne pouvez pas sélectionner une entreprise si un salarié est déjà sélectionné" 
                                     [matTooltipDisabled]="formHasValue('entreprise_id')"
                                 >
                                     <mat-label>{{'VISITES.ENTREPRISE.LABEL' | translate}}</mat-label>
-                                    <mat-select class="form-control" placeholder="" formControlName="entreprise_id" [required]="isFieldRequired('entreprise_id')">
-                                        <mat-optgroup *ngFor="let group of entreprisesGrouped;" [label]="group.name" [disabled]="group.disabled">
-                                            <mat-option *ngFor="let entreprise of group.entreprises" [value]="entreprise.id">
+                                    <mat-select class="form-control" placeholder="" formControlName="entreprise_id"
+                                        [required]="isFieldRequired('entreprise_id')">
+                                        <mat-optgroup *ngFor="let group of entreprisesGrouped;" [label]="group.name"
+                                            [disabled]="group.disabled">
+                                            <mat-option *ngFor="let entreprise of group.entreprises"
+                                                [value]="entreprise.id">
                                                 {{ entreprise.raison_sociale }}
                                             </mat-option>
                                         </mat-optgroup>
                                     </mat-select>
-                                    <button mat-button *ngIf="formHasValue('entreprise_id') && !visiteForm.get('entreprise_id').disabled" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('entreprise_id'); $event.stopPropagation()">
+                                    <button mat-button
+                                        *ngIf="formHasValue('entreprise_id') && !visiteForm.get('entreprise_id').disabled"
+                                        matSuffix mat-icon-button aria-label="Clear"
+                                        (click)="clearValue('entreprise_id'); $event.stopPropagation()">
                                         <mat-icon>clear</mat-icon>
                                     </button>
                                     <mat-error *ngIf="isControlHasError('entreprise_id','required')">
@@ -74,7 +106,8 @@
                                 <!-- INTERIMAIRE -->
                                 <mat-form-field class="col-xl-3" *ngIf="entHasCode() == 'INTERIM'">
                                     <mat-label>{{'EES.INTERIMAIRE.LABEL' | translate}}</mat-label>
-                                    <mat-select class="form-control" formControlName="interimaire_id" [required]="isFieldRequired('interimaire_id')">
+                                    <mat-select class="form-control" formControlName="interimaire_id"
+                                        [required]="isFieldRequired('interimaire_id')">
                                         <mat-option *ngFor="let user of interimairesList" [value]="user.id">
                                             {{ user | fullName }}
                                         </mat-option>
@@ -87,7 +120,8 @@
                                 <!-- SOUS-TRAITANT NOM PRENOM -->
                                 <mat-form-field class="col-xl-3" *ngIf="entHasCode() && entHasCode() != 'INTERIM'">
                                     <mat-label>Nom Prénom</mat-label>
-                                    <input type="text" matInput class="form-control" formControlName="nom_prenom" [required]="isFieldRequired('nom_prenom')">
+                                    <input type="text" matInput class="form-control" formControlName="nom_prenom"
+                                        [required]="isFieldRequired('nom_prenom')">
                                     <mat-error *ngIf="isControlHasError('nom_prenom','required')">
                                         <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
                                     </mat-error>
