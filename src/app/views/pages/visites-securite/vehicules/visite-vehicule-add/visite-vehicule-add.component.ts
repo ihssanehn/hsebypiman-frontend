@@ -57,7 +57,7 @@ export class VisiteVehiculeAddComponent implements OnInit {
   ngOnInit() {
     this.visite = new VisiteVehicule();
     this.createForm();    
-    this.setDynamicValidators();
+    //this.setDynamicValidators();
   }
 
   
@@ -65,7 +65,7 @@ export class VisiteVehiculeAddComponent implements OnInit {
 		this.visiteForm = this.visiteFB.group({
       'vehicule': ['', Validators.required],
       'salarie_id': [{value:null, disabled:false}, Validators.required],
-      'entreprise_id': [{value:null, disabled:false}, Validators.required],
+      //'entreprise_id': [{value:null, disabled:false}, Validators.required],
       'redacteur_id': [{value:this.currentUser.id, disabled:true}, Validators.required],
       'date_visite': [moment().format('YYYY-MM-DD'), Validators.required],
       'presence_non_conformite': [{value:false, disabled: true}],
@@ -86,33 +86,34 @@ export class VisiteVehiculeAddComponent implements OnInit {
         'date':[{value:null, disabled:true}],
         'signature': [{value:null, disabled:true}]
       }),
+      'img_canvas': [{value:null, disabled:true}]
 		});
 		this.loaded = true;
   }
   
-  setDynamicValidators() {
-    const salarie_id = this.visiteForm.get('salarie_id');
-    const entreprise_id = this.visiteForm.get('entreprise_id');
+  // setDynamicValidators() {
+  //   const salarie_id = this.visiteForm.get('salarie_id');
+  //   const entreprise_id = this.visiteForm.get('entreprise_id');
 
-    this.visiteForm.get('salarie_id').valueChanges.subscribe(salarie_id => {
-        if (salarie_id != null) {
-          entreprise_id.setValidators(null);
-          entreprise_id.disable({onlySelf:true, emitEvent:false});
-        }else{
-          entreprise_id.setValidators(Validators.required);
-          entreprise_id.enable({onlySelf:true, emitEvent:false});
-        }
-      })
-      this.visiteForm.get('entreprise_id').valueChanges.subscribe(entreprise_id => {
-        if (entreprise_id != null) {
-          salarie_id.setValidators(null);
-          salarie_id.disable({onlySelf:true, emitEvent:false});
-        }else{
-          salarie_id.setValidators(Validators.required);
-          salarie_id.enable({onlySelf:true, emitEvent:false});
-        }
-    })
-  }
+  //   this.visiteForm.get('salarie_id').valueChanges.subscribe(salarie_id => {
+  //       if (salarie_id != null) {
+  //         entreprise_id.setValidators(null);
+  //         entreprise_id.disable({onlySelf:true, emitEvent:false});
+  //       }else{
+  //         entreprise_id.setValidators(Validators.required);
+  //         entreprise_id.enable({onlySelf:true, emitEvent:false});
+  //       }
+  //     })
+  //     this.visiteForm.get('entreprise_id').valueChanges.subscribe(entreprise_id => {
+  //       if (entreprise_id != null) {
+  //         salarie_id.setValidators(null);
+  //         salarie_id.disable({onlySelf:true, emitEvent:false});
+  //       }else{
+  //         salarie_id.setValidators(Validators.required);
+  //         salarie_id.enable({onlySelf:true, emitEvent:false});
+  //       }
+  //   })
+  // }
 
   onVehiculeSelected(vehiculeId: Number) {
     this.getVehicule(vehiculeId);
@@ -171,8 +172,8 @@ export class VisiteVehiculeAddComponent implements OnInit {
   cantDisplayQuestions(){
     var test: boolean = this.visiteForm.get('vehicule').invalid ||
       this.visiteForm.get('type_id').invalid ||
-      this.visiteForm.get('salarie_id').invalid || 
-      this.visiteForm.get('entreprise_id').invalid;
+      this.visiteForm.get('salarie_id').invalid;
+     // || this.visiteForm.get('entreprise_id').invalid;
 
     return test;
   }  

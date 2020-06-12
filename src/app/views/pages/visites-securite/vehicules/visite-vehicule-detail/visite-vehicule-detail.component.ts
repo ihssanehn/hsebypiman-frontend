@@ -108,15 +108,16 @@ export class VisiteVehiculeDetailComponent implements OnInit, OnDestroy {
 			'signature_redacteur': this.visiteFB.group({
 				'date':[{value:null, disabled:true}, Validators.required],
 				'signature': [{value:null, disabled:true}, Validators.required]
-			  }),
-			  'signature_visite': this.visiteFB.group({
+			}),
+			'signature_visite': this.visiteFB.group({
 				'date':[{value:null, disabled:true}, Validators.required],
 				'signature': [{value:null, disabled:true}, Validators.required]
-			  }),
-			  'signature_resp_hse': this.visiteFB.group({
+			}),
+			'signature_resp_hse': this.visiteFB.group({
 				'date':[{value:null, disabled:true}],
 				'signature': [{value:null, disabled:true}]
-			  }),
+			}),
+			'img_canvas': [{value:null, disabled:true}]
 		});
 		this.loaded = true;
 	}
@@ -174,6 +175,10 @@ export class VisiteVehiculeDetailComponent implements OnInit, OnDestroy {
 		const signatureRespHse = this.visiteForm.get('signature_resp_hse') as FormGroup;
 		if(visite.sign_resp_hse){
 			signatureRespHse.patchValue(visite.sign_resp_hse);
+		}
+		const imgCanvas = this.visiteForm.get('img_canvas') as FormGroup;
+		if(visite.img_canvas){
+			imgCanvas.patchValue(visite.img_canvas);
 		}
 
 		this.showSignatures = true;

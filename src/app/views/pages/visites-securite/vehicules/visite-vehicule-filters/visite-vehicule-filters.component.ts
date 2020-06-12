@@ -97,11 +97,9 @@ export class VisiteVehiculeFiltersComponent implements OnInit, AfterViewInit
       redacteur_id:[null],
       visited_id:[null],
       personnel_id:[null],
-      // status_id:[null],
       type_id:[null],
       date_visite_start:[null],
-      date_visite_end:[null],
-      entreprise_id:[null],
+      date_visite_end:[null]
     })
   }
  
