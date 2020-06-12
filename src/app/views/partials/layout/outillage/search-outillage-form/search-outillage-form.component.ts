@@ -18,8 +18,9 @@ export class SearchOutillageFormComponent implements OnInit {
   @Input() form: FormGroup;
   @Input() parent: string;
   @Input() origin: string;
-  outillage: any;
-
+  
+  outillage:Outillage = null;
+  
   private _data = new BehaviorSubject<Outillage>(null);
   @Input()
   set data(value) {

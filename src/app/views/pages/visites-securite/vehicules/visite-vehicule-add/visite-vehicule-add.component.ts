@@ -202,7 +202,6 @@ export class VisiteVehiculeAddComponent implements OnInit {
     if(item.length > 0){
 
       const catQuestionsListFormArray: FormArray = this.visiteForm.get('catQuestionsList') as FormArray;
-      const questionFormArray = this.visiteForm.get('questions') as FormArray;
 
       item.forEach((element, i) => {
         let questionsArrayFB = []
@@ -246,7 +245,6 @@ export class VisiteVehiculeAddComponent implements OnInit {
           })
 
           questionsArrayFB.push(question);
-          questionFormArray.push(question)
         })
 
         var cat = this.visiteFB.group({
@@ -286,7 +284,7 @@ export class VisiteVehiculeAddComponent implements OnInit {
   }
 
   questionsLoaded(){
-    return this.visiteForm.get('questions').value.length > 0
+    return this.visiteForm.get('catQuestionsList').value.length > 0
   }
 
   public findInvalidControls() {

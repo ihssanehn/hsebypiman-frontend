@@ -102,7 +102,6 @@ export class VisiteVehiculeDetailComponent implements OnInit, OnDestroy {
 			'has_rectification_imm': [{value: false, disabled: true }],
 			'avertissement': [{value: false, disabled: true }],
 			'type_id': [{value:null, disabled:true}, Validators.required],
-			'questions': this.visiteFB.array([]),
 			'catQuestionsList' : this.visiteFB.array([]),
 			'is_validate_resp_hse': [{value:null, disabled:true}],
 			'signature_redacteur': this.visiteFB.group({
@@ -134,7 +133,6 @@ export class VisiteVehiculeDetailComponent implements OnInit, OnDestroy {
 	patchQuestionsForm(visite) {
 
 		const catQuestionsListFormArray: FormArray = this.visiteForm.get('catQuestionsList') as FormArray;
-		const questionsFormArray: FormArray = this.visiteForm.get('questions') as FormArray;
 
 		visite.catQuestionsList.forEach((element, i) => {
 			let questionsArrayFB = []
@@ -152,7 +150,6 @@ export class VisiteVehiculeDetailComponent implements OnInit, OnDestroy {
 				if(quest.pivot.note == 2){
 					this.visiteForm.get('presence_non_conformite').setValue(true);
 				}
-				questionsFormArray.push(question);
 				questionsArrayFB.push(question);
 			})
 			var cat = this.visiteFB.group({
@@ -186,7 +183,7 @@ export class VisiteVehiculeDetailComponent implements OnInit, OnDestroy {
 	}
 
 	questionsLoaded() {
-		return this.visiteForm.get('questions').value.length > 0
+		return this.visiteForm.get('catQuestionsList').value.length > 0
 	}
 
 	editVisite(visiteId) {
