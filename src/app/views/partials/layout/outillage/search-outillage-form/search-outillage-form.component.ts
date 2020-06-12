@@ -18,7 +18,8 @@ export class SearchOutillageFormComponent implements OnInit {
   @Input() form: FormGroup;
   @Input() parent: string;
   @Input() origin: string;
-  
+  outillage: any;
+
   private _data = new BehaviorSubject<Outillage>(null);
   @Input()
   set data(value) {
@@ -31,14 +32,9 @@ export class SearchOutillageFormComponent implements OnInit {
   @Output() onDisplayOutillage: EventEmitter<any> = new EventEmitter<any>();
 
   searchControl: FormControl = new FormControl();
-  filteredOutillages: Observable<Array<Outillage>>;
-
 
   constructor(
-    private activatedRoute: ActivatedRoute,
     protected outillageService:OutillageService,
-    private cdr: ChangeDetectorRef,
-    private router:Router,
     iconRegistry: MatIconRegistry, 
     sanitizer: DomSanitizer
   ) { 

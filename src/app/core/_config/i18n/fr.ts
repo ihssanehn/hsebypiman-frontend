@@ -520,12 +520,7 @@ export const locale = {
 			VEHICULE:{
 				LABEL:'Nom de véhicule',
 				TITLE:'Nom de véhicule',
-				SHORTTITLE: 'Nom'
-			},
-			MARQUE:{
-				LABEL:'Marque de véhicule',
-				TITLE:'Marque de véhicule',
-				SHORTTITLE: 'Marque'
+				SHORTTITLE: 'Véhicule'
 			},
 			ENTREPRISE:{
 				LABEL:'Entreprise visitée',
@@ -704,6 +699,7 @@ export const locale = {
 			CREATION_DATE : "Date de création",
 			SEARCH_CHANTIER : "Recherche un chantier",
 			SEARCH_OUTILLAGE : "Numéro d'identification de l'outil",
+			SEARCH_SALARIE : "Rechercher un salarié",
 			ADD_VEHICULE : "Numéro d'identification du véhicule",
 		},
 	}

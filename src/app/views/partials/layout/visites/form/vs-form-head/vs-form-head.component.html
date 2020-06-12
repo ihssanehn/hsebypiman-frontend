@@ -50,7 +50,7 @@
 
 
                                 <!-- ENTREPRISE -->
-                                <mat-form-field class="col-xl-3" *ngIf="origin == 'add' || formHasValue('entreprise_id')"
+                                <mat-form-field class="col-xl-3" *ngIf="model == 'VsChantier' && (origin == 'add' || formHasValue('entreprise_id'))"
                                     matTooltip="Vous ne pouvez pas sélectionner une entreprise si un salarié est déjà sélectionné" 
                                     [matTooltipDisabled]="formHasValue('entreprise_id')"
                                 >

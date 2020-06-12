@@ -25,6 +25,8 @@
 			</div>
 		</tf-portlet-body>
 	</tf-portlet>
+
+	<tf-vs-vehicule-form-img [visiteForm]="visiteForm" [origin]="'add'" *ngIf="questionsDisplayed" ></tf-vs-vehicule-form-img>
 	
 	<tf-vs-form-body [visiteForm]="visiteForm" [origin]="'add'" [catQuestionsList]="catQuestionsList" [isDisableToggle]="true" *ngIf="questionsDisplayed"></tf-vs-form-body>
 	

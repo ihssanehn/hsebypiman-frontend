@@ -33,49 +33,14 @@
 		<div class="col-md-12 result-msg pb-3 my-3" *ngIf="outillage && origin!='detail'">
 			<div>
 				<span>{{'ARS.CHANTIERS.FORM.SEARCH.NOTIF.STANDARD.TEXT1' | translate}}</span> 
-				<!-- {{'ARS.CHANTIERS.FORM.SEARCH.NOTIF.STANDARD.TEXT2' | translate}} -->
 			</div>
 		</div>
 		<div class="col-md-12 px-5 search-result-block" *ngIf="outillage">
 			<div class="row">
 				<div class="col-xl-3 col-lg-3 col-md-4 col-xs-6">
 					<mat-label>{{'ARS.CHANTIERS.NAME' | translate}}</mat-label>
-					<p class="mt-1">
-						<!-- <a (click)="goToChantier(chantier.id)" alt="Voir le chantier"><strong>{{chantier?.nom}}</strong></a> -->
-					</p>
 				</div>
-				<!-- <div class="col-xl-3 col-lg-3 col-md-4 col-xs-6">
-					<mat-label>{{'ARS.CHANTIERS.NUMBER' | translate}}</mat-label>
-					<p class="mt-1"><strong>{{chantier?.numero}}</strong></p>
-				</div>
-				<div class="col-xl-3 col-lg-3 col-md-4 col-xs-6">
-					<mat-label>{{'CHANTIERS.CHIEF.LABEL' | translate}}</mat-label>
-					<p class="mt-1"><strong>{{chantier?.charge_affaire?.fullname}}</strong></p>
-				</div>
-				<div class="col-xl-3 col-lg-3 col-md-4 col-xs-6">
-					<mat-label>{{'ARS.CHANTIERS.BUDGET' | translate}}</mat-label>
-					<p class="mt-1"><strong>{{chantier?.montant | currency:'EUR':'€'}}</strong></p>
-				</div>
-				<div class="col-xl-3 col-lg-3 col-md-4 col-xs-6">
-					<mat-label>{{'ARS.CHANTIERS.DATE_DEMARRAGE' | translate}}</mat-label>
-					<p class="mt-1"><strong>{{chantier?.date_demarrage | date:'dd/MM/yyyy'}}</strong></p>
-				</div>
-				<div class="col-xl-3 col-lg-3 col-md-4 col-xs-6">
-					<mat-label>{{'CHANTIERS.CLIENT.LABEL' | translate}}</mat-label>
-					<p class="mt-1"><strong>{{chantier?.client}}</strong></p>
-				</div>
-				<div class="col-xl-6 col-lg-6 col-md-12">
-					<mat-label>{{'ARS.CHANTIERS.ADRESS' | translate}}</mat-label>
-					<p class="mt-1"><strong>{{chantier?.adresse}}, {{chantier?.code_postal}} {{chantier?.ville}} {{chantier?.pays}}</strong></p>
-				</div>
-				<div class="col-xl-12 col-lg-12 col-md-12">
-					<mat-label>{{'CHANTIERS.HABILITATIONS.TITLE' | translate}}</mat-label>
-					<p class="mt-1">
-						<strong *ngFor="let hab of chantier.habilitations; let last = last">
-							{{hab.libelle}} <span *ngIf="!last" class="mx-2">|</span> 
-						</strong>
-					</p>
-				</div> -->
+
 			</div>
 		</div>
 	</div>
