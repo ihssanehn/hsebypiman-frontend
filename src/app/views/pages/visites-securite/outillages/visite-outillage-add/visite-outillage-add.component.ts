@@ -50,13 +50,12 @@ export class VisiteOutillageAddComponent implements OnInit {
     public snackBar: MatSnackBar,
     private dateFrToEnPipe:DateFrToEnPipe
   ) { 
-		this.authService.currentUser.subscribe(x=> this.currentUser = x);}
+    this.authService.currentUser.subscribe(x=> this.currentUser = x);
+  }
 
   ngOnInit() {
     this.visite = new VisiteOutillage();
     this.createForm();    
-    //this.getCurrentUser();
-    // this.getQuestions();
   }
 
   async getQuestions(){
@@ -71,12 +70,8 @@ export class VisiteOutillageAddComponent implements OnInit {
       'salarie_id': [{value:null, disabled:false}, Validators.required],
       'catQuestionsList' : this.visiteFB.array([]),
       'entreprise_id': [{value:this.currentUser.id, disabled:false}, Validators.required],
-      'redacteur_id': [{value:null, disabled:true}, Validators.required],
+      'redacteur_id': [{value:this.currentUser.id, disabled:true}, Validators.required],
       'date_visite': [moment().format('YYYY-MM-DD'), Validators.required],
-      // 'is_validated_redacteur': ['', Validators.required],
-      // 'is_validated_visite': ['', Validators.required],
-      // 'validated_redacteur_at': ['', Validators.required],
-      // 'validated_visite_at': ['', Validators.required],
       'presence_non_conformite': [{value:false, disabled: true}],
       'has_rectification_imm': [{value:false, disabled: false}],
       'avertissement': [{value:false, disabled: false}],

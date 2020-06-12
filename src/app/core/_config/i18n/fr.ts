@@ -580,6 +580,7 @@ export const locale = {
 				LABEL:'Avertissement',
 				LABEL_COMP:'(quand attitude non sécuritaire)'
 			},
+
 			ADD_VEHICULE:{
 				LABEL:'Numéro d\'identification du véhicule',
 				TITLE:'Numéro d\'identification du véhicule',
@@ -619,6 +620,10 @@ export const locale = {
 				TITLE : 'Propriétaire',
 				SHORTTITLE : 'Propriétaire',
 				LABEL : 'Propriétaire'
+			},
+			OUTIL : {
+				TITLE : "Identification de l'outil",
+				LABEL : "Identification de l'outil",
 			}
 		},
 		COMMON:{
