@@ -124,7 +124,7 @@ export class VsFormHeadComponent implements OnInit {
 
   
   formHasValue(key){
-    return this.visiteForm.get(key).value ? true:false;
+    return this.visiteForm.get(key) && this.visiteForm.get(key).value ? true:false;
   }
   clearValue(key){
     this.visiteForm.get(key).patchValue(null);
