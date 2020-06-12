@@ -69,7 +69,16 @@
                                     </mat-error>
                                 </mat-form-field>
                                 <!-- OUTIL -->
-                                <mat-form-field class="col-xl-3" matTooltip="Ce champ est requis">
+                                <mat-form-field *ngIf="model=='VsVehicule'; else outillageField" class="col-xl-3" matTooltip="Ce champ est requis">
+                                    <mat-label>{{'FILTER.ADD_VEHICULE' | translate}}</mat-label>
+                                    <input class="form-control" matInput placeholder=""
+                                        formControlName="vehicule" [required]="isFieldRequired('vehicule')"/>
+                                    <mat-error *ngIf="isControlHasError('vehicule','required')">
+                                        <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                                <ng-template #outillageField>
+                                <mat-form-field  class="col-xl-3" matTooltip="Ce champ est requis">
                                     <mat-label>{{'FILTER.SEARCH_OUTILLAGE' | translate}}</mat-label>
                                     <input class="form-control" matInput placeholder=""
                                         formControlName="outillage_code" [required]="isFieldRequired('outillage_code')"/>
@@ -77,6 +86,7 @@
                                         <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
                                     </mat-error>
                                 </mat-form-field>
+                                </ng-template>
                             </div>
                         </div>
                     </div>
