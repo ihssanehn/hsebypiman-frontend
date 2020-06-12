@@ -114,14 +114,6 @@ export class VisiteVehiculeAddComponent implements OnInit {
   //   })
   // }
 
-  // onVehiculeSelected(vehiculeId: Number) {
-  //   this.getVehicule(vehiculeId);
-  // }
-
-  // async getVehicule(vehiculeId){
-  //   var res = await this.vehiculeService.get(vehiculeId).toPromise();
-  //   this.vehicule = res.result.data;
-  // }
 
   async onUserSelected(form){
     this.visiteForm.patchValue(form);
