@@ -3,48 +3,9 @@
 		<tf-portlet-body class="tf-portlet__body--fit card-filters px-5 pt-4 pb-3" >
 			<form novalidate [formGroup]="filterForm">
 				<div class="row">
+
 					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
-						<mat-label>{{'CHANTIERS.NAME.TITLE' | translate}}</mat-label>
-						<input class="form-control" matInput type="text" name="action_nom" formControlName="action_nom" placeholder="Saisir ici" />
-					</mat-form-field>
-					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
-						<mat-label>{{'CHANTIERS.CHIEF.TITLE' | translate}}
-						</mat-label>
-						<mat-select class="form-control" formControlName="charge_affaire_id" name="charge_affaire_id">
-							<mat-option *ngFor="let user of users" [value]="user.id">
-								{{user.trigramme}} - {{user.fullname}}
-							</mat-option>
-						</mat-select>
-						<button mat-button *ngIf="formHasValue('charge_affaire_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('charge_affaire_id'); $event.stopPropagation()">
-							<mat-icon>clear</mat-icon>
-						</button>
-					</mat-form-field>
-					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
-						<mat-label>{{'CHANTIERS.RESP_CHIFFRAGE.TITLE' | translate}}
-						</mat-label>
-						<mat-select class="form-control" formControlName="resp_chiffrage_id" name="resp_chiffrage_id">
-							<mat-option *ngFor="let user of users" [value]="user.id">
-								{{user.trigramme}} - {{user.fullname}}
-							</mat-option>
-						</mat-select>
-						<button mat-button *ngIf="formHasValue('resp_chiffrage_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('resp_chiffrage_id'); $event.stopPropagation()">
-							<mat-icon>clear</mat-icon>
-						</button>
-					</mat-form-field>
-					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
-						<mat-label>{{'CHANTIERS.STATUS.TITLE' | translate}}</mat-label>
-						<mat-select class="form-control" formControlName="status_id" name="status_id">
-							<mat-option [value]="'all'">Tous les statuts</mat-option>
-							<mat-option *ngFor="let statu of status" [value]="statu.id">
-								{{statu.libelle}}
-							</mat-option>
-						</mat-select>
-						<button mat-button *ngIf="formHasValue('status_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('status_id'); $event.stopPropagation()">
-							<mat-icon>clear</mat-icon>
-						</button>
-					</mat-form-field>
-					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
-						<mat-label>{{'CHANTIERS.TYPE.TITLE' | translate}}</mat-label>
+						<mat-label>{{'PLANACTIONS.ORIGINE.TITLE' | translate}}</mat-label>
 						<mat-select class="form-control" formControlName="type_id" name="type_id">
 							<mat-option>Tous</mat-option>
 							<mat-option *ngFor="let type of types" [value]="type.id">
@@ -55,88 +16,72 @@
 							<mat-icon>clear</mat-icon>
 						</button>
 					</mat-form-field>
+
 					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
-						<mat-label>{{'CHANTIERS.CLIENT.TITLE' | translate}}</mat-label>
-						<mat-select class="form-control" formControlName="client" name="client">
-							<mat-option>Tous</mat-option>
-							<mat-option *ngFor="let client of clients" [value]="client">
-								{{client}}
+						<mat-label>{{'PLANACTIONS.PILOTE.TITLE' | translate}}
+						</mat-label>
+						<mat-select class="form-control" formControlName="pilote_id" name="pilote_id">
+							<mat-option *ngFor="let user of users" [value]="user.id">
+								{{user.trigramme}} - {{user.fullname}}
 							</mat-option>
 						</mat-select>
-						<button mat-button *ngIf="formHasValue('client')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('client'); $event.stopPropagation()">
+						<button mat-button *ngIf="formHasValue('pilote_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('pilote_id'); $event.stopPropagation()">
 							<mat-icon>clear</mat-icon>
 						</button>
 					</mat-form-field>
+
 					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
-						<mat-label>{{'CHANTIERS.ARS.LABEL' | translate}}</mat-label>
-						<mat-select class="form-control" formControlName="analyse" name="analyse">
-							<mat-option *ngFor="let analyseOption of analyseOptions" [value]="analyseOption">
-								{{analyseOption}}
+						<mat-label>{{'PLANACTIONS.STATUS.TITLE' | translate}}</mat-label>
+						<mat-select class="form-control" formControlName="status_id" name="status_id">
+							<mat-option [value]="'all'">Tous les statuts</mat-option>
+							<mat-option *ngFor="let statu of status" [value]="statu.id">
+								{{statu.libelle}}
 							</mat-option>
 						</mat-select>
-						<button mat-button *ngIf="formHasValue('analyse')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('analyse'); $event.stopPropagation()">
+						<button mat-button *ngIf="formHasValue('status_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('status_id'); $event.stopPropagation()">
 							<mat-icon>clear</mat-icon>
 						</button>
 					</mat-form-field>
-					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
-						<mat-label>{{'CHANTIERS.VSS.LABEL' | translate}}</mat-label>
-						<mat-select class="form-control" formControlName="visite" name="visite">
-							<mat-option *ngFor="let visiteOption of visiteOptions" [value]="visiteOption">
-								{{visiteOption}}
-							</mat-option>
-						</mat-select>
-						<button mat-button *ngIf="formHasValue('visite')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('visite'); $event.stopPropagation()">
-							<mat-icon>clear</mat-icon>
-						</button>
-					</mat-form-field>
-					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
-						<mat-label>{{'CHANTIERS.EES.SHORTTITLE' | translate}}</mat-label>
-						<mat-select class="form-control" formControlName="has_entreprise" name="has_entreprise">
-							<mat-option *ngFor="let entrepriseOption of entrepriseOptions" [value]="entrepriseOption">
-								{{entrepriseOption}}
-							</mat-option>
-						</mat-select>
-						<button mat-button *ngIf="formHasValue('has_entreprise')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('has_entreprise'); $event.stopPropagation()">
-							<mat-icon>clear</mat-icon>
-						</button>
-					</mat-form-field>
-					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
-						<mat-label>{{'CHANTIERS.EES.LABEL' | translate}}</mat-label>
-						<mat-select class="form-control" formControlName="entreprise_id" name="entreprise_id">
-							<mat-option *ngFor="let entreprise of entreprises" [value]="entreprise.id">
-								{{entreprise.raison_sociale}}
-							</mat-option>
-						</mat-select>
-						<button mat-button *ngIf="formHasValue('entreprise_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('entreprise_id'); $event.stopPropagation()">
-							<mat-icon>clear</mat-icon>
-						</button>
-					</mat-form-field>
+
 					<div class="col-xl-6 col-md-6 col-sm-6 col-xs-12">
-						<h6>{{'CHANTIERS.BUDGET.TITLE' | translate}}</h6>
+						<h6>{{'PLANACTIONS.EFFICACITE.TITLE' | translate}}</h6>
 						<mat-form-field class="col-md-6 col-xl-6">
 							<mat-label>Minimum :</mat-label>
-							<input matInput class="form-control" suffix=" €" mask="separator.2" type="string" formControlName="montant_min" name="montant_min">
-							<button mat-button *ngIf="formHasValue('montant_min')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('montant_min'); $event.stopPropagation()">
+							<input matInput class="form-control" type="string" formControlName="efficacite_min" name="efficacite_min">
+							<button mat-button *ngIf="formHasValue('efficacite_min')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('efficacite_min'); $event.stopPropagation()">
 								<mat-icon>clear</mat-icon>
 							</button>
 						</mat-form-field>
 						<mat-form-field class="col-md-6 col-xl-6">
 							<mat-label>Maximum :</mat-label>
-							<input matInput class="form-control" suffix=" €" mask="separator.2" type="string" formControlName="montant_max" name="montant_max">
-							<button mat-button *ngIf="formHasValue('montant_max')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('montant_max'); $event.stopPropagation()">
+							<input matInput class="form-control" type="string" formControlName="efficacite_max" name="efficacite_max">
+							<button mat-button *ngIf="formHasValue('efficacite_max')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('efficacite_max'); $event.stopPropagation()">
 								<mat-icon>clear</mat-icon>
 							</button>
 						</mat-form-field>
 					</div>
+
 					<div class="col-xl-6 col-md-6 col-sm-6 col-xs-12">
-						<h6>{{'CHANTIERS.DATE_DEMARRAGE.TITLE' | translate}}</h6>
+						<h6>{{'PLANACTIONS.DELAI.SHORTTITLE' | translate}}</h6>
 						<mat-form-field class="col-md-6 col-xl-6">
 							<mat-label>Entre le :</mat-label>
-							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_demarrage_start" placeholder="DD/MM/YYYY">
+							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="delai_start" placeholder="DD/MM/YYYY">
 						</mat-form-field>
 						<mat-form-field class="col-md-6 col-xl-6">
 							<mat-label>Et le :</mat-label>
-							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_demarrage_end" placeholder="DD/MM/YYYY">
+							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="delai_end" placeholder="DD/MM/YYYY">
+						</mat-form-field>
+					</div>
+
+					<div class="col-xl-6 col-md-6 col-sm-6 col-xs-12">
+						<h6>{{'PLANACTIONS.REALISATION.TITLE' | translate}}</h6>
+						<mat-form-field class="col-md-6 col-xl-6">
+							<mat-label>Entre le :</mat-label>
+							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_realisation_start" placeholder="DD/MM/YYYY">
+						</mat-form-field>
+						<mat-form-field class="col-md-6 col-xl-6">
+							<mat-label>Et le :</mat-label>
+							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_realisation_end" placeholder="DD/MM/YYYY">
 						</mat-form-field>
 					</div>
 				</div>

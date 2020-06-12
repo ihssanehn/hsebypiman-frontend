@@ -26,20 +26,6 @@ export class ActionFiltersComponent implements OnInit, AfterViewInit
   users: User[];
   status: Status[];
   types: Type[];
-  clients: String[];
-  entreprises: Entreprise[];
-  visiteOptions = [
-    'Avec',
-    'Sans'
-  ]
-  analyseOptions = [
-    'Avec',
-    'Sans'
-  ]
-  entrepriseOptions = [
-    'Avec',
-    'Sans'
-  ]
   statuses;
 
   @Output() change = new EventEmitter();
@@ -62,9 +48,7 @@ export class ActionFiltersComponent implements OnInit, AfterViewInit
   ngOnInit(){
     this.getStatus();
     this.getUsers();
-    this.getClients();
     this.getTypes();
-    this.getEntreprises();
     this.initFiltersForm();
     this.filterForm.valueChanges.pipe(
       debounceTime(500)
@@ -72,8 +56,6 @@ export class ActionFiltersComponent implements OnInit, AfterViewInit
   }
   
   ngAfterViewInit(){
-
-
   }
 
   // Load ressources needed
@@ -82,11 +64,7 @@ export class ActionFiltersComponent implements OnInit, AfterViewInit
     this.users = res.result.data;
     this.cdr.markForCheck();
   }
-  async getEntreprises(){
-    var res = await this.entrepriseService.getList().toPromise();
-    this.entreprises = res.result.data;
-    this.cdr.markForCheck();
-  }
+
   async getStatus(){
     var res = await this.statusService.getAllFromModel('Action').toPromise();
     this.status = res.result.data;
@@ -94,11 +72,7 @@ export class ActionFiltersComponent implements OnInit, AfterViewInit
     // this.filterForm.patchValue({'status_id':status_termine}, {onlySelf: true, emitEvent: true});
     this.cdr.markForCheck();
   }
-  async getClients(){
-    // var res = await this.actionService.getAllClients().toPromise();
-    // this.clients = res.result.data;
-    // this.cdr.markForCheck();
-  }
+
   async getTypes(){
     var res = await this.typeService.getAllFromModel('Action').toPromise();
     this.types = res.result.data;
@@ -107,33 +81,31 @@ export class ActionFiltersComponent implements OnInit, AfterViewInit
   
   initFiltersForm(){
     this.filterForm = this.fb.group({
-      action_nom:[null],
-      charge_affaire_id:[null],
-      resp_chiffrage_id:[null],
+      pilote_id:[null],
       status_id:[null],
       type_id:[null],
-      client:[null],
-      montant_min:[null],
-      montant_max:[null],
-      date_demarrage_start:[null],
-      date_demarrage_end:[null],
-      visite:[null],
-      analyse:[null],
-      has_entreprise:[null],
-      entreprise_id:[null],
+      efficacite_min:[null],
+      efficacite_max:[null],
+      delai_start:[null],
+      delai_end:[null],
+      date_realisation_start:[null],
+      date_realisation_end:[null],
     })
   }
  
   search(filters: any): void {
     var filter = {...this.filterForm.getRawValue()}
-    filter.date_demarrage_start = this.dateFrToEnPipe.transform(filter.date_demarrage_start);
-    filter.date_demarrage_end = this.dateFrToEnPipe.transform(filter.date_demarrage_end);
+    filter.delai_start = this.dateFrToEnPipe.transform(filter.delai_start);
+    filter.delai_end = this.dateFrToEnPipe.transform(filter.delai_end);
+    filter.date_realisation_start = this.dateFrToEnPipe.transform(filter.date_realisation_start);
+    filter.date_realisation_end = this.dateFrToEnPipe.transform(filter.date_realisation_end);
     this.change.emit(filter);
   }
 
   formHasValue(key){
     return this.filterForm.get(key).value ? true:false;
   }
+  
   clearValue(key){
     this.filterForm.get(key).patchValue(null);
   }
