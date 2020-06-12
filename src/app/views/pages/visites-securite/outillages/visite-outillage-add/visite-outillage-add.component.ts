@@ -196,7 +196,6 @@ export class VisiteOutillageAddComponent implements OnInit {
 
   questionsLoaded(){
     return this.visiteForm.get('catQuestionsList').value.length > 0;
-    console.log(this.visiteForm);
   }
 
   public findInvalidControls() {

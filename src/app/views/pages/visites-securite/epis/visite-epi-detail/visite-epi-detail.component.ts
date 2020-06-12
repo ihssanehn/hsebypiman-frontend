@@ -181,10 +181,21 @@ export class VisiteEpiDetailComponent implements OnInit, OnDestroy {
 		this.router.navigate(['visites-securite/epis/edit', visiteId]);
 	}
 	deleteVisite(visiteId) {
-		Swal.fire({
-			title: 'Désolé cette fonctionnalité n\'a pas encore été implémentée',
-			showConfirmButton: false,
-			timer: 1500
+		this.visiteService.delete(visiteId).toPromise().then(res => {
+			Swal.fire({
+				icon: 'success',
+				title: 'La visite a correctement été supprimé',
+				showConfirmButton: false,
+				timer: 1500
+			});
+			this.router.navigate(['visites-securite/epis/list']);
+		}).catch(err => {
+			Swal.fire({
+				icon: 'error',
+				title: "La visite n'a pas pu être supprimée",
+				showConfirmButton: false,
+				timer: 1500
+			});
 		})
 	}
 
