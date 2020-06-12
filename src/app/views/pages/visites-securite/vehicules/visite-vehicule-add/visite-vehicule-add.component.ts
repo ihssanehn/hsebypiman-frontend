@@ -69,7 +69,7 @@ export class VisiteVehiculeAddComponent implements OnInit {
       'redacteur_id': [{value:this.currentUser.id, disabled:true}, Validators.required],
       'date_visite': [moment().format('YYYY-MM-DD'), Validators.required],
       'presence_non_conformite': [{value:false, disabled: true}],
-      'has_rectification_imm': [{value:false, disabled: false}],
+      'has_rectification_imm': [{value:false, disabled: true}],
       'avertissement': [{value:false, disabled: false}],
       'type_id': [null, Validators.required],
       'questions': this.visiteFB.array([]),
