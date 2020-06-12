@@ -6,7 +6,7 @@ import * as moment from 'moment';
 import { Subscription } from "rxjs";
 import { tap } from 'rxjs/operators';
 
-import { VisiteVehiculeService, VehiculeService} from '@app/core/services';
+import { VisiteVehiculeService} from '@app/core/services';
 import { VisiteVehicule, Vehicule } from '@app/core/models';
 import { AuthService, User } from '@app/core/auth';
 import { MatSnackBar } from '@angular/material';
@@ -42,7 +42,6 @@ export class VisiteVehiculeEditComponent implements OnInit, OnDestroy {
 		private visiteFB: FormBuilder,
 		// private notificationService: NzNotificationService,
 		private visiteService: VisiteVehiculeService,
-    private vehiculeService: VehiculeService,
     private location: Location,
     private authService:AuthService,
     private cdr: ChangeDetectorRef,
@@ -176,15 +175,6 @@ export class VisiteVehiculeEditComponent implements OnInit, OnDestroy {
           salarie_id.enable({onlySelf:true, emitEvent:false});
         }
     })
-  }
-
-  onVehiculeSelected(vehiculeId: Number) {
-    this.getVehicule(vehiculeId);
-  }
-
-  async getVehicule(vehiculeId){
-    var res = await this.vehiculeService.get(vehiculeId).toPromise();
-    this.vehicule = res.result.data;
   }
 
   async onSubmit(event){

@@ -5,7 +5,6 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import { Router, ActivatedRoute } from '@angular/router';
-import { VehiculeService } from '@app/core/services';
 import { startWith, map } from 'rxjs/operators';
 import { EventEmitter } from '@angular/core';
 
