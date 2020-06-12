@@ -6,7 +6,7 @@ import * as moment from 'moment';
 import { Subscription } from "rxjs";
 import { tap } from 'rxjs/operators';
 
-import { VisiteVehiculeService, VehiculeService } from '@app/core/services';
+import { VisiteVehiculeService } from '@app/core/services';
 import { VisiteVehicule, Vehicule, CatQuestion } from '@app/core/models';
 import { AuthService, User } from '@app/core/auth';
 import { MatSnackBar } from '@angular/material';
@@ -47,7 +47,6 @@ export class VisiteVehiculeDetailComponent implements OnInit, OnDestroy {
 		private visiteFB: FormBuilder,
 		// private notificationService: NzNotificationService,
 		private visiteService: VisiteVehiculeService,
-		private vehiculeService: VehiculeService,
 		private location: Location,
 		private authService: AuthService,
 		private cdr: ChangeDetectorRef,

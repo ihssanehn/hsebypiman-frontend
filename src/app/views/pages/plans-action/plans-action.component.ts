@@ -13,10 +13,10 @@ import {MenuAsideService, SubheaderService } from '../../../core/_base/layout';
 
 @Component({
 	selector: 'tf-plan-actions',
-	templateUrl: './plan-actions.component.html',
+	templateUrl: './plans-action.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PlanActionsComponent implements OnInit {
+export class PlansActionComponent implements OnInit {
 	
 	/**
 	 * Component constructor

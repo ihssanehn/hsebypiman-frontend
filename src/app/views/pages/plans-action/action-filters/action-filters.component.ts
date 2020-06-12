@@ -95,9 +95,9 @@ export class ActionFiltersComponent implements OnInit, AfterViewInit
     this.cdr.markForCheck();
   }
   async getClients(){
-    var res = await this.actionService.getAllClients().toPromise();
-    this.clients = res.result.data;
-    this.cdr.markForCheck();
+    // var res = await this.actionService.getAllClients().toPromise();
+    // this.clients = res.result.data;
+    // this.cdr.markForCheck();
   }
   async getTypes(){
     var res = await this.typeService.getAllFromModel('Action').toPromise();

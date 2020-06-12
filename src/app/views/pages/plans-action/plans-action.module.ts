@@ -18,8 +18,8 @@ import { HttpUtilsService, TypesUtilsService, InterceptService, LayoutUtilsServi
 // Shared
 import { ActionNotificationComponent } from '../../partials/content/crud';
 // Components
-import { ActionsComponent } from './actions.component';
-import { ActionsListComponent } from './actions-list/actions-list.component';
+import { PlansActionComponent } from './plans-action.component';
+import { ActionsListComponent } from './actions-list/action-list.component';
 import { ActionEditComponent } from './action-edit/action-edit.component';
 import { ActionAddComponent } from './action-add/action-add.component';
 import { ActionDetailComponent } from './action-detail/action-detail.component';
@@ -66,7 +66,7 @@ import { ActionHabilitationsAdminComponent } from './action-admin/action-habilit
 const routes: Routes = [
 	{
 		path: '',
-		component: PlanActionsComponent,
+		component: PlansActionComponent,
 		children: [
 			{
 				path: '',
@@ -75,7 +75,8 @@ const routes: Routes = [
 			},
 			{
 				path:'detail/:id',
-				component: ActionDetailComponent
+				//component: ActionDetailComponent
+				component: PlansActionComponent
 			},
 			{
 				path: 'list',
@@ -87,23 +88,28 @@ const routes: Routes = [
 			},
 			{
 				path: 'add',
-				component: ActionAddComponent
+				//component: ActionAddComponent
+				component: PlansActionComponent
 			},
 			{
 				path: 'add:id',
-				component: ActionAddComponent
+				//component: ActionAddComponent
+				component: PlansActionComponent
 			},
 			{
 				path: 'edit',
-				component: ActionEditComponent
+				//component: ActionEditComponent
+				component: PlansActionComponent
 			},
 			{
 				path: 'edit/:id',
-				component: ActionEditComponent
+				//component: ActionEditComponent
+				component: PlansActionComponent
 			},
 			{
 				path: 'admin',
-				component: ActionAdminComponent
+				//component: ActionAdminComponent
+				component: PlansActionComponent
 			},
 		]
 	}
@@ -179,7 +185,7 @@ const routes: Routes = [
 		// 
 	],
 	declarations: [
-		ActionsComponent,
+		PlansActionComponent,
 		ActionsListComponent,
 		ActionEditComponent,
 		ActionAddComponent,
@@ -189,4 +195,4 @@ const routes: Routes = [
 		ActionHabilitationsAdminComponent,
 	]
 })
-export class ActionsModule {}
+export class PlansActionModule {}
