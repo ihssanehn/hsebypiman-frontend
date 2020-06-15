@@ -37,6 +37,7 @@ export class VisiteEpiDetailComponent implements OnInit, OnDestroy {
 	currentUser: User;
 	questionsDisplayed: boolean = false;
 	private subscriptions: Subscription[] = [];
+	catQuestionsList: any;
 
 	// Private properties
 
@@ -66,6 +67,7 @@ export class VisiteEpiDetailComponent implements OnInit, OnDestroy {
 						this.parseVisitesDate(_visite, 'EnToFr');
 						this.visiteForm.patchValue(_visite);
 						this.patchQuestionsForm(_visite);
+						this.catQuestionsList = res.result.data.catQuestionsList;
 						// this.visiteForm.disable();
 					})
 				).subscribe(async res => {
@@ -98,6 +100,7 @@ export class VisiteEpiDetailComponent implements OnInit, OnDestroy {
 			'has_rectification_imm': [{ value: false, disabled: true }],
 			'avertissement': [{ value: false, disabled: true }],
 			'type_id': [{ value: null, disabled: true }, Validators.required],
+			'catQuestionsList': this.visiteFB.array([]),
 			'questions': this.visiteFB.array([]),
 			'is_validate_resp_hse': [{ value: null, disabled: true }],
 			'signature_redacteur': this.visiteFB.group({
@@ -116,6 +119,50 @@ export class VisiteEpiDetailComponent implements OnInit, OnDestroy {
 		this.loaded = true;
 	}
 
+	patchQuestionsForm(visite) {
+
+		const catQuestionsListFormArray: FormArray = this.visiteForm.get('catQuestionsList') as FormArray;
+		visite.catQuestionsList.forEach((element, i) => {
+			let questionsArrayFB = []
+			element.questions.forEach(quest => {
+				var question = this.visiteFB.group({
+					'id': [{ value: quest.id, disabled: true }],
+					'libelle': [{ value: quest.libelle, disabled: true }],
+					'pivot': this.visiteFB.group({
+						'note': [{ value: quest.pivot.note, disabled: true }, Validators.required],
+						'date_remise_conf': [{ value: quest.pivot.date_remise_conf, disabled: true }],
+						'observation': [{ value: quest.pivot.observation, disabled: true }]
+					})
+				});
+				questionsArrayFB.push(question);			
+			})
+			var cat = this.visiteFB.group({
+				'id': [{value :element.id, disabled: true}],
+				'libelle': [{value:element.libelle, disabled: true}],
+				'code': [{value : element.code, disabled: true}],
+				'questions': this.visiteFB.array(questionsArrayFB)
+			})
+			catQuestionsListFormArray.push(cat);
+			
+		})
+
+		const signatureRedacteur = this.visiteForm.get('signature_redacteur') as FormGroup;
+		if (visite.sign_redacteur) {
+			signatureRedacteur.patchValue(visite.sign_redacteur);
+		}
+		const signatureVisite = this.visiteForm.get('signature_visite') as FormGroup;
+		if (visite.sign_visite) {
+			signatureVisite.patchValue(visite.sign_visite);
+		}
+		const signatureRespHse = this.visiteForm.get('signature_resp_hse') as FormGroup;
+		if (visite.sign_resp_hse) {
+			signatureRespHse.patchValue(visite.sign_resp_hse);
+		}
+
+		this.showSignatures = true;
+
+	}
+
 	parseVisitesDate(item, direction) {
 		item.date_visite = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.date_visite) : this.dateEnToFrPipe.transform(item.date_visite);
 		if (item.questions.length > 0) {
@@ -125,42 +172,6 @@ export class VisiteEpiDetailComponent implements OnInit, OnDestroy {
 		}
 	}
 
-	patchQuestionsForm(visite) {
-
-		const questionsFormArray: FormArray = this.visiteForm.get('questions') as FormArray;
-		visite.questions.forEach(element => {
-			var question = this.visiteFB.group({
-				'id': [{ value: element.id, disabled: true }],
-				'libelle': [{ value: element.libelle, disabled: true }],
-				'pivot': this.visiteFB.group({
-					'note': [{ value: element.pivot.note, disabled: true }, Validators.required],
-					'date_remise_conf': [{ value: element.pivot.date_remise_conf, disabled: true }],
-					'observation': [{ value: element.pivot.observation, disabled: true }]
-				})
-			});
-
-			if (element.pivot.note == 2) {
-				this.visiteForm.get('presence_non_conformite').setValue(true);
-			}
-			questionsFormArray.push(question);
-		})
-
-		const signatureRedacteur = this.visiteForm.get('signature_redacteur') as FormGroup;
-		if (visite.signRedacteur) {
-			signatureRedacteur.patchValue(visite.signRedacteur);
-		}
-		const signatureVisite = this.visiteForm.get('signature_visite') as FormGroup;
-		if (visite.signVisite) {
-			signatureVisite.patchValue(visite.signVisite);
-		}
-		const signatureRespHse = this.visiteForm.get('signature_resp_hse') as FormGroup;
-		if (visite.signRespHse) {
-			signatureRespHse.patchValue(visite.signRespHse);
-		}
-
-		this.showSignatures = true;
-
-	}
 
 	questionsLoaded() {
 		return this.visiteForm.get('questions').value.length > 0
@@ -170,10 +181,21 @@ export class VisiteEpiDetailComponent implements OnInit, OnDestroy {
 		this.router.navigate(['visites-securite/epis/edit', visiteId]);
 	}
 	deleteVisite(visiteId) {
-		Swal.fire({
-			title: 'Désolé cette fonctionnalité n\'a pas encore été implémentée',
-			showConfirmButton: false,
-			timer: 1500
+		this.visiteService.delete(visiteId).toPromise().then(res => {
+			Swal.fire({
+				icon: 'success',
+				title: 'La visite a correctement été supprimé',
+				showConfirmButton: false,
+				timer: 1500
+			});
+			this.router.navigate(['visites-securite/epis/list']);
+		}).catch(err => {
+			Swal.fire({
+				icon: 'error',
+				title: "La visite n'a pas pu être supprimée",
+				showConfirmButton: false,
+				timer: 1500
+			});
 		})
 	}
 

@@ -33,6 +33,7 @@ export class VisiteEpiAddComponent implements OnInit {
   currentUser: User;
   questionsDisplayed: boolean = false;
   showSignatures: boolean = false;
+  catQuestionsList: any;
   // Private properties
 
   constructor(
@@ -46,17 +47,19 @@ export class VisiteEpiAddComponent implements OnInit {
     private authService: AuthService,
     private cdr: ChangeDetectorRef,
     public snackBar: MatSnackBar,
-    private dateFrToEnPipe: DateFrToEnPipe
+    private dateFrToEnPipe: DateFrToEnPipe,
+    private catQuestionsService : CatQuestionService
   ) { 
 		this.authService.currentUser.subscribe(x=> this.currentUser = x);
   }
 
-  ngOnInit() {
-    this.visite = new VisiteEpi();
+  async ngOnInit() {
     this.createForm();
-    this.setDynamicValidators();
   }
-
+  async getQuestions(){
+    this.catQuestionsList = (await this.catQuestionsService.getAll({type_id : this.visiteForm.get('type_id').value}).toPromise()).result.data;
+    this.patchQuestionsForm();
+  }
 
   createForm() {
     this.visiteForm = this.visiteFB.group({
@@ -69,6 +72,7 @@ export class VisiteEpiAddComponent implements OnInit {
       // 'is_validated_visite': ['', Validators.required],
       // 'validated_redacteur_at': ['', Validators.required],
       // 'validated_visite_at': ['', Validators.required],
+      'catQuestionsList' : this.visiteFB.array([]),
       'presence_non_conformite': [{ value: false, disabled: true }],
       'has_rectification_imm': [{ value: false, disabled: false }],
       'avertissement': [{ value: false, disabled: false }],
@@ -90,37 +94,38 @@ export class VisiteEpiAddComponent implements OnInit {
     this.loaded = true;
   }
 
-  setDynamicValidators() {
-    const salarie_id = this.visiteForm.get('salarie_id');
-    const entreprise_id = this.visiteForm.get('entreprise_id');
-
-    this.visiteForm.get('salarie_id').valueChanges.subscribe(salarie_id => {
-      if (salarie_id != null) {
-        entreprise_id.setValidators(null);
-        entreprise_id.disable({ onlySelf: true, emitEvent: false });
-      } else {
-        entreprise_id.setValidators(Validators.required);
-        entreprise_id.enable({ onlySelf: true, emitEvent: false });
-      }
-    })
-    this.visiteForm.get('entreprise_id').valueChanges.subscribe(entreprise_id => {
-      if (entreprise_id != null) {
-        salarie_id.setValidators(null);
-        salarie_id.disable({ onlySelf: true, emitEvent: false });
-      } else {
-        salarie_id.setValidators(Validators.required);
-        salarie_id.enable({ onlySelf: true, emitEvent: false });
-      }
+  patchQuestionsForm() {
+		
+		const catQuestionsListFormArray: FormArray = this.visiteForm.get('catQuestionsList') as FormArray;
+		this.catQuestionsList.forEach((element, i) => {
+			let questionsArrayFB = []
+			element.questions.forEach(quest => {
+				var question = this.visiteFB.group({
+					'id': [quest.id],
+					'libelle': [quest.libelle],
+					'pivot': this.visiteFB.group({
+						'note': [null, Validators.required],
+						'date_remise_conf': [null],
+						'observation': ['']
+					})
+				});
+				questionsArrayFB.push(question);			
+			})
+			var cat = this.visiteFB.group({
+				'id': [element.id],
+				'libelle': [element.libelle],
+				'code': [ element.code],
+				'questions': this.visiteFB.array(questionsArrayFB)
+      })
+			catQuestionsListFormArray.push(cat);
     })
   }
 
-  onepiSelected(epiId: Number) {
-    this.getepi(epiId);
-  }
+  async onEpiSelected(form) {
+    this.visiteForm.patchValue(form);
 
-  async getepi(epiId) {
-    var res = await this.epiService.get(epiId).toPromise();
-    this.epi = res.result.data;
+    await this.getQuestions();
+    this.displayQuestions();
   }
 
   async onSubmit(event) {
@@ -208,10 +213,10 @@ export class VisiteEpiAddComponent implements OnInit {
     return invalid;
   }
 
-  questionsAnswerd() {
-    const questionsList = this.visiteForm.get('questions');
-    return questionsList.value.length > 0 && questionsList.valid
-  }
+  questionsAnswerd(){
+    const questionsList = this.visiteForm.get('catQuestionsList');
+    return questionsList.value.length > 0 && !questionsList.invalid
+  }  
 
   displaySignature() {
     this.showSignatures = !this.showSignatures
