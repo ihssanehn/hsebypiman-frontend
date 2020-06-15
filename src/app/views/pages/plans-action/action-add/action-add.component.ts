@@ -31,6 +31,7 @@ export class ActionAddComponent implements OnInit {
   // Private properties
   formStatus = new FormStatus();
   
+
   constructor(
 		private activatedRoute: ActivatedRoute,
 		private router: Router,
@@ -56,33 +57,27 @@ export class ActionAddComponent implements OnInit {
 
   createForm() {
 		this.actionForm = this.actionFB.group({
-      nom: ['', Validators.required],
       type_id: [null, Validators.required],
-      adresse: ['', Validators.required],
-      ville: ['', Validators.required],
-      code_postal: ['', Validators.required],
-      pays: ['', Validators.required],
-      client: ['', Validators.required],
-      contact: ['', Validators.required],
-      montant: ['', Validators.required],
-      date_demarrage: ['', Validators.required],
-      charge_affaire_id: [null, Validators.required],
-      resp_chiffrage_id: [null, Validators.required],
-      no_hab_required: [0, Validators.required],
-      habilitations: this.actionFB.array([], Validators.required),
-      entreprises: this.actionFB.array([]),
-      errors:this.actionFB.array([]),
+      libelle: ['', Validators.required],
+      risque: ['', Validators.required],
+      objectif: ['', Validators.required],
+      pilote_id: ['', Validators.required],
+      delai: ['', Validators.required],
+      realisation: ['', Validators.required],
+      efficacite: ['', Validators.required],
+      commentaires: ['', Validators.required],
+      status_id: [null],
+      errors: this.actionFB.array([]),
     });
 		this.loaded = true;
   }
 
   setDynamicValidators(){
-    const no_hab_required = this.actionForm.get('no_hab_required');
   }
   
   async onSubmit(){
     
-    this.formloading=true;
+    this.formloading = true;
     this.formStatus.onFormSubmitting();
     this.cdr.markForCheck();
 
@@ -103,7 +98,7 @@ export class ActionAddComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         }).then(() => {
-          this.router.navigate(['/actions/detail/' + action.id]);
+          this.router.navigate(['/plans-action/detail/' + action.id]);
         });
       })
       .catch(err =>{ 
@@ -126,12 +121,8 @@ export class ActionAddComponent implements OnInit {
   }
   
   parseActionDate(item, direction){
-		item.date_demarrage = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.date_demarrage) : this.dateEnToFrPipe.transform(item.date_demarrage);
-		if(item.entreprises.length > 0){
-			item.entreprises.forEach(x=>{
-				x.date_demarrage = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(x.date_demarrage) : this.dateEnToFrPipe.transform(x.pivot.date_demarrage);
-			})
-		}
+    item.delai = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.delai) : this.dateEnToFrPipe.transform(item.delai);
+    item.realisation = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.realisation) : this.dateEnToFrPipe.transform(item.realisation);
   }
   
 	onCancel() {
