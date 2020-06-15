@@ -12,17 +12,20 @@ import { Type } from '@app/core/models';
   styleUrls: ['./search-salarie-form.component.scss']
 })
 export class SearchSalarieFormComponent implements OnInit {
+
   @Input() form: FormGroup;
   @Input() parent: string;
   @Input() origin: string;
+  @Input() model: string;
   
-
   @Output() onUserSelected = new EventEmitter();
+
   searchControl: FormControl = new FormControl();
   filteredSalaries : Observable<User[]>
   salaries: User[];
   salarie : User;
   types : Type[];
+  
   constructor(private salarieService : UserService,
     private cdr : ChangeDetectorRef,
     private typeService : TypeService) { }
@@ -34,7 +37,7 @@ export class SearchSalarieFormComponent implements OnInit {
   }
 
   async getTypes(){
-    var res = await this.typeService.getAllFromModel('VsOutillage').toPromise();
+    var res = await this.typeService.getAllFromModel(this.model).toPromise();
     this.types = res.result.data
     this.cdr.detectChanges();
     this.cdr.markForCheck();
@@ -48,9 +51,13 @@ export class SearchSalarieFormComponent implements OnInit {
 
 
   cantDisplayQuestions(){
-    var test: boolean = this.form.get('outillage_code').invalid ||
-      this.form.get('type_id').invalid ||
-      this.form.get('salarie_id').invalid
+    var isCodeValid = (this.model == 'VsVehicule') 
+      ? this.form.get('vehicule').invalid
+      : this.form.get('outillage_code').invalid;
+
+    var test: boolean = isCodeValid 
+      || this.form.get('type_id').invalid 
+      || this.form.get('salarie_id').invalid;
 
     return test;
   }  

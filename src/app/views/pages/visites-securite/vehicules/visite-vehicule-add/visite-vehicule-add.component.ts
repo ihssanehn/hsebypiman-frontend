@@ -5,7 +5,7 @@ import { CommonModule, Location } from '@angular/common';
 import * as moment from 'moment';
 
 import { TranslateService } from '@ngx-translate/core';
-import { VisiteVehiculeService, TypeService, VehiculeService, CatQuestionService } from '@app/core/services';
+import { VisiteVehiculeService, TypeService, CatQuestionService } from '@app/core/services';
 import { VisiteVehicule, Type, Vehicule, CatQuestion } from '@app/core/models';
 import { NgxPermissionsService } from 'ngx-permissions';
 import { AuthService, User } from '@app/core/auth';
@@ -43,7 +43,6 @@ export class VisiteVehiculeAddComponent implements OnInit {
 		private visiteFB: FormBuilder,
 		// private notificationService: NzNotificationService,
 		private visiteService: VisiteVehiculeService,
-    private vehiculeService: VehiculeService,
     private catQuestionService: CatQuestionService,
     private location: Location,
     private authService:AuthService,
@@ -115,13 +114,18 @@ export class VisiteVehiculeAddComponent implements OnInit {
   //   })
   // }
 
-  onVehiculeSelected(vehiculeId: Number) {
-    this.getVehicule(vehiculeId);
-  }
+  // onVehiculeSelected(vehiculeId: Number) {
+  //   this.getVehicule(vehiculeId);
+  // }
 
-  async getVehicule(vehiculeId){
-    var res = await this.vehiculeService.get(vehiculeId).toPromise();
-    this.vehicule = res.result.data;
+  // async getVehicule(vehiculeId){
+  //   var res = await this.vehiculeService.get(vehiculeId).toPromise();
+  //   this.vehicule = res.result.data;
+  // }
+
+  async onUserSelected(form){
+    this.visiteForm.patchValue(form);
+    this.displayQuestions();
   }
 
   async onSubmit(event){
