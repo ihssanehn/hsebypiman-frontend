@@ -72,6 +72,7 @@ export const locale = {
 				NEWCHANTIER: 'Nouveau chantier',
 				NEWVS: 'Nouveau visite de sécurité',
 				NEWENTREPRISE: 'Nouvelle entreprise',
+				NEWACTION: 'Nouvelle Action',
 			}
 		},
 		AUTH: {
@@ -620,6 +621,64 @@ export const locale = {
 				TITLE : "Identification de l'outil",
 				LABEL : "Identification de l'outil",
 			}
+		},
+		PLANACTIONS:{
+			NUMBER:{
+				LABEL:'Numéro',
+				TITLE:'N° du plan d\'action',
+				SHORTTITLE:'Numéro'
+			},
+			ORIGINE:{
+				LABEL:'Origine',
+				TITLE:'Origine',
+				SHORTTITLE: 'Origine'
+			},
+			RISQUE:{
+				LABEL:'Risque',
+				TITLE:'Risque',
+				SHORTTITLE: 'Risque'
+			},
+			NAME:{
+				LABEL:'Actions décidées',
+				TITLE:'Actions décidées',
+				SHORTTITLE: 'Actions'
+			},
+			OBJECTIF:{
+				LABEL:'Objectif',
+				TITLE:'Objectif',
+				SHORTTITLE: 'Objectif'
+			},
+			PILOTE:{
+				LABEL:'Pilote',
+				TITLE:'Pilote',
+				SHORTTITLE: 'Pilote'
+			},
+			DELAI:{
+				LABEL:'Délai',
+				TITLE:'Délai',
+				SHORTTITLE:'Délai'
+			},
+			STATUS:{
+				LABEL:'Avancement',
+				TITLE:'Avancement',
+				SHORTTITLE:'Avancement'
+			},
+			REALISATION:{
+				LABEL:'Réalisation',
+				TITLE:'Réalisation',
+				SHORTTITLE:'Réalisation'
+			},
+			EFFICACITE:{
+				LABEL:'Efficacité',
+				TITLE:'Efficacité',
+				SHORTTITLE:'Efficacité'
+			},
+			COMMENT:{
+				LABEL:'Commentaires',
+				TITLE:'Commentaires',
+				SHORTTITLE:'Commentaires'
+			},
+
 		},
 		COMMON:{
 			ADRESS:{
