@@ -59,9 +59,6 @@ import { HttpUtilsService, LayoutUtilsService, TypesUtilsService } from './core/
 // Config
 import { LayoutConfig } from './core/_config/layout.config';
 
-// Echart
-import * as echarts from 'echarts';
-import { NgxEchartsModule } from 'ngx-echarts';
 // Highlight JS
 import { HIGHLIGHT_OPTIONS, HighlightLanguage } from 'ngx-highlightjs';
 import * as typescript from 'highlight.js/lib/languages/typescript';
@@ -148,10 +145,7 @@ export function hljsLanguages(): HighlightLanguage[] {
 			decimalMarker: '.',
 		}),
 		ReactiveFormsModule,
-		SignaturePadModule,
-		NgxEchartsModule.forRoot({
-			echarts
-		})
+		SignaturePadModule
 	],
 	exports: [],
 	providers: [

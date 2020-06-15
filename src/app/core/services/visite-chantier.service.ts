@@ -26,7 +26,7 @@ export class VisiteChantierService extends HttpService{
         return this.http.post<JsonResponse<Paginate<VisiteChantier>>>(this.baseUrl, {...params});
     }
     getList(): Observable<JsonResponse<VisiteChantier[]>> {
-		return this.http.get<JsonResponse<VisiteChantier[]>>(`${this.baseUrl+"/mini"}`);
+		return this.http.get<JsonResponse<VisiteChantier[]>>(`${this.baseUrl}`);
 	}
     get(visite_id): Observable<JsonResponse<VisiteChantier>>{
         return this.http.get<JsonResponse<VisiteChantier>>(this.baseUrl+'/'+visite_id);

@@ -735,7 +735,7 @@ export class MenuConfig {
 						title: 'Dashboards',
 						root: true,
 						alignment: 'left',
-						page: '/plans-action/dashboard',
+						page: '/dashboard',
 						translate: 'MENU.DASHBOARD',
 					},
 					{
