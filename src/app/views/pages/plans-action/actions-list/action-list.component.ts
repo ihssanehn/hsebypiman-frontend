@@ -32,7 +32,7 @@ export class ActionsListComponent implements OnInit, AfterViewInit, OnDestroy {
 	};
 	showFilters:Boolean = false;
 	displayedActionColumns = [
-		'number', 'type', 'risque', 'name', 
+		'created_at', 'type', 'risque', 'name', 
 		'objectif', 'pilote', 'delai', 'status', 
 		'realisation', 'efficacite', 'commentaires', 'action'
 	];

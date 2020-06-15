@@ -88,6 +88,8 @@ export class ActionFiltersComponent implements OnInit, AfterViewInit
       efficacite_max:[null],
       delai_start:[null],
       delai_end:[null],
+      created_at_start:[null],
+      created_at_end:[null],
       date_realisation_start:[null],
       date_realisation_end:[null],
     })
@@ -99,6 +101,8 @@ export class ActionFiltersComponent implements OnInit, AfterViewInit
     filter.delai_end = this.dateFrToEnPipe.transform(filter.delai_end);
     filter.date_realisation_start = this.dateFrToEnPipe.transform(filter.date_realisation_start);
     filter.date_realisation_end = this.dateFrToEnPipe.transform(filter.date_realisation_end);
+    filter.created_at_start = this.dateFrToEnPipe.transform(filter.created_at_start);
+    filter.created_at_end = this.dateFrToEnPipe.transform(filter.created_at_end);
     this.change.emit(filter);
   }
 
