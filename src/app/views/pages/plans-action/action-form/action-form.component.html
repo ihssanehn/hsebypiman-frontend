@@ -19,7 +19,7 @@
 							</mat-error>
 						</mat-form-field>
 					</div>
-					<span *ngIf="!edit">{{'CHANTIERS.FORM.CREATE' | translate}}</span>
+					<span *ngIf="!edit">{{'PLANACTIONS.FORM.CREATE' | translate}}</span>
 				</div>
 				<div class="tf-wizard-v4__content" data-tfwizard-type="step-content" data-tfwizard-state="current">
 					<div class="tf-form__section tf-form__section--first">
@@ -36,6 +36,32 @@
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
 								</mat-form-field>
+								<mat-form-field class="col-xl-3" *ngIf="selectedTypeHasCode() == 'VISITE_SECURITE'">
+									<mat-label>{{'VISITES.TYPE.LABEL' | translate}}</mat-label>
+									<mat-select class="form-control" formControlName="visite_type" [required]="isFieldRequired('visite_type')">
+										<mat-option *ngFor="let visiteType of visiteTypesList" [value]="visiteType">
+											{{ visiteType }}
+										</mat-option>
+									</mat-select>
+									<mat-error *ngIf="isControlHasError('visite_type','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+								<mat-form-field class="col-xl-3" *ngIf="visitesList">
+									<mat-label>{{'VISITES.CODE.LABEL' | translate}}</mat-label>
+									<input class="form-control" matInput type="text" name="visite" formControlName="visite" placeholder="Saisir ici" [required]="isFieldRequired('visite')" [matAutocomplete]="auto" />
+									<mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+										<mat-option *ngFor="let visite of filteredVisites | async" [value]="visite" (click)="initFilteredVisites()" style="height: 2em;line-height: 2em;">
+											{{visite.code}}
+										</mat-option>
+									</mat-autocomplete>
+									<mat-error *ngIf="isControlHasError('visite','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+							</div>
+
+							<div class="row form-row">
 								<mat-form-field class="col-xl-3">
 									<mat-label>{{'PLANACTIONS.PILOTE.LABEL' | translate}}</mat-label>
 									<mat-select class="form-control" [required]="isFieldRequired('pilote_id')" placeholder="" formControlName="pilote_id">
@@ -47,9 +73,6 @@
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
 								</mat-form-field>
-							</div>
-
-							<div class="row form-row">
 								<mat-form-field class="col-xl-3">
 									<mat-label>{{'PLANACTIONS.NAME.LABEL' | translate}}</mat-label>
 									<input class="form-control" matInput type="text" name="libelle" formControlName="libelle" placeholder="Saisir ici" [required]="isFieldRequired('libelle')" />
@@ -71,6 +94,9 @@
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
 								</mat-form-field>
+							</div>
+
+							<div class="row form-row">
 								<mat-form-field class="col-xl-3">
 									<mat-label>{{'PLANACTIONS.EFFICACITE.LABEL' | translate}}</mat-label>
 									<input matInput class="form-control" type="string" name="efficacite" formControlName="efficacite" [required]="isFieldRequired('efficacite')" placeholder="Saisir ici" />
@@ -78,9 +104,6 @@
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
 								</mat-form-field>
-							</div>
-
-							<div class="row form-row">
 								<mat-form-field class="col-xl-3">
 									<mat-label>{{'PLANACTIONS.DELAI.LABEL' | translate}}</mat-label>
 									<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" formControlName="delai" [required]="isFieldRequired('delai')" placeholder="DD/MM/YYYY">
@@ -89,7 +112,7 @@
 									<mat-label>{{'PLANACTIONS.REALISATION.LABEL' | translate}}</mat-label>
 									<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" formControlName="realisation" [required]="isFieldRequired('realisation')" placeholder="DD/MM/YYYY">
 								</mat-form-field>
-								<mat-form-field class="col-xl-6">
+								<mat-form-field class="col-xl-3">
 									<mat-label>{{'PLANACTIONS.COMMENT.LABEL' | translate}}</mat-label>
 									<input class="form-control" matInput type="text" name="commentaires" formControlName="commentaires" placeholder="Saisir ici" [required]="isFieldRequired('commentaires')" />
 									<mat-error *ngIf="isControlHasError('commentaires','required')">
@@ -102,74 +125,6 @@
 				</div>
 			</tf-portlet-body>
 		</tf-portlet>
-
-		<!-- <tf-portlet>
-			<tf-portlet-body>
-				<div formArrayName="entreprises" class="row">
-					<div class="col-12">
-						<h5 class="mb-4">Entreprises externes
-							<button mat-button type="button" color="info" class="pull-right btn-small" (click)="addEntExt()">
-								<mat-icon>add</mat-icon>
-								Ajouter
-								
-							</button>
-						</h5>
-					</div>
-					<div class="col-12 my-2" *ngFor="let ent of entreprises.controls; let entIndex = index;">
-						<div [formGroupName]="entIndex" class="row">
-							<mat-form-field class="col-xl-2">
-								<mat-label>{{'EES.TYPE.LABEL' | translate}}</mat-label>
-								<mat-select class="form-control" formControlName="type_code" [required]="isEEFieldRequired('type_code', entIndex)">
-									<mat-option *ngFor="let type of entrepriseTypesList" [value]="type.code">
-										{{ type.libelle }}
-									</mat-option>
-								</mat-select>
-								<mat-error *ngIf="isControlHasError('type_code','required')">
-									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-								</mat-error>
-							</mat-form-field> 
-							<mat-form-field class="col-xl-3" *ngIf="entHasCode(entIndex)">
-								<mat-label>{{'EES.RAISON_SOCIALE.LABEL' | translate}}</mat-label>
-								<mat-select class="form-control" formControlName="entreprise_id" [required]="isEEFieldRequired('entreprise_id', entIndex)">
-									<mat-option *ngFor="let entreprise of entreprisesList[entHasCode(entIndex)]" [value]="entreprise.id">
-										{{ entreprise.raison_sociale }}
-									</mat-option>
-								</mat-select>
-								<mat-error *ngIf="isControlHasError('entreprise_id','required')">
-									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-								</mat-error>
-							</mat-form-field>
-							<mat-form-field class="col-xl-3" *ngIf="entHasCode(entIndex) == 'SOUS_TRAITANT'">
-								<mat-label>{{'EES.CA.LABEL' | translate}}</mat-label>
-								<input matInput mask="separator.2" class="form-control" type="string" name="chiffre_affaire" formControlName="chiffre_affaire" [required]="isEEFieldRequired('chiffre_affaire', entIndex)" placeholder="Saisir ici" />
-								<mat-icon matSuffix>euro_symbol</mat-icon>
-								<mat-error *ngIf="isControlHasError('chiffre_affaire','required')">
-									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-								</mat-error>
-							</mat-form-field>
-							<mat-form-field class="col-xl-3" *ngIf="entHasCode(entIndex) == 'INTERIM'">
-								<mat-label>{{'EES.INTERIMAIRE.LABEL' | translate}}</mat-label>
-								<mat-select class="form-control" formControlName="interimaire_id" [required]="isEEFieldRequired('interimaire_id', entIndex)">
-									<mat-option *ngFor="let user of interimairesList" [value]="user.id">
-										{{ user | fullName }}
-									</mat-option>
-								</mat-select>
-								<mat-error *ngIf="isControlHasError('interimaire_id','required')">
-									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-								</mat-error>
-							</mat-form-field>
-							<mat-form-field class="col-xl-3" *ngIf="entHasCode(entIndex)">
-								<mat-label>{{'EES.DATE_DEMARRAGE.LABEL' | translate}}</mat-label>
-								<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_demarrage" [required]="isEEFieldRequired('date_demarrage', entIndex)" placeholder="DD/MM/YYYY">
-							</mat-form-field>
-							<div class="col-xl-1 col-actions">
-								<button mat-icon-button type="button" (click)="removeEe(entIndex)" class="btn-small" color="warn"><mat-icon>clear</mat-icon></button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</tf-portlet-body>
-		</tf-portlet> -->
 
 		<ng-container *ngIf="formStatus">
 			<div *ngIf="formStatus.canShowErrors()" class="alert alert-danger alert-dismissible fade show" role="alert">
