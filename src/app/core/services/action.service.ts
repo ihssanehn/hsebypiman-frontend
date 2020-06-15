@@ -23,17 +23,17 @@ export class ActionService extends HttpService{
     getList(): Observable<JsonResponse<Action[]>> {
 		return this.http.get<JsonResponse<Action[]>>(this.baseUrl+'/mini');
 	}
-    get(chantier_id){
-        return this.http.get<JsonResponse<Action>>(this.baseUrl+'/'+chantier_id);
+    get(action_id){
+        return this.http.get<JsonResponse<Action>>(this.baseUrl+'/'+action_id);
     }
-    create(chantier){
-        return this.http.post<JsonResponse<Action>>(this.baseUrl+'/'+'create', chantier);
+    create(action){
+        return this.http.post<JsonResponse<Action>>(this.baseUrl+'/'+'create', action);
     }
-    update(chantier){
-        return this.http.put<JsonResponse<Action>>(this.baseUrl+'/'+chantier.id, chantier);
+    update(action){
+        return this.http.put<JsonResponse<Action>>(this.baseUrl+'/'+action.id, action);
     }
-    delete(chantier_id){
-        return this.http.delete(this.baseUrl+'/'+chantier_id);
+    delete(action_id){
+        return this.http.delete(this.baseUrl+'/'+action_id);
     }
     export(filters){
         var queryString = Object.keys(filters)
@@ -43,8 +43,8 @@ export class ActionService extends HttpService{
         var url = this.baseUrl+'/export?'+queryString+'&token='+localStorage.getItem(environment.authTokenKey);
         window.open(url, '_blank');
     }
-    addSignatures(ar_id, signatures){
-        return this.http.post(this.baseUrl+'/'+ar_id+'/signatures', signatures);
+    getStats(params){
+        return this.http.post<JsonResponse<any>>(this.baseUrl+'/stats', params);
     }
     
 }
