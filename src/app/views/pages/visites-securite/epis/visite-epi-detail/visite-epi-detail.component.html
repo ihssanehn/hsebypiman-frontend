@@ -12,9 +12,6 @@
 				  <mat-icon>more_vert</mat-icon>
 				</button>
 				<div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
-				  <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editVisite(visite.id)">
-					<mat-icon>edit</mat-icon>
-				  </button>
 				  <button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteVisite(visite.id)">
 					<mat-icon>delete</mat-icon>
 				  </button>
@@ -22,13 +19,13 @@
 			</div>
 		</div>
 		<!-- <tf-search-epi-form [data]="visite.epi" origin="detail" ></tf-search-epi-form> -->
-		<!-- <div class="tf-divider" *ngIf="visiteForm.get('epi_id').value">
+		<div class="tf-divider" *ngIf="visiteForm.get('epi_id').value">
 			<span></span>
 		</div>
-		<tf-vs-form-head [visiteForm]="visiteForm" [origin]="'detail'" *ngIf="visiteForm.get('epi_id').value"></tf-vs-form-head> -->
+		<tf-vs-form-head [visiteForm]="visiteForm" [origin]="'detail'" *ngIf="visiteForm.get('epi_id').value"></tf-vs-form-head>
 	</tf-portlet>
 	
-	<tf-vs-form-body [visiteForm]="visiteForm" (dateUpdated)="onSubmit()" [origin]="'detail'" [isDisableToggle]="isDisableToggle" ></tf-vs-form-body>
+	<tf-vs-form-body [visiteForm]="visiteForm" [catQuestionsList]="catQuestionsList" (dateUpdated)="onSubmit()" [origin]="'detail'" [isDisableToggle]="isDisableToggle" ></tf-vs-form-body>
 
 	<tf-vs-form-signatures [visiteForm]="visiteForm" [origin]="'detail'" (hseSigned)="onSubmit()" [canValidateHse]="canValidateHse" [isDisableToggle]="true" *ngIf="showSignatures"></tf-vs-form-signatures>
 

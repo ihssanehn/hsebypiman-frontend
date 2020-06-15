@@ -1,0 +1,46 @@
+<!-- begin::Portlet
+<div class="tf-portlet tf-portlet--bordered">
+	<div class="tf-portlet__body">
+
+    <div class="d-flex justify-content-between">
+      <h3 class="m-0">Habilitations</h3>
+      <div class="">
+        <a [ngClass]="{'collapsed' : collapsed }" class="btn btn-sm btn-icon btn-clean btn-icon-md accordion" (click)="collapsed = !collapsed" data-toggle="collapse" data-target="#group" aria-expanded="true">
+          <i class="la la-angle-down"></i>
+        </a>
+        <a (click)="addCatHab()" data-ktportlet-tool="add" class="btn btn-sm btn-icon btn-clean btn-icon-md">
+          <i class="la la-plus"></i>
+        </a>
+      </div>
+    </div>
+    <div class="tf-separator tf-separator--border-dashed my-3"></div>
+    
+
+    <div class="row collapse" [ngClass]="{'show' : !collapsed }" data-parent="#group">
+      <div *ngFor="let item of list" class="col-lg-6">
+
+        <tf-admin-list-portlet  [item]="item" 
+                                (onSaveItem)="updateCatHab($event)"
+                                (onRefreshItem)="getCatHab($event)"
+                                (onDeleteItem)="deleteCatHab($event)"
+                                (onAddChild)="addHabilitation($event)"
+                                (onSaveChild)="updateHabilitation($event)"
+                                (onDeleteChild)="deleteHabilitation($event)"></tf-admin-list-portlet>
+
+      </div>
+    </div>
+
+
+	</div>
+</div> -->
+
+<div class="tf-portlet tf-portlet--bordered">
+	<div class="tf-portlet__body">
+
+    <action-habilitations-admin></action-habilitations-admin>
+    
+	</div>
+</div>
+
+
+<!--end::Portlet-->

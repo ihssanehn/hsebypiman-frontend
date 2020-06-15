@@ -1,16 +1,42 @@
 // Angular
-import { Component, OnInit } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
+// RxJS
+import { Observable } from 'rxjs';
+// NGRX
+import { Store, select } from '@ngrx/store';
+// AppState
+import { AppState } from '../../../core/reducers';
+// Auth
+import {ActionService} from '@app/core/services';
+import {MenuAsideService, SubheaderService } from '../../../core/_base/layout';
 
 @Component({
-	selector: 'tf-plans-action',
+	selector: 'tf-plan-actions',
 	templateUrl: './plans-action.component.html',
-	styleUrls: ['plans-action.component.scss'],
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PlansActionComponent implements OnInit {
-
-	constructor() {
+	
+	/**
+	 * Component constructor
+	 *
+	 * @param store: Store<AppState>
+	 * @param menuAsideService
+	 * @param router: Router
+	 */
+	constructor(
+		public menuAsideService: MenuAsideService,
+		public subheaderService: SubheaderService,
+		private router: Router
+	) {
 	}
 
-	async ngOnInit(){
+	/**
+	 * On init
+	 */
+	ngOnInit() {
+		this.menuAsideService.loadMenuAside('aside.actions');
+		this.subheaderService.loadSubheader('');
 	}
 }

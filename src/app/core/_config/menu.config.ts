@@ -558,7 +558,7 @@ export class MenuConfig {
 						title: 'Admin',
 						root: true,
 						alignment: 'left',
-						page: '/admin',
+						page: '/visites-securite/epis/admin',
 						translate: 'MENU.ADMIN',
 						icon: 'settings',
 						// icon: 'flaticon2-mail-1',
@@ -713,6 +713,45 @@ export class MenuConfig {
 						root: true,
 						alignment: 'left',
 						page: '/entreprises/admin',
+						translate: 'MENU.ADMIN',
+						icon: 'settings',
+						// icon: 'flaticon2-mail-1',
+					}
+				]
+			},
+			actions: {
+				btnAdd: {
+					title: 'Nouvelle Action',
+					root: true,
+					alignment: 'left',
+					page: '/plans-action/add',
+					translate: 'MENU.BTN.NEWACTION',
+				},
+				
+				items: [
+					{
+						icon: 'dashboard',
+						// icon: 'flaticon2-browser-2',
+						title: 'Dashboards',
+						root: true,
+						alignment: 'left',
+						page: '/dashboard',
+						translate: 'MENU.DASHBOARD',
+					},
+					{
+						title: 'Liste',
+						root: true,
+						alignment: 'left',
+						page: '/plans-action/list',
+						translate: 'MENU.LIST',
+						icon: 'view_list',
+						// icon: 'flaticon2-browser-2',
+					},
+					{
+						title: 'Admin',
+						root: true,
+						alignment: 'left',
+						page: '/plans-action/admin',
 						translate: 'MENU.ADMIN',
 						icon: 'settings',
 						// icon: 'flaticon2-mail-1',

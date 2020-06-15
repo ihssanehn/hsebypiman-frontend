@@ -44,7 +44,7 @@ export class VisiteVehiculeFiltersComponent implements OnInit, AfterViewInit
 
   @Output() change = new EventEmitter();
   constructor(
-    private statusService: StatusService,
+    private statusService: StatusService, 
     private entrepriseService:EntrepriseService, 
     private typeService:TypeService,
     private userService:UserService,
