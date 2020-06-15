@@ -26,7 +26,7 @@ export class VisiteOutillageService extends HttpService{
         return this.http.post<JsonResponse<Paginate<VisiteOutillage>>>(this.baseUrl, {...params});
     }
     getList(): Observable<JsonResponse<VisiteOutillage[]>> {
-		return this.http.get<JsonResponse<VisiteOutillage[]>>(`${this.baseUrl}`);
+		return this.http.get<JsonResponse<VisiteOutillage[]>>(`${this.baseUrl+"/mini"}`);
 	}
     get(visite_id): Observable<JsonResponse<VisiteOutillage>>{
         return this.http.get<JsonResponse<VisiteOutillage>>(this.baseUrl+'/'+visite_id);

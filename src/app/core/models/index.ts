@@ -13,7 +13,7 @@ export { Habilitation } from './habilitation.model';
 export { CatHabilitation } from './catHabilitation.model';
 export { Question } from './question.model';
 export { CatQuestion } from './catQuestion.model';
-export { VisiteChantier, VisiteEpi, VisiteOutillage, VisiteVehicule } from './visite.model';
+export { VisiteChantier, VisiteEpi, VisiteOutillage, VisiteVehicule, Visite } from './visite.model';
 export { Equipement } from './equipement.model';
 export { Outillage } from './outillage.model';
 export { Vehicule } from './vehicule.model';

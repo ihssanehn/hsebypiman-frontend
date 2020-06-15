@@ -26,7 +26,7 @@ export class VisiteVehiculeService extends HttpService{
         return this.http.post<JsonResponse<Paginate<VisiteVehicule>>>(this.baseUrl, {...params});
     }
     getList(): Observable<JsonResponse<VisiteVehicule[]>> {
-		return this.http.get<JsonResponse<VisiteVehicule[]>>(`${this.baseUrl}`);
+		return this.http.get<JsonResponse<VisiteVehicule[]>>(`${this.baseUrl+"/mini"}`);
 	}
     get(visite_id): Observable<JsonResponse<VisiteVehicule>>{
         return this.http.get<JsonResponse<VisiteVehicule>>(this.baseUrl+'/'+visite_id);

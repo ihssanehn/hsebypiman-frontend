@@ -678,6 +678,9 @@ export const locale = {
 				TITLE:'Commentaires',
 				SHORTTITLE:'Commentaires'
 			},
+			FORM:{
+				CREATE: 'Créer un nouveau plan d\'action'
+			}
 
 		},
 		COMMON:{

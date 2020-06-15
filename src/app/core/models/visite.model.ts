@@ -120,3 +120,8 @@ export class VisiteVehicule {
     signatureRespHse?:Signature;
     img_canvas?: string;
 }
+
+export class Visite {
+    id?:Number;
+    code?:String;
+}
