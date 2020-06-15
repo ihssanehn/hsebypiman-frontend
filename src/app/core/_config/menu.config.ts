@@ -721,11 +721,11 @@ export class MenuConfig {
 			},
 			actions: {
 				btnAdd: {
-					title: 'Nouvelle entreprise',
+					title: 'Nouvelle Action',
 					root: true,
 					alignment: 'left',
 					page: '/plans-action/add',
-					translate: 'MENU.BTN.NEWENTREPRISE',
+					translate: 'MENU.BTN.NEWACTION',
 				},
 				
 				items: [

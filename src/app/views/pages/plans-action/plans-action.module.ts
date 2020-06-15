@@ -24,6 +24,7 @@ import { ActionEditComponent } from './action-edit/action-edit.component';
 import { ActionAddComponent } from './action-add/action-add.component';
 import { ActionDetailComponent } from './action-detail/action-detail.component';
 import { ActionFiltersComponent } from './action-filters/action-filters.component';
+import { ActionFormComponent } from './action-form/action-form.component';
 import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule, NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxMaskModule } from 'ngx-mask';
 
@@ -89,12 +90,12 @@ const routes: Routes = [
 			{
 				path: 'add',
 				//component: ActionAddComponent
-				component: PlansActionComponent
+				component: ActionAddComponent
 			},
 			{
 				path: 'add:id',
 				//component: ActionAddComponent
-				component: PlansActionComponent
+				component: ActionAddComponent
 			},
 			{
 				path: 'edit',
@@ -193,6 +194,7 @@ const routes: Routes = [
 		ActionFiltersComponent,
 		ActionAdminComponent,
 		ActionHabilitationsAdminComponent,
+		ActionFormComponent
 	]
 })
 export class PlansActionModule {}

@@ -72,6 +72,7 @@ export const locale = {
 				NEWCHANTIER: 'Nouveau chantier',
 				NEWVS: 'Nouveau visite de sécurité',
 				NEWENTREPRISE: 'Nouvelle entreprise',
+				NEWACTION: 'Nouvelle Action',
 			}
 		},
 		AUTH: {

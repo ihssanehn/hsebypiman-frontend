@@ -62,6 +62,18 @@
 					</div>
 
 					<div class="col-xl-6 col-md-6 col-sm-6 col-xs-12">
+						<h6>{{'COMMON.CREATED_AT.TITLE' | translate}}</h6>
+						<mat-form-field class="col-md-6 col-xl-6">
+							<mat-label>Entre le :</mat-label>
+							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="created_at_start" placeholder="DD/MM/YYYY">
+						</mat-form-field>
+						<mat-form-field class="col-md-6 col-xl-6">
+							<mat-label>Et le :</mat-label>
+							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="created_at_end" placeholder="DD/MM/YYYY">
+						</mat-form-field>
+					</div>
+
+					<div class="col-xl-6 col-md-6 col-sm-6 col-xs-12">
 						<h6>{{'PLANACTIONS.DELAI.SHORTTITLE' | translate}}</h6>
 						<mat-form-field class="col-md-6 col-xl-6">
 							<mat-label>Entre le :</mat-label>
