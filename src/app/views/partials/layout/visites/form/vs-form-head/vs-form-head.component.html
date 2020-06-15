@@ -3,11 +3,11 @@
     <div class="row">
         <div class="col-12 mb-2">
             <div class="tf-heading tf-heading--sm">
-                <span *ngIf="origin != 'add'">Visité sécurité N° {{visiteForm.get('code').value}}</span>
+                <span *ngIf="origin != 'add'">Visité sécurité N° {{visiteForm.get('code')?.value}}</span>
                 <span *ngIf="origin == 'add'">Nouvelle visite</span>
                 <span class="date-visite pull-right">
                     <small>Rédacteur : {{redacteur | fullName}} </small><br>
-                    <small>Date de visite : {{visiteForm.get('date_visite').value}}</small>
+                    <small>Date de visite : {{visiteForm.get('date_visite')?.value}}</small>
                 </span>
             </div>
         </div>
@@ -49,6 +49,27 @@
                                         <mat-icon>clear</mat-icon>
                                     </button>
                                     <mat-error *ngIf="isControlHasError('salarie_id','required')">
+                                        <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                                <!-- EPI -->
+                                <mat-form-field class="col-xl-3" *ngIf="origin == 'detail' && formHasValue('epi_id')"
+                                    matTooltip=""
+                                    [matTooltipDisabled]="formHasValue('epi_id')">
+                                    <mat-label>{{'OUTILLAGE.OUTIL.LABEL' | translate}}</mat-label>
+                                    <mat-select class="form-control" placeholder="" formControlName="epi_id"
+                                        [required]="isFieldRequired('epi_id')">
+                                        <mat-option *ngFor="let epi of epis" [value]="epi.id">
+                                            {{ epi.code }}
+                                        </mat-option>
+                                    </mat-select>
+                                    <button mat-button
+                                        *ngIf="formHasValue('epi_id') && !visiteForm.get('epi_id').disabled"
+                                        matSuffix mat-icon-button aria-label="Clear"
+                                        (click)="clearValue('epi_id'); $event.stopPropagation()">
+                                        <mat-icon>clear</mat-icon>
+                                    </button>
+                                    <mat-error *ngIf="isControlHasError('epi_id','required')">
                                         <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
                                     </mat-error>
                                 </mat-form-field>

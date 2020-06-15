@@ -1,10 +1,21 @@
 import { Component, OnInit, Input, ChangeDetectorRef, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormArray, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { Type, Status, CatHabilitation, Entreprise } from '@app/core/models';
+import { Type, Status, CatHabilitation, Entreprise, VisiteChantier, VisiteEpi, VisiteOutillage, VisiteVehicule, Visite } from '@app/core/models';
 import { AuthService, User } from '@app/core/auth';
-import { TypeService, StatusService, CatHabilitationService, EntrepriseService, UserService } from '@app/core/services';
-import { first } from 'rxjs/operators';
+import { 
+  TypeService, 
+  StatusService, 
+  CatHabilitationService, 
+  EntrepriseService, 
+  UserService, 
+  VisiteChantierService,
+  VisiteEpiService,
+  VisiteOutillageService,
+  VisiteVehiculeService
+} from '@app/core/services';
+import { first, startWith, map } from 'rxjs/operators';
 import { FormStatus } from '@app/core/_base/crud/models/form-status';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -14,34 +25,45 @@ import { FormStatus } from '@app/core/_base/crud/models/form-status';
 })
 export class ActionFormComponent implements OnInit {
 
-  typesList: Type[];
-  typesLoaded: boolean = false;
-  usersList: User[];
-  usersLoaded: boolean = false;
-  statusList: Status[];
-  statusLoaded: boolean = false;
-  catHabsList: CatHabilitation[];
-  catHabsLoaded: boolean = false;
-  entreprisesList: Entreprise[];
-  entreprisesLoaded: boolean = false;
-  interimairesList: User[];
-  interimairesLoaded: boolean = false;
-  entrepriseTypesList: Type[];
-  entrepriseTypesLoaded: boolean = false;
-
   @Input() actionForm: FormGroup;
   @Input() formStatus: FormStatus;
   @Input() edit: Boolean;
   @Input() formloading: Boolean;
   @Output() onCancel = new EventEmitter();
   @Output() onSubmit = new EventEmitter();
+
+  typesList: Type[];
+  typeSelected: Type;
+  typesLoaded: boolean = false;
+
+  visiteTypesList = [
+    'Visite Chantier',
+    'Visite EPI',
+    'Visite Outillage',
+    'Visite Véhicule'
+  ];
+  visiteTypesSelected: String;
+  visiteTypesLoaded: boolean = false;
+
+  usersList: User[];
+  usersLoaded: boolean = false;
+  statusList: Status[];
+  statusLoaded: boolean = false;
+
+  public visitesList : Array<Visite>;
+  visitesLoaded: boolean = false;
+  filteredVisites: Observable<Array<Visite>>;
+
+
   constructor(
     private typeService:TypeService,
-    private fb: FormBuilder,
     private statusService:StatusService,
-    private catHabilitationService:CatHabilitationService,
-    private entrepriseService: EntrepriseService,
     private userService:UserService,
+    private visiteChantierService:VisiteChantierService,
+    private visiteEpiService:VisiteEpiService,
+    private visiteOutillageService:VisiteOutillageService,
+    private visiteVehiculeService:VisiteVehiculeService,
+    private fb: FormBuilder,
     private cdr: ChangeDetectorRef,
   ) { }
 
@@ -49,10 +71,9 @@ export class ActionFormComponent implements OnInit {
     this.getTypes();
     this.getUsers();
     this.getStatus();
-    this.getCatHabs();
-    this.getEntreprises();
-    this.getEntrepriseTypes();
-    this.getInterimaires();
+    this.setDynamicActionType();
+    this.setDynamicVisiteType();
+    this.initFilteredVisites();
   }
 
   async getTypes(){
@@ -64,6 +85,7 @@ export class ActionFormComponent implements OnInit {
     }
     this.cdr.markForCheck();
   }
+
   async getUsers(){
     this.usersLoaded = false;
     var res = await this.userService.getList().toPromise();
@@ -73,6 +95,7 @@ export class ActionFormComponent implements OnInit {
     }
     this.cdr.markForCheck();
   }
+
   async getStatus(){
     this.statusLoaded = false;
     var res = await this.statusService.getAllFromModel('Action').toPromise();
@@ -82,74 +105,47 @@ export class ActionFormComponent implements OnInit {
     }
     this.cdr.markForCheck();
   }
-  async getCatHabs(){
-    this.catHabsLoaded = false;
-    var res = await this.catHabilitationService.getAll().toPromise();
+
+  async getVisitesChantier(){
+    this.visitesLoaded = false;
+    var res = await this.visiteChantierService.getList().toPromise();
     if(res){
-      this.catHabsList = res.result.data;
-      this.catHabsLoaded = true;
-    }
-    this.cdr.markForCheck();
-  }
-  async getEntreprises(){
-    this.entreprisesLoaded = false;
-    var res = await this.entrepriseService.getListGrouped().toPromise();
-    if(res){
-      this.entreprisesList = res.result.data;
-      this.entreprisesLoaded = true;
-    }
-    this.cdr.markForCheck();
-  }
-  async getEntrepriseTypes(){
-    this.entrepriseTypesLoaded = false;
-    var res = await this.typeService.getAll({'model':'Entreprise'}).toPromise();
-    if(res){
-      this.entrepriseTypesList = res.result.data;
-      this.entrepriseTypesLoaded = true;
-    }
-    this.cdr.markForCheck();
-  }
-  async getInterimaires(){
-    this.interimairesLoaded = false;
-    var res = await this.userService.getAll({'categorie_code':'INTERIMAIRE', 'paginate':false}).toPromise();
-    if(res){
-      this.interimairesList = res.result.data;
-      this.interimairesLoaded = true;
+      this.visitesList = res.result.data;
+      this.visitesLoaded = true;
     }
     this.cdr.markForCheck();
   }
 
-  onNoHabCheckChange(event){
-    const habs : FormArray = this.actionForm.get('habilitations') as FormArray;;
-    if(this.actionForm.get('no_hab_required').value){
-      habs.clear();
-      habs.setValidators(null);
-      habs.disable();
-    }else{
-      habs.setValidators([Validators.required]);
-      habs.enable();
+  async getVisitesEpi(){
+    this.visitesLoaded = false;
+    var res = await this.visiteEpiService.getList().toPromise();
+    if(res){
+      this.visitesList = res.result.data;
+      this.visitesLoaded = true;
     }
+    this.cdr.markForCheck();
   }
 
-  onHabCheckChange(event) {
-    const formArray: FormArray = this.actionForm.get('habilitations') as FormArray;
-    if(event.checked){
-      formArray.push(new FormControl(event.source.value));
+  async getVisitesOutillage(){
+    this.visitesLoaded = false;
+    var res = await this.visiteOutillageService.getList().toPromise();
+    if(res){
+      this.visitesList = res.result.data;
+      this.visitesLoaded = true;
     }
-    else{
-      let i: number = 0;
-      formArray.controls.forEach((ctrl: FormControl) => {
-        if(ctrl.value == event.source.value) {
-          formArray.removeAt(i);
-          return;
-        }
-        i++;
-      });
+    this.cdr.markForCheck();
+  }
+
+  async getVisitesVehicule(){
+    this.visitesLoaded = false;
+    var res = await this.visiteVehiculeService.getList().toPromise();
+    if(res){
+      this.visitesList = res.result.data;
+      this.visitesLoaded = true;
     }
+    this.cdr.markForCheck();
   }
-  onHabIsChecked(habId){
-    return this.actionForm.get('habilitations').value.includes(habId);
-  }
+  
   isFieldRequired(controlName){
     if(this.actionForm && this.actionForm.controls[controlName]){
       const control = this.actionForm.controls[controlName]
@@ -161,23 +157,12 @@ export class ActionFormComponent implements OnInit {
     }
     return false
   }
-  isEEFieldRequired(name, index){
-    var ee = this.entreprises.controls[index] as FormGroup;
-    return !!ee.controls[name].validator(name) && ee.controls[name].validator(name).hasOwnProperty('required');
-    return true;
-  }
-  /**
-	 * Checking control validation
-	 *
-	 * @param controlName: string => Equals to formControlName
-	 * @param validationType: string => Equals to valitors name
-	 */
+
 	isControlHasError(controlName: string, validationType: string): boolean {
 		const control = this.actionForm.controls[controlName];
 		if (!control) {
 			return false;
 		}
-
 		const result = control.hasError(validationType) && (control.dirty || control.touched);
 		return result;
   }
@@ -187,46 +172,91 @@ export class ActionFormComponent implements OnInit {
       this.onSubmit.emit(bool)
     }
   }
+
   cancelForm(){
     this.onCancel.emit()
   }
-  addEntExt(){
-    this.entreprises.push(this.newEntreprises);
-  }
 
-  get entreprises(): FormArray{
-    return this.actionForm.get('entreprises') as FormArray;
-  }
-  get newEntreprises(): FormGroup {
-
-    var new_entreprise = this.fb.group({
-      'type_code':[null, [Validators.required]],
-      'entreprise_id':[null, [Validators.required]],
-      'interimaire_id':[null, [Validators]],
-      'chiffre_affaire':[null, [Validators]],
-      'date_demarrage':[null, [Validators]]
-    });
-    new_entreprise.get('type_code').valueChanges.subscribe(code=>{
-      if(code == 'SOUS_TRAITANT'){
-        new_entreprise.get('interimaire_id').setValidators(null);
-        new_entreprise.get('chiffre_affaire').setValidators(Validators.required);
-      }else{
-        new_entreprise.get('interimaire_id').setValidators(Validators.required);
-        new_entreprise.get('chiffre_affaire').setValidators(null);
-      }
-    })
-    return new_entreprise;
-  }
-
-  removeEe(i){
-    this.entreprises.removeAt(i);
-  }
-  entHasCode(i){
-    if(!this.entrepriseTypesLoaded){
+  selectedTypeHasCode(){
+    if(!this.typesLoaded || !this.typeSelected){
       return false;
     }
-    var entreprise : FormGroup = this.entreprises.controls[i] as FormGroup;
-    var code = entreprise.controls['type_code'].value;
-    return code;
+    return this.typeSelected.code
   }
+
+  setDynamicActionType(){
+    this.actionForm.get('type_id').valueChanges.subscribe(type_id => {
+      this.actionForm.get('visite_type').setValue(null);
+      if (type_id != null){
+        var typeSelected = this.typesList.filter(x=> x.id == type_id)[0];
+        if(typeSelected.code == 'VISITE_SECURITE'){
+          this.actionForm.get('visite_type').setValidators(Validators.required);
+        }else{
+          this.actionForm.get('visite_type').setValidators(null);
+        }
+        this.typeSelected = typeSelected;
+      }else{
+        this.typeSelected = null;
+        this.actionForm.get('visite_type').setValidators(null);
+      }
+
+      this.actionForm.get('visite_type').updateValueAndValidity();
+    })
+  }
+
+  setDynamicVisiteType(){
+    this.actionForm.get('visite_type').valueChanges.subscribe(visite_type => {
+      this.actionForm.get('visite').setValue(null);
+      if (visite_type != null){
+        this.actionForm.get('visite').setValidators(Validators.required);
+        var visiteTypesSelected = visite_type;
+
+        this.visitesList = null;
+        switch(visiteTypesSelected){
+          case 'Visite Chantier':
+            this.getVisitesChantier();
+            break;
+          case 'Visite EPI':
+            this.getVisitesEpi();
+            break;
+          case 'Visite Outillage':
+            this.getVisitesOutillage();
+            break;
+          case 'Visite Véhicule':
+            this.getVisitesVehicule();
+            break;
+        }
+
+        this.visiteTypesSelected = visiteTypesSelected;
+      }else{
+        this.visiteTypesSelected = null;
+        this.actionForm.get('visite').setValidators(null);
+      }
+
+      this.actionForm.get('visite').updateValueAndValidity();
+    })
+  }
+
+  async initFilteredVisites(){
+    this.filteredVisites = this.actionForm.get('visite').valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value))
+    );
+  }
+
+  private _filter(value: string): Array<Visite> {
+    const filterValue = value;
+    return this.visitesList.filter(visite => 
+      this._normalizeValue(visite.code).includes(filterValue)
+    );
+  }
+
+  private _normalizeValue(value: String): string {
+    return value.toLowerCase().replace(/\s/g, '');
+  }
+
+  displayFn(visite: Visite): String {
+    return visite ? visite.code : '';
+  }
+
 }

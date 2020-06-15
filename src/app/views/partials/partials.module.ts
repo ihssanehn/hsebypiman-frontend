@@ -115,6 +115,7 @@ import { SearchOutillageFormComponent } from './layout/outillage/search-outillag
 import { SearchSalarieFormComponent } from './layout/outillage/search-salarie-form/search-salarie-form.component';
 import { VisiteQuestionOutillageAdminComponent } from './layout/outillage/visite-question-outillage-admin/visite-question-outillage-admin.component';
 import { VsVehiculeFormImgComponent } from './layout/visites/form/vs-vehicule/vs-vehicule-form-img/vs-vehicule-form-img.component';
+import { SearchEpiFormComponent } from './layout/epi/search-epi-form/search-epi-form.component';
 
 @NgModule({
 	declarations: [
@@ -176,7 +177,8 @@ import { VsVehiculeFormImgComponent } from './layout/visites/form/vs-vehicule/vs
 		SearchSalarieFormComponent,
 		VisiteQuestionOutillageAdminComponent,
 		AddVehiculeFormComponent,
-		VsVehiculeFormImgComponent
+		VsVehiculeFormImgComponent,
+		SearchEpiFormComponent
 	],
 	exports: [
 		WidgetModule,
@@ -240,7 +242,8 @@ import { VsVehiculeFormImgComponent } from './layout/visites/form/vs-vehicule/vs
 		SearchSalarieFormComponent,
 		VisiteQuestionOutillageAdminComponent,
 		AddVehiculeFormComponent,
-		VsVehiculeFormImgComponent
+		VsVehiculeFormImgComponent,
+		SearchEpiFormComponent
 	],
 	imports: [
 		CommonModule,

@@ -558,7 +558,7 @@ export class MenuConfig {
 						title: 'Admin',
 						root: true,
 						alignment: 'left',
-						page: '/admin',
+						page: '/visites-securite/epis/admin',
 						translate: 'MENU.ADMIN',
 						icon: 'settings',
 						// icon: 'flaticon2-mail-1',
