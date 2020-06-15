@@ -22,6 +22,7 @@ export class ActionsDashComponent implements OnInit, AfterViewInit, OnDestroy {
 
 	filter: any = {
 		keyword: "",
+		
 	};
 	showFilters:Boolean = false;
 	stats : any;	
