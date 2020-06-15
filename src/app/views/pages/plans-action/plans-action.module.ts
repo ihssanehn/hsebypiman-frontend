@@ -19,14 +19,16 @@ import { HttpUtilsService, TypesUtilsService, InterceptService, LayoutUtilsServi
 import { ActionNotificationComponent } from '../../partials/content/crud';
 // Components
 import { PlansActionComponent } from './plans-action.component';
-import { ActionsListComponent } from './actions-list/action-list.component';
+import { ActionsListComponent } from './actions-list/actions-list.component';
 import { ActionEditComponent } from './action-edit/action-edit.component';
 import { ActionAddComponent } from './action-add/action-add.component';
 import { ActionDetailComponent } from './action-detail/action-detail.component';
 import { ActionFiltersComponent } from './action-filters/action-filters.component';
 import { ActionFormComponent } from './action-form/action-form.component';
+import { ActionsDashComponent } from './actions-dash/actions-dash.component';
 import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule, NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxMaskModule } from 'ngx-mask';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 // Material
 import {
@@ -56,7 +58,7 @@ import {
 	MatSnackBarModule,
 	MatTooltipModule,MAT_DATE_LOCALE, 
 	MAT_DATE_FORMATS,
-	DateAdapter
+	DateAdapter,
 } from '@angular/material';
 import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapter';
 import { ActionAdminComponent } from './action-admin/action-admin.component';
@@ -89,12 +91,10 @@ const routes: Routes = [
 			},
 			{
 				path: 'add',
-				//component: ActionAddComponent
 				component: ActionAddComponent
 			},
 			{
 				path: 'add:id',
-				//component: ActionAddComponent
 				component: ActionAddComponent
 			},
 			{
@@ -111,6 +111,10 @@ const routes: Routes = [
 				path: 'admin',
 				//component: ActionAdminComponent
 				component: PlansActionComponent
+			},
+			{
+				path: 'dashboard',
+				component: ActionsDashComponent
 			},
 		]
 	}
@@ -157,6 +161,7 @@ const routes: Routes = [
 		NgbTooltipModule,
 		NgbPopoverModule,
 		NgxMaskModule,
+		NgxEchartsModule
 	],
 	providers: [
 		InterceptService,
@@ -194,7 +199,8 @@ const routes: Routes = [
 		ActionFiltersComponent,
 		ActionAdminComponent,
 		ActionHabilitationsAdminComponent,
-		ActionFormComponent
+		ActionFormComponent,
+		ActionsDashComponent
 	]
 })
 export class PlansActionModule {}

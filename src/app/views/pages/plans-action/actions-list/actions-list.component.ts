@@ -10,8 +10,8 @@ import Swal from 'sweetalert2';
 
 @Component({
 	selector: 'tf-actions-list',
-	templateUrl: './action-list.component.html',
-	styleUrls: ['./action-list.component.scss']
+	templateUrl: './actions-list.component.html',
+	styleUrls: ['./actions-list.component.scss']
 })
 export class ActionsListComponent implements OnInit, AfterViewInit, OnDestroy {
 
