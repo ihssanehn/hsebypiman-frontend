@@ -71,7 +71,9 @@ import * as json from 'highlight.js/lib/languages/json';
 
 import { NZ_I18N,en_US } from 'ng-zorro-antd';
 
-
+export function chartModule(): any {
+	return echarts
+}
 // tslint:disable-next-line:class-name
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 	wheelSpeed: 0.5,
@@ -150,7 +152,7 @@ export function hljsLanguages(): HighlightLanguage[] {
 		ReactiveFormsModule,
 		SignaturePadModule,
 		NgxEchartsModule.forRoot({
-			echarts
+			echarts: chartModule()
 		})
 	],
 	exports: [],
