@@ -40,7 +40,7 @@
 									<mat-label>{{'VISITES.TYPE.LABEL' | translate}}</mat-label>
 									<mat-select class="form-control" formControlName="visite_type" [required]="isFieldRequired('visite_type')">
 										<mat-option *ngFor="let visiteType of visiteTypesList" [value]="visiteType">
-											{{ visiteType }}
+											{{ visiteType.value }}
 										</mat-option>
 									</mat-select>
 									<mat-error *ngIf="isControlHasError('visite_type','required')">

@@ -37,10 +37,10 @@ export class ActionFormComponent implements OnInit {
   typesLoaded: boolean = false;
 
   visiteTypesList = [
-    'Visite Chantier',
-    'Visite EPI',
-    'Visite Outillage',
-    'Visite Véhicule'
+    { key: 'VsChantier',  value: 'Visite Chantier'},
+    { key: 'VsEpi',       value: 'Visite EPI'},
+    { key: 'VsOutillage', value: 'Visite Outillage'},
+    { key: 'VsVehicule',  value: 'Visite Véhicule'}
   ];
   visiteTypesSelected: String;
   visiteTypesLoaded: boolean = false;
@@ -212,17 +212,17 @@ export class ActionFormComponent implements OnInit {
         var visiteTypesSelected = visite_type;
 
         this.visitesList = null;
-        switch(visiteTypesSelected){
-          case 'Visite Chantier':
+        switch(visiteTypesSelected.key){
+          case 'VsChantier':
             this.getVisitesChantier();
             break;
-          case 'Visite EPI':
+          case 'VsEpi':
             this.getVisitesEpi();
             break;
-          case 'Visite Outillage':
+          case 'VsOutillage':
             this.getVisitesOutillage();
             break;
-          case 'Visite Véhicule':
+          case 'VsVehicule':
             this.getVisitesVehicule();
             break;
         }
