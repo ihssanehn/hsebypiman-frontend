@@ -63,13 +63,14 @@ export class ActionAddComponent implements OnInit {
       objectif: ['', Validators.required],
       pilote_id: ['', Validators.required],
       delai: ['', Validators.required],
-      realisation: ['', Validators.required],
-      efficacite: ['', Validators.required],
-      commentaires: ['', Validators.required],
+      realisation: [''],
+      efficacite: [''],
+      commentaires: [''],
       status_id: [null],
       visite_type: [null],
-      visite_id: [null],
-      visite: [null],
+      actionable_id: [null],
+      actionable_type: [null],
+      actionable: [null],
       errors: this.actionFB.array([]),
     });
 		this.loaded = true;
@@ -85,7 +86,8 @@ export class ActionAddComponent implements OnInit {
     this.cdr.markForCheck();
 
     let form = {...this.actionForm.getRawValue()};
-    form.visite_id = form.visite ? form.visite.id : null; 
+    form.actionable_id = form.actionable ? form.actionable.id : null;
+    form.actionable_type = form.visite_type ? form.visite_type.key : null; 
     
     this.parseActionDate(form, 'FrToEn');
 

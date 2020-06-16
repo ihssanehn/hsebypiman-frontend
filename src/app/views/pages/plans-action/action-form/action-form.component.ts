@@ -37,10 +37,10 @@ export class ActionFormComponent implements OnInit {
   typesLoaded: boolean = false;
 
   visiteTypesList = [
-    'Visite Chantier',
-    'Visite EPI',
-    'Visite Outillage',
-    'Visite Véhicule'
+    { key: 'VsChantier',  value: 'Visite Chantier'},
+    { key: 'VsEpi',       value: 'Visite EPI'},
+    { key: 'VsOutillage', value: 'Visite Outillage'},
+    { key: 'VsVehicule',  value: 'Visite Véhicule'}
   ];
   visiteTypesSelected: String;
   visiteTypesLoaded: boolean = false;
@@ -71,6 +71,15 @@ export class ActionFormComponent implements OnInit {
     this.getTypes();
     this.getUsers();
     this.getStatus();
+    if(this.edit){
+      this.typeSelected = this.actionForm.get('type').value;
+      var key = this.actionForm.get('actionable_type').value;
+      if(key){
+        var visiteType = this.visiteTypesList.find(item => item.key === key);
+        this.actionForm.get('visite_type').setValue(visiteType);
+        this.getVisites(visiteType.key);
+      }
+    }
     this.setDynamicActionType();
     this.setDynamicVisiteType();
     this.initFilteredVisites();
@@ -204,41 +213,45 @@ export class ActionFormComponent implements OnInit {
     })
   }
 
+  getVisites(code){
+    this.visitesList = null;
+    switch(code){
+      case 'VsChantier':
+        this.getVisitesChantier();
+        break;
+      case 'VsEpi':
+        this.getVisitesEpi();
+        break;
+      case 'VsOutillage':
+        this.getVisitesOutillage();
+        break;
+      case 'VsVehicule':
+        this.getVisitesVehicule();
+        break;
+    }
+  }
+
   setDynamicVisiteType(){
     this.actionForm.get('visite_type').valueChanges.subscribe(visite_type => {
-      this.actionForm.get('visite').setValue(null);
+      this.actionForm.get('actionable').setValue(null);
       if (visite_type != null){
-        this.actionForm.get('visite').setValidators(Validators.required);
+        this.actionForm.get('actionable').setValidators(Validators.required);
         var visiteTypesSelected = visite_type;
 
-        this.visitesList = null;
-        switch(visiteTypesSelected){
-          case 'Visite Chantier':
-            this.getVisitesChantier();
-            break;
-          case 'Visite EPI':
-            this.getVisitesEpi();
-            break;
-          case 'Visite Outillage':
-            this.getVisitesOutillage();
-            break;
-          case 'Visite Véhicule':
-            this.getVisitesVehicule();
-            break;
-        }
+        this.getVisites(visiteTypesSelected.key);
 
         this.visiteTypesSelected = visiteTypesSelected;
       }else{
         this.visiteTypesSelected = null;
-        this.actionForm.get('visite').setValidators(null);
+        this.actionForm.get('actionable').setValidators(null);
       }
 
-      this.actionForm.get('visite').updateValueAndValidity();
+      this.actionForm.get('actionable').updateValueAndValidity();
     })
   }
 
   async initFilteredVisites(){
-    this.filteredVisites = this.actionForm.get('visite').valueChanges.pipe(
+    this.filteredVisites = this.actionForm.get('actionable').valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value))
     );
@@ -246,9 +259,9 @@ export class ActionFormComponent implements OnInit {
 
   private _filter(value: string): Array<Visite> {
     const filterValue = value;
-    return this.visitesList.filter(visite => 
-      this._normalizeValue(visite.code).includes(filterValue)
-    );
+    return this.visitesList 
+      ? this.visitesList.filter(visite => this._normalizeValue(visite.code).includes(filterValue)) 
+      : null;
   }
 
   private _normalizeValue(value: String): string {

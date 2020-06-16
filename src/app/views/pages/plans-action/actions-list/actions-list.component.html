@@ -116,7 +116,16 @@
 						{{'PLANACTIONS.COMMENT.TITLE' | translate}}
 						<i class="fa" [ngClass]="isOrderedBy('commentaires') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('commentaires') && {opacity:1}"></i>
 					</th>
-					<td mat-cell *matCellDef="let action" (click)="viewAction(action.id)" class="text-center pointer"> {{action.commentaires}} </td>
+					<td mat-cell *matCellDef="let action" (click)="viewAction(action.id)" class="text-center pointer"> 
+						<div [matTooltipClass]="'custom-tooltip'" matTooltip="{{action.commentaires}}"
+							[matTooltipShowDelay]="'100'"
+							[matTooltipHideDelay]="'100'"
+							[matTooltipPosition]="'above'"
+						>
+							<mat-icon color="primary" *ngIf="action.commentaires" >done</mat-icon>
+							<mat-icon color="warn" *ngIf="!action.commentaires">clear</mat-icon>
+						</div>
+					</td>
 				</ng-container>
 
 				<ng-container matColumnDef="action" stickyEnd >
