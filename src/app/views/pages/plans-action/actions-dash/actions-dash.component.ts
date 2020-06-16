@@ -5,9 +5,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { fromEvent, Subscription } from 'rxjs';
 import Swal from 'sweetalert2';
-import * as echarts from 'echarts';
-import ECharts = echarts.ECharts;
-import EChartOption = echarts.EChartOption;
 
 
 
@@ -118,16 +115,16 @@ export class ActionsDashComponent implements OnInit, AfterViewInit, OnDestroy {
 					// By Type
 					this.byTypeOptions.series[0]['data'] = this.stats.types.total;
 					this.byTypeOptions.legend['serie'] = this.stats.types.total;
-					this.echartsTypeInstance.setOption(this.byTypeOptions);
-					this.echartsTypeInstance.hideLoading();	
+					// this.echartsTypeInstance.setOption(this.byTypeOptions);
+					// this.echartsTypeInstance.hideLoading();	
 					
 					// By Status
 					this.byStatusOptions.series[0]['data'] = this.stats.status.total;
 					this.byStatusOptions.legend['serie'] = this.stats.status.total;
 					this.byStatusOptions.title.text = 'Actions par Statut';
 					
-					this.echartsStatusInstance.setOption(this.byStatusOptions);
-					this.echartsStatusInstance.hideLoading();
+					// this.echartsStatusInstance.setOption(this.byStatusOptions);
+					// this.echartsStatusInstance.hideLoading();
 
 					
 					this.cdr.markForCheck();
@@ -149,19 +146,19 @@ export class ActionsDashComponent implements OnInit, AfterViewInit, OnDestroy {
 		this.getActionsDash();
 	}
 
-	onTypeChartInit(ec) {
-		this.echartsTypeInstance = ec;
-		this.echartsTypeInstance.showLoading();
-	}
-	onStatusChartInit(ec) {
-		this.echartsStatusInstance = ec;
-		this.echartsStatusInstance.showLoading();
-	}
+	// onTypeChartInit(ec) {
+	// 	this.echartsTypeInstance = ec;
+	// 	this.echartsTypeInstance.showLoading();
+	// }
+	// onStatusChartInit(ec) {
+	// 	this.echartsStatusInstance = ec;
+	// 	this.echartsStatusInstance.showLoading();
+	// }
 	  
-	resizeChart() {
-		if (this.echartsTypeInstance) {
-			this.echartsTypeInstance.resize();
-		}
-	}
+	// resizeChart() {
+	// 	if (this.echartsTypeInstance) {
+	// 		this.echartsTypeInstance.resize();
+	// 	}
+	// }
 }
 

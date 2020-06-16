@@ -28,7 +28,7 @@ import { ActionFormComponent } from './action-form/action-form.component';
 import { ActionsDashComponent } from './actions-dash/actions-dash.component';
 import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule, NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxMaskModule } from 'ngx-mask';
-import { NgxEchartsModule } from 'ngx-echarts';
+// import { NgxEchartsModule } from 'ngx-echarts';
 
 // Material
 import {
@@ -161,7 +161,7 @@ const routes: Routes = [
 		NgbTooltipModule,
 		NgbPopoverModule,
 		NgxMaskModule,
-		NgxEchartsModule
+		// NgxEchartsModule
 	],
 	providers: [
 		InterceptService,
