@@ -1,4 +1,4 @@
-<tf-search-list-bar [(ngModel)]="filter" (change)="getActions()" [hasAdvancedSearch]="true" [showFilters]="showFilters" (advancedSearchChange)="advancedSearchChanged($event)" class="row row-filters"></tf-search-list-bar>
+<tf-search-list-bar [(ngModel)]="filter" (change)="getActionsDash()" [hasAdvancedSearch]="true" [showFilters]="showFilters" (advancedSearchChange)="advancedSearchChanged($event)" class="row row-filters"></tf-search-list-bar>
 <tf-action-filters [hidden]="!showFilters" (change)="udpateFilters($event)" class="row"></tf-action-filters>
 <div class="row px-2">
 	<div class="col-6">
