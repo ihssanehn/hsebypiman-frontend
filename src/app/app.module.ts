@@ -61,6 +61,8 @@ import { LayoutConfig } from './core/_config/layout.config';
 
 // Echart
 import * as echarts from 'echarts';
+import { init } from 'echarts';
+
 import { NgxEchartsModule } from 'ngx-echarts';
 // Highlight JS
 import { HIGHLIGHT_OPTIONS, HighlightLanguage } from 'ngx-highlightjs';
@@ -71,9 +73,6 @@ import * as json from 'highlight.js/lib/languages/json';
 
 import { NZ_I18N,en_US } from 'ng-zorro-antd';
 
-export function chartModule(): any {
-	return echarts
-}
 // tslint:disable-next-line:class-name
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 	wheelSpeed: 0.5,
@@ -83,15 +82,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 };
 
 const MY_FORMAT = {
-	// parse: {
-	// 	dateInput: 'DD/MM/YYYY',
-	// },
-	// display: {
-	// 	dateInput: 'DD/MM/YYYY',
-	// 	monthYearLabel: 'MMM YYYY',
-	// 	dateA11yLabel: 'DD/MM/YYYY',
-	// 	monthYearA11yLabel: 'MMMM YYYY',
-	// },
 	parse: {
 		dateInput: {month: 'short', year: 'numeric', day: 'numeric'}
 	},
@@ -129,10 +119,6 @@ export function hljsLanguages(): HighlightLanguage[] {
 		BrowserModule,
 		AppRoutingModule,
 		HttpClientModule,
-		// environment.isMockEnabled ? HttpClientInMemoryWebApiModule.forRoot(FakeApiService, {
-		// 	passThruUnknownUrl: true,
-		// 	dataEncapsulation: false
-		// }) : [],
 		NgxPermissionsModule.forRoot(),
 		PartialsModule,
 		CoreModule,
@@ -152,7 +138,9 @@ export function hljsLanguages(): HighlightLanguage[] {
 		ReactiveFormsModule,
 		SignaturePadModule,
 		NgxEchartsModule.forRoot({
-			echarts: chartModule()
+			echarts:{ 
+				init,
+			}
 		})
 	],
 	exports: [],
