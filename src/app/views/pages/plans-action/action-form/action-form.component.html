@@ -47,15 +47,15 @@
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
 								</mat-form-field>
-								<mat-form-field class="col-xl-3" *ngIf="visitesList">
+								<mat-form-field class="col-xl-3" *ngIf="selectedTypeHasCode() == 'VISITE_SECURITE' && visitesList">
 									<mat-label>{{'VISITES.CODE.LABEL' | translate}}</mat-label>
-									<input class="form-control" matInput type="text" name="visite" formControlName="visite" placeholder="Saisir ici" [required]="isFieldRequired('visite')" [matAutocomplete]="auto" />
+									<input class="form-control" matInput type="text" name="actionable" formControlName="actionable" placeholder="Saisir ici" [required]="isFieldRequired('actionable')" [matAutocomplete]="auto" />
 									<mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
 										<mat-option *ngFor="let visite of filteredVisites | async" [value]="visite" (click)="initFilteredVisites()" style="height: 2em;line-height: 2em;">
 											{{visite.code}}
 										</mat-option>
 									</mat-autocomplete>
-									<mat-error *ngIf="isControlHasError('visite','required')">
+									<mat-error *ngIf="isControlHasError('actionable','required')">
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
 								</mat-form-field>

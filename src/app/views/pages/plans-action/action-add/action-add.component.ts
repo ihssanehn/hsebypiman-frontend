@@ -70,7 +70,7 @@ export class ActionAddComponent implements OnInit {
       visite_type: [null],
       actionable_id: [null],
       actionable_type: [null],
-      visite: [null],
+      actionable: [null],
       errors: this.actionFB.array([]),
     });
 		this.loaded = true;
@@ -86,7 +86,7 @@ export class ActionAddComponent implements OnInit {
     this.cdr.markForCheck();
 
     let form = {...this.actionForm.getRawValue()};
-    form.actionable_id = form.visite ? form.visite.id : null;
+    form.actionable_id = form.actionable ? form.actionable.id : null;
     form.actionable_type = form.visite_type ? form.visite_type.key : null; 
     
     this.parseActionDate(form, 'FrToEn');

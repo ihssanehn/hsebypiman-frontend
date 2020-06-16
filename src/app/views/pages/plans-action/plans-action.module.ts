@@ -99,13 +99,11 @@ const routes: Routes = [
 			},
 			{
 				path: 'edit',
-				//component: ActionEditComponent
-				component: PlansActionComponent
+				component: ActionEditComponent
 			},
 			{
 				path: 'edit/:id',
-				//component: ActionEditComponent
-				component: PlansActionComponent
+				component: ActionEditComponent
 			},
 			{
 				path: 'admin',

@@ -60,26 +60,24 @@ export class ActionEditComponent implements OnInit, OnDestroy {
 		this.createForm();
     	this.setDynamicValidators();
 		const routeSubscription = this.activatedRoute.params.subscribe(
-			// async params => {
-			// 	const id = params.id;
-			// 	if (id) {
-			// 		this.actionService.get(id).pipe(
-			// 			tap(res=>{
-			// 				this.parseActionDate(res.result.data, 'EnToFr');
-			// 				this.actionForm.patchValue(res.result.data);							
-			// 				this.formPathValues(res.result.data);
-			// 				this.actionForm.controls['entreprises'].patchValue(res.result.data.entreprises);
-			// 			})
-			// 		).subscribe( async res => {
-			// 			this.action = res.result.data;
-			// 			this.loaded = true;
-			// 			this.cdr.markForCheck();
-			// 		});
+			async params => {
+				const id = params.id;
+				if (id) {
+					this.actionService.get(id).pipe(
+						tap(res=>{
+							this.parseActionDate(res.result.data, 'EnToFr');
+							this.actionForm.patchValue(res.result.data);							
+						})
+					).subscribe( async res => {
+						this.action = res.result.data;
+						this.loaded = true;
+						this.cdr.markForCheck();
+					});
 
-			// 	} else {
-			// 		this.router.navigateByUrl('/actions/list');
-			// 	}
-			// }
+				} else {
+					this.router.navigateByUrl('/plans-action/list');
+				}
+			}
 		);
 		this.subscriptions.push(routeSubscription);
   	}
@@ -88,12 +86,8 @@ export class ActionEditComponent implements OnInit, OnDestroy {
 		this.subscriptions.forEach(sb => sb.unsubscribe());
 	}
 
-	/**
-	 * Redirect to list
-	 *
-	 */
 	goBackWithId() {
-		const url = `/actions/list`;
+		const url = `/plans-action/list`;
 		this.router.navigateByUrl(url, {
 			relativeTo: this.activatedRoute
 		});
@@ -101,85 +95,31 @@ export class ActionEditComponent implements OnInit, OnDestroy {
 
 	createForm() {
 		this.actionForm = this.actionFB.group({
-			nom: ['', Validators.required],
 			type_id: [null, Validators.required],
-			adresse: ['', Validators.required],
-			ville: ['', Validators.required],
-			code_postal: ['', Validators.required],
-			pays: ['', Validators.required],
-			client: ['', Validators.required],
-			contact: ['', Validators.required],
-			montant: ['', Validators.required],
-			date_demarrage: ['', Validators.required],
-			charge_affaire_id: [null, Validators.required],
-			status_id: [null, Validators.required],
-			numero: ['', Validators.required],
-			resp_chiffrage_id: [null, Validators.required],
-			no_hab_required: [0, Validators.required],
-			habilitations: this.actionFB.array([], Validators.required),
-			entreprises: this.actionFB.array([])
+			libelle: ['', Validators.required],
+			risque: ['', Validators.required],
+			objectif: ['', Validators.required],
+			pilote_id: ['', Validators.required],
+			delai: ['', Validators.required],
+			realisation: [''],
+			efficacite: [''],
+			commentaires: [''],
+			status_id: [null],
+			visite_type: [null],
+			actionable_id: [null],
+			actionable_type: [null],
+			actionable: [null],
+			type: [null],
 		});
 	}
 
 	setDynamicValidators(){
-		const no_hab_required = this.actionForm.get('no_hab_required');
 	}
   
-	formPathValues(action){
-		const habformArray: FormArray = this.actionForm.get('habilitations') as FormArray;
-		if(action.no_hab_required){
-			habformArray.setValidators(null);
-			habformArray.disable();
-		}else{
-			action.habilitations.forEach(element => {
-				habformArray.push(new FormControl(element.id));
-			});
-		}
 
-		const ees: FormArray = this.actionForm.get('entreprises') as FormArray;
-		action.entreprises.forEach(element =>{
-			var entreprise = this.actionFB.group({
-				type_code:[element.type.code, Validators],
-				entreprise_id: [element.id, Validators.required],
-				interimaire_id: [element.pivot.interimaire_id, Validators],
-				chiffre_affaire: [element.pivot.chiffre_affaire, Validators],
-				date_demarrage: [element.pivot.date_demarrage, Validators],
-			});
-
-			
-			if(entreprise.get('type_code').value == 'SOUS_TRAITANT'){
-				entreprise.get('interimaire_id').setValidators(null);
-				entreprise.get('chiffre_affaire').setValidators(Validators.required);
-			}else{
-				
-				entreprise.get('interimaire_id').setValidators(Validators.required);
-				entreprise.get('chiffre_affaire').setValidators(null);
-			}
-
-			entreprise.get('type_code').valueChanges.subscribe(code=>{
-				if(code == 'SOUS_TRAITANT'){
-					entreprise.get('interimaire_id').setValidators(null);
-					entreprise.get('chiffre_affaire').setValidators(Validators.required);
-				}else{
-					
-					entreprise.get('interimaire_id').setValidators(Validators.required);
-					entreprise.get('chiffre_affaire').setValidators(null);
-				}
-			})
-			
-			ees.push(entreprise)
-		})
-		
-	}
-	/**
-	 * Refresh user
-	 *
-	 * @param isNew: boolean
-	 * @param id: number
-	 */
 	refreshAction(id) {
 		let url = this.router.url;
-		url = `/actions/edit/${id}`;
+		url = `/plans-action/edit/${id}`;
 		this.router.navigateByUrl(url, {
 			relativeTo: this.activatedRoute
 		});
@@ -206,6 +146,7 @@ export class ActionEditComponent implements OnInit, OnDestroy {
         this.formloading = true;
 		this.parseActionDate(form, 'FrToEn');
 		form.id = this.action.id;
+
 		this.actionService.update(form)
 			.toPromise()
 			.then((res) => {
@@ -244,23 +185,23 @@ export class ActionEditComponent implements OnInit, OnDestroy {
 	}
 
 	async onSubmit(event) {
-		
+
 		this.formStatus.onFormSubmitting();
+
 		let form = {...this.actionForm.getRawValue()};
-		// if(form.status_id != this.action.status_id && this.action.status.code == 'ENCOURS' && !this.action.is_all_ars_archived){
-		// 	this.fireBeforeSave(form)
-		// }else{
-		// 	this.saveForm(form)
-		// }
+		form.actionable_id = form.actionable ? form.actionable.id : null;
+    	form.actionable_type = form.visite_type ? form.visite_type.key : null; 
+
+		if(form.status_id != this.action.status_id && this.action.status.code == 'ENCOURS'){
+			this.fireBeforeSave(form)
+		}else{
+			this.saveForm(form)
+		}
 	}
 
 	parseActionDate(item, direction){
-		item.date_demarrage = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.date_demarrage) : this.dateEnToFrPipe.transform(item.date_demarrage);
-		if(item.entreprises.length > 0){
-			item.entreprises.forEach(x=>{
-				x.date_demarrage = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(x.date_demarrage) : this.dateEnToFrPipe.transform(x.pivot.date_demarrage);
-			})
-		}
+		item.delai = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.delai) : this.dateEnToFrPipe.transform(item.delai);
+		item.realisation = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.realisation) : this.dateEnToFrPipe.transform(item.realisation);
 	}
 
 	cancel() {
