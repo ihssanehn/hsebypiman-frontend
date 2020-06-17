@@ -664,9 +664,9 @@ export const locale = {
 				SHORTTITLE:'Avancement'
 			},
 			REALISATION:{
-				LABEL:'Réalisation',
-				TITLE:'Réalisation',
-				SHORTTITLE:'Réalisation'
+				LABEL:'Date de fin de l\'action',
+				TITLE:'Date de fin de l\'action',
+				SHORTTITLE:'Date de fin de l\'action'
 			},
 			EFFICACITE:{
 				LABEL:'Efficacité',

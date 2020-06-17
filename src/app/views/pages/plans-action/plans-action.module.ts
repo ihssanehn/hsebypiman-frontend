@@ -78,8 +78,7 @@ const routes: Routes = [
 			},
 			{
 				path:'detail/:id',
-				//component: ActionDetailComponent
-				component: PlansActionComponent
+				component: ActionDetailComponent
 			},
 			{
 				path: 'list',

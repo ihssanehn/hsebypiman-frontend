@@ -1,31 +1,34 @@
 <ng-container [formGroup]="actionForm">
 	<form [formGroup]="actionForm" autocomplete="off" class="tf-form tf-form--group-seperator-dashed " novalidate (ngSubmit)="submitForm(actionForm.valid)" fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
-		<tf-portlet>
+
+		<tf-portlet class="main-portlet-form">
+			<div class="tf-portlet-header">
+				<span class="title">
+				  	<a [routerLink]="['/plans-action/list']">{{'MENU.SUB_PLANACTION.LIST' | translate}}</a>
+				  	<span class="divider">></span>
+					<span class="id-item" *ngIf="edit">{{'MENU.SUB_PLANACTION.EDIT' | translate}}</span>
+					<mat-form-field *ngIf="edit" class="pull-right" style="font-size: 1rem;">
+						<mat-label>{{'CHANTIERS.STATUS.LABEL' | translate}}</mat-label>
+						<mat-select class="form-control" placeholder="" formControlName="status_id" [required]="isFieldRequired('status_id')">
+							<mat-option *ngFor="let statu of statusList" [ngStyle]="statu.color && {'color':statu.color}" [value]="statu.id">
+								<span>
+									{{ statu.libelle }}
+								</span>
+							</mat-option>
+						</mat-select>
+						<mat-error *ngIf="isControlHasError('status_id','required')">
+							<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+						</mat-error>
+					</mat-form-field>
+				  	<span class="id-item" *ngIf="!edit">{{'MENU.SUB_PLANACTION.ADD' | translate}}</span>
+				</span>
+			</div>
 			<tf-portlet-body>
-				<div class="tf-heading tf-heading--lg" style="margin-top: 0;">
-					<div *ngIf="edit">
-						{{'MENU.SUB_CHANTIER.EDIT' | translate}}
-						<mat-form-field class="pull-right" style="font-size: 1rem;">
-							<mat-label>{{'CHANTIERS.STATUS.LABEL' | translate}}</mat-label>
-							<mat-select class="form-control" placeholder="" formControlName="status_id" [required]="isFieldRequired('status_id')">
-								<mat-option *ngFor="let statu of statusList" [ngStyle]="statu.color && {'color':statu.color}" [value]="statu.id">
-									<span>
-										{{ statu.libelle }}
-									</span>
-								</mat-option>
-							</mat-select>
-							<mat-error *ngIf="isControlHasError('status_id','required')">
-								<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-							</mat-error>
-						</mat-form-field>
-					</div>
-					<span *ngIf="!edit">{{'PLANACTIONS.FORM.CREATE' | translate}}</span>
-				</div>
 				<div class="tf-wizard-v4__content" data-tfwizard-type="step-content" data-tfwizard-state="current">
 					<div class="tf-form__section tf-form__section--first">
 						<div class="tf-wizard-v4__form">
 							<div class="row form-row">
-								<mat-form-field class="col-xl-3">
+								<mat-form-field class="col-xl-4">
 									<mat-label>{{'PLANACTIONS.ORIGINE.LABEL' | translate}}</mat-label>
 									<mat-select class="form-control" placeholder="" formControlName="type_id" [required]="isFieldRequired('type_id')">
 										<mat-option *ngFor="let type of typesList" [value]="type.id">
@@ -36,7 +39,7 @@
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
 								</mat-form-field>
-								<mat-form-field class="col-xl-3" *ngIf="selectedTypeHasCode() == 'VISITE_SECURITE'">
+								<mat-form-field class="col-xl-4" *ngIf="selectedTypeHasCode() == 'VISITE_SECURITE'">
 									<mat-label>{{'VISITES.TYPE.LABEL' | translate}}</mat-label>
 									<mat-select class="form-control" formControlName="visite_type" [required]="isFieldRequired('visite_type')">
 										<mat-option *ngFor="let visiteType of visiteTypesList" [value]="visiteType">
@@ -47,7 +50,7 @@
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
 								</mat-form-field>
-								<mat-form-field class="col-xl-3" *ngIf="selectedTypeHasCode() == 'VISITE_SECURITE' && visitesList">
+								<mat-form-field class="col-xl-4" *ngIf="selectedTypeHasCode() == 'VISITE_SECURITE' && visitesList">
 									<mat-label>{{'VISITES.CODE.LABEL' | translate}}</mat-label>
 									<input class="form-control" matInput type="text" name="actionable" formControlName="actionable" placeholder="Saisir ici" [required]="isFieldRequired('actionable')" [matAutocomplete]="auto" />
 									<mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
@@ -60,62 +63,25 @@
 									</mat-error>
 								</mat-form-field>
 							</div>
-
 							<div class="row form-row">
-								<mat-form-field class="col-xl-3">
-									<mat-label>{{'PLANACTIONS.PILOTE.LABEL' | translate}}</mat-label>
-									<mat-select class="form-control" [required]="isFieldRequired('pilote_id')" placeholder="" formControlName="pilote_id">
-										<mat-option *ngFor="let user of usersList" [value]="user.id">
-											{{ user.fullname }}
-										</mat-option>
-									</mat-select>
-									<mat-error *ngIf="isControlHasError('pilote_id','required')">
-										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-									</mat-error>
-								</mat-form-field>
-								<mat-form-field class="col-xl-3">
+								<mat-form-field class="col-xl-4">
 									<mat-label>{{'PLANACTIONS.NAME.LABEL' | translate}}</mat-label>
 									<input class="form-control" matInput type="text" name="libelle" formControlName="libelle" placeholder="Saisir ici" [required]="isFieldRequired('libelle')" />
 									<mat-error *ngIf="isControlHasError('libelle','required')">
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
 								</mat-form-field>
-								<mat-form-field class="col-xl-3">
+								<mat-form-field class="col-xl-4">
 									<mat-label>{{'PLANACTIONS.RISQUE.LABEL' | translate}}</mat-label>
 									<input class="form-control" matInput type="text" name="risque" formControlName="risque" placeholder="Saisir ici" [required]="isFieldRequired('risque')" />
 									<mat-error *ngIf="isControlHasError('risque','required')">
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
 								</mat-form-field>
-								<mat-form-field class="col-xl-3">
+								<mat-form-field class="col-xl-4">
 									<mat-label>{{'PLANACTIONS.OBJECTIF.LABEL' | translate}}</mat-label>
 									<input class="form-control" matInput type="text" name="objectif" formControlName="objectif" placeholder="Saisir ici" [required]="isFieldRequired('objectif')" />
 									<mat-error *ngIf="isControlHasError('objectif','required')">
-										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-									</mat-error>
-								</mat-form-field>
-							</div>
-
-							<div class="row form-row">
-								<mat-form-field class="col-xl-3">
-									<mat-label>{{'PLANACTIONS.EFFICACITE.LABEL' | translate}}</mat-label>
-									<input matInput class="form-control" type="string" name="efficacite" formControlName="efficacite" [required]="isFieldRequired('efficacite')" placeholder="Saisir ici" />
-									<mat-error *ngIf="isControlHasError('efficacite','required')">
-										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-									</mat-error>
-								</mat-form-field>
-								<mat-form-field class="col-xl-3">
-									<mat-label>{{'PLANACTIONS.DELAI.LABEL' | translate}}</mat-label>
-									<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" formControlName="delai" [required]="isFieldRequired('delai')" placeholder="DD/MM/YYYY">
-								</mat-form-field>
-								<mat-form-field class="col-xl-3">
-									<mat-label>{{'PLANACTIONS.REALISATION.LABEL' | translate}}</mat-label>
-									<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" formControlName="realisation" [required]="isFieldRequired('realisation')" placeholder="DD/MM/YYYY">
-								</mat-form-field>
-								<mat-form-field class="col-xl-3">
-									<mat-label>{{'PLANACTIONS.COMMENT.LABEL' | translate}}</mat-label>
-									<input class="form-control" matInput type="text" name="commentaires" formControlName="commentaires" placeholder="Saisir ici" [required]="isFieldRequired('commentaires')" />
-									<mat-error *ngIf="isControlHasError('commentaires','required')">
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
 								</mat-form-field>
@@ -125,6 +91,81 @@
 				</div>
 			</tf-portlet-body>
 		</tf-portlet>
+
+		<div class="row">
+			<div class="col-4">
+				<div class="tf-heading tf-heading--md">| 1 Attribution et délais</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="tf-card-form">
+							<div>
+								<div class="row form-row">
+									<mat-form-field class="col-xl-12">
+										<mat-label>{{'PLANACTIONS.PILOTE.LABEL' | translate}}</mat-label>
+										<mat-select class="form-control" [required]="isFieldRequired('pilote_id')" placeholder="" formControlName="pilote_id">
+											<mat-option *ngFor="let user of usersList" [value]="user.id">
+												{{ user.fullname }}
+											</mat-option>
+										</mat-select>
+										<mat-error *ngIf="isControlHasError('pilote_id','required')">
+											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+										</mat-error>
+									</mat-form-field>
+									<mat-form-field class="col-xl-12">
+										<mat-label>{{'PLANACTIONS.DELAI.LABEL' | translate}}</mat-label>
+										<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" formControlName="delai" [required]="isFieldRequired('delai')" placeholder="DD/MM/YYYY">
+									</mat-form-field>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-4">
+				<div class="tf-heading tf-heading--md">| 2 Résolution</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="tf-card-form">
+							<div>
+								<div class="row form-row">
+									<mat-form-field class="col-xl-12">
+										<mat-label>{{'PLANACTIONS.REALISATION.LABEL' | translate}}</mat-label>
+										<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" formControlName="realisation" [required]="isFieldRequired('realisation')" placeholder="DD/MM/YYYY">
+									</mat-form-field>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-4">
+				<div class="tf-heading tf-heading--md">| 3 Efficacité et commentaire</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="tf-card-form">
+							<div>
+								<div class="row form-row">
+									<mat-form-field class="col-xl-12">
+										<mat-label>{{'PLANACTIONS.EFFICACITE.LABEL' | translate}}</mat-label>
+										<input matInput class="form-control" type="string" name="efficacite" formControlName="efficacite" [required]="isFieldRequired('efficacite')" placeholder="Saisir ici" />
+										<mat-error *ngIf="isControlHasError('efficacite','required')">
+											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+										</mat-error>
+									</mat-form-field>
+									<mat-form-field class="col-xl-12">
+										<mat-label>{{'PLANACTIONS.COMMENT.LABEL' | translate}}</mat-label>
+										<input class="form-control" matInput type="text" name="commentaires" formControlName="commentaires" placeholder="Saisir ici" [required]="isFieldRequired('commentaires')" />
+										<mat-error *ngIf="isControlHasError('commentaires','required')">
+											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+										</mat-error>
+									</mat-form-field>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<ng-container *ngIf="formStatus">
 			<div *ngIf="formStatus.canShowErrors()" class="alert alert-danger alert-dismissible fade show" role="alert">

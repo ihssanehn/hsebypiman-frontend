@@ -56,9 +56,8 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 			  	const id = params.id;
 			  	if (id) {
 					this.getAction(id);
-
 				} else {
-					this.router.navigateByUrl('/actions/list');
+					this.router.navigateByUrl('/plans-action/list');
 				}
 			}
 		);
@@ -78,38 +77,34 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 		this.subscriptions.forEach(sb => sb.unsubscribe());
 	}
 
-	/**
-	 * Redirect to list
-	 *
-	 */
 	goBackWithId() {
-		const url = `/actions/list`;
+		const url = `/plans-action/list`;
 		this.router.navigateByUrl(url, { relativeTo: this.activatedRoute });
 	}
   
-	
-
-  	/**
-	 * Refresh user
-	 *
-	 * @param isNew: boolean
-	 * @param id: number
-	 */
 	refreshAction(id) {
-		this.router.navigateByUrl('/actions/edit/'+id);
+		this.router.navigateByUrl('/plans-action/edit/'+id);
   	}
 
-	goToArDetail(id){
-		this.router.navigateByUrl('/analyses-risque/detail/'+id);
+	goToActionDetail(id){
+		this.router.navigateByUrl('/plans-action/detail/'+id);
 	}
 
 	goToVsDetail(id){
-		this.router.navigateByUrl('visites-securite/actions/detail/'+id);
+		var actionable_type = this.action.actionable_type;
+		switch(actionable_type){
+			case 'VsChantier': var path = 'chantiers';break;
+			case 'VsEpi': var path = 'epis';break;
+			case 'VsOutillage': var path = 'outillages';break;
+			case 'VsVehicule': var path = 'vehicules';break;
+		}
+		this.router.navigateByUrl('visites-securite/'+path+'/detail/'+id);
 	}
 
   	editAction(id){
-		this.router.navigateByUrl('actions/edit/'+id);
+		this.router.navigateByUrl('plans-action/edit/'+id);
 	}
+
 	deleteAction(id){
 		Swal.fire({
 			title:'Désolé cette fonctionnalité n\'a pas encore été implémentée',
@@ -122,66 +117,36 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 		
 		Swal.fire({
 			icon: 'warning',
-			title: 'Voulez vous vraiment clore ce action ?',
-			text:'Les analyses de risque et visites de action seront archivés.',
+			title: 'Voulez vous vraiment clore cette action ?',
 			showConfirmButton: true,
 			showCancelButton: true,
 			cancelButtonText: 'Annuler',
 			confirmButtonText: 'Clore le action'
 		}).then(async response => {
 			if (response.value) {
-				// const res = await this.actionService.closeAction(actionId)
-				// .toPromise()
-				// .then(res=>{
-				// 	var code = res.message.code as SweetAlertIcon;
-				// 	var message = res.message.content != 'done' ? '<b class="text-'+code+'">'+res.message.content+'</b>' : null; 
-				// 	Swal.fire({
-				// 		icon: code,
-				// 		title: 'le action a été clos avec succès',
-				// 		showConfirmButton: false,
-				// 		html: message,
-				// 		timer: code == 'success' ? 1500 : 3000
-				// 	}).then(() => {
-				// 		this.getAction(actionId);
-				// 	})
-				// }).catch(e => {
-				// 	Swal.fire({
-				// 		icon: 'error',
-				// 		title: 'Echec! une erreur est survenue',
-				// 		showConfirmButton: false,
-				// 		timer: 1500
-				// 	});
-				// });
+				const res = await this.actionService.closeAction(actionId)
+				.toPromise()
+				.then(res=>{
+					var code = res.message.code as SweetAlertIcon;
+					var message = res.message.content != 'done' ? '<b class="text-'+code+'">'+res.message.content+'</b>' : null; 
+					Swal.fire({
+						icon: code,
+						title: 'le action a été clos avec succès',
+						showConfirmButton: false,
+						html: message,
+						timer: code == 'success' ? 1500 : 3000
+					}).then(() => {
+						this.getAction(actionId);
+					})
+				}).catch(e => {
+					Swal.fire({
+						icon: 'error',
+						title: 'Echec! une erreur est survenue',
+						showConfirmButton: false,
+						timer: 1500
+					});
+				});
 			}
 		});
-	}
-  
-	addAr(actionId){
-		// if(this.action.montant <= 20000){
-		// 	Swal.fire({
-		// 		icon: 'error',
-		// 		title: 'Le montant du action est inférieur ou égal à 20K€, vous ne pouvez pas créer d\'analyse de risque',
-		// 		showConfirmButton: false,
-		// 		timer: 4000
-		// 	});
-		// }else{
-		// 	if(!this.action.is_all_ars_archived){
-		// 		Swal.fire({
-		// 			icon: 'warning',
-		// 			title: 'Vous allez créer une Analyse de risque',
-		// 			html: '<p class="text-warning"><b>L\'analyse de risque en cours sur ce action sera archivée</b></p><p>Voulez-vous continuer ?</p>',
-		// 			showConfirmButton: true,
-		// 			showCancelButton: true,
-		// 			cancelButtonText: 'Annuler',
-		// 			confirmButtonText: 'Confirmer'
-		// 		}).then(async response => {
-		// 			if (response.value) {
-		// 				this.router.navigate(['analyses-risque/add'], {queryParams:{action_id:actionId}})
-		// 			}
-		// 		});
-		// 	}else{
-		// 		this.router.navigate(['analyses-risque/add'], {queryParams:{action_id:actionId}});
-		// 	}
-		// }
 	}
 }

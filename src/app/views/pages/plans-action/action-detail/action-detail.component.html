@@ -1,7 +1,7 @@
 <tf-portlet class="tf-portlet--height-fluid mat-elevation-z8" id="portlet-action" *ngIf="action">
   <div class="tf-portlet-header ">
     <span class="title">
-      <a [routerLink]="['/actions/list']">{{'MENU.SUB_CHANTIER.LIST' | translate}}</a><span class="divider">></span><span class="id-item">{{action.nom}}</span>
+      <a [routerLink]="['/plans-action/list']">{{'MENU.SUB_PLANACTION.LIST' | translate}}</a><span class="divider">></span><span class="id-item">Action {{action.created_at | date:'dd/MM/yyyy'}}</span>
     </span>
     <div ngbDropdown placement="bottom-right" class="d-inline-block pull-right" *ngIf="action.status.code != 'TERMINE'">
       <button ngbDropdownToggle mat-icon-button color="primary" matTooltip="Actions" style="line-height: 0;height: 0;">
@@ -17,33 +17,65 @@
       </div>
     </div>
     <div class="status-box mx-4 px-2 d-inline-block pull-right" [ngStyle]="action.status && action.status.color && {'color':action.status.color}">
-      <mat-icon svgIcon="{{action.status?.code == 'ENCOURS' ? 'status-encours':'status-termine'}}" class="status-icon mr-2"></mat-icon>
+      <mat-icon svgIcon="{{action.status?.code == 'EN_COURS' ? 'status-encours':'status-termine'}}" class="status-icon mr-2"></mat-icon>
       {{action.status?.libelle}}
     </div>
   </div>
+
   <tf-portlet-body class="tf-portlet__body--fit">
     <div class="row">
-      <div class="col-md-4">
+
+      <div class="col-6">
         <div class="card">
-          <h3>Informations générales</h3>
-          <div class="box" style="flex:1">
-            <p><span class="label pull-left mr-2">{{'CHANTIERS.NAME.SHORTTITLE' | translate}}</span><span class="">{{action.nom}}</span></p>
-            <p><span class="label pull-left mr-2">{{'CHANTIERS.TYPE.SHORTTITLE' | translate}}</span><span class="">{{action.type?.libelle}}</span></p>
-            <p><span class="label pull-left mr-2">{{'CHANTIERS.DATE_DEMARRAGE.TITLE' | translate}}</span><span class="">{{action.date_demarrage | date:'dd/MM/yyyy'}}</span></p>
-            <p><span class="label pull-left mr-2">{{'CHANTIERS.CHIEF.TITLE' | translate}}</span><span class="">{{action.charge_affaire | fullName}}</span></p>
-            <p><span class="label pull-left mr-2">{{'CHANTIERS.BUDGET.SHORTTITLE' | translate}}</span><span class="">{{action.montant | currency:'EUR':'€'}}</span></p>
-            <p><span class="label pull-left mr-2">{{'CHANTIERS.RESP_CHIFFRAGE.TITLE' | translate}}</span><span class="">{{action.responsable_chiffrage | fullName}}</span></p>
+          <h5><b>Informations générales</b></h5>
+          <div class="box box-ar-vs" style="flex: 1;">
+            <h6><b>{{'PLANACTIONS.NAME.LABEL' | translate}}</b></h6>
+            <div class="row">
+              <div class="col-md-12 my-2"><p><span class="action-label" *ngIf="action.libelle; else noDataFound">{{action.libelle}}</span></p></div>
+            </div>
           </div>
+          <div class="box box-ar-vs" style="flex: 1;">
+            <h6><b>{{'PLANACTIONS.OBJECTIF.LABEL' | translate}}</b></h6>
+            <div class="row">
+              <div class="col-md-12 my-2"><p><span class="action-label" *ngIf="action.objectif; else noDataFound">{{action.objectif}}</span></p></div>
+            </div>
+          </div>
+          <div class="box box-ar-vs" style="flex: 1;">
+            <h6><b>{{'PLANACTIONS.RISQUE.LABEL' | translate}}</b></h6>
+            <div class="row">
+              <div class="col-md-12 my-2"><p><span class="action-label" *ngIf="action.risque; else noDataFound">{{action.risque}}</span></p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="card">
+          <h5><b>Origine de l'action</b></h5>
+          <div class="box box-ar-vs" style="flex: 1;">
+            <p style="text-align:right"><span class="label pull-left mr-2">{{'PLANACTIONS.ORIGINE.LABEL' | translate}}</span><span class="">{{action.type?.libelle}}</span></p>
+            <ng-container *ngIf="action.type?.code== 'VISITE_SECURITE'">
+              <div class="row">
+                <div class="col-12 my-2"><p><span class="label">Visite de sécurité concernée</span></p></div>
+                <ng-container *ngIf="action.actionable">
+                  <div class="col-12 vs-line">
+                    <div class="col-5"><p class="blue">{{action.actionable?.code}}</p></div>
+                    <div class="col-5"><p class="blue">{{action.actionable?.date_visite | date:'dd/MM/yyyy'}}</p></div>
+                    <div class="col-2" ><p class="blue"><a (click)="goToVsDetail(action.actionable?.id)" alt="voir la visite de sécurité"><mat-icon color="primary">visibility</mat-icon></a></p></div>
+                  </div>
+                </ng-container>
+              </div>
+            </ng-container>
+          </div>
+
+
           <div class="tf-divider">
             <span></span>
           </div>
           <div class="box box-coords" style="flex:1">
-            <h5><b>Coordonnées action</b></h5>
-            <p><span class="label pull-left mr-2">{{'CHANTIERS.CLIENT.SHORTTITLE' | translate}}</span><span class="">{{action.client}}</span></p>
-            <p><span class="label pull-left mr-2">{{'CHANTIERS.ADRESS.SHORTTITLE' | translate}}</span><span class="">{{action.adresse}}</span></p>
-            <p><span class="label pull-left mr-2">{{'COMMON.CITY.SHORTTITLE' | translate}}</span><span class="">{{action.ville}}</span></p>
-            <p><span class="label pull-left mr-2">{{'COMMON.POSTCODE.SHORTTITLE' | translate}}</span><span class="">{{action.code_postal}}</span></p>
-            <p><span class="label pull-left mr-2">{{'COMMON.COUNTRY.SHORTTITLE' | translate}}</span><span class="">{{action.pays}}</span></p>
+            <h5><b>Attribution et délais</b></h5>
+            <p class="mt-3"><span class="label pull-left mr-2">{{'PLANACTIONS.PILOTE.LABEL' | translate}}</span><span class="" *ngIf="action.pilote; else noDataFound">{{action.pilote | fullName}}</span></p>
+            <p><span class="label pull-left mr-2">{{'PLANACTIONS.DELAI.LABEL' | translate}}</span><span class="" *ngIf="action.delai; else noDataFound">{{action.delai | date:'dd/MM/yyyy'}}</span></p>
           </div>
           <div class="tf-divider">
             <span></span>
@@ -54,163 +86,42 @@
           </div>
         </div>
       </div>
-      <div class="col-md-3">
-        <div class="card" >
-          <h3>Informations sécurité</h3>
-          <div *ngIf="action.latest_ar; else noAr">
-              <div class="box" style="flex: 1;">
-                <p><span class="label pull-left">{{'ARS.PREVOIR_COMPAGNONS.TITLE' | translate}}</span><br>{{action.latest_ar?.a_prevoir_compagnons ? 'Oui':'Non'}}</p>
-                <p *ngIf="action.latest_ar?.a_prevoir_compagnons"><span class="label pull-left">{{'ARS.REALISATEUR.TITLE' | translate}}</span><br>{{action.latest_ar?.realisateur}}</p>
-                <p *ngIf="action.latest_ar?.a_prevoir_compagnons"><span class="label pull-left">{{'ARS.DATE_ACCUEIL_SECU.TITLE' | translate}}</span><br>{{action.latest_ar?.date_accueil_secu | date:'dd/MM/yyyy'}}</p>
-                <p *ngIf="action.latest_ar?.a_prevoir_compagnons"><span class="label pull-left">{{'ARS.DATE_VALIDITE.TITLE' | translate}}</span><br>{{action.latest_ar?.date_validite | date:'dd/MM/yyyy'}}</p>
-                <div class="row" *ngIf="action.latest_ar?.a_prevoir_compagnons">
-                  <div class="col-12 ">
-                    <span class="label pull-left">{{'ARS.AS_DAYS.LABEL' | translate}}</span><br>
-                  </div>
-                  <div class="col-12 my-3">
-                    <mat-chip-list *ngIf="action.latest_ar.accueil_secu_days; else noSecuDays">
-                      <mat-chip *ngFor="let as_day of action.latest_ar.accueil_secu_days" class="chip-item">
-                        {{as_day}}
-                      </mat-chip>
-                    </mat-chip-list>
-                  </div>
-                </div>
-                <p><span class="label pull-left">{{'ARS.FORM.MWBLOCK.WORKREGISTER.TITLE' | translate}}</span><br>{{action.latest_ar?.a_signer_registre_travaux ? 'Oui':'Non'}}</p>
-                <p *ngIf="action.latest_ar?.a_signer_registre_travaux"><span class="label pull-left">{{'ARS.ASIGNER.LABEL' | translate}}</span><br>{{action.latest_ar?.registre_signing_period}}</p>
-              </div>
-              <div class="box" style="flex: 1;">
-                <h5><b>En cas d'urgence</b></h5>
-                <p><span class="label pull-left mr-2">{{'ARS.CONTACT_INTERNE_SECOURS.SHORTTITLE' | translate}}</span><br><span class="blue">{{action.latest_ar?.contact_interne_secours}}</span></p>
-                <p><span class="label pull-left mr-2">{{'ARS.TEL_CONTACT_INTERNE_SECOURS.SHORTTITLE' | translate}}</span><br><span class="blue">{{action.latest_ar?.tel_contact_interne_secours}}</span></p>
-                <p class="mt-3"><span class="label pull-left mr-2">{{'ARS.CONTACT_CLIENT_HSE.SHORTTITLE' | translate}}</span><br><span class="blue">{{action.latest_ar?.contact_client_hse}}</span></p>
-                <p><span class="label pull-left mr-2">{{'ARS.TEL_CONTACT_CLIENT_HSE.SHORTTITLE' | translate}}</span><br><span class="blue">{{action.latest_ar?.tel_contact_client_hse}}</span></p>
-              </div>
-          </div>
-          <ng-template #noAr>
-            <div class="box">
-              Aucune analyse de risque pour le moment
-            </div>
-          </ng-template>
-        </div>
-      </div>
-      <div class="col-5">
+
+
+      <div class="col-md-6 mt-4">
         <div class="card">
-          <h3>Suivi de action</h3>
-          <div class="box box-ar-vs" style="flex: 1;">
-            <h5><b>Suivis analyses de risques</b><small class="pull-right">{{'CHANTIERS.AR_COUNT.SHORTTITLE' | translate}} : <span class="blue">{{action.ars.length}}</span></small></h5>
-            <ng-container *ngIf="action.ars.length > 0; else noArs">
-              <div class="row">
-                <div class="col-12 my-2"><p><span class="label">{{'CHANTIERS.AR_INPROGRESS.TITLE' | translate}}</span></p></div>
-                <ng-container *ngIf="action.ar_inprogress; else noArInProgress">
-                  <div class="col-5"><p class="blue">{{action.ar_inprogress?.code}}</p></div>
-                  <div class="col-5"><p class="blue">{{action.ar_inprogress?.created_at | date:'dd/MM/yyyy'}}</p></div>
-                  <div class="col-2" ><a (click)="goToArDetail(action.ar_inprogress.id)" alt="voir l'analyse de risque"><mat-icon color="primary">visibility</mat-icon></a></div>
-                </ng-container>
-                <ng-template #noArInProgress>
-                  <div class="col-12">Aucune Analyse de risque en cours</div>
-                </ng-template>
-              </div>
-              <div class="row">
-                <div class="col-12 my-2"><p><span class="label">{{'CHANTIERS.ARS_HISTORY.TITLE' | translate}}</span></p></div>
-                <ng-container *ngIf="action.ars_historique.length > 0; else noArHistorique">
-                  <ng-container *ngFor="let ar of action.ars_historique">
-                    <div class="col-5"><p>{{ar.code}}</p></div>
-                    <div class="col-5"><p>{{ar.created_at | date:'dd/MM/yyyy'}}</p></div>
-                    <div class="col-2" ><a (click)="goToArDetail(ar.id)" alt="voir l'analyse de risque"><mat-icon color="primary">visibility</mat-icon></a></div>
-                  </ng-container>
-                </ng-container>
-                <ng-template #noArHistorique>
-                  Aucun historique
-                </ng-template>
-              </div>
-            </ng-container>
-            <ng-template #noArs>
-              <div class="row">
-                <div class="col-12">
-                  <p>Aucune analyse</p>
-                </div>
-              </div>
-            </ng-template>
-          </div>
-          <div class="box box-ar-vs" style="flex: 1;">
-            <h5><b>Suivis visites de sécurité</b><small class="pull-right">{{'CHANTIERS.VS_COUNT.SHORTTITLE' | translate}} : <span class="blue">{{action.vss.length}}</span></small></h5>
-            <div class="row">
-              <div class="col-md-12 my-2"><p><span class="label">{{'CHANTIERS.VSS.TITLE' | translate}}</span></p></div>
-              <ng-container *ngFor="let vs of action.vss">
-                <div class="col-md-5"><p>{{vs.code}}</p></div>
-                <div class="col-md-5"><p>{{vs.date_visite | date:'dd/MM/yyyy'}}</p></div>
-                <div class="col-md-2"><a (click)="goToVsDetail(vs.id)" alt="voir la visite"><mat-icon color="primary">visibility</mat-icon></a></div>
-              </ng-container>
-            </div>
+          <h5><b>Résolution</b></h5>
+          <div class="box" style="flex:1">
+            <p><span class="label pull-left mr-2">{{'PLANACTIONS.REALISATION.LABEL' | translate}}</span><span class="" *ngIf="action.realisation; else noDataFound">{{action.realisation | date:'dd/MM/yyyy'}}</span></p>
           </div>
         </div>
       </div>
-      <div class="col-md-12 mt-4">
-        <div class="card" *ngIf="action.entreprises.length > 0; else noEntreprises">
-          <h5>{{'CHANTIERS.EES.TITLE' | translate}}<small class="pull-right">{{'CHANTIERS.EECOUNT.SHORTTITLE' | translate}} : <span class="blue">{{action.entreprises.length}}</span></small></h5>
-          <div class="px-5">
-            <table class="table table-borderless table-sm table-striped px-4">
-              <thead>
-                <tr>
-                  <th scope="col">{{'EES.RAISON_SOCIALE.TITLE' | translate}}</th>
-                  <th class="text-center" scope="col">{{'EES.TYPE.TITLE' | translate}}</th>
-                  <th class="text-center" scope="col">{{'EES.CA.TITLE' | translate}}</th>
-                  <th class="text-center" scope="col">{{'EES.DATE_DEMARRAGE.TITLE' | translate}}</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let entreprise of action.entreprises">
-                  <th scope="row">{{entreprise.raison_sociale}}</th>
-                  <td class="text-center">{{entreprise.type.libelle}}</td>
-                  <td class="text-center">{{entreprise.pivot.chiffre_affaire | currency:'EUR':'€'}}</td>
-                  <td class="text-center">{{entreprise.pivot.date_demarrage | date:'dd/MM/yyyy'}}</td>
-              </tr>
-              </tbody>
-            </table>
+
+      <div class="col-md-6 mt-4">
+        <div class="card">
+          <h5><b>Efficacité</b></h5>
+          <div class="box" style="flex:1">
+            <p><span class="label pull-left mr-2">{{'PLANACTIONS.EFFICACITE.LABEL' | translate}}</span><span class="" *ngIf="action.efficacite; else noDataFound">{{action.efficacite}}</span></p>
+            <p><span class="label pull-left mr-2">{{'PLANACTIONS.COMMENT.LABEL' | translate}}</span><span class="" *ngIf="action.commentaires; else noDataFound">{{action.commentaires}}</span></p>
           </div>
-        </div>
-      </div>
-      <div class="col-md-12 mt-4">
-        <div class="card" *ngIf="!action.no_hab_required; else noHabRequired">
-          <h5> Habilitations obligatoires pour accéder au action <small class="pull-right">{{'CHANTIERS.HABCOUNT.SHORTTITLE' | translate}} : <span class="blue">{{action.habilitations.length}}</span></small></h5>
-          <ul>
-            <li *ngFor="let hab of action.habilitations">
-              {{hab.libelle}}
-            </li>
-          </ul>
         </div>
       </div>
     </div>
+
     <div class="row mt-4" *ngIf="action.status.code != 'TERMINE'">
       <div class="col-12">
-        <button mat-raised-button color="info" (click)="closeAction(action.id)">
+        <button class="pull-right"  mat-raised-button color="info" (click)="closeAction(action.id)">
           <mat-icon  svgIcon="status-termine" inline="true" style="width: 21px; margin-top: -6px; margin-right: 6px;"></mat-icon>
-          Clore le action
+          Clore l'action
         </button>
-        <span class="pull-right" 
-          matTooltip="Le montant du action est inférieur ou égal à 20K€, vous ne pouvez pas créer d\'analyse de risque" 
-          [matTooltipDisabled]="this.action.montant > 20000">
-          <button mat-raised-button color="info" (click)="addAr(action.id)" [disabled]="this.action.montant <= 20000">
-            <mat-icon inline="true" style="width: 21px; margin-top: -6px; margin-right: 6px;">add</mat-icon>
-            Créer Analyse de risque
-          </button>
-        </span>
       </div>
     </div>
   </tf-portlet-body>
+
 </tf-portlet>
 
-<ng-template #noEntreprises>
-  <div class="card">
-    <h5 class="mb-4">Aucune Entreprise Externe</h5>
-  </div>
-</ng-template>
-
-<ng-template #noHabRequired>
-  <div class="card">
-    <h5 class="mb-4">Aucune habilitations obligatoires pour accéder au action</h5>
-  </div>
-</ng-template>
-<ng-template #noSecuDays>
-  -
+<ng-template #noDataFound>
+  <span class="no-data-label">
+    Non renseigné
+  </span>
 </ng-template>

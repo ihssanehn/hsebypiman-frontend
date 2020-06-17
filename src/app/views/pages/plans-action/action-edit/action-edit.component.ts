@@ -66,7 +66,7 @@ export class ActionEditComponent implements OnInit, OnDestroy {
 					this.actionService.get(id).pipe(
 						tap(res=>{
 							this.parseActionDate(res.result.data, 'EnToFr');
-							this.actionForm.patchValue(res.result.data);							
+							this.actionForm.patchValue(res.result.data);						
 						})
 					).subscribe( async res => {
 						this.action = res.result.data;
@@ -97,10 +97,10 @@ export class ActionEditComponent implements OnInit, OnDestroy {
 		this.actionForm = this.actionFB.group({
 			type_id: [null, Validators.required],
 			libelle: ['', Validators.required],
-			risque: ['', Validators.required],
+			risque: [''],
 			objectif: ['', Validators.required],
-			pilote_id: ['', Validators.required],
-			delai: ['', Validators.required],
+			pilote_id: [''],
+			delai: [''],
 			realisation: [''],
 			efficacite: [''],
 			commentaires: [''],

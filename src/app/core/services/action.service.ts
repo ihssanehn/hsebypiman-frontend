@@ -46,5 +46,8 @@ export class ActionService extends HttpService{
     getStats(params){
         return this.http.post<JsonResponse<any>>(this.baseUrl+'/stats', params);
     }
+    closeAction(action_id){
+        return this.http.get<JsonResponse<Action>>(this.baseUrl+'/'+action_id+'/close-action');
+    }
     
 }
