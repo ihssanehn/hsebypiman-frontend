@@ -97,10 +97,10 @@ export class ActionEditComponent implements OnInit, OnDestroy {
 		this.actionForm = this.actionFB.group({
 			type_id: [null, Validators.required],
 			libelle: ['', Validators.required],
-			risque: ['', Validators.required],
+			risque: [''],
 			objectif: ['', Validators.required],
-			pilote_id: ['', Validators.required],
-			delai: ['', Validators.required],
+			pilote_id: [''],
+			delai: [''],
 			realisation: [''],
 			efficacite: [''],
 			commentaires: [''],
