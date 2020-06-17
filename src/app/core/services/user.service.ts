@@ -37,11 +37,11 @@ export class UserService extends HttpService{
 	}
 
 	updateUser(_user: User){
-		return this.http.put<any>(`${this.baseUrl}users/` + _user.id, _user).pipe(map(result => result));
+		return this.http.put<any>(`${this.baseUrl}/` + _user.id, _user).pipe(map(result => result));
 	}
 
 	createUser(user: User){
-		return this.http.post<JsonResponse<User>>(`${this.baseUrl}users`, user);
+		return this.http.post<JsonResponse<User>>(`${this.baseUrl}/create`, user);
   }
   
 

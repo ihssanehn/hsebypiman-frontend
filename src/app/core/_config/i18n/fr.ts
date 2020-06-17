@@ -557,11 +557,11 @@ export const locale = {
 				CREATE:'Créer une nouvelle visite'
 			},
 			KO_SOLVED_COUNT:{
-				SHORTTITLE: 'Nbr de NC traitées',
+				SHORTTITLE: 'NC traitées',
 				TITLE: 'Nombre de non conformité traitées'
 			},
 			KO_UNSOLVED_COUNT:{
-				SHORTTITLE: 'Nbr de NC à traiter',
+				SHORTTITLE: 'NC à traiter',
 				TITLE: 'Nombre de non conformité à traiter'
 			},
 			PRESENCE_NC:{
