@@ -1,10 +1,12 @@
-import { Component, OnInit, ChangeDetectorRef, AfterViewInit, OnDestroy, ElementRef, Renderer } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, AfterViewInit, OnDestroy, ElementRef, OnChanges, ViewChild } from '@angular/core';
 import { ActionService } from '@app/core/services';
 import { Action } from '@app/core/models';
 import { TranslateService } from '@ngx-translate/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { fromEvent, Subscription } from 'rxjs';
 import Swal from 'sweetalert2';
+import { EChartOption } from 'echarts';
+import * as echarts from 'echarts';
 
 
 
@@ -16,6 +18,8 @@ import Swal from 'sweetalert2';
 
 export class ActionsDashComponent implements OnInit, AfterViewInit, OnDestroy {
 
+	@ViewChild('pieType', {static: true}) pieType: ElementRef;
+	@ViewChild('pieStatus', {static: true}) pieStatus: ElementRef;
 
 	filter: any = {
 		keyword: "",
@@ -24,8 +28,8 @@ export class ActionsDashComponent implements OnInit, AfterViewInit, OnDestroy {
 	showFilters:Boolean = false;
 	stats : any;	
 	
-	  echartsTypeInstance;
-	  echartsStatusInstance;
+	  echartsType;
+	  echartsStatus;
 	  byTypeOptions = {
 		title: {
 		  text: 'Actions par types',
@@ -95,10 +99,14 @@ export class ActionsDashComponent implements OnInit, AfterViewInit, OnDestroy {
 	
 
 	ngOnInit() {
+		this.getActionsDash();
 	}
 
 	ngAfterViewInit(){
-		this.getActionsDash();
+		this.echartsStatus = echarts.init(this.pieStatus.nativeElement)
+		this.echartsStatus.showLoading();
+		this.echartsType = echarts.init(this.pieType.nativeElement)
+		this.echartsType.showLoading();
 	}
 
 
@@ -115,16 +123,16 @@ export class ActionsDashComponent implements OnInit, AfterViewInit, OnDestroy {
 					// By Type
 					this.byTypeOptions.series[0]['data'] = this.stats.types.total;
 					this.byTypeOptions.legend['serie'] = this.stats.types.total;
-					// this.echartsTypeInstance.setOption(this.byTypeOptions);
-					// this.echartsTypeInstance.hideLoading();	
+					this.echartsType.setOption(this.byTypeOptions);
+					this.echartsType.hideLoading();	
 					
 					// By Status
 					this.byStatusOptions.series[0]['data'] = this.stats.status.total;
 					this.byStatusOptions.legend['serie'] = this.stats.status.total;
 					this.byStatusOptions.title.text = 'Actions par Statut';
 					
-					// this.echartsStatusInstance.setOption(this.byStatusOptions);
-					// this.echartsStatusInstance.hideLoading();
+					this.echartsStatus.setOption(this.byStatusOptions);
+					this.echartsStatus.hideLoading();
 
 					
 					this.cdr.markForCheck();
