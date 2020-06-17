@@ -12,7 +12,9 @@ import { Widget5Component } from './widget5/widget5.component';
 import { Widget12Component } from './widget12/widget12.component';
 import { Widget14Component } from './widget14/widget14.component';
 import { Widget26Component } from './widget26/widget26.component';
+import { WidgetIndicatorComponent } from './widget-indicator/widget-indicator.component';
 import { Timeline2Component } from './timeline2/timeline2.component';
+import { PortletModule } from '../general/portlet/portlet.module';
 
 @NgModule({
 	declarations: [
@@ -24,6 +26,7 @@ import { Timeline2Component } from './timeline2/timeline2.component';
 		Widget12Component,
 		Widget14Component,
 		Widget26Component,
+		WidgetIndicatorComponent,
 		Timeline2Component,
 	],
 	exports: [
@@ -35,6 +38,7 @@ import { Timeline2Component } from './timeline2/timeline2.component';
 		Widget12Component,
 		Widget14Component,
 		Widget26Component,
+		WidgetIndicatorComponent,
 		Timeline2Component,
 	],
 	imports: [
@@ -47,6 +51,7 @@ import { Timeline2Component } from './timeline2/timeline2.component';
 		MatProgressSpinnerModule,
 		MatPaginatorModule,
 		MatSortModule,
+		PortletModule
 	]
 })
 export class WidgetModule {

@@ -31,6 +31,7 @@ export { JoinPipe } from './pipes/join.pipe';
 export { SafePipe } from './pipes/safe.pipe';
 export { TruncatePipe } from './pipes/truncate.pipe';
 export { TimeElapsedPipe } from './pipes/time-elapsed.pipe';
+export { CustomPercentPipe } from './pipes/custom-percent.pipe';
 export { DateTimeMessagePipe, DateMessagePipe } from './pipes/date-time-message.pipe';
 
 // Services

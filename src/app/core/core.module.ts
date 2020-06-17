@@ -12,6 +12,7 @@ import {
 	HeaderDirective,
 	NgSelectFormFieldControlDirective,
 	JoinPipe,
+	CustomPercentPipe,
 	MenuDirective,
 	MatInputAmountDirective,
 	OffcanvasDirective,
@@ -57,6 +58,7 @@ import {
 		FirstLetterPipe,
 		InitialesPipe,
 		FullNamePipe,
+		CustomPercentPipe,
 		DateEnToFrPipe, 
 		DateFrToEnPipe
 	],
@@ -84,6 +86,7 @@ import {
 		FirstLetterPipe,
 		FullNamePipe,
 		InitialesPipe,
+		CustomPercentPipe,
 		DateEnToFrPipe, 
 		DateFrToEnPipe,
 	],
