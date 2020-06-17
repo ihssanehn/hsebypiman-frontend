@@ -94,7 +94,7 @@
 
 		<div class="row">
 			<div class="col-4">
-				<div class="tf-heading tf-heading--md">| 1 Attribution et délais</div>
+				<div class="tf-heading tf-heading--md">| 1 Attribution et délai</div>
 				<div class="row">
 					<div class="col-md-12">
 						<div class="tf-card-form">
@@ -132,6 +132,13 @@
 										<mat-label>{{'PLANACTIONS.REALISATION.LABEL' | translate}}</mat-label>
 										<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" formControlName="realisation" [required]="isFieldRequired('realisation')" placeholder="DD/MM/YYYY">
 									</mat-form-field>
+									<mat-form-field class="col-xl-12">
+										<mat-label>{{'PLANACTIONS.COMMENT.LABEL' | translate}}</mat-label>
+										<textarea class="form-control" matInput name="commentaires" formControlName="commentaires" [cdkTextareaAutosize]="true" [cdkAutosizeMinRows]="2"  [cdkAutosizeMaxRows]="20" placeholder="Saisir ici" [required]="isFieldRequired('commentaires')" rows="2"></textarea>
+										<mat-error *ngIf="isControlHasError('commentaires','required')">
+											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+										</mat-error>
+									</mat-form-field>
 								</div>
 							</div>
 						</div>
@@ -149,13 +156,6 @@
 										<mat-label>{{'PLANACTIONS.EFFICACITE.LABEL' | translate}}</mat-label>
 										<input matInput class="form-control" type="string" name="efficacite" formControlName="efficacite" [required]="isFieldRequired('efficacite')" placeholder="Saisir ici" />
 										<mat-error *ngIf="isControlHasError('efficacite','required')">
-											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-										</mat-error>
-									</mat-form-field>
-									<mat-form-field class="col-xl-12">
-										<mat-label>{{'PLANACTIONS.COMMENT.LABEL' | translate}}</mat-label>
-										<input class="form-control" matInput type="text" name="commentaires" formControlName="commentaires" placeholder="Saisir ici" [required]="isFieldRequired('commentaires')" />
-										<mat-error *ngIf="isControlHasError('commentaires','required')">
 											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 										</mat-error>
 									</mat-form-field>
