@@ -66,7 +66,7 @@ export class ActionEditComponent implements OnInit, OnDestroy {
 					this.actionService.get(id).pipe(
 						tap(res=>{
 							this.parseActionDate(res.result.data, 'EnToFr');
-							this.actionForm.patchValue(res.result.data);							
+							this.actionForm.patchValue(res.result.data);						
 						})
 					).subscribe( async res => {
 						this.action = res.result.data;

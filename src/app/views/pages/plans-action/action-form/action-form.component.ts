@@ -70,8 +70,8 @@ export class ActionFormComponent implements OnInit {
   ngOnInit() {
     this.getTypes();
     this.getUsers();
-    this.getStatus();
     if(this.edit){
+      this.getStatus();
       this.typeSelected = this.actionForm.get('type').value;
       var key = this.actionForm.get('actionable_type').value;
       if(key){
@@ -109,7 +109,8 @@ export class ActionFormComponent implements OnInit {
     this.statusLoaded = false;
     var res = await this.statusService.getAllFromModel('Action').toPromise();
     if(res){
-      this.statusList = res.result.data;
+      var status_id = this.actionForm.get('status_id').value;
+      this.statusList = res.result.data.filter(x => x.code == "ABANDONNE" || x.id == status_id);
       this.statusLoaded = true;
     }
     this.cdr.markForCheck();
