@@ -104,7 +104,13 @@
             <div class="card">
               <h5><b>Efficacité</b></h5>
               <div class="box" style="flex:1">
-                <p><span class="label pull-left mr-2">{{'PLANACTIONS.EFFICACITE.LABEL' | translate}}</span><span class="" *ngIf="action.efficacite; else noDataFound">{{action.efficacite}}</span></p>
+                <p *ngIf="!editEfficacite; else editEff"><span class="label pull-left mr-2">{{'PLANACTIONS.EFFICACITE.LABEL' | translate}}</span><span class="" *ngIf="action.efficacite; else noDataFound">{{action.efficacite}}</span>
+                  <span>
+                    <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editEffic()" *ngIf="action?.status?.code != 'ABANDONNE'">
+                      <mat-icon>edit</mat-icon>
+                    </button>
+                  </span>
+                </p>
               </div>
             </div>
           </div>
@@ -144,6 +150,19 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
+</ng-template>
+
+<ng-template #editEff>
+  <mat-form-field class="col-xl-10">
+    <mat-label>{{'PLANACTIONS.EFFICACITE.LABEL' | translate}}</mat-label>
+    <input matInput #efficacite class="form-control" [value]="action.efficacite" type="string" name="efficacite" 
+    placeholder="Saisir ici" />
+  </mat-form-field>
+  <span class="col-xl-2">
+    <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="setEfficacite(efficacite.value)" *ngIf="action?.status?.code != 'ABANDONNE'">
+      <mat-icon>check</mat-icon>
+    </button>
+  </span>
 </ng-template>
 
 <ng-template #noDataFound>
