@@ -7,19 +7,6 @@
 				  	<a [routerLink]="['/plans-action/list']">{{'MENU.SUB_PLANACTION.LIST' | translate}}</a>
 				  	<span class="divider">></span>
 					<span class="id-item" *ngIf="edit">{{'MENU.SUB_PLANACTION.EDIT' | translate}}</span>
-					<mat-form-field *ngIf="edit" class="pull-right" style="font-size: 1rem;">
-						<mat-label>{{'CHANTIERS.STATUS.LABEL' | translate}}</mat-label>
-						<mat-select class="form-control" placeholder="" formControlName="status_id" [required]="isFieldRequired('status_id')">
-							<mat-option *ngFor="let statu of statusList" [ngStyle]="statu.color && {'color':statu.color}" [value]="statu.id">
-								<span>
-									{{ statu.libelle }}
-								</span>
-							</mat-option>
-						</mat-select>
-						<mat-error *ngIf="isControlHasError('status_id','required')">
-							<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-						</mat-error>
-					</mat-form-field>
 				  	<span class="id-item" *ngIf="!edit">{{'MENU.SUB_PLANACTION.ADD' | translate}}</span>
 				</span>
 			</div>

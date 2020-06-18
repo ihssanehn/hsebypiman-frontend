@@ -81,7 +81,7 @@
           </div>
           <div class="box" style="flex:1">
             <h5><b>Attribution et délai</b></h5>
-            <p class="mt-3"><span class="label pull-left mr-2">{{'PLANACTIONS.PILOTE.LABEL' | translate}}</span><span class="" *ngIf="action.pilote; else noDataFound">{{action.pilote | fullName}}</span></p>
+            <p class="mt-3" *ngIf="!editPilote; else selectPilote"><span class="label pull-left mr-2">{{'PLANACTIONS.PILOTE.LABEL' | translate}}</span><span class="" *ngIf="action.pilote; else noDataFound">{{action.pilote | fullName}}</span></p>
             <p><span class="label pull-left mr-2">{{'PLANACTIONS.DELAI.LABEL' | translate}}</span><span class="" *ngIf="action.delai; else noDataFound">{{action.delai | date:'dd/MM/yyyy'}}</span></p>
           </div>
           
@@ -112,17 +112,39 @@
       </div>
     </div>
 
-    <div class="row mt-4" *ngIf="action.status.code != 'TERMINE'">
+    <div class="row mt-4" >
       <div class="col-12">
-        <button class="pull-right"  mat-raised-button color="info" (click)="closeAction(action.id)">
+        <button *ngIf="action.status.code == 'A_ATTRIBUER'" class="pull-right"  mat-raised-button color="info" (click)="attributeAction(action.id)">
+          <mat-icon  svgIcon="status-termine" inline="true" style="width: 21px; margin-top: -6px; margin-right: 6px;"></mat-icon>
+          Attribuer l'action
+        </button>
+        <button *ngIf="action.status.code == 'EN_COURS'" class="pull-right"  mat-raised-button color="info" (click)="closeAction(action.id)">
           <mat-icon  svgIcon="status-termine" inline="true" style="width: 21px; margin-top: -6px; margin-right: 6px;"></mat-icon>
           Clore l'action
         </button>
+        <span class="pull-left" *ngIf="action.status.code != 'TERMINE' && action.status.code != 'ABANDONNE'">
+          <button mat-raised-button color="info" (click)="abandonAction(action.id)">
+            <mat-icon inline="true" style="width: 21px; margin-top: -6px; margin-right: 6px;">add</mat-icon>
+            Abandonner l'action
+          </button>
+        </span>
       </div>
     </div>
   </tf-portlet-body>
 
 </tf-portlet>
+
+
+<ng-template #selectPilote>
+    <mat-form-field class="col-xl-12 select-container">
+      <mat-label>{{'PLANACTIONS.PILOTE.LABEL' | translate}}</mat-label>
+      <mat-select class="form-control" placeholder="" (selectionChange)="setPilote($event.value)">
+        <mat-option *ngFor="let user of usersList" [value]="user.id">
+          {{ user.fullname }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+</ng-template>
 
 <ng-template #noDataFound>
   <span class="no-data-label">
