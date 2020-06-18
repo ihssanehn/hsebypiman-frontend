@@ -26,7 +26,7 @@ export class ActionsListComponent implements OnInit, AfterViewInit, OnDestroy {
 	filter: any = {
 		per_page: this.pagination.pageSize,
 		page: this.pagination.page,
-		order_by: ['created_at'],
+		order_by: 'created_at',
 		order_way: 'desc',
 		keyword: "",
 	};

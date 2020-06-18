@@ -639,8 +639,8 @@ export const locale = {
 				SHORTTITLE: 'Risque'
 			},
 			NAME:{
-				LABEL:'Actions décidées',
-				TITLE:'Actions décidées',
+				LABEL:'Action décidée',
+				TITLE:'Action décidée',
 				SHORTTITLE: 'Actions'
 			},
 			OBJECTIF:{

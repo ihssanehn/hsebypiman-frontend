@@ -17,7 +17,7 @@
       </div>
     </div>
     <div class="status-box mx-4 px-2 d-inline-block pull-right" [ngStyle]="action.status && action.status.color && {'color':action.status.color}">
-      <mat-icon svgIcon="{{action.status?.code == 'EN_COURS' ? 'status-encours':'status-termine'}}" class="status-icon mr-2"></mat-icon>
+      <mat-icon svgIcon="{{action.status?.code == 'EN_COURS' ? 'status-encours':'status-termine'}}" class="status-icon mr-2" *ngIf="action.status?.code != 'ABANDONNE'; else actionAbandonnee"></mat-icon>
       {{action.status?.libelle}}
     </div>
   </div>
@@ -137,7 +137,7 @@
         </button>
         <span class="pull-left" *ngIf="action.status.code != 'TERMINE' && action.status.code != 'ABANDONNE'">
           <button mat-raised-button color="info" (click)="abandonAction(action.id)">
-            <mat-icon inline="true" style="width: 21px; margin-top: -6px; margin-right: 6px;">add</mat-icon>
+            <mat-icon inline="true" style="width: 21px; margin-top: -6px; margin-right: 6px;">stop</mat-icon>
             Abandonner l'action
           </button>
         </span>
