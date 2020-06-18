@@ -65,11 +65,18 @@
               <div class="row">
                 <div class="col-12 my-2"><p><span class="label">Visite de sécurité concernée</span></p></div>
                 <ng-container *ngIf="action.actionable">
-                  <div class="col-12 vs-line">
+                  <div class="col-12 vs-line" *ngIf="action.actionable.rvs; else visiteAction">
                     <div class="col-5"><p class="blue">{{action.actionable?.rvs?.code}}</p></div>
                     <div class="col-5"><p class="blue">{{action.actionable?.rvs?.date_visite | date:'dd/MM/yyyy'}}</p></div>
-                    <div class="col-2" ><p class="blue"><a (click)="goToVsDetail(action.actionable?.id)" alt="voir la visite de sécurité"><mat-icon color="primary">visibility</mat-icon></a></p></div>
+                    <div class="col-2" ><p class="blue"><a (click)="goToVsChantierDetail(action.actionable?.rvs?.id)" alt="voir la visite de sécurité"><mat-icon color="primary">visibility</mat-icon></a></p></div>
                   </div>
+                  <ng-template #visiteAction>
+                    <div class="col-12 vs-line">
+                      <div class="col-5"><p class="blue">{{action.actionable?.code}}</p></div>
+                      <div class="col-5"><p class="blue">{{action.actionable?.date_visite | date:'dd/MM/yyyy'}}</p></div>
+                      <div class="col-2" ><p class="blue"><a (click)="goToVsDetail(action.actionable?.id)" alt="voir la visite de sécurité"><mat-icon color="primary">visibility</mat-icon></a></p></div>
+                    </div>
+                  </ng-template>
                 </ng-container>
               </div>
             </ng-container>
