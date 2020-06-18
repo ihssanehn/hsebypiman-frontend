@@ -49,5 +49,11 @@ export class ActionService extends HttpService{
     closeAction(action_id){
         return this.http.get<JsonResponse<Action>>(this.baseUrl+'/'+action_id+'/close-action');
     }
+    abandonAction(action_id){
+        return this.http.get<JsonResponse<Action>>(this.baseUrl+'/'+action_id+'/abandon-action');
+    }
+    attributeAction(action_id, pilote_id){
+        return this.http.post<JsonResponse<Action>>(this.baseUrl+'/'+action_id+'/pilote/'+pilote_id, null);
+    }
     
 }

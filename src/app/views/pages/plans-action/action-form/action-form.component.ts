@@ -71,13 +71,15 @@ export class ActionFormComponent implements OnInit {
     this.getTypes();
     this.getUsers();
     if(this.edit){
-      this.getStatus();
+      //this.getStatus();
       this.typeSelected = this.actionForm.get('type').value;
       var key = this.actionForm.get('actionable_type').value;
       if(key){
         var visiteType = this.visiteTypesList.find(item => item.key === key);
-        this.actionForm.get('visite_type').setValue(visiteType);
-        this.getVisites(visiteType.key);
+        if(visiteType){
+          this.actionForm.get('visite_type').setValue(visiteType);
+          this.getVisites(visiteType.key);
+        }
       }
     }
     this.setDynamicActionType();
