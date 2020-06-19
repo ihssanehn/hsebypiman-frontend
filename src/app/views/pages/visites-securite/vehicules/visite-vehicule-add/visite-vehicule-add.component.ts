@@ -35,6 +35,7 @@ export class VisiteVehiculeAddComponent implements OnInit {
   currentUser: User;
   questionsDisplayed: boolean = false;
   showSignatures: boolean = false;
+  formloading: boolean = false;
   // Private properties
   
   constructor(
@@ -122,6 +123,7 @@ export class VisiteVehiculeAddComponent implements OnInit {
 
   async onSubmit(event){
     try {
+      this.formloading = true;
       let form = {...this.visiteForm.getRawValue()};
       this.formStatus.onFormSubmitting();
       this.parseDates(form);
@@ -131,6 +133,7 @@ export class VisiteVehiculeAddComponent implements OnInit {
         .then((visite) => {
           this.cdr.markForCheck();
           
+          this.formloading = false;
           Swal.fire({
             icon: 'success',
             title: 'Visite créée avec succès',
@@ -142,6 +145,7 @@ export class VisiteVehiculeAddComponent implements OnInit {
         })
         .catch(err =>{ 
 
+          this.formloading = false;
           Swal.fire({
             icon: 'error',
             title: 'Echec! le formulaire est incomplet',
@@ -159,6 +163,7 @@ export class VisiteVehiculeAddComponent implements OnInit {
         
       this.cdr.markForCheck();
     } catch (error) {
+      this.formloading = false;
       console.error(error);
       throw error;
     }
