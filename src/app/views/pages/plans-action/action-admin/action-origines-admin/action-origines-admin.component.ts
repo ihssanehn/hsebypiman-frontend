@@ -8,7 +8,7 @@ import { CatHabilitationService, HabilitationService, TypeService } from '@app/c
   styleUrls: ['./action-origines-admin.component.scss'],
   templateUrl: './action-origines-admin.component.html'
 })
-export class ActionOrigineAdminComponent extends AdminTemplateComponent implements OnInit {
+export class ActionOriginesAdminComponent extends AdminTemplateComponent implements OnInit {
 
   cdr: ChangeDetectorRef;
   modalService: NgbModal;

@@ -62,7 +62,7 @@ import {
 } from '@angular/material';
 import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapter';
 import { ActionAdminComponent } from './action-admin/action-admin.component';
-import { ActionOrigineAdminComponent } from './action-admin/action-origines-admin/action-origines-admin.component';
+import { ActionOriginesAdminComponent } from './action-admin/action-origines-admin/action-origines-admin.component';
 
 
 
@@ -194,7 +194,7 @@ const routes: Routes = [
 		ActionDetailComponent,
 		ActionFiltersComponent,
 		ActionAdminComponent,
-		ActionOrigineAdminComponent,
+		ActionOriginesAdminComponent,
 		ActionFormComponent,
 		ActionsDashComponent
 	]
