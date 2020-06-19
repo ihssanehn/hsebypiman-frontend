@@ -190,7 +190,7 @@ export class ActionEditComponent implements OnInit, OnDestroy {
 
 		let form = {...this.actionForm.getRawValue()};
 		form.actionable_id = form.actionable ? form.actionable.id : null;
-    	form.actionable_type = form.visite_type ? form.visite_type.key : null; 
+    	form.actionable_type = form.visite_type ? form.visite_type.key : form.actionable_type; 
 
 		if(form.status_id != this.action.status_id && this.action.status.code == 'ENCOURS'){
 			this.fireBeforeSave(form)
