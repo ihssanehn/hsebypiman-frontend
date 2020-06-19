@@ -188,8 +188,11 @@ export class VisiteEpiAddComponent implements OnInit {
   }
 
   parseDates(form) {
-    form.questions.forEach(x => {
-      x.pivot.date_remise_conf = this.dateFrToEnPipe.transform(x.pivot.date_remise_conf);
+    form.date_visite = this.dateFrToEnPipe.transform(form.date_visite);
+    form.catQuestionsList.forEach(cat=>{
+      cat.questions.forEach(x=>{
+        x.pivot.date_remise_conf = this.dateFrToEnPipe.transform(x.pivot.date_remise_conf);
+      })
     })
   }
 
