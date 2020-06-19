@@ -72,7 +72,7 @@ export class VisiteOutillageAddComponent implements OnInit {
       'catQuestionsList' : this.visiteFB.array([]),
       'entreprise_id': [{value:null, disabled:false}, Validators.required],
       'redacteur_id': [{value:this.currentUser.id, disabled:true}, Validators.required],
-      'date_visite': [moment().format('YYYY-MM-DD'), Validators.required],
+      'date_visite': [moment().format('DD/MM/YYYY'), Validators.required],
       'presence_non_conformite': [{value:false, disabled: true}],
       'has_rectification_imm': [{value:false, disabled: true}],
       'avertissement': [{value:false, disabled: false}],
