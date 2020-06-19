@@ -27,6 +27,7 @@ export class VisiteEpiAddComponent implements OnInit {
   // allRoles: Role[];
   formStatus = new FormStatus();
   loaded = false;
+  formloading: boolean = false;
   invalid = [];
   editMode: boolean = false;
   epi: Epi;
@@ -130,6 +131,7 @@ export class VisiteEpiAddComponent implements OnInit {
 
   async onSubmit(event) {
     try {
+      this.formloading = true;
       let form = { ...this.visiteForm.getRawValue() };
       this.formStatus.onFormSubmitting();
       this.parseDates(form);
@@ -139,6 +141,7 @@ export class VisiteEpiAddComponent implements OnInit {
         .then((visite) => {
           this.cdr.markForCheck();
 
+          this.formloading = false;
           Swal.fire({
             icon: 'success',
             title: 'Visite créée avec succès',
@@ -150,6 +153,7 @@ export class VisiteEpiAddComponent implements OnInit {
         })
         .catch(err => {
 
+          this.formloading = false;
           Swal.fire({
             icon: 'error',
             title: 'Echec! le formulaire est incomplet',
@@ -167,6 +171,7 @@ export class VisiteEpiAddComponent implements OnInit {
 
       this.cdr.markForCheck();
     } catch (error) {
+      this.formloading = false;
       console.error(error);
       throw error;
     }

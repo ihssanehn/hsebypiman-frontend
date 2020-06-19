@@ -28,6 +28,7 @@ export class VisiteOutillageAddComponent implements OnInit {
   formStatus = new FormStatus();
   loaded = false;
   invalid = [];
+  formloading: boolean = false;
   editMode: boolean = false;
   outillage: Outillage;
   currentUser: User;
@@ -134,6 +135,7 @@ export class VisiteOutillageAddComponent implements OnInit {
 
   async onSubmit(event){
     try {
+      this.formloading = true;
       let form = {...this.visiteForm.getRawValue()};
       this.formStatus.onFormSubmitting();
       this.parseDates(form);
@@ -143,6 +145,7 @@ export class VisiteOutillageAddComponent implements OnInit {
         .then((visite) => {
           this.cdr.markForCheck();
           
+          this.formloading = false;
           Swal.fire({
             icon: 'success',
             title: 'Visite créée avec succès',
@@ -154,6 +157,7 @@ export class VisiteOutillageAddComponent implements OnInit {
         })
         .catch(err =>{ 
 
+          this.formloading = false;
           Swal.fire({
             icon: 'error',
             title: 'Echec! le formulaire est incomplet',
@@ -171,6 +175,7 @@ export class VisiteOutillageAddComponent implements OnInit {
         
       this.cdr.markForCheck();
     } catch (error) {
+      this.formloading = false;
       console.error(error);
       throw error;
     }
