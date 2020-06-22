@@ -34,7 +34,7 @@ export class ActionsListComponent implements OnInit, AfterViewInit, OnDestroy {
 	displayedActionColumns = [
 		'created_at', 'type', 'risque', 'name', 
 		'objectif', 'pilote', 'delai', 'status', 
-		'realisation', 'efficacite', 'commentaires', 'action'
+		'date_realisation', 'efficacite', 'commentaires', 'action'
 	];
 
 	constructor(

@@ -93,12 +93,12 @@
 				</ng-container>
 
 				<!-- realisation Column -->
-				<ng-container matColumnDef="realisation">
-					<th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('realisation')">
+				<ng-container matColumnDef="date_realisation">
+					<th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('date_realisation')">
 						{{'PLANACTIONS.REALISATION.SHORTTITLE' | translate}}
-						<i class="fa" [ngClass]="isOrderedBy('realisation') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('realisation') && {opacity:1}"></i>
+						<i class="fa" [ngClass]="isOrderedBy('date_realisation') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('date_realisation') && {opacity:1}"></i>
 					</th>
-					<td mat-cell *matCellDef="let action" (click)="viewAction(action.id)" class="text-center pointer"> {{action.realisation | date:'dd/MM/yyyy'}} </td>
+					<td mat-cell *matCellDef="let action" (click)="viewAction(action.id)" class="text-center pointer"> {{action.date_realisation | date:'dd/MM/yyyy'}} </td>
 				</ng-container>
 
 				<!-- efficacite Column -->
