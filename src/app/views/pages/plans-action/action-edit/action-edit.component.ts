@@ -101,7 +101,7 @@ export class ActionEditComponent implements OnInit, OnDestroy {
 			objectif: ['', Validators.required],
 			pilote_id: [''],
 			delai: [''],
-			realisation: [''],
+			date_realisation: [''],
 			efficacite: [''],
 			commentaires: [''],
 			status_id: [null],
@@ -201,7 +201,7 @@ export class ActionEditComponent implements OnInit, OnDestroy {
 
 	parseActionDate(item, direction){
 		item.delai = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.delai) : this.dateEnToFrPipe.transform(item.delai);
-		item.realisation = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.realisation) : this.dateEnToFrPipe.transform(item.realisation);
+		item.date_realisation = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.date_realisation) : this.dateEnToFrPipe.transform(item.date_realisation);
 	}
 
 	cancel() {

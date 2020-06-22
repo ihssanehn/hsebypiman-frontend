@@ -15,7 +15,7 @@ export class Action {
     delai?: Date;
     status_id?: number;
     status?: Status;
-    realisation?: Date;
+    date_realisation?: Date;
     efficacite?: string;
     commentaires?: string;
     creator_id?: number;
