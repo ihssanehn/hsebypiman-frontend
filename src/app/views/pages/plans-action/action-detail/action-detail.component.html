@@ -3,7 +3,7 @@
     <span class="title">
       <a [routerLink]="['/plans-action/list']">{{'MENU.SUB_PLANACTION.LIST' | translate}}</a><span class="divider">></span><span class="id-item">Action {{action.created_at | date:'dd/MM/yyyy'}}</span>
     </span>
-    <div ngbDropdown placement="bottom-right" class="d-inline-block pull-right" *ngIf="action.status.code != 'TERMINE'">
+    <div ngbDropdown placement="bottom-right" class="d-inline-block pull-right" *ngIf="action.status.code != 'ABANDONNE' && action.status.code != 'TERMINE'">
       <button ngbDropdownToggle mat-icon-button color="primary" matTooltip="Actions" style="line-height: 0;height: 0;">
         <mat-icon>more_vert</mat-icon>
       </button>
@@ -17,7 +17,10 @@
       </div>
     </div>
     <div class="status-box mx-4 px-2 d-inline-block pull-right" [ngStyle]="action.status && action.status.color && {'color':action.status.color}">
-      <mat-icon svgIcon="{{action.status?.code == 'EN_COURS' ? 'status-encours':'status-termine'}}" class="status-icon mr-2" *ngIf="action.status?.code != 'ABANDONNE'; else actionAbandonnee"></mat-icon>
+      <mat-icon svgIcon="status-encours" class="status-icon mr-2" *ngIf="action.status?.code == 'EN_COURS'"></mat-icon>
+      <mat-icon svgIcon="status-termine" class="status-icon mr-2" *ngIf="action.status?.code == 'TERMINE'"></mat-icon>
+      <mat-icon inline="true" style="width: 21px; margin-top: -6px; margin-right: 6px;position: relative;top: 3px;" *ngIf="action.status?.code == 'A_ATTRIBUER'">person_add</mat-icon>
+      <mat-icon inline="true" style="width: 21px; margin-top: -6px; margin-right: 6px;position: relative;top: 3px;" *ngIf="action.status?.code == 'ABANDONNE'">stop</mat-icon>
       {{action.status?.libelle}}
     </div>
   </div>
@@ -128,7 +131,7 @@
     <div class="row mt-4" >
       <div class="col-12">
         <button *ngIf="action.status.code == 'A_ATTRIBUER'" class="pull-right"  mat-raised-button color="info" (click)="attributeAction(action.id)">
-          <mat-icon  svgIcon="status-termine" inline="true" style="width: 21px; margin-top: -6px; margin-right: 6px;"></mat-icon>
+          <mat-icon inline="true" style="width: 21px; margin-top: -6px; margin-right: 6px;">person_add</mat-icon>
           Attribuer l'action
         </button>
         <button *ngIf="action.status.code == 'EN_COURS'" class="pull-right"  mat-raised-button color="info" (click)="closeAction(action.id)">
