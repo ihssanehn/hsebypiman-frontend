@@ -26,6 +26,8 @@
 	</tf-portlet>
 
 	<tf-vs-vehicule-form-img [visiteForm]="visiteForm" [origin]="'detail'" ></tf-vs-vehicule-form-img>
+
+	<vs-vehicule-image-carousel [images]="visite?.photos" ></vs-vehicule-image-carousel>
 	
 	<tf-vs-form-body [visiteForm]="visiteForm" [catQuestionsList]="catQuestionsList" (dateUpdated)="onSubmit()" [origin]="'detail'" [isDisableToggle]="isDisableToggle" ></tf-vs-form-body>
 

@@ -4,6 +4,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignaturePadModule } from 'angular2-signaturepad';
+import { NgImageSliderModule } from 'ng-image-slider';
 
 import { TranslateModule } from '@ngx-translate/core';
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -116,6 +117,7 @@ import { SearchSalarieFormComponent } from './layout/outillage/search-salarie-fo
 import { VisiteQuestionOutillageAdminComponent } from './layout/outillage/visite-question-outillage-admin/visite-question-outillage-admin.component';
 import { VsVehiculeFormImgComponent } from './layout/visites/form/vs-vehicule/vs-vehicule-form-img/vs-vehicule-form-img.component';
 import { SearchEpiFormComponent } from './layout/epi/search-epi-form/search-epi-form.component';
+import { VsVehiculeImageCarouselComponent } from './layout/visites/form/vs-vehicule/vs-vehicule-image-carousel/vs-vehicule-image-carousel.component';
 
 @NgModule({
 	declarations: [
@@ -178,7 +180,8 @@ import { SearchEpiFormComponent } from './layout/epi/search-epi-form/search-epi-
 		VisiteQuestionOutillageAdminComponent,
 		AddVehiculeFormComponent,
 		VsVehiculeFormImgComponent,
-		SearchEpiFormComponent
+		SearchEpiFormComponent,
+		VsVehiculeImageCarouselComponent
 	],
 	exports: [
 		WidgetModule,
@@ -243,7 +246,8 @@ import { SearchEpiFormComponent } from './layout/epi/search-epi-form/search-epi-
 		VisiteQuestionOutillageAdminComponent,
 		AddVehiculeFormComponent,
 		VsVehiculeFormImgComponent,
-		SearchEpiFormComponent
+		SearchEpiFormComponent,
+		VsVehiculeImageCarouselComponent
 	],
 	imports: [
 		CommonModule,
@@ -281,6 +285,7 @@ import { SearchEpiFormComponent } from './layout/epi/search-epi-form/search-epi-
 		MatInputModule,
 
 		SignaturePadModule,
+		NgImageSliderModule,
 
 		// ng-bootstrap modules
 		NgbDropdownModule,

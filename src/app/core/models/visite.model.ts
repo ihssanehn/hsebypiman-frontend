@@ -1,5 +1,5 @@
 
-import {Ar, Chantier, Type, Status, Question, Signature, Epi, Outillage, Vehicule, CatQuestion } from './'
+import {Ar, Chantier, Type, Status, Question, Signature, Epi, Outillage, Vehicule, CatQuestion, Document } from './'
 import { User } from '../auth';
 
 export class VisiteChantier {
@@ -120,6 +120,7 @@ export class VisiteVehicule {
     signatureVisite?:Signature;
     signatureRespHse?:Signature;
     img_canvas?: string;
+    photos?: Array<Document>
 }
 
 export class Visite {

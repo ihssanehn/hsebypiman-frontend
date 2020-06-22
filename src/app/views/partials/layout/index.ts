@@ -17,6 +17,7 @@ export { VsFormHeadComponent } from './visites/form/vs-form-head/vs-form-head.co
 export { VsFormBodyComponent } from './visites/form/vs-form-body/vs-form-body.component';
 export { VsFormSignaturesComponent } from './visites/form/vs-form-signatures/vs-form-signatures.component';
 export { VsVehiculeFormImgComponent } from './visites/form/vs-vehicule/vs-vehicule-form-img/vs-vehicule-form-img.component';
+export { VsVehiculeImageCarouselComponent } from './visites/form/vs-vehicule/vs-vehicule-image-carousel/vs-vehicule-image-carousel.component';
 
 // Components
 export { ContextMenuComponent } from './context-menu/context-menu.component';
