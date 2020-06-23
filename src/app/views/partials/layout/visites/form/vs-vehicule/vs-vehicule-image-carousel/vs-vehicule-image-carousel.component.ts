@@ -27,11 +27,12 @@ export class VsVehiculeImageCarouselComponent implements OnInit {
 
   getImageContent(image: any){
     var content;
-    switch(image.extension){
-      case 'base64': 
-        content = 'data:image/jpg;base64,' + image.canvas;
-        break;
+    if(image.extension == 'base64'){
+      content = 'data:image/jpg;base64,' + image.canvas;
+    }else{
+      content = image.path;
     }
+    
     return content;
   }
 
