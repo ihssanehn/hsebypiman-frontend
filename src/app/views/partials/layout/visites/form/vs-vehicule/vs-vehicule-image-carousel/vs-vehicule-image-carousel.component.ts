@@ -10,12 +10,7 @@ export class VsVehiculeImageCarouselComponent implements OnInit {
 
   @Input() images: Array<Document>;
 
-  imageObject: Array<object> = [
-    {
-      image: "",
-      thumbImage: ""
-    }
-  ];
+  imageObject: Array<object> = null;
 
   constructor() { }
 

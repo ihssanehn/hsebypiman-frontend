@@ -25,9 +25,17 @@
 		<tf-vs-form-head [visiteForm]="visiteForm" [origin]="'detail'" [model]="'VsVehicule'" *ngIf="visiteForm.get('vehicule').value"></tf-vs-form-head>
 	</tf-portlet>
 
-	<tf-vs-vehicule-form-img [visiteForm]="visiteForm" [origin]="'detail'" ></tf-vs-vehicule-form-img>
-
-	<vs-vehicule-image-carousel [images]="visite?.photos" ></vs-vehicule-image-carousel>
+	<mat-expansion-panel [expanded]="true" [disabled]="true">
+		<mat-expansion-panel-header>
+			<div class="tf-heading tf-heading--md">| Conformité du véhicule</div>
+			<div class="display-img-btn" (click)="displayImageCarousel()" *ngIf="isCanvasNotEmpty() && isPhotosNotEmpty()">
+				<span *ngIf="!imageCarouselDisplayed">Voir les photos ></span>
+				<span *ngIf="imageCarouselDisplayed">Retourner ></span>
+			</div>
+		</mat-expansion-panel-header>
+		<tf-vs-vehicule-form-img *ngIf="isCanvasNotEmpty() && !imageCarouselDisplayed" [visiteForm]="visiteForm" [origin]="'detail'" ></tf-vs-vehicule-form-img>
+		<vs-vehicule-image-carousel *ngIf="isPhotosNotEmpty() && imageCarouselDisplayed" [images]="visite?.photos" ></vs-vehicule-image-carousel>
+	</mat-expansion-panel>
 	
 	<tf-vs-form-body [visiteForm]="visiteForm" [catQuestionsList]="catQuestionsList" (dateUpdated)="onSubmit()" [origin]="'detail'" [isDisableToggle]="isDisableToggle" ></tf-vs-form-body>
 

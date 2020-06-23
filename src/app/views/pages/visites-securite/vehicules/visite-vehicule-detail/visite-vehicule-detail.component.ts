@@ -37,6 +37,7 @@ export class VisiteVehiculeDetailComponent implements OnInit, OnDestroy {
 	vehicule: Vehicule;
 	currentUser: User;
 	questionsDisplayed: boolean = false;
+	imageCarouselDisplayed: boolean = false;
 	private subscriptions: Subscription[] = [];
 
 	// Private properties
@@ -67,7 +68,9 @@ export class VisiteVehiculeDetailComponent implements OnInit, OnDestroy {
 						this.visiteForm.patchValue(_visite);
 						this.patchQuestionsForm(_visite);
 						this.catQuestionsList = res.result.data.catQuestionsList;
-						// this.visiteForm.disable();
+						if(!_visite.img_canvas && _visite.photos.length){
+							this.imageCarouselDisplayed = true;
+						}
 					})
 				).subscribe(async res => {
 					var _visite = res.result.data;
@@ -236,6 +239,18 @@ export class VisiteVehiculeDetailComponent implements OnInit, OnDestroy {
 		  console.error(error);
 		  throw error;
 		}
+	}
+
+	isCanvasNotEmpty(){
+		return this.visiteForm.get('img_canvas').value ? true : false
+	}
+
+	isPhotosNotEmpty(){
+		return this.visite.photos.length ? true : false
+	}
+
+	displayImageCarousel(){
+		this.imageCarouselDisplayed = this.imageCarouselDisplayed ? false: true;
 	}
 	
 
