@@ -19,4 +19,5 @@ export { Outillage } from './outillage.model';
 export { Vehicule } from './vehicule.model';
 export { Zone } from './zone.model';
 export { Signature } from './signature.model';
+export { Document } from './document.model';
 

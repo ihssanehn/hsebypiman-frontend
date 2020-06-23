@@ -1,0 +1,15 @@
+<ng-container *ngIf="imageObject">
+<div class="row">
+    <div class="col-12">
+        <div class="tf-card-form">
+            <ng-image-slider 
+                [images]="imageObject" 
+                [imageSize]="{width: '24%', height: '40%', space: 8}"
+                [animationSpeed]=0.5
+                [imagePopup]=false
+                #nav
+            ></ng-image-slider>
+        </div>
+    </div>
+</div>
+</ng-container>

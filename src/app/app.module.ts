@@ -40,6 +40,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { ThemeModule } from './views/theme/theme.module';
 import { SignaturePadModule } from 'angular2-signaturepad';
+import { NgImageSliderModule } from 'ng-image-slider';
 // Partials 
 import { PartialsModule } from './views/partials/partials.module';
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -136,6 +137,7 @@ export function hljsLanguages(): HighlightLanguage[] {
 		}),
 		ReactiveFormsModule,
 		SignaturePadModule,
+		NgImageSliderModule,
 		// NgxEchartsModule.forRoot({
 		// 	echarts:{ 
 		// 		init,
