@@ -15,16 +15,24 @@ export class VsVehiculeImageCarouselComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.imageObject = this.images.map(function(element){
-      var temp = [];
-      temp['image'] = 'data:image/jpg;base64,'+element.canvas;
-      temp['thumbImage'] = 'data:image/jpg;base64,'+element.canvas;
-      return temp;
-    });
+    this.imageObject = this.images.map(element => this.mapImages(element));
+  }
+
+  mapImages(image: any){
+    var temp = [];
+    temp['image'] = this.getImageContent(image);
+    temp['thumbImage'] = this.getImageContent(image);
+    return temp;
   }
 
   getImageContent(image: any){
-    return 'data:image/jpg;base64,' + image.canvas;
+    var content;
+    switch(image.extension){
+      case 'base64': 
+        content = 'data:image/jpg;base64,' + image.canvas;
+        break;
+    }
+    return content;
   }
 
 }
