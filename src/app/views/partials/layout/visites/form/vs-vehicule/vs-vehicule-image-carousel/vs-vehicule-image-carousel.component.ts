@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Document } from '@app/core/models';
+import { DocumentService } from '@app/core/services';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'vs-vehicule-image-carousel',
@@ -12,7 +14,10 @@ export class VsVehiculeImageCarouselComponent implements OnInit {
 
   imageObject: Array<object> = null;
 
-  constructor() { }
+  constructor(
+    private documentService: DocumentService,
+    public _sanitizer: DomSanitizer
+    ) { }
 
   ngOnInit() {
     this.imageObject = this.images.map(element => this.mapImages(element));
@@ -30,7 +35,7 @@ export class VsVehiculeImageCarouselComponent implements OnInit {
     if(image.extension == 'base64'){
       content = 'data:image/jpg;base64,' + image.canvas;
     }else{
-      content = image.path;
+      content = this.documentService.readFile(image.id);
     }
     
     return content;
