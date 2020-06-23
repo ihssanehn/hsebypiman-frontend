@@ -37,8 +37,6 @@ export class VsVehiculeImageCarouselComponent implements OnInit {
     }else{
       content = this.documentService.readFile(image.id);
     }
-
-    console.log(content);
     
     return content;
   }

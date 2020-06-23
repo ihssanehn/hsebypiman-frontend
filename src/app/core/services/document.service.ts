@@ -49,7 +49,7 @@ export class DocumentService extends HttpService{
         return this.http.delete(this.baseUrl+'/'+item_id);
     }
     readFile(item_id){
-        return this.baseUrl+'/'+item_id+'/file'+'&token='+localStorage.getItem(environment.authTokenKey)
+        return this.baseUrl+'/'+item_id+'/file'+'?token='+localStorage.getItem(environment.authTokenKey)
     }
     
 
