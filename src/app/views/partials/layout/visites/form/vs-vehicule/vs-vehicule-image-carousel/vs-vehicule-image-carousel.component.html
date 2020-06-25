@@ -4,12 +4,32 @@
         <div class="tf-card-form">
             <ng-image-slider 
                 [images]="imageObject" 
-                [imageSize]="{width: '24%', height: '40%', space: 8}"
+                [imageSize]="{width: '250px', height: '200px', space: 8}"
                 [animationSpeed]=0.5
                 [imagePopup]=false
+                (imageClick)="handleImageClick($event)"
                 #nav
             ></ng-image-slider>
         </div>
     </div>
+</div>
+
+<div id="imgModal" class="slide-modal">
+    <span class="close cursor" (click)="closeModal()">&times;</span>
+    <div class="lightbox-div">
+        <div class="slide-modal-content">
+            <div id="imgSlides" class="img-slides" *ngFor="let image of imageObject; let i = index" >
+                <img src="{{image.image}}">
+            </div>
+        </div>
+        <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
+        <a class="next" (click)="plusSlides(1)">&#10095;</a>
+    </div>
+    <div class="image-row">
+        <div class="image-column" *ngFor="let image of imageObject; let i = index">
+           <img class="images" (click)="currentSlide(i+1)"
+           src="{{image.image}}">
+        </div>
+     </div>
 </div>
 </ng-container>
