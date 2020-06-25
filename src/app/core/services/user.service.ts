@@ -6,6 +6,7 @@ import {JsonResponse} from '@app/core/_base/layout/models/jsonResponse.model';
 import { Router } from '@angular/router';
 import { User } from '@app/core/auth/_models/user.model';
 import { map } from 'rxjs/operators';
+import { Paginate } from '../_base/layout/models/paginate.model';
 
 
 export class UserService extends HttpService{
@@ -24,7 +25,7 @@ export class UserService extends HttpService{
   }
 
   getAll(params = {}){
-		return this.http.post<JsonResponse<User[]>>(this.baseUrl, {...params});
+		return this.http.post<JsonResponse<Paginate<User>>>(this.baseUrl, {...params});
   }
 
   getUserById(userId: number){

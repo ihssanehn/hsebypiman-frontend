@@ -881,6 +881,22 @@ export const locale = {
 			REMARQUE:{
 				LABEL:'Remarques',
 				TITLE:'Remarques'
+			},
+			FONCTION:{
+				LABEL:'Fonction',
+				TITLE:'Fonction'
+			},
+			PHONE:{
+				LABEL:'Numéro de téléphone',
+				TITLE:'Numéro de téléphone'
+			},
+			EMAIL:{
+				LABEL:'Adresse mail',
+				TITLE:'Adresse mail'
+			},
+			SCORE:{
+				LABEL:'Score des salariés',
+				TITLE:'Score des salariés'
 			}
 		
 		},
