@@ -118,6 +118,7 @@ import { VisiteQuestionOutillageAdminComponent } from './layout/outillage/visite
 import { VsVehiculeFormImgComponent } from './layout/visites/form/vs-vehicule/vs-vehicule-form-img/vs-vehicule-form-img.component';
 import { SearchEpiFormComponent } from './layout/epi/search-epi-form/search-epi-form.component';
 import { VsVehiculeImageCarouselComponent } from './layout/visites/form/vs-vehicule/vs-vehicule-image-carousel/vs-vehicule-image-carousel.component';
+import { ImageLightboxContentDialogComponent } from './layout/modal/image-lightbox-content-dialog/image-lightbox-content-dialog.component';
 
 @NgModule({
 	declarations: [
@@ -181,7 +182,8 @@ import { VsVehiculeImageCarouselComponent } from './layout/visites/form/vs-vehic
 		AddVehiculeFormComponent,
 		VsVehiculeFormImgComponent,
 		SearchEpiFormComponent,
-		VsVehiculeImageCarouselComponent
+		VsVehiculeImageCarouselComponent,
+		ImageLightboxContentDialogComponent
 	],
 	exports: [
 		WidgetModule,
@@ -247,7 +249,8 @@ import { VsVehiculeImageCarouselComponent } from './layout/visites/form/vs-vehic
 		AddVehiculeFormComponent,
 		VsVehiculeFormImgComponent,
 		SearchEpiFormComponent,
-		VsVehiculeImageCarouselComponent
+		VsVehiculeImageCarouselComponent,
+		ImageLightboxContentDialogComponent
 	],
 	imports: [
 		CommonModule,
