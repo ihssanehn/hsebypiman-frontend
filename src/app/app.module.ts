@@ -44,6 +44,7 @@ import { NgImageSliderModule } from 'ng-image-slider';
 // Partials 
 import { PartialsModule } from './views/partials/partials.module';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { ImageLightboxContentDialogComponent } from './views/partials/layout/modal/image-lightbox-content-dialog/image-lightbox-content-dialog.component'
 // Layout Services
 // FakeApiService
 import {DataTableService,TfDialogService,LayoutConfigService,VersionCheckService,LayoutRefService,MenuAsideService,MenuConfigService,MenuHorizontalService,PageConfigService,SplashScreenService,SubheaderService} from './core/_base/layout';
@@ -59,6 +60,8 @@ import {
 import { HttpUtilsService, LayoutUtilsService, TypesUtilsService } from './core/_base/crud';
 // Config
 import { LayoutConfig } from './core/_config/layout.config';
+
+
 
 // Echart
 // import { init } from 'echarts';
@@ -145,6 +148,9 @@ export function hljsLanguages(): HighlightLanguage[] {
 		// })
 	],
 	exports: [],
+	entryComponents: [
+		ImageLightboxContentDialogComponent
+	],
 	providers: [
 		{
 			provide: LOCALE_ID,

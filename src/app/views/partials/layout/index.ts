@@ -18,6 +18,8 @@ export { VsFormBodyComponent } from './visites/form/vs-form-body/vs-form-body.co
 export { VsFormSignaturesComponent } from './visites/form/vs-form-signatures/vs-form-signatures.component';
 export { VsVehiculeFormImgComponent } from './visites/form/vs-vehicule/vs-vehicule-form-img/vs-vehicule-form-img.component';
 export { VsVehiculeImageCarouselComponent } from './visites/form/vs-vehicule/vs-vehicule-image-carousel/vs-vehicule-image-carousel.component';
+export { ImageLightboxContentDialogComponent } from './modal/image-lightbox-content-dialog/image-lightbox-content-dialog.component';
+
 
 // Components
 export { ContextMenuComponent } from './context-menu/context-menu.component';
