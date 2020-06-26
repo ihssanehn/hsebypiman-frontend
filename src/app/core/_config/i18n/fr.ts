@@ -814,6 +814,13 @@ export const locale = {
 			}
 
 		},
+		SALARIES:{
+			ENTRY_AT:{
+				LABEL:'Date d\'entrée',
+				TITLE:'Date d\'entrée',
+				SHORTTITLE:'Date d\'entrée'
+			}
+		},
 		COMMON:{
 			ADRESS:{
 				LABEL:'Adresse',
@@ -897,7 +904,12 @@ export const locale = {
 			SCORE:{
 				LABEL:'Score des salariés',
 				TITLE:'Score des salariés'
-			}
+			},
+			BIRTHDAY:{
+				LABEL:'Date de création',
+				TITLE:'Date de création',
+				SHORTTITLE:'Créé le'
+			},
 		
 		},
 		FILTER : {
