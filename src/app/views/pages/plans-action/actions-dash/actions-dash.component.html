@@ -8,7 +8,7 @@
 		<tf-widget-indicator [value]="stats.to_attribute" [desc]="'Actions à attribuer'"  *ngIf="stats; else loading"></tf-widget-indicator>
 	</div>
 	<div class="col-3">
-		<tf-widget-indicator [value]="stats.finished_percent | customPercent" [valueClass]="getClass('up', stats.finished_percent)" [desc]="'Taux de finission'" *ngIf="stats; else loading"></tf-widget-indicator>
+		<tf-widget-indicator [value]="stats.finished_percent | customPercent" [valueClass]="getClass('up', stats.finished_percent)" [desc]="'Taux de finition'" *ngIf="stats; else loading"></tf-widget-indicator>
 	</div>
 	<div class="col-3">
 		<tf-widget-indicator [value]="stats.success_percent | customPercent" [valueClass]="getClass('up', stats.success_percent)" [desc]="'Taux de réussite'" *ngIf="stats; else loading"></tf-widget-indicator>
