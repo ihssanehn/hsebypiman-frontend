@@ -28,6 +28,10 @@ export class UserService extends HttpService{
 		return this.http.post<JsonResponse<Paginate<User>>>(this.baseUrl, {...params});
   }
 
+  getAllFromType(params = {}){
+		return this.http.post<JsonResponse<User[]>>(this.baseUrl, {...params});
+  }
+
   getUserById(userId: number){
 		return this.http.get<JsonResponse<User>>(this.baseUrl + `/${userId}`)
   }

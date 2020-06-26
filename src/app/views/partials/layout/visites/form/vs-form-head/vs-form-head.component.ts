@@ -97,7 +97,7 @@ export class VsFormHeadComponent implements OnInit {
   }
 
   async getInterimaires(){
-    var res = await this.userService.getAll({'categorie_code':'INTERIMAIRE', 'paginate':false}).toPromise();
+    var res = await this.userService.getAllFromType({'categorie_code':'INTERIMAIRE', 'paginate':false}).toPromise();
     if(res){
       this.interimairesList = res.result.data;
     }
