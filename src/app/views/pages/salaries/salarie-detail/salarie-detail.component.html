@@ -1,0 +1,254 @@
+<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8" id="portlet-salarie" *ngIf="salarie">
+    <div class="tf-portlet-header ">
+      <span class="title">
+        <a [routerLink]="['/salaries/list']">{{'MENU.SUB_SALARIES.LIST' | translate}}</a><span class="divider">></span><span class="id-item">{{salarie | fullName}}</span>
+      </span>
+    </div>
+    <tf-portlet-body class="tf-portlet__body--fit">
+      <div class="row">
+        <div class="col-md-3">
+            <div class="card">
+              <div class="box" style="flex:1">
+                    <!-- TODO photo -->
+              </div>
+              <div class="tf-divider">
+                <span></span>
+              </div>
+              <div class="box box-coords" style="flex:1">
+                <h5><b>À propos du salarié</b></h5>
+                <p><span class="label pull-left mr-2">{{'COMMON.LASTNAME.LABEL' | translate}}</span><span class="">{{salarie.nom}}</span></p>
+                <p><span class="label pull-left mr-2">{{'COMMON.FIRSTNAME.LABEL' | translate}}</span><span class="">{{salarie.prenom}}</span></p>
+                <p><span class="label pull-left mr-2">{{'COMMON.BIRTHDAY.LABEL' | translate}}</span><span class="">10/10/2020</span></p>
+                <p><span class="label pull-left mr-2">{{'COMMON.FONCTION.LABEL' | translate}}</span><span class="">{{salarie.fonction_id}}</span></p>
+              </div>
+              <div class="tf-divider">
+                <span></span>
+              </div>
+              <div class="box text-center">
+                <small>{{'SALARIES.ENTRY_AT.LABEL' | translate}} : 10/10/2020</small><br>
+              </div>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="col-md-12 d-flex">
+                <div class="col-md-4 d-flex">
+                    <div class="row d-flex flex-column flex-nowrap flex-fill">
+                    <div class="col-12 flex-fill" >
+                        <div class="card">
+                            <h5><b>Outillage</b></h5>
+                            <div class="box text-center">
+
+                            </div>
+                            <div class="tf-divider">
+                                <span></span>
+                            </div>
+                            <div class="box box-coords" style="flex:1">
+            
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-4 flex-fill" >
+                        <div class="card">
+                            <h5><b>Formation</b></h5>
+                            <div class="box text-center">
+
+                            </div>
+                            <div class="tf-divider">
+                                <span></span>
+                            </div>
+                            <div class="box box-coords" style="flex:1">
+
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 d-flex">
+                    <div class="row d-flex flex-column flex-nowrap flex-fill">
+                    <div class="col-12 flex-fill" >
+                        <div class="card">
+                            <h5><b>Accidentologie</b></h5>
+                            <div class="box text-center">
+
+                            </div>
+                            <div class="tf-divider">
+                                <span></span>
+                            </div>
+                            <div class="box box-coords" style="flex:1">
+            
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-4 flex-fill" >
+                        <div class="card">
+                            <h5><b>EPI</b></h5>
+                            <div class="box text-center">
+
+                            </div>
+                            <div class="tf-divider">
+                                <span></span>
+                            </div>
+                            <div class="box box-coords" style="flex:1">
+
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 d-flex">
+                    <div class="row d-flex flex-column flex-nowrap flex-fill">
+                    <div class="col-12 flex-fill" >
+                        <div class="card">
+                            <h5><b>Animation HSE</b></h5>
+                            <div class="box text-center">
+
+                            </div>
+                            <div class="tf-divider">
+                                <span></span>
+                            </div>
+                            <div class="box box-coords" style="flex:1">
+            
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-4 flex-fill" >
+                        <div class="card">
+                            <h5><b>Véhicule</b></h5>
+                            <div class="box text-center">
+
+                            </div>
+                            <div class="tf-divider">
+                                <span></span>
+                            </div>
+                            <div class="box box-coords" style="flex:1">
+
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="col-md-12 mt-4">
+                    <div class="card">
+                        <h5><b>Information employeur</b></h5>
+                        <div class="px-5">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 mt-4">
+                    <div class="card">
+                        <h5><b>Équipements du salarié</b></h5>
+                        <div class="row d-flex">
+                            <div class="box box-ar-vs col-md-6">
+                                <h6><b>EPI a transmettre au salarié</b></h6>
+                                <div class="tf-divider"><span></span></div>
+                                <div class="px-5">
+
+                                </div>
+                            </div>
+                            <div class="box box-ar-vs col-md-6">
+                                <h6><b>Outillage</b></h6>
+                                <div class="tf-divider"><span></span></div>
+                                <div class="px-5">
+
+                                </div>
+                            </div>
+                            <div class="box box-ar-vs col-md-6">
+                                <h6><b>Véhicule</b></h6>
+                                <div class="tf-divider"><span></span></div>
+                                <div class="px-5">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 mt-4">
+                    <div class="card">
+                        <h5><b>Aptitudes</b></h5>
+                        <div class="row d-flex">
+                            <div class="box box-ar-vs col-md-6">
+                                <h6><b>Accidentologie et maladie</b></h6>
+                                <div class="tf-divider"><span></span></div>
+                                <div class="px-5">
+
+                                </div>
+                            </div>
+                            <div class="box box-ar-vs col-md-6">
+                                <h6><b>Animation HSE</b></h6>
+                                <div class="tf-divider"><span></span></div>
+                                <div class="px-5">
+
+                                </div>
+                            </div>
+                            <div class="box box-ar-vs col-md-6">
+                                <h6><b>Coût HSE du salarié</b></h6>
+                                <div class="tf-divider"><span></span></div>
+                                <div class="px-5">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 mt-4">
+                    <div class="card">
+                        <h5><b>Formations</b></h5>
+                        <div class="box box-ar-vs" style="flex: 1;">
+                            <h6><b>Suivis des formations</b><small class="pull-right">{{'COMMON.UPDATED_AT.TITLE' | translate}} : <span class="blue">10/10/2020</span></small></h6>
+                            <div class="tf-divider"><span></span></div>
+                            <div class="px-5">
+                                <table class="table table-borderless table-sm table-striped px-4">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Formations</th>
+                                        <th class="text-center" scope="col">Date de réalisation</th>
+                                        <th class="text-center" scope="col">Date de renouvellement</th>
+                                        <th class="text-center" scope="col">Autorisation employeur</th>
+                                        <th class="text-center" scope="col">Aptitudes</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr >
+                                        <th scope="row"></th>
+                                        <td class="text-center"></td>
+                                        <td class="text-center"></td>
+                                        <td class="text-center"></td>
+                                        <td class="text-center"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+      </div>
+    </tf-portlet-body>
+  </tf-portlet>
+  
+  <ng-template #noEntreprises>
+    <div class="card">
+      <h5 class="mb-4">Aucune Entreprise Externe</h5>
+    </div>
+  </ng-template>
+  
+  <ng-template #noHabRequired>
+    <div class="card">
+      <h5 class="mb-4">Aucune habilitations obligatoires pour accéder au salarie</h5>
+    </div>
+  </ng-template>
+  <ng-template #noSecuDays>
+    -
+  </ng-template>

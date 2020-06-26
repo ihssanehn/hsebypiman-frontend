@@ -55,6 +55,7 @@ import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapte
 import { SalariesComponent } from './salaries.component';
 import { SalariesListComponent } from './salaries-list/salaries-list.component';
 import { SalarieFiltersComponent } from './salarie-filters/salarie-filters.component';
+import { SalarieDetailComponent } from './salarie-detail/salarie-detail.component';
 
 
 const routes: Routes = [
@@ -69,7 +70,7 @@ const routes: Routes = [
 			},
 			{
 				path:'detail/:id',
-				component: SalariesComponent
+				component: SalarieDetailComponent
 			},
 			{
 				path: 'list',
@@ -174,6 +175,7 @@ const routes: Routes = [
 		SalariesComponent,
 		SalariesListComponent,
 		SalarieFiltersComponent,
+		SalarieDetailComponent,
 	]
 })
 export class SalariesModule {
