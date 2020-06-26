@@ -2,8 +2,8 @@
 import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormBuilder, AbstractControl, FormControl, Validators } from '@angular/forms';
 import { AuthService, User } from '@app/core/auth';
-import { Type, Status, Entreprise, Epi } from '@app/core/models';
-import { TypeService, StatusService, EntrepriseService, UserService, EpiService } from '@app/core/services';
+import { Type, Status, Entreprise, Materiel } from '@app/core/models';
+import { TypeService, StatusService, EntrepriseService, UserService, MaterielService } from '@app/core/services';
 import { first } from 'rxjs/operators';
 
 
@@ -22,7 +22,7 @@ export class VsFormHeadComponent implements OnInit {
   entrepriseSelected: Entreprise = null;
   interimairesList: User[];
   redacteur: User;
-  epis: Epi[];
+  materiels: Materiel[];
 
   @Input() visiteForm: FormGroup;
   @Input() origin: string;
@@ -34,7 +34,7 @@ export class VsFormHeadComponent implements OnInit {
     private statusService:StatusService,
     private userService:UserService,
     private entrepriseService:EntrepriseService,
-    private epiService : EpiService,
+    private materielService : MaterielService,
     private cdr: ChangeDetectorRef,
   ) { 
 
@@ -48,7 +48,7 @@ export class VsFormHeadComponent implements OnInit {
     this.getUsers();
     this.getStatus();
     this.getInterimaires();
-    this.getEpis();
+    this.getMateriels();
     if(this.model == 'VsChantier'){
       this.getEntreprises();
       this.setDynamicEntreprise();
@@ -91,8 +91,8 @@ export class VsFormHeadComponent implements OnInit {
   }
 
   
-  async getEpis(){
-    this.epis = (await this.epiService.getList().toPromise()).result.data;
+  async getMateriels(){
+    this.materiels = (await this.materielService.getAllList({'categorie_code':'EPI'}).toPromise()).result.data;
     this.cdr.markForCheck();
   }
 

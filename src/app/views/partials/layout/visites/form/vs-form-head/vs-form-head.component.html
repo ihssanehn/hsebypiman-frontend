@@ -116,8 +116,8 @@
                                     <mat-label>{{'OUTILLAGE.OUTIL.LABEL' | translate}}</mat-label>
                                     <mat-select class="form-control" placeholder="" formControlName="epi_id"
                                         [required]="isFieldRequired('epi_id')">
-                                        <mat-option *ngFor="let epi of epis" [value]="epi.id">
-                                            {{ epi.code }}
+                                        <mat-option *ngFor="let materiel of materiels" [value]="materiel.id">
+                                            {{ materiel.libelle+' - '+materiel.categorie.libelle }}
                                         </mat-option>
                                     </mat-select>
                                     <button mat-button

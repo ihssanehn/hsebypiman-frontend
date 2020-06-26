@@ -6,8 +6,8 @@ import * as moment from 'moment';
 import { Subscription } from "rxjs";
 import { tap } from 'rxjs/operators';
 
-import { VisiteEpiService, EpiService} from '@app/core/services';
-import { VisiteEpi, Epi } from '@app/core/models';
+import { VisiteEpiService, MaterielService} from '@app/core/services';
+import { VisiteEpi, Materiel } from '@app/core/models';
 import { AuthService, User } from '@app/core/auth';
 import { MatSnackBar } from '@angular/material';
 import Swal from 'sweetalert2';
@@ -29,7 +29,7 @@ export class VisiteEpiEditComponent implements OnInit, OnDestroy {
   loaded = false;
   invalid = [];
   editMode: boolean = false;
-  epi: Epi;
+  epi: Materiel;
   currentUser: User;
   questionsDisplayed: boolean = false;
 	private subscriptions: Subscription[] = [];
@@ -42,7 +42,7 @@ export class VisiteEpiEditComponent implements OnInit, OnDestroy {
 		private visiteFB: FormBuilder,
 		// private notificationService: NzNotificationService,
 		private visiteService: VisiteEpiService,
-    private epiService: EpiService,
+    private materielService: MaterielService,
     private location: Location,
     private authService:AuthService,
     private cdr: ChangeDetectorRef,
@@ -186,7 +186,7 @@ export class VisiteEpiEditComponent implements OnInit, OnDestroy {
   }
 
   async getepi(epiId){
-    var res = await this.epiService.get(epiId).toPromise();
+    var res = await this.materielService.get(epiId).toPromise();
     this.epi = res.result.data;
   }
 

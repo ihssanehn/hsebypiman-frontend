@@ -1,5 +1,5 @@
 
-export class Epi {
+export class Materiel {
     _id?: number;
     libelle?: string;
     type?: string;

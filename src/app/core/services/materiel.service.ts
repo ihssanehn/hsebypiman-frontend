@@ -6,15 +6,15 @@ import { QueryParamsModel, QueryResultsModel } from '../_base/crud';
 import { environment } from '@env/environment';
 import { HttpService } from '@app/core/services/http-service';
 import { NgxPermissionsService } from 'ngx-permissions';
-import {Epi} from '@app/core/models/epi.model';
+import { Materiel } from '@app/core/models/materiel.model';
 import {Paginate} from '@app/core/_base/layout/models/paginate.model';
 import {JsonResponse} from '@app/core/_base/layout/models/jsonResponse.model';
 import { Router } from '@angular/router';
 
 @Injectable()
-export class EpiService extends HttpService{
+export class MaterielService extends HttpService{
 
-    baseUrl = environment.apiBaseUrl+'epis';
+    baseUrl = environment.apiBaseUrl+'materiels';
     constructor(
         private http: HttpClient,
         private router: Router
@@ -23,25 +23,30 @@ export class EpiService extends HttpService{
     }
 
     getAll(params){
-        return this.http.post<JsonResponse<Paginate<Epi>>>(this.baseUrl, {...params});
+        params = {...params, paginate: true}
+        return this.http.post<JsonResponse<Paginate<Materiel>>>(this.baseUrl, {...params});
+    }
+    getAllList(params){
+        params = {...params, paginate: false}
+        return this.http.post<JsonResponse<Materiel[]>>(this.baseUrl, {...params});
     }
     getList(){
-        return this.http.get<JsonResponse<Epi[]>>(this.baseUrl+'/mini');
+        return this.http.get<JsonResponse<Materiel[]>>(this.baseUrl+'/mini');
     }
-    get(epi_id): Observable<JsonResponse<Epi>>{
-        return this.http.get<JsonResponse<Epi>>(this.baseUrl+'/'+epi_id);
+    get(materiel_id): Observable<JsonResponse<Materiel>>{
+        return this.http.get<JsonResponse<Materiel>>(this.baseUrl+'/'+materiel_id);
     }
-    create(epi){
-        return this.http.post<JsonResponse<Epi>>(this.baseUrl+'/'+'create', epi);
+    create(materiel){
+        return this.http.post<JsonResponse<Materiel>>(this.baseUrl+'/'+'create', materiel);
     }
-    update(epi){
-        return this.http.put<JsonResponse<Epi>>(this.baseUrl+'/'+epi.id, epi);
+    update(materiel){
+        return this.http.put<JsonResponse<Materiel>>(this.baseUrl+'/'+materiel.id, materiel);
     }
-    delete(epi_id){
-        return this.http.delete(this.baseUrl+'/'+epi_id);
+    delete(materiel_id){
+        return this.http.delete(this.baseUrl+'/'+materiel_id);
     }
-    closeEpi(epi_id){
-        return this.http.get<JsonResponse<Epi>>(this.baseUrl+'/'+epi_id+'/close-epi');
+    closeMateriel(materiel_id){
+        return this.http.get<JsonResponse<Materiel>>(this.baseUrl+'/'+materiel_id+'/close-materiel');
     }
     export(filters){
         var queryString = Object.keys(filters).map(key => key + '=' + filters[key]).join('&');

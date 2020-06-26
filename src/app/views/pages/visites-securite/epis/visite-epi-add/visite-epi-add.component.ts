@@ -5,8 +5,8 @@ import { CommonModule, Location } from '@angular/common';
 import * as moment from 'moment';
 
 import { TranslateService } from '@ngx-translate/core';
-import { VisiteEpiService, TypeService, EpiService, CatQuestionService } from '@app/core/services';
-import { VisiteEpi, Type, Epi, CatQuestion } from '@app/core/models';
+import { VisiteEpiService, TypeService, MaterielService, CatQuestionService } from '@app/core/services';
+import { VisiteEpi, Type, Materiel, CatQuestion } from '@app/core/models';
 import { NgxPermissionsService } from 'ngx-permissions';
 import { AuthService, User } from '@app/core/auth';
 import { MatSnackBar } from '@angular/material';
@@ -30,7 +30,7 @@ export class VisiteEpiAddComponent implements OnInit {
   formloading: boolean = false;
   invalid = [];
   editMode: boolean = false;
-  epi: Epi;
+  epi: Materiel;
   currentUser: User;
   questionsDisplayed: boolean = false;
   showSignatures: boolean = false;
@@ -43,7 +43,7 @@ export class VisiteEpiAddComponent implements OnInit {
     private visiteFB: FormBuilder,
     // private notificationService: NzNotificationService,
     private visiteService: VisiteEpiService,
-    private epiService: EpiService,
+    private materielService: MaterielService,
     private location: Location,
     private authService: AuthService,
     private cdr: ChangeDetectorRef,

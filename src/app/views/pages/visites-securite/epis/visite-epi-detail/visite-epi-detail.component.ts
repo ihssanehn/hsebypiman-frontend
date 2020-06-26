@@ -6,8 +6,8 @@ import * as moment from 'moment';
 import { Subscription } from "rxjs";
 import { tap } from 'rxjs/operators';
 
-import { VisiteEpiService, EpiService } from '@app/core/services';
-import { VisiteEpi, Epi } from '@app/core/models';
+import { VisiteEpiService, MaterielService } from '@app/core/services';
+import { VisiteEpi, Materiel } from '@app/core/models';
 import { AuthService, User } from '@app/core/auth';
 import { MatSnackBar } from '@angular/material';
 import Swal from 'sweetalert2';
@@ -33,7 +33,7 @@ export class VisiteEpiDetailComponent implements OnInit, OnDestroy {
 	invalid = [];
 	editMode: boolean = false;
 	showSignatures: boolean = false;
-	epi: Epi;
+	epi: Materiel;
 	currentUser: User;
 	questionsDisplayed: boolean = false;
 	private subscriptions: Subscription[] = [];
@@ -47,7 +47,7 @@ export class VisiteEpiDetailComponent implements OnInit, OnDestroy {
 		private visiteFB: FormBuilder,
 		// private notificationService: NzNotificationService,
 		private visiteService: VisiteEpiService,
-		private epiService: EpiService,
+		private materielService: MaterielService,
 		private location: Location,
 		private authService: AuthService,
 		private cdr: ChangeDetectorRef,
@@ -91,6 +91,7 @@ export class VisiteEpiDetailComponent implements OnInit, OnDestroy {
 	initForm() {
 		this.visiteForm = this.visiteFB.group({
 			'id': [{ value: null, disabled: true }, Validators.required],
+			'code': [{value:null, disabled:true}],
 			'epi_id': [{ value: null, disabled: true }, Validators.required],
 			'salarie_id': [{ value: null, disabled: true }, Validators.required],
 			'entreprise_id': [{ value: null, disabled: true }, Validators.required],

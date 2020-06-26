@@ -47,11 +47,11 @@
                                 <mat-form-field class="col-xl-3" matTooltip="Ce champ est requis">
                                     <mat-label>{{'FILTER.SEARCH_OUTILLAGE' | translate}}</mat-label>
                                     <mat-select class="form-control" placeholder="" formControlName="epi_id"
-                                    [required]="isFieldRequired('epi_id')">
-                                    <mat-option *ngFor="let epi of epis" [value]="epi.id">
-                                        {{ epi.code }}
-                                    </mat-option>
-                                </mat-select>
+                                        [required]="isFieldRequired('epi_id')">
+                                        <mat-option *ngFor="let epi of epis" [value]="epi.id">
+                                            {{ epi.libelle+' - '+epi.categorie.parent.parent?.libelle }}
+                                        </mat-option>
+                                    </mat-select>
                                     <mat-error *ngIf="isControlHasError('epi_id','required')">
                                         <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
                                     </mat-error>
