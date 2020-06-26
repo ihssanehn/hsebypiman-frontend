@@ -29,7 +29,7 @@ export class SalariesListComponent implements OnInit, AfterViewInit, OnDestroy {
 	};
 	showFilters:Boolean = false;
 	displayedSalarieColumns = [
-		'nom', 'prenom', 'fonction', 'email', 'tel', 'score'
+		'nom', 'prenom', 'fonction', 'email', 'tel', 'score', 'action'
 	];
 
   constructor(
