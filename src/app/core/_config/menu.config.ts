@@ -53,6 +53,13 @@ export class MenuConfig {
 					translate: 'MENU.ENTREPRISES',
 				},
 				{
+					title: 'Materiels',
+					root: true,
+					alignment: 'left',
+					page: '/materiels',
+					translate: 'MENU.MATERIELS',
+				},
+				{
 					title: 'Paramètres',
 					root: true,
 					alignment: 'left',
@@ -483,6 +490,44 @@ export class MenuConfig {
 						root: true,
 						alignment: 'left',
 						page: '/analyses-risque/admin',
+						translate: 'MENU.ADMIN',
+						icon: 'settings',
+						// icon: 'flaticon2-mail-1',
+					}
+				]
+			},
+			materiels: {
+				btnAdd: {
+					title: 'Nouveau matériel',
+					root: true,
+					alignment: 'left',
+					page: '/materiels/add',
+					translate: 'MENU.BTN.NEWMATERIEL',
+				},
+				items: [
+					{
+						icon: 'dashboard',
+						// icon: 'flaticon2-browser-2',
+						title: 'Dashboards',
+						root: true,
+						alignment: 'left',
+						page: '/dashboard',
+						translate: 'MENU.DASHBOARD',
+					},
+					{
+						title: 'Liste',
+						root: true,
+						alignment: 'left',
+						page: '/materiels/list',
+						translate: 'MENU.LIST',
+						icon: 'view_list',
+						// icon: 'flaticon2-browser-2',
+					},
+					{
+						title: 'Admin',
+						root: true,
+						alignment: 'left',
+						page: '/materiels/admin',
 						translate: 'MENU.ADMIN',
 						icon: 'settings',
 						// icon: 'flaticon2-mail-1',

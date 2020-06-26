@@ -1,0 +1,22 @@
+<div class="col-md-12 tf-form">
+	<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
+		<tf-portlet-body class="tf-portlet__body--fit card-filters px-5 pt-4 pb-3" >
+			<form novalidate [formGroup]="filterForm">
+				<div class="row">
+					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
+						<mat-label>{{'MATERIELS.CATEGORIE.TITLE' | translate}}</mat-label>
+						<mat-select class="form-control" formControlName="categorie_id" name="categorie_id">
+							<mat-option>Tous</mat-option>
+							<mat-option *ngFor="let categorie of categories" [value]="categorie.id">
+								{{categorie.libelle}}
+							</mat-option>
+						</mat-select>
+						<button mat-button *ngIf="formHasValue('categorie_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('categorie_id'); $event.stopPropagation()">
+							<mat-icon>clear</mat-icon>
+						</button>
+					</mat-form-field>
+				</div>
+			</form>
+		</tf-portlet-body>
+	</tf-portlet>
+</div>

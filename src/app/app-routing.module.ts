@@ -47,6 +47,11 @@ const routes: Routes = [
 				// canActivate: [AuthGuard],
 			},
 			{
+				path: 'materiels',
+				loadChildren: () => import('@app/views/pages/materiels/materiels.module').then(m => m.MaterielsModule),
+				// canActivate: [AuthGuard],
+			},
+			{
 				path: 'entreprises',
 				loadChildren: () => import('@app/views/pages/entreprises/entreprises.module').then(m => m.EntreprisesModule),
 				// canActivate: [AuthGuard],

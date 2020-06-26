@@ -63,6 +63,13 @@ export const locale = {
 				EDIT:'Modifier l\'entreprise',
 				LIST:'Liste des entreprises',
 			},
+			MATERIELS: 'Matériel',
+			SUB_MATERIELS:{
+				DETAIL:'Détail du matériel',
+				ADD:'Ajouter un matériel',
+				EDIT:'Modifier le matériel',
+				LIST:'Liste du matériel',
+			},
 			LIST: 'Liste',
 			ADMIN: 'Admin',
 			HOME: 'Accueil',
@@ -72,6 +79,7 @@ export const locale = {
 				NEWCHANTIER: 'Nouveau chantier',
 				NEWVS: 'Nouveau visite de sécurité',
 				NEWENTREPRISE: 'Nouvelle entreprise',
+				NEWMATERIEL: 'Nouveau matériel',
 				NEWACTION: 'Nouvelle Action',
 			}
 		},
@@ -253,6 +261,98 @@ export const locale = {
 			FORM:{
 				CREATE:'Créer un nouveau chantier'
 			}
+		},
+		MATERIELS:{
+			LIBELLE:{
+				LABEL:'Libellé',
+				TITLE:'Libellé',
+				SHORTTITLE:'Libellé',
+			},
+			NUMERO_SERIE:{
+				LABEL:'Numéro de série',
+				TITLE:'Numéro de série',
+				SHORTTITLE:'Numéro de série',
+			},
+			CATEGORIE:{
+				LABEL:'Catégorie',
+				TITLE:'Catégorie',
+				SHORTTITLE:'Catégorie',
+			},
+			ACTUAL_USER:{
+				LABEL:'Utilisateur actuel',
+				TITLE:'Utilisateur actuel',
+				SHORTTITLE:'Utilisateur actuel',
+			},
+			MAIN_CATEGORIE:{
+				LABEL:'Type',
+				TITLE:'Type',
+				SHORTTITLE:'Type',
+			},
+			MARQUE:{
+				LABEL:'Marque',
+				TITLE:'Marque',
+				SHORTTITLE:'Marque',
+			},
+			CODE:{
+				LABEL:'Code',
+				TITLE:'Code',
+				SHORTTITLE:'Code',
+			},
+			DESCRIPTION:{
+				LABEL:'Description',
+				TITLE:'Description',
+				SHORTTITLE:'Description',
+			},
+			FOURNISSEUR:{
+				LABEL:'Fournisseur',
+				TITLE:'Fournisseur',
+				SHORTTITLE:'Fournisseur',
+			},
+			DATE_ENTREE:{
+				LABEL:'Date d\'entrée',
+				TITLE:'Date d\'entrée',
+				SHORTTITLE:'Date d\'entrée',
+			},
+			DATE_SORTIE:{
+				LABEL:'Date de sortie',
+				TITLE:'Date de sortie',
+				SHORTTITLE:'Date de sortie',
+			},
+			FORMATION_REQUISE:{
+				LABEL:'Formation requise',
+				TITLE:'Formation requise',
+				SHORTTITLE:'Formation requise',
+			},
+			HABILITATION_REQUISE:{
+				LABEL:'Habilitation requise',
+				TITLE:'Habilitation requise',
+				SHORTTITLE:'Habilitation requise',
+			},
+			HAS_CONTROLE:{
+				LABEL:'Doit être controlé',
+				TITLE:'Doit être controlé',
+				SHORTTITLE:'Doit être controlé',
+			},
+			FREQUENCE_CONTROLE:{
+				LABEL:'Frequence du controle',
+				TITLE:'Frequence du controle',
+				SHORTTITLE:'Frequence du controle',
+			},
+			IS_LOCATION:{
+				LABEL:'Location',
+				TITLE:'Location',
+				SHORTTITLE:'Location',
+			},
+			COUT:{
+				LABEL:'Cout',
+				TITLE:'Cout',
+				SHORTTITLE:'Cout',
+			},
+			DATE_FIN_GARANTIE:{
+				LABEL:'Date de fin de garantie',
+				TITLE:'Date de fin de garantie',
+				SHORTTITLE:'Date de fin de garantie',
+			},
 		},
 		// Entreprises Externes
 		EES:{

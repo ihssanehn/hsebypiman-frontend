@@ -1,11 +1,30 @@
+import { Categorie } from './';
+import {User} from '../auth';
 
 export class Materiel {
-    _id?: number;
+    id?: number;
     libelle?: string;
-    type?: string;
+    code?: string;
+    numero_serie?: string;
+    categorie_id?: number;
+    categorie?: Categorie;
+    marque?: string;
+    description?: string;
+    fournisseur?: string;
+    date_entree?: Date;
+    date_sortie?: Date;
+    formation_requise?: boolean;
+    habilitation_requise?: boolean;
+    has_controle?: boolean;
+    frequence_controle?: number;
+    is_location?: boolean;
+    cout?: number;
+    date_fin_garantie?: Date;
+    creator_id?: number;
+    creator: User;
 
-    constructor(type: string, libelle: string = '') {
+    constructor(categorie_id: number = null, libelle: string = null) {
         this.libelle = libelle;
-        this.type = type;
+        this.categorie_id = categorie_id;
     }
 }

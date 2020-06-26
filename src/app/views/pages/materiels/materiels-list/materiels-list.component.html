@@ -1,0 +1,111 @@
+<!-- <div  style="height: 69px;"> -->
+<tf-search-list-bar [(ngModel)]="filter" (change)="getMateriels()" [hasAdvancedSearch]="true" [showFilters]="showFilters" (advancedSearchChange)="advancedSearchChanged($event)" class="row row-filters"></tf-search-list-bar>
+<tf-materiel-filters [hidden]="!showFilters" (change)="udpateFilters($event)" class="row"></tf-materiel-filters>
+
+<!-- </div> -->
+<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
+	<tf-portlet-body class="tf-portlet__body--fit" style="padding: 20px 15px;" *ngIf="materielsList">
+		<div class="row px-2">
+			<div class="col">
+				<p>{{pagination.total}} résultats trouvés</p>
+			</div>
+			<div class="col">
+				<button class="pull-right btn-small mb-4" mat-raised-button color="info" (click)="exportList()">Exporter la liste</button>
+			</div>
+		</div>
+		<div class="table-responsive">
+			<table mat-table [dataSource]="materielsList.data">
+
+				<!-- name Column -->
+				<ng-container matColumnDef="code" sticky>
+					<th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('code')">
+						{{'MATERIELS.CODE.TITLE' | translate}}
+						<i class="fa" [ngClass]="isOrderedBy('code') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('code') && {opacity:1}"></i>
+					</th>
+					<td mat-cell *matCellDef="let materiel" (click)="viewMateriel(materiel.id)" class="pointer"> {{materiel.code}} </td>
+				</ng-container>
+				<!-- name Column -->
+				<ng-container matColumnDef="libelle" sticky>
+					<th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('libelle')">
+						{{'MATERIELS.LIBELLE.TITLE' | translate}}
+						<i class="fa" [ngClass]="isOrderedBy('libelle') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('libelle') && {opacity:1}"></i>
+					</th>
+					<td mat-cell *matCellDef="let materiel" (click)="viewMateriel(materiel.id)" class="pointer"> {{materiel.libelle}} </td>
+				</ng-container>
+
+				<!-- categorie Column -->
+				<ng-container matColumnDef="numero_serie">
+					<th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('numero_serie')">
+						{{'MATERIELS.NUMERO_SERIE.SHORTTITLE' | translate}}
+						<i class="fa" [ngClass]="isOrderedBy('numero_serie') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('numero_serie') && {opacity:1}"></i>
+					</th>
+					<td mat-cell *matCellDef="let materiel" (click)="viewMateriel(materiel.id)" class="text-center pointer"> {{materiel.numero_serie}} </td>
+				</ng-container>
+
+				<!-- Main Categorie Column -->
+				<ng-container matColumnDef="main_categorie">
+					<th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('categorie')">
+						{{'MATERIELS.CATEGORIE.SHORTTITLE' | translate}}
+						<i class="fa" [ngClass]="isOrderedBy('categorie') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('categorie') && {opacity:1}"></i>
+					</th>
+					<td mat-cell *matCellDef="let materiel" (click)="viewMateriel(materiel.id)" class="text-center pointer"> {{materiel.main_categorie?.libelle+' - '+materiel.categorie?.libelle}} </td>
+				</ng-container>
+				
+				<!-- marque Column -->
+				<ng-container matColumnDef="actual_user">
+					<th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('actual_user.prenom')">
+						{{'MATERIELS.ACTUAL_USER.TITLE' | translate}}
+						<i class="fa" [ngClass]="isOrderedBy('actual_user.prenom') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('actual_user.prenom') && {opacity:1}"></i>
+					</th>
+					<td mat-cell *matCellDef="let materiel" (click)="viewMateriel(materiel.id)" class="text-center pointer"> 
+						<span *ngIf="materiel.actual_user; else materielDispo"></span>{{materiel.actual_user | fullName}} 
+						<ng-template #materielDispo>
+							<b class="text-success">Disponible</b>
+						</ng-template>
+					</td>
+				</ng-container>
+				
+				<!-- marque Column -->
+				<ng-container matColumnDef="marque">
+					<th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('marque')">
+						{{'MATERIELS.MARQUE.TITLE' | translate}}
+						<i class="fa" [ngClass]="isOrderedBy('marque') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('marque') && {opacity:1}"></i>
+					</th>
+					<td mat-cell *matCellDef="let materiel" (click)="viewMateriel(materiel.id)" class="text-center pointer"> {{materiel.marque}} </td>
+				</ng-container>
+
+				<ng-container matColumnDef="action" class="actionCol" stickyEnd>
+					<th mat-header-cell *matHeaderCellDef></th>
+					<td mat-cell *matCellDef="let materiel" class="text-right">
+
+						<div ngbDropdown placement="bottom-right" class="d-inline-block">
+							<button mat-icon-button color="primary" matTooltip="Actions" [matMenuTriggerFor]="actionMenu" (click)="materiel_id = materiel.id">
+								<mat-icon>more_vert</mat-icon>
+							</button>
+							
+						</div>
+					</td>
+				</ng-container>
+
+				<tr mat-header-row *matHeaderRowDef="displayedMaterielColumns"></tr>
+				<tr mat-row class="highlight-row" *matRowDef="let row; columns: displayedMaterielColumns;"></tr>
+			</table>
+		</div>
+
+		<tf-pagination (change)="changePagination()" [(ngModel)]="pagination" ngDefaultControl></tf-pagination>
+
+	</tf-portlet-body>
+</tf-portlet>
+
+<mat-menu #actionMenu="matMenu" class="action-menu">
+	<!-- *ngxPermissionsOnly="['ADMIN']" -->
+	<button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}" (click)="viewMateriel(materiel_id)">
+		<mat-icon>visibility</mat-icon>
+	</button>
+	<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editMateriel(materiel_id)">
+		<mat-icon>edit</mat-icon>
+	</button>
+	<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteMateriel(materiel_id)">
+		<mat-icon>delete</mat-icon>
+	</button>
+</mat-menu>
