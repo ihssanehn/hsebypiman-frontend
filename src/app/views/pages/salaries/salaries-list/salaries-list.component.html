@@ -1,5 +1,5 @@
 <tf-search-list-bar [(ngModel)]="filter" (change)="getSalaries()" [hasAdvancedSearch]="true" [showFilters]="showFilters" (advancedSearchChange)="advancedSearchChanged($event)" class="row row-filters"></tf-search-list-bar>
-<!-- <tf-salarie-filters [hidden]="!showFilters" (change)="udpateFilters($event)" class="row"></tf-salarie-filters> -->
+<tf-salarie-filters [hidden]="!showFilters" (change)="udpateFilters($event)" class="row"></tf-salarie-filters>
 
 <tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
 	<tf-portlet-body class="tf-portlet__body--fit" style="padding: 20px 15px;" *ngIf="salariesList">
