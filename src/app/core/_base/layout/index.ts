@@ -33,6 +33,7 @@ export { TruncatePipe } from './pipes/truncate.pipe';
 export { TimeElapsedPipe } from './pipes/time-elapsed.pipe';
 export { CustomPercentPipe } from './pipes/custom-percent.pipe';
 export { DateTimeMessagePipe, DateMessagePipe } from './pipes/date-time-message.pipe';
+export { RecursiveSearchPipe } from './pipes/recursive-search.pipe';
 
 // Services
 export { DataTableService } from './services/datatable.service';

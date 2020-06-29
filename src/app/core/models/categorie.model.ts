@@ -3,7 +3,7 @@ import {User} from '@app/core/auth'
 
 export class Categorie {
     
-    _id?: number;
+    id?: number;
     parent_id?:number;
     parent?:Categorie;
     children:Array<Categorie>;

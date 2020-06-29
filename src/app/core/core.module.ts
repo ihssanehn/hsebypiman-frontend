@@ -11,6 +11,7 @@ import {
 	GetObjectPipe,
 	HeaderDirective,
 	NgSelectFormFieldControlDirective,
+	RecursiveSearchPipe,
 	JoinPipe,
 	CustomPercentPipe,
 	MenuDirective,
@@ -51,6 +52,7 @@ import {
 		TimeElapsedPipe,
 		DateTimeMessagePipe, 
 		DateMessagePipe,
+		RecursiveSearchPipe,
 		JoinPipe,
 		GetObjectPipe,
 		SafePipe,
@@ -89,11 +91,13 @@ import {
 		CustomPercentPipe,
 		DateEnToFrPipe, 
 		DateFrToEnPipe,
+		RecursiveSearchPipe,
 	],
 	providers: [
 		{provide: 'ParameterService', useClass: environment.isMockEnabled ? HttpParameterService : HttpParameterService},
 		DateEnToFrPipe, 
 		DateFrToEnPipe,
+		RecursiveSearchPipe,
 	]
 })
 export class CoreModule {

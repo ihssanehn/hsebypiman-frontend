@@ -273,10 +273,20 @@ export const locale = {
 				TITLE:'Numéro de série',
 				SHORTTITLE:'Numéro de série',
 			},
+			TYPE:{
+				LABEL:'Type',
+				TITLE:'Type',
+				SHORTTITLE:'Type',
+			},
 			CATEGORIE:{
 				LABEL:'Catégorie',
 				TITLE:'Catégorie',
 				SHORTTITLE:'Catégorie',
+			},
+			SUB_CATEGORIE:{
+				LABEL:'Sous-catégorie',
+				TITLE:'Sous-catégorie',
+				SHORTTITLE:'Sous-catégorie',
 			},
 			ACTUAL_USER:{
 				LABEL:'Utilisateur actuel',

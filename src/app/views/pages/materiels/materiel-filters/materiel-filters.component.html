@@ -1,20 +1,83 @@
 <div class="col-md-12 tf-form">
 	<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
 		<tf-portlet-body class="tf-portlet__body--fit card-filters px-5 pt-4 pb-3" >
-			<form novalidate [formGroup]="filterForm">
+			<form novalidate [formGroup]="filterForm" *ngIf="filterForm">
 				<div class="row">
-					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
-						<mat-label>{{'MATERIELS.CATEGORIE.TITLE' | translate}}</mat-label>
-						<mat-select class="form-control" formControlName="categorie_id" name="categorie_id">
-							<mat-option>Tous</mat-option>
-							<mat-option *ngFor="let categorie of categories" [value]="categorie.id">
-								{{categorie.libelle}}
+					<ng-container formArrayName="categorie_ids">
+
+						<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12">
+							<mat-label>{{'MATERIELS.TYPE.TITLE' | translate}}</mat-label>
+							<mat-select class="form-control" formControlName="0" name="categorie_ids" >
+								<mat-option>Tous</mat-option>
+								<mat-option *ngFor="let categorie of categories" [value]="categorie.id">
+									{{categorie.libelle}}
+								</mat-option>
+							</mat-select>
+							<button mat-button *ngIf="formHasIndexValue('categorie_ids', 0)" matSuffix mat-icon-button aria-label="Clear" (click)="clearTreeValue('categorie_ids', 0); $event.stopPropagation()">
+								<mat-icon>clear</mat-icon>
+							</button>
+						</mat-form-field>
+						<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12" *ngIf="getSelectedCat(0) && getSelectedCat(0).children">
+							<mat-label>{{'MATERIELS.CATEGORIE.TITLE' | translate}}</mat-label>
+							<mat-select class="form-control" formControlName="1" name="categorie_ids" >
+								<mat-option>Tous</mat-option>
+								<mat-option *ngFor="let categorie of getSelectedCat(0).children" [value]="categorie.id">
+									{{categorie.libelle}}
+								</mat-option>
+							</mat-select>
+							<button mat-button *ngIf="formHasIndexValue('categorie_ids', 1)" matSuffix mat-icon-button aria-label="Clear" (click)="clearTreeValue('categorie_ids', 1); $event.stopPropagation()">
+								<mat-icon>clear</mat-icon>
+							</button>
+						</mat-form-field>
+						<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12" *ngIf="getSelectedCat(1) && getSelectedCat(1).children">
+							<mat-label>{{'MATERIELS.SUB_CATEGORIE.TITLE' | translate}}</mat-label>
+							<mat-select class="form-control" formControlName="2" name="categorie_ids" >
+								<mat-option>Tous</mat-option>
+								<mat-option *ngFor="let categorie of getSelectedCat(1).children" [value]="categorie.id">
+									{{categorie.libelle}}
+								</mat-option>
+							</mat-select>
+							<button mat-button *ngIf="formHasIndexValue('categorie_ids', 2)" matSuffix mat-icon-button aria-label="Clear" (click)="clearTreeValue('categorie_ids', 2); $event.stopPropagation()">
+								<mat-icon>clear</mat-icon>
+							</button>
+						</mat-form-field>
+					</ng-container>
+					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12">
+						<mat-label>{{'MATERIELS.ACTUAL_USER.TITLE' | translate}}
+						</mat-label>
+						<mat-select class="form-control" formControlName="actual_user_id" name="actual_user_id">
+							<mat-option *ngFor="let user of users" [value]="user.id">
+								{{user.trigramme}} - {{user.fullname}}
 							</mat-option>
 						</mat-select>
-						<button mat-button *ngIf="formHasValue('categorie_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('categorie_id'); $event.stopPropagation()">
+						<button mat-button *ngIf="formHasValue('actual_user_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('actual_user_id'); $event.stopPropagation()">
 							<mat-icon>clear</mat-icon>
 						</button>
 					</mat-form-field>
+				</div>
+				<div class="row">
+					<div class="col-xl-6 col-md-6 col-sm-6 col-xs-12">
+						<h6>{{'MATERIELS.DATE_ENTREE.TITLE' | translate}}</h6>
+						<mat-form-field class="col-md-6 col-xl-6">
+							<mat-label>Entre le :</mat-label>
+							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_entree_start" placeholder="DD/MM/YYYY">
+						</mat-form-field>
+						<mat-form-field class="col-md-6 col-xl-6">
+							<mat-label>Et le :</mat-label>
+							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_entree_end" placeholder="DD/MM/YYYY">
+						</mat-form-field>
+					</div>
+					<div class="col-xl-6 col-md-6 col-sm-6 col-xs-12">
+						<h6>{{'MATERIELS.DATE_SORTIE.TITLE' | translate}}</h6>
+						<mat-form-field class="col-md-6 col-xl-6">
+							<mat-label>Entre le :</mat-label>
+							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_sortie_start" placeholder="DD/MM/YYYY">
+						</mat-form-field>
+						<mat-form-field class="col-md-6 col-xl-6">
+							<mat-label>Et le :</mat-label>
+							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_sortie_end" placeholder="DD/MM/YYYY">
+						</mat-form-field>
+					</div>
 				</div>
 			</form>
 		</tf-portlet-body>
