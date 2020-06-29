@@ -18,14 +18,14 @@
                 <h5><b>À propos du salarié</b></h5>
                 <p><span class="label pull-left mr-2">{{'COMMON.LASTNAME.LABEL' | translate}}</span><span class="">{{salarie.nom}}</span></p>
                 <p><span class="label pull-left mr-2">{{'COMMON.FIRSTNAME.LABEL' | translate}}</span><span class="">{{salarie.prenom}}</span></p>
-                <p><span class="label pull-left mr-2">{{'COMMON.BIRTHDAY.LABEL' | translate}}</span><span class="">10/10/2020</span></p>
-                <p><span class="label pull-left mr-2">{{'COMMON.FONCTION.LABEL' | translate}}</span><span class="">{{salarie.fonction_id}}</span></p>
+                <p><span class="label pull-left mr-2">{{'COMMON.BIRTHDAY.LABEL' | translate}}</span><span class="">{{salarie.created_at | date:'dd/MM/yyyy'}}</span></p>
+                <p><span class="label pull-left mr-2">{{'COMMON.FONCTION.LABEL' | translate}}</span><span class="">{{salarie.fonction?.libelle}}</span></p>
               </div>
               <div class="tf-divider">
                 <span></span>
               </div>
               <div class="box text-center">
-                <small>{{'SALARIES.ENTRY_AT.LABEL' | translate}} : 10/10/2020</small><br>
+                <small>{{'SALARIES.ENTRY_AT.LABEL' | translate}} : {{salarie.date_entree | date:'dd/MM/yyyy'}}</small><br>
               </div>
             </div>
         </div>
@@ -136,8 +136,39 @@
                 <div class="col-md-12 mt-4">
                     <div class="card">
                         <h5><b>Information employeur</b></h5>
-                        <div class="px-5">
+                        <div class="row d-flex">
+                            <div class="box box-ar-vs col-md-3">
+                                <h6><b>En cas d'urgence</b></h6>
+                                <div class="tf-divider"><span></span></div>
+                                <div class="box box-coords" style="flex:1">
+                                    <p><span class="label pull-left mr-2">{{'COMMON.LASTNAME.LABEL' | translate}}</span><span class="" *ngIf="salarie.nom_urgence; else noDataFound">{{salarie.nom_urgence}}</span></p>
+                                    <p><span class="label pull-left mr-2">Téléphone</span><span class="" *ngIf="salarie.telephone_urgence; else noDataFound">{{salarie.telephone_urgence}}</span></p>
+                                    <p><span class="label pull-left mr-2">Lien parente</span><span class="" *ngIf="salarie.lien_parente_urgence; else noDataFound">{{salarie.lien_parente_urgence}}</span></p>
+                                </div>
+                            </div>
+                            <div class="box box-ar-vs col-md-3">
+                                <h6><b>Visite médicale</b></h6>
+                                <div class="tf-divider"><span></span></div>
+                                <div class="box box-coords" style="flex:1">
+                                    <p><span class="label pull-left mr-2">RQTH</span><span class="" *ngIf="salarie.nom_urgence; else noDataFound">{{salarie.nom_urgence}}</span></p>
+                                    <p><span class="label pull-left mr-2">Réalisée</span><span class="" *ngIf="salarie.latest_visite_medicale?.date_rv; else noDataFound">{{salarie.latest_visite_medicale?.date_rv | date:'dd/MM/yyyy'}}</span></p>
+                                    <p><span class="label pull-left mr-2">À renouveler</span><span class="" *ngIf="salarie.lien_parente_urgence; else noDataFound">{{salarie.lien_parente_urgence}}</span></p>
+                                </div>
+                            </div>
+                            <div class="box box-ar-vs col-md-3">
+                                <h6><b>Ouvrage concerné</b></h6>
+                                <div class="tf-divider"><span></span></div>
+                                <div class="px-5">
 
+                                </div>
+                            </div>
+                            <div class="box box-ar-vs col-md-3">
+                                <h6><b>Indications complémentaires</b></h6>
+                                <div class="tf-divider"><span></span></div>
+                                <div class="px-5">
+
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -218,12 +249,12 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr >
-                                        <th scope="row"></th>
-                                        <td class="text-center"></td>
-                                        <td class="text-center"></td>
-                                        <td class="text-center"></td>
-                                        <td class="text-center"></td>
+                                    <tr *ngFor="let formation of salarie.formations" >
+                                        <th scope="row">{{formation.libelle}}</th>
+                                        <td class="text-center">{{formation.date_debut | date:'dd/MM/yyyy'}}</td>
+                                        <td class="text-center">{{formation.date_fin | date:'dd/MM/yyyy'}}</td>
+                                        <td class="text-center">{{formation.date | date:'dd/MM/yyyy'}}</td>
+                                        <td class="text-center">{{formation.habilitation.libelle}}</td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -251,4 +282,11 @@
   </ng-template>
   <ng-template #noSecuDays>
     -
+  </ng-template>
+
+
+  <ng-template #noDataFound>
+    <span class="no-data-label">
+      Non renseigné
+    </span>
   </ng-template>

@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectorRef, AfterViewInit, OnDestroy } from '
 import { Paginate } from '@app/core/_base/layout/models/paginate.model';
 import { User } from '@app/core/auth';
 import { Router } from '@angular/router';
-import { UserService } from '@app/core/services';
+import { PersonnelService } from '@app/core/services';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -34,7 +34,7 @@ export class SalariesListComponent implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(
     private router: Router,
-		protected salarieService: UserService,
+		protected salarieService: PersonnelService,
 		protected cdr: ChangeDetectorRef,
   ) { }
 

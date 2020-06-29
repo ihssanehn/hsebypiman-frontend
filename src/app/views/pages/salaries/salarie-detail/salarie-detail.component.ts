@@ -3,7 +3,7 @@ import { User } from '@app/core/auth';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserService } from '@app/core/services';
+import { PersonnelService } from '@app/core/services';
 import { NgxPermissionsService } from 'ngx-permissions';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -27,7 +27,7 @@ export class SalarieDetailComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
 		private router: Router,
 		private salarieFB: FormBuilder,
-		private userService: UserService,
+		private personnelService: PersonnelService,
 		private cdr: ChangeDetectorRef,
 		private permissionsService : NgxPermissionsService,
 		iconRegistry: MatIconRegistry, 
@@ -57,7 +57,8 @@ export class SalarieDetailComponent implements OnInit, OnDestroy {
 
   async getSalarie(salarieId){
 		try {
-			var res = await this.userService.getUserById(salarieId).toPromise();
+      var res = await this.personnelService.getUserById(salarieId).toPromise();
+      console.log(res);
 			this.salarie = res.result.data;
 			this.cdr.markForCheck();
 		} catch (error) {
