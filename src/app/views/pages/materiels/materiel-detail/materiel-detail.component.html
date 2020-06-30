@@ -1,7 +1,7 @@
 <tf-portlet class="tf-portlet--height-fluid mat-elevation-z8" id="portlet-materiel" *ngIf="materiel">
 	<div class="tf-portlet-header ">
 		<span class="title">
-			<a [routerLink]="['/materiels/list']">{{'MENU.SUB_MATERIELS.LIST' | translate}}</a><span class="divider">></span><span class="id-item">{{materiel.raison_sociale}}</span>
+			<a [routerLink]="['/materiels/list']">{{'MENU.SUB_MATERIELS.LIST' | translate}}</a><span class="divider">></span><span class="id-item">{{materiel.code}}</span>
 		</span>
 		<div ngbDropdown placement="bottom-right" class="d-inline-block pull-right">
 			<button ngbDropdownToggle mat-icon-button color="primary" matTooltip="Actions" style="line-height: 0;height: 0;">
