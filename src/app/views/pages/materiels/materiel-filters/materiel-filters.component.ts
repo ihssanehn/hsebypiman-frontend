@@ -72,6 +72,12 @@ export class MaterielFiltersComponent implements OnInit, AfterViewInit
   ngAfterViewInit(){
   }
 
+  categorieChanged(data){
+    if(data != this.filterForm.get('categorie_id')){
+      this.filterForm.get('categorie_id').setValue(data);
+    }
+  }
+
   // Load ressources needed
   async getUsers(){
     var res = await this.userService.getList().toPromise();
@@ -87,7 +93,7 @@ export class MaterielFiltersComponent implements OnInit, AfterViewInit
   
   initFiltersForm(){
     this.filterForm = this.fb.group({
-      categorie_ids:this.fb.array([null, null, null]),
+      categorie_id:[null],
       actual_user_id:[null],
       date_entree_start:[null],
       date_entree_end:[null],

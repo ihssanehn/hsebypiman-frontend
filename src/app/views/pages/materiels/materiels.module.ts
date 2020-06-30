@@ -46,6 +46,7 @@ import {
 	MAT_DIALOG_DEFAULT_OPTIONS,
 	MatSnackBarModule,
 	MatTooltipModule,MAT_DATE_LOCALE, 
+	MatSlideToggleModule,
 	MAT_DATE_FORMATS,
 	DateAdapter
 } from '@angular/material';
@@ -143,6 +144,7 @@ const routes: Routes = [
 		MatSnackBarModule,
 		MatExpansionModule,
 		MatTabsModule,
+		MatSlideToggleModule,
 		MatTooltipModule,
 		MatDialogModule,
 		NgbDropdownModule,

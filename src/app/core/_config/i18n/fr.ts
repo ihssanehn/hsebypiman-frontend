@@ -282,6 +282,7 @@ export const locale = {
 				LABEL:'Catégorie',
 				TITLE:'Catégorie',
 				SHORTTITLE:'Catégorie',
+				PLACEHOLDER:'Sélectionner une catégorie'
 			},
 			SUB_CATEGORIE:{
 				LABEL:'Sous-catégorie',
@@ -292,6 +293,21 @@ export const locale = {
 				LABEL:'Utilisateur actuel',
 				TITLE:'Utilisateur actuel',
 				SHORTTITLE:'Utilisateur actuel',
+			},
+			PERSONNELS_COUNT:{
+				LABEL:'Nombre d\'utilisateurs',
+				TITLE:'Nombre d\'utilisateurs',
+				SHORTTITLE:'Nombre d\'utilisateurs',
+			},
+			PERSONNELS_HISTORY:{
+				LABEL:'historique des utilisateurs',
+				TITLE:'historique des utilisateurs',
+				SHORTTITLE:'historique des utilisateurs',
+			},
+			PERSONNELS:{
+				LABEL:'utilisateurs',
+				TITLE:'utilisateurs',
+				SHORTTITLE:'utilisateurs',
 			},
 			MAIN_CATEGORIE:{
 				LABEL:'Type',

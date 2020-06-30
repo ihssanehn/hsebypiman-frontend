@@ -1,0 +1,23 @@
+<form novalidate [formGroup]="searchForm" *ngIf="searchForm">
+	<div class="row">
+		<ng-container formArrayName="items" *ngIf="items?.length > 0">
+			<ng-container [formGroupName]="i" *ngFor="let item of items.controls; let i = index;">
+				<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12">
+					<mat-label *ngIf="i==0">{{translateTitle+'.TITLE' | translate}}</mat-label>
+					<mat-select class="form-control" formControlName="item" (selectionChange)="itemChange($event, i)" name="item" placeholder="{{translateTitle+'.PLACEHOLDER' | translate}}">
+						<mat-option>Tous</mat-option>
+						<mat-option *ngFor="let item of getItemsList(i)" [value]="item">
+							{{item.libelle}}
+						</mat-option>
+					</mat-select>
+					<button mat-button *ngIf="formHasIndexValue(i)" matSuffix mat-icon-button aria-label="Clear" (click)="clearTreeValue(i); $event.stopPropagation()">
+						<mat-icon>clear</mat-icon>
+					</button>
+					<mat-error *ngIf="isControlAtIndexHasError(i,'required')">
+						<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+					</mat-error>
+				</mat-form-field>
+			</ng-container>
+		</ng-container>
+	</div>
+</form>

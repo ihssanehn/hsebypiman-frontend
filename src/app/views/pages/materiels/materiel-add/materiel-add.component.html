@@ -2,13 +2,15 @@
 	<tf-portlet class="main-portlet-form" id="portlet-ar">
 		<div class="tf-portlet-header ">
 			<span class="title">
-				<a [routerLink]="['/materiels/list']">{{'MENU.SUB_ENTREPRISES.LIST' | translate}}</a>
+				<a [routerLink]="['/materiels/list']">{{'MENU.SUB_MATERIELS.LIST' | translate}}</a>
 				<span class="divider">></span>
-				<span class="id-item">{{'MENU.SUB_ENTREPRISES.ADD' | translate}}</span>
+				<span class="id-item">{{'MENU.SUB_MATERIELS.ADD' | translate}}</span>
 			</span>
 		</div>
 		<tf-materiel-form [materielForm]="materielForm" [formStatus]="formStatus" [edit]="false"></tf-materiel-form>
 	</tf-portlet>
+	
+	
 	<div>
 		<button mat-raised-button [ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': formloading}" [disabled]="formloading || materielForm.invalid" color="success" class="pull-right">
 			{{'ACTION.SAVE' | translate}}

@@ -1,8 +1,10 @@
 import { Component, OnInit, Input, ChangeDetectorRef, EventEmitter, Output } from '@angular/core';
 import { FormGroup, AbstractControl, FormControl } from '@angular/forms';
-import { Type,  } from '@app/core/models';
-import { TypeService, } from '@app/core/services';
+import { Categorie,  } from '@app/core/models';
+import { CategorieService, } from '@app/core/services';
 import { FormStatus } from '@app/core/_base/crud/models/form-status';
+
+
 
 
 @Component({
@@ -12,29 +14,30 @@ import { FormStatus } from '@app/core/_base/crud/models/form-status';
 })
 export class MaterielFormComponent implements OnInit {
 
-  typesList: Type[];
-  typesLoaded: boolean = false;
+  categoriesList: Categorie[];
+  categoriesLoaded: boolean = false;
 
   @Input() materielForm: FormGroup;
   @Input() formStatus: FormStatus;
   @Input() edit: Boolean;
   @Output() onCancel = new EventEmitter();
   @Output() onSubmit = new EventEmitter();
+  
   constructor(
-    private typeService:TypeService,
+    private categorieService:CategorieService,
     private cdr: ChangeDetectorRef,
   ) { }
 
   ngOnInit() {
-    this.getTypes();
+    this.getCategories();
   }
 
-  async getTypes(){
-    this.typesLoaded = false;
-    var res = await this.typeService.getAllFromModel('Materiel').toPromise();
+  async getCategories(){
+    this.categoriesLoaded = false;
+    var res = await this.categorieService.getAll({model:'Materiel', structure:'tree'}).toPromise();
     if(res){
-      this.typesList = res.result.data;
-      this.typesLoaded = true;
+      this.categoriesList = res.result.data;
+      this.categoriesLoaded = true;
     }
     this.cdr.markForCheck();
   }
@@ -55,15 +58,15 @@ export class MaterielFormComponent implements OnInit {
 	 * Checking control validation
 	 *
 	 * @param controlName: string => Equals to formControlName
-	 * @param validationType: string => Equals to valitors name
+	 * @param validationCategorie: string => Equals to valitors name
 	 */
-	isControlHasError(controlName: string, validationType: string): boolean {
+	isControlHasError(controlName: string, validationCategorie: string): boolean {
 		const control = this.materielForm.controls[controlName];
 		if (!control) {
 			return false;
 		}
 
-		const result = control.hasError(validationType) && (control.dirty || control.touched);
+		const result = control.hasError(validationCategorie) && (control.dirty || control.touched);
 		return result;
   }
   
@@ -76,4 +79,22 @@ export class MaterielFormComponent implements OnInit {
     this.onCancel.emit()
   }
 
+  categorieChanged(data){
+    if(data != this.materielForm.get('categorie_id').value){
+      this.materielForm.get('categorie_id').setValue(data);
+      console.log(this.materielForm.value);
+    }
+  }
+
+  isChecked(controlName: string){
+    return this.materielForm.get(controlName).value == '1';
+  }
+
+  updateToggleValue(event, controlName){
+    if(event.checked){
+      this.materielForm.controls[controlName].setValue('1');
+    }else{
+      this.materielForm.controls[controlName].setValue('0');
+    }
+  }
 }

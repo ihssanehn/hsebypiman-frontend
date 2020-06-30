@@ -122,5 +122,8 @@ export class MaterielDetailComponent implements OnInit, OnDestroy {
 	viewChantier(chantierId) {
 		this.router.navigateByUrl('chantiers/detail/' + chantierId);
 	}
+	goToUserDetail(id){
+		console.log(id)
+	}
 
 }

@@ -84,6 +84,7 @@ import {
 	SignatureAddComponent,
 	SignatureListComponent,
 	ArDetailPanelsComponent,
+	TreeSelectComponent,
 	AddVehiculeFormComponent
 } from './layout';
 // General
@@ -175,6 +176,7 @@ import { ImageLightboxContentDialogComponent } from './layout/modal/image-lightb
 		SignatureAddComponent,
 		SignatureListComponent,
 		ArDetailPanelsComponent,
+		TreeSelectComponent,
 		SearchOutillageFormComponent,
 
 		SearchSalarieFormComponent,
@@ -224,8 +226,6 @@ import { ImageLightboxContentDialogComponent } from './layout/modal/image-lightb
 		ArFormComponent,
 		SearchChantierFormComponent,
 		ChantierFormComponent,
-		// ChantierFiltersComponent,
-		// SearchChantierHeaderComponent,
 		VsFormHeadComponent,
 		VsFormBodyComponent,
 		VsFormSignaturesComponent,
@@ -243,6 +243,7 @@ import { ImageLightboxContentDialogComponent } from './layout/modal/image-lightb
 		SignatureAddComponent,
 		SignatureListComponent,
 		ArDetailPanelsComponent,
+		TreeSelectComponent,
 		SearchOutillageFormComponent,
 		SearchSalarieFormComponent,
 		VisiteQuestionOutillageAdminComponent,

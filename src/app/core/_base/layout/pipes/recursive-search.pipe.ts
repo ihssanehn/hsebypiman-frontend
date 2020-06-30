@@ -37,7 +37,6 @@ export class RecursiveSearchPipe implements PipeTransform {
       }
     }
 
-    console.log(this.searchedItems);
     return this.searchedItems;
   }
 }

@@ -1,18 +1,14 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from "@angular/forms";
-import { CommonModule, Location } from '@angular/common';
-import * as moment from 'moment';
-
-import { TranslateService } from '@ngx-translate/core';
-import { MaterielService, TypeService } from '@app/core/services';
-import { Materiel, Type } from '@app/core/models';
-import { NgxPermissionsService } from 'ngx-permissions';
-import { AuthService, User } from '@app/core/auth';
+import { FormBuilder, FormGroup, Validators} from "@angular/forms";
+import { Location } from '@angular/common';
+import { MaterielService} from '@app/core/services';
+import { Materiel} from '@app/core/models';
 import { MatSnackBar } from '@angular/material';
-import Swal from 'sweetalert2';
 import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
 import {FormStatus} from '@app/core/_base/crud/models/form-status';
+import { DateEnToFrPipe, DateFrToEnPipe } from '@app/core/_base/layout';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'tf-materiel-add',
@@ -37,13 +33,11 @@ export class MaterielAddComponent implements OnInit {
 		private materielFB: FormBuilder,
 		// private notificationService: NzNotificationService,
 		private materielService: MaterielService,
-		private typeService: TypeService,
-		private authService: AuthService,
     private cdr: ChangeDetectorRef,
     private location: Location,
-		private permissionsService : NgxPermissionsService,
-    private translate:TranslateService,
-    public snackBar: MatSnackBar,
+    public snackBar: MatSnackBar,    
+    private dateFrToEnPipe:DateFrToEnPipe,
+    private dateEnToFrPipe:DateEnToFrPipe,
   ) { }
 
   ngOnInit() {
@@ -51,21 +45,42 @@ export class MaterielAddComponent implements OnInit {
     this.createForm();
     this.setDynamicValidators();
   }
-
+  
   createForm() {
 		this.materielForm = this.materielFB.group({
-      raison_sociale: ['', Validators.required],
-      type_id: [null, Validators.required],
-      adresse: ['', [Validators]],
-      ville: ['', [Validators]],
-      code_postal: ['', [Validators]],
-      pays: ['', [Validators]]
+      
+      libelle: ['', Validators.required],
+      code: [null],
+      numero_serie: [''],
+      categorie_id: [null, Validators.required],
+      marque: [''],
+      description: [''],
+      fournisseur: [''],
+      date_entree: [null],
+      date_sortie: [null],
+      formation_requise: [''],
+      habilitation_requise: [0],
+      has_controle: [0],
+      frequence_controle: [null],
+      is_location: [0],
+      cout: [null],
+      date_fin_garantie: [null]
     });
+
 		this.loaded = true;
   }
 
   setDynamicValidators(){
-    const no_hab_required = this.materielForm.get('no_hab_required');
+    const has_controle = this.materielForm.get('has_controle');
+    const frequence_controle = this.materielForm.get('frequence_controle');
+    
+    has_controle.valueChanges.subscribe(x=>{
+      if(x == 1){
+        frequence_controle.enable();
+      }else{
+        frequence_controle.disable();
+      }
+    })
   }
   
   async onSubmit(){
@@ -73,6 +88,8 @@ export class MaterielAddComponent implements OnInit {
       let result;
       this.formloading = true;
       let form = {...this.materielForm.getRawValue()};
+      this.formatDates(form, 'FrToEn');
+
       this.formStatus.onFormSubmitting();
   
 			this.materielService.create(form)
@@ -120,6 +137,12 @@ export class MaterielAddComponent implements OnInit {
   
 	onCancel() {
 		this.location.back();
+  }
+
+  formatDates(item, direction){
+    item.date_entree = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.date_entree) : this.dateEnToFrPipe.transform(item.date_entree);
+    item.date_sortie = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.date_sortie) : this.dateEnToFrPipe.transform(item.date_sortie);
+    item.date_fin_garantie = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.date_fin_garantie) : this.dateEnToFrPipe.transform(item.date_fin_garantie);
   }
   
 }

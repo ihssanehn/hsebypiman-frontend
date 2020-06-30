@@ -7,7 +7,7 @@
 			<span class="title">
 				<a [routerLink]="['/entreprises/list']">{{'MENU.SUB_ENTREPRISES.LIST' | translate}}</a>
 				<span class="divider">></span>
-				<span class="id-item">{{'MENU.SUB_ENTREPRISES.ADD' | translate}}</span>
+				<span class="id-item">{{'MENU.SUB_ENTREPRISES.EDIT' | translate}}</span>
 			</span>
 		</div>
 		<tf-entreprise-form [entrepriseForm]="entrepriseForm" [formStatus]="formStatus" [edit]="true" (onSubmit)="onSubmit()" (onCancel)="cancel()"></tf-entreprise-form>

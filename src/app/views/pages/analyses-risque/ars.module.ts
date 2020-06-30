@@ -23,10 +23,8 @@ import { ArsListComponent } from './ars-list/ars-list.component';
 import { ArEditComponent } from './ar-edit/ar-edit.component';
 import { ArAddComponent } from './ar-add/ar-add.component';
 import { ArDetailComponent } from './ar-detail/ar-detail.component';
-import {NgbDropdownModule, NgbTabsetModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
-import {MatChipsModule} from '@angular/material/chips';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import {NgbPopoverModule} from '@ng-bootstrap/ng-bootstrap'
+import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap'
 import { NgxMaskModule } from 'ngx-mask';
 
 // Material
@@ -35,6 +33,8 @@ import {
 	MatPaginatorModule,
 	MatProgressSpinnerModule,
 	MatSortModule,
+	MatChipsModule,
+	MatSlideToggleModule,
 	MatTableModule,
 	MatSelectModule,
 	MatMenuModule,

@@ -12,6 +12,7 @@ import { NgxPermissionsService } from 'ngx-permissions';
 import { SubheaderService } from '@app/core/_base/layout/services/subheader.service';
 import * as moment from 'moment';
 import Swal from 'sweetalert2';
+import { DateEnToFrPipe, DateFrToEnPipe } from '@app/core/_base/layout';
 import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
 import {FormStatus} from '@app/core/_base/crud/models/form-status';
 
@@ -52,6 +53,8 @@ export class MaterielEditComponent implements OnInit, OnDestroy {
 		private permissionsService: NgxPermissionsService,
 		private location: Location,
 		private subheaderService:SubheaderService,
+		private dateFrToEnPipe:DateFrToEnPipe,
+		private dateEnToFrPipe:DateEnToFrPipe,
 	) {	}
 	
 	ngOnInit() {
@@ -63,7 +66,9 @@ export class MaterielEditComponent implements OnInit, OnDestroy {
 				if (id) {
 					this.materielService.get(id).pipe(
 						tap(res=>{
-							this.materielForm.patchValue(res.result.data);
+							var materiel = res.result.data;
+							this.formatDates(materiel, 'EnToFr');
+							this.materielForm.patchValue(materiel);
 						})
 					).subscribe( async res => {
 						this.materiel = res.result.data;
@@ -96,17 +101,36 @@ export class MaterielEditComponent implements OnInit, OnDestroy {
 
 	createForm() {
 		this.materielForm = this.materielFB.group({
-			raison_sociale: ['', Validators.required],
-			type_id: [null, Validators.required],
-			adresse: ['', [Validators]],
-			ville: ['', [Validators]],
-			code_postal: ['', [Validators]],
-			pays: ['', [Validators]]
+			libelle: ['', Validators.required],
+			code: [null],
+			numero_serie: [''],
+			categorie_id: [null, Validators.required],
+			marque: [''],
+			description: [''],
+			fournisseur: [''],
+			date_entree: [null],
+			date_sortie: [null],
+			formation_requise: [''],
+			habilitation_requise: [0],
+			has_controle: [0],
+			frequence_controle: [null],
+			is_location: [0],
+			cout: [null],
+			date_fin_garantie: [null]
 		});
 	}
 
 	setDynamicValidators(){
-		const no_hab_required = this.materielForm.get('no_hab_required');
+		const has_controle = this.materielForm.get('has_controle');
+		const frequence_controle = this.materielForm.get('frequence_controle');
+		
+		has_controle.valueChanges.subscribe(x=>{
+		if(x == 1){
+			frequence_controle.enable();
+		}else{
+			frequence_controle.disable();
+		}
+		})
 	}
   
 	/**
@@ -128,6 +152,8 @@ export class MaterielEditComponent implements OnInit, OnDestroy {
 			this.formloading = true;
 			this.formStatus.onFormSubmitting();
 			let form = {...this.materielForm.getRawValue()};
+			
+			this.formatDates(form, 'FrToEn');
 			form.id = this.materiel.id;
 			
 			this.materielService.update(form)
@@ -174,4 +200,11 @@ export class MaterielEditComponent implements OnInit, OnDestroy {
 	cancel() {
 		this.location.back();
 	}
+
+	
+	formatDates(item, direction){
+		item.date_entree = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.date_entree) : this.dateEnToFrPipe.transform(item.date_entree);
+		item.date_sortie = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.date_sortie) : this.dateEnToFrPipe.transform(item.date_sortie);
+		item.date_fin_garantie = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.date_fin_garantie) : this.dateEnToFrPipe.transform(item.date_fin_garantie);
+	  }
 }

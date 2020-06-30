@@ -57,3 +57,4 @@ export { CommingSoonComponent } from './comming-soon/comming-soon.component';
 export { SignatureAddComponent } from './signature/signature-add/signature-add.component';
 export { SignatureListComponent } from './signature/signature-list/signature-list.component';
 export { ArDetailPanelsComponent } from './analyse-risque/ar-detail-panels/ar-detail-panels.component'
+export { TreeSelectComponent } from './tree-select/tree-select.component'

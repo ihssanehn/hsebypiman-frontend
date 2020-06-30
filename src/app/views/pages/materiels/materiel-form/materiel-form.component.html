@@ -3,7 +3,7 @@
 		<tf-portlet-body>
 			<div class="tf-heading tf-heading--lg" style="margin-top: 0;">
 				<div *ngIf="edit">
-					{{'MENU.SUB_ENTREPRISES.EDIT' | translate}} {{materielForm.get('raison_sociale').value}}
+					{{'MENU.SUB_ENTREPRISES.EDIT' | translate}} {{materielForm.get('code').value}}
 
 				</div>
 				<span *ngIf="!edit">{{'MENU.SUB_ENTREPRISES.ADD' | translate}}</span>
@@ -13,58 +13,113 @@
 					<div class="tf-form__section tf-form__section--first">
 						<div class="tf-wizard-v4__form">
 							<div class="row form-row">
-								<mat-form-field class="col-xl-4">
-									<mat-label>{{'EES.RAISON_SOCIALE.LABEL' | translate}}</mat-label>
-									<input class="form-control" matInput type="text" name="raison_sociale" formControlName="raison_sociale" placeholder="Saisir ici" [required]="isFieldRequired('raison_sociale')" />
-									<mat-error *ngIf="isControlHasError('raison_sociale','required')">
-										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-									</mat-error>
-								</mat-form-field>
-								<mat-form-field class="col-xl-3">
-									<mat-label>{{'EES.TYPE.LABEL' | translate}}</mat-label>
-									<mat-select class="form-control" placeholder="" formControlName="type_id" [required]="isFieldRequired('type_id')">
-										<mat-option *ngFor="let type of typesList" [value]="type.id">
-											{{ type.libelle }}
-										</mat-option>
-									</mat-select>
-									<mat-error *ngIf="isControlHasError('type_id','required')">
-										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-									</mat-error>
-								</mat-form-field>
+								<div class="col-12">
+									<tf-tree-select [itemsList]="categoriesList" [fromId]="materielForm.get('categorie_id').value" [required]="true" [translateTitle]="'MATERIELS.CATEGORIE'" (onChangedItem)="categorieChanged($event)" *ngIf="categoriesList"></tf-tree-select>
+								</div>
 							</div>
 							<div class="row form-row">
-								<mat-form-field class="col-xl-4">
-									<mat-label>{{'COMMON.ADRESS.LABEL' | translate}}</mat-label>
-									<input matInput class="form-control" type="text" name="adresse" formControlName="adresse" [required]="isFieldRequired('adresse')" placeholder="Saisir ici" />
-									<mat-error *ngIf="isControlHasError('adresse','required')">
+								<mat-form-field class="col-xl-3">
+									<mat-label>{{'MATERIELS.LIBELLE.LABEL' | translate}}</mat-label>
+									<input class="form-control" matInput type="text" name="libelle" formControlName="libelle" placeholder="Saisir ici" [required]="isFieldRequired('libelle')" />
+									<mat-error *ngIf="isControlHasError('libelle','required')">
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
 								</mat-form-field>
 								<mat-form-field class="col-xl-3">
-									<mat-label>{{'COMMON.CITY.LABEL' | translate}}</mat-label>
-									<input matInput class="form-control" type="text" name="ville" formControlName="ville" [required]="isFieldRequired('ville')" placeholder="Saisir ici" />
-									<mat-error *ngIf="isControlHasError('ville','required')">
+									<mat-label>{{'MATERIELS.NUMERO_SERIE.LABEL' | translate}}</mat-label>
+									<input class="form-control" matInput type="text" name="numero_serie" formControlName="numero_serie" placeholder="Saisir ici" [required]="isFieldRequired('numero_serie')" />
+									<mat-error *ngIf="isControlHasError('numero_serie','required')">
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
 								</mat-form-field>
-								<mat-form-field class="col-xl-1">
-									<mat-label>{{'COMMON.POSTCODE.LABEL' | translate}}</mat-label>
-									<input matInput class="form-control" type="text" name="code_postal" formControlName="code_postal" [required]="isFieldRequired('code_postal')" placeholder="Saisir ici" />
-									<mat-error *ngIf="isControlHasError('code_postal','required')">
+								<mat-form-field class="col-xl-3">
+									<mat-label>{{'MATERIELS.MARQUE.LABEL' | translate}}</mat-label>
+									<input matInput class="form-control" type="text" name="marque" formControlName="marque" [required]="isFieldRequired('marque')" placeholder="Saisir ici" />
+									<mat-error *ngIf="isControlHasError('marque','required')">
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
 								</mat-form-field>
-								<mat-form-field class="col-xl-2">
-									<mat-label>{{'COMMON.COUNTRY.LABEL' | translate}}</mat-label>
-									<input matInput class="form-control" type="text" name="pays" formControlName="pays" [required]="isFieldRequired('pays')" placeholder="Saisir ici" />
-									<mat-error *ngIf="isControlHasError('pays','required')">
+								<mat-form-field class="col-xl-3">
+									<mat-label>{{'MATERIELS.FOURNISSEUR.LABEL' | translate}}</mat-label>
+									<input matInput class="form-control" type="text" name="marque" formControlName="marque" [required]="isFieldRequired('marque')" placeholder="Saisir ici" />
+									<mat-error *ngIf="isControlHasError('marque','required')">
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
 								</mat-form-field>
 							</div>
+							<div class="row form-row vertical-divider">
+								<div class="col-xl-6">
+									<div class="row form-row">
+								
+										<mat-form-field class="col-xl-6">
+											<mat-label>{{'MATERIELS.DATE_ENTREE.LABEL' | translate}}</mat-label>
+											<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" formControlName="date_entree" [required]="isFieldRequired('date_entree')" placeholder="DD/MM/YYYY">
+										</mat-form-field>
+										<mat-form-field class="col-xl-6">
+											<mat-label>{{'MATERIELS.DATE_SORTIE.LABEL' | translate}}</mat-label>
+											<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" formControlName="date_sortie" [required]="isFieldRequired('date_sortie')" placeholder="DD/MM/YYYY">
+										</mat-form-field>
+
+
+										<mat-form-field class="col-xl-6" floatLabel="always" appearance="none">
+											<!-- <mat-label>{{'MATERIELS.FORMATION_REQUISE.LABEL' | translate}}</mat-label> -->
+											<mat-slide-toggle [checked]="isChecked('formation_requise')" (change)="updateToggleValue($event, 'formation_requise')"><span class="slider-label">{{'MATERIELS.FORMATION_REQUISE.LABEL' | translate}}</span></mat-slide-toggle>
+											<textarea matInput hidden></textarea>
+										</mat-form-field>
+										<mat-form-field class="col-xl-6" floatLabel="always" appearance="none">
+											<!-- <mat-label>{{'MATERIELS.HABILITATION_REQUISE.LABEL' | translate}}</mat-label> -->
+											<mat-slide-toggle [checked]="isChecked('habilitation_requise')" (change)="updateToggleValue($event, 'habilitation_requise')"><span class="slider-label">{{'MATERIELS.HABILITATION_REQUISE.LABEL' | translate}}</span></mat-slide-toggle>
+											<textarea matInput hidden></textarea>
+										</mat-form-field>
+
+
+										<mat-form-field class="col-xl-6" floatLabel="always" appearance="none">
+											<!-- <mat-label>{{'MATERIELS.HAS_CONTROLE.LABEL' | translate}}</mat-label> -->
+											<mat-slide-toggle [checked]="isChecked('has_controle')" (change)="updateToggleValue($event, 'has_controle')"><span class="slider-label">{{'MATERIELS.HAS_CONTROLE.LABEL' | translate}}</span></mat-slide-toggle>
+											<textarea matInput hidden></textarea>
+										</mat-form-field>
+										<mat-form-field class="col-xl-6">
+											<mat-label>{{'MATERIELS.FREQUENCE_CONTROLE.LABEL' | translate}}</mat-label>
+											<input class="form-control" matInput type="number" name="frequence_controle" formControlName="frequence_controle" placeholder="Saisir ici" [required]="isFieldRequired('frequence_controle')" />
+											<mat-error *ngIf="isControlHasError('frequence_controle','required')">
+												<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+											</mat-error>
+										</mat-form-field>
+		
+
+										<mat-form-field class="col-xl-6" floatLabel="always" appearance="none">
+											<!-- <mat-label>{{'MATERIELS.IS_LOCATION.LABEL' | translate}}</mat-label> -->
+											<mat-slide-toggle [checked]="isChecked('is_location')" (change)="updateToggleValue($event, 'is_location')"><span class="slider-label">{{'MATERIELS.IS_LOCATION.LABEL' | translate}}</span></mat-slide-toggle>
+											<textarea matInput hidden></textarea>
+										</mat-form-field>										
+										<mat-form-field class="col-xl-6">
+											<mat-label>{{'MATERIELS.COUT.LABEL' | translate}}</mat-label>
+											<input matInput class="form-control" type="text" name="cout" formControlName="cout" [required]="isFieldRequired('cout')" placeholder="Saisir ici" />
+											<mat-error *ngIf="isControlHasError('cout','required')">
+												<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+											</mat-error>
+										</mat-form-field>
+										<mat-form-field class="col-xl-6">
+											<mat-label>{{'MATERIELS.DATE_FIN_GARANTIE.LABEL' | translate}}</mat-label>
+											<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" formControlName="date_fin_garantie" [required]="isFieldRequired('date_fin_garantie')" placeholder="DD/MM/YYYY">
+										</mat-form-field>
+										
+									</div>
+								</div>
+								<mat-form-field class="col-xl-6">
+									<mat-label>{{'MATERIELS.DESCRIPTION.LABEL' | translate}}</mat-label>
+									<textarea matInput rows="18" class="form-control" type="text" name="description" formControlName="description" [required]="isFieldRequired('description')" placeholder="Saisir ici"></textarea>
+									<mat-error *ngIf="isControlHasError('description','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+							</div>
+							
 						</div>
 					</div>
 				</div>
 			</div>
 		</tf-portlet-body>
 </ng-container>
+
+	
