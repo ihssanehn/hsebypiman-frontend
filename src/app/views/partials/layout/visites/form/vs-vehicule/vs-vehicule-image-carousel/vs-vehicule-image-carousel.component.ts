@@ -15,6 +15,7 @@ export class VsVehiculeImageCarouselComponent implements OnInit {
   @Input() images: Array<Document>;
 
   imageObject: Array<object> = null;
+  slideIndex = 0;
 
   constructor(
     private documentService: DocumentService,
@@ -30,6 +31,10 @@ export class VsVehiculeImageCarouselComponent implements OnInit {
     this.imageObject = this.images.map(element => this.mapImages(element));
   }
 
+  ngAfterViewInit() {
+    this.currentSlide(1);
+  }
+
   mapImages(image: any){
     var temp = [];
     temp['image'] = this.getImageContent(image);
@@ -40,7 +45,7 @@ export class VsVehiculeImageCarouselComponent implements OnInit {
   getImageContent(image: any){
     var content;
     if(image.extension == 'base64'){
-      content = 'data:image/jpg;base64,' + image.canvas;
+      content = this._sanitizer.bypassSecurityTrustResourceUrl(image.canvas);
     }else{
       content = this.documentService.readFile(image.id);
     }
@@ -53,5 +58,30 @@ export class VsVehiculeImageCarouselComponent implements OnInit {
       data: { images : this.imageObject, selectedImgIndex: index}
     });
   }
-  
+
+
+  plusSlides(n) {
+    this.showSlides(this.slideIndex += n);
+  }
+
+  currentSlide(n) {
+    this.showSlides(this.slideIndex = n);
+  }
+
+  showSlides(slideIndex);
+
+  showSlides(n) {
+    let i;
+
+    const slides = document.getElementsByClassName("img-carousel") as HTMLCollectionOf<HTMLElement>;
+
+    if (n > slides.length) {this.slideIndex = 1}
+    if (n < 1) {this.slideIndex = slides.length}
+
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+
+    slides[this.slideIndex-1].style.display = "block";
+  }
 }
