@@ -23,20 +23,23 @@
 				<div class="card">
 					<h3>Informations générales</h3>
 					<div class="box" style="flex:1">
-						<p><span class="label pull-left mr-2">{{'MATERIELS.LIBELLE.TITLE' | translate}}</span><span class="">{{materiel.libelle}}</span></p>
-						<p><span class="label pull-left mr-2">{{'MATERIELS.NUMERO_SERIE.TITLE' | translate}}</span><span class="">{{materiel.numero_serie}}</span></p>
-						<p><span class="label pull-left mr-2">{{'MATERIELS.MARQUE.TITLE' | translate}}</span><span class="">{{materiel.marque}}</span></p>
-						<p><span class="label pull-left mr-2">{{'MATERIELS.FOURNISSEUR.TITLE' | translate}}</span><span class="">{{materiel.fournisseur}}</span></p>
-						<p><span class="label pull-left mr-2">{{'MATERIELS.DATE_ENTREE.TITLE' | translate}}</span><span>{{materiel.date_entree | date:'dd/MM/yyyy'}}</span></p>
-						<p><span class="label pull-left mr-2">{{'MATERIELS.DATE_SORTIE.TITLE' | translate}}</span><span>{{materiel.date_sortie | date:'dd/MM/yyyy'}}</span></p>
+						<p><span class="label pull-left mr-2">{{'MATERIELS.LIBELLE.TITLE' | translate}}</span><span *ngIf="materiel.libelle; else noData">{{materiel.libelle}}</span></p>
+						<p><span class="label pull-left mr-2">{{'MATERIELS.NUMERO_SERIE.TITLE' | translate}}</span><span *ngIf="materiel.numero_serie; else noData">{{materiel.numero_serie}}</span></p>
+						<p><span class="label pull-left mr-2">{{'MATERIELS.MARQUE.TITLE' | translate}}</span><span *ngIf="materiel.marque; else noData">{{materiel.marque}}</span></p>
+						<p><span class="label pull-left mr-2">{{'MATERIELS.FOURNISSEUR.TITLE' | translate}}</span><span *ngIf="materiel.fournisseur; else noData">{{materiel.fournisseur}}</span></p>
+						<p><span class="label pull-left mr-2">{{'MATERIELS.DATE_ENTREE.TITLE' | translate}}</span><span *ngIf="materiel.date_entree; else noData">{{materiel.date_entree | date:'dd/MM/yyyy'}}</span></p>
+						<p><span class="label pull-left mr-2">{{'MATERIELS.DATE_SORTIE.TITLE' | translate}}</span><span *ngIf="materiel.date_sortie; else noData">{{materiel.date_sortie | date:'dd/MM/yyyy'}}</span></p>
 						<p><span class="label pull-left mr-2">{{'MATERIELS.FORMATION_REQUISE.TITLE' | translate}}</span><span>{{materiel.formation_requise == 1 ? 'oui': 'non'}}</span></p>
 						<p><span class="label pull-left mr-2">{{'MATERIELS.HABILITATION_REQUISE.TITLE' | translate}}</span><span>{{materiel.habilitation_requise == 1 ? 'oui': 'non'}}</span></p>
 						<p><span class="label pull-left mr-2">{{'MATERIELS.HAS_CONTROLE.TITLE' | translate}}</span><span>{{materiel.has_controle == 1 ? 'oui': 'non'}}</span></p>
-						<p><span class="label pull-left mr-2">{{'MATERIELS.FREQUENCE_CONTROLE.TITLE' | translate}}</span><span>{{materiel.frequence_controle}}</span></p>
+						<p><span class="label pull-left mr-2">{{'MATERIELS.FREQUENCE_CONTROLE.TITLE' | translate}}</span><span *ngIf="materiel.has_controle == 1; else noData">{{materiel.frequence_controle+' mois'}}</span></p>
 						<p><span class="label pull-left mr-2">{{'MATERIELS.IS_LOCATION.TITLE' | translate}}</span><span>{{materiel.is_location == 1 ? 'oui':'non'}}</span></p>
-						<p><span class="label pull-left mr-2">{{'MATERIELS.COUT.TITLE' | translate}}</span><span>{{materiel.cout}}</span></p>
-						<p><span class="label pull-left mr-2">{{'MATERIELS.DATE_FIN_GARANTIE.TITLE' | translate}}</span><span>{{materiel.date_fin_garantie | date:'dd/MM/yyyy'}}</span></p>
-						<p><span class="label pull-left mr-2">{{'MATERIELS.DESCRIPTION.TITLE' | translate}}</span><span>{{materiel.description}}</span></p>
+						<p><span class="label pull-left mr-2">{{'MATERIELS.COUT.TITLE' | translate}}</span><span *ngIf="materiel.cout; else noData">{{materiel.cout | currency:'EUR':'€'}}</span></p>
+						<p><span class="label pull-left mr-2">{{'MATERIELS.DATE_FIN_GARANTIE.TITLE' | translate}}</span><span *ngIf="materiel.date_fin_garantie; else noData">{{materiel.date_fin_garantie | date:'dd/MM/yyyy'}}</span></p>
+						<p><span class="label pull-left mr-2">{{'MATERIELS.DESCRIPTION.TITLE' | translate}}</span><span *ngIf="materiel.description; else noData">{{materiel.description}}</span></p>
+						<ng-template #noData>
+							<span>-</span>
+						</ng-template>
 					</div>
 					<div class="tf-divider">
 						<span></span>

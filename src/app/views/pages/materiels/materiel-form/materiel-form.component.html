@@ -62,19 +62,16 @@
 
 
 										<mat-form-field class="col-xl-6" floatLabel="always" appearance="none">
-											<!-- <mat-label>{{'MATERIELS.FORMATION_REQUISE.LABEL' | translate}}</mat-label> -->
 											<mat-slide-toggle [checked]="isChecked('formation_requise')" (change)="updateToggleValue($event, 'formation_requise')"><span class="slider-label">{{'MATERIELS.FORMATION_REQUISE.LABEL' | translate}}</span></mat-slide-toggle>
 											<textarea matInput hidden></textarea>
 										</mat-form-field>
 										<mat-form-field class="col-xl-6" floatLabel="always" appearance="none">
-											<!-- <mat-label>{{'MATERIELS.HABILITATION_REQUISE.LABEL' | translate}}</mat-label> -->
 											<mat-slide-toggle [checked]="isChecked('habilitation_requise')" (change)="updateToggleValue($event, 'habilitation_requise')"><span class="slider-label">{{'MATERIELS.HABILITATION_REQUISE.LABEL' | translate}}</span></mat-slide-toggle>
 											<textarea matInput hidden></textarea>
 										</mat-form-field>
 
 
 										<mat-form-field class="col-xl-6" floatLabel="always" appearance="none">
-											<!-- <mat-label>{{'MATERIELS.HAS_CONTROLE.LABEL' | translate}}</mat-label> -->
 											<mat-slide-toggle [checked]="isChecked('has_controle')" (change)="updateToggleValue($event, 'has_controle')"><span class="slider-label">{{'MATERIELS.HAS_CONTROLE.LABEL' | translate}}</span></mat-slide-toggle>
 											<textarea matInput hidden></textarea>
 										</mat-form-field>
@@ -88,13 +85,12 @@
 		
 
 										<mat-form-field class="col-xl-6" floatLabel="always" appearance="none">
-											<!-- <mat-label>{{'MATERIELS.IS_LOCATION.LABEL' | translate}}</mat-label> -->
 											<mat-slide-toggle [checked]="isChecked('is_location')" (change)="updateToggleValue($event, 'is_location')"><span class="slider-label">{{'MATERIELS.IS_LOCATION.LABEL' | translate}}</span></mat-slide-toggle>
 											<textarea matInput hidden></textarea>
 										</mat-form-field>										
 										<mat-form-field class="col-xl-6">
 											<mat-label>{{'MATERIELS.COUT.LABEL' | translate}}</mat-label>
-											<input matInput class="form-control" type="text" name="cout" formControlName="cout" [required]="isFieldRequired('cout')" placeholder="Saisir ici" />
+											<input matInput mask="separator.2" class="form-control" type="text" name="cout" formControlName="cout" [required]="isFieldRequired('cout')" placeholder="Saisir ici" />
 											<mat-error *ngIf="isControlHasError('cout','required')">
 												<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 											</mat-error>

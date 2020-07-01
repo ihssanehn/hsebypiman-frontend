@@ -360,9 +360,9 @@ export const locale = {
 				SHORTTITLE:'Doit être controlé',
 			},
 			FREQUENCE_CONTROLE:{
-				LABEL:'Frequence du controle',
-				TITLE:'Frequence du controle',
-				SHORTTITLE:'Frequence du controle',
+				LABEL:'Frequence de contrôle (en mois)',
+				TITLE:'Frequence de contrôle',
+				SHORTTITLE:'Frequence de contrôle',
 			},
 			IS_LOCATION:{
 				LABEL:'Location',
