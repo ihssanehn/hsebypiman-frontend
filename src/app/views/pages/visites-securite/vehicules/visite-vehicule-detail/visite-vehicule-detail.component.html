@@ -24,26 +24,15 @@
 		</div>
 		<tf-vs-form-head [visiteForm]="visiteForm" [origin]="'detail'" [model]="'VsVehicule'" *ngIf="visiteForm.get('vehicule').value"></tf-vs-form-head>
 	</tf-portlet>
-	<mat-accordion class="headers-align">
+	<mat-accordion class="headers-align" *ngIf="images">
 		<mat-expansion-panel [expanded]="true" [disabled]="true">
 			<mat-expansion-panel-header>
 				<mat-panel-title>
 					<div class="tf-heading tf-heading--md">| Conformité du véhicule</div>
 				</mat-panel-title>
-				<mat-panel-description class="col-2">
-					<div class="display-img-btn" *ngIf="isCanvasNotEmpty() && isPhotosNotEmpty()">
-						<button mat-raised-button color="info" (click)="displayImageCarousel()" *ngIf="!imageCarouselDisplayed">
-							Voir les photos
-						</button>
-						<button mat-raised-button color="info" (click)="displayImageCarousel()" *ngIf="imageCarouselDisplayed">
-							Voir le dessin
-						</button>
-					</div>
-				</mat-panel-description>
 			</mat-expansion-panel-header>
 
-			<tf-vs-vehicule-form-img *ngIf="isCanvasNotEmpty() && !imageCarouselDisplayed" [visiteForm]="visiteForm" [origin]="'detail'" ></tf-vs-vehicule-form-img>
-			<vs-vehicule-image-carousel *ngIf="isPhotosNotEmpty() && imageCarouselDisplayed" [images]="visite?.photos" ></vs-vehicule-image-carousel>
+			<vs-vehicule-image-carousel *ngIf="images" [images]="visite?.photos" ></vs-vehicule-image-carousel>
 		</mat-expansion-panel>
 	</mat-accordion>
 	

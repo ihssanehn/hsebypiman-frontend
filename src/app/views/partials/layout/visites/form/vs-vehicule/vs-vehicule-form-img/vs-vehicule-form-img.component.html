@@ -17,7 +17,7 @@
                     </button>
                     <div class="signature-container col-12" style="padding:1em">
                         <div class="col-md-8 offset-md-2" #imgCanvasContainer *ngIf="origin == 'add'">
-                            <signature-pad #img_canvas (window:resize)="resizeSignaturePad()" [options]="signaturePadOptions" (onEndEvent)="drawComplete()"></signature-pad>
+                            <signature-pad #img_canvas [options]="signaturePadOptions" (onEndEvent)="drawComplete()"></signature-pad>
                         </div>
                         <div class="col-md-8 offset-md-2" *ngIf="origin != 'add'">
                             <img [src]="_sanitizer.bypassSecurityTrustResourceUrl(showSignature())" *ngIf="showSignature()" width="100%">
