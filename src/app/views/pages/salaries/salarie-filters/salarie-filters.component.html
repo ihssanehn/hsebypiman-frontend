@@ -8,9 +8,9 @@
                         <mat-label>{{'COMMON.FONCTION.TITLE' | translate}}</mat-label>
                         <mat-select class="form-control" formControlName="fonction_id" name="fonction_id">
                             <mat-option>Tous</mat-option>
-                            <!-- <mat-option *ngFor="let fonction of fonctions" [value]="fonction.id">
+                            <mat-option *ngFor="let fonction of fonctions" [value]="fonction.id">
                                 {{fonction.libelle}}
-                            </mat-option> -->
+                            </mat-option>
                         </mat-select>
                         <button mat-button *ngIf="formHasValue('fonction_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('fonction_id'); $event.stopPropagation()">
                             <mat-icon>clear</mat-icon>

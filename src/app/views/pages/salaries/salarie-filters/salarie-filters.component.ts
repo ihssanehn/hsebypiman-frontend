@@ -4,13 +4,15 @@ import { DateFrToEnPipe } from '@app/core/_base/layout';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import { debounceTime } from 'rxjs/operators';
+import { FonctionService } from '@app/core/services';
+import { Type } from '@app/core/models/type.model';
 
 @Component({
   selector: 'tf-salarie-filters',
   templateUrl: './salarie-filters.component.html',
   styleUrls: ['./salarie-filters.component.scss']
 })
-export class SalarieFiltersComponent implements  OnInit, AfterViewInit {
+export class SalarieFiltersComponent implements  OnInit {
 
   @Output() change = new EventEmitter();
 
@@ -18,9 +20,10 @@ export class SalarieFiltersComponent implements  OnInit, AfterViewInit {
   loading = false;
   hidden = true;
   data: boolean = false;
-  fonctions: Object[];
+  fonctions: Type[];
 
   constructor(
+    private fonctionService: FonctionService,
     private fb: FormBuilder,
     private cdr: ChangeDetectorRef,
     private dateFrToEnPipe:DateFrToEnPipe,
@@ -32,14 +35,17 @@ export class SalarieFiltersComponent implements  OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    //this.getFonctions();
+    this.getFonctions();
     this.initFiltersForm();
     this.filterForm.valueChanges.pipe(
       debounceTime(500)
     ).subscribe(data => this.search(data));
   }
 
-  ngAfterViewInit(){
+  async getFonctions(){
+    var res = await this.fonctionService.getList().toPromise();
+    this.fonctions = res.result.data;
+    this.cdr.markForCheck();
   }
 
   initFiltersForm(){
