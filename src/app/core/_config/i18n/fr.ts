@@ -819,7 +819,37 @@ export const locale = {
 				LABEL:'Date d\'entrée',
 				TITLE:'Date d\'entrée',
 				SHORTTITLE:'Date d\'entrée'
-			}
+			},
+			OUTILLAGE:{
+				LABEL:'Outillage',
+				TITLE:'Outillage',
+				SHORTTITLE:'Outillage'
+			},
+			ACCIDENTOLOGIE:{
+				LABEL:'Accidentologie',
+				TITLE:'Accidentologie',
+				SHORTTITLE:'Accidentologie'
+			},
+			ANIMATIONHSE:{
+				LABEL:'Animation HSE',
+				TITLE:'Animation HSE',
+				SHORTTITLE:'Animation HSE'
+			},
+			FORMATION:{
+				LABEL:'Formation',
+				TITLE:'Formation',
+				SHORTTITLE:'Formation'
+			},
+			EPI:{
+				LABEL:'EPI',
+				TITLE:'EPI',
+				SHORTTITLE:'EPI'
+			},
+			VEHICULE:{
+				LABEL:'Véhicule',
+				TITLE:'Véhicule',
+				SHORTTITLE:'Véhicule'
+			},
 		},
 		COMMON:{
 			ADRESS:{

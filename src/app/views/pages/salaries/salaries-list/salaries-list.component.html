@@ -41,15 +41,6 @@
 					<td mat-cell *matCellDef="let salarie" (click)="viewSalarie(salarie.id)" class="text-center pointer"> {{salarie.fonction?.libelle}} </td>
 				</ng-container>
 
-				<!-- email Column -->
-				<ng-container matColumnDef="email">
-					<th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('email')">
-						{{'COMMON.EMAIL.TITLE' | translate}}
-						<i class="fa" [ngClass]="isOrderedBy('email') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('email') && {opacity:1}"></i>
-					</th>
-					<td mat-cell *matCellDef="let salarie" (click)="viewSalarie(salarie.id)" class="text-center pointer"> {{salarie.email}} </td>
-				</ng-container>
-
 				<!-- tel Column -->
 				<ng-container matColumnDef="tel">
 					<th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('telephone')">
@@ -59,13 +50,70 @@
 					<td mat-cell *matCellDef="let salarie" (click)="viewSalarie(salarie.id)" class="text-center pointer"> {{salarie.telephone}} </td>
                 </ng-container>
                 
-                <!-- score Column -->
-				<ng-container matColumnDef="score">
-					<th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('score')">
-						{{'COMMON.SCORE.TITLE' | translate}}
-						<i class="fa" [ngClass]="isOrderedBy('score') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('score') && {opacity:1}"></i>
+                <!-- score outillage Column -->
+				<ng-container matColumnDef="outillage">
+					<th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('score_outillage')">
+						{{'SALARIES.OUTILLAGE.TITLE' | translate}}
+						<i class="fa" [ngClass]="isOrderedBy('score_outillage') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('score_outillage') && {opacity:1}"></i>
 					</th>
-					<td mat-cell *matCellDef="let salarie" (click)="viewSalarie(salarie.id)" class="text-center pointer"> {{salarie.score}} </td>
+					<td mat-cell *matCellDef="let salarie" (click)="viewSalarie(salarie.id)" class="text-center pointer">
+						 <tf-salarie-score [score]="salarie.score"></tf-salarie-score>
+					</td>
+				</ng-container>
+
+                <!-- score accidentologie Column -->
+				<ng-container matColumnDef="accidentologie">
+					<th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('score_accidentologie')">
+						{{'SALARIES.ACCIDENTOLOGIE.TITLE' | translate}}
+						<i class="fa" [ngClass]="isOrderedBy('score_accidentologie') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('score_accidentologie') && {opacity:1}"></i>
+					</th>
+					<td mat-cell *matCellDef="let salarie" (click)="viewSalarie(salarie.id)" class="text-center pointer"> 
+						<tf-salarie-score [score]="salarie.score"></tf-salarie-score>
+					</td>
+				</ng-container>
+
+                <!-- score animation HSE Column -->
+				<ng-container matColumnDef="animation_hse">
+					<th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('score_animation_hse')">
+						{{'SALARIES.ANIMATIONHSE.TITLE' | translate}}
+						<i class="fa" [ngClass]="isOrderedBy('score_animation_hse') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('score_animation_hse') && {opacity:1}"></i>
+					</th>
+					<td mat-cell *matCellDef="let salarie" (click)="viewSalarie(salarie.id)" class="text-center pointer"> 
+						<tf-salarie-score [score]="salarie.score"></tf-salarie-score>
+					 </td>
+				</ng-container>
+
+                <!-- score formation Column -->
+				<ng-container matColumnDef="formation">
+					<th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('score_formation')">
+						{{'SALARIES.FORMATION.TITLE' | translate}}
+						<i class="fa" [ngClass]="isOrderedBy('score_formation') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('score_formation') && {opacity:1}"></i>
+					</th>
+					<td mat-cell *matCellDef="let salarie" (click)="viewSalarie(salarie.id)" class="text-center pointer"> 
+						<tf-salarie-score [score]="salarie.score"></tf-salarie-score>
+					 </td>
+				</ng-container>
+
+                <!-- score epi Column -->
+				<ng-container matColumnDef="epi">
+					<th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('score_epi')">
+						{{'SALARIES.EPI.TITLE' | translate}}
+						<i class="fa" [ngClass]="isOrderedBy('score_epi') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('score_epi') && {opacity:1}"></i>
+					</th>
+					<td mat-cell *matCellDef="let salarie" (click)="viewSalarie(salarie.id)" class="text-center pointer"> 
+						<tf-salarie-score [score]="salarie.score"></tf-salarie-score>
+					 </td>
+				</ng-container>
+
+                <!-- score véhicule Column -->
+				<ng-container matColumnDef="vehicule">
+					<th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('score_vehicule')">
+						{{'SALARIES.VEHICULE.TITLE' | translate}}
+						<i class="fa" [ngClass]="isOrderedBy('score_vehicule') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('score_vehicule') && {opacity:1}"></i>
+					</th>
+					<td mat-cell *matCellDef="let salarie" (click)="viewSalarie(salarie.id)" class="text-center pointer"> 
+						<tf-salarie-score [score]="salarie.score"></tf-salarie-score>
+					</td>
 				</ng-container>
 
 				<ng-container matColumnDef="action" stickyEnd >

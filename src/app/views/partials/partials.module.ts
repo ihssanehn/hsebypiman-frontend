@@ -86,7 +86,8 @@ import {
 	ArDetailPanelsComponent,
 	TreeSelectComponent,
 	AssignUserComponent,
-	AddVehiculeFormComponent
+	AddVehiculeFormComponent,
+	SalarieScoreComponent
 } from './layout';
 // General
 import { NoticeComponent } from './content/general/notice/notice.component';
@@ -187,7 +188,8 @@ import { ImageLightboxContentDialogComponent } from './layout/modal/image-lightb
 		VsVehiculeFormImgComponent,
 		SearchEpiFormComponent,
 		VsVehiculeImageCarouselComponent,
-		ImageLightboxContentDialogComponent
+		ImageLightboxContentDialogComponent,
+		SalarieScoreComponent
 	],
 	exports: [
 		WidgetModule,
@@ -254,7 +256,8 @@ import { ImageLightboxContentDialogComponent } from './layout/modal/image-lightb
 		VsVehiculeFormImgComponent,
 		SearchEpiFormComponent,
 		VsVehiculeImageCarouselComponent,
-		ImageLightboxContentDialogComponent
+		ImageLightboxContentDialogComponent,
+		SalarieScoreComponent
 	],
 	imports: [
 		CommonModule,

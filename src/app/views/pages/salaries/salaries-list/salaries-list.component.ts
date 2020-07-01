@@ -29,7 +29,8 @@ export class SalariesListComponent implements OnInit, AfterViewInit, OnDestroy {
 	};
 	showFilters:Boolean = false;
 	displayedSalarieColumns = [
-		'nom', 'prenom', 'fonction', 'email', 'tel', 'score', 'action'
+		'nom', 'prenom', 'fonction', 'tel',
+		'outillage', 'accidentologie', 'animation_hse', 'formation', 'epi', 'vehicule', 'action'
 	];
 
   constructor(

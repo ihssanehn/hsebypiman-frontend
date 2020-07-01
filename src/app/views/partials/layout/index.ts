@@ -54,9 +54,16 @@ export { ISearchResult } from './search-result/search-result.component';
 // COMMING SOON
 export { CommingSoonComponent } from './comming-soon/comming-soon.component';
 
+// SIGNATURE
 export { SignatureAddComponent } from './signature/signature-add/signature-add.component';
 export { SignatureListComponent } from './signature/signature-list/signature-list.component';
-export { ArDetailPanelsComponent } from './analyse-risque/ar-detail-panels/ar-detail-panels.component';
-export { TreeSelectComponent } from './tree-select/tree-select.component';
+
 // Materiel
 export { AssignUserComponent } from './materiel/assign-user/assign-user.component';
+
+// AR
+export { ArDetailPanelsComponent } from './analyse-risque/ar-detail-panels/ar-detail-panels.component'
+export { TreeSelectComponent } from './tree-select/tree-select.component'
+
+// SALARIES
+export { SalarieScoreComponent } from './salarie-score/salarie-score.component';
