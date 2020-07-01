@@ -7,7 +7,7 @@ import { Subscription } from "rxjs";
 import { tap } from 'rxjs/operators';
 
 import { VisiteVehiculeService } from '@app/core/services';
-import { VisiteVehicule, Vehicule, CatQuestion } from '@app/core/models';
+import { VisiteVehicule, Vehicule, CatQuestion, Document } from '@app/core/models';
 import { AuthService, User } from '@app/core/auth';
 import { MatSnackBar } from '@angular/material';
 import Swal from 'sweetalert2';
@@ -37,8 +37,8 @@ export class VisiteVehiculeDetailComponent implements OnInit, OnDestroy {
 	vehicule: Vehicule;
 	currentUser: User;
 	questionsDisplayed: boolean = false;
-	imageCarouselDisplayed: boolean = false;
 	private subscriptions: Subscription[] = [];
+	images: Array<Document>;
 
 	// Private properties
 
@@ -67,10 +67,8 @@ export class VisiteVehiculeDetailComponent implements OnInit, OnDestroy {
 						this.parseVisitesDate(_visite, 'EnToFr');
 						this.visiteForm.patchValue(_visite);
 						this.patchQuestionsForm(_visite);
+						this.patchImages(_visite);
 						this.catQuestionsList = res.result.data.catQuestionsList;
-						if(!_visite.img_canvas && _visite.photos.length){
-							this.imageCarouselDisplayed = true;
-						}
 					})
 				).subscribe(async res => {
 					var _visite = res.result.data;
@@ -85,6 +83,16 @@ export class VisiteVehiculeDetailComponent implements OnInit, OnDestroy {
 		});
 
 		this.subscriptions.push(routeSubscription);
+	}
+
+	patchImages(visite){
+		this.images = visite.photos;
+		if(visite.img_canvas){
+			var doc = new Document();
+			doc.canvas = visite.img_canvas;
+			doc.extension = 'base64';
+			this.images.unshift(doc);
+		}
 	}
 
 	ngOnDestroy() {
@@ -241,18 +249,5 @@ export class VisiteVehiculeDetailComponent implements OnInit, OnDestroy {
 		}
 	}
 
-	isCanvasNotEmpty(){
-		return this.visiteForm.get('img_canvas').value ? true : false
-	}
 
-	isPhotosNotEmpty(){
-		return this.visite.photos.length ? true : false
-	}
-
-	displayImageCarousel(){
-		this.imageCarouselDisplayed = this.imageCarouselDisplayed ? false: true;
-	}
-	
-
-	
 }

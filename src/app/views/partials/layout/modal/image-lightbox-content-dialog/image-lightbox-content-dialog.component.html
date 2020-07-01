@@ -3,7 +3,7 @@
     <div class="lightbox-div">
         <div class="slide-modal-content">
             <div id="imgSlides" class="img-slides" *ngFor="let image of data.images; let i = index" >
-                <img src="{{image.image}}">
+                <img [src]="image.image">
             </div>
         </div>
         <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
@@ -12,7 +12,7 @@
     <div class="image-row">
         <div class="image-column" *ngFor="let image of data.images; let i = index">
            <img class="images" (click)="currentSlide(i+1)"
-           src="{{image.image}}">
+           [src]="image.image">
         </div>
      </div>
 </div>

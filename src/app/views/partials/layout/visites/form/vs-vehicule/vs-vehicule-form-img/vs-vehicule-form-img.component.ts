@@ -43,15 +43,8 @@ export class VsVehiculeFormImgComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     if(this.origin == 'add'){
-      var width = this.imgCanvasContainer.nativeElement.offsetWidth - 1;
-      if(this.signaturePad){this.signaturePad.set('canvasWidth', width)};
       this.getVehiculeImgToDisplay();
     }
-  }
-
-  resizeSignaturePad() {
-    var ratio = Math.max(window.devicePixelRatio || 1, 1);
-    this.signaturePad.set('canvasWidth', this.canvas['canvasWidth'] / ratio);
   }
 
   drawComplete() {
