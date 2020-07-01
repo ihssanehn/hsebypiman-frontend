@@ -19,13 +19,17 @@
 	</div>
 	<tf-portlet-body class="tf-portlet__body--fit" *ngIf="materiel">
 		<div class="row">
-			<div class="col-md-4">
+			<div class="col-md-6">
 				<div class="card">
 					<h3>Informations générales</h3>
 					<div class="box" style="flex:1">
 						<p><span class="label pull-left mr-2">{{'MATERIELS.LIBELLE.TITLE' | translate}}</span><span *ngIf="materiel.libelle; else noData">{{materiel.libelle}}</span></p>
 						<p><span class="label pull-left mr-2">{{'MATERIELS.NUMERO_SERIE.TITLE' | translate}}</span><span *ngIf="materiel.numero_serie; else noData">{{materiel.numero_serie}}</span></p>
-						<p><span class="label pull-left mr-2">{{'MATERIELS.CATEGORIE.TITLE' | translate}}</span><span *ngIf="materiel.categorie; else noData">{{materiel.main_categorie?.libelle+' - '+materiel.categorie.libelle}}</span></p>
+						<p><span class="label pull-left mr-2">{{'MATERIELS.CATEGORIE.TITLE' | translate}}</span><span *ngIf="materiel.flat_categories; else noData">
+							<span *ngFor="let cat of materiel.flat_categories; let last = last;">
+								{{cat.libelle}}<span *ngIf="!last"> / </span>
+							</span>
+						</span></p>
 						<p><span class="label pull-left mr-2">{{'MATERIELS.MARQUE.TITLE' | translate}}</span><span *ngIf="materiel.marque; else noData">{{materiel.marque}}</span></p>
 						<p><span class="label pull-left mr-2">{{'MATERIELS.FOURNISSEUR.TITLE' | translate}}</span><span *ngIf="materiel.fournisseur; else noData">{{materiel.fournisseur}}</span></p>
 						<p><span class="label pull-left mr-2">{{'MATERIELS.DATE_ENTREE.TITLE' | translate}}</span><span *ngIf="materiel.date_entree; else noData">{{materiel.date_entree | date:'dd/MM/yyyy'}}</span></p>
@@ -51,7 +55,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-8">
+			<div class="col-md-6">
 				<div class="card">
 					<div class="box box-ar-vs" style="flex: 1;">
 						<h5><b>Suivi des utilisateurs</b><small class="pull-right">{{'MATERIELS.PERSONNELS_COUNT.SHORTTITLE' | translate}} : <span class="blue">{{materiel.personnels.length}}</span></small></h5>
