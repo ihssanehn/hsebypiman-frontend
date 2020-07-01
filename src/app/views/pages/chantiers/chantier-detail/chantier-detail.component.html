@@ -155,6 +155,7 @@
                   <th scope="col">{{'EES.RAISON_SOCIALE.TITLE' | translate}}</th>
                   <th class="text-center" scope="col">{{'EES.TYPE.TITLE' | translate}}</th>
                   <th class="text-center" scope="col">{{'EES.CA.TITLE' | translate}}</th>
+                  <th class="text-center" scope="col">{{'EES.INTERIMAIRE.TITLE' | translate}}</th>
                   <th class="text-center" scope="col">{{'EES.DATE_DEMARRAGE.TITLE' | translate}}</th>
                 </tr>
               </thead>
@@ -162,11 +163,15 @@
                 <tr *ngFor="let entreprise of chantier.entreprises">
                   <th scope="row">{{entreprise.raison_sociale}}</th>
                   <td class="text-center">{{entreprise.type.libelle}}</td>
-                  <td class="text-center">{{entreprise.pivot.chiffre_affaire | currency:'EUR':'€'}}</td>
+                  <td class="text-center"><span *ngIf="entreprise.type?.code == 'SOUS_TRAITANT'; else noData"></span>{{entreprise.pivot.chiffre_affaire | currency:'EUR':'€'}}</td>
+                  <td class="text-center"><span *ngIf="entreprise.type?.code == 'INTERIM'; else noData"></span>{{entreprise.pivot.interimaire | fullName}}</td>
                   <td class="text-center">{{entreprise.pivot.date_demarrage | date:'dd/MM/yyyy'}}</td>
               </tr>
               </tbody>
             </table>
+            <ng-template #noData>
+              <span>-</span>
+            </ng-template>
           </div>
         </div>
       </div>

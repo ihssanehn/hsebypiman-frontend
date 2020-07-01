@@ -103,10 +103,15 @@ export class MaterielDetailComponent implements OnInit, OnDestroy {
 		this.router.navigateByUrl(url, { relativeTo: this.activatedRoute });
   	}
 
-	goToChantierDetail(id){
-		let url = this.router.url;
-		url = `/chantiers/detail/${id}`;
-		this.router.navigateByUrl(url, { relativeTo: this.activatedRoute });
+	goToUserDetail(id){
+		// let url = this.router.url;
+		// url = `/salaries/detail/${id}`;
+		// this.router.navigateByUrl(url, { relativeTo: this.activatedRoute });
+		Swal.fire({
+			title:'Désolé cette fonctionnalité n\'a pas encore été implémentée',
+			showConfirmButton: false,
+            timer: 1500
+		})
 	}
 
   	editMateriel(id){
@@ -118,12 +123,6 @@ export class MaterielDetailComponent implements OnInit, OnDestroy {
 			showConfirmButton: false,
             timer: 1500
 		})
-	}
-	viewChantier(chantierId) {
-		this.router.navigateByUrl('chantiers/detail/' + chantierId);
-	}
-	goToUserDetail(id){
-		console.log(id)
 	}
 
 }

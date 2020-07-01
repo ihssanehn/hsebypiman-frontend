@@ -25,6 +25,7 @@
 					<div class="box" style="flex:1">
 						<p><span class="label pull-left mr-2">{{'MATERIELS.LIBELLE.TITLE' | translate}}</span><span *ngIf="materiel.libelle; else noData">{{materiel.libelle}}</span></p>
 						<p><span class="label pull-left mr-2">{{'MATERIELS.NUMERO_SERIE.TITLE' | translate}}</span><span *ngIf="materiel.numero_serie; else noData">{{materiel.numero_serie}}</span></p>
+						<p><span class="label pull-left mr-2">{{'MATERIELS.CATEGORIE.TITLE' | translate}}</span><span *ngIf="materiel.categorie; else noData">{{materiel.main_categorie?.libelle+' - '+materiel.categorie.libelle}}</span></p>
 						<p><span class="label pull-left mr-2">{{'MATERIELS.MARQUE.TITLE' | translate}}</span><span *ngIf="materiel.marque; else noData">{{materiel.marque}}</span></p>
 						<p><span class="label pull-left mr-2">{{'MATERIELS.FOURNISSEUR.TITLE' | translate}}</span><span *ngIf="materiel.fournisseur; else noData">{{materiel.fournisseur}}</span></p>
 						<p><span class="label pull-left mr-2">{{'MATERIELS.DATE_ENTREE.TITLE' | translate}}</span><span *ngIf="materiel.date_entree; else noData">{{materiel.date_entree | date:'dd/MM/yyyy'}}</span></p>
