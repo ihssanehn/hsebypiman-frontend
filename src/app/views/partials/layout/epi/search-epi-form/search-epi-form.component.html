@@ -49,7 +49,7 @@
                                     <mat-select class="form-control" placeholder="" formControlName="epi_id"
                                         [required]="isFieldRequired('epi_id')">
                                         <mat-option *ngFor="let epi of epis" [value]="epi.id">
-                                            {{ epi.libelle+' - '+epi.categorie.parent.parent?.libelle }}
+                                            {{ epi.libelle+' - '+epi.categorie.parent?.libelle }}
                                         </mat-option>
                                     </mat-select>
                                     <mat-error *ngIf="isControlHasError('epi_id','required')">
