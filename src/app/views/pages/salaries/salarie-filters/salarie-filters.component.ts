@@ -54,6 +54,8 @@ export class SalarieFiltersComponent implements  OnInit, AfterViewInit {
 
   search(filters: any): void {
     var filter = {...this.filterForm.getRawValue()}
+    filter.created_at_start = this.dateFrToEnPipe.transform(filter.created_at_start);
+    filter.created_at_end = this.dateFrToEnPipe.transform(filter.created_at_end);
     this.change.emit(filter);
   }
 
