@@ -28,7 +28,7 @@ export class VisitesEpiListComponent implements OnInit {
 		per_page: this.pagination.pageSize,
 		page: this.pagination.page,
 		order_by: 'visites_epi.date_visite',
-		order_way: 'asc',
+		order_way: 'desc',
 		keyword: "",
 		dateRange: [],
 		status_id: "",
@@ -139,4 +139,16 @@ export class VisitesEpiListComponent implements OnInit {
 			return by == this.filter.order_by
 		}
 	}
+	
+	advancedSearchChanged($event){
+		this.showFilters = $event;
+	}
+
+	udpateFilters(filters){
+		for (let [key, value] of Object.entries(filters)) {
+			this.filter[key] = value;
+		}
+		this.getVisites();
+	}
+
 }

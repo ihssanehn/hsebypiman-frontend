@@ -28,7 +28,7 @@ export class VisitesChantierListComponent implements OnInit {
 		per_page: this.pagination.pageSize,
 		page: this.pagination.page,
 		order_by: 'visites_chantier.date_visite',
-		order_way: 'asc',
+		order_way: 'desc',
 		keyword: "",
 		dateRange: [],
 		status_id: "",

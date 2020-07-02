@@ -51,9 +51,9 @@
       
       <!-- date_visite Column -->
       <ng-container matColumnDef="date_visite">
-        <th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('visites_outillage.created_at')"> 
+        <th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('visites_outillage.date_visite')"> 
           {{'VISITES.DATE_VISITE.SHORTTITLE' | translate}} 
-          <i class="fa" [ngClass]="isOrderedBy('visites_outillage.created_at') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('visites_outillage.created_at') && {opacity:1}"></i>
+          <i class="fa" [ngClass]="isOrderedBy('visites_outillage.date_visite') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('visites_outillage.date_visite') && {opacity:1}"></i>
         </th>
         <td mat-cell *matCellDef="let visite"  (click)="viewVisite(visite.id)" class="pointer text-center"> {{visite.date_visite | date:'dd/MM/yyyy'}} </td>
       </ng-container>
