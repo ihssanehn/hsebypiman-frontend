@@ -1,4 +1,5 @@
-<tf-search-list-bar [(ngModel)]="filter" (change)="getVisites()" [hasAdvancedSearch]="false" [showFilters]="showFilters" class="row row-filters"></tf-search-list-bar>
+<tf-search-list-bar [(ngModel)]="filter" (change)="getVisites()" [hasAdvancedSearch]="true" (advancedSearchChange)="advancedSearchChanged($event)" [showFilters]="showFilters" class="row row-filters"></tf-search-list-bar>
+<tf-visite-epi-filters [hidden]="!showFilters" (change)="udpateFilters($event)" class="row"></tf-visite-epi-filters>
 
 <tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
 	<tf-portlet-body class="tf-portlet__body--fit" style="padding: 15px;" *ngIf="visitesList">
