@@ -27,8 +27,8 @@ export class VisitesEpiListComponent implements OnInit {
 	filter: any = {
 		per_page: this.pagination.pageSize,
 		page: this.pagination.page,
-		order_by: 'visites_epi.date_visite',
-		order_way: 'asc',
+		order_by: ['visites_epi.date_visite', 'visites_epi.created_at'],
+		order_way: 'desc',
 		keyword: "",
 		dateRange: [],
 		status_id: "",
