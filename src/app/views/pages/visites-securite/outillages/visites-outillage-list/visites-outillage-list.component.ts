@@ -27,7 +27,7 @@ export class VisitesOutillageListComponent implements OnInit {
 	filter: any = {
 		per_page: this.pagination.pageSize,
 		page: this.pagination.page,
-		order_by: 'visites_outillage.created_at',
+		order_by: 'visites_outillage.date_visite',
 		order_way: 'asc',
 		keyword: "",
 		dateRange: [],
