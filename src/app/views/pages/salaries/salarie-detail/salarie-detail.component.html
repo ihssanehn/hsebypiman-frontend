@@ -5,7 +5,8 @@
       </span>
     </div>
     <tf-portlet-body class="tf-portlet__body--fit">
-      <div class="row">
+
+    <div class="row">
         <div class="col-md-3">
             <div class="card">
               <div class="box" style="flex:1">
@@ -18,7 +19,7 @@
                 <h5><b>À propos du salarié</b></h5>
                 <p><span class="label pull-left mr-2">{{'COMMON.LASTNAME.LABEL' | translate}}</span><span class="">{{salarie.nom}}</span></p>
                 <p><span class="label pull-left mr-2">{{'COMMON.FIRSTNAME.LABEL' | translate}}</span><span class="">{{salarie.prenom}}</span></p>
-                <p><span class="label pull-left mr-2">{{'COMMON.BIRTHDAY.LABEL' | translate}}</span><span class="">{{salarie.created_at | date:'dd/MM/yyyy'}}</span></p>
+                <p><span class="label pull-left mr-2">{{'COMMON.BIRTHDAY.LABEL' | translate}}</span><span class="">{{salarie.date_naissance | date:'dd/MM/yyyy'}}</span></p>
                 <p><span class="label pull-left mr-2">{{'COMMON.FONCTION.LABEL' | translate}}</span><span class="">{{salarie.fonction?.libelle}}</span></p>
               </div>
               <div class="tf-divider">
@@ -31,258 +32,240 @@
         </div>
 
         <div class="col-md-9">
-            <div class="col-md-12 d-flex">
-                <div class="col-md-4 d-flex">
-                    <div class="row d-flex flex-column flex-nowrap flex-fill">
-                    <div class="col-12 flex-fill" >
-                        <div class="card">
-                            <h5><b>Outillage</b></h5>
-                            <div class="box text-center">
-
+            <mat-tab-group mat-align-tabs="start" animationDuration="1000ms">
+                <mat-tab label="Vision 360">
+                    <div class="col-md-12 d-flex">
+                        <div class="col-md-4 d-flex">
+                            <div class="row d-flex flex-column flex-nowrap flex-fill">
+                            <div class="col-12 flex-fill" >
+                                <div class="card">
+                                    <h5><b>Outillage</b></h5>
+                                    <div class="tf-divider"><span></span></div>
+                                    <div class="box box-coords" style="flex:1">
+                    
+                                    </div>
+                                </div>
                             </div>
-                            <div class="tf-divider">
-                                <span></span>
+                            <div class="col-12 mt-4 flex-fill" >
+                                <div class="card">
+                                    <h5><b>Formation</b></h5>
+                                    <div class="tf-divider"><span></span></div>
+                                    <div class="box box-coords" style="flex:1">
+        
+                                    </div>
+                                </div>
                             </div>
-                            <div class="box box-coords" style="flex:1">
-            
+                            </div>
+                        </div>
+        
+                        <div class="col-md-4 d-flex">
+                            <div class="row d-flex flex-column flex-nowrap flex-fill">
+                            <div class="col-12 flex-fill" >
+                                <div class="card">
+                                    <h5><b>Accidentologie</b></h5>
+                                    <div class="tf-divider"><span></span></div>
+                                    <div class="box box-coords" style="flex:1">
+                    
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 mt-4 flex-fill" >
+                                <div class="card">
+                                    <h5><b>EPI</b></h5>
+                                    <div class="tf-divider"><span></span></div>
+                                    <div class="box box-coords" style="flex:1">
+        
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+        
+                        <div class="col-md-4 d-flex">
+                            <div class="row d-flex flex-column flex-nowrap flex-fill">
+                            <div class="col-12 flex-fill" >
+                                <div class="card">
+                                    <h5><b>Animation HSE</b></h5>
+                                    <div class="tf-divider"><span></span></div>
+                                    <div class="box box-coords" style="flex:1">
+                    
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 mt-4 flex-fill" >
+                                <div class="card">
+                                    <h5><b>Véhicule</b></h5>
+                                    <div class="tf-divider"><span></span></div>
+                                    <div class="box box-coords" style="flex:1">
+        
+                                    </div>
+                                </div>
+                            </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 mt-4 flex-fill" >
-                        <div class="card">
-                            <h5><b>Formation</b></h5>
-                            <div class="box text-center">
-
-                            </div>
-                            <div class="tf-divider">
-                                <span></span>
-                            </div>
-                            <div class="box box-coords" style="flex:1">
-
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 d-flex">
-                    <div class="row d-flex flex-column flex-nowrap flex-fill">
-                    <div class="col-12 flex-fill" >
-                        <div class="card">
-                            <h5><b>Accidentologie</b></h5>
-                            <div class="box text-center">
-
-                            </div>
-                            <div class="tf-divider">
-                                <span></span>
-                            </div>
-                            <div class="box box-coords" style="flex:1">
-            
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 mt-4 flex-fill" >
-                        <div class="card">
-                            <h5><b>EPI</b></h5>
-                            <div class="box text-center">
-
-                            </div>
-                            <div class="tf-divider">
-                                <span></span>
-                            </div>
-                            <div class="box box-coords" style="flex:1">
-
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 d-flex">
-                    <div class="row d-flex flex-column flex-nowrap flex-fill">
-                    <div class="col-12 flex-fill" >
-                        <div class="card">
-                            <h5><b>Animation HSE</b></h5>
-                            <div class="box text-center">
-
-                            </div>
-                            <div class="tf-divider">
-                                <span></span>
-                            </div>
-                            <div class="box box-coords" style="flex:1">
-            
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 mt-4 flex-fill" >
-                        <div class="card">
-                            <h5><b>Véhicule</b></h5>
-                            <div class="box text-center">
-
-                            </div>
-                            <div class="tf-divider">
-                                <span></span>
-                            </div>
-                            <div class="box box-coords" style="flex:1">
-
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-12">
-                <div class="col-md-12 mt-4">
-                    <div class="card">
-                        <h5><b>Information employeur</b></h5>
-                        <div class="row d-flex">
-                            <div class="box box-ar-vs col-md-3">
-                                <h6><b>En cas d'urgence</b></h6>
-                                <div class="tf-divider"><span></span></div>
-                                <div class="box box-coords" style="flex:1">
-                                    <p><span class="label pull-left mr-2">{{'COMMON.LASTNAME.LABEL' | translate}}</span><span class="" *ngIf="salarie.nom_urgence; else noDataFound">{{salarie.nom_urgence}}</span></p>
-                                    <p><span class="label pull-left mr-2">Téléphone</span><span class="" *ngIf="salarie.telephone_urgence; else noDataFound">{{salarie.telephone_urgence}}</span></p>
-                                    <p><span class="label pull-left mr-2">Lien parente</span><span class="" *ngIf="salarie.lien_parente_urgence; else noDataFound">{{salarie.lien_parente_urgence}}</span></p>
-                                </div>
-                            </div>
-                            <div class="box box-ar-vs col-md-3">
-                                <h6><b>Visite médicale</b></h6>
-                                <div class="tf-divider"><span></span></div>
-                                <div class="box box-coords" style="flex:1">
-                                    <p><span class="label pull-left mr-2">RQTH</span><span class="" *ngIf="salarie.nom_urgence; else noDataFound">{{salarie.nom_urgence}}</span></p>
-                                    <p><span class="label pull-left mr-2">Réalisée</span><span class="" *ngIf="salarie.latest_visite_medicale?.date_rv; else noDataFound">{{salarie.latest_visite_medicale?.date_rv | date:'dd/MM/yyyy'}}</span></p>
-                                    <p><span class="label pull-left mr-2">À renouveler</span><span class="" *ngIf="salarie.lien_parente_urgence; else noDataFound">{{salarie.lien_parente_urgence}}</span></p>
-                                </div>
-                            </div>
-                            <div class="box box-ar-vs col-md-3">
-                                <h6><b>Ouvrage concerné</b></h6>
-                                <div class="tf-divider"><span></span></div>
-                                <div class="px-5">
-
-                                </div>
-                            </div>
-                            <div class="box box-ar-vs col-md-3">
-                                <h6><b>Indications complémentaires</b></h6>
-                                <div class="tf-divider"><span></span></div>
-                                <div class="px-5">
-
+                </mat-tab>
+                <mat-tab label="Détails">
+                    <div class="col-md-12">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <h5><b>Information employeur</b></h5>
+                                <div class="row d-flex">
+                                    <div class="box box-ar-vs col-md-3">
+                                        <h6><b>En cas d'urgence</b></h6>
+                                        <div class="tf-divider"><span></span></div>
+                                        <div class="box box-coords" style="flex:1">
+                                            <p><span class="label pull-left mr-2">{{'COMMON.LASTNAME.LABEL' | translate}}</span><span class="blue" *ngIf="salarie.nom_urgence; else noDataFound">{{salarie.nom_urgence}}</span></p>
+                                            <p><span class="label pull-left mr-2">Téléphone</span><span class="blue" *ngIf="salarie.telephone_urgence; else noDataFound">{{salarie.telephone_urgence}}</span></p>
+                                            <p><span class="label pull-left mr-2">Lien parente</span><span class="blue" *ngIf="salarie.lien_parente_urgence; else noDataFound">{{salarie.lien_parente_urgence}}</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="box box-ar-vs col-md-3">
+                                        <h6><b>Visite médicale</b></h6>
+                                        <div class="tf-divider"><span></span></div>
+                                        <div class="box box-coords" style="flex:1">
+                                            <p><span class="label pull-left mr-2">RQTH</span><span class="blue" *ngIf="salarie.rqth; else noDataFound">{{salarie.rqth?.date_debut | date:'dd/MM/yyyy'}} au {{salarie.rqth?.date_fin | date:'dd/MM/yyyy'}}</span></p>
+                                            <p><span class="label pull-left mr-2">Réalisée</span><span class="blue" *ngIf="salarie.latest_visite_medicale?.date_rv; else noDataFound">{{salarie.latest_visite_medicale?.date_rv | date:'dd/MM/yyyy'}}</span></p>
+                                            <p><span class="label pull-left mr-2">À renouveler</span><span class="blue" *ngIf="salarie.latest_visite_medicale?.date_renouvellement; else noDataFound">{{salarie.latest_visite_medicale?.date_renouvellement | date:'dd/MM/yyyy'}}</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="box box-ar-vs col-md-3">
+                                        <h6><b>Ouvrage concerné</b></h6>
+                                        <div class="tf-divider"><span></span></div>
+                                        <div class="box box-coords" style="flex:1">
+                                            <p><span class="label pull-left mr-2">Type</span><span class="blue" *ngIf="salarie.ouvrage; else noDataFound">{{salarie.ouvrage}}</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="box box-ar-vs col-md-3">
+                                        <h6><b>Indications complémentaires</b></h6>
+                                        <div class="tf-divider"><span></span></div>
+                                        <div class="box box-coords" style="flex:1">
+                                            <p><span class="label pull-left mr-2">Indication</span><span class="blue" *ngIf="salarie.indication; else noDataFound">{{salarie.indication}}</span></p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="col-md-12 mt-4">
-                    <div class="card">
-                        <h5><b>Équipements du salarié</b></h5>
-                        <div class="row d-flex">
-                            <div class="box box-ar-vs col-md-6">
-                                <h6><b>EPI a transmettre au salarié</b></h6>
-                                <div class="tf-divider"><span></span></div>
-                                <div class="px-5">
-
-                                </div>
-                            </div>
-                            <div class="box box-ar-vs col-md-6">
-                                <h6><b>Outillage</b></h6>
-                                <div class="tf-divider"><span></span></div>
-                                <div class="px-5">
-
-                                </div>
-                            </div>
-                            <div class="box box-ar-vs col-md-6">
-                                <h6><b>Véhicule</b></h6>
-                                <div class="tf-divider"><span></span></div>
-                                <div class="px-5">
-
+        
+                        <div class="col-md-12 mt-4">
+                            <div class="card">
+                                <h5><b>Équipements du salarié</b></h5>
+                                <div class="row d-flex">
+                                    <div class="box col-md-6">
+                                        <h6><b>EPI a transmettre au salarié</b></h6>
+                                        <div class="tf-divider"><span></span></div>
+                                        <div class="box box-coords" style="flex:1">
+                                            <p><span class="label pull-left mr-2">Confirmation</span><span class="" *ngIf="salarie.confirmation; else noDataFound">{{salarie.confirmation}}</span></p>
+                                            <p><span class="label pull-left mr-2">VSE réalisé</span><span class="" *ngIf="salarie.vse; else noDataFound">{{salarie.vse}}</span></p>
+                                            <p><span class="label pull-left mr-2">Budget annuel</span><span class="" *ngIf="salarie.budget; else noDataFound">{{salarie.budget}}</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="box col-md-6">
+                                        <h6><b>Outillage</b></h6>
+                                        <div class="tf-divider"><span></span></div>
+                                        <div class="box box-coords" style="flex:1">
+                                            <p><span class="label pull-left mr-2">VSO</span><span class="" *ngIf="salarie.vso; else noDataFound">{{salarie.vso}}</span></p>
+                                            <p><span class="label pull-left mr-2">Matériel entretenu</span><span class="" *ngIf="salarie.entretien; else noDataFound">{{salarie.entretien}}</span></p>
+                                            <p><span class="label pull-left mr-2">Perte ou vol</span><span class="" *ngIf="salarie.perte; else noDataFound">{{salarie.perte}}</span></p>
+                                            <p><span class="label pull-left mr-2">Budget HA outillage</span><span class="" *ngIf="salarie.ha; else noDataFound">{{salarie.ha}}</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="box col-md-6">
+                                        <h6><b>Véhicule</b></h6>
+                                        <div class="tf-divider"><span></span></div>
+                                        <div class="box box-coords" style="flex:1">
+                                            <p><span class="label pull-left mr-2">VSV</span><span class="" *ngIf="salarie.vsv; else noDataFound">{{salarie.vsv}}</span></p>
+                                            <p><span class="label pull-left mr-2">Contrôle technique</span><span class="" *ngIf="salarie.controle_technique; else noDataFound">{{salarie.controle_technique}}</span></p>
+                                            <p><span class="label pull-left mr-2">Accrochage à l'année</span><span class="" *ngIf="salarie.accrochage; else noDataFound">{{salarie.accrochage}}</span></p>
+                                            <p><span class="label pull-left mr-2">Dépense pour le véhicule</span><span class="" *ngIf="salarie.cout_vehicule; else noDataFound">{{salarie.cout_vehicule}}</span></p>
+                                            <p><span class="label pull-left mr-2">Kilomètres effectués</span><span class="" *ngIf="salarie.kilometrage; else noDataFound">{{salarie.kilometrage}}</span></p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="col-md-12 mt-4">
-                    <div class="card">
-                        <h5><b>Aptitudes</b></h5>
-                        <div class="row d-flex">
-                            <div class="box box-ar-vs col-md-6">
-                                <h6><b>Accidentologie et maladie</b></h6>
-                                <div class="tf-divider"><span></span></div>
-                                <div class="px-5">
-
+        
+                        <div class="col-md-12 mt-4">
+                            <div class="card">
+                                <h5><b>Activité HSE</b></h5>
+                                <div class="row d-flex">
+                                    <div class="box col-md-6">
+                                        <h6><b>Accidentologie et maladie</b></h6>
+                                        <div class="tf-divider"><span></span></div>
+                                        <div class="box box-coords" style="flex:1">
+                                            <p><span class="label pull-left mr-2">Nombre d'arrêt de travail</span><span class="" *ngIf="salarie.arret_travail; else noDataFound">{{salarie.arret_travail?.length}}</span></p>
+                                            <p><span class="label pull-left mr-2">Nombre de jours</span><span class="" *ngIf="salarie.total_arret_travail; else noDataFound">{{salarie.total_arret_travail}}</span></p>
+                                            <p><span class="label pull-left mr-2">Nombre d'arrêt maladie</span><span class="">{{salarie.conges_maladie.length}}</span></p>
+                                            <p><span class="label pull-left mr-2">Nombre de jours</span><span class="">{{salarie.total_conges_maladie}} jours</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="box col-md-6">
+                                        <h6><b>Animation HSE</b></h6>
+                                        <div class="tf-divider"><span></span></div>
+                                        <div class="box box-coords" style="flex:1">
+                                            <p><span class="label pull-left mr-2">Causerie sur l'année</span><span class="" *ngIf="salarie.causerie; else noDataFound">{{salarie.causerie}}</span></p>
+                                            <p><span class="label pull-left mr-2">Remontées réalisées sur l'année</span><span class="" *ngIf="salarie.remontres; else noDataFound">{{salarie.remontres}}</span></p>
+                                            <p><span class="label pull-left mr-2">Situations dangereuses identifiées</span><span class="" *ngIf="salarie.sd; else noDataFound">{{salarie.sd}}</span></p>
+                                            <p><span class="label pull-left mr-2">Classification du salarié suite à son nombre de KO identifié</span><span class="" *ngIf="salarie.classification; else noDataFound">{{salarie.classification}}</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="box col-md-6">
+                                        <h6><b>Coût HSE du salarié</b></h6>
+                                        <div class="tf-divider"><span></span></div>
+                                        <div class="box box-coords" style="flex:1">
+                                            <p><span class="label pull-left mr-2">Coût formation</span><span class="" *ngIf="salarie.cout_formations_interne; else noDataFound">{{salarie.cout_formations_interne}}</span></p>
+                                            <p><span class="label pull-left mr-2">Véhicule & réparation</span><span class="" *ngIf="salarie.cout_vehicule; else noDataFound">{{salarie.cout_vehicule}}</span></p>
+                                            <p><span class="label pull-left mr-2">Outillage</span><span class="" *ngIf="salarie.cout_outillage; else noDataFound">{{salarie.cout_outillage}}</span></p>
+                                            <p><span class="label pull-left mr-2">EPI</span><span class="" *ngIf="salarie.cout_epi; else noDataFound">{{salarie.cout_epi}} jours</span></p>
+                                            <p><span class="label pull-left mr-2">Arrêt de travail</span><span class="" *ngIf="salarie.total_arret_travail; else noDataFound">{{salarie.total_arret_travail}}</span></p>
+                                            <p><span class="label pull-left mr-2">Absentéisme</span><span class="" *ngIf="salarie.total_absences; else noDataFound">{{salarie.total_absences}} jours</span></p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="box box-ar-vs col-md-6">
-                                <h6><b>Animation HSE</b></h6>
-                                <div class="tf-divider"><span></span></div>
-                                <div class="px-5">
-
-                                </div>
-                            </div>
-                            <div class="box box-ar-vs col-md-6">
-                                <h6><b>Coût HSE du salarié</b></h6>
-                                <div class="tf-divider"><span></span></div>
-                                <div class="px-5">
-
+                        </div>
+        
+                        <div class="col-md-12 mt-4">
+                            <div class="card">
+                                <h5><b>Formations</b></h5>
+                                <div class="box box-ar-vs" style="flex: 1;">
+                                    <h6><b>Suivis des formations</b>
+                                        <!-- <small class="pull-right">{{'COMMON.UPDATED_AT.TITLE' | translate}} le <span class="blue">10/10/2020</span></small> -->
+                                    </h6>
+                                    <div class="tf-divider"><span></span></div>
+                                    <div class="px-5">
+                                        <table class="table table-borderless table-sm table-striped px-4">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">Formations</th>
+                                                <th class="text-center" scope="col">Date de réalisation</th>
+                                                <th class="text-center" scope="col">Date de renouvellement</th>
+                                                <th class="text-center" scope="col">Autorisation employeur</th>
+                                                <th class="text-center" scope="col">Aptitudes</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr *ngFor="let formation of salarie.formations" >
+                                                <th scope="row">{{formation.libelle}}</th>
+                                                <td class="text-center">{{formation.date_debut | date:'dd/MM/yyyy'}}</td>
+                                                <td class="text-center">{{formation.date_renouvellement | date:'dd/MM/yyyy'}}</td>
+                                                <td class="text-center">{{formation.date_autorisation | date:'dd/MM/yyyy'}}</td>
+                                                <td class="text-center">{{formation.habilitation.libelle}}</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-md-12 mt-4">
-                    <div class="card">
-                        <h5><b>Formations</b></h5>
-                        <div class="box box-ar-vs" style="flex: 1;">
-                            <h6><b>Suivis des formations</b><small class="pull-right">{{'COMMON.UPDATED_AT.TITLE' | translate}} : <span class="blue">10/10/2020</span></small></h6>
-                            <div class="tf-divider"><span></span></div>
-                            <div class="px-5">
-                                <table class="table table-borderless table-sm table-striped px-4">
-                                    <thead>
-                                    <tr>
-                                        <th scope="col">Formations</th>
-                                        <th class="text-center" scope="col">Date de réalisation</th>
-                                        <th class="text-center" scope="col">Date de renouvellement</th>
-                                        <th class="text-center" scope="col">Autorisation employeur</th>
-                                        <th class="text-center" scope="col">Aptitudes</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr *ngFor="let formation of salarie.formations" >
-                                        <th scope="row">{{formation.libelle}}</th>
-                                        <td class="text-center">{{formation.date_debut | date:'dd/MM/yyyy'}}</td>
-                                        <td class="text-center">{{formation.date_fin | date:'dd/MM/yyyy'}}</td>
-                                        <td class="text-center">{{formation.date | date:'dd/MM/yyyy'}}</td>
-                                        <td class="text-center">{{formation.habilitation.libelle}}</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                </mat-tab>
+            </mat-tab-group>
         </div>
 
-      </div>
+    </div>
     </tf-portlet-body>
   </tf-portlet>
-  
-  <ng-template #noEntreprises>
-    <div class="card">
-      <h5 class="mb-4">Aucune Entreprise Externe</h5>
-    </div>
-  </ng-template>
-  
-  <ng-template #noHabRequired>
-    <div class="card">
-      <h5 class="mb-4">Aucune habilitations obligatoires pour accéder au salarie</h5>
-    </div>
-  </ng-template>
-  <ng-template #noSecuDays>
-    -
-  </ng-template>
 
 
   <ng-template #noDataFound>

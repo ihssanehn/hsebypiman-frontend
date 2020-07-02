@@ -936,9 +936,9 @@ export const locale = {
 				TITLE:'Score des salariés'
 			},
 			BIRTHDAY:{
-				LABEL:'Date de création',
-				TITLE:'Date de création',
-				SHORTTITLE:'Créé le'
+				LABEL:'Date de naissance',
+				TITLE:'Date de naissance',
+				SHORTTITLE:'Date de naissance'
 			},
 		
 		},
