@@ -1,0 +1,23 @@
+:host::ng-deep {
+    .box{
+        padding-top: 1.5em;
+        padding-bottom: 1.5em;
+        p{
+            text-align: right;
+        }
+        .label{
+            color: #c9c9c9;
+            text-align: left;
+        }
+        .blue{
+            color: #33b5ae;
+        }
+        .tf-divider.h-5 span{
+            height: 1em;
+        }
+        .no-data-label {
+            font-weight: 100;
+            font-style: italic;
+        }
+    }
+}

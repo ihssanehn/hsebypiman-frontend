@@ -67,3 +67,5 @@ export { TreeSelectComponent } from './tree-select/tree-select.component'
 
 // SALARIES
 export { SalarieScoreComponent } from './salarie-score/salarie-score.component';
+export { SalariePortletComponent } from './salarie/salarie-portlet/salarie-portlet.component';
+export { SalariePortletBoxComponent } from './salarie/salarie-portlet-box/salarie-portlet-box.component';

@@ -1,0 +1,16 @@
+<div class="box col-md-6" *ngFor="let item of catMetrics">
+    <h6><b>{{item.libelle}}</b></h6>
+    <div class="tf-divider"><span></span></div>
+    <div class="box box-coords" style="flex:1">
+        <p *ngFor="let metric of item.metrics">
+            <span class="label pull-left mr-2">{{metric.libelle}}</span>
+            <span class="" *ngIf="metric.pivot.value; else noDataFound">{{metric.pivot.value}}</span>
+        </p>
+    </div>
+</div>
+
+<ng-template #noDataFound>
+    <span class="no-data-label">
+      Non renseigné
+    </span>
+</ng-template>
