@@ -71,23 +71,35 @@
 									<div class="col-3">
 										<p class="blue text-center">pret : {{materiel.actual_user?.pivot.date_pret | date:'dd/MM/yyyy'}}</p>
 									</div>
-									<div class="col-5">
+									<div class="col-3">
+										
+									</div>
+									<div class="col-2">
 										<a class="pull-right" (click)="goToUserDetail(materiel.actual_user.id)" alt="voir l'utilisateur">
 											<mat-icon color="primary">visibility</mat-icon>
 										</a>
 									</div>
+									
+									<div class="col-12">
+										<button mat-raised-button color="info" class="btn-small pull-right" (click)="retourMateriel()">
+											Retour matériel
+										</button>
+									</div>
 								</ng-container>
 								<ng-template #noUserInProgress>
-									<div class="col-12">Aucun utilisateur en cours</div>
+									<div class="col-6">Aucun utilisateur en cours</div>
+									<div class="col-6">
+										<tf-assign-user (onUserSelected)="assignUser($event)"></tf-assign-user>
+									</div>
 								</ng-template>
 							</div>
-							<div class="row">
+							<div class="row mt-2">
 								<div class="col-12 my-2">
 									<p><span class="label">{{'MATERIELS.PERSONNELS_HISTORY.TITLE' | translate}}</span></p>
 								</div>
 								<ng-container *ngIf="materiel.personnels.length > 0; else noArHistorique">
 									<ng-container *ngFor="let personnel of materiel.personnels">
-										<ng-container *ngIf="personnel.id != materiel.actual_user.id">
+										<ng-container *ngIf="personnel.id != materiel.actual_user?.id">
 											<div class="col-4">
 												<p class="text-left">{{personnel | fullName}}</p>
 											</div>
@@ -113,7 +125,10 @@
 						<ng-template #noPersonnels>
 							<div class="row">
 								<div class="col-12">
-									<p>Aucune analyse</p>
+									<p>Aucun prêt</p>
+								</div>
+								<div class="col-12">
+									<tf-assign-user (onUserSelected)="assignUser(data)"></tf-assign-user>
 								</div>
 							</div>
 						</ng-template>

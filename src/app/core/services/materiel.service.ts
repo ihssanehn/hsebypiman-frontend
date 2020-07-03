@@ -54,4 +54,11 @@ export class MaterielService extends HttpService{
         var url = this.baseUrl+'/export?'+queryString+'&token='+localStorage.getItem(environment.authTokenKey);
         window.open(url, '_blank');
     }
+
+    giveBack(materiel_id){
+        return this.http.get<JsonResponse<Materiel>>(this.baseUrl+'/'+materiel_id+'/retour-materiel');
+    }
+    give(materiel_id, user_id){
+        return this.http.get<JsonResponse<Materiel>>(this.baseUrl+'/'+materiel_id+'/associer-materiel/'+user_id);
+    }
 }

@@ -1,0 +1,41 @@
+
+<form [formGroup]="form" (ngSubmit)="submitForm()" autocomplete="off" class="tf-form tf-form--group-seperator-dashed " novalidate *ngIf="assigning; else startAssign">
+    <div class="row">
+            <!-- SALARIE -->
+            <mat-form-field class="col-12">
+                <mat-label>{{'MATERIELS.ASSIGN_USER.LABEL' | translate}}</mat-label>
+                <mat-select class="form-control" placeholder="" formControlName="salarie_id" [required]="isFieldRequired('salarie_id')">
+                    <mat-option *ngFor="let user of salaries" [value]="user.id">
+                        {{ user | fullName }}
+                    </mat-option>
+                </mat-select>
+                <button mat-button matSuffix mat-icon-button aria-label="Clear"
+                    (click)="clearValue('salarie_id'); $event.stopPropagation()">
+                    <mat-icon>clear</mat-icon>
+                </button>
+                <mat-error *ngIf="isControlHasError('salarie_id','required')">
+                    <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                </mat-error>
+            </mat-form-field>
+                        
+        <div class="col-12" >
+            <div class="row">
+                <div class="col">
+                    <button mat-raised-button type="button" color="warn" (click)="cancelAssigning()" class="btn-small pull-right">
+                        Annuler
+                    </button>
+                </div>
+                <div class="col">
+                    <button mat-raised-button type="submit" color="info" class="btn-small pull-right" [disabled]="form.invalid">
+                        {{'ACTION.SAVE' | translate}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<ng-template #startAssign>
+    <button mat-raised-button color="info" (click)="assigning = true" class="btn-small pull-right">
+        Assigner le matériel
+    </button>
+</ng-template>

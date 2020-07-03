@@ -85,6 +85,7 @@ import {
 	SignatureListComponent,
 	ArDetailPanelsComponent,
 	TreeSelectComponent,
+	AssignUserComponent,
 	AddVehiculeFormComponent
 } from './layout';
 // General
@@ -177,6 +178,7 @@ import { ImageLightboxContentDialogComponent } from './layout/modal/image-lightb
 		SignatureListComponent,
 		ArDetailPanelsComponent,
 		TreeSelectComponent,
+		AssignUserComponent,
 		SearchOutillageFormComponent,
 
 		SearchSalarieFormComponent,
@@ -244,6 +246,7 @@ import { ImageLightboxContentDialogComponent } from './layout/modal/image-lightb
 		SignatureListComponent,
 		ArDetailPanelsComponent,
 		TreeSelectComponent,
+		AssignUserComponent,
 		SearchOutillageFormComponent,
 		SearchSalarieFormComponent,
 		VisiteQuestionOutillageAdminComponent,

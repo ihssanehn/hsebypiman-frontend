@@ -294,6 +294,11 @@ export const locale = {
 				TITLE:'Utilisateur actuel',
 				SHORTTITLE:'Utilisateur actuel',
 			},
+			ASSIGN_USER:{
+				LABEL:'Nouvel utilisateur',
+				TITLE:'Nouvel utilisateur',
+				SHORTTITLE:'Nouvel utilisateur',
+			},
 			PERSONNELS_COUNT:{
 				LABEL:'Nombre d\'utilisateurs',
 				TITLE:'Nombre d\'utilisateurs',

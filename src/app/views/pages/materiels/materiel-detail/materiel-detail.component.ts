@@ -25,6 +25,7 @@ export class MaterielDetailComponent implements OnInit, OnDestroy {
 	loaded = false;
 	editMode: boolean = false;
 	displayedEEChantiersColumns: Array<any>;
+	selectedUserId: number;
 	// Private properties
 	private subscriptions: Subscription[] = [];
 
@@ -123,6 +124,27 @@ export class MaterielDetailComponent implements OnInit, OnDestroy {
 			showConfirmButton: false,
             timer: 1500
 		})
+	}
+
+	async retourMateriel(){
+		try {
+			var res = await this.materielService.giveBack(this.materiel.id).toPromise();
+			this.materiel = res.result.data;
+			this.cdr.markForCheck();
+
+		} catch (error) {
+			console.error(error);
+		}
+	}
+
+	async assignUser(data){
+		try {
+			var res = await this.materielService.give(this.materiel.id, data).toPromise();
+			this.materiel = res.result.data;
+			this.cdr.markForCheck();
+		} catch (error) {
+			console.error(error);
+		}
 	}
 
 }

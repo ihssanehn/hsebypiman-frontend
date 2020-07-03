@@ -4,45 +4,7 @@
 			<form novalidate [formGroup]="filterForm" *ngIf="filterForm">
 				<div class="row">
 					<tf-tree-select [itemsList]="categories" class="col-12" [required]="false" [translateTitle]="'MATERIELS.CATEGORIE'" (onChangedItem)="categorieChanged($event)" *ngIf="categories"></tf-tree-select>
-					<!-- <ng-container formArrayName="categorie_ids">
-
-						<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12">
-							<mat-label>{{'MATERIELS.TYPE.TITLE' | translate}}</mat-label>
-							<mat-select class="form-control" formControlName="0" name="categorie_ids" >
-								<mat-option>Tous</mat-option>
-								<mat-option *ngFor="let categorie of categories" [value]="categorie.id">
-									{{categorie.libelle}}
-								</mat-option>
-							</mat-select>
-							<button mat-button *ngIf="formHasIndexValue('categorie_ids', 0)" matSuffix mat-icon-button aria-label="Clear" (click)="clearTreeValue('categorie_ids', 0); $event.stopPropagation()">
-								<mat-icon>clear</mat-icon>
-							</button>
-						</mat-form-field>
-						<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12" *ngIf="getSelectedCat(0) && getSelectedCat(0).children">
-							<mat-label>{{'MATERIELS.CATEGORIE.TITLE' | translate}}</mat-label>
-							<mat-select class="form-control" formControlName="1" name="categorie_ids" >
-								<mat-option>Tous</mat-option>
-								<mat-option *ngFor="let categorie of getSelectedCat(0).children" [value]="categorie.id">
-									{{categorie.libelle}}
-								</mat-option>
-							</mat-select>
-							<button mat-button *ngIf="formHasIndexValue('categorie_ids', 1)" matSuffix mat-icon-button aria-label="Clear" (click)="clearTreeValue('categorie_ids', 1); $event.stopPropagation()">
-								<mat-icon>clear</mat-icon>
-							</button>
-						</mat-form-field>
-						<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12" *ngIf="getSelectedCat(1) && getSelectedCat(1).children">
-							<mat-label>{{'MATERIELS.SUB_CATEGORIE.TITLE' | translate}}</mat-label>
-							<mat-select class="form-control" formControlName="2" name="categorie_ids" >
-								<mat-option>Tous</mat-option>
-								<mat-option *ngFor="let categorie of getSelectedCat(1).children" [value]="categorie.id">
-									{{categorie.libelle}}
-								</mat-option>
-							</mat-select>
-							<button mat-button *ngIf="formHasIndexValue('categorie_ids', 2)" matSuffix mat-icon-button aria-label="Clear" (click)="clearTreeValue('categorie_ids', 2); $event.stopPropagation()">
-								<mat-icon>clear</mat-icon>
-							</button>
-						</mat-form-field>
-					</ng-container> -->
+					
 					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12">
 						<mat-label>{{'MATERIELS.ACTUAL_USER.TITLE' | translate}}
 						</mat-label>
