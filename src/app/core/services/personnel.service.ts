@@ -28,8 +28,12 @@ export class PersonnelService extends HttpService{
 		return this.http.post<JsonResponse<Paginate<User>>>(this.baseUrl, {...params});
   }
 
-  getUserById(userId: number){
-		return this.http.get<JsonResponse<User>>(this.baseUrl + `/${userId}`)
+  getUserById(personnelId: number){
+		return this.http.get<JsonResponse<User>>(this.baseUrl + `/${personnelId}`)
+  }
+
+  setMetric(personnelId, params){
+    return this.http.post<JsonResponse<User>>(this.baseUrl+'/'+personnelId+'/metric', params);
   }
   
 }

@@ -69,3 +69,5 @@ export { TreeSelectComponent } from './tree-select/tree-select.component'
 export { SalarieScoreComponent } from './salarie-score/salarie-score.component';
 export { SalariePortletComponent } from './salarie/salarie-portlet/salarie-portlet.component';
 export { SalariePortletBoxComponent } from './salarie/salarie-portlet-box/salarie-portlet-box.component';
+export { SalariePortletRowComponent } from './salarie/salarie-portlet-row/salarie-portlet-row.component';
+export { SalarieCardComponent } from './salarie/salarie-card/salarie-card.component';

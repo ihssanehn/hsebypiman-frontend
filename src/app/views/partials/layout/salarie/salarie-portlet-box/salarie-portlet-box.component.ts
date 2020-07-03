@@ -8,11 +8,13 @@ import { CatQuestion } from '@app/core/models';
 })
 export class SalariePortletBoxComponent implements OnInit {
 
-  @Input() catMetrics: CatQuestion;
+  @Input() catMetric: CatQuestion;
 
   constructor() { }
 
   ngOnInit() {
+      
+
   }
 
 }

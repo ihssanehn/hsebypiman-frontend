@@ -1,0 +1,28 @@
+<p *ngIf="!editMode; else edit">
+    <span class="label pull-left mr-2">{{metric.libelle}}</span>
+    <span class="" *ngIf="metric.pivot.value; else noDataFound">{{metric.pivot.value}}</span>
+    <span>
+        <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editMetric()">
+          <mat-icon>edit</mat-icon>
+        </button>
+    </span>
+</p>
+
+<ng-template #noDataFound>
+    <span class="no-data-label">
+      Non renseigné
+    </span>
+</ng-template>
+
+<ng-template #edit>
+    <mat-form-field class="col-xl-10">
+        <mat-label>{{metric.libelle}}</mat-label>
+        <input matInput #metricInput class="form-control" [value]="metric.pivot.value" type="string" name="metric" 
+        placeholder="Saisir ici" />
+      </mat-form-field>
+      <span class="col-xl-2">
+        <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="setMetric(metricInput.value)">
+          <mat-icon>check</mat-icon>
+        </button>
+    </span>
+</ng-template>

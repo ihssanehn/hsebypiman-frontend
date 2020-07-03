@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { User } from '@app/core/auth';
+import { Type } from '@app/core/models';
 
 @Component({
   selector: 'tf-salarie-portlet',
@@ -8,7 +8,7 @@ import { User } from '@app/core/auth';
 })
 export class SalariePortletComponent implements OnInit {
 
-  @Input() salarie: User;
+  @Input() metricsTree: Type;
 
   constructor() { }
 

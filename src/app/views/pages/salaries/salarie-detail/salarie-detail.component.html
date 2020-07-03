@@ -147,7 +147,7 @@
                             </div>
                         </div>
         
-                        <tf-salarie-portlet [salarie]="salarie"></tf-salarie-portlet>
+                        <tf-salarie-portlet [metricsTree]="item" *ngFor="let item of salarie.metricsTree"></tf-salarie-portlet>
         
                         <div class="col-md-12 mt-4">
                             <div class="card">
