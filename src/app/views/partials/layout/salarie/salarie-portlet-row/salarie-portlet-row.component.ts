@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Type } from '@app/core/models';
 import { PersonnelService } from '@app/core/services';
 import Swal, { SweetAlertIcon } from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
   selector: 'tf-salarie-portlet-row',
@@ -12,6 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class SalariePortletRowComponent implements OnInit {
 
   @Input() metric: Type;
+  @Output() onEdit = new EventEmitter();
 
   editMode: boolean = false;
   personnelId: number;
@@ -63,7 +65,8 @@ export class SalariePortletRowComponent implements OnInit {
 					timer: code == 'success' ? 1500 : 3000
 				}).then(() => {
           this.editMode = false;
-          this.metric.pivot.value = metricValue;
+          //this.metric.pivot.value = metricValue;
+          this.onEdit.emit(metricValue);
 				})
 			}).catch(e => {
 				Swal.fire({

@@ -267,7 +267,9 @@ import { SalarieCardComponent } from './layout/salarie/salarie-card/salarie-card
 		ImageLightboxContentDialogComponent,
 		SalarieScoreComponent,
 		SalariePortletComponent,
-		SalariePortletBoxComponent
+		SalariePortletBoxComponent,
+		SalariePortletRowComponent,
+		SalarieCardComponent
 	],
 	imports: [
 		CommonModule,

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CatQuestion } from '@app/core/models';
 
 @Component({
@@ -9,12 +9,15 @@ import { CatQuestion } from '@app/core/models';
 export class SalariePortletBoxComponent implements OnInit {
 
   @Input() catMetric: CatQuestion;
+  @Output() onEdit = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
-      
+  }
 
+  onSubmit(value){
+    this.onEdit.emit(value);
   }
 
 }

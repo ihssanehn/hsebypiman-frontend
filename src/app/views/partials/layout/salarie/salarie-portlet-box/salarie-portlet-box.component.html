@@ -5,6 +5,7 @@
         <tf-salarie-portlet-row
             *ngFor="let metric of catMetric.metrics"
             [metric]="metric" 
+            (onEdit)="onSubmit()"
         ></tf-salarie-portlet-row>
     </div>
 </div>

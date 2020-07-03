@@ -34,75 +34,14 @@
         <div class="col-md-9">
             <mat-tab-group mat-align-tabs="start" animationDuration="1000ms">
                 <mat-tab label="Vision 360">
-                    <div class="col-md-12 d-flex">
-                        <div class="col-md-4 d-flex">
-                            <div class="row d-flex flex-column flex-nowrap flex-fill">
-                            <div class="col-12 flex-fill" >
-                                <div class="card">
-                                    <h5><b>Outillage</b></h5>
-                                    <div class="tf-divider"><span></span></div>
-                                    <div class="box box-coords" style="flex:1">
-                    
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 mt-4 flex-fill" >
-                                <div class="card">
-                                    <h5><b>Formation</b></h5>
-                                    <div class="tf-divider"><span></span></div>
-                                    <div class="box box-coords" style="flex:1">
-        
-                                    </div>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-        
-                        <div class="col-md-4 d-flex">
-                            <div class="row d-flex flex-column flex-nowrap flex-fill">
-                            <div class="col-12 flex-fill" >
-                                <div class="card">
-                                    <h5><b>Accidentologie</b></h5>
-                                    <div class="tf-divider"><span></span></div>
-                                    <div class="box box-coords" style="flex:1">
-                    
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 mt-4 flex-fill" >
-                                <div class="card">
-                                    <h5><b>EPI</b></h5>
-                                    <div class="tf-divider"><span></span></div>
-                                    <div class="box box-coords" style="flex:1">
-        
-                                    </div>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-        
-                        <div class="col-md-4 d-flex">
-                            <div class="row d-flex flex-column flex-nowrap flex-fill">
-                            <div class="col-12 flex-fill" >
-                                <div class="card">
-                                    <h5><b>Animation HSE</b></h5>
-                                    <div class="tf-divider"><span></span></div>
-                                    <div class="box box-coords" style="flex:1">
-                    
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 mt-4 flex-fill" >
-                                <div class="card">
-                                    <h5><b>Véhicule</b></h5>
-                                    <div class="tf-divider"><span></span></div>
-                                    <div class="box box-coords" style="flex:1">
-        
-                                    </div>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
+                    <div class="d-flex flex-wrap">
+
+                        <tf-salarie-card
+                            class="col-md-4 d-flex pt-3"
+                            *ngFor="let item of salarie.catMetricsList"
+                            [catMetric]="item"
+                        ></tf-salarie-card>
+
                     </div>
                 </mat-tab>
                 <mat-tab label="Détails">
@@ -147,7 +86,11 @@
                             </div>
                         </div>
         
-                        <tf-salarie-portlet [metricsTree]="item" *ngFor="let item of salarie.metricsTree"></tf-salarie-portlet>
+                        <tf-salarie-portlet 
+                            *ngFor="let item of salarie.metricsTree"
+                            [metricsTree]="item" 
+                            (onEdit)="onEditMetric()"
+                        ></tf-salarie-portlet>
         
                         <div class="col-md-12 mt-4">
                             <div class="card">

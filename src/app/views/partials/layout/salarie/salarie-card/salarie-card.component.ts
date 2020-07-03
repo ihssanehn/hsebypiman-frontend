@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { CatQuestion } from '@app/core/models';
 
 @Component({
   selector: 'tf-salarie-card',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./salarie-card.component.scss']
 })
 export class SalarieCardComponent implements OnInit {
+
+  @Input() catMetric: CatQuestion;
+
 
   constructor() { }
 

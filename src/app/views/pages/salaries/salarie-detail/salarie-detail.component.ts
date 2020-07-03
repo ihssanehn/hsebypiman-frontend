@@ -65,6 +65,10 @@ export class SalarieDetailComponent implements OnInit, OnDestroy {
 			console.error(error);
 		}
   }
+
+  onEditMetric(){
+    this.getSalarie(this.salarie.id);
+  }
   
   goBackWithId() {
 		const url = `/salaries/list`;

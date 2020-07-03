@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Type } from '@app/core/models';
 
 @Component({
@@ -9,10 +9,15 @@ import { Type } from '@app/core/models';
 export class SalariePortletComponent implements OnInit {
 
   @Input() metricsTree: Type;
+  @Output() onEdit = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onSubmit(value){
+    this.onEdit.emit(value);
   }
 
 }
