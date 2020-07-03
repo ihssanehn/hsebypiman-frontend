@@ -2,8 +2,8 @@ import { ChangeDetectorRef, Component, OnInit, EventEmitter, Output, Input, forw
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormBuilder, FormGroup } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
-import { MaterielService, TypeService, StatusService, EntrepriseService, UserService } from '@app/core/services';
-import { Materiel, Type, Status, Entreprise } from '@app/core/models';
+import { TypeService, StatusService, EntrepriseService, UserService } from '@app/core/services';
+import { Type, Status, Entreprise } from '@app/core/models';
 import { AuthService, User } from '@app/core/auth';
 import * as moment from 'moment';
 import { debounceTime, map } from 'rxjs/operators';
@@ -45,7 +45,6 @@ export class VisiteEpiFiltersComponent implements OnInit, AfterViewInit
   @Output() change = new EventEmitter();
   constructor(
     private statusService: StatusService,
-    private materielService:MaterielService, 
     private entrepriseService:EntrepriseService, 
     private typeService:TypeService,
     private userService:UserService,

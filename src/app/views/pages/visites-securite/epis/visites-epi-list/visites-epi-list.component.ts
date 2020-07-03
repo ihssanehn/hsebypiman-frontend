@@ -139,7 +139,7 @@ export class VisitesEpiListComponent implements OnInit {
 			return by == this.filter.order_by
 		}
 	}
-
+	
 	advancedSearchChanged($event){
 		this.showFilters = $event;
 	}
