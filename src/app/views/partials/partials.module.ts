@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { NgImageSliderModule } from 'ng-image-slider';
+import { AvatarModule } from 'ngx-avatar';
 
 import { TranslateModule } from '@ngx-translate/core';
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -308,6 +309,7 @@ import { SalarieCardComponent } from './layout/salarie/salarie-card/salarie-card
 
 		SignaturePadModule,
 		NgImageSliderModule,
+		AvatarModule,
 
 		// ng-bootstrap modules
 		NgbDropdownModule,

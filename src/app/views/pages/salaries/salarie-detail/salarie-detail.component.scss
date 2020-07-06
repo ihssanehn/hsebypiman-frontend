@@ -88,6 +88,15 @@
                             }
                         }
                     }
+                    .user-avatar /deep/ {
+                        .avatar-content{
+                            background-color: #f7f9fc!important;
+                            color: #525252!important;
+                        }
+                        .avatar-container{
+                            width: 100%!important;
+                        }
+                    }
                 }
 
             }

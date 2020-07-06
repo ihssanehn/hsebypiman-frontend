@@ -61,6 +61,7 @@ import {
 import { HttpUtilsService, LayoutUtilsService, TypesUtilsService } from './core/_base/crud';
 // Config
 import { LayoutConfig } from './core/_config/layout.config';
+import { AvatarModule } from 'ngx-avatar';
 
 
 
@@ -142,6 +143,7 @@ export function hljsLanguages(): HighlightLanguage[] {
 		ReactiveFormsModule,
 		SignaturePadModule,
 		NgImageSliderModule,
+		AvatarModule,
 		// NgxEchartsModule.forRoot({
 		// 	echarts:{ 
 		// 		init,
