@@ -151,7 +151,12 @@ export class MaterielDetailComponent implements OnInit, OnDestroy {
 			var res = await this.materielService.updatePret(this.materiel.id, params).toPromise();
 			this.materiel = res.result.data;
 			this.cdr.markForCheck();
-
+			Swal.fire({
+				icon: 'success',
+				title: 'Prêt mis à jour avec succès',
+				showConfirmButton: false,
+				timer: 1500
+			});
 		} catch (error) {
 			console.error(error);
 		}
@@ -162,6 +167,12 @@ export class MaterielDetailComponent implements OnInit, OnDestroy {
 			var res = await this.materielService.createPret(this.materiel.id, params).toPromise();
 			this.materiel = res.result.data;
 			this.cdr.markForCheck();
+			Swal.fire({
+				icon: 'success',
+				title: 'Prêt créé avec succès',
+				showConfirmButton: false,
+				timer: 1500
+			});
 		} catch (error) {
 			console.error(error);
 		}
