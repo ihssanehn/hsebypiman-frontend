@@ -56,7 +56,7 @@ export class MaterielService extends HttpService{
     }
 
     createPret(materiel_id, params){
-        return this.http.post<JsonResponse<Materiel>>(this.baseUrl+'/'+materiel_id+'/pret/create/', params);
+        return this.http.post<JsonResponse<Materiel>>(this.baseUrl+'/'+materiel_id+'/pret/create', params);
     }
     updatePret(materiel_id, params){
         return this.http.put<JsonResponse<Materiel>>(this.baseUrl+'/'+materiel_id+'/pret/update', params);
