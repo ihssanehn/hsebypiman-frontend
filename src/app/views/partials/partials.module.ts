@@ -85,7 +85,7 @@ import {
 	SignatureListComponent,
 	ArDetailPanelsComponent,
 	TreeSelectComponent,
-	AssignUserComponent,
+	PretModalComponent,
 	AddVehiculeFormComponent
 } from './layout';
 // General
@@ -178,7 +178,8 @@ import { ImageLightboxContentDialogComponent } from './layout/modal/image-lightb
 		SignatureListComponent,
 		ArDetailPanelsComponent,
 		TreeSelectComponent,
-		AssignUserComponent,
+
+		PretModalComponent,
 		SearchOutillageFormComponent,
 
 		SearchSalarieFormComponent,
@@ -246,7 +247,8 @@ import { ImageLightboxContentDialogComponent } from './layout/modal/image-lightb
 		SignatureListComponent,
 		ArDetailPanelsComponent,
 		TreeSelectComponent,
-		AssignUserComponent,
+
+		PretModalComponent,
 		SearchOutillageFormComponent,
 		SearchSalarieFormComponent,
 		VisiteQuestionOutillageAdminComponent,
@@ -317,7 +319,8 @@ import { ImageLightboxContentDialogComponent } from './layout/modal/image-lightb
 
 	],
 	entryComponents: [
-		AdminAddModalComponent
+		AdminAddModalComponent,
+		PretModalComponent,
 	],
 })
 export class PartialsModule {

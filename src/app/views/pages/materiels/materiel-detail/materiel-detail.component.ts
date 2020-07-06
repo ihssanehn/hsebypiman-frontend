@@ -3,10 +3,13 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
 import { BehaviorSubject, Observable, of, Subscription } from "rxjs";
 
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MaterielService, TypeService } from '@app/core/services';
 import { Paginate } from '@app/core/_base/layout/models/paginate.model';
 import { Materiel } from '@app/core/models';
 import { NgxPermissionsService } from 'ngx-permissions';
+import {PretModalComponent} from '@app/views/partials/layout';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
@@ -41,6 +44,8 @@ export class MaterielDetailComponent implements OnInit, OnDestroy {
 		private activatedRoute: ActivatedRoute,
 		private router: Router,
 		private materielFB: FormBuilder,
+		private modalService: NgbModal,
+		public dialog: MatDialog,
 		// private notificationService: NzNotificationService,
 		private materielService: MaterielService,
 		private cdr: ChangeDetectorRef,
@@ -125,6 +130,19 @@ export class MaterielDetailComponent implements OnInit, OnDestroy {
             timer: 1500
 		})
 	}
+	openPretModal(origin = 'add',data = {}): void {
+		const dialogRef = this.dialog.open(PretModalComponent, {
+		  data: {origin: origin, pivot: data}
+		});
+	
+		dialogRef.afterClosed().subscribe(result => {
+			if(origin == 'add'){
+				this.assignUser(result)
+			}else{
+				this.updatePret(result)
+			}
+		});
+	  }
 
 	async updatePret(params){
 		try {

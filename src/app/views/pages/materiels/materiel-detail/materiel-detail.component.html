@@ -81,13 +81,13 @@
 									</div>
 									
 									<div class="col-12">
-										<tf-assign-user (onUserSelected)="updatePret($event)" [origin]="'return'" [data]="materiel.actual_user.pivot"></tf-assign-user>
+										<button mat-raised-button class="btn-small pull-right" color="info" (click)="$event.stopPropagation(); openPretModal('return', materiel.actual_user.pivot)">Retourner le matériel</button>
 									</div>
 								</ng-container>
 								<ng-template #noUserInProgress>
-									<div class="col-6">Aucun utilisateur en cours</div>
-									<div class="col-6">
-										<tf-assign-user (onUserSelected)="assignUser($event)" [origin]="'add'" ></tf-assign-user>
+									<div class="col-12">Aucun utilisateur en cours</div>
+									<div class="col-12">
+										<button mat-raised-button class="btn-small pull-right" color="info" (click)="$event.stopPropagation(); openPretModal('add')">Assigner le matériel</button>
 									</div>
 								</ng-template>
 							</div>
@@ -111,9 +111,9 @@
 												<a class="pull-right" (click)="goToUserDetail(salarie.id)" alt="voir l'utilisateur">
 													<mat-icon color="primary">visibility</mat-icon>
 												</a>
-												<!-- <a class="pull-right" (click)="onEdit = true" alt="modifier le pret">
+												<a class="pull-right" (click)="$event.stopPropagation(); openPretModal('udpate', salarie.pivot)" alt="modifier le pret">
 													<mat-icon color="accent">edit</mat-icon>
-												</a> -->
+												</a>
 											</div>
 										</ng-container>
 									</ng-container>
@@ -129,7 +129,7 @@
 									<p>Aucun prêt</p>
 								</div>
 								<div class="col-12">
-									<tf-assign-user [origin]="add"></tf-assign-user>
+									<button mat-raised-button color="info" class="btn-small" (click)="$event.stopPropagation(); openPretModal('add')">Assigner le matériel</button>
 								</div>
 							</div>
 						</ng-template>
@@ -137,9 +137,6 @@
 				</div>
 			</div>
 		</div>
-		<button type="button" mdbBtn color="default" rounded="true" data-toggle="modal" data-target="#basicExample"
-        	(click)="frame.show()" mdbWavesEffect>Launch Modal
-		</button>
 
 	</tf-portlet-body>
 </tf-portlet>

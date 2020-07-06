@@ -59,4 +59,4 @@ export { SignatureListComponent } from './signature/signature-list/signature-lis
 export { ArDetailPanelsComponent } from './analyse-risque/ar-detail-panels/ar-detail-panels.component';
 export { TreeSelectComponent } from './tree-select/tree-select.component';
 // Materiel
-export { AssignUserComponent } from './materiel/assign-user/assign-user.component';
+export { PretModalComponent } from './materiel/pret-modal/pret-modal.component';

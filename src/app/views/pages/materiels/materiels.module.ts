@@ -19,6 +19,8 @@ import { HttpUtilsService, TypesUtilsService, InterceptService, LayoutUtilsServi
 import { ActionNotificationComponent } from '../../partials/content/crud';
 import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule, NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxMaskModule } from 'ngx-mask';
+
+import {PretModalComponent} from '@app/views/partials/layout';
 // Material
 import {
 	MatInputModule,
@@ -177,7 +179,8 @@ const routes: Routes = [
 		LayoutUtilsService
 	],
 	entryComponents: [
-		ActionNotificationComponent
+		ActionNotificationComponent,
+		PretModalComponent
 		// 
 	],
 	declarations: [
