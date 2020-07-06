@@ -58,8 +58,8 @@
 			<div class="col-md-6">
 				<div class="card">
 					<div class="box box-ar-vs" style="flex: 1;">
-						<h5><b>Suivi des utilisateurs</b><small class="pull-right">{{'MATERIELS.PERSONNELS_COUNT.SHORTTITLE' | translate}} : <span class="blue">{{materiel.personnels.length}}</span></small></h5>
-						<ng-container *ngIf="materiel.personnels.length > 0; else noPersonnels">
+						<h5><b>Suivi des utilisateurs</b><small class="pull-right">{{'MATERIELS.PERSONNELS_COUNT.SHORTTITLE' | translate}} : <span class="blue">{{materiel.salaries.length}}</span></small></h5>
+						<ng-container *ngIf="materiel.salaries.length > 0; else noSalaries">
 							<div class="row">
 								<div class="col-12 my-2">
 									<p><span class="label">{{'MATERIELS.ACTUAL_USER.TITLE' | translate}}</span></p>
@@ -81,15 +81,13 @@
 									</div>
 									
 									<div class="col-12">
-										<button mat-raised-button color="info" class="btn-small pull-right" (click)="retourMateriel()">
-											Retour matériel
-										</button>
+										<tf-assign-user (onUserSelected)="updatePret($event)" [origin]="'return'" [data]="materiel.actual_user.pivot"></tf-assign-user>
 									</div>
 								</ng-container>
 								<ng-template #noUserInProgress>
 									<div class="col-6">Aucun utilisateur en cours</div>
 									<div class="col-6">
-										<tf-assign-user (onUserSelected)="assignUser($event)"></tf-assign-user>
+										<tf-assign-user (onUserSelected)="assignUser($event)" [origin]="'add'" ></tf-assign-user>
 									</div>
 								</ng-template>
 							</div>
@@ -97,22 +95,28 @@
 								<div class="col-12 my-2">
 									<p><span class="label">{{'MATERIELS.PERSONNELS_HISTORY.TITLE' | translate}}</span></p>
 								</div>
-								<ng-container *ngIf="materiel.personnels.length > 0; else noArHistorique">
-									<ng-container *ngFor="let personnel of materiel.personnels">
-										<ng-container *ngIf="personnel.id != materiel.actual_user?.id">
+								<ng-container *ngIf="materiel.salaries.length > 0; else noArHistorique">
+									<ng-container *ngFor="let salarie of materiel.salaries">
+										<ng-container *ngIf="salarie.id != materiel.actual_user?.id">
 											<div class="col-4">
-												<p class="text-left">{{personnel | fullName}}</p>
+												<p class="text-left">{{salarie | fullName}}</p>
 											</div>
 											<div class="col-3">
-												<p class="text-center">pret : {{personnel.pivot.date_pret | date:'dd/MM/yyyy'}}</p>
+												<p class="text-center">pret : {{salarie.pivot.date_pret | date:'dd/MM/yyyy'}}</p>
 											</div>
 											<div class="col-3">
-												<p class="text-center">retour: {{personnel.pivot.date_retour | date:'dd/MM/yyyy'}}</p>
+												<p class="text-center">retour: {{salarie.pivot.date_retour | date:'dd/MM/yyyy'}}</p>
 											</div>
 											<div class="col-2">
-												<a class="pull-right" (click)="goToUserDetail(personnel.id)" alt="voir l'analyse de risque">
+												<a class="pull-right" (click)="goToUserDetail(salarie.id)" alt="voir l'utilisateur">
 													<mat-icon color="primary">visibility</mat-icon>
 												</a>
+												<!-- <a class="pull-right" (click)="onEdit = true" alt="modifier le pret">
+													<mat-icon color="accent">edit</mat-icon>
+												</a> -->
+											</div>
+											<div class="col-12" *ngIf="onEdit">
+
 											</div>
 										</ng-container>
 									</ng-container>
@@ -122,13 +126,13 @@
 								</ng-template>
 							</div>
 						</ng-container>
-						<ng-template #noPersonnels>
+						<ng-template #noSalaries>
 							<div class="row">
 								<div class="col-12">
 									<p>Aucun prêt</p>
 								</div>
 								<div class="col-12">
-									<tf-assign-user (onUserSelected)="assignUser(data)"></tf-assign-user>
+									<tf-assign-user [origin]="add"></tf-assign-user>
 								</div>
 							</div>
 						</ng-template>
@@ -136,6 +140,10 @@
 				</div>
 			</div>
 		</div>
+		<button type="button" mdbBtn color="default" rounded="true" data-toggle="modal" data-target="#basicExample"
+        	(click)="frame.show()" mdbWavesEffect>Launch Modal
+		</button>
+
 	</tf-portlet-body>
 </tf-portlet>
 

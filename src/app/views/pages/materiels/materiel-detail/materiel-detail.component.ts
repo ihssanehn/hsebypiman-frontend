@@ -126,9 +126,9 @@ export class MaterielDetailComponent implements OnInit, OnDestroy {
 		})
 	}
 
-	async retourMateriel(){
+	async updatePret(params){
 		try {
-			var res = await this.materielService.giveBack(this.materiel.id).toPromise();
+			var res = await this.materielService.updatePret(this.materiel.id, params).toPromise();
 			this.materiel = res.result.data;
 			this.cdr.markForCheck();
 
@@ -137,9 +137,9 @@ export class MaterielDetailComponent implements OnInit, OnDestroy {
 		}
 	}
 
-	async assignUser(data){
+	async assignUser(params){
 		try {
-			var res = await this.materielService.give(this.materiel.id, data).toPromise();
+			var res = await this.materielService.createPret(this.materiel.id, params).toPromise();
 			this.materiel = res.result.data;
 			this.cdr.markForCheck();
 		} catch (error) {

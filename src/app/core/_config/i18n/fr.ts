@@ -324,6 +324,16 @@ export const locale = {
 				TITLE:'Marque',
 				SHORTTITLE:'Marque',
 			},
+			DATE_PRET:{
+				LABEL:'Date de pret',
+				TITLE:'Date de pret',
+				SHORTTITLE:'Date de pret',
+			},
+			DATE_RETOUR:{
+				LABEL:'Date de retour',
+				TITLE:'Date de retour',
+				SHORTTITLE:'Date de retour',
+			},
 			CODE:{
 				LABEL:'Code',
 				TITLE:'Code',

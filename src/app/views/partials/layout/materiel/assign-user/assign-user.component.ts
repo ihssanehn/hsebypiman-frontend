@@ -2,6 +2,10 @@ import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef } fro
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '@app/core/services';
 import { Type, Materiel } from '@app/core/models';
+import moment from 'moment';
+import { DateEnToFrPipe, DateFrToEnPipe } from '@app/core/_base/layout';
+
+
 
 @Component({
   selector: 'tf-assign-user',
@@ -12,6 +16,8 @@ export class AssignUserComponent implements OnInit {
 
   form: FormGroup;
 
+  @Input() origin: String;
+  @Input() data: any = {};
   @Output() onUserSelected = new EventEmitter<any>();
   salaries: any;
   assigning: boolean = false;
@@ -19,13 +25,29 @@ export class AssignUserComponent implements OnInit {
   constructor(
     private salarieService : UserService,
     private fb : FormBuilder,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private dateFrToEnPipe:DateFrToEnPipe,
+    private dateEnToFrPipe:DateEnToFrPipe,
+    
   ) { }
 
   async ngOnInit() {
+    console.log(this.origin)
     this.form = this.fb.group({
-      salarie_id: [null, Validators.required]
+      salarie_id: [null, Validators.required],
+      date_pret: [ moment().format('DD/MM/YYYY') ],
+      date_retour: [null],
     })
+
+    if(this.origin != 'add' && this.data != {}){
+      var data = {... this.data}
+      if(!data.date_retour){
+        data.date_retour = moment().format()
+      }
+      this.formatDates(data, 'EnToFr');
+      this.form.patchValue(data);
+      this.form.get('salarie_id').disable();
+    }
 
     this.salaries = (await this.salarieService.getList().toPromise()).result.data;
     this.cdr.detectChanges();
@@ -60,7 +82,9 @@ export class AssignUserComponent implements OnInit {
   }
 
   submitForm(){
-    this.onUserSelected.emit(this.form.get('salarie_id').value);
+    var form = this.form.value;
+    this.formatDates(form, 'FrToEn');
+    this.onUserSelected.emit(this.form.value);
   }
 
   clearValue(key){
@@ -68,8 +92,14 @@ export class AssignUserComponent implements OnInit {
   }
 
   cancelAssigning(){
-    this.form.get('salarie_id').patchValue(null);
+    this.form.patchValue(this.data);
     this.assigning = false;
+  }
+
+  
+  formatDates(item, direction){
+    item.date_pret = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.date_pret) : this.dateEnToFrPipe.transform(item.date_pret);
+    item.date_retour = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.date_retour) : this.dateEnToFrPipe.transform(item.date_retour);
   }
 
 }

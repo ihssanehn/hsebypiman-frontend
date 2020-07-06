@@ -55,10 +55,10 @@ export class MaterielService extends HttpService{
         window.open(url, '_blank');
     }
 
-    giveBack(materiel_id){
-        return this.http.get<JsonResponse<Materiel>>(this.baseUrl+'/'+materiel_id+'/retour-materiel');
+    createPret(materiel_id, params){
+        return this.http.post<JsonResponse<Materiel>>(this.baseUrl+'/'+materiel_id+'/pret/create/', params);
     }
-    give(materiel_id, user_id){
-        return this.http.get<JsonResponse<Materiel>>(this.baseUrl+'/'+materiel_id+'/associer-materiel/'+user_id);
+    updatePret(materiel_id, params){
+        return this.http.put<JsonResponse<Materiel>>(this.baseUrl+'/'+materiel_id+'/pret/update', params);
     }
 }
