@@ -136,10 +136,12 @@ export class MaterielDetailComponent implements OnInit, OnDestroy {
 		});
 	
 		dialogRef.afterClosed().subscribe(result => {
-			if(origin == 'add'){
-				this.assignUser(result)
-			}else{
-				this.updatePret(result)
+			if(result){
+				if(origin == 'add'){
+					this.assignUser(result)
+				}else{
+					this.updatePret(result)
+				}
 			}
 		});
 	  }

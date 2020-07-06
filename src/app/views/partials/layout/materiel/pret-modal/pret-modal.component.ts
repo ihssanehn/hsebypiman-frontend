@@ -4,8 +4,7 @@ import { UserService } from '@app/core/services';
 import { Type, Materiel } from '@app/core/models';
 import moment from 'moment';
 import { DateEnToFrPipe, DateFrToEnPipe } from '@app/core/_base/layout';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 export interface DialogData {
   origin: string;
@@ -20,42 +19,41 @@ export interface DialogData {
 export class PretModalComponent implements OnInit {
 
   form: FormGroup;
-  
+
   salaries: any;
   formloading: Boolean = false;
-  
+
   constructor(
     public dialogRef: MatDialogRef<PretModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
-    // public activeModal: NgbActiveModal,
-    private salarieService : UserService,
-    private fb : FormBuilder,
+    private salarieService: UserService,
+    private fb: FormBuilder,
     private cdr: ChangeDetectorRef,
-    private dateFrToEnPipe:DateFrToEnPipe,
-    private dateEnToFrPipe:DateEnToFrPipe,
-    
+    private dateFrToEnPipe: DateFrToEnPipe,
+    private dateEnToFrPipe: DateEnToFrPipe,
+
   ) { }
 
   async ngOnInit() {
     this.form = this.fb.group({
       salarie_id: [null, Validators.required],
-      date_pret: [ moment().format('DD/MM/YYYY')],
+      date_pret: [moment().format('DD/MM/YYYY')],
       date_retour: [null],
     })
 
-    if(this.data.origin != 'add' && this.data.pivot != {}){
-      var pivot = {... this.data.pivot}
-      
-      if(!pivot.date_retour){
+    if (this.data.origin != 'add' && this.data.pivot != {}) {
+      var pivot = { ... this.data.pivot }
+
+      if (!pivot.date_retour) {
         pivot.date_retour = moment().format()
       }
       this.formatDates(pivot, 'EnToFr');
       this.form.patchValue(pivot);
-      
+
       this.form.get('salarie_id').disable();
 
 
-      if(this.data.origin == 'return'){
+      if (this.data.origin == 'return') {
         this.form.get('date_pret').disable();
       }
     }
@@ -63,49 +61,53 @@ export class PretModalComponent implements OnInit {
     this.salaries = (await this.salarieService.getList().toPromise()).result.data;
 
     this.cdr.markForCheck();
-    
+
   }
 
 
 
-  isFieldRequired(controlName){
-    if(this.form && this.form.controls[controlName]){
+  isFieldRequired(controlName) {
+    if (this.form && this.form.controls[controlName]) {
       const control = this.form.controls[controlName]
       const { validator } = control
       if (validator) {
-          const validation = validator(new FormControl())
-          return validation !== null && validation.required === true
-      }else{
+        const validation = validator(new FormControl())
+        return validation !== null && validation.required === true
+      } else {
         return false;
       }
     }
   }
 
-   /**
-	 * Checking control validation
-	 *
-	 * @param controlName: string => Equals to formControlName
-	 * @param validationType: string => Equals to valitors name
-	 */
-	isControlHasError(controlName: string, validationType: string): boolean {
-		const control = this.form.controls[controlName];
-		if (!control) {
-			return false;
-		}
+  /**
+  * Checking control validation
+  *
+  * @param controlName: string => Equals to formControlName
+  * @param validationType: string => Equals to valitors name
+  */
+  isControlHasError(controlName: string, validationType: string): boolean {
+    const control = this.form.controls[controlName];
+    if (!control) {
+      return false;
+    }
 
-		const result = control.hasError(validationType) && (control.dirty || control.touched);
-		return result;
+    const result = control.hasError(validationType) && (control.dirty || control.touched);
+    return result;
   }
 
-  submitForm(){
+  submitForm() {
     this.formloading = true;
-    var form = {...this.form.getRawValue()};
+    var form = { ...this.form.getRawValue() };
 
     this.formatDates(form, 'FrToEn');
     this.dialogRef.close(form);
   }
-  
-  formatDates(item, direction){
+
+  cancel(): void {
+    this.dialogRef.close();
+  }
+
+  formatDates(item, direction) {
     item.date_pret = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.date_pret) : this.dateEnToFrPipe.transform(item.date_pret);
     item.date_retour = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.date_retour) : this.dateEnToFrPipe.transform(item.date_retour);
   }

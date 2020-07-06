@@ -42,7 +42,7 @@
 	</mat-dialog-content>
 	<!-- class="modal-footer" -->
 	<mat-dialog-actions >
-		<button mat-raised-button mat-dialog-close type="button" color="warn" (click)="activeModal.close()" class="btn-small mr-2">
+		<button mat-raised-button (click)="cancel()" type="button" color="warn" class="btn-small mr-2">
 			{{ 'Annuler' | translate }}
 		</button>
 		<button mat-raised-button type="button" color="info" class="btn-small" (click)="submitForm()" [ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': formloading}" [disabled]="formloading || !form?.valid">
