@@ -42,7 +42,7 @@ export class SalariePortletRowComponent implements OnInit {
 	}
 
   async setMetric(metricValue: any){
-    if(metricValue){
+    if(metricValue != null){
       console.log(this.personnelId);
       console.log(this.metric.id);
       console.log(metricValue);
