@@ -9,9 +9,9 @@ import { map } from 'rxjs/operators';
 import { Paginate } from '../_base/layout/models/paginate.model';
 
 
-export class UserService extends HttpService{
+export class PersonnelService extends HttpService{
 
-  baseUrl = environment.apiBaseUrl+'users';
+  baseUrl = environment.apiBaseUrl+'personnels';
 
   constructor(
     private http: HttpClient,
@@ -28,29 +28,12 @@ export class UserService extends HttpService{
 		return this.http.post<JsonResponse<Paginate<User>>>(this.baseUrl, {...params});
   }
 
-  getAllFromType(params = {}){
-		return this.http.post<JsonResponse<User[]>>(this.baseUrl, {...params});
+  getUserById(personnelId: number){
+		return this.http.get<JsonResponse<User>>(this.baseUrl + `/${personnelId}`)
   }
 
-  getUserById(userId: number){
-		return this.http.get<JsonResponse<User>>(this.baseUrl + `/${userId}`)
-  }
-  
-	deleteUser(userId: number) {
-		const url = `${this.baseUrl}/${userId}`;
-		return this.http.delete(url);
-	}
-
-	updateUser(_user: User){
-		return this.http.put<any>(`${this.baseUrl}/` + _user.id, _user).pipe(map(result => result));
-	}
-
-	createUser(user: User){
-		return this.http.post<JsonResponse<User>>(`${this.baseUrl}/create`, user);
+  setMetric(personnelId, params){
+    return this.http.post<JsonResponse<User>>(this.baseUrl+'/'+personnelId+'/metric', params);
   }
   
-
-
-
-
 }

@@ -824,6 +824,43 @@ export const locale = {
 			}
 
 		},
+		SALARIES:{
+			ENTRY_AT:{
+				LABEL:'Date d\'entrée',
+				TITLE:'Date d\'entrée',
+				SHORTTITLE:'Date d\'entrée'
+			},
+			OUTILLAGE:{
+				LABEL:'Outillage',
+				TITLE:'Outillage',
+				SHORTTITLE:'Outillage'
+			},
+			ACCIDENTOLOGIE:{
+				LABEL:'Accidentologie',
+				TITLE:'Accidentologie',
+				SHORTTITLE:'Accidentologie'
+			},
+			ANIMATIONHSE:{
+				LABEL:'Animation HSE',
+				TITLE:'Animation HSE',
+				SHORTTITLE:'Animation HSE'
+			},
+			FORMATION:{
+				LABEL:'Formation',
+				TITLE:'Formation',
+				SHORTTITLE:'Formation'
+			},
+			EPI:{
+				LABEL:'EPI',
+				TITLE:'EPI',
+				SHORTTITLE:'EPI'
+			},
+			VEHICULE:{
+				LABEL:'Véhicule',
+				TITLE:'Véhicule',
+				SHORTTITLE:'Véhicule'
+			},
+		},
 		COMMON:{
 			ADRESS:{
 				LABEL:'Adresse',
@@ -891,7 +928,28 @@ export const locale = {
 			REMARQUE:{
 				LABEL:'Remarques',
 				TITLE:'Remarques'
-			}
+			},
+			FONCTION:{
+				LABEL:'Fonction',
+				TITLE:'Fonction'
+			},
+			PHONE:{
+				LABEL:'Numéro de téléphone',
+				TITLE:'Numéro de téléphone'
+			},
+			EMAIL:{
+				LABEL:'Adresse mail',
+				TITLE:'Adresse mail'
+			},
+			SCORE:{
+				LABEL:'Score des salariés',
+				TITLE:'Score des salariés'
+			},
+			BIRTHDAY:{
+				LABEL:'Date de naissance',
+				TITLE:'Date de naissance',
+				SHORTTITLE:'Date de naissance'
+			},
 		
 		},
 		FILTER : {

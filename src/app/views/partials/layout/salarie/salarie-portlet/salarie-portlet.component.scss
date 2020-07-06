@@ -1,0 +1,12 @@
+:host::ng-deep {
+    .card{
+        padding: 2em 2em 0;    
+        height: 100%
+    }
+}
+
+.badge-pill {
+    padding-right: 0.7em;
+    padding-left: 0.7em;
+    border-radius: 10rem;
+}

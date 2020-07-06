@@ -111,7 +111,7 @@ export class ChantierFormComponent implements OnInit {
   }
   async getInterimaires(){
     this.interimairesLoaded = false;
-    var res = await this.userService.getAll({'categorie_code':'INTERIMAIRE', 'paginate':false}).toPromise();
+    var res = await this.userService.getAllFromType({'categorie_code':'INTERIMAIRE', 'paginate':false}).toPromise();
     if(res){
       this.interimairesList = res.result.data;
       this.interimairesLoaded = true;
