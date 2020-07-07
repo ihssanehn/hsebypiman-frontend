@@ -330,10 +330,7 @@ import { SalarieCardComponent } from './layout/salarie/salarie-card/salarie-card
 		NzCheckboxModule,
 		NgbModule,
 		DragDropModule,
-		
 		MatExpansionModule
-
-
 	],
 	entryComponents: [
 		AdminAddModalComponent,

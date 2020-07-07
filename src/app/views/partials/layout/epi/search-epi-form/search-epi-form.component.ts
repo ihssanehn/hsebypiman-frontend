@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { TypeService, UserService, MaterielService } from '@app/core/services';
+import { TypeService, PersonnelService, MaterielService } from '@app/core/services';
 import { Type, Materiel } from '@app/core/models';
 
 @Component({
@@ -19,7 +19,7 @@ export class SearchEpiFormComponent implements OnInit {
   salaries: any;
   epis: Materiel[];
   constructor(private typeService : TypeService,
-    private salarieService : UserService,
+    private salarieService : PersonnelService,
     private materielService : MaterielService,
     private cdr: ChangeDetectorRef) { }
 

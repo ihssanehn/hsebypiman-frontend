@@ -25,7 +25,7 @@ export class PersonnelService extends HttpService{
   }
 
   getAll(params = {}){
-		return this.http.post<JsonResponse<Paginate<User>>>(this.baseUrl, {...params});
+		return this.http.post<JsonResponse<any>>(this.baseUrl, {...params});
   }
 
   getUserById(personnelId: number){

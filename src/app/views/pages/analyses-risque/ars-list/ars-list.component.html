@@ -24,32 +24,32 @@
         </ng-container>
         <!-- Chantier Column -->
         <ng-container matColumnDef="chantier">
-          <th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('chantiers.nom')"> 
+          <th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('chantier.nom')"> 
             {{'CHANTIERS.NAME.TITLE' | translate}}
-            <i class="fa" [ngClass]="isOrderedBy('chantiers.nom') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('chantiers.nom') && {'opacity': 1}"></i>
+            <i class="fa" [ngClass]="isOrderedBy('chantier.nom') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('chantier.nom') && {'opacity': 1}"></i>
           </th>
           <td mat-cell *matCellDef="let ar" class="pointer" (click)="viewAr(ar.id)"> {{ar.chantier.nom}} </td>
         </ng-container>
         <!-- Client Column -->
         <ng-container matColumnDef="client">
-          <th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('chantiers.client')"> 
+          <th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('chantier.client')"> 
             {{'CHANTIERS.CLIENT.TITLE' | translate}}
-            <i class="fa" [ngClass]="isOrderedBy('chantiers.client') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('chantiers.client') && {'opacity': 1}"></i>
+            <i class="fa" [ngClass]="isOrderedBy('chantier.client') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('chantier.client') && {'opacity': 1}"></i>
           </th>
           <td mat-cell *matCellDef="let ar" class="pointer" (click)="viewAr(ar.id)"> {{ar.chantier.client}} </td>
         </ng-container>
         <!-- CA Column -->
         <ng-container matColumnDef="charge_affaire">
-          <th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder(['users.nom', 'users.prenom'])"> 
+          <th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('chantier.chargeAffaire.trigramme')"> 
             {{'CHANTIERS.CHIEF.TITLE' | translate}} 
-            <i class="fa" [ngClass]="isOrderedBy(['users.nom', 'users.prenom']) && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy(['users.nom', 'users.prenom']) && {opacity:1}"></i>
+            <i class="fa" [ngClass]="isOrderedBy('chantier.chargeAffaire.trigramme') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('chantier.chargeAffaire.trigramme') && {opacity:1}"></i>
           </th>
           <td mat-cell *matCellDef="let ar" class="text-center pointer" (click)="viewAr(ar.id)"> 
             <div [matTooltipClass]="'custom-tooltip'" matTooltip="{{ar.chantier.charge_affaire | fullName}}"
             [matTooltipShowDelay]="'100'"
             [matTooltipHideDelay]="'100'"
             [matTooltipPosition]="'above'">
-              {{ar.chantier.charge_affaire | initiales}} 
+              {{ar.chantier.charge_affaire.trigramme}} 
             </div>
           </td>
         </ng-container>
@@ -71,9 +71,9 @@
         </ng-container>
         <!-- Date demarrage chantier Column -->
         <ng-container matColumnDef="date_demarrage_chantier" >
-          <th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('chantiers.date_demarrage')"> 
+          <th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('chantier.date_demarrage')"> 
             {{'CHANTIERS.DATE_DEMARRAGE.LABEL' | translate}} 
-            <i class="fa" [ngClass]="isOrderedBy('chantiers.date_demarrage') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('chantiers.date_demarrage') && {opacity:1}"></i>
+            <i class="fa" [ngClass]="isOrderedBy('chantier.date_demarrage') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('chantier.date_demarrage') && {opacity:1}"></i>
           </th>
           <td mat-cell *matCellDef="let ar" class="text-center pointer" (click)="viewAr(ar.id)"> {{ar.chantier.date_demarrage | date:'dd/MM/yyyy'}} </td>
         </ng-container>
