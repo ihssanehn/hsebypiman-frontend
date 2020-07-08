@@ -34,10 +34,10 @@ export class SalarieScoreComponent implements OnInit {
   }
 
   setColor(){
-    if(this.score <= 33){
+    if(this.score <= 33.33){
       return this.scoreColors[0];
     }else{
-      if(this.score <= 66){
+      if(this.score <= 66.66){
         return this.scoreColors[1];
       }else{
         return this.scoreColors[2];

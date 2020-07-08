@@ -18,9 +18,9 @@ export class SalarieCardComponent implements OnInit {
 
   getProgressColor(rating){
     return {
-      'danger-progress': rating<=33,
-      'warning-progress': rating>33 && rating<=66,
-      'success-progress': rating>66
+      'danger-progress': rating<=33.33,
+      'warning-progress': rating>33.33 && rating<=66.66,
+      'success-progress': rating>66.66
     };
   }
 
