@@ -35,7 +35,7 @@ export class SearchEpiFormComponent implements OnInit {
 
 
   cantDisplayQuestions(){
-    var test: boolean = this.form.get('epi_id').invalid ||
+    var test: boolean = this.form.get('materiel_id').invalid ||
       this.form.get('type_id').invalid ||
       this.form.get('salarie_id').invalid
     return test;

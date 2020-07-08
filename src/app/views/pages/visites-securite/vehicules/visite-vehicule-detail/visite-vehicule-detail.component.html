@@ -18,11 +18,11 @@
 				</div>
 			</div>
 		</div>
-		<tf-add-vehicule-form [data]="visite.vehicule_code" origin="detail" ></tf-add-vehicule-form>
-		<div class="tf-divider" *ngIf="visiteForm.get('vehicule_code').value">
+		<tf-add-vehicule-form [data]="visite.materiel_id" origin="detail" ></tf-add-vehicule-form>
+		<div class="tf-divider" *ngIf="visiteForm.get('materiel_id').value">
 			<span></span>
 		</div>
-		<tf-vs-form-head [visiteForm]="visiteForm" [data]="visite" [origin]="'detail'" [model]="'VsVehicule'" *ngIf="visiteForm.get('vehicule_code').value"></tf-vs-form-head>
+		<tf-vs-form-head [visiteForm]="visiteForm" [data]="visite" [origin]="'detail'" [model]="'VsVehicule'" *ngIf="visiteForm.get('materiel_id').value"></tf-vs-form-head>
 	</tf-portlet>
 	<mat-accordion class="headers-align" *ngIf="images">
 		<mat-expansion-panel [expanded]="true" [disabled]="true">

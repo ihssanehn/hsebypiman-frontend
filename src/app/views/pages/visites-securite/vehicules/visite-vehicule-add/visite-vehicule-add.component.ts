@@ -63,8 +63,8 @@ export class VisiteVehiculeAddComponent implements OnInit {
   
   createForm() {
 		this.visiteForm = this.visiteFB.group({
-      'vehicule_code': ['', Validators.required],
       'salarie_id': [{value:null, disabled:false}, Validators.required],
+      'materiel_id': [{value:null, disabled:true}, Validators.required],
       'is_externe' : [{value : 0, disabled : false},Validators.required],
       //'entreprise_id': [{value:null, disabled:false}, Validators.required],
       'redacteur_id': [{value:this.currentUser.personnel_id, disabled:true}, Validators.required],
@@ -89,9 +89,32 @@ export class VisiteVehiculeAddComponent implements OnInit {
       }),
       'img_canvas': [{value:null, disabled:true}]
 		});
+    this.setDynamicForm();
 		this.loaded = true;
   }
-  
+
+   setDynamicForm(){
+    this.visiteForm.get('salarie_id').valueChanges.subscribe(salarie_id=>{
+      
+      this.visiteForm.get('materiel_id').setValue(null);
+      if(salarie_id){
+        this.visiteForm.get('materiel_id').enable();
+      }else{
+        this.visiteForm.get('materiel_id').disable();
+      }
+    })
+
+    // this.visiteForm.get('is_externe').valueChanges.subscribe(is_externe=>{
+    //   if(is_externe){
+    //     this.visiteForm.get('type_id').disable();
+    //     this.visiteForm.get('type_id').setValidators(null);
+    //     this.visiteForm.get('type_id').setValue(null);
+    //   }else{
+    //     this.visiteForm.get('type_id').enable();
+    //     this.visiteForm.get('type_id').setValidators([Validators.required]);
+    //   }
+    // })
+  }
   async onUserSelected(form){
     this.visiteForm.patchValue(form);
     this.displayQuestions();

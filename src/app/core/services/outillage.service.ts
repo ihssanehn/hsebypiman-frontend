@@ -28,8 +28,8 @@ export class OutillageService extends HttpService{
     getList(){
         return this.http.get<JsonResponse<Outillage[]>>(this.baseUrl+'/mini');
     }
-    get(epi_id): Observable<JsonResponse<Outillage>>{
-        return this.http.get<JsonResponse<Outillage>>(this.baseUrl+'/'+epi_id);
+    get(materiel_id): Observable<JsonResponse<Outillage>>{
+        return this.http.get<JsonResponse<Outillage>>(this.baseUrl+'/'+materiel_id);
     }
     create(epi){
         return this.http.post<JsonResponse<Outillage>>(this.baseUrl+'/'+'create', epi);
@@ -37,11 +37,11 @@ export class OutillageService extends HttpService{
     update(epi){
         return this.http.put<JsonResponse<Outillage>>(this.baseUrl+'/'+epi.id, epi);
     }
-    delete(epi_id){
-        return this.http.delete(this.baseUrl+'/'+epi_id);
+    delete(materiel_id){
+        return this.http.delete(this.baseUrl+'/'+materiel_id);
     }
-    closeOutillage(epi_id){
-        return this.http.get<JsonResponse<Outillage>>(this.baseUrl+'/'+epi_id+'/close-epi');
+    closeOutillage(materiel_id){
+        return this.http.get<JsonResponse<Outillage>>(this.baseUrl+'/'+materiel_id+'/close-epi');
     }
     export(filters){
         var queryString = Object.keys(filters).map(key => key + '=' + filters[key]).join('&');

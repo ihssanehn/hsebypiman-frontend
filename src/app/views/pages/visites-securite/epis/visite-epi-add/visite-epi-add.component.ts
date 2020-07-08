@@ -64,7 +64,7 @@ export class VisiteEpiAddComponent implements OnInit {
 
   createForm() {
     this.visiteForm = this.visiteFB.group({
-      'epi_id': ['', Validators.required],
+      'materiel_id': [{ value: null, disabled: true }, Validators.required],
       'is_externe' : [{value : 0, disabled : false},Validators.required],
       'salarie_id': [{ value: null, disabled: false }, Validators.required],
       'entreprise_id': [{ value: null, disabled: false }, Validators.required],
@@ -93,9 +93,30 @@ export class VisiteEpiAddComponent implements OnInit {
         'signature': [{ value: null, disabled: true }]
       }),
     });
+    this.setDynamicForm();
     this.loaded = true;
   }
 
+  setDynamicForm(){
+    this.visiteForm.get('salarie_id').valueChanges.subscribe(salarie_id=>{
+        this.visiteForm.get('materiel_id').setValue(null);
+        if(salarie_id){
+        this.visiteForm.get('materiel_id').enable();
+      }else{
+        this.visiteForm.get('materiel_id').disable();
+      }
+    })
+    // this.visiteForm.get('is_externe').valueChanges.subscribe(is_externe=>{
+    //   if(is_externe){
+    //     this.visiteForm.get('type_id').disable();
+    //     this.visiteForm.get('type_id').setValidators(null);
+    //     this.visiteForm.get('type_id').setValue(null);
+    //   }else{
+    //     this.visiteForm.get('type_id').enable();
+    //     this.visiteForm.get('type_id').setValidators([Validators.required]);
+    //   }
+    // })
+  }
   patchQuestionsForm() {
 		
 		const catQuestionsListFormArray: FormArray = this.visiteForm.get('catQuestionsList') as FormArray;
@@ -210,7 +231,7 @@ export class VisiteEpiAddComponent implements OnInit {
   }
 
   cantDisplayQuestions() {
-    var test: boolean = this.visiteForm.get('epi_id').invalid ||
+    var test: boolean = this.visiteForm.get('materiel_id').invalid ||
       this.visiteForm.get('type_id').invalid ||
       this.visiteForm.get('salarie_id').invalid ||
       this.visiteForm.get('entreprise_id').invalid;

@@ -104,6 +104,7 @@ export class VisiteVehiculeDetailComponent implements OnInit, OnDestroy {
 			'id': [{value: null, disabled: true}, Validators.required],
 			'code': [{value:null, disabled:true}],
 			'is_externe': [{value:null, disabled:true}],
+			'materiel_id': [{value:null, disabled:true}, Validators.required],
 			'vehicule_code': [{value:null, disabled:true}, Validators.required],
 			'salarie_id': [{value: null, disabled: true}, Validators.required],
 			'entreprise_id': [{value: null, disabled: true}, Validators.required],

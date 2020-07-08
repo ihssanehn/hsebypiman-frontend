@@ -50,7 +50,7 @@ export class VisiteEpi {
     type_id?:Number;
     status_id?:Number;
     creator_id?:Number;
-    epi_id?:Number;
+    materiel_id?:Number;
     epi?:Materiel;
     salarie?:User;
     redacteur?:User;
@@ -78,9 +78,9 @@ export class VisiteOutillage {
     type_id?:Number;
     status_id?:Number;
     creator_id?:Number;
-    outillage_id?:Number;
+    materiel_id?:Number;
     outillage_code?:String;
-    outillage?:Outillage;
+    materiel?:Outillage;
     salarie?:User;
     redacteur?:User;
     type?:Type;
@@ -108,8 +108,8 @@ export class VisiteVehicule {
     type_id?:Number;
     status_id?:Number;
     creator_id?:Number;
-    vehicule_id?:Number;
-    vehicule?:Vehicule;
+    materiel_id?:Number;
+    materiel?:Vehicule;
     vehicule_code?:String;
     salarie?:User;
     redacteur?:User;

@@ -670,9 +670,9 @@ export const locale = {
 				SHORTTITLE: 'Nom'
 			},
 			TYPE:{
-				LABEL:'Type',
-				TITLE:'Type',
-				SHORTTITLE:'Type'
+				LABEL:'Questionnaire',
+				TITLE:'Questionnaire',
+				SHORTTITLE:'Questionnaire'
 			},
 			STATUS:{
 				LABEL:'Statut',
@@ -688,6 +688,11 @@ export const locale = {
 				LABEL:'Personne visitée',
 				TITLE:'Personne visitée',
 				SHORTTITLE:'Personne visitée',
+			},
+			MATERIEL:{
+				LABEL:'Matériel visité',
+				TITLE:'Matériel visité',
+				SHORTTITLE:'Matériel visité',
 			},
 			DATE_VISITE:{
 				LABEL:'Date de la visite',
