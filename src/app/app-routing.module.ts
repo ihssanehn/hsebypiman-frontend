@@ -37,7 +37,7 @@ const routes: Routes = [
 				// canActivate: [AuthGuard],
 			},
 			{
-				path: 'plans-action',
+				path: 'plan-actions',
 				loadChildren: () => import('@app/views/pages/plans-action/plans-action.module').then(m => m.PlansActionModule),
 				// canActivate: [AuthGuard],
 			},

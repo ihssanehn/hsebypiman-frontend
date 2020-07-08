@@ -42,7 +42,7 @@ export const locale = {
 				EDIT:'Modifier la visite de Sécurité',
 				LIST:'Liste des visites de Sécurité',
 			},
-			PLANACTION: 'Plan d\'action',
+			PLANACTION: 'Plan d\'actions',
 			SUB_PLANACTION:{
 				DETAIL:'Détail de l\'action',
 				ADD:'Ajouter une action',
@@ -56,7 +56,7 @@ export const locale = {
 				EDIT:'Modifier le salarié',
 				LIST:'Liste des salariés',
 			},
-			ENTREPRISES: 'Entreprises',
+			ENTREPRISES: 'Entreprises Externes',
 			SUB_ENTREPRISES:{
 				DETAIL:'Détail de l\'entreprise',
 				ADD:'Ajouter une entreprise',
