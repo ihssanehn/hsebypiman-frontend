@@ -7,7 +7,7 @@
                 <span class="label pull-left mr-2">{{metric.short_libelle}}</span>
                 <span class="" *ngIf="metric.pivot.value; else noPivotFound">{{metric.pivot.value}}</span>
                 <span class="goal-label" *ngIf="metric.current_goal; else noGoalFound">/{{metric.current_goal.value}}</span>
-                <mat-progress-bar id="progress_bar" [ngClass]="getProgressColor(metric.score)" mode="determinate" value="{{metric.score}}"></mat-progress-bar>
+                <mat-progress-bar id="progress_bar" [ngClass]="getProgressColor(metric.rating)" mode="determinate" value="{{metric.rating}}"></mat-progress-bar>
             </p>
             
         </div>

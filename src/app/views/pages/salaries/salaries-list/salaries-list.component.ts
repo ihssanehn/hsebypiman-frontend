@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class SalariesListComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  salariesList: Paginate<User>;
+  	salariesList: Paginate<User>;
 	selectedSalarie: User;
 	pagination: any = {
 		page: 1,
@@ -26,12 +26,14 @@ export class SalariesListComponent implements OnInit, AfterViewInit, OnDestroy {
 		order_by: 'created_at',
 		order_way: 'desc',
 		keyword: "",
+		order_by_dynamic_col: false
 	};
 	showFilters:Boolean = false;
-	displayedSalarieColumns = [
-		'nom', 'prenom', 'fonction', 'tel',
-		'outillage', 'accidentologie', 'animation_hse', 'formation', 'epi', 'vehicule', 'action'
-	];
+	displayedSalarieColumns = [];
+	staticColumns = ['nom', 'prenom', 'fonction', 'tel'];
+	dynamicColumns: any[];
+	
+
 
   constructor(
     private router: Router,
@@ -55,6 +57,11 @@ export class SalariesListComponent implements OnInit, AfterViewInit, OnDestroy {
 		try {
 			var res = await this.salarieService.getAll(this.filter).toPromise();
 			this.salariesList = res.result.data;
+			if(this.salariesList.data.length){
+				this.dynamicColumns = this.salariesList.data[0].catMetricsList;
+				this.displayedSalarieColumns = [];
+				this.fetchColumns(this.dynamicColumns);
+			}
 			this.pagination = {
 				...this.pagination,
 				total: this.salariesList.total,
@@ -66,11 +73,18 @@ export class SalariesListComponent implements OnInit, AfterViewInit, OnDestroy {
 			if(!this.cdr['destroyed']){ 
 				this.cdr.detectChanges();
 			}
-
 			this.cdr.markForCheck();
 		} catch (error) {
 			console.error(error);
 		}
+  }
+
+  fetchColumns(dynamicColumns){
+	  this.displayedSalarieColumns = [...this.staticColumns];
+	  dynamicColumns.forEach(cat => {
+		  this.displayedSalarieColumns.push(cat.code);
+	  });
+	  this.displayedSalarieColumns.push('action');
   }
   
   changePagination() {
@@ -97,12 +111,13 @@ export class SalariesListComponent implements OnInit, AfterViewInit, OnDestroy {
 		})
 	}
 
-	setOrder(by) {
+	setOrder(by, isDynamicCol = false) {
 		if (this.isOrderedBy(by)) {
 			this.toggleOrderWay()
 		} else {
 			this.filter.order_by = by;
 			this.filter.order_way = 'asc';
+			this.filter.order_by_dynamic_col = isDynamicCol;
 		}
 		this.getSalaries();
 	}
