@@ -76,4 +76,18 @@ export class SearchEpiFormComponent implements OnInit {
 		return result;
   }
 
+  
+  
+  isExterne() {
+    return this.form.get('is_externe').value == 1;
+  }
+
+  toggleExterne($event){
+    if($event){
+      this.form.get('is_externe').setValue(1);
+    }else{
+      this.form.get('is_externe').setValue(0);
+    }
+  }
+
 }

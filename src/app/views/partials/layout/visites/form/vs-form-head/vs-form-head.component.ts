@@ -203,4 +203,16 @@ export class VsFormHeadComponent implements OnInit {
     }
   }
   
+  
+  isExterne() {
+    return this.visiteForm.get('is_externe').value == 1;
+  }
+
+  toggleExterne($event){
+    if($event){
+      this.visiteForm.get('is_externe').setValue(1);
+    }else{
+      this.visiteForm.get('is_externe').setValue(0);
+    }
+  }
 }

@@ -30,7 +30,6 @@ export class SearchSalarieFormComponent implements OnInit {
     private salarieService : PersonnelService,
     private cdr : ChangeDetectorRef,
     private typeService : TypeService,
-    private authService : AuthService
   ) {    
   }
 

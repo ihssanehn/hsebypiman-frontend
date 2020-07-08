@@ -56,6 +56,12 @@
                                         <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
                                     </mat-error>
                                 </mat-form-field>
+                                
+                                <div class="col-xl-3 pt-3">
+                                    <mat-checkbox formControlName="is_externe" [checked]="isExterne()" (change)="toggleExterne($event.checked)">
+                                        Visite Externe
+                                    </mat-checkbox>
+                                </div>
                             </div>
                         </div>
                     </div>
