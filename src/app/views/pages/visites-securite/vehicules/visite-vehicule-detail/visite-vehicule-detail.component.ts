@@ -103,6 +103,7 @@ export class VisiteVehiculeDetailComponent implements OnInit, OnDestroy {
 		this.visiteForm = this.visiteFB.group({
 			'id': [{value: null, disabled: true}, Validators.required],
 			'code': [{value:null, disabled:true}],
+			'is_externe': [{value:null, disabled:true}],
 			'vehicule_code': [{value:null, disabled:true}, Validators.required],
 			'salarie_id': [{value: null, disabled: true}, Validators.required],
 			'entreprise_id': [{value: null, disabled: true}, Validators.required],
