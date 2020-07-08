@@ -16,4 +16,12 @@ export class SalarieCardComponent implements OnInit {
   ngOnInit() {
   }
 
+  getProgressColor(score){
+    return {
+      'danger-progress': score<=33,
+      'warning-progress': score>33 && score<=66,
+      'success-progress': score>66
+    };
+  }
+
 }

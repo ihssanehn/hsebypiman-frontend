@@ -9,6 +9,7 @@ import { CatQuestion } from '@app/core/models';
 export class SalariePortletBoxComponent implements OnInit {
 
   @Input() catMetric: CatQuestion;
+  @Input() edit: boolean;
   @Output() onEdit = new EventEmitter();
 
   constructor() { }

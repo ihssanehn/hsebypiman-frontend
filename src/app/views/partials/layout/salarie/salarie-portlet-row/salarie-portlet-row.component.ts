@@ -13,6 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class SalariePortletRowComponent implements OnInit {
 
   @Input() metric: Type;
+  @Input() edit: boolean;
   @Output() onEdit = new EventEmitter();
 
   editMode: boolean = false;
@@ -31,10 +32,14 @@ export class SalariePortletRowComponent implements OnInit {
         if (id) {
           this.personnelId = id;
         }else{
-          this.router.navigateByUrl('/salaries/list');
+          //this.router.navigateByUrl('/salaries/list');
         }
       }
     );
+
+    if(this.edit){
+      this.editMetric();
+    }
   }
 
   editMetric(){

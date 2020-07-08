@@ -832,6 +832,15 @@ export class MenuConfig {
 						// icon: 'flaticon2-browser-2',
 					},
 					{
+						title: 'Objectifs',
+						root: true,
+						alignment: 'left',
+						page: '/salaries/goal',
+						translate: 'MENU.ADMIN',
+						icon: 'settings',
+						// icon: 'flaticon2-mail-1',
+					},
+					{
 						title: 'Admin',
 						root: true,
 						alignment: 'left',

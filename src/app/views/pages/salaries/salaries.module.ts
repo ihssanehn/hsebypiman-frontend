@@ -58,6 +58,7 @@ import { SalariesComponent } from './salaries.component';
 import { SalariesListComponent } from './salaries-list/salaries-list.component';
 import { SalarieFiltersComponent } from './salarie-filters/salarie-filters.component';
 import { SalarieDetailComponent } from './salarie-detail/salarie-detail.component';
+import { SalariesGoalsComponent } from './salaries-goals/salaries-goals.component';
 
 
 const routes: Routes = [
@@ -102,6 +103,10 @@ const routes: Routes = [
 				path: 'admin',
 				component: SalariesComponent
 			},
+			{
+				path: 'goal',
+				component: SalariesGoalsComponent
+			}
 		]
 	}
 ];
@@ -179,6 +184,7 @@ const routes: Routes = [
 		SalariesListComponent,
 		SalarieFiltersComponent,
 		SalarieDetailComponent,
+		SalariesGoalsComponent,
 	]
 })
 export class SalariesModule {
