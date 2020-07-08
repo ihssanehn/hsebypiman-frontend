@@ -63,10 +63,10 @@ export class VisiteVehiculeAddComponent implements OnInit {
   
   createForm() {
 		this.visiteForm = this.visiteFB.group({
-      'vehicule': ['', Validators.required],
+      'vehicule_code': ['', Validators.required],
       'salarie_id': [{value:null, disabled:false}, Validators.required],
       //'entreprise_id': [{value:null, disabled:false}, Validators.required],
-      'redacteur_id': [{value:this.currentUser.personnel_id?this.currentUser.personnel_id:this.currentUser.id, disabled:true}, Validators.required],
+      'redacteur_id': [{value:this.currentUser.personnel_id, disabled:true}, Validators.required],
       'date_visite': [moment().format('DD/MM/YYYY'), Validators.required],
       'presence_non_conformite': [{value:false, disabled: true}],
       'has_rectification_imm': [{value:false, disabled: true}],
@@ -226,7 +226,7 @@ export class VisiteVehiculeAddComponent implements OnInit {
         date_remise_conf.disable({emitEvent:false, onlySelf:true})
         date_remise_conf.setValue(null);
         action_to_visited.disable({emitEvent:false, onlySelf:true})
-        action_to_visited.setValue(null);
+        action_to_visited.setValue(0);
         var nbr_ko = this.getNotes().ko;
         if(nbr_ko == 0 && this.visiteForm.get('presence_non_conformite').value == true){
           this.visiteForm.get('presence_non_conformite').setValue(false);

@@ -78,6 +78,7 @@ export class VisiteOutillage {
     type_id?:Number;
     status_id?:Number;
     creator_id?:Number;
+    outillage_id?:Number;
     outillage_code?:String;
     outillage?:Outillage;
     salarie?:User;
@@ -107,8 +108,9 @@ export class VisiteVehicule {
     type_id?:Number;
     status_id?:Number;
     creator_id?:Number;
-    outillage_id?:Number;
-    vehicule?:String;
+    vehicule_id?:Number;
+    vehicule?:Vehicule;
+    vehicule_code?:String;
     salarie?:User;
     redacteur?:User;
     type?:Type;

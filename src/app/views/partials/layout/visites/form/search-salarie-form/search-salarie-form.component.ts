@@ -52,7 +52,7 @@ export class SearchSalarieFormComponent implements OnInit {
 
   cantDisplayQuestions(){
     var isCodeValid = (this.model == 'VsVehicule') 
-      ? this.form.get('vehicule').invalid
+      ? this.form.get('vehicule_code').invalid
       : this.form.get('outillage_code').invalid;
 
     var test: boolean = isCodeValid 

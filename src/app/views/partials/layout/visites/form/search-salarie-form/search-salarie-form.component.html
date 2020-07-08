@@ -72,8 +72,8 @@
                                 <mat-form-field *ngIf="model=='VsVehicule'; else outillageField" class="col-xl-3" matTooltip="Ce champ est requis">
                                     <mat-label>{{'FILTER.ADD_VEHICULE' | translate}}</mat-label>
                                     <input class="form-control" matInput placeholder=""
-                                        formControlName="vehicule" [required]="isFieldRequired('vehicule')"/>
-                                    <mat-error *ngIf="isControlHasError('vehicule','required')">
+                                        formControlName="vehicule_code" [required]="isFieldRequired('vehicule_code')"/>
+                                    <mat-error *ngIf="isControlHasError('vehicule_code','required')">
                                         <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
                                     </mat-error>
                                 </mat-form-field>
