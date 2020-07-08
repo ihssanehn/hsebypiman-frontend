@@ -64,6 +64,7 @@ export class VisiteChantierAddComponent implements OnInit {
 
   
   createForm() {
+    console.log(this.currentUser)
 		this.visiteForm = this.visiteFB.group({
       'chantier_id': ['', Validators.required],
       'chantier': [''],
@@ -71,7 +72,7 @@ export class VisiteChantierAddComponent implements OnInit {
       'entreprise_id': [{value:null, disabled:false}, Validators.required],
       'interimaire_id': [{value:null, disabled:false}],
       'nom_prenom': [{value:null, disabled:false}],
-      'redacteur_id': [{value:this.currentUser.id, disabled:true}, Validators.required],
+      'redacteur_id': [{value:this.currentUser.personnel_id?this.currentUser.personnel_id:this.currentUser.id, disabled:true}, Validators.required],
       'date_visite': [moment().format('DD/MM/YYYY'), Validators.required],
       'presence_non_conformite': [{value:false, disabled: true}],
       'has_rectification_imm': [{value:false, disabled: true}],
@@ -218,8 +219,9 @@ export class VisiteChantierAddComponent implements OnInit {
             'libelle': [quest.libelle],
             'pivot': this.visiteFB.group({
               'note': [null, Validators.required],
-              'date_remise_conf': [null],
-              'observation': ['']
+              'date_remise_conf': [{value:null, disabled:true}],
+              'observation': [''],
+              'action_to_visited': [{value:0, disabled:true}]
             })
           });
 
@@ -243,14 +245,26 @@ export class VisiteChantierAddComponent implements OnInit {
     const pivot = question.get('pivot') as FormGroup;
     const note = pivot.get('note') as FormControl;
     const date_remise_conf = pivot.get('date_remise_conf') as FormControl;
+    const action_to_visited = pivot.get('action_to_visited') as FormControl;
 
     note.valueChanges.subscribe(note=>{
       if(note == 2){
         date_remise_conf.enable({emitEvent:false, onlySelf:true})
+        action_to_visited.enable({emitEvent:false, onlySelf:true})
       }else{
         date_remise_conf.disable({emitEvent:false, onlySelf:true})
         date_remise_conf.setValue(null);
+        action_to_visited.disable({emitEvent:false, onlySelf:true})
+        action_to_visited.setValue(null);
       }      
+    })
+    date_remise_conf.valueChanges.subscribe(date=>{
+      if(date){
+        action_to_visited.disable({emitEvent:false, onlySelf:true})
+        action_to_visited.setValue(0);
+      }else{
+        action_to_visited.enable({emitEvent:false, onlySelf:true})
+      }
     })
   }
 

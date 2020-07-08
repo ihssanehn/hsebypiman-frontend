@@ -67,7 +67,7 @@ export class VisiteEpiAddComponent implements OnInit {
       'epi_id': ['', Validators.required],
       'salarie_id': [{ value: null, disabled: false }, Validators.required],
       'entreprise_id': [{ value: null, disabled: false }, Validators.required],
-      'redacteur_id': [{ value: this.currentUser.id, disabled: true }, Validators.required],
+      'redacteur_id': [{ value: this.currentUser.personnel_id ? this.currentUser.personnel_id : this.currentUser.id, disabled: true }, Validators.required],
       'date_visite': [moment().format('DD/MM/YYYY'), Validators.required],
       // 'is_validated_redacteur': ['', Validators.required],
       // 'is_validated_visite': ['', Validators.required],
@@ -106,10 +106,12 @@ export class VisiteEpiAddComponent implements OnInit {
 					'libelle': [quest.libelle],
 					'pivot': this.visiteFB.group({
 						'note': [null, Validators.required],
-						'date_remise_conf': [null],
-						'observation': ['']
+            'date_remise_conf': [{value:null, disabled:true}],
+						'observation': [''],
+            'action_to_visited': [{value:0, disabled:true}]
 					})
 				});
+        this.setPivotRules(question)
 				questionsArrayFB.push(question);			
 			})
 			var cat = this.visiteFB.group({
@@ -119,6 +121,34 @@ export class VisiteEpiAddComponent implements OnInit {
 				'questions': this.visiteFB.array(questionsArrayFB)
       })
 			catQuestionsListFormArray.push(cat);
+    })
+  }
+
+  
+  setPivotRules(question){
+    const pivot = question.get('pivot') as FormGroup;
+    const note = pivot.get('note') as FormControl;
+    const date_remise_conf = pivot.get('date_remise_conf') as FormControl;
+    const action_to_visited = pivot.get('action_to_visited') as FormControl;
+
+    note.valueChanges.subscribe(note=>{
+      if(note == 2){
+        date_remise_conf.enable({emitEvent:false, onlySelf:true})
+        action_to_visited.enable({emitEvent:false, onlySelf:true})
+      }else{
+        date_remise_conf.disable({emitEvent:false, onlySelf:true})
+        date_remise_conf.setValue(null);
+        action_to_visited.disable({emitEvent:false, onlySelf:true})
+        action_to_visited.setValue(0);
+      }      
+    })
+    date_remise_conf.valueChanges.subscribe(date=>{
+      if(date){
+        action_to_visited.disable({emitEvent:false, onlySelf:true})
+        action_to_visited.setValue(0);
+      }else{
+        action_to_visited.enable({emitEvent:false, onlySelf:true})
+      }
     })
   }
 
