@@ -23,11 +23,13 @@ export class VsFormHeadComponent implements OnInit {
   interimairesList: User[];
   redacteur: User;
   materiels: Materiel[];
+  currentUser: User;
 
   @Input() visiteForm: FormGroup;
   @Input() origin: string;
   @Input() edit: Boolean;
   @Input() model: string;
+  @Input() data: any = null;
 
   constructor(
     private typeService:TypeService,
@@ -36,19 +38,26 @@ export class VsFormHeadComponent implements OnInit {
     private entrepriseService:EntrepriseService,
     private materielService : MaterielService,
     private cdr: ChangeDetectorRef,
+    private authService : AuthService
   ) { 
+		this.authService.currentUser.subscribe(x=> this.currentUser = x);
 
   }
 
 
   
   ngOnInit() {
-    console.log(this.visiteForm);
+    
     this.getTypes();
     this.getUsers();
     this.getStatus();
     this.getInterimaires();
     this.getMateriels();
+    if(this.data){
+      this.redacteur = this.data.redacteur ? this.data.redacteur : this.data.creator;
+    }else{
+      this.redacteur = this.currentUser;
+    }
     if(this.model == 'VsChantier'){
       this.getEntreprises();
       this.setDynamicEntreprise();
@@ -64,7 +73,6 @@ export class VsFormHeadComponent implements OnInit {
     var res = await this.userService.getList().toPromise();
     this.users = res.result.data;
     this.cdr.markForCheck();
-    this.redacteur = this.users.filter(x=>x.id == this.visiteForm.get('redacteur_id').value)[0];
   }
   async getStatus(){
     var res = await this.statusService.getAllFromModel('VsChantier').toPromise();

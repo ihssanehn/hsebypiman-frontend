@@ -65,6 +65,7 @@ export class VisiteEpiAddComponent implements OnInit {
   createForm() {
     this.visiteForm = this.visiteFB.group({
       'epi_id': ['', Validators.required],
+      'is_externe' : [{value : 0, disabled : false},Validators.required],
       'salarie_id': [{ value: null, disabled: false }, Validators.required],
       'entreprise_id': [{ value: null, disabled: false }, Validators.required],
       'redacteur_id': [{ value: this.currentUser.personnel_id ? this.currentUser.personnel_id : this.currentUser.id, disabled: true }, Validators.required],

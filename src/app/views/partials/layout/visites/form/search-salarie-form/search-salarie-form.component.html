@@ -78,15 +78,21 @@
                                     </mat-error>
                                 </mat-form-field>
                                 <ng-template #outillageField>
-                                <mat-form-field  class="col-xl-3" matTooltip="Ce champ est requis">
-                                    <mat-label>{{'FILTER.SEARCH_OUTILLAGE' | translate}}</mat-label>
-                                    <input class="form-control" matInput placeholder=""
-                                        formControlName="outillage_code" [required]="isFieldRequired('outillage_code')"/>
-                                    <mat-error *ngIf="isControlHasError('outillage_code','required')">
-                                        <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-                                    </mat-error>
-                                </mat-form-field>
+                                    <mat-form-field  class="col-xl-3" matTooltip="Ce champ est requis">
+                                        <mat-label>{{'FILTER.SEARCH_OUTILLAGE' | translate}}</mat-label>
+                                        <input class="form-control" matInput placeholder=""
+                                            formControlName="outillage_code" [required]="isFieldRequired('outillage_code')"/>
+                                        <mat-error *ngIf="isControlHasError('outillage_code','required')">
+                                            <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                                        </mat-error>
+                                    </mat-form-field>
                                 </ng-template>
+
+                                <div class="col-xl-3 pt-3">
+                                    <mat-checkbox formControlName="is_externe" [checked]="isExterne()" (change)="toggleExterne($event.checked)">
+                                        Visite Externe
+                                    </mat-checkbox>
+                                </div>
                             </div>
                         </div>
                     </div>

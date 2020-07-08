@@ -26,9 +26,13 @@ export class SearchSalarieFormComponent implements OnInit {
   salarie : User;
   types : Type[];
   
-  constructor(private salarieService : PersonnelService,
+  constructor(
+    private salarieService : PersonnelService,
     private cdr : ChangeDetectorRef,
-    private typeService : TypeService) { }
+    private typeService : TypeService,
+    private authService : AuthService
+  ) {    
+  }
 
   async ngOnInit() {
     this.salaries = (await this.salarieService.getList().toPromise()).result.data;
@@ -117,4 +121,19 @@ export class SearchSalarieFormComponent implements OnInit {
 		const result = control.hasError(validationType) && (control.dirty || control.touched);
 		return result;
   }
+
+  
+  isExterne() {
+    return this.form.get('is_externe').value == 1;
+  }
+
+  toggleExterne($event){
+    if($event){
+      this.form.get('is_externe').setValue(1);
+    }else{
+      this.form.get('is_externe').setValue(0);
+    }
+  }
+
+
 }

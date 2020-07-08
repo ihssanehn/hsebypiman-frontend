@@ -22,7 +22,7 @@
 		<div class="tf-divider" *ngIf="visiteForm.get('vehicule_code').value">
 			<span></span>
 		</div>
-		<tf-vs-form-head [visiteForm]="visiteForm" [origin]="'detail'" [model]="'VsVehicule'" *ngIf="visiteForm.get('vehicule_code').value"></tf-vs-form-head>
+		<tf-vs-form-head [visiteForm]="visiteForm" [data]="visite" [origin]="'detail'" [model]="'VsVehicule'" *ngIf="visiteForm.get('vehicule_code').value"></tf-vs-form-head>
 	</tf-portlet>
 	<mat-accordion class="headers-align" *ngIf="images">
 		<mat-expansion-panel [expanded]="true" [disabled]="true">

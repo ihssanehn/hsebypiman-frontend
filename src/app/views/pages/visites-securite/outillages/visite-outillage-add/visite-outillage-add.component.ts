@@ -68,6 +68,7 @@ export class VisiteOutillageAddComponent implements OnInit {
 		this.visiteForm = this.visiteFB.group({
       'outillage_code': ['', Validators.required],
       'code' : [{value : null, disabled : false},Validators.required],
+      'is_externe' : [{value : 0, disabled : false},Validators.required],
       'salarie_id': [{value:null, disabled:false}, Validators.required],
       'catQuestionsList' : this.visiteFB.array([]),
       'entreprise_id': [{value:null, disabled:false}, Validators.required],
