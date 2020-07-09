@@ -20,6 +20,9 @@ export class TreeSelectComponent implements OnInit {
   
   @Input()
   required: boolean = false;
+  
+  @Input()
+  withAll: boolean = false;
 
   @Input()
   fromId: number= null;

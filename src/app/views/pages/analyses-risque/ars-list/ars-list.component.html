@@ -49,7 +49,7 @@
             [matTooltipShowDelay]="'100'"
             [matTooltipHideDelay]="'100'"
             [matTooltipPosition]="'above'">
-              {{ar.chantier.charge_affaire.trigramme}} 
+              {{ar.chantier?.charge_affaire?.trigramme}} 
             </div>
           </td>
         </ng-container>
@@ -75,7 +75,7 @@
             {{'CHANTIERS.DATE_DEMARRAGE.LABEL' | translate}} 
             <i class="fa" [ngClass]="isOrderedBy('chantier.date_demarrage') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('chantier.date_demarrage') && {opacity:1}"></i>
           </th>
-          <td mat-cell *matCellDef="let ar" class="text-center pointer" (click)="viewAr(ar.id)"> {{ar.chantier.date_demarrage | date:'dd/MM/yyyy'}} </td>
+          <td mat-cell *matCellDef="let ar" class="text-center pointer" (click)="viewAr(ar.id)"> {{ar.chantier?.date_demarrage | date:'dd/MM/yyyy'}} </td>
         </ng-container>
         <!-- Nbr Signatories Column -->
         <ng-container matColumnDef="sign_count" >

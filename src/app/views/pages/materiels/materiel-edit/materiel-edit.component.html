@@ -10,7 +10,7 @@
 				<span class="id-item">{{'MENU.SUB_MATERIELS.EDIT' | translate}}</span>
 			</span>
 		</div>
-		<tf-materiel-form [materielForm]="materielForm" [formStatus]="formStatus" [edit]="true" (onSubmit)="onSubmit()" (onCancel)="cancel()"></tf-materiel-form>
+		<tf-materiel-form [materielForm]="materielForm" [formStatus]="formStatus" [edit]="true" [withAll]="false" (onSubmit)="onSubmit()" (onCancel)="cancel()"></tf-materiel-form>
 	</tf-portlet>
 	<div>
 		<button mat-raised-button [ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': formloading}" [disabled]="formloading || materielForm.invalid" color="success" class="pull-right">

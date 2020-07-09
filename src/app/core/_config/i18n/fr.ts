@@ -42,7 +42,7 @@ export const locale = {
 				EDIT:'Modifier la visite de Sécurité',
 				LIST:'Liste des visites de Sécurité',
 			},
-			PLANACTION: 'Plan d\'action',
+			PLANACTION: 'Plan d\'actions',
 			SUB_PLANACTION:{
 				DETAIL:'Détail de l\'action',
 				ADD:'Ajouter une action',
@@ -771,7 +771,7 @@ export const locale = {
 		PLANACTIONS:{
 			NUMBER:{
 				LABEL:'Numéro',
-				TITLE:'N° du plan d\'action',
+				TITLE:'Action N°',
 				SHORTTITLE:'Numéro'
 			},
 			ORIGINE:{
