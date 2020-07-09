@@ -5,7 +5,7 @@
         </span>
         <div class="pull-right">
             <mat-form-field class="col-xl-10">
-                <input matInput class="form-control" [matDatepicker]="toYearPicker" placeholder="Period" [formControl]="year">
+                <input matInput class="form-control" [matDatepicker]="toYearPicker" placeholder="Année" [formControl]="year">
                 <mat-datepicker-toggle matSuffix [for]="toYearPicker"></mat-datepicker-toggle>
                 <mat-datepicker startView="multi-year" (yearSelected)="closeDatePicker($event,toYearPicker)" #toYearPicker></mat-datepicker>
             </mat-form-field>

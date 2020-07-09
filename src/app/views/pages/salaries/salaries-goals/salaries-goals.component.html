@@ -2,11 +2,11 @@
     <tf-portlet class="tf-portlet--height-fluid mat-elevation-z8" id="portlet-salarie" >
         <div class="tf-portlet-header ">
             <span class="title">
-                <a [routerLink]="['/salaries/list']">{{'MENU.SUB_SALARIES.LIST' | translate}}</a><span class="divider">></span><span class="id-item">Objectifs</span>
+                <a [routerLink]="['/salaries/list']">{{'MENU.SUB_SALARIES.LIST' | translate}}</a><span class="divider">></span><span class="id-item">Objectifs annuels</span>
             </span>
             <div class="pull-right">
                 <mat-form-field class="col-xl-10">
-                    <input matInput class="form-control" [matDatepicker]="toYearPicker" placeholder="Period" [formControl]="year">
+                    <input matInput class="form-control" [matDatepicker]="toYearPicker" placeholder="Année" [formControl]="year">
                     <mat-datepicker-toggle matSuffix [for]="toYearPicker"></mat-datepicker-toggle>
                     <mat-datepicker startView="multi-year" (yearSelected)="closeDatePicker($event,toYearPicker)" #toYearPicker></mat-datepicker>
                 </mat-form-field>
@@ -18,9 +18,9 @@
                 <div class="col-md-12">
                     <div class="d-flex flex-wrap">
                         <div class="row d-flex">
-                            <div class="col-md-4" *ngFor="let cat of catMetricsList; let i = index">
-                                <div class="box col-md-12">
-                                    <h6><b>{{cat.description}}</b></h6>
+                            <div class="col-md-3 d-flex pt-3" *ngFor="let cat of catMetricsList; let i = index">
+                                <div class="card col-md-12">
+                                    <h5><b>{{cat.description}}</b></h5>
                                     <div class="tf-divider"><span></span></div>
                                     <div class="box box-coords" style="flex:1">
                                         <div class="col-xl-12" *ngFor="let metric of cat.metrics">
@@ -39,7 +39,6 @@
                 </div>
             </div>
         </tf-portlet-body>
-
     </tf-portlet>
 
     <div>

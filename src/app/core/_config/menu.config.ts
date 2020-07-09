@@ -832,12 +832,12 @@ export class MenuConfig {
 						// icon: 'flaticon2-browser-2',
 					},
 					{
-						title: 'Objectifs',
+						title: 'Objectifs annuels',
 						root: true,
 						alignment: 'left',
 						page: '/salaries/goal',
 						translate: 'MENU.ADMIN',
-						icon: 'settings',
+						icon: 'filter_center_focus',
 						// icon: 'flaticon2-mail-1',
 					},
 					{

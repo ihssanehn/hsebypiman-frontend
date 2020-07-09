@@ -22,4 +22,10 @@ export class SalariePortletComponent implements OnInit {
     this.onEdit.emit(value);
   }
 
+  calculateGlobalRating(){
+    const sum = this.metricsTree.catMetricsList.reduce((acc, cur) => acc + Number(cur.rating),0);
+    const avg = (sum / this.metricsTree.catMetricsList.length);
+    return avg;
+  }
+
 }

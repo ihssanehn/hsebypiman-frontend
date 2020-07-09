@@ -120,7 +120,7 @@ export class SalariesGoalsComponent implements OnInit {
             showConfirmButton: false,
             timer: 1500
           }).then(() => {
-            this.location.back();
+            //this.location.back();
           });
         })
         .catch(err =>{ 

@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SalarieScoreComponent implements OnInit {
 
+  @Input() type: string;
   @Input() score: number;
 
   scoreColors = [
