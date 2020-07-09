@@ -52,7 +52,8 @@ import {
 	DateAdapter
 } from '@angular/material';
 // DateAdapter
-//import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapter';
+import { CustomMomentDateAdapter } from '@app/core/_base/crud/utils/custom-moment-date.adapter';
+import { YEAR_FORMATS } from '@app/core/_base/crud/utils/custom-moment-date.adapter';
 // Components
 import { SalariesComponent } from './salaries.component';
 import { SalariesListComponent } from './salaries-list/salaries-list.component';
@@ -113,9 +114,6 @@ const routes: Routes = [
 	}
 ];
 
-import {MY_FORMATS} from './salaries-goals/salaries-goals.component';
-import {CustomDateAdapter} from './salaries-goals/salaries-goals.component';
-
 @NgModule({
 	imports: [
 		CommonModule,
@@ -174,16 +172,9 @@ import {CustomDateAdapter} from './salaries-goals/salaries-goals.component';
 				width: '900px'
 			}
 		},
-		
 		{ provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
-		//{ provide: DateAdapter, useClass: CustomDateAdapter },
-		{
-			provide: DateAdapter,
-			useClass: CustomDateAdapter,
-			deps: [MAT_DATE_LOCALE]
-			//deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
-		  },
-		  {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
+		{ provide: DateAdapter, useClass: CustomMomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+		{ provide: MAT_DATE_FORMATS, useValue: YEAR_FORMATS },
 		HttpUtilsService,
 		TypesUtilsService,
 		LayoutUtilsService

@@ -4,53 +4,16 @@ import { CatMetric } from '@app/core/models';
 import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
 import { Location } from '@angular/common';
 import Swal from 'sweetalert2';
-
-import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
-import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, NativeDateAdapter} from '@angular/material';
 import {MatDatepicker} from '@angular/material/datepicker';
 import * as _moment from 'moment';
 import { default as _rollupMoment } from 'moment';
 
 const moment = _rollupMoment || _moment;
 
-export class CustomDateAdapter extends MomentDateAdapter {
-  constructor( @Optional() @Inject(MAT_DATE_LOCALE) dateLocale: string) {
-    super(dateLocale);
-  }
-  parse(value, parseFormat) {
-    if (value && typeof value == 'string') {
-      console.log(moment(value, parseFormat, this.locale, true));
-      return moment(value, parseFormat, this.locale, true);
-    }
-    return value ? moment(value).locale(this.locale) : undefined;
-  }
-}
-
-export const MY_FORMATS = {
-  parse: {
-    dateInput: 'YYYY',
-  },
-  display: {
-    dateInput: 'YYYY',
-    monthYearLabel: 'YYYY',
-    dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'YYYY',
-  },
-};
-
 @Component({
   selector: 'tf-salaries-goals',
   templateUrl: './salaries-goals.component.html',
-  styleUrls: ['./salaries-goals.component.scss'],
-  // providers: [
-  //   {
-  //     provide: DateAdapter,
-  //     useClass: CustomDateAdapter,
-  //     deps: [MAT_DATE_LOCALE]
-  //     //deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
-  //   },
-  //   {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
-  // ],
+  styleUrls: ['./salaries-goals.component.scss']
 })
 export class SalariesGoalsComponent implements OnInit {
 
@@ -58,7 +21,7 @@ export class SalariesGoalsComponent implements OnInit {
   goalForm: FormGroup;
   formloading: boolean = false;
   loaded = false;
-  selectedDate = moment();
+  year = new FormControl(moment());
 
   constructor(
     private catMetricService: CatMetricService,
@@ -86,7 +49,7 @@ export class SalariesGoalsComponent implements OnInit {
     var res = await this.catMetricService
       .getAll({
         has_goal:true,
-        period:this.goalForm.get('period').value
+        period:this.year.value.year()
       }).toPromise();
     this.catMetricsList = res.result.data;
     this.refreshForm();
@@ -95,7 +58,6 @@ export class SalariesGoalsComponent implements OnInit {
   }
 
   patchForm(item){
-    this.goalForm.get('period').setValue(this.selectedDate);
     if(item.length > 0){
       const catMetricsListFormArray: FormArray = this.goalForm.get('items') as FormArray;
 
@@ -146,7 +108,7 @@ export class SalariesGoalsComponent implements OnInit {
   onSubmit(){
     try {
       let form = {...this.goalForm.getRawValue()};
-      form.period = form.period.year();
+      form.period = this.year.value.year();
       this.goalService.create(form)
         .toPromise()
         .then((visite) => {
@@ -185,8 +147,7 @@ export class SalariesGoalsComponent implements OnInit {
 
   closeDatePicker(chosenYear: Date, datepicker: MatDatepicker<any>) {
     datepicker.close();
-    this.selectedDate = moment(chosenYear);
-    this.goalForm.get('period').setValue(new Date(chosenYear).getFullYear());
+    this.year.setValue(moment(chosenYear));
     this.getCatMetrics();
   }
 

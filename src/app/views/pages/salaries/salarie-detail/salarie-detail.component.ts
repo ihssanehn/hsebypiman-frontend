@@ -6,9 +6,6 @@ import { PersonnelService } from '@app/core/services';
 import { NgxPermissionsService } from 'ngx-permissions';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
-
-import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
-import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 import {MatDatepicker} from '@angular/material/datepicker';
 import * as _moment from 'moment';
 import { default as _rollupMoment } from 'moment';
@@ -16,30 +13,10 @@ import { Personnel } from '@app/core/models';
 
 const moment = _rollupMoment || _moment;
 
-export const MY_FORMATS = {
-  parse: {
-    dateInput: 'YYYY',
-  },
-  display: {
-    dateInput: 'YYYY',
-    monthYearLabel: 'YYYY',
-    dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'YYYY',
-  },
-};
-
 @Component({
   selector: 'tf-salarie-detail',
   templateUrl: './salarie-detail.component.html',
-  styleUrls: ['./salarie-detail.component.scss'],
-  // providers: [
-  //   {
-  //     provide: DateAdapter,
-  //     useClass: MomentDateAdapter,
-  //     deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
-  //   },
-  //   {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
-  // ],
+  styleUrls: ['./salarie-detail.component.scss']
 })
 export class SalarieDetailComponent implements OnInit, OnDestroy {
 
@@ -114,7 +91,5 @@ export class SalarieDetailComponent implements OnInit, OnDestroy {
 		const url = `/salaries/list`;
 		this.router.navigateByUrl(url, { relativeTo: this.activatedRoute });
   }
-  
-  
 
 }
