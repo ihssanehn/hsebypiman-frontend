@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Type } from '@app/core/models';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'tf-salarie-portlet',
@@ -9,6 +10,7 @@ import { Type } from '@app/core/models';
 export class SalariePortletComponent implements OnInit {
 
   @Input() metricsTree: Type;
+  @Input() year: FormControl;
   @Output() onEdit = new EventEmitter();
 
   constructor() { }

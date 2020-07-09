@@ -1,17 +1,30 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, Optional, Inject } from '@angular/core';
 import { CatMetricService, GoalService } from '@app/core/services';
-import { CatQuestion } from '@app/core/models';
+import { CatMetric } from '@app/core/models';
 import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
 import { Location } from '@angular/common';
 import Swal from 'sweetalert2';
 
 import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
-import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, NativeDateAdapter} from '@angular/material';
 import {MatDatepicker} from '@angular/material/datepicker';
 import * as _moment from 'moment';
 import { default as _rollupMoment } from 'moment';
 
 const moment = _rollupMoment || _moment;
+
+export class CustomDateAdapter extends MomentDateAdapter {
+  constructor( @Optional() @Inject(MAT_DATE_LOCALE) dateLocale: string) {
+    super(dateLocale);
+  }
+  parse(value, parseFormat) {
+    if (value && typeof value == 'string') {
+      console.log(moment(value, parseFormat, this.locale, true));
+      return moment(value, parseFormat, this.locale, true);
+    }
+    return value ? moment(value).locale(this.locale) : undefined;
+  }
+}
 
 export const MY_FORMATS = {
   parse: {
@@ -29,18 +42,19 @@ export const MY_FORMATS = {
   selector: 'tf-salaries-goals',
   templateUrl: './salaries-goals.component.html',
   styleUrls: ['./salaries-goals.component.scss'],
-  providers: [
-    {
-      provide: DateAdapter,
-      useClass: MomentDateAdapter,
-      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
-    },
-    {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
-  ],
+  // providers: [
+  //   {
+  //     provide: DateAdapter,
+  //     useClass: CustomDateAdapter,
+  //     deps: [MAT_DATE_LOCALE]
+  //     //deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
+  //   },
+  //   {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
+  // ],
 })
 export class SalariesGoalsComponent implements OnInit {
 
-  catMetricsList: CatQuestion[];
+  catMetricsList: CatMetric[];
   goalForm: FormGroup;
   formloading: boolean = false;
   loaded = false;

@@ -6,6 +6,7 @@
                 class="col-md-6"
                 *ngFor="let item of metricsTree.catMetricsList"
                 [catMetric]="item"
+                [year]="year"
                 (onEdit)="onSubmit()"
             ></tf-salarie-portlet-box>
         </div>

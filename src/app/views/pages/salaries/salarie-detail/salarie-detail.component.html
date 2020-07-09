@@ -1,8 +1,15 @@
 <tf-portlet class="tf-portlet--height-fluid mat-elevation-z8" id="portlet-salarie" *ngIf="salarie">
     <div class="tf-portlet-header ">
-      <span class="title">
-        <a [routerLink]="['/salaries/list']">{{'MENU.SUB_SALARIES.LIST' | translate}}</a><span class="divider">></span><span class="id-item">{{salarie | fullName}}</span>
-      </span>
+        <span class="title">
+            <a [routerLink]="['/salaries/list']">{{'MENU.SUB_SALARIES.LIST' | translate}}</a><span class="divider">></span><span class="id-item">{{salarie | fullName}}</span>
+        </span>
+        <div class="pull-right">
+            <mat-form-field class="col-xl-10">
+                <input matInput class="form-control" [matDatepicker]="toYearPicker" placeholder="Period" [formControl]="year">
+                <mat-datepicker-toggle matSuffix [for]="toYearPicker"></mat-datepicker-toggle>
+                <mat-datepicker startView="multi-year" (yearSelected)="closeDatePicker($event,toYearPicker)" #toYearPicker></mat-datepicker>
+            </mat-form-field>
+        </div>
     </div>
     <tf-portlet-body class="tf-portlet__body--fit">
 
@@ -69,7 +76,7 @@
                                             <p><span class="label pull-left mr-2">À renouveler</span><span class="blue" *ngIf="salarie.latest_visite_medicale?.date_renouvellement; else noDataFound">{{salarie.latest_visite_medicale?.date_renouvellement | date:'dd/MM/yyyy'}}</span></p>
                                         </div>
                                     </div>
-                                    <div class="box box-ar-vs col-md-3">
+                                    <!-- <div class="box box-ar-vs col-md-3">
                                         <h6><b>Ouvrage concerné</b></h6>
                                         <div class="tf-divider"><span></span></div>
                                         <div class="box box-coords" style="flex:1">
@@ -82,7 +89,7 @@
                                         <div class="box box-coords" style="flex:1">
                                             <p><span class="label pull-left mr-2">Indication</span><span class="blue" *ngIf="salarie.indication; else noDataFound">{{salarie.indication}}</span></p>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -90,6 +97,7 @@
                         <tf-salarie-portlet 
                             *ngFor="let item of salarie.metricsTree"
                             [metricsTree]="item" 
+                            [year]="year"
                             (onEdit)="onEditMetric()"
                         ></tf-salarie-portlet>
         

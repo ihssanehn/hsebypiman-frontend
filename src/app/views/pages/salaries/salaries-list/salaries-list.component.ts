@@ -1,9 +1,9 @@
 import { Component, OnInit, ChangeDetectorRef, AfterViewInit, OnDestroy } from '@angular/core';
 import { Paginate } from '@app/core/_base/layout/models/paginate.model';
-import { User } from '@app/core/auth';
 import { Router } from '@angular/router';
 import { PersonnelService } from '@app/core/services';
 import Swal from 'sweetalert2';
+import { Personnel } from '@app/core/models';
 
 @Component({
   selector: 'tf-salaries-list',
@@ -12,8 +12,8 @@ import Swal from 'sweetalert2';
 })
 export class SalariesListComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  	salariesList: Paginate<User>;
-	selectedSalarie: User;
+  	salariesList: Paginate<Personnel>;
+	selectedSalarie: Personnel;
 	pagination: any = {
 		page: 1,
 		total: 10,

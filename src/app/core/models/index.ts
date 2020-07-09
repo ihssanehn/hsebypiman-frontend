@@ -20,4 +20,7 @@ export { Vehicule } from './vehicule.model';
 export { Zone } from './zone.model';
 export { Signature } from './signature.model';
 export { Document } from './document.model';
+export { Personnel } from './personnel.model';
+export { CatMetric } from './catMetric.model';
+export { Metric } from './metric.model';
 

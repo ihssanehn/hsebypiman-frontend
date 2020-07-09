@@ -4,9 +4,9 @@ import { HttpService } from '@app/core/services/http-service';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import {JsonResponse} from '@app/core/_base/layout/models/jsonResponse.model';
 import { Router } from '@angular/router';
-import { User } from '@app/core/auth/_models/user.model';
 import { map } from 'rxjs/operators';
 import { Paginate } from '../_base/layout/models/paginate.model';
+import { Personnel } from '../models';
 
 
 export class PersonnelService extends HttpService{
@@ -21,19 +21,23 @@ export class PersonnelService extends HttpService{
   }
 
   getList(){
-    return this.http.get<JsonResponse<User[]>>(this.baseUrl+"/mini");
+    return this.http.get<JsonResponse<Personnel[]>>(this.baseUrl+"/mini");
   }
 
   getAll(params = {}){
-		return this.http.post<JsonResponse<any>>(this.baseUrl, {...params});
+		return this.http.post<JsonResponse<Paginate<Personnel>>>(this.baseUrl, {...params});
   }
 
   getUserById(personnelId: number){
-		return this.http.get<JsonResponse<User>>(this.baseUrl + `/${personnelId}`)
+		return this.http.get<JsonResponse<Personnel>>(this.baseUrl + `/${personnelId}`)
+  }
+
+  getPersonnelByYear(personnelId: number, year){
+		return this.http.get<JsonResponse<Personnel>>(this.baseUrl + `/${personnelId}/year/${year}`)
   }
 
   setMetric(personnelId, params){
-    return this.http.post<JsonResponse<User>>(this.baseUrl+'/'+personnelId+'/metric', params);
+    return this.http.post<JsonResponse<Personnel>>(this.baseUrl+'/'+personnelId+'/metric', params);
   }
   
 }
