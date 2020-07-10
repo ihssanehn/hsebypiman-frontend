@@ -52,12 +52,16 @@ import {
 	DateAdapter
 } from '@angular/material';
 // DateAdapter
-import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapter';
+import { CustomMomentDateAdapter } from '@app/core/_base/crud/utils/custom-moment-date.adapter';
+import { YEAR_FORMATS } from '@app/core/_base/crud/utils/custom-moment-date.adapter';
 // Components
 import { SalariesComponent } from './salaries.component';
 import { SalariesListComponent } from './salaries-list/salaries-list.component';
 import { SalarieFiltersComponent } from './salarie-filters/salarie-filters.component';
 import { SalarieDetailComponent } from './salarie-detail/salarie-detail.component';
+import { SalariesGoalsComponent } from './salaries-goals/salaries-goals.component';
+import { SalariesAdminComponent } from './salaries-admin/salaries-admin.component';
+import { SalarieMetricsAdminComponent } from './salaries-admin/salarie-metrics-admin/salarie-metrics-admin.component';
 
 
 const routes: Routes = [
@@ -100,8 +104,12 @@ const routes: Routes = [
 			},
 			{
 				path: 'admin',
-				component: SalariesComponent
+				component: SalariesAdminComponent
 			},
+			{
+				path: 'goal',
+				component: SalariesGoalsComponent
+			}
 		]
 	}
 ];
@@ -164,9 +172,9 @@ const routes: Routes = [
 				width: '900px'
 			}
 		},
-		
 		{ provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
-		{ provide: DateAdapter, useClass: CustomDateAdapter },
+		{ provide: DateAdapter, useClass: CustomMomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+		{ provide: MAT_DATE_FORMATS, useValue: YEAR_FORMATS },
 		HttpUtilsService,
 		TypesUtilsService,
 		LayoutUtilsService
@@ -179,6 +187,9 @@ const routes: Routes = [
 		SalariesListComponent,
 		SalarieFiltersComponent,
 		SalarieDetailComponent,
+		SalariesGoalsComponent,
+		SalariesAdminComponent,
+		SalarieMetricsAdminComponent
 	]
 })
 export class SalariesModule {

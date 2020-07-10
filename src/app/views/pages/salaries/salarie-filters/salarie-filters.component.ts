@@ -50,9 +50,7 @@ export class SalarieFiltersComponent implements  OnInit {
 
   initFiltersForm(){
     this.filterForm = this.fb.group({
-      fonction_id:[null],
-      score_min:[null],
-      score_max:[null],      
+      fonction_id:[null],    
       created_at_start:[null],
       created_at_end:[null]
     })

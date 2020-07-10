@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CatQuestion } from '@app/core/models';
+import { CatMetric } from '@app/core/models';
 
 @Component({
   selector: 'tf-salarie-card',
@@ -8,12 +8,20 @@ import { CatQuestion } from '@app/core/models';
 })
 export class SalarieCardComponent implements OnInit {
 
-  @Input() catMetric: CatQuestion;
+  @Input() catMetric: CatMetric;
 
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  getProgressColor(rating){
+    return {
+      'danger-progress': rating<=33.33,
+      'warning-progress': rating>33.33 && rating<=66.66,
+      'success-progress': rating>66.66
+    };
   }
 
 }

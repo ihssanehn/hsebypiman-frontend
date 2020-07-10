@@ -7,16 +7,17 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SalarieScoreComponent implements OnInit {
 
+  @Input() type: string;
   @Input() score: number;
 
   scoreColors = [
     {
-      'background': 'rgba(214, 141, 19, 0.8)',
-      'border-color': 'rgba(214, 141, 19, 1)'
-    },
-    {
       'background': 'rgba(186, 0, 38, 0.8)',
       'border-color': 'rgba(186, 0, 38, 1)'
+    },
+    {
+      'background': 'rgba(214, 141, 19, 0.8)',
+      'border-color': 'rgba(214, 141, 19, 1)'
     },
     {
       'background': 'rgba(51, 181, 174, 0.8)',
@@ -34,10 +35,10 @@ export class SalarieScoreComponent implements OnInit {
   }
 
   setColor(){
-    if(this.score < 50){
+    if(this.score <= 33.33){
       return this.scoreColors[0];
     }else{
-      if(this.score < 100){
+      if(this.score <= 66.66){
         return this.scoreColors[1];
       }else{
         return this.scoreColors[2];

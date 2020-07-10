@@ -1,12 +1,17 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { User } from '@app/core/auth';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, ControlContainer, FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PersonnelService } from '@app/core/services';
 import { NgxPermissionsService } from 'ngx-permissions';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
+import {MatDatepicker} from '@angular/material/datepicker';
+import * as _moment from 'moment';
+import { default as _rollupMoment } from 'moment';
+import { Personnel } from '@app/core/models';
+
+const moment = _rollupMoment || _moment;
 
 @Component({
   selector: 'tf-salarie-detail',
@@ -15,13 +20,15 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class SalarieDetailComponent implements OnInit, OnDestroy {
 
-  salarie: User;
+  salarie: Personnel;
 	salarieForm: FormGroup;
 	// allRoles: Role[];
 	loaded = false;
 	editMode: boolean = false;
 	// Private properties
-	private subscriptions: Subscription[] = [];
+  private subscriptions: Subscription[] = [];
+
+  year = new FormControl(moment());
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -57,7 +64,11 @@ export class SalarieDetailComponent implements OnInit, OnDestroy {
 
   async getSalarie(salarieId){
 		try {
-      var res = await this.personnelService.getUserById(salarieId).toPromise();
+      var res = await this.personnelService
+      .getPersonnelByYear(
+        salarieId,
+        this.year.value.year()
+      ).toPromise();
       console.log(res);
 			this.salarie = res.result.data;
 			this.cdr.markForCheck();
@@ -70,11 +81,15 @@ export class SalarieDetailComponent implements OnInit, OnDestroy {
     this.getSalarie(this.salarie.id);
   }
   
+  closeDatePicker(chosenYear: Date, datepicker: MatDatepicker<any>) {
+    datepicker.close();
+    this.year.setValue(moment(chosenYear));
+    this.getSalarie(this.salarie.id);
+  }
+
   goBackWithId() {
 		const url = `/salaries/list`;
 		this.router.navigateByUrl(url, { relativeTo: this.activatedRoute });
   }
-  
-  
 
 }

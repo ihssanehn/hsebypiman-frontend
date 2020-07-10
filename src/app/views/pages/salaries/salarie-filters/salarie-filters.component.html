@@ -18,24 +18,6 @@
                     </mat-form-field>
 
 					<div class="col-xl-4 col-md-4 col-sm-4 col-xs-12">
-						<h6>{{'COMMON.SCORE.TITLE' | translate}}</h6>
-						<mat-form-field class="col-md-6 col-xl-6">
-							<mat-label>Minimum :</mat-label>
-							<input matInput class="form-control" type="string" formControlName="score_min" name="score_min">
-							<button mat-button *ngIf="formHasValue('score_min')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('score_min'); $event.stopPropagation()">
-								<mat-icon>clear</mat-icon>
-							</button>
-						</mat-form-field>
-						<mat-form-field class="col-md-6 col-xl-6">
-							<mat-label>Maximum :</mat-label>
-							<input matInput class="form-control" type="string" formControlName="score_max" name="score_max">
-							<button mat-button *ngIf="formHasValue('score_max')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('score_max'); $event.stopPropagation()">
-								<mat-icon>clear</mat-icon>
-							</button>
-						</mat-form-field>
-					</div>
-
-					<div class="col-xl-4 col-md-4 col-sm-4 col-xs-12">
 						<h6>{{'COMMON.CREATED_AT.TITLE' | translate}}</h6>
 						<mat-form-field class="col-md-6 col-xl-6">
 							<mat-label>Entre le :</mat-label>

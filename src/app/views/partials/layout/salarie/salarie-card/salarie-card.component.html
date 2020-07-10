@@ -1,12 +1,13 @@
 <div class="flex-fill" *ngIf="catMetric">
     <div class="col-12 card">
-        <h5><b>{{catMetric.libelle}}</b></h5>
+        <h5><b>{{catMetric.description}}</b></h5>
         <div class="tf-divider"><span></span></div>
         <div class="box box-coords" style="flex:1">
             <p *ngFor="let metric of catMetric.metrics">
-                <span class="label pull-left mr-2">{{metric.libelle}}</span>
-                <span class="" *ngIf="metric.pivot.value; else noDataFound">{{metric.pivot.value}}</span>
-                <mat-progress-bar class="progress_bar" mode="determinate" color="#e49819" value="50"></mat-progress-bar>
+                <span class="label pull-left mr-2">{{metric.short_libelle}}</span>
+                <span class="" *ngIf="metric.pivot.value; else noPivotFound">{{metric.pivot.value}}</span>
+                <span class="goal-label" *ngIf="metric.year_goal; else noGoalFound">/{{metric.year_goal.value}}</span>
+                <mat-progress-bar id="progress_bar" [ngClass]="getProgressColor(metric.rating)" mode="determinate" value="{{metric.rating}}"></mat-progress-bar>
             </p>
             
         </div>
@@ -14,8 +15,10 @@
 </div>
 
 
-<ng-template #noDataFound>
-    <span class="no-data-label">
-      0
-    </span>
+<ng-template #noPivotFound>
+    <span class="">0</span>
+</ng-template>
+
+<ng-template #noGoalFound>
+    <span class="goal-label">/0</span>
 </ng-template>

@@ -832,6 +832,15 @@ export class MenuConfig {
 						// icon: 'flaticon2-browser-2',
 					},
 					{
+						title: 'Objectifs annuels',
+						root: true,
+						alignment: 'left',
+						page: '/salaries/goal',
+						translate: 'MENU.ADMIN',
+						icon: 'filter_center_focus',
+						// icon: 'flaticon2-mail-1',
+					},
+					{
 						title: 'Admin',
 						root: true,
 						alignment: 'left',

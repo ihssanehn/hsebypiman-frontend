@@ -1,8 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Type } from '@app/core/models';
+import { Type, Metric } from '@app/core/models';
 import { PersonnelService } from '@app/core/services';
 import Swal, { SweetAlertIcon } from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormControl } from '@angular/forms';
 
 
 @Component({
@@ -12,7 +13,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class SalariePortletRowComponent implements OnInit {
 
-  @Input() metric: Type;
+  @Input() metric: Metric;
+  @Input() edit: boolean;
+  @Input() year: FormControl;
   @Output() onEdit = new EventEmitter();
 
   editMode: boolean = false;
@@ -31,10 +34,14 @@ export class SalariePortletRowComponent implements OnInit {
         if (id) {
           this.personnelId = id;
         }else{
-          this.router.navigateByUrl('/salaries/list');
+          //this.router.navigateByUrl('/salaries/list');
         }
       }
     );
+
+    if(this.edit){
+      this.editMetric();
+    }
   }
 
   editMetric(){
@@ -50,7 +57,8 @@ export class SalariePortletRowComponent implements OnInit {
         this.personnelId, 
         {
           'metric_id': this.metric.id,
-          'value': metricValue
+          'value': metricValue,
+          'period': this.year.value.year()
         }
       )
 			.toPromise()
@@ -65,7 +73,6 @@ export class SalariePortletRowComponent implements OnInit {
 					timer: code == 'success' ? 1500 : 3000
 				}).then(() => {
           this.editMode = false;
-          //this.metric.pivot.value = metricValue;
           this.onEdit.emit(metricValue);
 				})
 			}).catch(e => {

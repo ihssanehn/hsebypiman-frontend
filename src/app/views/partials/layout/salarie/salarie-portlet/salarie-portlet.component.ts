@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Type } from '@app/core/models';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'tf-salarie-portlet',
@@ -9,6 +10,7 @@ import { Type } from '@app/core/models';
 export class SalariePortletComponent implements OnInit {
 
   @Input() metricsTree: Type;
+  @Input() year: FormControl;
   @Output() onEdit = new EventEmitter();
 
   constructor() { }
@@ -18,6 +20,12 @@ export class SalariePortletComponent implements OnInit {
 
   onSubmit(value){
     this.onEdit.emit(value);
+  }
+
+  calculateGlobalRating(){
+    const sum = this.metricsTree.catMetricsList.reduce((acc, cur) => acc + Number(cur.rating),0);
+    const avg = (sum / this.metricsTree.catMetricsList.length);
+    return avg;
   }
 
 }

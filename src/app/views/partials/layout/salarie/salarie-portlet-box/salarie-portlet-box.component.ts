@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { CatQuestion } from '@app/core/models';
+import { CatMetric } from '@app/core/models';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'tf-salarie-portlet-box',
@@ -8,7 +9,9 @@ import { CatQuestion } from '@app/core/models';
 })
 export class SalariePortletBoxComponent implements OnInit {
 
-  @Input() catMetric: CatQuestion;
+  @Input() catMetric: CatMetric;
+  @Input() edit: boolean;
+  @Input() year: FormControl;
   @Output() onEdit = new EventEmitter();
 
   constructor() { }
