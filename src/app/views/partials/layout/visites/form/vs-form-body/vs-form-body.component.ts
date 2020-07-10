@@ -53,6 +53,19 @@ export class VsFormBodyComponent implements OnInit {
     const p = this.getPivot(question_id, cat_index)
     return p.get('note').value == note;
   }
+  isChecked(question_id, cat_index) {
+    const p = this.getPivot(question_id, cat_index)
+    return p.get('action_to_visited').value == 1;
+  }
+
+  toggleActionToVisited($event, question_id, cat_index){
+    const p = this.getPivot(question_id, cat_index)
+    if($event){
+      p.get('action_to_visited').setValue(1);
+    }else{
+      p.get('action_to_visited').setValue(0);
+    }
+  }
 
   getQuestion(question_id, cat_index): FormGroup {
     const questions = (this.visiteForm.get('catQuestionsList') as FormArray).at(cat_index) as FormArray;
@@ -76,6 +89,10 @@ export class VsFormBodyComponent implements OnInit {
   getPivotDate(question_id, cat_index) {
     const p = this.getPivot(question_id, cat_index);
     return p ? p.get('date_remise_conf').value : null;
+  }
+  getPivotActionToVisited(question_id, cat_index) {
+    const p = this.getPivot(question_id, cat_index);
+    return p ? p.get('action_to_visited').value : null;
   }
 
   getNotes() {

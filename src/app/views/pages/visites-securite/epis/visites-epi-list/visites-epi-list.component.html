@@ -17,20 +17,20 @@
 
       <!-- nom de epi Column -->
       <ng-container matColumnDef="epi">
-        <th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder(['epis.code', 'visites_epi.code'])">
+        <th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder(['materiel.code', 'code'])">
           {{'EPIS.CODE.TITLE' | translate}} 
-          <i class="fa" [ngClass]="isOrderedBy(['epis.code', 'visites_epi.code']) && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy(['epis.code', 'visites_epi.code']) && {opacity:1}"></i>
+          <i class="fa" [ngClass]="isOrderedBy(['materiel.code', 'code']) && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy(['materiel.code', 'code']) && {opacity:1}"></i>
         </th>
-        <td mat-cell *matCellDef="let visite"  (click)="viewVisite(visite.id)" class="pointer"> {{visite.epi.code | truncate:35}}</td>
+        <td mat-cell *matCellDef="let visite"  (click)="viewVisite(visite.id)" class="pointer"> {{visite.materiel.code+' - '+visite.materiel.libelle | truncate:35}}</td>
       </ng-container>
 
       <!-- client Column -->
       <ng-container matColumnDef="epi_cat">
-        <th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder(['epis.categorie.libelle', 'visites_epi.code'])">
+        <th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder(['materiel.categorie.libelle', 'code'])">
           {{'EPIS.CATEGORIE.TITLE' | translate}}
-          <i class="fa" [ngClass]="isOrderedBy(['epis.categorie.libelle', 'visites_epi.code']) && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy(['epis.categorie.libelle', 'visites_epi.code']) && {opacity:1}"></i>
+          <i class="fa" [ngClass]="isOrderedBy(['materiel.categorie.libelle', 'code']) && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy(['materiel.categorie.libelle', 'code']) && {opacity:1}"></i>
         </th>
-        <td mat-cell *matCellDef="let visite"  (click)="viewVisite(visite.id)" class="pointer"> {{visite.epi.categorie.libelle | truncate:35}}</td>
+        <td mat-cell *matCellDef="let visite"  (click)="viewVisite(visite.id)" class="pointer"> {{visite.materiel.categorie.libelle | truncate:35}}</td>
       </ng-container>
 
       <!-- redacteur Column -->
@@ -39,14 +39,14 @@
           {{'VISITES.REDACTEUR.TITLE' | translate}} 
           <i class="fa" [ngClass]="isOrderedBy(['redacteur.prenom', 'redacteur.nom']) && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy(['redacteur.prenom', 'redacteur.nom']) && {opacity:1}"></i>
         </th>
-        <td mat-cell *matCellDef="let visite"  (click)="viewVisite(visite.id)" class="pointer" > {{visite.redacteur?.fullname }} </td>
+        <td mat-cell *matCellDef="let visite"  (click)="viewVisite(visite.id)" class="pointer" > {{visite.redacteur ? visite.redacteur.fullname : visite.creator?.fullname }} </td>
       </ng-container>
 
       <!-- visite Column -->
       <ng-container matColumnDef="visite">
-        <th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('visited')">
+        <th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('visited.fullname')">
           {{'VISITES.VISITED.TITLE' | translate}}
-          <i class="fa" [ngClass]="isOrderedBy('visited') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('visited') && {opacity:1}"></i>
+          <i class="fa" [ngClass]="isOrderedBy('visited.fullname') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('visited.fullname') && {opacity:1}"></i>
         </th>
         <td mat-cell *matCellDef="let visite"  (click)="viewVisite(visite.id)" class="pointer" > 
           <span *ngIf="visite.visited.type != 'societe'; else societe_ee">{{visite.visited?.fullname}}</span>
@@ -59,9 +59,9 @@
       
       <!-- date_visite Column -->
       <ng-container matColumnDef="date_visite">
-        <th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder(['visites_epi.date_visite', 'visites_epi.created_at'])"> 
+        <th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder(['date_visite', 'created_at'])"> 
           {{'VISITES.DATE_VISITE.SHORTTITLE' | translate}} 
-          <i class="fa" [ngClass]="isOrderedBy(['visites_epi.date_visite', 'visites_epi.created_at']) && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy(['visites_epi.date_visite', 'visites_epi.created_at']) && {opacity:1}"></i>
+          <i class="fa" [ngClass]="isOrderedBy(['date_visite', 'created_at']) && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy(['date_visite', 'created_at']) && {opacity:1}"></i>
         </th>
         <td mat-cell *matCellDef="let visite"  (click)="viewVisite(visite.id)" class="pointer text-center"> {{visite.date_visite | date:'dd/MM/yyyy'}} </td>
       </ng-container>

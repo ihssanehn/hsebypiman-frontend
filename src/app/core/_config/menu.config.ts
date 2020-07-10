@@ -803,6 +803,54 @@ export class MenuConfig {
 					}
 				]
 			},
+			salaries: {
+				btnAdd: {
+					title: 'Nouveau salarie',
+					root: true,
+					alignment: 'left',
+					page: '/salaries/add',
+					translate: 'MENU.BTN.NEWACTION',
+				},
+
+				items: [
+					{
+						icon: 'dashboard',
+						// icon: 'flaticon2-browser-2',
+						title: 'Dashboards',
+						root: true,
+						alignment: 'left',
+						page: '/dashboard',
+						translate: 'MENU.DASHBOARD',
+					},
+					{
+						title: 'Liste',
+						root: true,
+						alignment: 'left',
+						page: '/salaries/list',
+						translate: 'MENU.LIST',
+						icon: 'view_list',
+						// icon: 'flaticon2-browser-2',
+					},
+					{
+						title: 'Objectifs annuels',
+						root: true,
+						alignment: 'left',
+						page: '/salaries/goal',
+						translate: 'MENU.ADMIN',
+						icon: 'filter_center_focus',
+						// icon: 'flaticon2-mail-1',
+					},
+					{
+						title: 'Admin',
+						root: true,
+						alignment: 'left',
+						page: '/salaries/admin',
+						translate: 'MENU.ADMIN',
+						icon: 'settings',
+						// icon: 'flaticon2-mail-1',
+					}
+				]
+			},
 			items:{
 				btnAdd: {
 					title: 'Nouveau chantier',

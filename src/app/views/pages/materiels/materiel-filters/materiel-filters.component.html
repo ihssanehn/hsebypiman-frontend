@@ -3,7 +3,7 @@
 		<tf-portlet-body class="tf-portlet__body--fit card-filters px-5 pt-4 pb-3" >
 			<form novalidate [formGroup]="filterForm" *ngIf="filterForm">
 				<div class="row">
-					<tf-tree-select [itemsList]="categories" class="col-12" [required]="false" [translateTitle]="'MATERIELS.CATEGORIE'" (onChangedItem)="categorieChanged($event)" *ngIf="categories"></tf-tree-select>
+					<tf-tree-select [itemsList]="categories" class="col-12" [required]="false" [withAll]="true" [translateTitle]="'MATERIELS.CATEGORIE'" (onChangedItem)="categorieChanged($event)" *ngIf="categories"></tf-tree-select>
 					
 					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12">
 						<mat-label>{{'MATERIELS.ACTUAL_USER.TITLE' | translate}}

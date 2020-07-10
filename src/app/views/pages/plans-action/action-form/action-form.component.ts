@@ -7,7 +7,7 @@ import {
   StatusService, 
   CatHabilitationService, 
   EntrepriseService, 
-  UserService, 
+  PersonnelService, 
   VisiteChantierService,
   VisiteEpiService,
   VisiteOutillageService,
@@ -58,7 +58,7 @@ export class ActionFormComponent implements OnInit {
   constructor(
     private typeService:TypeService,
     private statusService:StatusService,
-    private userService:UserService,
+    private userService:PersonnelService,
     private visiteChantierService:VisiteChantierService,
     private visiteEpiService:VisiteEpiService,
     private visiteOutillageService:VisiteOutillageService,

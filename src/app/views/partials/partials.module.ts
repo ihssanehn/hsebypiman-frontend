@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { NgImageSliderModule } from 'ng-image-slider';
+import { AvatarModule } from 'ngx-avatar';
 
 import { TranslateModule } from '@ngx-translate/core';
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -86,7 +87,8 @@ import {
 	ArDetailPanelsComponent,
 	TreeSelectComponent,
 	PretModalComponent,
-	AddVehiculeFormComponent
+	AddVehiculeFormComponent,
+	SalarieScoreComponent
 } from './layout';
 // General
 import { NoticeComponent } from './content/general/notice/notice.component';
@@ -115,12 +117,16 @@ import { AdminBasicListPortletComponent } from './layout/admin-basic-list-portle
 import { AdminTemplateComponent } from './layout/admin-template/admin-template.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { SearchOutillageFormComponent } from './layout/outillage/search-outillage-form/search-outillage-form.component';
-import { SearchSalarieFormComponent } from './layout/outillage/search-salarie-form/search-salarie-form.component';
+import { SearchMaterielFormComponent } from './layout/visites/form/search-materiel-form/search-materiel-form.component';
 import { VisiteQuestionOutillageAdminComponent } from './layout/outillage/visite-question-outillage-admin/visite-question-outillage-admin.component';
 import { VsVehiculeFormImgComponent } from './layout/visites/form/vs-vehicule/vs-vehicule-form-img/vs-vehicule-form-img.component';
 import { SearchEpiFormComponent } from './layout/epi/search-epi-form/search-epi-form.component';
 import { VsVehiculeImageCarouselComponent } from './layout/visites/form/vs-vehicule/vs-vehicule-image-carousel/vs-vehicule-image-carousel.component';
 import { ImageLightboxContentDialogComponent } from './layout/modal/image-lightbox-content-dialog/image-lightbox-content-dialog.component';
+import { SalariePortletComponent } from './layout/salarie/salarie-portlet/salarie-portlet.component';
+import { SalariePortletBoxComponent } from './layout/salarie/salarie-portlet-box/salarie-portlet-box.component';
+import { SalariePortletRowComponent } from './layout/salarie/salarie-portlet-row/salarie-portlet-row.component';
+import { SalarieCardComponent } from './layout/salarie/salarie-card/salarie-card.component';
 
 @NgModule({
 	declarations: [
@@ -182,13 +188,18 @@ import { ImageLightboxContentDialogComponent } from './layout/modal/image-lightb
 		PretModalComponent,
 		SearchOutillageFormComponent,
 
-		SearchSalarieFormComponent,
+		SearchMaterielFormComponent,
 		VisiteQuestionOutillageAdminComponent,
 		AddVehiculeFormComponent,
 		VsVehiculeFormImgComponent,
 		SearchEpiFormComponent,
 		VsVehiculeImageCarouselComponent,
-		ImageLightboxContentDialogComponent
+		ImageLightboxContentDialogComponent,
+		SalarieScoreComponent,
+		SalariePortletComponent,
+		SalariePortletBoxComponent,
+		SalariePortletRowComponent,
+		SalarieCardComponent
 	],
 	exports: [
 		WidgetModule,
@@ -250,13 +261,18 @@ import { ImageLightboxContentDialogComponent } from './layout/modal/image-lightb
 
 		PretModalComponent,
 		SearchOutillageFormComponent,
-		SearchSalarieFormComponent,
+		SearchMaterielFormComponent,
 		VisiteQuestionOutillageAdminComponent,
 		AddVehiculeFormComponent,
 		VsVehiculeFormImgComponent,
 		SearchEpiFormComponent,
 		VsVehiculeImageCarouselComponent,
-		ImageLightboxContentDialogComponent
+		ImageLightboxContentDialogComponent,
+		SalarieScoreComponent,
+		SalariePortletComponent,
+		SalariePortletBoxComponent,
+		SalariePortletRowComponent,
+		SalarieCardComponent
 	],
 	imports: [
 		CommonModule,
@@ -295,6 +311,7 @@ import { ImageLightboxContentDialogComponent } from './layout/modal/image-lightb
 
 		SignaturePadModule,
 		NgImageSliderModule,
+		AvatarModule,
 
 		// ng-bootstrap modules
 		NgbDropdownModule,
@@ -313,10 +330,7 @@ import { ImageLightboxContentDialogComponent } from './layout/modal/image-lightb
 		NzCheckboxModule,
 		NgbModule,
 		DragDropModule,
-		
 		MatExpansionModule
-
-
 	],
 	entryComponents: [
 		AdminAddModalComponent,

@@ -20,7 +20,6 @@ import { ActionNotificationComponent } from '@app/views/partials/content/crud';
 // Components
 import { VisitesEpiComponent } from './visites-epi.component';
 import { VisitesEpiListComponent } from './visites-epi-list/visites-epi-list.component';
-import { VisiteEpiEditComponent } from './visite-epi-edit/visite-epi-edit.component';
 import { VisiteEpiAddComponent } from './visite-epi-add/visite-epi-add.component';
 import { VisiteEpiDetailComponent } from './visite-epi-detail/visite-epi-detail.component';
 import { VisiteEpiFiltersComponent } from './visite-epi-filters/visite-epi-filters.component';
@@ -57,14 +56,6 @@ const routes: Routes = [
 			{
 				path: 'add:id',
 				component: VisiteEpiAddComponent
-			},
-			{
-				path: 'edit',
-				component: VisiteEpiEditComponent
-			},
-			{
-				path: 'edit/:id',
-				component: VisiteEpiEditComponent
 			},
 			{
 				path : 'admin',
@@ -141,7 +132,6 @@ const routes: Routes = [
 	declarations: [
 		VisitesEpiComponent,
 		VisitesEpiListComponent,
-		VisiteEpiEditComponent,
 		VisiteEpiAddComponent,
 		VisiteEpiDetailComponent,
 		VisiteEpiAdminComponent,

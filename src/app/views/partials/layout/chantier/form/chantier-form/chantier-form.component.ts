@@ -2,7 +2,7 @@ import { Component, OnInit, Input, ChangeDetectorRef, EventEmitter, Output } fro
 import { FormGroup, FormArray, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Type, Status, CatHabilitation, Entreprise } from '@app/core/models';
 import { AuthService, User } from '@app/core/auth';
-import { TypeService, StatusService, CatHabilitationService, EntrepriseService, UserService } from '@app/core/services';
+import { TypeService, StatusService, CatHabilitationService, EntrepriseService, PersonnelService } from '@app/core/services';
 import { first } from 'rxjs/operators';
 import { FormStatus } from '@app/core/_base/crud/models/form-status';
 
@@ -41,7 +41,7 @@ export class ChantierFormComponent implements OnInit {
     private statusService:StatusService,
     private catHabilitationService:CatHabilitationService,
     private entrepriseService: EntrepriseService,
-    private userService:UserService,
+    private userService:PersonnelService,
     private cdr: ChangeDetectorRef,
   ) { }
 
@@ -111,7 +111,7 @@ export class ChantierFormComponent implements OnInit {
   }
   async getInterimaires(){
     this.interimairesLoaded = false;
-    var res = await this.userService.getAll({'categorie_code':'INTERIMAIRE', 'paginate':false}).toPromise();
+    var res = await this.userService.getAll({'contrat_code':'STAGIAIRE', 'paginate':false}).toPromise();
     if(res){
       this.interimairesList = res.result.data;
       this.interimairesLoaded = true;

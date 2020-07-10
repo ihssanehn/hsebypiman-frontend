@@ -27,7 +27,7 @@ export class VisitesVehiculeListComponent implements OnInit {
 	filter: any = {
 		per_page: this.pagination.pageSize,
 		page: this.pagination.page,
-		order_by: ['visites_vehicule.date_visite', 'visites_vehicule.created_at'],
+		order_by: ['date_visite', 'created_at'],
 		order_way: 'desc',
 		keyword: "",
 		dateRange: [],

@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { Chantier, Status } from '@app/core/models';
 import { User} from '@app/core/auth';
 import { EventEmitter } from '@angular/core';
-import { StatusService, ChantierService, UserService } from '@app/core/services';
+import { StatusService, ChantierService, PersonnelService } from '@app/core/services';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import { debounceTime, map } from 'rxjs/operators';
@@ -37,7 +37,7 @@ export class ArFiltersComponent implements OnInit, AfterViewInit {
   constructor(
     private statusService: StatusService,
     private chantierService:ChantierService, 
-    private userService:UserService,
+    private userService:PersonnelService,
     private fb: FormBuilder,
     private cdr: ChangeDetectorRef,
     private dateFrToEnPipe:DateFrToEnPipe,

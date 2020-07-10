@@ -33,19 +33,19 @@
 					<div class="col-12">
 						<div class="tf-card-form">
 							<div class="row mb-2">
-								<div class="col-4">Question</div>
+								<div class="col-3">Question</div>
 								<div class="col-3 text-center">Note</div>
 								<div class="col-3">Commentaire</div>
-								<div class="col-2">Date de mise en conformité</div>
+								<div class="col-3">Date de mise en conformité</div>
 							</div>
 							<div class="row align-items-center" *ngFor="let question of catQuestion.questions; let j = index; let last = last" [ngClass]="{'text-danger':getPivot(question.id, i).invalid}">
 								<ng-container [formGroup]="getPivot(question.id, i)" >
-									<div class="col-5">
+									<div class="col-3">
 										<span class="p2-pl-12">
 											{{(i+1) +'.'+(j+1)}} - {{question.libelle}}
 										</span>
 									</div>
-									<div class="col-2 d-inline-flex" style="justify-content: space-around;">
+									<div class="col-3 d-inline-flex" style="justify-content: space-around;">
 										<mat-radio-group aria-label="Select an option" formControlName="note">
 											<mat-radio-button [value]="1">OK</mat-radio-button>
 											<mat-radio-button [value]="2">KO</mat-radio-button>
@@ -58,13 +58,20 @@
 											{{getPivotObs(question.id, i)}}
 										</ng-template>
 									</div>
-									<div class="col-2">
+									<div class="col-3">
 										<div class="dropdown">
 											<ng-container *ngIf="origin == 'add'; else detailMode" >
-												<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" placeholder="DD/MM/YYYY" formControlName="date_remise_conf">
-												<a class="text-primary" (click)="getPivot(question.id,i).controls['note'].value == 2 && getPivot(question.id,i).controls['date_remise_conf'].setValue(today)">
-													<i>date du jour</i>
-												</a>
+												<div class="d-flex">
+													<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" placeholder="DD/MM/YYYY" formControlName="date_remise_conf">
+													<a class="pl-2" [ngClass]="getPivot(question.id,i).controls['note'].value == 2 ? 'text-primary':'disabled'" (click)="getPivot(question.id,i).controls['note'].value == 2 && getPivot(question.id,i).controls['date_remise_conf'].setValue(today)">
+														<i>date du jour</i>
+													</a>
+												</div>
+												<div>
+													<mat-checkbox formControlName="action_to_visited" [checked]="isChecked(question.id,i)" (change)="toggleActionToVisited($event.checked, question.id, i)">
+														Action attribuée à la personne visité
+													</mat-checkbox>
+												</div>
 											</ng-container>
 											<ng-template #detailMode>
 												<div class="edit-date-block">

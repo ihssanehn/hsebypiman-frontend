@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { TypeService, UserService, MaterielService } from '@app/core/services';
+import { TypeService, PersonnelService, MaterielService } from '@app/core/services';
 import { Type, Materiel } from '@app/core/models';
 
 @Component({
@@ -19,7 +19,7 @@ export class SearchEpiFormComponent implements OnInit {
   salaries: any;
   epis: Materiel[];
   constructor(private typeService : TypeService,
-    private salarieService : UserService,
+    private salarieService : PersonnelService,
     private materielService : MaterielService,
     private cdr: ChangeDetectorRef) { }
 
@@ -35,7 +35,7 @@ export class SearchEpiFormComponent implements OnInit {
 
 
   cantDisplayQuestions(){
-    var test: boolean = this.form.get('epi_id').invalid ||
+    var test: boolean = this.form.get('materiel_id').invalid ||
       this.form.get('type_id').invalid ||
       this.form.get('salarie_id').invalid
     return test;
@@ -74,6 +74,20 @@ export class SearchEpiFormComponent implements OnInit {
 
 		const result = control.hasError(validationType) && (control.dirty || control.touched);
 		return result;
+  }
+
+  
+  
+  isExterne() {
+    return this.form.get('is_externe').value == 1;
+  }
+
+  toggleExterne($event){
+    if($event){
+      this.form.get('is_externe').setValue(1);
+    }else{
+      this.form.get('is_externe').setValue(0);
+    }
   }
 
 }

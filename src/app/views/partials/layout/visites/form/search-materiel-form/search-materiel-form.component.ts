@@ -3,15 +3,15 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { AuthService, User } from '@app/core/auth';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
-import { TypeService, UserService } from '@app/core/services';
-import { Type } from '@app/core/models';
+import { TypeService, PersonnelService, MaterielService } from '@app/core/services';
+import { Type, Materiel } from '@app/core/models';
 
 @Component({
-  selector: 'tf-search-salarie-form',
-  templateUrl: './search-salarie-form.component.html',
-  styleUrls: ['./search-salarie-form.component.scss']
+  selector: 'tf-search-materiel-form',
+  templateUrl: './search-materiel-form.component.html',
+  styleUrls: ['./search-materiel-form.component.scss']
 })
-export class SearchSalarieFormComponent implements OnInit {
+export class SearchMaterielFormComponent implements OnInit {
 
   @Input() form: FormGroup;
   @Input() parent: string;
@@ -23,14 +23,23 @@ export class SearchSalarieFormComponent implements OnInit {
   searchControl: FormControl = new FormControl();
   filteredSalaries : Observable<User[]>
   salaries: User[];
+  materiels: Materiel[] = [];
   salarie : User;
   types : Type[];
   
-  constructor(private salarieService : UserService,
+  constructor(
+    private salarieService : PersonnelService,
     private cdr : ChangeDetectorRef,
-    private typeService : TypeService) { }
+    private typeService : TypeService,
+    private materielService: MaterielService,
+  ) {    
+  }
 
   async ngOnInit() {
+    this.form.get('salarie_id').valueChanges.subscribe(salarie_id=>{
+      console.log('here', salarie_id);
+      this.getMateriel(salarie_id);
+    });
     this.salaries = (await this.salarieService.getList().toPromise()).result.data;
     this.initFilteredSalaries();
     this.getTypes();
@@ -39,7 +48,20 @@ export class SearchSalarieFormComponent implements OnInit {
   async getTypes(){
     var res = await this.typeService.getAllFromModel(this.model).toPromise();
     this.types = res.result.data
-    this.cdr.detectChanges();
+    this.cdr.markForCheck();
+  }
+
+  async getMateriel(personnel_id = null){
+    switch (this.model){
+      default:
+        var categorie_code = this.model.replace('Vs', '');
+        this.materiels = (await this.materielService.getAllList({'categorie_code':categorie_code.toUpperCase(), 'actual_user_id': personnel_id}).toPromise()).result.data;
+      break;
+      case 'VsVehicule':
+        var categorie_code = this.model.replace('Vs', '');
+        this.materiels = (await this.materielService.getAllList({'categorie_code':categorie_code.toUpperCase(), 'actual_user_id': personnel_id}).toPromise()).result.data;
+      break;
+    }
     this.cdr.markForCheck();
   }
 
@@ -51,11 +73,8 @@ export class SearchSalarieFormComponent implements OnInit {
 
 
   cantDisplayQuestions(){
-    var isCodeValid = (this.model == 'VsVehicule') 
-      ? this.form.get('vehicule').invalid
-      : this.form.get('outillage_code').invalid;
 
-    var test: boolean = isCodeValid 
+    var test: boolean = this.form.get('materiel_id').invalid 
       || this.form.get('type_id').invalid 
       || this.form.get('salarie_id').invalid;
 
@@ -117,4 +136,23 @@ export class SearchSalarieFormComponent implements OnInit {
 		const result = control.hasError(validationType) && (control.dirty || control.touched);
 		return result;
   }
+
+  
+  isExterne() {
+    return this.form.get('is_externe').value == 1;
+  }
+
+  toggleExterne($event){
+    if($event){
+      this.form.get('is_externe').setValue(1);
+    }else{
+      this.form.get('is_externe').setValue(0);
+    }
+  }
+
+  formHasMateriel(){
+    return !this.form.get('materiel_id').value;
+  }
+
+
 }

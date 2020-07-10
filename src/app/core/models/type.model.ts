@@ -11,4 +11,6 @@ export class Type {
     active?:boolean;
     creator_id?:number;
     creator?:User;
+
+    catMetricsList: Array<any>;
 }

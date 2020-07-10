@@ -45,7 +45,7 @@ export class AddVehiculeFormComponent implements OnInit {
     switch(this.origin){
       case 'add':
         if(this.form.get('vehicule').value){
-          this.vehicule = this.form.get('vehicule').value;
+          this.vehicule = this.form.get('materiel_id').value;
           this.addControl.setValue(this.vehicule);
         }
         break;

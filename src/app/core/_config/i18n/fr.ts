@@ -670,9 +670,9 @@ export const locale = {
 				SHORTTITLE: 'Nom'
 			},
 			TYPE:{
-				LABEL:'Type',
-				TITLE:'Type',
-				SHORTTITLE:'Type'
+				LABEL:'Questionnaire',
+				TITLE:'Questionnaire',
+				SHORTTITLE:'Questionnaire'
 			},
 			STATUS:{
 				LABEL:'Statut',
@@ -688,6 +688,11 @@ export const locale = {
 				LABEL:'Personne visitée',
 				TITLE:'Personne visitée',
 				SHORTTITLE:'Personne visitée',
+			},
+			MATERIEL:{
+				LABEL:'Matériel visité',
+				TITLE:'Matériel visité',
+				SHORTTITLE:'Matériel visité',
 			},
 			DATE_VISITE:{
 				LABEL:'Date de la visite',
@@ -766,7 +771,7 @@ export const locale = {
 		PLANACTIONS:{
 			NUMBER:{
 				LABEL:'Numéro',
-				TITLE:'N° du plan d\'action',
+				TITLE:'Action N°',
 				SHORTTITLE:'Numéro'
 			},
 			ORIGINE:{
@@ -823,6 +828,43 @@ export const locale = {
 				CREATE: 'Créer un nouveau plan d\'action'
 			}
 
+		},
+		SALARIES:{
+			ENTRY_AT:{
+				LABEL:'Date d\'entrée',
+				TITLE:'Date d\'entrée',
+				SHORTTITLE:'Date d\'entrée'
+			},
+			OUTILLAGE:{
+				LABEL:'Outillage',
+				TITLE:'Outillage',
+				SHORTTITLE:'Outillage'
+			},
+			ACCIDENTOLOGIE:{
+				LABEL:'Accidentologie',
+				TITLE:'Accidentologie',
+				SHORTTITLE:'Accidentologie'
+			},
+			ANIMATIONHSE:{
+				LABEL:'Animation HSE',
+				TITLE:'Animation HSE',
+				SHORTTITLE:'Animation HSE'
+			},
+			FORMATION:{
+				LABEL:'Formation',
+				TITLE:'Formation',
+				SHORTTITLE:'Formation'
+			},
+			EPI:{
+				LABEL:'EPI',
+				TITLE:'EPI',
+				SHORTTITLE:'EPI'
+			},
+			VEHICULE:{
+				LABEL:'Véhicule',
+				TITLE:'Véhicule',
+				SHORTTITLE:'Véhicule'
+			},
 		},
 		COMMON:{
 			ADRESS:{
@@ -891,7 +933,28 @@ export const locale = {
 			REMARQUE:{
 				LABEL:'Remarques',
 				TITLE:'Remarques'
-			}
+			},
+			FONCTION:{
+				LABEL:'Fonction',
+				TITLE:'Fonction'
+			},
+			PHONE:{
+				LABEL:'Numéro de téléphone',
+				TITLE:'Numéro de téléphone'
+			},
+			EMAIL:{
+				LABEL:'Adresse mail',
+				TITLE:'Adresse mail'
+			},
+			SCORE:{
+				LABEL:'Score des salariés',
+				TITLE:'Score des salariés'
+			},
+			BIRTHDAY:{
+				LABEL:'Date de naissance',
+				TITLE:'Date de naissance',
+				SHORTTITLE:'Date de naissance'
+			},
 		
 		},
 		FILTER : {

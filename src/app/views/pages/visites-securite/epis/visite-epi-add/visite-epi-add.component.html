@@ -11,11 +11,11 @@
 			  <span class="id-item">{{'MENU.SUB_VISITESECURITE.ADD' | translate}}</span>
 			</span>
 		</div>
-		<tf-search-epi-form [form]="visiteForm" origin="add" (onEpiSelected)="onEpiSelected($event)"></tf-search-epi-form>
-		<div class="tf-divider" *ngIf="visiteForm.get('epi_id').value">
+		<tf-search-materiel-form [form]="visiteForm" origin="add" [model]="'VsEpi'" (onUserSelected)="onEpiSelected($event)"></tf-search-materiel-form>
+		<div class="tf-divider" *ngIf="visiteForm.get('materiel_id').value">
 			<span></span>
 		</div>
-		<!-- <tf-vs-form-head [visiteForm]="visiteForm" [origin]="'detail'" *ngIf="visiteForm.get('epi_id').value"></tf-vs-form-head> -->
+		<!-- <tf-vs-form-head [visiteForm]="visiteForm" [origin]="'detail'" *ngIf="visiteForm.get('materiel_id').value"></tf-vs-form-head> -->
 	</tf-portlet>
 	
 	<tf-vs-form-body [visiteForm]="visiteForm" [catQuestionsList]="catQuestionsList" [origin]="'add'" [isDisableToggle]="true" *ngIf="questionsDisplayed"></tf-vs-form-body>
