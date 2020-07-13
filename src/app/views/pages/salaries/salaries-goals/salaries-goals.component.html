@@ -6,7 +6,7 @@
             </span>
             <div class="pull-right">
                 <mat-form-field class="col-xl-10">
-                    <input matInput class="form-control" [matDatepicker]="toYearPicker" placeholder="Année" [formControl]="year">
+                    <input matInput class="form-control" [matDatepicker]="toYearPicker" placeholder="Année" [formControl]="year" readonly>
                     <mat-datepicker-toggle matSuffix [for]="toYearPicker"></mat-datepicker-toggle>
                     <mat-datepicker startView="multi-year" (yearSelected)="closeDatePicker($event,toYearPicker)" #toYearPicker></mat-datepicker>
                 </mat-form-field>
@@ -27,7 +27,7 @@
                                             <ng-container [formGroup]="getGoal(metric.id, i)" >
                                                 <mat-form-field class="col-xl-12" >
                                                     <mat-label>{{metric.short_libelle}}</mat-label>
-                                                    <input matInput class="form-control" formControlName="value" type="string" name="metric" placeholder="Saisir ici" />
+                                                    <input matInput class="form-control" formControlName="value" type="number" name="metric" placeholder="Saisir ici" />
                                                 </mat-form-field>
                                             </ng-container>
                                         </div>

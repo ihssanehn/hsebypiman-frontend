@@ -25,6 +25,9 @@
                         border-bottom: 2px solid #55cec7 ;
                     }
                 }
+                .form-control[readonly] {
+                    background-color: #f7f9fc;
+                }
             }
             .tf-portlet__body{
                 padding: 0px 20px 20px 20px;
