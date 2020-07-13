@@ -5,7 +5,7 @@ import { CatMetricService, MetricService } from '@app/core/services';
 
 @Component({
   selector: 'salarie-metrics-admin',
-  templateUrl: '../../../../partials/layout/admin-template/admin-template.component.html',
+  templateUrl: 'salarie-metrics-admin.component.html',
   styleUrls: ['../../../../partials/layout/admin-template/admin-template.component.scss']
 })
 export class SalarieMetricsAdminComponent extends AdminTemplateComponent implements OnInit {

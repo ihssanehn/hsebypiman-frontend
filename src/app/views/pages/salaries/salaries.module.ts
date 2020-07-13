@@ -51,6 +51,15 @@ import {
 	MAT_DATE_FORMATS,
 	DateAdapter
 } from '@angular/material';
+import { 
+	NzTableModule, 
+	NzInputModule, 
+	NzPopconfirmModule, 
+	NzDividerModule, 
+	NzIconModule,
+	NzCheckboxModule
+} from 'ng-zorro-antd';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 // DateAdapter
 import { CustomMomentDateAdapter } from '@app/core/_base/crud/utils/custom-moment-date.adapter';
 import { YEAR_FORMATS } from '@app/core/_base/crud/utils/custom-moment-date.adapter';
@@ -62,6 +71,7 @@ import { SalarieDetailComponent } from './salarie-detail/salarie-detail.componen
 import { SalariesGoalsComponent } from './salaries-goals/salaries-goals.component';
 import { SalariesAdminComponent } from './salaries-admin/salaries-admin.component';
 import { SalarieMetricsAdminComponent } from './salaries-admin/salarie-metrics-admin/salarie-metrics-admin.component';
+import { SalarieAdminListPortletComponent } from './salaries-admin/salarie-admin-list-portlet/salarie-admin-list-portlet.component';
 
 
 const routes: Routes = [
@@ -155,6 +165,14 @@ const routes: Routes = [
 		NgbPopoverModule,
 		NgxMaskModule,
 		AvatarModule,
+
+		NzTableModule, 
+		NzInputModule, 
+		NzPopconfirmModule, 
+		NzDividerModule, 
+		NzIconModule,
+		NzCheckboxModule,
+		DragDropModule
 	],
 	providers: [
 		InterceptService,
@@ -189,7 +207,8 @@ const routes: Routes = [
 		SalarieDetailComponent,
 		SalariesGoalsComponent,
 		SalariesAdminComponent,
-		SalarieMetricsAdminComponent
+		SalarieMetricsAdminComponent,
+		SalarieAdminListPortletComponent
 	]
 })
 export class SalariesModule {
