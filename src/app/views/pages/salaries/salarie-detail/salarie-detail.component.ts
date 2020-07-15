@@ -10,6 +10,8 @@ import {MatDatepicker} from '@angular/material/datepicker';
 import * as _moment from 'moment';
 import { default as _rollupMoment } from 'moment';
 import { Personnel } from '@app/core/models';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { SalarieEditComponent } from '../salarie-edit/salarie-edit.component';
 
 const moment = _rollupMoment || _moment;
 
@@ -34,23 +36,20 @@ export class SalarieDetailComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
 		private router: Router,
 		private salarieFB: FormBuilder,
-		private personnelService: PersonnelService,
+    private personnelService: PersonnelService,
+    private modalService: NgbModal,
 		private cdr: ChangeDetectorRef,
 		private permissionsService : NgxPermissionsService,
 		iconRegistry: MatIconRegistry, 
 		sanitizer: DomSanitizer
-  ) {
-    iconRegistry.addSvgIcon('status-encours',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/encours.svg'));
-		iconRegistry.addSvgIcon('status-termine',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/termine.svg'));
-  }
+  ) {}
 
   ngOnInit() {
     const routeSubscription = this.activatedRoute.params.subscribe(
       async params => {
         const id = params.id;
         if (id) {
-        this.getSalarie(id);
-
+          this.getSalarie(id);
         } else {
           this.router.navigateByUrl('/salaries/list');
         }
@@ -69,22 +68,30 @@ export class SalarieDetailComponent implements OnInit, OnDestroy {
         salarieId,
         this.year.value.year()
       ).toPromise();
-      console.log(res);
 			this.salarie = res.result.data;
 			this.cdr.markForCheck();
 		} catch (error) {
 			console.error(error);
 		}
   }
-
-  onEditMetric(){
-    this.getSalarie(this.salarie.id);
-  }
   
   closeDatePicker(chosenYear: Date, datepicker: MatDatepicker<any>) {
     datepicker.close();
     this.year.setValue(moment(chosenYear));
     this.getSalarie(this.salarie.id);
+  }
+
+  editMetrics(){
+    const modalRef = this.modalService.open(SalarieEditComponent, {size: 'xl',scrollable: true,centered : true});
+    modalRef.componentInstance.salarie = this.salarie;
+    modalRef.componentInstance.year = this.year.value.year();
+    modalRef.result.then((result) => {
+      if (result) {
+        this.getSalarie(this.salarie.id);
+      }
+    }, (reason) => {
+      
+    });
   }
 
   goBackWithId() {

@@ -10,17 +10,11 @@ import { FormControl } from '@angular/forms';
 export class SalariePortletBoxComponent implements OnInit {
 
   @Input() catMetric: CatMetric;
-  @Input() edit: boolean;
   @Input() year: FormControl;
-  @Output() onEdit = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
-  }
-
-  onSubmit(value){
-    this.onEdit.emit(value);
   }
 
 }

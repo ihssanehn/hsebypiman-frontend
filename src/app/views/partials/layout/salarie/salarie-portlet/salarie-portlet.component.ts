@@ -11,15 +11,10 @@ export class SalariePortletComponent implements OnInit {
 
   @Input() metricsTree: Type;
   @Input() year: FormControl;
-  @Output() onEdit = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
-  }
-
-  onSubmit(value){
-    this.onEdit.emit(value);
   }
 
   calculateGlobalRating(){

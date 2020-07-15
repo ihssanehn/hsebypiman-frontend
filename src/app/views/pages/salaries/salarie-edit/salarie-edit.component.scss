@@ -1,0 +1,44 @@
+:host::ng-deep {
+    .card{
+        padding: 2em 2em 0;    
+        height: 100%;
+        h5{
+            align-items: center;
+            display: flex;
+            b{
+                margin-left: 10px;
+            }
+        }
+        .box{
+            padding-top: 1.5em;
+            padding-bottom: 1.5em;
+            .blue{
+                color: #33b5ae;
+            }
+            h6{
+                align-items: center;
+                display: flex;
+            }
+            .tf-divider.h-5 span{
+                height: 1em;
+            }
+            p{
+                text-align: right;
+                .label{
+                    color: #c9c9c9;
+                    text-align: left;
+                }
+                .mat-icon-button{
+                    height: 20px;
+                    line-height: 0px;
+                }
+                .metric-radio{
+                    font-weight: 100;
+                }
+            }
+            .blue{
+                color: #33b5ae;
+            }
+        }
+    }
+}

@@ -5,11 +5,16 @@
         </span>
         <div class="pull-right">
             <mat-form-field class="col-xl-10">
-                <input matInput class="form-control" [matDatepicker]="toYearPicker" placeholder="Année" [formControl]="year">
+                <input matInput class="form-control" [matDatepicker]="toYearPicker" placeholder="Année" [formControl]="year" readonly>
                 <mat-datepicker-toggle matSuffix [for]="toYearPicker"></mat-datepicker-toggle>
                 <mat-datepicker startView="multi-year" (yearSelected)="closeDatePicker($event,toYearPicker)" #toYearPicker></mat-datepicker>
             </mat-form-field>
         </div>
+        <span>
+            <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editMetrics()">
+                <mat-icon>edit</mat-icon>
+              </button>
+        </span>
     </div>
     <tf-portlet-body class="tf-portlet__body--fit">
 
@@ -98,7 +103,6 @@
                             *ngFor="let item of salarie.metricsTree"
                             [metricsTree]="item" 
                             [year]="year"
-                            (onEdit)="onEditMetric()"
                         ></tf-salarie-portlet>
         
                         <div class="col-md-12 mt-4">
