@@ -1,12 +1,12 @@
 import { Component, OnInit, ChangeDetectorRef, Injector } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { TypeService } from '@app/core/services';
+import { TypeService, CategorieService } from '@app/core/services';
 import { AdminTemplateComponent } from '@app/views/partials/layout/admin-template/admin-template.component';
 
 @Component({
   selector: 'materiel-types-admin',
-  styleUrls: ['./materiel-types-admin.component.scss'],
-  templateUrl: './materiel-types-admin.component.html'
+  styleUrls: ['../../../../partials/layout/admin-template/admin-template.component.scss'],
+  templateUrl: '../../../../partials/layout/admin-template/admin-template.component.html'
 })
 export class MaterielTypesAdminComponent extends AdminTemplateComponent implements OnInit {
 
@@ -29,19 +29,26 @@ export class MaterielTypesAdminComponent extends AdminTemplateComponent implemen
     super(injector);        
     this.cdr = injector.get(ChangeDetectorRef);
     this.modalService = injector.get(NgbModal);
-    this.parentService = injector.get(TypeService);
+    this.parentService = injector.get(CategorieService);
+    this.childService = injector.get(CategorieService);
   }
 
 
   async getList(){
     try {
-      var res = await this.parentService.getAllFromModel('Materiel').toPromise();
+      var res = await this.parentService.getAllAsAdmin({model:'Materiel',parent_id:null}).toPromise();
       this.list = res.result.data;
       this.cdr.markForCheck();
 		} catch (error) {
 			console.error(error);
 		}
   }
+
+  formatChildren(item){
+    item['children'] = item['children']; 
+    return item;
+  }
+
 
   async addItem(){
     super.addItem("Ajouter un type d'materiel");  
