@@ -30,10 +30,10 @@
               </div>
               <div class="box box-coords" style="flex:1">
                 <h5><b>À propos du salarié</b></h5>
-                <p><span class="label pull-left mr-2">{{'COMMON.LASTNAME.LABEL' | translate}}</span><span class="">{{salarie.nom}}</span></p>
-                <p><span class="label pull-left mr-2">{{'COMMON.FIRSTNAME.LABEL' | translate}}</span><span class="">{{salarie.prenom}}</span></p>
-                <p><span class="label pull-left mr-2">{{'COMMON.BIRTHDAY.LABEL' | translate}}</span><span class="">{{salarie.date_naissance | date:'dd/MM/yyyy'}}</span></p>
-                <p><span class="label pull-left mr-2">{{'COMMON.FONCTION.LABEL' | translate}}</span><span class="">{{salarie.fonction?.libelle}}</span></p>
+                <p><span class="label pull-left mr-2">{{'COMMON.LASTNAME.LABEL' | translate}}</span><span class="" *ngIf="salarie.nom; else noDataFound">{{salarie.nom}}</span></p>
+                <p><span class="label pull-left mr-2">{{'COMMON.FIRSTNAME.LABEL' | translate}}</span><span class="" *ngIf="salarie.prenom; else noDataFound">{{salarie.prenom}}</span></p>
+                <p><span class="label pull-left mr-2">{{'COMMON.BIRTHDAY.LABEL' | translate}}</span><span class="" *ngIf="salarie.date_naissance; else noDataFound">{{salarie.date_naissance | date:'dd/MM/yyyy'}}</span></p>
+                <p><span class="label pull-left mr-2">{{'COMMON.FONCTION.LABEL' | translate}}</span><span class="" *ngIf="salarie.fonction; else noDataFound">{{salarie.fonction?.libelle}}</span></p>
               </div>
               <div class="tf-divider">
                 <span></span>
@@ -63,7 +63,7 @@
                             <div class="card">
                                 <h5><b>Information employeur</b></h5>
                                 <div class="row d-flex">
-                                    <div class="box box-ar-vs col-md-3">
+                                    <div class="box col-md-6">
                                         <h6><b>En cas d'urgence</b></h6>
                                         <div class="tf-divider"><span></span></div>
                                         <div class="box box-coords" style="flex:1">
@@ -72,7 +72,7 @@
                                             <p><span class="label pull-left mr-2">Lien parente</span><span class="blue" *ngIf="salarie.lien_parente_urgence; else noDataFound">{{salarie.lien_parente_urgence}}</span></p>
                                         </div>
                                     </div>
-                                    <div class="box box-ar-vs col-md-3">
+                                    <div class="box col-md-6">
                                         <h6><b>Visite médicale</b></h6>
                                         <div class="tf-divider"><span></span></div>
                                         <div class="box box-coords" style="flex:1">
