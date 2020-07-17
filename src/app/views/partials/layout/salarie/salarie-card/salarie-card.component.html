@@ -4,7 +4,7 @@
         <div class="tf-divider"><span></span></div>
         <div class="box box-coords row flex-row" style="flex:1">
             <div class="col-xl-6 col-sm-12  text-right" *ngFor="let metric of catMetric.metrics">
-                <span class="label pull-left mr-2">{{metric.short_libelle}}</span>
+                <span class="label no-bold pull-left mr-2">{{metric.short_libelle}}</span>
                 <span class="" *ngIf="metric.pivot.value; else noPivotFound">{{metric.pivot.value}}</span>
                 <span class="goal-label" *ngIf="metric.year_goal; else noGoalFound">/{{metric.year_goal.value}}</span>
                 <mat-progress-bar id="progress_bar" [ngClass]="getProgressColor(metric.rating)" mode="determinate" value="{{metric.rating}}"></mat-progress-bar>

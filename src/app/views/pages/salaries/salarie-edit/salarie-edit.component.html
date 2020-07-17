@@ -29,8 +29,10 @@
                                                     <ng-container *ngIf="metric.is_editable" [formGroup]="getPivot(metric.id,j,i)">
                                                         <mat-form-field class="col-xl-12" *ngIf="!metric.is_bool; else boolField">
                                                             <mat-label>{{metric.libelle}}</mat-label>
-                                                            <input matInput  class="form-control" formControlName="value" type="number" name="metric" 
-                                                            placeholder="Saisir ici" />
+                                                            <input *ngIf="metric.unit; else withoutUnit" matInput  class="form-control" formControlName="value" type="string" name="metric" [suffix]=" ' '+metric.unit" mask="separator.2" placeholder="Saisir ici" />
+                                                            <ng-template #withoutUnit>
+                                                                <input matInput  class="form-control" formControlName="value" type="number" name="metric" placeholder="Saisir ici" />
+                                                            </ng-template>
                                                         </mat-form-field>
                                                     </ng-container>
                                                     <ng-template #boolField>

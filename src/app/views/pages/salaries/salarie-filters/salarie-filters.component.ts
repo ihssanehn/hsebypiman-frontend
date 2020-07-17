@@ -51,15 +51,15 @@ export class SalarieFiltersComponent implements  OnInit {
   initFiltersForm(){
     this.filterForm = this.fb.group({
       fonction_id:[null],    
-      created_at_start:[null],
-      created_at_end:[null]
+      entry_at_start:[null],
+      entry_at_end:[null]
     })
   }
 
   search(filters: any): void {
     var filter = {...this.filterForm.getRawValue()}
-    filter.created_at_start = this.dateFrToEnPipe.transform(filter.created_at_start);
-    filter.created_at_end = this.dateFrToEnPipe.transform(filter.created_at_end);
+    filter.entry_at_start = this.dateFrToEnPipe.transform(filter.entry_at_start);
+    filter.entry_at_end = this.dateFrToEnPipe.transform(filter.entry_at_end);
     this.change.emit(filter);
   }
 

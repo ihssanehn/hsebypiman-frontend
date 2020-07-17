@@ -11,7 +11,7 @@
             </mat-form-field>
         </div>
         <span>
-            <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editMetrics()">
+            <button mat-icon-button color="info" matTooltip="Modifier les objectifs" (click)="editMetrics()">
                 <mat-icon>edit</mat-icon>
               </button>
         </span>
@@ -50,7 +50,7 @@
                     <div class="d-flex flex-wrap">
 
                         <tf-salarie-card
-                            class="col-md-4 d-flex pt-3"
+                            class="col-md-4 d-flex pb-3"
                             *ngFor="let item of salarie.catMetricsList"
                             [catMetric]="item"
                         ></tf-salarie-card>
@@ -113,7 +113,7 @@
                                         <!-- <small class="pull-right">{{'COMMON.UPDATED_AT.TITLE' | translate}} le <span class="blue">10/10/2020</span></small> -->
                                     </h6>
                                     <div class="tf-divider"><span></span></div>
-                                    <div class="px-5">
+                                    <div>
                                         <table class="table table-borderless table-sm table-striped px-4">
                                             <thead>
                                             <tr>

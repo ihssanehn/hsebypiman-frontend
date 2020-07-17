@@ -2,7 +2,7 @@
     <tf-portlet class="tf-portlet--height-fluid mat-elevation-z8" id="portlet-salarie" >
         <div class="tf-portlet-header ">
             <span class="title">
-                <a [routerLink]="['/salaries/list']">{{'MENU.SUB_SALARIES.LIST' | translate}}</a><span class="divider">></span><span class="id-item">Objectifs annuels</span>
+                <a [routerLink]="['/salaries/list']">{{'MENU.SUB_SALARIES.LIST' | translate}}</a><span class="divider">></span><span class="id-item">Objectifs</span>
             </span>
             <div class="pull-right">
                 <mat-form-field class="col-xl-10">
@@ -27,7 +27,10 @@
                                             <ng-container [formGroup]="getGoal(metric.id, i)" >
                                                 <mat-form-field class="col-xl-12" >
                                                     <mat-label>{{metric.short_libelle}}</mat-label>
-                                                    <input matInput class="form-control" formControlName="value" type="number" name="metric" placeholder="Saisir ici" />
+                                                    <input *ngIf="metric.unit; else withoutUnit" matInput  class="form-control" formControlName="value" type="string" name="metric" [suffix]=" ' '+metric.unit" mask="separator.2" placeholder="Saisir ici" />
+                                                    <ng-template #withoutUnit>
+                                                        <input matInput  class="form-control" formControlName="value" type="number" name="metric" placeholder="Saisir ici" />
+                                                    </ng-template>
                                                 </mat-form-field>
                                             </ng-container>
                                         </div>

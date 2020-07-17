@@ -832,7 +832,7 @@ export class MenuConfig {
 						// icon: 'flaticon2-browser-2',
 					},
 					{
-						title: 'Objectifs annuels',
+						title: 'Objectifs',
 						root: true,
 						alignment: 'left',
 						page: '/salaries/goal',

@@ -18,14 +18,14 @@
                     </mat-form-field>
 
 					<div class="col-xl-4 col-md-4 col-sm-4 col-xs-12">
-						<h6>{{'COMMON.CREATED_AT.TITLE' | translate}}</h6>
+						<h6>{{'SALARIES.ENTRY_AT.LABEL' | translate}}</h6>
 						<mat-form-field class="col-md-6 col-xl-6">
 							<mat-label>Entre le :</mat-label>
-							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="created_at_start" placeholder="DD/MM/YYYY">
+							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="entry_at_start" placeholder="DD/MM/YYYY">
 						</mat-form-field>
 						<mat-form-field class="col-md-6 col-xl-6">
 							<mat-label>Et le :</mat-label>
-							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="created_at_end" placeholder="DD/MM/YYYY">
+							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="entry_at_end" placeholder="DD/MM/YYYY">
 						</mat-form-field>
 					</div>
 
