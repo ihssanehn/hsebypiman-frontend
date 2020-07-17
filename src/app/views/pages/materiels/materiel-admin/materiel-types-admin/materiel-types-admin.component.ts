@@ -36,7 +36,7 @@ export class MaterielTypesAdminComponent extends AdminTemplateComponent implemen
 
   async getList(){
     try {
-      var res = await this.parentService.getAllAsAdmin({model:'Materiel',parent_id:null}).toPromise();
+      var res = await this.parentService.getAllAsAdmin({model:'Materiel',structure:true}).toPromise();
       this.list = res.result.data;
       this.cdr.markForCheck();
 		} catch (error) {
@@ -51,7 +51,7 @@ export class MaterielTypesAdminComponent extends AdminTemplateComponent implemen
 
 
   async addItem(){
-    super.addItem("Ajouter un type d'materiel");  
+    super.addItem("Ajouter un type de materiel", {model : 'Materiel'});  
   }
 
 
