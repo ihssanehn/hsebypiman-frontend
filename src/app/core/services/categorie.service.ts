@@ -33,13 +33,16 @@ export class CategorieService extends HttpService{
         return this.http.post<JsonResponse<Categorie[]>>(this.baseUrl, {'model':model});
     }
     get(item_id){
-        return this.http.get(this.baseUrl+'/'+item_id);
+        return this.http.get<any>(this.baseUrl+'/'+item_id)
+            .pipe(map(result => result.result.data));
     }
     create(item){
-        return this.http.post(this.baseUrl+'/'+'create', item);
+        return this.http.post<any>(this.baseUrl+'/'+'create', item)
+            .pipe(map(result => result.result.data));
     }
     update(item){
-        return this.http.put(this.baseUrl+'/'+item.id, item);
+        return this.http.put<any>(this.baseUrl+'/'+item.id, item)
+            .pipe(map(result => result.result.data));
     }
     delete(item_id){
         return this.http.delete(this.baseUrl+'/'+item_id);
