@@ -75,7 +75,7 @@ export class ActionEditComponent implements OnInit, OnDestroy {
 					});
 
 				} else {
-					this.router.navigateByUrl('/plans-action/list');
+					this.router.navigateByUrl('/plan-actions/list');
 				}
 			}
 		);
@@ -87,7 +87,7 @@ export class ActionEditComponent implements OnInit, OnDestroy {
 	}
 
 	goBackWithId() {
-		const url = `/plans-action/list`;
+		const url = `/plan-actions/list`;
 		this.router.navigateByUrl(url, {
 			relativeTo: this.activatedRoute
 		});
@@ -119,7 +119,7 @@ export class ActionEditComponent implements OnInit, OnDestroy {
 
 	refreshAction(id) {
 		let url = this.router.url;
-		url = `/plans-action/edit/${id}`;
+		url = `/plan-actions/edit/${id}`;
 		this.router.navigateByUrl(url, {
 			relativeTo: this.activatedRoute
 		});

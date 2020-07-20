@@ -104,7 +104,7 @@ export class ActionAddComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         }).then(() => {
-          this.router.navigate(['/plans-action/detail/' + action.id]);
+          this.router.navigate(['/plan-actions/detail/' + action.id]);
         });
       })
       .catch(err =>{ 
