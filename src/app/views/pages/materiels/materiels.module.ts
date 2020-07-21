@@ -52,6 +52,14 @@ import {
 	MAT_DATE_FORMATS,
 	DateAdapter
 } from '@angular/material';
+import { 
+	NzTableModule, 
+	NzInputModule, 
+	NzPopconfirmModule, 
+	NzDividerModule, 
+	NzIconModule,
+	NzCheckboxModule
+} from 'ng-zorro-antd';
 // DateAdapter
 import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapter';
 // Components
@@ -64,6 +72,7 @@ import { MaterielAddComponent } from './materiel-add/materiel-add.component';
 import { MaterielDetailComponent } from './materiel-detail/materiel-detail.component';
 import { MaterielAdminComponent } from './materiel-admin/materiel-admin.component';
 import { MaterielTypesAdminComponent } from './materiel-admin/materiel-types-admin/materiel-types-admin.component';
+import { MaterielTypesAdminPortletComponent } from './materiel-admin/materiel-types-admin-portlet/materiel-types-admin-portlet.component';
 
 
 const routes: Routes = [
@@ -154,6 +163,13 @@ const routes: Routes = [
 		NgbTooltipModule,
 		NgbPopoverModule,
 		NgxMaskModule,
+		
+		NzTableModule, 
+		NzInputModule, 
+		NzPopconfirmModule, 
+		NzDividerModule, 
+		NzIconModule,
+		NzCheckboxModule,
 	],
 	providers: [
 		InterceptService,
@@ -193,6 +209,7 @@ const routes: Routes = [
 		MaterielAdminComponent,
 		MaterielTypesAdminComponent,
 		MaterielFormComponent,
+		MaterielTypesAdminPortletComponent,
 	]
 })
 export class MaterielsModule {}

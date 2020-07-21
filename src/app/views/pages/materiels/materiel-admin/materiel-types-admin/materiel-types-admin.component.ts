@@ -1,12 +1,12 @@
-import { Component, OnInit, ChangeDetectorRef, Injector } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, Injector, Input } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { TypeService, CategorieService } from '@app/core/services';
+import { CategorieService } from '@app/core/services';
 import { AdminTemplateComponent } from '@app/views/partials/layout/admin-template/admin-template.component';
 
 @Component({
   selector: 'materiel-types-admin',
   styleUrls: ['../../../../partials/layout/admin-template/admin-template.component.scss'],
-  templateUrl: '../../../../partials/layout/admin-template/admin-template.component.html'
+  templateUrl: './materiel-types-admin.component.html'
 })
 export class MaterielTypesAdminComponent extends AdminTemplateComponent implements OnInit {
 
@@ -20,7 +20,7 @@ export class MaterielTypesAdminComponent extends AdminTemplateComponent implemen
     deletedMessage: 'Suppression impossible car la selection comprend un élément affecté à une ou plusieurs matériels',
     deletedChildMessage: 'Suppression impossible car la selection est affectée à une ou plusieurs materiels',
     collapsed : false,
-    childCol : 6
+    childCol : 12
   }
 
   list: any[];
@@ -59,7 +59,6 @@ export class MaterielTypesAdminComponent extends AdminTemplateComponent implemen
     }
   }
 
-
   async addItem(){
     super.addItem("Ajouter un type de matériel", {model : 'Materiel'});  
   }
@@ -75,7 +74,6 @@ export class MaterielTypesAdminComponent extends AdminTemplateComponent implemen
   async deleteItem({id}){
     super.deleteItem({id}, { title : "Type de matériel archivé avec succès" });
   }
-
 
   async addChild(item){
     let payload = { ...item, 
