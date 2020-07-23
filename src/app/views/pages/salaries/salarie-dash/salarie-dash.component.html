@@ -1,0 +1,41 @@
+<tf-search-list-bar [(ngModel)]="filter" (change)="getSalariesDash()" [hasAdvancedSearch]="true" [showFilters]="showFilters" (advancedSearchChange)="advancedSearchChanged($event)" class="row row-filters"></tf-search-list-bar>
+<tf-salarie-filters [hidden]="!showFilters" (change)="udpateFilters($event)" class="row"></tf-salarie-filters>
+
+<div class="row px-2">
+	<div class="col-4">
+		<tf-widget-indicator [value]="stats.total_employees" [valueClass]="getClass('down', stats.total_employees)" [desc]="'Nombre de salariés'" *ngIf="stats; else loading"></tf-widget-indicator>
+	</div>
+	<div class="col-4">
+		<tf-widget-indicator [value]="stats.target_achievement_rate | customPercent" [valueClass]="getClass('up', stats.target_achievement_rate)" [desc]="'Taux d\'atteinte des objectifs'" *ngIf="stats; else loading"></tf-widget-indicator>
+	</div>
+	<div class="col-4">
+		<tf-widget-indicator [value]="stats.target_failure_rate | customPercent" [valueClass]="getClass('down', stats.target_failure_rate)" [desc]="'Taux d\'échec'" *ngIf="stats; else loading"></tf-widget-indicator>
+    </div>
+
+    <div class="col-6">
+		<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
+			<tf-portlet-body class="tf-portlet__body--fit" style="padding: 20px 15px;">
+				<div echarts class="demo-chart" #hLine></div>
+			</tf-portlet-body>
+		</tf-portlet>
+	</div>
+	<div class="col-6">
+		<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
+			<tf-portlet-body class="tf-portlet__body--fit" style="padding: 20px 15px;">
+				<div echarts class="demo-chart" #pieRating></div>
+			</tf-portlet-body>
+		</tf-portlet>
+    </div>
+    
+	<div class="col-12">
+		<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
+			<tf-portlet-body class="tf-portlet__body--fit" style="padding: 20px 15px;">
+				<div echarts class="demo-chart" #evolAll></div>
+			</tf-portlet-body>
+		</tf-portlet>
+	</div>
+</div>
+
+<ng-template #loading>
+	<tf-widget-indicator [value]="null" [desc]="null"></tf-widget-indicator>
+</ng-template>
