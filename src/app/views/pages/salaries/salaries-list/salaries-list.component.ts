@@ -30,7 +30,7 @@ export class SalariesListComponent implements OnInit, AfterViewInit, OnDestroy {
 	};
 	showFilters:Boolean = false;
 	displayedSalarieColumns = [];
-	staticColumns = ['nom', 'prenom', 'fonction', 'tel'];
+	staticColumns = ['nom', 'prenom', 'fonction'];
 	dynamicColumns: any[];
 	
 
