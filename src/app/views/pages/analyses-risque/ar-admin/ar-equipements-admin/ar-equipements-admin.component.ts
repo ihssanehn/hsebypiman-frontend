@@ -44,11 +44,19 @@ export class ArEquipementsAdminComponent extends AdminTemplateComponent implemen
   }
 
   async addItem(){
-    super.addItem("Ajouter un équipement");  
+    super.addItem("Ajouter un équipement", {ordre: this.generateParentOrdre()});  
   }
 
   async deleteItem({id}){
     super.deleteItem({id}, { title : "Equipement archivé avec succès" });
   }
 
+  async updateOrders(datas){
+    try {
+      await this.parentService.updateOrders(datas).toPromise();
+      this.cdr.markForCheck();
+		} catch (error) {
+			console.error(error);
+		}
+  }
 }

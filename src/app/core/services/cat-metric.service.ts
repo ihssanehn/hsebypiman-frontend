@@ -46,6 +46,9 @@ export class CatMetricService extends HttpService{
   delete(id){
     return this.http.delete(`${this.baseUrl}/${id}`);
   }
+  updateOrders(payload){
+    return this.http.post<any>(`${this.baseUrl}/update-orders`, payload)
+  }
 
 
 }

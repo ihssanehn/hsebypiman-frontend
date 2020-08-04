@@ -39,7 +39,7 @@ export class ArRisquesAdminComponent extends AdminTemplateComponent implements O
   }
 
   async addItem(){
-    super.addItem("Ajouter un risque");  
+    super.addItem("Ajouter un risque", {ordre: this.generateParentOrdre()});  
   }
 
   async createItem(payload){

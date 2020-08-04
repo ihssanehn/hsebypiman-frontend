@@ -44,7 +44,7 @@ export class SalarieMetricsAdminComponent extends AdminTemplateComponent impleme
   }
 
   async addItem(){
-    super.addItem("Ajouter une catégorie", {type_id : this._type.id});  
+    super.addItem("Ajouter une catégorie", {type_id : this._type.id, ordre: this.generateParentOrdre()});  
   }
 
   async getList(item){

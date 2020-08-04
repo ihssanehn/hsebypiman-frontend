@@ -44,7 +44,7 @@ export class EntrepriseTypesAdminComponent extends AdminTemplateComponent implem
   }
 
   async addItem(){
-    super.addItem("Ajouter un type d'entreprise");  
+    super.addItem("Ajouter un type d'entreprise", {ordre: this.generateParentOrdre()});  
   }
 
 
@@ -58,6 +58,16 @@ export class EntrepriseTypesAdminComponent extends AdminTemplateComponent implem
 
   async deleteItem({id}){
     super.deleteItem({id}, { title : "Type d'entreprise archivé avec succès" });
+  }
+
+  
+  async updateOrders(datas){
+    try {
+      await this.parentService.updateOrders(datas).toPromise();
+      this.cdr.markForCheck();
+		} catch (error) {
+			console.error(error);
+		}
   }
 
 }

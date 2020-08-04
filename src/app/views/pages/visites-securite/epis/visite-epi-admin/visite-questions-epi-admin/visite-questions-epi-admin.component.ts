@@ -9,7 +9,7 @@ import { Type } from '@app/core/models';
   templateUrl: '../../../../../partials/layout/admin-template/admin-template.component.html',
   styleUrls: ['../../../../../partials/layout/admin-template/admin-template.component.scss']
 })
-export class VisiteQuestionsChantierAdminComponent extends AdminTemplateComponent implements OnInit {
+export class VisiteQuestionsEpiAdminComponent extends AdminTemplateComponent implements OnInit {
 
   cdr: ChangeDetectorRef;
   modalService: NgbModal;
@@ -18,8 +18,8 @@ export class VisiteQuestionsChantierAdminComponent extends AdminTemplateComponen
   _type: any;
   tpl = {
     title : 'Questions ',
-    deletedMessage: 'Suppression impossible car la selection comprend un élément affecté à un ou plusieurs chantiers',
-    deletedChildMessage: 'Suppression impossible car la selection est affectée à un ou plusieurs chantiers',
+    deletedMessage: 'Suppression impossible car la selection comprend un élément affecté à un ou plusieurs équipements de protection individuelle',
+    deletedChildMessage: 'Suppression impossible car la selection est affectée à un ou plusieurs équipements de protection individuelle',
     collapsed : true,
     childCol : 6
   }

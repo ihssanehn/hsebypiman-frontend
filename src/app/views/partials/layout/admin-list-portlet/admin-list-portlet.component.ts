@@ -33,6 +33,9 @@ export class AdminListPortletComponent implements OnInit {
   @Output() 
   onDeleteChild = new EventEmitter<any>();
 
+  @Output() 
+  onUpdateOrders = new EventEmitter<any>();
+
   collapsed : boolean = false;
   selectedItem;
 
@@ -70,6 +73,11 @@ export class AdminListPortletComponent implements OnInit {
     data.edit = false;
   }
 
+  saveOrders(data: any):void {
+    if(data.length > 0)
+      this.onUpdateOrders.emit(data);
+  }
+
   deleteChild(data : any): void {
     this.onDeleteChild.emit( { ...data, parent_id : this.item.id} );
   }
@@ -78,7 +86,16 @@ export class AdminListPortletComponent implements OnInit {
     if(this.sortable){
       let data = { id : event.item.data.id, ordre :  event.currentIndex };
       moveItemInArray(this.item.children, event.previousIndex, event.currentIndex);
-      if(data.id != -1){this.saveChild(data)};
+
+      var newOrders = [];
+      for (let i = 0; i < this.item.children.length; i++) {
+        const _data = this.item.children[i]
+        if(_data.id){
+          newOrders.push({id:_data.id, ordre:i, libelle:_data.libelle});
+        }
+      }
+
+      this.saveOrders(newOrders);
     }
   }
 

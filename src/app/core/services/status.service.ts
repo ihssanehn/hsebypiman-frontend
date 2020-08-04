@@ -45,5 +45,9 @@ export class StatusService extends HttpService{
         return this.http.delete(this.baseUrl+'/'+item_id);
     }
     
+    updateOrders(payload){
+        return this.http.post<any>(`${this.baseUrl}/update-orders`, payload)
+    }
+    
 
 }

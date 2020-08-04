@@ -42,5 +42,8 @@ export class MetricService extends HttpService{
                     .pipe(map(result => result.result.data));
   }
 
+  updateOrders(payload){
+    return this.http.post<any>(`${this.baseUrl}/update-orders`, payload)
+  }
 
 }

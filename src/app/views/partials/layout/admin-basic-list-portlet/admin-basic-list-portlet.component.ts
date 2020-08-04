@@ -24,6 +24,9 @@ export class AdminBasicListPortletComponent implements OnInit {
   @Output() 
   onDeleteItem = new EventEmitter<any>();
 
+  @Output() 
+  onUpdateOrders = new EventEmitter<any>();
+
   collapsed : boolean = false;
 
   constructor() { }
@@ -35,6 +38,12 @@ export class AdminBasicListPortletComponent implements OnInit {
   saveItem(data : any): void {
     this.onSaveItem.emit( data );
     data.edit = false;
+  }
+
+  
+  saveOrders(data: any):void {
+    if(data.length > 0)
+      this.onUpdateOrders.emit(data);
   }
 
   refreshItem(data : any): void {
@@ -53,7 +62,16 @@ export class AdminBasicListPortletComponent implements OnInit {
       _data.ordre = event.currentIndex;
       // let data = { id : event.item.data.id, ordre :  event.currentIndex };
       moveItemInArray(this.items, event.previousIndex, event.currentIndex);
-      this.saveItem(_data);
+      
+      var newOrders = [];
+      for (let i = 0; i < this.items.length; i++) {
+        const _data = this.items[i]
+        if(_data.id){
+          newOrders.push({id:_data.id, ordre:i, libelle:_data.libelle});
+        }
+      }
+
+      this.saveOrders(newOrders);
     }
   }
 
@@ -75,4 +93,7 @@ export class AdminBasicListPortletComponent implements OnInit {
     };
   }
 
+  generateParentOrdre(){
+    return this.items.length;
+  }
 }

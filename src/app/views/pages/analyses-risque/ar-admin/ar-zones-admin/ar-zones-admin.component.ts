@@ -68,7 +68,7 @@ export class ArZonesAdminComponent extends AdminTemplateComponent  implements On
 
   // implemented
   async addItem(){
-    super.addItem("Ajouter une zone", {model : 'Zone'});  
+    super.addItem("Ajouter une zone", {model : 'Zone', ordre: this.generateParentOrdre()});  
   }
 
   // implemented

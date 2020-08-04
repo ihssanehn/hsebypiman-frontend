@@ -15,6 +15,7 @@ export class AdminTemplateComponent implements OnInit {
   parentService: any;
   childService: any;
   
+  
   tpl : any = {
     title : 'Titre',
     deletedMessage: 'Suppression impossible car la selection contient un élément affecté à un élément',
@@ -132,6 +133,15 @@ export class AdminTemplateComponent implements OnInit {
   async updateChild(item){
     try {
       await this.childService.update(item).toPromise();
+      this.cdr.markForCheck();
+		} catch (error) {
+			console.error(error);
+		}
+  }
+  
+  async updateOrders(datas){
+    try {
+      await this.childService.updateOrders(datas).toPromise();
       this.cdr.markForCheck();
 		} catch (error) {
 			console.error(error);

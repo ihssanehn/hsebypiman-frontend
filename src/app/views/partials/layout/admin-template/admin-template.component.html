@@ -8,12 +8,15 @@
 			<a (click)="$event.stopPropagation(); addItem()" matTooltip="Ajouter" data-ktportlet-tool="add" class="btn btn-sm btn-icon btn-clean btn-icon-md">
 				<i class="la la-plus"></i>
 			</a>
+			<a (click)="$event.stopPropagation(); getList()" matTooltip="Raffraîchir" data-ktportlet-tool="add" class="btn btn-sm btn-icon btn-clean btn-icon-md">
+				<i class="la la-refresh"></i>
+			</a>
 		</div>
 	</div>
 	<div class="tf-separator tf-separator--border-dashed my-3"></div>
 	<div class="row collapse" [ngClass]="{'show' : !tpl?.collapsed }" data-parent="#group">
 		<div *ngFor="let item of list" class="col-{{tpl?.childCol}}">
-			<tf-admin-list-portlet [item]="item" (onSaveItem)="saveItem($event)" (onRefreshItem)="getItem($event)" (onDeleteItem)="deleteItem($event)" (onAddChild)="addChild($event)" (onSaveChild)="updateChild($event)" (onDeleteChild)="deleteChild($event)"></tf-admin-list-portlet>
+			<tf-admin-list-portlet [item]="item" (onSaveItem)="saveItem($event)" (onRefreshItem)="getItem($event)" (onDeleteItem)="deleteItem($event)" (onAddChild)="addChild($event)" (onSaveChild)="updateChild($event)" (onDeleteChild)="deleteChild($event)" (onUpdateOrders)="updateOrders($event)"></tf-admin-list-portlet>
 		</div>
 	</div>
 </div>

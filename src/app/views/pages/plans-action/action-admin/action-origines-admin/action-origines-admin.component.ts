@@ -50,4 +50,14 @@ export class ActionOriginesAdminComponent extends AdminTemplateComponent impleme
     super.deleteItem({id}, { title : "Origine archivée avec succès" });
   }
 
+  
+  async updateOrders(datas){
+    try {
+      await this.parentService.updateOrders(datas).toPromise();
+      this.cdr.markForCheck();
+		} catch (error) {
+			console.error(error);
+		}
+  }
+
 }

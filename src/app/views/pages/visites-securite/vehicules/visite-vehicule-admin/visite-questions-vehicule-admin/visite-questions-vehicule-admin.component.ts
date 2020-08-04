@@ -11,10 +11,12 @@ import { CatQuestionService, QuestionService } from '@app/core/services';
 export class VisiteQuestionsVehiculeAdminComponent extends AdminTemplateComponent implements OnInit {
 
   @Input() set type(value: any) {
+    console.log(value);
     this._type = value;
     if(value && value.libelle)
       this.tpl.title = "Question "+value.libelle;
   }
+
 
   cdr: ChangeDetectorRef;
   modalService: NgbModal;
