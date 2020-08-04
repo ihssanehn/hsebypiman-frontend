@@ -17,7 +17,7 @@ export class VisiteQuestionsChantierAdminComponent extends AdminTemplateComponen
   childService: any;
   _type: any;
   tpl = {
-    title : 'Questions ',
+    title : 'Formulaires ',
     deletedMessage: 'Suppression impossible car la selection comprend un élément affecté à un ou plusieurs chantiers',
     deletedChildMessage: 'Suppression impossible car la selection est affectée à un ou plusieurs chantiers',
     collapsed : true,
@@ -27,7 +27,7 @@ export class VisiteQuestionsChantierAdminComponent extends AdminTemplateComponen
     this._type = value;
     console.log(value);
     if(value && value.libelle)
-      this.tpl.title = "Question "+value.libelle;
+      this.tpl.title = "Formulaire : "+value.libelle;
   }
 
   list: any[];
@@ -46,7 +46,7 @@ export class VisiteQuestionsChantierAdminComponent extends AdminTemplateComponen
   }
 
   async addItem(){
-    super.addItem("Ajouter une catégorie de question", {type_id : this._type.id, ordre: this.generateParentOrdre()});  
+    super.addItem("Ajouter une catégorie de questions", {type_id : this._type.id, ordre: this.generateParentOrdre()});  
   }
 
   async getList(item){
@@ -55,7 +55,7 @@ export class VisiteQuestionsChantierAdminComponent extends AdminTemplateComponen
   }
 
   async deleteItem({id}){
-    super.deleteItem({id}, { title : "Question archivée avec succès" });
+    super.deleteItem({id}, { title : "Catégorie archivée avec succès" });
   }
 
   async addChild(item){
@@ -67,6 +67,6 @@ export class VisiteQuestionsChantierAdminComponent extends AdminTemplateComponen
   }
 
   async deleteChild({id, parent_id}){
-    super.deleteChild({id, parent_id}, {title : "Element est archivé avec succès" });
+    super.deleteChild({id, parent_id}, {title : "La question est archivée avec succès" });
   }
 }

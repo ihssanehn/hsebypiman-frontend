@@ -25,7 +25,7 @@ export class VisiteQuestionsVehiculeAdminComponent extends AdminTemplateComponen
   _type: any;
   list: any[];
   tpl = {
-    title : 'Questions ',
+    title : 'Formulaire ',
     deletedMessage: 'Suppression impossible car la selection comprend un élément affecté à un ou plusieurs véhicules',
     deletedChildMessage: 'Suppression impossible car la selection est affectée à un ou plusieurs véhicules',
     collapsed : true,
@@ -46,7 +46,7 @@ export class VisiteQuestionsVehiculeAdminComponent extends AdminTemplateComponen
   }
 
   async addItem(){
-    super.addItem("Ajouter une catégorie de question", {type_id : this._type.id});  
+    super.addItem("Ajouter une catégorie de questions", {type_id : this._type.id});  
   }
 
   async getList(item){
@@ -55,7 +55,7 @@ export class VisiteQuestionsVehiculeAdminComponent extends AdminTemplateComponen
   }
 
   async deleteItem({id}){
-    super.deleteItem({id}, { title : "Question archivée avec succès" });
+    super.deleteItem({id}, { title : "Catégorie archivée avec succès" });
   }
 
   async addChild(item){
@@ -64,6 +64,6 @@ export class VisiteQuestionsVehiculeAdminComponent extends AdminTemplateComponen
   }
 
   async deleteChild({id, parent_id}){
-    super.deleteChild({id, parent_id}, {title : "Element est archivé avec succès" });
+    super.deleteChild({id, parent_id}, {title : "La question est archivée avec succès" });
   }
 }

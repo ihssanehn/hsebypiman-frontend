@@ -46,7 +46,7 @@ export class VisiteQuestionsOutillageAdminComponent extends AdminTemplateCompone
   }
 
   async addItem(){
-    super.addItem("Ajouter une catégorie de question", {type_id : this._type.id, ordre: this.generateParentOrdre()});  
+    super.addItem("Ajouter une catégorie de questions", {type_id : this._type.id, ordre: this.generateParentOrdre()});  
   }
 
   async getList(item){
@@ -55,7 +55,7 @@ export class VisiteQuestionsOutillageAdminComponent extends AdminTemplateCompone
   }
 
   async deleteItem({id}){
-    super.deleteItem({id}, { title : "Question archivée avec succès" });
+    super.deleteItem({id}, { title : "Catégorie archivée avec succès" });
   }
 
   async addChild(item){
@@ -67,6 +67,6 @@ export class VisiteQuestionsOutillageAdminComponent extends AdminTemplateCompone
   }
 
   async deleteChild({id, parent_id}){
-    super.deleteChild({id, parent_id}, {title : "Element est archivé avec succès" });
+    super.deleteChild({id, parent_id}, {title : "La question est archivée avec succès" });
   }
 }
