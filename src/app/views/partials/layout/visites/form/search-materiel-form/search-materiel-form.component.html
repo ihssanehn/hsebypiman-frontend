@@ -61,7 +61,7 @@
                                     <mat-select class="form-control" placeholder="" formControlName="materiel_id"
                                         [required]="isFieldRequired('materiel_id')">
                                         <mat-option *ngFor="let materiel of materiels" [value]="materiel.id">
-                                            {{ materiel.libelle+' - '+materiel.categorie.parent?.libelle }}
+                                            {{ materiel.libelle+' - '+materiel.categorie.libelle }}
                                         </mat-option>
                                     </mat-select>
                                     <mat-error *ngIf="isControlHasError('materiel_id','required')">
