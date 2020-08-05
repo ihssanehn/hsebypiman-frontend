@@ -12,6 +12,7 @@ export class AdminTemplateComponent implements OnInit {
 
   cdr: ChangeDetectorRef;
   modalService: NgbModal;
+  titleService: any;
   parentService: any;
   childService: any;
   
@@ -21,10 +22,15 @@ export class AdminTemplateComponent implements OnInit {
     deletedMessage: 'Suppression impossible car la selection contient un élément affecté à un élément',
     deletedChildMessage: 'Suppression impossible car la selection est affectée à un élément',
     collapsed : false,
+    canUpdateTitle: false,
+    titleOject: null,
     childCol : 6,
   }
 
   list: any[];
+
+  @Output()
+    onConfirmDeletTitle = new EventEmitter<any>();
 
   constructor(injector : Injector) {}
 
@@ -193,4 +199,42 @@ export class AdminTemplateComponent implements OnInit {
     return this.list.length
   }
 
+  async editTitle(){
+    const modalRef = this.modalService.open(AdminAddModalComponent, {centered : true});
+    modalRef.componentInstance.title = ( this.tpl.title || '...' );
+    modalRef.componentInstance.label = ( this.tpl.title || '...' );
+    modalRef.result.then( payload => this.updateTitle(payload), payload => this.updateTitle(payload) );
+  }
+
+  async updateTitle(payload = null, ){
+    if(this.tpl.titleObject && payload){
+      this.tpl.titleObject.libelle = payload.libelle;
+      try {
+        await this.titleService.update(this.tpl.titleObject).toPromise();
+        this.tpl.title = payload.libelle;
+        this.cdr.markForCheck();
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+  }
+
+  async deleteTitle(confirm? : any){
+    if(this.tpl.titleObject){
+      Swal.fire({
+        icon: 'warning',
+        title:"Êtes-vous sûr de vouloir supprimer ce formulaire ?",
+        showConfirmButton: true,
+        showCancelButton: true,
+        cancelButtonText: 'Annuler',
+        confirmButtonText: 'Supprimer'
+      }).then(async response => {
+        if (response.value) {
+          this.onConfirmDeletTitle.emit(this.tpl.titleObject);
+        }
+      });
+      
+    }
+  }
 }

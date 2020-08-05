@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef, Input, Injector } from '@angular/core';
 import { AdminTemplateComponent } from '@app/views/partials/layout/admin-template/admin-template.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { CatQuestionService, QuestionService } from '@app/core/services';
+import { CatQuestionService, QuestionService, TypeService } from '@app/core/services';
 
 @Component({
   selector: 'visite-questions-vehicule-admin',
@@ -11,10 +11,10 @@ import { CatQuestionService, QuestionService } from '@app/core/services';
 export class VisiteQuestionsVehiculeAdminComponent extends AdminTemplateComponent implements OnInit {
 
   @Input() set type(value: any) {
-    console.log(value);
     this._type = value;
     if(value && value.libelle)
-      this.tpl.title = "Question "+value.libelle;
+      this.tpl.title = value.libelle;
+      this.tpl.titleObject = value;
   }
 
 
@@ -25,10 +25,12 @@ export class VisiteQuestionsVehiculeAdminComponent extends AdminTemplateComponen
   _type: any;
   list: any[];
   tpl = {
-    title : 'Formulaire ',
+    title : 'Formulaires ',
     deletedMessage: 'Suppression impossible car la selection comprend un élément affecté à un ou plusieurs véhicules',
     deletedChildMessage: 'Suppression impossible car la selection est affectée à un ou plusieurs véhicules',
     collapsed : true,
+    canUpdateTitle: true,
+    titleObject: null,
     childCol : 6
   }
 
@@ -38,6 +40,8 @@ export class VisiteQuestionsVehiculeAdminComponent extends AdminTemplateComponen
     this.modalService = injector.get(NgbModal);
     this.parentService = injector.get(CatQuestionService);
     this.childService = injector.get(QuestionService);
+    this.titleService = injector.get(TypeService);
+
   }
 
   formatChildren(item){

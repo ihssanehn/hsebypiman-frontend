@@ -8,7 +8,7 @@
       </div>
     </div>
     <ng-container *ngFor="let type of types">
-      <tf-visite-question-outillage-admin [type]="type"></tf-visite-question-outillage-admin>
+      <visite-questions-epi-admin [type]="type" (onConfirmDeletTitle)="titleDeleted($event)"></visite-questions-epi-admin>
     </ng-container>
 	</div>
 </div>
