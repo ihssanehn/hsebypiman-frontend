@@ -19,6 +19,8 @@ export class VisiteQuestionOutillageAdminComponent extends AdminTemplateComponen
     deletedMessage: 'Suppression impossible car la selection comprend un élément affecté à un ou plusieurs chantiers',
     deletedChildMessage: 'Suppression impossible car la selection est affectée à un ou plusieurs chantiers',
     collapsed: true,
+    canUpdateTitle: false,
+    titleOject: null,
     childCol: 6
   }
   @Input() set type(value: any) {

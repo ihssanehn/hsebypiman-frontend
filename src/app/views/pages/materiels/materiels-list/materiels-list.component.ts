@@ -34,6 +34,7 @@ export class MaterielsListComponent implements OnInit, AfterViewInit {
 	displayedMaterielColumns = [
 		"code", "libelle", "numero_serie", "main_categorie",  "actual_user",  "marque", "action"
 	];
+	selectedMateriel: Materiel = null;
 
 	constructor(
 		private router: Router,

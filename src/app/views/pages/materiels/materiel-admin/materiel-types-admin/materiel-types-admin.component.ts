@@ -20,6 +20,8 @@ export class MaterielTypesAdminComponent extends AdminTemplateComponent implemen
     deletedMessage: 'Suppression impossible car la selection comprend un élément affecté à une ou plusieurs matériels',
     deletedChildMessage: 'Suppression impossible car la selection est affectée à une ou plusieurs materiels',
     collapsed : false,
+    canUpdateTitle: false,
+    titleOject: null,
     childCol : 12
   }
 

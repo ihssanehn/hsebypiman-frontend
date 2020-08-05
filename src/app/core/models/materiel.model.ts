@@ -8,6 +8,8 @@ export class Materiel {
     numero_serie?: string;
     categorie_id?: number;
     categorie?: Categorie;
+    main_categorie_id?: number;
+    main_categorie?: Categorie;
     marque?: string;
     description?: string;
     fournisseur?: string;

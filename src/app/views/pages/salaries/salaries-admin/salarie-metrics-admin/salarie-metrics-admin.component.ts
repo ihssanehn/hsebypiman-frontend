@@ -27,6 +27,8 @@ export class SalarieMetricsAdminComponent extends AdminTemplateComponent impleme
     deletedMessage: 'Suppression impossible car la selection comprend un élément affecté à un ou plusieurs éléments',
     deletedChildMessage: 'Suppression impossible car la selection est affectée à un ou plusieurs éléments',
     collapsed : true,
+    canUpdateTitle: false,
+    titleOject: null,
     childCol : 6
   }
 

@@ -20,6 +20,8 @@ export class ActionOriginesAdminComponent extends AdminTemplateComponent impleme
     deletedMessage: 'Suppression impossible car la selection comprend un élément affecté à un ou plusieurs actions',
     deletedChildMessage: 'Suppression impossible car la selection est affectée à un ou plusieurs actions',
     collapsed : false,
+    canUpdateTitle: false,
+    titleOject: null,
     childCol : 12
   }
 

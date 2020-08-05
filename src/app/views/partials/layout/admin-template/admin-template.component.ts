@@ -55,6 +55,10 @@ export class AdminTemplateComponent implements OnInit {
 		}
   }
 
+  refreshList(){
+    this.getList();
+  }
+
   async addItem(title?, appends?){
     const modalRef = this.modalService.open(AdminAddModalComponent, {centered : true});
     modalRef.componentInstance.title = ( title || '...' );

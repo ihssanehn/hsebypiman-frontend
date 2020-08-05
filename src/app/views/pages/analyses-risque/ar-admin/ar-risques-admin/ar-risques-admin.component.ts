@@ -20,6 +20,8 @@ export class ArRisquesAdminComponent extends AdminTemplateComponent implements O
     deletedMessage: 'Suppression impossible car la selection comprend un élément affecté à une ou plusieurs analyses de risque',
     deletedChildMessage: 'Suppression impossible car la selection est affectée à une ou plusieurs analyses de risque',
     collapsed : true,
+    canUpdateTitle: false,
+    titleOject: null,
     childCol : 6
   }
 

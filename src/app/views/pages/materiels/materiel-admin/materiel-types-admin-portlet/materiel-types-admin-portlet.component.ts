@@ -25,6 +25,8 @@ export class MaterielTypesAdminPortletComponent extends AdminListPortletComponen
     deletedMessage: 'Suppression impossible car la selection contient un élément affecté à un élément',
     deletedChildMessage: 'Suppression impossible car la selection est affectée à un élément',
     collapsed : false,
+    canUpdateTitle: false,
+    titleOject: null,
     childCol : 6,
   }
   

@@ -5,10 +5,10 @@
 			<a (click)="$event.stopPropagation(); addItem(); tpl.collapsed = false" matTooltip="Ajouter" data-ktportlet-tool="add" class="btn btn-sm btn-icon btn-clean btn-icon-md">
 				<i class="la la-plus"></i>
 			</a>
-			<a (click)="$event.stopPropagation(); getList(); tpl.collapsed = false" matTooltip="Raffraîchir" data-ktportlet-tool="refresh" class="btn btn-sm btn-icon btn-clean btn-icon-md">
+			<a (click)="$event.stopPropagation(); refreshList(); tpl.collapsed = false" matTooltip="Raffraîchir" data-ktportlet-tool="refresh" class="btn btn-sm btn-icon btn-clean btn-icon-md">
 				<i class="la la-refresh"></i>
 			</a>
-			<ng-container *ngIf="tpl.canUpdateTitle">
+			<ng-container *ngIf="tpl?.canUpdateTitle">
 				<button mat-icon-button color="primary" matTooltip="Actions" [matMenuTriggerFor]="actionTitleMenu" >
 					<mat-icon>more_vert</mat-icon>
 				</button>
