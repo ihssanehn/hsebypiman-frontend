@@ -8,7 +8,7 @@
 				<mat-icon>more_vert</mat-icon>
 			</button>
 			<div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
-				<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editMateriel(materiel.id)">
+				<button *ngIf="materiel.main_categorie?.code != 'VEHICULE'" mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editMateriel(materiel.id)">
 					<mat-icon>edit</mat-icon>
 				</button>
 				<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteMateriel(materiel.id)">
@@ -80,13 +80,13 @@
 										</a>
 									</div>
 									
-									<div class="col-12">
+									<div class="col-12" *ngIf="materiel.main_categorie?.code != 'VEHICULE'">
 										<button mat-raised-button class="btn-small pull-right" color="info" (click)="$event.stopPropagation(); openPretModal('return', materiel.actual_user.pivot)">Retourner le matériel</button>
 									</div>
 								</ng-container>
 								<ng-template #noUserInProgress>
 									<div class="col-12">Aucun utilisateur en cours</div>
-									<div class="col-12">
+									<div class="col-12" *ngIf="materiel.main_categorie?.code != 'VEHICULE'">
 										<button mat-raised-button class="btn-small pull-right" color="info" (click)="$event.stopPropagation(); openPretModal('add')">Assigner le matériel</button>
 									</div>
 								</ng-template>
@@ -111,7 +111,7 @@
 												<a class="pull-right" (click)="goToUserDetail(salarie.id)" alt="voir l'utilisateur">
 													<mat-icon color="primary">visibility</mat-icon>
 												</a>
-												<a class="pull-right" (click)="$event.stopPropagation(); openPretModal('update', salarie.pivot)" alt="modifier le pret">
+												<a *ngIf="materiel.main_categorie?.code != 'VEHICULE'" class="pull-right" (click)="$event.stopPropagation(); openPretModal('update', salarie.pivot)" alt="modifier le pret">
 													<mat-icon color="accent">edit</mat-icon>
 												</a>
 											</div>
@@ -128,7 +128,7 @@
 								<div class="col-12">
 									<p>Aucun prêt</p>
 								</div>
-								<div class="col-12">
+								<div class="col-12" *ngIf="materiel.main_categorie?.code != 'VEHICULE'">
 									<button mat-raised-button color="info" class="btn-small" (click)="$event.stopPropagation(); openPretModal('add')">Assigner le matériel</button>
 								</div>
 							</div>

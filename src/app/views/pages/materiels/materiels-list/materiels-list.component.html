@@ -79,7 +79,7 @@
 					<td mat-cell *matCellDef="let materiel" class="text-right">
 
 						<div ngbDropdown placement="bottom-right" class="d-inline-block">
-							<button mat-icon-button color="primary" matTooltip="Actions" [matMenuTriggerFor]="actionMenu" (click)="materiel_id = materiel.id">
+							<button mat-icon-button color="primary" matTooltip="Actions" [matMenuTriggerFor]="actionMenu" (click)="selectedMateriel = materiel">
 								<mat-icon>more_vert</mat-icon>
 							</button>
 							
@@ -99,13 +99,13 @@
 
 <mat-menu #actionMenu="matMenu" class="action-menu">
 	<!-- *ngxPermissionsOnly="['ADMIN']" -->
-	<button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}" (click)="viewMateriel(materiel_id)">
+	<button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}" (click)="viewMateriel(selectedMateriel.id)">
 		<mat-icon>visibility</mat-icon>
 	</button>
-	<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editMateriel(materiel_id)">
+	<button *ngIf="selectedMateriel?.main_categorie?.code != 'VEHICULE'" mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editMateriel(selectedMateriel.id)">
 		<mat-icon>edit</mat-icon>
 	</button>
-	<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteMateriel(materiel_id)">
+	<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteMateriel(selectedMateriel.id)">
 		<mat-icon>delete</mat-icon>
 	</button>
 </mat-menu>
