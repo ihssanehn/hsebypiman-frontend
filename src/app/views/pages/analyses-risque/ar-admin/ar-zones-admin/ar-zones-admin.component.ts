@@ -21,6 +21,8 @@ export class ArZonesAdminComponent extends AdminTemplateComponent  implements On
     deletedMessage: 'Suppression impossible car la selection comprend un élément affecté à une ou plusieurs analyses de risque',
     deletedChildMessage: 'Suppression impossible car la selection est affectée à une ou plusieurs analyses de risque',
     collapsed : true,
+    canUpdateTitle: false,
+    titleOject: null,
     childCol : 6
   }
 
@@ -68,7 +70,7 @@ export class ArZonesAdminComponent extends AdminTemplateComponent  implements On
 
   // implemented
   async addItem(){
-    super.addItem("Ajouter une zone", {model : 'Zone'});  
+    super.addItem("Ajouter une zone", {model : 'Zone', ordre: this.generateParentOrdre()});  
   }
 
   // implemented

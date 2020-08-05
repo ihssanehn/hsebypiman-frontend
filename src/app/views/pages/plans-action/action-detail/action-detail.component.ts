@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
 import { BehaviorSubject, Observable, of, Subscription } from "rxjs";
 
-import { ActionService, TypeService, UserService } from '@app/core/services';
+import { ActionService, TypeService, PersonnelService } from '@app/core/services';
 import { Paginate } from '@app/core/_base/layout/models/paginate.model';
 import { Action } from '@app/core/models';
 import { NgxPermissionsService } from 'ngx-permissions';
@@ -48,7 +48,7 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 		private actionFB: FormBuilder,
 		// private notificationService: NzNotificationService,
 		private actionService: ActionService,
-		private userService: UserService,
+		private userService: PersonnelService,
 		private cdr: ChangeDetectorRef,
 		private permissionsService : NgxPermissionsService,
 		private dateFrToEnPipe: DateFrToEnPipe,
@@ -68,7 +68,7 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 			  	if (id) {
 					this.getAction(id);
 				} else {
-					this.router.navigateByUrl('/plans-action/list');
+					this.router.navigateByUrl('/plan-actions/list');
 				}
 			}
 		);
@@ -121,16 +121,16 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 	}
 
 	goBackWithId() {
-		const url = `/plans-action/list`;
+		const url = `/plan-actions/list`;
 		this.router.navigateByUrl(url, { relativeTo: this.activatedRoute });
 	}
   
 	refreshAction(id) {
-		this.router.navigateByUrl('/plans-action/edit/'+id);
+		this.router.navigateByUrl('/plan-actions/edit/'+id);
   	}
 
 	goToActionDetail(id){
-		this.router.navigateByUrl('/plans-action/detail/'+id);
+		this.router.navigateByUrl('/plan-actions/detail/'+id);
 	}
 
 	goToVsDetail(id){
@@ -149,7 +149,7 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 	}
 
   	editAction(id){
-		this.router.navigateByUrl('plans-action/edit/'+id);
+		this.router.navigateByUrl('plan-actions/edit/'+id);
 	}
 
 	deleteAction(id){

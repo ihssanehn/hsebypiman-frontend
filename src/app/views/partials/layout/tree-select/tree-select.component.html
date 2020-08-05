@@ -5,7 +5,7 @@
 				<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12">
 					<mat-label *ngIf="i==0">{{translateTitle+'.TITLE' | translate}}</mat-label>
 					<mat-select class="form-control" formControlName="item" (selectionChange)="itemChange($event, i)" name="item" placeholder="{{translateTitle+'.PLACEHOLDER' | translate}}">
-						<mat-option>Tous</mat-option>
+						<mat-option *ngIf="withAll">Tous</mat-option>
 						<mat-option *ngFor="let item of getItemsList(i)" [value]="item">
 							{{item.libelle}}
 						</mat-option>

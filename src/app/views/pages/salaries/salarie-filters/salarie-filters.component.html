@@ -1,0 +1,36 @@
+<div class="col-md-12 tf-form">
+	<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
+		<tf-portlet-body class="tf-portlet__body--fit card-filters px-5 pt-4 pb-3" >
+			<form novalidate [formGroup]="filterForm">
+				<div class="row">
+
+                    <mat-form-field class="col-xl-4 col-md-4 col-sm-4 col-xs-12 mat-filter-no-head">
+                        <mat-label>{{'COMMON.FONCTION.TITLE' | translate}}</mat-label>
+                        <mat-select class="form-control" formControlName="fonction_id" name="fonction_id">
+                            <mat-option>Tous</mat-option>
+                            <mat-option *ngFor="let fonction of fonctions" [value]="fonction.id">
+                                {{fonction.libelle}}
+                            </mat-option>
+                        </mat-select>
+                        <button mat-button *ngIf="formHasValue('fonction_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('fonction_id'); $event.stopPropagation()">
+                            <mat-icon>clear</mat-icon>
+                        </button>
+                    </mat-form-field>
+
+					<div class="col-xl-4 col-md-4 col-sm-4 col-xs-12">
+						<h6>{{'SALARIES.ENTRY_AT.LABEL' | translate}}</h6>
+						<mat-form-field class="col-md-6 col-xl-6">
+							<mat-label>Entre le :</mat-label>
+							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="entry_at_start" placeholder="DD/MM/YYYY">
+						</mat-form-field>
+						<mat-form-field class="col-md-6 col-xl-6">
+							<mat-label>Et le :</mat-label>
+							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="entry_at_end" placeholder="DD/MM/YYYY">
+						</mat-form-field>
+					</div>
+
+				</div>
+			</form>
+		</tf-portlet-body>
+	</tf-portlet>
+</div>

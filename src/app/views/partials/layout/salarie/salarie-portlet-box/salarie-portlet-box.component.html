@@ -1,0 +1,17 @@
+<div class="box col-md-12" *ngIf="catMetric">
+    <h6>
+        <tf-salarie-score [type]="'round'" [score]="catMetric.rating"></tf-salarie-score>
+        <b>{{catMetric.libelle}}</b>
+    </h6>
+    <div class="tf-divider"><span></span></div>
+    <div class="box box-coords" style="flex:1">
+        <tf-salarie-portlet-row
+            *ngFor="let metric of catMetric.metrics"
+            [metric]="metric" 
+            [year]="year"
+        ></tf-salarie-portlet-row>
+    </div>
+</div>
+
+
+

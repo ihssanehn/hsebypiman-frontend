@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Inject, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { UserService } from '@app/core/services';
+import { PersonnelService } from '@app/core/services';
 import { Type, Materiel } from '@app/core/models';
 import moment from 'moment';
 import { DateEnToFrPipe, DateFrToEnPipe } from '@app/core/_base/layout';
@@ -26,7 +26,7 @@ export class PretModalComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<PretModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
-    private salarieService: UserService,
+    private salarieService: PersonnelService,
     private fb: FormBuilder,
     private cdr: ChangeDetectorRef,
     private dateFrToEnPipe: DateFrToEnPipe,

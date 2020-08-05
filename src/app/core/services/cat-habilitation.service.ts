@@ -47,5 +47,8 @@ export class CatHabilitationService extends HttpService{
     return this.http.delete(`${this.baseUrl}/${id}`);
   }
 
+  updateOrders(payload){
+    return this.http.post<any>(`${this.baseUrl}/update-orders`, payload)
+  }
 
 }

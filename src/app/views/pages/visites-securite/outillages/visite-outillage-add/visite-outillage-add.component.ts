@@ -67,11 +67,13 @@ export class VisiteOutillageAddComponent implements OnInit {
   createForm() {
 		this.visiteForm = this.visiteFB.group({
       'outillage_code': ['', Validators.required],
+      'materiel_id': [{value : null, disabled : true}, Validators.required],
       'code' : [{value : null, disabled : false},Validators.required],
+      'is_externe' : [{value : 0, disabled : false},Validators.required],
       'salarie_id': [{value:null, disabled:false}, Validators.required],
       'catQuestionsList' : this.visiteFB.array([]),
       'entreprise_id': [{value:null, disabled:false}, Validators.required],
-      'redacteur_id': [{value:this.currentUser.id, disabled:true}, Validators.required],
+      'redacteur_id': [{value:this.currentUser.personnel_id, disabled:true}, Validators.required],
       'date_visite': [moment().format('DD/MM/YYYY'), Validators.required],
       'presence_non_conformite': [{value:false, disabled: true}],
       'has_rectification_imm': [{value:false, disabled: true}],
@@ -90,10 +92,32 @@ export class VisiteOutillageAddComponent implements OnInit {
         'date':[{value:null, disabled:true}],
         'signature': [{value:null, disabled:true}]
       }),
-		});
-		this.loaded = true;
+    });
+    
+    this.setDynamicForm();
+    this.loaded = true;
   }
-
+ setDynamicForm(){
+    this.visiteForm.get('salarie_id').valueChanges.subscribe(salarie_id=>{
+      this.visiteForm.get('materiel_id').setValue(null);
+        if(salarie_id){
+        this.visiteForm.get('materiel_id').enable();
+      }else{
+        this.visiteForm.get('materiel_id').disable();
+      }
+    })
+    
+    // this.visiteForm.get('is_externe').valueChanges.subscribe(is_externe=>{
+    //   if(is_externe){
+    //     this.visiteForm.get('type_id').disable();
+    //     this.visiteForm.get('type_id').setValidators(null);
+    //     this.visiteForm.get('type_id').setValue(null);
+    //   }else{
+    //     this.visiteForm.get('type_id').enable();
+    //     this.visiteForm.get('type_id').setValidators([Validators.required]);
+    //   }
+    // })
+  }
 
   patchQuestionsForm() {
 		
@@ -107,9 +131,12 @@ export class VisiteOutillageAddComponent implements OnInit {
 					'pivot': this.visiteFB.group({
 						'note': [null, Validators.required],
 						'date_remise_conf': [null],
-						'observation': ['']
+						'observation': [''],
+            'action_to_visited': [0]
 					})
-				});
+        });
+        
+        this.setPivotRules(question)
 				questionsArrayFB.push(question);			
 			})
 			var cat = this.visiteFB.group({
@@ -119,6 +146,33 @@ export class VisiteOutillageAddComponent implements OnInit {
 				'questions': this.visiteFB.array(questionsArrayFB)
       })
 			catQuestionsListFormArray.push(cat);
+    })
+  }
+  
+  setPivotRules(question){
+    const pivot = question.get('pivot') as FormGroup;
+    const note = pivot.get('note') as FormControl;
+    const date_remise_conf = pivot.get('date_remise_conf') as FormControl;
+    const action_to_visited = pivot.get('action_to_visited') as FormControl;
+
+    note.valueChanges.subscribe(note=>{
+      if(note == 2){
+        date_remise_conf.enable({emitEvent:false, onlySelf:true})
+        action_to_visited.enable({emitEvent:false, onlySelf:true})
+      }else{
+        date_remise_conf.disable({emitEvent:false, onlySelf:true})
+        date_remise_conf.setValue(null);
+        action_to_visited.disable({emitEvent:false, onlySelf:true})
+        action_to_visited.setValue(0);
+      }      
+    })
+    date_remise_conf.valueChanges.subscribe(date=>{
+      if(date){
+        action_to_visited.disable({emitEvent:false, onlySelf:true})
+        action_to_visited.setValue(0);
+      }else{
+        action_to_visited.enable({emitEvent:false, onlySelf:true})
+      }
     })
   }
 

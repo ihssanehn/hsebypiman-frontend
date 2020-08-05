@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import * as moment from 'moment';
 
 import { TranslateService } from '@ngx-translate/core';
-import { ArService, TypeService, ChantierService, ParamsService, UserService } from '@app/core/services';
+import { ArService, TypeService, ChantierService, ParamsService, PersonnelService } from '@app/core/services';
 import { Observable, Subscription } from 'rxjs';
 import { map, startWith, tap, distinctUntilChanged } from 'rxjs/operators';
 import { Paginate } from '@app/core/_base/layout/models/paginate.model';
@@ -51,7 +51,7 @@ export class ArAddComponent implements OnInit, OnDestroy {
 		private arFB: FormBuilder,
 		private arService: ArService,
 		private typeService: TypeService,
-    private userService: UserService,
+    private userService: PersonnelService,
     protected chantierService:ChantierService,
     protected paramsService:ParamsService,
 		private cdr: ChangeDetectorRef,

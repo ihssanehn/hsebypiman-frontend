@@ -20,6 +20,8 @@ export class EntrepriseTypesAdminComponent extends AdminTemplateComponent implem
     deletedMessage: 'Suppression impossible car la selection comprend un élément affecté à une ou plusieurs entreprises',
     deletedChildMessage: 'Suppression impossible car la selection est affectée à une ou plusieurs entreprises',
     collapsed : false,
+    canUpdateTitle: false,
+    titleOject: null,
     childCol : 12
   }
 
@@ -44,7 +46,7 @@ export class EntrepriseTypesAdminComponent extends AdminTemplateComponent implem
   }
 
   async addItem(){
-    super.addItem("Ajouter un type d'entreprise");  
+    super.addItem("Ajouter un type d'entreprise", {ordre: this.generateParentOrdre()});  
   }
 
 
@@ -58,6 +60,16 @@ export class EntrepriseTypesAdminComponent extends AdminTemplateComponent implem
 
   async deleteItem({id}){
     super.deleteItem({id}, { title : "Type d'entreprise archivé avec succès" });
+  }
+
+  
+  async updateOrders(datas){
+    try {
+      await this.parentService.updateOrders(datas).toPromise();
+      this.cdr.markForCheck();
+		} catch (error) {
+			console.error(error);
+		}
   }
 
 }

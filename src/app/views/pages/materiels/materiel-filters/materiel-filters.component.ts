@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component, OnInit, EventEmitter, Output, Input, forw
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
-import { MaterielService, CategorieService, StatusService,UserService } from '@app/core/services';
+import { MaterielService, CategorieService, StatusService,PersonnelService } from '@app/core/services';
 import { Materiel, Categorie, Status } from '@app/core/models';
 import { AuthService, User } from '@app/core/auth';
 import * as moment from 'moment';
@@ -47,7 +47,7 @@ export class MaterielFiltersComponent implements OnInit, AfterViewInit
     private materielService:MaterielService, 
     private categorieService:CategorieService,
     private authService:AuthService,
-    private userService:UserService,
+    private userService:PersonnelService,
     private fb: FormBuilder,
     private cdr: ChangeDetectorRef,
     private dateFrToEnPipe:DateFrToEnPipe,

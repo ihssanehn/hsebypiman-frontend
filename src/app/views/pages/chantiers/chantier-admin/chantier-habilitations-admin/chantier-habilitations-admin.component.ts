@@ -20,6 +20,8 @@ export class ChantierHabilitationsAdminComponent extends AdminTemplateComponent 
     deletedMessage: 'Suppression impossible car la selection comprend un élément affecté à un ou plusieurs chantiers',
     deletedChildMessage: 'Suppression impossible car la selection est affectée à un ou plusieurs chantiers',
     collapsed : false,
+    canUpdateTitle: false,
+    titleOject: null,
     childCol : 6
   }
 
@@ -39,14 +41,12 @@ export class ChantierHabilitationsAdminComponent extends AdminTemplateComponent 
   }
 
   async addItem(){
-    super.addItem("Ajouter une habilitation");  
+    super.addItem("Ajouter une habilitation", {ordre: this.generateParentOrdre()});  
   }
-
 
   async deleteItem({id}){
     super.deleteItem({id}, { title : "Habilitation archivée avec succès" });
   }
-
 
   async addChild(item){
     let payload = { ...item, cat_hab_id : item.parent_id };

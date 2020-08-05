@@ -1,0 +1,155 @@
+<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8" id="portlet-salarie" *ngIf="salarie">
+    <div class="tf-portlet-header ">
+        <span class="title">
+            <a [routerLink]="['/salaries/list']">{{'MENU.SUB_SALARIES.LIST' | translate}}</a><span class="divider">></span><span class="id-item">{{salarie | fullName}}</span>
+        </span>
+        <div class="pull-right">
+            <mat-form-field class="col-xl-10">
+                <input matInput class="form-control" [matDatepicker]="toYearPicker" placeholder="Année" [formControl]="year" readonly>
+                <mat-datepicker-toggle matSuffix [for]="toYearPicker"></mat-datepicker-toggle>
+                <mat-datepicker startView="multi-year" (yearSelected)="closeDatePicker($event,toYearPicker)" #toYearPicker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <span>
+            <button mat-icon-button color="info" matTooltip="Modifier les objectifs" (click)="editMetrics()">
+                <mat-icon>edit</mat-icon>
+              </button>
+        </span>
+    </div>
+    <tf-portlet-body class="tf-portlet__body--fit">
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card">
+              <div class="box">
+                    <!-- TODO photo -->
+                    <ngx-avatar class="user-avatar" [round]="false" [size]="200" cornerRadius="4" name="{{salarie | fullName}}"></ngx-avatar>
+              </div>
+              <div class="tf-divider">
+                <span></span>
+              </div>
+              <div class="box box-coords" style="flex:1">
+                <h5><b>À propos du salarié</b></h5>
+                <p><span class="label pull-left mr-2">{{'COMMON.LASTNAME.LABEL' | translate}}</span><span class="" *ngIf="salarie.nom; else noDataFound">{{salarie.nom}}</span></p>
+                <p><span class="label pull-left mr-2">{{'COMMON.FIRSTNAME.LABEL' | translate}}</span><span class="" *ngIf="salarie.prenom; else noDataFound">{{salarie.prenom}}</span></p>
+                <p><span class="label pull-left mr-2">{{'COMMON.BIRTHDAY.LABEL' | translate}}</span><span class="" *ngIf="salarie.date_naissance; else noDataFound">{{salarie.date_naissance | date:'dd/MM/yyyy'}}</span></p>
+                <p><span class="label pull-left mr-2">{{'COMMON.FONCTION.LABEL' | translate}}</span><span class="" *ngIf="salarie.fonction; else noDataFound">{{salarie.fonction?.libelle}}</span></p>
+              </div>
+              <div class="tf-divider">
+                <span></span>
+              </div>
+              <div class="box text-center">
+                <small>{{'SALARIES.ENTRY_AT.LABEL' | translate}} : {{salarie.date_entree | date:'dd/MM/yyyy'}}</small><br>
+              </div>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <mat-tab-group mat-align-tabs="start" animationDuration="1000ms">
+                <mat-tab label="Vision 360">
+                    <div class="d-flex flex-wrap">
+
+                        <tf-salarie-card
+                            class="col-md-4 d-flex pb-3"
+                            *ngFor="let item of salarie.catMetricsList"
+                            [catMetric]="item"
+                        ></tf-salarie-card>
+
+                    </div>
+                </mat-tab>
+                <mat-tab label="Détails">
+                    <div class="col-md-12">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <h5><b>Information employeur</b></h5>
+                                <div class="row d-flex">
+                                    <div class="box col-md-6">
+                                        <h6><b>En cas d'urgence</b></h6>
+                                        <div class="tf-divider"><span></span></div>
+                                        <div class="box box-coords" style="flex:1">
+                                            <p><span class="label pull-left mr-2">{{'COMMON.LASTNAME.LABEL' | translate}}</span><span class="blue" *ngIf="salarie.nom_urgence; else noDataFound">{{salarie.nom_urgence}}</span></p>
+                                            <p><span class="label pull-left mr-2">Téléphone</span><span class="blue" *ngIf="salarie.telephone_urgence; else noDataFound">{{salarie.telephone_urgence}}</span></p>
+                                            <p><span class="label pull-left mr-2">Lien de parenté</span><span class="blue" *ngIf="salarie.lien_parente_urgence; else noDataFound">{{salarie.lien_parente_urgence}}</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="box col-md-6">
+                                        <h6><b>Visite médicale</b></h6>
+                                        <div class="tf-divider"><span></span></div>
+                                        <div class="box box-coords" style="flex:1">
+                                            <p><span class="label pull-left mr-2">RQTH</span><span class="blue" *ngIf="salarie.rqth; else noDataFound">{{salarie.rqth?.date_debut | date:'dd/MM/yyyy'}} au {{salarie.rqth?.date_fin | date:'dd/MM/yyyy'}}</span></p>
+                                            <p><span class="label pull-left mr-2">Réalisée</span><span class="blue" *ngIf="salarie.latest_visite_medicale?.date_rv; else noDataFound">{{salarie.latest_visite_medicale?.date_rv | date:'dd/MM/yyyy'}}</span></p>
+                                            <p><span class="label pull-left mr-2">À renouveler</span><span class="blue" *ngIf="salarie.latest_visite_medicale?.date_renouvellement; else noDataFound">{{salarie.latest_visite_medicale?.date_renouvellement | date:'dd/MM/yyyy'}}</span></p>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="box box-ar-vs col-md-3">
+                                        <h6><b>Ouvrage concerné</b></h6>
+                                        <div class="tf-divider"><span></span></div>
+                                        <div class="box box-coords" style="flex:1">
+                                            <p><span class="label pull-left mr-2">Type</span><span class="blue" *ngIf="salarie.ouvrage; else noDataFound">{{salarie.ouvrage}}</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="box box-ar-vs col-md-3">
+                                        <h6><b>Indications complémentaires</b></h6>
+                                        <div class="tf-divider"><span></span></div>
+                                        <div class="box box-coords" style="flex:1">
+                                            <p><span class="label pull-left mr-2">Indication</span><span class="blue" *ngIf="salarie.indication; else noDataFound">{{salarie.indication}}</span></p>
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+        
+                        <tf-salarie-portlet 
+                            *ngFor="let item of salarie.metricsTree"
+                            [metricsTree]="item" 
+                            [year]="year"
+                        ></tf-salarie-portlet>
+        
+                        <div class="col-md-12 mt-4">
+                            <div class="card">
+                                <h5><b>Formations</b></h5>
+                                <div class="box box-ar-vs" style="flex: 1;">
+                                    <h6><b>Suivis des formations</b>
+                                        <!-- <small class="pull-right">{{'COMMON.UPDATED_AT.TITLE' | translate}} le <span class="blue">10/10/2020</span></small> -->
+                                    </h6>
+                                    <div class="tf-divider"><span></span></div>
+                                    <div>
+                                        <table class="table table-borderless table-sm table-striped px-4">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">Formations</th>
+                                                <th class="text-center" scope="col">Date de réalisation</th>
+                                                <th class="text-center" scope="col">Date de renouvellement</th>
+                                                <th class="text-center" scope="col">Autorisation employeur</th>
+                                                <th class="text-center" scope="col">Aptitudes</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr *ngFor="let formation of salarie.formations" >
+                                                <th scope="row">{{formation.libelle}}</th>
+                                                <td class="text-center">{{formation.date_debut | date:'dd/MM/yyyy'}}</td>
+                                                <td class="text-center">{{formation.date_renouvellement | date:'dd/MM/yyyy'}}</td>
+                                                <td class="text-center">{{formation.date_autorisation | date:'dd/MM/yyyy'}}</td>
+                                                <td class="text-center">{{formation.habilitation?.libelle}}</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+
+    </div>
+    </tf-portlet-body>
+  </tf-portlet>
+
+
+  <ng-template #noDataFound>
+    <span class="no-data-label">
+      Non renseigné
+    </span>
+  </ng-template>

@@ -1,0 +1,25 @@
+:host::ng-deep {
+
+    p{
+        text-align: right;
+        .label{
+            color: #c9c9c9;
+            text-align: left;
+        }
+        .mat-icon-button{
+            height: 20px;
+            line-height: 0px;
+        }
+        .metric-radio{
+            font-weight: 100;
+        }
+    }
+    .blue{
+        color: #33b5ae;
+    }
+    .no-data-label {
+        font-weight: 100;
+        font-style: italic;
+    }
+    
+}

@@ -1,7 +1,9 @@
-
 :host {
 
-    
+    .disabled{
+        color:grey;
+        cursor: not-allowed;
+    }    
     .mat-table {
         th.mat-header-cell {
             width: 33%;

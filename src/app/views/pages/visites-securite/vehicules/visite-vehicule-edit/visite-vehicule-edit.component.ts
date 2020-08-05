@@ -87,7 +87,7 @@ export class VisiteVehiculeEditComponent implements OnInit, OnDestroy {
   createForm() {
 		this.visiteForm = this.visiteFB.group({
       'id': [{value:null, disabled:true}, Validators.required],
-      'vehicule_id': [null, Validators.required],
+      'materiel_id': [null, Validators.required],
       'salarie_id': [{value:null, disabled:false}, Validators.required],
       'entreprise_id': [{value:null, disabled:false}, Validators.required],
       'redacteur_id': [{value:null, disabled:true}, Validators.required],
@@ -223,7 +223,7 @@ export class VisiteVehiculeEditComponent implements OnInit, OnDestroy {
   }
 
   cantDisplayQuestions(){
-    var test: boolean = this.visiteForm.get('vehicule_id').invalid ||
+    var test: boolean = this.visiteForm.get('materiel_id').invalid ||
       this.visiteForm.get('type_id').invalid ||
       this.visiteForm.get('salarie_id').invalid || 
       this.visiteForm.get('entreprise_id').invalid;

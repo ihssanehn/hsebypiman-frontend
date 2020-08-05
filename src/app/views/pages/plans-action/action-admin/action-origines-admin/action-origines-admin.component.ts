@@ -20,6 +20,8 @@ export class ActionOriginesAdminComponent extends AdminTemplateComponent impleme
     deletedMessage: 'Suppression impossible car la selection comprend un élément affecté à un ou plusieurs actions',
     deletedChildMessage: 'Suppression impossible car la selection est affectée à un ou plusieurs actions',
     collapsed : false,
+    canUpdateTitle: false,
+    titleOject: null,
     childCol : 12
   }
 
@@ -48,6 +50,16 @@ export class ActionOriginesAdminComponent extends AdminTemplateComponent impleme
 
   async deleteItem({id}){
     super.deleteItem({id}, { title : "Origine archivée avec succès" });
+  }
+
+  
+  async updateOrders(datas){
+    try {
+      await this.parentService.updateOrders(datas).toPromise();
+      this.cdr.markForCheck();
+		} catch (error) {
+			console.error(error);
+		}
   }
 
 }

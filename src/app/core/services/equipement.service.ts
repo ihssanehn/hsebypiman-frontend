@@ -42,6 +42,9 @@ export class EquipementService extends HttpService{
     return this.http.delete<any>(`${this.baseUrl}/${id}`)
                     .pipe(map(result => result.result.data));
   }
+  updateOrders(payload){
+    return this.http.post<any>(`${this.baseUrl}/update-orders`, payload)
+  }
 
 
 }

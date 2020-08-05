@@ -7,29 +7,14 @@
 			  <span class="id-item">{{'MENU.SUB_VISITESECURITE.ADD' | translate}}</span>
 			</span>
 		</div>
-<!-- 
-		<tf-add-vehicule-form [form]="visiteForm" origin="add" ></tf-add-vehicule-form> -->
-
 		<div class="row">
 			<div class="col-md-12">
-				<tf-search-salarie-form [form]="visiteForm" origin="add" [model]="'VsVehicule'" (onUserSelected)="onUserSelected($event)"></tf-search-salarie-form>
+				<tf-search-materiel-form [form]="visiteForm" origin="add" [model]="'VsVehicule'" (onUserSelected)="onUserSelected($event)"></tf-search-materiel-form>
 			</div>
 		</div>
-
-		<div class="tf-divider" *ngIf="visiteForm.get('vehicule').value">
+		<div class="tf-divider" *ngIf="visiteForm.get('materiel_id').value">
 			<span></span>
 		</div>
-
-		<!-- <tf-vs-form-head [visiteForm]="visiteForm" [origin]="'add'" [model]="'VsVehicule'" *ngIf="visiteForm.get('vehicule').value"></tf-vs-form-head> -->
-
-		<!-- <tf-portlet-body *ngIf="visiteForm.get('vehicule').value">
-			<div class="row">
-				<div class="col-12">
-					<button mat-raised-button color="success" class="float-right btn-small" 
-					type="button" [disabled]="cantDisplayQuestions()" (click)="displayQuestions()">Commencer la visite</button>
-				</div>
-			</div>
-		</tf-portlet-body> -->
 	</tf-portlet>
 
 	<tf-vs-vehicule-form-img [visiteForm]="visiteForm" [origin]="'add'" *ngIf="questionsDisplayed" ></tf-vs-vehicule-form-img>

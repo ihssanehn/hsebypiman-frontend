@@ -63,10 +63,11 @@ export class VisiteVehiculeAddComponent implements OnInit {
   
   createForm() {
 		this.visiteForm = this.visiteFB.group({
-      'vehicule': ['', Validators.required],
       'salarie_id': [{value:null, disabled:false}, Validators.required],
+      'materiel_id': [{value:null, disabled:true}, Validators.required],
+      'is_externe' : [{value : 0, disabled : false},Validators.required],
       //'entreprise_id': [{value:null, disabled:false}, Validators.required],
-      'redacteur_id': [{value:this.currentUser.id, disabled:true}, Validators.required],
+      'redacteur_id': [{value:this.currentUser.personnel_id, disabled:true}, Validators.required],
       'date_visite': [moment().format('DD/MM/YYYY'), Validators.required],
       'presence_non_conformite': [{value:false, disabled: true}],
       'has_rectification_imm': [{value:false, disabled: true}],
@@ -88,34 +89,32 @@ export class VisiteVehiculeAddComponent implements OnInit {
       }),
       'img_canvas': [{value:null, disabled:true}]
 		});
+    this.setDynamicForm();
 		this.loaded = true;
   }
-  
-  // setDynamicValidators() {
-  //   const salarie_id = this.visiteForm.get('salarie_id');
-  //   const entreprise_id = this.visiteForm.get('entreprise_id');
 
-  //   this.visiteForm.get('salarie_id').valueChanges.subscribe(salarie_id => {
-  //       if (salarie_id != null) {
-  //         entreprise_id.setValidators(null);
-  //         entreprise_id.disable({onlySelf:true, emitEvent:false});
-  //       }else{
-  //         entreprise_id.setValidators(Validators.required);
-  //         entreprise_id.enable({onlySelf:true, emitEvent:false});
-  //       }
-  //     })
-  //     this.visiteForm.get('entreprise_id').valueChanges.subscribe(entreprise_id => {
-  //       if (entreprise_id != null) {
-  //         salarie_id.setValidators(null);
-  //         salarie_id.disable({onlySelf:true, emitEvent:false});
-  //       }else{
-  //         salarie_id.setValidators(Validators.required);
-  //         salarie_id.enable({onlySelf:true, emitEvent:false});
-  //       }
-  //   })
-  // }
+   setDynamicForm(){
+    this.visiteForm.get('salarie_id').valueChanges.subscribe(salarie_id=>{
+      
+      this.visiteForm.get('materiel_id').setValue(null);
+      if(salarie_id){
+        this.visiteForm.get('materiel_id').enable();
+      }else{
+        this.visiteForm.get('materiel_id').disable();
+      }
+    })
 
-
+    // this.visiteForm.get('is_externe').valueChanges.subscribe(is_externe=>{
+    //   if(is_externe){
+    //     this.visiteForm.get('type_id').disable();
+    //     this.visiteForm.get('type_id').setValidators(null);
+    //     this.visiteForm.get('type_id').setValue(null);
+    //   }else{
+    //     this.visiteForm.get('type_id').enable();
+    //     this.visiteForm.get('type_id').setValidators([Validators.required]);
+    //   }
+    // })
+  }
   async onUserSelected(form){
     this.visiteForm.patchValue(form);
     this.displayQuestions();
@@ -214,36 +213,12 @@ export class VisiteVehiculeAddComponent implements OnInit {
             'pivot': this.visiteFB.group({
               'note':[{value:null, disabled:false}, Validators.required],
               'date_remise_conf':[{value:null, disabled:false}],
-              'observation':[{value:'', disabled:false}]
+              'observation':[{value:'', disabled:false}],
+              'action_to_visited': [0]
             })
           });
 
-          const pivot = question.get('pivot') as FormGroup;
-          const note = pivot.get('note') as FormControl;
-          const date_remise_conf = pivot.get('date_remise_conf') as FormControl;
-
-          note.valueChanges.subscribe(note=>{
-            if(note == 2){
-              date_remise_conf.enable({emitEvent:false, onlySelf:true})
-              this.visiteForm.get('presence_non_conformite').setValue(true);
-            }else{
-              date_remise_conf.disable({emitEvent:false, onlySelf:true})
-              date_remise_conf.setValue(null);
-              var nbr_ko = this.getNotes().ko;
-              if(nbr_ko == 0 && this.visiteForm.get('presence_non_conformite').value == true){
-                this.visiteForm.get('presence_non_conformite').setValue(false);
-              }
-            }
-          })
-
-          pivot.valueChanges.subscribe(pivot=>{
-            var nbr_ko_unsolved = this.getNotes().ko_unsolved;
-            if(nbr_ko_unsolved > 0){
-              this.visiteForm.get('has_rectification_imm').setValue(true)
-            }else{
-              this.visiteForm.get('has_rectification_imm').setValue(false);
-            }
-          })
+         this.setPivotRules(question);
 
           questionsArrayFB.push(question);
         })
@@ -259,6 +234,47 @@ export class VisiteVehiculeAddComponent implements OnInit {
       })
 
     }
+  }
+  setPivotRules(question){
+    const pivot = question.get('pivot') as FormGroup;
+    const note = pivot.get('note') as FormControl;
+    const date_remise_conf = pivot.get('date_remise_conf') as FormControl;
+    const action_to_visited = pivot.get('action_to_visited') as FormControl;
+
+    note.valueChanges.subscribe(note=>{
+      if(note == 2){
+        date_remise_conf.enable({emitEvent:false, onlySelf:true})
+        action_to_visited.enable({emitEvent:false, onlySelf:true})
+        this.visiteForm.get('presence_non_conformite').setValue(true);
+      }else{
+        date_remise_conf.disable({emitEvent:false, onlySelf:true})
+        date_remise_conf.setValue(null);
+        action_to_visited.disable({emitEvent:false, onlySelf:true})
+        action_to_visited.setValue(0);
+        var nbr_ko = this.getNotes().ko;
+        if(nbr_ko == 0 && this.visiteForm.get('presence_non_conformite').value == true){
+          this.visiteForm.get('presence_non_conformite').setValue(false);
+        }
+      }
+    })
+
+    date_remise_conf.valueChanges.subscribe(date=>{
+      if(date){
+        action_to_visited.disable({emitEvent:false, onlySelf:true})
+        action_to_visited.setValue(0);
+      }else{
+        action_to_visited.enable({emitEvent:false, onlySelf:true})
+      }
+    })
+    
+    pivot.valueChanges.subscribe(pivot=>{
+      var nbr_ko_unsolved = this.getNotes().ko_unsolved;
+      if(nbr_ko_unsolved > 0){
+        this.visiteForm.get('has_rectification_imm').setValue(true)
+      }else{
+        this.visiteForm.get('has_rectification_imm').setValue(false);
+      }
+    })
   }
 
   getNotes(){

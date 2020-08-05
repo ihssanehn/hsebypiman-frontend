@@ -104,10 +104,10 @@ export class ActionsListComponent implements OnInit, AfterViewInit, OnDestroy {
 	}
 
 	viewAction(actionId) {
-		this.router.navigateByUrl('plans-action/detail/' + actionId);
+		this.router.navigateByUrl('plan-actions/detail/' + actionId);
 	}
 	editAction(actionId) {
-		this.router.navigateByUrl('plans-action/edit/' + actionId);
+		this.router.navigateByUrl('plan-actions/edit/' + actionId);
 	}
 	deleteAction(actionId) {
 		Swal.fire({

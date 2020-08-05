@@ -3,7 +3,7 @@ import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormBuilder, AbstractControl, FormControl, Validators } from '@angular/forms';
 import { AuthService, User } from '@app/core/auth';
 import { Type, Status, Entreprise, Materiel } from '@app/core/models';
-import { TypeService, StatusService, EntrepriseService, UserService, MaterielService } from '@app/core/services';
+import { TypeService, StatusService, EntrepriseService, PersonnelService, MaterielService } from '@app/core/services';
 import { first } from 'rxjs/operators';
 
 
@@ -23,32 +23,41 @@ export class VsFormHeadComponent implements OnInit {
   interimairesList: User[];
   redacteur: User;
   materiels: Materiel[];
+  currentUser: User;
 
   @Input() visiteForm: FormGroup;
   @Input() origin: string;
   @Input() edit: Boolean;
   @Input() model: string;
+  @Input() data: any = null;
 
   constructor(
     private typeService:TypeService,
     private statusService:StatusService,
-    private userService:UserService,
+    private userService:PersonnelService,
     private entrepriseService:EntrepriseService,
     private materielService : MaterielService,
     private cdr: ChangeDetectorRef,
+    private authService : AuthService
   ) { 
+		this.authService.currentUser.subscribe(x=> this.currentUser = x);
 
   }
 
 
   
   ngOnInit() {
-    console.log(this.visiteForm);
+    
     this.getTypes();
     this.getUsers();
     this.getStatus();
     this.getInterimaires();
     this.getMateriels();
+    if(this.data){
+      this.redacteur = this.data.redacteur ? this.data.redacteur : this.data.creator;
+    }else{
+      this.redacteur = this.currentUser;
+    }
     if(this.model == 'VsChantier'){
       this.getEntreprises();
       this.setDynamicEntreprise();
@@ -64,7 +73,6 @@ export class VsFormHeadComponent implements OnInit {
     var res = await this.userService.getList().toPromise();
     this.users = res.result.data;
     this.cdr.markForCheck();
-    this.redacteur = this.users.filter(x=>x.id == this.visiteForm.get('redacteur_id').value)[0];
   }
   async getStatus(){
     var res = await this.statusService.getAllFromModel('VsChantier').toPromise();
@@ -97,7 +105,7 @@ export class VsFormHeadComponent implements OnInit {
   }
 
   async getInterimaires(){
-    var res = await this.userService.getAll({'categorie_code':'INTERIMAIRE', 'paginate':false}).toPromise();
+    var res = await this.userService.getAll({'contrat_code':'STAGIAIRE', 'paginate':false}).toPromise();
     if(res){
       this.interimairesList = res.result.data;
     }
@@ -195,4 +203,16 @@ export class VsFormHeadComponent implements OnInit {
     }
   }
   
+  
+  isExterne() {
+    return this.visiteForm.get('is_externe').value == 1;
+  }
+
+  toggleExterne($event){
+    if($event){
+      this.visiteForm.get('is_externe').setValue(1);
+    }else{
+      this.visiteForm.get('is_externe').setValue(0);
+    }
+  }
 }

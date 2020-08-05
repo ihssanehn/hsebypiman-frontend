@@ -20,6 +20,8 @@ export class ArEquipementsAdminComponent extends AdminTemplateComponent implemen
     deletedMessage: 'Suppression impossible car la selection comprend un élément affecté à une ou plusieurs analyses de risque',
     deletedChildMessage: 'Suppression impossible car la selection est affectée à une ou plusieurs analyses de risque',
     collapsed : true,
+    canUpdateTitle: false,
+    titleOject: null,
     childCol : 12
   }
 
@@ -44,11 +46,19 @@ export class ArEquipementsAdminComponent extends AdminTemplateComponent implemen
   }
 
   async addItem(){
-    super.addItem("Ajouter un équipement");  
+    super.addItem("Ajouter un équipement", {ordre: this.generateParentOrdre()});  
   }
 
   async deleteItem({id}){
     super.deleteItem({id}, { title : "Equipement archivé avec succès" });
   }
 
+  async updateOrders(datas){
+    try {
+      await this.parentService.updateOrders(datas).toPromise();
+      this.cdr.markForCheck();
+		} catch (error) {
+			console.error(error);
+		}
+  }
 }

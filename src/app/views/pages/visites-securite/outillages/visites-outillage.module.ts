@@ -20,10 +20,10 @@ import { ActionNotificationComponent } from '@app/views/partials/content/crud';
 // Components
 import { VisitesOutillageComponent } from './visites-outillage.component';
 import { VisitesOutillageListComponent } from './visites-outillage-list/visites-outillage-list.component';
-import { VisiteOutillageEditComponent } from './visite-outillage-edit/visite-outillage-edit.component';
 import { VisiteOutillageAddComponent } from './visite-outillage-add/visite-outillage-add.component';
 import { VisiteOutillageDetailComponent } from './visite-outillage-detail/visite-outillage-detail.component';
 import { VisiteOutillageFiltersComponent } from './visite-outillage-filters/visite-outillage-filters.component';
+import { VisiteQuestionsOutillageAdminComponent } from './visite-outillage-admin/visite-questions-outillage-admin/visite-questions-outillage-admin.component';
 
 import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -63,16 +63,6 @@ const routes: Routes = [
 				component: VisitesOutillageComponent
 				// component: VisiteOutillageAddComponent
 			},
-			// {
-			// 	path: 'edit',
-			// 	component: VisitesOutillageComponent
-			// 	// component: VisiteOutillageEditComponent
-			// },
-			// {
-			// 	path: 'edit/:id',
-			// 	//component: VisitesOutillageComponent
-			// 	component: VisiteOutillageEditComponent
-			// },
 			{
 				path: 'admin',
 				component: VisiteOutillageAdminComponent
@@ -148,11 +138,11 @@ const routes: Routes = [
 	declarations: [
 		VisitesOutillageComponent,
 		VisitesOutillageListComponent,
-		VisiteOutillageEditComponent,
 		VisiteOutillageAddComponent,
 		VisiteOutillageDetailComponent,
 		VisiteOutillageFiltersComponent,
-		VisiteOutillageAdminComponent
+		VisiteOutillageAdminComponent,
+		VisiteQuestionsOutillageAdminComponent
 	]
 })
 export class VisitesOutillageModule {}

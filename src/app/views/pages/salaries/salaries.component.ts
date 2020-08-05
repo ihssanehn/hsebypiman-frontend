@@ -1,5 +1,7 @@
 // Angular
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { MenuAsideService } from '@app/core/_base/layout';
 
 @Component({
 	selector: 'tf-salaries',
@@ -8,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SalariesComponent implements OnInit {
 
-	constructor() {
+	constructor(
+		public menuAsideService: MenuAsideService,
+		private router: Router
+	) {
 	}
 
-	async ngOnInit(){
+	ngOnInit(){
+		this.menuAsideService.loadMenuAside('aside.salaries');
 	}
 }

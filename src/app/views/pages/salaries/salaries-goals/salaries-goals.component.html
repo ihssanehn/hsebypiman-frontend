@@ -1,0 +1,55 @@
+<form [formGroup]="goalForm" *ngIf="goalForm" autocomplete="off" class="tf-form tf-form--group-seperator-dashed " novalidate (ngSubmit)="goalForm.valid && onSubmit()" fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+    <tf-portlet class="tf-portlet--height-fluid mat-elevation-z8" id="portlet-salarie" >
+        <div class="tf-portlet-header ">
+            <span class="title">
+                <a [routerLink]="['/salaries/list']">{{'MENU.SUB_SALARIES.LIST' | translate}}</a><span class="divider">></span><span class="id-item">Objectifs</span>
+            </span>
+            <div class="pull-right">
+                <mat-form-field class="col-xl-10">
+                    <input matInput class="form-control" [matDatepicker]="toYearPicker" placeholder="Année" [formControl]="year" readonly>
+                    <mat-datepicker-toggle matSuffix [for]="toYearPicker"></mat-datepicker-toggle>
+                    <mat-datepicker startView="multi-year" (yearSelected)="closeDatePicker($event,toYearPicker)" #toYearPicker></mat-datepicker>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <tf-portlet-body class="tf-portlet__body--fit">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="d-flex flex-wrap">
+                        <div class="row d-flex">
+                            <div class="col-md-3 d-flex pt-3" *ngFor="let cat of catMetricsList; let i = index">
+                                <div class="card col-md-12">
+                                    <h5><b>{{cat.description}}</b></h5>
+                                    <div class="tf-divider"><span></span></div>
+                                    <div class="box box-coords" style="flex:1">
+                                        <div class="col-xl-12" *ngFor="let metric of cat.metrics">
+                                            <ng-container [formGroup]="getGoal(metric.id, i)" >
+                                                <mat-form-field class="col-xl-12" >
+                                                    <mat-label>{{metric.short_libelle}}</mat-label>
+                                                    <input *ngIf="metric.unit; else withoutUnit" matInput  class="form-control" formControlName="value" type="string" name="metric" [suffix]=" ' '+metric.unit" mask="separator.2" placeholder="Saisir ici" />
+                                                    <ng-template #withoutUnit>
+                                                        <input matInput  class="form-control" formControlName="value" type="number" name="metric" placeholder="Saisir ici" />
+                                                    </ng-template>
+                                                </mat-form-field>
+                                            </ng-container>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </tf-portlet-body>
+    </tf-portlet>
+
+    <div>
+        <button mat-raised-button [ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': formloading}" [disabled]="formloading || goalForm.invalid" color="success" class="pull-right">
+            {{'ACTION.SAVE' | translate}}
+        </button>
+        <button type="button" mat-raised-button color="info" (click)="onCancel()">
+            Cancel
+        </button>
+    </div>
+</form>
