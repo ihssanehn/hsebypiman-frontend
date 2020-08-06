@@ -74,11 +74,17 @@ export class MaterielsListComponent implements OnInit, AfterViewInit {
 		}
 	}
 
-	// exportList(){
-	// 	var filters = {...this.filter};
-	// 	filters.type="EXCEL";
-	// 	return this.materielService.export(filters);
-	// }
+
+	exportList(){
+		var filters = {...this.filter};
+		filters.type="EXCEL";
+		for(const prop in filters){
+			if(!filters[prop]){
+				delete filters[prop];
+			}
+		}
+		return this.materielService.export(filters);
+	}
 
 	changePagination() {
 		this.pagination = {

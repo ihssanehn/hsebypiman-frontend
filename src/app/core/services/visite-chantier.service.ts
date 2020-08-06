@@ -41,4 +41,9 @@ export class VisiteChantierService extends HttpService{
         return this.http.delete(this.baseUrl+'/'+visite_id);
     }
     
+    export(filters){
+        var queryString = Object.keys(filters).map(key => key + '=' + filters[key]).join('&');
+        var url = this.baseUrl+'/export?'+queryString+'&token='+localStorage.getItem(environment.authTokenKey);
+        window.open(url, '_blank');
+    }
 }

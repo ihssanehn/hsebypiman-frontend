@@ -73,11 +73,16 @@ export class EntreprisesListComponent implements OnInit, AfterViewInit {
 		}
 	}
 
-	// exportList(){
-	// 	var filters = {...this.filter};
-	// 	filters.type="EXCEL";
-	// 	return this.entrepriseService.export(filters);
-	// }
+	exportList(){
+		var filters = {...this.filter};
+		filters.type="EXCEL";
+		for(const prop in filters){
+			if(!filters[prop]){
+				delete filters[prop];
+			}
+		}
+		return this.entrepriseService.export(filters);
+	}
 
 	changePagination() {
 		this.pagination = {

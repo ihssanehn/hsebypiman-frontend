@@ -41,5 +41,11 @@ export class EntrepriseService{
         return this.http.delete<JsonResponse<Entreprise>>(this.baseUrl+'/'+item_id);
     }
     
+    export(filters){
+        var queryString = Object.keys(filters).map(key => key + '=' + filters[key]).join('&');
+        var url = this.baseUrl+'/export?'+queryString+'&token='+localStorage.getItem(environment.authTokenKey);
+        window.open(url, '_blank');
+    }
+    
 
 }

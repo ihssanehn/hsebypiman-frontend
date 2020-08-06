@@ -50,7 +50,6 @@ export class MaterielService extends HttpService{
     }
     export(filters){
         var queryString = Object.keys(filters).map(key => key + '=' + filters[key]).join('&');
-        console.log(queryString);
         var url = this.baseUrl+'/export?'+queryString+'&token='+localStorage.getItem(environment.authTokenKey);
         window.open(url, '_blank');
     }

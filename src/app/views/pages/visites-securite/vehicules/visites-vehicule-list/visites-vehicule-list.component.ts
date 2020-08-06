@@ -133,4 +133,14 @@ export class VisitesVehiculeListComponent implements OnInit {
 		this.getVisites();
 	}
 
+	exportList(){
+		var filters = {...this.filter};
+		filters.type="EXCEL";
+		for(const prop in filters){
+			if(!filters[prop]){
+				delete filters[prop];
+			}
+		}
+		return this.visiteService.export(filters);
+	}
 }

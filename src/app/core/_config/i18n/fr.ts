@@ -394,6 +394,26 @@ export const locale = {
 				TITLE:'Date de fin de garantie',
 				SHORTTITLE:'Date de fin de garantie',
 			},
+			VS_COUNT:{
+				LABEL:'Quantité V.S',
+				TITLE:'Quantité V.S',
+				SHORTTITLE:'Nombre de visites',
+			},
+			LAST_VS:{
+				LABEL:'Dernière V.S',
+				TITLE:'Dernière V.S',
+				SHORTTITLE:'Dernière visite',
+			},
+			VSS:{
+				LABEL:'Visites Sécurité',
+				TITLE:'Visites passées',
+				SHORTTITLE:'Visites passées',
+			},
+			VSS_HISTORY:{
+				LABEL:'Historique des visites',
+				TITLE:'Historique des visites',
+				SHORTTITLE:'Historique des visites',
+			},
 		},
 		// Entreprises Externes
 		EES:{

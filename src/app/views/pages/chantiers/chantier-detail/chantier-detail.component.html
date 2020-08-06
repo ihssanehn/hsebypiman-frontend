@@ -136,11 +136,20 @@
             <h5><b>Suivis visites de sécurité</b><small class="pull-right">{{'CHANTIERS.VS_COUNT.SHORTTITLE' | translate}} : <span class="blue">{{chantier.vss.length}}</span></small></h5>
             <div class="row">
               <div class="col-md-12 my-2"><p><span class="label">{{'CHANTIERS.VSS.TITLE' | translate}}</span></p></div>
-              <ng-container *ngFor="let vs of chantier.vss">
-                <div class="col-md-5"><p>{{vs.code}}</p></div>
-                <div class="col-md-5"><p>{{vs.date_visite | date:'dd/MM/yyyy'}}</p></div>
-                <div class="col-md-2"><a (click)="goToVsDetail(vs.id)" alt="voir la visite"><mat-icon color="primary">visibility</mat-icon></a></div>
+              <ng-container *ngIf="chantier.vss.length > 0; else noVss">
+                <ng-container *ngFor="let vs of chantier.vss">
+                  <div class="col-md-5"><p>{{vs.code}}</p></div>
+                  <div class="col-md-5"><p>{{vs.date_visite | date:'dd/MM/yyyy'}}</p></div>
+                  <div class="col-md-2"><a (click)="goToVsDetail(vs.id)" alt="voir la visite"><mat-icon color="primary">visibility</mat-icon></a></div>
+                </ng-container>
               </ng-container>
+              <ng-template #noVss>
+                <div class="row">
+                  <div class="col-12">
+                    <p>Aucune visites</p>
+                  </div>
+                </div>
+              </ng-template>
             </div>
           </div>
         </div>

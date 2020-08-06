@@ -26,10 +26,10 @@
 						<p><span class="label pull-left mr-2">{{'MATERIELS.LIBELLE.TITLE' | translate}}</span><span *ngIf="materiel.libelle; else noData">{{materiel.libelle}}</span></p>
 						<p><span class="label pull-left mr-2">{{'MATERIELS.NUMERO_SERIE.TITLE' | translate}}</span><span *ngIf="materiel.numero_serie; else noData">{{materiel.numero_serie}}</span></p>
 						<p><span class="label pull-left mr-2">{{'MATERIELS.CATEGORIE.TITLE' | translate}}</span><span *ngIf="materiel.flat_categories; else noData">
-							<span *ngFor="let cat of materiel.flat_categories; let last = last;">
-								{{cat.libelle}}<span *ngIf="!last"> / </span>
-							</span>
-						</span></p>
+								<span *ngFor="let cat of materiel.flat_categories; let last = last;">
+									{{cat.libelle}}<span *ngIf="!last"> / </span>
+								</span>
+							</span></p>
 						<p><span class="label pull-left mr-2">{{'MATERIELS.MARQUE.TITLE' | translate}}</span><span *ngIf="materiel.marque; else noData">{{materiel.marque}}</span></p>
 						<p><span class="label pull-left mr-2">{{'MATERIELS.FOURNISSEUR.TITLE' | translate}}</span><span *ngIf="materiel.fournisseur; else noData">{{materiel.fournisseur}}</span></p>
 						<p><span class="label pull-left mr-2">{{'MATERIELS.DATE_ENTREE.TITLE' | translate}}</span><span *ngIf="materiel.date_entree; else noData">{{materiel.date_entree | date:'dd/MM/yyyy'}}</span></p>
@@ -72,14 +72,14 @@
 										<p class="blue text-center">pret : {{materiel.actual_user?.pivot.date_pret | date:'dd/MM/yyyy'}}</p>
 									</div>
 									<div class="col-3">
-										
+
 									</div>
 									<div class="col-2">
 										<a class="pull-right" (click)="goToUserDetail(materiel.actual_user.id)" alt="voir l'utilisateur">
 											<mat-icon color="primary">visibility</mat-icon>
 										</a>
 									</div>
-									
+
 									<div class="col-12" *ngIf="materiel.main_categorie?.code != 'VEHICULE'">
 										<button mat-raised-button class="btn-small pull-right" color="info" (click)="$event.stopPropagation(); openPretModal('return', materiel.actual_user.pivot)">Retourner le matériel</button>
 									</div>
@@ -134,16 +134,37 @@
 							</div>
 						</ng-template>
 					</div>
+					<div class="box box-ar-vs" style="flex: 1;" *ngIf="materiel.vss">
+						<h5><b>Suivi des visites</b><small class="pull-right">{{'MATERIELS.VS_COUNT.SHORTTITLE' | translate}} : <span class="blue">{{materiel.vss.length}}</span></small></h5>
+						<div class="row">
+							<div class="col-md-12 my-2">
+								<p><span class="label">{{'MATERIELS.VSS.TITLE' | translate}}</span></p>
+							</div>
+							<ng-container *ngIf="chantier.vss.length > 0; else noVss">
+								<ng-container *ngFor="let vs of chantier.vss">
+									<div class="col-md-5">
+										<p>{{vs.code}}</p>
+									</div>
+									<div class="col-md-5">
+										<p>{{vs.date_visite | date:'dd/MM/yyyy'}}</p>
+									</div>
+									<div class="col-md-2"><a (click)="goToVsDetail(vs.id)" alt="voir la visite">
+											<mat-icon color="primary">visibility</mat-icon>
+										</a></div>
+								</ng-container>
+							</ng-container>
+							<ng-template #noVss>
+								<div class="row">
+									<div class="col-12">
+										<p>Aucune visites</p>
+									</div>
+								</div>
+							</ng-template>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 
 	</tf-portlet-body>
 </tf-portlet>
-
-
-<ng-template #noChantier>
-	<p class="text-left">
-		Cette materiel n'a été affectée à aucun materiel
-	</p>
-</ng-template>
