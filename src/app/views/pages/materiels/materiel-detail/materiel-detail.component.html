@@ -140,15 +140,15 @@
 							<div class="col-md-12 my-2">
 								<p><span class="label">{{'MATERIELS.VSS.TITLE' | translate}}</span></p>
 							</div>
-							<ng-container *ngIf="chantier.vss.length > 0; else noVss">
-								<ng-container *ngFor="let vs of chantier.vss">
+							<ng-container *ngIf="materiel.vss.length > 0; else noVss">
+								<ng-container *ngFor="let vs of materiel.vss">
 									<div class="col-md-5">
-										<p>{{vs.code}}</p>
+										<p class="text-left">{{vs.code}}</p>
 									</div>
 									<div class="col-md-5">
-										<p>{{vs.date_visite | date:'dd/MM/yyyy'}}</p>
+										<p class="text-left">{{vs.date_visite | date:'dd/MM/yyyy'}}</p>
 									</div>
-									<div class="col-md-2"><a (click)="goToVsDetail(vs.id)" alt="voir la visite">
+									<div class="col-md-2 text-right"><a (click)="goToVsDetail(vs.id)" alt="voir la visite">
 											<mat-icon color="primary">visibility</mat-icon>
 										</a></div>
 								</ng-container>
