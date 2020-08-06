@@ -23,14 +23,14 @@ export class SalariesListComponent implements OnInit, AfterViewInit, OnDestroy {
 	filter: any = {
 		per_page: this.pagination.pageSize,
 		page: this.pagination.page,
-		order_by: 'created_at',
-		order_way: 'desc',
+		order_by: 'prenom',
+		order_way: 'asc',
 		keyword: "",
 		order_by_dynamic_col: false
 	};
 	showFilters:Boolean = false;
 	displayedSalarieColumns = [];
-	staticColumns = ['nom', 'prenom', 'fonction'];
+	staticColumns = [ 'prenom','nom', 'fonction'];
 	dynamicColumns: any[];
 	
 
