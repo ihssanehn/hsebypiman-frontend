@@ -6,7 +6,7 @@
 				<div tfMenu id="tf_header_menu" class="tf-header-menu tf-header-menu-mobile" [ngClass]="htmlClassService.getClasses('header_menu', true)">
 					<ul class="tf-menu__nav" [ngClass]="htmlClassService.getClasses('header_menu_nav', true)">
 						<ng-container *ngFor="let item of subheaderService.subHeaderList$ | async">
-							<ng-container *ngIf="item.title" [ngTemplateOutlet]="menuTemplate" [ngTemplateOutletContext]="{ item: item }"></ng-container>
+							<ng-container *ngIf="item.title && isActiveModule(item.code)" [ngTemplateOutlet]="menuTemplate" [ngTemplateOutletContext]="{ item: item }"></ng-container>
 						</ng-container>
 					</ul>
 				</div>

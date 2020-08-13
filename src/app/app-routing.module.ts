@@ -6,7 +6,7 @@ import { BaseComponent } from './views/theme/base/base.component';
 import { ErrorPageComponent } from './views/theme/content/error-page/error-page.component';
 // Auth
 import { NgxPermissionsGuard } from 'ngx-permissions';
-import { AuthGuard } from './core/auth';
+import { ModuleGuard } from './core/guards/module.guard';
 
 const routes: Routes = [
 	{path: 'auth', loadChildren: () => import('@app/views/pages/auth/auth.module').then(m => m.AuthModule)},
@@ -19,52 +19,62 @@ const routes: Routes = [
 			{
 				path: 'dashboard',
 				loadChildren: () => import('@app/views/pages/dashboard/dashboard.module').then(m => m.DashboardModule),
-				// canActivate: [AuthGuard],
+				canActivate: [ModuleGuard],
+				data: {moduleCodes:['DASH']}
 			},
 			{
 				path: 'chantiers',
 				loadChildren: () => import('@app/views/pages/chantiers/chantiers.module').then(m => m.ChantiersModule),
-				// canActivate: [AuthGuard],
+				canActivate: [ModuleGuard],
+				data: {moduleCodes:['C']}
 			},
 			{
 				path: 'analyses-risque',
 				loadChildren: () => import('@app/views/pages/analyses-risque/ars.module').then(m => m.ArsModule),
-				// canActivate: [AuthGuard],
+				canActivate: [ModuleGuard],
+				data: {moduleCodes:['AR']}
 			},
 			{
 				path: 'visites-securite',
 				loadChildren: () => import('@app/views/pages/visites-securite/visites-securite.module').then(m => m.VisitesSecuriteModule),
-				// canActivate: [AuthGuard],
+				canActivate: [ModuleGuard],
+				data: {moduleCodes:['VS']}
 			},
 			{
 				path: 'plan-actions',
 				loadChildren: () => import('@app/views/pages/plans-action/plans-action.module').then(m => m.PlansActionModule),
-				// canActivate: [AuthGuard],
+				canActivate: [ModuleGuard],
+				data: {moduleCodes:['PAS']}
 			},
 			{
 				path: 'salaries',
 				loadChildren: () => import('@app/views/pages/salaries/salaries.module').then(m => m.SalariesModule),
-				// canActivate: [AuthGuard],
+				canActivate: [ModuleGuard],
+				data: {moduleCodes:['SAL']}
 			},
 			{
 				path: 'materiels',
 				loadChildren: () => import('@app/views/pages/materiels/materiels.module').then(m => m.MaterielsModule),
-				// canActivate: [AuthGuard],
+				canActivate: [ModuleGuard],
+				data: {moduleCodes:['MAT']}
 			},
 			{
 				path: 'entreprises',
 				loadChildren: () => import('@app/views/pages/entreprises/entreprises.module').then(m => m.EntreprisesModule),
-				// canActivate: [AuthGuard],
+				canActivate: [ModuleGuard],
+				data: {moduleCodes:['EEX']}
 			},
 			{
 				path: 'admin',
 				loadChildren: () => import('@app/views/pages/admin/admin.module').then(m => m.AdminModule),
-				// canActivate: [AuthGuard],
+				canActivate: [ModuleGuard],
+				data: {moduleCodes:[]}
 			},
 			{
 				path: 'mail',
 				loadChildren: () => import('@app/views/pages/apps/mail/mail.module').then(m => m.MailModule),
-				// canActivate: [AuthGuard],
+				canActivate: [ModuleGuard],
+				data: {moduleCodes:[]}
 			},
 			// {
 			// 	path: 'user-management',

@@ -15,6 +15,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import {environment} from '@env/environment';
 import { MatIconRegistry } from '@angular/material';
 import { AuthNoticeService, AuthService} from '../../../../core/auth';
+import { ModuleService } from '@app/core/services';
 
 @Component({
 	selector: 'tf-login',
@@ -49,6 +50,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 	constructor(
 		private router: Router,
 		private auth: AuthService,
+		private moduleService: ModuleService,
 		private authNoticeService: AuthNoticeService,
 		private translate: TranslateService,
 		private store: Store<AppState>,
@@ -136,6 +138,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 			email: controls.email.value,
 			password: controls.password.value
 		};
+		this.moduleService.getModules()
 		this.auth
 			.login(authData.email, authData.password)
 			.subscribe(res=>{

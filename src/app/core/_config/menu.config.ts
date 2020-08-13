@@ -9,6 +9,7 @@ export class MenuConfig {
 					alignment: 'left',
 					page: '/dashboard',
 					translate: 'MENU.DASHBOARD',
+					code: ['DASH']
 				},
 				{
 					title: 'Chantiers',
@@ -16,6 +17,7 @@ export class MenuConfig {
 					alignment: 'left',
 					page: '/chantiers/list',
 					translate: 'MENU.CHANTIER',
+					code: ['C']
 				},
 				{
 					title: 'Analyses de risque',
@@ -23,6 +25,7 @@ export class MenuConfig {
 					alignment: 'left',
 					page: '/analyses-risque/list',
 					translate: 'MENU.ANALYSERISQUE',
+					code: ['AR']
 				},
 				{
 					title: 'Visites sécurité',
@@ -30,6 +33,7 @@ export class MenuConfig {
 					alignment: 'left',
 					page: '/visites-securite/chantiers/list',
 					translate: 'MENU.VISITESECURITE',
+					code: ['VS']
 				},
 				{
 					title: 'Plan d\'actions',
@@ -37,6 +41,7 @@ export class MenuConfig {
 					alignment: 'left',
 					page: '/plan-actions',
 					translate: 'MENU.PLANACTION',
+					code: ['PAS']
 				},
 				{
 					title: 'Salariés',
@@ -44,6 +49,7 @@ export class MenuConfig {
 					alignment: 'left',
 					page: '/salaries',
 					translate: 'MENU.SALARIES',
+					code: ['SAL']
 				},
 				{
 					title: 'Entreprises Externes',
@@ -51,6 +57,7 @@ export class MenuConfig {
 					alignment: 'left',
 					page: '/entreprises',
 					translate: 'MENU.ENTREPRISES',
+					code: ['EEX']
 				},
 				{
 					title: 'Materiels',
@@ -58,6 +65,7 @@ export class MenuConfig {
 					alignment: 'left',
 					page: '/materiels',
 					translate: 'MENU.MATERIELS',
+					code: ['MAT']
 				},
 				{
 					title: 'Paramètres',
@@ -65,6 +73,7 @@ export class MenuConfig {
 					alignment: 'left',
 					page: '/admin',
 					translate: 'MENU.ADMIN',
+					code: ['PARAMS']
 				},
 				// {
 				// 	title: 'Components',
@@ -439,18 +448,22 @@ export class MenuConfig {
 					{
 						title: 'Visites sécurité Chantier',
 						page: '/visites-securite/chantiers/list',
+						code: ['C']
 					},
 					{
 						title: 'Visites sécurité EPI',
 						page: '/visites-securite/epis/list',
+						code: ['MAT']
 					},
 					{
 						title: 'Visites sécurité Outillage',
 						page: '/visites-securite/outillages/list',
+						code: ['MAT']
 					},
 					{
 						title: 'Visites sécurité Véhicule',
 						page: '/visites-securite/vehicules/list',
+						code: ['MAT']
 					},
 				]
 			}

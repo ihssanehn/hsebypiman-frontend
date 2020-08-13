@@ -24,6 +24,8 @@ import {
 // HTML Class
 import { HtmlClassService } from '../../html-class.service';
 
+import { ModuleService } from '@app/core/services/module.service';
+
 @Component({
 	selector: 'tf-menu-horizontal',
 	templateUrl: './menu-horizontal.component.html',
@@ -82,7 +84,8 @@ export class MenuHorizontalComponent implements OnInit, AfterViewInit {
 		private router: Router,
 		private activatedRoute: ActivatedRoute,
 		private render: Renderer2,
-		private cdr: ChangeDetectorRef
+		public moduleService: ModuleService,
+		private cdr: ChangeDetectorRef,
 	) {
 	}
 
@@ -201,6 +204,11 @@ export class MenuHorizontalComponent implements OnInit, AfterViewInit {
 
 		return classes;
 	}
+
+	isActiveModule(codes){
+		return this.moduleService.isActived(codes);
+	}
+
 
 	/**
 	 * Check Menu is active

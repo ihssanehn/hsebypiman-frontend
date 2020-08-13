@@ -9,6 +9,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import objectPath from 'object-path';
 import { HtmlClassService } from '@app/views/theme/html-class.service';
+import { ModuleService } from '@app/core/services/module.service';
 
 @Component({
 	selector: 'tf-subheader4',
@@ -38,6 +39,7 @@ export class Subheader4Component implements OnInit, OnDestroy, AfterViewInit {
 		public subheaderService: SubheaderService,
 		public htmlClassService: HtmlClassService,
 		private router: Router,
+		private moduleService: ModuleService,
 		private cdr: ChangeDetectorRef
 	) {
 	}
@@ -139,4 +141,9 @@ export class Subheader4Component implements OnInit, OnDestroy, AfterViewInit {
 	ngOnDestroy(): void {
 		this.subscriptions.forEach(sb => sb.unsubscribe());
 	}
+	
+	isActiveModule(codes){
+		return this.moduleService.isActived(codes);
+	}
+
 }

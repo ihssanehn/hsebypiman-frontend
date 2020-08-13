@@ -6,10 +6,12 @@ import { BehaviorSubject } from 'rxjs';
 import * as objectPath from 'object-path';
 // Services
 import { MenuConfigService } from './menu-config.service';
+import { ModuleService } from '@app/core/services/module.service'
 
 @Injectable()
 export class MenuHorizontalService {
 	// Public properties
+	modules: any;
 	menuList$: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
 
 	/**
@@ -17,7 +19,7 @@ export class MenuHorizontalService {
 	 *
 	 * @param menuConfigService: MenuConfigService
 	 */
-	constructor(private menuConfigService: MenuConfigService) {
+	constructor(private menuConfigService: MenuConfigService, private moduleService:ModuleService) {
 		this.loadMenu();
 	}
 
@@ -27,6 +29,8 @@ export class MenuHorizontalService {
 	loadMenu() {
 		// get menu list
 		const menuItems: any[] = objectPath.get(this.menuConfigService.getMenus(), 'header.items');
+		
 		this.menuList$.next(menuItems);
 	}
+
 }
