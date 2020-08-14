@@ -28,6 +28,11 @@ export class ModuleGuard implements CanActivate {
             return of(false);
         }
         
-        return this.moduleService.populate(moduleCodes);
+        var test = this.moduleService.populate(moduleCodes);
+        if(test){
+            return true
+        }else{
+            this.router.navigateByUrl('/')
+        }
     }
 }

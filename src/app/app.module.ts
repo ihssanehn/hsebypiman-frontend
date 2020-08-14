@@ -118,6 +118,7 @@ export function hljsLanguages(): HighlightLanguage[] {
 	];
 }
 
+
 @NgModule({
 	declarations: [AppComponent],
 	imports: [
@@ -160,7 +161,6 @@ export function hljsLanguages(): HighlightLanguage[] {
 			provide: LOCALE_ID,
 			useValue: 'fr-FR'
 		},
-
 		// WORK
 		ModuleGuard,
 		AuthService,

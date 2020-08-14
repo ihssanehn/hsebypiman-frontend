@@ -6,7 +6,6 @@ import { BehaviorSubject } from 'rxjs';
 import * as objectPath from 'object-path';
 // Services
 import { MenuConfigService } from './menu-config.service';
-import { ModuleService } from '@app/core/services/module.service'
 
 @Injectable()
 export class MenuHorizontalService {
@@ -19,7 +18,7 @@ export class MenuHorizontalService {
 	 *
 	 * @param menuConfigService: MenuConfigService
 	 */
-	constructor(private menuConfigService: MenuConfigService, private moduleService:ModuleService) {
+	constructor(private menuConfigService: MenuConfigService) {
 		this.loadMenu();
 	}
 
