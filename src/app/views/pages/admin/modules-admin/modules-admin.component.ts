@@ -43,7 +43,6 @@ export class ModulesAdminComponent implements OnInit {
     .then(res=>{
       this.modulesList = res.result.data;
       this.moduleService.getModules().toPromise();
-      this.cdr.markForCheck();
       Swal.fire({
         icon: 'success',
         title: 'Modules mis à jour avec succès',
@@ -51,9 +50,11 @@ export class ModulesAdminComponent implements OnInit {
         timer: 1500
       }).then(()=>{
         this.formloading = false;
+        this.cdr.markForCheck();
       })
     }).catch(err =>{ 
       this.formloading = false;
+      this.cdr.markForCheck();
 
       Swal.fire({
         icon: 'error',
