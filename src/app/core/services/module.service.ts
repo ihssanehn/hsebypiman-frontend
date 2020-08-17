@@ -55,9 +55,9 @@ export class ModuleService extends HttpService {
     }    
     
     updateModules(params){
-        return this.http.put<any>(`${this.baseUrl}/`, params)
+        return this.http.put<any>(this.baseUrl+'/update-all', params);
     }
-    
+
     isActived(params){ 
         if(!this.currentModulesSubject.value){
             return this.populate(params);
