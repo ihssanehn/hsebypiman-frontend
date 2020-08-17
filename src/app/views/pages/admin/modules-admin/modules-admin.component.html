@@ -1,0 +1,35 @@
+
+<div class="tf-portlet tf-portlet--bordered">
+	<div class="tf-portlet__body">
+
+        <div class="tf-heading tf-heading--lg" style="margin-top: 0;">
+            <span>Modules</span>
+        </div>        
+        <div class="tf-wizard-v4__content" data-tfwizard-type="step-content" data-tfwizard-state="current">
+            <div class="tf-form__section tf-form__section--first">
+                <div class="tf-wizard-v4__form">
+                    <form autocomplete="off" class="tf-form tf-form--group-seperator-dashed " (ngSubmit)="onSubmit()" novalidate fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+                        <div class="row form-row justify-content-center px-5">
+                            <mat-form-field class="col-3" *ngFor="let module of modulesList" floatLabel="always" appearance="none">
+                                <mat-slide-toggle [checked]="module.is_active == 1" (change)="onModuleCheckChange($event, module.id)" ><span class="slider-label">{{module.libelle}}</span></mat-slide-toggle>
+                                <textarea matInput hidden></textarea>
+                            </mat-form-field>
+                        </div>
+                        <div class="row row-form">
+                            <div class="col-12">
+                                <button mat-raised-button [ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': formloading}" color="success" class="pull-right">
+                                    {{'ACTION.SAVE' | translate}}
+                                </button>
+                                <button type="button" mat-raised-button color="info" (click)="cancelForm()">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+	</div>
+</div>
+
+

@@ -42,6 +42,9 @@ export class Subheader4Component implements OnInit, OnDestroy, AfterViewInit {
 		private moduleService: ModuleService,
 		private cdr: ChangeDetectorRef
 	) {
+		this.moduleService.currentModules.subscribe((event) => {
+			this.cdr.markForCheck();
+		})
 	}
 
 	/**

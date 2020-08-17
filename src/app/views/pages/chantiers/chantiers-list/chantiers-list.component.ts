@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ChangeDetectorRef, AfterViewInit, OnDestroy, Input, AfterContentInit, ViewChildren, QueryList } from '@angular/core';
-import { ChantierService } from '@app/core/services';
+import { ChantierService, ModuleService } from '@app/core/services';
 import { Paginate } from '@app/core/_base/layout/models/paginate.model';
 import { Chantier } from '@app/core/models';
 import { TranslateService } from '@ngx-translate/core';
@@ -31,11 +31,10 @@ export class ChantiersListComponent implements OnInit, AfterViewInit, OnDestroy 
 		keyword: "",
 	};
 	showFilters:Boolean = false;
+
 	displayedChantierColumns = [
 		'number', 'name', 'client', 'status', 'charge_affaire', 
-		'responsable_chiffrage', 'montant', 'created_at', 'date_demarrage',
-		'ee_presence', 'ars_count', 'latest_ar', 'vss_count',
-		'latest_vs', 'action'
+		'responsable_chiffrage', 'montant', 'created_at', 'date_demarrage', 'action'
 	];
 
 	constructor(
@@ -43,16 +42,41 @@ export class ChantiersListComponent implements OnInit, AfterViewInit, OnDestroy 
 		private activatedRoute: ActivatedRoute,
 		protected chantierService: ChantierService,
 		protected cdr: ChangeDetectorRef,
+		private moduleService:ModuleService,
 		private translate: TranslateService,
 	) {
 
 	}
 
 	ngOnInit() {
+		this.setTableColumns();
 	}
 
 	ngAfterViewInit(){
 		this.getChantiers();
+	}
+
+	setTableColumns(){
+		if(this.isActiveModule(['ENTREPRISE'])){
+			var length = this.displayedChantierColumns.length;
+			var elements = ['ee_presence',]
+			this.displayedChantierColumns.splice(length -1, 0, ...elements);
+		}
+		if(this.isActiveModule(['ANALYSE'])){
+			var length = this.displayedChantierColumns.length;
+			var elements = ['ars_count', 'latest_ar',]
+			this.displayedChantierColumns.splice(length -1, 0, ...elements);
+		}
+		if(this.isActiveModule(['VISITE'])){
+			var length = this.displayedChantierColumns.length;
+			var elements = ['vss_count', 'latest_vs']
+			this.displayedChantierColumns.splice(length -1, 0, ...elements);
+		}
+	
+	}
+
+	isActiveModule(codes){
+		return this.moduleService.isActived(codes);
 	}
 
 

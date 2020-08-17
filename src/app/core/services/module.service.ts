@@ -14,6 +14,18 @@ export class ModuleService extends HttpService {
 
     baseUrl = environment.apiBaseUrl+'modules';
     
+    
+    private currentModulesSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentModules')));
+
+    public currentModules = this.currentModulesSubject
+		.asObservable()
+		.pipe(distinctUntilChanged());
+
+    public get currentModulesValue(): any{
+        return this.currentModulesSubject.value;
+    }
+    
+        
     constructor(
         private http: HttpClient,
         private permissionsService: NgxPermissionsService,
@@ -22,14 +34,6 @@ export class ModuleService extends HttpService {
         super();
     }
     
-	private currentModulesSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentModules')));
-	public currentModules = this.currentModulesSubject
-		.asObservable()
-		.pipe(distinctUntilChanged());
-
-	public get currentModulesValue(): any{
-		return this.currentModulesSubject.value;
-    }
     
    
     getModules(){
@@ -44,13 +48,30 @@ export class ModuleService extends HttpService {
                 }
             )
         );
+    }
+
+    getModulesAsAdmin(){
+        return this.http.get<any>(`${this.baseUrl}?as_admin=true`)
     }    
+    
+    updateModules(params){
+        return this.http.put<any>(`${this.baseUrl}/`, params)
+    }
     
     isActived(params){ 
         if(!this.currentModulesSubject.value){
             return this.populate(params);
         }
         var test =  params.every((val) => this.currentModulesSubject.value.includes(val))
+        return test;
+    }
+
+    inModules(params){ 
+        if(!this.currentModulesSubject.value){
+            return this.populate(params);
+        }
+        const modules = this.currentModulesSubject.value;
+        var test =  modules.filter(module =>  params.includes(module));
         return test;
     }
 

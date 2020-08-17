@@ -3,6 +3,7 @@ export { SparklineChartOptions, SparklineChartDirective } from './directives/spa
 export { OffcanvasDirective } from './directives/offcanvas.directive';
 export { ScrollTopDirective } from './directives/scroll-top.directive';
 export { TabClickEventDirective } from './directives/tab-click-event.directive';
+export { IfAllModulesDirective, IfInModulesDirective } from './directives/module-restrict.directive';
 export { ToggleDirective } from './directives/toggle.directive';
 
 export { ContentAnimateDirective } from './directives/content-animate.directive';

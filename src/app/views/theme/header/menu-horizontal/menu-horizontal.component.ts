@@ -87,6 +87,9 @@ export class MenuHorizontalComponent implements OnInit, AfterViewInit {
 		public moduleService: ModuleService,
 		private cdr: ChangeDetectorRef,
 	) {
+		this.moduleService.currentModules.subscribe((event) => {
+			this.cdr.markForCheck();
+		})
 	}
 
 	/**
@@ -208,7 +211,6 @@ export class MenuHorizontalComponent implements OnInit, AfterViewInit {
 	isActiveModule(codes){
 		return this.moduleService.isActived(codes);
 	}
-
 
 	/**
 	 * Check Menu is active
