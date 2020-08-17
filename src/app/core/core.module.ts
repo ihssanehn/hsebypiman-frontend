@@ -22,6 +22,8 @@ import {
 	DateEnToFrPipe, 
 	DateFrToEnPipe,
 	ScrollTopDirective,
+	IfAllModulesDirective,
+	IfInModulesDirective,
 	SparklineChartDirective,
 	StickyDirective,
 	TabClickEventDirective,
@@ -38,6 +40,8 @@ import {
 	declarations: [
 		// directives
 		ScrollTopDirective,
+		IfAllModulesDirective,
+		IfInModulesDirective,
 		HeaderDirective,
 		OffcanvasDirective,
 		ToggleDirective,
@@ -69,6 +73,8 @@ import {
 		ScrollTopDirective,
 		HeaderDirective,
 		OffcanvasDirective,
+		IfAllModulesDirective,
+		IfInModulesDirective,
 		ToggleDirective,
 		MenuDirective,
 		MatInputAmountDirective,

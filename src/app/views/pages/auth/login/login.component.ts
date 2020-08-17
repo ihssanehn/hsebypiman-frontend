@@ -138,7 +138,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 			email: controls.email.value,
 			password: controls.password.value
 		};
-		this.moduleService.getModules()
+		this.moduleService.getModules().toPromise();
 		this.auth
 			.login(authData.email, authData.password)
 			.subscribe(res=>{

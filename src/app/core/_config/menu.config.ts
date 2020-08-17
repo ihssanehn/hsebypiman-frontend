@@ -54,7 +54,7 @@ export class MenuConfig {
 					page: '/salaries',
 					translate: 'MENU.SALARIES',
 					needModule: true,
-					code: ['SALARIE']
+					code: ['SALARIES']
 				},
 				{
 					title: 'Entreprises Externes',

@@ -67,7 +67,7 @@
 							<mat-icon>clear</mat-icon>
 						</button>
 					</mat-form-field>
-					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
+					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head" *ifAllModules="['ANALYSE']">
 						<mat-label>{{'CHANTIERS.ARS.LABEL' | translate}}</mat-label>
 						<mat-select class="form-control" formControlName="analyse" name="analyse">
 							<mat-option *ngFor="let analyseOption of analyseOptions" [value]="analyseOption">
@@ -78,7 +78,7 @@
 							<mat-icon>clear</mat-icon>
 						</button>
 					</mat-form-field>
-					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
+					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head" *ifAllModules="['VISITE']">
 						<mat-label>{{'CHANTIERS.VSS.LABEL' | translate}}</mat-label>
 						<mat-select class="form-control" formControlName="visite" name="visite">
 							<mat-option *ngFor="let visiteOption of visiteOptions" [value]="visiteOption">
@@ -89,7 +89,7 @@
 							<mat-icon>clear</mat-icon>
 						</button>
 					</mat-form-field>
-					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
+					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head" *ifAllModules="['ENTREPRISE']">
 						<mat-label>{{'CHANTIERS.EES.SHORTTITLE' | translate}}</mat-label>
 						<mat-select class="form-control" formControlName="has_entreprise" name="has_entreprise">
 							<mat-option *ngFor="let entrepriseOption of entrepriseOptions" [value]="entrepriseOption">
@@ -100,7 +100,7 @@
 							<mat-icon>clear</mat-icon>
 						</button>
 					</mat-form-field>
-					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
+					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head" *ifAllModules="['ENTREPRISE']">
 						<mat-label>{{'CHANTIERS.EES.LABEL' | translate}}</mat-label>
 						<mat-select class="form-control" formControlName="entreprise_id" name="entreprise_id">
 							<mat-option *ngFor="let entreprise of entreprises" [value]="entreprise.id">
