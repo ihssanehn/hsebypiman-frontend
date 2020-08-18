@@ -71,3 +71,22 @@ export { SalariePortletComponent } from './salarie/salarie-portlet/salarie-portl
 export { SalariePortletBoxComponent } from './salarie/salarie-portlet-box/salarie-portlet-box.component';
 export { SalariePortletRowComponent } from './salarie/salarie-portlet-row/salarie-portlet-row.component';
 export { SalarieCardComponent } from './salarie/salarie-card/salarie-card.component';
+
+// ADMIN
+export { HabilitationsAdminComponent } from './admins/habilitations/habilitations-admin.component';
+export { ArZonesAdminComponent } from './admins/ar-zones-admin/ar-zones-admin.component';
+export { ArRisquesAdminComponent } from './admins/ar-risques-admin/ar-risques-admin.component';
+export { ArEquipementsAdminComponent } from './admins/ar-equipements-admin/ar-equipements-admin.component';
+export { ActionOriginesAdminComponent } from './admins/action-origines-admin/action-origines-admin.component';
+export { SalarieMetricsAdminComponent } from './admins/salarie-metrics-admin/salarie-metrics-admin.component';
+export { SalarieAdminListPortletComponent } from './admins/salarie-admin-list-portlet/salarie-admin-list-portlet.component';
+export { EntrepriseTypesAdminComponent } from './admins/entreprise-types-admin/entreprise-types-admin.component';
+export { MaterielTypesAdminComponent } from './admins/materiel-types-admin/materiel-types-admin.component';
+export { MaterielTypesAdminPortletComponent } from './admins/materiel-types-admin-portlet/materiel-types-admin-portlet.component';
+export { VisiteQuestionsVehiculeAdminComponent } from './admins/visite-questions-vehicule-admin/visite-questions-vehicule-admin.component';
+export { VisiteQuestionsOutillageAdminComponent } from './admins/visite-questions-outillage-admin/visite-questions-outillage-admin.component';
+export { VisiteQuestionsEpiAdminComponent } from './admins/visite-questions-epi-admin/visite-questions-epi-admin.component';
+export { VisiteQuestionsChantierAdminComponent } from './admins/visite-questions-chantier-admin/visite-questions-chantier-admin.component';
+
+
+

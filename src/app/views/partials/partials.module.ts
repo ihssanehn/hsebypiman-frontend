@@ -88,7 +88,22 @@ import {
 	TreeSelectComponent,
 	PretModalComponent,
 	AddVehiculeFormComponent,
-	SalarieScoreComponent
+	SalarieScoreComponent,
+	HabilitationsAdminComponent,
+	ArZonesAdminComponent,
+	ArRisquesAdminComponent,
+	ArEquipementsAdminComponent,
+	ActionOriginesAdminComponent,
+	SalarieMetricsAdminComponent,
+	SalarieAdminListPortletComponent,
+	EntrepriseTypesAdminComponent,
+	MaterielTypesAdminComponent,
+	MaterielTypesAdminPortletComponent,
+	VisiteQuestionsVehiculeAdminComponent,
+	VisiteQuestionsOutillageAdminComponent,
+	VisiteQuestionsEpiAdminComponent,
+	VisiteQuestionsChantierAdminComponent,
+
 } from './layout';
 // General
 import { NoticeComponent } from './content/general/notice/notice.component';
@@ -199,7 +214,22 @@ import { SalarieCardComponent } from './layout/salarie/salarie-card/salarie-card
 		SalariePortletComponent,
 		SalariePortletBoxComponent,
 		SalariePortletRowComponent,
-		SalarieCardComponent
+		SalarieCardComponent,
+		HabilitationsAdminComponent,
+		ArZonesAdminComponent,
+		ArRisquesAdminComponent,
+		ArEquipementsAdminComponent,
+		ActionOriginesAdminComponent,
+		SalarieMetricsAdminComponent,
+		SalarieAdminListPortletComponent,
+		EntrepriseTypesAdminComponent,
+		MaterielTypesAdminComponent,
+		MaterielTypesAdminPortletComponent,
+		VisiteQuestionsVehiculeAdminComponent,
+		VisiteQuestionsOutillageAdminComponent,
+		VisiteQuestionsEpiAdminComponent,
+		VisiteQuestionsChantierAdminComponent,
+
 	],
 	exports: [
 		WidgetModule,
@@ -272,7 +302,22 @@ import { SalarieCardComponent } from './layout/salarie/salarie-card/salarie-card
 		SalariePortletComponent,
 		SalariePortletBoxComponent,
 		SalariePortletRowComponent,
-		SalarieCardComponent
+		SalarieCardComponent,
+		HabilitationsAdminComponent,
+		ArZonesAdminComponent,
+		ArRisquesAdminComponent,
+		ArEquipementsAdminComponent,
+		ActionOriginesAdminComponent,
+		SalarieMetricsAdminComponent,
+		SalarieAdminListPortletComponent,
+		EntrepriseTypesAdminComponent,
+		MaterielTypesAdminComponent,
+		MaterielTypesAdminPortletComponent,
+		VisiteQuestionsVehiculeAdminComponent,
+		VisiteQuestionsOutillageAdminComponent,
+		VisiteQuestionsEpiAdminComponent,
+		VisiteQuestionsChantierAdminComponent,
+
 	],
 	imports: [
 		CommonModule,

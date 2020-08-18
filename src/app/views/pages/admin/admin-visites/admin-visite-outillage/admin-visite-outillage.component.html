@@ -1,0 +1,14 @@
+<div class="tf-portlet tf-portlet--bordered">
+	<div class="tf-portlet__body">
+    <div class="row">
+      <div class="col-12 mb-4">
+        <button mat-raised-button color="info" (click)="addFormulaire()" class="btn-small">
+          Ajouter un formulaire
+        </button>
+      </div>
+    </div>
+    <ng-container *ngFor="let type of types">
+      <visite-questions-outillage-admin [type]="type" (onConfirmDeletTitle)="titleDeleted($event)"></visite-questions-outillage-admin>
+    </ng-container>
+	</div>
+</div>

@@ -23,7 +23,7 @@ import { VisitesEpiListComponent } from './visites-epi-list/visites-epi-list.com
 import { VisiteEpiAddComponent } from './visite-epi-add/visite-epi-add.component';
 import { VisiteEpiDetailComponent } from './visite-epi-detail/visite-epi-detail.component';
 import { VisiteEpiFiltersComponent } from './visite-epi-filters/visite-epi-filters.component';
-import { VisiteQuestionsEpiAdminComponent } from './visite-epi-admin/visite-questions-epi-admin/visite-questions-epi-admin.component';
+
 import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -137,7 +137,7 @@ const routes: Routes = [
 		VisiteEpiDetailComponent,
 		VisiteEpiAdminComponent,
 		VisiteEpiFiltersComponent,
-		VisiteQuestionsEpiAdminComponent
+		
 	]
 })
 export class VisitesEpiModule {}

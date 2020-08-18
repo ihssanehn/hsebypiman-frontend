@@ -71,8 +71,6 @@ import { MaterielEditComponent } from './materiel-edit/materiel-edit.component';
 import { MaterielAddComponent } from './materiel-add/materiel-add.component';
 import { MaterielDetailComponent } from './materiel-detail/materiel-detail.component';
 import { MaterielAdminComponent } from './materiel-admin/materiel-admin.component';
-import { MaterielTypesAdminComponent } from './materiel-admin/materiel-types-admin/materiel-types-admin.component';
-import { MaterielTypesAdminPortletComponent } from './materiel-admin/materiel-types-admin-portlet/materiel-types-admin-portlet.component';
 
 
 const routes: Routes = [
@@ -207,9 +205,7 @@ const routes: Routes = [
 		MaterielAddComponent,
 		MaterielDetailComponent,
 		MaterielAdminComponent,
-		MaterielTypesAdminComponent,
 		MaterielFormComponent,
-		MaterielTypesAdminPortletComponent,
 	]
 })
 export class MaterielsModule {}

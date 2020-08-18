@@ -54,10 +54,13 @@ import {
 	DateAdapter
 } from '@angular/material';
 import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapter';
-import { ModulesAdminComponent } from './modules-admin/modules-admin.component';
-
-
-
+import { AdminModulesComponent } from './admin-modules/admin-modules.component';
+import { AdminChantiersComponent } from './admin-chantiers/admin-chantiers.component';
+import { AdminArComponent } from './admin-ar/admin-ar.component';
+import { AdminActionComponent } from './admin-action/admin-action.component';
+import { AdminSalariesComponent } from './admin-salaries/admin-salaries.component';
+import { AdminEntrepriseComponent } from './admin-entreprise/admin-entreprise.component';
+import { AdminMaterielComponent } from './admin-materiel/admin-materiel.component';
 
 const routes: Routes = [
 	{
@@ -71,7 +74,35 @@ const routes: Routes = [
 			},
 			{
 				path:'modules',
-				component: ModulesAdminComponent
+				component: AdminModulesComponent
+			},
+			{
+				path:'chantiers',
+				component: AdminChantiersComponent
+			},
+			{
+				path: 'analyses-risque',
+				component: AdminArComponent
+			},
+			{
+				path:'visites-securite',
+				loadChildren: () => import('@app/views/pages/admin/admin-visites/admin-visites.module').then(m => m.AdminVisitesModule)
+			},
+			{
+				path: 'plan-actions',
+				component: AdminActionComponent
+			},
+			{
+				path: 'salaries',
+				component: AdminSalariesComponent
+			},
+			{
+				path: 'entreprises',
+				component: AdminEntrepriseComponent
+			},
+			{
+				path:'materiel',
+				component: AdminMaterielComponent,
 			}
 		]
 	}
@@ -143,12 +174,18 @@ const routes: Routes = [
 		LayoutUtilsService
 	],
 	entryComponents: [
-		ActionNotificationComponent
+		ActionNotificationComponent,
 		// 
 	],
 	declarations: [
 		AdminComponent,
-		ModulesAdminComponent,
+		AdminModulesComponent,
+		AdminChantiersComponent,
+		AdminArComponent,
+		AdminActionComponent,
+		AdminSalariesComponent,
+		AdminEntrepriseComponent,
+		AdminMaterielComponent,
 	]
 })
 export class AdminModule {

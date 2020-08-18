@@ -60,7 +60,7 @@ import { EntrepriseEditComponent } from './entreprise-edit/entreprise-edit.compo
 import { EntrepriseAddComponent } from './entreprise-add/entreprise-add.component';
 import { EntrepriseDetailComponent } from './entreprise-detail/entreprise-detail.component';
 import { EntrepriseAdminComponent } from './entreprise-admin/entreprise-admin.component';
-import { EntrepriseTypesAdminComponent } from './entreprise-admin/entreprise-types-admin/entreprise-types-admin.component';
+
 
 
 const routes: Routes = [
@@ -186,7 +186,7 @@ const routes: Routes = [
 		EntrepriseAddComponent,
 		EntrepriseDetailComponent,
 		EntrepriseAdminComponent,
-		EntrepriseTypesAdminComponent,
+		
 		EntrepriseFormComponent,
 	]
 })

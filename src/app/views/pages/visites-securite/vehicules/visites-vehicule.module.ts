@@ -31,7 +31,7 @@ import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootst
 // Material
 import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatTableModule, MatSelectModule, MatMenuModule, MatProgressBarModule, MatButtonModule, MatCheckboxModule, MatDialogModule, MatTabsModule, MatNativeDateModule, MatCardModule, MatRadioModule, MatIconModule, MatDatepickerModule, MatExpansionModule, MatAutocompleteModule, MAT_DIALOG_DEFAULT_OPTIONS, MatSnackBarModule, MatTooltipModule, } from '@angular/material';
 import { NgxMaskModule } from 'ngx-mask';
-import { VisiteQuestionsVehiculeAdminComponent } from './visite-vehicule-admin/visite-questions-vehicule-admin/visite-questions-vehicule-admin.component';
+
 
 const routes: Routes = [
 	{
@@ -150,7 +150,7 @@ const routes: Routes = [
 		VisiteVehiculeFiltersComponent,
 		VisiteVehiculeDetailComponent,
 		VisiteVehiculeAdminComponent,
-		VisiteQuestionsVehiculeAdminComponent
+		
 	]
 })
 export class VisitesVehiculeModule {}

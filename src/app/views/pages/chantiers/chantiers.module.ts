@@ -59,7 +59,6 @@ import {
 } from '@angular/material';
 import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapter';
 import { ChantierAdminComponent } from './chantier-admin/chantier-admin.component';
-import { ChantierHabilitationsAdminComponent } from './chantier-admin/chantier-habilitations-admin/chantier-habilitations-admin.component';
 
 
 
@@ -186,7 +185,6 @@ const routes: Routes = [
 		ChantierDetailComponent,
 		ChantierFiltersComponent,
 		ChantierAdminComponent,
-		ChantierHabilitationsAdminComponent,
 	]
 })
 export class ChantiersModule {}

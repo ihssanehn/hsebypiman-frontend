@@ -23,7 +23,7 @@ import { VisitesOutillageListComponent } from './visites-outillage-list/visites-
 import { VisiteOutillageAddComponent } from './visite-outillage-add/visite-outillage-add.component';
 import { VisiteOutillageDetailComponent } from './visite-outillage-detail/visite-outillage-detail.component';
 import { VisiteOutillageFiltersComponent } from './visite-outillage-filters/visite-outillage-filters.component';
-import { VisiteQuestionsOutillageAdminComponent } from './visite-outillage-admin/visite-questions-outillage-admin/visite-questions-outillage-admin.component';
+
 
 import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -142,7 +142,7 @@ const routes: Routes = [
 		VisiteOutillageDetailComponent,
 		VisiteOutillageFiltersComponent,
 		VisiteOutillageAdminComponent,
-		VisiteQuestionsOutillageAdminComponent
+		
 	]
 })
 export class VisitesOutillageModule {}

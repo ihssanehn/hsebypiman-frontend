@@ -1,15 +1,15 @@
 import { Component, OnInit, ChangeDetectorRef, Injector, Input } from '@angular/core';
 import { AdminTemplateComponent } from '@app/views/partials/layout/admin-template/admin-template.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { CatQuestionService, QuestionService, TypeService } from '@app/core/services';
+import { CatQuestionService, QuestionService, TypeService  } from '@app/core/services';
 import { Type } from '@app/core/models';
 
 @Component({
-  selector: 'visite-questions-chantier-admin',
-  templateUrl: '../../../../../partials/layout/admin-template/admin-template.component.html',
-  styleUrls: ['../../../../../partials/layout/admin-template/admin-template.component.scss']
+  selector: 'visite-questions-epi-admin',
+  templateUrl: '../../admin-template/admin-template.component.html',
+  styleUrls: ['../../admin-template/admin-template.component.scss']
 })
-export class VisiteQuestionsChantierAdminComponent extends AdminTemplateComponent implements OnInit {
+export class VisiteQuestionsEpiAdminComponent extends AdminTemplateComponent implements OnInit {
 
   cdr: ChangeDetectorRef;
   modalService: NgbModal;
@@ -18,8 +18,8 @@ export class VisiteQuestionsChantierAdminComponent extends AdminTemplateComponen
   _type: any;
   tpl = {
     title : 'Formulaires ',
-    deletedMessage: 'Suppression impossible car la selection comprend un élément affecté à un ou plusieurs chantiers',
-    deletedChildMessage: 'Suppression impossible car la selection est affectée à un ou plusieurs chantiers',
+    deletedMessage: 'Suppression impossible car la selection comprend un élément affecté à un ou plusieurs équipements de protection individuelle',
+    deletedChildMessage: 'Suppression impossible car la selection est affectée à un ou plusieurs équipements de protection individuelle',
     collapsed : true,
     canUpdateTitle: true,
     titleObject: null,

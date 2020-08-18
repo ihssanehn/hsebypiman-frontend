@@ -18,58 +18,39 @@ import { HttpUtilsService, TypesUtilsService, InterceptService, LayoutUtilsServi
 // Shared
 import { ActionNotificationComponent } from '@app/views/partials/content/crud';
 // Components
-import { VisitesChantierComponent } from './visites-chantier.component';
-import { VisiteChantierFiltersComponent } from './visite-chantier-filters/visite-chantier-filters.component';
-import { VisitesChantierListComponent } from './visites-chantier-list/visites-chantier-list.component';
-import { VisiteChantierEditComponent } from './visite-chantier-edit/visite-chantier-edit.component';
-import { VisiteChantierAddComponent } from './visite-chantier-add/visite-chantier-add.component';
-import { VisiteChantierDetailComponent } from './visite-chantier-detail/visite-chantier-detail.component';
-import { VisiteChantierAdminComponent } from './visite-chantier-admin/visite-chantier-admin.component';
-
 import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgxMaskModule } from 'ngx-mask';
-
 
 // Material
-import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatTableModule, MatSelectModule, MatMenuModule, MatProgressBarModule, MatButtonModule, MatCheckboxModule, MatDialogModule, MatTabsModule, MatNativeDateModule, MatCardModule, MatRadioModule, MatIconModule, MatDatepickerModule, MatExpansionModule, MatAutocompleteModule, MAT_DIALOG_DEFAULT_OPTIONS, MatSnackBarModule, MatTooltipModule, } from '@angular/material';
+import { MatInputModule,
+	MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatTableModule, MatSelectModule, MatMenuModule, MatProgressBarModule, MatButtonModule, MatCheckboxModule, MatDialogModule, MatTabsModule, MatNativeDateModule, MatCardModule, MatRadioModule, MatIconModule, MatDatepickerModule, MatExpansionModule, MatAutocompleteModule, MAT_DIALOG_DEFAULT_OPTIONS, MatSnackBarModule, MatTooltipModule, } from '@angular/material';
+
+import { AdminVisitesComponent } from './admin-visites.component';
+import { AdminVisiteChantierComponent } from './admin-visite-chantier/admin-visite-chantier.component';
+import { AdminVisiteEpiComponent } from './admin-visite-epi/admin-visite-epi.component';
+import { AdminVisiteVehiculeComponent } from './admin-visite-vehicule/admin-visite-vehicule.component';
+import { AdminVisiteOutillageComponent } from './admin-visite-outillage/admin-visite-outillage.component';
+
 
 const routes: Routes = [
 	{
 		path: '',
-		component: VisitesChantierComponent,
+		component: AdminVisitesComponent,
 		children: [
 			{
-				path: '',
-				redirectTo: 'list',
-				pathMatch: 'full'
+				path: 'chantiers',
+				component: AdminVisiteChantierComponent
 			},
 			{
-				path: 'detail/:id',
-				component: VisiteChantierDetailComponent
+				path: 'epis',
+				component: AdminVisiteEpiComponent
 			},
 			{
-				path: 'list',
-				component: VisitesChantierListComponent
+				path: 'vehicules',
+				component: AdminVisiteVehiculeComponent
 			},
 			{
-				path: 'add',
-				component: VisiteChantierAddComponent
-			},
-			{
-				path: 'add:id',
-				component: VisiteChantierAddComponent
-			},
-			// {
-			// 	path: 'edit',
-			// 	component: VisiteChantierEditComponent
-			// },
-			// {
-			// 	path: 'edit/:id',
-			// 	component: VisiteChantierEditComponent
-			// },
-			{
-				path: 'admin',
-				component: VisiteChantierAdminComponent
+				path: 'outillages',
+				component: AdminVisiteOutillageComponent
 			},
 		]
 	}
@@ -113,7 +94,6 @@ const routes: Routes = [
 		NgbDropdownModule,
 		NgbTabsetModule,
 		NgbTooltipModule,
-		NgxMaskModule,
 	],
 	providers: [
 		InterceptService,
@@ -140,14 +120,11 @@ const routes: Routes = [
 		// 
 	],
 	declarations: [
-		VisitesChantierComponent,
-		VisitesChantierListComponent,
-		VisiteChantierEditComponent,
-		VisiteChantierAddComponent,
-		VisiteChantierFiltersComponent,
-		VisiteChantierDetailComponent,
-		VisiteChantierAdminComponent,
-		
+		AdminVisiteChantierComponent,
+		AdminVisiteEpiComponent,
+		AdminVisiteVehiculeComponent,
+		AdminVisiteOutillageComponent,
+		AdminVisitesComponent
 	]
 })
-export class VisitesChantierModule {}
+export class AdminVisitesModule {}

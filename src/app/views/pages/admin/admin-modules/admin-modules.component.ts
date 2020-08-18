@@ -7,11 +7,11 @@ import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from "@ang
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'tf-modules-admin',
-  templateUrl: './modules-admin.component.html',
-  styleUrls: ['./modules-admin.component.scss']
+  selector: 'tf-admin-modules',
+  templateUrl: './admin-modules.component.html',
+  styleUrls: ['./admin-modules.component.scss']
 })
-export class ModulesAdminComponent implements OnInit {
+export class AdminModulesComponent implements OnInit {
 
   constructor(
     private moduleService:ModuleService,

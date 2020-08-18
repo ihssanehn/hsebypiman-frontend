@@ -70,6 +70,13 @@ export const locale = {
 				EDIT:'Modifier le matériel',
 				LIST:'Liste du matériel',
 			},
+			MODULES: 'Modules',
+			SUB_MODULES:{
+				DETAIL:'Détail du module',
+				ADD:'Ajouter un module',
+				EDIT:'Modifier le module',
+				LIST:'Liste du module',
+			},
 			LIST: 'Liste',
 			ADMIN: 'Admin',
 			HOME: 'Accueil',

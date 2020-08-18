@@ -4,11 +4,11 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CatHabilitationService, HabilitationService } from '@app/core/services';
 
 @Component({
-  selector: 'chantier-habilitations-admin',
+  selector: 'habilitations-admin',
   templateUrl: '../../../../partials/layout/admin-template/admin-template.component.html',
   styleUrls: ['../../../../partials/layout/admin-template/admin-template.component.scss']
 })
-export class ChantierHabilitationsAdminComponent extends AdminTemplateComponent implements OnInit {
+export class HabilitationsAdminComponent extends AdminTemplateComponent implements OnInit {
 
   cdr: ChangeDetectorRef;
   modalService: NgbModal;

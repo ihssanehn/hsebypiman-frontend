@@ -1,30 +1,15 @@
-import { Component, OnInit, ChangeDetectorRef, Injector, Input } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, Input, Injector } from '@angular/core';
 import { AdminTemplateComponent } from '@app/views/partials/layout/admin-template/admin-template.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CatQuestionService, QuestionService, TypeService } from '@app/core/services';
-import { Type } from '@app/core/models';
 
 @Component({
-  selector: 'visite-questions-outillage-admin',
-  templateUrl: '../../../../../partials/layout/admin-template/admin-template.component.html',
-  styleUrls: ['../../../../../partials/layout/admin-template/admin-template.component.scss']
+  selector: 'visite-questions-vehicule-admin',
+  templateUrl: '../../admin-template/admin-template.component.html',
+  styleUrls: ['../../admin-template/admin-template.component.scss']
 })
-export class VisiteQuestionsOutillageAdminComponent extends AdminTemplateComponent implements OnInit {
+export class VisiteQuestionsVehiculeAdminComponent extends AdminTemplateComponent implements OnInit {
 
-  cdr: ChangeDetectorRef;
-  modalService: NgbModal;
-  parentService: any;
-  childService: any;
-  _type: any;
-  tpl = {
-    title : 'Formulaires ',
-    deletedMessage: 'Suppression impossible car la selection comprend un élément affecté à un ou plusieurs outils',
-    deletedChildMessage: 'Suppression impossible car la selection est affectée à un ou plusieurs outils',
-    collapsed : true,
-    canUpdateTitle: true,
-    titleObject: null,
-    childCol : 6
-  }
   @Input() set type(value: any) {
     this._type = value;
     if(value && value.libelle)
@@ -32,7 +17,22 @@ export class VisiteQuestionsOutillageAdminComponent extends AdminTemplateCompone
       this.tpl.titleObject = value;
   }
 
+
+  cdr: ChangeDetectorRef;
+  modalService: NgbModal;
+  parentService: any;
+  childService: any;
+  _type: any;
   list: any[];
+  tpl = {
+    title : 'Formulaires ',
+    deletedMessage: 'Suppression impossible car la selection comprend un élément affecté à un ou plusieurs véhicules',
+    deletedChildMessage: 'Suppression impossible car la selection est affectée à un ou plusieurs véhicules',
+    collapsed : true,
+    canUpdateTitle: true,
+    titleObject: null,
+    childCol : 6
+  }
 
   constructor(injector: Injector) {
     super(injector);        
@@ -41,6 +41,7 @@ export class VisiteQuestionsOutillageAdminComponent extends AdminTemplateCompone
     this.parentService = injector.get(CatQuestionService);
     this.childService = injector.get(QuestionService);
     this.titleService = injector.get(TypeService);
+
   }
 
   formatChildren(item){
@@ -49,7 +50,7 @@ export class VisiteQuestionsOutillageAdminComponent extends AdminTemplateCompone
   }
 
   async addItem(){
-    super.addItem("Ajouter une catégorie de questions", {type_id : this._type.id, ordre: this.generateParentOrdre()});  
+    super.addItem("Ajouter une catégorie de questions", {type_id : this._type.id});  
   }
 
   async getList(item){
@@ -62,10 +63,7 @@ export class VisiteQuestionsOutillageAdminComponent extends AdminTemplateCompone
   }
 
   async addChild(item){
-    let payload = { ...item, 
-                    cat_question_id : item.cat_question_id,
-                    ordre : this.generateOrdre(item.parent_id)
-                  };
+    let payload = { ...item, cat_question_id : item.cat_question_id };
     super.addChild(payload);
   }
 

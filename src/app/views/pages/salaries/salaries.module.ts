@@ -70,8 +70,6 @@ import { SalarieFiltersComponent } from './salarie-filters/salarie-filters.compo
 import { SalarieDetailComponent } from './salarie-detail/salarie-detail.component';
 import { SalariesGoalsComponent } from './salaries-goals/salaries-goals.component';
 import { SalariesAdminComponent } from './salaries-admin/salaries-admin.component';
-import { SalarieMetricsAdminComponent } from './salaries-admin/salarie-metrics-admin/salarie-metrics-admin.component';
-import { SalarieAdminListPortletComponent } from './salaries-admin/salarie-admin-list-portlet/salarie-admin-list-portlet.component';
 import { SalarieEditComponent } from './salarie-edit/salarie-edit.component';
 import { SalarieDashComponent } from './salarie-dash/salarie-dash.component';
 
@@ -213,8 +211,6 @@ const routes: Routes = [
 		SalarieDetailComponent,
 		SalariesGoalsComponent,
 		SalariesAdminComponent,
-		SalarieMetricsAdminComponent,
-		SalarieAdminListPortletComponent,
 		SalarieEditComponent,
 		SalarieDashComponent
 	]

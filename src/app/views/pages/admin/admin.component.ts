@@ -1,5 +1,6 @@
 // Angular
 import { Component, OnInit } from '@angular/core';
+import { MenuAsideService } from '@app/core/_base/layout';
 
 @Component({
 	selector: 'tf-admin',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-	constructor() {
+	constructor(
+		private menuAsideService:MenuAsideService
+	) {
 	}
 
-	async ngOnInit(){
+	/**
+	 * On init
+	 */
+	ngOnInit() {
+		this.menuAsideService.loadMenuAside('aside.params');
 	}
 }
