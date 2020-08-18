@@ -920,6 +920,7 @@ export class MenuConfig {
 						alignment: 'left',
 						page: '/admin/modules',
 						translate: 'MENU.MODULES',
+						needModule: false,
 					},
 					{
 						title: 'Chantiers',
@@ -927,6 +928,8 @@ export class MenuConfig {
 						alignment: 'left',
 						page: '/admin/chantiers',
 						translate: 'MENU.CHANTIER',
+						needModule: true,
+						code: ['CHANTIER']
 						// icon: 'chantier',
 						// icon: 'flaticon2-browser-2',
 					},
@@ -936,6 +939,8 @@ export class MenuConfig {
 						alignment: 'left',
 						page: '/admin/analyses-risque',
 						translate: 'MENU.ANALYSERISQUE',
+						needModule: true,
+						code: ['ANALYSE']
 						// icon: '',
 						// icon: 'flaticon2-digital-marketing',
 					},
@@ -945,6 +950,8 @@ export class MenuConfig {
 						alignment: 'left',
 						page: '/admin/visites-securite/chantiers',
 						translate: 'MENU.VISITESECURITE',
+						needModule: true,
+						code: ['VISITE']
 						// icon: 'visite-de-securite',
 						// icon: 'flaticon2-list-2',
 					},
@@ -954,6 +961,8 @@ export class MenuConfig {
 						alignment: 'left',
 						page: '/admin/plan-actions',
 						translate: 'MENU.PLANACTION',
+						needModule: true,
+						code: ['PLANACTION']
 						// icon: 'plan-daction',
 						// icon: 'flaticon2-user-outline-symbol',
 					},
@@ -963,6 +972,8 @@ export class MenuConfig {
 						alignment: 'left',
 						page: '/admin/salaries',
 						translate: 'MENU.SALARIES',
+						needModule: true,
+						code: ['SALARIES']
 						// icon: 'salaries',
 						// icon: 'flaticon2-list-2',
 					},
@@ -972,6 +983,8 @@ export class MenuConfig {
 						alignment: 'left',
 						page: '/admin/entreprises',
 						translate: 'MENU.ENTREPRISES',
+						needModule: true,
+						code: ['ENTREPRISE']
 					},
 					{
 						title: 'Matériel',
@@ -979,6 +992,8 @@ export class MenuConfig {
 						alignment: 'left',
 						page: '/admin/materiel',
 						translate: 'MENU.MATERIELS',
+						needModule: true,
+						code: ['MATERIEL']
 					},
 				]
 			},
