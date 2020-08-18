@@ -905,11 +905,11 @@ export class MenuConfig {
 			},
 			params:{
 				btnAdd: {
-					title: 'Nouveau salarie',
-					root: true,
-					alignment: 'left',
-					page: '/salaries/add',
-					translate: 'MENU.BTN.NEWACTION',
+					// title: 'Nouveau salarie',
+					// root: true,
+					// alignment: 'left',
+					// page: '/salaries/add',
+					// translate: 'MENU.BTN.NEWACTION',
 				},
 				items: [
 					{

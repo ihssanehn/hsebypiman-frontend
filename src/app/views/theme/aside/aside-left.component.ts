@@ -7,6 +7,7 @@ import { LayoutConfigService, MenuAsideService, MenuOptions, OffcanvasOptions } 
 import { HtmlClassService } from '../html-class.service';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ModuleService } from '@app/core/services';
 
 @Component({
 	selector: 'tf-aside-left',
@@ -71,6 +72,7 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 		public htmlClassService: HtmlClassService,
 		public menuAsideService: MenuAsideService,
 		public layoutConfigService: LayoutConfigService,
+		public moduleService: ModuleService,
 		private router: Router,
 		private render: Renderer2,
 		private cdr: ChangeDetectorRef,

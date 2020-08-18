@@ -5,8 +5,7 @@
 	<!--begin: User bar -->
 	<tf-userside-profile></tf-userside-profile>
 	<!--end: User bar -->
-	
-	<button class="btn btn-brand tf-aside-btn" (click)="goToAdd()">
+	<button class="btn btn-brand tf-aside-btn" (click)="goToAdd()" *ngIf="menuAsideService.menuBtnAdd.value['title']; else blankButtonSpace">
 		{{menuAsideService.menuBtnAdd.value['title']}}
 	</button>
 	<!-- BEGIN: Aside Menu -->
@@ -27,7 +26,7 @@
 
 <ng-template #menuListTemplate>
 	<ng-container *ngFor="let child of menuAsideService.menuList$ | async">
-		<ng-container *ngIf="child.title" [ngTemplateOutlet]="menuItemTemplate"
+		<ng-container *ngIf="child.title && (!child.needModule || moduleService.isActived(child.code))" [ngTemplateOutlet]="menuItemTemplate"
 			[ngTemplateOutletContext]="{ item: child }"></ng-container>
 	</ng-container>
 </ng-template>
@@ -109,3 +108,8 @@
 	</span>
 </ng-template>
 
+<ng-template #blankButtonSpace>
+	<div style="height: 20px">
+		&nbsp;
+	</div>
+</ng-template> 
