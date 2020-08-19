@@ -105,7 +105,6 @@ export class AdminVisitesComponent implements OnInit {
 
 	selectTab(event) {
 		this.selectedTab = this.subnav[event].model;
-		console.log(this.selectedTab)
 	}
 	
 	/**
