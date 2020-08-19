@@ -19,7 +19,8 @@ import {
 	MenuConfigService,
 	MenuHorizontalService,
 	MenuOptions,
-	OffcanvasOptions
+	OffcanvasOptions,
+	SubheaderService
 } from '../../../../core/_base/layout';
 // HTML Class
 import { HtmlClassService } from '../../html-class.service';
@@ -261,5 +262,13 @@ export class MenuHorizontalComponent implements OnInit, AfterViewInit {
 		}
 
 		return false;
+	}
+
+	hasChildrenClass(item){
+		if(item.children){
+			return 'tf-menu__item--has-children';
+		}else{
+			return '';
+		}
 	}
 }

@@ -19,34 +19,18 @@
 
 		<!-- if item has submenu -->
 		<ng-container *ngIf="item.submenu">
-			<a href="javascript:;" class="tf-menu__link tf-menu__toggle">
-
+			<a [routerLink]="item.page" class="tf-menu__link tf-menu__toggle"  [ngClass]="hasChildrenClass(item)">
 				<ng-container [ngTemplateOutlet]="menuItemInnerTemplate" [ngTemplateOutletContext]="{ item: item, parentItem: parentItem }"></ng-container>
-
-				<ng-container *ngIf="rootArrowEnabled">
-					<!-- arrow icons -->
-					<i *ngIf="item.submenu && item.root" class="tf-menu__hor-arrow la la-angle-down"></i>
-					<i *ngIf="item.submenu && item.root" class="tf-menu__ver-arrow la la-angle-right"></i>
-				</ng-container>
-				<!-- else arrow icons -->
-				<i *ngIf="item.submenu && !item.root" class="tf-menu__hor-arrow la la-angle-right"></i>
-				<i *ngIf="item.submenu && !item.root" class="tf-menu__ver-arrow la la-angle-right"></i>
 			</a>
 		</ng-container>
 
 		<!-- if item hasn't sumbenu -->
 		<ng-container *ngIf="!item.submenu">
-			<a [routerLink]="item.page" class="tf-menu__link tf-menu__toggle">
+			<a [routerLink]="item.page" class="tf-menu__link tf-menu__toggle"  [ngClass]="hasChildrenClass(item)">
 				<ng-container [ngTemplateOutlet]="menuItemInnerTemplate" [ngTemplateOutletContext]="{ item: item, parentItem: parentItem }"></ng-container>
 			</a>
 		</ng-container>
 
-		<!-- if menu item has submenu child then recursively call new menu item component -->
-		<ng-container *ngIf="item.submenu">
-			<a [routerLink]="item.page" class="tf-menu__link tf-menu__toggle">
-				<ng-container [ngTemplateOutlet]="menuItemInnerTemplate" [ngTemplateOutletContext]="{ item: item, parentItem: parentItem }"></ng-container>
-			</a>
-		</ng-container>
 	</li>
 </ng-template>
 
@@ -100,4 +84,71 @@
 			</ul>
 		</ng-container>
 	</li>
+</ng-template>
+
+<ng-template #submenuTemplate>
+	<!-- begin:: SubContent Head -->
+	<div class="tf-subheader tf-grid__item" [ngClass]="{'tf-container--clear': clear}" [hidden]="subheaderService.disabled$ | async" id="tf_subheader">
+		<div class="tf-container" [ngClass]="{'tf-container--fluid': fluid}">
+			<div class="tf-subheader__main">
+				<div tfOffcanvas class="tf-subheader-menu-wrapper" id="tf_header_menu_wrapper">
+					<div tfMenu id="tf_header_menu" class="tf-header-menu tf-header-menu-mobile" [ngClass]="htmlClassService.getClasses('header_menu', true)">
+						<ul class="tf-menu__nav" [ngClass]="htmlClassService.getClasses('header_menu_nav', true)">
+							<ng-container *ngFor="let item of subheaderService.subHeaderList$ | async">
+								<ng-container *ngIf="item.title && (!item.needModule || isActiveModule(item.code))" [ngTemplateOutlet]="menuTemplate" [ngTemplateOutletContext]="{ item: item }"></ng-container>
+							</ng-container>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end:: Content Head -->
+
+
+
+	<ng-template #menuTemplate let-item="item" let-parentItem="parentItem">
+		<li [attr.aria-haspopup]="true"
+			[ngClass]="getItemCssClasses(item)">
+
+			<ng-container>
+				<a [routerLink]="item.page" class="tf-menu__link tf-menu__toggle">
+					<ng-container [ngTemplateOutlet]="menuItemInnerTemplate" [ngTemplateOutletContext]="{ item: item, parentItem: parentItem }"></ng-container>
+				</a>
+			</ng-container>
+		</li>
+	</ng-template>
+
+	<!-- item inner -->
+	<ng-template #menuItemInnerTemplate let-item="item" let-parentItem="parentItem">
+		<!-- if menu item has icon -->
+		<i *ngIf="item.icon" class="tf-menu__link-icon" [ngClass]="item.icon"></i>
+
+		<ng-container *ngIf="!item.icon">
+			<!-- if menu item using bullet -->
+			<i *ngIf="parentItem && parentItem.bullet === 'dot' || item.bullet === 'dot'" class="tf-menu__link-bullet tf-menu__link-bullet--dot">
+				<span></span>
+			</i>
+			<i *ngIf="parentItem && parentItem.bullet === 'line' || item.bullet === 'line'" class="tf-menu__link-bullet tf-menu__link-bullet--line">
+				<span></span>
+			</i>
+		</ng-container>
+
+		<ng-container *ngIf="!item.badge; else menuLinkBadge">
+			<span class="tf-menu__item-here"></span>
+			<!-- menu item title text -->
+			<span class="tf-menu__link-text" [translate]="item.translate">
+				{{item.title}}
+			</span>
+		</ng-container>
+
+		<ng-template #menuLinkBadge>
+			<!-- menu item with badge -->
+			<span class="tf-menu__link-text" [translate]="item.translate">{{item.title}}</span>
+			<span class="tf-menu__link-badge">
+				<span class="tf-badge tf-badge--brand tf-badge--inline tf-badge--pill" [ngClass]="item.badge.type" [translate]="item.badge.translate">{{item.badge.value}}</span>
+			</span>
+		</ng-template>
+	</ng-template>
+
 </ng-template>

@@ -181,9 +181,9 @@ export const locale = {
 				SHORTTITLE:'Contact',
 			},
 			DATE_DEMARRAGE:{
-				LABEL:'Date de démarage chantier',
-				TITLE:'Date de démarage chantier',
-				SHORTTITLE:'Date de démarage',
+				LABEL:'Date de démarrage chantier',
+				TITLE:'Date de démarrage chantier',
+				SHORTTITLE:'Date de démarrage',
 			},
 			AR: 'Analyse de risque',
 			CHIEF:{
@@ -469,7 +469,7 @@ export const locale = {
 				NUMBER:'Numéro chantier',
 				NAME:'Nom du chantier',
 				ADRESS:'Adresse',
-				DATE_DEMARRAGE:'Date de démarage chantier',
+				DATE_DEMARRAGE:'Date de démarrage chantier',
 				BUDGET:'Budget chantier',
 				EMPLOYEE:'Salarié CVTI réalisant la visite commune',
 				FORM:{
@@ -505,7 +505,7 @@ export const locale = {
 			TYPE:'Type',
 			STATUS:'Statut',
 			CONTACT:'Contact',
-			DATE_DEMARRAGE:'Date de démarage chantier pour CVTI',
+			DATE_DEMARRAGE:'Date de démarrage chantier pour CVTI',
 			AR: 'Analyse de risque',
 			EMPLOYEE:'Nom du salarié CVTI réalisant la visite commune',
 			CHIEF:'Chargé d\'affaire',
