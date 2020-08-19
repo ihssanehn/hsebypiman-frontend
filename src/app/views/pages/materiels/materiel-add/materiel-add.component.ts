@@ -105,7 +105,7 @@ export class MaterielAddComponent implements OnInit {
             showConfirmButton: false,
             timer: 1500
           }).then(() => {
-            this.router.navigate(['/materiels/detail/' + materiel.id]);
+            this.router.navigate(['/materiel/detail/' + materiel.id]);
           });
         })
         .catch(err =>{ 

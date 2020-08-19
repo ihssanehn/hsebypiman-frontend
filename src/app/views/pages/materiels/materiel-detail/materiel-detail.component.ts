@@ -65,7 +65,7 @@ export class MaterielDetailComponent implements OnInit, OnDestroy {
 					this.getMateriel(id);
 
 				} else {
-					this.router.navigateByUrl('/materiels/list');
+					this.router.navigateByUrl('/materiel/list');
 				}
 			}
 		);
@@ -91,7 +91,7 @@ export class MaterielDetailComponent implements OnInit, OnDestroy {
 	 *
 	 */
 	goBackWithId() {
-		const url = `/materiels/list`;
+		const url = `/materiel/list`;
 		this.router.navigateByUrl(url, { relativeTo: this.activatedRoute });
 	}
   
@@ -105,7 +105,7 @@ export class MaterielDetailComponent implements OnInit, OnDestroy {
 	 */
 	refreshMateriel(id) {
 		let url = this.router.url;
-		url = `/materiels/edit/${id}`;
+		url = `/materiel/edit/${id}`;
 		this.router.navigateByUrl(url, { relativeTo: this.activatedRoute });
   	}
 
