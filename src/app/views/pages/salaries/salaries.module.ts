@@ -72,6 +72,8 @@ import { SalariesGoalsComponent } from './salaries-goals/salaries-goals.componen
 import { SalariesAdminComponent } from './salaries-admin/salaries-admin.component';
 import { SalarieEditComponent } from './salarie-edit/salarie-edit.component';
 import { SalarieDashComponent } from './salarie-dash/salarie-dash.component';
+import { SalarieAddComponent } from './salarie-add/salarie-add.component';
+import { SalarieFormComponent } from './salarie-form/salarie-form.component';
 
 
 const routes: Routes = [
@@ -98,11 +100,11 @@ const routes: Routes = [
 			},
 			{
 				path: 'add',
-				component: SalariesComponent
+				component: SalarieAddComponent
 			},
 			{
 				path: 'add:id',
-				component: SalariesComponent
+				component: SalarieAddComponent
 			},
 			{
 				path: 'edit',
@@ -212,7 +214,9 @@ const routes: Routes = [
 		SalariesGoalsComponent,
 		SalariesAdminComponent,
 		SalarieEditComponent,
-		SalarieDashComponent
+		SalarieDashComponent,
+		SalarieAddComponent,
+		SalarieFormComponent
 	]
 })
 export class SalariesModule {
