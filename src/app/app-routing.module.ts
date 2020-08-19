@@ -51,7 +51,7 @@ const routes: Routes = [
 				data: {moduleCodes:['SALARIE']}
 			},
 			{
-				path: 'materiels',
+				path: 'materiel',
 				loadChildren: () => import('@app/views/pages/materiels/materiels.module').then(m => m.MaterielsModule),
 				canActivate: [ModuleGuard],
 				data: {moduleCodes:['MATERIEL']}

@@ -27,7 +27,7 @@ export class MenuConfig {
 					page: '/analyses-risque/list',
 					translate: 'MENU.ANALYSERISQUE',
 					needModule: true,
-					code: ['ANALYSE']
+					code: ['ANALYSE'],
 				},
 				{
 					title: 'Visites sécurité',
@@ -36,7 +36,8 @@ export class MenuConfig {
 					page: '/visites-securite/chantiers/list',
 					translate: 'MENU.VISITESECURITE',
 					needModule: true,
-					code: ['VISITE']
+					code: ['VISITE'],
+					children: true,
 				},
 				{
 					title: 'Plan d\'actions',
@@ -66,10 +67,10 @@ export class MenuConfig {
 					code: ['ENTREPRISE']
 				},
 				{
-					title: 'Materiels',
+					title: 'Matériel',
 					root: true,
 					alignment: 'left',
-					page: '/materiels',
+					page: '/materiel',
 					translate: 'MENU.MATERIELS',
 					needModule: true,
 					code: ['MATERIEL']
@@ -478,34 +479,6 @@ export class MenuConfig {
 					},
 				]
 			},
-			'admin-visites': {
-				items: [
-					{
-						title: 'Visites sécurité Chantier',
-						page: '/admin/visites-securite/chantiers',
-						needModule: true,
-						code: ['CHANTIER']
-					},
-					{
-						title: 'Visites sécurité EPI',
-						page: '/admin/visites-securite/epis',
-						needModule: true,
-						code: ['MATERIEL']
-					},
-					{
-						title: 'Visites sécurité Outillage',
-						page: '/admin/visites-securite/outillages',
-						needModule: true,
-						code: ['MATERIEL']
-					},
-					{
-						title: 'Visites sécurité Véhicule',
-						page: '/admin/visites-securite/vehicules',
-						needModule: true,
-						code: ['MATERIEL']
-					},
-				]
-			}
 		},
 
 		aside: {
@@ -553,7 +526,7 @@ export class MenuConfig {
 					title: 'Nouveau matériel',
 					root: true,
 					alignment: 'left',
-					page: '/materiels/add',
+					page: '/materiel/add',
 					translate: 'MENU.BTN.NEWMATERIEL',
 				},
 				items: [
@@ -570,7 +543,7 @@ export class MenuConfig {
 						title: 'Liste',
 						root: true,
 						alignment: 'left',
-						page: '/materiels/list',
+						page: '/materiel/list',
 						translate: 'MENU.LIST',
 						icon: 'view_list',
 						// icon: 'flaticon2-browser-2',
@@ -579,7 +552,7 @@ export class MenuConfig {
 						title: 'Admin',
 						root: true,
 						alignment: 'left',
-						page: '/materiels/admin',
+						page: '/materiel/admin',
 						translate: 'MENU.ADMIN',
 						icon: 'settings',
 						// icon: 'flaticon2-mail-1',
@@ -746,7 +719,7 @@ export class MenuConfig {
 					page: '/chantiers/add',
 					translate: 'MENU.BTN.NEWCHANTIER',
 				},
-				
+
 				items: [
 					{
 						icon: 'dashboard',
@@ -785,7 +758,7 @@ export class MenuConfig {
 					page: '/entreprises/add',
 					translate: 'MENU.BTN.NEWENTREPRISE',
 				},
-				
+
 				items: [
 					{
 						icon: 'dashboard',
@@ -824,7 +797,7 @@ export class MenuConfig {
 					page: '/plan-actions/add',
 					translate: 'MENU.BTN.NEWACTION',
 				},
-				
+
 				items: [
 					{
 						icon: 'dashboard',
@@ -903,7 +876,7 @@ export class MenuConfig {
 					}
 				]
 			},
-			params:{
+			params: {
 				btnAdd: {
 					// title: 'Nouveau salarie',
 					// root: true,
@@ -948,7 +921,7 @@ export class MenuConfig {
 						title: 'Visites de securité',
 						root: true,
 						alignment: 'left',
-						page: '/admin/visites-securite/chantiers',
+						page: '/admin/visites-securite',
 						translate: 'MENU.VISITESECURITE',
 						needModule: true,
 						code: ['VISITE']
@@ -997,7 +970,7 @@ export class MenuConfig {
 					},
 				]
 			},
-			items:{
+			items: {
 				btnAdd: {
 					title: 'Nouveau chantier',
 					root: true,

@@ -1,69 +1,15 @@
-
-<div class="tf-subheader tf-grid__item" [ngClass]="{'tf-container--clear': clear}" id="tf_subheader">
-	<div class="tf-container" [ngClass]="{'tf-container--fluid': fluid}">
-		<div class="tf-subheader__main">
-			<div tfOffcanvas class="tf-header-menu-wrapper" id="tf_header_menu_wrapper">
-				<div tfMenu id="tf_header_menu" class="tf-header-menu tf-header-menu-mobile" [ngClass]="htmlClassService.getClasses('header_menu', true)">
-					<ul class="tf-menu__nav" [ngClass]="htmlClassService.getClasses('header_menu_nav', true)">
-						<ng-container *ngFor="let item of subnav">
-							<ng-container *ngIf="item.title && (!item.needModule || isActiveModule(item.code))" [ngTemplateOutlet]="menuTemplate" [ngTemplateOutletContext]="{ item: item }"></ng-container>
-						</ng-container>
-					</ul>
-				</div>
-			</div>
-		</div>
+<div class="tf-portlet" style="border-radius: 0 0 4px 4px;">
+	<div class="tf-portlet__body">
+		<mat-tab-group mat-align-tabs="start" animationDuration="0ms" dynamicHeight="true"  (selectedIndexChange)="selectTab($event)">
+			<ng-container>
+				<mat-tab *ngFor="let item of subnav">
+					<ng-template mat-tab-label>{{item.title}}</ng-template>
+					<tf-admin-visite-chantier [hidden]="selectedTab != 'VsChantier'"></tf-admin-visite-chantier>
+					<tf-admin-visite-epi [hidden]="selectedTab != 'VsEpi'"></tf-admin-visite-epi>
+					<tf-admin-visite-outillage [hidden]="selectedTab != 'VsOutillage'"></tf-admin-visite-outillage>
+					<tf-admin-visite-vehicule [hidden]="selectedTab != 'VsVehicule'"></tf-admin-visite-vehicule>
+				</mat-tab>
+			</ng-container>
+		</mat-tab-group>
 	</div>
 </div>
-<div class="row">
-    <div class="col-12">
-        <router-outlet></router-outlet>
-    </div>
-</div>
-
-
-
-
-<ng-template #menuTemplate let-item="item" let-parentItem="parentItem">
-	<li [attr.aria-haspopup]="true"
-		[ngClass]="getItemCssClasses(item)">
-
-		<ng-container>
-			<a [routerLink]="item.page" class="tf-menu__link tf-menu__toggle">
-				<ng-container [ngTemplateOutlet]="menuItemInnerTemplate" [ngTemplateOutletContext]="{ item: item, parentItem: parentItem }"></ng-container>
-			</a>
-		</ng-container>
-	</li>
-</ng-template>
-
-<!-- item inner -->
-<ng-template #menuItemInnerTemplate let-item="item" let-parentItem="parentItem">
-	<!-- if menu item has icon -->
-	<i *ngIf="item.icon" class="tf-menu__link-icon" [ngClass]="item.icon"></i>
-
-	<ng-container *ngIf="!item.icon">
-		<!-- if menu item using bullet -->
-		<i *ngIf="parentItem && parentItem.bullet === 'dot' || item.bullet === 'dot'" class="tf-menu__link-bullet tf-menu__link-bullet--dot">
-			<span></span>
-		</i>
-		<i *ngIf="parentItem && parentItem.bullet === 'line' || item.bullet === 'line'" class="tf-menu__link-bullet tf-menu__link-bullet--line">
-			<span></span>
-		</i>
-	</ng-container>
-
-	<ng-container *ngIf="!item.badge; else menuLinkBadge">
-		<span class="tf-menu__item-here"></span>
-		<!-- menu item title text -->
-		<span class="tf-menu__link-text" [translate]="item.translate">
-			{{item.title}}
-		</span>
-	</ng-container>
-
-	<ng-template #menuLinkBadge>
-		<!-- menu item with badge -->
-		<span class="tf-menu__link-text" [translate]="item.translate">{{item.title}}</span>
-		<span class="tf-menu__link-badge">
-			<span class="tf-badge tf-badge--brand tf-badge--inline tf-badge--pill" [ngClass]="item.badge.type" [translate]="item.badge.translate">{{item.badge.value}}</span>
-		</span>
-	</ng-template>
-</ng-template>
-

@@ -61,6 +61,11 @@ import { AdminActionComponent } from './admin-action/admin-action.component';
 import { AdminSalariesComponent } from './admin-salaries/admin-salaries.component';
 import { AdminEntrepriseComponent } from './admin-entreprise/admin-entreprise.component';
 import { AdminMaterielComponent } from './admin-materiel/admin-materiel.component';
+import { AdminVisitesComponent } from './admin-visites/admin-visites.component';
+import { AdminVisiteChantierComponent } from './admin-visites/admin-visite-chantier/admin-visite-chantier.component';
+import { AdminVisiteEpiComponent } from './admin-visites/admin-visite-epi/admin-visite-epi.component';
+import { AdminVisiteVehiculeComponent } from './admin-visites/admin-visite-vehicule/admin-visite-vehicule.component';
+import { AdminVisiteOutillageComponent } from './admin-visites/admin-visite-outillage/admin-visite-outillage.component';
 
 const routes: Routes = [
 	{
@@ -86,7 +91,7 @@ const routes: Routes = [
 			},
 			{
 				path:'visites-securite',
-				loadChildren: () => import('@app/views/pages/admin/admin-visites/admin-visites.module').then(m => m.AdminVisitesModule)
+				component: AdminVisitesComponent
 			},
 			{
 				path: 'plan-actions',
@@ -186,6 +191,12 @@ const routes: Routes = [
 		AdminSalariesComponent,
 		AdminEntrepriseComponent,
 		AdminMaterielComponent,
+		AdminVisitesComponent,
+		AdminVisiteChantierComponent,
+		AdminVisiteEpiComponent,
+		AdminVisiteVehiculeComponent,
+		AdminVisiteOutillageComponent,
+		
 	]
 })
 export class AdminModule {

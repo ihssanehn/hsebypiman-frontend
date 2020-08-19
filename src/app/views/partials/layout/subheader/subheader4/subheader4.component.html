@@ -2,7 +2,7 @@
 <div class="tf-subheader tf-grid__item" [ngClass]="{'tf-container--clear': clear}" [hidden]="subheaderService.disabled$ | async" id="tf_subheader">
 	<div class="tf-container" [ngClass]="{'tf-container--fluid': fluid}">
 		<div class="tf-subheader__main">
-			<div tfOffcanvas class="tf-header-menu-wrapper" id="tf_header_menu_wrapper">
+			<div tfOffcanvas class="tf-subheader-menu-wrapper" id="tf_header_menu_wrapper">
 				<div tfMenu id="tf_header_menu" class="tf-header-menu tf-header-menu-mobile" [ngClass]="htmlClassService.getClasses('header_menu', true)">
 					<ul class="tf-menu__nav" [ngClass]="htmlClassService.getClasses('header_menu_nav', true)">
 						<ng-container *ngFor="let item of subheaderService.subHeaderList$ | async">
