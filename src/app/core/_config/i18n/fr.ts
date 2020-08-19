@@ -862,6 +862,11 @@ export const locale = {
 				TITLE:'Date d\'entrée',
 				SHORTTITLE:'Date d\'entrée'
 			},
+			EXIT_AT:{
+				LABEL:'Date de sortie',
+				TITLE:'Date de sortie',
+				SHORTTITLE:'Date de sortie'
+			},
 			OUTILLAGE:{
 				LABEL:'Outillage',
 				TITLE:'Outillage',
@@ -891,6 +896,28 @@ export const locale = {
 				LABEL:'Véhicule',
 				TITLE:'Véhicule',
 				SHORTTITLE:'Véhicule'
+			},
+			LIEN_PARENTE:{
+				LABEL:'Lien de parenté',
+				TITLE:'Lien de parenté',
+				SHORTTITLE:'Lien de parenté'
+			},
+			RQTH:{
+				LABEL:'RQTH',
+				TITLE:'RQTH',
+				SHORTTITLE:'RQTH'
+			},
+			VM:{
+				PASSED:{
+					LABEL:'Réalisée le',
+					TITLE:'Date de réalisation',
+					SHORTTITLE:'Date de réalisation'
+				},
+				NEXT:{
+					LABEL:'À renouveler le',
+					TITLE:'Date de renouvellement',
+					SHORTTITLE:'Date de renouvellement'
+				}
 			},
 		},
 		COMMON:{
