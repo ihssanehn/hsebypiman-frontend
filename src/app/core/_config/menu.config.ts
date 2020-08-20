@@ -829,13 +829,13 @@ export class MenuConfig {
 				]
 			},
 			salaries: {
-				btnAdd: {
+				btnAdd: localStorage.getItem('user_connection') == 'hse' ? {
 					title: 'Nouveau salarie',
 					root: true,
 					alignment: 'left',
 					page: '/salaries/add',
 					translate: 'MENU.BTN.NEWACTION',
-				},
+				} : {},
 
 				items: [
 					{

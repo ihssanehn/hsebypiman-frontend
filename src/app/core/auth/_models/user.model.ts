@@ -13,10 +13,9 @@ export class User extends BaseModel {
     access_token?: string;
     refresh_token?: string;
     personnel_id?: string;
-    // sirh_token?: string;
-    // sirh_access?: string;
     is_firstConnexion?: boolean;
-	role?: Role;
+    role?: Role;
+    user_connection?: string;
 
     clear?(): void {
         this.id = undefined;
