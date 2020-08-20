@@ -940,7 +940,7 @@ export class MenuConfig {
 						// icon: 'flaticon2-user-outline-symbol',
 					},
 					{
-						title: 'Salaries',
+						title: 'Salariés',
 						root: true,
 						alignment: 'left',
 						page: '/admin/salaries',
