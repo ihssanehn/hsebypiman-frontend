@@ -13,6 +13,8 @@ export class Personnel {
     lien_parente_urgence?: string;
     fonction?: any;
     rqth?: any;
+    date_visite_medicale_passed: Date;
+    date_visite_medicale_next: Date;
     latest_visite_medicale?: any;
     metricsTree?: Array<any>;
     catMetricsList?: Array<any>;

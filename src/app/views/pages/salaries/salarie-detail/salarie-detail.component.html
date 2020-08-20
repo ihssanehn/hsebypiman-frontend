@@ -76,9 +76,9 @@
                                         <h6><b>Visite médicale</b></h6>
                                         <div class="tf-divider"><span></span></div>
                                         <div class="box box-coords" style="flex:1">
-                                            <p><span class="label pull-left mr-2">RQTH</span><span class="blue" *ngIf="salarie.rqth; else noDataFound">{{salarie.rqth?.date_debut | date:'dd/MM/yyyy'}} au {{salarie.rqth?.date_fin | date:'dd/MM/yyyy'}}</span></p>
-                                            <p><span class="label pull-left mr-2">Réalisée</span><span class="blue" *ngIf="salarie.latest_visite_medicale?.date_rv; else noDataFound">{{salarie.latest_visite_medicale?.date_rv | date:'dd/MM/yyyy'}}</span></p>
-                                            <p><span class="label pull-left mr-2">À renouveler</span><span class="blue" *ngIf="salarie.latest_visite_medicale?.date_renouvellement; else noDataFound">{{salarie.latest_visite_medicale?.date_renouvellement | date:'dd/MM/yyyy'}}</span></p>
+                                            <p><span class="label pull-left mr-2">RQTH</span><span class="blue">{{salarie.rqth ? 'Oui' : 'Non'}}</span></p>
+                                            <p><span class="label pull-left mr-2">Réalisée</span><span class="blue" *ngIf="salarie.date_visite_medicale_passed; else noDataFound">{{salarie.date_visite_medicale_passed | date:'dd/MM/yyyy'}}</span></p>
+                                            <p><span class="label pull-left mr-2">À renouveler</span><span class="blue" *ngIf="salarie.date_visite_medicale_next; else noDataFound">{{salarie.date_visite_medicale_next | date:'dd/MM/yyyy'}}</span></p>
                                         </div>
                                     </div>
                                     <!-- <div class="box box-ar-vs col-md-3">
