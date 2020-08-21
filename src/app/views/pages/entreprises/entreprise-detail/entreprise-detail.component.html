@@ -8,10 +8,10 @@
 				<mat-icon>more_vert</mat-icon>
 			</button>
 			<div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
-				<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editEntreprise(entreprise.id)">
+				<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editEntreprise(entreprise.id)" *ngxPermissionsOnly="['entreprise_canUpdate']">
 					<mat-icon>edit</mat-icon>
 				</button>
-				<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteEntreprise(entreprise.id)">
+				<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteEntreprise(entreprise.id)" *ngxPermissionsOnly="['entreprise_canArchieve']">
 					<mat-icon>delete</mat-icon>
 				</button>
 			</div>

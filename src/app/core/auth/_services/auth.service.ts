@@ -8,7 +8,7 @@ import { catchError, map, distinctUntilChanged } from 'rxjs/operators';
 import { QueryParamsModel, QueryResultsModel } from '../../_base/crud';
 import { environment } from '../../../../environments/environment';
 import { HttpService } from '@app/core/services/http-service';
-import { NgxPermissionsService } from 'ngx-permissions';
+import { NgxRolesService, NgxPermissionsService } from 'ngx-permissions';
 import { JsonResponse } from '@app/core/_base/layout/models/jsonResponse.model';
 import { Router } from '@angular/router';
 
@@ -22,7 +22,8 @@ const API_ROLES_URL = environment.apiBaseUrl + "roles";
 export class AuthService extends HttpService {
     constructor(
         private http: HttpClient,
-        private permissionsService: NgxPermissionsService,
+		private permissionsService: NgxPermissionsService,
+		private rolesService: NgxRolesService,
         private router: Router
     ) {
         super();
@@ -154,8 +155,12 @@ export class AuthService extends HttpService {
 		);
 	}
 
-	loadUserPermissions(data){
-		this.permissionsService.loadPermissions(data);
+	loadUserPermissions(array){
+		this.permissionsService.loadPermissions(array);
+	}
+
+	loadUserRole(role, permissions){
+		this.rolesService.addRole(role,permissions);
 	}
 
 	registerPermissions(res: JsonResponse<User>) {

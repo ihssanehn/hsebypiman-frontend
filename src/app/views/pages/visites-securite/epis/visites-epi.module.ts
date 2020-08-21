@@ -48,19 +48,43 @@ const routes: Routes = [
 			},
 			{
 				path: 'list',
-				component: VisitesEpiListComponent
+				component: VisitesEpiListComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['visite_securite_canSeeAll']
+					}
+				}
 			},
 			{
 				path: 'add',
-				component: VisiteEpiAddComponent
+				component: VisiteEpiAddComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['visite_securite_canAdd']
+					}
+				}
 			},
 			{
 				path: 'add:id',
-				component: VisiteEpiAddComponent
+				component: VisiteEpiAddComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['visite_securite_canAdd']
+					}
+				}
 			},
 			{
 				path : 'admin',
-				component : VisiteEpiAdminComponent
+				component : VisiteEpiAdminComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['SUPADMIN','ADMIN']
+					}
+				}
 			}
 		]
 	}

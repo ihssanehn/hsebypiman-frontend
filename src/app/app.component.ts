@@ -60,7 +60,11 @@ export class AppComponent implements OnInit, OnDestroy {
 
 		// Load permissions
 		this.authService.currentUser.subscribe((user) => {
-			this.authService.loadUserPermissions([user.role.code])
+			var permissions = user.role.permissions.map(x => x.code);
+			console.log(user.role.code);
+			console.log(permissions);
+			this.authService.loadUserPermissions(permissions);
+			this.authService.loadUserRole(user.role.code,permissions);
 		});
 
 		const routerSubscription = this.router.events.subscribe(event => {

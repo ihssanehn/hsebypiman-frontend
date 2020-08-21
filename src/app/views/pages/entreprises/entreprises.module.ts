@@ -79,31 +79,73 @@ const routes: Routes = [
 			},
 			{
 				path: 'list',
-				component: EntreprisesListComponent
+				component: EntreprisesListComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['entreprise_canSeeAll']
+					}
+				}
 			},
 			{
 				path: 'list:id',
-				component: EntreprisesListComponent
+				component: EntreprisesListComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['entreprise_canSeeAll']
+					}
+				}
 			},
 			{
 				path: 'add',
-				component: EntrepriseAddComponent
+				component: EntrepriseAddComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['entreprise_canAdd']
+					}
+				}
 			},
 			{
 				path: 'add:id',
-				component: EntrepriseAddComponent
+				component: EntrepriseAddComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['entreprise_canAdd']
+					}
+				}
 			},
 			{
 				path: 'edit',
-				component: EntrepriseEditComponent
+				component: EntrepriseEditComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['entreprise_canUpdate']
+					}
+				}
 			},
 			{
 				path: 'edit/:id',
-				component: EntrepriseEditComponent
+				component: EntrepriseEditComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['entreprise_canUpdate']
+					}
+				}
 			},
 			{
 				path: 'admin',
-				component: EntrepriseAdminComponent
+				component: EntrepriseAdminComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['SUPADMIN','ADMIN']
+					}
+				}
 			},
 		]
 	}

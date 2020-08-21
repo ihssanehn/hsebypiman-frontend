@@ -49,15 +49,33 @@ const routes: Routes = [
 			},
 			{
 				path: 'list',
-				component: VisitesChantierListComponent
+				component: VisitesChantierListComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['visite_securite_canSeeAll']
+					}
+				}
 			},
 			{
 				path: 'add',
-				component: VisiteChantierAddComponent
+				component: VisiteChantierAddComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['visite_securite_canAdd']
+					}
+				}
 			},
 			{
 				path: 'add:id',
-				component: VisiteChantierAddComponent
+				component: VisiteChantierAddComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['visite_securite_canAdd']
+					}
+				}
 			},
 			// {
 			// 	path: 'edit',
@@ -69,7 +87,13 @@ const routes: Routes = [
 			// },
 			{
 				path: 'admin',
-				component: VisiteChantierAdminComponent
+				component: VisiteChantierAdminComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['SUPADMIN','ADMIN']
+					}
+				}
 			},
 		]
 	}

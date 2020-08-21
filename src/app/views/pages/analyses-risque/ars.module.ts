@@ -71,27 +71,63 @@ const routes: Routes = [
 		children: [
 			{
 				path: 'list',
-				component: ArsListComponent
+				component: ArsListComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['analyse_risque_canSeeAll']
+					}
+				}
 			},
 			{
 				path: 'list:id',
-				component: ArsListComponent
+				component: ArsListComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['analyse_risque_canSeeAll']
+					}
+				}
 			},
 			{
 				path: 'add',
-				component: ArAddComponent
+				component: ArAddComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['analyse_risque_canAdd']
+					}
+				}
 			},
 			{
 				path: 'add:id',
-				component: ArAddComponent
+				component: ArAddComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['analyse_risque_canAdd']
+					}
+				}
 			},
 			{
 				path: 'edit',
-				component: ArEditComponent
+				component: ArEditComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['analyse_risque_canUpdate']
+					}
+				}
 			},
 			{
 				path: 'edit/:id',
-				component: ArEditComponent
+				component: ArEditComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['analyse_risque_canUpdate']
+					}
+				}
 			},
 			{
 				path: 'detail',
@@ -111,7 +147,13 @@ const routes: Routes = [
 			},
 			{
 				path: 'admin',
-				component: ArAdminComponent
+				component: ArAdminComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['SUPADMIN','ADMIN']
+					}
+				}
 			},
 		]
 	}

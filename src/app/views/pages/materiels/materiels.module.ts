@@ -89,31 +89,73 @@ const routes: Routes = [
 			},
 			{
 				path: 'list',
-				component: MaterielsListComponent
+				component: MaterielsListComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['materiel_canSeeAll']
+					}
+				}
 			},
 			{
 				path: 'list:id',
-				component: MaterielsListComponent
+				component: MaterielsListComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['materiel_canSeeAll']
+					}
+				}
 			},
 			{
 				path: 'add',
-				component: MaterielAddComponent
+				component: MaterielAddComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['materiel_canAdd']
+					}
+				}
 			},
 			{
 				path: 'add:id',
-				component: MaterielAddComponent
+				component: MaterielAddComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['materiel_canAdd']
+					}
+				}
 			},
 			{
 				path: 'edit',
-				component: MaterielEditComponent
+				component: MaterielEditComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['materiel_canUpdate']
+					}
+				}
 			},
 			{
 				path: 'edit/:id',
-				component: MaterielEditComponent
+				component: MaterielEditComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['materiel_canUpdate']
+					}
+				}
 			},
 			{
 				path: 'admin',
-				component: MaterielAdminComponent
+				component: MaterielAdminComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['SUPADMIN','ADMIN']
+					}
+				}
 			},
 		]
 	}

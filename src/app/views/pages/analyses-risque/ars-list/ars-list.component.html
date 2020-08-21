@@ -127,7 +127,7 @@
     <button *ngIf="status.code != 'ARCHIV'" mat-icon-button color="primary" matTooltip="{{'ACTION.SIGN' | translate}}" (click)="signAr(ar_id)">
       <mat-icon>gesture</mat-icon>
     </button>
-    <ng-container *ngxPermissionsOnly="['SUPADMIN']">
+    <ng-container *ngxPermissionsOnly="['analyse_risque_canAdd']">
       <button mat-icon-button color="info" *ngIf="chantier.status.code != 'TERMINE'" matTooltip="{{'ACTION.DUPLICATE' | translate}}" (click)="duplicateAr(ar_id, chantier)">
         <mat-icon>filter_none</mat-icon>
       </button>

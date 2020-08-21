@@ -102,10 +102,12 @@
 	<button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}" (click)="viewMateriel(selectedMateriel.id)">
 		<mat-icon>visibility</mat-icon>
 	</button>
-	<button *ngIf="selectedMateriel?.main_categorie?.code != 'VEHICULE'" mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editMateriel(selectedMateriel.id)">
-		<mat-icon>edit</mat-icon>
-	</button>
-	<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteMateriel(selectedMateriel.id)">
+	<ng-container *ngxPermissionsOnly="['materiel_canUpdate']">
+		<button *ngIf="selectedMateriel?.main_categorie?.code != 'VEHICULE'" mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editMateriel(selectedMateriel.id)">
+			<mat-icon>edit</mat-icon>
+		</button>
+	</ng-container>
+	<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteMateriel(selectedMateriel.id)" *ngxPermissionsOnly="['materiel_canArchieve']">
 		<mat-icon>delete</mat-icon>
 	</button>
 </mat-menu>

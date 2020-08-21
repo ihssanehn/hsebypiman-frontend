@@ -23,78 +23,57 @@ const routes: Routes = [
 			{
 				path: 'chantiers',
 				loadChildren: () => import('@app/views/pages/chantiers/chantiers.module').then(m => m.ChantiersModule),
-				canActivate: [ModuleGuard, NgxPermissionsGuard],
+				canActivate: [ModuleGuard],
 				data: {
-					moduleCodes: ['CHANTIER'],
-					permissions: {
-						only: 'SUPADMIN'
-					}
+					moduleCodes: ['CHANTIER']
 				}
 			},
 			{
 				path: 'analyses-risque',
 				loadChildren: () => import('@app/views/pages/analyses-risque/ars.module').then(m => m.ArsModule),
-				canActivate: [ModuleGuard, NgxPermissionsGuard],
+				canActivate: [ModuleGuard],
 				data: {
-					moduleCodes:['ANALYSE'],
-					permissions: {
-						only: ['SUPADMIN','USER']
-					}
+					moduleCodes:['ANALYSE']
 				}
 			},
 			{
 				path: 'visites-securite',
 				loadChildren: () => import('@app/views/pages/visites-securite/visites-securite.module').then(m => m.VisitesSecuriteModule),
-				canActivate: [ModuleGuard, NgxPermissionsGuard],
+				canActivate: [ModuleGuard],
 				data: {
-					moduleCodes:['VISITE'],
-					permissions: {
-						only: ['SUPADMIN','USER']
-					}
+					moduleCodes:['VISITE']
 				}
 			},
 			{
 				path: 'plan-actions',
 				loadChildren: () => import('@app/views/pages/plans-action/plans-action.module').then(m => m.PlansActionModule),
-				canActivate: [ModuleGuard, NgxPermissionsGuard],
+				canActivate: [ModuleGuard],
 				data: {
-					moduleCodes:['PLANACTION'],
-					permissions: {
-						only: 'SUPADMIN'
-					}
+					moduleCodes:['PLANACTION']
 				}
 			},
 			{
 				path: 'salaries',
 				loadChildren: () => import('@app/views/pages/salaries/salaries.module').then(m => m.SalariesModule),
-				canActivate: [ModuleGuard, NgxPermissionsGuard],
+				canActivate: [ModuleGuard],
 				data: {
-					moduleCodes:['SALARIE'],
-					permissions: {
-						only: 'SUPADMIN'
-					}
+					moduleCodes:['SALARIE']
 				}
 			},
 			{
 				path: 'materiel',
 				loadChildren: () => import('@app/views/pages/materiels/materiels.module').then(m => m.MaterielsModule),
-				canActivate: [ModuleGuard, NgxPermissionsGuard],
+				canActivate: [ModuleGuard],
 				data: {
-					moduleCodes:['MATERIEL'],
-					permissions: {
-						only: 'SUPADMIN'
-					}
+					moduleCodes:['MATERIEL']
 				}
 			},
 			{
 				path: 'entreprises',
 				loadChildren: () => import('@app/views/pages/entreprises/entreprises.module').then(m => m.EntreprisesModule),
-				canActivate: [ModuleGuard, NgxPermissionsGuard],
+				canActivate: [ModuleGuard],
 				data: {
-					moduleCodes:['ENTREPRISE'],
-					permissions: {
-						only: 'SUPADMIN'
-					}
+					moduleCodes:['ENTREPRISE']
 				}
 			},
 			{
