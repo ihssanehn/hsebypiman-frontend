@@ -132,13 +132,16 @@
                     <div class="tf-card-form">
                         <div>
                             <div class="row form-row">
-                                <mat-form-field class="col-xl-4">
+                                <div class="col-xl-4 d-inline-flex" style="justify-content: space-around;align-items: center;">
                                     <mat-label>{{'SALARIES.RQTH.LABEL' | translate}}</mat-label>
-                                    <input matInput class="form-control" type="text" name="rqth" formControlName="rqth" [required]="isFieldRequired('rqth')" placeholder="Saisir ici" />
+                                    <mat-radio-group formControlName="rqth" >
+                                        <mat-radio-button class="metric-radio" [value]="1">Oui</mat-radio-button>
+                                        <mat-radio-button class="metric-radio" [value]="0">Non</mat-radio-button>
+                                    </mat-radio-group>
                                     <mat-error *ngIf="isControlHasError('rqth','required')">
                                         <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
                                     </mat-error>
-                                </mat-form-field>
+                                </div>
                                 <mat-form-field class="col-xl-4">
                                     <mat-label>{{'SALARIES.VM.PASSED.LABEL' | translate}}</mat-label>
                                     <input matInput class="form-control" type="text" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" name="date_visite_medicale_passed" formControlName="date_visite_medicale_passed" [required]="isFieldRequired('date_visite_medicale_passed')" placeholder="DD/MM/YYYY" />

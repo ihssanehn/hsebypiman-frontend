@@ -54,7 +54,7 @@ export class SalarieAddComponent implements OnInit {
       nom_urgence: ['', [Validators]],
       telephone_urgence: ['', [Validators]],
       lien_parente_urgence: ['', [Validators]],
-      rqth: ['', [Validators]],
+      rqth: [0, [Validators]],
       date_visite_medicale_passed: ['', [Validators]],
       date_visite_medicale_next: ['', [Validators]]
     });
