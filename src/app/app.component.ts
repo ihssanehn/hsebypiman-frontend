@@ -12,7 +12,6 @@ import { locale as esLang } from './core/_config/i18n/es';
 import { locale as jpLang } from './core/_config/i18n/jp';
 import { locale as deLang } from './core/_config/i18n/de';
 import { environment } from '@env/environment';
-import { NgxPermissionsService } from 'ngx-permissions';
 import { AuthService } from './core/auth';
 
 @Component({
@@ -58,6 +57,11 @@ export class AppComponent implements OnInit, OnDestroy {
 	async ngOnInit() {
 		// enable/disable loader
 		this.loader = this.layoutConfigService.getConfig('loader.enabled');
+
+		// Load permissions
+		this.authService.currentUser.subscribe((user) => {
+			this.authService.loadUserPermissions([user.role.code])
+		});
 
 		const routerSubscription = this.router.events.subscribe(event => {
 			if (event instanceof NavigationEnd) {

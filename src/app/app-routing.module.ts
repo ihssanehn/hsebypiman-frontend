@@ -23,56 +23,101 @@ const routes: Routes = [
 			{
 				path: 'chantiers',
 				loadChildren: () => import('@app/views/pages/chantiers/chantiers.module').then(m => m.ChantiersModule),
-				canActivate: [ModuleGuard],
-				data: {moduleCodes:['CHANTIER']}
+				canActivate: [ModuleGuard, NgxPermissionsGuard],
+				data: {
+					moduleCodes: ['CHANTIER'],
+					permissions: {
+						only: 'SUPADMIN'
+					}
+				}
 			},
 			{
 				path: 'analyses-risque',
 				loadChildren: () => import('@app/views/pages/analyses-risque/ars.module').then(m => m.ArsModule),
-				canActivate: [ModuleGuard],
-				data: {moduleCodes:['ANALYSE']}
+				canActivate: [ModuleGuard, NgxPermissionsGuard],
+				data: {
+					moduleCodes:['ANALYSE'],
+					permissions: {
+						only: ['SUPADMIN','USER']
+					}
+				}
 			},
 			{
 				path: 'visites-securite',
 				loadChildren: () => import('@app/views/pages/visites-securite/visites-securite.module').then(m => m.VisitesSecuriteModule),
-				canActivate: [ModuleGuard],
-				data: {moduleCodes:['VISITE']}
+				canActivate: [ModuleGuard, NgxPermissionsGuard],
+				data: {
+					moduleCodes:['VISITE'],
+					permissions: {
+						only: ['SUPADMIN','USER']
+					}
+				}
 			},
 			{
 				path: 'plan-actions',
 				loadChildren: () => import('@app/views/pages/plans-action/plans-action.module').then(m => m.PlansActionModule),
-				canActivate: [ModuleGuard],
-				data: {moduleCodes:['PLANACTION']}
+				canActivate: [ModuleGuard, NgxPermissionsGuard],
+				data: {
+					moduleCodes:['PLANACTION'],
+					permissions: {
+						only: 'SUPADMIN'
+					}
+				}
 			},
 			{
 				path: 'salaries',
 				loadChildren: () => import('@app/views/pages/salaries/salaries.module').then(m => m.SalariesModule),
-				canActivate: [ModuleGuard],
-				data: {moduleCodes:['SALARIE']}
+				canActivate: [ModuleGuard, NgxPermissionsGuard],
+				data: {
+					moduleCodes:['SALARIE'],
+					permissions: {
+						only: 'SUPADMIN'
+					}
+				}
 			},
 			{
 				path: 'materiel',
 				loadChildren: () => import('@app/views/pages/materiels/materiels.module').then(m => m.MaterielsModule),
-				canActivate: [ModuleGuard],
-				data: {moduleCodes:['MATERIEL']}
+				canActivate: [ModuleGuard, NgxPermissionsGuard],
+				data: {
+					moduleCodes:['MATERIEL'],
+					permissions: {
+						only: 'SUPADMIN'
+					}
+				}
 			},
 			{
 				path: 'entreprises',
 				loadChildren: () => import('@app/views/pages/entreprises/entreprises.module').then(m => m.EntreprisesModule),
-				canActivate: [ModuleGuard],
-				data: {moduleCodes:['ENTREPRISE']}
+				canActivate: [ModuleGuard, NgxPermissionsGuard],
+				data: {
+					moduleCodes:['ENTREPRISE'],
+					permissions: {
+						only: 'SUPADMIN'
+					}
+				}
 			},
 			{
 				path: 'admin',
 				loadChildren: () => import('@app/views/pages/admin/admin.module').then(m => m.AdminModule),
-				canActivate: [ModuleGuard],
-				data: {moduleCodes:['PARAMS']}
+				canActivate: [ModuleGuard, NgxPermissionsGuard],
+				data: {
+					moduleCodes:['PARAMS'],
+					permissions: {
+						only: 'SUPADMIN'
+					}
+				}
 			},
 			{
 				path: 'mail',
 				loadChildren: () => import('@app/views/pages/apps/mail/mail.module').then(m => m.MailModule),
-				canActivate: [ModuleGuard],
-				data: {moduleCodes:[]}
+				canActivate: [ModuleGuard, NgxPermissionsGuard],
+				data: {
+					moduleCodes:[],
+					permissions: {
+						only: 'SUPADMIN'
+					}
+				}
 			},
 			// {
 			// 	path: 'user-management',

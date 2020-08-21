@@ -154,11 +154,13 @@ export class AuthService extends HttpService {
 		);
 	}
 
-
+	loadUserPermissions(data){
+		this.permissionsService.loadPermissions(data);
+	}
 
 	registerPermissions(res: JsonResponse<User>) {
-		
-		// this.permissionsService.loadPermissions([user.role.slug]);
+		var user = res.result.data;
+		this.loadUserPermissions([user.role.code]);
 	}
 
 

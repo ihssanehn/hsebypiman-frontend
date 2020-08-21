@@ -4,6 +4,8 @@ export class Role extends BaseModel {
     id: number;
     title: string;
     slug: string;
+    libelle: string;
+    code: string;
     isCoreRole = false;
     permissions : number[];
 

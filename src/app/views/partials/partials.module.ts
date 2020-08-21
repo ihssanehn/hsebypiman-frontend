@@ -6,7 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { AvatarModule } from 'ngx-avatar';
-
+import { NgxPermissionsModule } from 'ngx-permissions';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -375,7 +375,8 @@ import { SalarieCardComponent } from './layout/salarie/salarie-card/salarie-card
 		NzCheckboxModule,
 		NgbModule,
 		DragDropModule,
-		MatExpansionModule
+		MatExpansionModule,
+		NgxPermissionsModule.forChild(),
 	],
 	entryComponents: [
 		AdminAddModalComponent,
