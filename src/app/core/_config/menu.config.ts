@@ -886,14 +886,15 @@ export class MenuConfig {
 				},
 				items: [
 					{
-						// icon: 'modules',
-						// icon: 'flaticon2-browser-2',
-						title: 'Modules',
+						title: 'Utilisateurs',
 						root: true,
 						alignment: 'left',
-						page: '/admin/modules',
-						translate: 'MENU.MODULES',
+						page: '/admin/users',
+						translate: 'MENU.USERS',
 						needModule: false,
+						svgIcon: 'administration',
+						// code: ['SALARIES']
+						// icon: 'flaticon2-list-2',
 					},
 					{
 						title: 'Chantiers',
@@ -902,8 +903,8 @@ export class MenuConfig {
 						page: '/admin/chantiers',
 						translate: 'MENU.CHANTIER',
 						needModule: true,
+						svgIcon: 'chantier',
 						code: ['CHANTIER']
-						// icon: 'chantier',
 						// icon: 'flaticon2-browser-2',
 					},
 					{
@@ -913,8 +914,8 @@ export class MenuConfig {
 						page: '/admin/analyses-risque',
 						translate: 'MENU.ANALYSERISQUE',
 						needModule: true,
+						svgIcon: 'analyse',
 						code: ['ANALYSE']
-						// icon: '',
 						// icon: 'flaticon2-digital-marketing',
 					},
 					{
@@ -924,8 +925,8 @@ export class MenuConfig {
 						page: '/admin/visites-securite',
 						translate: 'MENU.VISITESECURITE',
 						needModule: true,
+						svgIcon: 'visite-de-securite',
 						code: ['VISITE']
-						// icon: 'visite-de-securite',
 						// icon: 'flaticon2-list-2',
 					},
 					{
@@ -935,19 +936,19 @@ export class MenuConfig {
 						page: '/admin/plan-actions',
 						translate: 'MENU.PLANACTION',
 						needModule: true,
+						svgIcon: 'plan-daction',
 						code: ['PLANACTION']
-						// icon: 'plan-daction',
 						// icon: 'flaticon2-user-outline-symbol',
 					},
 					{
-						title: 'Salariés',
+						title: 'Suivi Hse',
 						root: true,
 						alignment: 'left',
-						page: '/admin/salaries',
-						translate: 'MENU.SALARIES',
+						page: '/admin/suivi-hse',
+						translate: 'MENU.SUIVI_HSE',
 						needModule: true,
+						svgIcon: 'administration',
 						code: ['SALARIES']
-						// icon: 'salaries',
 						// icon: 'flaticon2-list-2',
 					},
 					{
@@ -957,6 +958,7 @@ export class MenuConfig {
 						page: '/admin/entreprises',
 						translate: 'MENU.ENTREPRISES',
 						needModule: true,
+						svgIcon: 'business',
 						code: ['ENTREPRISE']
 					},
 					{
@@ -966,7 +968,18 @@ export class MenuConfig {
 						page: '/admin/materiel',
 						translate: 'MENU.MATERIELS',
 						needModule: true,
+						svgIcon: 'construction',
 						code: ['MATERIEL']
+					},
+					{
+						// icon: 'flaticon2-browser-2',
+						title: 'Modules',
+						root: true,
+						alignment: 'left',
+						page: '/admin/modules',
+						translate: 'MENU.MODULES',
+						svgIcon: 'dashboard',
+						needModule: false,
 					},
 				]
 			},

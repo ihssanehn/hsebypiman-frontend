@@ -80,6 +80,12 @@ export class AdminModulesComponent implements OnInit {
     }
   }  
 
+  moduleCheckChange(modId){
+    const mod = this.modulesList.filter(x => x.id == modId)[0]
+    mod.is_active = mod.is_active == 1 ? 0 : 1;  
+    this.cdr.markForCheck();
+  }
+
   cancelForm(){
     this.getAllModules();
   }
