@@ -82,31 +82,73 @@ const routes: Routes = [
 			},
 			{
 				path: 'list',
-				component: ActionsListComponent
+				component: ActionsListComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['action_canSeeAll']
+					}
+				}
 			},
 			{
 				path: 'list:id',
-				component: ActionsListComponent
+				component: ActionsListComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['action_canSeeAll']
+					}
+				}
 			},
 			{
 				path: 'add',
-				component: ActionAddComponent
+				component: ActionAddComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['action_canAdd']
+					}
+				}
 			},
 			{
 				path: 'add:id',
-				component: ActionAddComponent
+				component: ActionAddComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['action_canAdd']
+					}
+				}
 			},
 			{
 				path: 'edit',
-				component: ActionEditComponent
+				component: ActionEditComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['action_canUpdate']
+					}
+				}
 			},
 			{
 				path: 'edit/:id',
-				component: ActionEditComponent
+				component: ActionEditComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['action_canUpdate']
+					}
+				}
 			},
 			{
 				path: 'admin',
-				component: ActionAdminComponent
+				component: ActionAdminComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['SUPADMIN','ADMIN']
+					}
+				}
 			},
 			{
 				path: 'dashboard',

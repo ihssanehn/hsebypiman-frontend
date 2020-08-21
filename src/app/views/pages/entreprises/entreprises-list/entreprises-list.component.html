@@ -71,10 +71,10 @@
 	<button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}" (click)="viewEntreprise(entreprise_id)">
 		<mat-icon>visibility</mat-icon>
 	</button>
-	<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editEntreprise(entreprise_id)">
+	<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editEntreprise(entreprise_id)" *ngxPermissionsOnly="['entreprise_canUpdate']">
 		<mat-icon>edit</mat-icon>
 	</button>
-	<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteEntreprise(entreprise_id)">
+	<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteEntreprise(entreprise_id)" *ngxPermissionsOnly="['entreprise_canArchieve']">
 		<mat-icon>delete</mat-icon>
 	</button>
 </mat-menu>

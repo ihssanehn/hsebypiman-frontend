@@ -45,27 +45,47 @@ const routes: Routes = [
 			},
 			{
 				path: 'list',
-				//component: VisitesOutillageComponent,
-				component: VisitesOutillageListComponent
+				component: VisitesOutillageListComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['visite_securite_canSeeAll']
+					}
+				}
 			},
 			{
 				path: 'detail/:id',
-				//component: VisitesOutillageComponent
 				component: VisiteOutillageDetailComponent
 			},
 			{
 				path: 'add',
-				//component: VisitesOutillageComponent
-				component: VisiteOutillageAddComponent
+				component: VisiteOutillageAddComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['visite_securite_canAdd']
+					}
+				}
 			},
 			{
 				path: 'add:id',
-				component: VisitesOutillageComponent
-				// component: VisiteOutillageAddComponent
+				component: VisitesOutillageComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['visite_securite_canAdd']
+					}
+				}
 			},
 			{
 				path: 'admin',
-				component: VisiteOutillageAdminComponent
+				component: VisiteOutillageAdminComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['SUPADMIN','ADMIN']
+					}
+				}
 			},
 		]
 	}

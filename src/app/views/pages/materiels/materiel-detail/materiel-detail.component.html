@@ -8,10 +8,12 @@
 				<mat-icon>more_vert</mat-icon>
 			</button>
 			<div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
-				<button *ngIf="materiel.main_categorie?.code != 'VEHICULE'" mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editMateriel(materiel.id)">
-					<mat-icon>edit</mat-icon>
-				</button>
-				<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteMateriel(materiel.id)">
+				<ng-container *ngxPermissionsOnly="['materiel_canUpdate']">
+					<button *ngIf="materiel.main_categorie?.code != 'VEHICULE'" mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editMateriel(materiel.id)">
+						<mat-icon>edit</mat-icon>
+					</button>
+				</ng-container>
+				<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteMateriel(materiel.id)" *ngxPermissionsOnly="['materiel_canArchieve']">
 					<mat-icon>delete</mat-icon>
 				</button>
 			</div>

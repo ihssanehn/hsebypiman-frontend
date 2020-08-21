@@ -92,35 +92,83 @@ const routes: Routes = [
 			},
 			{
 				path: 'list',
-				component: SalariesListComponent
+				component: SalariesListComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['salarie_canSeeAll']
+					}
+				}
 			},
 			{
 				path: 'list:id',
-				component: SalariesListComponent
+				component: SalariesListComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['salarie_canSeeAll']
+					}
+				}
 			},
 			{
 				path: 'add',
-				component: SalarieAddComponent
+				component: SalarieAddComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['salarie_canAdd']
+					}
+				}
 			},
 			{
 				path: 'add:id',
-				component: SalarieAddComponent
+				component: SalarieAddComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['salarie_canAdd']
+					}
+				}
 			},
 			{
 				path: 'edit',
-				component: SalarieEditComponent
+				component: SalarieEditComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['salarie_canUpdate']
+					}
+				}
 			},
 			{
 				path: 'edit/:id',
-				component: SalarieEditComponent
+				component: SalarieEditComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['salarie_canUpdate']
+					}
+				}
 			},
 			{
 				path: 'admin',
-				component: SalariesAdminComponent
+				component: SalariesAdminComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['SUPADMIN','ADMIN']
+					}
+				}
 			},
 			{
 				path: 'goal',
-				component: SalariesGoalsComponent
+				component: SalariesGoalsComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['SUPADMIN','ADMIN']
+					}
+				}
 			},
 			{
 				path: 'dashboard',

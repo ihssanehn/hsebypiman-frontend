@@ -7,11 +7,11 @@
 				<span class="divider">></span>
 			  <span class="id-item">{{'MENU.SUB_VISITESECURITE.DETAIL' | translate}}</span>
 			</span>
-			<div ngbDropdown placement="bottom-right" class="d-inline-block pull-right" *ngxPermissionsOnly="['SUPADMIN']">
+			<div ngbDropdown placement="bottom-right" class="d-inline-block pull-right">
 				<button ngbDropdownToggle mat-icon-button color="primary" matTooltip="Actions" style="line-height: 0;height: 0;">
 				  <mat-icon>more_vert</mat-icon>
 				</button>
-				<div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
+				<div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;" *ngxPermissionsOnly="['visite_securite_canArchieve']">
 				  <button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteVisite(visite.id)">
 					<mat-icon>delete</mat-icon>
 				  </button>

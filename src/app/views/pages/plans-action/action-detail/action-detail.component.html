@@ -8,10 +8,10 @@
         <mat-icon>more_vert</mat-icon>
       </button>
       <div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
-        <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editAction(action.id)">
+        <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editAction(action.id)" *ngxPermissionsOnly="['action_canUpdate']">
           <mat-icon>edit</mat-icon>
         </button>
-        <button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteAction(action.id)">
+        <button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteAction(action.id)" *ngxPermissionsOnly="['action_canArchieve']">
           <mat-icon>delete</mat-icon>
         </button>
       </div>
@@ -130,20 +130,22 @@
 
     <div class="row mt-4" >
       <div class="col-12">
-        <button *ngIf="action.status.code == 'A_ATTRIBUER'" class="pull-right"  mat-raised-button color="info" (click)="attributeAction(action.id)">
-          <mat-icon inline="true" style="width: 21px; margin-top: -6px; margin-right: 6px;">person_add</mat-icon>
-          Attribuer l'action
-        </button>
-        <button *ngIf="action.status.code == 'EN_COURS'" class="pull-right"  mat-raised-button color="info" (click)="closeAction(action.id)">
-          <mat-icon  svgIcon="status-termine" inline="true" style="width: 21px; margin-top: -6px; margin-right: 6px;"></mat-icon>
-          Clore l'action
-        </button>
-        <span class="pull-left" *ngIf="action.status.code != 'TERMINE' && action.status.code != 'ABANDONNE'">
-          <button mat-raised-button color="info" (click)="abandonAction(action.id)">
-            <mat-icon inline="true" style="width: 21px; margin-top: -6px; margin-right: 6px;">stop</mat-icon>
-            Abandonner l'action
+        <ng-container *ngxPermissionsOnly="['action_canUpdate']">
+          <button *ngIf="action.status.code == 'A_ATTRIBUER'" class="pull-right"  mat-raised-button color="info" (click)="attributeAction(action.id)">
+            <mat-icon inline="true" style="width: 21px; margin-top: -6px; margin-right: 6px;">person_add</mat-icon>
+            Attribuer l'action
           </button>
-        </span>
+          <button *ngIf="action.status.code == 'EN_COURS'" class="pull-right"  mat-raised-button color="info" (click)="closeAction(action.id)">
+            <mat-icon  svgIcon="status-termine" inline="true" style="width: 21px; margin-top: -6px; margin-right: 6px;"></mat-icon>
+            Clore l'action
+          </button>
+          <span class="pull-left" *ngIf="action.status.code != 'TERMINE' && action.status.code != 'ABANDONNE'">
+            <button mat-raised-button color="info" (click)="abandonAction(action.id)">
+              <mat-icon inline="true" style="width: 21px; margin-top: -6px; margin-right: 6px;">stop</mat-icon>
+              Abandonner l'action
+            </button>
+          </span>
+        </ng-container>
       </div>
     </div>
   </tf-portlet-body>

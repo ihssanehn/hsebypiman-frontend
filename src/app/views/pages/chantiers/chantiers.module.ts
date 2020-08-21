@@ -78,31 +78,73 @@ const routes: Routes = [
 			},
 			{
 				path: 'list',
-				component: ChantiersListComponent
+				component: ChantiersListComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['chantier_canSeeAll']
+					}
+				}
 			},
 			{
 				path: 'list:id',
-				component: ChantiersListComponent
+				component: ChantiersListComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['chantier_canSeeAll']
+					}
+				}
 			},
 			{
 				path: 'add',
-				component: ChantierAddComponent
+				component: ChantierAddComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['chantier_canAdd']
+					}
+				}
 			},
 			{
 				path: 'add:id',
-				component: ChantierAddComponent
+				component: ChantierAddComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['chantier_canAdd']
+					}
+				}
 			},
 			{
 				path: 'edit',
-				component: ChantierEditComponent
+				component: ChantierEditComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['chantier_canUpdate']
+					}
+				}
 			},
 			{
 				path: 'edit/:id',
-				component: ChantierEditComponent
+				component: ChantierEditComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['chantier_canUpdate']
+					}
+				}
 			},
 			{
 				path: 'admin',
-				component: ChantierAdminComponent
+				component: ChantierAdminComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['SUPADMIN','ADMIN']
+					}
+				}
 			},
 		]
 	}

@@ -153,9 +153,11 @@
 	<button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}" (click)="viewAction(selectedAction.id)">
 		<mat-icon>visibility</mat-icon>
 	</button>
-	<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editAction(selectedAction.id)" *ngIf="selectedAction?.status?.code != 'ABANDONNE' && selectedAction?.status?.code != 'TERMINE'">
-		<mat-icon>edit</mat-icon>
-	</button>
+	<ng-container *ngxPermissionsOnly="['action_canUpdate']">
+		<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editAction(selectedAction.id)" *ngIf="selectedAction?.status?.code != 'ABANDONNE' && selectedAction?.status?.code != 'TERMINE'">
+			<mat-icon>edit</mat-icon>
+		</button>
+	</ng-container>
 	<!-- <button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteAction(selectedAction.id)" *ngIf="selectedAction?.status?.code != 'TERMINE'">
 		<mat-icon>delete</mat-icon>
 	</button> -->

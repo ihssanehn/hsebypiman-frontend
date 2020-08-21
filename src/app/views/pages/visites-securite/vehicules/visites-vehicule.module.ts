@@ -45,7 +45,13 @@ const routes: Routes = [
 			},
 			{
 				path: 'list',
-				component: VisitesVehiculeListComponent
+				component: VisitesVehiculeListComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['visite_securite_canSeeAll']
+					}
+				}
 			},
 			{
 				path: 'detail/:id',
@@ -53,26 +59,56 @@ const routes: Routes = [
 			},
 			{
 				path: 'add',
-				component: VisiteVehiculeAddComponent
+				component: VisiteVehiculeAddComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['visite_securite_canAdd']
+					}
+				}
 			},
 			{
 				path: 'add:id',
 				// component: VisiteVehiculeAddComponent
-				component: VisitesVehiculeComponent
+				component: VisitesVehiculeComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['visite_securite_canAdd']
+					}
+				}
 			},
 			{
 				path: 'edit',
 				// component: VisiteVehiculeEditComponent
-				component: VisitesVehiculeComponent
+				component: VisitesVehiculeComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['visite_securite_canUpdate']
+					}
+				}
 			},
 			{
 				path: 'edit/:id',
 				// component: VisiteVehiculeEditComponent
-				component: VisitesVehiculeComponent
+				component: VisitesVehiculeComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['visite_securite_canUpdate']
+					}
+				}
 			},
 			{
 				path: 'admin',
-				component: VisiteVehiculeAdminComponent
+				component: VisiteVehiculeAdminComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['SUPADMIN','ADMIN']
+					}
+				}
 			},
 		]
 	}

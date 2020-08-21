@@ -8,10 +8,10 @@
         <mat-icon>more_vert</mat-icon>
       </button>
       <div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
-        <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editChantier(chantier.id)">
+        <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editChantier(chantier.id)" *ngxPermissionsOnly="['chantier_canUpdate']">
           <mat-icon>edit</mat-icon>
         </button>
-        <button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteChantier(chantier.id)">
+        <button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteChantier(chantier.id)" *ngxPermissionsOnly="['chantier_canArchieve']">
           <mat-icon>delete</mat-icon>
         </button>
       </div>
@@ -197,18 +197,20 @@
     </div>
     <div class="row mt-4" *ngIf="chantier.status.code != 'TERMINE'">
       <div class="col-12">
-        <button mat-raised-button color="info" (click)="closeChantier(chantier.id)">
+        <button mat-raised-button color="info" (click)="closeChantier(chantier.id)" *ngxPermissionsOnly="['chantier_canUpdate']">
           <mat-icon  svgIcon="status-termine" inline="true" style="width: 21px; margin-top: -6px; margin-right: 6px;"></mat-icon>
           Clore le chantier
         </button>
-        <span class="pull-right" *ifAllModules="['ANALYSE']"
-          matTooltip="Le montant du chantier est inférieur ou égal à 20K€, vous ne pouvez pas créer d\'analyse de risque" 
-          [matTooltipDisabled]="this.chantier.montant > 20000">
-          <button mat-raised-button color="info" (click)="addAr(chantier.id)" [disabled]="this.chantier.montant <= 20000">
-            <mat-icon inline="true" style="width: 21px; margin-top: -6px; margin-right: 6px;">add</mat-icon>
-            Créer Analyse de risque
-          </button>
-        </span>
+        <ng-container *ngxPermissionsOnly="['analyse_risque_canAdd']">
+          <span class="pull-right" *ifAllModules="['ANALYSE']"
+            matTooltip="Le montant du chantier est inférieur ou égal à 20K€, vous ne pouvez pas créer d\'analyse de risque" 
+            [matTooltipDisabled]="this.chantier.montant > 20000">
+            <button mat-raised-button color="info" (click)="addAr(chantier.id)" [disabled]="this.chantier.montant <= 20000">
+              <mat-icon inline="true" style="width: 21px; margin-top: -6px; margin-right: 6px;">add</mat-icon>
+              Créer Analyse de risque
+            </button>
+          </span>
+        </ng-container>
       </div>
     </div>
   </tf-portlet-body>
