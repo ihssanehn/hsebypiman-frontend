@@ -2,4 +2,51 @@
 	.tf-aside {
 		height: 100%;
 	}
+	// .mat-icon.tf_menu__link-icon{
+		// 	> svg{
+			// 		width: 20px;
+			// 	}
+			// }
+}
+
+
+.mat-icon
+{
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+
+    & ::ng-deep svg
+    {
+		align-self: center;
+		
+		.prefix__cls-1{
+			// fill:#33b5ae;
+			// stroke:#33b5ae;
+			stroke-width:2px;
+		}
+		
+    }
+
+    &.shrink-90 ::ng-deep svg
+    {
+        width: 90%;
+        height: 90%;
+    }
+
+    &.shrink-80 ::ng-deep svg
+    {
+        width: 80%;
+        height: 80%;
+    }
+    &.shrink-70 ::ng-deep svg
+    {
+        width: 70%;
+        height: 70%;
+    }
+    &.shrink-60 ::ng-deep svg
+    {
+        width: 60%;
+        height: 60%;
+	}
 }

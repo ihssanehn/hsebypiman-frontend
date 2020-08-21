@@ -9,6 +9,7 @@ import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ModuleService } from '@app/core/services';
 
+
 @Component({
 	selector: 'tf-aside-left',
 	templateUrl: './aside-left.component.html',
@@ -79,12 +80,16 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 		iconRegistry: MatIconRegistry, 
 		sanitizer: DomSanitizer
 	) {
+		
+		iconRegistry.addSvgIcon('chantier',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-chantier.svg'));
 		iconRegistry.addSvgIcon('close-eye',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-close-see.svg'));
 		iconRegistry.addSvgIcon('dashboard',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-dashboard.svg'));
-		iconRegistry.addSvgIcon('chantier',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-chantier.svg'));
 		iconRegistry.addSvgIcon('visite-de-securite',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-visite-de-securite.svg'));
 		iconRegistry.addSvgIcon('plan-daction',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-plan-daction.svg'));
+		iconRegistry.addSvgIcon('analyse',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-design.svg'));
 		iconRegistry.addSvgIcon('administration',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-administration.svg'));
+		iconRegistry.addSvgIcon('business',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-business.svg'));
+		iconRegistry.addSvgIcon('construction',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-construction.svg'));
 	}
 
 	ngAfterViewInit(): void {

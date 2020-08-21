@@ -56,6 +56,7 @@ export const locale = {
 				EDIT:'Modifier le salarié',
 				LIST:'Liste des salariés',
 			},
+			SUIVI_HSE: 'Suivi Hse',
 			ENTREPRISES: 'Entreprises Externes',
 			SUB_ENTREPRISES:{
 				DETAIL:'Détail de l\'entreprise',
@@ -70,6 +71,7 @@ export const locale = {
 				EDIT:'Modifier le matériel',
 				LIST:'Liste du matériel',
 			},
+			USERS: 'Utilisateurs',
 			MODULES: 'Modules',
 			SUB_MODULES:{
 				DETAIL:'Détail du module',
