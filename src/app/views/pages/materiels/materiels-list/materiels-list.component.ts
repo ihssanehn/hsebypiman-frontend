@@ -99,10 +99,10 @@ export class MaterielsListComponent implements OnInit, AfterViewInit {
 	}
 
 	viewMateriel(materielId) {
-		this.router.navigateByUrl('materiel/detail/' + materielId);
+		this.router.navigateByUrl('materiels/detail/' + materielId);
 	}
 	editMateriel(materielId) {
-		this.router.navigateByUrl('materiel/edit/' + materielId);
+		this.router.navigateByUrl('materiels/edit/' + materielId);
 	}
 	deleteMateriel(materielId) {
 		Swal.fire({

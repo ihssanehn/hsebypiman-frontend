@@ -55,7 +55,6 @@ import {
 } from '@angular/material';
 import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapter';
 import { AdminModulesComponent } from './admin-modules/admin-modules.component';
-import { AdminUsersComponent } from './admin-users/admin-users.component';
 import { AdminChantiersComponent } from './admin-chantiers/admin-chantiers.component';
 import { AdminArComponent } from './admin-ar/admin-ar.component';
 import { AdminActionComponent } from './admin-action/admin-action.component';
@@ -75,12 +74,8 @@ const routes: Routes = [
 		children: [
 			{
 				path: '',
-				redirectTo: 'users',
+				redirectTo: 'modules',
 				pathMatch: 'full'
-			},
-			{
-				path:'users',
-				component: AdminUsersComponent
 			},
 			{
 				path:'modules',
@@ -103,7 +98,7 @@ const routes: Routes = [
 				component: AdminActionComponent
 			},
 			{
-				path: 'suivi-hse',
+				path: 'salaries',
 				component: AdminSalariesComponent
 			},
 			{
@@ -189,7 +184,6 @@ const routes: Routes = [
 	],
 	declarations: [
 		AdminComponent,
-		AdminUsersComponent,
 		AdminModulesComponent,
 		AdminChantiersComponent,
 		AdminArComponent,

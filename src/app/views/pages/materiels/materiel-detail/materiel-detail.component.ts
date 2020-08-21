@@ -121,7 +121,7 @@ export class MaterielDetailComponent implements OnInit, OnDestroy {
 	}
 
   	editMateriel(id){
-		this.router.navigateByUrl('materiel/edit/'+id);
+		this.router.navigateByUrl('materiels/edit/'+id);
 	}
 	deleteMateriel(id){
 		Swal.fire({
