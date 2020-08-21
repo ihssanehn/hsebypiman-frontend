@@ -11,8 +11,8 @@
                     <form autocomplete="off" class="tf-form tf-form--group-seperator-dashed " (ngSubmit)="onSubmit()" novalidate fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
                         <div class="row form-row px-5">
                             <div class="col-3 button-box" *ngFor="let module of modulesList">
-                                <mat-form-field class="button-form" floatLabel="always" appearance="none" (click)="moduleCheckChange(module.id)">
-                                    <mat-slide-toggle [checked]="module.is_active == 1" (change)="onModuleCheckChange($event, module.id)" ><span class="slider-label pl-2">{{module.libelle}}</span></mat-slide-toggle>
+                                <mat-form-field class="button-form" floatLabel="always" appearance="none" >
+                                    <mat-slide-toggle [checked]="module.is_active == 1" disableRipple="true" [disabled]="module.code == 'CHANTIER'" (change)="onModuleCheckChange($event, module.id)" ><span class="slider-label pl-2">{{module.libelle}}</span></mat-slide-toggle>
                                     <textarea matInput hidden></textarea>
                                 </mat-form-field>
                             </div>

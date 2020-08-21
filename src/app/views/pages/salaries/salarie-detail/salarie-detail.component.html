@@ -81,20 +81,6 @@
                                             <p><span class="label pull-left mr-2">À renouveler</span><span class="blue" *ngIf="salarie.latest_visite_medicale?.date_renouvellement; else noDataFound">{{salarie.latest_visite_medicale?.date_renouvellement | date:'dd/MM/yyyy'}}</span></p>
                                         </div>
                                     </div>
-                                    <!-- <div class="box box-ar-vs col-md-3">
-                                        <h6><b>Ouvrage concerné</b></h6>
-                                        <div class="tf-divider"><span></span></div>
-                                        <div class="box box-coords" style="flex:1">
-                                            <p><span class="label pull-left mr-2">Type</span><span class="blue" *ngIf="salarie.ouvrage; else noDataFound">{{salarie.ouvrage}}</span></p>
-                                        </div>
-                                    </div>
-                                    <div class="box box-ar-vs col-md-3">
-                                        <h6><b>Indications complémentaires</b></h6>
-                                        <div class="tf-divider"><span></span></div>
-                                        <div class="box box-coords" style="flex:1">
-                                            <p><span class="label pull-left mr-2">Indication</span><span class="blue" *ngIf="salarie.indication; else noDataFound">{{salarie.indication}}</span></p>
-                                        </div>
-                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -110,7 +96,6 @@
                                 <h5><b>Formations</b></h5>
                                 <div class="box box-ar-vs" style="flex: 1;">
                                     <h6><b>Suivis des formations</b>
-                                        <!-- <small class="pull-right">{{'COMMON.UPDATED_AT.TITLE' | translate}} le <span class="blue">10/10/2020</span></small> -->
                                     </h6>
                                     <div class="tf-divider"><span></span></div>
                                     <div>

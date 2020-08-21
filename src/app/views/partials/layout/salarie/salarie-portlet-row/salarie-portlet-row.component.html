@@ -6,8 +6,8 @@
     <ng-container *ngIf="metric.is_bool">
       <span>
         <mat-radio-group [(ngModel)]="metric.pivot.value">
-          <mat-radio-button class="metric-radio" [value]="1">Oui</mat-radio-button>
-          <mat-radio-button class="metric-radio" [value]="0">Non</mat-radio-button>
+          <mat-radio-button class="metric-radio" disabled [value]="1">Oui</mat-radio-button>
+          <mat-radio-button class="metric-radio" disabled [value]="0">Non</mat-radio-button>
         </mat-radio-group>
       </span>
     </ng-container>
