@@ -91,12 +91,15 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 		this.ngxRolesService.roles$.subscribe((event) => {
 			this.cdr.markForCheck();
 		})
-		iconRegistry.addSvgIcon('close-eye',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-close-see.svg'));
+		// iconRegistry.addSvgIcon('close-eye',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-close-see.svg'));
 		iconRegistry.addSvgIcon('dashboard',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-dashboard.svg'));
 		iconRegistry.addSvgIcon('chantier',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-chantier.svg'));
 		iconRegistry.addSvgIcon('visite-de-securite',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-visite-de-securite.svg'));
 		iconRegistry.addSvgIcon('plan-daction',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-plan-daction.svg'));
 		iconRegistry.addSvgIcon('administration',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-administration.svg'));
+		iconRegistry.addSvgIcon('analyse',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-design.svg'));
+		iconRegistry.addSvgIcon('business',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-business.svg'));
+		iconRegistry.addSvgIcon('construction',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-construction.svg'));
 	}
 
 	ngAfterViewInit(): void {

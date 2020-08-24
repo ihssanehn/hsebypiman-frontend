@@ -77,6 +77,8 @@ export const locale = {
 				EDIT:'Modifier le module',
 				LIST:'Liste du module',
 			},
+			SUIVI_HSE: 'Suivi Hse',
+			USERS: 'Utilisateurs',
 			LIST: 'Liste',
 			ADMIN: 'Admin',
 			HOME: 'Accueil',

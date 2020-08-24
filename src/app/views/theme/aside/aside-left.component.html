@@ -90,7 +90,8 @@
 <ng-template #menuItemTextTemplate let-item="item" let-parentItem="parentItem">
 	<!-- if menu item has icon -->
 	<!-- <i *ngIf="item.icon" class="tf-menu__link-icon" [ngClass]="item.icon"></i> -->
-	<mat-icon *ngIf="item.icon" class="tf-menu__link-icon" >{{item.icon}}</mat-icon>
+	<mat-icon *ngIf="item.icon" class="tf-menu__link-icon mr-2">{{item.icon}}</mat-icon>
+	<mat-icon *ngIf="item.svgIcon" class="tf-menu__link-icon shrink-80 mr-2" [svgIcon]="item.svgIcon"></mat-icon>
 
 	<!-- if menu item using bullet -->
 	<i *ngIf="parentItem && parentItem.bullet === 'dot'" class="tf-menu__link-bullet tf-menu__link-bullet--dot">

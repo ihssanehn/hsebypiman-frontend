@@ -913,14 +913,13 @@ export class MenuConfig {
 				},
 				items: [
 					{
-						// icon: 'modules',
-						// icon: 'flaticon2-browser-2',
-						title: 'Modules',
+						title: 'Utilisateurs',
 						root: true,
 						alignment: 'left',
-						page: '/admin/modules',
-						translate: 'MENU.MODULES',
+						page: '/admin/users',
+						translate: 'MENU.USERS',
 						needModule: false,
+						svgIcon: 'administration'
 					},
 					{
 						title: 'Chantiers',
@@ -929,9 +928,8 @@ export class MenuConfig {
 						page: '/admin/chantiers',
 						translate: 'MENU.CHANTIER',
 						needModule: true,
-						moduleCode: ['CHANTIER']
-						// icon: 'chantier',
-						// icon: 'flaticon2-browser-2',
+						moduleCode: ['CHANTIER'],
+						svgIcon: 'chantier'
 					},
 					{
 						title: 'Analyses de risque',
@@ -940,9 +938,8 @@ export class MenuConfig {
 						page: '/admin/analyses-risque',
 						translate: 'MENU.ANALYSERISQUE',
 						needModule: true,
-						moduleCode: ['ANALYSE']
-						// icon: '',
-						// icon: 'flaticon2-digital-marketing',
+						moduleCode: ['ANALYSE'],
+						svgIcon: 'analyse'
 					},
 					{
 						title: 'Visites de securité',
@@ -951,9 +948,8 @@ export class MenuConfig {
 						page: '/admin/visites-securite',
 						translate: 'MENU.VISITESECURITE',
 						needModule: true,
-						moduleCode: ['VISITE']
-						// icon: 'visite-de-securite',
-						// icon: 'flaticon2-list-2',
+						moduleCode: ['VISITE'],
+						svgIcon: 'visite-de-securite'
 					},
 					{
 						title: 'Plans d\'action',
@@ -962,20 +958,18 @@ export class MenuConfig {
 						page: '/admin/plan-actions',
 						translate: 'MENU.PLANACTION',
 						needModule: true,
-						moduleCode: ['PLANACTION']
-						// icon: 'plan-daction',
-						// icon: 'flaticon2-user-outline-symbol',
+						moduleCode: ['PLANACTION'],
+						svgIcon: 'plan-daction'
 					},
 					{
-						title: 'Salariés',
+						title: 'Suivi HSE',
 						root: true,
 						alignment: 'left',
-						page: '/admin/salaries',
-						translate: 'MENU.SALARIES',
+						page: '/admin/suivi_hse',
+						translate: 'MENU.SUIVI_HSE',
 						needModule: true,
-						moduleCode: ['SALARIES']
-						// icon: 'salaries',
-						// icon: 'flaticon2-list-2',
+						moduleCode: ['SALARIES'],
+						svgIcon: 'administration'
 					},
 					{
 						title: 'Entreprises externes',
@@ -984,7 +978,8 @@ export class MenuConfig {
 						page: '/admin/entreprises',
 						translate: 'MENU.ENTREPRISES',
 						needModule: true,
-						moduleCode: ['ENTREPRISE']
+						moduleCode: ['ENTREPRISE'],
+						svgIcon: 'business'
 					},
 					{
 						title: 'Matériel',
@@ -993,7 +988,19 @@ export class MenuConfig {
 						page: '/admin/materiel',
 						translate: 'MENU.MATERIELS',
 						needModule: true,
-						moduleCode: ['MATERIEL']
+						moduleCode: ['MATERIEL'],
+						svgIcon: 'construction'
+					},
+					{
+						title: 'Modules',
+						root: true,
+						alignment: 'left',
+						page: '/admin/modules',
+						translate: 'MENU.MODULES',
+						needModule: false,
+						permissionOnly: ['ADMIN'],
+						svgIcon: 'dashboard'
+						
 					},
 				]
 			},
