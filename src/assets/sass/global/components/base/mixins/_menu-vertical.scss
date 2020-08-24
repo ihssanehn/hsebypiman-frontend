@@ -26,7 +26,8 @@
 			font-weight: tf-get($item, link, text, font-weight);
 			font-size: tf-get($item, link, text, font-size);
 			text-transform: tf-get($item, link, text, font-transform);
-			text-align: tf-get($item, link, text, text-align)
+			// text-align: tf-get($item, link, text, text-align)
+			text-align: left
 		}
 
 		// menu item link's icon
