@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { shuffle } from 'lodash';
 // Services
 // Widgets model
-import { LayoutConfigService, SparklineChartOptions } from '../../../core/_base/layout';
+import { LayoutConfigService, SparklineChartOptions, MenuAsideService } from '../../../core/_base/layout';
 import { Widget4Data } from '../../partials/content/widgets/widget4/widget4.component';
 
 @Component({
@@ -21,10 +21,13 @@ export class DashboardComponent implements OnInit {
 	widget4_2: Widget4Data;
 	widget4_3: Widget4Data;
 	widget4_4: Widget4Data;
-
+	
 	constructor(
+		private menuAsideService: MenuAsideService,
 		private layoutConfigService: LayoutConfigService
-		) {
+	) {
+		this.menuAsideService.loadMenuAside('aside.dashboard');
+
 	}
 
 	ngOnInit(): void {

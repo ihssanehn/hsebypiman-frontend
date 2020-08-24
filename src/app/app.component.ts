@@ -13,6 +13,7 @@ import { locale as jpLang } from './core/_config/i18n/jp';
 import { locale as deLang } from './core/_config/i18n/de';
 import { environment } from '@env/environment';
 import { AuthService } from './core/auth';
+import { NgxRolesService, NgxPermissionsService } from 'ngx-permissions';
 
 @Component({
 	// tslint:disable-next-line:component-selector
@@ -40,7 +41,9 @@ export class AppComponent implements OnInit, OnDestroy {
 				         private layoutConfigService: LayoutConfigService,
 						 private splashScreenService: SplashScreenService,
 						 private authService : AuthService,
-						 private versionCheckService : VersionCheckService
+						 private versionCheckService : VersionCheckService,
+						 private ngxRolesService : NgxRolesService,
+						 private ngxPermService:NgxPermissionsService
 	) {
 
 		// register translations
@@ -59,13 +62,14 @@ export class AppComponent implements OnInit, OnDestroy {
 		this.loader = this.layoutConfigService.getConfig('loader.enabled');
 
 		// Load permissions
-		this.authService.currentUser.subscribe((user) => {
-			var permissions = user.role.permissions.map(x => x.code);
-			console.log(user.role.code);
-			console.log(permissions);
-			this.authService.loadUserPermissions(permissions);
-			this.authService.loadUserRole(user.role.code,permissions);
-		});
+		// this.authService.currentUser.subscribe((user) => {
+		// 	if(user){
+		// 		var permissions = user.role.permissions.map(x => x.code);
+		// 		this.authService.loadUserPermissions(permissions);
+		// 		this.authService.loadUserRole(user.role.code,permissions);
+		// 	}
+		// });
+		
 
 		const routerSubscription = this.router.events.subscribe(event => {
 			if (event instanceof NavigationEnd) {

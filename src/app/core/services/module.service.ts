@@ -37,7 +37,6 @@ export class ModuleService extends HttpService {
     
    
     getModules(){
-        console.log('here');
         return this.http.get<any>(`${this.baseUrl}`)
         .pipe(
             map(
@@ -59,11 +58,15 @@ export class ModuleService extends HttpService {
     }
 
     isActived(params){ 
-        if(!this.currentModulesSubject.value){
-            return this.populate(params);
+        if(params){
+            if(!this.currentModulesSubject.value){
+                return this.populate(params);
+            }
+            var test =  params.every((val) => this.currentModulesSubject.value.includes(val))
+            return test;
+        }else{
+            return false;
         }
-        var test =  params.every((val) => this.currentModulesSubject.value.includes(val))
-        return test;
     }
 
     inModules(params){ 

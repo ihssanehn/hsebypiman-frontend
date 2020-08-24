@@ -4,7 +4,7 @@ import { Observable, of, BehaviorSubject } from 'rxjs';
 import { User } from '../_models/user.model';
 import { Permission } from '../_models/permission.model';
 import { Role } from '../_models/role.model';
-import { catchError, map, distinctUntilChanged } from 'rxjs/operators';
+import { catchError, map, distinctUntilChanged, timeout } from 'rxjs/operators';
 import { QueryParamsModel, QueryResultsModel } from '../../_base/crud';
 import { environment } from '../../../../environments/environment';
 import { HttpService } from '@app/core/services/http-service';
@@ -47,11 +47,18 @@ export class AuthService extends HttpService {
 		return this.http.get<JsonResponse<User>>(`${this.baseUrl}auth/user`)
 		.pipe(
 			map(res=> {
-				localStorage.setItem('currentUser', JSON.stringify(res.result.data));
-				this.currentUserSubject.next(res.result.data);
+				var user = res.result.data;
+				localStorage.setItem('currentUser', JSON.stringify(user));
+				this.currentUserSubject.next(user);
+				var permissions = user.role.permissions.map(x => x.code);
+				
+				this.loadUserPermissions(permissions);
+				this.loadUserRole(user.role.code,permissions);
 				return res;
 			})
 		);
+
+		
 	}
 
 	updateProfile(payload): Observable<JsonResponse<User>> {
@@ -61,7 +68,13 @@ export class AuthService extends HttpService {
 	}
 
 	logout(): Observable<any> {
-		return this.http.post(`${this.baseUrl}auth/logout`, {});
+		return this.http.post(`${this.baseUrl}auth/logout`, {}).pipe(
+			map(res=>{
+				localStorage.removeItem('currentUser');
+				this.permissionsService.flushPermissions();
+				this.rolesService.flushRoles();
+			})
+		);
 	}
 
 	// register(user: User): Observable<any> {
@@ -156,13 +169,13 @@ export class AuthService extends HttpService {
 	}
 
 	loadUserPermissions(array){
-		this.permissionsService.loadPermissions(array);
+		this.permissionsService.addPermission(array);
 	}
 
 	loadUserRole(role, permissions){
 		this.rolesService.addRole(role,permissions);
 	}
-
+	
 	registerPermissions(res: JsonResponse<User>) {
 		var user = res.result.data;
 		this.loadUserPermissions([user.role.code]);

@@ -10,6 +10,7 @@ import { User, AuthService } from '../../../../../core/auth';
 import { Router } from '@angular/router';
 import { environment } from '@env/environment';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -61,7 +62,15 @@ export class UserSideProfileComponent implements OnInit {
 	 */
 	logout() {
 		this.authService.logout().toPromise();
-		localStorage.removeItem(environment.authTokenKey);
-		this.router.navigate(['/auth/login']);
+		
+		Swal.fire({
+			icon: 'success', 
+            title:"Vous avez bien été déconnecté", 
+            showConfirmButton: false, 
+            timer: 1500 
+		}).then(()=>{
+			localStorage.removeItem(environment.authTokenKey);
+			this.router.navigate(['/auth/login']);
+		})
 	}
 }

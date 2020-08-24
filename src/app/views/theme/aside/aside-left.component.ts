@@ -8,6 +8,7 @@ import { HtmlClassService } from '../html-class.service';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ModuleService } from '@app/core/services';
+import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
 
 @Component({
 	selector: 'tf-aside-left',
@@ -73,12 +74,23 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 		public menuAsideService: MenuAsideService,
 		public layoutConfigService: LayoutConfigService,
 		public moduleService: ModuleService,
+		private ngxPermissionsService: NgxPermissionsService,
+		private ngxRolesService: NgxRolesService,
 		private router: Router,
 		private render: Renderer2,
 		private cdr: ChangeDetectorRef,
 		iconRegistry: MatIconRegistry, 
 		sanitizer: DomSanitizer
 	) {
+		this.moduleService.currentModules.subscribe((event) => {
+			this.cdr.markForCheck();
+		})
+		this.ngxPermissionsService.permissions$.subscribe((event) => {
+			this.cdr.markForCheck();
+		})
+		this.ngxRolesService.roles$.subscribe((event) => {
+			this.cdr.markForCheck();
+		})
 		iconRegistry.addSvgIcon('close-eye',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-close-see.svg'));
 		iconRegistry.addSvgIcon('dashboard',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-dashboard.svg'));
 		iconRegistry.addSvgIcon('chantier',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-chantier.svg'));
@@ -239,4 +251,34 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 	goToAdd(){
 		this.router.navigateByUrl(this.menuAsideService.menuBtnAdd.value['page']);
 	}
+
+	needPermission(item){
+		if(!item.permissionOnly){
+			return true;
+		}else{
+			
+			var hasPerm = item.permissionOnly.filter(permission =>  this.ngxPermissionsService.getPermission(permission));
+			var hasRole = item.permissionOnly.filter(permission =>  this.ngxRolesService.getRole(permission));
+			
+			if(hasPerm.length > 0 || hasRole.length > 0){
+				return true;
+			}else{
+				return false;
+			}
+		}
+	}
+
+	hasButton(){
+		if(this.menuAsideService.menuBtnAdd.value['title']){
+
+			if(this.menuAsideService.menuBtnAdd.value['permissionOnly']){
+				return this.needPermission(this.menuAsideService.menuBtnAdd.value);
+			}else{
+				return true
+			}
+		}else{
+			return false
+		}
+	}
+	
 }

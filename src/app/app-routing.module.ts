@@ -83,7 +83,7 @@ const routes: Routes = [
 				data: {
 					moduleCodes:['PARAMS'],
 					permissions: {
-						only: 'SUPADMIN'
+						only: ['ADMIN', 'SUPADMIN']
 					}
 				}
 			},

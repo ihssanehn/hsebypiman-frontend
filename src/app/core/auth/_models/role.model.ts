@@ -1,4 +1,5 @@
 import { BaseModel } from '../../_base/crud';
+import { Permission } from './permission.model';
 
 export class Role extends BaseModel {
     id: number;
@@ -6,8 +7,8 @@ export class Role extends BaseModel {
     slug: string;
     libelle: string;
     code: string;
-    isCoreRole = false;
-    permissions : number[];
+    isCoreRole: boolean = false;
+    permissions? : any[];
 
     clear(): void {
         this.id = undefined;

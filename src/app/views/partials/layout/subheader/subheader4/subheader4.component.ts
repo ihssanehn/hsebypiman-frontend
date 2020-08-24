@@ -10,6 +10,7 @@ import { filter } from 'rxjs/operators';
 import objectPath from 'object-path';
 import { HtmlClassService } from '@app/views/theme/html-class.service';
 import { ModuleService } from '@app/core/services/module.service';
+import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
 
 @Component({
 	selector: 'tf-subheader4',
@@ -40,9 +41,17 @@ export class Subheader4Component implements OnInit, OnDestroy, AfterViewInit {
 		public htmlClassService: HtmlClassService,
 		private router: Router,
 		private moduleService: ModuleService,
-		private cdr: ChangeDetectorRef
+		private cdr: ChangeDetectorRef,
+		private ngxPermissionsService: NgxPermissionsService,
+		private ngxRolesService: NgxRolesService,
 	) {
 		this.moduleService.currentModules.subscribe((event) => {
+			this.cdr.markForCheck();
+		})
+		this.ngxPermissionsService.permissions$.subscribe((event) => {
+			this.cdr.markForCheck();
+		})
+		this.ngxRolesService.roles$.subscribe((event) => {
 			this.cdr.markForCheck();
 		})
 	}
@@ -147,6 +156,22 @@ export class Subheader4Component implements OnInit, OnDestroy, AfterViewInit {
 	
 	isActiveModule(codes){
 		return this.moduleService.isActived(codes);
+	}
+
+	needPermission(item){
+		if(!item.permissionOnly){
+			return true;
+		}else{
+			
+			var hasPerm = item.permissionOnly.filter(permission =>  this.ngxPermissionsService.getPermission(permission));
+			var hasRole = item.permissionOnly.filter(permission =>  this.ngxRolesService.getRole(permission));
+			
+			if(hasPerm.length > 0 || hasRole.length > 0){
+				return true;
+			}else{
+				return false;
+			}
+		}
 	}
 
 }

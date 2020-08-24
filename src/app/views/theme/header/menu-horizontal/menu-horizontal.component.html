@@ -4,7 +4,7 @@
 	<div tfMenu [options]="menuOptions" id="tf_header_menu" class="tf-header-menu tf-header-menu-mobile" [ngClass]="htmlClassService.getClasses('header_menu', true)">
 		<ul class="tf-menu__nav" [ngClass]="htmlClassService.getClasses('header_menu_nav', true)">
 			<ng-container *ngFor="let item of menuHorService.menuList$ | async">
-				<ng-container *ngIf="item.title && (!item.needModule || isActiveModule(item.code))" [ngTemplateOutlet]="menuTemplate" [ngTemplateOutletContext]="{ item: item }"></ng-container>
+				<ng-container *ngIf="item.title && (!item.needModule || isActiveModule(item.moduleCode)) && needPermission(item)" [ngTemplateOutlet]="menuTemplate" [ngTemplateOutletContext]="{ item: item }"></ng-container>
 			</ng-container>
 		</ul>
 	</div>
@@ -16,7 +16,6 @@
 	<li [attr.aria-haspopup]="true"
 		[attr.data-tfmenu-submenu-toggle]="getItemAttrSubmenuToggle(item)"
 		[ngClass]="getItemCssClasses(item)">
-
 		<!-- if item has submenu -->
 		<ng-container *ngIf="item.submenu">
 			<a [routerLink]="item.page" class="tf-menu__link tf-menu__toggle"  [ngClass]="hasChildrenClass(item)">
@@ -95,7 +94,7 @@
 					<div tfMenu id="tf_header_menu" class="tf-header-menu tf-header-menu-mobile" [ngClass]="htmlClassService.getClasses('header_menu', true)">
 						<ul class="tf-menu__nav" [ngClass]="htmlClassService.getClasses('header_menu_nav', true)">
 							<ng-container *ngFor="let item of subheaderService.subHeaderList$ | async">
-								<ng-container *ngIf="item.title && (!item.needModule || isActiveModule(item.code))" [ngTemplateOutlet]="menuTemplate" [ngTemplateOutletContext]="{ item: item }"></ng-container>
+								<ng-container *ngIf="item.title && (!item.needModule || isActiveModule(item.moduleCode)) && needPermission(item)" [ngTemplateOutlet]="menuTemplate" [ngTemplateOutletContext]="{ item: item }"></ng-container>
 							</ng-container>
 						</ul>
 					</div>

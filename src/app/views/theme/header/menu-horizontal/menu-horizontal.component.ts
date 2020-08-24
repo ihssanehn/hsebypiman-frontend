@@ -26,6 +26,7 @@ import {
 import { HtmlClassService } from '../../html-class.service';
 
 import { ModuleService } from '@app/core/services/module.service';
+import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
 
 @Component({
 	selector: 'tf-menu-horizontal',
@@ -64,6 +65,9 @@ export class MenuHorizontalComponent implements OnInit, AfterViewInit {
 		}
 	};
 
+	permissions;
+	roles;
+
 	/**
 	 * Component Conctructor
 	 *
@@ -87,8 +91,16 @@ export class MenuHorizontalComponent implements OnInit, AfterViewInit {
 		private render: Renderer2,
 		public moduleService: ModuleService,
 		private cdr: ChangeDetectorRef,
+		private ngxPermissionsService: NgxPermissionsService,
+		private ngxRolesService: NgxRolesService,
 	) {
 		this.moduleService.currentModules.subscribe((event) => {
+			this.cdr.markForCheck();
+		})
+		this.ngxPermissionsService.permissions$.subscribe((event) => {
+			this.cdr.markForCheck();
+		})
+		this.ngxRolesService.roles$.subscribe((event) => {
 			this.cdr.markForCheck();
 		})
 	}
@@ -101,6 +113,15 @@ export class MenuHorizontalComponent implements OnInit, AfterViewInit {
 	 * After view init
 	 */
 	ngAfterViewInit(): void {
+		
+		// this.ngxPermissionsService.permissions$.subscribe(x=>{
+		// 	this.permissions = Object.keys(x);
+		// 	this.cdr.markForCheck();
+		// })
+		// this.ngxRolesService.roles$.subscribe(x=>{
+		// 	this.roles = Object.keys(x);
+		// 	this.cdr.markForCheck();
+		// })
 	}
 
 	/**
@@ -269,6 +290,38 @@ export class MenuHorizontalComponent implements OnInit, AfterViewInit {
 			return 'tf-menu__item--has-children';
 		}else{
 			return '';
+		}
+	}
+	// needPermission(item){
+	// 	if(!item.permissionOnly){
+	// 		return true;
+	// 	}else{
+	// 		if(this.permissions){
+	// 			var hasPerm = this.permissions.filter(x=> item.permissionOnly.includes(x));
+	// 			var hasRoles = this.roles.filter(x=> item.permissionOnly.includes(x));				
+	// 			if(hasPerm.length > 0 || hasRoles.length > 0){
+	// 				return true;
+	// 			}else{
+	// 				return false;
+	// 			}
+	// 		}else{
+	// 			return false;
+	// 		}
+	// 	}
+	// }
+	needPermission(item){
+		if(!item.permissionOnly){
+			return true;
+		}else{
+			
+			var hasPerm = item.permissionOnly.filter(permission =>  this.ngxPermissionsService.getPermission(permission));
+			var hasRole = item.permissionOnly.filter(permission =>  this.ngxRolesService.getRole(permission));
+			
+			if(hasPerm.length > 0 || hasRole.length > 0){
+				return true;
+			}else{
+				return false;
+			}
 		}
 	}
 }
