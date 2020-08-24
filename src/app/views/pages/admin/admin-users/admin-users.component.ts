@@ -1,19 +1,25 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { CatHabilitationService, HabilitationService } from '@app/core/services';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { AdminAddModalComponent } from '@app/views/partials/layout/admin-add-modal/admin-add-modal.component';
-import Swal from 'sweetalert2';
+// Angular
+import { Component, ChangeDetectionStrategy, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 
 
 @Component({
-  selector: 'tf-admin-users',
-  templateUrl: './admin-users.component.html',
-  styleUrls: ['./admin-users.component.scss']
+	selector: 'tf-admin-users',
+	templateUrl: './admin-users.component.html',
+	styleUrls: ['./admin-users.component.scss'],
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdminUsersComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit() {}
+	constructor(
+		private router:Router,
+	) {
+	}
 
+	ngOnInit(){
+		
+	}
+
+	
 }

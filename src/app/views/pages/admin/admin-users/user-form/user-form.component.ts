@@ -5,13 +5,13 @@ import { Type } from '@app/core/models/type.model';
 import { FonctionService } from '@app/core/services';
 
 @Component({
-  selector: 'tf-salarie-form',
-  templateUrl: './salarie-form.component.html',
-  styleUrls: ['./salarie-form.component.scss']
+  selector: 'tf-user-form',
+  templateUrl: './user-form.component.html',
+  styleUrls: ['./user-form.component.scss']
 })
-export class SalarieFormComponent implements OnInit {
+export class UserFormComponent implements OnInit {
 
-  @Input() salarieForm: FormGroup;
+  @Input() userForm: FormGroup;
   @Input() formStatus: FormStatus;
   @Input() edit: Boolean;
   @Output() onCancel = new EventEmitter();
@@ -40,8 +40,8 @@ export class SalarieFormComponent implements OnInit {
   }
 
   isFieldRequired(controlName){
-    if(this.salarieForm && this.salarieForm.controls[controlName]){
-      const control = this.salarieForm.controls[controlName]
+    if(this.userForm && this.userForm.controls[controlName]){
+      const control = this.userForm.controls[controlName]
       const { validator } = control
       if (validator) {
           const validation = validator(new FormControl())
@@ -52,7 +52,7 @@ export class SalarieFormComponent implements OnInit {
   }
 
   isControlHasError(controlName: string, validationType: string): boolean {
-		const control = this.salarieForm.controls[controlName];
+		const control = this.userForm.controls[controlName];
 		if (!control) {
 			return false;
 		}

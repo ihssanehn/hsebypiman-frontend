@@ -10,14 +10,14 @@ import { extractErrorMessagesFromErrorResponse } from '@app/core/_base/crud';
 import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
 
 @Component({
-  selector: 'tf-salarie-add',
-  templateUrl: './salarie-add.component.html',
-  styleUrls: ['./salarie-add.component.scss']
+  selector: 'tf-user-add',
+  templateUrl: './user-add.component.html',
+  styleUrls: ['./user-add.component.scss']
 })
-export class SalarieAddComponent implements OnInit {
+export class UserAddComponent implements OnInit {
 
-  salarie: Personnel;
-  salarieForm: FormGroup;
+  user: Personnel;
+  userForm: FormGroup;
   formStatus = new FormStatus();
   formloading: Boolean = false;
   loaded = false;
@@ -26,7 +26,7 @@ export class SalarieAddComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private salarieFB: FormBuilder,
+    private userFB: FormBuilder,
     private personnelService: PersonnelService,
     private cdr: ChangeDetectorRef,
     private location: Location,
@@ -35,13 +35,13 @@ export class SalarieAddComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.salarie = new Personnel();
+    this.user = new Personnel();
     this.createForm();
     this.setDynamicValidators();
   }
 
   createForm() {
-		this.salarieForm = this.salarieFB.group({
+		this.userForm = this.userFB.group({
       civilite: ['', Validators],
       nom: [null, Validators.required],
       prenom: ['', Validators.required],
@@ -62,14 +62,14 @@ export class SalarieAddComponent implements OnInit {
   }
 
   setDynamicValidators(){
-    //const no_hab_required = this.salarieForm.get('no_hab_required');
+    //const no_hab_required = this.userForm.get('no_hab_required');
   }
 
   async onSubmit(){
     try {
       let result;
       this.formloading = true;
-      let form = {...this.salarieForm.getRawValue()};
+      let form = {...this.userForm.getRawValue()};
       this.parseDates(form, 'FrToEn');
       this.formStatus.onFormSubmitting();
   
@@ -79,14 +79,14 @@ export class SalarieAddComponent implements OnInit {
           this.formloading = false;
           this.errors = false; 
           this.cdr.markForCheck();
-          var salarie = res.result.data;
+          var user = res.result.data;
           Swal.fire({
             icon: 'success',
-            title: 'Salarié créé avec succès',
+            title: 'Utilisateur créé avec succès',
             showConfirmButton: false,
             timer: 1500
           }).then(() => {
-            this.router.navigate(['/salaries/detail/' + salarie.id]);
+            this.router.navigate(['admin/users/detail/' + user.id]);
           });
         })
         .catch(err =>{ 

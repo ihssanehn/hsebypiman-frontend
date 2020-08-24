@@ -1,16 +1,16 @@
-<ng-container [formGroup]="salarieForm">
+<ng-container [formGroup]="userForm">
     <tf-portlet class="main-portlet-form">
         <div class="tf-portlet-header">
             <span class="title">
-                <a [routerLink]="['/salaries/list']">{{'MENU.SUB_SALARIES.LIST' | translate}}</a>
+                <a [routerLink]="['admin/users/list']">{{'MENU.SUB_USERS.LIST' | translate}}</a>
                 <span class="divider">></span>
-                <span class="id-item">{{'MENU.SUB_SALARIES.ADD' | translate}}</span>
+                <span class="id-item">{{'MENU.SUB_USERS.ADD' | translate}}</span>
             </span>
         </div>
         <tf-portlet-body>
             <div class="tf-heading tf-heading--lg" style="margin-top: 0;">
                 <div *ngIf="edit">
-                    {{'MENU.SUB_SALARIES.EDIT' | translate}}
+                    {{'MENU.SUB_USERS.EDIT' | translate}}
                 </div>
             </div>
             <div>

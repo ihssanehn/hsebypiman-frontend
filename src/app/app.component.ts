@@ -62,13 +62,13 @@ export class AppComponent implements OnInit, OnDestroy {
 		this.loader = this.layoutConfigService.getConfig('loader.enabled');
 
 		// Load permissions
-		// this.authService.currentUser.subscribe((user) => {
-		// 	if(user){
-		// 		var permissions = user.role.permissions.map(x => x.code);
-		// 		this.authService.loadUserPermissions(permissions);
-		// 		this.authService.loadUserRole(user.role.code,permissions);
-		// 	}
-		// });
+		this.authService.currentUser.subscribe((user) => {
+			if(user){
+				var permissions = user.role.permissions.map(x => x.code);
+				this.authService.loadUserPermissions(permissions);
+				this.authService.loadUserRole(user.role.code,permissions);
+			}
+		});
 		
 
 		const routerSubscription = this.router.events.subscribe(event => {

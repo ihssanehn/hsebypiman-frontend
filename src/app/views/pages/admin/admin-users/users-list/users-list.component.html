@@ -1,0 +1,107 @@
+<!-- <div  style="height: 69px;"> -->
+	<tf-search-list-bar [(ngModel)]="filter" (change)="getUsers()" [hasAdvancedSearch]="false" [showFilters]="showFilters" (advancedSearchChange)="advancedSearchChanged($event)" class="row row-filters"></tf-search-list-bar>
+	<!-- <tf-user-filters [hidden]="!showFilters" (change)="udpateFilters($event)" class="row"></tf-user-filters> -->
+	
+	<!-- </div> -->
+	<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
+		<tf-portlet-body class="tf-portlet__body--fit" style="padding: 20px 15px;" *ngIf="usersList">
+			<div class="row px-2">
+				<div class="col">
+					<p>{{pagination.total}} résultats trouvés</p>
+				</div>
+				<div class="col">
+					<button class="pull-right btn-small mb-4" mat-raised-button color="info" (click)="addUser()">Ajouter un utilisateur</button>
+				</div>
+			</div>
+			<div class="table-responsive">
+				<table mat-table [dataSource]="usersList.data">
+		
+					<!-- prenom Column -->
+					<ng-container matColumnDef="prenom">
+						<th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('prenom')">
+							{{'COMMON.FIRSTNAME.TITLE' | translate}}
+							<i class="fa" [ngClass]="isOrderedBy('prenom') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('prenom') && {'opacity': 1}"></i>
+						</th>
+						<td mat-cell *matCellDef="let user" (click)="viewUser(user.id)" class="pointer"> {{user.prenom}} </td>
+					</ng-container>
+		
+					<!-- nom Column -->
+					<ng-container matColumnDef="nom">
+						<th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('nom')">
+							{{'COMMON.LASTNAME.TITLE' | translate}}
+							<i class="fa" [ngClass]="isOrderedBy('nom') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('nom') && {opacity:1}"></i>
+						</th>
+						<td mat-cell *matCellDef="let user" (click)="viewUser(user.id)" class="pointer"> {{user.nom}} </td>
+					</ng-container>
+		
+					<!-- email Column -->
+					<ng-container matColumnDef="email">
+						<th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('email')">
+							{{'COMMON.EMAIL.TITLE' | translate}}
+							<i class="fa" [ngClass]="isOrderedBy('email') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('email') && {opacity:1}"></i>
+						</th>
+						<td mat-cell *matCellDef="let user" (click)="viewUser(user.id)" class="pointer"> {{user.email | truncate:35}} </td>
+					</ng-container>
+					
+					<!-- fonction Column -->
+					<ng-container matColumnDef="fonction">
+						<th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('fonction')">
+							{{'COMMON.FONCTION.TITLE' | translate}}
+							<i class="fa" [ngClass]="isOrderedBy('fonction') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('fonction') && {opacity:1}"></i>
+						</th>
+						<td mat-cell *matCellDef="let user" (click)="viewUser(user.id)" class="pointer"> {{user.fonction?.libelle | truncate:35}} </td>
+					</ng-container>
+
+					<!-- role Column -->
+					<ng-container matColumnDef="role">
+						<th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('role')">
+							{{'COMMON.PROFIL.TITLE' | translate}}
+							<i class="fa" [ngClass]="isOrderedBy('role') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('role') && {opacity:1}"></i>
+						</th>
+						<td mat-cell *matCellDef="let user" (click)="viewUser(user.id)" class="pointer"> {{user.role?.libelle | truncate:35}} </td>
+					</ng-container>
+		
+
+					<!-- status Column -->
+					<!-- <ng-container matColumnDef="status">
+						<th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('status.libelle')">
+							{{'PERSONNELS.STATUS.TITLE' | translate}}
+							<i class="fa" [ngClass]="isOrderedBy('status.libelle') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('status.libelle') && {opacity:1}"></i>
+						</th>
+						<td mat-cell *matCellDef="let user" (click)="viewUser(user.id)" class="text-center pointer" [ngStyle]="user.status && user.status.color && {'color':user.status.color}"> {{user.status?.libelle}} </td>
+					</ng-container> -->
+		
+					<ng-container matColumnDef="action" stickyEnd >
+						<th mat-header-cell *matHeaderCellDef></th>
+						<td mat-cell *matCellDef="let user" class="text-right">
+							<button mat-icon-button color="primary" matTooltip="Actions" [matMenuTriggerFor]="actionMenu" [matMenuTriggerData]="user" (click)="selectedUser = user">
+								<mat-icon>more_vert</mat-icon>
+							</button>
+						</td>
+					</ng-container>	
+					<tr mat-header-row *matHeaderRowDef="displayedUsersColumns"></tr>
+					<tr mat-row class="highlight-row" *matRowDef="let row; columns: displayedUsersColumns;"></tr>
+				</table>
+	
+			</div>
+	
+			<tf-pagination (change)="changePagination()" [(ngModel)]="pagination" ngDefaultControl></tf-pagination>
+	
+		</tf-portlet-body>
+	</tf-portlet>
+	
+	<mat-menu #actionMenu="matMenu" class="action-menu">
+		<!-- *ngxPermissionsOnly="['ADMIN']" -->
+		<button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}" (click)="viewUser(selectedUser.id)">
+			<mat-icon>visibility</mat-icon>
+		</button>
+		<ng-container *ngxPermissionsOnly="['user_canUpdate']">
+			<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editUser(selectedUser.id)" *ngIf="selectedUser?.status?.code != 'TERMINE'">
+				<mat-icon>edit</mat-icon>
+			</button>
+		</ng-container>
+		<!-- <button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteUser(selectedUser.id)" *ngIf="selectedUser?.status?.code != 'TERMINE'">
+			<mat-icon>delete</mat-icon>
+		</button> -->
+	</mat-menu>
+	

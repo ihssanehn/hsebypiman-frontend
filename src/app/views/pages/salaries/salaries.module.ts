@@ -72,8 +72,6 @@ import { SalariesGoalsComponent } from './salaries-goals/salaries-goals.componen
 import { SalariesAdminComponent } from './salaries-admin/salaries-admin.component';
 import { SalarieEditComponent } from './salarie-edit/salarie-edit.component';
 import { SalarieDashComponent } from './salarie-dash/salarie-dash.component';
-import { SalarieAddComponent } from './salarie-add/salarie-add.component';
-import { SalarieFormComponent } from './salarie-form/salarie-form.component';
 
 
 const routes: Routes = [
@@ -107,26 +105,6 @@ const routes: Routes = [
 				data: {
 					permissions: {
 						only: ['salarie_canSeeAll']
-					}
-				}
-			},
-			{
-				path: 'add',
-				component: SalarieAddComponent,
-				canActivate: [NgxPermissionsGuard],
-				data: {
-					permissions: {
-						only: ['salarie_canAdd']
-					}
-				}
-			},
-			{
-				path: 'add:id',
-				component: SalarieAddComponent,
-				canActivate: [NgxPermissionsGuard],
-				data: {
-					permissions: {
-						only: ['salarie_canAdd']
 					}
 				}
 			},
@@ -262,9 +240,7 @@ const routes: Routes = [
 		SalariesGoalsComponent,
 		SalariesAdminComponent,
 		SalarieEditComponent,
-		SalarieDashComponent,
-		SalarieAddComponent,
-		SalarieFormComponent
+		SalarieDashComponent
 	]
 })
 export class SalariesModule {

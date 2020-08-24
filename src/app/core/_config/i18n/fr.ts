@@ -79,6 +79,12 @@ export const locale = {
 			},
 			SUIVI_HSE: 'Suivi Hse',
 			USERS: 'Utilisateurs',
+			SUB_USERS:{
+				DETAIL:'Détail de l\'utilisateur',
+				ADD:'Ajouter un utilisateur',
+				EDIT:'Modifier l\'utilisateur',
+				LIST:'Liste des utilisateurs',
+			},
 			LIST: 'Liste',
 			ADMIN: 'Admin',
 			HOME: 'Accueil',
@@ -977,6 +983,10 @@ export const locale = {
 			LASTNAME:{
 				LABEL:'Nom',
 				TITLE:'Nom'
+			},
+			PROFIL:{
+				LABEL:'Profil',
+				TITLE:'Profil'
 			},
 			SOCIETE:{
 				LABEL:'Société',

@@ -5,20 +5,19 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 // Core Module
-import { CoreModule } from '../../../core/core.module';
+import { CoreModule } from '@app/core/core.module';
 // NGRX
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 // Translate
 import { TranslateModule } from '@ngx-translate/core';
-import { PartialsModule } from '../../partials/partials.module';
+import { PartialsModule } from '../../../partials/partials.module';
 import { NgxPermissionsModule, NgxPermissionsGuard } from 'ngx-permissions';
 // Services
-import { HttpUtilsService, TypesUtilsService, InterceptService, LayoutUtilsService} from '../../../core/_base/crud';
+import { HttpUtilsService, TypesUtilsService, InterceptService, LayoutUtilsService} from '@app/core/_base/crud';
 // Shared
-import { ActionNotificationComponent } from '../../partials/content/crud';
+import { ActionNotificationComponent } from '../../../partials/content/crud';
 // Components
-import { AdminComponent } from './admin.component';
 import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule, NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxMaskModule } from 'ngx-mask';
 
@@ -31,7 +30,6 @@ import {
 	MatTableModule,
 	MatSelectModule,
 	MatMenuModule,
-	MatSlideToggleModule,
 	MatProgressBarModule,
 	MatButtonModule,
 	MatBadgeModule,
@@ -54,70 +52,45 @@ import {
 	DateAdapter
 } from '@angular/material';
 import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapter';
-// import { AdminUsersComponent } from './admin-users/admin-users.component';
-import { AdminModulesComponent } from './admin-modules/admin-modules.component';
-import { AdminChantiersComponent } from './admin-chantiers/admin-chantiers.component';
-import { AdminArComponent } from './admin-ar/admin-ar.component';
-import { AdminActionComponent } from './admin-action/admin-action.component';
-import { AdminSalariesComponent } from './admin-salaries/admin-salaries.component';
-import { AdminEntrepriseComponent } from './admin-entreprise/admin-entreprise.component';
-import { AdminMaterielComponent } from './admin-materiel/admin-materiel.component';
-import { AdminVisitesComponent } from './admin-visites/admin-visites.component';
-import { AdminVisiteChantierComponent } from './admin-visites/admin-visite-chantier/admin-visite-chantier.component';
-import { AdminVisiteEpiComponent } from './admin-visites/admin-visite-epi/admin-visite-epi.component';
-import { AdminVisiteVehiculeComponent } from './admin-visites/admin-visite-vehicule/admin-visite-vehicule.component';
-import { AdminVisiteOutillageComponent } from './admin-visites/admin-visite-outillage/admin-visite-outillage.component';
+import { AdminUsersComponent } from './admin-users.component';
+import { UsersListComponent } from './users-list/users-list.component';
+import { UserAddComponent } from './user-add/user-add.component';
+import { UserFormComponent } from './user-form/user-form.component';
+
+
 
 const routes: Routes = [
 	{
 		path: '',
-		component: AdminComponent,
+		component: AdminUsersComponent,
 		children: [
 			{
 				path: '',
-				redirectTo: 'users',
+				redirectTo: 'list',
 				pathMatch: 'full'
 			},
+			
 			{
-				path:'users',
-				loadChildren: () => import('./admin-users/admin-users.module').then(m => m.AdminUsersModule),
+				path: 'list',
+				component: UsersListComponent,
 			},
 			{
-				path:'chantiers',
-				component: AdminChantiersComponent
+				path: 'add',
+				component: UserAddComponent,
 			},
-			{
-				path: 'analyses-risque',
-				component: AdminArComponent
-			},
-			{
-				path:'visites-securite',
-				component: AdminVisitesComponent
-			},
-			{
-				path: 'plan-actions',
-				component: AdminActionComponent
-			},
-			{
-				path: 'salaries',
-				component: AdminSalariesComponent
-			},
-			{
-				path: 'entreprises',
-				component: AdminEntrepriseComponent
-			},
-			{
-				path:'materiel',
-				component: AdminMaterielComponent,
-			},
-			{
-				path:'modules',
-				component: AdminModulesComponent
-			},
+			// {
+			// 	path: 'detail',
+			// 	component: UserAddComponent,
+			// },
+			// {
+			// 	path: 'edit',
+			// 	component: UserAddComponent,
+			// },
 		]
 	}
 ];
 
+		
 @NgModule({
 	imports: [
 		CommonModule,
@@ -134,7 +107,6 @@ const routes: Routes = [
 		MatSelectModule,
         MatInputModule,
 		MatTableModule,
-		MatSlideToggleModule,
 		MatBadgeModule,
 		MatChipsModule,
 		MatAutocompleteModule,
@@ -184,26 +156,14 @@ const routes: Routes = [
 		LayoutUtilsService
 	],
 	entryComponents: [
-		ActionNotificationComponent,
+		ActionNotificationComponent
 		// 
 	],
 	declarations: [
-		AdminComponent,
-		// AdminUsersComponent,
-		AdminModulesComponent,
-		AdminChantiersComponent,
-		AdminArComponent,
-		AdminActionComponent,
-		AdminSalariesComponent,
-		AdminEntrepriseComponent,
-		AdminMaterielComponent,
-		AdminVisitesComponent,
-		AdminVisiteChantierComponent,
-		AdminVisiteEpiComponent,
-		AdminVisiteVehiculeComponent,
-		AdminVisiteOutillageComponent,
-		
+		AdminUsersComponent,
+		UsersListComponent,
+		UserAddComponent,
+		UserFormComponent
 	]
 })
-export class AdminModule {
-}
+export class AdminUsersModule {}
