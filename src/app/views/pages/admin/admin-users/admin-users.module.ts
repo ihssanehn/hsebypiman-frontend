@@ -20,6 +20,7 @@ import { ActionNotificationComponent } from '../../../partials/content/crud';
 // Components
 import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule, NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxMaskModule } from 'ngx-mask';
+import { AvatarModule } from 'ngx-avatar';
 
 // Material
 import {
@@ -49,12 +50,15 @@ import {
 	MatSnackBarModule,
 	MatTooltipModule,MAT_DATE_LOCALE, 
 	MAT_DATE_FORMATS,
+	MatSlideToggleModule,
 	DateAdapter
 } from '@angular/material';
 import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapter';
 import { AdminUsersComponent } from './admin-users.component';
 import { UsersListComponent } from './users-list/users-list.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 import { UserAddComponent } from './user-add/user-add.component';
+import { UserEditComponent } from './user-edit/user-edit.component';
 import { UserFormComponent } from './user-form/user-form.component';
 
 
@@ -78,14 +82,18 @@ const routes: Routes = [
 				path: 'add',
 				component: UserAddComponent,
 			},
-			// {
-			// 	path: 'detail',
-			// 	component: UserAddComponent,
-			// },
-			// {
-			// 	path: 'edit',
-			// 	component: UserAddComponent,
-			// },
+			{
+				path: 'detail',
+				component: UserDetailComponent,
+			},
+			{
+				path: 'detail/:id',
+				component: UserDetailComponent,
+			},
+			{
+				path: 'edit/:id',
+				component: UserEditComponent,
+			},
 		]
 	}
 ];
@@ -131,6 +139,8 @@ const routes: Routes = [
 		NgbTooltipModule,
 		NgbPopoverModule,
 		NgxMaskModule,
+		AvatarModule,
+		MatSlideToggleModule,		
 	],
 	providers: [
 		InterceptService,
@@ -163,7 +173,9 @@ const routes: Routes = [
 		AdminUsersComponent,
 		UsersListComponent,
 		UserAddComponent,
-		UserFormComponent
+		UserFormComponent,
+		UserDetailComponent,
+		UserEditComponent
 	]
 })
 export class AdminUsersModule {}

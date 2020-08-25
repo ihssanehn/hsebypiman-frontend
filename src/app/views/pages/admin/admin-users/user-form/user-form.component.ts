@@ -2,7 +2,8 @@ import { Component, OnInit, Input, Output, ChangeDetectorRef, EventEmitter } fro
 import { FormGroup, FormControl } from '@angular/forms';
 import { FormStatus } from '@app/core/_base/crud/models/form-status';
 import { Type } from '@app/core/models/type.model';
-import { FonctionService } from '@app/core/services';
+import { FonctionService, RoleService } from '@app/core/services';
+import { Role } from '@app/core/auth';
 
 @Component({
   selector: 'tf-user-form',
@@ -19,14 +20,21 @@ export class UserFormComponent implements OnInit {
 
   fonctions: Type[];
   fonctionsLoaded: boolean = false;
+  rolesLoaded: boolean = false;
+  roles: Role[];
+  civilites = [
+    'Mme', 'Mlle', 'M.'
+  ]
 
   constructor(
     private fonctionService: FonctionService,
     private cdr: ChangeDetectorRef,
+    private roleService: RoleService
   ) { }
 
   ngOnInit() {
     this.getFonctions();
+    this.getRoles();
   }
 
   async getFonctions(){
@@ -35,6 +43,15 @@ export class UserFormComponent implements OnInit {
     if(res){
       this.fonctions = res.result.data;
       this.fonctionsLoaded = true;
+    }
+    this.cdr.markForCheck();
+  }
+  async getRoles(){
+    this.rolesLoaded = false;
+    var res = await this.roleService.getList().toPromise();
+    if(res){
+      this.roles = res.result.data;
+      this.rolesLoaded = true;
     }
     this.cdr.markForCheck();
   }
@@ -68,6 +85,15 @@ export class UserFormComponent implements OnInit {
   
   cancelForm(){
     this.onCancel.emit()
+  }
+
+  onAccessCheckChange(event){
+    const is_blocked = this.userForm.get('is_blocked') as FormControl;
+    if(event.checked){
+      is_blocked.setValue(0);
+    }else{
+      is_blocked.setValue(1);
+    }
   }
 
 }

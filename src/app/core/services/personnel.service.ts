@@ -47,5 +47,6 @@ export class PersonnelService extends HttpService{
   create(personnel){
     return this.http.post<JsonResponse<Personnel>>(this.baseUrl+'/'+'create', personnel);
   }
+
   
 }

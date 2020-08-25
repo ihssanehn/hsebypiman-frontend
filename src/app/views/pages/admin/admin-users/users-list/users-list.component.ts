@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { PersonnelService } from '@app/core/services';
+import { UserService } from '@app/core/services';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AdminAddModalComponent } from '@app/views/partials/layout/admin-add-modal/admin-add-modal.component';
 import Swal from 'sweetalert2';
@@ -42,7 +42,7 @@ export class UsersListComponent implements OnInit {
   constructor(
     
     private authService:AuthService,
-    private personnelService:PersonnelService,
+    private UserService:UserService,
     private cdr:ChangeDetectorRef,
     private router: Router,
 
@@ -54,7 +54,7 @@ export class UsersListComponent implements OnInit {
 
   async getUsers(){
     try {
-      var res = await this.personnelService.getAll().toPromise();
+      var res = await this.UserService.getAll(this.filter).toPromise();
 			this.usersList = res.result.data;
 			this.pagination = {
 				...this.pagination,
@@ -89,10 +89,11 @@ export class UsersListComponent implements OnInit {
 	}
 
 	viewUser(userId) {
-		this.router.navigateByUrl('users/detail/' + userId);
+		console.log(userId)
+		this.router.navigateByUrl('admin/users/detail/' + userId);
 	}
 	editUser(userId) {
-		this.router.navigateByUrl('users/edit/' + userId);
+		this.router.navigateByUrl('admin/users/edit/' + userId);
 	}
 	deleteUser(userId) {
 		Swal.fire({
@@ -105,7 +106,6 @@ export class UsersListComponent implements OnInit {
 		this.router.navigateByUrl('admin/users/add')
 	}
 
-
 	// exportList(){
 	// 	var filters = {...this.filter};
 	// 	filters.type="EXCEL";
@@ -114,7 +114,7 @@ export class UsersListComponent implements OnInit {
 	// 			delete filters[prop];
 	// 		}
 	// 	}
-	// 	return this.personnelService.export(filters);
+	// 	return this.UserService.export(filters);
 	// }
 
 	// Au click, défini order by et order way. Si le order_by est déjà actif, toggle du order_way. Sinon, order_way asc par défaut

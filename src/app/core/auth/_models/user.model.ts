@@ -16,6 +16,17 @@ export class User extends BaseModel {
     is_firstConnexion?: boolean;
     role?: Role;
     user_connection?: string;
+    
+    date_entree?: Date;
+    date_naissance?: Date;
+    nom_urgence?: string;
+    telephone_urgence?: string;
+    lien_parente_urgence?: string;
+    fonction?: any;
+    rqth?: any;
+    date_visite_medicale_passed: Date;
+    date_visite_medicale_next: Date;
+    latest_visite_medicale?: any;
 
     clear?(): void {
         this.id = undefined;

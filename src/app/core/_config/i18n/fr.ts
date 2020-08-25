@@ -1008,6 +1008,10 @@ export const locale = {
 				LABEL:'Numéro de téléphone',
 				TITLE:'Numéro de téléphone'
 			},
+			CIVILITE:{
+				LABEL:'Civilité',
+				TITLE:'Civilité'
+			},
 			EMAIL:{
 				LABEL:'Adresse mail',
 				TITLE:'Adresse mail'
@@ -1021,7 +1025,13 @@ export const locale = {
 				TITLE:'Date de naissance',
 				SHORTTITLE:'Date de naissance'
 			},
-		
+		},
+		USERS:{
+			GRANT_ACCESS: {
+				LABEL:'Donner accès à l`\'application',
+				TITLE:'Donner accès à l`\'application',
+				SHORTTITLE:'Donner accès à l`\'application'
+			}
 		},
 		FILTER : {
 			TITLE : "Filtres",

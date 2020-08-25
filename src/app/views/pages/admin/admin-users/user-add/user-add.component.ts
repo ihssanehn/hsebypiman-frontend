@@ -4,7 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { FormStatus } from '@app/core/_base/crud/models/form-status';
 import { Router } from '@angular/router';
-import { PersonnelService } from '@app/core/services';
+import { UserService } from '@app/core/services';
 import Swal from 'sweetalert2';
 import { extractErrorMessagesFromErrorResponse } from '@app/core/_base/crud';
 import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
@@ -27,7 +27,7 @@ export class UserAddComponent implements OnInit {
   constructor(
     private router: Router,
     private userFB: FormBuilder,
-    private personnelService: PersonnelService,
+    private UserService: UserService,
     private cdr: ChangeDetectorRef,
     private location: Location,
     private dateFrToEnPipe:DateFrToEnPipe,
@@ -42,7 +42,7 @@ export class UserAddComponent implements OnInit {
 
   createForm() {
 		this.userForm = this.userFB.group({
-      civilite: ['', Validators],
+      civilite: ['', [Validators]],
       nom: [null, Validators.required],
       prenom: ['', Validators.required],
       date_naissance: ['', [Validators]],
@@ -50,15 +50,25 @@ export class UserAddComponent implements OnInit {
       telephone: ['', [Validators]],
       date_entree: ['', Validators.required],
       date_sortie: ['', [Validators]],
+      role_id: ['', [Validators]],
       fonction_id: ['', [Validators]],
       nom_urgence: ['', [Validators]],
       telephone_urgence: ['', [Validators]],
       lien_parente_urgence: ['', [Validators]],
       rqth: [0, [Validators]],
       date_visite_medicale_passed: ['', [Validators]],
-      date_visite_medicale_next: ['', [Validators]]
+      date_visite_medicale_next: ['', [Validators]],
+      is_blocked: [0, [Validators]]
     });
-		this.loaded = true;
+    this.loaded = true;
+    
+    this.userForm.get('is_blocked').valueChanges.subscribe((value)=>{
+      if(value == 1){
+        this.userForm.get('role_id').disable();
+      }else{
+        this.userForm.get('role_id').enable();
+      }
+    })
   }
 
   setDynamicValidators(){
@@ -73,7 +83,7 @@ export class UserAddComponent implements OnInit {
       this.parseDates(form, 'FrToEn');
       this.formStatus.onFormSubmitting();
   
-			this.personnelService.create(form)
+			this.UserService.createUser(form)
         .toPromise()
         .then((res) => {
           this.formloading = false;
