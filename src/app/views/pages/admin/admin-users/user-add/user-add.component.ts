@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Personnel } from '@app/core/models';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Location } from '@angular/common';
 import { FormStatus } from '@app/core/_base/crud/models/form-status';
 import { Router } from '@angular/router';
@@ -37,42 +37,93 @@ export class UserAddComponent implements OnInit {
   ngOnInit() {
     this.user = new Personnel();
     this.createForm();
-    this.setDynamicValidators();
   }
 
   createForm() {
 		this.userForm = this.userFB.group({
-      civilite: ['', [Validators]],
-      nom: [null, Validators.required],
-      prenom: ['', Validators.required],
-      date_naissance: ['', [Validators]],
-      email: ['', Validators.required],
-      telephone: ['', [Validators]],
-      date_entree: ['', Validators.required],
-      date_sortie: ['', [Validators]],
-      role_id: ['', [Validators]],
-      fonction_id: ['', [Validators]],
-      nom_urgence: ['', [Validators]],
-      telephone_urgence: ['', [Validators]],
-      lien_parente_urgence: ['', [Validators]],
-      rqth: [0, [Validators]],
-      date_visite_medicale_passed: ['', [Validators]],
-      date_visite_medicale_next: ['', [Validators]],
-      is_blocked: [0, [Validators]]
+      is_virtuel: [0, [Validators]],
+      civilite: [{value:'', disabled:false}, [Validators]],
+      nom: [{value:null, disabled:false}, Validators.required],
+      prenom: [{value:'', disabled:false}, Validators.required],
+      date_naissance: [{value:'', disabled:false}, [Validators]],
+      email: [{value:'', disabled:false}, Validators.required],
+      telephone: [{value:'', disabled:false}, [Validators]],
+      date_entree: [{value:'', disabled:false}, Validators.required],
+      date_sortie: [{value:'', disabled:false}, [Validators]],
+      role_id: [{value:'', disabled:false}, [Validators]],
+      fonction_id: [{value:'', disabled:false}, [Validators]],
+      nom_urgence: [{value:'', disabled:false}, [Validators]],
+      telephone_urgence: [{value:'', disabled:false}, [Validators]],
+      lien_parente_urgence: [{value:'', disabled:false}, [Validators]],
+      rqth: [{value:0, disabled:false}, [Validators]],
+      date_visite_medicale_passed: [{value:'', disabled:false}, [Validators]],
+      date_visite_medicale_next: [{value:'', disabled:false}, [Validators]],
+      is_blocked: [{value:0, disabled:false}, [Validators]]
     });
     this.loaded = true;
-    
+    this.setDynamicForm();
+  }
+
+  setDynamicForm(){
+    this.userForm.get('is_virtuel').valueChanges.subscribe((value)=>{
+      const date_entree = this.userForm.get('date_entree') as FormControl;
+      const fonction_id = this.userForm.get('date_sortie') as FormControl;
+      const date_sortie = this.userForm.get('fonction_id') as FormControl;
+      const telephone_urgence = this.userForm.get('nom_urgence') as FormControl;
+      const nom_urgence = this.userForm.get('telephone_urgence') as FormControl;
+      const rqth = this.userForm.get('lien_parente_urgence') as FormControl;
+      const lien_parente_urgence = this.userForm.get('rqth') as FormControl;
+      const date_visite_medicale_next = this.userForm.get('date_visite_medicale_passed') as FormControl;
+      const date_visite_medicale_passed = this.userForm.get('date_visite_medicale_next') as FormControl;
+      const date_naissance = this.userForm.get('date_naissance') as FormControl;
+      if(value == 1){
+        date_naissance.disable();
+        date_naissance.setValidators([]);
+        date_entree.disable();
+        date_sortie.disable();
+        fonction_id.disable();
+        nom_urgence.disable();
+        telephone_urgence.disable();
+        lien_parente_urgence.disable();
+        rqth.disable();
+        date_visite_medicale_passed.disable();
+        date_visite_medicale_next.disable();
+      }else{
+        date_naissance.enable();
+        date_naissance.setValidators([Validators.required]);
+        date_entree.enable();
+        date_sortie.enable();
+        fonction_id.enable();
+        nom_urgence.enable();
+        telephone_urgence.enable();
+        lien_parente_urgence.enable();
+        rqth.enable();
+        date_visite_medicale_passed.enable();
+        date_visite_medicale_next.enable();
+      }
+
+      date_entree.updateValueAndValidity();
+      fonction_id.updateValueAndValidity();
+      date_sortie.updateValueAndValidity();
+      telephone_urgence.updateValueAndValidity();
+      nom_urgence.updateValueAndValidity();
+      rqth.updateValueAndValidity();
+      lien_parente_urgence.updateValueAndValidity();
+      date_visite_medicale_next.updateValueAndValidity();
+      date_visite_medicale_passed.updateValueAndValidity();
+      date_naissance.updateValueAndValidity();
+
+    })
     this.userForm.get('is_blocked').valueChanges.subscribe((value)=>{
       if(value == 1){
         this.userForm.get('role_id').disable();
+        this.userForm.get('role_id').setValidators([]);
       }else{
         this.userForm.get('role_id').enable();
+        this.userForm.get('role_id').setValidators([Validators.required]);
       }
+      this.userForm.updateValueAndValidity();
     })
-  }
-
-  setDynamicValidators(){
-    //const no_hab_required = this.userForm.get('no_hab_required');
   }
 
   async onSubmit(){

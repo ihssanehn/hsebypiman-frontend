@@ -1031,7 +1031,22 @@ export const locale = {
 				LABEL:'Donner accès à l`\'application',
 				TITLE:'Donner accès à l`\'application',
 				SHORTTITLE:'Donner accès à l`\'application'
-			}
+			},
+			CONTRACT: {
+				LABEL: 'Type de contrat', 
+				TITLE: 'Type de contrat', 
+				SHORTTITLE: 'Type de contrat', 
+			},
+			VIRTUELS: {
+				LABEL: "Comptes virtuels",
+				TITLE: "Afficher comptes virtuels",
+				SHORTTITLE: "Comptes virtuels",
+			},
+			VIRTUEL: {
+				LABEL: "Compte virtuel",
+				TITLE: "Utilisateur virtuel (n'apparait pas dans la liste des salariés)",
+				SHORTTITLE: "Utilisateur virtuel",
+			},
 		},
 		FILTER : {
 			TITLE : "Filtres",

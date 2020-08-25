@@ -27,9 +27,10 @@ export class UsersListComponent implements OnInit {
 	filter: any = {
 		per_page: this.pagination.pageSize,
 		page: this.pagination.page,
-		order_by: ['created_at'],
+		order_by: ['nom', 'prenom'],
 		order_way: 'desc',
 		keyword: "",
+		is_virtuel: 'NO',	
 	};
 	showFilters:Boolean = false;
 

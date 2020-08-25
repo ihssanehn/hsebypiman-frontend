@@ -60,6 +60,7 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import { UserAddComponent } from './user-add/user-add.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { UserFormComponent } from './user-form/user-form.component';
+import { UserFiltersComponent } from './user-filters/user-filters.component';
 
 
 
@@ -175,6 +176,7 @@ const routes: Routes = [
 		UserAddComponent,
 		UserFormComponent,
 		UserDetailComponent,
+		UserFiltersComponent,
 		UserEditComponent
 	]
 })

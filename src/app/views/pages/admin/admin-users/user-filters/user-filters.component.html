@@ -1,0 +1,80 @@
+<div class="col-md-12 tf-form">
+	<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
+		<tf-portlet-body class="tf-portlet__body--fit card-filters px-5 pt-4 pb-3" >
+			<form novalidate [formGroup]="filterForm">
+				<div class="row">
+					<mat-form-field class="col-xl-3 col-md-6 col-sm-6 col-xs-12 mat-filter-no-head">
+						<mat-label>{{'COMMON.FONCTION.LABEL' | translate}}</mat-label>
+						<mat-select class="form-control" formControlName="fonction" name="fonction">
+							<mat-option>Tous</mat-option>
+							<mat-option *ngFor="let type of types" [value]="type.code">
+								{{type.libelle}}
+							</mat-option>
+						</mat-select>
+						<button mat-button *ngIf="formHasValue('fonction')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('fonction'); $event.stopPropagation()">
+							<mat-icon>clear</mat-icon>
+						</button>
+					</mat-form-field>
+					<mat-form-field class="col-xl-3 col-md-6 col-sm-6 col-xs-12 mat-filter-no-head">
+						<mat-label>{{'USERS.CONTRACT.LABEL' | translate}}</mat-label>
+						<mat-select class="form-control" formControlName="contrat" name="contrat">
+							<mat-option>Tous</mat-option>
+							<mat-option *ngFor="let categorie of categories" [value]="categorie.code">
+								{{categorie.libelle}}
+							</mat-option>
+						</mat-select>
+						<button mat-button *ngIf="formHasValue('contrat')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('contrat'); $event.stopPropagation()">
+							<mat-icon>clear</mat-icon>
+						</button>
+					</mat-form-field>
+					<mat-form-field class="col-xl-3 col-md-6 col-sm-6 col-xs-12 mat-filter-no-head">
+						<mat-label>{{'USERS.VIRTUELS.TITLE' | translate}}</mat-label>
+						<mat-select class="form-control" formControlName="is_virtuel" name="is_virtuel">
+							<mat-option>Tous</mat-option>
+							<mat-option *ngFor="let virtuel of virtuelOptions" [value]="virtuel.code">
+								{{virtuel.libelle}}
+							</mat-option>
+						</mat-select>
+						<button mat-button *ngIf="formHasValue('is_virtuel')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('is_virtuel'); $event.stopPropagation()">
+							<mat-icon>clear</mat-icon>
+						</button>
+					</mat-form-field>
+					<mat-form-field class="col-xl-3 col-md-6 col-sm-6 col-xs-12 mat-filter-no-head">
+						<mat-label>{{'COMMON.PROFIL.LABEL' | translate}}</mat-label>
+						<mat-select class="form-control" formControlName="role" name="role">
+							<mat-option>Tous</mat-option>
+							<mat-option *ngFor="let role of roles" [value]="role">
+								{{role.libelle}}
+							</mat-option>
+						</mat-select>
+						<button mat-button *ngIf="formHasValue('role')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('role'); $event.stopPropagation()">
+							<mat-icon>clear</mat-icon>
+						</button>
+					</mat-form-field>
+					<div class="col-xl-6 col-md-6 col-sm-6 col-xs-12">
+						<h6>{{'SALARIES.ENTRY_AT.LABEL' | translate}}</h6>
+						<mat-form-field class="col-md-6 col-xl-6">
+							<mat-label>Entre le :</mat-label>
+							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_entree_start" placeholder="DD/MM/YYYY">
+						</mat-form-field>
+						<mat-form-field class="col-md-6 col-xl-6">
+							<mat-label>Et le :</mat-label>
+							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_entree_end" placeholder="DD/MM/YYYY">
+						</mat-form-field>
+					</div>
+					<div class="col-xl-6 col-md-6 col-sm-6 col-xs-12">
+						<h6>{{'SALARIES.EXIT_AT.LABEL' | translate}}</h6>
+						<mat-form-field class="col-md-6 col-xl-6">
+							<mat-label>Entre le :</mat-label>
+							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_sortie_start" placeholder="DD/MM/YYYY">
+						</mat-form-field>
+						<mat-form-field class="col-md-6 col-xl-6">
+							<mat-label>Et le :</mat-label>
+							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_sortie_end" placeholder="DD/MM/YYYY">
+						</mat-form-field>
+					</div>
+				</div>
+			</form>
+		</tf-portlet-body>
+	</tf-portlet>
+</div>

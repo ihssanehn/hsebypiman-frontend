@@ -99,7 +99,7 @@ const routes: Routes = [
 				component: AdminActionComponent
 			},
 			{
-				path: 'salaries',
+				path: 'suivi_hse',
 				component: AdminSalariesComponent
 			},
 			{

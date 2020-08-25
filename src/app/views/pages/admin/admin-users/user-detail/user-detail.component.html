@@ -21,11 +21,11 @@
                 <span></span>
               </div>
               <div class="box box-coords" style="flex:1">
-                <h5><b>À propos du salarié</b></h5>
+                <h5><b>À propos de l'utilisateur</b></h5>
                 <p><span class="label pull-left mr-2">{{'COMMON.LASTNAME.LABEL' | translate}}</span><span class="" *ngIf="user.nom; else noDataFound">{{user.nom}}</span></p>
                 <p><span class="label pull-left mr-2">{{'COMMON.FIRSTNAME.LABEL' | translate}}</span><span class="" *ngIf="user.prenom; else noDataFound">{{user.prenom}}</span></p>
-                <p><span class="label pull-left mr-2">{{'COMMON.BIRTHDAY.LABEL' | translate}}</span><span class="" *ngIf="user.date_naissance; else noDataFound">{{user.date_naissance | date:'dd/MM/yyyy'}}</span></p>
-                <p><span class="label pull-left mr-2">{{'COMMON.FONCTION.LABEL' | translate}}</span><span class="" *ngIf="user.fonction; else noDataFound">{{user.fonction?.libelle}}</span></p>
+                <p><span class="label pull-left mr-2" *ngIf="user.is_virtuel == 0">{{'COMMON.BIRTHDAY.LABEL' | translate}}</span><span class="" *ngIf="user.date_naissance; else noDataFound">{{user.date_naissance | date:'dd/MM/yyyy'}}</span></p>
+                <p><span class="label pull-left mr-2" *ngIf="user.is_virtuel == 0">{{'COMMON.FONCTION.LABEL' | translate}}</span><span class="" *ngIf="user.fonction; else noDataFound">{{user.fonction?.libelle}}</span></p>
               </div>
               <div class="tf-divider">
                 <span></span>
@@ -41,7 +41,7 @@
                 <mat-tab label="Détails">
                     <div class="col-md-12">
                         <div class="col-md-12">
-                            <div class="card">
+                            <div class="card" *ngIf="user.is_virtuel == 0; else virtualUser">
                                 <h5><b>Information employeur</b></h5>
                                 <div class="row d-flex">
                                     <div class="box col-md-6">
@@ -93,4 +93,7 @@
     <span class="no-data-label">
       Non renseigné
     </span>
+  </ng-template>
+  <ng-template #virtualUser>
+    Utilisateur virtuel
   </ng-template>

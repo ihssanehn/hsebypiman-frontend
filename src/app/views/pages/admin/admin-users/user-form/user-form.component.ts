@@ -95,5 +95,13 @@ export class UserFormComponent implements OnInit {
       is_blocked.setValue(1);
     }
   }
+  onVirtuelCheckChange(event){
+    const is_virtuel = this.userForm.get('is_virtuel') as FormControl;
+    if(event.checked){
+      is_virtuel.setValue(1);
+    }else{
+      is_virtuel.setValue(0);
+    }
+  }
 
 }

@@ -1,6 +1,6 @@
 <!-- <div  style="height: 69px;"> -->
-	<tf-search-list-bar [(ngModel)]="filter" (change)="getUsers()" [hasAdvancedSearch]="false" [showFilters]="showFilters" (advancedSearchChange)="advancedSearchChanged($event)" class="row row-filters"></tf-search-list-bar>
-	<!-- <tf-user-filters [hidden]="!showFilters" (change)="udpateFilters($event)" class="row"></tf-user-filters> -->
+	<tf-search-list-bar [(ngModel)]="filter" (change)="getUsers()" [hasAdvancedSearch]="true" [showFilters]="showFilters" (advancedSearchChange)="advancedSearchChanged($event)" class="row row-filters"></tf-search-list-bar>
+	<tf-user-filters [hidden]="!showFilters" (change)="udpateFilters($event)" class="row"></tf-user-filters>
 	
 	<!-- </div> -->
 	<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
@@ -54,9 +54,9 @@
 
 					<!-- role Column -->
 					<ng-container matColumnDef="role">
-						<th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('role')">
+						<th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('role.libelle')">
 							{{'COMMON.PROFIL.TITLE' | translate}}
-							<i class="fa" [ngClass]="isOrderedBy('role') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('role') && {opacity:1}"></i>
+							<i class="fa" [ngClass]="isOrderedBy('role.libelle') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('role.libelle') && {opacity:1}"></i>
 						</th>
 						<td mat-cell *matCellDef="let user" (click)="viewUser(user.id)" class="pointer"> {{user.role?.libelle | truncate:35}} </td>
 					</ng-container>
