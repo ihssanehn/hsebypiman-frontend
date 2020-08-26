@@ -27,7 +27,7 @@ export class UsersListComponent implements OnInit {
 	filter: any = {
 		per_page: this.pagination.pageSize,
 		page: this.pagination.page,
-		order_by: ['prenom', 'nom'],
+		order_by: 'prenom',
 		order_way: 'desc',
 		keyword: "",	
 	};

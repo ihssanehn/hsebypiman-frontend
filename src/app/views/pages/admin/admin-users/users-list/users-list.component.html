@@ -18,18 +18,18 @@
 		
 					<!-- prenom Column -->
 					<ng-container matColumnDef="prenom">
-						<th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder(['prenom', 'nom'])">
+						<th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('prenom')">
 							{{'COMMON.FIRSTNAME.TITLE' | translate}}
-							<i class="fa" [ngClass]="isOrderedBy(['prenom', 'nom']) && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy(['prenom', 'nom']) && {'opacity': 1}"></i>
+							<i class="fa" [ngClass]="isOrderedBy('prenom'']) && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('prenom'']) && {'opacity': 1}"></i>
 						</th>
 						<td mat-cell *matCellDef="let user" (click)="viewUser(user.id)" class="pointer"> {{user.prenom}} </td>
 					</ng-container>
 		
 					<!-- nom Column -->
 					<ng-container matColumnDef="nom">
-						<th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder(['nom', 'prenom'])">
+						<th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('nom')">
 							{{'COMMON.LASTNAME.TITLE' | translate}}
-							<i class="fa" [ngClass]="isOrderedBy(['nom', 'prenom']) && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy(['nom', 'prenom']) && {opacity:1}"></i>
+							<i class="fa" [ngClass]="isOrderedBy('nom') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('nom') && {opacity:1}"></i>
 						</th>
 						<td mat-cell *matCellDef="let user" (click)="viewUser(user.id)" class="pointer"> {{user.nom}} </td>
 					</ng-container>
