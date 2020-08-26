@@ -86,9 +86,9 @@ export const locale = {
 				LIST:'Liste des utilisateurs',
 			},
 			LIST: 'Liste',
-			ADMIN: 'Admin',
+			ROOT: 'Admin',
 			HOME: 'Accueil',
-			SUB_ADMIN:{},
+			SUB_ROOT:{},
 			BTN:{
 				NEWAR: 'Nouvelle analyse de risque',
 				NEWCHANTIER: 'Nouveau chantier',

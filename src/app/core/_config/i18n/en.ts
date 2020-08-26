@@ -25,7 +25,7 @@ export const locale = {
 			PLANACTION: 'Plan d\'action',
 			SALARIES: 'Salariés',
 			SOUSTRAITANTS: 'Sous-traiants',
-			ADMIN: 'Admin',
+			ROOT: 'Admin',
 			BTN:{
 				NEWAR: 'New risk analysis',
 				NEWCHANTIER: 'New construction site'

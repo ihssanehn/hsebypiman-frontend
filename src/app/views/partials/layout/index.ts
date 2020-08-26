@@ -72,7 +72,7 @@ export { SalariePortletBoxComponent } from './salarie/salarie-portlet-box/salari
 export { SalariePortletRowComponent } from './salarie/salarie-portlet-row/salarie-portlet-row.component';
 export { SalarieCardComponent } from './salarie/salarie-card/salarie-card.component';
 
-// ADMIN
+// ROOT
 export { HabilitationsAdminComponent } from './admins/habilitations/habilitations-admin.component';
 export { ArZonesAdminComponent } from './admins/ar-zones-admin/ar-zones-admin.component';
 export { ArRisquesAdminComponent } from './admins/ar-risques-admin/ar-risques-admin.component';

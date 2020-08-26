@@ -73,7 +73,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
 		// 		}
 		// 	}
 		// );
-		// this.permissionsService.hasPermission('ADMIN').then(async hasPermission => {
+		// this.permissionsService.hasPermission('ROOT').then(async hasPermission => {
 		// 	if(hasPermission){
 		// 		this.allRoles = await this.authService.getAllRoles().toPromise();
 		// 	}

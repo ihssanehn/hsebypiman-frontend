@@ -153,7 +153,7 @@ const routes: Routes = [
 				canActivate: [NgxPermissionsGuard],
 				data: {
 					permissions: {
-						only: ['SUPADMIN','ADMIN']
+						only: ['SUPROOT','ROOT']
 					}
 				}
 			},
