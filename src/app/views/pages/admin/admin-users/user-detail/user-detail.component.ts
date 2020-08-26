@@ -68,6 +68,9 @@ export class UserDetailComponent implements OnInit, OnDestroy {
 	editUser(){
 		this.router.navigateByUrl('/admin/users/edit/'+this.user.id);
   }
+	giveAccess(){
+		this.router.navigateByUrl('/admin/users/edit/'+this.user.id);
+  }
 
   goBack() {
 		this.router.navigateByUrl('/admin/users/list');

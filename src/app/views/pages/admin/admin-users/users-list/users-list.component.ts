@@ -29,8 +29,7 @@ export class UsersListComponent implements OnInit {
 		page: this.pagination.page,
 		order_by: ['nom', 'prenom'],
 		order_way: 'desc',
-		keyword: "",
-		is_virtuel: 'NO',	
+		keyword: "",	
 	};
 	showFilters:Boolean = false;
 

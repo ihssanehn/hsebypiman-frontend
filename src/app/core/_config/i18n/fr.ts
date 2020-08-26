@@ -1028,9 +1028,9 @@ export const locale = {
 		},
 		USERS:{
 			GRANT_ACCESS: {
-				LABEL:'Donner accès à l`\'application',
-				TITLE:'Donner accès à l`\'application',
-				SHORTTITLE:'Donner accès à l`\'application'
+				LABEL:'Donner accès à l\'application',
+				TITLE:'Donner accès à l\'application',
+				SHORTTITLE:'Donner accès à l\'appli'
 			},
 			CONTRACT: {
 				LABEL: 'Type de contrat', 

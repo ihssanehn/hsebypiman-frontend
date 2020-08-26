@@ -854,10 +854,10 @@ export class MenuConfig {
 			},
 			salaries: {
 				btnAdd: localStorage.getItem('user_connection') == 'hse' ? {
-					title: 'Nouveau salarie',
+					title: 'Nouveau salarié',
 					root: true,
 					alignment: 'left',
-					page: '/salaries/add',
+					page: '/admin/users/add',
 					translate: 'MENU.BTN.NEWACTION',
 					permissionOnly: ['salarie_canAdd']
 				} : {},

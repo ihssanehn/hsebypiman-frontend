@@ -92,7 +92,7 @@ export class UserFiltersComponent implements OnInit, AfterViewInit
       fonction:[null],
       contrat:[null],
       role:[null],
-      is_virtuel:['NO'],
+      is_virtuel:[''],
       date_entree_start:[null],
       date_entree_end:[null],
       date_sortie_start:[null],
