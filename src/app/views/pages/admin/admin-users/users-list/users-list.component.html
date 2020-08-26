@@ -20,7 +20,7 @@
 					<ng-container matColumnDef="prenom">
 						<th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('prenom')">
 							{{'COMMON.FIRSTNAME.TITLE' | translate}}
-							<i class="fa" [ngClass]="isOrderedBy('prenom'']) && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('prenom'']) && {'opacity': 1}"></i>
+							<i class="fa" [ngClass]="isOrderedBy('prenom') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('prenom') && {'opacity': 1}"></i>
 						</th>
 						<td mat-cell *matCellDef="let user" (click)="viewUser(user.id)" class="pointer"> {{user.prenom}} </td>
 					</ng-container>
