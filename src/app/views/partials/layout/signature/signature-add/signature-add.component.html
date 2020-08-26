@@ -5,7 +5,7 @@
         </div>
 
         <div>
-            <div *ngxPermissionsOnly="['SUPROOT']">
+            <div *ngxPermissionsOnly="['ADMIN']">
                 <p class="font-weight-bold text-right add-signature-line-btn"><a (click)="addSignatures()">+ Ajouter un signataire</a></p>
             </div>
             <div class="row form-row signature-line" *ngFor="let signature of signaturesForm.controls; let i=index" [formGroupName]="i" >

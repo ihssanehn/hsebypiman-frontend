@@ -81,7 +81,7 @@ export class MenuConfig {
 					alignment: 'left',
 					page: '/admin',
 					translate: 'MENU.ROOT',
-					permissionOnly: ['ROOT', 'SUPROOT'],
+					permissionOnly: ['ROOT', 'ADMIN'],
 					needModule: false,
 				},
 				// {
@@ -524,7 +524,7 @@ export class MenuConfig {
 						page: '/chantiers/admin',
 						translate: 'MENU.ROOT',
 						icon: 'settings',
-						permissionOnly: ['ROOT', 'SUPROOT'],
+						permissionOnly: ['ROOT', 'ADMIN'],
 						// icon: 'flaticon2-mail-1',
 					}
 				]
@@ -565,7 +565,7 @@ export class MenuConfig {
 						page: '/analyses-risque/admin',
 						translate: 'MENU.ROOT',
 						icon: 'settings',
-						permissionOnly: ['ROOT', 'SUPROOT'],
+						permissionOnly: ['ROOT', 'ADMIN'],
 						// icon: 'flaticon2-mail-1',
 					}
 				]
@@ -605,7 +605,7 @@ export class MenuConfig {
 						page: '/materiel/admin',
 						translate: 'MENU.ROOT',
 						icon: 'settings',
-						permissionOnly: ['ROOT', 'SUPROOT'],
+						permissionOnly: ['ROOT', 'ADMIN'],
 						// icon: 'flaticon2-mail-1',
 					}
 				]
@@ -645,7 +645,7 @@ export class MenuConfig {
 						page: '/visites-securite/chantiers/admin',
 						translate: 'MENU.ROOT',
 						icon: 'settings',
-						permissionOnly: ['ROOT', 'SUPROOT'],
+						permissionOnly: ['ROOT', 'ADMIN'],
 						// icon: 'flaticon2-mail-1',
 					}
 				]
@@ -685,7 +685,7 @@ export class MenuConfig {
 						page: '/visites-securite/epis/admin',
 						translate: 'MENU.ROOT',
 						icon: 'settings',
-						permissionOnly: ['ROOT', 'SUPROOT'],
+						permissionOnly: ['ROOT', 'ADMIN'],
 						// icon: 'flaticon2-mail-1',
 					}
 				]
@@ -725,7 +725,7 @@ export class MenuConfig {
 						page: '/visites-securite/vehicules/admin',
 						translate: 'MENU.ROOT',
 						icon: 'settings',
-						permissionOnly: ['ROOT', 'SUPROOT'],
+						permissionOnly: ['ROOT', 'ADMIN'],
 						// icon: 'flaticon2-mail-1',
 					}
 				]
@@ -765,7 +765,7 @@ export class MenuConfig {
 						page: '/visites-securite/outillages/admin',
 						translate: 'MENU.ROOT',
 						icon: 'settings',
-						permissionOnly: ['ROOT', 'SUPROOT'],
+						permissionOnly: ['ROOT', 'ADMIN'],
 						// icon: 'flaticon2-mail-1',
 					}
 				]
@@ -806,7 +806,7 @@ export class MenuConfig {
 						page: '/entreprises/admin',
 						translate: 'MENU.ROOT',
 						icon: 'settings',
-						permissionOnly: ['ROOT', 'SUPROOT'],
+						permissionOnly: ['ROOT', 'ADMIN'],
 						// icon: 'flaticon2-mail-1',
 					}
 				]
@@ -847,7 +847,7 @@ export class MenuConfig {
 						page: '/plan-actions/admin',
 						translate: 'MENU.ROOT',
 						icon: 'settings',
-						permissionOnly: ['ROOT', 'SUPROOT'],
+						permissionOnly: ['ROOT', 'ADMIN'],
 						// icon: 'flaticon2-mail-1',
 					}
 				]
@@ -888,7 +888,7 @@ export class MenuConfig {
 						page: '/salaries/goal',
 						translate: 'MENU.ROOT',
 						icon: 'filter_center_focus',
-						permissionOnly: ['SUPROOT','ROOT']
+						permissionOnly: ['ADMIN','ROOT']
 						// icon: 'flaticon2-mail-1',
 					},
 					{
@@ -898,7 +898,7 @@ export class MenuConfig {
 						page: '/salaries/admin',
 						translate: 'MENU.ROOT',
 						icon: 'settings',
-						permissionOnly: ['ROOT', 'SUPROOT'],
+						permissionOnly: ['ROOT', 'ADMIN'],
 						// icon: 'flaticon2-mail-1',
 					}
 				]
@@ -1038,7 +1038,7 @@ export class MenuConfig {
 						page: '/chantiers/admin',
 						translate: 'MENU.ROOT',
 						icon: 'administration',
-						permissionOnly: ['ROOT', 'SUPROOT'],
+						permissionOnly: ['ROOT', 'ADMIN'],
 						// icon: 'flaticon2-mail-1',
 					},
 				]
