@@ -28,7 +28,7 @@ export class UsersListComponent implements OnInit {
 		per_page: this.pagination.pageSize,
 		page: this.pagination.page,
 		order_by: 'prenom',
-		order_way: 'desc',
+		order_way: 'asc',
 		keyword: "",	
 	};
 	showFilters:Boolean = false;
