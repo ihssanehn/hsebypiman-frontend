@@ -27,14 +27,14 @@ export class UsersListComponent implements OnInit {
 	filter: any = {
 		per_page: this.pagination.pageSize,
 		page: this.pagination.page,
-		order_by: ['nom', 'prenom'],
+		order_by: ['prenom', 'nom'],
 		order_way: 'desc',
 		keyword: "",	
 	};
 	showFilters:Boolean = false;
 
 	displayedUsersColumns = [
-		'nom', 'prenom', 'email', 'fonction', 'role'
+		'prenom', 'nom', 'email', 'fonction', 'role'
 	];
 
 

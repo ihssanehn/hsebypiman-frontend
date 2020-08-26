@@ -1,7 +1,7 @@
 <tf-portlet class="tf-portlet--height-fluid mat-elevation-z8" id="portlet-user" *ngIf="user">
 	<div class="tf-portlet-header ">
 		<span class="title">
-			<a (click)="goBack()">{{'MENU.SUB_SALARIES.LIST' | translate}}</a><span class="divider">></span><span class="id-item">{{user | fullName}}</span>
+			<a (click)="goBack()">{{'MENU.SUB_USERS.LIST' | translate}}</a><span class="divider">></span><span class="id-item">{{user | fullName}}</span>
 		</span>
 		<span class="pull-right">
 			<button mat-icon-button color="info" matTooltip="Modifier l'utilisateur" (click)="editUser()" *ngxPermissionsOnly="['salarie_canUpdate']">
@@ -20,7 +20,7 @@
 					<div class="tf-divider">
 						<span></span>
 					</div>
-					<div class="box box-coords" style="">
+					<div class="box box-coords">
 						<h5><b>À propos de l'utilisateur</b></h5>
 						<p><span class="label pull-left mr-2">{{'COMMON.LASTNAME.LABEL' | translate}}</span><span class="" *ngIf="user.nom; else noDataFound">{{user.nom}}</span></p>
 						<p><span class="label pull-left mr-2">{{'COMMON.FIRSTNAME.LABEL' | translate}}</span><span class="" *ngIf="user.prenom; else noDataFound">{{user.prenom}}</span></p>
@@ -31,7 +31,7 @@
 					<div class="tf-divider">
 						<span></span>
 					</div>
-					<div class="box box-coords" style="">
+					<div class="box box-coords">
 						<p *ngIf="user.is_blocked == 0; else noAccount"><span class="label pull-left mr-2">{{'COMMON.PROFIL.TITLE' | translate}}</span><span class="" *ngIf="user.role; else noDataFound">{{user.role.libelle}}</span></p>
 
 						<ng-template #noAccount>

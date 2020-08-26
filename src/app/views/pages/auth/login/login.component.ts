@@ -16,6 +16,7 @@ import {environment} from '@env/environment';
 import { MatIconRegistry } from '@angular/material';
 import { AuthNoticeService, AuthService} from '../../../../core/auth';
 import { ModuleService } from '@app/core/services';
+import Swal from 'sweetalert2';
 
 @Component({
 	selector: 'tf-login',
@@ -163,7 +164,18 @@ export class LoginComponent implements OnInit, OnDestroy {
 				}
 			},
 			err => {
-				this.authNoticeService.setNotice(this.translate.instant('AUTH.VALIDATION.INVALID_LOGIN'), 'danger');
+				if(err.error.code == 401){
+					this.authNoticeService.setNotice(this.translate.instant('AUTH.VALIDATION.INVALID_LOGIN'), 'danger');
+				}else{
+					
+					Swal.fire({
+						icon: 'error',
+						title: 'Accès non autorisé',
+						showConfirmButton: false,
+						html: err.error.message.content,
+						timer: 3000
+					});
+				}
 				this.loading = false;
 				this.cdr.markForCheck();
 			});
