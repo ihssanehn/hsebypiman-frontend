@@ -58,8 +58,8 @@ export class UserSideProfileComponent implements OnInit {
 	goToProfileDetail(){
 		this.router.navigateByUrl('profile/detail');
 	}
-	goToEditPassword(){
-		this.router.navigateByUrl('profile/password');
+	goToEdit(){
+		this.router.navigateByUrl('profile/edit');
 	}
 	/**
 	 * Log out

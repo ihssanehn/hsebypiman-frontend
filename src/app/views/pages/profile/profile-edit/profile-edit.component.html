@@ -1,184 +1,122 @@
-<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8" id="portlet-action" *ngIf="action">
-  <div class="tf-portlet-header ">
-    <span class="title">
-      <a [routerLink]="['/plan-actions/list']">{{'MENU.SUB_PLANACTION.LIST' | translate}}</a><span class="divider">></span><span class="id-item">Action {{action.created_at | date:'dd/MM/yyyy'}}</span>
-    </span>
-    <div ngbDropdown placement="bottom-right" class="d-inline-block pull-right" *ngIf="action.status.code != 'ABANDONNE' && action.status.code != 'TERMINE'">
-      <button ngbDropdownToggle mat-icon-button color="primary" matTooltip="Actions" style="line-height: 0;height: 0;">
-        <mat-icon>more_vert</mat-icon>
-      </button>
-      <div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
-        <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editAction(action.id)" *ngxPermissionsOnly="['action_canUpdate']">
-          <mat-icon>edit</mat-icon>
-        </button>
-        <button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteAction(action.id)" *ngxPermissionsOnly="['action_canArchieve']">
-          <mat-icon>delete</mat-icon>
-        </button>
-      </div>
-    </div>
-    <div class="status-box mx-4 px-2 d-inline-block pull-right" [ngStyle]="action.status && action.status.color && {'color':action.status.color}">
-      <mat-icon svgIcon="status-encours" class="status-icon mr-2" *ngIf="action.status?.code == 'EN_COURS'"></mat-icon>
-      <mat-icon svgIcon="status-termine" class="status-icon mr-2" *ngIf="action.status?.code == 'TERMINE'"></mat-icon>
-      <mat-icon inline="true" style="width: 21px; margin-top: -6px; margin-right: 6px;position: relative;top: 3px;" *ngIf="action.status?.code == 'A_ATTRIBUER'">person_add</mat-icon>
-      <mat-icon inline="true" style="width: 21px; margin-top: -6px; margin-right: 6px;position: relative;top: 3px;" *ngIf="action.status?.code == 'ABANDONNE'">stop</mat-icon>
-      {{action.status?.libelle}}
-    </div>
-  </div>
+<tf-portlet class="main-portlet-form">
+	<div class="tf-portlet-header">
+		<span class="title">
+			<a [routerLink]="['admin/users/list']">{{'MENU.EDIT_PROFILE' | translate}}</a>	
+		</span>
+	</div>
+	<tf-portlet-body>
+		<div class="tf-wizard-v4__content" data-tfwizard-type="step-content" data-tfwizard-state="current">
+			<div class="tf-form__section tf-form__section--first">
+				<div class="tf-wizard-v4__form">
 
-  <tf-portlet-body class="tf-portlet__body--fit">
-    <div class="row">
+					<form [formGroup]="userForm" autocomplete="off" class="tf-form tf-form--group-seperator-dashed " novalidate (ngSubmit)="userForm.valid && onUserSubmit()" fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px" *ngIf="loaded">
+						<div class="row form-row">
 
-      <div class="col-4">
-        <div class="card">
-          <h5><b>Informations générales</b></h5>
-          <div class="box box-info" style="flex: 1;">
-            <h6><b>{{'PLANACTIONS.NAME.LABEL' | translate}}</b></h6>
-            <div class="row">
-              <div class="col-md-12 my-2"><p><span class="action-label" *ngIf="action.libelle; else noDataFound">{{action.libelle}}</span></p></div>
-            </div>
-          </div>
-          <div class="box box-info" style="flex: 1;">
-            <h6><b>{{'PLANACTIONS.OBJECTIF.LABEL' | translate}}</b></h6>
-            <div class="row">
-              <div class="col-md-12 my-2"><p><span class="action-label" *ngIf="action.objectif; else noDataFound">{{action.objectif}}</span></p></div>
-            </div>
-          </div>
-          <div class="box box-info" style="flex: 1;">
-            <h6><b>{{'PLANACTIONS.RISQUE.LABEL' | translate}}</b></h6>
-            <div class="row">
-              <div class="col-md-12 my-2"><p><span class="action-label" *ngIf="action.risque; else noDataFound">{{action.risque}}</span></p></div>
-            </div>
-          </div>
-          <div class="tf-divider">
-            <span></span>
-          </div>
-          <div class="box text-center">
-            <small>{{'COMMON.CREATED_AT.TITLE' | translate}} : {{action.created_at | date:'dd/MM/yyyy'}}</small><br>
-            <small>{{'COMMON.UPDATED_AT.TITLE' | translate}} : {{action.updated_at | date:'dd/MM/yyyy'}}</small>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-4">
-        <div class="card">
-          <h5><b>Origine de l'action</b></h5>
-          <div class="box box-info" style="flex: 1;">
-            <p style="text-align:right"><span class="label pull-left mr-2">{{'PLANACTIONS.ORIGINE.LABEL' | translate}}</span><span class="">{{action.type?.libelle}}</span></p>
-            <ng-container *ngIf="action.type?.code== 'VISITE_SECURITE'">
-              <div class="row">
-                <div class="col-12 my-2"><p><span class="label">Visite de sécurité concernée</span></p></div>
-                <ng-container *ngIf="action.actionable">
-                  <div class="col-12 vs-line" *ngIf="action.actionable.rvs; else visiteAction">
-                    <div class="col-5"><p class="blue">{{action.actionable?.rvs?.code}}</p></div>
-                    <div class="col-5"><p class="blue">{{action.actionable?.rvs?.date_visite | date:'dd/MM/yyyy'}}</p></div>
-                    <div class="col-2" ><p class="blue"><a (click)="goToVsChantierDetail(action.actionable?.rvs?.id)" alt="voir la visite de sécurité"><mat-icon color="primary">visibility</mat-icon></a></p></div>
-                  </div>
-                  <ng-template #visiteAction>
-                    <div class="col-12 vs-line">
-                      <div class="col-5"><p class="blue">{{action.actionable?.code}}</p></div>
-                      <div class="col-5"><p class="blue">{{action.actionable?.date_visite | date:'dd/MM/yyyy'}}</p></div>
-                      <div class="col-2" ><p class="blue"><a (click)="goToVsDetail(action.actionable?.id)" alt="voir la visite de sécurité"><mat-icon color="primary">visibility</mat-icon></a></p></div>
-                    </div>
-                  </ng-template>
-                </ng-container>
-              </div>
-            </ng-container>
-          </div>
+							<mat-form-field class="col-xl-3 col-md-3">
+								<mat-label>{{'COMMON.LASTNAME.LABEL' | translate}}</mat-label>
+								<input matInput autocomplete="false" name="nom" class="form-control" type="text" placeholder="Saisir ici ..." formControlName="nom" autocomplete="off" />
+								<mat-error *ngIf="isControlHasError(userForm,'nom','required')">
+									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+								</mat-error>
+							</mat-form-field>
 
 
-          <div class="tf-divider">
-            <span></span>
-          </div>
-          <div class="box" style="flex:1">
-            <h5><b>Attribution et délai</b></h5>
-            <p class="mt-3" *ngIf="!editPilote; else selectPilote"><span class="label pull-left mr-2">{{'PLANACTIONS.PILOTE.LABEL' | translate}}</span><span class="" *ngIf="action.pilote; else noDataFound">{{action.pilote | fullName}}</span></p>
-            <p><span class="label pull-left mr-2">{{'PLANACTIONS.DELAI.LABEL' | translate}}</span><span class="" *ngIf="action.delai; else noDataFound">{{action.delai}}</span></p>
-          </div>
-          
-        </div>
-      </div>
+							<mat-form-field class="col-xl-3 col-md-3">
+								<mat-label>{{'COMMON.FIRSTNAME.LABEL' | translate}}</mat-label>
+								<input matInput autocomplete="false" name="prenom" class="form-control" type="text" placeholder="Saisir ici ..." formControlName="prenom" autocomplete="off" />
+								<mat-error *ngIf="isControlHasError(userForm,'prenom','required')">
+									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+								</mat-error>
+							</mat-form-field>
 
+							<mat-form-field class="col-xl-3 col-md-3">
+								<mat-label>{{'COMMON.EMAIL.LABEL' | translate}}</mat-label>
+								<input matInput autocomplete="false" name="email" class="form-control" type="text" placeholder="Saisir ici ..." formControlName="email" autocomplete="off" />
+								<mat-error *ngIf="isControlHasError(userForm,'email','required')">
+									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+								</mat-error>
+							</mat-form-field>
 
-      <div class="col-md-4 d-flex">
-        <div class="row d-flex flex-column flex-nowrap flex-fill">
-          <div class="col-12 flex-fill" >
-            <div class="card">
-              <h5><b>Résolution</b></h5>
-              <div class="box" style="flex:1">
-                <p><span class="label pull-left mr-2">{{'PLANACTIONS.REALISATION.LABEL' | translate}}</span><span class="" *ngIf="action.date_realisation; else noDataFound">{{action.date_realisation}}</span></p>
-                <p><span class="label pull-left mr-2">{{'PLANACTIONS.COMMENT.LABEL' | translate}}</span><span class="" *ngIf="action.commentaires; else noDataFound">{{action.commentaires}}</span></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 mt-4 flex-fill" >
-            <div class="card">
-              <h5><b>Efficacité</b></h5>
-              <div class="box" style="flex:1">
-                <p *ngIf="!editEfficacite; else editEff"><span class="label pull-left mr-2">{{'PLANACTIONS.EFFICACITE.LABEL' | translate}}</span><span class="" *ngIf="action.efficacite; else noDataFound">{{action.efficacite}}</span>
-                  <span>
-                    <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editEffic()" *ngIf="action?.status?.code != 'ABANDONNE'">
-                      <mat-icon>edit</mat-icon>
-                    </button>
-                  </span>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+							<div class="col-xl-3 col-md-3">
+								<button mat-raised-button [ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': userFormloading}" [disabled]="userFormloading || userForm.invalid" color="success" class="pull-right">
+									{{'ACTION.SAVE' | translate}}
+								</button>
+							</div>
+						</div>
+					</form>
 
-    <div class="row mt-4" >
-      <div class="col-12">
-        <ng-container *ngxPermissionsOnly="['action_canUpdate']">
-          <button *ngIf="action.status.code == 'A_ATTRIBUER'" class="pull-right"  mat-raised-button color="info" (click)="attributeAction(action.id)">
-            <mat-icon inline="true" style="width: 21px; margin-top: -6px; margin-right: 6px;">person_add</mat-icon>
-            Attribuer l'action
-          </button>
-          <button *ngIf="action.status.code == 'EN_COURS'" class="pull-right"  mat-raised-button color="info" (click)="closeAction(action.id)">
-            <mat-icon  svgIcon="status-termine" inline="true" style="width: 21px; margin-top: -6px; margin-right: 6px;"></mat-icon>
-            Clore l'action
-          </button>
-          <span class="pull-left" *ngIf="action.status.code != 'TERMINE' && action.status.code != 'ABANDONNE'">
-            <button mat-raised-button color="info" (click)="abandonAction(action.id)">
-              <mat-icon inline="true" style="width: 21px; margin-top: -6px; margin-right: 6px;">stop</mat-icon>
-              Abandonner l'action
-            </button>
-          </span>
-        </ng-container>
-      </div>
-    </div>
-  </tf-portlet-body>
+					<div class="row row-form justify-content-center">
+						<div class="col-6 my-3">
+							<div class="tf-divider">
+								<span></span>
+							</div>
+						</div>
+					</div>
 
+					<form [formGroup]="passForm" autocomplete="off" class="tf-form tf-form--group-seperator-dashed " novalidate (ngSubmit)="passForm.valid && onPassSubmit()" fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px" *ngIf="loaded">
+						<div class="row form-row">
+
+							<mat-form-field class="col-xl-3 col-md-3">
+								<mat-label>Ancien mot de passe</mat-label>
+
+								<input matInput autocomplete="false" name="old_pass" class="form-control" [type]="old_pwd_hide ? 'password' : 'text'" placeholder="Saisir ici ..." formControlName="old_pass" autocomplete="off" />
+								<button mat-icon-button matSuffix (click)="old_pwd_hide = !old_pwd_hide" type="button" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="old_pwd_hide">
+									<mat-icon svgIcon="{{old_pwd_hide ? 'close-eye' : 'open-eye'}}"></mat-icon>
+								</button>
+
+								<mat-error *ngIf="isControlHasError(passForm, 'old_pass','required')">
+									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+								</mat-error>
+							</mat-form-field>
+
+							<mat-form-field class="col-xl-3 col-md-3">
+								<mat-label>Nouveau mot de passe</mat-label>
+								<input matInput autocomplete="false" name="new_pass" class="form-control" [type]="new_pwd_hide ? 'password' : 'text'" placeholder="Saisir ici ..." formControlName="new_pass" autocomplete="off" />
+								<button mat-icon-button matSuffix (click)="new_pwd_hide = !new_pwd_hide" type="button" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="new_pwd_hide">
+									<mat-icon svgIcon="{{new_pwd_hide ? 'close-eye' : 'open-eye'}}"></mat-icon>
+								</button>
+
+								<mat-error *ngIf="isControlHasError(passForm, 'new_pass','required')">
+									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+								</mat-error>
+								<mat-error *ngIf="isControlHasError(passForm, 'new_pass','minlength')">
+									<strong>{{ 'AUTH.VALIDATION.MIN_LENGTH_FIELD' | translate }} 3</strong>
+								</mat-error>
+								<mat-error *ngIf="isControlHasError(passForm, 'new_pass','maxlength')">
+									<strong>{{ 'AUTH.VALIDATION.MAX_LENGTH_FIELD' | translate }} 100</strong>
+								</mat-error>
+							</mat-form-field>
+
+							<mat-form-field class="col-xl-3 col-md-3">
+								<mat-label>Confirmer le nouveau mot de passe</mat-label>
+								<input matInput autocomplete="false" class="form-control" name="new_pass_confirmation" [type]="new_pwd_hide ? 'password' : 'text'" placeholder="Saisir ici ..." formControlName="new_pass_confirmation" autocomplete="off" />
+								<button mat-icon-button matSuffix (click)="confirm_pwd_hide = !confirm_pwd_hide" type="button" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="confirm_pwd_hide">
+									<mat-icon svgIcon="{{confirm_pwd_hide ? 'close-eye' : 'open-eye'}}"></mat-icon>
+								</button>
+
+								<mat-error *ngIf="isControlHasError(passForm, 'new_pass_confirmation','required')">
+									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+								</mat-error>
+								<mat-error *ngIf="isControlHasError(passForm, 'new_pass_confirmation','notSame')">
+									<strong>{{ 'AUTH.VALIDATION.NOT_SAME' | translate }}</strong>
+								</mat-error>
+							</mat-form-field>
+
+							<div class="col-xl-3 col-md-3">
+
+								<button mat-raised-button [ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': passFormloading}" [disabled]="passFormloading || passForm.invalid" color="success" class="pull-right">
+									{{'ACTION.SAVE' | translate}}
+								</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</tf-portlet-body>
 </tf-portlet>
-
-
-<ng-template #selectPilote>
-    <mat-form-field class="col-xl-12 select-container">
-      <mat-label>{{'PLANACTIONS.PILOTE.LABEL' | translate}}</mat-label>
-      <mat-select class="form-control" placeholder="" (selectionChange)="setPilote($event.value)">
-        <mat-option *ngFor="let user of usersList" [value]="user.id">
-          {{ user.fullname }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-</ng-template>
-
-<ng-template #editEff>
-  <mat-form-field class="col-xl-10">
-    <mat-label>{{'PLANACTIONS.EFFICACITE.LABEL' | translate}}</mat-label>
-    <input matInput #efficacite class="form-control" [value]="action.efficacite" type="string" name="efficacite" 
-    placeholder="Saisir ici" />
-  </mat-form-field>
-  <span class="col-xl-2">
-    <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="setEfficacite(efficacite.value)" *ngIf="action?.status?.code != 'ABANDONNE'">
-      <mat-icon>check</mat-icon>
-    </button>
-  </span>
-</ng-template>
-
-<ng-template #noDataFound>
-  <span class="no-data-label">
-    Non renseigné
-  </span>
-</ng-template>
+<div>
+	<button type="button" mat-raised-button color="info" (click)="onCancel()">
+		{{'ACTION.CANCEL' | translate}}
+	</button>
+</div>

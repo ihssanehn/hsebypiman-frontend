@@ -3,16 +3,18 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
 import { BehaviorSubject, Observable, of, Subscription } from "rxjs";
 
-import { ActionService, TypeService, PersonnelService } from '@app/core/services';
+import { ActionService, TypeService, PersonnelService, UserService } from '@app/core/services';
 import { Paginate } from '@app/core/_base/layout/models/paginate.model';
 import { Action } from '@app/core/models';
 import { NgxPermissionsService } from 'ngx-permissions';
+import { Location } from '@angular/common';
 
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import Swal, { SweetAlertIcon } from 'sweetalert2';
-import { User } from '@app/core/auth';
-import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
+import { User, AuthService } from '@app/core/auth';
+import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
+import { FormStatus } from '@app/core/_base/crud/models/form-status';
 
 @Component({
   selector: 'tf-profile-edit',
@@ -21,18 +23,27 @@ import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
 })
 export class ProfileEditComponent implements OnInit, OnDestroy {
   
-  	action: Action;
-	actionForm: FormGroup;
-	formloading: boolean = false;
-	// allRoles: Role[];
-	loaded = false;
-	editMode: boolean = false;
-	editEfficacite: boolean = false;
-	editPilote: boolean = false;
-	usersList: User[];
-	usersLoaded: boolean = false;
+  	
+	
+
 	// Private properties
 	private subscriptions: Subscription[] = [];
+
+	private user$: User;
+
+	loaded: boolean = false;
+	passForm: FormGroup;
+	userForm: FormGroup;
+	passFormloading: boolean = false;
+	passFormStatus = new FormStatus();
+
+
+	errors: any = [];
+
+	old_pwd_hide: boolean = true;
+	new_pwd_hide: boolean = true;
+	confirm_pwd_hide: boolean = true;
+
 
 	/**
 	 * Component constructor
@@ -43,281 +54,174 @@ export class ProfileEditComponent implements OnInit, OnDestroy {
 	 * @param layoutUtilsService: LayoutUtilsService
 	 */
 	constructor(
-		private activatedRoute: ActivatedRoute,
-		private router: Router,
-		private actionFB: FormBuilder,
-		// private notificationService: NzNotificationService,
-		private actionService: ActionService,
-		private userService: PersonnelService,
-		private cdr: ChangeDetectorRef,
-		private permissionsService : NgxPermissionsService,
-		private dateFrToEnPipe: DateFrToEnPipe,
-		private dateEnToFrPipe: DateEnToFrPipe,
-		iconRegistry: MatIconRegistry, 
-		sanitizer: DomSanitizer
+			private fb: FormBuilder,
+			private UserService: UserService,
+			private location: Location,
+			private permissionsService : NgxPermissionsService,
+			private activatedRoute: ActivatedRoute,
+			private router: Router,
+			// private notificationService: NzNotificationService,
+			private cdr: ChangeDetectorRef,
+			private authService: AuthService,
+			iconRegistry: MatIconRegistry, 
+			sanitizer: DomSanitizer
 	) {
-		iconRegistry.addSvgIcon('status-encours',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/encours.svg'));
-		iconRegistry.addSvgIcon('status-termine',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/termine.svg'));
+		this.authService.currentUser.subscribe(x=> this.user$ = x);
+		
+		iconRegistry.addSvgIcon(
+			'close-eye',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-close-see.svg'));
+		iconRegistry.addSvgIcon(
+			'open-eye',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-open-see.svg'));
 	}
 
-  	ngOnInit() {
-		this.createForm();
-	  	const routeSubscription = this.activatedRoute.params.subscribe(
-		  	async params => {
-			  	const id = params.id;
-			  	if (id) {
-					this.getAction(id);
-				} else {
-					this.router.navigateByUrl('/plan-actions/list');
-				}
-			}
-		);
+	
+	ngOnInit() {
+		this.initEditPasswordForm();
 	}
+	
 
-	createForm() {
-		this.actionForm = this.actionFB.group({
-			type_id: [null, Validators.required],
-			libelle: ['', Validators.required],
-			risque: [''],
-			objectif: ['', Validators.required],
-			pilote_id: [''],
-			delai: [''],
-			date_realisation: [''],
-			efficacite: [''],
-			commentaires: [''],
-			status_id: [null],
-			visite_type: [null],
-			actionable_id: [null],
-			actionable_type: [null],
-			actionable: [null],
-			type: [null],
-		});
-	}
+	
+ 	
+ initEditPasswordForm() {
+		this.passForm = this.fb.group({
+			old_pass: [
+				null,
+				Validators.compose([
+					Validators.required,
+					Validators.minLength(6),
+					Validators.maxLength(100)
+				])
+			],
+			new_pass: [
+				null, 
+				Validators.compose([
+					Validators.required,
+					Validators.minLength(6),
+					Validators.maxLength(100)
+				])
+			],
+			new_pass_confirmation: [
+				null, 
+					Validators.compose([
+						Validators.required
+					])
+			]
+		}, {validator: this.checkPasswords });
+		
+	  this.userForm = this.fb.group({
+		  nom: [null, Validators.required],
+		  prenom: [null, Validators.required],
+		  email: [null, Validators.required],
+		})
+		this.userForm.patchValue(this.user$);
 
-  	async getAction(actionId){
-		try {
-			var res = await this.actionService.get(actionId).toPromise();
-			this.action = res.result.data;
-			this.parseActionDate(res.result.data, 'EnToFr');
-			this.actionForm.patchValue(res.result.data);
-			this.cdr.markForCheck();
-		} catch (error) {
-			console.error(error);
-		}
-	}
-
-	async getUsers(){
-		this.usersLoaded = false;
-		var res = await this.userService.getList().toPromise();
-		if(res){
-		  this.usersList = res.result.data;
-		  this.usersLoaded = true;
-		}
+		console.log(this.userForm);
+	  this.loaded = true;
 		this.cdr.markForCheck();
-	}
+  }
+  
 
-  	ngOnDestroy() {
+	/**
+	 * Checking control validation
+	 *
+	 * @param controlName: string => Equals to formControlName
+	 * @param validationType: string => Equals to valitors name
+	 */
+  isControlHasError(form: FormGroup, controlName: string, validationType: string): boolean {
+		const control = form.controls[controlName];
+		if (!control) {
+			return false;
+		}
+
+		const result = control.hasError(validationType) && (control.dirty || control.touched);
+		return result;
+  }
+  
+  checkPasswords(group: FormGroup) {
+    let pass = group.controls['new_pass'];
+    let confirmPass = group.controls['new_pass_confirmation'];
+
+    if (pass.value !== confirmPass.value) {
+      confirmPass.setErrors({ notSame: true });
+    } else {
+      confirmPass.setErrors(null);
+    }
+  }
+
+  
+	createForm() {
+	  this.passForm = this.fb.group({
+		
+			oldPass: [{value:null, disabled:false}, Validators.required],
+			newPass: [{value:'', disabled:false}, Validators.required],
+			confirmNewPass: [{value:'', disabled:false}, Validators.required],
+	  });
+	  
+	 console.log(this.userForm) 
+	}
+ 
+  
+	ngOnDestroy() {
 		this.subscriptions.forEach(sb => sb.unsubscribe());
 	}
-
-	goBackWithId() {
-		const url = `/plan-actions/list`;
-		this.router.navigateByUrl(url, { relativeTo: this.activatedRoute });
-	}
   
-	refreshAction(id) {
-		this.router.navigateByUrl('/plan-actions/edit/'+id);
-  	}
-
-	goToActionDetail(id){
-		this.router.navigateByUrl('/plan-actions/detail/'+id);
+		
+	onUserSubmit(){
+		console.log('here')
 	}
 
-	goToVsDetail(id){
-		var actionable_type = this.action.actionable_type;
-		switch(actionable_type){
-			case 'VsChantier': var path = 'chantiers';break;
-			case 'VsEpi': var path = 'epis';break;
-			case 'VsOutillage': var path = 'outillages';break;
-			case 'VsVehicule': var path = 'vehicules';break;
+	onPassSubmit(){
+		const controls = this.passForm.controls;
+		if (this.passForm.invalid) {
+			Object.keys(controls).forEach(controlName =>
+				controls[controlName].markAsTouched()
+			);
+			return;
 		}
-		this.router.navigateByUrl('visites-securite/'+path+'/detail/'+id);
-	}
+	  this.passFormloading = true;
+	  let form = {...this.passForm.getRawValue()};
+	  form.id = this.user$.id;
+		
 
-	goToVsChantierDetail(id){
-		this.router.navigateByUrl('visites-securite/chantiers/detail/'+id);
-	}
-
-  	editAction(id){
-		this.router.navigateByUrl('plan-actions/edit/'+id);
-	}
-
-	deleteAction(id){
-		Swal.fire({
-			title:'Désolé cette fonctionnalité n\'a pas encore été implémentée',
+	  this.UserService.updatePass(form)
+		.toPromise()
+		.then((res) => {
+		  
+		  this.passFormloading = false;
+		  var code = res.message.code as SweetAlertIcon;
+		  var message = res.message.content != 'done' ? '<b class="text-'+code+'">'+res.message.content+'</b>' : null; 
+		  Swal.fire({
+			icon: code,
+			title: 'Mot de passe mis à jour avec succès',
 			showConfirmButton: false,
-            timer: 1500
+			html: message,
+			timer: code == 'success' ? 1500 : 3000
+		  }).then(() => {
+			this.location.back();
+		  })
+		  this.cdr.markForCheck();
 		})
-	}
-
-	closeAction(actionId){
-		
-		Swal.fire({
-			icon: 'warning',
-			title: 'Voulez vous vraiment clore cette action ?',
-			showConfirmButton: true,
-			showCancelButton: true,
-			cancelButtonText: 'Annuler',
-			confirmButtonText: 'Clore l\'action'
-		}).then(async response => {
-			if (response.value) {
-				const res = await this.actionService.closeAction(actionId)
-				.toPromise()
-				.then(res=>{
-					var code = res.message.code as SweetAlertIcon;
-					var message = res.message.content != 'done' ? '<b class="text-'+code+'">'+res.message.content+'</b>' : null; 
-					Swal.fire({
-						icon: code,
-						title: 'l\'action a été clos avec succès',
-						showConfirmButton: false,
-						html: message,
-						timer: code == 'success' ? 1500 : 3000
-					}).then(() => {
-						this.getAction(actionId);
-					})
-				}).catch(e => {
-					Swal.fire({
-						icon: 'error',
-						title: 'Echec! une erreur est survenue',
-						showConfirmButton: false,
-						timer: 1500
-					});
-				});
-			}
-		});
-	}
-
-	abandonAction(actionId){
-		
-		Swal.fire({
-			icon: 'warning',
-			title: 'Voulez vous vraiment abandonner cette action ?',
-			showConfirmButton: true,
-			showCancelButton: true,
-			cancelButtonText: 'Annuler',
-			confirmButtonText: 'Abandonner l\'action'
-		}).then(async response => {
-			if (response.value) {
-				const res = await this.actionService.abandonAction(actionId)
-				.toPromise()
-				.then(res=>{
-					var code = res.message.code as SweetAlertIcon;
-					var message = res.message.content != 'done' ? '<b class="text-'+code+'">'+res.message.content+'</b>' : null; 
-					Swal.fire({
-						icon: code,
-						title: 'l\'action a été abandonnée avec succès',
-						showConfirmButton: false,
-						html: message,
-						timer: code == 'success' ? 1500 : 3000
-					}).then(() => {
-						this.getAction(actionId);
-					})
-				}).catch(e => {
-					Swal.fire({
-						icon: 'error',
-						title: 'Echec! une erreur est survenue',
-						showConfirmButton: false,
-						timer: 1500
-					});
-				});
-			}
-		});
-	}
-
-	attributeAction(actionId){
-		this.getUsers();
-		this.editPilote = true;
-		Swal.fire({
-			icon: 'warning',
-			title: 'Veuillez sélectionner un pilote pour cette action',
+		.catch(err => {
+		  
+		  this.passFormloading = false;
+		  Swal.fire({
+			icon: 'error',
+			title: 'Echec! le formulaire est incomplet ou le mot de passe ne correspond pas',
 			showConfirmButton: false,
 			timer: 1500
-		});
-	}
-
-	async setPilote(piloteId: any){
-		console.log(piloteId);
-		const res = await this.actionService.attributeAction(this.action.id, piloteId)
-			.toPromise()
-			.then(res=>{
-				var code = res.message.code as SweetAlertIcon;
-				var message = res.message.content != 'done' ? '<b class="text-'+code+'">'+res.message.content+'</b>' : null; 
-				Swal.fire({
-					icon: code,
-					title: 'l\'action a été attribuée avec succès',
-					showConfirmButton: false,
-					html: message,
-					timer: code == 'success' ? 1500 : 3000
-				}).then(() => {
-					this.editPilote = false;
-					this.getAction(this.action.id);
-				})
-			}).catch(e => {
-				Swal.fire({
-					icon: 'error',
-					title: 'Echec! une erreur est survenue',
-					showConfirmButton: false,
-					timer: 1500
-				});
-			});
-	}
-
-	editEffic(){
-		this.editEfficacite = true;
-	}
-
-	async setEfficacite(efficacite: any){
-		if(efficacite){
-			console.log(efficacite);
-			let form = {...this.actionForm.getRawValue()};
-			this.formloading = true;
-			this.parseActionDate(form, 'FrToEn');
-			form.id = this.action.id;
-			form.efficacite = efficacite;
-
-			const res = await this.actionService.update(form)
-			.toPromise()
-			.then((res) => {
-				
-				this.formloading = false;
-				var code = res.message.code as SweetAlertIcon;
-				var message = res.message.content != 'done' ? '<b class="text-'+code+'">'+res.message.content+'</b>' : null; 
-				Swal.fire({
-					icon: code,
-					title: 'Action mis à jour avec succès',
-					showConfirmButton: false,
-					html: message,
-					timer: code == 'success' ? 1500 : 3000
-				}).then(() => {
-					this.editEfficacite = false;
-					this.getAction(this.action.id);
-				})
-				this.cdr.markForCheck();
-			})
-			.catch(e => {
-				Swal.fire({
-					icon: 'error',
-					title: 'Echec! une erreur est survenue',
-					showConfirmButton: false,
-					timer: 1500
-				});
-			});
+		  });
+	  
+		  if(err.status === 422){
+			var messages = extractErrorMessagesFromErrorResponse(err);
+			this.passFormStatus.onFormSubmitResponse({success: false, messages: messages});
 			this.cdr.markForCheck();
-		}
+		  }
+		});
+	  this.cdr.markForCheck();
+	}
+  
+	onCancel(){
+	  this.location.back();
 	}
 
-	parseActionDate(item, direction){
-		item.delai = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.delai) : this.dateEnToFrPipe.transform(item.delai);
-		item.date_realisation = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.date_realisation) : this.dateEnToFrPipe.transform(item.date_realisation);
-	}
 }

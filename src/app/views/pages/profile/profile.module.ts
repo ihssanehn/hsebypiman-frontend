@@ -59,7 +59,6 @@ import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapte
 import { ProfileComponent } from './profile.component';
 import { ProfileDetailComponent } from './profile-detail/profile-detail.component'
 import { ProfileEditComponent } from './profile-edit/profile-edit.component'
-import { ProfilePasswordComponent } from './profile-password/profile-password.component'
 
 
 
@@ -82,12 +81,7 @@ const routes: Routes = [
 				path: 'edit',
 				component: ProfileEditComponent,
 				pathMatch: 'full'
-			},
-			{
-				path: 'password',
-				component: ProfilePasswordComponent,
-				pathMatch: 'full'
-			},
+			}
 		]
 	}
 ];
@@ -167,7 +161,6 @@ const routes: Routes = [
 		ProfileComponent,
 		ProfileDetailComponent,
 		ProfileEditComponent,
-		ProfilePasswordComponent,
 	]
 })
 export class ProfileModule {}
