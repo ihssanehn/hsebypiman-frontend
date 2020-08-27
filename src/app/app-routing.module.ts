@@ -77,6 +77,11 @@ const routes: Routes = [
 				}
 			},
 			{
+				path: 'profile',
+				loadChildren: () => import('@app/views/pages/profile/profile.module').then(m => m.ProfileModule),
+
+			},
+			{
 				path: 'admin',
 				loadChildren: () => import('@app/views/pages/admin/admin.module').then(m => m.AdminModule),
 				canActivate: [ModuleGuard, NgxPermissionsGuard],

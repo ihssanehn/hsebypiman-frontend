@@ -49,13 +49,17 @@ export class UserSideProfileComponent implements OnInit {
 	 */
 	async ngOnInit() {
 		this.user = this.user$
+
 		if(!this.cdr['destroyed']){ 
 			this.cdr.detectChanges();
 		}
 	}
 
-	viewProfile(){
-		this.router.navigate([`profile/${this.user.id}`]);
+	goToProfileDetail(){
+		this.router.navigateByUrl('profile/detail');
+	}
+	goToEditPassword(){
+		this.router.navigateByUrl('profile/password');
 	}
 	/**
 	 * Log out

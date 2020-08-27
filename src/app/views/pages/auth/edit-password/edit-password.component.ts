@@ -22,7 +22,8 @@ export class EditPasswordComponent implements OnInit, OnDestroy {
 	loading = false;
 	errors: any = [];
   private unsubscribe: Subject<any>;
-  pwd_hide: boolean = true;
+  old_pwd_hide: boolean = true;
+  new_pwd_hide: boolean = true;
   confirm_pwd_hide: boolean = true;
 
 
@@ -30,9 +31,9 @@ export class EditPasswordComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private userService: UserService,
     public authNoticeService: AuthNoticeService,
-	private translate: TranslateService,
-	private router: Router,
-	private fb: FormBuilder,
+		private translate: TranslateService,
+		private router: Router,
+		private fb: FormBuilder,
     private cdr: ChangeDetectorRef,
     iconRegistry: MatIconRegistry, 
 		sanitizer: DomSanitizer
@@ -52,16 +53,18 @@ export class EditPasswordComponent implements OnInit, OnDestroy {
 
   initEditPasswordForm() {
 		this.editPasswordForm = this.fb.group({
-			password: [null, Validators.compose([
-        Validators.required,
-				Validators.minLength(3),
-				Validators.maxLength(100)
-			])
-			],
-			confirm_password: [null, Validators.compose([
-				Validators.required
-			])
-			]
+			password: [null, 
+									Validators.compose([
+										Validators.required,
+										Validators.minLength(6),
+										Validators.maxLength(100)
+									])
+								],
+			confirm_password: [null, 
+													Validators.compose([
+														Validators.required
+													])
+												]
 		}, {validator: this.checkPasswords });
   }
   

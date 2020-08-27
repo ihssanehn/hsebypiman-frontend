@@ -12,37 +12,27 @@
 				</span>
 			</div>
 		</div>
-		<div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-xs">
-			<!--begin: Head -->
-			<!-- <div class="tf-user-card tf-user-card--skin-dark tf-notification-item-padding-x" style="background-image: url(./assets/media/misc/bg-1.jpg)">
-				<div class="tf-user-card__avatar">
-					
-				</div>
-				<div class="tf-user-card__name">
-					{{user?.nom}}
-				</div>
-				<div class="tf-user-card__badge">
-					<span class="btn btn-success btn-sm btn-bold btn-font-md">{{user?.role?.libelle}}</span>
-				</div>
-			</div> -->
-			<!--end: Head -->
-	
+		<div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-sm">
 			<!--begin: Navigation -->
-			<div class="tf-notification">
-				<!-- <a ngbDropdownItem routerLink="profile" href="javascript:;" class="tf-notification__item">
-					<div class="tf-notification__item-icon">
-						<i class="flaticon2-calendar-3 tf-font-success"></i>
-					</div>
+			<div class="tf-notification" style="padding: 0 27px;">
+				<a ngbDropdownItem (click)="goToProfileDetail()" href="javascript:;" class="mb-2">
 					<div class="tf-notification__item-details">
 						<div class="tf-notification__item-title tf-font-bold">
-							My Profile
-						</div>
-						<div class="tf-notification__item-time">
-							Account settings and more
+							Mon Profil
 						</div>
 					</div>
 				</a>
-				<a ngbDropdownItem routerLink="profile" href="javascript:;" class="tf-notification__item">
+				<a ngbDropdownItem (click)="goToEditPassword()" href="javascript:;" class="mb-2">
+					<div class="tf-notification__item-details">
+						<div class="tf-notification__item-title tf-font-bold">
+							Modifier mon mot de passe
+						</div>
+					</div>
+				</a>
+				<div class="tf-notification__custom mt-4">
+					<a href="javascript:;" (click)="logout()" class="btn btn-outline-brand btn-upper btn-sm btn-bold">{{'AUTH.LOGOUT' | translate}}</a>
+				</div>
+				<!-- <a ngbDropdownItem routerLink="profile" href="javascript:;" class="tf-notification__item">
 					<div class="tf-notification__item-icon">
 						<i class="flaticon2-mail tf-font-warning"></i>
 					</div>
@@ -68,22 +58,6 @@
 						</div>
 					</div>
 				</a> -->
-				<!-- <a ngbDropdownItem routerLink="profile" href="javascript:;" class="tf-notification__item">
-					<div class="tf-notification__item-icon">
-						<i class="flaticon2-hourglass tf-font-brand"></i>
-					</div>
-					<div class="tf-notification__item-details">
-						<div class="tf-notification__item-title tf-font-bold">
-							My Tasks
-						</div>
-						<div class="tf-notification__item-time">
-							latest tasks and projects
-						</div>
-					</div>
-				</a> -->
-				<div class="tf-notification__custom">
-					<a href="javascript:;" (click)="logout()" class="btn btn-outline-brand btn-upper btn-sm btn-bold">{{'AUTH.LOGOUT' | translate}}</a>
-				</div>
 			</div>
 			<!--end: Navigation -->
 	

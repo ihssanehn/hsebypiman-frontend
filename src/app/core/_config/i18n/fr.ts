@@ -96,7 +96,11 @@ export const locale = {
 				NEWENTREPRISE: 'Nouvelle entreprise',
 				NEWMATERIEL: 'Nouveau matériel',
 				NEWACTION: 'Nouvelle Action',
-			}
+			},
+			MY_PROFILE: 'Mon profil',
+			EDIT_PROFILE: 'Modifier mon profil',
+			MY_PASSWORD: 'Mon mot de passe',
+			EDIT_MY_PASSWORD: 'Modifier mon mot de passe',
 		},
 		AUTH: {
 			GENERAL: {
