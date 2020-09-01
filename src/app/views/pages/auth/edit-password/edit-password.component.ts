@@ -22,10 +22,8 @@ export class EditPasswordComponent implements OnInit, OnDestroy {
 	loading = false;
 	errors: any = [];
   private unsubscribe: Subject<any>;
-  old_pwd_hide: boolean = true;
-  new_pwd_hide: boolean = true;
+  pwd_hide: boolean = true;
   confirm_pwd_hide: boolean = true;
-
 
   constructor(
     private authService: AuthService,
