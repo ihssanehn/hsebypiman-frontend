@@ -56,7 +56,7 @@ import {
 	ChantierService, TypeService, StatusService, ActionService, CategorieService, ArService, CatRisqueService, EquipementService,
 	EntrepriseService, VisiteEpiService, VisiteChantierService, CatHabilitationService, CatQuestionService, ZoneService, SignatureService, QuestionService,
 	HabilitationService, RisqueService, ParamsService, MaterielService, VisiteOutillageService, VisiteVehiculeService, OutillageService, UserService, DocumentService, 
-	PersonnelService, FonctionService, CatMetricService, GoalService, MetricService, ModuleService, RoleService
+	PersonnelService, FonctionService, CatMetricService, GoalService, MetricService, ModuleService, RoleService, DashboardService
 } from './core/services';
 // CRUD
 import { HttpUtilsService, LayoutUtilsService, TypesUtilsService } from './core/_base/crud';
@@ -197,6 +197,7 @@ export function hljsLanguages(): HighlightLanguage[] {
 		GoalService,
 		MetricService,
 		RoleService,
+		DashboardService,
 
 		// CONFIG & Helpers
 		LayoutConfigService,

@@ -1,11 +1,11 @@
 
 <!-- <tf-comming-soon></tf-comming-soon> -->
-<tf-portlet>
+<!-- <tf-portlet>
 	<tf-portlet-body>
 		<h2>Bonjour, nous sommes heureux de vous revoir.</h2>
 	</tf-portlet-body>
-</tf-portlet>
-<!-- 
+</tf-portlet> -->
+
 <div class="row">
 	<div class="col-xl-6">
 		<div class="row row-full-height">
@@ -44,7 +44,7 @@
 	</div>
 	<div class="col-xl-6">
 		<tf-portlet [class]="'tf-portlet--height-fluid'">
-			<tf-portlet-header [title]="'Order Statistics'">
+			<tf-portlet-header [title]="'Chantiers'">
 				<ng-container tfPortletTools>
 					<tf-context-menu2></tf-context-menu2>
 				</ng-container>
@@ -73,7 +73,7 @@
 	</tf-portlet-body>
 </tf-portlet>
 
-<div class="row">
+<!-- <div class="row">
 	<div class="col-xl-4">
 		<tf-portlet [class]="'tf-portlet--height-fluid'">
 			<tf-portlet-header [title]="'Download Files'">
@@ -126,11 +126,11 @@
 			</tf-portlet-body>
 		</tf-portlet>
 	</div>
-</div>
+</div> -->
 
 
 <div class="row">
-	<div class="col-xl-8">
+	<!-- <div class="col-xl-8">
 		<tf-portlet [class]="'tf-portlet--height-fluid'">
 			<tf-portlet-header [title]="'Exclusive Datatable'" [class]="'tf-portlet__head--lg tf-portlet__head--noborder tf-portlet__head--break-sm'">
 				<ng-container tfPortletTools>
@@ -141,10 +141,17 @@
 				<tf-data-table></tf-data-table>
 			</tf-portlet-body>
 		</tf-portlet>
+	</div> -->
+	<div class="col-8">
+		<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
+			<tf-portlet-body class="tf-portlet__body--fit" style="padding: 20px 15px;">
+				<div echarts class="demo-chart" #pieActionStatus></div>
+			</tf-portlet-body>
+		</tf-portlet>
 	</div>
 	<div class="col-xl-4">
 		<tf-portlet [class]="'tf-portlet--height-fluid'">
-			<tf-portlet-header [title]="'Authors Profit'">
+			<tf-portlet-header [title]="'Top 5 entreprises externe'">
 				<ng-container tfPortletTools>
 					<tf-context-menu2></tf-context-menu2>
 				</ng-container>
@@ -160,8 +167,18 @@
 	</div>
 </div>
 
-
 <div class="row">
+	<div class="col-12">
+		<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
+			<tf-portlet-body class="tf-portlet__body--fit" style="padding: 20px 15px;">
+				<div echarts class="demo-chart" #evolActions></div>
+			</tf-portlet-body>
+		</tf-portlet>
+	</div>
+</div>
+
+
+<!-- <div class="row">
 	<div class="col-xl-8">
 		<tf-portlet [class]="'tf-portlet--height-fluid'">
 			<tf-portlet-header [title]="'Best Sellers'">
@@ -186,7 +203,7 @@
 			</tf-portlet-body>
 		</tf-portlet>
 	</div>
-</div>
+</div> -->
 
 
 
@@ -199,4 +216,8 @@
 	</tf-portlet-header>
 	<tf-portlet-body></tf-portlet-body>
 	<tf-portlet-footer></tf-portlet-footer>
-</tf-portlet> -->
+</tf-portlet>
+
+<ng-template #loading>
+	<tf-widget-indicator [value]="null" [desc]="null"></tf-widget-indicator>
+</ng-template>
