@@ -103,6 +103,7 @@ import {
 	VisiteQuestionsOutillageAdminComponent,
 	VisiteQuestionsEpiAdminComponent,
 	VisiteQuestionsChantierAdminComponent,
+	SalarieFonctionsAdminComponent
 
 } from './layout';
 // General
@@ -228,6 +229,7 @@ import { SalarieCardComponent } from './layout/salarie/salarie-card/salarie-card
 		VisiteQuestionsVehiculeAdminComponent,
 		VisiteQuestionsOutillageAdminComponent,
 		VisiteQuestionsEpiAdminComponent,
+		SalarieFonctionsAdminComponent,
 		VisiteQuestionsChantierAdminComponent,
 
 	],
@@ -316,6 +318,7 @@ import { SalarieCardComponent } from './layout/salarie/salarie-card/salarie-card
 		VisiteQuestionsVehiculeAdminComponent,
 		VisiteQuestionsOutillageAdminComponent,
 		VisiteQuestionsEpiAdminComponent,
+		SalarieFonctionsAdminComponent,
 		VisiteQuestionsChantierAdminComponent,
 
 	],

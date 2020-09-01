@@ -922,6 +922,15 @@ export class MenuConfig {
 						svgIcon: 'administration'
 					},
 					{
+						title: 'Salariés',
+						root: true,
+						alignment: 'left',
+						page: '/admin/salaries',
+						translate: 'MENU.SALARIES',
+						needModule: false,
+						svgIcon: 'administration'
+					},
+					{
 						title: 'Chantiers',
 						root: true,
 						alignment: 'left',
@@ -965,7 +974,7 @@ export class MenuConfig {
 						title: 'Suivi HSE',
 						root: true,
 						alignment: 'left',
-						page: '/admin/suivi_hse',
+						page: '/admin/suivi-hse',
 						translate: 'MENU.SUIVI_HSE',
 						needModule: true,
 						moduleCode: ['SALARIES'],

@@ -17,23 +17,7 @@ export class AdminSalariesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getTypes();
   }
 
-  async getTypes(){
-    var res = await this.typeService.getAllFromModel('CatMetric').toPromise();
-    this.types = res.result.data
-    this.cdr.markForCheck();
-  }
-
-  getTpl(type){
-    return {
-        title : type.libelle,
-        deletedMessage: 'Suppression impossible car la selection comprend un élément affecté à un ou plusieurs éléments',
-        deletedChildMessage: 'Suppression impossible car la selection est affectée à un ou plusieurs éléments',
-        collapsed : false,
-        childCol : 6
-      }
-  }
 }
 

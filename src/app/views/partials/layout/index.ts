@@ -87,6 +87,7 @@ export { VisiteQuestionsVehiculeAdminComponent } from './admins/visite-questions
 export { VisiteQuestionsOutillageAdminComponent } from './admins/visite-questions-outillage-admin/visite-questions-outillage-admin.component';
 export { VisiteQuestionsEpiAdminComponent } from './admins/visite-questions-epi-admin/visite-questions-epi-admin.component';
 export { VisiteQuestionsChantierAdminComponent } from './admins/visite-questions-chantier-admin/visite-questions-chantier-admin.component';
+export { SalarieFonctionsAdminComponent } from './admins/salarie-fonctions-admin/salarie-fonctions-admin.component';
 
 
 

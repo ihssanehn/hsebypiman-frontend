@@ -60,6 +60,7 @@ import { AdminChantiersComponent } from './admin-chantiers/admin-chantiers.compo
 import { AdminArComponent } from './admin-ar/admin-ar.component';
 import { AdminActionComponent } from './admin-action/admin-action.component';
 import { AdminSalariesComponent } from './admin-salaries/admin-salaries.component';
+import { AdminSuiviHseComponent } from './admin-suivi-hse/admin-suivi-hse.component';
 import { AdminEntrepriseComponent } from './admin-entreprise/admin-entreprise.component';
 import { AdminMaterielComponent } from './admin-materiel/admin-materiel.component';
 import { AdminVisitesComponent } from './admin-visites/admin-visites.component';
@@ -83,6 +84,10 @@ const routes: Routes = [
 				loadChildren: () => import('./admin-users/admin-users.module').then(m => m.AdminUsersModule),
 			},
 			{
+				path:'salaries',
+				component: AdminSalariesComponent
+			},
+			{
 				path:'chantiers',
 				component: AdminChantiersComponent
 			},
@@ -99,8 +104,8 @@ const routes: Routes = [
 				component: AdminActionComponent
 			},
 			{
-				path: 'suivi_hse',
-				component: AdminSalariesComponent
+				path: 'suivi-hse',
+				component: AdminSuiviHseComponent
 			},
 			{
 				path: 'entreprises',
@@ -195,6 +200,7 @@ const routes: Routes = [
 		AdminArComponent,
 		AdminActionComponent,
 		AdminSalariesComponent,
+		AdminSuiviHseComponent,
 		AdminEntrepriseComponent,
 		AdminMaterielComponent,
 		AdminVisitesComponent,
