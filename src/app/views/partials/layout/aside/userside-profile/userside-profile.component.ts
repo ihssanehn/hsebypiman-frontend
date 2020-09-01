@@ -16,6 +16,7 @@ import Swal from 'sweetalert2';
 @Component({
 	selector: 'tf-userside-profile',
 	templateUrl: './userside-profile.component.html',
+  styleUrls: ['./userside-profile.component.scss']
 })
 export class UserSideProfileComponent implements OnInit {
 	// Public properties

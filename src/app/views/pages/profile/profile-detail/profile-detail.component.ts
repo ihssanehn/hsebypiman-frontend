@@ -52,7 +52,10 @@ export class ProfileDetailComponent implements OnInit, OnDestroy {
 			this.cdr.detectChanges();
 		}
 	}
-  	
+		
+	editUser(){
+		this.router.navigateByUrl('profile/edit');
+	}
 
 	ngOnDestroy() {
 		this.subscriptions.forEach(sb => sb.unsubscribe());

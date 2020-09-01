@@ -20,6 +20,6 @@ export class FirstLetterPipe implements PipeTransform {
 			return null
 		}
 		
-		return value.split(' ').map(n => n[0]).join('');
+		return value.toUpperCase().split(' ').map(n => n[0]).join('');
 	}
 }

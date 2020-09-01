@@ -5,7 +5,7 @@
 	</span>
 
 	<div ngbDropdown placement="bottom-left" class="tf-aside__userside-formal">
-		<div ngbDropdownToggle class="tf-aside__userside-wrapper">
+		<div ngbDropdownToggle class="tf-aside__userside-wrapper dropdown-toggle">
 			<div class="tf-aside__userside-user">
 				<span class="tf-aside__userside-welcome" style="font-size: 1.4rem">
 					{{user?.prenom+' '+user?.nom}}
@@ -15,7 +15,7 @@
 		</div>
 		<div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-sm">
 			<!--begin: Navigation -->
-			<div class="tf-notification" style="padding: 0 27px;">
+			<div class="tf-notification" style="padding: 0 12px;">
 				<a ngbDropdownItem (click)="goToProfileDetail()" href="javascript:;" class="mb-2">
 					<div class="tf-notification__item-details">
 						<div class="tf-notification__item-title tf-font-bold">

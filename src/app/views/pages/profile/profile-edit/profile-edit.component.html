@@ -7,10 +7,10 @@
 	<tf-portlet-body>
 		<div class="tf-wizard-v4__content" data-tfwizard-type="step-content" data-tfwizard-state="current">
 			<div class="tf-form__section tf-form__section--first">
-				<div class="tf-wizard-v4__form">
+				<div class="tf-wizard-v4__form px-4 py-4">
 
 					<form [formGroup]="userForm" autocomplete="off" class="tf-form tf-form--group-seperator-dashed " novalidate (ngSubmit)="userForm.valid && onUserSubmit()" fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px" *ngIf="loaded">
-						<div class="row form-row">
+						<div class="row form-row my-4">
 
 							<mat-form-field class="col-xl-3 col-md-3">
 								<mat-label>{{'COMMON.LASTNAME.LABEL' | translate}}</mat-label>
@@ -45,8 +45,8 @@
 						</div>
 					</form>
 
-					<div class="row row-form justify-content-center">
-						<div class="col-6 my-3">
+					<div class="row row-form justify-content-center my-5">
+						<div class="col-10 my-4">
 							<div class="tf-divider">
 								<span></span>
 							</div>
@@ -54,7 +54,7 @@
 					</div>
 
 					<form [formGroup]="passForm" autocomplete="off" class="tf-form tf-form--group-seperator-dashed " novalidate (ngSubmit)="passForm.valid && onPassSubmit()" fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px" *ngIf="loaded">
-						<div class="row form-row">
+						<div class="row form-row my-4">
 
 							<mat-form-field class="col-xl-3 col-md-3">
 								<mat-label>Ancien mot de passe</mat-label>
