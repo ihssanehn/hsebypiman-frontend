@@ -24,15 +24,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy  {
 	@ViewChild('evolVss', {static: true}) evolVss: ElementRef;
 	@ViewChild('evolNc', {static: true}) evolNc: ElementRef;
 	
-	chartOptions1: SparklineChartOptions;
-	chartOptions2: SparklineChartOptions;
-	chartOptions3: SparklineChartOptions;
-	chartOptions4: SparklineChartOptions;
-	widget4_1: Widget4Data;
-	widget4_2: Widget4Data;
-	widget4_3: Widget4Data;
-	widget4_4: Widget4Data[];
-
+	entrepriseList: Widget4Data[];
 	chantierIndicatorlist: WidgetIndicatorItemData[];
 	
 	stats : any;
@@ -296,9 +288,9 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy  {
 					this.echartsChantierEvol.hideLoading();
 
 					// Top 5 entreprises
-					var entrepriseList = [];
+					var list = [];
 					this.stats.entreprises.top_5.forEach(element => {
-						entrepriseList.push({
+						list.push({
 							icon: 'flaticon2-line-chart tf-font-danger',
 							title: element.raison_sociale,
 							desc: element.type.libelle,
@@ -307,7 +299,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy  {
 							valueColor: 'tf-font-brand'
 						});
 					});
-					this.widget4_4 = entrepriseList;
+					this.entrepriseList = list;
 
 					// Actions By Status
 					this.byStatusOptions.series[0]['data'] = this.stats.actions.status;
