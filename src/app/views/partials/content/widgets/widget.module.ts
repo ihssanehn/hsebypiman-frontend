@@ -13,6 +13,7 @@ import { Widget12Component } from './widget12/widget12.component';
 import { Widget14Component } from './widget14/widget14.component';
 import { Widget26Component } from './widget26/widget26.component';
 import { WidgetIndicatorComponent } from './widget-indicator/widget-indicator.component';
+import { WidgetIndicatorListComponent } from './widget-indicator-list/widget-indicator-list.component';
 import { Timeline2Component } from './timeline2/timeline2.component';
 import { PortletModule } from '../general/portlet/portlet.module';
 
@@ -27,6 +28,7 @@ import { PortletModule } from '../general/portlet/portlet.module';
 		Widget14Component,
 		Widget26Component,
 		WidgetIndicatorComponent,
+		WidgetIndicatorListComponent,
 		Timeline2Component,
 	],
 	exports: [
@@ -39,6 +41,7 @@ import { PortletModule } from '../general/portlet/portlet.module';
 		Widget14Component,
 		Widget26Component,
 		WidgetIndicatorComponent,
+		WidgetIndicatorListComponent,
 		Timeline2Component,
 	],
 	imports: [
