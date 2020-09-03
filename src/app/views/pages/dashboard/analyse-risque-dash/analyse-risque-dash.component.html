@@ -1,0 +1,18 @@
+<div class="row">
+	<div class="col-3">
+		<tf-widget-indicator [value]="stats.total_ars" [valueClass]="'text-success'" [desc]="'Total Analyse de risque'" *ngIf="stats; else loading"></tf-widget-indicator>
+	</div>
+	<div class="col-3">
+		<tf-widget-indicator [value]="stats.total_ars_in_progress" [valueClass]="'text-warning'" [desc]="'Total Analyse de risque en cours'"  *ngIf="stats; else loading"></tf-widget-indicator>
+	</div>
+	<div class="col-3">
+		<tf-widget-indicator [value]="stats.total_ars_archived_without_signature" [valueClass]="'text-danger'" [desc]="'Total Analyse de risque archivée sans signature'" *ngIf="stats; else loading"></tf-widget-indicator>
+	</div>
+	<div class="col-3">
+		<tf-widget-indicator [value]="stats.total_signatures" [valueClass]="'text-success'" [desc]="'Total signataires'" *ngIf="stats; else loading"></tf-widget-indicator>
+	</div>
+</div>
+
+<ng-template #loading>
+	<tf-widget-indicator [value]="null" [desc]="null"></tf-widget-indicator>
+</ng-template>

@@ -1,97 +1,15 @@
 
-<!-- <tf-comming-soon></tf-comming-soon> -->
-<!-- <tf-portlet>
-	<tf-portlet-body>
-		<h2>Bonjour, nous sommes heureux de vous revoir.</h2>
-	</tf-portlet-body>
-</tf-portlet> -->
-
 <!-- AR -->
-<div class="row">
-	<div class="col-3">
-		<tf-widget-indicator [value]="stats.ars.total_ars" [valueClass]="'text-success'" [desc]="'Total Analyse de risque'" *ngIf="stats; else loading"></tf-widget-indicator>
-	</div>
-	<div class="col-3">
-		<tf-widget-indicator [value]="stats.ars.total_ars_in_progress" [valueClass]="'text-warning'" [desc]="'Total Analyse de risque en cours'"  *ngIf="stats; else loading"></tf-widget-indicator>
-	</div>
-	<div class="col-3">
-		<tf-widget-indicator [value]="stats.ars.total_ars_archived_without_signature" [valueClass]="'text-danger'" [desc]="'Total Analyse de risque archivée sans signature'" *ngIf="stats; else loading"></tf-widget-indicator>
-	</div>
-	<div class="col-3">
-		<tf-widget-indicator [value]="stats.ars.total_signatures" [valueClass]="'text-success'" [desc]="'Total signataires'" *ngIf="stats; else loading"></tf-widget-indicator>
-	</div>
-</div>
+<tf-analyse-risque-dash></tf-analyse-risque-dash>
 
 <!-- CHANTIERS -->
-<tf-portlet>
-	<tf-portlet-body [class]="'tf-portlet__body--fit'">
-		<div class="row row-no-padding row-col-separator-xl">
-			<div class="col-xl-4">
-				<tf-widget-indicator-list [data]="chantierIndicatorlist"></tf-widget-indicator-list>
-			</div>
-			<div class="col-xl-8" style="padding-top: 16px;">
-				<div echarts class="demo-chart" #evolChantiers></div>
-			</div>
-		</div>
-	</tf-portlet-body>
-</tf-portlet>
+<tf-chantier-dash></tf-chantier-dash>
 
 <!-- ACTIONS -->
-<div class="row">
-	<div class="col-8">
-		<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
-			<tf-portlet-body class="tf-portlet__body--fit" style="padding: 20px 15px;">
-				<div echarts class="demo-chart" #pieActionStatus></div>
-			</tf-portlet-body>
-		</tf-portlet>
-	</div>
-	<div class="col-xl-4">
-		<tf-portlet [class]="'tf-portlet--height-fluid'">
-			<tf-portlet-header [title]="'Top 5 entreprises externe'"></tf-portlet-header>
-			<tf-portlet-body>
-				<tf-widget4 [data]="entrepriseList">
-					<ng-template #actionTemplate let-item="item">
-						<span class="tf-widget4__number" [ngClass]="item.valueColor">{{item.value}}</span>
-					</ng-template>
-				</tf-widget4>
-			</tf-portlet-body>
-		</tf-portlet>
-	</div>
-</div>
+<tf-action-dash></tf-action-dash>
 
-<div class="row">
-	<div class="col-12">
-		<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
-			<tf-portlet-body class="tf-portlet__body--fit" style="padding: 20px 15px;">
-				<div echarts class="demo-chart" #evolActions></div>
-			</tf-portlet-body>
-		</tf-portlet>
-	</div>
-</div>
+<!-- VSS -->
+<tf-visite-dash></tf-visite-dash>
 
-<!-- AS -->
-<div class="row">
-	<div class="col-12">
-		<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
-			<tf-portlet-body class="tf-portlet__body--fit" style="padding: 20px 15px;">
-				<div echarts class="demo-chart" #evolVss></div>
-			</tf-portlet-body>
-		</tf-portlet>
-	</div>
-</div>
-
-<!-- NC -->
-<div class="row">
-	<div class="col-12">
-		<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
-			<tf-portlet-body class="tf-portlet__body--fit" style="padding: 20px 15px;">
-				<div echarts class="demo-chart" #evolNc></div>
-			</tf-portlet-body>
-		</tf-portlet>
-	</div>
-</div>
-
-
-<ng-template #loading>
-	<tf-widget-indicator [value]="null" [desc]="null"></tf-widget-indicator>
-</ng-template>
+<!-- ENTREPRISES -->
+<tf-entreprise-dash></tf-entreprise-dash>

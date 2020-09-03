@@ -1,0 +1,12 @@
+<tf-portlet>
+	<tf-portlet-body [class]="'tf-portlet__body--fit'">
+		<div class="row row-no-padding row-col-separator-xl">
+			<div class="col-xl-4">
+				<tf-widget-indicator-list [data]="chantierIndicatorlist"></tf-widget-indicator-list>
+			</div>
+			<div class="col-xl-8" style="padding-top: 16px;">
+				<div echarts class="demo-chart" #evolChantiers></div>
+			</div>
+		</div>
+	</tf-portlet-body>
+</tf-portlet>
