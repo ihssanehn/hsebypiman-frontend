@@ -7,21 +7,21 @@
 				<div class="tf-widget12__item">
 					<div class="tf-widget12__info">
 						<span class="tf-widget12__desc">Total Analyse de risque</span>
-						<span class="tf-widget12__value text-success">{{stats.total_ars}}</span>
+						<span class="tf-widget12__value text-success" *ngIf="stats; else loading">{{stats.total_ars}}</span>
 					</div>
 					<div class="tf-widget12__info">
 						<span class="tf-widget12__desc">Total Analyse de risque en cours</span>
-						<span class="tf-widget12__value text-warning">{{stats.total_ars_in_progress}}</span>
+						<span class="tf-widget12__value text-warning" *ngIf="stats; else loading">{{stats.total_ars_in_progress}}</span>
 					</div>
 				</div>
 				<div class="tf-widget12__item">
 					<div class="tf-widget12__info">
 						<span class="tf-widget12__desc">Total signataires</span>
-						<span class="tf-widget12__value text-success">{{stats.total_signatures}}</span>
+						<span class="tf-widget12__value text-success" *ngIf="stats; else loading">{{stats.total_signatures}}</span>
 					</div>
 					<div class="tf-widget12__info">
 						<span class="tf-widget12__desc">Total Analyse de risque archivée sans signature</span>
-						<span class="tf-widget12__value text-danger">{{stats.total_ars_archived_without_signature}}</span>
+						<span class="tf-widget12__value text-danger" *ngIf="stats; else loading">{{stats.total_ars_archived_without_signature}}</span>
 					</div>
 				</div>
 			</div>
@@ -45,6 +45,6 @@
 </div> -->
 
 
-<!-- <ng-template #loading>
-	<tf-widget-indicator [value]="null" [desc]="null"></tf-widget-indicator>
-</ng-template> -->
+<ng-template #loading>
+	<span class="tf-widget12__value"></span>
+</ng-template>
