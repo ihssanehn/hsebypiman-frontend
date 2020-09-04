@@ -22,8 +22,28 @@ export class DashboardService extends HttpService{
         super()
     }
 
-    getAll(params = {}){
+    getAllStats(params = {}){
         return this.http.post<JsonResponse<any[]>>(this.baseUrl, {...params});
     }
 
+    getChantierStats(params = {}){
+        return this.http.post<JsonResponse<any[]>>(this.baseUrl+'/chantiers', {...params});
+    }
+
+    getArStats(params = {}){
+        return this.http.post<JsonResponse<any[]>>(this.baseUrl+'/analyses-risque', {...params});
+    }
+
+    getVsStats(params = {}){
+        return this.http.post<JsonResponse<any[]>>(this.baseUrl+'/visites', {...params});
+    }
+
+    getActionStats(params = {}){
+        return this.http.post<JsonResponse<any[]>>(this.baseUrl+'/actions', {...params});
+    }
+    
+    getEntrepriseStats(params = {}){
+        return this.http.post<JsonResponse<any[]>>(this.baseUrl+'/entreprises', {...params});
+    }
+    
 }
