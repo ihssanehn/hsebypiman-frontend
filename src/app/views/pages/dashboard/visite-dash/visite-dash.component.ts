@@ -19,17 +19,18 @@ export class VisiteDashComponent implements OnInit {
   echartsVssEvol;
   echartsNcEvol;
   EvolVssOptions = {
-		title: {
-			text: 'Évolution des visites sécurité',
-			x: 'left'
-		},
+		// title: {
+		// 	text: 'Évolution des visites sécurité',
+		// 	x: 'left'
+		// },
 		tooltip: {
 			trigger: 'axis'
 		},
 		  grid: {
-			left: '3%',
-			right: '4%',
-			bottom: '10%',
+			left: '1%',
+			right: '6%',
+			bottom: '2%',
+			top: '10%',
 			containLabel: true
 		  },
 		  xAxis: {
@@ -47,17 +48,18 @@ export class VisiteDashComponent implements OnInit {
 		  ]
 	};
 	EvolNcOptions = {
-		title: {
-			text: 'Évolution des non conformité',
-			x: 'center'
-		},
+		// title: {
+		// 	text: 'Évolution des non conformité',
+		// 	x: 'center'
+		// },
 		tooltip: {
 			trigger: 'axis'
 		},
 		grid: {
-			left: '3%',
-			right: '4%',
-			bottom: '10%',
+			left: '1%',
+			right: '3%',
+			bottom: '2%',
+			top: '4%',
 			containLabel: true
 		},
 		xAxis: {
@@ -70,8 +72,9 @@ export class VisiteDashComponent implements OnInit {
 		},
 		series: [
 			{
-			type: 'line',
-			data: []
+				type: 'line',
+				color: '#37a2da',
+				data: []
 			}
 		]
 	};
