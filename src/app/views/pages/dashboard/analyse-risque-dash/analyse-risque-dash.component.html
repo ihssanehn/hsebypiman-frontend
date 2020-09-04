@@ -1,4 +1,35 @@
-<div class="row">
+
+<tf-portlet [class]="'tf-portlet--height-fluid'">
+	<tf-portlet-header [title]="'Analyses de risque'"></tf-portlet-header>
+	<tf-portlet-body>
+		<div class="tf-widget12">
+			<div class="tf-widget12__content">
+				<div class="tf-widget12__item">
+					<div class="tf-widget12__info">
+						<span class="tf-widget12__desc">Total Analyse de risque</span>
+						<span class="tf-widget12__value text-success">{{stats.total_ars}}</span>
+					</div>
+					<div class="tf-widget12__info">
+						<span class="tf-widget12__desc">Total Analyse de risque en cours</span>
+						<span class="tf-widget12__value text-warning">{{stats.total_ars_in_progress}}</span>
+					</div>
+				</div>
+				<div class="tf-widget12__item">
+					<div class="tf-widget12__info">
+						<span class="tf-widget12__desc">Total signataires</span>
+						<span class="tf-widget12__value text-success">{{stats.total_signatures}}</span>
+					</div>
+					<div class="tf-widget12__info">
+						<span class="tf-widget12__desc">Total Analyse de risque archivée sans signature</span>
+						<span class="tf-widget12__value text-danger">{{stats.total_ars_archived_without_signature}}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</tf-portlet-body>
+</tf-portlet>
+
+<!-- <div class="row">
 	<div class="col-3">
 		<tf-widget-indicator [value]="stats.total_ars" [valueClass]="'text-success'" [desc]="'Total Analyse de risque'" *ngIf="stats; else loading"></tf-widget-indicator>
 	</div>
@@ -11,8 +42,9 @@
 	<div class="col-3">
 		<tf-widget-indicator [value]="stats.total_signatures" [valueClass]="'text-success'" [desc]="'Total signataires'" *ngIf="stats; else loading"></tf-widget-indicator>
 	</div>
-</div>
+</div> -->
 
-<ng-template #loading>
+
+<!-- <ng-template #loading>
 	<tf-widget-indicator [value]="null" [desc]="null"></tf-widget-indicator>
-</ng-template>
+</ng-template> -->

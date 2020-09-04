@@ -1,4 +1,4 @@
-<div class="row">
+<!-- <div class="row">
 	<div class="col-12">
 		<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
 			<tf-portlet-body class="tf-portlet__body--fit" style="padding: 20px 15px;">
@@ -16,4 +16,18 @@
 			</tf-portlet-body>
 		</tf-portlet>
 	</div>
-</div>
+</div> -->
+
+<tf-portlet>
+	<tf-portlet-header [title]="'Plans d\'actions'"></tf-portlet-header>
+	<tf-portlet-body [class]="'tf-portlet__body--fit'">
+		<div class="row row-no-padding row-col-separator-xl">
+			<div class="col-xl-4" style="padding: 16px 10px;">
+				<div echarts class="demo-chart" #pieActionStatus></div>
+			</div>
+			<div class="col-xl-8" style="padding: 16px 10px;">
+				<div echarts class="demo-chart" #evolActions></div>
+			</div>
+		</div>
+	</tf-portlet-body>
+</tf-portlet>
