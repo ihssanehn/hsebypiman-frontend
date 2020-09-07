@@ -19,10 +19,6 @@ export class ActionDashComponent implements OnInit {
   echartsActionStatus;
   echartsActionEvol;
   byStatusOptions = {
-    // title: {
-    //   text: 'Actions par Statut',
-    //   x: 'center'
-    // },
     grid: {
       left: '3%',
       right: '4%',
@@ -52,33 +48,33 @@ export class ActionDashComponent implements OnInit {
     ]
   };
   EvolOptions = {
-		// title: {
-		// 	text: 'Évolution des actions',
-		// 	x: 'center'
-		// },
 		tooltip: {
 			trigger: 'axis'
 		},
 		grid: {
 			left: '1%',
-			right: '6%',
+			right: '1%',
 			bottom: '2%',
 			top: '4%',
 			containLabel: true
 		},
 		xAxis: {
-			name: 'Mois',
 			type: 'category',
 			data: []
 		},
 		yAxis: {
 			type: 'value'
 		},
-		
 		series: [
 			{
         type: 'line',
         color: '#37a2da',
+        label: {
+					normal: {
+						show: true,
+						position: 'top'
+					}
+				},
         data: []
 			}
 		]

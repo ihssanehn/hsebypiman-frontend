@@ -17,32 +17,50 @@ export class VisiteDashComponent implements OnInit {
   filter: any = {
 		keyword: ""
   };
+
+   vsslabelOption = {
+		show: true,
+		position: 'insideBottom',
+		distance: 15,
+		align: 'left',
+		verticalAlign: 'middle',
+		rotate: 90,
+		formatter: '{c}  {name|{a}}',
+		fontSize: 15,
+		rich: {
+			name: {
+				textBorderColor: '#fff'
+			}
+		}
+	};
   	echartsVssEvol;
   	echartsNcEvol;
   	EvolVssOptions = {
+	    color: ['#c83351', '#dea342', '#5ac2bd', '#89b398'],
 		tooltip: {
-			trigger: 'axis'
+			trigger: 'axis',
+			axisPointer: {
+				type: 'shadow'
+			}
 		},
-		  grid: {
+		grid: {
 			left: '1%',
-			right: '6%',
+			right: '1%',
 			bottom: '2%',
 			top: '10%',
 			containLabel: true
-		  },
-		  xAxis: {
-			name: 'Mois',
+		},
+		xAxis: {
 			type: 'category',
 			data: []
-		  },
-		  yAxis: {
+		},
+		yAxis: {
 			type: 'value'
-		  },
-		  legend: {
+		},
+		legend: {
 			data: []
-		  },
-		  series: [
-		  ]
+		},
+		series: []
 	};
 	EvolNcOptions = {
 		tooltip: {
@@ -50,13 +68,12 @@ export class VisiteDashComponent implements OnInit {
 		},
 		grid: {
 			left: '1%',
-			right: '3%',
+			right: '1%',
 			bottom: '2%',
 			top: '4%',
 			containLabel: true
 		},
 		xAxis: {
-			name: 'Mois',
 			type: 'category',
 			data: []
 		},
@@ -67,6 +84,12 @@ export class VisiteDashComponent implements OnInit {
 			{
 				type: 'line',
 				color: '#37a2da',
+				label: {
+					normal: {
+						show: true,
+						position: 'top'
+					}
+				},
 				data: []
 			}
 		]
@@ -135,8 +158,9 @@ export class VisiteDashComponent implements OnInit {
 			if(this.stats.total_vss_evolution){
 				this.stats.total_vss_evolution.forEach(element => {
 				this.EvolVssOptions.series.push({
-					type: 'line',
 					name: element.name,
+					type: 'bar',
+					label: this.vsslabelOption,
 					data: element.data
 				});
 				this.EvolVssOptions.legend.data.push(element.name);

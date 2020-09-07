@@ -35,7 +35,7 @@ export class EntrepriseDashComponent implements OnInit {
 			var list = [];
 			this.stats.top_5_sous_traitant.forEach(element => {
 				list.push({
-					icon: 'flaticon2-line-chart tf-font-danger',
+					icon: 'flaticon2-line-chart tf-font-success',
 					title: element.raison_sociale,
 					desc: element.type,
 					url: 'entreprises/detail/' + element.id,
@@ -48,7 +48,7 @@ export class EntrepriseDashComponent implements OnInit {
 			var list = [];
 			this.stats.top_5_interim.forEach(element => {
 				list.push({
-					icon: 'flaticon2-line-chart tf-font-danger',
+					icon: 'flaticon2-line-chart tf-font-success',
 					title: element.raison_sociale,
 					desc: element.type,
 					url: 'entreprises/detail/' + element.id,

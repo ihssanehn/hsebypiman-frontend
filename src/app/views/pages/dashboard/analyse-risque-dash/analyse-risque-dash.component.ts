@@ -22,13 +22,12 @@ export class AnalyseRisqueDashComponent implements OnInit {
 		},
 		grid: {
 			left: '1%',
-			right: '4%',
+			right: '1%',
 			bottom: '2%',
 			top: '4%',
 			containLabel: true
 		},
 		xAxis: {
-			name: 'Mois',
 			type: 'category',
 			data: []
 		},
@@ -39,6 +38,12 @@ export class AnalyseRisqueDashComponent implements OnInit {
 			{
 				type: 'line',
 				color: '#37a2da',
+				label: {
+					normal: {
+						show: true,
+						position: 'top'
+					}
+				},
 				data: []
 			}
 		]

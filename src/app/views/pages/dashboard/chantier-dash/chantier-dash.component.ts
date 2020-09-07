@@ -19,22 +19,17 @@ export class ChantierDashComponent implements OnInit {
 	};
   echartsChantierEvol;
   EvolChantierOptions = {
-		// title: {
-		// 	text: 'Nombre de chantiers par mois',
-		// 	x: 'center'
-		// },
 		tooltip: {
 			trigger: 'axis'
 		},
 		grid: {
 			left: '1%',
-			right: '4%',
+			right: '1%',
 			bottom: '2%',
-			top: '4%',
+			top: '6%',
 			containLabel: true
 		},
 		xAxis: {
-			name: 'Mois',
 			type: 'category',
 			data: []
 		},
@@ -45,6 +40,12 @@ export class ChantierDashComponent implements OnInit {
 			{
 				type: 'line',
 				color: '#37a2da',
+				label: {
+					normal: {
+						show: true,
+						position: 'top'
+					}
+				},
 				data: []
 			}
 		]

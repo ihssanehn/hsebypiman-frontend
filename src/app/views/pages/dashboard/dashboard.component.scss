@@ -6,7 +6,7 @@
 		.dash-title{
 			font-size: 1.2rem;
 			color: #74788d;
-			padding-bottom: 0.5rem;
+			padding-bottom: 1rem;
 			font-weight: 500;
 			text-align: center;
 		}
@@ -16,6 +16,10 @@
 				background-color: #fff;
 				padding: 10px!important;
 			}
+		}
+		.dash-portlet-indicator{
+			background-color: #fff!important;
+    		box-shadow: 1px 2px 1px 1px rgba(0, 0, 0, 0.05) !important
 		}
 		.tf-portlet{
 			background-color: #f7f9fc;

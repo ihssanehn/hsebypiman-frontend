@@ -1,15 +1,17 @@
 <!-- CHANTIERS -->
-<tf-chantier-dash ></tf-chantier-dash>
+<tf-chantier-dash *ifAllModules="['CHANTIER']"></tf-chantier-dash>
 
 <!-- AR -->
-<tf-analyse-risque-dash></tf-analyse-risque-dash>
+<tf-analyse-risque-dash *ifAllModules="['ANALYSE']"></tf-analyse-risque-dash>
 
 <!-- ACTIONS -->
-<tf-action-dash></tf-action-dash>
+<tf-action-dash *ifAllModules="['PLANACTION']"></tf-action-dash>
 
 <!-- VSS -->
-<tf-visite-dash></tf-visite-dash>
+<ng-container *ifInModules="['CHANTIER', 'MATERIEL']" >
+    <tf-visite-dash *ifAllModules="['VISITE']"></tf-visite-dash>
+</ng-container>
 
 <!-- ENTREPRISES -->
-<tf-entreprise-dash></tf-entreprise-dash>
+<tf-entreprise-dash *ifAllModules="['ENTREPRISE']"></tf-entreprise-dash>
 
