@@ -4,15 +4,19 @@
         <div class="row row-no-padding row-col-separator-xl">
 			<div class="col-xl-6" style="padding: 10px;">
 				<div class="dash-title">Top 5 entreprises sous-traitantes</div>
-                <tf-widget4 [data]="entrepriseList">
+                <tf-widget4 [data]="entrepriseSousTraitanteList">
                     <ng-template #actionTemplate let-item="item">
                         <span class="tf-widget4__number" [ngClass]="item.valueColor">{{item.value | currency:'EUR':'€'}}</span>
                     </ng-template>
                 </tf-widget4>
 			</div>
 			<div class="col-xl-6" style="padding: 10px;">
-				<div class="dash-title">Top 5 entreprises intérimaires</div>
-				<!-- <div echarts class="demo-chart" #evolActions></div> -->
+				<div class="dash-title">Top 5 entreprises d'intérim</div>
+                <tf-widget4 [data]="entrepriseInterimList">
+                    <ng-template #actionTemplate let-item="item">
+                        <span class="tf-widget4__number" [ngClass]="item.valueColor">{{item.value}} Intérimaires</span>
+                    </ng-template>
+                </tf-widget4>
 			</div>
         </div>
         
