@@ -22,10 +22,12 @@
 	<tf-portlet-header [title]="'Plans d\'actions'"></tf-portlet-header>
 	<tf-portlet-body [class]="'tf-portlet__body--fit'">
 		<div class="row row-no-padding row-col-separator-xl">
-			<div class="col-xl-4" style="padding: 16px 10px;">
+			<div class="col-xl-6" style="padding: 10px;">
+				<div class="dash-title">Nombre d'actions par Statut</div>
 				<div echarts class="demo-chart" #pieActionStatus></div>
 			</div>
-			<div class="col-xl-8" style="padding: 16px 10px;">
+			<div class="col-xl-6" style="padding: 10px;">
+				<div class="dash-title">Nombre d'actions par mois</div>
 				<div echarts class="demo-chart" #evolActions></div>
 			</div>
 		</div>

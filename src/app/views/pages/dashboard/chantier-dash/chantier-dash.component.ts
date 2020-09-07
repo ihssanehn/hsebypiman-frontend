@@ -19,32 +19,34 @@ export class ChantierDashComponent implements OnInit {
 	};
   echartsChantierEvol;
   EvolChantierOptions = {
-		title: {
-			text: 'Évolution des chantiers',
-			x: 'center'
-		},
 		tooltip: {
 			trigger: 'axis'
 		},
 		grid: {
-			left: '3%',
-			right: '4%',
-			bottom: '10%',
+			left: '1%',
+			right: '1%',
+			bottom: '2%',
+			top: '6%',
 			containLabel: true
 		},
 		xAxis: {
-			name: 'Mois',
 			type: 'category',
 			data: []
 		},
 		yAxis: {
 			type: 'value'
 		},
-		
 		series: [
 			{
-			type: 'line',
-			data: []
+				type: 'line',
+				color: '#37a2da',
+				label: {
+					normal: {
+						show: true,
+						position: 'top'
+					}
+				},
+				data: []
 			}
 		]
 	};
@@ -69,29 +71,29 @@ export class ChantierDashComponent implements OnInit {
           this.stats = res.result.data;
 
           // Chantier Indicators
-					this.chantierIndicatorlist = [{
-							title: 'Chantiers',
-							desc: 'Total',
-							value: this.stats.total_chantiers,
-							valueClass: 'text-success'
-						}, {
-							title: 'Chantiers en cours',
-							desc: 'Total',
-							value: this.stats.total_chantiers_in_progress,
-							valueClass: 'text-warning'
-						}, {
-							title: 'Chantiers terminés',
-							desc: 'Total',
-							value: this.stats.total_chantiers_finished,
-							valueClass: 'text-success'
-						}
-					];
-					
-					// Chantiers Evolution
-					this.EvolChantierOptions.series[0]['data'] = this.stats.total_chantiers_evolution;
-					this.EvolChantierOptions.xAxis.data = this.stats.total_chantiers_evolutionAxis;
-					this.echartsChantierEvol.setOption(this.EvolChantierOptions);
-					this.echartsChantierEvol.hideLoading();
+			this.chantierIndicatorlist = [{
+					title: 'Total Chantiers',
+					desc: '',
+					value: this.stats.total_chantiers,
+					valueClass: 'text-success'
+				}, {
+					title: 'Total Chantiers en cours',
+					desc: '',
+					value: this.stats.total_chantiers_in_progress,
+					valueClass: 'text-warning'
+				}, {
+					title: 'Total Chantiers terminés',
+					desc: '',
+					value: this.stats.total_chantiers_finished,
+					valueClass: 'text-success'
+				}
+			];
+			
+			// Chantiers Evolution
+			this.EvolChantierOptions.series[0]['data'] = this.stats.total_chantiers_evolution;
+			this.EvolChantierOptions.xAxis.data = this.stats.total_chantiers_evolutionAxis;
+			this.echartsChantierEvol.setOption(this.EvolChantierOptions);
+			this.echartsChantierEvol.hideLoading();
 
           this.cdr.markForCheck();
 				}	

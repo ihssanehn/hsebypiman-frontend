@@ -1,4 +1,4 @@
-<div class="tf-widget1">
+<!-- <div class="tf-widget1">
 	<ng-container *ngFor="let item of data">
 		<ng-container [ngTemplateOutlet]="itemTemplate" [ngTemplateOutletContext]="{item: item}"></ng-container>
 	</ng-container>
@@ -12,4 +12,46 @@
 		</div>
 		<span class="tf-widget1__number" [ngClass]="item.valueClass">{{item.value}}</span>
 	</div>
+</ng-template> -->
+
+<div class="tf-widget12">
+	<div class="tf-widget12__content">
+		<ng-container *ngFor="let item of data">
+			<ng-container [ngTemplateOutlet]="itemTemplate" [ngTemplateOutletContext]="{item: item}"></ng-container>
+		</ng-container>
+	</div>
+</div>
+
+<ng-template #itemTemplate let-item="item">
+	<div class="tf-widget12__item">
+		<div class="tf-widget12__info">
+			<span class="tf-widget12__desc">{{item.title}}</span>
+			<span class="tf-widget12__value text-success" [ngClass]="item.valueClass">{{item.value}}</span>
+		</div>
+	</div>
 </ng-template>
+
+<!-- 
+	<div class="tf-widget12__content">
+		<div class="tf-widget12__item">
+			<div class="tf-widget12__info">
+				<span class="tf-widget12__desc">Total Analyse de risque</span>
+				<span class="tf-widget12__value text-success" *ngIf="stats; else loading">{{stats.total_ars}}</span>
+			</div>
+			<div class="tf-widget12__info">
+				<span class="tf-widget12__desc">Total Analyse de risque en cours</span>
+				<span class="tf-widget12__value text-warning" *ngIf="stats; else loading">{{stats.total_ars_in_progress}}</span>
+			</div>
+		</div>
+		<div class="tf-widget12__item">
+			<div class="tf-widget12__info">
+				<span class="tf-widget12__desc">Total signataires</span>
+				<span class="tf-widget12__value text-success" *ngIf="stats; else loading">{{stats.total_signatures}}</span>
+			</div>
+			<div class="tf-widget12__info">
+				<span class="tf-widget12__desc">Total Analyse de risque archivée sans signature</span>
+				<span class="tf-widget12__value text-danger" *ngIf="stats; else loading">{{stats.total_ars_archived_without_signature}}</span>
+			</div>
+		</div>
+	</div> -->
+

@@ -1,13 +1,29 @@
 <tf-portlet>
 	<tf-portlet-header [title]="'Chantiers'"></tf-portlet-header>
 	<tf-portlet-body [class]="'tf-portlet__body--fit'">
-		<div class="row row-no-padding row-col-separator-xl">
-			<div class="col-xl-4">
-				<tf-widget-indicator-list [data]="chantierIndicatorlist"></tf-widget-indicator-list>
+		<div class="row row-no-padding">
+			<div class="col-xl-12" style="padding: 1.5em 1.5em 0 1.5em;">
+				<div class="row">
+					<div class="col-4">
+						<tf-widget-indicator [value]="stats.total_chantiers" [valueClass]="'text-success'" [desc]="'Total Chantiers'" *ngIf="stats; else loading"></tf-widget-indicator>
+					</div>
+					<div class="col-4">
+						<tf-widget-indicator [value]="stats.total_chantiers_in_progress" [valueClass]="'text-warning'" [desc]="'Total Chantiers en cours'"  *ngIf="stats; else loading"></tf-widget-indicator>
+					</div>
+					<div class="col-4">
+						<tf-widget-indicator [value]="stats.total_chantiers_finished" [valueClass]="'text-success'" [desc]="'Total Chantiers terminés'" *ngIf="stats; else loading"></tf-widget-indicator>
+					</div>
+				</div>
 			</div>
-			<div class="col-xl-8" style="padding-top: 16px;">
+			<div class="col-xl-12" style="padding: 0 1.5em 1.5em 1.5em">
+				<div class="dash-title">Nombre de chantiers par mois</div>
 				<div echarts class="demo-chart" #evolChantiers></div>
 			</div>
 		</div>
 	</tf-portlet-body>
 </tf-portlet>
+
+<ng-template #loading>
+	<span class="tf-widget12__value"></span>
+</ng-template>
+

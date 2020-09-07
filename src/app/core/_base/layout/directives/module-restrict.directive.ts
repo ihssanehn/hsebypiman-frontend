@@ -53,7 +53,7 @@ export class IfInModulesDirective {
 
 	console.log(this.moduleService.inModules(this.moduleName));
 
-	if(!this.moduleService.inModules(this.moduleName)){
+	if(this.moduleService.inModules(this.moduleName).length == 0){
 		this.viewContainer.clear()
 	}else{
 		this.viewContainer.createEmbeddedView(this.templateRef);
