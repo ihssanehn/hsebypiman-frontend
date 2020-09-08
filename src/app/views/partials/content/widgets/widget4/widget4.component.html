@@ -6,12 +6,12 @@
 
 <ng-template #itemTemplate let-item="item">
 	<div class="tf-widget4__item">
-		<div class="tf-widget4__pic tf-widget4__pic--pic" *ngIf="item.pic">
+		<!-- <div class="tf-widget4__pic tf-widget4__pic--pic" *ngIf="item.pic">
 			<img [attr.src]="item.pic" alt="">
 		</div>
 		<span class="tf-widget4__icon" *ngIf="item.icon">
 			<i [ngClass]="item.icon"></i>
-		</span>
+		</span> -->
 
 		<a href="javascript:;" [attr.href]="item.url" class="tf-widget4__title" *ngIf="item.title">{{item.title}}</a>
 
