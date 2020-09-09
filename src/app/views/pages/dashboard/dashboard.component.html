@@ -1,17 +1,72 @@
-<!-- CHANTIERS -->
-<tf-chantier-dash *ifAllModules="['CHANTIER']"></tf-chantier-dash>
+<div class="row d-flex dash-row-container" *ifAllModules="['CHANTIER', 'ANALYSE']">
+    <!-- CHANTIERS -->
+    <tf-chantier-dash class="col-6 flex-fill"></tf-chantier-dash>
+    <!-- AR -->
+    <tf-analyse-risque-dash class="col-6 flex-fill"></tf-analyse-risque-dash>
+</div>
 
-<!-- AR -->
-<tf-analyse-risque-dash *ifAllModules="['ANALYSE']"></tf-analyse-risque-dash>
+<!-- CHANTIERS Only -->
+<div class="row d-flex dash-row-container" *ngIf="isActive(['CHANTIER']) && !isActive(['ANALYSE'])">
+    <ng-container *ngIf="isActive(['PLANACTION']) && isActive(['ENTREPRISE'])" >
+        <tf-chantier-dash class="col-12 flex-fill"></tf-chantier-dash>
+    </ng-container>
+    <ng-container *ngIf="!isActive(['PLANACTION']) && !isActive(['ENTREPRISE'])" >
+        <tf-chantier-dash class="col-12 flex-fill"></tf-chantier-dash>
+    </ng-container>
+    <ng-container *ngIf="isActive(['PLANACTION']) && !isActive(['ENTREPRISE'])" >
+        <tf-chantier-dash class="col-6 flex-fill"></tf-chantier-dash>
+        <tf-action-dash class="col-6 flex-fill"></tf-action-dash>
+    </ng-container>
+    <ng-container *ngIf="!isActive(['PLANACTION']) && isActive(['ENTREPRISE'])" >
+        <tf-chantier-dash class="col-6 flex-fill"></tf-chantier-dash>
+        <tf-entreprise-dash class="col-6 flex-fill"></tf-entreprise-dash>
+    </ng-container>
+</div>
 
-<!-- ACTIONS -->
-<tf-action-dash *ifAllModules="['PLANACTION']"></tf-action-dash>
+<!-- AR Only -->
+<div class="row d-flex dash-row-container" *ngIf="isActive(['ANALYSE']) && !isActive(['CHANTIER'])">
+    <ng-container *ngIf="isActive(['PLANACTION']) && isActive(['ENTREPRISE'])" >
+        <tf-analyse-risque-dash class="col-12 flex-fill"></tf-analyse-risque-dash>
+    </ng-container>
+    <ng-container *ngIf="!isActive(['PLANACTION']) && !isActive(['ENTREPRISE'])" >
+        <tf-analyse-risque-dash class="col-12 flex-fill"></tf-analyse-risque-dash>
+    </ng-container>
+    <ng-container *ngIf="isActive(['PLANACTION']) && !isActive(['ENTREPRISE'])" >
+        <tf-analyse-risque-dash class="col-6 flex-fill"></tf-analyse-risque-dash>
+        <tf-action-dash class="col-6 flex-fill"></tf-action-dash>
+    </ng-container>
+    <ng-container *ngIf="!isActive(['PLANACTION']) && isActive(['ENTREPRISE'])" >
+        <tf-analyse-risque-dash class="col-6 flex-fill"></tf-analyse-risque-dash>
+        <tf-entreprise-dash class="col-6 flex-fill"></tf-entreprise-dash>
+    </ng-container>
+</div>
+
+<div class="row d-flex dash-row-container" *ifAllModules="['PLANACTION', 'ENTREPRISE']">
+    <!-- ACTIONS -->
+    <tf-action-dash class="col-8 flex-fill"></tf-action-dash>
+    <!-- ENTREPRISES -->
+    <tf-entreprise-dash class="col-4 flex-fill"></tf-entreprise-dash>
+</div>
+
+<!-- ACTIONS Only -->
+<div class="row d-flex dash-row-container" *ngIf="isActive(['PLANACTION']) && !isActive(['ENTREPRISE'])">
+    <ng-container *ngIf="(!isActive(['CHANTIER']) && !isActive(['ANALYSE'])) || (isActive(['CHANTIER']) && isActive(['ANALYSE']))" >
+        <tf-action-dash class="col-12 flex-fill"></tf-action-dash>
+    </ng-container>
+</div>
 
 <!-- VSS -->
-<ng-container *ifInModules="['CHANTIER', 'MATERIEL']" >
+<div class="dash-row-container" *ifInModules="['CHANTIER', 'MATERIEL']">
     <tf-visite-dash *ifAllModules="['VISITE']"></tf-visite-dash>
-</ng-container>
+</div>
 
-<!-- ENTREPRISES -->
-<tf-entreprise-dash *ifAllModules="['ENTREPRISE']"></tf-entreprise-dash>
+<!-- ENTREPRISES Only-->
+<div class="row d-flex dash-row-container" *ngIf="isActive(['ENTREPRISE']) && !isActive(['PLANACTION'])">
+    <ng-container *ngIf="(!isActive(['CHANTIER']) && !isActive(['ANALYSE'])) || (isActive(['CHANTIER']) && isActive(['ANALYSE']))" >
+        <tf-entreprise-dash class="col-6 flex-fill"></tf-entreprise-dash>
+    </ng-container>
+
+</div>
+
+
 

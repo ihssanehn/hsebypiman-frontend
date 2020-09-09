@@ -18,14 +18,14 @@ export class VisiteDashComponent implements OnInit {
 		keyword: ""
   };
 
-   vsslabelOption = {
+    vsslabelOption = {
 		show: true,
-		position: 'insideBottom',
-		distance: 15,
-		align: 'left',
+		position: 'insideTop',
+		distance: -10,
+		align: 'center',
 		verticalAlign: 'middle',
-		rotate: 90,
-		formatter: '{c}  {name|{a}}',
+		rotate: 0,
+		formatter: '{c}',
 		fontSize: 15,
 		rich: {
 			name: {
@@ -84,6 +84,7 @@ export class VisiteDashComponent implements OnInit {
 			{
 				type: 'line',
 				color: '#37a2da',
+				smooth: true,
 				label: {
 					normal: {
 						show: true,
@@ -123,7 +124,7 @@ export class VisiteDashComponent implements OnInit {
 		  data: []
 		  }
 		]
-	  };
+	};
 
   constructor(
     private dashboardService: DashboardService,
@@ -159,8 +160,14 @@ export class VisiteDashComponent implements OnInit {
 				this.stats.total_vss_evolution.forEach(element => {
 				this.EvolVssOptions.series.push({
 					name: element.name,
-					type: 'bar',
-					label: this.vsslabelOption,
+					type: 'line',
+					smooth: true,
+					label: {
+						normal: {
+							show: true,
+							position: 'top'
+						}
+					},
 					data: element.data
 				});
 				this.EvolVssOptions.legend.data.push(element.name);

@@ -15,14 +15,35 @@
 			canvas{
 				background-color: #fff;
 				padding: 10px!important;
+				border-radius: 4px;
 			}
 		}
 		.dash-portlet-indicator{
-			background-color: #fff!important;
-    		box-shadow: 1px 2px 1px 1px rgba(0, 0, 0, 0.05) !important
+			// background-color: #fff!important;
+			// box-shadow: 1px 2px 1px 1px rgba(0, 0, 0, 0.05) !important;
+			box-shadow: none!important;
+			.tf-portlet{
+				margin-bottom: 20px;
+			}
+			tf-portlet-body{
+				padding: 5px 15px 5px 15px !important;
+				.tf-widget26__content{
+					padding-bottom: 0!important;
+					.tf-widget26__desc{
+						font-size: 0.85rem!important;
+					}
+				}
+			}
+		}
+		.dash-row-container{
+			margin-bottom: 20px;
 		}
 		.tf-portlet{
 			background-color: #f7f9fc;
+			margin-bottom: 0px;
+		}
+		tf-entreprise-dash .tf-portlet{
+			height: 100%
 		}
 	}
 }

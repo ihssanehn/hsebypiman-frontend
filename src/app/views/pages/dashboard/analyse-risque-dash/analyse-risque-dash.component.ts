@@ -38,6 +38,7 @@ export class AnalyseRisqueDashComponent implements OnInit {
 			{
 				type: 'line',
 				color: '#37a2da',
+				smooth: true,
 				label: {
 					normal: {
 						show: true,

@@ -6,7 +6,7 @@ import { shuffle } from 'lodash';
 // Widgets model
 import { LayoutConfigService, SparklineChartOptions, MenuAsideService } from '../../../core/_base/layout';
 import { Widget4Data } from '../../partials/content/widgets/widget4/widget4.component';
-import { DashboardService } from '@app/core/services';
+import { DashboardService, ModuleService } from '@app/core/services';
 import { Router } from '@angular/router';
 import * as echarts from 'echarts';
 import { WidgetIndicatorItemData } from '@app/views/partials/content/widgets/widget-indicator-list/widget-indicator-list.component';
@@ -24,6 +24,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy  {
 
 	constructor(
 		private menuAsideService: MenuAsideService,
+		private moduleService : ModuleService,
 		private layoutConfigService: LayoutConfigService,
 		private router: Router,
 		private dashboardService: DashboardService,
@@ -40,5 +41,9 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy  {
 
 	ngOnDestroy(){
 		this.cdr.detach();
+	}
+
+	isActive(moduleName: string[]){
+		return this.moduleService.isActived(moduleName);
 	}
 }

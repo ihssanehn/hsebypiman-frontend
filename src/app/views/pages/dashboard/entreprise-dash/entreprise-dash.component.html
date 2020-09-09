@@ -1,9 +1,9 @@
-<tf-portlet>
+<tf-portlet class="flex-fill">
     <tf-portlet-header [title]="'Entreprises externe'"></tf-portlet-header>
     <tf-portlet-body [class]="'tf-portlet__body--fit'">
         <div class="row row-no-padding row-col-separator-xl">
 			<div class="col-xl-6" style="padding: 10px;">
-				<div class="dash-title">Top 5 entreprises sous-traitantes</div>
+				<div class="dash-title">Top 5 sous-traitants</div>
                 <tf-widget4 [data]="entrepriseSousTraitanteList">
                     <ng-template #actionTemplate let-item="item">
                         <span class="tf-widget4__number" [ngClass]="item.valueColor">{{item.value | currency:'EUR':'€'}}</span>
@@ -11,10 +11,10 @@
                 </tf-widget4>
 			</div>
 			<div class="col-xl-6" style="padding: 10px;">
-				<div class="dash-title">Top 5 entreprises d'intérim</div>
+				<div class="dash-title">Top 5 intérims</div>
                 <tf-widget4 [data]="entrepriseInterimList">
                     <ng-template #actionTemplate let-item="item">
-                        <span class="tf-widget4__number" [ngClass]="item.valueColor">{{item.value}} Intérimaires</span>
+                        <span class="tf-widget4__number" [ngClass]="item.valueColor">{{item.value}} salariés</span>
                     </ng-template>
                 </tf-widget4>
 			</div>
