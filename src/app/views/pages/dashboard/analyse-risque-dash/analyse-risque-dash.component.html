@@ -1,9 +1,9 @@
 
 <tf-portlet>
-	<tf-portlet-header [title]="'Analyses de risque'"></tf-portlet-header>
+	<tf-portlet-header [title]="'Analyses de risque'"  [stats]="stats ? getHeaderStats() : ''"></tf-portlet-header>
 	<tf-portlet-body [class]="'tf-portlet__body--fit'">
 		<div class="row row-no-padding">
-			<div class="col-xl-4" style="padding: 1.5em 1.5em 0 1.5em;">
+			<!-- <div class="col-xl-4" style="padding: 1.5em 1.5em 0 1.5em;">
 				<div class="row">
 					<div class="col-12">
 						<tf-widget-indicator [value]="stats.total_ars" [valueClass]="'text-success'" [desc]="'Total Analyse de risque'" *ngIf="stats; else loading"></tf-widget-indicator>
@@ -18,8 +18,8 @@
 						<tf-widget-indicator [value]="stats.total_signatures" [valueClass]="'text-success'" [desc]="'Total signataires'" *ngIf="stats; else loading"></tf-widget-indicator>
 					</div>
 				</div>
-			</div>
-			<div class="col-xl-8" style="padding: 1em 1em 1em 0">
+			</div> -->
+			<div class="col-12" style="padding:1em">
 				<div class="dash-title">Nombre d'analyses de risque par mois</div>
 				<div echarts class="demo-chart" #evolArs></div>
 			</div>

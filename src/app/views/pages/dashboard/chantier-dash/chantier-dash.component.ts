@@ -31,6 +31,7 @@ export class ChantierDashComponent implements OnInit {
 		},
 		xAxis: {
 			type: 'category',
+      boundaryGap: false,
 			data: []
 		},
 		yAxis: {
@@ -39,14 +40,8 @@ export class ChantierDashComponent implements OnInit {
 		series: [
 			{
 				type: 'line',
-				color: '#37a2da',
-				smooth: true,
-				label: {
-					normal: {
-						show: true,
-						position: 'top'
-					}
-				},
+				color: '#004FC2',
+				smooth: false,
 				data: []
 			}
 		]
@@ -105,5 +100,8 @@ export class ChantierDashComponent implements OnInit {
   }
 
 
+	getHeaderStats(){
+		return 'En cours :&nbsp;<b class="text-primary">'+ this.stats.total_chantiers_in_progress+' / '+this.stats.total_chantiers+'</b>'
+	}
 
 }

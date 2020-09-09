@@ -29,6 +29,7 @@ export class AnalyseRisqueDashComponent implements OnInit {
 		},
 		xAxis: {
 			type: 'category',
+      boundaryGap: false,
 			data: []
 		},
 		yAxis: {
@@ -37,14 +38,7 @@ export class AnalyseRisqueDashComponent implements OnInit {
 		series: [
 			{
 				type: 'line',
-				color: '#37a2da',
-				smooth: true,
-				label: {
-					normal: {
-						show: true,
-						position: 'top'
-					}
-				},
+				color: '#004FC2',
 				data: []
 			}
 		]
@@ -64,7 +58,7 @@ export class AnalyseRisqueDashComponent implements OnInit {
 		this.echartsArEvol.showLoading();
 	}
 
-  async getArDash() {
+	async getArDash() {
 		try {
 			this.dashboardService.getArStats(this.filter).subscribe(res=>{
           this.stats = res.result.data;
@@ -81,6 +75,10 @@ export class AnalyseRisqueDashComponent implements OnInit {
 		} catch (error) {
 			console.error(error);
     }
-  }
+	}
+	
+	getHeaderStats(){
+		return 'En cours :&nbsp;<b class="text-primary">'+ this.stats.total_ars_in_progress+' / '+this.stats.total_ars+'</b>'
+	}
 
 }

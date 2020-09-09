@@ -59,7 +59,7 @@ export class ActionDashComponent implements OnInit {
 			containLabel: true
 		},
 		xAxis: {
-			type: 'category',
+      type: 'category',
 			data: []
 		},
 		yAxis: {
@@ -67,15 +67,8 @@ export class ActionDashComponent implements OnInit {
 		},
 		series: [
 			{
-        type: 'line',
-        color: '#37a2da',
-        smooth: true,
-        label: {
-					normal: {
-						show: true,
-						position: 'top'
-					}
-				},
+        type: 'bar',
+        color: '#004FC2',
         data: []
 			}
 		]
@@ -91,8 +84,8 @@ export class ActionDashComponent implements OnInit {
   }
 
   ngAfterViewInit(){
-		this.echartsActionStatus = echarts.init(this.pieActionStatus.nativeElement)
-    this.echartsActionStatus.showLoading();
+		// this.echartsActionStatus = echarts.init(this.pieActionStatus.nativeElement)
+    // this.echartsActionStatus.showLoading();
     this.echartsActionEvol = echarts.init(this.evolActions.nativeElement)
 		this.echartsActionEvol.showLoading();
 	}
@@ -104,8 +97,8 @@ export class ActionDashComponent implements OnInit {
 
 					// Actions By Status
 					this.byStatusOptions.series[0]['data'] = this.stats.status;
-					this.echartsActionStatus.setOption(this.byStatusOptions);
-					this.echartsActionStatus.hideLoading();
+					// this.echartsActionStatus.setOption(this.byStatusOptions);
+					// this.echartsActionStatus.hideLoading();
 
 					// Actions Evolution
 					this.EvolOptions.series[0]['data'] = this.stats.evolution;
@@ -121,4 +114,7 @@ export class ActionDashComponent implements OnInit {
     }
   }
 
+  getHeaderStats(){
+    return '<span class="text-danger">A attribuer : </span>&nbsp;<b class="text-primary">'+this.stats.actions_a_attribuer+'</b>'+'<span class="text-warning ml-4">En cours : </span>&nbsp;<b class="text-primary">'+this.stats.actions_en_cours+'</b>';
+  }
 }

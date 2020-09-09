@@ -1,12 +1,12 @@
-<tf-portlet class="flex-fill">
-	<tf-portlet-header [title]="'Plans d\'actions'"></tf-portlet-header>
+<tf-portlet>
+	<tf-portlet-header [title]="'Plans d\'actions'" [stats]="stats ? getHeaderStats() : ''"></tf-portlet-header>
 	<tf-portlet-body [class]="'tf-portlet__body--fit'">
 		<div class="row row-no-padding row-col-separator-xl">
-			<div class="col-xl-6" style="padding: 10px;">
+			<!-- <div class="col-xl-6" style="padding: 10px;">
 				<div class="dash-title">Nombre d'actions par Statut</div>
 				<div echarts class="demo-chart" #pieActionStatus></div>
-			</div>
-			<div class="col-xl-6" style="padding: 10px;">
+			</div> -->
+			<div class="col-12" style="padding:1em">
 				<div class="dash-title">Nombre d'actions par mois</div>
 				<div echarts class="demo-chart" #evolActions></div>
 			</div>

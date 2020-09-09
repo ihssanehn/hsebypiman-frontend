@@ -18,7 +18,7 @@ export class VisiteDashComponent implements OnInit {
 		keyword: ""
   };
 
-    vsslabelOption = {
+  vsslabelOption = {
 		show: true,
 		position: 'insideTop',
 		distance: -10,
@@ -33,10 +33,10 @@ export class VisiteDashComponent implements OnInit {
 			}
 		}
 	};
-  	echartsVssEvol;
-  	echartsNcEvol;
-  	EvolVssOptions = {
-	    color: ['#c83351', '#dea342', '#5ac2bd', '#89b398'],
+	echartsVssEvol;
+	echartsNcEvol;
+	EvolVssOptions = {
+		color: ['#c83351', '#dea342', '#5ac2bd', '#89b398'],
 		tooltip: {
 			trigger: 'axis',
 			axisPointer: {
@@ -46,19 +46,21 @@ export class VisiteDashComponent implements OnInit {
 		grid: {
 			left: '1%',
 			right: '1%',
-			bottom: '2%',
-			top: '10%',
+			bottom: '15%',
+			top: '4%',
 			containLabel: true
 		},
 		xAxis: {
 			type: 'category',
+      boundaryGap: true,
 			data: []
 		},
 		yAxis: {
 			type: 'value'
 		},
 		legend: {
-			data: []
+			data: [],
+			bottom: true
 		},
 		series: []
 	};
@@ -75,6 +77,7 @@ export class VisiteDashComponent implements OnInit {
 		},
 		xAxis: {
 			type: 'category',
+      boundaryGap: false,
 			data: []
 		},
 		yAxis: {
@@ -83,18 +86,12 @@ export class VisiteDashComponent implements OnInit {
 		series: [
 			{
 				type: 'line',
-				color: '#37a2da',
-				smooth: true,
-				label: {
-					normal: {
-						show: true,
-						position: 'top'
-					}
-				},
+				color: '#004FC2',
 				data: []
 			}
 		]
 	};
+
 	echartsVssType;
 	byTypeOptions = {
 		grid: {
@@ -140,8 +137,8 @@ export class VisiteDashComponent implements OnInit {
 		this.echartsVssEvol.showLoading();
 		this.echartsNcEvol = echarts.init(this.evolNc.nativeElement)
 		this.echartsNcEvol.showLoading();
-		this.echartsVssType = echarts.init(this.pieVssType.nativeElement)
-		this.echartsVssType.showLoading();
+		// this.echartsVssType = echarts.init(this.pieVssType.nativeElement)
+		// this.echartsVssType.showLoading();
 	}
 
   async getVisiteDash() {
@@ -151,8 +148,8 @@ export class VisiteDashComponent implements OnInit {
 
 			// Actions By Status
 			this.byTypeOptions.series[0]['data'] = this.stats.total_vss_by_type;
-			this.echartsVssType.setOption(this.byTypeOptions);
-			this.echartsVssType.hideLoading();
+			// this.echartsVssType.setOption(this.byTypeOptions);
+			// this.echartsVssType.hideLoading();
 
 			// Vss Evolution
 			this.EvolVssOptions.series = [];
@@ -160,14 +157,7 @@ export class VisiteDashComponent implements OnInit {
 				this.stats.total_vss_evolution.forEach(element => {
 				this.EvolVssOptions.series.push({
 					name: element.name,
-					type: 'line',
-					smooth: true,
-					label: {
-						normal: {
-							show: true,
-							position: 'top'
-						}
-					},
+					type: 'bar',
 					data: element.data
 				});
 				this.EvolVssOptions.legend.data.push(element.name);
@@ -189,6 +179,10 @@ export class VisiteDashComponent implements OnInit {
 		} catch (error) {
 			console.error(error);
     }
-  }
+	}
+	
+	getHeaderStats(){
+		return ''
+	}
 
 }
