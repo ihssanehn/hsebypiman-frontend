@@ -49,13 +49,13 @@ export class MenuConfig {
 					moduleCode: ['PLANACTION']
 				},
 				{
-					title: 'Salariés',
+					title: 'Matériel',
 					root: true,
 					alignment: 'left',
-					page: '/salaries',
-					translate: 'MENU.SALARIES',
+					page: '/materiel',
+					translate: 'MENU.MATERIELS',
 					needModule: true,
-					moduleCode: ['SALARIES']
+					moduleCode: ['MATERIEL']
 				},
 				{
 					title: 'Entreprises Externes',
@@ -67,13 +67,13 @@ export class MenuConfig {
 					moduleCode: ['ENTREPRISE']
 				},
 				{
-					title: 'Matériel',
+					title: 'Suivi Hse',
 					root: true,
 					alignment: 'left',
-					page: '/materiel',
-					translate: 'MENU.MATERIELS',
+					page: '/suivi-hse',
+					translate: 'MENU.SUIVI_HSE',
 					needModule: true,
-					moduleCode: ['MATERIEL']
+					moduleCode: ['SALARIES']
 				},
 				{
 					title: 'Paramètres',
@@ -852,7 +852,7 @@ export class MenuConfig {
 					}
 				]
 			},
-			salaries: {
+			suiviHse: {
 				btnAdd: localStorage.getItem('user_connection') == 'hse' ? {
 					title: 'Nouveau salarié',
 					root: true,
@@ -869,14 +869,14 @@ export class MenuConfig {
 						title: 'Dashboards',
 						root: true,
 						alignment: 'left',
-						page: '/salaries/dashboard',
+						page: '/suivi-hse/dashboard',
 						translate: 'MENU.DASHBOARD',
 					},
 					{
 						title: 'Liste',
 						root: true,
 						alignment: 'left',
-						page: '/salaries/list',
+						page: '/suivi-hse/list',
 						translate: 'MENU.LIST',
 						icon: 'view_list',
 						// icon: 'flaticon2-browser-2',
@@ -885,7 +885,7 @@ export class MenuConfig {
 						title: 'Objectifs',
 						root: true,
 						alignment: 'left',
-						page: '/salaries/goal',
+						page: '/suivi-hse/goal',
 						translate: 'MENU.ROOT',
 						icon: 'filter_center_focus',
 						permissionOnly: ['ADMIN','ROOT']
@@ -895,7 +895,7 @@ export class MenuConfig {
 						title: 'Admin',
 						root: true,
 						alignment: 'left',
-						page: '/salaries/admin',
+						page: '/suivi-hse/admin',
 						translate: 'MENU.ROOT',
 						icon: 'settings',
 						permissionOnly: ['ROOT', 'ADMIN'],

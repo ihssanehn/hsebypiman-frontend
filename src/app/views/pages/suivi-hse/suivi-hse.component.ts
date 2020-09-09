@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 import { MenuAsideService } from '@app/core/_base/layout';
 
 @Component({
-	selector: 'tf-salaries',
-	templateUrl: './salaries.component.html',
-	styleUrls: ['salaries.component.scss'],
+	selector: 'tf-suivi-hse',
+	templateUrl: './suivi-hse.component.html',
+	styleUrls: ['suivi-hse.component.scss'],
 })
-export class SalariesComponent implements OnInit {
+export class SuiviHseComponent implements OnInit {
 
 	constructor(
 		public menuAsideService: MenuAsideService,
@@ -17,6 +17,6 @@ export class SalariesComponent implements OnInit {
 	}
 
 	ngOnInit(){
-		this.menuAsideService.loadMenuAside('aside.salaries');
+		this.menuAsideService.loadMenuAside('aside.suiviHse');
 	}
 }

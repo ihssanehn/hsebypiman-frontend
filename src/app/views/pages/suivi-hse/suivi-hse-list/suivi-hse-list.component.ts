@@ -6,11 +6,11 @@ import Swal from 'sweetalert2';
 import { Personnel } from '@app/core/models';
 
 @Component({
-  selector: 'tf-salaries-list',
-  templateUrl: './salaries-list.component.html',
-  styleUrls: ['./salaries-list.component.scss']
+  selector: 'tf-suivi-hse-list',
+  templateUrl: './suivi-hse-list.component.html',
+  styleUrls: ['./suivi-hse-list.component.scss']
 })
-export class SalariesListComponent implements OnInit, AfterViewInit, OnDestroy {
+export class SuiviHseListComponent implements OnInit, AfterViewInit, OnDestroy {
 
   	salariesList: Paginate<Personnel>;
 	selectedSalarie: Personnel;

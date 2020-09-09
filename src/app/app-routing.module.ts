@@ -53,8 +53,8 @@ const routes: Routes = [
 				}
 			},
 			{
-				path: 'salaries',
-				loadChildren: () => import('@app/views/pages/salaries/salaries.module').then(m => m.SalariesModule),
+				path: 'suivi-hse',
+				loadChildren: () => import('@app/views/pages/suivi-hse/suivi-hse.module').then(m => m.SuiviHseModule),
 				canActivate: [ModuleGuard],
 				data: {
 					moduleCodes:['SALARIE']

@@ -5,11 +5,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { PersonnelService } from '@app/core/services';
 
 @Component({
-  selector: 'tf-salarie-dash',
-  templateUrl: './salarie-dash.component.html',
-  styleUrls: ['./salarie-dash.component.scss']
+  selector: 'tf-suivi-salarie-dash',
+  templateUrl: './suivi-salarie-dash.component.html',
+  styleUrls: ['./suivi-salarie-dash.component.scss']
 })
-export class SalarieDashComponent implements OnInit {
+export class SuiviSalarieDashComponent implements OnInit {
 
   @ViewChild('evolAll', {static: true}) evolAll: ElementRef;
   @ViewChild('hLine', {static: true}) hLine: ElementRef;

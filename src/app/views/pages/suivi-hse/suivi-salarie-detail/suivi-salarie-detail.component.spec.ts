@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SalarieDashComponent } from './salarie-dash.component';
+import { SuiviSalarieDetailComponent } from './suivi-salarie-detail.component';
 
-describe('SalarieDashComponent', () => {
-  let component: SalarieDashComponent;
-  let fixture: ComponentFixture<SalarieDashComponent>;
+describe('SuiviSalarieDetailComponent', () => {
+  let component: SuiviSalarieDetailComponent;
+  let fixture: ComponentFixture<SuiviSalarieDetailComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SalarieDashComponent ]
+      declarations: [ SuiviSalarieDetailComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SalarieDashComponent);
+    fixture = TestBed.createComponent(SuiviSalarieDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -12,11 +12,11 @@ import Swal from 'sweetalert2';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'tf-salarie-edit',
-  templateUrl: './salarie-edit.component.html',
-  styleUrls: ['./salarie-edit.component.scss']
+  selector: 'tf-suivi-salarie-edit',
+  templateUrl: './suivi-salarie-edit.component.html',
+  styleUrls: ['./suivi-salarie-edit.component.scss']
 })
-export class SalarieEditComponent implements OnInit {
+export class SuiviSalarieEditComponent implements OnInit {
 
   @Input() public salarie: Personnel;
   @Input() public year: string;

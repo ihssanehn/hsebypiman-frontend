@@ -11,11 +11,11 @@ import { default as _rollupMoment } from 'moment';
 const moment = _rollupMoment || _moment;
 
 @Component({
-  selector: 'tf-salaries-goals',
-  templateUrl: './salaries-goals.component.html',
-  styleUrls: ['./salaries-goals.component.scss']
+  selector: 'tf-suivi-hse-goals',
+  templateUrl: './suivi-hse-goals.component.html',
+  styleUrls: ['./suivi-hse-goals.component.scss']
 })
-export class SalariesGoalsComponent implements OnInit {
+export class SuiviHseGoalsComponent implements OnInit {
 
   catMetricsList: CatMetric[];
   goalForm: FormGroup;

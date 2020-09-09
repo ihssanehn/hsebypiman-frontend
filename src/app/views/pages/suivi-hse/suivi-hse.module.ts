@@ -64,20 +64,20 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import { CustomMomentDateAdapter } from '@app/core/_base/crud/utils/custom-moment-date.adapter';
 import { YEAR_FORMATS } from '@app/core/_base/crud/utils/custom-moment-date.adapter';
 // Components
-import { SalariesComponent } from './salaries.component';
-import { SalariesListComponent } from './salaries-list/salaries-list.component';
-import { SalarieFiltersComponent } from './salarie-filters/salarie-filters.component';
-import { SalarieDetailComponent } from './salarie-detail/salarie-detail.component';
-import { SalariesGoalsComponent } from './salaries-goals/salaries-goals.component';
-import { SalariesAdminComponent } from './salaries-admin/salaries-admin.component';
-import { SalarieEditComponent } from './salarie-edit/salarie-edit.component';
-import { SalarieDashComponent } from './salarie-dash/salarie-dash.component';
+import { SuiviHseComponent } from './suivi-hse.component';
+import { SuiviHseListComponent } from './suivi-hse-list/suivi-hse-list.component';
+import { SuiviHseFiltersComponent } from './suivi-hse-filters/suivi-hse-filters.component';
+import { SuiviSalarieDetailComponent } from './suivi-salarie-detail/suivi-salarie-detail.component';
+import { SuiviHseGoalsComponent } from './suivi-hse-goals/suivi-hse-goals.component';
+import { SuiviHseAdminComponent } from './suivi-hse-admin/suivi-hse-admin.component';
+import { SuiviSalarieEditComponent } from './suivi-salarie-edit/suivi-salarie-edit.component';
+import { SuiviSalarieDashComponent } from './suivi-salarie-dash/suivi-salarie-dash.component';
 
 
 const routes: Routes = [
 	{
 		path: '',
-		component: SalariesComponent,
+		component: SuiviHseComponent,
 		children: [
 			{
 				path: '',
@@ -86,11 +86,11 @@ const routes: Routes = [
 			},
 			{
 				path:'detail/:id',
-				component: SalarieDetailComponent
+				component: SuiviSalarieDetailComponent
 			},
 			{
 				path: 'list',
-				component: SalariesListComponent,
+				component: SuiviHseListComponent,
 				canActivate: [NgxPermissionsGuard],
 				data: {
 					permissions: {
@@ -100,7 +100,7 @@ const routes: Routes = [
 			},
 			{
 				path: 'list:id',
-				component: SalariesListComponent,
+				component: SuiviHseListComponent,
 				canActivate: [NgxPermissionsGuard],
 				data: {
 					permissions: {
@@ -110,7 +110,7 @@ const routes: Routes = [
 			},
 			{
 				path: 'edit',
-				component: SalarieEditComponent,
+				component: SuiviSalarieEditComponent,
 				canActivate: [NgxPermissionsGuard],
 				data: {
 					permissions: {
@@ -120,7 +120,7 @@ const routes: Routes = [
 			},
 			{
 				path: 'edit/:id',
-				component: SalarieEditComponent,
+				component: SuiviSalarieEditComponent,
 				canActivate: [NgxPermissionsGuard],
 				data: {
 					permissions: {
@@ -130,7 +130,7 @@ const routes: Routes = [
 			},
 			{
 				path: 'admin',
-				component: SalariesAdminComponent,
+				component: SuiviHseAdminComponent,
 				canActivate: [NgxPermissionsGuard],
 				data: {
 					permissions: {
@@ -140,7 +140,7 @@ const routes: Routes = [
 			},
 			{
 				path: 'goal',
-				component: SalariesGoalsComponent,
+				component: SuiviHseGoalsComponent,
 				canActivate: [NgxPermissionsGuard],
 				data: {
 					permissions: {
@@ -150,7 +150,7 @@ const routes: Routes = [
 			},
 			{
 				path: 'dashboard',
-				component: SalarieDashComponent
+				component: SuiviSalarieDashComponent
 			},
 		]
 	}
@@ -233,15 +233,15 @@ const routes: Routes = [
 		ActionNotificationComponent
 	],
 	declarations: [
-		SalariesComponent,
-		SalariesListComponent,
-		SalarieFiltersComponent,
-		SalarieDetailComponent,
-		SalariesGoalsComponent,
-		SalariesAdminComponent,
-		SalarieEditComponent,
-		SalarieDashComponent
+		SuiviHseComponent,
+		SuiviHseListComponent,
+		SuiviHseFiltersComponent,
+		SuiviSalarieDetailComponent,
+		SuiviHseGoalsComponent,
+		SuiviHseAdminComponent,
+		SuiviSalarieEditComponent,
+		SuiviSalarieDashComponent
 	]
 })
-export class SalariesModule {
+export class SuiviHseModule {
 }

@@ -3,11 +3,11 @@ import { Type } from '@app/core/models';
 import { TypeService } from '@app/core/services';
 
 @Component({
-  selector: 'tf-salaries-admin',
-  templateUrl: './salaries-admin.component.html',
-  styleUrls: ['./salaries-admin.component.scss']
+  selector: 'tf-suivi-hse-admin',
+  templateUrl: './suivi-hse-admin.component.html',
+  styleUrls: ['./suivi-hse-admin.component.scss']
 })
-export class SalariesAdminComponent implements OnInit {
+export class SuiviHseAdminComponent implements OnInit {
 
   types: Type[];
 

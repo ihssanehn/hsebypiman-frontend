@@ -11,16 +11,16 @@ import * as _moment from 'moment';
 import { default as _rollupMoment } from 'moment';
 import { Personnel } from '@app/core/models';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { SalarieEditComponent } from '../salarie-edit/salarie-edit.component';
+import { SuiviSalarieEditComponent } from '../suivi-salarie-edit/suivi-salarie-edit.component';
 
 const moment = _rollupMoment || _moment;
 
 @Component({
-  selector: 'tf-salarie-detail',
-  templateUrl: './salarie-detail.component.html',
-  styleUrls: ['./salarie-detail.component.scss']
+  selector: 'tf-suivi-salarie-detail',
+  templateUrl: './suivi-salarie-detail.component.html',
+  styleUrls: ['./suivi-salarie-detail.component.scss']
 })
-export class SalarieDetailComponent implements OnInit, OnDestroy {
+export class SuiviSalarieDetailComponent implements OnInit, OnDestroy {
 
   salarie: Personnel;
 	salarieForm: FormGroup;
@@ -82,7 +82,7 @@ export class SalarieDetailComponent implements OnInit, OnDestroy {
   }
 
   editMetrics(){
-    const modalRef = this.modalService.open(SalarieEditComponent, {size: 'xl',scrollable: true,centered : true});
+    const modalRef = this.modalService.open(SuiviSalarieEditComponent, {size: 'xl',scrollable: true,centered : true});
     modalRef.componentInstance.salarie = this.salarie;
     modalRef.componentInstance.year = this.year.value.year();
     modalRef.result.then((result) => {

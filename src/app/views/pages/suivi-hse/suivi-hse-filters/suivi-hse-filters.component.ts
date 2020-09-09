@@ -8,11 +8,11 @@ import { FonctionService } from '@app/core/services';
 import { Type } from '@app/core/models/type.model';
 
 @Component({
-  selector: 'tf-salarie-filters',
-  templateUrl: './salarie-filters.component.html',
-  styleUrls: ['./salarie-filters.component.scss']
+  selector: 'tf-suivi-hse-filters',
+  templateUrl: './suivi-hse-filters.component.html',
+  styleUrls: ['./suivi-hse-filters.component.scss']
 })
-export class SalarieFiltersComponent implements  OnInit {
+export class SuiviHseFiltersComponent implements  OnInit {
 
   @Output() change = new EventEmitter();
 

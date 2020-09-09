@@ -1,5 +1,5 @@
 <tf-search-list-bar [(ngModel)]="filter" (change)="getSalariesDash()" [hasAdvancedSearch]="true" [showFilters]="showFilters" (advancedSearchChange)="advancedSearchChanged($event)" class="row row-filters"></tf-search-list-bar>
-<tf-salarie-filters [hidden]="!showFilters" (change)="udpateFilters($event)" class="row"></tf-salarie-filters>
+<tf-suivi-hse-filters [hidden]="!showFilters" (change)="udpateFilters($event)" class="row"></tf-suivi-hse-filters>
 
 <div class="row px-2">
 	<div class="col-4">
