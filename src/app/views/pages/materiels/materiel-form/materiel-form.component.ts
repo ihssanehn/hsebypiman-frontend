@@ -36,7 +36,7 @@ export class MaterielFormComponent implements OnInit {
     this.categoriesLoaded = false;
     var res = await this.categorieService.getAll({model:'Materiel', structure:'tree'}).toPromise();
     if(res){
-      this.categoriesList = res.result.data.filter(item => item.code != 'VEHICULE');
+      this.categoriesList = localStorage.getItem('user_connection') == 'sirh' ? res.result.data.filter(item => item.code != 'VEHICULE') : res.result.data;
       this.categoriesLoaded = true;
     }
     this.cdr.markForCheck();
