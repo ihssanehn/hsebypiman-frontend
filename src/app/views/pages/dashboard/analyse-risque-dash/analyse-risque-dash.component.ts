@@ -18,19 +18,25 @@ export class AnalyseRisqueDashComponent implements OnInit {
   echartsArEvol;
   EvolArOptions = {
 		tooltip: {
-			trigger: 'axis'
+			trigger: 'axis',
 		},
 		grid: {
-			left: '1%',
-			right: '1%',
+			left: '4%',
+			right: '2%',
 			bottom: '2%',
-			top: '4%',
+			top: '6%',
 			containLabel: true
 		},
 		xAxis: {
 			type: 'category',
-      boundaryGap: false,
-			data: []
+			boundaryGap: false,
+			data: [],
+			axisLabel:
+				{
+						rotate:50,
+						interval: 1,
+						margin: 10
+				},
 		},
 		yAxis: {
 			type: 'value'

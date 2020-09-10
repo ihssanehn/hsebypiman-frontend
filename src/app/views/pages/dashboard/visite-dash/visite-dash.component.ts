@@ -44,16 +44,21 @@ export class VisiteDashComponent implements OnInit {
 			}
 		},
 		grid: {
-			left: '1%',
-			right: '1%',
+			left: '4%',
+			right: '2%',
 			bottom: '15%',
 			top: '4%',
 			containLabel: true
 		},
 		xAxis: {
 			type: 'category',
-      boundaryGap: true,
-			data: []
+			boundaryGap: true,
+			data: [],
+			axisLabel:
+				{
+						rotate:50,
+						margin: 10
+				},
 		},
 		yAxis: {
 			type: 'value'
@@ -71,16 +76,22 @@ export class VisiteDashComponent implements OnInit {
 			trigger: 'axis'
 		},
 		grid: {
-			left: '1%',
-			right: '1%',
+			left: '2%',
+			right: '2%',
 			bottom: '2%',
-			top: '4%',
+			top: '6%',
 			containLabel: true
 		},
 		xAxis: {
 			type: 'category',
-      boundaryGap: false,
-			data: []
+			boundaryGap: false,
+			data: [],
+			axisLabel:
+				{
+						rotate:50,
+						interval: 1,
+						margin: 10
+				},
 		},
 		yAxis: {
 			type: 'value'

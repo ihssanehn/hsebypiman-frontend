@@ -49,18 +49,24 @@ export class ActionDashComponent implements OnInit {
   };
   EvolOptions = {
 		tooltip: {
-			trigger: 'axis'
+			trigger: 'axis',
+			axisPointer: {            
+				type: 'shadow'
+		  }
 		},
 		grid: {
-			left: '1%',
-			right: '1%',
+			left: '5%',
+			right: '8%',
 			bottom: '2%',
 			top: '4%',
 			containLabel: true
 		},
 		xAxis: {
       type: 'category',
-			data: []
+      data: [],
+      axisTick: {
+        alignWithLabel: true
+      }
 		},
 		yAxis: {
 			type: 'value'
