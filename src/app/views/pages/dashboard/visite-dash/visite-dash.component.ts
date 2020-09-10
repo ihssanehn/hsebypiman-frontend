@@ -60,7 +60,9 @@ export class VisiteDashComponent implements OnInit {
 		},
 		legend: {
 			data: [],
-			bottom: true
+			bottom: true,
+			type: 'scroll',
+			width: '100%'			
 		},
 		series: []
 	};
