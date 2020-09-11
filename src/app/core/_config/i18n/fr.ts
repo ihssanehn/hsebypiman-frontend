@@ -16,7 +16,8 @@ export const locale = {
 			CANCEL: 'Annuler',
 			CLEAR: 'Vider',
 			DUPLICATE: 'Dupliquer',
-			SIGN: 'Signer'
+			SIGN: 'Signer',
+			DOWNLOAD:'Télécharger',
 		},
 		MENU: {
 			NEW: 'Nouveau',
