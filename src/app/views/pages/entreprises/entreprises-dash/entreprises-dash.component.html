@@ -1,0 +1,17 @@
+<tf-search-list-bar [(ngModel)]="filter" (change)="getEntreprisesDash()" [hasAdvancedSearch]="true" [showFilters]="showFilters" (advancedSearchChange)="advancedSearchChanged($event)" class="row row-filters"></tf-search-list-bar>
+<tf-entreprise-filters [hidden]="!showFilters" (change)="udpateFilters($event)" class="row"></tf-entreprise-filters>
+<div class="row px-2">
+	<div class="col-4">
+		<tf-widget-indicator-list [data]="stats.top_budget" [desc]="'Top 5 Budget'" *ngIf="stats; else loading"></tf-widget-indicator-list>
+	</div>
+	<div class="col-4">
+		<tf-widget-indicator-list [data]="stats.top_intérimaires" [desc]="'Top 5 Intérimaires'"  *ngIf="stats; else loading"></tf-widget-indicator-list>
+	</div>
+	<div class="col-4">
+		<tf-widget-indicator-list [data]="stats.top_nc" [desc]="'Top 5 Non conformités'" *ngIf="stats; else loading"></tf-widget-indicator-list>
+	</div>
+</div>
+
+<ng-template #loading>
+	<tf-widget-indicator [value]="null" [desc]="null"></tf-widget-indicator>
+</ng-template>

@@ -55,4 +55,7 @@ export class ArService extends HttpService{
         window.open(url, '_blank');
     }
     
+    getStats(params){
+        return this.http.post<JsonResponse<any>>(this.baseUrl+'/stats', params);
+    }
 }

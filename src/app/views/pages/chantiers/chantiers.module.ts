@@ -20,6 +20,7 @@ import { ActionNotificationComponent } from '../../partials/content/crud';
 // Components
 import { ChantiersComponent } from './chantiers.component';
 import { ChantiersListComponent } from './chantiers-list/chantiers-list.component';
+import { ChantiersDashComponent } from './chantiers-dash/chantiers-dash.component';
 import { ChantierEditComponent } from './chantier-edit/chantier-edit.component';
 import { ChantierAddComponent } from './chantier-add/chantier-add.component';
 import { ChantierDetailComponent } from './chantier-detail/chantier-detail.component';
@@ -146,6 +147,11 @@ const routes: Routes = [
 					}
 				}
 			},
+			{
+				path: 'dashboard',
+				component: ChantiersDashComponent,
+				
+			},
 		]
 	}
 ];
@@ -227,6 +233,7 @@ const routes: Routes = [
 		ChantierDetailComponent,
 		ChantierFiltersComponent,
 		ChantierAdminComponent,
+		ChantiersDashComponent
 	]
 })
 export class ChantiersModule {}

@@ -20,6 +20,7 @@ import { ActionNotificationComponent } from '../../partials/content/crud';
 // Components
 import { ArsComponent } from './ars.component';
 import { ArsListComponent } from './ars-list/ars-list.component';
+import { ArsDashComponent } from './ars-dash/ars-dash.component';
 import { ArEditComponent } from './ar-edit/ar-edit.component';
 import { ArAddComponent } from './ar-add/ar-add.component';
 import { ArDetailComponent } from './ar-detail/ar-detail.component';
@@ -134,6 +135,10 @@ const routes: Routes = [
 				component: ArDetailComponent
 			},
 			{
+				path: 'dashboard',
+				component: ArsDashComponent
+			},
+			{
 				path: 'detail/:id',
 				component: ArDetailComponent
 			},
@@ -228,6 +233,7 @@ const routes: Routes = [
 	declarations: [
 		ArsComponent,
 		ArsListComponent,
+		ArsDashComponent,
 		ArEditComponent,
 		ArAddComponent,
 		ArDetailComponent,

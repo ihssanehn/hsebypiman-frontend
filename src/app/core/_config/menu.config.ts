@@ -505,7 +505,7 @@ export class MenuConfig {
 						title: 'Dashboards',
 						root: true,
 						alignment: 'left',
-						page: '/dashboard',
+						page: '/chantiers/dashboard',
 						translate: 'MENU.DASHBOARD',
 					},
 					{
@@ -546,7 +546,7 @@ export class MenuConfig {
 						title: 'Dashboards',
 						root: true,
 						alignment: 'left',
-						page: '/dashboard',
+						page: '/analyses-risque/dashboard',
 						translate: 'MENU.DASHBOARD',
 					},
 					{
@@ -787,7 +787,7 @@ export class MenuConfig {
 						title: 'Dashboards',
 						root: true,
 						alignment: 'left',
-						page: '/dashboard',
+						page: '/dentreprises/dashboard',
 						translate: 'MENU.DASHBOARD',
 					},
 					{

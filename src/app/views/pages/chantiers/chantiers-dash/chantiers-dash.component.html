@@ -1,0 +1,42 @@
+<tf-search-list-bar [(ngModel)]="filter" (change)="getChantiersDash()" [hasAdvancedSearch]="true" [showFilters]="showFilters" (advancedSearchChange)="advancedSearchChanged($event)" class="row row-filters"></tf-search-list-bar>
+<tf-chantier-filters [hidden]="!showFilters" (change)="udpateFilters($event)" class="row"></tf-chantier-filters>
+<div class="row px-2">
+	<div class="col-2">
+		<tf-widget-indicator [value]="stats.total_chantiers_in_progress+'/'+stats.total_chantiers" [desc]="'Chantiers en cours'"  *ngIf="stats; else loading"></tf-widget-indicator>
+	</div>
+	<div class="col-2">
+		<tf-widget-indicator [value]="stats.ars_average | number:'1.0-0'" [valueClass]="getClass('down', stats.retard_percent)" [desc]="'Moyenne d\'AR par Chantier'" *ngIf="stats; else loading"></tf-widget-indicator>
+	</div>
+	<div class="col-2">
+		<tf-widget-indicator [value]="stats.vss_total" [valueClass]="getClass('up', stats.finished_percent)" [desc]="'Nombre de Visites'" *ngIf="stats; else loading"></tf-widget-indicator>
+	</div>
+	<div class="col-6">
+		<div class="row">
+			<div class="col-6">
+				<tf-widget-indicator [value]="stats.budget_average / 1000 | currency:'k€':'symbol':'1.0-0'" [valueClass]="getClass('up', stats.finished_percent)" [desc]="'Budget moyen'" *ngIf="stats; else loading"></tf-widget-indicator>
+			</div>
+			<div class="col-6">
+				<tf-widget-indicator [value]="stats.budget_total / 1000 | currency:'k€':'symbol':'1.0-0'" [valueClass]="getClass('up', stats.finished_percent)" [desc]="'Budget total'" *ngIf="stats; else loading"></tf-widget-indicator>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-4">
+		<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
+			<tf-portlet-body class="tf-portlet__body--fit" style="padding: 20px 15px;">
+				<div echarts class="demo-chart" #pieType></div>
+			</tf-portlet-body>
+		</tf-portlet>
+	</div>
+	<div class="col-8">
+		<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
+			<tf-portlet-body class="tf-portlet__body--fit" style="padding: 20px 15px;">
+				<div echarts class="demo-chart" #evolAll></div>
+			</tf-portlet-body>
+		</tf-portlet>
+	</div>
+</div>
+
+<ng-template #loading>
+	<tf-widget-indicator [value]="null" [desc]="null"></tf-widget-indicator>
+</ng-template>

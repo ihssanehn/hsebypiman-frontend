@@ -54,6 +54,7 @@ import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapte
 // Components
 import { EntreprisesComponent } from './entreprises.component';
 import { EntreprisesListComponent } from './entreprises-list/entreprises-list.component';
+import { EntreprisesDashComponent } from './entreprises-dash/entreprises-dash.component';
 import { EntrepriseFiltersComponent } from './entreprise-filters/entreprise-filters.component';
 import { EntrepriseFormComponent } from './entreprise-form/entreprise-form.component';
 import { EntrepriseEditComponent } from './entreprise-edit/entreprise-edit.component';
@@ -147,6 +148,10 @@ const routes: Routes = [
 					}
 				}
 			},
+			{
+				path: 'dashboard',
+				component: EntreprisesDashComponent,
+			}	
 		]
 	}
 ];
@@ -223,6 +228,7 @@ const routes: Routes = [
 	declarations: [
 		EntreprisesComponent,
 		EntreprisesListComponent,
+		EntreprisesDashComponent,
 		EntrepriseFiltersComponent,
 		EntrepriseEditComponent,
 		EntrepriseAddComponent,

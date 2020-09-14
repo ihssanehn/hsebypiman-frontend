@@ -46,6 +46,11 @@ export class EntrepriseService{
         var url = this.baseUrl+'/export?'+queryString+'&token='+localStorage.getItem(environment.authTokenKey);
         window.open(url, '_blank');
     }
+
+
+    getStats(params){
+        return this.http.post<JsonResponse<any>>(this.baseUrl+'/stats', params);
+    }
     
 
 }
