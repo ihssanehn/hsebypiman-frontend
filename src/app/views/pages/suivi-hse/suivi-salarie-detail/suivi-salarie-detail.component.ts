@@ -51,7 +51,7 @@ export class SuiviSalarieDetailComponent implements OnInit, OnDestroy {
         if (id) {
           this.getSalarie(id);
         } else {
-          this.router.navigateByUrl('/salaries/list');
+          this.router.navigateByUrl('/suivi-hse/list');
         }
       }
     );
@@ -95,7 +95,7 @@ export class SuiviSalarieDetailComponent implements OnInit, OnDestroy {
   }
 
   goBackWithId() {
-		const url = `/salaries/list`;
+		const url = `/suivi-hse/list`;
 		this.router.navigateByUrl(url, { relativeTo: this.activatedRoute });
   }
 

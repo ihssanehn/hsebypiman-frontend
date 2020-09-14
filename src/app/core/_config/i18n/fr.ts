@@ -79,6 +79,12 @@ export const locale = {
 				LIST:'Liste du module',
 			},
 			SUIVI_HSE: 'Suivi Hse',
+			SUB_SUIVI_HSE:{
+				DETAIL:'Détail du salarié',
+				ADD:'Ajouter un salarié',
+				EDIT:'Modifier les infos de suivi',
+				LIST:'Suivi Hse',
+			},
 			USERS: 'Utilisateurs',
 			SUB_USERS:{
 				DETAIL:'Détail de l\'utilisateur',

@@ -100,7 +100,7 @@ export class SuiviHseListComponent implements OnInit, AfterViewInit, OnDestroy {
   }
   
   viewSalarie(actionId) {
-		this.router.navigateByUrl('salaries/detail/' + actionId);
+		this.router.navigateByUrl('suivi-hse/detail/' + actionId);
   }
   
 	deleteSalarie(actionId) {
