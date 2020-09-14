@@ -2,14 +2,14 @@ import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormBuilder, ControlContainer, FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PersonnelService } from '@app/core/services';
+import { PersonnelService, PeriodService } from '@app/core/services';
 import { NgxPermissionsService } from 'ngx-permissions';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import {MatDatepicker} from '@angular/material/datepicker';
 import * as _moment from 'moment';
 import { default as _rollupMoment } from 'moment';
-import { Personnel } from '@app/core/models';
+import { Personnel, FollowUpPeriod } from '@app/core/models';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SuiviSalarieEditComponent } from '../suivi-salarie-edit/suivi-salarie-edit.component';
 
@@ -23,6 +23,7 @@ const moment = _rollupMoment || _moment;
 export class SuiviSalarieDetailComponent implements OnInit, OnDestroy {
 
   salarie: Personnel;
+  period: FollowUpPeriod;
 	salarieForm: FormGroup;
 	// allRoles: Role[];
 	loaded = false;
@@ -37,6 +38,7 @@ export class SuiviSalarieDetailComponent implements OnInit, OnDestroy {
 		private router: Router,
 		private salarieFB: FormBuilder,
     private personnelService: PersonnelService,
+    private periodService: PeriodService,
     private modalService: NgbModal,
 		private cdr: ChangeDetectorRef,
 		private permissionsService : NgxPermissionsService,
@@ -49,7 +51,14 @@ export class SuiviSalarieDetailComponent implements OnInit, OnDestroy {
       async params => {
         const id = params.id;
         if (id) {
-          this.getSalarie(id);
+          await this.periodService.getLatest().toPromise()
+          .then((res:any) => {
+            if(res){
+              this.period = res.result.data;
+              this.getSalarie(id);
+            }
+          });
+         
         } else {
           this.router.navigateByUrl('/suivi-hse/list');
         }
@@ -64,9 +73,9 @@ export class SuiviSalarieDetailComponent implements OnInit, OnDestroy {
   async getSalarie(salarieId){
 		try {
       var res = await this.personnelService
-      .getPersonnelByYear(
+      .getPersonnelByPeriod(
         salarieId,
-        this.year.value.year()
+        this.period.id
       ).toPromise();
 			this.salarie = res.result.data;
 			this.cdr.markForCheck();

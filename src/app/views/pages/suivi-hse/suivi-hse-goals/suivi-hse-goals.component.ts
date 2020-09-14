@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef, Optional, Inject } from '@angular/core';
-import { CatMetricService, GoalService } from '@app/core/services';
-import { CatMetric } from '@app/core/models';
+import { CatMetricService, GoalService, PeriodService } from '@app/core/services';
+import { CatMetric, FollowUpPeriod } from '@app/core/models';
 import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
 import { Location } from '@angular/common';
 import Swal from 'sweetalert2';
@@ -18,6 +18,7 @@ const moment = _rollupMoment || _moment;
 export class SuiviHseGoalsComponent implements OnInit {
 
   catMetricsList: CatMetric[];
+  period: FollowUpPeriod;
   goalForm: FormGroup;
   formloading: boolean = false;
   loaded = false;
@@ -26,6 +27,7 @@ export class SuiviHseGoalsComponent implements OnInit {
   constructor(
     private catMetricService: CatMetricService,
     private goalService: GoalService,
+    private periodService: PeriodService,
     private fb: FormBuilder,
     private location: Location,
     private cdr: ChangeDetectorRef,
@@ -33,7 +35,7 @@ export class SuiviHseGoalsComponent implements OnInit {
 
   ngOnInit() {
     this.refreshForm();
-    if(this.loaded) this.getCatMetrics();
+    if(this.loaded) this.getLatestPeriod();
   }
 
   refreshForm() {
@@ -42,14 +44,21 @@ export class SuiviHseGoalsComponent implements OnInit {
       items: this.fb.array([])
     })
 
-		this.loaded = true;
+    this.loaded = true;
+  }
+
+  async getLatestPeriod(){
+    var res = await this.periodService.getLatest().toPromise();
+    this.period = res.result.data;
+    if(this.period) this.getCatMetrics();
+    this.cdr.markForCheck();
   }
 
   async getCatMetrics(){
     var res = await this.catMetricService
       .getAll({
         has_goal:true,
-        period:this.year.value.year()
+        period_id:this.period.id
       }).toPromise();
     this.catMetricsList = res.result.data;
     this.refreshForm();
@@ -108,7 +117,7 @@ export class SuiviHseGoalsComponent implements OnInit {
   onSubmit(){
     try {
       let form = {...this.goalForm.getRawValue()};
-      form.period = this.year.value.year();
+      form.period_id = this.period.id;
       this.goalService.create(form)
         .toPromise()
         .then((visite) => {

@@ -23,4 +23,6 @@ export { Document } from './document.model';
 export { Personnel } from './personnel.model';
 export { CatMetric } from './catMetric.model';
 export { Metric } from './metric.model';
+export { FollowUpPeriod } from './followUpPeriod.model';
+
 
