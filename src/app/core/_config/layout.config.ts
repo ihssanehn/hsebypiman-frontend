@@ -52,7 +52,7 @@ export class LayoutConfig {
 				width: 'fixed',
 				fixed: {
 					desktop: {
-						enabled: false,
+						enabled: true,
 						mode: 'menu',
 					},
 					mobile: true,
