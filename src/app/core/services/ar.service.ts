@@ -50,5 +50,9 @@ export class ArService extends HttpService{
     addSignatures(ar_id, signatures){
         return this.http.post(this.baseUrl+'/'+ar_id+'/signatures', signatures);
     }
+    exportPDF(ar_id){
+        var url = this.baseUrl+'/'+ar_id+'/pdf?token='+localStorage.getItem(environment.authTokenKey);
+        window.open(url, '_blank');
+    }
     
 }

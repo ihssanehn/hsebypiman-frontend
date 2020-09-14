@@ -188,4 +188,8 @@ export class ArsListComponent implements OnInit {
 		return this.arService.export(filters);
 	}
 
+	exportPDF(arId){
+		return this.arService.exportPDF(arId);
+	}
+
 }

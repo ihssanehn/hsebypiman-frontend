@@ -22,6 +22,9 @@
 					<button mat-icon-button color="info" matTooltip="{{'ACTION.DUPLICATE' | translate}}" (click)="duplicateAr(ar.id)" *ngxPermissionsOnly="['analyse_risque_canAdd']">
 						<mat-icon>filter_none</mat-icon>
 					</button>
+					<button mat-icon-button color="info" matTooltip="{{'ACTION.DOWNLOAD' | translate}}" (click)="exportPDF(ar.id)">
+						<mat-icon>cloud_download</mat-icon>
+					</button>
 				</div>
 			</div>
 		</div>

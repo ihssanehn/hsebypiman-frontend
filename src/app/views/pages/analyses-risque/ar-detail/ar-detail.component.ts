@@ -127,4 +127,8 @@ export class ArDetailComponent implements OnInit, OnDestroy {
 		}
 	}
 
+	exportPDF(arId){
+		return this.arService.exportPDF(arId);
+	}
+
 }
