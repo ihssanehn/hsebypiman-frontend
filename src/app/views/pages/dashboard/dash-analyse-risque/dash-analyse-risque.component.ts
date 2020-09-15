@@ -3,11 +3,11 @@ import { DashboardService } from '@app/core/services';
 import * as echarts from 'echarts';
 
 @Component({
-  selector: 'tf-analyse-risque-dash',
-  templateUrl: './analyse-risque-dash.component.html',
-  styleUrls: ['./analyse-risque-dash.component.scss']
+  selector: 'tf-dash-analyse-risque',
+  templateUrl: './dash-analyse-risque.component.html',
+  styleUrls: ['./dash-analyse-risque.component.scss']
 })
-export class AnalyseRisqueDashComponent implements OnInit {
+export class DashAnalyseRisqueComponent implements OnInit {
 
   @ViewChild('evolArs', {static: true}) evolArs: ElementRef;
 

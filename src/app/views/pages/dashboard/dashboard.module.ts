@@ -6,11 +6,11 @@ import { CommonModule } from '@angular/common';
 import { CoreModule } from '../../../core/core.module';
 import { PartialsModule } from '../../partials/partials.module';
 import { DashboardComponent } from './dashboard.component';
-import { ChantierDashComponent } from './chantier-dash/chantier-dash.component';
-import { AnalyseRisqueDashComponent } from './analyse-risque-dash/analyse-risque-dash.component';
-import { VisiteDashComponent } from './visite-dash/visite-dash.component';
-import { ActionDashComponent } from './action-dash/action-dash.component';
-import { EntrepriseDashComponent } from './entreprise-dash/entreprise-dash.component';
+import { DashAnalyseRisqueComponent } from './dash-analyse-risque/dash-analyse-risque.component';
+import { DashChantierComponent } from './dash-chantier/dash-chantier.component';
+import { DashVisiteComponent } from './dash-visite/dash-visite.component';
+import { DashActionComponent } from './dash-action/dash-action.component';
+import { DashEntrepriseComponent } from './dash-entreprise/dash-entreprise.component';
 
 @NgModule({
 	imports: [
@@ -27,11 +27,11 @@ import { EntrepriseDashComponent } from './entreprise-dash/entreprise-dash.compo
 	providers: [],
 	declarations: [
 		DashboardComponent,
-		ChantierDashComponent,
-		AnalyseRisqueDashComponent,
-		VisiteDashComponent,
-		ActionDashComponent,
-		EntrepriseDashComponent,
+		DashChantierComponent,
+		DashAnalyseRisqueComponent,
+		DashVisiteComponent,
+		DashActionComponent,
+		DashEntrepriseComponent,
 	]
 })
 export class DashboardModule {

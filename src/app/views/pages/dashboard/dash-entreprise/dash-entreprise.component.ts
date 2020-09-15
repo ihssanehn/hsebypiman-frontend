@@ -3,11 +3,11 @@ import { DashboardService } from '@app/core/services';
 import { Widget4Data } from '@app/views/partials/content/widgets/widget4/widget4.component';
 
 @Component({
-  selector: 'tf-entreprise-dash',
-  templateUrl: './entreprise-dash.component.html',
-  styleUrls: ['./entreprise-dash.component.scss']
+  selector: 'tf-dash-entreprise',
+  templateUrl: './dash-entreprise.component.html',
+  styleUrls: ['./dash-entreprise.component.scss']
 })
-export class EntrepriseDashComponent implements OnInit {
+export class DashEntrepriseComponent implements OnInit {
 
   entrepriseSousTraitanteList: Widget4Data[];
   entrepriseInterimList: Widget4Data[];

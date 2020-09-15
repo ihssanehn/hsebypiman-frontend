@@ -3,11 +3,11 @@ import { DashboardService } from '@app/core/services';
 import * as echarts from 'echarts';
 
 @Component({
-  selector: 'tf-visite-dash',
-  templateUrl: './visite-dash.component.html',
-  styleUrls: ['./visite-dash.component.scss']
+  selector: 'tf-dash-visite',
+  templateUrl: './dash-visite.component.html',
+  styleUrls: ['./dash-visite.component.scss']
 })
-export class VisiteDashComponent implements OnInit {
+export class DashVisiteComponent implements OnInit {
 
   @ViewChild('evolVss', {static: true}) evolVss: ElementRef;
   @ViewChild('evolNc', {static: true}) evolNc: ElementRef;

@@ -3,11 +3,11 @@ import { DashboardService } from '@app/core/services';
 import * as echarts from 'echarts';
 
 @Component({
-  selector: 'tf-action-dash',
-  templateUrl: './action-dash.component.html',
-  styleUrls: ['./action-dash.component.scss']
+  selector: 'tf-dash-action',
+  templateUrl: './dash-action.component.html',
+  styleUrls: ['./dash-action.component.scss']
 })
-export class ActionDashComponent implements OnInit {
+export class DashActionComponent implements OnInit {
 
   @ViewChild('pieActionStatus', {static: true}) pieActionStatus: ElementRef;
   @ViewChild('evolActions', {static: true}) evolActions: ElementRef;

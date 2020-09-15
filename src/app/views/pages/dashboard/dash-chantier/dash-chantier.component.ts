@@ -4,11 +4,11 @@ import * as echarts from 'echarts';
 import { DashboardService } from '@app/core/services';
 
 @Component({
-  selector: 'tf-chantier-dash',
-  templateUrl: './chantier-dash.component.html',
-  styleUrls: ['./chantier-dash.component.scss']
+  selector: 'tf-dash-chantier',
+  templateUrl: './dash-chantier.component.html',
+  styleUrls: ['./dash-chantier.component.scss']
 })
-export class ChantierDashComponent implements OnInit {
+export class DashChantierComponent implements OnInit {
 
   @ViewChild('evolChantiers', {static: true}) evolChantiers: ElementRef;
 
