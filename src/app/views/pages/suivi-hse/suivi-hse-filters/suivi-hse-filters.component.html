@@ -1,7 +1,7 @@
 <div class="col-md-12 tf-form">
 	<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
 		<tf-portlet-body class="tf-portlet__body--fit card-filters px-5 pt-4 pb-3" >
-			<form novalidate [formGroup]="filterForm">
+			<form novalidate [formGroup]="filterForm" *ngIf="filterForm">
 				<div class="row">
 
                     <mat-form-field class="col-xl-4 col-md-4 col-sm-4 col-xs-12 mat-filter-no-head">
@@ -15,7 +15,16 @@
                         <button mat-button *ngIf="formHasValue('fonction_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('fonction_id'); $event.stopPropagation()">
                             <mat-icon>clear</mat-icon>
                         </button>
-                    </mat-form-field>
+					</mat-form-field>
+
+					<mat-form-field class="col-xl-4 col-md-4 col-sm-4 col-xs-12 mat-filter-no-head">
+						<mat-label>Période</mat-label>
+						<mat-select class="form-control" formControlName="period_id" name="period_id">
+						  <mat-option *ngFor="let item of periodList" [value]="item.id">
+							{{item.start_date | date:'d MMM y'}} - {{item.end_date | date:'d MMM y'}}
+						  </mat-option>
+						</mat-select>
+					</mat-form-field>
 
 					<div class="col-xl-4 col-md-4 col-sm-4 col-xs-12">
 						<h6>{{'SALARIES.ENTRY_AT.LABEL' | translate}}</h6>

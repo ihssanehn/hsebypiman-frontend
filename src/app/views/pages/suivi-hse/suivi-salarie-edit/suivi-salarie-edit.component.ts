@@ -19,7 +19,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class SuiviSalarieEditComponent implements OnInit {
 
   @Input() public salarie: Personnel;
-  @Input() public period: FollowUpPeriod;
+  @Input() public periodId: Number;
 
 	// allRoles: Role[];
 	loaded = false;
@@ -48,7 +48,7 @@ export class SuiviSalarieEditComponent implements OnInit {
 
   createForm() {
     this.metricForm = this.fb.group({
-      period_id: [this.period.id],
+      period_id: [this.periodId],
       items: this.fb.array([])
     })
 
@@ -148,7 +148,7 @@ export class SuiviSalarieEditComponent implements OnInit {
   onSubmit(){
     try {
       let form = {...this.metricForm.getRawValue()};
-      form.period_id = this.period.id;
+      form.period_id = this.periodId;
 
       this.salarieService.setMetrics(this.salarie.id,form)
         .toPromise()

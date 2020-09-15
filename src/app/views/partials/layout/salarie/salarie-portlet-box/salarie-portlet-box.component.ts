@@ -10,7 +10,6 @@ import { FormControl } from '@angular/forms';
 export class SalariePortletBoxComponent implements OnInit {
 
   @Input() catMetric: CatMetric;
-  @Input() year: FormControl;
 
   constructor() { }
 

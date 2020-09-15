@@ -8,8 +8,6 @@ import {MatDatepicker} from '@angular/material/datepicker';
 import * as _moment from 'moment';
 import { default as _rollupMoment } from 'moment';
 
-const moment = _rollupMoment || _moment;
-
 @Component({
   selector: 'tf-suivi-hse-goals',
   templateUrl: './suivi-hse-goals.component.html',
@@ -19,10 +17,11 @@ export class SuiviHseGoalsComponent implements OnInit {
 
   catMetricsList: CatMetric[];
   period: FollowUpPeriod;
+  selectedPeriodId: Number;
+  periodList: FollowUpPeriod[];
   goalForm: FormGroup;
   formloading: boolean = false;
   loaded = false;
-  year = new FormControl(moment());
 
   constructor(
     private catMetricService: CatMetricService,
@@ -35,12 +34,12 @@ export class SuiviHseGoalsComponent implements OnInit {
 
   ngOnInit() {
     this.refreshForm();
+    this.getPeriods();
     if(this.loaded) this.getLatestPeriod();
   }
 
   refreshForm() {
     this.goalForm = this.fb.group({
-      period: [moment()],
       items: this.fb.array([])
     })
 
@@ -50,6 +49,7 @@ export class SuiviHseGoalsComponent implements OnInit {
   async getLatestPeriod(){
     var res = await this.periodService.getLatest().toPromise();
     this.period = res.result.data;
+    this.selectedPeriodId = this.period.id;
     if(this.period) this.getCatMetrics();
     this.cdr.markForCheck();
   }
@@ -58,11 +58,17 @@ export class SuiviHseGoalsComponent implements OnInit {
     var res = await this.catMetricService
       .getAll({
         has_goal:true,
-        period_id:this.period.id
+        period_id:this.selectedPeriodId
       }).toPromise();
     this.catMetricsList = res.result.data;
     this.refreshForm();
     this.patchForm(res.result.data);
+    this.cdr.markForCheck();
+  }
+
+  async getPeriods(){
+    var res = await this.periodService.getList().toPromise();
+    this.periodList = res.result.data;
     this.cdr.markForCheck();
   }
 
@@ -117,7 +123,7 @@ export class SuiviHseGoalsComponent implements OnInit {
   onSubmit(){
     try {
       let form = {...this.goalForm.getRawValue()};
-      form.period_id = this.period.id;
+      form.period_id = this.selectedPeriodId;
       this.goalService.create(form)
         .toPromise()
         .then((visite) => {
@@ -154,9 +160,9 @@ export class SuiviHseGoalsComponent implements OnInit {
     this.location.back();
   }
 
-  closeDatePicker(chosenYear: Date, datepicker: MatDatepicker<any>) {
-    datepicker.close();
-    this.year.setValue(moment(chosenYear));
+  changePeriod(selectedPeriod)
+  {
+    this.selectedPeriodId = selectedPeriod;
     this.getCatMetrics();
   }
 

@@ -4,8 +4,9 @@ import { DateFrToEnPipe } from '@app/core/_base/layout';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import { debounceTime } from 'rxjs/operators';
-import { FonctionService } from '@app/core/services';
+import { FonctionService, PeriodService } from '@app/core/services';
 import { Type } from '@app/core/models/type.model';
+import { FollowUpPeriod } from '@app/core/models';
 
 @Component({
   selector: 'tf-suivi-hse-filters',
@@ -21,9 +22,13 @@ export class SuiviHseFiltersComponent implements  OnInit {
   hidden = true;
   data: boolean = false;
   fonctions: Type[];
+  periodList: FollowUpPeriod[];
+  period: FollowUpPeriod;
+  selectedPeriodId: Number;
 
   constructor(
     private fonctionService: FonctionService,
+    private periodService: PeriodService,
     private fb: FormBuilder,
     private cdr: ChangeDetectorRef,
     private dateFrToEnPipe:DateFrToEnPipe,
@@ -36,10 +41,9 @@ export class SuiviHseFiltersComponent implements  OnInit {
 
   ngOnInit() {
     this.getFonctions();
-    this.initFiltersForm();
-    this.filterForm.valueChanges.pipe(
-      debounceTime(500)
-    ).subscribe(data => this.search(data));
+    this.getPeriods();
+    this.getLatestPeriod();
+
   }
 
   async getFonctions(){
@@ -48,12 +52,31 @@ export class SuiviHseFiltersComponent implements  OnInit {
     this.cdr.markForCheck();
   }
 
+  async getLatestPeriod(){
+    var res = await this.periodService.getLatest().toPromise();
+    this.period = res.result.data;
+    this.selectedPeriodId = this.period.id;
+    this.initFiltersForm();
+    this.cdr.markForCheck();
+  }
+
+  async getPeriods(){
+    var res = await this.periodService.getList().toPromise();
+    this.periodList = res.result.data;
+    this.cdr.markForCheck();
+  }
+
   initFiltersForm(){
     this.filterForm = this.fb.group({
       fonction_id:[null],    
+      period_id:[this.selectedPeriodId],    
       entry_at_start:[null],
       entry_at_end:[null]
-    })
+    });
+    
+    this.filterForm.valueChanges.pipe(
+      debounceTime(500)
+    ).subscribe(data => this.search(data));
   }
 
   search(filters: any): void {

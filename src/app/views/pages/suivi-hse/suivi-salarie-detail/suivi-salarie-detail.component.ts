@@ -13,8 +13,6 @@ import { Personnel, FollowUpPeriod } from '@app/core/models';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SuiviSalarieEditComponent } from '../suivi-salarie-edit/suivi-salarie-edit.component';
 
-const moment = _rollupMoment || _moment;
-
 @Component({
   selector: 'tf-suivi-salarie-detail',
   templateUrl: './suivi-salarie-detail.component.html',
@@ -24,14 +22,14 @@ export class SuiviSalarieDetailComponent implements OnInit, OnDestroy {
 
   salarie: Personnel;
   period: FollowUpPeriod;
+  selectedPeriodId: Number;
+  periodList: FollowUpPeriod[];
 	salarieForm: FormGroup;
 	// allRoles: Role[];
 	loaded = false;
 	editMode: boolean = false;
 	// Private properties
   private subscriptions: Subscription[] = [];
-
-  year = new FormControl(moment());
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -47,6 +45,7 @@ export class SuiviSalarieDetailComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+    this.getPeriods();
     const routeSubscription = this.activatedRoute.params.subscribe(
       async params => {
         const id = params.id;
@@ -55,6 +54,7 @@ export class SuiviSalarieDetailComponent implements OnInit, OnDestroy {
           .then((res:any) => {
             if(res){
               this.period = res.result.data;
+              this.selectedPeriodId = this.period.id;
               this.getSalarie(id);
             }
           });
@@ -75,7 +75,7 @@ export class SuiviSalarieDetailComponent implements OnInit, OnDestroy {
       var res = await this.personnelService
       .getPersonnelByPeriod(
         salarieId,
-        this.period.id
+        this.selectedPeriodId
       ).toPromise();
 			this.salarie = res.result.data;
 			this.cdr.markForCheck();
@@ -83,17 +83,17 @@ export class SuiviSalarieDetailComponent implements OnInit, OnDestroy {
 			console.error(error);
 		}
   }
-  
-  closeDatePicker(chosenYear: Date, datepicker: MatDatepicker<any>) {
-    datepicker.close();
-    this.year.setValue(moment(chosenYear));
-    this.getSalarie(this.salarie.id);
+
+  async getPeriods(){
+    var res = await this.periodService.getList().toPromise();
+    this.periodList = res.result.data;
+    this.cdr.markForCheck();
   }
 
   editMetrics(){
     const modalRef = this.modalService.open(SuiviSalarieEditComponent, {size: 'xl',scrollable: true,centered : true});
     modalRef.componentInstance.salarie = this.salarie;
-    modalRef.componentInstance.period = this.period;
+    modalRef.componentInstance.periodId = this.selectedPeriodId;
     modalRef.result.then((result) => {
       if (result) {
         this.getSalarie(this.salarie.id);
@@ -106,6 +106,12 @@ export class SuiviSalarieDetailComponent implements OnInit, OnDestroy {
   goBackWithId() {
 		const url = `/suivi-hse/list`;
 		this.router.navigateByUrl(url, { relativeTo: this.activatedRoute });
+  }
+
+  changePeriod(selectedPeriod)
+  {
+    this.selectedPeriodId = selectedPeriod;
+    this.getSalarie(this.salarie.id);
   }
 
 }

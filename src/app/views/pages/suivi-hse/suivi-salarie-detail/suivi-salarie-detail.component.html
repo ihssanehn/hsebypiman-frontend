@@ -4,11 +4,16 @@
             <a [routerLink]="['/suivi-hse/list']">{{'MENU.SUB_SUIVI_HSE.LIST' | translate}}</a><span class="divider">></span><span class="id-item">{{salarie | fullName}}</span>
         </span>
         <div class="pull-right">
-            <mat-form-field class="col-xl-10">
-                <input matInput class="form-control" [matDatepicker]="toYearPicker" placeholder="Année" [formControl]="year" readonly>
-                <mat-datepicker-toggle matSuffix [for]="toYearPicker"></mat-datepicker-toggle>
-                <mat-datepicker startView="multi-year" (yearSelected)="closeDatePicker($event,toYearPicker)" #toYearPicker></mat-datepicker>
+
+            <mat-form-field class="date-range-selector pull-right" appearance="fill" *ngIf="period">
+                <mat-label>Période</mat-label>
+                <mat-select [(value)]="period.id" (selectionChange)="changePeriod($event.value)">
+                  <mat-option *ngFor="let item of periodList" [value]="item.id">
+                    {{item.start_date | date:'d MMM y'}} <span class="divider">-</span> {{item.end_date | date:'d MMM y'}}
+                  </mat-option>
+                </mat-select>
             </mat-form-field>
+
         </div>
         <span>
             <button mat-icon-button color="info" matTooltip="Modifier les objectifs" (click)="editMetrics()" *ngxPermissionsOnly="['salarie_canUpdate']">
@@ -101,8 +106,7 @@
         
                         <tf-salarie-portlet 
                             *ngFor="let item of salarie.metricsTree"
-                            [metricsTree]="item" 
-                            [year]="year"
+                            [metricsTree]="item"
                         ></tf-salarie-portlet>
         
                         <div class="col-md-12 mt-4">
