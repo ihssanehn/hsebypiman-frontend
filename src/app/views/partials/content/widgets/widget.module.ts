@@ -7,6 +7,7 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { DataTableComponent } from './general/data-table/data-table.component';
 // General widgets
 import { Widget1Component } from './widget1/widget1.component';
+import { Widget2Component } from './widget2/widget2.component';
 import { Widget4Component } from './widget4/widget4.component';
 import { Widget5Component } from './widget5/widget5.component';
 import { Widget12Component } from './widget12/widget12.component';
@@ -22,6 +23,7 @@ import { PortletModule } from '../general/portlet/portlet.module';
 		DataTableComponent,
 		// Widgets
 		Widget1Component,
+		Widget2Component,
 		Widget4Component,
 		Widget5Component,
 		Widget12Component,
@@ -35,6 +37,7 @@ import { PortletModule } from '../general/portlet/portlet.module';
 		DataTableComponent,
 		// Widgets
 		Widget1Component,
+		Widget2Component,
 		Widget4Component,
 		Widget5Component,
 		Widget12Component,

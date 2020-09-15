@@ -1,7 +1,17 @@
 <tf-portlet class="flex-fill" >
     <tf-portlet-header [title]="'Entreprises externes'"></tf-portlet-header>
     <tf-portlet-body [class]="'tf-portlet__body--fit'" style="height: 100%">
-        <div class="row row-no-padding row-col-separator-xl">
+        <ng-container *ngIf="stats; else loading">
+			<tf-widget2 [label]="'raison_sociale'" (onGoTo)="goToEntreprise($event)" [data]="stats.top_5_sous_traitant">
+				<ng-template #actionTemplate let-item="item" >
+                    <span class="tf-widget4__number" *ngIf="item.id" >{{item.chiffre_affaire | currency:'EUR':'€'}}</span>
+                    <span class="tf-widget4__number" *ngIf="!item.id">{{item.chiffre_affaire}}</span>
+                    <span class="tf-widget4__number" >{{item.visites_count}}</span>
+                </ng-template>
+			</tf-widget2>
+		</ng-container>
+        
+        <!-- <div class="row row-no-padding row-col-separator-xl">
 			<div class="col-xl-6" style="padding:1em;">
                 <div class="dash-title">Top 5 sous-traitants</div>
                 <ng-container *ngIf="stats; else loading">
@@ -22,7 +32,7 @@
                     </tf-widget4>
                 </ng-container>
 			</div>
-        </div>
+        </div> -->
         
 
     </tf-portlet-body>

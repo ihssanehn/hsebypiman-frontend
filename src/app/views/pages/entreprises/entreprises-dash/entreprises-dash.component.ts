@@ -10,6 +10,7 @@ import * as echarts from 'echarts';
 import { LayoutConfigService, SparklineChartOptions } from '@app/core/_base/layout';
 
 
+
 @Component({
 	selector: 'tf-entreprises-dash',
 	templateUrl: './entreprises-dash.component.html',
@@ -29,107 +30,6 @@ export class EntreprisesDashComponent implements OnInit, AfterViewInit, OnDestro
 	
 	showFilters:Boolean = false;
 	stats : any;	
-	
-	
-
-	echartsType;
-	echartsStatus;
-	echartsEvol;
-	byTypeOptions = {
-		title: {
-			text: 'Entreprises par types',
-			x: 'center'
-		},
-		grid: {
-			left: '3%',
-			right: '4%',
-			bottom: '10%',
-			containLabel: true
-		},
-		tooltip: {
-			trigger: 'item',
-			formatter: '{b} : {c} ({d}%)'
-		},
-		legend: {
-			type: 'scroll',
-			orient: 'horizontal',
-			left: 20,
-			right: 20,
-			bottom: 10,
-			series:[]
-		},
-		series: [
-			{
-			type: 'pie',
-			radius: '60%',
-			center: ['50%', '50%'],
-			selectedMode: 'single',
-			data: []
-			}
-		]
-	};
-	byStatusOptions = {
-	title: {
-		text: 'Entreprises par Statut',
-		x: 'center'
-	},
-	grid: {
-		left: '3%',
-		right: '4%',
-		bottom: '10%',
-		containLabel: true
-	},
-	tooltip: {
-		trigger: 'item',
-		formatter: '{b} : {c} ({d}%)'
-	},
-	legend: {
-		type: 'scroll',
-		orient: 'horizontal',
-		left: 20,
-		right: 20,
-		bottom: 10,
-		series:[]
-	},
-	series: [
-		{
-		type: 'pie',
-		radius: '60%',
-		center: ['50%', '50%'],
-		selectedMode: 'single',
-		data: []
-		}
-	]
-	};
-	EvolOptions = {
-	title: {
-		text: 'Evolution des entreprises',
-		x: 'center'
-	},
-	tooltip: {
-		trigger: 'axis'
-	},
-	grid: {
-		left: '3%',
-		right: '4%',
-		bottom: '10%',
-		containLabel: true
-	},
-	xAxis: {
-		type: 'category',
-		data: []
-	},
-	yAxis: {
-		type: 'value'
-	},
-	
-	series: [
-		{
-		type: 'line',
-		data: []
-		}
-	]
-	};
 
 	constructor(
 		private router: Router,
@@ -150,12 +50,6 @@ export class EntreprisesDashComponent implements OnInit, AfterViewInit, OnDestro
 	}
 
 	ngAfterViewInit(){
-		this.echartsStatus = echarts.init(this.pieStatus.nativeElement)
-		this.echartsStatus.showLoading();
-		this.echartsType = echarts.init(this.pieType.nativeElement)
-		this.echartsType.showLoading();
-		this.echartsEvol = echarts.init(this.evolAll.nativeElement)
-		this.echartsEvol.showLoading();
 	}
 
 
@@ -168,23 +62,8 @@ export class EntreprisesDashComponent implements OnInit, AfterViewInit, OnDestro
 			this.entrepriseService.getStats(this.filter).subscribe(
 				res=>{
 					this.stats = res.result.data;
-
-					// By Type
-					this.byTypeOptions.series[0]['data'] = this.stats.types;
-					this.echartsType.setOption(this.byTypeOptions);
-					this.echartsType.hideLoading();	
 					
-					// By Status
-					this.byStatusOptions.series[0]['data'] = this.stats.status;
-					this.echartsStatus.setOption(this.byStatusOptions);
-					this.echartsStatus.hideLoading();
-
-					// Evolution
-					this.EvolOptions.series[0]['data'] = this.stats.evolution;
-					this.EvolOptions.xAxis.data = this.stats.evolutionAxis;
-					this.echartsEvol.setOption(this.EvolOptions);
-					this.echartsEvol.hideLoading();
-										
+					
 					this.cdr.markForCheck();
 				}	
 			);
@@ -214,6 +93,9 @@ export class EntreprisesDashComponent implements OnInit, AfterViewInit, OnDestro
 			case 'down':
 				if(value <= 0.33){return 'text-success'}else{return 'text-danger'};
 		}
+	}
+	goToEntreprise(event){
+		this.router.navigateByUrl('entreprises/detail/' + event.id);
 	}
 }
 
