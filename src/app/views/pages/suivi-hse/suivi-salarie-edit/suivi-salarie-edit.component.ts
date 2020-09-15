@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef, Input } from '@angular/core';
-import { Personnel } from '@app/core/models';
+import { Personnel, FollowUpPeriod } from '@app/core/models';
 import { FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import moment from 'moment';
@@ -19,7 +19,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class SuiviSalarieEditComponent implements OnInit {
 
   @Input() public salarie: Personnel;
-  @Input() public year: string;
+  @Input() public period: FollowUpPeriod;
 
 	// allRoles: Role[];
 	loaded = false;
@@ -48,7 +48,7 @@ export class SuiviSalarieEditComponent implements OnInit {
 
   createForm() {
     this.metricForm = this.fb.group({
-      period: [this.year],
+      period_id: [this.period.id],
       items: this.fb.array([])
     })
 
@@ -148,7 +148,7 @@ export class SuiviSalarieEditComponent implements OnInit {
   onSubmit(){
     try {
       let form = {...this.metricForm.getRawValue()};
-      form.period = this.year;
+      form.period_id = this.period.id;
 
       this.salarieService.setMetrics(this.salarie.id,form)
         .toPromise()

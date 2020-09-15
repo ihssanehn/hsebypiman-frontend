@@ -93,7 +93,7 @@ export class SuiviSalarieDetailComponent implements OnInit, OnDestroy {
   editMetrics(){
     const modalRef = this.modalService.open(SuiviSalarieEditComponent, {size: 'xl',scrollable: true,centered : true});
     modalRef.componentInstance.salarie = this.salarie;
-    modalRef.componentInstance.year = this.year.value.year();
+    modalRef.componentInstance.period = this.period;
     modalRef.result.then((result) => {
       if (result) {
         this.getSalarie(this.salarie.id);
