@@ -114,7 +114,7 @@ export class ChantiersDashComponent implements OnInit, AfterViewInit, OnDestroy 
 	
 
 	ngOnInit() {
-		this.getActionsDash();
+		this.getChantiersDash();
 	}
 
 	ngAfterViewInit(){
@@ -129,7 +129,7 @@ export class ChantiersDashComponent implements OnInit, AfterViewInit, OnDestroy 
 		this.cdr.detach();
 	}
 
-	async getActionsDash() {
+	async getChantiersDash() {
 		try {
 			this.ChantierService.getStats(this.filter).subscribe(
 				res=>{
@@ -162,7 +162,7 @@ export class ChantiersDashComponent implements OnInit, AfterViewInit, OnDestroy 
 		for (let [key, value] of Object.entries(filters)) {
 			this.filter[key] = value;
 		}
-		this.getActionsDash();
+		this.getChantiersDash();
 	}
 
 	getClass(sens, value){
