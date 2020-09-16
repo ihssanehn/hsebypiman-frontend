@@ -36,7 +36,7 @@ export class Widget2Component implements OnInit {
 	 * On init
 	 */
 	ngOnInit() {
-		console.log(this.data)
+		
 	}
 
 	goTo(item){

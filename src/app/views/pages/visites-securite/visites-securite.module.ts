@@ -19,6 +19,7 @@ import { HttpUtilsService, TypesUtilsService, InterceptService, LayoutUtilsServi
 import { ActionNotificationComponent } from '../../partials/content/crud';
 // Components
 import { VisitesSecuriteComponent } from './visites-securite.component';
+import { VssDashComponent } from './visites-securite-dash/visites-securite-dash.component';
 import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -47,6 +48,10 @@ const routes: Routes = [
 				path: 'outillages',
 				loadChildren: () => import('@app/views/pages/visites-securite/outillages/visites-outillage.module').then(m => m.VisitesOutillageModule)
 			},
+			{
+				path: 'dashboard',
+				component: VssDashComponent,
+			}
 		]
 	}
 ];
@@ -115,7 +120,8 @@ const routes: Routes = [
 		// 
 	],
 	declarations: [
-		VisitesSecuriteComponent
+		VisitesSecuriteComponent,
+		VssDashComponent
 	]
 })
 export class VisitesSecuriteModule {}

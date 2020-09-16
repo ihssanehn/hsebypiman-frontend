@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 @Injectable()
 export class VisiteService extends HttpService{
 
-    baseUrl = environment.apiBaseUrl+'visites-chantier';
+    baseUrl = environment.apiBaseUrl+'visites';
     constructor(
         private http: HttpClient,
         private router: Router

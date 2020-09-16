@@ -18,9 +18,10 @@ import { LayoutConfigService, SparklineChartOptions } from '@app/core/_base/layo
 
 export class VssDashComponent implements OnInit, AfterViewInit, OnDestroy {
 
-	@ViewChild('pieType', {static: true}) pieType: ElementRef;
-	@ViewChild('pieStatus', {static: true}) pieStatus: ElementRef;
+	@ViewChild('pieNcCat', {static: true}) pieNcCat: ElementRef;
+	@ViewChild('pieVsCat', {static: true}) pieVsCat: ElementRef;
 	@ViewChild('evolAll', {static: true}) evolAll: ElementRef;
+	@ViewChild('evolGrp', {static: true}) evolGrp: ElementRef;
 
 	filter: any = {
 		keyword: "",
@@ -33,12 +34,53 @@ export class VssDashComponent implements OnInit, AfterViewInit, OnDestroy {
 	
 
 	echartsEvol;
+	echartsCatEvol
 	
-	echartsType;
+	echartsNcCat;
+	echartsVsCat;
 
-	byTypeOptions = {
+	EvolCatOptions = {
+		title:{
+			text:'Évolution de non-conformités par catégorie',
+			x:'center'
+		},
+		color: ['#c83351', '#dea342', '#5ac2bd', '#89b398'],
+		tooltip: {
+			trigger: 'axis',
+			axisPointer: {
+				type: 'shadow'
+			}
+		},
+		grid: {
+			left: '4%',
+			right: '2%',
+			bottom: '15%',
+			containLabel: true
+		},
+		xAxis: {
+			type: 'category',
+			boundaryGap: true,
+			data: [],
+			axisLabel:
+				{
+						rotate:50,
+						margin: 10
+				},
+		},
+		yAxis: {
+			type: 'value'
+		},
+		legend: {
+			data: [],
+			bottom: true,
+			type: 'scroll',
+			width: '100%'			
+		},
+		series: []
+	};
+	ncByCatOptions = {
 		title: {
-			text: 'Vss par types',
+			text: 'Non-conformités par catégorie',
 			x: 'center'
 		},
 		grid: {
@@ -52,12 +94,41 @@ export class VssDashComponent implements OnInit, AfterViewInit, OnDestroy {
 			formatter: '{b} : {c} ({d}%)'
 		},
 		legend: {
+			series: [],
+			bottom: true,
 			type: 'scroll',
-			orient: 'horizontal',
-			left: 20,
-			right: 20,
-			bottom: 10,
-			series:[]
+			width: '100%'			
+		},
+		series: [
+			{
+			type: 'pie',
+			radius: '60%',
+			center: ['50%', '50%'],
+			selectedMode: 'single',
+			data: []
+			}
+		]
+	};
+	vsByCatOptions = {
+		title: {
+			text: 'Visites par catégories',
+			x: 'center'
+		},
+		grid: {
+			left: '3%',
+			right: '4%',
+			bottom: '10%',
+			containLabel: true
+		},
+		tooltip: {
+			trigger: 'item',
+			formatter: '{b} : {c} ({d}%)'
+		},
+		legend: {
+			series: [],
+			bottom: true,
+			type: 'scroll',
+			width: '100%'			
 		},
 		series: [
 			{
@@ -71,7 +142,7 @@ export class VssDashComponent implements OnInit, AfterViewInit, OnDestroy {
 	};
 	EvolOptions = {
 		title: {
-			text: 'Evolution créations de chantier',
+			text: 'Evolution de non-conformités',
 			x: 'center'
 		},
 		tooltip: {
@@ -114,14 +185,18 @@ export class VssDashComponent implements OnInit, AfterViewInit, OnDestroy {
 	
 
 	ngOnInit() {
-		this.getVssDash();
+		this.getVisitesDash();
 	}
 
 	ngAfterViewInit(){
-		this.echartsType = echarts.init(this.pieType.nativeElement)
-		this.echartsType.showLoading();
+		this.echartsNcCat = echarts.init(this.pieNcCat.nativeElement)
+		this.echartsNcCat.showLoading();
+		this.echartsVsCat = echarts.init(this.pieVsCat.nativeElement)
+		this.echartsVsCat.showLoading();
 		this.echartsEvol = echarts.init(this.evolAll.nativeElement)
 		this.echartsEvol.showLoading();
+		this.echartsCatEvol = echarts.init(this.evolGrp.nativeElement)
+		this.echartsCatEvol.showLoading();
 	}
 
 
@@ -129,17 +204,39 @@ export class VssDashComponent implements OnInit, AfterViewInit, OnDestroy {
 		this.cdr.detach();
 	}
 
-	async getVssDash() {
+	async getVisitesDash() {
 		try {
 			this.VsService.getStats(this.filter).subscribe(
 				res=>{
 					this.stats = res.result.data;
 
-					// By Type
-					this.byTypeOptions.series[0]['data'] = this.stats.types;
-					this.echartsType.setOption(this.byTypeOptions);
-					this.echartsType.hideLoading();	
+					// NC By Cat
+					this.ncByCatOptions.series[0]['data'] = this.stats.ncGroupedByCat;
+					this.echartsNcCat.setOption(this.ncByCatOptions);
+					this.echartsNcCat.hideLoading();	
+					// VS By Cat
+					this.vsByCatOptions.series[0]['data'] = this.stats.vsGroupedByCat;
+					this.echartsVsCat.setOption(this.vsByCatOptions);
+					this.echartsVsCat.hideLoading();
 					
+					console.log(this.stats.ncGroupedByCat, this.stats.vsGroupedByCat);
+					// Evolution Grouped
+					this.EvolCatOptions.series = [];
+					if(this.stats.evolutionByCat){
+						this.stats.evolutionByCat.forEach(element => {
+						this.EvolCatOptions.series.push({
+							name: element.name,
+							type: 'bar',
+							data: element.data
+						});
+						this.EvolCatOptions.legend.data.push(element.name);
+						});
+					}
+					this.EvolCatOptions.xAxis.data = this.stats.evolutionAxis;
+					this.echartsCatEvol.setOption(this.EvolCatOptions);
+					this.echartsCatEvol.hideLoading();
+		
+
 					// Evolution
 					this.EvolOptions.series[0]['data'] = this.stats.evolution;
 					this.EvolOptions.xAxis.data = this.stats.evolutionAxis;
@@ -162,7 +259,7 @@ export class VssDashComponent implements OnInit, AfterViewInit, OnDestroy {
 		for (let [key, value] of Object.entries(filters)) {
 			this.filter[key] = value;
 		}
-		this.getVssDash();
+		this.getVisitesDash();
 	}
 
 	getClass(sens, value){
