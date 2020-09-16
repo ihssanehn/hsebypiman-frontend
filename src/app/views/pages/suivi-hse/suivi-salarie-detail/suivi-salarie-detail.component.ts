@@ -12,6 +12,7 @@ import { default as _rollupMoment } from 'moment';
 import { Personnel, FollowUpPeriod } from '@app/core/models';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SuiviSalarieEditComponent } from '../suivi-salarie-edit/suivi-salarie-edit.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'tf-suivi-salarie-detail',
@@ -54,7 +55,11 @@ export class SuiviSalarieDetailComponent implements OnInit, OnDestroy {
           .then((res:any) => {
             if(res){
               this.period = res.result.data;
-              this.selectedPeriodId = this.period.id;
+              if(this.period){
+                this.selectedPeriodId = this.period.id;
+              }else{
+                this.selectedPeriodId = 0;
+              }
               this.getSalarie(id);
             }
           });
@@ -91,16 +96,24 @@ export class SuiviSalarieDetailComponent implements OnInit, OnDestroy {
   }
 
   editMetrics(){
-    const modalRef = this.modalService.open(SuiviSalarieEditComponent, {size: 'xl',scrollable: true,centered : true});
-    modalRef.componentInstance.salarie = this.salarie;
-    modalRef.componentInstance.periodId = this.selectedPeriodId;
-    modalRef.result.then((result) => {
-      if (result) {
-        this.getSalarie(this.salarie.id);
-      }
-    }, (reason) => {
-      
-    });
+    if(this.selectedPeriodId){
+      const modalRef = this.modalService.open(SuiviSalarieEditComponent, {size: 'xl',scrollable: true,centered : true});
+      modalRef.componentInstance.salarie = this.salarie;
+      modalRef.componentInstance.periodId = this.selectedPeriodId;
+      modalRef.result.then((result) => {
+        if (result) {
+          this.getSalarie(this.salarie.id);
+        }
+      }, (reason) => {
+        
+      });
+    }else{
+      Swal.fire({
+        title: 'Aucune période n\'a été sélectionnée ! Veuillez en ajouter une à partir de l\'onglet Objectifs',
+        showConfirmButton: false,
+        timer: 2000
+      })
+    }
   }
 
   goBackWithId() {

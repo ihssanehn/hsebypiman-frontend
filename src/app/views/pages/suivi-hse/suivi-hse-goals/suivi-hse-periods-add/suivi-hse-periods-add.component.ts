@@ -40,7 +40,9 @@ export class SuiviHsePeriodsAddComponent implements OnInit {
     .then((res:any) => {
       if(res){
         var period = res.result.data;
-        this.addDay(period.end_date);
+        if(period){
+          this.addDay(period.end_date);
+        }
       }
     });
   }

@@ -6,21 +6,33 @@
             </span>
             <div class="pull-right">
 
-                <mat-form-field class="date-range-selector" appearance="fill" *ngIf="selectedPeriodId">
-                    <mat-label>Période</mat-label>
-                    <mat-select [(value)]="selectedPeriodId" (selectionChange)="changePeriod($event.value)">
-                      <mat-option *ngFor="let item of periodList" [value]="item.id">
-                        {{item.start_date | date:'d MMM y'}} - {{item.end_date | date:'d MMM y'}}
-                      </mat-option>
-                    </mat-select>
-                </mat-form-field>
-                
-                <span class="pull-right">
-                    <button type="button" mat-icon-button color="info" matTooltip="Ajouter une nouvelle période" (click)="openNewPeriodModal()" *ngxPermissionsOnly="['salarie_canUpdate']">
-                        <mat-icon>add</mat-icon>
-                    </button>
-                </span>
+                <ng-container *ngIf="selectedPeriodId; else addFirstPeriod">
+                    <mat-form-field class="date-range-selector " appearance="fill">
+                        <mat-label>Période</mat-label>
+                        <mat-select [(value)]="selectedPeriodId" (selectionChange)="changePeriod($event.value)">
+                          <mat-option *ngFor="let item of periodList" [value]="item.id">
+                            {{item.start_date | date:'d MMM y'}} - {{item.end_date | date:'d MMM y'}}
+                          </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+    
+                    <span class="pull-right">
+                        <button type="button" mat-icon-button style="color: rgb(228, 152, 25);" matTooltip="Ajouter une nouvelle période" (click)="openNewPeriodModal()" *ngxPermissionsOnly="['salarie_canUpdate']">
+                            <mat-icon>add</mat-icon>
+                        </button>
+                    </span>
+                </ng-container>
 
+                <ng-template #addFirstPeriod>
+                    <span class="pr-0 pull-right"> 
+                        <div class="pull-right d-flex pointer" style="color: rgb(228, 152, 25);" (click)="openNewPeriodModal()">
+                            <div class="status-box" >
+                                <mat-icon class="d-flex h-center">add</mat-icon> 
+                            </div>
+                            <div class="d-flex h-center">Ajouter une période</div>
+                        </div>
+                    </span>
+                </ng-template>
             </div>
         </div>
 

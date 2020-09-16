@@ -55,7 +55,9 @@ export class SuiviHseFiltersComponent implements  OnInit {
   async getLatestPeriod(){
     var res = await this.periodService.getLatest().toPromise();
     this.period = res.result.data;
-    this.selectedPeriodId = this.period.id;
+    if(this.period){
+      this.selectedPeriodId = this.period.id;
+    }
     this.initFiltersForm();
     this.cdr.markForCheck();
   }

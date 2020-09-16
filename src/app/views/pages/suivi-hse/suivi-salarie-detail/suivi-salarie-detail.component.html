@@ -1,13 +1,13 @@
 <tf-portlet class="tf-portlet--height-fluid mat-elevation-z8" id="portlet-salarie" *ngIf="salarie">
-    <div class="tf-portlet-header ">
+    <div class="tf-portlet-header mb-2">
         <span class="title">
             <a [routerLink]="['/suivi-hse/list']">{{'MENU.SUB_SUIVI_HSE.LIST' | translate}}</a><span class="divider">></span><span class="id-item">{{salarie | fullName}}</span>
         </span>
         <div class="pull-right">
 
-            <mat-form-field class="date-range-selector pull-right" appearance="fill" *ngIf="period">
+            <mat-form-field class="date-range-selector pull-right" appearance="fill" *ngIf="selectedPeriodId">
                 <mat-label>Période</mat-label>
-                <mat-select [(value)]="period.id" (selectionChange)="changePeriod($event.value)">
+                <mat-select [(value)]="selectedPeriodId" (selectionChange)="changePeriod($event.value)">
                   <mat-option *ngFor="let item of periodList" [value]="item.id">
                     {{item.start_date | date:'d MMM y'}} <span class="divider">-</span> {{item.end_date | date:'d MMM y'}}
                   </mat-option>

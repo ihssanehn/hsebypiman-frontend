@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef, Optional, Inject } from '@angular/core';
 import { CatMetricService, GoalService, PeriodService } from '@app/core/services';
 import { CatMetric, FollowUpPeriod } from '@app/core/models';
-import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import Swal from 'sweetalert2';
 import {MatDatepicker} from '@angular/material/datepicker';
@@ -37,13 +37,13 @@ export class SuiviHseGoalsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.refreshForm();
     this.getPeriods();
-    if(this.loaded) this.getLatestPeriod();
+    this.getLatestPeriod();
   }
 
   refreshForm() {
     this.goalForm = this.fb.group({
+      period_id: [this.selectedPeriodId, Validators.required],
       items: this.fb.array([])
     })
 
@@ -53,8 +53,11 @@ export class SuiviHseGoalsComponent implements OnInit {
   async getLatestPeriod(){
     var res = await this.periodService.getLatest().toPromise();
     this.period = res.result.data;
-    this.selectedPeriodId = this.period.id;
-    if(this.period) this.getCatMetrics();
+    if(this.period){
+      this.selectedPeriodId = this.period.id;
+    }
+    this.refreshForm();
+    this.getCatMetrics();
     this.cdr.markForCheck();
   }
 
