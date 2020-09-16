@@ -76,7 +76,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
 
   createForm() {
     this.userForm = this.fb.group({
-      is_virtuel: [0, [Validators]],
+      is_virtual: [0, [Validators]],
       civilite: [{value:'', disabled:false}, [Validators]],
       nom: [{value:null, disabled:false}, Validators.required],
       prenom: [{value:'', disabled:false}, Validators.required],
@@ -101,7 +101,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
   }
 
   setDynamicForm(){
-    this.userForm.get('is_virtuel').valueChanges.subscribe((value)=>{
+    this.userForm.get('is_virtual').valueChanges.subscribe((value)=>{
       const date_entree = this.userForm.get('date_entree') as FormControl;
       const fonction_id = this.userForm.get('date_sortie') as FormControl;
       const date_sortie = this.userForm.get('fonction_id') as FormControl;
