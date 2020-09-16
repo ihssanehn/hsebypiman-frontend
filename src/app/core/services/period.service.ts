@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { Question } from '@app/core/models/';
 import { map } from 'rxjs/operators';
 import { Paginate } from '../_base/layout/models/paginate.model';
+import { Observable } from 'rxjs';
 
 
 export class PeriodService extends HttpService{
@@ -26,6 +27,10 @@ export class PeriodService extends HttpService{
 
   getList(){
     return this.http.get<JsonResponse<any[]>>(this.baseUrl+'/mini');
+  }
+
+  get(id): Observable<JsonResponse<any>>{
+    return this.http.get<JsonResponse<any>>(this.baseUrl+'/'+id);
   }
 
   create(payload){

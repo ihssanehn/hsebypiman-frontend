@@ -72,6 +72,7 @@ import { SuiviHseGoalsComponent } from './suivi-hse-goals/suivi-hse-goals.compon
 import { SuiviHseAdminComponent } from './suivi-hse-admin/suivi-hse-admin.component';
 import { SuiviSalarieEditComponent } from './suivi-salarie-edit/suivi-salarie-edit.component';
 import { SuiviSalarieDashComponent } from './suivi-salarie-dash/suivi-salarie-dash.component';
+import { SuiviHsePeriodsAddComponent } from './suivi-hse-goals/suivi-hse-periods-add/suivi-hse-periods-add.component';
 
 
 const routes: Routes = [
@@ -223,14 +224,15 @@ const routes: Routes = [
 			}
 		},
 		{ provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
-		{ provide: DateAdapter, useClass: CustomMomentDateAdapter, deps: [MAT_DATE_LOCALE] },
-		{ provide: MAT_DATE_FORMATS, useValue: YEAR_FORMATS },
+		// { provide: DateAdapter, useClass: CustomMomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+		// { provide: MAT_DATE_FORMATS, useValue: YEAR_FORMATS },
 		HttpUtilsService,
 		TypesUtilsService,
 		LayoutUtilsService
 	],
 	entryComponents: [
-		ActionNotificationComponent
+		ActionNotificationComponent,
+		SuiviHsePeriodsAddComponent
 	],
 	declarations: [
 		SuiviHseComponent,
@@ -240,7 +242,8 @@ const routes: Routes = [
 		SuiviHseGoalsComponent,
 		SuiviHseAdminComponent,
 		SuiviSalarieEditComponent,
-		SuiviSalarieDashComponent
+		SuiviSalarieDashComponent,
+		SuiviHsePeriodsAddComponent
 	]
 })
 export class SuiviHseModule {

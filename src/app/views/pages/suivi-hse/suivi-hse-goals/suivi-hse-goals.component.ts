@@ -7,6 +7,8 @@ import Swal from 'sweetalert2';
 import {MatDatepicker} from '@angular/material/datepicker';
 import * as _moment from 'moment';
 import { default as _rollupMoment } from 'moment';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { SuiviHsePeriodsAddComponent } from './suivi-hse-periods-add/suivi-hse-periods-add.component';
 
 @Component({
   selector: 'tf-suivi-hse-goals',
@@ -23,10 +25,12 @@ export class SuiviHseGoalsComponent implements OnInit {
   formloading: boolean = false;
   loaded = false;
 
+
   constructor(
     private catMetricService: CatMetricService,
     private goalService: GoalService,
     private periodService: PeriodService,
+    private modalService: NgbModal,
     private fb: FormBuilder,
     private location: Location,
     private cdr: ChangeDetectorRef,
@@ -164,6 +168,21 @@ export class SuiviHseGoalsComponent implements OnInit {
   {
     this.selectedPeriodId = selectedPeriod;
     this.getCatMetrics();
+  }
+
+  openNewPeriodModal()
+  {
+    const modalRef = this.modalService.open(SuiviHsePeriodsAddComponent, {size: 'lg',scrollable: true,centered : true});
+    modalRef.result.then((result) => {
+      if (result) {
+        console.log(result);
+        this.selectedPeriodId = result.id;
+        this.getPeriods();
+        this.getCatMetrics();
+      }
+    }, (reason) => {
+      
+    });
   }
 
 }

@@ -6,14 +6,20 @@
             </span>
             <div class="pull-right">
 
-                <mat-form-field class="date-range-selector pull-right" appearance="fill" *ngIf="period">
+                <mat-form-field class="date-range-selector" appearance="fill" *ngIf="selectedPeriodId">
                     <mat-label>Période</mat-label>
-                    <mat-select [(value)]="period.id" (selectionChange)="changePeriod($event.value)">
+                    <mat-select [(value)]="selectedPeriodId" (selectionChange)="changePeriod($event.value)">
                       <mat-option *ngFor="let item of periodList" [value]="item.id">
                         {{item.start_date | date:'d MMM y'}} - {{item.end_date | date:'d MMM y'}}
                       </mat-option>
                     </mat-select>
                 </mat-form-field>
+                
+                <span class="pull-right">
+                    <button type="button" mat-icon-button color="info" matTooltip="Ajouter une nouvelle période" (click)="openNewPeriodModal()" *ngxPermissionsOnly="['salarie_canUpdate']">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </span>
 
             </div>
         </div>

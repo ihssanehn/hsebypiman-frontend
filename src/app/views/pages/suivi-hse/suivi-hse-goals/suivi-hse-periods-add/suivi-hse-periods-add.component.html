@@ -1,0 +1,32 @@
+
+<div class="modal-header">
+	<h4 class="modal-title">Nouvelle période</h4>
+	<button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="periodForm" *ngIf="periodForm" autocomplete="off" class="tf-form tf-form--group-seperator-dashed " novalidate (ngSubmit)="periodForm.valid && onSubmit()" fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-12 mb-3"><p>Veuillez sélectionner une date de début et de fin de la période</p></div>
+                <mat-form-field class="col-md-6" appearance="fill">
+                    <mat-label>Date de début</mat-label>
+                    <input matInput [matDatepicker]="picker" [min]="minStartDatePeriod" formControlName="start_date" placeholder="DD/MM/YYYY">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker startView="year" [startAt]="minStartDatePeriod"></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field class="col-md-6" appearance="fill">
+                    <mat-label>Date de fin</mat-label>
+                    <input matInput [matDatepicker]="picker_end" [min]="periodForm.value.start_date" formControlName="end_date" placeholder="DD/MM/YYYY">
+                    <mat-datepicker-toggle matSuffix [for]="picker_end"></mat-datepicker-toggle>
+                    <mat-datepicker #picker_end startView="year" [startAt]="periodForm.value.start_date"></mat-datepicker>
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="onCancel()">{{ 'Annuler' | translate }}</button>
+	<button type="button" type="button" mat-raised-button [ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': formloading}" color="success" [disabled]="formloading || periodForm.invalid" (click)="onSubmit()">{{ 'Enregistrer' | translate }}</button>
+</div>
