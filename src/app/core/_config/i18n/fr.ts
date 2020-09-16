@@ -440,6 +440,16 @@ export const locale = {
 				TITLE:'Historique des visites',
 				SHORTTITLE:'Historique des visites',
 			},
+			DATE_VS:{
+				LABEL:'Prochaine V.S',
+				TITLE:'Prochaine V.S',
+				SHORTTITLE:'Prochaine visite',
+			},
+			VS_RETARD:{
+				LABEL:'Retard de visite',
+				TITLE:'V.S en retard',
+				SHORTTITLE:'Retard',
+			},
 		},
 		// Entreprises Externes
 		EES:{

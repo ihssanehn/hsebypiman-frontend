@@ -1,0 +1,71 @@
+<tf-search-list-bar [(ngModel)]="filter" (change)="getMaterielsDash()" [hasAdvancedSearch]="true" [showFilters]="showFilters" (advancedSearchChange)="advancedSearchChanged($event)" class="row row-filters"></tf-search-list-bar>
+<tf-materiel-filters [hidden]="!showFilters" (change)="udpateFilters($event)" class="row"></tf-materiel-filters>
+<div class="row px-2">
+	<div class="col-3">
+		<tf-widget-indicator [value]="stats.total_materiels" [desc]="'Matériel'" *ngIf="stats; else loading"></tf-widget-indicator>
+	</div>
+	<div class="col-3">
+		<tf-widget-indicator [value]="stats.total_prets" [valueClass]="getClass('down', stats.total_prets)" [desc]="'Matériel en prêt'" *ngIf="stats; else loading"></tf-widget-indicator>
+	</div>
+	<div class="col-3">
+		<tf-widget-indicator [value]="stats.total_dispo" [valueClass]="getClass('up', stats.total_dispo)" [desc]="'Matériel disponible'" *ngIf="stats; else loading"></tf-widget-indicator>
+	</div>
+	<div class="col-3">
+		<tf-widget-indicator [value]="stats.total_vss" [valueClass]="getClass('up', stats.total_vss)" [desc]="'Nombre de visites'" *ngIf="stats; else loading"></tf-widget-indicator>
+	</div>
+	<div class="col-12">
+		<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8" *ngIf="stats; else loading">
+			<tf-portlet-body class="tf-portlet__body--fit " style="padding: 20px 15px;">
+				<span class="tf-subtitle">Matériel en retard : {{stats.retards.length}}</span>
+				<div class="table-responsive">
+					<table class="table table-sm table-striped" >
+						<thead>
+							<tr>
+								<th>{{'MATERIELS.VS_RETARD.SHORTTITLE' | translate}}</th>
+								<th>{{'MATERIELS.CODE.TITLE' | translate}}</th>
+								<th>{{'MATERIELS.LIBELLE.TITLE' | translate}}</th>
+								<th>{{'MATERIELS.NUMERO_SERIE.SHORTTITLE' | translate}}</th>
+								<th>{{'MATERIELS.CATEGORIE.SHORTTITLE' | translate}}</th>
+								<th class="text-center">{{'MATERIELS.DATE_ENTREE.TITLE' | translate}}</th>
+								<th>{{'MATERIELS.ACTUAL_USER.TITLE' | translate}}</th>
+								<th class="text-center">{{'MATERIELS.LAST_VS.TITLE' | translate}}</th>
+								<th class="text-center">{{'MATERIELS.DATE_VS.TITLE' | translate}}</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let item of stats.retards">
+								<td class="text-center"><i class="material-icons text-danger" *ngIf="item.vs_retard" style="font-size:10px !important;">fiber_manual_record</i></td>
+								<td>{{item.code}}</td>
+								<td>{{item.libelle}}</td>
+								<td>{{item.numero_serie}}</td>
+								<td>{{item.main_categorie?.libelle+' - '+item.categorie?.libelle}}</td>
+								<td class="text-center">{{item.date_entree  | date:'dd/MM/yyyy'}}</td>
+								<td>{{item.actual_user ? (item.actual_user | fullName) : 'Disponible'}}</td>
+								<td class="text-center">{{item.latest_vs ? (item.latest_vs.created_at  | date:'dd/MM/yyyy') : '-'}}</td>
+								<td class="text-center"><b>{{item.next_visite  | date:'dd/MM/yyyy'}}</b></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</tf-portlet-body>
+		</tf-portlet>
+	</div>
+	<div class="col-4">
+		<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
+			<tf-portlet-body class="tf-portlet__body--fit" style="padding: 20px 15px;">
+				<div echarts class="demo-chart" #pieType></div>
+			</tf-portlet-body>
+		</tf-portlet>
+	</div>
+	<div class="col-8">
+		<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
+			<tf-portlet-body class="tf-portlet__body--fit" style="padding: 20px 15px;">
+				<div echarts class="demo-chart" #evolAll></div>
+			</tf-portlet-body>
+		</tf-portlet>
+	</div>
+</div>
+
+<ng-template #loading>
+	<tf-widget-indicator [value]="null" [desc]="null"></tf-widget-indicator>
+</ng-template>

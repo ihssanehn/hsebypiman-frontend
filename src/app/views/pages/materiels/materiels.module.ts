@@ -65,6 +65,7 @@ import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapte
 // Components
 import { MaterielsComponent } from './materiels.component';
 import { MaterielsListComponent } from './materiels-list/materiels-list.component';
+import { MaterielsDashComponent } from './materiels-dash/materiels-dash.component';
 import { MaterielFiltersComponent } from './materiel-filters/materiel-filters.component';
 import { MaterielFormComponent } from './materiel-form/materiel-form.component';
 import { MaterielEditComponent } from './materiel-edit/materiel-edit.component';
@@ -146,6 +147,10 @@ const routes: Routes = [
 						only: ['materiel_canUpdate']
 					}
 				}
+			},
+			{
+				path: 'dashboard',
+				component: MaterielsDashComponent
 			},
 			{
 				path: 'admin',
@@ -242,6 +247,7 @@ const routes: Routes = [
 	declarations: [
 		MaterielsComponent,
 		MaterielsListComponent,
+		MaterielsDashComponent,
 		MaterielFiltersComponent,
 		MaterielEditComponent,
 		MaterielAddComponent,

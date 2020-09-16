@@ -586,7 +586,7 @@ export class MenuConfig {
 						title: 'Dashboards',
 						root: true,
 						alignment: 'left',
-						page: '/dashboard',
+						page: '/materiel/dashboard',
 						translate: 'MENU.DASHBOARD',
 					},
 					{
