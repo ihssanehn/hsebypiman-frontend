@@ -41,7 +41,7 @@
 								<td>{{item.main_categorie?.libelle+' - '+item.categorie?.libelle}}</td>
 								<td class="text-center">{{item.date_entree  | date:'dd/MM/yyyy'}}</td>
 								<td>{{item.actual_user ? (item.actual_user | fullName) : 'Disponible'}}</td>
-								<td class="text-center">{{item.latest_vs ? (item.latest_vs.created_at  | date:'dd/MM/yyyy') : '-'}}</td>
+								<td class="text-center">{{item.last_vs ? (item.last_vs.date_visite  | date:'dd/MM/yyyy') : '-'}}</td>
 								<td class="text-center"><b>{{item.next_visite  | date:'dd/MM/yyyy'}}</b></td>
 							</tr>
 						</tbody>

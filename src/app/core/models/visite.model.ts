@@ -20,6 +20,8 @@ export class VisiteChantier {
     status_id?:Number;
     creator_id?:Number;
     chantier_id?:Number;
+    visitable_id?:Number;
+    visitable_type?:string;
     chantier?:Chantier;
     visitable?:any;
     salarie?:User;
@@ -51,6 +53,8 @@ export class VisiteEpi {
     status_id?:Number;
     creator_id?:Number;
     materiel_id?:Number;
+    visitable_id?:Number;
+    visitable_type?:string;
     epi?:Materiel;
     salarie?:User;
     redacteur?:User;
@@ -79,6 +83,8 @@ export class VisiteOutillage {
     status_id?:Number;
     creator_id?:Number;
     materiel_id?:Number;
+    visitable_id?:Number;
+    visitable_type?:string;
     outillage_code?:String;
     materiel?:Outillage;
     salarie?:User;
@@ -109,6 +115,8 @@ export class VisiteVehicule {
     status_id?:Number;
     creator_id?:Number;
     materiel_id?:Number;
+    visitable_id?:Number;
+    visitable_type?:string;
     materiel?:Vehicule;
     vehicule_code?:String;
     salarie?:User;
@@ -143,6 +151,8 @@ export class Visite {
     status_id?:Number;
     creator_id?:Number;
     visitable?:any;
+    visitable_id?:Number;
+    visitable_type?:string;
     salarie?:User;
     entreprise?:any;
     redacteur?:User;

@@ -74,7 +74,7 @@ export class SearchMaterielFormComponent implements OnInit {
 
   cantDisplayQuestions(){
 
-    var test: boolean = this.form.get('materiel_id').invalid 
+    var test: boolean = this.form.get('visitable_id').invalid 
       || this.form.get('type_id').invalid 
       || this.form.get('salarie_id').invalid;
 
@@ -151,7 +151,7 @@ export class SearchMaterielFormComponent implements OnInit {
   }
 
   formHasMateriel(){
-    return !this.form.get('materiel_id').value;
+    return !this.form.get('visitable_id').value;
   }
 
 

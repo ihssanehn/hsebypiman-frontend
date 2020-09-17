@@ -64,6 +64,7 @@ export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 				this.visiteService.get(id).pipe(
 					tap(res => {
 						var _visite = res.result.data
+						_visite.chantier_id = _visite.visitable_id;
 						this.parseVisitesDate(_visite, 'EnToFr');
 						this.visiteForm.patchValue(_visite);
 						this.patchQuestionsForm(_visite);

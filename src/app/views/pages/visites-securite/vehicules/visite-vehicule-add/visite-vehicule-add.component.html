@@ -12,7 +12,7 @@
 				<tf-search-materiel-form [form]="visiteForm" origin="add" [model]="'VsVehicule'" (onUserSelected)="onUserSelected($event)"></tf-search-materiel-form>
 			</div>
 		</div>
-		<div class="tf-divider" *ngIf="visiteForm.get('materiel_id').value">
+		<div class="tf-divider" *ngIf="visiteForm.get('visitable_id').value">
 			<span></span>
 		</div>
 	</tf-portlet>

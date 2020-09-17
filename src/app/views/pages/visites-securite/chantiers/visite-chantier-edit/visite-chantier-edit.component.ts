@@ -63,6 +63,7 @@ export class VisiteChantierEditComponent implements OnInit, OnDestroy {
           this.visiteService.get(id).pipe(
             tap(res=>{
               var _visite = res.result.data
+              _visite.chantier_id = _visite.visitable_id;
               this.parseVisitesDate(_visite, 'EnToFr');
               this.visiteForm.patchValue(_visite);
               this.formPathValues(_visite);
@@ -91,6 +92,7 @@ export class VisiteChantierEditComponent implements OnInit, OnDestroy {
       'id': [{value:null, disabled:true}, Validators.required],
       'code': [{value:null, disabled:true}],
       'chantier_id': [null, Validators.required],
+      'visitable_id': [null, Validators.required],
 			'chantier': [''],
       'salarie_id': [{value:null, disabled:false}, Validators.required],
       'entreprise_id': [{value:null, disabled:false}, Validators.required],
@@ -102,8 +104,8 @@ export class VisiteChantierEditComponent implements OnInit, OnDestroy {
       'type_id': [null, Validators.required],
       'questions': this.visiteFB.array([]),
 		});
-		this.loaded = true;
-  	}
+    this.loaded = true;
+  }
   
   parseVisitesDate(item, direction){
     item.date_visite = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.date_visite) : this.dateEnToFrPipe.transform(item.date_visite);
@@ -156,6 +158,17 @@ export class VisiteChantierEditComponent implements OnInit, OnDestroy {
   setDynamicValidators() {
     const salarie_id = this.visiteForm.get('salarie_id');
     const entreprise_id = this.visiteForm.get('entreprise_id');
+    
+    this.visiteForm.get('chantier_id').valueChanges.subscribe(chantier_id => {
+      if(chantier_id != this.visiteForm.get('visitable_id').value){
+        this.visiteForm.get('visitable_id').setValue(chantier_id);
+      }
+    })
+    this.visiteForm.get('visitable_id').valueChanges.subscribe(visitable_id => {
+      if(visitable_id != this.visiteForm.get('chantier_id').value){ 
+        this.visiteForm.get('chantier_id').setValue(visitable_id);
+      }
+    })
 
     this.visiteForm.get('salarie_id').valueChanges.subscribe(salarie_id => {
         if (salarie_id != null) {
@@ -190,6 +203,7 @@ export class VisiteChantierEditComponent implements OnInit, OnDestroy {
     try {
       this.formloading = true;
       let form = {...this.visiteForm.getRawValue()};
+      
       this.formStatus.onFormSubmitting();
       this.parseVisitesDate(form, 'FrToEn');
 

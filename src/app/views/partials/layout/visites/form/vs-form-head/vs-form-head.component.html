@@ -110,23 +110,23 @@
                                 </mat-form-field>
 
                                 <!-- EPI -->
-                                <mat-form-field class="col-xl-3" *ngIf="origin == 'detail' && formHasValue('materiel_id')"
+                                <mat-form-field class="col-xl-3" *ngIf="origin == 'detail' && formHasValue('visitable_id')"
                                     matTooltip=""
-                                    [matTooltipDisabled]="formHasValue('materiel_id')">
+                                    [matTooltipDisabled]="formHasValue('visitable_id')">
                                     <mat-label>{{'OUTILLAGE.OUTIL.LABEL' | translate}}</mat-label>
-                                    <mat-select class="form-control" placeholder="" formControlName="materiel_id"
-                                        [required]="isFieldRequired('materiel_id')">
+                                    <mat-select class="form-control" placeholder="" formControlName="visitable_id"
+                                        [required]="isFieldRequired('visitable_id')">
                                         <mat-option *ngFor="let materiel of materiels" [value]="materiel.id">
                                             {{ materiel.libelle+' - '+materiel.categorie.libelle }}
                                         </mat-option>
                                     </mat-select>
                                     <button mat-button
-                                        *ngIf="formHasValue('materiel_id') && !visiteForm.get('materiel_id').disabled"
+                                        *ngIf="formHasValue('visitable_id') && !visiteForm.get('visitable_id').disabled"
                                         matSuffix mat-icon-button aria-label="Clear"
-                                        (click)="clearValue('materiel_id'); $event.stopPropagation()">
+                                        (click)="clearValue('visitable_id'); $event.stopPropagation()">
                                         <mat-icon>clear</mat-icon>
                                     </button>
-                                    <mat-error *ngIf="isControlHasError('materiel_id','required')">
+                                    <mat-error *ngIf="isControlHasError('visitable_id','required')">
                                         <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
                                     </mat-error>
                                 </mat-form-field>

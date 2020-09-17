@@ -67,7 +67,7 @@ export class VisiteOutillageAddComponent implements OnInit {
   createForm() {
 		this.visiteForm = this.visiteFB.group({
       'outillage_code': ['', Validators.required],
-      'materiel_id': [{value : null, disabled : true}, Validators.required],
+      'visitable_id': [{value : null, disabled : true}, Validators.required],
       'code' : [{value : null, disabled : false},Validators.required],
       'is_externe' : [{value : 0, disabled : false},Validators.required],
       'salarie_id': [{value:null, disabled:false}, Validators.required],
@@ -99,11 +99,11 @@ export class VisiteOutillageAddComponent implements OnInit {
   }
  setDynamicForm(){
     this.visiteForm.get('salarie_id').valueChanges.subscribe(salarie_id=>{
-      this.visiteForm.get('materiel_id').setValue(null);
+      this.visiteForm.get('visitable_id').setValue(null);
         if(salarie_id){
-        this.visiteForm.get('materiel_id').enable();
+        this.visiteForm.get('visitable_id').enable();
       }else{
-        this.visiteForm.get('materiel_id').disable();
+        this.visiteForm.get('visitable_id').disable();
       }
     })
     

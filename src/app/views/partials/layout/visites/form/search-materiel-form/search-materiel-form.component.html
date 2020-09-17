@@ -58,13 +58,13 @@
                                 <!-- MATERIEL -->
                                 <mat-form-field class="col-xl-3" [matTooltipDisabled]="materiels.length > 0" matTooltip="Aucun matériel associé à ce salarié">
                                     <mat-label>{{'VISITES.MATERIEL.LABEL' | translate}}</mat-label>
-                                    <mat-select class="form-control" placeholder="" formControlName="materiel_id"
-                                        [required]="isFieldRequired('materiel_id')">
+                                    <mat-select class="form-control" placeholder="" formControlName="visitable_id"
+                                        [required]="isFieldRequired('visitable_id')">
                                         <mat-option *ngFor="let materiel of materiels" [value]="materiel.id">
                                             {{ materiel.libelle+' - '+materiel.categorie.libelle }}
                                         </mat-option>
                                     </mat-select>
-                                    <mat-error *ngIf="isControlHasError('materiel_id','required')">
+                                    <mat-error *ngIf="isControlHasError('visitable_id','required')">
                                         <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
                                     </mat-error>
                                 </mat-form-field>

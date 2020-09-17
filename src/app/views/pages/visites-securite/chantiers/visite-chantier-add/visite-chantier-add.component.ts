@@ -67,6 +67,7 @@ export class VisiteChantierAddComponent implements OnInit {
     console.log(this.currentUser)
 		this.visiteForm = this.visiteFB.group({
       'chantier_id': ['', Validators.required],
+      'visitable_id': ['', Validators.required],
       'chantier': [''],
       'salarie_id': [{value:null, disabled:false}, Validators.required],
       'entreprise_id': [{value:null, disabled:false}, Validators.required],
@@ -98,6 +99,18 @@ export class VisiteChantierAddComponent implements OnInit {
   setDynamicValidators() {
     const salarie_id = this.visiteForm.get('salarie_id');
     const entreprise_id = this.visiteForm.get('entreprise_id');
+    const chantier_id = this.visiteForm.get('chantier_id');
+
+    this.visiteForm.get('chantier_id').valueChanges.subscribe(chantier_id => {
+      if(chantier_id != this.visiteForm.get('visitable_id').value){
+        this.visiteForm.get('visitable_id').setValue(chantier_id);
+      }
+    })
+    this.visiteForm.get('visitable_id').valueChanges.subscribe(visitable_id => {
+      if(visitable_id != this.visiteForm.get('chantier_id').value){ 
+        this.visiteForm.get('chantier_id').setValue(visitable_id);
+      }
+    })
 
     this.visiteForm.get('salarie_id').valueChanges.subscribe(salarie_id => {
         if (salarie_id != null) {

@@ -64,7 +64,7 @@ export class VisiteEpiAddComponent implements OnInit {
 
   createForm() {
     this.visiteForm = this.visiteFB.group({
-      'materiel_id': [{ value: null, disabled: true }, Validators.required],
+      'visitable_id': [{ value: null, disabled: true }, Validators.required],
       'is_externe' : [{value : 0, disabled : false},Validators.required],
       'salarie_id': [{ value: null, disabled: false }, Validators.required],
       'entreprise_id': [{ value: null, disabled: false }, Validators.required],
@@ -99,11 +99,11 @@ export class VisiteEpiAddComponent implements OnInit {
 
   setDynamicForm(){
     this.visiteForm.get('salarie_id').valueChanges.subscribe(salarie_id=>{
-        this.visiteForm.get('materiel_id').setValue(null);
+        this.visiteForm.get('visitable_id').setValue(null);
         if(salarie_id){
-        this.visiteForm.get('materiel_id').enable();
+        this.visiteForm.get('visitable_id').enable();
       }else{
-        this.visiteForm.get('materiel_id').disable();
+        this.visiteForm.get('visitable_id').disable();
       }
     })
     // this.visiteForm.get('is_externe').valueChanges.subscribe(is_externe=>{
@@ -231,7 +231,7 @@ export class VisiteEpiAddComponent implements OnInit {
   }
 
   cantDisplayQuestions() {
-    var test: boolean = this.visiteForm.get('materiel_id').invalid ||
+    var test: boolean = this.visiteForm.get('visitable_id').invalid ||
       this.visiteForm.get('type_id').invalid ||
       this.visiteForm.get('salarie_id').invalid ||
       this.visiteForm.get('entreprise_id').invalid;
