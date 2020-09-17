@@ -11,7 +11,8 @@ export class DashVisiteComponent implements OnInit {
 
   @ViewChild('evolVss', {static: true}) evolVss: ElementRef;
   @ViewChild('evolNc', {static: true}) evolNc: ElementRef;
-  @ViewChild('pieVssType', {static: true}) pieVssType: ElementRef;
+	@ViewChild('pieVssType', {static: true}) pieVssType: ElementRef;
+	@ViewChild('pieNcCat', {static: true}) pieNcCat: ElementRef;
 
   stats : any;
   filter: any = {
@@ -35,6 +36,8 @@ export class DashVisiteComponent implements OnInit {
 	};
 	echartsVssEvol;
 	echartsNcEvol;
+	echartsNcCat;
+
 	EvolVssOptions = {
 		color: ['#c83351', '#dea342', '#5ac2bd', '#89b398'],
 		tooltip: {
@@ -104,7 +107,37 @@ export class DashVisiteComponent implements OnInit {
 			}
 		]
 	};
-
+	ncByCatOptions = {
+		// title: {
+		// 	text: 'Non-conformités par catégorie',
+		// 	x: 'center'
+		// },
+		grid: {
+			left: '3%',
+			right: '4%',
+			bottom: '10%',
+			containLabel: true
+		},
+		tooltip: {
+			trigger: 'item',
+			formatter: '{b} : {c} ({d}%)'
+		},
+		legend: {
+			series: [],
+			bottom: true,
+			type: 'scroll',
+			width: '100%'			
+		},
+		series: [
+			{
+			type: 'pie',
+			radius: '60%',
+			center: ['50%', '50%'],
+			selectedMode: 'single',
+			data: []
+			}
+		]
+	};
 	echartsVssType;
 	byTypeOptions = {
 		grid: {
@@ -148,8 +181,10 @@ export class DashVisiteComponent implements OnInit {
   ngAfterViewInit(){
 		this.echartsVssEvol = echarts.init(this.evolVss.nativeElement)
 		this.echartsVssEvol.showLoading();
-		this.echartsNcEvol = echarts.init(this.evolNc.nativeElement)
-		this.echartsNcEvol.showLoading();
+		// this.echartsNcEvol = echarts.init(this.evolNc.nativeElement)
+		// this.echartsNcEvol.showLoading();
+		this.echartsNcCat = echarts.init(this.pieNcCat.nativeElement)
+		this.echartsNcCat.showLoading();
 		// this.echartsVssType = echarts.init(this.pieVssType.nativeElement)
 		// this.echartsVssType.showLoading();
 	}
@@ -176,15 +211,21 @@ export class DashVisiteComponent implements OnInit {
 				this.EvolVssOptions.legend.data.push(element.name);
 				});
 			}
+			// NC By Cat
+			this.ncByCatOptions.series[0]['data'] = this.stats.ncGroupedByCat;
+			this.echartsNcCat.setOption(this.ncByCatOptions);
+			this.echartsNcCat.hideLoading();	
+
+
 			this.EvolVssOptions.xAxis.data = this.stats.evolutionAxis;
 			this.echartsVssEvol.setOption(this.EvolVssOptions);
 			this.echartsVssEvol.hideLoading();
 
 			// Nc Evolution
-			this.EvolNcOptions.series[0]['data'] = this.stats.total_nc_evolution;
-			this.EvolNcOptions.xAxis.data = this.stats.evolutionAxis;
-			this.echartsNcEvol.setOption(this.EvolNcOptions);
-			this.echartsNcEvol.hideLoading();
+			// this.EvolNcOptions.series[0]['data'] = this.stats.total_nc_evolution;
+			// this.EvolNcOptions.xAxis.data = this.stats.evolutionAxis;
+			// this.echartsNcEvol.setOption(this.EvolNcOptions);
+			// this.echartsNcEvol.hideLoading();
 
           this.cdr.markForCheck();
 				}	
@@ -195,7 +236,7 @@ export class DashVisiteComponent implements OnInit {
 	}
 	
 	getHeaderStats(){
-		return ''
+		return '<span>Nombre de VS : </span>&nbsp;<b class="text-primary">'+this.stats.total_vs+'</b>'+'<span class="ml-4">Nombre de NC : </span>&nbsp;<b class="text-warning">'+this.stats.total_nc+'</b>';
 	}
 
 }
