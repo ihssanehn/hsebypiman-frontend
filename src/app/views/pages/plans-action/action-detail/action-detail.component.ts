@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef, TemplateRef, ContentChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
 import { BehaviorSubject, Observable, of, Subscription } from "rxjs";
@@ -24,14 +24,12 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
   	action: Action;
 	actionForm: FormGroup;
 	formloading: boolean = false;
-	// allRoles: Role[];
 	loaded = false;
-	editMode: boolean = false;
-	editEfficacite: boolean = false;
-	editPilote: boolean = false;
 	usersList: User[];
 	usersLoaded: boolean = false;
-	// Private properties
+	editMode2C: boolean = false;
+	attribMode: boolean = false;
+	cloreMode: boolean = false;
 	private subscriptions: Subscription[] = [];
 
 	/**
@@ -62,6 +60,7 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 
   	ngOnInit() {
 		this.createForm();
+		this.getUsers();
 	  	const routeSubscription = this.activatedRoute.params.subscribe(
 		  	async params => {
 			  	const id = params.id;
@@ -160,40 +159,13 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 		})
 	}
 
-	closeAction(actionId){
-		
+	cloreAction(){
+		this.setCloreMode(true);
 		Swal.fire({
 			icon: 'warning',
-			title: 'Voulez vous vraiment clore cette action ?',
-			showConfirmButton: true,
-			showCancelButton: true,
-			cancelButtonText: 'Annuler',
-			confirmButtonText: 'Clore l\'action'
-		}).then(async response => {
-			if (response.value) {
-				const res = await this.actionService.closeAction(actionId)
-				.toPromise()
-				.then(res=>{
-					var code = res.message.code as SweetAlertIcon;
-					var message = res.message.content != 'done' ? '<b class="text-'+code+'">'+res.message.content+'</b>' : null; 
-					Swal.fire({
-						icon: code,
-						title: 'l\'action a été clos avec succès',
-						showConfirmButton: false,
-						html: message,
-						timer: code == 'success' ? 1500 : 3000
-					}).then(() => {
-						this.getAction(actionId);
-					})
-				}).catch(e => {
-					Swal.fire({
-						icon: 'error',
-						title: 'Echec! une erreur est survenue',
-						showConfirmButton: false,
-						timer: 1500
-					});
-				});
-			}
+			title: 'Veuillez éditer les champs concernant la résolution et l\'efficacité',
+			showConfirmButton: false,
+			timer: 1500
 		});
 	}
 
@@ -234,90 +206,77 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 		});
 	}
 
-	attributeAction(actionId){
-		this.getUsers();
-		this.editPilote = true;
+	attributeAction(){
+		this.setAttribMode(true);
 		Swal.fire({
 			icon: 'warning',
-			title: 'Veuillez sélectionner un pilote pour cette action',
+			title: 'Veuillez indiquer le pilote et le délai pour cette action',
 			showConfirmButton: false,
 			timer: 1500
 		});
-	}
-
-	async setPilote(piloteId: any){
-		console.log(piloteId);
-		const res = await this.actionService.attributeAction(this.action.id, piloteId)
-			.toPromise()
-			.then(res=>{
-				var code = res.message.code as SweetAlertIcon;
-				var message = res.message.content != 'done' ? '<b class="text-'+code+'">'+res.message.content+'</b>' : null; 
-				Swal.fire({
-					icon: code,
-					title: 'l\'action a été attribuée avec succès',
-					showConfirmButton: false,
-					html: message,
-					timer: code == 'success' ? 1500 : 3000
-				}).then(() => {
-					this.editPilote = false;
-					this.getAction(this.action.id);
-				})
-			}).catch(e => {
-				Swal.fire({
-					icon: 'error',
-					title: 'Echec! une erreur est survenue',
-					showConfirmButton: false,
-					timer: 1500
-				});
-			});
-	}
-
-	editEffic(){
-		this.editEfficacite = true;
-	}
-
-	async setEfficacite(efficacite: any){
-		if(efficacite){
-			console.log(efficacite);
-			let form = {...this.actionForm.getRawValue()};
-			this.formloading = true;
-			this.parseActionDate(form, 'FrToEn');
-			form.id = this.action.id;
-			form.efficacite = efficacite;
-
-			const res = await this.actionService.update(form)
-			.toPromise()
-			.then((res) => {
-				
-				this.formloading = false;
-				var code = res.message.code as SweetAlertIcon;
-				var message = res.message.content != 'done' ? '<b class="text-'+code+'">'+res.message.content+'</b>' : null; 
-				Swal.fire({
-					icon: code,
-					title: 'Action mis à jour avec succès',
-					showConfirmButton: false,
-					html: message,
-					timer: code == 'success' ? 1500 : 3000
-				}).then(() => {
-					this.editEfficacite = false;
-					this.getAction(this.action.id);
-				})
-				this.cdr.markForCheck();
-			})
-			.catch(e => {
-				Swal.fire({
-					icon: 'error',
-					title: 'Echec! une erreur est survenue',
-					showConfirmButton: false,
-					timer: 1500
-				});
-			});
-			this.cdr.markForCheck();
-		}
 	}
 
 	parseActionDate(item, direction){
 		item.delai = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.delai) : this.dateEnToFrPipe.transform(item.delai);
 		item.date_realisation = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.date_realisation) : this.dateEnToFrPipe.transform(item.date_realisation);
 	}
+
+	async save(){
+		let form = {...this.actionForm.getRawValue()};
+		this.formloading = true;
+		this.parseActionDate(form, 'FrToEn');
+		form.id = this.action.id;
+
+		const res = await this.actionService.update(form)
+		.toPromise()
+		.then((res) => {
+			
+			this.formloading = false;
+			var code = res.message.code as SweetAlertIcon;
+			var message = res.message.content != 'done' ? '<b class="text-'+code+'">'+res.message.content+'</b>' : null; 
+			Swal.fire({
+				icon: code,
+				title: 'Action mis à jour avec succès',
+				showConfirmButton: false,
+				html: message,
+				timer: code == 'success' ? 1500 : 3000
+			}).then(() => {
+				this.close();
+				this.getAction(this.action.id);
+			})
+			this.cdr.markForCheck();
+		})
+		.catch(e => {
+			Swal.fire({
+				icon: 'error',
+				title: 'Echec! une erreur est survenue',
+				showConfirmButton: false,
+				timer: 1500
+			});
+		});
+		this.cdr.markForCheck();
+	}
+
+	close(){
+		this.setEditMode2C(false);
+		this.setAttribMode(false);
+		this.setCloreMode(false);
+	}
+
+	setEditMode1C(value: boolean){
+
+	}
+
+	setEditMode2C(value: boolean){
+		this.editMode2C = value;
+	}
+
+	setAttribMode(value: boolean){
+		this.attribMode = value;
+	}
+
+	setCloreMode(value: boolean){
+		this.cloreMode = value;
+	}
+	
 }
