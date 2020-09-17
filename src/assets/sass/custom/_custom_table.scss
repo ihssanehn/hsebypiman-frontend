@@ -30,9 +30,31 @@
             height: 35px !important;
         }
     }
+    &.table-xs{
+        .mat-cell, .mat-footer-cell{
+            font-size: 0.9em;
+        }
+        th.mat-header-cell{
+            padding: 0 2px;
+            vertical-align: middle;
+        }
+        td.mat-cell, td.mat-footer-cell{
+            padding: 0 2px;
+            vertical-align: middle;
+        }
+        .tr.mat-footer-row, tr.mat-row{
+            height: 25px !important;
+        }
 
-    
+        .th-order {
+            i.fa{
+                right: 6px;
+                bottom: 3.5px;
+            }
+        }
+    }
 }
+
 .mat-menu-panel.action-menu {
     min-height: auto;
     min-width: auto;

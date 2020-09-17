@@ -29,6 +29,7 @@ export class ChantiersListComponent implements OnInit, AfterViewInit, OnDestroy 
 		order_by: ['created_at'],
 		order_way: 'desc',
 		keyword: "",
+		paginate: true,
 	};
 	showFilters:Boolean = false;
 

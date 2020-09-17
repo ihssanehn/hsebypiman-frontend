@@ -1,6 +1,6 @@
 <div class="row d-flex dash-row-container" *ifAllModules="['CHANTIER', 'ANALYSE']">
-    <tf-dash-chantier class="col-4 mb-4 flex-fill" *ngIf="isActive(['CHANTIER'])"></tf-dash-chantier>
-    <tf-dash-analyse-risque class="col-4 mb-4 flex-fill" *ngIf="isActive(['ANALYSE'])"></tf-dash-analyse-risque>
+    <tf-dash-chantier class="col-8 mb-4 flex-fill" *ngIf="isActive(['CHANTIER'])"></tf-dash-chantier>
+    <!-- <tf-dash-analyse-risque class="col-4 mb-4 flex-fill" *ngIf="isActive(['ANALYSE'])"></tf-dash-analyse-risque> -->
     <tf-dash-action class="col-4 mb-4 flex-fill" *ngIf="isActive(['PLANACTION'])"></tf-dash-action>
     <tf-dash-visite class="col-8 mb-4 flex-fill" *ngIf="isActive(['VISITE'])"></tf-dash-visite>
     <tf-dash-entreprise class="col-4 mb-4 flex-fill" *ngIf="isActive(['ENTREPRISE'])"></tf-dash-entreprise>

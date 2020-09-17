@@ -2,22 +2,76 @@
 	<tf-portlet-header [title]="'Chantiers'" [stats]="stats ? getHeaderStats() : ''"></tf-portlet-header>
 	<tf-portlet-body [class]="'tf-portlet__body--fit'" style="height: 100%">
 		<div class="row row-no-padding">
-			<!-- <div class="col-xl-4" style="padding: 1.5em 1.5em 0 1.5em;">
-				<div class="row">
-					<div class="col-12">
-						<tf-widget-indicator [value]="stats.total_chantiers" [valueClass]="'text-success'" [desc]="'Total Chantiers'" *ngIf="stats; else loading"></tf-widget-indicator>
-					</div>
-					<div class="col-12">
-						<tf-widget-indicator [value]="stats.total_chantiers_in_progress" [valueClass]="'text-warning'" [desc]="'Total Chantiers en cours'"  *ngIf="stats; else loading"></tf-widget-indicator>
-					</div>
-					<div class="col-12">
-						<tf-widget-indicator [value]="stats.total_chantiers_finished" [valueClass]="'text-success'" [desc]="'Total Chantiers terminés'" *ngIf="stats; else loading"></tf-widget-indicator>
-					</div>
-				</div>
-			</div> -->
 			<div class="col-12" style="padding:1em">
-				<div class="dash-title">Nombre de chantiers par mois</div>
-				<div echarts class="demo-chart" #evolChantiers></div>
+				<div class="table-responsive">
+					<table mat-table [dataSource]="chantiers" class="table table-striped table-xs">
+	
+						<!-- number Column -->
+						<ng-container matColumnDef="number" >
+							<th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('numero')">
+								{{'CHANTIERS.NUMBER.SHORTTITLE' | translate}}
+								<i class="fa" [ngClass]="isOrderedBy('numero') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('numero') && {'opacity': 1}"></i>
+							</th>
+							<td mat-cell *matCellDef="let chantier" (click)="viewChantier(chantier.id)" class="pointer"> {{chantier.numero}} </td>
+						</ng-container>
+			
+						<!-- name Column -->
+						<ng-container matColumnDef="name">
+							<th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('nom')">
+								{{'CHANTIERS.NAME.TITLE' | translate}}
+								<i class="fa" [ngClass]="isOrderedBy('nom') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('nom') && {opacity:1}"></i>
+							</th>
+							<td mat-cell *matCellDef="let chantier" (click)="viewChantier(chantier.id)" class="pointer"> {{chantier.nom}} </td>
+						</ng-container>
+			
+						<!-- client Column -->
+						<ng-container matColumnDef="client">
+							<th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('client')">
+								{{'CHANTIERS.CLIENT.TITLE' | translate}}
+								<i class="fa" [ngClass]="isOrderedBy('client') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('client') && {opacity:1}"></i>
+							</th>
+							<td mat-cell *matCellDef="let chantier" (click)="viewChantier(chantier.id)" class="pointer"> {{chantier.client | truncate:35}} </td>
+						</ng-container>
+			
+						<!-- ars_count Column -->
+						<ng-container matColumnDef="ars_count">
+							<th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('ars_count')">
+								{{'CHANTIERS.AR_COUNT.TITLE' | translate}}
+								<i class="fa" [ngClass]="isOrderedBy('ars_count') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('ars_count') && {opacity:1}"></i>
+							</th>
+							<td mat-cell *matCellDef="let chantier" (click)="viewChantier(chantier.id)" class="text-center pointer"> {{chantier.montant > 20000 ? chantier.ars_count : '-'}} </td>
+						</ng-container>
+			
+						<!-- vss_count Column -->
+						<ng-container matColumnDef="vss_count">
+							<th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('vss_count')">
+								{{'CHANTIERS.VS_COUNT.TITLE' | translate}}
+								<i class="fa" [ngClass]="isOrderedBy('vss_count') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('vss_count') && {opacity:1}"></i>
+							</th>
+							<td mat-cell *matCellDef="let chantier" (click)="viewChantier(chantier.id)" class="text-center pointer"> {{chantier.vss_count}} </td>
+						</ng-container>
+
+						<!-- remontes_count Column -->
+						<ng-container matColumnDef="remontes_count">
+							<th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('remontes_count')">
+								{{'CHANTIERS.REMONTES_COUNT.TITLE' | translate}}
+								<i class="fa" [ngClass]="isOrderedBy('remontes_count') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('remontes_count') && {opacity:1}"></i>
+							</th>
+							<td mat-cell *matCellDef="let chantier" (click)="viewChantier(chantier.id)" class="text-center pointer"> {{chantier.remontes_count ? chantier.remontes_count:0}} </td>
+						</ng-container>
+			
+						<!-- <ng-container matColumnDef="action">
+							<th mat-header-cell *matHeaderCellDef></th>
+							<td mat-cell *matCellDef="let chantier" class="text-right">
+								<button mat-icon-button color="primary" matTooltip="Actions" [matMenuTriggerFor]="actionMenu" [matMenuTriggerData]="chantier" (click)="selectedChantier = chantier">
+									<mat-icon>more_vert</mat-icon>
+								</button>
+							</td>
+						</ng-container>	 -->
+						<tr mat-header-row *matHeaderRowDef="displayedChantierColumns; sticky: true"></tr>
+						<tr mat-row class="highlight-row" *matRowDef="let row; columns: displayedChantierColumns;"></tr>
+					</table>
+				</div>
 			</div>
 		</div>
 	</tf-portlet-body>

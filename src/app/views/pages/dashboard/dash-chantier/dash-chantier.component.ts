@@ -1,7 +1,8 @@
 import { Component, OnInit, ElementRef, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { WidgetIndicatorItemData } from '@app/views/partials/content/widgets/widget-indicator-list/widget-indicator-list.component';
 import * as echarts from 'echarts';
-import { DashboardService } from '@app/core/services';
+import { ChantierService, DashboardService } from '@app/core/services';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'tf-dash-chantier',
@@ -10,54 +11,24 @@ import { DashboardService } from '@app/core/services';
 })
 export class DashChantierComponent implements OnInit {
 
-  @ViewChild('evolChantiers', {static: true}) evolChantiers: ElementRef;
 
-  chantierIndicatorlist: WidgetIndicatorItemData[];
+  chantiers : any;
   stats : any;
   filter: any = {
-		keyword: ""
-	};
-  echartsChantierEvol;
-  EvolChantierOptions = {
-		tooltip: {
-			trigger: 'axis'
-		},
-		grid: {
-			// left: '5%',
-			// right: '8%',
-			left: '2%',
-			right: '2%',
-			bottom: '2%',
-			top: '6%',
-			containLabel: true
-		},
-		xAxis: {
-			type: 'category',
-			boundaryGap: false,
-			data: [],
-			axisLabel:
-				{
-						rotate:50,
-						interval: 1,
-						margin: 10
-				},
-		},
-		yAxis: {
-			type: 'value'
-		},
-		series: [
-			{
-				type: 'line',
-				color: '#004FC2',
-				smooth: false,
-				data: []
-			}
-		]
-	};
+    keyword: "",
+    order_by:'created_at',
+    order_way:'desc',
+  };
+  
+  displayedChantierColumns = [
+		'number', 'name', 'client', 'ars_count', 'vss_count', 'remontes_count'
+	];
 
   constructor(
+    private chantierService: ChantierService,
     private dashboardService: DashboardService,
-		protected cdr: ChangeDetectorRef
+    protected cdr: ChangeDetectorRef,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -65,51 +36,55 @@ export class DashChantierComponent implements OnInit {
   }
 
   ngAfterViewInit(){
-		this.echartsChantierEvol = echarts.init(this.evolChantiers.nativeElement)
-		this.echartsChantierEvol.showLoading();
 	}
 
   async getChantierDash() {
 		try {
-			this.dashboardService.getChantierStats(this.filter).subscribe(res=>{
-          this.stats = res.result.data;
-
-          // Chantier Indicators
-			this.chantierIndicatorlist = [{
-					title: 'Total Chantiers',
-					desc: '',
-					value: this.stats.total_chantiers,
-					valueClass: 'text-success'
-				}, {
-					title: 'Total Chantiers en cours',
-					desc: '',
-					value: this.stats.total_chantiers_in_progress,
-					valueClass: 'text-warning'
-				}, {
-					title: 'Total Chantiers terminés',
-					desc: '',
-					value: this.stats.total_chantiers_finished,
-					valueClass: 'text-success'
-				}
-			];
-			
-			// Chantiers Evolution
-			this.EvolChantierOptions.series[0]['data'] = this.stats.total_chantiers_evolution;
-			this.EvolChantierOptions.xAxis.data = this.stats.total_chantiers_evolutionAxis;
-			this.echartsChantierEvol.setOption(this.EvolChantierOptions);
-			this.echartsChantierEvol.hideLoading();
-
-          this.cdr.markForCheck();
-				}	
-			);
+      this.dashboardService.getChantierStats(this.filter).subscribe(res=>{
+        this.stats = res.result.data;
+        this.cdr.markForCheck;
+      })
+			this.chantierService.getAll(this.filter).subscribe(res=>{
+				this.chantiers = res.result.data;
+				this.cdr.markForCheck();
+			});
 		} catch (error) {
 			console.error(error);
     }
   }
 
 
+	// Au click, défini order by et order way. Si le order_by est déjà actif, toggle du order_way. Sinon, order_way asc par défaut
+	setOrder(by) {
+		if (this.isOrderedBy(by)) {
+			this.toggleOrderWay()
+		} else {
+			this.filter.order_by = by;
+			this.filter.order_way = 'asc';
+		}
+		this.getChantierDash();
+	}
+
+	toggleOrderWay() {
+		if (this.filter.order_way == 'asc') {
+			this.filter.order_way = 'desc';
+		} else {
+			this.filter.order_way = 'asc';
+		}
+	}
+	isOrderedBy(by) {
+		if (Array.isArray(by)) {
+			return JSON.stringify(by) == JSON.stringify(this.filter.order_by)
+		} else {
+			return by == this.filter.order_by
+		}
+  }
+  
+  viewChantier(chantier_id){
+    this.router.navigateByUrl('/chantiers/detail'+chantier_id);
+  }
+
 	getHeaderStats(){
 		return 'En cours :&nbsp;<b class="text-primary">'+ this.stats.total_chantiers_in_progress+' / '+this.stats.total_chantiers+'</b>'
 	}
-
 }

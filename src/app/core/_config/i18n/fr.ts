@@ -286,6 +286,10 @@ export const locale = {
 			},
 			FORM:{
 				CREATE:'Créer un nouveau chantier'
+			},
+			REMONTES_COUNT:{
+				TITLE:'Nombre de remontées',
+				SHORTTITLE:'Nb de remontées',
 			}
 		},
 		MATERIELS:{
