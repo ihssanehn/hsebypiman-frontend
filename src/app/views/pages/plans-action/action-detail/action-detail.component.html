@@ -29,63 +29,108 @@
   <tf-portlet-body class="tf-portlet__body--fit">
     <div class="row">
 
-      <div class="col-6">
-        <div class="card">
-          <span class="card-editor" *ngxPermissionsOnly="['ADMIN','ROOT']">
-            <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="setEditMode1C(true)" *ngIf="action?.status?.code != 'ABANDONNE'">
-              <mat-icon>edit</mat-icon>
-            </button>
-          </span>
+      <div class="col-6 d-flex">
+        <div class="row d-flex flex-column flex-nowrap flex-fill">
 
-          <h5><b>Origine de l'action</b></h5>
-          <div class="box box-info" style="flex: 1;">
-            <p style="text-align:right"><span class="label pull-left mr-2">{{'PLANACTIONS.ORIGINE.LABEL' | translate}}</span><span class="">{{action.type?.libelle}}</span></p>
-            <ng-container *ngIf="action.type?.code== 'VISITE_SECURITE'">
-              <div class="row">
-                <div class="col-12 my-2"><p><span class="label">Visite de sécurité concernée</span></p></div>
-                <ng-container *ngIf="action.actionable">
-                  <div class="col-12 vs-line" *ngIf="action.actionable.rvs; else visiteAction">
-                    <div class="col-5"><p class="blue">{{action.actionable?.rvs?.code}}</p></div>
-                    <div class="col-5"><p class="blue">{{action.actionable?.rvs?.date_visite | date:'dd/MM/yyyy'}}</p></div>
-                    <div class="col-2" ><p class="blue"><a (click)="goToVsChantierDetail(action.actionable?.rvs?.id)" alt="voir la visite de sécurité"><mat-icon color="primary">visibility</mat-icon></a></p></div>
-                  </div>
-                  <ng-template #visiteAction>
-                    <div class="col-12 vs-line">
-                      <div class="col-5"><p class="blue">{{action.actionable?.code}}</p></div>
-                      <div class="col-5"><p class="blue">{{action.actionable?.date_visite | date:'dd/MM/yyyy'}}</p></div>
-                      <div class="col-2" ><p class="blue"><a (click)="goToVsDetail(action.actionable?.id)" alt="voir la visite de sécurité"><mat-icon color="primary">visibility</mat-icon></a></p></div>
-                    </div>
+          <div class="col-12 flex-fill">
+            <div class="card">
+              <ng-container *ngxPermissionsOnly="['ADMIN','ROOT']">
+                <span class="card-editor" *ngIf="action?.status?.code != 'ABANDONNE'">
+                  <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="setOrigineMode(true)" *ngIf="!origineMode; else validationOrigine">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                  <ng-template #validationOrigine>
+                    <button mat-icon-button color="info" matTooltip="{{'ACTION.SAVE' | translate}}" (click)="save('origine')">
+                      <mat-icon>check</mat-icon>
+                    </button>
+                    <button mat-icon-button color="warn" matTooltip="{{'ACTION.CANCEL' | translate}}" (click)="setOrigineMode(false)">
+                      <mat-icon>close</mat-icon>
+                    </button>
                   </ng-template>
-                </ng-container>
-              </div>
-            </ng-container>
+                </span>
+              </ng-container>
+              <h5><b>Origine de l'action</b></h5>
+              <ng-container *ngIf="!origineMode; else origineEdit">
+                <div class="box box-info" style="flex: 1;">
+                  <p style="text-align:right"><span class="label pull-left mr-2">{{'PLANACTIONS.ORIGINE.LABEL' | translate}}</span><span class="">{{action.type?.libelle}}</span></p>
+                  <ng-container *ngIf="action.type?.code== 'VISITE_SECURITE'">
+                    <div class="row">
+                      <div class="col-12 my-2"><p><span class="label">Visite de sécurité concernée</span></p></div>
+                      <ng-container *ngIf="action.actionable">
+                        <div class="col-12 vs-line" *ngIf="action.actionable.rvs; else visiteAction">
+                          <div class="col-5"><p class="blue">{{action.actionable?.rvs?.code}}</p></div>
+                          <div class="col-5"><p class="blue">{{action.actionable?.rvs?.date_visite | date:'dd/MM/yyyy'}}</p></div>
+                          <div class="col-2" ><p class="blue"><a (click)="goToVsChantierDetail(action.actionable?.rvs?.id)" alt="voir la visite de sécurité"><mat-icon color="primary">visibility</mat-icon></a></p></div>
+                        </div>
+                        <ng-template #visiteAction>
+                          <div class="col-12 vs-line">
+                            <div class="col-5"><p class="blue">{{action.actionable?.code}}</p></div>
+                            <div class="col-5"><p class="blue">{{action.actionable?.date_visite | date:'dd/MM/yyyy'}}</p></div>
+                            <div class="col-2" ><p class="blue"><a (click)="goToVsDetail(action.actionable?.id)" alt="voir la visite de sécurité"><mat-icon color="primary">visibility</mat-icon></a></p></div>
+                          </div>
+                        </ng-template>
+                      </ng-container>
+                    </div>
+                  </ng-container>
+                </div>
+              </ng-container>
+              <ng-template #origineEdit>
+                <template [ngTemplateOutlet]="editOrigine" [ngTemplateOutletContext]="{formGroup: actionForm}"></template>
+              </ng-template>
+            </div>  
           </div>
 
-          <h5><b>Informations générales</b></h5>
-          <div class="box box-info" style="flex: 1;">
-            <h6><b>{{'PLANACTIONS.NAME.LABEL' | translate}}</b></h6>
-            <div class="row">
-              <div class="col-md-12 my-2"><p><span class="action-label" *ngIf="action.libelle; else noDataFound">{{action.libelle}}</span></p></div>
+          <div class="col-12 mt-4 flex-fill">
+            <div class="card">
+              <ng-container *ngxPermissionsOnly="['ADMIN','ROOT']">
+                <span class="card-editor" *ngIf="action?.status?.code != 'ABANDONNE'">
+                  <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="setInfosMode(true)"  *ngIf="!infosMode; else validationInfos">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                  <ng-template #validationInfos>
+                    <button mat-icon-button color="info" matTooltip="{{'ACTION.SAVE' | translate}}" (click)="save('infos')">
+                      <mat-icon>check</mat-icon>
+                    </button>
+                    <button mat-icon-button color="warn" matTooltip="{{'ACTION.CANCEL' | translate}}" (click)="setInfosMode(false)">
+                      <mat-icon>close</mat-icon>
+                    </button>
+                  </ng-template>
+                </span>
+              </ng-container>
+              <h5><b>Informations générales</b></h5>
+              <ng-container *ngIf="!infosMode; else infosEdit">
+                <div class="box box-info" style="flex: 1;">
+                  <h6><b>{{'PLANACTIONS.NAME.LABEL' | translate}}</b></h6>
+                  <div class="row">
+                    <div class="col-md-12 my-2"><p><span class="action-label" *ngIf="action.libelle; else noDataFound">{{action.libelle}}</span></p></div>
+                  </div>
+                </div>
+                <div class="box box-info" style="flex: 1;">
+                  <h6><b>{{'PLANACTIONS.OBJECTIF.LABEL' | translate}}</b></h6>
+                  <div class="row">
+                    <div class="col-md-12 my-2"><p><span class="action-label" *ngIf="action.objectif; else noDataFound">{{action.objectif}}</span></p></div>
+                  </div>
+                </div>
+                <div class="box box-info" style="flex: 1;">
+                  <h6><b>{{'PLANACTIONS.RISQUE.LABEL' | translate}}</b></h6>
+                  <div class="row">
+                    <div class="col-md-12 my-2"><p><span class="action-label" *ngIf="action.risque; else noDataFound">{{action.risque}}</span></p></div>
+                  </div>
+                </div>
+              </ng-container>
+              <ng-template #infosEdit>
+                <template [ngTemplateOutlet]="editName" [ngTemplateOutletContext]="{formGroup: actionForm}"></template>
+                <template [ngTemplateOutlet]="editObjectif" [ngTemplateOutletContext]="{formGroup: actionForm}"></template>
+                <template [ngTemplateOutlet]="editRisque" [ngTemplateOutletContext]="{formGroup: actionForm}"></template>
+              </ng-template>
+              <div class="tf-divider">
+                <span></span>
+              </div>
+              <div class="box text-center">
+                <small>{{'COMMON.CREATED_AT.TITLE' | translate}} : {{action.created_at | date:'dd/MM/yyyy'}}</small><br>
+                <small>{{'COMMON.UPDATED_AT.TITLE' | translate}} : {{action.updated_at | date:'dd/MM/yyyy'}}</small>
+              </div>
             </div>
-          </div>
-          <div class="box box-info" style="flex: 1;">
-            <h6><b>{{'PLANACTIONS.OBJECTIF.LABEL' | translate}}</b></h6>
-            <div class="row">
-              <div class="col-md-12 my-2"><p><span class="action-label" *ngIf="action.objectif; else noDataFound">{{action.objectif}}</span></p></div>
-            </div>
-          </div>
-          <div class="box box-info" style="flex: 1;">
-            <h6><b>{{'PLANACTIONS.RISQUE.LABEL' | translate}}</b></h6>
-            <div class="row">
-              <div class="col-md-12 my-2"><p><span class="action-label" *ngIf="action.risque; else noDataFound">{{action.risque}}</span></p></div>
-            </div>
-          </div>
-          <div class="tf-divider">
-            <span></span>
-          </div>
-          <div class="box text-center">
-            <small>{{'COMMON.CREATED_AT.TITLE' | translate}} : {{action.created_at | date:'dd/MM/yyyy'}}</small><br>
-            <small>{{'COMMON.UPDATED_AT.TITLE' | translate}} : {{action.updated_at | date:'dd/MM/yyyy'}}</small>
           </div>
         </div>
       </div>
@@ -181,7 +226,6 @@
         </div>
       </div>
     </div>
-
     <div class="row mt-4" >
       <div class="col-12">
         <ng-container *ngxPermissionsOnly="['action_canUpdate']">
@@ -207,6 +251,67 @@
 </tf-portlet>
 
 </form>
+
+<ng-template #editOrigine let-formGroup="formGroup">
+  <div class="box box-info" style="flex: 1;">
+    <mat-form-field class="col-md-4 col-sm-12">
+      <mat-label>{{'PLANACTIONS.ORIGINE.LABEL' | translate}}</mat-label>
+      <mat-select class="form-control" placeholder="" [formControl]="formGroup.get('type_id')">
+        <mat-option *ngFor="let type of typesList" [value]="type.id">
+          {{ type.libelle }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="col-md-4 col-sm-12" *ngIf="selectedTypeHasCode() == 'VISITE_SECURITE'">
+      <mat-label>{{'VISITES.TYPE.LABEL' | translate}}</mat-label>
+      <mat-select class="form-control" [formControl]="formGroup.get('visite_type')">
+        <mat-option *ngFor="let visiteType of visiteTypesList" [value]="visiteType">
+          {{ visiteType.value }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="col-md-4 col-sm-12" *ngIf="selectedTypeHasCode() == 'VISITE_SECURITE' && visitesList">
+      <mat-label>{{'VISITES.CODE.LABEL' | translate}}</mat-label>
+      <input class="form-control" matInput type="text" name="actionable" [formControl]="formGroup.get('actionable')" placeholder="Saisir ici" [matAutocomplete]="auto" />
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+        <mat-option *ngFor="let visite of filteredVisites | async" [value]="visite" (click)="initFilteredVisites()" style="height: 2em;line-height: 2em;">
+          {{visite.code}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+</ng-template>
+
+<ng-template #editName let-formGroup="formGroup">
+  <div class="box box-info" style="flex: 1;">
+    <mat-form-field class="col-xl-12">
+      <mat-label>{{'PLANACTIONS.NAME.LABEL' | translate}}</mat-label>
+      <textarea class="form-control" matInput name="libelle" [formControl]="formGroup.get('libelle')" [cdkTextareaAutosize]="true" [cdkAutosizeMinRows]="2"  [cdkAutosizeMaxRows]="20" placeholder="Saisir ici" rows="2"></textarea>
+    </mat-form-field>
+  </div>
+</ng-template>
+
+<ng-template #editObjectif let-formGroup="formGroup">
+  <div class="box box-info" style="flex: 1;">
+    <mat-form-field class="col-xl-12">
+      <mat-label>{{'PLANACTIONS.OBJECTIF.LABEL' | translate}}</mat-label>
+      <textarea class="form-control" matInput name="objectif" [formControl]="formGroup.get('objectif')" [cdkTextareaAutosize]="true" [cdkAutosizeMinRows]="2"  [cdkAutosizeMaxRows]="20" placeholder="Saisir ici" rows="2"></textarea>
+    </mat-form-field>
+  </div>
+</ng-template>
+
+<ng-template #editRisque let-formGroup="formGroup">
+  <div class="box box-info" style="flex: 1;">
+    <mat-form-field class="col-xl-12">
+      <mat-label>{{'PLANACTIONS.RISQUE.LABEL' | translate}}</mat-label>
+      <textarea class="form-control" matInput name="risque" [formControl]="formGroup.get('risque')" [cdkTextareaAutosize]="true" [cdkAutosizeMinRows]="2"  [cdkAutosizeMaxRows]="20" placeholder="Saisir ici" rows="2"></textarea>
+    </mat-form-field>
+  </div>
+</ng-template>
+
+
 <ng-template #selectPilote let-formGroup="formGroup">
   <mat-form-field class="col-xl-12">
     <mat-label>{{'PLANACTIONS.PILOTE.LABEL' | translate}}</mat-label>

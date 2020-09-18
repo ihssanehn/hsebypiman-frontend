@@ -3,9 +3,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
 import { BehaviorSubject, Observable, of, Subscription } from "rxjs";
 
-import { ActionService, TypeService, PersonnelService } from '@app/core/services';
+import { ActionService, TypeService, PersonnelService, VisiteVehiculeService, VisiteOutillageService, VisiteEpiService, VisiteChantierService } from '@app/core/services';
 import { Paginate } from '@app/core/_base/layout/models/paginate.model';
-import { Action } from '@app/core/models';
+import { Type, Action, Visite } from '@app/core/models';
 import { NgxPermissionsService } from 'ngx-permissions';
 
 import { DomSanitizer } from '@angular/platform-browser';
@@ -13,6 +13,7 @@ import { MatIconRegistry } from '@angular/material';
 import Swal, { SweetAlertIcon } from 'sweetalert2';
 import { User } from '@app/core/auth';
 import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
+import { startWith, map } from 'rxjs/operators';
 
 @Component({
   selector: 'tf-action-detail',
@@ -21,18 +22,36 @@ import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
 })
 export class ActionDetailComponent implements OnInit, OnDestroy {
   
-  	action: Action;
+	action: Action;
+	actionLoaded: boolean = false;
 	actionForm: FormGroup;
 	formloading: boolean = false;
 	loaded = false;
 	usersList: User[];
 	usersLoaded: boolean = false;
-	editMode1C: boolean = false;
+	origineMode: boolean = false;
+	infosMode: boolean = false;
 	attribMode: boolean = false;
-
 	resoMode: boolean = false;
 	efficMode: boolean = false;
+	typesList: Type[];
+	typesLoaded: boolean = false;
+	typeSelected: Type;
 	private subscriptions: Subscription[] = [];
+
+	visiteTypesList = [
+		{ key: 'VsChantier',  value: 'Visite Chantier'},
+		{ key: 'VsEpi',       value: 'Visite EPI'},
+		{ key: 'VsOutillage', value: 'Visite Outillage'},
+		{ key: 'VsVehicule',  value: 'Visite Véhicule'}
+	];
+	visiteTypesSelected: String;
+	visiteTypesLoaded: boolean = false;
+
+	visitesList : Array<Visite>;
+	visitesLoaded: boolean = false;
+	filteredVisites: Observable<Array<Visite>>;
+
 
 	/**
 	 * Component constructor
@@ -47,8 +66,13 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 		private router: Router,
 		private actionFB: FormBuilder,
 		// private notificationService: NzNotificationService,
+		private typeService: TypeService,
 		private actionService: ActionService,
 		private userService: PersonnelService,
+		private visiteChantierService:VisiteChantierService,
+		private visiteEpiService:VisiteEpiService,
+		private visiteOutillageService:VisiteOutillageService,
+		private visiteVehiculeService:VisiteVehiculeService,
 		private cdr: ChangeDetectorRef,
 		private permissionsService : NgxPermissionsService,
 		private dateFrToEnPipe: DateFrToEnPipe,
@@ -62,17 +86,32 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 
   	ngOnInit() {
 		this.createForm();
+		this.getTypes();
 		this.getUsers();
 	  	const routeSubscription = this.activatedRoute.params.subscribe(
 		  	async params => {
 			  	const id = params.id;
 			  	if (id) {
 					this.getAction(id);
+					if(this.actionLoaded){
+						this.typeSelected = this.actionForm.get('type').value;
+						var key = this.actionForm.get('actionable_type').value;
+						if(key){
+						  var visiteType = this.visiteTypesList.find(item => item.key === key);
+						  if(visiteType){
+							this.actionForm.get('visite_type').setValue(visiteType);
+							this.getVisites(visiteType.key);
+						  }
+						}
+					}
 				} else {
 					this.router.navigateByUrl('/plan-actions/list');
 				}
 			}
 		);
+		this.setDynamicActionType();
+		this.setDynamicVisiteType();
+		this.initFilteredVisites();
 	}
 
 	createForm() {
@@ -95,12 +134,23 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 		});
 	}
 
+	async getTypes(){
+		this.typesLoaded = false;
+		var res = await this.typeService.getAllFromModel('Action').toPromise();
+		if(res){
+		  this.typesList = res.result.data;
+		  this.typesLoaded = true;
+		}
+		this.cdr.markForCheck();
+	}
+
   	async getAction(actionId){
 		try {
 			var res = await this.actionService.get(actionId).toPromise();
 			this.action = res.result.data;
 			this.parseActionDate(res.result.data, 'EnToFr');
 			this.actionForm.patchValue(res.result.data);
+			this.actionLoaded = true;
 			this.cdr.markForCheck();
 		} catch (error) {
 			console.error(error);
@@ -113,6 +163,110 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 		if(res){
 		  this.usersList = res.result.data;
 		  this.usersLoaded = true;
+		}
+		this.cdr.markForCheck();
+	}
+
+	selectedTypeHasCode(){
+		if(!this.typesLoaded || !this.typeSelected){
+		  return false;
+		}
+		return this.typeSelected.code
+	}
+
+	setDynamicActionType(){
+		this.actionForm.get('type_id').valueChanges.subscribe(type_id => {
+		  this.actionForm.get('visite_type').setValue(null);
+		  if (type_id != null){
+			var typeSelected = this.typesList.filter(x=> x.id == type_id)[0];
+			if(typeSelected.code == 'VISITE_SECURITE'){
+			  this.actionForm.get('visite_type').setValidators(Validators.required);
+			}else{
+			  this.actionForm.get('visite_type').setValidators(null);
+			}
+			this.typeSelected = typeSelected;
+		  }else{
+			this.typeSelected = null;
+			this.actionForm.get('visite_type').setValidators(null);
+		  }
+	
+		  this.actionForm.get('visite_type').updateValueAndValidity();
+		})
+	}
+
+	setDynamicVisiteType(){
+		this.actionForm.get('visite_type').valueChanges.subscribe(visite_type => {
+		  this.actionForm.get('actionable').setValue(null);
+		  if (visite_type != null){
+			this.actionForm.get('actionable').setValidators(Validators.required);
+			var visiteTypesSelected = visite_type;
+	
+			this.getVisites(visiteTypesSelected.key);
+	
+			this.visiteTypesSelected = visiteTypesSelected;
+		  }else{
+			this.visiteTypesSelected = null;
+			this.actionForm.get('actionable').setValidators(null);
+		  }
+	
+		  this.actionForm.get('actionable').updateValueAndValidity();
+		})
+	}
+
+	getVisites(code){
+		this.visitesList = null;
+		switch(code){
+		  case 'VsChantier':
+			this.getVisitesChantier();
+			break;
+		  case 'VsEpi':
+			this.getVisitesEpi();
+			break;
+		  case 'VsOutillage':
+			this.getVisitesOutillage();
+			break;
+		  case 'VsVehicule':
+			this.getVisitesVehicule();
+			break;
+		}
+	}
+
+	async getVisitesChantier(){
+		this.visitesLoaded = false;
+		var res = await this.visiteChantierService.getList().toPromise();
+		if(res){
+		  this.visitesList = res.result.data;
+		  this.visitesLoaded = true;
+		}
+		this.cdr.markForCheck();
+	}
+	
+	async getVisitesEpi(){
+		this.visitesLoaded = false;
+		var res = await this.visiteEpiService.getList().toPromise();
+		if(res){
+		  this.visitesList = res.result.data;
+		  this.visitesLoaded = true;
+		}
+		this.cdr.markForCheck();
+	}
+	
+	async getVisitesOutillage(){
+		this.visitesLoaded = false;
+		var res = await this.visiteOutillageService.getList().toPromise();
+		if(res){
+		  this.visitesList = res.result.data;
+		  this.visitesLoaded = true;
+		}
+		this.cdr.markForCheck();
+	}
+	
+	async getVisitesVehicule(){
+		this.visitesLoaded = false;
+		var res = await this.visiteVehiculeService.getList().toPromise();
+		if(res){
+		  this.visitesList = res.result.data;
+		  this.visitesLoaded = true;
 		}
 		this.cdr.markForCheck();
 	}
@@ -228,7 +382,10 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 		this.formloading = true;
 		this.parseActionDate(form, 'FrToEn');
 		form.id = this.action.id;
-
+		if(from == 'origine'){
+			form.actionable_id = form.actionable ? form.actionable.id : null;
+    		form.actionable_type = form.visite_type ? form.visite_type.key : form.actionable_type; 
+		}
 		const res = await this.actionService.update(form)
 		.toPromise()
 		.then((res) => {
@@ -264,11 +421,17 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 			case 'attribution': this.setAttribMode(false);break;
 			case 'resolution': this.setResoMode(false);break;
 			case 'efficacite': this.setEfficMode(false);break;
+			case 'origine': this.setOrigineMode(false);break;
+			case 'infos': this.setInfosMode(false);break;
 		}
 	}
 
-	setEditMode1C(value: boolean){
-		this.editMode1C = value;
+	setOrigineMode(value: boolean){
+		this.origineMode = value;
+	}
+
+	setInfosMode(value: boolean){
+		this.infosMode = value;
 	}
 
 	setAttribMode(value: boolean){
@@ -288,5 +451,26 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 		this.efficMode = value;
 	}
 
+	displayFn(visite: Visite): String {
+		return visite ? visite.code : '';
+	}
+
+	async initFilteredVisites(){
+		this.filteredVisites = this.actionForm.get('actionable').valueChanges.pipe(
+		  startWith(''),
+		  map(value => this._filter(value))
+		);
+	}
+
+	private _filter(value: string): Array<Visite> {
+		const filterValue = value;
+		return this.visitesList 
+		  ? this.visitesList.filter(visite => this._normalizeValue(visite.code).includes(filterValue)) 
+		  : null;
+	}
+
+	private _normalizeValue(value: String): string {
+    	return value.toLowerCase().replace(/\s/g, '');
+  	}
 	
 }
