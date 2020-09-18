@@ -5,6 +5,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { PeriodService } from '@app/core/services';
 import Swal from 'sweetalert2';
 import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
+import { FollowUpPeriod } from '@app/core/models';
 
 
 @Component({
@@ -19,7 +20,11 @@ export class SuiviHsePeriodsAddComponent implements OnInit {
   formloading: boolean = false;
   private subscriptions: Subscription[] = [];
   minStartDatePeriod: Date;
+  periodList: FollowUpPeriod[];
 
+  filteredDates = (d: Date): boolean => {
+    return this.checkDateValidation(d);
+  }
 
   constructor(
     public periodService: PeriodService,
@@ -32,7 +37,24 @@ export class SuiviHsePeriodsAddComponent implements OnInit {
 
   ngOnInit() {
     this.createForm();
+    this.getPeriods();
     this.getSelectedPeriod();
+  }
+
+  async getPeriods(){
+    var res = await this.periodService.getList().toPromise();
+    this.periodList = res.result.data;
+    this.cdr.markForCheck();
+  }
+
+  checkDateValidation(date){
+    return this.periodList
+      .map(period => { 
+        var start = new Date(period.start_date); start.setDate( start.getDate() - 1 );
+        var end = new Date(period.end_date);
+        return !(date >= start && date <= end)
+      })
+      .reduce((prev, curr) => prev && curr);
   }
 
   async getSelectedPeriod(){
