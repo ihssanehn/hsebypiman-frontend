@@ -20,7 +20,7 @@
 						<div class="tf-wizard-v4__form">
 							<div class="row form-row">
 								<mat-form-field class="col-12" floatLabel="always" appearance="none">
-									<mat-slide-toggle [checked]="userForm.get('is_virtuel').value == 1" (change)="onVirtuelCheckChange($event)"><span>{{'USERS.VIRTUEL.TITLE' | translate}}</span></mat-slide-toggle>
+									<mat-slide-toggle [checked]="userForm.get('is_virtual').value == 1" (change)="onVirtuelCheckChange($event)"><span>{{'USERS.VIRTUEL.TITLE' | translate}}</span></mat-slide-toggle>
 									<textarea matInput hidden></textarea>
 								</mat-form-field>
 								<mat-form-field class="col-xl-3">
@@ -108,7 +108,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-12" *ngIf="userForm.get('is_virtuel').value == 0">
+		<div class="col-12" *ngIf="userForm.get('is_virtual').value == 0">
 			<div class="tf-heading tf-heading--md">| 2 Informations Salarié</div>
 			<div class="tf-card-form">
 				<div class="row form-row">

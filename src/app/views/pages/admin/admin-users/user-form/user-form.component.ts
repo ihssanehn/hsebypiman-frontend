@@ -96,11 +96,11 @@ export class UserFormComponent implements OnInit {
     }
   }
   onVirtuelCheckChange(event){
-    const is_virtuel = this.userForm.get('is_virtuel') as FormControl;
+    const is_virtual = this.userForm.get('is_virtual') as FormControl;
     if(event.checked){
-      is_virtuel.setValue(1);
+      is_virtual.setValue(1);
     }else{
-      is_virtuel.setValue(0);
+      is_virtual.setValue(0);
     }
   }
 

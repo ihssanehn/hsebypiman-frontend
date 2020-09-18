@@ -10,7 +10,6 @@ import { FormControl } from '@angular/forms';
 export class SalariePortletComponent implements OnInit {
 
   @Input() metricsTree: Type;
-  @Input() year: FormControl;
 
   constructor() { }
 

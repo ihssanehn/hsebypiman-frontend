@@ -32,8 +32,8 @@ export class PersonnelService extends HttpService{
 		return this.http.get<JsonResponse<Personnel>>(this.baseUrl + `/${personnelId}`)
   }
 
-  getPersonnelByYear(personnelId: number, year){
-		return this.http.get<JsonResponse<Personnel>>(this.baseUrl + `/${personnelId}/year/${year}`)
+  getPersonnelByPeriod(personnelId: number, periodId){
+		return this.http.get<JsonResponse<Personnel>>(this.baseUrl + `/${personnelId}/period/${periodId}`)
   }
 
   setMetrics(personnelId, params){

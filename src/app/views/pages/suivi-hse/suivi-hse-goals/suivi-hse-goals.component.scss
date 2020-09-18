@@ -6,7 +6,7 @@
         .tf-portlet{
             background-color: #f7f9fc;
             .tf-portlet-header{
-                padding: 25px 0 0 20px;
+                padding: 25px 20px 0 20px;
                 .title{
                     a{
                         color: #525252;
@@ -24,9 +24,16 @@
                         padding-bottom: 0.2em;
                         border-bottom: 2px solid #55cec7 ;
                     }
+                    .h-center{
+                        justify-content: center;
+                        align-items: center;
+                    }
                 }
-                .form-control[readonly] {
+                .date-range-selector .mat-form-field-flex{
                     background-color: #f7f9fc;
+                }
+                .mat-form-field-infix{
+                    width: 200px!important;
                 }
             }
             .tf-portlet__body{

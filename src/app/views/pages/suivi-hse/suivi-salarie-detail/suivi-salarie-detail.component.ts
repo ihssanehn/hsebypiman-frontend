@@ -2,18 +2,17 @@ import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormBuilder, ControlContainer, FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PersonnelService } from '@app/core/services';
+import { PersonnelService, PeriodService } from '@app/core/services';
 import { NgxPermissionsService } from 'ngx-permissions';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import {MatDatepicker} from '@angular/material/datepicker';
 import * as _moment from 'moment';
 import { default as _rollupMoment } from 'moment';
-import { Personnel } from '@app/core/models';
+import { Personnel, FollowUpPeriod } from '@app/core/models';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SuiviSalarieEditComponent } from '../suivi-salarie-edit/suivi-salarie-edit.component';
-
-const moment = _rollupMoment || _moment;
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'tf-suivi-salarie-detail',
@@ -23,6 +22,9 @@ const moment = _rollupMoment || _moment;
 export class SuiviSalarieDetailComponent implements OnInit, OnDestroy {
 
   salarie: Personnel;
+  period: FollowUpPeriod;
+  selectedPeriodId: Number;
+  periodList: FollowUpPeriod[];
 	salarieForm: FormGroup;
 	// allRoles: Role[];
 	loaded = false;
@@ -30,13 +32,12 @@ export class SuiviSalarieDetailComponent implements OnInit, OnDestroy {
 	// Private properties
   private subscriptions: Subscription[] = [];
 
-  year = new FormControl(moment());
-
   constructor(
     private activatedRoute: ActivatedRoute,
 		private router: Router,
 		private salarieFB: FormBuilder,
     private personnelService: PersonnelService,
+    private periodService: PeriodService,
     private modalService: NgbModal,
 		private cdr: ChangeDetectorRef,
 		private permissionsService : NgxPermissionsService,
@@ -45,11 +46,24 @@ export class SuiviSalarieDetailComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+    this.getPeriods();
     const routeSubscription = this.activatedRoute.params.subscribe(
       async params => {
         const id = params.id;
         if (id) {
-          this.getSalarie(id);
+          await this.periodService.getLatest().toPromise()
+          .then((res:any) => {
+            if(res){
+              this.period = res.result.data;
+              if(this.period){
+                this.selectedPeriodId = this.period.id;
+              }else{
+                this.selectedPeriodId = 0;
+              }
+              this.getSalarie(id);
+            }
+          });
+         
         } else {
           this.router.navigateByUrl('/suivi-hse/list');
         }
@@ -64,9 +78,9 @@ export class SuiviSalarieDetailComponent implements OnInit, OnDestroy {
   async getSalarie(salarieId){
 		try {
       var res = await this.personnelService
-      .getPersonnelByYear(
+      .getPersonnelByPeriod(
         salarieId,
-        this.year.value.year()
+        this.selectedPeriodId
       ).toPromise();
 			this.salarie = res.result.data;
 			this.cdr.markForCheck();
@@ -74,29 +88,43 @@ export class SuiviSalarieDetailComponent implements OnInit, OnDestroy {
 			console.error(error);
 		}
   }
-  
-  closeDatePicker(chosenYear: Date, datepicker: MatDatepicker<any>) {
-    datepicker.close();
-    this.year.setValue(moment(chosenYear));
-    this.getSalarie(this.salarie.id);
+
+  async getPeriods(){
+    var res = await this.periodService.getList().toPromise();
+    this.periodList = res.result.data;
+    this.cdr.markForCheck();
   }
 
   editMetrics(){
-    const modalRef = this.modalService.open(SuiviSalarieEditComponent, {size: 'xl',scrollable: true,centered : true});
-    modalRef.componentInstance.salarie = this.salarie;
-    modalRef.componentInstance.year = this.year.value.year();
-    modalRef.result.then((result) => {
-      if (result) {
-        this.getSalarie(this.salarie.id);
-      }
-    }, (reason) => {
-      
-    });
+    if(this.selectedPeriodId){
+      const modalRef = this.modalService.open(SuiviSalarieEditComponent, {size: 'xl',scrollable: true,centered : true});
+      modalRef.componentInstance.salarie = this.salarie;
+      modalRef.componentInstance.periodId = this.selectedPeriodId;
+      modalRef.result.then((result) => {
+        if (result) {
+          this.getSalarie(this.salarie.id);
+        }
+      }, (reason) => {
+        
+      });
+    }else{
+      Swal.fire({
+        title: 'Aucune période n\'a été sélectionnée ! Veuillez en ajouter une à partir de l\'onglet Objectifs',
+        showConfirmButton: false,
+        timer: 2000
+      })
+    }
   }
 
   goBackWithId() {
 		const url = `/suivi-hse/list`;
 		this.router.navigateByUrl(url, { relativeTo: this.activatedRoute });
+  }
+
+  changePeriod(selectedPeriod)
+  {
+    this.selectedPeriodId = selectedPeriod;
+    this.getSalarie(this.salarie.id);
   }
 
 }

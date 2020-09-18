@@ -29,13 +29,13 @@
 					</mat-form-field>
 					<mat-form-field class="col-xl-3 col-md-6 col-sm-6 col-xs-12 mat-filter-no-head">
 						<mat-label>{{'USERS.VIRTUELS.TITLE' | translate}}</mat-label>
-						<mat-select class="form-control" formControlName="is_virtuel" name="is_virtuel">
+						<mat-select class="form-control" formControlName="is_virtual" name="is_virtual">
 							<mat-option>Tous</mat-option>
 							<mat-option *ngFor="let virtuel of virtuelOptions" [value]="virtuel.code">
 								{{virtuel.libelle}}
 							</mat-option>
 						</mat-select>
-						<button mat-button *ngIf="formHasValue('is_virtuel')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('is_virtuel'); $event.stopPropagation()">
+						<button mat-button *ngIf="formHasValue('is_virtual')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('is_virtual'); $event.stopPropagation()">
 							<mat-icon>clear</mat-icon>
 						</button>
 					</mat-form-field>

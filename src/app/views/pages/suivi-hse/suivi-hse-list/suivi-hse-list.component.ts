@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef, AfterViewInit, OnDestroy } from '@angular/core';
 import { Paginate } from '@app/core/_base/layout/models/paginate.model';
 import { Router } from '@angular/router';
-import { PersonnelService } from '@app/core/services';
+import { PersonnelService, PeriodService } from '@app/core/services';
 import Swal from 'sweetalert2';
 import { Personnel } from '@app/core/models';
 
@@ -38,6 +38,7 @@ export class SuiviHseListComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(
     private router: Router,
 		protected salarieService: PersonnelService,
+		protected periodService: PeriodService,
 		protected cdr: ChangeDetectorRef,
   ) { }
 

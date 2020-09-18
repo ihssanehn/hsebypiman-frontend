@@ -14,7 +14,6 @@ import { FormControl } from '@angular/forms';
 export class SalariePortletRowComponent implements OnInit {
 
   @Input() metric: Metric;
-  @Input() year: FormControl;
 
   personnelId: number;
 

@@ -1,14 +1,14 @@
 import { Component, OnInit, ChangeDetectorRef, Optional, Inject } from '@angular/core';
-import { CatMetricService, GoalService } from '@app/core/services';
-import { CatMetric } from '@app/core/models';
-import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
+import { CatMetricService, GoalService, PeriodService } from '@app/core/services';
+import { CatMetric, FollowUpPeriod } from '@app/core/models';
+import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import Swal from 'sweetalert2';
 import {MatDatepicker} from '@angular/material/datepicker';
 import * as _moment from 'moment';
 import { default as _rollupMoment } from 'moment';
-
-const moment = _rollupMoment || _moment;
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { SuiviHsePeriodsAddComponent } from './suivi-hse-periods-add/suivi-hse-periods-add.component';
 
 @Component({
   selector: 'tf-suivi-hse-goals',
@@ -18,42 +18,64 @@ const moment = _rollupMoment || _moment;
 export class SuiviHseGoalsComponent implements OnInit {
 
   catMetricsList: CatMetric[];
+  period: FollowUpPeriod;
+  selectedPeriodId: Number;
+  periodList: FollowUpPeriod[];
   goalForm: FormGroup;
   formloading: boolean = false;
   loaded = false;
-  year = new FormControl(moment());
+
 
   constructor(
     private catMetricService: CatMetricService,
     private goalService: GoalService,
+    private periodService: PeriodService,
+    private modalService: NgbModal,
     private fb: FormBuilder,
     private location: Location,
     private cdr: ChangeDetectorRef,
   ) { }
 
   ngOnInit() {
-    this.refreshForm();
-    if(this.loaded) this.getCatMetrics();
+    this.getPeriods();
+    this.getLatestPeriod();
   }
 
   refreshForm() {
     this.goalForm = this.fb.group({
-      period: [moment()],
+      period_id: [this.selectedPeriodId, Validators.required],
       items: this.fb.array([])
     })
 
-		this.loaded = true;
+    this.loaded = true;
+  }
+
+  async getLatestPeriod(){
+    var res = await this.periodService.getLatest().toPromise();
+    this.period = res.result.data;
+    if(this.period){
+      this.selectedPeriodId = this.period.id;
+    }
+    this.refreshForm();
+    this.getCatMetrics();
+    this.cdr.markForCheck();
   }
 
   async getCatMetrics(){
     var res = await this.catMetricService
       .getAll({
         has_goal:true,
-        period:this.year.value.year()
+        period_id:this.selectedPeriodId
       }).toPromise();
     this.catMetricsList = res.result.data;
     this.refreshForm();
     this.patchForm(res.result.data);
+    this.cdr.markForCheck();
+  }
+
+  async getPeriods(){
+    var res = await this.periodService.getList().toPromise();
+    this.periodList = res.result.data;
     this.cdr.markForCheck();
   }
 
@@ -108,7 +130,7 @@ export class SuiviHseGoalsComponent implements OnInit {
   onSubmit(){
     try {
       let form = {...this.goalForm.getRawValue()};
-      form.period = this.year.value.year();
+      form.period_id = this.selectedPeriodId;
       this.goalService.create(form)
         .toPromise()
         .then((visite) => {
@@ -145,10 +167,25 @@ export class SuiviHseGoalsComponent implements OnInit {
     this.location.back();
   }
 
-  closeDatePicker(chosenYear: Date, datepicker: MatDatepicker<any>) {
-    datepicker.close();
-    this.year.setValue(moment(chosenYear));
+  changePeriod(selectedPeriod)
+  {
+    this.selectedPeriodId = selectedPeriod;
     this.getCatMetrics();
+  }
+
+  openNewPeriodModal()
+  {
+    const modalRef = this.modalService.open(SuiviHsePeriodsAddComponent, {size: 'lg',scrollable: true,centered : true});
+    modalRef.result.then((result) => {
+      if (result) {
+        console.log(result);
+        this.selectedPeriodId = result.id;
+        this.getPeriods();
+        this.getCatMetrics();
+      }
+    }, (reason) => {
+      
+    });
   }
 
 }

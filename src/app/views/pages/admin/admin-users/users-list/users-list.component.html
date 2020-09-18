@@ -49,7 +49,7 @@
 							{{'COMMON.FONCTION.TITLE' | translate}}
 							<i class="fa" [ngClass]="isOrderedBy('fonction') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('fonction') && {opacity:1}"></i>
 						</th>
-						<td mat-cell *matCellDef="let user" (click)="viewUser(user.id)" class="pointer"> <span *ngIf="user.is_virtuel == 0; else fonctionVirtuel">{{user.fonction.libelle | truncate:35}} </span></td>
+						<td mat-cell *matCellDef="let user" (click)="viewUser(user.id)" class="pointer"> <span *ngIf="user.is_virtual == 0; else fonctionVirtuel">{{user.fonction?.libelle | truncate:35}} </span></td>
 					</ng-container>
 
 					<!-- role Column -->
