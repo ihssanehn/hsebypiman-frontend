@@ -1,6 +1,6 @@
 <tf-portlet  >
 	<tf-portlet-header [title]="'Chantiers'" [stats]="stats ? getHeaderStats() : ''"></tf-portlet-header>
-	<tf-portlet-body [class]="'tf-portlet__body--fit'" style="height: 100%">
+	<tf-portlet-body [class]="'tf-portlet__body--fit'" style="height: 100%" *ngIf="stats; else loading">
 		<div class="row row-no-padding">
 			<div class="col-12" style="padding:1em">
 				<div class="table-responsive">

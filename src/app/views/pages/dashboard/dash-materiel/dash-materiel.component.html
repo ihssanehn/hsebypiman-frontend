@@ -1,0 +1,64 @@
+<tf-portlet >
+	<tf-portlet-header [title]="'Matériel à visiter'" [stats]="stats ? getHeaderStats() : ''"></tf-portlet-header>
+	<tf-portlet-body [class]="'tf-portlet__body--fit'" >
+		<div class="row row-no-padding row-col-separator-xl"  style="height: 100%">
+			<div class="col-12" style="padding:1em">
+				<div class="table-responsive">
+					<table mat-table matSort [dataSource]="listData" class="table table-striped table-xs" matSortDisableClear matSortActive="next_visite" matSortDirection="asc">
+	
+						<!-- vs_retard Column -->
+						<ng-container matColumnDef="vs_retard" >
+							<th mat-header-cell *matHeaderCellDef  mat-sort-header>
+								{{'MATERIELS.VS_RETARD.SHORTTITLE' | translate}}
+							</th>
+							<td mat-cell *matCellDef="let materiel" (click)="viewMateriel(materiel.id)" class="pointer"> <i class="material-icons text-danger" *ngIf="materiel.vs_retard" style="font-size:10px !important;">fiber_manual_record</i></td>
+						</ng-container>
+			
+						<!-- code Column -->
+						<ng-container matColumnDef="code">
+							<th mat-header-cell *matHeaderCellDef  mat-sort-header>
+								{{'MATERIELS.CODE.TITLE' | translate}}
+							</th>
+							<td mat-cell *matCellDef="let materiel" (click)="viewMateriel(materiel.id)" class="pointer"> {{materiel.code}} </td>
+						</ng-container>
+			
+						<!-- libelle Column -->
+						<ng-container matColumnDef="libelle">
+							<th mat-header-cell *matHeaderCellDef  mat-sort-header>
+								{{'MATERIELS.LIBELLE.TITLE' | translate}}
+							</th>
+							<td mat-cell *matCellDef="let materiel" (click)="viewMateriel(materiel.id)" class="pointer"> {{materiel.libelle | truncate:35}} </td>
+						</ng-container>
+			
+						<!-- main_categorie.libelle Column -->
+						<ng-container matColumnDef="categorie">
+							<th mat-header-cell *matHeaderCellDef  mat-sort-header>
+								{{'MATERIELS.CATEGORIE.SHORTTITLE' | translate}}
+							</th>
+							<td mat-cell *matCellDef="let materiel" (click)="viewMateriel(materiel.id)" class="text-center pointer"> {{materiel.main_categorie.libelle}} </td>
+						</ng-container>
+			
+						<!-- actual_user Column -->
+						<ng-container matColumnDef="actual_user">
+							<th mat-header-cell *matHeaderCellDef mat-sort-header>
+								{{'MATERIELS.ACTUAL_USER.TITLE' | translate}}
+							</th>
+							<td mat-cell *matCellDef="let materiel" (click)="viewMateriel(materiel.id)" class="text-center pointer"> {{materiel.actual_user ? (materiel.actual_user | fullName) : 'Disponible'}} </td>
+						</ng-container>
+
+						<!-- next_visite Column -->
+						<ng-container matColumnDef="next_visite">
+							<th mat-header-cell *matHeaderCellDef mat-sort-header>
+								{{'MATERIELS.DATE_VS.TITLE' | translate}}
+							</th>
+							<td mat-cell *matCellDef="let materiel" (click)="viewMateriel(materiel.id)" class="text-center pointer"> {{materiel.next_visite  | date:'dd/MM/yyyy'}} </td>
+						</ng-container>
+			
+						<tr mat-header-row *matHeaderRowDef="displayedMaterielColumns; sticky: true"></tr>
+						<tr mat-row class="highlight-row" *matRowDef="let row; columns: displayedMaterielColumns;"></tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</tf-portlet-body>
+</tf-portlet>

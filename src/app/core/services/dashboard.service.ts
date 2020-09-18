@@ -45,5 +45,9 @@ export class DashboardService extends HttpService{
     getEntrepriseStats(params = {}){
         return this.http.post<JsonResponse<any[]>>(this.baseUrl+'/entreprises', {...params});
     }
+
+    getMaterielStats(params = {}){
+        return this.http.post<JsonResponse<any[]>>(this.baseUrl+'/materiel', {...params});
+    }
     
 }
