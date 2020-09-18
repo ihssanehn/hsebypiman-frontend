@@ -14,22 +14,20 @@ import * as echarts from 'echarts';
 })
 export class DashMaterielComponent implements OnInit {
 
-  @ViewChild(MatSort, {static: true}) sort: MatSort;
-  listData : MatTableDataSource<Materiel>;
+  @ViewChild('materielSort', {static: false}) set sort(sort: MatSort){
+		if(sort){
+      this.materielListData.sort = sort;
+		}
+  };
+  
+  materielListData : MatTableDataSource<Materiel>;
 
   stats : any;
   filter: any = {
 		keyword: ""
   };
   
-  displayedMaterielColumns = [
-    'vs_retard',
-    'code',
-    'libelle',
-    'categorie',
-    'actual_user',
-    'next_visite',
-  ]
+  displayedMaterielColumns = ['vs_retard','code','libelle','categorie','actual_user','next_visite',]
 
   constructor(
     private dashboardService: DashboardService,
@@ -46,12 +44,10 @@ export class DashMaterielComponent implements OnInit {
 		try {
 			this.dashboardService.getMaterielStats(this.filter).subscribe(res=>{
           this.stats = res.result.data;
-          this.listData = new MatTableDataSource(this.stats.to_visit);
-          this.listData.sort = this.sort;
+          this.materielListData = new MatTableDataSource(this.stats.to_visit);
+          this.materielListData.sort = this.sort;
 
-          this.listData.sortingDataAccessor = (item, property) => {
-            console.log(item);
-            console.log(property);
+          this.materielListData.sortingDataAccessor = (item, property) => {
             switch(property) {
               case 'categorie': return item.main_categorie.libelle;
               case 'actual_user': return item.actual_user ? item.actual_user.prenom : '';
@@ -67,7 +63,7 @@ export class DashMaterielComponent implements OnInit {
   }
 
   getHeaderStats(){
-    return '<span class="text-warning">A visiter : </span>&nbsp;<b class="text-primary">'+this.stats.total_to_visit+'</b>'+'<span class="text-danger ml-4">En retard : </span>&nbsp;<b class="text-primary">'+this.stats.total_retard+'</b>'+'<span class="text-danger ml-4">Total : </span>&nbsp;<b class="text-primary">'+this.stats.total_materiel+'</b>';
+    return '<span>A visiter : </span>&nbsp;<b class="text-warning">'+this.stats.total_to_visit+'</b>'+'<span class="ml-4">En retard : </span>&nbsp;<b class="text-danger">'+this.stats.total_retard+'</b>'+'<span class="ml-4">Total : </span>&nbsp;<b class="text-primary">'+this.stats.total_materiel+'</b>';
   }
 
   viewMateriel(materielId){

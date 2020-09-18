@@ -3,6 +3,9 @@ import { WidgetIndicatorItemData } from '@app/views/partials/content/widgets/wid
 import * as echarts from 'echarts';
 import { ChantierService, DashboardService } from '@app/core/services';
 import { Router } from '@angular/router';
+import { Chantier } from '@app/core/models';
+import { MatTableDataSource } from '@angular/material';
+import {MatSort} from '@angular/material/sort';
 
 @Component({
   selector: 'tf-dash-chantier',
@@ -12,7 +15,15 @@ import { Router } from '@angular/router';
 export class DashChantierComponent implements OnInit {
 
 
-  chantiers : any;
+	@ViewChild('chantierSort', {static: false}) set sort(sort: MatSort){
+		if(sort){
+      this.chantierListData.sort = sort;
+		}
+	};
+	
+	chantierListData : MatTableDataSource<Chantier>;
+	
+  chantiers : Chantier[];
   stats : any;
   filter: any = {
     keyword: "",
@@ -21,7 +32,7 @@ export class DashChantierComponent implements OnInit {
   };
   
   displayedChantierColumns = [
-		'number', 'name', 'client', 'ars_count', 'vss_count', 'remontes_count'
+		'number', 'nom', 'client', 'ars_count', 'vss_count', 'remontes_count'
 	];
 
   constructor(
@@ -35,9 +46,6 @@ export class DashChantierComponent implements OnInit {
     this.getChantierDash();
   }
 
-  ngAfterViewInit(){
-	}
-
   async getChantierDash() {
 		try {
       this.dashboardService.getChantierStats(this.filter).subscribe(res=>{
@@ -46,6 +54,15 @@ export class DashChantierComponent implements OnInit {
       })
 			this.chantierService.getAll(this.filter).subscribe(res=>{
 				this.chantiers = res.result.data;
+				this.chantierListData = new MatTableDataSource(this.chantiers);
+          this.chantierListData.sort = this.sort;
+
+          this.chantierListData.sortingDataAccessor = (item, property) => {
+            switch(property) {
+							
+              default: return item[property];
+            }
+          };
 				this.cdr.markForCheck();
 			});
 		} catch (error) {
@@ -53,32 +70,6 @@ export class DashChantierComponent implements OnInit {
     }
   }
 
-
-	// Au click, défini order by et order way. Si le order_by est déjà actif, toggle du order_way. Sinon, order_way asc par défaut
-	setOrder(by) {
-		if (this.isOrderedBy(by)) {
-			this.toggleOrderWay()
-		} else {
-			this.filter.order_by = by;
-			this.filter.order_way = 'asc';
-		}
-		this.getChantierDash();
-	}
-
-	toggleOrderWay() {
-		if (this.filter.order_way == 'asc') {
-			this.filter.order_way = 'desc';
-		} else {
-			this.filter.order_way = 'asc';
-		}
-	}
-	isOrderedBy(by) {
-		if (Array.isArray(by)) {
-			return JSON.stringify(by) == JSON.stringify(this.filter.order_by)
-		} else {
-			return by == this.filter.order_by
-		}
-  }
   
   viewChantier(chantier_id){
     this.router.navigateByUrl('/chantiers/detail'+chantier_id);

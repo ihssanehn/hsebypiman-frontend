@@ -2,4 +2,16 @@
 .table-responsive{
   max-height: 286px;
 }
-  
+.loading-card{
+  display: flex;
+  width: 100%;
+  height: 312px;
+  justify-content:center;
+  align-items:center;
+}
+::ng-deep.mat-sort-header-container{
+  justify-content: space-between;
+  .mat-sort-header-button{
+    text-align: left;
+  }
+}

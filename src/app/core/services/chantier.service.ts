@@ -23,7 +23,7 @@ export class ChantierService extends HttpService{
     }
 
     getAll(params){
-        return this.http.post<JsonResponse<Paginate<Chantier>>>(this.baseUrl, {...params});
+        return this.http.post<JsonResponse<any>>(this.baseUrl, {...params});
     }
     getList(){
         return this.http.get<JsonResponse<Chantier[]>>(this.baseUrl+'/mini');
