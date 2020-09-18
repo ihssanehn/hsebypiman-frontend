@@ -27,9 +27,11 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 	loaded = false;
 	usersList: User[];
 	usersLoaded: boolean = false;
-	editMode2C: boolean = false;
+	editMode1C: boolean = false;
 	attribMode: boolean = false;
-	cloreMode: boolean = false;
+
+	resoMode: boolean = false;
+	efficMode: boolean = false;
 	private subscriptions: Subscription[] = [];
 
 	/**
@@ -221,7 +223,7 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 		item.date_realisation = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.date_realisation) : this.dateEnToFrPipe.transform(item.date_realisation);
 	}
 
-	async save(){
+	async save(from: string){
 		let form = {...this.actionForm.getRawValue()};
 		this.formloading = true;
 		this.parseActionDate(form, 'FrToEn');
@@ -241,7 +243,7 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 				html: message,
 				timer: code == 'success' ? 1500 : 3000
 			}).then(() => {
-				this.close();
+				this.close(from);
 				this.getAction(this.action.id);
 			})
 			this.cdr.markForCheck();
@@ -257,18 +259,16 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 		this.cdr.markForCheck();
 	}
 
-	close(){
-		this.setEditMode2C(false);
-		this.setAttribMode(false);
-		this.setCloreMode(false);
+	close(from: string){
+		switch(from){
+			case 'attribution': this.setAttribMode(false);break;
+			case 'resolution': this.setResoMode(false);break;
+			case 'efficacite': this.setEfficMode(false);break;
+		}
 	}
 
 	setEditMode1C(value: boolean){
-
-	}
-
-	setEditMode2C(value: boolean){
-		this.editMode2C = value;
+		this.editMode1C = value;
 	}
 
 	setAttribMode(value: boolean){
@@ -276,7 +276,17 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 	}
 
 	setCloreMode(value: boolean){
-		this.cloreMode = value;
+		this.setResoMode(value);
+		this.setEfficMode(value);
 	}
+
+	setResoMode(value: boolean){
+		this.resoMode = value;
+	}
+
+	setEfficMode(value: boolean){
+		this.efficMode = value;
+	}
+
 	
 }
