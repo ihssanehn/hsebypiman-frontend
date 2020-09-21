@@ -16,6 +16,7 @@ import {environment} from '@env/environment';
 import { MatIconRegistry } from '@angular/material';
 import { AuthNoticeService, AuthService} from '../../../../core/auth';
 import { ModuleService } from '@app/core/services';
+import { VersionCheckService } from '@app/core/_base/layout';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -58,6 +59,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 		private fb: FormBuilder,
 		private cdr: ChangeDetectorRef,
 		private route: ActivatedRoute,
+		private versionCheckService:VersionCheckService,		
 		iconRegistry: MatIconRegistry, 
 		sanitizer: DomSanitizer
 
@@ -78,6 +80,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 	 * On init
 	 */
 	ngOnInit(): void {
+		this.versionCheckService.checkVersion(environment.versionCheckURL);
 		this.initLoginForm();
 
 		// redirect back to the returnUrl before login
