@@ -67,15 +67,6 @@
                             display: flex;
                         }
                     }
-                    .select-container{
-                        background-color: #ddf5f4;
-                        padding-top: 0.7em;
-                        margin-bottom: 0.5em;
-                        border-radius: 0.7em;
-                        mat-select{
-                            background-color: #ddf5f4;
-                        }
-                    }
                     .tf-divider.h-5 span{
                         height: 1em;
                     }
@@ -114,6 +105,11 @@
                                 margin-bottom: 2px;
                             }
                         }
+                    }
+                    .card-editor{
+                        position: absolute;
+                        top: 0;
+                        right: 0;
                     }
                 }
 
