@@ -13,6 +13,8 @@ export { MenuDirective } from './directives/menu.directive';
 export { StickyDirective } from './directives/sticky.directive';
 export { NgSelectFormFieldControlDirective } from './directives/ng-select.directive';
 
+export { MaskDirective } from './directives/mask.directive';
+
 // Models
 export { DataTableItemModel } from './models/datatable-item.model';
 export { ExternalCodeExample } from './models/external-code-example';

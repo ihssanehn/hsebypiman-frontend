@@ -12,13 +12,16 @@
                 <div class="col-md-12 mb-3"><p>Veuillez sélectionner une date de début et de fin de la période</p></div>
                 <mat-form-field class="col-md-6" appearance="fill">
                     <mat-label>Date de début</mat-label>
-                    <input matInput [matDatepicker]="picker" [matDatepickerFilter]="filteredDates" formControlName="start_date" placeholder="DD/MM/YYYY">
+                    <input matInput [dateMask]="maskConfig" #dateInput [matDatepicker]="picker" [matDatepickerFilter]="filteredDates" formControlName="start_date" placeholder="DD/MM/YYYY">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker startView="year" [startAt]="minStartDatePeriod"></mat-datepicker>
+                    <mat-error *ngIf="isControlHasError('start_date','required')">
+						<strong>{{ 'AUTH.VALIDATION.INVALID_FIELD' | translate }}</strong>
+					</mat-error>
                 </mat-form-field>
                 <mat-form-field class="col-md-6" appearance="fill">
                     <mat-label>Date de fin</mat-label>
-                    <input matInput [matDatepicker]="picker_end" [matDatepickerFilter]="filteredDates" [min]="periodForm.value.start_date" formControlName="end_date" placeholder="DD/MM/YYYY">
+                    <input matInput [dateMask]="maskConfig" #dateInput [matDatepicker]="picker_end" [matDatepickerFilter]="filteredDates" [min]="periodForm.value.start_date" formControlName="end_date" placeholder="DD/MM/YYYY">
                     <mat-datepicker-toggle matSuffix [for]="picker_end"></mat-datepicker-toggle>
                     <mat-datepicker #picker_end startView="year" [startAt]="periodForm.value.start_date"></mat-datepicker>
                 </mat-form-field>

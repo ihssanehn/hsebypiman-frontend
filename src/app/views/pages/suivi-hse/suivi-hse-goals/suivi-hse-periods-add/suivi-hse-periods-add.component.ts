@@ -1,11 +1,12 @@
-import { Component, OnInit, Input, ChangeDetectorRef, ViewChild } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnInit, Input, ChangeDetectorRef, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
+import { Subscription, fromEvent } from 'rxjs';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { PeriodService } from '@app/core/services';
 import Swal from 'sweetalert2';
 import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
 import { FollowUpPeriod } from '@app/core/models';
+import { MatInput, MatDatepickerInput } from '@angular/material';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { FollowUpPeriod } from '@app/core/models';
   templateUrl: './suivi-hse-periods-add.component.html',
   styleUrls: ['./suivi-hse-periods-add.component.scss']
 })
-export class SuiviHsePeriodsAddComponent implements OnInit {
+export class SuiviHsePeriodsAddComponent implements OnInit, AfterViewInit, OnDestroy {
 
 	loaded = false;
   periodForm: FormGroup;
@@ -21,6 +22,30 @@ export class SuiviHsePeriodsAddComponent implements OnInit {
   private subscriptions: Subscription[] = [];
   minStartDatePeriod: Date;
   periodList: FollowUpPeriod[];
+
+  @ViewChild(MatInput, {static: false}) formFieldControl: MatInput;
+  @ViewChild(MatDatepickerInput, {static: false}) datepickerInput: MatDatepickerInput<any>;
+  @ViewChild('dateInput', {static: false}) dateInput: ElementRef;
+
+  maskConfig = {
+    mask: [
+      new RegExp('\\d'),
+      new RegExp('\\d'),
+      '/',
+      new RegExp('\\d'),
+      new RegExp('\\d'),
+      '/',
+      new RegExp('\\d'),
+      new RegExp('\\d'),
+      new RegExp('\\d'),
+      new RegExp('\\d')
+    ],
+    showMask: false,
+    guide: false,
+    placeholderChar: '_'
+  };
+
+  eventSubscription: Subscription;
 
   filteredDates = (d: Date): boolean => {
     return this.checkDateValidation(d);
@@ -39,6 +64,17 @@ export class SuiviHsePeriodsAddComponent implements OnInit {
     this.createForm();
     this.getPeriods();
     this.getSelectedPeriod();
+  }
+
+  ngAfterViewInit() {
+    this.eventSubscription = fromEvent(this.dateInput.nativeElement, 'input').subscribe(_ => {
+      this.datepickerInput._onInput(this.dateInput.nativeElement.value);
+    });
+  }
+
+  ngOnDestroy() {
+    this.eventSubscription.unsubscribe();
+    this.subscriptions.forEach(sb => sb.unsubscribe());
   }
 
   async getPeriods(){
@@ -81,10 +117,6 @@ export class SuiviHsePeriodsAddComponent implements OnInit {
     })
 
 		this.loaded = true;
-  }
-
-  ngOnDestroy() {
-		this.subscriptions.forEach(sb => sb.unsubscribe());
   }
   
   onCancel(){
@@ -131,6 +163,16 @@ export class SuiviHsePeriodsAddComponent implements OnInit {
   formatDates(item, direction){
     item.start_date = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.start_date) : this.dateEnToFrPipe.transform(item.start_date);
     item.end_date = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.end_date) : this.dateEnToFrPipe.transform(item.end_date);
+  }
+
+  isControlHasError(controlName: string, validationType: string): boolean {
+    const control = this.periodForm.controls[controlName];
+    if (!control) {
+      return false;
+    }
+
+    const result = control.invalid && (control.dirty || control.touched);
+    return result;
   }
 
 }
