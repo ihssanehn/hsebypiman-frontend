@@ -20,15 +20,17 @@ export class SuiviSalarieDashComponent implements OnInit {
 	};
   showFilters : Boolean = false;
   stats : any;
+  noteColors = ['#c83351','#dea342', '#5ac2bd'];
 
   echartsEvol;
   EvolOptions = {
     title: {
-      text: 'Evolution des objectifs',
-      x: 'left'
+      text: 'Note moyenne par salarié',
+      x: 'center'
     },
     tooltip: {
-      trigger: 'axis'
+      trigger: 'axis',
+      formatter: '{b} : {c}%'
     },
     grid: {
       left: '3%',
@@ -39,23 +41,30 @@ export class SuiviSalarieDashComponent implements OnInit {
     xAxis: {
       name: 'Salariés',
       type: 'category',
-      boundaryGap: false,
+      boundaryGap: true,
+      axisLabel:
+      {
+        rotate:50,
+        margin: 10
+      },
       data: []
     },
     yAxis: {
+      name: 'Notes en %',
       type: 'value'
     },
-    legend: {
-      data: []
-    },
-    series: [
-    ]
+    series: [{
+      data: [],
+      type: 'bar',
+      color: '#33b5ae',
+      barCategoryGap: '60%'
+    }]
   };
 
   echartsHLine;
   hLineOptions = {
     title: {
-      text: 'Taux des objectifs par type',
+      text: 'Répartition des notes par type de suivi',
       x: 'center'
     },
     dataset: {
@@ -91,9 +100,9 @@ export class SuiviSalarieDashComponent implements OnInit {
 
   echartsRating;
   byRatingOptions = {
-    color: ['#c83351','#dea342', '#5ac2bd'],
+    color: this.noteColors,
     title: {
-      text: 'Nombre de salariés',
+      text: 'Répartition des notes par salarié',
       x: 'center'
     },
     grid: {
@@ -175,15 +184,12 @@ export class SuiviSalarieDashComponent implements OnInit {
 					this.echartsRating.setOption(this.byRatingOptions);
 					this.echartsRating.hideLoading();
 
-          this.EvolOptions.series = [];
           if(this.stats.evolution){
             this.stats.evolution.forEach(element => {
-              this.EvolOptions.series.push({
-                type: 'line',
-                name: element.name,
-                data: element.data
+              this.EvolOptions.series[0]['data'].push({
+                value: element,
+                itemStyle: {color: this.setColor(element)}
               });
-              this.EvolOptions.legend.data.push(element.name);
             });
           }
           this.EvolOptions.xAxis.data = this.stats.evolutionAxis;
@@ -207,6 +213,18 @@ export class SuiviSalarieDashComponent implements OnInit {
 		} catch (error) {
 			console.error(error);
 		}
+  }
+
+  setColor(note){
+    if(note <= 33.33){
+      return this.noteColors[0];
+    }else{
+      if(note <= 66.66){
+        return this.noteColors[1];
+      }else{
+        return this.noteColors[2];
+      }
+    }
   }
   
   getClass(sens, value){
