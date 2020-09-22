@@ -61,6 +61,7 @@ import {
 } from 'ng-zorro-antd';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 // DateAdapter
+import { DateMomentAdapter } from '@app/core/_base/crud/utils/date-adapter.component';
 import { CustomMomentDateAdapter } from '@app/core/_base/crud/utils/custom-moment-date.adapter';
 import { YEAR_FORMATS } from '@app/core/_base/crud/utils/custom-moment-date.adapter';
 // Components
@@ -224,6 +225,7 @@ const routes: Routes = [
 			}
 		},
 		{ provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
+		{ provide: DateAdapter, useClass: DateMomentAdapter },
 		// { provide: DateAdapter, useClass: CustomMomentDateAdapter, deps: [MAT_DATE_LOCALE] },
 		// { provide: MAT_DATE_FORMATS, useValue: YEAR_FORMATS },
 		HttpUtilsService,

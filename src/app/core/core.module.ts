@@ -32,7 +32,8 @@ import {
 	DateMessagePipe,
 	FullNamePipe,
 	InitialesPipe,
-	ToggleDirective
+	ToggleDirective,
+	MaskDirective
 } from './_base/layout';
 
 @NgModule({
@@ -52,6 +53,7 @@ import {
 		ContentAnimateDirective,
 		NgSelectFormFieldControlDirective,
 		StickyDirective,
+		MaskDirective,
 		// pipes
 		TimeElapsedPipe,
 		DateTimeMessagePipe, 
@@ -83,6 +85,7 @@ import {
 		ContentAnimateDirective,
 		NgSelectFormFieldControlDirective,
 		StickyDirective,
+		MaskDirective,
 		// pipes
 		TimeElapsedPipe,
 		DateTimeMessagePipe, 
