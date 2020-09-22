@@ -11,7 +11,7 @@
 		<!-- end:: Header -->
 		<div class="tf-grid__item tf-grid__item--fluid tf-grid tf-grid--ver tf-page">
 			<!-- begin:: Aside Left -->
-			<ng-container *ngIf="asideDisplay">
+			<ng-container *ngIf="asideDisplay && currentRouteUrl != '/discuss'">
 				<button class="tf-aside-close" id="tf_aside_close_btn"><i class="la la-close"></i></button>
 				<tf-aside-left></tf-aside-left>
 			</ng-container>

@@ -1,5 +1,5 @@
 // Angular
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 // RxJS
 import { Observable, Subscription } from 'rxjs';
 // Object-Path
@@ -15,6 +15,8 @@ import { NgxPermissionsService } from 'ngx-permissions';
 import { Permission } from '../../../core/auth';
 import { select, Store } from '@ngrx/store';
 import { AppState } from '../../../core/reducers';
+import { NavigationEnd, Router} from '@angular/router';
+import {filter} from 'rxjs/operators';
 
 @Component({
 	selector: 'tf-base',
@@ -24,6 +26,7 @@ import { AppState } from '../../../core/reducers';
 })
 export class BaseComponent implements OnInit, OnDestroy {
 	// Public variables
+	currentRouteUrl = '';
 	selfLayout: string;
 	asideDisplay: boolean;
 	asideSecondary: boolean;
@@ -47,9 +50,13 @@ export class BaseComponent implements OnInit, OnDestroy {
 		private layoutConfigService: LayoutConfigService,
 		private menuConfigService: MenuConfigService,
 		private pageConfigService: PageConfigService,
+		private router: Router,
+		private cdr: ChangeDetectorRef,
 		private htmlClassService: HtmlClassService,
 		private permissionsService: NgxPermissionsService) {
 
+
+			
 		// register configs by demos
 		this.layoutConfigService.loadConfigs(new LayoutConfig().configs);
 		this.menuConfigService.loadConfigs(new MenuConfig().configs);
@@ -62,6 +69,7 @@ export class BaseComponent implements OnInit, OnDestroy {
 			// reset body class based on global and page level layout config, refer to html-class.service.ts
 			document.body.className = '';
 			this.htmlClassService.setConfig(layoutConfig);
+			
 		});
 		this.unsubscribe.push(subscr);
 	}
@@ -81,6 +89,18 @@ export class BaseComponent implements OnInit, OnDestroy {
 		this.subheaderDisplay = objectPath.get(config, 'subheader.display');
 		this.fluid = objectPath.get(config, 'content.width') === 'fluid';
 
+
+		this.currentRouteUrl = this.router.url.split(/[?#]/)[0];
+
+		this.router.events
+			.pipe(filter(event => event instanceof NavigationEnd))
+			.subscribe(event => {
+				this.currentRouteUrl = this.router.url.split(/[?#]/)[0];
+				console.log(this.currentRouteUrl)
+				this.cdr.markForCheck();
+			});
+
+
 		// let the layout type change
 		const subscr = this.layoutConfigService.onConfigUpdated$.subscribe(cfg => {
 			setTimeout(() => {
@@ -96,5 +116,7 @@ export class BaseComponent implements OnInit, OnDestroy {
 	ngOnDestroy(): void {
 		this.unsubscribe.forEach(sb => sb.unsubscribe());
 	}
+
+
 
 }

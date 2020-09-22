@@ -77,6 +77,14 @@ const routes: Routes = [
 				}
 			},
 			{
+				path: 'discuss',
+				loadChildren: () => import('@app/views/pages/discuss/discuss.module').then(m => m.DiscussModule),
+				canActivate: [ModuleGuard],
+				data: {
+					moduleCodes:['DISCUSS']
+				}
+			},
+			{
 				path: 'profile',
 				loadChildren: () => import('@app/views/pages/profile/profile.module').then(m => m.ProfileModule),
 

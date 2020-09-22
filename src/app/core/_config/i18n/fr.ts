@@ -85,6 +85,7 @@ export const locale = {
 				EDIT:'Modifier les infos de suivi',
 				LIST:'Suivi Hse',
 			},
+			DISCUSS: 'Discuss',
 			USERS: 'Utilisateurs',
 			SUB_USERS:{
 				DETAIL:'Détail de l\'utilisateur',
