@@ -317,12 +317,6 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 
 	cloreAction(){
 		this.setCloreMode(true);
-		Swal.fire({
-			icon: 'warning',
-			title: 'Veuillez éditer les champs concernant la résolution et l\'efficacité',
-			showConfirmButton: false,
-			timer: 1500
-		});
 	}
 
 	abandonAction(actionId){
@@ -364,12 +358,6 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 
 	attributeAction(){
 		this.setAttribMode(true);
-		Swal.fire({
-			icon: 'warning',
-			title: 'Veuillez indiquer le pilote et le délai pour cette action',
-			showConfirmButton: false,
-			timer: 1500
-		});
 	}
 
 	parseActionDate(item, direction){
