@@ -6,6 +6,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { fromEvent, Subscription } from 'rxjs';
 import Swal from 'sweetalert2';
+import moment from 'moment';
+
 
 
 @Component({
@@ -32,7 +34,7 @@ export class MaterielsListComponent implements OnInit, AfterViewInit {
 	};
 	showFilters:Boolean = false;
 	displayedMaterielColumns = [
-		"code", "libelle", "numero_serie", "main_categorie",  "actual_user",  "marque", "action"
+		"vs_retard", "code", "libelle", "numero_serie", "main_categorie",  "actual_user",  "marque", "action"
 	];
 	selectedMateriel: Materiel = null;
 
@@ -147,5 +149,16 @@ export class MaterielsListComponent implements OnInit, AfterViewInit {
 			this.filter[key] = value;
 		}
 		this.getMateriels();
+	}
+
+	getNextVisiteTooltip(materiel){
+		var _date = moment(materiel.next_visite).format('DD/MM/YYYY');
+		if(materiel.vs_retard){
+			return 'Visite en retard : '+_date;
+		}else if(materiel.vs_a_prevoir){
+			return 'Visite à venir : '+_date;
+		}else{
+			return null
+		}
 	}
 }
