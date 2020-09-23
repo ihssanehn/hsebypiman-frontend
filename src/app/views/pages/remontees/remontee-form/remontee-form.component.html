@@ -26,12 +26,11 @@
 								</mat-form-field>
 								<mat-form-field class="col-xl-12">
 									<mat-label>{{'REMONTEES.DESCRIPTION.LABEL' | translate}}</mat-label>
-									<input class="form-control" matInput type="text" name="description" formControlName="description" placeholder="Saisir ici" [required]="isFieldRequired('description')" />
+									<textarea matInput class="form-control" name="description" formControlName="description" placeholder="Saisir ici" [required]="isFieldRequired('description')" id="description" rows="10"></textarea>
 									<mat-error *ngIf="isControlHasError('description','required')">
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
 								</mat-form-field>
-								
 							</div>
 						</div>
 					</div>

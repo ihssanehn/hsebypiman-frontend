@@ -20,7 +20,6 @@ import { LayoutConfigService, SparklineChartOptions } from '@app/core/_base/layo
 export class RemonteesDashComponent implements OnInit, AfterViewInit, OnDestroy {
 
 	@ViewChild('pieType', {static: true}) pieType: ElementRef;
-	@ViewChild('pieStatus', {static: true}) pieStatus: ElementRef;
 	@ViewChild('evolAll', {static: true}) evolAll: ElementRef;
 
 	filter: any = {
@@ -30,6 +29,72 @@ export class RemonteesDashComponent implements OnInit, AfterViewInit, OnDestroy 
 	
 	showFilters:Boolean = false;
 	stats : any;	
+
+	echartsType;
+	byTypeOptions = {
+		title: {
+			text: 'Remontées par typologie',
+			x: 'center'
+		},
+		grid: {
+			left: '3%',
+			right: '4%',
+			bottom: '10%',
+			containLabel: true
+		},
+		tooltip: {
+			trigger: 'item',
+			formatter: '{b} : {c} ({d}%)'
+		},
+		legend: {
+			type: 'scroll',
+			orient: 'horizontal',
+			left: 20,
+			right: 20,
+			bottom: 10,
+			series:[]
+		},
+		series: [
+			{
+			type: 'pie',
+			radius: '60%',
+			center: ['50%', '50%'],
+			selectedMode: 'single',
+			data: []
+			}
+		]
+	};
+
+	echartsEvol;
+	EvolOptions = {
+		title: {
+			text: 'Evolution des remontées',
+			x: 'center'
+		},
+		tooltip: {
+			trigger: 'axis'
+		},
+		grid: {
+			left: '3%',
+			right: '4%',
+			bottom: '10%',
+			containLabel: true
+		},
+		xAxis: {
+			type: 'category',
+			data: []
+		},
+		yAxis: {
+			type: 'value'
+		},
+		
+		series: [
+			{
+			type: 'line',
+			data: []
+			}
+		]
+	};
 
 	constructor(
 		private router: Router,
@@ -47,6 +112,10 @@ export class RemonteesDashComponent implements OnInit, AfterViewInit, OnDestroy 
 
 	ngOnInit() {
 		this.getRemonteesDash();
+		this.echartsType = echarts.init(this.pieType.nativeElement)
+		this.echartsType.showLoading();
+		this.echartsEvol = echarts.init(this.evolAll.nativeElement)
+		this.echartsEvol.showLoading();
 	}
 
 	ngAfterViewInit(){
@@ -63,7 +132,17 @@ export class RemonteesDashComponent implements OnInit, AfterViewInit, OnDestroy 
 				res=>{
 					this.stats = res.result.data;
 					
-					
+					// By Type
+					this.byTypeOptions.series[0]['data'] = this.stats.repartition;
+					this.echartsType.setOption(this.byTypeOptions);
+					this.echartsType.hideLoading();	
+
+					// Evolution
+					this.EvolOptions.series[0]['data'] = this.stats.evolution;
+					this.EvolOptions.xAxis.data = this.stats.evolutionAxis;
+					this.echartsEvol.setOption(this.EvolOptions);
+					this.echartsEvol.hideLoading();
+
 					this.cdr.markForCheck();
 				}	
 			);
@@ -94,7 +173,7 @@ export class RemonteesDashComponent implements OnInit, AfterViewInit, OnDestroy 
 				if(value <= 0.33){return 'text-success'}else{return 'text-danger'};
 		}
 	}
-	goToRemonte(event){
+	goToRemontee(event){
 		this.router.navigateByUrl('remontees/detail/' + event.id);
 	}
 }
