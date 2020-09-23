@@ -1,0 +1,16 @@
+:host::ng-deep {
+    
+    .card.card-filters{
+        flex-flow: row wrap;
+    }
+    .clear-icon-button{
+        width: 10px;
+        height: 10px;
+        font-size: 10px;
+    }
+
+    .mat-filter-no-head{
+        margin-top: 21.5px;
+    }
+   
+}

@@ -55,8 +55,8 @@ import { ModuleGuard } from './core/guards/module.guard';
 import { 
 	ChantierService, TypeService, StatusService, ActionService, CategorieService, ArService, CatRisqueService, EquipementService,
 	EntrepriseService, VisiteEpiService, VisiteChantierService, CatHabilitationService, CatQuestionService, ZoneService, SignatureService, QuestionService,
-	HabilitationService, RisqueService, ParamsService, MaterielService, VisiteOutillageService, VisiteVehiculeService, OutillageService, UserService, DocumentService, 
-	PersonnelService, FonctionService, CatMetricService, GoalService, MetricService, ModuleService, RoleService, DashboardService, VisiteService, PeriodService
+	HabilitationService, RisqueService, ParamsService, MaterielService, VisiteOutillageService, VisiteVehiculeService, OutillageService, UserService, DocumentService,
+	RemonteeService, PersonnelService, FonctionService, CatMetricService, GoalService, MetricService, ModuleService, RoleService, DashboardService, VisiteService, PeriodService
 } from './core/services';
 // CRUD
 import { HttpUtilsService, LayoutUtilsService, TypesUtilsService } from './core/_base/crud';
@@ -191,6 +191,7 @@ export function hljsLanguages(): HighlightLanguage[] {
 		OutillageService,
 		ZoneService,
 		DocumentService,
+		RemonteeService,
 		PersonnelService,
 		FonctionService,
 		CatMetricService,

@@ -1,0 +1,41 @@
+<ng-container [formGroup]="remonteForm">
+	
+		<tf-portlet-body>
+			<div class="tf-heading tf-heading--lg" style="margin-top: 0;">
+				<div *ngIf="edit">
+					{{'MENU.SUB_REMONTEES.EDIT' | translate}}
+
+				</div>
+				<span *ngIf="!edit">{{'MENU.SUB_REMONTEES.ADD' | translate}}</span>
+			</div>
+			<div>
+				<div class="tf-wizard-v4__content" data-tfwizard-type="step-content" data-tfwizard-state="current">
+					<div class="tf-form__section tf-form__section--first">
+						<div class="tf-wizard-v4__form">
+							<div class="row form-row">
+								<mat-form-field class="col-xl-3">
+									<mat-label>{{'REMONTEES.TYPE.LABEL' | translate}}</mat-label>
+									<mat-select class="form-control" placeholder="" formControlName="type_id" [required]="isFieldRequired('type_id')">
+										<mat-option *ngFor="let type of typesList" [value]="type.id">
+											{{ type.libelle }}
+										</mat-option>
+									</mat-select>
+									<mat-error *ngIf="isControlHasError('type_id','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+								<mat-form-field class="col-xl-12">
+									<mat-label>{{'REMONTEES.DESCRIPTION.LABEL' | translate}}</mat-label>
+									<input class="form-control" matInput type="text" name="description" formControlName="description" placeholder="Saisir ici" [required]="isFieldRequired('description')" />
+									<mat-error *ngIf="isControlHasError('description','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</tf-portlet-body>
+</ng-container>

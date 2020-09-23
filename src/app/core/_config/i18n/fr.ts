@@ -64,6 +64,13 @@ export const locale = {
 				EDIT:'Modifier l\'entreprise',
 				LIST:'Liste des entreprises',
 			},
+			REMONTEES: 'Remontées QHSE',
+			SUB_REMONTEES:{
+				DETAIL:'Détail de la remontée',
+				ADD:'Ajouter une remontée',
+				EDIT:'Modifier la remontée',
+				LIST:'Liste des remontées QHSE',
+			},
 			MATERIELS: 'Matériel',
 			SUB_MATERIELS:{
 				DETAIL:'Détail du matériel',
@@ -100,6 +107,7 @@ export const locale = {
 			BTN:{
 				NEWAR: 'Nouvelle analyse de risque',
 				NEWCHANTIER: 'Nouveau chantier',
+				NEWREMONTEE: 'Nouvelle remontée QHSE',
 				NEWVS: 'Nouveau visite de sécurité',
 				NEWENTREPRISE: 'Nouvelle entreprise',
 				NEWMATERIEL: 'Nouveau matériel',
@@ -496,6 +504,38 @@ export const locale = {
 				PLACEHOLDER:'Saisir ici...',
 				TITLE: 'Date de démarrage',
 				SHORTTITLE:'Date démarrage',
+			}
+		},
+		REMONTEES:{
+			CREATOR:{
+				TITLE:'Collaborateur',
+				SHORTTITLE:'Collaborateur',
+				LABEL:'Collaborateur',
+			},
+			DESCRIPTION:{
+				TITLE:'Description',
+				SHORTTITLE:'Description',
+				LABEL:'Description',
+			},
+			CREATED_AT:{
+				TITLE:'Date de création',
+				SHORTTITLE:'Date',
+				LABEL:'Date de la remontée',
+			},
+			DOCUMENTS:{
+				TITLE:'Documents annexes',
+				SHORTTITLE:'Documents',
+				LABEL:'Documents liés',
+			},
+			DOCUMENTS_COUNT:{
+				TITLE:'Nombre de documents',
+				SHORTTITLE:'Nbr docs',
+				LABEL:'Documents annexes',
+			},
+			TYPE:{
+				TITLE:'Typologie',
+				SHORTTITLE:'Typologie',
+				LABEL:'Typologie',
 			}
 		},
 		ARS:{

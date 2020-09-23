@@ -1,0 +1,57 @@
+<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8" id="portlet-remonte" *ngIf="remonte">
+	<div class="tf-portlet-header ">
+		<span class="title">
+			<a [routerLink]="['/remontees/list']">{{'MENU.SUB_REMONTEES.LIST' | translate}}</a><span class="divider">></span><span class="id-item">{{'MENU.SUB_REMONTEES.DETAIL' | translate}}</span>
+		</span>
+		<div ngbDropdown placement="bottom-right" class="d-inline-block pull-right">
+			<button ngbDropdownToggle mat-icon-button color="primary" matTooltip="Actions" style="line-height: 0;height: 0;">
+				<mat-icon>more_vert</mat-icon>
+			</button>
+			<div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
+				<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editRemonte(remonte.id)" *ngxPermissionsOnly="['remontee_canUpdate']">
+					<mat-icon>edit</mat-icon>
+				</button>
+				<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteRemonte(remonte.id)" *ngxPermissionsOnly="['remontee_canArchieve']">
+					<mat-icon>delete</mat-icon>
+				</button>
+			</div>
+		</div>
+	</div>
+	<tf-portlet-body class="tf-portlet__body--fit">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="card">
+					<h3>Informations générales</h3>
+					<div class="box" style="flex:1">
+						<p><span class="label pull-left mr-2">{{'REMONTEES.CREATOR.TITLE' | translate}}</span><span class="">{{remonte.creator | fullName}}</span></p>
+						<p><span class="label pull-left mr-2">{{'REMONTEES.TYPE.TITLE' | translate}}</span><span class="">{{remonte.type?.libelle}}</span></p>
+					</div>
+					<div class="tf-divider">
+						<span></span>
+					</div>
+					<div class="box text-center">
+						<small>{{'COMMON.CREATED_AT.TITLE' | translate}} : {{remonte.created_at | date:'dd/MM/yyyy'}}</small><br>
+						<small>{{'COMMON.UPDATED_AT.TITLE' | translate}} : {{remonte.updated_at ? (remonte.updated_at | date:'dd/MM/yyyy'): '-'}}</small>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-8">
+				<div class="card">
+					<h3>Description</h3>
+					<div class="box" style="flex:1">
+						<p class="text-left">{{remonte.description}}</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12 mt-4">
+			</div>
+		</div>
+	</tf-portlet-body>
+</tf-portlet>
+
+
+<ng-template #noChantier>
+		<p class="text-left">
+			Cette remonte n'a été affectée à aucun chantier
+		</p>
+</ng-template>

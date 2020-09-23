@@ -21,6 +21,14 @@ const routes: Routes = [
 				loadChildren: () => import('@app/views/pages/dashboard/dashboard.module').then(m => m.DashboardModule),
 			},
 			{
+				path: 'remontees',
+				loadChildren: () => import('@app/views/pages/remontees/remontees.module').then(m => m.RemonteesModule),
+				canActivate: [ModuleGuard],
+				data: {
+					moduleCodes: ['REMONTEE']
+				}
+			},
+			{
 				path: 'chantiers',
 				loadChildren: () => import('@app/views/pages/chantiers/chantiers.module').then(m => m.ChantiersModule),
 				canActivate: [ModuleGuard],

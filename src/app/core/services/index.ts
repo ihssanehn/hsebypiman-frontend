@@ -1,5 +1,6 @@
 export { ChantierService } from './chantier.service'
 export { ArService } from './ar.service'
+export { RemonteeService } from './remontee.service'
 export { ActionService } from './action.service'
 export { VisiteService } from './visite.service'
 export { VisiteEpiService } from './visite-epi.service'

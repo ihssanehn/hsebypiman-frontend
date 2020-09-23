@@ -6,6 +6,7 @@ export { Categorie } from './categorie.model';
 export { Status } from './status.model';
 export { Materiel } from './materiel.model';
 export { Risque } from './risque.model';
+export { Remontee } from './remontee.model';
 export { CatRisque } from './catRisque.model';
 export { CatRisqueComment } from './catRisqueComment.model';
 export { Entreprise } from './entreprise.model';

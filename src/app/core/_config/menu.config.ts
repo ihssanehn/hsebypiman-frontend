@@ -12,6 +12,15 @@ export class MenuConfig {
 					needModule: false,
 				},
 				{
+					title: 'Remontées QHSE',
+					root: true,
+					alignment: 'left',
+					page: '/remontees/list',
+					translate: 'MENU.REMONTEES',
+					needModule: true,
+					moduleCode: ['REMONTEE']
+				},
+				{
 					title: 'Chantiers',
 					root: true,
 					alignment: 'left',
@@ -132,6 +141,44 @@ export class MenuConfig {
 			dashboard: {
 				btnAdd:{},
 				items:[]
+			},
+			remontees: {
+				btnAdd: {
+					title: 'Nouvelle remontée',
+					root: true,
+					alignment: 'left',
+					page: '/remontees/add',
+					translate: 'MENU.BTN.NEWREMONTEE',
+					permissionOnly:['remontee_canAdd']
+				},
+
+				items: [
+					{
+						icon: 'dashboard',
+						title: 'Dashboards',
+						root: true,
+						alignment: 'left',
+						page: '/remontees/dashboard',
+						translate: 'MENU.DASHBOARD',
+					},
+					{
+						title: 'Liste',
+						root: true,
+						alignment: 'left',
+						page: '/remontees/list',
+						translate: 'MENU.LIST',
+						icon: 'view_list',
+					},
+					{
+						title: 'Admin',
+						root: true,
+						alignment: 'left',
+						page: '/remontees/admin',
+						translate: 'MENU.ROOT',
+						icon: 'settings',
+						permissionOnly: ['ROOT', 'ADMIN'],
+					}
+				]
 			},
 			chantiers: {
 				btnAdd: {
