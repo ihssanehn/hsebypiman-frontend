@@ -1,5 +1,5 @@
 <tf-search-list-bar [(ngModel)]="filter" (change)="getRemonteesDash()" [hasAdvancedSearch]="true" [showFilters]="showFilters" (advancedSearchChange)="advancedSearchChanged($event)" class="row row-filters"></tf-search-list-bar>
-<tf-remonte-filters [hidden]="!showFilters" (change)="udpateFilters($event)" class="row"></tf-remonte-filters>
+<tf-remontee-filters [hidden]="!showFilters" (change)="udpateFilters($event)" class="row"></tf-remontee-filters>
 <div class="row px-2 d-flex dash-row-container">
 	<div class="col-xl-3 flex-fill" >
 		<tf-portlet class="tf-portlet--height-fluid">
