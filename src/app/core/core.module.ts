@@ -37,10 +37,6 @@ import {
 } from './_base/layout';
 
 
-import { FileSelectDirective , FileDropDirective} from "ng2-file-upload";
-
-
-
 @NgModule({
 	imports: [CommonModule],
 	declarations: [
@@ -59,8 +55,6 @@ import { FileSelectDirective , FileDropDirective} from "ng2-file-upload";
 		NgSelectFormFieldControlDirective,
 		StickyDirective,
 		MaskDirective,
-		FileSelectDirective,
-		FileDropDirective,
 		// pipes
 		TimeElapsedPipe,
 		DateTimeMessagePipe, 
@@ -93,8 +87,6 @@ import { FileSelectDirective , FileDropDirective} from "ng2-file-upload";
 		NgSelectFormFieldControlDirective,
 		StickyDirective,
 		MaskDirective,
-		FileDropDirective,
-		FileSelectDirective,
 		// pipes
 		TimeElapsedPipe,
 		DateTimeMessagePipe, 

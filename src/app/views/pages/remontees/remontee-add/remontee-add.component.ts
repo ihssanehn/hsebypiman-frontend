@@ -143,9 +143,10 @@ export class RemonteeAddComponent implements OnInit {
       let fileItem = this.uploader.queue[i]._file;
       if(fileItem.size > 10000000){
         alert("Each File should be less than 10 MB of size.");
-        return;
+        return true;
       }
     }
+    return false;
   }
 
 }

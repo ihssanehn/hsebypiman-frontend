@@ -41,6 +41,8 @@ import { CoreModule } from './core/core.module';
 import { ThemeModule } from './views/theme/theme.module';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { NgImageSliderModule } from 'ng-image-slider';
+
+import { FileUploadModule } from 'ng2-file-upload';
 // Partials 
 import { PartialsModule } from './views/partials/partials.module';
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -141,6 +143,7 @@ export function hljsLanguages(): HighlightLanguage[] {
 		SignaturePadModule,
 		NgImageSliderModule,
 		AvatarModule,
+		FileUploadModule
 		// NgxEchartsModule.forRoot({
 		// 	echarts:{ 
 		// 		init,

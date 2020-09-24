@@ -50,7 +50,7 @@ import {
 	DateAdapter
 } from '@angular/material';
 // FileUpload
-import { MatFileUploadModule } from 'angular-material-fileupload';
+import { FileUploadModule } from 'ng2-file-upload';
 
 // DateAdapter
 import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapter';
@@ -200,7 +200,7 @@ const routes: Routes = [
 		NgbTooltipModule,
 		NgbPopoverModule,
 		NgxMaskModule,
-		MatFileUploadModule,
+		FileUploadModule,
 
 	],
 	providers: [
