@@ -1,4 +1,4 @@
-<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8" id="portlet-remonte" *ngIf="remonte">
+<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8" id="portlet-remonte" *ngIf="remontee">
 	<div class="tf-portlet-header ">
 		<span class="title">
 			<a [routerLink]="['/remontees/list']">{{'MENU.SUB_REMONTEES.LIST' | translate}}</a><span class="divider">></span><span class="id-item">{{'MENU.SUB_REMONTEES.DETAIL' | translate}}</span>
@@ -8,10 +8,10 @@
 				<mat-icon>more_vert</mat-icon>
 			</button>
 			<div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
-				<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editRemonte(remonte.id)" *ngxPermissionsOnly="['remontee_canUpdate']">
+				<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editRemonte(remontee.id)" *ngxPermissionsOnly="['remontee_canUpdate']">
 					<mat-icon>edit</mat-icon>
 				</button>
-				<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteRemonte(remonte.id)" *ngxPermissionsOnly="['remontee_canArchieve']">
+				<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteRemonte(remontee.id)" *ngxPermissionsOnly="['remontee_canArchieve']">
 					<mat-icon>delete</mat-icon>
 				</button>
 			</div>
@@ -23,15 +23,15 @@
 				<div class="card">
 					<h3>Informations générales</h3>
 					<div class="box" style="flex:1">
-						<p><span class="label pull-left mr-2">{{'REMONTEES.CREATOR.TITLE' | translate}}</span><span class="">{{remonte.creator | fullName}}</span></p>
-						<p><span class="label pull-left mr-2">{{'REMONTEES.TYPE.TITLE' | translate}}</span><span class="">{{remonte.type?.libelle}}</span></p>
+						<p><span class="label pull-left mr-2">{{'REMONTEES.CREATOR.TITLE' | translate}}</span><span class="">{{remontee.creator | fullName}}</span></p>
+						<p><span class="label pull-left mr-2">{{'REMONTEES.TYPE.TITLE' | translate}}</span><span class="">{{remontee.type?.libelle}}</span></p>
 					</div>
 					<div class="tf-divider">
 						<span></span>
 					</div>
 					<div class="box text-center">
-						<small>{{'COMMON.CREATED_AT.TITLE' | translate}} : {{remonte.created_at | date:'dd/MM/yyyy'}}</small><br>
-						<small>{{'COMMON.UPDATED_AT.TITLE' | translate}} : {{remonte.updated_at ? (remonte.updated_at | date:'dd/MM/yyyy'): '-'}}</small>
+						<small>{{'COMMON.CREATED_AT.TITLE' | translate}} : {{remontee.created_at | date:'dd/MM/yyyy'}}</small><br>
+						<small>{{'COMMON.UPDATED_AT.TITLE' | translate}} : {{remontee.updated_at ? (remontee.updated_at | date:'dd/MM/yyyy'): '-'}}</small>
 					</div>
 				</div>
 			</div>
@@ -39,11 +39,20 @@
 				<div class="card">
 					<h3>Description</h3>
 					<div class="box" style="flex:1">
-						<p class="text-left">{{remonte.description}}</p>
+						<p class="text-left">{{remontee.description}}</p>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-12 mt-4">
+				<div class="card">
+					<h3 class="mb-3">Documents</h3>
+					<ul>
+						<li class="mb-3 pointer" *ngFor="let document of remontee.documents" (click)="showDocument(document)">
+							{{document.libelle}}
+							<mat-icon color="info" class="pull-right pointer" (click)="$event.stopPropagation(); downloadDoc(document)" aria-label="Télécharger le document">cloud_download</mat-icon>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</tf-portlet-body>

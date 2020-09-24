@@ -1,4 +1,4 @@
-<form [formGroup]="remonteForm" autocomplete="off" class="tf-form tf-form--group-seperator-dashed " novalidate (ngSubmit)="remonteForm.valid && onSubmit()" fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+<form [formGroup]="remonteeForm" autocomplete="off" class="tf-form tf-form--group-seperator-dashed " novalidate (ngSubmit)="!controlDocuments() && remonteeForm.valid && onSubmit()" fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
 	<tf-portlet class="main-portlet-form" id="portlet-ar">
 		<div class="tf-portlet-header ">
 			<span class="title">
@@ -7,10 +7,10 @@
 				<span class="id-item">{{'MENU.SUB_REMONTEES.ADD' | translate}}</span>
 			</span>
 		</div>
-		<tf-remontee-form [remonteForm]="remonteForm" [formStatus]="formStatus" [edit]="false"></tf-remontee-form>
+		<tf-remontee-form [remonteeForm]="remonteeForm" [formStatus]="formStatus" [uploader]="uploader" [edit]="false"></tf-remontee-form>
 	</tf-portlet>
 	<div>
-		<button mat-raised-button [ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': formloading}" [disabled]="formloading || remonteForm.invalid" color="success" class="pull-right">
+		<button mat-raised-button [ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': formloading}" [disabled]="controlDocuments() || formloading || remonteeForm.invalid" color="success" class="pull-right">
 			{{'ACTION.SAVE' | translate}}
 		</button>
 		<button type="button" mat-raised-button color="info" (click)="onCancel()">

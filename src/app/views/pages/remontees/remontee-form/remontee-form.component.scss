@@ -4,3 +4,13 @@
     justify-content: center;
     align-items: center;
 }
+
+.drop-zone{
+    display: flex;
+    background: #e7f1fa;
+    height: 300px;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 3px 0 rgba(0, 0, 0, 0.4);
+}

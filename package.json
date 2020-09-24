@@ -54,6 +54,7 @@
         "ng-pick-datetime": "^7.0.0",
         "ng-pick-datetime-moment": "^1.0.7",
         "ng-zorro-antd": "^8.5.2",
+        "ng2-file-upload": "^1.4.0",
         "ngrx-store-freeze": "^0.2.4",
         "ngx-avatar": "^4.0.0",
         "ngx-clipboard": "^12.2.0",

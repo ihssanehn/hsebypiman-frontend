@@ -32,7 +32,7 @@ export class InterceptService implements HttpInterceptor {
 			   Authorization: `Bearer ${localStorage.getItem(environment.authTokenKey)}`,
 			   // We could have used translationService.getSelectedLang but injecting that service causes a circular dependency
 			   "Accept-Language": localStorage.getItem('language') || this.translate.getDefaultLang(),
-			   "Content-Type": "application/json"
+				//  "Content-Type": "application/json"
 		   }
 	   });
 	   // console.log('----request----');

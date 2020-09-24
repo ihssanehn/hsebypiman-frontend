@@ -52,5 +52,10 @@ export class DocumentService extends HttpService{
         return this.baseUrl+'/'+item_id+'/file'+'?token='+localStorage.getItem(environment.authTokenKey)
     }
     
+    downloadFile(item_id){
+        var url = this.baseUrl+'/'+item_id+'/download?token='+localStorage.getItem(environment.authTokenKey);
+        window.open(url, '_blank');
+    }
+    
 
 }

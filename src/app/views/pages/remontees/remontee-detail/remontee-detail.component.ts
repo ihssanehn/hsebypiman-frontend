@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
 import { BehaviorSubject, Observable, of, Subscription } from "rxjs";
 
-import { RemonteeService, TypeService } from '@app/core/services';
+import { RemonteeService, DocumentService } from '@app/core/services';
 import { Paginate } from '@app/core/_base/layout/models/paginate.model';
 import { Remontee } from '@app/core/models';
 import { NgxPermissionsService } from 'ngx-permissions';
@@ -11,6 +11,10 @@ import { NgxPermissionsService } from 'ngx-permissions';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import Swal from 'sweetalert2';
+import { MatDialog } from '@angular/material';
+import { ShowDocumentContentDialogComponent } from '@app/views/partials/layout/modal/show-document-content-dialog/show-document-content-dialog.component';
+import { ThrowStmt } from '@angular/compiler';
+
 
 @Component({
   selector: 'tf-remontee-detail',
@@ -19,8 +23,7 @@ import Swal from 'sweetalert2';
 })
 export class RemonteeDetailComponent implements OnInit, OnDestroy {
   
-  	remonte: Remontee;
-	remonteForm: FormGroup;
+	remontee: Remontee;
 	// allRoles: Role[];
 	loaded = false;
 	editMode: boolean = false;
@@ -39,11 +42,11 @@ export class RemonteeDetailComponent implements OnInit, OnDestroy {
 	constructor(
 		private activatedRoute: ActivatedRoute,
 		private router: Router,
-		private remonteFB: FormBuilder,
 		// private notificationService: NzNotificationService,
+    public dialog: MatDialog,
 		private remonteeService: RemonteeService,
+		private documentService: DocumentService,
 		private cdr: ChangeDetectorRef,
-		private permissionsService : NgxPermissionsService,
 		iconRegistry: MatIconRegistry, 
 		sanitizer: DomSanitizer
 	) {
@@ -51,45 +54,30 @@ export class RemonteeDetailComponent implements OnInit, OnDestroy {
 		iconRegistry.addSvgIcon('status-termine',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/termine.svg'));
 	}
 
-  	ngOnInit() {
-	  	const routeSubscription = this.activatedRoute.params.subscribe(
-		  	async params => {
-			  	const id = params.id;
-			  	if (id) {
-					this.getRemonte(id);
+	ngOnInit() {
+		const routeSubscription = this.activatedRoute.params.subscribe(
+			async params => {
+				const id = params.id;
+				if (id) {
+				this.getRemonte(id);
 
-				} else {
-					this.router.navigateByUrl('/remontees/list');
-				}
+			} else {
+				this.router.navigateByUrl('/remontees/list');
 			}
-		);
+		});
 	}
 
-  	async getRemonte(remonteId){
+	async getRemonte(remonteId){
 		try {
 			var res = await this.remonteeService.get(remonteId).toPromise();
-			this.remonte = res.result.data;
-			if(this.remonte.type.code == 'INTERIM'){
-				this.displayedEEChantiersColumns = [
-					'number', 'name', 'client', 'status', 'charge_affaire', 
-					'date_demarrage', 'date_demarrage_ee', 'interimaire'
-				];
-				this.cdr.markForCheck();
-
-			}else{
-				this.displayedEEChantiersColumns = [
-					'number', 'name', 'client', 'status', 'charge_affaire', 
-					'date_demarrage', 'date_demarrage_ee', 'ca_ee'
-				];
-				this.cdr.markForCheck();
-
-			}
+			this.remontee = res.result.data;
+			this.cdr.markForCheck()
 		} catch (error) {
 			console.error(error);
 		}
 	}
 
-  	ngOnDestroy() {
+	ngOnDestroy() {
 		this.subscriptions.forEach(sb => sb.unsubscribe());
 	}
 
@@ -136,4 +124,13 @@ export class RemonteeDetailComponent implements OnInit, OnDestroy {
 		this.router.navigateByUrl('chantiers/detail/' + chantierId);
 	}
 
+	showDocument(doc){
+		const dialogRef = this.dialog.open(ShowDocumentContentDialogComponent, {
+			data: { document : doc}
+		});
+	}
+
+	downloadDoc(doc){
+		return this.documentService.downloadFile(doc.id);
+	}
 }

@@ -49,6 +49,9 @@ import {
 	MAT_DATE_FORMATS,
 	DateAdapter
 } from '@angular/material';
+// FileUpload
+import { MatFileUploadModule } from 'angular-material-fileupload';
+
 // DateAdapter
 import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapter';
 // Components
@@ -171,7 +174,7 @@ const routes: Routes = [
 		MatButtonModule,
 		MatMenuModule,
 		MatSelectModule,
-        MatInputModule,
+		MatInputModule,
 		MatTableModule,
 		MatBadgeModule,
 		MatChipsModule,
@@ -197,6 +200,8 @@ const routes: Routes = [
 		NgbTooltipModule,
 		NgbPopoverModule,
 		NgxMaskModule,
+		MatFileUploadModule,
+
 	],
 	providers: [
 		InterceptService,

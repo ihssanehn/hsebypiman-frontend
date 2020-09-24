@@ -14,6 +14,7 @@ import * as moment from 'moment';
 import Swal from 'sweetalert2';
 import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
 import {FormStatus} from '@app/core/_base/crud/models/form-status';
+import {FileUploader} from "ng2-file-upload";
 
 @Component({
 	selector: 'tf-remontee-edit',
@@ -24,15 +25,19 @@ import {FormStatus} from '@app/core/_base/crud/models/form-status';
 export class RemonteeEditComponent implements OnInit, OnDestroy {
 
 	errors;
-	remonteForm: FormGroup;
+	remonteeForm: FormGroup;
   	formStatus = new FormStatus();
-	remonte: Remontee;
+	remontee: Remontee;
 	// allRoles: Role[];
 	loaded: boolean = false;
 	formloading: boolean = false;
 	editMode: boolean = false;
 	// Private properties
 	private subscriptions: Subscription[] = [];
+
+	public uploader:FileUploader = new FileUploader({
+    isHTML5: true
+  });
 
 	/**
 	 * Component constructor
@@ -63,10 +68,19 @@ export class RemonteeEditComponent implements OnInit, OnDestroy {
 				if (id) {
 					this.remonteeService.get(id).pipe(
 						tap(res=>{
-							this.remonteForm.patchValue(res.result.data);
+							this.remonteeForm.patchValue(res.result.data);
+							const documentArray = this.remonteeForm.get('documents') as FormArray;
+							for (let i = 0; i < res.result.data.documents.length; i++) {
+								const item = res.result.data.documents[i];
+								var document = this.remonteFB.group({
+									libelle: [item.libelle],
+									id: [item.id, Validators.required],
+								});
+								documentArray.push(document);
+							}
 						})
 					).subscribe( async res => {
-						this.remonte = res.result.data;
+						this.remontee = res.result.data;
 						this.loaded = true;
 						this.cdr.markForCheck();
 					});
@@ -95,14 +109,17 @@ export class RemonteeEditComponent implements OnInit, OnDestroy {
 	}
 
 	createForm() {
-		this.remonteForm = this.remonteFB.group({
+		this.remonteeForm = this.remonteFB.group({
+			id: [null, Validators.required],
 			description: ['', Validators.required],
 			type_id: [null, Validators.required],
+			documentsToUpload: [null, null],
+			documents: new FormArray([]),
 		});
 	}
 
 	setDynamicValidators(){
-		const no_hab_required = this.remonteForm.get('no_hab_required');
+		const no_hab_required = this.remonteeForm.get('no_hab_required');
 	}
   
 	/**
@@ -123,10 +140,19 @@ export class RemonteeEditComponent implements OnInit, OnDestroy {
 		try {
 			this.formloading = true;
 			this.formStatus.onFormSubmitting();
-			let form = {...this.remonteForm.getRawValue()};
-			form.id = this.remonte.id;
+			let formData = new FormData();
+			let form = {...this.remonteeForm.getRawValue()};
 			
-			this.remonteeService.update(form)
+      for (let j = 0; j < this.uploader.queue.length; j++) {
+        let fileItem = this.uploader.queue[j]._file;
+        formData.append('documents[]', fileItem);
+      }
+
+      formData.append('type_id', this.remonteeForm.get('type_id').value);
+      formData.append('description', this.remonteeForm.get('description').value);
+			
+			
+			this.remonteeService.update(this.remontee.id, formData)
 				.toPromise()
 				.then((remonte) => {
 					this.formloading = false;
@@ -138,7 +164,8 @@ export class RemonteeEditComponent implements OnInit, OnDestroy {
 						showConfirmButton: false,
 						timer: 1500
 					}).then(() => {
-            			this.location.back();
+						this.location.back();
+						this.uploader.clearQueue();
 					});
 				})
 				.catch(err => {
@@ -170,4 +197,18 @@ export class RemonteeEditComponent implements OnInit, OnDestroy {
 	cancel() {
 		this.location.back();
 	}
+
+
+  controlDocuments(){
+    for (let i = 0; i < this.uploader.queue.length; i++) {
+      let fileItem = this.uploader.queue[i]._file;
+      if(fileItem.size > 10000000){
+        alert("Each File should be less than 10 MB of size.");
+        return true;
+      }
+		}
+		
+		return false
+  }
+
 }

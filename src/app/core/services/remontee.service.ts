@@ -32,10 +32,14 @@ export class RemonteeService{
         return this.http.get<JsonResponse<Remontee>>(this.baseUrl+'/'+item_id);
     }
     create(item){
-        return this.http.post<JsonResponse<Remontee>>(this.baseUrl+'/'+'create', item);
+		const httpHeaders = new HttpHeaders();
+		httpHeaders.set("Content-Type", "multipart/form-data");
+        return this.http.post<JsonResponse<Remontee>>(this.baseUrl+'/'+'create', item, { headers: httpHeaders });
     }
-    update(item){
-        return this.http.put<JsonResponse<Remontee>>(this.baseUrl+'/'+item.id, item);
+    update(item_id, formData){
+		const httpHeaders = new HttpHeaders();
+		httpHeaders.set("Content-Type", "multipart/form-data");
+        return this.http.post<JsonResponse<Remontee>>(this.baseUrl+'/update/'+item_id, formData, { headers: httpHeaders });
     }
     delete(item_id){
         return this.http.delete<JsonResponse<Remontee>>(this.baseUrl+'/'+item_id);

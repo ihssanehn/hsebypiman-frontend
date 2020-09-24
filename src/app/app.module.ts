@@ -45,6 +45,7 @@ import { NgImageSliderModule } from 'ng-image-slider';
 import { PartialsModule } from './views/partials/partials.module';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ImageLightboxContentDialogComponent } from './views/partials/layout/modal/image-lightbox-content-dialog/image-lightbox-content-dialog.component'
+import { ShowDocumentContentDialogComponent } from './views/partials/layout/modal/show-document-content-dialog/show-document-content-dialog.component'
 // Layout Services
 // FakeApiService
 import {DataTableService,TfDialogService,LayoutConfigService,VersionCheckService,LayoutRefService,MenuAsideService,MenuConfigService,MenuHorizontalService,PageConfigService,SplashScreenService,SubheaderService} from './core/_base/layout';
@@ -63,12 +64,6 @@ import { HttpUtilsService, LayoutUtilsService, TypesUtilsService } from './core/
 // Config
 import { LayoutConfig } from './core/_config/layout.config';
 import { AvatarModule } from 'ngx-avatar';
-
-
-
-// Echart
-// import { init } from 'echarts';
-// import { NgxEchartsModule } from 'ngx-echarts';
 
 // Highlight JS
 import { HIGHLIGHT_OPTIONS, HighlightLanguage } from 'ngx-highlightjs';
@@ -154,7 +149,8 @@ export function hljsLanguages(): HighlightLanguage[] {
 	],
 	exports: [],
 	entryComponents: [
-		ImageLightboxContentDialogComponent
+		ImageLightboxContentDialogComponent,
+		ShowDocumentContentDialogComponent
 	],
 	providers: [
 		{

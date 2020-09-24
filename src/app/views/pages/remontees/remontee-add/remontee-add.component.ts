@@ -13,6 +13,7 @@ import { MatSnackBar } from '@angular/material';
 import Swal from 'sweetalert2';
 import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
 import {FormStatus} from '@app/core/_base/crud/models/form-status';
+import {FileUploader} from "ng2-file-upload";
 
 @Component({
   selector: 'tf-remontee-add',
@@ -21,8 +22,8 @@ import {FormStatus} from '@app/core/_base/crud/models/form-status';
 })
 export class RemonteeAddComponent implements OnInit {
   
-  remonte: Remontee;
-  remonteForm: FormGroup;
+  remontee: Remontee;
+  remonteeForm: FormGroup;
   formStatus = new FormStatus();
   formloading: Boolean = false;
 	// allRoles: Role[];
@@ -30,6 +31,12 @@ export class RemonteeAddComponent implements OnInit {
 	editMode: boolean = false;
   // Private properties
   errors;
+
+
+  public uploader:FileUploader = new FileUploader({
+    isHTML5: true
+  });
+
   
   constructor(
 		private activatedRoute: ActivatedRoute,
@@ -47,31 +54,42 @@ export class RemonteeAddComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.remonte = new Remontee();
+    this.remontee = new Remontee();
     this.createForm();
     this.setDynamicValidators();
   }
 
   createForm() {
-		this.remonteForm = this.remonteFB.group({
+		this.remonteeForm = this.remonteFB.group({
       description: ['', Validators.required],
       type_id: [null, Validators.required],
+      documentsToUpload: [null, null],
     });
 		this.loaded = true;
   }
 
   setDynamicValidators(){
-    const no_hab_required = this.remonteForm.get('no_hab_required');
+    const no_hab_required = this.remonteeForm.get('no_hab_required');
   }
   
   async onSubmit(){
+
     try {
       let result;
       this.formloading = true;
-      let form = {...this.remonteForm.getRawValue()};
+      let formData = new FormData();
+      let form = {...this.remonteeForm.getRawValue()};
       this.formStatus.onFormSubmitting();
-  
-			this.remonteeService.create(form)
+
+      for (let j = 0; j < this.uploader.queue.length; j++) {
+        let fileItem = this.uploader.queue[j]._file;
+        formData.append('documents[]', fileItem);
+      }
+
+      formData.append('type_id', this.remonteeForm.get('type_id').value);
+      formData.append('description', this.remonteeForm.get('description').value);
+      
+			this.remonteeService.create(formData)
         .toPromise()
         .then((res) => {
           this.formloading = false;
@@ -82,9 +100,12 @@ export class RemonteeAddComponent implements OnInit {
             icon: 'success',
             title: 'Remontée QHSE créé avec succès',
             showConfirmButton: false,
-            timer: 1500
+            timer: 1500,
+
+    
           }).then(() => {
-            this.router.navigate(['/remontees/detail/' + remonte.id]);
+              this.uploader.clearQueue();
+            this.router.navigate(['/remontees/detail/' + this.remontee.id]);
           });
         })
         .catch(err =>{ 
@@ -111,11 +132,20 @@ export class RemonteeAddComponent implements OnInit {
       console.error(error);
       throw error;
     }
-
   }
   
 	onCancel() {
 		this.location.back();
   }
   
+  controlDocuments(){
+    for (let i = 0; i < this.uploader.queue.length; i++) {
+      let fileItem = this.uploader.queue[i]._file;
+      if(fileItem.size > 10000000){
+        alert("Each File should be less than 10 MB of size.");
+        return;
+      }
+    }
+  }
+
 }

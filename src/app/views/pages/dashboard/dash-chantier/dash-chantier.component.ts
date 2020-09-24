@@ -14,6 +14,7 @@ import {MatSort} from '@angular/material/sort';
 })
 export class DashChantierComponent implements OnInit {
 
+	chantierListData : MatTableDataSource<Chantier>;
 
 	@ViewChild('chantierSort', {static: false}) set sort(sort: MatSort){
 		if(sort){
@@ -21,7 +22,6 @@ export class DashChantierComponent implements OnInit {
 		}
 	};
 	
-	chantierListData : MatTableDataSource<Chantier>;
 	
   chantiers : Chantier[];
   stats : any;

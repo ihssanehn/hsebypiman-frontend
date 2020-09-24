@@ -6,7 +6,7 @@ export class Remontee {
     id?: number;
     description: string;
     type?:Type;
-    documents?:Document;
+    documents?:Document[];
     creator_id?:number;
     creator?:User;
 }
