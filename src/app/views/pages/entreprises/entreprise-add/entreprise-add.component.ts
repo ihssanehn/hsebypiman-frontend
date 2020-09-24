@@ -84,7 +84,7 @@ export class EntrepriseAddComponent implements OnInit {
           var entreprise = res.result.data;
           Swal.fire({
             icon: 'success',
-            title: 'Entreprise créé avec succès',
+            title: 'Entreprise créée avec succès',
             showConfirmButton: false,
             timer: 1500
           }).then(() => {

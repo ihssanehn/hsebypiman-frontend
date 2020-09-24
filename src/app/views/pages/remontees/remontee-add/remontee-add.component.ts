@@ -95,17 +95,17 @@ export class RemonteeAddComponent implements OnInit {
           this.formloading = false;
           this.errors = false; 
           this.cdr.markForCheck();
-          var remonte = res.result.data;
+          var remontee = res.result.data;
           Swal.fire({
             icon: 'success',
-            title: 'Remontée QHSE créé avec succès',
+            title: 'Remontée QHSE créée avec succès',
             showConfirmButton: false,
             timer: 1500,
 
     
           }).then(() => {
               this.uploader.clearQueue();
-            this.router.navigate(['/remontees/detail/' + this.remontee.id]);
+            this.router.navigate(['/remontees/list']);
           });
         })
         .catch(err =>{ 
