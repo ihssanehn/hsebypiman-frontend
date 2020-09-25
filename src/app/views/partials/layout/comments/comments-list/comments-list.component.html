@@ -1,0 +1,21 @@
+<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8" id="portlet-comment">
+	<div class="tf-portlet-header ">
+		<span class="title">
+		
+		</span>
+	</div>
+	<tf-portlet-body class="tf-portlet__body--fit">
+		<div class="row">
+			<div class="d-flex col-md-12 mt-2" *ngFor="let comment of comments">
+                <div class="col-md-1">
+                    <ngx-avatar class="user-avatar" [round]="true" [size]="50" cornerRadius="5" name="{{comment.commented.fullname}}"></ngx-avatar>
+                </div>
+				<div class="card col-md-11">
+					<p class="comment-title">{{comment.commented.fullname}}</p>
+                    <p>{{comment.comment}}</p>
+                    <p class="comment-date">{{comment.updated_at | date:'dd/MM/yyyy'}}</p>
+				</div>
+			</div>
+		</div>
+	</tf-portlet-body>
+</tf-portlet>
