@@ -125,9 +125,11 @@ export class RemonteeDetailComponent implements OnInit, OnDestroy {
 	}
 
 	showDocument(doc){
-		const dialogRef = this.dialog.open(ShowDocumentContentDialogComponent, {
-			data: { document : doc}
-		});
+		if(['doc', 'docx', 'xls', 'xlsx'].indexOf(doc.extension) == -1){
+			const dialogRef = this.dialog.open(ShowDocumentContentDialogComponent, {
+				data: { document : doc}
+			});
+		}
 	}
 
 	downloadDoc(doc){

@@ -107,6 +107,7 @@ import {
 		{provide: 'ParameterService', useClass: environment.isMockEnabled ? HttpParameterService : HttpParameterService},
 		DateEnToFrPipe, 
 		DateFrToEnPipe,
+		SafePipe,
 		RecursiveSearchPipe,
 	]
 })
