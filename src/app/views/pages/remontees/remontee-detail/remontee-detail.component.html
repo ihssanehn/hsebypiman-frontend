@@ -47,7 +47,7 @@
 				<div class="card">
 					<h3 class="mb-3">Documents</h3>
 					<ul>
-						<li class="mb-3" [ngClass]="['doc', 'docx', 'xls', 'xlsx'].indexOf(document.extension) == -1 ? 'pointer':''" *ngFor="let document of remontee.documents" (click)="showDocument(document)">
+						<li class="mb-3" [ngClass]="['xls', 'xlsx'].indexOf(document.extension) == -1 ? 'pointer':''" *ngFor="let document of remontee.documents" (click)="showDocument(document)">
 							{{document.libelle}}
 							<mat-icon color="info" class="pull-right pointer" (click)="$event.stopPropagation(); downloadDoc(document)" aria-label="Télécharger le document">cloud_download</mat-icon>
 						</li>

@@ -6,7 +6,7 @@
             <object *ngIf="data.document.pdf" [data]="data.document.pdf" type="application/pdf"
                 style="width: 100vw; height:100vh;">
             </object>
-            <iframe *ngIf="data.document.doc" [src]="'http://drive.google.com/viewerng/viewer?embedded=true&url='+data.document.doc | safe:'resourceUrl'" style="width: 100vw; height:100vh;"></iframe>
+            <iframe *ngIf="data.document.doc" [src]="'https://docs.google.com/gview?embedded=true&url='+data.document.doc | safe:'resourceUrl'" style="width: 100vw; height:100vh;"></iframe>
         </div>
     </div>
 </div>x
