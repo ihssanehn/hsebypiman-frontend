@@ -27,8 +27,8 @@ export class RemonteesListComponent implements OnInit, AfterViewInit {
 		per_page: this.pagination.pageSize,
 		page: this.pagination.page,
 		paginate: true,
-		order_by: ['raison_sociale'],
-		order_way: 'asc',
+		order_by: ['created_at'],
+		order_way: 'desc',
 		keyword: "",
 	};
 	showFilters:Boolean = false;

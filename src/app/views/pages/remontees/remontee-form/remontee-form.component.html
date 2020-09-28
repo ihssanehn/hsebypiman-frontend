@@ -40,9 +40,16 @@
 									<h4>Documents</h4>
 									<div class="row">
 										<div class="col-4">
-											<input formControlName="documentsToUpload" class="mb-2" type="file" ng2FileSelect accept=".png" [uploader]="uploader" multiple />
-											<div ng2FileDrop [uploader]="uploader" class="drop-zone">
-												Drag and drop files to upload
+											
+											<input formControlName="documentsToUpload" (onFileSelected)="onFileDrop($event)" class="mb-2" type="file" ng2FileSelect 
+											accept=".png, .bmp, .jpeg, .jpg, .gif, .tif, .PNG, .BMP, .JPEG, .JPG, .GIF, .TIF, .pdf, .doc, .docx, .xls, .xlsx, .PDF, .DOC, .DOCX, .XLS, .XLSX," [uploader]="uploader" multiple />
+											
+											<div ng2FileDrop [uploader]="uploader" 
+											(onFileDrop)="onFileDrop($event)"
+											class="drop-zone">
+												{{'UPLOAD.DROPZONE.PLACEHOLDER' | translate}} <br>
+												{{'UPLOAD.LIST_EXT' | translate}} : jpg, bmp, jpeg, gif, png, tif, pdf, doc, docx, xls, xlsx <br>
+												{{'UPLOAD.MAX_SIZE' | translate}} : 4 Mo
 											</div>
 										</div>
 										<div class="col-8">

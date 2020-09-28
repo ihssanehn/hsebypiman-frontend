@@ -4,7 +4,9 @@ import { Type,  } from '@app/core/models';
 import { TypeService, DocumentService } from '@app/core/services';
 import { FormStatus } from '@app/core/_base/crud/models/form-status';
 import {FileUploader} from "ng2-file-upload";
+import { TranslateService } from '@ngx-translate/core';
 import Swal from 'sweetalert2';
+import { drop } from 'lodash';
 
 
 @Component({
@@ -27,6 +29,7 @@ export class RemonteeFormComponent implements OnInit {
     private typeService:TypeService,
     private documentService:DocumentService,
     private cdr: ChangeDetectorRef,
+		private translate:TranslateService,
   ) { }
 
   ngOnInit() {
@@ -108,8 +111,45 @@ export class RemonteeFormComponent implements OnInit {
     });
   }
   
-
   seeItem(item){
     return item.file.name
+  }
+  
+  onFileDrop(event){
+    var extensions = ['jpg','bmp','jpeg','gif','png','tif','pdf','doc','docx','xls','xlsx'];
+
+    for (let i = 0; i < event.length; i++) {
+      
+      const droppedFile = event[i];
+      var name = droppedFile.name.split('.');
+      var ext = name[name.length -1].toLowerCase();
+      
+      let error = false;
+
+      if( extensions.indexOf(ext) == -1 ){
+        error = true;
+        Swal.fire({
+          icon: 'error',
+          title: this.translate.instant('UPLOAD.EXTENSION')+' '+droppedFile.name,
+          showConfirmButton: false,
+          timer: 1500
+        });
+      } else if (droppedFile.size > 4000000) {
+        error = true;
+        Swal.fire({
+          icon: 'error',
+          title: this.translate.instant('UPLOAD.SIZE')+' '+droppedFile.name,
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
+
+
+      if(error == true){
+        this.uploader.queue = this.uploader.queue.filter(x=>x.file.name != droppedFile.name);
+      }
+      console.log(droppedFile);
+    }
+
   }
 }

@@ -1130,5 +1130,15 @@ export const locale = {
 			SEARCH_SALARIE : "Rechercher un salarié",
 			ADD_VEHICULE : "Numéro d'identification du véhicule",
 		},
+
+		UPLOAD: {
+			EXTENSION: 'Ce type de fichier ne peut pas être importé',
+			SIZE: 'Vous ne pouvez pas uploader des fichiers de plus de 1 Mo',
+			DROPZONE:{
+				PLACEHOLDER: 'Déposez vos fichier ici',
+			},
+			LIST_EXT: 'Liste des extensions',
+			MAX_SIZE: 'Taille maximale'
+		}
 	}
 };
