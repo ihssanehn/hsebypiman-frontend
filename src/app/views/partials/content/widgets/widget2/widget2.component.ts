@@ -14,6 +14,7 @@ export class Widget2Component implements OnInit {
 	// Public properties
 	@Input() data: any[] = [];
 	@Input() label: string;
+	@Input() hasLink: boolean = true;
 	@Input() title: string;
 
 	@ContentChild('actionTemplate', {static: true}) actionTemplate: TemplateRef<any>;

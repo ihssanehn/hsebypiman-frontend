@@ -6,7 +6,7 @@
 			<tf-portlet-header [title]="'Top 5 collaborateurs'"></tf-portlet-header>
 			<tf-portlet-body  [class]="'tf-portlet__body--fit'" *ngIf="stats">
 				<ng-container>
-					<tf-widget2 [label]="'fullname'" (onGoTo)="goToRemontee($event)" [data]="stats.top_creators"*ngIf="stats; else loading">
+					<tf-widget2 [label]="'fullname'" [hasLink]="false" [data]="stats.top_creators"*ngIf="stats; else loading">
 						<ng-template #actionTemplate let-item="item">
 							<span class="tf-widget4__number" >{{item.remontees_count}}</span>
 						</ng-template>
@@ -29,5 +29,4 @@
 			</tf-portlet-body>
 		</tf-portlet>
 	</div>
-	
 </div>
