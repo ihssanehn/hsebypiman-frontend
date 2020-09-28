@@ -75,6 +75,7 @@ export { SalarieCardComponent } from './salarie/salarie-card/salarie-card.compon
 
 // COMMENTS
 export { CommentsListComponent } from './comments/comments-list/comments-list.component';
+export { CommentsAddComponent } from './comments/comments-add/comments-add.component';
 
 // ROOT
 export { HabilitationsAdminComponent } from './admins/habilitations/habilitations-admin.component';

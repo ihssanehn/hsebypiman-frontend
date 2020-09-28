@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
 import { MatDialog } from '@angular/material';
 import { ShowDocumentContentDialogComponent } from '@app/views/partials/layout/modal/show-document-content-dialog/show-document-content-dialog.component';
 import { ThrowStmt } from '@angular/compiler';
+import { User, AuthService } from '@app/core/auth';
 
 
 @Component({
@@ -24,6 +25,7 @@ import { ThrowStmt } from '@angular/compiler';
 export class RemonteeDetailComponent implements OnInit, OnDestroy {
   
 	remontee: Remontee;
+	currentUser: User;
 	// allRoles: Role[];
 	loaded = false;
 	editMode: boolean = false;
@@ -46,12 +48,14 @@ export class RemonteeDetailComponent implements OnInit, OnDestroy {
     public dialog: MatDialog,
 		private remonteeService: RemonteeService,
 		private documentService: DocumentService,
+		private authService: AuthService,
 		private cdr: ChangeDetectorRef,
 		iconRegistry: MatIconRegistry, 
 		sanitizer: DomSanitizer
 	) {
 		iconRegistry.addSvgIcon('status-encours',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/encours.svg'));
 		iconRegistry.addSvgIcon('status-termine',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/termine.svg'));
+		this.authService.currentUser.subscribe(x=> this.currentUser = x);
 	}
 
 	ngOnInit() {
@@ -132,5 +136,37 @@ export class RemonteeDetailComponent implements OnInit, OnDestroy {
 
 	downloadDoc(doc){
 		return this.documentService.downloadFile(doc.id);
+	}
+
+	onAddComment(newComment: string){
+		console.log(newComment);
+		try {
+			let comment = {
+				'commented_id': this.currentUser.id,
+				'comment': newComment
+			};
+	  
+			this.remonteeService.addComment(this.remontee.id, comment)
+			  .toPromise()
+			  .then((res) => {
+				this.cdr.markForCheck();
+				this.remontee.comments.push(res.result.data);
+			  })
+			  .catch(err =>{ 
+	  
+				Swal.fire({
+				  icon: 'error',
+				  title: 'Echec! le formulaire est incomplet',
+				  showConfirmButton: false,
+				  timer: 1500
+				});
+	  
+			  });
+			  
+			this.cdr.markForCheck();
+		  } catch (error) {
+			console.error(error);
+			throw error;
+		  }
 	}
 }

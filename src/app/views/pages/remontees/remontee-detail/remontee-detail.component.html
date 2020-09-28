@@ -58,7 +58,7 @@
 	</tf-portlet-body>
 </tf-portlet>
 
-<tf-comments-list *ngIf="remontee" [comments]="remontee.comments"></tf-comments-list>
+<tf-comments-list *ngIf="remontee" [comments]="remontee.comments" (onAddComment)="onAddComment($event)"></tf-comments-list>
  
 <ng-template #noChantier>
 		<p class="text-left">

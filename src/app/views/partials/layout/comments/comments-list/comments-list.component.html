@@ -1,8 +1,11 @@
 <tf-portlet class="tf-portlet--height-fluid mat-elevation-z8" id="portlet-comment">
 	<div class="tf-portlet-header ">
 		<span class="title">
-		
+			<span class="id-item">Commentaires</span>
 		</span>
+		<button mat-icon-button class="d-inline-block pull-right" color="info" matTooltip="Commenter" (click)="addComment()" *ngxPermissionsOnly="['remontee_canUpdate']">
+			<mat-icon>add</mat-icon>
+		</button>
 	</div>
 	<tf-portlet-body class="tf-portlet__body--fit">
 		<div class="row">
