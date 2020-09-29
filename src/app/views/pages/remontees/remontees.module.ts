@@ -64,6 +64,7 @@ import { RemonteeEditComponent } from './remontee-edit/remontee-edit.component';
 import { RemonteeAddComponent } from './remontee-add/remontee-add.component';
 import { RemonteeDetailComponent } from './remontee-detail/remontee-detail.component';
 import { RemonteeAdminComponent } from './remontee-admin/remontee-admin.component';
+import { CommentsAddComponent } from '@app/views/partials/layout';
 
 
 
@@ -227,7 +228,8 @@ const routes: Routes = [
 		LayoutUtilsService
 	],
 	entryComponents: [
-		ActionNotificationComponent
+		ActionNotificationComponent,
+		CommentsAddComponent
 		// 
 	],
 	declarations: [

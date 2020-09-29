@@ -55,6 +55,12 @@ export class RemonteeService{
     getStats(params){
         return this.http.post<JsonResponse<any>>(this.baseUrl+'/stats', params);
     }
+
+    addComment(id, comment){
+		const httpHeaders = new HttpHeaders();
+		httpHeaders.set("Content-Type", "multipart/form-data");
+        return this.http.post<JsonResponse<any>>(this.baseUrl+'/'+id+'/comment', comment, { headers: httpHeaders });
+    }
     
 
 }

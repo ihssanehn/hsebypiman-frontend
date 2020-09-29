@@ -73,6 +73,10 @@ export { SalariePortletBoxComponent } from './salarie/salarie-portlet-box/salari
 export { SalariePortletRowComponent } from './salarie/salarie-portlet-row/salarie-portlet-row.component';
 export { SalarieCardComponent } from './salarie/salarie-card/salarie-card.component';
 
+// COMMENTS
+export { CommentsListComponent } from './comments/comments-list/comments-list.component';
+export { CommentsAddComponent } from './comments/comments-add/comments-add.component';
+
 // ROOT
 export { HabilitationsAdminComponent } from './admins/habilitations/habilitations-admin.component';
 export { ArZonesAdminComponent } from './admins/ar-zones-admin/ar-zones-admin.component';

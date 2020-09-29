@@ -1,0 +1,24 @@
+<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8" id="portlet-comment">
+	<div class="tf-portlet-header" [ngStyle]="{'padding': comments.length ? '20px 20px 0 20px': '20px'}">
+		<span class="title">
+			<span class="id-item">Commentaires</span>
+		</span>
+		<button mat-icon-button class="d-inline-block pull-right" color="info" matTooltip="Commenter" (click)="addComment()" *ngxPermissionsOnly="['remontee_canUpdate']">
+			<mat-icon>add</mat-icon>
+		</button>
+	</div>
+	<tf-portlet-body class="tf-portlet__body--fit" *ngIf="comments.length">
+		<div class="row">
+			<div class="d-flex col-md-12 mt-2" *ngFor="let comment of comments">
+                <div class="col-md-1">
+                    <ngx-avatar class="user-avatar" [round]="true" value="28%" cornerRadius="5" name="{{comment.commented.fullname}}"></ngx-avatar>
+                </div>
+				<div class="card col-md-11">
+					<p class="comment-title">{{comment.commented.fullname}}</p>
+                    <p>{{comment.comment}}</p>
+                    <p class="comment-date"><mat-icon class="mr-1">schedule</mat-icon>{{comment.updated_at | date:'d MMM y, hh:mm'}}</p>
+				</div>
+			</div>
+		</div>
+	</tf-portlet-body>
+</tf-portlet>
