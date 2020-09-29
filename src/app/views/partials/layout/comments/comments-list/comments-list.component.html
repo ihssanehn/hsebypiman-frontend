@@ -11,12 +11,12 @@
 		<div class="row">
 			<div class="d-flex col-md-12 mt-2" *ngFor="let comment of comments">
                 <div class="col-md-1">
-                    <ngx-avatar class="user-avatar" [round]="true" [size]="50" cornerRadius="5" name="{{comment.commented.fullname}}"></ngx-avatar>
+                    <ngx-avatar class="user-avatar" [round]="true" value="28%" cornerRadius="5" name="{{comment.commented.fullname}}"></ngx-avatar>
                 </div>
 				<div class="card col-md-11">
 					<p class="comment-title">{{comment.commented.fullname}}</p>
                     <p>{{comment.comment}}</p>
-                    <p class="comment-date">{{comment.updated_at | date:'dd/MM/yyyy'}}</p>
+                    <p class="comment-date"><mat-icon class="mr-1">schedule</mat-icon>{{comment.updated_at | date:'d MMM y, hh:mm'}}</p>
 				</div>
 			</div>
 		</div>

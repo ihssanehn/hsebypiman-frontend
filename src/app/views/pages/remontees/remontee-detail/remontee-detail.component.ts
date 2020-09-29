@@ -139,7 +139,6 @@ export class RemonteeDetailComponent implements OnInit, OnDestroy {
 	}
 
 	onAddComment(newComment: string){
-		console.log(newComment);
 		try {
 			let comment = {
 				'commented_id': this.currentUser.id,
