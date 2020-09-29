@@ -923,7 +923,7 @@ export const locale = {
 			COMMENT:{
 				LABEL:'Commentaires',
 				TITLE:'Commentaires',
-				SHORTTITLE:'Commentaires'
+				SHORTTITLE:'Commentaires',
 			},
 			FORM:{
 				CREATE: 'Créer un nouveau plan d\'action'
@@ -1139,6 +1139,12 @@ export const locale = {
 			},
 			LIST_EXT: 'Liste des extensions',
 			MAX_SIZE: 'Taille maximale'
+		},
+
+		COMMENTS: {
+			AUTH: 'Vous',
+			ADD: 'Ajouter un commentaire',
+			SEND: 'Envoyer'
 		}
 	}
 };

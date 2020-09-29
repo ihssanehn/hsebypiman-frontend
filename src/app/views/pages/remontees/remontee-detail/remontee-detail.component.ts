@@ -25,7 +25,6 @@ import { User, AuthService } from '@app/core/auth';
 export class RemonteeDetailComponent implements OnInit, OnDestroy {
   
 	remontee: Remontee;
-	currentUser: User;
 	// allRoles: Role[];
 	loaded = false;
 	editMode: boolean = false;
@@ -55,7 +54,6 @@ export class RemonteeDetailComponent implements OnInit, OnDestroy {
 	) {
 		iconRegistry.addSvgIcon('status-encours',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/encours.svg'));
 		iconRegistry.addSvgIcon('status-termine',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/termine.svg'));
-		this.authService.currentUser.subscribe(x=> this.currentUser = x);
 	}
 
 	ngOnInit() {
@@ -141,7 +139,6 @@ export class RemonteeDetailComponent implements OnInit, OnDestroy {
 	onAddComment(newComment: string){
 		try {
 			let comment = {
-				'commented_id': this.currentUser.id,
 				'comment': newComment
 			};
 	  

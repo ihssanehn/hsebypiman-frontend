@@ -37,6 +37,13 @@
 						</div>
 					</div>
 				</a>
+				<a ngbDropdownItem (click)="goToParams()" *ngIf="hasPermission(['ROOT','ADMIN'])" href="javascript:;" class="mb-2">
+					<div class="tf-notification__item-details">
+						<div class="tf-notification__item-title tf-font-bold">
+							{{'MENU.ROOT' | translate}}
+						</div>
+					</div>
+				</a>
 			</div>
 		</div>
 	</div>

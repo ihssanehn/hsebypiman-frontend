@@ -22,43 +22,33 @@
 			<div class="col-md-4">
 				<div class="card">
 					<h3>Informations générales</h3>
-					<div class="box" style="flex:1">
+					<div class="box">
 						<p><span class="label pull-left mr-2">{{'REMONTEES.CREATOR.TITLE' | translate}}</span><span class="">{{remontee.creator | fullName}}</span></p>
+						<p><span class="label pull-left mr-2">{{'COMMON.CREATED_AT.TITLE' | translate}}</span><span class="">{{remontee.created_at | date:'dd/MM/yyyy'}}</span></p>
 						<p><span class="label pull-left mr-2">{{'REMONTEES.TYPE.TITLE' | translate}}</span><span class="">{{remontee.type?.libelle}}</span></p>
+						<p><span class="label pull-left mr-2">{{'REMONTEES.DESCRIPTION.TITLE' | translate}}</span><span class="">{{remontee.description}}</span></p>
 					</div>
-					<div class="tf-divider">
+					<div class="tf-divider mb-3">
 						<span></span>
 					</div>
-					<div class="box text-center">
-						<small>{{'COMMON.CREATED_AT.TITLE' | translate}} : {{remontee.created_at | date:'dd/MM/yyyy'}}</small><br>
-						<small>{{'COMMON.UPDATED_AT.TITLE' | translate}} : {{remontee.updated_at ? (remontee.updated_at | date:'dd/MM/yyyy'): '-'}}</small>
+					<h3>Documents</h3>
+					<div class="box" style="flex:1">
+						<ul>
+							<li class="mb-3 pointer" *ngFor="let document of remontee.documents" (click)="showDocument(document)">
+								{{document.libelle}}
+								<mat-icon color="info" class="pull-right pointer" (click)="$event.stopPropagation(); downloadDoc(document)" aria-label="Télécharger le document">cloud_download</mat-icon>
+							</li>
+						</ul>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-8">
-				<div class="card">
-					<h3>Description</h3>
-					<div class="box" style="flex:1">
-						<p class="text-left">{{remontee.description}}</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-12 mt-4">
-				<div class="card">
-					<h3 class="mb-3">Documents</h3>
-					<ul>
-						<li class="mb-3 pointer" *ngFor="let document of remontee.documents" (click)="showDocument(document)">
-							{{document.libelle}}
-							<mat-icon color="info" class="pull-right pointer" (click)="$event.stopPropagation(); downloadDoc(document)" aria-label="Télécharger le document">cloud_download</mat-icon>
-						</li>
-					</ul>
-				</div>
-			</div>
+				<tf-comments-list *ngIf="remontee" [comments]="remontee.comments" (onAddComment)="onAddComment($event)"></tf-comments-list>
+			</div>			
 		</div>
 	</tf-portlet-body>
 </tf-portlet>
 
-<tf-comments-list *ngIf="remontee" [comments]="remontee.comments" (onAddComment)="onAddComment($event)"></tf-comments-list>
  
 <ng-template #noChantier>
 		<p class="text-left">

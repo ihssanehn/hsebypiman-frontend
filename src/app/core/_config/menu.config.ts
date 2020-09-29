@@ -93,15 +93,7 @@ export class MenuConfig {
 					needModule: true,
 					moduleCode: ['DISCUSS']
 				},
-				{
-					title: 'Paramètres',
-					root: true,
-					alignment: 'left',
-					page: '/admin',
-					translate: 'MENU.ROOT',
-					permissionOnly: ['ROOT', 'ADMIN'],
-					needModule: false,
-				},
+				
 			]
 		},
 

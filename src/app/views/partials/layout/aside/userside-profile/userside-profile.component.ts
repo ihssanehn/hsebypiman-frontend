@@ -11,6 +11,9 @@ import { Router } from '@angular/router';
 import { environment } from '@env/environment';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import Swal from 'sweetalert2';
+import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
+
+	
 
 
 @Component({
@@ -36,9 +39,12 @@ export class UserSideProfileComponent implements OnInit {
 	constructor(
 		private authService:AuthService,
 		private cdr : ChangeDetectorRef,
-		private router: Router,
+		private router: Router,	
+		private ngxRolesService: NgxRolesService,
+
 	) {
 		this.authService.currentUser.subscribe(x=> this.user$ = x);
+		this.ngxRolesService.roles$.subscribe((event) => {this.cdr.markForCheck();});
 	}
 
 	/**
@@ -62,6 +68,9 @@ export class UserSideProfileComponent implements OnInit {
 	goToEdit(){
 		this.router.navigateByUrl('profile/edit');
 	}
+	goToParams(){
+		this.router.navigateByUrl('/admin');
+	}
 	/**
 	 * Log out
 	 */
@@ -78,4 +87,11 @@ export class UserSideProfileComponent implements OnInit {
 			this.router.navigate(['/auth/login']);
 		})
 	}
+
+	hasPermission(test){
+
+		return test.filter(permission =>  this.ngxRolesService.getRole(permission)).length > 0;
+		
+	}
+	
 }
