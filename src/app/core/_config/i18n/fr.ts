@@ -101,7 +101,7 @@ export const locale = {
 				LIST:'Liste des utilisateurs',
 			},
 			LIST: 'Liste',
-			ROOT: 'Admin',
+			ROOT: 'Administration',
 			HOME: 'Accueil',
 			SUB_ROOT:{},
 			BTN:{
