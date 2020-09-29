@@ -111,8 +111,7 @@
 
                                 <!-- EPI -->
                                 <mat-form-field class="col-xl-3" *ngIf="origin == 'detail' && formHasValue('visitable_id')"
-                                    matTooltip=""
-                                    [matTooltipDisabled]="formHasValue('visitable_id')">
+                                    matTooltip="" [matTooltipDisabled]="formHasValue('visitable_id')">
                                     <mat-label>{{'OUTILLAGE.OUTIL.LABEL' | translate}}</mat-label>
                                     <mat-select class="form-control" placeholder="" formControlName="visitable_id"
                                         [required]="isFieldRequired('visitable_id')">

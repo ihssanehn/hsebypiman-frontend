@@ -100,7 +100,7 @@ export class VsFormHeadComponent implements OnInit {
 
   
   async getMateriels(){
-    this.materiels = (await this.materielService.getAllList({'categorie_code':'EPI'}).toPromise()).result.data;
+    this.materiels = (await this.materielService.getAllList({}).toPromise()).result.data;
     this.cdr.markForCheck();
   }
 
