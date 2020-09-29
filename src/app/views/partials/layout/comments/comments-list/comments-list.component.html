@@ -1,5 +1,5 @@
 <tf-portlet class="tf-portlet--height-fluid mat-elevation-z8" id="portlet-comment">
-	<div class="tf-portlet-header ">
+	<div class="tf-portlet-header" [ngStyle]="{'padding': comments.length ? '20px 20px 0 20px': '20px'}">
 		<span class="title">
 			<span class="id-item">Commentaires</span>
 		</span>
@@ -7,7 +7,7 @@
 			<mat-icon>add</mat-icon>
 		</button>
 	</div>
-	<tf-portlet-body class="tf-portlet__body--fit">
+	<tf-portlet-body class="tf-portlet__body--fit" *ngIf="comments.length">
 		<div class="row">
 			<div class="d-flex col-md-12 mt-2" *ngFor="let comment of comments">
                 <div class="col-md-1">
