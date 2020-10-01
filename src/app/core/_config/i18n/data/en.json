@@ -1,17 +1,27 @@
 {
 	"ACTION": {
-		"ADD": "Ajouter",
-		"CANCEL": "Annuler",
-		"CLEAR": "Vider",
-		"DELETE": "Supprimer",
-		"DOWNLOAD": "Télécharger",
-		"DUPLICATE": "Dupliquer",
-		"EDIT": "Modifier",
-		"READ": "Consulter",
-		"SAVE": "Sauvegarder",
-		"SIGN": "Signer"
+		"ADD": "Añadir",
+		"ADD_SIGNER": "Agregar un firmante",
+		"CANCEL": "Anular",
+		"CLEAR": "vacía",
+		"CONFIRM": "Confirmar",
+		"DELETE": "Eliminar",
+		"DOWNLOAD": "Descargar",
+		"DUPLICATE": "Duplicar",
+		"EDIT": "Editar",
+		"ENTER_HERE": "Entre aquí",
+		"EXPORT": "Exportar lista",
+		"FOLLOWING": "Después",
+		"READ": "Consultar",
+		"SAVE": "Guardar",
+		"SIGN": "Signo"
 	},
 	"ARS": {
+		"ACTION": {
+			"ADD_EQUIPEMENT": "Agregar equipo",
+			"ADD_RISK": "Agrega un riesgo",
+			"ADD_ZONE": "Agregar una zona"
+		},
 		"ADRESS": "Adresse du chantier",
 		"AR": "Analyse de risque",
 		"ASIGNER": {
@@ -30,36 +40,58 @@
 			"TITLE": "Horaire d\\'accueil sécurité"
 		},
 		"BUDGET": "Budget",
-		"CHANTIERS": {
-			"ADRESS": "Adresse",
-			"BUDGET": "Budget chantier",
-			"DATE_DEMARRAGE": "Date de démarrage chantier",
-			"EMPLOYEE": "Salarié CVTI réalisant la visite commune",
-			"FORM": {
-				"DETAIL": {
-					"SUBTITLE": "",
-					"TITLE": "Informations chantier"
+		"CARD": {
+			"EQUIPEMENT": {
+				"NO_EQUIPEMENT": "No hay equipo que proporcionar",
+				"SHORTTITLE": "Comodidades",
+				"TITLE": "Equipo que se proporcionará en el sitio"
+			},
+			"MONITORING": {
+				"MARKUP": {
+					"TITLE": "Marcas que se proporcionarán en el área"
 				},
-				"SEARCH": {
-					"LABEL": "Rechercher un chantier",
-					"NOTIF": {
-						"AR_NOT_ARCHIVED_FOUND": {
-							"TEXT1": "Une autre analyse de risque trouvée",
-							"TEXT2": "pour ce chantier, Elle va être archivée dès que vous en créez une nouvelle"
-						},
-						"AR_NOT_SIGNED_FOUND": {
-							"TEXT1": "Il y une autre analyse de risque",
-							"TEXT2": "pour ce chantier, qui n\\'a pas encore été signée"
-						},
-						"STANDARD": {
-							"TEXT1": "Un chantier trouvé",
-							"TEXT2": "pour cette analyse de risque"
-						}
-					}
+				"TITLE": "Seguimiento de obras",
+				"WORKS": {
+					"TITLE": "Registro de trabajo a firmar"
 				}
 			},
-			"NAME": "Nom du chantier",
-			"NUMBER": "Numéro chantier"
+			"OBSERVATION": {
+				"LABEL": "Observaciones adicionales",
+				"NO_OBSERVATION": "Sin observaciones",
+				"TITLE": "Observación"
+			},
+			"RISKS": {
+				"LABEL": "Obligatoirement port des EPI standard chez CVTI : casque, gants, vêtements couvrants, chaussures. Casquette tolérée pour le travail dans les faux plafonds (en fonction PDP du client). Si bruit port du casque antibruit pour les autres risques, adopter l’attitude suivante et cocher les actions à mener :",
+				"NO_RISK": "Obligatoirement port des EPI standard chez CVTI : casque, gants, vêtements couvrants, chaussures. Casquette tolérée pour le travail dans les faux plafonds (en fonction PDP du client). Si bruit port du casque antibruit.",
+				"SHORTTITLE": "Riesgos",
+				"SUBLABEL": "Obligatoirement port des EPI standard chez CVTI : casque, gants, vêtements couvrants, chaussures. Casquette tolérée pour le travail dans les faux plafonds (en fonction PDP du client). Si bruit port du casque antibruit pour les autres risques, adopter l’attitude suivante :",
+				"TITLE": "Riesgos relacionados con el sitio y medios de prevención"
+			},
+			"SIGNATURE": {
+				"ACTION": {
+					"SIGN_AR": "Firma el análisis de riesgos",
+					"SIGN_AR_FOR_OTHERS": "Tener el análisis de riesgo firmado"
+				},
+				"LABEL": "He leído el análisis de riesgos del sitio, el PPSPS o el PDP y aplico las medidas preventivas necesarias",
+				"SUBTITLE": "Los peticionarios",
+				"TITLE": "Observación y firmas"
+			},
+			"SITE_RULES": {
+				"CONDITIONS": {
+					"TITLE": "Condiciones generales del sitio"
+				},
+				"CONTACTS": {
+					"TITLE": "Contactos en caso de accidente"
+				},
+				"SECURITY": {
+					"TITLE": "Recepción de seguridad específica del cliente"
+				},
+				"SITE_NOT_CONCERNED": "Sitio no preocupado",
+				"TITLE": "Reglas generales del sitio"
+			},
+			"ZONE": {
+				"SHORTTITLE": "Zonas"
+			}
 		},
 		"CHIEF": "Chargé d\\'affaire",
 		"CLIENT": "Client",
@@ -100,15 +132,24 @@
 			"SHORTTITLE": "Date de validité de l\\'accueil sécurité",
 			"TITLE": "Date de validité de l\\'accueil sécurité"
 		},
+		"DAYS": {
+			"FRI": "viernes",
+			"MON": "lunes",
+			"SAT": "sábado",
+			"SUN": "domingo",
+			"THU": "jueves",
+			"TUE": "martes",
+			"WED": "miércoles"
+		},
 		"DEMIJOURNEE": {
-			"LABEL": "Par 1/2 journée",
-			"SHORTTITLE": "Par 1/2 journée",
-			"TITLE": "Par 1/2 journée"
+			"LABEL": "Por medio día",
+			"SHORTTITLE": "Por medio día",
+			"TITLE": "Por medio día"
 		},
 		"DEUXHEURES": {
-			"LABEL": "Toute les 2h",
-			"SHORTTITLE": "Toute les 2h",
-			"TITLE": "Toute les 2h"
+			"LABEL": "Cada 2h",
+			"SHORTTITLE": "Cada 2h",
+			"TITLE": "Cada 2h"
 		},
 		"EMPLOYEE": "Nom du salarié CVTI réalisant la visite commune",
 		"FORM": {
@@ -117,40 +158,29 @@
 			"COMMENT": "Précisions à apporter",
 			"CREATE": "Créer une nouvelle analyse de risque",
 			"CVTI_RESPONSIBLE": "Nom du chargé d’affaire CVTI",
-			"EQBLOCK": {
-				"TITLE": "Equipements à prévoir sur le chantier"
-			},
-			"MWBLOCK": {
-				"SUBTITLE2": "Balisage à prévoir sur la zone",
-				"TITLE": "Suivi des travaux ",
-				"WORKREGISTER": {
-					"MSG": "Si oui renseigner les informations ci-dessous",
-					"TITLE": "Registre de travaux à signer "
-				}
-			},
-			"PARKINGBLOCK": {
-				"TITLE": "Zone de stationnement des véhicules pendant le chantier"
-			},
 			"REGISTRAR": "Nom de la personne en charge du registre",
-			"RISKBLOCK": {
-				"MSG": "Obligatoirement port des EPI standard chez CVTI : casque, gants, vêtements couvrants, chaussures. Casquette tolérée pour le travail dans les faux plafonds (en fonction PDP du client). Si bruit port du casque antibruit pour les autres risques, adopter l’attitude suivante et cocher les actions à mener :",
-				"MSGDETAIL": "Obligatoirement port des EPI standard chez CVTI : casque, gants, vêtements couvrants, chaussures. Casquette tolérée pour le travail dans les faux plafonds (en fonction PDP du client). Si bruit port du casque antibruit pour les autres risques, adopter l’attitude suivante :",
-				"MSGDETAILNORISK": "Obligatoirement port des EPI standard chez CVTI : casque, gants, vêtements couvrants, chaussures. Casquette tolérée pour le travail dans les faux plafonds (en fonction PDP du client). Si bruit port du casque antibruit.",
-				"TITLE": "Risques liés au chantier et moyens de préventions"
+			"RISKS": "Les risques"
+		},
+		"HEAD": {
+			"ADRESS": "Adresse",
+			"BUDGET": "Budget chantier",
+			"DATE_DEMARRAGE": "Date de démarrage chantier",
+			"DETAIL": {
+				"LABEL": "Información del sitio"
 			},
-			"RISKS": "Les risques",
-			"SIGNATURE": {
-				"DECLARATION": "J’ai pris connaissance de l’analyse de risque du chantier, du PPSPS ou du PDP et applique les moyens de préventions nécessaires",
-				"SUBTITLE": "Observations complémentaires",
-				"TITLE": "Observation"
+			"EMPLOYEE": "Salarié CVTI réalisant la visite commune",
+			"NAME": "Nombre del sitio",
+			"NOTIF": {
+				"AR_ARCHIVED": {
+					"LABEL": "El análisis de riesgos en curso en este sitio se archivará",
+					"SUBLABEL": "Quieres continuar ?",
+					"TITLE": "Duplicará este análisis de riesgo"
+				},
+				"CHANTIER_FOUND": "Un sitio encontrado"
 			},
-			"SIGNATURE_OBSERVATION": {
-				"SHORTTITLE": "Les signataires",
-				"SUBTITLE": "Observations complémentaires",
-				"TITLE": "Observation et signatures"
-			},
-			"STOCKBLOCK": {
-				"TITLE": "Zone de stockage matériel chantier"
+			"NUMBER": "Numero de sitio",
+			"SEARCH": {
+				"LABEL": "Encuentra un sitio"
 			}
 		},
 		"HORAIRES": {
@@ -159,6 +189,40 @@
 			"TITLE": "Heures de travail du chantier"
 		},
 		"NAME": "Nom du chantier",
+		"NOTIF": {
+			"ARS_CREATED": {
+				"TITLE": "Análisis de riesgo creado con éxito"
+			},
+			"AR_DELETED": {
+				"TITLE": "El análisis de riesgo se ha eliminado correctamente"
+			},
+			"AR_DELETE_CONFIRMATION": {
+				"LABEL": "El análisis de riesgos se eliminará de forma permanente.",
+				"TITLE": "¿Está seguro de que desea eliminar este análisis de riesgos?"
+			},
+			"CHANTIER_UNSELECTED": {
+				"TITLE": "¡Fracaso! Seleccione un sitio"
+			},
+			"ELEMENT_ARCHIVED": {
+				"TITLE": "El artículo se archivó correctamente"
+			},
+			"ELEMENT_NOT_DELETED": {
+				"SUBTITLE": "No se puede eliminar porque la selección está asignada a uno o más análisis de riesgo",
+				"TITLE": "No se puede eliminar porque la selección incluye un elemento asignado a uno o más análisis de riesgo"
+			},
+			"EQUIPEMENT_ARCHIVED": {
+				"TITLE": "Equipo archivado correctamente"
+			},
+			"INCOMPLETE_FORM": {
+				"TITLE": "¡Fracaso! el formulario está incompleto"
+			},
+			"RISK_ARCHIVED": {
+				"TITLE": "Riesgo archivado correctamente"
+			},
+			"ZONE_ARCHIVED": {
+				"TITLE": "Área archivada con éxito"
+			}
+		},
 		"NUMBER": "Numéro",
 		"NUM_SECOURS": {
 			"LABEL": "Numéro en cas d\\'accident ou incendie",
@@ -172,9 +236,9 @@
 			"TITLE": "A prévoir pour les compagnons"
 		},
 		"QUOTIDIENNEMENT": {
-			"LABEL": "Quotidiennement",
-			"SHORTTITLE": "Quotidiennement",
-			"TITLE": "Quotidiennement"
+			"LABEL": "Diario",
+			"SHORTTITLE": "Diario",
+			"TITLE": "Diario"
 		},
 		"REALISATEUR": {
 			"LABEL": "Personne en charge de réaliser l\\'accueil",
@@ -460,6 +524,14 @@
 		"NAME": {
 			"LABEL": "Nom",
 			"TITLE": "Nom"
+		},
+		"NOTIF": {
+			"ERROR": {
+				"TITLE": "¡Ups!"
+			},
+			"SUCCESS": {
+				"TITLE": "¡Éxito!"
+			}
 		},
 		"PHONE": {
 			"LABEL": "Numéro de téléphone",
@@ -828,6 +900,21 @@
 		"SUIVI_HSE": "Suivi Hse",
 		"USERS": "Utilisateurs",
 		"VISITESECURITE": "Visites de Sécurité"
+	},
+	"NOTIF": {
+		"ELEMENT_NOT_DELETED": {
+			"LABEL": "No se puede eliminar porque la selección contiene un elemento asignado a un elemento",
+			"SUBLABEL": "No se puede eliminar porque la selección está asignada a un elemento"
+		},
+		"ERROR_OCCURED": {
+			"TITLE": "¡Fracaso! Se ha producido un error"
+		},
+		"FORM_DELETE_CONFIRMATION": {
+			"TITLE": "¿Está seguro de que desea eliminar este formulario?"
+		},
+		"RESULT_FOUND": {
+			"TITLE": "Resultados encontrados"
+		}
 	},
 	"OUTILLAGE": {
 		"LABEL": {

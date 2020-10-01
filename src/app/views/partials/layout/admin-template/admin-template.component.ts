@@ -3,6 +3,7 @@ import { NzTableComponent } from 'ng-zorro-antd';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AdminAddModalComponent } from '../admin-add-modal/admin-add-modal.component';
 import Swal from 'sweetalert2';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'tf-admin-template',
@@ -15,12 +16,13 @@ export class AdminTemplateComponent implements OnInit {
   titleService: any;
   parentService: any;
   childService: any;
+  translate: TranslateService;
   
   
   tpl : any = {
     title : 'Titre',
-    deletedMessage: 'Suppression impossible car la selection contient un élément affecté à un élément',
-    deletedChildMessage: 'Suppression impossible car la selection est affectée à un élément',
+    deletedMessage: this.translate.instant("NOTIF.ELEMENT_NOT_DELETED.LABEL"),
+    deletedChildMessage: this.translate.instant("NOTIF.ELEMENT_NOT_DELETED.SUBLABEL"),
     collapsed : false,
     canUpdateTitle: false,
     titleOject: null,
@@ -228,11 +230,11 @@ export class AdminTemplateComponent implements OnInit {
     if(this.tpl.titleObject){
       Swal.fire({
         icon: 'warning',
-        title:"Êtes-vous sûr de vouloir supprimer ce formulaire ?",
+        title: this.translate.instant("NOTIF.FORM_DELETE_CONFIRMATION.TITLE"),
         showConfirmButton: true,
         showCancelButton: true,
-        cancelButtonText: 'Annuler',
-        confirmButtonText: 'Supprimer'
+        cancelButtonText: this.translate.instant("ACTION.CANCEL"),
+        confirmButtonText: this.translate.instant("ACTION.DELETE")
       }).then(async response => {
         if (response.value) {
           this.onConfirmDeletTitle.emit(this.tpl.titleObject);

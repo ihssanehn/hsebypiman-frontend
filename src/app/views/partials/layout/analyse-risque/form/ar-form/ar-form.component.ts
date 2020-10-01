@@ -40,7 +40,7 @@ export class ArFormComponent implements OnInit {
   public user : User;
   //public curDate : Date;
   toppings = new FormControl();
-  toppingList: string[] = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
+  toppingList: string[] = ['ARS.DAYS.MON', 'ARS.DAYS.TUE', 'ARS.DAYS.WED', 'ARS.DAYS.THU', 'ARS.DAYS.FRI', 'ARS.DAYS.SAT', 'ARS.DAYS.SUN'];
   public parts = [1];
   public salaries : Array<User>;
   filteredSalaries: Observable<Array<User>>;
@@ -56,7 +56,6 @@ export class ArFormComponent implements OnInit {
     this.getCatRisques();
     this.getEquipements();
     this.getZones();
-    //this.curDate = new Date();
   }
 
   ngOnInit() {

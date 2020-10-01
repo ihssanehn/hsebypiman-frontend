@@ -9,6 +9,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EventEmitter } from '@angular/core';
 import Swal from 'sweetalert2';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'tf-search-chantier-form',
@@ -42,6 +43,7 @@ export class SearchChantierFormComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     protected chantierService:ChantierService,
+    private translate: TranslateService,
     private cdr: ChangeDetectorRef,
     private router:Router,
     iconRegistry: MatIconRegistry, 
@@ -116,12 +118,12 @@ export class SearchChantierFormComponent implements OnInit {
       if(!this.searchControl.value.is_all_ars_archived && this.parent == "ar"){
         Swal.fire({
           icon: 'warning',
-          title: 'Vous allez dupliquer cette Analyse de risque',
-          html: '<p class="text-warning"><b>L\'analyse de risque en cours sur ce chantier sera archivée</b></p><p>Voulez-vous continuer ?</p>',
+          title: this.translate.instant('ARS.HEAD.NOTIF.AR_ARCHIVED.TITLE'),
+          html: "<p class='text-warning'><b>"+this.translate.instant('ARS.HEAD.NOTIF.AR_ARCHIVED.LABEL')+"</b></p><p>"+this.translate.instant('ARS.HEAD.NOTIF.AR_ARCHIVED.SUBLABEL')+"</p>",
           showConfirmButton: true,
           showCancelButton: true,
-          cancelButtonText: 'Annuler',
-          confirmButtonText: 'Confirmer'
+          cancelButtonText: this.translate.instant("ACTION.CANCEL"),
+          confirmButtonText: this.translate.instant("ACTION.CONFIRM")
         }).then(async response => {
           if (response.value) {
             this.initFilteredChantiers();

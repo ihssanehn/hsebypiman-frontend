@@ -1,17 +1,27 @@
 {
 	"ACTION": {
-		"ADD": "Ajouter",
-		"CANCEL": "Annuler",
-		"CLEAR": "Vider",
-		"DELETE": "Supprimer",
-		"DOWNLOAD": "Télécharger",
-		"DUPLICATE": "Dupliquer",
-		"EDIT": "Modifier",
-		"READ": "Consulter",
-		"SAVE": "Sauvegarder",
-		"SIGN": "Signer"
+		"ADD": "添加",
+		"ADD_SIGNER": "添加签名者",
+		"CANCEL": "取消",
+		"CLEAR": "空的",
+		"CONFIRM": "确认",
+		"DELETE": "清除",
+		"DOWNLOAD": "资料下载",
+		"DUPLICATE": "重复",
+		"EDIT": "变化",
+		"ENTER_HERE": "在这里输入",
+		"EXPORT": "汇出清单",
+		"FOLLOWING": "后",
+		"READ": "请教",
+		"SAVE": "保存",
+		"SIGN": "迹象"
 	},
 	"ARS": {
+		"ACTION": {
+			"ADD_EQUIPEMENT": "添加设备",
+			"ADD_RISK": "增加风险",
+			"ADD_ZONE": "添加区域"
+		},
 		"ADRESS": "Adresse du chantier",
 		"AR": "Analyse de risque",
 		"ASIGNER": {
@@ -30,36 +40,58 @@
 			"TITLE": "Horaire d\\'accueil sécurité"
 		},
 		"BUDGET": "Budget",
-		"CHANTIERS": {
-			"ADRESS": "Adresse",
-			"BUDGET": "Budget chantier",
-			"DATE_DEMARRAGE": "Date de démarrage chantier",
-			"EMPLOYEE": "Salarié CVTI réalisant la visite commune",
-			"FORM": {
-				"DETAIL": {
-					"SUBTITLE": "",
-					"TITLE": "Informations chantier"
+		"CARD": {
+			"EQUIPEMENT": {
+				"NO_EQUIPEMENT": "没有设备提供",
+				"SHORTTITLE": "设备",
+				"TITLE": "现场提供的设备"
+			},
+			"MONITORING": {
+				"MARKUP": {
+					"TITLE": "在该区域提供标记"
 				},
-				"SEARCH": {
-					"LABEL": "Rechercher un chantier",
-					"NOTIF": {
-						"AR_NOT_ARCHIVED_FOUND": {
-							"TEXT1": "Une autre analyse de risque trouvée",
-							"TEXT2": "pour ce chantier, Elle va être archivée dès que vous en créez une nouvelle"
-						},
-						"AR_NOT_SIGNED_FOUND": {
-							"TEXT1": "Il y une autre analyse de risque",
-							"TEXT2": "pour ce chantier, qui n\\'a pas encore été signée"
-						},
-						"STANDARD": {
-							"TEXT1": "Un chantier trouvé",
-							"TEXT2": "pour cette analyse de risque"
-						}
-					}
+				"TITLE": "工程监察",
+				"WORKS": {
+					"TITLE": "待签工作证"
 				}
 			},
-			"NAME": "Nom du chantier",
-			"NUMBER": "Numéro chantier"
+			"OBSERVATION": {
+				"LABEL": "其他观察",
+				"NO_OBSERVATION": "没有观察",
+				"TITLE": "观察"
+			},
+			"RISKS": {
+				"LABEL": "Obligatoirement port des EPI standard chez CVTI : casque, gants, vêtements couvrants, chaussures. Casquette tolérée pour le travail dans les faux plafonds (en fonction PDP du client). Si bruit port du casque antibruit pour les autres risques, adopter l’attitude suivante et cocher les actions à mener :",
+				"NO_RISK": "Obligatoirement port des EPI standard chez CVTI : casque, gants, vêtements couvrants, chaussures. Casquette tolérée pour le travail dans les faux plafonds (en fonction PDP du client). Si bruit port du casque antibruit.",
+				"SHORTTITLE": "风险性",
+				"SUBLABEL": "Obligatoirement port des EPI standard chez CVTI : casque, gants, vêtements couvrants, chaussures. Casquette tolérée pour le travail dans les faux plafonds (en fonction PDP du client). Si bruit port du casque antibruit pour les autres risques, adopter l’attitude suivante :",
+				"TITLE": "与现场和预防手段有关的风险"
+			},
+			"SIGNATURE": {
+				"ACTION": {
+					"SIGN_AR": "签署风险分析",
+					"SIGN_AR_FOR_OTHERS": "签署风险分析"
+				},
+				"LABEL": "我已经阅读了现场风险分析，PPSPS或PDP，并采取了必要的预防措施",
+				"SUBTITLE": "上访者",
+				"TITLE": "观察和签名"
+			},
+			"SITE_RULES": {
+				"CONDITIONS": {
+					"TITLE": "一般现场条件"
+				},
+				"CONTACTS": {
+					"TITLE": "发生事故时的联系方式"
+				},
+				"SECURITY": {
+					"TITLE": "客户特定的安全接待"
+				},
+				"SITE_NOT_CONCERNED": "网站无关",
+				"TITLE": "一般场地规则"
+			},
+			"ZONE": {
+				"SHORTTITLE": "区域"
+			}
 		},
 		"CHIEF": "Chargé d\\'affaire",
 		"CLIENT": "Client",
@@ -100,15 +132,24 @@
 			"SHORTTITLE": "Date de validité de l\\'accueil sécurité",
 			"TITLE": "Date de validité de l\\'accueil sécurité"
 		},
+		"DAYS": {
+			"FRI": "星期️五",
+			"MON": "星期一",
+			"SAT": "星期️六",
+			"SUN": "星期天",
+			"THU": "星期️四",
+			"TUE": "星期二",
+			"WED": "星期三"
+		},
 		"DEMIJOURNEE": {
-			"LABEL": "Par 1/2 journée",
-			"SHORTTITLE": "Par 1/2 journée",
-			"TITLE": "Par 1/2 journée"
+			"LABEL": "在1/2天之前",
+			"SHORTTITLE": "在1/2天之前",
+			"TITLE": "在1/2天之前"
 		},
 		"DEUXHEURES": {
-			"LABEL": "Toute les 2h",
-			"SHORTTITLE": "Toute les 2h",
-			"TITLE": "Toute les 2h"
+			"LABEL": "每2小时",
+			"SHORTTITLE": "每2小时",
+			"TITLE": "每2小时"
 		},
 		"EMPLOYEE": "Nom du salarié CVTI réalisant la visite commune",
 		"FORM": {
@@ -117,40 +158,29 @@
 			"COMMENT": "Précisions à apporter",
 			"CREATE": "Créer une nouvelle analyse de risque",
 			"CVTI_RESPONSIBLE": "Nom du chargé d’affaire CVTI",
-			"EQBLOCK": {
-				"TITLE": "Equipements à prévoir sur le chantier"
-			},
-			"MWBLOCK": {
-				"SUBTITLE2": "Balisage à prévoir sur la zone",
-				"TITLE": "Suivi des travaux ",
-				"WORKREGISTER": {
-					"MSG": "Si oui renseigner les informations ci-dessous",
-					"TITLE": "Registre de travaux à signer "
-				}
-			},
-			"PARKINGBLOCK": {
-				"TITLE": "Zone de stationnement des véhicules pendant le chantier"
-			},
 			"REGISTRAR": "Nom de la personne en charge du registre",
-			"RISKBLOCK": {
-				"MSG": "Obligatoirement port des EPI standard chez CVTI : casque, gants, vêtements couvrants, chaussures. Casquette tolérée pour le travail dans les faux plafonds (en fonction PDP du client). Si bruit port du casque antibruit pour les autres risques, adopter l’attitude suivante et cocher les actions à mener :",
-				"MSGDETAIL": "Obligatoirement port des EPI standard chez CVTI : casque, gants, vêtements couvrants, chaussures. Casquette tolérée pour le travail dans les faux plafonds (en fonction PDP du client). Si bruit port du casque antibruit pour les autres risques, adopter l’attitude suivante :",
-				"MSGDETAILNORISK": "Obligatoirement port des EPI standard chez CVTI : casque, gants, vêtements couvrants, chaussures. Casquette tolérée pour le travail dans les faux plafonds (en fonction PDP du client). Si bruit port du casque antibruit.",
-				"TITLE": "Risques liés au chantier et moyens de préventions"
+			"RISKS": "Les risques"
+		},
+		"HEAD": {
+			"ADRESS": "Adresse",
+			"BUDGET": "Budget chantier",
+			"DATE_DEMARRAGE": "Date de démarrage chantier",
+			"DETAIL": {
+				"LABEL": "网站信息"
 			},
-			"RISKS": "Les risques",
-			"SIGNATURE": {
-				"DECLARATION": "J’ai pris connaissance de l’analyse de risque du chantier, du PPSPS ou du PDP et applique les moyens de préventions nécessaires",
-				"SUBTITLE": "Observations complémentaires",
-				"TITLE": "Observation"
+			"EMPLOYEE": "Salarié CVTI réalisant la visite commune",
+			"NAME": "网站名称",
+			"NOTIF": {
+				"AR_ARCHIVED": {
+					"LABEL": "该网站上正在进行的风险分析将被存档",
+					"SUBLABEL": "你要继续吗 ？",
+					"TITLE": "您将复制此风险分析"
+				},
+				"CHANTIER_FOUND": "找到一个网站"
 			},
-			"SIGNATURE_OBSERVATION": {
-				"SHORTTITLE": "Les signataires",
-				"SUBTITLE": "Observations complémentaires",
-				"TITLE": "Observation et signatures"
-			},
-			"STOCKBLOCK": {
-				"TITLE": "Zone de stockage matériel chantier"
+			"NUMBER": "网站编号",
+			"SEARCH": {
+				"LABEL": "寻找一个地点"
 			}
 		},
 		"HORAIRES": {
@@ -159,6 +189,40 @@
 			"TITLE": "Heures de travail du chantier"
 		},
 		"NAME": "Nom du chantier",
+		"NOTIF": {
+			"ARS_CREATED": {
+				"TITLE": "成功创建风险分析"
+			},
+			"AR_DELETED": {
+				"TITLE": "风险分析已成功删除"
+			},
+			"AR_DELETE_CONFIRMATION": {
+				"LABEL": "风险分析将被永久删除。",
+				"TITLE": "您确定要删除此风险分析吗？"
+			},
+			"CHANTIER_UNSELECTED": {
+				"TITLE": "失败！请选择一个站点"
+			},
+			"ELEMENT_ARCHIVED": {
+				"TITLE": "项目已成功存档"
+			},
+			"ELEMENT_NOT_DELETED": {
+				"SUBTITLE": "由于选择已分配给一个或多个风险分析，因此无法删除",
+				"TITLE": "无法删除，因为所选内容包括分配给一个或多个风险分析的项目"
+			},
+			"EQUIPEMENT_ARCHIVED": {
+				"TITLE": "设备成功归档"
+			},
+			"INCOMPLETE_FORM": {
+				"TITLE": "失败！表格不完整"
+			},
+			"RISK_ARCHIVED": {
+				"TITLE": "风险已成功存档"
+			},
+			"ZONE_ARCHIVED": {
+				"TITLE": "成功归档的区域"
+			}
+		},
 		"NUMBER": "Numéro",
 		"NUM_SECOURS": {
 			"LABEL": "Numéro en cas d\\'accident ou incendie",
@@ -172,9 +236,9 @@
 			"TITLE": "A prévoir pour les compagnons"
 		},
 		"QUOTIDIENNEMENT": {
-			"LABEL": "Quotidiennement",
-			"SHORTTITLE": "Quotidiennement",
-			"TITLE": "Quotidiennement"
+			"LABEL": "日常",
+			"SHORTTITLE": "日常",
+			"TITLE": "日常"
 		},
 		"REALISATEUR": {
 			"LABEL": "Personne en charge de réaliser l\\'accueil",
@@ -460,6 +524,14 @@
 		"NAME": {
 			"LABEL": "Nom",
 			"TITLE": "Nom"
+		},
+		"NOTIF": {
+			"ERROR": {
+				"TITLE": "糟糕！"
+			},
+			"SUCCESS": {
+				"TITLE": "成功！"
+			}
 		},
 		"PHONE": {
 			"LABEL": "Numéro de téléphone",
@@ -828,6 +900,21 @@
 		"SUIVI_HSE": "Suivi Hse",
 		"USERS": "Utilisateurs",
 		"VISITESECURITE": "Visites de Sécurité"
+	},
+	"NOTIF": {
+		"ELEMENT_NOT_DELETED": {
+			"LABEL": "由于选择包含分配给元素的元素，因此无法删除",
+			"SUBLABEL": "由于选择已分配给元素，因此无法删除"
+		},
+		"ERROR_OCCURED": {
+			"TITLE": "失败！发生了错误"
+		},
+		"FORM_DELETE_CONFIRMATION": {
+			"TITLE": "您确定要删除此表单吗？"
+		},
+		"RESULT_FOUND": {
+			"TITLE": "找到结果"
+		}
 	},
 	"OUTILLAGE": {
 		"LABEL": {

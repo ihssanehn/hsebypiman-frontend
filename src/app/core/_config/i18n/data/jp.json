@@ -1,17 +1,27 @@
 {
 	"ACTION": {
-		"ADD": "Ajouter",
-		"CANCEL": "Annuler",
-		"CLEAR": "Vider",
-		"DELETE": "Supprimer",
-		"DOWNLOAD": "Télécharger",
-		"DUPLICATE": "Dupliquer",
-		"EDIT": "Modifier",
-		"READ": "Consulter",
-		"SAVE": "Sauvegarder",
-		"SIGN": "Signer"
+		"ADD": "加えます",
+		"ADD_SIGNER": "署名者を追加する",
+		"CANCEL": "キャンセル",
+		"CLEAR": "空",
+		"CONFIRM": "確認するために",
+		"DELETE": "取り除きます",
+		"DOWNLOAD": "ダウンロード",
+		"DUPLICATE": "複製",
+		"EDIT": "変更",
+		"ENTER_HERE": "ここに入力",
+		"EXPORT": "エクスポートリスト",
+		"FOLLOWING": "後",
+		"READ": "相談します",
+		"SAVE": "保存",
+		"SIGN": "看板"
 	},
 	"ARS": {
+		"ACTION": {
+			"ADD_EQUIPEMENT": "機器を追加する",
+			"ADD_RISK": "リスクを追加する",
+			"ADD_ZONE": "ゾーンを追加する"
+		},
 		"ADRESS": "Adresse du chantier",
 		"AR": "Analyse de risque",
 		"ASIGNER": {
@@ -30,36 +40,58 @@
 			"TITLE": "Horaire d\\'accueil sécurité"
 		},
 		"BUDGET": "Budget",
-		"CHANTIERS": {
-			"ADRESS": "Adresse",
-			"BUDGET": "Budget chantier",
-			"DATE_DEMARRAGE": "Date de démarrage chantier",
-			"EMPLOYEE": "Salarié CVTI réalisant la visite commune",
-			"FORM": {
-				"DETAIL": {
-					"SUBTITLE": "",
-					"TITLE": "Informations chantier"
+		"CARD": {
+			"EQUIPEMENT": {
+				"NO_EQUIPEMENT": "提供する機器はありません",
+				"SHORTTITLE": "装置",
+				"TITLE": "現場で提供される機器"
+			},
+			"MONITORING": {
+				"MARKUP": {
+					"TITLE": "エリアに提供されるマーキング"
 				},
-				"SEARCH": {
-					"LABEL": "Rechercher un chantier",
-					"NOTIF": {
-						"AR_NOT_ARCHIVED_FOUND": {
-							"TEXT1": "Une autre analyse de risque trouvée",
-							"TEXT2": "pour ce chantier, Elle va être archivée dès que vous en créez une nouvelle"
-						},
-						"AR_NOT_SIGNED_FOUND": {
-							"TEXT1": "Il y une autre analyse de risque",
-							"TEXT2": "pour ce chantier, qui n\\'a pas encore été signée"
-						},
-						"STANDARD": {
-							"TEXT1": "Un chantier trouvé",
-							"TEXT2": "pour cette analyse de risque"
-						}
-					}
+				"TITLE": "作品のモニタリング",
+				"WORKS": {
+					"TITLE": "署名する作業台帳"
 				}
 			},
-			"NAME": "Nom du chantier",
-			"NUMBER": "Numéro chantier"
+			"OBSERVATION": {
+				"LABEL": "追加の所見",
+				"NO_OBSERVATION": "観察なし",
+				"TITLE": "観察"
+			},
+			"RISKS": {
+				"LABEL": "Obligatoirement port des EPI standard chez CVTI : casque, gants, vêtements couvrants, chaussures. Casquette tolérée pour le travail dans les faux plafonds (en fonction PDP du client). Si bruit port du casque antibruit pour les autres risques, adopter l’attitude suivante et cocher les actions à mener :",
+				"NO_RISK": "Obligatoirement port des EPI standard chez CVTI : casque, gants, vêtements couvrants, chaussures. Casquette tolérée pour le travail dans les faux plafonds (en fonction PDP du client). Si bruit port du casque antibruit.",
+				"SHORTTITLE": "リスク",
+				"SUBLABEL": "Obligatoirement port des EPI standard chez CVTI : casque, gants, vêtements couvrants, chaussures. Casquette tolérée pour le travail dans les faux plafonds (en fonction PDP du client). Si bruit port du casque antibruit pour les autres risques, adopter l’attitude suivante :",
+				"TITLE": "サイトと予防手段に関連するリスク"
+			},
+			"SIGNATURE": {
+				"ACTION": {
+					"SIGN_AR": "リスク分析に署名する",
+					"SIGN_AR_FOR_OTHERS": "リスク分析に署名してもらう"
+				},
+				"LABEL": "サイトリスク分析、PPSPSまたはPDPを読み、必要な予防措置を適用しました",
+				"SUBTITLE": "申立人",
+				"TITLE": "観察と署名"
+			},
+			"SITE_RULES": {
+				"CONDITIONS": {
+					"TITLE": "一般的なサイト条件"
+				},
+				"CONTACTS": {
+					"TITLE": "事故発生時の連絡先"
+				},
+				"SECURITY": {
+					"TITLE": "顧客固有のセキュリティレセプション"
+				},
+				"SITE_NOT_CONCERNED": "関係のないサイト",
+				"TITLE": "一般的なサイトルール"
+			},
+			"ZONE": {
+				"SHORTTITLE": "ゾーン"
+			}
 		},
 		"CHIEF": "Chargé d\\'affaire",
 		"CLIENT": "Client",
@@ -100,15 +132,24 @@
 			"SHORTTITLE": "Date de validité de l\\'accueil sécurité",
 			"TITLE": "Date de validité de l\\'accueil sécurité"
 		},
+		"DAYS": {
+			"FRI": "金曜日",
+			"MON": "月曜",
+			"SAT": "土曜日",
+			"SUN": "日曜日",
+			"THU": "木曜日",
+			"TUE": "火曜日",
+			"WED": "水曜日"
+		},
 		"DEMIJOURNEE": {
-			"LABEL": "Par 1/2 journée",
-			"SHORTTITLE": "Par 1/2 journée",
-			"TITLE": "Par 1/2 journée"
+			"LABEL": "半日までに",
+			"SHORTTITLE": "半日までに",
+			"TITLE": "半日までに"
 		},
 		"DEUXHEURES": {
-			"LABEL": "Toute les 2h",
-			"SHORTTITLE": "Toute les 2h",
-			"TITLE": "Toute les 2h"
+			"LABEL": "2時間ごと",
+			"SHORTTITLE": "2時間ごと",
+			"TITLE": "2時間ごと"
 		},
 		"EMPLOYEE": "Nom du salarié CVTI réalisant la visite commune",
 		"FORM": {
@@ -117,40 +158,29 @@
 			"COMMENT": "Précisions à apporter",
 			"CREATE": "Créer une nouvelle analyse de risque",
 			"CVTI_RESPONSIBLE": "Nom du chargé d’affaire CVTI",
-			"EQBLOCK": {
-				"TITLE": "Equipements à prévoir sur le chantier"
-			},
-			"MWBLOCK": {
-				"SUBTITLE2": "Balisage à prévoir sur la zone",
-				"TITLE": "Suivi des travaux ",
-				"WORKREGISTER": {
-					"MSG": "Si oui renseigner les informations ci-dessous",
-					"TITLE": "Registre de travaux à signer "
-				}
-			},
-			"PARKINGBLOCK": {
-				"TITLE": "Zone de stationnement des véhicules pendant le chantier"
-			},
 			"REGISTRAR": "Nom de la personne en charge du registre",
-			"RISKBLOCK": {
-				"MSG": "Obligatoirement port des EPI standard chez CVTI : casque, gants, vêtements couvrants, chaussures. Casquette tolérée pour le travail dans les faux plafonds (en fonction PDP du client). Si bruit port du casque antibruit pour les autres risques, adopter l’attitude suivante et cocher les actions à mener :",
-				"MSGDETAIL": "Obligatoirement port des EPI standard chez CVTI : casque, gants, vêtements couvrants, chaussures. Casquette tolérée pour le travail dans les faux plafonds (en fonction PDP du client). Si bruit port du casque antibruit pour les autres risques, adopter l’attitude suivante :",
-				"MSGDETAILNORISK": "Obligatoirement port des EPI standard chez CVTI : casque, gants, vêtements couvrants, chaussures. Casquette tolérée pour le travail dans les faux plafonds (en fonction PDP du client). Si bruit port du casque antibruit.",
-				"TITLE": "Risques liés au chantier et moyens de préventions"
+			"RISKS": "Les risques"
+		},
+		"HEAD": {
+			"ADRESS": "Adresse",
+			"BUDGET": "Budget chantier",
+			"DATE_DEMARRAGE": "Date de démarrage chantier",
+			"DETAIL": {
+				"LABEL": "サイト情報"
 			},
-			"RISKS": "Les risques",
-			"SIGNATURE": {
-				"DECLARATION": "J’ai pris connaissance de l’analyse de risque du chantier, du PPSPS ou du PDP et applique les moyens de préventions nécessaires",
-				"SUBTITLE": "Observations complémentaires",
-				"TITLE": "Observation"
+			"EMPLOYEE": "Salarié CVTI réalisant la visite commune",
+			"NAME": "サイト名",
+			"NOTIF": {
+				"AR_ARCHIVED": {
+					"LABEL": "このサイトで進行中のリスク分析はアーカイブされます",
+					"SUBLABEL": "続けたいですか ？",
+					"TITLE": "このリスク分析を複製します"
+				},
+				"CHANTIER_FOUND": "見つかったサイト"
 			},
-			"SIGNATURE_OBSERVATION": {
-				"SHORTTITLE": "Les signataires",
-				"SUBTITLE": "Observations complémentaires",
-				"TITLE": "Observation et signatures"
-			},
-			"STOCKBLOCK": {
-				"TITLE": "Zone de stockage matériel chantier"
+			"NUMBER": "サイト番号",
+			"SEARCH": {
+				"LABEL": "サイトを探す"
 			}
 		},
 		"HORAIRES": {
@@ -159,6 +189,40 @@
 			"TITLE": "Heures de travail du chantier"
 		},
 		"NAME": "Nom du chantier",
+		"NOTIF": {
+			"ARS_CREATED": {
+				"TITLE": "リスク分析の作成に成功"
+			},
+			"AR_DELETED": {
+				"TITLE": "リスク分析は正常に削除されました"
+			},
+			"AR_DELETE_CONFIRMATION": {
+				"LABEL": "リスク分析は完全に削除されます。",
+				"TITLE": "このリスク分析を削除してもよろしいですか？"
+			},
+			"CHANTIER_UNSELECTED": {
+				"TITLE": "失敗！サイトを選択してください"
+			},
+			"ELEMENT_ARCHIVED": {
+				"TITLE": "アイテムは正常にアーカイブされました"
+			},
+			"ELEMENT_NOT_DELETED": {
+				"SUBTITLE": "選択が1つ以上のリスク分析に割り当てられているため、削除できません",
+				"TITLE": "1つ以上のリスク分析に割り当てられたアイテムが選択に含まれているため、削除できません"
+			},
+			"EQUIPEMENT_ARCHIVED": {
+				"TITLE": "機器が正常にアーカイブされました"
+			},
+			"INCOMPLETE_FORM": {
+				"TITLE": "失敗！フォームが不完全です"
+			},
+			"RISK_ARCHIVED": {
+				"TITLE": "リスクのアーカイブに成功"
+			},
+			"ZONE_ARCHIVED": {
+				"TITLE": "正常にアーカイブされた領域"
+			}
+		},
 		"NUMBER": "Numéro",
 		"NUM_SECOURS": {
 			"LABEL": "Numéro en cas d\\'accident ou incendie",
@@ -172,9 +236,9 @@
 			"TITLE": "A prévoir pour les compagnons"
 		},
 		"QUOTIDIENNEMENT": {
-			"LABEL": "Quotidiennement",
-			"SHORTTITLE": "Quotidiennement",
-			"TITLE": "Quotidiennement"
+			"LABEL": "毎日",
+			"SHORTTITLE": "毎日",
+			"TITLE": "毎日"
 		},
 		"REALISATEUR": {
 			"LABEL": "Personne en charge de réaliser l\\'accueil",
@@ -460,6 +524,14 @@
 		"NAME": {
 			"LABEL": "Nom",
 			"TITLE": "Nom"
+		},
+		"NOTIF": {
+			"ERROR": {
+				"TITLE": "おっと！"
+			},
+			"SUCCESS": {
+				"TITLE": "成功！"
+			}
 		},
 		"PHONE": {
 			"LABEL": "Numéro de téléphone",
@@ -828,6 +900,21 @@
 		"SUIVI_HSE": "Suivi Hse",
 		"USERS": "Utilisateurs",
 		"VISITESECURITE": "Visites de Sécurité"
+	},
+	"NOTIF": {
+		"ELEMENT_NOT_DELETED": {
+			"LABEL": "選択範囲に要素に割り当てられた要素が含まれているため、削除できません",
+			"SUBLABEL": "選択範囲が要素に割り当てられているため、削除できません"
+		},
+		"ERROR_OCCURED": {
+			"TITLE": "失敗！エラーが発生しました"
+		},
+		"FORM_DELETE_CONFIRMATION": {
+			"TITLE": "このフォームを削除してもよろしいですか？"
+		},
+		"RESULT_FOUND": {
+			"TITLE": "結果が見つかりました"
+		}
 	},
 	"OUTILLAGE": {
 		"LABEL": {

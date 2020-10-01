@@ -58,7 +58,7 @@ export class ArAddComponent implements OnInit, OnDestroy {
     private dateFrToEnPipe: DateFrToEnPipe,
     protected dateEnToFrPipe:DateEnToFrPipe,
 		private permissionsService : NgxPermissionsService,
-    private translate:TranslateService,
+    private translate: TranslateService,
     iconRegistry: MatIconRegistry, 
     sanitizer: DomSanitizer
   ) {
@@ -377,18 +377,11 @@ export class ArAddComponent implements OnInit, OnDestroy {
       
       if(form.chantier_id)
       {
-        // if(!this.chantier.is_all_ars_archived){
-        //   this.fireNotifBeforeSave(
-        //     form,
-        //     'Une autre analyse de risque est disponible et va être archivée.'
-        //   );
-        // }else{
-          // }
         this.save(form);
       }else{
         Swal.fire({
           icon: 'error',
-          title: 'Echec! Veuillez sélectionner un chantier',
+          title: this.translate.instant("ARS.NOTIF.CHANTIER_UNSELECTED.TITLE"),
           showConfirmButton: false,
           timer: 2000
         });
@@ -409,7 +402,7 @@ export class ArAddComponent implements OnInit, OnDestroy {
 						
     Swal.fire({
       icon: code,
-      title: 'Analyse de risque créée avec succès',
+      title: this.translate.instant("ARS.NOTIF.ARS_CREATED.TITLE"),
       showConfirmButton: false,
       html: message,
       timer: code == 'success' ? 1500 : 3000
@@ -438,7 +431,7 @@ export class ArAddComponent implements OnInit, OnDestroy {
         this.formloading = false;
         Swal.fire({
           icon: 'error',
-          title: 'Echec! le formulaire est incomplet',
+          title: this.translate.instant("ARS.NOTIF.INCOMPLETE_FORM.TITLE"),
           showConfirmButton: false,
           timer: 2000
         });

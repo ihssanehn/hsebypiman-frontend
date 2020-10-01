@@ -2,6 +2,7 @@ import { Component, OnInit, Injector, ChangeDetectorRef } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TypeService, ZoneService, CatRisqueService, RisqueService } from '@app/core/services';
 import { AdminTemplateComponent } from '@app/views/partials/layout/admin-template/admin-template.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'ar-risques-admin',
@@ -14,11 +15,12 @@ export class ArRisquesAdminComponent extends AdminTemplateComponent implements O
   modalService: NgbModal;
   parentService: any;
   childService: any;
+  translate: TranslateService;
 
   tpl : any = {
-    title : 'Risques',
-    deletedMessage: 'Suppression impossible car la selection comprend un élément affecté à une ou plusieurs analyses de risque',
-    deletedChildMessage: 'Suppression impossible car la selection est affectée à une ou plusieurs analyses de risque',
+    title : this.translate.instant("ARS.CARD.RISKS.SHORTTITLE"),
+    deletedMessage: this.translate.instant("ARS.NOTIF.ELEMENT_NOT_DELETED.TITLE"),
+    deletedChildMessage: this.translate.instant("ARS.NOTIF.ELEMENT_NOT_DELETED.SUBTITLE"),
     collapsed : true,
     canUpdateTitle: false,
     titleOject: null,
@@ -33,6 +35,7 @@ export class ArRisquesAdminComponent extends AdminTemplateComponent implements O
     this.modalService = injector.get(NgbModal);
     this.parentService = injector.get(CatRisqueService);
     this.childService = injector.get(RisqueService);
+    this.translate = injector.get(TranslateService);
   }
 
   formatChildren(item){
@@ -41,7 +44,7 @@ export class ArRisquesAdminComponent extends AdminTemplateComponent implements O
   }
 
   async addItem(){
-    super.addItem("Ajouter un risque", {ordre: this.generateParentOrdre()});  
+    super.addItem(this.translate.instant("ARS.ACTION.ADD_RISK"), {ordre: this.generateParentOrdre()});  
   }
 
   async createItem(payload){
@@ -51,7 +54,7 @@ export class ArRisquesAdminComponent extends AdminTemplateComponent implements O
   }
   
   async deleteItem({id}){
-    super.deleteItem({id}, { title : "Risque archivé avec succès" });
+    super.deleteItem({id}, { title : this.translate.instant("ARS.NOTIF.RISK_ARCHIVED.TITLE") });
   }
 
   async addChild(item){
@@ -64,7 +67,7 @@ export class ArRisquesAdminComponent extends AdminTemplateComponent implements O
   }
   
   async deleteChild({id, parent_id}){
-    super.deleteChild({id, parent_id}, {title : "Element est archivé avec succès" });
+    super.deleteChild({id, parent_id}, {title : this.translate.instant("ARS.NOTIF.ELEMENT_ARCHIVED.TITLE") });
   }
 
 }

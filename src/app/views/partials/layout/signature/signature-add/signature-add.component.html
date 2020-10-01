@@ -1,12 +1,12 @@
 <form [formGroup]="signaturesForm" class="tf-form tf-form--group-seperator-dashed">
     <ng-container >
         <div class="tf-heading tf-heading--xs">
-            {{'ARS.FORM.SIGNATURE.DECLARATION' | translate}}
+            {{'ARS.CARD.SIGNATURE.LABEL' | translate}}
         </div>
 
         <div>
             <div *ngxPermissionsOnly="['ADMIN']">
-                <p class="font-weight-bold text-right add-signature-line-btn"><a (click)="addSignatures()">+ Ajouter un signataire</a></p>
+                <p class="font-weight-bold text-right add-signature-line-btn"><a (click)="addSignatures()">+ {{'ACTION.ADD_SIGNER' | translate}}</a></p>
             </div>
             <div class="row form-row signature-line" *ngFor="let signature of signaturesForm.controls; let i=index" [formGroupName]="i" >
 
@@ -21,7 +21,7 @@
 
                 <mat-form-field class="col-xl-2 " *ngIf="!signaturesForm.controls[i].controls['personnel'].value">
                     <mat-label>{{'COMMON.LASTNAME.LABEL' | translate}}&nbsp;{{'COMMON.FIRSTNAME.LABEL' | translate}} </mat-label>
-                    <input class="form-control" matInput type="text" name="signataire_fullname" formControlName="signataire_fullname" placeholder="Saisir ici" />
+                    <input class="form-control" matInput type="text" name="signataire_fullname" formControlName="signataire_fullname" placeholder="{{'ACTION.ENTER_HERE' | translate}}" />
                 </mat-form-field>
 
                 <mat-form-field class="col-xl-2 " *ngIf="!signaturesForm.controls[i].controls['personnel'].value">
@@ -35,7 +35,7 @@
 
                 <mat-form-field [ngClass]="signaturesForm.controls[i].controls['personnel'].value ? 'col-xl-4':'col-xl-2'">
                     <mat-label>{{'COMMON.REMARQUE.LABEL' | translate}} </mat-label>
-                    <input class="form-control" matInput type="text" name="commentaires" formControlName="commentaires" placeholder="Saisir ici" />
+                    <input class="form-control" matInput type="text" name="commentaires" formControlName="commentaires" placeholder="{{'ACTION.ENTER_HERE' | translate}}" />
                 </mat-form-field>
 
                 <div class="col-xl-4 form-row-flex">

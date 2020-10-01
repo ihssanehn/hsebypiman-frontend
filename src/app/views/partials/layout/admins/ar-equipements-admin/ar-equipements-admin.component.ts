@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectorRef, Injector } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EquipementService } from '@app/core/services';
 import { AdminTemplateComponent } from '@app/views/partials/layout/admin-template/admin-template.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'ar-equipements-admin',
@@ -14,11 +15,12 @@ export class ArEquipementsAdminComponent extends AdminTemplateComponent implemen
   modalService: NgbModal;
   parentService: any;
   childService: any;
+  translate: TranslateService;
 
   tpl : any = {
-    title : 'Équipements',
-    deletedMessage: 'Suppression impossible car la selection comprend un élément affecté à une ou plusieurs analyses de risque',
-    deletedChildMessage: 'Suppression impossible car la selection est affectée à une ou plusieurs analyses de risque',
+    title : this.translate.instant("ARS.CARD.EQUIPEMENT.SHORTTITLE"),
+    deletedMessage: this.translate.instant("ARS.NOTIF.ELEMENT_NOT_DELETED.TITLE"),
+    deletedChildMessage: this.translate.instant("ARS.NOTIF.ELEMENT_NOT_DELETED.SUBTITLE"),
     collapsed : true,
     canUpdateTitle: false,
     titleOject: null,
@@ -32,6 +34,7 @@ export class ArEquipementsAdminComponent extends AdminTemplateComponent implemen
     this.cdr = injector.get(ChangeDetectorRef);
     this.modalService = injector.get(NgbModal);
     this.parentService = injector.get(EquipementService);
+    this.translate = injector.get(TranslateService);
   }
 
 
@@ -46,11 +49,11 @@ export class ArEquipementsAdminComponent extends AdminTemplateComponent implemen
   }
 
   async addItem(){
-    super.addItem("Ajouter un équipement", {ordre: this.generateParentOrdre()});  
+    super.addItem(this.translate.instant("ARS.ACTION.ADD_EQUIPEMENT"), {ordre: this.generateParentOrdre()});  
   }
 
   async deleteItem({id}){
-    super.deleteItem({id}, { title : "Equipement archivé avec succès" });
+    super.deleteItem({id}, { title : this.translate.instant("ARS.NOTIF.EQUIPEMENT_ARCHIVED.TITLE") });
   }
 
   async updateOrders(datas){

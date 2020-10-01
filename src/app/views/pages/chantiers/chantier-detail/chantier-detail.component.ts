@@ -11,6 +11,7 @@ import { NgxPermissionsService } from 'ngx-permissions';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import Swal, { SweetAlertIcon } from 'sweetalert2';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'tf-chantier-detail',
@@ -43,6 +44,7 @@ export class ChantierDetailComponent implements OnInit, OnDestroy {
 		private chantierService: ChantierService,
 		private cdr: ChangeDetectorRef,
 		private permissionsService : NgxPermissionsService,
+		private translate: TranslateService,
 		iconRegistry: MatIconRegistry, 
 		sanitizer: DomSanitizer
 	) {
@@ -126,7 +128,7 @@ export class ChantierDetailComponent implements OnInit, OnDestroy {
 			text:'Les analyses de risque et visites de chantier seront archivés.',
 			showConfirmButton: true,
 			showCancelButton: true,
-			cancelButtonText: 'Annuler',
+			cancelButtonText: this.translate.instant("ACTION.CANCEL"),
 			confirmButtonText: 'Clore le chantier'
 		}).then(async response => {
 			if (response.value) {
@@ -172,8 +174,8 @@ export class ChantierDetailComponent implements OnInit, OnDestroy {
 					html: '<p class="text-warning"><b>L\'analyse de risque en cours sur ce chantier sera archivée</b></p><p>Voulez-vous continuer ?</p>',
 					showConfirmButton: true,
 					showCancelButton: true,
-					cancelButtonText: 'Annuler',
-					confirmButtonText: 'Confirmer'
+					cancelButtonText: this.translate.instant("ACTION.CANCEL"),
+					confirmButtonText: this.translate.instant("ACTION.CONFIRM")
 				}).then(async response => {
 					if (response.value) {
 						this.router.navigate(['analyses-risque/add'], {queryParams:{chantier_id:chantierId}})

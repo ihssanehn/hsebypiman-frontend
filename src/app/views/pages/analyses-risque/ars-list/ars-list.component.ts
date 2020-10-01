@@ -88,12 +88,12 @@ export class ArsListComponent implements OnInit {
 		if(!chantier.is_all_ars_archived){
 			Swal.fire({
 				icon: 'warning',
-				title: 'Vous allez dupliquer cette Analyse de risque',
-				html: '<p class="text-warning"><b>L\'analyse de risque en cours sur ce chantier sera archivée</b></p><p>Voulez-vous continuer ?</p>',
+				title: this.translate.instant("ARS.HEAD.NOTIF.AR_ARCHIVED.TITLE"),
+				html: "<p class='text-warning'><b>"+this.translate.instant("ARS.HEAD.NOTIF.AR_ARCHIVED.LABEL")+"</b></p><p>"+this.translate.instant("ARS.HEAD.NOTIF.AR_ARCHIVED.SUBLABEL")+"</p>",
 				showConfirmButton: true,
 				showCancelButton: true,
-				cancelButtonText: 'Annuler',
-				confirmButtonText: 'Confirmer'
+				cancelButtonText: this.translate.instant("ACTION.CANCEL"),
+				confirmButtonText: this.translate.instant("ACTION.CONFIRM")
 			}).then(async response => {
 				if (response.value) {
 					this.router.navigate(['analyses-risque/add'], {queryParams:{ar_id:arId}})
@@ -110,12 +110,12 @@ export class ArsListComponent implements OnInit {
 
 		Swal.fire({
 			icon: 'warning',
-			title: 'Voulez vous vraiment supprimer cette analyse de risque ?',
-			text:'L\'analyse de risque sera supprimée de façon permanente.',
+			title: this.translate.instant("ARS.NOTIF.AR_DELETE_CONFIRMATION.TITLE"),
+			text: this.translate.instant("ARS.NOTIF.AR_DELETE_CONFIRMATION.LABEL"),
 			showConfirmButton: true,
 			showCancelButton: true,
-			cancelButtonText: 'Annuler',
-			confirmButtonText: 'Supprimer'
+			cancelButtonText: this.translate.instant("ACTION.CANCEL"),
+			confirmButtonText: this.translate.instant("ACTION.DELETE")
 		}).then(async response => {
 			if (response.value) {
 				try {
@@ -123,7 +123,7 @@ export class ArsListComponent implements OnInit {
 					if (res) {
 						Swal.fire({
 							icon: 'success',
-							title: 'L\'analyse de risque a été supprimée avec succès',
+							title: this.translate.instant("ARS.NOTIF.AR_DELETED.TITLE"),
 							showConfirmButton: false,
 							timer: 1500
 						}).then(() => {
@@ -135,7 +135,7 @@ export class ArsListComponent implements OnInit {
 				} catch (e) {
 					Swal.fire({
 						icon: 'error',
-						title: 'Echec! une erreur est survenue',
+						title: this.translate.instant("NOTIF.ERROR_OCCURED.TITLE"),
 						showConfirmButton: false,
 						timer: 1500
 					});

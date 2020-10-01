@@ -1,12 +1,12 @@
 <mat-expansion-panel [expanded]="isExpanded" [disabled]="isDisableToggle" >
     <mat-expansion-panel-header>
-        <div class="tf-heading tf-heading--md">| 1 Règles générales du chantier</div>
+        <div class="tf-heading tf-heading--md">| 1 {{'ARS.CARD.SITE_RULES.TITLE' | translate}}</div>
     </mat-expansion-panel-header>
     <div class="row">
         <div class="col-md-12">
             <div class="tf-card-form">
                 <div class="tf-heading tf-heading--sm">
-                    1.1 Accueil sécurité propre au client
+                    1.1 {{'ARS.CARD.SITE_RULES.SECURITY.TITLE' | translate}}
                     <mat-slide-toggle class="pull-right" [checked]="isChecked('a_prevoir_compagnons')" disabled>
                         <small>{{'ARS.PREVOIR_COMPAGNONS.LABEL' | translate}}</small>
                     </mat-slide-toggle>
@@ -31,7 +31,7 @@
                                         <div>
                                             <input [readonly]="true" class="form-control text-center" type="time" name="accueil_secu_time_opening" [value]="ar.accueil_secu_time_opening" />
                                         </div>
-                                        <span style="padding: 1em;">A </span>
+                                        <span style="padding: 1em;">- </span>
                                         <div>
                                             <input [readonly]="true" class="form-control text-center" type="time" name="accueil_secu_time_closing" [value]="ar.accueil_secu_time_closing" />
                                         </div>
@@ -75,7 +75,7 @@
                 <div class="col-md-8">
                     <div class="tf-card-form full-height">
                         <div class="tf-heading tf-heading--sm">
-                            1.2 Contacts en cas d'accident
+                            1.2 {{'ARS.CARD.SITE_RULES.CONTACTS.TITLE' | translate}}
                         </div>
                         <div class="row mt-3">
                             <mat-form-field class="col-xl-6">
@@ -108,7 +108,7 @@
                 <div class="col-md-4">
                     <div class="tf-card-form full-height">
                         <div class="tf-heading tf-heading--sm">
-                            1.3 Conditions générales du chantier
+                            1.3 {{'ARS.CARD.SITE_RULES.CONDITIONS.TITLE' | translate}}
                         </div>
                         <div class="row mt-3">
                             <div class="col-xl-12 col-md-12 mat-form-field ng-tns-c14-2 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-legacy mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label" formContolName="a_prevoir_compagnons">
@@ -122,7 +122,7 @@
                                                 <div>
                                                     <input [readonly]="true" class="form-control text-center" type="time" name="heure_ouverture" [value]="ar.heure_ouverture" />
                                                 </div>
-                                                <span style="padding: 1em;">A </span>
+                                                <span style="padding: 1em;">- </span>
                                                 <div>
                                                     <input [readonly]="true" class="form-control text-center" type="time" name="heure_fermeture" [value]="ar.heure_fermeture" />
                                                 </div>
@@ -159,13 +159,13 @@
 
 <mat-expansion-panel [expanded]="isExpanded" [disabled]="isDisableToggle">
     <mat-expansion-panel-header>
-        <div class="tf-heading tf-heading--md">| 2 {{'ARS.FORM.RISKBLOCK.TITLE' | translate}}</div>
+        <div class="tf-heading tf-heading--md">| 2 {{'ARS.CARD.RISKS.TITLE' | translate}}</div>
     </mat-expansion-panel-header>
     <div class="row">
         <div class="col-md-12">
             <div class="tf-card-form" *ngIf="ar.risksTree.length > 0; else noRisk ">
                 <div class="tf-heading tf-heading--xs">
-                    {{'ARS.FORM.RISKBLOCK.MSGDETAIL' | translate}}
+                    {{'ARS.CARD.RISKS.SUBLABEL' | translate}}
                 </div>
                 <div class="row form-row"></div>
 
@@ -208,7 +208,7 @@
     <div class="col-6">
         <mat-expansion-panel [expanded]="isExpanded" [disabled]="isDisableToggle">
             <mat-expansion-panel-header>
-                <div class="tf-heading tf-heading--md">| 3 {{'ARS.FORM.EQBLOCK.TITLE' | translate}}</div>
+                <div class="tf-heading tf-heading--md">| 3 {{'ARS.CARD.EQUIPEMENT.TITLE' | translate}}</div>
             </mat-expansion-panel-header>
             <div class="row">
                 <div class="col-md-12">
@@ -226,13 +226,13 @@
     <div class="col-6">
         <mat-expansion-panel [expanded]="isExpanded" [disabled]="isDisableToggle">
             <mat-expansion-panel-header>
-                <div class="tf-heading tf-heading--md">| 4 {{'ARS.FORM.MWBLOCK.TITLE' | translate}}</div>
+                <div class="tf-heading tf-heading--md">| 4 {{'ARS.CARD.MONITORING.TITLE' | translate}}</div>
             </mat-expansion-panel-header>
             <div class="row">
                 <div class="col-md-12">
                     <div class="tf-card-form">
                         <div class="tf-heading tf-heading--sm">
-                            {{'ARS.FORM.MWBLOCK.WORKREGISTER.TITLE' | translate}}<mat-slide-toggle class="pull-right" [checked]="isChecked('a_signer_registre_travaux')" disabled></mat-slide-toggle>
+                            {{'ARS.CARD.MONITORING.WORKS.TITLE' | translate}}<mat-slide-toggle class="pull-right" [checked]="isChecked('a_signer_registre_travaux')" disabled></mat-slide-toggle>
                         </div>
                         <div class="row mt-3" [hidden]="!ar.a_signer_registre_travaux">
                             <div class="row form-row col-md-12">
@@ -285,7 +285,7 @@
                 <div class="col-md-12">
                     <div class="tf-card-form">
                         <div class="tf-heading tf-heading--sm">
-                            {{'ARS.FORM.MWBLOCK.SUBTITLE2' | translate}}<mat-slide-toggle class="pull-right" [checked]="isChecked('a_prevoir_balisage')" disabled></mat-slide-toggle>
+                            {{'ARS.CARD.MONITORING.MARKUP.TITLE' | translate}}<mat-slide-toggle class="pull-right" [checked]="isChecked('a_prevoir_balisage')" disabled></mat-slide-toggle>
                         </div>
                     </div>
                 </div>
@@ -298,15 +298,15 @@
 
 
 <ng-template #noEquipement>
-    Aucun équipement a prévoir
+    {{'ARS.CARD.EQUIPEMENT.NO_EQUIPEMENT' | translate}}
 </ng-template>
 <ng-template #chantierNonConcerne>
-	<div class="mt-3">Chantier non concerné</div>
+	<div class="mt-3">{{'ARS.CARD.SITE_RULES.SITE_NOT_CONCERNED' | translate}}</div>
 </ng-template>
 <ng-template #noRisk>
 	<div class="tf-card-form">
 		<div class="tf-heading tf-heading--xs">
-			{{'ARS.FORM.RISKBLOCK.MSGDETAILNORISK' | translate}}
+			{{'ARS.CARD.RISKS.NO_RISK' | translate}}
 		</div>
 	</div>
 </ng-template>

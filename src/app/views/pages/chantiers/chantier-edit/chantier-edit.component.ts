@@ -15,6 +15,7 @@ import * as moment from 'moment';
 import Swal, { SweetAlertIcon } from 'sweetalert2';
 import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
 import {FormStatus} from '@app/core/_base/crud/models/form-status';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
 	selector: 'tf-chantier-edit',
@@ -50,6 +51,7 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 		private chantierService: ChantierService,
 		private cdr: ChangeDetectorRef,
 		private permissionsService: NgxPermissionsService,
+		private translate: TranslateService,
 		private location: Location,
 		private dateFrToEnPipe:DateFrToEnPipe,
 		private dateEnToFrPipe:DateEnToFrPipe,
@@ -192,7 +194,7 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 			text:'Les analyses de risque et visites de chantier seront archivés.',
 			showConfirmButton: true,
 			showCancelButton: true,
-			cancelButtonText: 'Annuler',
+			cancelButtonText: this.translate.instant("ACTION.CANCEL"),
 			confirmButtonText: 'Clore le chantier'
 		}).then(async response => {
 			if (response.value) {

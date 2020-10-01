@@ -1,17 +1,27 @@
 {
 	"ACTION": {
 		"ADD": "Ajouter",
+		"ADD_SIGNER": "Ajouter un signataire",
 		"CANCEL": "Annuler",
 		"CLEAR": "Vider",
+		"CONFIRM": "Confirmer",
 		"DELETE": "Supprimer",
 		"DOWNLOAD": "Télécharger",
 		"DUPLICATE": "Dupliquer",
 		"EDIT": "Modifier",
+		"ENTER_HERE": "Saisir ici",
+		"EXPORT": "Exporter la liste",
+		"FOLLOWING": "Suite",
 		"READ": "Consulter",
 		"SAVE": "Sauvegarder",
 		"SIGN": "Signer"
 	},
 	"ARS": {
+		"ACTION": {
+			"ADD_EQUIPEMENT": "Ajouter un équipement",
+			"ADD_RISK": "Ajouter un risque",
+			"ADD_ZONE": "Ajouter une zone"
+		},
 		"ADRESS": "Adresse du chantier",
 		"AR": "Analyse de risque",
 		"ASIGNER": {
@@ -30,36 +40,58 @@
 			"TITLE": "Horaire d\\'accueil sécurité"
 		},
 		"BUDGET": "Budget",
-		"CHANTIERS": {
-			"ADRESS": "Adresse",
-			"BUDGET": "Budget chantier",
-			"DATE_DEMARRAGE": "Date de démarrage chantier",
-			"EMPLOYEE": "Salarié CVTI réalisant la visite commune",
-			"FORM": {
-				"DETAIL": {
-					"SUBTITLE": "",
-					"TITLE": "Informations chantier"
+		"CARD": {
+			"EQUIPEMENT": {
+				"NO_EQUIPEMENT": "Aucun équipement a prévoir",
+				"SHORTTITLE": "Équipements",
+				"TITLE": "Équipements à prévoir sur le chantier"
+			},
+			"MONITORING": {
+				"MARKUP": {
+					"TITLE": "Balisage à prévoir sur la zone"
 				},
-				"SEARCH": {
-					"LABEL": "Rechercher un chantier",
-					"NOTIF": {
-						"AR_NOT_ARCHIVED_FOUND": {
-							"TEXT1": "Une autre analyse de risque trouvée",
-							"TEXT2": "pour ce chantier, Elle va être archivée dès que vous en créez une nouvelle"
-						},
-						"AR_NOT_SIGNED_FOUND": {
-							"TEXT1": "Il y une autre analyse de risque",
-							"TEXT2": "pour ce chantier, qui n\\'a pas encore été signée"
-						},
-						"STANDARD": {
-							"TEXT1": "Un chantier trouvé",
-							"TEXT2": "pour cette analyse de risque"
-						}
-					}
+				"TITLE": "Suivi des travaux ",
+				"WORKS": {
+					"TITLE": "Registre de travaux à signer "
 				}
 			},
-			"NAME": "Nom du chantier",
-			"NUMBER": "Numéro chantier"
+			"OBSERVATION": {
+				"LABEL": "Observations complémentaires",
+				"NO_OBSERVATION": "Aucune observation",
+				"TITLE": "Observation"
+			},
+			"RISKS": {
+				"LABEL": "Obligatoirement port des EPI standard chez CVTI : casque, gants, vêtements couvrants, chaussures. Casquette tolérée pour le travail dans les faux plafonds (en fonction PDP du client). Si bruit port du casque antibruit pour les autres risques, adopter l’attitude suivante et cocher les actions à mener :",
+				"NO_RISK": "Obligatoirement port des EPI standard chez CVTI : casque, gants, vêtements couvrants, chaussures. Casquette tolérée pour le travail dans les faux plafonds (en fonction PDP du client). Si bruit port du casque antibruit.",
+				"SHORTTITLE": "Risques",
+				"SUBLABEL": "Obligatoirement port des EPI standard chez CVTI : casque, gants, vêtements couvrants, chaussures. Casquette tolérée pour le travail dans les faux plafonds (en fonction PDP du client). Si bruit port du casque antibruit pour les autres risques, adopter l’attitude suivante :",
+				"TITLE": "Risques liés au chantier et moyens de préventions"
+			},
+			"SIGNATURE": {
+				"ACTION": {
+					"SIGN_AR": "Signer l'analyse de risque",
+					"SIGN_AR_FOR_OTHERS": "Faire signer l'analyse de risque"
+				},
+				"LABEL": "J’ai pris connaissance de l’analyse de risque du chantier, du PPSPS ou du PDP et applique les moyens de préventions nécessaires",
+				"SUBTITLE": "Les signataires",
+				"TITLE": "Observation et signatures"
+			},
+			"SITE_RULES": {
+				"CONDITIONS": {
+					"TITLE": "Conditions générales du chantier"
+				},
+				"CONTACTS": {
+					"TITLE": "Contacts en cas d'accident"
+				},
+				"SECURITY": {
+					"TITLE": "Accueil sécurité propre au client"
+				},
+				"SITE_NOT_CONCERNED": "Chantier non concerné",
+				"TITLE": "Règles générales du chantier"
+			},
+			"ZONE": {
+				"SHORTTITLE": "Zones"
+			}
 		},
 		"CHIEF": "Chargé d\\'affaire",
 		"CLIENT": "Client",
@@ -100,6 +132,15 @@
 			"SHORTTITLE": "Date de validité de l\\'accueil sécurité",
 			"TITLE": "Date de validité de l\\'accueil sécurité"
 		},
+		"DAYS": {
+			"FRI": "Vendredi",
+			"MON": "Lundi",
+			"SAT": "Samedi",
+			"SUN": "Dimanche",
+			"THU": "Jeudi",
+			"TUE": "Mardi",
+			"WED": "Mercredi"
+		},
 		"DEMIJOURNEE": {
 			"LABEL": "Par 1/2 journée",
 			"SHORTTITLE": "Par 1/2 journée",
@@ -117,40 +158,29 @@
 			"COMMENT": "Précisions à apporter",
 			"CREATE": "Créer une nouvelle analyse de risque",
 			"CVTI_RESPONSIBLE": "Nom du chargé d’affaire CVTI",
-			"EQBLOCK": {
-				"TITLE": "Equipements à prévoir sur le chantier"
-			},
-			"MWBLOCK": {
-				"SUBTITLE2": "Balisage à prévoir sur la zone",
-				"TITLE": "Suivi des travaux ",
-				"WORKREGISTER": {
-					"MSG": "Si oui renseigner les informations ci-dessous",
-					"TITLE": "Registre de travaux à signer "
-				}
-			},
-			"PARKINGBLOCK": {
-				"TITLE": "Zone de stationnement des véhicules pendant le chantier"
-			},
 			"REGISTRAR": "Nom de la personne en charge du registre",
-			"RISKBLOCK": {
-				"MSG": "Obligatoirement port des EPI standard chez CVTI : casque, gants, vêtements couvrants, chaussures. Casquette tolérée pour le travail dans les faux plafonds (en fonction PDP du client). Si bruit port du casque antibruit pour les autres risques, adopter l’attitude suivante et cocher les actions à mener :",
-				"MSGDETAIL": "Obligatoirement port des EPI standard chez CVTI : casque, gants, vêtements couvrants, chaussures. Casquette tolérée pour le travail dans les faux plafonds (en fonction PDP du client). Si bruit port du casque antibruit pour les autres risques, adopter l’attitude suivante :",
-				"MSGDETAILNORISK": "Obligatoirement port des EPI standard chez CVTI : casque, gants, vêtements couvrants, chaussures. Casquette tolérée pour le travail dans les faux plafonds (en fonction PDP du client). Si bruit port du casque antibruit.",
-				"TITLE": "Risques liés au chantier et moyens de préventions"
+			"RISKS": "Les risques"
+		},
+		"HEAD": {
+			"ADRESS": "Adresse",
+			"BUDGET": "Budget chantier",
+			"DATE_DEMARRAGE": "Date de démarrage chantier",
+			"DETAIL": {
+				"LABEL": "Informations chantier"
 			},
-			"RISKS": "Les risques",
-			"SIGNATURE": {
-				"DECLARATION": "J’ai pris connaissance de l’analyse de risque du chantier, du PPSPS ou du PDP et applique les moyens de préventions nécessaires",
-				"SUBTITLE": "Observations complémentaires",
-				"TITLE": "Observation"
+			"EMPLOYEE": "Salarié CVTI réalisant la visite commune",
+			"NAME": "Nom du chantier",
+			"NOTIF": {
+				"AR_ARCHIVED": {
+					"LABEL": "L'analyse de risque en cours sur ce chantier sera archivée",
+					"SUBLABEL": "Voulez-vous continuer ?",
+					"TITLE": "Vous allez dupliquer cette Analyse de risque"
+				},
+				"CHANTIER_FOUND": "Un chantier trouvé"
 			},
-			"SIGNATURE_OBSERVATION": {
-				"SHORTTITLE": "Les signataires",
-				"SUBTITLE": "Observations complémentaires",
-				"TITLE": "Observation et signatures"
-			},
-			"STOCKBLOCK": {
-				"TITLE": "Zone de stockage matériel chantier"
+			"NUMBER": "Numéro chantier",
+			"SEARCH": {
+				"LABEL": "Rechercher un chantier"
 			}
 		},
 		"HORAIRES": {
@@ -159,6 +189,40 @@
 			"TITLE": "Heures de travail du chantier"
 		},
 		"NAME": "Nom du chantier",
+		"NOTIF": {
+			"ARS_CREATED": {
+				"TITLE": "Analyse de risque créée avec succès"
+			},
+			"AR_DELETED": {
+				"TITLE": "Analyse de risque a été supprimé avec succès"
+			},
+			"AR_DELETE_CONFIRMATION": {
+				"LABEL": "L'analyse de risque sera supprimée de façon permanente.",
+				"TITLE": "Voulez vous vraiment supprimer cette analyse de risque ?"
+			},
+			"CHANTIER_UNSELECTED": {
+				"TITLE": "Échec! Veuillez sélectionner un chantier"
+			},
+			"ELEMENT_ARCHIVED": {
+				"TITLE": "Élément est archivé avec succès"
+			},
+			"ELEMENT_NOT_DELETED": {
+				"SUBTITLE": "Suppression impossible car la sélection est affectée à une ou plusieurs analyses de risque",
+				"TITLE": "Suppression impossible car la sélection comprend un élément affecté à une ou plusieurs analyses de risque"
+			},
+			"EQUIPEMENT_ARCHIVED": {
+				"TITLE": "Équipement archivé avec succès"
+			},
+			"INCOMPLETE_FORM": {
+				"TITLE": "Échec! le formulaire est incomplet"
+			},
+			"RISK_ARCHIVED": {
+				"TITLE": "Risque archivé avec succès"
+			},
+			"ZONE_ARCHIVED": {
+				"TITLE": "Zone archivée avec succès"
+			}
+		},
 		"NUMBER": "Numéro",
 		"NUM_SECOURS": {
 			"LABEL": "Numéro en cas d\\'accident ou incendie",
@@ -460,6 +524,14 @@
 		"NAME": {
 			"LABEL": "Nom",
 			"TITLE": "Nom"
+		},
+		"NOTIF": {
+			"ERROR": {
+				"TITLE": "Oups!"
+			},
+			"SUCCESS": {
+				"TITLE": "Succès!"
+			}
 		},
 		"PHONE": {
 			"LABEL": "Numéro de téléphone",
@@ -828,6 +900,21 @@
 		"SUIVI_HSE": "Suivi Hse",
 		"USERS": "Utilisateurs",
 		"VISITESECURITE": "Visites de Sécurité"
+	},
+	"NOTIF": {
+		"ELEMENT_NOT_DELETED": {
+			"LABEL": "Suppression impossible car la sélection contient un élément affecté à un élément",
+			"SUBLABEL": "Suppression impossible car la sélection est affectée à un élément"
+		},
+		"ERROR_OCCURED": {
+			"TITLE": "Échec! une erreur est survenue"
+		},
+		"FORM_DELETE_CONFIRMATION": {
+			"TITLE": "Êtes-vous sûr de vouloir supprimer ce formulaire ?"
+		},
+		"RESULT_FOUND": {
+			"TITLE": "résultats trouvés"
+		}
 	},
 	"OUTILLAGE": {
 		"LABEL": {
