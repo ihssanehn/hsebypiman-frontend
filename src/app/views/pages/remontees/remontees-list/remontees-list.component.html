@@ -61,6 +61,15 @@
 					<td mat-cell *matCellDef="let remontee" (click)="viewRemonte(remontee.id)" class="text-center pointer"> {{remontee.documents_count}} </td>
 				</ng-container>
 
+				<!-- action_status Column -->
+				<ng-container matColumnDef="action_status">
+					<th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('action_status')">
+						{{'REMONTEES.ACTION_STATUS.SHORTTITLE' | translate}}
+						<i class="fa" [ngClass]="isOrderedBy('action_status') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('action_status') && {opacity:1}"></i>
+					</th>
+					<td mat-cell *matCellDef="let remontee" (click)="viewRemonte(remontee.id)" class="text-center pointer"> {{remontee.action_status}} </td>
+				</ng-container>
+
 				<ng-container matColumnDef="action" class="actionCol">
 					<th mat-header-cell *matHeaderCellDef></th>
 					<td mat-cell *matCellDef="let remontee" class="text-right">

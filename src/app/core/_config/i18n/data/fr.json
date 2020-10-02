@@ -981,9 +981,9 @@
 			"CREATE": "Créer un nouveau plan d'action"
 		},
 		"NAME": {
-			"LABEL": "Action décidée",
-			"SHORTTITLE": "Actions",
-			"TITLE": "Action décidée"
+			"LABEL": "Libellé",
+			"SHORTTITLE": "Libellé",
+			"TITLE": "Libellé"
 		},
 		"NUMBER": {
 			"LABEL": "Numéro",
@@ -1051,7 +1051,23 @@
 			"LABEL": "Typologie",
 			"SHORTTITLE": "Typologie",
 			"TITLE": "Typologie"
+		},
+		"ACTION": {
+			"LABEL": "Action",
+			"SHORTTITLE": "Action",
+			"TITLE": "Action"
+		},
+		"ACTION_STATUS": {
+			"LABEL": "Statut de l'action",
+			"SHORTTITLE": "Satut",
+			"TITLE": "Action statut"
+		},
+		"SEE_ACTION": {
+			"LABEL": "Voir l'action",
+			"SHORTTITLE": "Action",
+			"TITLE": "Voir l'action"
 		}
+
 	},
 	"SALARIES": {
 		"ACCIDENTOLOGIE": {
