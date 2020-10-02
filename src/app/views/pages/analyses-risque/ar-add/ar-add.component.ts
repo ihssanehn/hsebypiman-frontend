@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectorRef, ViewChild, ElementRef, OnDestroy 
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl, FormArray, NgModel, FormControlName } from "@angular/forms";
 import { CommonModule } from '@angular/common';
-import * as moment from 'moment';
+import moment from 'moment';
 
 import { TranslateService } from '@ngx-translate/core';
 import { ArService, TypeService, ChantierService, ParamsService, PersonnelService } from '@app/core/services';

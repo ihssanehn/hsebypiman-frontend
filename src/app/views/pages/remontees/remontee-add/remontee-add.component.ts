@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from "@angular/forms";
 import { CommonModule, Location } from '@angular/common';
-import * as moment from 'moment';
+import moment from 'moment';
 
 import { TranslateService } from '@ngx-translate/core';
 import { RemonteeService, TypeService } from '@app/core/services';

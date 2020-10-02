@@ -5,7 +5,7 @@ import { MatIconRegistry } from '@angular/material';
 import { ChantierService, TypeService, StatusService, EntrepriseService, PersonnelService } from '@app/core/services';
 import { Chantier, Type, Status, Entreprise } from '@app/core/models';
 import { AuthService, User } from '@app/core/auth';
-import * as moment from 'moment';
+import moment from 'moment';
 import { debounceTime, map } from 'rxjs/operators';
 import { DateEnToFrPipe, DateFrToEnPipe } from '@app/core/_base/layout';
 

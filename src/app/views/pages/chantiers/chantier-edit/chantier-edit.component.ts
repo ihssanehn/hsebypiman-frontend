@@ -11,7 +11,7 @@ import { Chantier } from '@app/core/models';
 import { NgxPermissionsService } from 'ngx-permissions';
 import { SubheaderService } from '@app/core/_base/layout/services/subheader.service';
 import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
-import * as moment from 'moment';
+import moment from 'moment';
 import Swal, { SweetAlertIcon } from 'sweetalert2';
 import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
 import {FormStatus} from '@app/core/_base/crud/models/form-status';

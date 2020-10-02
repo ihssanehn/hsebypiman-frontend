@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from "@angular/forms";
 import { Location } from '@angular/common';
-import * as moment from 'moment';
+import moment from 'moment';
 import { Subscription } from "rxjs";
 import { tap } from 'rxjs/operators';
 

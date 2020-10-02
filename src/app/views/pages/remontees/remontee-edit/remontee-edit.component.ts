@@ -10,7 +10,7 @@ import { Paginate } from '@app/core/_base/layout/models/paginate.model';
 import { Remontee } from '@app/core/models';
 import { NgxPermissionsService } from 'ngx-permissions';
 import { SubheaderService } from '@app/core/_base/layout/services/subheader.service';
-import * as moment from 'moment';
+import moment from 'moment';
 import Swal from 'sweetalert2';
 import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
 import {FormStatus} from '@app/core/_base/crud/models/form-status';

@@ -5,7 +5,7 @@ import { MatIconRegistry } from '@angular/material';
 import { MaterielService, CategorieService, StatusService,PersonnelService } from '@app/core/services';
 import { Materiel, Categorie, Status } from '@app/core/models';
 import { AuthService, User } from '@app/core/auth';
-import * as moment from 'moment';
+import moment from 'moment';
 import { debounceTime, map } from 'rxjs/operators';
 import { DateEnToFrPipe, DateFrToEnPipe, RecursiveSearchPipe } from '@app/core/_base/layout';
 
