@@ -2,13 +2,13 @@
     #portlet-comment{
         color: black;
         font-size:1em;
-        .tf-portlet{
-            background-color: #f7f9fc;
-            margin-bottom: 0;
-            height: 100%;
-            .tf-portlet-header{
-                font-weight: bolder;
-                padding: 20px 20px 0 20px;
+        height: 100%;
+        // .tf-portlet{
+        //     background-color: #f7f9fc;
+        //     margin-bottom: 0;
+        //     .tf-portlet-header{
+        //         font-weight: bolder;
+        //         padding: 20px 20px 0 20px;
                 .title{
                     a{
                         color: #525252;
@@ -27,10 +27,14 @@
                         border-bottom: 2px solid #55cec7 ;
                     }
                 }
-            }
+            // }
             
-            .tf-portlet__body{
+            .box{
+                display: flex;
+                flex-direction: column;
                 padding: 20px;
+                margin-bottom: 76px;
+
                 .input-block{
                     .chat-row{
                         padding: 0 1em 0;
@@ -48,7 +52,6 @@
                 }
                 .chat-block{
                     flex: 1;
-                    min-height: 20vh;
                     max-height: 60vh;
                     overflow-y: scroll;
                     overflow-x: hidden;
@@ -89,6 +92,12 @@
     
                     }
                 }
+                .input-block{
+                    position: absolute;
+                    bottom: 10px;
+                    left: 3.5em;
+                    width: calc(100% - 7em);
+                }
                 .user-avatar {
                     .avatar-content{
                         background-color: #ebedf2 !important;
@@ -99,6 +108,6 @@
                     }
                 }
             }
-        }
+    //     }
     }
 }

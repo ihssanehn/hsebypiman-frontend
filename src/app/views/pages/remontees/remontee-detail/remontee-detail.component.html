@@ -21,18 +21,29 @@
 		<div class="row">
 			<div  [ngClass]="isActiveModule(['REMONTEE_COMMENTS']) ? 'col-md-4':'col-md-12'">
 				<div class="card">
-					<h3>Informations générales</h3>
+					<h4>Informations générales</h4>
 					<div class="box">
 						<p><span class="label pull-left mr-2">{{'REMONTEES.CREATOR.TITLE' | translate}}</span><span class="">{{remontee.creator | fullName}}</span></p>
 						<p><span class="label pull-left mr-2">{{'COMMON.CREATED_AT.TITLE' | translate}}</span><span class="">{{remontee.created_at | date:'dd/MM/yyyy'}}</span></p>
 						<p><span class="label pull-left mr-2">{{'REMONTEES.TYPE.TITLE' | translate}}</span><span class="">{{remontee.type?.libelle}}</span></p>
 						<p><span class="label pull-left mr-2">{{'REMONTEES.DESCRIPTION.TITLE' | translate}}</span><span class="">{{remontee.description}}</span></p>
-						<p><span class="label pull-left mr-2">{{'REMONTEES.ACTION.TITLE' | translate}}</span><span class=""><button mat-icon-button (click)="goToAction()" class="mr-3" title="{{'REMONTEES.SEE_ACTION.TITLE' | translate}}"><mat-icon color="primary">visibility</mat-icon></button>{{remontee.action_status}}</span></p>
 					</div>
 					<div class="tf-divider mb-3">
 						<span></span>
 					</div>
-					<h3>Documents</h3>
+					<h4>
+						{{'REMONTEES.ACTION.TITLE' | translate}}
+						<button mat-icon-button (click)="goToAction()" class="pull-right" title="{{'PLANACTIONS.SEE_ACTION.TITLE' | translate}}"><mat-icon color="primary">visibility</mat-icon></button>
+					</h4>
+					<div class="box" style="flex:1">
+						<p><span class="label pull-left mr-2">{{'PLANACTIONS.NAME.TITLE' | translate}}</span><span class="">{{remontee.action.libelle}}</span></p>
+						<p><span class="label pull-left mr-2">{{'PLANACTIONS.STATUS.TITLE' | translate}}</span><span class="">{{remontee.action_status}}</span></p>
+						<p><span class="label pull-left mr-2">{{'PLANACTIONS.PILOTE.TITLE' | translate}}</span><span class="">{{remontee.action.pilote ? (remontee.action.pilote | fullName) : '-'}}</span></p>
+					</div>
+					<div class="tf-divider mb-3">
+						<span></span>
+					</div>
+					<h4>Documents</h4>
 					<div class="box" style="flex:1">
 						<ul>
 							<li class="mb-3 pointer" *ngFor="let document of remontee.documents" (click)="showDocument(document)">
