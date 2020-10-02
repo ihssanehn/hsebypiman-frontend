@@ -10,6 +10,7 @@ import * as echarts from 'echarts';
 import { LayoutConfigService, SparklineChartOptions } from '@app/core/_base/layout';
 
 
+
 @Component({
 	selector: 'tf-ars-dash',
 	templateUrl: './ars-dash.component.html',
@@ -33,7 +34,7 @@ export class ArsDashComponent implements OnInit, AfterViewInit, OnDestroy {
 	echartsEvol;
 	EvolOptions = {
 	title: {
-		text: 'Evolution des ars',
+		text: this.translate.instant("ARS.DASH.AR_EVOLUTION.TITLE"),
 		x: 'center'
 	},
 	tooltip: {
@@ -73,8 +74,6 @@ export class ArsDashComponent implements OnInit, AfterViewInit, OnDestroy {
 		
 	}
 
-	
-
 	ngOnInit() {
 		this.getArsDash();
 	}
@@ -83,7 +82,6 @@ export class ArsDashComponent implements OnInit, AfterViewInit, OnDestroy {
 		this.echartsEvol = echarts.init(this.evolAll.nativeElement)
 		this.echartsEvol.showLoading();
 	}
-
 
 	ngOnDestroy(){
 		this.cdr.detach();

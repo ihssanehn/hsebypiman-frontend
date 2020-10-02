@@ -9,6 +9,7 @@ import { tap } from 'rxjs/operators';
 import { Location } from '@angular/common';
 import Swal from 'sweetalert2';
 import { union } from 'lodash';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'tf-ar-detail',
@@ -32,6 +33,7 @@ export class ArDetailComponent implements OnInit, OnDestroy {
 	protected router: Router;
 	protected chantierService: ChantierService;
 	protected arService: ArService;
+	private translate: TranslateService;
 
 
 	constructor(injector: Injector) {
@@ -40,6 +42,7 @@ export class ArDetailComponent implements OnInit, OnDestroy {
 		this.arService = injector.get(ArService);
 		this.cdr = injector.get(ChangeDetectorRef);
 		this.chantierService = injector.get(ChantierService);
+		this.translate = injector.get(TranslateService);
 	}
 
 	ngOnInit() {
@@ -61,7 +64,6 @@ export class ArDetailComponent implements OnInit, OnDestroy {
 			var res = await this.arService.get(arId).toPromise();
 			this.ar = res.result.data;
 			this.chantier = this.ar.chantier
-			// this.getChantier(this.ar.chantier_id);
 			this.cdr.markForCheck();
 		} catch (error) {
 			console.error(error);
@@ -82,7 +84,7 @@ export class ArDetailComponent implements OnInit, OnDestroy {
 		await this.arService.delete(arId).toPromise();
 		Swal.fire({
 			icon: 'success',
-			title: 'Analyse de risque a été supprimé avec succès',
+			title: this.translate.instant("ARS.NOTIF.AR_DELETED.TITLE"),
 			showConfirmButton: false,
 			timer: 1500
 		});
@@ -113,12 +115,12 @@ export class ArDetailComponent implements OnInit, OnDestroy {
 		if(!this.ar.chantier.is_all_ars_archived){
 			Swal.fire({
 				icon: 'warning',
-				title: 'Vous allez dupliquer cette Analyse de risque',
-				html: '<p class="text-warning"><b>L\'analyse de risque en cours sur ce chantier sera archivée</b></p><p>Voulez-vous continuer ?</p>',
+				title: this.translate.instant("ARS.HEAD.NOTIF.AR_ARCHIVED.TITLE"),
+				html: "<p class='text-warning'><b>"+this.translate.instant("ARS.HEAD.NOTIF.AR_ARCHIVED.LABEL")+"</b></p><p>"+this.translate.instant("ARS.HEAD.NOTIF.AR_ARCHIVED.SUBLABEL")+"</p>",
 				showConfirmButton: true,
 				showCancelButton: true,
-				cancelButtonText: 'Annuler',
-				confirmButtonText: 'Confirmer'
+				cancelButtonText: this.translate.instant("ACTION.CANCEL"),
+				confirmButtonText: this.translate.instant("ACTION.CONFIRM")
 			}).then(async response => {
 				if (response.value) {
 					this.router.navigate(['analyses-risque/add'], {queryParams:{ar_id:this.ar.id}})

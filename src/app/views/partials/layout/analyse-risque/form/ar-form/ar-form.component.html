@@ -1,12 +1,12 @@
 <ng-container [formGroup]="arForm">
 	<div class="row" [hidden]="origin == 'add' && partHided(1)">
 		<div class="col-12">
-			<div class="tf-heading tf-heading--md">| 1 Règles générales du chantier</div>
+			<div class="tf-heading tf-heading--md">| 1 {{'ARS.CARD.SITE_RULES.TITLE' | translate}}</div>
 			<div class="row">
 				<div class="col-md-12">
 					<div class="tf-card-form">
 						<div class="tf-heading tf-heading--sm">
-							1.1 Accueil sécurité propre au client
+							1.1 {{'ARS.CARD.SITE_RULES.SECURITY.TITLE' | translate}}
 							<mat-slide-toggle class="pull-right" [checked]="isChecked('a_prevoir_compagnons')" (change)="updateToggleValue($event, 'a_prevoir_compagnons')">
 								<small>{{'ARS.PREVOIR_COMPAGNONS.LABEL' | translate}}</small>
 							</mat-slide-toggle>
@@ -32,7 +32,7 @@
 													<div>
 														<input class="form-control text-center" type="time" name="accueil_secu_time_opening" formControlName="accueil_secu_time_opening" />
 													</div>
-													<span>A </span>
+													<span>- </span>
 													<div>
 														<input class="form-control text-center" type="time" name="accueil_secu_time_closing" formControlName="accueil_secu_time_closing" placeholder="" />
 													</div>
@@ -52,23 +52,23 @@
 										<mat-select-trigger>
 											<mat-chip-list #chipList>
 												<mat-chip *ngFor="let as_day of toppings.value" class="chip-item">
-													{{as_day}}
+													{{as_day.value | translate}}
 												</mat-chip>
 											</mat-chip-list>
 										</mat-select-trigger>
-										<mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+										<mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping.value | translate}}</mat-option>
 									</mat-select>
 								</mat-form-field>
 								<mat-form-field class="col-xl-4" >
 									<mat-label>{{'ARS.REALISATEUR.LABEL' | translate}}</mat-label>
-									<input class="form-control" matInput type="text" name="realisateur" formControlName="realisateur" placeholder="Saisir ici"  [required]="isFieldRequired('realisateur')"/>
+									<input class="form-control" matInput type="text" name="realisateur" formControlName="realisateur" placeholder="{{'ACTION.ENTER_HERE' | translate}}"  [required]="isFieldRequired('realisateur')"/>
 									<mat-error *ngIf="isControlHasError('realisateur','required')">
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
 								</mat-form-field>
 								<mat-form-field class="col-xl-4" >
 									<mat-label>{{'ARS.TEL_REALISATEUR.LABEL' | translate}}</mat-label>
-									<input class="form-control" matInput type="text" name="tel_realisateur" formControlName="tel_realisateur" placeholder="Saisir ici"  [required]="isFieldRequired('tel_realisateur')"/>
+									<input class="form-control" matInput type="text" name="tel_realisateur" formControlName="tel_realisateur" placeholder="{{'ACTION.ENTER_HERE' | translate}}"  [required]="isFieldRequired('tel_realisateur')"/>
 									<mat-error *ngIf="isControlHasError('tel_realisateur','required')">
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
@@ -82,19 +82,19 @@
 						<div class="col-md-8">
 							<div class="tf-card-form full-height">
 								<div class="tf-heading tf-heading--sm">
-									1.2 Contacts en cas d'accident
+									1.2 {{'ARS.CARD.SITE_RULES.CONTACTS.TITLE' | translate}}
 								</div>
 								<div class="row mt-3">
 									<mat-form-field class="col-xl-6" >
 										<mat-label>{{'ARS.CONTACT_INTERNE_SECOURS.LABEL' | translate}}</mat-label>
-										<input class="form-control" matInput type="text" name="contact_interne_secours" formControlName="contact_interne_secours" placeholder="Saisir ici"  [required]="isFieldRequired('contact_interne_secours')"/>
+										<input class="form-control" matInput type="text" name="contact_interne_secours" formControlName="contact_interne_secours" placeholder="{{'ACTION.ENTER_HERE' | translate}}"  [required]="isFieldRequired('contact_interne_secours')"/>
 										<mat-error *ngIf="isControlHasError('contact_interne_secours','required')">
 											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 										</mat-error>
 									</mat-form-field>
 									<mat-form-field class="col-xl-6" >
 										<mat-label>{{'ARS.TEL_CONTACT_INTERNE_SECOURS.LABEL' | translate}}</mat-label>
-										<input class="form-control" matInput type="text" name="tel_contact_interne_secours" formControlName="tel_contact_interne_secours" placeholder="Saisir ici"  [required]="isFieldRequired('tel_contact_interne_secours')"/>
+										<input class="form-control" matInput type="text" name="tel_contact_interne_secours" formControlName="tel_contact_interne_secours" placeholder="{{'ACTION.ENTER_HERE' | translate}}"  [required]="isFieldRequired('tel_contact_interne_secours')"/>
 										<mat-error *ngIf="isControlHasError('tel_contact_interne_secours','required')">
 											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 										</mat-error>
@@ -102,14 +102,14 @@
 
 									<mat-form-field class="col-xl-6" >
 										<mat-label>{{'ARS.CONTACT_CLIENT_CHEF_CHANTIER.LABEL' | translate}}</mat-label>
-										<input class="form-control" matInput type="text" name="contact_client_chef_chtr" formControlName="contact_client_chef_chtr" placeholder="Saisir ici"  [required]="isFieldRequired('contact_client_chef_chtr')"/>
+										<input class="form-control" matInput type="text" name="contact_client_chef_chtr" formControlName="contact_client_chef_chtr" placeholder="{{'ACTION.ENTER_HERE' | translate}}"  [required]="isFieldRequired('contact_client_chef_chtr')"/>
 										<mat-error *ngIf="isControlHasError('contact_client_chef_chtr','required')">
 											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 										</mat-error>
 									</mat-form-field>
 									<mat-form-field class="col-xl-6" >
 										<mat-label>{{'ARS.TEL_CONTACT_CLIENT_CHEF_CHANTIER.LABEL' | translate}}</mat-label>
-										<input class="form-control" matInput type="text" name="tel_contact_client_chef_chtr" formControlName="tel_contact_client_chef_chtr" placeholder="Saisir ici"  [required]="isFieldRequired('tel_contact_client_chef_chtr')"/>
+										<input class="form-control" matInput type="text" name="tel_contact_client_chef_chtr" formControlName="tel_contact_client_chef_chtr" placeholder="{{'ACTION.ENTER_HERE' | translate}}"  [required]="isFieldRequired('tel_contact_client_chef_chtr')"/>
 										<mat-error *ngIf="isControlHasError('tel_contact_client_chef_chtr','required')">
 											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 										</mat-error>
@@ -117,14 +117,14 @@
 
 									<mat-form-field class="col-xl-6" >
 										<mat-label>{{'ARS.CONTACT_CLIENT_HSE.LABEL' | translate}}</mat-label>
-										<input class="form-control" matInput type="text" name="contact_client_hse" formControlName="contact_client_hse" placeholder="Saisir ici"  [required]="isFieldRequired('contact_client_hse')"/>
+										<input class="form-control" matInput type="text" name="contact_client_hse" formControlName="contact_client_hse" placeholder="{{'ACTION.ENTER_HERE' | translate}}"  [required]="isFieldRequired('contact_client_hse')"/>
 										<mat-error *ngIf="isControlHasError('contact_client_hse','required')">
 											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 										</mat-error>
 									</mat-form-field>
 									<mat-form-field class="col-xl-6" >
 										<mat-label>{{'ARS.TEL_CONTACT_CLIENT_HSE.LABEL' | translate}}</mat-label>
-										<input class="form-control" matInput type="text" name="tel_contact_client_hse" formControlName="tel_contact_client_hse" placeholder="Saisir ici"  [required]="isFieldRequired('tel_contact_client_hse')"/>
+										<input class="form-control" matInput type="text" name="tel_contact_client_hse" formControlName="tel_contact_client_hse" placeholder="{{'ACTION.ENTER_HERE' | translate}}"  [required]="isFieldRequired('tel_contact_client_hse')"/>
 										<mat-error *ngIf="isControlHasError('tel_contact_client_hse','required')">
 											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 										</mat-error>
@@ -135,7 +135,7 @@
 						<div class="col-md-4">
 							<div class="tf-card-form full-height">
 								<div class="tf-heading tf-heading--sm">
-									1.3 Conditions générales du chantier
+									1.3 {{'ARS.CARD.SITE_RULES.CONDITIONS.TITLE' | translate}}
 								</div>
 								<div class="row mt-3">
 									<div class="col-xl-12 mat-form-field ng-tns-c14-2 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-legacy mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label" formContolName="a_prevoir_compagnons">
@@ -149,7 +149,7 @@
 														<div>
 															<input class="form-control text-center" type="time" name="heure_ouverture" formControlName="heure_ouverture" />
 														</div>
-														<span>A </span>
+														<span>- </span>
 														<div>
 															<input class="form-control text-center" type="time" name="heure_fermeture" formControlName="heure_fermeture" placeholder="" />
 														</div>
@@ -189,17 +189,17 @@
 			</div>
 		</div>
 		<div class="col-12 mb-4" *ngIf="partHided(2) && origin=='add'">
-			<button mat-raised-button type="button" class="pull-right btn-small" color="info" (click)="showPart(2)">Suite</button>
+			<button mat-raised-button type="button" class="pull-right btn-small" color="info" (click)="showPart(2)">{{'ACTION.FOLLOWING' | translate}}</button>
 		</div>
 	</div>
 	<div class="row" [hidden]="origin == 'add' && partHided(2)">		
 		<div class="col-12">
-			<div class="tf-heading tf-heading--md">| 2 {{'ARS.FORM.RISKBLOCK.TITLE' | translate}}</div>
+			<div class="tf-heading tf-heading--md">| 2 {{'ARS.CARD.RISKS.TITLE' | translate}}</div>
 			<div class="row">
 				<div class="col-md-12">
 					<div class="tf-card-form">
 						<div class="tf-heading tf-heading--xs">
-							{{'ARS.FORM.RISKBLOCK.MSG' | translate}}
+							{{'ARS.CARD.RISKS.LABEL' | translate}}
 						</div>
 						<table class="mt-3" mat-table [dataSource]="risksList">
 							<ng-container matColumnDef="risks">
@@ -219,7 +219,7 @@
 							<ng-container matColumnDef="comments">
 								<th mat-header-cell *matHeaderCellDef> {{'ARS.FORM.COMMENT' | translate}} </th>
 								<td mat-cell *matCellDef="let element" class="cell-textarea">
-									<textarea class="form-control no_border" (change)="onCommentCheckChange(element.id,$event)" [value]="getCommentValue(element.id)" placeholder="Saisir ici"></textarea>
+									<textarea class="form-control no_border" (change)="onCommentCheckChange(element.id,$event)" [value]="getCommentValue(element.id)" placeholder="{{'ACTION.ENTER_HERE' | translate}}"></textarea>
 								</td>
 							</ng-container>
 		
@@ -231,12 +231,12 @@
 			</div>
 		</div>
 		<div class="col-12 mb-4" *ngIf="partHided(3) && origin=='add'">
-			<button mat-raised-button type="button" class="pull-right btn-small" color="info" (click)="showPart(3)">Suite</button>
+			<button mat-raised-button type="button" class="pull-right btn-small" color="info" (click)="showPart(3)">{{'ACTION.FOLLOWING' | translate}}</button>
 		</div>
 	</div>
 	<div class="row" [hidden]="origin == 'add' && partHided(3)">		
 		<div class="col-6">
-			<div class="tf-heading tf-heading--md">| 3 {{'ARS.FORM.EQBLOCK.TITLE' | translate}}</div>
+			<div class="tf-heading tf-heading--md">| 3 {{'ARS.CARD.EQUIPEMENT.TITLE' | translate}}</div>
 			<div class="row">
 				<div class="col-md-12">
 					<div class="tf-card-form">
@@ -250,12 +250,12 @@
 			</div>
 		</div>
 		<div class="col-6">
-			<div class="tf-heading tf-heading--md">| 4 {{'ARS.FORM.MWBLOCK.TITLE' | translate}}</div>
+			<div class="tf-heading tf-heading--md">| 4 {{'ARS.CARD.MONITORING.TITLE' | translate}}</div>
 			<div class="row">
 				<div class="col-md-12">
 					<div class="tf-card-form">
 						<div class="tf-heading tf-heading--sm">
-							{{'ARS.FORM.MWBLOCK.WORKREGISTER.TITLE' | translate}}
+							{{'ARS.CARD.MONITORING.WORKS.TITLE' | translate}}
 							<mat-slide-toggle [checked]="isChecked('a_signer_registre_travaux')" (change)="updateToggleValue($event, 'a_signer_registre_travaux')" class="pull-right"></mat-slide-toggle>
 						</div>
 						<div class="row mt-3" [hidden]="!isChecked('a_signer_registre_travaux')">
@@ -281,42 +281,42 @@
 							<div class="row form-row col-md-12">
 								<mat-form-field class="col-xl-4">
 									<mat-label>{{'ARS.FORM.REGISTRAR' | translate}}</mat-label>
-									<input class="form-control" matInput type="text" name="nom_charge_registre" formControlName="nom_charge_registre" placeholder="Saisir ici" [required]="isFieldRequired('nom_charge_registre')"/>
+									<input class="form-control" matInput type="text" name="nom_charge_registre" formControlName="nom_charge_registre" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('nom_charge_registre')"/>
 									<mat-error *ngIf="isControlHasError('nom_charge_registre','required')">
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
 								</mat-form-field>
 								<mat-form-field class="col-xl-4">
 									<mat-label>{{'COMMON.PHONENUMBER.LABEL' | translate}}</mat-label>
-									<input class="form-control" matInput  type="text" name="tel_charge_registre" formControlName="tel_charge_registre" placeholder="Saisir ici" [required]="isFieldRequired('tel_charge_registre')"/>
+									<input class="form-control" matInput  type="text" name="tel_charge_registre" formControlName="tel_charge_registre" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('tel_charge_registre')"/>
 									<mat-error *ngIf="isControlHasError('tel_charge_registre','required')">
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
 								</mat-form-field>
 								<mat-form-field class="col-xl-4">
 									<mat-label>{{'COMMON.ADRESS.LABEL' | translate}}</mat-label>
-									<input class="form-control" matInput type="text" name="adresse_charge_registre" formControlName="adresse_charge_registre" placeholder="Saisir ici" [required]="isFieldRequired('adresse_charge_registre')"/>
+									<input class="form-control" matInput type="text" name="adresse_charge_registre" formControlName="adresse_charge_registre" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('adresse_charge_registre')"/>
 									<mat-error *ngIf="isControlHasError('adresse_charge_registre','required')">
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
 								</mat-form-field>
 								<mat-form-field class="col-xl-4">
 									<mat-label>{{'COMMON.CITY.LABEL' | translate}}</mat-label>
-									<input class="form-control" matInput type="text" name="ville_charge_registre" formControlName="ville_charge_registre" placeholder="Saisir ici" [required]="isFieldRequired('ville_charge_registre')"/>
+									<input class="form-control" matInput type="text" name="ville_charge_registre" formControlName="ville_charge_registre" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('ville_charge_registre')"/>
 									<mat-error *ngIf="isControlHasError('ville_charge_registre','required')">
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
 								</mat-form-field>
 								<mat-form-field class="col-xl-4">
 									<mat-label>{{'COMMON.POSTCODE.LABEL' | translate}}</mat-label>
-									<input matInput class="form-control" type="text" name="codepostal_charge_registre" formControlName="codepostal_charge_registre" placeholder="Saisir ici" [required]="isFieldRequired('codepostal_charge_registre')"/>
+									<input matInput class="form-control" type="text" name="codepostal_charge_registre" formControlName="codepostal_charge_registre" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('codepostal_charge_registre')"/>
 									<mat-error *ngIf="isControlHasError('codepostal_charge_registre','required')">
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
 								</mat-form-field>
 								<mat-form-field class="col-xl-4">
 									<mat-label>{{'COMMON.COUNTRY.LABEL' | translate}}</mat-label>
-									<input class="form-control" matInput type="text" name="pays_charge_registre" formControlName="pays_charge_registre" placeholder="Saisir ici" [required]="isFieldRequired('pays_charge_registre')"/>
+									<input class="form-control" matInput type="text" name="pays_charge_registre" formControlName="pays_charge_registre" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('pays_charge_registre')"/>
 									<mat-error *ngIf="isControlHasError('pays_charge_registre','required')">
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
@@ -328,7 +328,7 @@
 				<div class="col-md-12">
 					<div class="tf-card-form">
 						<div class="tf-heading tf-heading--sm">
-							{{'ARS.FORM.MWBLOCK.SUBTITLE2' | translate}}
+							{{'ARS.CARD.MONITORING.MARKUP.TITLE' | translate}}
 							<mat-slide-toggle [checked]="isChecked('a_prevoir_balisage')" (change)="updateToggleValue($event, 'a_prevoir_balisage')" class="pull-right"></mat-slide-toggle>
 						</div>
 					</div>
@@ -336,22 +336,22 @@
 			</div>
 		</div>	
 		<div class="col-12 mb-4" *ngIf="partHided(4) && origin=='add'">
-			<button mat-raised-button type="button" class="pull-right btn-small" color="info" (click)="showPart(4)">Suite</button>
+			<button mat-raised-button type="button" class="pull-right btn-small" color="info" (click)="showPart(4)">{{'ACTION.FOLLOWING' | translate}}</button>
 		</div>	
 	</div>
 	<div class="row" [hidden]="origin == 'add' && partHided(4)">
 		<div class="col-12">
-			<div class="tf-heading tf-heading--md">| 5 {{'ARS.FORM.SIGNATURE.TITLE' | translate}}</div>
+			<div class="tf-heading tf-heading--md">| 5 {{'ARS.CARD.OBSERVATION.TITLE' | translate}}</div>
 			  <div class="row">
 				<div class="col-md-12">
 					<div class="tf-card-form">
 						<div class="tf-heading tf-heading--sm">
-							{{'ARS.FORM.SIGNATURE.SUBTITLE' | translate}}
+							{{'ARS.CARD.OBSERVATION.LABEL' | translate}}
 						</div>
 		
 						<div class="mt-3">
 							<mat-form-field appearance="outline"class="col-md-12" >
-								<mat-label>Saisir ici votre observation</mat-label>
+								<mat-label>{{'ACTION.ENTER_HERE' | translate}}</mat-label>
 								<textarea matInput formControlName="observations_signature" cdkTextareaAutosize cdkAutosizeMinRows=10 cdkAutosizeMaxRows=20></textarea>
 							</mat-form-field>
 						</div>
@@ -361,9 +361,10 @@
 		</div>
 	</div>
 </ng-container>
+
 <ng-container *ngIf="formStatus">
 	<div *ngIf="formStatus.canShowErrors()" class="alert alert-danger alert-dismissible fade show" role="alert">
-		<div><strong>Oups!</strong></div>
+		<div><strong>{{'COMMON.NOTIF.ERROR.TITLE' | translate}}</strong></div>
 		<div>
 			<ul *ngFor="let errors of formStatus.errors  |  keyvalue">
 				<li *ngFor="let error of errors.value">
@@ -373,7 +374,7 @@
 		</div>
 	</div>			
 	<div *ngIf="formStatus.canShowSuccess()" class="alert alert-success" role="alert">
-		<div><strong>Success!</strong></div>
+		<div><strong>{{'COMMON.NOTIF.SUCCESS.TITLE' | translate}}</strong></div>
 		<div *ngFor="let message of formStatus.messages">{{ message }}</div>
 	</div>
 </ng-container>

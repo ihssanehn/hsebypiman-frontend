@@ -3,6 +3,7 @@ import { ZoneService, TypeService } from '@app/core/services';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AdminTemplateComponent } from '@app/views/partials/layout/admin-template/admin-template.component';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'ar-zones-admin',
@@ -15,16 +16,9 @@ export class ArZonesAdminComponent extends AdminTemplateComponent  implements On
   modalService: NgbModal;
   parentService: any;
   childService: any;
+  translate: TranslateService;
 
-  tpl : any = {
-    title : 'Zones',
-    deletedMessage: 'Suppression impossible car la selection comprend un élément affecté à une ou plusieurs analyses de risque',
-    deletedChildMessage: 'Suppression impossible car la selection est affectée à une ou plusieurs analyses de risque',
-    collapsed : true,
-    canUpdateTitle: false,
-    titleOject: null,
-    childCol : 6
-  }
+  tpl : any;
 
   list: any[];
 
@@ -34,10 +28,20 @@ export class ArZonesAdminComponent extends AdminTemplateComponent  implements On
     this.modalService = injector.get(NgbModal);
     this.parentService = injector.get(TypeService);
     this.childService = injector.get(ZoneService);
+    this.translate = injector.get(TranslateService);
   }
 
   ngOnInit() {
     super.ngOnInit();
+    this.tpl = {
+      title : this.translate.instant("ARS.CARD.ZONE.SHORTTITLE"),
+      deletedMessage: this.translate.instant("ARS.NOTIF.ELEMENT_NOT_DELETED.TITLE"),
+      deletedChildMessage: this.translate.instant("ARS.NOTIF.ELEMENT_NOT_DELETED.SUBTITLE"),
+      collapsed : true,
+      canUpdateTitle: false,
+      titleOject: null,
+      childCol : 6
+    }
   }
 
   async getList(){
@@ -70,7 +74,7 @@ export class ArZonesAdminComponent extends AdminTemplateComponent  implements On
 
   // implemented
   async addItem(){
-    super.addItem("Ajouter une zone", {model : 'Zone', ordre: this.generateParentOrdre()});  
+    super.addItem(this.translate.instant("ARS.ACTION.ADD_ZONE"), {model : 'Zone', ordre: this.generateParentOrdre()});  
   }
 
   // implemented
@@ -80,7 +84,7 @@ export class ArZonesAdminComponent extends AdminTemplateComponent  implements On
 
   // implemented
   async deleteItem({id}){
-    super.deleteItem({id}, { title : "Zone archivée avec succès" });
+    super.deleteItem({id}, { title : this.translate.instant("ARS.NOTIF.ZONE_ARCHIVED.TITLE") });
   }
 
   // implemented
@@ -96,7 +100,7 @@ export class ArZonesAdminComponent extends AdminTemplateComponent  implements On
 
   // implemented
   async deleteChild({id, parent_id}){
-    super.deleteChild({id, parent_id}, {title : "Element est archivé avec succès" });
+    super.deleteChild({id, parent_id}, {title : this.translate.instant("ARS.NOTIF.ELEMENT_ARCHIVED.TITLE") });
   }
 
 

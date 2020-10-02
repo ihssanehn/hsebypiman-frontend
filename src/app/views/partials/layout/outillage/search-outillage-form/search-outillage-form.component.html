@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-md-12" *ngIf="origin=='detail'">
 			<div class="tf-heading tf-heading--sm">
-				<span>{{'ARS.CHANTIERS.FORM.DETAIL.TITLE' | translate}}</span> {{'ARS.CHANTIERS.FORM.DETAIL.SUBTITLE' | translate}}
+				<span>{{'ARS.HEAD.DETAIL.LABEL' | translate}}</span>
 			</div>
 		</div>
 		<div class="col-md-12 search-box" *ngIf="origin!='detail'">
@@ -32,13 +32,13 @@
 		</div>
 		<div class="col-md-12 result-msg pb-3 my-3" *ngIf="outillage && origin!='detail'">
 			<div>
-				<span>{{'ARS.CHANTIERS.FORM.SEARCH.NOTIF.STANDARD.TEXT1' | translate}}</span> 
+				<span>{{'ARS.HEAD.NOTIF.CHANTIER_FOUND' | translate}}</span> 
 			</div>
 		</div>
 		<div class="col-md-12 px-5 search-result-block" *ngIf="outillage">
 			<div class="row">
 				<div class="col-xl-3 col-lg-3 col-md-4 col-xs-6">
-					<mat-label>{{'ARS.CHANTIERS.NAME' | translate}}</mat-label>
+					<mat-label>{{'ARS.HEAD.NAME' | translate}}</mat-label>
 				</div>
 
 			</div>

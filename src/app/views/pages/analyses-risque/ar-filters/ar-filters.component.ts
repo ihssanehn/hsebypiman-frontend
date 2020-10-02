@@ -18,20 +18,18 @@ export class ArFiltersComponent implements OnInit, AfterViewInit {
 
   @Output() change = new EventEmitter();
 
-
-  
   filterForm: FormGroup;
   clients: String[];
   chantiers: Chantier[];
   users: User[];
   status: Status[];
   observationsOptions = [
-    'Avec',
-    'Sans'
+    {key: 'Avec', value: 'FILTER.SEARCH_WITH'},
+    {key: 'Sans', value: 'FILTER.SEARCH_WITHOUT'}
   ];
   signatoriesOptions = [
-    'Avec',
-    'Sans'
+    {key: 'Avec', value: 'FILTER.SEARCH_WITH'},
+    {key: 'Sans', value: 'FILTER.SEARCH_WITHOUT'}
   ];
 
   constructor(
@@ -116,8 +114,5 @@ export class ArFiltersComponent implements OnInit, AfterViewInit {
   clearValue(key){
     this.filterForm.get(key).patchValue(null);
   }
-
-
-
 
 }
