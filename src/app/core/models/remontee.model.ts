@@ -1,6 +1,6 @@
 
 import {User} from '@app/core/auth'
-import { Type, Document, Comment } from './';
+import { Action, Type, Document, Comment } from './';
 
 export class Remontee {
     id?: number;
@@ -10,4 +10,5 @@ export class Remontee {
     comments?:Comment[];
     creator_id?:number;
     creator?:User;
+    action?:Action;
 }

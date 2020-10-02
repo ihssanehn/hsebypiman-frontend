@@ -27,6 +27,7 @@
 						<p><span class="label pull-left mr-2">{{'COMMON.CREATED_AT.TITLE' | translate}}</span><span class="">{{remontee.created_at | date:'dd/MM/yyyy'}}</span></p>
 						<p><span class="label pull-left mr-2">{{'REMONTEES.TYPE.TITLE' | translate}}</span><span class="">{{remontee.type?.libelle}}</span></p>
 						<p><span class="label pull-left mr-2">{{'REMONTEES.DESCRIPTION.TITLE' | translate}}</span><span class="">{{remontee.description}}</span></p>
+						<p><span class="label pull-left mr-2">{{'REMONTEES.ACTION.TITLE' | translate}}</span><span class=""><button mat-icon-button (click)="goToAction()" class="mr-3" title="{{'REMONTEES.SEE_ACTION.TITLE' | translate}}"><mat-icon color="primary">visibility</mat-icon></button>{{remontee.action_status}}</span></p>
 					</div>
 					<div class="tf-divider mb-3">
 						<span></span>

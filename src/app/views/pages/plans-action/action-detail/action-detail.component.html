@@ -72,6 +72,18 @@
                       </ng-container>
                     </div>
                   </ng-container>
+                  <ng-container *ngIf="action.type?.code == 'REMONTE_D_INFORMATION'">
+                    <div class="row">
+                      <div class="col-12 my-2"><p><span class="label">Remontée concernée</span></p></div>
+                      <ng-container *ngIf="action.actionable">
+                        <div class="col-12 vs-line" >
+                          <div class="col-5"><p class="blue">{{action.actionable?.creator | fullName}}</p></div>
+                          <div class="col-5"><p class="blue">{{action.actionable?.created_at | date:'dd/MM/yyyy'}}</p></div>
+                          <div class="col-2" ><p class="blue"><a (click)="goToRemonteeDetail(action.actionable?.id)" alt="voir la remontee"><mat-icon color="primary">visibility</mat-icon></a></p></div>
+                        </div>
+                      </ng-container>
+                    </div>
+                  </ng-container>
                 </div>
               </ng-container>
               <ng-template #origineEdit>

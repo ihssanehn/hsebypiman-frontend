@@ -299,6 +299,10 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 		this.router.navigateByUrl('visites-securite/'+path+'/detail/'+id);
 	}
 
+	goToRemonteeDetail(id){
+		this.router.navigateByUrl('remontees/detail/'+id);
+	}
+
 	goToVsChantierDetail(id){
 		this.router.navigateByUrl('visites-securite/chantiers/detail/'+id);
 	}

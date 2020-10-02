@@ -173,4 +173,7 @@ export class RemonteeDetailComponent implements OnInit, OnDestroy {
 		return this.moduleService.isActived(codes);
 	}
 
+	goToAction(){
+		return this.router.navigateByUrl('plan-actions/detail/'+this.remontee.action.id);
+	}
 }
