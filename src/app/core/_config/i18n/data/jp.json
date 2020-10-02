@@ -13,7 +13,10 @@
 		"EXPORT": "エクスポートリスト",
 		"FOLLOWING": "後",
 		"READ": "相談します",
+		"REDUCE": "",
+		"REFRESH": "",
 		"SAVE": "保存",
+		"SHOW": "",
 		"SIGN": "看板"
 	},
 	"ARS": {
@@ -655,6 +658,7 @@
 		"CREATION_DATE": "Date de création",
 		"HIDE": "Cacher",
 		"KEYWORD": "Rechercher",
+		"LAUNCH": "",
 		"SEARCH": "Rechercher",
 		"SEARCH_ALL": "",
 		"SEARCH_CHANTIER": "Recherche un chantier",
@@ -931,6 +935,9 @@
 		"VISITESECURITE": "Visites de Sécurité"
 	},
 	"NOTIF": {
+		"DELETE_CONFIRMATION": {
+			"TITLE": ""
+		},
 		"ELEMENT_NOT_DELETED": {
 			"LABEL": "選択範囲に要素に割り当てられた要素が含まれているため、削除できません",
 			"SUBLABEL": "選択範囲が要素に割り当てられているため、削除できません"

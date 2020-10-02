@@ -15,13 +15,14 @@ export class ArDetailPanelsComponent implements OnInit {
 
   @Input() isExpanded : boolean;
 
-	@Input() isDisableToggle : boolean;
+  @Input() isDisableToggle : boolean;
 
   displayedColumns: string[] = ['risks', 'actions', 'comments'];
 	risksList : Array<CatRisque>;
   arRisksList : Array<CatRisque> = [];
   equipementList : Array<Equipement>;
   zonesList : Array<any>;
+  days: any[] = [];
   
   loaded = false;
 
@@ -42,6 +43,13 @@ export class ArDetailPanelsComponent implements OnInit {
   }
 
   ngOnInit() {
+	  this.days['Lundi'] = 'ARS.DAYS.MON';
+	  this.days['Mardi'] = 'ARS.DAYS.TUE';
+	  this.days['Mercredi'] = 'ARS.DAYS.WED';
+	  this.days['Jeudi'] = 'ARS.DAYS.THU';
+	  this.days['Vendredi'] = 'ARS.DAYS.FRI';
+	  this.days['Samedi'] = 'ARS.DAYS.SAT';
+	  this.days['Dimanche'] = 'ARS.DAYS.SUN';
   }
 
   async getCatRisques(){

@@ -6,7 +6,7 @@
 	<tf-userside-profile></tf-userside-profile>
 	<!--end: User bar -->
 	<button class="btn btn-brand tf-aside-btn" (click)="goToAdd()" *ngIf="hasButton() ; else blankButtonSpace">
-		{{menuAsideService.menuBtnAdd.value['title']}}
+		{{menuAsideService.menuBtnAdd.value['translate'] | translate}}
 	</button>
 	<!-- BEGIN: Aside Menu -->
 	<div class="tf-aside-menu-wrapper tf-grid__item tf-grid__item--fluid" id="tf_aside_menu_wrapper">

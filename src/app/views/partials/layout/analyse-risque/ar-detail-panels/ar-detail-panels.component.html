@@ -49,9 +49,9 @@
                                         <label class="mat-form-field-label">{{'ARS.AS_DAYS.LABEL' | translate}}</label>
                                     </span>
                                     <div class="mt-2">
-                                        <mat-chip-list #chipList>
+                                        <mat-chip-list #chipList *ngIf="days">
                                             <mat-chip *ngFor="let as_day of ar.accueil_secu_days" class="chip-item">
-                                                {{as_day}}
+                                                {{days[as_day] | translate}}
                                             </mat-chip>
                                         </mat-chip-list>
                                     </div>

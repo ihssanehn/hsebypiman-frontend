@@ -13,7 +13,10 @@
 		"EXPORT": "Exporter la liste",
 		"FOLLOWING": "Suite",
 		"READ": "Consulter",
+		"REDUCE": "Réduire",
+		"REFRESH": "Rafraîchir",
 		"SAVE": "Sauvegarder",
+		"SHOW": "Afficher",
 		"SIGN": "Signer"
 	},
 	"ARS": {
@@ -321,7 +324,7 @@
 		"INPUT": {
 			"CONFIRM_PASSWORD": "Confirmation",
 			"EMAIL": "Email",
-			"FULLNAME": "Fullname",
+			"FULLNAME": "Nom complet",
 			"NEW_PASSWORD": "Nouveau mot de passe",
 			"PASSWORD": "Mot de passe",
 			"USERNAME": "Nom d'utilisateur"
@@ -655,6 +658,7 @@
 		"CREATION_DATE": "Date de création",
 		"HIDE": "Cacher",
 		"KEYWORD": "Rechercher",
+		"LAUNCH": "Lancer",
 		"SEARCH": "Rechercher",
 		"SEARCH_ALL": "Tous",
 		"SEARCH_CHANTIER": "Recherche un chantier",
@@ -707,9 +711,9 @@
 			"TITLE": "Date de fin de garantie"
 		},
 		"DATE_PRET": {
-			"LABEL": "Date de pret",
-			"SHORTTITLE": "Date de pret",
-			"TITLE": "Date de pret"
+			"LABEL": "Date de prêt",
+			"SHORTTITLE": "Date de prêt",
+			"TITLE": "Date de prêt"
 		},
 		"DATE_RETOUR": {
 			"LABEL": "Date de retour",
@@ -931,6 +935,9 @@
 		"VISITESECURITE": "Visites de Sécurité"
 	},
 	"NOTIF": {
+		"DELETE_CONFIRMATION": {
+			"TITLE": "Êtes-vous sûr de supprimer cet élément?"
+		},
 		"ELEMENT_NOT_DELETED": {
 			"LABEL": "Suppression impossible car la sélection contient un élément affecté à un élément",
 			"SUBLABEL": "Suppression impossible car la sélection est affectée à un élément"
@@ -1044,7 +1051,7 @@
 		},
 		"DOCUMENTS_COUNT": {
 			"LABEL": "Documents annexes",
-			"SHORTTITLE": "Nbr docs",
+			"SHORTTITLE": "Nombre docs",
 			"TITLE": "Nombre de documents"
 		},
 		"TYPE": {
@@ -1170,7 +1177,7 @@
 	"VISITES": {
 		"ADD_VEHICULE": {
 			"LABEL": "Numéro d'identification du véhicule",
-			"SHORTTITLE": "Numéro d'identificatio",
+			"SHORTTITLE": "Numéro d'identification",
 			"TITLE": "Numéro d'identification du véhicule"
 		},
 		"AVERT": {

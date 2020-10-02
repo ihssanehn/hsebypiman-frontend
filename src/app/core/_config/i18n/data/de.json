@@ -13,7 +13,10 @@
 		"EXPORT": "Liste exportieren",
 		"FOLLOWING": "nach dem",
 		"READ": "Konsultieren",
+		"REDUCE": "",
+		"REFRESH": "",
 		"SAVE": "Speichern",
+		"SHOW": "",
 		"SIGN": "Zeichen"
 	},
 	"ARS": {
@@ -655,6 +658,7 @@
 		"CREATION_DATE": "Date de création",
 		"HIDE": "Cacher",
 		"KEYWORD": "Rechercher",
+		"LAUNCH": "",
 		"SEARCH": "Rechercher",
 		"SEARCH_ALL": "Alle",
 		"SEARCH_CHANTIER": "Recherche un chantier",
@@ -931,6 +935,9 @@
 		"VISITESECURITE": "Visites de Sécurité"
 	},
 	"NOTIF": {
+		"DELETE_CONFIRMATION": {
+			"TITLE": ""
+		},
 		"ELEMENT_NOT_DELETED": {
 			"LABEL": "Kann nicht gelöscht werden, da die Auswahl ein Element enthält, das einem Element zugewiesen ist",
 			"SUBLABEL": "Kann nicht gelöscht werden, da die Auswahl einem Element zugewiesen ist"

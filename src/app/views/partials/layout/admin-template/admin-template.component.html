@@ -2,10 +2,10 @@
 	<div class="d-flex justify-content-between">
 		<h3 class="m-0 flex-grow-1 pointer" (click)="tpl.collapsed = !tpl.collapsed">{{ tpl?.title }}</h3>
 		<div class="">
-			<a (click)="$event.stopPropagation(); addItem(); tpl.collapsed = false" matTooltip="Ajouter" data-ktportlet-tool="add" class="btn btn-sm btn-icon btn-clean btn-icon-md">
+			<a (click)="$event.stopPropagation(); addItem(); tpl.collapsed = false" matTooltip="{{'ACTION.ADD' | translate}}" data-ktportlet-tool="add" class="btn btn-sm btn-icon btn-clean btn-icon-md">
 				<i class="la la-plus"></i>
 			</a>
-			<a (click)="$event.stopPropagation(); refreshList(); tpl.collapsed = false" matTooltip="Raffraîchir" data-ktportlet-tool="refresh" class="btn btn-sm btn-icon btn-clean btn-icon-md">
+			<a (click)="$event.stopPropagation(); refreshList(); tpl.collapsed = false" matTooltip="{{'ACTION.REFRESH' | translate}}" data-ktportlet-tool="refresh" class="btn btn-sm btn-icon btn-clean btn-icon-md">
 				<i class="la la-refresh"></i>
 			</a>
 			<ng-container *ngIf="tpl?.canUpdateTitle">
@@ -13,7 +13,7 @@
 					<mat-icon>more_vert</mat-icon>
 				</button>
 			</ng-container>
-			<a [ngClass]="{'collapsed' : tpl?.collapsed }" (click)="tpl.collapsed = !tpl.collapsed" matTooltip="Réduire" class="btn btn-sm btn-icon btn-clean btn-icon-md accordion" data-toggle="collapse" data-target="#group" aria-expanded="true">
+			<a [ngClass]="{'collapsed' : tpl?.collapsed }" (click)="tpl.collapsed = !tpl.collapsed" matTooltip="{{'ACTION.REDUCE' | translate}}" class="btn btn-sm btn-icon btn-clean btn-icon-md accordion" data-toggle="collapse" data-target="#group" aria-expanded="true">
 				<i class="la la-angle-down"></i>
 			</a>
 		</div>
@@ -27,7 +27,7 @@
 </div>
 
 <mat-menu #actionTitleMenu="matMenu" class="action-menu">
-	<a (click)="$event.stopPropagation(); editTitle()" matTooltip="Editer" data-ktportlet-tool="edit" class="btn btn-sm btn-icon btn-clean btn-icon-md">
+	<a (click)="$event.stopPropagation(); editTitle()" matTooltip="{{'ACTION.EDIT' | translate}}" data-ktportlet-tool="edit" class="btn btn-sm btn-icon btn-clean btn-icon-md">
 		<i class="la la-edit"></i>
 	</a>
 	<a (click)="deleteTitle()" class="btn btn-sm btn-icon btn-clean btn-icon-md">
