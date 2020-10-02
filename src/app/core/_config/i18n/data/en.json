@@ -1,26 +1,26 @@
 {
 	"ACTION": {
-		"ADD": "Añadir",
-		"ADD_SIGNER": "Agregar un firmante",
-		"CANCEL": "Anular",
-		"CLEAR": "vacía",
-		"CONFIRM": "Confirmar",
-		"DELETE": "Eliminar",
-		"DOWNLOAD": "Descargar",
-		"DUPLICATE": "Duplicar",
-		"EDIT": "Editar",
-		"ENTER_HERE": "Entre aquí",
-		"EXPORT": "Exportar lista",
-		"FOLLOWING": "Después",
-		"READ": "Consultar",
-		"SAVE": "Guardar",
-		"SIGN": "Signo"
+		"ADD": "Add",
+		"ADD_SIGNER": "Add a signer",
+		"CANCEL": "Cancel",
+		"CLEAR": "Empty",
+		"CONFIRM": "Confirm",
+		"DELETE": "Remove",
+		"DOWNLOAD": "Download",
+		"DUPLICATE": "Duplicate",
+		"EDIT": "Edit",
+		"ENTER_HERE": "Enter here",
+		"EXPORT": "Export list",
+		"FOLLOWING": "Follow",
+		"READ": "To consult",
+		"SAVE": "Save",
+		"SIGN": "Sign"
 	},
 	"ARS": {
 		"ACTION": {
-			"ADD_EQUIPEMENT": "Agregar equipo",
-			"ADD_RISK": "Agrega un riesgo",
-			"ADD_ZONE": "Agregar una zona"
+			"ADD_EQUIPEMENT": "Add equipment",
+			"ADD_RISK": "Add a risk",
+			"ADD_ZONE": "Add a zone"
 		},
 		"ADRESS": "Adresse du chantier",
 		"AR": "Analyse de risque",
@@ -30,70 +30,70 @@
 			"TITLE": "À signer"
 		},
 		"AS_DAYS": {
-			"LABEL": "Jours d\\'accueil sécurité",
-			"SHORTTITLE": "Jours d\\'accueil sécurité",
-			"TITLE": "Jours d\\'accueil sécurité"
+			"LABEL": "Jours d'accueil sécurité",
+			"SHORTTITLE": "Jours d'accueil sécurité",
+			"TITLE": "Jours d'accueil sécurité"
 		},
 		"AS_HORAIRES": {
-			"LABEL": "Horaire d\\'accueil sécurité",
-			"SHORTTITLE": "Horaire d\\'accueil sécurité",
-			"TITLE": "Horaire d\\'accueil sécurité"
+			"LABEL": "Horaire d'accueil sécurité",
+			"SHORTTITLE": "Horaire d'accueil sécurité",
+			"TITLE": "Horaire d'accueil sécurité"
 		},
 		"BUDGET": "Budget",
 		"CARD": {
 			"EQUIPEMENT": {
-				"NO_EQUIPEMENT": "No hay equipo que proporcionar",
-				"SHORTTITLE": "Comodidades",
-				"TITLE": "Equipo que se proporcionará en el sitio"
+				"NO_EQUIPEMENT": "No equipment to provide",
+				"SHORTTITLE": "Amenities",
+				"TITLE": "Equipment to be provided on site"
 			},
 			"MONITORING": {
 				"MARKUP": {
-					"TITLE": "Marcas que se proporcionarán en el área"
+					"TITLE": "Signposting to be provided in the area"
 				},
-				"TITLE": "Seguimiento de obras",
+				"TITLE": "Monitoring of works",
 				"WORKS": {
-					"TITLE": "Registro de trabajo a firmar"
+					"TITLE": "Work register to be signed"
 				}
 			},
 			"OBSERVATION": {
-				"LABEL": "Observaciones adicionales",
-				"NO_OBSERVATION": "Sin observaciones",
-				"TITLE": "Observación"
+				"LABEL": "Additional observations",
+				"NO_OBSERVATION": "No observations",
+				"TITLE": "Observation"
 			},
 			"RISKS": {
 				"LABEL": "Obligatoirement port des EPI standard chez CVTI : casque, gants, vêtements couvrants, chaussures. Casquette tolérée pour le travail dans les faux plafonds (en fonction PDP du client). Si bruit port du casque antibruit pour les autres risques, adopter l’attitude suivante et cocher les actions à mener :",
 				"NO_RISK": "Obligatoirement port des EPI standard chez CVTI : casque, gants, vêtements couvrants, chaussures. Casquette tolérée pour le travail dans les faux plafonds (en fonction PDP du client). Si bruit port du casque antibruit.",
-				"SHORTTITLE": "Riesgos",
+				"SHORTTITLE": "Risks",
 				"SUBLABEL": "Obligatoirement port des EPI standard chez CVTI : casque, gants, vêtements couvrants, chaussures. Casquette tolérée pour le travail dans les faux plafonds (en fonction PDP du client). Si bruit port du casque antibruit pour les autres risques, adopter l’attitude suivante :",
-				"TITLE": "Riesgos relacionados con el sitio y medios de prevención"
+				"TITLE": "Risks related to the site and means of prevention"
 			},
 			"SIGNATURE": {
 				"ACTION": {
-					"SIGN_AR": "Firma el análisis de riesgos",
-					"SIGN_AR_FOR_OTHERS": "Tener el análisis de riesgo firmado"
+					"SIGN_AR": "Sign the risk analysis",
+					"SIGN_AR_FOR_OTHERS": "Have the risk analysis signed"
 				},
-				"LABEL": "He leído el análisis de riesgos del sitio, el PPSPS o el PDP y aplico las medidas preventivas necesarias",
-				"SUBTITLE": "Los peticionarios",
-				"TITLE": "Observación y firmas"
+				"LABEL": "I have read the site risk analysis, the PPSPS or the PDP and apply the necessary preventive measures",
+				"SUBTITLE": "The petitioners",
+				"TITLE": "Observation and signatures"
 			},
 			"SITE_RULES": {
 				"CONDITIONS": {
-					"TITLE": "Condiciones generales del sitio"
+					"TITLE": "General site conditions"
 				},
 				"CONTACTS": {
-					"TITLE": "Contactos en caso de accidente"
+					"TITLE": "Contacts in the event of an accident"
 				},
 				"SECURITY": {
-					"TITLE": "Recepción de seguridad específica del cliente"
+					"TITLE": "Customer-specific security reception"
 				},
-				"SITE_NOT_CONCERNED": "Sitio no preocupado",
-				"TITLE": "Reglas generales del sitio"
+				"SITE_NOT_CONCERNED": "Site not concerned",
+				"TITLE": "General site rules"
 			},
 			"ZONE": {
-				"SHORTTITLE": "Zonas"
+				"SHORTTITLE": "Zones"
 			}
 		},
-		"CHIEF": "Chargé d\\'affaire",
+		"CHIEF": "Chargé d'affaire",
 		"CLIENT": "Client",
 		"CONTACT": "Contact",
 		"CONTACT_CLIENT_CHEF_CHANTIER": {
@@ -108,7 +108,7 @@
 		},
 		"CONTACT_INTERNE_SECOURS": {
 			"LABEL": "Personne CVTI",
-			"SHORTTITLE": "Personne CVTI en cas d\\'accident",
+			"SHORTTITLE": "Personne CVTI en cas d'accident",
 			"TITLE": "Personne CVTI"
 		},
 		"COURANT": {
@@ -116,40 +116,54 @@
 			"SHORTTITLE": "Courant mis à disposition",
 			"TITLE": "Courant mis à disposition"
 		},
+		"DASH": {
+			"AR_AVAILABLE": {
+				"TITLE": "Analyses disponibles"
+			},
+			"AR_EVOLUTION": {
+				"TITLE": "Evolution des ars"
+			},
+			"AVG_SIGNATURES": {
+				"TITLE": "Moyenne du nombre de signature par Ar"
+			},
+			"NBR_SIGNATURES": {
+				"TITLE": "Nombre de signatures"
+			}
+		},
 		"DATE": {
-			"LABEL": "Date de l\\'analyse de risque",
-			"SHORTTITLE": "Date de l\\'analyse de risque",
-			"TITLE": "Date de l\\'analyse de risque"
+			"LABEL": "Date de l'analyse de risque",
+			"SHORTTITLE": "Date de l'analyse de risque",
+			"TITLE": "Date de l'analyse de risque"
 		},
 		"DATE_ACCUEIL_SECU": {
-			"LABEL": "Date de l\\'accueil sécurité",
-			"SHORTTITLE": "Date de l\\'accueil sécurité",
-			"TITLE": "Date de l\\'accueil sécurité"
+			"LABEL": "Date de l'accueil sécurité",
+			"SHORTTITLE": "Date de l'accueil sécurité",
+			"TITLE": "Date de l'accueil sécurité"
 		},
 		"DATE_DEMARRAGE": "Date de démarrage chantier pour CVTI",
 		"DATE_VALIDITE": {
-			"LABEL": "Date de validité de l\\'accueil sécurité",
-			"SHORTTITLE": "Date de validité de l\\'accueil sécurité",
-			"TITLE": "Date de validité de l\\'accueil sécurité"
+			"LABEL": "Date de validité de l'accueil sécurité",
+			"SHORTTITLE": "Date de validité de l'accueil sécurité",
+			"TITLE": "Date de validité de l'accueil sécurité"
 		},
 		"DAYS": {
-			"FRI": "viernes",
-			"MON": "lunes",
-			"SAT": "sábado",
-			"SUN": "domingo",
-			"THU": "jueves",
-			"TUE": "martes",
-			"WED": "miércoles"
+			"FRI": "Friday",
+			"MON": "Monday",
+			"SAT": "Saturday",
+			"SUN": "Sunday",
+			"THU": "Thursday",
+			"TUE": "Tuesday",
+			"WED": "Wednesday"
 		},
 		"DEMIJOURNEE": {
-			"LABEL": "Por medio día",
-			"SHORTTITLE": "Por medio día",
-			"TITLE": "Por medio día"
+			"LABEL": "By 1/2 day",
+			"SHORTTITLE": "By 1/2 day",
+			"TITLE": "By 1/2 day"
 		},
 		"DEUXHEURES": {
-			"LABEL": "Cada 2h",
-			"SHORTTITLE": "Cada 2h",
-			"TITLE": "Cada 2h"
+			"LABEL": "Every 2h",
+			"SHORTTITLE": "Every 2h",
+			"TITLE": "Every 2h"
 		},
 		"EMPLOYEE": "Nom du salarié CVTI réalisant la visite commune",
 		"FORM": {
@@ -166,21 +180,21 @@
 			"BUDGET": "Budget chantier",
 			"DATE_DEMARRAGE": "Date de démarrage chantier",
 			"DETAIL": {
-				"LABEL": "Información del sitio"
+				"LABEL": "Site Information"
 			},
 			"EMPLOYEE": "Salarié CVTI réalisant la visite commune",
-			"NAME": "Nombre del sitio",
+			"NAME": "Site Name",
 			"NOTIF": {
 				"AR_ARCHIVED": {
-					"LABEL": "El análisis de riesgos en curso en este sitio se archivará",
-					"SUBLABEL": "Quieres continuar ?",
-					"TITLE": "Duplicará este análisis de riesgo"
+					"LABEL": "The risk analysis in progress on this site will be archived",
+					"SUBLABEL": "Do you want to continue ?",
+					"TITLE": "You will duplicate this Risk Analysis"
 				},
-				"CHANTIER_FOUND": "Un sitio encontrado"
+				"CHANTIER_FOUND": "A site found"
 			},
-			"NUMBER": "Numero de sitio",
+			"NUMBER": "Site number",
 			"SEARCH": {
-				"LABEL": "Encuentra un sitio"
+				"LABEL": "Find a site"
 			}
 		},
 		"HORAIRES": {
@@ -191,43 +205,46 @@
 		"NAME": "Nom du chantier",
 		"NOTIF": {
 			"ARS_CREATED": {
-				"TITLE": "Análisis de riesgo creado con éxito"
+				"TITLE": "Successfully created risk analysis"
 			},
 			"AR_DELETED": {
-				"TITLE": "El análisis de riesgo se ha eliminado correctamente"
+				"TITLE": "Risk analysis has been deleted successfully"
 			},
 			"AR_DELETE_CONFIRMATION": {
-				"LABEL": "El análisis de riesgos se eliminará de forma permanente.",
-				"TITLE": "¿Está seguro de que desea eliminar este análisis de riesgos?"
+				"LABEL": "The risk analysis will be permanently deleted.",
+				"TITLE": "Are you sure you want to delete this risk analysis?"
+			},
+			"AR_UPDATED": {
+				"TITLE": "Successfully updated risk analysis"
 			},
 			"CHANTIER_UNSELECTED": {
-				"TITLE": "¡Fracaso! Seleccione un sitio"
+				"TITLE": "Failure! Please select a site"
 			},
 			"ELEMENT_ARCHIVED": {
-				"TITLE": "El artículo se archivó correctamente"
+				"TITLE": "Item is archived successfully"
 			},
 			"ELEMENT_NOT_DELETED": {
-				"SUBTITLE": "No se puede eliminar porque la selección está asignada a uno o más análisis de riesgo",
-				"TITLE": "No se puede eliminar porque la selección incluye un elemento asignado a uno o más análisis de riesgo"
+				"SUBTITLE": "Unable to delete because the selection is assigned to one or more risk analyzes",
+				"TITLE": "Unable to delete because the selection includes an item assigned to one or more risk analyzes"
 			},
 			"EQUIPEMENT_ARCHIVED": {
-				"TITLE": "Equipo archivado correctamente"
+				"TITLE": "Equipment archived successfully"
 			},
 			"INCOMPLETE_FORM": {
-				"TITLE": "¡Fracaso! el formulario está incompleto"
+				"TITLE": "Failure! the form is incomplete"
 			},
 			"RISK_ARCHIVED": {
-				"TITLE": "Riesgo archivado correctamente"
+				"TITLE": "Risk successfully archived"
 			},
 			"ZONE_ARCHIVED": {
-				"TITLE": "Área archivada con éxito"
+				"TITLE": "Successfully archived area"
 			}
 		},
 		"NUMBER": "Numéro",
 		"NUM_SECOURS": {
-			"LABEL": "Numéro en cas d\\'accident ou incendie",
-			"SHORTTITLE": "En cas d\\'accident ou incendie",
-			"TITLE": "Numéro en cas d\\'accident ou incendie"
+			"LABEL": "Numéro en cas d'accident ou incendie",
+			"SHORTTITLE": "En cas d'accident ou incendie",
+			"TITLE": "Numéro en cas d'accident ou incendie"
 		},
 		"OBSERVATION": "Observations",
 		"PREVOIR_COMPAGNONS": {
@@ -236,14 +253,14 @@
 			"TITLE": "A prévoir pour les compagnons"
 		},
 		"QUOTIDIENNEMENT": {
-			"LABEL": "Diario",
-			"SHORTTITLE": "Diario",
-			"TITLE": "Diario"
+			"LABEL": "Daily",
+			"SHORTTITLE": "Daily",
+			"TITLE": "Daily"
 		},
 		"REALISATEUR": {
-			"LABEL": "Personne en charge de réaliser l\\'accueil",
-			"SHORTTITLE": "Personne en charge de réaliser l\\'accueil",
-			"TITLE": "Personne en charge de réaliser l\\'accueil"
+			"LABEL": "Personne en charge de réaliser l'accueil",
+			"SHORTTITLE": "Personne en charge de réaliser l'accueil",
+			"TITLE": "Personne en charge de réaliser l'accueil"
 		},
 		"SIGNATAIRECOUNT": {
 			"LABEL": "Nombre de signataires",
@@ -298,7 +315,7 @@
 			"NO_ACCOUNT": "Pas de compte",
 			"OR": "Ou",
 			"PRIVACY": "Privacy",
-			"SIGNUP_BUTTON": "S\\'enregistrer",
+			"SIGNUP_BUTTON": "S'enregistrer",
 			"SUBMIT_BUTTON": "Soumettre"
 		},
 		"INPUT": {
@@ -307,7 +324,7 @@
 			"FULLNAME": "Fullname",
 			"NEW_PASSWORD": "Nouveau mot de passe",
 			"PASSWORD": "Mot de passe",
-			"USERNAME": "Nom d\\'utilisateur"
+			"USERNAME": "Nom d'utilisateur"
 		},
 		"LOGIN": {
 			"BUTTON": "Se Connecter",
@@ -321,13 +338,13 @@
 		},
 		"VALIDATION": {
 			"AGREEMENT_REQUIRED": "Vous devez accepter les termes et conditions",
-			"INVALID": "{{name}} n\\'est pas valide",
+			"INVALID": "{{name}} n'est pas valide",
 			"INVALID_FIELD": "champ non valide",
 			"INVALID_LOGIN": "Les informations de connexion sont incorrectes",
 			"MAX_LENGTH_FIELD": "Longueur du champ maximale:",
 			"MIN_LENGTH": "{{name}} doit avoir une longueur minimale de {{min}}",
 			"MIN_LENGTH_FIELD": "Longueur du champ minimale:",
-			"NOT_FOUND": "Le {{name}} requis n\\'a pas été trouvé",
+			"NOT_FOUND": "Le {{name}} requis n'a pas été trouvé",
 			"NOT_SAME": "Les mots de passe doivent correspondre",
 			"REQUIRED": "{{name}} est requis",
 			"REQUIRED_FIELD": "champ requis"
@@ -351,7 +368,7 @@
 		},
 		"AR_COUNT": {
 			"LABEL": "Quantité A.R",
-			"SHORTTITLE": "Nombre d\\'analyses",
+			"SHORTTITLE": "Nombre d'analyses",
 			"TITLE": "Quantité A.R"
 		},
 		"AR_INPROGRESS": {
@@ -365,9 +382,9 @@
 			"TITLE": "Budget"
 		},
 		"CHIEF": {
-			"LABEL": "Chargé d\\'affaire",
+			"LABEL": "Chargé d'affaire",
 			"SHORTTITLE": "Nom",
-			"TITLE": "Chargé d\\'affaire"
+			"TITLE": "Chargé d'affaire"
 		},
 		"CLIENT": {
 			"LABEL": "Client",
@@ -385,9 +402,9 @@
 			"TITLE": "Date de démarrage chantier"
 		},
 		"EECOUNT": {
-			"LABEL": "Nombre d\\'E.E",
-			"SHORTTITLE": "Nombre d\\'entreprises extérieures",
-			"TITLE": "Nombre d\\'E.E"
+			"LABEL": "Nombre d'E.E",
+			"SHORTTITLE": "Nombre d'entreprises extérieures",
+			"TITLE": "Nombre d'E.E"
 		},
 		"EES": {
 			"LABEL": "Entreprises extérieures",
@@ -395,17 +412,17 @@
 			"TITLE": "Entreprises extérieures"
 		},
 		"EE_PRESENCE": {
-			"LABEL": "Présence d\\'E.E",
-			"SHORTTITLE": "Présence d\\'entreprises extérieures",
-			"TITLE": "Présence d\\'E.E"
+			"LABEL": "Présence d'E.E",
+			"SHORTTITLE": "Présence d'entreprises extérieures",
+			"TITLE": "Présence d'E.E"
 		},
 		"FORM": {
 			"CREATE": "Créer un nouveau chantier"
 		},
 		"HABCOUNT": {
-			"LABEL": "Nombre d\\'habilitations",
-			"SHORTTITLE": "Nombre d\\'habilitations",
-			"TITLE": "Nombre d\\'habilitations"
+			"LABEL": "Nombre d'habilitations",
+			"SHORTTITLE": "Nombre d'habilitations",
+			"TITLE": "Nombre d'habilitations"
 		},
 		"HABILITATIONS": {
 			"LABEL": "Habilitations obligatoires pour accéder au chantier",
@@ -505,6 +522,14 @@
 			"LABEL": "Date",
 			"TITLE": "Date"
 		},
+		"DATE_RANGE": {
+			"AND": {
+				"TITLE": "Et le"
+			},
+			"BETWEEN": {
+				"TITLE": "Entre le"
+			}
+		},
 		"EMAIL": {
 			"LABEL": "Adresse mail",
 			"TITLE": "Adresse mail"
@@ -527,10 +552,10 @@
 		},
 		"NOTIF": {
 			"ERROR": {
-				"TITLE": "¡Ups!"
+				"TITLE": "Oops!"
 			},
 			"SUCCESS": {
-				"TITLE": "¡Éxito!"
+				"TITLE": "Success!"
 			}
 		},
 		"PHONE": {
@@ -573,10 +598,10 @@
 	},
 	"EES": {
 		"CA": {
-			"LABEL": "Chiffre d\\'affaire",
+			"LABEL": "Chiffre d'affaire",
 			"PLACEHOLDER": "Saisir ici...",
 			"SHORTTITLE": "CA",
-			"TITLE": "Chiffre d\\'affaire"
+			"TITLE": "Chiffre d'affaire"
 		},
 		"CHANTIERS": {
 			"LABEL": "Chantiers",
@@ -606,10 +631,10 @@
 			"TITLE": "Raison sociale"
 		},
 		"TYPE": {
-			"LABEL": "Type d\\'entreprise",
+			"LABEL": "Type d'entreprise",
 			"PLACEHOLDER": "Saisir ici...",
 			"SHORTTITLE": "Type",
-			"TITLE": "Type d\\'entreprise"
+			"TITLE": "Type d'entreprise"
 		}
 	},
 	"EPIS": {
@@ -626,14 +651,18 @@
 	},
 	"FILTER": {
 		"ADD_VEHICULE": "Numéro d'identification du véhicule",
+		"ADVANCED_SEACH": "Recherche Avancée",
 		"CREATION_DATE": "Date de création",
 		"HIDE": "Cacher",
 		"KEYWORD": "Rechercher",
 		"SEARCH": "Rechercher",
+		"SEARCH_ALL": "All",
 		"SEARCH_CHANTIER": "Recherche un chantier",
 		"SEARCH_KEYWORD": "Recherche par mot clé",
 		"SEARCH_OUTILLAGE": "Numéro d'identification de l'outil",
 		"SEARCH_SALARIE": "Rechercher un salarié",
+		"SEARCH_WITH": "Avec",
+		"SEARCH_WITHOUT": "Without",
 		"SELECT_ROLE": "Selectionnez un role",
 		"SELECT_STATUS": "Sélectionnez un status",
 		"SHOW": "Afficher",
@@ -668,9 +697,9 @@
 			"TITLE": "Cout"
 		},
 		"DATE_ENTREE": {
-			"LABEL": "Date d\\'entrée",
-			"SHORTTITLE": "Date d\\'entrée",
-			"TITLE": "Date d\\'entrée"
+			"LABEL": "Date d'entrée",
+			"SHORTTITLE": "Date d'entrée",
+			"TITLE": "Date d'entrée"
 		},
 		"DATE_FIN_GARANTIE": {
 			"LABEL": "Date de fin de garantie",
@@ -763,9 +792,9 @@
 			"TITLE": "utilisateurs"
 		},
 		"PERSONNELS_COUNT": {
-			"LABEL": "Nombre d\\'utilisateurs",
-			"SHORTTITLE": "Nombre d\\'utilisateurs",
-			"TITLE": "Nombre d\\'utilisateurs"
+			"LABEL": "Nombre d'utilisateurs",
+			"SHORTTITLE": "Nombre d'utilisateurs",
+			"TITLE": "Nombre d'utilisateurs"
 		},
 		"PERSONNELS_HISTORY": {
 			"LABEL": "historique des utilisateurs",
@@ -827,14 +856,14 @@
 		"MY_PASSWORD": "Mon mot de passe",
 		"MY_PROFILE": "Mon profil",
 		"NEW": "Nouveau",
-		"PLANACTION": "Plan d\\'actions",
+		"PLANACTION": "Plan d'actions",
 		"REMONTEES": "Remontées QHSE",
 		"ROOT": "Administration",
 		"SALARIES": "Salariés",
 		"SUB_ANALYSERISQUE": {
 			"ADD": "Nouvelle analyse de risque de chantier",
-			"DETAIL": "Détail de l\\'analyse de risque",
-			"EDIT": "Modifier l\\'analyse de risque",
+			"DETAIL": "Détail de l'analyse de risque",
+			"EDIT": "Modifier l'analyse de risque",
 			"LIST": "Liste des analyses de risque"
 		},
 		"SUB_CHANTIER": {
@@ -845,8 +874,8 @@
 		},
 		"SUB_ENTREPRISES": {
 			"ADD": "Ajouter une entreprise",
-			"DETAIL": "Détail de l\\'entreprise",
-			"EDIT": "Modifier l\\'entreprise",
+			"DETAIL": "Détail de l'entreprise",
+			"EDIT": "Modifier l'entreprise",
 			"LIST": "Liste des entreprises"
 		},
 		"SUB_MATERIELS": {
@@ -863,8 +892,8 @@
 		},
 		"SUB_PLANACTION": {
 			"ADD": "Ajouter une action",
-			"DETAIL": "Détail de l\\'action",
-			"EDIT": "Modifier l\\'action",
+			"DETAIL": "Détail de l'action",
+			"EDIT": "Modifier l'action",
 			"LIST": "Liste des actions"
 		},
 		"SUB_REMONTEES": {
@@ -887,8 +916,8 @@
 		},
 		"SUB_USERS": {
 			"ADD": "Ajouter un utilisateur",
-			"DETAIL": "Détail de l\\'utilisateur",
-			"EDIT": "Modifier l\\'utilisateur",
+			"DETAIL": "Détail de l'utilisateur",
+			"EDIT": "Modifier l'utilisateur",
 			"LIST": "Liste des utilisateurs"
 		},
 		"SUB_VISITESECURITE": {
@@ -903,17 +932,17 @@
 	},
 	"NOTIF": {
 		"ELEMENT_NOT_DELETED": {
-			"LABEL": "No se puede eliminar porque la selección contiene un elemento asignado a un elemento",
-			"SUBLABEL": "No se puede eliminar porque la selección está asignada a un elemento"
+			"LABEL": "Cannot delete because the selection contains an element assigned to an element",
+			"SUBLABEL": "Cannot delete because the selection is assigned to an element"
 		},
 		"ERROR_OCCURED": {
-			"TITLE": "¡Fracaso! Se ha producido un error"
+			"TITLE": "Failure! An error has occurred"
 		},
 		"FORM_DELETE_CONFIRMATION": {
-			"TITLE": "¿Está seguro de que desea eliminar este formulario?"
+			"TITLE": "Are you sure you want to delete this form?"
 		},
 		"RESULT_FOUND": {
-			"TITLE": "Resultados encontrados"
+			"TITLE": "Results Found"
 		}
 	},
 	"OUTILLAGE": {
@@ -949,7 +978,7 @@
 			"TITLE": "Efficacité"
 		},
 		"FORM": {
-			"CREATE": "Créer un nouveau plan d\\'action"
+			"CREATE": "Créer un nouveau plan d'action"
 		},
 		"NAME": {
 			"LABEL": "Action décidée",
@@ -1036,9 +1065,9 @@
 			"TITLE": "Animation HSE"
 		},
 		"ENTRY_AT": {
-			"LABEL": "Date d\\'entrée",
-			"SHORTTITLE": "Date d\\'entrée",
-			"TITLE": "Date d\\'entrée"
+			"LABEL": "Date d'entrée",
+			"SHORTTITLE": "Date d'entrée",
+			"TITLE": "Date d'entrée"
 		},
 		"EPI": {
 			"LABEL": "EPI",
@@ -1107,9 +1136,9 @@
 			"TITLE": "Type de contrat"
 		},
 		"GRANT_ACCESS": {
-			"LABEL": "Donner accès à l\\'application",
-			"SHORTTITLE": "Donner accès à l\\'appli",
-			"TITLE": "Donner accès à l\\'application"
+			"LABEL": "Donner accès à l'application",
+			"SHORTTITLE": "Donner accès à l'appli",
+			"TITLE": "Donner accès à l'application"
 		},
 		"VIRTUEL": {
 			"LABEL": "Compte virtuel",
@@ -1124,9 +1153,9 @@
 	},
 	"VISITES": {
 		"ADD_VEHICULE": {
-			"LABEL": "Numéro d\\'identification du véhicule",
-			"SHORTTITLE": "Numéro d\\'identificatio",
-			"TITLE": "Numéro d\\'identification du véhicule"
+			"LABEL": "Numéro d'identification du véhicule",
+			"SHORTTITLE": "Numéro d'identificatio",
+			"TITLE": "Numéro d'identification du véhicule"
 		},
 		"AVERT": {
 			"LABEL": "Avertissement",
@@ -1153,10 +1182,10 @@
 			"TITLE": "Date de la visite"
 		},
 		"DETAIL_VEHICULE": {
-			"LABEL": "Numéro d\\'identification du véhicule",
-			"SHORTTITLE": "Numéro d\\'identification du véhicule",
+			"LABEL": "Numéro d'identification du véhicule",
+			"SHORTTITLE": "Numéro d'identification du véhicule",
 			"SUBTITLE": "",
-			"TITLE": "Numéro d\\'identification du véhicule"
+			"TITLE": "Numéro d'identification du véhicule"
 		},
 		"ENTREPRISE": {
 			"LABEL": "Entreprise visitée",
@@ -1168,7 +1197,7 @@
 		},
 		"HAS_RECTIF": {
 			"LABEL": "Rectification immédiate faite",
-			"LABEL_COMP": "(pas d\\'action de CVTI en interne)"
+			"LABEL_COMP": "(pas d'action de CVTI en interne)"
 		},
 		"KO_SOLVED_COUNT": {
 			"SHORTTITLE": "NC traitées",
@@ -1208,9 +1237,9 @@
 			"TITLE": "Nom de véhicule"
 		},
 		"VEHICULE_FOUND": {
-			"LABEL": "Numéro d\\'identification du véhicule saisi",
-			"SHORTTITLE": "Numéro d\\'identification du véhicule saisi",
-			"TITLE": "Numéro d\\'identification du véhicule saisi"
+			"LABEL": "Numéro d'identification du véhicule saisi",
+			"SHORTTITLE": "Numéro d'identification du véhicule saisi",
+			"TITLE": "Numéro d'identification du véhicule saisi"
 		},
 		"VISITED": {
 			"LABEL": "Personne visitée",

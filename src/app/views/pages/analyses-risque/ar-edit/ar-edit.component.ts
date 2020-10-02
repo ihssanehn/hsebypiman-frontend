@@ -17,6 +17,7 @@ import { JsonResponse } from '@app/core/_base/layout/models/jsonResponse.model';
 import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
 import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
 import {FormStatus} from '@app/core/_base/crud/models/form-status';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'tf-ar-edit',
@@ -51,6 +52,7 @@ export class ArEditComponent implements OnInit, OnDestroy {
 		private arService: ArService,
 		private cdr: ChangeDetectorRef,
 		private permissionsService : NgxPermissionsService,
+		private translate: TranslateService,
 		private location: Location,
 		protected chantierService:ChantierService,
 		protected dateFrToEnPipe:DateFrToEnPipe, 
@@ -360,7 +362,7 @@ export class ArEditComponent implements OnInit, OnDestroy {
 						this.formloading=false;
 						Swal.fire({
 							icon: 'success',
-							title: 'Analyse de risque mis à jour avec succès',
+							title: this.translate.instant("ARS.NOTIF.AR_UPDATED.TITLE"),
 							showConfirmButton: false,
 							timer: 2000
 						}).then(() => {
@@ -371,7 +373,7 @@ export class ArEditComponent implements OnInit, OnDestroy {
 						this.formloading=false;
 						Swal.fire({
 							icon: 'error',
-							title: 'Echec! le formulaire est incomplet',
+							title: this.translate.instant("ARS.NOTIF.INCOMPLETE_FORM.TITLE"),
 							showConfirmButton: false,
 							timer: 2000
 						});
@@ -392,7 +394,7 @@ export class ArEditComponent implements OnInit, OnDestroy {
 				this.formloading = false;
 				Swal.fire({
 				icon: 'error',
-				title: 'Echec! Veuillez sélectionner un chantier',
+				title: this.translate.instant("ARS.NOTIF.CHANTIER_UNSELECTED.TITLE"),
 				showConfirmButton: false,
 				timer: 2000
 				});

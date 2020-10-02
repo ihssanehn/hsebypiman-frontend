@@ -17,15 +17,7 @@ export class ArRisquesAdminComponent extends AdminTemplateComponent implements O
   childService: any;
   translate: TranslateService;
 
-  tpl : any = {
-    title : this.translate.instant("ARS.CARD.RISKS.SHORTTITLE"),
-    deletedMessage: this.translate.instant("ARS.NOTIF.ELEMENT_NOT_DELETED.TITLE"),
-    deletedChildMessage: this.translate.instant("ARS.NOTIF.ELEMENT_NOT_DELETED.SUBTITLE"),
-    collapsed : true,
-    canUpdateTitle: false,
-    titleOject: null,
-    childCol : 6
-  }
+  tpl : any; 
 
   list: any[];
 
@@ -36,6 +28,19 @@ export class ArRisquesAdminComponent extends AdminTemplateComponent implements O
     this.parentService = injector.get(CatRisqueService);
     this.childService = injector.get(RisqueService);
     this.translate = injector.get(TranslateService);
+  }
+
+  ngOnInit() {
+    super.ngOnInit();
+    this.tpl = {
+      title : this.translate.instant("ARS.CARD.RISKS.SHORTTITLE"),
+      deletedMessage: this.translate.instant("ARS.NOTIF.ELEMENT_NOT_DELETED.TITLE"),
+      deletedChildMessage: this.translate.instant("ARS.NOTIF.ELEMENT_NOT_DELETED.SUBTITLE"),
+      collapsed : true,
+      canUpdateTitle: false,
+      titleOject: null,
+      childCol : 6
+    }
   }
 
   formatChildren(item){

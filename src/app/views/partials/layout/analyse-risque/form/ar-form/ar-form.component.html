@@ -52,11 +52,11 @@
 										<mat-select-trigger>
 											<mat-chip-list #chipList>
 												<mat-chip *ngFor="let as_day of toppings.value" class="chip-item">
-													{{as_day | translate}}
+													{{as_day.value | translate}}
 												</mat-chip>
 											</mat-chip-list>
 										</mat-select-trigger>
-										<mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping | translate}}</mat-option>
+										<mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping.value | translate}}</mat-option>
 									</mat-select>
 								</mat-form-field>
 								<mat-form-field class="col-xl-4" >

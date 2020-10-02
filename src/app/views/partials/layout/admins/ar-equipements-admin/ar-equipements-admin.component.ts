@@ -17,15 +17,7 @@ export class ArEquipementsAdminComponent extends AdminTemplateComponent implemen
   childService: any;
   translate: TranslateService;
 
-  tpl : any = {
-    title : this.translate.instant("ARS.CARD.EQUIPEMENT.SHORTTITLE"),
-    deletedMessage: this.translate.instant("ARS.NOTIF.ELEMENT_NOT_DELETED.TITLE"),
-    deletedChildMessage: this.translate.instant("ARS.NOTIF.ELEMENT_NOT_DELETED.SUBTITLE"),
-    collapsed : true,
-    canUpdateTitle: false,
-    titleOject: null,
-    childCol : 12
-  }
+  tpl : any;
 
   list: any[];
 
@@ -37,6 +29,18 @@ export class ArEquipementsAdminComponent extends AdminTemplateComponent implemen
     this.translate = injector.get(TranslateService);
   }
 
+  ngOnInit() {
+    super.ngOnInit();
+    this.tpl = {
+      title : this.translate.instant("ARS.CARD.EQUIPEMENT.SHORTTITLE"),
+      deletedMessage: this.translate.instant("ARS.NOTIF.ELEMENT_NOT_DELETED.TITLE"),
+      deletedChildMessage: this.translate.instant("ARS.NOTIF.ELEMENT_NOT_DELETED.SUBTITLE"),
+      collapsed : true,
+      canUpdateTitle: false,
+      titleOject: null,
+      childCol : 12
+    }
+  }
 
   async getList(){
     try {

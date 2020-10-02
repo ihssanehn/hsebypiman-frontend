@@ -18,15 +18,7 @@ export class ArZonesAdminComponent extends AdminTemplateComponent  implements On
   childService: any;
   translate: TranslateService;
 
-  tpl : any = {
-    title : this.translate.instant("ARS.CARD.ZONE.SHORTTITLE"),
-    deletedMessage: this.translate.instant("ARS.NOTIF.ELEMENT_NOT_DELETED.TITLE"),
-    deletedChildMessage: this.translate.instant("ARS.NOTIF.ELEMENT_NOT_DELETED.SUBTITLE"),
-    collapsed : true,
-    canUpdateTitle: false,
-    titleOject: null,
-    childCol : 6
-  }
+  tpl : any;
 
   list: any[];
 
@@ -41,6 +33,15 @@ export class ArZonesAdminComponent extends AdminTemplateComponent  implements On
 
   ngOnInit() {
     super.ngOnInit();
+    this.tpl = {
+      title : this.translate.instant("ARS.CARD.ZONE.SHORTTITLE"),
+      deletedMessage: this.translate.instant("ARS.NOTIF.ELEMENT_NOT_DELETED.TITLE"),
+      deletedChildMessage: this.translate.instant("ARS.NOTIF.ELEMENT_NOT_DELETED.SUBTITLE"),
+      collapsed : true,
+      canUpdateTitle: false,
+      titleOject: null,
+      childCol : 6
+    }
   }
 
   async getList(){

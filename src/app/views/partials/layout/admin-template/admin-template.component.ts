@@ -18,11 +18,10 @@ export class AdminTemplateComponent implements OnInit {
   childService: any;
   translate: TranslateService;
   
-  
   tpl : any = {
     title : 'Titre',
-    deletedMessage: this.translate.instant("NOTIF.ELEMENT_NOT_DELETED.LABEL"),
-    deletedChildMessage: this.translate.instant("NOTIF.ELEMENT_NOT_DELETED.SUBLABEL"),
+    deletedMessage: "NOTIF.ELEMENT_NOT_DELETED.LABEL",
+    deletedChildMessage: "NOTIF.ELEMENT_NOT_DELETED.SUBLABEL",
     collapsed : false,
     canUpdateTitle: false,
     titleOject: null,

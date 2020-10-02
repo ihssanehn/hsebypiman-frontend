@@ -30,14 +30,14 @@
 			"TITLE": "À signer"
 		},
 		"AS_DAYS": {
-			"LABEL": "Jours d\\'accueil sécurité",
-			"SHORTTITLE": "Jours d\\'accueil sécurité",
-			"TITLE": "Jours d\\'accueil sécurité"
+			"LABEL": "Jours d'accueil sécurité",
+			"SHORTTITLE": "Jours d'accueil sécurité",
+			"TITLE": "Jours d'accueil sécurité"
 		},
 		"AS_HORAIRES": {
-			"LABEL": "Horaire d\\'accueil sécurité",
-			"SHORTTITLE": "Horaire d\\'accueil sécurité",
-			"TITLE": "Horaire d\\'accueil sécurité"
+			"LABEL": "Horaire d'accueil sécurité",
+			"SHORTTITLE": "Horaire d'accueil sécurité",
+			"TITLE": "Horaire d'accueil sécurité"
 		},
 		"BUDGET": "Budget",
 		"CARD": {
@@ -93,7 +93,7 @@
 				"SHORTTITLE": "ゾーン"
 			}
 		},
-		"CHIEF": "Chargé d\\'affaire",
+		"CHIEF": "Chargé d'affaire",
 		"CLIENT": "Client",
 		"CONTACT": "Contact",
 		"CONTACT_CLIENT_CHEF_CHANTIER": {
@@ -108,7 +108,7 @@
 		},
 		"CONTACT_INTERNE_SECOURS": {
 			"LABEL": "Personne CVTI",
-			"SHORTTITLE": "Personne CVTI en cas d\\'accident",
+			"SHORTTITLE": "Personne CVTI en cas d'accident",
 			"TITLE": "Personne CVTI"
 		},
 		"COURANT": {
@@ -116,21 +116,35 @@
 			"SHORTTITLE": "Courant mis à disposition",
 			"TITLE": "Courant mis à disposition"
 		},
+		"DASH": {
+			"AR_AVAILABLE": {
+				"TITLE": "Analyses disponibles"
+			},
+			"AR_EVOLUTION": {
+				"TITLE": "Evolution des ars"
+			},
+			"AVG_SIGNATURES": {
+				"TITLE": "Moyenne du nombre de signature par Ar"
+			},
+			"NBR_SIGNATURES": {
+				"TITLE": "Nombre de signatures"
+			}
+		},
 		"DATE": {
-			"LABEL": "Date de l\\'analyse de risque",
-			"SHORTTITLE": "Date de l\\'analyse de risque",
-			"TITLE": "Date de l\\'analyse de risque"
+			"LABEL": "Date de l'analyse de risque",
+			"SHORTTITLE": "Date de l'analyse de risque",
+			"TITLE": "Date de l'analyse de risque"
 		},
 		"DATE_ACCUEIL_SECU": {
-			"LABEL": "Date de l\\'accueil sécurité",
-			"SHORTTITLE": "Date de l\\'accueil sécurité",
-			"TITLE": "Date de l\\'accueil sécurité"
+			"LABEL": "Date de l'accueil sécurité",
+			"SHORTTITLE": "Date de l'accueil sécurité",
+			"TITLE": "Date de l'accueil sécurité"
 		},
 		"DATE_DEMARRAGE": "Date de démarrage chantier pour CVTI",
 		"DATE_VALIDITE": {
-			"LABEL": "Date de validité de l\\'accueil sécurité",
-			"SHORTTITLE": "Date de validité de l\\'accueil sécurité",
-			"TITLE": "Date de validité de l\\'accueil sécurité"
+			"LABEL": "Date de validité de l'accueil sécurité",
+			"SHORTTITLE": "Date de validité de l'accueil sécurité",
+			"TITLE": "Date de validité de l'accueil sécurité"
 		},
 		"DAYS": {
 			"FRI": "金曜日",
@@ -200,6 +214,9 @@
 				"LABEL": "リスク分析は完全に削除されます。",
 				"TITLE": "このリスク分析を削除してもよろしいですか？"
 			},
+			"AR_UPDATED": {
+				"TITLE": "正常に更新されたリスク分析"
+			},
 			"CHANTIER_UNSELECTED": {
 				"TITLE": "失敗！サイトを選択してください"
 			},
@@ -225,9 +242,9 @@
 		},
 		"NUMBER": "Numéro",
 		"NUM_SECOURS": {
-			"LABEL": "Numéro en cas d\\'accident ou incendie",
-			"SHORTTITLE": "En cas d\\'accident ou incendie",
-			"TITLE": "Numéro en cas d\\'accident ou incendie"
+			"LABEL": "Numéro en cas d'accident ou incendie",
+			"SHORTTITLE": "En cas d'accident ou incendie",
+			"TITLE": "Numéro en cas d'accident ou incendie"
 		},
 		"OBSERVATION": "Observations",
 		"PREVOIR_COMPAGNONS": {
@@ -241,9 +258,9 @@
 			"TITLE": "毎日"
 		},
 		"REALISATEUR": {
-			"LABEL": "Personne en charge de réaliser l\\'accueil",
-			"SHORTTITLE": "Personne en charge de réaliser l\\'accueil",
-			"TITLE": "Personne en charge de réaliser l\\'accueil"
+			"LABEL": "Personne en charge de réaliser l'accueil",
+			"SHORTTITLE": "Personne en charge de réaliser l'accueil",
+			"TITLE": "Personne en charge de réaliser l'accueil"
 		},
 		"SIGNATAIRECOUNT": {
 			"LABEL": "Nombre de signataires",
@@ -298,7 +315,7 @@
 			"NO_ACCOUNT": "Pas de compte",
 			"OR": "Ou",
 			"PRIVACY": "Privacy",
-			"SIGNUP_BUTTON": "S\\'enregistrer",
+			"SIGNUP_BUTTON": "S'enregistrer",
 			"SUBMIT_BUTTON": "Soumettre"
 		},
 		"INPUT": {
@@ -307,7 +324,7 @@
 			"FULLNAME": "Fullname",
 			"NEW_PASSWORD": "Nouveau mot de passe",
 			"PASSWORD": "Mot de passe",
-			"USERNAME": "Nom d\\'utilisateur"
+			"USERNAME": "Nom d'utilisateur"
 		},
 		"LOGIN": {
 			"BUTTON": "Se Connecter",
@@ -321,13 +338,13 @@
 		},
 		"VALIDATION": {
 			"AGREEMENT_REQUIRED": "Vous devez accepter les termes et conditions",
-			"INVALID": "{{name}} n\\'est pas valide",
+			"INVALID": "{{name}} n'est pas valide",
 			"INVALID_FIELD": "champ non valide",
 			"INVALID_LOGIN": "Les informations de connexion sont incorrectes",
 			"MAX_LENGTH_FIELD": "Longueur du champ maximale:",
 			"MIN_LENGTH": "{{name}} doit avoir une longueur minimale de {{min}}",
 			"MIN_LENGTH_FIELD": "Longueur du champ minimale:",
-			"NOT_FOUND": "Le {{name}} requis n\\'a pas été trouvé",
+			"NOT_FOUND": "Le {{name}} requis n'a pas été trouvé",
 			"NOT_SAME": "Les mots de passe doivent correspondre",
 			"REQUIRED": "{{name}} est requis",
 			"REQUIRED_FIELD": "champ requis"
@@ -351,7 +368,7 @@
 		},
 		"AR_COUNT": {
 			"LABEL": "Quantité A.R",
-			"SHORTTITLE": "Nombre d\\'analyses",
+			"SHORTTITLE": "Nombre d'analyses",
 			"TITLE": "Quantité A.R"
 		},
 		"AR_INPROGRESS": {
@@ -365,9 +382,9 @@
 			"TITLE": "Budget"
 		},
 		"CHIEF": {
-			"LABEL": "Chargé d\\'affaire",
+			"LABEL": "Chargé d'affaire",
 			"SHORTTITLE": "Nom",
-			"TITLE": "Chargé d\\'affaire"
+			"TITLE": "Chargé d'affaire"
 		},
 		"CLIENT": {
 			"LABEL": "Client",
@@ -385,9 +402,9 @@
 			"TITLE": "Date de démarrage chantier"
 		},
 		"EECOUNT": {
-			"LABEL": "Nombre d\\'E.E",
-			"SHORTTITLE": "Nombre d\\'entreprises extérieures",
-			"TITLE": "Nombre d\\'E.E"
+			"LABEL": "Nombre d'E.E",
+			"SHORTTITLE": "Nombre d'entreprises extérieures",
+			"TITLE": "Nombre d'E.E"
 		},
 		"EES": {
 			"LABEL": "Entreprises extérieures",
@@ -395,17 +412,17 @@
 			"TITLE": "Entreprises extérieures"
 		},
 		"EE_PRESENCE": {
-			"LABEL": "Présence d\\'E.E",
-			"SHORTTITLE": "Présence d\\'entreprises extérieures",
-			"TITLE": "Présence d\\'E.E"
+			"LABEL": "Présence d'E.E",
+			"SHORTTITLE": "Présence d'entreprises extérieures",
+			"TITLE": "Présence d'E.E"
 		},
 		"FORM": {
 			"CREATE": "Créer un nouveau chantier"
 		},
 		"HABCOUNT": {
-			"LABEL": "Nombre d\\'habilitations",
-			"SHORTTITLE": "Nombre d\\'habilitations",
-			"TITLE": "Nombre d\\'habilitations"
+			"LABEL": "Nombre d'habilitations",
+			"SHORTTITLE": "Nombre d'habilitations",
+			"TITLE": "Nombre d'habilitations"
 		},
 		"HABILITATIONS": {
 			"LABEL": "Habilitations obligatoires pour accéder au chantier",
@@ -505,6 +522,14 @@
 			"LABEL": "Date",
 			"TITLE": "Date"
 		},
+		"DATE_RANGE": {
+			"AND": {
+				"TITLE": "Et le"
+			},
+			"BETWEEN": {
+				"TITLE": "Entre le"
+			}
+		},
 		"EMAIL": {
 			"LABEL": "Adresse mail",
 			"TITLE": "Adresse mail"
@@ -573,10 +598,10 @@
 	},
 	"EES": {
 		"CA": {
-			"LABEL": "Chiffre d\\'affaire",
+			"LABEL": "Chiffre d'affaire",
 			"PLACEHOLDER": "Saisir ici...",
 			"SHORTTITLE": "CA",
-			"TITLE": "Chiffre d\\'affaire"
+			"TITLE": "Chiffre d'affaire"
 		},
 		"CHANTIERS": {
 			"LABEL": "Chantiers",
@@ -606,10 +631,10 @@
 			"TITLE": "Raison sociale"
 		},
 		"TYPE": {
-			"LABEL": "Type d\\'entreprise",
+			"LABEL": "Type d'entreprise",
 			"PLACEHOLDER": "Saisir ici...",
 			"SHORTTITLE": "Type",
-			"TITLE": "Type d\\'entreprise"
+			"TITLE": "Type d'entreprise"
 		}
 	},
 	"EPIS": {
@@ -626,14 +651,18 @@
 	},
 	"FILTER": {
 		"ADD_VEHICULE": "Numéro d'identification du véhicule",
+		"ADVANCED_SEACH": "Recherche Avancée",
 		"CREATION_DATE": "Date de création",
 		"HIDE": "Cacher",
 		"KEYWORD": "Rechercher",
 		"SEARCH": "Rechercher",
+		"SEARCH_ALL": "",
 		"SEARCH_CHANTIER": "Recherche un chantier",
 		"SEARCH_KEYWORD": "Recherche par mot clé",
 		"SEARCH_OUTILLAGE": "Numéro d'identification de l'outil",
 		"SEARCH_SALARIE": "Rechercher un salarié",
+		"SEARCH_WITH": "Avec",
+		"SEARCH_WITHOUT": "Sans",
 		"SELECT_ROLE": "Selectionnez un role",
 		"SELECT_STATUS": "Sélectionnez un status",
 		"SHOW": "Afficher",
@@ -668,9 +697,9 @@
 			"TITLE": "Cout"
 		},
 		"DATE_ENTREE": {
-			"LABEL": "Date d\\'entrée",
-			"SHORTTITLE": "Date d\\'entrée",
-			"TITLE": "Date d\\'entrée"
+			"LABEL": "Date d'entrée",
+			"SHORTTITLE": "Date d'entrée",
+			"TITLE": "Date d'entrée"
 		},
 		"DATE_FIN_GARANTIE": {
 			"LABEL": "Date de fin de garantie",
@@ -763,9 +792,9 @@
 			"TITLE": "utilisateurs"
 		},
 		"PERSONNELS_COUNT": {
-			"LABEL": "Nombre d\\'utilisateurs",
-			"SHORTTITLE": "Nombre d\\'utilisateurs",
-			"TITLE": "Nombre d\\'utilisateurs"
+			"LABEL": "Nombre d'utilisateurs",
+			"SHORTTITLE": "Nombre d'utilisateurs",
+			"TITLE": "Nombre d'utilisateurs"
 		},
 		"PERSONNELS_HISTORY": {
 			"LABEL": "historique des utilisateurs",
@@ -827,14 +856,14 @@
 		"MY_PASSWORD": "Mon mot de passe",
 		"MY_PROFILE": "Mon profil",
 		"NEW": "Nouveau",
-		"PLANACTION": "Plan d\\'actions",
+		"PLANACTION": "Plan d'actions",
 		"REMONTEES": "Remontées QHSE",
 		"ROOT": "Administration",
 		"SALARIES": "Salariés",
 		"SUB_ANALYSERISQUE": {
 			"ADD": "Nouvelle analyse de risque de chantier",
-			"DETAIL": "Détail de l\\'analyse de risque",
-			"EDIT": "Modifier l\\'analyse de risque",
+			"DETAIL": "Détail de l'analyse de risque",
+			"EDIT": "Modifier l'analyse de risque",
 			"LIST": "Liste des analyses de risque"
 		},
 		"SUB_CHANTIER": {
@@ -845,8 +874,8 @@
 		},
 		"SUB_ENTREPRISES": {
 			"ADD": "Ajouter une entreprise",
-			"DETAIL": "Détail de l\\'entreprise",
-			"EDIT": "Modifier l\\'entreprise",
+			"DETAIL": "Détail de l'entreprise",
+			"EDIT": "Modifier l'entreprise",
 			"LIST": "Liste des entreprises"
 		},
 		"SUB_MATERIELS": {
@@ -863,8 +892,8 @@
 		},
 		"SUB_PLANACTION": {
 			"ADD": "Ajouter une action",
-			"DETAIL": "Détail de l\\'action",
-			"EDIT": "Modifier l\\'action",
+			"DETAIL": "Détail de l'action",
+			"EDIT": "Modifier l'action",
 			"LIST": "Liste des actions"
 		},
 		"SUB_REMONTEES": {
@@ -887,8 +916,8 @@
 		},
 		"SUB_USERS": {
 			"ADD": "Ajouter un utilisateur",
-			"DETAIL": "Détail de l\\'utilisateur",
-			"EDIT": "Modifier l\\'utilisateur",
+			"DETAIL": "Détail de l'utilisateur",
+			"EDIT": "Modifier l'utilisateur",
 			"LIST": "Liste des utilisateurs"
 		},
 		"SUB_VISITESECURITE": {
@@ -949,7 +978,7 @@
 			"TITLE": "Efficacité"
 		},
 		"FORM": {
-			"CREATE": "Créer un nouveau plan d\\'action"
+			"CREATE": "Créer un nouveau plan d'action"
 		},
 		"NAME": {
 			"LABEL": "Action décidée",
@@ -1036,9 +1065,9 @@
 			"TITLE": "Animation HSE"
 		},
 		"ENTRY_AT": {
-			"LABEL": "Date d\\'entrée",
-			"SHORTTITLE": "Date d\\'entrée",
-			"TITLE": "Date d\\'entrée"
+			"LABEL": "Date d'entrée",
+			"SHORTTITLE": "Date d'entrée",
+			"TITLE": "Date d'entrée"
 		},
 		"EPI": {
 			"LABEL": "EPI",
@@ -1107,9 +1136,9 @@
 			"TITLE": "Type de contrat"
 		},
 		"GRANT_ACCESS": {
-			"LABEL": "Donner accès à l\\'application",
-			"SHORTTITLE": "Donner accès à l\\'appli",
-			"TITLE": "Donner accès à l\\'application"
+			"LABEL": "Donner accès à l'application",
+			"SHORTTITLE": "Donner accès à l'appli",
+			"TITLE": "Donner accès à l'application"
 		},
 		"VIRTUEL": {
 			"LABEL": "Compte virtuel",
@@ -1124,9 +1153,9 @@
 	},
 	"VISITES": {
 		"ADD_VEHICULE": {
-			"LABEL": "Numéro d\\'identification du véhicule",
-			"SHORTTITLE": "Numéro d\\'identificatio",
-			"TITLE": "Numéro d\\'identification du véhicule"
+			"LABEL": "Numéro d'identification du véhicule",
+			"SHORTTITLE": "Numéro d'identificatio",
+			"TITLE": "Numéro d'identification du véhicule"
 		},
 		"AVERT": {
 			"LABEL": "Avertissement",
@@ -1153,10 +1182,10 @@
 			"TITLE": "Date de la visite"
 		},
 		"DETAIL_VEHICULE": {
-			"LABEL": "Numéro d\\'identification du véhicule",
-			"SHORTTITLE": "Numéro d\\'identification du véhicule",
+			"LABEL": "Numéro d'identification du véhicule",
+			"SHORTTITLE": "Numéro d'identification du véhicule",
 			"SUBTITLE": "",
-			"TITLE": "Numéro d\\'identification du véhicule"
+			"TITLE": "Numéro d'identification du véhicule"
 		},
 		"ENTREPRISE": {
 			"LABEL": "Entreprise visitée",
@@ -1168,7 +1197,7 @@
 		},
 		"HAS_RECTIF": {
 			"LABEL": "Rectification immédiate faite",
-			"LABEL_COMP": "(pas d\\'action de CVTI en interne)"
+			"LABEL_COMP": "(pas d'action de CVTI en interne)"
 		},
 		"KO_SOLVED_COUNT": {
 			"SHORTTITLE": "NC traitées",
@@ -1208,9 +1237,9 @@
 			"TITLE": "Nom de véhicule"
 		},
 		"VEHICULE_FOUND": {
-			"LABEL": "Numéro d\\'identification du véhicule saisi",
-			"SHORTTITLE": "Numéro d\\'identification du véhicule saisi",
-			"TITLE": "Numéro d\\'identification du véhicule saisi"
+			"LABEL": "Numéro d'identification du véhicule saisi",
+			"SHORTTITLE": "Numéro d'identification du véhicule saisi",
+			"TITLE": "Numéro d'identification du véhicule saisi"
 		},
 		"VISITED": {
 			"LABEL": "Personne visitée",
