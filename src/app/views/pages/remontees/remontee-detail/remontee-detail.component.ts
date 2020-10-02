@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
 import { BehaviorSubject, Observable, of, Subscription } from "rxjs";
 
-import { RemonteeService, DocumentService } from '@app/core/services';
+import { RemonteeService, DocumentService, ModuleService } from '@app/core/services';
 import { Paginate } from '@app/core/_base/layout/models/paginate.model';
 import { Remontee } from '@app/core/models';
 import { NgxPermissionsService } from 'ngx-permissions';
@@ -12,9 +12,10 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import Swal from 'sweetalert2';
 import { MatDialog } from '@angular/material';
-import { ShowDocumentContentDialogComponent } from '@app/views/partials/layout/modal/show-document-content-dialog/show-document-content-dialog.component';
+import { ShowDocumentModalComponent } from '@app/views/partials/layout/modal/show-document-modal/show-document-modal.component';
 import { ThrowStmt } from '@angular/compiler';
 import { User, AuthService } from '@app/core/auth';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -47,7 +48,9 @@ export class RemonteeDetailComponent implements OnInit, OnDestroy {
     public dialog: MatDialog,
 		private remonteeService: RemonteeService,
 		private documentService: DocumentService,
+		private moduleService: ModuleService,
 		private authService: AuthService,
+    private modalService: NgbModal,
 		private cdr: ChangeDetectorRef,
 		iconRegistry: MatIconRegistry, 
 		sanitizer: DomSanitizer
@@ -127,9 +130,8 @@ export class RemonteeDetailComponent implements OnInit, OnDestroy {
 	}
 
 	showDocument(doc){
-		const dialogRef = this.dialog.open(ShowDocumentContentDialogComponent, {
-			data: { document : doc}
-		});
+		const modalRef = this.modalService.open(ShowDocumentModalComponent, {size: 'lg',scrollable: true,centered : true, windowClass:'doc-modal'});
+		modalRef.componentInstance.document = doc;
 	}
 
 	downloadDoc(doc){
@@ -165,4 +167,10 @@ export class RemonteeDetailComponent implements OnInit, OnDestroy {
 			throw error;
 		  }
 	}
+
+
+	isActiveModule(codes){
+		return this.moduleService.isActived(codes);
+	}
+
 }

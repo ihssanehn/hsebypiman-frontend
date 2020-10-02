@@ -47,7 +47,7 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { PartialsModule } from './views/partials/partials.module';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ImageLightboxContentDialogComponent } from './views/partials/layout/modal/image-lightbox-content-dialog/image-lightbox-content-dialog.component'
-import { ShowDocumentContentDialogComponent } from './views/partials/layout/modal/show-document-content-dialog/show-document-content-dialog.component'
+import { ShowDocumentModalComponent } from './views/partials/layout/modal/show-document-modal/show-document-modal.component'
 // Layout Services
 // FakeApiService
 import {DataTableService,TfDialogService,LayoutConfigService,VersionCheckService,LayoutRefService,MenuAsideService,MenuConfigService,MenuHorizontalService,PageConfigService,SplashScreenService,SubheaderService} from './core/_base/layout';
@@ -153,7 +153,7 @@ export function hljsLanguages(): HighlightLanguage[] {
 	exports: [],
 	entryComponents: [
 		ImageLightboxContentDialogComponent,
-		ShowDocumentContentDialogComponent
+		ShowDocumentModalComponent
 	],
 	providers: [
 		{
