@@ -19,7 +19,7 @@
 	</div>
 	<tf-portlet-body class="tf-portlet__body--fit">
 		<div class="row">
-			<div class="col-md-4">
+			<div  [ngClass]="isActiveModule(['REMONTEE_COMMENTS']) ? 'col-md-4':'col-md-12'">
 				<div class="card">
 					<h3>Informations générales</h3>
 					<div class="box">
@@ -42,7 +42,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-8">
+			<div class="col-md-8" *ifAllModules="['REMONTEE_COMMENTS']">
 				<tf-comments-list *ngIf="remontee" [comments]="remontee.comments" (onAddComment)="onAddComment($event)"></tf-comments-list>
 			</div>			
 		</div>

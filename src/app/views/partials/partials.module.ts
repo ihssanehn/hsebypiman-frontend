@@ -140,7 +140,7 @@ import { VsVehiculeFormImgComponent } from './layout/visites/form/vs-vehicule/vs
 import { SearchEpiFormComponent } from './layout/epi/search-epi-form/search-epi-form.component';
 import { VsVehiculeImageCarouselComponent } from './layout/visites/form/vs-vehicule/vs-vehicule-image-carousel/vs-vehicule-image-carousel.component';
 import { ImageLightboxContentDialogComponent } from './layout/modal/image-lightbox-content-dialog/image-lightbox-content-dialog.component';
-import { ShowDocumentContentDialogComponent } from './layout/modal/show-document-content-dialog/show-document-content-dialog.component';
+import { ShowDocumentModalComponent } from './layout/modal/show-document-modal/show-document-modal.component';
 
 import { SalariePortletComponent } from './layout/salarie/salarie-portlet/salarie-portlet.component';
 import { SalariePortletBoxComponent } from './layout/salarie/salarie-portlet-box/salarie-portlet-box.component';
@@ -216,7 +216,7 @@ import { CommentsAddComponent } from './layout/comments/comments-add/comments-ad
 		SearchEpiFormComponent,
 		VsVehiculeImageCarouselComponent,
 		ImageLightboxContentDialogComponent,
-		ShowDocumentContentDialogComponent,
+		ShowDocumentModalComponent,
 		SalarieScoreComponent,
 		SalariePortletComponent,
 		SalariePortletBoxComponent,
@@ -309,7 +309,7 @@ import { CommentsAddComponent } from './layout/comments/comments-add/comments-ad
 		SearchEpiFormComponent,
 		VsVehiculeImageCarouselComponent,
 		ImageLightboxContentDialogComponent,
-		ShowDocumentContentDialogComponent,
+		ShowDocumentModalComponent,
 		SalarieScoreComponent,
 		SalariePortletComponent,
 		SalariePortletBoxComponent,

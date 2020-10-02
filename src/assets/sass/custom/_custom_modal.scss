@@ -1,0 +1,43 @@
+
+.modal.doc-modal{
+  width: calc(100vw - 3.5rem);
+  height: calc(100vh - 3.5rem);
+  max-width: none;
+  margin: 1.75rem 1.75rem;
+  .modal-content {
+    width: calc(100vw - 3.5rem);
+    height: calc(100vh - 3.5rem);
+    background-color: transparent;
+    border:0;
+    .component-host-scrollable{
+      width: calc(100vw - 3.5rem);
+      height: calc(100vh - 3.5rem);
+      justify-content:flex-start;
+      align-items:center;
+    }
+    .close{
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      font-size: 2.5em;
+      opacity:1;
+      align-self:flex-end;
+      cursor: pointer;
+      color:  black;
+      font-weight: 400;
+      width: 32px;
+      text-align: center;
+      background: white;
+      border-radius: 32px;
+    }
+    .doc-block{
+      flex: 1;
+      display: flex;
+      flex-flow: row wrap;
+      align-items: center;
+      img{
+        width: fit-content;
+      }
+    }
+  }
+}
