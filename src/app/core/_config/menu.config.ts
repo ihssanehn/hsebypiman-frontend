@@ -3,6 +3,15 @@ export class MenuConfig {
 		header: {
 			self: {},
 			items: [
+				
+				{
+					title: 'Accueil',
+					root: true,
+					alignment: 'left',
+					page: '/home',
+					translate: 'MENU.HOME',
+					needModule: false,
+				},
 				{
 					title: 'Dashboards',
 					root: true,
@@ -10,6 +19,7 @@ export class MenuConfig {
 					page: '/dashboard',
 					translate: 'MENU.DASHBOARD',
 					needModule: false,
+					roleOnly:['USER']
 				},
 				{
 					title: 'Remontées QHSE',

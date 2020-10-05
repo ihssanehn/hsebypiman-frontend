@@ -1,0 +1,44 @@
+:host {
+	::ng-deep {
+		ngb-tabset > .nav-tabs {
+			display: none;
+		}
+		.home-title{
+			font-size: 1.2rem;
+			color: #74788d;
+			padding-bottom: 1rem;
+			font-weight: 500;
+			text-align: center;
+		}
+		
+		.tf-portlet{
+			// background-color: #f7f9fc;
+			margin-bottom: 0px;
+			
+			.tf-portlet__body{
+				background: #f7f7ff;
+			}
+		}
+		tf-home .tf-portlet{
+			height: 100%
+		}
+	}
+}
+.dash-title{
+	color: white;
+}
+div.box{
+	padding:1.5em;
+	margin-bottom: 5px;
+	border-radius: 5px;
+	transition: 100ms ease-in-out;
+	box-shadow: 0 0 3px -2px rgb(15, 12, 39);
+	transition-property: transform box-shadow;
+	background:white;
+	cursor: pointer;
+	&:hover{
+		box-shadow: -2px 2px 6px -2px rgba(0, 0, 0, 0.5);
+		// background: rgb(224, 226, 238);
+		transform: translate(2px, -2px);
+	}
+}

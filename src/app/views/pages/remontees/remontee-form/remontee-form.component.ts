@@ -34,7 +34,6 @@ export class RemonteeFormComponent implements OnInit {
 
   ngOnInit() {
     this.getTypes();
-    console.log(this.uploader)
   }
 
   async getTypes(){

@@ -1164,6 +1164,25 @@
 			"LABEL": "Typologie",
 			"SHORTTITLE": "Typologie",
 			"TITLE": "Typologie"
+		},
+		"ACTION": {
+			"LABEL": "Action",
+			"SHORTTITLE": "Action",
+			"TITLE": "Action"
+		},
+		"ACTION_STATUS": {
+			"LABEL": "Statut de l'action",
+			"SHORTTITLE": "Statut",
+			"TITLE": "Action statut"
+		},
+		"SEE_ACTION": {
+			"LABEL": "Voir l'action",
+			"SHORTTITLE": "Action",
+			"TITLE": "Voir l'action"
+		},
+		"LAST":"Dernières remontées",
+		"NEW":{
+			"SHORTBUTTON":"Nouvelle Remontée"
 		}
 	},
 	"SALARIES": {

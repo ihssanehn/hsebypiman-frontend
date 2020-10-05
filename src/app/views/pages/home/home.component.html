@@ -1,0 +1,57 @@
+<h3 class="dash-title">
+    Bienvenue sur HSE
+</h3>
+
+<div class="row">
+    <div class="col-4">
+        <tf-portlet >
+            <tf-portlet-header [title]="('REMONTEES.LAST' | translate)" >
+                <button class="pull-right btn btn-primary">{{'REMONTEES.NEW.SHORTBUTTON' | translate}}</button>
+            </tf-portlet-header>
+            <tf-portlet-body [class]="'tf-portlet__body--fit'" style="padding: 2em;">
+                <div class="box" *ngFor="let remontee of last_remontees" (click)="goToRemontee(remontee.id)">
+                    <div class="first" >
+                        <h5 class="text-warning">{{remontee.type?.libelle}}</h5>
+                        <p><small class="font-weight-bold">{{remontee.creator | fullName}}</small><small class="pull-right text-right font-weight-bold">{{remontee.created_at | date:'dd/MM/yyyy'}}</small></p>
+                        <p class="">{{remontee.description | truncate:200}}</p>
+                    </div>
+                    <div *ngIf="remontee.photos.length > 0" class="mt-4">
+                        <ngb-carousel style="width:60%;margin:auto" (click)="$event.stopPropagation()">
+                            <ng-template ngbSlide *ngFor="let photo of remontee.photos">
+                                <div class="picsum-img-wrapper" style="background:rgba(0,0,0,0.8); text-align:center">
+                                    <img [src]="photo.src | safe:'resourceUrl'" [title]="photo.libelle" style="max-width: 100%; max-height: 175px; margin: auto;">
+                                  </div>
+                            </ng-template>
+                        </ngb-carousel>
+                    </div>
+                </div>
+            </tf-portlet-body>
+        </tf-portlet>
+    </div>
+    <div class="col-4">
+        <tf-portlet >
+            <tf-portlet-header [title]="'Plan d\'actions'" [stats]="stats ? getHeaderStats() : ''"></tf-portlet-header>
+            <tf-portlet-body [class]="'tf-portlet__body--fit'">
+                <div class="row" >
+                    <div class="col-12" style="padding:1em">
+                        <div class="dash-title">Nombre d'actions par mois</div>
+                        <div echarts class="demo-chart" #evolActions></div>
+                    </div>
+                </div>
+            </tf-portlet-body>
+        </tf-portlet>
+    </div>
+    <div class="col-4">
+        <tf-portlet >
+            <tf-portlet-header [title]="'Plan d\'actions'" [stats]="stats ? getHeaderStats() : ''"></tf-portlet-header>
+            <tf-portlet-body [class]="'tf-portlet__body--fit'">
+                <div class="row">
+                    <div class="col-12" style="padding:1em">
+                        <div class="dash-title">Nombre d'actions par mois</div>
+                        <div echarts class="demo-chart" #evolActions></div>
+                    </div>
+                </div>
+            </tf-portlet-body>
+        </tf-portlet>
+    </div>
+</div>
