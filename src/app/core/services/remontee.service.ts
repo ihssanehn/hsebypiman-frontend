@@ -20,7 +20,7 @@ export class RemonteeService{
     ){}
 
     getAll(params){
-        return this.http.post<JsonResponse<Paginate<Remontee>>>(this.baseUrl, {...params});
+        return this.http.post<JsonResponse<any>>(this.baseUrl, {...params});
     }
     getList(){
         return this.http.get<JsonResponse<Remontee[]>>(this.baseUrl+'/mini');

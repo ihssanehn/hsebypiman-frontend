@@ -36,7 +36,8 @@
       flex-flow: row wrap;
       align-items: center;
       img{
-        width: fit-content;
+        max-height: 88vh;
+        max-width: 100%;
       }
     }
   }

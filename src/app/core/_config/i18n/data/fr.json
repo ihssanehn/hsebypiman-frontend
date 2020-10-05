@@ -1073,6 +1073,10 @@
 			"LABEL": "Voir l'action",
 			"SHORTTITLE": "Action",
 			"TITLE": "Voir l'action"
+		},
+		"LAST":"Dernières remontées",
+		"NEW":{
+			"SHORTBUTTON":"Nouvelle Remontée"
 		}
 
 	},
