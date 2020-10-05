@@ -23,6 +23,12 @@ const routes: Routes = [
 			{
 				path: 'dashboard',
 				loadChildren: () => import('@app/views/pages/dashboard/dashboard.module').then(m => m.DashboardModule),
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['ROOT', 'ADMIN']
+					}
+				}
 			},
 			{
 				path: 'remontees',

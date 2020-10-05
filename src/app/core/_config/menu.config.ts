@@ -19,7 +19,7 @@ export class MenuConfig {
 					page: '/dashboard',
 					translate: 'MENU.DASHBOARD',
 					needModule: false,
-					roleOnly:['USER']
+					permissionOnly: ['ROOT', 'ADMIN'],
 				},
 				{
 					title: 'Remontées QHSE',
