@@ -1191,6 +1191,10 @@
 			"LABEL": "Typology",
 			"SHORTTITLE": "Typology",
 			"TITLE": "Typology"
+		},
+		"LAST":"Latest lifts",
+		"NEW":{
+			"SHORTBUTTON":"New Lift"
 		}
 	},
 	"SALARIES": {
