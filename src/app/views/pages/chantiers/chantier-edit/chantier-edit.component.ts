@@ -190,12 +190,12 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 	fireBeforeSave(form){
 		Swal.fire({
 			icon: 'warning',
-			title: 'Voulez vous vraiment clore ce chantier ?',
-			text:'Les analyses de risque et visites de chantier seront archivés.',
+			title: this.translate.instant("CHANTIERS.NOTIF.SITE_CLOSE_CONFIRMATION.TITLE"),
+			text: this.translate.instant("CHANTIERS.NOTIF.SITE_CLOSE_CONFIRMATION.SUBTITLE"),
 			showConfirmButton: true,
 			showCancelButton: true,
 			cancelButtonText: this.translate.instant("ACTION.CANCEL"),
-			confirmButtonText: 'Clore le chantier'
+			confirmButtonText: this.translate.instant("CHANTIERS.ACTION.CLOSE_SITE"),
 		}).then(async response => {
 			if (response.value) {
 				this.saveForm(form);
@@ -217,7 +217,7 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 				var message = res.message.content != 'done' ? '<b class="text-'+code+'">'+res.message.content+'</b>' : null; 
 				Swal.fire({
 					icon: code,
-					title: 'Chantier mis à jour avec succès',
+					title: this.translate.instant("CHANTIERS.NOTIF.SITE_UPDATED.TITLE"),
 					showConfirmButton: false,
 					html: message,
 					timer: code == 'success' ? 1500 : 3000
@@ -231,7 +231,7 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 				this.formloading = false;
 				Swal.fire({
 					icon: 'error',
-					title: 'Echec! le formulaire est incomplet',
+					title: this.translate.instant("NOTIF.INCOMPLETE_FORM.TITLE"),
 					showConfirmButton: false,
 					timer: 1500
 				});

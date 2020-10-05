@@ -354,6 +354,11 @@
 		}
 	},
 	"CHANTIERS": {
+		"ACTION": {
+			"ADD_HABILITATION": "Add an accreditation",
+			"CLOSE_SITE": "Close the site",
+			"CREATE_AR": "Create Risk Analysis"
+		},
 		"ADRESS": {
 			"LABEL": "Site address",
 			"SHORTTITLE": "Address",
@@ -384,6 +389,45 @@
 			"SHORTTITLE": "Amount",
 			"TITLE": "Budget"
 		},
+		"CARD": {
+			"ENTREPRISE": {
+				"NO_ENTREPRISES": "No External Company",
+				"TITLE": "External companies"
+			},
+			"GENERAL_INFOS": {
+				"TITLE": "General informations"
+			},
+			"HABILITATION": {
+				"NO_HABILITATION_REQUIRED": {
+					"SHORTTILE": "No accreditation required",
+					"TITLE": "No accreditation required to access the site"
+				},
+				"SHORTTITLE": "Accreditation",
+				"TITLE": "Mandatory accreditation to access the site"
+			},
+			"SECURITY_INFOS": {
+				"CONTACTS": {
+					"TITLE": "In case of emergency"
+				},
+				"TITLE": "Safety information"
+			},
+			"SITE_COORDINATES": {
+				"TITLE": "Site coordinates"
+			},
+			"SITE_SUPERVISION": {
+				"AR_SUPERVISION": {
+					"NO_AR": "No risk analysis for the moment",
+					"NO_AR_IN_PROGRESS": "No Risk analysis in progress",
+					"NO_HISTORY": "No history",
+					"TITLE": "Risk analyzes monitoring"
+				},
+				"TITLE": "Site monitoring",
+				"VISITES_SUPERVISION": {
+					"NO_VISITES": "No analysis",
+					"TITLE": "Security visits monitoring"
+				}
+			}
+		},
 		"CHIEF": {
 			"LABEL": "Responsible business",
 			"SHORTTITLE": "Last name",
@@ -398,6 +442,29 @@
 			"LABEL": "Client contact",
 			"SHORTTITLE": "Contact",
 			"TITLE": "Client contact"
+		},
+		"DASH": {
+			"AR_AVG_PER_SITE": {
+				"TITLE": "Average RA per Site"
+			},
+			"BUDGET_AVG": {
+				"TITLE": "Medium budget"
+			},
+			"BUDGET_TOTAL": {
+				"TITLE": "Total budget"
+			},
+			"EVOL_CREATION_SITE": {
+				"TITLE": "Evolution of site creations"
+			},
+			"SITES_IN_PROGRESS": {
+				"TITLE": "Site in progress"
+			},
+			"SITE_PER_TYPES": {
+				"TITLE": "Sites by type"
+			},
+			"VISITES_NUMBER": {
+				"TITLE": "Number of visits"
+			}
 		},
 		"DATE_DEMARRAGE": {
 			"LABEL": "Construction start date",
@@ -427,11 +494,6 @@
 			"SHORTTITLE": "Number of authorizations",
 			"TITLE": "Number of authorizations"
 		},
-		"HABILITATIONS": {
-			"LABEL": "Mandatory authorizations to access the site",
-			"SHORTTITLE": "Mandatory authorizations",
-			"TITLE": "Mandatory authorizations to access the site"
-		},
 		"LASTAR": {
 			"LABEL": "Last A.R",
 			"SHORTTITLE": "Last A.R",
@@ -446,6 +508,42 @@
 			"LABEL": "Site name",
 			"SHORTTITLE": "Name",
 			"TITLE": "Site name"
+		},
+		"NOTIF": {
+			"AR_CREATION_CONFIRMATION": {
+				"LABEL": "The risk analysis in progress on this site will be archived",
+				"SUBLABEL": "Do you want to continue ?",
+				"TITLE": "You will create a Risk Analysis"
+			},
+			"AR_CREATION_FAILURE": {
+				"TITLE": "The amount of the site is less than or equal to 20K€, you cannot create a risk analysis"
+			},
+			"ELEMENT_ARCHIVED": {
+				"TITLE": "Element is archived successfully"
+			},
+			"ELEMENT_NOT_DELETED": {
+				"SUBTITLE": "Unable to delete because the selection is assigned to one or more sites",
+				"TITLE": "Unable to delete because the selection includes an element assigned to one or more sites"
+			},
+			"HABILITATION_ARCHIVED": {
+				"TITLE": "Accreditation successfully archived"
+			},
+			"LOADING": {
+				"TITLE": "Loading Site"
+			},
+			"SITE_CLOSED": {
+				"TITLE": "the site was successfully closed"
+			},
+			"SITE_CLOSE_CONFIRMATION": {
+				"SUBTITLE": "Risk analyzes and site visits will be archived",
+				"TITLE": "Do you really want to close this work?"
+			},
+			"SITE_CREATED": {
+				"TITLE": "Site successfully created"
+			},
+			"SITE_UPDATED": {
+				"TITLE": "Site successfully updated"
+			}
 		},
 		"NUMBER": {
 			"LABEL": "Number",
@@ -659,6 +757,8 @@
 		"HIDE": "Hide",
 		"KEYWORD": "Search",
 		"LAUNCH": "Launch",
+		"MAX": "Maximum",
+		"MIN": "Minimum",
 		"SEARCH": "Search",
 		"SEARCH_ALL": "All",
 		"SEARCH_CHANTIER": "Find a site",
@@ -945,8 +1045,14 @@
 		"ERROR_OCCURED": {
 			"TITLE": "Failure! An error has occurred"
 		},
+		"FEATURE_NOT_IMPLEMENTED": {
+			"TITLE": "Sorry this feature has not yet been implemented"
+		},
 		"FORM_DELETE_CONFIRMATION": {
 			"TITLE": "Are you sure you want to delete this form?"
+		},
+		"INCOMPLETE_FORM": {
+			"TITLE": "Failure! the form is incomplete"
 		},
 		"RESULT_FOUND": {
 			"TITLE": "Results Found"

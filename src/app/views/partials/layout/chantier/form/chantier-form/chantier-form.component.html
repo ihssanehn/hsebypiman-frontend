@@ -133,11 +133,10 @@
 			<tf-portlet-body>
 				<div formArrayName="entreprises" class="row">
 					<div class="col-12">
-						<h5 class="mb-4">Entreprises externes
+						<h5 class="mb-4">{{'CHANTIERS.CARD.ENTREPRISE.TITLE' | translate}}
 							<button mat-button type="button" color="info" class="pull-right btn-small" (click)="addEntExt()">
 								<mat-icon>add</mat-icon>
-								Ajouter
-								
+								{{'ACTION.ADD' | translate}}
 							</button>
 						</h5>
 					</div>
@@ -200,12 +199,12 @@
 			<tf-portlet-body>
 				<div class="row">
 					<div class="col-12">
-						<h5 class="mb-4">{{'CHANTIERS.HABILITATIONS.TITLE' | translate}}</h5>
+						<h5 class="mb-4">{{'CHANTIERS.CARD.HABILITATION.TITLE' | translate}}</h5>
 					</div>
 					<div class="col-12">
 						<div class="row my-3 form-row">
 							<div class="col-md-12">
-								<mat-checkbox (change)="onNoHabCheckChange($event)" formControlName="no_hab_required">Pas d'habilitation Nécessaire</mat-checkbox>
+								<mat-checkbox (change)="onNoHabCheckChange($event)" formControlName="no_hab_required">{{'CHANTIERS.CARD.HABILITATION.NO_HABILITATION_REQUIRED.SHORTTILE' | translate}}</mat-checkbox>
 							</div>
 						</div>
 						<div class="row my-3" *ngFor="let catHab of catHabsList">
@@ -231,7 +230,7 @@
 		</tf-portlet>
 		<ng-container *ngIf="formStatus">
 			<div *ngIf="formStatus.canShowErrors()" class="alert alert-danger alert-dismissible fade show" role="alert">
-				<div><strong>Oups!</strong></div>
+				<div><strong>{{'COMMON.NOTIF.ERROR.TITLE' | translate}}</strong></div>
 				<div>
 					<ul *ngFor="let errors of formStatus.errors  |  keyvalue">
 						<li *ngFor="let error of errors.value">
@@ -241,7 +240,7 @@
 				</div>
 			</div>			
 			<div *ngIf="formStatus.canShowSuccess()" class="alert alert-success" role="alert">
-				<div><strong>Success!</strong></div>
+				<div><strong>{{'COMMON.NOTIF.SUCCESS.TITLE' | translate}}</strong></div>
 				<div *ngFor="let message of formStatus.messages">{{ message }}</div>
 			</div>
 		</ng-container>
@@ -250,7 +249,7 @@
 				{{'ACTION.SAVE' | translate}}
 			</button>
 			<button type="button" mat-raised-button color="info" (click)="cancelForm()">
-				Cancel
+				{{'ACTION.CANCEL' | translate}}
 			</button>
 		</div>
 	</form>

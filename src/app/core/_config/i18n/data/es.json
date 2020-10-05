@@ -354,6 +354,11 @@
 		}
 	},
 	"CHANTIERS": {
+		"ACTION": {
+			"ADD_HABILITATION": "",
+			"CLOSE_SITE": "",
+			"CREATE_AR": ""
+		},
 		"ADRESS": {
 			"LABEL": "Adresse du chantier",
 			"SHORTTITLE": "Adresse",
@@ -384,6 +389,45 @@
 			"SHORTTITLE": "Montant",
 			"TITLE": "Budget"
 		},
+		"CARD": {
+			"ENTREPRISE": {
+				"NO_ENTREPRISES": "",
+				"TITLE": ""
+			},
+			"GENERAL_INFOS": {
+				"TITLE": ""
+			},
+			"HABILITATION": {
+				"NO_HABILITATION_REQUIRED": {
+					"SHORTTILE": "",
+					"TITLE": ""
+				},
+				"SHORTTITLE": "",
+				"TITLE": ""
+			},
+			"SECURITY_INFOS": {
+				"CONTACTS": {
+					"TITLE": ""
+				},
+				"TITLE": ""
+			},
+			"SITE_COORDINATES": {
+				"TITLE": ""
+			},
+			"SITE_SUPERVISION": {
+				"AR_SUPERVISION": {
+					"NO_AR": "",
+					"NO_AR_IN_PROGRESS": "",
+					"NO_HISTORY": "",
+					"TITLE": ""
+				},
+				"TITLE": "",
+				"VISITES_SUPERVISION": {
+					"NO_VISITES": "",
+					"TITLE": ""
+				}
+			}
+		},
 		"CHIEF": {
 			"LABEL": "Chargé d'affaire",
 			"SHORTTITLE": "Nom",
@@ -398,6 +442,29 @@
 			"LABEL": "Contact Client",
 			"SHORTTITLE": "Contact",
 			"TITLE": "Contact client"
+		},
+		"DASH": {
+			"AR_AVG_PER_SITE": {
+				"TITLE": ""
+			},
+			"BUDGET_AVG": {
+				"TITLE": ""
+			},
+			"BUDGET_TOTAL": {
+				"TITLE": ""
+			},
+			"EVOL_CREATION_SITE": {
+				"TITLE": ""
+			},
+			"SITES_IN_PROGRESS": {
+				"TITLE": ""
+			},
+			"SITE_PER_TYPES": {
+				"TITLE": ""
+			},
+			"VISITES_NUMBER": {
+				"TITLE": ""
+			}
 		},
 		"DATE_DEMARRAGE": {
 			"LABEL": "Date de démarrage chantier",
@@ -427,11 +494,6 @@
 			"SHORTTITLE": "Nombre d'habilitations",
 			"TITLE": "Nombre d'habilitations"
 		},
-		"HABILITATIONS": {
-			"LABEL": "Habilitations obligatoires pour accéder au chantier",
-			"SHORTTITLE": "Habilitations obligatoires",
-			"TITLE": "Habilitations obligatoires pour accéder au chantier"
-		},
 		"LASTAR": {
 			"LABEL": "Dernière A.R",
 			"SHORTTITLE": "Dernière A.R",
@@ -446,6 +508,42 @@
 			"LABEL": "Nom du chantier",
 			"SHORTTITLE": "Nom",
 			"TITLE": "Nom du chantier"
+		},
+		"NOTIF": {
+			"AR_CREATION_CONFIRMATION": {
+				"LABEL": "",
+				"SUBLABEL": "",
+				"TITLE": ""
+			},
+			"AR_CREATION_FAILURE": {
+				"TITLE": ""
+			},
+			"ELEMENT_ARCHIVED": {
+				"TITLE": ""
+			},
+			"ELEMENT_NOT_DELETED": {
+				"SUBTITLE": "",
+				"TITLE": ""
+			},
+			"HABILITATION_ARCHIVED": {
+				"TITLE": ""
+			},
+			"LOADING": {
+				"TITLE": ""
+			},
+			"SITE_CLOSED": {
+				"TITLE": ""
+			},
+			"SITE_CLOSE_CONFIRMATION": {
+				"SUBTITLE": "",
+				"TITLE": ""
+			},
+			"SITE_CREATED": {
+				"TITLE": ""
+			},
+			"SITE_UPDATED": {
+				"TITLE": ""
+			}
 		},
 		"NUMBER": {
 			"LABEL": "Numéro",
@@ -659,6 +757,8 @@
 		"HIDE": "Cacher",
 		"KEYWORD": "Rechercher",
 		"LAUNCH": "",
+		"MAX": "",
+		"MIN": "",
 		"SEARCH": "Rechercher",
 		"SEARCH_ALL": "",
 		"SEARCH_CHANTIER": "Recherche un chantier",
@@ -945,8 +1045,14 @@
 		"ERROR_OCCURED": {
 			"TITLE": "¡Fracaso! Se ha producido un error"
 		},
+		"FEATURE_NOT_IMPLEMENTED": {
+			"TITLE": ""
+		},
 		"FORM_DELETE_CONFIRMATION": {
 			"TITLE": "¿Está seguro de que desea eliminar este formulario?"
+		},
+		"INCOMPLETE_FORM": {
+			"TITLE": ""
 		},
 		"RESULT_FOUND": {
 			"TITLE": "Resultados encontrados"
