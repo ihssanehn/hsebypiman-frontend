@@ -25,7 +25,7 @@
     <div class="row justify-content-between">
       <div class="col-md-4">
         <div class="card">
-          <h3>Informations générales</h3>
+          <h3>{{'CHANTIERS.CARD.GENERAL_INFOS.TITLE' | translate}}</h3>
           <div class="box" style="flex:1">
             <p><span class="label pull-left mr-2">{{'CHANTIERS.NAME.SHORTTITLE' | translate}}</span><span class="">{{chantier.nom}}</span></p>
             <p><span class="label pull-left mr-2">{{'CHANTIERS.TYPE.SHORTTITLE' | translate}}</span><span class="">{{chantier.type?.libelle}}</span></p>
@@ -38,7 +38,7 @@
             <span></span>
           </div>
           <div class="box box-coords" style="flex:1">
-            <h5><b>Coordonnées chantier</b></h5>
+            <h5><b>{{'CHANTIERS.CARD.SITE_COORDINATES.TITLE' | translate}}</b></h5>
             <p><span class="label pull-left mr-2">{{'CHANTIERS.CLIENT.SHORTTITLE' | translate}}</span><span class="">{{chantier.client}}</span></p>
             <p><span class="label pull-left mr-2">{{'CHANTIERS.ADRESS.SHORTTITLE' | translate}}</span><span class="">{{chantier.adresse}}</span></p>
             <p><span class="label pull-left mr-2">{{'COMMON.CITY.SHORTTITLE' | translate}}</span><span class="">{{chantier.ville}}</span></p>
@@ -56,7 +56,7 @@
       </div>
       <div class="col-md-3" *ifAllModules="['ANALYSE']">
         <div class="card" >
-          <h3>Informations sécurité</h3>
+          <h3>{{'CHANTIERS.CARD.SECURITY_INFOS.TITLE' | translate}}</h3>
           <div *ngIf="chantier.latest_ar; else noAr" >
               <div class="box" style="flex: 1;">
                 <p><span class="label pull-left">{{'ARS.PREVOIR_COMPAGNONS.TITLE' | translate}}</span><br>{{chantier.latest_ar?.a_prevoir_compagnons ? 'Oui':'Non'}}</p>
@@ -79,7 +79,7 @@
                 <p *ngIf="chantier.latest_ar?.a_signer_registre_travaux"><span class="label pull-left">{{'ARS.ASIGNER.LABEL' | translate}}</span><br>{{chantier.latest_ar?.registre_signing_period}}</p>
               </div>
               <div class="box" style="flex: 1;">
-                <h5><b>En cas d'urgence</b></h5>
+                <h5><b>{{'CHANTIERS.CARD.SECURITY_INFOS.CONTACTS.TITLE' | translate}}</b></h5>
                 <p><span class="label pull-left mr-2">{{'ARS.CONTACT_INTERNE_SECOURS.SHORTTITLE' | translate}}</span><br><span class="blue">{{chantier.latest_ar?.contact_interne_secours}}</span></p>
                 <p><span class="label pull-left mr-2">{{'ARS.TEL_CONTACT_INTERNE_SECOURS.SHORTTITLE' | translate}}</span><br><span class="blue">{{chantier.latest_ar?.tel_contact_interne_secours}}</span></p>
                 <p class="mt-3"><span class="label pull-left mr-2">{{'ARS.CONTACT_CLIENT_HSE.SHORTTITLE' | translate}}</span><br><span class="blue">{{chantier.latest_ar?.contact_client_hse}}</span></p>
@@ -88,16 +88,16 @@
           </div>
           <ng-template #noAr>
             <div class="box">
-              Aucune analyse de risque pour le moment
+              {{'CHANTIERS.CARD.SITE_SUPERVISION.AR_SUPERVISION.NO_AR' | translate}}
             </div>
           </ng-template>
         </div>
       </div>
       <div class="col-5" *ifInModules="['ANALYSE', 'VISITE']">
         <div class="card">
-          <h3>Suivi de chantier</h3>
+          <h3>{{'CHANTIERS.CARD.SITE_SUPERVISION.TITLE' | translate}}</h3>
           <div class="box box-ar-vs" style="flex: 1;" *ifAllModules="['ANALYSE']">
-            <h5><b>Suivis analyses de risques</b><small class="pull-right">{{'CHANTIERS.AR_COUNT.SHORTTITLE' | translate}} : <span class="blue">{{chantier.ars.length}}</span></small></h5>
+            <h5><b>{{'CHANTIERS.CARD.SITE_SUPERVISION.AR_SUPERVISION.TITLE' | translate}}</b><small class="pull-right">{{'CHANTIERS.AR_COUNT.SHORTTITLE' | translate}} : <span class="blue">{{chantier.ars.length}}</span></small></h5>
             <ng-container *ngIf="chantier.ars.length > 0; else noArs">
               <div class="row">
                 <div class="col-12 my-2"><p><span class="label">{{'CHANTIERS.AR_INPROGRESS.TITLE' | translate}}</span></p></div>
@@ -107,7 +107,7 @@
                   <div class="col-2" ><a (click)="goToArDetail(chantier.ar_inprogress.id)" alt="voir l'analyse de risque"><mat-icon color="primary">visibility</mat-icon></a></div>
                 </ng-container>
                 <ng-template #noArInProgress>
-                  <div class="col-12">Aucune Analyse de risque en cours</div>
+                  <div class="col-12">{{'CHANTIERS.CARD.SITE_SUPERVISION.AR_SUPERVISION.NO_AR_IN_PROGRESS' | translate}}</div>
                 </ng-template>
               </div>
               <div class="row">
@@ -120,20 +120,20 @@
                   </ng-container>
                 </ng-container>
                 <ng-template #noArHistorique>
-                  Aucun historique
+                  {{'CHANTIERS.CARD.SITE_SUPERVISION.AR_SUPERVISION.NO_HISTORY' | translate}}
                 </ng-template>
               </div>
             </ng-container>
             <ng-template #noArs>
               <div class="row">
                 <div class="col-12">
-                  <p>Aucune analyse</p>
+                  <p>{{'CHANTIERS.CARD.SITE_SUPERVISION.VISITES_SUPERVISION.NO_VISITES' | translate}}</p>
                 </div>
               </div>
             </ng-template>
           </div>
           <div class="box box-ar-vs" style="flex: 1;" *ifAllModules="['VISITE']">
-            <h5><b>Suivis visites de sécurité</b><small class="pull-right">{{'CHANTIERS.VS_COUNT.SHORTTITLE' | translate}} : <span class="blue">{{chantier.vss.length}}</span></small></h5>
+            <h5><b>{{'CHANTIERS.CARD.SITE_SUPERVISION.VISITES_SUPERVISION.TITLE' | translate}}</b><small class="pull-right">{{'CHANTIERS.VS_COUNT.SHORTTITLE' | translate}} : <span class="blue">{{chantier.vss.length}}</span></small></h5>
             <div class="row">
               <div class="col-md-12 my-2"><p><span class="label">{{'CHANTIERS.VSS.TITLE' | translate}}</span></p></div>
               <ng-container *ngIf="chantier.vss.length > 0; else noVss">
@@ -146,7 +146,7 @@
               <ng-template #noVss>
                 <div class="row">
                   <div class="col-12">
-                    <p>Aucune visites</p>
+                    <p>{{'CHANTIERS.CARD.SITE_SUPERVISION.VISITES_SUPERVISION.NO_VISITES' | translate}}</p>
                   </div>
                 </div>
               </ng-template>
@@ -186,7 +186,7 @@
       </div>
       <div class="col-md-12 mt-4">
         <div class="card" *ngIf="!chantier.no_hab_required; else noHabRequired">
-          <h5> Habilitations obligatoires pour accéder au chantier <small class="pull-right">{{'CHANTIERS.HABCOUNT.SHORTTITLE' | translate}} : <span class="blue">{{chantier.habilitations.length}}</span></small></h5>
+          <h5> {{'CHANTIERS.CARD.HABILITATION.TITLE' | translate}} <small class="pull-right">{{'CHANTIERS.HABCOUNT.SHORTTITLE' | translate}} : <span class="blue">{{chantier.habilitations.length}}</span></small></h5>
           <ul>
             <li *ngFor="let hab of chantier.habilitations">
               {{hab.libelle}}
@@ -199,7 +199,7 @@
       <div class="col-12">
         <button mat-raised-button color="info" (click)="closeChantier(chantier.id)" *ngxPermissionsOnly="['chantier_canUpdate']">
           <mat-icon  svgIcon="status-termine" inline="true" style="width: 21px; margin-top: -6px; margin-right: 6px;"></mat-icon>
-          Clore le chantier
+          {{'CHANTIERS.ACTION.CLOSE_SITE' | translate}}
         </button>
         <ng-container *ngxPermissionsOnly="['analyse_risque_canAdd']">
           <span class="pull-right" *ifAllModules="['ANALYSE']"
@@ -207,7 +207,7 @@
             [matTooltipDisabled]="this.chantier.montant > 20000">
             <button mat-raised-button color="info" (click)="addAr(chantier.id)" [disabled]="this.chantier.montant <= 20000">
               <mat-icon inline="true" style="width: 21px; margin-top: -6px; margin-right: 6px;">add</mat-icon>
-              Créer Analyse de risque
+              {{'CHANTIERS.ACTION.CREATE_AR' | translate}}
             </button>
           </span>
         </ng-container>
@@ -218,13 +218,13 @@
 
 <ng-template #noEntreprises>
   <div class="card">
-    <h5 class="mb-4">Aucune Entreprise Externe</h5>
+    <h5 class="mb-4">{{'CHANTIERS.CARD.ENTREPRISE.NO_ENTREPRISES' | translate}}</h5>
   </div>
 </ng-template>
 
 <ng-template #noHabRequired>
   <div class="card">
-    <h5 class="mb-4">Aucune habilitations obligatoires pour accéder au chantier</h5>
+    <h5 class="mb-4">{{'CHANTIERS.CARD.HABILITATION.NO_HABILITATION_REQUIRED.TITLE' | translate}}</h5>
   </div>
 </ng-template>
 <ng-template #noSecuDays>

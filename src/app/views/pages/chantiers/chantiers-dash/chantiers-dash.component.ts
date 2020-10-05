@@ -30,15 +30,13 @@ export class ChantiersDashComponent implements OnInit, AfterViewInit, OnDestroy 
 	showFilters:Boolean = false;
 	stats : any;	
 	
-	
-
 	echartsEvol;
 	
 	echartsType;
 
 	byTypeOptions = {
 		title: {
-			text: 'Chantiers par types',
+			text: this.translate.instant("CHANTIERS.DASH.SITE_PER_TYPES.TITLE"),
 			x: 'center'
 		},
 		grid: {
@@ -71,7 +69,7 @@ export class ChantiersDashComponent implements OnInit, AfterViewInit, OnDestroy 
 	};
 	EvolOptions = {
 		title: {
-			text: 'Evolution créations de chantier',
+			text: this.translate.instant("CHANTIERS.DASH.EVOL_CREATION_SITE.TITLE"),
 			x: 'center'
 		},
 		tooltip: {
@@ -110,8 +108,6 @@ export class ChantiersDashComponent implements OnInit, AfterViewInit, OnDestroy 
 	) {
 		
 	}
-
-	
 
 	ngOnInit() {
 		this.getChantiersDash();

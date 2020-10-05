@@ -99,7 +99,7 @@ export class ChantierAddComponent implements OnInit {
         this.formloading=false;
         Swal.fire({
           icon: 'success',
-          title: 'Chantier créé avec succès',
+          title: this.translate.instant("CHANTIERS.NOTIF.SITE_CREATED.TITLE"),
           showConfirmButton: false,
           timer: 1500
         }).then(() => {
@@ -111,7 +111,7 @@ export class ChantierAddComponent implements OnInit {
         this.formloading=false;
         Swal.fire({
           icon: 'error',
-          title: 'Echec! le formulaire est incomplet',
+          title: this.translate.instant("NOTIF.INCOMPLETE_FORM.TITLE"),
           showConfirmButton: false,
           timer: 1500
         });

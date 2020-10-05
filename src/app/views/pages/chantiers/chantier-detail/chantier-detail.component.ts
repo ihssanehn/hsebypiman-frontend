@@ -114,7 +114,7 @@ export class ChantierDetailComponent implements OnInit, OnDestroy {
 	}
 	deleteChantier(id){
 		Swal.fire({
-			title:'Désolé cette fonctionnalité n\'a pas encore été implémentée',
+			title: this.translate.instant("NOTIF.FEATURE_NOT_IMPLEMENTED.TITLE"),
 			showConfirmButton: false,
             timer: 1500
 		})
@@ -124,12 +124,12 @@ export class ChantierDetailComponent implements OnInit, OnDestroy {
 		
 		Swal.fire({
 			icon: 'warning',
-			title: 'Voulez vous vraiment clore ce chantier ?',
-			text:'Les analyses de risque et visites de chantier seront archivés.',
+			title: this.translate.instant("CHANTIERS.NOTIF.SITE_CLOSE_CONFIRMATION.TITLE"),
+			text: this.translate.instant("CHANTIERS.NOTIF.SITE_CLOSE_CONFIRMATION.SUBTITLE"),
 			showConfirmButton: true,
 			showCancelButton: true,
 			cancelButtonText: this.translate.instant("ACTION.CANCEL"),
-			confirmButtonText: 'Clore le chantier'
+			confirmButtonText: this.translate.instant("CHANTIERS.ACTION.CLOSE_SITE"),
 		}).then(async response => {
 			if (response.value) {
 				const res = await this.chantierService.closeChantier(chantierId)
@@ -139,7 +139,7 @@ export class ChantierDetailComponent implements OnInit, OnDestroy {
 					var message = res.message.content != 'done' ? '<b class="text-'+code+'">'+res.message.content+'</b>' : null; 
 					Swal.fire({
 						icon: code,
-						title: 'le chantier a été clos avec succès',
+						title: this.translate.instant("CHANTIERS.NOTIF.SITE_CLOSED.TITLE"),
 						showConfirmButton: false,
 						html: message,
 						timer: code == 'success' ? 1500 : 3000
@@ -149,7 +149,7 @@ export class ChantierDetailComponent implements OnInit, OnDestroy {
 				}).catch(e => {
 					Swal.fire({
 						icon: 'error',
-						title: 'Echec! une erreur est survenue',
+						title: this.translate.instant("NOTIF.ERROR_OCCURED.TITLE"),
 						showConfirmButton: false,
 						timer: 1500
 					});
@@ -162,7 +162,7 @@ export class ChantierDetailComponent implements OnInit, OnDestroy {
 		if(this.chantier.montant <= 20000){
 			Swal.fire({
 				icon: 'error',
-				title: 'Le montant du chantier est inférieur ou égal à 20K€, vous ne pouvez pas créer d\'analyse de risque',
+				title: this.translate.instant("CHANTIERS.NOTIF.AR_CREATION_FAILURE.TITLE"),
 				showConfirmButton: false,
 				timer: 4000
 			});
@@ -170,8 +170,8 @@ export class ChantierDetailComponent implements OnInit, OnDestroy {
 			if(!this.chantier.is_all_ars_archived){
 				Swal.fire({
 					icon: 'warning',
-					title: 'Vous allez créer une Analyse de risque',
-					html: '<p class="text-warning"><b>L\'analyse de risque en cours sur ce chantier sera archivée</b></p><p>Voulez-vous continuer ?</p>',
+					title: this.translate.instant("CHANTIERS.NOTIF.AR_CREATION_CONFIRMATION.TITLE"),
+					html: '<p class="text-warning"><b>'+this.translate.instant("CHANTIERS.NOTIF.AR_CREATION_CONFIRMATION.LABEL")+'</b></p><p>'+this.translate.instant("CHANTIERS.NOTIF.AR_CREATION_CONFIRMATION.SUBLABEL")+'</p>',
 					showConfirmButton: true,
 					showCancelButton: true,
 					cancelButtonText: this.translate.instant("ACTION.CANCEL"),

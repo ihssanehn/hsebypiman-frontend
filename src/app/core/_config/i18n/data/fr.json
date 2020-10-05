@@ -354,6 +354,11 @@
 		}
 	},
 	"CHANTIERS": {
+		"ACTION": {
+			"ADD_HABILITATION": "Ajouter une habilitation",
+			"CLOSE_SITE": "Clore le chantier",
+			"CREATE_AR": "Créer Analyse de risque"
+		},
 		"ADRESS": {
 			"LABEL": "Adresse du chantier",
 			"SHORTTITLE": "Adresse",
@@ -384,6 +389,45 @@
 			"SHORTTITLE": "Montant",
 			"TITLE": "Budget"
 		},
+		"CARD": {
+			"ENTREPRISE": {
+				"NO_ENTREPRISES": "Aucune Entreprise Externe",
+				"TITLE": "Entreprises externes"
+			},
+			"GENERAL_INFOS": {
+				"TITLE": "Informations générales"
+			},
+			"HABILITATION": {
+				"NO_HABILITATION_REQUIRED": {
+					"SHORTTILE": "Pas d'habilitation Nécessaire",
+					"TITLE": "Aucune habilitations obligatoires pour accéder au chantier"
+				},
+				"SHORTTITLE": "Habilitations",
+				"TITLE": "Habilitations obligatoires pour accéder au chantier"
+			},
+			"SECURITY_INFOS": {
+				"CONTACTS": {
+					"TITLE": "En cas d'urgence"
+				},
+				"TITLE": "Informations sécurité"
+			},
+			"SITE_COORDINATES": {
+				"TITLE": "Coordonnées chantier"
+			},
+			"SITE_SUPERVISION": {
+				"AR_SUPERVISION": {
+					"NO_AR": "Aucune analyse de risque pour le moment",
+					"NO_AR_IN_PROGRESS": "Aucune Analyse de risque en cours",
+					"NO_HISTORY": "Aucun historique",
+					"TITLE": "Suivis analyses de risques"
+				},
+				"TITLE": "Suivi de chantier",
+				"VISITES_SUPERVISION": {
+					"NO_VISITES": "Aucune analyse",
+					"TITLE": "Suivis visites de sécurité"
+				}
+			}
+		},
 		"CHIEF": {
 			"LABEL": "Chargé d'affaire",
 			"SHORTTITLE": "Nom",
@@ -398,6 +442,29 @@
 			"LABEL": "Contact Client",
 			"SHORTTITLE": "Contact",
 			"TITLE": "Contact client"
+		},
+		"DASH": {
+			"AR_AVG_PER_SITE": {
+				"TITLE": "Moyenne d'AR par Chantier"
+			},
+			"BUDGET_AVG": {
+				"TITLE": "Budget moyen"
+			},
+			"BUDGET_TOTAL": {
+				"TITLE": "Budget total"
+			},
+			"EVOL_CREATION_SITE": {
+				"TITLE": "Évolution créations de chantier"
+			},
+			"SITES_IN_PROGRESS": {
+				"TITLE": "Chantiers en cours"
+			},
+			"SITE_PER_TYPES": {
+				"TITLE": "Chantiers par types"
+			},
+			"VISITES_NUMBER": {
+				"TITLE": "Nombre de Visites"
+			}
 		},
 		"DATE_DEMARRAGE": {
 			"LABEL": "Date de démarrage chantier",
@@ -427,11 +494,6 @@
 			"SHORTTITLE": "Nombre d'habilitations",
 			"TITLE": "Nombre d'habilitations"
 		},
-		"HABILITATIONS": {
-			"LABEL": "Habilitations obligatoires pour accéder au chantier",
-			"SHORTTITLE": "Habilitations obligatoires",
-			"TITLE": "Habilitations obligatoires pour accéder au chantier"
-		},
 		"LASTAR": {
 			"LABEL": "Dernière A.R",
 			"SHORTTITLE": "Dernière A.R",
@@ -446,6 +508,42 @@
 			"LABEL": "Nom du chantier",
 			"SHORTTITLE": "Nom",
 			"TITLE": "Nom du chantier"
+		},
+		"NOTIF": {
+			"AR_CREATION_CONFIRMATION": {
+				"LABEL": "L'analyse de risque en cours sur ce chantier sera archivée",
+				"SUBLABEL": "Voulez-vous continuer ?",
+				"TITLE": "Vous allez créer une Analyse de risque"
+			},
+			"AR_CREATION_FAILURE": {
+				"TITLE": "Le montant du chantier est inférieur ou égal à 20K€, vous ne pouvez pas créer d'analyse de risque"
+			},
+			"ELEMENT_ARCHIVED": {
+				"TITLE": "Élément est archivé avec succès"
+			},
+			"ELEMENT_NOT_DELETED": {
+				"SUBTITLE": "Suppression impossible car la sélection est affectée à un ou plusieurs chantiers",
+				"TITLE": "Suppression impossible car la sélection comprend un élément affecté à un ou plusieurs chantiers"
+			},
+			"HABILITATION_ARCHIVED": {
+				"TITLE": "Habilitation archivée avec succès"
+			},
+			"LOADING": {
+				"TITLE": "Loading Chantier"
+			},
+			"SITE_CLOSED": {
+				"TITLE": "Le chantier a été clos avec succès"
+			},
+			"SITE_CLOSE_CONFIRMATION": {
+				"SUBTITLE": "Les analyses de risque et visites de chantier seront archivés",
+				"TITLE": "Voulez vous vraiment clore ce chantier ?"
+			},
+			"SITE_CREATED": {
+				"TITLE": "Chantier créé avec succès"
+			},
+			"SITE_UPDATED": {
+				"TITLE": "Chantier mis à jour avec succès"
+			}
 		},
 		"NUMBER": {
 			"LABEL": "Numéro",
@@ -659,6 +757,8 @@
 		"HIDE": "Cacher",
 		"KEYWORD": "Rechercher",
 		"LAUNCH": "Lancer",
+		"MAX": "Maximum",
+		"MIN": "Minimum",
 		"SEARCH": "Rechercher",
 		"SEARCH_ALL": "Tous",
 		"SEARCH_CHANTIER": "Recherche un chantier",
@@ -945,8 +1045,14 @@
 		"ERROR_OCCURED": {
 			"TITLE": "Échec! une erreur est survenue"
 		},
+		"FEATURE_NOT_IMPLEMENTED": {
+			"TITLE": "Désolé cette fonctionnalité n'a pas encore été implémentée"
+		},
 		"FORM_DELETE_CONFIRMATION": {
 			"TITLE": "Êtes-vous sûr de vouloir supprimer ce formulaire ?"
+		},
+		"INCOMPLETE_FORM": {
+			"TITLE": "Échec! le formulaire est incomplet"
 		},
 		"RESULT_FOUND": {
 			"TITLE": "résultats trouvés"
@@ -988,9 +1094,9 @@
 			"CREATE": "Créer un nouveau plan d'action"
 		},
 		"NAME": {
-			"LABEL": "Libellé",
-			"SHORTTITLE": "Libellé",
-			"TITLE": "Libellé"
+			"LABEL": "Action décidée",
+			"SHORTTITLE": "Actions",
+			"TITLE": "Action décidée"
 		},
 		"NUMBER": {
 			"LABEL": "Numéro",
@@ -1078,7 +1184,6 @@
 		"NEW":{
 			"SHORTBUTTON":"Nouvelle Remontée"
 		}
-
 	},
 	"SALARIES": {
 		"ACCIDENTOLOGIE": {

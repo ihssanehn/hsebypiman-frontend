@@ -2,6 +2,8 @@ import { Component, OnInit, ChangeDetectorRef, Injector } from '@angular/core';
 import { AdminTemplateComponent } from '@app/views/partials/layout/admin-template/admin-template.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CatHabilitationService, HabilitationService } from '@app/core/services';
+import { TranslateService } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'habilitations-admin',
@@ -15,15 +17,7 @@ export class HabilitationsAdminComponent extends AdminTemplateComponent implemen
   parentService: any;
   childService: any;
 
-  tpl : any = {
-    title : 'Habilitations',
-    deletedMessage: 'Suppression impossible car la selection comprend un élément affecté à un ou plusieurs chantiers',
-    deletedChildMessage: 'Suppression impossible car la selection est affectée à un ou plusieurs chantiers',
-    collapsed : false,
-    canUpdateTitle: false,
-    titleOject: null,
-    childCol : 6
-  }
+  tpl : any;
 
   list: any[];
 
@@ -33,6 +27,20 @@ export class HabilitationsAdminComponent extends AdminTemplateComponent implemen
     this.modalService = injector.get(NgbModal);
     this.parentService = injector.get(CatHabilitationService);
     this.childService = injector.get(HabilitationService);
+    this.translate = injector.get(TranslateService);
+  }
+
+  ngOnInit() {
+    super.ngOnInit();
+    this.tpl = {
+      title : this.translate.instant("CHANTIERS.CARD.HABILITATION.SHORTTITLE"),
+      deletedMessage: this.translate.instant("CHANTIERS.NOTIF.ELEMENT_NOT_DELETED.TITLE"),
+      deletedChildMessage: this.translate.instant("CHANTIERS.NOTIF.ELEMENT_NOT_DELETED.SUBTITLE"),
+      collapsed : true,
+      canUpdateTitle: false,
+      titleOject: null,
+      childCol : 6
+    }
   }
 
   formatChildren(item){
@@ -41,11 +49,11 @@ export class HabilitationsAdminComponent extends AdminTemplateComponent implemen
   }
 
   async addItem(){
-    super.addItem("Ajouter une habilitation", {ordre: this.generateParentOrdre()});  
+    super.addItem(this.translate.instant("CHANTIERS.ACTION.ADD_HABILITATION"), {ordre: this.generateParentOrdre()});  
   }
 
   async deleteItem({id}){
-    super.deleteItem({id}, { title : "Habilitation archivée avec succès" });
+    super.deleteItem({id}, { title : this.translate.instant("CHANTIERS.NOTIF.HABILITATION_ARCHIVED.TITLE") });
   }
 
   async addChild(item){
@@ -54,7 +62,7 @@ export class HabilitationsAdminComponent extends AdminTemplateComponent implemen
   }
 
   async deleteChild({id, parent_id}){
-    super.deleteChild({id, parent_id}, {title : "Element est archivé avec succès" });
+    super.deleteChild({id, parent_id}, {title : this.translate.instant("CHANTIERS.NOTIF.ELEMENT_ARCHIVED.TITLE") });
   }
 
 }

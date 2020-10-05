@@ -68,7 +68,7 @@
 					<p class="mt-1"><strong>{{chantier?.adresse}}, {{chantier?.code_postal}} {{chantier?.ville}} {{chantier?.pays}}</strong></p>
 				</div>
 				<div class="col-xl-12 col-lg-12 col-md-12">
-					<mat-label>{{'CHANTIERS.HABILITATIONS.TITLE' | translate}}</mat-label>
+					<mat-label>{{'CHANTIERS.CARD.HABILITATION.TITLE' | translate}}</mat-label>
 					<p class="mt-1">
 						<strong *ngFor="let hab of chantier.habilitations; let last = last">
 							{{hab.libelle}} <span *ngIf="!last" class="mx-2">|</span> 
