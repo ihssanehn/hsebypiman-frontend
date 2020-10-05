@@ -1,5 +1,5 @@
 <tf-portlet >
-	<tf-portlet-header [title]="'Plan d\'actions'" [stats]="stats ? getHeaderStats() : ''"></tf-portlet-header>
+	<tf-portlet-header title="{{'MENU.PLANACTION' | translate}}" [stats]="stats ? getHeaderStats() : ''"></tf-portlet-header>
 	<tf-portlet-body [class]="'tf-portlet__body--fit'">
 		<div class="row row-no-padding row-col-separator-xl"  style="height: 100%">
 			<!-- <div class="col-xl-6" style="padding: 10px;">
@@ -7,7 +7,7 @@
 				<div echarts class="demo-chart" #pieActionStatus></div>
 			</div> -->
 			<div class="col-12" style="padding:1em">
-				<div class="dash-title">Nombre d'actions par mois</div>
+				<div class="dash-title">{{'PLANACTIONS.DASH.ACTION_NUMBER_PER_MONTH.TITLE' | translate}}</div>
 				<div echarts class="demo-chart" #evolActions></div>
 			</div>
 		</div>
