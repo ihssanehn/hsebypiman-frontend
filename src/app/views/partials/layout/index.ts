@@ -94,6 +94,7 @@ export { VisiteQuestionsOutillageAdminComponent } from './admins/visite-question
 export { VisiteQuestionsEpiAdminComponent } from './admins/visite-questions-epi-admin/visite-questions-epi-admin.component';
 export { VisiteQuestionsChantierAdminComponent } from './admins/visite-questions-chantier-admin/visite-questions-chantier-admin.component';
 export { SalarieFonctionsAdminComponent } from './admins/salarie-fonctions-admin/salarie-fonctions-admin.component';
+export { LastRemonteesComponent } from './remontees/last-remontees/last-remontees.component';
 
 
 

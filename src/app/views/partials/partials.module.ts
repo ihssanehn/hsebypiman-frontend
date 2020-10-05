@@ -148,6 +148,7 @@ import { SalariePortletRowComponent } from './layout/salarie/salarie-portlet-row
 import { SalarieCardComponent } from './layout/salarie/salarie-card/salarie-card.component';
 import { CommentsListComponent } from './layout/comments/comments-list/comments-list.component';
 import { CommentsAddComponent } from './layout/comments/comments-add/comments-add.component';
+import { LastRemonteesComponent } from './layout/remontees/last-remontees/last-remontees.component';
 
 @NgModule({
 	declarations: [
@@ -240,6 +241,7 @@ import { CommentsAddComponent } from './layout/comments/comments-add/comments-ad
 		VisiteQuestionsChantierAdminComponent,
 		CommentsListComponent,
 		CommentsAddComponent,
+		LastRemonteesComponent,
 
 	],
 	exports: [
@@ -333,6 +335,7 @@ import { CommentsAddComponent } from './layout/comments/comments-add/comments-ad
 		VisiteQuestionsChantierAdminComponent,
 		CommentsListComponent,
 		CommentsAddComponent,
+		LastRemonteesComponent,
 
 	],
 	imports: [
