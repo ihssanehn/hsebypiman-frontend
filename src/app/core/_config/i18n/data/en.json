@@ -12,8 +12,11 @@
 		"ENTER_HERE": "Enter here",
 		"EXPORT": "Export list",
 		"FOLLOWING": "Follow",
-		"READ": "To consult",
+		"READ": "Consult",
+		"REDUCE": "Reduce",
+		"REFRESH": "Refresh",
 		"SAVE": "Save",
+		"SHOW": "Show",
 		"SIGN": "Sign"
 	},
 	"ARS": {
@@ -22,22 +25,22 @@
 			"ADD_RISK": "Add a risk",
 			"ADD_ZONE": "Add a zone"
 		},
-		"ADRESS": "Adresse du chantier",
-		"AR": "Analyse de risque",
+		"ADRESS": "Site address",
+		"AR": "Risk analysis",
 		"ASIGNER": {
-			"LABEL": "À signer",
-			"SHORTTITLE": "À signer",
-			"TITLE": "À signer"
+			"LABEL": "To sign",
+			"SHORTTITLE": "To sign",
+			"TITLE": "To sign"
 		},
 		"AS_DAYS": {
-			"LABEL": "Jours d'accueil sécurité",
-			"SHORTTITLE": "Jours d'accueil sécurité",
-			"TITLE": "Jours d'accueil sécurité"
+			"LABEL": "Security reception days",
+			"SHORTTITLE": "Security reception days",
+			"TITLE": "Security reception days"
 		},
 		"AS_HORAIRES": {
-			"LABEL": "Horaire d'accueil sécurité",
-			"SHORTTITLE": "Horaire d'accueil sécurité",
-			"TITLE": "Horaire d'accueil sécurité"
+			"LABEL": "Security reception hours",
+			"SHORTTITLE": "Security reception hours",
+			"TITLE": "Security reception hours"
 		},
 		"BUDGET": "Budget",
 		"CARD": {
@@ -61,10 +64,10 @@
 				"TITLE": "Observation"
 			},
 			"RISKS": {
-				"LABEL": "Obligatoirement port des EPI standard chez CVTI : casque, gants, vêtements couvrants, chaussures. Casquette tolérée pour le travail dans les faux plafonds (en fonction PDP du client). Si bruit port du casque antibruit pour les autres risques, adopter l’attitude suivante et cocher les actions à mener :",
-				"NO_RISK": "Obligatoirement port des EPI standard chez CVTI : casque, gants, vêtements couvrants, chaussures. Casquette tolérée pour le travail dans les faux plafonds (en fonction PDP du client). Si bruit port du casque antibruit.",
+				"LABEL": "Standard PPE must be worn at CVTI: helmet, gloves, covering clothing, shoes. Cap tolerated for work in false ceilings (depending on customer's PDP). If noise is wearing noise-canceling headphones for other risks, adopt the following attitude and check the actions to be taken:",
+				"NO_RISK": "Standard PPE must be worn at CVTI: helmet, gloves, covering clothing, shoes. Cap tolerated for work in false ceilings (depending on customer's PDP). If noise, wearing noise-canceling headphones.",
 				"SHORTTITLE": "Risks",
-				"SUBLABEL": "Obligatoirement port des EPI standard chez CVTI : casque, gants, vêtements couvrants, chaussures. Casquette tolérée pour le travail dans les faux plafonds (en fonction PDP du client). Si bruit port du casque antibruit pour les autres risques, adopter l’attitude suivante :",
+				"SUBLABEL": "Standard PPE must be worn at CVTI: helmet, gloves, covering clothing, shoes. Cap tolerated for work in false ceilings (depending on customer's PDP). If wearing noise-canceling headphones for other risks, adopt the following attitude:",
 				"TITLE": "Risks related to the site and means of prevention"
 			},
 			"SIGNATURE": {
@@ -84,7 +87,7 @@
 					"TITLE": "Contacts in the event of an accident"
 				},
 				"SECURITY": {
-					"TITLE": "Customer-specific security reception"
+					"TITLE": "Customer specific security reception"
 				},
 				"SITE_NOT_CONCERNED": "Site not concerned",
 				"TITLE": "General site rules"
@@ -93,58 +96,58 @@
 				"SHORTTITLE": "Zones"
 			}
 		},
-		"CHIEF": "Chargé d'affaire",
-		"CLIENT": "Client",
+		"CHIEF": "Responsible business",
+		"CLIENT": "Customer",
 		"CONTACT": "Contact",
 		"CONTACT_CLIENT_CHEF_CHANTIER": {
-			"LABEL": "Nom Chef de chantier client",
-			"SHORTTITLE": "Nom Chef de chantier client",
-			"TITLE": "Nom Chef de chantier client"
+			"LABEL": "Name Client site manager",
+			"SHORTTITLE": "Name Client site manager",
+			"TITLE": "Name Client site manager"
 		},
 		"CONTACT_CLIENT_HSE": {
-			"LABEL": "Interlocuteur HSE ou SPS",
-			"SHORTTITLE": "Interlocuteur HSE ou SPS",
-			"TITLE": "Interlocuteur HSE ou SPS"
+			"LABEL": "HSE or SPS contact",
+			"SHORTTITLE": "HSE or SPS contact",
+			"TITLE": "HSE or SPS contact"
 		},
 		"CONTACT_INTERNE_SECOURS": {
-			"LABEL": "Personne CVTI",
-			"SHORTTITLE": "Personne CVTI en cas d'accident",
-			"TITLE": "Personne CVTI"
+			"LABEL": "CVTI person",
+			"SHORTTITLE": "CVTI person in case of an accident",
+			"TITLE": "CVTI person"
 		},
 		"COURANT": {
-			"LABEL": "Courant mis à disposition",
-			"SHORTTITLE": "Courant mis à disposition",
-			"TITLE": "Courant mis à disposition"
+			"LABEL": "Current provided",
+			"SHORTTITLE": "Current provided",
+			"TITLE": "Current provided"
 		},
 		"DASH": {
 			"AR_AVAILABLE": {
-				"TITLE": "Analyses disponibles"
+				"TITLE": "Available analyzes"
 			},
 			"AR_EVOLUTION": {
-				"TITLE": "Evolution des ars"
+				"TITLE": "Evolution of ars"
 			},
 			"AVG_SIGNATURES": {
-				"TITLE": "Moyenne du nombre de signature par Ar"
+				"TITLE": "Average number of signatures per Ar"
 			},
 			"NBR_SIGNATURES": {
-				"TITLE": "Nombre de signatures"
+				"TITLE": "Number of signatures"
 			}
 		},
 		"DATE": {
-			"LABEL": "Date de l'analyse de risque",
-			"SHORTTITLE": "Date de l'analyse de risque",
-			"TITLE": "Date de l'analyse de risque"
+			"LABEL": "Date of risk analysis",
+			"SHORTTITLE": "Date of risk analysis",
+			"TITLE": "Date of risk analysis"
 		},
 		"DATE_ACCUEIL_SECU": {
-			"LABEL": "Date de l'accueil sécurité",
-			"SHORTTITLE": "Date de l'accueil sécurité",
-			"TITLE": "Date de l'accueil sécurité"
+			"LABEL": "Date of security reception",
+			"SHORTTITLE": "Date of security reception",
+			"TITLE": "Date of security reception"
 		},
-		"DATE_DEMARRAGE": "Date de démarrage chantier pour CVTI",
+		"DATE_DEMARRAGE": "Construction start date for CVTI",
 		"DATE_VALIDITE": {
-			"LABEL": "Date de validité de l'accueil sécurité",
-			"SHORTTITLE": "Date de validité de l'accueil sécurité",
-			"TITLE": "Date de validité de l'accueil sécurité"
+			"LABEL": "Security reception validity date",
+			"SHORTTITLE": "Security reception validity date",
+			"TITLE": "Security reception validity date"
 		},
 		"DAYS": {
 			"FRI": "Friday",
@@ -165,24 +168,24 @@
 			"SHORTTITLE": "Every 2h",
 			"TITLE": "Every 2h"
 		},
-		"EMPLOYEE": "Nom du salarié CVTI réalisant la visite commune",
+		"EMPLOYEE": "Name of CVTI employee carrying out the joint visit",
 		"FORM": {
-			"ACTION": "Action de prévention à mener",
-			"CA_ASSISTANT": "Assistant CA",
-			"COMMENT": "Précisions à apporter",
-			"CREATE": "Créer une nouvelle analyse de risque",
-			"CVTI_RESPONSIBLE": "Nom du chargé d’affaire CVTI",
-			"REGISTRAR": "Nom de la personne en charge du registre",
-			"RISKS": "Les risques"
+			"ACTION": "Preventive action to be taken",
+			"CA_ASSISTANT": "CA Assistant",
+			"COMMENT": "Details to bring",
+			"CREATE": "Create a new risk analysis",
+			"CVTI_RESPONSIBLE": "Name of CVTI account manager",
+			"REGISTRAR": "Name of the person in charge of the register",
+			"RISKS": "The risks"
 		},
 		"HEAD": {
-			"ADRESS": "Adresse",
-			"BUDGET": "Budget chantier",
-			"DATE_DEMARRAGE": "Date de démarrage chantier",
+			"ADRESS": "Address",
+			"BUDGET": "Site budget",
+			"DATE_DEMARRAGE": "Construction start date",
 			"DETAIL": {
 				"LABEL": "Site Information"
 			},
-			"EMPLOYEE": "Salarié CVTI réalisant la visite commune",
+			"EMPLOYEE": "CVTI employee carrying out the joint visit",
 			"NAME": "Site Name",
 			"NOTIF": {
 				"AR_ARCHIVED": {
@@ -198,11 +201,11 @@
 			}
 		},
 		"HORAIRES": {
-			"LABEL": "Heures de travail du chantier",
-			"SHORTTITLE": "Heures de travail du chantier",
-			"TITLE": "Heures de travail du chantier"
+			"LABEL": "Site working hours",
+			"SHORTTITLE": "Site working hours",
+			"TITLE": "Site working hours"
 		},
-		"NAME": "Nom du chantier",
+		"NAME": "Site name",
 		"NOTIF": {
 			"ARS_CREATED": {
 				"TITLE": "Successfully created risk analysis"
@@ -240,17 +243,17 @@
 				"TITLE": "Successfully archived area"
 			}
 		},
-		"NUMBER": "Numéro",
+		"NUMBER": "Number",
 		"NUM_SECOURS": {
-			"LABEL": "Numéro en cas d'accident ou incendie",
-			"SHORTTITLE": "En cas d'accident ou incendie",
-			"TITLE": "Numéro en cas d'accident ou incendie"
+			"LABEL": "Number in case of accident or fire",
+			"SHORTTITLE": "Number in case of accident or fire",
+			"TITLE": "Number in case of accident or fire"
 		},
 		"OBSERVATION": "Observations",
 		"PREVOIR_COMPAGNONS": {
-			"LABEL": "A prévoir pour les compagnons",
-			"SHORTTITLE": "A prévoir pour les compagnons",
-			"TITLE": "A prévoir pour les compagnons"
+			"LABEL": "To provide for companions",
+			"SHORTTITLE": "To provide for companions",
+			"TITLE": "To provide for companions"
 		},
 		"QUOTIDIENNEMENT": {
 			"LABEL": "Daily",
@@ -258,210 +261,210 @@
 			"TITLE": "Daily"
 		},
 		"REALISATEUR": {
-			"LABEL": "Personne en charge de réaliser l'accueil",
-			"SHORTTITLE": "Personne en charge de réaliser l'accueil",
-			"TITLE": "Personne en charge de réaliser l'accueil"
+			"LABEL": "Person in charge of hosting",
+			"SHORTTITLE": "Person in charge of hosting",
+			"TITLE": "Person in charge of hosting"
 		},
 		"SIGNATAIRECOUNT": {
-			"LABEL": "Nombre de signataires",
-			"SHORTTITLE": "Signataires",
-			"TITLE": "Nombre de signataires"
+			"LABEL": "Number of signatories",
+			"SHORTTITLE": "Signatories",
+			"TITLE": "Number of signatories"
 		},
 		"SIGNATAIRES": {
-			"LABEL": "Signataires (avec / sans)",
-			"SHORTTITLE": "Signataires",
-			"TITLE": "Signataires"
+			"LABEL": "Signatories (with / without)",
+			"SHORTTITLE": "Signatories",
+			"TITLE": "Signatories"
 		},
 		"SIGNATURECOUNT": "Signatures",
-		"STATUS": "Statut",
+		"STATUS": "Status",
 		"TEL_CONTACT_CLIENT_CHEF_CHANTIER": {
-			"LABEL": "Numéro de téléphone",
-			"SHORTTITLE": "Numéro de téléphone",
-			"TITLE": "Numéro de téléphone"
+			"LABEL": "Phone number",
+			"SHORTTITLE": "Phone number",
+			"TITLE": "Phone number"
 		},
 		"TEL_CONTACT_CLIENT_HSE": {
-			"LABEL": "Numéro de téléphone",
-			"SHORTTITLE": "Numéro de téléphone",
-			"TITLE": "Numéro de téléphone"
+			"LABEL": "Phone number",
+			"SHORTTITLE": "Phone number",
+			"TITLE": "Phone number"
 		},
 		"TEL_CONTACT_INTERNE_SECOURS": {
-			"LABEL": "Numéro de téléphone",
-			"SHORTTITLE": "Numéro de téléphone",
-			"TITLE": "Numéro de téléphone"
+			"LABEL": "Phone number",
+			"SHORTTITLE": "Phone number",
+			"TITLE": "Phone number"
 		},
 		"TEL_REALISATEUR": {
-			"LABEL": "Numéro de téléphone",
-			"SHORTTITLE": "Numéro de téléphone",
-			"TITLE": "Numéro de téléphone"
+			"LABEL": "Phone number",
+			"SHORTTITLE": "Phone number",
+			"TITLE": "Phone number"
 		},
 		"TYPE": "Type"
 	},
 	"AUTH": {
 		"EDIT": {
-			"DESC": "Saisissez un nouveau mot de passe",
-			"SUCCESS": "Votre mot de passe a été modifié avec succès.",
-			"TITLE": "Merci de modifier votre mot de passe"
+			"DESC": "Enter a new password",
+			"SUCCESS": "Your password has been successfully changed.",
+			"TITLE": "Please change your password"
 		},
 		"FORGOT": {
-			"DESC": "Entrez votre email pour réinitialiser votre mot de passe",
-			"SUCCESS": "Votre mot de passe a bien été réinitialisé.",
-			"TITLE": "Mot de passe oublié ?"
+			"DESC": "Enter your email to reset your password",
+			"SUCCESS": "Your password has been successfully reset.",
+			"TITLE": "Forgot your password ?"
 		},
 		"GENERAL": {
-			"BACK_BUTTON": "Retour",
+			"BACK_BUTTON": "Return",
 			"CONTACT": "Contact",
-			"FORGOT_BUTTON": "Mot de passe oublié",
+			"FORGOT_BUTTON": "Forgot your password",
 			"LEGAL": "Legal",
-			"NO_ACCOUNT": "Pas de compte",
-			"OR": "Ou",
+			"NO_ACCOUNT": "No account",
+			"OR": "Or",
 			"PRIVACY": "Privacy",
-			"SIGNUP_BUTTON": "S'enregistrer",
-			"SUBMIT_BUTTON": "Soumettre"
+			"SIGNUP_BUTTON": "Register",
+			"SUBMIT_BUTTON": "Submit"
 		},
 		"INPUT": {
 			"CONFIRM_PASSWORD": "Confirmation",
 			"EMAIL": "Email",
 			"FULLNAME": "Fullname",
-			"NEW_PASSWORD": "Nouveau mot de passe",
-			"PASSWORD": "Mot de passe",
-			"USERNAME": "Nom d'utilisateur"
+			"NEW_PASSWORD": "New Password",
+			"PASSWORD": "Password",
+			"USERNAME": "Username"
 		},
 		"LOGIN": {
-			"BUTTON": "Se Connecter",
-			"TITLE": "Accéder à la <b>plateforme</b>"
+			"BUTTON": "Login",
+			"TITLE": "Access the <b> platform </b>"
 		},
-		"LOGOUT": "Se déconnecter",
+		"LOGOUT": "Sign out",
 		"REGISTER": {
 			"DESC": "Enter your details to create your account",
 			"SUCCESS": "Your account has been successfuly registered.",
-			"TITLE": "Créer un compte"
+			"TITLE": "Create an account"
 		},
 		"VALIDATION": {
-			"AGREEMENT_REQUIRED": "Vous devez accepter les termes et conditions",
-			"INVALID": "{{name}} n'est pas valide",
-			"INVALID_FIELD": "champ non valide",
-			"INVALID_LOGIN": "Les informations de connexion sont incorrectes",
-			"MAX_LENGTH_FIELD": "Longueur du champ maximale:",
-			"MIN_LENGTH": "{{name}} doit avoir une longueur minimale de {{min}}",
-			"MIN_LENGTH_FIELD": "Longueur du champ minimale:",
-			"NOT_FOUND": "Le {{name}} requis n'a pas été trouvé",
-			"NOT_SAME": "Les mots de passe doivent correspondre",
-			"REQUIRED": "{{name}} est requis",
-			"REQUIRED_FIELD": "champ requis"
+			"AGREEMENT_REQUIRED": "You must accept the terms and conditions",
+			"INVALID": "{{name}} is not valid",
+			"INVALID_FIELD": "invalid field",
+			"INVALID_LOGIN": "Login information is incorrect",
+			"MAX_LENGTH_FIELD": "Maximum field length:",
+			"MIN_LENGTH": "{{name}} must have a minimum length of {{min}}",
+			"MIN_LENGTH_FIELD": "Minimum field length:",
+			"NOT_FOUND": "The required {{name}} was not found",
+			"NOT_SAME": "Passwords must match",
+			"REQUIRED": "{{name}} is required",
+			"REQUIRED_FIELD": "Required field"
 		}
 	},
 	"CHANTIERS": {
 		"ADRESS": {
-			"LABEL": "Adresse du chantier",
-			"SHORTTITLE": "Adresse",
-			"TITLE": "Adresse du chantier"
+			"LABEL": "Site address",
+			"SHORTTITLE": "Address",
+			"TITLE": "Site address"
 		},
-		"AR": "Analyse de risque",
+		"AR": "Risk analysis",
 		"ARS": {
-			"LABEL": "Analyses de risque",
-			"SHORTTITLE": "Prochaine analyse",
-			"TITLE": "Analyses passées"
+			"LABEL": "Risk analysis",
+			"SHORTTITLE": "Next analysis",
+			"TITLE": "Past analyzes"
 		},
 		"ARS_HISTORY": {
-			"SHORTTITLE": "Historique des A.R",
-			"TITLE": "Historique des Analyses de risque"
+			"SHORTTITLE": "History of A.R.",
+			"TITLE": "History of risk analyzes"
 		},
 		"AR_COUNT": {
-			"LABEL": "Quantité A.R",
-			"SHORTTITLE": "Nombre d'analyses",
-			"TITLE": "Quantité A.R"
+			"LABEL": "Quantity A.R",
+			"SHORTTITLE": "Number of analyzes",
+			"TITLE": "Quantity A.R"
 		},
 		"AR_INPROGRESS": {
-			"LABEL": "A.R en cours",
-			"SHORTTITLE": "A.R en cours",
-			"TITLE": "Analyse de risque en cours"
+			"LABEL": "A.R in progress",
+			"SHORTTITLE": "A.R in progress",
+			"TITLE": "Risk analysis in progress"
 		},
 		"BUDGET": {
 			"LABEL": "Budget",
-			"SHORTTITLE": "Montant",
+			"SHORTTITLE": "Amount",
 			"TITLE": "Budget"
 		},
 		"CHIEF": {
-			"LABEL": "Chargé d'affaire",
-			"SHORTTITLE": "Nom",
-			"TITLE": "Chargé d'affaire"
+			"LABEL": "Responsible business",
+			"SHORTTITLE": "Last name",
+			"TITLE": "Responsible business"
 		},
 		"CLIENT": {
-			"LABEL": "Client",
-			"SHORTTITLE": "Client",
-			"TITLE": "Client"
+			"LABEL": "Customer",
+			"SHORTTITLE": "Customer",
+			"TITLE": "Customer"
 		},
 		"CONTACT": {
-			"LABEL": "Contact Client",
+			"LABEL": "Client contact",
 			"SHORTTITLE": "Contact",
-			"TITLE": "Contact client"
+			"TITLE": "Client contact"
 		},
 		"DATE_DEMARRAGE": {
-			"LABEL": "Date de démarrage chantier",
-			"SHORTTITLE": "Date de démarrage",
-			"TITLE": "Date de démarrage chantier"
+			"LABEL": "Construction start date",
+			"SHORTTITLE": "Start date",
+			"TITLE": "Construction start date"
 		},
 		"EECOUNT": {
-			"LABEL": "Nombre d'E.E",
-			"SHORTTITLE": "Nombre d'entreprises extérieures",
-			"TITLE": "Nombre d'E.E"
+			"LABEL": "Number of E.E.",
+			"SHORTTITLE": "Number of external companies",
+			"TITLE": "Number of E.E."
 		},
 		"EES": {
-			"LABEL": "Entreprises extérieures",
-			"SHORTTITLE": "Entreprises extérieures",
-			"TITLE": "Entreprises extérieures"
+			"LABEL": "External companies",
+			"SHORTTITLE": "External companies",
+			"TITLE": "External companies"
 		},
 		"EE_PRESENCE": {
-			"LABEL": "Présence d'E.E",
-			"SHORTTITLE": "Présence d'entreprises extérieures",
-			"TITLE": "Présence d'E.E"
+			"LABEL": "Presence of E.E.",
+			"SHORTTITLE": "Presence of external companies",
+			"TITLE": "Presence of E.E."
 		},
 		"FORM": {
-			"CREATE": "Créer un nouveau chantier"
+			"CREATE": "Create a new site"
 		},
 		"HABCOUNT": {
-			"LABEL": "Nombre d'habilitations",
-			"SHORTTITLE": "Nombre d'habilitations",
-			"TITLE": "Nombre d'habilitations"
+			"LABEL": "Number of authorizations",
+			"SHORTTITLE": "Number of authorizations",
+			"TITLE": "Number of authorizations"
 		},
 		"HABILITATIONS": {
-			"LABEL": "Habilitations obligatoires pour accéder au chantier",
-			"SHORTTITLE": "Habilitations obligatoires",
-			"TITLE": "Habilitations obligatoires pour accéder au chantier"
+			"LABEL": "Mandatory authorizations to access the site",
+			"SHORTTITLE": "Mandatory authorizations",
+			"TITLE": "Mandatory authorizations to access the site"
 		},
 		"LASTAR": {
-			"LABEL": "Dernière A.R",
-			"SHORTTITLE": "Dernière A.R",
-			"TITLE": "Dernière A.R"
+			"LABEL": "Last A.R",
+			"SHORTTITLE": "Last A.R",
+			"TITLE": "Last A.R"
 		},
 		"LAST_VS": {
-			"LABEL": "Dernière V.S",
-			"SHORTTITLE": "Dernière V.S",
-			"TITLE": "Dernière V.S"
+			"LABEL": "Last V.S",
+			"SHORTTITLE": "Last V.S",
+			"TITLE": "Last V.S"
 		},
 		"NAME": {
-			"LABEL": "Nom du chantier",
-			"SHORTTITLE": "Nom",
-			"TITLE": "Nom du chantier"
+			"LABEL": "Site name",
+			"SHORTTITLE": "Name",
+			"TITLE": "Site name"
 		},
 		"NUMBER": {
-			"LABEL": "Numéro",
-			"SHORTTITLE": "Numéro",
-			"TITLE": "N° du chantier"
+			"LABEL": "Number",
+			"SHORTTITLE": "Number",
+			"TITLE": "Site number"
 		},
 		"REMONTES_COUNT": {
-			"SHORTTITLE": "Nb de remontées",
-			"TITLE": "Nombre de remontées"
+			"SHORTTITLE": "Number of lifts",
+			"TITLE": "Number of lifts"
 		},
 		"RESP_CHIFFRAGE": {
-			"LABEL": "Responsable du chiffrage",
-			"SHORTTITLE": "Nom",
-			"TITLE": "Responsable du chiffrage"
+			"LABEL": "Costing manager",
+			"SHORTTITLE": "Last name",
+			"TITLE": "Costing manager"
 		},
 		"STATUS": {
-			"LABEL": "Statut",
-			"SHORTTITLE": "Statut",
-			"TITLE": "Statut actuel du chantier"
+			"LABEL": "Status",
+			"SHORTTITLE": "Status",
+			"TITLE": "Current status of the site"
 		},
 		"TYPE": {
 			"LABEL": "Type",
@@ -469,54 +472,54 @@
 			"TITLE": "Type"
 		},
 		"VSS": {
-			"LABEL": "Visites Sécurité",
-			"SHORTTITLE": "Visites passées",
-			"TITLE": "Visites passées"
+			"LABEL": "Security Visits",
+			"SHORTTITLE": "Past visits",
+			"TITLE": "Past visits"
 		},
 		"VS_COUNT": {
-			"LABEL": "Quantité V.S",
-			"SHORTTITLE": "Nombre de visites",
-			"TITLE": "Quantité V.S"
+			"LABEL": "V.S quantity",
+			"SHORTTITLE": "V.S quantity",
+			"TITLE": "V.S quantity"
 		}
 	},
 	"COMMENTS": {
-		"ADD": "Ajouter un commentaire",
-		"AUTH": "Vous",
-		"SEND": "Envoyer"
+		"ADD": "add a comment",
+		"AUTH": "You",
+		"SEND": "Send"
 	},
 	"COMMON": {
 		"ADRESS": {
-			"LABEL": "Adresse",
-			"SHORTTITLE": "Adresse",
-			"TITLE": "Adresse"
+			"LABEL": "Address",
+			"SHORTTITLE": "Address",
+			"TITLE": "Address"
 		},
 		"ARCHIEVED_AT": {
-			"SHORTTITLE": "Archivé le",
-			"TITLE": "Archivé le"
+			"SHORTTITLE": "Archived on",
+			"TITLE": "Archived on"
 		},
 		"BIRTHDAY": {
-			"LABEL": "Date de naissance",
-			"SHORTTITLE": "Date de naissance",
-			"TITLE": "Date de naissance"
+			"LABEL": "Date of Birth",
+			"SHORTTITLE": "Date of Birth",
+			"TITLE": "Date of Birth"
 		},
 		"CITY": {
-			"LABEL": "Ville",
-			"SHORTTITLE": "Ville",
-			"TITLE": "Ville"
+			"LABEL": "City",
+			"SHORTTITLE": "City",
+			"TITLE": "City"
 		},
 		"CIVILITE": {
-			"LABEL": "Civilité",
-			"TITLE": "Civilité"
+			"LABEL": "Civility",
+			"TITLE": "Civility"
 		},
 		"COUNTRY": {
-			"LABEL": "Pays",
-			"SHORTTITLE": "Pays",
-			"TITLE": "Pays"
+			"LABEL": "Country",
+			"SHORTTITLE": "Country",
+			"TITLE": "Country"
 		},
 		"CREATED_AT": {
-			"LABEL": "Date de création",
-			"SHORTTITLE": "Créé le",
-			"TITLE": "Date de création"
+			"LABEL": "Creation date",
+			"SHORTTITLE": "Created the",
+			"TITLE": "Creation date"
 		},
 		"DATE": {
 			"LABEL": "Date",
@@ -524,31 +527,31 @@
 		},
 		"DATE_RANGE": {
 			"AND": {
-				"TITLE": "Et le"
+				"TITLE": "And"
 			},
 			"BETWEEN": {
-				"TITLE": "Entre le"
+				"TITLE": "Between"
 			}
 		},
 		"EMAIL": {
-			"LABEL": "Adresse mail",
-			"TITLE": "Adresse mail"
+			"LABEL": "Mail address",
+			"TITLE": "Mail address"
 		},
 		"FIRSTNAME": {
-			"LABEL": "Prénom",
-			"TITLE": "Prénom"
+			"LABEL": "First name",
+			"TITLE": "First name"
 		},
 		"FONCTION": {
-			"LABEL": "Fonction",
-			"TITLE": "Fonction"
+			"LABEL": "Function",
+			"TITLE": "Function"
 		},
 		"LASTNAME": {
-			"LABEL": "Nom",
-			"TITLE": "Nom"
+			"LABEL": "Last name",
+			"TITLE": "Last name"
 		},
 		"NAME": {
-			"LABEL": "Nom",
-			"TITLE": "Nom"
+			"LABEL": "Name",
+			"TITLE": "Name"
 		},
 		"NOTIF": {
 			"ERROR": {
@@ -559,89 +562,89 @@
 			}
 		},
 		"PHONE": {
-			"LABEL": "Numéro de téléphone",
-			"TITLE": "Numéro de téléphone"
+			"LABEL": "Phone number",
+			"TITLE": "Phone number"
 		},
 		"PHONENUMBER": {
-			"LABEL": "Numéro de téléphone",
-			"TITLE": "Numéro de téléphone"
+			"LABEL": "Phone number",
+			"TITLE": "Phone number"
 		},
 		"POSTCODE": {
-			"LABEL": "Code Postal",
-			"SHORTTITLE": "Code Postal",
-			"TITLE": "Code Postal"
+			"LABEL": "Postal code",
+			"SHORTTITLE": "Postal code",
+			"TITLE": "Postal code"
 		},
 		"PROFIL": {
-			"LABEL": "Profil",
-			"TITLE": "Profil"
+			"LABEL": "Profile",
+			"TITLE": "Profile"
 		},
 		"REMARQUE": {
-			"LABEL": "Remarques",
-			"TITLE": "Remarques"
+			"LABEL": "Notes",
+			"TITLE": "Notes"
 		},
 		"SCORE": {
-			"LABEL": "Score des salariés",
-			"TITLE": "Score des salariés"
+			"LABEL": "Employee score",
+			"TITLE": "Employee score"
 		},
 		"SIGNATURE": {
 			"LABEL": "Signature",
 			"TITLE": "Signature"
 		},
 		"SOCIETE": {
-			"LABEL": "Société",
-			"TITLE": "Société"
+			"LABEL": "Society",
+			"TITLE": "Society"
 		},
 		"UPDATED_AT": {
-			"SHORTTITLE": "Mis à jour le",
-			"TITLE": "Mise à jour des informations"
+			"SHORTTITLE": "Updated",
+			"TITLE": "Updating information"
 		}
 	},
 	"EES": {
 		"CA": {
-			"LABEL": "Chiffre d'affaire",
-			"PLACEHOLDER": "Saisir ici...",
+			"LABEL": "Turnover",
+			"PLACEHOLDER": "Enter here ...",
 			"SHORTTITLE": "CA",
-			"TITLE": "Chiffre d'affaire"
+			"TITLE": "Turnover"
 		},
 		"CHANTIERS": {
-			"LABEL": "Chantiers",
-			"SHORTTITLE": "Chantiers",
-			"TITLE": "Chantiers"
+			"LABEL": "Construction sites",
+			"SHORTTITLE": "Construction sites",
+			"TITLE": "Construction sites"
 		},
 		"CHANTIERS_COUNT": {
-			"LABEL": "Nombre de chantiers",
-			"SHORTTITLE": "Nbr chantiers",
-			"TITLE": "Nombre de chantiers"
+			"LABEL": "Number of sites",
+			"SHORTTITLE": "Number of sites",
+			"TITLE": "Number of sites"
 		},
 		"DATE_DEMARRAGE": {
-			"LABEL": "Date de démarrage",
-			"PLACEHOLDER": "Saisir ici...",
-			"SHORTTITLE": "Date démarrage",
-			"TITLE": "Date de démarrage"
+			"LABEL": "Starting date",
+			"PLACEHOLDER": "Enter here ...",
+			"SHORTTITLE": "Starting date",
+			"TITLE": "Starting date"
 		},
 		"INTERIMAIRE": {
-			"LABEL": "Intérimaire",
-			"SHORTTITLE": "Intérimaire",
-			"TITLE": "Intérimaire"
+			"LABEL": "Temp worker",
+			"SHORTTITLE": "Temp worker",
+			"TITLE": "Temp worker"
 		},
 		"RAISON_SOCIALE": {
-			"LABEL": "Raison sociale",
-			"PLACEHOLDER": "Saisir ici...",
-			"SHORTTITLE": "Raison sociale",
-			"TITLE": "Raison sociale"
+			"LABEL": "Social media",
+			"PLACEHOLDER": "Enter here ...",
+			"SHORTTITLE": "Social media",
+			"TITLE": "Social media"
 		},
 		"TYPE": {
-			"LABEL": "Type d'entreprise",
-			"PLACEHOLDER": "Saisir ici...",
+			"LABEL": "Type of company",
+			"PLACEHOLDER": "Enter here ...",
 			"SHORTTITLE": "Type",
-			"TITLE": "Type d'entreprise"
+			"TITLE": "Type of company"
 		}
 	},
 	"EPIS": {
 		"CATEGORIE": {
-			"LABEL": "Catégorie",
-			"SHORTTITLE": "Catégorie",
-			"TITLE": "Catégorie"
+			"LABEL": "Category",
+			"SHORTTITLE": "Category",
+			"TITLE": "Category"
 		},
 		"CODE": {
 			"LABEL": "Code",
@@ -650,41 +653,42 @@
 		}
 	},
 	"FILTER": {
-		"ADD_VEHICULE": "Numéro d'identification du véhicule",
-		"ADVANCED_SEACH": "Recherche Avancée",
-		"CREATION_DATE": "Date de création",
-		"HIDE": "Cacher",
-		"KEYWORD": "Rechercher",
-		"SEARCH": "Rechercher",
+		"ADD_VEHICULE": "Vehicle identification number",
+		"ADVANCED_SEACH": "Advanced search",
+		"CREATION_DATE": "Creation date",
+		"HIDE": "Hide",
+		"KEYWORD": "Search",
+		"LAUNCH": "Launch",
+		"SEARCH": "Search",
 		"SEARCH_ALL": "All",
-		"SEARCH_CHANTIER": "Recherche un chantier",
-		"SEARCH_KEYWORD": "Recherche par mot clé",
-		"SEARCH_OUTILLAGE": "Numéro d'identification de l'outil",
-		"SEARCH_SALARIE": "Rechercher un salarié",
-		"SEARCH_WITH": "Avec",
+		"SEARCH_CHANTIER": "Find a site",
+		"SEARCH_KEYWORD": "Search by keyword",
+		"SEARCH_OUTILLAGE": "Tool identification number",
+		"SEARCH_SALARIE": "Find an employee",
+		"SEARCH_WITH": "With",
 		"SEARCH_WITHOUT": "Without",
-		"SELECT_ROLE": "Selectionnez un role",
-		"SELECT_STATUS": "Sélectionnez un status",
-		"SHOW": "Afficher",
-		"STATUS": "Statut",
-		"TITLE": "Filtres"
+		"SELECT_ROLE": "Select a role",
+		"SELECT_STATUS": "Select a status",
+		"SHOW": "Pin up",
+		"STATUS": "Status",
+		"TITLE": "Filters"
 	},
 	"MATERIELS": {
 		"ACTUAL_USER": {
-			"LABEL": "Utilisateur actuel",
-			"SHORTTITLE": "Utilisateur actuel",
-			"TITLE": "Utilisateur actuel"
+			"LABEL": "Current user",
+			"SHORTTITLE": "Current user",
+			"TITLE": "Current user"
 		},
 		"ASSIGN_USER": {
-			"LABEL": "Nouvel utilisateur",
-			"SHORTTITLE": "Nouvel utilisateur",
-			"TITLE": "Nouvel utilisateur"
+			"LABEL": "New user",
+			"SHORTTITLE": "New user",
+			"TITLE": "New user"
 		},
 		"CATEGORIE": {
-			"LABEL": "Catégorie",
-			"PLACEHOLDER": "Sélectionner une catégorie",
-			"SHORTTITLE": "Catégorie",
-			"TITLE": "Catégorie"
+			"LABEL": "Category",
+			"PLACEHOLDER": "Select a category",
+			"SHORTTITLE": "Category",
+			"TITLE": "Category"
 		},
 		"CODE": {
 			"LABEL": "Code",
@@ -692,39 +696,39 @@
 			"TITLE": "Code"
 		},
 		"COUT": {
-			"LABEL": "Cout",
-			"SHORTTITLE": "Cout",
-			"TITLE": "Cout"
+			"LABEL": "Cost",
+			"SHORTTITLE": "Cost",
+			"TITLE": "Cost"
 		},
 		"DATE_ENTREE": {
-			"LABEL": "Date d'entrée",
-			"SHORTTITLE": "Date d'entrée",
-			"TITLE": "Date d'entrée"
+			"LABEL": "Entry date",
+			"SHORTTITLE": "Entry date",
+			"TITLE": "Entry date"
 		},
 		"DATE_FIN_GARANTIE": {
-			"LABEL": "Date de fin de garantie",
-			"SHORTTITLE": "Date de fin de garantie",
-			"TITLE": "Date de fin de garantie"
+			"LABEL": "End of warranty date",
+			"SHORTTITLE": "End of warranty date",
+			"TITLE": "End of warranty date"
 		},
 		"DATE_PRET": {
-			"LABEL": "Date de pret",
-			"SHORTTITLE": "Date de pret",
-			"TITLE": "Date de pret"
+			"LABEL": "Loan date",
+			"SHORTTITLE": "Loan date",
+			"TITLE": "Loan date"
 		},
 		"DATE_RETOUR": {
-			"LABEL": "Date de retour",
-			"SHORTTITLE": "Date de retour",
-			"TITLE": "Date de retour"
+			"LABEL": "Return date",
+			"SHORTTITLE": "Return date",
+			"TITLE": "Return date"
 		},
 		"DATE_SORTIE": {
-			"LABEL": "Date de sortie",
-			"SHORTTITLE": "Date de sortie",
-			"TITLE": "Date de sortie"
+			"LABEL": "Release date",
+			"SHORTTITLE": "Release date",
+			"TITLE": "Release date"
 		},
 		"DATE_VS": {
-			"LABEL": "Prochaine V.S",
-			"SHORTTITLE": "Prochaine visite",
-			"TITLE": "Prochaine V.S"
+			"LABEL": "Next V.S",
+			"SHORTTITLE": "Next visit",
+			"TITLE": "Next V.S"
 		},
 		"DESCRIPTION": {
 			"LABEL": "Description",
@@ -732,44 +736,44 @@
 			"TITLE": "Description"
 		},
 		"FORMATION_REQUISE": {
-			"LABEL": "Formation requise",
-			"SHORTTITLE": "Formation requise",
-			"TITLE": "Formation requise"
+			"LABEL": "Required training",
+			"SHORTTITLE": "Required training",
+			"TITLE": "Required training"
 		},
 		"FOURNISSEUR": {
-			"LABEL": "Fournisseur",
-			"SHORTTITLE": "Fournisseur",
-			"TITLE": "Fournisseur"
+			"LABEL": "Supplier",
+			"SHORTTITLE": "Supplier",
+			"TITLE": "Supplier"
 		},
 		"FREQUENCE_CONTROLE": {
-			"LABEL": "Frequence de contrôle (en mois)",
-			"SHORTTITLE": "Frequence de contrôle",
-			"TITLE": "Frequence de contrôle"
+			"LABEL": "Control frequency (in months)",
+			"SHORTTITLE": "Control frequency",
+			"TITLE": "Control frequency"
 		},
 		"HABILITATION_REQUISE": {
-			"LABEL": "Habilitation requise",
-			"SHORTTITLE": "Habilitation requise",
-			"TITLE": "Habilitation requise"
+			"LABEL": "Authorization required",
+			"SHORTTITLE": "Authorization required",
+			"TITLE": "Authorization required"
 		},
 		"HAS_CONTROLE": {
-			"LABEL": "Doit être controlé",
-			"SHORTTITLE": "Doit être controlé",
-			"TITLE": "Doit être controlé"
+			"LABEL": "Must be controlled",
+			"SHORTTITLE": "Must be controlled",
+			"TITLE": "Must be controlled"
 		},
 		"IS_LOCATION": {
-			"LABEL": "Location",
-			"SHORTTITLE": "Location",
-			"TITLE": "Location"
+			"LABEL": "Rental",
+			"SHORTTITLE": "Rental",
+			"TITLE": "Rental"
 		},
 		"LAST_VS": {
-			"LABEL": "Dernière V.S",
-			"SHORTTITLE": "Dernière visite",
-			"TITLE": "Dernière V.S"
+			"LABEL": "Last V.S",
+			"SHORTTITLE": "last visit",
+			"TITLE": "Last V.S"
 		},
 		"LIBELLE": {
-			"LABEL": "Libellé",
-			"SHORTTITLE": "Libellé",
-			"TITLE": "Libellé"
+			"LABEL": "Wording",
+			"SHORTTITLE": "Wording",
+			"TITLE": "Wording"
 		},
 		"MAIN_CATEGORIE": {
 			"LABEL": "Type",
@@ -777,34 +781,34 @@
 			"TITLE": "Type"
 		},
 		"MARQUE": {
-			"LABEL": "Marque",
-			"SHORTTITLE": "Marque",
-			"TITLE": "Marque"
+			"LABEL": "Brand",
+			"SHORTTITLE": "Brand",
+			"TITLE": "Brand"
 		},
 		"NUMERO_SERIE": {
-			"LABEL": "Numéro de série",
-			"SHORTTITLE": "Numéro de série",
-			"TITLE": "Numéro de série"
+			"LABEL": "Serial number",
+			"SHORTTITLE": "Serial number",
+			"TITLE": "Serial number"
 		},
 		"PERSONNELS": {
-			"LABEL": "utilisateurs",
-			"SHORTTITLE": "utilisateurs",
-			"TITLE": "utilisateurs"
+			"LABEL": "Users",
+			"SHORTTITLE": "Users",
+			"TITLE": "Users"
 		},
 		"PERSONNELS_COUNT": {
-			"LABEL": "Nombre d'utilisateurs",
-			"SHORTTITLE": "Nombre d'utilisateurs",
-			"TITLE": "Nombre d'utilisateurs"
+			"LABEL": "Number of users",
+			"SHORTTITLE": "Number of users",
+			"TITLE": "Number of users"
 		},
 		"PERSONNELS_HISTORY": {
-			"LABEL": "historique des utilisateurs",
-			"SHORTTITLE": "historique des utilisateurs",
-			"TITLE": "historique des utilisateurs"
+			"LABEL": "User history",
+			"SHORTTITLE": "User history",
+			"TITLE": "User history"
 		},
 		"SUB_CATEGORIE": {
-			"LABEL": "Sous-catégorie",
-			"SHORTTITLE": "Sous-catégorie",
-			"TITLE": "Sous-catégorie"
+			"LABEL": "Sub-category",
+			"SHORTTITLE": "Sub-category",
+			"TITLE": "Sub-category"
 		},
 		"TYPE": {
 			"LABEL": "Type",
@@ -812,125 +816,128 @@
 			"TITLE": "Type"
 		},
 		"VSS": {
-			"LABEL": "Visites Sécurité",
-			"SHORTTITLE": "Visites passées",
-			"TITLE": "Visites passées"
+			"LABEL": "Security Visits",
+			"SHORTTITLE": "Past visits",
+			"TITLE": "Past visits"
 		},
 		"VSS_HISTORY": {
-			"LABEL": "Historique des visites",
-			"SHORTTITLE": "Historique des visites",
-			"TITLE": "Historique des visites"
+			"LABEL": "History of visits",
+			"SHORTTITLE": "History of visits",
+			"TITLE": "History of visits"
 		},
 		"VS_COUNT": {
-			"LABEL": "Quantité V.S",
-			"SHORTTITLE": "Nombre de visites",
-			"TITLE": "Quantité V.S"
+			"LABEL": "V.S quantity",
+			"SHORTTITLE": "Number of visits",
+			"TITLE": "V.S quantity"
 		},
 		"VS_RETARD": {
-			"LABEL": "Retard de visite",
-			"SHORTTITLE": "Retard",
-			"TITLE": "V.S en retard"
+			"LABEL": "Late visit",
+			"SHORTTITLE": "Delay",
+			"TITLE": "V.S late"
 		}
 	},
 	"MENU": {
-		"ANALYSERISQUE": "Analyses de risque",
+		"ANALYSERISQUE": "Risk analyzes",
 		"BTN": {
-			"NEWACTION": "Nouvelle Action",
-			"NEWAR": "Nouvelle analyse de risque",
-			"NEWCHANTIER": "Nouveau chantier",
-			"NEWENTREPRISE": "Nouvelle entreprise",
-			"NEWMATERIEL": "Nouveau matériel",
-			"NEWREMONTEE": "Nouvelle remontée QHSE",
-			"NEWVS": "Nouveau visite de sécurité"
+			"NEWACTION": "New Action",
+			"NEWAR": "New risk analysis",
+			"NEWCHANTIER": "New site",
+			"NEWENTREPRISE": "New business",
+			"NEWMATERIEL": "New material",
+			"NEWREMONTEE": "New QHSE lift",
+			"NEWVS": "New safety visit"
 		},
-		"CHANTIER": "Chantiers",
-		"DASHBOARD": "Tableau de Bord",
+		"CHANTIER": "Construction sites",
+		"DASHBOARD": "Dashboard",
 		"DISCUSS": "Discuss",
-		"EDIT_MY_PASSWORD": "Modifier mon mot de passe",
-		"EDIT_PROFILE": "Modifier mon profil",
-		"ENTREPRISES": "Entreprises Externes",
-		"HOME": "Accueil",
-		"LIST": "Liste",
-		"MATERIELS": "Matériel",
+		"EDIT_MY_PASSWORD": "Change my password",
+		"EDIT_PROFILE": "Edit my profile",
+		"ENTREPRISES": "External companies",
+		"HOME": "Home",
+		"LIST": "List",
+		"MATERIELS": "Equipment",
 		"MODULES": "Modules",
-		"MY_PASSWORD": "Mon mot de passe",
-		"MY_PROFILE": "Mon profil",
-		"NEW": "Nouveau",
-		"PLANACTION": "Plan d'actions",
-		"REMONTEES": "Remontées QHSE",
+		"MY_PASSWORD": "my password",
+		"MY_PROFILE": "My profile",
+		"NEW": "New",
+		"PLANACTION": "Action plan",
+		"REMONTEES": "QHSE lifts",
 		"ROOT": "Administration",
-		"SALARIES": "Salariés",
+		"SALARIES": "Employees",
 		"SUB_ANALYSERISQUE": {
-			"ADD": "Nouvelle analyse de risque de chantier",
-			"DETAIL": "Détail de l'analyse de risque",
-			"EDIT": "Modifier l'analyse de risque",
-			"LIST": "Liste des analyses de risque"
+			"ADD": "New site risk analysis",
+			"DETAIL": "Detailed risk analysis",
+			"EDIT": "Modify the risk analysis",
+			"LIST": "List of risk analyzes"
 		},
 		"SUB_CHANTIER": {
-			"ADD": "Ajouter un nouveau chantier",
-			"DETAIL": "Détail du chantier",
-			"EDIT": "Modifier le chantier",
-			"LIST": "Liste des chantiers"
+			"ADD": "Add a new site",
+			"DETAIL": "Site detail",
+			"EDIT": "Modify the site",
+			"LIST": "List of sites"
 		},
 		"SUB_ENTREPRISES": {
-			"ADD": "Ajouter une entreprise",
-			"DETAIL": "Détail de l'entreprise",
-			"EDIT": "Modifier l'entreprise",
-			"LIST": "Liste des entreprises"
+			"ADD": "Add a company",
+			"DETAIL": "Company detail",
+			"EDIT": "Change company",
+			"LIST": "List of companies"
 		},
 		"SUB_MATERIELS": {
-			"ADD": "Ajouter un matériel",
-			"DETAIL": "Détail du matériel",
-			"EDIT": "Modifier le matériel",
-			"LIST": "Liste du matériel"
+			"ADD": "Add material",
+			"DETAIL": "Equipment detail",
+			"EDIT": "Modify the material",
+			"LIST": "Material list"
 		},
 		"SUB_MODULES": {
-			"ADD": "Ajouter un module",
-			"DETAIL": "Détail du module",
-			"EDIT": "Modifier le module",
-			"LIST": "Liste du module"
+			"ADD": "Add a module",
+			"DETAIL": "Module detail",
+			"EDIT": "Modify the module",
+			"LIST": "Module List"
 		},
 		"SUB_PLANACTION": {
-			"ADD": "Ajouter une action",
-			"DETAIL": "Détail de l'action",
-			"EDIT": "Modifier l'action",
-			"LIST": "Liste des actions"
+			"ADD": "Add action",
+			"DETAIL": "Detail of the action",
+			"EDIT": "Edit action",
+			"LIST": "List of actions"
 		},
 		"SUB_REMONTEES": {
-			"ADD": "Ajouter une remontée",
-			"DETAIL": "Détail de la remontée",
-			"EDIT": "Modifier la remontée",
-			"LIST": "Liste des remontées QHSE"
+			"ADD": "Add a lift",
+			"DETAIL": "Detail of the lift",
+			"EDIT": "Modify the lift",
+			"LIST": "List of QHSE lifts"
 		},
 		"SUB_SALARIES": {
-			"ADD": "Ajouter un salarié",
-			"DETAIL": "Détail du salarié",
+			"ADD": "Add an employee",
+			"DETAIL": "Employee detail",
 			"EDIT": "Modifier le salarié",
-			"LIST": "Liste des salariés"
+			"LIST": "List of employees"
 		},
 		"SUB_SUIVI_HSE": {
-			"ADD": "Ajouter un salarié",
-			"DETAIL": "Détail du salarié",
-			"EDIT": "Modifier les infos de suivi",
-			"LIST": "Suivi Hse"
+			"ADD": "Add an employee",
+			"DETAIL": "Employee detail",
+			"EDIT": "Edit tracking info",
+			"LIST": "Hse tracking"
 		},
 		"SUB_USERS": {
-			"ADD": "Ajouter un utilisateur",
-			"DETAIL": "Détail de l'utilisateur",
-			"EDIT": "Modifier l'utilisateur",
-			"LIST": "Liste des utilisateurs"
+			"ADD": "Add user",
+			"DETAIL": "User detail",
+			"EDIT": "Edit User",
+			"LIST": "Users list"
 		},
 		"SUB_VISITESECURITE": {
-			"ADD": "Ajouter une visite de Sécurité",
-			"DETAIL": "Détail de la visite de Sécurité",
-			"EDIT": "Modifier la visite de Sécurité",
-			"LIST": "Liste des visites de Sécurité"
+			"ADD": "Add a Safety visit",
+			"DETAIL": "Detail of the Safety visit",
+			"EDIT": "Modify the Security visit",
+			"LIST": "List of security visits"
 		},
-		"SUIVI_HSE": "Suivi Hse",
-		"USERS": "Utilisateurs",
-		"VISITESECURITE": "Visites de Sécurité"
+		"SUIVI_HSE": "Hse tracking",
+		"USERS": "Users",
+		"VISITESECURITE": "Security Visits"
 	},
 	"NOTIF": {
+		"DELETE_CONFIRMATION": {
+			"TITLE": "Are you sure delete this item ?"
+		},
 		"ELEMENT_NOT_DELETED": {
 			"LABEL": "Cannot delete because the selection contains an element assigned to an element",
 			"SUBLABEL": "Cannot delete because the selection is assigned to an element"
@@ -947,90 +954,90 @@
 	},
 	"OUTILLAGE": {
 		"LABEL": {
-			"LABEL": "Équipement",
-			"SHORTTITLE": "Équipement",
-			"TITLE": "Équipement"
+			"LABEL": "Equipment",
+			"SHORTTITLE": "Equipment",
+			"TITLE": "Equipment"
 		},
 		"OUTIL": {
-			"LABEL": "Identification de l'outil",
-			"TITLE": "Identification de l'outil"
+			"LABEL": "Tool identification",
+			"TITLE": "Tool identification"
 		},
 		"PROPRIETAIRE": {
-			"LABEL": "Propriétaire",
-			"SHORTTITLE": "Propriétaire",
-			"TITLE": "Propriétaire"
+			"LABEL": "Owner",
+			"SHORTTITLE": "Owner",
+			"TITLE": "Owner"
 		}
 	},
 	"PLANACTIONS": {
 		"COMMENT": {
-			"LABEL": "Commentaires",
-			"SHORTTITLE": "Commentaires",
-			"TITLE": "Commentaires"
+			"LABEL": "Comments",
+			"SHORTTITLE": "Comments",
+			"TITLE": "Comments"
 		},
 		"DELAI": {
-			"LABEL": "Délai",
-			"SHORTTITLE": "Délai",
-			"TITLE": "Délai"
+			"LABEL": "Time limit",
+			"SHORTTITLE": "Time limit",
+			"TITLE": "Time limit"
 		},
 		"EFFICACITE": {
-			"LABEL": "Efficacité",
-			"SHORTTITLE": "Efficacité",
-			"TITLE": "Efficacité"
+			"LABEL": "Efficiency",
+			"SHORTTITLE": "Efficiency",
+			"TITLE": "Efficiency"
 		},
 		"FORM": {
-			"CREATE": "Créer un nouveau plan d'action"
+			"CREATE": "Create a new action plan"
 		},
 		"NAME": {
-			"LABEL": "Action décidée",
+			"LABEL": "Action decided",
 			"SHORTTITLE": "Actions",
-			"TITLE": "Action décidée"
+			"TITLE": "Action decided"
 		},
 		"NUMBER": {
-			"LABEL": "Numéro",
-			"SHORTTITLE": "Numéro",
+			"LABEL": "Number",
+			"SHORTTITLE": "Number",
 			"TITLE": "Action N°"
 		},
 		"OBJECTIF": {
-			"LABEL": "Objectif",
-			"SHORTTITLE": "Objectif",
-			"TITLE": "Objectif"
+			"LABEL": "Goal",
+			"SHORTTITLE": "Goal",
+			"TITLE": "Goal"
 		},
 		"ORIGINE": {
-			"LABEL": "Origine",
-			"SHORTTITLE": "Origine",
-			"TITLE": "Origine"
+			"LABEL": "Origin",
+			"SHORTTITLE": "Origin",
+			"TITLE": "Origin"
 		},
 		"PILOTE": {
-			"LABEL": "Pilote",
-			"SHORTTITLE": "Pilote",
-			"TITLE": "Pilote"
+			"LABEL": "Pilot",
+			"SHORTTITLE": "Pilot",
+			"TITLE": "Pilot"
 		},
 		"REALISATION": {
-			"LABEL": "Date de réalisation",
-			"SHORTTITLE": "Réalisation",
-			"TITLE": "Date de réalisation"
+			"LABEL": "Date of completion",
+			"SHORTTITLE": "Production",
+			"TITLE": "Date of completion"
 		},
 		"RISQUE": {
-			"LABEL": "Risque",
-			"SHORTTITLE": "Risque",
-			"TITLE": "Risque"
+			"LABEL": "Risk",
+			"SHORTTITLE": "Risk",
+			"TITLE": "Risk"
 		},
 		"STATUS": {
-			"LABEL": "Avancement",
-			"SHORTTITLE": "Avancement",
-			"TITLE": "Avancement"
+			"LABEL": "Advancement",
+			"SHORTTITLE": "Advancement",
+			"TITLE": "Advancement"
 		}
 	},
 	"REMONTEES": {
 		"CREATED_AT": {
-			"LABEL": "Date de la remontée",
+			"LABEL": "Date of recovery",
 			"SHORTTITLE": "Date",
-			"TITLE": "Date de création"
+			"TITLE": "Creation date"
 		},
 		"CREATOR": {
-			"LABEL": "Collaborateur",
-			"SHORTTITLE": "Collaborateur",
-			"TITLE": "Collaborateur"
+			"LABEL": "Collaborater",
+			"SHORTTITLE": "Collaborater",
+			"TITLE": "Collaborater"
 		},
 		"DESCRIPTION": {
 			"LABEL": "Description",
@@ -1038,36 +1045,36 @@
 			"TITLE": "Description"
 		},
 		"DOCUMENTS": {
-			"LABEL": "Documents liés",
+			"LABEL": "Related documents",
 			"SHORTTITLE": "Documents",
-			"TITLE": "Documents annexes"
+			"TITLE": "Related documents"
 		},
 		"DOCUMENTS_COUNT": {
-			"LABEL": "Documents annexes",
-			"SHORTTITLE": "Nbr docs",
-			"TITLE": "Nombre de documents"
+			"LABEL": "Related documents",
+			"SHORTTITLE": "Number of docs",
+			"TITLE": "Number of documents"
 		},
 		"TYPE": {
-			"LABEL": "Typologie",
-			"SHORTTITLE": "Typologie",
-			"TITLE": "Typologie"
+			"LABEL": "Typology",
+			"SHORTTITLE": "Typology",
+			"TITLE": "Typology"
 		}
 	},
 	"SALARIES": {
 		"ACCIDENTOLOGIE": {
-			"LABEL": "Accidentologie",
-			"SHORTTITLE": "Accidentologie",
-			"TITLE": "Accidentologie"
+			"LABEL": "Accidentology",
+			"SHORTTITLE": "Accidentology",
+			"TITLE": "Accidentology"
 		},
 		"ANIMATIONHSE": {
-			"LABEL": "Animation HSE",
-			"SHORTTITLE": "Animation HSE",
-			"TITLE": "Animation HSE"
+			"LABEL": "HSE animation",
+			"SHORTTITLE": "HSE animation",
+			"TITLE": "HSE animation"
 		},
 		"ENTRY_AT": {
-			"LABEL": "Date d'entrée",
-			"SHORTTITLE": "Date d'entrée",
-			"TITLE": "Date d'entrée"
+			"LABEL": "Entry date",
+			"SHORTTITLE": "Entry date",
+			"TITLE": "Entry date"
 		},
 		"EPI": {
 			"LABEL": "EPI",
@@ -1075,176 +1082,176 @@
 			"TITLE": "EPI"
 		},
 		"EXIT_AT": {
-			"LABEL": "Date de sortie",
-			"SHORTTITLE": "Date de sortie",
-			"TITLE": "Date de sortie"
+			"LABEL": "Release date",
+			"SHORTTITLE": "Release date",
+			"TITLE": "Release date"
 		},
 		"FORMATION": {
-			"LABEL": "Formation",
-			"SHORTTITLE": "Formation",
-			"TITLE": "Formation"
+			"LABEL": "Training",
+			"SHORTTITLE": "Training",
+			"TITLE": "Training"
 		},
 		"LIEN_PARENTE": {
-			"LABEL": "Lien de parenté",
-			"SHORTTITLE": "Lien de parenté",
-			"TITLE": "Lien de parenté"
+			"LABEL": "Relationship",
+			"SHORTTITLE": "Relationship",
+			"TITLE": "Relationship"
 		},
 		"OUTILLAGE": {
-			"LABEL": "Outillage",
-			"SHORTTITLE": "Outillage",
-			"TITLE": "Outillage"
+			"LABEL": "Tools",
+			"SHORTTITLE": "Tools",
+			"TITLE": "Tools"
 		},
 		"RQTH": {
-			"LABEL": "RQTH",
-			"SHORTTITLE": "RQTH",
-			"TITLE": "RQTH"
+			"LABEL": "RSDW",
+			"SHORTTITLE": "RSDW",
+			"TITLE": "RSDW"
 		},
 		"VEHICULE": {
-			"LABEL": "Véhicule",
-			"SHORTTITLE": "Véhicule",
-			"TITLE": "Véhicule"
+			"LABEL": "Vehicle",
+			"SHORTTITLE": "Vehicle",
+			"TITLE": "Vehicle"
 		},
 		"VM": {
 			"NEXT": {
-				"LABEL": "À renouveler le",
-				"SHORTTITLE": "Date de renouvellement",
-				"TITLE": "Date de renouvellement"
+				"LABEL": "To renew on",
+				"SHORTTITLE": "Renewal date",
+				"TITLE": "Renewal date"
 			},
 			"PASSED": {
-				"LABEL": "Réalisée le",
-				"SHORTTITLE": "Date de réalisation",
-				"TITLE": "Date de réalisation"
+				"LABEL": "Carried out on",
+				"SHORTTITLE": "Date of completion",
+				"TITLE": "Date of completion"
 			}
 		}
 	},
 	"TRANSLATOR": {
-		"SELECT": "choisissez votre langue"
+		"SELECT": "Choose your language"
 	},
 	"UPLOAD": {
 		"DROPZONE": {
-			"PLACEHOLDER": "Déposez vos fichier ici"
+			"PLACEHOLDER": "Drop your files here"
 		},
-		"EXTENSION": "Ce type de fichier ne peut pas être importé",
-		"LIST_EXT": "Liste des extensions",
-		"MAX_SIZE": "Taille maximale",
-		"SIZE": "Vous ne pouvez pas uploader des fichiers de plus de 1 Mo"
+		"EXTENSION": "This type of file cannot be imported",
+		"LIST_EXT": "List of extensions",
+		"MAX_SIZE": "Maximum size",
+		"SIZE": "You cannot upload files larger than 1MB"
 	},
 	"USERS": {
 		"CONTRACT": {
-			"LABEL": "Type de contrat",
-			"SHORTTITLE": "Type de contrat",
-			"TITLE": "Type de contrat"
+			"LABEL": "Type of Contract",
+			"SHORTTITLE": "Type of Contract",
+			"TITLE": "Type of Contract"
 		},
 		"GRANT_ACCESS": {
-			"LABEL": "Donner accès à l'application",
-			"SHORTTITLE": "Donner accès à l'appli",
-			"TITLE": "Donner accès à l'application"
+			"LABEL": "Give access to the application",
+			"SHORTTITLE": "Give access to the app",
+			"TITLE": "Give access to the application"
 		},
 		"VIRTUEL": {
-			"LABEL": "Compte virtuel",
-			"SHORTTITLE": "Utilisateur virtuel",
-			"TITLE": "Utilisateur virtuel (n'apparait pas dans la liste des salariés)"
+			"LABEL": "Virtual Account",
+			"SHORTTITLE": "Virtual user",
+			"TITLE": "Virtual user (does not appear in the list of employees)"
 		},
 		"VIRTUELS": {
-			"LABEL": "Comptes virtuels",
-			"SHORTTITLE": "Comptes virtuels",
-			"TITLE": "Afficher comptes virtuels"
+			"LABEL": "Virtual Account",
+			"SHORTTITLE": "Virtual Account",
+			"TITLE": "Show virtual accounts"
 		}
 	},
 	"VISITES": {
 		"ADD_VEHICULE": {
-			"LABEL": "Numéro d'identification du véhicule",
-			"SHORTTITLE": "Numéro d'identificatio",
-			"TITLE": "Numéro d'identification du véhicule"
+			"LABEL": "Vehicle identification number",
+			"SHORTTITLE": "ID number",
+			"TITLE": "Vehicle identification number"
 		},
 		"AVERT": {
-			"LABEL": "Avertissement",
-			"LABEL_COMP": "(quand attitude non sécuritaire)"
+			"LABEL": "Warning",
+			"LABEL_COMP": "(when unsafe attitude)"
 		},
 		"CHANTIER": {
-			"LABEL": "Nom du chantier",
-			"SHORTTITLE": "Nom",
-			"TITLE": "Nom du chantier"
+			"LABEL": "Site name",
+			"SHORTTITLE": "Name",
+			"TITLE": "Site name"
 		},
 		"CLIENT": {
-			"LABEL": "Client",
-			"SHORTTITLE": "Client",
-			"TITLE": "Client"
+			"LABEL": "Customer",
+			"SHORTTITLE": "Customer",
+			"TITLE": "Customer"
 		},
 		"CODE": {
-			"LABEL": "Numéro",
-			"SHORTTITLE": "Numéro",
-			"TITLE": "Numéro"
+			"LABEL": "Number",
+			"SHORTTITLE": "Number",
+			"TITLE": "Number"
 		},
 		"DATE_VISITE": {
-			"LABEL": "Date de la visite",
-			"SHORTTITLE": "Date de visite",
-			"TITLE": "Date de la visite"
+			"LABEL": "Date of the visit",
+			"SHORTTITLE": "Date of the visit",
+			"TITLE": "Date of the visit"
 		},
 		"DETAIL_VEHICULE": {
-			"LABEL": "Numéro d'identification du véhicule",
-			"SHORTTITLE": "Numéro d'identification du véhicule",
+			"LABEL": "Vehicle identification number",
+			"SHORTTITLE": "Vehicle identification number",
 			"SUBTITLE": "",
-			"TITLE": "Numéro d'identification du véhicule"
+			"TITLE": "Vehicle identification number"
 		},
 		"ENTREPRISE": {
-			"LABEL": "Entreprise visitée",
-			"SHORTTITLE": "Nom",
-			"TITLE": "Entreprise visitée"
+			"LABEL": "Company visited",
+			"SHORTTITLE": "Name",
+			"TITLE": "Company visited"
 		},
 		"FORM": {
-			"CREATE": "Créer une nouvelle visite"
+			"CREATE": "Create a new visit"
 		},
 		"HAS_RECTIF": {
-			"LABEL": "Rectification immédiate faite",
-			"LABEL_COMP": "(pas d'action de CVTI en interne)"
+			"LABEL": "Immediate rectification made",
+			"LABEL_COMP": "(No internal CVTI action)"
 		},
 		"KO_SOLVED_COUNT": {
-			"SHORTTITLE": "NC traitées",
-			"TITLE": "Nombre de non conformité traitées"
+			"SHORTTITLE": "NC processed",
+			"TITLE": "Number of non-compliance processed"
 		},
 		"KO_UNSOLVED_COUNT": {
-			"SHORTTITLE": "NC à traiter",
-			"TITLE": "Nombre de non conformité à traiter"
+			"SHORTTITLE": "NC to be processed",
+			"TITLE": "Number of non-compliance to be addressed"
 		},
 		"MATERIEL": {
-			"LABEL": "Matériel visité",
-			"SHORTTITLE": "Matériel visité",
-			"TITLE": "Matériel visité"
+			"LABEL": "Equipment visited",
+			"SHORTTITLE": "Equipment visited",
+			"TITLE": "Equipment visited"
 		},
 		"PRESENCE_NC": {
-			"LABEL": "Présence de non conformité",
-			"LABEL_COMP": "Présence de non conformité"
+			"LABEL": "Presence of non-compliance",
+			"LABEL_COMP": "Presence of non-compliance"
 		},
 		"REDACTEUR": {
-			"LABEL": "Rédacteur",
-			"SHORTTITLE": "Rédacteur",
-			"TITLE": "Rédacteur"
+			"LABEL": "Editor",
+			"SHORTTITLE": "Editor",
+			"TITLE": "Editor"
 		},
 		"STATUS": {
-			"LABEL": "Statut",
-			"SHORTTITLE": "Statut",
-			"TITLE": "Statut de la visite"
+			"LABEL": "Status",
+			"SHORTTITLE": "Status",
+			"TITLE": "Visit status"
 		},
 		"TYPE": {
-			"LABEL": "Questionnaire",
-			"SHORTTITLE": "Questionnaire",
-			"TITLE": "Questionnaire"
+			"LABEL": "Survey",
+			"SHORTTITLE": "Survey",
+			"TITLE": "Survey"
 		},
 		"VEHICULE": {
-			"LABEL": "Nom de véhicule",
-			"SHORTTITLE": "Véhicule",
-			"TITLE": "Nom de véhicule"
+			"LABEL": "Vehicle name",
+			"SHORTTITLE": "Vehicle",
+			"TITLE": "Vehicle name"
 		},
 		"VEHICULE_FOUND": {
-			"LABEL": "Numéro d'identification du véhicule saisi",
-			"SHORTTITLE": "Numéro d'identification du véhicule saisi",
-			"TITLE": "Numéro d'identification du véhicule saisi"
+			"LABEL": "Vehicle identification number entered ",
+			"SHORTTITLE": "Vehicle identification number entered ",
+			"TITLE": "Vehicle identification number entered "
 		},
 		"VISITED": {
-			"LABEL": "Personne visitée",
-			"SHORTTITLE": "Personne visitée",
-			"TITLE": "Personne visitée"
+			"LABEL": "Person visited",
+			"SHORTTITLE": "Person visited",
+			"TITLE": "Person visited"
 		}
 	}
 }
