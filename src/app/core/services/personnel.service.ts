@@ -29,11 +29,15 @@ export class PersonnelService extends HttpService{
   }
 
   getUserById(personnelId: number){
-		return this.http.get<JsonResponse<Personnel>>(this.baseUrl + `/${personnelId}`)
+		return this.http.get<JsonResponse<Personnel>>(this.baseUrl + `/${personnelId}`);
   }
 
   getPersonnelByPeriod(personnelId: number, periodId){
-		return this.http.get<JsonResponse<Personnel>>(this.baseUrl + `/${personnelId}/period/${periodId}`)
+		return this.http.get<JsonResponse<Personnel>>(this.baseUrl + `/${personnelId}/period/${periodId}`);
+  }
+
+  getPersonnelActualPeriod(personnelId: number){
+		return this.http.get<JsonResponse<Personnel>>(this.baseUrl + `/${personnelId}/actual-period`);
   }
 
   setMetrics(personnelId, params){

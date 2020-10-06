@@ -150,6 +150,13 @@ import { CommentsListComponent } from './layout/comments/comments-list/comments-
 import { CommentsAddComponent } from './layout/comments/comments-add/comments-add.component';
 import { LastRemonteesComponent } from './layout/remontees/last-remontees/last-remontees.component';
 
+import { DashAnalyseRisqueComponent } from './layout/dashboard/dash-analyse-risque/dash-analyse-risque.component';
+import { DashChantierComponent } from './layout/dashboard/dash-chantier/dash-chantier.component';
+import { DashVisiteComponent } from './layout/dashboard/dash-visite/dash-visite.component';
+import { DashActionComponent } from './layout/dashboard/dash-action/dash-action.component';
+import { DashMaterielComponent } from './layout/dashboard/dash-materiel/dash-materiel.component';
+import { DashEntrepriseComponent } from './layout/dashboard/dash-entreprise/dash-entreprise.component';
+
 @NgModule({
 	declarations: [
 		ScrollTopComponent,
@@ -242,6 +249,12 @@ import { LastRemonteesComponent } from './layout/remontees/last-remontees/last-r
 		CommentsListComponent,
 		CommentsAddComponent,
 		LastRemonteesComponent,
+		DashAnalyseRisqueComponent,
+		DashChantierComponent,
+		DashVisiteComponent,
+		DashActionComponent,
+		DashMaterielComponent,
+		DashEntrepriseComponent,
 
 	],
 	exports: [
@@ -336,6 +349,12 @@ import { LastRemonteesComponent } from './layout/remontees/last-remontees/last-r
 		CommentsListComponent,
 		CommentsAddComponent,
 		LastRemonteesComponent,
+		DashAnalyseRisqueComponent,
+		DashChantierComponent,
+		DashVisiteComponent,
+		DashActionComponent,
+		DashMaterielComponent,
+		DashEntrepriseComponent,
 
 	],
 	imports: [

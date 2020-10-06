@@ -4,7 +4,6 @@
             <a [routerLink]="['/suivi-hse/list']">{{'MENU.SUB_SUIVI_HSE.LIST' | translate}}</a><span class="divider">></span><span class="id-item">{{salarie | fullName}}</span>
         </span>
         <div class="pull-right">
-
             <mat-form-field class="date-range-selector pull-right" appearance="fill" *ngIf="selectedPeriodId">
                 <mat-label>Période</mat-label>
                 <mat-select [(value)]="selectedPeriodId" (selectionChange)="changePeriod($event.value)">
@@ -57,8 +56,8 @@
                         <tf-salarie-card
                             class="col-md-4 d-flex pb-3"
                             *ngFor="let item of salarie.catMetricsList"
-                            [catMetric]="item"
-                        ></tf-salarie-card>
+                            [catMetric]="item">
+                        </tf-salarie-card>
 
                     </div>
                 </mat-tab>
@@ -106,8 +105,8 @@
         
                         <tf-salarie-portlet 
                             *ngFor="let item of salarie.metricsTree"
-                            [metricsTree]="item"
-                        ></tf-salarie-portlet>
+                            [metricsTree]="item">
+                    </tf-salarie-portlet>
         
                         <div class="col-md-12 mt-4">
                             <div class="card">

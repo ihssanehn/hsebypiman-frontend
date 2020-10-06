@@ -41,12 +41,6 @@ import {
 
 
 import { DashboardComponent } from './dashboard.component';
-import { DashAnalyseRisqueComponent } from './dash-analyse-risque/dash-analyse-risque.component';
-import { DashChantierComponent } from './dash-chantier/dash-chantier.component';
-import { DashVisiteComponent } from './dash-visite/dash-visite.component';
-import { DashActionComponent } from './dash-action/dash-action.component';
-import { DashMaterielComponent } from './dash-materiel/dash-materiel.component';
-import { DashEntrepriseComponent } from './dash-entreprise/dash-entreprise.component';
 
 @NgModule({
 	imports: [
@@ -97,12 +91,6 @@ import { DashEntrepriseComponent } from './dash-entreprise/dash-entreprise.compo
 	providers: [],
 	declarations: [
 		DashboardComponent,
-		DashChantierComponent,
-		DashAnalyseRisqueComponent,
-		DashVisiteComponent,
-		DashActionComponent,
-		DashEntrepriseComponent,
-		DashMaterielComponent
 	]
 })
 export class DashboardModule {

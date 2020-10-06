@@ -2,6 +2,7 @@
 	"ACTION": {
 		"ADD": "Ajouter",
 		"ADD_SIGNER": "Ajouter un signataire",
+		"DETAIL": "Détail",
 		"CANCEL": "Annuler",
 		"CLEAR": "Vider",
 		"CONFIRM": "Confirmer",

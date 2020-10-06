@@ -3,33 +3,65 @@
 </h3>
 
 <div class="row mt-4">
+    <div class="col-6">
+        <tf-dash-materiel [extraParams]="getMaterielParams()"></tf-dash-materiel>
+    </div>
+    <div class="col-6">
+        <tf-portlet>
+            <div class="tf-portlet__head">
+                <div class="tf-portlet__head-label">
+                    <h3 class="tf-portlet__head-title">
+                        {{'MENU.SUIVI_HSE' | translate}}
+                    </h3>
+                </div>
+                <div class="tf-portlet__head-toolbar">
+                    <mat-form-field class="date-range-selector no-pb pull-right" appearance="fill" *ngIf="selectedPeriodId">
+                        <mat-label>Période</mat-label>
+                        <mat-select [(value)]="selectedPeriodId" (selectionChange)="changePeriod($event.value)">
+                          <mat-option *ngFor="let item of periodList" [value]="item.id">
+                            {{item.start_date | date:'d MMM y'}} <span class="divider">-</span> {{item.end_date | date:'d MMM y'}}
+                          </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+                
+            <tf-portlet-body  [class]="'tf-portlet__body--fit'">
+                <div class="row m-4" *ngIf="salarie">
+                    <div class="col-md-4 col-sm-6 col-xs-12" *ngFor="let catMetric of salarie.catMetricsList">
+                        <div class="mx-4 mt-4 mb-2">
+                            <p>{{catMetric.libelle}} 
+                                <small class="pull-right" [ngbPopover]="popContent" [popoverTitle]="popTitle" (click)="showDetail()">{{'ACTION.DETAIL' | translate}}</small>
+                            </p>
+                            <ng-template #popContent >
+                                <div class="row">
+                                    <div class="col-12" *ngFor="let metric of catMetric.metrics">
+                                        <span class="label no-bold pull-left mr-2">{{metric.short_libelle}}</span>
+                                        <span class="pull-right goal-label" *ngIf="metric.year_goal">/{{metric.year_goal.value}}</span>
+                                        <span class="pull-right " >{{metric.pivot.value ? metric.pivot.value : 0}}</span>
+                                    </div>
+                                </div>
+                            </ng-template>
+                            <ng-template #popTitle ><b>{{catMetric.libelle}}</b></ng-template>
+                            <mat-progress-bar mode="determinate" [ngClass]="getRatingClass(catMetric.rating)" [value]="catMetric.rating"></mat-progress-bar>
+                        </div>
+                    </div>
+                </div>
+            </tf-portlet-body>
+        </tf-portlet>
+    </div>
+</div>
+<div class="row mt-4">
     <div class="col-4">
         <tf-last-remontees></tf-last-remontees>
     </div>
-    <div class="col-4">
-        <!-- <tf-portlet >
-            <tf-portlet-header [title]="'Plan d\'actions'" [stats]="stats ? getHeaderStats() : ''"></tf-portlet-header>
+    <div class="col-8">
+        <tf-portlet>
+            <tf-portlet-header [title]="'Flash Info'">
+            </tf-portlet-header>
             <tf-portlet-body [class]="'tf-portlet__body--fit'">
-                <div class="row" >
-                    <div class="col-12" style="padding:1em">
-                        <div class="dash-title">Nombre d'actions par mois</div>
-                        <div echarts class="demo-chart" #evolActions></div>
-                    </div>
-                </div>
+                
             </tf-portlet-body>
-        </tf-portlet> -->
-    </div>
-    <div class="col-4">
-        <!-- <tf-portlet >
-            <tf-portlet-header [title]="'Plan d\'actions'" [stats]="stats ? getHeaderStats() : ''"></tf-portlet-header>
-            <tf-portlet-body [class]="'tf-portlet__body--fit'">
-                <div class="row">
-                    <div class="col-12" style="padding:1em">
-                        <div class="dash-title">Nombre d'actions par mois</div>
-                        <div echarts class="demo-chart" #evolActions></div>
-                    </div>
-                </div>
-            </tf-portlet-body>
-        </tf-portlet> -->
+        </tf-portlet>
     </div>
 </div>

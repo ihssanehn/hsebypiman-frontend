@@ -96,5 +96,12 @@ export { VisiteQuestionsChantierAdminComponent } from './admins/visite-questions
 export { SalarieFonctionsAdminComponent } from './admins/salarie-fonctions-admin/salarie-fonctions-admin.component';
 export { LastRemonteesComponent } from './remontees/last-remontees/last-remontees.component';
 
+export { DashAnalyseRisqueComponent } from './dashboard/dash-analyse-risque/dash-analyse-risque.component';
+export { DashChantierComponent } from './dashboard/dash-chantier/dash-chantier.component';
+export { DashVisiteComponent } from './dashboard/dash-visite/dash-visite.component';
+export { DashActionComponent } from './dashboard/dash-action/dash-action.component';
+export { DashMaterielComponent } from './dashboard/dash-materiel/dash-materiel.component';
+export { DashEntrepriseComponent } from './dashboard/dash-entreprise/dash-entreprise.component';
+
 
 

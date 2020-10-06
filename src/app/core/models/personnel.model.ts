@@ -18,5 +18,6 @@ export class Personnel {
     latest_visite_medicale?: any;
     metricsTree?: Array<any>;
     catMetricsList?: Array<any>;
+    period_id: Number;
     formations?: any;
 }

@@ -50,5 +50,9 @@ export class PeriodService extends HttpService{
   getLatest(){
     return this.http.get<JsonResponse<any>>(this.baseUrl+'/latest');
   }
+  
+  getActual(){
+    return this.http.get<JsonResponse<any>>(this.baseUrl+'/actual');
+  }
 
 }

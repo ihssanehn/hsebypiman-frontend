@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ElementRef, ViewChild, Input } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import {MatSort} from '@angular/material/sort';
 import { Router } from '@angular/router';
@@ -19,6 +19,8 @@ export class DashMaterielComponent implements OnInit {
       this.materielListData.sort = sort;
 		}
   };
+
+  @Input('extraParams') extraParams : any = {};
   
   materielListData : MatTableDataSource<Materiel>;
 
@@ -36,8 +38,16 @@ export class DashMaterielComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    this.getExtraParams();
     this.getMaterielDash();
   
+  }
+
+  getExtraParams(){
+      Object.keys(this.extraParams).forEach(key=>{
+        this.filter[key] = this.extraParams[key]
+      })
   }
 
   async getMaterielDash() {

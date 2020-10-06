@@ -9,7 +9,7 @@
           <button class="pull-right btn btn-sm btn-primary" (click)="addNewRemontee()">{{'REMONTEES.NEW.SHORTBUTTON' | translate}}</button>
       </div>
   </div>
-  <tf-portlet-body [class]="'tf-portlet__body--fit'" style="padding: 2em;">
+  <tf-portlet-body [class]="'tf-portlet__body--fit'" style="padding: 2em; background:#f7f7ff">
       <div class="box" *ngFor="let remontee of last_remontees" (click)="goToRemontee(remontee.id)">
           <div class="first" >
               <h5 class="text-warning">{{remontee.type?.libelle}}</h5>

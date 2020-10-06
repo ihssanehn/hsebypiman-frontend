@@ -84,13 +84,17 @@ export class SuiviHsePeriodsAddComponent implements OnInit, AfterViewInit, OnDes
   }
 
   checkDateValidation(date){
-    return this.periodList
-      .map(period => { 
-        var start = new Date(period.start_date); start.setDate( start.getDate() - 1 );
-        var end = new Date(period.end_date);
-        return !(date >= start && date <= end)
-      })
-      .reduce((prev, curr) => prev && curr);
+    if(this.periodList.length > 0){
+      return this.periodList
+        .map(period => { 
+          var start = new Date(period.start_date); start.setDate( start.getDate() - 1 );
+          var end = new Date(period.end_date);
+          return !(date >= start && date <= end)
+        })
+        .reduce((prev, curr) => prev && curr);
+    }else{
+      return true;
+    }
   }
 
   async getSelectedPeriod(){
