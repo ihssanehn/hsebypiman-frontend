@@ -78,9 +78,17 @@ export class ArsDashComponent implements OnInit, AfterViewInit, OnDestroy {
 		this.getArsDash();
 	}
 
+	refreshTranslation(){
+		this.translate.stream("ARS.DASH.AR_EVOLUTION.TITLE").subscribe(x =>{
+			this.EvolOptions.title.text = x;
+			this.echartsEvol.setOption(this.EvolOptions);
+		});
+	}
+
 	ngAfterViewInit(){
 		this.echartsEvol = echarts.init(this.evolAll.nativeElement)
 		this.echartsEvol.showLoading();
+		this.refreshTranslation();
 	}
 
 	ngOnDestroy(){
