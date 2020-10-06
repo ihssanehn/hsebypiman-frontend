@@ -3,6 +3,7 @@ import { AdminTemplateComponent } from '@app/views/partials/layout/admin-templat
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CatQuestionService, QuestionService, TypeService } from '@app/core/services';
 import { Type } from '@app/core/models';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'visite-questions-chantier-admin',
@@ -15,6 +16,7 @@ export class VisiteQuestionsChantierAdminComponent extends AdminTemplateComponen
   modalService: NgbModal;
   parentService: any;
   childService: any;
+  translate: TranslateService;
   _type: any;
   tpl = {
     title : 'Formulaires ',
@@ -41,6 +43,7 @@ export class VisiteQuestionsChantierAdminComponent extends AdminTemplateComponen
     this.parentService = injector.get(CatQuestionService);
     this.childService = injector.get(QuestionService);
     this.titleService = injector.get(TypeService);
+    this.translate = injector.get(TranslateService);
   }
 
   formatChildren(item){
@@ -49,7 +52,7 @@ export class VisiteQuestionsChantierAdminComponent extends AdminTemplateComponen
   }
 
   async addItem(){
-    super.addItem("Ajouter une catégorie de questions", {type_id : this._type.id, ordre: this.generateParentOrdre()});  
+    super.addItem(this.translate.instant("VISITES.ACTION.ADD_QUESTION_CATEGORY.TITLE"), {type_id : this._type.id, ordre: this.generateParentOrdre()});  
   }
 
   async getList(item){
@@ -58,7 +61,7 @@ export class VisiteQuestionsChantierAdminComponent extends AdminTemplateComponen
   }
 
   async deleteItem({id}){
-    super.deleteItem({id}, { title : "Catégorie archivée avec succès" });
+    super.deleteItem({id}, { title : this.translate.instant("VISITES.ACTION.CATEGORY_ARCHIVED.TITLE") });
   }
 
   async addChild(item){
@@ -70,6 +73,6 @@ export class VisiteQuestionsChantierAdminComponent extends AdminTemplateComponen
   }
 
   async deleteChild({id, parent_id}){
-    super.deleteChild({id, parent_id}, {title : "La question est archivée avec succès" });
+    super.deleteChild({id, parent_id}, {title : this.translate.instant("VISITES.ACTION.QUESTION_ARCHIVED.TITLE") });
   }
 }

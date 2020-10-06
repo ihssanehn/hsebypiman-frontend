@@ -1,6 +1,6 @@
 <div class="row pagination" *ngIf="pagination?.total">
     <div class="col">
-        afficher par :
+        {{'COMMON.PAGINATION.DISPLAY_BY.TITLE' | translate}} :
         <select name="" id="" class="separtor" [(ngModel)]="pagination.pageSize" (change)="updatePageSize($event.target.value)">
             <option value="1">1</option>  
           <option value="5">5</option>
@@ -12,7 +12,7 @@
         </select>
         <span class="separtor">
 
-          {{ (pagination.page -1) * pagination.pageSize + 1 }}-{{ (pagination.page * pagination.pageSize) < pagination.total ? (pagination.page * pagination.pageSize) : pagination.total }} de {{pagination.total}} 
+          {{ (pagination.page -1) * pagination.pageSize + 1 }}-{{ (pagination.page * pagination.pageSize) < pagination.total ? (pagination.page * pagination.pageSize) : pagination.total }} {{'COMMON.PAGINATION.DE.TITLE' | translate}} {{pagination.total}} 
         </span>
         
 
@@ -23,7 +23,7 @@
             </a>
           </span>
           <span class="separtor">
-            {{pagination.page+' sur '+pagination.last_page}}
+            {{pagination.page}} {{'COMMON.PAGINATION.SUR.TITLE' | translate}} {{pagination.last_page}}
           </span>
           <span class="pagination-next separtor" [class.disabled]="isLastPage()">
             <a (click)="next()">

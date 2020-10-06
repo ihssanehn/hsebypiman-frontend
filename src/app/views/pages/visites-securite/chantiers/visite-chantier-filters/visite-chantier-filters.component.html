@@ -10,7 +10,7 @@
 					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
 						<mat-label>{{'VISITES.TYPE.TITLE' | translate}}</mat-label>
 						<mat-select class="form-control" formControlName="type_id" name="type_id">
-							<mat-option>Tous</mat-option>
+							<mat-option>{{'FILTER.SEARCH_ALL' | translate}}</mat-option>
 							<mat-option *ngFor="let type of types" [value]="type.id">
 								{{type.libelle}}
 							</mat-option>
@@ -48,8 +48,8 @@
 					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
 						<mat-label>{{'CHANTIERS.ARS.LABEL' | translate}}</mat-label>
 						<mat-select class="form-control" formControlName="analyse" name="analyse">
-							<mat-option *ngFor="let analyseOption of analyseOptions" [value]="analyseOption">
-								{{analyseOption}}
+							<mat-option *ngFor="let analyseOption of analyseOptions" [value]="analyseOption.key">
+								{{analyseOption.value | translate}}
 							</mat-option>
 						</mat-select>
 						<button mat-button *ngIf="formHasValue('analyse')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('analyse'); $event.stopPropagation()">
@@ -59,8 +59,8 @@
 					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
 						<mat-label>{{'CHANTIERS.VISITES.LABEL' | translate}}</mat-label>
 						<mat-select class="form-control" formControlName="visite" name="visite">
-							<mat-option *ngFor="let visiteOption of visiteOptions" [value]="visiteOption">
-								{{visiteOption}}
+							<mat-option *ngFor="let visiteOption of visiteOptions" [value]="visiteOption.key">
+								{{visiteOption.value | translate}}
 							</mat-option>
 						</mat-select>
 						<button mat-button *ngIf="formHasValue('visite')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('visite'); $event.stopPropagation()">
@@ -70,8 +70,8 @@
 					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
 						<mat-label>{{'CHANTIERS.EES.SHORTTITLE' | translate}}</mat-label>
 						<mat-select class="form-control" formControlName="has_entreprise" name="has_entreprise">
-							<mat-option *ngFor="let entrepriseOption of entrepriseOptions" [value]="entrepriseOption">
-								{{entrepriseOption}}
+							<mat-option *ngFor="let entrepriseOption of entrepriseOptions" [value]="entrepriseOption.key">
+								{{entrepriseOption.value | translate}}
 							</mat-option>
 						</mat-select>
 						<button mat-button *ngIf="formHasValue('has_entreprise')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('has_entreprise'); $event.stopPropagation()">
@@ -93,11 +93,11 @@
 					<div class="col-xl-6 col-md-6 col-sm-6 col-xs-12">
 						<h6>{{'VISITES.DATE_VISITE.TITLE' | translate}}</h6>
 						<mat-form-field class="col-md-6 col-xl-6">
-							<mat-label>Entre le :</mat-label>
+							<mat-label>{{'COMMON.DATE_RANGE.BETWEEN.TITLE' | translate}} :</mat-label>
 							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_visite_start" placeholder="DD/MM/YYYY">
 						</mat-form-field>
 						<mat-form-field class="col-md-6 col-xl-6">
-							<mat-label>Et le :</mat-label>
+							<mat-label>{{'COMMON.DATE_RANGE.AND.TITLE' | translate}} :</mat-label>
 							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_visite_end" placeholder="DD/MM/YYYY">
 						</mat-form-field>
 					</div>

@@ -1,7 +1,7 @@
 <ng-container [formGroup]="visiteForm">
 	<mat-expansion-panel [expanded]="isExpanded" [disabled]="isDisableToggle">
 		<mat-expansion-panel-header>
-			<div class="tf-heading tf-heading--md">| Signatures</div>
+			<div class="tf-heading tf-heading--md">| {{'VISITES.CARD.SIGNATURE.TITLE' | translate}}</div>
 		</mat-expansion-panel-header>
 		
 		<div class="row">
@@ -10,12 +10,12 @@
 					{{startSignHse ? 'Annuler':'Validation HSE'}}
 				</button>
 				<button mat-raised-button class="btn-small ml-2" color="success" *ngIf="startSignHse" (click)="validateSignatureHse('signature_resp_hse')">
-					Enregistrer
+					{{'ACTION.SAVE' | translate}}
 				</button>
 			</div>
 			<div [ngClass]="canShowHse() ? 'col-4':'col-6'" >
 				<div class="tf-card-form" >
-					<h5>Signature du rédacteur</h5>
+					<h5>{{'VISITES.CARD.SIGNATURE.EDITOR_SIGNATURE.TITLE' | translate}}</h5>
 					<div class="row form-row">
 						<div class="col-xl-12">
 							<mat-label>{{'COMMON.DATE.LABEL' | translate}} </mat-label>
@@ -38,7 +38,7 @@
 			</div>
 			<div [ngClass]="canShowHse() ? 'col-4':'col-6'">
 				<div class="tf-card-form">
-					<h5>Signature de la personne visité</h5>
+					<h5>{{'VISITES.CARD.SIGNATURE.VISITED_SIGNATURE.TITLE' | translate}}</h5>
 					<div class="row form-row">
 						<div class="col-xl-12 ">
 							<mat-label>{{'COMMON.DATE.LABEL' | translate}} </mat-label>
@@ -63,7 +63,7 @@
 			<ng-container *ngIf="needHseValidation">
 				<div *ngIf="canShowHse()" class="col-4">
 					<div class="tf-card-form">
-						<h5>Signature du responsable hse</h5>
+						<h5>{{'VISITES.CARD.SIGNATURE.MANAGER_SIGNATURE.TITLE' | translate}}</h5>
 						<div class="row form-row">
 							<div class="col-xl-12 mb-4">
 								<mat-label>{{'COMMON.DATE.LABEL' | translate}} </mat-label>
