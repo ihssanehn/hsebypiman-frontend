@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef, ElementRef, ViewChild } from '@angular/core';
 import { DashboardService } from '@app/core/services';
 import * as echarts from 'echarts';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'tf-dash-visite',
@@ -170,8 +171,9 @@ export class DashVisiteComponent implements OnInit {
 	};
 
   constructor(
-    private dashboardService: DashboardService,
-		protected cdr: ChangeDetectorRef
+	private dashboardService: DashboardService,
+	private translate: TranslateService,
+	protected cdr: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -192,7 +194,7 @@ export class DashVisiteComponent implements OnInit {
   async getVisiteDash() {
 		try {
 			this.dashboardService.getVsStats(this.filter).subscribe(res=>{
-          this.stats = res.result.data;
+          	this.stats = res.result.data;
 
 			// Actions By Status
 			this.byTypeOptions.series[0]['data'] = this.stats.total_vss_by_type;
@@ -236,7 +238,7 @@ export class DashVisiteComponent implements OnInit {
 	}
 	
 	getHeaderStats(){
-		return '<span>Nombre de VS : </span>&nbsp;<b class="text-primary">'+this.stats.total_vs+'</b>'+'<span class="ml-4">Nombre de NC : </span>&nbsp;<b class="text-warning">'+this.stats.total_nc+'</b>';
+		return '<span>'+this.translate.instant("COMMON.DASH.VISITS_NUMBER.TITLE")+' : </span>&nbsp;<b class="text-primary">'+this.stats.total_vs+'</b>'+'<span class="ml-4">'+this.translate.instant("COMMON.DASH.NC_NUMBER")+' : </span>&nbsp;<b class="text-warning">'+this.stats.total_nc+'</b>';
 	}
 
 }

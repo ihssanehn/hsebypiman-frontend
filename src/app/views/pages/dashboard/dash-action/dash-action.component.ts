@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef, ElementRef, ViewChild } from '@angular/core';
 import { DashboardService } from '@app/core/services';
 import * as echarts from 'echarts';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'tf-dash-action',
@@ -82,6 +83,7 @@ export class DashActionComponent implements OnInit {
 
   constructor(
     private dashboardService: DashboardService,
+    private translate: TranslateService,
 		protected cdr: ChangeDetectorRef
   ) { }
 
@@ -121,6 +123,6 @@ export class DashActionComponent implements OnInit {
   }
 
   getHeaderStats(){
-    return '<span class="text-danger">A attribuer : </span>&nbsp;<b class="text-primary">'+this.stats.actions_a_attribuer+'</b>'+'<span class="text-warning ml-4">En cours : </span>&nbsp;<b class="text-primary">'+this.stats.actions_en_cours+'</b>';
+    return '<span class="text-danger">'+this.translate.instant("COMMON.DASH.TO_ASSIGN")+' : </span>&nbsp;<b class="text-primary">'+this.stats.actions_a_attribuer+'</b>'+'<span class="text-warning ml-4">'+this.translate.instant("COMMON.DASH.IN_PROGRESS")+' : </span>&nbsp;<b class="text-primary">'+this.stats.actions_en_cours+'</b>';
   }
 }

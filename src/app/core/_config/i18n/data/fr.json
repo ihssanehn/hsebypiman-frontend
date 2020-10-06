@@ -619,6 +619,19 @@
 			"SHORTTITLE": "Créé le",
 			"TITLE": "Date de création"
 		},
+		"DASH": {
+			"IN_PROGRESS": "En cours",
+			"LATE": "En retard",
+			"NC_NUMBER": "Nombre de NC",
+			"TOTAL": "Total",
+			"TO_ASSIGN": "À attribuer",
+			"TO_VISIT": "À visiter",
+			"VISITS_NUMBER": {
+				"SHORTTITLE": "Nbre de VS",
+				"TITLE": "Nombre de VS"
+			},
+			"_VISITS_NUMBER": "Nombre de VS"
+		},
 		"DATE": {
 			"LABEL": "Date",
 			"TITLE": "Date"
@@ -1079,6 +1092,20 @@
 			"LABEL": "Commentaires",
 			"SHORTTITLE": "Commentaires",
 			"TITLE": "Commentaires"
+		},
+		"DASH": {
+			"ACTION_NUMBER_PER_MONTH": {
+				"TITLE": "Nombre d'actions par mois"
+			},
+			"AR_NUMBER_PER_MONTH": {
+				"TITLE": "Nombre d'analyses de risque par mois"
+			},
+			"NC_DISTRIBUTION": {
+				"TITLE": "Répartition des non-conformités"
+			},
+			"VS_NUMBER_PER_MONTH_TYPE": {
+				"TITLE": "Nombre de visites sécurité par mois et par type"
+			}
 		},
 		"DELAI": {
 			"LABEL": "Délai",
