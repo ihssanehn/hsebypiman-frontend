@@ -113,11 +113,23 @@ export class ChantiersDashComponent implements OnInit, AfterViewInit, OnDestroy 
 		this.getChantiersDash();
 	}
 
+	refreshTranslation(){
+		this.translate.stream("CHANTIERS.DASH.SITE_PER_TYPES.TITLE").subscribe(x =>{
+			this.byTypeOptions.title.text = x;
+			this.echartsType.setOption(this.byTypeOptions);
+		});
+		this.translate.stream("CHANTIERS.DASH.EVOL_CREATION_SITE.TITLE").subscribe(x =>{
+			this.EvolOptions.title.text = x;
+			this.echartsEvol.setOption(this.EvolOptions);
+		});
+	}
+
 	ngAfterViewInit(){
 		this.echartsType = echarts.init(this.pieType.nativeElement)
 		this.echartsType.showLoading();
 		this.echartsEvol = echarts.init(this.evolAll.nativeElement)
 		this.echartsEvol.showLoading();
+		this.refreshTranslation();
 	}
 
 
