@@ -31,7 +31,7 @@
                     <div class="col-md-4 col-sm-6 col-xs-12" *ngFor="let catMetric of salarie.catMetricsList">
                         <div class="mx-4 mt-4 mb-2">
                             <p>{{catMetric.libelle}} 
-                                <small class="pull-right" [ngbPopover]="popContent" [popoverTitle]="popTitle" (click)="showDetail()">{{'ACTION.DETAIL' | translate}}</small>
+                                <small class="pull-right" [ngbPopover]="popContent" triggers="mouseenter:mouseleave" [popoverTitle]="popTitle" (click)="showDetail()">{{'ACTION.DETAIL' | translate}}</small>
                             </p>
                             <ng-template #popContent >
                                 <div class="row">

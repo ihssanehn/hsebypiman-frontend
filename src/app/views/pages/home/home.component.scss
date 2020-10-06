@@ -19,6 +19,16 @@
 		tf-home .tf-portlet{
 			height: 100%
 		}
+
+		.table-responsive{
+			max-height: 137px;
+		}
+
+		tf-last-remontees .tf-portlet__body, tf-flash-info .tf-portlet__body{
+			height: calc(100vh - 460px);
+			overflow-y: scroll;
+			overflow-x: none;
+		}
 	}
 }
 .dash-title{

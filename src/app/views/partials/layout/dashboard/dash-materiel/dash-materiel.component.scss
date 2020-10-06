@@ -1,10 +1,7 @@
-.table-responsive{
-  max-height: 286px;
-}
 .loading-card{
   display: flex;
   width: 100%;
-  max-height: 312px;
+  min-height: 100px;
   justify-content:center;
   align-items:center;
 }
@@ -14,4 +11,5 @@
   .mat-sort-header-button{
     text-align: left;
   }
+  
 }
