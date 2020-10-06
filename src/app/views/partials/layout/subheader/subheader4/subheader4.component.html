@@ -48,14 +48,14 @@
 	<ng-container *ngIf="!item.badge; else menuLinkBadge">
 		<span class="tf-menu__item-here"></span>
 		<!-- menu item title text -->
-		<span class="tf-menu__link-text" [translate]="item.translate">
-			{{item.title}}
+		<span class="tf-menu__link-text">
+			{{item.translate | translate}}
 		</span>
 	</ng-container>
 
 	<ng-template #menuLinkBadge>
 		<!-- menu item with badge -->
-		<span class="tf-menu__link-text" [translate]="item.translate">{{item.title}}</span>
+		<span class="tf-menu__link-text">{{item.translate | translate}}</span>
 		<span class="tf-menu__link-badge">
 			<span class="tf-badge tf-badge--brand tf-badge--inline tf-badge--pill" [ngClass]="item.badge.type" [translate]="item.badge.translate">{{item.badge.value}}</span>
 		</span>

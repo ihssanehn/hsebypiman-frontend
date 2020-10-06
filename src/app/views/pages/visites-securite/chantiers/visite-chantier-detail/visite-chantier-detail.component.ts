@@ -193,7 +193,7 @@ export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 			  
 			  Swal.fire({
 				icon: 'success',
-				title: 'Visite mise à jour avec succès',
+				title: this.translate.instant("VISITES.NOTIF.VISIT_UPDATED.TITLE"),
 				showConfirmButton: false,
 				timer: 1500
 			  });
@@ -202,7 +202,7 @@ export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 	
 			  Swal.fire({
 				icon: 'error',
-				title: 'Echec! le formulaire est incomplet',
+				title: this.translate.instant("ARS.NOTIF.INCOMPLETE_FORM.TITLE"),
 				showConfirmButton: false,
 				timer: 1500
 			  });

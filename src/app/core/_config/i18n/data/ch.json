@@ -629,8 +629,7 @@
 			"VISITS_NUMBER": {
 				"SHORTTITLE": "",
 				"TITLE": ""
-			},
-			"_VISITS_NUMBER": ""
+			}
 		},
 		"DATE": {
 			"LABEL": "Date",
@@ -995,6 +994,14 @@
 		"REMONTEES": "Remontées QHSE",
 		"ROOT": "Administration",
 		"SALARIES": "Salariés",
+		"SUBHEADER": {
+			"VISITS": {
+				"VS_CHANTIER": "",
+				"VS_EPI": "",
+				"VS_OUTILLAGE": "",
+				"VS_VEHICULE": ""
+			}
+		},
 		"SUB_ANALYSERISQUE": {
 			"ADD": "Nouvelle analyse de risque de chantier",
 			"DETAIL": "Détail de l'analyse de risque",
@@ -1397,6 +1404,16 @@
 		"COMPLIANCE_DATE": {
 			"TITLE": ""
 		},
+		"DASH": {
+			"NC_ACTIONS": "",
+			"NC_EVOLUTION": "",
+			"NC_EVOLUTION_PER_CATEGORY": "",
+			"NC_PER_CATEGORY": "",
+			"NC_RESOLVED": "",
+			"VISITS_BY_CATEGORY": "",
+			"VISITS_IN_PROGRESS": "",
+			"WARN_NO": ""
+		},
 		"DATE_VISITE": {
 			"LABEL": "Date de la visite",
 			"SHORTTITLE": "Date de visite",
@@ -1441,21 +1458,62 @@
 		},
 		"NOTIF": {
 			"CANNOT_SELECT_EMPLOYEE": {
-				"TITLE": ""
+				"COMPANY_SELECTED": {
+					"TITLE": ""
+				},
+				"MATERIEL_SELECTED": {
+					"TITLE": ""
+				}
 			},
 			"CANNOT_SELECT_ENTREPRISE": {
 				"TITLE": ""
 			},
 			"ELEMENT_NOT_DELETED": {
-				"LABEL": "",
-				"SHORTTILE": "",
-				"SUBLABEL": "",
+				"CHANTIER": {
+					"LABEL": "",
+					"SHORTTITLE": "",
+					"SUBLABEL": "",
+					"TITLE": ""
+				},
+				"EPI": {
+					"LABEL": "",
+					"SHORTTITLE": "",
+					"SUBLABEL": "",
+					"TITLE": ""
+				},
+				"OUTILLAGE": {
+					"LABEL": "",
+					"SHORTTITLE": "",
+					"SUBLABEL": "",
+					"TITLE": ""
+				},
+				"TITLE": "",
+				"VEHICULE": {
+					"LABEL": "",
+					"SHORTTITLE": "",
+					"SUBLABEL": "",
+					"TITLE": ""
+				}
+			},
+			"FORM_ARCHIVED": {
 				"TITLE": ""
 			},
-			"FORM_CREATED": {
+			"FORM_NOT_ARCHIVED": {
+				"TITLE": ""
+			},
+			"NO_MATERIEL_ASSOCIATED_TO_EMPLOYEE": {
 				"TITLE": ""
 			},
 			"VISIT_CREATED": {
+				"TITLE": ""
+			},
+			"VISIT_DELETED": {
+				"TITLE": ""
+			},
+			"VISIT_NOT_DELETED": {
+				"TITLE": ""
+			},
+			"VISIT_UPDATED": {
 				"TITLE": ""
 			}
 		},

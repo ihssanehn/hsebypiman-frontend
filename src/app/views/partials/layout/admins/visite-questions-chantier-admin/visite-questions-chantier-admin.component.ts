@@ -18,15 +18,7 @@ export class VisiteQuestionsChantierAdminComponent extends AdminTemplateComponen
   childService: any;
   translate: TranslateService;
   _type: any;
-  tpl = {
-    title : 'Formulaires ',
-    deletedMessage: 'Suppression impossible car la selection comprend un élément affecté à un ou plusieurs chantiers',
-    deletedChildMessage: 'Suppression impossible car la selection est affectée à un ou plusieurs chantiers',
-    collapsed : true,
-    canUpdateTitle: true,
-    titleObject: null,
-    childCol : 6
-  }
+  tpl: any;
   @Input() set type(value: any) {
     this._type = value;
     if(value && value.libelle)
@@ -44,6 +36,19 @@ export class VisiteQuestionsChantierAdminComponent extends AdminTemplateComponen
     this.childService = injector.get(QuestionService);
     this.titleService = injector.get(TypeService);
     this.translate = injector.get(TranslateService);
+  }
+
+  ngOnInit() {
+    super.ngOnInit();
+    // this.tpl = {
+    //   title : this.translate.instant("VISITES.NOTIF.ELEMENT_NOT_DELETED.TITLE"),
+    //   deletedMessage: this.translate.instant("VISITES.NOTIF.ELEMENT_NOT_DELETED.CHANTIER.TITLE"),
+    //   deletedChildMessage:  this.translate.instant("VISITES.NOTIF.ELEMENT_NOT_DELETED.CHANTIER.LABEL"),
+    //   collapsed : true,
+    //   canUpdateTitle: true,
+    //   titleObject: null,
+    //   childCol : 6
+    // }
   }
 
   formatChildren(item){

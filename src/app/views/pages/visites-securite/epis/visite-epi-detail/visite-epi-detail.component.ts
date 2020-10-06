@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
 import { extractErrorMessagesFromErrorResponse } from '@app/core/_base/crud';
 import { FormStatus } from '@app/core/_base/crud/models/form-status';
 import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -47,6 +48,7 @@ export class VisiteEpiDetailComponent implements OnInit, OnDestroy {
 		private visiteFB: FormBuilder,
 		// private notificationService: NzNotificationService,
 		private visiteService: VisiteEpiService,
+		private translate: TranslateService,
 		private materielService: MaterielService,
 		private location: Location,
 		private authService: AuthService,
@@ -186,7 +188,7 @@ export class VisiteEpiDetailComponent implements OnInit, OnDestroy {
 		this.visiteService.delete(visiteId).toPromise().then(res => {
 			Swal.fire({
 				icon: 'success',
-				title: 'La visite a correctement été supprimé',
+				title: this.translate.instant("VISITES.NOTIF.VISIT_DELETED.TITLE"),
 				showConfirmButton: false,
 				timer: 1500
 			});
@@ -194,7 +196,7 @@ export class VisiteEpiDetailComponent implements OnInit, OnDestroy {
 		}).catch(err => {
 			Swal.fire({
 				icon: 'error',
-				title: "La visite n'a pas pu être supprimée",
+				title: this.translate.instant("VISITES.NOTIF.VISIT_NOT_DELETED.TITLE"),
 				showConfirmButton: false,
 				timer: 1500
 			});
@@ -214,7 +216,7 @@ export class VisiteEpiDetailComponent implements OnInit, OnDestroy {
 
 					Swal.fire({
 						icon: 'success',
-						title: 'Visite mise à jour avec succès',
+						title: this.translate.instant("VISITES.NOTIF.VISIT_UPDATED.TITLE"),
 						showConfirmButton: false,
 						timer: 1500
 					});
@@ -223,7 +225,7 @@ export class VisiteEpiDetailComponent implements OnInit, OnDestroy {
 
 					Swal.fire({
 						icon: 'error',
-						title: 'Echec! le formulaire est incomplet',
+						title: this.translate.instant("NOTIF.INCOMPLETE_FORM.TITLE"),
 						showConfirmButton: false,
 						timer: 1500
 					});

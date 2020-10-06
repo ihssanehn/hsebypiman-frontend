@@ -2,16 +2,16 @@
 <!-- <tf-visites-chantier-filters [hidden]="!showFilters" (change)="udpateFilters($event)" class="row"></tf-visites-chantier-filters> -->
 <div class="row px-2">
 	<div class="col-3">
-		<tf-widget-indicator [value]="stats.total_vss" [desc]="'Visites en cours'"  *ngIf="stats; else loading"></tf-widget-indicator>
+		<tf-widget-indicator [value]="stats.total_vss" desc="{{'VISITES.DASH.VISITS_IN_PROGRESS' | translate}}"  *ngIf="stats; else loading"></tf-widget-indicator>
 	</div>
 	<div class="col-3">
-		<tf-widget-indicator [value]="stats.total_ko_solved" [desc]="'Non-confoirmités immédiatement résolue'"  *ngIf="stats; else loading"></tf-widget-indicator>
+		<tf-widget-indicator [value]="stats.total_ko_solved" desc="{{'VISITES.DASH.NC_RESOLVED' | translate}}"  *ngIf="stats; else loading"></tf-widget-indicator>
 	</div>
 	<div class="col-3">
-		<tf-widget-indicator [value]="stats.total_ko_unsolved" [desc]="'Actions issues de non-conformités'"  *ngIf="stats; else loading"></tf-widget-indicator>
+		<tf-widget-indicator [value]="stats.total_ko_unsolved" desc="{{'VISITES.DASH.NC_ACTIONS' | translate}}"  *ngIf="stats; else loading"></tf-widget-indicator>
 	</div>
 	<div class="col-3">
-		<tf-widget-indicator [value]="stats.total_avertissements" [desc]="'Nombre d\'avertissements'"  *ngIf="stats; else loading"></tf-widget-indicator>
+		<tf-widget-indicator [value]="stats.total_avertissements" desc="{{'VISITES.DASH.WARN_NO' | translate}}"  *ngIf="stats; else loading"></tf-widget-indicator>
 	</div>
 	
 

@@ -34,9 +34,9 @@ export class VisiteChantierAdminComponent implements OnInit {
   }
   getTpl(type){
     return {
-        title : this.translate.instant("VISITES.NOTIF.ELEMENT_NOT_DELETED.SHORTTILE")+' '+type.libelle,
-        deletedMessage: this.translate.instant("VISITES.NOTIF.ELEMENT_NOT_DELETED.TITLE"),
-        deletedChildMessage: this.translate.instant("VISITES.NOTIF.ELEMENT_NOT_DELETED.LABEL"),
+        title : this.translate.instant("VISITES.NOTIF.ELEMENT_NOT_DELETED.CHANTIER.SHORTTILE")+' '+type.libelle,
+        deletedMessage: this.translate.instant("VISITES.NOTIF.ELEMENT_NOT_DELETED.CHANTIER.TITLE"),
+        deletedChildMessage: this.translate.instant("VISITES.NOTIF.ELEMENT_NOT_DELETED.CHANTIER.LABEL"),
         collapsed : false,
         childCol : 6
       }
@@ -75,7 +75,7 @@ export class VisiteChantierAdminComponent implements OnInit {
         .toPromise()
         .then((res:any) => {
           Swal.fire({ icon: 'success', 
-            title: this.translate.instant("VISITES.NOTIF.FORM_CREATED.TITLE"),
+            title: this.translate.instant("VISITES.NOTIF.FORM_ARCHIVED.TITLE"),
             showConfirmButton: false, 
             timer: 1500 
           })
@@ -86,7 +86,7 @@ export class VisiteChantierAdminComponent implements OnInit {
           console.log(err);
           Swal.fire({
             icon: 'error',
-            title: this.translate.instant("VISITES.NOTIF.ELEMENT_NOT_DELETED.SUBLABEL"),
+            title: this.translate.instant("VISITES.NOTIF.ELEMENT_NOT_DELETED.CHANTIER.SUBLABEL"),
             showConfirmButton: false,
             timer: 3000
           });

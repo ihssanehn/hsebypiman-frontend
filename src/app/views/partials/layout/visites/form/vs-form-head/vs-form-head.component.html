@@ -21,7 +21,7 @@
 
                                 <!-- SALARIE -->
                                 <mat-form-field class="col-xl-3" *ngIf="origin == 'add' || formHasValue('salarie_id')"
-                                    matTooltip="{{'VISITES.NOTIF.CANNOT_SELECT_EMPLOYEE.TITLE' | translate}}"
+                                    matTooltip="{{'VISITES.NOTIF.CANNOT_SELECT_EMPLOYEE.COMPANY_SELECTED.TITLE' | translate}}"
                                     [matTooltipDisabled]="formHasValue('salarie_id')">
                                     <mat-label>{{'VISITES.VISITED.LABEL' | translate}}</mat-label>
                                     <mat-select class="form-control" placeholder="" formControlName="salarie_id"

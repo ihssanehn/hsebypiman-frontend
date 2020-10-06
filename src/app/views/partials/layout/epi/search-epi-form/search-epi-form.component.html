@@ -58,7 +58,7 @@
                                                                     
                                 <mat-form-field class="col-xl-3 text-center" floatLabel="always" appearance="none">
                                     <mat-slide-toggle formControlName="is_externe" [checked]="isExterne()" (change)="toggleExterne($event.checked)">
-                                        <span class="slider-label">Visite Externe</span>
+                                        <span class="slider-label">{{'VISITES.EXTERNAL_VISIT.TITLE' | translate}}</span>
                                     </mat-slide-toggle>
                                     <textarea matInput hidden></textarea>
                                 </mat-form-field>
@@ -68,7 +68,7 @@
                 </div>
             </form>
             <button class="btn btn-brand btn-sm btn-search mr-4 float-right" [disabled]="cantDisplayQuestions()" (click)="onSubmit()">
-                Commencer la visite
+                {{'VISITES.ACTION.START_VISIT.TITLE' | translate}}
             </button>
         </div>
     </div>

@@ -4,6 +4,7 @@ import { AdminAddModalComponent } from '@app/views/partials/layout/admin-add-mod
 import { Type } from '@app/core/models';
 import { TypeService } from '@app/core/services';
 import Swal from 'sweetalert2';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class VisiteVehiculeAdminComponent implements OnInit {
     private typeService: TypeService,
     private cdr: ChangeDetectorRef,
     private modalService: NgbModal,
+    private translate: TranslateService
   ) { }
 
   ngOnInit() {
@@ -33,9 +35,9 @@ export class VisiteVehiculeAdminComponent implements OnInit {
 
   getTpl(type){
     return {
-        title : 'Questions '+type.libelle,
-        deletedMessage: 'Suppression impossible car la selection comprend un élément affecté à un ou plusieurs véhicules',
-        deletedChildMessage: 'Suppression impossible car la selection est affectée à un ou plusieurs véhicules',
+        title : this.translate.instant("VISITES.NOTIF.ELEMENT_NOT_DELETED.VEHICULE.SHORTTITLE")+' '+type.libelle,
+        deletedMessage: this.translate.instant("VISITES.NOTIF.ELEMENT_NOT_DELETED.VEHICULE.TITLE"),
+        deletedChildMessage: this.translate.instant("VISITES.NOTIF.ELEMENT_NOT_DELETED.VEHICULE.LABEL"),
         collapsed : false,
         childCol : 6
       }
@@ -61,7 +63,7 @@ export class VisiteVehiculeAdminComponent implements OnInit {
   }
 
   addFormulaire(appends?){
-    var title="Nouveau formulaire"
+    var title=this.translate.instant("VISITES.ACTION.ADD_FORM.LABEL")
     const modalRef = this.modalService.open(AdminAddModalComponent, {centered : true});
     modalRef.componentInstance.title = ( title || '...' );
     modalRef.result.then( payload => this.createFormulaire(payload, appends), payload => this.createFormulaire(payload, appends) );
@@ -73,7 +75,7 @@ export class VisiteVehiculeAdminComponent implements OnInit {
         .toPromise()
         .then((res:any) => {
           Swal.fire({ icon: 'success', 
-            title:"Le formulaire a bien été archivé", 
+            title:this.translate.instant("VISITES.NOTIF.FORM_ARCHIVED.TITLE"), 
             showConfirmButton: false, 
             timer: 1500 
           })
@@ -84,7 +86,7 @@ export class VisiteVehiculeAdminComponent implements OnInit {
           console.log(err);
           Swal.fire({
             icon: 'error',
-            title: "Suppression impossible car le formulaire est affectée à une ou plusieures visites",
+            title: this.translate.instant("VISITES.NOTIF.FORM_NOT_ARCHIVED.TITLE"),
             showConfirmButton: false,
             timer: 3000
           });

@@ -629,8 +629,7 @@
 			"VISITS_NUMBER": {
 				"SHORTTITLE": "No. of SV",
 				"TITLE": "Number of SV"
-			},
-			"_VISITS_NUMBER": "Number of SV"
+			}
 		},
 		"DATE": {
 			"LABEL": "Date",
@@ -995,6 +994,14 @@
 		"REMONTEES": "QHSE lifts",
 		"ROOT": "Administration",
 		"SALARIES": "Employees",
+		"SUBHEADER": {
+			"VISITS": {
+				"VS_CHANTIER": "Site security visits",
+				"VS_EPI": "PPE security visits",
+				"VS_OUTILLAGE": "Tools security visits",
+				"VS_VEHICULE": "Vehicle security visits"
+			}
+		},
 		"SUB_ANALYSERISQUE": {
 			"ADD": "New site risk analysis",
 			"DETAIL": "Detailed risk analysis",
@@ -1397,6 +1404,16 @@
 		"COMPLIANCE_DATE": {
 			"TITLE": "Date of compliance"
 		},
+		"DASH": {
+			"NC_ACTIONS": "Actions resulting from non-conformities",
+			"NC_EVOLUTION": "Evolution of non-conformities",
+			"NC_EVOLUTION_PER_CATEGORY": "Evolution of non-conformities by category",
+			"NC_PER_CATEGORY": "Non-conformities by category",
+			"NC_RESOLVED": "Non-conformities immediately resolved",
+			"VISITS_BY_CATEGORY": "Visits by categories",
+			"VISITS_IN_PROGRESS": "Current visits",
+			"WARN_NO": "Number of warnings"
+		},
 		"DATE_VISITE": {
 			"LABEL": "Date of the visit",
 			"SHORTTITLE": "Date of the visit",
@@ -1441,22 +1458,63 @@
 		},
 		"NOTIF": {
 			"CANNOT_SELECT_EMPLOYEE": {
-				"TITLE": "You cannot select an employee if a company is already selected"
+				"COMPANY_SELECTED": {
+					"TITLE": "You cannot select an employee if a company is already selected"
+				},
+				"MATERIEL_SELECTED": {
+					"TITLE": "You cannot select an employee if a material is already selected"
+				}
 			},
 			"CANNOT_SELECT_ENTREPRISE": {
 				"TITLE": "You cannot select a company if an employee is already selected"
 			},
 			"ELEMENT_NOT_DELETED": {
-				"LABEL": "Unable to delete because the selection is assigned to one or more sites",
-				"SHORTTILE": "Questions",
-				"SUBLABEL": "Deletion impossible because the form is assigned to one or more visits",
-				"TITLE": "Unable to delete because the selection includes an element assigned to one or more sites"
+				"CHANTIER": {
+					"LABEL": "Unable to delete because the selection is assigned to one or more sites",
+					"SHORTTITLE": "Questions",
+					"SUBLABEL": "Deletion impossible because the form is assigned to one or more visits",
+					"TITLE": "Unable to delete because the selection includes an element assigned to one or more sites"
+				},
+				"EPI": {
+					"LABEL": "Unable to delete because the selection is assigned to one or more personal protective equipment",
+					"SHORTTITLE": "Questions",
+					"SUBLABEL": "",
+					"TITLE": "Cannot be deleted because the selection includes an item assigned to one or more personal protective equipment"
+				},
+				"OUTILLAGE": {
+					"LABEL": "Unable to delete because the selection is assigned to one or more tools",
+					"SHORTTITLE": "Questions",
+					"SUBLABEL": "",
+					"TITLE": "Unable to delete because the selection includes an element assigned to one or more tools"
+				},
+				"TITLE": "Forms",
+				"VEHICULE": {
+					"LABEL": "Unable to delete because the selection is assigned to one or more vehicles",
+					"SHORTTITLE": "Questions",
+					"SUBLABEL": "",
+					"TITLE": "Unable to delete because the selection includes an element assigned to one or more vehicles"
+				}
 			},
-			"FORM_CREATED": {
+			"FORM_ARCHIVED": {
 				"TITLE": "The form has been archived"
+			},
+			"FORM_NOT_ARCHIVED": {
+				"TITLE": "Deletion impossible because the form is assigned to one or more visits"
+			},
+			"NO_MATERIEL_ASSOCIATED_TO_EMPLOYEE": {
+				"TITLE": "No material associated with this employee"
 			},
 			"VISIT_CREATED": {
 				"TITLE": "Visit successfully created"
+			},
+			"VISIT_DELETED": {
+				"TITLE": "The visit has been successfully deleted"
+			},
+			"VISIT_NOT_DELETED": {
+				"TITLE": "The visit could not be deleted"
+			},
+			"VISIT_UPDATED": {
+				"TITLE": "Visit successfully updated"
 			}
 		},
 		"PRESENCE_NC": {
