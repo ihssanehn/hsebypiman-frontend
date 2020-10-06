@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { Chantier } from '@app/core/models';
 import { MatTableDataSource } from '@angular/material';
 import {MatSort} from '@angular/material/sort';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'tf-dash-chantier',
@@ -38,6 +39,7 @@ export class DashChantierComponent implements OnInit {
   constructor(
     private chantierService: ChantierService,
     private dashboardService: DashboardService,
+    private translate: TranslateService,
     protected cdr: ChangeDetectorRef,
     private router: Router,
   ) { }
@@ -76,6 +78,6 @@ export class DashChantierComponent implements OnInit {
   }
 
 	getHeaderStats(){
-		return 'En cours :&nbsp;<b class="text-primary">'+ this.stats.total_chantiers_in_progress+' / '+this.stats.total_chantiers+'</b>'
+		return this.translate.instant("COMMON.DASH.IN_PROGRESS")+' :&nbsp;<b class="text-primary">'+ this.stats.total_chantiers_in_progress+' / '+this.stats.total_chantiers+'</b>'
 	}
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef, ElementRef, ViewChild } from '@angular/core';
 import { DashboardService } from '@app/core/services';
 import * as echarts from 'echarts';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'tf-dash-analyse-risque',
@@ -51,8 +52,9 @@ export class DashAnalyseRisqueComponent implements OnInit {
 	};
 
   constructor(
-    private dashboardService: DashboardService,
-		protected cdr: ChangeDetectorRef
+	private dashboardService: DashboardService,
+	private translate: TranslateService,
+	protected cdr: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -84,7 +86,7 @@ export class DashAnalyseRisqueComponent implements OnInit {
 	}
 	
 	getHeaderStats(){
-		return 'En cours :&nbsp;<b class="text-primary">'+ this.stats.total_ars_in_progress+' / '+this.stats.total_ars+'</b>'
+		return this.translate.instant("COMMON.DASH.IN_PROGRESS")+' :&nbsp;<b class="text-primary">'+ this.stats.total_ars_in_progress+' / '+this.stats.total_ars+'</b>'
 	}
 
 }

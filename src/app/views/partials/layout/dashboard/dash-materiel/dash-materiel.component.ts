@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Materiel } from '@app/core/models';
 import { DashboardService } from '@app/core/services';
 import * as echarts from 'echarts';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -33,6 +34,7 @@ export class DashMaterielComponent implements OnInit {
 
   constructor(
     private dashboardService: DashboardService,
+    private translate: TranslateService,
     private router: Router,
 		protected cdr: ChangeDetectorRef
   ) { }
@@ -41,7 +43,6 @@ export class DashMaterielComponent implements OnInit {
 
     this.getExtraParams();
     this.getMaterielDash();
-  
   }
 
   getExtraParams(){
@@ -73,7 +74,7 @@ export class DashMaterielComponent implements OnInit {
   }
 
   getHeaderStats(){
-    return '<span>A visiter : </span>&nbsp;<b class="text-warning">'+this.stats.total_to_visit+'</b>'+'<span class="ml-4">En retard : </span>&nbsp;<b class="text-danger">'+this.stats.total_retard+'</b>'+'<span class="ml-4">Total : </span>&nbsp;<b class="text-primary">'+this.stats.total_materiel+'</b>';
+    return '<span>'+this.translate.instant("COMMON.DASH.TO_VISIT")+' : </span>&nbsp;<b class="text-warning">'+this.stats.total_to_visit+'</b>'+'<span class="ml-4">'+this.translate.instant("COMMON.DASH.LATE")+' : </span>&nbsp;<b class="text-danger">'+this.stats.total_retard+'</b>'+'<span class="ml-4">'+this.translate.instant("COMMON.DASH.TOTAL")+' : </span>&nbsp;<b class="text-primary">'+this.stats.total_materiel+'</b>';
   }
 
   viewMateriel(materielId){

@@ -1,5 +1,5 @@
 <tf-portlet >
-	<tf-portlet-header [title]="'Matériel à visiter'" [stats]="stats ? getHeaderStats() : ''"></tf-portlet-header>
+	<tf-portlet-header title="{{'MENU.MATERIELS' | translate}}" [stats]="stats ? getHeaderStats() : ''"></tf-portlet-header>
 	<tf-portlet-body [class]="'tf-portlet__body--fit'" *ngIf="stats; else loading">
 		<div class="row row-no-padding row-col-separator-xl"  style="height: 100%">
 			<div class="col-12" style="padding:1em">

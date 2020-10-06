@@ -1,6 +1,8 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { DashboardService } from '@app/core/services';
 import { Widget4Data } from '@app/views/partials/content/widgets/widget4/widget4.component';
+import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'tf-dash-entreprise',
@@ -16,14 +18,44 @@ export class DashEntrepriseComponent implements OnInit {
   filter: any = {
 		keyword: null
 	};
+	raison_sociale : string;
+	chiffre_affaire : string;
+	visites_count : string;
 
   constructor(
-    private dashboardService: DashboardService,
+	private dashboardService: DashboardService,
+	private translate: TranslateService,
 	protected cdr: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
+	this.translate.stream("EES.RAISON_SOCIALE.LABEL").subscribe(v => this.raison_sociale = v);
+	this.translate.stream("EES.CA.SHORTTITLE").subscribe(v => this.chiffre_affaire = v);
+	this.translate.stream("COMMON.DASH.VISITS_NUMBER.SHORTTITLE")
+	.subscribe(v => {
+		this.visites_count = v;
+		this.refreshTranslation();
+	});
     this.getEntrepriseDash();
+  }
+
+  refreshTranslation(){
+	if(this.stats){
+		this.stats.top_5_sous_traitant.shift();
+		this.loadDatas();
+	} 
+  }
+
+  loadDatas(){
+	if(this.stats){
+		this.header = {
+			id: null,
+			raison_sociale: this.raison_sociale,
+			chiffre_affaire: this.chiffre_affaire,
+			visites_count: this.visites_count,
+		}
+		this.stats.top_5_sous_traitant.unshift(this.header);
+	}
   }
 
   ngAfterViewInit(){}
@@ -32,13 +64,7 @@ export class DashEntrepriseComponent implements OnInit {
 		try {
 			this.dashboardService.getEntrepriseStats(this.filter).subscribe(res=>{
 				this.stats = res.result.data;
-				this.header = {
-					id: null,
-					raison_sociale: 'Raison Sociale',
-					chiffre_affaire: 'CA',
-					visites_count: 'Nbre de VS'
-				}
-				this.stats.top_5_sous_traitant.unshift(this.header);
+				this.loadDatas();
 				// var list = [];
 				// this.stats.top_5_sous_traitant.forEach(element => {
 				// 	list.push({
