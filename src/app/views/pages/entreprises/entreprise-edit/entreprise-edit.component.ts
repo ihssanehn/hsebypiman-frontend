@@ -14,6 +14,7 @@ import moment from 'moment';
 import Swal from 'sweetalert2';
 import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
 import {FormStatus} from '@app/core/_base/crud/models/form-status';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
 	selector: 'tf-entreprise-edit',
@@ -48,6 +49,7 @@ export class EntrepriseEditComponent implements OnInit, OnDestroy {
 		private entrepriseFB: FormBuilder,
 		// private notificationService: NzNotificationService,
 		private entrepriseService: EntrepriseService,
+		private translate: TranslateService,
 		private cdr: ChangeDetectorRef,
 		private permissionsService: NgxPermissionsService,
 		private location: Location,
@@ -138,7 +140,7 @@ export class EntrepriseEditComponent implements OnInit, OnDestroy {
 
 					Swal.fire({
 						icon: 'success',
-						title: 'Entreprise mise à jour avec succès',
+						title: this.translate.instant("EES.NOTIF.COMPANY_UPDATED.TITLE"),
 						showConfirmButton: false,
 						timer: 1500
 					}).then(() => {
@@ -150,7 +152,7 @@ export class EntrepriseEditComponent implements OnInit, OnDestroy {
 
 					Swal.fire({
 						icon: 'error',
-						title: 'Echec! le formulaire est incomplet',
+						title: this.translate.instant("ARS.NOTIF.INCOMPLETE_FORM.TITLE"),
 						showConfirmButton: false,
 						timer: 1500
 					});

@@ -5,6 +5,7 @@ import { CategorieService } from '@app/core/services';
 import { AdminListPortletComponent } from '@app/views/partials/layout/admin-list-portlet/admin-list-portlet.component';
 import { AdminAddModalComponent } from '@app/views/partials/layout/admin-add-modal/admin-add-modal.component';
 import Swal from 'sweetalert2';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'materiel-types-admin-portlet',
@@ -19,6 +20,8 @@ export class MaterielTypesAdminPortletComponent extends AdminListPortletComponen
   modalService: NgbModal;
   parentService: any;
   childService: any;
+  translate: TranslateService;
+
 
   tpl : any = {
     title : 'Titre',
@@ -36,6 +39,7 @@ export class MaterielTypesAdminPortletComponent extends AdminListPortletComponen
     this.modalService = injector.get(NgbModal);
     this.parentService = injector.get(CategorieService);
     this.childService = injector.get(CategorieService);
+    this.translate = injector.get(TranslateService);
   }
 
   ngOnInit() {
@@ -56,7 +60,7 @@ export class MaterielTypesAdminPortletComponent extends AdminListPortletComponen
   async addItem(){
     var appends = {model : 'Materiel', parent_id: this.item.id};
     const modalRef = this.modalService.open(AdminAddModalComponent, {centered : true});
-    modalRef.componentInstance.title = ( "Ajouter un type de matériel" || '...' );
+    modalRef.componentInstance.title = ( this.translate.instant("MATERIELS.ACTION.ADD_MATERIAL_TYPE") || '...' );
     modalRef.result.then( payload => this.createItem(payload, appends), payload => this.createItem(payload, appends) );
   }
 

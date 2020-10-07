@@ -8,7 +8,7 @@
 			<a (click)="$event.stopPropagation(); addItem()" data-ktportlet-tool="add" class="btn btn-sm btn-icon btn-clean btn-icon-md">
 				<i class="la la-plus"></i>
 			</a>
-			<a (click)="$event.stopPropagation(); getList()" matTooltip="Raffraîchir" data-ktportlet-tool="add" class="btn btn-sm btn-icon btn-clean btn-icon-md">
+			<a (click)="$event.stopPropagation(); getList()" matTooltip="{{'ACTION.REFRESH' | translate}}" data-ktportlet-tool="add" class="btn btn-sm btn-icon btn-clean btn-icon-md">
 				<i class="la la-refresh"></i>
 			</a>
 		</div>

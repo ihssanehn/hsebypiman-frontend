@@ -30,15 +30,15 @@
                     <button mat-icon-button color="primary" matTooltip="Actions" [matMenuTriggerFor]="actionMenu" (click)="selectedItem = item" >
                         <mat-icon>more_vert</mat-icon>
                     </button>
-                    <a (click)="collapsed = !collapsed" matTooltip="Réduire" [ngClass]="{'collapsed' : collapsed }" class="btn btn-sm btn-icon btn-clean btn-icon-md accordion" data-toggle="collapse" data-target="#group" aria-expanded="true">
+                    <a (click)="collapsed = !collapsed" matTooltip="{{'ACTION.REDUCE' | translate}}" [ngClass]="{'collapsed' : collapsed }" class="btn btn-sm btn-icon btn-clean btn-icon-md accordion" data-toggle="collapse" data-target="#group" aria-expanded="true">
                         <i class="la la-angle-down"></i>
                     </a>
                 </ng-container>
                 <ng-template #editActions>
                     <div class="ml-1 d-inline-flex">
-                        <i nz-icon nzType="check" matTooltip="Enregistrer" (click)="saveItem(item)" nzTheme="outline" class="pointer text-success"></i>
+                        <i nz-icon nzType="check" matTooltip="{{'ACTION.SAVE' | translate}}" (click)="saveItem(item)" nzTheme="outline" class="pointer text-success"></i>
                         <nz-divider nzType="vertical"></nz-divider>
-                        <i nz-icon nzType="close" matTooltip="Annuler" (click)="cancelEdit(item)" nzTheme="outline" class="pointer"></i>
+                        <i nz-icon nzType="close" matTooltip="{{'ACTION.CANCEL' | translate}}" (click)="cancelEdit(item)" nzTheme="outline" class="pointer"></i>
                     </div>
                 </ng-template>
             </div>
@@ -93,11 +93,11 @@
                             </td>
 
                             <td>
-                                <a (click)="startEdit(data)" matTooltip="Modifier" class="text-primary">
+                                <a (click)="startEdit(data)" matTooltip="{{'ACTION.EDIT' | translate}}" class="text-primary">
                                     <i nz-icon nzType="edit"  nzTheme="outline" class="pointer"></i>
                                 </a>
                                 <nz-divider nzType="vertical"></nz-divider>
-                                <a nz-popconfirm nzTitle="Sure to delete?" matTooltip="Supprimer"  class="text-danger" (nzOnConfirm)="deleteChild(data)">
+                                <a nz-popconfirm nzTitle="Sure to delete?" matTooltip="{{'ACTION.DELETE' | translate}}"  class="text-danger" (nzOnConfirm)="deleteChild(data)">
                                     <i class="la la-trash"></i>
                                 </a>
                             </td>
@@ -137,11 +137,11 @@
                                 </a>
                             </td>
                             <td>
-                                <a (click)="saveChild(data)" matTooltip="Enregistrer" class="save" class="text-primary">
+                                <a (click)="saveChild(data)" matTooltip="{{'ACTION.SAVE' | translate}}" class="save" class="text-primary">
                                     <i nz-icon nzType="check" nzTheme="outline"></i>
                                 </a>
                                 <nz-divider nzType="vertical"></nz-divider>
-                                <a (click)="cancelEdit(data)" matTooltip="Annuler">
+                                <a (click)="cancelEdit(data)" matTooltip="{{'ACTION.CANCEL' | translate}}">
                                     <i nz-icon nzType="close" nzTheme="outline"></i>
                                 </a>
                             </td>
@@ -156,16 +156,16 @@
 </div>
 <mat-menu #actionMenu="matMenu" class="action-menu">
     <!-- *ngxPermissionsOnly="['ROOT']" -->
-    <a (click)="startEdit(selectedItem)" matTooltip="Modifier" class="btn btn-sm btn-icon btn-clean btn-icon-md">
+    <a (click)="startEdit(selectedItem)" matTooltip="{{'ACTION.EDIT' | translate}}" class="btn btn-sm btn-icon btn-clean btn-icon-md">
         <i nz-icon nzType="edit"  nzTheme="outline" class="pointer"></i>
     </a>
-    <a (click)="addChild()" data-ktportlet-tool="add" matTooltip="Ajouter" class="btn btn-sm btn-icon btn-clean btn-icon-md">
+    <a (click)="addChild()" data-ktportlet-tool="add" matTooltip="{{'ACTION.ADD' | translate}}" class="btn btn-sm btn-icon btn-clean btn-icon-md">
     <i class="la la-plus"></i>
     </a>
-    <a (click)="refreshItem(selectedItem)" matTooltip="Raffraîchir" class="btn btn-sm btn-icon btn-clean btn-icon-md">
+    <a (click)="refreshItem(selectedItem)" matTooltip="{{'ACTION.REFRESH' | translate}}" class="btn btn-sm btn-icon btn-clean btn-icon-md">
         <i class="la la-refresh"></i>
     </a>
-    <a (nzOnConfirm)="deleteItem(selectedItem)" matTooltip="Supprimer" nz-popconfirm nzPopconfirmTitle="Are you sure delete this item ?" class="btn btn-sm btn-icon btn-clean btn-icon-md">
+    <a (nzOnConfirm)="deleteItem(selectedItem)" matTooltip="{{'ACTION.DELETE' | translate}}" nz-popconfirm nzPopconfirmTitle="{{'NOTIF.DELETE_CONFIRMATION.TITLE' | translate}}" class="btn btn-sm btn-icon btn-clean btn-icon-md">
         <i class="la la-trash"></i>
     </a>
 	<!-- <button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}" (click)="refreshItem(item)">

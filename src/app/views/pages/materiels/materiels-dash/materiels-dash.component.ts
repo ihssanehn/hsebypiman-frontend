@@ -38,7 +38,7 @@ export class MaterielsDashComponent implements OnInit, AfterViewInit, OnDestroy 
 
 	byTypeOptions = {
 		title: {
-			text: 'Materiels par types',
+			text: this.translate.instant("MATERIELS.DASH.MATERIELS_BY_TYPE.TITLE"),
 			x: 'center'
 		},
 		grid: {
@@ -71,7 +71,7 @@ export class MaterielsDashComponent implements OnInit, AfterViewInit, OnDestroy 
 	};
 	EvolOptions = {
 		title: {
-			text: 'Evolution entrée de matériel',
+			text: this.translate.instant("MATERIELS.DASH.MATERIEL_ENTRY_EVOLUTION.TITLE"),
 			x: 'center'
 		},
 		tooltip: {
@@ -111,10 +111,19 @@ export class MaterielsDashComponent implements OnInit, AfterViewInit, OnDestroy 
 		
 	}
 
-	
-
 	ngOnInit() {
 		this.getMaterielsDash();
+	}
+
+	refreshTranslations(){
+		this.translate.stream("MATERIELS.DASH.MATERIELS_BY_TYPE.TITLE").subscribe(x =>{
+			 this.byTypeOptions.title.text = x;
+			 this.echartsType.setOption(this.byTypeOptions);
+		});
+		this.translate.stream("MATERIELS.DASH.MATERIEL_ENTRY_EVOLUTION.TITLE").subscribe(x =>{
+			this.EvolOptions.title.text = x;
+			this.echartsEvol.setOption(this.EvolOptions);
+	   });
 	}
 
 	ngAfterViewInit(){
@@ -122,6 +131,8 @@ export class MaterielsDashComponent implements OnInit, AfterViewInit, OnDestroy 
 		this.echartsType.showLoading();
 		this.echartsEvol = echarts.init(this.evolAll.nativeElement)
 		this.echartsEvol.showLoading();
+
+		this.refreshTranslations();
 	}
 
 

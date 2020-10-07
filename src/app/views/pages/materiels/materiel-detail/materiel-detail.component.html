@@ -23,7 +23,7 @@
 		<div class="row">
 			<div class="col-md-6">
 				<div class="card">
-					<h3>Informations générales</h3>
+					<h3>{{'MATERIELS.CARD.GENERAL_INFOS.TITLE' | translate}}</h3>
 					<div class="box" style="flex:1">
 						<p><span class="label pull-left mr-2">{{'MATERIELS.LIBELLE.TITLE' | translate}}</span><span *ngIf="materiel.libelle; else noData">{{materiel.libelle}}</span></p>
 						<p><span class="label pull-left mr-2">{{'MATERIELS.NUMERO_SERIE.TITLE' | translate}}</span><span *ngIf="materiel.numero_serie; else noData">{{materiel.numero_serie}}</span></p>
@@ -60,7 +60,7 @@
 			<div class="col-md-6">
 				<div class="card">
 					<div class="box box-ar-vs" style="flex: 1;">
-						<h5><b>Suivi des utilisateurs</b><small class="pull-right">{{'MATERIELS.PERSONNELS_COUNT.SHORTTITLE' | translate}} : <span class="blue">{{materiel.salaries.length}}</span></small></h5>
+						<h5><b>{{'MATERIELS.CARD.USER_TRACKING.TITLE' | translate}}</b><small class="pull-right">{{'MATERIELS.PERSONNELS_COUNT.SHORTTITLE' | translate}} : <span class="blue">{{materiel.salaries.length}}</span></small></h5>
 						<ng-container *ngIf="materiel.salaries.length > 0; else noSalaries">
 							<div class="row">
 								<div class="col-12 my-2">
@@ -71,25 +71,25 @@
 										<p class="blue text-left">{{materiel.actual_user | fullName}}</p>
 									</div>
 									<div class="col-3">
-										<p class="blue text-center">pret : {{materiel.actual_user?.pivot.date_pret | date:'dd/MM/yyyy'}}</p>
+										<p class="blue text-center">{{'MATERIELS.READY.TITLE' | translate}} : {{materiel.actual_user?.pivot.date_pret | date:'dd/MM/yyyy'}}</p>
 									</div>
 									<div class="col-3">
 
 									</div>
 									<div class="col-2">
-										<a class="pull-right" (click)="goToUserDetail(materiel.actual_user.id)" alt="voir l'utilisateur">
+										<a class="pull-right" (click)="goToUserDetail(materiel.actual_user.id)" matTooltip="{{'ACTION.SHOW_USER' | translate}}">
 											<mat-icon color="primary">visibility</mat-icon>
 										</a>
 									</div>
 
 									<div class="col-12" *ngIf="materiel.main_categorie?.code != 'VEHICULE'">
-										<button mat-raised-button class="btn-small pull-right" color="info" (click)="$event.stopPropagation(); openPretModal('return', materiel.actual_user.pivot)">Retourner le matériel</button>
+										<button mat-raised-button class="btn-small pull-right" color="info" (click)="$event.stopPropagation(); openPretModal('return', materiel.actual_user.pivot)">{{'MATERIELS.ACTION.RETURN-MATERIEL' | translate}}</button>
 									</div>
 								</ng-container>
 								<ng-template #noUserInProgress>
-									<div class="col-12">Aucun utilisateur en cours</div>
+									<div class="col-12">{{'MATERIELS.CARD.USER_TRACKING.NO_CURRENT_USER' | translate}}</div>
 									<div class="col-12" *ngIf="materiel.main_categorie?.code != 'VEHICULE'">
-										<button mat-raised-button class="btn-small pull-right" color="info" (click)="$event.stopPropagation(); openPretModal('add')">Assigner le matériel</button>
+										<button mat-raised-button class="btn-small pull-right" color="info" (click)="$event.stopPropagation(); openPretModal('add')">{{'MATERIELS.ACTION.ASSIGN_MATERIEL' | translate}}</button>
 									</div>
 								</ng-template>
 							</div>
@@ -104,16 +104,16 @@
 												<p class="text-left">{{salarie | fullName}}</p>
 											</div>
 											<div class="col-3">
-												<p class="text-center">pret : {{salarie.pivot.date_pret | date:'dd/MM/yyyy'}}</p>
+												<p class="text-center">{{'MATERIELS.READY.TITLE' | translate}} : {{salarie.pivot.date_pret | date:'dd/MM/yyyy'}}</p>
 											</div>
 											<div class="col-3">
-												<p class="text-center">retour: {{salarie.pivot.date_retour | date:'dd/MM/yyyy'}}</p>
+												<p class="text-center">{{'MATERIELS.RETURN.TITLE' | translate}}: {{salarie.pivot.date_retour | date:'dd/MM/yyyy'}}</p>
 											</div>
 											<div class="col-2">
-												<a class="pull-right" (click)="goToUserDetail(salarie.id)" alt="voir l'utilisateur">
+												<a class="pull-right" (click)="goToUserDetail(salarie.id)" matTooltip="{{'ACTION.SHOW_USER' | translate}}">
 													<mat-icon color="primary">visibility</mat-icon>
 												</a>
-												<a *ngIf="materiel.main_categorie?.code != 'VEHICULE'" class="pull-right" (click)="$event.stopPropagation(); openPretModal('update', salarie.pivot)" alt="modifier le pret">
+												<a *ngIf="materiel.main_categorie?.code != 'VEHICULE'" class="pull-right" (click)="$event.stopPropagation(); openPretModal('update', salarie.pivot)" matTooltip="{{'MATERIELS.ACTION.MODIFY_LOAN' | translate}}">
 													<mat-icon color="accent">edit</mat-icon>
 												</a>
 											</div>
@@ -121,23 +121,23 @@
 									</ng-container>
 								</ng-container>
 								<ng-template #noArHistorique>
-									Aucun historique
+									{{'MATERIELS.CARD.USER_TRACKING.NO_HISTORY' | translate}}
 								</ng-template>
 							</div>
 						</ng-container>
 						<ng-template #noSalaries>
 							<div class="row">
 								<div class="col-12">
-									<p>Aucun prêt</p>
+									<p>{{'MATERIELS.CARD.USER_TRACKING.NO_LOAN' | translate}}</p>
 								</div>
 								<div class="col-12" *ngIf="materiel.main_categorie?.code != 'VEHICULE'">
-									<button mat-raised-button color="info" class="btn-small" (click)="$event.stopPropagation(); openPretModal('add')">Assigner le matériel</button>
+									<button mat-raised-button color="info" class="btn-small" (click)="$event.stopPropagation(); openPretModal('add')">{{'MATERIELS.ACTION.ASSIGN_MATERIEL' | translate}}</button>
 								</div>
 							</div>
 						</ng-template>
 					</div>
 					<div class="box box-ar-vs" style="flex: 1;" *ngIf="materiel.vss">
-						<h5><b>Suivi des visites</b><small class="pull-right">{{'MATERIELS.VS_COUNT.SHORTTITLE' | translate}} : <span class="blue">{{materiel.vss.length}}</span></small></h5>
+						<h5><b>{{'MATERIELS.CARD.VISITS_MONITORING.TITLE' | translate}}</b><small class="pull-right">{{'MATERIELS.VS_COUNT.SHORTTITLE' | translate}} : <span class="blue">{{materiel.vss.length}}</span></small></h5>
 						<div class="row">
 							<div class="col-md-12 my-2">
 								<p><span class="label">{{'MATERIELS.VSS.TITLE' | translate}}</span></p>
@@ -150,7 +150,7 @@
 									<div class="col-md-5">
 										<p class="text-left">{{vs.date_visite | date:'dd/MM/yyyy'}}</p>
 									</div>
-									<div class="col-md-2 text-right"><a (click)="goToVsDetail(vs.id)" alt="voir la visite">
+									<div class="col-md-2 text-right"><a (click)="goToVsDetail(vs.id)" matTooltip="{{'ACTION.SHOW_VISIT' | translate}}">
 											<mat-icon color="primary">visibility</mat-icon>
 										</a></div>
 								</ng-container>
@@ -158,7 +158,7 @@
 							<ng-template #noVss>
 								<div class="row">
 									<div class="col-12">
-										<p>Aucune visites</p>
+										<p>{{'MATERIELS.CARD.VISITS_MONITORING.NO_VISITS' | translate}}</p>
 									</div>
 								</div>
 							</ng-template>

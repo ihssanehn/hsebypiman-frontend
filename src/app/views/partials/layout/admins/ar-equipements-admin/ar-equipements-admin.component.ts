@@ -31,6 +31,7 @@ export class ArEquipementsAdminComponent extends AdminTemplateComponent implemen
 
   ngOnInit() {
     super.ngOnInit();
+    this.refreshTranslations();
     this.tpl = {
       title : this.translate.instant("ARS.CARD.EQUIPEMENT.SHORTTITLE"),
       deletedMessage: this.translate.instant("ARS.NOTIF.ELEMENT_NOT_DELETED.TITLE"),
@@ -41,6 +42,19 @@ export class ArEquipementsAdminComponent extends AdminTemplateComponent implemen
       childCol : 12
     }
   }
+
+  refreshTranslations(){
+		this.translate.stream("ARS.CARD.EQUIPEMENT.SHORTTITLE").subscribe(x =>{
+			 this.tpl.title = x;
+		});
+		this.translate.stream("ARS.NOTIF.ELEMENT_NOT_DELETED.TITLE").subscribe(x =>{
+			this.tpl.deletedMessage = x;
+	   });
+		this.translate.stream("ARS.NOTIF.ELEMENT_NOT_DELETED.SUBTITLE").subscribe(x =>{
+			this.tpl.deletedChildMessage = x;
+		});
+	}
+
 
   async getList(){
     try {

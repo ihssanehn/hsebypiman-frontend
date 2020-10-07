@@ -84,7 +84,7 @@ export class EntrepriseAddComponent implements OnInit {
           var entreprise = res.result.data;
           Swal.fire({
             icon: 'success',
-            title: 'Entreprise créée avec succès',
+            title: this.translate.instant("EES.NOTIF.COMPANY_CREATED.TITLE"),
             showConfirmButton: false,
             timer: 1500
           }).then(() => {
@@ -96,7 +96,7 @@ export class EntrepriseAddComponent implements OnInit {
 
           Swal.fire({
             icon: 'error',
-            title: 'Echec! le formulaire est incomplet',
+            title: this.translate.instant("ARS.NOTIF.INCOMPLETE_FORM.TITLE"),
             showConfirmButton: false,
             timer: 1500
           });

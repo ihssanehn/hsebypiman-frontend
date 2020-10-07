@@ -108,7 +108,7 @@ export class MaterielsListComponent implements OnInit, AfterViewInit {
 	}
 	deleteMateriel(materielId) {
 		Swal.fire({
-			title: 'Désolé cette fonctionnalité n\'a pas encore été implémentée',
+			title: this.translate.instant("NOTIF.FEATURE_NOT_IMPLEMENTED.TITLE"),
 			showConfirmButton: false,
 			timer: 1500
 		})

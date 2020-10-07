@@ -21,7 +21,7 @@
 		<div class="row">
 			<div class="col-md-4">
 				<div class="card">
-					<h3>Informations générales</h3>
+					<h3>{{'EES.CARD.GENERAL_INFOS.TITLE' | translate}}</h3>
 					<div class="box" style="flex:1">
 						<p><span class="label pull-left mr-2">{{'EES.RAISON_SOCIALE.TITLE' | translate}}</span><span class="">{{entreprise.raison_sociale}}</span></p>
 						<p><span class="label pull-left mr-2">{{'EES.TYPE.TITLE' | translate}}</span><span class="">{{entreprise.type?.libelle}}</span></p>
@@ -37,7 +37,7 @@
 			</div>
 			<div class="col-md-8">
 				<div class="card">
-					<h3>Coordonnées entreprise</h3>
+					<h3>{{'EES.CARD.COMPANY_DETAILS.TITLE' | translate}}</h3>
 					<div class="box box-coords" style="flex:1">
 						<p><span class="label pull-left mr-2">{{'COMMON.ADRESS.SHORTTITLE' | translate}}</span><span class="">{{entreprise.adresse ? entreprise.adresse : '&nbsp;'}}</span></p>
 						<p><span class="label pull-left mr-2">{{'COMMON.CITY.SHORTTITLE' | translate}}</span><span class="">{{entreprise.ville ? entreprise.ville : '&nbsp;'}}</span></p>
@@ -48,9 +48,9 @@
 			</div>
 			<div class="col-md-12 mt-4">
 				<div class="card">
-					<h3>Suivi de l'entreprise</h3>
+					<h3>{{'EES.CARD.COMPANY_MONITORING.TITLE' | translate}}</h3>
 					<div class="box box-chantiers " style="flex: 1;">
-						<h5><b>Suivis chantiers</b><small class="pull-right">{{'EES.CHANTIERS_COUNT.SHORTTITLE' | translate}} : <span class="blue">{{entreprise.chantiers.length}}</span></small></h5>
+						<h5><b>{{'EES.CARD.COMPANY_MONITORING.LABEL' | translate}}</b><small class="pull-right">{{'EES.CHANTIERS_COUNT.SHORTTITLE' | translate}} : <span class="blue">{{entreprise.chantiers.length}}</span></small></h5>
 						<div class="row mt-4" *ngIf="entreprise.chantiers.length > 0; else noChantier">
 							<div class="col-md-12">
 		            <div class="table-responsive">
@@ -90,17 +90,17 @@
                     </ng-container>
                     <!-- date_demarrage Column -->
                     <ng-container matColumnDef="date_demarrage">
-                      <th mat-header-cell *matHeaderCellDef class="text-center">{{'CHANTIERS.DATE_DEMARRAGE.SHORTTITLE' | translate}} Chantier</th>
+                      <th mat-header-cell *matHeaderCellDef class="text-center">{{'CHANTIERS.DATE_DEMARRAGE.LABEL' | translate}}</th>
                       <td mat-cell *matCellDef="let chantier" (click)="viewChantier(chantier.id)" class="text-center pointer"> {{chantier.date_demarrage | date:'dd/MM/yyyy'}} </td>
                     </ng-container>
                     <!-- date_demarrage_ee Column -->
                     <ng-container matColumnDef="date_demarrage_ee">
-                      <th mat-header-cell *matHeaderCellDef class="text-center">{{'EES.DATE_DEMARRAGE.SHORTTITLE' | translate}} de l'EE</th>
+                      <th mat-header-cell *matHeaderCellDef class="text-center">{{'EES.DATE_DEMARRAGE.SUBLABEL' | translate}}</th>
                       <td mat-cell *matCellDef="let chantier" (click)="viewChantier(chantier.id)" class="text-center pointer"> {{chantier.pivot.date_demarrage | date:'dd/MM/yyyy'}} </td>
                     </ng-container>
                     <!-- ca_ee Column -->
                     <ng-container matColumnDef="ca_ee" >
-                      <th mat-header-cell *matHeaderCellDef class="text-center">{{'EES.CA.SHORTTITLE' | translate}} de l'EE</th>
+                      <th mat-header-cell *matHeaderCellDef class="text-center">{{'EES.CA.SUBLABEL' | translate}}</th>
                       <td mat-cell *matCellDef="let chantier" (click)="viewChantier(chantier.id)" class="text-center pointer"> {{chantier.pivot.chiffre_affaire | currency:'EUR':'€'}} </td>
                     </ng-container>
                     <!-- ca_ee Column -->
@@ -129,7 +129,7 @@
 
 
 <ng-template #noChantier>
-		<p class="text-left">
-			Cette entreprise n'a été affectée à aucun chantier
-		</p>
+	<p class="text-left">
+		{{'EES.CARD.COMPANY_MONITORING.NO_CHANTIER' | translate}}
+	</p>
 </ng-template>

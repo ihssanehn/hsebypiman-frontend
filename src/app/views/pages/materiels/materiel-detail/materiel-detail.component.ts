@@ -14,6 +14,8 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import Swal from 'sweetalert2';
+import { TranslateService } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'tf-materiel-detail',
@@ -48,6 +50,7 @@ export class MaterielDetailComponent implements OnInit, OnDestroy {
 		public dialog: MatDialog,
 		// private notificationService: NzNotificationService,
 		private materielService: MaterielService,
+		private translate: TranslateService,
 		private cdr: ChangeDetectorRef,
 		private permissionsService : NgxPermissionsService,
 		iconRegistry: MatIconRegistry, 
@@ -95,8 +98,6 @@ export class MaterielDetailComponent implements OnInit, OnDestroy {
 		this.router.navigateByUrl(url, { relativeTo: this.activatedRoute });
 	}
   
-	
-
   	/**
 	 * Refresh user
 	 *
@@ -114,7 +115,7 @@ export class MaterielDetailComponent implements OnInit, OnDestroy {
 		// url = `/salaries/detail/${id}`;
 		// this.router.navigateByUrl(url, { relativeTo: this.activatedRoute });
 		Swal.fire({
-			title:'Désolé cette fonctionnalité n\'a pas encore été implémentée',
+			title: this.translate.instant("NOTIF.FEATURE_NOT_IMPLEMENTED.TITLE"),
 			showConfirmButton: false,
             timer: 1500
 		})
@@ -125,7 +126,7 @@ export class MaterielDetailComponent implements OnInit, OnDestroy {
 	}
 	deleteMateriel(id){
 		Swal.fire({
-			title:'Désolé cette fonctionnalité n\'a pas encore été implémentée',
+			title: this.translate.instant("NOTIF.FEATURE_NOT_IMPLEMENTED.TITLE"),
 			showConfirmButton: false,
             timer: 1500
 		})
@@ -153,7 +154,7 @@ export class MaterielDetailComponent implements OnInit, OnDestroy {
 			this.cdr.markForCheck();
 			Swal.fire({
 				icon: 'success',
-				title: 'Prêt mis à jour avec succès',
+				title: this.translate.instant("MATERIELS.NOTIF.LOAN_UPDATED.TITLE"),
 				showConfirmButton: false,
 				timer: 1500
 			});
@@ -169,7 +170,7 @@ export class MaterielDetailComponent implements OnInit, OnDestroy {
 			this.cdr.markForCheck();
 			Swal.fire({
 				icon: 'success',
-				title: 'Prêt créé avec succès',
+				title: this.translate.instant("MATERIELS.NOTIF.LOAN_CREATED.TITLE"),
 				showConfirmButton: false,
 				timer: 1500
 			});

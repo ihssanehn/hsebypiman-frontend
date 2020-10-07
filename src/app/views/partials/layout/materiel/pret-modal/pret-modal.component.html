@@ -1,9 +1,9 @@
 <div class="py-2 px-4">
 	<!--  class="modal-title" -->
 	<h4 mat-dialog-title>
-		<span *ngIf="data.origin == 'add';">Assigner le matériel</span>
-		<span *ngIf="data.origin == 'return';">Retourner le matériel</span>
-		<span *ngIf="data.origin == 'update';">Modifier le prêt matériel</span>
+		<span *ngIf="data.origin == 'add';">{{'MATERIELS.ACTION.ASSIGN_MATERIEL' | translate}}</span>
+		<span *ngIf="data.origin == 'return';">{{'MATERIELS.ACTION.RETURN-MATERIEL' | translate}}</span>
+		<span *ngIf="data.origin == 'update';">{{'MATERIELS.ACTION.MODIFY_LOAN' | translate}}</span>
 	</h4>
 	<!-- class="modal-body"  -->
 	<mat-dialog-content >
@@ -43,7 +43,7 @@
 	<!-- class="modal-footer" -->
 	<mat-dialog-actions >
 		<button mat-raised-button (click)="cancel()" type="button" color="warn" class="btn-small mr-2">
-			{{ 'Annuler' | translate }}
+			{{ 'ACTION.CANCEL' | translate }}
 		</button>
 		<button mat-raised-button type="button" color="info" class="btn-small" (click)="submitForm()" [ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': formloading}" [disabled]="formloading || !form?.valid">
 			{{'ACTION.SAVE' | translate}}

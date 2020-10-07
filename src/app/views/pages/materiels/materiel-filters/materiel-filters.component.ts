@@ -27,18 +27,6 @@ export class MaterielFiltersComponent implements OnInit, AfterViewInit
   status: Status[];
   categories: Categorie[];
   clients: String[];
-  visiteOptions = [
-    'Avec',
-    'Sans'
-  ]
-  analyseOptions = [
-    'Avec',
-    'Sans'
-  ]
-  materielOptions = [
-    'Avec',
-    'Sans'
-  ]
   statuses;
 
   @Output() change = new EventEmitter();
