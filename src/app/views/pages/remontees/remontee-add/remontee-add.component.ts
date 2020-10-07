@@ -104,7 +104,7 @@ export class RemonteeAddComponent implements OnInit {
 
     
           }).then(() => {
-              this.uploader.clearQueue();
+            this.uploader.clearQueue();
             this.router.navigate(['/remontees/list']);
           });
         })

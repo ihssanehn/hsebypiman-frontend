@@ -57,9 +57,10 @@ import { AuthService } from './core/auth';
 import { ModuleGuard } from './core/guards/module.guard';
 import { 
 	ChantierService, TypeService, StatusService, ActionService, CategorieService, ArService, CatRisqueService, EquipementService,
-	EntrepriseService, VisiteEpiService, VisiteChantierService, CatHabilitationService, CatQuestionService, ZoneService, SignatureService, QuestionService,
-	HabilitationService, RisqueService, ParamsService, MaterielService, VisiteOutillageService, VisiteVehiculeService, OutillageService, UserService, DocumentService,
-	RemonteeService, PersonnelService, FonctionService, CatMetricService, GoalService, MetricService, ModuleService, RoleService, DashboardService, VisiteService, PeriodService
+	EntrepriseService, VisiteEpiService, VisiteChantierService, CatHabilitationService, CatQuestionService, ZoneService, SignatureService, 
+	QuestionService, HabilitationService, RisqueService, ParamsService, MaterielService, VisiteOutillageService, VisiteVehiculeService, 
+	OutillageService, UserService, DocumentService, RemonteeService, PersonnelService, FonctionService, CatMetricService, GoalService, 
+	MetricService, ModuleService, RoleService, DashboardService, VisiteService, PeriodService, FlashInfoService
 } from './core/services';
 // CRUD
 import { HttpUtilsService, LayoutUtilsService, TypesUtilsService } from './core/_base/crud';
@@ -75,6 +76,8 @@ import * as xml from 'highlight.js/lib/languages/xml';
 import * as json from 'highlight.js/lib/languages/json';
 
 import { NZ_I18N,en_US } from 'ng-zorro-antd';
+
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 // tslint:disable-next-line:class-name
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -143,7 +146,8 @@ export function hljsLanguages(): HighlightLanguage[] {
 		SignaturePadModule,
 		NgImageSliderModule,
 		AvatarModule,
-		FileUploadModule
+		FileUploadModule,
+		AngularEditorModule,
 		// NgxEchartsModule.forRoot({
 		// 	echarts:{ 
 		// 		init,
@@ -199,6 +203,7 @@ export function hljsLanguages(): HighlightLanguage[] {
 		RoleService,
 		DashboardService,
 		VisiteService,
+		FlashInfoService,
 		PeriodService,
 
 		// CONFIG & Helpers

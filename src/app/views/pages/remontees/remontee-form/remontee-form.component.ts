@@ -115,7 +115,7 @@ export class RemonteeFormComponent implements OnInit {
   }
   
   onFileDrop(event){
-    var extensions = ['jpg','bmp','jpeg','gif','png','tif','pdf','doc','docx','xls','xlsx'];
+    var extensions = ['jpg','bmp','jpeg','gif','png','tif'];
 
     for (let i = 0; i < event.length; i++) {
       

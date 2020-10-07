@@ -1,0 +1,49 @@
+<ng-container [formGroup]="flashinfoForm">
+	<tf-portlet class="main-portlet-form">
+		<div class="tf-portlet-header">
+			<span class="title">
+				<a [routerLink]="['admin/flashinfos/list']">{{'MENU.SUB_FLASHINFOS.LIST' | translate}}</a>
+				<span class="divider">></span>
+				<span class="id-item" *ngIf="!edit; else EditTitle">{{'MENU.SUB_FLASHINFOS.ADD' | translate}}</span>
+				<ng-template #EditTitle>
+					<span class="id-item">
+						{{'MENU.SUB_FLASHINFOS.EDIT' | translate}} : {{flashinfoForm.get('title').value}}
+					</span>
+				</ng-template>
+			</span>
+		</div>
+		<tf-portlet-body>
+
+			<div>
+				<div class="tf-wizard-v4__content" data-tfwizard-type="step-content" data-tfwizard-state="current">
+					<div class="tf-form__section tf-form__section--first">
+						<div class="tf-wizard-v4__form">
+							<div class="row form-row">
+								<mat-form-field class="col-6" floatLabel="always" appearance="none">
+									<mat-slide-toggle [checked]="flashinfoForm.get('is_visible').value == 1" (change)="onVisibleCheckChange($event)"><span>{{'FLASHINFOS.VISIBLE.TITLE' | translate}}</span></mat-slide-toggle>
+									<textarea matInput hidden></textarea>
+								</mat-form-field>
+								<mat-form-field class="col-6" floatLabel="always" appearance="none">
+									<mat-slide-toggle [checked]="flashinfoForm.get('on_top').value == 1" (change)="onOnTopCheckChange($event)"><span>{{'FLASHINFOS.ONTOP.TITLE' | translate}}</span></mat-slide-toggle>
+									<textarea matInput hidden></textarea>
+								</mat-form-field>
+
+								<mat-form-field class="col-xl-12">
+									<mat-label>{{'FLASHINFOS.TITLE.LABEL' | translate}}</mat-label>
+									<input class="form-control" matInput type="text" name="title" formControlName="title" placeholder="Saisir ici" [required]="isFieldRequired('title')" />
+									<mat-error *ngIf="isControlHasError('title','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+
+								<div class="col-xl-12">
+									<angular-editor [config]="editorConfig" formControlName="content"></angular-editor>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</tf-portlet-body>
+	</tf-portlet>
+</ng-container>

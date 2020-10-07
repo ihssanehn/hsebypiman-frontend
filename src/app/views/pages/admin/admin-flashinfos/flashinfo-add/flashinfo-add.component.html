@@ -1,0 +1,12 @@
+<form [formGroup]="flashinfoForm" autocomplete="off" class="tf-form tf-form--group-seperator-dashed " novalidate (ngSubmit)="flashinfoForm.valid && onSubmit()" fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+	
+    <tf-flashinfo-form [flashinfoForm]="flashinfoForm" [formStatus]="formStatus" [edit]="false" *ngIf="flashinfoForm"></tf-flashinfo-form>
+	<div>
+		<button mat-raised-button [ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': formloading}" [disabled]="formloading || flashinfoForm.invalid" color="success" class="pull-right">
+			{{'ACTION.SAVE' | translate}}
+		</button>
+		<button type="button" mat-raised-button color="info" (click)="onCancel()">
+			{{'ACTION.CANCEL' | translate}}
+		</button>
+	</div>
+</form>

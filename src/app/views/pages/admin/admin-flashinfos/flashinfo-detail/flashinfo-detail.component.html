@@ -1,0 +1,21 @@
+<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8" id="portlet-flashinfo" *ngIf="flashinfo">
+	<div class="tf-portlet-header ">
+		<span class="title">
+			<a (click)="goBack()">{{'MENU.SUB_FLASHINFOS.LIST' | translate}}</a><span class="divider">></span><span class="id-item">{{flashinfo.title}}</span>
+		</span>
+		<span class="pull-right">
+			<button mat-icon-button color="info" matTooltip="{{'MENU.SUB_FLASHINFOS.EDIT' | translate}}" (click)="editFlashInfo()" *ngxPermissionsOnly="['flashinfo_canUpdate']">
+				<mat-icon>edit</mat-icon>
+			</button>
+		</span>
+	</div>
+	<tf-portlet-body class="tf-portlet__body--fit">
+		<div class="card">
+			<div class="row">
+				<div class="col-12" [innerHtml]="flashinfo.content">
+				</div>
+			</div>
+		</div>
+	</tf-portlet-body>
+</tf-portlet>
+

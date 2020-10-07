@@ -4,7 +4,7 @@
 			<a (click)="goBack()">{{'MENU.SUB_USERS.LIST' | translate}}</a><span class="divider">></span><span class="id-item">{{user | fullName}}</span>
 		</span>
 		<span class="pull-right">
-			<button mat-icon-button color="info" matTooltip="Modifier l'utilisateur" (click)="editUser()" *ngxPermissionsOnly="['salarie_canUpdate']">
+			<button mat-icon-button color="info" matTooltip="Modifier l'utilisateur" (click)="editUser()" *ngxPermissionsOnly="['flashinfo_canUpdate']">
 				<mat-icon>edit</mat-icon>
 			</button>
 		</span>

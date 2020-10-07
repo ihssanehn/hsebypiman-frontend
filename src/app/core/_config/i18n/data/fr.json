@@ -587,6 +587,8 @@
 		"SEND": "Envoyer"
 	},
 	"COMMON": {
+		"YES": "Oui",
+		"NO": "Non",
 		"ADRESS": {
 			"LABEL": "Adresse",
 			"SHORTTITLE": "Adresse",
@@ -961,6 +963,7 @@
 			"NEWREMONTEE": "Nouvelle remontée QHSE",
 			"NEWVS": "Nouveau visite de sécurité"
 		},
+		"FLASHINFOS": "Flash Infos",
 		"CHANTIER": "Chantiers",
 		"DASHBOARD": "Tableau de Bord",
 		"DISCUSS": "Discuss",
@@ -983,6 +986,12 @@
 			"DETAIL": "Détail de l'analyse de risque",
 			"EDIT": "Modifier l'analyse de risque",
 			"LIST": "Liste des analyses de risque"
+		},
+		"SUB_FLASHINFOS": {
+			"ADD": "Ajouter un nouveau flash info",
+			"DETAIL": "Détail du flash info",
+			"EDIT": "Modifier le flash info",
+			"LIST": "Liste des flashs info"
 		},
 		"SUB_CHANTIER": {
 			"ADD": "Ajouter un nouveau chantier",
@@ -1405,6 +1414,38 @@
 			"LABEL": "Personne visitée",
 			"SHORTTITLE": "Personne visitée",
 			"TITLE": "Personne visitée"
+		}
+	},
+	"FLASHINFOS": {
+		"TITLE": {
+			"LABEL": "Titre",
+			"SHORTTITLE": "Titre",
+			"TITLE": "Titre"
+		},
+		"CONTENT": {
+			"LABEL": "Contenu",
+			"SHORTTITLE": "Contenu",
+			"TITLE": "Contenu"
+		},
+		"ONTOP": {
+			"LABEL": "En une",
+			"SHORTTITLE": "En une",
+			"TITLE": "En une"
+		},
+		"VISIBLE": {
+			"LABEL": "Visible",
+			"SHORTTITLE": "Visible",
+			"TITLE": "Visible"
+		},
+		"CREATOR": {
+			"LABEL": "Créateur",
+			"SHORTTITLE": "Créateur",
+			"TITLE": "Créateur"
+		},
+		"CREATED_AT": {
+			"LABEL": "Date de création",
+			"SHORTTITLE": "Créé le",
+			"TITLE": "Créé le"
 		}
 	}
 }

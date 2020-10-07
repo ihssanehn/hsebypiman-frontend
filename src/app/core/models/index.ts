@@ -26,5 +26,6 @@ export { CatMetric } from './catMetric.model';
 export { Metric } from './metric.model';
 export { FollowUpPeriod } from './followUpPeriod.model';
 export { Comment } from './comment.model';
+export { FlashInfo } from './flashinfo.model';
 
 

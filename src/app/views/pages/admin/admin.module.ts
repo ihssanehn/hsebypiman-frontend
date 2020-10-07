@@ -84,6 +84,10 @@ const routes: Routes = [
 				loadChildren: () => import('./admin-users/admin-users.module').then(m => m.AdminUsersModule),
 			},
 			{
+				path:'flash-infos',
+				loadChildren: () => import('./admin-flashinfos/admin-flashinfos.module').then(m => m.AdminFlashInfosModule),
+			},
+			{
 				path:'salaries',
 				component: AdminSalariesComponent
 			},

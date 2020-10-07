@@ -576,6 +576,15 @@ export class MenuConfig {
 				},
 				items: [
 					{
+						title: 'Flash Infos',
+						root: true,
+						alignment: 'left',
+						page: '/admin/flash-infos',
+						translate: 'MENU.FLASHINFOS',
+						needModule: false,
+						svgIcon: 'administration'
+					},
+					{
 						title: 'Utilisateurs',
 						root: true,
 						alignment: 'left',
