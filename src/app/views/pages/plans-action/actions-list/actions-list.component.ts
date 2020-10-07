@@ -111,7 +111,7 @@ export class ActionsListComponent implements OnInit, AfterViewInit, OnDestroy {
 	}
 	deleteAction(actionId) {
 		Swal.fire({
-			title: 'Désolé cette fonctionnalité n\'a pas encore été implémentée',
+			title: this.translate.instant("NOTIF.FEATURE_NOT_IMPLEMENTED.TITLE"),
 			showConfirmButton: false,
 			timer: 1500
 		})

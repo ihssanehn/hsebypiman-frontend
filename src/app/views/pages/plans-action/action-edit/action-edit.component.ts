@@ -15,6 +15,7 @@ import moment from 'moment';
 import Swal, { SweetAlertIcon } from 'sweetalert2';
 import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
 import {FormStatus} from '@app/core/_base/crud/models/form-status';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
 	selector: 'tf-action-edit',
@@ -50,6 +51,7 @@ export class ActionEditComponent implements OnInit, OnDestroy {
 		private actionService: ActionService,
 		private cdr: ChangeDetectorRef,
 		private permissionsService: NgxPermissionsService,
+		private translate: TranslateService,
 		private location: Location,
 		private dateFrToEnPipe:DateFrToEnPipe,
 		private dateEnToFrPipe:DateEnToFrPipe,
@@ -128,12 +130,12 @@ export class ActionEditComponent implements OnInit, OnDestroy {
 	fireBeforeSave(form){
 		Swal.fire({
 			icon: 'warning',
-			title: 'Voulez vous vraiment clore ce action ?',
-			text:'Les analyses de risque et visites de action seront archivés.',
+			title: this.translate.instant("PLANACTIONS.NOTIF.CLOSE_ACTION_CONFIRMATION.TITLE"),
+			text: this.translate.instant("PLANACTIONS.NOTIF.CLOSE_ACTION_CONFIRMATION.LABEL"),
 			showConfirmButton: true,
 			showCancelButton: true,
-			cancelButtonText: 'Annuler',
-			confirmButtonText: 'Clore le action'
+			cancelButtonText: this.translate.instant("ACTION.CANCEL"),
+			confirmButtonText: this.translate.instant("PLANACTIONS.ACTION.CLOSE_ACTION"),
 		}).then(async response => {
 			if (response.value) {
 				this.saveForm(form);
@@ -156,7 +158,7 @@ export class ActionEditComponent implements OnInit, OnDestroy {
 				var message = res.message.content != 'done' ? '<b class="text-'+code+'">'+res.message.content+'</b>' : null; 
 				Swal.fire({
 					icon: code,
-					title: 'Action mis à jour avec succès',
+					title: this.translate.instant("PLANACTIONS.NOTIF.ACTION_UPDATED.TITLE"),
 					showConfirmButton: false,
 					html: message,
 					timer: code == 'success' ? 1500 : 3000
@@ -170,7 +172,7 @@ export class ActionEditComponent implements OnInit, OnDestroy {
 				this.formloading = false;
 				Swal.fire({
 					icon: 'error',
-					title: 'Echec! le formulaire est incomplet',
+					title: this.translate.instant("ARS.NOTIF.INCOMPLETE_FORM.TITLE"),
 					showConfirmButton: false,
 					timer: 1500
 				});

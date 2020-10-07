@@ -49,13 +49,13 @@
                   </ng-template>
                 </span>
               </ng-container>
-              <h5><b>Origine de l'action</b></h5>
+              <h5><b>{{'PLANACTIONS.CARD.ORIGIN.TITLE' | translate}}</b></h5>
               <ng-container *ngIf="!origineMode; else origineEdit">
                 <div class="box box-info" style="flex: 1;">
                   <p style="text-align:right"><span class="label pull-left mr-2">{{'PLANACTIONS.ORIGINE.LABEL' | translate}}</span><span class="">{{action.type?.libelle}}</span></p>
                   <ng-container *ngIf="action.type?.code== 'VISITE_SECURITE'">
                     <div class="row">
-                      <div class="col-12 my-2"><p><span class="label">Visite de sécurité concernée</span></p></div>
+                      <div class="col-12 my-2"><p><span class="label">{{'PLANACTIONS.VS_CONCERNED.TITLE' | translate}}</span></p></div>
                       <ng-container *ngIf="action.actionable">
                         <div class="col-12 vs-line" *ngIf="action.actionable.rvs; else visiteAction">
                           <div class="col-5"><p class="blue">{{action.actionable?.rvs?.code}}</p></div>
@@ -74,7 +74,7 @@
                   </ng-container>
                   <ng-container *ngIf="action.type?.code == 'REMONTE_D_INFORMATION'">
                     <div class="row">
-                      <div class="col-12 my-2"><p><span class="label">Remontée concernée</span></p></div>
+                      <div class="col-12 my-2"><p><span class="label">{{'PLANACTIONS.LIFT_CONCERNED.TITLE' | translate}}</span></p></div>
                       <ng-container *ngIf="action.actionable">
                         <div class="col-12 vs-line" >
                           <div class="col-5"><p class="blue">{{action.actionable?.creator | fullName}}</p></div>
@@ -109,7 +109,7 @@
                   </ng-template>
                 </span>
               </ng-container>
-              <h5><b>Informations générales</b></h5>
+              <h5><b>{{'PLANACTIONS.CARD.GENERAL_INFOS.TITLE' | translate}}</b></h5>
               <ng-container *ngIf="!infosMode; else infosEdit">
                 <div class="box box-info" style="flex: 1;">
                   <h6><b>{{'PLANACTIONS.NAME.LABEL' | translate}}</b></h6>
@@ -165,7 +165,7 @@
                     </button>
                   </ng-template>
                 </span>
-                <h5><b>Attribution et délai</b></h5>
+                <h5><b>{{'PLANACTIONS.CARD.ALLOCATION_DEADLINE.TITLE' | translate}}</b></h5>
                 <div class="box" style="flex:1">
                   <ng-container *ngIf="!attribMode; else adEdit">
                     <p class="mt-3"><span class="label pull-left mr-2">{{'PLANACTIONS.PILOTE.LABEL' | translate}}</span><span class="" *ngIf="action.pilote; else noDataFound">{{action.pilote | fullName}}</span></p>
@@ -194,7 +194,7 @@
                     </button>
                   </ng-template>
                 </span>
-                <h5><b>Résolution</b></h5>
+                <h5><b>{{'PLANACTIONS.CARD.RESOLUTION.TITLE' | translate}}</b></h5>
                 <div class="box" style="flex:1">
                   <ng-container *ngIf="!resoMode; else resEdit">
                     <p><span class="label pull-left mr-2">{{'PLANACTIONS.REALISATION.LABEL' | translate}}</span><span class="" *ngIf="action.date_realisation; else noDataFound">{{action.date_realisation}}</span></p>
@@ -223,7 +223,7 @@
                     </button>
                   </ng-template>
                 </span>
-                <h5><b>Efficacité</b></h5>
+                <h5><b>{{'PLANACTIONS.CARD.EFFICIENCY.TITLE' | translate}}</b></h5>
                 <div class="box" style="flex:1">
                   <ng-container *ngIf="!efficMode; else effEdit">
                     <p><span class="label pull-left mr-2">{{'PLANACTIONS.EFFICACITE.LABEL' | translate}}</span><span class="" *ngIf="action.efficacite; else noDataFound">{{action.efficacite}}</span></p>
@@ -243,16 +243,16 @@
         <ng-container *ngxPermissionsOnly="['action_canUpdate']">
           <button *ngIf="action.status.code == 'A_ATTRIBUER'" class="pull-right"  mat-raised-button color="info" (click)="attributeAction()">
             <mat-icon inline="true" style="width: 21px; margin-top: -6px; margin-right: 6px;">person_add</mat-icon>
-            Attribuer l'action
+            {{'PLANACTIONS.ACTION.ASSIGN_ACTION' | translate}}
           </button>
           <button *ngIf="action.status.code == 'EN_COURS'" class="pull-right"  mat-raised-button color="info" (click)="cloreAction()">
             <mat-icon  svgIcon="status-termine" inline="true" style="width: 21px; margin-top: -6px; margin-right: 6px;"></mat-icon>
-            Clore l'action
+            {{'PLANACTIONS.ACTION.CLOSE_ACTION' | translate}}
           </button>
           <span class="pull-left" *ngIf="action.status.code != 'TERMINE' && action.status.code != 'ABANDONNE'">
             <button mat-raised-button color="warn" (click)="abandonAction(action.id)">
               <mat-icon inline="true" style="width: 21px; margin-top: -6px; margin-right: 6px;">stop</mat-icon>
-              Abandonner l'action
+              {{'PLANACTIONS.ACTION.ABANDON_ACTION' | translate}}
             </button>
           </span>
         </ng-container>
@@ -279,14 +279,14 @@
       <mat-label>{{'VISITES.TYPE.LABEL' | translate}}</mat-label>
       <mat-select class="form-control" [formControl]="formGroup.get('visite_type')">
         <mat-option *ngFor="let visiteType of visiteTypesList" [value]="visiteType">
-          {{ visiteType.value }}
+          {{ visiteType.value | translate }}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
     <mat-form-field class="col-md-4 col-sm-12" *ngIf="selectedTypeHasCode() == 'VISITE_SECURITE' && visitesList">
       <mat-label>{{'VISITES.CODE.LABEL' | translate}}</mat-label>
-      <input class="form-control" matInput type="text" name="actionable" [formControl]="formGroup.get('actionable')" placeholder="Saisir ici" [matAutocomplete]="auto" />
+      <input class="form-control" matInput type="text" name="actionable" [formControl]="formGroup.get('actionable')" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [matAutocomplete]="auto" />
       <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
         <mat-option *ngFor="let visite of filteredVisites | async" [value]="visite" (click)="initFilteredVisites()" style="height: 2em;line-height: 2em;">
           {{visite.code}}
@@ -300,7 +300,7 @@
   <div class="box box-info" style="flex: 1;">
     <mat-form-field class="col-xl-12">
       <mat-label>{{'PLANACTIONS.NAME.LABEL' | translate}}</mat-label>
-      <textarea class="form-control" matInput name="libelle" [formControl]="formGroup.get('libelle')" [cdkTextareaAutosize]="true" [cdkAutosizeMinRows]="2"  [cdkAutosizeMaxRows]="20" placeholder="Saisir ici" rows="2"></textarea>
+      <textarea class="form-control" matInput name="libelle" [formControl]="formGroup.get('libelle')" [cdkTextareaAutosize]="true" [cdkAutosizeMinRows]="2"  [cdkAutosizeMaxRows]="20" placeholder="{{'ACTION.ENTER_HERE' | translate}}" rows="2"></textarea>
     </mat-form-field>
   </div>
 </ng-template>
@@ -309,7 +309,7 @@
   <div class="box box-info" style="flex: 1;">
     <mat-form-field class="col-xl-12">
       <mat-label>{{'PLANACTIONS.OBJECTIF.LABEL' | translate}}</mat-label>
-      <textarea class="form-control" matInput name="objectif" [formControl]="formGroup.get('objectif')" [cdkTextareaAutosize]="true" [cdkAutosizeMinRows]="2"  [cdkAutosizeMaxRows]="20" placeholder="Saisir ici" rows="2"></textarea>
+      <textarea class="form-control" matInput name="objectif" [formControl]="formGroup.get('objectif')" [cdkTextareaAutosize]="true" [cdkAutosizeMinRows]="2"  [cdkAutosizeMaxRows]="20" placeholder="{{'ACTION.ENTER_HERE' | translate}}" rows="2"></textarea>
     </mat-form-field>
   </div>
 </ng-template>
@@ -318,7 +318,7 @@
   <div class="box box-info" style="flex: 1;">
     <mat-form-field class="col-xl-12">
       <mat-label>{{'PLANACTIONS.RISQUE.LABEL' | translate}}</mat-label>
-      <textarea class="form-control" matInput name="risque" [formControl]="formGroup.get('risque')" [cdkTextareaAutosize]="true" [cdkAutosizeMinRows]="2"  [cdkAutosizeMaxRows]="20" placeholder="Saisir ici" rows="2"></textarea>
+      <textarea class="form-control" matInput name="risque" [formControl]="formGroup.get('risque')" [cdkTextareaAutosize]="true" [cdkAutosizeMinRows]="2"  [cdkAutosizeMaxRows]="20" placeholder="{{'ACTION.ENTER_HERE' | translate}}" rows="2"></textarea>
     </mat-form-field>
   </div>
 </ng-template>
@@ -352,20 +352,20 @@
 <ng-template #editComment let-formGroup="formGroup">
 <mat-form-field class="col-xl-12">
   <mat-label>{{'PLANACTIONS.COMMENT.LABEL' | translate}}</mat-label>
-  <textarea class="form-control" matInput name="commentaires" [formControl]="formGroup.get('commentaires')" [cdkTextareaAutosize]="true" [cdkAutosizeMinRows]="2"  [cdkAutosizeMaxRows]="20" placeholder="Saisir ici" rows="2"></textarea>
+  <textarea class="form-control" matInput name="commentaires" [formControl]="formGroup.get('commentaires')" [cdkTextareaAutosize]="true" [cdkAutosizeMinRows]="2"  [cdkAutosizeMaxRows]="20" placeholder="{{'ACTION.ENTER_HERE' | translate}}" rows="2"></textarea>
 </mat-form-field>
 </ng-template>
 
 <ng-template #editEff let-formGroup="formGroup">
 <mat-form-field class="col-xl-12">
   <mat-label>{{'PLANACTIONS.EFFICACITE.LABEL' | translate}}</mat-label>
-  <input matInput #efficacite class="form-control" [formControl]="formGroup.get('efficacite')" type="string" name="efficacite" placeholder="Saisir ici" />
+  <input matInput #efficacite class="form-control" [formControl]="formGroup.get('efficacite')" type="string" name="efficacite" placeholder="{{'ACTION.ENTER_HERE' | translate}}" />
 </mat-form-field>
 </ng-template>
 
 
 <ng-template #noDataFound>
   <span class="no-data-label">
-    Non renseigné
+    {{'COMMON.NO_DATA_FOUND.TITLE' | translate}}
   </span>
 </ng-template>

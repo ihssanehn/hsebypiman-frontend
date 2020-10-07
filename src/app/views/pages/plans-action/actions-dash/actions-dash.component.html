@@ -2,16 +2,16 @@
 <tf-action-filters [hidden]="!showFilters" (change)="udpateFilters($event)" class="row"></tf-action-filters>
 <div class="row px-2">
 	<div class="col-3">
-		<tf-widget-indicator [value]="stats.retard_percent | customPercent" [valueClass]="getClass('down', stats.retard_percent)" [desc]="'Taux de retard'" *ngIf="stats; else loading"></tf-widget-indicator>
+		<tf-widget-indicator [value]="stats.retard_percent | customPercent" [valueClass]="getClass('down', stats.retard_percent)" desc="{{'PLANACTIONS.DASH.DELAY_RATE.TITLE' | translate}}" *ngIf="stats; else loading"></tf-widget-indicator>
 	</div>
 	<div class="col-3">
-		<tf-widget-indicator [value]="stats.to_attribute" [desc]="'Actions à attribuer'"  *ngIf="stats; else loading"></tf-widget-indicator>
+		<tf-widget-indicator [value]="stats.to_attribute" desc="{{'PLANACTIONS.DASH.ASSIGNED_ACTION.TITLE' | translate}}"  *ngIf="stats; else loading"></tf-widget-indicator>
 	</div>
 	<div class="col-3">
-		<tf-widget-indicator [value]="stats.finished_percent | customPercent" [valueClass]="getClass('up', stats.finished_percent)" [desc]="'Taux de finition'" *ngIf="stats; else loading"></tf-widget-indicator>
+		<tf-widget-indicator [value]="stats.finished_percent | customPercent" [valueClass]="getClass('up', stats.finished_percent)" desc="{{'PLANACTIONS.DASH.FINISH_RATE.TITLE' | translate}}" *ngIf="stats; else loading"></tf-widget-indicator>
 	</div>
 	<div class="col-3">
-		<tf-widget-indicator [value]="stats.success_percent | customPercent" [valueClass]="getClass('up', stats.success_percent)" [desc]="'Taux de réussite'" *ngIf="stats; else loading"></tf-widget-indicator>
+		<tf-widget-indicator [value]="stats.success_percent | customPercent" [valueClass]="getClass('up', stats.success_percent)" desc="{{'PLANACTIONS.DASH.SUCCESS_RATE.TITLE' | translate}}" *ngIf="stats; else loading"></tf-widget-indicator>
 	</div>
 	<div class="col-6">
 		<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">

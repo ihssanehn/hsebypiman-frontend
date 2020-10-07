@@ -671,6 +671,9 @@
 				"TITLE": "¡Éxito!"
 			}
 		},
+		"NO_DATA_FOUND": {
+			"TITLE": ""
+		},
 		"NUMBER_OF": {
 			"SHORTTITLE": "",
 			"TITLE": ""
@@ -1113,19 +1116,63 @@
 		}
 	},
 	"PLANACTIONS": {
+		"ACTION": {
+			"ABANDON_ACTION": "",
+			"ADD_ORIGIN": "",
+			"ASSIGN_ACTION": "",
+			"CLOSE_ACTION": ""
+		},
+		"CARD": {
+			"ALLOCATION_DEADLINE": {
+				"TITLE": ""
+			},
+			"EFFICIENCY": {
+				"TITLE": ""
+			},
+			"GENERAL_INFOS": {
+				"TITLE": ""
+			},
+			"ORIGIN": {
+				"TITLE": ""
+			},
+			"RESOLUTION": {
+				"TITLE": ""
+			}
+		},
 		"COMMENT": {
 			"LABEL": "Commentaires",
 			"SHORTTITLE": "Commentaires",
 			"TITLE": "Commentaires"
 		},
 		"DASH": {
+			"ACTION_BY_STATUS": {
+				"TYPE": ""
+			},
+			"ACTION_BY_TYPE": {
+				"TITLE": ""
+			},
+			"ACTION_EVOLUTION": {
+				"TITLE": ""
+			},
 			"ACTION_NUMBER_PER_MONTH": {
 				"TITLE": ""
 			},
 			"AR_NUMBER_PER_MONTH": {
 				"TITLE": ""
 			},
+			"ASSIGNED_ACTION": {
+				"TITLE": ""
+			},
+			"DELAY_RATE": {
+				"TITLE": ""
+			},
+			"FINISH_RATE": {
+				"TITLE": ""
+			},
 			"NC_DISTRIBUTION": {
+				"TITLE": ""
+			},
+			"SUCCESS_RATE": {
 				"TITLE": ""
 			},
 			"VS_NUMBER_PER_MONTH_TYPE": {
@@ -1145,10 +1192,42 @@
 		"FORM": {
 			"CREATE": "Créer un nouveau plan d'action"
 		},
+		"LIFT_CONCERNED": {
+			"TITLE": ""
+		},
 		"NAME": {
 			"LABEL": "Action décidée",
 			"SHORTTITLE": "Actions",
 			"TITLE": "Action décidée"
+		},
+		"NOTIF": {
+			"ABANDON_ACTION_CONFIRMATION": {
+				"TITLE": ""
+			},
+			"ACTION_ABANDONED": {
+				"TITLE": ""
+			},
+			"ACTION_CREATED": {
+				"TITLE": ""
+			},
+			"ACTION_UPDATED": {
+				"TITLE": ""
+			},
+			"CLOSE_ACTION_CONFIRMATION": {
+				"LABEL": "",
+				"TITLE": ""
+			},
+			"ELEMENT_NOT_DELETED": {
+				"LABEL": "",
+				"SHORTTILE": "",
+				"TITLE": ""
+			},
+			"LOADING": {
+				"TITLE": ""
+			},
+			"ORIGIN_ARCHIVED": {
+				"TITLE": ""
+			}
 		},
 		"NUMBER": {
 			"LABEL": "Numéro",
@@ -1184,6 +1263,9 @@
 			"LABEL": "Avancement",
 			"SHORTTITLE": "Avancement",
 			"TITLE": "Avancement"
+		},
+		"VS_CONCERNED": {
+			"TITLE": ""
 		}
 	},
 	"REMONTEES": {
@@ -1222,7 +1304,7 @@
 			"SHORTTITLE": "Nbr docs",
 			"TITLE": "Nombre de documents"
 		},
-		"LAST": "Latest lifts",
+		"LAST": "",
 		"NEW": {
 			"SHORTBUTTON": "New Lift"
 		},
@@ -1555,6 +1637,18 @@
 			"TITLE": "Personne visitée"
 		},
 		"VISIT_NO": {
+			"TITLE": ""
+		},
+		"VS_CHANTIER": {
+			"TITLE": ""
+		},
+		"VS_EPI": {
+			"TITLE": ""
+		},
+		"VS_OUTILLAGE": {
+			"TITLE": ""
+		},
+		"VS_VEHICULE": {
 			"TITLE": ""
 		}
 	}

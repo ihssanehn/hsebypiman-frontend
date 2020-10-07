@@ -100,7 +100,7 @@ export class ActionAddComponent implements OnInit {
         this.formloading=false;
         Swal.fire({
           icon: 'success',
-          title: 'Action créé avec succès',
+          title: this.translate.instant("PLANACTIONS.NOTIF.ACTION_CREATED.TITLE"),
           showConfirmButton: false,
           timer: 1500
         }).then(() => {
@@ -112,7 +112,7 @@ export class ActionAddComponent implements OnInit {
         this.formloading=false;
         Swal.fire({
           icon: 'error',
-          title: 'Echec! le formulaire est incomplet',
+          title: this.translate.instant("ARS.NOTIF.INCOMPLETE_FORM.TITLE"),
           showConfirmButton: false,
           timer: 1500
         });

@@ -37,10 +37,10 @@ export class ActionFormComponent implements OnInit {
   typesLoaded: boolean = false;
 
   visiteTypesList = [
-    { key: 'VsChantier',  value: 'Visite Chantier'},
-    { key: 'VsEpi',       value: 'Visite EPI'},
-    { key: 'VsOutillage', value: 'Visite Outillage'},
-    { key: 'VsVehicule',  value: 'Visite Véhicule'}
+		{ key: 'VsChantier',  value: 'VISITES.VS_CHANTIER.TITLE'},
+		{ key: 'VsEpi',       value: 'VISITES.VS_EPI.TITLE'},
+		{ key: 'VsOutillage', value: 'VISITES.VS_OUTILLAGE.TITLE'},
+		{ key: 'VsVehicule',  value: 'VISITES.VS_VEHICULE.TITLE'}
   ];
   visiteTypesSelected: String;
   visiteTypesLoaded: boolean = false;

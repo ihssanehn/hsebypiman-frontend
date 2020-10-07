@@ -2,7 +2,6 @@
 	"ACTION": {
 		"ADD": "Ajouter",
 		"ADD_SIGNER": "Ajouter un signataire",
-		"DETAIL": "Détail",
 		"CANCEL": "Annuler",
 		"CLEAR": "Vider",
 		"CONFIRM": "Confirmer",
@@ -674,6 +673,9 @@
 				"TITLE": "Succès!"
 			}
 		},
+		"NO_DATA_FOUND": {
+			"TITLE": "Non renseigné"
+		},
 		"NUMBER_OF": {
 			"SHORTTITLE": "Nbr de",
 			"TITLE": "Nombre de"
@@ -1123,20 +1125,64 @@
 		}
 	},
 	"PLANACTIONS": {
+		"ACTION": {
+			"ABANDON_ACTION": "Abandonner l'action",
+			"ADD_ORIGIN": "Ajouter une origine",
+			"ASSIGN_ACTION": "Attribuer l'action",
+			"CLOSE_ACTION": "Clore le action"
+		},
+		"CARD": {
+			"ALLOCATION_DEADLINE": {
+				"TITLE": "Attribution et délai"
+			},
+			"EFFICIENCY": {
+				"TITLE": "Efficacité"
+			},
+			"GENERAL_INFOS": {
+				"TITLE": "Informations générales"
+			},
+			"ORIGIN": {
+				"TITLE": "Origine de l'action"
+			},
+			"RESOLUTION": {
+				"TITLE": "Résolution"
+			}
+		},
 		"COMMENT": {
 			"LABEL": "Commentaires",
 			"SHORTTITLE": "Commentaires",
 			"TITLE": "Commentaires"
 		},
 		"DASH": {
+			"ACTION_BY_STATUS": {
+				"TYPE": "Actions par Statut"
+			},
+			"ACTION_BY_TYPE": {
+				"TITLE": "Actions par types"
+			},
+			"ACTION_EVOLUTION": {
+				"TITLE": "Évolution des actions"
+			},
 			"ACTION_NUMBER_PER_MONTH": {
 				"TITLE": "Nombre d'actions par mois"
 			},
 			"AR_NUMBER_PER_MONTH": {
 				"TITLE": "Nombre d'analyses de risque par mois"
 			},
+			"ASSIGNED_ACTION": {
+				"TITLE": "Actions à attribuer"
+			},
+			"DELAY_RATE": {
+				"TITLE": "Taux de retard"
+			},
+			"FINISH_RATE": {
+				"TITLE": "Taux de finition"
+			},
 			"NC_DISTRIBUTION": {
 				"TITLE": "Répartition des non-conformités"
+			},
+			"SUCCESS_RATE": {
+				"TITLE": "Taux de réussite"
 			},
 			"VS_NUMBER_PER_MONTH_TYPE": {
 				"TITLE": "Nombre de visites sécurité par mois et par type"
@@ -1155,10 +1201,42 @@
 		"FORM": {
 			"CREATE": "Créer un nouveau plan d'action"
 		},
+		"LIFT_CONCERNED": {
+			"TITLE": "Remontée concernée"
+		},
 		"NAME": {
 			"LABEL": "Action décidée",
 			"SHORTTITLE": "Actions",
 			"TITLE": "Action décidée"
+		},
+		"NOTIF": {
+			"ABANDON_ACTION_CONFIRMATION": {
+				"TITLE": "Voulez vous vraiment abandonner cette action ?"
+			},
+			"ACTION_ABANDONED": {
+				"TITLE": "L'action a été abandonnée avec succès"
+			},
+			"ACTION_CREATED": {
+				"TITLE": "Action créé avec succès"
+			},
+			"ACTION_UPDATED": {
+				"TITLE": "Action mis à jour avec succès"
+			},
+			"CLOSE_ACTION_CONFIRMATION": {
+				"LABEL": "Les analyses de risque et visites de action seront archivés.",
+				"TITLE": "Voulez vous vraiment clore ce action ?"
+			},
+			"ELEMENT_NOT_DELETED": {
+				"LABEL": "Suppression impossible car la sélection est affectée à un ou plusieurs actions",
+				"SHORTTILE": "Origines",
+				"TITLE": "Suppression impossible car la sélection comprend un élément affecté à un ou plusieurs actions"
+			},
+			"LOADING": {
+				"TITLE": "Loading Action"
+			},
+			"ORIGIN_ARCHIVED": {
+				"TITLE": "Origine archivée avec succès"
+			}
 		},
 		"NUMBER": {
 			"LABEL": "Numéro",
@@ -1194,6 +1272,9 @@
 			"LABEL": "Avancement",
 			"SHORTTITLE": "Avancement",
 			"TITLE": "Avancement"
+		},
+		"VS_CONCERNED": {
+			"TITLE": "Visite de sécurité concernée"
 		}
 	},
 	"REMONTEES": {
@@ -1566,6 +1647,18 @@
 		},
 		"VISIT_NO": {
 			"TITLE": "Visite sécurité N°"
+		},
+		"VS_CHANTIER": {
+			"TITLE": "Visite Chantier"
+		},
+		"VS_EPI": {
+			"TITLE": "Visite EPI"
+		},
+		"VS_OUTILLAGE": {
+			"TITLE": "Visite Outillage"
+		},
+		"VS_VEHICULE": {
+			"TITLE": "Visite Véhicule"
 		}
 	},
 	"FLASHINFOS": {

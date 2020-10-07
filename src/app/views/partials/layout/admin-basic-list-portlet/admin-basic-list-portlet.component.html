@@ -25,11 +25,11 @@
                                 <i class="fa" [ngClass]="data?.active ? 'fa-eye text-success':'fa-eye-slash'"></i>
                             </td>
                             <td>
-                                <a (click)="startEdit(data)" matTooltip="Modifier" class="text-primary">
+                                <a (click)="startEdit(data)" matTooltip="{{'ACTION.EDIT' | translate}}" class="text-primary">
                                     <i nz-icon nzType="edit" nzTheme="outline" class="pointer"></i>
                                 </a>
                                 <nz-divider nzType="vertical"></nz-divider>
-                                <a nz-popconfirm nzTitle="Sure to delete?" matTooltip="Supprimer" class="text-danger" (nzOnConfirm)="deleteItem(data)">
+                                <a nz-popconfirm nzTitle="Sure to delete?" matTooltip="{{'ACTION.DELETE' | translate}}" class="text-danger" (nzOnConfirm)="deleteItem(data)">
                                     <i class="la la-trash"></i>
                                 </a>
                             </td>
@@ -44,11 +44,11 @@
                                 </a>
                             </td>
                             <td>
-                                <a (click)="saveItem(data)" matTooltip="Enregistrer" class="save" class="text-primary">
+                                <a (click)="saveItem(data)" matTooltip="{{'ACTION.SAVE' | translate}}" class="save" class="text-primary">
                                     <i nz-icon nzType="check"  nzTheme="outline"></i>
                                 </a>
                                 <nz-divider nzType="vertical"></nz-divider>
-                                <a (click)="cancelEdit(data)" matTooltip="Annuler">
+                                <a (click)="cancelEdit(data)" matTooltip="{{'ACTION.CANCEL' | translate}}">
                                     <i nz-icon nzType="close" nzTheme="outline"></i>
                                 </a>
                             </td>

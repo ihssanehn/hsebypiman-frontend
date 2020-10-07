@@ -30,14 +30,12 @@ export class ActionsDashComponent implements OnInit, AfterViewInit, OnDestroy {
 	showFilters:Boolean = false;
 	stats : any;	
 	
-	
-
 	echartsType;
 	echartsStatus;
 	echartsEvol;
 	byTypeOptions = {
 		title: {
-			text: 'Actions par types',
+			text: this.translate.instant("PLANACTIONS.DASH.ACTION_BY_TYPE.TITLE"),
 			x: 'center'
 		},
 		grid: {
@@ -70,7 +68,7 @@ export class ActionsDashComponent implements OnInit, AfterViewInit, OnDestroy {
 	};
 	byStatusOptions = {
 	title: {
-		text: 'Actions par Statut',
+		text: this.translate.instant("PLANACTIONS.DASH.ACTION_BY_STATUS.TYPE"),
 		x: 'center'
 	},
 	grid: {
@@ -103,7 +101,7 @@ export class ActionsDashComponent implements OnInit, AfterViewInit, OnDestroy {
 	};
 	EvolOptions = {
 	title: {
-		text: 'Evolution des actions',
+		text: this.translate.instant("PLANACTIONS.DASH.ACTION_EVOLUTION.TITLE"),
 		x: 'center'
 	},
 	tooltip: {
@@ -143,10 +141,23 @@ export class ActionsDashComponent implements OnInit, AfterViewInit, OnDestroy {
 		
 	}
 
-	
-
 	ngOnInit() {
 		this.getActionsDash();
+	}
+
+	refreshTranslations(){
+		this.translate.stream("PLANACTIONS.DASH.ACTION_BY_TYPE.TITLE").subscribe(x =>{
+			this.byTypeOptions.title.text = x;
+			this.echartsType.setOption(this.byTypeOptions);
+		});
+		this.translate.stream("PLANACTIONS.DASH.ACTION_BY_STATUS.TYPE").subscribe(x =>{
+			this.byStatusOptions.title.text = x;
+			this.echartsStatus.setOption(this.byStatusOptions);
+	   });
+		this.translate.stream("PLANACTIONS.DASH.ACTION_EVOLUTION.TITLE").subscribe(x =>{
+			this.EvolOptions.title.text = x;
+			this.echartsEvol.setOption(this.EvolOptions);
+		});
 	}
 
 	ngAfterViewInit(){
@@ -156,8 +167,9 @@ export class ActionsDashComponent implements OnInit, AfterViewInit, OnDestroy {
 		this.echartsType.showLoading();
 		this.echartsEvol = echarts.init(this.evolAll.nativeElement)
 		this.echartsEvol.showLoading();
-	}
 
+		this.refreshTranslations();
+	}
 
 	ngOnDestroy(){
 		this.cdr.detach();
