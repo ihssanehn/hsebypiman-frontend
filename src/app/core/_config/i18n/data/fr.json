@@ -586,8 +586,6 @@
 		"SEND": "Envoyer"
 	},
 	"COMMON": {
-		"YES": "Oui",
-		"NO": "Non",
 		"ADRESS": {
 			"LABEL": "Adresse",
 			"SHORTTITLE": "Adresse",
@@ -665,6 +663,7 @@
 			"LABEL": "Nom",
 			"TITLE": "Nom"
 		},
+		"NO": "Non",
 		"NOTIF": {
 			"ERROR": {
 				"TITLE": "Oups!"
@@ -730,7 +729,8 @@
 		"UPDATED_AT": {
 			"SHORTTITLE": "Mis à jour le",
 			"TITLE": "Mise à jour des informations"
-		}
+		},
+		"YES": "Oui"
 	},
 	"EES": {
 		"CA": {
@@ -807,6 +807,43 @@
 		"SHOW": "Afficher",
 		"STATUS": "Statut",
 		"TITLE": "Filtres"
+	},
+	"FLASHINFOS": {
+		"CONTENT": {
+			"LABEL": "Contenu",
+			"SHORTTITLE": "Contenu",
+			"TITLE": "Contenu"
+		},
+		"CREATED_AT": {
+			"LABEL": "Date de création",
+			"SHORTTITLE": "Créé le",
+			"TITLE": "Créé le"
+		},
+		"CREATOR": {
+			"LABEL": "Créateur",
+			"SHORTTITLE": "Créateur",
+			"TITLE": "Créateur"
+		},
+		"HISTORY": {
+			"LABEL": "Historique des flash infos",
+			"SHORTTITLE": "Voir l'historique",
+			"TITLE": "Voir les anciens flash infos"
+		},
+		"ONTOP": {
+			"LABEL": "En une",
+			"SHORTTITLE": "En une",
+			"TITLE": "En une"
+		},
+		"TITLE": {
+			"LABEL": "Titre",
+			"SHORTTITLE": "Titre",
+			"TITLE": "Titre"
+		},
+		"VISIBLE": {
+			"LABEL": "Visible",
+			"SHORTTITLE": "Visible",
+			"TITLE": "Visible"
+		}
 	},
 	"MATERIELS": {
 		"ACTUAL_USER": {
@@ -982,13 +1019,13 @@
 			"NEWREMONTEE": "Nouvelle remontée QHSE",
 			"NEWVS": "Nouveau visite de sécurité"
 		},
-		"FLASHINFOS": "Flash Infos",
 		"CHANTIER": "Chantiers",
 		"DASHBOARD": "Tableau de Bord",
 		"DISCUSS": "Discuss",
 		"EDIT_MY_PASSWORD": "Modifier mon mot de passe",
 		"EDIT_PROFILE": "Modifier mon profil",
 		"ENTREPRISES": "Entreprises Externes",
+		"FLASHINFOS": "Flash Infos",
 		"HOME": "Accueil",
 		"LIST": "Liste",
 		"MATERIELS": "Matériel",
@@ -1014,12 +1051,6 @@
 			"EDIT": "Modifier l'analyse de risque",
 			"LIST": "Liste des analyses de risque"
 		},
-		"SUB_FLASHINFOS": {
-			"ADD": "Ajouter un nouveau flash info",
-			"DETAIL": "Détail du flash info",
-			"EDIT": "Modifier le flash info",
-			"LIST": "Liste des flashs info"
-		},
 		"SUB_CHANTIER": {
 			"ADD": "Ajouter un nouveau chantier",
 			"DETAIL": "Détail du chantier",
@@ -1031,6 +1062,12 @@
 			"DETAIL": "Détail de l'entreprise",
 			"EDIT": "Modifier l'entreprise",
 			"LIST": "Liste des entreprises"
+		},
+		"SUB_FLASHINFOS": {
+			"ADD": "Ajouter un nouveau flash info",
+			"DETAIL": "Détail du flash info",
+			"EDIT": "Modifier le flash info",
+			"LIST": "Liste des flashs info"
 		},
 		"SUB_MATERIELS": {
 			"ADD": "Ajouter un matériel",
@@ -1659,43 +1696,6 @@
 		},
 		"VS_VEHICULE": {
 			"TITLE": "Visite Véhicule"
-		}
-	},
-	"FLASHINFOS": {
-		"TITLE": {
-			"LABEL": "Titre",
-			"SHORTTITLE": "Titre",
-			"TITLE": "Titre"
-		},
-		"CONTENT": {
-			"LABEL": "Contenu",
-			"SHORTTITLE": "Contenu",
-			"TITLE": "Contenu"
-		},
-		"ONTOP": {
-			"LABEL": "En une",
-			"SHORTTITLE": "En une",
-			"TITLE": "En une"
-		},
-		"VISIBLE": {
-			"LABEL": "Visible",
-			"SHORTTITLE": "Visible",
-			"TITLE": "Visible"
-		},
-		"CREATOR": {
-			"LABEL": "Créateur",
-			"SHORTTITLE": "Créateur",
-			"TITLE": "Créateur"
-		},
-		"CREATED_AT": {
-			"LABEL": "Date de création",
-			"SHORTTITLE": "Créé le",
-			"TITLE": "Créé le"
-		},
-		"HISTORY": {
-			"LABEL": "Historique des flash infos",
-			"SHORTTITLE": "Voir l'historique",
-			"TITLE": "Voir les anciens flash infos"
 		}
 	}
 }

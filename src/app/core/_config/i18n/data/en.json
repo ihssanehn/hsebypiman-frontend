@@ -663,6 +663,7 @@
 			"LABEL": "Name",
 			"TITLE": "Name"
 		},
+		"NO": "No",
 		"NOTIF": {
 			"ERROR": {
 				"TITLE": "Oops!"
@@ -728,7 +729,8 @@
 		"UPDATED_AT": {
 			"SHORTTITLE": "Updated",
 			"TITLE": "Updating information"
-		}
+		},
+		"YES": "Yes"
 	},
 	"EES": {
 		"CA": {
@@ -805,6 +807,43 @@
 		"SHOW": "Pin up",
 		"STATUS": "Status",
 		"TITLE": "Filters"
+	},
+	"FLASHINFOS": {
+		"CONTENT": {
+			"LABEL": "Content",
+			"SHORTTITLE": "Contenu",
+			"TITLE": "Content"
+		},
+		"CREATED_AT": {
+			"LABEL": "Creation date",
+			"SHORTTITLE": "Created at",
+			"TITLE": "Created at"
+		},
+		"CREATOR": {
+			"LABEL": "Creator",
+			"SHORTTITLE": "Creator",
+			"TITLE": "Creator"
+		},
+		"HISTORY": {
+			"LABEL": "Flash info history",
+			"SHORTTITLE": "View history",
+			"TITLE": "See old news flash"
+		},
+		"ONTOP": {
+			"LABEL": "In one",
+			"SHORTTITLE": "In one",
+			"TITLE": "In one"
+		},
+		"TITLE": {
+			"LABEL": "Title",
+			"SHORTTITLE": "Title",
+			"TITLE": "Title"
+		},
+		"VISIBLE": {
+			"LABEL": "Visible",
+			"SHORTTITLE": "Visible",
+			"TITLE": "Visible"
+		}
 	},
 	"MATERIELS": {
 		"ACTUAL_USER": {
@@ -986,6 +1025,7 @@
 		"EDIT_MY_PASSWORD": "Change my password",
 		"EDIT_PROFILE": "Edit my profile",
 		"ENTREPRISES": "External companies",
+		"FLASHINFOS": "Flash Info",
 		"HOME": "Home",
 		"LIST": "List",
 		"MATERIELS": "Equipment",
@@ -1022,6 +1062,12 @@
 			"DETAIL": "Company detail",
 			"EDIT": "Change company",
 			"LIST": "List of companies"
+		},
+		"SUB_FLASHINFOS": {
+			"ADD": "Add a new info flash",
+			"DETAIL": "Flash info detail",
+			"EDIT": "Modify the news flash",
+			"LIST": "List of news flashes"
 		},
 		"SUB_MATERIELS": {
 			"ADD": "Add material",

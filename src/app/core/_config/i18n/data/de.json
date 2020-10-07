@@ -663,6 +663,7 @@
 			"LABEL": "Nom",
 			"TITLE": "Nom"
 		},
+		"NO": "",
 		"NOTIF": {
 			"ERROR": {
 				"TITLE": "HOPPLA!"
@@ -728,7 +729,8 @@
 		"UPDATED_AT": {
 			"SHORTTITLE": "Mis à jour le",
 			"TITLE": "Mise à jour des informations"
-		}
+		},
+		"YES": ""
 	},
 	"EES": {
 		"CA": {
@@ -805,6 +807,43 @@
 		"SHOW": "Afficher",
 		"STATUS": "Statut",
 		"TITLE": "Filtres"
+	},
+	"FLASHINFOS": {
+		"CONTENT": {
+			"LABEL": "Contenu",
+			"SHORTTITLE": "Contenu",
+			"TITLE": "Contenu"
+		},
+		"CREATED_AT": {
+			"LABEL": "Date de création",
+			"SHORTTITLE": "Créé le",
+			"TITLE": "Créé le"
+		},
+		"CREATOR": {
+			"LABEL": "Créateur",
+			"SHORTTITLE": "Créateur",
+			"TITLE": "Créateur"
+		},
+		"HISTORY": {
+			"LABEL": "Historique des flash infos",
+			"SHORTTITLE": "Voir l'historique",
+			"TITLE": "Voir les anciens flash infos"
+		},
+		"ONTOP": {
+			"LABEL": "En une",
+			"SHORTTITLE": "En une",
+			"TITLE": "En une"
+		},
+		"TITLE": {
+			"LABEL": "Titre",
+			"SHORTTITLE": "Titre",
+			"TITLE": "Titre"
+		},
+		"VISIBLE": {
+			"LABEL": "Visible",
+			"SHORTTITLE": "Visible",
+			"TITLE": "Visible"
+		}
 	},
 	"MATERIELS": {
 		"ACTUAL_USER": {
@@ -986,6 +1025,7 @@
 		"EDIT_MY_PASSWORD": "Modifier mon mot de passe",
 		"EDIT_PROFILE": "Modifier mon profil",
 		"ENTREPRISES": "Entreprises Externes",
+		"FLASHINFOS": "",
 		"HOME": "Accueil",
 		"LIST": "Liste",
 		"MATERIELS": "Matériel",
@@ -1022,6 +1062,12 @@
 			"DETAIL": "Détail de l'entreprise",
 			"EDIT": "Modifier l'entreprise",
 			"LIST": "Liste des entreprises"
+		},
+		"SUB_FLASHINFOS": {
+			"ADD": "",
+			"DETAIL": "",
+			"EDIT": "",
+			"LIST": ""
 		},
 		"SUB_MATERIELS": {
 			"ADD": "Ajouter un matériel",
