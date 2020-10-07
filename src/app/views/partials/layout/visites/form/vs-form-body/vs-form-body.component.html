@@ -15,9 +15,9 @@
 					</div>
 				</div>
 				<div class="row mt-4">
-					<div class="col-4 text-center">Nbr de <b>OK</b> : <b>{{getNotes().ok}}</b></div>
-					<div class="col-4 text-center">Nbr de <b>KO</b> : <b>{{getNotes().ko}}</b></div>
-					<div class="col-4 text-center">Nbr de <b>SO</b> : <b>{{getNotes().so}}</b></div>
+					<div class="col-4 text-center">{{'COMMON.NUMBER_OF.SHORTTITLE' | translate}} <b>OK</b> : <b>{{getNotes().ok}}</b></div>
+					<div class="col-4 text-center">{{'COMMON.NUMBER_OF.SHORTTITLE' | translate}} <b>KO</b> : <b>{{getNotes().ko}}</b></div>
+					<div class="col-4 text-center">{{'COMMON.NUMBER_OF.SHORTTITLE' | translate}} <b>SO</b> : <b>{{getNotes().so}}</b></div>
 				</div>
 			</div>
 		</div>
@@ -33,10 +33,10 @@
 					<div class="col-12">
 						<div class="tf-card-form">
 							<div class="row mb-2">
-								<div class="col-3">Question</div>
-								<div class="col-3 text-center">Note</div>
-								<div class="col-3">Commentaire</div>
-								<div class="col-3">Date de mise en conformité</div>
+								<div class="col-3">{{'VISITES.QUESTION.TITLE' | translate}}</div>
+								<div class="col-3 text-center">{{'VISITES.NOTE.TITLE' | translate}}</div>
+								<div class="col-3">{{'VISITES.COMMENT.TITLE' | translate}}</div>
+								<div class="col-3">{{'VISITES.COMPLIANCE_DATE.TITLE' | translate}}</div>
 							</div>
 							<div class="row align-items-center" *ngFor="let question of catQuestion.questions; let j = index; let last = last" [ngClass]="{'text-danger':getPivot(question.id, i).invalid}">
 								<ng-container [formGroup]="getPivot(question.id, i)" >
@@ -64,12 +64,12 @@
 												<div class="d-flex">
 													<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" placeholder="DD/MM/YYYY" formControlName="date_remise_conf">
 													<a class="pl-2" [ngClass]="getPivot(question.id,i).controls['note'].value == 2 ? 'text-primary':'disabled'" (click)="getPivot(question.id,i).controls['note'].value == 2 && getPivot(question.id,i).controls['date_remise_conf'].setValue(today)">
-														<i>date du jour</i>
+														<i>{{'COMMON.TODAY_DATE.TITLE' | translate}}</i>
 													</a>
 												</div>
 												<div>
 													<mat-checkbox formControlName="action_to_visited" [checked]="isChecked(question.id,i)" (change)="toggleActionToVisited($event.checked, question.id, i)">
-														Action attribuée à la personne visité
+														{{'VISITES.ASSIGNED_ACTION.TITLE' | translate}}
 													</mat-checkbox>
 												</div>
 											</ng-container>

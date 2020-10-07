@@ -114,24 +114,28 @@ export class MenuConfig {
 						title: 'Visites sécurité Chantier',
 						page: '/visites-securite/chantiers/list',
 						needModule: true,
+						translate: 'MENU.SUBHEADER.VISITS.VS_CHANTIER',
 						moduleCode: ['CHANTIER']
 					},
 					{
 						title: 'Visites sécurité EPI',
 						page: '/visites-securite/epis/list',
 						needModule: true,
+						translate: 'MENU.SUBHEADER.VISITS.VS_EPI',
 						moduleCode: ['MATERIEL']
 					},
 					{
 						title: 'Visites sécurité Outillage',
 						page: '/visites-securite/outillages/list',
 						needModule: true,
+						translate: 'MENU.SUBHEADER.VISITS.VS_OUTILLAGE',
 						moduleCode: ['MATERIEL']
 					},
 					{
 						title: 'Visites sécurité Véhicule',
 						page: '/visites-securite/vehicules/list',
 						needModule: true,
+						translate: 'MENU.SUBHEADER.VISITS.VS_VEHICULE',
 						moduleCode: ['MATERIEL']
 					},
 				]

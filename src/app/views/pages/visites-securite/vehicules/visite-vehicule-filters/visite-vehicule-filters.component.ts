@@ -29,16 +29,16 @@ export class VisiteVehiculeFiltersComponent implements OnInit, AfterViewInit
   clients: String[];
   entreprises: Entreprise[];
   visiteOptions = [
-    'Avec',
-    'Sans'
+    {key: 'Avec', value: 'FILTER.SEARCH_WITH'},
+    {key: 'Sans', value: 'FILTER.SEARCH_WITHOUT'}
   ]
   analyseOptions = [
-    'Avec',
-    'Sans'
+    {key: 'Avec', value: 'FILTER.SEARCH_WITH'},
+    {key: 'Sans', value: 'FILTER.SEARCH_WITHOUT'}
   ]
   entrepriseOptions = [
-    'Avec',
-    'Sans'
+    {key: 'Avec', value: 'FILTER.SEARCH_WITH'},
+    {key: 'Sans', value: 'FILTER.SEARCH_WITHOUT'}
   ]
   statuses;
 

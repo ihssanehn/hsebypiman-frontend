@@ -629,8 +629,7 @@
 			"VISITS_NUMBER": {
 				"SHORTTITLE": "",
 				"TITLE": ""
-			},
-			"_VISITS_NUMBER": ""
+			}
 		},
 		"DATE": {
 			"LABEL": "Date",
@@ -672,6 +671,21 @@
 				"TITLE": "Erfolg!"
 			}
 		},
+		"NUMBER_OF": {
+			"SHORTTITLE": "",
+			"TITLE": ""
+		},
+		"PAGINATION": {
+			"DE": {
+				"TITLE": ""
+			},
+			"DISPLAY_BY": {
+				"TITLE": ""
+			},
+			"SUR": {
+				"TITLE": ""
+			}
+		},
 		"PHONE": {
 			"LABEL": "Numéro de téléphone",
 			"TITLE": "Numéro de téléphone"
@@ -704,6 +718,9 @@
 		"SOCIETE": {
 			"LABEL": "Société",
 			"TITLE": "Société"
+		},
+		"TODAY_DATE": {
+			"TITLE": ""
 		},
 		"UPDATED_AT": {
 			"SHORTTITLE": "Mis à jour le",
@@ -977,6 +994,14 @@
 		"REMONTEES": "Remontées QHSE",
 		"ROOT": "Administration",
 		"SALARIES": "Salariés",
+		"SUBHEADER": {
+			"VISITS": {
+				"VS_CHANTIER": "",
+				"VS_EPI": "",
+				"VS_OUTILLAGE": "",
+				"VS_VEHICULE": ""
+			}
+		},
 		"SUB_ANALYSERISQUE": {
 			"ADD": "Nouvelle analyse de risque de chantier",
 			"DETAIL": "Détail de l'analyse de risque",
@@ -1162,6 +1187,16 @@
 		}
 	},
 	"REMONTEES": {
+		"ACTION": {
+			"LABEL": "Action",
+			"SHORTTITLE": "Action",
+			"TITLE": "Action"
+		},
+		"ACTION_STATUS": {
+			"LABEL": "Action status",
+			"SHORTTITLE": "Status",
+			"TITLE": "Action status"
+		},
 		"CREATED_AT": {
 			"LABEL": "Date de la remontée",
 			"SHORTTITLE": "Date",
@@ -1186,6 +1221,15 @@
 			"LABEL": "Documents annexes",
 			"SHORTTITLE": "Nbr docs",
 			"TITLE": "Nombre de documents"
+		},
+		"LAST": "Latest lifts",
+		"NEW": {
+			"SHORTBUTTON": "New Lift"
+		},
+		"SEE_ACTION": {
+			"LABEL": "Display action",
+			"SHORTTITLE": "Action",
+			"TITLE": "Display action"
 		},
 		"TYPE": {
 			"LABEL": "Typologie",
@@ -1292,14 +1336,52 @@
 		}
 	},
 	"VISITES": {
+		"ACTION": {
+			"ADD_FORM": {
+				"LABEL": "",
+				"TITLE": ""
+			},
+			"ADD_QUESTION_CATEGORY": {
+				"TITLE": ""
+			},
+			"CATEGORY_ARCHIVED": {
+				"TITLE": ""
+			},
+			"NEW_VISIT": {
+				"TITLE": ""
+			},
+			"QUESTION_ARCHIVED": {
+				"TITLE": ""
+			},
+			"START_VISIT": {
+				"TITLE": ""
+			}
+		},
 		"ADD_VEHICULE": {
 			"LABEL": "Numéro d'identification du véhicule",
 			"SHORTTITLE": "Numéro d'identificatio",
 			"TITLE": "Numéro d'identification du véhicule"
 		},
+		"ASSIGNED_ACTION": {
+			"TITLE": ""
+		},
 		"AVERT": {
 			"LABEL": "Avertissement",
 			"LABEL_COMP": "(quand attitude non sécuritaire)"
+		},
+		"CARD": {
+			"SIGNATURE": {
+				"EDITOR_SIGNATURE": {
+					"TITLE": ""
+				},
+				"MANAGER_SIGNATURE": {
+					"TITLE": ""
+				},
+				"TITLE": "",
+				"VISITED_SIGNATURE": {
+					"TITLE": ""
+				}
+			}
 		},
 		"CHANTIER": {
 			"LABEL": "Nom du chantier",
@@ -1316,6 +1398,22 @@
 			"SHORTTITLE": "Numéro",
 			"TITLE": "Numéro"
 		},
+		"COMMENT": {
+			"TITLE": ""
+		},
+		"COMPLIANCE_DATE": {
+			"TITLE": ""
+		},
+		"DASH": {
+			"NC_ACTIONS": "",
+			"NC_EVOLUTION": "",
+			"NC_EVOLUTION_PER_CATEGORY": "",
+			"NC_PER_CATEGORY": "",
+			"NC_RESOLVED": "",
+			"VISITS_BY_CATEGORY": "",
+			"VISITS_IN_PROGRESS": "",
+			"WARN_NO": ""
+		},
 		"DATE_VISITE": {
 			"LABEL": "Date de la visite",
 			"SHORTTITLE": "Date de visite",
@@ -1331,6 +1429,9 @@
 			"LABEL": "Entreprise visitée",
 			"SHORTTITLE": "Nom",
 			"TITLE": "Entreprise visitée"
+		},
+		"EXTERNAL_VISIT": {
+			"TITLE": ""
 		},
 		"FORM": {
 			"CREATE": "Créer une nouvelle visite"
@@ -1352,9 +1453,76 @@
 			"SHORTTITLE": "Matériel visité",
 			"TITLE": "Matériel visité"
 		},
+		"NOTE": {
+			"TITLE": ""
+		},
+		"NOTIF": {
+			"CANNOT_SELECT_EMPLOYEE": {
+				"COMPANY_SELECTED": {
+					"TITLE": ""
+				},
+				"MATERIEL_SELECTED": {
+					"TITLE": ""
+				}
+			},
+			"CANNOT_SELECT_ENTREPRISE": {
+				"TITLE": ""
+			},
+			"ELEMENT_NOT_DELETED": {
+				"CHANTIER": {
+					"LABEL": "",
+					"SHORTTITLE": "",
+					"SUBLABEL": "",
+					"TITLE": ""
+				},
+				"EPI": {
+					"LABEL": "",
+					"SHORTTITLE": "",
+					"SUBLABEL": "",
+					"TITLE": ""
+				},
+				"OUTILLAGE": {
+					"LABEL": "",
+					"SHORTTITLE": "",
+					"SUBLABEL": "",
+					"TITLE": ""
+				},
+				"TITLE": "",
+				"VEHICULE": {
+					"LABEL": "",
+					"SHORTTITLE": "",
+					"SUBLABEL": "",
+					"TITLE": ""
+				}
+			},
+			"FORM_ARCHIVED": {
+				"TITLE": ""
+			},
+			"FORM_NOT_ARCHIVED": {
+				"TITLE": ""
+			},
+			"NO_MATERIEL_ASSOCIATED_TO_EMPLOYEE": {
+				"TITLE": ""
+			},
+			"VISIT_CREATED": {
+				"TITLE": ""
+			},
+			"VISIT_DELETED": {
+				"TITLE": ""
+			},
+			"VISIT_NOT_DELETED": {
+				"TITLE": ""
+			},
+			"VISIT_UPDATED": {
+				"TITLE": ""
+			}
+		},
 		"PRESENCE_NC": {
 			"LABEL": "Présence de non conformité",
 			"LABEL_COMP": "Présence de non conformité"
+		},
+		"QUESTION": {
+			"TITLE": ""
 		},
 		"REDACTEUR": {
 			"LABEL": "Rédacteur",
@@ -1385,6 +1553,9 @@
 			"LABEL": "Personne visitée",
 			"SHORTTITLE": "Personne visitée",
 			"TITLE": "Personne visitée"
+		},
+		"VISIT_NO": {
+			"TITLE": ""
 		}
 	}
 }

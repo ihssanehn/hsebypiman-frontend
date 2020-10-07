@@ -91,7 +91,7 @@ export class VisitesEpiListComponent implements OnInit {
 	editVisite(visiteId) {
 		// this.router.navigate(['../edit', visiteId], { relativeTo: this.activatedRoute });
 		Swal.fire({
-			title: 'Désolé cette fonctionnalité n\'a pas encore été implémentée',
+			title: this.translate.instant("NOTIF.FEATURE_NOT_IMPLEMENTED.TITLE"),
 			showConfirmButton: false,
 			timer: 1500
 		})
@@ -100,14 +100,14 @@ export class VisitesEpiListComponent implements OnInit {
 		this.visiteService.delete(visiteId).toPromise().then(res => {
 			Swal.fire({
 				icon: 'success',
-				title: 'La visite a correctement été supprimé',
+				title: this.translate.instant("VISITES.NOTIF.VISIT_DELETED.TITLE"),
 				showConfirmButton: false,
 				timer: 1500
 			});
 		}).catch(err => {
 			Swal.fire({
 				icon: 'error',
-				title: "La visite n'a pas pu être supprimée",
+				title: this.translate.instant("VISITES.NOTIF.VISIT_NOT_DELETED.TITLE"),
 				showConfirmButton: false,
 				timer: 1500
 			});

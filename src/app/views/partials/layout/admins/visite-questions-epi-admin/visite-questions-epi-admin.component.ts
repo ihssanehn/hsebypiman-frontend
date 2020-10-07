@@ -3,6 +3,8 @@ import { AdminTemplateComponent } from '@app/views/partials/layout/admin-templat
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CatQuestionService, QuestionService, TypeService  } from '@app/core/services';
 import { Type } from '@app/core/models';
+import { TranslateService } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'visite-questions-epi-admin',
@@ -15,16 +17,10 @@ export class VisiteQuestionsEpiAdminComponent extends AdminTemplateComponent imp
   modalService: NgbModal;
   parentService: any;
   childService: any;
+  translate: TranslateService;
+
   _type: any;
-  tpl = {
-    title : 'Formulaires ',
-    deletedMessage: 'Suppression impossible car la selection comprend un élément affecté à un ou plusieurs équipements de protection individuelle',
-    deletedChildMessage: 'Suppression impossible car la selection est affectée à un ou plusieurs équipements de protection individuelle',
-    collapsed : true,
-    canUpdateTitle: true,
-    titleObject: null,
-    childCol : 6
-  }
+  tpl: any;
   @Input() set type(value: any) {
     this._type = value;
     if(value && value.libelle)
@@ -41,6 +37,21 @@ export class VisiteQuestionsEpiAdminComponent extends AdminTemplateComponent imp
     this.parentService = injector.get(CatQuestionService);
     this.childService = injector.get(QuestionService);
     this.titleService = injector.get(TypeService);
+    this.translate = injector.get(TranslateService);
+
+  }
+
+  ngOnInit() {
+    super.ngOnInit();
+    // this.tpl = {
+    //   title : this.translate.instant("VISITES.NOTIF.ELEMENT_NOT_DELETED.TITLE"),
+    //   deletedMessage: this.translate.instant("VISITES.NOTIF.ELEMENT_NOT_DELETED.EPI.TITLE"),
+    //   deletedChildMessage: this.translate.instant("VISITES.NOTIF.ELEMENT_NOT_DELETED.EPI.LABEL"),
+    //   collapsed : true,
+    //   canUpdateTitle: true,
+    //   titleObject: null,
+    //   childCol : 6
+    // }
   }
 
   formatChildren(item){
@@ -49,7 +60,7 @@ export class VisiteQuestionsEpiAdminComponent extends AdminTemplateComponent imp
   }
 
   async addItem(){
-    super.addItem("Ajouter une catégorie de questions", {type_id : this._type.id, ordre: this.generateParentOrdre()});  
+    super.addItem(this.translate.instant("VISITES.ACTION.ADD_QUESTION_CATEGORY.TITLE"), {type_id : this._type.id, ordre: this.generateParentOrdre()});  
   }
 
   async getList(item){
@@ -58,7 +69,7 @@ export class VisiteQuestionsEpiAdminComponent extends AdminTemplateComponent imp
   }
 
   async deleteItem({id}){
-    super.deleteItem({id}, { title : "Catégorie archivée avec succès" });
+    super.deleteItem({id}, { title : this.translate.instant("VISITES.ACTION.CATEGORY_ARCHIVED.TITLE") });
   }
 
   async addChild(item){
@@ -70,6 +81,6 @@ export class VisiteQuestionsEpiAdminComponent extends AdminTemplateComponent imp
   }
 
   async deleteChild({id, parent_id}){
-    super.deleteChild({id, parent_id}, {title : "La question est archivée avec succès" });
+    super.deleteChild({id, parent_id}, {title : this.translate.instant("VISITES.ACTION.QUESTION_ARCHIVED.TITLE") });
   }
 }

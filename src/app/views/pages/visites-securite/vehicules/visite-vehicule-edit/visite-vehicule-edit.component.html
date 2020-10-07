@@ -18,7 +18,7 @@
 
 	<ng-container *ngIf="formStatus">
 		<div *ngIf="formStatus.canShowErrors()" class="alert alert-danger alert-dismissible fade show" role="alert">
-			<div><strong>Oups!</strong></div>
+			<div><strong>{{'COMMON.NOTIF.ERROR.TITLE' | translate}}</strong></div>
 			<div>
 				<ul *ngFor="let errors of formStatus.errors  |  keyvalue">
 					<li *ngFor="let error of errors.value">
@@ -28,7 +28,7 @@
 			</div>
 		</div>
 		<div *ngIf="formStatus.canShowSuccess()" class="alert alert-success" role="alert">
-			<div><strong>Success!</strong></div>
+			<div><strong>{{'COMMON.NOTIF.SUCCESS.TITLE' | translate}}</strong></div>
 			<div *ngFor="let message of formStatus.messages">{{ message }}</div>
 		</div>
 	</ng-container>

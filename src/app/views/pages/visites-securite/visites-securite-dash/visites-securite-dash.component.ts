@@ -31,8 +31,6 @@ export class VssDashComponent implements OnInit, AfterViewInit, OnDestroy {
 	showFilters:Boolean = false;
 	stats : any;	
 	
-	
-
 	echartsEvol;
 	echartsCatEvol
 	
@@ -41,7 +39,7 @@ export class VssDashComponent implements OnInit, AfterViewInit, OnDestroy {
 
 	EvolCatOptions = {
 		title:{
-			text:'Évolution de non-conformités par catégorie',
+			text: this.translate.instant("VISITES.DASH.NC_EVOLUTION_PER_CATEGORY"),
 			x:'center'
 		},
 		color: ['#c83351', '#dea342', '#5ac2bd', '#89b398'],
@@ -80,7 +78,7 @@ export class VssDashComponent implements OnInit, AfterViewInit, OnDestroy {
 	};
 	ncByCatOptions = {
 		title: {
-			text: 'Non-conformités par catégorie',
+			text: this.translate.instant("VISITES.DASH.NC_PER_CATEGORY"),
 			x: 'center'
 		},
 		grid: {
@@ -111,7 +109,7 @@ export class VssDashComponent implements OnInit, AfterViewInit, OnDestroy {
 	};
 	vsByCatOptions = {
 		title: {
-			text: 'Visites par catégories',
+			text: this.translate.instant("VISITES.DASH.VISITS_BY_CATEGORY"),
 			x: 'center'
 		},
 		grid: {
@@ -142,7 +140,7 @@ export class VssDashComponent implements OnInit, AfterViewInit, OnDestroy {
 	};
 	EvolOptions = {
 		title: {
-			text: 'Evolution de non-conformités',
+			text: this.translate.instant("VISITES.DASH.NC_EVOLUTION"),
 			x: 'center'
 		},
 		tooltip: {
@@ -182,10 +180,27 @@ export class VssDashComponent implements OnInit, AfterViewInit, OnDestroy {
 		
 	}
 
-	
-
 	ngOnInit() {
 		this.getVisitesDash();
+	}
+
+	refreshTranslations(){
+		this.translate.stream("VISITES.DASH.NC_EVOLUTION_PER_CATEGORY").subscribe(x =>{
+			 this.EvolCatOptions.title.text = x;
+			 this.echartsCatEvol.setOption(this.EvolCatOptions);
+		});
+		this.translate.stream("VISITES.DASH.NC_PER_CATEGORY").subscribe(x =>{
+			this.ncByCatOptions.title.text = x;
+			this.echartsNcCat.setOption(this.ncByCatOptions);
+	   });
+		this.translate.stream("VISITES.DASH.VISITS_BY_CATEGORY").subscribe(x =>{
+			this.vsByCatOptions.title.text = x;
+			this.echartsVsCat.setOption(this.vsByCatOptions);
+		});
+		this.translate.stream("VISITES.DASH.NC_EVOLUTION").subscribe(x =>{
+			this.EvolOptions.title.text = x;
+			this.echartsEvol.setOption(this.EvolOptions);
+		});
 	}
 
 	ngAfterViewInit(){
@@ -197,6 +212,8 @@ export class VssDashComponent implements OnInit, AfterViewInit, OnDestroy {
 		this.echartsEvol.showLoading();
 		this.echartsCatEvol = echarts.init(this.evolGrp.nativeElement)
 		this.echartsCatEvol.showLoading();
+
+		this.refreshTranslations();
 	}
 
 
