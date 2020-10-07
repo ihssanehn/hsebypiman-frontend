@@ -14,6 +14,7 @@ import Swal, { SweetAlertIcon } from 'sweetalert2';
 import { User } from '@app/core/auth';
 import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
 import { startWith, map } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'tf-action-detail',
@@ -40,10 +41,10 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 	private subscriptions: Subscription[] = [];
 
 	visiteTypesList = [
-		{ key: 'VsChantier',  value: 'Visite Chantier'},
-		{ key: 'VsEpi',       value: 'Visite EPI'},
-		{ key: 'VsOutillage', value: 'Visite Outillage'},
-		{ key: 'VsVehicule',  value: 'Visite Véhicule'}
+		{ key: 'VsChantier',  value: 'VISITES.VS_CHANTIER.TITLE'},
+		{ key: 'VsEpi',       value: 'VISITES.VS_EPI.TITLE'},
+		{ key: 'VsOutillage', value: 'VISITES.VS_OUTILLAGE.TITLE'},
+		{ key: 'VsVehicule',  value: 'VISITES.VS_VEHICULE.TITLE'}
 	];
 	visiteTypesSelected: String;
 	visiteTypesLoaded: boolean = false;
@@ -73,6 +74,7 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 		private visiteEpiService:VisiteEpiService,
 		private visiteOutillageService:VisiteOutillageService,
 		private visiteVehiculeService:VisiteVehiculeService,
+		private translate: TranslateService,
 		private cdr: ChangeDetectorRef,
 		private permissionsService : NgxPermissionsService,
 		private dateFrToEnPipe: DateFrToEnPipe,
@@ -313,7 +315,7 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 
 	deleteAction(id){
 		Swal.fire({
-			title:'Désolé cette fonctionnalité n\'a pas encore été implémentée',
+			title: this.translate.instant("NOTIF.FEATURE_NOT_IMPLEMENTED.TITLE"),
 			showConfirmButton: false,
             timer: 1500
 		})
@@ -327,11 +329,11 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 		
 		Swal.fire({
 			icon: 'warning',
-			title: 'Voulez vous vraiment abandonner cette action ?',
+			title: this.translate.instant("PLANACTIONS.NOTIF.ABANDON_ACTION_CONFIRMATION.TITLE"),
 			showConfirmButton: true,
 			showCancelButton: true,
-			cancelButtonText: 'Annuler',
-			confirmButtonText: 'Abandonner l\'action'
+			cancelButtonText: this.translate.instant("ACTION.CANCEL"),
+			confirmButtonText: this.translate.instant("PLANACTIONS.ACTION.ABANDON_ACTION"),
 		}).then(async response => {
 			if (response.value) {
 				const res = await this.actionService.abandonAction(actionId)
@@ -341,7 +343,7 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 					var message = res.message.content != 'done' ? '<b class="text-'+code+'">'+res.message.content+'</b>' : null; 
 					Swal.fire({
 						icon: code,
-						title: 'l\'action a été abandonnée avec succès',
+						title: this.translate.instant("PLANACTIONS.NOTIF.ACTION_ABANDONED.TITLE"),
 						showConfirmButton: false,
 						html: message,
 						timer: code == 'success' ? 1500 : 3000
@@ -351,7 +353,7 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 				}).catch(e => {
 					Swal.fire({
 						icon: 'error',
-						title: 'Echec! une erreur est survenue',
+						title: this.translate.instant("NOTIF.ERROR_OCCURED.TITLE"),
 						showConfirmButton: false,
 						timer: 1500
 					});
@@ -387,7 +389,7 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 			var message = res.message.content != 'done' ? '<b class="text-'+code+'">'+res.message.content+'</b>' : null; 
 			Swal.fire({
 				icon: code,
-				title: 'Action mis à jour avec succès',
+				title: this.translate.instant("PLANACTIONS.NOTIF.ACTION_UPDATED.TITLE"),
 				showConfirmButton: false,
 				html: message,
 				timer: code == 'success' ? 1500 : 3000
@@ -400,7 +402,7 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 		.catch(e => {
 			Swal.fire({
 				icon: 'error',
-				title: 'Echec! une erreur est survenue',
+				title: this.translate.instant("NOTIF.ERROR_OCCURED.TITLE"),
 				showConfirmButton: false,
 				timer: 1500
 			});

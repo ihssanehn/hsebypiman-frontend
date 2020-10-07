@@ -663,6 +663,7 @@
 			"LABEL": "Name",
 			"TITLE": "Name"
 		},
+		"NO": "No",
 		"NOTIF": {
 			"ERROR": {
 				"TITLE": "Oops!"
@@ -670,6 +671,9 @@
 			"SUCCESS": {
 				"TITLE": "Success!"
 			}
+		},
+		"NO_DATA_FOUND": {
+			"TITLE": "Not specified"
 		},
 		"NUMBER_OF": {
 			"SHORTTITLE": "No. of",
@@ -725,7 +729,8 @@
 		"UPDATED_AT": {
 			"SHORTTITLE": "Updated",
 			"TITLE": "Updating information"
-		}
+		},
+		"YES": "Yes"
 	},
 	"EES": {
 		"CA": {
@@ -802,6 +807,43 @@
 		"SHOW": "Pin up",
 		"STATUS": "Status",
 		"TITLE": "Filters"
+	},
+	"FLASHINFOS": {
+		"CONTENT": {
+			"LABEL": "Content",
+			"SHORTTITLE": "Contenu",
+			"TITLE": "Content"
+		},
+		"CREATED_AT": {
+			"LABEL": "Creation date",
+			"SHORTTITLE": "Created at",
+			"TITLE": "Created at"
+		},
+		"CREATOR": {
+			"LABEL": "Creator",
+			"SHORTTITLE": "Creator",
+			"TITLE": "Creator"
+		},
+		"HISTORY": {
+			"LABEL": "Flash info history",
+			"SHORTTITLE": "View history",
+			"TITLE": "See old news flash"
+		},
+		"ONTOP": {
+			"LABEL": "In one",
+			"SHORTTITLE": "In one",
+			"TITLE": "In one"
+		},
+		"TITLE": {
+			"LABEL": "Title",
+			"SHORTTITLE": "Title",
+			"TITLE": "Title"
+		},
+		"VISIBLE": {
+			"LABEL": "Visible",
+			"SHORTTITLE": "Visible",
+			"TITLE": "Visible"
+		}
 	},
 	"MATERIELS": {
 		"ACTUAL_USER": {
@@ -983,6 +1025,7 @@
 		"EDIT_MY_PASSWORD": "Change my password",
 		"EDIT_PROFILE": "Edit my profile",
 		"ENTREPRISES": "External companies",
+		"FLASHINFOS": "Flash Info",
 		"HOME": "Home",
 		"LIST": "List",
 		"MATERIELS": "Equipment",
@@ -1019,6 +1062,12 @@
 			"DETAIL": "Company detail",
 			"EDIT": "Change company",
 			"LIST": "List of companies"
+		},
+		"SUB_FLASHINFOS": {
+			"ADD": "Add a new info flash",
+			"DETAIL": "Flash info detail",
+			"EDIT": "Modify the news flash",
+			"LIST": "List of news flashes"
 		},
 		"SUB_MATERIELS": {
 			"ADD": "Add material",
@@ -1113,20 +1162,64 @@
 		}
 	},
 	"PLANACTIONS": {
+		"ACTION": {
+			"ABANDON_ACTION": "Abandon the action",
+			"ADD_ORIGIN": "Add an origin",
+			"ASSIGN_ACTION": "Assign action",
+			"CLOSE_ACTION": "Close the action"
+		},
+		"CARD": {
+			"ALLOCATION_DEADLINE": {
+				"TITLE": "Allocation and deadline"
+			},
+			"EFFICIENCY": {
+				"TITLE": "Efficiency"
+			},
+			"GENERAL_INFOS": {
+				"TITLE": "General informations"
+			},
+			"ORIGIN": {
+				"TITLE": "Origin of the action"
+			},
+			"RESOLUTION": {
+				"TITLE": "Resolution"
+			}
+		},
 		"COMMENT": {
 			"LABEL": "Comments",
 			"SHORTTITLE": "Comments",
 			"TITLE": "Comments"
 		},
 		"DASH": {
+			"ACTION_BY_STATUS": {
+				"TYPE": "Actions by Status"
+			},
+			"ACTION_BY_TYPE": {
+				"TITLE": "Actions by types"
+			},
+			"ACTION_EVOLUTION": {
+				"TITLE": "Evolution of actions"
+			},
 			"ACTION_NUMBER_PER_MONTH": {
 				"TITLE": "Number of actions per month"
 			},
 			"AR_NUMBER_PER_MONTH": {
 				"TITLE": "Number of risk analyzes per month"
 			},
+			"ASSIGNED_ACTION": {
+				"TITLE": "Actions to be assigned"
+			},
+			"DELAY_RATE": {
+				"TITLE": "Delay rate"
+			},
+			"FINISH_RATE": {
+				"TITLE": "Finish rate"
+			},
 			"NC_DISTRIBUTION": {
 				"TITLE": "Distribution of non-conformities"
+			},
+			"SUCCESS_RATE": {
+				"TITLE": "Success rate"
 			},
 			"VS_NUMBER_PER_MONTH_TYPE": {
 				"TITLE": "Number of security visits per month and per type"
@@ -1145,10 +1238,42 @@
 		"FORM": {
 			"CREATE": "Create a new action plan"
 		},
+		"LIFT_CONCERNED": {
+			"TITLE": "Lift concerned "
+		},
 		"NAME": {
 			"LABEL": "Action decided",
 			"SHORTTITLE": "Actions",
 			"TITLE": "Action decided"
+		},
+		"NOTIF": {
+			"ABANDON_ACTION_CONFIRMATION": {
+				"TITLE": "Are you sure you want to abandon this action?"
+			},
+			"ACTION_ABANDONED": {
+				"TITLE": "The action was successfully abandoned"
+			},
+			"ACTION_CREATED": {
+				"TITLE": "Action created successfully"
+			},
+			"ACTION_UPDATED": {
+				"TITLE": "Action updated successfully"
+			},
+			"CLOSE_ACTION_CONFIRMATION": {
+				"LABEL": "Risk analyzes and action visits will be archived.",
+				"TITLE": "Are you sure you want to end this action?"
+			},
+			"ELEMENT_NOT_DELETED": {
+				"LABEL": "Unable to delete because the selection is assigned to one or more actions",
+				"SHORTTILE": "Origins",
+				"TITLE": "Unable to delete because the selection includes an element assigned to one or more actions"
+			},
+			"LOADING": {
+				"TITLE": "Loading Action"
+			},
+			"ORIGIN_ARCHIVED": {
+				"TITLE": "Origin successfully archived"
+			}
 		},
 		"NUMBER": {
 			"LABEL": "Number",
@@ -1184,6 +1309,9 @@
 			"LABEL": "Advancement",
 			"SHORTTITLE": "Advancement",
 			"TITLE": "Advancement"
+		},
+		"VS_CONCERNED": {
+			"TITLE": "Security visit concerned"
 		}
 	},
 	"REMONTEES": {
@@ -1556,6 +1684,18 @@
 		},
 		"VISIT_NO": {
 			"TITLE": "Security visit N °"
+		},
+		"VS_CHANTIER": {
+			"TITLE": "Site visit"
+		},
+		"VS_EPI": {
+			"TITLE": "PPE visit"
+		},
+		"VS_OUTILLAGE": {
+			"TITLE": "Tooling visit"
+		},
+		"VS_VEHICULE": {
+			"TITLE": "Vehicle visit"
 		}
 	}
 }
