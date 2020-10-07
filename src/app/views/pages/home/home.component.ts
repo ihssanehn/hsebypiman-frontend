@@ -66,8 +66,4 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy  {
 		return this.moduleService.isActived(moduleName);
 	}
 
-	showDetail(){
-		console.log('detail');
-	}
-
 }
