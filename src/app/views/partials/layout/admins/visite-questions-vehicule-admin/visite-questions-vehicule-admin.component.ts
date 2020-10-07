@@ -2,6 +2,8 @@ import { Component, OnInit, ChangeDetectorRef, Input, Injector } from '@angular/
 import { AdminTemplateComponent } from '@app/views/partials/layout/admin-template/admin-template.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CatQuestionService, QuestionService, TypeService } from '@app/core/services';
+import { TranslateService } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'visite-questions-vehicule-admin',
@@ -22,17 +24,11 @@ export class VisiteQuestionsVehiculeAdminComponent extends AdminTemplateComponen
   modalService: NgbModal;
   parentService: any;
   childService: any;
+  translate: TranslateService;
+
   _type: any;
   list: any[];
-  tpl = {
-    title : 'Formulaires ',
-    deletedMessage: 'Suppression impossible car la selection comprend un élément affecté à un ou plusieurs véhicules',
-    deletedChildMessage: 'Suppression impossible car la selection est affectée à un ou plusieurs véhicules',
-    collapsed : true,
-    canUpdateTitle: true,
-    titleObject: null,
-    childCol : 6
-  }
+  tpl: any;
 
   constructor(injector: Injector) {
     super(injector);        
@@ -41,7 +37,21 @@ export class VisiteQuestionsVehiculeAdminComponent extends AdminTemplateComponen
     this.parentService = injector.get(CatQuestionService);
     this.childService = injector.get(QuestionService);
     this.titleService = injector.get(TypeService);
+    this.translate = injector.get(TranslateService);
 
+  }
+
+  ngOnInit() {
+    super.ngOnInit();
+    // this.tpl = {
+    //   title : this.translate.instant("VISITES.NOTIF.ELEMENT_NOT_DELETED.TITLE"),
+    //   deletedMessage: this.translate.instant("VISITES.NOTIF.ELEMENT_NOT_DELETED.VEHICULE.TITLE"),
+    //   deletedChildMessage: this.translate.instant("VISITES.NOTIF.ELEMENT_NOT_DELETED.VEHICULE.LABEL"),
+    //   collapsed : true,
+    //   canUpdateTitle: true,
+    //   titleObject: null,
+    //   childCol : 6
+    // }
   }
 
   formatChildren(item){
@@ -50,7 +60,7 @@ export class VisiteQuestionsVehiculeAdminComponent extends AdminTemplateComponen
   }
 
   async addItem(){
-    super.addItem("Ajouter une catégorie de questions", {type_id : this._type.id});  
+    super.addItem(this.translate.instant("VISITES.ACTION.ADD_QUESTION_CATEGORY.TITLE"), {type_id : this._type.id});  
   }
 
   async getList(item){
@@ -59,7 +69,7 @@ export class VisiteQuestionsVehiculeAdminComponent extends AdminTemplateComponen
   }
 
   async deleteItem({id}){
-    super.deleteItem({id}, { title : "Catégorie archivée avec succès" });
+    super.deleteItem({id}, { title : this.translate.instant("VISITES.ACTION.CATEGORY_ARCHIVED.TITLE") });
   }
 
   async addChild(item){
@@ -68,6 +78,6 @@ export class VisiteQuestionsVehiculeAdminComponent extends AdminTemplateComponen
   }
 
   async deleteChild({id, parent_id}){
-    super.deleteChild({id, parent_id}, {title : "La question est archivée avec succès" });
+    super.deleteChild({id, parent_id}, {title : this.translate.instant("VISITES.ACTION.QUESTION_ARCHIVED.TITLE") });
   }
 }

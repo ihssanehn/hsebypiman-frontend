@@ -45,6 +45,7 @@ export class VisiteOutillageAddComponent implements OnInit {
 		private visiteService: VisiteOutillageService,
     private outillageService: OutillageService,
     private catQuestionsService : CatQuestionService,
+    private translate: TranslateService,
     private location: Location,
     private authService:AuthService,
     private cdr: ChangeDetectorRef,
@@ -97,6 +98,7 @@ export class VisiteOutillageAddComponent implements OnInit {
     this.setDynamicForm();
     this.loaded = true;
   }
+  
  setDynamicForm(){
     this.visiteForm.get('salarie_id').valueChanges.subscribe(salarie_id=>{
       this.visiteForm.get('visitable_id').setValue(null);
@@ -202,7 +204,7 @@ export class VisiteOutillageAddComponent implements OnInit {
           this.formloading = false;
           Swal.fire({
             icon: 'success',
-            title: 'Visite créée avec succès',
+            title: this.translate.instant("VISITES.NOTIF.VISIT_CREATED.TITLE"),
             showConfirmButton: false,
             timer: 1500
           }).then(() => {
@@ -214,7 +216,7 @@ export class VisiteOutillageAddComponent implements OnInit {
           this.formloading = false;
           Swal.fire({
             icon: 'error',
-            title: 'Echec! le formulaire est incomplet',
+            title: this.translate.instant("ARS.NOTIF.INCOMPLETE_FORM.TITLE"),
             showConfirmButton: false,
             timer: 1500
           });

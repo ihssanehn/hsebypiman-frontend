@@ -44,6 +44,7 @@ export class VisiteEpiAddComponent implements OnInit {
     // private notificationService: NzNotificationService,
     private visiteService: VisiteEpiService,
     private materielService: MaterielService,
+    private translate: TranslateService,
     private location: Location,
     private authService: AuthService,
     private cdr: ChangeDetectorRef,
@@ -196,7 +197,7 @@ export class VisiteEpiAddComponent implements OnInit {
           this.formloading = false;
           Swal.fire({
             icon: 'success',
-            title: 'Visite créée avec succès',
+            title: this.translate.instant("VISITES.NOTIF.VISIT_CREATED.TITLE"),
             showConfirmButton: false,
             timer: 1500
           }).then(() => {
@@ -208,7 +209,7 @@ export class VisiteEpiAddComponent implements OnInit {
           this.formloading = false;
           Swal.fire({
             icon: 'error',
-            title: 'Echec! le formulaire est incomplet',
+            title: this.translate.instant("ARS.NOTIF.INCOMPLETE_FORM.TITLE"),
             showConfirmButton: false,
             timer: 1500
           });

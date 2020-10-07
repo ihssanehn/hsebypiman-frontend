@@ -629,8 +629,7 @@
 			"VISITS_NUMBER": {
 				"SHORTTITLE": "No. of SV",
 				"TITLE": "Number of SV"
-			},
-			"_VISITS_NUMBER": "Number of SV"
+			}
 		},
 		"DATE": {
 			"LABEL": "Date",
@@ -672,6 +671,21 @@
 				"TITLE": "Success!"
 			}
 		},
+		"NUMBER_OF": {
+			"SHORTTITLE": "No. of",
+			"TITLE": "Number of"
+		},
+		"PAGINATION": {
+			"DE": {
+				"TITLE": "of"
+			},
+			"DISPLAY_BY": {
+				"TITLE": "display by"
+			},
+			"SUR": {
+				"TITLE": "of"
+			}
+		},
 		"PHONE": {
 			"LABEL": "Phone number",
 			"TITLE": "Phone number"
@@ -704,6 +718,9 @@
 		"SOCIETE": {
 			"LABEL": "Society",
 			"TITLE": "Society"
+		},
+		"TODAY_DATE": {
+			"TITLE": "today's date"
 		},
 		"UPDATED_AT": {
 			"SHORTTITLE": "Updated",
@@ -977,6 +994,14 @@
 		"REMONTEES": "QHSE lifts",
 		"ROOT": "Administration",
 		"SALARIES": "Employees",
+		"SUBHEADER": {
+			"VISITS": {
+				"VS_CHANTIER": "Site security visits",
+				"VS_EPI": "PPE security visits",
+				"VS_OUTILLAGE": "Tools security visits",
+				"VS_VEHICULE": "Vehicle security visits"
+			}
+		},
 		"SUB_ANALYSERISQUE": {
 			"ADD": "New site risk analysis",
 			"DETAIL": "Detailed risk analysis",
@@ -1162,6 +1187,16 @@
 		}
 	},
 	"REMONTEES": {
+		"ACTION": {
+			"LABEL": "Action",
+			"SHORTTITLE": "Action",
+			"TITLE": "Action"
+		},
+		"ACTION_STATUS": {
+			"LABEL": "Action status",
+			"SHORTTITLE": "Status",
+			"TITLE": "Action status"
+		},
 		"CREATED_AT": {
 			"LABEL": "Date of recovery",
 			"SHORTTITLE": "Date",
@@ -1187,14 +1222,19 @@
 			"SHORTTITLE": "Number of docs",
 			"TITLE": "Number of documents"
 		},
+		"LAST": "Latest lifts",
+		"NEW": {
+			"SHORTBUTTON": "New Lift"
+		},
+		"SEE_ACTION": {
+			"LABEL": "Display action",
+			"SHORTTITLE": "Action",
+			"TITLE": "Display action"
+		},
 		"TYPE": {
 			"LABEL": "Typology",
 			"SHORTTITLE": "Typology",
 			"TITLE": "Typology"
-		},
-		"LAST":"Latest lifts",
-		"NEW":{
-			"SHORTBUTTON":"New Lift"
 		}
 	},
 	"SALARIES": {
@@ -1296,14 +1336,52 @@
 		}
 	},
 	"VISITES": {
+		"ACTION": {
+			"ADD_FORM": {
+				"LABEL": "New form",
+				"TITLE": "Add Form"
+			},
+			"ADD_QUESTION_CATEGORY": {
+				"TITLE": "Add a question category"
+			},
+			"CATEGORY_ARCHIVED": {
+				"TITLE": "Category archived successfully"
+			},
+			"NEW_VISIT": {
+				"TITLE": "New visit"
+			},
+			"QUESTION_ARCHIVED": {
+				"TITLE": "The question is archived successfully"
+			},
+			"START_VISIT": {
+				"TITLE": "Start the visit"
+			}
+		},
 		"ADD_VEHICULE": {
 			"LABEL": "Vehicle identification number",
 			"SHORTTITLE": "ID number",
 			"TITLE": "Vehicle identification number"
 		},
+		"ASSIGNED_ACTION": {
+			"TITLE": "Action assigned to the person visited"
+		},
 		"AVERT": {
 			"LABEL": "Warning",
 			"LABEL_COMP": "(when unsafe attitude)"
+		},
+		"CARD": {
+			"SIGNATURE": {
+				"EDITOR_SIGNATURE": {
+					"TITLE": "Signature of the editor"
+				},
+				"MANAGER_SIGNATURE": {
+					"TITLE": "Signature of the hse manager"
+				},
+				"TITLE": "Signatures",
+				"VISITED_SIGNATURE": {
+					"TITLE": "Signature of the person visited"
+				}
+			}
 		},
 		"CHANTIER": {
 			"LABEL": "Site name",
@@ -1320,6 +1398,22 @@
 			"SHORTTITLE": "Number",
 			"TITLE": "Number"
 		},
+		"COMMENT": {
+			"TITLE": "Comment"
+		},
+		"COMPLIANCE_DATE": {
+			"TITLE": "Date of compliance"
+		},
+		"DASH": {
+			"NC_ACTIONS": "Actions resulting from non-conformities",
+			"NC_EVOLUTION": "Evolution of non-conformities",
+			"NC_EVOLUTION_PER_CATEGORY": "Evolution of non-conformities by category",
+			"NC_PER_CATEGORY": "Non-conformities by category",
+			"NC_RESOLVED": "Non-conformities immediately resolved",
+			"VISITS_BY_CATEGORY": "Visits by categories",
+			"VISITS_IN_PROGRESS": "Current visits",
+			"WARN_NO": "Number of warnings"
+		},
 		"DATE_VISITE": {
 			"LABEL": "Date of the visit",
 			"SHORTTITLE": "Date of the visit",
@@ -1335,6 +1429,9 @@
 			"LABEL": "Company visited",
 			"SHORTTITLE": "Name",
 			"TITLE": "Company visited"
+		},
+		"EXTERNAL_VISIT": {
+			"TITLE": "External visit"
 		},
 		"FORM": {
 			"CREATE": "Create a new visit"
@@ -1356,9 +1453,76 @@
 			"SHORTTITLE": "Equipment visited",
 			"TITLE": "Equipment visited"
 		},
+		"NOTE": {
+			"TITLE": "Score"
+		},
+		"NOTIF": {
+			"CANNOT_SELECT_EMPLOYEE": {
+				"COMPANY_SELECTED": {
+					"TITLE": "You cannot select an employee if a company is already selected"
+				},
+				"MATERIEL_SELECTED": {
+					"TITLE": "You cannot select an employee if a material is already selected"
+				}
+			},
+			"CANNOT_SELECT_ENTREPRISE": {
+				"TITLE": "You cannot select a company if an employee is already selected"
+			},
+			"ELEMENT_NOT_DELETED": {
+				"CHANTIER": {
+					"LABEL": "Unable to delete because the selection is assigned to one or more sites",
+					"SHORTTITLE": "Questions",
+					"SUBLABEL": "Deletion impossible because the form is assigned to one or more visits",
+					"TITLE": "Unable to delete because the selection includes an element assigned to one or more sites"
+				},
+				"EPI": {
+					"LABEL": "Unable to delete because the selection is assigned to one or more personal protective equipment",
+					"SHORTTITLE": "Questions",
+					"SUBLABEL": "",
+					"TITLE": "Cannot be deleted because the selection includes an item assigned to one or more personal protective equipment"
+				},
+				"OUTILLAGE": {
+					"LABEL": "Unable to delete because the selection is assigned to one or more tools",
+					"SHORTTITLE": "Questions",
+					"SUBLABEL": "",
+					"TITLE": "Unable to delete because the selection includes an element assigned to one or more tools"
+				},
+				"TITLE": "Forms",
+				"VEHICULE": {
+					"LABEL": "Unable to delete because the selection is assigned to one or more vehicles",
+					"SHORTTITLE": "Questions",
+					"SUBLABEL": "",
+					"TITLE": "Unable to delete because the selection includes an element assigned to one or more vehicles"
+				}
+			},
+			"FORM_ARCHIVED": {
+				"TITLE": "The form has been archived"
+			},
+			"FORM_NOT_ARCHIVED": {
+				"TITLE": "Deletion impossible because the form is assigned to one or more visits"
+			},
+			"NO_MATERIEL_ASSOCIATED_TO_EMPLOYEE": {
+				"TITLE": "No material associated with this employee"
+			},
+			"VISIT_CREATED": {
+				"TITLE": "Visit successfully created"
+			},
+			"VISIT_DELETED": {
+				"TITLE": "The visit has been successfully deleted"
+			},
+			"VISIT_NOT_DELETED": {
+				"TITLE": "The visit could not be deleted"
+			},
+			"VISIT_UPDATED": {
+				"TITLE": "Visit successfully updated"
+			}
+		},
 		"PRESENCE_NC": {
 			"LABEL": "Presence of non-compliance",
 			"LABEL_COMP": "Presence of non-compliance"
+		},
+		"QUESTION": {
+			"TITLE": "Question"
 		},
 		"REDACTEUR": {
 			"LABEL": "Editor",
@@ -1389,6 +1553,9 @@
 			"LABEL": "Person visited",
 			"SHORTTITLE": "Person visited",
 			"TITLE": "Person visited"
+		},
+		"VISIT_NO": {
+			"TITLE": "Security visit N °"
 		}
 	}
 }

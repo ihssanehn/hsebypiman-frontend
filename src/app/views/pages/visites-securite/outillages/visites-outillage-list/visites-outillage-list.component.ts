@@ -93,7 +93,7 @@ export class VisitesOutillageListComponent implements OnInit {
 	async deleteVisite(visiteId) {
 		this.visiteService.delete(visiteId).toPromise().then(res => {
 			Swal.fire({
-				title: 'Cette visite a correctement été supprimée',
+				title: this.translate.instant("VISITES.NOTIF.VISIT_DELETED.TITLE"),
 				showConfirmButton: false,
 				icon : 'success',
 				timer: 1500
@@ -101,7 +101,7 @@ export class VisitesOutillageListComponent implements OnInit {
 			this.getVisites();
 		}).catch(err => {
 			Swal.fire({
-				title: "Cette visite n'a pas pu être supprimée",
+				title: this.translate.instant("VISITES.NOTIF.VISIT_NOT_DELETED.TITLE"),
 				showConfirmButton: false,
 				icon : 'error',
 				timer: 1500

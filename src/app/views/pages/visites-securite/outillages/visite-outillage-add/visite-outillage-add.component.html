@@ -25,7 +25,7 @@
 			<div class="row">
 				<div class="col-12">
 					<button mat-raised-button color="success" class="float-right btn-small" 
-					type="button" [disabled]="cantDisplayQuestions()" (click)="displayQuestions()">Commencer la visite</button>
+					type="button" [disabled]="cantDisplayQuestions()" (click)="displayQuestions()">{{'VISITES.ACTION.START_VISIT.TITLE' | translate}}</button>
 				</div>
 			</div>
 		</tf-portlet-body> -->
@@ -35,7 +35,7 @@
 	
 	<div *ngIf="!showSignatures">
 		<button mat-raised-button [disabled]="!questionsAnswerd()" (click)="displaySignature()" color="success" class="pull-right">
-			Signer
+			{{'ACTION.SIGN' | translate}}
 		</button>
 	</div>
 	
@@ -43,7 +43,7 @@
 	
 	<ng-container *ngIf="formStatus">
 		<div *ngIf="formStatus.canShowErrors()" class="alert alert-danger alert-dismissible fade show" role="alert">
-			<div><strong>Oups!</strong></div>
+			<div><strong>{{'COMMON.NOTIF.ERROR.TITLE' | translate}}</strong></div>
 			<div>
 				<ul *ngFor="let errors of formStatus.errors  |  keyvalue">
 					<li *ngFor="let error of errors.value">
@@ -53,7 +53,7 @@
 			</div>
 		</div>
 		<div *ngIf="formStatus.canShowSuccess()" class="alert alert-success" role="alert">
-			<div><strong>Success!</strong></div>
+			<div><strong>{{'COMMON.NOTIF.SUCCESS.TITLE' | translate}}</strong></div>
 			<div *ngFor="let message of formStatus.messages">{{ message }}</div>
 		</div>
 	</ng-container>

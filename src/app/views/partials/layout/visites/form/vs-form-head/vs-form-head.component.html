@@ -3,11 +3,11 @@
     <div class="row">
         <div class="col-12 mb-2">
             <div class="tf-heading tf-heading--sm">
-                <span *ngIf="origin != 'add'">Visité sécurité N° {{visiteForm.get('code')?.value}}</span>
-                <span *ngIf="origin == 'add'">Nouvelle visite</span>
+                <span *ngIf="origin != 'add'">{{'VISITES.VISIT_NO.TITLE' | translate}} {{visiteForm.get('code')?.value}}</span>
+                <span *ngIf="origin == 'add'">{{'VISITES.ACTION.NEW_VISIT.TITLE' | translate}}</span>
                 <span class="date-visite pull-right">
-                    <small>Rédacteur : {{redacteur | fullName}} </small><br>
-                    <small>Date de visite : {{visiteForm.get('date_visite')?.value}}</small>
+                    <small>{{'VISITES.REDACTEUR.LABEL' | translate}} : {{redacteur | fullName}} </small><br>
+                    <small>{{'VISITES.DATE_VISITE.LABEL' | translate}} : {{visiteForm.get('date_visite')?.value}}</small>
                 </span>
             </div>
         </div>
@@ -21,7 +21,7 @@
 
                                 <!-- SALARIE -->
                                 <mat-form-field class="col-xl-3" *ngIf="origin == 'add' || formHasValue('salarie_id')"
-                                    matTooltip="Vous ne pouvez pas sélectionner un salarié si une entreprise est déjà sélectionnée"
+                                    matTooltip="{{'VISITES.NOTIF.CANNOT_SELECT_EMPLOYEE.COMPANY_SELECTED.TITLE' | translate}}"
                                     [matTooltipDisabled]="formHasValue('salarie_id')">
                                     <mat-label>{{'VISITES.VISITED.LABEL' | translate}}</mat-label>
                                     <mat-select class="form-control" placeholder="" formControlName="salarie_id"
@@ -45,7 +45,7 @@
                                 <!-- ENTREPRISE -->
                                 <mat-form-field class="col-xl-3" 
                                     *ngIf="model == 'VsChantier' && (origin == 'add' || formHasValue('entreprise_id'))"
-                                    matTooltip="Vous ne pouvez pas sélectionner une entreprise si un salarié est déjà sélectionné" 
+                                    matTooltip="{{ 'VISITES.NOTIF.CANNOT_SELECT_ENTREPRISE.TITLE' | translate }}" 
                                     [matTooltipDisabled]="formHasValue('entreprise_id')"
                                 >
                                     <mat-label>{{'VISITES.ENTREPRISE.LABEL' | translate}}</mat-label>
@@ -152,7 +152,7 @@
                                 </mat-form-field>
                                 <mat-form-field class="col-xl-3 text-center" floatLabel="always" appearance="none" *ngIf="model != 'VsChantier'">
                                     <mat-slide-toggle formControlName="is_externe" [checked]="isExterne()" (change)="toggleExterne($event.checked)">
-                                        <span class="slider-label">Visite Externe</span>
+                                        <span class="slider-label">{{'VISITES.EXTERNAL_VISIT.TITLE' | translate}}</span>
                                     </mat-slide-toggle>
                                     <textarea matInput hidden></textarea>
                                 </mat-form-field>

@@ -46,6 +46,7 @@ export class VisiteChantierAddComponent implements OnInit {
 		private visiteService: VisiteChantierService,
     private chantierService: ChantierService,
     private catQuestionService: CatQuestionService,
+    private translate: TranslateService,
     private location: Location,
     private authService:AuthService,
     private cdr: ChangeDetectorRef,
@@ -158,7 +159,7 @@ export class VisiteChantierAddComponent implements OnInit {
           
           Swal.fire({
             icon: 'success',
-            title: 'Visite créée avec succès',
+            title: this.translate.instant("VISITES.NOTIF.VISIT_CREATED.TITLE"),
             showConfirmButton: false,
             timer: 1500
           }).then(() => {
@@ -170,7 +171,7 @@ export class VisiteChantierAddComponent implements OnInit {
 
           Swal.fire({
             icon: 'error',
-            title: 'Echec! le formulaire est incomplet',
+            title: this.translate.instant("NOTIF.INCOMPLETE_FORM.TITLE"),
             showConfirmButton: false,
             timer: 1500
           });
