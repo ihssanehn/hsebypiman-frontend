@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
 import { extractErrorMessagesFromErrorResponse } from '@app/core/_base/crud';
 import { FormStatus } from '@app/core/_base/crud/models/form-status';
 import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -53,7 +54,8 @@ export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 		private cdr: ChangeDetectorRef,
 		public snackBar: MatSnackBar,
 		private dateFrToEnPipe: DateFrToEnPipe,
-		private dateEnToFrPipe: DateEnToFrPipe
+		private dateEnToFrPipe: DateEnToFrPipe,
+		private translate: TranslateService
 	) {}
 
 	ngOnInit() {
