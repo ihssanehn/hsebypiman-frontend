@@ -17,7 +17,6 @@ import { ThrowStmt } from '@angular/compiler';
 import { User, AuthService } from '@app/core/auth';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-
 @Component({
   selector: 'tf-remontee-detail',
   templateUrl: './remontee-detail.component.html',

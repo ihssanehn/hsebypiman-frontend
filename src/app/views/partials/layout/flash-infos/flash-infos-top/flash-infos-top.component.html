@@ -1,0 +1,27 @@
+
+<tf-portlet>
+    <div class="tf-portlet__head">
+        <div class="tf-portlet__head-label">
+            <h3 class="tf-portlet__head-title">
+                {{'MENU.FLASHINFOS' | translate}}
+            </h3>
+        </div>
+        <div class="tf-portlet__head-toolbar">
+            <button class="pull-right btn btn-sm btn-primary" (click)="addNewRemontee()">{{'FLASHINFOS.HISTORY.TITLE' | translate}}</button>
+        </div>
+    </div>
+    <tf-portlet-body [class]="'tf-portlet__body--fit'" style="padding: 2em; background:#f7f7ff">
+        <div class="row" >
+            <div class="col-6 pointer" *ngIf="flashOnTop" (click)="openFlashInfoModal(flashOnTop.id)">
+                <div class="flash-content" >
+                    <div [innerHtml]="flashOnTop.content"></div>
+                </div>
+            </div>
+            <div class="col-3 pointer" *ngFor="let flash of oldFlashList" (click)="openFlashInfoModal(flash.id)">
+                <div class="flash-content" >
+                    <div [innerHtml]="flash.content"></div>
+                </div>
+            </div>
+        </div>
+    </tf-portlet-body>
+</tf-portlet>

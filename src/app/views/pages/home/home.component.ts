@@ -5,10 +5,8 @@ import { shuffle } from 'lodash';
 // Services
 // Widgets model
 import { LayoutConfigService, SparklineChartOptions, MenuAsideService } from '../../../core/_base/layout';
-import { Widget4Data } from '../../partials/content/widgets/widget4/widget4.component';
-import { ModuleService, PersonnelService, PeriodService } from '@app/core/services';
-import { FollowUpPeriod, Personnel } from '@app/core/models/';
-import {  } from '@app/core/models';
+import { ModuleService, FlashInfoService } from '@app/core/services';
+import { FlashInfo } from '@app/core/models/';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService, User } from '@app/core/auth';
 
@@ -23,17 +21,14 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy  {
 		keyword: ""
 	};
 	user: User;
-  salarie: Personnel;
-  period: FollowUpPeriod;
-  selectedPeriodId: Number;
-  periodList: FollowUpPeriod[];
+	flashOnTop : FlashInfo
+	oldFlashList : FlashInfo[];
 
 	constructor(
 		private menuAsideService: MenuAsideService,
 		private moduleService : ModuleService,
-    private personnelService: PersonnelService,
+    private flashInfoService: FlashInfoService,
     private activatedRoute: ActivatedRoute,
-    private periodService: PeriodService,
 		private authService: AuthService,
 		private layoutConfigService: LayoutConfigService,
 		private router: Router,
@@ -47,49 +42,18 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy  {
 	}
 
 	ngOnInit(): void {
-		this.getActualPeriod();
-		this.getPeriods();
+		this.getFlashInfos()
 	}
 
-	async getActualPeriod(){
-		try {
-			var res = await this.personnelService.getPersonnelActualPeriod(this.user.id).toPromise();
-			this.salarie = res.result.data;
-			this.selectedPeriodId = this.salarie.period_id;
-			this.cdr.markForCheck();
-			
-		} catch (error) {
-			console.error(error);
-			
-		}
+	async getFlashInfos(){
+		var res = await this.flashInfoService.getAll({top:true, limit:5}).toPromise()
+		
+		this.flashOnTop = res.result.data['top'];
+		this.oldFlashList = res.result.data['others'];
+		this.cdr.markForCheck();
+		console.log(this.flashOnTop, this.oldFlashList);
 	}
 
-	changePeriod(selectedPeriod)
-  {
-    this.selectedPeriodId = selectedPeriod;
-    this.getSalarieByPeriod();
-  }
-
-	async getSalarieByPeriod(){
-		try {
-      var res = await this.personnelService
-      .getPersonnelByPeriod(
-				this.user.id,
-				this.selectedPeriodId
-      ).toPromise();
-			this.salarie = res.result.data;
-			this.cdr.markForCheck();
-		} catch (error) {
-			console.error(error);
-		}
-  }
-
-  async getPeriods(){
-    var res = await this.periodService.getList().toPromise();
-    this.periodList = res.result.data;
-    this.cdr.markForCheck();
-	}
-	
 	getMaterielParams(){
 		return this.user.role.code == 'USER' ? {'actual_user_id': this.user.id} : {};
 	}
@@ -100,18 +64,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy  {
 
 	isActive(moduleName: string[]){
 		return this.moduleService.isActived(moduleName);
-	}
-
-	getRatingClass(rating){
-		if(rating){
-			if(rating >= 66){
-				return 'success-progress';
-			}else if(rating >= 33){
-				return 'warning-progress';
-			}else{
-				return 'danger-progress';
-			}
-		}
 	}
 
 	showDetail(){

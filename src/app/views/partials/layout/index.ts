@@ -72,10 +72,15 @@ export { SalariePortletComponent } from './salarie/salarie-portlet/salarie-portl
 export { SalariePortletBoxComponent } from './salarie/salarie-portlet-box/salarie-portlet-box.component';
 export { SalariePortletRowComponent } from './salarie/salarie-portlet-row/salarie-portlet-row.component';
 export { SalarieCardComponent } from './salarie/salarie-card/salarie-card.component';
+export { SalarieSuiviComponent } from './salarie/salarie-suivi/salarie-suivi.component';
 
 // COMMENTS
 export { CommentsListComponent } from './comments/comments-list/comments-list.component';
 export { CommentsAddComponent } from './comments/comments-add/comments-add.component';
+
+// Flash Infos
+export { FlashInfosTopComponent } from './flash-infos/flash-infos-top/flash-infos-top.component';
+export { ShowFlashInfoModalComponent } from './flash-infos/show-flash-info-modal/show-flash-info-modal.component';
 
 // ROOT
 export { HabilitationsAdminComponent } from './admins/habilitations/habilitations-admin.component';

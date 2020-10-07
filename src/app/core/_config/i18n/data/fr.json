@@ -1598,6 +1598,11 @@
 			"LABEL": "Date de création",
 			"SHORTTITLE": "Créé le",
 			"TITLE": "Créé le"
+		},
+		"HISTORY": {
+			"LABEL": "Historique des flash infos",
+			"SHORTTITLE": "Voir l'historique",
+			"TITLE": "Voir les anciens flash infos"
 		}
 	}
 }

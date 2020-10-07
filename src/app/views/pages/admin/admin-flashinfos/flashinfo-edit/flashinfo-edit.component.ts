@@ -89,7 +89,6 @@ export class FlashInfoEditComponent implements OnInit, OnDestroy {
   patchForm(item){
     this.flashinfoForm.patchValue(item);
   }
-
       
   onSubmit(){
     this.formloading = true;

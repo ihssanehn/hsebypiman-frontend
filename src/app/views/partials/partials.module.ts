@@ -146,9 +146,11 @@ import { SalariePortletComponent } from './layout/salarie/salarie-portlet/salari
 import { SalariePortletBoxComponent } from './layout/salarie/salarie-portlet-box/salarie-portlet-box.component';
 import { SalariePortletRowComponent } from './layout/salarie/salarie-portlet-row/salarie-portlet-row.component';
 import { SalarieCardComponent } from './layout/salarie/salarie-card/salarie-card.component';
+import { SalarieSuiviComponent } from './layout/salarie/salarie-suivi/salarie-suivi.component';
 import { CommentsListComponent } from './layout/comments/comments-list/comments-list.component';
 import { CommentsAddComponent } from './layout/comments/comments-add/comments-add.component';
 import { LastRemonteesComponent } from './layout/remontees/last-remontees/last-remontees.component';
+import { FlashInfosTopComponent } from './layout/flash-infos/flash-infos-top/flash-infos-top.component';
 
 import { DashAnalyseRisqueComponent } from './layout/dashboard/dash-analyse-risque/dash-analyse-risque.component';
 import { DashChantierComponent } from './layout/dashboard/dash-chantier/dash-chantier.component';
@@ -156,6 +158,7 @@ import { DashVisiteComponent } from './layout/dashboard/dash-visite/dash-visite.
 import { DashActionComponent } from './layout/dashboard/dash-action/dash-action.component';
 import { DashMaterielComponent } from './layout/dashboard/dash-materiel/dash-materiel.component';
 import { DashEntrepriseComponent } from './layout/dashboard/dash-entreprise/dash-entreprise.component';
+import { ShowFlashInfoModalComponent } from './layout/flash-infos/show-flash-info-modal/show-flash-info-modal.component';
 
 @NgModule({
 	declarations: [
@@ -224,12 +227,14 @@ import { DashEntrepriseComponent } from './layout/dashboard/dash-entreprise/dash
 		SearchEpiFormComponent,
 		VsVehiculeImageCarouselComponent,
 		ImageLightboxContentDialogComponent,
+		ShowFlashInfoModalComponent,
 		ShowDocumentModalComponent,
 		SalarieScoreComponent,
 		SalariePortletComponent,
 		SalariePortletBoxComponent,
 		SalariePortletRowComponent,
 		SalarieCardComponent,
+		SalarieSuiviComponent,
 		HabilitationsAdminComponent,
 		ArZonesAdminComponent,
 		ArRisquesAdminComponent,
@@ -249,6 +254,7 @@ import { DashEntrepriseComponent } from './layout/dashboard/dash-entreprise/dash
 		CommentsListComponent,
 		CommentsAddComponent,
 		LastRemonteesComponent,
+		FlashInfosTopComponent,
 		DashAnalyseRisqueComponent,
 		DashChantierComponent,
 		DashVisiteComponent,
@@ -324,12 +330,14 @@ import { DashEntrepriseComponent } from './layout/dashboard/dash-entreprise/dash
 		SearchEpiFormComponent,
 		VsVehiculeImageCarouselComponent,
 		ImageLightboxContentDialogComponent,
+		ShowFlashInfoModalComponent,
 		ShowDocumentModalComponent,
 		SalarieScoreComponent,
 		SalariePortletComponent,
 		SalariePortletBoxComponent,
 		SalariePortletRowComponent,
 		SalarieCardComponent,
+		SalarieSuiviComponent,
 		HabilitationsAdminComponent,
 		ArZonesAdminComponent,
 		ArRisquesAdminComponent,
@@ -349,6 +357,7 @@ import { DashEntrepriseComponent } from './layout/dashboard/dash-entreprise/dash
 		CommentsListComponent,
 		CommentsAddComponent,
 		LastRemonteesComponent,
+		FlashInfosTopComponent,
 		DashAnalyseRisqueComponent,
 		DashChantierComponent,
 		DashVisiteComponent,
@@ -419,6 +428,7 @@ import { DashEntrepriseComponent } from './layout/dashboard/dash-entreprise/dash
 	entryComponents: [
 		AdminAddModalComponent,
 		PretModalComponent,
+		ShowFlashInfoModalComponent,
 	],
 })
 export class PartialsModule {
