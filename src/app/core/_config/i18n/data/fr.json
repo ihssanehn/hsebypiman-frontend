@@ -735,7 +735,22 @@
 			"TITLE": "Mise à jour des informations"
 		},
 		"VISIBLE": "Visible",
-		"YES": "Oui"
+		"YES": "Oui",
+		"TYPE": {
+			"TITLE": "Type"
+		},
+		"UNIT": {
+			"TITLE": "Unité"
+		},
+		"BOOL": {
+			"TITLE": "Booléen"
+		},
+		"EDITABLE": {
+			"TITLE": "Modifiable"
+		},
+		"GOAL": {
+			"TITLE": "Objectifs"
+		}
 	},
 	"EES": {
 		"ACTION": {
@@ -1829,6 +1844,118 @@
 		},
 		"VS_VEHICULE": {
 			"TITLE": "Visite Véhicule"
+		}
+	},
+	"SUIVI_HSE": {
+		"ACTION": {
+			"NEW_PERIOD": {
+				"SHORTTILE": "Nouvelle période",
+				"TITLE": "Ajouter une nouvelle période",
+				"LABEL": "Ajouter une période"
+			},
+			"EDIT_GOAL": {
+				"TITLE": "Modifier les objectifs"
+			}
+		},
+		"NOTIF": {
+			"SELECT_PERIOD": {
+				"TITLE": "Veuillez sélectionner une date de début et de fin de la période"
+			},
+			"DATAS_UPDATED": {
+				"TITLE": "Données mises à jour avec succès"
+			},
+			"NO_PERIOD_SELECTED": {
+				"TITLE": "Aucune période n'a été sélectionnée ! Veuillez en ajouter une à partir de l'onglet Objectifs"
+			},
+			"GOAL_UPDATED": {
+				"TITLE": "Objectif mis à jour avec succès"
+			},
+			"PERIOD_ADDED": {
+				"TITLE": "Période ajoutée avec succès"
+			},
+			"ELEMENT_NOT_DELETED": {
+				"TITLE": "Suppression impossible car la selection comprend un élément affecté à un ou plusieurs éléments",
+				"LABEL": "Suppression impossible car la selection est affectée à un ou plusieurs éléments"
+			}
+		},
+		"DASH": {
+			"EMPLOYEE_NO": {
+				"TITLE": "Nombre de salariés"
+			},
+			"GOAL_ACHEI_RATE": {
+				"TITLE": "Taux d'atteinte des objectifs"
+			},
+			"FAIL_RATE": {
+				"TITLE": "Taux d'échec"
+			},
+			"AVG_SCORE_PER_EMPLOYEE": {
+				"TITLE": "Note moyenne par salarié"
+			},
+			"RATING_PER_TYPE": {
+				"TITLE": "Répartition des notes par type de suivi"
+			},
+			"SCORES_BY_EMPLOYEE": {
+				"TITLE": "Répartition des notes par salarié"
+			}
+		},
+		"CARD": {
+			"ABOUT_EMPLOYEE": {
+				"TITLE": "À propos du salarié"
+			},
+			"INFOS_EMPLOYEE": {
+				"TITLE": "Information employeur",
+				"EMERGENCY_CASE": "En cas d'urgence",
+				"MEDICAL_VISIT": "Visite médicale"
+			},
+			"TRAINING": {
+				"TITLE": "Formations",
+				"TRAINING_MONITORING": "Suivis des formations"
+			}
+		},
+		"PERIOD": {
+			"TITLE": "Période"
+		},
+		"START_DATE": {
+			"TITLE": "Date de début"
+		},
+		"END_DATE": {
+			"TITLE": "Date de fin"
+		},
+		"MOBILE": {
+			"TITLE": "Téléphone"
+		},
+		"RELATIONSHIP": {
+			"TITLE" : "Lien de parenté"
+		},
+		"RQTH": {
+			"TITLE" : "RQTH"
+		},
+		"REALIZED": {
+			"TITLE" : "Réalisée"
+		},
+		"TO_RENEW": {
+			"TITLE" : "À renouveler"
+		},
+		"TRAINING": {
+			"TITLE" : "Formations"
+		},
+		"COMPLETION_DATE": {
+			"TITLE" : "Date de réalisation"
+		},
+		"RENEWAL_DATE": {
+			"TITLE" : "Date de renouvellement"
+		},
+		"EMPLOYER_AUTH": {
+			"TITLE" : "Autorisation employeur"
+		},
+		"SKILLS": {
+			"TITLE" : "Aptitudes"
+		},
+		"MODIFICATION": {
+			"TITLE" : "Modification"
+		},
+		"VISION_360": {
+			"TITLE" : "Vision 360"
 		}
 	}
 }

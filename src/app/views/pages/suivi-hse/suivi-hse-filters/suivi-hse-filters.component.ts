@@ -7,6 +7,7 @@ import { debounceTime } from 'rxjs/operators';
 import { FonctionService, PeriodService } from '@app/core/services';
 import { Type } from '@app/core/models/type.model';
 import { FollowUpPeriod } from '@app/core/models';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'tf-suivi-hse-filters',
@@ -34,6 +35,7 @@ export class SuiviHseFiltersComponent implements  OnInit {
     private dateFrToEnPipe:DateFrToEnPipe,
 		iconRegistry: MatIconRegistry, 
     sanitizer: DomSanitizer,
+    public translate: TranslateService
   ) {
     iconRegistry.addSvgIcon(
       'search',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/search.svg'));

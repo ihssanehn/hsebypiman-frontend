@@ -6,8 +6,8 @@
     <ng-container *ngIf="metric.is_bool">
       <span>
         <mat-radio-group [(ngModel)]="metric.pivot.value">
-          <mat-radio-button class="metric-radio" [value]="1">Oui</mat-radio-button>
-          <mat-radio-button class="metric-radio" [value]="0">Non</mat-radio-button>
+          <mat-radio-button class="metric-radio" [value]="1">{{'COMMON.YES' | translate}}</mat-radio-button>
+          <mat-radio-button class="metric-radio" [value]="0">{{'COMMON.NO' | translate}}</mat-radio-button>
         </mat-radio-group>
       </span>
     </ng-container>
@@ -15,6 +15,6 @@
 
 <ng-template #noDataFound>
     <span class="no-data-label">
-      Non renseigné
+      {{'COMMON.NO_DATA_FOUND.TITLE' | translate}}
     </span>
 </ng-template>

@@ -736,7 +736,22 @@
 			"TITLE": "Mise à jour des informations"
 		},
 		"VISIBLE": "Visible",
-		"YES": "Yes"
+		"YES": "Yes",
+		"TYPE": {
+			"TITLE": "Type"
+		},
+		"UNIT": {
+			"TITLE": "Unit"
+		},
+		"BOOL": {
+			"TITLE": "Boolean"
+		},
+		"EDITABLE": {
+			"TITLE": "Editable"
+		},
+		"GOAL": {
+			"TITLE": "Goals"
+		}
 	},
 	"EES": {
 		"ACTION": {
@@ -1830,6 +1845,118 @@
 		},
 		"VS_VEHICULE": {
 			"TITLE": ""
+		}
+	},
+	"SUIVI_HSE": {
+		"ACTION": {
+			"NEW_PERIOD": {
+				"SHORTTILE": "New period",
+				"TITLE": "Add a new period",
+				"LABEL": "Add a period"
+			},
+			"EDIT_GOAL": {
+				"TITLE": "Edit goals"
+			}
+		},
+		"NOTIF": {
+			"SELECT_PERIOD": {
+				"TITLE": "Please select a start and end date for the period"
+			},
+			"DATAS_UPDATED": {
+				"TITLE": "Data updated successfully"
+			},
+			"NO_PERIOD_SELECTED": {
+				"TITLE": "No period has been selected! Please add one from the Objectives tab"
+			},
+			"GOAL_UPDATED": {
+				"TITLE": "Objective updated successfully"
+			},
+			"PERIOD_ADDED": {
+				"TITLE": "Period successfully added"
+			},
+			"ELEMENT_NOT_DELETED": {
+				"TITLE": "Unable to delete because the selection includes an element assigned to one or more elements",
+				"LABEL": "Unable to delete because the selection is assigned to one or more elements"
+			}
+		},
+		"DASH": {
+			"EMPLOYEE_NO": {
+				"TITLE": "Number of employees"
+			},
+			"GOAL_ACHEI_RATE": {
+				"TITLE": "Goal achievement rate"
+			},
+			"FAIL_RATE": {
+				"TITLE": "Failure rate"
+			},
+			"AVG_SCORE_PER_EMPLOYEE": {
+				"TITLE": "Average score per employee"
+			},
+			"RATING_PER_TYPE": {
+				"TITLE": "Distribution of ratings by type of monitoring"
+			},
+			"SCORES_BY_EMPLOYEE": {
+				"TITLE": "Distribution of score per employee"
+			}
+		},
+		"CARD": {
+			"ABOUT_EMPLOYEE": {
+				"TITLE": "About the employee"
+			},
+			"INFOS_EMPLOYEE": {
+				"TITLE": "Employer information",
+				"EMERGENCY_CASE": "In case of emergency",
+				"MEDICAL_VISIT": "Medical visit"
+			},
+			"TRAINING": {
+				"TITLE": "Training",
+				"TRAINING_MONITORING": "Training follow-ups"
+			}
+		},
+		"PERIOD": {
+			"TITLE": "Period"
+		},
+		"START_DATE": {
+			"TITLE": "Start date"
+		},
+		"END_DATE": {
+			"TITLE": "End date"
+		},
+		"MOBILE": {
+			"TITLE": "Phone"
+		},
+		"RELATIONSHIP": {
+			"TITLE" : "Relationship"
+		},
+		"RQTH": {
+			"TITLE" : "RQTH"
+		},
+		"REALIZED": {
+			"TITLE" : "Achieved"
+		},
+		"TO_RENEW": {
+			"TITLE" : "To renew"
+		},
+		"TRAINING": {
+			"TITLE" : "Training"
+		},
+		"COMPLETION_DATE": {
+			"TITLE" : "Date of completion"
+		},
+		"RENEWAL_DATE": {
+			"TITLE" : "Renewal date"
+		},
+		"EMPLOYER_AUTH": {
+			"TITLE" : "Employer authorization"
+		},
+		"SKILLS": {
+			"TITLE" : "Skills"
+		},
+		"MODIFICATION": {
+			"TITLE" : "Modification"
+		},
+		"VISION_360": {
+			"TITLE" : "Vision 360"
 		}
 	}
 }

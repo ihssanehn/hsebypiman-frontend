@@ -13,6 +13,7 @@ import { Personnel, FollowUpPeriod } from '@app/core/models';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SuiviSalarieEditComponent } from '../suivi-salarie-edit/suivi-salarie-edit.component';
 import Swal from 'sweetalert2';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'tf-suivi-salarie-detail',
@@ -42,7 +43,8 @@ export class SuiviSalarieDetailComponent implements OnInit, OnDestroy {
 		private cdr: ChangeDetectorRef,
 		private permissionsService : NgxPermissionsService,
 		iconRegistry: MatIconRegistry, 
-		sanitizer: DomSanitizer
+    sanitizer: DomSanitizer,
+    public translate: TranslateService
   ) {}
 
   ngOnInit() {
@@ -109,7 +111,7 @@ export class SuiviSalarieDetailComponent implements OnInit, OnDestroy {
       });
     }else{
       Swal.fire({
-        title: 'Aucune période n\'a été sélectionnée ! Veuillez en ajouter une à partir de l\'onglet Objectifs',
+        title: this.translate.instant("SUIVI_HSE.NOTIF.NO_PERIOD_SELECTED.TITLE"),
         showConfirmButton: false,
         timer: 2000
       })

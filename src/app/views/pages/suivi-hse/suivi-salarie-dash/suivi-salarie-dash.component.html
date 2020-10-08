@@ -3,13 +3,13 @@
 
 <div class="row px-2">
 	<div class="col-4">
-		<tf-widget-indicator [value]="stats.total_employees" [valueClass]="getClass('down', stats.total_employees)" [desc]="'Nombre de salariés'" *ngIf="stats; else loading"></tf-widget-indicator>
+		<tf-widget-indicator [value]="stats.total_employees" [valueClass]="getClass('down', stats.total_employees)" desc="{{'SUIVI_HSE.DASH.EMPLOYEE_NO.TITLE' | translate}}" *ngIf="stats; else loading"></tf-widget-indicator>
 	</div>
 	<div class="col-4">
-		<tf-widget-indicator [value]="stats.target_achievement_rate | customPercent" [valueClass]="getClass('up', stats.target_achievement_rate)" [desc]="'Taux d\'atteinte des objectifs'" *ngIf="stats; else loading"></tf-widget-indicator>
+		<tf-widget-indicator [value]="stats.target_achievement_rate | customPercent" [valueClass]="getClass('up', stats.target_achievement_rate)" desc="{{'SUIVI_HSE.DASH.GOAL_ACHEI_RATE.TITLE' | translate}}" *ngIf="stats; else loading"></tf-widget-indicator>
 	</div>
 	<div class="col-4">
-		<tf-widget-indicator [value]="stats.target_failure_rate | customPercent" [valueClass]="getClass('down', stats.target_failure_rate)" [desc]="'Taux d\'échec'" *ngIf="stats; else loading"></tf-widget-indicator>
+		<tf-widget-indicator [value]="stats.target_failure_rate | customPercent" [valueClass]="getClass('down', stats.target_failure_rate)" desc="{{'SUIVI_HSE.DASH.FAIL_RATE.TITLE' | translate}}" *ngIf="stats; else loading"></tf-widget-indicator>
     </div>
 
     <div class="col-6">

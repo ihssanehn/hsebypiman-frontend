@@ -7,7 +7,7 @@
                     <mat-form-field class="col-xl-4 col-md-4 col-sm-4 col-xs-12 mat-filter-no-head">
                         <mat-label>{{'COMMON.FONCTION.TITLE' | translate}}</mat-label>
                         <mat-select class="form-control" formControlName="fonction_id" name="fonction_id">
-                            <mat-option>Tous</mat-option>
+                            <mat-option>{{'FILTER.SEARCH_ALL' | translate}}</mat-option>
                             <mat-option *ngFor="let fonction of fonctions" [value]="fonction.id">
                                 {{fonction.libelle}}
                             </mat-option>
@@ -18,10 +18,10 @@
 					</mat-form-field>
 
 					<mat-form-field class="col-xl-4 col-md-4 col-sm-4 col-xs-12 mat-filter-no-head">
-						<mat-label>Période</mat-label>
+						<mat-label>{{'SUIVI_HSE.PERIOD.TITLE' | translate}}</mat-label>
 						<mat-select class="form-control" formControlName="period_id" name="period_id">
 						  <mat-option *ngFor="let item of periodList" [value]="item.id">
-							{{item.start_date | date:'d MMM y'}} - {{item.end_date | date:'d MMM y'}}
+							{{item.start_date | date:'d MMM y' : undefined : translate.currentLang}} - {{item.end_date | date:'d MMM y' : undefined : translate.currentLang}}
 						  </mat-option>
 						</mat-select>
 					</mat-form-field>
@@ -29,11 +29,11 @@
 					<div class="col-xl-4 col-md-4 col-sm-4 col-xs-12">
 						<h6>{{'SALARIES.ENTRY_AT.LABEL' | translate}}</h6>
 						<mat-form-field class="col-md-6 col-xl-6">
-							<mat-label>Entre le :</mat-label>
+							<mat-label>{{'COMMON.DATE_RANGE.BETWEEN.TITLE' | translate}} :</mat-label>
 							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="entry_at_start" placeholder="DD/MM/YYYY">
 						</mat-form-field>
 						<mat-form-field class="col-md-6 col-xl-6">
-							<mat-label>Et le :</mat-label>
+							<mat-label>{{'COMMON.DATE_RANGE.AND.TITLE' | translate}} :</mat-label>
 							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="entry_at_end" placeholder="DD/MM/YYYY">
 						</mat-form-field>
 					</div>

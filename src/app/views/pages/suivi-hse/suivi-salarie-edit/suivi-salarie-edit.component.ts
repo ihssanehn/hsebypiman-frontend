@@ -10,6 +10,7 @@ import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import Swal from 'sweetalert2';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'tf-suivi-salarie-edit',
@@ -35,7 +36,8 @@ export class SuiviSalarieEditComponent implements OnInit {
     private salarieService: PersonnelService,
     public activeModal: NgbActiveModal,
 		private cdr: ChangeDetectorRef,
-		private permissionsService : NgxPermissionsService
+    private permissionsService : NgxPermissionsService,
+    private translate: TranslateService
   ) {}
 
   ngOnInit() {
@@ -157,7 +159,7 @@ export class SuiviSalarieEditComponent implements OnInit {
           
           Swal.fire({
             icon: 'success',
-            title: 'Données mises à jour avec succès',
+            title: this.translate.instant("SUIVI_HSE.NOTIF.DATAS_UPDATED.TITLE"),
             showConfirmButton: false,
             timer: 1500
           }).then(() => {
@@ -168,7 +170,7 @@ export class SuiviSalarieEditComponent implements OnInit {
 
           Swal.fire({
             icon: 'error',
-            title: 'Echec! le formulaire est incomplet',
+            title: this.translate.instant("NOTIF.INCOMPLETE_FORM.TITLE"),
             showConfirmButton: false,
             timer: 1500
           });

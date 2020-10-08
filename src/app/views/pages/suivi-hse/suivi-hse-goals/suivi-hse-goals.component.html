@@ -2,22 +2,22 @@
     <tf-portlet class="tf-portlet--height-fluid mat-elevation-z8" id="portlet-salarie" >
         <div class="tf-portlet-header ">
             <span class="title">
-                <a [routerLink]="['/suivi-hse/list']">{{'MENU.SUB_SUIVI_HSE.LIST' | translate}}</a><span class="divider">></span><span class="id-item">Objectifs</span>
+                <a [routerLink]="['/suivi-hse/list']">{{'MENU.SUB_SUIVI_HSE.LIST' | translate}}</a><span class="divider">></span><span class="id-item">{{'COMMON.GOAL.TITLE' | translate}}</span>
             </span>
             <div class="pull-right">
 
                 <ng-container *ngIf="selectedPeriodId; else addFirstPeriod">
                     <mat-form-field class="date-range-selector " appearance="fill">
-                        <mat-label>Période</mat-label>
+                        <mat-label>{{'SUIVI_HSE.PERIOD.TITLE' | translate}}</mat-label>
                         <mat-select [(value)]="selectedPeriodId" (selectionChange)="changePeriod($event.value)">
                           <mat-option *ngFor="let item of periodList" [value]="item.id">
-                            {{item.start_date | date:'d MMM y'}} - {{item.end_date | date:'d MMM y'}}
+                            {{item.start_date | date:'d MMM y' : undefined : translate.currentLang}} - {{item.end_date | date:'d MMM y' : undefined : translate.currentLang}}
                           </mat-option>
                         </mat-select>
                     </mat-form-field>
     
                     <span class="pull-right">
-                        <button type="button" mat-icon-button style="color: rgb(228, 152, 25);" matTooltip="Ajouter une nouvelle période" (click)="openNewPeriodModal()" *ngxPermissionsOnly="['salarie_canUpdate']">
+                        <button type="button" mat-icon-button style="color: rgb(228, 152, 25);" matTooltip="{{'SUIVI_HSE.ACTION.NEW_PERIOD.TITLE' | translate}}" (click)="openNewPeriodModal()" *ngxPermissionsOnly="['salarie_canUpdate']">
                             <mat-icon>add</mat-icon>
                         </button>
                     </span>
@@ -29,7 +29,7 @@
                             <div class="status-box" >
                                 <mat-icon class="d-flex h-center">add</mat-icon> 
                             </div>
-                            <div class="d-flex h-center">Ajouter une période</div>
+                            <div class="d-flex h-center">{{'SUIVI_HSE.ACTION.NEW_PERIOD.LABEL' | translate}}</div>
                         </div>
                     </span>
                 </ng-template>
@@ -50,9 +50,9 @@
                                             <ng-container [formGroup]="getGoal(metric.id, i)" >
                                                 <mat-form-field class="col-xl-12" >
                                                     <mat-label>{{metric.short_libelle}}</mat-label>
-                                                    <input *ngIf="metric.unit; else withoutUnit" matInput  class="form-control" formControlName="value" type="string" name="metric" [suffix]=" ' '+metric.unit" mask="separator.2" placeholder="Saisir ici" />
+                                                    <input *ngIf="metric.unit; else withoutUnit" matInput  class="form-control" formControlName="value" type="string" name="metric" [suffix]=" ' '+metric.unit" mask="separator.2" placeholder="{{'ACTION.ENTER_HERE' | translate}}" />
                                                     <ng-template #withoutUnit>
-                                                        <input matInput  class="form-control" formControlName="value" type="number" name="metric" placeholder="Saisir ici" />
+                                                        <input matInput  class="form-control" formControlName="value" type="number" name="metric" placeholder="{{'ACTION.ENTER_HERE' | translate}}" />
                                                     </ng-template>
                                                 </mat-form-field>
                                             </ng-container>

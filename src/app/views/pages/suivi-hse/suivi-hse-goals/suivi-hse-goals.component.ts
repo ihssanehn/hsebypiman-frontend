@@ -9,6 +9,7 @@ import * as _moment from 'moment';
 import { default as _rollupMoment } from 'moment';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SuiviHsePeriodsAddComponent } from './suivi-hse-periods-add/suivi-hse-periods-add.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'tf-suivi-hse-goals',
@@ -34,6 +35,7 @@ export class SuiviHseGoalsComponent implements OnInit {
     private fb: FormBuilder,
     private location: Location,
     private cdr: ChangeDetectorRef,
+    public translate: TranslateService
   ) { }
 
   ngOnInit() {
@@ -138,7 +140,7 @@ export class SuiviHseGoalsComponent implements OnInit {
           
           Swal.fire({
             icon: 'success',
-            title: 'Objectif mis à jour avec succès',
+            title: this.translate.instant("SUIVI_HSE.NOTIF.GOAL_UPDATED.TITLE"),
             showConfirmButton: false,
             timer: 1500
           }).then(() => {
@@ -149,7 +151,7 @@ export class SuiviHseGoalsComponent implements OnInit {
 
           Swal.fire({
             icon: 'error',
-            title: 'Echec! le formulaire est incomplet',
+            title: this.translate.instant("NOTIF.INCOMPLETE_FORM.TITLE"),
             showConfirmButton: false,
             timer: 1500
           });

@@ -6,7 +6,8 @@ import { PeriodService } from '@app/core/services';
 import Swal from 'sweetalert2';
 import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
 import { FollowUpPeriod } from '@app/core/models';
-import { MatInput, MatDatepickerInput } from '@angular/material';
+import { MatInput, MatDatepickerInput, DateAdapter } from '@angular/material';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -58,7 +59,11 @@ export class SuiviHsePeriodsAddComponent implements OnInit, AfterViewInit, OnDes
     private cdr: ChangeDetectorRef,
     private dateFrToEnPipe:DateFrToEnPipe,
     private dateEnToFrPipe:DateEnToFrPipe,
-  ) { }
+    private translate: TranslateService,
+    private dateAdapter: DateAdapter<any>
+  ) { 
+    this.dateAdapter.setLocale(localStorage.getItem('language') || this.translate.getDefaultLang());
+  }
 
   ngOnInit() {
     this.createForm();
@@ -70,6 +75,7 @@ export class SuiviHsePeriodsAddComponent implements OnInit, AfterViewInit, OnDes
     this.eventSubscription = fromEvent(this.dateInput.nativeElement, 'input').subscribe(_ => {
       this.datepickerInput._onInput(this.dateInput.nativeElement.value);
     });
+    
   }
 
   ngOnDestroy() {
@@ -139,7 +145,7 @@ export class SuiviHsePeriodsAddComponent implements OnInit, AfterViewInit, OnDes
           
           Swal.fire({
             icon: 'success',
-            title: 'Période ajoutée avec succès',
+            title: this.translate.instant("SUIVI_HSE.NOTIF.PERIOD_ADDED.TITLE"),
             showConfirmButton: false,
             timer: 1500
           }).then(() => {
@@ -150,7 +156,7 @@ export class SuiviHsePeriodsAddComponent implements OnInit, AfterViewInit, OnDes
 
           Swal.fire({
             icon: 'error',
-            title: 'Echec! le formulaire est incomplet',
+            title: this.translate.instant("NOTIF.INCOMPLETE_FORM.TITLE"),
             showConfirmButton: false,
             timer: 1500
           });
