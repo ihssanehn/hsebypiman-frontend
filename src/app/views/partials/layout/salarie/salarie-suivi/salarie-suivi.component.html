@@ -7,7 +7,7 @@
         </div>
         <div class="tf-portlet__head-toolbar">
             <mat-form-field class="date-range-selector no-pb pull-right" appearance="fill" *ngIf="selectedPeriodId">
-                <mat-label>Période</mat-label>
+                <mat-label>{{'SUIVI_HSE.PERIOD.TITLE' | translate}}</mat-label>
                 <mat-select [(value)]="selectedPeriodId" (selectionChange)="changePeriod($event.value)">
                   <mat-option *ngFor="let item of periodList" [value]="item.id">
                     {{item.start_date | date:'d MMM y'}} <span class="divider">-</span> {{item.end_date | date:'d MMM y'}}

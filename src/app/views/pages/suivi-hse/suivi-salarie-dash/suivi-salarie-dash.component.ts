@@ -4,6 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PersonnelService } from '@app/core/services';
 
+
 @Component({
   selector: 'tf-suivi-salarie-dash',
   templateUrl: './suivi-salarie-dash.component.html',
@@ -25,7 +26,7 @@ export class SuiviSalarieDashComponent implements OnInit {
   echartsEvol;
   EvolOptions = {
     title: {
-      text: 'Note moyenne par salarié',
+      text: this.translate.instant("SUIVI_HSE.DASH.AVG_SCORE_PER_EMPLOYEE.TITLE"),
       x: 'center'
     },
     tooltip: {
@@ -64,7 +65,7 @@ export class SuiviSalarieDashComponent implements OnInit {
   echartsHLine;
   hLineOptions = {
     title: {
-      text: 'Répartition des notes par type de suivi',
+      text: this.translate.instant("SUIVI_HSE.DASH.RATING_PER_TYPE.TITLE"),
       x: 'center'
     },
     dataset: {
@@ -102,7 +103,7 @@ export class SuiviSalarieDashComponent implements OnInit {
   byRatingOptions = {
     color: this.noteColors,
     title: {
-      text: 'Répartition des notes par salarié',
+      text: this.translate.instant("SUIVI_HSE.DASH.SCORES_BY_EMPLOYEE.TITLE"),
       x: 'center'
     },
     grid: {
@@ -147,6 +148,21 @@ export class SuiviSalarieDashComponent implements OnInit {
 	ngOnInit() {
 		this.getSalariesDash();
   }
+
+  refreshTranslations(){
+		this.translate.stream("SUIVI_HSE.DASH.AVG_SCORE_PER_EMPLOYEE.TITLE").subscribe(x =>{
+			this.EvolOptions.title.text = x;
+			this.echartsEvol.setOption(this.EvolOptions);
+		});
+		this.translate.stream("SUIVI_HSE.DASH.RATING_PER_TYPE.TITLE").subscribe(x =>{
+			this.hLineOptions.title.text = x;
+			this.echartsHLine.setOption(this.hLineOptions);
+	   });
+		this.translate.stream("SUIVI_HSE.DASH.SCORES_BY_EMPLOYEE.TITLE").subscribe(x =>{
+			this.byRatingOptions.title.text = x;
+			this.echartsRating.setOption(this.byRatingOptions);
+		});
+	}
   
 	ngAfterViewInit(){
     this.echartsRating = echarts.init(this.pieRating.nativeElement)
@@ -156,7 +172,9 @@ export class SuiviSalarieDashComponent implements OnInit {
     this.echartsEvol.showLoading();
     
     this.echartsHLine = echarts.init(this.hLine.nativeElement)
-		this.echartsHLine.showLoading();
+    this.echartsHLine.showLoading();
+    
+    this.refreshTranslations();
   }
   
   ngOnDestroy(){

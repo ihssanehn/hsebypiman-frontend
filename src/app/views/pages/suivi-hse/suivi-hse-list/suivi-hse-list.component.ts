@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { PersonnelService, PeriodService } from '@app/core/services';
 import Swal from 'sweetalert2';
 import { Personnel } from '@app/core/models';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'tf-suivi-hse-list',
@@ -40,6 +41,7 @@ export class SuiviHseListComponent implements OnInit, AfterViewInit, OnDestroy {
 		protected salarieService: PersonnelService,
 		protected periodService: PeriodService,
 		protected cdr: ChangeDetectorRef,
+		private translate: TranslateService
   ) { }
 
   ngOnInit() {
@@ -106,7 +108,7 @@ export class SuiviHseListComponent implements OnInit, AfterViewInit, OnDestroy {
   
 	deleteSalarie(actionId) {
 		Swal.fire({
-			title: 'Désolé cette fonctionnalité n\'a pas encore été implémentée',
+			title: this.translate.instant("NOTIF.FEATURE_NOT_IMPLEMENTED.TITLE"),
 			showConfirmButton: false,
 			timer: 1500
 		})

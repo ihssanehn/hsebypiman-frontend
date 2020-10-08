@@ -1,5 +1,5 @@
 <div class="modal-header">
-	<h4 class="modal-title">Modification</h4>
+	<h4 class="modal-title">{{'SUIVI_HSE.MODIFICATION.TITLE' | translate}}</h4>
 	<button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
 		<span aria-hidden="true">&times;</span>
 	</button>
@@ -29,9 +29,9 @@
                                                     <ng-container *ngIf="metric.is_editable" [formGroup]="getPivot(metric.id,j,i)">
                                                         <mat-form-field class="col-xl-12" *ngIf="!metric.is_bool; else boolField">
                                                             <mat-label>{{metric.libelle}}</mat-label>
-                                                            <input *ngIf="metric.unit; else withoutUnit" matInput  class="form-control" formControlName="value" type="string" name="metric" [suffix]=" ' '+metric.unit" mask="separator.2" placeholder="Saisir ici" />
+                                                            <input *ngIf="metric.unit; else withoutUnit" matInput  class="form-control" formControlName="value" type="string" name="metric" [suffix]=" ' '+metric.unit" mask="separator.2" placeholder="{{'ACTION.ENTER_HERE' | translate}}" />
                                                             <ng-template #withoutUnit>
-                                                                <input matInput  class="form-control" formControlName="value" type="number" name="metric" placeholder="Saisir ici" />
+                                                                <input matInput  class="form-control" formControlName="value" type="number" name="metric" placeholder="{{'ACTION.ENTER_HERE' | translate}}" />
                                                             </ng-template>
                                                         </mat-form-field>
                                                     </ng-container>
@@ -41,8 +41,8 @@
                                                                 <span class="label pull-left mr-2">{{metric.libelle}}</span>
                                                                 <span class="pull-right">
                                                                     <mat-radio-group formControlName="value" >
-                                                                        <mat-radio-button class="metric-radio" [value]="1">Oui</mat-radio-button>
-                                                                        <mat-radio-button class="metric-radio" [value]="0">Non</mat-radio-button>
+                                                                        <mat-radio-button class="metric-radio" [value]="1">{{'COMMON.YES' | translate}}</mat-radio-button>
+                                                                        <mat-radio-button class="metric-radio" [value]="0">{{'COMMON.NO' | translate}}</mat-radio-button>
                                                                     </mat-radio-group>
                                                                 </span>
                                                             </p>
@@ -62,6 +62,6 @@
     </form>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" (click)="onCancel()">{{ 'Annuler' | translate }}</button>
-	<button type="button" type="button" mat-raised-button [ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': formloading}" color="success" [disabled]="formloading || metricForm.invalid" (click)="onSubmit()">{{ 'Enregistrer' | translate }}</button>
+    <button type="button" class="btn btn-secondary" (click)="onCancel()">{{ 'ACTION.CANCEL' | translate }}</button>
+	<button type="button" type="button" mat-raised-button [ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': formloading}" color="success" [disabled]="formloading || metricForm.invalid" (click)="onSubmit()">{{ 'ACTION.SAVE' | translate }}</button>
 </div>
