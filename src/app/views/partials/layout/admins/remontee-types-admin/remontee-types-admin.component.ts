@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectorRef, Injector } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TypeService } from '@app/core/services';
 import { AdminTemplateComponent } from '@app/views/partials/layout/admin-template/admin-template.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'remontee-types-admin',
@@ -14,16 +15,9 @@ export class RemonteeTypesAdminComponent extends AdminTemplateComponent implemen
   modalService: NgbModal;
   parentService: any;
   childService: any;
+  translate: TranslateService;
 
-  tpl : any = {
-    title : 'Typologies de remontée',
-    deletedMessage: 'Suppression impossible car la selection comprend un élément affecté à une ou plusieurs remontées',
-    deletedChildMessage: 'Suppression impossible car la selection est affectée à une ou plusieurs remontées',
-    collapsed : false,
-    canUpdateTitle: false,
-    titleOject: null,
-    childCol : 12
-  }
+  tpl : any;
 
   list: any[];
 
@@ -32,8 +26,34 @@ export class RemonteeTypesAdminComponent extends AdminTemplateComponent implemen
     this.cdr = injector.get(ChangeDetectorRef);
     this.modalService = injector.get(NgbModal);
     this.parentService = injector.get(TypeService);
+    this.translate = injector.get(TranslateService);
   }
 
+  ngOnInit() {
+    super.ngOnInit();
+    this.refreshTranslations();
+    this.tpl = {
+      title : this.translate.instant("REMONTEES.NOTIF.ELEMENT_NOT_DELETED.SHORTTITLE"),
+      deletedMessage: this.translate.instant("REMONTEES.NOTIF.ELEMENT_NOT_DELETED.TITLE"),
+      deletedChildMessage: this.translate.instant("REMONTEES.NOTIF.ELEMENT_NOT_DELETED.LABEL"),
+      collapsed : false,
+      canUpdateTitle: false,
+      titleOject: null,
+      childCol : 12
+    }
+  }
+
+  refreshTranslations(){
+		this.translate.stream("REMONTEES.NOTIF.ELEMENT_NOT_DELETED.SHORTTITLE").subscribe(x =>{
+			 this.tpl.title = x;
+		});
+		this.translate.stream("REMONTEES.NOTIF.ELEMENT_NOT_DELETED.TITLE").subscribe(x =>{
+			this.tpl.deletedMessage = x;
+	   });
+		this.translate.stream("REMONTEES.NOTIF.ELEMENT_NOT_DELETED.LABEL").subscribe(x =>{
+			this.tpl.deletedChildMessage = x;
+		});
+	}
 
   async getList(){
     try {
@@ -46,9 +66,8 @@ export class RemonteeTypesAdminComponent extends AdminTemplateComponent implemen
   }
 
   async addItem(){
-    super.addItem("Ajouter une typologie de remontée", {ordre: this.generateParentOrdre()});  
+    super.addItem(this.translate.instant("REMONTEES.ADD_LIFT_TYPE.TITLE"), {ordre: this.generateParentOrdre()});  
   }
-
 
   async createItem(payload){
     payload = {...payload, ordre : this.generateParentOrdre(), model: 'Remontée' }
@@ -59,10 +78,9 @@ export class RemonteeTypesAdminComponent extends AdminTemplateComponent implemen
   }
 
   async deleteItem({id}){
-    super.deleteItem({id}, { title : "Typologie de remontée archivée avec succès" });
+    super.deleteItem({id}, { title : this.translate.instant("REMONTEES.NOTIF.LIFT_TYPE_ARCHIVED.TITLE") });
   }
 
-  
   async updateOrders(datas){
     try {
       await this.parentService.updateOrders(datas).toPromise();

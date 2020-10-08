@@ -86,12 +86,12 @@ export class RemonteeFormComponent implements OnInit {
   deleteDoc(item){
     Swal.fire({
       icon: 'warning',
-      title: 'Vous allez supprimer ce document de façon définitive',
-      html: '<p>Êtes-vous sûr de vouloir continuer ?</p>',
+      title: this.translate.instant("REMONTEES.NOTIF.DOC_DELETE_CONFIRMATION.TITLE"),
+      html: '<p>'+this.translate.instant("REMONTEES.NOTIF.DOC_DELETE_CONFIRMATION.LABEL")+'</p>',
       showConfirmButton: true,
       showCancelButton: true,
-      cancelButtonText: 'Annuler',
-      confirmButtonText: 'Confirmer'
+      cancelButtonText: this.translate.instant("ACTION.CANCEL"),
+      confirmButtonText: this.translate.instant("ACTION.CONFIRM"),
     }).then(async response => {
       if (response.value) {
         this.documentService.delete(item.id).toPromise()
@@ -101,7 +101,7 @@ export class RemonteeFormComponent implements OnInit {
           docArray.removeAt(docArray.value.findIndex(x => x.id === item.id))
           Swal.fire({
             icon: 'success',
-            title: 'Document supprimé avec succès',
+            title: this.translate.instant("REMONTEES.NOTIF.DOC_DELETED.TITLE"),
             showConfirmButton: false,
             timer: 1500,
           })
@@ -142,7 +142,6 @@ export class RemonteeFormComponent implements OnInit {
           timer: 1500
         });
       }
-
 
       if(error == true){
         this.uploader.queue = this.uploader.queue.filter(x=>x.file.name != droppedFile.name);
