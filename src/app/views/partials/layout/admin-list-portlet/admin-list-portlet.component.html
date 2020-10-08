@@ -28,16 +28,16 @@
 
             <div class="tf-portlet__head-group">
                 <ng-container *ngIf="!item.edit; else editActions">
-                    <a (click)="startEdit(selectedItem)" matTooltip="{{'ACTION.EDIT' | translate}}" class="btn btn-sm btn-icon btn-clean btn-icon-md ">
+                    <a (click)="startEdit(item)" matTooltip="{{'ACTION.EDIT' | translate}}" class="btn btn-sm btn-icon btn-clean btn-icon-md ">
                         <i nz-icon nzType="edit"  nzTheme="outline" class="pointer text-primary"></i>
                     </a>
                     <a (click)="addChild()" data-ktportlet-tool="add" matTooltip="{{'ACTION.ADD' | translate}}" class="btn btn-sm btn-icon btn-clean btn-icon-md">
                     <i class="la la-plus text-success"></i>
                     </a>
-                    <a (click)="refreshItem(selectedItem)" matTooltip="{{'ACTION.REFRESH' | translate}}" class="btn btn-sm btn-icon btn-clean btn-icon-md">
+                    <a (click)="refreshItem(item)" matTooltip="{{'ACTION.REFRESH' | translate}}" class="btn btn-sm btn-icon btn-clean btn-icon-md">
                         <i class="la la-refresh"></i>
                     </a>
-                    <a (nzOnConfirm)="deleteItem(selectedItem)" matTooltip="{{'ACTION.DELETE' | translate}}" nz-popconfirm nzPopconfirmTitle="{{'NOTIF.DELETE_CONFIRMATION.TITLE' | translate}}" class="btn btn-sm btn-icon btn-clean btn-icon-md">
+                    <a (nzOnConfirm)="deleteItem(item)" matTooltip="{{'ACTION.DELETE' | translate}}" nz-popconfirm nzPopconfirmTitle="{{'NOTIF.DELETE_CONFIRMATION.TITLE' | translate}}" class="btn btn-sm btn-icon btn-clean btn-icon-md">
                         <i class="la la-trash text-danger"></i>
                     </a>
                     <!-- <button mat-icon-button color="primary" matTooltip="Actions" [matMenuTriggerFor]="actionMenu" (click)="selectedItem = item" >
@@ -81,7 +81,7 @@
                         <ng-container *ngIf="!data.edit; else editTemplate">
                             <td>{{ data?.libelle }}</td>
                             <td class="text-center">
-                                <i class="fa" [ngClass]="data?.active ? 'fa-eye text-success':'fa-eye-slash'"></i>
+                                <i class="fa" [ngClass]="data?.active ? 'fa-eye text-success':'fa-eye-slash'" matTooltip="{{item?.active ? ('COMMON.VISIBLE' | translate):('COMMON.INVISIBLE' | translate)}}" [matTooltipPosition]="'above'"></i>
                             </td>
                             <td class="text-right">
                                 <a (click)="startEdit(data)" matTooltip="{{'ACTION.EDIT' | translate}}" class="text-primary">
@@ -99,7 +99,7 @@
                             </td>
                             <td class="text-center">
                                 <a (click)="toggleVisibility(data)" class="btn btn-sm btn-icon btn-clean btn-icon-md">
-                                    <i class="fa" [ngClass]="data?.active ? 'fa-eye':'fa-eye-slash'"></i>
+                                    <i class="fa" [ngClass]="data?.active ? 'fa-eye':'fa-eye-slash'" matTooltip="{{item?.active ? ('COMMON.VISIBLE' | translate):('COMMON.INVISIBLE' | translate)}}" [matTooltipPosition]="'above'"></i>
                                 </a>
                             </td>
                             <td class="text-right">
