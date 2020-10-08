@@ -11,6 +11,7 @@ import { NgxPermissionsService } from 'ngx-permissions';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import Swal from 'sweetalert2';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'tf-entreprise-detail',
@@ -41,6 +42,7 @@ export class EntrepriseDetailComponent implements OnInit, OnDestroy {
 		private router: Router,
 		private entrepriseFB: FormBuilder,
 		// private notificationService: NzNotificationService,
+		private translate: TranslateService,
 		private entrepriseService: EntrepriseService,
 		private cdr: ChangeDetectorRef,
 		private permissionsService : NgxPermissionsService,
@@ -101,8 +103,6 @@ export class EntrepriseDetailComponent implements OnInit, OnDestroy {
 		const url = `/entreprises/list`;
 		this.router.navigateByUrl(url, { relativeTo: this.activatedRoute });
 	}
-  
-	
 
   	/**
 	 * Refresh user
@@ -127,7 +127,7 @@ export class EntrepriseDetailComponent implements OnInit, OnDestroy {
 	}
 	deleteEntreprise(id){
 		Swal.fire({
-			title:'Désolé cette fonctionnalité n\'a pas encore été implémentée',
+			title: this.translate.instant("NOTIF.FEATURE_NOT_IMPLEMENTED.TITLE"),
 			showConfirmButton: false,
             timer: 1500
 		})

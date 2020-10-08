@@ -27,18 +27,6 @@ export class EntrepriseFiltersComponent implements OnInit, AfterViewInit
   status: Status[];
   types: Type[];
   clients: String[];
-  visiteOptions = [
-    'Avec',
-    'Sans'
-  ]
-  analyseOptions = [
-    'Avec',
-    'Sans'
-  ]
-  entrepriseOptions = [
-    'Avec',
-    'Sans'
-  ]
   statuses;
 
   @Output() change = new EventEmitter();

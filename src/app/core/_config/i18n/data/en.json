@@ -7,6 +7,7 @@
 		"DETAIL": "Detail",
 		"CONFIRM": "Confirm",
 		"DELETE": "Remove",
+		"DETAIL": "Detail",
 		"DOWNLOAD": "Download",
 		"DUPLICATE": "Duplicate",
 		"EDIT": "Edit",
@@ -18,6 +19,8 @@
 		"REFRESH": "Refresh",
 		"SAVE": "Save",
 		"SHOW": "Show",
+		"SHOW_USER": "View user",
+		"SHOW_VISIT": "View the visit",
 		"SIGN": "Sign"
 	},
 	"ARS": {
@@ -734,11 +737,28 @@
 		"YES": "Yes"
 	},
 	"EES": {
+		"ACTION": {
+			"ADD_COMPANY_TYPE": "Add a company type"
+		},
 		"CA": {
 			"LABEL": "Turnover",
 			"PLACEHOLDER": "Enter here ...",
 			"SHORTTITLE": "CA",
+			"SUBLABEL": "Turnover of the EE",
 			"TITLE": "Turnover"
+		},
+		"CARD": {
+			"COMPANY_DETAILS": {
+				"TITLE": "Company details"
+			},
+			"COMPANY_MONITORING": {
+				"LABEL": "Site monitoring",
+				"NO_CHANTIER": "This company has not been assigned to any site",
+				"TITLE": "Company monitoring"
+			},
+			"GENERAL_INFOS": {
+				"TITLE": "General informations"
+			}
 		},
 		"CHANTIERS": {
 			"LABEL": "Construction sites",
@@ -750,16 +770,53 @@
 			"SHORTTITLE": "Number of sites",
 			"TITLE": "Number of sites"
 		},
+		"DASH": {
+			"TOP_INTERIM": {
+				"MISSION": "missions",
+				"TITLE": "Top 5 Interim"
+			},
+			"TOP_NC": {
+				"NC": "nc",
+				"TITLE": "Top 5 Nc",
+				"VS": "SV"
+			},
+			"TOP_SUBCONTRACTORS": {
+				"TITLE": "Top 5 subcontractors"
+			},
+			"TOP_VISITS": {
+				"TITLE": "Top 5 visits"
+			}
+		},
 		"DATE_DEMARRAGE": {
 			"LABEL": "Starting date",
 			"PLACEHOLDER": "Enter here ...",
 			"SHORTTITLE": "Starting date",
+			"SUBLABEL": "Start date of the EE",
 			"TITLE": "Starting date"
 		},
 		"INTERIMAIRE": {
 			"LABEL": "Temp worker",
 			"SHORTTITLE": "Temp worker",
 			"TITLE": "Temp worker"
+		},
+		"NOTIF": {
+			"COMPANY_CREATED": {
+				"TITLE": "Company successfully created"
+			},
+			"COMPANY_TYPE_ARCHIVED": {
+				"TITLE": "Company type successfully archived"
+			},
+			"COMPANY_UPDATED": {
+				"TITLE": "Company updated successfully"
+			},
+			"ELEMENT_NOT_DELETED": {
+				"LABEL": "Unable to delete because the selection is assigned to one or more companies",
+				"SHORTTITLE": "Company types",
+				"TITLE": "Unable to delete because the selection includes an element assigned to one or more companies"
+			},
+			"LOADING": {
+				"TITLE": "Loading Company"
+			}
 		},
 		"RAISON_SOCIALE": {
 			"LABEL": "Social media",
@@ -847,6 +904,12 @@
 		}
 	},
 	"MATERIELS": {
+		"ACTION": {
+			"ADD_MATERIAL_TYPE": "Add a material type",
+			"ASSIGN_MATERIEL": "Assign material",
+			"MODIFY_LOAN": "modify the loan",
+			"RETURN-MATERIEL": "Return material"
+		},
 		"ACTUAL_USER": {
 			"LABEL": "Current user",
 			"SHORTTITLE": "Current user",
@@ -856,6 +919,21 @@
 			"LABEL": "New user",
 			"SHORTTITLE": "New user",
 			"TITLE": "New user"
+		},
+		"CARD": {
+			"GENERAL_INFOS": {
+				"TITLE": "General informations"
+			},
+			"USER_TRACKING": {
+				"NO_CURRENT_USER": "No current user",
+				"NO_HISTORY": "No history",
+				"NO_LOAN": "No loan",
+				"TITLE": "User tracking"
+			},
+			"VISITS_MONITORING": {
+				"NO_VISITS": "No visits",
+				"TITLE": "Monitoring of visits"
+			}
 		},
 		"CATEGORIE": {
 			"LABEL": "Category",
@@ -872,6 +950,31 @@
 			"LABEL": "Cost",
 			"SHORTTITLE": "Cost",
 			"TITLE": "Cost"
+		},
+		"DASH": {
+			"LATE_MATERIAL": {
+				"TITLE": "Late material"
+			},
+			"MATERIEL": {
+				"AVAILABLE": {
+					"TITLE": "Material available"
+				}
+			},
+			"MATERIELS_BY_TYPE": {
+				"TITLE": "Materials by type"
+			},
+			"MATERIEL_ENTRY_EVOLUTION": {
+				"TITLE": "Evolution of material entry"
+			},
+			"MATERIEL_LOAN": {
+				"TITLE": "Material on loan"
+			},
+			"MATERIEL_NO": {
+				"TITLE": "Material"
+			},
+			"VISITS_NO": {
+				"TITLE": "Number of visits"
+			}
 		},
 		"DATE_ENTREE": {
 			"LABEL": "Entry date",
@@ -958,6 +1061,28 @@
 			"SHORTTITLE": "Brand",
 			"TITLE": "Brand"
 		},
+		"NOTIF": {
+			"ELEMENT_NOT_DELETED": {
+				"LABEL": "Unable to delete because the selection is assigned to one or more equipment",
+				"SHORTTITLE": "Types of material",
+				"TITLE": "Unable to delete because the selection includes an element assigned to one or more equipment"
+			},
+			"LOADING": {
+				"TITLE": "Loading Material"
+			},
+			"LOAN_CREATED": {
+				"TITLE": "Loan created successfully"
+			},
+			"LOAN_UPDATED": {
+				"TITLE": "Loan updated successfully"
+			},
+			"MATERIEL_CREATED": {
+				"TITLE": "Material successfully created"
+			},
+			"MATERIEL_UPDATED": {
+				"TITLE": "Material updated successfully"
+			}
+		},
 		"NUMERO_SERIE": {
 			"LABEL": "Serial number",
 			"SHORTTITLE": "Serial number",
@@ -977,6 +1102,12 @@
 			"LABEL": "User history",
 			"SHORTTITLE": "User history",
 			"TITLE": "User history"
+		},
+		"READY": {
+			"TITLE": "ready"
+		},
+		"RETURN": {
+			"TITLE": "return"
 		},
 		"SUB_CATEGORIE": {
 			"LABEL": "Sub-category",

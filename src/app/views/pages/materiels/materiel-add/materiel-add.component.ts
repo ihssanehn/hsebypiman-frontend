@@ -9,6 +9,7 @@ import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
 import {FormStatus} from '@app/core/_base/crud/models/form-status';
 import { DateEnToFrPipe, DateFrToEnPipe } from '@app/core/_base/layout';
 import Swal from 'sweetalert2';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'tf-materiel-add',
@@ -32,7 +33,8 @@ export class MaterielAddComponent implements OnInit {
 		private router: Router,
 		private materielFB: FormBuilder,
 		// private notificationService: NzNotificationService,
-		private materielService: MaterielService,
+    private materielService: MaterielService,
+    private translate: TranslateService,
     private cdr: ChangeDetectorRef,
     private location: Location,
     public snackBar: MatSnackBar,    
@@ -101,7 +103,7 @@ export class MaterielAddComponent implements OnInit {
           var materiel = res.result.data;
           Swal.fire({
             icon: 'success',
-            title: 'Materiel créé avec succès',
+            title: this.translate.instant("MATERIELS.NOTIF.MATERIEL_CREATED.TITLE"),
             showConfirmButton: false,
             timer: 1500
           }).then(() => {
@@ -113,7 +115,7 @@ export class MaterielAddComponent implements OnInit {
 
           Swal.fire({
             icon: 'error',
-            title: 'Echec! le formulaire est incomplet',
+            title: this.translate.instant("ARS.NOTIF.INCOMPLETE_FORM.TITLE"),
             showConfirmButton: false,
             timer: 1500
           });

@@ -7,6 +7,7 @@
 		"DETAIL": "Detail",
 		"CONFIRM": "确认",
 		"DELETE": "清除",
+		"DETAIL": "",
 		"DOWNLOAD": "资料下载",
 		"DUPLICATE": "重复",
 		"EDIT": "变化",
@@ -18,6 +19,8 @@
 		"REFRESH": "",
 		"SAVE": "保存",
 		"SHOW": "",
+		"SHOW_USER": "",
+		"SHOW_VISIT": "",
 		"SIGN": "迹象"
 	},
 	"ARS": {
@@ -734,11 +737,28 @@
 		"YES": ""
 	},
 	"EES": {
+		"ACTION": {
+			"ADD_COMPANY_TYPE": ""
+		},
 		"CA": {
 			"LABEL": "Chiffre d'affaire",
 			"PLACEHOLDER": "Saisir ici...",
 			"SHORTTITLE": "CA",
+			"SUBLABEL": "",
 			"TITLE": "Chiffre d'affaire"
+		},
+		"CARD": {
+			"COMPANY_DETAILS": {
+				"TITLE": ""
+			},
+			"COMPANY_MONITORING": {
+				"LABEL": "",
+				"NO_CHANTIER": "",
+				"TITLE": ""
+			},
+			"GENERAL_INFOS": {
+				"TITLE": ""
+			}
 		},
 		"CHANTIERS": {
 			"LABEL": "Chantiers",
@@ -750,16 +770,53 @@
 			"SHORTTITLE": "Nbr chantiers",
 			"TITLE": "Nombre de chantiers"
 		},
+		"DASH": {
+			"TOP_INTERIM": {
+				"MISSION": "",
+				"TITLE": ""
+			},
+			"TOP_NC": {
+				"NC": "",
+				"TITLE": "",
+				"VS": ""
+			},
+			"TOP_SUBCONTRACTORS": {
+				"TITLE": ""
+			},
+			"TOP_VISITS": {
+				"TITLE": ""
+			}
+		},
 		"DATE_DEMARRAGE": {
 			"LABEL": "Date de démarrage",
 			"PLACEHOLDER": "Saisir ici...",
 			"SHORTTITLE": "Date démarrage",
+			"SUBLABEL": "",
 			"TITLE": "Date de démarrage"
 		},
 		"INTERIMAIRE": {
 			"LABEL": "Intérimaire",
 			"SHORTTITLE": "Intérimaire",
 			"TITLE": "Intérimaire"
+		},
+		"NOTIF": {
+			"COMPANY_CREATED": {
+				"TITLE": ""
+			},
+			"COMPANY_TYPE_ARCHIVED": {
+				"TITLE": ""
+			},
+			"COMPANY_UPDATED": {
+				"TITLE": ""
+			},
+			"ELEMENT_NOT_DELETED": {
+				"LABEL": "",
+				"SHORTTITLE": "",
+				"TITLE": ""
+			},
+			"LOADING": {
+				"TITLE": ""
+			}
 		},
 		"RAISON_SOCIALE": {
 			"LABEL": "Raison sociale",
@@ -847,6 +904,12 @@
 		}
 	},
 	"MATERIELS": {
+		"ACTION": {
+			"ADD_MATERIAL_TYPE": "",
+			"ASSIGN_MATERIEL": "",
+			"MODIFY_LOAN": "",
+			"RETURN-MATERIEL": ""
+		},
 		"ACTUAL_USER": {
 			"LABEL": "Utilisateur actuel",
 			"SHORTTITLE": "Utilisateur actuel",
@@ -856,6 +919,21 @@
 			"LABEL": "Nouvel utilisateur",
 			"SHORTTITLE": "Nouvel utilisateur",
 			"TITLE": "Nouvel utilisateur"
+		},
+		"CARD": {
+			"GENERAL_INFOS": {
+				"TITLE": ""
+			},
+			"USER_TRACKING": {
+				"NO_CURRENT_USER": "",
+				"NO_HISTORY": "",
+				"NO_LOAN": "",
+				"TITLE": ""
+			},
+			"VISITS_MONITORING": {
+				"NO_VISITS": "",
+				"TITLE": ""
+			}
 		},
 		"CATEGORIE": {
 			"LABEL": "Catégorie",
@@ -872,6 +950,31 @@
 			"LABEL": "Cout",
 			"SHORTTITLE": "Cout",
 			"TITLE": "Cout"
+		},
+		"DASH": {
+			"LATE_MATERIAL": {
+				"TITLE": ""
+			},
+			"MATERIEL": {
+				"AVAILABLE": {
+					"TITLE": ""
+				}
+			},
+			"MATERIELS_BY_TYPE": {
+				"TITLE": ""
+			},
+			"MATERIEL_ENTRY_EVOLUTION": {
+				"TITLE": ""
+			},
+			"MATERIEL_LOAN": {
+				"TITLE": ""
+			},
+			"MATERIEL_NO": {
+				"TITLE": ""
+			},
+			"VISITS_NO": {
+				"TITLE": ""
+			}
 		},
 		"DATE_ENTREE": {
 			"LABEL": "Date d'entrée",
@@ -958,6 +1061,28 @@
 			"SHORTTITLE": "Marque",
 			"TITLE": "Marque"
 		},
+		"NOTIF": {
+			"ELEMENT_NOT_DELETED": {
+				"LABEL": "",
+				"SHORTTITLE": "",
+				"TITLE": ""
+			},
+			"LOADING": {
+				"TITLE": ""
+			},
+			"LOAN_CREATED": {
+				"TITLE": ""
+			},
+			"LOAN_UPDATED": {
+				"TITLE": ""
+			},
+			"MATERIEL_CREATED": {
+				"TITLE": ""
+			},
+			"MATERIEL_UPDATED": {
+				"TITLE": ""
+			}
+		},
 		"NUMERO_SERIE": {
 			"LABEL": "Numéro de série",
 			"SHORTTITLE": "Numéro de série",
@@ -977,6 +1102,12 @@
 			"LABEL": "historique des utilisateurs",
 			"SHORTTITLE": "historique des utilisateurs",
 			"TITLE": "historique des utilisateurs"
+		},
+		"READY": {
+			"TITLE": ""
+		},
+		"RETURN": {
+			"TITLE": ""
 		},
 		"SUB_CATEGORIE": {
 			"LABEL": "Sous-catégorie",

@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectorRef, Injector, Input } from '@angular/
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CategorieService } from '@app/core/services';
 import { AdminTemplateComponent } from '@app/views/partials/layout/admin-template/admin-template.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'materiel-types-admin',
@@ -14,16 +15,9 @@ export class MaterielTypesAdminComponent extends AdminTemplateComponent implemen
   modalService: NgbModal;
   parentService: any;
   childService: any;
+  translate: TranslateService;
 
-  tpl : any = {
-    title : 'Types de matériel',
-    deletedMessage: 'Suppression impossible car la selection comprend un élément affecté à une ou plusieurs matériels',
-    deletedChildMessage: 'Suppression impossible car la selection est affectée à une ou plusieurs materiels',
-    collapsed : false,
-    canUpdateTitle: false,
-    titleOject: null,
-    childCol : 12
-  }
+  tpl : any;
 
   list: any[];
 
@@ -33,11 +27,34 @@ export class MaterielTypesAdminComponent extends AdminTemplateComponent implemen
     this.modalService = injector.get(NgbModal);
     this.parentService = injector.get(CategorieService);
     this.childService = injector.get(CategorieService);
+    this.translate = injector.get(TranslateService);
   }
 
   ngOnInit() {
     super.ngOnInit();
+    this.refreshTranslations();
+    this.tpl = {
+      title : this.translate.instant("MATERIELS.NOTIF.ELEMENT_NOT_DELETED.SHORTTITLE"),
+      deletedMessage: this.translate.instant("MATERIELS.NOTIF.ELEMENT_NOT_DELETED.TITLE"),
+      deletedChildMessage: this.translate.instant("MATERIELS.NOTIF.ELEMENT_NOT_DELETED.LABEL"),
+      collapsed : false,
+      canUpdateTitle: false,
+      titleOject: null,
+      childCol : 12
+    }
   }
+
+  refreshTranslations(){
+		this.translate.stream("MATERIELS.NOTIF.ELEMENT_NOT_DELETED.SHORTTITLE").subscribe(x =>{
+			 this.tpl.title = x;
+		});
+		this.translate.stream("MATERIELS.NOTIF.ELEMENT_NOT_DELETED.TITLE").subscribe(x =>{
+			this.tpl.deletedMessage = x;
+	   });
+		this.translate.stream("MATERIELS.NOTIF.ELEMENT_NOT_DELETED.LABEL").subscribe(x =>{
+			this.tpl.deletedChildMessage = x;
+		});
+	}
 
   async getList(){
     try {

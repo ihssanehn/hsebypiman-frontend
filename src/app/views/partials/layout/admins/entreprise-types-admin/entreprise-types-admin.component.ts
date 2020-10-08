@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectorRef, Injector } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TypeService } from '@app/core/services';
 import { AdminTemplateComponent } from '@app/views/partials/layout/admin-template/admin-template.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'entreprise-types-admin',
@@ -14,16 +15,9 @@ export class EntrepriseTypesAdminComponent extends AdminTemplateComponent implem
   modalService: NgbModal;
   parentService: any;
   childService: any;
+  translate: TranslateService;
 
-  tpl : any = {
-    title : 'Types d\'entreprise',
-    deletedMessage: 'Suppression impossible car la selection comprend un élément affecté à une ou plusieurs entreprises',
-    deletedChildMessage: 'Suppression impossible car la selection est affectée à une ou plusieurs entreprises',
-    collapsed : false,
-    canUpdateTitle: false,
-    titleOject: null,
-    childCol : 12
-  }
+  tpl : any;
 
   list: any[];
 
@@ -32,7 +26,34 @@ export class EntrepriseTypesAdminComponent extends AdminTemplateComponent implem
     this.cdr = injector.get(ChangeDetectorRef);
     this.modalService = injector.get(NgbModal);
     this.parentService = injector.get(TypeService);
+    this.translate = injector.get(TranslateService);
   }
+
+  ngOnInit() {
+    super.ngOnInit();
+    this.refreshTranslations();
+    this.tpl = {
+      title : this.translate.instant("EES.NOTIF.ELEMENT_NOT_DELETED.SHORTTITLE"),
+      deletedMessage: this.translate.instant("EES.NOTIF.ELEMENT_NOT_DELETED.TITLE"),
+      deletedChildMessage: this.translate.instant("EES.NOTIF.ELEMENT_NOT_DELETED.LABEL"),
+      collapsed : false,
+      canUpdateTitle: false,
+      titleOject: null,
+      childCol : 12
+    }
+  }
+
+  refreshTranslations(){
+		this.translate.stream("EES.NOTIF.ELEMENT_NOT_DELETED.SHORTTITLE").subscribe(x =>{
+			 this.tpl.title = x;
+		});
+		this.translate.stream("EES.NOTIF.ELEMENT_NOT_DELETED.TITLE").subscribe(x =>{
+			this.tpl.deletedMessage = x;
+	   });
+		this.translate.stream("EES.NOTIF.ELEMENT_NOT_DELETED.LABEL").subscribe(x =>{
+			this.tpl.deletedChildMessage = x;
+		});
+	}
 
 
   async getList(){
@@ -46,7 +67,7 @@ export class EntrepriseTypesAdminComponent extends AdminTemplateComponent implem
   }
 
   async addItem(){
-    super.addItem("Ajouter un type d'entreprise", {ordre: this.generateParentOrdre()});  
+    super.addItem(this.translate.instant("EES.ACTION.ADD_COMPANY_TYPE"), {ordre: this.generateParentOrdre()});  
   }
 
 
@@ -59,7 +80,7 @@ export class EntrepriseTypesAdminComponent extends AdminTemplateComponent implem
   }
 
   async deleteItem({id}){
-    super.deleteItem({id}, { title : "Type d'entreprise archivé avec succès" });
+    super.deleteItem({id}, { title : this.translate.instant("EES.NOTIF.COMPANY_TYPE_ARCHIVED.TITLE") });
   }
 
   

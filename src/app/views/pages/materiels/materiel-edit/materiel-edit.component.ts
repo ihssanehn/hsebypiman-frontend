@@ -15,6 +15,7 @@ import Swal from 'sweetalert2';
 import { DateEnToFrPipe, DateFrToEnPipe } from '@app/core/_base/layout';
 import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
 import {FormStatus} from '@app/core/_base/crud/models/form-status';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
 	selector: 'tf-materiel-edit',
@@ -51,6 +52,7 @@ export class MaterielEditComponent implements OnInit, OnDestroy {
 		private materielService: MaterielService,
 		private cdr: ChangeDetectorRef,
 		private permissionsService: NgxPermissionsService,
+		private translate: TranslateService,
 		private location: Location,
 		private subheaderService:SubheaderService,
 		private dateFrToEnPipe:DateFrToEnPipe,
@@ -164,7 +166,7 @@ export class MaterielEditComponent implements OnInit, OnDestroy {
 
 					Swal.fire({
 						icon: 'success',
-						title: 'Materiel mise à jour avec succès',
+						title: this.translate.instant("MATERIELS.NOTIF.MATERIEL_UPDATED.TITLE"),
 						showConfirmButton: false,
 						timer: 1500
 					}).then(() => {
@@ -176,7 +178,7 @@ export class MaterielEditComponent implements OnInit, OnDestroy {
 
 					Swal.fire({
 						icon: 'error',
-						title: 'Echec! le formulaire est incomplet',
+						title: this.translate.instant("ARS.NOTIF.INCOMPLETE_FORM.TITLE"),
 						showConfirmButton: false,
 						timer: 1500
 					});

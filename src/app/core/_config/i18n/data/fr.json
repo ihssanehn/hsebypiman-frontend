@@ -7,6 +7,7 @@
 		"DETAIL": "Détail",
 		"CONFIRM": "Confirmer",
 		"DELETE": "Supprimer",
+		"DETAIL": "Détail",
 		"DOWNLOAD": "Télécharger",
 		"DUPLICATE": "Dupliquer",
 		"EDIT": "Modifier",
@@ -18,6 +19,8 @@
 		"REFRESH": "Rafraîchir",
 		"SAVE": "Sauvegarder",
 		"SHOW": "Afficher",
+		"SHOW_USER": "Voir l'utilisateur",
+		"SHOW_VISIT": "Voir la visite",
 		"SIGN": "Signer"
 	},
 	"ARS": {
@@ -734,11 +737,28 @@
 		"YES": "Oui"
 	},
 	"EES": {
+		"ACTION": {
+			"ADD_COMPANY_TYPE": "Ajouter un type d'entreprise"
+		},
 		"CA": {
 			"LABEL": "Chiffre d'affaire",
 			"PLACEHOLDER": "Saisir ici...",
 			"SHORTTITLE": "CA",
+			"SUBLABEL": "CA de l'EE",
 			"TITLE": "Chiffre d'affaire"
+		},
+		"CARD": {
+			"COMPANY_DETAILS": {
+				"TITLE": "Coordonnées entreprise"
+			},
+			"COMPANY_MONITORING": {
+				"LABEL": "Suivis chantiers",
+				"NO_CHANTIER": "Cette entreprise n'a été affectée à aucun chantier",
+				"TITLE": "Suivi de l'entreprise"
+			},
+			"GENERAL_INFOS": {
+				"TITLE": "Informations générales"
+			}
 		},
 		"CHANTIERS": {
 			"LABEL": "Chantiers",
@@ -750,16 +770,53 @@
 			"SHORTTITLE": "Nbr chantiers",
 			"TITLE": "Nombre de chantiers"
 		},
+		"DASH": {
+			"TOP_INTERIM": {
+				"MISSION": "missions",
+				"TITLE": "Top 5 intérims"
+			},
+			"TOP_NC": {
+				"NC": "nc",
+				"TITLE": "Top 5 Nc",
+				"VS": "VS"
+			},
+			"TOP_SUBCONTRACTORS": {
+				"TITLE": "Top 5 sous-traitants"
+			},
+			"TOP_VISITS": {
+				"TITLE": "Top 5 visites"
+			}
+		},
 		"DATE_DEMARRAGE": {
 			"LABEL": "Date de démarrage",
 			"PLACEHOLDER": "Saisir ici...",
 			"SHORTTITLE": "Date démarrage",
+			"SUBLABEL": "Date démarrage de l'EE",
 			"TITLE": "Date de démarrage"
 		},
 		"INTERIMAIRE": {
 			"LABEL": "Intérimaire",
 			"SHORTTITLE": "Intérimaire",
 			"TITLE": "Intérimaire"
+		},
+		"NOTIF": {
+			"COMPANY_CREATED": {
+				"TITLE": "Entreprise créée avec succès"
+			},
+			"COMPANY_TYPE_ARCHIVED": {
+				"TITLE": "Type d'entreprise archivé avec succès"
+			},
+			"COMPANY_UPDATED": {
+				"TITLE": "Entreprise mise à jour avec succès"
+			},
+			"ELEMENT_NOT_DELETED": {
+				"LABEL": "Suppression impossible car la sélection est affectée à une ou plusieurs entreprises",
+				"SHORTTITLE": "Types d'entreprise",
+				"TITLE": "Suppression impossible car la sélection comprend un élément affecté à une ou plusieurs entreprises"
+			},
+			"LOADING": {
+				"TITLE": "Loading Entreprise"
+			}
 		},
 		"RAISON_SOCIALE": {
 			"LABEL": "Raison sociale",
@@ -847,6 +904,12 @@
 		}
 	},
 	"MATERIELS": {
+		"ACTION": {
+			"ADD_MATERIAL_TYPE": "Ajouter un type de matériel",
+			"ASSIGN_MATERIEL": "Assigner le matériel",
+			"MODIFY_LOAN": "modifier le prêt",
+			"RETURN-MATERIEL": "Retourner le matériel"
+		},
 		"ACTUAL_USER": {
 			"LABEL": "Utilisateur actuel",
 			"SHORTTITLE": "Utilisateur actuel",
@@ -856,6 +919,21 @@
 			"LABEL": "Nouvel utilisateur",
 			"SHORTTITLE": "Nouvel utilisateur",
 			"TITLE": "Nouvel utilisateur"
+		},
+		"CARD": {
+			"GENERAL_INFOS": {
+				"TITLE": "Informations générales"
+			},
+			"USER_TRACKING": {
+				"NO_CURRENT_USER": "Aucun utilisateur en cours",
+				"NO_HISTORY": "Aucun historique",
+				"NO_LOAN": "Aucun prêt",
+				"TITLE": "Suivi des utilisateurs"
+			},
+			"VISITS_MONITORING": {
+				"NO_VISITS": "Aucune visites",
+				"TITLE": "Suivi des visites"
+			}
 		},
 		"CATEGORIE": {
 			"LABEL": "Catégorie",
@@ -872,6 +950,31 @@
 			"LABEL": "Cout",
 			"SHORTTITLE": "Cout",
 			"TITLE": "Cout"
+		},
+		"DASH": {
+			"LATE_MATERIAL": {
+				"TITLE": "Matériel en retard"
+			},
+			"MATERIEL": {
+				"AVAILABLE": {
+					"TITLE": "Matériel disponible"
+				}
+			},
+			"MATERIELS_BY_TYPE": {
+				"TITLE": "Matériels par types"
+			},
+			"MATERIEL_ENTRY_EVOLUTION": {
+				"TITLE": "Évolution entrée de matériel"
+			},
+			"MATERIEL_LOAN": {
+				"TITLE": "Matériel en prêt"
+			},
+			"MATERIEL_NO": {
+				"TITLE": "Matériel"
+			},
+			"VISITS_NO": {
+				"TITLE": "Nombre de visites"
+			}
 		},
 		"DATE_ENTREE": {
 			"LABEL": "Date d'entrée",
@@ -958,6 +1061,28 @@
 			"SHORTTITLE": "Marque",
 			"TITLE": "Marque"
 		},
+		"NOTIF": {
+			"ELEMENT_NOT_DELETED": {
+				"LABEL": "Suppression impossible car la sélection est affectée à une ou plusieurs matériels",
+				"SHORTTITLE": "Types de matériel",
+				"TITLE": "Suppression impossible car la sélection comprend un élément affecté à une ou plusieurs matériels"
+			},
+			"LOADING": {
+				"TITLE": "Loading Matériel"
+			},
+			"LOAN_CREATED": {
+				"TITLE": "Prêt créé avec succès"
+			},
+			"LOAN_UPDATED": {
+				"TITLE": "Prêt mis à jour avec succès"
+			},
+			"MATERIEL_CREATED": {
+				"TITLE": "Matériel créé avec succès"
+			},
+			"MATERIEL_UPDATED": {
+				"TITLE": "Matériel mise à jour avec succès"
+			}
+		},
 		"NUMERO_SERIE": {
 			"LABEL": "Numéro de série",
 			"SHORTTITLE": "Numéro de série",
@@ -977,6 +1102,12 @@
 			"LABEL": "historique des utilisateurs",
 			"SHORTTITLE": "historique des utilisateurs",
 			"TITLE": "historique des utilisateurs"
+		},
+		"READY": {
+			"TITLE": "prêt"
+		},
+		"RETURN": {
+			"TITLE": "retour"
 		},
 		"SUB_CATEGORIE": {
 			"LABEL": "Sous-catégorie",
