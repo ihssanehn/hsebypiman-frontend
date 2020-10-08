@@ -39,7 +39,7 @@ export class ArRisquesAdminComponent extends AdminTemplateComponent implements O
       collapsed : true,
       canUpdateTitle: false,
       titleOject: null,
-      childCol : 6
+      childCol : 12
     }
   }
 

@@ -14,7 +14,7 @@
                 <tr>
                     <th >{{ 'COMMON.NAME.LABEL' | translate }}</th>
                     <th class="text-center">{{ 'ACTION.SHOW' | translate }}</th>
-                    <th nzWidth="10%">Action</th>
+                    <th nzWidth="10%" class="text-right">Action</th>
                 </tr>
                 </thead>
                 <tbody cdkDropList (cdkDropListDropped)="dropItem($event)">
@@ -24,12 +24,12 @@
                             <td class="text-center">
                                 <i class="fa" [ngClass]="data?.active ? 'fa-eye text-success':'fa-eye-slash'"></i>
                             </td>
-                            <td>
+                            <td class="text-right" >
                                 <a (click)="startEdit(data)" matTooltip="{{'ACTION.EDIT' | translate}}" class="text-primary">
                                     <i nz-icon nzType="edit" nzTheme="outline" class="pointer"></i>
                                 </a>
                                 <nz-divider nzType="vertical"></nz-divider>
-                                <a nz-popconfirm nzTitle="Sure to delete?" matTooltip="{{'ACTION.DELETE' | translate}}" class="text-danger" (nzOnConfirm)="deleteItem(data)">
+                                <a nz-popconfirm nzTitle="{{('NOTIF.DELETE_CONFIRMATION.TITLE' | translate)}}" matTooltip="{{'ACTION.DELETE' | translate}}" class="text-danger" (nzOnConfirm)="deleteItem(data)">
                                     <i class="la la-trash"></i>
                                 </a>
                             </td>
@@ -43,7 +43,7 @@
                                     <i class="fa" [ngClass]="data?.active ? 'fa-eye':'fa-eye-slash'"></i>
                                 </a>
                             </td>
-                            <td>
+                            <td class="text-right">
                                 <a (click)="saveItem(data)" matTooltip="{{'ACTION.SAVE' | translate}}" class="save" class="text-primary">
                                     <i nz-icon nzType="check"  nzTheme="outline"></i>
                                 </a>

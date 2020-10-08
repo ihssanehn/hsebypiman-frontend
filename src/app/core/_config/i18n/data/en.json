@@ -659,6 +659,7 @@
 			"LABEL": "Function",
 			"TITLE": "Function"
 		},
+		"INVISIBLE": "Invisible",
 		"LASTNAME": {
 			"LABEL": "Last name",
 			"TITLE": "Last name"
@@ -728,12 +729,13 @@
 			"TITLE": "Society"
 		},
 		"TODAY_DATE": {
-			"TITLE": "today's date"
+			"TITLE": "Today's date"
 		},
 		"UPDATED_AT": {
 			"SHORTTITLE": "Updated",
 			"TITLE": "Updating information"
 		},
+		"VISIBLE": "Visible",
 		"YES": "Yes"
 	},
 	"EES": {

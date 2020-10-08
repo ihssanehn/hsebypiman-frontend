@@ -40,7 +40,7 @@ export class ArZonesAdminComponent extends AdminTemplateComponent  implements On
       collapsed : true,
       canUpdateTitle: false,
       titleOject: null,
-      childCol : 6
+      childCol : 12
     }
   }
 

@@ -97,7 +97,7 @@
                                     <i nz-icon nzType="edit"  nzTheme="outline" class="pointer"></i>
                                 </a>
                                 <nz-divider nzType="vertical"></nz-divider>
-                                <a nz-popconfirm nzTitle="Sure to delete?" matTooltip="{{'ACTION.DELETE' | translate}}"  class="text-danger" (nzOnConfirm)="deleteChild(data)">
+                                <a nz-popconfirm nzTitle="{{('NOTIF.DELETE_CONFIRMATION.TITLE' | translate)}}" matTooltip="{{'ACTION.DELETE' | translate}}"  class="text-danger" (nzOnConfirm)="deleteChild(data)">
                                     <i class="la la-trash"></i>
                                 </a>
                             </td>

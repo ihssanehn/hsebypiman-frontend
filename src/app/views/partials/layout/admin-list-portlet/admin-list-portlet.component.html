@@ -2,23 +2,24 @@
 <div class="tf-portlet tf-portlet--bordered item" [ngClass]="{'collapsed' : collapsed }" data-ktportlet="true" id="kt_portlet_tools_3">
 
     <div class="tf-portlet__head">
-        <div class="tf-portlet__head-label" style="flex:1; justify-content: space-between">
+        <div class="tf-portlet__head-label" style="flex:1; justify-content: space-between; max-width:75%">
 
             <ng-container *ngIf="!item.edit; else editTitle">
                 <h3 class="tf-portlet__head-title pointer" (click)="collapsed = !collapsed">
                     {{ item?.libelle }}
                 </h3>
-                <div class="mx-2">
-                    <i class="fa" [ngClass]="item?.active ? 'fa-eye text-success':'fa-eye-slash'"></i>
+                <div class="mr-4">
+                    <i class="fa" [ngClass]="item?.active ? 'fa-eye text-success':'fa-eye-slash'" matTooltip="{{item?.active ? ('COMMON.VISIBLE' | translate):('COMMON.INVISIBLE' | translate)}}" [matTooltipPosition]="'above'"></i>
                 </div>
             </ng-container>
 
             <ng-template #editTitle>
                 <input type="text" nz-input [(ngModel)]="item.libelle" name="title" [ngStyle]="{'width' : ((item.libelle.length + 2) * 8) + 'px', 'min-width' : '100px' }" />
-                <div class="mx-2">
-                    <a (click)="toggleVisibility(item)" class="btn btn-sm btn-icon btn-clean btn-icon-md">
+                <div class="mr-4">
+                    <a (click)="toggleVisibility(item)" class="btn btn-sm btn-icon btn-clean btn-icon-md" matTooltip="{{item?.active ? ('COMMON.VISIBLE' | translate):('COMMON.INVISIBLE' | translate)}}" [matTooltipPosition]="'above'">
                         <i class="fa" [ngClass]="item?.active ? 'fa-eye':'fa-eye-slash'"></i>
                     </a>
+                    
                 </div>
             </ng-template>
         </div>
@@ -27,9 +28,21 @@
 
             <div class="tf-portlet__head-group">
                 <ng-container *ngIf="!item.edit; else editActions">
-                    <button mat-icon-button color="primary" matTooltip="Actions" [matMenuTriggerFor]="actionMenu" (click)="selectedItem = item" >
+                    <a (click)="startEdit(selectedItem)" matTooltip="{{'ACTION.EDIT' | translate}}" class="btn btn-sm btn-icon btn-clean btn-icon-md ">
+                        <i nz-icon nzType="edit"  nzTheme="outline" class="pointer text-primary"></i>
+                    </a>
+                    <a (click)="addChild()" data-ktportlet-tool="add" matTooltip="{{'ACTION.ADD' | translate}}" class="btn btn-sm btn-icon btn-clean btn-icon-md">
+                    <i class="la la-plus text-success"></i>
+                    </a>
+                    <a (click)="refreshItem(selectedItem)" matTooltip="{{'ACTION.REFRESH' | translate}}" class="btn btn-sm btn-icon btn-clean btn-icon-md">
+                        <i class="la la-refresh"></i>
+                    </a>
+                    <a (nzOnConfirm)="deleteItem(selectedItem)" matTooltip="{{'ACTION.DELETE' | translate}}" nz-popconfirm nzPopconfirmTitle="{{'NOTIF.DELETE_CONFIRMATION.TITLE' | translate}}" class="btn btn-sm btn-icon btn-clean btn-icon-md">
+                        <i class="la la-trash text-danger"></i>
+                    </a>
+                    <!-- <button mat-icon-button color="primary" matTooltip="Actions" [matMenuTriggerFor]="actionMenu" (click)="selectedItem = item" >
                         <mat-icon>more_vert</mat-icon>
-                    </button>
+                    </button> -->
                     <a (click)="collapsed = !collapsed" matTooltip="{{'ACTION.REDUCE' | translate}}" [ngClass]="{'collapsed' : collapsed }" class="btn btn-sm btn-icon btn-clean btn-icon-md accordion" data-toggle="collapse" data-target="#group" aria-expanded="true">
                         <i class="la la-angle-down"></i>
                     </a>
@@ -60,7 +73,7 @@
                 <tr>
                     <th nzWidth="70%">{{'COMMON.NAME.LABEL' | translate}}</th>
                     <th nzWidth="15%" class="text-center">{{'ACTION.SHOW' | translate}}</th>
-                    <th>Action</th>
+                    <th class="text-right">Action</th>
                 </tr>
                 </thead>
                 <tbody cdkDropList (cdkDropListDropped)="dropChild($event)">
@@ -70,12 +83,12 @@
                             <td class="text-center">
                                 <i class="fa" [ngClass]="data?.active ? 'fa-eye text-success':'fa-eye-slash'"></i>
                             </td>
-                            <td>
+                            <td class="text-right">
                                 <a (click)="startEdit(data)" matTooltip="{{'ACTION.EDIT' | translate}}" class="text-primary">
                                     <i nz-icon nzType="edit"  nzTheme="outline" class="pointer"></i>
                                 </a>
                                 <nz-divider nzType="vertical"></nz-divider>
-                                <a nz-popconfirm nzTitle="Sure to delete?" matTooltip="{{'ACTION.DELETE' | translate}}"  class="text-danger" (nzOnConfirm)="deleteChild(data)">
+                                <a nz-popconfirm nzTitle="{{('NOTIF.DELETE_CONFIRMATION.TITLE' | translate)}}" matTooltip="{{'ACTION.DELETE' | translate}}"  class="text-danger" (nzOnConfirm)="deleteChild(data)">
                                     <i class="la la-trash"></i>
                                 </a>
                             </td>
@@ -89,7 +102,7 @@
                                     <i class="fa" [ngClass]="data?.active ? 'fa-eye':'fa-eye-slash'"></i>
                                 </a>
                             </td>
-                            <td>
+                            <td class="text-right">
                                 <a (click)="saveChild(data)" matTooltip="{{'ACTION.SAVE' | translate}}" class="save" class="text-primary">
                                     <i nz-icon nzType="check" nzTheme="outline"></i>
                                 </a>

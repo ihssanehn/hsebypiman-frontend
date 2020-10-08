@@ -659,6 +659,7 @@
 			"LABEL": "Fonction",
 			"TITLE": "Fonction"
 		},
+		"INVISIBLE": "Invisible",
 		"LASTNAME": {
 			"LABEL": "Nom",
 			"TITLE": "Nom"
@@ -734,6 +735,7 @@
 			"SHORTTITLE": "Mis à jour le",
 			"TITLE": "Mise à jour des informations"
 		},
+		"VISIBLE": "Visible",
 		"YES": ""
 	},
 	"EES": {

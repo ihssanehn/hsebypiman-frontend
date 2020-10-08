@@ -21,6 +21,9 @@
             font-size: 13px;
         }
     
+        ::ng-deep .ant-table.ant-table-small{
+            border: 0;
+        }
         ::ng-deep nz-divider {
             .ant-divider-inner-text {
                 font-size: 1.5rem;

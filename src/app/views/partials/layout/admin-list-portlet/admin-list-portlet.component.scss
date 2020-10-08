@@ -15,7 +15,9 @@
         .anticon {
             vertical-align: 0;
         }
-    
+        ::ng-deep .ant-table.ant-table-small{
+            border: 0;
+        }
         .ant-table-tbody > tr > td {
             font-weight: 500;
             font-size: 13px;

@@ -659,6 +659,7 @@
 			"LABEL": "Fonction",
 			"TITLE": "Fonction"
 		},
+		"INVISIBLE": "Invisible",
 		"LASTNAME": {
 			"LABEL": "Nom",
 			"TITLE": "Nom"
@@ -667,7 +668,6 @@
 			"LABEL": "Nom",
 			"TITLE": "Nom"
 		},
-		"NO": "Non",
 		"NOTIF": {
 			"ERROR": {
 				"TITLE": "Oups!"
@@ -728,12 +728,13 @@
 			"TITLE": "Société"
 		},
 		"TODAY_DATE": {
-			"TITLE": "date du jour"
+			"TITLE": "Date du jour"
 		},
 		"UPDATED_AT": {
 			"SHORTTITLE": "Mis à jour le",
 			"TITLE": "Mise à jour des informations"
 		},
+		"VISIBLE": "Visible",
 		"YES": "Oui"
 	},
 	"EES": {

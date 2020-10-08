@@ -2,8 +2,8 @@
 	<div class="d-flex justify-content-between">
 		<h3 class="m-0 flex-grow-1 pointer" (click)="tpl.collapsed = !tpl.collapsed">{{ tpl?.title }}</h3>
 		<div class="">
-			<a (click)="$event.stopPropagation(); addItem(); tpl.collapsed = false" matTooltip="{{'ACTION.ADD' | translate}}" data-ktportlet-tool="add" class="btn btn-sm btn-icon btn-clean btn-icon-md">
-				<i class="la la-plus"></i>
+			<a (click)="$event.stopPropagation(); addItem(); tpl.collapsed = false" matTooltip="{{'ACTION.ADD' | translate}}" data-ktportlet-tool="add" class="btn btn-sm btn-icon btn-clean btn-icon-md text-primary">
+				<i class="la la-plus text-success"></i>
 			</a>
 			<a (click)="$event.stopPropagation(); refreshList(); tpl.collapsed = false" matTooltip="{{'ACTION.REFRESH' | translate}}" data-ktportlet-tool="refresh" class="btn btn-sm btn-icon btn-clean btn-icon-md">
 				<i class="la la-refresh"></i>

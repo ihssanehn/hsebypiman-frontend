@@ -37,7 +37,7 @@ export class AdminVisiteVehiculeComponent implements OnInit {
         deletedMessage: 'Suppression impossible car la selection comprend un élément affecté à un ou plusieurs véhicules',
         deletedChildMessage: 'Suppression impossible car la selection est affectée à un ou plusieurs véhicules',
         collapsed : false,
-        childCol : 6
+        childCol : 12
       }
   }
 

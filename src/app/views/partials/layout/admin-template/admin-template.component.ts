@@ -25,7 +25,7 @@ export class AdminTemplateComponent implements OnInit {
     collapsed : false,
     canUpdateTitle: false,
     titleOject: null,
-    childCol : 6,
+    childCol : 12,
   }
 
   list: any[];
