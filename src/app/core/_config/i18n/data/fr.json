@@ -668,6 +668,7 @@
 			"LABEL": "Nom",
 			"TITLE": "Nom"
 		},
+		"NO": "Non",
 		"NOTIF": {
 			"ERROR": {
 				"TITLE": "Oups!"
