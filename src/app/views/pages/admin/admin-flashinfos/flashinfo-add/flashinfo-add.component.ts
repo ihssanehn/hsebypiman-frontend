@@ -41,10 +41,10 @@ export class FlashInfoAddComponent implements OnInit {
 
   createForm() {
 		this.flashinfoForm = this.flashinfoFB.group({
-      title: [{value:'', disabled:false}, [Validators]],
-      content: [{value:'', disabled:false}, [Validators]],
-      is_visible: [1, [Validators]],
-      on_top: [1, [Validators]],
+      title: [{value:'', disabled:false}, Validators.required],
+      content: [{value:'', disabled:false}, Validators.required],
+      is_visible: [1, Validators.required],
+      on_top: [1, Validators.required],
     });
     this.loaded = true;
   }
