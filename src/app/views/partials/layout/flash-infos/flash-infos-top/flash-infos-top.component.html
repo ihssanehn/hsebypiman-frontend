@@ -8,7 +8,7 @@
         </div>
     </div>
     <tf-portlet-body [class]="'tf-portlet__body--fit'" style="padding: 2em; background:#f7f7ff">
-        <div class="row" >
+        <div class="row" *ngIf="flashOnTop || oldFlashList?.length > 0; else noFlashInfo">
             <div class="col-6 pointer" *ngIf="flashOnTop" (click)="openFlashInfoModal(flashOnTop.id)">
                 <div class="flash-content" >
                     <div [innerHtml]="flashOnTop.content"></div>
@@ -22,3 +22,8 @@
         </div>
     </tf-portlet-body>
 </tf-portlet>
+<ng-template #noFlashInfo>
+    <div class="text-center mt-4 font-italic">
+        {{'FLASHINFOS.NOTIF.NO_FLASH' | translate}}
+    </div>
+</ng-template>

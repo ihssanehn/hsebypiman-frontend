@@ -903,6 +903,9 @@
 			"SHORTTITLE": "Voir l'historique",
 			"TITLE": "Voir les anciens flash infos"
 		},
+		"NOTIF":{
+			"NO_FLASH":"Aucun Flash Info"
+		},
 		"ONTOP": {
 			"LABEL": "En une",
 			"SHORTTITLE": "En une",
@@ -1493,7 +1496,9 @@
 				"TITLE": "Unable to delete because the selection includes an element assigned to one or more lifts",
 				"SHORTTITLE": "Types of lift",
 				"LABEL": "Unable to delete because the selection is assigned to one or more lifts"
-			}
+			},
+			"NO_DOCUMENT": "No document",
+			"NO_REMONTEE": "No remontee"
 		},
 		"CARD": {
 			"DOC": {
@@ -1562,7 +1567,6 @@
 		"NEW": {
 			"SHORTBUTTON": "New Lift"
 		},
-		"NO_DOCUMENT": "No document",
 		"SEE_ACTION": {
 			"LABEL": "Display action",
 			"SHORTTITLE": "Action",

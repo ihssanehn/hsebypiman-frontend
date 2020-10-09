@@ -903,6 +903,9 @@
 			"SHORTTITLE": "Voir l'historique",
 			"TITLE": "Voir les anciens flash infos"
 		},
+		"NOTIF":{
+			"NO_FLASH":"Aucun Flash Info"
+		},
 		"ONTOP": {
 			"LABEL": "En une",
 			"SHORTTITLE": "En une",
@@ -1467,9 +1470,6 @@
 			"LOADING":{
 				"TITLE": "Loading Remonte"
 			},
-			"NO_CHANTIER": {
-				"TITLE": "Cette remonte n'a été affectée à aucun chantier"
-			},
 			"DOC_DELETE_CONFIRMATION": {
 				"TITLE": "Vous allez supprimer ce document de façon définitive",
 				"LABEL": "Êtes-vous sûr de vouloir continuer ?"
@@ -1493,7 +1493,9 @@
 				"TITLE": "Suppression impossible car la selection comprend un élément affecté à une ou plusieurs remontées",
 				"SHORTTITLE": "Typologies de remontée",
 				"LABEL": "Suppression impossible car la selection est affectée à une ou plusieurs remontées"
-			}
+			},
+			"NO_DOCUMENT": "Aucun document",
+			"NO_REMONTEE": "Aucune remontée"
 		},
 		"CARD": {
 			"DOC": {
@@ -1562,7 +1564,6 @@
 		"NEW": {
 			"SHORTBUTTON": "Nouvelle Remontée"
 		},
-		"NO_DOCUMENT": "Aucun document",
 		"SEE_ACTION": {
 			"LABEL": "Voir l'action",
 			"SHORTTITLE": "Action",

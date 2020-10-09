@@ -908,6 +908,9 @@
 			"SHORTTITLE": "En une",
 			"TITLE": "En une"
 		},
+		"NOTIF":{
+			"NO_FLASH":"Aucun Flash Info"
+		},
 		"TITLE": {
 			"LABEL": "Titre",
 			"SHORTTITLE": "Titre",
@@ -1493,7 +1496,9 @@
 				"TITLE": "Unable to delete because the selection includes an element assigned to one or more lifts",
 				"SHORTTITLE": "Types of lift",
 				"LABEL": "Unable to delete because the selection is assigned to one or more lifts"
-			}
+			},
+			"NO_DOCUMENT": "No document",
+			"NO_REMONTEE": "No remontee"
 		},
 		"CARD": {
 			"DOC": {
@@ -1562,7 +1567,6 @@
 		"NEW": {
 			"SHORTBUTTON": "New Lift"
 		},
-		"NO_DOCUMENT": "No document",
 		"SEE_ACTION": {
 			"LABEL": "Display action",
 			"SHORTTITLE": "Action",
