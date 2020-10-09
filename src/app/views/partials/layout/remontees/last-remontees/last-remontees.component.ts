@@ -58,8 +58,7 @@ export class LastRemonteesComponent implements OnInit {
 	addNewRemontee(){
 		return this.router.navigateByUrl('/remontees/add');
 	}
-
-
+	
   openModal(photos, index) {
 
     const dialogRef = this.dialog.open(ImageLightboxContentDialogComponent, {

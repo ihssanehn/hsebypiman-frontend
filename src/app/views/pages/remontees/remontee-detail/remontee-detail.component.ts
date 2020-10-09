@@ -17,6 +17,7 @@ import { ThrowStmt } from '@angular/compiler';
 import { User, AuthService } from '@app/core/auth';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
+import { ImageLightboxContentDialogComponent } from '@app/views/partials/layout/modal/image-lightbox-content-dialog/image-lightbox-content-dialog.component';
 
 @Component({
   selector: 'tf-remontee-detail',
@@ -76,7 +77,14 @@ export class RemonteeDetailComponent implements OnInit, OnDestroy {
 	async getRemonte(remonteId){
 		try {
 			var res = await this.remonteeService.get(remonteId).toPromise();
-			this.remontee = res.result.data;
+			var remontee = res.result.data;
+			remontee.photos = remontee.documents.filter(x => ['jpg','bmp','jpeg','gif','png','tif'].indexOf(x.extension.toLowerCase()) != -1);
+			remontee.photos.forEach(x=>{
+				x.src = this.documentService.readFile(x.id);
+				x.image = this.documentService.readFile(x.id);
+				x.thumbImage = this.documentService.readFile(x.id);
+			});
+			this.remontee = remontee;
 			this.cdr.markForCheck()
 		} catch (error) {
 			console.error(error);
@@ -175,4 +183,12 @@ export class RemonteeDetailComponent implements OnInit, OnDestroy {
 	goToAction(){
 		return this.router.navigateByUrl('plan-actions/detail/'+this.remontee.action.id);
 	}
+
+
+  openModal(photos, index) {
+
+    const dialogRef = this.dialog.open(ImageLightboxContentDialogComponent, {
+      data: { images : photos, selectedImgIndex: index}
+    });
+  }
 }

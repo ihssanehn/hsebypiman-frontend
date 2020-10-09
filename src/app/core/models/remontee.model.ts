@@ -7,6 +7,7 @@ export class Remontee {
     description: string;
     type?:Type;
     documents?:Document[];
+    photos?: Document[];
     comments?:Comment[];
     creator_id?:number;
     creator?:User;

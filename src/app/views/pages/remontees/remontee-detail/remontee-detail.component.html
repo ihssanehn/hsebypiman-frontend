@@ -43,14 +43,26 @@
 					<div class="tf-divider mb-3">
 						<span></span>
 					</div>
-					<h4>{{'REMONTEES.CARD.DOC.LABEL' | translate}}</h4>
+					<h4>{{'REMONTEES.CARD.DOC.TITLE' | translate}}</h4>
 					<div class="box" style="flex:1">
-						<ul>
+						<!-- <ul>
 							<li class="mb-3 pointer" *ngFor="let document of remontee.documents" (click)="showDocument(document)">
 								{{document.libelle}}
 								<mat-icon color="info" class="pull-right pointer" (click)="$event.stopPropagation(); downloadDoc(document)" matTooltip="{{'REMONTEES.CARD.DOC.ACTION.DOWNLOAD_DOCS' | translate}}">cloud_download</mat-icon>
 							</li>
-						</ul>
+						</ul> -->
+						<ngb-carousel style="width:60%;margin:auto" (click)="$event.stopPropagation()" *ngIf="remontee.photos.length > 0; else noDocument">
+							<ng-template ngbSlide *ngFor="let photo of remontee.photos; let i = index">
+									<div class="picsum-img-wrapper pointer" style="background:rgba(0,0,0,0.8); text-align:center" (click)="openModal(remontee.photos, i); $event.stopPropagation()">
+											<img [src]="photo.src | safe:'resourceUrl'" [title]="photo.libelle" style="max-width: 100%; max-height: 175px; margin: auto;">
+										</div>
+							</ng-template>
+					</ngb-carousel>
+					<ng-template #noDocument>
+						<div class="text-center mt-4 font-italic">
+								{{'REMONTEES.NO_DOCUMENT' | translate}}
+						</div>
+					</ng-template>
 					</div>
 				</div>
 			</div>

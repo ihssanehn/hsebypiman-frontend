@@ -14,4 +14,7 @@ export class Document {
     categorie_id?:number;
     creator_id?:number;
     creator?:User;
+    src?:string;
+    image?:string;
+    thumbImage?:string;
 }
