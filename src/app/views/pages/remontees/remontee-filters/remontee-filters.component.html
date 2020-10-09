@@ -6,7 +6,7 @@
 					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
 						<mat-label>{{'REMONTEES.TYPE.TITLE' | translate}}</mat-label>
 						<mat-select class="form-control" formControlName="type_id" name="type_id">
-							<mat-option>Tous</mat-option>
+							<mat-option>{{'FILTER.SEARCH_ALL' | translate}}</mat-option>
 							<mat-option *ngFor="let type of types" [value]="type.id">
 								{{type.libelle}}
 							</mat-option>
@@ -18,7 +18,7 @@
 					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
 						<mat-label>{{'REMONTEES.CREATOR.TITLE' | translate}}</mat-label>
 						<mat-select class="form-control" formControlName="creator_id" name="creator_id">
-							<mat-option>Tous</mat-option>
+							<mat-option>{{'FILTER.SEARCH_ALL' | translate}}</mat-option>
 							<mat-option *ngFor="let user of users" [value]="user.id">
 								{{user | fullName}}
 							</mat-option>
@@ -31,7 +31,7 @@
 					<div class="col-xl-3 col-md-4 col-sm-6 col-xs-12">
 						<h6>{{'COMMON.CREATED_AT.TITLE' | translate}}</h6>
 						<mat-form-field class="col-md-6 col-xl-6">
-							<mat-label>Entre le :</mat-label>
+							<mat-label>{{'COMMON.DATE_RANGE.BETWEEN.TITLE' | translate}} :</mat-label>
 							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_creation_start" placeholder="DD/MM/YYYY">
 							<!-- <input matInput class="form-control" [matDatepicker]="date_creation_start_picker" formControlName="date_creation_start" placeholder="DD/MM/YYYY">
 								<mat-datepicker-toggle matSuffix [for]="date_creation_start_picker"></mat-datepicker-toggle>
@@ -42,7 +42,7 @@
 								</button> -->
 						</mat-form-field>
 						<mat-form-field class="col-md-6 col-xl-6">
-							<mat-label>Et le :</mat-label>
+							<mat-label>{{'COMMON.DATE_RANGE.AND.TITLE' | translate}} :</mat-label>
 							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_creation_end" placeholder="DD/MM/YYYY">
 							<!-- <input matInput class="form-control" [matDatepicker]="date_creation_end_picker" formControlName="date_creation_end" placeholder="DD/MM/YYYY">
 								<mat-datepicker-toggle matSuffix [for]="date_creation_end_picker"></mat-datepicker-toggle>

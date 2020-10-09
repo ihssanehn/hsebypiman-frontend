@@ -33,7 +33,7 @@ export class RemonteesDashComponent implements OnInit, AfterViewInit, OnDestroy 
 	echartsType;
 	byTypeOptions = {
 		title: {
-			text: 'Remontées par typologie',
+			text: this.translate.instant("REMONTEES.DASH.LIFTS_BY_TYPE.TITLE"),
 			x: 'center'
 		},
 		grid: {
@@ -68,7 +68,7 @@ export class RemonteesDashComponent implements OnInit, AfterViewInit, OnDestroy 
 	echartsEvol;
 	EvolOptions = {
 		title: {
-			text: 'Evolution des remontées',
+			text: this.translate.instant("REMONTEES.DASH.LIFTS_EVOLUTION.TITLE"),
 			x: 'center'
 		},
 		tooltip: {
@@ -108,8 +108,6 @@ export class RemonteesDashComponent implements OnInit, AfterViewInit, OnDestroy 
 		
 	}
 
-	
-
 	ngOnInit() {
 		this.getRemonteesDash();
 		this.echartsType = echarts.init(this.pieType.nativeElement)
@@ -119,8 +117,19 @@ export class RemonteesDashComponent implements OnInit, AfterViewInit, OnDestroy 
 	}
 
 	ngAfterViewInit(){
+		this.refreshTranslations();
 	}
 
+	refreshTranslations(){
+		this.translate.stream("REMONTEES.DASH.LIFTS_BY_TYPE.TITLE").subscribe(x =>{
+			 this.byTypeOptions.title.text = x;
+			 this.echartsType.setOption(this.byTypeOptions);
+		});
+		this.translate.stream("REMONTEES.DASH.LIFTS_EVOLUTION.TITLE").subscribe(x =>{
+			this.EvolOptions.title.text = x;
+			this.echartsEvol.setOption(this.EvolOptions);
+	   	});
+	}
 
 	ngOnDestroy(){
 		this.cdr.detach();

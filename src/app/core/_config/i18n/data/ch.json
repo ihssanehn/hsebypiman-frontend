@@ -1463,6 +1463,66 @@
 		}
 	},
 	"REMONTEES": {
+		"NOTIF": {
+			"LOADING":{
+				"TITLE": "Loading Lifts"
+			},
+			"NO_CHANTIER": {
+				"TITLE": "This lift has not been assigned to any site"
+			},
+			"DOC_DELETE_CONFIRMATION": {
+				"TITLE": "You will permanently delete this document",
+				"LABEL": "Are you sure you want to continue ?"
+			},
+			"DOC_DELETED":{
+				"TITLE": "Document deleted successfully"
+			},
+			"LIFT_UPDATED":{
+				"TITLE": "QHSE lift successfully updated"
+			},
+			"FILE_SIZE_ALERT":{
+				"TITLE": "Each File should be less than 10 MB of size."
+			},
+			"LIFT_CREATED":{
+				"TITLE": "QHSE lift created successfully"
+			},
+			"LIFT_TYPE_ARCHIVED":{
+				"TITLE": "Type of lift successfully archived"
+			},
+			"ELEMENT_NOT_DELETED":{
+				"TITLE": "Unable to delete because the selection includes an element assigned to one or more lifts",
+				"SHORTTITLE": "Types of lift",
+				"LABEL": "Unable to delete because the selection is assigned to one or more lifts"
+			}
+		},
+		"CARD": {
+			"DOC": {
+				"TITLE": "Documents",
+				"LABEL": "List of documents",
+				"FILE_AWAIT_UPLOAD": "Pending files for upload",
+				"ACTION": {
+					"REMOVE_DOC": "Remove the document",
+					"DOWNLOAD_DOCS": "Download the document"
+				}
+			},
+			"GENERAL_INFOS": {
+				"TITLE": "General informations"
+			}
+		},
+		"DASH": {
+			"TOP_COLLABORATOR":{
+				"TITLE": "Top 5 collaborators"
+			},
+			"LIFTS_BY_TYPE": {
+				"TITLE": "Lifts by type"
+			},
+			"LIFTS_EVOLUTION":{
+				"TITLE": "Evolution of lifts"
+			}
+		},
+		"ADD_LIFT_TYPE": {
+			"TITLE": "Add a lift typology"
+		},
 		"ACTION": {
 			"LABEL": "Action",
 			"SHORTTITLE": "Action",

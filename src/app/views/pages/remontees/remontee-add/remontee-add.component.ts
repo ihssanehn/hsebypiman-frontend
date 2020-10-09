@@ -98,7 +98,7 @@ export class RemonteeAddComponent implements OnInit {
           var remontee = res.result.data;
           Swal.fire({
             icon: 'success',
-            title: 'Remontée QHSE créée avec succès',
+            title: this.translate.instant("REMONTEES.NOTIF.LIFT_CREATED.TITLE"),
             showConfirmButton: false,
             timer: 1500,
 
@@ -113,7 +113,7 @@ export class RemonteeAddComponent implements OnInit {
 
           Swal.fire({
             icon: 'error',
-            title: 'Echec! le formulaire est incomplet',
+            title: this.translate.instant("NOTIF.INCOMPLETE_FORM.TITLE"),
             showConfirmButton: false,
             timer: 1500
           });
@@ -142,7 +142,7 @@ export class RemonteeAddComponent implements OnInit {
     for (let i = 0; i < this.uploader.queue.length; i++) {
       let fileItem = this.uploader.queue[i]._file;
       if(fileItem.size > 10000000){
-        alert("Each File should be less than 10 MB of size.");
+        alert(this.translate.instant("REMONTEES.NOTIF.FILE_SIZE_ALERT.TITLE"));
         return true;
       }
     }

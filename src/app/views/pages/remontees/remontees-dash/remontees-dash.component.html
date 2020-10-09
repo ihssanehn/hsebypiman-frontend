@@ -3,7 +3,7 @@
 <div class="row px-2 d-flex dash-row-container">
 	<div class="col-xl-6 flex-fill" >
 		<tf-portlet class="tf-portlet--height-fluid">
-			<tf-portlet-header [title]="'Top 5 collaborateurs'"></tf-portlet-header>
+			<tf-portlet-header title="{{'REMONTEES.DASH.TOP_COLLABORATOR.TITLE' | translate}}"></tf-portlet-header>
 			<tf-portlet-body  [class]="'tf-portlet__body--fit'" *ngIf="stats">
 				<ng-container>
 					<tf-widget2 [label]="'fullname'" [hasLink]="false" [data]="stats.top_creators"*ngIf="stats; else loading">
