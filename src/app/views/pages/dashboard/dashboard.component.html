@@ -1,8 +1,8 @@
 <div class="row d-flew dash-row-container">
-    <div class="col-4">
+    <!-- <div class="col-4">
         <tf-last-remontees></tf-last-remontees>
-    </div>
-    <div class="col-8">
+    </div> -->
+    <div class="col-12">
         <div class="row d-flex dash-row-container" *ifAllModules="['CHANTIER', 'ANALYSE']">
             <tf-dash-chantier class="col-6 mb-4 flex-fill" *ngIf="isActive(['CHANTIER'])"></tf-dash-chantier>
             <tf-dash-action class="col-6 mb-4 flex-fill" *ngIf="isActive(['PLANACTION'])"></tf-dash-action>

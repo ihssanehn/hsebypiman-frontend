@@ -907,9 +907,14 @@
 			"NO_FLASH":"Aucun Flash Info"
 		},
 		"ONTOP": {
-			"LABEL": "En une",
-			"SHORTTITLE": "En une",
-			"TITLE": "En une"
+			"LABEL": "On headlines",
+			"SHORTTITLE": "On headlines",
+			"TITLE": "On headlines"
+		},
+		"RECENTLY": {
+			"LABEL": "recently",
+			"SHORTTITLE": "recently",
+			"TITLE": "recently"
 		},
 		"TITLE": {
 			"LABEL": "Titre",

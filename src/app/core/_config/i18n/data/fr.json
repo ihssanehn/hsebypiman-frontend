@@ -911,6 +911,11 @@
 			"SHORTTITLE": "En une",
 			"TITLE": "En une"
 		},
+		"RECENTLY": {
+			"LABEL": "Récemment",
+			"SHORTTITLE": "Récemment",
+			"TITLE": "Récemment"
+		},
 		"TITLE": {
 			"LABEL": "Titre",
 			"SHORTTITLE": "Titre",

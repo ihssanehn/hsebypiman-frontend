@@ -22,11 +22,19 @@
 		}
 
 		.table-responsive{
-			max-height: 137px;
+			height: calc(163px - 2em);
+			// height: 137px;
+		}
+
+		tf-dash-materiel .tf-portlet__body, tf-salarie-suivi .tf-portlet__body{
+			height: 163px;
+			overflow-y: scroll;
+			overflow-x: none;
 		}
 
 		tf-last-remontees .tf-portlet__body, tf-flash-infos-top .tf-portlet__body{
-			height: calc(100vh - 460px);
+			// height: calc(100vh - 460px);
+			height: calc(100vh - 217px);
 			overflow-y: scroll;
 			overflow-x: none;
 		}

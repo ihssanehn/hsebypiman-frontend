@@ -23,26 +23,26 @@
 							<tr>
 								<th>{{'MATERIELS.VS_RETARD.SHORTTITLE' | translate}}</th>
 								<th>{{'MATERIELS.CODE.TITLE' | translate}}</th>
+								<th class="text-center">{{'MATERIELS.DATE_VS.TITLE' | translate}}</th>
+								<th class="text-center">{{'MATERIELS.LAST_VS.TITLE' | translate}}</th>
 								<th>{{'MATERIELS.LIBELLE.TITLE' | translate}}</th>
 								<th>{{'MATERIELS.NUMERO_SERIE.SHORTTITLE' | translate}}</th>
 								<th>{{'MATERIELS.CATEGORIE.SHORTTITLE' | translate}}</th>
 								<th class="text-center">{{'MATERIELS.DATE_ENTREE.TITLE' | translate}}</th>
 								<th>{{'MATERIELS.ACTUAL_USER.TITLE' | translate}}</th>
-								<th class="text-center">{{'MATERIELS.LAST_VS.TITLE' | translate}}</th>
-								<th class="text-center">{{'MATERIELS.DATE_VS.TITLE' | translate}}</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr *ngFor="let item of stats.retards">
 								<td class="text-center"><i class="material-icons text-danger" *ngIf="item.vs_retard" style="font-size:10px !important;">fiber_manual_record</i></td>
 								<td>{{item.code}}</td>
+								<td class="text-center"><b>{{item.next_visite  | date:'dd/MM/yyyy'}}</b></td>
+								<td class="text-center">{{item.last_vs ? (item.last_vs.date_visite  | date:'dd/MM/yyyy') : '-'}}</td>
 								<td>{{item.libelle}}</td>
 								<td>{{item.numero_serie}}</td>
 								<td>{{item.main_categorie?.libelle+' - '+item.categorie?.libelle}}</td>
 								<td class="text-center">{{item.date_entree  | date:'dd/MM/yyyy'}}</td>
 								<td>{{item.actual_user ? (item.actual_user | fullName) : 'Disponible'}}</td>
-								<td class="text-center">{{item.last_vs ? (item.last_vs.date_visite  | date:'dd/MM/yyyy') : '-'}}</td>
-								<td class="text-center"><b>{{item.next_visite  | date:'dd/MM/yyyy'}}</b></td>
 							</tr>
 						</tbody>
 					</table>

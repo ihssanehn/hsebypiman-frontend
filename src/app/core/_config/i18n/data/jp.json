@@ -904,9 +904,14 @@
 			"TITLE": "Voir les anciens flash infos"
 		},
 		"ONTOP": {
-			"LABEL": "En une",
-			"SHORTTITLE": "En une",
-			"TITLE": "En une"
+			"LABEL": "On headlines",
+			"SHORTTITLE": "On headlines",
+			"TITLE": "On headlines"
+		},
+		"RECENTLY": {
+			"LABEL": "recently",
+			"SHORTTITLE": "recently",
+			"TITLE": "recently"
 		},
 		"NOTIF":{
 			"NO_FLASH":"Aucun Flash Info"

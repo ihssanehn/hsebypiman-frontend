@@ -30,7 +30,7 @@ export class DashMaterielComponent implements OnInit {
 		keyword: ""
   };
   
-  displayedMaterielColumns = ['vs_retard','code','libelle','categorie','actual_user','next_visite',]
+  displayedMaterielColumns = ['vs_retard','code','next_visite','libelle','categorie','actual_user',]
 
   constructor(
     private dashboardService: DashboardService,
