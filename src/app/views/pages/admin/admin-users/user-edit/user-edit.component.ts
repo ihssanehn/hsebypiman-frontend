@@ -14,6 +14,7 @@ import Swal, { SweetAlertIcon } from 'sweetalert2';
 import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
 import {FormStatus} from '@app/core/_base/crud/models/form-status';
 import { User } from '@app/core/auth';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'tf-user-edit',
@@ -40,7 +41,8 @@ export class UserEditComponent implements OnInit, OnDestroy {
 		private dateFrToEnPipe:DateFrToEnPipe,
 		private dateEnToFrPipe:DateEnToFrPipe,
 		private location: Location,
-		private permissionsService : NgxPermissionsService
+    private permissionsService : NgxPermissionsService,
+    private translate: TranslateService
   ) {}
 
   ngOnInit() {
@@ -184,7 +186,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
         var message = res.message.content != 'done' ? '<b class="text-'+code+'">'+res.message.content+'</b>' : null; 
         Swal.fire({
           icon: code,
-          title: 'Utilisateur mis à jour avec succès',
+          title: this.translate.instant("USERS.NOTIF.USER_UPDATED.TITLE"),
           showConfirmButton: false,
           html: message,
           timer: code == 'success' ? 1500 : 3000
@@ -198,7 +200,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
         this.formloading = false;
         Swal.fire({
           icon: 'error',
-          title: 'Echec! le formulaire est incomplet',
+          title: this.translate.instant("ARS.NOTIF.INCOMPLETE_FORM.TITLE"),
           showConfirmButton: false,
           timer: 1500
         });

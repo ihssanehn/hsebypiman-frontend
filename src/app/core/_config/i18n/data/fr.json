@@ -904,7 +904,10 @@
 			"TITLE": "Voir les anciens flash infos"
 		},
 		"NOTIF":{
-			"NO_FLASH":"Aucun Flash Info"
+			"NO_FLASH":"Aucun Flash Info",
+			"FLASH_UPDATED": {
+				"TITLE": "Flash info mis à jour avec succès"
+			}
 		},
 		"ONTOP": {
 			"LABEL": "En une",
@@ -1475,6 +1478,9 @@
 			"LOADING":{
 				"TITLE": "Loading Remonte"
 			},
+			"NO_CHANTIER": {
+				"TITLE": "Cette remontée n'a été attribuée à aucun chantier"
+			},
 			"DOC_DELETE_CONFIRMATION": {
 				"TITLE": "Vous allez supprimer ce document de façon définitive",
 				"LABEL": "Êtes-vous sûr de vouloir continuer ?"
@@ -1581,6 +1587,19 @@
 		}
 	},
 	"SALARIES": {
+		"ACTION": {
+			"ADD_FONCTION": "Ajouter une fonction"
+		},
+		"NOTIF": {
+			"FONCTION_ARCHIVED": {
+				"TITLE": "Fonction archivée avec succès"
+			},
+			"ELEMENT_NOT_DELETED": {
+				"SHORTTITLE": "Fonctions des salariés",
+				"TITLE": "Suppression impossible car la selection comprend un élément affecté à un ou plusieurs salariés",
+				"LABEL": "Suppression impossible car la selection est affectée à un ou plusieurs salariés"
+			}
+		},
 		"ACCIDENTOLOGIE": {
 			"LABEL": "Accidentologie",
 			"SHORTTITLE": "Accidentologie",
@@ -1657,6 +1676,41 @@
 		"SIZE": "Vous ne pouvez pas uploader des fichiers de plus de 1 Mo"
 	},
 	"USERS": {
+		"ACTION": {
+			"UPDATE_USER": "Modifier l'utilisateur",
+			"ADD_USER": "Ajouter un utilisateur"
+		},
+		"NOTIF": {
+			"USER_CREATED": {
+				"TITLE": "Utilisateur créé avec succès"
+			},
+			"USER_UPDATED": {
+				"TITLE": "Utilisateur mis à jour avec succès"
+			}
+		},
+		"CARD":{
+			"ABOUT_USER": {
+				"TITLE": "À propos de l'utilisateur"
+			},
+			"USER_INFOS": {
+				"TITLE": "Informations utilisateur",
+				"EMERGENCY_CASE":"En cas d'urgence",
+				"MEDICAL_VISIT": "Visite médicale"
+			},
+			"USER_ACCOUNT_INFOS": {
+				"TITLE": "Informations Compte Utilisateur"
+			},
+			"EMPLOYEE_INFOS": {
+				"TITLE": "Informations Salarié"
+			}
+		},
+		"VIRTUEL_PROFILE_ONLY": {
+			"YES": "Profils virtuels uniquement",
+			"NO": "Profils non virtuels uniquement"
+		},
+		"VIRTUEL_PROFILE": {
+			"TITLE": "Profil virtuel"
+		},
 		"CONTRACT": {
 			"LABEL": "Type de contrat",
 			"SHORTTITLE": "Type de contrat",
@@ -1922,6 +1976,9 @@
 			},
 			"EDIT_GOAL": {
 				"TITLE": "Modifier les objectifs"
+			},
+			"ADD_CATEGORY":{
+				"TITLE": "Ajouter une catégorie"
 			}
 		},
 		"NOTIF": {
@@ -1943,6 +2000,9 @@
 			"ELEMENT_NOT_DELETED": {
 				"TITLE": "Suppression impossible car la selection comprend un élément affecté à un ou plusieurs éléments",
 				"LABEL": "Suppression impossible car la selection est affectée à un ou plusieurs éléments"
+			},
+			"ELEMENT_ARCHIVED": {
+				"TITLE": "Élément archivé avec succès"
 			}
 		},
 		"DASH": {
@@ -2023,6 +2083,21 @@
 		},
 		"VISION_360": {
 			"TITLE" : "Vision 360"
+		}
+	},
+	"HOME": {
+		"WELCOME": {
+			"TITLE": "Bienvenue sur HSE"
+		}
+	},
+	"MODULE": {
+		"CARD": {
+			"TITLE": "Activer / Désactiver des modules de l'application"
+		},
+		"NOTIF": {
+			"MODULE_UPDATED": {
+				"TITLE": "Modules mis à jour avec succès"
+			}
 		}
 	}
 }

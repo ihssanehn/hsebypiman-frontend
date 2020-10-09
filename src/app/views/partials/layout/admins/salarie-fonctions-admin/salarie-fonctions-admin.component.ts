@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectorRef, Injector } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TypeService } from '@app/core/services';
 import { AdminTemplateComponent } from '@app/views/partials/layout/admin-template/admin-template.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'salarie-fonctions-admin',
@@ -14,17 +15,9 @@ export class SalarieFonctionsAdminComponent extends AdminTemplateComponent imple
   modalService: NgbModal;
   parentService: any;
   childService: any;
+  translate: TranslateService;
 
-  tpl : any = {
-    title : 'Fonctions des salariés',
-    deletedMessage: 'Suppression impossible car la selection comprend un élément affecté à un ou plusieurs salariés',
-    deletedChildMessage: 'Suppression impossible car la selection est affectée à un ou plusieurs salariés',
-    collapsed : false,
-    canUpdateTitle: false,
-    titleOject: null,
-    childCol : 12
-  }
-
+  tpl : any;
   list: any[];
 
   constructor(injector: Injector) {
@@ -32,8 +25,34 @@ export class SalarieFonctionsAdminComponent extends AdminTemplateComponent imple
     this.cdr = injector.get(ChangeDetectorRef);
     this.modalService = injector.get(NgbModal);
     this.parentService = injector.get(TypeService);
+    this.translate = injector.get(TranslateService);
   }
 
+  ngOnInit() {
+    super.ngOnInit();
+    this.refreshTranslations();
+    this.tpl = {
+      title : this.translate.instant("SALARIES.NOTIF.ELEMENT_NOT_DELETED.SHORTTITLE"),
+      deletedMessage: this.translate.instant("SALARIES.NOTIF.ELEMENT_NOT_DELETED.TITLE"),
+      deletedChildMessage: this.translate.instant("SALARIES.NOTIF.ELEMENT_NOT_DELETED.LABEL"),
+      collapsed : false,
+      canUpdateTitle: false,
+      titleOject: null,
+      childCol : 12
+    }
+  }
+
+  refreshTranslations(){
+		this.translate.stream("SALARIES.NOTIF.ELEMENT_NOT_DELETED.SHORTTITLE").subscribe(x =>{
+			 this.tpl.title = x;
+		});
+		this.translate.stream("SALARIES.NOTIF.ELEMENT_NOT_DELETED.TITLE").subscribe(x =>{
+			this.tpl.deletedMessage = x;
+	   });
+		this.translate.stream("SALARIES.NOTIF.ELEMENT_NOT_DELETED.LABEL").subscribe(x =>{
+			this.tpl.deletedChildMessage = x;
+		});
+	}
 
   async getList(){
     try {
@@ -46,7 +65,7 @@ export class SalarieFonctionsAdminComponent extends AdminTemplateComponent imple
   }
 
   async addItem(){
-    super.addItem("Ajouter une fonction", {ordre: this.generateParentOrdre()});  
+    super.addItem(this.translate.instant("SALARIES.ACTION.ADD_FONCTION"), {ordre: this.generateParentOrdre()});  
   }
 
 
@@ -59,9 +78,8 @@ export class SalarieFonctionsAdminComponent extends AdminTemplateComponent imple
   }
 
   async deleteItem({id}){
-    super.deleteItem({id}, { title : "Fonction archivée avec succès" });
+    super.deleteItem({id}, { title : this.translate.instant("SALARIES.NOTIF.FONCTION_ARCHIVED.TITLE") });
   }
-
   
   async updateOrders(datas){
     try {

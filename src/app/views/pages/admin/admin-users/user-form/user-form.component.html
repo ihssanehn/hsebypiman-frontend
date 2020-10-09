@@ -38,7 +38,7 @@
 
 								<mat-form-field class="col-xl-3">
 									<mat-label>{{'COMMON.LASTNAME.LABEL' | translate}}</mat-label>
-									<input class="form-control" matInput type="text" name="nom" formControlName="nom" placeholder="Saisir ici" [required]="isFieldRequired('nom')" />
+									<input class="form-control" matInput type="text" name="nom" formControlName="nom" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('nom')" />
 									<mat-error *ngIf="isControlHasError('nom','required')">
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
@@ -47,7 +47,7 @@
 
 								<mat-form-field class="col-xl-3">
 									<mat-label>{{'COMMON.FIRSTNAME.LABEL' | translate}}</mat-label>
-									<input class="form-control" matInput type="text" name="prenom" formControlName="prenom" placeholder="Saisir ici" [required]="isFieldRequired('prenom')" />
+									<input class="form-control" matInput type="text" name="prenom" formControlName="prenom" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('prenom')" />
 									<mat-error *ngIf="isControlHasError('prenom','required')">
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
@@ -57,7 +57,7 @@
 
 								<mat-form-field class="col-xl-3">
 									<mat-label>{{'COMMON.EMAIL.LABEL' | translate}}</mat-label>
-									<input matInput class="form-control" type="text" name="email" formControlName="email" [required]="isFieldRequired('email')" placeholder="Saisir ici" />
+									<input matInput class="form-control" type="text" name="email" formControlName="email" [required]="isFieldRequired('email')" placeholder="{{'ACTION.ENTER_HERE' | translate}}" />
 									<mat-error *ngIf="isControlHasError('email','required')">
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
@@ -66,7 +66,7 @@
 
 								<mat-form-field class="col-xl-3">
 									<mat-label>{{'COMMON.PHONE.LABEL' | translate}}</mat-label>
-									<input matInput class="form-control" type="text" name="telephone" formControlName="telephone" [required]="isFieldRequired('telephone')" placeholder="Saisir ici" />
+									<input matInput class="form-control" type="text" name="telephone" formControlName="telephone" [required]="isFieldRequired('telephone')" placeholder="{{'ACTION.ENTER_HERE' | translate}}" />
 									<mat-error *ngIf="isControlHasError('telephone','required')">
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
@@ -83,7 +83,7 @@
 
 	<div class="row">
 		<div class="col-12">
-			<div class="tf-heading tf-heading--md">| 1 Informations Compte Utilisateur</div>
+			<div class="tf-heading tf-heading--md">| 1 {{'USERS.CARD.USER_ACCOUNT_INFOS.TITLE' | translate}}</div>
 			<div class="row">
 				<div class="col-md-12">
 					<div class="tf-card-form">
@@ -109,7 +109,7 @@
 			</div>
 		</div>
 		<div class="col-12" *ngIf="userForm.get('is_virtual').value == 0">
-			<div class="tf-heading tf-heading--md">| 2 Informations Salarié</div>
+			<div class="tf-heading tf-heading--md">| 2 {{'USERS.CARD.EMPLOYEE_INFOS.TITLE' | translate}}</div>
 			<div class="tf-card-form">
 				<div class="row form-row">
 					<mat-form-field class="col-xl-3">
@@ -149,11 +149,11 @@
 						</mat-error>
 					</mat-form-field>
 				</div>
-                <h5 class="subtitle">En cas d'urgence</h5>
+                <h5 class="subtitle">{{'USERS.CARD.USER_INFOS.EMERGENCY_CASE' | translate}}</h5>
 				<div class="row form-row">
 					<mat-form-field class="col-xl-4">
 						<mat-label>{{'COMMON.LASTNAME.LABEL' | translate}}</mat-label>
-						<input matInput class="form-control" type="text" name="nom_urgence" formControlName="nom_urgence" [required]="isFieldRequired('nom_urgence')" placeholder="Saisir ici" />
+						<input matInput class="form-control" type="text" name="nom_urgence" formControlName="nom_urgence" [required]="isFieldRequired('nom_urgence')" placeholder="{{'ACTION.ENTER_HERE' | translate}}" />
 						<mat-error *ngIf="isControlHasError('nom_urgence','required')">
 							<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 						</mat-error>
@@ -161,7 +161,7 @@
 
 					<mat-form-field class="col-xl-4">
 						<mat-label>{{'COMMON.PHONE.LABEL' | translate}}</mat-label>
-						<input matInput class="form-control" type="text" name="telephone_urgence" formControlName="telephone_urgence" [required]="isFieldRequired('telephone_urgence')" placeholder="Saisir ici" />
+						<input matInput class="form-control" type="text" name="telephone_urgence" formControlName="telephone_urgence" [required]="isFieldRequired('telephone_urgence')" placeholder="{{'ACTION.ENTER_HERE' | translate}}" />
 						<mat-error *ngIf="isControlHasError('telephone_urgence','required')">
 							<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 						</mat-error>
@@ -169,20 +169,20 @@
 
 					<mat-form-field class="col-xl-4">
 						<mat-label>{{'SALARIES.LIEN_PARENTE.LABEL' | translate}}</mat-label>
-						<input matInput class="form-control" type="text" name="lien_parente_urgence" formControlName="lien_parente_urgence" [required]="isFieldRequired('lien_parente_urgence')" placeholder="Saisir ici" />
+						<input matInput class="form-control" type="text" name="lien_parente_urgence" formControlName="lien_parente_urgence" [required]="isFieldRequired('lien_parente_urgence')" placeholder="{{'ACTION.ENTER_HERE' | translate}}" />
 						<mat-error *ngIf="isControlHasError('lien_parente_urgence','required')">
 							<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 						</mat-error>
 					</mat-form-field>
 
 				</div>
-                <h5 class="subtitle">Visite médicale</h5>
+                <h5 class="subtitle">{{'USERS.CARD.USER_INFOS.MEDICAL_VISIT' | translate}}</h5>
 				<div class="row form-row">
 					<div class="col-xl-4 d-inline-flex" style="justify-content: space-between;align-items: center;">
 						<mat-label>{{'SALARIES.RQTH.LABEL' | translate}}</mat-label>
 						<mat-radio-group formControlName="rqth">
-							<mat-radio-button class="metric-radio" [value]="1">Oui</mat-radio-button>
-							<mat-radio-button class="metric-radio" [value]="0">Non</mat-radio-button>
+							<mat-radio-button class="metric-radio" [value]="1">{{'COMMON.YES' | translate}}</mat-radio-button>
+							<mat-radio-button class="metric-radio" [value]="0">{{'COMMON.NO' | translate}}</mat-radio-button>
 						</mat-radio-group>
 						<mat-error *ngIf="isControlHasError('rqth','required')">
 							<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>

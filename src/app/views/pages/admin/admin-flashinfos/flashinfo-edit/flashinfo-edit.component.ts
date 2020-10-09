@@ -14,6 +14,7 @@ import Swal, { SweetAlertIcon } from 'sweetalert2';
 import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
 import {FormStatus} from '@app/core/_base/crud/models/form-status';
 import { FlashInfo } from '@app/core/models';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'tf-flashinfo-edit',
@@ -40,7 +41,8 @@ export class FlashInfoEditComponent implements OnInit, OnDestroy {
 		private dateFrToEnPipe:DateFrToEnPipe,
 		private dateEnToFrPipe:DateEnToFrPipe,
 		private location: Location,
-		private permissionsService : NgxPermissionsService
+    private permissionsService : NgxPermissionsService,
+    private translate: TranslateService
   ) {}
 
   ngOnInit() {
@@ -101,7 +103,7 @@ export class FlashInfoEditComponent implements OnInit, OnDestroy {
         this.formloading = false;
         Swal.fire({
           icon: 'success',
-          title: 'Flash info mis à jour avec succès',
+          title: this.translate.instant("FLASHINFOS.NOTIF.FLASH_UPDATED.TITLE"),
           showConfirmButton: false,
           timer: 1500
         }).then(() => {
@@ -114,7 +116,7 @@ export class FlashInfoEditComponent implements OnInit, OnDestroy {
         this.formloading = false;
         Swal.fire({
           icon: 'error',
-          title: 'Echec! le formulaire est incomplet',
+          title: this.translate.instant("ARS.NOTIF.INCOMPLETE_FORM.TITLE"),
           showConfirmButton: false,
           timer: 1500
         });

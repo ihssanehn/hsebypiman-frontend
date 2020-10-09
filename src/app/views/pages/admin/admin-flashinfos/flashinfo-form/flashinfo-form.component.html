@@ -30,7 +30,7 @@
 
 								<mat-form-field class="col-xl-6 mb-4">
 									<mat-label>{{'FLASHINFOS.TITLE.LABEL' | translate}}</mat-label>
-									<input class="form-control" matInput type="text" name="title" formControlName="title" placeholder="Saisir ici" [required]="isFieldRequired('title')" />
+									<input class="form-control" matInput type="text" name="title" formControlName="title" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('title')" />
 									<mat-error *ngIf="isControlHasError('title','required')">
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>

@@ -6,7 +6,7 @@
 					<mat-form-field class="col-xl-3 col-md-6 col-sm-6 col-xs-12 mat-filter-no-head">
 						<mat-label>{{'COMMON.FONCTION.LABEL' | translate}}</mat-label>
 						<mat-select class="form-control" formControlName="fonction" name="fonction">
-							<mat-option>Tous</mat-option>
+							<mat-option>{{'FILTER.SEARCH_ALL' | translate}}</mat-option>
 							<mat-option *ngFor="let type of types" [value]="type.code">
 								{{type.libelle}}
 							</mat-option>
@@ -18,7 +18,7 @@
 					<mat-form-field class="col-xl-3 col-md-6 col-sm-6 col-xs-12 mat-filter-no-head">
 						<mat-label>{{'USERS.CONTRACT.LABEL' | translate}}</mat-label>
 						<mat-select class="form-control" formControlName="contrat" name="contrat">
-							<mat-option>Tous</mat-option>
+							<mat-option>{{'FILTER.SEARCH_ALL' | translate}}</mat-option>
 							<mat-option *ngFor="let categorie of categories" [value]="categorie.code">
 								{{categorie.libelle}}
 							</mat-option>
@@ -30,9 +30,9 @@
 					<mat-form-field class="col-xl-3 col-md-6 col-sm-6 col-xs-12 mat-filter-no-head">
 						<mat-label>{{'USERS.VIRTUELS.TITLE' | translate}}</mat-label>
 						<mat-select class="form-control" formControlName="is_virtual" name="is_virtual">
-							<mat-option>Tous</mat-option>
+							<mat-option>{{'FILTER.SEARCH_ALL' | translate}}</mat-option>
 							<mat-option *ngFor="let virtuel of virtuelOptions" [value]="virtuel.code">
-								{{virtuel.libelle}}
+								{{virtuel.libelle | translate}}
 							</mat-option>
 						</mat-select>
 						<button mat-button *ngIf="formHasValue('is_virtual')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('is_virtual'); $event.stopPropagation()">
@@ -42,7 +42,7 @@
 					<mat-form-field class="col-xl-3 col-md-6 col-sm-6 col-xs-12 mat-filter-no-head">
 						<mat-label>{{'COMMON.PROFIL.LABEL' | translate}}</mat-label>
 						<mat-select class="form-control" formControlName="role" name="role">
-							<mat-option>Tous</mat-option>
+							<mat-option>{{'FILTER.SEARCH_ALL' | translate}}</mat-option>
 							<mat-option *ngFor="let role of roles" [value]="role">
 								{{role.libelle}}
 							</mat-option>
@@ -54,22 +54,22 @@
 					<div class="col-xl-6 col-md-6 col-sm-6 col-xs-12">
 						<h6>{{'SALARIES.ENTRY_AT.LABEL' | translate}}</h6>
 						<mat-form-field class="col-md-6 col-xl-6">
-							<mat-label>Entre le :</mat-label>
+							<mat-label>{{'COMMON.DATE_RANGE.BETWEEN.TITLE' | translate}} :</mat-label>
 							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_entree_start" placeholder="DD/MM/YYYY">
 						</mat-form-field>
 						<mat-form-field class="col-md-6 col-xl-6">
-							<mat-label>Et le :</mat-label>
+							<mat-label>{{'COMMON.DATE_RANGE.AND.TITLE' | translate}} :</mat-label>
 							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_entree_end" placeholder="DD/MM/YYYY">
 						</mat-form-field>
 					</div>
 					<div class="col-xl-6 col-md-6 col-sm-6 col-xs-12">
 						<h6>{{'SALARIES.EXIT_AT.LABEL' | translate}}</h6>
 						<mat-form-field class="col-md-6 col-xl-6">
-							<mat-label>Entre le :</mat-label>
+							<mat-label>{{'COMMON.DATE_RANGE.BETWEEN.TITLE' | translate}} :</mat-label>
 							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_sortie_start" placeholder="DD/MM/YYYY">
 						</mat-form-field>
 						<mat-form-field class="col-md-6 col-xl-6">
-							<mat-label>Et le :</mat-label>
+							<mat-label>{{'COMMON.DATE_RANGE.AND.TITLE' | translate}} :</mat-label>
 							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_sortie_end" placeholder="DD/MM/YYYY">
 						</mat-form-field>
 					</div>

@@ -29,28 +29,32 @@ export class AdminVisitesComponent implements OnInit {
 			page: 'chantiers',
 			model: 'VsChantier',
 			needModule: true,
-			code: ['CHANTIER']
+			code: ['CHANTIER'],
+			translation: 'MENU.SUBHEADER.VISITS.VS_CHANTIER'
 		},
 		{
 			title: 'Visites sécurité EPI',
 			page: 'epis',
 			model: 'VsEpi',
 			needModule: true,
-			code: ['MATERIEL']
+			code: ['MATERIEL'],
+			translation: 'MENU.SUBHEADER.VISITS.VS_EPI'
 		},
 		{
 			title: 'Visites sécurité Outillage',
 			page: 'outillages',
 			model: 'VsOutillage',
 			needModule: true,
-			code: ['MATERIEL']
+			code: ['MATERIEL'],
+			translation: 'MENU.SUBHEADER.VISITS.VS_OUTILLAGE'
 		},
 		{
 			title: 'Visites sécurité Véhicule',
 			page: 'vehicules',
 			model: 'VsVehicule',
 			needModule: true,
-			code: ['MATERIEL']
+			code: ['MATERIEL'],
+			translation: 'MENU.SUBHEADER.VISITS.VS_VEHICULE'
 		},
 	]
 
