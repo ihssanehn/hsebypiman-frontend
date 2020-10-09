@@ -21,7 +21,7 @@
 		<div class="row">
 			<div  [ngClass]="isActiveModule(['REMONTEE_COMMENTS']) ? 'col-md-4':'col-md-12'">
 				<div class="card">
-					<h4>Informations générales</h4>
+					<h4>{{'REMONTEES.CARD.GENERAL_INFOS.TITLE' | translate}}</h4>
 					<div class="box">
 						<p><span class="label pull-left mr-2">{{'REMONTEES.CREATOR.TITLE' | translate}}</span><span class="">{{remontee.creator | fullName}}</span></p>
 						<p><span class="label pull-left mr-2">{{'COMMON.CREATED_AT.TITLE' | translate}}</span><span class="">{{remontee.created_at | date:'dd/MM/yyyy'}}</span></p>
@@ -33,22 +33,22 @@
 					</div>
 					<h4>
 						{{'REMONTEES.ACTION.TITLE' | translate}}
-						<button mat-icon-button (click)="goToAction()" class="pull-right" title="{{'PLANACTIONS.SEE_ACTION.TITLE' | translate}}"><mat-icon color="primary">visibility</mat-icon></button>
+						<button mat-icon-button (click)="goToAction()" class="pull-right" title="{{'REMONTEES.SEE_ACTION.TITLE' | translate}}"><mat-icon color="primary">visibility</mat-icon></button>
 					</h4>
 					<div class="box" style="flex:1">
-						<p><span class="label pull-left mr-2">{{'PLANACTIONS.NAME.TITLE' | translate}}</span><span class="">{{remontee.action.libelle}}</span></p>
+						<p><span class="label pull-left mr-2">{{'PLANACTIONS.NAME.TITLE' | translate}}</span><span class="">{{remontee.action?.libelle}}</span></p>
 						<p><span class="label pull-left mr-2">{{'PLANACTIONS.STATUS.TITLE' | translate}}</span><span class="">{{remontee.action_status}}</span></p>
-						<p><span class="label pull-left mr-2">{{'PLANACTIONS.PILOTE.TITLE' | translate}}</span><span class="">{{remontee.action.pilote ? (remontee.action.pilote | fullName) : '-'}}</span></p>
+						<p><span class="label pull-left mr-2">{{'PLANACTIONS.PILOTE.TITLE' | translate}}</span><span class="">{{remontee.action?.pilote ? (remontee.action.pilote | fullName) : '-'}}</span></p>
 					</div>
 					<div class="tf-divider mb-3">
 						<span></span>
 					</div>
-					<h4>Documents</h4>
+					<h4>{{'REMONTEES.CARD.DOC.LABEL' | translate}}</h4>
 					<div class="box" style="flex:1">
 						<ul>
 							<li class="mb-3 pointer" *ngFor="let document of remontee.documents" (click)="showDocument(document)">
 								{{document.libelle}}
-								<mat-icon color="info" class="pull-right pointer" (click)="$event.stopPropagation(); downloadDoc(document)" aria-label="Télécharger le document">cloud_download</mat-icon>
+								<mat-icon color="info" class="pull-right pointer" (click)="$event.stopPropagation(); downloadDoc(document)" matTooltip="{{'REMONTEES.CARD.DOC.ACTION.DOWNLOAD_DOCS' | translate}}">cloud_download</mat-icon>
 							</li>
 						</ul>
 					</div>
@@ -64,6 +64,6 @@
  
 <ng-template #noChantier>
 		<p class="text-left">
-			Cette remonte n'a été affectée à aucun chantier
+			{{'REMONTEES.NOTIF.NO_CHANTIER.TITLE' | translate}}
 		</p>
 </ng-template>

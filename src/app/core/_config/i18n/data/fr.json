@@ -1463,6 +1463,66 @@
 		}
 	},
 	"REMONTEES": {
+		"NOTIF": {
+			"LOADING":{
+				"TITLE": "Loading Remonte"
+			},
+			"NO_CHANTIER": {
+				"TITLE": "Cette remonte n'a été affectée à aucun chantier"
+			},
+			"DOC_DELETE_CONFIRMATION": {
+				"TITLE": "Vous allez supprimer ce document de façon définitive",
+				"LABEL": "Êtes-vous sûr de vouloir continuer ?"
+			},
+			"DOC_DELETED":{
+				"TITLE": "Document supprimé avec succès"
+			},
+			"LIFT_UPDATED":{
+				"TITLE": "Remontée QHSE mise à jour avec succès"
+			},
+			"FILE_SIZE_ALERT":{
+				"TITLE": "Chaque fichier doit avoir une taille inférieure à 10 Mo."
+			},
+			"LIFT_CREATED":{
+				"TITLE": "Remontée QHSE créée avec succès"
+			},
+			"LIFT_TYPE_ARCHIVED":{
+				"TITLE": "Typologie de remontée archivée avec succès"
+			},
+			"ELEMENT_NOT_DELETED":{
+				"TITLE": "Suppression impossible car la selection comprend un élément affecté à une ou plusieurs remontées",
+				"SHORTTITLE": "Typologies de remontée",
+				"LABEL": "Suppression impossible car la selection est affectée à une ou plusieurs remontées"
+			}
+		},
+		"CARD": {
+			"DOC": {
+				"TITLE": "Documents",
+				"LABEL": "Liste des documents",
+				"FILE_AWAIT_UPLOAD": "Fichiers en attente d'upload",
+				"ACTION": {
+					"REMOVE_DOC": "Retirer le document",
+					"DOWNLOAD_DOCS": "Télécharger le document"
+				}
+			},
+			"GENERAL_INFOS": {
+				"TITLE": "Informations générales"
+			}
+		},
+		"DASH": {
+			"TOP_COLLABORATOR":{
+				"TITLE": "Top 5 collaborateurs"
+			},
+			"LIFTS_BY_TYPE": {
+				"TITLE": "Remontées par typologie"
+			},
+			"LIFTS_EVOLUTION":{
+				"TITLE": "Evolution des remontées"
+			}
+		},
+		"ADD_LIFT_TYPE": {
+			"TITLE": "Ajouter une typologie de remontée"
+		},
 		"ACTION": {
 			"LABEL": "Action",
 			"SHORTTITLE": "Action",

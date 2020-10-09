@@ -15,6 +15,8 @@ import Swal from 'sweetalert2';
 import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
 import {FormStatus} from '@app/core/_base/crud/models/form-status';
 import {FileUploader} from "ng2-file-upload";
+import { TranslateService } from '@ngx-translate/core';
+
 
 @Component({
 	selector: 'tf-remontee-edit',
@@ -57,6 +59,7 @@ export class RemonteeEditComponent implements OnInit, OnDestroy {
 		private permissionsService: NgxPermissionsService,
 		private location: Location,
 		private subheaderService:SubheaderService,
+		private translate:TranslateService
 	) {	}
 	
 	ngOnInit() {
@@ -160,7 +163,7 @@ export class RemonteeEditComponent implements OnInit, OnDestroy {
 
 					Swal.fire({
 						icon: 'success',
-						title: 'Remontée QHSE mise à jour avec succès',
+						title: this.translate.instant("REMONTEES.NOTIF.LIFT_UPDATED.TITLE"),
 						showConfirmButton: false,
 						timer: 1500
 					}).then(() => {
@@ -173,7 +176,7 @@ export class RemonteeEditComponent implements OnInit, OnDestroy {
 
 					Swal.fire({
 						icon: 'error',
-						title: 'Echec! le formulaire est incomplet',
+						title: this.translate.instant("NOTIF.INCOMPLETE_FORM.TITLE"),
 						showConfirmButton: false,
 						timer: 1500
 					});
@@ -203,7 +206,7 @@ export class RemonteeEditComponent implements OnInit, OnDestroy {
     for (let i = 0; i < this.uploader.queue.length; i++) {
       let fileItem = this.uploader.queue[i]._file;
       if(fileItem.size > 10000000){
-        alert("Each File should be less than 10 MB of size.");
+        alert(this.translate.instant("REMONTEES.NOTIF.FILE_SIZE_ALERT.TITLE"));
         return true;
       }
 		}

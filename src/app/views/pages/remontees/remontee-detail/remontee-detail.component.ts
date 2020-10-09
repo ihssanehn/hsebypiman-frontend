@@ -16,6 +16,7 @@ import { ShowDocumentModalComponent } from '@app/views/partials/layout/modal/sho
 import { ThrowStmt } from '@angular/compiler';
 import { User, AuthService } from '@app/core/auth';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'tf-remontee-detail',
@@ -44,15 +45,16 @@ export class RemonteeDetailComponent implements OnInit, OnDestroy {
 		private activatedRoute: ActivatedRoute,
 		private router: Router,
 		// private notificationService: NzNotificationService,
-    public dialog: MatDialog,
+    	public dialog: MatDialog,
 		private remonteeService: RemonteeService,
 		private documentService: DocumentService,
 		private moduleService: ModuleService,
 		private authService: AuthService,
-    private modalService: NgbModal,
+    	private modalService: NgbModal,
 		private cdr: ChangeDetectorRef,
 		iconRegistry: MatIconRegistry, 
-		sanitizer: DomSanitizer
+		sanitizer: DomSanitizer,
+		private translate:TranslateService
 	) {
 		iconRegistry.addSvgIcon('status-encours',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/encours.svg'));
 		iconRegistry.addSvgIcon('status-termine',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/termine.svg'));
@@ -94,8 +96,6 @@ export class RemonteeDetailComponent implements OnInit, OnDestroy {
 		this.router.navigateByUrl(url, { relativeTo: this.activatedRoute });
 	}
   
-	
-
   	/**
 	 * Refresh user
 	 *
@@ -119,7 +119,7 @@ export class RemonteeDetailComponent implements OnInit, OnDestroy {
 	}
 	deleteRemonte(id){
 		Swal.fire({
-			title:'Désolé cette fonctionnalité n\'a pas encore été implémentée',
+			title:this.translate.instant("NOTIF.FEATURE_NOT_IMPLEMENTED.TITLE"),
 			showConfirmButton: false,
             timer: 1500
 		})
@@ -153,7 +153,7 @@ export class RemonteeDetailComponent implements OnInit, OnDestroy {
 	  
 				Swal.fire({
 				  icon: 'error',
-				  title: 'Echec! le formulaire est incomplet',
+				  title: this.translate.instant("NOTIF.INCOMPLETE_FORM.TITLE"),
 				  showConfirmButton: false,
 				  timer: 1500
 				});

@@ -105,7 +105,7 @@ export class RemonteesListComponent implements OnInit, AfterViewInit {
 	}
 	deleteRemonte(remonteId) {
 		Swal.fire({
-			title: 'Désolé cette fonctionnalité n\'a pas encore été implémentée',
+			title: this.translate.instant("NOTIF.FEATURE_NOT_IMPLEMENTED.TITLE"),
 			showConfirmButton: false,
 			timer: 1500
 		})
