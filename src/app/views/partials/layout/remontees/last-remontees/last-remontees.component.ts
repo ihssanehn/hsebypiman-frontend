@@ -3,7 +3,11 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { RemonteeService, DocumentService } from '@app/core/services';
 import { Remontee } from '@app/core/models';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
+import { ImageLightboxContentDialogComponent } from '@app/views/partials/layout/modal/image-lightbox-content-dialog/image-lightbox-content-dialog.component';
 import moment from 'moment';
+
+
 
 @Component({
   selector: 'tf-last-remontees',
@@ -18,7 +22,8 @@ export class LastRemonteesComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     private remonteeService:RemonteeService,
     private documentService:DocumentService,
-    private router:Router,
+		private router:Router,
+		private dialog: MatDialog,
 
   ) { }
 
@@ -32,7 +37,11 @@ export class LastRemonteesComponent implements OnInit {
 		var _remontees = res.result.data;
 		_remontees.forEach(remontee=>{
 			remontee.photos = remontee.documents.filter(x => ['jpg','bmp','jpeg','gif','png','tif'].indexOf(x.extension.toLowerCase()) != -1);
-			remontee.photos.forEach(x=>x.src = this.documentService.readFile(x.id));
+			remontee.photos.forEach(x=>{
+				x.src = this.documentService.readFile(x.id);
+				x.image = this.documentService.readFile(x.id);
+				x.thumbImage = this.documentService.readFile(x.id);
+			});
 		})
 		this.last_remontees = _remontees;
     this.cdr.markForCheck();
@@ -49,4 +58,12 @@ export class LastRemonteesComponent implements OnInit {
 	addNewRemontee(){
 		return this.router.navigateByUrl('/remontees/add');
 	}
+
+
+  openModal(photos, index) {
+
+    const dialogRef = this.dialog.open(ImageLightboxContentDialogComponent, {
+      data: { images : photos, selectedImgIndex: index}
+    });
+  }
 }

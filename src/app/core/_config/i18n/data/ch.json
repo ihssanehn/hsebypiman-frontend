@@ -1502,6 +1502,7 @@
 		"NEW": {
 			"SHORTBUTTON": "New Lift"
 		},
+		"NO_DOCUMENT": "No document",
 		"SEE_ACTION": {
 			"LABEL": "Display action",
 			"SHORTTITLE": "Action",

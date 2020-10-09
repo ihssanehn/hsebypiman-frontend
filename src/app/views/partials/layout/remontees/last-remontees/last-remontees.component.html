@@ -16,15 +16,20 @@
               <p><small class="font-weight-bold">{{remontee.creator | fullName}}</small><small class="pull-right text-right font-weight-bold">{{remontee.created_at | date:'dd/MM/yyyy'}}</small></p>
               <p class="">{{remontee.description | truncate:200}}</p>
           </div>
-          <div *ngIf="remontee.photos.length > 0" class="mt-4">
+          <div *ngIf="remontee.photos.length > 0; else noDocument" class="mt-4">
               <ngb-carousel style="width:60%;margin:auto" (click)="$event.stopPropagation()">
-                  <ng-template ngbSlide *ngFor="let photo of remontee.photos">
-                      <div class="picsum-img-wrapper" style="background:rgba(0,0,0,0.8); text-align:center">
+                  <ng-template ngbSlide *ngFor="let photo of remontee.photos; let i = index">
+                      <div class="picsum-img-wrapper" style="background:rgba(0,0,0,0.8); text-align:center" (click)="openModal(remontee.photos, i); $event.stopPropagation()">
                           <img [src]="photo.src | safe:'resourceUrl'" [title]="photo.libelle" style="max-width: 100%; max-height: 175px; margin: auto;">
                         </div>
                   </ng-template>
               </ngb-carousel>
           </div>
       </div>
+      <ng-template #noDocument>
+        <div class="text-center mt-4 font-italic">
+            {{'REMONTEES.NO_DOCUMENT' | translate}}
+        </div>
+    </ng-template>
   </tf-portlet-body>
 </tf-portlet>

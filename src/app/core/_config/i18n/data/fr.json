@@ -1502,6 +1502,7 @@
 		"NEW": {
 			"SHORTBUTTON": "Nouvelle Remontée"
 		},
+		"NO_DOCUMENT": "Aucun document",
 		"SEE_ACTION": {
 			"LABEL": "Voir l'action",
 			"SHORTTITLE": "Action",
