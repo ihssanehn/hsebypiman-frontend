@@ -79,7 +79,7 @@ export class MaterielTypesAdminComponent extends AdminTemplateComponent implemen
   }
 
   async addItem(){
-    super.addItem("Ajouter un type de matériel", {model : 'Materiel'});  
+    super.addItem(this.translate.instant("MATERIELS.ACTION.ADD_MATERIAL_TYPE"), {model : 'Materiel'});  
   }
 
   async createItem(payload){
@@ -91,7 +91,7 @@ export class MaterielTypesAdminComponent extends AdminTemplateComponent implemen
   }
 
   async deleteItem({id}){
-    super.deleteItem({id}, { title : "Type de matériel archivé avec succès" });
+    super.deleteItem({id}, { title : this.translate.instant("MATERIELS.NOTIF.MATERIEL_TYPE_ARCHIVED.TITLE") });
   }
 
   async addChild(item){
@@ -108,6 +108,6 @@ export class MaterielTypesAdminComponent extends AdminTemplateComponent implemen
   }
 
   async deleteChild({id, parent_id}){
-    super.deleteChild({id, parent_id}, {title : "Element est archivé avec succès" });
+    super.deleteChild({id, parent_id}, {title : this.translate.instant("MATERIELS.NOTIF.ELEMENT_ARCHIVED.TITLE") });
   }
 }

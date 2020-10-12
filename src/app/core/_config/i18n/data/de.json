@@ -1108,6 +1108,12 @@
 			},
 			"MATERIEL_UPDATED": {
 				"TITLE": ""
+			},
+			"MATERIEL_TYPE_ARCHIVED": {
+				"TITLE": "Type of material successfully archived"
+			},
+			"ELEMENT_ARCHIVED": {
+				"TITLE": "Item is archived successfully"
 			}
 		},
 		"NUMERO_SERIE": {

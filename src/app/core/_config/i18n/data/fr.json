@@ -1108,6 +1108,12 @@
 			},
 			"MATERIEL_UPDATED": {
 				"TITLE": "Matériel mise à jour avec succès"
+			},
+			"MATERIEL_TYPE_ARCHIVED": {
+				"TITLE": "Type de matériel archivé avec succès"
+			},
+			"ELEMENT_ARCHIVED": {
+				"TITLE": "Élément est archivé avec succès"
 			}
 		},
 		"NUMERO_SERIE": {
