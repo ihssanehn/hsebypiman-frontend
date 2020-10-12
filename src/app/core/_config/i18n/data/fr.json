@@ -907,6 +907,9 @@
 			"NO_FLASH":"Aucun Flash Info",
 			"FLASH_UPDATED": {
 				"TITLE": "Flash info mis à jour avec succès"
+			},
+			"FLASH_CREATED": {
+				"TITLE": "Flash Info créé avec succès"
 			}
 		},
 		"ONTOP": {

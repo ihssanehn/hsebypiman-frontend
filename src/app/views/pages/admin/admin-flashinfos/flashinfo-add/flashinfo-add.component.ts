@@ -67,7 +67,7 @@ export class FlashInfoAddComponent implements OnInit {
           var flashinfo = res.result.data;
           Swal.fire({
             icon: 'success',
-            title: 'Flash Info créé avec succès',
+            title: this.translate.instant("FLASHINFOS.NOTIF.FLASH_CREATED.TITLE"),
             showConfirmButton: false,
             timer: 1500
           }).then(() => {
