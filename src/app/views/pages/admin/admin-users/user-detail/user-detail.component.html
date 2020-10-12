@@ -4,7 +4,7 @@
 			<a (click)="goBack()">{{'MENU.SUB_USERS.LIST' | translate}}</a><span class="divider">></span><span class="id-item">{{user | fullName}}</span>
 		</span>
 		<span class="pull-right">
-			<button mat-icon-button color="info" matTooltip="Modifier l'utilisateur" (click)="editUser()" *ngxPermissionsOnly="['flashinfo_canUpdate']">
+			<button mat-icon-button color="info" matTooltip="{{'USERS.ACTION.UPDATE_USER' | translate}}" (click)="editUser()" *ngxPermissionsOnly="['flashinfo_canUpdate']">
 				<mat-icon>edit</mat-icon>
 			</button>
 		</span>
@@ -14,14 +14,13 @@
 			<div class="col-md-3">
 				<div class="card">
 					<div class="box">
-						<!-- TODO photo -->
 						<ngx-avatar class="user-avatar" [round]="false" [size]="200" cornerRadius="4" name="{{user | fullName}}"></ngx-avatar>
 					</div>
 					<div class="tf-divider">
 						<span></span>
 					</div>
 					<div class="box box-coords">
-						<h5><b>À propos de l'utilisateur</b></h5>
+						<h5><b>{{'USERS.CARD.ABOUT_USER.TITLE' | translate}}</b></h5>
 						<p><span class="label pull-left mr-2">{{'COMMON.LASTNAME.LABEL' | translate}}</span><span class="" *ngIf="user.nom; else noDataFound">{{user.nom}}</span></p>
 						<p><span class="label pull-left mr-2">{{'COMMON.FIRSTNAME.LABEL' | translate}}</span><span class="" *ngIf="user.prenom; else noDataFound">{{user.prenom}}</span></p>
 						<p *ngIf="user.is_virtual == 0"><span class="label pull-left mr-2">{{'COMMON.BIRTHDAY.LABEL' | translate}}</span><span class="" *ngIf="user.date_naissance; else noDataFound">{{user.date_naissance | date:'dd/MM/yyyy'}}</span></p>
@@ -52,28 +51,28 @@
 
 			<div class="col-md-9">
 				<mat-tab-group mat-align-tabs="start" animationDuration="1000ms">
-					<mat-tab label="Détails">
+					<mat-tab label="{{'ACTION.DETAIL' | translate}}">
 						<div class="col-md-12">
 							<div class="col-md-12">
 								<div class="card" *ngIf="user.is_virtual == 0; else virtualUser">
-									<h5><b>Information employeur</b></h5>
+									<h5><b>{{'USERS.CARD.USER_INFOS.TITLE' | translate}}</b></h5>
 									<div class="row d-flex">
 										<div class="box col-md-6">
-											<h6><b>En cas d'urgence</b></h6>
+											<h6><b>{{'USERS.CARD.USER_INFOS.EMERGENCY_CASE' | translate}}</b></h6>
 											<div class="tf-divider"><span></span></div>
 											<div class="box box-coords" style="flex:1">
 												<p><span class="label pull-left mr-2">{{'COMMON.LASTNAME.LABEL' | translate}}</span><span class="blue" *ngIf="user.nom_urgence; else noDataFound">{{user.nom_urgence}}</span></p>
-												<p><span class="label pull-left mr-2">Téléphone</span><span class="blue" *ngIf="user.telephone_urgence; else noDataFound">{{user.telephone_urgence}}</span></p>
-												<p><span class="label pull-left mr-2">Lien de parenté</span><span class="blue" *ngIf="user.lien_parente_urgence; else noDataFound">{{user.lien_parente_urgence}}</span></p>
+												<p><span class="label pull-left mr-2">{{'SUIVI_HSE.MOBILE.TITLE' | translate}}</span><span class="blue" *ngIf="user.telephone_urgence; else noDataFound">{{user.telephone_urgence}}</span></p>
+												<p><span class="label pull-left mr-2">{{'SUIVI_HSE.RELATIONSHIP.TITLE' | translate}}</span><span class="blue" *ngIf="user.lien_parente_urgence; else noDataFound">{{user.lien_parente_urgence}}</span></p>
 											</div>
 										</div>
 										<div class="box col-md-6">
-											<h6><b>Visite médicale</b></h6>
+											<h6><b>{{'USERS.CARD.USER_INFOS.MEDICAL_VISIT' | translate}}</b></h6>
 											<div class="tf-divider"><span></span></div>
 											<div class="box box-coords" style="flex:1">
-												<p><span class="label pull-left mr-2">RQTH</span><span class="blue">{{user.rqth ? 'Oui' : 'Non'}}</span></p>
-												<p><span class="label pull-left mr-2">Réalisée</span><span class="blue" *ngIf="user.date_visite_medicale_passed; else noDataFound">{{user.date_visite_medicale_passed | date:'dd/MM/yyyy'}}</span></p>
-												<p><span class="label pull-left mr-2">À renouveler</span><span class="blue" *ngIf="user.date_visite_medicale_next; else noDataFound">{{user.date_visite_medicale_next | date:'dd/MM/yyyy'}}</span></p>
+												<p><span class="label pull-left mr-2">{{'SUIVI_HSE.RQTH.TITLE' | translate}}</span><span class="blue">{{user.rqth ? 'Oui' : 'Non'}}</span></p>
+												<p><span class="label pull-left mr-2">{{'SUIVI_HSE.REALIZED.TITLE' | translate}}</span><span class="blue" *ngIf="user.date_visite_medicale_passed; else noDataFound">{{user.date_visite_medicale_passed | date:'dd/MM/yyyy'}}</span></p>
+												<p><span class="label pull-left mr-2">{{'SUIVI_HSE.TO_RENEW.TITLE' | translate}}</span><span class="blue" *ngIf="user.date_visite_medicale_next; else noDataFound">{{user.date_visite_medicale_next | date:'dd/MM/yyyy'}}</span></p>
 											</div>
 										</div>
 										<!-- <div class="box box-ar-vs col-md-3">
@@ -105,9 +104,9 @@
 
 <ng-template #noDataFound>
 	<span class="no-data-label">
-		Non renseigné
+		{{'COMMON.NO_DATA_FOUND.TITLE' | translate}}
 	</span>
 </ng-template>
 <ng-template #virtualUser>
-	Utilisateur virtuel
+	{{'USERS.VIRTUEL.SHORTTITLE' | translate}}
 </ng-template>

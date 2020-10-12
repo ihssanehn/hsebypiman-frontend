@@ -5,6 +5,7 @@ import { AdminAddModalComponent } from '@app/views/partials/layout/admin-add-mod
 import Swal from 'sweetalert2';
 import { AuthService } from '@app/core/auth';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -43,7 +44,8 @@ export class FlashInfosListComponent implements OnInit {
     private authService:AuthService,
     private FlashInfoService:FlashInfoService,
     private cdr:ChangeDetectorRef,
-    private router: Router,
+	private router: Router,
+	private translate: TranslateService
 
   ) { }
 
@@ -96,7 +98,7 @@ export class FlashInfosListComponent implements OnInit {
 	}
 	deleteFlashInfo(flashinfoId) {
 		Swal.fire({
-			title: 'Désolé cette fonctionnalité n\'a pas encore été implémentée',
+			title: this.translate.instant("NOTIF.FEATURE_NOT_IMPLEMENTED.TITLE"),
 			showConfirmButton: false,
 			timer: 1500
 		})

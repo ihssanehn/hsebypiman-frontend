@@ -32,6 +32,7 @@ export class ArRisquesAdminComponent extends AdminTemplateComponent implements O
 
   ngOnInit() {
     super.ngOnInit();
+    this.refreshTranslations();
     this.tpl = {
       title : this.translate.instant("ARS.CARD.RISKS.SHORTTITLE"),
       deletedMessage: this.translate.instant("ARS.NOTIF.ELEMENT_NOT_DELETED.TITLE"),
@@ -42,6 +43,18 @@ export class ArRisquesAdminComponent extends AdminTemplateComponent implements O
       childCol : 12
     }
   }
+
+  refreshTranslations(){
+		this.translate.stream("ARS.CARD.RISKS.SHORTTITLE").subscribe(x =>{
+			 this.tpl.title = x;
+		});
+		this.translate.stream("ARS.NOTIF.ELEMENT_NOT_DELETED.TITLE").subscribe(x =>{
+			this.tpl.deletedMessage = x;
+	   });
+		this.translate.stream("ARS.NOTIF.ELEMENT_NOT_DELETED.SUBTITLE").subscribe(x =>{
+			this.tpl.deletedChildMessage = x;
+		});
+	}
 
   formatChildren(item){
     item['children'] = item['risques']; 

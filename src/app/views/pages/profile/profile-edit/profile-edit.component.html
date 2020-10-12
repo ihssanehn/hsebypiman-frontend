@@ -14,7 +14,7 @@
 
 							<mat-form-field class="col-xl-3 col-md-3">
 								<mat-label>{{'COMMON.LASTNAME.LABEL' | translate}}</mat-label>
-								<input matInput autocomplete="false" name="nom" class="form-control" type="text" placeholder="Saisir ici ..." formControlName="nom" autocomplete="off" />
+								<input matInput autocomplete="false" name="nom" class="form-control" type="text" placeholder="{{'ACTION.ENTER_HERE' | translate}} ..." formControlName="nom" autocomplete="off" />
 								<mat-error *ngIf="isControlHasError(userForm,'nom','required')">
 									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 								</mat-error>
@@ -23,7 +23,7 @@
 
 							<mat-form-field class="col-xl-3 col-md-3">
 								<mat-label>{{'COMMON.FIRSTNAME.LABEL' | translate}}</mat-label>
-								<input matInput autocomplete="false" name="prenom" class="form-control" type="text" placeholder="Saisir ici ..." formControlName="prenom" autocomplete="off" />
+								<input matInput autocomplete="false" name="prenom" class="form-control" type="text" placeholder="{{'ACTION.ENTER_HERE' | translate}} ..." formControlName="prenom" autocomplete="off" />
 								<mat-error *ngIf="isControlHasError(userForm,'prenom','required')">
 									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 								</mat-error>
@@ -31,7 +31,7 @@
 
 							<mat-form-field class="col-xl-3 col-md-3">
 								<mat-label>{{'COMMON.EMAIL.LABEL' | translate}}</mat-label>
-								<input matInput autocomplete="false" name="email" class="form-control" type="text" placeholder="Saisir ici ..." formControlName="email" autocomplete="off" />
+								<input matInput autocomplete="false" name="email" class="form-control" type="text" placeholder="{{'ACTION.ENTER_HERE' | translate}} ..." formControlName="email" autocomplete="off" />
 								<mat-error *ngIf="isControlHasError(userForm,'email','required')">
 									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 								</mat-error>
@@ -59,7 +59,7 @@
 							<mat-form-field class="col-xl-3 col-md-3">
 								<mat-label>Ancien mot de passe</mat-label>
 
-								<input matInput autocomplete="false" name="old_pass" class="form-control" [type]="old_pwd_hide ? 'password' : 'text'" placeholder="Saisir ici ..." formControlName="old_pass" autocomplete="off" />
+								<input matInput autocomplete="false" name="old_pass" class="form-control" [type]="old_pwd_hide ? 'password' : 'text'" placeholder="{{'ACTION.ENTER_HERE' | translate}} ..." formControlName="old_pass" autocomplete="off" />
 								<button mat-icon-button matSuffix (click)="old_pwd_hide = !old_pwd_hide" type="button" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="old_pwd_hide">
 									<mat-icon svgIcon="{{old_pwd_hide ? 'close-eye' : 'open-eye'}}"></mat-icon>
 								</button>
@@ -71,7 +71,7 @@
 
 							<mat-form-field class="col-xl-3 col-md-3">
 								<mat-label>Nouveau mot de passe</mat-label>
-								<input matInput autocomplete="false" name="new_pass" class="form-control" [type]="new_pwd_hide ? 'password' : 'text'" placeholder="Saisir ici ..." formControlName="new_pass" autocomplete="off" />
+								<input matInput autocomplete="false" name="new_pass" class="form-control" [type]="new_pwd_hide ? 'password' : 'text'" placeholder="{{'ACTION.ENTER_HERE' | translate}} ..." formControlName="new_pass" autocomplete="off" />
 								<button mat-icon-button matSuffix (click)="new_pwd_hide = !new_pwd_hide" type="button" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="new_pwd_hide">
 									<mat-icon svgIcon="{{new_pwd_hide ? 'close-eye' : 'open-eye'}}"></mat-icon>
 								</button>
@@ -89,7 +89,7 @@
 
 							<mat-form-field class="col-xl-3 col-md-3">
 								<mat-label>Confirmer le nouveau mot de passe</mat-label>
-								<input matInput autocomplete="false" class="form-control" name="new_pass_confirmation" [type]="new_pwd_hide ? 'password' : 'text'" placeholder="Saisir ici ..." formControlName="new_pass_confirmation" autocomplete="off" />
+								<input matInput autocomplete="false" class="form-control" name="new_pass_confirmation" [type]="new_pwd_hide ? 'password' : 'text'" placeholder="{{'ACTION.ENTER_HERE' | translate}} ..." formControlName="new_pass_confirmation" autocomplete="off" />
 								<button mat-icon-button matSuffix (click)="confirm_pwd_hide = !confirm_pwd_hide" type="button" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="confirm_pwd_hide">
 									<mat-icon svgIcon="{{confirm_pwd_hide ? 'close-eye' : 'open-eye'}}"></mat-icon>
 								</button>

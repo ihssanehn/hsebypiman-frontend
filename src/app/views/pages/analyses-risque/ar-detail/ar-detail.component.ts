@@ -33,7 +33,7 @@ export class ArDetailComponent implements OnInit, OnDestroy {
 	protected router: Router;
 	protected chantierService: ChantierService;
 	protected arService: ArService;
-	private translate: TranslateService;
+	protected translate: TranslateService;
 
 
 	constructor(injector: Injector) {

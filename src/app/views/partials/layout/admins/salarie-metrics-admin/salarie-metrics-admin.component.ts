@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectorRef, Input, Injector } from '@angular/
 import { AdminTemplateComponent } from '@app/views/partials/layout/admin-template/admin-template.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CatMetricService, MetricService } from '@app/core/services';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'salarie-metrics-admin',
@@ -20,6 +21,7 @@ export class SalarieMetricsAdminComponent extends AdminTemplateComponent impleme
   modalService: NgbModal;
   parentService: any;
   childService: any;
+  translate: TranslateService;
   _type: any;
   list: any[];
   tpl = {
@@ -38,6 +40,7 @@ export class SalarieMetricsAdminComponent extends AdminTemplateComponent impleme
     this.modalService = injector.get(NgbModal);
     this.parentService = injector.get(CatMetricService);
     this.childService = injector.get(MetricService);
+    this.translate = injector.get(TranslateService);
   }
 
   formatChildren(item){
@@ -46,7 +49,7 @@ export class SalarieMetricsAdminComponent extends AdminTemplateComponent impleme
   }
 
   async addItem(){
-    super.addItem("Ajouter une catégorie", {type_id : this._type.id, ordre: this.generateParentOrdre()});  
+    super.addItem(this.translate.instant("SUIVI_HSE.ACTION.ADD_CATEGORY.TITLE"), {type_id : this._type.id, ordre: this.generateParentOrdre()});  
   }
 
   async getList(item){
@@ -55,7 +58,7 @@ export class SalarieMetricsAdminComponent extends AdminTemplateComponent impleme
   }
 
   async deleteItem({id}){
-    super.deleteItem({id}, { title : "Élément archivé avec succès" });
+    super.deleteItem({id}, { title : this.translate.instant("SUIVI_HSE.NOTIF.ELEMENT_ARCHIVED.TITLE") });
   }
 
   async addChild(item){
@@ -64,6 +67,6 @@ export class SalarieMetricsAdminComponent extends AdminTemplateComponent impleme
   }
 
   async deleteChild({id, parent_id}){
-    super.deleteChild({id, parent_id}, {title : "Élément est archivé avec succès" });
+    super.deleteChild({id, parent_id}, {title : this.translate.instant("SUIVI_HSE.NOTIF.ELEMENT_ARCHIVED.TITLE") });
   }
 }

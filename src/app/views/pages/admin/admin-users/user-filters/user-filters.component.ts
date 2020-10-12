@@ -29,11 +29,11 @@ export class UserFiltersComponent implements OnInit, AfterViewInit
   categories: Categorie[];
   virtuelOptions = [
     {
-      libelle: 'Profils virtuels uniquement',
+      libelle: 'USERS.VIRTUEL_PROFILE_ONLY.YES',
       code:'YES'
     },
     {
-      libelle: 'Profils non virtuels uniquement',
+      libelle: 'USERS.VIRTUEL_PROFILE_ONLY.NO',
       code:'NO',
     }
   ]

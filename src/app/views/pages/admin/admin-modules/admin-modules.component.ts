@@ -5,6 +5,7 @@ import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';;
 import {FormStatus} from '@app/core/_base/crud/models/form-status';
 import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from "@angular/forms";
 import Swal from 'sweetalert2';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'tf-admin-modules',
@@ -17,6 +18,7 @@ export class AdminModulesComponent implements OnInit {
     private moduleService:ModuleService,
     private fb: FormBuilder,
     private cdr: ChangeDetectorRef,
+    private translate: TranslateService
   ){
   }
 
@@ -45,7 +47,7 @@ export class AdminModulesComponent implements OnInit {
       this.moduleService.getModules().toPromise();
       Swal.fire({
         icon: 'success',
-        title: 'Modules mis à jour avec succès',
+        title: this.translate.instant("MODULE.NOTIF.MODULE_UPDATED.TITLE"),
         showConfirmButton: false,
         timer: 1500
       }).then(()=>{
@@ -58,7 +60,7 @@ export class AdminModulesComponent implements OnInit {
 
       Swal.fire({
         icon: 'error',
-        title: 'Echec! le formulaire est incomplet',
+        title: this.translate.instant("ARS.NOTIF.INCOMPLETE_FORM.TITLE"),
         showConfirmButton: false,
         timer: 1500
       });

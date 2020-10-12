@@ -33,6 +33,7 @@ export class ArZonesAdminComponent extends AdminTemplateComponent  implements On
 
   ngOnInit() {
     super.ngOnInit();
+    this.refreshTranslations();
     this.tpl = {
       title : this.translate.instant("ARS.CARD.ZONE.SHORTTITLE"),
       deletedMessage: this.translate.instant("ARS.NOTIF.ELEMENT_NOT_DELETED.TITLE"),
@@ -43,6 +44,18 @@ export class ArZonesAdminComponent extends AdminTemplateComponent  implements On
       childCol : 12
     }
   }
+
+  refreshTranslations(){
+		this.translate.stream("ARS.CARD.ZONE.SHORTTITLE").subscribe(x =>{
+			 this.tpl.title = x;
+		});
+		this.translate.stream("ARS.NOTIF.ELEMENT_NOT_DELETED.TITLE").subscribe(x =>{
+			this.tpl.deletedMessage = x;
+	   });
+		this.translate.stream("ARS.NOTIF.ELEMENT_NOT_DELETED.SUBTITLE").subscribe(x =>{
+			this.tpl.deletedChildMessage = x;
+		});
+	}
 
   async getList(){
     let res = await this.parentService.getAllAsAdmin({model:'Zone'}).toPromise();

@@ -8,6 +8,7 @@ import { FlashInfoService } from '@app/core/services';
 import Swal from 'sweetalert2';
 import { extractErrorMessagesFromErrorResponse } from '@app/core/_base/crud';
 import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'tf-flashinfo-add',
@@ -32,6 +33,7 @@ export class FlashInfoAddComponent implements OnInit {
     private location: Location,
     private dateFrToEnPipe:DateFrToEnPipe,
     private dateEnToFrPipe:DateEnToFrPipe,
+    private translate: TranslateService
   ) { }
 
   ngOnInit() {
@@ -65,7 +67,7 @@ export class FlashInfoAddComponent implements OnInit {
           var flashinfo = res.result.data;
           Swal.fire({
             icon: 'success',
-            title: 'Flash Info créé avec succès',
+            title: this.translate.instant("FLASHINFOS.NOTIF.FLASH_CREATED.TITLE"),
             showConfirmButton: false,
             timer: 1500
           }).then(() => {
@@ -77,7 +79,7 @@ export class FlashInfoAddComponent implements OnInit {
 
           Swal.fire({
             icon: 'error',
-            title: 'Echec! le formulaire est incomplet',
+            title: this.translate.instant("ARS.NOTIF.INCOMPLETE_FORM.TITLE"),
             showConfirmButton: false,
             timer: 1500
           });

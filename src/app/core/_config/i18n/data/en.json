@@ -904,7 +904,13 @@
 			"TITLE": "See old news flash"
 		},
 		"NOTIF":{
-			"NO_FLASH":"Aucun Flash Info"
+			"NO_FLASH":"Aucun Flash Info",
+			"FLASH_UPDATED": {
+				"TITLE": "Flash info updated successfully"
+			},
+			"FLASH_CREATED": {
+				"TITLE": "Flash Info successfully created"
+			}
 		},
 		"ONTOP": {
 			"LABEL": "On headlines",
@@ -1105,6 +1111,12 @@
 			},
 			"MATERIEL_UPDATED": {
 				"TITLE": "Material updated successfully"
+			},
+			"MATERIEL_TYPE_ARCHIVED": {
+				"TITLE": "Type of material successfully archived"
+			},
+			"ELEMENT_ARCHIVED": {
+				"TITLE": "Item is archived successfully"
 			}
 		},
 		"NUMERO_SERIE": {
@@ -1584,6 +1596,19 @@
 		}
 	},
 	"SALARIES": {
+		"ACTION": {
+			"ADD_FONCTION": "Add function"
+		},
+		"NOTIF": {
+			"FONCTION_ARCHIVED": {
+				"TITLE": "Function archived successfully"
+			},
+			"ELEMENT_NOT_DELETED": {
+				"SHORTTITLE": "Functions of employees",
+				"TITLE": "Unable to delete because the selection includes an element assigned to one or more employees",
+				"LABEL": "Unable to delete because the selection is assigned to one or more employees"
+			}
+		},
 		"ACCIDENTOLOGIE": {
 			"LABEL": "Accidentology",
 			"SHORTTITLE": "Accidentology",
@@ -1660,6 +1685,41 @@
 		"SIZE": "You cannot upload files larger than 1MB"
 	},
 	"USERS": {
+		"ACTION": {
+			"UPDATE_USER": "Edit User",
+			"ADD_USER": "Add user"
+		},
+		"NOTIF": {
+			"USER_CREATED": {
+				"TITLE": "User created successfully"
+			},
+			"USER_UPDATED": {
+				"TITLE": "User updated successfully"
+			}
+		},
+		"CARD":{
+			"ABOUT_USER": {
+				"TITLE": "About the user"
+			},
+			"USER_INFOS": {
+				"TITLE": "User information",
+				"EMERGENCY_CASE":"In case of emergency",
+				"MEDICAL_VISIT": "Medical visit"
+			},
+			"USER_ACCOUNT_INFOS": {
+				"TITLE": "User Account Information"
+			},
+			"EMPLOYEE_INFOS": {
+				"TITLE": "Employee Information"
+			}
+		},
+		"VIRTUEL_PROFILE_ONLY": {
+			"YES": "Virtual profiles only",
+			"NO": "Non-virtual profiles only"
+		},
+		"VIRTUEL_PROFILE": {
+			"TITLE": "Virtual Profile"
+		},
 		"CONTRACT": {
 			"LABEL": "Type of Contract",
 			"SHORTTITLE": "Type of Contract",
@@ -1925,6 +1985,9 @@
 			},
 			"EDIT_GOAL": {
 				"TITLE": "Edit goals"
+			},
+			"ADD_CATEGORY":{
+				"TITLE": "Add category"
 			}
 		},
 		"NOTIF": {
@@ -1946,6 +2009,9 @@
 			"ELEMENT_NOT_DELETED": {
 				"TITLE": "Unable to delete because the selection includes an element assigned to one or more elements",
 				"LABEL": "Unable to delete because the selection is assigned to one or more elements"
+			},
+			"ELEMENT_ARCHIVED": {
+				"TITLE": "Item archived successfully"
 			}
 		},
 		"DASH": {
@@ -2026,6 +2092,21 @@
 		},
 		"VISION_360": {
 			"TITLE" : "Vision 360"
+		}
+	},
+	"HOME": {
+		"WELCOME": {
+			"TITLE": "Welcome to HSE"
+		}
+	},
+	"MODULE": {
+		"CARD": {
+			"TITLE": "Activate / Deactivate application modules"
+		},
+		"NOTIF": {
+			"MODULE_UPDATED": {
+				"TITLE": "Modules updated successfully"
+			}
 		}
 	}
 }

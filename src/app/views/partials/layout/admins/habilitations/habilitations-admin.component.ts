@@ -32,6 +32,7 @@ export class HabilitationsAdminComponent extends AdminTemplateComponent implemen
 
   ngOnInit() {
     super.ngOnInit();
+    this.refreshTranslations();
     this.tpl = {
       title : this.translate.instant("CHANTIERS.CARD.HABILITATION.SHORTTITLE"),
       deletedMessage: this.translate.instant("CHANTIERS.NOTIF.ELEMENT_NOT_DELETED.TITLE"),
@@ -42,6 +43,18 @@ export class HabilitationsAdminComponent extends AdminTemplateComponent implemen
       childCol : 6
     }
   }
+
+  refreshTranslations(){
+		this.translate.stream("CHANTIERS.CARD.HABILITATION.SHORTTITLE").subscribe(x =>{
+			 this.tpl.title = x;
+		});
+		this.translate.stream("CHANTIERS.NOTIF.ELEMENT_NOT_DELETED.TITLE").subscribe(x =>{
+			this.tpl.deletedMessage = x;
+	   });
+		this.translate.stream("CHANTIERS.NOTIF.ELEMENT_NOT_DELETED.SUBTITLE").subscribe(x =>{
+			this.tpl.deletedChildMessage = x;
+		});
+	}
 
   formatChildren(item){
     item['children'] = item['habilitations']

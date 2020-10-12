@@ -35,7 +35,7 @@
 						<mat-error *ngIf="isControlHasError('email','maxlength')">
 							<strong>{{ 'AUTH.VALIDATION.MAX_LENGTH_FIELD' | translate }} 320</strong>
 						</mat-error>
-						<input matInput autocomplete="false" class="form-control" type="email" placeholder="Saisir ici ..." formControlName="email" autocomplete="off"/>
+						<input matInput autocomplete="false" class="form-control" type="email" placeholder="{{'ACTION.ENTER_HERE' | translate}} ..." formControlName="email" autocomplete="off"/>
 					</mat-form-field>
 				</div>
 				<div class="tf-login__divider">
@@ -46,7 +46,7 @@
 				<div class="form-group">
 					<mat-form-field [floatLabel]="'always'">
 						<mat-label>{{ 'AUTH.INPUT.PASSWORD' | translate }}</mat-label>
-						<input matInput autocomplete="false" class="form-control"  [type]="hide ? 'password' : 'text'" placeholder="Saisir ici ..." formControlName="password" autocomplete="off"/>
+						<input matInput autocomplete="false" class="form-control"  [type]="hide ? 'password' : 'text'" placeholder="{{'ACTION.ENTER_HERE' | translate}} ..." formControlName="password" autocomplete="off"/>
 						<button mat-icon-button matSuffix (click)="hide = !hide" type="button" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
 							<mat-icon svgIcon="{{hide ? 'close-eye' : 'open-eye'}}"></mat-icon>
 						</button>

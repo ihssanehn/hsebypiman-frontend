@@ -8,6 +8,8 @@ import { UserService } from '@app/core/services';
 import Swal from 'sweetalert2';
 import { extractErrorMessagesFromErrorResponse } from '@app/core/_base/crud';
 import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
+import { TranslateService } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'tf-user-add',
@@ -32,6 +34,7 @@ export class UserAddComponent implements OnInit {
     private location: Location,
     private dateFrToEnPipe:DateFrToEnPipe,
     private dateEnToFrPipe:DateEnToFrPipe,
+    private translate: TranslateService
   ) { }
 
   ngOnInit() {
@@ -143,7 +146,7 @@ export class UserAddComponent implements OnInit {
           var user = res.result.data;
           Swal.fire({
             icon: 'success',
-            title: 'Utilisateur créé avec succès',
+            title: this.translate.instant("USERS.NOTIF.USER_CREATED.TITLE"),
             showConfirmButton: false,
             timer: 1500
           }).then(() => {
@@ -155,7 +158,7 @@ export class UserAddComponent implements OnInit {
 
           Swal.fire({
             icon: 'error',
-            title: 'Echec! le formulaire est incomplet',
+            title: this.translate.instant("ARS.NOTIF.INCOMPLETE_FORM.TITLE"),
             showConfirmButton: false,
             timer: 1500
           });
