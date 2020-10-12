@@ -1963,6 +1963,11 @@
 			"SHORTTITLE": "Véhicule",
 			"TITLE": "Nom de véhicule"
 		},
+		"VEHICLE_CONFORMITY":{
+			"TITLE":"Conformité du véhicule",
+			"SHORTTITLE":"Conformité du véhicule",
+			"LABEL":"Conformité du véhicule"
+		},
 		"VEHICULE_FOUND": {
 			"LABEL": "Numéro d'identification du véhicule saisi",
 			"SHORTTITLE": "Numéro d'identification du véhicule saisi",
