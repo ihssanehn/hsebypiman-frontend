@@ -555,7 +555,7 @@ export class MenuConfig {
 						root: true,
 						alignment: 'left',
 						page: '/suivi-hse/goal',
-						translate: 'MENU.ROOT',
+						translate: 'MENU.GOALS',
 						icon: 'filter_center_focus',
 						permissionOnly: ['ADMIN','ROOT']
 					},
