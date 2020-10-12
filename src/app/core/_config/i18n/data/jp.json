@@ -674,6 +674,9 @@
 			},
 			"SUCCESS": {
 				"TITLE": "成功！"
+			},
+			"NO_FILE_CHOSEN": {
+				"TITLE": "No file chosen"
 			}
 		},
 		"NO_DATA_FOUND": {
@@ -750,6 +753,10 @@
 		},
 		"GOAL": {
 			"TITLE": "Goals"
+		},
+		"SELECT_FILES": {
+			"SHORTTITLE": "Select. files",
+			"TITLE": "Select a file"
 		}
 	},
 	"EES": {
@@ -914,7 +921,7 @@
 			"TITLE": "recently"
 		},
 		"NOTIF":{
-			"NO_FLASH":"Aucun Flash Info",
+			"NO_FLASH":"No Flash Info",
 			"FLASH_UPDATED": {
 				"TITLE": "Flash info updated successfully"
 			},
@@ -1921,6 +1928,12 @@
 			},
 			"VISIT_UPDATED": {
 				"TITLE": ""
+			},
+			"LATE_VISIT": {
+				"TITLE": "Late visit"
+			},
+			"UPCOMING_VISIT": {
+				"TITLE": "Upcoming visit"
 			}
 		},
 		"PRESENCE_NC": {

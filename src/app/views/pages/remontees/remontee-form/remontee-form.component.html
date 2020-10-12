@@ -39,10 +39,14 @@
 									<h4>{{'REMONTEES.CARD.DOC.TITLE' | translate}}</h4>
 									<div class="row">
 										<div class="col-4">
-											
-											<input formControlName="documentsToUpload" (onFileSelected)="onFileDrop($event)" class="mb-2" type="file" ng2FileSelect 
-											accept=".png, .bmp, .jpeg, .jpg, .gif, .tif, .PNG, .BMP, .JPEG, .JPG, .GIF, .TIF" [uploader]="uploader" multiple />
-											
+
+											<div class="upload-btn-wrapper">
+												<button class="btnr" title="{{'COMMON.SELECT_FILES.TITLE' | translate}}">{{'COMMON.SELECT_FILES.SHORTTITLE' | translate}}</button>
+												<span>{{'COMMON.NOTIF.NO_FILE_CHOSEN.TITLE' | translate}}</span>
+												<input formControlName="documentsToUpload" (onFileSelected)="onFileDrop($event)" class="mb-2" type="file" 
+													ng2FileSelect title="{{'COMMON.SELECT_FILES.TITLE' | translate}}" accept=".png, .bmp, .jpeg, .jpg, .gif, .tif, .PNG, .BMP, .JPEG, .JPG, .GIF, .TIF" [uploader]="uploader" multiple/>
+											</div>
+											  
 											<div ng2FileDrop [uploader]="uploader" 
 											(onFileDrop)="onFileDrop($event)"
 											class="drop-zone">

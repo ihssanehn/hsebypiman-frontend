@@ -154,9 +154,9 @@ export class MaterielsListComponent implements OnInit, AfterViewInit {
 	getNextVisiteTooltip(materiel){
 		var _date = moment(materiel.next_visite).format('DD/MM/YYYY');
 		if(materiel.vs_retard){
-			return 'Visite en retard : '+_date;
+			return this.translate.instant("VISITES.NOTIF.LATE_VISIT.TITLE")+' : '+_date;
 		}else if(materiel.vs_a_prevoir){
-			return 'Visite à venir : '+_date;
+			return this.translate.instant("VISITES.NOTIF.UPCOMING_VISIT.TITLE")+' : '+_date;
 		}else{
 			return null
 		}
