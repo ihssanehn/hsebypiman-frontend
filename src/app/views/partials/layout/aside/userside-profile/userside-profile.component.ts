@@ -43,7 +43,7 @@ export class UserSideProfileComponent implements OnInit {
 		private ngxRolesService: NgxRolesService,
 
 	) {
-		this.authService.currentUser.subscribe(x=> this.user$ = x);
+		this.authService.getCurrentUser().subscribe(x=> {this.user = x; console.log("test")});
 		this.ngxRolesService.roles$.subscribe((event) => {this.cdr.markForCheck();});
 	}
 
@@ -55,7 +55,6 @@ export class UserSideProfileComponent implements OnInit {
 	 * On init
 	 */
 	async ngOnInit() {
-		this.user = this.user$
 
 		if(!this.cdr['destroyed']){ 
 			this.cdr.detectChanges();

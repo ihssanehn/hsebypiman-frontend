@@ -32,8 +32,11 @@ export class AuthService extends HttpService {
     
 	private currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
 	public currentUser = this.currentUserSubject
-		.asObservable()
-		.pipe(distinctUntilChanged());
+		.asObservable();
+
+	public getCurrentUser():Observable<any> {
+		return this.currentUserSubject.asObservable();
+	}
 
 	public get currentUserValue(): User{
 		return this.currentUserSubject.value;
@@ -43,12 +46,24 @@ export class AuthService extends HttpService {
 		return this.http.post<JsonResponse<User>>(`${this.baseUrl}auth/login`, {email,password});
 	}
 
+	reloadUser(){
+			return this.http.get<JsonResponse<User>>(`${this.baseUrl}auth/user`)
+			.pipe(
+				map(res=> {
+					var user = res.result.data;
+					localStorage.setItem('currentUser', JSON.stringify(user))
+					this.currentUserSubject.next(user);
+					return res;
+				})
+			)
+	}
+
 	getUserByToken(){
 		return this.http.get<JsonResponse<User>>(`${this.baseUrl}auth/user`)
 		.pipe(
 			map(res=> {
 				var user = res.result.data;
-				localStorage.setItem('currentUser', JSON.stringify(user));
+				localStorage.setItem('currentUser', JSON.stringify(user))
 				this.currentUserSubject.next(user);
 				var permissions = user.role.permissions.map(x => x.code);
 				

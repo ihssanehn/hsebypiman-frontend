@@ -15,6 +15,7 @@ import Swal, { SweetAlertIcon } from 'sweetalert2';
 import { User, AuthService } from '@app/core/auth';
 import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
 import { FormStatus } from '@app/core/_base/crud/models/form-status';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'tf-profile-edit',
@@ -36,6 +37,9 @@ export class ProfileEditComponent implements OnInit, OnDestroy {
 	userForm: FormGroup;
 	passFormloading: boolean = false;
 	passFormStatus = new FormStatus();
+	userFormloading: boolean = false;
+	userFormStatus = new FormStatus();
+  formStatus = new FormStatus();
 
 
 	errors: any = [];
@@ -64,7 +68,8 @@ export class ProfileEditComponent implements OnInit, OnDestroy {
 			private cdr: ChangeDetectorRef,
 			private authService: AuthService,
 			iconRegistry: MatIconRegistry, 
-			sanitizer: DomSanitizer
+			sanitizer: DomSanitizer,
+			private translate: TranslateService
 	) {
 		this.authService.currentUser.subscribe(x=> this.user$ = x);
 		
@@ -167,7 +172,45 @@ export class ProfileEditComponent implements OnInit, OnDestroy {
   
 		
 	onUserSubmit(){
-		console.log('here')
+		this.userFormloading = true;
+    let form = {...this.userForm.getRawValue()};
+    form.id = this.user$.id;
+    this.UserService.updateUser(form)
+      .toPromise()
+      .then((res) => {
+        
+        this.userFormloading = false;
+        var code = res.message.code as SweetAlertIcon;
+        var message = res.message.content != 'done' ? '<b class="text-'+code+'">'+res.message.content+'</b>' : null; 
+				this.authService.reloadUser().toPromise().then(res=>console.log(res));
+        Swal.fire({
+          icon: code,
+          title: this.translate.instant("USERS.NOTIF.USER_UPDATED.TITLE"),
+          showConfirmButton: false,
+          html: message,
+          timer: code == 'success' ? 1500 : 3000
+        }).then(() => {
+          // this.location.back();
+        })
+        this.cdr.markForCheck();
+      })
+      .catch(err => {
+        
+        this.userFormloading = false;
+        Swal.fire({
+          icon: 'error',
+          title: this.translate.instant("ARS.NOTIF.INCOMPLETE_FORM.TITLE"),
+          showConfirmButton: false,
+          timer: 1500
+        });
+    
+        if(err.status === 422){
+          var messages = extractErrorMessagesFromErrorResponse(err);
+          this.formStatus.onFormSubmitResponse({success: false, messages: messages});
+          this.cdr.markForCheck();
+        }
+      });
+    this.cdr.markForCheck();
 	}
 
 	onPassSubmit(){
@@ -191,30 +234,30 @@ export class ProfileEditComponent implements OnInit, OnDestroy {
 		  var code = res.message.code as SweetAlertIcon;
 		  var message = res.message.content != 'done' ? '<b class="text-'+code+'">'+res.message.content+'</b>' : null; 
 		  Swal.fire({
-			icon: code,
-			title: 'Mot de passe mis à jour avec succès',
-			showConfirmButton: false,
-			html: message,
-			timer: code == 'success' ? 1500 : 3000
+				icon: code,
+				title: 'Mot de passe mis à jour avec succès',
+				showConfirmButton: false,
+				html: message,
+				timer: code == 'success' ? 1500 : 3000
 		  }).then(() => {
-			this.location.back();
+				this.location.back();
 		  })
-		  this.cdr.markForCheck();
+		  	this.cdr.markForCheck();
 		})
 		.catch(err => {
 		  
 		  this.passFormloading = false;
 		  Swal.fire({
-			icon: 'error',
-			title: 'Echec! le formulaire est incomplet ou le mot de passe ne correspond pas',
-			showConfirmButton: false,
-			timer: 1500
+				icon: 'error',
+				title: 'Echec! le formulaire est incomplet ou le mot de passe ne correspond pas',
+				showConfirmButton: false,
+				timer: 1500
 		  });
 	  
 		  if(err.status === 422){
-			var messages = extractErrorMessagesFromErrorResponse(err);
-			this.passFormStatus.onFormSubmitResponse({success: false, messages: messages});
-			this.cdr.markForCheck();
+				var messages = extractErrorMessagesFromErrorResponse(err);
+				this.passFormStatus.onFormSubmitResponse({success: false, messages: messages});
+				this.cdr.markForCheck();
 		  }
 		});
 	  this.cdr.markForCheck();
