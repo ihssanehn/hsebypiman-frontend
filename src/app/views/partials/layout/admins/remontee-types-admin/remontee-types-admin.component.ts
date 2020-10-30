@@ -70,7 +70,7 @@ export class RemonteeTypesAdminComponent extends AdminTemplateComponent implemen
   }
 
   async createItem(payload){
-    payload = {...payload, ordre : this.generateParentOrdre(), model: 'Remontée' }
+    payload = {...payload, ordre : this.generateParentOrdre(), model: 'Remontee' }
     if( payload.libelle )
       payload = { ...payload, code : this.generateCode(payload.libelle)}
 

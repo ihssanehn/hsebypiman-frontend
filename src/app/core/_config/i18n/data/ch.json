@@ -1498,6 +1498,10 @@
 			"NO_CHANTIER": {
 				"TITLE": "This lift has not been assigned to any site"
 			},
+			"REMONTEE_DELETE_CONFIRMATION":{
+				"TITLE": "You will permanently delete this lift",
+				"LABEL": "Are you sure you want to continue ?"
+			},
 			"DOC_DELETE_CONFIRMATION": {
 				"TITLE": "You will permanently delete this document",
 				"LABEL": "Are you sure you want to continue ?"
@@ -1521,6 +1525,9 @@
 				"TITLE": "Unable to delete because the selection includes an element assigned to one or more lifts",
 				"SHORTTITLE": "Types of lift",
 				"LABEL": "Unable to delete because the selection is assigned to one or more lifts"
+			},
+			"REMONTEE_DELETED":{
+				"TITLE": "Lift deleted succesfully"
 			},
 			"NO_DOCUMENT": "No document",
 			"NO_REMONTEE": "No remontee"

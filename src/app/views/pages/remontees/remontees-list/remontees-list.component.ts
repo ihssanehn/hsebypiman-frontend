@@ -105,10 +105,30 @@ export class RemonteesListComponent implements OnInit, AfterViewInit {
 	}
 	deleteRemonte(remonteId) {
 		Swal.fire({
-			title: this.translate.instant("NOTIF.FEATURE_NOT_IMPLEMENTED.TITLE"),
-			showConfirmButton: false,
-			timer: 1500
-		})
+				icon: 'warning',
+				title: this.translate.instant("REMONTEES.NOTIF.REMONTEE_DELETE_CONFIRMATION.TITLE"),
+				text: this.translate.instant("REMONTEES.NOTIF.REMONTEE_DELETE_CONFIRMATION.LABEL"),
+				showConfirmButton: true,
+				showCancelButton: true,
+				cancelButtonText: this.translate.instant("ACTION.CANCEL"),
+				confirmButtonText: this.translate.instant("ACTION.DELETE"),
+			}).then(async response => {
+				if (response.value) {
+
+					this.remonteeService.delete(remonteId).toPromise().then(res=>{
+						this.getRemontees();
+						Swal.fire({
+							title: this.translate.instant("REMONTEES.NOTIF.REMONTEE_DELETED.TITLE"),
+							showConfirmButton: false,
+							icon: 'success',
+							timer: 1500
+						});
+					})
+					// this.saveForm(form);
+
+
+				}
+			})
 	}
 
 	// Au click, défini order by et order way. Si le order_by est déjà actif, toggle du order_way. Sinon, order_way asc par défaut

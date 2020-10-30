@@ -1498,6 +1498,10 @@
 			"NO_CHANTIER": {
 				"TITLE": "Cette remontée n'a été attribuée à aucun chantier"
 			},
+			"REMONTEE_DELETE_CONFIRMATION":{
+				"TITLE": "Vous allez supprimer cette remontée de façon définitive",
+				"LABEL": "Êtes-vous sûr de vouloir continuer ?"
+			},
 			"DOC_DELETE_CONFIRMATION": {
 				"TITLE": "Vous allez supprimer ce document de façon définitive",
 				"LABEL": "Êtes-vous sûr de vouloir continuer ?"
@@ -1521,6 +1525,9 @@
 				"TITLE": "Suppression impossible car la selection comprend un élément affecté à une ou plusieurs remontées",
 				"SHORTTITLE": "Typologies de remontée",
 				"LABEL": "Suppression impossible car la selection est affectée à une ou plusieurs remontées"
+			},
+			"REMONTEE_DELETED":{
+				"TITLE": "La remontée a bien été supprimée"
 			},
 			"NO_DOCUMENT": "Aucun document",
 			"NO_REMONTEE": "Aucune remontée"
