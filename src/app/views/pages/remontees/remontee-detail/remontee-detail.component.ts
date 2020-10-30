@@ -125,12 +125,30 @@ export class RemonteeDetailComponent implements OnInit, OnDestroy {
   	editRemonte(id){
 		this.router.navigateByUrl('remontees/edit/'+id);
 	}
-	deleteRemonte(id){
+	deleteRemonte(remonteId) {
 		Swal.fire({
-			title:this.translate.instant("NOTIF.FEATURE_NOT_IMPLEMENTED.TITLE"),
-			showConfirmButton: false,
-            timer: 1500
-		})
+				icon: 'warning',
+				title: this.translate.instant("REMONTEES.NOTIF.REMONTEE_DELETE_CONFIRMATION.TITLE"),
+				text: this.translate.instant("REMONTEES.NOTIF.REMONTEE_DELETE_CONFIRMATION.LABEL"),
+				showConfirmButton: true,
+				showCancelButton: true,
+				cancelButtonText: this.translate.instant("ACTION.CANCEL"),
+				confirmButtonText: this.translate.instant("ACTION.DELETE"),
+			}).then(async response => {
+				if (response.value) {
+
+					this.remonteeService.delete(remonteId).toPromise().then(res=>{
+						Swal.fire({
+							title: this.translate.instant("REMONTEES.NOTIF.REMONTEE_DELETED.TITLE"),
+							showConfirmButton: false,
+							icon: 'success',
+							timer: 1500
+						}).then(() => {
+							this.router.navigateByUrl('/remontees/list');
+						});
+					})
+				}
+			})
 	}
 	viewChantier(chantierId) {
 		this.router.navigateByUrl('chantiers/detail/' + chantierId);
