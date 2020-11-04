@@ -85,10 +85,12 @@
 		<button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}" (click)="viewFlashInfo(selectedFlashInfo.id)">
 			<mat-icon>visibility</mat-icon>
 		</button>
-		<ng-container *ngxPermissionsOnly="['flashinfo_canUpdate']">
-			<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editFlashInfo(selectedFlashInfo.id)">
-				<mat-icon>edit</mat-icon>
-			</button>
-		</ng-container>
+		<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" *ngxPermissionsOnly="['flashinfo_canUpdate']" (click)="editFlashInfo(selectedFlashInfo.id)">
+			<mat-icon>edit</mat-icon>
+		</button>
+		<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" *ngxPermissionsOnly="['flashinfo_canArchieve']" (click)="deleteFlashInfo(selectedFlashInfo.id)">
+			<mat-icon>delete</mat-icon>
+		</button>
+		
 	</mat-menu>
 	

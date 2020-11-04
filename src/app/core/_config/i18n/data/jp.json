@@ -927,6 +927,14 @@
 			},
 			"FLASH_CREATED": {
 				"TITLE": "Flash Info successfully created"
+			},
+			"FLASHINFO_DELETE_CONFIRMATION":{
+				"TITLE": "You will permanently delete this flash info",
+				"LABEL": "Are you sure you want to continue ?"
+			},
+
+			"FLASHINFO_DELETED":{
+				"TITLE": "Flash info deleted successfully"
 			}
 		},
 		"TITLE": {

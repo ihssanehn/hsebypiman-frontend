@@ -9,6 +9,9 @@ import { DomSanitizer } from '@angular/platform-browser';
 import {MatDatepicker} from '@angular/material/datepicker';
 import { FlashInfo } from '@app/core/models/flashinfo.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import Swal from 'sweetalert2';
+import { TranslateService } from '@ngx-translate/core';
+
 // import { SalarieEditComponent } from '../salarie-edit/salarie-edit.component';
 
 @Component({
@@ -33,8 +36,9 @@ export class FlashInfoDetailComponent implements OnInit, OnDestroy {
     private FlashInfoService: FlashInfoService,
 		private cdr: ChangeDetectorRef,
 		private permissionsService : NgxPermissionsService,
+    private translate: TranslateService,
 		iconRegistry: MatIconRegistry, 
-		sanitizer: DomSanitizer
+    sanitizer: DomSanitizer,
   ) {}
 
   ngOnInit() {
@@ -63,10 +67,37 @@ export class FlashInfoDetailComponent implements OnInit, OnDestroy {
 			console.error(error);
 		}
   }
-  
 
 	editFlashInfo(){
 		this.router.navigateByUrl('/admin/flash-infos/edit/'+this.flashinfo.id);
+  }
+  deleteFlashInfo(){
+    Swal.fire({
+      icon: 'warning',
+      title: this.translate.instant("FLASHINFOS.NOTIF.FLASHINFO_DELETE_CONFIRMATION.TITLE"),
+      text: this.translate.instant("FLASHINFOS.NOTIF.FLASHINFO_DELETE_CONFIRMATION.LABEL"),
+      showConfirmButton: true,
+      showCancelButton: true,
+      cancelButtonText: this.translate.instant("ACTION.CANCEL"),
+      confirmButtonText: this.translate.instant("ACTION.DELETE"),
+    }).then(async response => {
+      if (response.value) {
+
+        this.FlashInfoService.delete(this.flashinfo.id).toPromise().then(res=>{
+          Swal.fire({
+            title: this.translate.instant("FLASHINFOS.NOTIF.FLASHINFO_DELETED.TITLE"),
+            showConfirmButton: false,
+            icon: 'success',
+            timer: 1500
+          }).then(()=>{
+            this.router.navigateByUrl('/admin/flash-infos/list');
+          })
+        })
+        // this.saveForm(form);
+
+
+      }
+    })
   }
 	giveAccess(){
 		this.router.navigateByUrl('/admin/flash-infos/edit/'+this.flashinfo.id);

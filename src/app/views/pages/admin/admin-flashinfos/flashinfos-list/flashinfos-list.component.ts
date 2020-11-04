@@ -96,13 +96,7 @@ export class FlashInfosListComponent implements OnInit {
 	editFlashInfo(flashinfoId) {
 		this.router.navigateByUrl('admin/flash-infos/edit/' + flashinfoId);
 	}
-	deleteFlashInfo(flashinfoId) {
-		Swal.fire({
-			title: this.translate.instant("NOTIF.FEATURE_NOT_IMPLEMENTED.TITLE"),
-			showConfirmButton: false,
-			timer: 1500
-		})
-	}
+	
 	addFlashInfo(){
 		this.router.navigateByUrl('admin/flash-infos/add')
 	}
@@ -155,4 +149,31 @@ export class FlashInfosListComponent implements OnInit {
 		this.getFlashInfos();
 	}
 
+	deleteFlashInfo(flashId) {
+		Swal.fire({
+				icon: 'warning',
+				title: this.translate.instant("FLASHINFOS.NOTIF.FLASHINFO_DELETE_CONFIRMATION.TITLE"),
+				text: this.translate.instant("FLASHINFOS.NOTIF.FLASHINFO_DELETE_CONFIRMATION.LABEL"),
+				showConfirmButton: true,
+				showCancelButton: true,
+				cancelButtonText: this.translate.instant("ACTION.CANCEL"),
+				confirmButtonText: this.translate.instant("ACTION.DELETE"),
+			}).then(async response => {
+				if (response.value) {
+
+					this.FlashInfoService.delete(flashId).toPromise().then(res=>{
+						this.getFlashInfos();
+						Swal.fire({
+							title: this.translate.instant("FLASHINFOS.NOTIF.FLASHINFO_DELETED.TITLE"),
+							showConfirmButton: false,
+							icon: 'success',
+							timer: 1500
+						});
+					})
+					// this.saveForm(form);
+
+
+				}
+			})
+	}
 }

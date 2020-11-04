@@ -917,6 +917,14 @@
 			},
 			"FLASH_CREATED": {
 				"TITLE": "Flash Info créé avec succès"
+			},
+			"FLASHINFO_DELETE_CONFIRMATION":{
+				"TITLE": "Vous allez supprimer ce flash info de façon définitive",
+				"LABEL": "Êtes-vous sûr de vouloir continuer ?"
+			},
+
+			"FLASHINFO_DELETED":{
+				"TITLE": "Le flash info a bien été supprimée"
 			}
 		},
 		"ONTOP": {
