@@ -36,7 +36,7 @@ export class VersionCheckService {
                     // If new version, do something
                     if (hashChanged) {
 
-                        location.reload(true);
+                        location.reload();
                         console.log('locationReloaded');
                         // for an example: location.reload();
                     }
