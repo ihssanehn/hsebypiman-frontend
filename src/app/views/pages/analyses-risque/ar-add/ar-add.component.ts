@@ -217,6 +217,7 @@ export class ArAddComponent implements OnInit, OnDestroy {
 
       observations_signature:[''],
       risques:new FormArray([]),
+      cat_risques:new FormArray([]),
       equipements:new FormArray([]),
       zones:new FormArray([]),
       comments:new FormArray([]),

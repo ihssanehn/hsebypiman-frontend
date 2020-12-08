@@ -179,8 +179,8 @@
                     <ng-container matColumnDef="actions">
                         <th mat-header-cell *matHeaderCellDef> {{'ARS.FORM.ACTION' | translate}} </th>
                         <td mat-cell *matCellDef="let element">
-                            <div class="m-2" *ngFor="let risk of element.risques" [hidden]="element.risques.length == 0">
-                                <mat-checkbox disabled [value]="risk.id" [checked]="true">{{risk.libelle}}</mat-checkbox>
+                            <div class="m-2 risk-list" *ngFor="let risk of element.risques" [hidden]="element.risques.length == 0">
+                                - {{risk.libelle}}
                             </div>
                             <span [hidden]="element.risques.length > 0">
                                 -
