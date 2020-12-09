@@ -223,7 +223,7 @@
 							<ng-container matColumnDef="comments">
 								<th mat-header-cell *matHeaderCellDef> {{'ARS.FORM.COMMENT' | translate}} </th>
 								<td mat-cell *matCellDef="let element" class="cell-textarea">
-									<textarea class="form-control no_border" (change)="onCommentCheckChange(element.id,$event)" [value]="getCommentValue(element.id)" placeholder="{{'ACTION.ENTER_HERE' | translate}}"></textarea>
+									<textarea [disabled]="!onRiskIsChecked(element.id)" class="form-control no_border" (change)="onCommentCheckChange(element.id,$event)" [value]="getCommentValue(element.id)" placeholder="{{'ACTION.ENTER_HERE' | translate}}"></textarea>
 								</td>
 							</ng-container>
 		
