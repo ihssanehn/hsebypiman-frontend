@@ -376,7 +376,7 @@ export class ArAddComponent implements OnInit, OnDestroy {
       this.formStatus.onFormSubmitting();
       let form = {...this.arForm.getRawValue()};
 
-      form.accueil_secu_days = form.accueil_secu_days.map(x => x.key);
+      form.accueil_secu_days = form.accueil_secu_days ? form.accueil_secu_days.map(x => x.key) : null;
       
       if(form.chantier_id)
       {
