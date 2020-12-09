@@ -88,13 +88,23 @@ export class ArFormComponent implements OnInit {
     this.cdr.markForCheck();
   }
 
-  onRiskCheckChange(event) {
-    const formArray: FormArray = this.arForm.get('risques') as FormArray;
-  
+
+  onRiskCheckChange(event, actions) {
+    const risksFormArray: FormArray = this.arForm.get('risques') as FormArray;
+    const catRisksformArray: FormArray = this.arForm.get('cat_risques') as FormArray;
+
+    this.manageRisksSelection(event.source.value, event.checked, catRisksformArray);
+
+    actions.forEach(element => {
+      this.manageRisksSelection(element.id, event.checked, risksFormArray);
+    });
+  }
+
+  manageRisksSelection(idRisk: number, checked: boolean, formArray: FormArray){
     /* Selected */
-    if(event.checked){
+    if(checked){
       // Add a new control in the arrayForm
-      formArray.push(new FormControl(event.source.value));
+      formArray.push(new FormControl(idRisk));
     }
     /* unselected */
     else{
@@ -102,7 +112,7 @@ export class ArFormComponent implements OnInit {
       let i: number = 0;
   
       formArray.controls.forEach((ctrl: FormControl) => {
-        if(ctrl.value == event.source.value) {
+        if(ctrl.value == idRisk) {
           // Remove the unselected element from the arrayForm
           formArray.removeAt(i);
           return;
@@ -164,7 +174,7 @@ export class ArFormComponent implements OnInit {
   }
 
   onRiskIsChecked(riskId){
-    return this.arForm.get('risques').value.includes(riskId);
+    return this.arForm.get('cat_risques').value.includes(riskId);
   }
 
   onEquipementIsChecked(equipementId){

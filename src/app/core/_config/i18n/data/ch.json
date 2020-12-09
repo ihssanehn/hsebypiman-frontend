@@ -173,7 +173,7 @@
 		},
 		"EMPLOYEE": "Nom du salarié CVTI réalisant la visite commune",
 		"FORM": {
-			"ACTION": "Action de prévention à mener",
+			"ACTION": "Actions de prévention à mener",
 			"CA_ASSISTANT": "Assistant CA",
 			"COMMENT": "Précisions à apporter",
 			"CREATE": "Créer une nouvelle analyse de risque",
