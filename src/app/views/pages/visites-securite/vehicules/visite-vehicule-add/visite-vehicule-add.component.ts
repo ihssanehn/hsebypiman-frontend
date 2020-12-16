@@ -68,7 +68,7 @@ export class VisiteVehiculeAddComponent implements OnInit {
       'visitable_id': [{value:null, disabled:true}, Validators.required],
       'is_externe' : [{value : 0, disabled : false},Validators.required],
       //'entreprise_id': [{value:null, disabled:false}, Validators.required],
-      'redacteur_id': [{value:this.currentUser.personnel_id, disabled:true}, Validators.required],
+      'redacteur_id': [{value:this.currentUser.id, disabled:true}, Validators.required],
       'date_visite': [moment().format('DD/MM/YYYY'), Validators.required],
       'presence_non_conformite': [{value:false, disabled: true}],
       'has_rectification_imm': [{value:false, disabled: true}],

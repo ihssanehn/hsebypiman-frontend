@@ -69,7 +69,7 @@ export class VisiteEpiAddComponent implements OnInit {
       'is_externe' : [{value : 0, disabled : false},Validators.required],
       'salarie_id': [{ value: null, disabled: false }, Validators.required],
       'entreprise_id': [{ value: null, disabled: false }, Validators.required],
-      'redacteur_id': [{ value: this.currentUser.personnel_id ? this.currentUser.personnel_id : this.currentUser.id, disabled: true }, Validators.required],
+      'redacteur_id': [{ value: this.currentUser.id, disabled: true }, Validators.required],
       'date_visite': [moment().format('DD/MM/YYYY'), Validators.required],
       // 'is_validated_redacteur': ['', Validators.required],
       // 'is_validated_visite': ['', Validators.required],

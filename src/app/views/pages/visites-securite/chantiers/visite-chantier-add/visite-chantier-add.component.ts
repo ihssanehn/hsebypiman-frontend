@@ -74,7 +74,7 @@ export class VisiteChantierAddComponent implements OnInit {
       'entreprise_id': [{value:null, disabled:false}, Validators.required],
       'interimaire_id': [{value:null, disabled:false}],
       'nom_prenom': [{value:null, disabled:false}],
-      'redacteur_id': [{value:this.currentUser.personnel_id, disabled:true}, Validators.required],
+      'redacteur_id': [{value:this.currentUser.id, disabled:true}, Validators.required],
       'date_visite': [moment().format('DD/MM/YYYY'), Validators.required],
       'presence_non_conformite': [{value:false, disabled: true}],
       'has_rectification_imm': [{value:false, disabled: true}],
