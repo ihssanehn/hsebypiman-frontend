@@ -27,6 +27,7 @@ export class User extends BaseModel {
     date_visite_medicale_passed: Date;
     date_visite_medicale_next: Date;
     latest_visite_medicale?: any;
+    entreprise_interim?: string;
 
     clear?(): void {
         this.id = undefined;

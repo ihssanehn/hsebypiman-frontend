@@ -28,6 +28,7 @@ export class ChantierFormComponent implements OnInit {
   interimairesLoaded: boolean = false;
   entrepriseTypesList: Type[];
   entrepriseTypesLoaded: boolean = false;
+  interimairesListGrouped: any;
 
   @Input() chantierForm: FormGroup;
   @Input() formStatus: FormStatus;
@@ -110,10 +111,20 @@ export class ChantierFormComponent implements OnInit {
     this.cdr.markForCheck();
   }
   async getInterimaires(){
+
+    var groupBy = function(xs, key) {
+      return xs.reduce(function(rv, x) {
+        (rv[x[key]] = rv[x[key]] || []).push(x);
+        return rv;
+      }, {});
+    };
+
     this.interimairesLoaded = false;
-    var res = await this.userService.getAll({'contrat_code':'STAGIAIRE', 'paginate':false}).toPromise();
+    var res = await this.userService.getAll({'contrat_code':'INTERIMAIRE', 'paginate':false}).toPromise();
     if(res){
       this.interimairesList = res.result.data;
+      this.interimairesListGrouped = groupBy(res.result.data, 'entreprise_interim');
+      console.log(this.interimairesListGrouped);
       this.interimairesLoaded = true;
     }
     this.cdr.markForCheck();
@@ -208,14 +219,23 @@ export class ChantierFormComponent implements OnInit {
     });
     new_entreprise.get('type_code').valueChanges.subscribe(code=>{
       if(code == 'SOUS_TRAITANT'){
-        new_entreprise.get('interimaire_id').setValidators(null);
-        new_entreprise.get('chiffre_affaire').setValidators(Validators.required);
-      }else{
+        new_entreprise.get('interimaire_id').setValidators(null)
+        new_entreprise.get('interimaire_id').setValue(null);
+        new_entreprise.get('chiffre_affaire').setValidators(Validators.required)
+      }else{  
         new_entreprise.get('interimaire_id').setValidators(Validators.required);
         new_entreprise.get('chiffre_affaire').setValidators(null);
+        new_entreprise.get('chiffre_affaire').setValue(null);
       }
     })
     return new_entreprise;
+  }
+
+  filterInterimairesList(i){
+    var entreprise : FormGroup = this.entreprises.controls[i] as FormGroup;
+    var agence = entreprise.controls['entreprise_interim'].value;
+    return this.interimairesList.filter(user=>user.entreprise_interim == agence);
+    
   }
 
   removeEe(i){
