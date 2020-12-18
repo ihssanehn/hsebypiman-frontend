@@ -175,8 +175,8 @@
 							<mat-form-field class="col-xl-3" *ngIf="entHasCode(entIndex) == 'INTERIM'">
 								<mat-label>{{'EES.INTERIMAIRE.LABEL' | translate}}</mat-label>
 								<mat-select class="form-control" formControlName="interimaire_id" [required]="isEEFieldRequired('interimaire_id', entIndex)">
-									<mat-optgroup *ngFor="let group of interimairesListGrouped | keyvalue" [label]="group.key">
-										<mat-option *ngFor="let user of group.value" [value]="user.id">
+									<mat-optgroup *ngFor="let group of interimairesListGrouped" [label]="group.key">
+										<mat-option *ngFor="let user of group.values" [value]="user.id">
 											{{ user | fullName }}
 										</mat-option>
 									</mat-optgroup>

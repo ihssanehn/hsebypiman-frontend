@@ -113,18 +113,37 @@ export class ChantierFormComponent implements OnInit {
   async getInterimaires(){
 
     var groupBy = function(xs, key) {
-      return xs.reduce(function(rv, x) {
+      
+      var array = [];
+
+      var test = xs.reduce(function(rv, x) {
         (rv[x[key]] = rv[x[key]] || []).push(x);
         return rv;
       }, {});
+
+      Object.keys(test).sort().forEach(x=>{
+        if(x == 'null'){
+          array.push({
+            key: 'Autre', 
+            values: test[x]  
+          })
+        }else{
+          array.push({
+            key: x, 
+            values: test[x]
+          })
+        }
+      });
+
+      return array;
     };
 
+
     this.interimairesLoaded = false;
-    var res = await this.userService.getAll({'contrat_code':'INTERIMAIRE', 'paginate':false}).toPromise();
+    var res = await this.userService.getAll({'contrat_code':'INTERIMAIRE', 'paginate':false, 'with_histo':true}).toPromise();
     if(res){
       this.interimairesList = res.result.data;
       this.interimairesListGrouped = groupBy(res.result.data, 'entreprise_interim');
-      console.log(this.interimairesListGrouped);
       this.interimairesLoaded = true;
     }
     this.cdr.markForCheck();
