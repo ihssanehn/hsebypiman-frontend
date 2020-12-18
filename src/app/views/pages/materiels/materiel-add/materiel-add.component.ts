@@ -60,7 +60,7 @@ export class MaterielAddComponent implements OnInit {
       fournisseur: [''],
       date_entree: [null],
       date_sortie: [null],
-      formation_requise: [''],
+      formation_requise: [0],
       habilitation_requise: [0],
       has_controle: [0],
       frequence_controle: [null],
