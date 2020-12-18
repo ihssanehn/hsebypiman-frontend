@@ -41,8 +41,8 @@
 								</mat-form-field>
 								<mat-form-field class="col-xl-3">
 									<mat-label>{{'MATERIELS.FOURNISSEUR.LABEL' | translate}}</mat-label>
-									<input matInput class="form-control" type="text" name="marque" formControlName="marque" [required]="isFieldRequired('marque')" placeholder="{{'ACTION.ENTER_HERE' | translate}}" />
-									<mat-error *ngIf="isControlHasError('marque','required')">
+									<input matInput class="form-control" type="text" name="fournisseur" formControlName="fournisseur" [required]="isFieldRequired('fournisseur')" placeholder="{{'ACTION.ENTER_HERE' | translate}}" />
+									<mat-error *ngIf="isControlHasError('fournisseur','required')">
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
 								</mat-form-field>
