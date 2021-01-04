@@ -13,7 +13,7 @@ import { MatSnackBar } from '@angular/material';
 import Swal from 'sweetalert2';
 import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
 import {FormStatus} from '@app/core/_base/crud/models/form-status';
-import { DateFrToEnPipe } from '@app/core/_base/layout';
+import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
 import { tap } from 'rxjs/operators';
 
 @Component({
@@ -50,18 +50,52 @@ export class VisiteVehiculeAddComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     public snackBar: MatSnackBar,
     private dateFrToEnPipe:DateFrToEnPipe,
+    private dateEnToFrPipe:DateEnToFrPipe,
     private translate: TranslateService
   ) {
 		this.authService.currentUser.subscribe(x=> this.currentUser = x);
    }
 
   ngOnInit() {
-    this.visite = new VisiteVehicule();
+    const routeSubscription = this.activatedRoute.queryParams
+    .subscribe(
+      async params => {
+        const id = params.visite_id;
+        if(id){
+          this.visiteService
+          .get(id)
+          .pipe(
+            tap(
+              vs => {
+                var _vs = vs.result.data;
+                this.patchVsDatas(_vs);
+              }
+            )
+         )
+          .subscribe( async res => {
+            this.visite = res.result.data;
+            this.loaded = true;
+            this.cdr.markForCheck();
+          });
+        }else{
+          this.visite = new VisiteVehicule();
+        }
+    });
+
     this.createForm();    
     //this.setDynamicValidators();
   }
 
-  
+  patchVsDatas(_vs){
+    this.visiteForm.get('salarie_id').setValue(_vs.salarie_id);
+    this.visiteForm.get('visitable_id').setValue(_vs.visitable_id);
+    this.visiteForm.get('is_externe').setValue(_vs.is_externe);
+    this.visiteForm.get('redacteur_id').setValue(_vs.redacteur_id);
+    this.visiteForm.get('presence_non_conformite').setValue(_vs.presence_non_conformite);
+    this.visiteForm.get('has_rectification_imm').setValue(_vs.has_rectification_imm);
+    this.visiteForm.get('avertissement').setValue(_vs.avertissement);
+    this.visiteForm.get('type_id').setValue(_vs.type_id);
+  }
   createForm() {
 		this.visiteForm = this.visiteFB.group({
       'salarie_id': [{value:null, disabled:false}],
@@ -95,7 +129,7 @@ export class VisiteVehiculeAddComponent implements OnInit {
 		this.loaded = true;
   }
 
-   setDynamicForm(){
+  setDynamicForm(){
     // this.visiteForm.get('salarie_id').valueChanges.subscribe(salarie_id=>{
       
     //   this.visiteForm.get('visitable_id').setValue(null);
@@ -117,9 +151,11 @@ export class VisiteVehiculeAddComponent implements OnInit {
     //   }
     // })
   }
+
+  
+
   async onUserSelected(form){
     this.visiteForm.patchValue(form);
-    console.log(this.visiteForm.get('vehicule_km').value);
     this.displayQuestions();
   }
 
@@ -190,36 +226,55 @@ export class VisiteVehiculeAddComponent implements OnInit {
       tap(res=>{
         this.catQuestionsList = res.result.data;
         this.parseQuestions(res.result.data);
-
+        
+        
       })
     ).subscribe(res=>{
       this.questionsDisplayed = true;
       this.visiteForm.get('type_id').disable();
       this.cdr.markForCheck();
-
     });
 
+  }
+
+  inVisite(quest_id){
+    return this.visite.questions.filter(x=>x.id==quest_id).length > 0;
   }
 
   parseQuestions(item){
     if(item.length > 0){
 
       const catQuestionsListFormArray: FormArray = this.visiteForm.get('catQuestionsList') as FormArray;
-
       item.forEach((element, i) => {
         let questionsArrayFB = []
 
         element.questions.forEach(quest => {
-          var question = this.visiteFB.group({
-            'id': [quest.id],
-            'libelle': [quest.libelle],
-            'pivot': this.visiteFB.group({
-              'note':[{value:null, disabled:false}, Validators.required],
-              'date_remise_conf':[{value:null, disabled:false}],
-              'observation':[{value:'', disabled:false}],
-              'action_to_visited': [0]
-            })
-          });
+          console.log(quest.id, this.inVisite(quest.id))
+          if(this.visite.id && this.inVisite(quest.id)){
+            var toPatch = this.visite.questions.filter(x=>x.id==quest.id)[0];
+            console.log(toPatch);
+            var question = this.visiteFB.group({
+              'id': [quest.id],
+              'libelle': [quest.libelle],
+              'pivot': this.visiteFB.group({
+                'note':[{value:toPatch.pivot.note, disabled:false}, Validators.required],
+                'date_remise_conf':[{value:this.dateEnToFrPipe.transform(toPatch.pivot.date_visite), disabled:false}],
+                'observation':[{value:toPatch.pivot.observation, disabled:false}],
+                'action_to_visited': [toPatch.pivot.action_to_visited]
+              })
+            });
+          }else{
+            var question = this.visiteFB.group({
+              'id': [quest.id],
+              'libelle': [quest.libelle],
+              'pivot': this.visiteFB.group({
+                'note':[{value:null, disabled:false}, Validators.required],
+                'date_remise_conf':[{value:null, disabled:false}],
+                'observation':[{value:'', disabled:false}],
+                'action_to_visited': [0]
+              })
+            });
+          }
 
          this.setPivotRules(question);
 
@@ -238,6 +293,8 @@ export class VisiteVehiculeAddComponent implements OnInit {
 
     }
   }
+
+ 
   setPivotRules(question){
     const pivot = question.get('pivot') as FormGroup;
     const note = pivot.get('note') as FormControl;

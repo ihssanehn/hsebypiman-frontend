@@ -143,4 +143,9 @@ export class VisitesVehiculeListComponent implements OnInit {
 		}
 		return this.visiteService.export(filters);
 	}
+
+	duplicateVs(visiteId){
+		this.router.navigate(['visites-securite/vehicules/add'], {queryParams:{visite_id:visiteId}})
+	}
+
 }

@@ -80,7 +80,8 @@ export class SearchMaterielFormComponent implements OnInit {
 
     var test: boolean = this.form.get('visitable_id').invalid 
       || this.form.get('type_id').invalid 
-      || this.form.get('salarie_id').invalid;
+      || this.form.get('salarie_id').invalid
+      || (this.model == 'VsVehicule' && this.form.get('vehicule_km').invalid)
 
     return test;
   }  

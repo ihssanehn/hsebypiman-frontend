@@ -201,15 +201,18 @@ export class VisiteVehiculeDetailComponent implements OnInit, OnDestroy {
 		return this.visiteForm.get('catQuestionsList').value.length > 0
 	}
 
-	editVisite(visiteId) {
-		this.router.navigate(['visites-securite/vehicules/edit', visiteId]);
-	}
-	deleteVisite(visiteId) {
-		Swal.fire({
-			title: this.translate.instant("NOTIF.FEATURE_NOT_IMPLEMENTED.TITLE"),
-			showConfirmButton: false,
-			timer: 1500
-		})
+	// editVisite(visiteId) {
+	// 	this.router.navigate(['visites-securite/vehicules/edit', visiteId]);
+	// }
+	// deleteVisite(visiteId) {
+	// 	Swal.fire({
+	// 		title: this.translate.instant("NOTIF.FEATURE_NOT_IMPLEMENTED.TITLE"),
+	// 		showConfirmButton: false,
+	// 		timer: 1500
+	// 	})
+	// }
+	duplicateVs(visiteId){
+		this.router.navigate(['visites-securite/vehicules/add'], {queryParams:{visite_id:visiteId}})
 	}
 
 	async onSubmit(event){
