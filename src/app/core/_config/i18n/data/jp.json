@@ -1791,6 +1791,11 @@
 			"SHORTTITLE": "Numéro d'identificatio",
 			"TITLE": "Numéro d'identification du véhicule"
 		},
+		"VEHICULE_KM": {
+			"LABEL": "Number of kilometers traveled",
+			"SHORTTITLE": "Kilometers traveled",
+			"TITLE": "Number of kilometers traveled"	
+		},
 		"ASSIGNED_ACTION": {
 			"TITLE": ""
 		},

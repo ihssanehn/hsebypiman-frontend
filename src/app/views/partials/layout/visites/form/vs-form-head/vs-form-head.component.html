@@ -112,7 +112,9 @@
                                 <!-- EPI -->
                                 <mat-form-field class="col-xl-3" *ngIf="origin == 'detail' && formHasValue('visitable_id')"
                                     matTooltip="" [matTooltipDisabled]="formHasValue('visitable_id')">
-                                    <mat-label>{{'OUTILLAGE.OUTIL.LABEL' | translate}}</mat-label>
+                                    
+                                    <mat-label>{{'VISITES.MATERIEL.LABEL' | translate}}</mat-label>
+
                                     <mat-select class="form-control" placeholder="" formControlName="visitable_id"
                                         [required]="isFieldRequired('visitable_id')">
                                         <mat-option *ngFor="let materiel of materiels" [value]="materiel.id">
@@ -155,6 +157,17 @@
                                         <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
                                     </mat-error>
                                 </mat-form-field> -->
+                                
+                                <mat-form-field class="col-xl-3 " *ngIf="model=='VsVehicule'" floatLabel="always" appearance="none">
+                                    <mat-label>{{'VISITES.VEHICULE_KM.LABEL' | translate}}</mat-label>
+                                    <input matInput class="form-control text-right pr-4" type="text" formControlName="vehicule_km" mask="separator" [required]="isFieldRequired('vehicule_km')">
+                                    <span matSuffix>Km</span>
+                                    <mat-error *ngIf="isControlHasError('type_id','required')">
+                                        <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                                    </mat-error>
+                                </mat-form-field>
+
+                                <!-- VISITE EXTERNE/INTERNE -->
                                 <mat-form-field class="col-xl-3 text-center" floatLabel="always" appearance="none" *ngIf="model != 'VsChantier'">
                                     <mat-slide-toggle formControlName="is_externe" [checked]="isExterne()" (change)="toggleExterne($event.checked)">
                                         <span class="slider-label">{{'VISITES.EXTERNAL_VISIT.TITLE' | translate}}</span>

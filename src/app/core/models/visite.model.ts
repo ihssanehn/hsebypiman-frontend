@@ -131,6 +131,7 @@ export class VisiteVehicule {
     signatureRespHse?:Signature;
     img_canvas?: string;
     photos?: Array<Document>
+    vehicule_km?: Number;
 }
 
 export class Visite {

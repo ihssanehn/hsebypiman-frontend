@@ -1791,6 +1791,11 @@
 			"SHORTTITLE": "Numéro d'identification",
 			"TITLE": "Numéro d'identification du véhicule"
 		},
+		"VEHICULE_KM": {
+			"LABEL": "Kilométrage du véhicule",
+			"SHORTTITLE": "Kilométrage",
+			"TITLE": "Kilométrage du véhicule"	
+		},
 		"ASSIGNED_ACTION": {
 			"TITLE": "Action attribuée à la personne visité"
 		},

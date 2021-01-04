@@ -118,6 +118,7 @@ export class VisiteVehiculeDetailComponent implements OnInit, OnDestroy {
 			'type_id': [{value:null, disabled:true}, Validators.required],
 			'catQuestionsList' : this.visiteFB.array([]),
 			'is_validate_resp_hse': [{value:null, disabled:true}],
+			'vehicule_km': [{value:null, disabled:true}],
 			'signature_redacteur': this.visiteFB.group({
 				'date':[{value:null, disabled:true}, Validators.required],
 				'signature': [{value:null, disabled:true}, Validators.required]

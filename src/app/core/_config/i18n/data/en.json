@@ -1791,6 +1791,11 @@
 			"SHORTTITLE": "ID number",
 			"TITLE": "Vehicle identification number"
 		},
+		"VEHICULE_KM": {
+			"LABEL": "Number of kilometers traveled",
+			"SHORTTITLE": "Kilometers traveled",
+			"TITLE": "Number of kilometers traveled"	
+		},
 		"ASSIGNED_ACTION": {
 			"TITLE": "Action assigned to the person visited"
 		},

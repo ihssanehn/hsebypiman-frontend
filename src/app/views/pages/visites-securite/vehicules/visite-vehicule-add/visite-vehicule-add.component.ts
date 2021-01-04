@@ -76,6 +76,7 @@ export class VisiteVehiculeAddComponent implements OnInit {
       'type_id': [null, Validators.required],
       'questions': this.visiteFB.array([]),
       'catQuestionsList' : this.visiteFB.array([]),
+      'vehicule_km': [null, Validators.required],
       'signature_redacteur': this.visiteFB.group({
         'date':[null, Validators.required],
         'signature': [null, Validators.required]
@@ -118,6 +119,7 @@ export class VisiteVehiculeAddComponent implements OnInit {
   }
   async onUserSelected(form){
     this.visiteForm.patchValue(form);
+    console.log(this.visiteForm.get('vehicule_km').value);
     this.displayQuestions();
   }
 
