@@ -64,8 +64,8 @@ export class VisiteVehiculeAddComponent implements OnInit {
   
   createForm() {
 		this.visiteForm = this.visiteFB.group({
-      'salarie_id': [{value:null, disabled:false}, Validators.required],
-      'visitable_id': [{value:null, disabled:true}, Validators.required],
+      'salarie_id': [{value:null, disabled:false}],
+      'visitable_id': [{value:null, disabled:false}, Validators.required],
       'is_externe' : [{value : 0, disabled : false},Validators.required],
       //'entreprise_id': [{value:null, disabled:false}, Validators.required],
       'redacteur_id': [{value:this.currentUser.id, disabled:true}, Validators.required],
@@ -95,15 +95,15 @@ export class VisiteVehiculeAddComponent implements OnInit {
   }
 
    setDynamicForm(){
-    this.visiteForm.get('salarie_id').valueChanges.subscribe(salarie_id=>{
+    // this.visiteForm.get('salarie_id').valueChanges.subscribe(salarie_id=>{
       
-      this.visiteForm.get('visitable_id').setValue(null);
-      if(salarie_id){
-        this.visiteForm.get('visitable_id').enable();
-      }else{
-        this.visiteForm.get('visitable_id').disable();
-      }
-    })
+    //   this.visiteForm.get('visitable_id').setValue(null);
+    //   if(salarie_id){
+    //     this.visiteForm.get('visitable_id').enable();
+    //   }else{
+    //     this.visiteForm.get('visitable_id').disable();
+    //   }
+    // })
 
     // this.visiteForm.get('is_externe').valueChanges.subscribe(is_externe=>{
     //   if(is_externe){

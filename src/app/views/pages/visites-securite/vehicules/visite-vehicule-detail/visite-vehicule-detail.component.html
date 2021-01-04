@@ -18,21 +18,21 @@
 				</div>
 			</div>
 		</div>
-		<tf-add-vehicule-form [data]="visite.visitable_id" origin="detail" ></tf-add-vehicule-form>
+		<tf-add-vehicule-form [data]="visite.materiel.numero_serie" origin="detail" ></tf-add-vehicule-form>
 		<div class="tf-divider" *ngIf="visiteForm.get('visitable_id').value">
 			<span></span>
 		</div>
 		<tf-vs-form-head [visiteForm]="visiteForm" [data]="visite" [origin]="'detail'" [model]="'VsVehicule'" *ngIf="visiteForm.get('visitable_id').value"></tf-vs-form-head>
 	</tf-portlet>
-	<mat-accordion class="headers-align" *ngIf="images">
+	<mat-accordion class="headers-align" *ngIf="images.length > 0">
 		<mat-expansion-panel [expanded]="true" [disabled]="true">
 			<mat-expansion-panel-header>
 				<mat-panel-title>
-					<div class="tf-heading tf-heading--md">| {{'VISITE.VEHICLE_CONFORMITY' | translate}}</div>
+					<div class="tf-heading tf-heading--md">| {{'VISITES.VEHICLE_CONFORMITY.TITLE' | translate}}</div>
 				</mat-panel-title>
 			</mat-expansion-panel-header>
 
-			<vs-vehicule-image-carousel *ngIf="images" [images]="visite?.photos" ></vs-vehicule-image-carousel>
+			<vs-vehicule-image-carousel *ngIf="images.length > 0" [images]="visite?.photos" ></vs-vehicule-image-carousel>
 		</mat-expansion-panel>
 	</mat-accordion>
 	

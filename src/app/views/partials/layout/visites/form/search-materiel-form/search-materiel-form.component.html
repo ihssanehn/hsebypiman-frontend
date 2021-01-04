@@ -55,12 +55,17 @@
                                 </mat-form-field>
                     
                                 <!-- MATERIEL -->
-                                <mat-form-field class="col-xl-3" [matTooltipDisabled]="materiels.length > 0" matTooltip="{{'VISITES.NOTIF.NO_MATERIEL_ASSOCIATED_TO_EMPLOYEE.TITLE' | translate}}">
+                                <mat-form-field class="col-xl-3" [ngClass]="{'order-first' :  model == 'VsVehicule'}" [matTooltipDisabled]="materiels.length > 0" matTooltip="{{'VISITES.NOTIF.NO_MATERIEL_ASSOCIATED_TO_EMPLOYEE.TITLE' | translate}}">
                                     <mat-label>{{'VISITES.MATERIEL.LABEL' | translate}}</mat-label>
                                     <mat-select class="form-control" placeholder="" formControlName="visitable_id"
                                         [required]="isFieldRequired('visitable_id')">
                                         <mat-option *ngFor="let materiel of materiels" [value]="materiel.id">
-                                            {{ materiel.libelle+' - '+materiel.categorie.libelle }}
+                                            <span *ngIf="model == 'VsVehicule'">
+                                                {{materiel.numero_serie+' - '+materiel.libelle+' - '+materiel.categorie.libelle}}
+                                            </span>
+                                            <span *ngIf="model != 'VsVehicule'">
+                                                {{ materiel.libelle+' - '+materiel.categorie.libelle }}
+                                            </span>
                                         </mat-option>
                                     </mat-select>
                                     <mat-error *ngIf="isControlHasError('visitable_id','required')">

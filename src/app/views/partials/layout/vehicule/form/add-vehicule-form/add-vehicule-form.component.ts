@@ -53,6 +53,7 @@ export class AddVehiculeFormComponent implements OnInit {
         this._data.subscribe(x => {
           if(this.data)
             this.vehicule = this.data;
+          console.log(this.vehicule)
         });
         break;
     }

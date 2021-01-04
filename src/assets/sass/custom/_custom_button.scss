@@ -1,6 +1,9 @@
 .pointer{
   cursor: pointer;
 }
+button:disabled{
+  cursor: not-allowed;
+}
 // MatSuccess
 .mat-button.mat-success,
 .mat-stroked-button.mat-success {
