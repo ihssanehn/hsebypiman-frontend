@@ -249,7 +249,6 @@ export class VisiteVehiculeAddComponent implements OnInit {
         let questionsArrayFB = []
 
         element.questions.forEach(quest => {
-          console.log(quest.id, this.inVisite(quest.id))
           if(this.visite.id && this.inVisite(quest.id)){
             var toPatch = this.visite.questions.filter(x=>x.id==quest.id)[0];
             console.log(toPatch);
@@ -260,7 +259,7 @@ export class VisiteVehiculeAddComponent implements OnInit {
                 'note':[{value:toPatch.pivot.note, disabled:false}, Validators.required],
                 'date_remise_conf':[{value:this.dateEnToFrPipe.transform(toPatch.pivot.date_visite), disabled:false}],
                 'observation':[{value:toPatch.pivot.observation, disabled:false}],
-                'action_to_visited': [toPatch.pivot.action_to_visited]
+                'action_to_visited': [{value: toPatch.pivot.action_to_visited, disabled:true}]
               })
             });
           }else{
@@ -271,7 +270,7 @@ export class VisiteVehiculeAddComponent implements OnInit {
                 'note':[{value:null, disabled:false}, Validators.required],
                 'date_remise_conf':[{value:null, disabled:false}],
                 'observation':[{value:'', disabled:false}],
-                'action_to_visited': [0]
+                'action_to_visited': [{value: 0, disabled: true}]
               })
             });
           }
@@ -300,11 +299,24 @@ export class VisiteVehiculeAddComponent implements OnInit {
     const note = pivot.get('note') as FormControl;
     const date_remise_conf = pivot.get('date_remise_conf') as FormControl;
     const action_to_visited = pivot.get('action_to_visited') as FormControl;
+    const salarie_id = this.visiteForm.get('salarie_id');
+
+    salarie_id.valueChanges.subscribe(salarie_id=>{
+      if(salarie_id){
+        if(note.value ==2){
+          action_to_visited.enable();
+        }
+      }else{
+        action_to_visited.disable({emitEvent:false, onlySelf:true});
+      }
+    });
 
     note.valueChanges.subscribe(note=>{
       if(note == 2){
         date_remise_conf.enable({emitEvent:false, onlySelf:true})
-        action_to_visited.enable({emitEvent:false, onlySelf:true})
+        if(salarie_id.value){
+          action_to_visited.enable({emitEvent:false, onlySelf:true})
+        }
         this.visiteForm.get('presence_non_conformite').setValue(true);
       }else{
         date_remise_conf.disable({emitEvent:false, onlySelf:true})
@@ -315,7 +327,7 @@ export class VisiteVehiculeAddComponent implements OnInit {
         if(nbr_ko == 0 && this.visiteForm.get('presence_non_conformite').value == true){
           this.visiteForm.get('presence_non_conformite').setValue(false);
         }
-      }
+      } 
     })
 
     date_remise_conf.valueChanges.subscribe(date=>{
@@ -323,7 +335,9 @@ export class VisiteVehiculeAddComponent implements OnInit {
         action_to_visited.disable({emitEvent:false, onlySelf:true})
         action_to_visited.setValue(0);
       }else{
-        action_to_visited.enable({emitEvent:false, onlySelf:true})
+        if(salarie_id.value){
+          action_to_visited.enable({emitEvent:false, onlySelf:true})
+        }
       }
     })
     
