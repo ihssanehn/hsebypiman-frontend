@@ -51,7 +51,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy  {
 		this.flashOnTop = res.result.data['top'];
 		this.oldFlashList = res.result.data['others'];
 		this.cdr.markForCheck();
-		console.log(this.flashOnTop, this.oldFlashList);
 	}
 
 	getMaterielParams(){

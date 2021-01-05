@@ -236,7 +236,6 @@ export class VssDashComponent implements OnInit, AfterViewInit, OnDestroy {
 					this.echartsVsCat.setOption(this.vsByCatOptions);
 					this.echartsVsCat.hideLoading();
 					
-					console.log(this.stats.ncGroupedByCat, this.stats.vsGroupedByCat);
 					// Evolution Grouped
 					this.EvolCatOptions.series = [];
 					if(this.stats.evolutionByCat){

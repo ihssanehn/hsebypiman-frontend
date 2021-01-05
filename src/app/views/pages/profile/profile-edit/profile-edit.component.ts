@@ -120,7 +120,6 @@ export class ProfileEditComponent implements OnInit, OnDestroy {
 		})
 		this.userForm.patchValue(this.user$);
 
-		console.log(this.userForm);
 	  this.loaded = true;
 		this.cdr.markForCheck();
   }
@@ -161,8 +160,6 @@ export class ProfileEditComponent implements OnInit, OnDestroy {
 			newPass: [{value:'', disabled:false}, Validators.required],
 			confirmNewPass: [{value:'', disabled:false}, Validators.required],
 	  });
-	  
-	 console.log(this.userForm) 
 	}
  
   

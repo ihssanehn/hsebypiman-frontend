@@ -251,7 +251,6 @@ export class VisiteVehiculeAddComponent implements OnInit {
         element.questions.forEach(quest => {
           if(this.visite.id && this.inVisite(quest.id)){
             var toPatch = this.visite.questions.filter(x=>x.id==quest.id)[0];
-            console.log(toPatch);
             var question = this.visiteFB.group({
               'id': [quest.id],
               'libelle': [quest.libelle],

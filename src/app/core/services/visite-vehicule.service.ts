@@ -6,7 +6,7 @@ import { QueryParamsModel, QueryResultsModel } from '../_base/crud';
 import { environment } from '@env/environment';
 import { HttpService } from '@app/core/services/http-service';
 import { NgxPermissionsService } from 'ngx-permissions';
-import { VisiteVehicule } from '@app/core/models/visite.model';
+import { VisiteVehicule, Document } from '@app/core/models';
 import { JsonResponse } from '@app/core/_base/layout/models/jsonResponse.model';
 import { Paginate } from '@app/core/_base/layout/models/paginate.model';
 import { Router } from '@angular/router';
@@ -30,6 +30,9 @@ export class VisiteVehiculeService extends HttpService{
 	}
     get(visite_id): Observable<JsonResponse<VisiteVehicule>>{
         return this.http.get<JsonResponse<VisiteVehicule>>(this.baseUrl+'/'+visite_id);
+    }
+    getPhotos(visite_id): Observable<JsonResponse<Document[]>>{
+        return this.http.get<JsonResponse<Document[]>>(this.baseUrl+'/'+visite_id+'/photos');
     }
     create(visite){
         return this.http.post(this.baseUrl+'/'+'create', visite);

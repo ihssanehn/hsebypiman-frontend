@@ -42,7 +42,6 @@ export class UserService extends HttpService{
 	}
 
 	updateUser(_user: User){
-    console.log(_user);
 		return this.http.put<any>(`${this.baseUrl}/` + _user.id, _user);
 	}
 

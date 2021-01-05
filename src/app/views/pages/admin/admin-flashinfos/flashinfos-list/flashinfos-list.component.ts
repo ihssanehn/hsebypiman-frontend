@@ -90,7 +90,6 @@ export class FlashInfosListComponent implements OnInit {
 	}
 
 	viewFlashInfo(flashinfoId) {
-		console.log(flashinfoId)
 		this.router.navigateByUrl('admin/flash-infos/detail/' + flashinfoId);
 	}
 	editFlashInfo(flashinfoId) {

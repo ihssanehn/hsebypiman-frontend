@@ -291,7 +291,6 @@ export class VisiteVehiculeDetailComponent implements OnInit, OnDestroy {
 			.then((res) => {
 				this.formDocloading = false;
 				this.errors = false; 
-				this.cdr.markForCheck();
 				
 				Swal.fire({
 					icon: 'success',
@@ -301,21 +300,10 @@ export class VisiteVehiculeDetailComponent implements OnInit, OnDestroy {
 						
 				}).then(() => {
 					this.uploader.clearQueue();
-					this.visiteService.get(this.visite.id).pipe(
-						tap(res => {
-							var _visite = res.result.data
-							this.parseVisitesDate(_visite, 'EnToFr');
-							this.visiteForm.patchValue(_visite);
-							this.patchQuestionsForm(_visite);
-							this.patchImages(_visite);
-							this.catQuestionsList = res.result.data.catQuestionsList;
-						})
-					).subscribe(async res => {
-						var _visite = res.result.data;
-						this.visite = _visite;
-						this.loaded = true;
+					this.visiteService.getPhotos(this.visite.id).toPromise().then(res=>{
+						this.visite.photos = res.result.data;
 						this.cdr.markForCheck();
-					});
+					})
 				});
 			})
 			.catch(err =>{ 

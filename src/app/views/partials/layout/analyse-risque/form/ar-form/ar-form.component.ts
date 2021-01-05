@@ -202,7 +202,6 @@ export class ArFormComponent implements OnInit {
     }else{
       console.log(event.target);
     }
-
     console.log(formArray.value);
   }
 

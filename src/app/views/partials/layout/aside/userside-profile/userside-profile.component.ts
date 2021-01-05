@@ -43,7 +43,7 @@ export class UserSideProfileComponent implements OnInit {
 		private ngxRolesService: NgxRolesService,
 
 	) {
-		this.authService.getCurrentUser().subscribe(x=> {this.user = x; console.log("test")});
+		this.authService.getCurrentUser().subscribe(x=> {this.user = x;});
 		this.ngxRolesService.roles$.subscribe((event) => {this.cdr.markForCheck();});
 	}
 

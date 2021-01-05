@@ -91,7 +91,6 @@ export class UsersListComponent implements OnInit {
 	}
 
 	viewUser(userId) {
-		console.log(userId)
 		this.router.navigateByUrl('admin/users/detail/' + userId);
 	}
 	editUser(userId) {

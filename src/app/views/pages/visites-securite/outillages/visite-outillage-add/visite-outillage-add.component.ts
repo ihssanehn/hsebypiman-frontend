@@ -184,7 +184,6 @@ export class VisiteOutillageAddComponent implements OnInit {
 
     await this.getQuestions();
     this.displayQuestions();
-    console.log(this.questionsDisplayed);
   }
 
 

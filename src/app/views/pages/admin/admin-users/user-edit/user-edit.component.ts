@@ -168,7 +168,6 @@ export class UserEditComponent implements OnInit, OnDestroy {
 
   patchForm(item){
     this.userForm.patchValue(item);
-    console.log(this.userForm);
   }
 
       

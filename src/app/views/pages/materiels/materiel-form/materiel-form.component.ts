@@ -82,7 +82,6 @@ export class MaterielFormComponent implements OnInit {
   categorieChanged(data){
     if(data != this.materielForm.get('categorie_id').value){
       this.materielForm.get('categorie_id').setValue(data);
-      console.log(this.materielForm.value);
     }
   }
 

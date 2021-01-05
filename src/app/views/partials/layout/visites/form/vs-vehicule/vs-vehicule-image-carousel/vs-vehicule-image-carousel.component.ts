@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, ChangeDetectionStrategy, ChangeDetectorRef, SimpleChanges } from '@angular/core';
 import { Document } from '@app/core/models';
 import { DocumentService } from '@app/core/services';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -8,22 +8,27 @@ import { ImageLightboxContentDialogComponent } from '@app/views/partials/layout/
 @Component({
   selector: 'vs-vehicule-image-carousel',
   templateUrl: './vs-vehicule-image-carousel.component.html',
-  styleUrls: ['./vs-vehicule-image-carousel.component.scss']
+  styleUrls: ['./vs-vehicule-image-carousel.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class VsVehiculeImageCarouselComponent implements OnChanges {
 
   @Input() images: Array<Document>;
 
   imageObject: Array<object> = null;
+  imagesLoaded:boolean = false;
   slideIndex = 0;
 
   constructor(
     private documentService: DocumentService,
     public _sanitizer: DomSanitizer,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public cdr: ChangeDetectorRef,
+
   ) { }
 
-  ngOnChanges() {
+  
+  ngOnChanges(changes: SimpleChanges){
     this.loadImages();
   }
 
@@ -33,6 +38,9 @@ export class VsVehiculeImageCarouselComponent implements OnChanges {
 
   ngAfterViewInit() {
     this.currentSlide(1);
+  }
+  ngAfterViewChecked() {
+    this.currentSlide(this.slideIndex);
   }
 
   mapImages(image: any){
@@ -74,14 +82,13 @@ export class VsVehiculeImageCarouselComponent implements OnChanges {
     let i;
 
     const slides = document.getElementsByClassName("img-carousel") as HTMLCollectionOf<HTMLElement>;
-
-    if (n > slides.length) {this.slideIndex = 1}
-    if (n < 1) {this.slideIndex = slides.length}
-
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
+    if(slides && slides.length > 0){
+      if (n > slides.length) {this.slideIndex = 1}
+      if (n < 1) {this.slideIndex = slides.length}
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slides[this.slideIndex-1].style.display = "block";
     }
-
-    slides[this.slideIndex-1].style.display = "block";
   }
 }

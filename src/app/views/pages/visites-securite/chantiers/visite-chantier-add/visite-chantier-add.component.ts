@@ -65,7 +65,6 @@ export class VisiteChantierAddComponent implements OnInit {
 
   
   createForm() {
-    console.log(this.currentUser)
 		this.visiteForm = this.visiteFB.group({
       'chantier_id': ['', Validators.required],
       'visitable_id': ['', Validators.required],
