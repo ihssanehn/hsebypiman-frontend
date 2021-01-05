@@ -28,10 +28,8 @@ export class ShowDocumentModalComponent implements OnInit{
   ngOnInit() {
     if(this.image_extensions.indexOf(this.document.extension.toLowerCase()) != -1){
       this.document.image = this.safe.transform(this.documentService.readFile(this.document.id), 'resourceUrl');
-      console.log('image')
     }else if(this.document.extension.toLowerCase() == 'pdf'){
       this.document.pdf = this.safe.transform(this.documentService.readFile(this.document.id), 'resourceUrl');
-      console.log('pdf')
     }
     else if(['doc', 'docx', 'xls', 'xlsx'].indexOf(this.document.extension.toLowerCase()) != -1 ){
       this.document.doc = this.documentService.readFile(this.document.id);

@@ -34,6 +34,7 @@ import {
 	MatTooltipModule,
 	MatExpansionModule
 } from '@angular/material';
+import { FileUploadModule } from 'ng2-file-upload';
 // NgBootstrap
 import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule, NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // Perfect Scrollbar
@@ -159,6 +160,7 @@ import { DashActionComponent } from './layout/dashboard/dash-action/dash-action.
 import { DashMaterielComponent } from './layout/dashboard/dash-materiel/dash-materiel.component';
 import { DashEntrepriseComponent } from './layout/dashboard/dash-entreprise/dash-entreprise.component';
 import { ShowFlashInfoModalComponent } from './layout/flash-infos/show-flash-info-modal/show-flash-info-modal.component';
+import { AddDocModalComponent } from './layout/modal/add-doc-modal/add-doc-modal.component';
 
 @NgModule({
 	declarations: [
@@ -228,6 +230,7 @@ import { ShowFlashInfoModalComponent } from './layout/flash-infos/show-flash-inf
 		VsVehiculeImageCarouselComponent,
 		ImageLightboxContentDialogComponent,
 		ShowFlashInfoModalComponent,
+		AddDocModalComponent,
 		ShowDocumentModalComponent,
 		SalarieScoreComponent,
 		SalariePortletComponent,
@@ -331,6 +334,7 @@ import { ShowFlashInfoModalComponent } from './layout/flash-infos/show-flash-inf
 		VsVehiculeImageCarouselComponent,
 		ImageLightboxContentDialogComponent,
 		ShowFlashInfoModalComponent,
+		AddDocModalComponent,
 		ShowDocumentModalComponent,
 		SalarieScoreComponent,
 		SalariePortletComponent,
@@ -423,12 +427,14 @@ import { ShowFlashInfoModalComponent } from './layout/flash-infos/show-flash-inf
 		NgbModule,
 		DragDropModule,
 		MatExpansionModule,
+		FileUploadModule,
 		NgxPermissionsModule.forChild(),
 	],
 	entryComponents: [
 		AdminAddModalComponent,
 		PretModalComponent,
 		ShowFlashInfoModalComponent,
+		AddDocModalComponent
 	],
 })
 export class PartialsModule {

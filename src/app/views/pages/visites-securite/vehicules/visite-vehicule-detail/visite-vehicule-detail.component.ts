@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from "@angular/forms";
+import {FileUploader} from "ng2-file-upload";
 import { Location } from '@angular/common';
 import moment from 'moment';
 import { Subscription } from "rxjs";
@@ -15,6 +16,8 @@ import { extractErrorMessagesFromErrorResponse } from '@app/core/_base/crud';
 import { FormStatus } from '@app/core/_base/crud/models/form-status';
 import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
 import { TranslateService } from '@ngx-translate/core';
+import { AddDocModalComponent } from '@app/views/partials/layout/modal/add-doc-modal/add-doc-modal.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -40,12 +43,20 @@ export class VisiteVehiculeDetailComponent implements OnInit, OnDestroy {
 	questionsDisplayed: boolean = false;
 	private subscriptions: Subscription[] = [];
 	images: Array<Document>;
+	formDocStatus = new FormStatus()
+	formDocloading: Boolean = false;
+	errors: any;
+
+	public uploader:FileUploader = new FileUploader({
+    isHTML5: true
+  });
 
 	// Private properties
 
 	constructor(
 		private activatedRoute: ActivatedRoute,
 		private router: Router,
+		private modalService: NgbModal,
 		private visiteFB: FormBuilder,
 		// private notificationService: NzNotificationService,
 		private visiteService: VisiteVehiculeService,
@@ -257,5 +268,78 @@ export class VisiteVehiculeDetailComponent implements OnInit, OnDestroy {
 		}
 	}
 
+	addDoc(doc_id){
+		
+		const modalRef = this.modalService.open(AddDocModalComponent, {size: 'lg',scrollable: true,centered : true});
+		modalRef.componentInstance.uploader = this.uploader;
+		modalRef.result.then( payload => this.saveDocuments(payload), payload => this.saveDocuments(payload) );
+	}
 
+	saveDocuments(payloads){
+
+		this.formDocloading = true;
+		let formData = new FormData();
+		this.formStatus.onFormSubmitting();
+
+		for (let j = 0; j < this.uploader.queue.length; j++) {
+			let fileItem = this.uploader.queue[j]._file;
+			formData.append('photos[]', fileItem);
+		}
+
+		this.visiteService.attachPhotos(this.visite.id, formData)
+			.toPromise()
+			.then((res) => {
+				this.formDocloading = false;
+				this.errors = false; 
+				this.cdr.markForCheck();
+				
+				Swal.fire({
+					icon: 'success',
+					title: this.translate.instant("VISITES.NOTIF.DOCS_ADDED.TITLE"),
+					showConfirmButton: false,
+					timer: 1500,
+						
+				}).then(() => {
+					this.uploader.clearQueue();
+					this.visiteService.get(this.visite.id).pipe(
+						tap(res => {
+							var _visite = res.result.data
+							this.parseVisitesDate(_visite, 'EnToFr');
+							this.visiteForm.patchValue(_visite);
+							this.patchQuestionsForm(_visite);
+							this.patchImages(_visite);
+							this.catQuestionsList = res.result.data.catQuestionsList;
+						})
+					).subscribe(async res => {
+						var _visite = res.result.data;
+						this.visite = _visite;
+						this.loaded = true;
+						this.cdr.markForCheck();
+					});
+				});
+			})
+			.catch(err =>{ 
+				this.formDocloading = false;
+
+				Swal.fire({
+					icon: 'error',
+					title: this.translate.instant("NOTIF.INCOMPLETE_FORM.TITLE"),
+					showConfirmButton: false,
+					timer: 1500
+				});
+
+				if(err.status === 422){
+					var messages = extractErrorMessagesFromErrorResponse(err);
+					this.formStatus.onFormSubmitResponse({success: false, messages: messages});
+					this.cdr.markForCheck();
+				}
+
+			});
+			
+		this.cdr.markForCheck();
+	} catch (error) {
+		this.formDocloading = false;
+		console.error(error);
+		throw error;
+	}
 }

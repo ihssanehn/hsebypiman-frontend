@@ -1,6 +1,8 @@
 {
 	"ACTION": {
 		"ADD": "添加",
+		"ADD_DOCUMENT": "Add a document",
+		"ADD_DOCUMENTS": "Add documents",
 		"ADD_SIGNER": "添加签名者",
 		"CANCEL": "取消",
 		"CLEAR": "空的",
@@ -1901,6 +1903,9 @@
 			},
 			"CANNOT_SELECT_ENTREPRISE": {
 				"TITLE": ""
+			},
+			"DOCS_ADDED": {
+				"TITLE": "Documents successfully added"
 			},
 			"ELEMENT_NOT_DELETED": {
 				"CHANTIER": {

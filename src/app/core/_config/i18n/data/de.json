@@ -1,6 +1,8 @@
 {
 	"ACTION": {
 		"ADD": "Hinzufügen",
+		"ADD_DOCUMENT": "Add a document",
+		"ADD_DOCUMENTS": "Add documents",
 		"ADD_SIGNER": "Fügen Sie einen Unterzeichner hinzu",
 		"CANCEL": "Stornieren",
 		"CLEAR": "Leer",
@@ -1901,6 +1903,9 @@
 			},
 			"CANNOT_SELECT_ENTREPRISE": {
 				"TITLE": ""
+			},
+			"DOCS_ADDED": {
+				"TITLE": "Documents successfully added"
 			},
 			"ELEMENT_NOT_DELETED": {
 				"CHANTIER": {

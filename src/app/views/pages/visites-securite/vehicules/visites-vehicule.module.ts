@@ -26,6 +26,7 @@ import { VisiteVehiculeDetailComponent } from './visite-vehicule-detail/visite-v
 import { VisiteVehiculeFiltersComponent } from './visite-vehicule-filters/visite-vehicule-filters.component';
 import { VisiteVehiculeAdminComponent } from './visite-vehicule-admin/visite-vehicule-admin.component';
 import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { FileUploadModule } from 'ng2-file-upload';
 
 
 // Material
@@ -153,6 +154,7 @@ const routes: Routes = [
 		NgbTabsetModule,
 		NgbTooltipModule,
 		NgxMaskModule,
+		FileUploadModule
 	],
 	providers: [
 		InterceptService,

@@ -1,6 +1,8 @@
 {
 	"ACTION": {
 		"ADD": "Ajouter",
+		"ADD_DOCUMENT": "Ajouter un document",
+		"ADD_DOCUMENTS": "Ajouter des documents",
 		"ADD_SIGNER": "Ajouter un signataire",
 		"CANCEL": "Annuler",
 		"CLEAR": "Vider",
@@ -1901,6 +1903,9 @@
 			},
 			"CANNOT_SELECT_ENTREPRISE": {
 				"TITLE": "Vous ne pouvez pas sélectionner une entreprise si un salarié est déjà sélectionné"
+			},
+			"DOCS_ADDED": {
+				"TITLE": "Les documents ont bien été ajoutés"
 			},
 			"ELEMENT_NOT_DELETED": {
 				"CHANTIER": {

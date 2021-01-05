@@ -1,6 +1,8 @@
 {
 	"ACTION": {
 		"ADD": "Añadir",
+		"ADD_DOCUMENT": "Agregar un documento",		
+		"ADD_DOCUMENTS": "Agregar documentos",		
 		"ADD_SIGNER": "Agregar un firmante",
 		"CANCEL": "Anular",
 		"CLEAR": "vacía",
@@ -1901,6 +1903,9 @@
 			},
 			"CANNOT_SELECT_ENTREPRISE": {
 				"TITLE": ""
+			},
+			"DOCS_ADDED": {
+				"TITLE": "Documents successfully added"
 			},
 			"ELEMENT_NOT_DELETED": {
 				"CHANTIER": {

@@ -15,6 +15,9 @@
 					<button mat-icon-button color="info" matTooltip="{{'ACTION.DUPLICATE' | translate}}" (click)="duplicateVs(visite.id)" *ngxPermissionsOnly="['visite_securite_canAdd']">
 						<mat-icon>filter_none</mat-icon>
 					</button>
+					<button mat-icon-button color="primary" matTooltip="{{'ACTION.ADD_DOCUMENT' | translate}}" (click)="addDoc(visite.id)" *ngxPermissionsOnly="['visite_securite_canUpdate']">
+						<mat-icon>cloud_upload</mat-icon>
+					</button>
 				  <!-- <button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteVisite(visite.id)" *ngxPermissionsOnly="['visite_securite_canArchieve']">
 					<mat-icon>delete</mat-icon>
 				  </button> -->

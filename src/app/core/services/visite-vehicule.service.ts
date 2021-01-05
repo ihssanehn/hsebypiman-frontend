@@ -40,7 +40,13 @@ export class VisiteVehiculeService extends HttpService{
     delete(visite_id){
         return this.http.delete(this.baseUrl+'/'+visite_id);
     }
-    
+
+    attachPhotos(visite_id, datas){
+        const httpHeaders = new HttpHeaders();
+		httpHeaders.set("Content-Type", "multipart/form-data");
+        return this.http.post(this.baseUrl+'/'+visite_id+'/photos/add', datas, { headers: httpHeaders });
+    }
+
     export(filters){
         var queryString = Object.keys(filters).map(key => key + '=' + filters[key]).join('&');
         var url = this.baseUrl+'/export?'+queryString+'&token='+localStorage.getItem(environment.authTokenKey);
