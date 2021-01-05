@@ -180,7 +180,6 @@ export class SuiviHseGoalsComponent implements OnInit {
     const modalRef = this.modalService.open(SuiviHsePeriodsAddComponent, {size: 'lg',scrollable: true,centered : true});
     modalRef.result.then((result) => {
       if (result) {
-        console.log(result);
         this.selectedPeriodId = result.id;
         this.getPeriods();
         this.getCatMetrics();

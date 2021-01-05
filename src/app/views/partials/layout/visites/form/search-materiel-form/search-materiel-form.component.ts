@@ -38,7 +38,6 @@ export class SearchMaterielFormComponent implements OnInit {
   async ngOnInit() {
     if(this.model != 'VsVehicule'){
       this.form.get('salarie_id').valueChanges.subscribe(salarie_id=>{
-        console.log('here', salarie_id);
         this.getMateriel(salarie_id);
       });
     }else{

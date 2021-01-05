@@ -146,7 +146,6 @@ export class RemonteeFormComponent implements OnInit {
       if(error == true){
         this.uploader.queue = this.uploader.queue.filter(x=>x.file.name != droppedFile.name);
       }
-      console.log(droppedFile);
     }
 
   }

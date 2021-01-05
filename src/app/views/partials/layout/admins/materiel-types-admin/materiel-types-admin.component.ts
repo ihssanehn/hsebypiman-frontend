@@ -71,7 +71,6 @@ export class MaterielTypesAdminComponent extends AdminTemplateComponent implemen
       var item = await this.parentService.get(id).toPromise();
       const index = this.list.findIndex(item => item.id === id);
       this.list[index]['children'] = item.children;
-      console.log(this.list);
       this.cdr.markForCheck();
     } catch (error) {
       console.error(error);
