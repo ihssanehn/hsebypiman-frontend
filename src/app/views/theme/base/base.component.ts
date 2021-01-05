@@ -96,7 +96,6 @@ export class BaseComponent implements OnInit, OnDestroy {
 			.pipe(filter(event => event instanceof NavigationEnd))
 			.subscribe(event => {
 				this.currentRouteUrl = this.router.url.split(/[?#]/)[0];
-				console.log(this.currentRouteUrl)
 				this.cdr.markForCheck();
 			});
 

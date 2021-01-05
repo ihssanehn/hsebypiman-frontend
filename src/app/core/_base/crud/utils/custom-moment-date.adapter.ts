@@ -13,7 +13,6 @@ export class CustomMomentDateAdapter extends MomentDateAdapter {
   
   parse(value, parseFormat) {
     if (value && typeof value == 'string') {
-      console.log(moment(value, parseFormat, this.locale, true));
       return moment(value, parseFormat, this.locale, true);
     }
     return value ? moment(value).locale(this.locale) : undefined;

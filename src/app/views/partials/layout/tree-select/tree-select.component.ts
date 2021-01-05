@@ -74,7 +74,6 @@ export class TreeSelectComponent implements OnInit {
     })
     if(this.fromId){
       let tree = this.retrieveItem(this.fromId);
-      console.log(tree);
       for (let i = 0; i < tree.length; i++) {
         const element = tree[i];
         this.addChild();

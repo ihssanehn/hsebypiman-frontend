@@ -23,13 +23,8 @@ export class CustomDateAdapter extends NativeDateAdapter {
       else {
         if (value.length == 8) {
           day = value.substring(0, 2);
-          console.log(day)
           month = value.substring(2, 4);
-          console.log(month)
           year = value.substring(4, 8);
-          console.log(year)
-          console.log(new Date(Number(year), Number(month), Number(day)));
-
         }            
       }
       if (isNaN(month) || isNaN(day) || isNaN(year)) {
@@ -47,7 +42,6 @@ export class CustomDateAdapter extends NativeDateAdapter {
 
   // retirar quando for feito o merge da data por mmalerba
   format(date: Date, displayFormat: Object): string {
-    console.log(displayFormat, date);
     if (displayFormat == "input") {
       let day = date.getDate();
       let month = date.getMonth() + 1;

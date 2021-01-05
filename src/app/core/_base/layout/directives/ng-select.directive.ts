@@ -156,7 +156,6 @@ export class NgSelectFormFieldControlDirective implements MatFormFieldControl < 
 				this.ngControl.valueAccessor = this;
 			}
 			this.ngControl.valueChanges.pipe(untilDestroyed(this)).subscribe(v => {
-				console.log(this);
 				this._value = v;
 				this.host.detectChanges();
 				this.stateChanges.next();
