@@ -47,7 +47,7 @@ export class VisiteVehiculeAdminComponent implements OnInit {
     if(payload){
       var ordre = this.types.length + 1;
       var _payload = {
-        model:'VsChantier',
+        model:'VsVehicule',
         ordre: ordre,
         code: 'OTHER',
         ...payload
