@@ -236,6 +236,10 @@ export class VisiteChantierDetailComponent implements OnInit, OnDestroy {
 		var so = questions.filter(x => x.pivot.note == 3).length
 		var total = questions.length;
 		return { 'ok': ok, 'ko': ko, 'so': so, 'ko_unsolved': ko_unsolved, 'ko_solved': ko_solved, 'total': total };
-	  }
+	}
+	
+	duplicateVs(visiteId){
+		this.router.navigate(['visites-securite/chantiers/add'], {queryParams:{visite_id:visiteId}})
+	}
 	
 }

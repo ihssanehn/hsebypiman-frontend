@@ -161,4 +161,8 @@ export class VisitesEpiListComponent implements OnInit {
 		}
 		return this.visiteService.export(filters);
 	}
+
+	duplicateVs(visiteId){
+		this.router.navigate(['visites-securite/epis/add'], {queryParams:{visite_id:visiteId}})
+	}
 }

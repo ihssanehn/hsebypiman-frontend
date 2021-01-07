@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef, Input, Sanitizer, Output } from '@angular/core';
+import { Component, OnInit, OnChanges, ChangeDetectorRef, Input, Sanitizer, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Chantier } from '@app/core/models';
 import { Observable, BehaviorSubject } from 'rxjs';
@@ -16,7 +16,7 @@ import {TranslateService} from '@ngx-translate/core';
   templateUrl: './search-chantier-form.component.html',
   styleUrls: ['./search-chantier-form.component.scss']
 })
-export class SearchChantierFormComponent implements OnInit {
+export class SearchChantierFormComponent implements OnChanges {
 
   @Input() form: FormGroup;
   @Input() parent: string;
@@ -53,19 +53,25 @@ export class SearchChantierFormComponent implements OnInit {
       'search',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/search.svg'));
   }
 
-  ngOnInit() {
-    this.initFilteredChantiers();
 
+  ngOnInit(){
+    this.initFilteredChantiers();
+  }
+  ngOnChanges() {
+    var tryTest = this.form.get('chantier').value;
+    console.log(tryTest);
     switch(this.origin){
       case 'add':
         if(this.form.get('chantier').value){
           this.chantier = this.form.get('chantier').value
           this.origin = 'edit';
+          console.log(this.chantier);
         }else if(this.form.get('chantier_id').value){
           this.getChantier(this.form.get('chantier_id').value);
           this.activatedRoute.queryParams
           .subscribe(params => {
             if(params.chantier_id){
+              console.log('pas de chantier');
               this.searchControl.setValue({id:params.chantier_id});
               this.searchForChantier();
             }

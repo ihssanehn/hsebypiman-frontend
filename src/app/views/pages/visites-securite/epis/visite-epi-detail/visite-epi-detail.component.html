@@ -12,9 +12,12 @@
 				  <mat-icon>more_vert</mat-icon>
 				</button>
 				<div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;" *ngxPermissionsOnly="['visite_securite_canArchieve']">
-				  <button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteVisite(visite.id)">
-					<mat-icon>delete</mat-icon>
-				  </button>
+					<button mat-icon-button color="info" matTooltip="{{'ACTION.DUPLICATE' | translate}}" (click)="duplicateVs(visite.id)" *ngxPermissionsOnly="['visite_securite_canAdd']">
+						<mat-icon>filter_none</mat-icon>
+					</button>
+				  <!-- <button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteVisite(visite.id)">
+						<mat-icon>delete</mat-icon>
+				  </button> -->
 				</div>
 			</div>
 		</div>

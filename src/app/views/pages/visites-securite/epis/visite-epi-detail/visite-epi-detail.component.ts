@@ -245,6 +245,8 @@ export class VisiteEpiDetailComponent implements OnInit, OnDestroy {
 		}
 	}
 
-
+	duplicateVs(visiteId){
+		this.router.navigate(['visites-securite/epis/add'], {queryParams:{visite_id:visiteId}})
+	}
 
 }

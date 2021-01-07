@@ -245,6 +245,8 @@ export class VisiteOutillageDetailComponent implements OnInit, OnDestroy {
 		}
 	}
 
-
+	duplicateVs(visiteId){
+		this.router.navigate(['visites-securite/outillages/add'], {queryParams:{visite_id:visiteId}})
+	}
 
 }

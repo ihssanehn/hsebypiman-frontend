@@ -145,4 +145,8 @@ export class VisitesChantierListComponent implements OnInit {
 		}
 		return this.visiteService.export(filters);
 	}
+
+	duplicateVs(visiteId){
+		this.router.navigate(['visites-securite/chantiers/add'], {queryParams:{visite_id:visiteId}})
+	}
 }

@@ -7,6 +7,8 @@ export class VisiteChantier {
     code?:String;
     salarie_id?:Number;
     entreprise_id?:Number;
+    interimaire_id?:Number;
+    nom_prenom?:Number;
     redacteur_id?:Number;
     date_visite?:Date;
     is_validated_redacteur?:boolean;

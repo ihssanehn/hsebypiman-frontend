@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from "@angular/forms";
 import { CommonModule, Location } from '@angular/common';
 import moment from 'moment';
-
+import { Observable, Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { VisiteChantierService, TypeService, ChantierService, CatQuestionService } from '@app/core/services';
 import { VisiteChantier, Type, Chantier, CatQuestion } from '@app/core/models';
@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 import { finalize, takeUntil, tap } from 'rxjs/operators';
 import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
 import {FormStatus} from '@app/core/_base/crud/models/form-status';
-import { DateFrToEnPipe } from '@app/core/_base/layout';
+import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
 
 @Component({
   selector: 'tf-visite-chantier-add',
@@ -38,6 +38,9 @@ export class VisiteChantierAddComponent implements OnInit {
   showSignatures: boolean = false;
   // Private properties
   
+  // Private properties
+  private subscriptions: Subscription[] = [];
+
   constructor(
 		private activatedRoute: ActivatedRoute,
 		private router: Router,
@@ -51,24 +54,92 @@ export class VisiteChantierAddComponent implements OnInit {
     private authService:AuthService,
     private cdr: ChangeDetectorRef,
     public snackBar: MatSnackBar,
-    private dateFrToEnPipe:DateFrToEnPipe
+    private dateEnToFrPipe:DateEnToFrPipe,
+    private dateFrToEnPipe:DateFrToEnPipe,
   ) { 
     
 		this.authService.currentUser.subscribe(x=> this.currentUser = x);
   }
 
   ngOnInit() {
-    this.visite = new VisiteChantier();
-    this.createForm();    
-    this.setDynamicValidators();
+
+
+    const routeSubscription = this.activatedRoute.queryParams
+    .subscribe(
+      async params => {
+        const id = params.visite_id;
+        if(id){
+          this.visiteService
+          .get(id)
+          .pipe(
+            tap(
+              vs => {
+                this.createForm();    
+                this.setDynamicValidators();
+
+                var _vs = {
+                  chantier_id: vs.result.data.visitable_id,
+                  chantier: vs.result.data.chantier,
+                  visitable_id: vs.result.data.visitable_id,
+                  salarie_id: vs.result.data.salarie_id,
+                  entreprise_id: vs.result.data.entreprise_id,
+                  interimaire_id: vs.result.data.interimaire_id,
+                  nom_prenom: vs.result.data.nom_prenom,
+                  redacteur_id: vs.result.data.redacteur_id,
+                  presence_non_conformite: vs.result.data.presence_non_conformite,
+                  has_rectification_imm: vs.result.data.has_rectification_imm,
+                  avertissement: vs.result.data.avertissement,
+                  type_id: vs.result.data.type_id,
+                };
+                this.visiteForm.patchValue(_vs);
+                this.cdr.markForCheck();
+                this.chantier = _vs.chantier;
+              }
+            )
+          )
+          .subscribe( async res => {
+
+            this.visite = res.result.data;
+            this.loaded = true;
+            this.displayQuestions();
+            this.cdr.markForCheck();
+          });
+        }else{
+
+          this.createForm();    
+          this.setDynamicValidators();
+          this.loaded = true;
+          this.visite = new VisiteChantier();
+        }
+    });
+
+    this.subscriptions.push(routeSubscription);
   }
 
-  
+  ngOnDestroy() {
+		this.subscriptions.forEach(sb => sb.unsubscribe());
+	}
+
+
+  patchVsDatas(_vs){
+    this.visiteForm.get('chantier_id').setValue(_vs.visitable_id);
+    this.visiteForm.get('visitable_id').setValue(_vs.visitable_id);
+    this.visiteForm.get('salarie_id').setValue(_vs.salarie_id, {onlySelf:true, emitEvent:true});
+    this.visiteForm.get('entreprise_id').setValue(_vs.entreprise_id);
+    this.visiteForm.get('interimaire_id').setValue(_vs.interimaire_id);
+    this.visiteForm.get('nom_prenom').setValue(_vs.nom_prenom);
+    this.visiteForm.get('redacteur_id').setValue(_vs.redacteur_id);
+    this.visiteForm.get('presence_non_conformite').setValue(_vs.presence_non_conformite);
+    this.visiteForm.get('has_rectification_imm').setValue(_vs.has_rectification_imm);
+    this.visiteForm.get('avertissement').setValue(_vs.avertissement);
+    this.visiteForm.get('type_id').setValue(_vs.type_id);
+  }
+
   createForm() {
 		this.visiteForm = this.visiteFB.group({
       'chantier_id': ['', Validators.required],
       'visitable_id': ['', Validators.required],
-      'chantier': [''],
+      'chantier': [null],
       'salarie_id': [{value:null, disabled:false}, Validators.required],
       'entreprise_id': [{value:null, disabled:false}, Validators.required],
       'interimaire_id': [{value:null, disabled:false}],
@@ -220,6 +291,10 @@ export class VisiteChantierAddComponent implements OnInit {
     });
   }
 
+  inVisite(quest_id){
+    return this.visite.questions.filter(x=>x.id==quest_id).length > 0;
+  }
+
   parseQuestions(item){
     if(item.length > 0){
       const catQuestionsListFormArray = this.visiteForm.get('catQuestionsList') as FormArray
@@ -227,16 +302,30 @@ export class VisiteChantierAddComponent implements OnInit {
       this.catQuestionsList.forEach((element, i) => {
         let questionsArrayFB = []
         element.questions.forEach(quest => {
-          var question = this.visiteFB.group({
-            'id': [quest.id],
-            'libelle': [quest.libelle],
-            'pivot': this.visiteFB.group({
-              'note': [null, Validators.required],
-              'date_remise_conf': [{value:null, disabled:true}],
-              'observation': [''],
-              'action_to_visited': [{value:0, disabled:true}]
-            })
-          });
+          if(this.visite.id && this.inVisite(quest.id)){
+            var toPatch = this.visite.questions.filter(x=>x.id==quest.id)[0];
+            var question = this.visiteFB.group({
+              'id': [quest.id],
+              'libelle': [quest.libelle],
+              'pivot': this.visiteFB.group({
+                'note':[{value:toPatch.pivot.note, disabled:false}, Validators.required],
+                'date_remise_conf':[{value:this.dateEnToFrPipe.transform(toPatch.pivot.date_visite), disabled:false}],
+                'observation':[{value:toPatch.pivot.observation, disabled:false}],
+                'action_to_visited': [{value: toPatch.pivot.action_to_visited, disabled:true}]
+              })
+            });
+          }else{
+            var question = this.visiteFB.group({
+              'id': [quest.id],
+              'libelle': [quest.libelle],
+              'pivot': this.visiteFB.group({
+                'note': [null, Validators.required],
+                'date_remise_conf': [{value:null, disabled:true}],
+                'observation': [''],
+                'action_to_visited': [{value:0, disabled:true}]
+              })
+            });
+          }
 
           this.setPivotRules(question)
           questionsArrayFB.push(question);			
@@ -317,6 +406,7 @@ export class VisiteChantierAddComponent implements OnInit {
 
   displaySignature(){
     this.showSignatures = !this.showSignatures
+    console.log(this.visiteForm);
   }
 
   getNotes() {

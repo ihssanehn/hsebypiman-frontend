@@ -13,7 +13,9 @@ import { MatSnackBar } from '@angular/material';
 import Swal from 'sweetalert2';
 import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
 import {FormStatus} from '@app/core/_base/crud/models/form-status';
-import { DateFrToEnPipe } from '@app/core/_base/layout';
+import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
+import { tap } from 'rxjs/operators';
+
 
 @Component({
   selector: 'tf-visite-outillage-add',
@@ -50,14 +52,53 @@ export class VisiteOutillageAddComponent implements OnInit {
     private authService:AuthService,
     private cdr: ChangeDetectorRef,
     public snackBar: MatSnackBar,
-    private dateFrToEnPipe:DateFrToEnPipe
+    private dateFrToEnPipe:DateFrToEnPipe,
+    private dateEnToFrPipe:DateEnToFrPipe,
   ) { 
     this.authService.currentUser.subscribe(x=> this.currentUser = x);
   }
 
   ngOnInit() {
-    this.visite = new VisiteOutillage();
+    const routeSubscription = this.activatedRoute.queryParams
+    .subscribe(
+      async params => {
+        const id = params.visite_id;
+        if(id){
+          this.visiteService
+          .get(id)
+          .pipe(
+            tap(
+              vs => {
+                var _vs = vs.result.data;
+                this.patchVsDatas(_vs);
+                this.onUserSelected(this.visiteForm);
+              }
+            )
+         )
+          .subscribe( async res => {
+            this.visite = res.result.data;
+            this.loaded = true;
+            this.cdr.markForCheck();
+          });
+        }else{
+          this.visite = new VisiteOutillage();
+        }
+    });
+
     this.createForm();    
+  }
+
+  patchVsDatas(_vs){
+    this.visiteForm.get('salarie_id').setValue(_vs.salarie_id, {onlySelf:true, emitEvent:true});
+    this.visiteForm.get('outillage_code').setValue(_vs.outillage_code);
+    this.visiteForm.get('visitable_id').setValue(_vs.visitable_id);
+    this.visiteForm.get('entreprise_id').setValue(_vs.entreprise_id);
+    this.visiteForm.get('is_externe').setValue(_vs.is_externe);
+    this.visiteForm.get('redacteur_id').setValue(_vs.redacteur_id);
+    this.visiteForm.get('presence_non_conformite').setValue(_vs.presence_non_conformite);
+    this.visiteForm.get('has_rectification_imm').setValue(_vs.has_rectification_imm);
+    this.visiteForm.get('avertissement').setValue(_vs.avertissement);
+    this.visiteForm.get('type_id').setValue(_vs.type_id);
   }
 
   async getQuestions(){
@@ -121,22 +162,40 @@ export class VisiteOutillageAddComponent implements OnInit {
     // })
   }
 
+  inVisite(quest_id){
+    return this.visite.questions.filter(x=>x.id==quest_id).length > 0;
+  }
+
   patchQuestionsForm() {
 		
 		const catQuestionsListFormArray: FormArray = this.visiteForm.get('catQuestionsList') as FormArray;
 		this.catQuestionsList.forEach((element, i) => {
 			let questionsArrayFB = []
 			element.questions.forEach(quest => {
-				var question = this.visiteFB.group({
-					'id': [quest.id],
-					'libelle': [quest.libelle],
-					'pivot': this.visiteFB.group({
-						'note': [null, Validators.required],
-						'date_remise_conf': [null],
-						'observation': [''],
-            'action_to_visited': [0]
-					})
-        });
+        if(this.visite.id && this.inVisite(quest.id)){
+          var toPatch = this.visite.questions.filter(x=>x.id==quest.id)[0];
+          var question = this.visiteFB.group({
+            'id': [quest.id],
+            'libelle': [quest.libelle],
+            'pivot': this.visiteFB.group({
+              'note':[{value:toPatch.pivot.note, disabled:false}, Validators.required],
+              'date_remise_conf':[{value:this.dateEnToFrPipe.transform(toPatch.pivot.date_visite), disabled:false}],
+              'observation':[{value:toPatch.pivot.observation, disabled:false}],
+              'action_to_visited': [{value: toPatch.pivot.action_to_visited, disabled:true}]
+            })
+          });
+        }else{
+          var question = this.visiteFB.group({
+            'id': [quest.id],
+            'libelle': [quest.libelle],
+            'pivot': this.visiteFB.group({
+              'note': [null, Validators.required],
+              'date_remise_conf': [null],
+              'observation': [''],
+              'action_to_visited': [0]
+            })
+          });
+        }
         
         this.setPivotRules(question)
 				questionsArrayFB.push(question);			

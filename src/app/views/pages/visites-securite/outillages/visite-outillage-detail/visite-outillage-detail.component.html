@@ -1,7 +1,7 @@
 
 <form [formGroup]="visiteForm" class="tf-form tf-form--group-seperator-dashed" *ngIf="visite">
 	<tf-portlet class="main-portlet-form" id="portlet-vs">
-		<div class="tf-portlet-header">
+		<div class="tf-portlet-header mb-3">
 			<span class="title">
 				<a [routerLink]="['/visites-securite/list']">{{'MENU.HOME' | translate}}</a>
 				<span class="divider">></span>
@@ -14,10 +14,13 @@
 				<div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
 				  <!-- <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editVisite(visite.id)">
 					<mat-icon>edit</mat-icon>
-				  </button> -->
-				  <button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteVisite(visite.id)" *ngxPermissionsOnly="['visite_securite_canArchieve']">
+					</button> -->
+					<button mat-icon-button color="info" matTooltip="{{'ACTION.DUPLICATE' | translate}}" (click)="duplicateVs(visite.id)" *ngxPermissionsOnly="['visite_securite_canAdd']">
+						<mat-icon>filter_none</mat-icon>
+					</button>
+				  <!-- <button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteVisite(visite.id)" *ngxPermissionsOnly="['visite_securite_canArchieve']">
 					<mat-icon>delete</mat-icon>
-				  </button>
+				  </button> -->
 				</div>
 			</div>
 		</div>

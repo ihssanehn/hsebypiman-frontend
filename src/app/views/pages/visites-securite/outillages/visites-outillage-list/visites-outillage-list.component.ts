@@ -156,4 +156,8 @@ export class VisitesOutillageListComponent implements OnInit {
 		}
 		return this.visiteService.export(filters);
 	}
+
+	duplicateVs(visiteId){
+		this.router.navigate(['visites-securite/outillages/add'], {queryParams:{visite_id:visiteId}})
+	}
 }
