@@ -25,11 +25,14 @@
                                     [matTooltipDisabled]="formHasValue('salarie_id')">
                                     <mat-label>{{'VISITES.VISITED.LABEL' | translate}}</mat-label>
                                     <mat-select class="form-control" placeholder="" formControlName="salarie_id"
-                                        [required]="isFieldRequired('salarie_id')">
+                                        [required]="isFieldRequired('salarie_id')" *ngIf="origin == 'add'; else showSalarie">
                                         <mat-option *ngFor="let user of users" [value]="user.id">
                                             {{ user | fullName }}
                                         </mat-option>
                                     </mat-select>
+                                    <ng-template #showSalarie> 
+                                        <input type="text" matInput class="form-control" [value]="(data.salarie | fullName)">
+                                    </ng-template>
                                     <button mat-button
                                         *ngIf="formHasValue('salarie_id') && !visiteForm.get('salarie_id').disabled"
                                         matSuffix mat-icon-button aria-label="Clear"

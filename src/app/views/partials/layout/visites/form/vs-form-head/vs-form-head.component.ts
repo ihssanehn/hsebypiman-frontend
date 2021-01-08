@@ -24,6 +24,7 @@ export class VsFormHeadComponent implements OnInit {
   redacteur: User;
   materiels: Materiel[];
   currentUser: User;
+  salarie;
 
   @Input() visiteForm: FormGroup;
   @Input() origin: string;
@@ -41,7 +42,6 @@ export class VsFormHeadComponent implements OnInit {
     private authService : AuthService
   ) { 
 		this.authService.currentUser.subscribe(x=> this.currentUser = x);
-
   }
 
 
@@ -62,6 +62,11 @@ export class VsFormHeadComponent implements OnInit {
       this.getEntreprises();
       this.setDynamicEntreprise();
     }
+    
+  }
+
+  testForm(){
+    console.log(this.visiteForm);
   }
 
   async getTypes(){

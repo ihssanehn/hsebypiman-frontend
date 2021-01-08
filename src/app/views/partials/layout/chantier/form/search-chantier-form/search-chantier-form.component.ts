@@ -58,8 +58,6 @@ export class SearchChantierFormComponent implements OnChanges {
     this.initFilteredChantiers();
   }
   ngOnChanges() {
-    var tryTest = this.form.get('chantier').value;
-    console.log(tryTest);
     switch(this.origin){
       case 'add':
         if(this.form.get('chantier').value){
