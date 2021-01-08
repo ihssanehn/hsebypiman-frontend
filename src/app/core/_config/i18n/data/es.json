@@ -2,7 +2,9 @@
 	"ACTION": {
 		"ADD": "Añadir",
 		"ADD_DOCUMENT": "Agregar un documento",		
-		"ADD_DOCUMENTS": "Agregar documentos",		
+		"ADD_DOCUMENTS": "Agregar documentos",
+		"ADD_PICTURE": "Add a picture",
+		"ADD_PICTURES": "Add pictures",		
 		"ADD_SIGNER": "Agregar un firmante",
 		"CANCEL": "Anular",
 		"CLEAR": "vacía",

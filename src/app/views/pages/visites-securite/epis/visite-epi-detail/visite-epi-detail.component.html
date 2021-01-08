@@ -7,7 +7,13 @@
 				<span class="divider">></span>
 			  <span class="id-item">{{'MENU.SUB_VISITESECURITE.DETAIL' | translate}}</span>
 			</span>
-			<div ngbDropdown placement="bottom-right" class="d-inline-block pull-right">
+			<span class="pull-right">
+				<button mat-button color="info" class="mr-4" matTooltip="{{'ACTION.DUPLICATE' | translate}}" (click)="duplicateVs(visite.id)" *ngxPermissionsOnly="['visite_securite_canAdd']">
+					<mat-icon>filter_none</mat-icon>
+					{{'ACTION.DUPLICATE' | translate}}
+				</button>
+			</span>
+			<!-- <div ngbDropdown placement="bottom-right" class="d-inline-block pull-right">
 				<button ngbDropdownToggle mat-icon-button color="primary" matTooltip="Actions" style="line-height: 0;height: 0;">
 				  <mat-icon>more_vert</mat-icon>
 				</button>
@@ -15,11 +21,11 @@
 					<button mat-icon-button color="info" matTooltip="{{'ACTION.DUPLICATE' | translate}}" (click)="duplicateVs(visite.id)" *ngxPermissionsOnly="['visite_securite_canAdd']">
 						<mat-icon>filter_none</mat-icon>
 					</button>
-				  <!-- <button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteVisite(visite.id)">
+				  <button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteVisite(visite.id)">
 						<mat-icon>delete</mat-icon>
-				  </button> -->
+				  </button>
 				</div>
-			</div>
+			</div> -->
 		</div>
 		<div class="tf-divider" *ngIf="visiteForm.get('visitable_id').value">
 			<span></span>

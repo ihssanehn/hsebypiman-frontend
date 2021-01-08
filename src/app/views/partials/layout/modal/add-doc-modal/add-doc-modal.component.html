@@ -1,5 +1,5 @@
 <div class="modal-header">
-	<h4 class="modal-title">{{'ACTION.ADD_DOCUMENTS' | translate}}</h4>
+	<h4 class="modal-title">{{'ACTION.ADD_PICTURES' | translate}}</h4>
 	<button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
 		<span aria-hidden="true">&times;</span>
 	</button>
@@ -35,7 +35,7 @@
         <div class="row mt-4">
             <div class="col-12 col-actions">
                 <button mat-raised-button type="button" (click)="activeModal.dismiss()" class="btn-small" color="warn">{{'ACTION.CANCEL' | translate}}</button>
-                <button mat-raised-button type="button" (click)="saveDocuments()" class="btn-small" color="success">{{'ACTION.SAVE' | translate}}</button>
+                <button mat-raised-button type="button" (click)="saveDocuments()" class="btn-small" color="success" [disabled]="uploader.queue.length == 0">{{'ACTION.SAVE' | translate}}</button>
             </div>
         </div>
     </ng-container>

@@ -272,7 +272,7 @@ export class VisiteVehiculeDetailComponent implements OnInit, OnDestroy {
 		
 		const modalRef = this.modalService.open(AddDocModalComponent, {size: 'lg',scrollable: true,centered : true});
 		modalRef.componentInstance.uploader = this.uploader;
-		modalRef.result.then( payload => this.saveDocuments(payload), payload => this.saveDocuments(payload) );
+		modalRef.result.then( payload => {if(payload){this.saveDocuments(payload), payload => this.saveDocuments(payload)}});
 	}
 
 	saveDocuments(payloads){
@@ -302,6 +302,7 @@ export class VisiteVehiculeDetailComponent implements OnInit, OnDestroy {
 					this.uploader.clearQueue();
 					this.visiteService.getPhotos(this.visite.id).toPromise().then(res=>{
 						this.visite.photos = res.result.data;
+						this.images = res.result.data;
 						this.cdr.markForCheck();
 					})
 				});
