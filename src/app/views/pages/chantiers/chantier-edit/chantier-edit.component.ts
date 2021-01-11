@@ -114,6 +114,7 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 			montant: ['', Validators.required],
 			date_demarrage: ['', Validators.required],
 			charge_affaire_id: [null, Validators.required],
+      charge_affaire_2_id: [null],
 			status_id: [null, Validators.required],
 			numero: ['', Validators.required],
 			resp_chiffrage_id: [null, Validators.required],

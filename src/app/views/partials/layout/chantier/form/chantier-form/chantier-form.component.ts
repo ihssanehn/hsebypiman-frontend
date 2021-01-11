@@ -268,4 +268,11 @@ export class ChantierFormComponent implements OnInit {
     var code = entreprise.controls['type_code'].value;
     return code;
   }
+  
+  formHasValue(key){
+    return this.chantierForm.get(key).value ? true:false;
+  }
+  clearValue(key){
+    this.chantierForm.get(key).patchValue(null);
+  }
 }

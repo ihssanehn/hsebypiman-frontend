@@ -69,6 +69,20 @@
 									</mat-error>
 								</mat-form-field>
 								<mat-form-field class="col-xl-3">
+									<mat-label>{{'CHANTIERS.CHIEF.LABEL' | translate}} 2</mat-label>
+									<mat-select class="form-control" [required]="isFieldRequired('charge_affaire_2_id')" placeholder="" formControlName="charge_affaire_2_id">
+										<mat-option *ngFor="let user of usersList" [value]="user.id">
+											{{ user.fullname }}
+										</mat-option>
+									</mat-select>
+									<button mat-button *ngIf="formHasValue('charge_affaire_2_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('charge_affaire_2_id'); $event.stopPropagation()">
+										<mat-icon>clear</mat-icon>
+									</button>
+									<mat-error *ngIf="isControlHasError('charge_affaire_2_id','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+								<mat-form-field class="col-xl-2">
 									<mat-label>{{'CHANTIERS.RESP_CHIFFRAGE.LABEL' | translate}}</mat-label>
 									<mat-select class="form-control" [required]="isFieldRequired('resp_chiffrage_id')" placeholder="" formControlName="resp_chiffrage_id">
 										<mat-option *ngFor="let user of usersList" [value]="user.id">
@@ -79,14 +93,14 @@
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
 								</mat-form-field>
-								<mat-form-field class="col-xl-3">
+								<mat-form-field class="col-xl-2">
 									<mat-label>{{'CHANTIERS.CLIENT.LABEL' | translate}}</mat-label>
 									<input matInput class="form-control" type="text" name="client" formControlName="client" [required]="isFieldRequired('client')" placeholder="{{'ACTION.ENTER_HERE' | translate}}" />
 									<mat-error *ngIf="isControlHasError('client','required')">
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
 								</mat-form-field>
-								<mat-form-field class="col-xl-3">
+								<mat-form-field class="col-xl-2">
 									<mat-label>{{'CHANTIERS.CONTACT.LABEL' | translate}}</mat-label>
 									<input matInput class="form-control" type="text" name="contact" formControlName="contact" [required]="isFieldRequired('contact')" placeholder="{{'ACTION.ENTER_HERE' | translate}}" />
 									<mat-error *ngIf="isControlHasError('contact','required')">

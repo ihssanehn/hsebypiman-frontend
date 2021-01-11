@@ -31,6 +31,7 @@
             <p><span class="label pull-left mr-2">{{'CHANTIERS.TYPE.SHORTTITLE' | translate}}</span><span class="">{{chantier.type?.libelle}}</span></p>
             <p><span class="label pull-left mr-2">{{'CHANTIERS.DATE_DEMARRAGE.TITLE' | translate}}</span><span class="">{{chantier.date_demarrage | date:'dd/MM/yyyy'}}</span></p>
             <p><span class="label pull-left mr-2">{{'CHANTIERS.CHIEF.TITLE' | translate}}</span><span class="">{{chantier.charge_affaire | fullName}}</span></p>
+            <p><span class="label pull-left mr-2">{{'CHANTIERS.CHIEF.TITLE' | translate}} 2</span><span class="">{{(chantier.charge_affaire2 | fullName) || '-'}}</span></p>
             <p><span class="label pull-left mr-2">{{'CHANTIERS.BUDGET.SHORTTITLE' | translate}}</span><span class="">{{chantier.montant | currency:'EUR':'€'}}</span></p>
             <p><span class="label pull-left mr-2">{{'CHANTIERS.RESP_CHIFFRAGE.TITLE' | translate}}</span><span class="">{{chantier.responsable_chiffrage | fullName}}</span></p>
           </div>

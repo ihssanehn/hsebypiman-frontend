@@ -67,6 +67,7 @@ export class ChantierAddComponent implements OnInit {
       montant: ['', Validators.required],
       date_demarrage: ['', Validators.required],
       charge_affaire_id: [null, Validators.required],
+      charge_affaire_2_id: [null],
       resp_chiffrage_id: [null, Validators.required],
       no_hab_required: [0, Validators.required],
       habilitations: this.chantierFB.array([], Validators.required),
