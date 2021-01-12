@@ -47,16 +47,16 @@ export class ChantierFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getTypes();
-    this.getUsers();
-    this.getStatus();
-    this.getCatHabs();
-    this.getEntreprises();
-    this.getEntrepriseTypes();
-    this.getInterimaires();
+    this.loadTypes();
+    this.loadUsers();
+    this.loadStatus();
+    this.loadCatHabs();
+    this.loadEntreprises();
+    this.loadEntrepriseTypes();
+    this.loadInterimaires();
   }
 
-  async getTypes(){
+  async loadTypes(){
     this.typesLoaded = false;
     var res = await this.typeService.getAllFromModel('Chantier').toPromise();
     if(res){
@@ -65,7 +65,7 @@ export class ChantierFormComponent implements OnInit {
     }
     this.cdr.markForCheck();
   }
-  async getUsers(){
+  async loadUsers(){
     this.usersLoaded = false;
     var res = await this.userService.getList().toPromise();
     if(res){
@@ -74,7 +74,7 @@ export class ChantierFormComponent implements OnInit {
     }
     this.cdr.markForCheck();
   }
-  async getStatus(){
+  async loadStatus(){
     this.statusLoaded = false;
     var res = await this.statusService.getAllFromModel('Chantier').toPromise();
     if(res){
@@ -83,7 +83,7 @@ export class ChantierFormComponent implements OnInit {
     }
     this.cdr.markForCheck();
   }
-  async getCatHabs(){
+  async loadCatHabs(){
     this.catHabsLoaded = false;
     var res = await this.catHabilitationService.getAll().toPromise();
     if(res){
@@ -92,7 +92,7 @@ export class ChantierFormComponent implements OnInit {
     }
     this.cdr.markForCheck();
   }
-  async getEntreprises(){
+  async loadEntreprises(){
     this.entreprisesLoaded = false;
     var res = await this.entrepriseService.getListGrouped().toPromise();
     if(res){
@@ -101,7 +101,7 @@ export class ChantierFormComponent implements OnInit {
     }
     this.cdr.markForCheck();
   }
-  async getEntrepriseTypes(){
+  async loadEntrepriseTypes(){
     this.entrepriseTypesLoaded = false;
     var res = await this.typeService.getAll({'model':'Entreprise'}).toPromise();
     if(res){
@@ -110,7 +110,7 @@ export class ChantierFormComponent implements OnInit {
     }
     this.cdr.markForCheck();
   }
-  async getInterimaires(){
+  async loadInterimaires(){
 
     var groupBy = function(xs, key) {
       
@@ -194,7 +194,11 @@ export class ChantierFormComponent implements OnInit {
   isEEFieldRequired(name, index){
     var ee = this.entreprises.controls[index] as FormGroup;
     return !!ee.controls[name].validator(name) && ee.controls[name].validator(name).hasOwnProperty('required');
-    return true;
+    
+  }
+  isINTFieldRequired(name, eeIndex, intIndex){
+    var int = this.getInterimaire(eeIndex, intIndex) as FormGroup;
+    return int && !!int.controls[name].validator(name) && int.controls[name].validator(name).hasOwnProperty('required');
   }
   /**
 	 * Checking control validation
@@ -224,25 +228,26 @@ export class ChantierFormComponent implements OnInit {
     this.entreprises.push(this.newEntreprises);
   }
 
+  // ENTREPRISES
   get entreprises(): FormArray{
     return this.chantierForm.get('entreprises') as FormArray;
   }
+
   get newEntreprises(): FormGroup {
 
     var new_entreprise = this.fb.group({
       'type_code':[null, [Validators.required]],
       'entreprise_id':[null, [Validators.required]],
-      'interimaire_id':[null, [Validators]],
+      // 'interimaire_id':[null, [Validators]],
       'chiffre_affaire':[null, [Validators]],
-      'date_demarrage':[null, [Validators]]
+      'date_demarrage':[null, [Validators]],
+      'interimaires': this.fb.array([])
     });
     new_entreprise.get('type_code').valueChanges.subscribe(code=>{
       if(code == 'SOUS_TRAITANT'){
-        new_entreprise.get('interimaire_id').setValidators(null)
-        new_entreprise.get('interimaire_id').setValue(null);
+        (new_entreprise.controls['interimaires'] as FormArray).clear();
         new_entreprise.get('chiffre_affaire').setValidators(Validators.required)
       }else{  
-        new_entreprise.get('interimaire_id').setValidators(Validators.required);
         new_entreprise.get('chiffre_affaire').setValidators(null);
         new_entreprise.get('chiffre_affaire').setValue(null);
       }
@@ -250,12 +255,11 @@ export class ChantierFormComponent implements OnInit {
     return new_entreprise;
   }
 
-  filterInterimairesList(i){
-    var entreprise : FormGroup = this.entreprises.controls[i] as FormGroup;
-    var agence = entreprise.controls['entreprise_interim'].value;
-    return this.interimairesList.filter(user=>user.entreprise_interim == agence);
-    
-  }
+  // filterInterimairesList(i){
+  //   var entreprise : FormGroup = this.entreprises.controls[i] as FormGroup;
+  //   var agence = entreprise.controls['entreprise_interim'].value;
+  //   return this.interimairesList.filter(user=>user.entreprise_interim == agence);
+  // }
 
   removeEe(i){
     this.entreprises.removeAt(i);
@@ -267,6 +271,55 @@ export class ChantierFormComponent implements OnInit {
     var entreprise : FormGroup = this.entreprises.controls[i] as FormGroup;
     var code = entreprise.controls['type_code'].value;
     return code;
+  }
+
+ 
+  // INTERIMAIRES
+
+  get newInterimaire(): FormGroup{
+    var new_interimaire = this.fb.group({
+      'interimaire_id': [null, [Validators.required]],
+      'date_debut_mission': [null,[Validators]],
+      'date_fin_mission': [null,[Validators]],
+    })
+
+    return new_interimaire;
+  }
+
+  entHasInterimaires(i){
+    var entreprise : FormGroup = this.entreprises.controls[i] as FormGroup;
+    return entreprise.get('interimaires').value.length > 0;
+  }
+
+  getInterimaires(eeIndex){
+    const entreprise = (this.chantierForm.get('entreprises') as FormArray).at(eeIndex) as FormGroup;
+    if (!entreprise) return null;
+
+    return (entreprise.get('interimaires') as FormArray);
+  }
+  
+  addInterimaire(i){
+    var ints:FormArray = this.getInterimaires(i);
+    var new_interimaire = this.fb.group({
+      'interimaire_id': [null, [Validators.required]],
+      'date_debut_mission': [null, [Validators]],
+      'date_fin_mission': [null, [Validators]],
+    })  
+    ints.push(new_interimaire);
+  }
+
+  removeInt(entIdx, intIdx){
+    this.getInterimaires(entIdx).removeAt(intIdx);
+  }
+
+  getInterimaire(eeIndex, intIndex): FormGroup {
+    const entreprise = (this.chantierForm.get('entreprises') as FormArray).at(eeIndex) as FormGroup;
+    if (!entreprise) return null; 
+
+    const interimaires = entreprise.get('interimaires') as FormArray;
+    const interimaire = interimaires.at(intIndex) as FormGroup;
+    
+    return interimaire;
   }
   
   formHasValue(key){

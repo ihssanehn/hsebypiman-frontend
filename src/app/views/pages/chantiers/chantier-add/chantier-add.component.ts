@@ -130,7 +130,11 @@ export class ChantierAddComponent implements OnInit {
 		item.date_demarrage = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.date_demarrage) : this.dateEnToFrPipe.transform(item.date_demarrage);
 		if(item.entreprises.length > 0){
 			item.entreprises.forEach(x=>{
-				x.date_demarrage = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(x.date_demarrage) : this.dateEnToFrPipe.transform(x.pivot.date_demarrage);
+        x.date_demarrage = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(x.date_demarrage) : this.dateEnToFrPipe.transform(x.pivot.date_demarrage);
+        x.interimaires.forEach(y=>{
+          y.date_debut_mission = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(y.date_debut_mission) : this.dateEnToFrPipe.transform(y.pivot.date_debut_mission);
+          y.date_fin_mission = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(y.date_fin_mission) : this.dateEnToFrPipe.transform(y.pivot.date_fin_mission);
+        })
 			})
 		}
   }

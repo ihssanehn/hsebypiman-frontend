@@ -165,7 +165,7 @@
                   <th scope="col">{{'EES.RAISON_SOCIALE.TITLE' | translate}}</th>
                   <th class="text-center" scope="col">{{'EES.TYPE.TITLE' | translate}}</th>
                   <th class="text-center" scope="col">{{'EES.CA.TITLE' | translate}}</th>
-                  <th class="text-center" scope="col">{{'EES.INTERIMAIRE.TITLE' | translate}}</th>
+                  <th class="text-center" scope="col">{{'EES.INTERIMAIRES_COUNT.SHORTTITLE' | translate}}</th>
                   <th class="text-center" scope="col">{{'EES.DATE_DEMARRAGE.TITLE' | translate}}</th>
                 </tr>
               </thead>
@@ -173,10 +173,32 @@
                 <tr *ngFor="let entreprise of chantier.entreprises">
                   <th scope="row">{{entreprise.raison_sociale}}</th>
                   <td class="text-center">{{entreprise.type.libelle}}</td>
-                  <td class="text-center"><span *ngIf="entreprise.type?.code == 'SOUS_TRAITANT'; else noData"></span>{{entreprise.pivot.chiffre_affaire | currency:'EUR':'€'}}</td>
-                  <td class="text-center"><span *ngIf="entreprise.type?.code == 'INTERIM'; else noData"></span>{{entreprise.pivot.interimaire | fullName}}</td>
+                  <td class="text-center"><span *ngIf="entreprise.type?.code == 'SOUS_TRAITANT'; else noData">{{entreprise.pivot.chiffre_affaire | currency:'EUR':'€'}}</span></td>
+                  <td class="text-center"><span *ngIf="entreprise.type?.code == 'INTERIM'; else noData" style="cursor:pointer" [ngbPopover]="popContent" popoverClass="big-popover" [popoverTitle]="('EES.INTERIMAIRES.TITLE' | translate)">{{entreprise.pivot.interimaires.length}}</span></td>
                   <td class="text-center">{{entreprise.pivot.date_demarrage | date:'dd/MM/yyyy'}}</td>
-              </tr>
+                  <ng-template #popContent >
+                    <div class="row">
+                        <div class="col-12">
+                            <table class="table table-borderless table-sm table-striped px-4">
+                              <thead>
+                                <tr>
+                                  <th style="background:white; font-weight: bolder;" >{{'EES.INTERIMAIRE.TITLE' | translate}}</th>
+                                  <th style="background:white; font-weight: bolder;" class="text-center">{{'EES.INTERIMAIRES_DEBUT_MISSION.TITLE' | translate}}</th>
+                                  <th style="background:white; font-weight: bolder;" class="text-center">{{'EES.INTERIMAIRES_FIN_MISSION.TITLE' | translate}}</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let interimaire of entreprise.pivot.interimaires">
+                                  <td>{{interimaire | fullName}}</td>
+                                  <td class="text-center">{{(interimaire.pivot.date_debut_mission | date:'dd/MM/yyyy') || '-'}}</td>
+                                  <td class="text-center">{{(interimaire.pivot.date_fin_mission | date:'dd/MM/yyyy') || '-'}}</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                        </div>
+                    </div>
+                  </ng-template>
+                </tr>
               </tbody>
             </table>
             <ng-template #noData>

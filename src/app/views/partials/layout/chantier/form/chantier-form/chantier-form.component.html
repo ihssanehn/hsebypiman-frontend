@@ -186,7 +186,7 @@
 									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 								</mat-error>
 							</mat-form-field>
-							<mat-form-field class="col-xl-3" *ngIf="entHasCode(entIndex) == 'INTERIM'">
+							<!-- <mat-form-field class="col-xl-3" *ngIf="entHasCode(entIndex) == 'INTERIM'">
 								<mat-label>{{'EES.INTERIMAIRE.LABEL' | translate}}</mat-label>
 								<mat-select class="form-control" formControlName="interimaire_id" [required]="isEEFieldRequired('interimaire_id', entIndex)">
 									<mat-optgroup *ngFor="let group of interimairesListGrouped" [label]="group.key">
@@ -198,14 +198,61 @@
 								<mat-error *ngIf="isControlHasError('interimaire_id','required')">
 									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 								</mat-error>
-							</mat-form-field>
+							</mat-form-field> -->
 							<mat-form-field class="col-xl-3" *ngIf="entHasCode(entIndex)">
 								<mat-label>{{'EES.DATE_DEMARRAGE.LABEL' | translate}}</mat-label>
 								<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_demarrage" [required]="isEEFieldRequired('date_demarrage', entIndex)" placeholder="DD/MM/YYYY">
 							</mat-form-field>
+							<div class="col-xl-3 col-actions" *ngIf="entHasCode(entIndex) == 'INTERIM'">
+								<button mat-button type="button" (click)="addInterimaire(entIndex)"  class="btn-small" color="info">
+									<mat-icon>person_add</mat-icon>
+									{{'EES.INTERIMAIRE_ADD.TITLE' | translate}}
+								</button>
+							</div>
 							<div class="col-xl-1 col-actions">
 								<button mat-icon-button type="button" (click)="removeEe(entIndex)" class="btn-small" color="warn"><mat-icon>clear</mat-icon></button>
 							</div>
+						</div>
+						<div class="row justify-content-center" *ngIf="entHasCode(entIndex) == 'INTERIM' && entHasInterimaires(entIndex)">
+							<div class="col-8">
+								<div class="row">
+									<div class="col-xl-3">{{'EES.INTERIMAIRE.LABEL' | translate}}s</div>
+									<div class="col-xl-3">{{'EES.INTERIMAIRES_DEBUT_MISSION.LABEL' | translate}}</div>
+									<div class="col-xl-3">{{'EES.INTERIMAIRES_FIN_MISSION.LABEL' | translate}}</div>
+									<div class="col-xl-3"></div>
+								</div>
+								<div class="row" *ngFor="let int of getInterimaires(entIndex).controls; let intIndex = index">
+									<ng-container [formGroup]="getInterimaire(entIndex, intIndex)">
+										<mat-form-field class="col-xl-3 form-field-sm">
+											<!-- <mat-label>{{'EES.INTERIMAIRE.LABEL' | translate}}</mat-label> -->
+											<mat-select class="form-control" [placeholder]="('EES.INTERIMAIRE.LABEL' | translate)" formControlName="interimaire_id" [required]="isINTFieldRequired('interimaire_id', entIndex, intIndex)">
+												<mat-optgroup *ngFor="let group of interimairesListGrouped" [label]="group.key">
+													<mat-option *ngFor="let user of group.values" [value]="user.id">
+														{{ user | fullName }}
+													</mat-option>
+												</mat-optgroup>
+											</mat-select>
+											<mat-error *ngIf="isControlHasError('interimaire_id','required')">
+												<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+											</mat-error>
+										</mat-form-field>
+	
+										<mat-form-field class="col-xl-3 form-field-sm" *ngIf="entHasCode(entIndex)" [floatLabel]="'never'">
+											<!-- <mat-label>{{'EES.DATE_DEMARRAGE.LABEL' | translate}}</mat-label> -->
+											<input matInput class="form-control" mask="d0/M0/0000"  [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_debut_mission" [required]="isINTFieldRequired('date_debut_mission', entIndex, intIndex)" [placeholder]="'DD/MM/YYYY'">
+										</mat-form-field>
+	
+										<mat-form-field class="col-xl-3 form-field-sm" *ngIf="entHasCode(entIndex)" [floatLabel]="'never'">
+											<!-- <mat-label>{{'EES.DATE_DEMARRAGE.LABEL' | translate}}</mat-label> -->
+											<input matInput class="form-control" mask="d0/M0/0000"  [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_fin_mission" [required]="isINTFieldRequired('date_fin_mission', entIndex, intIndex)" [placeholder]="'DD/MM/YYYY'">
+										</mat-form-field>
+										<div class="col-xl-2 col-actions">
+											<button mat-icon-button type="button" (click)="removeInt(entIndex, intIndex)" class="btn-small" color="warn"><mat-icon>clear</mat-icon></button>
+										</div>
+									</ng-container>
+								</div>
+							</div>
+							
 						</div>
 					</div>
 				</div>

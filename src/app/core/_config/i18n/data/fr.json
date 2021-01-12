@@ -826,6 +826,31 @@
 			"SHORTTITLE": "Intérimaire",
 			"TITLE": "Intérimaire"
 		},
+		"INTERIMAIRE_ADD": {
+			"LABEL": "Ajouter un intérimaire",
+			"SHORTTITLE": "Ajouter Intérimaire",
+			"TITLE": "Ajouter un Intérimaire"
+		},
+		"INTERIMAIRES": {
+			"LABEL": "Intérimaires",
+			"SHORTTITLE": "Intérimaires",
+			"TITLE": "Intérimaires"
+		},
+		"INTERIMAIRES_COUNT": {
+			"LABEL": "Nombre intérimaires",
+			"SHORTTITLE": "Nbr Intérimaires",
+			"TITLE": "Nombre d'intérimaires"
+		},
+		"INTERIMAIRES_DEBUT_MISSION": {
+			"LABEL": "Date de début de mission",
+			"SHORTTITLE": "Début de mission",
+			"TITLE": "Début mission"
+		},
+		"INTERIMAIRES_FIN_MISSION": {
+			"LABEL": "Date de fin de mission",
+			"SHORTTITLE": "Fin de mission",
+			"TITLE": "Fin mission"
+		},
 		"NOTIF": {
 			"COMPANY_CREATED": {
 				"TITLE": "Entreprise créée avec succès"
@@ -2038,7 +2063,7 @@
 		},
 		"NOTIF": {
 			"SELECT_PERIOD": {
-				"TITLE": "Veuillez sélectionner une date de début et de fin de la période"
+				"TITLE": "Veuillez sélectionner une date de fin et de fin de la période"
 			},
 			"DATAS_UPDATED": {
 				"TITLE": "Données mises à jour avec succès"

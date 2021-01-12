@@ -144,28 +144,38 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 			var entreprise = this.chantierFB.group({
 				type_code:[element.type.code, Validators],
 				entreprise_id: [element.id, Validators.required],
-				interimaire_id: [element.pivot.interimaire_id, Validators],
+				// interimaire_id: [element.pivot.interimaire_id, Validators],
 				chiffre_affaire: [element.pivot.chiffre_affaire, Validators],
 				date_demarrage: [element.pivot.date_demarrage, Validators],
+				interimaires: this.chantierFB.array([])
 			});
-
+			
+			const interimaires = entreprise.get('interimaires') as FormArray
+			
+			element.pivot.interimaires.forEach(interim=>{
+				var _interimaire = this.chantierFB.group({
+					interimaire_id: [interim.id, [Validators.required]],
+					date_debut_mission: [interim.pivot.date_debut_mission, Validators],
+					date_fin_mission: [interim.pivot.date_fin_mission, Validators]
+				})
+				interimaires.push(_interimaire);
+			})
 			
 			if(entreprise.get('type_code').value == 'SOUS_TRAITANT'){
-				entreprise.get('interimaire_id').setValidators(null);
+				// entreprise.get('interimaire_id').setValidators(null);
 				entreprise.get('chiffre_affaire').setValidators(Validators.required);
 			}else{
 				
-				entreprise.get('interimaire_id').setValidators(Validators.required);
+				// entreprise.get('interimaire_id').setValidators(Validators.required);
 				entreprise.get('chiffre_affaire').setValidators(null);
 			}
 
 			entreprise.get('type_code').valueChanges.subscribe(code=>{
 				if(code == 'SOUS_TRAITANT'){
-					entreprise.get('interimaire_id').setValidators(null);
+					(entreprise.get('interimaire_id') as FormArray).clear();
 					entreprise.get('chiffre_affaire').setValidators(Validators.required);
 				}else{
-					
-					entreprise.get('interimaire_id').setValidators(Validators.required);
+					// entreprise.get('interimaire_id').setValidators(Validators.required);
 					entreprise.get('chiffre_affaire').setValidators(null);
 				}
 			})
@@ -262,6 +272,19 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 		if(item.entreprises.length > 0){
 			item.entreprises.forEach(x=>{
 				x.date_demarrage = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(x.date_demarrage) : this.dateEnToFrPipe.transform(x.pivot.date_demarrage);
+
+				if(direction == 'FrToEn'){
+					x.interimaires.forEach(y=>{
+						y.date_debut_mission = this.dateFrToEnPipe.transform(y.date_debut_mission);
+						y.date_fin_mission = this.dateFrToEnPipe.transform(y.date_fin_mission);
+					})
+				}else{
+					x.pivot.interimaires.forEach(y=>{
+						y.pivot.date_debut_mission = this.dateEnToFrPipe.transform(y.pivot.date_debut_mission);
+						y.pivot.date_fin_mission = this.dateEnToFrPipe.transform(y.pivot.date_fin_mission);
+					})
+
+				}
 			})
 		}
 	}
