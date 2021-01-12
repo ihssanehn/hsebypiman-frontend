@@ -215,15 +215,8 @@
     }
 }
 
-.mat-form-field-appearance-legacy.form-field-sm {
-    .mat-form-field-wrapper{
-        // padding-bottom: 0;
-        .mat-form-field-infix{
-            // border-top: 0;
-            .form-control{
-                // padding-top: 0;
-                // height: calc(1.2em + 1.3rem + 2px);
-            }
-        }
-    } 
+.mat-form-field-appearance-legacy.mat-form-field-hide-placeholder {
+    .mat-form-field-label{
+        top: 1.55em;
+    }
 }

@@ -765,7 +765,8 @@
 	},
 	"EES": {
 		"ACTION": {
-			"ADD_COMPANY_TYPE": "Add a company type"
+			"ADD_COMPANY_TYPE": "Add a company type",
+			"ADD_EE": "Add a company"
 		},
 		"CA": {
 			"LABEL": "Turnover",
@@ -825,6 +826,31 @@
 			"LABEL": "Temp worker",
 			"SHORTTITLE": "Temp worker",
 			"TITLE": "Temp worker"
+		},
+		"INTERIMAIRE_ADD": {
+			"LABEL": "Add a Temp worker",
+			"SHORTTITLE": "Add a Temp worker",
+			"TITLE": "Add a Temp worker"
+		},
+		"INTERIMAIRES": {
+			"LABEL": "Temp workers",
+			"SHORTTITLE": "Temp workers",
+			"TITLE": "Temp workers"
+		},
+		"INTERIMAIRES_COUNT": {
+			"LABEL": "Number of Temp workers",
+			"SHORTTITLE": "Number of Temp workers",
+			"TITLE": "Number of Temp workers"
+		},
+		"INTERIMAIRES_DEBUT_MISSION": {
+			"LABEL": "Start date of the mission",
+			"SHORTTITLE": "Start date of the mission",
+			"TITLE": "Start date of the mission"
+		},
+		"INTERIMAIRES_FIN_MISSION": {
+			"LABEL": "End date of the mission",
+			"SHORTTITLE": "End date of the mission",
+			"TITLE": "End date of the mission"
 		},
 		"NOTIF": {
 			"COMPANY_CREATED": {

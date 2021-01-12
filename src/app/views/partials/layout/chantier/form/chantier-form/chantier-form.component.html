@@ -148,13 +148,13 @@
 				<div formArrayName="entreprises" class="row">
 					<div class="col-12">
 						<h5 class="mb-4">{{'CHANTIERS.CARD.ENTREPRISE.TITLE' | translate}}
-							<button mat-button type="button" color="info" class="pull-right btn-small" (click)="addEntExt()">
+							<button mat-raised-button type="button" color="info" class="pull-right btn-small" (click)="addEntExt()">
 								<mat-icon>add</mat-icon>
-								{{'ACTION.ADD' | translate}}
+								{{'EES.ACTION.ADD_EE' | translate}}
 							</button>
 						</h5>
 					</div>
-					<div class="col-12 my-2" *ngFor="let ent of entreprises.controls; let entIndex = index;">
+					<div class="col-12 pt-4 block-eex" *ngFor="let ent of entreprises.controls; let entIndex = index; let entLast = last" >
 						<div [formGroupName]="entIndex" class="row">
 							<mat-form-field class="col-xl-2">
 								<mat-label>{{'EES.TYPE.LABEL' | translate}}</mat-label>
@@ -213,15 +213,15 @@
 								<button mat-icon-button type="button" (click)="removeEe(entIndex)" class="btn-small" color="warn"><mat-icon>clear</mat-icon></button>
 							</div>
 						</div>
-						<div class="row justify-content-center" *ngIf="entHasCode(entIndex) == 'INTERIM' && entHasInterimaires(entIndex)">
+						<div class="row justify-content-center " *ngIf="entHasCode(entIndex) == 'INTERIM' && entHasInterimaires(entIndex)">
 							<div class="col-8">
 								<div class="row">
-									<div class="col-xl-3">{{'EES.INTERIMAIRE.LABEL' | translate}}s</div>
+									<div class="col-xl-3">{{'EES.INTERIMAIRES.LABEL' | translate}}</div>
 									<div class="col-xl-3">{{'EES.INTERIMAIRES_DEBUT_MISSION.LABEL' | translate}}</div>
 									<div class="col-xl-3">{{'EES.INTERIMAIRES_FIN_MISSION.LABEL' | translate}}</div>
 									<div class="col-xl-3"></div>
 								</div>
-								<div class="row" *ngFor="let int of getInterimaires(entIndex).controls; let intIndex = index">
+								<div class="row" *ngFor="let int of getInterimaires(entIndex).controls; let intIndex = index;">
 									<ng-container [formGroup]="getInterimaire(entIndex, intIndex)">
 										<mat-form-field class="col-xl-3 form-field-sm">
 											<!-- <mat-label>{{'EES.INTERIMAIRE.LABEL' | translate}}</mat-label> -->
@@ -254,6 +254,13 @@
 							</div>
 							
 						</div>
+						<div class="row justify-content-center" *ngIf="!entLast">
+							<div class="col-6">
+								<div class="tf-divider">
+									<span></span>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</tf-portlet-body>
@@ -281,9 +288,6 @@
 											<mat-checkbox [value]="hab.id"  (change)="onHabCheckChange($event)" [disabled]="chantierForm.get('habilitations').disabled" [checked]="onHabIsChecked(hab.id)">{{hab.libelle}}</mat-checkbox>	
 										</span>
 									</div>
-									<!-- <div class="col-md-3 col-xl-2" *ngFor="let hab of catHab.habilitations">
-										<mat-checkbox [value]="hab.id"  (change)="onHabCheckChange($event)" [disabled]="chantierForm.get('habilitations').disabled" [checked]="onHabIsChecked(hab.id)">{{hab.libelle}}</mat-checkbox>
-									</div> -->
 								</div>
 							</div>
 						</div>

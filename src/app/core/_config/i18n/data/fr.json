@@ -765,7 +765,8 @@
 	},
 	"EES": {
 		"ACTION": {
-			"ADD_COMPANY_TYPE": "Ajouter un type d'entreprise"
+			"ADD_COMPANY_TYPE": "Ajouter un type d'entreprise",
+			"ADD_EE": "Ajouter une entreprise"
 		},
 		"CA": {
 			"LABEL": "Chiffre d'affaire",

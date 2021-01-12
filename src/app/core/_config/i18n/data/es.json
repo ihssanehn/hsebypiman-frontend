@@ -765,7 +765,8 @@
 	},
 	"EES": {
 		"ACTION": {
-			"ADD_COMPANY_TYPE": ""
+			"ADD_COMPANY_TYPE": "",
+			"ADD_EE": ""
 		},
 		"CA": {
 			"LABEL": "Chiffre d'affaire",
@@ -825,6 +826,31 @@
 			"LABEL": "Intérimaire",
 			"SHORTTITLE": "Intérimaire",
 			"TITLE": "Intérimaire"
+		},
+		"INTERIMAIRE_ADD": {
+			"LABEL": "",
+			"SHORTTITLE": "",
+			"TITLE": ""
+		},
+		"INTERIMAIRES": {
+			"LABEL": "",
+			"SHORTTITLE": "",
+			"TITLE": ""
+		},
+		"INTERIMAIRES_COUNT": {
+			"LABEL": "",
+			"SHORTTITLE": "",
+			"TITLE": ""
+		},
+		"INTERIMAIRES_DEBUT_MISSION": {
+			"LABEL": "",
+			"SHORTTITLE": "",
+			"TITLE": ""
+		},
+		"INTERIMAIRES_FIN_MISSION": {
+			"LABEL": "",
+			"SHORTTITLE": "",
+			"TITLE": ""
 		},
 		"NOTIF": {
 			"COMPANY_CREATED": {
