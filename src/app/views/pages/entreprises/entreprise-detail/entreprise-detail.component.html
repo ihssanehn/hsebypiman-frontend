@@ -105,11 +105,33 @@
                     </ng-container>
                     <!-- ca_ee Column -->
                     <ng-container matColumnDef="interimaire" >
-                      <th mat-header-cell *matHeaderCellDef class="text-center">{{'EES.INTERIMAIRE.SHORTTITLE' | translate}}</th>
-                      <td mat-cell *matCellDef="let chantier" (click)="viewChantier(chantier.id)" class="text-center pointer">
-                        <div [matTooltipClass]="'custom-tooltip'" matTooltip="{{chantier.pivot.interimaire | fullName}}" [matTooltipShowDelay]="'100'" [matTooltipHideDelay]="'100'" [matTooltipPosition]="'above'">
-                          {{chantier.pivot.interimaire?.trigramme}}
-                        </div>
+                      <th mat-header-cell *matHeaderCellDef class="text-center">{{'EES.INTERIMAIRES_COUNT.SHORTTITLE' | translate}}</th>
+                      <td mat-cell *matCellDef="let chantier" class="text-center pointer">
+                        <span [ngbPopover]="popContent" popoverClass="big-popover" [popoverTitle]="('EES.INTERIMAIRES.TITLE' | translate)">
+                          {{chantier.pivot.interimaires.length}}
+												</span>
+												<ng-template #popContent >
+													<div class="row">
+															<div class="col-12">
+																	<table class="table table-borderless table-sm table-striped px-4">
+																		<thead>
+																			<tr>
+																				<th style="background:white; font-weight: bolder;" >{{'EES.INTERIMAIRE.TITLE' | translate}}</th>
+																				<th style="background:white; font-weight: bolder;" class="text-center">{{'EES.INTERIMAIRES_DEBUT_MISSION.TITLE' | translate}}</th>
+																				<th style="background:white; font-weight: bolder;" class="text-center">{{'EES.INTERIMAIRES_FIN_MISSION.TITLE' | translate}}</th>
+																			</tr>
+																		</thead>
+																		<tbody>
+																			<tr *ngFor="let interimaire of chantier.pivot.interimaires">
+																				<td>{{interimaire | fullName}}</td>
+																				<td class="text-center">{{(interimaire.pivot.date_debut_mission | date:'dd/MM/yyyy') || '-'}}</td>
+																				<td class="text-center">{{(interimaire.pivot.date_fin_mission | date:'dd/MM/yyyy') || '-'}}</td>
+																			</tr>
+																		</tbody>
+																	</table>
+															</div>
+													</div>
+												</ng-template>
                       </td>
                     </ng-container>
   

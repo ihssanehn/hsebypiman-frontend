@@ -246,8 +246,10 @@ export class ChantierFormComponent implements OnInit {
     new_entreprise.get('type_code').valueChanges.subscribe(code=>{
       if(code == 'SOUS_TRAITANT'){
         (new_entreprise.controls['interimaires'] as FormArray).clear();
+        new_entreprise.controls['entreprise_id'].setValue(null);
         new_entreprise.get('chiffre_affaire').setValidators(Validators.required)
       }else{  
+        new_entreprise.controls['entreprise_id'].setValue(null);
         new_entreprise.get('chiffre_affaire').setValidators(null);
         new_entreprise.get('chiffre_affaire').setValue(null);
       }
