@@ -164,10 +164,8 @@ export class ChantierEditComponent implements OnInit, OnDestroy {
 			if(entreprise.get('type_code').value == 'SOUS_TRAITANT'){
 				// entreprise.get('interimaire_id').setValidators(null);
 				entreprise.get('chiffre_affaire').setValidators(Validators.required);
-				entreprise.get('entreprise_id').setValue(null);
 				(entreprise.get('interimaires') as FormArray).clear();
 			}else{
-				entreprise.get('entreprise_id').setValue(null);
 				// entreprise.get('interimaire_id').setValidators(Validators.required);
 				entreprise.get('chiffre_affaire').setValidators(null);
 			}
