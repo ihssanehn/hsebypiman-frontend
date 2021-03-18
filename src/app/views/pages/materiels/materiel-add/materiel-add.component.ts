@@ -63,6 +63,8 @@ export class MaterielAddComponent implements OnInit {
       formation_requise: [0],
       habilitation_requise: [0],
       has_controle: [0],
+      is_active: [null],
+      is_stock_commun: [null],
       frequence_controle: [null],
       is_location: [0],
       cout: [null],
