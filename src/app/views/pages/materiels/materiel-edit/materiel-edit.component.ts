@@ -112,6 +112,8 @@ export class MaterielEditComponent implements OnInit, OnDestroy {
 			fournisseur: [''],
 			date_entree: [null],
 			date_sortie: [null],
+			is_active: [null],
+			is_stock_commun: [null],
 			formation_requise: [''],
 			habilitation_requise: [0],
 			has_controle: [0],

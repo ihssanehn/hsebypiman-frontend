@@ -20,6 +20,8 @@ export class Materiel {
     has_controle?: boolean;
     frequence_controle?: number;
     is_location?: boolean;
+    is_active?:boolean;
+    is_stock_commun?:boolean;
     actual_user?:User;
     next_visit?: Date;
     last_visite: Visite;

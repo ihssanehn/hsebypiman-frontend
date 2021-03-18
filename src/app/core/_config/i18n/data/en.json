@@ -1111,6 +1111,16 @@
 			"SHORTTITLE": "Must be controlled",
 			"TITLE": "Must be controlled"
 		},
+		"IS_ACTIVE": {
+			"LABEL": "Active",
+			"SHORTTITLE": "Active",
+			"TITLE": "Active"
+		},
+		"IS_STOCK_COMMUN": {
+			"LABEL": "Common stock",
+			"SHORTTITLE": "Common stock",
+			"TITLE": "Common stock"
+		},
 		"IS_LOCATION": {
 			"LABEL": "Rental",
 			"SHORTTITLE": "Rental",
