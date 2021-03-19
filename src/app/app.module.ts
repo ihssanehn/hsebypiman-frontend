@@ -56,7 +56,7 @@ import { AuthModule } from './views/pages/auth/auth.module';
 import { AuthService } from './core/auth';
 import { ModuleGuard } from './core/guards/module.guard';
 import { 
-	ChantierService, TypeService, StatusService, ActionService, CategorieService, ArService, CatRisqueService, EquipementService,
+	ChantierService, TypeService, StatusService, EtatService, ActionService, CategorieService, ArService, CatRisqueService, EquipementService,
 	EntrepriseService, VisiteEpiService, VisiteChantierService, CatHabilitationService, CatQuestionService, ZoneService, SignatureService, 
 	QuestionService, HabilitationService, RisqueService, ParamsService, MaterielService, VisiteOutillageService, VisiteVehiculeService, 
 	OutillageService, UserService, DocumentService, RemonteeService, PersonnelService, FonctionService, CatMetricService, GoalService, 
@@ -185,6 +185,7 @@ export function hljsLanguages(): HighlightLanguage[] {
 		RisqueService,
 		SignatureService,
 		StatusService, 
+		EtatService, 
 		TypeService, 
 		UserService,
 		VisiteChantierService,

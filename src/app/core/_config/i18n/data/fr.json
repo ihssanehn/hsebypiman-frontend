@@ -1116,10 +1116,20 @@
 			"SHORTTITLE": "Actif",
 			"TITLE": "Actif"
 		},
+		"SHOW_INACTIVES": {
+			"LABEL": "Voir le matériel inactif",
+			"SHORTITLE": "Matériel inactif",
+			"TITLE": "Matériel inactif"
+		},
 		"IS_STOCK_COMMUN": {
 			"LABEL": "Stock commun",
 			"SHORTTITLE": "Stock commun",
 			"TITLE": "Stock commun"
+		},
+		"ONLY_COMMON_STOCK": {
+			"LABEL": "Stock commun uniquement",
+			"SHORTITLE": "Stock commun uniquement",
+			"TITLE": "Stock commun uniquement"
 		},
 		"IS_LOCATION": {
 			"LABEL": "Location",
@@ -1835,6 +1845,11 @@
 			"LABEL": "Kilométrage du véhicule",
 			"SHORTTITLE": "Kilométrage",
 			"TITLE": "Kilométrage du véhicule"	
+		},
+		"ETAT":{
+			"LABEL": "Etat du matériel",
+			"SHORTTITLE": "Etat",
+			"TITLE": "Etat du matériel"
 		},
 		"ASSIGNED_ACTION": {
 			"TITLE": "Action attribuée à la personne visité"

@@ -19,7 +19,7 @@
 
 	<tf-vs-vehicule-form-img [visiteForm]="visiteForm" [origin]="'add'" *ngIf="questionsDisplayed" ></tf-vs-vehicule-form-img>
 	
-	<tf-vs-form-body [visiteForm]="visiteForm" [origin]="'add'" [catQuestionsList]="catQuestionsList" [isDisableToggle]="true" *ngIf="questionsDisplayed"></tf-vs-form-body>
+	<tf-vs-form-body [visiteForm]="visiteForm" [origin]="'add'"  [model]="'VsVehicule'" [catQuestionsList]="catQuestionsList" [isDisableToggle]="true" *ngIf="questionsDisplayed"></tf-vs-form-body>
 	
 	<div *ngIf="!showSignatures">
 		<button mat-raised-button [disabled]="!questionsAnswerd()" (click)="displaySignature()" color="success" class="pull-right">

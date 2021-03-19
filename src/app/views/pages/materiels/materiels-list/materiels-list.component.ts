@@ -34,7 +34,7 @@ export class MaterielsListComponent implements OnInit, AfterViewInit {
 	};
 	showFilters:Boolean = false;
 	displayedMaterielColumns = [
-		"vs_retard", "code", "libelle", "numero_serie", "main_categorie",  "actual_user",  "marque", "action"
+		"vs_retard", "code", "libelle", "numero_serie", "main_categorie",  "actual_user",  "common_stock", "marque", "action", 
 	];
 	selectedMateriel: Materiel = null;
 

@@ -1116,10 +1116,20 @@
 			"SHORTTITLE": "Active",
 			"TITLE": "Active"
 		},
+		"SHOW_INACTIVES": {
+			"LABEL": "Show inactive materials",
+			"SHORTITLE": "Inactive materials",
+			"TITLE": "Inactive materials"
+		},
 		"IS_STOCK_COMMUN": {
 			"LABEL": "Common stock",
 			"SHORTTITLE": "Common stock",
 			"TITLE": "Common stock"
+		},
+		"ONLY_COMMON_STOCK": {
+			"LABEL": "Common stock only",
+			"SHORTITLE": "Common stock only",
+			"TITLE": "Common stock only"
 		},
 		"IS_LOCATION": {
 			"LABEL": "Rental",
@@ -1830,6 +1840,11 @@
 			"LABEL": "Vehicle identification number",
 			"SHORTTITLE": "ID number",
 			"TITLE": "Vehicle identification number"
+		},
+		"ETAT":{
+			"LABEL": "Etat du matériel",
+			"SHORTTITLE": "Etat",
+			"TITLE": "Etat du matériel"
 		},
 		"VEHICULE_KM": {
 			"LABEL": "Number of kilometers traveled",

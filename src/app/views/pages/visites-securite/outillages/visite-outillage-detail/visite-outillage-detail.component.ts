@@ -100,6 +100,7 @@ export class VisiteOutillageDetailComponent implements OnInit, OnDestroy {
 			'salarie_id': [{ value: null, disabled: true }, Validators.required],
 			'entreprise_id': [{ value: null, disabled: true }, Validators.required],
 			'redacteur_id': [{ value: null, disabled: true }, Validators.required],
+      'etat_id': [{ value: null, disabled: true }, Validators.required],
 			'date_visite': [{ value: moment().format('YYYY-MM-DD'), disabled: true }, Validators.required],
 			'presence_non_conformite': [{ value: false, disabled: true }],
 			'has_rectification_imm': [{ value: false, disabled: true }],

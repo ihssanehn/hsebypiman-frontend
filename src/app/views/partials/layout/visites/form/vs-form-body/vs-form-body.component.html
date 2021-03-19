@@ -22,7 +22,22 @@
 			</div>
 		</div>
 	</div>
-	
+	<div class="row" *ngIf="etats && model && model != 'VsChantier'">
+		<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12" *ngIf="origin == 'add'; else showEtat">
+			<mat-label>{{'VISITES.ETAT.TITLE' | translate}}
+			</mat-label>
+			<mat-select class="form-control" formControlName="etat_id" name="etat_id">
+				<mat-option *ngFor="let etat of etats" [value]="etat.id">
+					{{etat.libelle}}
+				</mat-option>
+			</mat-select>
+		</mat-form-field>
+		<ng-template #showEtat>
+
+			<div class="tf-heading tf-heading--md">{{'VISITES.ETAT.TITLE' | translate}} : {{getEtat()}}</div>
+			
+		</ng-template>
+	</div>
 	<div class="row" *ngFor="let catQuestion of catQuestionsList; let i = index">
 		<div class="col-12">
 			<mat-expansion-panel [expanded]="isExpanded" [disabled]="isDisableToggle">

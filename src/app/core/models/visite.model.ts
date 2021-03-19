@@ -1,5 +1,5 @@
 
-import {Ar, Chantier, Type, Status, Question, Signature, Materiel, Outillage, Vehicule, CatQuestion, Document } from './'
+import {Ar, Chantier, Type, Status, Etat, Question, Signature, Materiel, Outillage, Vehicule, CatQuestion, Document } from './'
 import { User } from '../auth';
 
 export class VisiteChantier {
@@ -43,6 +43,8 @@ export class VisiteEpi {
     code?:String;
     salarie_id?:Number;
     redacteur_id?:Number;
+    etat_id?:Number;
+    etat?:Etat;
     date_visite?:Date;
     is_validated_redacteur?:boolean;
     is_validated_visite?:boolean;
@@ -73,6 +75,8 @@ export class VisiteOutillage {
     code?:String;
     salarie_id?:Number;
     redacteur_id?:Number;
+    etat_id?:Number;
+    etat?:Etat;
     date_visite?:Date;
     is_validated_redacteur?:boolean;
     is_validated_visite?:boolean;
@@ -105,6 +109,8 @@ export class VisiteVehicule {
     code?:String;
     salarie_id?:Number;
     redacteur_id?:Number;
+    etat_id?:Number;
+    etat?:Etat;
     date_visite?:Date;
     is_validated_redacteur?:boolean;
     is_validated_visite?:boolean;
@@ -143,6 +149,8 @@ export class Visite {
     entreprise_id?:Number;
     redacteur_id?:Number;
     date_visite?:Date;
+    etat_id?:Number;
+    etat?:Etat;
     is_validated_redacteur?:boolean;
     is_validated_visite?:boolean;
     validated_redacteur_at?:Date;

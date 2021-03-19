@@ -48,7 +48,7 @@
 		</mat-expansion-panel>
 	</mat-accordion>
 	
-	<tf-vs-form-body [visiteForm]="visiteForm" [catQuestionsList]="catQuestionsList" (dateUpdated)="onSubmit()" [origin]="'detail'" [isDisableToggle]="isDisableToggle" ></tf-vs-form-body>
+	<tf-vs-form-body [visiteForm]="visiteForm" [catQuestionsList]="catQuestionsList" [model]="'VsVehicule'" (dateUpdated)="onSubmit()" [origin]="'detail'" [isDisableToggle]="isDisableToggle" ></tf-vs-form-body>
 
 	<tf-vs-form-signatures [visiteForm]="visiteForm" [origin]="'detail'" (hseSigned)="onSubmit()" [canValidateHse]="canValidateHse" [isDisableToggle]="true" *ngIf="showSignatures"></tf-vs-form-signatures>
 

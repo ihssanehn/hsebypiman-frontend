@@ -91,6 +91,7 @@ export class VisiteVehiculeAddComponent implements OnInit {
     this.visiteForm.get('visitable_id').setValue(_vs.visitable_id);
     this.visiteForm.get('is_externe').setValue(_vs.is_externe);
     this.visiteForm.get('redacteur_id').setValue(_vs.redacteur_id);
+    this.visiteForm.get('etat_id').setValue(_vs.etat_id);
     this.visiteForm.get('presence_non_conformite').setValue(_vs.presence_non_conformite);
     this.visiteForm.get('has_rectification_imm').setValue(_vs.has_rectification_imm);
     this.visiteForm.get('avertissement').setValue(_vs.avertissement);
@@ -103,6 +104,7 @@ export class VisiteVehiculeAddComponent implements OnInit {
       'is_externe' : [{value : 0, disabled : false},Validators.required],
       //'entreprise_id': [{value:null, disabled:false}, Validators.required],
       'redacteur_id': [{value:this.currentUser.id, disabled:true}, Validators.required],
+      'etat_id': [{ value: null, disabled: false }, Validators.required],
       'date_visite': [moment().format('DD/MM/YYYY'), Validators.required],
       'presence_non_conformite': [{value:false, disabled: true}],
       'has_rectification_imm': [{value:false, disabled: true}],

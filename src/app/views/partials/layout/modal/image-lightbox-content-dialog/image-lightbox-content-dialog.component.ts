@@ -18,6 +18,7 @@ export class ImageLightboxContentDialogComponent implements OnInit{
   ngOnInit() {}
 
   ngAfterViewInit() {
+    console.log(this.data);
     this.currentSlide(this.data.selectedImgIndex+1);
   }
 
@@ -57,6 +58,7 @@ export class ImageLightboxContentDialogComponent implements OnInit{
     if (dots && dots.length > 0) {
       dots[this.slideIndex-1].className += " active";
     }
+
   }
 
 }

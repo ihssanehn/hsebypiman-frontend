@@ -21,7 +21,7 @@
 	</div>
 	<tf-portlet-body class="tf-portlet__body--fit" *ngIf="materiel">
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-5">
 				<div class="card">
 					<h3>{{'MATERIELS.CARD.GENERAL_INFOS.TITLE' | translate}}</h3>
 					<div class="box" style="flex:1">
@@ -36,6 +36,8 @@
 						<p><span class="label pull-left mr-2">{{'MATERIELS.FOURNISSEUR.TITLE' | translate}}</span><span *ngIf="materiel.fournisseur; else noData">{{materiel.fournisseur}}</span></p>
 						<p><span class="label pull-left mr-2">{{'MATERIELS.DATE_ENTREE.TITLE' | translate}}</span><span *ngIf="materiel.date_entree; else noData">{{materiel.date_entree | date:'dd/MM/yyyy'}}</span></p>
 						<p><span class="label pull-left mr-2">{{'MATERIELS.DATE_SORTIE.TITLE' | translate}}</span><span *ngIf="materiel.date_sortie; else noData">{{materiel.date_sortie | date:'dd/MM/yyyy'}}</span></p>
+						<p><span class="label pull-left mr-2">{{'MATERIELS.IS_ACTIVE.TITLE' | translate}}</span><span>{{materiel.is_active == 1 ? 'oui': 'non'}}</span></p>
+						<p><span class="label pull-left mr-2">{{'MATERIELS.IS_STOCK_COMMUN.TITLE' | translate}}</span><span>{{materiel.is_stock_commun == 1 ? 'oui': 'non'}}</span></p>
 						<p><span class="label pull-left mr-2">{{'MATERIELS.FORMATION_REQUISE.TITLE' | translate}}</span><span>{{materiel.formation_requise == 1 ? 'oui': 'non'}}</span></p>
 						<p><span class="label pull-left mr-2">{{'MATERIELS.HABILITATION_REQUISE.TITLE' | translate}}</span><span>{{materiel.habilitation_requise == 1 ? 'oui': 'non'}}</span></p>
 						<p><span class="label pull-left mr-2">{{'MATERIELS.HAS_CONTROLE.TITLE' | translate}}</span><span>{{materiel.has_controle == 1 ? 'oui': 'non'}}</span></p>
@@ -57,113 +59,196 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-6">
-				<div class="card">
-					<div class="box box-ar-vs" style="flex: 1;">
-						<h5><b>{{'MATERIELS.CARD.USER_TRACKING.TITLE' | translate}}</b><small class="pull-right">{{'MATERIELS.PERSONNELS_COUNT.SHORTTITLE' | translate}} : <span class="blue">{{materiel.salaries.length}}</span></small></h5>
-						<ng-container *ngIf="materiel.salaries.length > 0; else noSalaries">
-							<div class="row">
-								<div class="col-12 my-2">
-									<p><span class="label">{{'MATERIELS.ACTUAL_USER.TITLE' | translate}}</span></p>
+			<div class="col-md-7">
+				<div class="cards">
+					<div class="card">
+						<div class="box box-ar-vs" style="flex: 1;">
+							<h5><b>{{'MATERIELS.CARD.USER_TRACKING.TITLE' | translate}}</b><small class="pull-right">{{'MATERIELS.PERSONNELS_COUNT.SHORTTITLE' | translate}} : <span class="blue">{{materiel.salaries.length}}</span></small></h5>
+							<ng-container *ngIf="materiel.salaries.length > 0; else noSalaries">
+								<div class="row">
+									<div class="col-12 my-2">
+										<p><span class="label">{{'MATERIELS.ACTUAL_USER.TITLE' | translate}}</span></p>
+									</div>
+									<ng-container *ngIf="materiel.actual_user; else noUserInProgress">
+										<div class="col-4">
+											<p class="blue text-left">{{materiel.actual_user | fullName}}</p>
+										</div>
+										<div class="col-3">
+											<p class="blue text-center">{{'MATERIELS.READY.TITLE' | translate}} : {{materiel.actual_user?.pivot.date_pret | date:'dd/MM/yyyy'}}</p>
+										</div>
+										<div class="col-3">
+	
+										</div>
+										<div class="col-2">
+											<a class="pull-right" (click)="goToUserDetail(materiel.actual_user.id)" matTooltip="{{'ACTION.SHOW_USER' | translate}}">
+												<mat-icon color="primary">visibility</mat-icon>
+											</a>
+										</div>
+	
+										<div class="col-12" *ngIf="materiel.main_categorie?.code != 'VEHICULE'">
+											<button mat-raised-button class="btn-small pull-right" color="info" (click)="$event.stopPropagation(); openPretModal('return', materiel.actual_user.pivot)">{{'MATERIELS.ACTION.RETURN-MATERIEL' | translate}}</button>
+										</div>
+									</ng-container>
+									<ng-template #noUserInProgress>
+										<div class="col-12">{{'MATERIELS.CARD.USER_TRACKING.NO_CURRENT_USER' | translate}}</div>
+										<div class="col-12" *ngIf="materiel.main_categorie?.code != 'VEHICULE'">
+											<button mat-raised-button class="btn-small pull-right" color="info" (click)="$event.stopPropagation(); openPretModal('add')">{{'MATERIELS.ACTION.ASSIGN_MATERIEL' | translate}}</button>
+										</div>
+									</ng-template>
 								</div>
-								<ng-container *ngIf="materiel.actual_user; else noUserInProgress">
-									<div class="col-4">
-										<p class="blue text-left">{{materiel.actual_user | fullName}}</p>
+								<div class="row mt-2">
+									<div class="col-12 my-2">
+										<p><span class="label">{{'MATERIELS.PERSONNELS_HISTORY.TITLE' | translate}}</span></p>
 									</div>
-									<div class="col-3">
-										<p class="blue text-center">{{'MATERIELS.READY.TITLE' | translate}} : {{materiel.actual_user?.pivot.date_pret | date:'dd/MM/yyyy'}}</p>
-									</div>
-									<div class="col-3">
-
-									</div>
-									<div class="col-2">
-										<a class="pull-right" (click)="goToUserDetail(materiel.actual_user.id)" matTooltip="{{'ACTION.SHOW_USER' | translate}}">
-											<mat-icon color="primary">visibility</mat-icon>
-										</a>
-									</div>
-
-									<div class="col-12" *ngIf="materiel.main_categorie?.code != 'VEHICULE'">
-										<button mat-raised-button class="btn-small pull-right" color="info" (click)="$event.stopPropagation(); openPretModal('return', materiel.actual_user.pivot)">{{'MATERIELS.ACTION.RETURN-MATERIEL' | translate}}</button>
-									</div>
-								</ng-container>
-								<ng-template #noUserInProgress>
-									<div class="col-12">{{'MATERIELS.CARD.USER_TRACKING.NO_CURRENT_USER' | translate}}</div>
-									<div class="col-12" *ngIf="materiel.main_categorie?.code != 'VEHICULE'">
-										<button mat-raised-button class="btn-small pull-right" color="info" (click)="$event.stopPropagation(); openPretModal('add')">{{'MATERIELS.ACTION.ASSIGN_MATERIEL' | translate}}</button>
-									</div>
-								</ng-template>
-							</div>
-							<div class="row mt-2">
-								<div class="col-12 my-2">
-									<p><span class="label">{{'MATERIELS.PERSONNELS_HISTORY.TITLE' | translate}}</span></p>
-								</div>
-								<ng-container *ngIf="materiel.salaries.length > 0; else noArHistorique">
-									<ng-container *ngFor="let salarie of materiel.salaries">
-										<ng-container *ngIf="salarie.id != materiel.actual_user?.id">
-											<div class="col-4">
-												<p class="text-left">{{salarie | fullName}}</p>
-											</div>
-											<div class="col-3">
-												<p class="text-center">{{'MATERIELS.READY.TITLE' | translate}} : {{salarie.pivot.date_pret | date:'dd/MM/yyyy'}}</p>
-											</div>
-											<div class="col-3">
-												<p class="text-center">{{'MATERIELS.RETURN.TITLE' | translate}}: {{salarie.pivot.date_retour | date:'dd/MM/yyyy'}}</p>
-											</div>
-											<div class="col-2">
-												<a class="pull-right" (click)="goToUserDetail(salarie.id)" matTooltip="{{'ACTION.SHOW_USER' | translate}}">
-													<mat-icon color="primary">visibility</mat-icon>
-												</a>
-												<a *ngIf="materiel.main_categorie?.code != 'VEHICULE'" class="pull-right" (click)="$event.stopPropagation(); openPretModal('update', salarie.pivot)" matTooltip="{{'MATERIELS.ACTION.MODIFY_LOAN' | translate}}">
-													<mat-icon color="accent">edit</mat-icon>
-												</a>
-											</div>
+									<ng-container *ngIf="materiel.salaries.length > 0; else noArHistorique">
+										<ng-container *ngFor="let salarie of materiel.salaries">
+											<ng-container *ngIf="salarie.id != materiel.actual_user?.id">
+												<div class="col-4">
+													<p class="text-left">{{salarie | fullName}}</p>
+												</div>
+												<div class="col-3">
+													<p class="text-center">{{'MATERIELS.READY.TITLE' | translate}} : {{salarie.pivot.date_pret | date:'dd/MM/yyyy'}}</p>
+												</div>
+												<div class="col-3">
+													<p class="text-center">{{'MATERIELS.RETURN.TITLE' | translate}}: {{salarie.pivot.date_retour | date:'dd/MM/yyyy'}}</p>
+												</div>
+												<div class="col-2">
+													<a class="pull-right" (click)="goToUserDetail(salarie.id)" matTooltip="{{'ACTION.SHOW_USER' | translate}}">
+														<mat-icon color="primary">visibility</mat-icon>
+													</a>
+													<a *ngIf="materiel.main_categorie?.code != 'VEHICULE'" class="pull-right" (click)="$event.stopPropagation(); openPretModal('update', salarie.pivot)" matTooltip="{{'MATERIELS.ACTION.MODIFY_LOAN' | translate}}">
+														<mat-icon color="accent">edit</mat-icon>
+													</a>
+												</div>
+											</ng-container>
 										</ng-container>
 									</ng-container>
-								</ng-container>
-								<ng-template #noArHistorique>
-									{{'MATERIELS.CARD.USER_TRACKING.NO_HISTORY' | translate}}
-								</ng-template>
-							</div>
-						</ng-container>
-						<ng-template #noSalaries>
-							<div class="row">
-								<div class="col-12">
-									<p>{{'MATERIELS.CARD.USER_TRACKING.NO_LOAN' | translate}}</p>
+									<ng-template #noArHistorique>
+										{{'MATERIELS.CARD.USER_TRACKING.NO_HISTORY' | translate}}
+									</ng-template>
 								</div>
-								<div class="col-12" *ngIf="materiel.main_categorie?.code != 'VEHICULE'">
-									<button mat-raised-button color="info" class="btn-small" (click)="$event.stopPropagation(); openPretModal('add')">{{'MATERIELS.ACTION.ASSIGN_MATERIEL' | translate}}</button>
-								</div>
-							</div>
-						</ng-template>
-					</div>
-					<div class="box box-ar-vs" style="flex: 1;" *ngIf="materiel.vss">
-						<h5><b>{{'MATERIELS.CARD.VISITS_MONITORING.TITLE' | translate}}</b><small class="pull-right">{{'MATERIELS.VS_COUNT.SHORTTITLE' | translate}} : <span class="blue">{{materiel.vss.length}}</span></small></h5>
-						<div class="row">
-							<div class="col-md-12 my-2">
-								<p><span class="label">{{'MATERIELS.VSS.TITLE' | translate}}</span></p>
-							</div>
-							<ng-container *ngIf="materiel.vss.length > 0; else noVss">
-								<ng-container *ngFor="let vs of materiel.vss">
-									<div class="col-md-5">
-										<p class="text-left">{{vs.code}}</p>
-									</div>
-									<div class="col-md-5">
-										<p class="text-left">{{vs.date_visite | date:'dd/MM/yyyy'}}</p>
-									</div>
-									<div class="col-md-2 text-right"><a (click)="goToVsDetail(vs.id)" matTooltip="{{'ACTION.SHOW_VISIT' | translate}}">
-											<mat-icon color="primary">visibility</mat-icon>
-										</a></div>
-								</ng-container>
 							</ng-container>
-							<ng-template #noVss>
+							<ng-template #noSalaries>
 								<div class="row">
 									<div class="col-12">
-										<p>{{'MATERIELS.CARD.VISITS_MONITORING.NO_VISITS' | translate}}</p>
+										<p>{{'MATERIELS.CARD.USER_TRACKING.NO_LOAN' | translate}}</p>
+									</div>
+									<div class="col-12" *ngIf="materiel.main_categorie?.code != 'VEHICULE'">
+										<button mat-raised-button color="info" class="btn-small" (click)="$event.stopPropagation(); openPretModal('add')">{{'MATERIELS.ACTION.ASSIGN_MATERIEL' | translate}}</button>
 									</div>
 								</div>
 							</ng-template>
 						</div>
 					</div>
+					<div class="card">
+						<div class="box box-ar-vs" style="flex: 1;" *ngIf="materiel.vss">
+							<h5><b>{{'MATERIELS.CARD.VISITS_MONITORING.TITLE' | translate}}</b><small class="pull-right">{{'MATERIELS.VS_COUNT.SHORTTITLE' | translate}} : <span class="blue">{{materiel.vss.length}}</span></small></h5>
+							<div class="row">
+								<div class="col-md-12 my-2">
+									<ng-container *ngIf="materiel.vss.length > 0; else noVss">
+										
+										<table mat-table [dataSource]="materiel.vss" style="width: 100%;">
+	
+											<!-- code Column -->
+											<ng-container matColumnDef="code">
+												<th mat-header-cell *matHeaderCellDef >
+													{{'VISITES.CODE.TITLE' | translate}} 
+												</th>
+												<td mat-cell *matCellDef="let visite" class="pointer"> {{visite.code}} </td>
+											</ng-container>
+							
+											<!-- redacteur Column -->
+											<ng-container matColumnDef="redacteur">
+												<th mat-header-cell *matHeaderCellDef> 
+													{{'VISITES.REDACTEUR.TITLE' | translate}} 
+												</th>
+												<td mat-cell *matCellDef="let visite" class="pointer" > {{visite.redacteur ? visite.redacteur.fullname : visite.creator?.fullname }} </td>
+											</ng-container>
+							
+											<!-- visite Column -->
+											<ng-container matColumnDef="visite">
+												<th mat-header-cell *matHeaderCellDef>
+													{{'VISITES.VISITED.TITLE' | translate}}
+												</th>
+												<td mat-cell *matCellDef="let visite" class="pointer" > 
+													<span *ngIf="visite.visited.type != 'societe'; else societe_ee">{{visite.visited?.fullname}}</span>
+													<ng-template #societe_ee>
+														{{visite.visited}}
+													</ng-template>
+							
+												</td>
+											</ng-container>
+											
+											<!-- date_visite Column -->
+											<ng-container matColumnDef="date_visite">
+												<th mat-header-cell *matHeaderCellDef class="text-center"> 
+													{{'VISITES.DATE_VISITE.SHORTTITLE' | translate}} 
+												</th>
+												<td mat-cell *matCellDef="let visite" class="pointer text-center"> {{visite.date_visite | date:'dd/MM/yyyy'}} </td>
+											</ng-container>
+							
+											<!-- status Column -->
+											<ng-container matColumnDef="etat">
+												<th mat-header-cell *matHeaderCellDef class="text-center"> 
+														{{'VISITES.ETAT.SHORTTITLE' | translate}} 
+												</th>
+												<td mat-cell *matCellDef="let visite" class="pointer text-center"> {{visite.etat?.libelle}} </td>
+											</ng-container>
+							
+											<!-- ko_solved Column -->
+											<ng-container matColumnDef="ko_solved_count">
+												<th mat-header-cell *matHeaderCellDef class="text-center"> 
+													{{'VISITES.KO_SOLVED_COUNT.SHORTTITLE' | translate}} 
+												</th>
+												<td mat-cell *matCellDef="let visite" class="pointer text-center"> {{visite.ko_solved_count}} </td>
+											</ng-container>
+							
+											<!-- ko_unsolved Column -->
+											<ng-container matColumnDef="ko_unsolved_count">
+												<th mat-header-cell *matHeaderCellDef class="text-center"> 
+													{{'VISITES.KO_UNSOLVED_COUNT.SHORTTITLE' | translate}} 
+												</th>
+												<td mat-cell *matCellDef="let visite" class="pointer text-center"> {{visite.ko_unsolved_count}} </td>
+											</ng-container>
+							
+											<!-- docs Column -->
+											<ng-container matColumnDef="docs">
+												<th mat-header-cell *matHeaderCellDef class="text-center"> 
+													{{'REMONTEES.CARD.DOC.TITLE' | translate}} 
+												</th>
+												<td mat-cell *matCellDef="let visite" class="pointer text-center" >
+													<button mat-icon-button type="button" [disabled]="!visite.img_canvas && visite.photos.length == 0" matTooltip="{{'REMONTEES.CARD.DOC.TITLE' | translate}}" (click)="openDocsModal(visite)">
+														<mat-icon>perm_media</mat-icon>
+													</button>
+												</td>
+											</ng-container>
+							
+											<ng-container matColumnDef="action">
+												<th mat-header-cell *matHeaderCellDef></th>
+												<td mat-cell *matCellDef="let visite" class="text-right"> 
+													<a (click)="goToVsDetail(visite.id)" matTooltip="{{'ACTION.SHOW_VISIT' | translate}}">
+														<mat-icon color="primary">visibility</mat-icon>
+													</a>
+												</td>
+											</ng-container> 
+											<tr mat-header-row *matHeaderRowDef="displayedVisiteColumns"></tr>
+											<tr mat-row *matRowDef="let row; columns: displayedVisiteColumns;"></tr>
+										</table>
+	
+									</ng-container>
+									
+									<ng-template #noVss>
+										<div class="row">
+											<div class="col-12">
+												<p>{{'MATERIELS.CARD.VISITS_MONITORING.NO_VISITS' | translate}}</p>
+											</div>
+										</div>
+									</ng-template>
+								</div>
+							</div>
+						</div>
+					</div>
+
 				</div>
 			</div>
 		</div>

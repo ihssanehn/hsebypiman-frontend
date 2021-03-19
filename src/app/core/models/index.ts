@@ -4,6 +4,7 @@ export { Action } from './action.model';
 export { Type } from './type.model';
 export { Categorie } from './categorie.model';
 export { Status } from './status.model';
+export { Etat } from './etat.model';
 export { Materiel } from './materiel.model';
 export { Risque } from './risque.model';
 export { Remontee } from './remontee.model';

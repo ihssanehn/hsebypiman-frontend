@@ -28,6 +28,32 @@ export class MaterielFiltersComponent implements OnInit, AfterViewInit
   categories: Categorie[];
   clients: String[];
   statuses;
+  listActives = [
+    {
+      label:"Actifs",
+      value:""
+    },
+    {
+      label:"Inactifs",
+      value:""
+    },
+  ];
+
+  listStocks = [
+    {
+      label:"Tout",
+      value:null
+    },
+    {
+      label:"Non",
+      value:""
+    },
+    {
+      label:"Seulement",
+      value:""
+    },
+  ];
+
 
   @Output() change = new EventEmitter();
   constructor(
@@ -87,6 +113,8 @@ export class MaterielFiltersComponent implements OnInit, AfterViewInit
       date_entree_end:[null],
       date_sortie_start:[null],
       date_sortie_end:[null],
+      show_inactives:[null],
+      only_common_stock:[null],
     })
   }
  
@@ -134,5 +162,15 @@ export class MaterielFiltersComponent implements OnInit, AfterViewInit
 
   get categorie_ids(): FormArray{
     return this.filterForm.get('categorie_ids') as FormArray;
+  }
+
+  onCheckChange(event, target){
+    var _value = event.checked ? 1 : 0;
+    this.filterForm.get(target).setValue(_value)
+  }
+  toggleCheck(target){
+    var _value = (!this.filterForm.get(target).value || this.filterForm.get(target).value == 0) ? 1 : 0;
+    console.log(_value);
+    this.filterForm.get(target).setValue(_value)
   }
 }

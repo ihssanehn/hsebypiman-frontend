@@ -37,6 +37,7 @@
             
             .tf-portlet__body{
                 padding: 20px;
+                
                 .card{
                     padding: 2em 2em 0;    
                     height: 100%;
@@ -68,6 +69,26 @@
                             }
                         }
                     }
+                }
+                .cards{
+                    height: 100%;
+                    display: flex;
+                    flex-flow: column nowrap;
+                    align-items: fill;
+                    justify-content: space-between;
+                    .card{
+                        height: auto;  
+                        flex: 1;
+                        margin-top: 5px;
+                        margin-bottom: 5px;
+                        &:first-child {
+                            margin-top: 0;
+                        }  
+                        &:last-child {
+                            margin-bottom: 0;
+                        }  
+                    }
+                    
                 }
 
             }

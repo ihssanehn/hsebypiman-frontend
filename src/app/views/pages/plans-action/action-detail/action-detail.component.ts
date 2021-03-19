@@ -291,13 +291,14 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 	}
 
 	goToVsDetail(id){
-		var actionable_type = this.action.actionable_type;
-		switch(actionable_type){
-			case 'VsChantier': var path = 'chantiers';break;
-			case 'VsEpi': var path = 'epis';break;
-			case 'VsOutillage': var path = 'outillages';break;
-			case 'VsVehicule': var path = 'vehicules';break;
+		var rvs_type = this.action.actionable.rvs_type;
+		switch(rvs_type){
+			case 'App\\Models\\VsChantier': var path = 'chantiers';break;
+			case 'App\\Models\\VsEpi': var path = 'epis';break;
+			case 'App\\Models\\VsOutillage': var path = 'outillages';break;
+			case 'App\\Models\\VsVehicule': var path = 'vehicules';break;
 		}
+
 		this.router.navigateByUrl('visites-securite/'+path+'/detail/'+id);
 	}
 

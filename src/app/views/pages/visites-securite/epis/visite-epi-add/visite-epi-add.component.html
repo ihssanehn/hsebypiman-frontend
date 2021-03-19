@@ -18,7 +18,7 @@
 		<!-- <tf-vs-form-head [visiteForm]="visiteForm" [origin]="'detail'" *ngIf="visiteForm.get('visitable_id').value"></tf-vs-form-head> -->
 	</tf-portlet>
 	
-	<tf-vs-form-body [visiteForm]="visiteForm" [catQuestionsList]="catQuestionsList" [origin]="'add'" [isDisableToggle]="true" *ngIf="questionsDisplayed"></tf-vs-form-body>
+	<tf-vs-form-body [visiteForm]="visiteForm" [catQuestionsList]="catQuestionsList" [model]="'VsEpi'" [origin]="'add'" [isDisableToggle]="true" *ngIf="questionsDisplayed"></tf-vs-form-body>
 	
 	<div *ngIf="!showSignatures">
 		<button mat-raised-button [disabled]="!questionsAnswerd()" (click)="displaySignature()" color="success" class="pull-right">
