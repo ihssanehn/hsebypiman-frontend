@@ -26,6 +26,7 @@ export class EntrepriseDetailComponent implements OnInit, OnDestroy {
 	loaded = false;
 	editMode: boolean = false;
 	displayedEEChantiersColumns: Array<any>;
+	displayedEEInterimairesColumns: Array<any>
 	// Private properties
 	private subscriptions: Subscription[] = [];
 
@@ -75,6 +76,13 @@ export class EntrepriseDetailComponent implements OnInit, OnDestroy {
 				this.displayedEEChantiersColumns = [
 					'number', 'name', 'client', 'status', 'charge_affaire', 
 					'date_demarrage', 'date_demarrage_ee', 'interimaire'
+				];
+				this.displayedEEInterimairesColumns = [
+					'prenom',
+					'nom',
+					'email',
+					'chantiers',
+					'access',
 				];
 				this.cdr.markForCheck();
 
@@ -126,14 +134,36 @@ export class EntrepriseDetailComponent implements OnInit, OnDestroy {
 		this.router.navigateByUrl('entreprises/edit/'+id);
 	}
 	deleteEntreprise(id){
-		Swal.fire({
-			title: this.translate.instant("NOTIF.FEATURE_NOT_IMPLEMENTED.TITLE"),
-			showConfirmButton: false,
-            timer: 1500
-		})
+		if(this.entreprise.chantiers.length > 0){
+			Swal.fire({
+				title: this.translate.instant("EES.NOTIF.EE_NOT_DELETED.LABEL"),
+				showConfirmButton: false,
+				timer: 1500
+			})
+		}else{
+			this.entrepriseService.delete(id).toPromise().then(resp=>{
+				Swal.fire({ icon: 'success', 
+            title:this.translate.instant("EES.NOTIF.EE_DELETED.LABEL"), 
+            showConfirmButton: false,
+            timer: 1500 
+          })
+				this.goBackWithId();
+			})
+		}
 	}
 	viewChantier(chantierId) {
 		this.router.navigateByUrl('chantiers/detail/' + chantierId);
+	}
+	makeAccount(interimaire){
+			if(interimaire.has_profile){
+				
+				this.router.navigateByUrl('/admin/users/edit/' + interimaire.has_profile);
+			}else{
+				// let route = this.router.config.find(r => r.path === 'admin/users/add');
+				// console.log(this.router)
+				// route.data = { interimaire: interimaire };
+				this.router.navigateByUrl('/admin/users/add', {state:{interimaire:interimaire}});
+			}
 	}
 
 }

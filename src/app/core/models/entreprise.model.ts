@@ -10,5 +10,6 @@ export class Entreprise {
     pivot?:Array<any>;
     creator_id?:number;
     creator?:User;
-    chantiers?:Chantier;
+    chantiers?:Chantier[];
+    chantiers_count?:number;
 }

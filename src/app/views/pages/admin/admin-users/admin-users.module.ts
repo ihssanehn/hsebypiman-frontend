@@ -82,6 +82,7 @@ const routes: Routes = [
 			{
 				path: 'add',
 				component: UserAddComponent,
+				data: {interimaire: null}
 			},
 			{
 				path: 'detail',

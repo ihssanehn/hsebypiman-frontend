@@ -37,7 +37,7 @@ export class MaterielTypesAdminComponent extends AdminTemplateComponent implemen
       title : this.translate.instant("MATERIELS.NOTIF.ELEMENT_NOT_DELETED.SHORTTITLE"),
       deletedMessage: this.translate.instant("MATERIELS.NOTIF.ELEMENT_NOT_DELETED.TITLE"),
       deletedChildMessage: this.translate.instant("MATERIELS.NOTIF.ELEMENT_NOT_DELETED.LABEL"),
-      collapsed : false,
+      collapsed : true,
       canUpdateTitle: false,
       titleOject: null,
       childCol : 12

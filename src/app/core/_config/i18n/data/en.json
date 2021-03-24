@@ -782,6 +782,7 @@
 			"COMPANY_MONITORING": {
 				"LABEL": "Site monitoring",
 				"NO_CHANTIER": "This company has not been assigned to any site",
+				"NO_INTERIMAIRE": "This company does not have any interim",
 				"TITLE": "Company monitoring"
 			},
 			"GENERAL_INFOS": {
@@ -866,6 +867,16 @@
 				"LABEL": "Unable to delete because the selection is assigned to one or more companies",
 				"SHORTTITLE": "Company types",
 				"TITLE": "Unable to delete because the selection includes an element assigned to one or more companies"
+			},
+			"EE_NOT_DELETED": {
+				"LABEL": "Unable to delete because the selection is assigned to one or more chantiers",
+				"SHORTTITLE": "Company types",
+				"TITLE": "Unable to delete because the selection includes an element assigned to one or more chantiers"
+			},
+			"EE_DELETED": {
+				"LABEL": "Company deleted successfully",
+				"SHORTTITLE": "Company deleted successfully",
+				"TITLE": "Company deleted successfully"
 			},
 			"LOADING": {
 				"TITLE": "Loading Company"
@@ -980,10 +991,10 @@
 	},
 	"MATERIELS": {
 		"ACTION": {
-			"ADD_MATERIAL_TYPE": "Add a material type",
-			"ASSIGN_MATERIEL": "Assign material",
+			"ADD_MATERIAL_TYPE": "Add an equipment's type",
+			"ASSIGN_MATERIEL": "Assign equipment",
 			"MODIFY_LOAN": "modify the loan",
-			"RETURN-MATERIEL": "Return material"
+			"RETURN-MATERIEL": "Return equipment"
 		},
 		"ACTUAL_USER": {
 			"LABEL": "Current user",
@@ -1028,24 +1039,24 @@
 		},
 		"DASH": {
 			"LATE_MATERIAL": {
-				"TITLE": "Late material"
+				"TITLE": "Late equipment"
 			},
 			"MATERIEL": {
 				"AVAILABLE": {
-					"TITLE": "Material available"
+					"TITLE": "Equipment available"
 				}
 			},
 			"MATERIELS_BY_TYPE": {
-				"TITLE": "Materials by type"
+				"TITLE": "Equipments by type"
 			},
 			"MATERIEL_ENTRY_EVOLUTION": {
-				"TITLE": "Evolution of material entry"
+				"TITLE": "Evolution of equipment entry"
 			},
 			"MATERIEL_LOAN": {
-				"TITLE": "Material on loan"
+				"TITLE": "Equipment on loan"
 			},
 			"MATERIEL_NO": {
-				"TITLE": "Material"
+				"TITLE": "Equipment"
 			},
 			"VISITS_NO": {
 				"TITLE": "Number of visits"
@@ -1117,9 +1128,9 @@
 			"TITLE": "Active"
 		},
 		"SHOW_INACTIVES": {
-			"LABEL": "Show inactive materials",
-			"SHORTITLE": "Inactive materials",
-			"TITLE": "Inactive materials"
+			"LABEL": "Show inactive equipments",
+			"SHORTITLE": "Inactive equipments",
+			"TITLE": "Inactive equipments"
 		},
 		"IS_STOCK_COMMUN": {
 			"LABEL": "Common stock",
@@ -1159,11 +1170,11 @@
 		"NOTIF": {
 			"ELEMENT_NOT_DELETED": {
 				"LABEL": "Unable to delete because the selection is assigned to one or more equipment",
-				"SHORTTITLE": "Types of material",
+				"SHORTTITLE": "Types of equipment",
 				"TITLE": "Unable to delete because the selection includes an element assigned to one or more equipment"
 			},
 			"LOADING": {
-				"TITLE": "Loading Material"
+				"TITLE": "Loading Equipment"
 			},
 			"LOAN_CREATED": {
 				"TITLE": "Loan created successfully"
@@ -1172,13 +1183,13 @@
 				"TITLE": "Loan updated successfully"
 			},
 			"MATERIEL_CREATED": {
-				"TITLE": "Material successfully created"
+				"TITLE": "Equipment successfully created"
 			},
 			"MATERIEL_UPDATED": {
-				"TITLE": "Material updated successfully"
+				"TITLE": "Equipment updated successfully"
 			},
 			"MATERIEL_TYPE_ARCHIVED": {
-				"TITLE": "Type of material successfully archived"
+				"TITLE": "Type of equipment successfully archived"
 			},
 			"ELEMENT_ARCHIVED": {
 				"TITLE": "Item is archived successfully"
@@ -1248,7 +1259,7 @@
 			"NEWAR": "New risk analysis",
 			"NEWCHANTIER": "New site",
 			"NEWENTREPRISE": "New business",
-			"NEWMATERIEL": "New material",
+			"NEWMATERIEL": "New equipment",
 			"NEWREMONTEE": "New QHSE lift",
 			"NEWVS": "New safety visit"
 		},
@@ -1304,10 +1315,10 @@
 			"LIST": "List of news flashes"
 		},
 		"SUB_MATERIELS": {
-			"ADD": "Add material",
+			"ADD": "Add equipment",
 			"DETAIL": "Equipment detail",
-			"EDIT": "Modify the material",
-			"LIST": "Material list"
+			"EDIT": "Modify the equipment",
+			"LIST": "Equipment list"
 		},
 		"SUB_MODULES": {
 			"ADD": "Add a module",
@@ -1546,6 +1557,35 @@
 		},
 		"VS_CONCERNED": {
 			"TITLE": "Security visit concerned"
+		}
+	},
+	"ETATS":{
+		"NOTIF": {
+			"LOADING":{
+				"TITLE": "Loading list"
+			},
+			"ETAT_DELETE_CONFIRMATION":{
+				"TITLE": "You will permanently delete this element",
+				"LABEL": "Are you sure you want to continue ?"
+			},
+			"LIFT_UPDATED":{
+				"TITLE": "Element deleted successfully"
+			},
+			"LIFT_CREATED":{
+				"TITLE": "Element created successfully"
+			},
+			"LIFT_TYPE_ARCHIVED":{
+				"TITLE": "Element archieved successfully"
+			},
+			"ELEMENT_NOT_DELETED":{
+				"TITLE": "Unable to delete because the selection includes an element assigned to one or more equipments",
+				"SHORTTITLE": "Unable to delete",
+				"LABEL": "Unable to delete because the selection includes an element assigned to one or more equipments"
+			},
+			"ETAT_DELETED":{
+				"TITLE": "Element deleted successfully"
+			},
+			"NO_ETAT": "No element"
 		}
 	},
 	"REMONTEES": {
@@ -1808,6 +1848,11 @@
 			"SHORTTITLE": "Virtual user",
 			"TITLE": "Virtual user (does not appear in the list of employees)"
 		},
+		"ACCOUNT": {
+			"LABEL": "User account",
+			"SHORTTITLE": "User account",
+			"TITLE": "User account"
+		},
 		"VIRTUELS": {
 			"LABEL": "Virtual Account",
 			"SHORTTITLE": "Virtual Account",
@@ -1842,9 +1887,9 @@
 			"TITLE": "Vehicle identification number"
 		},
 		"ETAT":{
-			"LABEL": "Etat du matériel",
-			"SHORTTITLE": "Etat",
-			"TITLE": "Etat du matériel"
+			"LABEL": "Condition of the equipment",
+			"SHORTTITLE": "Condition",
+			"TITLE": "Condition of the equipment"
 		},
 		"VEHICULE_KM": {
 			"LABEL": "Number of kilometers traveled",
@@ -1951,7 +1996,7 @@
 					"TITLE": "You cannot select an employee if a company is already selected"
 				},
 				"MATERIEL_SELECTED": {
-					"TITLE": "You cannot select an employee if a material is already selected"
+					"TITLE": "You cannot select an employee if an equipment is already selected"
 				}
 			},
 			"CANNOT_SELECT_ENTREPRISE": {
@@ -1994,7 +2039,7 @@
 				"TITLE": "Deletion impossible because the form is assigned to one or more visits"
 			},
 			"NO_MATERIEL_ASSOCIATED_TO_EMPLOYEE": {
-				"TITLE": "No material associated with this employee"
+				"TITLE": "No equipment associated with this employee"
 			},
 			"VISIT_CREATED": {
 				"TITLE": "Visit successfully created"

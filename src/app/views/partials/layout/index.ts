@@ -92,6 +92,7 @@ export { SalarieMetricsAdminComponent } from './admins/salarie-metrics-admin/sal
 export { SalarieAdminListPortletComponent } from './admins/salarie-admin-list-portlet/salarie-admin-list-portlet.component';
 export { EntrepriseTypesAdminComponent } from './admins/entreprise-types-admin/entreprise-types-admin.component';
 export { RemonteeTypesAdminComponent } from './admins/remontee-types-admin/remontee-types-admin.component';
+export { MaterielEtatsAdminComponent } from './admins/materiel-etats-admin/materiel-etats-admin.component';
 export { MaterielTypesAdminComponent } from './admins/materiel-types-admin/materiel-types-admin.component';
 export { MaterielTypesAdminPortletComponent } from './admins/materiel-types-admin-portlet/materiel-types-admin-portlet.component';
 export { VisiteQuestionsVehiculeAdminComponent } from './admins/visite-questions-vehicule-admin/visite-questions-vehicule-admin.component';

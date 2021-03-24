@@ -3,8 +3,8 @@ import { Personnel } from '@app/core/models';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Location } from '@angular/common';
 import { FormStatus } from '@app/core/_base/crud/models/form-status';
-import { Router } from '@angular/router';
-import { UserService } from '@app/core/services';
+import { Router, ActivatedRoute } from '@angular/router';
+import { UserService, PersonnelService } from '@app/core/services';
 import Swal from 'sweetalert2';
 import { extractErrorMessagesFromErrorResponse } from '@app/core/_base/crud';
 import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
@@ -24,6 +24,7 @@ export class UserAddComponent implements OnInit {
   formloading: Boolean = false;
   loaded = false;
   errors;
+  _state : any;
 
 
   constructor(
@@ -34,12 +35,18 @@ export class UserAddComponent implements OnInit {
     private location: Location,
     private dateFrToEnPipe:DateFrToEnPipe,
     private dateEnToFrPipe:DateEnToFrPipe,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private personnelService: PersonnelService,
   ) { }
 
   ngOnInit() {
     this.user = new Personnel();
     this.createForm();
+
+    this._state = this.location.getState() as any;
+    if(this._state.interimaire){
+      this.patchForm(this._state.interimaire);
+    }
   }
 
   createForm() {
@@ -65,6 +72,31 @@ export class UserAddComponent implements OnInit {
     });
     this.loaded = true;
     this.setDynamicForm();
+  }
+
+  patchForm(interimaire){
+    this.personnelService.getUserById(interimaire.id).toPromise().then(res=>{
+      var perso = res.result.data as any;
+
+      this.parseDates(perso, 'EnToFr');
+      this.userForm.patchValue({
+        is_virtual:perso.is_virtual,
+        civilite:perso.civilite == 'M' ? 'M.' : 'Mme',
+        nom:perso.nom,
+        prenom:perso.prenom,
+        date_naissance:perso.date_naissance,
+        email:perso.email,
+        telephone:perso.telephone,
+        date_entree:perso.date_entree,
+        date_sortie:perso.date_sortie,
+        nom_urgence:perso.nom_urgence,
+        telephone_urgence:perso.telephone_urgence,
+        lien_parente_urgence:perso.lien_parente_urgence,
+        rqth:perso.rqth,
+        date_visite_medicale_passed:perso.date_visite_medicale_passed,
+        date_visite_medicale_next:perso.date_visite_medicale_next,
+      });
+    })
   }
 
   setDynamicForm(){
@@ -136,7 +168,9 @@ export class UserAddComponent implements OnInit {
       let form = {...this.userForm.getRawValue()};
       this.parseDates(form, 'FrToEn');
       this.formStatus.onFormSubmitting();
-  
+      if(this._state.interimaire){
+        form.personnel_id = this._state.interimaire.id;
+      }
 			this.UserService.createUser(form)
         .toPromise()
         .then((res) => {

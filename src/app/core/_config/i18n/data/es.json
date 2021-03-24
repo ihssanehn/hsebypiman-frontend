@@ -782,6 +782,7 @@
 			"COMPANY_MONITORING": {
 				"LABEL": "",
 				"NO_CHANTIER": "",
+				"NO_INTERIMAIRE": "Cette entreprise n'a pas d'intérimaire",
 				"TITLE": ""
 			},
 			"GENERAL_INFOS": {
@@ -866,6 +867,16 @@
 				"LABEL": "",
 				"SHORTTITLE": "",
 				"TITLE": ""
+			},
+			"EE_NOT_DELETED": {
+				"LABEL": "Suppression impossible car la sélection est affectée à un ou plusieurs chantiers",
+				"SHORTTITLE": "Types d'entreprise",
+				"TITLE": "Suppression impossible car la sélection comprend un élément affecté à un ou plusieurs chantiers"
+			},
+			"EE_DELETED": {
+				"LABEL": "L'entreprise a bien été supprimée",
+				"SHORTTITLE": "L'entreprise a bien été supprimée",
+				"TITLE": "L'entreprise a bien été supprimée"
 			},
 			"LOADING": {
 				"TITLE": ""
@@ -1548,6 +1559,35 @@
 			"TITLE": ""
 		}
 	},
+	"ETATS":{
+		"NOTIF": {
+			"LOADING":{
+				"TITLE": "Liste en cours de chargement"
+			},
+			"ETAT_DELETE_CONFIRMATION":{
+				"TITLE": "Vous allez supprimer cet état de façon définitive",
+				"LABEL": "Êtes-vous sûr de vouloir continuer ?"
+			},
+			"LIFT_UPDATED":{
+				"TITLE": "Élément mis à jour avec succès"
+			},
+			"LIFT_CREATED":{
+				"TITLE": "Élément créée avec succès"
+			},
+			"LIFT_TYPE_ARCHIVED":{
+				"TITLE": "Élément archivée avec succès"
+			},
+			"ELEMENT_NOT_DELETED":{
+				"TITLE": "Suppression impossible car la selection comprend un élément affecté à une ou plusieurs visite matériel",
+				"SHORTTITLE": "Suppression impossible",
+				"LABEL": "Suppression impossible car la selection est affectée à une ou plusieurs visite matériel"
+			},
+			"ETAT_DELETED":{
+				"TITLE": "L'élément a bien été supprimé"
+			},
+			"NO_ETAT": "Aucun état"
+		}
+	},
 	"REMONTEES": {
 		"NOTIF": {
 			"LOADING":{
@@ -1807,6 +1847,11 @@
 			"LABEL": "Compte virtuel",
 			"SHORTTITLE": "Utilisateur virtuel",
 			"TITLE": "Utilisateur virtuel (n'apparait pas dans la liste des salariés)"
+		},
+		"ACCOUNT": {
+			"LABEL": "Compte utilisateur",
+			"SHORTTITLE": "Compte utilisateur",
+			"TITLE": "Compte utilisateur"
 		},
 		"VIRTUELS": {
 			"LABEL": "Comptes virtuels",

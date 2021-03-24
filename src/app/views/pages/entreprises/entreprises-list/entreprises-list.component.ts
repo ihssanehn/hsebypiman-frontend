@@ -103,11 +103,23 @@ export class EntreprisesListComponent implements OnInit, AfterViewInit {
 		this.router.navigateByUrl('entreprises/edit/' + entrepriseId);
 	}
 	deleteEntreprise(entrepriseId) {
-		Swal.fire({
-			title: this.translate.instant("NOTIF.FEATURE_NOT_IMPLEMENTED.TITLE"),
-			showConfirmButton: false,
-			timer: 1500
-		})
+		var entreprise = this.entreprisesList.data.filter(x=>x.id == entrepriseId)[0];
+		if(entreprise.chantiers_count > 0){
+			Swal.fire({
+				title: this.translate.instant("EES.NOTIF.EE_NOT_DELETED.LABEL"),
+				showConfirmButton: false,
+				timer: 1500
+			})
+		}else{
+			this.entrepriseService.delete(entrepriseId).toPromise().then(resp=>{
+				Swal.fire({ icon: 'success', 
+            title:this.translate.instant("EES.NOTIF.EE_DELETED.LABEL"), 
+            showConfirmButton: false,
+            timer: 1500 
+          })
+					this.getEntreprises();
+			})
+		}
 	}
 
 	// Au click, défini order by et order way. Si le order_by est déjà actif, toggle du order_way. Sinon, order_way asc par défaut
