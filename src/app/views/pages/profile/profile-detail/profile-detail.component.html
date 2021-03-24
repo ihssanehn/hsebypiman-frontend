@@ -21,12 +21,12 @@
 						<span></span>
 					</div>
 					<div class="box box-coords">
-						<h5><b>À propos de l'utilisateur</b></h5>
+						<h5><b>{{'USERS.CARD.ABOUT_USER.TITLE' | translate}}</b></h5>
 						<p><span class="label pull-left mr-2">{{'COMMON.LASTNAME.LABEL' | translate}}</span><span class="" *ngIf="user.nom; else noDataFound">{{user.nom}}</span></p>
 						<p><span class="label pull-left mr-2">{{'COMMON.FIRSTNAME.LABEL' | translate}}</span><span class="" *ngIf="user.prenom; else noDataFound">{{user.prenom}}</span></p>
 						<p *ngIf="user.is_virtual == 0"><span class="label pull-left mr-2">{{'COMMON.BIRTHDAY.LABEL' | translate}}</span><span class="" *ngIf="user.date_naissance; else noDataFound">{{user.date_naissance | date:'dd/MM/yyyy'}}</span></p>
 						<p *ngIf="user.is_virtual == 0"><span class="label pull-left mr-2">{{'COMMON.FONCTION.LABEL' | translate}}</span><span class="" *ngIf="user.fonction; else noDataFound">{{user.fonction?.libelle}}</span></p>
-
+						<p *ngIf="user.is_virtual == 0"><span class="label pull-left mr-2">{{'COMMON.MANAGER.LABEL' | translate}}</span><span class="" >{{user.manager | fullName}}</span></p>
 					</div>
 					<div class="tf-divider">
 						<span></span>

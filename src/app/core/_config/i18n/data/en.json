@@ -667,6 +667,10 @@
 			"LABEL": "Last name",
 			"TITLE": "Last name"
 		},
+		"MANAGER": {
+			"LABEL": "Manager",
+			"TITLE": "Manager"
+		},
 		"NAME": {
 			"LABEL": "Name",
 			"TITLE": "Name"
