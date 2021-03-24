@@ -60,11 +60,8 @@
                                     <mat-select class="form-control" placeholder="" formControlName="visitable_id"
                                         [required]="isFieldRequired('visitable_id')">
                                         <mat-option *ngFor="let materiel of materiels" [value]="materiel.id">
-                                            <span *ngIf="model == 'VsVehicule'">
+                                            <span>
                                                 {{materiel.numero_serie+' - '+materiel.libelle+' - '+materiel.categorie.libelle}}
-                                            </span>
-                                            <span *ngIf="model != 'VsVehicule'">
-                                                {{ materiel.libelle+' - '+materiel.categorie.libelle }}
                                             </span>
                                         </mat-option>
                                     </mat-select>
