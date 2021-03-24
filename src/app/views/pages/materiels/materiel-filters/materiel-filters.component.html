@@ -18,7 +18,7 @@
 						</button>
 					</mat-form-field>
 					<mat-form-field class="col-3 st-group" floatLabel="always" appearance="none" >
-						<span class="st-label pointer" (click)="toggleCheck('show_inactives')">{{'MATERIELS.SHOW_INACTIVES.TITLE' | translate}}</span>
+						<span class="st-label pointer" (click)="toggleCheck('show_inactives')">{{'MATERIELS.SHOW_INACTIVES.LABEL' | translate}}</span>
 						<mat-slide-toggle id="show_inactives" [checked]="filterForm.get('show_inactives').value == 1" (change)="onCheckChange($event, 'show_inactives')"></mat-slide-toggle>
 						<textarea matInput hidden></textarea>
 					</mat-form-field>
