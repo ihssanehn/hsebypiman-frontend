@@ -2217,6 +2217,9 @@
 		"TRAINING": {
 			"TITLE" : "Training"
 		},
+		"NO_TRAINING": {
+			"TITLE": "No training found"
+		},
 		"COMPLETION_DATE": {
 			"TITLE" : "Date of completion"
 		},

@@ -2221,6 +2221,9 @@
 		"TRAINING": {
 			"TITLE" : "Training"
 		},
+		"NO_TRAINING": {
+			"TITLE": "No training fund"
+		},
 		"COMPLETION_DATE": {
 			"TITLE" : "Date of completion"
 		},

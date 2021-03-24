@@ -2221,6 +2221,9 @@
 		"TRAINING": {
 			"TITLE" : "Training"
 		},
+		"NO_TRAINING": {
+			"TITLE": "Aucune formation suivie sur la période"
+		},
 		"COMPLETION_DATE": {
 			"TITLE" : "Date of completion"
 		},
