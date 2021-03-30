@@ -12,4 +12,5 @@ export class Entreprise {
     creator?:User;
     chantiers?:Chantier[];
     chantiers_count?:number;
+    interimaires?:Array<any>;
 }

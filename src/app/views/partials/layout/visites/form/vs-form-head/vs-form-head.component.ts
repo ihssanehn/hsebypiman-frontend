@@ -110,7 +110,7 @@ export class VsFormHeadComponent implements OnInit {
   }
 
   async getInterimaires(){
-    var res = await this.userService.getAll({'contrat_code':'STAGIAIRE', 'paginate':false}).toPromise();
+    var res = await this.userService.getAll({'contrat_code':'INTERIMAIRE', 'paginate':false}).toPromise();
     if(res){
       this.interimairesList = res.result.data;
     }
@@ -184,7 +184,7 @@ export class VsFormHeadComponent implements OnInit {
             this.visiteForm.get('interimaire_id').setValue(null);
             this.visiteForm.get('interimaire_id').setValidators(Validators.required);
             
-            this.getInterimaires();
+            this.getEntrepriseInterimaires(entreprise_id);
   
           }else{
             this.visiteForm.get('interimaire_id').setValue(null);
@@ -207,7 +207,15 @@ export class VsFormHeadComponent implements OnInit {
 
     }
   }
-  
+
+  async getEntrepriseInterimaires(entrepriseId) {
+    var res = await this.entrepriseService.get(entrepriseId).toPromise();
+    if(res){
+      var entreprise = res.result.data;
+      this.interimairesList = entreprise.interimaires;
+    }
+    this.cdr.markForCheck();
+  }
   
   isExterne() {
     return this.visiteForm.get('is_externe').value == 1;
