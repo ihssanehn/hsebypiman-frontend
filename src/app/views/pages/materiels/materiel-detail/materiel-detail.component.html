@@ -171,7 +171,7 @@
 													{{'VISITES.VISITED.TITLE' | translate}}
 												</th>
 												<td mat-cell *matCellDef="let visite" class="pointer" > 
-													<span *ngIf="visite.visited.type != 'societe'; else societe_ee">{{visite.visited?.fullname}}</span>
+													<span *ngIf="visite.visited?.type != 'societe'; else societe_ee">{{visite.visited?.fullname}}</span>
 													<ng-template #societe_ee>
 														{{visite.visited}}
 													</ng-template>
