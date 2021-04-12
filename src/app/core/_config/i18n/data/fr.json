@@ -1198,6 +1198,9 @@
 			},
 			"ELEMENT_ARCHIVED": {
 				"TITLE": "Élément est archivé avec succès"
+			},
+			"NOTHING_FOUND": {
+				"TITLE" : "Aucun matériel ne correspond aux critères de recherche."
 			}
 		},
 		"NUMERO_SERIE": {

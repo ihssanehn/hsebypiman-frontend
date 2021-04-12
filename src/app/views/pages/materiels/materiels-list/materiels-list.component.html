@@ -13,7 +13,7 @@
 				<button class="pull-right btn-small mb-4" mat-raised-button color="info" (click)="exportList()">{{'ACTION.EXPORT' | translate}}</button>
 			</div>
 		</div>
-		<div class="table-responsive">
+		<div class="table-responsive" *ngIf="materielsList.data.length > 0; else noMaterielFind">
 			<table mat-table [dataSource]="materielsList.data">
 
 				<!-- vs_retard Column -->
@@ -111,6 +111,9 @@
 				<tr mat-row class="highlight-row" *matRowDef="let row; columns: displayedMaterielColumns;"></tr>
 			</table>
 		</div>
+		<ng-template #noMaterielFind>
+			<h6>{{'MATERIELS.NOTIF.NOTHING_FOUND.TITLE' | translate}}</h6>
+		</ng-template>
 
 		<tf-pagination (change)="changePagination()" [(ngModel)]="pagination" ngDefaultControl></tf-pagination>
 

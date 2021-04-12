@@ -1193,6 +1193,9 @@
 			},
 			"ELEMENT_ARCHIVED": {
 				"TITLE": "Item is archived successfully"
+			},
+			"NOTHING_FOUND": {
+				"TITLE" : "Nothing has been found."
 			}
 		},
 		"NUMERO_SERIE": {
