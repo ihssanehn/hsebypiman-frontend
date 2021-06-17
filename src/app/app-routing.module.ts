@@ -55,6 +55,14 @@ const routes: Routes = [
 				}
 			},
 			{
+				path: 'plan-de-prevention',
+				loadChildren: () => import('@app/views/pages/plan-prevention/plan-prevention.module').then(m => m.PlanPreventionModule),
+				canActivate: [ModuleGuard],
+				data: {
+					moduleCodes:['ANALYSE']
+				}
+			},
+			{
 				path: 'visites-securite',
 				loadChildren: () => import('@app/views/pages/visites-securite/visites-securite.module').then(m => m.VisitesSecuriteModule),
 				canActivate: [ModuleGuard],

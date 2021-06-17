@@ -1262,9 +1262,11 @@
 	},
 	"MENU": {
 		"ANALYSERISQUE": "Analyses de risque",
+		"PLANDEPREVENTION": "Plan de prevention",
 		"BTN": {
 			"NEWACTION": "Nouvelle Action",
 			"NEWAR": "Nouvelle analyse de risque",
+			"NEWPDP": "Nouveau plan de prevention",
 			"NEWCHANTIER": "Nouveau chantier",
 			"NEWENTREPRISE": "Nouvelle entreprise",
 			"NEWMATERIEL": "Nouveau matériel",
@@ -1898,7 +1900,7 @@
 		"VEHICULE_KM": {
 			"LABEL": "Kilométrage du véhicule",
 			"SHORTTITLE": "Kilométrage",
-			"TITLE": "Kilométrage du véhicule"	
+			"TITLE": "Kilométrage du véhicule"
 		},
 		"ETAT":{
 			"LABEL": "Etat du matériel",

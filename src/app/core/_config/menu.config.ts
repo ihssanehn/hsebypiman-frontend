@@ -3,7 +3,7 @@ export class MenuConfig {
 		header: {
 			self: {},
 			items: [
-				
+
 				{
 					title: 'Accueil',
 					root: true,
@@ -45,6 +45,15 @@ export class MenuConfig {
 					alignment: 'left',
 					page: '/analyses-risque/list',
 					translate: 'MENU.ANALYSERISQUE',
+					needModule: true,
+					moduleCode: ['ANALYSE'],
+				},
+				{
+					title: 'Plan de prevention',
+					root: true,
+					alignment: 'left',
+					page: '/plan-de-prevention/list',
+					translate: 'MENU.PLANDEPREVENTION',
 					needModule: true,
 					moduleCode: ['ANALYSE'],
 				},
@@ -103,7 +112,7 @@ export class MenuConfig {
 					needModule: true,
 					moduleCode: ['DISCUSS']
 				},
-				
+
 			]
 		},
 
@@ -145,8 +154,8 @@ export class MenuConfig {
 		aside: {
 			self: {},
 			dashboard: {
-				btnAdd:{},
-				items:[]
+				btnAdd: {},
+				items: []
 			},
 			remontees: {
 				btnAdd: {
@@ -155,7 +164,7 @@ export class MenuConfig {
 					alignment: 'left',
 					page: '/remontees/add',
 					translate: 'MENU.BTN.NEWREMONTEE',
-					permissionOnly:['remontee_canAdd']
+					permissionOnly: ['remontee_canAdd']
 				},
 
 				items: [
@@ -193,7 +202,7 @@ export class MenuConfig {
 					alignment: 'left',
 					page: '/chantiers/add',
 					translate: 'MENU.BTN.NEWCHANTIER',
-					permissionOnly:['chantier_canAdd']
+					permissionOnly: ['chantier_canAdd']
 				},
 
 				items: [
@@ -231,8 +240,8 @@ export class MenuConfig {
 					alignment: 'left',
 					page: '/analyses-risque/add',
 					translate: 'MENU.BTN.NEWAR',
-					permissionOnly: ['analyse_risque_canAdd']					
-					
+					permissionOnly: ['analyse_risque_canAdd']
+
 				},
 				items: [
 					{
@@ -260,6 +269,44 @@ export class MenuConfig {
 						icon: 'settings',
 						permissionOnly: ['ROOT', 'ADMIN'],
 					}
+				]
+			},
+			pdp: {
+				btnAdd: {
+					title: 'Nouveau plan de prevention',
+					root: true,
+					alignment: 'left',
+					page: '/plan-de-prevention/add',
+					translate: 'MENU.BTN.NEWPDP',
+					permissionOnly: ['analyse_risque_canAdd'] // todo : edit it when it's available
+
+				},
+				items: [
+					// {
+					// 	icon: 'dashboard',
+					// 	title: 'Dashboards',
+					// 	root: true,
+					// 	alignment: 'left',
+					// 	page: '/analyses-risque/dashboard',
+					// 	translate: 'MENU.DASHBOARD',
+					// },
+					{
+						title: 'Liste',
+						root: true,
+						alignment: 'left',
+						page: '/plan-de-prevention/list',
+						translate: 'MENU.LIST',
+						icon: 'view_list',
+					},
+					// {
+					// 	title: 'Admin',
+					// 	root: true,
+					// 	alignment: 'left',
+					// 	page: '/analyses-risque/admin',
+					// 	translate: 'MENU.ROOT',
+					// 	icon: 'settings',
+					// 	permissionOnly: ['ROOT', 'ADMIN'],
+					// }
 				]
 			},
 			materiels: {
@@ -557,7 +604,7 @@ export class MenuConfig {
 						page: '/suivi-hse/goal',
 						translate: 'MENU.GOALS',
 						icon: 'filter_center_focus',
-						permissionOnly: ['ADMIN','ROOT']
+						permissionOnly: ['ADMIN', 'ROOT']
 					},
 					{
 						title: 'Admin',
@@ -685,7 +732,7 @@ export class MenuConfig {
 						needModule: false,
 						permissionOnly: ['ROOT'],
 						svgIcon: 'dashboard'
-						
+
 					},
 				]
 			},

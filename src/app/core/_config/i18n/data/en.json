@@ -1261,9 +1261,11 @@
 	},
 	"MENU": {
 		"ANALYSERISQUE": "Risk analyzes",
+		"PLANDEPREVENTION": "Prevention plan",
 		"BTN": {
 			"NEWACTION": "New Action",
 			"NEWAR": "New risk analysis",
+			"NEWPDP": "New prevention plan",
 			"NEWCHANTIER": "New site",
 			"NEWENTREPRISE": "New business",
 			"NEWMATERIEL": "New equipment",
@@ -1901,7 +1903,7 @@
 		"VEHICULE_KM": {
 			"LABEL": "Number of kilometers traveled",
 			"SHORTTITLE": "Kilometers traveled",
-			"TITLE": "Number of kilometers traveled"	
+			"TITLE": "Number of kilometers traveled"
 		},
 		"ASSIGNED_ACTION": {
 			"TITLE": "Action assigned to the person visited"
