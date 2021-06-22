@@ -27,6 +27,7 @@ import {HttpUtilsService, InterceptService, LayoutUtilsService, TypesUtilsServic
 import {CustomDateAdapter} from '@app/core/_base/crud/utils/custom-date.adapter';
 import {ActionNotificationComponent} from '@app/views/partials/content/crud';
 import {PartialsModule} from '@app/views/partials/partials.module';
+import {PdpAddComponent} from './pdp-add/pdp-add.component';
 
 const routes: Routes = [
 	{
@@ -43,12 +44,22 @@ const routes: Routes = [
 				// 	}
 				// }
 			},
+			{
+				path: 'add',
+				component: PdpAddComponent,
+				// canActivate: [NgxPermissionsGuard],
+				// data: {
+				// 	permissions: {
+				// 		only: ['analyse_risque_canSeeAll']
+				// 	}
+				// }
+			},
 		]
 	}
 ];
 
 @NgModule({
-	declarations: [PlanPreventionComponent, PdpListComponent],
+	declarations: [PlanPreventionComponent, PdpListComponent, PdpAddComponent],
 	imports: [
 		CommonModule,
 		PartialsModule,

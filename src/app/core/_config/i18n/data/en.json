@@ -1305,6 +1305,12 @@
 			"EDIT": "Modify the risk analysis",
 			"LIST": "List of risk analyzes"
 		},
+		"SUB_PDP": {
+			"ADD": "New prevention plan",
+			"DETAIL": "Detailed prevention plan",
+			"EDIT": "Modify the prevention plan",
+			"LIST": "List of prevention plans"
+		},
 		"SUB_CHANTIER": {
 			"ADD": "Add a new site",
 			"DETAIL": "Site detail",
