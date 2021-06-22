@@ -28,6 +28,7 @@ import {CustomDateAdapter} from '@app/core/_base/crud/utils/custom-date.adapter'
 import {ActionNotificationComponent} from '@app/views/partials/content/crud';
 import {PartialsModule} from '@app/views/partials/partials.module';
 import {PdpAddComponent} from './pdp-add/pdp-add.component';
+import { PdpAddFormComponent } from './pdp-add-form/pdp-add-form.component';
 
 const routes: Routes = [
 	{
@@ -59,7 +60,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-	declarations: [PlanPreventionComponent, PdpListComponent, PdpAddComponent],
+	declarations: [PlanPreventionComponent, PdpListComponent, PdpAddComponent, PdpAddFormComponent],
 	imports: [
 		CommonModule,
 		PartialsModule,

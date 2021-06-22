@@ -1,0 +1,175 @@
+<ng-container [formGroup]="pdpForm">
+	<div class="row" [hidden]="origin == 'add' && partHided(1)">
+		<div class="col-12">
+			<div class="tf-heading tf-heading--md">| 1 {{'PDP.EMERGENCY_CONTACTS_AND_NUMBERS_IN_THE_EVENT_OF_AN_ACCIDENT' | translate}}</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="tf-card-form">
+						<div class="tf-heading tf-heading--sm">
+							1.1 {{'Entreprise Utilisatrice' | translate}}
+						</div>
+						<div class="row form-row">
+							<mat-form-field class="col-xl-4" >
+								<mat-label>{{'Raison Sociale et contact' | translate}}</mat-label>
+								<input class="form-control" matInput type="text" name="raison_sociale_eu" formControlName="raison_sociale_eu" placeholder="{{'ACTION.ENTER_HERE' | translate}}"/>
+							</mat-form-field>
+							<mat-form-field class="col-xl-4" >
+								<mat-label>{{'Raison Sociale et contact tel' | translate}}</mat-label>
+								<input class="form-control" matInput type="text" name="raison_sociale_tel_eu" formControlName="raison_sociale_tel_eu" placeholder="{{'ACTION.ENTER_HERE' | translate}}"/>
+							</mat-form-field>
+							<mat-form-field class="col-xl-4" >
+								<mat-label>{{'Sauveteurs Secouriste au travail' | translate}}</mat-label>
+								<input class="form-control" matInput type="text" name="sauveteurs_secouriste_travail" formControlName="sauveteurs_secouriste_travail" placeholder="{{'ACTION.ENTER_HERE' | translate}}"/>
+							</mat-form-field>
+						</div>
+						<div class="row form-row">
+						</div>
+					</div>
+				</div>
+<!--				<div class="col-md-12">-->
+<!--					<div class="row">-->
+<!--						<div class="col-md-8">-->
+<!--							<div class="tf-card-form full-height">-->
+<!--								<div class="tf-heading tf-heading&#45;&#45;sm">-->
+<!--									1.2 {{'ARS.CARD.SITE_RULES.CONTACTS.TITLE' | translate}}-->
+<!--								</div>-->
+<!--								<div class="row mt-3">-->
+<!--									<mat-form-field class="col-xl-6">-->
+<!--										<mat-label>{{'ARS.CONTACT_INTERNE_SECOURS.LABEL' | translate}}</mat-label>-->
+<!--										<input class="form-control" matInput type="text" name="contact_interne_secours"-->
+<!--											   formControlName="contact_interne_secours"-->
+<!--											   placeholder="{{'ACTION.ENTER_HERE' | translate}}"-->
+<!--											   [required]="isFieldRequired('contact_interne_secours')"/>-->
+<!--										<mat-error *ngIf="isControlHasError('contact_interne_secours','required')">-->
+<!--											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>-->
+<!--										</mat-error>-->
+<!--									</mat-form-field>-->
+<!--									<mat-form-field class="col-xl-6">-->
+<!--										<mat-label>{{'ARS.TEL_CONTACT_INTERNE_SECOURS.LABEL' | translate}}</mat-label>-->
+<!--										<input class="form-control" matInput type="text"-->
+<!--											   name="tel_contact_interne_secours"-->
+<!--											   formControlName="tel_contact_interne_secours"-->
+<!--											   placeholder="{{'ACTION.ENTER_HERE' | translate}}"-->
+<!--											   [required]="isFieldRequired('tel_contact_interne_secours')"/>-->
+<!--										<mat-error *ngIf="isControlHasError('tel_contact_interne_secours','required')">-->
+<!--											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>-->
+<!--										</mat-error>-->
+<!--									</mat-form-field>-->
+
+<!--									<mat-form-field class="col-xl-6">-->
+<!--										<mat-label>{{'ARS.CONTACT_CLIENT_CHEF_CHANTIER.LABEL' | translate}}</mat-label>-->
+<!--										<input class="form-control" matInput type="text" name="contact_client_chef_chtr"-->
+<!--											   formControlName="contact_client_chef_chtr"-->
+<!--											   placeholder="{{'ACTION.ENTER_HERE' | translate}}"-->
+<!--											   [required]="isFieldRequired('contact_client_chef_chtr')"/>-->
+<!--										<mat-error *ngIf="isControlHasError('contact_client_chef_chtr','required')">-->
+<!--											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>-->
+<!--										</mat-error>-->
+<!--									</mat-form-field>-->
+<!--									<mat-form-field class="col-xl-6">-->
+<!--										<mat-label>{{'ARS.TEL_CONTACT_CLIENT_CHEF_CHANTIER.LABEL' | translate}}</mat-label>-->
+<!--										<input class="form-control" matInput type="text"-->
+<!--											   name="tel_contact_client_chef_chtr"-->
+<!--											   formControlName="tel_contact_client_chef_chtr"-->
+<!--											   placeholder="{{'ACTION.ENTER_HERE' | translate}}"-->
+<!--											   [required]="isFieldRequired('tel_contact_client_chef_chtr')"/>-->
+<!--										<mat-error *ngIf="isControlHasError('tel_contact_client_chef_chtr','required')">-->
+<!--											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>-->
+<!--										</mat-error>-->
+<!--									</mat-form-field>-->
+
+<!--									<mat-form-field class="col-xl-6">-->
+<!--										<mat-label>{{'ARS.CONTACT_CLIENT_HSE.LABEL' | translate}}</mat-label>-->
+<!--										<input class="form-control" matInput type="text" name="contact_client_hse"-->
+<!--											   formControlName="contact_client_hse"-->
+<!--											   placeholder="{{'ACTION.ENTER_HERE' | translate}}"-->
+<!--											   [required]="isFieldRequired('contact_client_hse')"/>-->
+<!--										<mat-error *ngIf="isControlHasError('contact_client_hse','required')">-->
+<!--											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>-->
+<!--										</mat-error>-->
+<!--									</mat-form-field>-->
+<!--									<mat-form-field class="col-xl-6">-->
+<!--										<mat-label>{{'ARS.TEL_CONTACT_CLIENT_HSE.LABEL' | translate}}</mat-label>-->
+<!--										<input class="form-control" matInput type="text" name="tel_contact_client_hse"-->
+<!--											   formControlName="tel_contact_client_hse"-->
+<!--											   placeholder="{{'ACTION.ENTER_HERE' | translate}}"-->
+<!--											   [required]="isFieldRequired('tel_contact_client_hse')"/>-->
+<!--										<mat-error *ngIf="isControlHasError('tel_contact_client_hse','required')">-->
+<!--											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>-->
+<!--										</mat-error>-->
+<!--									</mat-form-field>-->
+<!--								</div>-->
+<!--							</div>-->
+<!--						</div>-->
+<!--						<div class="col-md-4">-->
+<!--							<div class="tf-card-form full-height">-->
+<!--								<div class="tf-heading tf-heading&#45;&#45;sm">-->
+<!--									1.3 {{'ARS.CARD.SITE_RULES.CONDITIONS.TITLE' | translate}}-->
+<!--								</div>-->
+<!--								<div class="row mt-3">-->
+<!--									<div-->
+<!--										class="col-xl-12 mat-form-field ng-tns-c14-2 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-legacy mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label"-->
+<!--										formContolName="a_prevoir_compagnons">-->
+<!--										<div class="mat-form-field-wrapper">-->
+<!--											<div class="mat-form-field-flex">-->
+<!--												<div class="mat-form-field-infix">-->
+<!--													<span class="mat-form-field-label-wrapper">-->
+<!--														<label-->
+<!--															class="mat-form-field-label">{{'ARS.HORAIRES.LABEL' | translate}}</label>-->
+<!--													</span>-->
+<!--													<div class="horaire-box">-->
+<!--														<div>-->
+<!--															<input class="form-control text-center" type="time"-->
+<!--																   name="heure_ouverture"-->
+<!--																   formControlName="heure_ouverture"/>-->
+<!--														</div>-->
+<!--														<span>- </span>-->
+<!--														<div>-->
+<!--															<input class="form-control text-center" type="time"-->
+<!--																   name="heure_fermeture"-->
+<!--																   formControlName="heure_fermeture" placeholder=""/>-->
+<!--														</div>-->
+<!--													</div>-->
+<!--												</div>-->
+<!--											</div>-->
+<!--										</div>-->
+<!--									</div>-->
+<!--									<mat-form-field class="col-xl-12">-->
+<!--										<mat-label>{{'ARS.COURANT.LABEL' | translate}}</mat-label>-->
+<!--										<input class="form-control" matInput type="text" name="courant_dispo"-->
+<!--											   formControlName="courant_dispo" placeholder="Ex: 180 kWh"-->
+<!--											   [required]="isFieldRequired('courant_dispo')"/>-->
+<!--										<mat-error *ngIf="isControlHasError('courant_dispo','required')">-->
+<!--											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>-->
+<!--										</mat-error>-->
+<!--									</mat-form-field>-->
+<!--								</div>-->
+<!--							</div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
+			</div>
+		</div>
+		<div class="col-12 mb-4" *ngIf="partHided(2) && origin=='add'">
+			<button mat-raised-button type="button" class="pull-right btn-small" color="info"
+					(click)="showPart(2)">{{'ACTION.FOLLOWING' | translate}}</button>
+		</div>
+	</div>
+</ng-container>
+
+<!--<ng-container *ngIf="formStatus">-->
+<!--	<div *ngIf="formStatus.canShowErrors()" class="alert alert-danger alert-dismissible fade show" role="alert">-->
+<!--		<div><strong>{{'COMMON.NOTIF.ERROR.TITLE' | translate}}</strong></div>-->
+<!--		<div>-->
+<!--			<ul *ngFor="let errors of formStatus.errors  |  keyvalue">-->
+<!--				<li *ngFor="let error of errors.value">-->
+<!--					{{error}}-->
+<!--				</li>-->
+<!--			</ul>-->
+<!--		</div>-->
+<!--	</div>-->
+<!--	<div *ngIf="formStatus.canShowSuccess()" class="alert alert-success" role="alert">-->
+<!--		<div><strong>{{'COMMON.NOTIF.SUCCESS.TITLE' | translate}}</strong></div>-->
+<!--		<div *ngFor="let message of formStatus.messages">{{ message }}</div>-->
+<!--	</div>-->
+<!--</ng-container>-->
