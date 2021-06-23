@@ -16,7 +16,7 @@ import {
 	MatAutocompleteModule, MatButtonModule, MatCardModule, MatCheckboxModule,
 	MatChipsModule,
 	MatDatepickerModule, MatDialogModule,
-	MatExpansionModule,
+	MatExpansionModule, MatFormFieldModule,
 	MatIconModule, MatInputModule, MatMenuModule, MatNativeDateModule,
 	MatPaginatorModule,
 	MatProgressBarModule, MatProgressSpinnerModule, MatRadioModule,
@@ -100,6 +100,7 @@ const routes: Routes = [
 		SignaturePadModule,
 		NgbPopoverModule,
 		NgxMaskModule,
+		MatFormFieldModule,
 	],
 	providers: [
 		InterceptService,
