@@ -308,6 +308,14 @@
 	},
 	"PDP": {
 		"EMERGENCY_CONTACTS_AND_NUMBERS_IN_THE_EVENT_OF_AN_ACCIDENT": "Emergency contacts and numbers in the event of an accident",
+		"RAISON_SOCIALE_EU": "Corporate name",
+		"CSE": "CSE",
+		"CSE_TEL": "CSE phone",
+		"CSE_JOB": "CSE job",
+		"INTERVENTION_AT": "Intervention at",
+		"LABEL_INTERVENTION": "Intervention label",
+		"PLACE_INTERVENTION": "Intervention place",
+		"AVERAGE_WORKFORCE": "Average workforce:",
 		"GENERAL": "General"
 	},
 	"AUTH": {

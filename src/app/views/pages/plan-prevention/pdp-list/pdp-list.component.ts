@@ -27,7 +27,7 @@ export class PdpListComponent implements OnInit {
 		keyword: '',
 	};
 	showFilters = false;
-	displayedArColumns = ['number', 'action'];
+	displayedArColumns = ['raison_sociale_eu', 'cse', 'cse_eu_tel', 'created_at', 'effectif_moyen', 'label_intervention', 'lieu_intervention', 'pdp_intervention_at', 'action'];
 
 	constructor(
 		private router: Router,

@@ -13,7 +13,7 @@ import {Router} from '@angular/router';
 
 export class PdpService extends HttpService {
 
-	baseUrl = environment.apiBaseUrl + 'pdp';
+	baseUrl = environment.apiBaseUrl + 'prevention_plan';
 
 	constructor(
 		private http: HttpClient

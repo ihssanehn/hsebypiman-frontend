@@ -13,7 +13,7 @@ export class PdpAddFormComponent implements OnInit {
 
 	@Input() pdpForm: FormGroup;
 	@Input() formStatus: FormStatus;
-	@ViewChild('autosize') autosize: CdkTextareaAutosize;
+	@ViewChild('autosize', {static: true}) autosize: CdkTextareaAutosize;
 	public parts = [1];
 	@Input() origin = 'add';
 
@@ -21,6 +21,7 @@ export class PdpAddFormComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		this.triggerResize();
 	}
 
 	partHided(key) {
