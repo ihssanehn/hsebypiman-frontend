@@ -43,7 +43,7 @@ import { SignaturePadModule } from 'angular2-signaturepad';
 import { NgImageSliderModule } from 'ng-image-slider';
 
 import { FileUploadModule } from 'ng2-file-upload';
-// Partials 
+// Partials
 import { PartialsModule } from './views/partials/partials.module';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ImageLightboxContentDialogComponent } from './views/partials/layout/modal/image-lightbox-content-dialog/image-lightbox-content-dialog.component'
@@ -55,12 +55,46 @@ import {DataTableService,TfDialogService,LayoutConfigService,VersionCheckService
 import { AuthModule } from './views/pages/auth/auth.module';
 import { AuthService } from './core/auth';
 import { ModuleGuard } from './core/guards/module.guard';
-import { 
-	ChantierService, TypeService, StatusService, EtatService, ActionService, CategorieService, ArService, CatRisqueService, EquipementService,
-	EntrepriseService, VisiteEpiService, VisiteChantierService, CatHabilitationService, CatQuestionService, ZoneService, SignatureService, 
-	QuestionService, HabilitationService, RisqueService, ParamsService, MaterielService, VisiteOutillageService, VisiteVehiculeService, 
-	OutillageService, UserService, DocumentService, RemonteeService, PersonnelService, FonctionService, CatMetricService, GoalService, 
-	MetricService, ModuleService, RoleService, DashboardService, VisiteService, PeriodService, FlashInfoService
+import {
+	ChantierService,
+	TypeService,
+	StatusService,
+	EtatService,
+	ActionService,
+	CategorieService,
+	ArService,
+	CatRisqueService,
+	EquipementService,
+	EntrepriseService,
+	VisiteEpiService,
+	VisiteChantierService,
+	CatHabilitationService,
+	CatQuestionService,
+	ZoneService,
+	SignatureService,
+	QuestionService,
+	HabilitationService,
+	RisqueService,
+	ParamsService,
+	MaterielService,
+	VisiteOutillageService,
+	VisiteVehiculeService,
+	OutillageService,
+	UserService,
+	DocumentService,
+	RemonteeService,
+	PersonnelService,
+	FonctionService,
+	CatMetricService,
+	GoalService,
+	MetricService,
+	ModuleService,
+	RoleService,
+	DashboardService,
+	VisiteService,
+	PeriodService,
+	FlashInfoService,
+	PdpService
 } from './core/services';
 // CRUD
 import { HttpUtilsService, LayoutUtilsService, TypesUtilsService } from './core/_base/crud';
@@ -149,7 +183,7 @@ export function hljsLanguages(): HighlightLanguage[] {
 		FileUploadModule,
 		AngularEditorModule,
 		// NgxEchartsModule.forRoot({
-		// 	echarts:{ 
+		// 	echarts:{
 		// 		init,
 		// 	}
 		// })
@@ -168,9 +202,10 @@ export function hljsLanguages(): HighlightLanguage[] {
 		ModuleGuard,
 		AuthService,
 		ArService,
+		PdpService,
 		ActionService,
 		CategorieService,
-		CatHabilitationService, 
+		CatHabilitationService,
 		CatQuestionService,
 		CatRisqueService,
 		ChantierService,
@@ -184,9 +219,9 @@ export function hljsLanguages(): HighlightLanguage[] {
 		QuestionService,
 		RisqueService,
 		SignatureService,
-		StatusService, 
-		EtatService, 
-		TypeService, 
+		StatusService,
+		EtatService,
+		TypeService,
 		UserService,
 		VisiteChantierService,
 		VisiteEpiService,
@@ -216,7 +251,7 @@ export function hljsLanguages(): HighlightLanguage[] {
 		DataTableService,
 		VersionCheckService,
 		SplashScreenService,
-		
+
 		// template services
 		SubheaderService,
 		MenuHorizontalService,

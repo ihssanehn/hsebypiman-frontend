@@ -1,0 +1,15 @@
+<form [formGroup]="pdpForm" class="tf-form tf-form--group-seperator-dashed">
+
+	<tf-portlet class="main-portlet-form" id="portlet-ar">
+		<div class="tf-portlet-header ">
+			<span class="title">
+			  <a [routerLink]="['/plan-de-prevention/list']">{{'MENU.SUB_PDP.LIST' | translate}}</a>
+			  <span class="divider">></span>
+			  <span class="id-item">{{'MENU.SUB_PDP.ADD' | translate}}</span>
+			</span>
+		</div>
+		<tf-pdp-add-form [pdpForm]="pdpForm" origin="add"></tf-pdp-add-form>
+
+	</tf-portlet>
+
+</form>

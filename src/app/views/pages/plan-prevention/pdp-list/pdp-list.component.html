@@ -1,0 +1,153 @@
+<tf-search-list-bar [(ngModel)]="filter" (change)="getPDPs()" [hasAdvancedSearch]="false" [showFilters]="showFilters"  class="row row-filters"></tf-search-list-bar>
+<!--<tf-ar-filters [hidden]="!showFilters" (change)="udpateFilters($event)" class="row" ></tf-ar-filters>-->
+
+<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
+	<tf-portlet-body class="tf-portlet__body--fit" *ngIf="pdpsList">
+		<div class="row px-2">
+			<div class="col">
+				<p>{{pagination.total}} {{'NOTIF.RESULT_FOUND.TITLE' | translate}}</p>
+			</div>
+			<div class="col">
+				<button [disabled]="!pagination.total || true" class="pull-right btn-small mb-4" mat-raised-button color="info">{{'ACTION.EXPORT' | translate}}</button>
+			</div>
+		</div>
+		<div class="table-responsive">
+			<table mat-table [dataSource]="pdpsList.data">
+
+				<ng-container matColumnDef="raison_sociale_eu" sticky>
+					<th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('raison_sociale_eu')">
+						{{'PDP.RAISON_SOCIALE_EU' | translate}}
+						<i class="fa"
+						   [ngClass]="isOrderedBy('raison_sociale_eu') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'"
+						   [ngStyle]="isOrderedBy('raison_sociale_eu') && {'opacity': 1}"></i>
+					</th>
+					<td mat-cell *matCellDef="let pdp" class="pointer"> {{pdp?.raison_sociale_eu}} </td>
+				</ng-container>
+
+				<ng-container matColumnDef="cse">
+					<th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('cse')">
+						{{'PDP.CSE' | translate}}
+						<i class="fa"
+						   [ngClass]="isOrderedBy('cse') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'"
+						   [ngStyle]="isOrderedBy('cse') && {'opacity': 1}"></i>
+					</th>
+					<td mat-cell *matCellDef="let pdp" class="pointer">
+						<div [matTooltipClass]="'custom-tooltip'" matTooltip="{{pdp?.cse_eu_job}}"
+							 [matTooltipShowDelay]="100"
+							 [matTooltipHideDelay]="100"
+							 [matTooltipPosition]="'above'">
+							{{pdp?.cse_eu_name}}
+						</div>
+					</td>
+				</ng-container>
+
+				<ng-container matColumnDef="cse_eu_tel">
+					<th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('cse_eu_tel')">
+						{{'PDP.CSE_TEL' | translate}}
+						<i class="fa"
+						   [ngClass]="isOrderedBy('cse_eu_tel') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'"
+						   [ngStyle]="isOrderedBy('cse_eu_tel') && {'opacity': 1}"></i>
+					</th>
+					<td mat-cell *matCellDef="let pdp" class="pointer"> {{pdp?.cse_eu_tel}} </td>
+				</ng-container>
+
+				<ng-container matColumnDef="created_at">
+					<th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('created_at')">
+						{{'COMMON.CREATED_AT.TITLE' | translate}}
+						<i class="fa"
+						   [ngClass]="isOrderedBy('created_at') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'"
+						   [ngStyle]="isOrderedBy('created_at') && {opacity:1}"></i>
+					</th>
+					<td mat-cell *matCellDef="let pdp"
+						class="text-center pointer"> {{'01/01/2021' | date:'dd/MM/yyyy'}} </td>
+				</ng-container>
+
+				<ng-container matColumnDef="effectif_moyen">
+					<th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('effectif_moyen')">
+						{{'PDP.AVERAGE_WORKFORCE' | translate}}
+						<i class="fa"
+						   [ngClass]="isOrderedBy('effectif_moyen') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'"
+						   [ngStyle]="isOrderedBy('effectif_moyen') && {opacity:1}"></i>
+					</th>
+					<td mat-cell *matCellDef="let pdp" class="pointer"> {{pdp?.effectif_moyen}} </td>
+				</ng-container>
+
+				<ng-container matColumnDef="label_intervention">
+					<th mat-header-cell *matHeaderCellDef class="text-center th-order"
+						(click)="setOrder('label_intervention')">
+						{{'PDP.LABEL_INTERVENTION' | translate}}
+						<i class="fa"
+						   [ngClass]="isOrderedBy('label_intervention') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'"
+						   [ngStyle]="isOrderedBy('label_intervention') && {opacity:1}"></i>
+					</th>
+					<td mat-cell *matCellDef="let pdp" class="pointer"> {{pdp?.label_intervention}} </td>
+				</ng-container>
+
+				<ng-container matColumnDef="lieu_intervention">
+					<th mat-header-cell *matHeaderCellDef class="text-center th-order"
+						(click)="setOrder('lieu_intervention')">
+						{{'PDP.PLACE_INTERVENTION' | translate}}
+						<i class="fa"
+						   [ngClass]="isOrderedBy('lieu_intervention') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'"
+						   [ngStyle]="isOrderedBy('lieu_intervention') && {opacity:1}"></i>
+					</th>
+					<td mat-cell *matCellDef="let pdp" class="text-center pointer"> {{pdp?.lieu_intervention}} </td>
+				</ng-container>
+
+				<ng-container matColumnDef="pdp_intervention_at">
+					<th mat-header-cell *matHeaderCellDef class="text-center th-order"
+						(click)="setOrder('pdp_intervention_at')">
+						{{'PDP.INTERVENTION_AT' | translate}}
+						<i class="fa"
+						   [ngClass]="isOrderedBy('pdp_intervention_at') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'"
+						   [ngStyle]="isOrderedBy('pdp_intervention_at') && {opacity:1}"></i>
+					</th>
+					<td mat-cell *matCellDef="let pdp" class="pointer"> {{pdp?.pdp_intervention_at}} </td>
+				</ng-container>
+
+				<ng-container matColumnDef="action" stickyEnd>
+					<th mat-header-cell *matHeaderCellDef></th>
+					<td mat-cell *matCellDef="let pdp" class="text-right">
+						<button mat-icon-button color="primary" matTooltip="Actions" [matMenuTriggerFor]="actionMenu"
+								[matMenuTriggerData]="pdp">
+							<mat-icon>more_vert</mat-icon>
+						</button>
+					</td>
+				</ng-container>
+
+				<tr mat-header-row *matHeaderRowDef="displayedArColumns"></tr>
+				<tr mat-row *matRowDef="let row; columns: displayedArColumns;"></tr>
+			</table>
+		</div>
+
+		<tf-pagination (change)="changePagination()" [(ngModel)]="pagination" ngDefaultControl></tf-pagination>
+
+	</tf-portlet-body>
+</tf-portlet>
+
+<mat-menu #actionMenu="matMenu" class="action-menu">
+	<ng-template matMenuContent let-chantier="chantier" let-status="status">
+<!--		<button *ngIf="status.code != 'ARCHIV'" mat-icon-button color="primary"-->
+<!--				matTooltip="{{'ACTION.SIGN' | translate}}" (click)="signAr(ar_id)">-->
+<!--			<mat-icon>gesture</mat-icon>-->
+<!--		</button>-->
+<!--		<ng-container *ngxPermissionsOnly="['analyse_risque_canAdd']">-->
+<!--			<button mat-icon-button color="info" *ngIf="chantier.status.code != 'TERMINE'"-->
+<!--					matTooltip="{{'ACTION.DUPLICATE' | translate}}" (click)="duplicateAr(ar_id, chantier)">-->
+<!--				<mat-icon>filter_none</mat-icon>-->
+<!--			</button>-->
+<!--		</ng-container>-->
+<!--		<button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}">-->
+<!--			<mat-icon>visibility</mat-icon>-->
+<!--		</button>-->
+		<button mat-icon-button color="info" disabled matTooltip="{{'ACTION.DOWNLOAD' | translate}}">
+			<mat-icon>cloud_download</mat-icon>
+		</button>
+		<!-- <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editAr(ar_id)">
+		  <mat-icon>edit</mat-icon>
+		</button> -->
+		<!-- <button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteAr(ar_id)">
+		  <mat-icon>delete</mat-icon>
+		</button> -->
+	</ng-template>
+</mat-menu>

@@ -306,6 +306,18 @@
 		},
 		"TYPE": "Type"
 	},
+	"PDP": {
+		"EMERGENCY_CONTACTS_AND_NUMBERS_IN_THE_EVENT_OF_AN_ACCIDENT": "Emergency contacts and numbers in the event of an accident",
+		"RAISON_SOCIALE_EU": "Corporate name",
+		"CSE": "CSE",
+		"CSE_TEL": "CSE phone",
+		"CSE_JOB": "CSE job",
+		"INTERVENTION_AT": "Intervention at",
+		"LABEL_INTERVENTION": "Intervention label",
+		"PLACE_INTERVENTION": "Intervention place",
+		"AVERAGE_WORKFORCE": "Average workforce:",
+		"GENERAL": "General"
+	},
 	"AUTH": {
 		"EDIT": {
 			"DESC": "Enter a new password",
@@ -955,20 +967,19 @@
 			"SHORTTITLE": "View history",
 			"TITLE": "See old news flash"
 		},
-		"NOTIF":{
-			"NO_FLASH":"No Flash Info",
+		"NOTIF": {
+			"NO_FLASH": "No Flash Info",
 			"FLASH_UPDATED": {
 				"TITLE": "Flash info updated successfully"
 			},
 			"FLASH_CREATED": {
 				"TITLE": "Flash Info successfully created"
 			},
-			"FLASHINFO_DELETE_CONFIRMATION":{
+			"FLASHINFO_DELETE_CONFIRMATION": {
 				"TITLE": "You will permanently delete this flash info",
 				"LABEL": "Are you sure you want to continue ?"
 			},
-
-			"FLASHINFO_DELETED":{
+			"FLASHINFO_DELETED": {
 				"TITLE": "Flash info deleted successfully"
 			}
 		},
@@ -1199,7 +1210,7 @@
 				"TITLE": "Item is archived successfully"
 			},
 			"NOTHING_FOUND": {
-				"TITLE" : "Nothing has been found."
+				"TITLE": "Nothing has been found."
 			}
 		},
 		"NUMERO_SERIE": {
@@ -1261,9 +1272,11 @@
 	},
 	"MENU": {
 		"ANALYSERISQUE": "Risk analyzes",
+		"PLANDEPREVENTION": "Prevention plan",
 		"BTN": {
 			"NEWACTION": "New Action",
 			"NEWAR": "New risk analysis",
+			"NEWPDP": "New prevention plan",
 			"NEWCHANTIER": "New site",
 			"NEWENTREPRISE": "New business",
 			"NEWMATERIEL": "New equipment",
@@ -1302,6 +1315,12 @@
 			"DETAIL": "Detailed risk analysis",
 			"EDIT": "Modify the risk analysis",
 			"LIST": "List of risk analyzes"
+		},
+		"SUB_PDP": {
+			"ADD": "New prevention plan",
+			"DETAIL": "Detailed prevention plan",
+			"EDIT": "Modify the prevention plan",
+			"LIST": "List of prevention plans"
 		},
 		"SUB_CHANTIER": {
 			"ADD": "Add a new site",
@@ -1566,30 +1585,30 @@
 			"TITLE": "Security visit concerned"
 		}
 	},
-	"ETATS":{
+	"ETATS": {
 		"NOTIF": {
-			"LOADING":{
+			"LOADING": {
 				"TITLE": "Loading list"
 			},
-			"ETAT_DELETE_CONFIRMATION":{
+			"ETAT_DELETE_CONFIRMATION": {
 				"TITLE": "You will permanently delete this element",
 				"LABEL": "Are you sure you want to continue ?"
 			},
-			"LIFT_UPDATED":{
+			"LIFT_UPDATED": {
 				"TITLE": "Element deleted successfully"
 			},
-			"LIFT_CREATED":{
+			"LIFT_CREATED": {
 				"TITLE": "Element created successfully"
 			},
-			"LIFT_TYPE_ARCHIVED":{
+			"LIFT_TYPE_ARCHIVED": {
 				"TITLE": "Element archieved successfully"
 			},
-			"ELEMENT_NOT_DELETED":{
+			"ELEMENT_NOT_DELETED": {
 				"TITLE": "Unable to delete because the selection includes an element assigned to one or more equipments",
 				"SHORTTITLE": "Unable to delete",
 				"LABEL": "Unable to delete because the selection includes an element assigned to one or more equipments"
 			},
-			"ETAT_DELETED":{
+			"ETAT_DELETED": {
 				"TITLE": "Element deleted successfully"
 			},
 			"NO_ETAT": "No element"
@@ -1597,13 +1616,13 @@
 	},
 	"REMONTEES": {
 		"NOTIF": {
-			"LOADING":{
+			"LOADING": {
 				"TITLE": "Loading Lifts"
 			},
 			"NO_CHANTIER": {
 				"TITLE": "This lift has not been assigned to any site"
 			},
-			"REMONTEE_DELETE_CONFIRMATION":{
+			"REMONTEE_DELETE_CONFIRMATION": {
 				"TITLE": "You will permanently delete this lift",
 				"LABEL": "Are you sure you want to continue ?"
 			},
@@ -1611,27 +1630,27 @@
 				"TITLE": "You will permanently delete this document",
 				"LABEL": "Are you sure you want to continue ?"
 			},
-			"DOC_DELETED":{
+			"DOC_DELETED": {
 				"TITLE": "Document deleted successfully"
 			},
-			"LIFT_UPDATED":{
+			"LIFT_UPDATED": {
 				"TITLE": "QHSE lift successfully updated"
 			},
-			"FILE_SIZE_ALERT":{
+			"FILE_SIZE_ALERT": {
 				"TITLE": "Each File should be less than 10 MB of size."
 			},
-			"LIFT_CREATED":{
+			"LIFT_CREATED": {
 				"TITLE": "QHSE lift created successfully"
 			},
-			"LIFT_TYPE_ARCHIVED":{
+			"LIFT_TYPE_ARCHIVED": {
 				"TITLE": "Type of lift successfully archived"
 			},
-			"ELEMENT_NOT_DELETED":{
+			"ELEMENT_NOT_DELETED": {
 				"TITLE": "Unable to delete because the selection includes an element assigned to one or more lifts",
 				"SHORTTITLE": "Types of lift",
 				"LABEL": "Unable to delete because the selection is assigned to one or more lifts"
 			},
-			"REMONTEE_DELETED":{
+			"REMONTEE_DELETED": {
 				"TITLE": "Lift deleted succesfully"
 			},
 			"NO_DOCUMENT": "No document",
@@ -1652,13 +1671,13 @@
 			}
 		},
 		"DASH": {
-			"TOP_COLLABORATOR":{
+			"TOP_COLLABORATOR": {
 				"TITLE": "Top 5 collaborators"
 			},
 			"LIFTS_BY_TYPE": {
 				"TITLE": "Lifts by type"
 			},
-			"LIFTS_EVOLUTION":{
+			"LIFTS_EVOLUTION": {
 				"TITLE": "Evolution of lifts"
 			}
 		},
@@ -1817,13 +1836,13 @@
 				"TITLE": "User updated successfully"
 			}
 		},
-		"CARD":{
+		"CARD": {
 			"ABOUT_USER": {
 				"TITLE": "About the user"
 			},
 			"USER_INFOS": {
 				"TITLE": "User information",
-				"EMERGENCY_CASE":"In case of emergency",
+				"EMERGENCY_CASE": "In case of emergency",
 				"MEDICAL_VISIT": "Medical visit"
 			},
 			"USER_ACCOUNT_INFOS": {
@@ -1893,7 +1912,7 @@
 			"SHORTTITLE": "ID number",
 			"TITLE": "Vehicle identification number"
 		},
-		"ETAT":{
+		"ETAT": {
 			"LABEL": "Condition of the equipment",
 			"SHORTTITLE": "Condition",
 			"TITLE": "Condition of the equipment"
@@ -1901,7 +1920,7 @@
 		"VEHICULE_KM": {
 			"LABEL": "Number of kilometers traveled",
 			"SHORTTITLE": "Kilometers traveled",
-			"TITLE": "Number of kilometers traveled"	
+			"TITLE": "Number of kilometers traveled"
 		},
 		"ASSIGNED_ACTION": {
 			"TITLE": "Action assigned to the person visited"
@@ -2094,10 +2113,10 @@
 			"SHORTTITLE": "Vehicle",
 			"TITLE": "Vehicle name"
 		},
-		"VEHICLE_CONFORMITY":{
-			"TITLE":"Conformité du véhicule",
-			"SHORTTITLE":"Conformité du véhicule",
-			"LABEL":"Conformité du véhicule"
+		"VEHICLE_CONFORMITY": {
+			"TITLE": "Conformité du véhicule",
+			"SHORTTITLE": "Conformité du véhicule",
+			"LABEL": "Conformité du véhicule"
 		},
 		"VEHICULE_FOUND": {
 			"LABEL": "Vehicle identification number entered ",
@@ -2135,7 +2154,7 @@
 			"EDIT_GOAL": {
 				"TITLE": "Edit goals"
 			},
-			"ADD_CATEGORY":{
+			"ADD_CATEGORY": {
 				"TITLE": "Add category"
 			}
 		},
@@ -2210,40 +2229,40 @@
 			"TITLE": "Phone"
 		},
 		"RELATIONSHIP": {
-			"TITLE" : "Relationship"
+			"TITLE": "Relationship"
 		},
 		"RQTH": {
-			"TITLE" : "RQTH"
+			"TITLE": "RQTH"
 		},
 		"REALIZED": {
-			"TITLE" : "Achieved"
+			"TITLE": "Achieved"
 		},
 		"TO_RENEW": {
-			"TITLE" : "To renew"
+			"TITLE": "To renew"
 		},
 		"TRAINING": {
-			"TITLE" : "Training"
+			"TITLE": "Training"
 		},
 		"NO_TRAINING": {
 			"TITLE": "No training fund"
 		},
 		"COMPLETION_DATE": {
-			"TITLE" : "Date of completion"
+			"TITLE": "Date of completion"
 		},
 		"RENEWAL_DATE": {
-			"TITLE" : "Renewal date"
+			"TITLE": "Renewal date"
 		},
 		"EMPLOYER_AUTH": {
-			"TITLE" : "Employer authorization"
+			"TITLE": "Employer authorization"
 		},
 		"SKILLS": {
-			"TITLE" : "Skills"
+			"TITLE": "Skills"
 		},
 		"MODIFICATION": {
-			"TITLE" : "Modification"
+			"TITLE": "Modification"
 		},
 		"VISION_360": {
-			"TITLE" : "Vision 360"
+			"TITLE": "Vision 360"
 		}
 	},
 	"HOME": {
