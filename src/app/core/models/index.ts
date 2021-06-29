@@ -29,5 +29,6 @@ export { FollowUpPeriod } from './followUpPeriod.model';
 export { Comment } from './comment.model';
 export { FlashInfo } from './flashinfo.model';
 export  { Pdp } from './pdp.model';
+export  { ConsigneModel } from './consigne.model';
 
 
