@@ -11,3 +11,14 @@ export class ConsigneModel {
 	label_details: string;
 	creator_id?: number;
 }
+
+export class DispositionModel {
+	id?: number;
+	label?: string;
+	slug?: string;
+	ordre?: number;
+	active?: boolean;
+	is_with_comment: boolean;
+	creator_id?: number;
+	items ?: Array<DispositionModel>;
+}

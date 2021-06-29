@@ -382,8 +382,8 @@
 									<td mat-cell *matCellDef="let element" [width]="40">
 										<div class="m-2">
 											<mat-checkbox [value]="element.id"
-														  (change)="onConsigneCheckChange($event, element.risques)"
-														  [checked]="onConsignesIsChecked(element.id)">{{element.label}}</mat-checkbox>
+														  (change)="onCheckBoxChange($event, 'consignes')"
+														  [checked]="onCheckBoxIsChecked('consignes', element.id)">{{element.label}}</mat-checkbox>
 										</div>
 									</td>
 								</ng-container>
@@ -392,13 +392,13 @@
 									<th mat-header-cell *matHeaderCellDef></th>
 									<td mat-cell *matCellDef="let element" class="cell-textarea">
 										<ng-container *ngIf="element?.is_comment_consigne">
-											<textarea [disabled]="!onConsignesIsChecked(element.id)"
+											<textarea [disabled]="!onCheckBoxIsChecked('consignes', element.id)"
 													  class="form-control no_border mb-2 mt-2 "
 													  cols="5" rows="1"
 													  placeholder="{{'ACTION.ENTER_HERE' | translate}}"></textarea>
 										</ng-container>
 										<div class="mb-2 mt-3 d-flex align-items-center " *ngIf="element?.has_details">
-											<textarea [disabled]="!onConsignesIsChecked(element.id)"
+											<textarea [disabled]="!onCheckBoxIsChecked('consignes', element.id)"
 													  cols="5" rows="1"
 													  class="form-control no_border mb-2 mt-2 "
 													  placeholder="{{element?.label_details | translate}}"></textarea>
@@ -406,7 +406,7 @@
 									</td>
 								</ng-container>
 
-								<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+								<tr mat-row *matRowDef="let row; columns: displayedColumnsConsignes;"></tr>
 							</table>
 						</div>
 					</div>
@@ -416,6 +416,100 @@
 		<div class="col-12 mb-4" *ngIf="partHided(3) && origin=='add'">
 			<button mat-raised-button type="button" class="pull-right btn-small" color="info"
 					(click)="showPart(3)">{{'ACTION.FOLLOWING' | translate}}</button>
+		</div>
+	</div>
+	<div class="row" [hidden]="origin == 'add' && partHided(3)">
+		<div class="col-12">
+			<div class="tf-heading tf-heading--md">|
+				5 {{'EPI mis à disposition de l’entreprise extérieure' | translate}}</div>
+			<div class="mt-3">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="tf-card-form">
+							<table class="mt-3" mat-table [dataSource]="EPIDispositionList">
+								<ng-container matColumnDef="label">
+									<td mat-cell *matCellDef="let element" [width]="'30%'">
+										<div class="m-2">
+											<mat-checkbox [value]="element.id"
+														  (change)="onCheckBoxChange($event, 'epi_disposition')"
+														  [checked]="onCheckBoxIsChecked('epi_disposition', element.id)">{{element.label}}</mat-checkbox>
+										</div>
+									</td>
+								</ng-container>
+								<ng-container matColumnDef="list">
+									<td mat-cell *matCellDef="let element" class="cell-textarea" [width]="'25%'">
+										<div class="d-flex flex-column align-items-center justify-content-center">
+											<mat-select placeholder="Sélectionnez un élément"
+														[disabled]="!onCheckBoxIsChecked('epi_disposition', element.id)"
+														*ngIf="element?.items?.length > 0">
+												<mat-option *ngFor="let item of element?.items"
+															[value]="item.id">{{item?.label}}</mat-option>
+											</mat-select>
+										</div>
+										<textarea cols="5" rows="1" *ngIf="element?.is_with_comment"
+												  [disabled]="!onCheckBoxIsChecked('epi_disposition', element.id)"
+												  class="form-control no_border mb-2 mt-3"
+												  placeholder="{{'Autre' | translate}}"></textarea>
+									</td>
+								</ng-container>
+								<ng-container matColumnDef="eu">
+									<td mat-cell *matCellDef="let element" [width]="'15%'">
+										<div class="m-2">
+											<mat-checkbox
+												[disabled]="!onCheckBoxIsChecked('epi_disposition', element.id)"
+											>EU</mat-checkbox>
+										</div>
+									</td>
+								</ng-container>
+								<ng-container matColumnDef="ee">
+									<td mat-cell *matCellDef="let element" [width]="'15%'">
+										<div class="m-2">
+											<mat-checkbox
+												[disabled]="!onCheckBoxIsChecked('epi_disposition', element.id)"
+											>EE</mat-checkbox>
+										</div>
+									</td>
+								</ng-container>
+								<ng-container matColumnDef="sous-traitant">
+									<td mat-cell *matCellDef="let element" [width]="'15%'">
+										<div class="m-2">
+											<mat-checkbox
+												[disabled]="!onCheckBoxIsChecked('epi_disposition', element.id)"
+											>Sous-traitant</mat-checkbox>
+										</div>
+									</td>
+								</ng-container>
+
+								<!--								<ng-container matColumnDef="comments">-->
+								<!--									<th mat-header-cell *matHeaderCellDef></th>-->
+								<!--									<td mat-cell *matCellDef="let element" class="cell-textarea">-->
+								<!--										<ng-container *ngIf="element?.is_comment_consigne">-->
+								<!--											<textarea [disabled]="!onConsignesIsChecked(element.id)"-->
+								<!--													  class="form-control no_border mb-2 mt-2 "-->
+								<!--													  cols="5" rows="1"-->
+								<!--													  placeholder="{{'ACTION.ENTER_HERE' | translate}}"></textarea>-->
+								<!--										</ng-container>-->
+								<!--										<div class="mb-2 mt-3 d-flex align-items-center " *ngIf="element?.has_details">-->
+								<!--											<textarea [disabled]="!onConsignesIsChecked(element.id)"-->
+								<!--													  cols="5" rows="1"-->
+								<!--													  class="form-control no_border mb-2 mt-2 "-->
+								<!--													  placeholder="{{element?.label_details | translate}}"></textarea>-->
+								<!--										</div>-->
+								<!--									</td>-->
+								<!--								</ng-container>-->
+
+								<tr mat-row *matRowDef="let row; columns: displayedColumnsEPIDisposition;"></tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tf-heading tf-heading--md">|
+				5 {{'Moyens mis à disposition de l’entreprise extérieure' | translate}}</div>
+		</div>
+		<div class="col-12 mb-4" *ngIf="partHided(4) && origin=='add'">
+			<button mat-raised-button type="button" class="pull-right btn-small" color="info"
+					(click)="showPart(4)">{{'ACTION.FOLLOWING' | translate}}</button>
 		</div>
 	</div>
 </ng-container>

@@ -5,6 +5,7 @@ import {CdkTextareaAutosize} from "@angular/cdk/text-field";
 import {take} from "rxjs/operators";
 import {CatRisque, ConsigneModel} from "@app/core/models";
 import {PdpService} from "@app/core/services";
+import {DispositionModel} from "@app/core/models/consigne.model";
 
 @Component({
 	selector: 'tf-pdp-add-form',
@@ -20,7 +21,9 @@ export class PdpAddFormComponent implements OnInit {
 	@Input() origin = 'add';
 
 	public instructionsList: Array<ConsigneModel>;
-	displayedColumns: string[] = ['consignes', 'comments'];
+	public EPIDispositionList: Array<DispositionModel>;
+	displayedColumnsConsignes: string[] = ['consignes', 'comments'];
+	displayedColumnsEPIDisposition: string[] = ['label', 'list', 'eu', 'ee', 'sous-traitant'];
 
 	constructor(private _ngZone: NgZone,
 				private cdr: ChangeDetectorRef,
@@ -34,8 +37,8 @@ export class PdpAddFormComponent implements OnInit {
 
 	async getPDPConsignes() {
 		const res: any = await this.pdpService.getAllPdpFilters().toPromise();
-		console.log(res);
 		this.instructionsList = res.result.data ? res.result.data.consignes : [];
+		this.EPIDispositionList = res.result.data ? res.result.data.epi_disposition : [];
 		this.cdr.markForCheck();
 	}
 
@@ -92,12 +95,12 @@ export class PdpAddFormComponent implements OnInit {
 	}
 
 
-	onConsigneCheckChange(event, actions) {
-		const consignesFormArray: FormArray = this.pdpForm.get('consignes') as FormArray;
-		this.manageConsignesSelection(event.source.value, event.checked, consignesFormArray);
+	onCheckBoxChange(event, FormControlName) {
+		const formArray: FormArray = this.pdpForm.get(FormControlName) as FormArray;
+		this.manageCheckBoxSelection(event.source.value, event.checked, formArray);
 	}
 
-	manageConsignesSelection(id: number, checked: boolean, formArray: FormArray) {
+	manageCheckBoxSelection(id: number, checked: boolean, formArray: FormArray) {
 		/* Selected */
 		if (checked) {
 			// Add a new control in the arrayForm
@@ -119,8 +122,8 @@ export class PdpAddFormComponent implements OnInit {
 	}
 
 
-	onConsignesIsChecked(riskId) {
-		return this.pdpForm.get('consignes').value.includes(riskId);
+	onCheckBoxIsChecked(formControlName, riskId) {
+		return this.pdpForm.get(formControlName).value.includes(riskId);
 	}
 
 }

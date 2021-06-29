@@ -59,6 +59,7 @@ export class PdpAddComponent implements OnInit {
 			effectif_moyen: [null],
 
 			consignes: new FormArray([]),
+			epi_disposition: new FormArray([]),
 
 			// date_accueil_secu:[null, Validators.required],
 			// realisateur:['', Validators.required],
