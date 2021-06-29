@@ -92,30 +92,22 @@ export class PdpAddFormComponent implements OnInit {
 	}
 
 
-	onRiskCheckChange(event, actions) {
-		const risksFormArray: FormArray = this.pdpForm.get('risques') as FormArray;
-		const catRisksformArray: FormArray = this.pdpForm.get('cat_risques') as FormArray;
-
-		this.manageRisksSelection(event.source.value, event.checked, catRisksformArray);
-
-		actions.forEach(element => {
-			this.manageRisksSelection(element.id, event.checked, risksFormArray);
-		});
+	onConsigneCheckChange(event, actions) {
+		const consignesFormArray: FormArray = this.pdpForm.get('consignes') as FormArray;
+		this.manageConsignesSelection(event.source.value, event.checked, consignesFormArray);
 	}
 
-	manageRisksSelection(idRisk: number, checked: boolean, formArray: FormArray) {
+	manageConsignesSelection(id: number, checked: boolean, formArray: FormArray) {
 		/* Selected */
 		if (checked) {
 			// Add a new control in the arrayForm
-			formArray.push(new FormControl(idRisk));
-		}
-		/* unselected */
-		else {
+			formArray.push(new FormControl(id));
+		} else {
 			// find the unselected element
-			let i: number = 0;
+			let i = 0;
 
 			formArray.controls.forEach((ctrl: FormControl) => {
-				if (ctrl.value == idRisk) {
+				if (ctrl.value === id) {
 					// Remove the unselected element from the arrayForm
 					formArray.removeAt(i);
 					return;
@@ -127,8 +119,8 @@ export class PdpAddFormComponent implements OnInit {
 	}
 
 
-	onRiskIsChecked(riskId) {
-		return this.pdpForm.get('cat_risques').value.includes(riskId);
+	onConsignesIsChecked(riskId) {
+		return this.pdpForm.get('consignes').value.includes(riskId);
 	}
 
 }

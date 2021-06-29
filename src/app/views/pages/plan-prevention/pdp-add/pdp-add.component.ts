@@ -58,8 +58,7 @@ export class PdpAddComponent implements OnInit {
 			is_presence_site_client: ['0'],
 			effectif_moyen: [null],
 
-			risques: new FormArray([]),
-			cat_risques: new FormArray([]),
+			consignes: new FormArray([]),
 
 			// date_accueil_secu:[null, Validators.required],
 			// realisateur:['', Validators.required],
