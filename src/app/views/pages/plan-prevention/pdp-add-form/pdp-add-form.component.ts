@@ -1,8 +1,10 @@
-import {Component, Input, NgZone, OnInit, ViewChild} from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
+import {ChangeDetectorRef, Component, Input, NgZone, OnInit, ViewChild} from '@angular/core';
+import {FormArray, FormControl, FormGroup} from "@angular/forms";
 import {FormStatus} from "@app/core/_base/crud/models/form-status";
 import {CdkTextareaAutosize} from "@angular/cdk/text-field";
 import {take} from "rxjs/operators";
+import {CatRisque, ConsigneModel} from "@app/core/models";
+import {PdpService} from "@app/core/services";
 
 @Component({
 	selector: 'tf-pdp-add-form',
@@ -17,11 +19,24 @@ export class PdpAddFormComponent implements OnInit {
 	public parts = [1];
 	@Input() origin = 'add';
 
-	constructor(private _ngZone: NgZone) {
+	public instructionsList: Array<ConsigneModel>;
+	displayedColumns: string[] = ['consignes', 'comments'];
+
+	constructor(private _ngZone: NgZone,
+				private cdr: ChangeDetectorRef,
+				protected pdpService: PdpService) {
 	}
 
 	ngOnInit() {
 		this.triggerResize();
+		this.getPDPConsignes();
+	}
+
+	async getPDPConsignes() {
+		const res: any = await this.pdpService.getAllPdpFilters().toPromise();
+		console.log(res);
+		this.instructionsList = res.result.data ? res.result.data.consignes : [];
+		this.cdr.markForCheck();
 	}
 
 	partHided(key) {
@@ -75,4 +90,45 @@ export class PdpAddFormComponent implements OnInit {
 			this.pdpForm.controls[controlName].setValue('0');
 		}
 	}
+
+
+	onRiskCheckChange(event, actions) {
+		const risksFormArray: FormArray = this.pdpForm.get('risques') as FormArray;
+		const catRisksformArray: FormArray = this.pdpForm.get('cat_risques') as FormArray;
+
+		this.manageRisksSelection(event.source.value, event.checked, catRisksformArray);
+
+		actions.forEach(element => {
+			this.manageRisksSelection(element.id, event.checked, risksFormArray);
+		});
+	}
+
+	manageRisksSelection(idRisk: number, checked: boolean, formArray: FormArray) {
+		/* Selected */
+		if (checked) {
+			// Add a new control in the arrayForm
+			formArray.push(new FormControl(idRisk));
+		}
+		/* unselected */
+		else {
+			// find the unselected element
+			let i: number = 0;
+
+			formArray.controls.forEach((ctrl: FormControl) => {
+				if (ctrl.value == idRisk) {
+					// Remove the unselected element from the arrayForm
+					formArray.removeAt(i);
+					return;
+				}
+
+				i++;
+			});
+		}
+	}
+
+
+	onRiskIsChecked(riskId) {
+		return this.pdpForm.get('cat_risques').value.includes(riskId);
+	}
+
 }

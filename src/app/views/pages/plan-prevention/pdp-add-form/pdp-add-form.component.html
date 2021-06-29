@@ -373,28 +373,52 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="tf-card-form">
-							<div class="row form-row">
-								<mat-form-field class="col-xl-6">
-									<mat-label>{{'Nom Sous-Traitant 1 ' | translate}}</mat-label>
-									<input class="form-control" matInput type="text" name="sous_traitant1_name"
-										   formControlName="sous_traitant1_name"
-										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
-										   [required]="isFieldRequired('sous_traitant1_name')"/>
-									<mat-error *ngIf="isControlHasError('sous_traitant1_name','required')">
-										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-									</mat-error>
-								</mat-form-field>
-								<mat-form-field class="col-xl-6">
-									<mat-label>{{'Nom Sous-Traitant 1 Tel' | translate}}</mat-label>
-									<input class="form-control" matInput type="text" name="sous_traitant1_tel"
-										   formControlName="sous_traitant1_tel"
-										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
-										   [required]="isFieldRequired('sous_traitant1_tel')"/>
-									<mat-error *ngIf="isControlHasError('sous_traitant1_tel','required')">
-										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-									</mat-error>
-								</mat-form-field>
-							</div>
+							<!--							<div class="tf-heading tf-heading&#45;&#45;xs">-->
+							<!--								{{'ARS.CARD.RISKS.LABEL' | translate}}-->
+							<!--							</div>-->
+							<table class="mt-3" mat-table [dataSource]="instructionsList">
+								<ng-container matColumnDef="consignes">
+									<!--									<th mat-header-cell *matHeaderCellDef> {{'ARS.FORM.RISKS' | translate}} </th>-->
+									<td mat-cell *matCellDef="let element" [width]="40">
+										<div class="m-2">
+											<mat-checkbox [value]="element.id"
+														  (change)="onRiskCheckChange($event, element.risques)"
+														  [checked]="onRiskIsChecked(element.id)">{{element.label}}</mat-checkbox>
+										</div>
+									</td>
+								</ng-container>
+
+								<!--								<ng-container matColumnDef="actions">-->
+								<!--									<th mat-header-cell *matHeaderCellDef> {{'ARS.FORM.ACTION' | translate}} </th>-->
+								<!--									<td mat-cell *matCellDef="let element">-->
+								<!--										<div class="m-2 risk-list" *ngFor="let risk of element.risques">-->
+								<!--											- {{risk.libelle}}-->
+								<!--										</div>-->
+								<!--									</td>-->
+								<!--								</ng-container>-->
+
+								<ng-container matColumnDef="comments">
+									<th mat-header-cell *matHeaderCellDef></th>
+									<td mat-cell *matCellDef="let element" class="cell-textarea">
+										<ng-container *ngIf="element?.is_comment_consigne">
+											<textarea [disabled]="!onRiskIsChecked(element.id)"
+													  class="form-control no_border mb-2 mt-2 "
+													  cols="5" rows="1"
+													  placeholder="{{'ACTION.ENTER_HERE' | translate}}"></textarea>
+										</ng-container>
+										<div class="mb-2 mt-3 d-flex align-items-center " *ngIf="element?.has_details">
+<!--											<label>{{element?.label_details}}</label>-->
+											<textarea [disabled]="!onRiskIsChecked(element.id)"
+													  cols="5" rows="1"
+													  class="form-control no_border mb-2 mt-2 "
+													  placeholder="{{element?.label_details | translate}}"></textarea>
+										</div>
+									</td>
+								</ng-container>
+
+								<!--								<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>-->
+								<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+							</table>
 						</div>
 					</div>
 				</div>
