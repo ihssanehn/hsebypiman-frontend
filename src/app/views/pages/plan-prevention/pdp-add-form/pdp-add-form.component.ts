@@ -23,11 +23,13 @@ export class PdpAddFormComponent implements OnInit {
 	public EPIDispositionList: Array<DispositionModel>;
 	public EESMoyenDisposition: Array<DispositionModel>;
 	public traveauxDangereux: Array<TraveauxDangereuxModel>;
+	public validationPlan: Array<any> = [];
 	public risques: Array<RisqueModel>;
 	displayedColumnsConsignes: string[] = ['consignes', 'comments'];
 	displayedColumnsEPIDisposition: string[] = ['label', 'list', 'eu', 'ee', 'sous-traitant'];
 	displayedColumnsEESMoyenDisposition: string[] = ['label', 'comments'];
 	displayedColumnsTravaux: string[] = ['list'];
+	displayedColumnsValidationPlan: string[] = ['company', 'name', 'date', 'participation', 'visa'];
 
 	constructor(private _ngZone: NgZone,
 				private cdr: ChangeDetectorRef,
@@ -37,6 +39,16 @@ export class PdpAddFormComponent implements OnInit {
 	ngOnInit() {
 		this.triggerResize();
 		this.getPDPConsignes();
+		this.validationPlan = [
+			{company: 'EU', need_text_area_in_title: true},
+			{
+				company: 'EE',
+				need_text_area_in_title: false,
+				title: 'PIMAN Consultants'
+			},
+			{company: 'Sous-traitant 1', need_text_area_in_title: true},
+			{company: 'Sous-traitant 2', need_text_area_in_title: true},
+		]
 	}
 
 	async getPDPConsignes() {
@@ -46,7 +58,6 @@ export class PdpAddFormComponent implements OnInit {
 		this.EESMoyenDisposition = res.result.data ? res.result.data.moyen_disposition_ees : [];
 		this.traveauxDangereux = res.result.data ? res.result.data.travaux_dangereux : [];
 		this.risques = res.result.data ? res.result.data.risques : [];
-		console.log(this.risques);
 		this.cdr.markForCheck();
 	}
 
