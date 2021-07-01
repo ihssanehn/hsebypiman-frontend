@@ -3,9 +3,8 @@ import {FormArray, FormControl, FormGroup} from "@angular/forms";
 import {FormStatus} from "@app/core/_base/crud/models/form-status";
 import {CdkTextareaAutosize} from "@angular/cdk/text-field";
 import {take} from "rxjs/operators";
-import {CatRisque, ConsigneModel} from "@app/core/models";
+import {ConsigneModel, DispositionModel, RisqueModel, TraveauxDangereuxModel} from "@app/core/models";
 import {PdpService} from "@app/core/services";
-import {DispositionModel} from "@app/core/models/consigne.model";
 
 @Component({
 	selector: 'tf-pdp-add-form',
@@ -22,8 +21,13 @@ export class PdpAddFormComponent implements OnInit {
 
 	public instructionsList: Array<ConsigneModel>;
 	public EPIDispositionList: Array<DispositionModel>;
+	public EESMoyenDisposition: Array<DispositionModel>;
+	public traveauxDangereux: Array<TraveauxDangereuxModel>;
+	public risques: Array<RisqueModel>;
 	displayedColumnsConsignes: string[] = ['consignes', 'comments'];
 	displayedColumnsEPIDisposition: string[] = ['label', 'list', 'eu', 'ee', 'sous-traitant'];
+	displayedColumnsEESMoyenDisposition: string[] = ['label', 'comments'];
+	displayedColumnsTravaux: string[] = ['list'];
 
 	constructor(private _ngZone: NgZone,
 				private cdr: ChangeDetectorRef,
@@ -39,6 +43,10 @@ export class PdpAddFormComponent implements OnInit {
 		const res: any = await this.pdpService.getAllPdpFilters().toPromise();
 		this.instructionsList = res.result.data ? res.result.data.consignes : [];
 		this.EPIDispositionList = res.result.data ? res.result.data.epi_disposition : [];
+		this.EESMoyenDisposition = res.result.data ? res.result.data.moyen_disposition_ees : [];
+		this.traveauxDangereux = res.result.data ? res.result.data.travaux_dangereux : [];
+		this.risques = res.result.data ? res.result.data.risques : [];
+		console.log(this.risques);
 		this.cdr.markForCheck();
 	}
 
@@ -95,9 +103,10 @@ export class PdpAddFormComponent implements OnInit {
 	}
 
 
-	onCheckBoxChange(event, FormControlName) {
+	onCheckBoxChange(event, FormControlName, value = null) {
 		const formArray: FormArray = this.pdpForm.get(FormControlName) as FormArray;
-		this.manageCheckBoxSelection(event.source.value, event.checked, formArray);
+		this.manageCheckBoxSelection(event.source.value || value, event.checked, formArray);
+		console.log(this.pdpForm.get(FormControlName).value, event);
 	}
 
 	manageCheckBoxSelection(id: number, checked: boolean, formArray: FormArray) {

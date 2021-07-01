@@ -60,6 +60,9 @@ export class PdpAddComponent implements OnInit {
 
 			consignes: new FormArray([]),
 			epi_disposition: new FormArray([]),
+			moyen_disposition_ees: new FormArray([]),
+			travaux_dangereux: new FormArray([]),
+			risques: new FormArray([]),
 
 			// date_accueil_secu:[null, Validators.required],
 			// realisateur:['', Validators.required],
