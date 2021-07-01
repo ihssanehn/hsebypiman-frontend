@@ -24,12 +24,15 @@ export class PdpAddFormComponent implements OnInit {
 	public EESMoyenDisposition: Array<DispositionModel>;
 	public traveauxDangereux: Array<TraveauxDangereuxModel>;
 	public validationPlan: Array<any> = [];
+	public intervenants: Array<any> = [{last: '', first: '', contact: '', formations: '', suivis_médical: ''}];
+	public suivisMedicalIntervenants: Array<any> = [{}];
 	public risques: Array<RisqueModel>;
 	displayedColumnsConsignes: string[] = ['consignes', 'comments'];
 	displayedColumnsEPIDisposition: string[] = ['label', 'list', 'eu', 'ee', 'sous-traitant'];
 	displayedColumnsEESMoyenDisposition: string[] = ['label', 'comments'];
 	displayedColumnsTravaux: string[] = ['list'];
 	displayedColumnsValidationPlan: string[] = ['company', 'name', 'date', 'participation', 'visa'];
+	displayedColumnsIntervenants: string[] = ['last', 'first', 'contact', 'formations', 'suivis_médical'];
 
 	constructor(private _ngZone: NgZone,
 				private cdr: ChangeDetectorRef,
@@ -48,7 +51,7 @@ export class PdpAddFormComponent implements OnInit {
 			},
 			{company: 'Sous-traitant 1', need_text_area_in_title: true},
 			{company: 'Sous-traitant 2', need_text_area_in_title: true},
-		]
+		];
 	}
 
 	async getPDPConsignes() {
@@ -58,6 +61,7 @@ export class PdpAddFormComponent implements OnInit {
 		this.EESMoyenDisposition = res.result.data ? res.result.data.moyen_disposition_ees : [];
 		this.traveauxDangereux = res.result.data ? res.result.data.travaux_dangereux : [];
 		this.risques = res.result.data ? res.result.data.risques : [];
+		this.suivisMedicalIntervenants = res.result.data ? res.result.data.intervenant : [];
 		this.cdr.markForCheck();
 	}
 
@@ -144,6 +148,12 @@ export class PdpAddFormComponent implements OnInit {
 
 	onCheckBoxIsChecked(formControlName, riskId) {
 		return this.pdpForm.get(formControlName).value.includes(riskId);
+	}
+
+	addIntervenant() {
+		if (this.intervenants.length < 9) {
+			this.intervenants = [...this.intervenants, {}];
+		}
 	}
 
 }

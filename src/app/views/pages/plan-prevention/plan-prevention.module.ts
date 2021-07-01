@@ -29,6 +29,7 @@ import {ActionNotificationComponent} from '@app/views/partials/content/crud';
 import {PartialsModule} from '@app/views/partials/partials.module';
 import {PdpAddComponent} from './pdp-add/pdp-add.component';
 import { PdpAddFormComponent } from './pdp-add-form/pdp-add-form.component';
+import {CdkColumnDef} from "@angular/cdk/table";
 
 const routes: Routes = [
 	{
@@ -103,6 +104,7 @@ const routes: Routes = [
 		MatFormFieldModule,
 	],
 	providers: [
+		CdkColumnDef,
 		InterceptService,
 		{
 			provide: HTTP_INTERCEPTORS,
