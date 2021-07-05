@@ -29,6 +29,6 @@ export {FollowUpPeriod} from './followUpPeriod.model';
 export {Comment} from './comment.model';
 export {FlashInfo} from './flashinfo.model';
 export {Pdp} from './pdp.model';
-export {ConsigneModel, TraveauxDangereuxModel, DispositionModel, RisqueModel} from './consigne.model';
+export {ConsigneModel, TraveauxDangereuxModel, DispositionModel, RisqueModel, PDPFrequences} from './consigne.model';
 
 

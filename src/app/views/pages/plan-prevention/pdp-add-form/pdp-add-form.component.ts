@@ -1,9 +1,9 @@
-import {ChangeDetectorRef, Component, Input, NgZone, OnInit, ViewChild} from '@angular/core';
+import {ChangeDetectorRef, Component, EventEmitter, Input, NgZone, OnInit, Output, ViewChild} from '@angular/core';
 import {FormArray, FormControl, FormGroup} from "@angular/forms";
 import {FormStatus} from "@app/core/_base/crud/models/form-status";
 import {CdkTextareaAutosize} from "@angular/cdk/text-field";
 import {take} from "rxjs/operators";
-import {ConsigneModel, DispositionModel, RisqueModel, TraveauxDangereuxModel} from "@app/core/models";
+import {ConsigneModel, DispositionModel, PDPFrequences, RisqueModel, TraveauxDangereuxModel} from "@app/core/models";
 import {PdpService} from "@app/core/services";
 
 @Component({
@@ -16,6 +16,7 @@ export class PdpAddFormComponent implements OnInit {
 	@Input() pdpForm: FormGroup;
 	@Input() formStatus: FormStatus;
 	@ViewChild('autosize', {static: true}) autosize: CdkTextareaAutosize;
+	@Output() onLastStep: EventEmitter<any> = new EventEmitter<any>();
 	public parts = [1];
 	@Input() origin = 'add';
 
@@ -27,6 +28,7 @@ export class PdpAddFormComponent implements OnInit {
 	public intervenants: Array<any> = [{last: '', first: '', contact: '', formations: '', suivis_médical: ''}];
 	public suivisMedicalIntervenants: Array<any> = [{}];
 	public risques: Array<RisqueModel>;
+	public frequences: Array<PDPFrequences>;
 	displayedColumnsConsignes: string[] = ['consignes', 'comments'];
 	displayedColumnsEPIDisposition: string[] = ['label', 'list', 'eu', 'ee', 'sous-traitant'];
 	displayedColumnsEESMoyenDisposition: string[] = ['label', 'comments'];
@@ -61,6 +63,7 @@ export class PdpAddFormComponent implements OnInit {
 		this.EESMoyenDisposition = res.result.data ? res.result.data.moyen_disposition_ees : [];
 		this.traveauxDangereux = res.result.data ? res.result.data.travaux_dangereux : [];
 		this.risques = res.result.data ? res.result.data.risques : [];
+		this.frequences = res.result.data ? res.result.data.frequence : [];
 		this.suivisMedicalIntervenants = res.result.data ? res.result.data.intervenant : [];
 		this.cdr.markForCheck();
 	}
@@ -84,9 +87,9 @@ export class PdpAddFormComponent implements OnInit {
 		if (!this.parts.includes(key)) {
 			this.parts.push(key);
 		}
-		// if (key == 4) {
-		// 	this.onLastStep.emit(true);
-		// }
+		if (key === 6) {
+			this.onLastStep.emit(true);
+		}
 	}
 
 	isFieldRequired(controlName) {

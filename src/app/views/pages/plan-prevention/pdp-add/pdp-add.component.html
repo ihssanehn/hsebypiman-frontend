@@ -8,8 +8,13 @@
 			  <span class="id-item">{{'MENU.SUB_PDP.ADD' | translate}}</span>
 			</span>
 		</div>
-		<tf-pdp-add-form [pdpForm]="pdpForm" origin="add"></tf-pdp-add-form>
-
+		<tf-pdp-add-form  (onLastStep)="isLastStep($event)"  [pdpForm]="pdpForm" origin="add"></tf-pdp-add-form>
 	</tf-portlet>
+
+<!--	|| pdpForm.invalid-->
+<!--	pdpForm.valid &&-->
+	<button mat-raised-button *ngIf="enableBtn" [ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': formloading}" [disabled]="formloading" class="btn float-right btn-save" (click)="onSubmit()">
+		{{'ACTION.SAVE' | translate}}
+	</button>
 
 </form>

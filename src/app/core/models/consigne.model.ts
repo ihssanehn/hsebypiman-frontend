@@ -69,3 +69,11 @@ class RisqueSubMoyenModel {
 	pdp_risque_id?: number;
 	is_with_comment?: boolean;
 }
+
+export class PDPFrequences {
+	id?: number;
+	label?: string;
+	slug?: string;
+	active?: boolean;
+	entity_id?: number;
+}
