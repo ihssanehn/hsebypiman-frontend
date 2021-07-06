@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import Swal from "sweetalert2";
 
 @Component({
@@ -71,7 +71,7 @@ export class PdpAddComponent implements OnInit {
 
 	async onSubmit() {
 		console.log('here');
-		console.log(this.pdpForm.valid)
+		console.log(this.pdpForm.value)
 
 	}
 

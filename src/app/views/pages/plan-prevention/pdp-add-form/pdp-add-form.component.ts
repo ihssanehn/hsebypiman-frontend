@@ -124,25 +124,37 @@ export class PdpAddFormComponent implements OnInit {
 	onCheckBoxChange(event, FormControlName, value = null) {
 		const formArray: FormArray = this.pdpForm.get(FormControlName) as FormArray;
 		this.manageCheckBoxSelection(event.source.value || value, event.checked, formArray);
+
 		console.log(this.pdpForm.get(FormControlName).value, event);
+	}
+
+	onAddComment(id, FormControlName, key, value) {
+		const formArray: FormArray = this.pdpForm.get(FormControlName) as FormArray;
+		formArray.controls.forEach((ctrl: FormControl) => {
+			if (ctrl.get('id').value === id) {
+				ctrl.setValue({...ctrl.value, [key]: value});
+				return;
+			}
+		});
 	}
 
 	manageCheckBoxSelection(id: number, checked: boolean, formArray: FormArray) {
 		/* Selected */
 		if (checked) {
-			// Add a new control in the arrayForm
-			formArray.push(new FormControl(id));
+			const group = new FormGroup({
+				id: new FormControl(id),
+				answer: new FormControl(1),
+				type_operation: new FormControl(null),
+				comment: new FormControl(null),
+			});
+			formArray.push(group);
 		} else {
-			// find the unselected element
 			let i = 0;
-
 			formArray.controls.forEach((ctrl: FormControl) => {
-				if (ctrl.value === id) {
-					// Remove the unselected element from the arrayForm
+				if (ctrl.get('id').value === id) {
 					formArray.removeAt(i);
 					return;
 				}
-
 				i++;
 			});
 		}
@@ -151,6 +163,10 @@ export class PdpAddFormComponent implements OnInit {
 
 	onCheckBoxIsChecked(formControlName, riskId) {
 		return this.pdpForm.get(formControlName).value.includes(riskId);
+	}
+
+	isValueInFormArray(formControlName, id) {
+		return (this.pdpForm.get(formControlName) as FormArray).controls.filter(v => v.get('id').value === id).length > 0;
 	}
 
 	addIntervenant() {
