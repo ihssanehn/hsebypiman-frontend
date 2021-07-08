@@ -98,7 +98,8 @@ export class PdpAddFormComponent implements OnInit {
 		if (this.EPIDispositionList.length > 0) {
 			this.patchFormArray(this.EPIDispositionList, 'epi_disposition', [{
 				name: 'answer_id',
-				needTest: false
+				needTest: false,
+				isRequired: true
 			}, {name: 'is_eu', needTest: false}, {name: 'is_ee', needTest: false}, {
 				name: 'is_sous_traitant',
 				needTest: false
@@ -107,24 +108,24 @@ export class PdpAddFormComponent implements OnInit {
 		if (this.instructionsList.length > 0) {
 			this.patchFormArray(this.instructionsList, 'consignes', [{
 				name: 'type_operation',
-				needTest: true
+				needTest: true,
 			}], 'has_details');
 		}
 		if (this.EESMoyenDisposition.length > 0) {
-			this.patchFormArray(this.EESMoyenDisposition, 'moyen_disposition_ees', []);
+			this.patchFormArray(this.EESMoyenDisposition, 'moyen_disposition_ees');
 		}
-		// if (this.instructionsList.length > 0) {
-		// 	this.patchFormArray(this.instructionsList, 'consignes', ['is_eu', 'is_ee', 'is_sous_traitant']);
-		// }
-		// if (this.instructionsList.length > 0) {
-		// 	this.patchFormArray(this.instructionsList, 'consignes', ['is_eu', 'is_ee', 'is_sous_traitant']);
-		// }
+		if (this.traveauxDangereux.length > 0) {
+			this.patchFormArray(this.traveauxDangereux, 'travaux_dangereux');
+		}
+		if (this.risques.length > 0) {
+			this.patchFormArray(this.risques, 'risques', ['is_eu', 'is_ee', 'is_sous_traitant']);
+		}
 
 		console.log(this.pdpForm);
 		this.cdr.markForCheck();
 	}
 
-	patchFormArray(array, formArrayName, listAddedControls: Array<any>, testAtteName = null) {
+	patchFormArray(array, formArrayName, listAddedControls: Array<any> = [], testAtteName = null) {
 		const FormArray = this.pdpForm.get(formArrayName) as FormArray;
 		for (let i = 0; i < array.length; i++) {
 			const group = new FormGroup({
@@ -135,7 +136,10 @@ export class PdpAddFormComponent implements OnInit {
 			listAddedControls.map(v => {
 				if (!v.needTest || (i && v.needTest && array[i].has_details)) {
 					console.log(formArrayName, v.name);
-					group.addControl(v.name, new FormControl({value: null, disabled: true}));
+					group.addControl(v.name, new FormControl({
+						value: null,
+						disabled: true
+					}, v.isRequired ? Validators.required : null));
 				}
 			});
 			// console.log(group);
@@ -185,7 +189,7 @@ export class PdpAddFormComponent implements OnInit {
 		if (!control) {
 			return false;
 		}
-		console.log(control, controlName, control.dirty, control.touched, control.hasError(validationType));
+		console.log(control, index, control.dirty, control.touched, control.hasError(validationType));
 		return control.hasError(validationType) && (control.dirty || control.touched);
 	}
 

@@ -464,8 +464,6 @@
 												<mat-option *ngFor="let item of element?.items"
 															[value]="item.id">{{item?.label}}</mat-option>
 											</mat-select>
-
-											{{isControlHasError('answer_id', 'required', 'epi_disposition', index)}}
 											<mat-error
 												*ngIf="isControlHasError('answer_id', 'required', 'epi_disposition', index)"
 												class="w-100">
@@ -540,198 +538,206 @@
 			</div>
 			<div class="tf-heading tf-heading--md">|
 				6 {{'Moyens mis à disposition de l’entreprise extérieure' | translate}}</div>
-			<!--			<div class="mt-3">-->
-			<!--				<div class="row">-->
-			<!--					<div class="col-md-12">-->
-			<!--						<div class="tf-card-form">-->
-			<!--							<table class="mt-3" mat-table [dataSource]="EESMoyenDisposition">-->
-			<!--								<ng-container matColumnDef="label">-->
-			<!--									<td mat-cell *matCellDef="let element" [width]="'30%'">-->
-			<!--										<div class="m-2">-->
-			<!--											<mat-checkbox [value]="element.id"-->
-			<!--														  (change)="onCheckBoxChange($event, 'moyen_disposition_ees')"-->
-			<!--														  [checked]="onCheckBoxIsChecked('moyen_disposition_ees', element.id)">{{element.label}}</mat-checkbox>-->
-			<!--										</div>-->
-			<!--									</td>-->
-			<!--								</ng-container>-->
-			<!--								<ng-container matColumnDef="comments">-->
-			<!--									<th mat-header-cell *matHeaderCellDef></th>-->
-			<!--									<td mat-cell *matCellDef="let element" class="cell-textarea">-->
-			<!--											<textarea-->
-			<!--												[disabled]="!isValueInFormArray('moyen_disposition_ees', element.id)"-->
-			<!--												class="form-control no_border mb-2 mt-2 "-->
-			<!--												cols="5" rows="1"-->
-			<!--												placeholder="{{'ACTION.ENTER_HERE' | translate}}"></textarea>-->
-			<!--									</td>-->
-			<!--								</ng-container>-->
-			<!--								<tr mat-row *matRowDef="let row; columns: displayedColumnsEESMoyenDisposition;"></tr>-->
-			<!--							</table>-->
-			<!--						</div>-->
-			<!--					</div>-->
-			<!--				</div>-->
-			<!--			</div>-->
+			<div class="mt-3">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="tf-card-form">
+							<table class="mt-3" mat-table [dataSource]="EESMoyenDisposition"
+								   formArrayName="moyen_disposition_ees">
+								<ng-container matColumnDef="label">
+									<td mat-cell *matCellDef="let element; let index = index" [formGroupName]="index"
+										[width]="'30%'">
+										<div class="m-2">
+											<mat-checkbox [value]="element.id"
+														  formControlName="answer"
+														  (change)="allowOtherFields('moyen_disposition_ees', index, [], $event.checked)">{{element.label}}</mat-checkbox>
+										</div>
+									</td>
+								</ng-container>
+								<ng-container matColumnDef="comments">
+									<th mat-header-cell *matHeaderCellDef></th>
+									<td mat-cell *matCellDef="let element; let index = index" [formGroupName]="index"
+										class="cell-textarea">
+														<textarea
+															formControlName="comment"
+															class="form-control no_border mb-2 mt-2 "
+															cols="5" rows="1"
+															placeholder="{{'ACTION.ENTER_HERE' | translate}}"></textarea>
+									</td>
+								</ng-container>
+								<tr mat-row
+									*matRowDef="let row; let i = index; columns: displayedColumnsEESMoyenDisposition;"
+									[formGroupName]="i"></tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 		<div class="col-12 mb-4" *ngIf="partHided(4) && origin=='add'">
 			<button mat-raised-button type="button" class="pull-right btn-small" color="info"
 					(click)="showPart(4)">{{'ACTION.FOLLOWING' | translate}}</button>
 		</div>
 	</div>
-	<!--	<div class="row" [hidden]="origin == 'add' && partHided(4)">-->
-	<!--		<div class="col-12">-->
-	<!--			<div class="tf-heading tf-heading&#45;&#45;md">| 7 {{'Liste des travaux dangereux' | translate}}</div>-->
-	<!--			<div class="row">-->
-	<!--				<div class="col-md-12">-->
-	<!--					<div class="tf-card-form">-->
-	<!--						<div class="tf-heading tf-heading&#45;&#45;xs">-->
-	<!--							{{'Pour rappel, un plan de prévention écrit doit être réalisé entre l’entreprise utilisatrice (EU) et l’entreprise extérieure (EE) avant le commencement des travaux dans le cas où le nombre total d’heures de travail prévu pour réaliser les travaux est au moins de 400 heures sur 12 mois, ou bien si les travaux figurent sur la liste des travaux dangereux fixé par l’arrêté du 19 mars 1993.' | translate}}-->
-	<!--						</div>-->
-	<!--						<table class="mt-3" mat-table [dataSource]="traveauxDangereux">-->
-	<!--							<ng-container matColumnDef="list">-->
-	<!--								<th mat-header-cell *matHeaderCellDef> {{'Liste des travaux' | translate}} </th>-->
-	<!--								<td mat-cell *matCellDef="let element">-->
-	<!--									<div class="m-2">-->
-	<!--										<mat-checkbox [value]="element.id"-->
-	<!--													  (change)="onCheckBoxChange($event, 'travaux_dangereux')"-->
-	<!--													  [checked]="onCheckBoxIsChecked('travaux_dangereux', element.id)">{{element.label}}</mat-checkbox>-->
-	<!--									</div>-->
-	<!--								</td>-->
-	<!--							</ng-container>-->
+	<div class="row" [hidden]="origin == 'add' && partHided(4)">
+		<div class="col-12">
+			<div class="tf-heading tf-heading--md">| 7 {{'Liste des travaux dangereux' | translate}}</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="tf-card-form">
+						<div class="tf-heading tf-heading--xs">
+							{{'Pour rappel, un plan de prévention écrit doit être réalisé entre l’entreprise utilisatrice (EU) et l’entreprise extérieure (EE) avant le commencement des travaux dans le cas où le nombre total d’heures de travail prévu pour réaliser les travaux est au moins de 400 heures sur 12 mois, ou bien si les travaux figurent sur la liste des travaux dangereux fixé par l’arrêté du 19 mars 1993.' | translate}}
+						</div>
+						<table class="mt-3" mat-table [dataSource]="traveauxDangereux"
+							   formArrayName="travaux_dangereux">
+							<ng-container matColumnDef="list">
+								<th mat-header-cell *matHeaderCellDef> {{'Liste des travaux' | translate}} </th>
+								<td mat-cell *matCellDef="let element; let index = index" [formGroupName]="index">
+									<div class="m-2">
+										<mat-checkbox [value]="element.id"
+													  (change)="allowOtherFields('travaux_dangereux', index, [], $event.checked)"
+													  formControlName="answer">{{element.label}}</mat-checkbox>
+									</div>
+								</td>
+							</ng-container>
 
-	<!--							<tr mat-header-row *matHeaderRowDef="displayedColumnsTravaux"></tr>-->
-	<!--							<tr mat-row *matRowDef="let row; columns: displayedColumnsTravaux;"></tr>-->
-	<!--						</table>-->
-	<!--					</div>-->
-	<!--				</div>-->
-	<!--			</div>-->
-	<!--		</div>-->
-	<!--		<div class="col-12 mb-4" *ngIf="partHided(5) && origin=='add'">-->
-	<!--			<button mat-raised-button type="button" class="pull-right btn-small" color="info"-->
-	<!--					(click)="showPart(5)">{{'ACTION.FOLLOWING' | translate}}</button>-->
-	<!--		</div>-->
-	<!--	</div>-->
-	<!--	<div class="row" [hidden]="origin == 'add' && partHided(5)">-->
-	<!--		<div class="col-12">-->
-	<!--			<div class="tf-heading tf-heading&#45;&#45;md">|-->
-	<!--				8 {{'Identifier les risques générés par la coactivité' | translate}}</div>-->
-	<!--			<div class="row">-->
-	<!--				<div class="col-md-12">-->
-	<!--					<div class="tf-card-form">-->
-	<!--						<ng-container *ngFor="let risk of risques">-->
-	<!--							<div class="tf-heading tf-heading&#45;&#45;sm">-->
-	<!--								{{risk?.label| translate}}-->
+							<tr mat-header-row *matHeaderRowDef="displayedColumnsTravaux"></tr>
+							<tr mat-row *matRowDef="let row; let i = index; columns: displayedColumnsTravaux;"
+								[formGroupName]="i"></tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-12 mb-4" *ngIf="partHided(5) && origin=='add'">
+			<button mat-raised-button type="button" class="pull-right btn-small" color="info"
+					(click)="showPart(5)">{{'ACTION.FOLLOWING' | translate}}</button>
+		</div>
+	</div>
+	<!--	2-->
+	<div class="row" [hidden]="origin == 'add' && partHided(5)">
+		<div class="col-12">
+			<div class="tf-heading tf-heading--md">|
+				8 {{'Identifier les risques générés par la coactivité' | translate}}</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="tf-card-form">
+						<ng-container *ngFor="let risk of getControlsArrayFormName('risques')">
+							<div class="tf-heading tf-heading--sm">
+								{{risk?.label| translate}}
 
-	<!--								<mat-slide-toggle-->
-	<!--									(change)="onCheckBoxChange($event, 'risques', risk?.id)"-->
-	<!--									[checked]="onCheckBoxIsChecked('risques', risk?.id)"></mat-slide-toggle>-->
-	<!--							</div>-->
-	<!--							<div class="row pl-5 mb-4" style="border-bottom: 1px solid #e9ecf0;"-->
-	<!--								 [hidden]="!onCheckBoxIsChecked('risques', risk.id)">-->
-	<!--								<div class="col-md-12 flex-column">-->
-	<!--									<textarea rows="1" *ngIf="risk?.is_other"-->
-	<!--											  [disabled]="true"-->
-	<!--											  style="margin-top: -10px;"-->
-	<!--											  class="form-control no_border w-100 mb-3"-->
-	<!--											  placeholder="{{'précisez' | translate}}"></textarea>-->
-	<!--									<span class="mb-2 font-weight-bold">Situation liée</span>-->
-	<!--									<div class="align-items-center d-flex mt-2 flex-wrap">-->
-	<!--										<div class="align-items-center d-flex ml-2 mr-2  w-100 mb-2"-->
-	<!--											 *ngFor="let situation of risk?.situation">-->
-	<!--											<mat-checkbox>{{situation?.label}}</mat-checkbox>-->
-	<!--											<div class="align-items-center d-flex ng-star-inserted w-100"-->
-	<!--												 *ngIf="situation?.is_with_comment">-->
-	<!--												<textarea rows="1"-->
-	<!--														  [disabled]="true"-->
-	<!--														  style="height: 24px"-->
-	<!--														  class="form-control no_border w-100 pt-0 pb-0 ml-2"-->
-	<!--														  placeholder="{{'...' | translate}}"></textarea>-->
-	<!--											</div>-->
-	<!--										</div>-->
-	<!--										<ng-container *ngIf="risk?.is_other">-->
-	<!--											<div class="align-items-center d-flex ml-2 mr-2  w-100 mb-2">-->
-	<!--												<mat-checkbox></mat-checkbox>-->
-	<!--												<div class="align-items-center d-flex ng-star-inserted w-100">-->
-	<!--												<textarea rows="1"-->
-	<!--														  [disabled]="true"-->
-	<!--														  style="height: 24px"-->
-	<!--														  class="form-control no_border w-100 pt-0 pb-0 ml-2"-->
-	<!--														  placeholder="{{'...' | translate}}"></textarea>-->
-	<!--												</div>-->
-	<!--											</div>-->
-	<!--										</ng-container>-->
-	<!--									</div>-->
-	<!--								</div>-->
-	<!--								<div class="col-md-12 flex-column mt-3">-->
-	<!--									<span class="mb-2 font-weight-bold">Moyen(s) de prévention déployé(s)</span>-->
-	<!--									<div class="align-items-center d-flex mt-2 flex-wrap">-->
-	<!--										<div class="align-items-center d-flex ml-2 mr-2 ng-star-inserted w-100 mb-2"-->
-	<!--											 *ngFor="let moyen of risk?.moyen">-->
-	<!--											<mat-checkbox>{{moyen?.label}}</mat-checkbox>-->
-	<!--											<div class="align-items-center d-flex ng-star-inserted w-100"-->
-	<!--												 *ngIf="moyen?.pdp_risque_moyen_filtre?.length > 0">-->
-	<!--												<ng-container *ngFor="let subMoyen of moyen?.pdp_risque_moyen_filtre">-->
-	<!--													<mat-checkbox [disabled]="true"-->
-	<!--																  class="mr-2 ml-2">{{subMoyen?.label}}</mat-checkbox>-->
-	<!--													<textarea rows="1" *ngIf="subMoyen?.is_with_comment"-->
-	<!--															  [disabled]="true"-->
-	<!--															  style="height: 24px"-->
-	<!--															  class="form-control no_border w-100 pt-0 pb-0"-->
-	<!--															  placeholder="{{'...' | translate}}"></textarea>-->
-	<!--												</ng-container>-->
-	<!--											</div>-->
-	<!--										</div>-->
-	<!--										<ng-container *ngIf="risk?.is_other">-->
-	<!--											<div class="align-items-center d-flex ml-2 mr-2  w-100 mb-2">-->
-	<!--												<mat-checkbox></mat-checkbox>-->
-	<!--												<div class="align-items-center d-flex ng-star-inserted w-100">-->
-	<!--												<textarea rows="1"-->
-	<!--														  [disabled]="true"-->
-	<!--														  style="height: 24px"-->
-	<!--														  class="form-control no_border w-100 pt-0 pb-0 ml-2"-->
-	<!--														  placeholder="{{'...' | translate}}"></textarea>-->
-	<!--												</div>-->
-	<!--											</div>-->
-	<!--											<div class="align-items-center d-flex ml-2 mr-2  w-100 mb-2">-->
-	<!--												<mat-checkbox></mat-checkbox>-->
-	<!--												<div class="align-items-center d-flex ng-star-inserted w-100">-->
-	<!--												<textarea rows="1"-->
-	<!--														  [disabled]="true"-->
-	<!--														  style="height: 24px"-->
-	<!--														  class="form-control no_border w-100 pt-0 pb-0 ml-2"-->
-	<!--														  placeholder="{{'...' | translate}}"></textarea>-->
-	<!--												</div>-->
-	<!--											</div>-->
-	<!--											<div class="align-items-center d-flex ml-2 mr-2  w-100 mb-2">-->
-	<!--												<mat-checkbox></mat-checkbox>-->
-	<!--												<div class="align-items-center d-flex ng-star-inserted w-100">-->
-	<!--												<textarea rows="1"-->
-	<!--														  [disabled]="true"-->
-	<!--														  style="height: 24px"-->
-	<!--														  class="form-control no_border w-100 pt-0 pb-0 ml-2"-->
-	<!--														  placeholder="{{'...' | translate}}"></textarea>-->
-	<!--												</div>-->
-	<!--											</div>-->
-	<!--										</ng-container>-->
-	<!--									</div>-->
-	<!--								</div>-->
-	<!--								<div class="col-md-12 flex-column mt-3">-->
-	<!--									<span class="mb-2 font-weight-bold">Responsable(s)</span>-->
-	<!--									<div class="align-items-center d-flex mt-2 flex-wrap mb-3">-->
-	<!--										<mat-checkbox class="mr-2 ml-2">EU</mat-checkbox>-->
-	<!--										<mat-checkbox class="mr-2 ml-2">PIMAN</mat-checkbox>-->
-	<!--										<mat-checkbox class="mr-2 ml-2">Sous-traitant</mat-checkbox>-->
-	<!--									</div>-->
-	<!--								</div>-->
-	<!--							</div>-->
-	<!--						</ng-container>-->
-	<!--					</div>-->
-	<!--				</div>-->
-	<!--			</div>-->
-	<!--		</div>-->
-	<!--		<div class="col-12 mb-4" *ngIf="partHided(6) && origin=='add'">-->
-	<!--			<button mat-raised-button type="button" class="pull-right btn-small" color="info"-->
-	<!--					(click)="showPart(6)">{{'ACTION.FOLLOWING' | translate}}</button>-->
-	<!--		</div>-->
-	<!--	</div>-->
+								<mat-slide-toggle
+									(change)="onCheckBoxChange($event, 'risques', risk?.id)"
+									[checked]="onCheckBoxIsChecked('risques', risk?.id)"></mat-slide-toggle>
+							</div>
+							<div class="row pl-5 mb-4" style="border-bottom: 1px solid #e9ecf0;"
+								 [hidden]="!onCheckBoxIsChecked('risques', risk.id)">
+								<div class="col-md-12 flex-column">
+										<textarea rows="1" *ngIf="risk?.is_other"
+												  [disabled]="true"
+												  style="margin-top: -10px;"
+												  class="form-control no_border w-100 mb-3"
+												  placeholder="{{'précisez' | translate}}"></textarea>
+									<span class="mb-2 font-weight-bold">Situation liée</span>
+									<div class="align-items-center d-flex mt-2 flex-wrap">
+										<div class="align-items-center d-flex ml-2 mr-2  w-100 mb-2"
+											 *ngFor="let situation of risk?.situation">
+											<mat-checkbox>{{situation?.label}}</mat-checkbox>
+											<div class="align-items-center d-flex ng-star-inserted w-100"
+												 *ngIf="situation?.is_with_comment">
+													<textarea rows="1"
+															  [disabled]="true"
+															  style="height: 24px"
+															  class="form-control no_border w-100 pt-0 pb-0 ml-2"
+															  placeholder="{{'...' | translate}}"></textarea>
+											</div>
+										</div>
+										<ng-container *ngIf="risk?.is_other">
+											<div class="align-items-center d-flex ml-2 mr-2  w-100 mb-2">
+												<mat-checkbox></mat-checkbox>
+												<div class="align-items-center d-flex ng-star-inserted w-100">
+													<textarea rows="1"
+															  [disabled]="true"
+															  style="height: 24px"
+															  class="form-control no_border w-100 pt-0 pb-0 ml-2"
+															  placeholder="{{'...' | translate}}"></textarea>
+												</div>
+											</div>
+										</ng-container>
+									</div>
+								</div>
+								<div class="col-md-12 flex-column mt-3">
+									<span class="mb-2 font-weight-bold">Moyen(s) de prévention déployé(s)</span>
+									<div class="align-items-center d-flex mt-2 flex-wrap">
+										<div class="align-items-center d-flex ml-2 mr-2 ng-star-inserted w-100 mb-2"
+											 *ngFor="let moyen of risk?.moyen">
+											<mat-checkbox>{{moyen?.label}}</mat-checkbox>
+											<div class="align-items-center d-flex ng-star-inserted w-100"
+												 *ngIf="moyen?.pdp_risque_moyen_filtre?.length > 0">
+												<ng-container *ngFor="let subMoyen of moyen?.pdp_risque_moyen_filtre">
+													<mat-checkbox [disabled]="true"
+																  class="mr-2 ml-2">{{subMoyen?.label}}</mat-checkbox>
+													<textarea rows="1" *ngIf="subMoyen?.is_with_comment"
+															  [disabled]="true"
+															  style="height: 24px"
+															  class="form-control no_border w-100 pt-0 pb-0"
+															  placeholder="{{'...' | translate}}"></textarea>
+												</ng-container>
+											</div>
+										</div>
+										<ng-container *ngIf="risk?.is_other">
+											<div class="align-items-center d-flex ml-2 mr-2  w-100 mb-2">
+												<mat-checkbox></mat-checkbox>
+												<div class="align-items-center d-flex ng-star-inserted w-100">
+													<textarea rows="1"
+															  [disabled]="true"
+															  style="height: 24px"
+															  class="form-control no_border w-100 pt-0 pb-0 ml-2"
+															  placeholder="{{'...' | translate}}"></textarea>
+												</div>
+											</div>
+											<div class="align-items-center d-flex ml-2 mr-2  w-100 mb-2">
+												<mat-checkbox></mat-checkbox>
+												<div class="align-items-center d-flex ng-star-inserted w-100">
+													<textarea rows="1"
+															  [disabled]="true"
+															  style="height: 24px"
+															  class="form-control no_border w-100 pt-0 pb-0 ml-2"
+															  placeholder="{{'...' | translate}}"></textarea>
+												</div>
+											</div>
+											<div class="align-items-center d-flex ml-2 mr-2  w-100 mb-2">
+												<mat-checkbox></mat-checkbox>
+												<div class="align-items-center d-flex ng-star-inserted w-100">
+													<textarea rows="1"
+															  [disabled]="true"
+															  style="height: 24px"
+															  class="form-control no_border w-100 pt-0 pb-0 ml-2"
+															  placeholder="{{'...' | translate}}"></textarea>
+												</div>
+											</div>
+										</ng-container>
+									</div>
+								</div>
+								<div class="col-md-12 flex-column mt-3">
+									<span class="mb-2 font-weight-bold">Responsable(s)</span>
+									<div class="align-items-center d-flex mt-2 flex-wrap mb-3">
+										<mat-checkbox class="mr-2 ml-2">EU</mat-checkbox>
+										<mat-checkbox class="mr-2 ml-2">PIMAN</mat-checkbox>
+										<mat-checkbox class="mr-2 ml-2">Sous-traitant</mat-checkbox>
+									</div>
+								</div>
+							</div>
+						</ng-container>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-12 mb-4" *ngIf="partHided(6) && origin=='add'">
+			<button mat-raised-button type="button" class="pull-right btn-small" color="info"
+					(click)="showPart(6)">{{'ACTION.FOLLOWING' | translate}}</button>
+		</div>
+	</div>
 	<!--	<div class="row" [hidden]="origin == 'add' && partHided(6)">-->
 	<!--		<div class="col-12">-->
 	<!--			<div class="tf-heading tf-heading&#45;&#45;md">|-->
