@@ -30,4 +30,8 @@ export class PdpService extends HttpService {
 	getAllPdpFilters() {
 		return this.http.get<JsonResponse<any[]>>(this.filtersUrl);
 	}
+
+	create(pdp) {
+		return this.http.post<JsonResponse<Ar>>(this.baseUrl + '/' + 'create', pdp);
+	}
 }

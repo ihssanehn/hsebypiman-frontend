@@ -128,12 +128,15 @@
 							</mat-form-field>
 							<mat-form-field class="col-xl-4">
 								<mat-label>{{'Représentant entreprise email' | translate}}</mat-label>
-								<input class="form-control" matInput type="text" name="representant_entreprise_eu_mail"
+								<input class="form-control" matInput type="mail" name="representant_entreprise_eu_mail"
 									   formControlName="representant_entreprise_eu_mail"
 									   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
 									   [required]="isFieldRequired('representant_entreprise_eu_mail')"/>
 								<mat-error *ngIf="isControlHasError('representant_entreprise_eu_mail','required')">
 									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+								</mat-error>
+								<mat-error *ngIf="isControlHasError('representant_entreprise_eu_mail','email')">
+									<strong>{{ 'email no valid' | translate }}</strong>
 								</mat-error>
 							</mat-form-field>
 							<mat-form-field class="col-xl-4">
@@ -185,12 +188,15 @@
 						<div class="row form-row">
 							<mat-form-field class="col-xl-4">
 								<mat-label>{{'Représentant entreprise email' | translate}}</mat-label>
-								<input class="form-control" matInput type="text" name="representant_entreprise_ee_mail"
+								<input class="form-control" matInput type="email" name="representant_entreprise_ee_mail"
 									   formControlName="representant_entreprise_ee_mail"
 									   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
 									   [required]="isFieldRequired('representant_entreprise_ee_mail')"/>
 								<mat-error *ngIf="isControlHasError('representant_entreprise_ee_mail','required')">
 									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+								</mat-error>
+								<mat-error *ngIf="isControlHasError('representant_entreprise_eu_mail','email')">
+									<strong>{{ 'email no valid' | translate }}</strong>
 								</mat-error>
 							</mat-form-field>
 							<mat-form-field class="col-xl-4">
@@ -313,48 +319,44 @@
 								</mat-error>
 							</mat-form-field>
 							<div class="col-xl-2 offset-xl-1 d-flex flex-column justify-content-center">
-								<mat-checkbox (change)="updateToggleValue($event, 'is_night_shift')"
-											  [checked]="isChecked('is_night_shift')">
+								<mat-checkbox formControlName="is_night_shift">
 									{{'Travail de nuit' | translate}}</mat-checkbox>
 							</div>
 							<div class="col-xl-2 d-flex flex-column justify-content-center">
-								<mat-checkbox (change)="updateToggleValue($event, 'duration_intervention_mp400h')"
-											  [checked]="isChecked('duration_intervention_mp400h')">
+								<mat-checkbox formControlName="duration_intervention_mp400h">
 									{{'Plus de 400h ?' | translate}}</mat-checkbox>
 							</div>
 							<div class="col-xl-2 d-flex flex-column justify-content-center">
-								<mat-checkbox (change)="updateToggleValue($event, 'is_astreinte')"
-											  [checked]="isChecked('is_astreinte')">
+								<mat-checkbox formControlName="is_astreinte">
 									{{'Astreinte' | translate}}</mat-checkbox>
 							</div>
 						</div>
 						<div class="row form-row">
 							<div class="col-xl-2 d-flex flex-column justify-content-center">
-								<mat-checkbox (change)="updateToggleValue($event, 'is_teletravail')"
-											  [checked]="isChecked('is_teletravail')">
+								<mat-checkbox formControlName="is_teletravail">
 									{{'Télétravail' | translate}}</mat-checkbox>
 							</div>
 							<div class="col-xl-2 d-flex flex-column justify-content-center">
-								<mat-checkbox (change)="updateToggleValue($event, 'is_presence_site_client')"
-											  [checked]="isChecked('is_presence_site_client')">
+								<mat-checkbox formControlName="is_presence_site_client"
+											  (change)="makePresenceSiteClientRequired($event)">
 									{{'Présence sur site client' | translate}}</mat-checkbox>
 							</div>
 
 							<mat-form-field class="col-xl-4 pdp-custom-select" appearance="standard">
 								<mat-label>{{'A quelle fréquence ?' | translate}}</mat-label>
 								<mat-select placeholder="Sélectionnez un élément"
-											[disabled]="!isChecked('is_presence_site_client')"
+											formControlName="presence_site_client_frequency_id"
 											[required]="isFieldRequired('is_presence_site_client') && isChecked('is_presence_site_client')">
 									<mat-option *ngFor="let frequence of frequences"
 												[value]="frequence.id">{{frequence?.label}}</mat-option>
 								</mat-select>
-								<!--								<mat-error *ngIf="isControlHasError('is_presence_site_client','required')">-->
-								<!--									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>-->
-								<!--								</mat-error>-->
+								<mat-error *ngIf="isControlHasError('presence_site_client_frequency_id','required')">
+									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+								</mat-error>
 							</mat-form-field>
 							<mat-form-field class="col-xl-4">
 								<mat-label>{{'Effectif moyen prévisible :' | translate}}</mat-label>
-								<input class="form-control" matInput type="text" name="effectif_moyen"
+								<input class="form-control" matInput type="number" name="effectif_moyen"
 									   formControlName="effectif_moyen"
 									   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
 									   [required]="isFieldRequired('effectif_moyen')"/>
@@ -447,7 +449,7 @@
 										[width]="'30%'">
 										<div class="m-2">
 											<mat-checkbox [value]="element.id"
-														  (change)="allowOtherFields('epi_disposition', index, ['answer_id', 'is_eu', 'is_ee', 'is_sous_traitant'], $event.checked)"
+														  (change)="allowOtherFields('epi_disposition', index, ['answer_id', 'is_eu', 'is_ee', 'is_sous_traitant'], $event.checked); element?.items?.length === 0 ? makeAnswerIDUnRequiredinOtherPart(index) : null"
 														  formControlName="answer"
 											>{{element.label}}</mat-checkbox>
 										</div>
@@ -614,7 +616,6 @@
 					(click)="showPart(5)">{{'ACTION.FOLLOWING' | translate}}</button>
 		</div>
 	</div>
-	<!--	2-->
 	<div class="row" [hidden]="origin == 'add' && partHided(5)">
 		<div class="col-12">
 			<div class="tf-heading tf-heading--md">|
@@ -622,8 +623,9 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="tf-card-form">
-						<ng-container *ngFor="let risk of getControlsArrayFormName('risques'); let index = index"
-									  formArrayName="risques">
+						<ng-container
+							*ngFor="let risk of getControlsArrayFormName('cat_pdp_risques'); let index = index"
+							formArrayName="cat_pdp_risques">
 							<ng-container [formGroup]="risk">
 								<div class="tf-heading tf-heading--sm">
 									{{risk?.get('label').value}}
@@ -987,19 +989,19 @@
 	</div>
 </ng-container>
 
-<!--<ng-container *ngIf="formStatus">-->
-<!--	<div *ngIf="formStatus.canShowErrors()" class="alert alert-danger alert-dismissible fade show" role="alert">-->
-<!--		<div><strong>{{'COMMON.NOTIF.ERROR.TITLE' | translate}}</strong></div>-->
-<!--		<div>-->
-<!--			<ul *ngFor="let errors of formStatus.errors  |  keyvalue">-->
-<!--				<li *ngFor="let error of errors.value">-->
-<!--					{{error}}-->
-<!--				</li>-->
-<!--			</ul>-->
-<!--		</div>-->
-<!--	</div>-->
-<!--	<div *ngIf="formStatus.canShowSuccess()" class="alert alert-success" role="alert">-->
-<!--		<div><strong>{{'COMMON.NOTIF.SUCCESS.TITLE' | translate}}</strong></div>-->
-<!--		<div *ngFor="let message of formStatus.messages">{{ message }}</div>-->
-<!--	</div>-->
-<!--</ng-container>-->
+<ng-container *ngIf="formStatus">
+	<div *ngIf="formStatus.canShowErrors()" class="alert alert-danger alert-dismissible fade show" role="alert">
+		<div><strong>{{'COMMON.NOTIF.ERROR.TITLE' | translate}}</strong></div>
+		<div>
+			<ul *ngFor="let errors of formStatus.errors  |  keyvalue">
+				<li *ngFor="let error of errors.value">
+					{{error}}
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div *ngIf="formStatus.canShowSuccess()" class="alert alert-success" role="alert">
+		<div><strong>{{'COMMON.NOTIF.SUCCESS.TITLE' | translate}}</strong></div>
+		<div *ngFor="let message of formStatus.messages">{{ message }}</div>
+	</div>
+</ng-container>

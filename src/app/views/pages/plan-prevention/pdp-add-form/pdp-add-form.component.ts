@@ -63,25 +63,31 @@ export class PdpAddFormComponent implements OnInit {
 		this.triggerResize();
 		this.getPDPConsignes();
 		this.validationPlan = [
-			{title: 'EU', need_text_area_in_title: true},
+			{
+				title: 'EU',
+				type: 'ee',
+				need_text_area_in_title: true,
+				required: true
+			},
 			{
 				title: 'EE',
+				type: 'eu',
 				need_text_area_in_title: false,
-				company_name: 'PIMAN Consultants'
+				company_name: 'PIMAN Consultants',
+				required: true
 			},
-			{title: 'Sous-traitant 1', need_text_area_in_title: true},
-			{title: 'Sous-traitant 2', need_text_area_in_title: true},
+			{title: 'Sous-traitant 1', type: 'ss1', need_text_area_in_title: true, required: false},
+			{title: 'Sous-traitant 2', type: 'ss2', need_text_area_in_title: true, required: false},
 		];
 		if (this.validationPlan.length > 0) {
 			const formArray = this.pdpForm.get('validations') as FormArray;
 			for (let i = 0; i < this.validationPlan.length; i++) {
 				const group = new FormGroup({
-					title: new FormControl(this.validationPlan[i].title),
 					need_text_area_in_title: new FormControl(this.validationPlan[i].need_text_area_in_title),
-					company_name: new FormControl(this.validationPlan[i].company_name, Validators.required),
-					full_name: new FormControl('', Validators.required),
-					validation_at: new FormControl(null, Validators.required),
-					type: new FormControl(this.validationPlan[i].title, Validators.required),
+					company_name: new FormControl(this.validationPlan[i].company_name, this.validationPlan[i].required ? Validators.required : null),
+					full_name: new FormControl('', this.validationPlan[i].required ? Validators.required : null),
+					validation_at: new FormControl(null, this.validationPlan[i].required ? Validators.required : null),
+					type: new FormControl(this.validationPlan[i].type, this.validationPlan[i].required ? Validators.required : null),
 					is_part_inspection: new FormControl(null),
 					part_inspection_at: new FormControl(null),
 				});
@@ -120,10 +126,13 @@ export class PdpAddFormComponent implements OnInit {
 				name: 'answer_id',
 				needTest: false,
 				isRequired: true
-			}, {name: 'is_eu', needTest: false}, {name: 'is_ee', needTest: false}, {
-				name: 'is_sous_traitant',
-				needTest: false
-			}]);
+			}, {name: 'is_eu', needTest: false},
+				{name: 'is_ee', needTest: false},
+				{
+					name: 'is_sous_traitant',
+					needTest: false
+				}
+			]);
 		}
 		if (this.instructionsList.length > 0) {
 			this.patchFormArray(this.instructionsList, 'consignes', [{
@@ -138,7 +147,7 @@ export class PdpAddFormComponent implements OnInit {
 			this.patchFormArray(this.traveauxDangereux, 'travaux_dangereux');
 		}
 		if (this.risques.length > 0) {
-			const formArray = this.pdpForm.get('risques') as FormArray;
+			const formArray = this.pdpForm.get('cat_pdp_risques') as FormArray;
 			for (let i = 0; i < this.risques.length; i++) {
 				const group = new FormGroup({
 					id: new FormControl(this.risques[i].id),
@@ -268,11 +277,13 @@ export class PdpAddFormComponent implements OnInit {
 	}
 
 	updateToggleValue(event, controlName) {
-		if (event.checked) {
-			this.pdpForm.controls[controlName].setValue('1');
-		} else {
-			this.pdpForm.controls[controlName].setValue('0');
-		}
+		this.pdpForm.controls[controlName].setValue(event.checked ? 1 : 0);
+	}
+
+	makePresenceSiteClientRequired(event) {
+		this.pdpForm.controls['presence_site_client_frequency_id'].setValidators(event.checked ? Validators.required : null);
+		event.checked ? this.pdpForm.controls['presence_site_client_frequency_id'].enable() : this.pdpForm.controls['presence_site_client_frequency_id'].disable()
+		this.pdpForm.controls['presence_site_client_frequency_id'].updateValueAndValidity();
 	}
 
 
@@ -302,8 +313,13 @@ export class PdpAddFormComponent implements OnInit {
 		}
 	}
 
+	makeAnswerIDUnRequiredinOtherPart(index) {
+		(this.pdpForm.get('epi_disposition') as FormArray).controls[index].get('answer_id').setValidators(null);
+		(this.pdpForm.get('epi_disposition') as FormArray).controls[index].get('answer_id').updateValueAndValidity(); // this is to rerun form validation after removing the validation for a field.
+	}
+
 	allowRisksFields(index, isDisabled) {
-		const controlGroup = (this.pdpForm.get('risques') as FormArray).controls[index];
+		const controlGroup = (this.pdpForm.get('cat_pdp_risques') as FormArray).controls[index];
 		if (isDisabled) {
 			controlGroup.get('comment').enable();
 			controlGroup.get('is_eu').enable();
