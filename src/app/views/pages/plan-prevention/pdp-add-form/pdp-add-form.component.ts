@@ -244,7 +244,7 @@ export class PdpAddFormComponent implements OnInit {
 	}
 
 	isChecked(controlName: string) {
-		return this.pdpForm.get(controlName).value === '1';
+		return this.pdpForm.get(controlName).value === true;
 	}
 
 	showPart(key) {

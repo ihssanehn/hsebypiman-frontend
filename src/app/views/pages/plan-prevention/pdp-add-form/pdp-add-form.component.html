@@ -7,11 +7,11 @@
 				<div class="col-md-12">
 					<div class="tf-card-form">
 						<div class="tf-heading tf-heading--sm">
-							1.1 {{'Entreprise Utilisatrice' | translate}}
+							1.1 {{'PDP.USER_COMPANY' | translate}}
 						</div>
 						<div class="row form-row">
 							<mat-form-field class="col-xl-4">
-								<mat-label>{{'Raison Sociale et contact' | translate}}</mat-label>
+								<mat-label>{{'PDP.COMPANY_NAME_AND_CONTACT' | translate}}</mat-label>
 								<input class="form-control" matInput type="text" name="raison_sociale_eu"
 									   formControlName="raison_sociale_eu"
 									   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
@@ -21,7 +21,7 @@
 								</mat-error>
 							</mat-form-field>
 							<mat-form-field class="col-xl-4">
-								<mat-label>{{'Raison Sociale et contact tel' | translate}}</mat-label>
+								<mat-label>{{'PDP.COMPANY_NAME_AND_CONTACT' | translate}}({{'PDP.TEL'}})</mat-label>
 								<input class="form-control" matInput type="text" name="raison_sociale_tel_eu"
 									   formControlName="raison_sociale_tel_eu"
 									   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
@@ -31,7 +31,7 @@
 								</mat-error>
 							</mat-form-field>
 							<mat-form-field class="col-xl-4">
-								<mat-label>{{'Sauveteurs Secouriste au travail' | translate}}</mat-label>
+								<mat-label>{{'PDP.RESCUERS_FIRST_AID_WORKER_AT_WORK' | translate}}</mat-label>
 								<textarea class="form-control no_border" name="sauveteurs_secouriste_travail"
 										  matInput
 										  cdkTextareaAutosize
@@ -48,7 +48,7 @@
 						</div>
 						<div class="row form-row">
 							<mat-form-field class="col-xl-4">
-								<mat-label>{{'Pôle QHSE' | translate}}</mat-label>
+								<mat-label>{{'PDP.QHSE_POLE' | translate}}</mat-label>
 								<textarea class="form-control no_border" name="pole_qhse"
 										  matInput
 										  cdkTextareaAutosize
@@ -63,7 +63,7 @@
 								</mat-error>
 							</mat-form-field>
 							<mat-form-field class="col-xl-4">
-								<mat-label>{{'Médecin du travail' | translate}}</mat-label>
+								<mat-label>{{'PDP.OCCUPATIONAL_PHYSICIAN' | translate}} </mat-label>
 								<input class="form-control" matInput type="text" name="medecin_travail_eu_name"
 									   formControlName="medecin_travail_eu_name"
 									   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
@@ -73,7 +73,7 @@
 								</mat-error>
 							</mat-form-field>
 							<mat-form-field class="col-xl-4">
-								<mat-label>{{'Médecin du travail tel' | translate}}</mat-label>
+								<mat-label>{{'PDP.OCCUPATIONAL_PHYSICIAN' | translate}}({{'PDP.TEL'}})</mat-label>
 								<input class="form-control" matInput type="text" name="medecin_travail_eu_tel"
 									   formControlName="medecin_travail_eu_tel"
 									   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
@@ -85,7 +85,7 @@
 						</div>
 						<div class="row form-row">
 							<mat-form-field class="col-xl-4">
-								<mat-label>{{'CSE' | translate}}</mat-label>
+								<mat-label>{{'PDP.CSE' | translate}}</mat-label>
 								<input class="form-control" matInput type="text" name="cse_eu_name"
 									   formControlName="cse_eu_name"
 									   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
@@ -95,7 +95,7 @@
 								</mat-error>
 							</mat-form-field>
 							<mat-form-field class="col-xl-4">
-								<mat-label>{{'CSE poste' | translate}}</mat-label>
+								<mat-label>{{'PDP.CSE' | translate}}({{'PDP.JOB'}})</mat-label>
 								<input class="form-control" matInput type="text" name="cse_eu_job"
 									   formControlName="cse_eu_job"
 									   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
@@ -105,7 +105,7 @@
 								</mat-error>
 							</mat-form-field>
 							<mat-form-field class="col-xl-4">
-								<mat-label>{{'CSE tel' | translate}}</mat-label>
+								<mat-label>{{'PDP.CSE' | translate}}({{'PDP.TEL'}})</mat-label>
 								<input class="form-control" matInput type="text" name="cse_eu_tel"
 									   formControlName="cse_eu_tel"
 									   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
@@ -117,7 +117,7 @@
 						</div>
 						<div class="row form-row">
 							<mat-form-field class="col-xl-4">
-								<mat-label>{{'Représentant entreprise' | translate}}</mat-label>
+								<mat-label>{{'PDP.COMPANY_REPRESENTATIVE' | translate}}</mat-label>
 								<input class="form-control" matInput type="text" name="representant_entreprise_eu_name"
 									   formControlName="representant_entreprise_eu_name"
 									   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
@@ -127,7 +127,7 @@
 								</mat-error>
 							</mat-form-field>
 							<mat-form-field class="col-xl-4">
-								<mat-label>{{'Représentant entreprise email' | translate}}</mat-label>
+								<mat-label>{{'PDP.COMPANY_REPRESENTATIVE' | translate}}({{'PDP.MAIL'}})</mat-label>
 								<input class="form-control" matInput type="mail" name="representant_entreprise_eu_mail"
 									   formControlName="representant_entreprise_eu_mail"
 									   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
@@ -140,7 +140,7 @@
 								</mat-error>
 							</mat-form-field>
 							<mat-form-field class="col-xl-4">
-								<mat-label>{{'Représentant entreprise tel' | translate}}</mat-label>
+								<mat-label>{{'PDP.COMPANY_REPRESENTATIVE' | translate}}({{'PDP.TEL'}})</mat-label>
 								<input class="form-control" matInput type="text" name="representant_entreprise_eu_tel"
 									   formControlName="representant_entreprise_eu_tel"
 									   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
@@ -151,11 +151,11 @@
 							</mat-form-field>
 						</div>
 						<div class="tf-heading tf-heading--sm">
-							1.2 {{'Entreprise Extérieure' | translate}}
+							1.2 {{'PDP.OUTSIDE_COMPANY' | translate}}
 						</div>
 						<div class="row form-row">
 							<mat-form-field class="col-xl-4">
-								<mat-label>{{'Médecin du travail' | translate}}</mat-label>
+								<mat-label>{{'PDP.OCCUPATIONAL_PHYSICIAN' | translate}}</mat-label>
 								<input class="form-control" matInput type="text" name="medecin_travail_ee_name"
 									   formControlName="medecin_travail_ee_name"
 									   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
@@ -165,7 +165,7 @@
 								</mat-error>
 							</mat-form-field>
 							<mat-form-field class="col-xl-4">
-								<mat-label>{{'Médecin du travail tel' | translate}}</mat-label>
+								<mat-label>{{'PDP.OCCUPATIONAL_PHYSICIAN' | translate}}({{'PDP.TEL'}})</mat-label>
 								<input class="form-control" matInput type="text" name="medecin_travail_ee_tel"
 									   formControlName="medecin_travail_ee_tel"
 									   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
@@ -175,7 +175,7 @@
 								</mat-error>
 							</mat-form-field>
 							<mat-form-field class="col-xl-4">
-								<mat-label>{{'Représentant entreprise' | translate}}</mat-label>
+								<mat-label>{{'PDP.COMPANY_REPRESENTATIVE' | translate}}</mat-label>
 								<input class="form-control" matInput type="text" name="representant_entreprise_ee_name"
 									   formControlName="representant_entreprise_ee_name"
 									   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
@@ -187,7 +187,7 @@
 						</div>
 						<div class="row form-row">
 							<mat-form-field class="col-xl-4">
-								<mat-label>{{'Représentant entreprise email' | translate}}</mat-label>
+								<mat-label>{{'PDP.COMPANY_REPRESENTATIVE' | translate}}({{'PDP.MAIL'}})</mat-label>
 								<input class="form-control" matInput type="email" name="representant_entreprise_ee_mail"
 									   formControlName="representant_entreprise_ee_mail"
 									   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
@@ -200,7 +200,7 @@
 								</mat-error>
 							</mat-form-field>
 							<mat-form-field class="col-xl-4">
-								<mat-label>{{'Représentant entreprise tel' | translate}}</mat-label>
+								<mat-label>{{'PDP.COMPANY_REPRESENTATIVE' | translate}}({{'PDP.TEL'}})</mat-label>
 								<input class="form-control" matInput type="text" name="representant_entreprise_ee_tel"
 									   formControlName="representant_entreprise_ee_tel"
 									   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
@@ -214,9 +214,8 @@
 				</div>
 			</div>
 			<div class="tf-heading tf-heading--md">
-				| 2 {{'Intervention de sous-traitants PIMAN ?' | translate}}
-				<mat-slide-toggle [checked]="isChecked('is_piman_intervention')"
-								  (change)="updateToggleValue($event, 'is_piman_intervention')"></mat-slide-toggle>
+				| 2 {{'PDP.INTERVENTION_OF_PIMAN_SUBCONTRACTORS' | translate}} ?
+				<mat-slide-toggle formControlName="is_piman_intervention"></mat-slide-toggle>
 			</div>
 			<div class="mt-3" *ngIf="isChecked('is_piman_intervention')">
 				<div class="row">
@@ -224,7 +223,7 @@
 						<div class="tf-card-form">
 							<div class="row form-row">
 								<mat-form-field class="col-xl-6">
-									<mat-label>{{'Nom Sous-Traitant 1 ' | translate}}</mat-label>
+									<mat-label>{{'PDP.NAME_OF_SUBCONTRACTOR' | translate}} 1</mat-label>
 									<input class="form-control" matInput type="text" name="sous_traitant1_name"
 										   formControlName="sous_traitant1_name"
 										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
@@ -234,7 +233,7 @@
 									</mat-error>
 								</mat-form-field>
 								<mat-form-field class="col-xl-6">
-									<mat-label>{{'Nom Sous-Traitant 1 Tel' | translate}}</mat-label>
+									<mat-label>{{'PDP.NAME_OF_SUBCONTRACTOR' | translate}} 1 ({{'PDP.TEL'}})</mat-label>
 									<input class="form-control" matInput type="text" name="sous_traitant1_tel"
 										   formControlName="sous_traitant1_tel"
 										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
@@ -246,7 +245,7 @@
 							</div>
 							<div class="row form-row">
 								<mat-form-field class="col-xl-6">
-									<mat-label>{{'Nom Sous-Traitant 2 ' | translate}}</mat-label>
+									<mat-label>{{'PDP.NAME_OF_SUBCONTRACTOR' | translate}} 2</mat-label>
 									<input class="form-control" matInput type="text" name="sous_traitant2_name"
 										   formControlName="sous_traitant2_name"
 										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
@@ -256,7 +255,7 @@
 									</mat-error>
 								</mat-form-field>
 								<mat-form-field class="col-xl-6">
-									<mat-label>{{'Nom Sous-Traitant 2sous_traitant2_tel Tel' | translate}}</mat-label>
+									<mat-label>{{'PDP.NAME_OF_SUBCONTRACTOR' | translate}} 2 ({{'PDP.TEL'}})</mat-label>
 									<input class="form-control" matInput type="text" name="sous_traitant2_tel"
 										   formControlName="sous_traitant2_tel"
 										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
@@ -271,13 +270,13 @@
 				</div>
 			</div>
 			<div class="tf-heading tf-heading--md">|
-				3 {{'Détails de l’intervention' | translate}}</div>
+				3 {{'PDP.DETAILS_OF_THE_INTERVENTION' | translate}}</div>
 			<div class="row">
 				<div class="col-md-12">
 					<div class="tf-card-form">
 						<div class="row form-row">
 							<mat-form-field class="col-xl-6">
-								<mat-label>{{'Libellé de l’intervention' | translate}}</mat-label>
+								<mat-label>{{'PDP.INTERVENTION_NAME' | translate}}</mat-label>
 								<input class="form-control" matInput type="text" name="label_intervention"
 									   formControlName="label_intervention"
 									   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
@@ -287,7 +286,7 @@
 								</mat-error>
 							</mat-form-field>
 							<mat-form-field class="col-xl-6">
-								<mat-label>{{'Lieu de l’intervention' | translate}}</mat-label>
+								<mat-label>{{'PDP.INTERVENTION_PLACE' | translate}}</mat-label>
 								<input class="form-control" matInput type="text" name="lieu_intervention"
 									   formControlName="lieu_intervention"
 									   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
@@ -299,7 +298,7 @@
 						</div>
 						<div class="row form-row">
 							<mat-form-field class="col-xl-3">
-								<mat-label>{{'Pdp établi le' | translate}}</mat-label>
+								<mat-label>{{'PDP.PDP_ESTABLISHED_ON' | translate}}</mat-label>
 								<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]"
 									   [dropSpecialCharacters]="false" formControlName="pdp_intervention_at"
 									   placeholder="DD/MM/YYYY" [required]="isFieldRequired('pdp_intervention_at')">
@@ -308,7 +307,7 @@
 								</mat-error>
 							</mat-form-field>
 							<mat-form-field class="col-xl-2">
-								<mat-label>{{'Horaires d’ouverture site de jour' | translate}}</mat-label>
+								<mat-label>{{'PDP.DAYTIME_SITE_OPENING_HOURS' | translate}}</mat-label>
 								<input class="form-control text-center" type="time"
 									   matInput
 									   [required]="isFieldRequired('horaires_ouverture_site')"
@@ -320,33 +319,34 @@
 							</mat-form-field>
 							<div class="col-xl-2 offset-xl-1 d-flex flex-column justify-content-center">
 								<mat-checkbox formControlName="is_night_shift">
-									{{'Travail de nuit' | translate}}</mat-checkbox>
+									{{'PDP.NIGHT_WORK' | translate}}</mat-checkbox>
 							</div>
 							<div class="col-xl-2 d-flex flex-column justify-content-center">
 								<mat-checkbox formControlName="duration_intervention_mp400h">
-									{{'Plus de 400h ?' | translate}}</mat-checkbox>
+									{{'PDP.MORE_THAN_400H' | translate}} ?
+								</mat-checkbox>
 							</div>
 							<div class="col-xl-2 d-flex flex-column justify-content-center">
 								<mat-checkbox formControlName="is_astreinte">
-									{{'Astreinte' | translate}}</mat-checkbox>
+									{{'PDP.PENALTY' | translate}}</mat-checkbox>
 							</div>
 						</div>
 						<div class="row form-row">
 							<div class="col-xl-2 d-flex flex-column justify-content-center">
 								<mat-checkbox formControlName="is_teletravail">
-									{{'Télétravail' | translate}}</mat-checkbox>
+									{{'PDP.TELEWORKING' | translate}}</mat-checkbox>
 							</div>
 							<div class="col-xl-2 d-flex flex-column justify-content-center">
 								<mat-checkbox formControlName="is_presence_site_client"
 											  (change)="makePresenceSiteClientRequired($event)">
-									{{'Présence sur site client' | translate}}</mat-checkbox>
+									{{'PDP.PRESENCE_ON_CUSTOMER_SITE' | translate}}</mat-checkbox>
 							</div>
 
 							<mat-form-field class="col-xl-4 pdp-custom-select" appearance="standard">
-								<mat-label>{{'A quelle fréquence ?' | translate}}</mat-label>
-								<mat-select placeholder="Sélectionnez un élément"
+								<mat-label>{{'PDP.HOW_OFTEN' | translate}} ?</mat-label>
+								<mat-select placeholder="{{'PDP.SELECT_AN_ITEM' | translate}}"
 											formControlName="presence_site_client_frequency_id"
-											[required]="isFieldRequired('is_presence_site_client') && isChecked('is_presence_site_client')">
+											[required]="isChecked('is_presence_site_client')">
 									<mat-option *ngFor="let frequence of frequences"
 												[value]="frequence.id">{{frequence?.label}}</mat-option>
 								</mat-select>
@@ -355,7 +355,7 @@
 								</mat-error>
 							</mat-form-field>
 							<mat-form-field class="col-xl-4">
-								<mat-label>{{'Effectif moyen prévisible :' | translate}}</mat-label>
+								<mat-label>{{'PDP.PREDICTABLE_AVERAGE_WORKFORCE' | translate}}</mat-label>
 								<input class="form-control" matInput type="number" name="effectif_moyen"
 									   formControlName="effectif_moyen"
 									   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
