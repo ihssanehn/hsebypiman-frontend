@@ -622,112 +622,145 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="tf-card-form">
-						<ng-container *ngFor="let risk of getControlsArrayFormName('risques')">
-							<div class="tf-heading tf-heading--sm">
-								{{risk?.label| translate}}
-
-								<mat-slide-toggle
-									(change)="onCheckBoxChange($event, 'risques', risk?.id)"
-									[checked]="onCheckBoxIsChecked('risques', risk?.id)"></mat-slide-toggle>
-							</div>
-							<div class="row pl-5 mb-4" style="border-bottom: 1px solid #e9ecf0;"
-								 [hidden]="!onCheckBoxIsChecked('risques', risk.id)">
-								<div class="col-md-12 flex-column">
-										<textarea rows="1" *ngIf="risk?.is_other"
-												  [disabled]="true"
-												  style="margin-top: -10px;"
-												  class="form-control no_border w-100 mb-3"
-												  placeholder="{{'précisez' | translate}}"></textarea>
-									<span class="mb-2 font-weight-bold">Situation liée</span>
-									<div class="align-items-center d-flex mt-2 flex-wrap">
-										<div class="align-items-center d-flex ml-2 mr-2  w-100 mb-2"
-											 *ngFor="let situation of risk?.situation">
-											<mat-checkbox>{{situation?.label}}</mat-checkbox>
-											<div class="align-items-center d-flex ng-star-inserted w-100"
-												 *ngIf="situation?.is_with_comment">
-													<textarea rows="1"
-															  [disabled]="true"
-															  style="height: 24px"
-															  class="form-control no_border w-100 pt-0 pb-0 ml-2"
-															  placeholder="{{'...' | translate}}"></textarea>
-											</div>
-										</div>
-										<ng-container *ngIf="risk?.is_other">
-											<div class="align-items-center d-flex ml-2 mr-2  w-100 mb-2">
-												<mat-checkbox></mat-checkbox>
-												<div class="align-items-center d-flex ng-star-inserted w-100">
-													<textarea rows="1"
-															  [disabled]="true"
-															  style="height: 24px"
-															  class="form-control no_border w-100 pt-0 pb-0 ml-2"
-															  placeholder="{{'...' | translate}}"></textarea>
-												</div>
-											</div>
-										</ng-container>
-									</div>
+						<ng-container *ngFor="let risk of getControlsArrayFormName('risques'); let index = index"
+									  formArrayName="risques">
+							<ng-container [formGroup]="risk">
+								<div class="tf-heading tf-heading--sm">
+									{{risk?.get('label').value}}
+									<mat-slide-toggle
+										formControlName="answer"
+										(change)="allowRisksFields(index, $event.checked)"></mat-slide-toggle>
 								</div>
-								<div class="col-md-12 flex-column mt-3">
-									<span class="mb-2 font-weight-bold">Moyen(s) de prévention déployé(s)</span>
-									<div class="align-items-center d-flex mt-2 flex-wrap">
-										<div class="align-items-center d-flex ml-2 mr-2 ng-star-inserted w-100 mb-2"
-											 *ngFor="let moyen of risk?.moyen">
-											<mat-checkbox>{{moyen?.label}}</mat-checkbox>
-											<div class="align-items-center d-flex ng-star-inserted w-100"
-												 *ngIf="moyen?.pdp_risque_moyen_filtre?.length > 0">
-												<ng-container *ngFor="let subMoyen of moyen?.pdp_risque_moyen_filtre">
-													<mat-checkbox [disabled]="true"
-																  class="mr-2 ml-2">{{subMoyen?.label}}</mat-checkbox>
-													<textarea rows="1" *ngIf="subMoyen?.is_with_comment"
-															  [disabled]="true"
-															  style="height: 24px"
-															  class="form-control no_border w-100 pt-0 pb-0"
-															  placeholder="{{'...' | translate}}"></textarea>
+								<div class="row pl-5 mb-4" style="border-bottom: 1px solid #e9ecf0;"
+									 [hidden]="!risk?.get('answer').value">
+									<div class="col-md-12 flex-column">
+										<textarea
+											rows="1"
+											*ngIf="risk?.get('is_other').value"
+											formControlName="other_cat_pdp_risque"
+											style="margin-top: -10px;"
+											class="form-control no_border w-100 mb-3"
+											placeholder="{{'précisez' | translate}}"></textarea>
+										<span class="mb-2 font-weight-bold">Situation liée</span>
+										<div class="align-items-center d-flex mt-2 flex-wrap">
+											<div class="align-items-center d-flex ml-2 mr-2  w-100 mb-2"
+												 *ngFor="let situation of getFormArrayControls(risk?.get('situation')); let i = index"
+												 formArrayName="situation">
+												<ng-container [formGroup]="situation">
+													<mat-checkbox
+														formControlName="answer">{{situation?.get('label').value}}</mat-checkbox>
+													<div class="align-items-center d-flex ng-star-inserted w-100"
+														 *ngIf="situation?.get('is_with_comment').value">
+														<textarea
+															rows="1"
+															formControlName="comment"
+															style="height: 24px"
+															class="form-control no_border w-100 pt-0 pb-0 ml-2"
+															placeholder="{{'...' | translate}}"></textarea>
+													</div>
 												</ng-container>
 											</div>
+											<ng-container *ngIf="risk?.get('is_other').value">
+												<div class="align-items-center d-flex ml-2 mr-2  w-100 mb-2">
+													<!--													<mat-checkbox></mat-checkbox>-->
+													<div class="align-items-center d-flex ng-star-inserted w-100">
+														<textarea
+															rows="1"
+															formControlName="other_pdp_situation_risque"
+															style="height: 24px"
+															class="form-control no_border w-100 pt-0 pb-0 ml-2"
+															placeholder="{{'...' | translate}}"></textarea>
+													</div>
+												</div>
+											</ng-container>
 										</div>
-										<ng-container *ngIf="risk?.is_other">
-											<div class="align-items-center d-flex ml-2 mr-2  w-100 mb-2">
-												<mat-checkbox></mat-checkbox>
-												<div class="align-items-center d-flex ng-star-inserted w-100">
-													<textarea rows="1"
-															  [disabled]="true"
-															  style="height: 24px"
-															  class="form-control no_border w-100 pt-0 pb-0 ml-2"
-															  placeholder="{{'...' | translate}}"></textarea>
-												</div>
+									</div>
+									<div class="col-md-12 flex-column mt-3">
+										<span class="mb-2 font-weight-bold">Moyen(s) de prévention déployé(s)</span>
+										<div class="align-items-center d-flex mt-2 flex-wrap">
+											<div class="align-items-center d-flex ml-2 mr-2 ng-star-inserted w-100 mb-2"
+												 *ngFor="let moyen of getFormArrayControls(risk?.get('moyen'))"
+												 formArrayName="moyen">
+												<ng-container [formGroup]="moyen">
+													<mat-checkbox
+														(change)="allowSubMoyensFields(moyen, $event.checked)"
+														formControlName="answer">
+														{{moyen?.get('label').value}}
+													</mat-checkbox>
+													<!--													<div class="align-items-center d-flex ng-star-inserted w-100"-->
+													<!--														 *ngIf="moyen?.get('label')?.pdp_risque_moyen_filtre?.length > 0">-->
+													<!--														<ng-container-->
+													<!--															*ngFor="let subMoyen of moyen?.pdp_risque_moyen_filtre">-->
+													<!--															<mat-checkbox [disabled]="true"-->
+													<!--																		  class="mr-2 ml-2">{{subMoyen?.label}}</mat-checkbox>-->
+													<!--															<textarea rows="1" *ngIf="subMoyen?.is_with_comment"-->
+													<!--																	  [disabled]="true"-->
+													<!--																	  style="height: 24px"-->
+													<!--																	  class="form-control no_border w-100 pt-0 pb-0"-->
+													<!--																	  placeholder="{{'...' | translate}}"></textarea>-->
+													<!--														</ng-container>-->
+													<!--													</div>-->
+													<div class="align-items-center d-flex ng-star-inserted w-100"
+														 *ngIf="getFormArrayControls(moyen?.get('pdp_risque_moyen_filtre')).length > 0">
+														<ng-container
+															*ngFor="let subMoyen of getFormArrayControls(moyen?.get('pdp_risque_moyen_filtre'))"
+															formArrayName="pdp_risque_moyen_filtre">
+															<ng-container [formGroup]="subMoyen">
+																<mat-checkbox
+																	class="mr-2 ml-2"
+																	(change)="allowComment(subMoyen, $event.checked)"
+																	formControlName="answer">{{subMoyen?.get('label').value}}</mat-checkbox>
+																<div
+																	class="align-items-center d-flex ng-star-inserted w-100"
+																	*ngIf="subMoyen?.get('is_with_comment').value">
+																	<textarea
+																		rows="1"
+																		formControlName="comment"
+																		style="height: 24px"
+																		class="form-control no_border w-100 pt-0 pb-0 ml-2"
+																		placeholder="{{'...' | translate}}"></textarea>
+																</div>
+															</ng-container>
+														</ng-container>
+													</div>
+
+												</ng-container>
 											</div>
-											<div class="align-items-center d-flex ml-2 mr-2  w-100 mb-2">
-												<mat-checkbox></mat-checkbox>
-												<div class="align-items-center d-flex ng-star-inserted w-100">
-													<textarea rows="1"
-															  [disabled]="true"
-															  style="height: 24px"
-															  class="form-control no_border w-100 pt-0 pb-0 ml-2"
-															  placeholder="{{'...' | translate}}"></textarea>
+											<ng-container *ngIf="risk?.get('is_other').value">
+												<div class="align-items-center d-flex ml-2 mr-2 w-100 mb-2"
+													 *ngFor="let otherMoyens of getFormArrayControls(risk?.get('other_pdp_moyen_risque'))"
+													 formArrayName="other_pdp_moyen_risque">
+													<ng-container [formGroup]="otherMoyens">
+
+														<div class="align-items-center d-flex ng-star-inserted w-100">
+															<textarea
+																rows="1"
+																formControlName="comment"
+																style="height: 24px"
+																class="form-control no_border w-100 pt-0 pb-0 ml-2"
+																placeholder="{{'...' | translate}}"></textarea>
+														</div>
+													</ng-container>
 												</div>
-											</div>
-											<div class="align-items-center d-flex ml-2 mr-2  w-100 mb-2">
-												<mat-checkbox></mat-checkbox>
-												<div class="align-items-center d-flex ng-star-inserted w-100">
-													<textarea rows="1"
-															  [disabled]="true"
-															  style="height: 24px"
-															  class="form-control no_border w-100 pt-0 pb-0 ml-2"
-															  placeholder="{{'...' | translate}}"></textarea>
-												</div>
-											</div>
-										</ng-container>
+											</ng-container>
+										</div>
+									</div>
+									<div class="col-md-12 flex-column mt-3">
+										<span class="mb-2 font-weight-bold">Responsable(s)</span>
+										<div class="align-items-center d-flex mt-2 flex-wrap mb-3">
+											<mat-checkbox class="mr-2 ml-2"
+														  formControlName="is_eu">EE
+											</mat-checkbox>
+											<mat-checkbox class="mr-2 ml-2"
+														  formControlName="is_piman">PIMAN
+											</mat-checkbox>
+											<mat-checkbox class="mr-2 ml-2"
+														  formControlName="is_sous_traitant">Sous-traitant
+											</mat-checkbox>
+										</div>
 									</div>
 								</div>
-								<div class="col-md-12 flex-column mt-3">
-									<span class="mb-2 font-weight-bold">Responsable(s)</span>
-									<div class="align-items-center d-flex mt-2 flex-wrap mb-3">
-										<mat-checkbox class="mr-2 ml-2">EU</mat-checkbox>
-										<mat-checkbox class="mr-2 ml-2">PIMAN</mat-checkbox>
-										<mat-checkbox class="mr-2 ml-2">Sous-traitant</mat-checkbox>
-									</div>
-								</div>
-							</div>
+							</ng-container>
 						</ng-container>
 					</div>
 				</div>

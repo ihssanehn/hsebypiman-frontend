@@ -42,6 +42,7 @@ export class RisqueModel {
 	is_other?: boolean;
 	moyen?: Array<RisqueMoyenModel>;
 	situation?: Array<RisqueMoyenModel>;
+	other_pdp_moyen_risque?: Array<string>;
 }
 
 class RisqueMoyenModel {

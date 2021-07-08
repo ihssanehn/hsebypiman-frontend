@@ -118,10 +118,67 @@ export class PdpAddFormComponent implements OnInit {
 			this.patchFormArray(this.traveauxDangereux, 'travaux_dangereux');
 		}
 		if (this.risques.length > 0) {
-			this.patchFormArray(this.risques, 'risques', ['is_eu', 'is_ee', 'is_sous_traitant']);
+			const formArray = this.pdpForm.get('risques') as FormArray;
+			for (let i = 0; i < this.risques.length; i++) {
+				const group = new FormGroup({
+					id: new FormControl(this.risques[i].id),
+					label: new FormControl(this.risques[i].label),
+					is_other: new FormControl(this.risques[i].is_other),
+					answer: new FormControl(false),
+					comment: new FormControl({value: null, disabled: true}),
+					is_eu: new FormControl({value: null, disabled: true}),
+					is_piman: new FormControl({value: null, disabled: true}),
+					is_sous_traitant: new FormControl({value: null, disabled: true}),
+					other_cat_pdp_risque: new FormControl({value: null, disabled: true}),
+					other_pdp_situation_risque: new FormControl({value: null, disabled: true}),
+					other_pdp_moyen_risque: new FormArray([]),
+					situation: new FormArray([]),
+					moyen: new FormArray([]),
+				});
+				if (!this.risques[i].other_pdp_moyen_risque || this.risques[i].other_pdp_moyen_risque.length === 0) {
+					this.risques[i].other_pdp_moyen_risque = ['', '', ''];
+				}
+				if (this.risques[i] && this.risques[i].other_pdp_moyen_risque.length === 1) {
+					this.risques[i].other_pdp_moyen_risque = [...this.risques[i].other_pdp_moyen_risque, ...['', '']];
+				}
+				if (this.risques[i] && this.risques[i].other_pdp_moyen_risque.length === 2) {
+					this.risques[i].other_pdp_moyen_risque = [...this.risques[i].other_pdp_moyen_risque, ...['']];
+				}
+				this.risques[i].other_pdp_moyen_risque.map(v => {
+					(group.get('other_pdp_moyen_risque') as FormArray).push(new FormGroup({
+						comment: new FormControl({value: v, disabled: true})
+					}));
+				});
+				this.risques[i].situation.map(v => {
+					(group.get('situation') as FormArray).push(new FormGroup({
+						id: new FormControl(v.id),
+						is_with_comment: new FormControl(v.is_with_comment),
+						label: new FormControl(v.label),
+						answer: new FormControl({value: null, disabled: true}),
+						comment: new FormControl({value: null, disabled: true})
+					}));
+				});
+				this.risques[i].moyen.map(v => {
+					(group.get('moyen') as FormArray).push(new FormGroup({
+						id: new FormControl(v.id),
+						is_with_comment: new FormControl(v.is_with_comment),
+						label: new FormControl(v.label),
+						answer: new FormControl({value: null, disabled: true}),
+						comment: new FormControl({value: null, disabled: true}),
+						pdp_risque_moyen_filtre: new FormArray(v.pdp_risque_moyen_filtre
+							? v.pdp_risque_moyen_filtre.map(r => new FormGroup({
+								id: new FormControl(r.id),
+								is_with_comment: new FormControl(r.is_with_comment),
+								answer: new FormControl({value: null, disabled: true}),
+								label: new FormControl(r.label),
+								comment: new FormControl({value: null, disabled: true})
+							})) : [])
+					}));
+				});
+				formArray.push(group);
+			}
 		}
 
-		console.log(this.pdpForm);
 		this.cdr.markForCheck();
 	}
 
@@ -189,7 +246,6 @@ export class PdpAddFormComponent implements OnInit {
 		if (!control) {
 			return false;
 		}
-		console.log(control, index, control.dirty, control.touched, control.hasError(validationType));
 		return control.hasError(validationType) && (control.dirty || control.touched);
 	}
 
@@ -228,16 +284,82 @@ export class PdpAddFormComponent implements OnInit {
 		}
 	}
 
-	// onAddSpecificValue(id, FormControlName, key, value) {
-	// 	const formArray: FormArray = this.pdpForm.get(FormControlName) as FormArray;
-	// 	console.log(value);
-	// 	formArray.controls.forEach((ctrl: FormControl) => {
-	// 		if (ctrl.get('id').value === id) {
-	// 			ctrl.setValue({...ctrl.value, [key]: value});
-	// 			return;
-	// 		}
-	// 	});
-	// }
+	allowRisksFields(index, isDisabled) {
+		const controlGroup = (this.pdpForm.get('risques') as FormArray).controls[index];
+		if (isDisabled) {
+			controlGroup.get('comment').enable();
+			controlGroup.get('is_eu').enable();
+			controlGroup.get('is_piman').enable();
+			controlGroup.get('is_sous_traitant').enable();
+			controlGroup.get('other_cat_pdp_risque').enable();
+			controlGroup.get('other_pdp_moyen_risque').enable();
+			controlGroup.get('other_pdp_situation_risque').enable();
+			if ((controlGroup.get('situation') as FormArray)) {
+				(controlGroup.get('situation') as FormArray).controls.map(v => {
+					v.get('answer').enable();
+					v.get('comment').enable();
+				});
+			}
+			if ((controlGroup.get('moyen') as FormArray)) {
+				(controlGroup.get('moyen') as FormArray).controls.map(v => {
+					v.get('answer').enable();
+					v.get('comment').enable();
+					// (v.get('items') as FormArray).controls.map(r => {
+					// 	r.get('id').enable();
+					// 	r.get('answer').enable();
+					// 	r.get('comment').enable();
+					// });
+				});
+			}
+		} else {
+			controlGroup.get('comment').disable();
+			controlGroup.get('is_eu').disable();
+			controlGroup.get('is_piman').disable();
+			controlGroup.get('is_sous_traitant').disable();
+			controlGroup.get('other_cat_pdp_risque').disable();
+			controlGroup.get('other_pdp_moyen_risque').disable();
+			controlGroup.get('other_pdp_situation_risque').disable();
+			if ((controlGroup.get('situation') as FormArray)) {
+				(controlGroup.get('situation') as FormArray).controls.map(v => {
+					v.get('answer').disable();
+					v.get('comment').disable();
+				});
+
+			}
+			if ((controlGroup.get('moyen') as FormArray)) {
+				(controlGroup.get('moyen') as FormArray).controls.map(v => {
+					v.get('answer').disable();
+					v.get('comment').disable();
+				});
+			}
+		}
+
+	}
+
+	allowSubMoyensFields(control, isDisabled) {
+		if (isDisabled) {
+			if ((control.get('pdp_risque_moyen_filtre') as FormArray)) {
+				(control.get('pdp_risque_moyen_filtre') as FormArray).controls.map(v => {
+					v.get('answer').enable();
+				});
+			}
+		} else {
+			if ((control.get('pdp_risque_moyen_filtre') as FormArray)) {
+				(control.get('pdp_risque_moyen_filtre') as FormArray).controls.map(v => {
+					v.get('answer').disable();
+				});
+			}
+		}
+	}
+
+	allowComment(control, isDisabled) {
+		if (isDisabled) {
+			control.get('comment').enable();
+		} else {
+			control.get('comment').disable();
+		}
+	}
+
 
 	onAddSpecificValue(controlName: string, ArrayFormName, index, value) {
 		const control = (this.pdpForm.get(ArrayFormName) as FormArray).controls[index].get(controlName);
@@ -293,5 +415,12 @@ export class PdpAddFormComponent implements OnInit {
 
 	getControlsArrayFormName(formArrayName) {
 		return (this.pdpForm.get(formArrayName) as FormArray).controls;
+	}
+
+	getFormArrayControls(array) {
+		if (array) {
+			return array.controls;
+		}
+		return [];
 	}
 }
