@@ -67,6 +67,14 @@ export class PdpAddComponent implements OnInit {
 			travaux_dangereux: new FormArray([]),
 			risques: new FormArray([]),
 			validations: new FormArray([]),
+			intervenants: new FormArray([new FormGroup({
+				first_name: new FormControl('', Validators.required),
+				last_name: new FormControl('', Validators.required),
+				contact: new FormControl('', Validators.required),
+				formations: new FormControl(null),
+				is_suivi_medical: new FormControl(null),
+				motif: new FormControl(null),
+			})]),
 		});
 	}
 

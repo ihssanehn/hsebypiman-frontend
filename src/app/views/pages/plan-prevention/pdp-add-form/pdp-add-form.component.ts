@@ -20,6 +20,9 @@ export class PdpAddFormComponent implements OnInit {
 	set pdpFormSetter(value) {
 		if (value != null) {
 			this.pdpForm = value;
+			if (this.getControlsArrayFormName('intervenants')) {
+				this.intervenants.next(this.getControlsArrayFormName('intervenants'));
+			}
 			// this.subPDPFormValidator();
 		}
 	}
@@ -35,7 +38,7 @@ export class PdpAddFormComponent implements OnInit {
 	public EESMoyenDisposition: Array<DispositionModel>;
 	public traveauxDangereux: Array<TraveauxDangereuxModel>;
 	public validationPlan: Array<any> = [];
-	public intervenants: Array<any> = [{last: '', first: '', contact: '', formations: '', suivis_médical: ''}];
+	public intervenants = new BehaviorSubject<AbstractControl[]>([]);
 	public suivisMedicalIntervenants: Array<any> = [{}];
 	public risques: Array<RisqueModel>;
 	public frequences: Array<PDPFrequences>;
@@ -423,8 +426,17 @@ export class PdpAddFormComponent implements OnInit {
 	}
 
 	addIntervenant() {
-		if (this.intervenants.length < 9) {
-			this.intervenants = [...this.intervenants, {}];
+		if (this.intervenants.getValue().length < 9) {
+			const group = new FormGroup({
+				first_name: new FormControl('', Validators.required),
+				last_name: new FormControl('', Validators.required),
+				contact: new FormControl('', Validators.required),
+				formations: new FormControl(null),
+				is_suivi_medical: new FormControl(null),
+				motif: new FormControl(null),
+			});
+			this.getControlsArrayFormName('intervenants').push(group);
+			this.intervenants.next(this.getControlsArrayFormName('intervenants'));
 		}
 	}
 
@@ -439,8 +451,8 @@ export class PdpAddFormComponent implements OnInit {
 		return [];
 	}
 
-	togglePartInspectionAt(event, index) {
-		this.getControlsArrayFormName('validations')[index].get('part_inspection_at').setValidators(event ? Validators.required : null);
-		this.getControlsArrayFormName('validations')[index].get('part_inspection_at').updateValueAndValidity(); // this is to rerun form validation after removing the validation for a field.
+	togglePartInspectionAt(event, index, FormArrayName, FormChangeToControlName) {
+		this.getControlsArrayFormName(FormArrayName)[index].get(FormChangeToControlName).setValidators(event ? Validators.required : null);
+		this.getControlsArrayFormName(FormArrayName)[index].get(FormChangeToControlName).updateValueAndValidity(); // this is to rerun form validation after removing the validation for a field.
 	}
 }
