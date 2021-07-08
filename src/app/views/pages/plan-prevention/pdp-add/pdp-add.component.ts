@@ -10,7 +10,7 @@ import Swal from "sweetalert2";
 export class PdpAddComponent implements OnInit {
 
 	pdpForm: FormGroup;
-	enableBtn = false;
+	enableBtn = true;
 	formloading: boolean = false;
 
 	constructor(
@@ -76,8 +76,8 @@ export class PdpAddComponent implements OnInit {
 	}
 
 	isLastStep(isLastStep: boolean): void {
-		if (isLastStep) {
-			this.enableBtn = true;
-		}
+		// if (isLastStep) {
+		// 	this.enableBtn = true;
+		// }
 	}
 }
