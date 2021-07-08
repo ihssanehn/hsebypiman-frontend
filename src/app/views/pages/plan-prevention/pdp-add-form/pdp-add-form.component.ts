@@ -60,15 +60,32 @@ export class PdpAddFormComponent implements OnInit {
 		this.triggerResize();
 		this.getPDPConsignes();
 		this.validationPlan = [
-			{company: 'EU', need_text_area_in_title: true},
+			{title: 'EU', need_text_area_in_title: true},
 			{
-				company: 'EE',
+				title: 'EE',
 				need_text_area_in_title: false,
-				title: 'PIMAN Consultants'
+				company_name: 'PIMAN Consultants'
 			},
-			{company: 'Sous-traitant 1', need_text_area_in_title: true},
-			{company: 'Sous-traitant 2', need_text_area_in_title: true},
+			{title: 'Sous-traitant 1', need_text_area_in_title: true},
+			{title: 'Sous-traitant 2', need_text_area_in_title: true},
 		];
+		if (this.validationPlan.length > 0) {
+			const formArray = this.pdpForm.get('validations') as FormArray;
+			for (let i = 0; i < this.validationPlan.length; i++) {
+				const group = new FormGroup({
+					title: new FormControl(this.validationPlan[i].title),
+					need_text_area_in_title: new FormControl(this.validationPlan[i].need_text_area_in_title),
+					company_name: new FormControl(this.validationPlan[i].company_name, Validators.required),
+					full_name: new FormControl('', Validators.required),
+					validation_at: new FormControl(null, Validators.required),
+					type: new FormControl(this.validationPlan[i].title, Validators.required),
+					is_part_inspection: new FormControl(null),
+					part_inspection_at: new FormControl(null),
+				});
+				formArray.push(group);
+			}
+		}
+
 	}
 
 	// subPDPFormValidator() {
@@ -178,7 +195,6 @@ export class PdpAddFormComponent implements OnInit {
 				formArray.push(group);
 			}
 		}
-
 		this.cdr.markForCheck();
 	}
 
@@ -192,7 +208,6 @@ export class PdpAddFormComponent implements OnInit {
 			});
 			listAddedControls.map(v => {
 				if (!v.needTest || (i && v.needTest && array[i].has_details)) {
-					console.log(formArrayName, v.name);
 					group.addControl(v.name, new FormControl({
 						value: null,
 						disabled: true
@@ -422,5 +437,10 @@ export class PdpAddFormComponent implements OnInit {
 			return array.controls;
 		}
 		return [];
+	}
+
+	togglePartInspectionAt(event, index) {
+		this.getControlsArrayFormName('validations')[index].get('part_inspection_at').setValidators(event ? Validators.required : null);
+		this.getControlsArrayFormName('validations')[index].get('part_inspection_at').updateValueAndValidity(); // this is to rerun form validation after removing the validation for a field.
 	}
 }
