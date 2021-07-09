@@ -129,7 +129,7 @@ export class PdpAddComponent implements OnInit {
 
 		Swal.fire({
 			icon: code,
-			title: this.translate.instant("ARS.NOTIF.ARS_CREATED.TITLE"),
+			title: this.translate.instant("ARS.NOTIF.PDP_CREATED.TITLE"),
 			showConfirmButton: false,
 			html: message,
 			timer: code === 'success' ? 1500 : 3000
@@ -152,6 +152,7 @@ export class PdpAddComponent implements OnInit {
 				this.fireNotifAfterSave(res)
 			})
 			.catch(err => {
+				console.log('here');
 				this.formloading = false;
 				Swal.fire({
 					icon: 'error',

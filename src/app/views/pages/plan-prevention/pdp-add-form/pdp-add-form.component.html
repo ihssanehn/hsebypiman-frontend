@@ -23,7 +23,7 @@
 							<mat-form-field class="col-xl-4">
 								<mat-label>{{'PDP.COMPANY_NAME_AND_CONTACT' | translate}} ({{'PDP.TEL' | translate}})
 								</mat-label>
-								<input class="form-control" matInput type="text" name="raison_sociale_tel_eu"
+								<input class="form-control" matInput type="phone" name="raison_sociale_tel_eu"
 									   formControlName="raison_sociale_tel_eu"
 									   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
 									   [required]="isFieldRequired('raison_sociale_tel_eu')"/>
@@ -76,7 +76,7 @@
 							<mat-form-field class="col-xl-4">
 								<mat-label>{{'PDP.OCCUPATIONAL_PHYSICIAN' | translate}} ({{'PDP.TEL' | translate}})
 								</mat-label>
-								<input class="form-control" matInput type="text" name="medecin_travail_eu_tel"
+								<input class="form-control" matInput type="phone" name="medecin_travail_eu_tel"
 									   formControlName="medecin_travail_eu_tel"
 									   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
 									   [required]="isFieldRequired('medecin_travail_eu_tel')"/>
@@ -108,7 +108,7 @@
 							</mat-form-field>
 							<mat-form-field class="col-xl-4">
 								<mat-label>{{'PDP.CSE' | translate}} ({{'PDP.TEL' | translate}})</mat-label>
-								<input class="form-control" matInput type="text" name="cse_eu_tel"
+								<input class="form-control" matInput type="phone" name="cse_eu_tel"
 									   formControlName="cse_eu_tel"
 									   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
 									   [required]="isFieldRequired('cse_eu_tel')"/>
@@ -145,7 +145,7 @@
 							<mat-form-field class="col-xl-4">
 								<mat-label>{{'PDP.COMPANY_REPRESENTATIVE' | translate}} ({{'PDP.TEL' | translate}})
 								</mat-label>
-								<input class="form-control" matInput type="text" name="representant_entreprise_eu_tel"
+								<input class="form-control" matInput type="phone" name="representant_entreprise_eu_tel"
 									   formControlName="representant_entreprise_eu_tel"
 									   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
 									   [required]="isFieldRequired('representant_entreprise_eu_tel')"/>
@@ -171,7 +171,7 @@
 							<mat-form-field class="col-xl-4">
 								<mat-label>{{'PDP.OCCUPATIONAL_PHYSICIAN' | translate}} ({{'PDP.TEL' | translate}})
 								</mat-label>
-								<input class="form-control" matInput type="text" name="medecin_travail_ee_tel"
+								<input class="form-control" matInput type="phone" name="medecin_travail_ee_tel"
 									   formControlName="medecin_travail_ee_tel"
 									   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
 									   [required]="isFieldRequired('medecin_travail_ee_tel')"/>
@@ -208,7 +208,7 @@
 							<mat-form-field class="col-xl-4">
 								<mat-label>{{'PDP.COMPANY_REPRESENTATIVE' | translate}} ({{'PDP.TEL' | translate}})
 								</mat-label>
-								<input class="form-control" matInput type="text" name="representant_entreprise_ee_tel"
+								<input class="form-control" matInput type="phone" name="representant_entreprise_ee_tel"
 									   formControlName="representant_entreprise_ee_tel"
 									   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
 									   [required]="isFieldRequired('representant_entreprise_ee_tel')"/>
@@ -243,7 +243,7 @@
 									<mat-label>{{'PDP.NAME_OF_SUBCONTRACTOR' | translate}} 1 ({{'PDP.TEL' | translate}}
 										)
 									</mat-label>
-									<input class="form-control" matInput type="text" name="sous_traitant1_tel"
+									<input class="form-control" matInput type="phone" name="sous_traitant1_tel"
 										   formControlName="sous_traitant1_tel"
 										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
 										   [required]="isFieldRequired('sous_traitant1_tel')"/>
@@ -267,7 +267,7 @@
 									<mat-label>{{'PDP.NAME_OF_SUBCONTRACTOR' | translate}} 2 ({{'PDP.TEL'  | translate}}
 										)
 									</mat-label>
-									<input class="form-control" matInput type="text" name="sous_traitant2_tel"
+									<input class="form-control" matInput type="phone" name="sous_traitant2_tel"
 										   formControlName="sous_traitant2_tel"
 										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
 										   [required]="isFieldRequired('sous_traitant2_tel')"/>
@@ -925,7 +925,7 @@
 									<td mat-cell *matCellDef="let element; let index = index" [formGroupName]="index">
 										<mat-form-field [style.fontSize.px]=13>
 											<mat-label>{{'PDP.PHONE' | translate}}</mat-label>
-											<input class="form-control" matInput type="text"
+											<input class="form-control" matInput type="phone"
 												   formControlName="contact"
 												   placeholder="{{'ACTION.ENTER_HERE' | translate}}"/>
 											<mat-error

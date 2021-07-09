@@ -227,6 +227,9 @@
 			"AR_UPDATED": {
 				"TITLE": "Successfully updated risk analysis"
 			},
+			"PDP_CREATED": {
+				"TITLE": "Successfully created prevention plan "
+			},
 			"CHANTIER_UNSELECTED": {
 				"TITLE": "Failure! Please select a site"
 			},
