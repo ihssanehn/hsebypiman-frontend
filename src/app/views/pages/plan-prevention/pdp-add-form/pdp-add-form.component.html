@@ -382,7 +382,7 @@
 			</div>
 		</div>
 		<div class="col-12 mb-4" *ngIf="partHided(2) && origin=='add'">
-			<button mat-raised-button type="button" class="pull-right btn-small" color="info"
+			<button mat-raised-button type="button" class="pull-right btn-small mr-4" color="info"
 					(click)="showPart(2)">{{'ACTION.FOLLOWING' | translate}}</button>
 		</div>
 	</div>
@@ -442,7 +442,7 @@
 			</div>
 		</div>
 		<div class="col-12 mb-4" *ngIf="partHided(3) && origin=='add'">
-			<button mat-raised-button type="button" class="pull-right btn-small" color="info"
+			<button mat-raised-button type="button" class="pull-right btn-small mr-4" color="info"
 					(click)="showPart(3)">{{'ACTION.FOLLOWING' | translate}}</button>
 		</div>
 	</div>
@@ -570,7 +570,7 @@
 			</div>
 		</div>
 		<div class="col-12 mb-4" *ngIf="partHided(4) && origin=='add'">
-			<button mat-raised-button type="button" class="pull-right btn-small" color="info"
+			<button mat-raised-button type="button" class="pull-right btn-small mr-4" color="info"
 					(click)="showPart(4)">{{'ACTION.FOLLOWING' | translate}}</button>
 		</div>
 	</div>
@@ -605,7 +605,7 @@
 			</div>
 		</div>
 		<div class="col-12 mb-4" *ngIf="partHided(5) && origin=='add'">
-			<button mat-raised-button type="button" class="pull-right btn-small" color="info"
+			<button mat-raised-button type="button" class="pull-right btn-small mr-4" color="info"
 					(click)="showPart(5)">{{'ACTION.FOLLOWING' | translate}}</button>
 		</div>
 	</div>
@@ -765,7 +765,7 @@
 			</div>
 		</div>
 		<div class="col-12 mb-4" *ngIf="partHided(6) && origin=='add'">
-			<button mat-raised-button type="button" class="pull-right btn-small" color="info"
+			<button mat-raised-button type="button" class="pull-right btn-small mr-4" color="info"
 					(click)="showPart(6)">{{'ACTION.FOLLOWING' | translate}}</button>
 		</div>
 	</div>
@@ -847,7 +847,7 @@
 										<div class="d-flex align-items-center">
 											<mat-checkbox class="mt-3" formControlName="is_part_inspection"
 														  (change)="togglePartInspectionAt($event.checked, index, 'validations',  'part_inspection_at')">
-												Oui ?
+												{{'COMMON.YES' | translate}} ?
 											</mat-checkbox>
 											<mat-form-field class="mt-3 ml-3 mb-3" [style.fontSize.px]=13>
 												<mat-label>{{'PDP.DATE' | translate}}</mat-label>
@@ -956,7 +956,7 @@
 										<div class="d-flex flex-column">
 											<mat-checkbox class="mt-3" formControlName="is_suivi_medical"
 														  (change)="togglePartInspectionAt($event.checked, index, 'intervenants', 'motif')"
-											>Oui ?
+											>{{'COMMON.YES' | translate}} ?
 											</mat-checkbox>
 											<mat-select class="mt-3 mb-3"
 														placeholder="{{'PDP.SELECT_AN_ITEM' | translate}}"
