@@ -21,7 +21,8 @@
 								</mat-error>
 							</mat-form-field>
 							<mat-form-field class="col-xl-4">
-								<mat-label>{{'PDP.COMPANY_NAME_AND_CONTACT' | translate}}({{'PDP.TEL'}})</mat-label>
+								<mat-label>{{'PDP.COMPANY_NAME_AND_CONTACT' | translate}} ({{'PDP.TEL' | translate}})
+								</mat-label>
 								<input class="form-control" matInput type="text" name="raison_sociale_tel_eu"
 									   formControlName="raison_sociale_tel_eu"
 									   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
@@ -73,7 +74,8 @@
 								</mat-error>
 							</mat-form-field>
 							<mat-form-field class="col-xl-4">
-								<mat-label>{{'PDP.OCCUPATIONAL_PHYSICIAN' | translate}}({{'PDP.TEL'}})</mat-label>
+								<mat-label>{{'PDP.OCCUPATIONAL_PHYSICIAN' | translate}} ({{'PDP.TEL' | translate}})
+								</mat-label>
 								<input class="form-control" matInput type="text" name="medecin_travail_eu_tel"
 									   formControlName="medecin_travail_eu_tel"
 									   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
@@ -95,7 +97,7 @@
 								</mat-error>
 							</mat-form-field>
 							<mat-form-field class="col-xl-4">
-								<mat-label>{{'PDP.CSE' | translate}}({{'PDP.JOB'}})</mat-label>
+								<mat-label>{{'PDP.CSE' | translate}} ({{'PDP.JOB' | translate}})</mat-label>
 								<input class="form-control" matInput type="text" name="cse_eu_job"
 									   formControlName="cse_eu_job"
 									   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
@@ -105,7 +107,7 @@
 								</mat-error>
 							</mat-form-field>
 							<mat-form-field class="col-xl-4">
-								<mat-label>{{'PDP.CSE' | translate}}({{'PDP.TEL'}})</mat-label>
+								<mat-label>{{'PDP.CSE' | translate}} ({{'PDP.TEL' | translate}})</mat-label>
 								<input class="form-control" matInput type="text" name="cse_eu_tel"
 									   formControlName="cse_eu_tel"
 									   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
@@ -127,7 +129,8 @@
 								</mat-error>
 							</mat-form-field>
 							<mat-form-field class="col-xl-4">
-								<mat-label>{{'PDP.COMPANY_REPRESENTATIVE' | translate}}({{'PDP.MAIL'}})</mat-label>
+								<mat-label>{{'PDP.COMPANY_REPRESENTATIVE' | translate}} ({{'PDP.MAIL' | translate}})
+								</mat-label>
 								<input class="form-control" matInput type="mail" name="representant_entreprise_eu_mail"
 									   formControlName="representant_entreprise_eu_mail"
 									   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
@@ -136,11 +139,12 @@
 									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 								</mat-error>
 								<mat-error *ngIf="isControlHasError('representant_entreprise_eu_mail','email')">
-									<strong>{{ 'email no valid' | translate }}</strong>
+									<strong>{{ 'AUTH.VALIDATION.INVALID_FIELD' | translate }}</strong>
 								</mat-error>
 							</mat-form-field>
 							<mat-form-field class="col-xl-4">
-								<mat-label>{{'PDP.COMPANY_REPRESENTATIVE' | translate}}({{'PDP.TEL'}})</mat-label>
+								<mat-label>{{'PDP.COMPANY_REPRESENTATIVE' | translate}} ({{'PDP.TEL' | translate}})
+								</mat-label>
 								<input class="form-control" matInput type="text" name="representant_entreprise_eu_tel"
 									   formControlName="representant_entreprise_eu_tel"
 									   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
@@ -165,7 +169,8 @@
 								</mat-error>
 							</mat-form-field>
 							<mat-form-field class="col-xl-4">
-								<mat-label>{{'PDP.OCCUPATIONAL_PHYSICIAN' | translate}}({{'PDP.TEL'}})</mat-label>
+								<mat-label>{{'PDP.OCCUPATIONAL_PHYSICIAN' | translate}} ({{'PDP.TEL' | translate}})
+								</mat-label>
 								<input class="form-control" matInput type="text" name="medecin_travail_ee_tel"
 									   formControlName="medecin_travail_ee_tel"
 									   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
@@ -187,7 +192,8 @@
 						</div>
 						<div class="row form-row">
 							<mat-form-field class="col-xl-4">
-								<mat-label>{{'PDP.COMPANY_REPRESENTATIVE' | translate}}({{'PDP.MAIL'}})</mat-label>
+								<mat-label>{{'PDP.COMPANY_REPRESENTATIVE' | translate}} ({{'PDP.MAIL' | translate}})
+								</mat-label>
 								<input class="form-control" matInput type="email" name="representant_entreprise_ee_mail"
 									   formControlName="representant_entreprise_ee_mail"
 									   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
@@ -196,11 +202,12 @@
 									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 								</mat-error>
 								<mat-error *ngIf="isControlHasError('representant_entreprise_eu_mail','email')">
-									<strong>{{ 'email no valid' | translate }}</strong>
+									<strong>{{ 'AUTH.VALIDATION.INVALID_FIELD' | translate }}</strong>
 								</mat-error>
 							</mat-form-field>
 							<mat-form-field class="col-xl-4">
-								<mat-label>{{'PDP.COMPANY_REPRESENTATIVE' | translate}}({{'PDP.TEL'}})</mat-label>
+								<mat-label>{{'PDP.COMPANY_REPRESENTATIVE' | translate}} ({{'PDP.TEL' | translate}})
+								</mat-label>
 								<input class="form-control" matInput type="text" name="representant_entreprise_ee_tel"
 									   formControlName="representant_entreprise_ee_tel"
 									   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
@@ -233,7 +240,9 @@
 									</mat-error>
 								</mat-form-field>
 								<mat-form-field class="col-xl-6">
-									<mat-label>{{'PDP.NAME_OF_SUBCONTRACTOR' | translate}} 1 ({{'PDP.TEL'}})</mat-label>
+									<mat-label>{{'PDP.NAME_OF_SUBCONTRACTOR' | translate}} 1 ({{'PDP.TEL' | translate}}
+										)
+									</mat-label>
 									<input class="form-control" matInput type="text" name="sous_traitant1_tel"
 										   formControlName="sous_traitant1_tel"
 										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
@@ -255,7 +264,9 @@
 									</mat-error>
 								</mat-form-field>
 								<mat-form-field class="col-xl-6">
-									<mat-label>{{'PDP.NAME_OF_SUBCONTRACTOR' | translate}} 2 ({{'PDP.TEL'}})</mat-label>
+									<mat-label>{{'PDP.NAME_OF_SUBCONTRACTOR' | translate}} 2 ({{'PDP.TEL'  | translate}}
+										)
+									</mat-label>
 									<input class="form-control" matInput type="text" name="sous_traitant2_tel"
 										   formControlName="sous_traitant2_tel"
 										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
@@ -299,9 +310,10 @@
 						<div class="row form-row">
 							<mat-form-field class="col-xl-3">
 								<mat-label>{{'PDP.PDP_ESTABLISHED_ON' | translate}}</mat-label>
-								<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]"
+								<input matInput class="form-control" mask="0000-M0-d0"
+									   [specialCharacters]="[ '-' ]"
 									   [dropSpecialCharacters]="false" formControlName="pdp_intervention_at"
-									   placeholder="DD/MM/YYYY" [required]="isFieldRequired('pdp_intervention_at')">
+									   placeholder="YYYY-MM-DD" [required]="isFieldRequired('pdp_intervention_at')">
 								<mat-error *ngIf="isControlHasError('pdp_intervention_at','required')">
 									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 								</mat-error>
@@ -377,7 +389,7 @@
 	<div class="row" [hidden]="origin == 'add' && partHided(2)">
 		<div class="col-12">
 			<div class="tf-heading tf-heading--md">|
-				4 {{'Consignes remises par l’entreprise extérieure' | translate}}</div>
+				4 {{'PDP.INSTRUCTIONS_GIVEN_BY_THE_EXTERNAL_COMPANY' | translate}}</div>
 			<div class="mt-3">
 				<div class="row">
 					<div class="col-md-12">
@@ -415,7 +427,7 @@
 															cols="5" rows="1"
 															formControlName="type_operation"
 															class="form-control no_border mb-2 mt-2 "
-															placeholder="{{element?.label_details | translate}}"></textarea>
+															placeholder="{{'PDP.'+element?.label_details | translate}}"></textarea>
 										</div>
 									</td>
 								</ng-container>
@@ -437,7 +449,7 @@
 	<div class="row" [hidden]="origin == 'add' && partHided(3)">
 		<div class="col-12">
 			<div class="tf-heading tf-heading--md">|
-				5 {{'EPI mis à disposition de l’entreprise extérieure' | translate}}</div>
+				5 {{'PDP.PPE_MADE_AVAILABLE_TO_THE_EXTERNAL_COMPANY' | translate}}</div>
 			<div class="mt-3">
 				<div class="row">
 					<div class="col-md-12">
@@ -460,7 +472,7 @@
 									<td mat-cell *matCellDef="let element; let index = index" [formGroupName]="index"
 										class="cell-textarea" [width]="'25%'">
 										<div class="d-flex flex-column align-items-center justify-content-center">
-											<mat-select placeholder="Sélectionnez un élément"
+											<mat-select placeholder="{{'PDP.SELECT_AN_ITEM' | translate}}"
 														formControlName="answer_id"
 														*ngIf="element?.items?.length > 0">
 												<mat-option *ngFor="let item of element?.items"
@@ -475,7 +487,7 @@
 										<textarea cols="5" rows="1" *ngIf="element?.is_with_comment"
 												  formControlName="comment"
 												  class="form-control no_border mb-2 mt-3"
-												  placeholder="{{'Autre' | translate}}"></textarea>
+												  placeholder="{{'ACTION.ENTER_HERE' | translate}}"></textarea>
 									</td>
 								</ng-container>
 								<ng-container matColumnDef="eu">
@@ -506,30 +518,11 @@
 										<div class="m-2">
 											<mat-checkbox
 												formControlName="is_sous_traitant"
-											>Sous-traitant
+											>{{'PDP.SUBCONTRACTOR' | translate}}
 											</mat-checkbox>
 										</div>
 									</td>
 								</ng-container>
-
-								<!--								<ng-container matColumnDef="comments">-->
-								<!--									<th mat-header-cell *matHeaderCellDef></th>-->
-								<!--									<td mat-cell *matCellDef="let element" class="cell-textarea">-->
-								<!--										<ng-container *ngIf="element?.is_comment_consigne">-->
-								<!--											<textarea [disabled]="!onConsignesIsChecked(element.id)"-->
-								<!--													  class="form-control no_border mb-2 mt-2 "-->
-								<!--													  cols="5" rows="1"-->
-								<!--													  placeholder="{{'ACTION.ENTER_HERE' | translate}}"></textarea>-->
-								<!--										</ng-container>-->
-								<!--										<div class="mb-2 mt-3 d-flex align-items-center " *ngIf="element?.has_details">-->
-								<!--											<textarea [disabled]="!onConsignesIsChecked(element.id)"-->
-								<!--													  cols="5" rows="1"-->
-								<!--													  class="form-control no_border mb-2 mt-2 "-->
-								<!--													  placeholder="{{element?.label_details | translate}}"></textarea>-->
-								<!--										</div>-->
-								<!--									</td>-->
-								<!--								</ng-container>-->
-
 								<tr mat-row
 									*matRowDef="let row; let i = index; columns: displayedColumnsEPIDisposition;"
 									[formGroupName]="i"></tr>
@@ -539,7 +532,7 @@
 				</div>
 			</div>
 			<div class="tf-heading tf-heading--md">|
-				6 {{'Moyens mis à disposition de l’entreprise extérieure' | translate}}</div>
+				6 {{'PDP.RESOURCES_MADE_AVAILABLE_TO_THE_EXTERNAL_COMPANY' | translate}}</div>
 			<div class="mt-3">
 				<div class="row">
 					<div class="col-md-12">
@@ -583,17 +576,17 @@
 	</div>
 	<div class="row" [hidden]="origin == 'add' && partHided(4)">
 		<div class="col-12">
-			<div class="tf-heading tf-heading--md">| 7 {{'Liste des travaux dangereux' | translate}}</div>
+			<div class="tf-heading tf-heading--md">| 7 {{'PDP.LIST_OF_HAZARDOUS_WORK' | translate}}</div>
 			<div class="row">
 				<div class="col-md-12">
 					<div class="tf-card-form">
 						<div class="tf-heading tf-heading--xs">
-							{{'Pour rappel, un plan de prévention écrit doit être réalisé entre l’entreprise utilisatrice (EU) et l’entreprise extérieure (EE) avant le commencement des travaux dans le cas où le nombre total d’heures de travail prévu pour réaliser les travaux est au moins de 400 heures sur 12 mois, ou bien si les travaux figurent sur la liste des travaux dangereux fixé par l’arrêté du 19 mars 1993.' | translate}}
+							{{'PDP.LIST_OF_HAZARDOUS_WORK_DESC' | translate}}
 						</div>
 						<table class="mt-3" mat-table [dataSource]="traveauxDangereux"
 							   formArrayName="travaux_dangereux">
 							<ng-container matColumnDef="list">
-								<th mat-header-cell *matHeaderCellDef> {{'Liste des travaux' | translate}} </th>
+								<th mat-header-cell *matHeaderCellDef> {{'PDP.LIST_OF_WORKS' | translate}} </th>
 								<td mat-cell *matCellDef="let element; let index = index" [formGroupName]="index">
 									<div class="m-2">
 										<mat-checkbox [value]="element.id"
@@ -619,7 +612,7 @@
 	<div class="row" [hidden]="origin == 'add' && partHided(5)">
 		<div class="col-12">
 			<div class="tf-heading tf-heading--md">|
-				8 {{'Identifier les risques générés par la coactivité' | translate}}</div>
+				8 {{'PDP.IDENTIFY_THE_RISKS_GENERATED_BY_COACTIVITY' | translate}}</div>
 			<div class="row">
 				<div class="col-md-12">
 					<div class="tf-card-form">
@@ -642,8 +635,9 @@
 											formControlName="other_cat_pdp_risque"
 											style="margin-top: -10px;"
 											class="form-control no_border w-100 mb-3"
-											placeholder="{{'précisez' | translate}}"></textarea>
-										<span class="mb-2 font-weight-bold">Situation liée</span>
+											placeholder="{{'PDP.SPECIFY' | translate}}"></textarea>
+										<span
+											class="mb-2 font-weight-bold">{{'PDP.RELATED_SITUATION' | translate}}</span>
 										<div class="align-items-center d-flex mt-2 flex-wrap">
 											<div class="align-items-center d-flex ml-2 mr-2  w-100 mb-2"
 												 *ngFor="let situation of getFormArrayControls(risk?.get('situation')); let i = index"
@@ -678,7 +672,8 @@
 										</div>
 									</div>
 									<div class="col-md-12 flex-column mt-3">
-										<span class="mb-2 font-weight-bold">Moyen(s) de prévention déployé(s)</span>
+										<span
+											class="mb-2 font-weight-bold">{{'PDP.PREVENTION_METHOD_DEPLOYED' | translate}}</span>
 										<div class="align-items-center d-flex mt-2 flex-wrap">
 											<div class="align-items-center d-flex ml-2 mr-2 ng-star-inserted w-100 mb-2"
 												 *ngFor="let moyen of getFormArrayControls(risk?.get('moyen'))"
@@ -748,7 +743,8 @@
 										</div>
 									</div>
 									<div class="col-md-12 flex-column mt-3">
-										<span class="mb-2 font-weight-bold">Responsable(s)</span>
+										<span
+											class="mb-2 font-weight-bold">{{'PDP.PERSON_IN_CHARGE' | translate}}</span>
 										<div class="align-items-center d-flex mt-2 flex-wrap mb-3">
 											<mat-checkbox class="mr-2 ml-2"
 														  formControlName="is_eu">EE
@@ -757,7 +753,7 @@
 														  formControlName="is_piman">PIMAN
 											</mat-checkbox>
 											<mat-checkbox class="mr-2 ml-2"
-														  formControlName="is_sous_traitant">Sous-traitant
+														  formControlName="is_sous_traitant">{{'PDP.SUBCONTRACTOR' | translate}}
 											</mat-checkbox>
 										</div>
 									</div>
@@ -776,14 +772,14 @@
 	<div class="row" [hidden]="origin == 'add' && partHided(6)">
 		<div class="col-12">
 			<div class="tf-heading tf-heading--md">|
-				9 {{'Validation du Plan de Prévention' | translate}}</div>
+				9 {{'PDP.VALIDATION_OF_THE_PREVENTION_PLAN' | translate}}</div>
 			<div class="mt-3">
 				<div class="row">
 					<div class="col-md-12">
 						<div class="tf-card-form">
 							<table class="mt-3" mat-table formArrayName="validations" [dataSource]="validationPlan">
 								<ng-container matColumnDef="company">
-									<th mat-header-cell *matHeaderCellDef><b>{{'Entreprises' | translate}} </b></th>
+									<th mat-header-cell *matHeaderCellDef><b>{{'PDP.COMPANIES' | translate}} </b></th>
 									<td mat-cell *matCellDef="let element; let index = index" [formGroupName]="index"
 										[width]="'30%'">
 										<div class="d-flex align-items-center">
@@ -793,7 +789,7 @@
 											</b>
 											<mat-form-field [style.fontSize.px]=13 class="ml-3"
 															*ngIf="element?.need_text_area_in_title">
-												<mat-label>{{'Précisez' | translate}}</mat-label>
+												<mat-label>{{'PDP.SPECIFY' | translate}}</mat-label>
 												<input class="form-control" matInput type="text"
 													   formControlName="company_name"
 													   placeholder="{{'ACTION.ENTER_HERE' | translate}}"/>
@@ -807,11 +803,13 @@
 								</ng-container>
 								<ng-container matColumnDef="name">
 									<th mat-header-cell *matHeaderCellDef>
-										<b>{{'Nom/Prénom' | translate}} <small class="d-flex">(Chef
-											d’établissement ou son délégataire)</small></b></th>
+										<b>{{'PDP.FULLNAME' | translate}} <small
+											class="d-flex">({{'PDP.HEAD_OF_ESTABLISHMENT_OR_HIS_DELEGATE' | translate}}
+											)</small></b>
+									</th>
 									<td mat-cell *matCellDef="let element; let index = index" [formGroupName]="index">
 										<mat-form-field [style.fontSize.px]=13>
-											<mat-label>{{'Nom/Prénom' | translate}}</mat-label>
+											<mat-label>{{'PDP.FULLNAME' | translate}}</mat-label>
 											<input class="form-control" matInput type="text"
 												   formControlName="full_name"
 												   placeholder="{{'ACTION.ENTER_HERE' | translate}}"/>
@@ -823,15 +821,15 @@
 									</td>
 								</ng-container>
 								<ng-container matColumnDef="date">
-									<th mat-header-cell *matHeaderCellDef><b>{{'Date' | translate}} </b></th>
+									<th mat-header-cell *matHeaderCellDef><b>{{'PDP.DATE' | translate}} </b></th>
 									<td mat-cell *matCellDef="let element; let index = index" [formGroupName]="index">
 										<mat-form-field [style.fontSize.px]=13>
-											<mat-label>{{'Date' | translate}}</mat-label>
-											<input matInput class="form-control" mask="d0/M0/0000"
-												   [specialCharacters]="[ '/' ]"
+											<mat-label>{{'PDP.DATE' | translate}}</mat-label>
+											<input matInput class="form-control" mask="0000-M0-d0"
+												   [specialCharacters]="[ '-' ]"
 												   formControlName="validation_at"
 												   [dropSpecialCharacters]="false"
-												   placeholder="DD/MM/YYYY">
+												   placeholder="YYYY-MM-DD">
 											<mat-error
 												*ngIf="isControlHasError('validation_at', 'required', 'validations', index)">
 												<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
@@ -842,7 +840,7 @@
 								<ng-container matColumnDef="participation">
 									<th mat-header-cell
 										*matHeaderCellDef>
-										<b>{{'Participation à l’inspection commune préalable' | translate}}</b>
+										<b>{{'PDP.PARTICIPATION_IN_THE_PRIOR_JOINT_INSPECTION' | translate}}</b>
 									</th>
 									<td mat-cell *matCellDef="let element; let index = index" [formGroupName]="index"
 										[width]="'20%'">
@@ -852,12 +850,12 @@
 												Oui ?
 											</mat-checkbox>
 											<mat-form-field class="mt-3 ml-3 mb-3" [style.fontSize.px]=13>
-												<mat-label>{{'Date' | translate}}</mat-label>
-												<input matInput class="form-control" mask="d0/M0/0000"
-													   [specialCharacters]="[ '/' ]"
+												<mat-label>{{'PDP.DATE' | translate}}</mat-label>
+												<input matInput class="form-control" mask="0000-M0-d0"
+													   [specialCharacters]="[ '-' ]"
 													   formControlName="part_inspection_at"
 													   [dropSpecialCharacters]="false"
-													   placeholder="DD/MM/YYYY">
+													   placeholder="YYYY-MM-DD">
 												<mat-error
 													*ngIf="isControlHasError('part_inspection_at', 'required', 'validations', index)">
 													<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
@@ -869,9 +867,9 @@
 								<ng-container matColumnDef="visa">
 									<th mat-header-cell
 										*matHeaderCellDef>
-										<b>{{'Visa précédé de la mention « lu et approuvé »' | translate}}</b></th>
+										<b>{{'PDP.VISA_PRECEDED_BY_THE_WORDS_READ_AND_APPROVED' | translate}}</b></th>
 									<td mat-cell *matCellDef="let element">
-										<b>Lu et approuvé</b>
+										<b>{{'PDP.READ_AND_APPROVED' | translate}}</b>
 									</td>
 								</ng-container>
 								<tr mat-header-row *matHeaderRowDef="displayedColumnsValidationPlan"></tr>
@@ -884,17 +882,17 @@
 				</div>
 			</div>
 			<div class="tf-heading tf-heading--md">|
-				10 {{'INTERVENANTS' | translate}}</div>
+				10 {{'PDP.INTERVENANTS' | translate}}</div>
 			<div class="mt-3">
 				<div class="row">
 					<div class="col-md-12">
 						<div class="tf-card-form">
 							<table class="mt-3" mat-table [dataSource]="intervenants" formArrayName="intervenants">
 								<ng-container matColumnDef="last">
-									<th mat-header-cell *matHeaderCellDef><b>{{'NOM' | translate}} </b></th>
+									<th mat-header-cell *matHeaderCellDef><b>{{'PDP.LAST_NAME' | translate}} </b></th>
 									<td mat-cell *matCellDef="let element; let index = index" [formGroupName]="index">
 										<mat-form-field [style.fontSize.px]=13>
-											<mat-label>{{'Nom' | translate}}</mat-label>
+											<mat-label>{{'PDP.LAST_NAME' | translate}}</mat-label>
 											<input class="form-control" matInput type="text"
 												   formControlName="last_name"
 												   placeholder="{{'ACTION.ENTER_HERE' | translate}}"/>
@@ -907,10 +905,10 @@
 									</td>
 								</ng-container>
 								<ng-container matColumnDef="first">
-									<th mat-header-cell *matHeaderCellDef><b>{{'Prénom' | translate}} </b></th>
+									<th mat-header-cell *matHeaderCellDef><b>{{'PDP.FIRST_NAME' | translate}} </b></th>
 									<td mat-cell *matCellDef="let element; let index = index" [formGroupName]="index">
 										<mat-form-field [style.fontSize.px]=13>
-											<mat-label>{{'Prénom' | translate}}</mat-label>
+											<mat-label>{{'PDP.FIRST_NAME' | translate}}</mat-label>
 											<input class="form-control" matInput type="text"
 												   formControlName="first_name"
 												   placeholder="{{'ACTION.ENTER_HERE' | translate}}"/>
@@ -923,10 +921,10 @@
 									</td>
 								</ng-container>
 								<ng-container matColumnDef="contact">
-									<th mat-header-cell *matHeaderCellDef><b>{{'Contact' | translate}} </b></th>
+									<th mat-header-cell *matHeaderCellDef><b>{{'PDP.CONTACT' | translate}} </b></th>
 									<td mat-cell *matCellDef="let element; let index = index" [formGroupName]="index">
 										<mat-form-field [style.fontSize.px]=13>
-											<mat-label>{{'Tel' | translate}}</mat-label>
+											<mat-label>{{'PDP.PHONE' | translate}}</mat-label>
 											<input class="form-control" matInput type="text"
 												   formControlName="contact"
 												   placeholder="{{'ACTION.ENTER_HERE' | translate}}"/>
@@ -940,10 +938,10 @@
 								</ng-container>
 								<ng-container matColumnDef="formations">
 									<th mat-header-cell *matHeaderCellDef>
-										<b>{{'Formations / Habilitations' | translate}} </b></th>
+										<b>{{'PDP.TRAINING_AUTHORIZATIONS' | translate}} </b></th>
 									<td mat-cell *matCellDef="let element; let index = index" [formGroupName]="index">
 										<mat-form-field [style.fontSize.px]=13>
-											<mat-label>{{'Précisez' | translate}}</mat-label>
+											<mat-label>{{'PDP.SPECIFY' | translate}}</mat-label>
 											<input class="form-control" matInput type="text"
 												   formControlName="formations"
 												   placeholder="{{'ACTION.ENTER_HERE' | translate}}"/>
@@ -953,19 +951,25 @@
 								<ng-container matColumnDef="suivis_médical">
 									<th mat-header-cell
 										*matHeaderCellDef>
-										<b>{{'Suivis Médical Renforcé' | translate}}</b></th>
+										<b>{{'PDP.REINFORCED_MEDICAL_FOLLOW_UP' | translate}}</b></th>
 									<td mat-cell *matCellDef="let element; let index = index" [formGroupName]="index">
 										<div class="d-flex flex-column">
 											<mat-checkbox class="mt-3" formControlName="is_suivi_medical"
 														  (change)="togglePartInspectionAt($event.checked, index, 'intervenants', 'motif')"
 											>Oui ?
 											</mat-checkbox>
-											<mat-select class="mt-3 mb-3" placeholder="Sélectionnez un élément"
-														formControlName="is_suivi_medical"
+											<mat-select class="mt-3 mb-3"
+														placeholder="{{'PDP.SELECT_AN_ITEM' | translate}}"
+														formControlName="motif"
 											>
 												<mat-option *ngFor="let item of suivisMedicalIntervenants"
 															[value]="item.id">{{item?.label}}</mat-option>
 											</mat-select>
+											<mat-error
+												*ngIf="isControlHasError('motif', 'required', 'intervenants', index)"
+												class="w-100 mb-2 small">
+												{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}
+											</mat-error>
 										</div>
 									</td>
 								</ng-container>
@@ -976,7 +980,7 @@
 							<button mat-raised-button type="button" class="pull-left btn-small mt-4" color="info"
 									style="width: 180px"
 									[disabled]="intervenants?.getValue().length > 8"
-									(click)="addIntervenant()">{{'Ajouter un ligne' | translate}}</button>
+									(click)="addIntervenant()">{{'PDP.ADD_ROW' | translate}}</button>
 						</div>
 					</div>
 				</div>

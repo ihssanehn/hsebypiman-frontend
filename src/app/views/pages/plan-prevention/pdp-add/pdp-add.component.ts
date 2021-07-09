@@ -85,18 +85,28 @@ export class PdpAddComponent implements OnInit {
 				contact: new FormControl('', Validators.required),
 				formations: new FormControl(null),
 				is_suivi_medical: new FormControl(null),
-				motif: new FormControl(null),
+				motif: new FormControl({value: null, disabled: true}),
 			})]),
 		});
 	}
 
 	async onSubmit() {
 		try {
+
 			console.log(this.pdpForm.valid, this.pdpForm);
 			this.pdpForm.markAllAsTouched();
 			if (this.pdpForm.valid) {
 				this.formStatus.onFormSubmitting();
 				const form = {...this.pdpForm.getRawValue()};
+				if (form && form.validations) {
+					form.validations = (form.validations as Array<any>).filter(v => v && v.company_name && v.full_name && v.validation_at).map(v => {
+						if (v && !v.is_part_inspection) {
+							delete v.is_part_inspection;
+							delete v.part_inspection_at;
+						}
+						return v;
+					});
+				}
 				console.log(form);
 				this.save(form);
 			}

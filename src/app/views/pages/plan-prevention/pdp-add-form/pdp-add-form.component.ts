@@ -89,7 +89,7 @@ export class PdpAddFormComponent implements OnInit {
 					validation_at: new FormControl(null, this.validationPlan[i].required ? Validators.required : null),
 					type: new FormControl(this.validationPlan[i].type, this.validationPlan[i].required ? Validators.required : null),
 					is_part_inspection: new FormControl(null),
-					part_inspection_at: new FormControl(null),
+					part_inspection_at: new FormControl({value: null, disabled: true}),
 				});
 				formArray.push(group);
 			}
@@ -469,6 +469,7 @@ export class PdpAddFormComponent implements OnInit {
 
 	togglePartInspectionAt(event, index, FormArrayName, FormChangeToControlName) {
 		this.getControlsArrayFormName(FormArrayName)[index].get(FormChangeToControlName).setValidators(event ? Validators.required : null);
+		event ? this.getControlsArrayFormName(FormArrayName)[index].get(FormChangeToControlName).enable() : this.getControlsArrayFormName(FormArrayName)[index].get(FormChangeToControlName).disable()
 		this.getControlsArrayFormName(FormArrayName)[index].get(FormChangeToControlName).updateValueAndValidity(); // this is to rerun form validation after removing the validation for a field.
 	}
 }
