@@ -227,6 +227,9 @@
 			"AR_UPDATED": {
 				"TITLE": "Analyse de risque mis à jour avec succès"
 			},
+			"PDP_CREATED": {
+				"TITLE": "Plan de prévention créé avec succès"
+			},
 			"CHANTIER_UNSELECTED": {
 				"TITLE": "Échec! Veuillez sélectionner un chantier"
 			},
@@ -305,6 +308,73 @@
 			"TITLE": "Numéro de téléphone"
 		},
 		"TYPE": "Type"
+	},
+	"PDP": {
+		"EMERGENCY_CONTACTS_AND_NUMBERS_IN_THE_EVENT_OF_AN_ACCIDENT": "Contacts et numéros d'urgence en cas d'accident",
+		"RAISON_SOCIALE_EU": "Nom de l'entreprise",
+		"CSE": "CSE",
+		"CSE_TEL": "Téléphone CSE",
+		"CSE_JOB": "CSE emploi",
+		"INTERVENTION_AT": "Intervention à",
+		"LABEL_INTERVENTION": "Libellé d'intervention",
+		"PLACE_INTERVENTION": "Lieu d'intervention",
+		"AVERAGE_WORKFORCE": "Effectif moyen :",
+		"USER_COMPANY": "Entreprise Utilisateur",
+		"OUTSIDE_COMPANY": "En dehors de l'entreprise",
+		"COMPANY_NAME_AND_CONTACT": "Nom et contact de l'entreprise",
+		"RESCUERS_FIRST_AID_WORKER_AT_WORK": "Les sauveteurs secouristes au travail",
+		"QHSE_POLE": "Pôle QHSE",
+		"OCCUPATIONAL_PHYSICIAN": "Médecin du travail",
+		"COMPANY_REPRESENTATIVE": "Représentant de l'entreprise",
+		"INTERVENTION_OF_PIMAN_SUBCONTRACTORS": "Intervention des sous-traitants PIMAN",
+		"NAME_OF_SUBCONTRACTOR": "Nom du sous-traitant",
+		"DETAILS_OF_THE_INTERVENTION": "Détails de l'intervention",
+		"INTERVENTION_NAME": "Nom de l'intervention",
+		"INTERVENTION_PLACE": "Lieu d'intervention",
+		"PDP_ESTABLISHED_ON": "PDP établi le",
+		"DAYTIME_SITE_OPENING_HOURS": "Heures d'ouverture du site en journée",
+		"NIGHT_WORK": "Travail de nuit",
+		"MORE_THAN_400H": "Plus de 400h",
+		"PENALTY": "Pénalité",
+		"TELEWORKING": "Télétravail",
+		"PRESENCE_ON_CUSTOMER_SITE": "Présence sur site client",
+		"HOW_OFTEN": "À quelle fréquence",
+		"SELECT_AN_ITEM": "Sélectionnez un élément",
+		"PREDICTABLE_AVERAGE_WORKFORCE": "Effectif moyen prévisible",
+		"CSE": "CSE",
+		"TEL": "Tél",
+		"MAIL": "Courrier",
+		"JOB": "travail",
+		"INSTRUCTIONS_GIVEN_BY_THE_EXTERNAL_COMPANY": "Instructions données par la société externe",
+		"TYPE_OPERATION": "type d'opération",
+		"PPE_MADE_AVAILABLE_TO_THE_EXTERNAL_COMPANY": "EPI mis à disposition de l'entreprise externe",
+		"RESOURCES_MADE_AVAILABLE_TO_THE_EXTERNAL_COMPANY": "Ressources mises à disposition de la société externe",
+		"LIST_OF_HAZARDOUS_WORK": "Liste des travaux dangereux",
+		"LIST_OF_WORKS": "Liste des travaux",
+		"LIST_OF_HAZARDOUS_WORK_DESC": "Pour rappel, un plan de prévention écrit doit être établi entre l'entreprise utilisatrice (UE) et l'entreprise extérieure (EE) avant le début des travaux dans le cas où le nombre total d'heures de travail prévu à effectuer le travail est d'au moins 400 heures sur 12 mois, ou si le travail figure sur la liste des travaux dangereux fixée par l'arrêté du 19 mars 1993.",
+		"IDENTIFY_THE_RISKS_GENERATED_BY_COACTIVITY": "Identifier les risques générés par la coactivité",
+		"RELATED_SITUATION": "Situation liée",
+		"PREVENTION_METHOD_DEPLOYED": "Méthode(s) de prévention déployée",
+		"PERSON_IN_CHARGE": "Personne(s) en charge",
+		"VALIDATION_OF_THE_PREVENTION_PLAN": "Validation du Plan de Prévention",
+		"COMPANIES": "Entreprises",
+		"GENERAL": "Général",
+		"SPECIFY": "Spécifier",
+		"FULLNAME": "Nom complet",
+		"DATE": "Date",
+		"HEAD_OF_ESTABLISHMENT_OR_HIS_DELEGATE": "Chef d'établissement ou son délégué",
+		"PARTICIPATION_IN_THE_PRIOR_JOINT_INSPECTION": "Participation à l'inspection commune préalable",
+		"VISA_PRECEDED_BY_THE_WORDS_READ_AND_APPROVED": "Visa précédé des mots \"lu et approuvé\"",
+		"READ_AND_APPROVED": "Lu et approuvé",
+		"INTERVENANTS": "INTERVENANTS",
+		"LAST_NAME": "Nom de famille",
+		"FIRST_NAME": "Prénom",
+		"CONTACT": "Contact",
+		"PHONE": "Téléphone",
+		"TRAINING_AUTHORIZATIONS": "Formation / Autorisations",
+		"REINFORCED_MEDICAL_FOLLOW_UP": "Suivi médical renforcé",
+		"ADD_ROW": "Ajouter une ligne",
+		"SUBCONTRACTOR": "Sous-traitant"
 	},
 	"AUTH": {
 		"EDIT": {
@@ -956,20 +1026,19 @@
 			"SHORTTITLE": "Voir l'historique",
 			"TITLE": "Voir les anciens flash infos"
 		},
-		"NOTIF":{
-			"NO_FLASH":"Aucun Flash Info",
+		"NOTIF": {
+			"NO_FLASH": "Aucun Flash Info",
 			"FLASH_UPDATED": {
 				"TITLE": "Flash info mis à jour avec succès"
 			},
 			"FLASH_CREATED": {
 				"TITLE": "Flash Info créé avec succès"
 			},
-			"FLASHINFO_DELETE_CONFIRMATION":{
+			"FLASHINFO_DELETE_CONFIRMATION": {
 				"TITLE": "Vous allez supprimer ce flash info de façon définitive",
 				"LABEL": "Êtes-vous sûr de vouloir continuer ?"
 			},
-
-			"FLASHINFO_DELETED":{
+			"FLASHINFO_DELETED": {
 				"TITLE": "Le flash info a bien été supprimée"
 			}
 		},
@@ -1200,7 +1269,7 @@
 				"TITLE": "Élément est archivé avec succès"
 			},
 			"NOTHING_FOUND": {
-				"TITLE" : "Aucun matériel ne correspond aux critères de recherche."
+				"TITLE": "Aucun matériel ne correspond aux critères de recherche."
 			}
 		},
 		"NUMERO_SERIE": {
@@ -1305,6 +1374,12 @@
 			"DETAIL": "Détail de l'analyse de risque",
 			"EDIT": "Modifier l'analyse de risque",
 			"LIST": "Liste des analyses de risque"
+		},
+		"SUB_PDP": {
+			"ADD": "Nouveau plan de prévention",
+			"DETAIL": "Plan de prévention détaillé",
+			"EDIT": "Modifier le plan de prévention",
+			"LIST": "Liste des plans de prévention"
 		},
 		"SUB_CHANTIER": {
 			"ADD": "Ajouter un nouveau chantier",
@@ -1569,31 +1644,31 @@
 			"TITLE": "Visite de sécurité concernée"
 		}
 	},
-	"ETATS":{
-		"ADMIN_TITLE":"Liste des états",
+	"ETATS": {
+		"ADMIN_TITLE": "Liste des états",
 		"NOTIF": {
-			"LOADING":{
+			"LOADING": {
 				"TITLE": "Liste en cours de chargement"
 			},
-			"ETAT_DELETE_CONFIRMATION":{
+			"ETAT_DELETE_CONFIRMATION": {
 				"TITLE": "Vous allez supprimer cet état de façon définitive",
 				"LABEL": "Êtes-vous sûr de vouloir continuer ?"
 			},
-			"LIFT_UPDATED":{
+			"LIFT_UPDATED": {
 				"TITLE": "Élément mis à jour avec succès"
 			},
-			"LIFT_CREATED":{
+			"LIFT_CREATED": {
 				"TITLE": "Élément créée avec succès"
 			},
-			"LIFT_TYPE_ARCHIVED":{
+			"LIFT_TYPE_ARCHIVED": {
 				"TITLE": "Élément archivée avec succès"
 			},
-			"ELEMENT_NOT_DELETED":{
+			"ELEMENT_NOT_DELETED": {
 				"TITLE": "Suppression impossible car la selection comprend un élément affecté à une ou plusieurs visite matériel",
 				"SHORTTITLE": "Suppression impossible",
 				"LABEL": "Suppression impossible car la selection est affectée à une ou plusieurs visite matériel"
 			},
-			"ETAT_DELETED":{
+			"ETAT_DELETED": {
 				"TITLE": "L'élément a bien été supprimé"
 			},
 			"NO_ETAT": "Aucun état"
@@ -1601,13 +1676,13 @@
 	},
 	"REMONTEES": {
 		"NOTIF": {
-			"LOADING":{
+			"LOADING": {
 				"TITLE": "Loading Remonte"
 			},
 			"NO_CHANTIER": {
 				"TITLE": "Cette remontée n'a été attribuée à aucun chantier"
 			},
-			"REMONTEE_DELETE_CONFIRMATION":{
+			"REMONTEE_DELETE_CONFIRMATION": {
 				"TITLE": "Vous allez supprimer cette remontée de façon définitive",
 				"LABEL": "Êtes-vous sûr de vouloir continuer ?"
 			},
@@ -1615,27 +1690,27 @@
 				"TITLE": "Vous allez supprimer ce document de façon définitive",
 				"LABEL": "Êtes-vous sûr de vouloir continuer ?"
 			},
-			"DOC_DELETED":{
+			"DOC_DELETED": {
 				"TITLE": "Document supprimé avec succès"
 			},
-			"LIFT_UPDATED":{
+			"LIFT_UPDATED": {
 				"TITLE": "Remontée QHSE mise à jour avec succès"
 			},
-			"FILE_SIZE_ALERT":{
+			"FILE_SIZE_ALERT": {
 				"TITLE": "Chaque fichier doit avoir une taille inférieure à 10 Mo."
 			},
-			"LIFT_CREATED":{
+			"LIFT_CREATED": {
 				"TITLE": "Remontée QHSE créée avec succès"
 			},
-			"LIFT_TYPE_ARCHIVED":{
+			"LIFT_TYPE_ARCHIVED": {
 				"TITLE": "Typologie de remontée archivée avec succès"
 			},
-			"ELEMENT_NOT_DELETED":{
+			"ELEMENT_NOT_DELETED": {
 				"TITLE": "Suppression impossible car la selection comprend un élément affecté à une ou plusieurs remontées",
 				"SHORTTITLE": "Typologies de remontée",
 				"LABEL": "Suppression impossible car la selection est affectée à une ou plusieurs remontées"
 			},
-			"REMONTEE_DELETED":{
+			"REMONTEE_DELETED": {
 				"TITLE": "La remontée a bien été supprimée"
 			},
 			"NO_DOCUMENT": "Aucun document",
@@ -1656,13 +1731,13 @@
 			}
 		},
 		"DASH": {
-			"TOP_COLLABORATOR":{
+			"TOP_COLLABORATOR": {
 				"TITLE": "Top 5 collaborateurs"
 			},
 			"LIFTS_BY_TYPE": {
 				"TITLE": "Remontées par typologie"
 			},
-			"LIFTS_EVOLUTION":{
+			"LIFTS_EVOLUTION": {
 				"TITLE": "Evolution des remontées"
 			}
 		},
@@ -1821,13 +1896,13 @@
 				"TITLE": "Utilisateur mis à jour avec succès"
 			}
 		},
-		"CARD":{
+		"CARD": {
 			"ABOUT_USER": {
 				"TITLE": "À propos de l'utilisateur"
 			},
 			"USER_INFOS": {
 				"TITLE": "Informations utilisateur",
-				"EMERGENCY_CASE":"En cas d'urgence",
+				"EMERGENCY_CASE": "En cas d'urgence",
 				"MEDICAL_VISIT": "Visite médicale"
 			},
 			"USER_ACCOUNT_INFOS": {
@@ -1902,7 +1977,7 @@
 			"SHORTTITLE": "Kilométrage",
 			"TITLE": "Kilométrage du véhicule"
 		},
-		"ETAT":{
+		"ETAT": {
 			"LABEL": "Etat du matériel",
 			"SHORTTITLE": "Etat",
 			"TITLE": "Etat du matériel"
@@ -2098,10 +2173,10 @@
 			"SHORTTITLE": "Véhicule",
 			"TITLE": "Nom de véhicule"
 		},
-		"VEHICLE_CONFORMITY":{
-			"TITLE":"Conformité du véhicule",
-			"SHORTTITLE":"Conformité du véhicule",
-			"LABEL":"Conformité du véhicule"
+		"VEHICLE_CONFORMITY": {
+			"TITLE": "Conformité du véhicule",
+			"SHORTTITLE": "Conformité du véhicule",
+			"LABEL": "Conformité du véhicule"
 		},
 		"VEHICULE_FOUND": {
 			"LABEL": "Numéro d'identification du véhicule saisi",
@@ -2139,7 +2214,7 @@
 			"EDIT_GOAL": {
 				"TITLE": "Modifier les objectifs"
 			},
-			"ADD_CATEGORY":{
+			"ADD_CATEGORY": {
 				"TITLE": "Ajouter une catégorie"
 			}
 		},
@@ -2214,40 +2289,40 @@
 			"TITLE": "Téléphone"
 		},
 		"RELATIONSHIP": {
-			"TITLE" : "Lien de parenté"
+			"TITLE": "Lien de parenté"
 		},
 		"RQTH": {
-			"TITLE" : "RQTH"
+			"TITLE": "RQTH"
 		},
 		"REALIZED": {
-			"TITLE" : "Réalisée"
+			"TITLE": "Réalisée"
 		},
 		"TO_RENEW": {
-			"TITLE" : "À renouveler"
+			"TITLE": "À renouveler"
 		},
 		"TRAINING": {
-			"TITLE" : "Formations"
+			"TITLE": "Formations"
 		},
 		"NO_TRAINING": {
 			"TITLE": "Aucune formation suivie sur la période"
 		},
 		"COMPLETION_DATE": {
-			"TITLE" : "Date de réalisation"
+			"TITLE": "Date de réalisation"
 		},
 		"RENEWAL_DATE": {
-			"TITLE" : "Date de renouvellement"
+			"TITLE": "Date de renouvellement"
 		},
 		"EMPLOYER_AUTH": {
-			"TITLE" : "Autorisation employeur"
+			"TITLE": "Autorisation employeur"
 		},
 		"SKILLS": {
-			"TITLE" : "Aptitudes"
+			"TITLE": "Aptitudes"
 		},
 		"MODIFICATION": {
-			"TITLE" : "Modification"
+			"TITLE": "Modification"
 		},
 		"VISION_360": {
-			"TITLE" : "Vision 360"
+			"TITLE": "Vision 360"
 		}
 	},
 	"HOME": {
