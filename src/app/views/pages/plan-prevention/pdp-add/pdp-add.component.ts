@@ -1,5 +1,11 @@
-import {Component, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import Swal, {SweetAlertIcon} from "sweetalert2";
+import {FormStatus} from "@app/core/_base/crud/models/form-status";
+import {extractErrorMessagesFromErrorResponse} from "@app/core/_base/crud";
+import {ArService, PdpService} from "@app/core/services";
+import {TranslateService} from "@ngx-translate/core";
+import {Router} from "@angular/router";
 
 @Component({
 	selector: 'tf-pdp-add',
@@ -9,9 +15,17 @@ import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 export class PdpAddComponent implements OnInit {
 
 	pdpForm: FormGroup;
+	enableBtn = false;
+	formloading: boolean = false;
+
+	formStatus = new FormStatus();
 
 	constructor(
 		private pdpFB: FormBuilder,
+		private router: Router,
+		private cdr: ChangeDetectorRef,
+		private translate: TranslateService,
+		private pdpService: PdpService,
 	) {
 	}
 
@@ -21,8 +35,8 @@ export class PdpAddComponent implements OnInit {
 
 	createForm() {
 		this.pdpForm = this.pdpFB.group({
-			raison_sociale_eu: [null],
-			raison_sociale_tel_eu: [null],
+			raison_sociale_eu: [null, Validators.required],
+			raison_sociale_tel_eu: [null, Validators.required],
 			sauveteurs_secouriste_travail: [null, Validators.required],
 			pole_qhse: [null],
 			medecin_travail_eu_name: [null],
@@ -30,70 +44,130 @@ export class PdpAddComponent implements OnInit {
 			cse_eu_name: [null],
 			cse_eu_job: [null],
 			cse_eu_tel: [null],
-			representant_entreprise_eu_name: [null],
-			representant_entreprise_eu_mail: [null],
-			representant_entreprise_eu_tel: [null],
+			representant_entreprise_eu_name: [null, Validators.required],
+			representant_entreprise_eu_mail: [null, Validators.email],
+			representant_entreprise_eu_tel: [null, Validators.required],
 
 			medecin_travail_ee_name: [null],
 			medecin_travail_ee_tel: [null],
 			representant_entreprise_ee_name: [null],
-			representant_entreprise_ee_mail: [null],
+			representant_entreprise_ee_mail: [null, Validators.email],
 			representant_entreprise_ee_tel: [null],
 
-			is_piman_intervention: ['0'],
+			is_piman_intervention: [null],
 			sous_traitant1_name: [null],
 			sous_traitant1_tel: [null],
 			sous_traitant2_name: [null],
 			sous_traitant2_tel: [null],
 
-			label_intervention: [null],
-			lieu_intervention: [null],
-			pdp_intervention_at: [null],
-			horaires_ouverture_site: [null],
+			label_intervention: [null, Validators.required],
+			lieu_intervention: [null, Validators.required],
+			pdp_intervention_at: [null, Validators.required],
+			horaires_ouverture_site: [null, Validators.required],
 
-			is_night_shift: ['0'],
-			duration_intervention_mp400h: ['0'],
-			is_astreinte: ['0'],
-			is_teletravail: ['0'],
-			is_presence_site_client: ['0'],
+			is_night_shift: [null],
+			duration_intervention_mp400h: [null],
+			is_astreinte: [null],
+			is_teletravail: [null],
+			is_presence_site_client: [null],
+			presence_site_client_frequency_id: [{value: null, disabled: true}],
 			effectif_moyen: [null],
 
-			// date_accueil_secu:[null, Validators.required],
-			// realisateur:['', Validators.required],
-			// tel_realisateur:['', Validators.required],
-			// date_validite:[null, Validators.required],
-			// accueil_secu_days:[null, Validators.required],
-			// accueil_secu_time_opening:['', Validators.required],
-			// accueil_secu_time_closing:['', Validators.required],
-			//
-			// contact_interne_secours:[null, Validators.required],
-			// tel_contact_interne_secours:['', Validators.required],
-			// contact_client_chef_chtr:['', Validators.required],
-			// tel_contact_client_chef_chtr:['', Validators.required],
-			// contact_client_hse:['', Validators.required],
-			// tel_contact_client_hse:['', Validators.required],
-			// heure_ouverture:[this.params['heure_ouverture'], Validators.required],
-			// heure_fermeture:[this.params['heure_fermeture'], Validators.required],
-			// courant_dispo:[this.params['courant_dispo'], Validators.required],
-			//
-			// a_signer_registre_travaux:['0', Validators.required],
-			// registre_signing_period:['quotidiennement'],
-			// nom_charge_registre:[null],
-			// adresse_charge_registre:[''],
-			// ville_charge_registre:[null],
-			// pays_charge_registre:[null],
-			// codepostal_charge_registre:[''],
-			// tel_charge_registre:[''],
-			//
-			// a_prevoir_balisage:['0', Validators.required],
-			//
-			// observations_signature:[''],
-			// risques:new FormArray([]),
-			// cat_risques:new FormArray([]),
-			// equipements:new FormArray([]),
-			// zones:new FormArray([]),
-			// comments:new FormArray([]),
+			consignes: new FormArray([]),
+			epi_disposition: new FormArray([]),
+			moyen_disposition_ees: new FormArray([]),
+			travaux_dangereux: new FormArray([]),
+			cat_pdp_risques: new FormArray([]),
+			validations: new FormArray([]),
+			intervenants: new FormArray([new FormGroup({
+				first_name: new FormControl('', Validators.required),
+				last_name: new FormControl('', Validators.required),
+				contact: new FormControl('', Validators.required),
+				formations: new FormControl(null),
+				is_suivi_medical: new FormControl(null),
+				motif: new FormControl({value: null, disabled: true}),
+			})]),
 		});
 	}
 
+	async onSubmit() {
+		try {
+
+			console.log(this.pdpForm.valid, this.pdpForm);
+			this.pdpForm.markAllAsTouched();
+			if (this.pdpForm.valid) {
+				this.formStatus.onFormSubmitting();
+				const form = {...this.pdpForm.getRawValue()};
+				if (form && form.validations) {
+					form.validations = (form.validations as Array<any>).filter(v => v && v.company_name && v.full_name && v.validation_at).map(v => {
+						if (v && !v.is_part_inspection) {
+							delete v.is_part_inspection;
+							delete v.part_inspection_at;
+						}
+						return v;
+					});
+				}
+				console.log(form);
+				this.save(form);
+			}
+		} catch (error) {
+			console.error(error);
+			throw error;
+		}
+
+	}
+
+	isLastStep(isLastStep: boolean): void {
+		if (isLastStep) {
+			this.enableBtn = true;
+		}
+	}
+
+	fireNotifAfterSave(res: any) {
+		var code = res.message.code as SweetAlertIcon;
+		var message = res.message.content !== 'done' ? '<b class="text-' + code + '">' + res.message.content + '</b>' : null;
+
+		Swal.fire({
+			icon: code,
+			title: this.translate.instant("ARS.NOTIF.PDP_CREATED.TITLE"),
+			showConfirmButton: false,
+			html: message,
+			timer: code === 'success' ? 1500 : 3000
+		}).then(() => {
+			this.router.navigate(['/plan-de-prevention/list']);
+		});
+	}
+
+	async save(form) {
+
+		this.formloading = true;
+
+		this.pdpService.create(form)
+			.toPromise()
+			.then((res: any) => {
+				console.log(res);
+
+				this.formloading = false;
+				this.cdr.markForCheck();
+				this.fireNotifAfterSave(res)
+			})
+			.catch(err => {
+				console.log('here');
+				this.formloading = false;
+				Swal.fire({
+					icon: 'error',
+					title: this.translate.instant("ARS.NOTIF.INCOMPLETE_FORM.TITLE"),
+					showConfirmButton: false,
+					timer: 2000
+				});
+
+				if (err.status === 422) {
+					var messages = extractErrorMessagesFromErrorResponse(err);
+					this.formStatus.onFormSubmitResponse({success: false, messages: messages});
+					this.cdr.markForCheck();
+				}
+			});
+
+		this.cdr.markForCheck();
+	}
 }

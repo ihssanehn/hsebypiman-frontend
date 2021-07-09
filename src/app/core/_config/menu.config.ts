@@ -55,7 +55,7 @@ export class MenuConfig {
 					page: '/plan-de-prevention/list',
 					translate: 'MENU.PLANDEPREVENTION',
 					needModule: true,
-					moduleCode: ['ANALYSE'],
+					moduleCode: ['PLAN_DE_PREVENTION'],
 				},
 				{
 					title: 'Visites sécurité',

@@ -10,10 +10,12 @@ import {Ar} from '@app/core/models/ar.model';
 import {Paginate} from '@app/core/_base/layout/models/paginate.model';
 import {JsonResponse} from '@app/core/_base/layout/models/jsonResponse.model';
 import {Router} from '@angular/router';
+import {CatRisque, ConsigneModel} from "@app/core/models";
 
 export class PdpService extends HttpService {
 
 	baseUrl = environment.apiBaseUrl + 'prevention_plan';
+	filtersUrl = environment.apiBaseUrl + 'filters';
 
 	constructor(
 		private http: HttpClient
@@ -23,5 +25,13 @@ export class PdpService extends HttpService {
 
 	getAll(params) {
 		return this.http.post<JsonResponse<Paginate<Ar>>>(this.baseUrl, {...params});
+	}
+
+	getAllPdpFilters() {
+		return this.http.get<JsonResponse<any[]>>(this.filtersUrl);
+	}
+
+	create(pdp) {
+		return this.http.post<JsonResponse<Ar>>(this.baseUrl + '/' + 'create', pdp);
 	}
 }
