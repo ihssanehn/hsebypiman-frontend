@@ -34,4 +34,13 @@ export class PdpService extends HttpService {
 	create(pdp) {
 		return this.http.post<JsonResponse<Ar>>(this.baseUrl + '/' + 'create', pdp);
 	}
+
+	export(filters) {
+		const queryString = Object.keys(filters)
+			.filter(key => filters[key])
+			.map(key => key + '=' + filters[key])
+			.join('&');
+		const url = this.baseUrl + '/export?' + queryString + '&token=' + localStorage.getItem(environment.authTokenKey);
+		window.open(url, '_blank');
+	}
 }

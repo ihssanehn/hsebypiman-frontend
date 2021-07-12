@@ -8,7 +8,7 @@
 				<p>{{pagination.total}} {{'NOTIF.RESULT_FOUND.TITLE' | translate}}</p>
 			</div>
 			<div class="col">
-				<button [disabled]="!pagination.total || true" class="pull-right btn-small mb-4" mat-raised-button color="info">{{'ACTION.EXPORT' | translate}}</button>
+				<button [disabled]="!pagination.total" class="pull-right btn-small mb-4" mat-raised-button color="info" (click)="exportList()">{{'ACTION.EXPORT' | translate}}</button>
 			</div>
 		</div>
 		<div class="table-responsive">
