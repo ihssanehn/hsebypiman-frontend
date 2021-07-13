@@ -4,6 +4,7 @@ import {Pdp} from '@app/core/models';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ArService, PdpService} from '@app/core/services';
 import {TranslateService} from '@ngx-translate/core';
+import Swal from "sweetalert2";
 
 @Component({
 	selector: 'tf-pdp-list',
@@ -28,6 +29,8 @@ export class PdpListComponent implements OnInit {
 	};
 	showFilters = false;
 	displayedArColumns = ['raison_sociale_eu', 'cse', 'cse_eu_tel', 'created_at', 'effectif_moyen', 'label_intervention', 'lieu_intervention', 'pdp_intervention_at', 'action'];
+
+	pdp_id: number;
 
 	constructor(
 		private router: Router,
@@ -116,5 +119,46 @@ export class PdpListComponent implements OnInit {
 		const filters = {...this.filter};
 		filters.type = "EXCEL";
 		return this.pdpService.export(filters);
+	}
+
+	editPdp(pdpId) {
+		this.router.navigate(['../edit', pdpId], {relativeTo: this.activatedRoute});
+	}
+
+	async deletePdp(pdpId) {
+		Swal.fire({
+			icon: 'warning',
+			title: this.translate.instant("PDP.NOTIF.PDP_DELETE_CONFIRMATION.TITLE"),
+			text: this.translate.instant("PDP.NOTIF.PDP_DELETE_CONFIRMATION.LABEL"),
+			showConfirmButton: true,
+			showCancelButton: true,
+			cancelButtonText: this.translate.instant("ACTION.CANCEL"),
+			confirmButtonText: this.translate.instant("ACTION.DELETE")
+		}).then(async response => {
+			if (response.value) {
+				try {
+					const res = await this.pdpService.delete(pdpId).toPromise();
+					if (res) {
+						Swal.fire({
+							icon: 'success',
+							title: this.translate.instant("PDP.NOTIF.PDP_DELETED.TITLE"),
+							showConfirmButton: false,
+							timer: 1500
+						}).then(() => {
+							this.getPDPs();
+						});
+					} else {
+						throw new Error();
+					}
+				} catch (e) {
+					Swal.fire({
+						icon: 'error',
+						title: this.translate.instant("NOTIF.ERROR_OCCURED.TITLE"),
+						showConfirmButton: false,
+						timer: 1500
+					});
+				}
+			}
+		});
 	}
 }

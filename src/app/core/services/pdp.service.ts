@@ -10,7 +10,7 @@ import {Ar} from '@app/core/models/ar.model';
 import {Paginate} from '@app/core/_base/layout/models/paginate.model';
 import {JsonResponse} from '@app/core/_base/layout/models/jsonResponse.model';
 import {Router} from '@angular/router';
-import {CatRisque, ConsigneModel} from "@app/core/models";
+import {CatRisque, ConsigneModel, Pdp} from "@app/core/models";
 
 export class PdpService extends HttpService {
 
@@ -32,7 +32,15 @@ export class PdpService extends HttpService {
 	}
 
 	create(pdp) {
-		return this.http.post<JsonResponse<Ar>>(this.baseUrl + '/' + 'create', pdp);
+		return this.http.post<JsonResponse<Pdp>>(this.baseUrl + '/' + 'create', pdp);
+	}
+
+	get(pdp_id) {
+		return this.http.get<JsonResponse<Pdp>>(this.baseUrl + '/' + pdp_id);
+	}
+
+	delete(pdp_id) {
+		return this.http.delete(this.baseUrl + '/' + pdp_id);
 	}
 
 	export(filters) {

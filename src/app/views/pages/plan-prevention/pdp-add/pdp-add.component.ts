@@ -1,36 +1,73 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import Swal, {SweetAlertIcon} from "sweetalert2";
 import {FormStatus} from "@app/core/_base/crud/models/form-status";
 import {extractErrorMessagesFromErrorResponse} from "@app/core/_base/crud";
 import {ArService, PdpService} from "@app/core/services";
 import {TranslateService} from "@ngx-translate/core";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {tap} from "rxjs/operators";
+import {Ar, Pdp} from "@app/core/models";
+import {Subscription} from "rxjs";
 
 @Component({
 	selector: 'tf-pdp-add',
 	templateUrl: './pdp-add.component.html',
 	styleUrls: ['./pdp-add.component.scss']
 })
-export class PdpAddComponent implements OnInit {
+export class PdpAddComponent implements OnInit, OnDestroy {
 
 	pdpForm: FormGroup;
 	enableBtn = false;
-	formloading: boolean = false;
-
+	formloading = false;
+	pdp: Pdp;
+	loaded = false;
 	formStatus = new FormStatus();
+
+	private subscriptions: Subscription[] = [];
 
 	constructor(
 		private pdpFB: FormBuilder,
 		private router: Router,
 		private cdr: ChangeDetectorRef,
 		private translate: TranslateService,
+		private activatedRoute: ActivatedRoute,
 		private pdpService: PdpService,
 	) {
 	}
 
 	ngOnInit() {
 		this.createForm();
+		const routeSubscription = this.activatedRoute.queryParams
+			.subscribe(
+				async params => {
+					const id = params.ar_id;
+					if (id) {
+						this.pdpService
+							.get(id)
+							.pipe(
+								tap(
+									pdp => {
+										// var _ar = ar.result.data;
+										// _ar.date_accueil_secu = this.dateEnToFrPipe.transform(_ar.date_accueil_secu);
+										// _ar.date_validite = this.dateEnToFrPipe.transform(_ar.date_validite);
+										// this.arForm.patchValue(ar.result.data);
+										// this.fillForm(ar.result.data);
+										console.log(pdp);
+									}
+								)
+							)
+							.subscribe(async res => {
+								this.pdp = res.result.data;
+								this.loaded = true;
+								this.cdr.markForCheck();
+							});
+					} else {
+						this.pdp = new Pdp();
+					}
+				}
+			);
+		this.subscriptions.push(routeSubscription);
 	}
 
 	createForm() {
@@ -169,5 +206,9 @@ export class PdpAddComponent implements OnInit {
 			});
 
 		this.cdr.markForCheck();
+	}
+
+	ngOnDestroy() {
+		this.subscriptions.forEach(sb => sb.unsubscribe());
 	}
 }

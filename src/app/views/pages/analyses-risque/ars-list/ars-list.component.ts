@@ -42,20 +42,20 @@ export class ArsListComponent implements OnInit {
   	ngOnInit() {
     	this.getArs();
   	}
-  
+
   	async getArs(){
     	try {
 			var res = await this.arService.getAll(this.filter).toPromise();
 			this.arsList = res.result.data;
-			this.pagination = { 
-				...this.pagination, 
-				total: this.arsList.total, 
-				page: this.arsList.current_page, 
-				last_page: this.arsList.last_page 
+			this.pagination = {
+				...this.pagination,
+				total: this.arsList.total,
+				page: this.arsList.current_page,
+				last_page: this.arsList.last_page
 			};
 			this.filter.page = this.pagination.page;
 			this.filter.per_page = this.pagination.pageSize;
-			if(!this.cdr['destroyed']){ 
+			if(!this.cdr['destroyed']){
 				this.cdr.detectChanges();
 			}
 			this.cdr.markForCheck();
@@ -65,11 +65,11 @@ export class ArsListComponent implements OnInit {
   	}
 
   	changePagination() {
-		this.pagination = { 
-			...this.pagination, 
-			pageSize: this.pagination.pageSize, 
-			total: this.pagination.total, 
-			last_page: this.pagination.last_page 
+		this.pagination = {
+			...this.pagination,
+			pageSize: this.pagination.pageSize,
+			total: this.pagination.total,
+			last_page: this.pagination.last_page
 		};
 		this.filter.page = this.pagination.page;
 		this.filter.per_page = this.pagination.pageSize;
@@ -105,6 +105,7 @@ export class ArsListComponent implements OnInit {
 	signAr(arId){
 		this.router.navigate(['../sign', arId], { relativeTo: this.activatedRoute });
 	}
+
 
 	async deleteAr(arId){
 
@@ -143,7 +144,6 @@ export class ArsListComponent implements OnInit {
 			}
 		});
 	}
-
 
 	setOrder(by) {
 		if (this.isOrderedBy(by)) {

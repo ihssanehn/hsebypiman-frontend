@@ -374,7 +374,22 @@
 		"TRAINING_AUTHORIZATIONS": "Formation / Autorisations",
 		"REINFORCED_MEDICAL_FOLLOW_UP": "Suivi médical renforcé",
 		"ADD_ROW": "Ajouter une ligne",
-		"SUBCONTRACTOR": "Sous-traitant"
+		"SUBCONTRACTOR": "Sous-traitant",
+		"NOTIF": {
+			"PDP_DELETED": {
+				"TITLE": "Le plan de prévention a été supprimé avec succès"
+			},
+			"PDP_DELETE_CONFIRMATION": {
+				"LABEL": "Le plan de prévention sera définitivement supprimé.",
+				"TITLE": "Voulez-vous vraiment supprimer ce plan de prévention?"
+			},
+			"PDP_UPDATED": {
+				"TITLE": "Plan de prévention mis à jour avec succès"
+			},
+			"PDP_CREATED": {
+				"TITLE": "Plan de prévention créé avec succès"
+			}
+		}
 	},
 	"AUTH": {
 		"EDIT": {
