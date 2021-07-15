@@ -1,5 +1,5 @@
 <ng-container [formGroup]="pdpForm">
-	<div class="row" [hidden]="origin == 'add' && partHided(1)">
+	<div class="row" [hidden]="adding && partHided(1)">
 		<div class="col-12">
 			<div class="tf-heading tf-heading--md">|
 				1 {{'PDP.EMERGENCY_CONTACTS_AND_NUMBERS_IN_THE_EVENT_OF_AN_ACCIDENT' | translate}}</div>
@@ -381,12 +381,12 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-12 mb-4" *ngIf="partHided(2) && origin=='add'">
+		<div class="col-12 mb-4" *ngIf="partHided(2) && adding">
 			<button mat-raised-button type="button" class="pull-right btn-small mr-4" color="info"
 					(click)="showPart(2)">{{'ACTION.FOLLOWING' | translate}}</button>
 		</div>
 	</div>
-	<div class="row" [hidden]="origin == 'add' && partHided(2)">
+	<div class="row" [hidden]="adding && partHided(2)">
 		<div class="col-12">
 			<div class="tf-heading tf-heading--md">|
 				4 {{'PDP.INSTRUCTIONS_GIVEN_BY_THE_EXTERNAL_COMPANY' | translate}}</div>
@@ -441,12 +441,12 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-12 mb-4" *ngIf="partHided(3) && origin=='add'">
+		<div class="col-12 mb-4" *ngIf="partHided(3) && adding">
 			<button mat-raised-button type="button" class="pull-right btn-small mr-4" color="info"
 					(click)="showPart(3)">{{'ACTION.FOLLOWING' | translate}}</button>
 		</div>
 	</div>
-	<div class="row" [hidden]="origin == 'add' && partHided(3)">
+	<div class="row" [hidden]="adding && partHided(3)">
 		<div class="col-12">
 			<div class="tf-heading tf-heading--md">|
 				5 {{'PDP.PPE_MADE_AVAILABLE_TO_THE_EXTERNAL_COMPANY' | translate}}</div>
@@ -569,12 +569,12 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-12 mb-4" *ngIf="partHided(4) && origin=='add'">
+		<div class="col-12 mb-4" *ngIf="partHided(4) && adding">
 			<button mat-raised-button type="button" class="pull-right btn-small mr-4" color="info"
 					(click)="showPart(4)">{{'ACTION.FOLLOWING' | translate}}</button>
 		</div>
 	</div>
-	<div class="row" [hidden]="origin == 'add' && partHided(4)">
+	<div class="row" [hidden]="adding && partHided(4)">
 		<div class="col-12">
 			<div class="tf-heading tf-heading--md">| 7 {{'PDP.LIST_OF_HAZARDOUS_WORK' | translate}}</div>
 			<div class="row">
@@ -604,12 +604,12 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-12 mb-4" *ngIf="partHided(5) && origin=='add'">
+		<div class="col-12 mb-4" *ngIf="partHided(5) && adding">
 			<button mat-raised-button type="button" class="pull-right btn-small mr-4" color="info"
 					(click)="showPart(5)">{{'ACTION.FOLLOWING' | translate}}</button>
 		</div>
 	</div>
-	<div class="row" [hidden]="origin == 'add' && partHided(5)">
+	<div class="row" [hidden]="adding && partHided(5)">
 		<div class="col-12">
 			<div class="tf-heading tf-heading--md">|
 				8 {{'PDP.IDENTIFY_THE_RISKS_GENERATED_BY_COACTIVITY' | translate}}</div>
@@ -644,6 +644,7 @@
 												 formArrayName="situation">
 												<ng-container [formGroup]="situation">
 													<mat-checkbox
+														(change)="allowComment(situation, $event.checked)"
 														formControlName="answer">{{situation?.get('label').value}}</mat-checkbox>
 													<div class="align-items-center d-flex ng-star-inserted w-100"
 														 *ngIf="situation?.get('is_with_comment').value">
@@ -764,12 +765,12 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-12 mb-4" *ngIf="partHided(6) && origin=='add'">
+		<div class="col-12 mb-4" *ngIf="partHided(6) && adding">
 			<button mat-raised-button type="button" class="pull-right btn-small mr-4" color="info"
 					(click)="showPart(6)">{{'ACTION.FOLLOWING' | translate}}</button>
 		</div>
 	</div>
-	<div class="row" [hidden]="origin == 'add' && partHided(6)">
+	<div class="row" [hidden]="adding && partHided(6)">
 		<div class="col-12">
 			<div class="tf-heading tf-heading--md">|
 				9 {{'PDP.VALIDATION_OF_THE_PREVENTION_PLAN' | translate}}</div>
@@ -960,13 +961,13 @@
 											</mat-checkbox>
 											<mat-select class="mt-3 mb-3"
 														placeholder="{{'PDP.SELECT_AN_ITEM' | translate}}"
-														formControlName="motif"
+														formControlName="motif_id"
 											>
 												<mat-option *ngFor="let item of suivisMedicalIntervenants"
 															[value]="item.id">{{item?.label}}</mat-option>
 											</mat-select>
 											<mat-error
-												*ngIf="isControlHasError('motif', 'required', 'intervenants', index)"
+												*ngIf="isControlHasError('motif_id', 'required', 'intervenants', index)"
 												class="w-100 mb-2 small">
 												{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}
 											</mat-error>

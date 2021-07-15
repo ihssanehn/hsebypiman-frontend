@@ -7,7 +7,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {CoreModule} from '@app/core/core.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TranslateModule} from '@ngx-translate/core';
-import {NgxPermissionsModule} from 'ngx-permissions';
+import {NgxPermissionsGuard, NgxPermissionsModule} from 'ngx-permissions';
 import {NgbDropdownModule, NgbPopoverModule, NgbTabsetModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 import {SignaturePadModule} from 'angular2-signaturepad';
 import {NgxMaskModule} from 'ngx-mask';
@@ -28,8 +28,9 @@ import {CustomDateAdapter} from '@app/core/_base/crud/utils/custom-date.adapter'
 import {ActionNotificationComponent} from '@app/views/partials/content/crud';
 import {PartialsModule} from '@app/views/partials/partials.module';
 import {PdpAddComponent} from './pdp-add/pdp-add.component';
-import { PdpAddFormComponent } from './pdp-add-form/pdp-add-form.component';
+import {PdpAddFormComponent} from './pdp-add-form/pdp-add-form.component';
 import {CdkColumnDef} from "@angular/cdk/table";
+import {ArEditComponent} from "@app/views/pages/analyses-risque/ar-edit/ar-edit.component";
 
 const routes: Routes = [
 	{
@@ -53,6 +54,16 @@ const routes: Routes = [
 				// data: {
 				// 	permissions: {
 				// 		only: ['analyse_risque_canSeeAll']
+				// 	}
+				// }
+			},
+			{
+				path: 'edit/:id',
+				component: PdpAddComponent,
+				// canActivate: [NgxPermissionsGuard],
+				// data: {
+				// 	permissions: {
+				// 		only: ['analyse_risque_canUpdate']
 				// 	}
 				// }
 			},

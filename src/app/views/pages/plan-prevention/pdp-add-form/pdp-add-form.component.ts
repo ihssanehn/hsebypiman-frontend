@@ -3,7 +3,14 @@ import {AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validat
 import {FormStatus} from "@app/core/_base/crud/models/form-status";
 import {CdkTextareaAutosize} from "@angular/cdk/text-field";
 import {take} from "rxjs/operators";
-import {ConsigneModel, DispositionModel, PDPFrequences, RisqueModel, TraveauxDangereuxModel} from "@app/core/models";
+import {
+	ConsigneModel,
+	DispositionModel,
+	Pdp,
+	PDPFrequences,
+	RisqueModel,
+	TraveauxDangereuxModel
+} from "@app/core/models";
 import {PdpService} from "@app/core/services";
 import {BehaviorSubject} from "rxjs";
 
@@ -27,12 +34,22 @@ export class PdpAddFormComponent implements OnInit {
 		}
 	}
 
+	public _pdp: Pdp;
+
+	@Input('_pdp')
+	set pdpPatcher(value) {
+		if (value != null) {
+			this._pdp = value;
+			this.formPathValues(this._pdp);
+			// this.subPDPFormValidator();
+		}
+	}
+
 	@Input() formStatus: FormStatus;
+	@Input() adding = true;
 	@ViewChild('autosize', {static: true}) autosize: CdkTextareaAutosize;
 	@Output() onLastStep: EventEmitter<any> = new EventEmitter<any>();
 	public parts = [1];
-	@Input() origin = 'add';
-
 	public instructionsList: Array<ConsigneModel>;
 	public EPIDispositionList: Array<DispositionModel>;
 	public EESMoyenDisposition: Array<DispositionModel>;
@@ -94,7 +111,6 @@ export class PdpAddFormComponent implements OnInit {
 				formArray.push(group);
 			}
 		}
-
 	}
 
 	// subPDPFormValidator() {
@@ -118,9 +134,9 @@ export class PdpAddFormComponent implements OnInit {
 		this.EESMoyenDisposition = res.result.data ? res.result.data.moyen_disposition_ees : [];
 		this.traveauxDangereux = res.result.data ? res.result.data.travaux_dangereux : [];
 		this.risques = res.result.data ? res.result.data.risques : [];
-		this.frequences = res.result.data ? res.result.data.frequence : [];
 		this.suivisMedicalIntervenants = res.result.data ? res.result.data.intervenant : [];
-
+		this.frequences = res.result.data ? res.result.data.frequence : [];
+		console.log('here 2');
 		if (this.EPIDispositionList.length > 0) {
 			this.patchFormArray(this.EPIDispositionList, 'epi_disposition', [{
 				name: 'answer_id',
@@ -164,20 +180,22 @@ export class PdpAddFormComponent implements OnInit {
 					situation: new FormArray([]),
 					moyen: new FormArray([]),
 				});
-				if (!this.risques[i].other_pdp_moyen_risque || this.risques[i].other_pdp_moyen_risque.length === 0) {
-					this.risques[i].other_pdp_moyen_risque = ['', '', ''];
+				if (this.risques[i].is_other) {
+					if (!this.risques[i].other_pdp_moyen_risque || this.risques[i].other_pdp_moyen_risque.length === 0) {
+						this.risques[i].other_pdp_moyen_risque = ['', '', ''];
+					}
+					if (this.risques[i] && this.risques[i].other_pdp_moyen_risque.length === 1) {
+						this.risques[i].other_pdp_moyen_risque = [...this.risques[i].other_pdp_moyen_risque, ...['', '']];
+					}
+					if (this.risques[i] && this.risques[i].other_pdp_moyen_risque.length === 2) {
+						this.risques[i].other_pdp_moyen_risque = [...this.risques[i].other_pdp_moyen_risque, ...['']];
+					}
+					this.risques[i].other_pdp_moyen_risque.map(v => {
+						(group.get('other_pdp_moyen_risque') as FormArray).push(new FormGroup({
+							comment: new FormControl({value: v, disabled: true})
+						}));
+					});
 				}
-				if (this.risques[i] && this.risques[i].other_pdp_moyen_risque.length === 1) {
-					this.risques[i].other_pdp_moyen_risque = [...this.risques[i].other_pdp_moyen_risque, ...['', '']];
-				}
-				if (this.risques[i] && this.risques[i].other_pdp_moyen_risque.length === 2) {
-					this.risques[i].other_pdp_moyen_risque = [...this.risques[i].other_pdp_moyen_risque, ...['']];
-				}
-				this.risques[i].other_pdp_moyen_risque.map(v => {
-					(group.get('other_pdp_moyen_risque') as FormArray).push(new FormGroup({
-						comment: new FormControl({value: v, disabled: true})
-					}));
-				});
 				this.risques[i].situation.map(v => {
 					(group.get('situation') as FormArray).push(new FormGroup({
 						id: new FormControl(v.id),
@@ -207,6 +225,10 @@ export class PdpAddFormComponent implements OnInit {
 				formArray.push(group);
 			}
 		}
+		// console.log('here 1 ', this._pdp);
+		// if (this._pdp) {
+		// 	this.formPathValues(this._pdp);
+		// }
 		this.cdr.markForCheck();
 	}
 
@@ -216,12 +238,12 @@ export class PdpAddFormComponent implements OnInit {
 			const group = new FormGroup({
 				id: new FormControl(array[i].id),
 				answer: new FormControl(false),
-				comment: new FormControl({value: null, disabled: true}),
+				comment: new FormControl({value: '', disabled: true}),
 			});
 			listAddedControls.map(v => {
 				if (!v.needTest || (i && v.needTest && array[i].has_details)) {
 					group.addControl(v.name, new FormControl({
-						value: null,
+						value: '',
 						disabled: true
 					}, v.isRequired ? Validators.required : null));
 				}
@@ -244,7 +266,7 @@ export class PdpAddFormComponent implements OnInit {
 	}
 
 	isChecked(controlName: string) {
-		return this.pdpForm.get(controlName).value === true;
+		return this.pdpForm.get(controlName).value === 1 || this.pdpForm.get(controlName).value === true;
 	}
 
 	showPart(key) {
@@ -291,7 +313,6 @@ export class PdpAddFormComponent implements OnInit {
 		const formArray: FormArray = this.pdpForm.get(FormControlName) as FormArray;
 		this.manageCheckBoxSelection(event.source.value || value, event.checked, formArray);
 
-		console.log(this.pdpForm.get(FormControlName).value, event);
 	}
 
 	allowOtherFields(ArrayFormName, index, listFormControls: Array<string>, isDisabled) {
@@ -472,4 +493,177 @@ export class PdpAddFormComponent implements OnInit {
 		event ? this.getControlsArrayFormName(FormArrayName)[index].get(FormChangeToControlName).enable() : this.getControlsArrayFormName(FormArrayName)[index].get(FormChangeToControlName).disable()
 		this.getControlsArrayFormName(FormArrayName)[index].get(FormChangeToControlName).updateValueAndValidity(); // this is to rerun form validation after removing the validation for a field.
 	}
+
+	formPathValues(pdp: Pdp) {
+		if (pdp.is_presence_site_client) {
+			this.pdpForm.get('presence_site_client_frequency_id').enable();
+		}
+		if (pdp.intervenants) {
+			const intervenantsArray: FormArray = this.pdpForm.get('intervenants') as FormArray;
+			intervenantsArray.controls.map((c: FormGroup) => {
+				if (c.get('is_suivi_medical').value) {
+					c.get('motif_id').enable();
+					c.updateValueAndValidity();
+				}
+			});
+		}
+		if (pdp.pdp_consigne_ee) {
+			const consignesArray: FormArray = this.pdpForm.get('consignes') as FormArray;
+			consignesArray.patchValue(pdp.pdp_consigne_ee.map(v => {
+				return {id: v.consigne_ee_id, answer: v.answer, type_operation: v.type_operation, comment: v.comment};
+			}));
+			consignesArray.controls.map((c: FormGroup) => {
+				if (c.get('answer').value) {
+					c.get('comment').enable();
+					if (c.get('type_operation')) {
+						c.get('type_operation').enable();
+					}
+					c.updateValueAndValidity();
+				}
+			});
+		}
+		if (pdp.pdp_epi_disposition_ee) {
+			const epiDispositionArray: FormArray = this.pdpForm.get('epi_disposition') as FormArray;
+			epiDispositionArray.patchValue(pdp.pdp_epi_disposition_ee.map(v => {
+				return {
+					id: v.epi_disposition_ee_id,
+					answer: v.answer,
+					answer_id: v.answer_id,
+					is_ee: v.is_ee,
+					is_eu: v.is_eu,
+					is_sous_traitant: v.is_sous_traitant,
+					comment: v.comment
+				};
+			}));
+			epiDispositionArray.controls.map((c: FormGroup) => {
+				if (c.get('answer').value) {
+					c.get('comment').enable();
+					c.get('is_ee').enable();
+					c.get('is_eu').enable();
+					c.get('is_sous_traitant').enable();
+					if (c.get('answer_id')) {
+						c.get('answer_id').enable();
+					}
+					c.updateValueAndValidity();
+				}
+			});
+		}
+		if (pdp.pdp_moyen_disposition_ee) {
+			const moyenDisposition: FormArray = this.pdpForm.get('moyen_disposition_ees') as FormArray;
+			moyenDisposition.patchValue(pdp.pdp_moyen_disposition_ee.map(v => {
+				return {
+					id: v.moyen_disposition_ee_id,
+					answer: v.answer,
+					comment: v.comment
+				};
+			}));
+			moyenDisposition.controls.map((c: FormGroup) => {
+				if (c.get('answer').value) {
+					c.get('comment').enable();
+					c.updateValueAndValidity();
+				}
+			});
+		}
+		if (pdp.pdp_travaux_dangereux) {
+			const travauxDangereux: FormArray = this.pdpForm.get('travaux_dangereux') as FormArray;
+			travauxDangereux.patchValue(pdp.pdp_travaux_dangereux.map(v => {
+				return {
+					id: v.travaux_dangereux_id,
+					answer: v.answer
+				};
+			}));
+		}
+		if (pdp.pdp_answer_risques) {
+			const risques: FormArray = this.pdpForm.get('cat_pdp_risques') as FormArray;
+			const PdpRisques = pdp.pdp_answer_risques.map(v => {
+				return {
+					id: v.cat_pdp_risque_id,
+					answer: v.answer,
+					comment: v.comment,
+					is_piman: v.is_piman,
+					is_eu: v.is_eu,
+					is_sous_traitant: v.is_sous_traitant,
+					other_cat_pdp_risque: v.other_cat_pdp_risque,
+					other_pdp_moyen_risque: v.other_pdp_moyen_risque !== null ? v.other_pdp_moyen_risque : [],
+					other_pdp_situation_risque: v.other_pdp_situation_risque,
+					moyen: [...v.moyens.map(m => {
+						return {
+							id: m.pdp_risque_id,
+							answer: m.answer,
+							comment: m.comment,
+							pdp_risque_moyen_filtre: m.moyen_filter.map(mf => {
+								return {
+									id: mf.pdp_risque_moyen_filter_id,
+									answer: mf.answer,
+									comment: mf.comment,
+								};
+							}),
+						};
+					})],
+					situation: [...v.situation.map(m => {
+						return {
+							id: m.pdp_risque_id,
+							answer: m.answer,
+							comment: m.comment,
+						};
+					})]
+				};
+			});
+			if (PdpRisques && PdpRisques.length > 0) {
+				(this.pdpForm.get('cat_pdp_risques') as FormArray).patchValue(PdpRisques || []);
+				risques.controls.map((c: FormGroup) => {
+					if (c.get('answer').value) {
+						c.get('comment').enable();
+						c.get('is_eu').enable();
+						c.get('is_piman').enable();
+						c.get('is_sous_traitant').enable();
+						c.get('other_cat_pdp_risque').enable();
+						c.get('other_pdp_situation_risque').enable();
+						(c.get('other_pdp_moyen_risque') as FormArray).controls.map((v: FormGroup) => {
+							v.get('comment').enable();
+						});
+						(c.get('moyen') as FormArray).controls.map((v: FormGroup) => {
+							v.get('answer').enable();
+							if (v.get('answer').value && v.get('is_with_comment').value) {
+								v.get('comment').enable();
+							}
+							(v.get('pdp_risque_moyen_filtre') as FormArray).controls.map(f => {
+								f.get('answer').enable();
+								if (f.get('answer').value && f.get('is_with_comment').value) {
+									f.get('comment').enable();
+								}
+							});
+						});
+						(c.get('situation') as FormArray).controls.map((v: FormGroup) => {
+							v.get('answer').enable();
+							if (v.get('answer').value && v.get('is_with_comment').value) {
+								v.get('comment').enable();
+							}
+						});
+					}
+				});
+			}
+		}
+		if (pdp.pdp_validations) {
+			const validationsArray: FormArray = this.pdpForm.get('validations') as FormArray;
+			validationsArray.patchValue(pdp.pdp_validations.map(v => {
+				return {
+					company_name: v.company_name,
+					full_name: v.full_name,
+					validation_at: v.validation_at,
+					type: v.type,
+					is_part_inspection: v.is_part_inspection,
+					part_inspection_at: v.part_inspection_at
+				};
+			}));
+			validationsArray.controls.map((c: FormGroup) => {
+				if (c.get('is_part_inspection').value) {
+					c.get('part_inspection_at').enable();
+					c.updateValueAndValidity();
+				}
+			});
+		}
+		this.pdpForm.updateValueAndValidity();
+	}
+
 }

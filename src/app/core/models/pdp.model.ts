@@ -1,3 +1,5 @@
+import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
+
 export class Pdp {
 	creator_id?: number;
 	cse_eu_job?: string;
@@ -34,4 +36,11 @@ export class Pdp {
 	sous_traitant1_tel?: string;
 	sous_traitant2_name?: string;
 	sous_traitant2_tel?: string;
+	pdp_consigne_ee?: Array<any>;
+	pdp_moyen_disposition_ee?: Array<any>;
+	pdp_epi_disposition_ee?: Array<any>;
+	pdp_travaux_dangereux?: Array<any>;
+	pdp_answer_risques?: Array<any>;
+	pdp_validations?: Array<any>;
+	intervenants?: Array<any>;
 }

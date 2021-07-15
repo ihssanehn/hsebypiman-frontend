@@ -374,7 +374,35 @@
 		"TRAINING_AUTHORIZATIONS": "Training / Authorizations",
 		"REINFORCED_MEDICAL_FOLLOW_UP": "Reinforced medical follow-up",
 		"ADD_ROW": "Add row",
-		"SUBCONTRACTOR": "Subcontractor"
+		"SUBCONTRACTOR": "Subcontractor",
+		"NOTIF": {
+			"PDP_DELETED": {
+				"TITLE": "Prevention plan has been deleted successfully"
+			},
+			"PDP_DELETE_CONFIRMATION": {
+				"LABEL": "The prevention plan will be permanently deleted.",
+				"TITLE": "Are you sure you want to delete this prevention plan?"
+			},
+			"PDP_UPDATED": {
+				"TITLE": "Successfully updated prevention plan"
+			},
+			"PDP_CREATED": {
+				"TITLE": "Successfully created prevention plan "
+			},
+			"ELEMENT_ARCHIVED": {
+				"TITLE": "Item is archived successfully"
+			},
+			"ELEMENT_NOT_DELETED": {
+				"SUBTITLE": "Unable to delete because the selection is assigned to one or more prevention plans",
+				"TITLE": "Unable to delete because the selection includes an item assigned to one or more prevention plans"
+			},
+			"INCOMPLETE_FORM": {
+				"TITLE": "Failure! the form is incomplete"
+			},
+			"PLAN_ARCHIVED": {
+				"TITLE": "Plan successfully archived"
+			}
+		}
 	},
 	"AUTH": {
 		"EDIT": {

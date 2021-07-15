@@ -1,36 +1,64 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import Swal, {SweetAlertIcon} from "sweetalert2";
 import {FormStatus} from "@app/core/_base/crud/models/form-status";
 import {extractErrorMessagesFromErrorResponse} from "@app/core/_base/crud";
 import {ArService, PdpService} from "@app/core/services";
 import {TranslateService} from "@ngx-translate/core";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {tap} from "rxjs/operators";
+import {Ar, Pdp} from "@app/core/models";
+import {Subscription} from "rxjs";
 
 @Component({
 	selector: 'tf-pdp-add',
 	templateUrl: './pdp-add.component.html',
 	styleUrls: ['./pdp-add.component.scss']
 })
-export class PdpAddComponent implements OnInit {
+export class PdpAddComponent implements OnInit, OnDestroy {
 
 	pdpForm: FormGroup;
 	enableBtn = false;
-	formloading: boolean = false;
-
+	formloading = false;
+	pdp: Pdp = null;
+	adding = true;
 	formStatus = new FormStatus();
+
+	private subscriptions: Subscription[] = [];
 
 	constructor(
 		private pdpFB: FormBuilder,
 		private router: Router,
 		private cdr: ChangeDetectorRef,
 		private translate: TranslateService,
+		private activatedRoute: ActivatedRoute,
 		private pdpService: PdpService,
 	) {
 	}
 
 	ngOnInit() {
 		this.createForm();
+		const routeSubscription = this.activatedRoute.params
+			.subscribe(
+				async params => {
+					const id = params.id;
+					if (id) {
+						this.adding = false;
+						this.pdpService
+							.get(id)
+							.subscribe(async res => {
+								this.pdp = res.result.data;
+								this.pdpForm.patchValue(this.pdp);
+								this.enableBtn = true;
+								// this.formPathValues(this.pdp);
+								this.cdr.markForCheck();
+							});
+					} else {
+						this.pdp = new Pdp();
+					}
+				}
+			);
+		this.subscriptions.push(routeSubscription);
 	}
 
 	createForm() {
@@ -85,15 +113,13 @@ export class PdpAddComponent implements OnInit {
 				contact: new FormControl('', Validators.required),
 				formations: new FormControl(null),
 				is_suivi_medical: new FormControl(null),
-				motif: new FormControl({value: null, disabled: true}),
+				motif_id: new FormControl({value: null, disabled: true}),
 			})]),
 		});
 	}
 
 	async onSubmit() {
 		try {
-
-			console.log(this.pdpForm.valid, this.pdpForm);
 			this.pdpForm.markAllAsTouched();
 			if (this.pdpForm.valid) {
 				this.formStatus.onFormSubmitting();
@@ -107,15 +133,17 @@ export class PdpAddComponent implements OnInit {
 						return v;
 					});
 				}
-				console.log(form);
+				if (form && this.pdp) {
+					form.id = this.pdp.id;
+				}
 				this.save(form);
 			}
 		} catch (error) {
-			console.error(error);
 			throw error;
 		}
 
 	}
+
 
 	isLastStep(isLastStep: boolean): void {
 		if (isLastStep) {
@@ -129,7 +157,7 @@ export class PdpAddComponent implements OnInit {
 
 		Swal.fire({
 			icon: code,
-			title: this.translate.instant("ARS.NOTIF.PDP_CREATED.TITLE"),
+			title: this.pdp ? this.translate.instant("PDP.NOTIF.PDP_UPDATED.TITLE") : this.translate.instant("PDP.NOTIF.PDP_CREATED.TITLE"),
 			showConfirmButton: false,
 			html: message,
 			timer: code === 'success' ? 1500 : 3000
@@ -141,22 +169,15 @@ export class PdpAddComponent implements OnInit {
 	async save(form) {
 
 		this.formloading = true;
+		const action = !this.adding ? this.pdpService.update(form).toPromise() : this.pdpService.create(form).toPromise();
 
-		this.pdpService.create(form)
-			.toPromise()
-			.then((res: any) => {
-				console.log(res);
-
-				this.formloading = false;
-				this.cdr.markForCheck();
-				this.fireNotifAfterSave(res)
-			})
+		action.then((res: any) => {
+			this.fireNotifAfterSave(res);
+		})
 			.catch(err => {
-				console.log('here');
-				this.formloading = false;
 				Swal.fire({
 					icon: 'error',
-					title: this.translate.instant("ARS.NOTIF.INCOMPLETE_FORM.TITLE"),
+					title: this.translate.instant("PDP.NOTIF.INCOMPLETE_FORM.TITLE"),
 					showConfirmButton: false,
 					timer: 2000
 				});
@@ -164,10 +185,15 @@ export class PdpAddComponent implements OnInit {
 				if (err.status === 422) {
 					var messages = extractErrorMessagesFromErrorResponse(err);
 					this.formStatus.onFormSubmitResponse({success: false, messages: messages});
-					this.cdr.markForCheck();
 				}
-			});
-
+			}).finally(() => {
+			this.formloading = false;
+			this.cdr.markForCheck();
+		});
 		this.cdr.markForCheck();
+	}
+
+	ngOnDestroy() {
+		this.subscriptions.forEach(sb => sb.unsubscribe());
 	}
 }
