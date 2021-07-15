@@ -38,7 +38,6 @@ export class PdpAddFormComponent implements OnInit {
 
 	@Input('_pdp')
 	set pdpPatcher(value) {
-		console.log(value);
 		if (value != null) {
 			this._pdp = value;
 			this.formPathValues(this._pdp);
@@ -47,10 +46,10 @@ export class PdpAddFormComponent implements OnInit {
 	}
 
 	@Input() formStatus: FormStatus;
+	@Input() adding = true;
 	@ViewChild('autosize', {static: true}) autosize: CdkTextareaAutosize;
 	@Output() onLastStep: EventEmitter<any> = new EventEmitter<any>();
 	public parts = [1];
-
 	public instructionsList: Array<ConsigneModel>;
 	public EPIDispositionList: Array<DispositionModel>;
 	public EESMoyenDisposition: Array<DispositionModel>;
@@ -314,7 +313,6 @@ export class PdpAddFormComponent implements OnInit {
 		const formArray: FormArray = this.pdpForm.get(FormControlName) as FormArray;
 		this.manageCheckBoxSelection(event.source.value || value, event.checked, formArray);
 
-		console.log(this.pdpForm.get(FormControlName).value, event);
 	}
 
 	allowOtherFields(ArrayFormName, index, listFormControls: Array<string>, isDisabled) {
@@ -497,9 +495,17 @@ export class PdpAddFormComponent implements OnInit {
 	}
 
 	formPathValues(pdp: Pdp) {
-		console.log(pdp.is_piman_intervention, pdp);
 		if (pdp.is_presence_site_client) {
 			this.pdpForm.get('presence_site_client_frequency_id').enable();
+		}
+		if (pdp.intervenants) {
+			const intervenantsArray: FormArray = this.pdpForm.get('intervenants') as FormArray;
+			intervenantsArray.controls.map((c: FormGroup) => {
+				if (c.get('is_suivi_medical').value) {
+					c.get('motif_id').enable();
+					c.updateValueAndValidity();
+				}
+			});
 		}
 		if (pdp.pdp_consigne_ee) {
 			const consignesArray: FormArray = this.pdpForm.get('consignes') as FormArray;
@@ -570,7 +576,6 @@ export class PdpAddFormComponent implements OnInit {
 		if (pdp.pdp_answer_risques) {
 			const risques: FormArray = this.pdpForm.get('cat_pdp_risques') as FormArray;
 			const PdpRisques = pdp.pdp_answer_risques.map(v => {
-				console.log(v);
 				return {
 					id: v.cat_pdp_risque_id,
 					answer: v.answer,
@@ -579,7 +584,7 @@ export class PdpAddFormComponent implements OnInit {
 					is_eu: v.is_eu,
 					is_sous_traitant: v.is_sous_traitant,
 					other_cat_pdp_risque: v.other_cat_pdp_risque,
-					other_pdp_moyen_risque: v.other_pdp_moyen_risque ? v.other_pdp_moyen_risque : [],
+					other_pdp_moyen_risque: v.other_pdp_moyen_risque !== null ? v.other_pdp_moyen_risque : [],
 					other_pdp_situation_risque: v.other_pdp_situation_risque,
 					moyen: [...v.moyens.map(m => {
 						return {
@@ -605,7 +610,6 @@ export class PdpAddFormComponent implements OnInit {
 				};
 			});
 			if (PdpRisques && PdpRisques.length > 0) {
-				console.log('in risques', PdpRisques);
 				(this.pdpForm.get('cat_pdp_risques') as FormArray).patchValue(PdpRisques || []);
 				risques.controls.map((c: FormGroup) => {
 					if (c.get('answer').value) {

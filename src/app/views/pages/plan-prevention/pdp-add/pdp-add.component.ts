@@ -21,7 +21,7 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 	enableBtn = false;
 	formloading = false;
 	pdp: Pdp = null;
-	loaded = false;
+	adding = true;
 	formStatus = new FormStatus();
 
 	private subscriptions: Subscription[] = [];
@@ -42,13 +42,12 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 			.subscribe(
 				async params => {
 					const id = params.id;
-					console.log(params);
 					if (id) {
+						this.adding = false;
 						this.pdpService
 							.get(id)
 							.subscribe(async res => {
 								this.pdp = res.result.data;
-								this.loaded = true;
 								this.pdpForm.patchValue(this.pdp);
 								this.enableBtn = true;
 								// this.formPathValues(this.pdp);
@@ -114,14 +113,13 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 				contact: new FormControl('', Validators.required),
 				formations: new FormControl(null),
 				is_suivi_medical: new FormControl(null),
-				motif: new FormControl({value: null, disabled: true}),
+				motif_id: new FormControl({value: null, disabled: true}),
 			})]),
 		});
 	}
 
 	async onSubmit() {
 		try {
-			console.log(this.pdpForm.valid, this.pdpForm);
 			this.pdpForm.markAllAsTouched();
 			if (this.pdpForm.valid) {
 				this.formStatus.onFormSubmitting();
@@ -138,11 +136,9 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 				if (form && this.pdp) {
 					form.id = this.pdp.id;
 				}
-				console.log(form);
 				this.save(form);
 			}
 		} catch (error) {
-			console.error(error);
 			throw error;
 		}
 
@@ -173,14 +169,12 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 	async save(form) {
 
 		this.formloading = true;
-		const action = this.pdp ? this.pdpService.update(form).toPromise() : this.pdpService.create(form).toPromise();
+		const action = !this.adding ? this.pdpService.update(form).toPromise() : this.pdpService.create(form).toPromise();
 
 		action.then((res: any) => {
-			console.log(res);
 			this.fireNotifAfterSave(res);
 		})
 			.catch(err => {
-				console.log(err);
 				Swal.fire({
 					icon: 'error',
 					title: this.translate.instant("PDP.NOTIF.INCOMPLETE_FORM.TITLE"),
