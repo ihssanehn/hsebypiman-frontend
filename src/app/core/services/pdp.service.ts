@@ -35,6 +35,10 @@ export class PdpService extends HttpService {
 		return this.http.post<JsonResponse<Pdp>>(this.baseUrl + '/' + 'create', pdp);
 	}
 
+	update(pdp) {
+		return this.http.put<JsonResponse<Pdp>>(this.baseUrl + '/' + pdp.id, pdp);
+	}
+
 	get(pdp_id) {
 		return this.http.get<JsonResponse<Pdp>>(this.baseUrl + '/' + pdp_id);
 	}

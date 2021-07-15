@@ -396,17 +396,11 @@
 				"SUBTITLE": "Unable to delete because the selection is assigned to one or more prevention plans",
 				"TITLE": "Unable to delete because the selection includes an item assigned to one or more prevention plans"
 			},
-			"EQUIPEMENT_ARCHIVED": {
-				"TITLE": "Equipment archived successfully"
-			},
 			"INCOMPLETE_FORM": {
 				"TITLE": "Failure! the form is incomplete"
 			},
 			"PLAN_ARCHIVED": {
 				"TITLE": "Plan successfully archived"
-			},
-			"ZONE_ARCHIVED": {
-				"TITLE": "Successfully archived area"
 			}
 		}
 	},

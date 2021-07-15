@@ -381,13 +381,26 @@
 			},
 			"PDP_DELETE_CONFIRMATION": {
 				"LABEL": "Le plan de prévention sera définitivement supprimé.",
-				"TITLE": "Voulez-vous vraiment supprimer ce plan de prévention?"
+				"TITLE": "Voulez-vous vraiment supprimer ce plan de prévention ?"
 			},
 			"PDP_UPDATED": {
 				"TITLE": "Plan de prévention mis à jour avec succès"
 			},
 			"PDP_CREATED": {
 				"TITLE": "Plan de prévention créé avec succès"
+			},
+			"ELEMENT_ARCHIVED": {
+				"TITLE": "L'élément est archivé avec succès"
+			},
+			"ELEMENT_NOT_DELETED": {
+				"SUBTITLE": "Impossible de supprimer car la sélection est affectée à un ou plusieurs plans de prévention",
+				"TITLE": "Impossible de supprimer car la sélection comprend un élément affecté à un ou plusieurs plans de prévention"
+			},
+			"INCOMPLETE_FORM": {
+				"TITLE": "Echec ! le formulaire est incomplet"
+			},
+			"PLAN_ARCHIVED": {
+				"TITLE": "Plan archivé avec succès"
 			}
 		}
 	},
