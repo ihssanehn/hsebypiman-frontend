@@ -282,6 +282,20 @@
 									</mat-error>
 								</mat-form-field>
 								<mat-form-field class="col-3 custom-margin-3">
+									<mat-label>{{'PDP.MAIL' | translate}}
+									</mat-label>
+									<input class="form-control" matInput type="mail" name="sous_traitant1_mail"
+										   formControlName="sous_traitant1_mail"
+										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
+										   [required]="isFieldRequired('sous_traitant1_mail')"/>
+									<mat-error *ngIf="isControlHasError('sous_traitant1_mail','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+									<mat-error *ngIf="isControlHasError('representant_entreprise_eu_mail','email')">
+										<strong>{{ 'AUTH.VALIDATION.INVALID_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+								<mat-form-field class="col-3 custom-margin-3">
 									<mat-label>{{'PDP.TEL' | translate}}</mat-label>
 									<input class="form-control" matInput type="phone" name="sous_traitant1_tel"
 										   formControlName="sous_traitant1_tel"
@@ -304,6 +318,20 @@
 										   [required]="isFieldRequired('sous_traitant2_name')"/>
 									<mat-error *ngIf="isControlHasError('sous_traitant2_name','required')">
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+								<mat-form-field class="col-3 custom-margin-3">
+									<mat-label>{{'PDP.MAIL' | translate}}
+									</mat-label>
+									<input class="form-control" matInput type="mail" name="sous_traitant2_mail"
+										   formControlName="sous_traitant2_mail"
+										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
+										   [required]="isFieldRequired('sous_traitant2_mail')"/>
+									<mat-error *ngIf="isControlHasError('sous_traitant2_mail','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+									<mat-error *ngIf="isControlHasError('sous_traitant2_mail','email')">
+										<strong>{{ 'AUTH.VALIDATION.INVALID_FIELD' | translate }}</strong>
 									</mat-error>
 								</mat-form-field>
 								<mat-form-field class="col-3 custom-margin-3">

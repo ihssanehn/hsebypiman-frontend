@@ -88,8 +88,10 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 			is_piman_intervention: [null],
 			sous_traitant1_name: [null],
 			sous_traitant1_tel: [null],
+			sous_traitant1_mail: [null],
 			sous_traitant2_name: [null],
 			sous_traitant2_tel: [null],
+			sous_traitant2_mail: [null],
 
 			label_intervention: [null, Validators.required],
 			lieu_intervention: [null, Validators.required],
