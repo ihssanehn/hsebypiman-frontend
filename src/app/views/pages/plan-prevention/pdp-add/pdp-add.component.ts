@@ -65,7 +65,7 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 		this.pdpForm = this.pdpFB.group({
 			raison_sociale_eu: [null, Validators.required],
 			raison_sociale_tel_eu: [null, Validators.required],
-			sauveteurs_secouriste_travail: [null, Validators.required],
+			sauveteurs_secouriste_travail: [null],
 			pole_qhse: [null],
 			medecin_travail_eu_name: [null],
 			medecin_travail_eu_tel: [null],
