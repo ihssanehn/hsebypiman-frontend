@@ -157,9 +157,12 @@
 						<div class="tf-heading tf-heading--sm">
 							1.2 {{'PDP.OUTSIDE_COMPANY' | translate}}
 						</div>
-						<div class="row form-row">
-							<mat-form-field class="col-xl-4">
-								<mat-label>{{'PDP.OCCUPATIONAL_PHYSICIAN' | translate}}</mat-label>
+						<div class="row form-row align-items-center">
+							<span class="col-2 font-weight-bold">
+								{{'PDP.OCCUPATIONAL_PHYSICIAN' | translate}} :
+							</span>
+							<mat-form-field class="col-3">
+								<mat-label>{{'PDP.NAME' | translate}}</mat-label>
 								<input class="form-control" matInput type="text" name="medecin_travail_ee_name"
 									   formControlName="medecin_travail_ee_name"
 									   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
@@ -168,8 +171,8 @@
 									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 								</mat-error>
 							</mat-form-field>
-							<mat-form-field class="col-xl-4">
-								<mat-label>{{'PDP.OCCUPATIONAL_PHYSICIAN' | translate}} ({{'PDP.TEL' | translate}})
+							<mat-form-field class="col-3 custom-margin-3">
+								<mat-label>{{'PDP.TEL' | translate}}
 								</mat-label>
 								<input class="form-control" matInput type="phone" name="medecin_travail_ee_tel"
 									   formControlName="medecin_travail_ee_tel"
@@ -179,8 +182,13 @@
 									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 								</mat-error>
 							</mat-form-field>
-							<mat-form-field class="col-xl-4">
-								<mat-label>{{'PDP.COMPANY_REPRESENTATIVE' | translate}}</mat-label>
+						</div>
+						<div class="row form-row align-items-center">
+							<span class="col font-weight-bold">
+								{{'PDP.COMPANY_REPRESENTATIVE' | translate}} :
+							</span>
+							<mat-form-field class="col">
+								<mat-label>{{'PDP.NAME' | translate}}</mat-label>
 								<input class="form-control" matInput type="text" name="representant_entreprise_ee_name"
 									   formControlName="representant_entreprise_ee_name"
 									   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
@@ -189,10 +197,8 @@
 									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 								</mat-error>
 							</mat-form-field>
-						</div>
-						<div class="row form-row">
-							<mat-form-field class="col-xl-4">
-								<mat-label>{{'PDP.COMPANY_REPRESENTATIVE' | translate}} ({{'PDP.MAIL' | translate}})
+							<mat-form-field class="col custom-margin-3">
+								<mat-label>{{'PDP.MAIL' | translate}}
 								</mat-label>
 								<input class="form-control" matInput type="email" name="representant_entreprise_ee_mail"
 									   formControlName="representant_entreprise_ee_mail"
@@ -205,8 +211,8 @@
 									<strong>{{ 'AUTH.VALIDATION.INVALID_FIELD' | translate }}</strong>
 								</mat-error>
 							</mat-form-field>
-							<mat-form-field class="col-xl-4">
-								<mat-label>{{'PDP.COMPANY_REPRESENTATIVE' | translate}} ({{'PDP.TEL' | translate}})
+							<mat-form-field class="col custom-margin-3">
+								<mat-label>{{'PDP.TEL' | translate}}
 								</mat-label>
 								<input class="form-control" matInput type="phone" name="representant_entreprise_ee_tel"
 									   formControlName="representant_entreprise_ee_tel"

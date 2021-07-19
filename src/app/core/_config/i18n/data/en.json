@@ -345,6 +345,7 @@
 		"TEL": "Tel",
 		"MAIL": "Mail",
 		"JOB": "job",
+		"NAME": "Name",
 		"INSTRUCTIONS_GIVEN_BY_THE_EXTERNAL_COMPANY": "Instructions given by the external company",
 		"TYPE_OPERATION": "type of operation",
 		"PPE_MADE_AVAILABLE_TO_THE_EXTERNAL_COMPANY": "PPE made available to the external company",
