@@ -310,10 +310,10 @@
 						<div class="row form-row">
 							<mat-form-field class="col-xl-3">
 								<mat-label>{{'PDP.PDP_ESTABLISHED_ON' | translate}}</mat-label>
-								<input matInput class="form-control" mask="0000-M0-d0"
+								<input matInput class="form-control" mask="d0-M0-0000"
 									   [specialCharacters]="[ '-' ]"
 									   [dropSpecialCharacters]="false" formControlName="pdp_intervention_at"
-									   placeholder="YYYY-MM-DD" [required]="isFieldRequired('pdp_intervention_at')">
+									   placeholder="DD-MM-YYYY" [required]="isFieldRequired('pdp_intervention_at')">
 								<mat-error *ngIf="isControlHasError('pdp_intervention_at','required')">
 									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 								</mat-error>
@@ -826,11 +826,11 @@
 									<td mat-cell *matCellDef="let element; let index = index" [formGroupName]="index">
 										<mat-form-field [style.fontSize.px]=13>
 											<mat-label>{{'PDP.DATE' | translate}}</mat-label>
-											<input matInput class="form-control" mask="0000-M0-d0"
+											<input matInput class="form-control" mask="d0-M0-0000"
 												   [specialCharacters]="[ '-' ]"
 												   formControlName="validation_at"
 												   [dropSpecialCharacters]="false"
-												   placeholder="YYYY-MM-DD">
+												   placeholder="DD-MM-YYYY">
 											<mat-error
 												*ngIf="isControlHasError('validation_at', 'required', 'validations', index)">
 												<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
@@ -852,11 +852,11 @@
 											</mat-checkbox>
 											<mat-form-field class="mt-3 ml-3 mb-3" [style.fontSize.px]=13>
 												<mat-label>{{'PDP.DATE' | translate}}</mat-label>
-												<input matInput class="form-control" mask="0000-M0-d0"
+												<input matInput class="form-control" mask="d0-M0-0000"
 													   [specialCharacters]="[ '-' ]"
 													   formControlName="part_inspection_at"
 													   [dropSpecialCharacters]="false"
-													   placeholder="YYYY-MM-DD">
+													   placeholder="DD-MM-YYYY">
 												<mat-error
 													*ngIf="isControlHasError('part_inspection_at', 'required', 'validations', index)">
 													<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
