@@ -382,7 +382,7 @@
 			</div>
 		</div>
 		<div class="col-12 mb-4" *ngIf="partHided(2) && adding">
-			<button mat-raised-button type="button" class="pull-right btn-small mr-4" color="info"
+			<button mat-raised-button type="button" class="pull-right btn-small" color="info"
 					(click)="showPart(2)">{{'ACTION.FOLLOWING' | translate}}</button>
 		</div>
 	</div>
@@ -442,7 +442,7 @@
 			</div>
 		</div>
 		<div class="col-12 mb-4" *ngIf="partHided(3) && adding">
-			<button mat-raised-button type="button" class="pull-right btn-small mr-4" color="info"
+			<button mat-raised-button type="button" class="pull-right btn-small" color="info"
 					(click)="showPart(3)">{{'ACTION.FOLLOWING' | translate}}</button>
 		</div>
 	</div>
@@ -570,7 +570,7 @@
 			</div>
 		</div>
 		<div class="col-12 mb-4" *ngIf="partHided(4) && adding">
-			<button mat-raised-button type="button" class="pull-right btn-small mr-4" color="info"
+			<button mat-raised-button type="button" class="pull-right btn-small" color="info"
 					(click)="showPart(4)">{{'ACTION.FOLLOWING' | translate}}</button>
 		</div>
 	</div>
@@ -588,7 +588,7 @@
 							<ng-container matColumnDef="list">
 								<th mat-header-cell *matHeaderCellDef> {{'PDP.LIST_OF_WORKS' | translate}} </th>
 								<td mat-cell *matCellDef="let element; let index = index" [formGroupName]="index">
-									<div class="m-2">
+									<div class="m-2 travaux-checkbox-container">
 										<mat-checkbox [value]="element.id"
 													  (change)="allowOtherFields('travaux_dangereux', index, [], $event.checked)"
 													  formControlName="answer">{{element.label}}</mat-checkbox>
@@ -605,7 +605,7 @@
 			</div>
 		</div>
 		<div class="col-12 mb-4" *ngIf="partHided(5) && adding">
-			<button mat-raised-button type="button" class="pull-right btn-small mr-4" color="info"
+			<button mat-raised-button type="button" class="pull-right btn-small" color="info"
 					(click)="showPart(5)">{{'ACTION.FOLLOWING' | translate}}</button>
 		</div>
 	</div>
@@ -766,7 +766,7 @@
 			</div>
 		</div>
 		<div class="col-12 mb-4" *ngIf="partHided(6) && adding">
-			<button mat-raised-button type="button" class="pull-right btn-small mr-4" color="info"
+			<button mat-raised-button type="button" class="pull-right btn-small" color="info"
 					(click)="showPart(6)">{{'ACTION.FOLLOWING' | translate}}</button>
 		</div>
 	</div>
