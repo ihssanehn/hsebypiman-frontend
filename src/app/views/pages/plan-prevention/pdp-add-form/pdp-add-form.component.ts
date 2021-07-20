@@ -237,7 +237,7 @@ export class PdpAddFormComponent implements OnInit {
 		for (let i = 0; i < array.length; i++) {
 			const group = new FormGroup({
 				id: new FormControl(array[i].id),
-				answer: new FormControl(false),
+				answer: new FormControl(null),
 				comment: new FormControl({value: '', disabled: true}),
 			});
 			listAddedControls.map(v => {
