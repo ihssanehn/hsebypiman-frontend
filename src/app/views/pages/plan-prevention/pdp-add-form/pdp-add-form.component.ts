@@ -60,7 +60,7 @@ export class PdpAddFormComponent implements OnInit {
 	public risques: Array<RisqueModel>;
 	public frequences: Array<PDPFrequences>;
 	displayedColumnsConsignes: string[] = ['consignes', 'comments'];
-	displayedColumnsEPIDisposition: string[] = ['label', 'list', 'eu', 'ee', 'sous-traitant'];
+	displayedColumnsEPIDisposition: string[] = ['label', 'list', 'type'];
 	displayedColumnsEESMoyenDisposition: string[] = ['label', 'comments'];
 	displayedColumnsTravaux: string[] = ['list'];
 	displayedColumnsValidationPlan: string[] = ['company', 'name', 'date', 'participation', 'visa'];
@@ -136,18 +136,12 @@ export class PdpAddFormComponent implements OnInit {
 		this.risques = res.result.data ? res.result.data.risques : [];
 		this.suivisMedicalIntervenants = res.result.data ? res.result.data.intervenant : [];
 		this.frequences = res.result.data ? res.result.data.frequence : [];
-		console.log('here 2');
 		if (this.EPIDispositionList.length > 0) {
 			this.patchFormArray(this.EPIDispositionList, 'epi_disposition', [{
 				name: 'answer_id',
 				needTest: false,
 				isRequired: true
-			}, {name: 'is_eu', needTest: false},
-				{name: 'is_ee', needTest: false},
-				{
-					name: 'is_sous_traitant',
-					needTest: false
-				}
+			}, {name: 'type', needTest: false, isRequired: true}
 			]);
 		}
 		if (this.instructionsList.length > 0) {
