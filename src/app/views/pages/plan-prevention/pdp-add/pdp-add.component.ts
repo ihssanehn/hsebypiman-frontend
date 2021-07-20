@@ -120,6 +120,11 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 				is_suivi_medical: new FormControl(null),
 				motif_id: new FormControl({value: null, disabled: true}),
 			})]),
+			sous_traitant: new FormArray([new FormGroup({
+				name: new FormControl(''),
+				mail: new FormControl('',  Validators.email),
+				tel: new FormControl(''),
+			})]),
 		});
 	}
 

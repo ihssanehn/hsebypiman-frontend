@@ -477,6 +477,15 @@ export class PdpAddFormComponent implements OnInit {
 		}
 	}
 
+	addSousTraitant() {
+		const group = new FormGroup({
+			name: new FormControl(''),
+			mail: new FormControl('', Validators.email),
+			tel: new FormControl(''),
+		});
+		this.getControlsArrayFormName('sous_traitant').push(group);
+	}
+
 	getControlsArrayFormName(formArrayName) {
 		return (this.pdpForm.get(formArrayName) as FormArray).controls;
 	}

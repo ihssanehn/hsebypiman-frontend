@@ -267,84 +267,90 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="tf-card-form">
-							<div class="row form-row align-items-center">
-								<span class="col-2 font-weight-bold">
-									{{'PDP.SUBCONTRACTOR' | translate}} 1 :
+							<div class="row form-row align-items-center"
+								 formArrayName="sous_traitant"
+								 *ngFor="let item of getControlsArrayFormName('sous_traitant'); let i = index">
+								<ng-container [formGroupName]="i">
+									<span class="col-2 font-weight-bold">
+									{{'PDP.SUBCONTRACTOR' | translate}} {{i+1}} :
 								</span>
-								<mat-form-field class="col-3">
-									<mat-label>{{'PDP.NAME' | translate}}</mat-label>
-									<input class="form-control" matInput type="text" name="sous_traitant1_name"
-										   formControlName="sous_traitant1_name"
-										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
-										   [required]="isFieldRequired('sous_traitant1_name')"/>
-									<mat-error *ngIf="isControlHasError('sous_traitant1_name','required')">
-										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-									</mat-error>
-								</mat-form-field>
-								<mat-form-field class="col-3 custom-margin-3">
-									<mat-label>{{'PDP.MAIL' | translate}}
-									</mat-label>
-									<input class="form-control" matInput type="mail" name="sous_traitant1_mail"
-										   formControlName="sous_traitant1_mail"
-										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
-										   [required]="isFieldRequired('sous_traitant1_mail')"/>
-									<mat-error *ngIf="isControlHasError('sous_traitant1_mail','required')">
-										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-									</mat-error>
-									<mat-error *ngIf="isControlHasError('representant_entreprise_eu_mail','email')">
-										<strong>{{ 'AUTH.VALIDATION.INVALID_FIELD' | translate }}</strong>
-									</mat-error>
-								</mat-form-field>
-								<mat-form-field class="col-3 custom-margin-3">
-									<mat-label>{{'PDP.TEL' | translate}}</mat-label>
-									<input class="form-control" matInput type="phone" name="sous_traitant1_tel"
-										   formControlName="sous_traitant1_tel"
-										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
-										   [required]="isFieldRequired('sous_traitant1_tel')"/>
-									<mat-error *ngIf="isControlHasError('sous_traitant1_tel','required')">
-										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-									</mat-error>
-								</mat-form-field>
+									<mat-form-field class="col-3">
+										<mat-label>{{'PDP.NAME' | translate}}</mat-label>
+										<input class="form-control" matInput type="text" name="name"
+											   formControlName="name"
+											   placeholder="{{'ACTION.ENTER_HERE' | translate}}"/>
+										<mat-error *ngIf="isControlHasError('name', 'required', 'sous_traitant', i)">
+											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+										</mat-error>
+									</mat-form-field>
+									<mat-form-field class="col-3 custom-margin-3">
+										<mat-label>{{'PDP.MAIL' | translate}}
+										</mat-label>
+										<input class="form-control" matInput type="mail" name="mail"
+											   formControlName="mail"
+											   placeholder="{{'ACTION.ENTER_HERE' | translate}}"/>
+										<mat-error *ngIf="isControlHasError('mail', 'required', 'sous_traitant', i)">
+											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+										</mat-error>
+										<mat-error *ngIf="isControlHasError('mail', 'email', 'sous_traitant', i)">
+											<strong>{{ 'AUTH.VALIDATION.INVALID_FIELD' | translate }}</strong>
+										</mat-error>
+									</mat-form-field>
+									<mat-form-field class="col-3 custom-margin-3">
+										<mat-label>{{'PDP.TEL' | translate}}</mat-label>
+										<input class="form-control" matInput type="phone" name="tel"
+											   formControlName="tel"
+											   placeholder="{{'ACTION.ENTER_HERE' | translate}}"/>
+										<mat-error *ngIf="isControlHasError('tel', 'required', 'sous_traitant', i)">
+											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+										</mat-error>
+									</mat-form-field>
+								</ng-container>
 							</div>
 							<div class="row form-row align-items-center">
-								<span class="col-2 font-weight-bold">
-									{{'PDP.SUBCONTRACTOR' | translate}} 2 :
-								</span>
-								<mat-form-field class="col-3">
-									<mat-label>{{'PDP.NAME' | translate}}</mat-label>
-									<input class="form-control" matInput type="text" name="sous_traitant2_name"
-										   formControlName="sous_traitant2_name"
-										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
-										   [required]="isFieldRequired('sous_traitant2_name')"/>
-									<mat-error *ngIf="isControlHasError('sous_traitant2_name','required')">
-										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-									</mat-error>
-								</mat-form-field>
-								<mat-form-field class="col-3 custom-margin-3">
-									<mat-label>{{'PDP.MAIL' | translate}}
-									</mat-label>
-									<input class="form-control" matInput type="mail" name="sous_traitant2_mail"
-										   formControlName="sous_traitant2_mail"
-										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
-										   [required]="isFieldRequired('sous_traitant2_mail')"/>
-									<mat-error *ngIf="isControlHasError('sous_traitant2_mail','required')">
-										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-									</mat-error>
-									<mat-error *ngIf="isControlHasError('sous_traitant2_mail','email')">
-										<strong>{{ 'AUTH.VALIDATION.INVALID_FIELD' | translate }}</strong>
-									</mat-error>
-								</mat-form-field>
-								<mat-form-field class="col-3 custom-margin-3">
-									<mat-label>{{'PDP.TEL' | translate}}</mat-label>
-									<input class="form-control" matInput type="phone" name="sous_traitant2_tel"
-										   formControlName="sous_traitant2_tel"
-										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
-										   [required]="isFieldRequired('sous_traitant2_tel')"/>
-									<mat-error *ngIf="isControlHasError('sous_traitant2_tel','required')">
-										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-									</mat-error>
-								</mat-form-field>
+								<button mat-raised-button type="button" class="pull-left btn-small mt-4" color="info"
+										style="width: 180px"
+										(click)="addSousTraitant()">{{'PDP.ADD_ROW' | translate}}</button>
 							</div>
+							<!--							<div class="row form-row align-items-center">-->
+							<!--								<span class="col-2 font-weight-bold">-->
+							<!--									{{'PDP.SUBCONTRACTOR' | translate}} 2 :-->
+							<!--								</span>-->
+							<!--								<mat-form-field class="col-3">-->
+							<!--									<mat-label>{{'PDP.NAME' | translate}}</mat-label>-->
+							<!--									<input class="form-control" matInput type="text" name="sous_traitant2_name"-->
+							<!--										   formControlName="sous_traitant2_name"-->
+							<!--										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"-->
+							<!--										   [required]="isFieldRequired('sous_traitant2_name')"/>-->
+							<!--									<mat-error *ngIf="isControlHasError('sous_traitant2_name','required')">-->
+							<!--										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>-->
+							<!--									</mat-error>-->
+							<!--								</mat-form-field>-->
+							<!--								<mat-form-field class="col-3 custom-margin-3">-->
+							<!--									<mat-label>{{'PDP.MAIL' | translate}}-->
+							<!--									</mat-label>-->
+							<!--									<input class="form-control" matInput type="mail" name="sous_traitant2_mail"-->
+							<!--										   formControlName="sous_traitant2_mail"-->
+							<!--										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"-->
+							<!--										   [required]="isFieldRequired('sous_traitant2_mail')"/>-->
+							<!--									<mat-error *ngIf="isControlHasError('sous_traitant2_mail','required')">-->
+							<!--										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>-->
+							<!--									</mat-error>-->
+							<!--									<mat-error *ngIf="isControlHasError('sous_traitant2_mail','email')">-->
+							<!--										<strong>{{ 'AUTH.VALIDATION.INVALID_FIELD' | translate }}</strong>-->
+							<!--									</mat-error>-->
+							<!--								</mat-form-field>-->
+							<!--								<mat-form-field class="col-3 custom-margin-3">-->
+							<!--									<mat-label>{{'PDP.TEL' | translate}}</mat-label>-->
+							<!--									<input class="form-control" matInput type="phone" name="sous_traitant2_tel"-->
+							<!--										   formControlName="sous_traitant2_tel"-->
+							<!--										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"-->
+							<!--										   [required]="isFieldRequired('sous_traitant2_tel')"/>-->
+							<!--									<mat-error *ngIf="isControlHasError('sous_traitant2_tel','required')">-->
+							<!--										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>-->
+							<!--									</mat-error>-->
+							<!--								</mat-form-field>-->
+							<!--							</div>-->
 						</div>
 					</div>
 				</div>
