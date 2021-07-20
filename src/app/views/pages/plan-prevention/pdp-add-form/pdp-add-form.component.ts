@@ -148,10 +148,10 @@ export class PdpAddFormComponent implements OnInit {
 			this.patchFormArray(this.instructionsList, 'consignes', [{
 				name: 'type_operation',
 				needTest: true,
-			}], 'has_details');
+			}]);
 		}
 		if (this.EESMoyenDisposition.length > 0) {
-			this.patchFormArray(this.EESMoyenDisposition, 'moyen_disposition_ees');
+			this.patchFormArray(this.EESMoyenDisposition, 'moyen_disposition_ees', [], false);
 		}
 		if (this.traveauxDangereux.length > 0) {
 			this.patchFormArray(this.traveauxDangereux, 'travaux_dangereux');
@@ -226,13 +226,13 @@ export class PdpAddFormComponent implements OnInit {
 		this.cdr.markForCheck();
 	}
 
-	patchFormArray(array, formArrayName, listAddedControls: Array<any> = [], testAtteName = null) {
+	patchFormArray(array, formArrayName, listAddedControls: Array<any> = [], commentDisabled = true) {
 		const FormArray = this.pdpForm.get(formArrayName) as FormArray;
 		for (let i = 0; i < array.length; i++) {
 			const group = new FormGroup({
 				id: new FormControl(array[i].id),
 				answer: new FormControl(null),
-				comment: new FormControl({value: '', disabled: true}),
+				comment: new FormControl({value: '', disabled: commentDisabled}),
 			});
 			listAddedControls.map(v => {
 				if (!v.needTest || (i && v.needTest && array[i].has_details)) {
