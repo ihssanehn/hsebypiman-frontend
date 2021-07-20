@@ -1,6 +1,6 @@
 <form [formGroup]="pdpForm" class="tf-form tf-form--group-seperator-dashed">
 
-	<tf-portlet class="main-portlet-form" id="portlet-ar">
+	<tf-portlet class="main-portlet-form mr-4" id="portlet-ar">
 		<div class="tf-portlet-header ">
 			<span class="title">
 			  <a [routerLink]="['/plan-de-prevention/list']">{{'MENU.SUB_PDP.LIST' | translate}}</a>
@@ -8,7 +8,7 @@
 			  <span class="id-item">{{'MENU.SUB_PDP.ADD' | translate}}</span>
 			</span>
 		</div>
-		<tf-pdp-add-form (onLastStep)="isLastStep($event)" [formStatus]="formStatus"
+		<tf-pdp-add-form class="pl-4 pr-4" (onLastStep)="isLastStep($event)" [formStatus]="formStatus"
 						 [adding]="adding"
 						 [pdpForm]="pdpForm" [_pdp]="pdp"></tf-pdp-add-form>
 	</tf-portlet>
@@ -17,7 +17,7 @@
 	<!--	pdpForm.valid &&-->
 	<button mat-raised-button *ngIf="enableBtn"
 			[ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': formloading}"
-			[disabled]="formloading" class="btn float-right btn-save" (click)="onSubmit()">
+			[disabled]="formloading" class="btn float-right btn-save mr-4" (click)="onSubmit()">
 		{{'ACTION.SAVE' | translate}}
 	</button>
 

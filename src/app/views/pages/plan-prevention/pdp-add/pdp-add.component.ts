@@ -65,13 +65,16 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 		this.pdpForm = this.pdpFB.group({
 			raison_sociale_eu: [null, Validators.required],
 			raison_sociale_tel_eu: [null, Validators.required],
-			sauveteurs_secouriste_travail: [null, Validators.required],
+			sauveteurs_secouriste_travail: [null],
 			pole_qhse: [null],
 			medecin_travail_eu_name: [null],
 			medecin_travail_eu_tel: [null],
 			cse_eu_name: [null],
 			cse_eu_job: [null],
 			cse_eu_tel: [null],
+			hse_eu_name: [null],
+			hse_eu_mail: [null],
+			hse_eu_tel: [null],
 			representant_entreprise_eu_name: [null, Validators.required],
 			representant_entreprise_eu_mail: [null, Validators.email],
 			representant_entreprise_eu_tel: [null, Validators.required],
@@ -85,13 +88,16 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 			is_piman_intervention: [null],
 			sous_traitant1_name: [null],
 			sous_traitant1_tel: [null],
+			sous_traitant1_mail: [null],
 			sous_traitant2_name: [null],
 			sous_traitant2_tel: [null],
+			sous_traitant2_mail: [null],
 
 			label_intervention: [null, Validators.required],
 			lieu_intervention: [null, Validators.required],
 			pdp_intervention_at: [null, Validators.required],
 			horaires_ouverture_site: [null, Validators.required],
+			horaires_fermeture_site: [null, Validators.required],
 
 			is_night_shift: [null],
 			duration_intervention_mp400h: [null],
@@ -114,6 +120,11 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 				formations: new FormControl(null),
 				is_suivi_medical: new FormControl(null),
 				motif_id: new FormControl({value: null, disabled: true}),
+			})]),
+			sous_traitant: new FormArray([new FormGroup({
+				name: new FormControl(''),
+				mail: new FormControl('', Validators.email),
+				tel: new FormControl(''),
 			})]),
 		});
 	}

@@ -60,7 +60,7 @@ export class PdpAddFormComponent implements OnInit {
 	public risques: Array<RisqueModel>;
 	public frequences: Array<PDPFrequences>;
 	displayedColumnsConsignes: string[] = ['consignes', 'comments'];
-	displayedColumnsEPIDisposition: string[] = ['label', 'list', 'eu', 'ee', 'sous-traitant'];
+	displayedColumnsEPIDisposition: string[] = ['label', 'list', 'type'];
 	displayedColumnsEESMoyenDisposition: string[] = ['label', 'comments'];
 	displayedColumnsTravaux: string[] = ['list'];
 	displayedColumnsValidationPlan: string[] = ['company', 'name', 'date', 'participation', 'visa'];
@@ -136,28 +136,22 @@ export class PdpAddFormComponent implements OnInit {
 		this.risques = res.result.data ? res.result.data.risques : [];
 		this.suivisMedicalIntervenants = res.result.data ? res.result.data.intervenant : [];
 		this.frequences = res.result.data ? res.result.data.frequence : [];
-		console.log('here 2');
 		if (this.EPIDispositionList.length > 0) {
 			this.patchFormArray(this.EPIDispositionList, 'epi_disposition', [{
 				name: 'answer_id',
 				needTest: false,
 				isRequired: true
-			}, {name: 'is_eu', needTest: false},
-				{name: 'is_ee', needTest: false},
-				{
-					name: 'is_sous_traitant',
-					needTest: false
-				}
+			}, {name: 'type', needTest: false, isRequired: true}
 			]);
 		}
 		if (this.instructionsList.length > 0) {
 			this.patchFormArray(this.instructionsList, 'consignes', [{
 				name: 'type_operation',
 				needTest: true,
-			}], 'has_details');
+			}]);
 		}
 		if (this.EESMoyenDisposition.length > 0) {
-			this.patchFormArray(this.EESMoyenDisposition, 'moyen_disposition_ees');
+			this.patchFormArray(this.EESMoyenDisposition, 'moyen_disposition_ees', [], false);
 		}
 		if (this.traveauxDangereux.length > 0) {
 			this.patchFormArray(this.traveauxDangereux, 'travaux_dangereux');
@@ -232,13 +226,13 @@ export class PdpAddFormComponent implements OnInit {
 		this.cdr.markForCheck();
 	}
 
-	patchFormArray(array, formArrayName, listAddedControls: Array<any> = [], testAtteName = null) {
+	patchFormArray(array, formArrayName, listAddedControls: Array<any> = [], commentDisabled = true) {
 		const FormArray = this.pdpForm.get(formArrayName) as FormArray;
 		for (let i = 0; i < array.length; i++) {
 			const group = new FormGroup({
 				id: new FormControl(array[i].id),
-				answer: new FormControl(false),
-				comment: new FormControl({value: '', disabled: true}),
+				answer: new FormControl(null),
+				comment: new FormControl({value: '', disabled: commentDisabled}),
 			});
 			listAddedControls.map(v => {
 				if (!v.needTest || (i && v.needTest && array[i].has_details)) {
@@ -304,7 +298,7 @@ export class PdpAddFormComponent implements OnInit {
 
 	makePresenceSiteClientRequired(event) {
 		this.pdpForm.controls['presence_site_client_frequency_id'].setValidators(event.checked ? Validators.required : null);
-		event.checked ? this.pdpForm.controls['presence_site_client_frequency_id'].enable() : this.pdpForm.controls['presence_site_client_frequency_id'].disable()
+		event.value ? this.pdpForm.controls['presence_site_client_frequency_id'].enable() : this.pdpForm.controls['presence_site_client_frequency_id'].disable();
 		this.pdpForm.controls['presence_site_client_frequency_id'].updateValueAndValidity();
 	}
 
@@ -475,6 +469,15 @@ export class PdpAddFormComponent implements OnInit {
 			this.getControlsArrayFormName('intervenants').push(group);
 			this.intervenants.next(this.getControlsArrayFormName('intervenants'));
 		}
+	}
+
+	addSousTraitant() {
+		const group = new FormGroup({
+			name: new FormControl(''),
+			mail: new FormControl('', Validators.email),
+			tel: new FormControl(''),
+		});
+		this.getControlsArrayFormName('sous_traitant').push(group);
 	}
 
 	getControlsArrayFormName(formArrayName) {
