@@ -339,7 +339,7 @@
 		"END": "Fin",
 		"NIGHT_WORK": "Travail de nuit",
 		"MORE_THAN_400H": "Plus de 400h",
-		"PENALTY": "Pénalité",
+		"PENALTY": "Astreinte",
 		"TELEWORKING": "Télétravail",
 		"PRESENCE_ON_CUSTOMER_SITE": "Présence sur site client",
 		"HOW_OFTEN": "À quelle fréquence",
@@ -380,6 +380,8 @@
 		"REINFORCED_MEDICAL_FOLLOW_UP": "Suivi médical renforcé",
 		"ADD_ROW": "Ajouter une ligne",
 		"SUBCONTRACTOR": "Sous-traitant",
+		"YES": "Oui",
+		"NO": "Non",
 		"NOTIF": {
 			"PDP_DELETED": {
 				"TITLE": "Le plan de prévention a été supprimé avec succès"

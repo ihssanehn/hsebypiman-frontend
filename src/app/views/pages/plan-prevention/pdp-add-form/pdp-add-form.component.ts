@@ -304,7 +304,7 @@ export class PdpAddFormComponent implements OnInit {
 
 	makePresenceSiteClientRequired(event) {
 		this.pdpForm.controls['presence_site_client_frequency_id'].setValidators(event.checked ? Validators.required : null);
-		event.checked ? this.pdpForm.controls['presence_site_client_frequency_id'].enable() : this.pdpForm.controls['presence_site_client_frequency_id'].disable()
+		event.value ? this.pdpForm.controls['presence_site_client_frequency_id'].enable() : this.pdpForm.controls['presence_site_client_frequency_id'].disable();
 		this.pdpForm.controls['presence_site_client_frequency_id'].updateValueAndValidity();
 	}
 
