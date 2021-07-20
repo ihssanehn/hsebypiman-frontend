@@ -335,6 +335,8 @@
 		"INTERVENTION_PLACE": "Place of intervention",
 		"PDP_ESTABLISHED_ON": "PDP established on",
 		"DAYTIME_SITE_OPENING_HOURS": "Daytime site opening hours",
+		"DEBUT": "Debut",
+		"END": "End",
 		"NIGHT_WORK": "Night work",
 		"MORE_THAN_400H": "More than 400h",
 		"PENALTY": "Penalty",

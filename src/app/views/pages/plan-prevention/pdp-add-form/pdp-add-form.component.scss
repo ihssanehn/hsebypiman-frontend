@@ -22,3 +22,17 @@
 .custom-margin-3{
 	margin-left: 3%;
 }
+
+.horaire-box{
+	display:flex;
+	flex-flow: row nowrap;
+	align-items: center;
+	margin-top: 2px;
+	span{
+		padding: 1em;
+	}
+	.error-found{
+		font-size: 70%;
+		margin-top: 4px;
+	}
+}

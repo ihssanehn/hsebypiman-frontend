@@ -97,6 +97,7 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 			lieu_intervention: [null, Validators.required],
 			pdp_intervention_at: [null, Validators.required],
 			horaires_ouverture_site: [null, Validators.required],
+			horaires_fermeture_site: [null, Validators.required],
 
 			is_night_shift: [null],
 			duration_intervention_mp400h: [null],
@@ -122,7 +123,7 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 			})]),
 			sous_traitant: new FormArray([new FormGroup({
 				name: new FormControl(''),
-				mail: new FormControl('',  Validators.email),
+				mail: new FormControl('', Validators.email),
 				tel: new FormControl(''),
 			})]),
 		});

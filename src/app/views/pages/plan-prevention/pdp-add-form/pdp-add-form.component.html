@@ -272,7 +272,7 @@
 								 *ngFor="let item of getControlsArrayFormName('sous_traitant'); let i = index">
 								<ng-container [formGroupName]="i">
 									<span class="col-2 font-weight-bold">
-									{{'PDP.SUBCONTRACTOR' | translate}} {{i+1}} :
+									{{'PDP.SUBCONTRACTOR' | translate}} {{i + 1}} :
 								</span>
 									<mat-form-field class="col-3">
 										<mat-label>{{'PDP.NAME' | translate}}</mat-label>
@@ -360,8 +360,8 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="tf-card-form">
-						<div class="row form-row">
-							<mat-form-field class="col-xl-6">
+						<div class="form-row row">
+							<mat-form-field class="col-xl-4">
 								<mat-label>{{'PDP.INTERVENTION_NAME' | translate}}</mat-label>
 								<input class="form-control" matInput type="text" name="label_intervention"
 									   formControlName="label_intervention"
@@ -371,7 +371,7 @@
 									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 								</mat-error>
 							</mat-form-field>
-							<mat-form-field class="col-xl-6">
+							<mat-form-field class="col-xl-4 offset-xl-2">
 								<mat-label>{{'PDP.INTERVENTION_PLACE' | translate}}</mat-label>
 								<input class="form-control" matInput type="text" name="lieu_intervention"
 									   formControlName="lieu_intervention"
@@ -382,7 +382,7 @@
 								</mat-error>
 							</mat-form-field>
 						</div>
-						<div class="row form-row">
+						<div class="form-row row">
 							<mat-form-field class="col-xl-3">
 								<mat-label>{{'PDP.PDP_ESTABLISHED_ON' | translate}}</mat-label>
 								<input matInput class="form-control" mask="d0-M0-0000"
@@ -393,17 +393,77 @@
 									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 								</mat-error>
 							</mat-form-field>
-							<mat-form-field class="col-xl-2">
-								<mat-label>{{'PDP.DAYTIME_SITE_OPENING_HOURS' | translate}}</mat-label>
-								<input class="form-control text-center" type="time"
-									   matInput
-									   [required]="isFieldRequired('horaires_ouverture_site')"
-									   name="horaires_ouverture_site"
-									   formControlName="horaires_ouverture_site">
-								<mat-error *ngIf="isControlHasError('horaires_ouverture_site','required')">
-									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-								</mat-error>
-							</mat-form-field>
+							<div
+								class="col-xl-3 offset-xl-1 mat-form-field ng-tns-c14-2 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-legacy mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label d-flex">
+								<div class="mat-form-field-wrapper">
+									<div class="mat-form-field-flex">
+										<div class="mat-form-field-infix">
+												<span class="mat-form-field-label-wrapper">
+													<label
+														class="mat-form-field-label">{{'PDP.DAYTIME_SITE_OPENING_HOURS' | translate}}</label>
+												</span>
+											<div class="horaire-box">
+												<div>
+													<input class="form-control text-center" type="time"
+														   name="horaires_ouverture_site"
+														   formControlName="horaires_ouverture_site"
+														   [required]="isFieldRequired('horaires_ouverture_site')"
+													/>
+													<mat-error class="error-found"
+														*ngIf="isControlHasError('horaires_ouverture_site','required')">
+														<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+													</mat-error>
+												</div>
+												<span>- </span>
+												<div>
+													<input class="form-control text-center" type="time"
+														   name="horaires_fermeture_site"
+														   formControlName="horaires_fermeture_site"
+														   [required]="isFieldRequired('horaires_fermeture_site')"
+													/>
+													<mat-error class="error-found"
+														*ngIf="isControlHasError('horaires_fermeture_site','required')">
+														<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+													</mat-error>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+<!--							<div-->
+<!--								class="col-xl-3 d-flex flex-column offset-1">-->
+<!--								<small-->
+<!--									class="mb-1 font-weight-bolder">{{'PDP.DAYTIME_SITE_OPENING_HOURS' | translate}}</small>-->
+<!--								<div class="d-flex align-items-center justify-content-center row">-->
+<!--									<mat-form-field class="col-6">-->
+<!--										<mat-label>{{'PDP.DEBUT' | translate}}</mat-label>-->
+<!--										<input class="form-control text-center" type="time"-->
+<!--											   matInput-->
+<!--											   mask="Hh:m0"-->
+<!--											   [required]="isFieldRequired('horaires_ouverture_site')"-->
+<!--											   name="horaires_ouverture_site"-->
+<!--											   formControlName="horaires_ouverture_site">-->
+<!--										<mat-error *ngIf="isControlHasError('horaires_ouverture_site','required')">-->
+<!--											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>-->
+<!--										</mat-error>-->
+<!--										<mat-error *ngIf="isControlHasError('horaires_ouverture_site','min')">-->
+<!--											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }} test</strong>-->
+<!--										</mat-error>-->
+<!--									</mat-form-field>-->
+<!--									<mat-form-field class="col-6">-->
+<!--										<mat-label>{{'PDP.END' | translate}}</mat-label>-->
+<!--										<input class="form-control text-center" type="time"-->
+<!--											   matInput-->
+<!--											   [required]="isFieldRequired('horaires_fermeture_site')"-->
+<!--											   name="horaires_fermeture_site"-->
+<!--											   formControlName="horaires_fermeture_site">-->
+<!--										<mat-error *ngIf="isControlHasError('horaires_fermeture_site','required')">-->
+<!--											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>-->
+<!--										</mat-error>-->
+<!--									</mat-form-field>-->
+<!--								</div>-->
+<!--							</div>-->
 							<div class="col-xl-2 offset-xl-1 d-flex flex-column justify-content-center">
 								<mat-checkbox formControlName="is_night_shift">
 									{{'PDP.NIGHT_WORK' | translate}}</mat-checkbox>
@@ -413,12 +473,12 @@
 									{{'PDP.MORE_THAN_400H' | translate}} ?
 								</mat-checkbox>
 							</div>
-							<div class="col-xl-2 d-flex flex-column justify-content-center">
+						</div>
+						<div class="row form-row">
+							<div class="col-xl-1 d-flex flex-column justify-content-center">
 								<mat-checkbox formControlName="is_astreinte">
 									{{'PDP.PENALTY' | translate}}</mat-checkbox>
 							</div>
-						</div>
-						<div class="row form-row">
 							<div class="col-xl-2 d-flex flex-column justify-content-center">
 								<mat-checkbox formControlName="is_teletravail">
 									{{'PDP.TELEWORKING' | translate}}</mat-checkbox>
@@ -429,7 +489,7 @@
 									{{'PDP.PRESENCE_ON_CUSTOMER_SITE' | translate}}</mat-checkbox>
 							</div>
 
-							<mat-form-field class="col-xl-4 pdp-custom-select" appearance="standard">
+							<mat-form-field class="col-xl-3 pdp-custom-select" appearance="standard">
 								<mat-label>{{'PDP.HOW_OFTEN' | translate}} ?</mat-label>
 								<mat-select placeholder="{{'PDP.SELECT_AN_ITEM' | translate}}"
 											formControlName="presence_site_client_frequency_id"
@@ -441,7 +501,7 @@
 									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 								</mat-error>
 							</mat-form-field>
-							<mat-form-field class="col-xl-4">
+							<mat-form-field class="col-xl-3 offset-xl-1">
 								<mat-label>{{'PDP.PREDICTABLE_AVERAGE_WORKFORCE' | translate}}</mat-label>
 								<input class="form-control" matInput type="number" name="effectif_moyen"
 									   formControlName="effectif_moyen"
