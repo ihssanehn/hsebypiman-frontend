@@ -758,9 +758,13 @@
 								<th mat-header-cell *matHeaderCellDef> {{'PDP.LIST_OF_WORKS' | translate}} </th>
 								<td mat-cell *matCellDef="let element; let index = index" [formGroupName]="index">
 									<div class="m-2 travaux-checkbox-container">
-										<mat-checkbox [value]="element.id"
-													  (change)="allowOtherFields('travaux_dangereux', index, [], $event.checked)"
-													  formControlName="answer">{{element.label}}</mat-checkbox>
+										<label>{{element.label}}</label>
+										<mat-radio-group formControlName="answer" class="ml-3">
+											<mat-radio-button
+												[value]="element.id">{{'PDP.YES' | translate}}</mat-radio-button>
+											<mat-radio-button
+												[value]="false">{{'PDP.NO' | translate}}</mat-radio-button>
+										</mat-radio-group>
 									</div>
 								</td>
 							</ng-container>
