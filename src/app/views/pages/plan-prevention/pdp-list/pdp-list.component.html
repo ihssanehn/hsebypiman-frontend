@@ -131,22 +131,6 @@
 
 <mat-menu #actionMenu="matMenu" class="action-menu">
 	<ng-template matMenuContent let-chantier="chantier" let-status="status">
-		<!--		<button *ngIf="status.code != 'ARCHIV'" mat-icon-button color="primary"-->
-		<!--				matTooltip="{{'ACTION.SIGN' | translate}}" (click)="signAr(ar_id)">-->
-		<!--			<mat-icon>gesture</mat-icon>-->
-		<!--		</button>-->
-		<!--		<ng-container *ngxPermissionsOnly="['analyse_risque_canAdd']">-->
-		<!--			<button mat-icon-button color="info" *ngIf="chantier.status.code != 'TERMINE'"-->
-		<!--					matTooltip="{{'ACTION.DUPLICATE' | translate}}" (click)="duplicateAr(ar_id, chantier)">-->
-		<!--				<mat-icon>filter_none</mat-icon>-->
-		<!--			</button>-->
-		<!--		</ng-container>-->
-		<!--		<button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}">-->
-		<!--			<mat-icon>visibility</mat-icon>-->
-		<!--		</button>-->
-		<!--		<button mat-icon-button color="info" disabled matTooltip="{{'ACTION.DOWNLOAD' | translate}}">-->
-		<!--			<mat-icon>cloud_download</mat-icon>-->
-		<!--		</button>-->
 		<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editPdp(pdp_id)">
 			<mat-icon>edit</mat-icon>
 		</button>
