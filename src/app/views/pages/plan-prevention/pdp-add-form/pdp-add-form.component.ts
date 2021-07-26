@@ -84,17 +84,18 @@ export class PdpAddFormComponent implements OnInit {
 				title: 'EU',
 				type: 'ee',
 				need_text_area_in_title: true,
-				required: true
+				required: true,
+				deletable : false
 			},
 			{
 				title: 'EE',
 				type: 'eu',
 				need_text_area_in_title: false,
 				company_name: 'PIMAN Consultants',
-				required: true
+				required: true,
+				deletable : false
 			},
-			{title: 'Sous-traitant 1', type: 'ss1', need_text_area_in_title: true, required: false},
-			{title: 'Sous-traitant 2', type: 'ss2', need_text_area_in_title: true, required: false},
+			{title: 'Sous-traitant 1', type: 'ss1', need_text_area_in_title: true, required: false, deletable : true},
 		];
 		if (this.validationPlan.length > 0) {
 			const formArray = this.pdpForm.get('validations') as FormArray;

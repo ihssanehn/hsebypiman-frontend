@@ -955,7 +955,7 @@
 								<ng-container matColumnDef="company">
 									<th mat-header-cell *matHeaderCellDef><b>{{'PDP.COMPANIES' | translate}} </b></th>
 									<td mat-cell *matCellDef="let element; let index = index" [formGroupName]="index"
-										[width]="'30%'">
+										[width]="'35%'">
 										<div class="d-flex align-items-center">
 											<b>{{element?.title}} :
 												<ng-container
@@ -981,7 +981,8 @@
 											class="d-flex">({{'PDP.HEAD_OF_ESTABLISHMENT_OR_HIS_DELEGATE' | translate}}
 											)</small></b>
 									</th>
-									<td mat-cell *matCellDef="let element; let index = index" [formGroupName]="index">
+									<td mat-cell *matCellDef="let element; let index = index" [formGroupName]="index"
+										[width]="'30%'">
 										<mat-form-field [style.fontSize.px]=13>
 											<mat-label>{{'PDP.FULLNAME' | translate}}</mat-label>
 											<input class="form-control" matInput type="text"
@@ -1042,7 +1043,7 @@
 									<th mat-header-cell
 										*matHeaderCellDef>
 										<b>{{'PDP.VISA_PRECEDED_BY_THE_WORDS_READ_AND_APPROVED' | translate}}</b></th>
-									<td mat-cell *matCellDef="let element">
+									<td mat-cell *matCellDef="let element" [width]="'15%'">
 										<b>{{'PDP.READ_AND_APPROVED' | translate}}</b>
 									</td>
 								</ng-container>
