@@ -68,7 +68,7 @@ export class PdpAddFormComponent implements OnInit {
 	displayedColumnsEESMoyenDisposition: string[] = ['label', 'comments'];
 	displayedColumnsTravaux: string[] = ['list'];
 	displayedColumnsValidationPlan: string[] = ['company', 'name', 'date', 'participation', 'visa', 'actions'];
-	displayedColumnsIntervenants: string[] = ['last', 'first', 'contact', 'formations', 'suivis_médical'];
+	displayedColumnsIntervenants: string[] = ['last', 'first', 'contact', 'formations', 'suivis_médical', 'actions'];
 
 
 	dataSource = new BehaviorSubject<AbstractControl[]>([]);
@@ -469,7 +469,7 @@ export class PdpAddFormComponent implements OnInit {
 				contact: new FormControl('', Validators.required),
 				formations: new FormControl(null),
 				is_suivi_medical: new FormControl(null),
-				motif: new FormControl(null),
+				motif_id: new FormControl(null),
 			});
 			this.getControlsArrayFormName('intervenants').push(group);
 			this.intervenants.next(this.getControlsArrayFormName('intervenants'));
@@ -501,10 +501,11 @@ export class PdpAddFormComponent implements OnInit {
 		this.validations.next(this.getControlsArrayFormName('validations'));
 	}
 
-	deleteElemntInArray(index, formArrayName) {
-		this.getControlsArrayFormName(formArrayName).splice(index);
-		this.validations.next(this.getControlsArrayFormName('validations'));
-
+	deleteElemntInArray(index, formArrayName, array: BehaviorSubject<AbstractControl[]> = null) {
+		this.getControlsArrayFormName(formArrayName).splice(index, 1);
+		if (array) {
+			array.next(this.getControlsArrayFormName(formArrayName));
+		}
 	}
 
 	getControlsArrayFormName(formArrayName) {

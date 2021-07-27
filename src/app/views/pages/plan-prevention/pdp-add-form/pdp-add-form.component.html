@@ -1058,7 +1058,7 @@
 									<mat-header-cell *matHeaderCellDef></mat-header-cell>
 									<td mat-cell *matCellDef="let row; let element; let index = index">
 										<button mat-icon-button color="warn"
-												(click)="deleteElemntInArray(index, 'validations')"
+												(click)="deleteElemntInArray(index, 'validations', validations)"
 												*ngIf="getControlsArrayFormName('validations')[index].get('deletable').value"
 												matTooltip="{{'ACTION.DELETE' | translate}}">
 											<mat-icon>delete</mat-icon>
@@ -1152,10 +1152,13 @@
 										<b>{{'PDP.REINFORCED_MEDICAL_FOLLOW_UP' | translate}}</b></th>
 									<td mat-cell *matCellDef="let element; let index = index" [formGroupName]="index">
 										<div class="d-flex flex-column">
-											<mat-checkbox class="mt-3" formControlName="is_suivi_medical"
-														  (change)="togglePartInspectionAt($event.checked, index, 'intervenants', 'motif')"
-											>{{'COMMON.YES' | translate}} ?
-											</mat-checkbox>
+											<mat-radio-group formControlName="is_suivi_medical" class="mt-3"
+															 (change)="togglePartInspectionAt($event.value, index, 'intervenants', 'motif_id')">
+												<mat-radio-button
+													[value]="true">{{'PDP.YES' | translate}}</mat-radio-button>
+												<mat-radio-button
+													[value]="false">{{'PDP.NO' | translate}}</mat-radio-button>
+											</mat-radio-group>
 											<mat-select class="mt-3 mb-3"
 														placeholder="{{'PDP.SELECT_AN_ITEM' | translate}}"
 														formControlName="motif_id"
@@ -1169,6 +1172,16 @@
 												{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}
 											</mat-error>
 										</div>
+									</td>
+								</ng-container>
+								<ng-container matColumnDef="actions">
+									<mat-header-cell *matHeaderCellDef></mat-header-cell>
+									<td mat-cell *matCellDef="let row; let element; let index = index">
+										<button mat-icon-button color="warn"
+												(click)="deleteElemntInArray(index, 'intervenants', intervenants)"
+												matTooltip="{{'ACTION.DELETE' | translate}}">
+											<mat-icon>delete</mat-icon>
+										</button>
 									</td>
 								</ng-container>
 								<tr mat-header-row *matHeaderRowDef="displayedColumnsIntervenants"></tr>
