@@ -30,6 +30,9 @@ export class PdpAddFormComponent implements OnInit {
 			if (this.getControlsArrayFormName('intervenants')) {
 				this.intervenants.next(this.getControlsArrayFormName('intervenants'));
 			}
+			if (this.getControlsArrayFormName('validations')) {
+				this.validations.next(this.getControlsArrayFormName('validations'));
+			}
 			// this.subPDPFormValidator();
 		}
 	}
@@ -55,6 +58,7 @@ export class PdpAddFormComponent implements OnInit {
 	public EESMoyenDisposition: Array<DispositionModel>;
 	public traveauxDangereux: Array<TraveauxDangereuxModel>;
 	public validationPlan: Array<any> = [];
+	public validations = new BehaviorSubject<AbstractControl[]>([]);
 	public intervenants = new BehaviorSubject<AbstractControl[]>([]);
 	public suivisMedicalIntervenants: Array<any> = [{}];
 	public risques: Array<RisqueModel>;
@@ -63,8 +67,8 @@ export class PdpAddFormComponent implements OnInit {
 	displayedColumnsEPIDisposition: string[] = ['label', 'list', 'type'];
 	displayedColumnsEESMoyenDisposition: string[] = ['label', 'comments'];
 	displayedColumnsTravaux: string[] = ['list'];
-	displayedColumnsValidationPlan: string[] = ['company', 'name', 'date', 'participation', 'visa'];
-	displayedColumnsIntervenants: string[] = ['last', 'first', 'contact', 'formations', 'suivis_médical'];
+	displayedColumnsValidationPlan: string[] = ['company', 'name', 'date', 'participation', 'visa', 'actions'];
+	displayedColumnsIntervenants: string[] = ['last', 'first', 'contact', 'formations', 'suivis_médical', 'actions'];
 
 
 	dataSource = new BehaviorSubject<AbstractControl[]>([]);
@@ -79,38 +83,39 @@ export class PdpAddFormComponent implements OnInit {
 	ngOnInit() {
 		this.triggerResize();
 		this.getPDPConsignes();
-		this.validationPlan = [
-			{
-				title: 'EU',
-				type: 'ee',
-				need_text_area_in_title: true,
-				required: true
-			},
-			{
-				title: 'EE',
-				type: 'eu',
-				need_text_area_in_title: false,
-				company_name: 'PIMAN Consultants',
-				required: true
-			},
-			{title: 'Sous-traitant 1', type: 'ss1', need_text_area_in_title: true, required: false},
-			{title: 'Sous-traitant 2', type: 'ss2', need_text_area_in_title: true, required: false},
-		];
-		if (this.validationPlan.length > 0) {
-			const formArray = this.pdpForm.get('validations') as FormArray;
-			for (let i = 0; i < this.validationPlan.length; i++) {
-				const group = new FormGroup({
-					need_text_area_in_title: new FormControl(this.validationPlan[i].need_text_area_in_title),
-					company_name: new FormControl(this.validationPlan[i].company_name, this.validationPlan[i].required ? Validators.required : null),
-					full_name: new FormControl('', this.validationPlan[i].required ? Validators.required : null),
-					validation_at: new FormControl(null, this.validationPlan[i].required ? Validators.required : null),
-					type: new FormControl(this.validationPlan[i].type, this.validationPlan[i].required ? Validators.required : null),
-					is_part_inspection: new FormControl(null),
-					part_inspection_at: new FormControl({value: null, disabled: true}),
-				});
-				formArray.push(group);
-			}
-		}
+		// this.validationPlan = [
+		// 	{
+		// 		title: 'EU',
+		// 		type: 'ee',
+		// 		need_text_area_in_title: true,
+		// 		required: true,
+		// 		deletable: false
+		// 	},
+		// 	{
+		// 		title: 'EE',
+		// 		type: 'eu',
+		// 		need_text_area_in_title: false,
+		// 		company_name: 'PIMAN Consultants',
+		// 		required: true,
+		// 		deletable: false
+		// 	},
+		// 	{title: 'Sous-traitant 1', type: 'ss1', need_text_area_in_title: true, required: false, deletable: true},
+		// ];
+		// if (this.validationPlan.length > 0) {
+		// 	const formArray = this.pdpForm.get('validations') as FormArray;
+		// 	for (let i = 0; i < this.validationPlan.length; i++) {
+		// 		const group = new FormGroup({
+		// 			need_text_area_in_title: new FormControl(this.validationPlan[i].need_text_area_in_title),
+		// 			company_name: new FormControl(this.validationPlan[i].company_name, this.validationPlan[i].required ? Validators.required : null),
+		// 			full_name: new FormControl('', this.validationPlan[i].required ? Validators.required : null),
+		// 			validation_at: new FormControl(null, this.validationPlan[i].required ? Validators.required : null),
+		// 			type: new FormControl(this.validationPlan[i].type, this.validationPlan[i].required ? Validators.required : null),
+		// 			is_part_inspection: new FormControl(null),
+		// 			part_inspection_at: new FormControl({value: null, disabled: true}),
+		// 		});
+		// 		formArray.push(group);
+		// 	}
+		// }
 	}
 
 	// subPDPFormValidator() {
@@ -464,7 +469,7 @@ export class PdpAddFormComponent implements OnInit {
 				contact: new FormControl('', Validators.required),
 				formations: new FormControl(null),
 				is_suivi_medical: new FormControl(null),
-				motif: new FormControl(null),
+				motif_id: new FormControl(null),
 			});
 			this.getControlsArrayFormName('intervenants').push(group);
 			this.intervenants.next(this.getControlsArrayFormName('intervenants'));
@@ -478,6 +483,29 @@ export class PdpAddFormComponent implements OnInit {
 			tel: new FormControl(''),
 		});
 		this.getControlsArrayFormName('sous_traitant').push(group);
+	}
+
+	addValidationSousTraitant() {
+		const group = new FormGroup({
+			need_text_area_in_title: new FormControl(true),
+			title: new FormControl('Sous-traitant'),
+			company_name: new FormControl(''),
+			full_name: new FormControl(''),
+			validation_at: new FormControl(null),
+			type: new FormControl('ss'),
+			deletable: new FormControl(true),
+			is_part_inspection: new FormControl(null),
+			part_inspection_at: new FormControl({value: null, disabled: true}),
+		});
+		this.getControlsArrayFormName('validations').push(group);
+		this.validations.next(this.getControlsArrayFormName('validations'));
+	}
+
+	deleteElemntInArray(index, formArrayName, array: BehaviorSubject<AbstractControl[]> = null) {
+		this.getControlsArrayFormName(formArrayName).splice(index, 1);
+		if (array) {
+			array.next(this.getControlsArrayFormName(formArrayName));
+		}
 	}
 
 	getControlsArrayFormName(formArrayName) {
