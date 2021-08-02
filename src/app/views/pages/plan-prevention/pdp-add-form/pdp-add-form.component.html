@@ -555,7 +555,7 @@
 											<mat-radio-group formControlName="answer" class="ml-3"
 															 (change)="allowOtherFields('consignes', index, ['type_operation'], $event.value)">
 												<mat-radio-button
-													[value]="element.id">{{'PDP.YES' | translate}}</mat-radio-button>
+													[value]="true">{{'PDP.YES' | translate}}</mat-radio-button>
 												<mat-radio-button
 													[value]="false">{{'PDP.NO' | translate}}</mat-radio-button>
 											</mat-radio-group>
@@ -616,7 +616,7 @@
 											<mat-radio-group formControlName="answer" class="ml-3"
 															 (change)="allowOtherFields('epi_disposition', index, ['answer_id', 'type'], $event.value); element?.items?.length === 0 ? makeAnswerIDUnRequiredinOtherPart(index) : null">
 												<mat-radio-button
-													[value]="element.id">{{'PDP.YES' | translate}}</mat-radio-button>
+													[value]="true">{{'PDP.YES' | translate}}</mat-radio-button>
 												<mat-radio-button
 													[value]="false">{{'PDP.NO' | translate}}</mat-radio-button>
 											</mat-radio-group>
@@ -711,7 +711,7 @@
 											<label>{{element.label}} : </label>
 											<mat-radio-group formControlName="answer" class="ml-3">
 												<mat-radio-button
-													[value]="element.id">{{'PDP.YES' | translate}}</mat-radio-button>
+													[value]="true">{{'PDP.YES' | translate}}</mat-radio-button>
 												<mat-radio-button
 													[value]="false">{{'PDP.NO' | translate}}</mat-radio-button>
 											</mat-radio-group>
@@ -761,7 +761,7 @@
 										<label>{{element.label}}</label>
 										<mat-radio-group formControlName="answer" class="ml-3">
 											<mat-radio-button
-												[value]="element.id">{{'PDP.YES' | translate}}</mat-radio-button>
+												[value]="true">{{'PDP.YES' | translate}}</mat-radio-button>
 											<mat-radio-button
 												[value]="false">{{'PDP.NO' | translate}}</mat-radio-button>
 										</mat-radio-group>
