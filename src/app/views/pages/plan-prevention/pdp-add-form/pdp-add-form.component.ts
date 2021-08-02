@@ -469,7 +469,7 @@ export class PdpAddFormComponent implements OnInit {
 				contact: new FormControl('', Validators.required),
 				formations: new FormControl(null),
 				is_suivi_medical: new FormControl(null),
-				motif_id: new FormControl(null),
+				motif_id: new FormControl({value: null, disabled: true}),
 			});
 			this.getControlsArrayFormName('intervenants').push(group);
 			this.intervenants.next(this.getControlsArrayFormName('intervenants'));
