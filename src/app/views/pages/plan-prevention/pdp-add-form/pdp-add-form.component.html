@@ -286,7 +286,7 @@
 											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 										</mat-error>
 									</mat-form-field>
-									<mat-form-field class="col-3 custom-margin-3">
+									<mat-form-field class="col-3">
 										<mat-label>{{'PDP.MAIL' | translate}}
 										</mat-label>
 										<input class="form-control" matInput type="mail" name="mail"
@@ -299,7 +299,7 @@
 											<strong>{{ 'AUTH.VALIDATION.INVALID_FIELD' | translate }}</strong>
 										</mat-error>
 									</mat-form-field>
-									<mat-form-field class="col-3 custom-margin-3">
+									<mat-form-field class="col-3">
 										<mat-label>{{'PDP.TEL' | translate}}</mat-label>
 										<input class="form-control" matInput type="phone" name="tel"
 											   formControlName="tel"
@@ -308,6 +308,13 @@
 											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 										</mat-error>
 									</mat-form-field>
+									<div class="col-1">
+										<button mat-icon-button color="warn"
+												(click)="deleteElemntInArray(i, 'sous_traitant')"
+												matTooltip="{{'ACTION.DELETE' | translate}}">
+											<mat-icon>delete</mat-icon>
+										</button>
+									</div>
 								</ng-container>
 							</div>
 							<div class="row form-row align-items-center">
