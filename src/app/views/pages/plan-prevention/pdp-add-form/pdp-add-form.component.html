@@ -1,6 +1,9 @@
 <ng-container [formGroup]="pdpForm">
 	<div class="row" [hidden]="adding && partHided(1)">
 		<div class="col-12">
+			<div class="tf-heading tf-heading--xs">
+				{{'PDP.BEFORE_STEP_1_DESC' | translate}}
+			</div>
 			<div class="tf-heading tf-heading--md">|
 				1 {{'PDP.EMERGENCY_CONTACTS_AND_NUMBERS_IN_THE_EVENT_OF_AN_ACCIDENT' | translate}}</div>
 			<div class="row">

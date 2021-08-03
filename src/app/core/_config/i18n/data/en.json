@@ -311,6 +311,7 @@
 	},
 	"PDP": {
 		"COMPANY": "Company",
+		"BEFORE_STEP_1_DESC": "As a reminder: User company (EU) = Client / External company (EE) = PIMAN",
 		"EMERGENCY_CONTACTS_AND_NUMBERS_IN_THE_EVENT_OF_AN_ACCIDENT": "Emergency contacts and numbers in the event of an accident",
 		"RAISON_SOCIALE_EU": "Corporate name",
 		"CSE": "CSE",
