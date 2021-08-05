@@ -49,8 +49,8 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 							.subscribe(async res => {
 								this.pdp = res.result.data;
 								this.pdpForm.patchValue(this.pdp);
+								console.log(this.pdpForm);
 								this.enableBtn = true;
-								// this.formPathValues(this.pdp);
 								this.cdr.markForCheck();
 							});
 					} else {
@@ -60,6 +60,7 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 			);
 		this.subscriptions.push(routeSubscription);
 	}
+
 
 	createForm() {
 		this.pdpForm = this.pdpFB.group({
@@ -147,19 +148,8 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 					part_inspection_at: new FormControl({value: null, disabled: true}),
 				})
 			]),
-			intervenants: new FormArray([new FormGroup({
-				first_name: new FormControl('', Validators.required),
-				last_name: new FormControl('', Validators.required),
-				contact: new FormControl('', Validators.required),
-				formations: new FormControl(null),
-				is_suivi_medical: new FormControl(null),
-				motif_id: new FormControl({value: null, disabled: true}),
-			})]),
-			sous_traitant: new FormArray([new FormGroup({
-				name: new FormControl(''),
-				mail: new FormControl('', Validators.email),
-				tel: new FormControl(''),
-			})]),
+			intervenants: this.pdpFB.array([]),
+			sous_traitant: this.pdpFB.array([])
 		});
 	}
 

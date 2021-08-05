@@ -32,6 +32,7 @@ export class Pdp {
 	representant_entreprise_eu_name?: string;
 	representant_entreprise_eu_tel?: string;
 	sauveteurs_secouriste_travail?: string;
+	sous_traitant?: Array<any>;
 	sous_traitant1_name?: string;
 	sous_traitant1_tel?: string;
 	sous_traitant2_name?: string;

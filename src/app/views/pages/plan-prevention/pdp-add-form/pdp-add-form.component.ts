@@ -27,9 +27,6 @@ export class PdpAddFormComponent implements OnInit {
 	set pdpFormSetter(value) {
 		if (value != null) {
 			this.pdpForm = value;
-			if (this.getControlsArrayFormName('intervenants')) {
-				this.intervenants.next(this.getControlsArrayFormName('intervenants'));
-			}
 			if (this.getControlsArrayFormName('validations')) {
 				this.validations.next(this.getControlsArrayFormName('validations'));
 			}
@@ -531,11 +528,20 @@ export class PdpAddFormComponent implements OnInit {
 		}
 		if (pdp.intervenants) {
 			const intervenantsArray: FormArray = this.pdpForm.get('intervenants') as FormArray;
+			pdp.intervenants.map(v => {
+				(this.pdpForm.get('intervenants') as FormArray).push(this.FB.group({...v}));
+			});
 			intervenantsArray.controls.map((c: FormGroup) => {
-				if (c.get('is_suivi_medical').value) {
-					c.get('motif_id').enable();
-					c.updateValueAndValidity();
-				}
+				c.get('is_suivi_medical').value ? c.get('motif_id').enable() : c.get('motif_id').disable();
+				c.updateValueAndValidity();
+			});
+			this.intervenants.next(this.getControlsArrayFormName('intervenants'));
+		}
+		if (pdp.sous_traitant && pdp.sous_traitant.length > 0) {
+			pdp.sous_traitant.map(v => {
+				(this.pdpForm.get('sous_traitant') as FormArray).push(this.FB.group({
+					...v
+				}));
 			});
 		}
 		if (pdp.pdp_consigne_ee) {
