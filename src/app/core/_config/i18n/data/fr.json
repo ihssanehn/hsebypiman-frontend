@@ -381,6 +381,7 @@
 		"REINFORCED_MEDICAL_FOLLOW_UP": "Suivi médical renforcé",
 		"ADD_ROW": "Ajouter une ligne",
 		"SUBCONTRACTOR": "Sous-traitant",
+		"ONE_SITUATION_REQUIRED": "Vous devez sélectionner au moins une situation",
 		"YES": "Oui",
 		"NO": "Non",
 		"NOTIF": {

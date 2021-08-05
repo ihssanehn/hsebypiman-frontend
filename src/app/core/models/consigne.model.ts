@@ -35,19 +35,25 @@ export class TraveauxDangereuxModel {
 export class RisqueModel {
 	id?: number;
 	label?: string;
+	is_always_true?: boolean;
+	default_responsable?: Array<string>;
 	slug?: string;
 	ordre?: number;
 	active?: boolean;
 	creator_id?: number;
 	is_other?: boolean;
+	is_required_situation?: boolean;
+	answer?: boolean;
 	moyen?: Array<RisqueMoyenModel>;
 	situation?: Array<RisqueMoyenModel>;
 	other_pdp_moyen_risque?: Array<string>;
 }
 
-class RisqueMoyenModel {
+export class RisqueMoyenModel {
 	id?: number;
 	label?: string;
+	answer?: string;
+	is_selected?: boolean;
 	slug?: string;
 	ordre?: number;
 	active?: boolean;
@@ -63,6 +69,7 @@ class RisqueMoyenModel {
 class RisqueSubMoyenModel {
 	id?: number;
 	label?: string;
+	is_selected?: boolean;
 	slug?: string;
 	ordre?: number;
 	active?: boolean;

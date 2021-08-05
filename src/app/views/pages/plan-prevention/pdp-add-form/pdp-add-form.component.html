@@ -270,55 +270,60 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="tf-card-form">
-							<div class="row form-row align-items-center"
-								 formArrayName="sous_traitant"
-								 *ngFor="let item of getControlsArrayFormName('sous_traitant'); let i = index">
-								<ng-container [formGroupName]="i">
+							<ng-container *ngIf="getControlsArrayFormName('sous_traitant').length > 0">
+								<div class="row form-row align-items-center"
+									 formArrayName="sous_traitant"
+									 *ngFor="let item of getControlsArrayFormName('sous_traitant'); let i = index">
+									<ng-container [formGroupName]="i">
 									<span class="col-2 font-weight-bold">
 									{{'PDP.SUBCONTRACTOR' | translate}} {{i + 1}} :
 								</span>
-									<mat-form-field class="col-3">
-										<mat-label>{{'PDP.NAME' | translate}}</mat-label>
-										<input class="form-control" matInput type="text" name="name"
-											   formControlName="name"
-											   placeholder="{{'ACTION.ENTER_HERE' | translate}}"/>
-										<mat-error *ngIf="isControlHasError('name', 'required', 'sous_traitant', i)">
-											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-										</mat-error>
-									</mat-form-field>
-									<mat-form-field class="col-3">
-										<mat-label>{{'PDP.MAIL' | translate}}
-										</mat-label>
-										<input class="form-control" matInput type="mail" name="mail"
-											   formControlName="mail"
-											   placeholder="{{'ACTION.ENTER_HERE' | translate}}"/>
-										<mat-error *ngIf="isControlHasError('mail', 'required', 'sous_traitant', i)">
-											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-										</mat-error>
-										<mat-error *ngIf="isControlHasError('mail', 'email', 'sous_traitant', i)">
-											<strong>{{ 'AUTH.VALIDATION.INVALID_FIELD' | translate }}</strong>
-										</mat-error>
-									</mat-form-field>
-									<mat-form-field class="col-3">
-										<mat-label>{{'PDP.TEL' | translate}}</mat-label>
-										<input class="form-control" matInput type="phone" name="tel"
-											   formControlName="tel"
-											   placeholder="{{'ACTION.ENTER_HERE' | translate}}"/>
-										<mat-error *ngIf="isControlHasError('tel', 'required', 'sous_traitant', i)">
-											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-										</mat-error>
-									</mat-form-field>
-									<div class="col-1">
-										<button mat-icon-button color="warn"
-												(click)="deleteElemntInArray(i, 'sous_traitant')"
-												matTooltip="{{'ACTION.DELETE' | translate}}">
-											<mat-icon>delete</mat-icon>
-										</button>
-									</div>
-								</ng-container>
-							</div>
+										<mat-form-field class="col-3">
+											<mat-label>{{'PDP.NAME' | translate}}</mat-label>
+											<input class="form-control" matInput type="text" name="name"
+												   formControlName="name"
+												   placeholder="{{'ACTION.ENTER_HERE' | translate}}"/>
+											<mat-error
+												*ngIf="isControlHasError('name', 'required', 'sous_traitant', i)">
+												<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+											</mat-error>
+										</mat-form-field>
+										<mat-form-field class="col-3">
+											<mat-label>{{'PDP.MAIL' | translate}}
+											</mat-label>
+											<input class="form-control" matInput type="mail" name="mail"
+												   formControlName="mail"
+												   placeholder="{{'ACTION.ENTER_HERE' | translate}}"/>
+											<mat-error
+												*ngIf="isControlHasError('mail', 'required', 'sous_traitant', i)">
+												<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+											</mat-error>
+											<mat-error *ngIf="isControlHasError('mail', 'email', 'sous_traitant', i)">
+												<strong>{{ 'AUTH.VALIDATION.INVALID_FIELD' | translate }}</strong>
+											</mat-error>
+										</mat-form-field>
+										<mat-form-field class="col-3">
+											<mat-label>{{'PDP.TEL' | translate}}</mat-label>
+											<input class="form-control" matInput type="phone" name="tel"
+												   formControlName="tel"
+												   placeholder="{{'ACTION.ENTER_HERE' | translate}}"/>
+											<mat-error *ngIf="isControlHasError('tel', 'required', 'sous_traitant', i)">
+												<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+											</mat-error>
+										</mat-form-field>
+										<div class="col-1">
+											<button mat-icon-button color="warn"
+													(click)="deleteElemntInArray(i, 'sous_traitant')"
+													matTooltip="{{'ACTION.DELETE' | translate}}">
+												<mat-icon>delete</mat-icon>
+											</button>
+										</div>
+									</ng-container>
+								</div>
+							</ng-container>
 							<div class="row form-row align-items-center">
-								<button mat-raised-button type="button" class="pull-left btn-small mt-4" color="info"
+								<button mat-raised-button type="button" class="pull-left btn-small" color="info"
+										[ngClass]="{'mt-4' : getControlsArrayFormName('sous_traitant')?.length > 0}"
 										style="width: 180px"
 										(click)="addSousTraitant()">{{'PDP.ADD_ROW' | translate}}</button>
 							</div>
@@ -477,15 +482,15 @@
 							<div class="col-xl-2 offset-xl-1 d-flex flex-column justify-content-center">
 								<label>{{'PDP.NIGHT_WORK' | translate}}</label>
 								<mat-radio-group formControlName="is_night_shift">
-									<mat-radio-button [value]="true">{{'PDP.YES' | translate}}</mat-radio-button>
-									<mat-radio-button [value]="false">{{'PDP.NO' | translate}}</mat-radio-button>
+									<mat-radio-button [value]="1">{{'PDP.YES' | translate}}</mat-radio-button>
+									<mat-radio-button [value]="0">{{'PDP.NO' | translate}}</mat-radio-button>
 								</mat-radio-group>
 							</div>
 							<div class="col-xl-2 d-flex flex-column justify-content-center">
 								<label>{{'PDP.MORE_THAN_400H' | translate}} ?</label>
 								<mat-radio-group formControlName="duration_intervention_mp400h">
-									<mat-radio-button [value]="true">{{'PDP.YES' | translate}}</mat-radio-button>
-									<mat-radio-button [value]="false">{{'PDP.NO' | translate}}</mat-radio-button>
+									<mat-radio-button [value]="1">{{'PDP.YES' | translate}}</mat-radio-button>
+									<mat-radio-button [value]="0">{{'PDP.NO' | translate}}</mat-radio-button>
 								</mat-radio-group>
 							</div>
 						</div>
@@ -493,23 +498,23 @@
 							<div class="col-xl-2 d-flex flex-column justify-content-center">
 								<label>{{'PDP.PENALTY' | translate}}</label>
 								<mat-radio-group formControlName="is_astreinte">
-									<mat-radio-button [value]="true">{{'PDP.YES' | translate}}</mat-radio-button>
-									<mat-radio-button [value]="false">{{'PDP.NO' | translate}}</mat-radio-button>
+									<mat-radio-button [value]="1">{{'PDP.YES' | translate}}</mat-radio-button>
+									<mat-radio-button [value]="0">{{'PDP.NO' | translate}}</mat-radio-button>
 								</mat-radio-group>
 							</div>
 							<div class="col-xl-2 d-flex flex-column justify-content-center">
 								<label>{{'PDP.TELEWORKING' | translate}}</label>
 								<mat-radio-group formControlName="is_teletravail">
-									<mat-radio-button [value]="true">{{'PDP.YES' | translate}}</mat-radio-button>
-									<mat-radio-button [value]="false">{{'PDP.NO' | translate}}</mat-radio-button>
+									<mat-radio-button [value]="1">{{'PDP.YES' | translate}}</mat-radio-button>
+									<mat-radio-button [value]="0">{{'PDP.NO' | translate}}</mat-radio-button>
 								</mat-radio-group>
 							</div>
 							<div class="col-xl-2 d-flex flex-column justify-content-center">
 								<label>{{'PDP.PRESENCE_ON_CUSTOMER_SITE' | translate}}</label>
 								<mat-radio-group formControlName="is_presence_site_client"
 												 (change)="makePresenceSiteClientRequired($event)">
-									<mat-radio-button [value]="true">{{'PDP.YES' | translate}}</mat-radio-button>
-									<mat-radio-button [value]="false">{{'PDP.NO' | translate}}</mat-radio-button>
+									<mat-radio-button [value]="1">{{'PDP.YES' | translate}}</mat-radio-button>
+									<mat-radio-button [value]="0">{{'PDP.NO' | translate}}</mat-radio-button>
 								</mat-radio-group>
 							</div>
 							<mat-form-field class="col-xl-2 pdp-custom-select" appearance="standard">
@@ -565,9 +570,9 @@
 											<mat-radio-group formControlName="answer" class="ml-3"
 															 (change)="allowOtherFields('consignes', index, ['type_operation'], $event.value)">
 												<mat-radio-button
-													[value]="true">{{'PDP.YES' | translate}}</mat-radio-button>
+													[value]="1">{{'PDP.YES' | translate}}</mat-radio-button>
 												<mat-radio-button
-													[value]="false">{{'PDP.NO' | translate}}</mat-radio-button>
+													[value]="0">{{'PDP.NO' | translate}}</mat-radio-button>
 											</mat-radio-group>
 										</div>
 									</td>
@@ -626,9 +631,9 @@
 											<mat-radio-group formControlName="answer" class="ml-3"
 															 (change)="allowOtherFields('epi_disposition', index, ['answer_id', 'type'], $event.value); element?.items?.length === 0 ? makeAnswerIDUnRequiredinOtherPart(index) : null">
 												<mat-radio-button
-													[value]="true">{{'PDP.YES' | translate}}</mat-radio-button>
+													[value]="1">{{'PDP.YES' | translate}}</mat-radio-button>
 												<mat-radio-button
-													[value]="false">{{'PDP.NO' | translate}}</mat-radio-button>
+													[value]="0">{{'PDP.NO' | translate}}</mat-radio-button>
 											</mat-radio-group>
 										</div>
 									</td>
@@ -721,9 +726,9 @@
 											<label>{{element.label}} : </label>
 											<mat-radio-group formControlName="answer" class="ml-3">
 												<mat-radio-button
-													[value]="true">{{'PDP.YES' | translate}}</mat-radio-button>
+													[value]="1">{{'PDP.YES' | translate}}</mat-radio-button>
 												<mat-radio-button
-													[value]="false">{{'PDP.NO' | translate}}</mat-radio-button>
+													[value]="0">{{'PDP.NO' | translate}}</mat-radio-button>
 											</mat-radio-group>
 										</div>
 									</td>
@@ -771,9 +776,9 @@
 										<label>{{element.label}}</label>
 										<mat-radio-group formControlName="answer" class="ml-3">
 											<mat-radio-button
-												[value]="true">{{'PDP.YES' | translate}}</mat-radio-button>
+												[value]="1">{{'PDP.YES' | translate}}</mat-radio-button>
 											<mat-radio-button
-												[value]="false">{{'PDP.NO' | translate}}</mat-radio-button>
+												[value]="0">{{'PDP.NO' | translate}}</mat-radio-button>
 										</mat-radio-group>
 									</div>
 								</td>
@@ -853,6 +858,10 @@
 													</div>
 												</div>
 											</ng-container>
+											<mat-error
+												*ngIf="checkIfSelectOnSituation(risk)">
+												<strong>{{ 'PDP.ONE_SITUATION_REQUIRED' | translate }}</strong>
+											</mat-error>
 										</div>
 									</div>
 									<div class="col-md-12 flex-column mt-3">
@@ -1037,9 +1046,9 @@
 											<mat-radio-group formControlName="is_part_inspection" class="mt-3"
 															 (change)="togglePartInspectionAt($event.value, index, 'validations', 'part_inspection_at')">
 												<mat-radio-button
-													[value]="true">{{'PDP.YES' | translate}}</mat-radio-button>
+													[value]="1">{{'PDP.YES' | translate}}</mat-radio-button>
 												<mat-radio-button
-													[value]="false">{{'PDP.NO' | translate}}</mat-radio-button>
+													[value]="0">{{'PDP.NO' | translate}}</mat-radio-button>
 											</mat-radio-group>
 											<mat-form-field class="ml-3 mb-3" [style.fontSize.px]=13>
 												<mat-label>{{'PDP.DATE' | translate}}</mat-label>
@@ -1095,7 +1104,8 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="tf-card-form">
-							<table class="mt-3" mat-table [dataSource]="intervenants" formArrayName="intervenants">
+							<table class="mt-3" mat-table [dataSource]="intervenants" formArrayName="intervenants"
+								   *ngIf="intervenants?.getValue()?.length > 0">
 								<ng-container matColumnDef="last">
 									<th mat-header-cell *matHeaderCellDef><b>{{'PDP.LAST_NAME' | translate}} </b></th>
 									<td mat-cell *matCellDef="let element; let index = index" [formGroupName]="index">
@@ -1165,9 +1175,9 @@
 											<mat-radio-group formControlName="is_suivi_medical" class="mt-3"
 															 (change)="togglePartInspectionAt($event.value, index, 'intervenants', 'motif_id')">
 												<mat-radio-button
-													[value]="true">{{'PDP.YES' | translate}}</mat-radio-button>
+													[value]="1">{{'PDP.YES' | translate}}</mat-radio-button>
 												<mat-radio-button
-													[value]="false">{{'PDP.NO' | translate}}</mat-radio-button>
+													[value]="0">{{'PDP.NO' | translate}}</mat-radio-button>
 											</mat-radio-group>
 											<mat-select class="mt-3 mb-3"
 														placeholder="{{'PDP.SELECT_AN_ITEM' | translate}}"
@@ -1198,7 +1208,8 @@
 								<tr mat-row *matRowDef="let row; let i = index; columns: displayedColumnsIntervenants;"
 									[formGroupName]="i"></tr>
 							</table>
-							<button mat-raised-button type="button" class="pull-left btn-small mt-4" color="info"
+							<button mat-raised-button type="button" class="pull-left btn-small" color="info"
+									[ngClass]="{'mt-4' : intervenants?.getValue()?.length > 0}"
 									style="width: 180px"
 									[disabled]="intervenants?.getValue().length > 8"
 									(click)="addIntervenant()">{{'PDP.ADD_ROW' | translate}}</button>

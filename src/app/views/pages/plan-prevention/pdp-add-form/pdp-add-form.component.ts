@@ -27,11 +27,11 @@ export class PdpAddFormComponent implements OnInit {
 	set pdpFormSetter(value) {
 		if (value != null) {
 			this.pdpForm = value;
-			if (this.getControlsArrayFormName('intervenants')) {
-				this.intervenants.next(this.getControlsArrayFormName('intervenants'));
-			}
 			if (this.getControlsArrayFormName('validations')) {
 				this.validations.next(this.getControlsArrayFormName('validations'));
+			}
+			if (this.getControlsArrayFormName('intervenants')) {
+				this.intervenants.next(this.getControlsArrayFormName('intervenants'));
 			}
 			// this.subPDPFormValidator();
 		}
@@ -83,54 +83,8 @@ export class PdpAddFormComponent implements OnInit {
 	ngOnInit() {
 		this.triggerResize();
 		this.getPDPConsignes();
-		// this.validationPlan = [
-		// 	{
-		// 		title: 'EU',
-		// 		type: 'ee',
-		// 		need_text_area_in_title: true,
-		// 		required: true,
-		// 		deletable: false
-		// 	},
-		// 	{
-		// 		title: 'EE',
-		// 		type: 'eu',
-		// 		need_text_area_in_title: false,
-		// 		company_name: 'PIMAN Consultants',
-		// 		required: true,
-		// 		deletable: false
-		// 	},
-		// 	{title: 'Sous-traitant 1', type: 'ss1', need_text_area_in_title: true, required: false, deletable: true},
-		// ];
-		// if (this.validationPlan.length > 0) {
-		// 	const formArray = this.pdpForm.get('validations') as FormArray;
-		// 	for (let i = 0; i < this.validationPlan.length; i++) {
-		// 		const group = new FormGroup({
-		// 			need_text_area_in_title: new FormControl(this.validationPlan[i].need_text_area_in_title),
-		// 			company_name: new FormControl(this.validationPlan[i].company_name, this.validationPlan[i].required ? Validators.required : null),
-		// 			full_name: new FormControl('', this.validationPlan[i].required ? Validators.required : null),
-		// 			validation_at: new FormControl(null, this.validationPlan[i].required ? Validators.required : null),
-		// 			type: new FormControl(this.validationPlan[i].type, this.validationPlan[i].required ? Validators.required : null),
-		// 			is_part_inspection: new FormControl(null),
-		// 			part_inspection_at: new FormControl({value: null, disabled: true}),
-		// 		});
-		// 		formArray.push(group);
-		// 	}
-		// }
-	}
 
-	// subPDPFormValidator() {
-	// 	this.pdpForm.valueChanges.subscribe(v => {
-	// 		if (v) {
-	// 			(this.pdpForm.get('epi_disposition') as FormArray).controls.map(c => {
-	// 				c.get('answer_id').setErrors({'required': true});
-	// 				c.get('answer_id').markAsTouched();
-	// 				c.get('answer_id').markAsDirty();
-	// 				c.updateValueAndValidity();
-	// 				console.log('here in changes', c.get('answer_id'), c.get('answer_id').hasError('required'));
-	// 			});
-	// 		}
-	// 	});
-	// }
+	}
 
 	async getPDPConsignes() {
 		const res: any = await this.pdpService.getAllPdpFilters().toPromise();
@@ -168,11 +122,12 @@ export class PdpAddFormComponent implements OnInit {
 					id: new FormControl(this.risques[i].id),
 					label: new FormControl(this.risques[i].label),
 					is_other: new FormControl(this.risques[i].is_other),
-					answer: new FormControl(false),
+					is_required_situation: new FormControl(this.risques[i].is_required_situation),
+					answer: new FormControl(this.risques[i].is_always_true || null),
 					comment: new FormControl({value: null, disabled: true}),
-					is_eu: new FormControl({value: null, disabled: true}),
-					is_piman: new FormControl({value: null, disabled: true}),
-					is_sous_traitant: new FormControl({value: null, disabled: true}),
+					is_eu: new FormControl(this.risques[i].default_responsable && this.risques[i].default_responsable.indexOf('eu') > -1),
+					is_piman: new FormControl(this.risques[i].default_responsable && this.risques[i].default_responsable.indexOf('piman') > -1),
+					is_sous_traitant: new FormControl(this.risques[i].default_responsable && this.risques[i].default_responsable.indexOf('sous-traitant') > -1),
 					other_cat_pdp_risque: new FormControl({value: null, disabled: true}),
 					other_pdp_situation_risque: new FormControl({value: null, disabled: true}),
 					other_pdp_moyen_risque: new FormArray([]),
@@ -200,7 +155,7 @@ export class PdpAddFormComponent implements OnInit {
 						id: new FormControl(v.id),
 						is_with_comment: new FormControl(v.is_with_comment),
 						label: new FormControl(v.label),
-						answer: new FormControl({value: null, disabled: true}),
+						answer: new FormControl(v.is_selected || null),
 						comment: new FormControl({value: null, disabled: true})
 					}));
 				});
@@ -209,13 +164,13 @@ export class PdpAddFormComponent implements OnInit {
 						id: new FormControl(v.id),
 						is_with_comment: new FormControl(v.is_with_comment),
 						label: new FormControl(v.label),
-						answer: new FormControl({value: null, disabled: true}),
+						answer: new FormControl(v.is_selected || null),
 						comment: new FormControl({value: null, disabled: true}),
 						pdp_risque_moyen_filtre: new FormArray(v.pdp_risque_moyen_filtre
 							? v.pdp_risque_moyen_filtre.map(r => new FormGroup({
 								id: new FormControl(r.id),
 								is_with_comment: new FormControl(r.is_with_comment),
-								answer: new FormControl({value: null, disabled: true}),
+								answer: new FormControl({value: v.is_selected || null, disabled: !v.is_selected}),
 								label: new FormControl(r.label),
 								comment: new FormControl({value: null, disabled: true})
 							})) : [])
@@ -531,11 +486,21 @@ export class PdpAddFormComponent implements OnInit {
 		}
 		if (pdp.intervenants) {
 			const intervenantsArray: FormArray = this.pdpForm.get('intervenants') as FormArray;
+			intervenantsArray.clear();
+			pdp.intervenants.map(v => {
+				(this.pdpForm.get('intervenants') as FormArray).push(this.FB.group({...v}));
+			});
 			intervenantsArray.controls.map((c: FormGroup) => {
-				if (c.get('is_suivi_medical').value) {
-					c.get('motif_id').enable();
-					c.updateValueAndValidity();
-				}
+				c.get('is_suivi_medical').value ? c.get('motif_id').enable() : c.get('motif_id').disable();
+				c.updateValueAndValidity();
+			});
+			this.intervenants.next(this.getControlsArrayFormName('intervenants'));
+		}
+		if (pdp.sous_traitant && pdp.sous_traitant.length > 0) {
+			pdp.sous_traitant.map(v => {
+				(this.pdpForm.get('sous_traitant') as FormArray).push(this.FB.group({
+					...v
+				}));
 			});
 		}
 		if (pdp.pdp_consigne_ee) {
@@ -697,4 +662,9 @@ export class PdpAddFormComponent implements OnInit {
 		this.pdpForm.updateValueAndValidity();
 	}
 
+	checkIfSelectOnSituation(risk: AbstractControl) {
+		return risk.get('answer').value
+			&& risk.get('is_required_situation').value
+			&& (risk.get('situation') as FormArray).controls.filter(v => v.get('answer').value).length === 0;
+	}
 }

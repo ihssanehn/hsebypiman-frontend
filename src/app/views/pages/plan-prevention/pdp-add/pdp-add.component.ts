@@ -1,14 +1,15 @@
 import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import Swal, {SweetAlertIcon} from "sweetalert2";
-import {FormStatus} from "@app/core/_base/crud/models/form-status";
-import {extractErrorMessagesFromErrorResponse} from "@app/core/_base/crud";
-import {ArService, PdpService} from "@app/core/services";
-import {TranslateService} from "@ngx-translate/core";
-import {ActivatedRoute, Router} from "@angular/router";
-import {tap} from "rxjs/operators";
-import {Ar, Pdp} from "@app/core/models";
-import {Subscription} from "rxjs";
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import Swal, {SweetAlertIcon} from 'sweetalert2';
+import {FormStatus} from '@app/core/_base/crud/models/form-status';
+import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
+import {ArService, PdpService} from '@app/core/services';
+import {TranslateService} from '@ngx-translate/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {tap} from 'rxjs/operators';
+import {Ar, Pdp, RisqueModel} from '@app/core/models';
+import {Subscription} from 'rxjs';
+import {RisqueMoyenModel} from "@app/core/models/consigne.model";
 
 @Component({
 	selector: 'tf-pdp-add',
@@ -49,8 +50,8 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 							.subscribe(async res => {
 								this.pdp = res.result.data;
 								this.pdpForm.patchValue(this.pdp);
+								console.log(this.pdpForm);
 								this.enableBtn = true;
-								// this.formPathValues(this.pdp);
 								this.cdr.markForCheck();
 							});
 					} else {
@@ -60,6 +61,7 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 			);
 		this.subscriptions.push(routeSubscription);
 	}
+
 
 	createForm() {
 		this.pdpForm = this.pdpFB.group({
@@ -106,7 +108,6 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 			is_presence_site_client: [null],
 			presence_site_client_frequency_id: [{value: null, disabled: true}],
 			effectif_moyen: [null],
-
 			consignes: new FormArray([]),
 			epi_disposition: new FormArray([]),
 			moyen_disposition_ees: new FormArray([]),
@@ -147,26 +148,26 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 					part_inspection_at: new FormControl({value: null, disabled: true}),
 				})
 			]),
-			intervenants: new FormArray([new FormGroup({
-				first_name: new FormControl('', Validators.required),
-				last_name: new FormControl('', Validators.required),
-				contact: new FormControl('', Validators.required),
-				formations: new FormControl(null),
-				is_suivi_medical: new FormControl(null),
-				motif_id: new FormControl({value: null, disabled: true}),
-			})]),
-			sous_traitant: new FormArray([new FormGroup({
-				name: new FormControl(''),
-				mail: new FormControl('', Validators.email),
-				tel: new FormControl(''),
-			})]),
+			intervenants: new FormArray([
+				new FormGroup({
+					first_name: new FormControl('', Validators.required),
+					last_name: new FormControl('', Validators.required),
+					contact: new FormControl('', Validators.required),
+					formations: new FormControl(null),
+					is_suivi_medical: new FormControl(null),
+					motif_id: new FormControl({value: null, disabled: true}),
+				})
+			]),
+			sous_traitant: new FormArray([]),
 		});
 	}
 
 	async onSubmit() {
 		try {
+			console.log(this.pdpForm, this.pdpForm.valid, (this.pdpForm.get('cat_pdp_risques').value as Array<RisqueModel>).filter(v => v.is_required_situation && v.answer).map(v => v.situation.filter(s => s.answer).length === 0).indexOf(true) > -1);
 			this.pdpForm.markAllAsTouched();
-			if (this.pdpForm.valid) {
+			if (this.pdpForm.valid
+				&& (this.pdpForm.get('cat_pdp_risques').value as Array<RisqueModel>).filter(v => v.is_required_situation && v.answer).map(v => v.situation.filter(s => s.answer).length === 0).indexOf(true) === -1) {
 				this.formStatus.onFormSubmitting();
 				const form = {...this.pdpForm.getRawValue()};
 				if (form && form.validations) {
@@ -197,12 +198,12 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 	}
 
 	fireNotifAfterSave(res: any) {
-		var code = res.message.code as SweetAlertIcon;
-		var message = res.message.content !== 'done' ? '<b class="text-' + code + '">' + res.message.content + '</b>' : null;
+		let code = res.message.code as SweetAlertIcon;
+		let message = res.message.content !== 'done' ? '<b class="text-' + code + '">' + res.message.content + '</b>' : null;
 
 		Swal.fire({
 			icon: code,
-			title: this.pdp ? this.translate.instant("PDP.NOTIF.PDP_UPDATED.TITLE") : this.translate.instant("PDP.NOTIF.PDP_CREATED.TITLE"),
+			title: this.pdp ? this.translate.instant('PDP.NOTIF.PDP_UPDATED.TITLE') : this.translate.instant('PDP.NOTIF.PDP_CREATED.TITLE'),
 			showConfirmButton: false,
 			html: message,
 			timer: code === 'success' ? 1500 : 3000
@@ -212,7 +213,7 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 	}
 
 	async save(form) {
-
+		console.log('saving....');
 		this.formloading = true;
 		const action = !this.adding ? this.pdpService.update(form).toPromise() : this.pdpService.create(form).toPromise();
 
@@ -222,14 +223,14 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 			.catch(err => {
 				Swal.fire({
 					icon: 'error',
-					title: this.translate.instant("PDP.NOTIF.INCOMPLETE_FORM.TITLE"),
+					title: this.translate.instant('PDP.NOTIF.INCOMPLETE_FORM.TITLE'),
 					showConfirmButton: false,
 					timer: 2000
 				});
 
 				if (err.status === 422) {
-					var messages = extractErrorMessagesFromErrorResponse(err);
-					this.formStatus.onFormSubmitResponse({success: false, messages: messages});
+					let messages = extractErrorMessagesFromErrorResponse(err);
+					this.formStatus.onFormSubmitResponse({success: false, messages});
 				}
 			}).finally(() => {
 			this.formloading = false;
