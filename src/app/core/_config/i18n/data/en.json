@@ -381,6 +381,7 @@
 		"REINFORCED_MEDICAL_FOLLOW_UP": "Reinforced medical follow-up",
 		"ADD_ROW": "Add row",
 		"SUBCONTRACTOR": "Subcontractor",
+		"ONE_SITUATION_REQUIRED": "you have to select at least one situation",
 		"NOTIF": {
 			"PDP_DELETED": {
 				"TITLE": "Prevention plan has been deleted successfully"

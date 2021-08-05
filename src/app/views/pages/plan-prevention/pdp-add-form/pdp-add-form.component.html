@@ -283,7 +283,8 @@
 											<input class="form-control" matInput type="text" name="name"
 												   formControlName="name"
 												   placeholder="{{'ACTION.ENTER_HERE' | translate}}"/>
-											<mat-error *ngIf="isControlHasError('name', 'required', 'sous_traitant', i)">
+											<mat-error
+												*ngIf="isControlHasError('name', 'required', 'sous_traitant', i)">
 												<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 											</mat-error>
 										</mat-form-field>
@@ -293,7 +294,8 @@
 											<input class="form-control" matInput type="mail" name="mail"
 												   formControlName="mail"
 												   placeholder="{{'ACTION.ENTER_HERE' | translate}}"/>
-											<mat-error *ngIf="isControlHasError('mail', 'required', 'sous_traitant', i)">
+											<mat-error
+												*ngIf="isControlHasError('mail', 'required', 'sous_traitant', i)">
 												<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 											</mat-error>
 											<mat-error *ngIf="isControlHasError('mail', 'email', 'sous_traitant', i)">
@@ -320,7 +322,8 @@
 								</div>
 							</ng-container>
 							<div class="row form-row align-items-center">
-								<button mat-raised-button type="button" class="pull-left btn-small" color="info" [ngClass]="{'mt-4' : getControlsArrayFormName('sous_traitant')?.length > 0}"
+								<button mat-raised-button type="button" class="pull-left btn-small" color="info"
+										[ngClass]="{'mt-4' : getControlsArrayFormName('sous_traitant')?.length > 0}"
 										style="width: 180px"
 										(click)="addSousTraitant()">{{'PDP.ADD_ROW' | translate}}</button>
 							</div>
@@ -855,6 +858,10 @@
 													</div>
 												</div>
 											</ng-container>
+											<mat-error
+												*ngIf="checkIfSelectOnSituation(risk)">
+												<strong>{{ 'PDP.ONE_SITUATION_REQUIRED' | translate }}</strong>
+											</mat-error>
 										</div>
 									</div>
 									<div class="col-md-12 flex-column mt-3">
@@ -1201,7 +1208,8 @@
 								<tr mat-row *matRowDef="let row; let i = index; columns: displayedColumnsIntervenants;"
 									[formGroupName]="i"></tr>
 							</table>
-							<button mat-raised-button type="button" class="pull-left btn-small" color="info" [ngClass]="{'mt-4' : intervenants?.getValue()?.length > 0}"
+							<button mat-raised-button type="button" class="pull-left btn-small" color="info"
+									[ngClass]="{'mt-4' : intervenants?.getValue()?.length > 0}"
 									style="width: 180px"
 									[disabled]="intervenants?.getValue().length > 8"
 									(click)="addIntervenant()">{{'PDP.ADD_ROW' | translate}}</button>
