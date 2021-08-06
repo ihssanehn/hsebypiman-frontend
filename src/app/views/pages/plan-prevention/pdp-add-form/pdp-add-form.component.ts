@@ -102,6 +102,10 @@ export class PdpAddFormComponent implements OnInit {
 				isRequired: true
 			}, {name: 'type', needTest: false, isRequired: true}
 			]);
+			const index = this.EPIDispositionList.findIndex(v => v.items && v.items.length === 0);
+			if (index > -1) {
+				this.makeAnswerIDUnRequiredinOtherPart(index);
+			}
 		}
 		if (this.instructionsList.length > 0) {
 			this.patchFormArray(this.instructionsList, 'consignes', [{
@@ -263,12 +267,6 @@ export class PdpAddFormComponent implements OnInit {
 	}
 
 
-	onCheckBoxChange(event, FormControlName, value = null) {
-		const formArray: FormArray = this.pdpForm.get(FormControlName) as FormArray;
-		this.manageCheckBoxSelection(event.source.value || value, event.checked, formArray);
-
-	}
-
 	allowOtherFields(ArrayFormName, index, listFormControls: Array<string>, isDisabled) {
 		const controlGroup = (this.pdpForm.get(ArrayFormName) as FormArray).controls[index];
 		if (isDisabled) {
@@ -362,55 +360,15 @@ export class PdpAddFormComponent implements OnInit {
 	}
 
 	allowComment(control, isDisabled) {
-		if (isDisabled) {
-			control.get('comment').enable();
-		} else {
-			control.get('comment').disable();
+		if (control.get('comment')) {
+			if (isDisabled) {
+				control.get('comment').enable();
+			} else {
+				control.get('comment').disable();
+			}
 		}
 	}
 
-
-	onAddSpecificValue(controlName: string, ArrayFormName, index, value) {
-		const control = (this.pdpForm.get(ArrayFormName) as FormArray).controls[index].get(controlName);
-		if (control) {
-			control.setValue(value);
-		}
-	}
-
-	manageCheckBoxSelection(id: number, checked: boolean, formArray: FormArray) {
-		/* Selected */
-		if (checked) {
-			const group = new FormGroup({
-				id: new FormControl(id),
-				answer: new FormControl(1),
-				answer_id: new FormControl(),
-				type_operation: new FormControl(null),
-				comment: new FormControl(null),
-				is_eu: new FormControl(null),
-				is_ee: new FormControl(null),
-				is_sous_traitant: new FormControl(null),
-			});
-			formArray.push(group);
-		} else {
-			let i = 0;
-			formArray.controls.forEach((ctrl: FormControl) => {
-				if (ctrl.get('id').value === id) {
-					formArray.removeAt(i);
-					return;
-				}
-				i++;
-			});
-		}
-	}
-
-
-	onCheckBoxIsChecked(controlName: string, ArrayFormName, index = null) {
-		const control = (this.pdpForm.get(ArrayFormName) as FormArray).controls[index].get(controlName);
-		if (!control) {
-			return false;
-		}
-		return control.value;
-	}
 
 	isValueInFormArray(formControlName, id) {
 		return this.getControlsArrayFormName(formControlName).filter(v => v.get('id').value === id).length > 0;
@@ -525,18 +483,18 @@ export class PdpAddFormComponent implements OnInit {
 					id: v.epi_disposition_ee_id,
 					answer: v.answer,
 					answer_id: v.answer_id,
-					is_ee: v.is_ee,
-					is_eu: v.is_eu,
-					is_sous_traitant: v.is_sous_traitant,
+					type: v.type,
+					// is_eu: v.is_eu,
+					// is_sous_traitant: v.is_sous_traitant,
 					comment: v.comment
 				};
 			}));
 			epiDispositionArray.controls.map((c: FormGroup) => {
 				if (c.get('answer').value) {
 					c.get('comment').enable();
-					c.get('is_ee').enable();
-					c.get('is_eu').enable();
-					c.get('is_sous_traitant').enable();
+					c.get('type').enable();
+					// c.get('is_eu').enable();
+					// c.get('is_sous_traitant').enable();
 					if (c.get('answer_id')) {
 						c.get('answer_id').enable();
 					}
@@ -652,12 +610,24 @@ export class PdpAddFormComponent implements OnInit {
 					part_inspection_at: v.part_inspection_at
 				};
 			}));
+			pdp.pdp_validations.map((v: any, index: number) => {
+				if (v.type === 'ss' && index > 2) {
+					(this.pdpForm.get('validations') as FormArray).push(this.FB.group({
+						...v,
+						need_text_area_in_title: true,
+						title: 'Sous-traitant',
+						deletable: true
+					}));
+				}
+			});
 			validationsArray.controls.map((c: FormGroup) => {
 				if (c.get('is_part_inspection').value) {
 					c.get('part_inspection_at').enable();
 					c.updateValueAndValidity();
 				}
 			});
+
+			this.validations.next(this.getControlsArrayFormName('validations'));
 		}
 		this.pdpForm.updateValueAndValidity();
 	}
