@@ -873,23 +873,19 @@
 												 formArrayName="moyen">
 												<ng-container [formGroup]="moyen">
 													<mat-checkbox
-														(change)="allowSubMoyensFields(moyen, $event.checked)"
+														(change)="allowSubMoyensFields(moyen, $event.checked); allowComment(moyen, $event.checked)"
 														formControlName="answer">
 														{{moyen?.get('label').value}}
 													</mat-checkbox>
-													<!--													<div class="align-items-center d-flex ng-star-inserted w-100"-->
-													<!--														 *ngIf="moyen?.get('label')?.pdp_risque_moyen_filtre?.length > 0">-->
-													<!--														<ng-container-->
-													<!--															*ngFor="let subMoyen of moyen?.pdp_risque_moyen_filtre">-->
-													<!--															<mat-checkbox [disabled]="true"-->
-													<!--																		  class="mr-2 ml-2">{{subMoyen?.label}}</mat-checkbox>-->
-													<!--															<textarea rows="1" *ngIf="subMoyen?.is_with_comment"-->
-													<!--																	  [disabled]="true"-->
-													<!--																	  style="height: 24px"-->
-													<!--																	  class="form-control no_border w-100 pt-0 pb-0"-->
-													<!--																	  placeholder="{{'...' | translate}}"></textarea>-->
-													<!--														</ng-container>-->
-													<!--													</div>-->
+													<div class="align-items-center d-flex ng-star-inserted w-100"
+														 *ngIf="moyen?.get('is_with_comment').value">
+														<textarea
+															rows="1"
+															formControlName="comment"
+															style="height: 24px"
+															class="form-control no_border w-100 pt-0 pb-0 ml-2"
+															placeholder="{{'...' | translate}}"></textarea>
+													</div>
 													<div class="align-items-center d-flex ng-star-inserted w-100"
 														 *ngIf="getFormArrayControls(moyen?.get('pdp_risque_moyen_filtre')).length > 0">
 														<ng-container
@@ -898,7 +894,7 @@
 															<ng-container [formGroup]="subMoyen">
 																<mat-checkbox
 																	class="mr-2 ml-2"
-																	(change)="allowComment(subMoyen, $event.checked)"
+																	(change)="allowSubMoyensFields(subMoyen, $event.checked); allowComment(subMoyen, $event.checked)"
 																	formControlName="answer">{{subMoyen?.get('label').value}}</mat-checkbox>
 																<div
 																	class="align-items-center d-flex ng-star-inserted w-100"
