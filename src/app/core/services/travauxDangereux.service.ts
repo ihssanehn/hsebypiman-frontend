@@ -45,7 +45,7 @@ export class TravauxDangereuxService extends HttpService {
 	}
 
 	updateOrders(payload) {
-		return this.http.post<any>(`${this.baseUrl}/update-orders`, payload)
+		return this.http.post<any>(`${environment.apiBaseUrl}updateOrders`, payload)
 	}
 
 

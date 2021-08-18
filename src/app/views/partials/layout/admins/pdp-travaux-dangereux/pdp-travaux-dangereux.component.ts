@@ -68,7 +68,11 @@ export class PdpTravauxDangereuxComponent extends AdminTemplateComponent impleme
 	}
 
 	async addItem() {
-		super.addItem(this.translate.instant("PDP.ACTION.ADD_TRAVAUX"), {ordre: this.generateParentOrdre()});
+		await super.addItem(this.translate.instant("PDP.ACTION.ADD_TRAVAUX"), {
+			ordre: this.generateParentOrdre(),
+			active: 1
+		});
+		this.getList();
 	}
 
 	async deleteItem({id}) {
@@ -77,7 +81,7 @@ export class PdpTravauxDangereuxComponent extends AdminTemplateComponent impleme
 
 	async updateOrders(datas) {
 		try {
-			await this.parentService.updateOrders(datas).toPromise();
+			await this.parentService.updateOrders({...datas, type: 'travaux_dangereux'}).toPromise();
 			this.cdr.markForCheck();
 		} catch (error) {
 			console.error(error);
