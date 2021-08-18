@@ -1,0 +1,87 @@
+import {ChangeDetectorRef, Component, Injector, OnInit} from '@angular/core';
+import {AdminTemplateComponent} from "@app/views/partials/layout/admin-template/admin-template.component";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {CatRisqueService, PdpService, RisqueService, TravauxDangereuxService} from "@app/core/services";
+import {TranslateService} from "@ngx-translate/core";
+
+@Component({
+	selector: 'tf-pdp-travaux-dangereux',
+	templateUrl: './pdp-travaux-dangereux.component.html',
+	styleUrls: ['./pdp-travaux-dangereux.component.scss']
+})
+export class PdpTravauxDangereuxComponent extends AdminTemplateComponent implements OnInit {
+
+	cdr: ChangeDetectorRef;
+	modalService: NgbModal;
+	parentService: any;
+	childService: any;
+	translate: TranslateService;
+
+
+	tpl: any;
+
+	list: any[];
+
+	constructor(injector: Injector) {
+		super(injector);
+		this.cdr = injector.get(ChangeDetectorRef);
+		this.modalService = injector.get(NgbModal);
+		this.parentService = injector.get(TravauxDangereuxService);
+		this.translate = injector.get(TranslateService);
+	}
+
+	ngOnInit() {
+		super.ngOnInit();
+		this.refreshTranslations();
+		this.tpl = {
+			title: this.translate.instant("ARS.CARD.EQUIPEMENT.SHORTTITLE"),
+			deletedMessage: this.translate.instant("ARS.NOTIF.ELEMENT_NOT_DELETED.TITLE"),
+			deletedChildMessage: this.translate.instant("ARS.NOTIF.ELEMENT_NOT_DELETED.SUBTITLE"),
+			collapsed: true,
+			canUpdateTitle: false,
+			titleOject: null,
+			childCol: 12
+		}
+	}
+
+	refreshTranslations() {
+		this.translate.stream("PDP.CARD.TRAVAUX.SHORTTITLE").subscribe(x => {
+			this.tpl.title = x;
+		});
+		this.translate.stream("PDP.NOTIF.ELEMENT_NOT_DELETED.TITLE").subscribe(x => {
+			this.tpl.deletedMessage = x;
+		});
+		this.translate.stream("PDP.NOTIF.ELEMENT_NOT_DELETED.SUBTITLE").subscribe(x => {
+			this.tpl.deletedChildMessage = x;
+		});
+	}
+
+
+	async getList() {
+		try {
+			var res = await this.parentService.getAllAsAdmin('travaux_dangereux').toPromise();
+			this.list = res.result.data;
+			this.cdr.markForCheck();
+		} catch (error) {
+			console.error(error);
+		}
+	}
+
+	async addItem() {
+		super.addItem(this.translate.instant("PDP.ACTION.ADD_TRAVAUX"), {ordre: this.generateParentOrdre()});
+	}
+
+	async deleteItem({id}) {
+		super.deleteItem({id}, {title: this.translate.instant("PDP.NOTIF.TRAVAUX_ARCHIVED.TITLE")});
+	}
+
+	async updateOrders(datas) {
+		try {
+			await this.parentService.updateOrders(datas).toPromise();
+			this.cdr.markForCheck();
+		} catch (error) {
+			console.error(error);
+		}
+	}
+
+}
