@@ -1,245 +1,259 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, ChangeDetectorRef, Injector } from '@angular/core';
-import { NzTableComponent } from 'ng-zorro-antd';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { AdminAddModalComponent } from '../admin-add-modal/admin-add-modal.component';
+import {
+	Component,
+	OnInit,
+	Input,
+	Output,
+	EventEmitter,
+	ViewChild,
+	ElementRef,
+	ChangeDetectorRef,
+	Injector
+} from '@angular/core';
+import {NzTableComponent} from 'ng-zorro-antd';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {AdminAddModalComponent} from '../admin-add-modal/admin-add-modal.component';
 import Swal from 'sweetalert2';
-import { TranslateService } from '@ngx-translate/core';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
-  selector: 'tf-admin-template',
-  template: ''
+	selector: 'tf-admin-template',
+	template: ''
 })
 export class AdminTemplateComponent implements OnInit {
 
-  cdr: ChangeDetectorRef;
-  modalService: NgbModal;
-  titleService: any;
-  parentService: any;
-  childService: any;
-  translate: TranslateService;
-  
-  tpl : any = {
-    title : 'Titre',
-    deletedMessage: "NOTIF.ELEMENT_NOT_DELETED.LABEL",
-    deletedChildMessage: "NOTIF.ELEMENT_NOT_DELETED.SUBLABEL",
-    collapsed : false,
-    canUpdateTitle: false,
-    titleOject: null,
-    childCol : 12,
-  }
+	cdr: ChangeDetectorRef;
+	modalService: NgbModal;
+	titleService: any;
+	parentService: any;
+	childService: any;
+	translate: TranslateService;
 
-  list: any[];
+	tpl: any = {
+		title: 'Titre',
+		deletedMessage: "NOTIF.ELEMENT_NOT_DELETED.LABEL",
+		deletedChildMessage: "NOTIF.ELEMENT_NOT_DELETED.SUBLABEL",
+		collapsed: false,
+		canUpdateTitle: false,
+		titleOject: null,
+		childCol: 12,
+	}
 
-  @Output()
-    onConfirmDeletTitle = new EventEmitter<any>();
+	list: any[];
 
-  constructor(injector : Injector) {}
+	@Output()
+	onConfirmDeletTitle = new EventEmitter<any>();
 
-  ngOnInit() {
-    this.getList();
-  }
+	constructor(injector: Injector) {
+	}
 
-  initChildren(item){
-    item['children'] = [];
-    return item;
-  }
+	ngOnInit() {
+		this.getList();
+	}
 
-  formatChildren(item){}
+	initChildren(item) {
+		item['children'] = [];
+		return item;
+	}
 
-  async getList(params = {}){
-    try {
-      var res = await this.parentService.getAllAsAdmin(params).toPromise();
-      this.list = res.result.data.map( item => this.formatChildren(item) );
-      this.cdr.markForCheck();
+	formatChildren(item) {
+	}
+
+	async getList(params = {}) {
+		try {
+			var res = await this.parentService.getAllAsAdmin(params).toPromise();
+			this.list = res.result.data.map(item => this.formatChildren(item));
+			this.cdr.markForCheck();
 		} catch (error) {
 			console.error(error);
 		}
-  }
+	}
 
-  refreshList(){
-    this.getList();
-  }
+	refreshList() {
+		this.getList();
+	}
 
-  async addItem(title?, appends?){
-    const modalRef = this.modalService.open(AdminAddModalComponent, {centered : true});
-    modalRef.componentInstance.title = ( title || '...' );
-    modalRef.result.then( payload => this.createItem(payload, appends), payload => this.createItem(payload, appends) );
-  }
+	async addItem(title?, appends?, up = true) {
+		const modalRef = this.modalService.open(AdminAddModalComponent, {centered: true});
+		modalRef.componentInstance.title = (title || '...');
+		modalRef.result.then(payload => this.createItem(payload, appends, up = true), payload => this.createItem(payload, appends, up = true));
+	}
 
-  async createItem(payload, appends?){
-    if(payload){
-        try {
-          var created = await this.parentService.create({ ...payload, ...appends }).toPromise();
-          created = this.initChildren(created);
-          this.list.unshift(created);
-          this.cdr.markForCheck();
-        } catch (error) {
-          console.error(error);
-        }
-    }
-  }
+	async createItem(payload, appends?, up = true) {
+		if (payload) {
+			try {
+				var created = await this.parentService.create({...payload, ...appends}).toPromise();
+				created = this.initChildren(created);
+				up ? this.list.unshift(created) : this.list.push(created);
+				this.cdr.markForCheck();
+			} catch (error) {
+				console.error(error);
+			}
+		}
+	}
 
-  async saveItem(item){
-    try {
-      var updated = await this.parentService.update(item).toPromise();
-      const index = this.list.findIndex(type => type.id === updated.id);
-      this.list[index] = { ...this.list[index], ...updated };
-      this.cdr.markForCheck();
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-  async getItem({id}){
-    try {
-      var item = await this.parentService.get(id).toPromise();
-      const index = this.list.findIndex(item => item.id === id);
-      this.list[index] = this.formatChildren(item);
-      this.cdr.markForCheck();
+	async saveItem(item) {
+		try {
+			var updated = await this.parentService.update(item).toPromise();
+			const index = this.list.findIndex(type => type.id === updated.id);
+			this.list[index] = {...this.list[index], ...updated};
+			this.cdr.markForCheck();
 		} catch (error) {
 			console.error(error);
 		}
-  }
+	}
 
-  async deleteItem({id}, confirm? : any){
-    try {
-      await this.parentService.delete(id)
-        .toPromise()
-        .then((res:any) => {
-          Swal.fire({ icon: 'success', 
-            title: ( confirm ? confirm.title :  '...'), 
-            showConfirmButton: false, 
-            timer: 1500 
-          })
-          const index = this.list.findIndex(item => item.id === id);
-          this.list.splice(index, 1);
-        })
-        .catch(err =>{ 
-
-          Swal.fire({
-            icon: 'error',
-            title: this.tpl.deletedMessage,
-            showConfirmButton: false,
-            timer: 3000
-          });
-  
-        });
-        
-      this.cdr.markForCheck();
+	async getItem({id}) {
+		try {
+			var item = await this.parentService.get(id).toPromise();
+			const index = this.list.findIndex(item => item.id === id);
+			this.list[index] = this.formatChildren(item);
+			this.cdr.markForCheck();
 		} catch (error) {
 			console.error(error);
 		}
-  }
+	}
 
-  async addChild(payload){
-    try {
-      await this.childService.create(payload).toPromise();
-      this.getItem({ id : payload.parent_id});
-      this.cdr.markForCheck();
+	async deleteItem({id}, confirm?: any) {
+		try {
+			await this.parentService.delete(id)
+				.toPromise()
+				.then((res: any) => {
+					Swal.fire({
+						icon: 'success',
+						title: (confirm ? confirm.title : '...'),
+						showConfirmButton: false,
+						timer: 1500
+					})
+					const index = this.list.findIndex(item => item.id === id);
+					this.list.splice(index, 1);
+				})
+				.catch(err => {
+
+					Swal.fire({
+						icon: 'error',
+						title: this.tpl.deletedMessage,
+						showConfirmButton: false,
+						timer: 3000
+					});
+
+				});
+
+			this.cdr.markForCheck();
 		} catch (error) {
 			console.error(error);
 		}
-  }
+	}
 
-  async updateChild(item){
-    try {
-      await this.childService.update(item).toPromise();
-      this.cdr.markForCheck();
+	async addChild(payload) {
+		try {
+			await this.childService.create(payload).toPromise();
+			this.getItem({id: payload.parent_id});
+			this.cdr.markForCheck();
 		} catch (error) {
 			console.error(error);
 		}
-  }
-  
-  async updateOrders(datas){
-    try {
-      await this.childService.updateOrders(datas).toPromise();
-      this.cdr.markForCheck();
+	}
+
+	async updateChild(item) {
+		try {
+			await this.childService.update(item).toPromise();
+			this.cdr.markForCheck();
 		} catch (error) {
 			console.error(error);
 		}
-  }
+	}
 
-  async deleteChild({id, parent_id}, confirm? : any){
-    try {
-      await this.childService.delete(id)
-        .toPromise()
-        .then((res:any) => {
-          Swal.fire({ icon: 'success', 
-            title: ( confirm ? confirm.title :  '...'), 
-            showConfirmButton: false, 
-            timer: 1500 
-          })
-          this.getItem({ id : parent_id });
-        })
-        .catch(err =>{ 
-
-          Swal.fire({
-            icon: 'error',
-            title: this.tpl.deletedChildMessage,
-            showConfirmButton: false,
-            timer: 3000
-          });
-  
-        });
-
-      
-      this.cdr.markForCheck();
+	async updateOrders(datas) {
+		try {
+			await this.childService.updateOrders(datas).toPromise();
+			this.cdr.markForCheck();
 		} catch (error) {
 			console.error(error);
 		}
-  }
+	}
 
-  // BACK TODO
-  generateCode(str){
-    return str.replace(/\s/g, '').toUpperCase();
-  }
+	async deleteChild({id, parent_id}, confirm?: any) {
+		try {
+			await this.childService.delete(id)
+				.toPromise()
+				.then((res: any) => {
+					Swal.fire({
+						icon: 'success',
+						title: (confirm ? confirm.title : '...'),
+						showConfirmButton: false,
+						timer: 1500
+					})
+					this.getItem({id: parent_id});
+				})
+				.catch(err => {
 
-  // BACK TODO
-  generateOrdre(item_id){
-    const index = this.list.findIndex(item => item.id === item_id);
-    return this.list[index].children.length;
-  }
+					Swal.fire({
+						icon: 'error',
+						title: this.tpl.deletedChildMessage,
+						showConfirmButton: false,
+						timer: 3000
+					});
 
-  generateParentOrdre(){
-    return this.list.length
-  }
+				});
 
-  async editTitle(){
-    const modalRef = this.modalService.open(AdminAddModalComponent, {centered : true});
-    modalRef.componentInstance.title = ( this.tpl.title || '...' );
-    modalRef.componentInstance.label = ( this.tpl.title || '...' );
-    modalRef.result.then( payload => this.updateTitle(payload), payload => this.updateTitle(payload) );
-  }
 
-  async updateTitle(payload = null, ){
-    if(this.tpl.titleObject && payload){
-      this.tpl.titleObject.libelle = payload.libelle;
-      try {
-        await this.titleService.update(this.tpl.titleObject).toPromise();
-        this.tpl.title = payload.libelle;
-        this.cdr.markForCheck();
-      } catch (error) {
-        console.error(error);
-      }
-    }
+			this.cdr.markForCheck();
+		} catch (error) {
+			console.error(error);
+		}
+	}
 
-  }
+	// BACK TODO
+	generateCode(str) {
+		return str.replace(/\s/g, '').toUpperCase();
+	}
 
-  async deleteTitle(confirm? : any){
-    if(this.tpl.titleObject){
-      Swal.fire({
-        icon: 'warning',
-        title: this.translate.instant("NOTIF.FORM_DELETE_CONFIRMATION.TITLE"),
-        showConfirmButton: true,
-        showCancelButton: true,
-        cancelButtonText: this.translate.instant("ACTION.CANCEL"),
-        confirmButtonText: this.translate.instant("ACTION.DELETE")
-      }).then(async response => {
-        if (response.value) {
-          this.onConfirmDeletTitle.emit(this.tpl.titleObject);
-        }
-      });
-      
-    }
-  }
+	// BACK TODO
+	generateOrdre(item_id) {
+		const index = this.list.findIndex(item => item.id === item_id);
+		return this.list[index].children.length;
+	}
+
+	generateParentOrdre() {
+		return this.list.length
+	}
+
+	async editTitle() {
+		const modalRef = this.modalService.open(AdminAddModalComponent, {centered: true});
+		modalRef.componentInstance.title = (this.tpl.title || '...');
+		modalRef.componentInstance.label = (this.tpl.title || '...');
+		modalRef.result.then(payload => this.updateTitle(payload), payload => this.updateTitle(payload));
+	}
+
+	async updateTitle(payload = null,) {
+		if (this.tpl.titleObject && payload) {
+			this.tpl.titleObject.libelle = payload.libelle;
+			try {
+				await this.titleService.update(this.tpl.titleObject).toPromise();
+				this.tpl.title = payload.libelle;
+				this.cdr.markForCheck();
+			} catch (error) {
+				console.error(error);
+			}
+		}
+
+	}
+
+	async deleteTitle(confirm?: any) {
+		if (this.tpl.titleObject) {
+			Swal.fire({
+				icon: 'warning',
+				title: this.translate.instant("NOTIF.FORM_DELETE_CONFIRMATION.TITLE"),
+				showConfirmButton: true,
+				showCancelButton: true,
+				cancelButtonText: this.translate.instant("ACTION.CANCEL"),
+				confirmButtonText: this.translate.instant("ACTION.DELETE")
+			}).then(async response => {
+				if (response.value) {
+					this.onConfirmDeletTitle.emit(this.tpl.titleObject);
+				}
+			});
+
+		}
+	}
 }

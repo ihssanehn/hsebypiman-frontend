@@ -71,8 +71,7 @@ export class PdpTravauxDangereuxComponent extends AdminTemplateComponent impleme
 		await super.addItem(this.translate.instant("PDP.ACTION.ADD_TRAVAUX"), {
 			ordre: this.generateParentOrdre(),
 			active: 1
-		});
-		this.getList();
+		}, false);
 	}
 
 	async deleteItem({id}) {
