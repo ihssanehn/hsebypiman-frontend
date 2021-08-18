@@ -298,15 +298,15 @@ export class MenuConfig {
 						translate: 'MENU.LIST',
 						icon: 'view_list',
 					},
-					// {
-					// 	title: 'Admin',
-					// 	root: true,
-					// 	alignment: 'left',
-					// 	page: '/analyses-risque/admin',
-					// 	translate: 'MENU.ROOT',
-					// 	icon: 'settings',
-					// 	permissionOnly: ['ROOT', 'ADMIN'],
-					// }
+					{
+						title: 'Admin',
+						root: true,
+						alignment: 'left',
+						page: '/plan-de-prevention/admin',
+						translate: 'MENU.ROOT',
+						icon: 'settings',
+						permissionOnly: ['ROOT', 'ADMIN'],
+					}
 				]
 			},
 			materiels: {
