@@ -163,6 +163,7 @@ import { DashEntrepriseComponent } from './layout/dashboard/dash-entreprise/dash
 import { ShowFlashInfoModalComponent } from './layout/flash-infos/show-flash-info-modal/show-flash-info-modal.component';
 import { AddDocModalComponent } from './layout/modal/add-doc-modal/add-doc-modal.component';
 import { PdpTravauxDangereuxComponent } from './layout/admins/pdp-travaux-dangereux/pdp-travaux-dangereux.component';
+import { PdpConsigneEeComponent } from './layout/admins/pdp-consigne-ee/pdp-consigne-ee.component';
 
 @NgModule({
 	declarations: [
@@ -268,6 +269,7 @@ import { PdpTravauxDangereuxComponent } from './layout/admins/pdp-travaux-danger
 		DashMaterielComponent,
 		DashEntrepriseComponent,
 		PdpTravauxDangereuxComponent,
+		PdpConsigneEeComponent,
 
 	],
 	exports: [
@@ -373,7 +375,8 @@ import { PdpTravauxDangereuxComponent } from './layout/admins/pdp-travaux-danger
 		DashActionComponent,
 		DashMaterielComponent,
 		DashEntrepriseComponent,
-		PdpTravauxDangereuxComponent
+		PdpTravauxDangereuxComponent,
+		PdpConsigneEeComponent
 
 	],
 	imports: [

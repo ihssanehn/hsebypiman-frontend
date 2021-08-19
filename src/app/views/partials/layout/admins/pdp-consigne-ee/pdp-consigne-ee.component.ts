@@ -1,15 +1,15 @@
 import {ChangeDetectorRef, Component, Injector, OnInit} from '@angular/core';
-import {AdminTemplateComponent} from "@app/views/partials/layout/admin-template/admin-template.component";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {CatRisqueService, PdpService, RisqueService, TravauxDangereuxService} from "@app/core/services";
 import {TranslateService} from "@ngx-translate/core";
+import {ConsigneEEService, TravauxDangereuxService} from "@app/core/services";
+import {AdminTemplateComponent} from "@app/views/partials/layout/admin-template/admin-template.component";
 
 @Component({
-	selector: 'tf-pdp-travaux-dangereux',
-	templateUrl: './pdp-travaux-dangereux.component.html',
-	styleUrls: ['./pdp-travaux-dangereux.component.scss']
+	selector: 'tf-pdp-consigne-ee',
+	templateUrl: './pdp-consigne-ee.component.html',
+	styleUrls: ['./pdp-consigne-ee.component.scss']
 })
-export class PdpTravauxDangereuxComponent extends AdminTemplateComponent implements OnInit {
+export class PdpConsigneEeComponent extends AdminTemplateComponent implements OnInit {
 
 	cdr: ChangeDetectorRef;
 	modalService: NgbModal;
@@ -26,7 +26,7 @@ export class PdpTravauxDangereuxComponent extends AdminTemplateComponent impleme
 		super(injector);
 		this.cdr = injector.get(ChangeDetectorRef);
 		this.modalService = injector.get(NgbModal);
-		this.parentService = injector.get(TravauxDangereuxService);
+		this.parentService = injector.get(ConsigneEEService);
 		this.translate = injector.get(TranslateService);
 	}
 
@@ -34,7 +34,7 @@ export class PdpTravauxDangereuxComponent extends AdminTemplateComponent impleme
 		super.ngOnInit();
 		this.refreshTranslations();
 		this.tpl = {
-			title: this.translate.instant("PDP.CARD.TRAVAUX.SHORTTITLE"),
+			title: this.translate.instant("PDP.CARD.CONSIGNE.SHORTTITLE"),
 			deletedMessage: this.translate.instant("PDP.NOTIF.ELEMENT_NOT_DELETED.TITLE"),
 			deletedChildMessage: this.translate.instant("PDP.NOTIF.ELEMENT_NOT_DELETED.SUBTITLE"),
 			collapsed: true,
@@ -45,7 +45,7 @@ export class PdpTravauxDangereuxComponent extends AdminTemplateComponent impleme
 	}
 
 	refreshTranslations() {
-		this.translate.stream("PDP.CARD.TRAVAUX.SHORTTITLE").subscribe(x => {
+		this.translate.stream("PDP.CARD.CONSIGNE.SHORTTITLE").subscribe(x => {
 			this.tpl.title = x;
 		});
 		this.translate.stream("PDP.NOTIF.ELEMENT_NOT_DELETED.TITLE").subscribe(x => {
@@ -59,7 +59,7 @@ export class PdpTravauxDangereuxComponent extends AdminTemplateComponent impleme
 
 	async getList() {
 		try {
-			var res = await this.parentService.getAllAsAdmin('travaux_dangereux').toPromise();
+			var res = await this.parentService.getAllAsAdmin('consigne_ee').toPromise();
 			this.list = res.result.data;
 			this.cdr.markForCheck();
 		} catch (error) {
@@ -68,23 +68,22 @@ export class PdpTravauxDangereuxComponent extends AdminTemplateComponent impleme
 	}
 
 	async addItem() {
-		await super.addItem(this.translate.instant("PDP.ACTION.ADD_TRAVAUX"), {
+		await super.addItem(this.translate.instant("PDP.ACTION.ADD_CONSIGNE"), {
 			ordre: this.generateParentOrdre(),
 			active: 1
 		}, false);
 	}
 
 	async deleteItem({id}) {
-		super.deleteItem({id}, {title: this.translate.instant("PDP.NOTIF.TRAVAUX_ARCHIVED.TITLE")});
+		super.deleteItem({id}, {title: this.translate.instant("PDP.NOTIF.CONSIGNE_ARCHIVED.TITLE")});
 	}
 
 	async updateOrders(datas) {
 		try {
-			await this.parentService.updateOrders({data: datas, type: 'travaux_dangereux'}).toPromise();
+			await this.parentService.updateOrders({data: datas, type: 'consigne_ees'}).toPromise();
 			this.cdr.markForCheck();
 		} catch (error) {
 			console.error(error);
 		}
 	}
-
 }
