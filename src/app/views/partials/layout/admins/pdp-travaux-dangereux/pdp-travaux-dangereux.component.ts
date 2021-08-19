@@ -80,7 +80,8 @@ export class PdpTravauxDangereuxComponent extends AdminTemplateComponent impleme
 
 	async updateOrders(datas) {
 		try {
-			await this.parentService.updateOrders({...datas, type: 'travaux_dangereux'}).toPromise();
+			console.log(datas);
+			await this.parentService.updateOrders({data : datas, type: 'travaux_dangereux'}).toPromise();
 			this.cdr.markForCheck();
 		} catch (error) {
 			console.error(error);

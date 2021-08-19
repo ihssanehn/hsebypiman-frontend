@@ -418,7 +418,7 @@
 		"CARD": {
 			"TRAVAUX": {
 				"NO_TRAVAUX": "Pas de travail dangereux à fournir",
-				"SHORTTITLE": "Travail dangereux",
+				"SHORTTITLE": "Travaux dangereux",
 				"TITLE": "Travaux dangereux à fournir sur place"
 			}
 		},
