@@ -6,9 +6,9 @@
         <div class="tf-portlet__body" *ngIf="items?.length > 0">
 
             <nz-table   #virtualTable
-                        nzSize="small" 
-                        [nzData]="items" 
-                        [nzFrontPagination]="false" 
+                        nzSize="small"
+                        [nzData]="items"
+                        [nzFrontPagination]="false"
                         [nzShowPagination]="false" >
                 <thead>
                 <tr>
@@ -20,7 +20,7 @@
                 <tbody cdkDropList (cdkDropListDropped)="dropItem($event)">
                     <tr cdkDrag [cdkDragData]="data" *ngFor="let data of items">
                         <ng-container *ngIf="!data.edit; else editTemplate">
-                            <td>{{ data?.libelle }}</td>
+                            <td>{{ data?.libelle || data?.label }}</td>
                             <td class="text-center">
                                 <i class="fa" [ngClass]="data?.active ? 'fa-eye text-success':'fa-eye-slash'"></i>
                             </td>
@@ -36,7 +36,7 @@
                         </ng-container>
                         <ng-template #editTemplate>
                             <td>
-                                <input type="text" nz-input [(ngModel)]="data.libelle" name="name" />
+                                <input type="text" nz-input [(ngModel)]="data.libelle || data.label" name="name" />
                             </td>
                             <td class="text-center">
                                 <a (click)="toggleVisibility(data)" class="btn btn-sm btn-icon btn-clean btn-icon-md">

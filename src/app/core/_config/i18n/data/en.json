@@ -408,7 +408,20 @@
 			},
 			"PLAN_ARCHIVED": {
 				"TITLE": "Plan successfully archived"
+			},
+			"TRAVAUX_ARCHIVED": {
+				"TITLE": "hazardous work archived successfully"
 			}
+		},
+		"CARD": {
+			"TRAVAUX": {
+				"NO_TRAVAUX": "No hazardous to provide",
+				"SHORTTITLE": "Hazardous work",
+				"TITLE": "Hazardous to be provided on site"
+			}
+		},
+		"ACTION": {
+			"ADD_TRAVAUX": "Add hazardous work"
 		}
 	},
 	"AUTH": {

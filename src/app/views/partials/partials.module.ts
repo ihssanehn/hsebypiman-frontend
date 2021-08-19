@@ -122,11 +122,11 @@ import { CartComponent } from './layout/topbar/cart/cart.component';
 import { PaginationComponent } from './content/general/pagination/pagination.component';
 import { NgxMaskModule} from 'ngx-mask';
 import { AdminListPortletComponent } from './layout/admin-list-portlet/admin-list-portlet.component';
-import { 
-		NzTableModule, 
-		NzInputModule, 
-		NzPopconfirmModule, 
-		NzDividerModule, 
+import {
+		NzTableModule,
+		NzInputModule,
+		NzPopconfirmModule,
+		NzDividerModule,
 		NzIconModule,
 		NzCheckboxModule
 } from 'ng-zorro-antd';
@@ -162,6 +162,7 @@ import { DashMaterielComponent } from './layout/dashboard/dash-materiel/dash-mat
 import { DashEntrepriseComponent } from './layout/dashboard/dash-entreprise/dash-entreprise.component';
 import { ShowFlashInfoModalComponent } from './layout/flash-infos/show-flash-info-modal/show-flash-info-modal.component';
 import { AddDocModalComponent } from './layout/modal/add-doc-modal/add-doc-modal.component';
+import { PdpTravauxDangereuxComponent } from './layout/admins/pdp-travaux-dangereux/pdp-travaux-dangereux.component';
 
 @NgModule({
 	declarations: [
@@ -205,7 +206,7 @@ import { AddDocModalComponent } from './layout/modal/add-doc-modal/add-doc-modal
 		SearchListBarComponent,
 
 		CartComponent,
-		
+
 		ErrorComponent,
 		PaginationComponent,
 		CommingSoonComponent,
@@ -266,6 +267,7 @@ import { AddDocModalComponent } from './layout/modal/add-doc-modal/add-doc-modal
 		DashActionComponent,
 		DashMaterielComponent,
 		DashEntrepriseComponent,
+		PdpTravauxDangereuxComponent,
 
 	],
 	exports: [
@@ -312,7 +314,7 @@ import { AddDocModalComponent } from './layout/modal/add-doc-modal/add-doc-modal
 		VsFormSignaturesComponent,
 		SearchListBarComponent,
 		CartComponent,
-		
+
 		ErrorComponent,
 		PaginationComponent,
 		CommingSoonComponent,
@@ -371,6 +373,7 @@ import { AddDocModalComponent } from './layout/modal/add-doc-modal/add-doc-modal
 		DashActionComponent,
 		DashMaterielComponent,
 		DashEntrepriseComponent,
+		PdpTravauxDangereuxComponent
 
 	],
 	imports: [

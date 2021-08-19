@@ -19,6 +19,6 @@ export class AdminAddModalComponent implements OnInit {
 
 
   async submit() {
-    this.activeModal.close({ libelle: this.label });
+    this.activeModal.close({ libelle: this.label, label : this.label });
   }
 }

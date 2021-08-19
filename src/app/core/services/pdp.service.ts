@@ -10,7 +10,7 @@ import {Ar} from '@app/core/models/ar.model';
 import {Paginate} from '@app/core/_base/layout/models/paginate.model';
 import {JsonResponse} from '@app/core/_base/layout/models/jsonResponse.model';
 import {Router} from '@angular/router';
-import {CatRisque, ConsigneModel, Pdp} from "@app/core/models";
+import {CatRisque, ConsigneModel, Equipement, Pdp} from "@app/core/models";
 
 export class PdpService extends HttpService {
 
@@ -29,6 +29,12 @@ export class PdpService extends HttpService {
 
 	getAllPdpFilters() {
 		return this.http.get<JsonResponse<any[]>>(this.filtersUrl);
+	}
+
+	getAllAsAdmin(route, params = {}) {
+		var extendparams = {...params}
+		extendparams['fromAdmin'] = true;
+		return this.http.post<JsonResponse<Pdp[]>>(environment.apiBaseUrl + route, {...extendparams});
 	}
 
 	create(pdp) {
@@ -54,5 +60,9 @@ export class PdpService extends HttpService {
 			.join('&');
 		const url = this.baseUrl + '/export?' + queryString + '&token=' + localStorage.getItem(environment.authTokenKey);
 		window.open(url, '_blank');
+	}
+
+	updateOrders(payload) {
+		return this.http.post<any>(`${environment.apiBaseUrl}/updateOrders`, payload)
 	}
 }

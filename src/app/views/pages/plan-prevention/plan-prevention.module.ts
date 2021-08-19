@@ -29,8 +29,8 @@ import {ActionNotificationComponent} from '@app/views/partials/content/crud';
 import {PartialsModule} from '@app/views/partials/partials.module';
 import {PdpAddComponent} from './pdp-add/pdp-add.component';
 import {PdpAddFormComponent} from './pdp-add-form/pdp-add-form.component';
-import {CdkColumnDef} from "@angular/cdk/table";
-import {ArEditComponent} from "@app/views/pages/analyses-risque/ar-edit/ar-edit.component";
+import {CdkColumnDef} from '@angular/cdk/table';
+import {PdpAdminComponent} from './pdp-admin/pdp-admin.component';
 
 const routes: Routes = [
 	{
@@ -67,12 +67,22 @@ const routes: Routes = [
 				// 	}
 				// }
 			},
+			{
+				path: 'admin',
+				component: PdpAdminComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['ADMIN', 'ROOT']
+					}
+				}
+			},
 		]
 	}
 ];
 
 @NgModule({
-	declarations: [PlanPreventionComponent, PdpListComponent, PdpAddComponent, PdpAddFormComponent],
+	declarations: [PlanPreventionComponent, PdpListComponent, PdpAddComponent, PdpAddFormComponent, PdpAdminComponent],
 	imports: [
 		CommonModule,
 		PartialsModule,

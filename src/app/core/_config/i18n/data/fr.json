@@ -410,7 +410,20 @@
 			},
 			"PLAN_ARCHIVED": {
 				"TITLE": "Plan archivé avec succès"
+			},
+			"TRAVAUX_ARCHIVED": {
+				"TITLE": "travail dangereux archivé avec succès"
 			}
+		},
+		"CARD": {
+			"TRAVAUX": {
+				"NO_TRAVAUX": "Pas de travail dangereux à fournir",
+				"SHORTTITLE": "Travaux dangereux",
+				"TITLE": "Travaux dangereux à fournir sur place"
+			}
+		},
+		"ACTION": {
+			"ADD_TRAVAUX": "Ajouter un travail dangereux"
 		}
 	},
 	"AUTH": {
