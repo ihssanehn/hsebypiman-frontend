@@ -412,7 +412,10 @@
 				"TITLE": "Plan archivé avec succès"
 			},
 			"TRAVAUX_ARCHIVED": {
-				"TITLE": "travail dangereux archivé avec succès"
+				"TITLE": "Travail dangereux archivé avec succès"
+			},
+			"CONSIGNE_ARCHIVED": {
+				"TITLE": "Consigne (ee) archivé avec succès"
 			}
 		},
 		"CARD": {
@@ -420,10 +423,16 @@
 				"NO_TRAVAUX": "Pas de travail dangereux à fournir",
 				"SHORTTITLE": "Travaux dangereux",
 				"TITLE": "Travaux dangereux à fournir sur place"
+			},
+			"CONSIGNE": {
+				"NO_CONSIGNE": "Pas de consigne (ee) à fournir",
+				"SHORTTITLE": "Consignes (ee)",
+				"TITLE": "Consignes (ee) à fournir sur place"
 			}
 		},
 		"ACTION": {
-			"ADD_TRAVAUX": "Ajouter un travail dangereux"
+			"ADD_TRAVAUX": "Ajouter un travail dangereux",
+			"ADD_CONSIGNE": "Ajouter consigne (ee)"
 		}
 	},
 	"AUTH": {

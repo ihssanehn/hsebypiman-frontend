@@ -34,9 +34,9 @@ export class PdpTravauxDangereuxComponent extends AdminTemplateComponent impleme
 		super.ngOnInit();
 		this.refreshTranslations();
 		this.tpl = {
-			title: this.translate.instant("ARS.CARD.EQUIPEMENT.SHORTTITLE"),
-			deletedMessage: this.translate.instant("ARS.NOTIF.ELEMENT_NOT_DELETED.TITLE"),
-			deletedChildMessage: this.translate.instant("ARS.NOTIF.ELEMENT_NOT_DELETED.SUBTITLE"),
+			title: this.translate.instant("PDP.CARD.TRAVAUX.SHORTTITLE"),
+			deletedMessage: this.translate.instant("PDP.NOTIF.ELEMENT_NOT_DELETED.TITLE"),
+			deletedChildMessage: this.translate.instant("PDP.NOTIF.ELEMENT_NOT_DELETED.SUBTITLE"),
 			collapsed: true,
 			canUpdateTitle: false,
 			titleOject: null,
@@ -80,8 +80,7 @@ export class PdpTravauxDangereuxComponent extends AdminTemplateComponent impleme
 
 	async updateOrders(datas) {
 		try {
-			console.log(datas);
-			await this.parentService.updateOrders({data : datas, type: 'travaux_dangereux'}).toPromise();
+			await this.parentService.updateOrders({data: datas, type: 'travaux_dangereux'}).toPromise();
 			this.cdr.markForCheck();
 		} catch (error) {
 			console.error(error);

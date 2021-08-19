@@ -410,7 +410,10 @@
 				"TITLE": "Plan successfully archived"
 			},
 			"TRAVAUX_ARCHIVED": {
-				"TITLE": "hazardous work archived successfully"
+				"TITLE": "Hazardous work archived successfully"
+			},
+			"CONSIGNE_ARCHIVED": {
+				"TITLE": "Instruction (ee) archived successfully"
 			}
 		},
 		"CARD": {
@@ -418,10 +421,16 @@
 				"NO_TRAVAUX": "No hazardous to provide",
 				"SHORTTITLE": "Hazardous work",
 				"TITLE": "Hazardous to be provided on site"
+			},
+			"CONSIGNE": {
+				"NO_CONSIGNE": "No instructions (ee) to provide",
+				"SHORTTITLE": "instructions (ee)",
+				"TITLE": "instructions (ee) to be provided on site"
 			}
 		},
 		"ACTION": {
-			"ADD_TRAVAUX": "Add hazardous work"
+			"ADD_TRAVAUX": "Add hazardous work",
+			"ADD_CONSIGNE": "Add instruction (ee)"
 		}
 	},
 	"AUTH": {
