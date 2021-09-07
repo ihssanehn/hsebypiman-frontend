@@ -174,7 +174,7 @@ export class PdpAddFormComponent implements OnInit {
 							? v.pdp_risque_moyen_filtre.map(r => new FormGroup({
 								id: new FormControl(r.id),
 								is_with_comment: new FormControl(r.is_with_comment),
-								answer: new FormControl({value: v.is_selected || null, disabled: !v.is_selected}),
+								answer: new FormControl({value: r.is_selected || null, disabled: !v.is_selected}),
 								label: new FormControl(r.label),
 								comment: new FormControl({value: null, disabled: true})
 							})) : [])
