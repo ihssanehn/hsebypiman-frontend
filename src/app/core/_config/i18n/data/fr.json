@@ -1390,11 +1390,11 @@
 	},
 	"MENU": {
 		"ANALYSERISQUE": "Analyses de risque",
-		"PLANDEPREVENTION": "Plan de prevention",
+		"PLANDEPREVENTION": "Plan de prévention",
 		"BTN": {
 			"NEWACTION": "Nouvelle Action",
 			"NEWAR": "Nouvelle analyse de risque",
-			"NEWPDP": "Nouveau plan de prevention",
+			"NEWPDP": "Nouveau plan de prévention",
 			"NEWCHANTIER": "Nouveau chantier",
 			"NEWENTREPRISE": "Nouvelle entreprise",
 			"NEWMATERIEL": "Nouveau matériel",
