@@ -164,9 +164,10 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 
 	async onSubmit() {
 		try {
+			console.log((this.pdpForm.get('cat_pdp_risques').value as Array<RisqueModel>).findIndex(v => !v.is_eu && !v.is_piman && !v.is_sous_traitant && v.answer) === -1);
 			this.pdpForm.markAllAsTouched();
 			if (this.pdpForm.valid
-				&& (this.pdpForm.get('cat_pdp_risques').value as Array<RisqueModel>).filter(v => v.is_required_situation && v.answer).map(v => v.situation.filter(s => s.answer).length === 0).indexOf(true) === -1) {
+				&& (this.pdpForm.get('cat_pdp_risques').value as Array<RisqueModel>).filter(v => v.is_required_situation && v.answer).map(v => v.situation.filter(s => s.answer).length === 0).indexOf(true) === -1 && (this.pdpForm.get('cat_pdp_risques').value as Array<RisqueModel>).findIndex(v => !v.is_eu && !v.is_piman && !v.is_sous_traitant && v.answer) === -1) {
 				this.formStatus.onFormSubmitting();
 				const form = {...this.pdpForm.getRawValue()};
 				if (form && form.validations) {

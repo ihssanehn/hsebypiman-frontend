@@ -640,4 +640,9 @@ export class PdpAddFormComponent implements OnInit {
 			&& risk.get('is_required_situation').value
 			&& (risk.get('situation') as FormArray).controls.filter(v => v.get('answer').value).length === 0;
 	}
+
+
+	checkIfCheckOneResp(risk: AbstractControl) {
+		return risk.get('answer').value && (!risk.get('is_eu').value && !risk.get('is_piman').value && !risk.get('is_sous_traitant').value);
+	}
 }

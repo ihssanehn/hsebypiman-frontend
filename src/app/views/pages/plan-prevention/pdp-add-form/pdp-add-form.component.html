@@ -913,9 +913,9 @@
 									<div class="col-md-12 flex-column mt-3">
 										<span
 											class="mb-2 font-weight-bold">{{'PDP.PERSON_IN_CHARGE' | translate}}</span>
-										<div class="align-items-center d-flex mt-2 flex-wrap mb-3">
+										<div class="align-items-center d-flex mt-2 flex-wrap mb-2">
 											<mat-checkbox class="mr-2 ml-2"
-														  formControlName="is_eu">EE
+														  formControlName="is_eu">EU
 											</mat-checkbox>
 											<mat-checkbox class="mr-2 ml-2"
 														  formControlName="is_piman">PIMAN
@@ -924,6 +924,10 @@
 														  formControlName="is_sous_traitant">{{'PDP.SUBCONTRACTOR' | translate}}
 											</mat-checkbox>
 										</div>
+										<mat-error class="mb-3"
+												   *ngIf="checkIfCheckOneResp(risk)">
+											<strong>{{ 'PDP.ONE_RESP_REQUIRED' | translate }}</strong>
+										</mat-error>
 									</div>
 								</div>
 							</ng-container>

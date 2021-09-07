@@ -382,6 +382,7 @@
 		"ADD_ROW": "Add row",
 		"SUBCONTRACTOR": "Subcontractor",
 		"ONE_SITUATION_REQUIRED": "you have to select at least one situation",
+		"ONE_RESP_REQUIRED": "You must select at least one manager",
 		"NOTIF": {
 			"PDP_DELETED": {
 				"TITLE": "Prevention plan has been deleted successfully"

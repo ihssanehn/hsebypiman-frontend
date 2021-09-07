@@ -42,6 +42,9 @@ export class RisqueModel {
 	active?: boolean;
 	creator_id?: number;
 	is_other?: boolean;
+	is_eu?: boolean;
+	is_piman?: boolean;
+	is_sous_traitant?: boolean;
 	is_required_situation?: boolean;
 	answer?: boolean;
 	moyen?: Array<RisqueMoyenModel>;
