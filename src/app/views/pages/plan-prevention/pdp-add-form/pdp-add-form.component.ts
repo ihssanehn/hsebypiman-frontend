@@ -64,10 +64,10 @@ export class PdpAddFormComponent implements OnInit {
 	public suivisMedicalIntervenants: Array<any> = [{}];
 	public risques: Array<RisqueModel>;
 	public frequences: Array<PDPFrequences>;
-	displayedColumnsConsignes: string[] = ['consignes', 'comments'];
-	displayedColumnsEPIDisposition: string[] = ['label', 'list', 'type'];
-	displayedColumnsEESMoyenDisposition: string[] = ['label', 'comments'];
-	displayedColumnsTravaux: string[] = ['list'];
+	displayedColumnsConsignes: string[] = ['consignes', 'answers', 'comments'];
+	displayedColumnsEPIDisposition: string[] = ['label', 'answers', 'list', 'type', 'comment'];
+	displayedColumnsEESMoyenDisposition: string[] = ['label', 'answers', 'comments'];
+	displayedColumnsTravaux: string[] = ['list', 'answers'];
 	displayedColumnsValidationPlan: string[] = ['company', 'name', 'date', 'participation', 'visa', 'actions'];
 	displayedColumnsIntervenants: string[] = ['last', 'first', 'contact', 'formations', 'suivis_médical', 'actions'];
 
