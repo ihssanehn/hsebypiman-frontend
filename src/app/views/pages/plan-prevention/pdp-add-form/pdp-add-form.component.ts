@@ -114,7 +114,7 @@ export class PdpAddFormComponent implements OnInit {
 			}]);
 		}
 		if (this.EESMoyenDisposition.length > 0) {
-			this.patchFormArray(this.EESMoyenDisposition, 'moyen_disposition_ees', [], false);
+			this.patchFormArray(this.EESMoyenDisposition, 'moyen_disposition_ees', [], true);
 		}
 		if (this.traveauxDangereux.length > 0) {
 			this.patchFormArray(this.traveauxDangereux, 'travaux_dangereux');
@@ -277,9 +277,12 @@ export class PdpAddFormComponent implements OnInit {
 				}
 			});
 		} else {
+
 			controlGroup.get('comment').disable();
+			controlGroup.get('comment').setValue(null);
 			listFormControls.map(v => {
 				if (controlGroup.get(v)) {
+					controlGroup.get(v).setValue(null);
 					controlGroup.get(v).disable();
 				}
 			});

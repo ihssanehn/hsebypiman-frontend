@@ -681,28 +681,6 @@
 										</div>
 									</td>
 								</ng-container>
-								<!--								<ng-container matColumnDef="ee">-->
-								<!--									<td mat-cell *matCellDef="let element; let index = index" [formGroupName]="index"-->
-								<!--										[width]="'15%'">-->
-								<!--										<div class="m-2">-->
-								<!--											<mat-checkbox-->
-								<!--												formControlName="is_ee"-->
-								<!--											>EE-->
-								<!--											</mat-checkbox>-->
-								<!--										</div>-->
-								<!--									</td>-->
-								<!--								</ng-container>-->
-								<!--								<ng-container matColumnDef="sous-traitant">-->
-								<!--									<td mat-cell *matCellDef="let element; let index = index" [formGroupName]="index"-->
-								<!--										[width]="'15%'">-->
-								<!--										<div class="m-2">-->
-								<!--											<mat-checkbox-->
-								<!--												formControlName="is_sous_traitant"-->
-								<!--											>{{'PDP.SUBCONTRACTOR' | translate}}-->
-								<!--											</mat-checkbox>-->
-								<!--										</div>-->
-								<!--									</td>-->
-								<!--								</ng-container>-->
 								<tr mat-row
 									*matRowDef="let row; let i = index; columns: displayedColumnsEPIDisposition;"
 									[formGroupName]="i"></tr>
@@ -724,7 +702,8 @@
 										[width]="'30%'">
 										<div class="m-2">
 											<label>{{element.label}} : </label>
-											<mat-radio-group formControlName="answer" class="ml-3">
+											<mat-radio-group formControlName="answer" class="ml-3"
+															 (change)="allowOtherFields('moyen_disposition_ees', index, [], $event.value);">
 												<mat-radio-button
 													[value]="1">{{'PDP.YES' | translate}}</mat-radio-button>
 												<mat-radio-button
