@@ -31,6 +31,7 @@ import {PdpAddComponent} from './pdp-add/pdp-add.component';
 import {PdpAddFormComponent} from './pdp-add-form/pdp-add-form.component';
 import {CdkColumnDef} from '@angular/cdk/table';
 import {PdpAdminComponent} from './pdp-admin/pdp-admin.component';
+import { PdpDetailComponent } from './pdp-detail/pdp-detail.component';
 
 const routes: Routes = [
 	{
@@ -46,6 +47,10 @@ const routes: Routes = [
 				// 		only: ['analyse_risque_canSeeAll']
 				// 	}
 				// }
+			},
+			{
+				path:'detail/:id',
+				component: PdpDetailComponent
 			},
 			{
 				path: 'add',
@@ -82,7 +87,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-	declarations: [PlanPreventionComponent, PdpListComponent, PdpAddComponent, PdpAddFormComponent, PdpAdminComponent],
+	declarations: [PlanPreventionComponent, PdpListComponent, PdpAddComponent, PdpAddFormComponent, PdpAdminComponent, PdpDetailComponent],
 	imports: [
 		CommonModule,
 		PartialsModule,
@@ -153,3 +158,4 @@ const routes: Routes = [
 })
 export class PlanPreventionModule {
 }
+

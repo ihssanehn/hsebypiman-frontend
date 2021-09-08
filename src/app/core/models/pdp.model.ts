@@ -8,6 +8,10 @@ export class Pdp {
 	duration_intervention_mp400h?: number;
 	effectif_moyen?: number;
 	horaires_ouverture_site?: string;
+	horaires_fermeture_site?: string;
+	hse_eu_name?: string;
+	hse_eu_mail?: string;
+	hse_eu_tel?: string;
 	id?: number;
 	is_astreinte?: boolean;
 	is_night_shift?: boolean;
