@@ -10,6 +10,7 @@ import {tap} from 'rxjs/operators';
 import {Ar, Pdp, RisqueModel} from '@app/core/models';
 import {Subscription} from 'rxjs';
 import {RisqueMoyenModel} from "@app/core/models/consigne.model";
+import moment from "moment";
 
 @Component({
 	selector: 'tf-pdp-add',
@@ -162,11 +163,15 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 		});
 	}
 
+	checkIfDateLastIsBigger() {
+		return moment(this.pdpForm.get('horaires_fermeture_site').value, 'hh:mm').isAfter(moment(this.pdpForm.get('horaires_ouverture_site').value, 'hh:mm'));
+	}
+
 	async onSubmit() {
 		try {
-			console.log((this.pdpForm.get('cat_pdp_risques').value as Array<RisqueModel>).findIndex(v => !v.is_eu && !v.is_piman && !v.is_sous_traitant && v.answer) === -1);
 			this.pdpForm.markAllAsTouched();
 			if (this.pdpForm.valid
+				&& this.checkIfDateLastIsBigger()
 				&& (this.pdpForm.get('cat_pdp_risques').value as Array<RisqueModel>).filter(v => v.is_required_situation && v.answer).map(v => v.situation.filter(s => s.answer).length === 0).indexOf(true) === -1 && (this.pdpForm.get('cat_pdp_risques').value as Array<RisqueModel>).findIndex(v => !v.is_eu && !v.is_piman && !v.is_sous_traitant && v.answer) === -1) {
 				this.formStatus.onFormSubmitting();
 				const form = {...this.pdpForm.getRawValue()};

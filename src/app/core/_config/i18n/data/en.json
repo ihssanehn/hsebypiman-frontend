@@ -383,6 +383,7 @@
 		"SUBCONTRACTOR": "Subcontractor",
 		"ONE_SITUATION_REQUIRED": "you have to select at least one situation",
 		"ONE_RESP_REQUIRED": "You must select at least one manager",
+		"ENDTIME_MUST_BIGGER_THAN_START_TIME": "The end time must be later than the start time",
 		"NOTIF": {
 			"PDP_DELETED": {
 				"TITLE": "Prevention plan has been deleted successfully"

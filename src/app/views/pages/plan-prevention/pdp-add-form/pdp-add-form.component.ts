@@ -13,6 +13,7 @@ import {
 } from "@app/core/models";
 import {PdpService} from "@app/core/services";
 import {BehaviorSubject} from "rxjs";
+import moment from 'moment';
 
 @Component({
 	selector: 'tf-pdp-add-form',
@@ -644,5 +645,10 @@ export class PdpAddFormComponent implements OnInit {
 
 	checkIfCheckOneResp(risk: AbstractControl) {
 		return risk.get('answer').value && (!risk.get('is_eu').value && !risk.get('is_piman').value && !risk.get('is_sous_traitant').value);
+	}
+
+
+	checkIfDateLastIsBigger() {
+		return moment(this.pdpForm.get('horaires_fermeture_site').value, 'hh:mm').isAfter(moment(this.pdpForm.get('horaires_ouverture_site').value, 'hh:mm'));
 	}
 }

@@ -383,6 +383,7 @@
 		"SUBCONTRACTOR": "Sous-traitant",
 		"ONE_SITUATION_REQUIRED": "Vous devez sélectionner au moins une situation",
 		"ONE_RESP_REQUIRED": "Vous devez sélectionner au moins un responsable",
+		"ENDTIME_MUST_BIGGER_THAN_START_TIME": "L'horaire de fin soit obligatoirement après l'horaire de début ",
 		"YES": "Oui",
 		"NO": "Non",
 		"NOTIF": {

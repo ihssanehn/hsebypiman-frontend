@@ -444,6 +444,10 @@
 											</div>
 										</div>
 									</div>
+									<mat-error class="error-found"
+											   *ngIf="!checkIfDateLastIsBigger()">
+										<small><strong>{{ 'PDP.ENDTIME_MUST_BIGGER_THAN_START_TIME' | translate }}</strong></small>
+									</mat-error>
 								</div>
 							</div>
 							<!--							<div-->
