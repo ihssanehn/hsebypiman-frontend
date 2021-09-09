@@ -444,6 +444,10 @@
 											</div>
 										</div>
 									</div>
+									<mat-error class="error-found"
+											   *ngIf="!checkIfDateLastIsBigger()">
+										<small><strong>{{ 'PDP.ENDTIME_MUST_BIGGER_THAN_START_TIME' | translate }}</strong></small>
+									</mat-error>
 								</div>
 							</div>
 							<!--							<div-->
@@ -681,28 +685,6 @@
 										</div>
 									</td>
 								</ng-container>
-								<!--								<ng-container matColumnDef="ee">-->
-								<!--									<td mat-cell *matCellDef="let element; let index = index" [formGroupName]="index"-->
-								<!--										[width]="'15%'">-->
-								<!--										<div class="m-2">-->
-								<!--											<mat-checkbox-->
-								<!--												formControlName="is_ee"-->
-								<!--											>EE-->
-								<!--											</mat-checkbox>-->
-								<!--										</div>-->
-								<!--									</td>-->
-								<!--								</ng-container>-->
-								<!--								<ng-container matColumnDef="sous-traitant">-->
-								<!--									<td mat-cell *matCellDef="let element; let index = index" [formGroupName]="index"-->
-								<!--										[width]="'15%'">-->
-								<!--										<div class="m-2">-->
-								<!--											<mat-checkbox-->
-								<!--												formControlName="is_sous_traitant"-->
-								<!--											>{{'PDP.SUBCONTRACTOR' | translate}}-->
-								<!--											</mat-checkbox>-->
-								<!--										</div>-->
-								<!--									</td>-->
-								<!--								</ng-container>-->
 								<tr mat-row
 									*matRowDef="let row; let i = index; columns: displayedColumnsEPIDisposition;"
 									[formGroupName]="i"></tr>
@@ -724,7 +706,8 @@
 										[width]="'30%'">
 										<div class="m-2">
 											<label>{{element.label}} : </label>
-											<mat-radio-group formControlName="answer" class="ml-3">
+											<mat-radio-group formControlName="answer" class="ml-3"
+															 (change)="allowOtherFields('moyen_disposition_ees', index, [], $event.value);">
 												<mat-radio-button
 													[value]="1">{{'PDP.YES' | translate}}</mat-radio-button>
 												<mat-radio-button
@@ -934,9 +917,9 @@
 									<div class="col-md-12 flex-column mt-3">
 										<span
 											class="mb-2 font-weight-bold">{{'PDP.PERSON_IN_CHARGE' | translate}}</span>
-										<div class="align-items-center d-flex mt-2 flex-wrap mb-3">
+										<div class="align-items-center d-flex mt-2 flex-wrap mb-2">
 											<mat-checkbox class="mr-2 ml-2"
-														  formControlName="is_eu">EE
+														  formControlName="is_eu">EU
 											</mat-checkbox>
 											<mat-checkbox class="mr-2 ml-2"
 														  formControlName="is_piman">PIMAN
@@ -945,6 +928,10 @@
 														  formControlName="is_sous_traitant">{{'PDP.SUBCONTRACTOR' | translate}}
 											</mat-checkbox>
 										</div>
+										<mat-error class="mb-3"
+												   *ngIf="checkIfCheckOneResp(risk)">
+											<strong>{{ 'PDP.ONE_RESP_REQUIRED' | translate }}</strong>
+										</mat-error>
 									</div>
 								</div>
 							</ng-container>

@@ -328,7 +328,7 @@
 		"RESCUERS_FIRST_AID_WORKER_AT_WORK": "Rescuers First aid worker at work",
 		"QHSE_POLE": "QHSE pole",
 		"OCCUPATIONAL_PHYSICIAN": "Occupational physician",
-		"COMPANY_REPRESENTATIVE": "Company representative",
+		"COMPANY_REPRESENTATIVE": "Company representative (BM)",
 		"INTERVENTION_OF_PIMAN_SUBCONTRACTORS": "Intervention of PIMAN subcontractors",
 		"NAME_OF_SUBCONTRACTOR": "Name of Subcontractor",
 		"DETAILS_OF_THE_INTERVENTION": "Details of the intervention",
@@ -382,6 +382,8 @@
 		"ADD_ROW": "Add row",
 		"SUBCONTRACTOR": "Subcontractor",
 		"ONE_SITUATION_REQUIRED": "you have to select at least one situation",
+		"ONE_RESP_REQUIRED": "You must select at least one manager",
+		"ENDTIME_MUST_BIGGER_THAN_START_TIME": "The end time must be later than the start time",
 		"NOTIF": {
 			"PDP_DELETED": {
 				"TITLE": "Prevention plan has been deleted successfully"

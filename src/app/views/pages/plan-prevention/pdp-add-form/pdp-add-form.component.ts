@@ -13,6 +13,7 @@ import {
 } from "@app/core/models";
 import {PdpService} from "@app/core/services";
 import {BehaviorSubject} from "rxjs";
+import moment from 'moment';
 
 @Component({
 	selector: 'tf-pdp-add-form',
@@ -114,7 +115,7 @@ export class PdpAddFormComponent implements OnInit {
 			}]);
 		}
 		if (this.EESMoyenDisposition.length > 0) {
-			this.patchFormArray(this.EESMoyenDisposition, 'moyen_disposition_ees', [], false);
+			this.patchFormArray(this.EESMoyenDisposition, 'moyen_disposition_ees', [], true);
 		}
 		if (this.traveauxDangereux.length > 0) {
 			this.patchFormArray(this.traveauxDangereux, 'travaux_dangereux');
@@ -174,7 +175,7 @@ export class PdpAddFormComponent implements OnInit {
 							? v.pdp_risque_moyen_filtre.map(r => new FormGroup({
 								id: new FormControl(r.id),
 								is_with_comment: new FormControl(r.is_with_comment),
-								answer: new FormControl({value: v.is_selected || null, disabled: !v.is_selected}),
+								answer: new FormControl({value: r.is_selected || null, disabled: !v.is_selected}),
 								label: new FormControl(r.label),
 								comment: new FormControl({value: null, disabled: true})
 							})) : [])
@@ -277,9 +278,12 @@ export class PdpAddFormComponent implements OnInit {
 				}
 			});
 		} else {
+
 			controlGroup.get('comment').disable();
+			controlGroup.get('comment').setValue(null);
 			listFormControls.map(v => {
 				if (controlGroup.get(v)) {
+					controlGroup.get(v).setValue(null);
 					controlGroup.get(v).disable();
 				}
 			});
@@ -636,5 +640,15 @@ export class PdpAddFormComponent implements OnInit {
 		return risk.get('answer').value
 			&& risk.get('is_required_situation').value
 			&& (risk.get('situation') as FormArray).controls.filter(v => v.get('answer').value).length === 0;
+	}
+
+
+	checkIfCheckOneResp(risk: AbstractControl) {
+		return risk.get('answer').value && (!risk.get('is_eu').value && !risk.get('is_piman').value && !risk.get('is_sous_traitant').value);
+	}
+
+
+	checkIfDateLastIsBigger() {
+		return moment(this.pdpForm.get('horaires_fermeture_site').value, 'hh:mm').isAfter(moment(this.pdpForm.get('horaires_ouverture_site').value, 'hh:mm'));
 	}
 }
