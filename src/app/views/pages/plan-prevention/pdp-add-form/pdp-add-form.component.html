@@ -445,7 +445,7 @@
 										</div>
 									</div>
 									<mat-error class="error-found"
-											   *ngIf="pdpForm.get('horaires_fermeture_site').va && !checkIfDateLastIsBigger()">
+											   *ngIf="pdpForm.get('horaires_fermeture_site').value && !checkIfDateLastIsBigger()">
 										<small><strong>{{ 'PDP.ENDTIME_MUST_BIGGER_THAN_START_TIME' | translate }}</strong></small>
 									</mat-error>
 								</div>
