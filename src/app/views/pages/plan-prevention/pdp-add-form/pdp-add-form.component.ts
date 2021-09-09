@@ -649,6 +649,6 @@ export class PdpAddFormComponent implements OnInit {
 
 
 	checkIfDateLastIsBigger() {
-		return moment(this.pdpForm.get('horaires_fermeture_site').value, 'hh:mm').isAfter(moment(this.pdpForm.get('horaires_ouverture_site').value, 'hh:mm'));
+		return  moment(this.pdpForm.get('horaires_fermeture_site').value, 'hh:mm').isAfter(moment(this.pdpForm.get('horaires_ouverture_site').value, 'hh:mm'));
 	}
 }
