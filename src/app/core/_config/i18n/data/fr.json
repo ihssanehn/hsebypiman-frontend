@@ -352,7 +352,7 @@
 		"JOB": "travail",
 		"NAME": "Nom",
 		"INSTRUCTIONS_GIVEN_BY_THE_EXTERNAL_COMPANY": "Consignes remises par l'entreprise extérieure (Client)",
-		"TYPE_OPERATION": "type d'opération",
+		"TYPE_OPERATION": "Type d'opération",
 		"PPE_MADE_AVAILABLE_TO_THE_EXTERNAL_COMPANY": "EPI mis à disposition",
 		"RESOURCES_MADE_AVAILABLE_TO_THE_EXTERNAL_COMPANY": "Ressources mises à disposition de l'entreprise utilisatrice",
 		"LIST_OF_HAZARDOUS_WORK": "Liste des travaux dangereux",
@@ -1392,11 +1392,11 @@
 	},
 	"MENU": {
 		"ANALYSERISQUE": "Analyses de risque",
-		"PLANDEPREVENTION": "Plan de prevention",
+		"PLANDEPREVENTION": "Plan de prévention",
 		"BTN": {
 			"NEWACTION": "Nouvelle Action",
 			"NEWAR": "Nouvelle analyse de risque",
-			"NEWPDP": "Nouveau plan de prevention",
+			"NEWPDP": "Nouveau plan de prévention",
 			"NEWCHANTIER": "Nouveau chantier",
 			"NEWENTREPRISE": "Nouvelle entreprise",
 			"NEWMATERIEL": "Nouveau matériel",

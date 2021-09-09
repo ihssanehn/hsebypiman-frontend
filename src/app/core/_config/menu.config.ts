@@ -49,7 +49,7 @@ export class MenuConfig {
 					moduleCode: ['ANALYSE'],
 				},
 				{
-					title: 'Plan de prevention',
+					title: 'Plan de prévention',
 					root: true,
 					alignment: 'left',
 					page: '/plan-de-prevention/list',
