@@ -194,7 +194,7 @@
                             <div class="card">
                                 <div class="box">
                                     <div class="box-line" *ngFor="let pdp_consigne of pdp.pdp_consigne_ee">
-                                        <span class="label pull-left mr-2">{{pdp_consigne.consigne_ee.label}}</span>
+                                        <span class="label pull-left mr-2">{{pdp_consigne.consigne_ee?.label}}</span>
                                         <span class="" *ngIf="pdp_consigne.answer; else no">{{'PDP.YES' | translate}}</span>
                                         <div *ngIf="pdp_consigne.type_operation" class="pl-3 pr-3 pb-3">
                                             <span class="label pull-left mr-2">{{'PDP.TYPE_OPERATION' | translate}}</span>
@@ -233,9 +233,9 @@
                                         </thead>
                                         <tbody>
                                             <tr *ngFor="let pdp_epi_disposition of pdp.pdp_epi_disposition_ee">
-                                                <th scope="row">{{pdp_epi_disposition.epi_disposition_ee.label}}</th>
+                                                <th scope="row">{{pdp_epi_disposition.epi_disposition_ee?.label}}</th>
                                                 <td class="text-center"><span *ngIf="pdp_epi_disposition.answer; else no"></span>{{'PDP.YES' | translate}}</td>
-                                                <td class="text-center"><span *ngIf="pdp_epi_disposition.answer; else noDataFound">{{pdp_epi_disposition.answer.label}}</span></td>
+                                                <td class="text-center"><span *ngIf="pdp_epi_disposition.answer; else noDataFound">{{pdp_epi_disposition.answer?.label}}</span></td>
                                                 <td class="text-center">
                                                     <ng-container *ngIf="pdp_epi_disposition.type; else noDataFound">
                                                         <span *ngIf="pdp_epi_disposition.type == 'eu'">EU</span>
@@ -274,7 +274,7 @@
                                         </thead>
                                         <tbody>
                                             <tr *ngFor="let pdp_moyen_disposition of pdp.pdp_moyen_disposition_ee">
-                                                <th scope="row">{{pdp_moyen_disposition.moyen_disposition_ee.label}}</th>
+                                                <th scope="row">{{pdp_moyen_disposition.moyen_disposition_ee?.label}}</th>
                                                 <td class="text-center"><span *ngIf="pdp_moyen_disposition.answer; else no"></span>{{'PDP.YES' | translate}}</td>
                                                 <td class="text-center"><span *ngIf="pdp_moyen_disposition.comment; else noDataFound">{{pdp_moyen_disposition.comment}}</span></td>
                                             </tr>
@@ -297,7 +297,7 @@
                             <div class="card">
                                 <div class="box">
                                     <div class="box-line" *ngFor="let pdp_td of pdp.pdp_travaux_dangereux">
-                                        <span class="label pull-left mr-2">{{pdp_td.travaux_dangereux.label}}</span>
+                                        <span class="label pull-left mr-2">{{pdp_td.travaux_dangereux?.label}}</span>
                                         <span class="" *ngIf="pdp_td.answer; else no">{{'PDP.YES' | translate}}</span>
                                     </div>
                                 </div>
@@ -316,7 +316,7 @@
                         <ng-container *ngFor="let risk of pdp.pdp_answer_risques">
                             <div class="col-6 mb-3">
                                 <div class="card">
-                                    <h4>{{risk.cat_pdp_risque.label}}</h4>
+                                    <h4>{{risk.cat_pdp_risque?.label}}</h4>
                                     <ng-container *ngIf="risk.answer">
                                         <div class="box box-info" style="flex: 1;">
                                             <h6><b>{{'PDP.RELATED_SITUATION' | translate}}</b></h6>
@@ -449,7 +449,7 @@
                                                 <td class="text-center"><span *ngIf="intervenant.formations; else noDataFound">{{intervenant.formations}}</span></td>
                                                 <td class="text-center">
                                                     <ng-container *ngIf="intervenant.is_suivi_medical; else no">
-                                                        <span>{{intervenant.motif.label}}</span>
+                                                        <span>{{intervenant.motif?.label}}</span>
                                                     </ng-container>
                                                 </td>
                                             </tr>
