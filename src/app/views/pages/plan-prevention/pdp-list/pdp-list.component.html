@@ -131,11 +131,31 @@
 
 <mat-menu #actionMenu="matMenu" class="action-menu">
 	<ng-template matMenuContent let-chantier="chantier" let-status="status">
-		<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editPdp(pdp_id)">
-			<mat-icon>edit</mat-icon>
-		</button>
-		<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deletePdp(pdp_id)">
-			<mat-icon>delete</mat-icon>
-		</button>
+		<ng-container *ngxPermissionsOnly="['plan_prevention_canSeeAll']">
+			<button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}">
+				<mat-icon>visibility</mat-icon>
+			</button>
+		</ng-container>
+		<ng-container *ngxPermissionsOnly="['USER']">
+			<button mat-icon-button color="primary" matTooltip="{{'ACTION.SIGN' | translate}}">
+				<mat-icon>gesture</mat-icon>
+			</button>
+		</ng-container>
+		<ng-container *ngxPermissionsOnly="['plan_prevention_canUpdate']">
+			<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editPdp(pdp_id)">
+				<mat-icon>edit</mat-icon>
+			</button>
+		</ng-container>
+		<ng-container *ngxPermissionsOnly="['plan_prevention_canAdd']">
+			<button mat-icon-button color="info" matTooltip="{{'ACTION.DUPLICATE' | translate}}">
+				<mat-icon>filter_none</mat-icon>
+			</button>
+		</ng-container>
+		<ng-container *ngxPermissionsOnly="['plan_prevention_canArchieve']">
+			<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}"
+					(click)="deletePdp(pdp_id)">
+				<mat-icon>delete</mat-icon>
+			</button>
+		</ng-container>
 	</ng-template>
 </mat-menu>
