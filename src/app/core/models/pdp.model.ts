@@ -24,7 +24,7 @@ export class Pdp {
 	medecin_travail_ee_tel?: string;
 	medecin_travail_eu_name?: string;
 	medecin_travail_eu_tel?: string;
-	pdp_intervention_at?: string;
+	pdp_intervention_at?: Date;
 	pole_qhse?: string;
 	presence_site_client_frequency?: string;
 	raison_sociale_eu?: string;

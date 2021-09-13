@@ -162,7 +162,7 @@
                             <div class="box">
                                 <p><span class="label pull-left mr-2">{{'PDP.INTERVENTION_NAME' | translate}}</span><span class="" *ngIf="pdp.label_intervention; else noDataFound">{{pdp.label_intervention}}</span></p>
                                 <p><span class="label pull-left mr-2">{{'PDP.INTERVENTION_PLACE' | translate}}</span><span class="" *ngIf="pdp.lieu_intervention; else noDataFound">{{pdp.lieu_intervention}}</span></p>
-                                <p><span class="label pull-left mr-2">{{'PDP.PDP_ESTABLISHED_ON' | translate}}</span><span class="" *ngIf="pdp.pdp_intervention_at; else noDataFound">{{pdp.pdp_intervention_at}}</span></p>
+                                <p><span class="label pull-left mr-2">{{'PDP.PDP_ESTABLISHED_ON' | translate}}</span><span class="" *ngIf="pdp.pdp_intervention_at; else noDataFound">{{pdp.pdp_intervention_at | date:'dd/MM/yyyy'}}</span></p>
                                 <p><span class="label pull-left mr-2">{{'PDP.DAYTIME_SITE_OPENING_HOURS' | translate}}</span><span class="" *ngIf="pdp.horaires_ouverture_site; else noDataFound">{{pdp.horaires_ouverture_site}} - {{pdp.horaires_fermeture_site}}</span></p>
                                 <p><span class="label pull-left mr-2">{{'PDP.PREDICTABLE_AVERAGE_WORKFORCE' | translate}}</span><span class="" *ngIf="pdp.effectif_moyen; else noDataFound">{{pdp.effectif_moyen}}</span></p>
                             </div>

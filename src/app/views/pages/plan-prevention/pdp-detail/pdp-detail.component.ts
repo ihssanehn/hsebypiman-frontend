@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Pdp } from '@app/core/models';
 import { PdpService } from '@app/core/services';
 import { DateEnToFrPipe, DateFrToEnPipe } from '@app/core/_base/layout';
+import moment from 'moment';
 
 @Component({
   selector: 'tf-pdp-detail',
@@ -20,7 +21,7 @@ export class PdpDetailComponent implements OnInit {
     protected pdpService: PdpService,
     protected cdr: ChangeDetectorRef,
     private dateFrToEnPipe: DateFrToEnPipe,
-		private dateEnToFrPipe: DateEnToFrPipe
+    private dateEnToFrPipe: DateEnToFrPipe
   ) { }
 
   ngOnInit() {
@@ -42,7 +43,7 @@ export class PdpDetailComponent implements OnInit {
   async getPdp(pdpId) {
 		try {
 			var res = await this.pdpService.get(pdpId).toPromise();
-      this.parsePdpDate(res.result.data, 'EnToFr');
+      this.parsePdpDate(res.result.data);
       this.pdp = res.result.data;
 			this.pdpLoaded = true;
 			this.cdr.markForCheck();
@@ -51,12 +52,12 @@ export class PdpDetailComponent implements OnInit {
 		}
   }
 
-  parsePdpDate(item, direction){
+  parsePdpDate(item){
     item.pdp_validations.forEach(validation => {
-      validation.validation_at = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(validation.validation_at) : this.dateEnToFrPipe.transform(validation.validation_at);
-      validation.part_inspection_at = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(validation.part_inspection_at) : this.dateEnToFrPipe.transform(validation.part_inspection_at);
-    });
-    item.pdp_intervention_at = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.pdp_intervention_at) : this.dateEnToFrPipe.transform(item.pdp_intervention_at);
+    validation.validation_at = moment(validation.validation_at, 'DD-MM-YYYY').format('YYYY-MM-DD');
+    validation.part_inspection_at = moment(validation.part_inspection_at, 'DD-MM-YYYY').format('YYYY-MM-DD');
+  });
+    item.pdp_intervention_at = moment(item.pdp_intervention_at, 'DD-MM-YYYY').format('YYYY-MM-DD');
 	}
 
 }
