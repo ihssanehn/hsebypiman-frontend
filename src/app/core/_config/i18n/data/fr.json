@@ -418,7 +418,8 @@
 			},
 			"CONSIGNE_ARCHIVED": {
 				"TITLE": "Consigne (ee) archivé avec succès"
-			}
+			},
+			"ERROR_SUBMITTING" : "Oh Snap ! Modifiez quelques éléments et essayez de soumettre à nouveau."
 		},
 		"CARD": {
 			"TRAVAUX": {
