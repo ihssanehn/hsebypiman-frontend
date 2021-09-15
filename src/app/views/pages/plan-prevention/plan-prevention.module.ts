@@ -32,6 +32,7 @@ import {PdpAddFormComponent} from './pdp-add-form/pdp-add-form.component';
 import {CdkColumnDef} from '@angular/cdk/table';
 import {PdpAdminComponent} from './pdp-admin/pdp-admin.component';
 import { PdpDetailComponent } from './pdp-detail/pdp-detail.component';
+import {NotifierModule} from "angular-notifier";
 
 const routes: Routes = [
 	{
@@ -128,6 +129,11 @@ const routes: Routes = [
 		NgbPopoverModule,
 		NgxMaskModule,
 		MatFormFieldModule,
+		NotifierModule.withConfig({
+			behaviour: {
+				autoHide: 3000,
+			},
+		}),
 	],
 	providers: [
 		CdkColumnDef,
