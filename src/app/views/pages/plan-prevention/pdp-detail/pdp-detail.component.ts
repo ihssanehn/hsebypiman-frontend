@@ -15,6 +15,18 @@ export class PdpDetailComponent implements OnInit {
   pdp: Pdp;
   pdpLoaded: boolean = false;
 
+  sousTraitantEeColumns: string[] = ['name', 'mail', 'tel'];
+  pdpConsigneeColumns: string[] = ['instructions', 'answer', 'comments', 'operation_type'];
+  pdpEpiDispositioneeColumns: string[] = ['ppe', 'answer', 'filter', 'type', 'comment'];
+  pdpMoyenDispositionEeColumns: string[] = ['moyen_disposition', 'answer', 'comment'];
+  pdpTravauxDangereuxColumns: string[] = ['pdp_travaux_dangereux', 'answer'];
+  pdpValidationsColumns: string[] = ['company', 'fullname', 'date', 'participation', 'visa'];
+  intervenantsColumns: string[] = ['lastname', 'firstname', 'phone', 'training_auth', 'medical_follow_up'];
+
+  isExpanded : boolean = false;
+  isDisableToggle : boolean = false;
+
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
