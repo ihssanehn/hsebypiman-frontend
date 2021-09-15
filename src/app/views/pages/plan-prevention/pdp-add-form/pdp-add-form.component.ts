@@ -1,8 +1,8 @@
 import {ChangeDetectorRef, Component, EventEmitter, Input, NgZone, OnInit, Output, ViewChild} from '@angular/core';
-import {AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {FormStatus} from "@app/core/_base/crud/models/form-status";
-import {CdkTextareaAutosize} from "@angular/cdk/text-field";
-import {take} from "rxjs/operators";
+import {AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormStatus} from '@app/core/_base/crud/models/form-status';
+import {CdkTextareaAutosize} from '@angular/cdk/text-field';
+import {take} from 'rxjs/operators';
 import {
 	ConsigneModel,
 	DispositionModel,
@@ -10,10 +10,12 @@ import {
 	PDPFrequences,
 	RisqueModel,
 	TraveauxDangereuxModel
-} from "@app/core/models";
-import {PdpService} from "@app/core/services";
-import {BehaviorSubject} from "rxjs";
+} from '@app/core/models';
+import {PdpService} from '@app/core/services';
+import {BehaviorSubject} from 'rxjs';
 import moment from 'moment';
+import {NotifierService} from 'angular-notifier';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
 	selector: 'tf-pdp-add-form',
@@ -74,11 +76,15 @@ export class PdpAddFormComponent implements OnInit {
 
 	dataSource = new BehaviorSubject<AbstractControl[]>([]);
 
+	private readonly notifier: NotifierService;
+
 	constructor(private _ngZone: NgZone,
+				notifierService: NotifierService,
 				private FB: FormBuilder,
+				private translate: TranslateService,
 				private cdr: ChangeDetectorRef,
 				protected pdpService: PdpService) {
-
+		this.notifier = notifierService;
 	}
 
 	ngOnInit() {
@@ -229,12 +235,61 @@ export class PdpAddFormComponent implements OnInit {
 	}
 
 	showPart(key) {
-		if (!this.parts.includes(key)) {
-			this.parts.push(key);
+		if (this.checkPart(key)) {
+			if (!this.parts.includes(key)) {
+				this.parts.push(key);
+			}
+			if (key === 6) {
+				this.onLastStep.emit(true);
+			}
+		} else {
+			this.notifier.notify('error', this.translate.instant('PDP.NOTIF.ERROR_SUBMITTING'));
+
 		}
-		if (key === 6) {
-			this.onLastStep.emit(true);
+	}
+
+	checkPart(key) {
+		this.pdpForm.markAllAsTouched();
+		console.log(key);
+		switch (key) {
+			case 2  : {
+				return this.checkSecondPart();
+			}
+			case 3  : {
+				return this.checkSecondPart();
+			}
+			case 4 : {
+				return this.checkFourthPart();
+			}
+			case 5 : {
+				return this.checkFourthPart();
+			}
+			case 6 : {
+				return this.checkFourthPart() && this.getControlsArrayFormName('cat_pdp_risques').filter(v => this.checkIfSelectOnSituation(v) || this.checkIfCheckOneResp(v)).length === 0;
+			}
 		}
+	}
+
+	checkSecondPart() {
+		return this.pdpForm.get('raison_sociale_eu').valid
+			&& this.pdpForm.get('raison_sociale_tel_eu').valid
+			&& this.pdpForm.get('representant_entreprise_eu_name').valid
+			&& this.pdpForm.get('representant_entreprise_eu_mail').valid
+			&& this.pdpForm.get('representant_entreprise_eu_tel').valid
+			&& this.pdpForm.get('representant_entreprise_ee_mail').valid
+			&& this.pdpForm.get('label_intervention').valid
+			&& this.pdpForm.get('lieu_intervention').valid
+			&& this.pdpForm.get('pdp_intervention_at').valid
+			&& this.pdpForm.get('horaires_ouverture_site').valid
+			&& (this.pdpForm.get('presence_site_client_frequency_id').enabled ? this.pdpForm.get('presence_site_client_frequency_id').valid : true)
+			&& this.pdpForm.get('horaires_fermeture_site').valid;
+	}
+
+	checkFourthPart() {
+		return this.checkSecondPart()
+			&& this.EPIDispositionList.filter((v: any, index: number) =>
+				this.isControlHasError('answer_id', 'required', 'epi_disposition', index)
+				|| this.isControlHasError('type', 'required', 'epi_disposition', index)).length === 0;
 	}
 
 	isFieldRequired(controlName) {
@@ -243,10 +298,10 @@ export class PdpAddFormComponent implements OnInit {
 			const {validator} = control;
 			if (validator) {
 				const validation = validator(new FormControl());
-				return validation !== null && validation.required === true
+				return validation !== null && validation.required === true;
 			}
 		}
-		return false
+		return false;
 	}
 
 	isControlHasError(controlName: string, validationType: string, ArrayFormName = null, index = null): boolean {
@@ -262,9 +317,10 @@ export class PdpAddFormComponent implements OnInit {
 	}
 
 	makePresenceSiteClientRequired(event) {
-		this.pdpForm.controls['presence_site_client_frequency_id'].setValidators(event.checked ? Validators.required : null);
-		event.value ? this.pdpForm.controls['presence_site_client_frequency_id'].enable() : this.pdpForm.controls['presence_site_client_frequency_id'].disable();
-		this.pdpForm.controls['presence_site_client_frequency_id'].updateValueAndValidity();
+		this.pdpForm.get('presence_site_client_frequency_id').setValidators(event.value ? Validators.required : null);
+		event.value ? this.pdpForm.get('presence_site_client_frequency_id').enable() : this.pdpForm.get('presence_site_client_frequency_id').disable();
+		this.pdpForm.get('presence_site_client_frequency_id').updateValueAndValidity();
+		console.log('hanzaz', event, this.pdpForm.get('presence_site_client_frequency_id'));
 	}
 
 
@@ -438,7 +494,7 @@ export class PdpAddFormComponent implements OnInit {
 
 	togglePartInspectionAt(event, index, FormArrayName, FormChangeToControlName) {
 		this.getControlsArrayFormName(FormArrayName)[index].get(FormChangeToControlName).setValidators(event ? Validators.required : null);
-		event ? this.getControlsArrayFormName(FormArrayName)[index].get(FormChangeToControlName).enable() : this.getControlsArrayFormName(FormArrayName)[index].get(FormChangeToControlName).disable()
+		event ? this.getControlsArrayFormName(FormArrayName)[index].get(FormChangeToControlName).enable() : this.getControlsArrayFormName(FormArrayName)[index].get(FormChangeToControlName).disable();
 		this.getControlsArrayFormName(FormArrayName)[index].get(FormChangeToControlName).updateValueAndValidity(); // this is to rerun form validation after removing the validation for a field.
 	}
 
@@ -649,6 +705,6 @@ export class PdpAddFormComponent implements OnInit {
 
 
 	checkIfDateLastIsBigger() {
-		return  moment(this.pdpForm.get('horaires_fermeture_site').value, 'hh:mm').isAfter(moment(this.pdpForm.get('horaires_ouverture_site').value, 'hh:mm'));
+		return moment(this.pdpForm.get('horaires_fermeture_site').value, 'hh:mm').isAfter(moment(this.pdpForm.get('horaires_ouverture_site').value, 'hh:mm'));
 	}
 }

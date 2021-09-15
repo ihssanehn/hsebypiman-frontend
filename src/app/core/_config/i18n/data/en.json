@@ -416,7 +416,9 @@
 			},
 			"CONSIGNE_ARCHIVED": {
 				"TITLE": "Instruction (ee) archived successfully"
-			}
+			},
+			"ERROR_SUBMITTING" : "Oh snap! Change a few things up and try submitting again."
+
 		},
 		"CARD": {
 			"TRAVAUX": {
