@@ -1,26 +1,26 @@
 // Angular
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {RouterModule, Routes} from '@angular/router';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 // Core Module
-import { CoreModule } from '@app/core/core.module';
+import {CoreModule} from '@app/core/core.module';
 // NGRX
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
+import {StoreModule} from '@ngrx/store';
+import {EffectsModule} from '@ngrx/effects';
 // Translate
-import { TranslateModule } from '@ngx-translate/core';
-import { PartialsModule } from '../../../partials/partials.module';
-import { NgxPermissionsModule, NgxPermissionsGuard } from 'ngx-permissions';
+import {TranslateModule} from '@ngx-translate/core';
+import {PartialsModule} from '../../../partials/partials.module';
+import {NgxPermissionsModule, NgxPermissionsGuard} from 'ngx-permissions';
 // Services
-import { HttpUtilsService, TypesUtilsService, InterceptService, LayoutUtilsService} from '@app/core/_base/crud';
+import {HttpUtilsService, TypesUtilsService, InterceptService, LayoutUtilsService} from '@app/core/_base/crud';
 // Shared
-import { ActionNotificationComponent } from '../../../partials/content/crud';
+import {ActionNotificationComponent} from '../../../partials/content/crud';
 // Components
-import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule, NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgxMaskModule } from 'ngx-mask';
-import { AvatarModule } from 'ngx-avatar';
+import {NgbDropdownModule, NgbTabsetModule, NgbTooltipModule, NgbPopoverModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgxMaskModule} from 'ngx-mask';
+import {AvatarModule} from 'ngx-avatar';
 
 // Material
 import {
@@ -48,22 +48,21 @@ import {
 	MatAutocompleteModule,
 	MAT_DIALOG_DEFAULT_OPTIONS,
 	MatSnackBarModule,
-	MatTooltipModule,MAT_DATE_LOCALE, 
+	MatTooltipModule, MAT_DATE_LOCALE,
 	MAT_DATE_FORMATS,
 	MatSlideToggleModule,
 	DateAdapter
 } from '@angular/material';
 
-import { AngularEditorModule } from '@kolkov/angular-editor';
-import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapter';
-import { AdminFlashInfosComponent } from './admin-flashinfos.component';
-import { FlashInfosListComponent } from './flashinfos-list/flashinfos-list.component';
-import { FlashInfoDetailComponent } from './flashinfo-detail/flashinfo-detail.component';
-import { FlashInfoAddComponent } from './flashinfo-add/flashinfo-add.component';
-import { FlashInfoEditComponent } from './flashinfo-edit/flashinfo-edit.component';
-import { FlashInfoFormComponent } from './flashinfo-form/flashinfo-form.component';
-import { FlashInfoFiltersComponent } from './flashinfo-filters/flashinfo-filters.component';
-
+import {AngularEditorModule} from '@kolkov/angular-editor';
+import {CustomDateAdapter} from '@app/core/_base/crud/utils/custom-date.adapter';
+import {AdminFlashInfosComponent} from './admin-flashinfos.component';
+import {FlashInfosListComponent} from './flashinfos-list/flashinfos-list.component';
+import {FlashInfoDetailComponent} from './flashinfo-detail/flashinfo-detail.component';
+import {FlashInfoAddComponent} from './flashinfo-add/flashinfo-add.component';
+import {FlashInfoEditComponent} from './flashinfo-edit/flashinfo-edit.component';
+import {FlashInfoFormComponent} from './flashinfo-form/flashinfo-form.component';
+import {FlashInfoFiltersComponent} from './flashinfo-filters/flashinfo-filters.component';
 
 
 const routes: Routes = [
@@ -76,7 +75,7 @@ const routes: Routes = [
 				redirectTo: 'list',
 				pathMatch: 'full'
 			},
-			
+
 			{
 				path: 'list',
 				component: FlashInfosListComponent,
@@ -84,6 +83,12 @@ const routes: Routes = [
 			{
 				path: 'add',
 				component: FlashInfoAddComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['ADMIN', 'ROOT'],
+					}
+				}
 			},
 			{
 				path: 'detail',
@@ -101,7 +106,7 @@ const routes: Routes = [
 	}
 ];
 
-		
+
 @NgModule({
 	imports: [
 		CommonModule,
@@ -145,13 +150,13 @@ const routes: Routes = [
 		AvatarModule,
 		MatSlideToggleModule,
 		AngularEditorModule,
-		
+
 	],
 	providers: [
 		InterceptService,
 		{
-        	provide: HTTP_INTERCEPTORS,
-       	 	useClass: InterceptService,
+			provide: HTTP_INTERCEPTORS,
+			useClass: InterceptService,
 			multi: true
 		},
 		{
@@ -163,16 +168,16 @@ const routes: Routes = [
 				width: '900px'
 			}
 		},
-		
-		{ provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
-		{ provide: DateAdapter, useClass: CustomDateAdapter },
+
+		{provide: MAT_DATE_LOCALE, useValue: 'fr-FR'},
+		{provide: DateAdapter, useClass: CustomDateAdapter},
 		HttpUtilsService,
 		TypesUtilsService,
 		LayoutUtilsService
 	],
 	entryComponents: [
 		ActionNotificationComponent
-		// 
+		//
 	],
 	declarations: [
 		AdminFlashInfosComponent,
@@ -184,4 +189,5 @@ const routes: Routes = [
 		FlashInfoEditComponent
 	]
 })
-export class AdminFlashInfosModule {}
+export class AdminFlashInfosModule {
+}
