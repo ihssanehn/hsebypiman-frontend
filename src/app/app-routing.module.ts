@@ -20,16 +20,16 @@ const routes: Routes = [
 				path: 'home',
 				loadChildren: () => import('@app/views/pages/home/home.module').then(m => m.HomeModule),
 			},
-			{
-				path: 'dashboard',
-				loadChildren: () => import('@app/views/pages/dashboard/dashboard.module').then(m => m.DashboardModule),
-				canActivate: [NgxPermissionsGuard],
-				data: {
-					permissions: {
-						only: ['ROOT', 'ADMIN']
-					}
-				}
-			},
+			// {
+			// 	path: 'dashboard',
+			// 	loadChildren: () => import('@app/views/pages/dashboard/dashboard.module').then(m => m.DashboardModule),
+			// 	canActivate: [NgxPermissionsGuard],
+			// 	data: {
+			// 		permissions: {
+			// 			only: ['ROOT', 'ADMIN']
+			// 		}
+			// 	}
+			// },
 			{
 				path: 'remontees',
 				loadChildren: () => import('@app/views/pages/remontees/remontees.module').then(m => m.RemonteesModule),

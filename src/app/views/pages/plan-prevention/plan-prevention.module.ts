@@ -41,32 +41,34 @@ const routes: Routes = [
 			{
 				path: 'list',
 				component: PdpListComponent,
-				// canActivate: [NgxPermissionsGuard],
-				// data: {
-				// 	permissions: {
-				// 		only: ['analyse_risque_canSeeAll']
-				// 	}
-				// }
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['ADMIN', 'ROOT', 'plan_prevention_canSeeAll']
+					}
+				}
 			},
 			{
 				path: 'add',
 				component: PdpAddComponent,
-				// canActivate: [NgxPermissionsGuard],
-				// data: {
-				// 	permissions: {
-				// 		only: ['analyse_risque_canSeeAll']
-				// 	}
-				// }
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['ADMIN', 'ROOT', 'plan_prevention_canAdd'],
+						redirectTo: '/plan-de-prevention/list'
+					}
+				}
 			},
 			{
 				path: 'edit/:id',
 				component: PdpAddComponent,
-				// canActivate: [NgxPermissionsGuard],
-				// data: {
-				// 	permissions: {
-				// 		only: ['analyse_risque_canUpdate']
-				// 	}
-				// }
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['ADMIN', 'ROOT', 'plan_prevention_canUpdate'],
+						redirectTo: '/plan-de-prevention/list'
+					}
+				}
 			},
 			{
 				path: 'admin',
@@ -74,7 +76,8 @@ const routes: Routes = [
 				canActivate: [NgxPermissionsGuard],
 				data: {
 					permissions: {
-						only: ['ADMIN', 'ROOT']
+						only: ['ADMIN', 'ROOT'],
+						redirectTo: '/plan-de-prevention/list'
 					}
 				}
 			},
