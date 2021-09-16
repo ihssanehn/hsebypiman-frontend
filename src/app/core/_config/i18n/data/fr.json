@@ -386,6 +386,8 @@
 		"ENDTIME_MUST_BIGGER_THAN_START_TIME": "L'horaire de fin soit obligatoirement après l'horaire de début ",
 		"YES": "Oui",
 		"NO": "Non",
+		"OTHER_SITUATION": "Autre situation",
+		"OTHER_METHOD": "Autre méthode",
 		"NOTIF": {
 			"PDP_DELETED": {
 				"TITLE": "Le plan de prévention a été supprimé avec succès"

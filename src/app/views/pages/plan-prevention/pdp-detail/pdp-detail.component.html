@@ -392,7 +392,7 @@
                                                             </li>
                                                         </ng-container>
                                                         <ng-container *ngIf="risk.other_pdp_situation_risque">
-                                                            <li class="pdp-label font-italic">Autres: {{risk.other_pdp_situation_risque}}</li>
+                                                            <li class="pdp-label font-italic">{{'PDP.OTHER_SITUATION' | translate}} : {{risk.other_pdp_situation_risque}}</li>
                                                         </ng-container>
                                                         <ng-container *ngIf="!risk.situation.length && !risk.other_pdp_situation_risque">
                                                             <div class="pdp-label">
@@ -422,7 +422,7 @@
                                                             </li>
                                                         </ng-container>
                                                         <ng-container *ngIf="risk.other_pdp_moyen_risque">
-                                                            <li class="pdp-label font-italic">Autres: {{risk.other_pdp_moyen_risque}}</li>
+                                                            <li class="pdp-label font-italic">{{'PDP.OTHER_METHOD' | translate}} : {{risk.other_pdp_moyen_risque}}</li>
                                                         </ng-container>
                                                         <ng-container *ngIf="!risk.moyens.length && !risk.other_pdp_moyen_risque">
                                                             <div class="pdp-label">

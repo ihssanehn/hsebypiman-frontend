@@ -23,7 +23,7 @@ export class PdpDetailComponent implements OnInit {
   pdpValidationsColumns: string[] = ['company', 'fullname', 'date', 'participation', 'visa'];
   intervenantsColumns: string[] = ['lastname', 'firstname', 'phone', 'training_auth', 'medical_follow_up'];
 
-  isExpanded : boolean = false;
+  isExpanded : boolean = true;
   isDisableToggle : boolean = false;
 
 
