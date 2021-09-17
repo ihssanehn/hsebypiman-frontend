@@ -436,7 +436,8 @@
 		},
 		"ACTION": {
 			"ADD_TRAVAUX": "Add hazardous work",
-			"ADD_CONSIGNE": "Add instruction (ee)"
+			"ADD_CONSIGNE": "Add instruction (ee)",
+			"SIGN_PDP": "Sign the prevention plan"
 		}
 	},
 	"AUTH": {

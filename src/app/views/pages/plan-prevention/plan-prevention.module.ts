@@ -33,6 +33,7 @@ import {CdkColumnDef} from '@angular/cdk/table';
 import {PdpAdminComponent} from './pdp-admin/pdp-admin.component';
 import { PdpDetailComponent } from './pdp-detail/pdp-detail.component';
 import {NotifierModule} from "angular-notifier";
+import { PdpSignatureComponent } from './pdp-signature/pdp-signature.component';
 
 const routes: Routes = [
 	{
@@ -74,6 +75,14 @@ const routes: Routes = [
 				// }
 			},
 			{
+				path: 'sign',
+				component: PdpSignatureComponent
+			},
+			{
+				path: 'sign/:id',
+				component: PdpSignatureComponent
+			},
+			{
 				path: 'admin',
 				component: PdpAdminComponent,
 				canActivate: [NgxPermissionsGuard],
@@ -88,7 +97,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-	declarations: [PlanPreventionComponent, PdpListComponent, PdpAddComponent, PdpAddFormComponent, PdpAdminComponent, PdpDetailComponent],
+	declarations: [PlanPreventionComponent, PdpListComponent, PdpAddComponent, PdpAddFormComponent, PdpAdminComponent, PdpDetailComponent, PdpSignatureComponent],
 	imports: [
 		CommonModule,
 		PartialsModule,

@@ -437,7 +437,8 @@
 		},
 		"ACTION": {
 			"ADD_TRAVAUX": "Ajouter un travail dangereux",
-			"ADD_CONSIGNE": "Ajouter consigne (ee)"
+			"ADD_CONSIGNE": "Ajouter consigne (ee)",
+			"SIGN_PDP": "Signer le plan de prévention"
 		}
 	},
 	"AUTH": {

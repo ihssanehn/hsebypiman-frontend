@@ -1,4 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Pdp } from '@app/core/models';
 import { PdpService } from '@app/core/services';
@@ -32,6 +33,7 @@ export class PdpDetailComponent implements OnInit {
     private router: Router,
     protected pdpService: PdpService,
     protected cdr: ChangeDetectorRef,
+    public _sanitizer: DomSanitizer,
     private dateFrToEnPipe: DateFrToEnPipe,
     private dateEnToFrPipe: DateEnToFrPipe
   ) { }
@@ -70,7 +72,11 @@ export class PdpDetailComponent implements OnInit {
     validation.part_inspection_at = moment(validation.part_inspection_at, 'DD-MM-YYYY').format('YYYY-MM-DD');
   });
     item.pdp_intervention_at = moment(item.pdp_intervention_at, 'DD-MM-YYYY').format('YYYY-MM-DD');
-	}
+  }
+
+  signPdp(pdpId){
+		this.router.navigate(['/plan-de-prevention/sign', pdpId], { relativeTo: this.activatedRoute });
+  }
 
 }
 
