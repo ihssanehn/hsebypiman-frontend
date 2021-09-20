@@ -1126,6 +1126,9 @@
 			"LABEL": "Visible",
 			"SHORTTITLE": "Visible",
 			"TITLE": "Visible"
+		},
+		"NEW": {
+			"SHORTBUTTON": "Creer Flash info"
 		}
 	},
 	"MATERIELS": {

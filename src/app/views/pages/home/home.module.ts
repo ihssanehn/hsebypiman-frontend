@@ -34,13 +34,14 @@ import {
 	MatAutocompleteModule,
 	MAT_DIALOG_DEFAULT_OPTIONS,
 	MatSnackBarModule,
-	MatTooltipModule,MAT_DATE_LOCALE, 
+	MatTooltipModule,MAT_DATE_LOCALE,
 	MAT_DATE_FORMATS,
 	DateAdapter
 } from '@angular/material';
 
 
 import { HomeComponent } from './home.component';
+import {NgxPermissionsModule} from "ngx-permissions";
 
 @NgModule({
 	imports: [
@@ -52,7 +53,7 @@ import { HomeComponent } from './home.component';
 		CommonModule,
 		PartialsModule,
 		CoreModule,
-		
+
 		TranslateModule,
 		MatButtonModule,
 		MatMenuModule,
@@ -78,9 +79,9 @@ import { HomeComponent } from './home.component';
 		MatTabsModule,
 		MatTooltipModule,
 		MatDialogModule,
-		
-		MatTableModule,
 
+		MatTableModule,
+		NgxPermissionsModule.forChild(),
 		RouterModule.forChild([
 			{
 				path: '',

@@ -31,8 +31,8 @@ import {PdpAddComponent} from './pdp-add/pdp-add.component';
 import {PdpAddFormComponent} from './pdp-add-form/pdp-add-form.component';
 import {CdkColumnDef} from '@angular/cdk/table';
 import {PdpAdminComponent} from './pdp-admin/pdp-admin.component';
+import {NotifierModule} from 'angular-notifier';
 import { PdpDetailComponent } from './pdp-detail/pdp-detail.component';
-import {NotifierModule} from "angular-notifier";
 import { PdpSignatureComponent } from './pdp-signature/pdp-signature.component';
 
 const routes: Routes = [
@@ -43,12 +43,12 @@ const routes: Routes = [
 			{
 				path: 'list',
 				component: PdpListComponent,
-				// canActivate: [NgxPermissionsGuard],
-				// data: {
-				// 	permissions: {
-				// 		only: ['analyse_risque_canSeeAll']
-				// 	}
-				// }
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['ADMIN', 'ROOT', 'plan_prevention_canSeeAll']
+					}
+				}
 			},
 			{
 				path:'detail/:id',
@@ -57,30 +57,46 @@ const routes: Routes = [
 			{
 				path: 'add',
 				component: PdpAddComponent,
-				// canActivate: [NgxPermissionsGuard],
-				// data: {
-				// 	permissions: {
-				// 		only: ['analyse_risque_canSeeAll']
-				// 	}
-				// }
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['ADMIN', 'ROOT', 'plan_prevention_canAdd'],
+						redirectTo: '/plan-de-prevention/list'
+					}
+				}
 			},
 			{
 				path: 'edit/:id',
 				component: PdpAddComponent,
-				// canActivate: [NgxPermissionsGuard],
-				// data: {
-				// 	permissions: {
-				// 		only: ['analyse_risque_canUpdate']
-				// 	}
-				// }
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['ADMIN', 'ROOT', 'plan_prevention_canUpdate'],
+						redirectTo: '/plan-de-prevention/list'
+					}
+				}
 			},
 			{
 				path: 'sign',
-				component: PdpSignatureComponent
+				component: PdpSignatureComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['USER'],
+						redirectTo: '/plan-de-prevention/list'
+					}
+				}
 			},
 			{
 				path: 'sign/:id',
-				component: PdpSignatureComponent
+				component: PdpSignatureComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['USER'],
+						redirectTo: '/plan-de-prevention/list'
+					}
+				}
 			},
 			{
 				path: 'admin',
@@ -88,7 +104,8 @@ const routes: Routes = [
 				canActivate: [NgxPermissionsGuard],
 				data: {
 					permissions: {
-						only: ['ADMIN', 'ROOT']
+						only: ['ADMIN', 'ROOT'],
+						redirectTo: '/plan-de-prevention/list'
 					}
 				}
 			},
