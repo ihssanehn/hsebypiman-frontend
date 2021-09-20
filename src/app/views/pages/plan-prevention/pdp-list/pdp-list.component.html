@@ -136,13 +136,15 @@
 
 <mat-menu #actionMenu="matMenu" class="action-menu">
 	<ng-template matMenuContent let-chantier="chantier" let-status="status">
-		<ng-container *ngxPermissionsOnly="['plan_prevention_canSeeAll']" (click)="viewPdp(pdp_id)">
-			<button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}">
+		<ng-container *ngxPermissionsOnly="['plan_prevention_canSeeAll']">
+			<button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}"
+					(click)="viewPdp(pdp_id)">
 				<mat-icon>visibility</mat-icon>
 			</button>
 		</ng-container>
 		<ng-container *ngxPermissionsOnly="['USER']">
-			<button mat-icon-button color="primary" matTooltip="{{'ACTION.SIGN' | translate}}">
+			<button mat-icon-button color="primary" matTooltip="{{'ACTION.SIGN' | translate}}"
+					(click)="signPdp(pdp_id)">
 				<mat-icon>gesture</mat-icon>
 			</button>
 		</ng-container>

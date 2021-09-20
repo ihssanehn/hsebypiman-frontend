@@ -128,6 +128,9 @@ export class PdpListComponent implements OnInit {
 	viewPdp(pdpId) {
 		this.router.navigate(['../detail', pdpId], {relativeTo: this.activatedRoute});
 	}
+	signPdp(pdpId) {
+		this.router.navigate(['../sign', pdpId], {relativeTo: this.activatedRoute});
+	}
 
 	async deletePdp(pdpId) {
 		Swal.fire({
