@@ -125,6 +125,10 @@ export class PdpListComponent implements OnInit {
 		this.router.navigate(['../edit', pdpId], {relativeTo: this.activatedRoute});
 	}
 
+	viewPdp(pdpId) {
+		this.router.navigate(['../detail', pdpId], {relativeTo: this.activatedRoute});
+	}
+
 	async deletePdp(pdpId) {
 		Swal.fire({
 			icon: 'warning',

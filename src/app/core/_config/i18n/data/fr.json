@@ -349,7 +349,7 @@
 		"CSE": "CSE",
 		"TEL": "Téléphone",
 		"MAIL": "Email",
-		"JOB": "travail",
+		"JOB": "Travail",
 		"NAME": "Nom",
 		"INSTRUCTIONS_GIVEN_BY_THE_EXTERNAL_COMPANY": "Consignes remises par l'entreprise extérieure (Client)",
 		"TYPE_OPERATION": "Type d'opération",
@@ -386,6 +386,8 @@
 		"ENDTIME_MUST_BIGGER_THAN_START_TIME": "L'horaire de fin soit obligatoirement après l'horaire de début ",
 		"YES": "Oui",
 		"NO": "Non",
+		"OTHER_SITUATION": "Autre situation",
+		"OTHER_METHOD": "Autre méthode",
 		"NOTIF": {
 			"PDP_DELETED": {
 				"TITLE": "Le plan de prévention a été supprimé avec succès"
@@ -435,7 +437,8 @@
 		},
 		"ACTION": {
 			"ADD_TRAVAUX": "Ajouter un travail dangereux",
-			"ADD_CONSIGNE": "Ajouter consigne (ee)"
+			"ADD_CONSIGNE": "Ajouter consigne (ee)",
+			"SIGN_PDP": "Signer le plan de prévention"
 		}
 	},
 	"AUTH": {

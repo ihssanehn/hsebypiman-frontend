@@ -349,7 +349,7 @@
 		"CSE": "CSE",
 		"TEL": "Tel",
 		"MAIL": "Mail",
-		"JOB": "job",
+		"JOB": "Job",
 		"NAME": "Name",
 		"INSTRUCTIONS_GIVEN_BY_THE_EXTERNAL_COMPANY": "Instructions given by the external company",
 		"TYPE_OPERATION": "Type of operation",
@@ -384,6 +384,8 @@
 		"ONE_SITUATION_REQUIRED": "you have to select at least one situation",
 		"ONE_RESP_REQUIRED": "You must select at least one manager",
 		"ENDTIME_MUST_BIGGER_THAN_START_TIME": "The end time must be later than the start time",
+		"OTHER_SITUATION": "Other situation",
+		"OTHER_METHOD": "Other method",
 		"NOTIF": {
 			"PDP_DELETED": {
 				"TITLE": "Prevention plan has been deleted successfully"
@@ -434,7 +436,8 @@
 		},
 		"ACTION": {
 			"ADD_TRAVAUX": "Add hazardous work",
-			"ADD_CONSIGNE": "Add instruction (ee)"
+			"ADD_CONSIGNE": "Add instruction (ee)",
+			"SIGN_PDP": "Sign the prevention plan"
 		}
 	},
 	"AUTH": {
