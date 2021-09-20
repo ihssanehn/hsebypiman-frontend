@@ -32,8 +32,8 @@ import {PdpAddFormComponent} from './pdp-add-form/pdp-add-form.component';
 import {CdkColumnDef} from '@angular/cdk/table';
 import {PdpAdminComponent} from './pdp-admin/pdp-admin.component';
 import {NotifierModule} from 'angular-notifier';
-import { PdpDetailComponent } from './pdp-detail/pdp-detail.component';
-import { PdpSignatureComponent } from './pdp-signature/pdp-signature.component';
+import {PdpDetailComponent} from './pdp-detail/pdp-detail.component';
+import {PdpSignatureComponent} from './pdp-signature/pdp-signature.component';
 
 const routes: Routes = [
 	{
@@ -51,7 +51,7 @@ const routes: Routes = [
 				}
 			},
 			{
-				path:'detail/:id',
+				path: 'detail/:id',
 				component: PdpDetailComponent
 			},
 			{
