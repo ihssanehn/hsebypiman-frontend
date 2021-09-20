@@ -1,5 +1,6 @@
-import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, Injector, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService, User } from '@app/core/auth';
 import { Pdp } from '@app/core/models';
@@ -10,20 +11,20 @@ import { TranslateService } from '@ngx-translate/core';
 import { SignaturePad } from 'angular2-signaturepad/signature-pad';
 import moment from 'moment';
 import Swal from 'sweetalert2';
+import { PdpDetailComponent } from '../pdp-detail/pdp-detail.component';
 
 @Component({
   selector: 'tf-pdp-signature',
   templateUrl: './pdp-signature.component.html',
   styleUrls: ['./pdp-signature.component.scss']
 })
-export class PdpSignatureComponent implements OnInit {
+export class PdpSignatureComponent extends PdpDetailComponent implements OnInit {
   
   signaturesForm: FormArray;
   signable_id : number;
   currentUser : User;
   formStatus = new FormStatus();
   formloading: boolean= false;
-
 
   @ViewChild(SignaturePad,null) signaturePad: SignaturePad;
   private canvas: Object = {
@@ -36,35 +37,21 @@ export class PdpSignatureComponent implements OnInit {
     'canvasWidth': this.canvas['canvasWidth'],
     'canvasHeight': this.canvas['canvasHeight'],
   };
-  
-  
-  pdp: Pdp;
-  pdpLoaded: boolean = false;
-
-  sousTraitantEeColumns: string[] = ['name', 'mail', 'tel'];
-  pdpConsigneeColumns: string[] = ['instructions', 'answer', 'comments', 'operation_type'];
-  pdpEpiDispositioneeColumns: string[] = ['ppe', 'answer', 'filter', 'type', 'comment'];
-  pdpMoyenDispositionEeColumns: string[] = ['moyen_disposition', 'answer', 'comment'];
-  pdpTravauxDangereuxColumns: string[] = ['pdp_travaux_dangereux', 'answer'];
-  pdpValidationsColumns: string[] = ['company', 'fullname', 'date', 'participation', 'visa'];
-  intervenantsColumns: string[] = ['lastname', 'firstname', 'phone', 'training_auth', 'medical_follow_up'];
-
-  isExpanded : boolean = true;
-  isDisableToggle : boolean = false;
 
   constructor(
-    private authService: AuthService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
+    protected activatedRoute: ActivatedRoute,
+    protected router: Router,
     protected pdpService: PdpService,
     protected cdr: ChangeDetectorRef,
-    private fb: FormBuilder,
-    private translate: TranslateService
+    protected _sanitizer: DomSanitizer,
+    protected authService: AuthService,
+    protected fb: FormBuilder,
+    protected translate: TranslateService
   ) {
+    super(activatedRoute,router,pdpService,cdr,_sanitizer);
     this.authService.currentUser.subscribe(x=> this.currentUser = x);
   }
 
-  /* PDP Details */
   ngOnInit() {
     this.createForm();
     const routeSubscription = this.activatedRoute.params.subscribe(
@@ -73,9 +60,6 @@ export class PdpSignatureComponent implements OnInit {
         if (id) {
           this.setSignableId(id);
           this.getPdp(id);
-          if(this.pdpLoaded){
-
-          }
         } else {
           this.router.navigateByUrl('/plan-de-prevention/list');
         }
@@ -83,28 +67,6 @@ export class PdpSignatureComponent implements OnInit {
     );
   }
 
-  async getPdp(pdpId) {
-		try {
-			var res = await this.pdpService.get(pdpId).toPromise();
-      this.parsePdpDate(res.result.data);
-      this.pdp = res.result.data;
-			this.pdpLoaded = true;
-			this.cdr.markForCheck();
-		} catch (error) {
-			console.error(error);
-		}
-  }
-
-  parsePdpDate(item){
-    item.pdp_validations.forEach(validation => {
-      validation.validation_at = moment(validation.validation_at, 'DD-MM-YYYY').format('YYYY-MM-DD');
-      validation.part_inspection_at = moment(validation.part_inspection_at, 'DD-MM-YYYY').format('YYYY-MM-DD');
-    });
-    item.pdp_intervention_at = moment(item.pdp_intervention_at, 'DD-MM-YYYY').format('YYYY-MM-DD');
-  }
-
-
-  /* PDP Signature */
   ngAfterViewInit() {
     if(this.signaturePad){
       this.signaturePad.set('minWidth', 0.5);
@@ -116,6 +78,7 @@ export class PdpSignatureComponent implements OnInit {
     this.signaturesForm = this.fb.array([]);
     var newForm = this.fb.group({
       signable_id:[null],
+      personnel_id:[this.currentUser.id],
       date:[this.setDateFormat(new Date())],
       company_name:[null, Validators.required],
       full_name:[null, Validators.required],
@@ -143,6 +106,7 @@ export class PdpSignatureComponent implements OnInit {
   newSignature(): FormGroup {
     return this.fb.group({
       signable_id:[this.signable_id],
+      personnel_id:[this.currentUser.id],
       company_name:[null, Validators.required],
       full_name:[null, Validators.required],
       validation_at:[this.setDateFormat(new Date()), Validators.required],

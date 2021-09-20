@@ -29,13 +29,11 @@ export class PdpDetailComponent implements OnInit {
 
 
   constructor(
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
+    protected activatedRoute: ActivatedRoute,
+    protected router: Router,
     protected pdpService: PdpService,
     protected cdr: ChangeDetectorRef,
-    public _sanitizer: DomSanitizer,
-    private dateFrToEnPipe: DateFrToEnPipe,
-    private dateEnToFrPipe: DateEnToFrPipe
+    protected _sanitizer: DomSanitizer
   ) { }
 
   ngOnInit() {
@@ -68,9 +66,9 @@ export class PdpDetailComponent implements OnInit {
 
   parsePdpDate(item){
     item.pdp_validations.forEach(validation => {
-    validation.validation_at = moment(validation.validation_at, 'DD-MM-YYYY').format('YYYY-MM-DD');
-    validation.part_inspection_at = moment(validation.part_inspection_at, 'DD-MM-YYYY').format('YYYY-MM-DD');
-  });
+      validation.validation_at = moment(validation.validation_at, 'DD-MM-YYYY').format('YYYY-MM-DD');
+      validation.part_inspection_at = moment(validation.part_inspection_at, 'DD-MM-YYYY').format('YYYY-MM-DD');
+    });
     item.pdp_intervention_at = moment(item.pdp_intervention_at, 'DD-MM-YYYY').format('YYYY-MM-DD');
   }
 
