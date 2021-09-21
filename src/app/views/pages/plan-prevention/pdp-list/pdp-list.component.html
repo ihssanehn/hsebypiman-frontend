@@ -23,7 +23,8 @@
 						   [ngClass]="isOrderedBy('raison_sociale_eu') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'"
 						   [ngStyle]="isOrderedBy('raison_sociale_eu') && {'opacity': 1}"></i>
 					</th>
-					<td mat-cell *matCellDef="let pdp" class="pointer"> {{pdp?.raison_sociale_eu}} </td>
+					<td mat-cell *matCellDef="let pdp" (click)="viewPdp(pdp.id)"
+						class="pointer"> {{pdp?.raison_sociale_eu}} </td>
 				</ng-container>
 
 				<ng-container matColumnDef="cse">
@@ -33,7 +34,7 @@
 						   [ngClass]="isOrderedBy('cse') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'"
 						   [ngStyle]="isOrderedBy('cse') && {'opacity': 1}"></i>
 					</th>
-					<td mat-cell *matCellDef="let pdp" class="pointer">
+					<td mat-cell *matCellDef="let pdp" (click)="viewPdp(pdp.id)" class="pointer">
 						<div [matTooltipClass]="'custom-tooltip'" matTooltip="{{pdp?.cse_eu_job}}"
 							 [matTooltipShowDelay]="100"
 							 [matTooltipHideDelay]="100"
@@ -49,7 +50,8 @@
 						   [ngClass]="isOrderedBy('cse_eu_tel') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'"
 						   [ngStyle]="isOrderedBy('cse_eu_tel') && {'opacity': 1}"></i>
 					</th>
-					<td mat-cell *matCellDef="let pdp" class="pointer"> {{pdp?.cse_eu_tel}} </td>
+					<td mat-cell *matCellDef="let pdp" (click)="viewPdp(pdp.id)"
+						class="pointer"> {{pdp?.cse_eu_tel}} </td>
 				</ng-container>
 
 				<ng-container matColumnDef="created_at">
@@ -59,7 +61,7 @@
 						   [ngClass]="isOrderedBy('created_at') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'"
 						   [ngStyle]="isOrderedBy('created_at') && {opacity:1}"></i>
 					</th>
-					<td mat-cell *matCellDef="let pdp"
+					<td mat-cell *matCellDef="let pdp" (click)="viewPdp(pdp.id)"
 						class="text-center pointer"> {{'01/01/2021' | date:'dd/MM/yyyy'}} </td>
 				</ng-container>
 
@@ -71,7 +73,8 @@
 						   [ngClass]="isOrderedBy('effectif_moyen') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'"
 						   [ngStyle]="isOrderedBy('effectif_moyen') && {opacity:1}"></i>
 					</th>
-					<td mat-cell *matCellDef="let pdp" class="pointer"> {{pdp?.effectif_moyen}} </td>
+					<td mat-cell *matCellDef="let pdp" (click)="viewPdp(pdp.id)"
+						class="pointer"> {{pdp?.effectif_moyen}} </td>
 				</ng-container>
 
 				<ng-container matColumnDef="label_intervention">
@@ -82,7 +85,8 @@
 						   [ngClass]="isOrderedBy('label_intervention') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'"
 						   [ngStyle]="isOrderedBy('label_intervention') && {opacity:1}"></i>
 					</th>
-					<td mat-cell *matCellDef="let pdp" class="pointer"> {{pdp?.label_intervention}} </td>
+					<td mat-cell *matCellDef="let pdp" (click)="viewPdp(pdp.id)"
+						class="pointer"> {{pdp?.label_intervention}} </td>
 				</ng-container>
 
 				<ng-container matColumnDef="lieu_intervention">
@@ -93,7 +97,8 @@
 						   [ngClass]="isOrderedBy('lieu_intervention') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'"
 						   [ngStyle]="isOrderedBy('lieu_intervention') && {opacity:1}"></i>
 					</th>
-					<td mat-cell *matCellDef="let pdp" class="text-center pointer"> {{pdp?.lieu_intervention}} </td>
+					<td mat-cell *matCellDef="let pdp" (click)="viewPdp(pdp.id)"
+						class="text-center pointer"> {{pdp?.lieu_intervention}} </td>
 				</ng-container>
 
 				<ng-container matColumnDef="pdp_intervention_at">
@@ -104,7 +109,8 @@
 						   [ngClass]="isOrderedBy('pdp_intervention_at') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'"
 						   [ngStyle]="isOrderedBy('pdp_intervention_at') && {opacity:1}"></i>
 					</th>
-					<td mat-cell *matCellDef="let pdp" class="pointer"> {{pdp?.pdp_intervention_at}} </td>
+					<td mat-cell *matCellDef="let pdp" (click)="viewPdp(pdp.id)"
+						class="pointer"> {{pdp?.pdp_intervention_at}} </td>
 				</ng-container>
 
 				<ng-container matColumnDef="action" stickyEnd>
@@ -131,12 +137,14 @@
 <mat-menu #actionMenu="matMenu" class="action-menu">
 	<ng-template matMenuContent let-chantier="chantier" let-status="status">
 		<ng-container *ngxPermissionsOnly="['plan_prevention_canSeeAll']">
-			<button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}">
+			<button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}"
+					(click)="viewPdp(pdp_id)">
 				<mat-icon>visibility</mat-icon>
 			</button>
 		</ng-container>
 		<ng-container *ngxPermissionsOnly="['USER']">
-			<button mat-icon-button color="primary" matTooltip="{{'ACTION.SIGN' | translate}}">
+			<button mat-icon-button color="primary" matTooltip="{{'ACTION.SIGN' | translate}}"
+					(click)="signPdp(pdp_id)">
 				<mat-icon>gesture</mat-icon>
 			</button>
 		</ng-container>

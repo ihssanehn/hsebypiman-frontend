@@ -650,7 +650,7 @@ export class MenuConfig {
 						alignment: 'left',
 						page: '/admin/salaries',
 						translate: 'MENU.SALARIES',
-						needModule: false,
+						needModule: true,
 						svgIcon: 'administration'
 					},
 					{

@@ -65,4 +65,8 @@ export class PdpService extends HttpService {
 	updateOrders(payload) {
 		return this.http.post<any>(`${environment.apiBaseUrl}/updateOrders`, payload)
 	}
+
+	addSignatures(pdp_id, signatures){
+        return this.http.post(this.baseUrl+'/'+pdp_id+'/signatures', signatures);
+    }
 }

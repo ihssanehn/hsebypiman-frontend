@@ -32,6 +32,8 @@ import {PdpAddFormComponent} from './pdp-add-form/pdp-add-form.component';
 import {CdkColumnDef} from '@angular/cdk/table';
 import {PdpAdminComponent} from './pdp-admin/pdp-admin.component';
 import {NotifierModule} from 'angular-notifier';
+import {PdpDetailComponent} from './pdp-detail/pdp-detail.component';
+import {PdpSignatureComponent} from './pdp-signature/pdp-signature.component';
 
 const routes: Routes = [
 	{
@@ -47,6 +49,10 @@ const routes: Routes = [
 						only: ['ADMIN', 'ROOT', 'plan_prevention_canSeeAll']
 					}
 				}
+			},
+			{
+				path: 'detail/:id',
+				component: PdpDetailComponent
 			},
 			{
 				path: 'add',
@@ -71,6 +77,28 @@ const routes: Routes = [
 				}
 			},
 			{
+				path: 'sign',
+				component: PdpSignatureComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['USER'],
+						redirectTo: '/plan-de-prevention/list'
+					}
+				}
+			},
+			{
+				path: 'sign/:id',
+				component: PdpSignatureComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['USER'],
+						redirectTo: '/plan-de-prevention/list'
+					}
+				}
+			},
+			{
 				path: 'admin',
 				component: PdpAdminComponent,
 				canActivate: [NgxPermissionsGuard],
@@ -86,7 +114,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-	declarations: [PlanPreventionComponent, PdpListComponent, PdpAddComponent, PdpAddFormComponent, PdpAdminComponent],
+	declarations: [PlanPreventionComponent, PdpListComponent, PdpAddComponent, PdpAddFormComponent, PdpAdminComponent, PdpDetailComponent, PdpSignatureComponent],
 	imports: [
 		CommonModule,
 		PartialsModule,
