@@ -82,7 +82,7 @@ const routes: Routes = [
 				canActivate: [NgxPermissionsGuard],
 				data: {
 					permissions: {
-						only: ['USER'],
+						only: ['ROOT','USER'],
 						redirectTo: '/plan-de-prevention/list'
 					}
 				}
@@ -93,7 +93,7 @@ const routes: Routes = [
 				canActivate: [NgxPermissionsGuard],
 				data: {
 					permissions: {
-						only: ['USER'],
+						only: ['ROOT','USER'],
 						redirectTo: '/plan-de-prevention/list'
 					}
 				}
