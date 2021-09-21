@@ -624,7 +624,9 @@ export class PdpAddFormComponent implements OnInit {
 				};
 			});
 			if (PdpRisques && PdpRisques.length > 0) {
-				(this.pdpForm.get('cat_pdp_risques') as FormArray).patchValue(PdpRisques || []);
+				console.log(PdpRisques);
+				// this.pdpForm.setControl('cat_pdp_risques', this.FB.array(PdpRisques || []));
+				(this.pdpForm.get('cat_pdp_risques') as FormArray).patchValue(PdpRisques)
 				risques.controls.map((c: FormGroup) => {
 					if (c.get('answer').value) {
 						c.get('comment').enable();
