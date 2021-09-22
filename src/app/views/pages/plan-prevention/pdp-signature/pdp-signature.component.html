@@ -475,11 +475,15 @@
 
                                 <form [formGroup]="signaturesForm" class="tf-form tf-form--group-seperator-dashed">
                                         <div>
-                                            <div *ngxPermissionsOnly="['ADMIN']">
+                                            <div *ngxPermissionsOnly="['ADMIN', 'ROOT']">
                                                 <p class="font-weight-bold text-right add-signature-line-btn"><a (click)="addSignatures()">+ {{'ACTION.ADD_SIGNER' | translate}}</a></p>
                                             </div>
                                             <div class="row form-row signature-line" *ngFor="let signature of signaturesForm.controls; let i=index" [formGroupName]="i">
-                                
+
+                                                <div class="col-12 mb-3" *ngIf="signaturesForm.controls[i].get('type').value">
+                                                    <b>{{signaturesForm.controls[i].get('type').value  | uppercase}} : </b>
+                                                </div>
+
                                                 <mat-form-field class="col-xl-2 ">
                                                     <mat-label>{{'PDP.COMPANIES' | translate}} </mat-label>
                                                     <input class="form-control" matInput type="text" name="company_name" formControlName="company_name" placeholder="{{'ACTION.ENTER_HERE' | translate}}" />
@@ -517,15 +521,35 @@
                                                 
                                                 </div>
                                 
-                                
                                                 <div class="col-xl-4 form-row-flex">
                                                     <label>{{'PDP.VISA_PRECEDED_BY_THE_WORDS_READ_AND_APPROVED' | translate}} </label>
-                                                    <button mat-icon-button color="accent" matTooltip="{{'ACTION.CLEAR' | translate}}" (click)="clearSignature(i)">
+                                                    <button mat-icon-button color="accent" matTooltip="{{'ACTION.CLEAR' | translate}}" (click)="clearSignature(i,signaturesForm.controls[i].get('type').value)">
                                                         <mat-icon>delete</mat-icon>
                                                     </button>
-                                                    <div class="signature-container">
-                                                        <signature-pad id="sign_canvas" (window:resize)="resizeSignaturePad()" [options]="signaturePadOptions" (onEndEvent)="drawComplete(i)"></signature-pad>
-                                                    </div>
+
+                                                    <ng-container *ngIf="signaturesForm.controls[i].get('type').value === 'ee'">
+                                                        <div class="signature-container">
+                                                            <signature-pad #signaturePadEe id="signaturePadEe" (window:resize)="resizeSignaturePad('ee')" [options]="signaturePadOptions" (onEndEvent)="drawComplete(i,'ee')"></signature-pad>
+                                                        </div>
+                                                    </ng-container>
+                                                    
+                                                    <ng-container *ngIf="signaturesForm.controls[i].get('type').value === 'eu'">
+                                                        <div class="signature-container">
+                                                            <signature-pad #signaturePadEu id="signaturePadEu" (window:resize)="resizeSignaturePad('eu')" [options]="signaturePadOptions" (onEndEvent)="drawComplete(i,'eu')"></signature-pad>
+                                                        </div>
+                                                    </ng-container>
+    
+                                                    <ng-container *ngIf="signaturesForm.controls[i].get('type').value === 'ss'">
+                                                        <div class="signature-container">
+                                                            <signature-pad #signaturePadSs id="signaturePadSs" (window:resize)="resizeSignaturePad('ss')" [options]="signaturePadOptions" (onEndEvent)="drawComplete(i,'ss')"></signature-pad>
+                                                        </div>
+                                                    </ng-container>
+
+                                                    <ng-container *ngIf="signaturesForm.controls[i].get('type').value !== 'ee' && signaturesForm.controls[i].get('type').value !== 'eu' && signaturesForm.controls[i].get('type').value !== 'ss'">
+                                                        <div class="signature-container">
+                                                            <signature-pad #signaturePad id="signaturePad" (window:resize)="resizeSignaturePad()" [options]="signaturePadOptions" (onEndEvent)="drawComplete(i,null)"></signature-pad>
+                                                        </div>
+                                                    </ng-container>
                                                 </div>
                                                 
                                             </div>

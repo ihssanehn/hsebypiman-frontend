@@ -607,7 +607,7 @@
                                         <ng-container matColumnDef="company">
                                             <th mat-header-cell *matHeaderCellDef> {{'PDP.COMPANIES' | translate}} </th>
                                             <td mat-cell *matCellDef="let element">
-                                                <span *ngIf="element.company_name; else noDataFound">{{element.company_name}}</span>
+                                                <b *ngIf="element.type">{{element.type | uppercase}}:</b>  <span *ngIf="element.company_name; else noDataFound">{{element.company_name}}</span>
                                             </td>
                                         </ng-container>
 
