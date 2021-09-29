@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Injector, Input, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, Injector, Input, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -21,7 +21,7 @@ import { PdpDetailComponent } from '../pdp-detail/pdp-detail.component';
 export class PdpSignatureComponent implements OnInit {
   
   @Input() pdp: Pdp;
-  @Input() type: String;
+  @Input() public type: string;
 
   signaturesForm: FormArray;
   currentUser : User;
@@ -32,6 +32,8 @@ export class PdpSignatureComponent implements OnInit {
   @ViewChild('signaturePadEe',null) signaturePadEe: SignaturePad;
   @ViewChild('signaturePadEu',null) signaturePadEu: SignaturePad;
   @ViewChild('signaturePadSs',null) signaturePadSs: SignaturePad;
+
+  @ViewChildren("signaturePad") signaturePads: QueryList<SignaturePad>;
 
   private canvas: Object = {
     'minWidth': 0.5,
@@ -86,6 +88,14 @@ export class PdpSignatureComponent implements OnInit {
       this.signaturePadSs.set('minWidth', 0.5);
       this.signaturePadSs.clear();
     }
+
+    if(this.signaturePads){
+      this.signaturePads.forEach((child) => { 
+        child.set('minWidth', 0.5); 
+        child.clear(); 
+      });
+    }
+
   }
 
   parseValidations(validations) {
@@ -97,7 +107,11 @@ export class PdpSignatureComponent implements OnInit {
   }
 
   parseIntervenants(intervenants) {
-
+    if(intervenants.length) {
+      this.initIntervenantForm(intervenants);
+    } else {
+      this.createIntervenantForm();
+    }
   }
 
   initValidationForm(validations) {
@@ -122,6 +136,24 @@ export class PdpSignatureComponent implements OnInit {
     });
   }
 
+  initIntervenantForm(intervenants) {
+    intervenants
+      .filter(element => !element.signature)
+      .forEach((element,index) => {
+        var newForm = this.fb.group({
+          signable_id:[this.pdp.id],
+          personnel_id:[this.currentUser.id],
+          date:[this.setDateFormat(new Date())],
+          first_name:[element.first_name, Validators.required],
+          last_name:[element.last_name, Validators.required],
+          signature:[null, Validators.required],
+          intervenant_id:[element.id]
+        });
+  
+        this.signaturesForm.insert(index, newForm);
+    });
+  }
+
   createValidationForm() {
     var newForm = this.fb.group({
       signable_id:[this.pdp.id],
@@ -140,9 +172,31 @@ export class PdpSignatureComponent implements OnInit {
     this.signaturesForm.insert(0, newForm);
   }
 
-  addValidationSignatures() {
-    this.signaturesForm.insert(0, this.newValidationSignature());
+  createIntervenantForm() {
+    var newForm = this.fb.group({
+      signable_id:[this.pdp.id],
+      personnel_id:[this.currentUser.id],
+      date:[this.setDateFormat(new Date())],
+      first_name:[null, Validators.required],
+      last_name:[null, Validators.required],
+      signature:[null, Validators.required],
+      intervenant_id:[null]
+    });
+
+    this.signaturesForm.insert(0, newForm);
   }
+
+  addSignatures() {
+    switch(this.type) {
+      case 'pdp_validations': 
+          this.signaturesForm.insert(0, this.newValidationSignature());
+          break;
+      case 'pdp_intervenants': 
+          this.signaturesForm.insert(0, this.newIntervenantSignature());
+          break;
+    }
+  }
+  
 
   newValidationSignature(): FormGroup {
     return this.fb.group({
@@ -160,17 +214,35 @@ export class PdpSignatureComponent implements OnInit {
     });
   }
 
+  newIntervenantSignature(): FormGroup {
+    return this.fb.group({
+      signable_id:[this.pdp.id],
+      personnel_id:[this.currentUser.id],
+      date:[this.setDateFormat(new Date())],
+      first_name:[null, Validators.required],
+      last_name:[null, Validators.required],
+      signature:[null, Validators.required],
+      intervenant_id:[null]
+    });
+  }
+
   removeSignature(i:number) {
     this.signaturesForm.removeAt(i);
   }
 
-  clearSignature(i:number,type) {
+  clearSignature(i:number,type = null) {
     switch(type) {
       case 'ee': this.signaturePadEe.clear(); break;
       case 'eu': this.signaturePadEu.clear(); break;
       case 'ss': this.signaturePadSs.clear(); break;
       default: this.signaturePad.clear(); break;
     }
+    this.signaturesForm.controls[i].get('signature').reset();
+  }
+
+  clearIntervenantSignature(i:number) {
+    let signaturePadChild = this.signaturePads.filter((element, index) => index === i);
+    signaturePadChild[0].clear();
     this.signaturesForm.controls[i].get('signature').reset();
   }
 
@@ -183,9 +255,15 @@ export class PdpSignatureComponent implements OnInit {
       default: this.signaturePad.set('canvasWidth', this.canvas['canvasWidth'] / ratio); break;
     }
   }
+
+  resizeIntervenantSignaturePad() {
+    var ratio = Math.max(window.devicePixelRatio || 1, 1);
+    this.signaturePads.forEach((child) => { 
+      child.set('canvasWidth', this.canvas['canvasWidth'] / ratio);
+    });
+  }
  
   drawComplete(i:number, type = null) {
-    console.log(type);
     switch(type) {
       case 'ee': this.signaturesForm.controls[i].get('signature').setValue(this.signaturePadEe.toDataURL()); break;
       case 'eu': this.signaturesForm.controls[i].get('signature').setValue(this.signaturePadEu.toDataURL()); break;
@@ -194,56 +272,111 @@ export class PdpSignatureComponent implements OnInit {
     }
   }
 
+  drawIntervenantComplete(i:number) {
+    let signaturePadChild = this.signaturePads.filter((element, index) => index === i);
+    this.signaturesForm.controls[i].get('signature').setValue(signaturePadChild[0].toDataURL());
+  }
+
   setDateFormat(date){
     return date ? moment(date).format('YYYY-MM-DD') : null;
   }
 
-  async onSubmit(event){
+  async onSubmit(){
     try {
-      this.formloading = true;
-        let form = {...this.signaturesForm.getRawValue()};
-        this.formStatus.onFormSubmitting();
 
-        this.pdpService.addSignatures(this.pdp.id, form)
-          .toPromise()
-          .then((signature) => {
-            this.cdr.markForCheck();
-            this.formloading = false;
-            
-            Swal.fire({
-              icon: 'success',
-              title: 'Votre signature a bien été prise en compte',
-              showConfirmButton: false,
-              timer: 1500
-            }).then(() => {
-              this.router.navigate(['/plan-de-prevention/list']);
-            });
-          })
-          .catch(err =>{ 
-
-            this.formloading = false;
-            Swal.fire({
-              icon: 'error',
-              title: this.translate.instant("ARS.NOTIF.INCOMPLETE_FORM.TITLE"),
-              showConfirmButton: false,
-              timer: 2000
-            });
-
-            if(err.status === 422){
-              var messages = extractErrorMessagesFromErrorResponse(err);
-              this.formStatus.onFormSubmitResponse({success: false, messages: messages});
-              this.cdr.markForCheck();
-            }
-
-          });
-          
-        this.cdr.markForCheck();
+      switch(this.type) {
+        case 'pdp_validations': 
+            this.createValidationSignature();
+            break;
+        case 'pdp_intervenants': 
+            this.createIntervenantSignature();
+            break;
+      }
 
     } catch (error) {
       console.error(error);
       throw error;
     }
+  }
 
+  createValidationSignature() {
+    this.formloading = true;
+    let form = {...this.signaturesForm.getRawValue()};
+    this.formStatus.onFormSubmitting();
+
+    this.pdpService.addValidationSignatures(this.pdp.id, form)
+      .toPromise()
+      .then((signature) => {
+        this.cdr.markForCheck();
+        this.formloading = false;
+        
+        Swal.fire({
+          icon: 'success',
+          title: 'Votre signature a bien été prise en compte',
+          showConfirmButton: false,
+          timer: 1500
+        }).then(() => {
+          this.router.navigate(['/plan-de-prevention/list']);
+        });
+      })
+      .catch(err =>{ 
+        this.formloading = false;
+        Swal.fire({
+          icon: 'error',
+          title: this.translate.instant("ARS.NOTIF.INCOMPLETE_FORM.TITLE"),
+          showConfirmButton: false,
+          timer: 2000
+        });
+
+        if(err.status === 422){
+          var messages = extractErrorMessagesFromErrorResponse(err);
+          this.formStatus.onFormSubmitResponse({success: false, messages: messages});
+          this.cdr.markForCheck();
+        }
+
+      });
+      
+    this.cdr.markForCheck();
+  }
+
+  createIntervenantSignature() {
+    this.formloading = true;
+    let form = {...this.signaturesForm.getRawValue()};
+    this.formStatus.onFormSubmitting();
+
+    this.pdpService.addIntervenantSignatures(this.pdp.id, form)
+      .toPromise()
+      .then(() => {
+        this.cdr.markForCheck();
+        this.formloading = false;
+        
+        Swal.fire({
+          icon: 'success',
+          title: 'Votre signature a bien été prise en compte',
+          showConfirmButton: false,
+          timer: 1500
+        }).then(() => {
+          this.router.navigate(['/plan-de-prevention/list']);
+        });
+      })
+      .catch(err =>{ 
+        this.formloading = false;
+        Swal.fire({
+          icon: 'error',
+          title: this.translate.instant("ARS.NOTIF.INCOMPLETE_FORM.TITLE"),
+          showConfirmButton: false,
+          timer: 2000
+        });
+
+        if(err.status === 422){
+          var messages = extractErrorMessagesFromErrorResponse(err);
+          this.formStatus.onFormSubmitResponse({success: false, messages: messages});
+          this.cdr.markForCheck();
+        }
+
+      });
+      
+    this.cdr.markForCheck();
   }
 
   togglePartInspectionAt(event, index, FormChangeToControlName) {
