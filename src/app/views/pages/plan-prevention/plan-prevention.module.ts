@@ -77,28 +77,6 @@ const routes: Routes = [
 				}
 			},
 			{
-				path: 'sign',
-				component: PdpSignatureComponent,
-				canActivate: [NgxPermissionsGuard],
-				data: {
-					permissions: {
-						only: ['ROOT','USER'],
-						redirectTo: '/plan-de-prevention/list'
-					}
-				}
-			},
-			{
-				path: 'sign/:id',
-				component: PdpSignatureComponent,
-				canActivate: [NgxPermissionsGuard],
-				data: {
-					permissions: {
-						only: ['ROOT','USER'],
-						redirectTo: '/plan-de-prevention/list'
-					}
-				}
-			},
-			{
 				path: 'admin',
 				component: PdpAdminComponent,
 				canActivate: [NgxPermissionsGuard],

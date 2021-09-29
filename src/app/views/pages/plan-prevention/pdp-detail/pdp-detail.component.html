@@ -597,12 +597,15 @@
                         <div class="col-12 flex-fill">
                             <div [ngClass]="pdp.pdp_validations.length > 0 ?'card':'card pb-0'">
                                 <div class="box pb-0 pt-0">
-                                    <button class="pull-right" mat-raised-button color="info" (click)="signPdp(pdp.id)">
+                                    <button class="pull-right" mat-raised-button color="info" (click)="showValidationSignatureFrom()">
                                         {{'PDP.ACTION.SIGN_PDP' | translate}}
                                     </button>
-                                </div>
+								</div>
+
+								<tf-pdp-signature class="p-3" *ngIf="validationEditMode" [pdp]="pdp" [type]="'pdp_validations'"></tf-pdp-signature>
+
                                 <ng-container *ngIf="pdp.pdp_validations.length > 0; else noValidation">
-                                    <table mat-table [dataSource]="pdp.pdp_validations" class="mb-4 mt-4">
+                                    <table mat-table *ngIf="!validationEditMode" [dataSource]="pdp.pdp_validations" class="mb-4 mt-4">
 
                                         <ng-container matColumnDef="company">
                                             <th mat-header-cell *matHeaderCellDef> {{'PDP.COMPANIES' | translate}} </th>

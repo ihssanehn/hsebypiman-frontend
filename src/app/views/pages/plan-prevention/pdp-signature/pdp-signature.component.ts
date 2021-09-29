@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Injector, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, Injector, Input, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -18,8 +18,11 @@ import { PdpDetailComponent } from '../pdp-detail/pdp-detail.component';
   templateUrl: './pdp-signature.component.html',
   styleUrls: ['./pdp-signature.component.scss']
 })
-export class PdpSignatureComponent extends PdpDetailComponent implements OnInit {
+export class PdpSignatureComponent implements OnInit {
   
+  @Input() pdp: Pdp;
+  @Input() type: String;
+
   signaturesForm: FormArray;
   currentUser : User;
   formStatus = new FormStatus();
@@ -51,29 +54,19 @@ export class PdpSignatureComponent extends PdpDetailComponent implements OnInit 
     protected fb: FormBuilder,
     protected translate: TranslateService
   ) {
-    super(activatedRoute,router,pdpService,cdr,_sanitizer);
     this.authService.currentUser.subscribe(x=> this.currentUser = x);
   }
 
   ngOnInit() {
     this.signaturesForm = this.fb.array([]);
-    const routeSubscription = this.activatedRoute.params.subscribe(
-      async params => {
-        const id = params.id;
-        if (id) {
-          this.pdpService
-          .get(id)
-          .subscribe(async res => {
-            this.parsePdpDate(res.result.data);
-            this.pdp = res.result.data;
-            this.parseValidations(this.pdp.pdp_validations);
-            this.cdr.markForCheck();
-          });
-        } else {
-          this.router.navigateByUrl('/plan-de-prevention/list');
-        }
-      }
-    );
+    switch(this.type) {
+      case 'pdp_validations': 
+          this.parseValidations(this.pdp.pdp_validations); 
+          break;
+      case 'pdp_intervenants':
+          this.parseIntervenants(this.pdp.intervenants); 
+          break;
+    }
   }
 
   ngAfterViewInit() {
@@ -97,13 +90,17 @@ export class PdpSignatureComponent extends PdpDetailComponent implements OnInit 
 
   parseValidations(validations) {
     if(validations.length) {
-      this.initForm(validations);
+      this.initValidationForm(validations);
     } else {
-      this.createForm();
+      this.createValidationForm();
     }
   }
 
-  initForm(validations) {
+  parseIntervenants(intervenants) {
+
+  }
+
+  initValidationForm(validations) {
     validations
       .filter(element => !element.signature)
       .forEach((element,index) => {
@@ -125,7 +122,7 @@ export class PdpSignatureComponent extends PdpDetailComponent implements OnInit 
     });
   }
 
-  createForm() {
+  createValidationForm() {
     var newForm = this.fb.group({
       signable_id:[this.pdp.id],
       personnel_id:[this.currentUser.id],
@@ -143,11 +140,11 @@ export class PdpSignatureComponent extends PdpDetailComponent implements OnInit 
     this.signaturesForm.insert(0, newForm);
   }
 
-  addSignatures() {
-    this.signaturesForm.insert(0, this.newSignature());
+  addValidationSignatures() {
+    this.signaturesForm.insert(0, this.newValidationSignature());
   }
 
-  newSignature(): FormGroup {
+  newValidationSignature(): FormGroup {
     return this.fb.group({
       signable_id:[this.pdp.id],
       personnel_id:[this.currentUser.id],
