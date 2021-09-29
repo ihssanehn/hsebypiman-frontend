@@ -21,12 +21,15 @@ import { PdpDetailComponent } from '../pdp-detail/pdp-detail.component';
 export class PdpSignatureComponent extends PdpDetailComponent implements OnInit {
   
   signaturesForm: FormArray;
-  signable_id : number;
   currentUser : User;
   formStatus = new FormStatus();
   formloading: boolean= false;
 
-  @ViewChild(SignaturePad,null) signaturePad: SignaturePad;
+  @ViewChild('signaturePad',null) signaturePad: SignaturePad;
+  @ViewChild('signaturePadEe',null) signaturePadEe: SignaturePad;
+  @ViewChild('signaturePadEu',null) signaturePadEu: SignaturePad;
+  @ViewChild('signaturePadSs',null) signaturePadSs: SignaturePad;
+
   private canvas: Object = {
     'minWidth': 0.5,
     'canvasWidth': 500,
@@ -53,13 +56,19 @@ export class PdpSignatureComponent extends PdpDetailComponent implements OnInit 
   }
 
   ngOnInit() {
-    this.createForm();
+    this.signaturesForm = this.fb.array([]);
     const routeSubscription = this.activatedRoute.params.subscribe(
       async params => {
         const id = params.id;
         if (id) {
-          this.setSignableId(id);
-          this.getPdp(id);
+          this.pdpService
+          .get(id)
+          .subscribe(async res => {
+            this.parsePdpDate(res.result.data);
+            this.pdp = res.result.data;
+            this.parseValidations(this.pdp.pdp_validations);
+            this.cdr.markForCheck();
+          });
         } else {
           this.router.navigateByUrl('/plan-de-prevention/list');
         }
@@ -72,12 +81,53 @@ export class PdpSignatureComponent extends PdpDetailComponent implements OnInit 
       this.signaturePad.set('minWidth', 0.5);
       this.signaturePad.clear();
     }
+    if(this.signaturePadEe){
+      this.signaturePadEe.set('minWidth', 0.5);
+      this.signaturePadEe.clear();
+    }
+    if(this.signaturePadEu){
+      this.signaturePadEu.set('minWidth', 0.5);
+      this.signaturePadEu.clear();
+    }
+    if(this.signaturePadSs){
+      this.signaturePadSs.set('minWidth', 0.5);
+      this.signaturePadSs.clear();
+    }
+  }
+
+  parseValidations(validations) {
+    if(validations.length) {
+      this.initForm(validations);
+    } else {
+      this.createForm();
+    }
+  }
+
+  initForm(validations) {
+    validations
+      .filter(element => !element.signature)
+      .forEach((element,index) => {
+        var newForm = this.fb.group({
+          signable_id:[this.pdp.id],
+          personnel_id:[this.currentUser.id],
+          date:[this.setDateFormat(new Date())],
+          company_name:[element.company_name, Validators.required],
+          full_name:[element.full_name, Validators.required],
+          validation_at:[this.setDateFormat(new Date()), Validators.required],
+          is_part_inspection:[element.is_part_inspection],
+          part_inspection_at:[element.is_part_inspection? this.setDateFormat(element.part_inspection_at): null],
+          signature:[null, Validators.required],
+          validation_id:[element.id],
+          type:[element.type]
+        });
+  
+        this.signaturesForm.insert(index, newForm);
+    });
   }
 
   createForm() {
-    this.signaturesForm = this.fb.array([]);
     var newForm = this.fb.group({
-      signable_id:[null],
+      signable_id:[this.pdp.id],
       personnel_id:[this.currentUser.id],
       date:[this.setDateFormat(new Date())],
       company_name:[null, Validators.required],
@@ -85,18 +135,12 @@ export class PdpSignatureComponent extends PdpDetailComponent implements OnInit 
       validation_at:[this.setDateFormat(new Date()), Validators.required],
       is_part_inspection:[0],
       part_inspection_at:[null],
-      signature:[null, Validators.required]
+      signature:[null, Validators.required],
+      validation_id:[null],
+      type:[null]
     });
 
     this.signaturesForm.insert(0, newForm);
-  }
-
-  setSignableId(id){
-    this.signable_id = id;
-    (this.signaturesForm as FormArray)
-      .controls[0]
-      .get('signable_id')
-      .setValue(id);
   }
 
   addSignatures() {
@@ -105,14 +149,17 @@ export class PdpSignatureComponent extends PdpDetailComponent implements OnInit 
 
   newSignature(): FormGroup {
     return this.fb.group({
-      signable_id:[this.signable_id],
+      signable_id:[this.pdp.id],
       personnel_id:[this.currentUser.id],
+      date:[this.setDateFormat(new Date())],
       company_name:[null, Validators.required],
       full_name:[null, Validators.required],
       validation_at:[this.setDateFormat(new Date()), Validators.required],
       is_part_inspection:[0],
       part_inspection_at:[null],
       signature:[null, Validators.required],
+      validation_id:[null],
+      type:[null]
     });
   }
 
@@ -120,20 +167,34 @@ export class PdpSignatureComponent extends PdpDetailComponent implements OnInit 
     this.signaturesForm.removeAt(i);
   }
 
-  clearSignature(i:number) {
-    this.signaturePad.clear();
+  clearSignature(i:number,type) {
+    switch(type) {
+      case 'ee': this.signaturePadEe.clear(); break;
+      case 'eu': this.signaturePadEu.clear(); break;
+      case 'ss': this.signaturePadSs.clear(); break;
+      default: this.signaturePad.clear(); break;
+    }
     this.signaturesForm.controls[i].get('signature').reset();
   }
 
-  resizeSignaturePad() {
+  resizeSignaturePad(type = null) {
     var ratio = Math.max(window.devicePixelRatio || 1, 1);
-    this.signaturePad.set('canvasWidth', this.canvas['canvasWidth'] / ratio);
+    switch(type) {
+      case 'ee': this.signaturePadEe.set('canvasWidth', this.canvas['canvasWidth'] / ratio); break;
+      case 'eu': this.signaturePadEu.set('canvasWidth', this.canvas['canvasWidth'] / ratio); break;
+      case 'ss': this.signaturePadSs.set('canvasWidth', this.canvas['canvasWidth'] / ratio); break;
+      default: this.signaturePad.set('canvasWidth', this.canvas['canvasWidth'] / ratio); break;
+    }
   }
  
-  drawComplete(i:number) {
-    this.signaturesForm
-      .controls[i].get('signature')
-      .setValue(this.signaturePad.toDataURL());
+  drawComplete(i:number, type = null) {
+    console.log(type);
+    switch(type) {
+      case 'ee': this.signaturesForm.controls[i].get('signature').setValue(this.signaturePadEe.toDataURL()); break;
+      case 'eu': this.signaturesForm.controls[i].get('signature').setValue(this.signaturePadEu.toDataURL()); break;
+      case 'ss': this.signaturesForm.controls[i].get('signature').setValue(this.signaturePadSs.toDataURL()); break;
+      default: this.signaturesForm.controls[i].get('signature').setValue(this.signaturePad.toDataURL()); break;
+    }
   }
 
   setDateFormat(date){
