@@ -277,6 +277,7 @@ export class PdpAddFormComponent implements OnInit {
 			&& this.pdpForm.get('representant_entreprise_eu_mail').valid
 			&& this.pdpForm.get('representant_entreprise_eu_tel').valid
 			&& this.pdpForm.get('representant_entreprise_ee_mail').valid
+			&& this.pdpForm.get('sauveteurs_secouriste_travail').valid
 			&& this.pdpForm.get('label_intervention').valid
 			&& this.pdpForm.get('lieu_intervention').valid
 			&& this.pdpForm.get('pdp_intervention_at').valid
