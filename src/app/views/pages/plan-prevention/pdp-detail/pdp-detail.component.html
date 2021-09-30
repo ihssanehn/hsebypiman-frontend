@@ -12,12 +12,15 @@
 			</button>
 			<div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround "
 				 style="min-width: max-content; padding: 5px;">
-				<!-- <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editRemonte(remontee.id)" *ngxPermissionsOnly="['remontee_canUpdate']">
-					<mat-icon>edit</mat-icon>
+				<!--				 <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editRemonte(remontee.id)" *ngxPermissionsOnly="['remontee_canUpdate']">-->
+				<!--					<mat-icon>edit</mat-icon>-->
+				<!--				</button>-->
+				<button mat-icon-button color="info" matTooltip="{{'ACTION.EXPORT_PDF' | translate}}">
+					<mat-icon>picture_as_pdf</mat-icon>
 				</button>
-				<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteRemonte(remontee.id)" *ngxPermissionsOnly="['remontee_canArchieve']">
-					<mat-icon>delete</mat-icon>
-				</button> -->
+				<!--				<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteRemonte(remontee.id)" *ngxPermissionsOnly="['remontee_canArchieve']">-->
+				<!--					<mat-icon>delete</mat-icon>-->
+				<!--				</button> -->
 			</div>
 		</div>
 	</div>
@@ -587,69 +590,79 @@
 					</ng-template>
 				</mat-expansion-panel>
 
-                <mat-expansion-panel [expanded]="isExpanded" [disabled]="isDisableToggle" >
-                    <mat-expansion-panel-header>
-                        <div class="tf-heading tf-heading--lg col-12">
-                            | 9 {{'PDP.VALIDATION_OF_THE_PREVENTION_PLAN' | translate}}
-                        </div>
-                    </mat-expansion-panel-header>
-                    <div class="row d-flex flex-column flex-nowrap flex-fill">
-                        <div class="col-12 flex-fill">
-                            <div [ngClass]="pdp.pdp_validations.length > 0 ?'card':'card pb-0'">
-                                <div class="box pb-0 pt-0">
-                                    <button class="pull-right" mat-raised-button color="info" (click)="signPdp(pdp.id)">
-                                        {{'PDP.ACTION.SIGN_PDP' | translate}}
-                                    </button>
-                                </div>
-                                <ng-container *ngIf="pdp.pdp_validations.length > 0; else noValidation">
-                                    <table mat-table [dataSource]="pdp.pdp_validations" class="mb-4 mt-4">
+				<mat-expansion-panel [expanded]="isExpanded" [disabled]="isDisableToggle">
+					<mat-expansion-panel-header>
+						<div class="tf-heading tf-heading--lg col-12">
+							| 9 {{'PDP.VALIDATION_OF_THE_PREVENTION_PLAN' | translate}}
+						</div>
+					</mat-expansion-panel-header>
+					<div class="row d-flex flex-column flex-nowrap flex-fill">
+						<div class="col-12 flex-fill">
+							<div [ngClass]="pdp.pdp_validations.length > 0 ?'card':'card pb-0'">
+								<div class="box pb-0 pt-0">
+									<button class="pull-right" mat-raised-button color="info" (click)="signPdp(pdp.id)">
+										{{'PDP.ACTION.SIGN_PDP' | translate}}
+									</button>
+								</div>
+								<ng-container *ngIf="pdp.pdp_validations.length > 0; else noValidation">
+									<table mat-table [dataSource]="pdp.pdp_validations" class="mb-4 mt-4">
 
-                                        <ng-container matColumnDef="company">
-                                            <th mat-header-cell *matHeaderCellDef> {{'PDP.COMPANIES' | translate}} </th>
-                                            <td mat-cell *matCellDef="let element">
-                                                <b *ngIf="element.type">{{element.type | uppercase}}:</b>  <span *ngIf="element.company_name; else noDataFound">{{element.company_name}}</span>
-                                            </td>
-                                        </ng-container>
+										<ng-container matColumnDef="company">
+											<th mat-header-cell *matHeaderCellDef> {{'PDP.COMPANIES' | translate}} </th>
+											<td mat-cell *matCellDef="let element">
+												<b *ngIf="element.type">{{element.type | uppercase}}:</b> <span
+												*ngIf="element.company_name; else noDataFound">{{element.company_name}}</span>
+											</td>
+										</ng-container>
 
-                                        <ng-container matColumnDef="fullname">
-                                            <th mat-header-cell *matHeaderCellDef class="text-center"> {{'PDP.FULLNAME' | translate}} </th>
-                                            <td mat-cell *matCellDef="let element" class="text-center">
-                                                <span *ngIf="element.full_name; else noDataFound">{{element.full_name}}</span>
-                                            </td>
-                                        </ng-container>
+										<ng-container matColumnDef="fullname">
+											<th mat-header-cell *matHeaderCellDef
+												class="text-center"> {{'PDP.FULLNAME' | translate}} </th>
+											<td mat-cell *matCellDef="let element" class="text-center">
+												<span
+													*ngIf="element.full_name; else noDataFound">{{element.full_name}}</span>
+											</td>
+										</ng-container>
 
-                                        <ng-container matColumnDef="date">
-                                            <th mat-header-cell *matHeaderCellDef class="text-center"> {{'PDP.DATE' | translate}} </th>
-                                            <td mat-cell *matCellDef="let element" class="text-center">
-                                                <span *ngIf="element.validation_at; else noDataFound">{{element.validation_at | date:'dd/MM/yyyy'}}</span>
-                                            </td>
-                                        </ng-container>
+										<ng-container matColumnDef="date">
+											<th mat-header-cell *matHeaderCellDef
+												class="text-center"> {{'PDP.DATE' | translate}} </th>
+											<td mat-cell *matCellDef="let element" class="text-center">
+												<span
+													*ngIf="element.validation_at; else noDataFound">{{element.validation_at | date:'dd/MM/yyyy'}}</span>
+											</td>
+										</ng-container>
 
-                                        <ng-container matColumnDef="participation">
-                                            <th mat-header-cell *matHeaderCellDef class="text-center"> {{'PDP.PARTICIPATION_IN_THE_PRIOR_JOINT_INSPECTION' | translate}} </th>
-                                            <td mat-cell *matCellDef="let element" class="text-center">
-                                                <ng-container *ngIf="element.is_part_inspection; else no">
-                                                    <b>{{'PDP.DATE' | translate}}</b>: <span>{{element.part_inspection_at | date:'dd/MM/yyyy'}}</span>
-                                                </ng-container>
-                                            </td>
-                                        </ng-container>
+										<ng-container matColumnDef="participation">
+											<th mat-header-cell *matHeaderCellDef
+												class="text-center"> {{'PDP.PARTICIPATION_IN_THE_PRIOR_JOINT_INSPECTION' | translate}} </th>
+											<td mat-cell *matCellDef="let element" class="text-center">
+												<ng-container *ngIf="element.is_part_inspection; else no">
+													<b>{{'PDP.DATE' | translate}}</b>:
+													<span>{{element.part_inspection_at | date:'dd/MM/yyyy'}}</span>
+												</ng-container>
+											</td>
+										</ng-container>
 
-                                        <ng-container matColumnDef="visa">
-                                            <th mat-header-cell *matHeaderCellDef class="text-center"> {{'PDP.VISA_PRECEDED_BY_THE_WORDS_READ_AND_APPROVED' | translate}} </th>
-                                            <td mat-cell *matCellDef="let element" class="text-center">
-                                                <!-- <span>{{'PDP.READ_AND_APPROVED' | translate}}</span> -->
-                                                <div class="signature-viewer">
-                                                    <img *ngIf="element.signature" [src]="_sanitizer.bypassSecurityTrustResourceUrl(element.signature?.signature)" width="100%">
-                                                </div>
-                                            </td>
-                                        </ng-container>
+										<ng-container matColumnDef="visa">
+											<th mat-header-cell *matHeaderCellDef
+												class="text-center"> {{'PDP.VISA_PRECEDED_BY_THE_WORDS_READ_AND_APPROVED' | translate}} </th>
+											<td mat-cell *matCellDef="let element" class="text-center">
+												<!-- <span>{{'PDP.READ_AND_APPROVED' | translate}}</span> -->
+												<div class="signature-viewer">
+													<img *ngIf="element.signature"
+														 [src]="_sanitizer.bypassSecurityTrustResourceUrl(element.signature?.signature)"
+														 width="100%">
+												</div>
+											</td>
+										</ng-container>
 
-                                        <tr mat-header-row *matHeaderRowDef="pdpValidationsColumns"></tr>
-                                        <tr mat-row *matRowDef="let row; columns: pdpValidationsColumns;"></tr>
-                                    </table>
-                                </ng-container>
-                                <ng-template #noValidation>
-                                    <div class="box">
+										<tr mat-header-row *matHeaderRowDef="pdpValidationsColumns"></tr>
+										<tr mat-row *matRowDef="let row; columns: pdpValidationsColumns;"></tr>
+									</table>
+								</ng-container>
+								<ng-template #noValidation>
+									<div class="box">
                                         <span class="no-data-label">
                                             Aucune validations
                                             </span>

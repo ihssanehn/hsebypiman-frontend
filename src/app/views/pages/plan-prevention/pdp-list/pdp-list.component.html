@@ -130,6 +130,11 @@
 				<mat-icon>visibility</mat-icon>
 			</button>
 		</ng-container>
+		<ng-container *ngxPermissionsOnly="['plan_prevention_canSeeAll']">
+			<button mat-icon-button color="primary" matTooltip="{{'ACTION.EXPORT_PDF' | translate}}">
+				<mat-icon>picture_as_pdf</mat-icon>
+			</button>
+		</ng-container>
 		<ng-container *ngxPermissionsOnly="['USER']">
 			<button mat-icon-button color="primary" matTooltip="{{'ACTION.SIGN' | translate}}"
 					(click)="signPdp(pdp_id)">
