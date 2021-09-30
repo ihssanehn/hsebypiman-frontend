@@ -19,7 +19,7 @@ import { PdpDetailComponent } from '../pdp-detail/pdp-detail.component';
   styleUrls: ['./pdp-signature.component.scss']
 })
 export class PdpSignatureComponent implements OnInit {
-  
+
   @Input() pdp: Pdp;
   @Input() type: String;
 
@@ -27,6 +27,7 @@ export class PdpSignatureComponent implements OnInit {
   currentUser : User;
   formStatus = new FormStatus();
   formloading: boolean= false;
+  selectedButton : number[] = Array(1).fill(0);
 
   @ViewChild('signaturePad',null) signaturePad: SignaturePad;
   @ViewChild('signaturePadEe',null) signaturePadEe: SignaturePad;
@@ -38,7 +39,7 @@ export class PdpSignatureComponent implements OnInit {
     'canvasWidth': 500,
     'canvasHeight': 150
   }
-  public signaturePadOptions: Object = { 
+  public signaturePadOptions: Object = {
     'minWidth': this.canvas['minWidth'],
     'canvasWidth': this.canvas['canvasWidth'],
     'canvasHeight': this.canvas['canvasHeight'],
@@ -60,11 +61,11 @@ export class PdpSignatureComponent implements OnInit {
   ngOnInit() {
     this.signaturesForm = this.fb.array([]);
     switch(this.type) {
-      case 'pdp_validations': 
-          this.parseValidations(this.pdp.pdp_validations); 
+      case 'pdp_validations':
+          this.parseValidations(this.pdp.pdp_validations);
           break;
       case 'pdp_intervenants':
-          this.parseIntervenants(this.pdp.intervenants); 
+          this.parseIntervenants(this.pdp.intervenants);
           break;
     }
   }
@@ -115,9 +116,10 @@ export class PdpSignatureComponent implements OnInit {
           part_inspection_at:[element.is_part_inspection? this.setDateFormat(element.part_inspection_at): null],
           signature:[null, Validators.required],
           validation_id:[element.id],
-          type:[element.type]
+          type:[element.type],
+		  read_and_approved:[null,Validators.required]
         });
-  
+
         this.signaturesForm.insert(index, newForm);
     });
   }
@@ -134,7 +136,8 @@ export class PdpSignatureComponent implements OnInit {
       part_inspection_at:[null],
       signature:[null, Validators.required],
       validation_id:[null],
-      type:[null]
+      type:[null],
+	  read_and_approved:[null,Validators.required]
     });
 
     this.signaturesForm.insert(0, newForm);
@@ -156,7 +159,8 @@ export class PdpSignatureComponent implements OnInit {
       part_inspection_at:[null],
       signature:[null, Validators.required],
       validation_id:[null],
-      type:[null]
+      type:[null],
+	  read_and_approved:[null,Validators.required]
     });
   }
 
@@ -183,7 +187,7 @@ export class PdpSignatureComponent implements OnInit {
       default: this.signaturePad.set('canvasWidth', this.canvas['canvasWidth'] / ratio); break;
     }
   }
- 
+
   drawComplete(i:number, type = null) {
     console.log(type);
     switch(type) {
@@ -209,7 +213,7 @@ export class PdpSignatureComponent implements OnInit {
           .then((signature) => {
             this.cdr.markForCheck();
             this.formloading = false;
-            
+
             Swal.fire({
               icon: 'success',
               title: 'Votre signature a bien été prise en compte',
@@ -219,7 +223,7 @@ export class PdpSignatureComponent implements OnInit {
               this.router.navigate(['/plan-de-prevention/list']);
             });
           })
-          .catch(err =>{ 
+          .catch(err =>{
 
             this.formloading = false;
             Swal.fire({
@@ -236,7 +240,7 @@ export class PdpSignatureComponent implements OnInit {
             }
 
           });
-          
+
         this.cdr.markForCheck();
 
     } catch (error) {
@@ -251,7 +255,7 @@ export class PdpSignatureComponent implements OnInit {
 		event ? this.signaturesForm.controls[index].get(FormChangeToControlName).enable() : this.signaturesForm.controls[index].get(FormChangeToControlName).disable();
 		this.signaturesForm.controls[index].get(FormChangeToControlName).updateValueAndValidity();
   }
-  
+
   isControlHasError(controlName: string, validationType: string, index = null): boolean {
       const control = this.signaturesForm.controls[index].get(controlName);
       if (!control) {
