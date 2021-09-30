@@ -434,6 +434,9 @@
 			"CATEGORIE_PDP_RISQUE_ARCHIVED": {
 				"TITLE": "Categorie Pdp Risque archivé avec succès"
 			},
+			"PDP_RISQUE_ARCHIVED": {
+				"TITLE": "Pdp Risque archivé avec succès"
+			},
 			"ERROR_SUBMITTING": "Merci de saisir tous les champs mentionnés par une étoile ou de vérifier le format"
 		},
 		"CARD": {
@@ -461,6 +464,11 @@
 				"NO_CATEGORIE": "Pas de categorie à fournir",
 				"SHORTTITLE": "Categories Pdp Risque",
 				"TITLE": "Categories Pdp Risque à fournir sur place"
+			},
+			"PDP_RISK": {
+				"NO_RISK": "Pas de risque à fournir",
+				"SHORTTITLE": "Risques",
+				"TITLE": "Pdp Risques à fournir sur place"
 			}
 		},
 		"ACTION": {
@@ -469,6 +477,7 @@
 			"ADD_EPI_DISPOSITION": "Ajouter epi disposition (ees)",
 			"ADD_MOYEN_DISPOSITION": "Ajouter moyen disposition (ees)",
 			"ADD_CATEGORIE_PDP_RISQUE": "Ajouter Categorie Pdp Risque",
+			"ADD_PDP_RISQUE": "Ajouter Pdp Risque",
 			"SIGN_PDP": "Signer le plan de prévention"
 		}
 	},

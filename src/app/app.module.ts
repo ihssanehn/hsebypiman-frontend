@@ -98,7 +98,7 @@ import {
 	VisiteService,
 	PeriodService,
 	FlashInfoService,
-	PdpService, CatPdpRisquesService
+	PdpService, CatPdpRisquesService, PdpRisquesService
 } from './core/services';
 // CRUD
 import { HttpUtilsService, LayoutUtilsService, TypesUtilsService } from './core/_base/crud';
@@ -217,6 +217,7 @@ export function hljsLanguages(): HighlightLanguage[] {
 		TravauxDangereuxService,
 		CatPdpRisquesService,
 		MoyenDispositionService,
+		PdpRisquesService,
 		ConsigneEEService,
 		EpiDispositionService,
 		EntrepriseService,
