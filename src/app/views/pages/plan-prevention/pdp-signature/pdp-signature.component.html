@@ -53,14 +53,14 @@
 
                 <div class="col-xl-6 form-row-flex">
 					<div class="d-flex align-items-center">
-						<mat-checkbox [value]="read_and_approved" name="read_and_approved" formControlName="read_and_approved" >{{'PDP.VISA_PRECEDED_BY_THE_WORDS_READ_AND_APPROVED' | translate}}</mat-checkbox>
+						<mat-checkbox  name="read_and_approved" formControlName="read_and_approved" >{{'PDP.VISA_PRECEDED_BY_THE_WORDS_READ_AND_APPROVED' | translate}}</mat-checkbox>
 						<button class="ml-auto d-block" mat-icon-button color="accent" matTooltip="{{'ACTION.CLEAR' | translate}}" (click)="clearSignature(i,signaturesForm.controls[i].get('type').value)">
 							<mat-icon >delete</mat-icon>
 						</button>
 					</div>
                     <ng-container *ngIf="signaturesForm.controls[i].get('type').value === 'ee'">
                         <div class="signature-container">
-                            <signature-pad #signaturePadEe id="signaturePadEe" (window:resize)="resizeSignaturePad('ee')" [options]="signaturePadOptions" (onEndEvent)="drawComplete(i,'ee')"></signature-pad>
+                            <signature-pad #signaturePadEe id="signaturePadEe" (window:resize)="resizeSignaturePad('ee')" [options]="signaturePadOptions" (onEndEvent)="drawComplete(i,'ee')" ></signature-pad>
                         </div>
                     </ng-container>
 
