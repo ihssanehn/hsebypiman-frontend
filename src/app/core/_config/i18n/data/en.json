@@ -822,7 +822,7 @@
 			}
 		},
 		"NO_DATA_FOUND": {
-			"TITLE": "Not specified"
+			"TITLE": "-"
 		},
 		"NUMBER_OF": {
 			"SHORTTITLE": "No. of",
