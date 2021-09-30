@@ -428,6 +428,9 @@
 			"EPI_DISPOSITION_ARCHIVED": {
 				"TITLE": "Epi Disposition (ees) archivé avec succès"
 			},
+			"MOYEN_DISPOSITION_ARCHIVED": {
+				"TITLE": "Moyen Disposition (ees) archivé avec succès"
+			},
 			"ERROR_SUBMITTING": "Merci de saisir tous les champs mentionnés par une étoile ou de vérifier le format"
 		},
 		"CARD": {
@@ -444,13 +447,19 @@
 			"EPI_DISPOSITION_EES": {
 				"NO_DISPOSITION": "Pas de disposition (ees) à fournir",
 				"SHORTTITLE": "Epi Dispositions (ees)",
-				"TITLE": "Dispositions (ees) à fournir sur place"
+				"TITLE": "Epi Dispositions (ees) à fournir sur place"
+			},
+			"MOYEN_DISPOSITION_EES": {
+				"NO_DISPOSITION": "Pas de disposition (ees) à fournir",
+				"SHORTTITLE": "Moyen Dispositions (ees)",
+				"TITLE": "Moyen Dispositions (ees) à fournir sur place"
 			}
 		},
 		"ACTION": {
 			"ADD_TRAVAUX": "Ajouter un travail dangereux",
 			"ADD_CONSIGNE": "Ajouter consigne (ee)",
 			"ADD_EPI_DISPOSITION": "Ajouter epi disposition (ees)",
+			"ADD_MOYEN_DISPOSITION": "Ajouter moyen disposition (ees)",
 			"SIGN_PDP": "Signer le plan de prévention"
 		}
 	},

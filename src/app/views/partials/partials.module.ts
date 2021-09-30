@@ -165,6 +165,7 @@ import { AddDocModalComponent } from './layout/modal/add-doc-modal/add-doc-modal
 import { PdpTravauxDangereuxComponent } from './layout/admins/pdp-travaux-dangereux/pdp-travaux-dangereux.component';
 import { PdpConsigneEeComponent } from './layout/admins/pdp-consigne-ee/pdp-consigne-ee.component';
 import { PdpEpiDispositionComponent } from './layout/admins/pdp-epi-disposition/pdp-epi-disposition.component';
+import { PdpMoyenDispositionComponent } from './layout/admins/pdp-moyen-disposition/pdp-moyen-disposition.component';
 
 @NgModule({
 	declarations: [
@@ -272,6 +273,7 @@ import { PdpEpiDispositionComponent } from './layout/admins/pdp-epi-disposition/
 		PdpTravauxDangereuxComponent,
 		PdpConsigneEeComponent,
 		PdpEpiDispositionComponent,
+		PdpMoyenDispositionComponent,
 
 	],
 	exports: [
@@ -379,7 +381,8 @@ import { PdpEpiDispositionComponent } from './layout/admins/pdp-epi-disposition/
 		DashEntrepriseComponent,
 		PdpTravauxDangereuxComponent,
 		PdpConsigneEeComponent,
-		PdpEpiDispositionComponent
+		PdpEpiDispositionComponent,
+		PdpMoyenDispositionComponent
 
 	],
 	imports: [

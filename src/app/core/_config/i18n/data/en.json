@@ -426,6 +426,9 @@
 			"EPI_DISPOSITION_ARCHIVED": {
 				"TITLE": "Epi Disposition (ees) archived successfully"
 			},
+			"MOYEN_DISPOSITION_ARCHIVED": {
+				"TITLE": "Medium Disposition (ees) archived successfully"
+			},
 			"ERROR_SUBMITTING": "Please enter all fields marked with a star or check the format"
 		},
 		"CARD": {
@@ -440,15 +443,21 @@
 				"TITLE": "instructions (ee) to be provided on site"
 			},
 			"EPI_DISPOSITION_EES": {
-				"NO_DISPOSITION": "No disposition (ees) à fournir",
+				"NO_DISPOSITION": "No disposition (ees) to provide",
 				"SHORTTITLE": "Epi Dispositions (ees)",
-				"TITLE": "Dispositions (ees) to be provided on site"
+				"TITLE": "Epi Dispositions (ees) to be provided on site"
+			},
+			"MOYEN_DISPOSITION_EES": {
+				"NO_DISPOSITION": "No disposition (ees) to provide",
+				"SHORTTITLE": "Medium Dispositions (ees)",
+				"TITLE": "Medium Dispositions (ees) to be provided on site"
 			}
 		},
 		"ACTION": {
 			"ADD_TRAVAUX": "Add hazardous work",
 			"ADD_CONSIGNE": "Add instruction (ee)",
 			"ADD_EPI_DISPOSITION": "Add epi disposition (ees)",
+			"ADD_MOYEN_DISPOSITION": "Add medium disposition (ees)",
 			"SIGN_PDP": "Sign the prevention plan"
 		}
 	},
