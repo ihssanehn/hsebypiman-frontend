@@ -386,6 +386,8 @@
 		"ENDTIME_MUST_BIGGER_THAN_START_TIME": "The end time must be later than the start time",
 		"OTHER_SITUATION": "Other situation",
 		"OTHER_METHOD": "Other method",
+		"OFFICE": "Office prevention plan",
+		"FIELD":"Field prevention plan",
 		"NOTIF": {
 			"PDP_DELETED": {
 				"TITLE": "Prevention plan has been deleted successfully"

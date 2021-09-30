@@ -388,6 +388,8 @@
 		"NO": "Non",
 		"OTHER_SITUATION": "Autre situation",
 		"OTHER_METHOD": "Autre méthode",
+		"OFFICE": "Plan de prévention bureau",
+		"FIELD":"Plan de prévention terrain",
 		"NOTIF": {
 			"PDP_DELETED": {
 				"TITLE": "Le plan de prévention a été supprimé avec succès"
