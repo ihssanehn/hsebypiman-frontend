@@ -425,7 +425,10 @@
 			"CONSIGNE_ARCHIVED": {
 				"TITLE": "Consigne (ee) archivé avec succès"
 			},
-			"ERROR_SUBMITTING" : "Merci de saisir tous les champs mentionnés par une étoile ou de vérifier le format"
+			"EPI_DISPOSITION_ARCHIVED": {
+				"TITLE": "Epi Disposition (ees) archivé avec succès"
+			},
+			"ERROR_SUBMITTING": "Merci de saisir tous les champs mentionnés par une étoile ou de vérifier le format"
 		},
 		"CARD": {
 			"TRAVAUX": {
@@ -437,11 +440,17 @@
 				"NO_CONSIGNE": "Pas de consigne (ee) à fournir",
 				"SHORTTITLE": "Consignes (ee)",
 				"TITLE": "Consignes (ee) à fournir sur place"
+			},
+			"EPI_DISPOSITION_EES": {
+				"NO_DISPOSITION": "Pas de disposition (ees) à fournir",
+				"SHORTTITLE": "Epi Dispositions (ees)",
+				"TITLE": "Dispositions (ees) à fournir sur place"
 			}
 		},
 		"ACTION": {
 			"ADD_TRAVAUX": "Ajouter un travail dangereux",
 			"ADD_CONSIGNE": "Ajouter consigne (ee)",
+			"ADD_EPI_DISPOSITION": "Ajouter epi disposition (ees)",
 			"SIGN_PDP": "Signer le plan de prévention"
 		}
 	},

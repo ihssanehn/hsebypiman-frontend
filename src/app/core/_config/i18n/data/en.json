@@ -423,6 +423,9 @@
 			"CONSIGNE_ARCHIVED": {
 				"TITLE": "Instruction (ee) archived successfully"
 			},
+			"EPI_DISPOSITION_ARCHIVED": {
+				"TITLE": "Epi Disposition (ees) archived successfully"
+			},
 			"ERROR_SUBMITTING": "Please enter all fields marked with a star or check the format"
 		},
 		"CARD": {
@@ -435,11 +438,17 @@
 				"NO_CONSIGNE": "No instructions (ee) to provide",
 				"SHORTTITLE": "instructions (ee)",
 				"TITLE": "instructions (ee) to be provided on site"
+			},
+			"EPI_DISPOSITION_EES": {
+				"NO_DISPOSITION": "No disposition (ees) à fournir",
+				"SHORTTITLE": "Epi Dispositions (ees)",
+				"TITLE": "Dispositions (ees) to be provided on site"
 			}
 		},
 		"ACTION": {
 			"ADD_TRAVAUX": "Add hazardous work",
 			"ADD_CONSIGNE": "Add instruction (ee)",
+			"ADD_EPI_DISPOSITION": "Add epi disposition (ees)",
 			"SIGN_PDP": "Sign the prevention plan"
 		}
 	},
