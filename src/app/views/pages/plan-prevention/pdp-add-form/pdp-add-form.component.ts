@@ -472,6 +472,7 @@ export class PdpAddFormComponent implements OnInit {
 		});
 		this.getControlsArrayFormName('validations').push(group);
 		this.validations.next(this.getControlsArrayFormName('validations'));
+		console.log(this.getControlsArrayFormName('validations'));
 	}
 
 	deleteElemntInArray(index, formArrayName, array: BehaviorSubject<AbstractControl[]> = null) {

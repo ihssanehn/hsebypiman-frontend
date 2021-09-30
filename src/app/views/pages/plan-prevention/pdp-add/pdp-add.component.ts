@@ -168,6 +168,7 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 	}
 
 	async onSubmit() {
+		console.log(this.pdpForm);
 		try {
 			this.pdpForm.markAllAsTouched();
 			if (this.pdpForm.valid
