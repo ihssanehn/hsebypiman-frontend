@@ -166,6 +166,7 @@ import { PdpTravauxDangereuxComponent } from './layout/admins/pdp-travaux-danger
 import { PdpConsigneEeComponent } from './layout/admins/pdp-consigne-ee/pdp-consigne-ee.component';
 import { PdpEpiDispositionComponent } from './layout/admins/pdp-epi-disposition/pdp-epi-disposition.component';
 import { PdpMoyenDispositionComponent } from './layout/admins/pdp-moyen-disposition/pdp-moyen-disposition.component';
+import { PdpCatRisquesComponent } from './layout/admins/pdp-cat-risques/pdp-cat-risques.component';
 
 @NgModule({
 	declarations: [
@@ -274,6 +275,7 @@ import { PdpMoyenDispositionComponent } from './layout/admins/pdp-moyen-disposit
 		PdpConsigneEeComponent,
 		PdpEpiDispositionComponent,
 		PdpMoyenDispositionComponent,
+		PdpCatRisquesComponent,
 
 	],
 	exports: [
@@ -382,7 +384,8 @@ import { PdpMoyenDispositionComponent } from './layout/admins/pdp-moyen-disposit
 		PdpTravauxDangereuxComponent,
 		PdpConsigneEeComponent,
 		PdpEpiDispositionComponent,
-		PdpMoyenDispositionComponent
+		PdpMoyenDispositionComponent,
+		PdpCatRisquesComponent
 
 	],
 	imports: [

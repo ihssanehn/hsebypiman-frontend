@@ -429,6 +429,9 @@
 			"MOYEN_DISPOSITION_ARCHIVED": {
 				"TITLE": "Medium Disposition (ees) archived successfully"
 			},
+			"CATEGORIE_PDP_RISQUE_ARCHIVED": {
+				"TITLE": "Pdp Risk Category archived successfully"
+			},
 			"ERROR_SUBMITTING": "Please enter all fields marked with a star or check the format"
 		},
 		"CARD": {
@@ -451,6 +454,11 @@
 				"NO_DISPOSITION": "No disposition (ees) to provide",
 				"SHORTTITLE": "Medium Dispositions (ees)",
 				"TITLE": "Medium Dispositions (ees) to be provided on site"
+			},
+			"CATEGORIE_PDP_RISQUE": {
+				"NO_CATEGORIE": "No category to provide",
+				"SHORTTITLE": "Pdp Risk Categories",
+				"TITLE": "Pdp Risk Categories to be provided on site"
 			}
 		},
 		"ACTION": {
@@ -458,6 +466,7 @@
 			"ADD_CONSIGNE": "Add instruction (ee)",
 			"ADD_EPI_DISPOSITION": "Add epi disposition (ees)",
 			"ADD_MOYEN_DISPOSITION": "Add medium disposition (ees)",
+			"ADD_CATEGORIE_PDP_RISQUE": "Add Pdp Risk Category",
 			"SIGN_PDP": "Sign the prevention plan"
 		}
 	},
