@@ -424,7 +424,7 @@
 			"CONSIGNE_ARCHIVED": {
 				"TITLE": "Consigne (ee) archivé avec succès"
 			},
-			"ERROR_SUBMITTING" : "Oh Snap ! Modifiez quelques éléments et essayez de soumettre à nouveau."
+			"ERROR_SUBMITTING" : "Merci de saisir tous les champs mentionnés par une étoile ou de vérifier le format"
 		},
 		"CARD": {
 			"TRAVAUX": {
