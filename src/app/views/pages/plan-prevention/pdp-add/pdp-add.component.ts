@@ -25,7 +25,7 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 	pdp: Pdp = null;
 	adding = true;
 	formStatus = new FormStatus();
-
+	typePdp :string = 'piman-t';
 	private subscriptions: Subscription[] = [];
 
 	constructor(
@@ -242,6 +242,10 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 			this.cdr.markForCheck();
 		});
 		this.cdr.markForCheck();
+	}
+
+	selectPdp(typePdp : string){
+		this.typePdp = typePdp;
 	}
 
 	ngOnDestroy() {
