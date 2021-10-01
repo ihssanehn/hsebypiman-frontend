@@ -11,6 +11,7 @@ import {NgxPermissionsGuard, NgxPermissionsModule} from 'ngx-permissions';
 import {NgbDropdownModule, NgbPopoverModule, NgbTabsetModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 import {SignaturePadModule} from 'angular2-signaturepad';
 import {NgxMaskModule} from 'ngx-mask';
+import { NzMenuModule } from 'ng-zorro-antd/menu';
 import {
 	DateAdapter, MAT_DATE_LOCALE, MAT_DIALOG_DEFAULT_OPTIONS,
 	MatAutocompleteModule, MatButtonModule, MatCardModule, MatCheckboxModule,
@@ -138,6 +139,7 @@ const routes: Routes = [
 				autoHide: 3000,
 			},
 		}),
+		NzMenuModule,
 	],
 	providers: [
 		CdkColumnDef,

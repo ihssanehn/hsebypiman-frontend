@@ -25,7 +25,8 @@
 		"SHOW": "Afficher",
 		"SHOW_USER": "Voir l'utilisateur",
 		"SHOW_VISIT": "Voir la visite",
-		"SIGN": "Signer"
+		"SIGN": "Signer",
+		"SELECT":"Selectionner"
 	},
 	"ARS": {
 		"ACTION": {
@@ -392,6 +393,11 @@
 		"NO": "Non",
 		"OTHER_SITUATION": "Autre situation",
 		"OTHER_METHOD": "Autre méthode",
+		"PIMAN":"Plan de prévention Piman",
+		"FIELD_DESC":"Plan de prévention : Terrain",
+		"CLIENT":"Plan de prévention Client",
+		"PIMAN_DESC":"Utiliser le formulaire de création de Piman.",
+		"CLIENT_DESC":"Importer un plan de prévention client et le completer.",
 		"NOTIF": {
 			"PDP_DELETED": {
 				"TITLE": "Le plan de prévention a été supprimé avec succès"
