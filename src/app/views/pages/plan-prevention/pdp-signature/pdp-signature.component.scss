@@ -29,16 +29,16 @@
                 .status-box{
                     .status-icon{
                         width:20px;
-                        height:20px; 
+                        height:20px;
                         line-height: 0;
                     }
                 }
             }
-            
+
             .tf-portlet__body{
                 padding: 20px;
                 .card{
-                    padding: 2em 2em 0;    
+                    padding: 2em 2em 0;
                     height: 100%;
                     // justify-content: space-between;
                     p, .box-line{
@@ -100,6 +100,14 @@
             }
         }
     }
+	#signaturePad{
+		canvas{
+			background-image: url('../../../../../assets/media/images/signer.png');
+			background-repeat: no-repeat;
+			background-position: bottom;
+			background-size: contain;
+		}
+	}
 }
 .badge-pill {
     padding-right: 0.7em;

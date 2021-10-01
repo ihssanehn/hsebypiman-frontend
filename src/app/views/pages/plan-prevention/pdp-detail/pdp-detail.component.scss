@@ -29,16 +29,16 @@
                 .status-box{
                     .status-icon{
                         width:20px;
-                        height:20px; 
+                        height:20px;
                         line-height: 0;
                     }
                 }
             }
-            
+
             .tf-portlet__body{
                 padding: 20px;
                 .card{
-                    padding: 2em 2em 0;    
+                    padding: 2em 2em 0;
                     height: 100%;
                     // justify-content: space-between;
                     p, .box-line{
@@ -46,9 +46,12 @@
                         text-align: right;
                     }
                     .label{
-                        color: #c9c9c9;
+                        color: #222222;
                         text-align: left;
                     }
+					.ng-star-inserted{
+						font-weight: normal;
+					}
                     .pdp-label{
                         font-weight: 500;
                     }
