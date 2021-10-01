@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit, Output, QueryList, ViewChildren, EventEmitter } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -21,6 +21,8 @@ export class PdpSignatureComponent implements OnInit {
 
   @Input() pdp: Pdp;
   @Input() public type: string;
+
+  @Output() signEvent = new EventEmitter<boolean>();
 
   signaturesForm: FormArray;
   currentUser : User;
@@ -252,6 +254,10 @@ export class PdpSignatureComponent implements OnInit {
     }
   }
 
+  sendSignEvent() {
+    this.signEvent.emit(true);
+  }
+
   createValidationSignature() {
     this.formloading = true;
     let form = {...this.signaturesForm.getRawValue()};
@@ -269,7 +275,8 @@ export class PdpSignatureComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         }).then(() => {
-          this.router.navigate(['/plan-de-prevention/list']);
+          //this.router.navigate(['/plan-de-prevention/list']);
+          this.sendSignEvent();
         });
       })
       .catch(err =>{ 
@@ -309,7 +316,8 @@ export class PdpSignatureComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         }).then(() => {
-          this.router.navigate(['/plan-de-prevention/list']);
+          //this.router.navigate(['/plan-de-prevention/list']);
+          this.sendSignEvent();
         });
       })
       .catch(err =>{ 

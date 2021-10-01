@@ -609,7 +609,7 @@
 									</button>
 								</div>
 
-								<tf-pdp-signature class="pt-3 pb-3" *ngIf="validationEditMode" [pdp]="pdp" [type]="'pdp_validations'"></tf-pdp-signature>
+								<tf-pdp-signature class="pt-3 pb-3" *ngIf="validationEditMode" [pdp]="pdp" [type]="'pdp_validations'" (signEvent)="onSignPDP($event)"></tf-pdp-signature>
 
                                 <ng-container *ngIf="pdp.pdp_validations.length > 0; else noValidation">
                                     <table mat-table *ngIf="!validationEditMode" [dataSource]="pdp.pdp_validations" class="mb-4 mt-4">
@@ -689,7 +689,7 @@
 									</button>
 								</div>
 
-								<tf-pdp-signature class="pt-3 pb-3" *ngIf="intervenantEditMode" [pdp]="pdp" [type]="'pdp_intervenants'"></tf-pdp-signature>
+								<tf-pdp-signature class="pt-3 pb-3" *ngIf="intervenantEditMode" [pdp]="pdp" [type]="'pdp_intervenants'" (signEvent)="onSignPDP($event)"></tf-pdp-signature>
 
 								<ng-container *ngIf="pdp.intervenants.length > 0; else noIntervenant">
 									<table mat-table *ngIf="!intervenantEditMode" [dataSource]="pdp.intervenants" class="mb-4 mt-4">

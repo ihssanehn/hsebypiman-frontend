@@ -89,5 +89,10 @@ export class PdpDetailComponent implements OnInit {
   cancelIntervenantSignature(){
     this.intervenantEditMode = false;
   }
+
+  onSignPDP($event) {
+    this.intervenantEditMode = this.validationEditMode = false;
+    this.getPdp(this.pdp.id);
+  }
 }
 
