@@ -75,11 +75,19 @@ export class PdpDetailComponent implements OnInit {
   }
 
   showValidationSignatureForm(){
-    this.validationEditMode = !this.validationEditMode;
+    this.validationEditMode = true;
+  }
+
+  cancelValidationSignature(){
+    this.validationEditMode = false;
   }
 
   showIntervenantSignatureFrom(){
-    this.intervenantEditMode = !this.intervenantEditMode;
+    this.intervenantEditMode = true;
+  }
+
+  cancelIntervenantSignature(){
+    this.intervenantEditMode = false;
   }
 }
 

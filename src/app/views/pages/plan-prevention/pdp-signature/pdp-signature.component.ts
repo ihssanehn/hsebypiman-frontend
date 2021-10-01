@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Injector, Input, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -11,7 +11,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { SignaturePad } from 'angular2-signaturepad/signature-pad';
 import moment from 'moment';
 import Swal from 'sweetalert2';
-import { PdpDetailComponent } from '../pdp-detail/pdp-detail.component';
 
 @Component({
   selector: 'tf-pdp-signature',
@@ -28,11 +27,6 @@ export class PdpSignatureComponent implements OnInit {
   formStatus = new FormStatus();
   formloading: boolean= false;
   selectedButton : number[] = Array(1).fill(0);
-
-  @ViewChild('signaturePad',null) signaturePad: SignaturePad;
-  @ViewChild('signaturePadEe',null) signaturePadEe: SignaturePad;
-  @ViewChild('signaturePadEu',null) signaturePadEu: SignaturePad;
-  @ViewChild('signaturePadSs',null) signaturePadSs: SignaturePad;
 
   @ViewChildren("signaturePad") signaturePads: QueryList<SignaturePad>;
 
@@ -73,30 +67,12 @@ export class PdpSignatureComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    if(this.signaturePad){
-      this.signaturePad.set('minWidth', 0.5);
-      this.signaturePad.clear();
-    }
-    if(this.signaturePadEe){
-      this.signaturePadEe.set('minWidth', 0.5);
-      this.signaturePadEe.clear();
-    }
-    if(this.signaturePadEu){
-      this.signaturePadEu.set('minWidth', 0.5);
-      this.signaturePadEu.clear();
-    }
-    if(this.signaturePadSs){
-      this.signaturePadSs.set('minWidth', 0.5);
-      this.signaturePadSs.clear();
-    }
-
     if(this.signaturePads){
       this.signaturePads.forEach((child) => { 
         child.set('minWidth', 0.5); 
         child.clear(); 
       });
     }
-
   }
 
   parseValidations(validations) {
@@ -131,7 +107,7 @@ export class PdpSignatureComponent implements OnInit {
           signature:[null, Validators.required],
           validation_id:[element.id],
           type:[element.type],
-		  read_and_approved:[null,Validators.required]
+		      read_and_approved:[false,Validators.requiredTrue]
         });
 
         this.signaturesForm.insert(index, newForm);
@@ -149,7 +125,8 @@ export class PdpSignatureComponent implements OnInit {
           first_name:[element.first_name, Validators.required],
           last_name:[element.last_name, Validators.required],
           signature:[null, Validators.required],
-          intervenant_id:[element.id]
+          intervenant_id:[element.id],
+		      read_and_approved:[false,Validators.requiredTrue]
         });
   
         this.signaturesForm.insert(index, newForm);
@@ -169,7 +146,7 @@ export class PdpSignatureComponent implements OnInit {
       signature:[null, Validators.required],
       validation_id:[null],
       type:[null],
-	  read_and_approved:[null,Validators.required]
+      read_and_approved:[false,Validators.requiredTrue]
     });
 
     this.signaturesForm.insert(0, newForm);
@@ -183,23 +160,12 @@ export class PdpSignatureComponent implements OnInit {
       first_name:[null, Validators.required],
       last_name:[null, Validators.required],
       signature:[null, Validators.required],
-      intervenant_id:[null]
+      intervenant_id:[null],
+      read_and_approved:[false,Validators.requiredTrue]
     });
 
     this.signaturesForm.insert(0, newForm);
   }
-
-  addSignatures() {
-    switch(this.type) {
-      case 'pdp_validations': 
-          this.signaturesForm.insert(0, this.newValidationSignature());
-          break;
-      case 'pdp_intervenants': 
-          this.signaturesForm.insert(0, this.newIntervenantSignature());
-          break;
-    }
-  }
-  
 
   newValidationSignature(): FormGroup {
     return this.fb.group({
@@ -214,7 +180,7 @@ export class PdpSignatureComponent implements OnInit {
       signature:[null, Validators.required],
       validation_id:[null],
       type:[null],
-	  read_and_approved:[null,Validators.required]
+      read_and_approved:[false,Validators.requiredTrue]
     });
   }
 
@@ -226,57 +192,40 @@ export class PdpSignatureComponent implements OnInit {
       first_name:[null, Validators.required],
       last_name:[null, Validators.required],
       signature:[null, Validators.required],
-      intervenant_id:[null]
+      intervenant_id:[null],
+      read_and_approved:[false,Validators.requiredTrue]
     });
+  }
+
+  addSignatures() {
+    switch(this.type) {
+      case 'pdp_validations': 
+          this.signaturesForm.insert(0, this.newValidationSignature());
+          break;
+      case 'pdp_intervenants': 
+          this.signaturesForm.insert(0, this.newIntervenantSignature());
+          break;
+    }
   }
 
   removeSignature(i:number) {
     this.signaturesForm.removeAt(i);
   }
 
-  clearSignature(i:number,type = null) {
-    switch(type) {
-      case 'ee': this.signaturePadEe.clear(); break;
-      case 'eu': this.signaturePadEu.clear(); break;
-      case 'ss': this.signaturePadSs.clear(); break;
-      default: this.signaturePad.clear(); break;
-    }
-    this.signaturesForm.controls[i].get('signature').reset();
-  }
-
-  clearIntervenantSignature(i:number) {
+  clearSignature(i:number) {
     let signaturePadChild = this.signaturePads.filter((element, index) => index === i);
     signaturePadChild[0].clear();
     this.signaturesForm.controls[i].get('signature').reset();
   }
 
-  resizeSignaturePad(type = null) {
-    var ratio = Math.max(window.devicePixelRatio || 1, 1);
-    switch(type) {
-      case 'ee': this.signaturePadEe.set('canvasWidth', this.canvas['canvasWidth'] / ratio); break;
-      case 'eu': this.signaturePadEu.set('canvasWidth', this.canvas['canvasWidth'] / ratio); break;
-      case 'ss': this.signaturePadSs.set('canvasWidth', this.canvas['canvasWidth'] / ratio); break;
-      default: this.signaturePad.set('canvasWidth', this.canvas['canvasWidth'] / ratio); break;
-    }
-  }
-
-  resizeIntervenantSignaturePad() {
+  resizeSignaturePad() {
     var ratio = Math.max(window.devicePixelRatio || 1, 1);
     this.signaturePads.forEach((child) => { 
       child.set('canvasWidth', this.canvas['canvasWidth'] / ratio);
     });
   }
  
-  drawComplete(i:number, type = null) {
-    switch(type) {
-      case 'ee': this.signaturesForm.controls[i].get('signature').setValue(this.signaturePadEe.toDataURL()); break;
-      case 'eu': this.signaturesForm.controls[i].get('signature').setValue(this.signaturePadEu.toDataURL()); break;
-      case 'ss': this.signaturesForm.controls[i].get('signature').setValue(this.signaturePadSs.toDataURL()); break;
-      default: this.signaturesForm.controls[i].get('signature').setValue(this.signaturePad.toDataURL()); break;
-    }
-  }
-
-  drawIntervenantComplete(i:number) {
+  drawComplete(i:number) {
     let signaturePadChild = this.signaturePads.filter((element, index) => index === i);
     this.signaturesForm.controls[i].get('signature').setValue(signaturePadChild[0].toDataURL());
   }
