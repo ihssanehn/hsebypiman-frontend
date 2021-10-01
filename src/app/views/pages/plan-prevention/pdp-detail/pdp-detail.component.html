@@ -12,12 +12,15 @@
 			</button>
 			<div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround "
 				 style="min-width: max-content; padding: 5px;">
-				<!-- <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editRemonte(remontee.id)" *ngxPermissionsOnly="['remontee_canUpdate']">
-					<mat-icon>edit</mat-icon>
+				<!--				 <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editRemonte(remontee.id)" *ngxPermissionsOnly="['remontee_canUpdate']">-->
+				<!--					<mat-icon>edit</mat-icon>-->
+				<!--				</button>-->
+				<button mat-icon-button color="info" matTooltip="{{'ACTION.EXPORT_PDF' | translate}}">
+					<mat-icon>picture_as_pdf</mat-icon>
 				</button>
-				<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteRemonte(remontee.id)" *ngxPermissionsOnly="['remontee_canArchieve']">
-					<mat-icon>delete</mat-icon>
-				</button> -->
+				<!--				<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteRemonte(remontee.id)" *ngxPermissionsOnly="['remontee_canArchieve']">-->
+				<!--					<mat-icon>delete</mat-icon>-->
+				<!--				</button> -->
 			</div>
 		</div>
 	</div>
@@ -597,12 +600,19 @@
                         <div class="col-12 flex-fill">
                             <div [ngClass]="pdp.pdp_validations.length > 0 ?'card':'card pb-0'">
                                 <div class="box pb-0 pt-0">
-                                    <button class="pull-right" mat-raised-button color="info" (click)="signPdp(pdp.id)">
+                                    <button mat-raised-button class="pull-right" color="info" (click)="showValidationSignatureForm()" *ngIf="!validationEditMode">
                                         {{'PDP.ACTION.SIGN_PDP' | translate}}
-                                    </button>
-                                </div>
+									</button>
+									<button mat-raised-button class="pull-right" color="warn" (click)="cancelValidationSignature()" *ngIf="validationEditMode">
+										<mat-icon inline="true">stop</mat-icon>
+										{{'ACTION.CANCEL' | translate}}
+									</button>
+								</div>
+
+								<tf-pdp-signature class="pt-3 pb-3" *ngIf="validationEditMode" [pdp]="pdp" [type]="'pdp_validations'"></tf-pdp-signature>
+
                                 <ng-container *ngIf="pdp.pdp_validations.length > 0; else noValidation">
-                                    <table mat-table [dataSource]="pdp.pdp_validations" class="mb-4 mt-4">
+                                    <table mat-table *ngIf="!validationEditMode" [dataSource]="pdp.pdp_validations" class="mb-4 mt-4">
 
                                         <ng-container matColumnDef="company">
                                             <th mat-header-cell *matHeaderCellDef> {{'PDP.COMPANIES' | translate}} </th>
@@ -637,10 +647,10 @@
                                         <ng-container matColumnDef="visa">
                                             <th mat-header-cell *matHeaderCellDef class="text-center"> {{'PDP.VISA_PRECEDED_BY_THE_WORDS_READ_AND_APPROVED' | translate}} </th>
                                             <td mat-cell *matCellDef="let element" class="text-center">
-                                                <!-- <span>{{'PDP.READ_AND_APPROVED' | translate}}</span> -->
                                                 <div class="signature-viewer">
                                                     <img *ngIf="element.signature" [src]="_sanitizer.bypassSecurityTrustResourceUrl(element.signature?.signature)" width="100%">
                                                 </div>
+												<span class="font-italic">{{element.read_and_approved == 1? ('PDP.VISA_PRECEDED_BY_THE_WORDS_READ_AND_APPROVED' | translate):""}}</span>
                                             </td>
                                         </ng-container>
 
@@ -668,9 +678,21 @@
 					</mat-expansion-panel-header>
 					<div class="row d-flex flex-column flex-nowrap flex-fill">
 						<div class="col-12 flex-fill">
-							<ng-container *ngIf="pdp.intervenants.length > 0; else emptyCard">
-								<div class="card">
-									<table mat-table [dataSource]="pdp.intervenants" class="mb-4">
+							<div [ngClass]="pdp.intervenants.length > 0 ?'card':'card pb-0'">
+                                <div class="box pb-0 pt-0">
+                                    <button class="pull-right" mat-raised-button color="info" (click)="showIntervenantSignatureFrom()" *ngIf="!intervenantEditMode">
+                                        {{'PDP.ACTION.SIGN_PDP' | translate}}
+									</button>
+									<button mat-raised-button class="pull-right" color="warn" (click)="cancelIntervenantSignature()" *ngIf="intervenantEditMode">
+										<mat-icon inline="true">stop</mat-icon>
+										{{'ACTION.CANCEL' | translate}}
+									</button>
+								</div>
+
+								<tf-pdp-signature class="pt-3 pb-3" *ngIf="intervenantEditMode" [pdp]="pdp" [type]="'pdp_intervenants'"></tf-pdp-signature>
+
+								<ng-container *ngIf="pdp.intervenants.length > 0; else noIntervenant">
+									<table mat-table *ngIf="!intervenantEditMode" [dataSource]="pdp.intervenants" class="mb-4 mt-4">
 
 										<ng-container matColumnDef="lastname">
 											<th mat-header-cell *matHeaderCellDef> {{'PDP.LAST_NAME' | translate}} </th>
@@ -717,11 +739,28 @@
 											</td>
 										</ng-container>
 
+										<ng-container matColumnDef="visa">
+                                            <th mat-header-cell *matHeaderCellDef class="text-center"> {{'PDP.VISA_PRECEDED_BY_THE_WORDS_READ_AND_APPROVED' | translate}} </th>
+                                            <td mat-cell *matCellDef="let element" class="text-center">
+                                                <div class="signature-viewer">
+                                                    <img *ngIf="element.signature" [src]="_sanitizer.bypassSecurityTrustResourceUrl(element.signature?.signature)" width="100%">
+												</div>
+												<span class="font-italic">{{element.read_and_approved == 1? ('PDP.VISA_PRECEDED_BY_THE_WORDS_READ_AND_APPROVED' | translate):""}}</span>
+                                            </td>
+                                        </ng-container>
+
 										<tr mat-header-row *matHeaderRowDef="intervenantsColumns"></tr>
 										<tr mat-row *matRowDef="let row; columns: intervenantsColumns;"></tr>
 									</table>
-								</div>
-							</ng-container>
+								</ng-container>
+								<ng-template #noIntervenant>
+                                    <div class="box">
+                                        <span class="no-data-label">
+                                            Aucun intervenant
+                                        </span>
+									</div>
+								</ng-template>
+							</div>
 						</div>
 					</div>
 				</mat-expansion-panel>

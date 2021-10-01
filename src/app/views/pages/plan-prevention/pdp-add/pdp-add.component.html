@@ -8,10 +8,40 @@
 			  <span class="id-item">{{'MENU.SUB_PDP.ADD' | translate}}</span>
 			</span>
 		</div>
-		<tf-pdp-add-form class="pl-4 pr-4" (onLastStep)="isLastStep($event)" [formStatus]="formStatus"
+				<ul nz-menu nzMode="horizontal" class="text-center mb-5 mt-3">
+					<li class="font-weight-bold textXl " nz-submenu nzTitle="{{'PDP.PIMAN' | translate}}"  >
+						<ul>
+						  <li nz-menu-group nzTitle="Type">
+							<ul>
+							  <li nz-menu-item (click)="selectPdp('piman-b')">Bureau</li>
+							  <li nz-menu-item nzSelected (click)="selectPdp('piman-t')" >Terrain</li>
+							</ul>
+						  </li>
+
+						</ul>
+					  </li>
+					<li class=" font-weight-bold textXl" nz-menu-item (click)="selectPdp('client')" >
+						{{'PDP.CLIENT' | translate}}
+					</li>
+
+
+
+
+				  </ul>
+
+
+
+
+		<tf-pdp-add-form *ngIf="typePdp == 'piman-t'"  class="pl-4 pr-4" (onLastStep)="isLastStep($event)" [formStatus]="formStatus"
 						 [adding]="adding"
 						 [pdpForm]="pdpForm" [_pdp]="pdp"></tf-pdp-add-form>
-	</tf-portlet>
+
+
+		<div class="container" *ngIf="typePdp=='client'">
+			<h2>Pdp Client</h2>
+		</div>
+		</tf-portlet>
+
 
 	<!--	|| pdpForm.invalid-->
 	<!--	pdpForm.valid &&-->
