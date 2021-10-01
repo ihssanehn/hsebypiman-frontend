@@ -16,6 +16,7 @@
 		"EDIT": "Modifier",
 		"ENTER_HERE": "Saisir ici",
 		"EXPORT": "Exporter la liste",
+		"EXPORT_PDF": "Exporter en PDF",
 		"FOLLOWING": "Suite",
 		"READ": "Consulter",
 		"REDUCE": "Réduire",
@@ -315,21 +316,24 @@
 		"BEFORE_STEP_1_DESC": "Pour rappel : Entreprise utilisatrice (EU) = Client / Entreprise Extérieure (EE) = PIMAN",
 		"EMERGENCY_CONTACTS_AND_NUMBERS_IN_THE_EVENT_OF_AN_ACCIDENT": "Contacts et numéros d'urgence en cas d'accident",
 		"RAISON_SOCIALE_EU": "Nom de l'entreprise",
-		"CSE": "CSE",
+		"CSE_NAME": "Nom du consultant",
 		"CSE_TEL": "Téléphone CSE",
 		"CSE_JOB": "CSE emploi",
 		"RESPONSABLE_HSE": "Responsable HSE",
 		"INTERVENTION_AT": "Intervention à",
 		"LABEL_INTERVENTION": "Libellé d'intervention",
 		"PLACE_INTERVENTION": "Lieu d'intervention",
-		"AVERAGE_WORKFORCE": "Effectif moyen :",
+		"AVERAGE_WORKFORCE": "Effectif moyen:",
+		"VALIDITY_AT": "Validité PDP",
+		"RISK": "Risque",
+		"STATUS": "Statut",
 		"USER_COMPANY": "Entreprise Utilisatrice",
 		"OUTSIDE_COMPANY": "Entreprise Extérieure",
 		"COMPANY_NAME_AND_CONTACT": "Nom et contact de l'entreprise",
 		"RESCUERS_FIRST_AID_WORKER_AT_WORK": "Les sauveteurs secouristes au travail",
 		"QHSE_POLE": "Pôle QHSE",
 		"OCCUPATIONAL_PHYSICIAN": "Médecin du travail",
-		"COMPANY_REPRESENTATIVE": "Représentant de l'entreprise (BM)",
+		"COMPANY_REPRESENTATIVE": "Représentant de l'entreprise",
 		"INTERVENTION_OF_PIMAN_SUBCONTRACTORS": "Intervention de sous-traitants PIMAN",
 		"NAME_OF_SUBCONTRACTOR": "Nom du sous-traitant",
 		"DETAILS_OF_THE_INTERVENTION": "Détails de l'intervention",
@@ -352,7 +356,7 @@
 		"MAIL": "Email",
 		"JOB": "Travail",
 		"NAME": "Nom",
-		"INSTRUCTIONS_GIVEN_BY_THE_EXTERNAL_COMPANY": "Consignes remises par l'entreprise extérieure (Client)",
+		"INSTRUCTIONS_GIVEN_BY_THE_EXTERNAL_COMPANY": "Consignes remises par l'entreprise extérieure",
 		"TYPE_OPERATION": "Type d'opération",
 		"PPE_MADE_AVAILABLE_TO_THE_EXTERNAL_COMPANY": "EPI mis à disposition",
 		"RESOURCES_MADE_AVAILABLE_TO_THE_EXTERNAL_COMPANY": "Ressources mises à disposition de l'entreprise utilisatrice",
@@ -371,7 +375,7 @@
 		"DATE": "Date",
 		"HEAD_OF_ESTABLISHMENT_OR_HIS_DELEGATE": "Chef d’établissement ou son délégataire",
 		"PARTICIPATION_IN_THE_PRIOR_JOINT_INSPECTION": "Participation à l'inspection commune préalable",
-		"VISA_PRECEDED_BY_THE_WORDS_READ_AND_APPROVED": "Visa précédé de la mention « lu et approuvé »",
+		"VISA_PRECEDED_BY_THE_WORDS_READ_AND_APPROVED": "« Lu et approuvé »",
 		"READ_AND_APPROVED": "Lu et approuvé",
 		"INTERVENANTS": "Intervenants",
 		"LAST_NAME": "Nom",
@@ -384,7 +388,7 @@
 		"SUBCONTRACTOR": "Sous-traitant",
 		"ONE_SITUATION_REQUIRED": "Vous devez sélectionner au moins une situation",
 		"ONE_RESP_REQUIRED": "Vous devez sélectionner au moins un responsable",
-		"ENDTIME_MUST_BIGGER_THAN_START_TIME": "L'horaire de fin soit obligatoirement après l'horaire de début ",
+		"ENDTIME_MUST_BIGGER_THAN_START_TIME": "L'horaire de fermeture du site doit obligatoirement être après l'horaire d'ouverture.",
 		"YES": "Oui",
 		"NO": "Non",
 		"OTHER_SITUATION": "Autre situation",
@@ -427,7 +431,19 @@
 			"CONSIGNE_ARCHIVED": {
 				"TITLE": "Consigne (ee) archivé avec succès"
 			},
-			"ERROR_SUBMITTING" : "Oh Snap ! Modifiez quelques éléments et essayez de soumettre à nouveau."
+			"EPI_DISPOSITION_ARCHIVED": {
+				"TITLE": "Epi Disposition (ees) archivé avec succès"
+			},
+			"MOYEN_DISPOSITION_ARCHIVED": {
+				"TITLE": "Moyen Disposition (ees) archivé avec succès"
+			},
+			"CATEGORIE_PDP_RISQUE_ARCHIVED": {
+				"TITLE": "Categorie Pdp Risque archivé avec succès"
+			},
+			"PDP_RISQUE_ARCHIVED": {
+				"TITLE": "Pdp Risque archivé avec succès"
+			},
+			"ERROR_SUBMITTING": "Merci de saisir tous les champs mentionnés par une étoile ou de vérifier le format"
 		},
 		"CARD": {
 			"TRAVAUX": {
@@ -439,11 +455,35 @@
 				"NO_CONSIGNE": "Pas de consigne (ee) à fournir",
 				"SHORTTITLE": "Consignes (ee)",
 				"TITLE": "Consignes (ee) à fournir sur place"
+			},
+			"EPI_DISPOSITION_EES": {
+				"NO_DISPOSITION": "Pas de disposition (ees) à fournir",
+				"SHORTTITLE": "Epi Dispositions (ees)",
+				"TITLE": "Epi Dispositions (ees) à fournir sur place"
+			},
+			"MOYEN_DISPOSITION_EES": {
+				"NO_DISPOSITION": "Pas de disposition (ees) à fournir",
+				"SHORTTITLE": "Moyen Dispositions (ees)",
+				"TITLE": "Moyen Dispositions (ees) à fournir sur place"
+			},
+			"CATEGORIE_PDP_RISQUE": {
+				"NO_CATEGORIE": "Pas de categorie à fournir",
+				"SHORTTITLE": "Categories Pdp Risque",
+				"TITLE": "Categories Pdp Risque à fournir sur place"
+			},
+			"PDP_RISK": {
+				"NO_RISK": "Pas de risque à fournir",
+				"SHORTTITLE": "Risques",
+				"TITLE": "Pdp Risques à fournir sur place"
 			}
 		},
 		"ACTION": {
 			"ADD_TRAVAUX": "Ajouter un travail dangereux",
 			"ADD_CONSIGNE": "Ajouter consigne (ee)",
+			"ADD_EPI_DISPOSITION": "Ajouter epi disposition (ees)",
+			"ADD_MOYEN_DISPOSITION": "Ajouter moyen disposition (ees)",
+			"ADD_CATEGORIE_PDP_RISQUE": "Ajouter Categorie Pdp Risque",
+			"ADD_PDP_RISQUE": "Ajouter Pdp Risque",
 			"SIGN_PDP": "Signer le plan de prévention"
 		}
 	},
@@ -829,7 +869,7 @@
 			}
 		},
 		"NO_DATA_FOUND": {
-			"TITLE": "Non renseigné"
+			"TITLE": "-"
 		},
 		"NUMBER_OF": {
 			"SHORTTITLE": "Nbr de",

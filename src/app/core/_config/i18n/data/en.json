@@ -16,6 +16,7 @@
 		"EDIT": "Edit",
 		"ENTER_HERE": "Enter here",
 		"EXPORT": "Export list",
+		"EXPORT_PDF": "Export in PDF",
 		"FOLLOWING": "Follow",
 		"READ": "Consult",
 		"REDUCE": "Reduce",
@@ -315,7 +316,7 @@
 		"BEFORE_STEP_1_DESC": "As a reminder: User company (EU) = Client / External company (EE) = PIMAN",
 		"EMERGENCY_CONTACTS_AND_NUMBERS_IN_THE_EVENT_OF_AN_ACCIDENT": "Emergency contacts and numbers in the event of an accident",
 		"RAISON_SOCIALE_EU": "Corporate name",
-		"CSE": "CSE",
+		"CSE_NAME": "Nom du consultant",
 		"CSE_TEL": "CSE phone",
 		"CSE_JOB": "CSE job",
 		"RESPONSABLE_HSE": "HSE Responsible",
@@ -323,13 +324,16 @@
 		"LABEL_INTERVENTION": "Intervention label",
 		"PLACE_INTERVENTION": "Intervention place",
 		"AVERAGE_WORKFORCE": "Average workforce:",
+		"VALIDITY_AT": "PDP validity",
+		"RISK": "Risk",
+		"STATUS": "Status",
 		"USER_COMPANY": "User Company",
 		"OUTSIDE_COMPANY": "Outside company",
 		"COMPANY_NAME_AND_CONTACT": "Company name and contact",
 		"RESCUERS_FIRST_AID_WORKER_AT_WORK": "Rescuers First aid worker at work",
 		"QHSE_POLE": "QHSE pole",
 		"OCCUPATIONAL_PHYSICIAN": "Occupational physician",
-		"COMPANY_REPRESENTATIVE": "Company representative (BM)",
+		"COMPANY_REPRESENTATIVE": "Company representative",
 		"INTERVENTION_OF_PIMAN_SUBCONTRACTORS": "Intervention of PIMAN subcontractors",
 		"NAME_OF_SUBCONTRACTOR": "Name of Subcontractor",
 		"DETAILS_OF_THE_INTERVENTION": "Details of the intervention",
@@ -371,7 +375,7 @@
 		"DATE": "Date",
 		"HEAD_OF_ESTABLISHMENT_OR_HIS_DELEGATE": "Head of establishment or his delegate",
 		"PARTICIPATION_IN_THE_PRIOR_JOINT_INSPECTION": "Participation in the prior joint inspection",
-		"VISA_PRECEDED_BY_THE_WORDS_READ_AND_APPROVED": "Visa preceded by the words \"read and approved\"",
+		"VISA_PRECEDED_BY_THE_WORDS_READ_AND_APPROVED": "\"Read and approved\"",
 		"READ_AND_APPROVED": "Read and approved",
 		"INTERVENANTS": "Intervenants",
 		"LAST_NAME": "Last name",
@@ -425,8 +429,19 @@
 			"CONSIGNE_ARCHIVED": {
 				"TITLE": "Instruction (ee) archived successfully"
 			},
-			"ERROR_SUBMITTING" : "Oh snap! Change a few things up and try submitting again."
-
+			"EPI_DISPOSITION_ARCHIVED": {
+				"TITLE": "Epi Disposition (ees) archived successfully"
+			},
+			"MOYEN_DISPOSITION_ARCHIVED": {
+				"TITLE": "Medium Disposition (ees) archived successfully"
+			},
+			"CATEGORIE_PDP_RISQUE_ARCHIVED": {
+				"TITLE": "Pdp Risk Category archived successfully"
+			},
+			"PDP_RISQUE_ARCHIVED": {
+				"TITLE": "Pdp Risk archived successfully"
+			},
+			"ERROR_SUBMITTING": "Please enter all fields marked with a star or check the format"
 		},
 		"CARD": {
 			"TRAVAUX": {
@@ -438,11 +453,35 @@
 				"NO_CONSIGNE": "No instructions (ee) to provide",
 				"SHORTTITLE": "instructions (ee)",
 				"TITLE": "instructions (ee) to be provided on site"
+			},
+			"EPI_DISPOSITION_EES": {
+				"NO_DISPOSITION": "No disposition (ees) to provide",
+				"SHORTTITLE": "Epi Dispositions (ees)",
+				"TITLE": "Epi Dispositions (ees) to be provided on site"
+			},
+			"MOYEN_DISPOSITION_EES": {
+				"NO_DISPOSITION": "No disposition (ees) to provide",
+				"SHORTTITLE": "Medium Dispositions (ees)",
+				"TITLE": "Medium Dispositions (ees) to be provided on site"
+			},
+			"CATEGORIE_PDP_RISQUE": {
+				"NO_CATEGORIE": "No category to provide",
+				"SHORTTITLE": "Pdp Risk Categories",
+				"TITLE": "Pdp Risk Categories to be provided on site"
+			},
+			"PDP_RISK": {
+				"NO_RISK": "No risk to provide",
+				"SHORTTITLE": "Risks",
+				"TITLE": "Pdp Risks to be provided on site"
 			}
 		},
 		"ACTION": {
 			"ADD_TRAVAUX": "Add hazardous work",
 			"ADD_CONSIGNE": "Add instruction (ee)",
+			"ADD_EPI_DISPOSITION": "Add epi disposition (ees)",
+			"ADD_MOYEN_DISPOSITION": "Add medium disposition (ees)",
+			"ADD_CATEGORIE_PDP_RISQUE": "Add Pdp Risk Category",
+			"ADD_PDP_RISQUE": "Add Pdp Risk",
 			"SIGN_PDP": "Sign the prevention plan"
 		}
 	},
@@ -828,7 +867,7 @@
 			}
 		},
 		"NO_DATA_FOUND": {
-			"TITLE": "Not specified"
+			"TITLE": "-"
 		},
 		"NUMBER_OF": {
 			"SHORTTITLE": "No. of",

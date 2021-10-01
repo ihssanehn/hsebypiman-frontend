@@ -28,7 +28,7 @@ export class PdpListComponent implements OnInit {
 		keyword: '',
 	};
 	showFilters = false;
-	displayedArColumns = ['raison_sociale_eu', 'cse', 'cse_eu_tel', 'created_at', 'effectif_moyen', 'label_intervention', 'lieu_intervention', 'pdp_intervention_at', 'action'];
+	displayedArColumns = ['raison_sociale_eu', 'cse', 'created_at', 'validity_at', 'lieu_intervention', 'risque', 'status','action'];
 
 	pdp_id: number;
 

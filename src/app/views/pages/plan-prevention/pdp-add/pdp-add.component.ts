@@ -68,7 +68,7 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 		this.pdpForm = this.pdpFB.group({
 			raison_sociale_eu: [null, Validators.required],
 			raison_sociale_tel_eu: [null, Validators.required],
-			sauveteurs_secouriste_travail: [null],
+			sauveteurs_secouriste_travail: [null,Validators.required],
 			pole_qhse: [null],
 			medecin_travail_eu_name: [null],
 			medecin_travail_eu_tel: [null],
@@ -168,6 +168,7 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 	}
 
 	async onSubmit() {
+		console.log(this.pdpForm);
 		try {
 			this.pdpForm.markAllAsTouched();
 			if (this.pdpForm.valid

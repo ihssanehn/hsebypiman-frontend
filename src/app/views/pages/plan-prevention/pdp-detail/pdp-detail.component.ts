@@ -22,10 +22,12 @@ export class PdpDetailComponent implements OnInit {
   pdpMoyenDispositionEeColumns: string[] = ['moyen_disposition', 'answer', 'comment'];
   pdpTravauxDangereuxColumns: string[] = ['pdp_travaux_dangereux', 'answer'];
   pdpValidationsColumns: string[] = ['company', 'fullname', 'date', 'participation', 'visa'];
-  intervenantsColumns: string[] = ['lastname', 'firstname', 'phone', 'training_auth', 'medical_follow_up'];
+  intervenantsColumns: string[] = ['lastname', 'firstname', 'phone', 'training_auth', 'medical_follow_up', 'visa'];
 
   isExpanded : boolean = true;
   isDisableToggle : boolean = false;
+  validationEditMode : boolean = false;
+  intervenantEditMode : boolean = false;
 
 
   constructor(
@@ -72,9 +74,20 @@ export class PdpDetailComponent implements OnInit {
     item.pdp_intervention_at = moment(item.pdp_intervention_at, 'DD-MM-YYYY').format('YYYY-MM-DD');
   }
 
-  signPdp(pdpId){
-		this.router.navigate(['/plan-de-prevention/sign', pdpId], { relativeTo: this.activatedRoute });
+  showValidationSignatureForm(){
+    this.validationEditMode = true;
   }
 
+  cancelValidationSignature(){
+    this.validationEditMode = false;
+  }
+
+  showIntervenantSignatureFrom(){
+    this.intervenantEditMode = true;
+  }
+
+  cancelIntervenantSignature(){
+    this.intervenantEditMode = false;
+  }
 }
 

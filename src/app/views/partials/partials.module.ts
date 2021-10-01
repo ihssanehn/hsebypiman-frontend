@@ -164,6 +164,10 @@ import { ShowFlashInfoModalComponent } from './layout/flash-infos/show-flash-inf
 import { AddDocModalComponent } from './layout/modal/add-doc-modal/add-doc-modal.component';
 import { PdpTravauxDangereuxComponent } from './layout/admins/pdp-travaux-dangereux/pdp-travaux-dangereux.component';
 import { PdpConsigneEeComponent } from './layout/admins/pdp-consigne-ee/pdp-consigne-ee.component';
+import { PdpEpiDispositionComponent } from './layout/admins/pdp-epi-disposition/pdp-epi-disposition.component';
+import { PdpMoyenDispositionComponent } from './layout/admins/pdp-moyen-disposition/pdp-moyen-disposition.component';
+import { PdpCatRisquesComponent } from './layout/admins/pdp-cat-risques/pdp-cat-risques.component';
+import { PdpRisquesComponent } from './layout/admins/pdp-risques/pdp-risques.component';
 
 @NgModule({
 	declarations: [
@@ -270,6 +274,10 @@ import { PdpConsigneEeComponent } from './layout/admins/pdp-consigne-ee/pdp-cons
 		DashEntrepriseComponent,
 		PdpTravauxDangereuxComponent,
 		PdpConsigneEeComponent,
+		PdpEpiDispositionComponent,
+		PdpMoyenDispositionComponent,
+		PdpCatRisquesComponent,
+		PdpRisquesComponent,
 
 	],
 	exports: [
@@ -376,7 +384,11 @@ import { PdpConsigneEeComponent } from './layout/admins/pdp-consigne-ee/pdp-cons
 		DashMaterielComponent,
 		DashEntrepriseComponent,
 		PdpTravauxDangereuxComponent,
-		PdpConsigneEeComponent
+		PdpConsigneEeComponent,
+		PdpEpiDispositionComponent,
+		PdpMoyenDispositionComponent,
+		PdpCatRisquesComponent,
+		PdpRisquesComponent
 
 	],
 	imports: [
