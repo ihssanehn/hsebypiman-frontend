@@ -22,7 +22,7 @@ export class PdpDetailComponent implements OnInit {
   pdpMoyenDispositionEeColumns: string[] = ['moyen_disposition', 'answer', 'comment'];
   pdpTravauxDangereuxColumns: string[] = ['pdp_travaux_dangereux', 'answer'];
   pdpValidationsColumns: string[] = ['company', 'fullname', 'date', 'participation', 'visa'];
-  intervenantsColumns: string[] = ['lastname', 'firstname', 'phone', 'training_auth', 'medical_follow_up'];
+  intervenantsColumns: string[] = ['lastname', 'firstname', 'phone', 'training_auth', 'medical_follow_up', 'visa'];
 
   isExpanded : boolean = true;
   isDisableToggle : boolean = false;
@@ -78,5 +78,8 @@ export class PdpDetailComponent implements OnInit {
     this.validationEditMode = !this.validationEditMode;
   }
 
+  showIntervenantSignatureFrom(){
+    this.intervenantEditMode = !this.intervenantEditMode;
+  }
 }
 

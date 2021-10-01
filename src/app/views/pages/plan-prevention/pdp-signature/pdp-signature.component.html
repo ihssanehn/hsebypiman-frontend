@@ -1,8 +1,8 @@
 <div>
-    <form [formGroup]="signaturesForm" class="tf-form tf-form--group-seperator-dashed">
+    <form *ngIf="type == 'pdp_validations'" [formGroup]="signaturesForm" class="tf-form tf-form--group-seperator-dashed">
         <div>
             <div *ngxPermissionsOnly="['ADMIN', 'ROOT']">
-                <p class="font-weight-bold text-right add-signature-line-btn"><a (click)="addValidationSignatures()">+ {{'ACTION.ADD_SIGNER' | translate}}</a></p>
+                <p class="font-weight-bold text-right add-signature-line-btn"><a (click)="addSignatures()">+ {{'ACTION.ADD_SIGNER' | translate}}</a></p>
             </div>
             <div class="row form-row signature-line" *ngFor="let signature of signaturesForm.controls; let i=index" [formGroupName]="i">
 				<div class="col-xl-12">
@@ -83,6 +83,43 @@
                     </ng-container>
                 </div>
 
+            </div>
+        </div>
+    </form>
+
+    <form *ngIf="type == 'pdp_intervenants'" [formGroup]="signaturesForm" class="tf-form tf-form--group-seperator-dashed">
+        <div>
+            <div *ngxPermissionsOnly="['ADMIN', 'ROOT']">
+                <p class="font-weight-bold text-right add-signature-line-btn"><a (click)="addSignatures()">+ {{'ACTION.ADD_SIGNER' | translate}}</a></p>
+            </div>
+            <div class="row form-row signature-line" *ngFor="let signature of signaturesForm.controls; let i=index" [formGroupName]="i">
+
+                <mat-form-field class="col-xl-2 ">
+                    <mat-label>{{'PDP.LAST_NAME' | translate}} </mat-label>
+                    <input class="form-control" matInput type="text" name="last_name" formControlName="last_name" placeholder="{{'ACTION.ENTER_HERE' | translate}}" />
+                </mat-form-field>
+
+                <mat-form-field class="col-xl-2 ">
+                    <mat-label>{{'PDP.FIRST_NAME' | translate}} </mat-label>
+                    <input class="form-control" matInput type="text" name="first_name" formControlName="first_name" placeholder="{{'ACTION.ENTER_HERE' | translate}}" />
+                </mat-form-field>
+                                
+                <mat-form-field class="col-xl-2 ">
+                    <mat-label>{{'PDP.DATE' | translate}} </mat-label>
+                    <input class="form-control" matInput type="date" name="date" formControlName="date" placeholder="DD/MM/YYYY" />
+                </mat-form-field>
+
+                <div class="col-xl-4 form-row-flex">
+                    <label>{{'PDP.VISA_PRECEDED_BY_THE_WORDS_READ_AND_APPROVED' | translate}} </label>
+                    <button mat-icon-button color="accent" matTooltip="{{'ACTION.CLEAR' | translate}}" (click)="clearIntervenantSignature(i)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+
+                    <div class="signature-container">
+                        <signature-pad #signaturePad id="signaturePad" (window:resize)="resizeIntervenantSignaturePad()" [options]="signaturePadOptions" (onEndEvent)="drawIntervenantComplete(i)"></signature-pad>
+                    </div>
+                </div>
+                
             </div>
         </div>
     </form>
