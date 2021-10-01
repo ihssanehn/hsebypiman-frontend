@@ -74,7 +74,7 @@ export class PdpDetailComponent implements OnInit {
     item.pdp_intervention_at = moment(item.pdp_intervention_at, 'DD-MM-YYYY').format('YYYY-MM-DD');
   }
 
-  showValidationSignatureFrom(){
+  showValidationSignatureForm(){
     this.validationEditMode = !this.validationEditMode;
   }
 

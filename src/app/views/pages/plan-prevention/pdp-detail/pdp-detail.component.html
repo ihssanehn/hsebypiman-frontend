@@ -597,7 +597,7 @@
                         <div class="col-12 flex-fill">
                             <div [ngClass]="pdp.pdp_validations.length > 0 ?'card':'card pb-0'">
                                 <div class="box pb-0 pt-0">
-                                    <button class="pull-right" mat-raised-button color="info" (click)="showValidationSignatureFrom()">
+                                    <button class="pull-right" mat-raised-button color="info" (click)="showValidationSignatureForm()">
                                         {{'PDP.ACTION.SIGN_PDP' | translate}}
                                     </button>
 								</div>
@@ -640,10 +640,10 @@
                                         <ng-container matColumnDef="visa">
                                             <th mat-header-cell *matHeaderCellDef class="text-center"> {{'PDP.VISA_PRECEDED_BY_THE_WORDS_READ_AND_APPROVED' | translate}} </th>
                                             <td mat-cell *matCellDef="let element" class="text-center">
-                                                <!-- <span>{{'PDP.READ_AND_APPROVED' | translate}}</span> -->
                                                 <div class="signature-viewer">
                                                     <img *ngIf="element.signature" [src]="_sanitizer.bypassSecurityTrustResourceUrl(element.signature?.signature)" width="100%">
                                                 </div>
+												<span class="font-italic">{{element.read_and_approved == 1? ('PDP.VISA_PRECEDED_BY_THE_WORDS_READ_AND_APPROVED' | translate):""}}</span>
                                             </td>
                                         </ng-container>
 
