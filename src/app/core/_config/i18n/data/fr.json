@@ -863,7 +863,7 @@
 			}
 		},
 		"NO_DATA_FOUND": {
-			"TITLE": "Non renseigné"
+			"TITLE": "-"
 		},
 		"NUMBER_OF": {
 			"SHORTTITLE": "Nbr de",
