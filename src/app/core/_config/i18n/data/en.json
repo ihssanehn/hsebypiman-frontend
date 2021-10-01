@@ -391,6 +391,8 @@
 		"ENDTIME_MUST_BIGGER_THAN_START_TIME": "The end time must be later than the start time",
 		"OTHER_SITUATION": "Other situation",
 		"OTHER_METHOD": "Other method",
+		"OFFICE": "Office prevention plan",
+		"FIELD":"Field prevention plan",
 		"PIMAN":"Piman prevention plan ",
 		"FIELD_DESC":"Prevention plan : FIELD",
 		"CLIENT":"Client prevention plan ",

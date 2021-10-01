@@ -393,6 +393,8 @@
 		"NO": "Non",
 		"OTHER_SITUATION": "Autre situation",
 		"OTHER_METHOD": "Autre méthode",
+		"OFFICE": "Plan de prévention bureau",
+		"FIELD":"Plan de prévention terrain",
 		"PIMAN":"Plan de prévention Piman",
 		"FIELD_DESC":"Plan de prévention : Terrain",
 		"CLIENT":"Plan de prévention Client",
