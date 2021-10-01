@@ -70,15 +70,15 @@ export class PdpSignatureComponent implements OnInit {
 
   ngAfterViewInit() {
     if(this.signaturePads){
-      this.signaturePads.forEach((child) => { 
-        child.set('minWidth', 0.5); 
-        child.clear(); 
+      this.signaturePads.forEach((child) => {
+        child.set('minWidth', 0.5);
+        child.clear();
       });
     }
   }
 
   parseValidations(validations) {
-    if(validations.length) {
+    if(validations.filter(element => !element.signature).length) {
       this.initValidationForm(validations);
     } else {
       this.createValidationForm();
@@ -86,7 +86,7 @@ export class PdpSignatureComponent implements OnInit {
   }
 
   parseIntervenants(intervenants) {
-    if(intervenants.length) {
+    if(intervenants.filter(element => !element.signature).length) {
       this.initIntervenantForm(intervenants);
     } else {
       this.createIntervenantForm();
@@ -130,7 +130,7 @@ export class PdpSignatureComponent implements OnInit {
           intervenant_id:[element.id],
 		      read_and_approved:[false,Validators.requiredTrue]
         });
-  
+
         this.signaturesForm.insert(index, newForm);
     });
   }
@@ -201,10 +201,10 @@ export class PdpSignatureComponent implements OnInit {
 
   addSignatures() {
     switch(this.type) {
-      case 'pdp_validations': 
+      case 'pdp_validations':
           this.signaturesForm.insert(0, this.newValidationSignature());
           break;
-      case 'pdp_intervenants': 
+      case 'pdp_intervenants':
           this.signaturesForm.insert(0, this.newIntervenantSignature());
           break;
     }
@@ -222,11 +222,11 @@ export class PdpSignatureComponent implements OnInit {
 
   resizeSignaturePad() {
     var ratio = Math.max(window.devicePixelRatio || 1, 1);
-    this.signaturePads.forEach((child) => { 
+    this.signaturePads.forEach((child) => {
       child.set('canvasWidth', this.canvas['canvasWidth'] / ratio);
     });
   }
- 
+
   drawComplete(i:number) {
     let signaturePadChild = this.signaturePads.filter((element, index) => index === i);
     this.signaturesForm.controls[i].get('signature').setValue(signaturePadChild[0].toDataURL());
@@ -240,10 +240,10 @@ export class PdpSignatureComponent implements OnInit {
     try {
 
       switch(this.type) {
-        case 'pdp_validations': 
+        case 'pdp_validations':
             this.createValidationSignature();
             break;
-        case 'pdp_intervenants': 
+        case 'pdp_intervenants':
             this.createIntervenantSignature();
             break;
       }
@@ -268,7 +268,7 @@ export class PdpSignatureComponent implements OnInit {
       .then((signature) => {
         this.cdr.markForCheck();
         this.formloading = false;
-        
+
         Swal.fire({
           icon: 'success',
           title: 'Votre signature a bien été prise en compte',
@@ -279,7 +279,7 @@ export class PdpSignatureComponent implements OnInit {
           this.sendSignEvent();
         });
       })
-      .catch(err =>{ 
+      .catch(err =>{
         this.formloading = false;
         Swal.fire({
           icon: 'error',
@@ -295,7 +295,7 @@ export class PdpSignatureComponent implements OnInit {
         }
 
       });
-      
+
     this.cdr.markForCheck();
   }
 
@@ -309,7 +309,7 @@ export class PdpSignatureComponent implements OnInit {
       .then(() => {
         this.cdr.markForCheck();
         this.formloading = false;
-        
+
         Swal.fire({
           icon: 'success',
           title: 'Votre signature a bien été prise en compte',
@@ -320,7 +320,7 @@ export class PdpSignatureComponent implements OnInit {
           this.sendSignEvent();
         });
       })
-      .catch(err =>{ 
+      .catch(err =>{
         this.formloading = false;
         Swal.fire({
           icon: 'error',
@@ -336,7 +336,7 @@ export class PdpSignatureComponent implements OnInit {
         }
 
       });
-      
+
     this.cdr.markForCheck();
   }
 
