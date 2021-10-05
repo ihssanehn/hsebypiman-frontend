@@ -1,6 +1,6 @@
 <form [formGroup]="pdpForm" class="tf-form tf-form--group-seperator-dashed">
 
-	<tf-portlet class="main-portlet-form mr-4" id="portlet-ar">
+	<tf-portlet class="mr-4 main-portlet-form" id="portlet-ar">
 		<div class="tf-portlet-header ">
 			<span class="title">
 			  <a [routerLink]="['/plan-de-prevention/list']">{{'MENU.SUB_PDP.LIST' | translate}}</a>
@@ -8,13 +8,13 @@
 			  <span class="id-item">{{'MENU.SUB_PDP.ADD' | translate}}</span>
 			</span>
 		</div>
-				<ul nz-menu nzMode="horizontal" class="text-center mb-5 mt-3">
+				<ul nz-menu nzMode="horizontal" class="mt-3 mb-5 text-center">
 					<li class="font-weight-bold textXl " nz-submenu nzTitle="{{'PDP.PIMAN' | translate}}"  >
 						<ul>
 						  <li nz-menu-group nzTitle="Type">
 							<ul>
-							  <li nz-menu-item nzSelected (click)="selectPdp('PDP_PIMAN_BUREAU')">Bureau</li>
-							  <li nz-menu-item  (click)="selectPdp('PDP_PIMAN_TERRAIN')" >Terrain</li>
+							  <li class="font-weight-bold" nz-menu-item  (click)="selectPdp('PDP_PIMAN_BUREAU')">Bureau</li>
+							  <li class="font-weight-bold" nz-menu-item nzSelected (click)="selectPdp('PDP_PIMAN_TERRAIN')" >Terrain</li>
 							</ul>
 						  </li>
 
@@ -23,14 +23,7 @@
 					<li class=" font-weight-bold textXl" nz-menu-item (click)="selectPdp('PDP_CLIENT')" >
 						{{'PDP.CLIENT' | translate}}
 					</li>
-
-
-
-
 				  </ul>
-
-
-
 		<!-- PDP_PIMAN_TERRAIN -->
 		<tf-pdp-add-form *ngIf="typePdp == 'PDP_PIMAN_TERRAIN'"  class="pl-4 pr-4" (onLastStep)="isLastStep($event)" [formStatus]="formStatus"
 						 [adding]="adding"
@@ -52,7 +45,7 @@
 	<!--	pdpForm.valid &&-->
 	<button mat-raised-button *ngIf="enableBtn"
 			[ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': formloading}"
-			[disabled]="formloading" class="btn float-right btn-save mr-4" (click)="onSubmit()">
+			[disabled]="formloading" class="float-right mr-4 btn btn-save" (click)="onSubmit()">
 		{{'ACTION.SAVE' | translate}}
 	</button>
 
