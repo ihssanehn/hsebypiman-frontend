@@ -40,6 +40,8 @@ export class PdpAddFormComponent implements OnInit {
 		}
 	}
 
+	@Input() pdpType?: string;
+
 	public _pdp: Pdp;
 
 	@Input('_pdp')
@@ -64,7 +66,8 @@ export class PdpAddFormComponent implements OnInit {
 	public validations = new BehaviorSubject<AbstractControl[]>([]);
 	public intervenants = new BehaviorSubject<AbstractControl[]>([]);
 	public suivisMedicalIntervenants: Array<any> = [{}];
-	public risques: Array<RisqueModel>;
+	private risques: Array<RisqueModel>;
+;
 	public frequences: Array<PDPFrequences>;
 	displayedColumnsConsignes: string[] = ['consignes', 'answers', 'comments'];
 	displayedColumnsEPIDisposition: string[] = ['label', 'answers', 'list', 'type', 'comment'];
@@ -72,6 +75,7 @@ export class PdpAddFormComponent implements OnInit {
 	displayedColumnsTravaux: string[] = ['list', 'answers'];
 	displayedColumnsValidationPlan: string[] = ['company', 'name', 'date', 'participation', 'visa', 'actions'];
 	displayedColumnsIntervenants: string[] = ['last', 'first', 'contact', 'formations', 'suivis_médical', 'actions'];
+
 
 
 	dataSource = new BehaviorSubject<AbstractControl[]>([]);
@@ -99,7 +103,14 @@ export class PdpAddFormComponent implements OnInit {
 		this.EPIDispositionList = res.result.data ? res.result.data.epi_disposition : [];
 		this.EESMoyenDisposition = res.result.data ? res.result.data.moyen_disposition_ees : [];
 		this.traveauxDangereux = res.result.data ? res.result.data.travaux_dangereux : [];
-		this.risques = res.result.data ? res.result.data.risques : [];
+		if(this.pdpType == "PDP_PIMAN_BUREAU"){
+			this.risques = res.result.data ? res.result.data.risquesByType[0].PDP_PIMAN_BUREAU : [];
+		}else if(this.pdpType == "PDP_PIMAN_TERRAIN"){
+			this.risques = res.result.data ? res.result.data.risquesByType[1].PDP_PIMAN_TERRAIN : [];
+		}
+
+		console.log(this.risques);
+
 		this.suivisMedicalIntervenants = res.result.data ? res.result.data.intervenant : [];
 		this.frequences = res.result.data ? res.result.data.frequence : [];
 		if (this.EPIDispositionList.length > 0) {
@@ -127,7 +138,13 @@ export class PdpAddFormComponent implements OnInit {
 			this.patchFormArray(this.traveauxDangereux, 'travaux_dangereux');
 		}
 		if (this.risques.length > 0) {
+
 			const formArray = this.pdpForm.get('cat_pdp_risques') as FormArray;
+			//Rest array in case of switching type of Pdp
+			while (formArray.length !== 0) {
+				formArray.removeAt(0)
+			  }
+
 			for (let i = 0; i < this.risques.length; i++) {
 				const group = new FormGroup({
 					id: new FormControl(this.risques[i].id),
@@ -187,9 +204,13 @@ export class PdpAddFormComponent implements OnInit {
 							})) : [])
 					}));
 				});
+
 				formArray.push(group);
 			}
 		}
+
+
+
 		// console.log('here 1 ', this._pdp);
 		// if (this._pdp) {
 		// 	this.formPathValues(this._pdp);
@@ -197,8 +218,15 @@ export class PdpAddFormComponent implements OnInit {
 		this.cdr.markForCheck();
 	}
 
+
+
+
 	patchFormArray(array, formArrayName, listAddedControls: Array<any> = [], commentDisabled = true) {
 		const FormArray = this.pdpForm.get(formArrayName) as FormArray;
+		//Reset array in case of switching type of Pdp
+		while (FormArray.length !== 0) {
+			FormArray.removeAt(0)
+		  }
 		for (let i = 0; i < array.length; i++) {
 			const group = new FormGroup({
 				id: new FormControl(array[i].id),

@@ -3,13 +3,14 @@ import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angul
 import Swal, {SweetAlertIcon} from 'sweetalert2';
 import {FormStatus} from '@app/core/_base/crud/models/form-status';
 import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
-import {ArService, PdpService} from '@app/core/services';
+import {ArService, PdpService, TypeService} from '@app/core/services';
 import {TranslateService} from '@ngx-translate/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {tap} from 'rxjs/operators';
 import {Ar, Pdp, RisqueModel} from '@app/core/models';
 import {Subscription} from 'rxjs';
 import {RisqueMoyenModel} from "@app/core/models/consigne.model";
+import { Type } from '@app/core/models';
 import moment from "moment";
 
 @Component({
@@ -25,7 +26,8 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 	pdp: Pdp = null;
 	adding = true;
 	formStatus = new FormStatus();
-	typePdp :string = 'piman-t';
+	pdpTypes : Type[];
+	typePdp :string = 'PDP_PIMAN_TERRAIN';
 	private subscriptions: Subscription[] = [];
 
 	constructor(
@@ -35,11 +37,15 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 		private translate: TranslateService,
 		private activatedRoute: ActivatedRoute,
 		private pdpService: PdpService,
+		private typeService: TypeService,
 	) {
 	}
 
 	ngOnInit() {
 		this.createForm();
+		this.getTypes();
+
+
 		const routeSubscription = this.activatedRoute.params
 			.subscribe(
 				async params => {
@@ -61,6 +67,12 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 				}
 			);
 		this.subscriptions.push(routeSubscription);
+	}
+
+	async getTypes(){
+		var res = await this.typeService.getAllFromModel('PreventionPlan').toPromise();
+		this.pdpTypes = res.result.data;
+		this.cdr.markForCheck();
 	}
 
 
@@ -160,15 +172,19 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 				})
 			]),
 			sous_traitant: new FormArray([]),
+			type_id: this.typePdp,
 		});
 	}
+
 
 	checkIfDateLastIsBigger() {
 		return moment(this.pdpForm.get('horaires_fermeture_site').value, 'hh:mm').isAfter(moment(this.pdpForm.get('horaires_ouverture_site').value, 'hh:mm'));
 	}
 
 	async onSubmit() {
-		console.log(this.pdpForm);
+		this.pdpForm.patchValue({
+			type_id: this.pdpTypes.find(type => type.code == this.typePdp).id
+		})
 		try {
 			this.pdpForm.markAllAsTouched();
 			if (this.pdpForm.valid
@@ -187,6 +203,7 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 				}
 				if (form && this.pdp) {
 					form.id = this.pdp.id;
+
 				}
 				this.save(form);
 			}

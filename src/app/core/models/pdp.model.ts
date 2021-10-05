@@ -48,4 +48,5 @@ export class Pdp {
 	pdp_answer_risques?: Array<any>;
 	pdp_validations?: Array<any>;
 	intervenants?: Array<any>;
+	type_id?:number;
 }

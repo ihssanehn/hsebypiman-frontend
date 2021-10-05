@@ -13,14 +13,14 @@
 						<ul>
 						  <li nz-menu-group nzTitle="Type">
 							<ul>
-							  <li nz-menu-item (click)="selectPdp('piman-b')">Bureau</li>
-							  <li nz-menu-item nzSelected (click)="selectPdp('piman-t')" >Terrain</li>
+							  <li nz-menu-item nzSelected (click)="selectPdp('PDP_PIMAN_BUREAU')">Bureau</li>
+							  <li nz-menu-item  (click)="selectPdp('PDP_PIMAN_TERRAIN')" >Terrain</li>
 							</ul>
 						  </li>
 
 						</ul>
 					  </li>
-					<li class=" font-weight-bold textXl" nz-menu-item (click)="selectPdp('client')" >
+					<li class=" font-weight-bold textXl" nz-menu-item (click)="selectPdp('PDP_CLIENT')" >
 						{{'PDP.CLIENT' | translate}}
 					</li>
 
@@ -31,13 +31,18 @@
 
 
 
-
-		<tf-pdp-add-form *ngIf="typePdp == 'piman-t'"  class="pl-4 pr-4" (onLastStep)="isLastStep($event)" [formStatus]="formStatus"
+		<!-- PDP_PIMAN_TERRAIN -->
+		<tf-pdp-add-form *ngIf="typePdp == 'PDP_PIMAN_TERRAIN'"  class="pl-4 pr-4" (onLastStep)="isLastStep($event)" [formStatus]="formStatus"
 						 [adding]="adding"
-						 [pdpForm]="pdpForm" [_pdp]="pdp"></tf-pdp-add-form>
+						 [pdpForm]="pdpForm" [_pdp]="pdp" [pdpType]="'PDP_PIMAN_TERRAIN'"></tf-pdp-add-form>
 
 
-		<div class="container" *ngIf="typePdp=='client'">
+		<!-- PDP_PIMAN_BUREAU -->
+		<tf-pdp-add-form *ngIf="typePdp == 'PDP_PIMAN_BUREAU'"  class="pl-4 pr-4" (onLastStep)="isLastStep($event)" [formStatus]="formStatus"
+						 [adding]="adding"
+						 [pdpForm]="pdpForm" [_pdp]="pdp" [pdpType]="'PDP_PIMAN_BUREAU'"></tf-pdp-add-form>
+		<!-- PDP_CLIENT -->
+		<div class="container" *ngIf="typePdp=='PDP_CLIENT'">
 			<h2>Pdp Client</h2>
 		</div>
 		</tf-portlet>
