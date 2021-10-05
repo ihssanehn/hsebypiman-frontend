@@ -397,6 +397,7 @@
 		"FIELD":"Plan de prévention terrain",
 		"PIMAN":"Plan de prévention Piman",
 		"FIELD_DESC":"Plan de prévention : Terrain",
+		"OFFICE_DESC":"Plan de prévention : Bureau",
 		"CLIENT":"Plan de prévention Client",
 		"PIMAN_DESC":"Utiliser le formulaire de création de Piman.",
 		"CLIENT_DESC":"Importer un plan de prévention client et le completer.",

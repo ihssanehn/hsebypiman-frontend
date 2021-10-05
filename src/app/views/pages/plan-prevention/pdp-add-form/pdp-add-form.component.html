@@ -1,6 +1,6 @@
 <ng-container [formGroup]="pdpForm">
 	<div class="m-0 tf-heading tf-heading--lg">
-		{{"PDP.FIELD_DESC" | translate}}
+		{{this.pdpType == 'PDP_PIMAN_TERRAIN'? ('PDP.FIELD_DESC' | translate):('PDP.OFFICE_DESC' | translate)}}
 	</div>
 	<div class="row" [hidden]="adding && partHided(1)">
 		<div class="col-12">
