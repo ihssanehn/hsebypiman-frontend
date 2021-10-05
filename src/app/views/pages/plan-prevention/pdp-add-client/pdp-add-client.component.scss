@@ -1,0 +1,50 @@
+.mat-row:hover {
+	background-color: transparent !important;
+}
+
+::ng-deep mat-form-field {
+	&.pdp-custom-select {
+		.mat-form-field-wrapper {
+			padding-bottom: 22px !important;
+		}
+	}
+}
+
+.travaux-checkbox-container {
+	::ng-deep mat-checkbox {
+		label {
+			white-space: pre-wrap !important;
+		}
+	}
+}
+
+
+.custom-margin-3 {
+	margin-left: 3%;
+}
+
+.horaire-box {
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+	margin-top: 2px;
+
+	span {
+		padding: 1em;
+	}
+
+	.error-found {
+		font-size: 70%;
+		margin-top: 4px;
+	}
+}
+
+.inter-array {
+	width: 100%;
+	table-layout: fixed;
+}
+
+::ng-deep.auto-width-select {
+	width: 350px;
+	max-width: 350px !important;
+}

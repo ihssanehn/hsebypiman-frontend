@@ -21,6 +21,7 @@ import moment from "moment";
 export class PdpAddComponent implements OnInit, OnDestroy {
 
 	pdpForm: FormGroup;
+	pdpClientForm : FormGroup;
 	enableBtn = false;
 	formloading = false;
 	pdp: Pdp = null;
@@ -43,9 +44,8 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 
 	ngOnInit() {
 		this.createForm();
+		this.createClientForm();
 		this.getTypes();
-
-
 		const routeSubscription = this.activatedRoute.params
 			.subscribe(
 				async params => {
@@ -75,7 +75,65 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 		this.cdr.markForCheck();
 	}
 
+	createClientForm(){
+		this.pdpClientForm = this.pdpFB.group({
+			raison_sociale_eu: [null, Validators.required],
+			raison_sociale_tel_eu: [null, Validators.required],
+			sauveteurs_secouriste_travail: [null,Validators.required],
+			pole_qhse: [null],
+			medecin_travail_eu_name: [null],
+			medecin_travail_eu_tel: [null],
+			cse_eu_name: [null],
+			cse_eu_job: [null],
+			cse_eu_tel: [null],
+			hse_eu_name: [null],
+			hse_eu_mail: [null],
+			hse_eu_tel: [null],
+			representant_entreprise_eu_name: [null, Validators.required],
+			representant_entreprise_eu_mail: [null, Validators.email],
+			representant_entreprise_eu_tel: [null, Validators.required],
 
+			medecin_travail_ee_name: [null],
+			medecin_travail_ee_tel: [null],
+			representant_entreprise_ee_name: [null],
+			representant_entreprise_ee_mail: [null, Validators.email],
+			representant_entreprise_ee_tel: [null],
+
+			is_piman_intervention: [null],
+			sous_traitant1_name: [null],
+			sous_traitant1_tel: [null],
+			sous_traitant1_mail: [null],
+			sous_traitant2_name: [null],
+			sous_traitant2_tel: [null],
+			sous_traitant2_mail: [null],
+
+			label_intervention: [null, Validators.required],
+			lieu_intervention: [null, Validators.required],
+			pdp_intervention_at: [null, Validators.required],
+			horaires_ouverture_site: [null, Validators.required],
+			horaires_fermeture_site: [null, Validators.required],
+
+			is_night_shift: [null],
+			duration_intervention_mp400h: [null],
+			is_astreinte: [null],
+			is_teletravail: [null],
+			is_presence_site_client: [null],
+			presence_site_client_frequency_id: [{value: null, disabled: true}],
+			effectif_moyen: [null],
+			intervenants: new FormArray([
+				new FormGroup({
+					first_name: new FormControl('', Validators.required),
+					last_name: new FormControl('', Validators.required),
+					contact: new FormControl('', Validators.required),
+					formations: new FormControl(null),
+					is_suivi_medical: new FormControl(null),
+					motif_id: new FormControl({value: null, disabled: true}),
+				})
+			]),
+			sous_traitant: new FormArray([]),
+			type_id: this.typePdp,
+		})
+	}
 	createForm() {
 		this.pdpForm = this.pdpFB.group({
 			raison_sociale_eu: [null, Validators.required],
@@ -182,34 +240,52 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 	}
 
 	async onSubmit() {
-		this.pdpForm.patchValue({
-			type_id: this.pdpTypes.find(type => type.code == this.typePdp).id
-		})
-		try {
-			this.pdpForm.markAllAsTouched();
-			if (this.pdpForm.valid
-				&& this.checkIfDateLastIsBigger()
-				&& (this.pdpForm.get('cat_pdp_risques').value as Array<RisqueModel>).filter(v => v.is_required_situation && v.answer).map(v => v.situation.filter(s => s.answer).length === 0).indexOf(true) === -1 && (this.pdpForm.get('cat_pdp_risques').value as Array<RisqueModel>).findIndex(v => !v.is_eu && !v.is_piman && !v.is_sous_traitant && v.answer) === -1) {
-				this.formStatus.onFormSubmitting();
-				const form = {...this.pdpForm.getRawValue()};
-				if (form && form.validations) {
-					form.validations = (form.validations as Array<any>).filter(v => v && v.company_name && v.full_name && v.validation_at).map(v => {
-						if (v && !v.is_part_inspection) {
-							delete v.is_part_inspection;
-							delete v.part_inspection_at;
-						}
-						return v;
-					});
+		console.log('Hello 1  !')
+		if( this.pdpForm.valid){
+			this.pdpForm.patchValue({
+				type_id: this.pdpTypes.find(type => type.code == this.typePdp).id
+			})
+			console.log(this.pdpForm)
+			try {
+				this.pdpForm.markAllAsTouched();
+				console.log(this.pdpForm.valid)
+				if (
+					this.checkIfDateLastIsBigger()
+					&& (this.pdpForm.get('cat_pdp_risques').value as Array<RisqueModel>).filter(v => v.is_required_situation && v.answer).map(v => v.situation.filter(s => s.answer).length === 0).indexOf(true) === -1 && (this.pdpForm.get('cat_pdp_risques').value as Array<RisqueModel>).findIndex(v => !v.is_eu && !v.is_piman && !v.is_sous_traitant && v.answer) === -1) {
+					console.log('Hello 4  !')
+					this.formStatus.onFormSubmitting();
+					const form = {...this.pdpForm.getRawValue()};
+					if (form && form.validations) {
+						form.validations = (form.validations as Array<any>).filter(v => v && v.company_name && v.full_name && v.validation_at).map(v => {
+							if (v && !v.is_part_inspection) {
+								delete v.is_part_inspection;
+								delete v.part_inspection_at;
+							}
+							return v;
+						});
+					}
+					if (form && this.pdp) {
+						form.id = this.pdp.id;
+					}
+					form.type_pdp = "Piman"
+					this.save(form);
 				}
-				if (form && this.pdp) {
-					form.id = this.pdp.id;
-
-				}
-				this.save(form);
+			} catch (error) {
+				throw error;
 			}
-		} catch (error) {
-			throw error;
+		}else if( this.pdpClientForm.valid){
+			this.pdpClientForm.patchValue({
+				type_id: this.pdpTypes.find(type => type.code == this.typePdp).id
+			})
+			this.formStatus.onFormSubmitting();
+			const form = {...this.pdpClientForm.getRawValue()};
+			if (form && this.pdp) {
+				form.id = this.pdp.id;
+			}
+			form.type_pdp = "Client"
+			this.save(form);
 		}
+
 
 	}
 

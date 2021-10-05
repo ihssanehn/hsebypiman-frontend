@@ -35,9 +35,11 @@
 						 [adding]="adding"
 						 [pdpForm]="pdpForm" [_pdp]="pdp" [pdpType]="'PDP_PIMAN_BUREAU'"></tf-pdp-add-form>
 		<!-- PDP_CLIENT -->
-		<div class="container" *ngIf="typePdp=='PDP_CLIENT'">
-			<h2>Pdp Client</h2>
-		</div>
+
+		<tf-pdp-add-client *ngIf="typePdp=='PDP_CLIENT'" class="pl-4 pr-4" (onLastStep)="isLastStep($event)" [formStatus]="formStatus"
+		[adding]="adding"
+		[pdpForm]="pdpClientForm" [_pdp]="pdp" ></tf-pdp-add-client>
+
 		</tf-portlet>
 
 

@@ -398,7 +398,8 @@
 		"OFFICE_DESC":"Prevention plan : Office",
 		"CLIENT":"Client prevention plan ",
 		"PIMAN_DESC":"Use the Piman creation form.",
-		"CLIENT_DESC":"Import a client prevention plan and complete it.",
+		"CLIENT_DESC":"Prevention plan : Client",
+		"ADD_CLIEN_PDP":"Add prevention plan",
 		"NOTIF": {
 			"PDP_DELETED": {
 				"TITLE": "Prevention plan has been deleted successfully"

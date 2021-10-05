@@ -35,6 +35,7 @@ import {PdpAdminComponent} from './pdp-admin/pdp-admin.component';
 import {NotifierModule} from 'angular-notifier';
 import {PdpDetailComponent} from './pdp-detail/pdp-detail.component';
 import {PdpSignatureComponent} from './pdp-signature/pdp-signature.component';
+import { PdpAddClientComponent } from './pdp-add-client/pdp-add-client.component';
 
 const routes: Routes = [
 	{
@@ -93,7 +94,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-	declarations: [PlanPreventionComponent, PdpListComponent, PdpAddComponent, PdpAddFormComponent, PdpAdminComponent, PdpDetailComponent, PdpSignatureComponent],
+	declarations: [PlanPreventionComponent, PdpListComponent, PdpAddComponent, PdpAddFormComponent, PdpAdminComponent, PdpDetailComponent, PdpSignatureComponent, PdpAddClientComponent],
 	imports: [
 		CommonModule,
 		PartialsModule,
