@@ -12,7 +12,34 @@ import {Subscription} from 'rxjs';
 import {RisqueMoyenModel} from "@app/core/models/consigne.model";
 import { Type } from '@app/core/models';
 import moment from "moment";
+import { FileUploader } from 'ng2-file-upload';
+import { serialize } from 'object-to-formdata';
 
+const options = {
+	/**
+	 * include array indices in FormData keys
+	 * defaults to false
+	 */
+	indices: false,
+
+	/**
+	 * treat null values like undefined values and ignore them
+	 * defaults to false
+	 */
+	nullsAsUndefineds: false,
+
+	/**
+	 * convert true or false to 1 or 0 respectively
+	 * defaults to false
+	 */
+	booleansAsIntegers: false,
+
+	/**
+	 * store arrays even if they're empty
+	 * defaults to false
+	 */
+	allowEmptyArrays: true,
+  };
 @Component({
 	selector: 'tf-pdp-add',
 	templateUrl: './pdp-add.component.html',
@@ -30,6 +57,10 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 	pdpTypes : Type[];
 	typePdp :string = 'PDP_PIMAN_TERRAIN';
 	private subscriptions: Subscription[] = [];
+
+	public uploader:FileUploader = new FileUploader({
+		isHTML5: true
+	  });
 
 	constructor(
 		private pdpFB: FormBuilder,
@@ -132,6 +163,7 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 			]),
 			sous_traitant: new FormArray([]),
 			type_id: this.typePdp,
+			documentsToUpload: [null, null],
 		})
 	}
 	createForm() {
@@ -274,16 +306,24 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 				throw error;
 			}
 		}else if( this.pdpClientForm.valid){
+
 			this.pdpClientForm.patchValue({
 				type_id: this.pdpTypes.find(type => type.code == this.typePdp).id
 			})
+			this.pdpClientForm.patchValue({
+				type_pdp: "Client"
+			})
+
+			//Need to transform FormGroup into FormData to pass the file with.
+			let formData = this.toFormData(this.pdpClientForm.value);
+			for (let j = 0; j < this.uploader.queue.length; j++) {
+				let fileItem = this.uploader.queue[j]._file;
+				formData.append('documents[]', fileItem);
+			  }
 			this.formStatus.onFormSubmitting();
-			const form = {...this.pdpClientForm.getRawValue()};
-			if (form && this.pdp) {
-				form.id = this.pdp.id;
-			}
-			form.type_pdp = "Client"
-			this.save(form);
+
+			this.save(formData).then(() => {
+				this.uploader.clearQueue();})
 		}
 
 
@@ -341,6 +381,24 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 	selectPdp(typePdp : string){
 		this.typePdp = typePdp;
 	}
+
+	toFormData<T>( formValue: T ) {
+		const formData = new FormData();
+
+		for ( const key of Object.keys(formValue) ) {
+		if( formValue[key]){
+			if(typeof formValue[key] == 'object'){
+				const value = formValue[key];
+				formData.append(key, JSON.stringify(value));
+			}else{
+				const value = formValue[key];
+				formData.append(key, value);
+			}
+		}
+		}
+
+		return formData;
+	  }
 
 	ngOnDestroy() {
 		this.subscriptions.forEach(sb => sb.unsubscribe());

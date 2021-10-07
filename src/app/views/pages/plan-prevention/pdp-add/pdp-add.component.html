@@ -38,7 +38,7 @@
 
 		<tf-pdp-add-client *ngIf="typePdp=='PDP_CLIENT'" class="pl-4 pr-4" (onLastStep)="isLastStep($event)" [formStatus]="formStatus"
 		[adding]="adding"
-		[pdpForm]="pdpClientForm" [_pdp]="pdp" ></tf-pdp-add-client>
+		[pdpForm]="pdpClientForm" [_pdp]="pdp" [uploader]="uploader" ></tf-pdp-add-client>
 
 		</tf-portlet>
 

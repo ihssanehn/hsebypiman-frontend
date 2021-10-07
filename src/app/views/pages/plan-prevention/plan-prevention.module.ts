@@ -37,6 +37,9 @@ import {PdpDetailComponent} from './pdp-detail/pdp-detail.component';
 import {PdpSignatureComponent} from './pdp-signature/pdp-signature.component';
 import { PdpAddClientComponent } from './pdp-add-client/pdp-add-client.component';
 
+//FileUpload
+import { FileUploadModule } from 'ng2-file-upload';
+
 const routes: Routes = [
 	{
 		path: '',
@@ -141,6 +144,7 @@ const routes: Routes = [
 			},
 		}),
 		NzMenuModule,
+		FileUploadModule
 	],
 	providers: [
 		CdkColumnDef,

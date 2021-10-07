@@ -17,6 +17,8 @@ import {BehaviorSubject} from 'rxjs';
 import moment from 'moment';
 import {NotifierService} from 'angular-notifier';
 import {TranslateService} from '@ngx-translate/core';
+import { FileUploader } from 'ng2-file-upload';
+import Swal from 'sweetalert2';
 
 @Component({
 	selector: 'tf-pdp-add-client',
@@ -50,10 +52,12 @@ export class PdpAddClientComponent implements OnInit {
 		}
 	}
 
+	@Input() uploader: FileUploader;
 	@Input() formStatus: FormStatus;
 	@Input() adding = true;
 	@ViewChild('autosize', {static: true}) autosize: CdkTextareaAutosize;
 	@Output() onLastStep: EventEmitter<any> = new EventEmitter<any>();
+
 	public parts = [1];
 	public instructionsList: Array<ConsigneModel>;
 	public EPIDispositionList: Array<DispositionModel>;
@@ -64,7 +68,7 @@ export class PdpAddClientComponent implements OnInit {
 	public intervenants = new BehaviorSubject<AbstractControl[]>([]);
 	public suivisMedicalIntervenants: Array<any> = [{}];
 	private risques: Array<RisqueModel>;
-;
+
 	public frequences: Array<PDPFrequences>;
 	displayedColumnsConsignes: string[] = ['consignes', 'answers', 'comments'];
 	displayedColumnsEPIDisposition: string[] = ['label', 'answers', 'list', 'type', 'comment'];
@@ -72,7 +76,7 @@ export class PdpAddClientComponent implements OnInit {
 	displayedColumnsTravaux: string[] = ['list', 'answers'];
 	displayedColumnsValidationPlan: string[] = ['company', 'name', 'date', 'participation', 'visa', 'actions'];
 	displayedColumnsIntervenants: string[] = ['last', 'first', 'contact', 'formations', 'suivis_médical', 'actions'];
-
+	edit: false;
 
 
 	dataSource = new BehaviorSubject<AbstractControl[]>([]);
@@ -84,7 +88,8 @@ export class PdpAddClientComponent implements OnInit {
 				private FB: FormBuilder,
 				private translate: TranslateService,
 				private cdr: ChangeDetectorRef,
-				protected pdpService: PdpService) {
+				protected pdpService: PdpService
+				) {
 		this.notifier = notifierService;
 	}
 
@@ -441,4 +446,71 @@ export class PdpAddClientComponent implements OnInit {
 	checkIfDateLastIsBigger() {
 		return moment(this.pdpForm.get('horaires_fermeture_site').value, 'hh:mm').isAfter(moment(this.pdpForm.get('horaires_ouverture_site').value, 'hh:mm'));
 	}
+
+	deleteDoc(item){
+		Swal.fire({
+		  icon: 'warning',
+		  title: this.translate.instant("REMONTEES.NOTIF.DOC_DELETE_CONFIRMATION.TITLE"),
+		  html: '<p>'+this.translate.instant("REMONTEES.NOTIF.DOC_DELETE_CONFIRMATION.LABEL")+'</p>',
+		  showConfirmButton: true,
+		  showCancelButton: true,
+		  cancelButtonText: this.translate.instant("ACTION.CANCEL"),
+		  confirmButtonText: this.translate.instant("ACTION.CONFIRM"),
+		}).then(async response => {
+		  if (response.value) {
+		// 	this.documentService.delete(item.id).toPromise()
+		// 	.then((res) => {
+		// 	  this.cdr.markForCheck();
+		// 	  var docArray = this.remonteeForm.get('documents') as FormArray;
+		// 	  docArray.removeAt(docArray.value.findIndex(x => x.id === item.id))
+		// 	  Swal.fire({
+		// 		icon: 'success',
+		// 		title: this.translate.instant("REMONTEES.NOTIF.DOC_DELETED.TITLE"),
+		// 		showConfirmButton: false,
+		// 		timer: 1500,
+		// 	  })
+		//    })
+		  }
+		});
+	  }
+
+	  seeItem(item){
+		return item.file.name
+	  }
+
+	  onFileDrop(event){
+		var extensions = ['pdf'];
+
+		for (let i = 0; i < event.length; i++) {
+
+		  const droppedFile = event[i];
+		  var name = droppedFile.name.split('.');
+		  var ext = name[name.length -1].toLowerCase();
+
+		  let error = false;
+
+		  if( extensions.indexOf(ext) == -1 ){
+			error = true;
+			Swal.fire({
+			  icon: 'error',
+			  title: this.translate.instant('UPLOAD.EXTENSION')+' '+droppedFile.name,
+			  showConfirmButton: false,
+			  timer: 1500
+			});
+		  } else if (droppedFile.size > 4000000) {
+			error = true;
+			Swal.fire({
+			  icon: 'error',
+			  title: this.translate.instant('UPLOAD.SIZE')+' '+droppedFile.name,
+			  showConfirmButton: false,
+			  timer: 1500
+			});
+		  }
+
+		  if(error == true){
+			this.uploader.queue = this.uploader.queue.filter(x=>x.file.name != droppedFile.name);
+		  }
+		}
+
+	  }
 }
