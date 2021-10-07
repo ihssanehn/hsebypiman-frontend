@@ -40,6 +40,7 @@ import { PdpAddClientComponent } from './pdp-add-client/pdp-add-client.component
 //FileUpload
 import { FileUploadModule } from 'ng2-file-upload';
 
+
 const routes: Routes = [
 	{
 		path: '',

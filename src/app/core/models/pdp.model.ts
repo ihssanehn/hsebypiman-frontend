@@ -1,6 +1,5 @@
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
-
-export class Pdp {
+import { Type, Document} from './';export class Pdp {
 	creator_id?: number;
 	cse_eu_job?: string;
 	cse_eu_name?: string;
@@ -49,4 +48,6 @@ export class Pdp {
 	pdp_validations?: Array<any>;
 	intervenants?: Array<any>;
 	type_id?:number;
+	type?:Type;
+	documents?:Document[];
 }

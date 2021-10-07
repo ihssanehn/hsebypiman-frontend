@@ -275,117 +275,9 @@
 					</div>
 				</div>
 			</div>
-			<div class="tf-heading tf-heading--md">
-				| 2 {{'PDP.INTERVENTION_OF_PIMAN_SUBCONTRACTORS' | translate}} ?
-				<mat-slide-toggle formControlName="is_piman_intervention"></mat-slide-toggle>
-			</div>
-			<div class="mt-3" *ngIf="isChecked('is_piman_intervention')">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="tf-card-form">
-							<ng-container *ngIf="getControlsArrayFormName('sous_traitant').length > 0">
-								<div class="row form-row align-items-center"
-									 formArrayName="sous_traitant"
-									 *ngFor="let item of getControlsArrayFormName('sous_traitant'); let i = index">
-									<ng-container [formGroupName]="i">
-									<span class="col-2 font-weight-bold">
-									{{'PDP.SUBCONTRACTOR' | translate}} {{i + 1}} :
-								</span>
-										<mat-form-field class="col-3">
-											<mat-label>{{'PDP.NAME' | translate}}</mat-label>
-											<input class="form-control" matInput type="text" name="name"
-												   formControlName="name"
-												   placeholder="{{'ACTION.ENTER_HERE' | translate}}"/>
-											<mat-error
-												*ngIf="isControlHasError('name', 'required', 'sous_traitant', i)">
-												<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-											</mat-error>
-										</mat-form-field>
-										<mat-form-field class="col-3">
-											<mat-label>{{'PDP.MAIL' | translate}}
-											</mat-label>
-											<input class="form-control" matInput type="mail" name="mail"
-												   formControlName="mail"
-												   placeholder="{{'ACTION.ENTER_HERE' | translate}}"/>
-											<mat-error
-												*ngIf="isControlHasError('mail', 'required', 'sous_traitant', i)">
-												<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-											</mat-error>
-											<mat-error *ngIf="isControlHasError('mail', 'email', 'sous_traitant', i)">
-												<strong>{{ 'AUTH.VALIDATION.INVALID_FIELD' | translate }}</strong>
-											</mat-error>
-										</mat-form-field>
-										<mat-form-field class="col-3">
-											<mat-label>{{'PDP.TEL' | translate}}</mat-label>
-											<input class="form-control" matInput type="phone" name="tel"
-												   formControlName="tel"
-												   placeholder="{{'ACTION.ENTER_HERE' | translate}}"/>
-											<mat-error *ngIf="isControlHasError('tel', 'required', 'sous_traitant', i)">
-												<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-											</mat-error>
-										</mat-form-field>
-										<div class="col-1">
-											<button mat-icon-button color="warn"
-													(click)="deleteElemntInArray(i, 'sous_traitant')"
-													matTooltip="{{'ACTION.DELETE' | translate}}">
-												<mat-icon>delete</mat-icon>
-											</button>
-										</div>
-									</ng-container>
-								</div>
-							</ng-container>
-							<div class="row form-row align-items-center">
-								<button mat-raised-button type="button" class="pull-left btn-small" color="info"
-										[ngClass]="{'mt-4' : getControlsArrayFormName('sous_traitant')?.length > 0}"
-										style="width: 180px"
-										(click)="addSousTraitant()">{{'PDP.ADD_ROW' | translate}}</button>
-							</div>
-							<!--							<div class="row form-row align-items-center">-->
-							<!--								<span class="col-2 font-weight-bold">-->
-							<!--									{{'PDP.SUBCONTRACTOR' | translate}} 2 :-->
-							<!--								</span>-->
-							<!--								<mat-form-field class="col-3">-->
-							<!--									<mat-label>{{'PDP.NAME' | translate}}</mat-label>-->
-							<!--									<input class="form-control" matInput type="text" name="sous_traitant2_name"-->
-							<!--										   formControlName="sous_traitant2_name"-->
-							<!--										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"-->
-							<!--										   [required]="isFieldRequired('sous_traitant2_name')"/>-->
-							<!--									<mat-error *ngIf="isControlHasError('sous_traitant2_name','required')">-->
-							<!--										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>-->
-							<!--									</mat-error>-->
-							<!--								</mat-form-field>-->
-							<!--								<mat-form-field class="col-3 custom-margin-3">-->
-							<!--									<mat-label>{{'PDP.MAIL' | translate}}-->
-							<!--									</mat-label>-->
-							<!--									<input class="form-control" matInput type="mail" name="sous_traitant2_mail"-->
-							<!--										   formControlName="sous_traitant2_mail"-->
-							<!--										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"-->
-							<!--										   [required]="isFieldRequired('sous_traitant2_mail')"/>-->
-							<!--									<mat-error *ngIf="isControlHasError('sous_traitant2_mail','required')">-->
-							<!--										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>-->
-							<!--									</mat-error>-->
-							<!--									<mat-error *ngIf="isControlHasError('sous_traitant2_mail','email')">-->
-							<!--										<strong>{{ 'AUTH.VALIDATION.INVALID_FIELD' | translate }}</strong>-->
-							<!--									</mat-error>-->
-							<!--								</mat-form-field>-->
-							<!--								<mat-form-field class="col-3 custom-margin-3">-->
-							<!--									<mat-label>{{'PDP.TEL' | translate}}</mat-label>-->
-							<!--									<input class="form-control" matInput type="phone" name="sous_traitant2_tel"-->
-							<!--										   formControlName="sous_traitant2_tel"-->
-							<!--										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"-->
-							<!--										   [required]="isFieldRequired('sous_traitant2_tel')"/>-->
-							<!--									<mat-error *ngIf="isControlHasError('sous_traitant2_tel','required')">-->
-							<!--										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>-->
-							<!--									</mat-error>-->
-							<!--								</mat-form-field>-->
-							<!--							</div>-->
-						</div>
-					</div>
-				</div>
-			</div>
 
 			<div class="tf-heading tf-heading--md">|
-				3 {{'PDP.DETAILS_OF_THE_INTERVENTION' | translate}}</div>
+				2 {{'PDP.DETAILS_OF_THE_INTERVENTION' | translate}}</div>
 			<div class="row">
 				<div class="col-md-12">
 					<div class="tf-card-form">
@@ -543,7 +435,7 @@
 	<div class="row" [hidden]="adding && partHided(2)">
 		<div class="col-12">
 			<div class="tf-heading tf-heading--md">|
-				4 {{'PDP.ADD_CLIEN_PDP' | translate}}</div>
+				3 {{'PDP.ADD_CLIEN_PDP' | translate}}</div>
 				<div class="row form-row">
 					<div class="col-12">
 						<form [formGroup]="pdpForm" *ngIf="uploader">
@@ -602,7 +494,7 @@
 	<div class="row" [hidden]="adding && partHided(3)">
 		<div class="col-12">
 			<div class="tf-heading tf-heading--md">|
-				5 {{'PDP.INTERVENANTS' | translate}}</div>
+				4 {{'PDP.INTERVENANTS' | translate}}</div>
 			<div class="mt-3">
 				<div class="row">
 					<div class="col-md-12">
