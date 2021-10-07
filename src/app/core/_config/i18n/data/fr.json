@@ -402,6 +402,7 @@
 		"PIMAN_DESC":"Utiliser le formulaire de création de Piman.",
 		"CLIENT_DESC":"Plan de prévention : Client",
 		"ADD_CLIEN_PDP":"Ajouter le plan de prévention",
+		"TYPE":"Type du plan de prévention",
 		"NOTIF": {
 			"PDP_DELETED": {
 				"TITLE": "Le plan de prévention a été supprimé avec succès"

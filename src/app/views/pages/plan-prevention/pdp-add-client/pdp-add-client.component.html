@@ -432,7 +432,7 @@
 
 
 	<!-- PDF ADD -->
-	<div class="row" [hidden]="adding && partHided(2)">
+	<div class="row"  [hidden]="adding && partHided(2)">
 		<div class="col-12">
 			<div class="tf-heading tf-heading--md">|
 				3 {{'PDP.ADD_CLIEN_PDP' | translate}}</div>
@@ -443,19 +443,24 @@
 							<div class="row">
 								<div class="col-4">
 
-									<div class="upload-btn-wrapper">
-										<button class="btnr" title="{{'COMMON.SELECT_FILES.TITLE' | translate}}">{{'COMMON.SELECT_FILES.SHORTTITLE' | translate}}</button>
-										<span>{{'COMMON.NOTIF.NO_FILE_CHOSEN.TITLE' | translate}}</span>
-										<input formControlName="documentsToUpload" (onFileSelected)="onFileDrop($event)" class="mb-2" type="file"
-											ng2FileSelect title="{{'COMMON.SELECT_FILES.TITLE' | translate}}" accept=".pdf" [uploader]="uploader" multiple/>
-									</div>
+
 
 									<div ng2FileDrop [uploader]="uploader"
 									(onFileDrop)="onFileDrop($event)"
 									class="drop-zone">
-										{{'UPLOAD.DROPZONE.PLACEHOLDER' | translate}} <br>
-										{{'UPLOAD.LIST_EXT' | translate}} : Pdf<br>
-										{{'UPLOAD.MAX_SIZE' | translate}} : 4 Mo
+										<div class="mx-auto d-flex flex-column">
+											<img class="mx-auto pdfImg " src="assets/media/illustrations/noun_PDF_1242090.svg" alt="">
+											<span class="d-block">{{'UPLOAD.DROPZONE.PLACEHOLDER' | translate}} </span>
+											<span class="d-block">{{'UPLOAD.MAX_SIZE' | translate}} : 4 Mo</span>
+
+
+										</div>
+
+									</div>
+									<div class="upload-btn-wrapper justify-content-center d-flex">
+										<button class="mt-2 ml-auto btn btn-success">{{'COMMON.SELECT_FILES.SHORTTITLE' | translate}}</button>
+										<input formControlName="documentsToUpload" (onFileSelected)="onFileDrop($event)" class="mb-2" type="file"
+											ng2FileSelect title="{{'COMMON.SELECT_FILES.TITLE' | translate}}" accept=".pdf" [uploader]="uploader" multiple/>
 									</div>
 								</div>
 								<div class="col-8">

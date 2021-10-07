@@ -28,7 +28,7 @@ export class PdpListComponent implements OnInit {
 		keyword: '',
 	};
 	showFilters = false;
-	displayedArColumns = ['raison_sociale_eu', 'cse', 'created_at', 'validity_at', 'lieu_intervention', 'risque', 'status','action'];
+	displayedArColumns = ['raison_sociale_eu', 'cse', 'created_at', 'validity_at', 'lieu_intervention', 'risque', 'status','type','action'];
 
 	pdp_id: number;
 
@@ -49,6 +49,7 @@ export class PdpListComponent implements OnInit {
 		try {
 			let res = await this.pdpService.getAll(this.filter).toPromise();
 			this.pdpsList = res.result.data;
+			console.log(this.pdpsList);
 			this.pagination = {
 				...this.pagination,
 				total: this.pdpsList.total,
