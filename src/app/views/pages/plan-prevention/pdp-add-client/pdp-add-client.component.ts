@@ -12,7 +12,7 @@ import {
 	RisqueModel,
 	TraveauxDangereuxModel
 } from '@app/core/models';
-import {PdpService} from '@app/core/services';
+import {DocumentService, PdpService} from '@app/core/services';
 import {BehaviorSubject} from 'rxjs';
 import moment from 'moment';
 import {NotifierService} from 'angular-notifier';
@@ -54,7 +54,7 @@ export class PdpAddClientComponent implements OnInit {
 
 	@Input() uploader: FileUploader;
 	@Input() formStatus: FormStatus;
-	@Input() adding = true;
+	@Input() adding;
 	@ViewChild('autosize', {static: true}) autosize: CdkTextareaAutosize;
 	@Output() onLastStep: EventEmitter<any> = new EventEmitter<any>();
 
@@ -76,7 +76,6 @@ export class PdpAddClientComponent implements OnInit {
 	displayedColumnsTravaux: string[] = ['list', 'answers'];
 	displayedColumnsValidationPlan: string[] = ['company', 'name', 'date', 'participation', 'visa', 'actions'];
 	displayedColumnsIntervenants: string[] = ['last', 'first', 'contact', 'formations', 'suivis_médical', 'actions'];
-	edit: false;
 
 
 	dataSource = new BehaviorSubject<AbstractControl[]>([]);
@@ -88,13 +87,17 @@ export class PdpAddClientComponent implements OnInit {
 				private FB: FormBuilder,
 				private translate: TranslateService,
 				private cdr: ChangeDetectorRef,
-				protected pdpService: PdpService
+				protected pdpService: PdpService,
+				private documentService : DocumentService
 				) {
 		this.notifier = notifierService;
 	}
 
 	ngOnInit() {
 		this.triggerResize();
+		console.log(this.pdpForm);
+		console.log(this._pdp);
+		console.log(this.adding);
 
 	}
 
@@ -458,18 +461,17 @@ export class PdpAddClientComponent implements OnInit {
 		  confirmButtonText: this.translate.instant("ACTION.CONFIRM"),
 		}).then(async response => {
 		  if (response.value) {
-		// 	this.documentService.delete(item.id).toPromise()
-		// 	.then((res) => {
-		// 	  this.cdr.markForCheck();
-		// 	  var docArray = this.remonteeForm.get('documents') as FormArray;
-		// 	  docArray.removeAt(docArray.value.findIndex(x => x.id === item.id))
-		// 	  Swal.fire({
-		// 		icon: 'success',
-		// 		title: this.translate.instant("REMONTEES.NOTIF.DOC_DELETED.TITLE"),
-		// 		showConfirmButton: false,
-		// 		timer: 1500,
-		// 	  })
-		//    })
+			this.documentService.delete(item.id).toPromise()
+			.then((res:any) => {
+			  this.cdr.markForCheck();
+			  this._pdp.documents = this._pdp.documents.filter((p) => p.id !== parseInt(res.result.data));
+			  Swal.fire({
+				icon: 'success',
+				title: this.translate.instant("REMONTEES.NOTIF.DOC_DELETED.TITLE"),
+				showConfirmButton: false,
+				timer: 1500,
+			  })
+		   })
 		  }
 		});
 	  }

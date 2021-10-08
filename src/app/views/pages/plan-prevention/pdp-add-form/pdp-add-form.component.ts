@@ -67,7 +67,6 @@ export class PdpAddFormComponent implements OnInit {
 	public intervenants = new BehaviorSubject<AbstractControl[]>([]);
 	public suivisMedicalIntervenants: Array<any> = [{}];
 	private risques: Array<RisqueModel>;
-;
 	public frequences: Array<PDPFrequences>;
 	displayedColumnsConsignes: string[] = ['consignes', 'answers', 'comments'];
 	displayedColumnsEPIDisposition: string[] = ['label', 'answers', 'list', 'type', 'comment'];
@@ -103,6 +102,7 @@ export class PdpAddFormComponent implements OnInit {
 		this.EPIDispositionList = res.result.data ? res.result.data.epi_disposition : [];
 		this.EESMoyenDisposition = res.result.data ? res.result.data.moyen_disposition_ees : [];
 		this.traveauxDangereux = res.result.data ? res.result.data.travaux_dangereux : [];
+		console.log(this.pdpType);
 		if(this.pdpType == "PDP_PIMAN_BUREAU"){
 			this.risques = res.result.data ? res.result.data.risquesByType[0].PDP_PIMAN_BUREAU : [];
 		}else if(this.pdpType == "PDP_PIMAN_TERRAIN"){

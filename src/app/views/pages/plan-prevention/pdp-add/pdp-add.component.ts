@@ -13,7 +13,6 @@ import {RisqueMoyenModel} from "@app/core/models/consigne.model";
 import { Type } from '@app/core/models';
 import moment from "moment";
 import { FileUploader } from 'ng2-file-upload';
-import { serialize } from 'object-to-formdata';
 
 const options = {
 	/**
@@ -55,7 +54,7 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 	adding = true;
 	formStatus = new FormStatus();
 	pdpTypes : Type[];
-	typePdp :string = 'PDP_PIMAN_TERRAIN';
+	typePdp :string ;
 	private subscriptions: Subscription[] = [];
 
 	public uploader:FileUploader = new FileUploader({
@@ -87,13 +86,21 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 							.get(id)
 							.subscribe(async res => {
 								this.pdp = res.result.data;
-								this.pdpForm.patchValue(this.pdp);
-								console.log(this.pdpForm);
+								console.log(this.pdp);
+								if(this.pdp.type.code =="PDP_CLIENT"){
+									this.pdpClientForm.patchValue(this.pdp);
+								}else{
+									this.pdpForm.patchValue(this.pdp);
+								}
+
+								this.typePdp = this.pdp.type.code;
+								console.log(this.typePdp);
 								this.enableBtn = true;
 								this.cdr.markForCheck();
 							});
 					} else {
 						this.pdp = new Pdp();
+						this.typePdp ='PDP_PIMAN_TERRAIN';;
 					}
 				}
 			);
@@ -320,6 +327,7 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 				let fileItem = this.uploader.queue[j]._file;
 				formData.append('documents[]', fileItem);
 			  }
+			formData.append('type_pdp','Client')
 			this.formStatus.onFormSubmitting();
 
 			this.save(formData).then(() => {
@@ -354,7 +362,13 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 	async save(form) {
 		console.log('saving....');
 		this.formloading = true;
-		const action = !this.adding ? this.pdpService.update(form).toPromise() : this.pdpService.create(form).toPromise();
+		let action;
+		if(this.typePdp == "PDP_CLIENT"){
+			action = !this.adding ? this.pdpService.update(form,this.pdp.id).toPromise() : this.pdpService.create(form).toPromise();
+		}else{
+			action = !this.adding ? this.pdpService.update(form).toPromise() : this.pdpService.create(form).toPromise();
+		}
+
 
 		action.then((res: any) => {
 			this.fireNotifAfterSave(res);
@@ -394,6 +408,7 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 				const value = formValue[key];
 				formData.append(key, value);
 			}
+
 		}
 		}
 
