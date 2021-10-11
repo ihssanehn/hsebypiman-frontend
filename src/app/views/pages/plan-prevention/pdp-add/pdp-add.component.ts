@@ -124,9 +124,10 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 		this.menuService.pageReloaded.subscribe((value)=>{
 			if(value){
 				this.modalReference = this.modalService.open(this.content,{ size: 'lg' ,  centered: true});
+				this.menuService.pageReloaded.next(false);
 			}
 		})
-		this.menuService.pageReloaded.next(false);
+
 	}
 	ngAfterViewInit(){
 		this.modalReference = this.modalService.open(this.content,{ size: 'lg' ,  centered: true});
