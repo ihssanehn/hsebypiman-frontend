@@ -666,7 +666,7 @@
                                                 <div class="signature-viewer">
                                                     <img *ngIf="element.signature" [src]="_sanitizer.bypassSecurityTrustResourceUrl(element.signature?.signature)" width="100%">
                                                 </div>
-												<span class="font-italic">{{element.signature.read_and_approved == 1? ('PDP.VISA_PRECEDED_BY_THE_WORDS_READ_AND_APPROVED' | translate):""}}</span>
+												<span class="font-italic">{{element.signature?.read_and_approved == 1? ('PDP.VISA_PRECEDED_BY_THE_WORDS_READ_AND_APPROVED' | translate):""}}</span>
                                             </td>
                                         </ng-container>
 
@@ -761,7 +761,7 @@
                                                 <div class="signature-viewer">
                                                     <img *ngIf="element.signature" [src]="_sanitizer.bypassSecurityTrustResourceUrl(element.signature?.signature)" width="100%">
 												</div>
-												<span class="font-italic">{{element.signature.read_and_approved == 1? ('PDP.VISA_PRECEDED_BY_THE_WORDS_READ_AND_APPROVED' | translate):""}}</span>
+												<span class="font-italic">{{element.signature?.read_and_approved == 1? ('PDP.VISA_PRECEDED_BY_THE_WORDS_READ_AND_APPROVED' | translate):""}}</span>
                                             </td>
                                         </ng-container>
 
