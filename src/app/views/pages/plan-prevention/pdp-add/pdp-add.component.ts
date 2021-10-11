@@ -13,6 +13,10 @@ import {RisqueMoyenModel} from "@app/core/models/consigne.model";
 import { Type } from '@app/core/models';
 import moment from "moment";
 import { FileUploader } from 'ng2-file-upload';
+import {NgbModal,NgbActiveModal, ModalDismissReasons, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
+import { TemplateRef, ViewChild } from '@angular/core';
+import { MenuAsideService } from '@app/core/_base/layout';
+
 
 const options = {
 	/**
@@ -45,6 +49,8 @@ const options = {
 	styleUrls: ['./pdp-add.component.scss']
 })
 export class PdpAddComponent implements OnInit, OnDestroy {
+	@ViewChild('content',{static: false})
+	private content: TemplateRef<any>;
 
 	pdpForm: FormGroup;
 	pdpClientForm : FormGroup;
@@ -55,6 +61,8 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 	formStatus = new FormStatus();
 	pdpTypes : Type[];
 	typePdp :string ;
+	modalReference;
+
 	private subscriptions: Subscription[] = [];
 
 	public uploader:FileUploader = new FileUploader({
@@ -69,7 +77,12 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 		private activatedRoute: ActivatedRoute,
 		private pdpService: PdpService,
 		private typeService: TypeService,
+		private modalService: NgbModal,
+		private menuService : MenuAsideService,
+		config: NgbModalConfig
 	) {
+		config.backdrop = 'static';
+    	config.keyboard = false;
 	}
 
 	ngOnInit() {
@@ -100,11 +113,23 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 							});
 					} else {
 						this.pdp = new Pdp();
-						this.typePdp ='PDP_PIMAN_TERRAIN';;
+
+						this.typePdp ='PDP_PIMAN_TERRAIN';
 					}
 				}
 			);
 		this.subscriptions.push(routeSubscription);
+
+		//Modal Relaod Gestion
+		this.menuService.pageReloaded.subscribe((value)=>{
+			if(value){
+				this.modalReference = this.modalService.open(this.content,{ size: 'lg' ,  centered: true});
+			}
+		})
+		this.menuService.pageReloaded.next(false);
+	}
+	ngAfterViewInit(){
+		this.modalReference = this.modalService.open(this.content,{ size: 'lg' ,  centered: true});
 	}
 
 	async getTypes(){
@@ -394,6 +419,7 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 
 	selectPdp(typePdp : string){
 		this.typePdp = typePdp;
+		this.modalService.dismissAll();
 	}
 
 	toFormData<T>( formValue: T ) {
@@ -418,4 +444,17 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 	ngOnDestroy() {
 		this.subscriptions.forEach(sb => sb.unsubscribe());
 	}
+
+
+
+
+	getDismissReason(reason: any): string {
+		if (reason === ModalDismissReasons.ESC) {
+		  return 'by pressing ESC';
+		} else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+		  return 'by clicking on a backdrop';
+		} else {
+		  return `with: ${reason}`;
+		}
+	  }
 }

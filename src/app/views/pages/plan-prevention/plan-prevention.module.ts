@@ -8,7 +8,7 @@ import {CoreModule} from '@app/core/core.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TranslateModule} from '@ngx-translate/core';
 import {NgxPermissionsGuard, NgxPermissionsModule} from 'ngx-permissions';
-import {NgbDropdownModule, NgbPopoverModule, NgbTabsetModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbDropdownModule, NgbModule, NgbPopoverModule, NgbTabsetModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 import {SignaturePadModule} from 'angular2-signaturepad';
 import {NgxMaskModule} from 'ngx-mask';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
@@ -36,7 +36,7 @@ import {NotifierModule} from 'angular-notifier';
 import {PdpDetailComponent} from './pdp-detail/pdp-detail.component';
 import {PdpSignatureComponent} from './pdp-signature/pdp-signature.component';
 import { PdpAddClientComponent } from './pdp-add-client/pdp-add-client.component';
-
+import { NzModalModule } from 'ng-zorro-antd/modal';
 //FileUpload
 import { FileUploadModule } from 'ng2-file-upload';
 
@@ -139,6 +139,8 @@ const routes: Routes = [
 		NgbPopoverModule,
 		NgxMaskModule,
 		MatFormFieldModule,
+		NzModalModule,
+		NgbModule,
 		NotifierModule.withConfig({
 			behaviour: {
 				autoHide: 3000,

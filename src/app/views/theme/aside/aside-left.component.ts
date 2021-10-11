@@ -19,7 +19,6 @@ import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
 export class AsideLeftComponent implements OnInit, AfterViewInit {
 
 	@ViewChild('asideMenu', {static: true}) asideMenu: ElementRef;
-
 	currentRouteUrl = '';
 	insideTm: any;
 	outsideTm: any;
@@ -79,7 +78,7 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 		private router: Router,
 		private render: Renderer2,
 		private cdr: ChangeDetectorRef,
-		iconRegistry: MatIconRegistry, 
+		iconRegistry: MatIconRegistry,
 		sanitizer: DomSanitizer
 	) {
 		this.moduleService.currentModules.subscribe((event) => {
@@ -252,17 +251,20 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 	}
 
 	goToAdd(){
+		//Reload modal on init
 		this.router.navigateByUrl(this.menuAsideService.menuBtnAdd.value['page']);
+		this.menuAsideService.reload();
+
 	}
 
 	needPermission(item){
 		if(!item.permissionOnly){
 			return true;
 		}else{
-			
+
 			var hasPerm = item.permissionOnly.filter(permission =>  this.ngxPermissionsService.getPermission(permission));
 			var hasRole = item.permissionOnly.filter(permission =>  this.ngxRolesService.getRole(permission));
-			
+
 			if(hasPerm.length > 0 || hasRole.length > 0){
 				return true;
 			}else{
@@ -283,5 +285,5 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 			return false
 		}
 	}
-	
+
 }

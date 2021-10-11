@@ -32,6 +32,7 @@ export class PdpListComponent implements OnInit {
 
 	pdp_id: number;
 
+
 	constructor(
 		private router: Router,
 		private activatedRoute: ActivatedRoute,
@@ -169,4 +170,5 @@ export class PdpListComponent implements OnInit {
 			}
 		});
 	}
+
 }
