@@ -1,6 +1,9 @@
-<form [formGroup]="pdpForm" class="tf-form tf-form--group-seperator-dashed">
 
-	<tf-portlet class="main-portlet-form mr-4" id="portlet-ar">
+
+
+<form [formGroup]="pdpForm" class="tf-form tf-form--group-seperator-dashed" *ngIf="this?.typePdp">
+
+	<tf-portlet class="mr-4 main-portlet-form" id="portlet-ar">
 		<div class="tf-portlet-header ">
 			<span class="title">
 			  <a [routerLink]="['/plan-de-prevention/list']">{{'MENU.SUB_PDP.LIST' | translate}}</a>
@@ -8,17 +11,64 @@
 			  <span class="id-item">{{'MENU.SUB_PDP.ADD' | translate}}</span>
 			</span>
 		</div>
-		<tf-pdp-add-form class="pl-4 pr-4" (onLastStep)="isLastStep($event)" [formStatus]="formStatus"
+
+
+
+
+		<!-- PDP_PIMAN_TERRAIN -->
+		<tf-pdp-add-form *ngIf="typePdp == 'PDP_PIMAN_TERRAIN'"  class="pl-4 pr-4" (onLastStep)="isLastStep($event)" [formStatus]="formStatus"
 						 [adding]="adding"
-						 [pdpForm]="pdpForm" [_pdp]="pdp"></tf-pdp-add-form>
-	</tf-portlet>
+						 [pdpForm]="pdpForm" [_pdp]="pdp" [pdpType]="'PDP_PIMAN_TERRAIN'"></tf-pdp-add-form>
+
+
+		<!-- PDP_PIMAN_BUREAU -->
+		<tf-pdp-add-form *ngIf="typePdp == 'PDP_PIMAN_BUREAU'"  class="pl-4 pr-4" (onLastStep)="isLastStep($event)" [formStatus]="formStatus"
+						 [adding]="adding"
+						 [pdpForm]="pdpForm" [_pdp]="pdp" [pdpType]="'PDP_PIMAN_BUREAU'"></tf-pdp-add-form>
+		<!-- PDP_CLIENT -->
+
+		<tf-pdp-add-client *ngIf="typePdp=='PDP_CLIENT'" class="pl-4 pr-4" (onLastStep)="isLastStep($event)" [formStatus]="formStatus"
+		[adding]="adding"
+		[pdpForm]="pdpClientForm" [_pdp]="pdp" [uploader]="uploader" ></tf-pdp-add-client>
+
+		</tf-portlet>
+
 
 	<!--	|| pdpForm.invalid-->
 	<!--	pdpForm.valid &&-->
 	<button mat-raised-button *ngIf="enableBtn"
 			[ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': formloading}"
-			[disabled]="formloading" class="btn float-right btn-save mr-4" (click)="onSubmit()">
+			[disabled]="formloading" class="float-right mr-4 btn btn-save" (click)="onSubmit()">
 		{{'ACTION.SAVE' | translate}}
 	</button>
 
 </form>
+
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="mx-auto text-center modal-title font-weight-bold" id="modal-basic-title">Type de plan de prévention</h4>
+	  </div>
+	<div class="modal-body">
+		<div class="mx-auto my-5 d-flex justify-content-around col-12">
+			<div class="p-4 card ">
+				<div class="card-body">
+				  <h5 class="text-center card-title font-weight-bold">{{'PDP.PIMAN' | translate}}</h5>
+				  <div class="d-flex justify-content-around">
+					<button href="#"  class="px-3 py-2 btn btnCustom font-weight-bold" (click)="selectPdp('PDP_PIMAN_BUREAU')">Bureau</button>
+					  <button href="#" class="px-3 py-2 btn btnCustom font-weight-bold" (click)="selectPdp('PDP_PIMAN_TERRAIN')">Terrain</button>
+				  </div>
+				</div>
+			  </div>
+			  <div class="p-4 card ">
+					<div class="card-body">
+					<h5 class="text-center card-title font-weight-bold">{{'PDP.CLIENT' | translate}}</h5>
+					<div class="d-flex justify-content-around">
+						<button href="#" class="px-3 py-2 btn btnCustom font-weight-bold" (click)="selectPdp('PDP_CLIENT')">Selectionner</button>
+					</div>
+					</div>
+				</div>
+			</div>
+	</div>
+
+  </ng-template>
+

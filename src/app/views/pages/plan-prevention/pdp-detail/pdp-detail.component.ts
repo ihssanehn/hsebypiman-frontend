@@ -1,9 +1,12 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Pdp } from '@app/core/models';
-import { PdpService } from '@app/core/services';
+import { DocumentService, PdpService } from '@app/core/services';
 import { DateEnToFrPipe, DateFrToEnPipe } from '@app/core/_base/layout';
+import { SafePipe } from '@app/core/_base/layout';
+
 import moment from 'moment';
 
 @Component({
@@ -15,6 +18,7 @@ export class PdpDetailComponent implements OnInit {
 
   pdp: Pdp;
   pdpLoaded: boolean = false;
+  pdpPiman: boolean ;
 
   sousTraitantEeColumns: string[] = ['name', 'mail', 'tel'];
   pdpConsigneeColumns: string[] = ['instructions', 'answer', 'comments', 'operation_type'];
@@ -35,7 +39,8 @@ export class PdpDetailComponent implements OnInit {
     protected router: Router,
     protected pdpService: PdpService,
     protected cdr: ChangeDetectorRef,
-    protected _sanitizer: DomSanitizer
+    protected _sanitizer: DomSanitizer,
+	private documentService : DocumentService,
   ) { }
 
   ngOnInit() {
@@ -57,8 +62,18 @@ export class PdpDetailComponent implements OnInit {
   async getPdp(pdpId) {
 		try {
 			var res = await this.pdpService.get(pdpId).toPromise();
-      this.parsePdpDate(res.result.data);
-      this.pdp = res.result.data;
+      		this.parsePdpDate(res.result.data);
+	  		var pdp = res.result.data;
+			this.pdpPiman = !(pdp.type.code == "PDP_CLIENT");
+	  		pdp.documents = pdp.documents.filter(x => ['pdf'].indexOf(x.extension.toLowerCase()) != -1);
+	  		pdp.documents.forEach(x=>{
+				x.src = this.documentService.readFile(x.id);
+				x.image = this.documentService.readFile(x.id);
+				x.thumbImage = this.documentService.readFile(x.id);
+			});
+	  		console.log(pdp.documents)
+      		this.pdp = pdp;
+
 			this.pdpLoaded = true;
 			this.cdr.markForCheck();
 		} catch (error) {

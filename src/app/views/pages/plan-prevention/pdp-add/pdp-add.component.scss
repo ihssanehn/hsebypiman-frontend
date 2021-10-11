@@ -1,5 +1,30 @@
 :host::ng-deep{
+	.textXl{
+		font-size: 20px!important;
+	}
 	.mat-form-field-appearance-legacy .mat-form-field-underline{
 		background-color: rgb(139, 139, 139)
 	}
+	.ant-menu-horizontal > .ant-menu-submenu-selected {
+		color: #004fc2;
+		border-bottom: 2px solid #004fc2;
+	}
+	.ant-menu-horizontal > .ant-menu-item-selected{
+		color: #004fc2;
+		border-bottom: 2px solid #004fc2;
+	}
+	.ant-menu-submenu-title:hover{
+		color: #004fc2;
+	}
+	.ant-menu-horizontal > .ant-menu-item:hover{
+		color: #004fc2;
+		border-bottom: 2px solid #004fc2;
+	}
+
+}
+.btnCustom{
+	border-radius: 10px;
+	box-shadow: 20px 23px 54px 0 rgba(0, 0, 0, 0.16);
+	background-image: linear-gradient(to left, #61e3b6 111%, #35c1c9 38%, #079dde -40%);
+	color: white;
 }

@@ -34,92 +34,92 @@
 							| 1 {{'PDP.EMERGENCY_CONTACTS_AND_NUMBERS_IN_THE_EVENT_OF_AN_ACCIDENT' | translate}}
 						</div>
 					</mat-expansion-panel-header>
-					<div class="row m-2">
+					<div class="m-2 row">
 						<div class="col-12">
-							<div class="tf-heading tf-heading--md mt-0">
+							<div class="mt-0 tf-heading tf-heading--md">
 								1.1 {{'PDP.USER_COMPANY' | translate}}
 							</div>
 							<div class="row d-flex">
-								<div class="col-md-6 col-sm-12 mb-2">
+								<div class="mb-2 col-md-6 col-sm-12">
 									<div class="card">
 										<h4><b>{{'PDP.COMPANY' | translate}}</b></h4>
 										<div class="box">
-											<p><span class="label pull-left mr-2">{{'PDP.NAME' | translate}}</span><span
+											<p><span class="mr-2 label pull-left">{{'PDP.NAME' | translate}}</span><span
 												class=""
 												*ngIf="pdp.raison_sociale_eu; else noDataFound">{{pdp.raison_sociale_eu}}</span>
 											</p>
-											<p><span class="label pull-left mr-2">{{'PDP.TEL' | translate}}</span><span
+											<p><span class="mr-2 label pull-left">{{'PDP.TEL' | translate}}</span><span
 												class=""
 												*ngIf="pdp.raison_sociale_tel_eu; else noDataFound">{{pdp.raison_sociale_tel_eu}}</span>
 											</p>
 										</div>
-										<div class="tf-divider mb-3">
+										<div class="mb-3 tf-divider">
 											<span></span>
 										</div>
 
 										<h4><b>{{'PDP.RESPONSABLE_HSE' | translate}}</b></h4>
 										<div class="box" style="flex:1">
-											<p><span class="label pull-left mr-2">{{'PDP.NAME' | translate}}</span><span
+											<p><span class="mr-2 label pull-left">{{'PDP.NAME' | translate}}</span><span
 												class=""
 												*ngIf="pdp.hse_eu_name; else noDataFound">{{pdp.hse_eu_name}}</span></p>
-											<p><span class="label pull-left mr-2">{{'PDP.MAIL' | translate}}</span><span
+											<p><span class="mr-2 label pull-left">{{'PDP.MAIL' | translate}}</span><span
 												class=""
 												*ngIf="pdp.hse_eu_mail; else noDataFound">{{pdp.hse_eu_mail}}</span></p>
-											<p><span class="label pull-left mr-2">{{'PDP.TEL' | translate}}</span><span
+											<p><span class="mr-2 label pull-left">{{'PDP.TEL' | translate}}</span><span
 												class=""
 												*ngIf="pdp.hse_eu_tel; else noDataFound">{{pdp.hse_eu_tel}}</span></p>
 										</div>
-										<div class="tf-divider mb-3">
+										<div class="mb-3 tf-divider">
 											<span></span>
 										</div>
 
 										<h4><b>{{'PDP.CSE' | translate}}</b></h4>
 										<div class="box" style="flex:1">
-											<p><span class="label pull-left mr-2">{{'PDP.NAME' | translate}}</span><span
+											<p><span class="mr-2 label pull-left">{{'PDP.NAME' | translate}}</span><span
 												class=""
 												*ngIf="pdp.cse_eu_name; else noDataFound">{{pdp.cse_eu_name}}</span></p>
-											<p><span class="label pull-left mr-2">{{'PDP.JOB' | translate}}</span><span
+											<p><span class="mr-2 label pull-left">{{'PDP.JOB' | translate}}</span><span
 												class=""
 												*ngIf="pdp.cse_eu_job; else noDataFound">{{pdp.cse_eu_job}}</span></p>
-											<p><span class="label pull-left mr-2">{{'PDP.TEL' | translate}}</span><span
+											<p><span class="mr-2 label pull-left">{{'PDP.TEL' | translate}}</span><span
 												class=""
 												*ngIf="pdp.cse_eu_tel; else noDataFound">{{pdp.cse_eu_tel}}</span></p>
 										</div>
 									</div>
 								</div>
-								<div class="col-md-6 col-sm-12 mb-2">
+								<div class="mb-2 col-md-6 col-sm-12">
 									<div class="card">
 										<h4><b>{{'PDP.OCCUPATIONAL_PHYSICIAN' | translate}}</b></h4>
 										<div class="box" style="flex:1">
-											<p><span class="label pull-left mr-2">{{'PDP.NAME' | translate}}</span><span
+											<p><span class="mr-2 label pull-left">{{'PDP.NAME' | translate}}</span><span
 												class=""
 												*ngIf="pdp.medecin_travail_eu_name; else noDataFound">{{pdp.medecin_travail_eu_name}}</span>
 											</p>
-											<p><span class="label pull-left mr-2">{{'PDP.TEL' | translate}}</span><span
+											<p><span class="mr-2 label pull-left">{{'PDP.TEL' | translate}}</span><span
 												class=""
 												*ngIf="pdp.medecin_travail_eu_tel; else noDataFound">{{pdp.medecin_travail_eu_tel}}</span>
 											</p>
 										</div>
-										<div class="tf-divider mb-3">
+										<div class="mb-3 tf-divider">
 											<span></span>
 										</div>
 
 										<h4><b>{{'PDP.COMPANY_REPRESENTATIVE' | translate}}</b></h4>
 										<div class="box" style="flex:1">
-											<p><span class="label pull-left mr-2">{{'PDP.NAME' | translate}}</span><span
+											<p><span class="mr-2 label pull-left">{{'PDP.NAME' | translate}}</span><span
 												class=""
 												*ngIf="pdp.representant_entreprise_eu_name; else noDataFound">{{pdp.representant_entreprise_eu_name}}</span>
 											</p>
-											<p><span class="label pull-left mr-2">{{'PDP.MAIL' | translate}}</span><span
+											<p><span class="mr-2 label pull-left">{{'PDP.MAIL' | translate}}</span><span
 												class=""
 												*ngIf="pdp.representant_entreprise_eu_mail; else noDataFound">{{pdp.representant_entreprise_eu_mail}}</span>
 											</p>
-											<p><span class="label pull-left mr-2">{{'PDP.TEL' | translate}}</span><span
+											<p><span class="mr-2 label pull-left">{{'PDP.TEL' | translate}}</span><span
 												class=""
 												*ngIf="pdp.representant_entreprise_eu_tel; else noDataFound">{{pdp.representant_entreprise_eu_tel}}</span>
 											</p>
 											<p><span
-												class="label pull-left mr-2">{{'PDP.RESCUERS_FIRST_AID_WORKER_AT_WORK' | translate}}</span><span
+												class="mr-2 label pull-left">{{'PDP.RESCUERS_FIRST_AID_WORKER_AT_WORK' | translate}}</span><span
 												class=""
 												*ngIf="pdp.sauveteurs_secouriste_travail; else noDataFound">{{pdp.sauveteurs_secouriste_travail}}</span>
 											</p>
@@ -134,34 +134,34 @@
 								1.2 {{'PDP.OUTSIDE_COMPANY' | translate}}
 							</div>
 							<div class="row d-flex">
-								<div class="col-md-6 col-sm-12 mb-2">
+								<div class="mb-2 col-md-6 col-sm-12">
 									<div class="card">
 										<h4><b>{{'PDP.OCCUPATIONAL_PHYSICIAN' | translate}}</b></h4>
 										<div class="box">
-											<p><span class="label pull-left mr-2">{{'PDP.NAME' | translate}}</span><span
+											<p><span class="mr-2 label pull-left">{{'PDP.NAME' | translate}}</span><span
 												class=""
 												*ngIf="pdp.medecin_travail_ee_name; else noDataFound">{{pdp.medecin_travail_ee_name}}</span>
 											</p>
-											<p><span class="label pull-left mr-2">{{'PDP.TEL' | translate}}</span><span
+											<p><span class="mr-2 label pull-left">{{'PDP.TEL' | translate}}</span><span
 												class=""
 												*ngIf="pdp.medecin_travail_ee_tel; else noDataFound">{{pdp.medecin_travail_ee_tel}}</span>
 											</p>
 										</div>
 									</div>
 								</div>
-								<div class="col-md-6 col-sm-12 mb-2">
+								<div class="mb-2 col-md-6 col-sm-12">
 									<div class="card">
 										<h4><b>{{'PDP.COMPANY_REPRESENTATIVE' | translate}}</b></h4>
 										<div class="box" style="flex:1">
-											<p><span class="label pull-left mr-2">{{'PDP.NAME' | translate}}</span><span
+											<p><span class="mr-2 label pull-left">{{'PDP.NAME' | translate}}</span><span
 												class=""
 												*ngIf="pdp.representant_entreprise_ee_name; else noDataFound">{{pdp.representant_entreprise_ee_name}}</span>
 											</p>
-											<p><span class="label pull-left mr-2">{{'PDP.MAIL' | translate}}</span><span
+											<p><span class="mr-2 label pull-left">{{'PDP.MAIL' | translate}}</span><span
 												class=""
 												*ngIf="pdp.representant_entreprise_ee_mail; else noDataFound">{{pdp.representant_entreprise_ee_mail}}</span>
 											</p>
-											<p><span class="label pull-left mr-2">{{'PDP.TEL' | translate}}</span><span
+											<p><span class="mr-2 label pull-left">{{'PDP.TEL' | translate}}</span><span
 												class=""
 												*ngIf="pdp.representant_entreprise_ee_tel; else noDataFound">{{pdp.representant_entreprise_ee_tel}}</span>
 											</p>
@@ -173,8 +173,8 @@
 					</div>
 				</mat-expansion-panel>
 
-				<mat-expansion-panel [expanded]="isExpanded" [disabled]="isDisableToggle">
-					<mat-expansion-panel-header>
+				<mat-expansion-panel [expanded]="isExpanded" [disabled]="isDisableToggle" *ngIf="this.pdpPiman">
+					<mat-expansion-panel-header >
 						<div class="tf-heading tf-heading--lg col-12">
 							| 2 {{'PDP.INTERVENTION_OF_PIMAN_SUBCONTRACTORS' | translate}}
 						</div>
@@ -222,59 +222,59 @@
 						</div>
 					</mat-expansion-panel-header>
 					<div class="row">
-						<div class="col-md-12 col-lg-6 mb-2">
+						<div class="mb-2 col-md-12 col-lg-6">
 							<div class="card">
 								<div class="box">
-									<p><span class="label pull-left mr-2">{{'PDP.INTERVENTION_NAME' | translate}}</span><span
+									<p><span class="mr-2 label pull-left">{{'PDP.INTERVENTION_NAME' | translate}}</span><span
 										class=""
 										*ngIf="pdp.label_intervention; else noDataFound">{{pdp.label_intervention}}</span>
 									</p>
 									<p><span
-										class="label pull-left mr-2">{{'PDP.INTERVENTION_PLACE' | translate}}</span><span
+										class="mr-2 label pull-left">{{'PDP.INTERVENTION_PLACE' | translate}}</span><span
 										class=""
 										*ngIf="pdp.lieu_intervention; else noDataFound">{{pdp.lieu_intervention}}</span>
 									</p>
 									<p><span
-										class="label pull-left mr-2">{{'PDP.PDP_ESTABLISHED_ON' | translate}}</span><span
+										class="mr-2 label pull-left">{{'PDP.PDP_ESTABLISHED_ON' | translate}}</span><span
 										class=""
 										*ngIf="pdp.pdp_intervention_at; else noDataFound">{{pdp.pdp_intervention_at | date:'dd/MM/yyyy'}}</span>
 									</p>
 									<p><span
-										class="label pull-left mr-2">{{'PDP.DAYTIME_SITE_OPENING_HOURS' | translate}}</span><span
+										class="mr-2 label pull-left">{{'PDP.DAYTIME_SITE_OPENING_HOURS' | translate}}</span><span
 										class=""
 										*ngIf="pdp.horaires_ouverture_site && pdp.horaires_fermeture_site; else noDataFound">{{pdp.horaires_ouverture_site}}
 										- {{pdp.horaires_fermeture_site}}</span></p>
 									<p><span
-										class="label pull-left mr-2">{{'PDP.PREDICTABLE_AVERAGE_WORKFORCE' | translate}}</span><span
+										class="mr-2 label pull-left">{{'PDP.PREDICTABLE_AVERAGE_WORKFORCE' | translate}}</span><span
 										class=""
 										*ngIf="pdp.effectif_moyen; else noDataFound">{{pdp.effectif_moyen}}</span></p>
 								</div>
 							</div>
 						</div>
 
-						<div class="col-md-12 col-lg-6 mb-2">
+						<div class="mb-2 col-md-12 col-lg-6">
 							<div class="card">
 								<div class="box">
-									<p><span class="label pull-left mr-2">{{'PDP.NIGHT_WORK' | translate}}</span><span
+									<p><span class="mr-2 label pull-left">{{'PDP.NIGHT_WORK' | translate}}</span><span
 										class="" *ngIf="pdp.is_night_shift; else no">{{'PDP.YES' | translate}}</span>
 									</p>
 									<p><span
-										class="label pull-left mr-2">{{'PDP.MORE_THAN_400H' | translate}}</span><span
+										class="mr-2 label pull-left">{{'PDP.MORE_THAN_400H' | translate}}</span><span
 										class=""
 										*ngIf="pdp.duration_intervention_mp400h; else no">{{'PDP.YES' | translate}}</span>
 									</p>
-									<p><span class="label pull-left mr-2">{{'PDP.PENALTY' | translate}}</span><span
+									<p><span class="mr-2 label pull-left">{{'PDP.PENALTY' | translate}}</span><span
 										class="" *ngIf="pdp.is_astreinte; else no">{{'PDP.YES' | translate}}</span></p>
-									<p><span class="label pull-left mr-2">{{'PDP.TELEWORKING' | translate}}</span><span
+									<p><span class="mr-2 label pull-left">{{'PDP.TELEWORKING' | translate}}</span><span
 										class="" *ngIf="pdp.is_teletravail; else no">{{'PDP.YES' | translate}}</span>
 									</p>
 									<p><span
-										class="label pull-left mr-2">{{'PDP.PRESENCE_ON_CUSTOMER_SITE' | translate}}</span><span
+										class="mr-2 label pull-left">{{'PDP.PRESENCE_ON_CUSTOMER_SITE' | translate}}</span><span
 										class=""
 										*ngIf="pdp.is_presence_site_client; else no">{{'PDP.YES' | translate}}</span>
 									</p>
 									<p *ngIf="pdp.is_presence_site_client"><span
-										class="label pull-left mr-2">{{'PDP.HOW_OFTEN' | translate}}</span><span
+										class="mr-2 label pull-left">{{'PDP.HOW_OFTEN' | translate}}</span><span
 										class=""
 										*ngIf="pdp.presence_site_client_frequency; else noDataFound">{{pdp.presence_site_client_frequency}}</span>
 									</p>
@@ -284,7 +284,23 @@
 					</div>
 				</mat-expansion-panel>
 
-				<mat-expansion-panel [expanded]="isExpanded" [disabled]="isDisableToggle">
+				<mat-expansion-panel [expanded]="isExpanded" [disabled]="isDisableToggle" *ngIf="!this.pdpPiman">
+					<mat-expansion-panel-header>
+						<div class="tf-heading tf-heading--lg col-12">
+							| 4 {{'PDP.CLIENT' | translate}}
+						</div>
+					</mat-expansion-panel-header>
+					<div class=" row d-flex flex-column flex-nowrap flex-fill">
+						<div class="col-md-12 flex-fill">
+							<div class="py-4 card " *ngFor="let document of this.pdp.documents">
+								<iframe [src]="document.src| safe:'resourceUrl' " width="100%" height="500px"></iframe>
+							</div>
+						</div>
+					</div>
+				</mat-expansion-panel>
+
+
+				<mat-expansion-panel [expanded]="isExpanded" [disabled]="isDisableToggle" *ngIf="this.pdpPiman">
 					<mat-expansion-panel-header>
 						<div class="tf-heading tf-heading--lg col-12">
 							| 4 {{'PDP.INSTRUCTIONS_GIVEN_BY_THE_EXTERNAL_COMPANY' | translate}}
@@ -336,7 +352,7 @@
 					</div>
 				</mat-expansion-panel>
 
-				<mat-expansion-panel [expanded]="isExpanded" [disabled]="isDisableToggle">
+				<mat-expansion-panel [expanded]="isExpanded" [disabled]="isDisableToggle" *ngIf="this.pdpPiman">
 					<mat-expansion-panel-header>
 						<div class="tf-heading tf-heading--lg col-12">
 							| 5 {{'PDP.PPE_MADE_AVAILABLE_TO_THE_EXTERNAL_COMPANY' | translate}}
@@ -402,7 +418,7 @@
 					</div>
 				</mat-expansion-panel>
 
-				<mat-expansion-panel [expanded]="isExpanded" [disabled]="isDisableToggle">
+				<mat-expansion-panel [expanded]="isExpanded" [disabled]="isDisableToggle" *ngIf="this.pdpPiman">
 					<mat-expansion-panel-header>
 						<div class="tf-heading tf-heading--lg col-12">
 							| 6 {{'PDP.RESOURCES_MADE_AVAILABLE_TO_THE_EXTERNAL_COMPANY' | translate}}
@@ -447,7 +463,7 @@
 					</div>
 				</mat-expansion-panel>
 
-				<mat-expansion-panel [expanded]="isExpanded" [disabled]="isDisableToggle">
+				<mat-expansion-panel [expanded]="isExpanded" [disabled]="isDisableToggle" *ngIf="this.pdpPiman">
 					<mat-expansion-panel-header>
 						<div class="tf-heading tf-heading--lg col-12">
 							| 7 {{'PDP.LIST_OF_HAZARDOUS_WORK' | translate}}
@@ -483,7 +499,7 @@
 					</div>
 				</mat-expansion-panel>
 
-				<mat-expansion-panel [expanded]="isExpanded" [disabled]="isDisableToggle">
+				<mat-expansion-panel [expanded]="isExpanded" [disabled]="isDisableToggle" *ngIf="this.pdpPiman">
 					<mat-expansion-panel-header>
 						<div class="tf-heading tf-heading--lg col-12">
 							| 8 {{'PDP.IDENTIFY_THE_RISKS_GENERATED_BY_COACTIVITY' | translate}}
@@ -492,7 +508,7 @@
 					<ng-container *ngIf="pdp.pdp_answer_risques.length > 0; else emptyRiskCard">
 						<div class="row">
 							<ng-container *ngFor="let risk of pdp.pdp_answer_risques">
-								<div class="col-md-12 col-lg-6 mb-3" *ngIf="risk.answer">
+								<div class="mb-3 col-md-12 col-lg-6" *ngIf="risk.answer">
 									<div class="card">
 										<h4><b>{{risk.cat_pdp_risque?.label}}</b></h4>
 										<ng-container>
@@ -590,7 +606,7 @@
 					</ng-template>
 				</mat-expansion-panel>
 
-                <mat-expansion-panel [expanded]="isExpanded" [disabled]="isDisableToggle" >
+                <mat-expansion-panel [expanded]="isExpanded" [disabled]="isDisableToggle" *ngIf="this.pdpPiman" >
                     <mat-expansion-panel-header>
                         <div class="tf-heading tf-heading--lg col-12">
                             | 9 {{'PDP.VALIDATION_OF_THE_PREVENTION_PLAN' | translate}}
@@ -599,7 +615,7 @@
                     <div class="row d-flex flex-column flex-nowrap flex-fill">
                         <div class="col-12 flex-fill">
                             <div [ngClass]="pdp.pdp_validations.length > 0 ?'card':'card pb-0'">
-                                <div class="box pb-0 pt-0">
+                                <div class="pt-0 pb-0 box">
                                     <button mat-raised-button class="pull-right" color="info" (click)="showValidationSignatureForm()" *ngIf="!validationEditMode">
                                         {{'PDP.ACTION.SIGN_PDP' | translate}}
 									</button>
@@ -612,7 +628,7 @@
 								<tf-pdp-signature class="pt-3 pb-3" *ngIf="validationEditMode" [pdp]="pdp" [type]="'pdp_validations'" (signEvent)="onSignPDP($event)"></tf-pdp-signature>
 
                                 <ng-container *ngIf="pdp.pdp_validations.length > 0; else noValidation">
-                                    <table mat-table *ngIf="!validationEditMode" [dataSource]="pdp.pdp_validations" class="mb-4 mt-4">
+                                    <table mat-table *ngIf="!validationEditMode" [dataSource]="pdp.pdp_validations" class="mt-4 mb-4">
 
                                         <ng-container matColumnDef="company">
                                             <th mat-header-cell *matHeaderCellDef> {{'PDP.COMPANIES' | translate}} </th>
@@ -673,13 +689,13 @@
 				<mat-expansion-panel [expanded]="isExpanded" [disabled]="isDisableToggle">
 					<mat-expansion-panel-header>
 						<div class="tf-heading tf-heading--lg col-12">
-							| 10 {{'PDP.INTERVENANTS' | translate}}
+							| {{ this.pdpPiman?'10':'5'}} {{'PDP.INTERVENANTS' | translate}}
 						</div>
 					</mat-expansion-panel-header>
 					<div class="row d-flex flex-column flex-nowrap flex-fill">
 						<div class="col-12 flex-fill">
 							<div [ngClass]="pdp.intervenants.length > 0 ?'card':'card pb-0'">
-                                <div class="box pb-0 pt-0">
+                                <div class="pt-0 pb-0 box">
                                     <button class="pull-right" mat-raised-button color="info" (click)="showIntervenantSignatureFrom()" *ngIf="!intervenantEditMode">
                                         {{'PDP.ACTION.SIGN_PDP' | translate}}
 									</button>
@@ -692,7 +708,7 @@
 								<tf-pdp-signature class="pt-3 pb-3" *ngIf="intervenantEditMode" [pdp]="pdp" [type]="'pdp_intervenants'" (signEvent)="onSignPDP($event)"></tf-pdp-signature>
 
 								<ng-container *ngIf="pdp.intervenants.length > 0; else noIntervenant">
-									<table mat-table *ngIf="!intervenantEditMode" [dataSource]="pdp.intervenants" class="mb-4 mt-4">
+									<table mat-table *ngIf="!intervenantEditMode" [dataSource]="pdp.intervenants" class="mt-4 mb-4">
 
 										<ng-container matColumnDef="lastname">
 											<th mat-header-cell *matHeaderCellDef> {{'PDP.LAST_NAME' | translate}} </th>
@@ -772,7 +788,7 @@
 </tf-portlet>
 
 <ng-template #emptyCard>
-	<div class="card pt-0 pb-0">
+	<div class="pt-0 pb-0 card">
 		<div class="box">
 			<ng-container *ngTemplateOutlet="noDataFound"></ng-container>
 		</div>

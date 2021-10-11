@@ -13,6 +13,10 @@ export class MenuAsideService {
 	menuList$: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
 	menuBtnAdd: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
 
+
+	//Modal gestion
+	pageReloaded : BehaviorSubject<boolean> = new BehaviorSubject(true);
+
 	/**
 	 * Service constructor
 	 *
@@ -39,4 +43,9 @@ export class MenuAsideService {
 		this.menuList$.next(menuItems);
 		this.menuBtnAdd.next(menuBtnAddItem);
 	}
+
+	reload(){
+		this.pageReloaded.next(!this.pageReloaded.value);
+	}
+
 }

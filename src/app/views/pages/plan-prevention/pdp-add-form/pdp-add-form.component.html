@@ -1,4 +1,7 @@
 <ng-container [formGroup]="pdpForm">
+	<div class="m-0 mt-3 tf-heading tf-heading--lg">
+		{{this.pdpType == 'PDP_PIMAN_TERRAIN'? ('PDP.FIELD_DESC' | translate):('PDP.OFFICE_DESC' | translate)}}
+	</div>
 	<div class="row" [hidden]="adding && partHided(1)">
 		<div class="col-12">
 			<div class="tf-heading tf-heading--xs">
@@ -12,7 +15,7 @@
 						<div class="tf-heading tf-heading--sm">
 							1.1 {{'PDP.USER_COMPANY' | translate}}
 						</div>
-						<div class="row pl-5 mb-4" style="border-bottom: 1px solid #e9ecf0;">
+						<div class="pl-5 mb-4 row" style="border-bottom: 1px solid #e9ecf0;">
 							<div class="row form-row col-6 align-items-center">
 								<span class="col-12 font-weight-bold">
 									{{'PDP.COMPANY' | translate}} :
@@ -197,7 +200,7 @@
 						<div class="tf-heading tf-heading--sm">
 							1.2 {{'PDP.OUTSIDE_COMPANY' | translate}}
 						</div>
-						<div class="row pl-5 mb-4">
+						<div class="pl-5 mb-4 row">
 							<div class="row form-row col-6 align-items-center">
 								<span class="col-12 font-weight-bold">
 									{{'PDP.OCCUPATIONAL_PHYSICIAN' | translate}} :
@@ -387,7 +390,7 @@
 				<div class="col-md-12">
 					<div class="tf-card-form">
 						<div class="row">
-							<div class="form-row row col-7 align-items-center pr-5"
+							<div class="pr-5 form-row row col-7 align-items-center"
 								 style="border-right: 1px solid #e9ecf0;padding: 18px;">
 								<mat-form-field class="col-xl-6">
 									<mat-label>{{'PDP.INTERVENTION_NAME' | translate}}</mat-label>
@@ -430,7 +433,7 @@
 													</span>
 												<div class="horaire-box">
 													<div>
-														<input class="form-control text-center" type="time"
+														<input class="text-center form-control" type="time"
 															   name="horaires_ouverture_site"
 															   formControlName="horaires_ouverture_site"
 															   [required]="isFieldRequired('horaires_ouverture_site')"
@@ -442,7 +445,7 @@
 													</div>
 													<span>- </span>
 													<div>
-														<input class="form-control text-center" type="time"
+														<input class="text-center form-control" type="time"
 															   name="horaires_fermeture_site"
 															   formControlName="horaires_fermeture_site"
 															   [required]="isFieldRequired('horaires_fermeture_site')"
@@ -472,7 +475,7 @@
 									</mat-error>
 								</mat-form-field>
 							</div>
-							<div class="form-row row col-5 align-items-center pl-5" style="padding: 18px;">
+							<div class="pl-5 form-row row col-5 align-items-center" style="padding: 18px;">
 								<div class="row form-row col-xl-6 d-flex flex-column justify-content-center">
 									<label class="font-weight-bold">{{'PDP.NIGHT_WORK' | translate}}</label>
 									<mat-radio-group formControlName="is_night_shift">
@@ -529,8 +532,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-12 mb-4" *ngIf="partHided(2) && adding">
-			<button mat-raised-button type="button" class="pull-right px-5" color="info"
+		<div class="mb-4 col-12" *ngIf="partHided(2) && adding">
+			<button mat-raised-button type="button" class="px-5 pull-right" color="info"
 					(click)="showPart(2)">{{'ACTION.FOLLOWING' | translate}}</button>
 		</div>
 	</div>
@@ -574,15 +577,15 @@
 										<ng-container *ngIf="element?.is_comment_consigne">
 														<textarea
 															formControlName="comment"
-															class="form-control no_border mb-2 mt-2 "
+															class="mt-2 mb-2 form-control no_border "
 															cols="5" rows="1"
 															placeholder="{{'ACTION.ENTER_HERE' | translate}}"></textarea>
 										</ng-container>
-										<div class="mb-2 mt-3 d-flex align-items-center " *ngIf="element?.has_details">
+										<div class="mt-3 mb-2 d-flex align-items-center " *ngIf="element?.has_details">
 														<textarea
 															cols="5" rows="1"
 															formControlName="type_operation"
-															class="form-control no_border mb-2 mt-2 "
+															class="mt-2 mb-2 form-control no_border "
 															placeholder="{{'PDP.'+element?.label_details | translate}}"></textarea>
 										</div>
 									</td>
@@ -597,8 +600,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-12 mb-4" *ngIf="partHided(3) && adding">
-			<button mat-raised-button type="button" class="pull-right px-5" color="info"
+		<div class="mb-4 col-12" *ngIf="partHided(3) && adding">
+			<button mat-raised-button type="button" class="px-5 pull-right" color="info"
 					(click)="showPart(3)">{{'ACTION.FOLLOWING' | translate}}</button>
 		</div>
 	</div>
@@ -681,7 +684,7 @@
 										class="cell-textarea" [width]="'20%'">
 										<textarea cols="5" rows="1" *ngIf="element?.is_with_comment"
 												  formControlName="comment"
-												  class="form-control no_border mb-2 mt-3"
+												  class="mt-3 mb-2 form-control no_border"
 												  placeholder="{{'ACTION.ENTER_HERE' | translate}}"></textarea>
 									</td>
 								</ng-container>
@@ -730,7 +733,7 @@
 										class="cell-textarea">
 										<textarea
 											formControlName="comment"
-											class="form-control no_border mb-2 mt-2 "
+											class="mt-2 mb-2 form-control no_border "
 											cols="5" rows="1"
 											placeholder="{{'ACTION.ENTER_HERE' | translate}}"></textarea>
 									</td>
@@ -744,8 +747,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-12 mb-4" *ngIf="partHided(4) && adding">
-			<button mat-raised-button type="button" class="pull-right px-5" color="info"
+		<div class="mb-4 col-12" *ngIf="partHided(4) && adding">
+			<button mat-raised-button type="button" class="px-5 pull-right" color="info"
 					(click)="showPart(4)">{{'ACTION.FOLLOWING' | translate}}</button>
 		</div>
 	</div>
@@ -793,8 +796,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-12 mb-4" *ngIf="partHided(5) && adding">
-			<button mat-raised-button type="button" class="pull-right px-5" color="info"
+		<div class="mb-4 col-12" *ngIf="partHided(5) && adding">
+			<button mat-raised-button type="button" class="px-5 pull-right" color="info"
 					(click)="showPart(5)">{{'ACTION.FOLLOWING' | translate}}</button>
 		</div>
 	</div>
@@ -815,7 +818,7 @@
 										formControlName="answer"
 										(change)="allowRisksFields(index, $event.checked)"></mat-slide-toggle>
 								</div>
-								<div class="row pl-5 mb-4" style="border-bottom: 1px solid #e9ecf0;"
+								<div class="pl-5 mb-4 row" style="border-bottom: 1px solid #e9ecf0;"
 									 [hidden]="!risk?.get('answer').value">
 									<div class="col-md-12 flex-column">
 										<div class="pl-3 pr-3">
@@ -824,14 +827,14 @@
 												*ngIf="risk?.get('is_other').value"
 												formControlName="other_cat_pdp_risque"
 												style="margin-top: -10px;"
-												class="form-control no_border w-100 mb-3"
+												class="mb-3 form-control no_border w-100"
 												placeholder="{{'PDP.SPECIFY' | translate}}">
 											</textarea>
 										</div>
 										<span
 											class="mb-2 font-weight-bold">{{'PDP.RELATED_SITUATION' | translate}}</span>
-										<div class="align-items-center d-flex mt-2 flex-wrap">
-											<div class="align-items-center d-flex ml-2 mr-2  w-100 mb-2"
+										<div class="flex-wrap mt-2 align-items-center d-flex">
+											<div class="mb-2 ml-2 mr-2 align-items-center d-flex w-100"
 												 *ngFor="let situation of getFormArrayControls(risk?.get('situation')); let i = index"
 												 formArrayName="situation">
 												<ng-container [formGroup]="situation">
@@ -843,19 +846,19 @@
 														<textarea
 															rows="1"
 															formControlName="comment"
-															class="form-control no_border mb-2 mt-2 ml-2"
+															class="mt-2 mb-2 ml-2 form-control no_border"
 															placeholder="{{'...' | translate}}"></textarea>
 													</div>
 												</ng-container>
 											</div>
 											<ng-container *ngIf="risk?.get('is_other').value">
-												<div class="align-items-center d-flex ml-2 mr-2  w-100 mb-2">
+												<div class="mb-2 ml-2 mr-2 align-items-center d-flex w-100">
 													<!--													<mat-checkbox></mat-checkbox>-->
 													<div class="align-items-center d-flex ng-star-inserted w-100">
 														<textarea
 															rows="1"
 															formControlName="other_pdp_situation_risque"
-															class="form-control no_border mb-2 mt-2 ml-2"
+															class="mt-2 mb-2 ml-2 form-control no_border"
 															placeholder="{{'...' | translate}}"></textarea>
 													</div>
 												</div>
@@ -866,11 +869,11 @@
 											</mat-error>
 										</div>
 									</div>
-									<div class="col-md-12 flex-column mt-3">
+									<div class="mt-3 col-md-12 flex-column">
 										<span
 											class="mb-2 font-weight-bold">{{'PDP.PREVENTION_METHOD_DEPLOYED' | translate}}</span>
-										<div class="align-items-center d-flex mt-2 flex-wrap">
-											<div class="align-items-center d-flex ml-2 mr-2 ng-star-inserted w-100 mb-2"
+										<div class="flex-wrap mt-2 align-items-center d-flex">
+											<div class="mb-2 ml-2 mr-2 align-items-center d-flex ng-star-inserted w-100"
 												 *ngFor="let moyen of getFormArrayControls(risk?.get('moyen'))"
 												 formArrayName="moyen">
 												<ng-container [formGroup]="moyen">
@@ -884,7 +887,7 @@
 														<textarea
 															rows="1"
 															formControlName="comment"
-															class="form-control no_border mb-2 mt-2 ml-2"
+															class="mt-2 mb-2 ml-2 form-control no_border"
 															placeholder="{{'...' | translate}}"></textarea>
 													</div>
 													<div class="align-items-center d-flex ng-star-inserted w-100"
@@ -894,7 +897,7 @@
 															formArrayName="pdp_risque_moyen_filtre">
 															<ng-container [formGroup]="subMoyen">
 																<mat-checkbox
-																	class="mr-2 ml-2"
+																	class="ml-2 mr-2"
 																	(change)="allowSubMoyensFields(subMoyen, $event.checked); allowComment(subMoyen, $event.checked)"
 																	formControlName="answer">{{subMoyen?.get('label').value}}</mat-checkbox>
 																<div
@@ -903,7 +906,7 @@
 																	<textarea
 																		rows="1"
 																		formControlName="comment"
-																		class="form-control no_border mb-2 mt-2 ml-2"
+																		class="mt-2 mb-2 ml-2 form-control no_border"
 																		placeholder="{{'...' | translate}}"></textarea>
 																</div>
 															</ng-container>
@@ -913,7 +916,7 @@
 												</ng-container>
 											</div>
 											<ng-container *ngIf="risk?.get('is_other').value">
-												<div class="align-items-center d-flex ml-2 mr-2 w-100 mb-2"
+												<div class="mb-2 ml-2 mr-2 align-items-center d-flex w-100"
 													 *ngFor="let otherMoyens of getFormArrayControls(risk?.get('other_pdp_moyen_risque'))"
 													 formArrayName="other_pdp_moyen_risque">
 													<ng-container [formGroup]="otherMoyens">
@@ -922,7 +925,7 @@
 															<textarea
 																rows="1"
 																formControlName="comment"
-																class="form-control no_border mb-2 mt-2 ml-2"
+																class="mt-2 mb-2 ml-2 form-control no_border"
 																placeholder="{{'...' | translate}}"></textarea>
 														</div>
 													</ng-container>
@@ -930,17 +933,17 @@
 											</ng-container>
 										</div>
 									</div>
-									<div class="col-md-12 flex-column mt-3">
+									<div class="mt-3 col-md-12 flex-column">
 										<span
 											class="mb-2 font-weight-bold">{{'PDP.PERSON_IN_CHARGE' | translate}}</span>
-										<div class="align-items-center d-flex mt-2 flex-wrap mb-2">
-											<mat-checkbox class="mr-2 ml-2"
+										<div class="flex-wrap mt-2 mb-2 align-items-center d-flex">
+											<mat-checkbox class="ml-2 mr-2"
 														  formControlName="is_eu">EU
 											</mat-checkbox>
-											<mat-checkbox class="mr-2 ml-2"
+											<mat-checkbox class="ml-2 mr-2"
 														  formControlName="is_piman">PIMAN
 											</mat-checkbox>
-											<mat-checkbox class="mr-2 ml-2"
+											<mat-checkbox class="ml-2 mr-2"
 														  formControlName="is_sous_traitant">{{'PDP.SUBCONTRACTOR' | translate}}
 											</mat-checkbox>
 										</div>
@@ -956,8 +959,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-12 mb-4" *ngIf="partHided(6) && adding">
-			<button mat-raised-button type="button" class="pull-right px-5" color="info"
+		<div class="mb-4 col-12" *ngIf="partHided(6) && adding">
+			<button mat-raised-button type="button" class="px-5 pull-right" color="info"
 					(click)="showPart(6)">{{'ACTION.FOLLOWING' | translate}}</button>
 		</div>
 	</div>
@@ -1049,7 +1052,7 @@
 												<mat-radio-button
 													[value]="0">{{'PDP.NO' | translate}}</mat-radio-button>
 											</mat-radio-group>
-											<mat-form-field class="ml-3 mb-3" [style.fontSize.px]=13>
+											<mat-form-field class="mb-3 ml-3" [style.fontSize.px]=13>
 												<mat-label>{{'PDP.DATE' | translate}}</mat-label>
 												<input matInput class="form-control" mask="d0-M0-0000"
 													   [specialCharacters]="[ '-' ]"
@@ -1089,7 +1092,7 @@
 									[formGroupName]="i"></tr>
 							</table>
 							<div class="row form-row align-items-center">
-								<button mat-raised-button type="button" class="pull-left btn-small mt-4" color="info"
+								<button mat-raised-button type="button" class="mt-4 pull-left btn-small" color="info"
 										style="width: 180px"
 										(click)="addValidationSousTraitant()">{{'PDP.ADD_ROW' | translate}}</button>
 							</div>
@@ -1197,7 +1200,7 @@
 											</mat-select>
 											<mat-error
 												*ngIf="isControlHasError('motif_id', 'required', 'intervenants', index)"
-												class="w-100 mb-2 small">
+												class="mb-2 w-100 small">
 												{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}
 											</mat-error>
 										</div>
@@ -1227,8 +1230,8 @@
 				</div>
 			</div>
 		</div>
-		<!--		<div class="col-12 mb-4" *ngIf="partHided(7) && origin=='add'">-->
-		<!--			<button mat-raised-button type="button" class="pull-right px-5" color="info"-->
+		<!--		<div class="mb-4 col-12" *ngIf="partHided(7) && origin=='add'">-->
+		<!--			<button mat-raised-button type="button" class="px-5 pull-right" color="info"-->
 		<!--					(click)="showPart(7)">{{'ACTION.FOLLOWING' | translate}}</button>-->
 		<!--		</div>-->
 	</div>

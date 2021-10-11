@@ -41,8 +41,16 @@ export class PdpService extends HttpService {
 		return this.http.post<JsonResponse<Pdp>>(this.baseUrl + '/' + 'create', pdp);
 	}
 
-	update(pdp) {
-		return this.http.put<JsonResponse<Pdp>>(this.baseUrl + '/' + pdp.id, pdp);
+	update(pdp, pdp_id = undefined) {
+		if( pdp_id ){
+			const httpHeaders = new HttpHeaders();
+			httpHeaders.set("Content-Type", "multipart/form-data");
+			return this.http.post<JsonResponse<Pdp>>(this.baseUrl + '/' + pdp_id, pdp, { headers: httpHeaders });
+		}else{
+
+			return this.http.put<JsonResponse<Pdp>>(this.baseUrl + '/' + pdp.id, pdp);
+		}
+
 	}
 
 	get(pdp_id) {
@@ -69,7 +77,7 @@ export class PdpService extends HttpService {
 	addValidationSignatures(pdp_id, signatures){
         return this.http.post(this.baseUrl+'/'+pdp_id+'/validations/signatures', signatures);
 	}
-	
+
 	addIntervenantSignatures(pdp_id, signatures){
         return this.http.post(this.baseUrl+'/'+pdp_id+'/intervenants/signatures', signatures);
     }
