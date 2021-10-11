@@ -95,11 +95,16 @@ export class PdpAddClientComponent implements OnInit {
 
 	ngOnInit() {
 		this.triggerResize();
-		console.log(this.pdpForm);
-		console.log(this._pdp);
-		console.log(this.adding);
+		this.getPDPConsignes();
 
 	}
+
+	async getPDPConsignes() {
+		const res: any = await this.pdpService.getAllPdpFilters().toPromise();
+		this.suivisMedicalIntervenants = res.result.data ? res.result.data.intervenant : [];
+		this.frequences = res.result.data ? res.result.data.frequence : [];
+	}
+
 
 	patchFormArray(array, formArrayName, listAddedControls: Array<any> = [], commentDisabled = true) {
 		const FormArray = this.pdpForm.get(formArrayName) as FormArray;
