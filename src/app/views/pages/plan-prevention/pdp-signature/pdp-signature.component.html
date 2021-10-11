@@ -2,27 +2,27 @@
     <form *ngIf="type == 'pdp_validations'" [formGroup]="signaturesForm" class="tf-form tf-form--group-seperator-dashed">
         <div>
             <div *ngxPermissionsOnly="['ADMIN', 'ROOT']">
-                <p class="font-weight-bold text-right add-signature-line-btn"><a (click)="addSignatures()">+ {{'ACTION.ADD_SIGNER' | translate}}</a></p>
+                <p class="text-right font-weight-bold add-signature-line-btn"><a (click)="addSignatures()">+ {{'ACTION.ADD_SIGNER' | translate}}</a></p>
             </div>
             <div class="row form-row signature-line" *ngFor="let signature of signaturesForm.controls; let i=index" [formGroupName]="i">
 
-                <div class="col-12 mb-2" *ngIf="signaturesForm.controls[i].get('type').value">
+                <div class="mb-2 col-12" *ngIf="signaturesForm.controls[i].get('type').value">
                     <b>{{signaturesForm.controls[i].get('type').value  | uppercase}} : </b>
                 </div>
-                
-                <div class="col-xl-12 mb-3">
-                    <button *ngIf="signaturesForm.controls[i].get('type').value!='ee' && signaturesForm.controls[i].get('type').value!='eu'" 
-                            mat-icon-button class="pull-right " 
-                            color="accent" 
+
+                <div class="mb-3 col-xl-12">
+                    <button *ngIf="signaturesForm.controls[i].get('type').value!='ee' && signaturesForm.controls[i].get('type').value!='eu'"
+                            mat-icon-button class="pull-right "
+                            color="accent"
                             color="warn"
-                            matTooltip="{{'ACTION.DELETE' | translate}}" 
+                            matTooltip="{{'ACTION.DELETE' | translate}}"
                             (click)="removeSignature(i)"
                     ><mat-icon>highlight_off</mat-icon>
                     </button>
 					<div class=" d-flex align-items-center">
 						<mat-label class="">{{'PDP.PARTICIPATION_IN_THE_PRIOR_JOINT_INSPECTION' | translate}} </mat-label>
 						<div class="d-flex align-items-center">
-							<mat-radio-group formControlName="is_part_inspection" class="ml-3  "
+							<mat-radio-group formControlName="is_part_inspection" class="ml-3 "
 								(change)="togglePartInspectionAt($event.value, i, 'part_inspection_at')"
 								[(ngModel)]="selectedButton[i]"
 								>
@@ -65,7 +65,7 @@
 							<mat-icon >delete</mat-icon>
 						</button>
                     </div>
-                    
+
                     <div class="signature-container">
                         <signature-pad #signaturePad id="signaturePad" (window:resize)="resizeSignaturePad()" [options]="signaturePadOptions" (onEndEvent)="drawComplete(i)"></signature-pad>
                     </div>
@@ -77,14 +77,14 @@
     <form *ngIf="type == 'pdp_intervenants'" [formGroup]="signaturesForm" class="tf-form tf-form--group-seperator-dashed">
         <div>
             <div *ngxPermissionsOnly="['ADMIN', 'ROOT']">
-                <p class="font-weight-bold text-right add-signature-line-btn"><a (click)="addSignatures()">+ {{'ACTION.ADD_SIGNER' | translate}}</a></p>
+                <p class="text-right font-weight-bold add-signature-line-btn"><a (click)="addSignatures()">+ {{'ACTION.ADD_SIGNER' | translate}}</a></p>
             </div>
             <div class="row form-row signature-line" *ngFor="let signature of signaturesForm.controls; let i=index" [formGroupName]="i">
-                <div class="col-xl-12 mb-3">
-                    <button mat-icon-button class="pull-right" 
-                            color="accent" 
+                <div class="mb-3 col-xl-12">
+                    <button mat-icon-button class="pull-right"
+                            color="accent"
                             color="warn"
-                            matTooltip="{{'ACTION.DELETE' | translate}}" 
+                            matTooltip="{{'ACTION.DELETE' | translate}}"
                             (click)="removeSignature(i)"
                     ><mat-icon>highlight_off</mat-icon>
                     </button>
@@ -99,7 +99,7 @@
                     <mat-label>{{'PDP.FIRST_NAME' | translate}} </mat-label>
                     <input class="form-control" matInput type="text" name="first_name" formControlName="first_name" placeholder="{{'ACTION.ENTER_HERE' | translate}}" />
                 </mat-form-field>
-                                
+
                 <mat-form-field class="col-xl-2 ">
                     <mat-label>{{'PDP.DATE' | translate}} </mat-label>
                     <input class="form-control" matInput type="date" name="date" formControlName="date" placeholder="DD/MM/YYYY" />
@@ -117,12 +117,12 @@
                         <signature-pad #signaturePad id="signaturePad" (window:resize)="resizeSignaturePad()" [options]="signaturePadOptions" (onEndEvent)="drawComplete(i)"></signature-pad>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </form>
 
-    <button mat-raised-button [ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': formloading}" [disabled]="formloading || signaturesForm?.invalid" class="btn float-right btn-save" (click)="signaturesForm?.valid && onSubmit(false)">
+    <button mat-raised-button [ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': formloading}" [disabled]="formloading || signaturesForm?.invalid" class="float-right btn btn-save" (click)="signaturesForm?.valid && onSubmit()">
         {{'ACTION.SAVE' | translate}}
     </button>
 </div>
