@@ -45,14 +45,19 @@
 </form>
 
 <ng-template #content let-modal>
-	<div class="modal-header">
+
+	<div class="postion-relative modal-header r-">
 		<h4 class="mx-auto text-center modal-title font-weight-bold" id="modal-basic-title">Type de plan de prévention</h4>
-	  </div>
+		<button type="button" class="ml-auto position-absolute close" aria-label="Close" (click)="closeModal()">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
 	<div class="modal-body">
 		<div class="mx-auto my-5 d-flex justify-content-around col-12">
 			<div class="p-4 card ">
 				<div class="card-body">
 				  <h5 class="text-center card-title font-weight-bold">{{'PDP.PIMAN' | translate}}</h5>
+
 				  <div class="d-flex justify-content-around">
 					<button href="#"  class="px-3 py-2 btn btnCustom font-weight-bold" (click)="selectPdp('PDP_PIMAN_BUREAU')">Bureau</button>
 					  <button href="#" class="px-3 py-2 btn btnCustom font-weight-bold" (click)="selectPdp('PDP_PIMAN_TERRAIN')">Terrain</button>

@@ -458,4 +458,9 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 		  return `with: ${reason}`;
 		}
 	  }
+	closeModal(){
+		console.log("Test");
+		this.modalService.dismissAll();
+		this.router.navigate(['/plan-de-prevention/list']);
+	}
 }
