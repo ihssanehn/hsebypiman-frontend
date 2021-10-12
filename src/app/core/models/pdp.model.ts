@@ -1,5 +1,6 @@
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
-import { Type, Document} from './';export class Pdp {
+import { Type, Document} from './';import { Status } from "./status.model";
+export class Pdp {
 	creator_id?: number;
 	cse_eu_job?: string;
 	cse_eu_name?: string;
@@ -50,4 +51,5 @@ import { Type, Document} from './';export class Pdp {
 	type_id?:number;
 	type?:Type;
 	documents?:Document[];
+	status?:Status;
 }

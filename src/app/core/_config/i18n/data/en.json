@@ -19,6 +19,7 @@
 		"EXPORT_PDF": "Export in PDF",
 		"FOLLOWING": "Follow",
 		"READ": "Consult",
+		"TO_SIGN": "Set status to 'To sign'",
 		"REDUCE": "Reduce",
 		"REFRESH": "Refresh",
 		"SAVE": "Save",
@@ -488,6 +489,7 @@
 			"ADD_CATEGORIE_PDP_RISQUE": "Add Pdp Risk Category",
 			"ADD_PDP_RISQUE": "Add Pdp Risk",
 			"SIGN_PDP": "Sign the prevention plan"
+
 		}
 	},
 	"AUTH": {

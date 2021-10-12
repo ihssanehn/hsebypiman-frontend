@@ -26,7 +26,8 @@
 		"SHOW_USER": "Voir l'utilisateur",
 		"SHOW_VISIT": "Voir la visite",
 		"SIGN": "Signer",
-		"SELECT":"Selectionner"
+		"SELECT":"Selectionner",
+		"TO_SIGN": "Passer en status en 'A signer'"
 	},
 	"ARS": {
 		"ACTION": {
@@ -490,6 +491,7 @@
 			"ADD_CATEGORIE_PDP_RISQUE": "Ajouter Categorie Pdp Risque",
 			"ADD_PDP_RISQUE": "Ajouter Pdp Risque",
 			"SIGN_PDP": "Signer le plan de prévention"
+
 		}
 	},
 	"AUTH": {
