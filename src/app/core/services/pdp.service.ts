@@ -81,4 +81,12 @@ export class PdpService extends HttpService {
 	addIntervenantSignatures(pdp_id, signatures){
         return this.http.post(this.baseUrl+'/'+pdp_id+'/intervenants/signatures', signatures);
     }
+
+	nextStatus(pdp_id){
+		return this.http.get(this.baseUrl+'/'+pdp_id+'/status/next');
+	}
+
+	previousStatus(pdp_id){
+		return this.http.get(this.baseUrl+'/'+pdp_id+'/status/previous');
+	}
 }

@@ -27,7 +27,9 @@
 		"SHOW_USER": "View user",
 		"SHOW_VISIT": "View the visit",
 		"SIGN": "Sign",
-		"SELECT":"Select"
+		"SELECT":"Select",
+		"NEXT": "Next Status",
+		"PREVIOUS": "Previous status"
 	},
 	"ARS": {
 		"ACTION": {

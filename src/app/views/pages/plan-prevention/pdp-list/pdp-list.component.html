@@ -136,9 +136,15 @@
 <mat-menu #actionMenu="matMenu" class="action-menu">
 	<ng-template matMenuContent let-chantier="chantier" let-status="status">
 		<ng-container *ngxPermissionsOnly="['plan_prevention_canSeeAll']">
-			<button mat-icon-button color="primary" matTooltip="{{'ACTION.TO_SIGN' | translate}}"
+			<button mat-icon-button color="primary" matTooltip="{{'ACTION.NEXT' | translate}}"
 					(click)="nextStatus(pdp_id)">
-					<mat-icon>done</mat-icon>
+					<mat-icon>arrow_forward_ios</mat-icon>
+			</button>
+		</ng-container>
+		<ng-container *ngxPermissionsOnly="['plan_prevention_canSeeAll']">
+			<button mat-icon-button color="primary" matTooltip="{{'ACTION.PREVIOUS' | translate}}"
+					(click)="previousStatus(pdp_id)">
+					<mat-icon>arrow_back_ios</mat-icon>
 			</button>
 		</ng-container>
 		<ng-container *ngxPermissionsOnly="['plan_prevention_canSeeAll']">

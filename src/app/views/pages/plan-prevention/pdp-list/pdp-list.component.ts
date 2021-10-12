@@ -134,7 +134,15 @@ export class PdpListComponent implements OnInit {
 		this.router.navigate(['../sign', pdpId], {relativeTo: this.activatedRoute});
 	}
 	nextStatus(pdpId){
-		console.log('nextStatus')
+		this.pdpService.nextStatus(pdpId).subscribe((res : any)=>{
+			this.getPDPs();
+		});
+	}
+
+	previousStatus(pdpId){
+		this.pdpService.previousStatus(pdpId).subscribe((res : any)=>{
+			this.getPDPs();
+		});
 	}
 
 	async deletePdp(pdpId) {

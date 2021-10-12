@@ -27,7 +27,8 @@
 		"SHOW_VISIT": "Voir la visite",
 		"SIGN": "Signer",
 		"SELECT":"Selectionner",
-		"TO_SIGN": "Passer en status en 'A signer'"
+		"NEXT": "Passer au status suivant",
+		"PREVIOUS": "Revenir au status précédent"
 	},
 	"ARS": {
 		"ACTION": {
