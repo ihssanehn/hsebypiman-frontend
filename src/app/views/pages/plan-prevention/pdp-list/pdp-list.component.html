@@ -138,7 +138,7 @@
 
 		<ng-container *ngxPermissionsOnly="['plan_prevention_canSeeAll']">
 			<button mat-icon-button color="primary" matTooltip="{{'ACTION.VALIDATE' | translate}}"
-					(click)="nextStatus(pdp_id)">
+					(click)="validatePdp(pdp_id)">
 					<mat-icon>done</mat-icon>
 			</button>
 		</ng-container>

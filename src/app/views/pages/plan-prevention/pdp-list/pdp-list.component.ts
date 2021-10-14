@@ -142,27 +142,50 @@ export class PdpListComponent implements OnInit {
 	signPdp(pdpId) {
 		this.router.navigate(['../sign', pdpId], {relativeTo: this.activatedRoute});
 	}
-	nextStatus(pdpId){
+	validatePdp(pdpId){
 		Swal.fire({
 			icon: 'info',
 			title: this.translate.instant("ACTION.VALIDATE"),
 			showConfirmButton: true,
 			showCancelButton:true,
-			input: 'textarea',
-			confirmButtonText: this.translate.instant("ACTION.CONFIRM"),
 			cancelButtonText: this.translate.instant("ACTION.UNVALIDATE"),
-		}).then(async response => {
-			if (response.value) {
+			confirmButtonText: this.translate.instant("ACTION.CONFIRM"),
+			showCloseButton: true,
 
+		}).then((result) =>{
+			if(result.isConfirmed){
+				const status = {
+					"status" : this.status.find(status => status.code == "ATT_CONSULTANT")
+				}
+				this.pdpService.changeStatus(pdpId,status ).subscribe((res)=>{
+					console.log(res);
+					this.getPDPs();
+				});
+
+
+
+			}else if(result.dismiss == Swal.DismissReason.cancel ){
+				console.log(result.dismiss)
+
+				Swal.fire({
+					icon: 'question',
+					title: this.translate.instant("PDP.NOTIF.COMMENTS"),
+					showConfirmButton: true,
+					input: 'textarea',
+  					inputPlaceholder: 'Commentaires ...',
+					cancelButtonText: this.translate.instant("ACTION.UNVALIDATE"),
+					confirmButtonText: this.translate.instant("ACTION.CONFIRM"),
+
+				}).then((result) =>{
+					if(result.value){
+						//TODO -> STORE COMMS
+						console.log(result.value);
+					}
+				});
 			}
 		});
 	}
 
-	previousStatus(pdpId){
-		this.pdpService.previousStatus(pdpId).subscribe((res : any)=>{
-			this.getPDPs();
-		});
-	}
 
 	async deletePdp(pdpId) {
 		Swal.fire({
@@ -207,14 +230,6 @@ export class PdpListComponent implements OnInit {
 		this.pdpService.getStatus().subscribe((res : any)=>{
 			this.status = res.result.data;
 		});
-	}
-	pdpValidate(choice :any){
-		if(choice){
-			this.modalService.dismissAll();
-			//TODO CHANGE STATE
-		}else if(choice === false){
-			this.commentShown  = !this.commentShown;
-		}
 	}
 
 }

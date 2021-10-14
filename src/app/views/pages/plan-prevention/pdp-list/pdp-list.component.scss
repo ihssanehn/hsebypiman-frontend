@@ -5,6 +5,7 @@
 		}
 	}
 
+
 }
 
 ::ng-deep.mat-menu-panel {
@@ -16,6 +17,9 @@
 ::ng-deep.ant-select-selection{
 	width: 170px!important;
 }
+::ng-deep.swal2-styled.swal2-cancel{
+		background-color: #dd153e !important;
+	}
 
 .btnCustom{
 	border-radius: 10px;

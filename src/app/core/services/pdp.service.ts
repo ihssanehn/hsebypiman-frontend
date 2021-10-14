@@ -85,11 +85,8 @@ export class PdpService extends HttpService {
 	getStatus(){
 		return this.http.get(this.baseUrl+'/status');
 	}
-	nextStatus(pdp_id){
-		return this.http.get(this.baseUrl+'/'+pdp_id+'/status/next');
-	}
+	changeStatus(pdp_id, status){
+		return this.http.post(this.baseUrl+'/'+pdp_id+'/status', status);
+	};
 
-	previousStatus(pdp_id){
-		return this.http.get(this.baseUrl+'/'+pdp_id+'/status/previous');
-	}
 }
