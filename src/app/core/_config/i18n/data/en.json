@@ -28,8 +28,9 @@
 		"SHOW_VISIT": "View the visit",
 		"SIGN": "Sign",
 		"SELECT":"Select",
-		"NEXT": "Next Status",
-		"PREVIOUS": "Previous status"
+		"VALIDATE": "Validate the prevention plan",
+		"UNVALIDATE": "Unvalidate"
+
 	},
 	"ARS": {
 		"ACTION": {

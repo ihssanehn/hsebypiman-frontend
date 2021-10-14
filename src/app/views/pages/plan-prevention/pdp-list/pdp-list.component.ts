@@ -1,10 +1,11 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {Paginate} from '@app/core/_base/layout/models/paginate.model';
-import {Pdp} from '@app/core/models';
+import {Pdp, Status} from '@app/core/models';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ArService, PdpService} from '@app/core/services';
 import {TranslateService} from '@ngx-translate/core';
 import Swal from "sweetalert2";
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
 	selector: 'tf-pdp-list',
@@ -12,6 +13,8 @@ import Swal from "sweetalert2";
 	styleUrls: ['./pdp-list.component.scss']
 })
 export class PdpListComponent implements OnInit {
+	@ViewChild('validatePdpModal',{static: false})
+	private validatePdpModal: TemplateRef<any>;
 
 	public pdpsList: Paginate<Pdp>;
 	pagination: any = {
@@ -31,6 +34,9 @@ export class PdpListComponent implements OnInit {
 	displayedArColumns = ['raison_sociale_eu', 'cse', 'created_at', 'validity_at', 'lieu_intervention', 'risque', 'status','type','action'];
 
 	pdp_id: number;
+	status: Status[];
+	newStatus: Status;
+	commentShown:boolean = false;
 
 
 	constructor(
@@ -39,11 +45,14 @@ export class PdpListComponent implements OnInit {
 		protected pdpService: PdpService,
 		protected cdr: ChangeDetectorRef,
 		private translate: TranslateService,
+		private modalService : NgbModal,
 	) {
 	}
 
 	ngOnInit() {
 		this.getPDPs();
+		this.getStatus();
+
 	}
 
 	async getPDPs() {
@@ -134,8 +143,18 @@ export class PdpListComponent implements OnInit {
 		this.router.navigate(['../sign', pdpId], {relativeTo: this.activatedRoute});
 	}
 	nextStatus(pdpId){
-		this.pdpService.nextStatus(pdpId).subscribe((res : any)=>{
-			this.getPDPs();
+		Swal.fire({
+			icon: 'info',
+			title: this.translate.instant("ACTION.VALIDATE"),
+			showConfirmButton: true,
+			showCancelButton:true,
+			input: 'textarea',
+			confirmButtonText: this.translate.instant("ACTION.CONFIRM"),
+			cancelButtonText: this.translate.instant("ACTION.UNVALIDATE"),
+		}).then(async response => {
+			if (response.value) {
+
+			}
 		});
 	}
 
@@ -180,6 +199,22 @@ export class PdpListComponent implements OnInit {
 				}
 			}
 		});
+	}
+	getPdp(pdpId){
+			return this.pdpsList.data.find(pdp => pdp.id == pdpId);
+	}
+	getStatus(){
+		this.pdpService.getStatus().subscribe((res : any)=>{
+			this.status = res.result.data;
+		});
+	}
+	pdpValidate(choice :any){
+		if(choice){
+			this.modalService.dismissAll();
+			//TODO CHANGE STATE
+		}else if(choice === false){
+			this.commentShown  = !this.commentShown;
+		}
 	}
 
 }

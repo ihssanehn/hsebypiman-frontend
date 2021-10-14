@@ -122,7 +122,6 @@
 						</button>
 					</td>
 				</ng-container>
-
 				<tr mat-header-row *matHeaderRowDef="displayedArColumns"></tr>
 				<tr mat-row *matRowDef="let row; columns: displayedArColumns;"></tr>
 			</table>
@@ -134,17 +133,13 @@
 </tf-portlet>
 
 <mat-menu #actionMenu="matMenu" class="action-menu">
+
 	<ng-template matMenuContent let-chantier="chantier" let-status="status">
+
 		<ng-container *ngxPermissionsOnly="['plan_prevention_canSeeAll']">
-			<button mat-icon-button color="primary" matTooltip="{{'ACTION.NEXT' | translate}}"
+			<button mat-icon-button color="primary" matTooltip="{{'ACTION.VALIDATE' | translate}}"
 					(click)="nextStatus(pdp_id)">
-					<mat-icon>arrow_forward_ios</mat-icon>
-			</button>
-		</ng-container>
-		<ng-container *ngxPermissionsOnly="['plan_prevention_canSeeAll']">
-			<button mat-icon-button color="primary" matTooltip="{{'ACTION.PREVIOUS' | translate}}"
-					(click)="previousStatus(pdp_id)">
-					<mat-icon>arrow_back_ios</mat-icon>
+					<mat-icon>done</mat-icon>
 			</button>
 		</ng-container>
 		<ng-container *ngxPermissionsOnly="['plan_prevention_canSeeAll']">
@@ -180,5 +175,28 @@
 				<mat-icon>delete</mat-icon>
 			</button>
 		</ng-container>
+
 	</ng-template>
 </mat-menu>
+<!--
+<ng-template #validatePdpModal let-modal>
+	<div class="modal-header">
+		<h4 class="mx-auto text-center modal-title font-weight-bold" id="modal-basic-title">Valider le plan de prévention</h4>
+	  </div>
+	<div class="modal-body">
+		<div class="mx-auto my-5 d-flex justify-content-around col-12">
+				  <div class="d-flex justify-content-around col-8">
+					<button href="#"  class="px-4 py-3 btn btn-info btnCustom  font-weight-bold" (click)= pdpValidate(true) >Oui</button>
+					<button href="#" class="px-3 py-2 btn btn-info btnCustom bg-red font-weight-bold" (click)= pdpValidate(false) >Non</button>
+				  </div>
+		</div>
+		<ng-container *ngIf="commentShown">
+			<span>Commentaires:</span>
+			<textarea
+				class="mt-2 mb-2 form-control no_border "
+				cols="5" rows="5"
+				placeholder="{{'ACTION.ENTER_HERE' | translate}}"></textarea>
+			<button href="#"  class="px-4 py-3 btn btn-info btnCustom  font-weight-bold mx-auto d-block" (click)= pdpValidate(true) >Valider</button>
+		</ng-container>
+	</div>
+  </ng-template> -->

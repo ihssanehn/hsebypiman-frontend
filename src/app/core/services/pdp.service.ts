@@ -82,6 +82,9 @@ export class PdpService extends HttpService {
         return this.http.post(this.baseUrl+'/'+pdp_id+'/intervenants/signatures', signatures);
     }
 
+	getStatus(){
+		return this.http.get(this.baseUrl+'/status');
+	}
 	nextStatus(pdp_id){
 		return this.http.get(this.baseUrl+'/'+pdp_id+'/status/next');
 	}

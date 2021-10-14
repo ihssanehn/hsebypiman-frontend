@@ -4,4 +4,27 @@
 			padding: 30px 15px;
 		}
 	}
+
+}
+
+::ng-deep.mat-menu-panel {
+	max-width: none !important;
+	overflow: visible !important;
+	padding: 1rem;
+  }
+
+::ng-deep.ant-select-selection{
+	width: 170px!important;
+}
+
+.btnCustom{
+	border-radius: 10px;
+	min-width:100px;
+	box-shadow: 20px 23px 54px 0 rgba(0, 0, 0, 0.16);
+	background-image: linear-gradient(to left, #61e3b6 111%, #35c1c9 38%, #079dde -40%);
+	color: white;
+}
+.bg-red{
+	background-color: #dd153e!important;
+	background-image: none;
 }
