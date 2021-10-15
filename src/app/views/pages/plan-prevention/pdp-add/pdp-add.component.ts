@@ -424,6 +424,8 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 	selectPdp(typePdp : string){
 		this.typePdp = typePdp;
 		this.modalService.dismissAll();
+		this.createForm();
+		this.createClientForm();
 	}
 
 	toFormData<T>( formValue: T ) {
