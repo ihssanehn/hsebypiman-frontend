@@ -26,7 +26,9 @@
 		"SHOW_USER": "Voir l'utilisateur",
 		"SHOW_VISIT": "Voir la visite",
 		"SIGN": "Signer",
-		"SELECT":"Selectionner"
+		"SELECT":"Selectionner",
+		"VALIDATE": "Valider le plan de prévention",
+		"UNVALIDATE": "Invalider"
 	},
 	"ARS": {
 		"ACTION": {
@@ -448,6 +450,13 @@
 			"PDP_RISQUE_ARCHIVED": {
 				"TITLE": "Pdp Risque archivé avec succès"
 			},
+			"STATUS_REFUSED":{
+				"TITLE": "Pdp refusé avec succès"
+			},
+			"STATUS_ACCEPTED":{
+				"TITLE": "Pdp accepté avec succès"
+			},
+			"COMMENTS": "Commentaires",
 			"ERROR_SUBMITTING": "Merci de saisir tous les champs mentionnés par une étoile ou de vérifier le format"
 		},
 		"CARD": {
@@ -490,6 +499,7 @@
 			"ADD_CATEGORIE_PDP_RISQUE": "Ajouter Categorie Pdp Risque",
 			"ADD_PDP_RISQUE": "Ajouter Pdp Risque",
 			"SIGN_PDP": "Signer le plan de prévention"
+
 		}
 	},
 	"AUTH": {

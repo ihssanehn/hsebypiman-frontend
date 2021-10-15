@@ -107,7 +107,6 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 								}
 
 								this.typePdp = this.pdp.type.code;
-								console.log(this.typePdp);
 								this.enableBtn = true;
 								this.cdr.markForCheck();
 							});
@@ -119,18 +118,22 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 				}
 			);
 		this.subscriptions.push(routeSubscription);
-
-		//Modal Relaod Gestion
-		this.menuService.pageReloaded.subscribe((value)=>{
-			if(value){
-				this.modalReference = this.modalService.open(this.content,{ size: 'lg' ,  centered: true});
-				this.menuService.pageReloaded.next(false);
-			}
+		if(this.adding){
+			//Modal Relaod Gestion
+			this.menuService.pageReloaded.subscribe((value)=>{
+				if(value){
+					this.modalReference = this.modalService.open(this.content,{ size: 'lg' ,  centered: true});
+					this.menuService.pageReloaded.next(false);
+				}
 		})
+		}
+
 
 	}
 	ngAfterViewInit(){
-		this.modalReference = this.modalService.open(this.content,{ size: 'lg' ,  centered: true});
+		if(this.adding){
+			this.modalReference = this.modalService.open(this.content,{ size: 'lg' ,  centered: true});
+		}
 	}
 
 	async getTypes(){

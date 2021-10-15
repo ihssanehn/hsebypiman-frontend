@@ -81,4 +81,16 @@ export class PdpService extends HttpService {
 	addIntervenantSignatures(pdp_id, signatures){
         return this.http.post(this.baseUrl+'/'+pdp_id+'/intervenants/signatures', signatures);
     }
+
+	removeValidationsSignatures(pdp_id){
+		return this.http.delete(this.baseUrl+'/'+pdp_id+'/validations/signatures');
+	}
+
+	getStatus(){
+		return this.http.get(this.baseUrl+'/status');
+	}
+	changeStatus(pdp_id, status){
+		return this.http.post(this.baseUrl+'/'+pdp_id+'/status', status);
+	};
+
 }

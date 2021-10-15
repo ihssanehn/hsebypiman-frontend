@@ -37,6 +37,8 @@ import {PdpDetailComponent} from './pdp-detail/pdp-detail.component';
 import {PdpSignatureComponent} from './pdp-signature/pdp-signature.component';
 import { PdpAddClientComponent } from './pdp-add-client/pdp-add-client.component';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+
 //FileUpload
 import { FileUploadModule } from 'ng2-file-upload';
 
@@ -141,6 +143,7 @@ const routes: Routes = [
 		MatFormFieldModule,
 		NzModalModule,
 		NgbModule,
+		NzSelectModule,
 		NotifierModule.withConfig({
 			behaviour: {
 				autoHide: 3000,

@@ -19,6 +19,7 @@
 		"EXPORT_PDF": "Export in PDF",
 		"FOLLOWING": "Follow",
 		"READ": "Consult",
+		"TO_SIGN": "Set status to 'To sign'",
 		"REDUCE": "Reduce",
 		"REFRESH": "Refresh",
 		"SAVE": "Save",
@@ -26,7 +27,10 @@
 		"SHOW_USER": "View user",
 		"SHOW_VISIT": "View the visit",
 		"SIGN": "Sign",
-		"SELECT":"Select"
+		"SELECT":"Select",
+		"VALIDATE": "Validate the prevention plan",
+		"UNVALIDATE": "Unvalidate"
+
 	},
 	"ARS": {
 		"ACTION": {
@@ -446,7 +450,15 @@
 			"PDP_RISQUE_ARCHIVED": {
 				"TITLE": "Pdp Risk archived successfully"
 			},
+			"STATUS_REFUSED":{
+				"TITLE": "Pdp refused successfully"
+			},
+			"STATUS_ACCEPTED":{
+				"TITLE": "Pdp accepted successfully"
+			},
+			"COMMENTS":"Comments",
 			"ERROR_SUBMITTING": "Please enter all fields marked with a star or check the format"
+
 		},
 		"CARD": {
 			"TRAVAUX": {
@@ -488,6 +500,7 @@
 			"ADD_CATEGORIE_PDP_RISQUE": "Add Pdp Risk Category",
 			"ADD_PDP_RISQUE": "Add Pdp Risk",
 			"SIGN_PDP": "Sign the prevention plan"
+
 		}
 	},
 	"AUTH": {
