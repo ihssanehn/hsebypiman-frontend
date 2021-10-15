@@ -3,7 +3,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService, User } from '@app/core/auth';
-import { Pdp } from '@app/core/models';
+import { Pdp, Status } from '@app/core/models';
 import { PdpService } from '@app/core/services';
 import { extractErrorMessagesFromErrorResponse } from '@app/core/_base/crud';
 import { FormStatus } from '@app/core/_base/crud/models/form-status';
@@ -43,6 +43,8 @@ export class PdpSignatureComponent implements OnInit {
     'canvasHeight': this.canvas['canvasHeight'],
   };
 
+  status : Status[];
+
   constructor(
     protected activatedRoute: ActivatedRoute,
     protected router: Router,
@@ -51,12 +53,14 @@ export class PdpSignatureComponent implements OnInit {
     protected _sanitizer: DomSanitizer,
     protected authService: AuthService,
     protected fb: FormBuilder,
-    protected translate: TranslateService
+    protected translate: TranslateService,
+
   ) {
     this.authService.currentUser.subscribe(x=> this.currentUser = x);
   }
 
   ngOnInit() {
+	this.getStatus();
     this.signaturesForm = this.fb.array([]);
     switch(this.type) {
       case 'pdp_validations':
@@ -262,7 +266,13 @@ export class PdpSignatureComponent implements OnInit {
     this.formloading = true;
     let form = {...this.signaturesForm.getRawValue()};
     this.formStatus.onFormSubmitting();
-
+	//Set the next Status thanks to the order property.
+	const status = {
+		"status" : this.status.find(status => status.ordre == 2)
+	}
+    this.pdpService.changeStatus(this.pdp.id,status).subscribe((res)=>{
+		console.log(res);
+	});
     this.pdpService.addValidationSignatures(this.pdp.id, form)
       .toPromise()
       .then((signature) => {
@@ -303,7 +313,12 @@ export class PdpSignatureComponent implements OnInit {
     this.formloading = true;
     let form = {...this.signaturesForm.getRawValue()};
     this.formStatus.onFormSubmitting();
-
+	const status = {
+		"status" : this.status.find(status => status.ordre == 4)
+	}
+    this.pdpService.changeStatus(this.pdp.id,status).subscribe((res)=>{
+		console.log(res);
+	});
     this.pdpService.addIntervenantSignatures(this.pdp.id, form)
       .toPromise()
       .then(() => {
@@ -352,6 +367,12 @@ export class PdpSignatureComponent implements OnInit {
         return false;
       }
       return control.hasError(validationType) && (control.dirty || control.touched);
+	}
+
+	getStatus(){
+		this.pdpService.getStatus().subscribe((res : any)=>{
+			this.status = res.result.data;
+		});
 	}
 
 }

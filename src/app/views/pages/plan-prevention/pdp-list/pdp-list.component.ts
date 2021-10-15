@@ -142,28 +142,38 @@ export class PdpListComponent implements OnInit {
 	signPdp(pdpId) {
 		this.router.navigate(['../sign', pdpId], {relativeTo: this.activatedRoute});
 	}
+	// Trigger a PopUp asking to SSE Manager if he wants to accept or refuse the Pdp
+	// Set the state of pdp in function of the response.
 	validatePdp(pdpId){
 		Swal.fire({
 			icon: 'info',
 			title: this.translate.instant("ACTION.VALIDATE"),
 			showConfirmButton: true,
 			showCancelButton:true,
-			cancelButtonText: this.translate.instant("ACTION.UNVALIDATE"),
-			confirmButtonText: this.translate.instant("ACTION.CONFIRM"),
+			confirmButtonText: this.translate.instant("PDP.YES"),
+			cancelButtonText: this.translate.instant("PDP.NO"),
 			showCloseButton: true,
 
 		}).then((result) =>{
+			//Yes
 			if(result.isConfirmed){
+				//Set the next Status thanks to the order property.
 				const status = {
-					"status" : this.status.find(status => status.code == "ATT_CONSULTANT")
+					"status" : this.status.find(status => status.ordre == 3)
 				}
 				this.pdpService.changeStatus(pdpId,status ).subscribe((res)=>{
-					console.log(res);
+					Swal.fire({
+						title: this.translate.instant("PDP.NOTIF.STATUS_ACCEPTED.TITLE"),
+						showConfirmButton: false,
+						icon: 'success',
+						timer: 1500
+						})
 					this.getPDPs();
+
 				});
 
 
-
+			//No
 			}else if(result.dismiss == Swal.DismissReason.cancel ){
 				console.log(result.dismiss)
 
@@ -178,13 +188,30 @@ export class PdpListComponent implements OnInit {
 
 				}).then((result) =>{
 					if(result.value){
-						//TODO -> STORE COMMS
-						console.log(result.value);
+						//TODO -> STORE COMMS wich are currently in result.value
 					}
-				});
-			}
-		});
-	}
+					//The Pdp's State is reset to first state and signature are canceled
+					const status = {
+						"status" : this.status.find(status => status.ordre == 1)
+					}
+					this.pdpService.changeStatus(pdpId,status ).subscribe((res)=>{
+						this.getPDPs();
+					});
+					this.pdpService.removeValidationsSignatures(pdpId).subscribe((res)=>{
+						Swal.fire({
+							title: this.translate.instant("PDP.NOTIF.STATUS_REFUSED.TITLE"),
+							showConfirmButton: false,
+							icon: 'success',
+							timer: 1500
+							})
+
+					});
+					console.log(result.value);
+				}
+			);
+		}
+	});
+}
 
 
 	async deletePdp(pdpId) {

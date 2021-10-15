@@ -450,6 +450,12 @@
 			"PDP_RISQUE_ARCHIVED": {
 				"TITLE": "Pdp Risque archivé avec succès"
 			},
+			"STATUS_REFUSED":{
+				"TITLE": "Pdp refusé avec succès"
+			},
+			"STATUS_ACCEPTED":{
+				"TITLE": "Pdp accepté avec succès"
+			},
 			"COMMENTS": "Commentaires",
 			"ERROR_SUBMITTING": "Merci de saisir tous les champs mentionnés par une étoile ou de vérifier le format"
 		},
