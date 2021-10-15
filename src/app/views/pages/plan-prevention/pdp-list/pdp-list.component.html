@@ -142,6 +142,12 @@
 					<mat-icon>done</mat-icon>
 			</button>
 		</ng-container>
+		<ng-container  *ngxPermissionsOnly="['plan_prevention_canSeeAll']">
+			<button *ngIf="status.ordre == 1" mat-icon-button color="primary" matTooltip="{{'ACTION.SEND_BY_MAIL' | translate}}"
+					(click)="openMailModal()">
+					<mat-icon>email</mat-icon>
+			</button>
+		</ng-container>
 		<ng-container *ngxPermissionsOnly="['plan_prevention_canSeeAll']">
 			<button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}"
 					(click)="viewPdp(pdp_id)">
@@ -178,25 +184,11 @@
 
 	</ng-template>
 </mat-menu>
-<!--
-<ng-template #validatePdpModal let-modal>
+<ng-template #sendMailModal let-modal let-data>
 	<div class="modal-header">
-		<h4 class="mx-auto text-center modal-title font-weight-bold" id="modal-basic-title">Valider le plan de prévention</h4>
+		<h4 class="mx-auto text-center modal-title font-weight-bold" id="modal-basic-title">Envoyer par mail le plan de prévention</h4>
 	  </div>
 	<div class="modal-body">
-		<div class="mx-auto my-5 d-flex justify-content-around col-12">
-				  <div class="d-flex justify-content-around col-8">
-					<button href="#"  class="px-4 py-3 btn btn-info btnCustom  font-weight-bold" (click)= pdpValidate(true) >Oui</button>
-					<button href="#" class="px-3 py-2 btn btn-info btnCustom bg-red font-weight-bold" (click)= pdpValidate(false) >Non</button>
-				  </div>
-		</div>
-		<ng-container *ngIf="commentShown">
-			<span>Commentaires:</span>
-			<textarea
-				class="mt-2 mb-2 form-control no_border "
-				cols="5" rows="5"
-				placeholder="{{'ACTION.ENTER_HERE' | translate}}"></textarea>
-			<button href="#"  class="px-4 py-3 btn btn-info btnCustom  font-weight-bold mx-auto d-block" (click)= pdpValidate(true) >Valider</button>
-		</ng-container>
+		<tf-multiple-mail (mailSent)="sendMail($event)"></tf-multiple-mail>
 	</div>
-  </ng-template> -->
+  </ng-template>

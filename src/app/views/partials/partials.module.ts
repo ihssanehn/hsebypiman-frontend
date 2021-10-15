@@ -168,6 +168,7 @@ import { PdpEpiDispositionComponent } from './layout/admins/pdp-epi-disposition/
 import { PdpMoyenDispositionComponent } from './layout/admins/pdp-moyen-disposition/pdp-moyen-disposition.component';
 import { PdpCatRisquesComponent } from './layout/admins/pdp-cat-risques/pdp-cat-risques.component';
 import { PdpRisquesComponent } from './layout/admins/pdp-risques/pdp-risques.component';
+import { MultipleMailComponent } from './multiple-mail/multiple-mail.component';
 
 @NgModule({
 	declarations: [
@@ -278,6 +279,7 @@ import { PdpRisquesComponent } from './layout/admins/pdp-risques/pdp-risques.com
 		PdpMoyenDispositionComponent,
 		PdpCatRisquesComponent,
 		PdpRisquesComponent,
+		MultipleMailComponent,
 
 	],
 	exports: [
@@ -388,7 +390,8 @@ import { PdpRisquesComponent } from './layout/admins/pdp-risques/pdp-risques.com
 		PdpEpiDispositionComponent,
 		PdpMoyenDispositionComponent,
 		PdpCatRisquesComponent,
-		PdpRisquesComponent
+		PdpRisquesComponent,
+		MultipleMailComponent,
 
 	],
 	imports: [

@@ -28,7 +28,7 @@
 		"SIGN": "Signer",
 		"SELECT":"Selectionner",
 		"VALIDATE": "Valider le plan de prévention",
-		"UNVALIDATE": "Invalider"
+		"SEND_BY_MAIL" : "Envoyer le Pdp par mail"
 	},
 	"ARS": {
 		"ACTION": {
@@ -455,6 +455,9 @@
 			},
 			"STATUS_ACCEPTED":{
 				"TITLE": "Pdp accepté avec succès"
+			},
+			"EMAIL_SENT":{
+				"TITLE": "Mail envoyé avec succès"
 			},
 			"COMMENTS": "Commentaires",
 			"ERROR_SUBMITTING": "Merci de saisir tous les champs mentionnés par une étoile ou de vérifier le format"

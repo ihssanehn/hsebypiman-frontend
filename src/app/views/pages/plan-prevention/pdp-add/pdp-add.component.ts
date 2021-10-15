@@ -132,7 +132,7 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 	}
 	ngAfterViewInit(){
 		if(this.adding){
-			this.modalReference = this.modalService.open(this.content,{ size: 'lg' ,  centered: true});
+			this.modalReference = this.modalService.open(this.content,{  size: 'lg' ,  centered: true });
 		}
 	}
 

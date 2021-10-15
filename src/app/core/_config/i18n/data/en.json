@@ -29,7 +29,7 @@
 		"SIGN": "Sign",
 		"SELECT":"Select",
 		"VALIDATE": "Validate the prevention plan",
-		"UNVALIDATE": "Unvalidate"
+		"SEND_BY_MAIL" : "Mail the Pdp"
 
 	},
 	"ARS": {
@@ -455,6 +455,9 @@
 			},
 			"STATUS_ACCEPTED":{
 				"TITLE": "Pdp accepted successfully"
+			},
+			"EMAIL_SENT":{
+				"TITLE": "Email successfully sent"
 			},
 			"COMMENTS":"Comments",
 			"ERROR_SUBMITTING": "Please enter all fields marked with a star or check the format"

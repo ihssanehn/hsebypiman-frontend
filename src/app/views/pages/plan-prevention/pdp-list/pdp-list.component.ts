@@ -5,7 +5,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ArService, PdpService} from '@app/core/services';
 import {TranslateService} from '@ngx-translate/core';
 import Swal from "sweetalert2";
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {MatDialog} from '@angular/material/dialog';
+
 
 @Component({
 	selector: 'tf-pdp-list',
@@ -13,8 +14,10 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 	styleUrls: ['./pdp-list.component.scss']
 })
 export class PdpListComponent implements OnInit {
-	@ViewChild('validatePdpModal',{static: false})
-	private validatePdpModal: TemplateRef<any>;
+	@ViewChild('sendMailModal',{static: false})
+	private sendMailModal: TemplateRef<any>;
+
+	private sendMailModalRef;
 
 	public pdpsList: Paginate<Pdp>;
 	pagination: any = {
@@ -45,7 +48,7 @@ export class PdpListComponent implements OnInit {
 		protected pdpService: PdpService,
 		protected cdr: ChangeDetectorRef,
 		private translate: TranslateService,
-		private modalService : NgbModal,
+		public dialog: MatDialog
 	) {
 	}
 
@@ -256,6 +259,23 @@ export class PdpListComponent implements OnInit {
 	getStatus(){
 		this.pdpService.getStatus().subscribe((res : any)=>{
 			this.status = res.result.data;
+		});
+	}
+
+	openMailModal(pdpId){
+		this.sendMailModalRef = this.dialog.open(this.sendMailModal, {data: { name: 'austin' }});
+	}
+	sendMail(event){
+		//TODO SEND EMAIL
+		console.log(event);
+		this.sendMailModalRef.close();
+		Swal.fire({
+			icon: 'success',
+			title: this.translate.instant("PDP.NOTIF.EMAIL_SENT.TITLE"),
+			showConfirmButton: false,
+			timer: 1500
+		}).then(() => {
+			this.getPDPs();
 		});
 	}
 
