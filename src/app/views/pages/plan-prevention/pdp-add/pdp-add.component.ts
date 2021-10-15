@@ -118,14 +118,14 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 				}
 			);
 		this.subscriptions.push(routeSubscription);
-		if(this.adding){
+		if(this.adding ){
 			//Modal Relaod Gestion
-			this.menuService.pageReloaded.subscribe((value)=>{
+			this.subscriptions.push(this.menuService.pageReloaded.subscribe((value)=>{
 				if(value){
 					this.modalReference = this.modalService.open(this.content,{ size: 'lg' ,  centered: true});
 					this.menuService.pageReloaded.next(false);
 				}
-		})
+		}))
 		}
 
 
