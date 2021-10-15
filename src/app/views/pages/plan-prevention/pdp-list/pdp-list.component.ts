@@ -265,6 +265,9 @@ export class PdpListComponent implements OnInit {
 	openMailModal(pdpId){
 		this.sendMailModalRef = this.dialog.open(this.sendMailModal, {data: { name: 'austin' }});
 	}
+	closeMailModal(){
+		this.sendMailModalRef.close();
+	}
 	sendMail(event){
 		//TODO SEND EMAIL
 		console.log(event);

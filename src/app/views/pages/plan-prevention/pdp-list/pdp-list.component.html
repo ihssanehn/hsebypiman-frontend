@@ -185,8 +185,11 @@
 	</ng-template>
 </mat-menu>
 <ng-template #sendMailModal let-modal let-data>
-	<div class="modal-header">
+	<div class="modal-header postion-relative">
 		<h4 class="mx-auto text-center modal-title font-weight-bold" id="modal-basic-title">Envoyer par mail le plan de prévention</h4>
+		<button type="button" class="ml-auto position-absolute close" aria-label="Close" (click)="closeMailModal()">
+			<span aria-hidden="true">&times;</span>
+		</button>
 	  </div>
 	<div class="modal-body">
 		<tf-multiple-mail (mailSent)="sendMail($event)"></tf-multiple-mail>
