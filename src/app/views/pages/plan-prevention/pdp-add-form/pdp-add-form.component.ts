@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, EventEmitter, Input, NgZone, OnInit, Output, ViewChild} from '@angular/core';
+import {ChangeDetectorRef, ViewChildren, Component, EventEmitter, Input, NgZone, QueryList, OnInit, Output, ViewChild} from '@angular/core';
 import {AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {FormStatus} from '@app/core/_base/crud/models/form-status';
 import {CdkTextareaAutosize} from '@angular/cdk/text-field';
@@ -16,6 +16,8 @@ import {BehaviorSubject} from 'rxjs';
 import moment from 'moment';
 import {NotifierService} from 'angular-notifier';
 import {TranslateService} from '@ngx-translate/core';
+import { SignaturePad } from 'angular2-signaturepad/signature-pad';
+  
 
 @Component({
 	selector: 'tf-pdp-add-form',
@@ -24,7 +26,6 @@ import {TranslateService} from '@ngx-translate/core';
 })
 export class PdpAddFormComponent implements OnInit {
 
-	pdpForm: FormGroup;
 
 	@Input('pdpForm')
 	set pdpFormSetter(value) {
@@ -36,7 +37,6 @@ export class PdpAddFormComponent implements OnInit {
 			if (this.getControlsArrayFormName('intervenants')) {
 				this.intervenants.next(this.getControlsArrayFormName('intervenants'));
 			}
-			// this.subPDPFormValidator();
 		}
 	}
 
@@ -49,10 +49,20 @@ export class PdpAddFormComponent implements OnInit {
 		if (value != null) {
 			this._pdp = value;
 			this.formPathValues(this._pdp);
-			// this.subPDPFormValidator();
 		}
 	}
-
+	pdpForm: FormGroup;
+	@ViewChildren("signaturePad") signaturePads: QueryList<SignaturePad>;
+	private canvas: Object = {
+    'minWidth': 0.5,
+    'canvasWidth': 500,
+    'canvasHeight': 150
+  }
+  public signaturePadOptions: Object = {
+    'minWidth': this.canvas['minWidth'],
+    'canvasWidth': this.canvas['canvasWidth'],
+    'canvasHeight': this.canvas['canvasHeight'],
+  };
 	@Input() formStatus: FormStatus;
 	@Input() adding = true;
 	@ViewChild('autosize', {static: true}) autosize: CdkTextareaAutosize;
@@ -74,9 +84,6 @@ export class PdpAddFormComponent implements OnInit {
 	displayedColumnsTravaux: string[] = ['list', 'answers'];
 	displayedColumnsValidationPlan: string[] = ['company', 'name', 'date', 'participation', 'visa', 'actions'];
 	displayedColumnsIntervenants: string[] = ['last', 'first', 'contact', 'formations', 'suivis_médical', 'actions'];
-
-
-
 	dataSource = new BehaviorSubject<AbstractControl[]>([]);
 
 	private readonly notifier: NotifierService;
@@ -93,7 +100,7 @@ export class PdpAddFormComponent implements OnInit {
 	ngOnInit() {
 		this.triggerResize();
 		this.getPDPConsignes();
-
+		console.log(this.pdpForm);
 	}
 
 	async getPDPConsignes() {
@@ -108,9 +115,6 @@ export class PdpAddFormComponent implements OnInit {
 		}else if(this.pdpType == "PDP_PIMAN_TERRAIN"){
 			this.risques = res.result.data ? res.result.data.risquesByType[1].PDP_PIMAN_TERRAIN : [];
 		}
-
-		console.log(this.risques);
-
 		this.suivisMedicalIntervenants = res.result.data ? res.result.data.intervenant : [];
 		this.frequences = res.result.data ? res.result.data.frequence : [];
 		if (this.EPIDispositionList.length > 0) {
@@ -334,6 +338,13 @@ export class PdpAddFormComponent implements OnInit {
 	}
 
 	isControlHasError(controlName: string, validationType: string, ArrayFormName = null, index = null): boolean {
+		if(!this.pdpForm ){
+			return false;
+		}
+		if(ArrayFormName && !(this.pdpForm.get(ArrayFormName) as FormArray).controls[index]){
+			return false
+		}
+
 		const control = ArrayFormName ? (this.pdpForm.get(ArrayFormName) as FormArray).controls[index].get(controlName) : this.pdpForm.controls[controlName];
 		if (!control) {
 			return false;
@@ -497,6 +508,8 @@ export class PdpAddFormComponent implements OnInit {
 			type: new FormControl('ss'),
 			deletable: new FormControl(true),
 			is_part_inspection: new FormControl(null),
+			read_and_approved: new FormControl(null),
+			signature: new FormControl(null),
 			part_inspection_at: new FormControl({value: null, disabled: true}),
 		});
 		this.getControlsArrayFormName('validations').push(group);
@@ -505,7 +518,7 @@ export class PdpAddFormComponent implements OnInit {
 	}
 
 	deleteElemntInArray(index, formArrayName, array: BehaviorSubject<AbstractControl[]> = null) {
-		this.getControlsArrayFormName(formArrayName).splice(index, 1);
+		(this.pdpForm.get(formArrayName) as FormArray).removeAt(index);
 		if (array) {
 			array.next(this.getControlsArrayFormName(formArrayName));
 		}
@@ -699,7 +712,9 @@ export class PdpAddFormComponent implements OnInit {
 					validation_at: v.validation_at,
 					type: v.type,
 					is_part_inspection: v.is_part_inspection,
-					part_inspection_at: v.part_inspection_at
+					part_inspection_at: v.part_inspection_at,
+					read_and_approved: v.read_and_approved,
+					signature: v.signature,
 				};
 			}));
 			pdp.pdp_validations.map((v: any, index: number) => {
@@ -739,4 +754,21 @@ export class PdpAddFormComponent implements OnInit {
 	checkIfDateLastIsBigger() {
 		return moment(this.pdpForm.get('horaires_fermeture_site').value, 'hh:mm').isAfter(moment(this.pdpForm.get('horaires_ouverture_site').value, 'hh:mm'));
 	}
+
+	clearSignature(index){
+		let signaturePadChild = this.signaturePads.filter((element, i) => index === i);
+    signaturePadChild[0].clear();
+    (this.pdpForm.get('validations') as FormArray).controls[index].get('signature').reset();
+	}
+	resizeSignaturePad() {
+    var ratio = Math.max(window.devicePixelRatio || 1, 1);
+    this.signaturePads.forEach((child) => {
+      child.set('canvasWidth', this.canvas['canvasWidth'] / ratio);
+    });
+  }
+
+  drawComplete(index:number) {
+    let signaturePadChild = this.signaturePads.filter((element, i) => i === index);
+    (this.pdpForm.get('validations') as FormArray).controls[index].get('signature').setValue(signaturePadChild[0].toDataURL());
+  }
 }

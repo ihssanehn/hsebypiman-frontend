@@ -2013,7 +2013,7 @@
 		"EXTENSION": "Ce type de fichier ne peut pas être importé",
 		"LIST_EXT": "Liste des extensions",
 		"MAX_SIZE": "Taille maximale",
-		"SIZE": "Vous ne pouvez pas uploader des fichiers de plus de 1 Mo"
+		"SIZE": "Vous ne pouvez pas uploader des fichiers de plus de 4 Mo"
 	},
 	"USERS": {
 		"ACTION": {

@@ -263,6 +263,8 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 					deletable: new FormControl(false),
 					is_part_inspection: new FormControl(null),
 					part_inspection_at: new FormControl({value: null, disabled: true}),
+					read_and_approved: new FormControl(null, Validators.required),
+					signature: new FormControl(null, Validators.required)
 				}),
 				new FormGroup({
 					need_text_area_in_title: new FormControl(false),
@@ -274,6 +276,8 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 					deletable: new FormControl(false),
 					is_part_inspection: new FormControl(null),
 					part_inspection_at: new FormControl({value: null, disabled: true}),
+					read_and_approved: new FormControl(null, Validators.required),
+					signature: new FormControl(null, Validators.required)
 				}),
 				new FormGroup({
 					need_text_area_in_title: new FormControl(true),
@@ -285,6 +289,8 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 					deletable: new FormControl(true),
 					is_part_inspection: new FormControl(null),
 					part_inspection_at: new FormControl({value: null, disabled: true}),
+					read_and_approved: new FormControl(null, Validators.required),
+					signature: new FormControl(null, Validators.required)
 				})
 			]),
 			intervenants: new FormArray([
@@ -361,6 +367,13 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 
 			this.save(formData).then(() => {
 				this.uploader.clearQueue();})
+		}else{
+			const controls = this.pdpForm.controls;
+			for (const name in controls) {
+				if (controls[name].invalid) {
+						console.log(this.pdpForm.controls[name]);
+				}
+			}
 		}
 
 
