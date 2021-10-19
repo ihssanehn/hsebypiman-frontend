@@ -263,8 +263,8 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 					deletable: new FormControl(false),
 					is_part_inspection: new FormControl(null),
 					part_inspection_at: new FormControl({value: null, disabled: true}),
-					read_and_approved: new FormControl(null, Validators.required),
-					signature: new FormControl(null, Validators.required)
+					read_and_approved: new FormControl(null),
+					signature: new FormControl(null)
 				}),
 				new FormGroup({
 					need_text_area_in_title: new FormControl(false),
@@ -276,8 +276,8 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 					deletable: new FormControl(false),
 					is_part_inspection: new FormControl(null),
 					part_inspection_at: new FormControl({value: null, disabled: true}),
-					read_and_approved: new FormControl(null, Validators.required),
-					signature: new FormControl(null, Validators.required)
+					read_and_approved: new FormControl(null),
+					signature: new FormControl(null)
 				}),
 				new FormGroup({
 					need_text_area_in_title: new FormControl(true),
@@ -289,8 +289,8 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 					deletable: new FormControl(true),
 					is_part_inspection: new FormControl(null),
 					part_inspection_at: new FormControl({value: null, disabled: true}),
-					read_and_approved: new FormControl(null, Validators.required),
-					signature: new FormControl(null, Validators.required)
+					read_and_approved: new FormControl(null),
+					signature: new FormControl(null)
 				})
 			]),
 			intervenants: new FormArray([
@@ -306,6 +306,33 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 			sous_traitant: new FormArray([]),
 			type_id: this.typePdp,
 		});
+
+		const validations = this.pdpForm.get('validations') as FormArray;
+
+		for (let control of validations.controls) {
+			const read_and_approved = control.get('read_and_approved') as FormControl;
+			const signature = control.get('signature') as FormControl;
+			read_and_approved.valueChanges.subscribe(value=>{
+				if(value){
+					signature.setValidators([Validators.required]);
+				}else{
+					signature.clearValidators();
+				}
+				console.log(signature);
+				signature.updateValueAndValidity({emitEvent:false})
+			})
+
+			signature.valueChanges.subscribe(value=>{
+				if(value){
+					read_and_approved.setValidators([Validators.required, Validators.requiredTrue]);
+				}else{
+					read_and_approved.clearValidators();
+				};
+				console.log(read_and_approved);
+				read_and_approved.updateValueAndValidity({emitEvent:false})
+			})
+	 }
+	 
 	}
 
 

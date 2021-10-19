@@ -1084,6 +1084,10 @@
 										</div>
 										<div class="signature-container">
 											<signature-pad #signaturePad id="signaturePad" (window:resize)="resizeSignaturePad()" [options]="signaturePadOptions" (onEndEvent)="drawComplete(index)"></signature-pad>
+											<mat-error
+											*ngIf="isControlHasError('signature', 'required', 'validations', index)">
+											<small class="pl-2">{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</small>
+										</mat-error>
 										</div>
 									</td>
 								</ng-container>
