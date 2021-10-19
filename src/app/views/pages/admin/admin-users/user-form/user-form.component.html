@@ -19,10 +19,10 @@
 					<div class="tf-form__section tf-form__section--first">
 						<div class="tf-wizard-v4__form">
 							<div class="row form-row">
-								<mat-form-field class="col-12" floatLabel="always" appearance="none">
+								<!-- <mat-form-field class="col-12" floatLabel="always" appearance="none">
 									<mat-slide-toggle [checked]="userForm.get('is_virtual').value == 1" (change)="onVirtuelCheckChange($event)"><span>{{'USERS.VIRTUEL.TITLE' | translate}}</span></mat-slide-toggle>
 									<textarea matInput hidden></textarea>
-								</mat-form-field>
+								</mat-form-field> -->
 								<mat-form-field class="col-xl-3">
 									<mat-label>{{'COMMON.CIVILITE.LABEL' | translate}}</mat-label>
 									<mat-select class="form-control" placeholder="" formControlName="civilite" [required]="isFieldRequired('civilite')">
@@ -111,7 +111,7 @@
 		<div class="col-12" *ngIf="userForm.get('is_virtual').value == 0">
 			<div class="tf-heading tf-heading--md">| 2 {{'USERS.CARD.EMPLOYEE_INFOS.TITLE' | translate}}</div>
 			<div class="tf-card-form">
-				<div class="row form-row">
+				<div class="row form-row mx-5">
 					<mat-form-field class="col-xl-3">
 						<mat-label>{{'COMMON.BIRTHDAY.LABEL' | translate}}</mat-label>
 						<input class="form-control" matInput mask="d0/M0/0000" [specialCharacters]="[ '/' ]" type="text" name="date_naissance" formControlName="date_naissance" [required]="isFieldRequired('date_naissance')" placeholder="DD/MM/YYYY" />
@@ -149,8 +149,8 @@
 						</mat-error>
 					</mat-form-field>
 				</div>
-                <h5 class="subtitle">{{'USERS.CARD.USER_INFOS.EMERGENCY_CASE' | translate}}</h5>
-				<div class="row form-row">
+				<h5 class="subtitle">{{'USERS.CARD.USER_INFOS.EMERGENCY_CASE' | translate}}</h5>
+				<div class="row form-row mx-5">
 					<mat-form-field class="col-xl-4">
 						<mat-label>{{'COMMON.LASTNAME.LABEL' | translate}}</mat-label>
 						<input matInput class="form-control" type="text" name="nom_urgence" formControlName="nom_urgence" [required]="isFieldRequired('nom_urgence')" placeholder="{{'ACTION.ENTER_HERE' | translate}}" />
@@ -176,8 +176,8 @@
 					</mat-form-field>
 
 				</div>
-                <h5 class="subtitle">{{'USERS.CARD.USER_INFOS.MEDICAL_VISIT' | translate}}</h5>
-				<div class="row form-row">
+				<h5 class="subtitle">{{'USERS.CARD.USER_INFOS.MEDICAL_VISIT' | translate}}</h5>
+				<div class="row form-row mx-5">
 					<div class="col-xl-4 d-inline-flex" style="justify-content: space-between;align-items: center;">
 						<mat-label>{{'SALARIES.RQTH.LABEL' | translate}}</mat-label>
 						<mat-radio-group formControlName="rqth">
