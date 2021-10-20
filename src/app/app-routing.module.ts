@@ -7,29 +7,24 @@ import { ErrorPageComponent } from './views/theme/content/error-page/error-page.
 // Auth
 import { NgxPermissionsGuard } from 'ngx-permissions';
 import { ModuleGuard } from './core/guards/module.guard';
+import { AuthGuard } from './core/auth';
+
 
 const routes: Routes = [
 	{path: 'auth', loadChildren: () => import('@app/views/pages/auth/auth.module').then(m => m.AuthModule)},
-
+	{
+		path: 'guest',
+		loadChildren: () => import('@app/views/pages/guest/guest.module').then(m => m.GuestModule),
+	},
 	{
 		path: '',
 		component: BaseComponent,
-		// canActivate: [AuthGuard],
+		canActivate: [AuthGuard],
 		children: [
 			{
 				path: 'home',
 				loadChildren: () => import('@app/views/pages/home/home.module').then(m => m.HomeModule),
 			},
-			// {
-			// 	path: 'dashboard',
-			// 	loadChildren: () => import('@app/views/pages/dashboard/dashboard.module').then(m => m.DashboardModule),
-			// 	canActivate: [NgxPermissionsGuard],
-			// 	data: {
-			// 		permissions: {
-			// 			only: ['ROOT', 'ADMIN']
-			// 		}
-			// 	}
-			// },
 			{
 				path: 'remontees',
 				loadChildren: () => import('@app/views/pages/remontees/remontees.module').then(m => m.RemonteesModule),

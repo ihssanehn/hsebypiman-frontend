@@ -24,7 +24,7 @@ import { NgxRolesService, NgxPermissionsService } from 'ngx-permissions';
 })
 export class AppComponent implements OnInit, OnDestroy {
 	// Public properties
-	title = 'CTA - HSE';
+	title = 'PIMAN - HSE';
 	loader: boolean;
 	private unsubscribe: Subscription[] = []; // Read more: => https://brianflove.com/2016/12/11/anguar-2-unsubscribe-observables/
 
@@ -87,7 +87,7 @@ export class AppComponent implements OnInit, OnDestroy {
 			}
 		});
 		this.unsubscribe.push(routerSubscription);
-		await this.authService.populate();
+		// await this.authService.populate();
 	}
 
 	/**

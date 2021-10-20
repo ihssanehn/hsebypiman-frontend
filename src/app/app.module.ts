@@ -116,6 +116,7 @@ import * as json from 'highlight.js/lib/languages/json';
 import { NZ_I18N,en_US } from 'ng-zorro-antd';
 
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { GuestService } from './core/auth/_services/guest.service';
 
 // tslint:disable-next-line:class-name
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -205,6 +206,7 @@ export function hljsLanguages(): HighlightLanguage[] {
 		// WORK
 		ModuleGuard,
 		AuthService,
+		GuestService,
 		ArService,
 		PdpService,
 		ActionService,
@@ -240,7 +242,7 @@ export function hljsLanguages(): HighlightLanguage[] {
 		OutillageService,
 		ZoneService,
 		DocumentService,
-		RemonteeService,
+		RemonteeService,		
 		PersonnelService,
 		FonctionService,
 		CatMetricService,

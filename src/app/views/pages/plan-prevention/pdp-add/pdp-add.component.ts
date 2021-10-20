@@ -318,7 +318,6 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 				}else{
 					signature.clearValidators();
 				}
-				console.log(signature);
 				signature.updateValueAndValidity({emitEvent:false})
 			})
 
@@ -328,7 +327,6 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 				}else{
 					read_and_approved.clearValidators();
 				};
-				console.log(read_and_approved);
 				read_and_approved.updateValueAndValidity({emitEvent:false})
 			})
 	 }
