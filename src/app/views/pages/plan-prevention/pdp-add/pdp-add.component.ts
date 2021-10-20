@@ -332,7 +332,7 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 				read_and_approved.updateValueAndValidity({emitEvent:false})
 			})
 	 }
-	 
+
 	}
 
 
@@ -462,10 +462,13 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 	}
 
 	selectPdp(typePdp : string){
+		if(typePdp != this.typePdp){
+			this.createForm();
+			// this.createClientForm();
+		}
 		this.typePdp = typePdp;
 		this.modalService.dismissAll();
-		this.createForm();
-		this.createClientForm();
+
 	}
 
 	toFormData<T>( formValue: T ) {
