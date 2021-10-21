@@ -524,7 +524,7 @@
 										</button>
 									</div>
 
-									<tf-pdp-signature class="pt-3 pb-3" *ngIf="validationEditMode" [pdp]="pdp" [type]="'pdp_validations'" (signEvent)="onSignPDP($event)"></tf-pdp-signature>
+									<tf-pdp-signature class="pt-3 pb-3" *ngIf="validationEditMode" [fromGuest]="fromGuest"[pdp]="pdp" [type]="'pdp_validations'" (signEvent)="onSignPDP($event)"></tf-pdp-signature>
 
 									<ng-container *ngIf="pdp.pdp_validations.length > 0; else noValidation">
 										<table mat-table *ngIf="!validationEditMode" [dataSource]="pdp.pdp_validations" class="mt-4 mb-4">
@@ -588,7 +588,7 @@
 						<div class="row d-flex flex-column flex-nowrap flex-fill">
 							<div class="col-12 flex-fill">
 								<div [ngClass]="pdp.intervenants.length > 0 ?'card':'card pb-0'">
-									<div class="pt-0 pb-0 box">
+									<div class="pt-0 pb-0 box" *ngIf="!fromGuest && pdp.intervenants.length > 0">
 										<button class="pull-right" mat-raised-button color="info" (click)="showIntervenantSignatureFrom()" *ngIf="!intervenantEditMode">
 											{{'PDP.ACTION.SIGN_PDP' | translate}}
 										</button>
@@ -598,7 +598,7 @@
 										</button>
 									</div>
 
-									<tf-pdp-signature class="pt-3 pb-3" *ngIf="intervenantEditMode && !fromGuest && pdp.intervenants.length > 0" [pdp]="pdp" [type]="'pdp_intervenants'" (signEvent)="onSignPDP($event)"></tf-pdp-signature>
+									<tf-pdp-signature class="pt-3 pb-3" *ngIf="intervenantEditMode" [pdp]="pdp" [type]="'pdp_intervenants'" (signEvent)="onSignPDP($event)"></tf-pdp-signature>
 
 									<ng-container *ngIf="pdp.intervenants.length > 0; else noIntervenant">
 										<table mat-table *ngIf="!intervenantEditMode" [dataSource]="pdp.intervenants" class="mt-4 mb-4">

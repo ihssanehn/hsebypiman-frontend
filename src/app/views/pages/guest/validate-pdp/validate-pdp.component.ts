@@ -28,10 +28,10 @@ export class ValidatePdpComponent implements OnInit {
     private cdr: ChangeDetectorRef,
   ){
     this.route.params.subscribe(params=>{
-      this.itemId = params['itemid'];
+      this.itemId = parseInt(params['itemid']);
       this.token = params['token'];      
     })
-    this.itemType = 'PreventionPlan';
+    this.itemType = 'PdpValidation';
   }
   ngOnInit(){
     if(!this.itemId || !this.token || !this.itemType){
@@ -45,7 +45,7 @@ export class ValidatePdpComponent implements OnInit {
     await this.guestService.find({
       item_id:this.itemId,
       token:this.token,
-      item_type: 'PdpValidation'
+      item_type:this.itemType
     }).toPromise().then(res=>{
       this.fromGuest = {
         itemId:this.itemId,

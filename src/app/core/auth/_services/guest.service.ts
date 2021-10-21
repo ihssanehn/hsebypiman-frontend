@@ -31,4 +31,8 @@ export class GuestService extends HttpService {
   find(params){
     return this.http.post<any>(`${API_USERS_URL}/find`, params);
   }
+  
+  updateItem(params){
+    return this.http.post<any>(`${API_USERS_URL}/update-item`, params);
+  }
 }

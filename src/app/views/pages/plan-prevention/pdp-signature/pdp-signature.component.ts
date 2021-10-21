@@ -11,6 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { SignaturePad } from 'angular2-signaturepad/signature-pad';
 import moment from 'moment';
 import Swal from 'sweetalert2';
+import { GuestService } from '@app/core/auth/_services/guest.service';
 
 @Component({
   selector: 'tf-pdp-signature',
@@ -21,6 +22,7 @@ export class PdpSignatureComponent implements OnInit {
 
   @Input() pdp: Pdp;
   @Input() public type: string;
+  @Input() fromGuest: any;
 
   @Output() signEvent = new EventEmitter<boolean>();
 
@@ -54,13 +56,15 @@ export class PdpSignatureComponent implements OnInit {
     protected authService: AuthService,
     protected fb: FormBuilder,
     protected translate: TranslateService,
-
+    protected guestService: GuestService,
   ) {
     this.authService.currentUser.subscribe(x=> this.currentUser = x);
   }
 
   ngOnInit() {
-	this.getStatus();
+    if(!this.fromGuest){
+      this.getStatus();
+    }
     this.signaturesForm = this.fb.array([]);
     switch(this.type) {
       case 'pdp_validations':
@@ -99,11 +103,17 @@ export class PdpSignatureComponent implements OnInit {
 
   initValidationForm(validations) {
     validations
-      .filter(element => !element.signature)
+      .filter(element => {
+        if(this.fromGuest){
+          return !element.signature && (element.id == this.fromGuest.itemId);
+        }else{
+          return !element.signature;
+        }
+      })
       .forEach((element,index) => {
         var newForm = this.fb.group({
           signable_id:[this.pdp.id],
-          personnel_id:[this.currentUser.id],
+          personnel_id:[this.currentUser ? this.currentUser.id : null],
           date:[this.setDateFormat(new Date())],
           company_name:[element.company_name, Validators.required],
           full_name:[element.full_name, Validators.required],
@@ -266,26 +276,24 @@ export class PdpSignatureComponent implements OnInit {
     this.formloading = true;
     let form = {...this.signaturesForm.getRawValue()};
     this.formStatus.onFormSubmitting();
-	//Set the next Status thanks to the order property.
-	const status = {
-		"status" : this.status.find(status => status.ordre == 2)
-	}
-    this.pdpService.changeStatus(this.pdp.id,status).subscribe((res)=>{
-		console.log(res);
-	});
-    this.pdpService.addValidationSignatures(this.pdp.id, form)
-      .toPromise()
-      .then((signature) => {
+
+    //Set the next Status thanks to the order property.
+    if(this.fromGuest){
+      var data = {
+        item_id: this.fromGuest.itemId,
+        item_type: this.fromGuest.itemType,
+        token: this.fromGuest.token,
+        ...form[0],
+      }
+      this.guestService.updateItem(data).toPromise().then((signature) => {
         this.cdr.markForCheck();
         this.formloading = false;
-
         Swal.fire({
           icon: 'success',
           title: 'Votre signature a bien été prise en compte',
           showConfirmButton: false,
           timer: 1500
         }).then(() => {
-          //this.router.navigate(['/plan-de-prevention/list']);
           this.sendSignEvent();
         });
       })
@@ -303,8 +311,47 @@ export class PdpSignatureComponent implements OnInit {
           this.formStatus.onFormSubmitResponse({success: false, messages: messages});
           this.cdr.markForCheck();
         }
-
       });
+    }else{
+
+      const status = {
+        "status" : this.status.find(status => status.ordre == 2)
+      }
+      this.pdpService.changeStatus(this.pdp.id,status).subscribe((res)=>{});
+      
+      this.pdpService.addValidationSignatures(this.pdp.id, form)
+        .toPromise()
+        .then((signature) => {
+          this.cdr.markForCheck();
+          this.formloading = false;
+  
+          Swal.fire({
+            icon: 'success',
+            title: 'Votre signature a bien été prise en compte',
+            showConfirmButton: false,
+            timer: 1500
+          }).then(() => {
+            //this.router.navigate(['/plan-de-prevention/list']);
+            this.sendSignEvent();
+          });
+        })
+        .catch(err =>{
+          this.formloading = false;
+          Swal.fire({
+            icon: 'error',
+            title: this.translate.instant("ARS.NOTIF.INCOMPLETE_FORM.TITLE"),
+            showConfirmButton: false,
+            timer: 2000
+          });
+  
+          if(err.status === 422){
+            var messages = extractErrorMessagesFromErrorResponse(err);
+            this.formStatus.onFormSubmitResponse({success: false, messages: messages});
+            this.cdr.markForCheck();
+          }
+  
+        });
+    }
 
     this.cdr.markForCheck();
   }
