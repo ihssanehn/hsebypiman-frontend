@@ -19,6 +19,7 @@ import { InterceptService } from '../../../core/_base/crud/';
 import { AuthGuard, AuthService } from '../../../core/auth';
 import { GuestComponent } from './guest.component';
 import { ValidatePdpComponent } from './validate-pdp/validate-pdp.component';
+import { PlanPreventionModule } from '../plan-prevention/plan-prevention.module';
 
 const routes: Routes = [
 	{
@@ -50,6 +51,7 @@ const routes: Routes = [
 		MatFormFieldModule,
 		MatIconModule,
 		MatCheckboxModule,
+		PlanPreventionModule,
 		TranslateModule.forChild(),
 	],
 	providers: [

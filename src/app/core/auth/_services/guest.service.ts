@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 
 
 
-const API_USERS_URL = environment.apiBaseUrl + "check-guest-access";
+const API_USERS_URL = environment.apiBaseUrl + "guest";
 
 @Injectable()
 export class GuestService extends HttpService {
@@ -28,7 +28,7 @@ export class GuestService extends HttpService {
   }
 
 
-  getPdp(params){
-    return this.http.post(`${API_USERS_URL}/pdp`, params);
+  find(params){
+    return this.http.post<any>(`${API_USERS_URL}/find`, params);
   }
 }

@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, Input } from '@angular/core';
 import { Pipe, PipeTransform } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -16,6 +16,7 @@ import moment from 'moment';
 })
 export class PdpDetailComponent implements OnInit {
 
+  @Input() fromGuest: any = null;
   pdp: Pdp;
   pdpLoaded: boolean = false;
   pdpPiman: boolean ;
@@ -44,19 +45,36 @@ export class PdpDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const routeSubscription = this.activatedRoute.params.subscribe(
-      async params => {
-        const id = params.id;
-        if (id) {
-        this.getPdp(id);
-        if(this.pdpLoaded){
 
+    console.log(this.fromGuest);
+    if(!this.fromGuest){
+      const routeSubscription = this.activatedRoute.params.subscribe(
+        async params => {
+          const id = params.id;
+          if (id) {
+          this.getPdp(id);
+          if(this.pdpLoaded){
+  
+          }
+        } else {
+          this.router.navigateByUrl('/plan-de-prevention/list');
         }
-      } else {
-        this.router.navigateByUrl('/plan-de-prevention/list');
-      }
+      });
+    }else{
+      this.pdpLoaded = false;
+      var pdp = this.fromGuest.pdp
+      this.parsePdpDate(pdp);
+      this.pdpPiman = !(pdp.type.code == "PDP_CLIENT");
+	  		pdp.documents = pdp.documents.filter(x => ['pdf'].indexOf(x.extension.toLowerCase()) != -1);
+	  		pdp.documents.forEach(x=>{
+				x.src = this.documentService.readFile(x.id);
+				x.image = this.documentService.readFile(x.id);
+				x.thumbImage = this.documentService.readFile(x.id);
+			});
+      this.pdp = pdp;
+			this.pdpLoaded = true;
+			this.cdr.markForCheck();
     }
-  );
   }
 
   async getPdp(pdpId) {

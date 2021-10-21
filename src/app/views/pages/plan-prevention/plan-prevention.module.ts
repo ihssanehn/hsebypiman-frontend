@@ -101,6 +101,7 @@ const routes: Routes = [
 
 @NgModule({
 	declarations: [PlanPreventionComponent, PdpListComponent, PdpAddComponent, PdpAddFormComponent, PdpAdminComponent, PdpDetailComponent, PdpSignatureComponent, PdpAddClientComponent],
+	exports: [PdpDetailComponent, PdpSignatureComponent,],
 	imports: [
 		CommonModule,
 		PartialsModule,

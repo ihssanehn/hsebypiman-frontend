@@ -20,10 +20,12 @@ export class ValidatePdpComponent implements OnInit {
   token;
   itemId;
   itemType;
+  fromGuest;
 
   constructor(
     private route: ActivatedRoute,
     private guestService: GuestService,
+    private cdr: ChangeDetectorRef,
   ){
     this.route.params.subscribe(params=>{
       this.itemId = params['itemid'];
@@ -39,16 +41,22 @@ export class ValidatePdpComponent implements OnInit {
     }
   }
 
-  loadPdp(){
-    this.guestService.getPdp({
+  async loadPdp(){
+    await this.guestService.find({
       item_id:this.itemId,
       token:this.token,
-  }).toPromise().then(res=>{
-      console.log(res);
-  }).catch(error=>{
-      console.log(error);
-  })
-  
+      item_type: 'PdpValidation'
+    }).toPromise().then(res=>{
+      this.fromGuest = {
+        itemId:this.itemId,
+        token:this.token,
+        itemType:this.itemType,
+        pdp: res.result.data
+      }
+			this.cdr.markForCheck();
+    }).catch(error=>{
+        console.log(error);
+    })
   }
 }
 

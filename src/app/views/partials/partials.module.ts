@@ -106,8 +106,7 @@ import {
 	VisiteQuestionsOutillageAdminComponent,
 	VisiteQuestionsEpiAdminComponent,
 	VisiteQuestionsChantierAdminComponent,
-	SalarieFonctionsAdminComponent
-
+	SalarieFonctionsAdminComponent,
 } from './layout';
 // General
 import { NoticeComponent } from './content/general/notice/notice.component';
