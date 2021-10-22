@@ -154,7 +154,7 @@ export class PdpDetailComponent implements OnInit {
       if (result) {
         Swal.fire({
           icon: 'success',
-          title: this.translate.instant("FLASHINFOS.NOTIF.FLASH_CREATED.TITLE"),
+          title: this.translate.instant("ACTION.MAILS_SENDED"),
           showConfirmButton: false,
           timer: 1500
         });
