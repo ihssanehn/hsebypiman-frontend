@@ -11,11 +11,11 @@ import moment from 'moment';
 import { GuestService } from '@app/core/auth/_services/guest.service';
 
 @Component({
-  selector: 'tf-validate-pdp',
-  templateUrl: './validate-pdp.component.html',
-  styleUrls: ['./validate-pdp.component.scss']
+  selector: 'tf-pdp-validation',
+  templateUrl: './pdp-validation.component.html',
+  styleUrls: ['./pdp-validation.component.scss']
 })
-export class ValidatePdpComponent implements OnInit {
+export class PdpValidationComponent implements OnInit {
 
   token;
   itemId;

@@ -16,23 +16,30 @@ export class MultipleMailComponent implements OnInit {
   constructor( private formBuilder : FormBuilder) { }
 
   ngOnInit() {
-	this.mailForm = this.formBuilder.array([]);
-	this.addRow();
-
+    this.mailForm = new FormArray([]);
+    this.addRow();
   }
+  
   addRow(){
-	var newRow = this.formBuilder.group({
-		email:[null,[Validators.required,Validators.email]],
+	  var newRow = this.formBuilder.group({
+  		email:[null,[Validators.required,Validators.email]],
 	  });
 	  this.mailForm.insert(0, newRow);
   }
 
   onSubmit(){
 	this.formloading = true;
-    let form = {...this.mailForm.getRawValue()};
+    let form = this.mailForm.getRawValue().map(x=> x.email);
     this.formStatus.onFormSubmitting();
 
 	this.mailSent.emit(form);
   }
 
+  removeRow(i){
+    if(this.mailForm.controls.length == 1){
+      this.mailForm.at(i).get('email').setValue(null);
+    }else{
+      this.mailForm.removeAt(i);
+    }
+  }
 }

@@ -1,13 +1,14 @@
 <form  [formGroup]="mailForm" class="tf-form tf-form--group-seperator-dashed">
-	<button class="btn font-weight-bold d-block ml-auto"(click)="this.addRow()"> + Ajouter un destinataire</button>
+	<button class="btn font-weight-bold d-block ml-auto" type="button" (click)="addRow()"> + Ajouter un destinataire</button>
 	<div *ngFor="let destinataire of mailForm.controls; let i=index"  [formGroupName]="i" class="dest-line mt-2">
 		<span class="d-block ml-2">Destinataire</span>
 		<mat-form-field class="col-xl-5">
 			<mat-label>{{'PDP.MAIL' | translate}} </mat-label>
 			<input class="form-control" matInput type="email" name="email" formControlName="email" placeholder="{{'ACTION.ENTER_HERE' | translate}}" />
 		</mat-form-field>
+		<button mat-icon-button color="accent" (click)="removeRow(i)" type="button"><mat-icon>close</mat-icon></button>
 	</div>
 	<button mat-raised-button [ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': formloading}" [disabled]="formloading || mailForm?.invalid" class="float-right btn btn-save mt-2 mb-2" (click)="mailForm?.valid && onSubmit()">
-        {{'ACTION.SAVE' | translate}}
-    </button>
+		{{'ACTION.SAVE' | translate}}
+	</button>
 </form>

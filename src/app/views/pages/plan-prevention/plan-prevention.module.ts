@@ -41,6 +41,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 
 //FileUpload
 import { FileUploadModule } from 'ng2-file-upload';
+import { SendMailModalComponent } from './send-mail-modal/send-mail-modal.component';
 
 
 const routes: Routes = [
@@ -100,7 +101,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-	declarations: [PlanPreventionComponent, PdpListComponent, PdpAddComponent, PdpAddFormComponent, PdpAdminComponent, PdpDetailComponent, PdpSignatureComponent, PdpAddClientComponent],
+	declarations: [PlanPreventionComponent, PdpListComponent, PdpAddComponent, PdpAddFormComponent, PdpAdminComponent, PdpDetailComponent, PdpSignatureComponent, PdpAddClientComponent, SendMailModalComponent],
 	exports: [PdpDetailComponent, PdpSignatureComponent,],
 	imports: [
 		CommonModule,
@@ -178,6 +179,7 @@ const routes: Routes = [
 	],
 	entryComponents: [
 		ActionNotificationComponent,
+		SendMailModalComponent
 	],
 })
 export class PlanPreventionModule {

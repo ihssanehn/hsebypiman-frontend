@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ValidatePdpComponent } from './validate-pdp.component';
+import { SendMailModalComponent } from './send-mail-modal.component';
 
-describe('ValidatePdpComponent', () => {
-  let component: ValidatePdpComponent;
-  let fixture: ComponentFixture<ValidatePdpComponent>;
+describe('SendMailModalComponent', () => {
+  let component: SendMailModalComponent;
+  let fixture: ComponentFixture<SendMailModalComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ValidatePdpComponent ]
+      declarations: [ SendMailModalComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ValidatePdpComponent);
+    fixture = TestBed.createComponent(SendMailModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

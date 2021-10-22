@@ -18,7 +18,7 @@ import { InterceptService } from '../../../core/_base/crud/';
 // Auth
 import { AuthGuard, AuthService } from '../../../core/auth';
 import { GuestComponent } from './guest.component';
-import { ValidatePdpComponent } from './validate-pdp/validate-pdp.component';
+import { PdpValidationComponent } from './pdp-validation/pdp-validation.component';
 import { PlanPreventionModule } from '../plan-prevention/plan-prevention.module';
 
 const routes: Routes = [
@@ -27,8 +27,8 @@ const routes: Routes = [
 		component: GuestComponent,
 		children: [
 			{
-				path: 'validate-pdp/:itemid/:token',
-				component: ValidatePdpComponent,
+				path: 'pdp-validation/:itemid/:token',
+				component: PdpValidationComponent,
 			},
 			{
 				path: '',
@@ -67,7 +67,7 @@ const routes: Routes = [
 	],
 	declarations: [
 		GuestComponent,
-		ValidatePdpComponent,
+		PdpValidationComponent,
 	]
 })
 

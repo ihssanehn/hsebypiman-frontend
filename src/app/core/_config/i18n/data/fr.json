@@ -18,6 +18,7 @@
 		"EXPORT": "Exporter la liste",
 		"EXPORT_PDF": "Exporter en PDF",
 		"FOLLOWING": "Suite",
+		"MAILS_SENDED" : "Email(s) envoyé(s) avec succès",
 		"READ": "Consulter",
 		"REDUCE": "Réduire",
 		"REFRESH": "Rafraîchir",
@@ -501,8 +502,8 @@
 			"ADD_MOYEN_DISPOSITION": "Ajouter moyen disposition (ees)",
 			"ADD_CATEGORIE_PDP_RISQUE": "Ajouter Categorie Pdp Risque",
 			"ADD_PDP_RISQUE": "Ajouter Pdp Risque",
+			"SENDFORSIGN": "Envoyer pour signature",
 			"SIGN_PDP": "Signer le plan de prévention"
-
 		}
 	},
 	"AUTH": {

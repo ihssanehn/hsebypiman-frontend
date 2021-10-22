@@ -11,6 +11,7 @@ import { HttpService } from '@app/core/services/http-service';
 import { NgxRolesService, NgxPermissionsService } from 'ngx-permissions';
 import { JsonResponse } from '@app/core/_base/layout/models/jsonResponse.model';
 import { Router } from '@angular/router';
+import { throwToolbarMixedModesError } from '@angular/material';
 
 
 
@@ -34,5 +35,9 @@ export class GuestService extends HttpService {
   
   updateItem(params){
     return this.http.post<any>(`${API_USERS_URL}/update-item`, params);
+  }
+
+  sendGuestAccess(params){
+    return this.http.post<any>(`${API_USERS_URL}/send-access`, params)
   }
 }

@@ -5,9 +5,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Pdp } from '@app/core/models';
 import { DocumentService, PdpService } from '@app/core/services';
 import { DateEnToFrPipe, DateFrToEnPipe } from '@app/core/_base/layout';
+import Swal from "sweetalert2";
 import { SafePipe } from '@app/core/_base/layout';
 
 import moment from 'moment';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { SendMailModalComponent } from '../send-mail-modal/send-mail-modal.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'tf-pdp-detail',
@@ -41,7 +45,9 @@ export class PdpDetailComponent implements OnInit {
     protected pdpService: PdpService,
     protected cdr: ChangeDetectorRef,
     protected _sanitizer: DomSanitizer,
-	private documentService : DocumentService,
+		private translate: TranslateService,
+	  private documentService : DocumentService,
+    protected modalService: NgbModal,
   ) { }
 
   ngOnInit() {
@@ -106,6 +112,17 @@ export class PdpDetailComponent implements OnInit {
     });
     item.pdp_intervention_at = moment(item.pdp_intervention_at, 'DD-MM-YYYY').format('YYYY-MM-DD');
   }
+  
+  canBeSigned(type){
+    switch(type){
+      case'validation':
+        return this.pdp.pdp_validations.filter((el)=>{
+          return this.fromGuest ? !el.signature && el.id == this.fromGuest.itemId : !el.signature
+        }).length > 0
+      default:
+        return false;
+    }
+  }
 
   showValidationSignatureForm(){
     this.validationEditMode = true;
@@ -126,6 +143,26 @@ export class PdpDetailComponent implements OnInit {
   onSignPDP($event) {
     this.intervenantEditMode = this.validationEditMode = false;
     this.getPdp(this.pdp.id);
+  }
+
+  sendForSign(el, el_type){
+    const modalRef = this.modalService.open(SendMailModalComponent, {size:'lg'});
+    modalRef.componentInstance.element = el;
+    modalRef.componentInstance.el_type = el_type;
+    modalRef.componentInstance.action = 'sendGuestAccess';
+    modalRef.result.then((result) => {
+      if (result) {
+        Swal.fire({
+          icon: 'success',
+          title: this.translate.instant("FLASHINFOS.NOTIF.FLASH_CREATED.TITLE"),
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
+    }, (reason) => {
+      
+    });
+    console.log(el, el_type)
   }
 }
 

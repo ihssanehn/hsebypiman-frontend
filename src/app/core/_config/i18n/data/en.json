@@ -18,6 +18,7 @@
 		"EXPORT": "Export list",
 		"EXPORT_PDF": "Export in PDF",
 		"FOLLOWING": "Follow",
+		"MAILS_SENDED" : "Mail(s) succesfully sent",
 		"READ": "Consult",
 		"TO_SIGN": "Set status to 'To sign'",
 		"REDUCE": "Reduce",
@@ -502,8 +503,8 @@
 			"ADD_MOYEN_DISPOSITION": "Add medium disposition (ees)",
 			"ADD_CATEGORIE_PDP_RISQUE": "Add Pdp Risk Category",
 			"ADD_PDP_RISQUE": "Add Pdp Risk",
+			"SENDFORSIGN": "Send to signing",
 			"SIGN_PDP": "Sign the prevention plan"
-
 		}
 	},
 	"AUTH": {
