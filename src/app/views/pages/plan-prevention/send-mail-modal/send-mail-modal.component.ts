@@ -47,6 +47,8 @@ export class SendMailModalComponent implements OnInit {
         }
         this.guestService.sendGuestAccess(datas).toPromise().then(res=>{
           return this.activeModal.close(event);          
+        }).catch(err=>{
+          console.log(err)
         })
       default: 
         return this.activeModal.close(event);
