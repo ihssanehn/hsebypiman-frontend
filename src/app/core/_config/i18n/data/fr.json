@@ -361,6 +361,7 @@
 		"NAME": "Nom",
 		"INSTRUCTIONS_GIVEN_BY_THE_EXTERNAL_COMPANY": "Consignes remises par l'entreprise extérieure",
 		"TYPE_OPERATION": "Type d'opération",
+		"COMMENT_TYPE_OPERATION": "Commentaire / Type d'opération",
 		"PPE_MADE_AVAILABLE_TO_THE_EXTERNAL_COMPANY": "EPI mis à disposition",
 		"RESOURCES_MADE_AVAILABLE_TO_THE_EXTERNAL_COMPANY": "Ressources mises à disposition de l'entreprise utilisatrice",
 		"LIST_OF_HAZARDOUS_WORK": "Liste des travaux dangereux",

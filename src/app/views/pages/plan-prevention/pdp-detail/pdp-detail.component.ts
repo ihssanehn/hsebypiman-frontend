@@ -26,7 +26,7 @@ export class PdpDetailComponent implements OnInit {
   pdpPiman: boolean ;
 
   sousTraitantEeColumns: string[] = ['name', 'mail', 'tel'];
-  pdpConsigneeColumns: string[] = ['instructions', 'answer', 'comments', 'operation_type'];
+  pdpConsigneeColumns: string[] = ['instructions', 'answer', 'comments_operation_type'];
   pdpEpiDispositioneeColumns: string[] = ['ppe', 'answer', 'filter', 'type', 'comment'];
   pdpMoyenDispositionEeColumns: string[] = ['moyen_disposition', 'answer', 'comment'];
   pdpTravauxDangereuxColumns: string[] = ['pdp_travaux_dangereux', 'answer'];
@@ -60,7 +60,7 @@ export class PdpDetailComponent implements OnInit {
           if (id) {
           this.getPdp(id);
           if(this.pdpLoaded){
-  
+
           }
         } else {
           this.router.navigateByUrl('/plan-de-prevention/list');
@@ -112,7 +112,7 @@ export class PdpDetailComponent implements OnInit {
     });
     item.pdp_intervention_at = moment(item.pdp_intervention_at, 'DD-MM-YYYY').format('YYYY-MM-DD');
   }
-  
+
   canBeSigned(type){
     switch(type){
       case'validation':
@@ -160,7 +160,7 @@ export class PdpDetailComponent implements OnInit {
         });
       }
     }, (reason) => {
-      
+
     });
     console.log(el, el_type)
   }
