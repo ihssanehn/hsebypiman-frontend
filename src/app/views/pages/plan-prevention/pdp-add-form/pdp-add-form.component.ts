@@ -185,6 +185,7 @@ export class PdpAddFormComponent implements OnInit {
 				this.risques[i].situation.map(v => {
 					(group.get('situation') as FormArray).push(new FormGroup({
 						id: new FormControl(v.id),
+						is_title: new FormControl(v.is_title),
 						is_with_comment: new FormControl(v.is_with_comment),
 						label: new FormControl(v.label),
 						answer: new FormControl(v.is_selected || null),

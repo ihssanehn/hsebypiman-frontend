@@ -840,7 +840,11 @@
 												<ng-container [formGroup]="situation">
 													<mat-checkbox
 														(change)="allowComment(situation, $event.checked)"
+														*ngIf="!situation?.get('is_title').value"
 														formControlName="answer">{{situation?.get('label').value}}</mat-checkbox>
+													<b class="mt-2" *ngIf="situation?.get('is_title').value">
+														{{situation?.get('label').value}}
+													</b>
 													<div class="align-items-center d-flex ng-star-inserted w-100"
 														 *ngIf="situation?.get('is_with_comment').value">
 														<textarea
