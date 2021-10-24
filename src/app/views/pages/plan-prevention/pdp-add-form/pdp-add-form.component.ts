@@ -17,7 +17,7 @@ import moment from 'moment';
 import {NotifierService} from 'angular-notifier';
 import {TranslateService} from '@ngx-translate/core';
 import { SignaturePad } from 'angular2-signaturepad/signature-pad';
-  
+
 
 @Component({
 	selector: 'tf-pdp-add-form',
@@ -194,6 +194,7 @@ export class PdpAddFormComponent implements OnInit {
 				this.risques[i].moyen.map(v => {
 					(group.get('moyen') as FormArray).push(new FormGroup({
 						id: new FormControl(v.id),
+						is_title: new FormControl(v.is_title),
 						is_with_comment: new FormControl(v.is_with_comment),
 						label: new FormControl(v.label),
 						answer: new FormControl(v.is_selected || null),

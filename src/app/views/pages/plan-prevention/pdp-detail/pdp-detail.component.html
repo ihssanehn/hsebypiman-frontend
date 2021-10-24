@@ -201,7 +201,9 @@
 										</p>
 										<p><span class="mr-2 label pull-left">{{'PDP.PRESENCE_ON_CUSTOMER_SITE' | translate}}</span><span class="" *ngIf="pdp.is_presence_site_client; else no">{{'PDP.YES' | translate}}</span>
 										</p>
-										<p *ngIf="pdp.is_presence_site_client"><span class="mr-2 label pull-left">{{'PDP.HOW_OFTEN' | translate}}</span><span class="" *ngIf="pdp.presence_site_client_frequency; else noDataFound">{{pdp.presence_site_client_frequency}}</span>
+										<p *ngIf="pdp.is_presence_site_client">
+											<span class="mr-2 label pull-left">{{'PDP.HOW_OFTEN' | translate}}</span>
+											<span class="" *ngIf="pdp.presence_site_client_frequency; else noDataFound">{{pdp?.presence_site_client_frequency}}</span>
 										</p>
 									</div>
 								</div>

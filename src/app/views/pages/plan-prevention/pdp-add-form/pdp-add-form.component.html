@@ -58,7 +58,7 @@
 								</mat-form-field>
 								<mat-form-field class="col-4 custom-margin-1">
 									<mat-label>{{'PDP.MAIL' | translate}}</mat-label>
-									<input class="form-control" matInput type="text" name="hse_eu_mail"
+									<input class="form-control" matInput type="email" name="hse_eu_mail"
 										   formControlName="hse_eu_mail"
 										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
 										   [required]="isFieldRequired('hse_eu_mail')"/>
@@ -156,7 +156,7 @@
 								<mat-form-field class="col-4 custom-margin-1">
 									<mat-label>{{'PDP.MAIL' | translate}}
 									</mat-label>
-									<input class="form-control" matInput type="mail"
+									<input class="form-control" matInput type="email"
 										   name="representant_entreprise_eu_mail"
 										   formControlName="representant_entreprise_eu_mail"
 										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
@@ -304,7 +304,7 @@
 										<mat-form-field class="col-3">
 											<mat-label>{{'PDP.MAIL' | translate}}
 											</mat-label>
-											<input class="form-control" matInput type="mail" name="mail"
+											<input class="form-control" matInput type="email" name="mail"
 												   formControlName="mail"
 												   placeholder="{{'ACTION.ENTER_HERE' | translate}}"/>
 											<mat-error
@@ -878,10 +878,14 @@
 												 formArrayName="moyen">
 												<ng-container [formGroup]="moyen">
 													<mat-checkbox
+														*ngIf="!moyen?.get('is_title').value"
 														(change)="allowSubMoyensFields(moyen, $event.checked); allowComment(moyen, $event.checked)"
 														formControlName="answer">
 														{{moyen?.get('label').value}}
 													</mat-checkbox>
+													<b class="mt-2" *ngIf="moyen?.get('is_title').value">
+														{{moyen?.get('label').value}}
+													</b>
 													<div class="align-items-center d-flex ng-star-inserted w-100"
 														 *ngIf="moyen?.get('is_with_comment').value">
 														<textarea
