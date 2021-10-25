@@ -270,7 +270,7 @@
 									<p *ngIf="pdp.is_presence_site_client">
 										<span class="mr-2 label pull-left">{{'PDP.HOW_OFTEN' | translate}}</span>
 										<span class=""
-											  *ngIf="pdp.presence_site_client_frequency; else noDataFound">{{pdp?.presence_site_client_frequency}}</span>
+											  *ngIf="pdp?.frequences; else noDataFound">{{pdp?.frequences?.label}}</span>
 									</p>
 								</div>
 							</div>

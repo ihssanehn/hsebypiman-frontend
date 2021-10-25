@@ -27,6 +27,7 @@ export class Pdp {
 	pdp_intervention_at?: Date;
 	pole_qhse?: string;
 	presence_site_client_frequency?: string;
+	frequences?: any;
 	raison_sociale_eu?: string;
 	raison_sociale_tel_eu?: string;
 	representant_entreprise_ee_mail?: string;
