@@ -112,10 +112,15 @@
 												class=""
 												*ngIf="pdp.representant_entreprise_eu_tel; else noDataFound">{{pdp.representant_entreprise_eu_tel}}</span>
 											</p>
+										</div>
+										<div class="mb-3 tf-divider">
+											<span></span>
+										</div>
+										<h4><b>{{'PDP.RESCUERS_FIRST_AID_WORKER_AT_WORK' | translate}}</b></h4>
+										<div class="box" style="flex:1">
 											<p><span
-												class="mr-2 label pull-left">{{'PDP.RESCUERS_FIRST_AID_WORKER_AT_WORK' | translate}}</span><span
-												class=""
-												*ngIf="pdp.sauveteurs_secouriste_travail; else noDataFound">{{pdp.sauveteurs_secouriste_travail}}</span>
+												class="mr-2 label pull-left">{{'PDP.NAME' | translate}}s</span>
+												<span class="" *ngIf="pdp.sauveteurs_secouriste_travail; else noDataFound">{{pdp.sauveteurs_secouriste_travail}}</span>
 											</p>
 										</div>
 									</div>
