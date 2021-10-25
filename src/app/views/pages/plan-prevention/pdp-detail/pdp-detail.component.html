@@ -175,36 +175,38 @@
 					</mat-expansion-panel-header>
 					<div class="row d-flex flex-column flex-nowrap flex-fill">
 						<div class="col-12 flex-fill">
-							<ng-container *ngIf="pdp.sous_traitant.length > 0; else emptyCard">
-								<div class="card">
-									<table mat-table [dataSource]="pdp.sous_traitant" class="mb-4">
+							<div class="card">
+								<table mat-table [dataSource]="pdp.sous_traitant" class="mb-4"
+									   *ngIf="pdp.sous_traitant.length > 0">
 
-										<ng-container matColumnDef="name">
-											<th mat-header-cell *matHeaderCellDef> {{'PDP.NAME' | translate}} </th>
-											<td mat-cell *matCellDef="let element"> {{element.name}} </td>
-										</ng-container>
+									<ng-container matColumnDef="name">
+										<th mat-header-cell *matHeaderCellDef> {{'PDP.NAME' | translate}} </th>
+										<td mat-cell *matCellDef="let element"> {{element.name}} </td>
+									</ng-container>
 
-										<ng-container matColumnDef="mail">
-											<th mat-header-cell *matHeaderCellDef
-												class="text-center"> {{'PDP.MAIL' | translate}} </th>
-											<td mat-cell *matCellDef="let element" class="text-center">
-												<span *ngIf="element.mail; else noDataFound">{{element.mail}}</span>
-											</td>
-										</ng-container>
+									<ng-container matColumnDef="mail">
+										<th mat-header-cell *matHeaderCellDef
+											class="text-center"> {{'PDP.MAIL' | translate}} </th>
+										<td mat-cell *matCellDef="let element" class="text-center">
+											<span *ngIf="element.mail; else noDataFound">{{element.mail}}</span>
+										</td>
+									</ng-container>
 
-										<ng-container matColumnDef="tel">
-											<th mat-header-cell *matHeaderCellDef
-												class="text-center"> {{'PDP.TEL' | translate}} </th>
-											<td mat-cell *matCellDef="let element" class="text-center">
-												<span *ngIf="element.tel; else noDataFound">{{element.tel}}</span>
-											</td>
-										</ng-container>
+									<ng-container matColumnDef="tel">
+										<th mat-header-cell *matHeaderCellDef
+											class="text-center"> {{'PDP.TEL' | translate}} </th>
+										<td mat-cell *matCellDef="let element" class="text-center">
+											<span *ngIf="element.tel; else noDataFound">{{element.tel}}</span>
+										</td>
+									</ng-container>
 
-										<tr mat-header-row *matHeaderRowDef="sousTraitantEeColumns"></tr>
-										<tr mat-row *matRowDef="let row; columns: sousTraitantEeColumns;"></tr>
-									</table>
-								</div>
-							</ng-container>
+									<tr mat-header-row *matHeaderRowDef="sousTraitantEeColumns"></tr>
+									<tr mat-row *matRowDef="let row; columns: sousTraitantEeColumns;"></tr>
+								</table>
+								<span style="margin-bottom: 2em" *ngIf="pdp.sous_traitant.length === 0">
+								Pas de sous traitants
+							</span>
+							</div>
 						</div>
 					</div>
 				</mat-expansion-panel>
