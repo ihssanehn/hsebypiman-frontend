@@ -59,7 +59,7 @@ export class PdpAddFormComponent implements OnInit {
 	set pdpPatcher(value) {
 		if (value != null) {
 			this._pdp = value;
-			this.formPathValues(this._pdp);
+			// this.formPathValues(this._pdp);
 		}
 	}
 
@@ -109,9 +109,12 @@ export class PdpAddFormComponent implements OnInit {
 		this.notifier = notifierService;
 	}
 
-	ngOnInit() {
+	async ngOnInit() {
 		this.triggerResize();
-		this.getPDPConsignes();
+		await this.getPDPConsignes();
+		if (this._pdp != null) {
+			this.formPathValues(this._pdp);
+		}
 		console.log(this.pdpForm);
 	}
 
@@ -361,7 +364,7 @@ export class PdpAddFormComponent implements OnInit {
 			&& this.pdpForm.get('horaires_fermeture_site').valid;
 	}
 
-	checkThirdPart(){
+	checkThirdPart() {
 		return this.checkSecondPart() && this.pdpForm.get('consignes').valid;
 	}
 
@@ -369,12 +372,12 @@ export class PdpAddFormComponent implements OnInit {
 		return this.checkThirdPart()
 			&& this.pdpForm.get('epi_disposition').valid
 			&& this.pdpForm.get('moyen_disposition_ees').valid;
-			// && this.EPIDispositionList.filter((v: any, index: number) =>
-			// 	this.isControlHasError('answer_id', 'required', 'epi_disposition', index)
-			// 	|| this.isControlHasError('type', 'required', 'epi_disposition', index)).length === 0;
+		// && this.EPIDispositionList.filter((v: any, index: number) =>
+		// 	this.isControlHasError('answer_id', 'required', 'epi_disposition', index)
+		// 	|| this.isControlHasError('type', 'required', 'epi_disposition', index)).length === 0;
 	}
 
-	checkFifthPart(){
+	checkFifthPart() {
 		return this.checkFourthPart() && this.pdpForm.get('travaux_dangereux').valid;
 	}
 
@@ -414,7 +417,6 @@ export class PdpAddFormComponent implements OnInit {
 		this.pdpForm.get('presence_site_client_frequency_id').setValidators(event.value ? Validators.required : null);
 		event.value ? this.pdpForm.get('presence_site_client_frequency_id').enable() : this.pdpForm.get('presence_site_client_frequency_id').disable();
 		this.pdpForm.get('presence_site_client_frequency_id').updateValueAndValidity();
-		console.log('hanzaz', event, this.pdpForm.get('presence_site_client_frequency_id'));
 	}
 
 
@@ -568,7 +570,6 @@ export class PdpAddFormComponent implements OnInit {
 		});
 		this.getControlsArrayFormName('validations').push(group);
 		this.validations.next(this.getControlsArrayFormName('validations'));
-		console.log(this.getControlsArrayFormName('validations'));
 	}
 
 	deleteElemntInArray(index, formArrayName, array: BehaviorSubject<AbstractControl[]> = null) {
