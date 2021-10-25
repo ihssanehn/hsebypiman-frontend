@@ -507,7 +507,7 @@ export class PdpAddFormComponent implements OnInit {
 			company_name: new FormControl(''),
 			full_name: new FormControl(''),
 			validation_at: new FormControl(null),
-			type: new FormControl('ss'),
+			type: new FormControl('st'),
 			deletable: new FormControl(true),
 			is_part_inspection: new FormControl(null),
 			read_and_approved: new FormControl(null),
@@ -719,7 +719,7 @@ export class PdpAddFormComponent implements OnInit {
 				};
 			}));
 			pdp.pdp_validations.map((v: any, index: number) => {
-				if (v.type === 'ss' && index > 2) {
+				if (v.type === 'st' && index > 2) {
 					(this.pdpForm.get('validations') as FormArray).push(this.FB.group({
 						...v,
 						need_text_area_in_title: true,

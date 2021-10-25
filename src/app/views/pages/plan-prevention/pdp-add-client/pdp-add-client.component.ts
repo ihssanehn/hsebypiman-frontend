@@ -379,7 +379,7 @@ export class PdpAddClientComponent implements OnInit {
 			company_name: new FormControl(''),
 			full_name: new FormControl(''),
 			validation_at: new FormControl(null),
-			type: new FormControl('ss'),
+			type: new FormControl('st'),
 			deletable: new FormControl(true),
 			is_part_inspection: new FormControl(null),
 			part_inspection_at: new FormControl({value: null, disabled: true}),
