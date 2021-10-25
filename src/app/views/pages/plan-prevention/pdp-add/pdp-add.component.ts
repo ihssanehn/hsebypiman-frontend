@@ -111,7 +111,7 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 								this.cdr.markForCheck();
 							});
 					} else {
-						this.pdp = new Pdp();
+						// this.pdp = new Pdp();
 
 						this.typePdp ='PDP_PIMAN_TERRAIN';
 					}
@@ -340,6 +340,8 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 
 	async onSubmit() {
 		this.pdpForm.markAllAsTouched();
+		this.pdpClientForm.markAllAsTouched();
+
 		console.log('Hello 1  !')
 		if( this.pdpForm.valid){
 			this.pdpForm.patchValue({
@@ -373,7 +375,8 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 			} catch (error) {
 				throw error;
 			}
-		}else if( this.pdpClientForm.valid){
+		}
+		else if( this.pdpClientForm.valid){
 
 			this.pdpClientForm.patchValue({
 				type_id: this.pdpTypes.find(type => type.code == this.typePdp).id
@@ -393,7 +396,8 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 
 			this.save(formData).then(() => {
 				this.uploader.clearQueue();})
-		}else{
+		}
+		else{
 			const controls = this.pdpForm.controls;
 			for (const name in controls) {
 				if (controls[name].invalid) {
@@ -413,6 +417,7 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 	}
 
 	fireNotifAfterSave(res: any) {
+		console.log('ihssane', this.pdp);
 		let code = res.message.code as SweetAlertIcon;
 		let message = res.message.content !== 'done' ? '<b class="text-' + code + '">' + res.message.content + '</b>' : null;
 

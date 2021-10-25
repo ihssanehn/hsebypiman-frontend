@@ -1,4 +1,3 @@
-
 import {ChangeDetectorRef, Component, EventEmitter, Input, NgZone, OnInit, Output, ViewChild} from '@angular/core';
 import {AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {FormStatus} from '@app/core/_base/crud/models/form-status';
@@ -17,14 +16,14 @@ import {BehaviorSubject} from 'rxjs';
 import moment from 'moment';
 import {NotifierService} from 'angular-notifier';
 import {TranslateService} from '@ngx-translate/core';
-import { FileUploader } from 'ng2-file-upload';
+import {FileUploader} from 'ng2-file-upload';
 import Swal from 'sweetalert2';
 
 @Component({
 	selector: 'tf-pdp-add-client',
 	templateUrl: './pdp-add-client.component.html',
 	styleUrls: ['./pdp-add-client.component.scss']
-  })
+})
 export class PdpAddClientComponent implements OnInit {
 
 	pdpForm: FormGroup;
@@ -88,8 +87,8 @@ export class PdpAddClientComponent implements OnInit {
 				private translate: TranslateService,
 				private cdr: ChangeDetectorRef,
 				protected pdpService: PdpService,
-				private documentService : DocumentService
-				) {
+				private documentService: DocumentService
+	) {
 		this.notifier = notifierService;
 	}
 
@@ -105,32 +104,6 @@ export class PdpAddClientComponent implements OnInit {
 		this.frequences = res.result.data ? res.result.data.frequence : [];
 	}
 
-
-	patchFormArray(array, formArrayName, listAddedControls: Array<any> = [], commentDisabled = true) {
-		const FormArray = this.pdpForm.get(formArrayName) as FormArray;
-		//Reset array in case of switching type of Pdp
-		while (FormArray.length !== 0) {
-			FormArray.removeAt(0)
-		  }
-		for (let i = 0; i < array.length; i++) {
-			const group = new FormGroup({
-				id: new FormControl(array[i].id),
-				answer: new FormControl(null),
-				comment: new FormControl({value: '', disabled: commentDisabled}),
-			});
-			listAddedControls.map(v => {
-				if (!v.needTest || (i && v.needTest && array[i].has_details)) {
-					group.addControl(v.name, new FormControl({
-						value: '',
-						disabled: true
-					}, v.isRequired ? Validators.required : null));
-				}
-			});
-			// console.log(group);
-			FormArray.push(group);
-		}
-
-	}
 
 	partHided(key) {
 		return !this.parts.includes(key);
@@ -148,7 +121,7 @@ export class PdpAddClientComponent implements OnInit {
 	}
 
 	showPart(key) {
-		if (this.checkPart(key)) {
+		if (this.checkPart()) {
 			if (!this.parts.includes(key)) {
 				this.parts.push(key);
 			}
@@ -161,27 +134,28 @@ export class PdpAddClientComponent implements OnInit {
 		}
 	}
 
-	checkPart(key) {
-		this.pdpForm.markAllAsTouched();
-		console.log(key);
-		switch (key) {
-			case 2  : {
-				return this.checkSecondPart();
-			}
-			case 3  : {
-				return this.checkSecondPart();
-			}
-			case 4 : {
-				return this.checkFourthPart();
-			}
-			case 5 : {
-				return this.checkFourthPart();
-			}
-			case 6 : {
-				return this.checkFourthPart() && this.getControlsArrayFormName('cat_pdp_risques').filter(v => this.checkIfSelectOnSituation(v) || this.checkIfCheckOneResp(v)).length === 0;
-			}
-		}
+	checkPart() {
+		this.markFirstStepTouched();
+		return this.checkSecondPart();
+		// this.pdpForm.markAllAsTouched();
 	}
+
+	markFirstStepTouched() {
+		this.pdpForm.get('raison_sociale_eu').markAsTouched();
+		this.pdpForm.get('raison_sociale_tel_eu').markAsTouched();
+		this.pdpForm.get('representant_entreprise_eu_name').markAsTouched();
+		this.pdpForm.get('representant_entreprise_eu_mail').markAsTouched();
+		this.pdpForm.get('representant_entreprise_eu_tel').markAsTouched();
+		this.pdpForm.get('representant_entreprise_ee_mail').markAsTouched();
+		this.pdpForm.get('sauveteurs_secouriste_travail').markAsTouched();
+		this.pdpForm.get('label_intervention').markAsTouched();
+		this.pdpForm.get('lieu_intervention').markAsTouched();
+		this.pdpForm.get('pdp_intervention_at').markAsTouched();
+		this.pdpForm.get('horaires_ouverture_site').markAsTouched();
+		this.pdpForm.get('presence_site_client_frequency_id').markAsTouched();
+		this.pdpForm.get('horaires_fermeture_site').markAsTouched();
+	}
+
 
 	checkSecondPart() {
 		return this.pdpForm.get('raison_sociale_eu').valid
@@ -199,12 +173,6 @@ export class PdpAddClientComponent implements OnInit {
 			&& this.pdpForm.get('horaires_fermeture_site').valid;
 	}
 
-	checkFourthPart() {
-		return this.checkSecondPart()
-			&& this.EPIDispositionList.filter((v: any, index: number) =>
-				this.isControlHasError('answer_id', 'required', 'epi_disposition', index)
-				|| this.isControlHasError('type', 'required', 'epi_disposition', index)).length === 0;
-	}
 
 	isFieldRequired(controlName) {
 		if (this.pdpForm && this.pdpForm.controls[controlName]) {
@@ -226,9 +194,6 @@ export class PdpAddClientComponent implements OnInit {
 		return control.hasError(validationType) && (control.dirty || control.touched);
 	}
 
-	updateToggleValue(event, controlName) {
-		this.pdpForm.controls[controlName].setValue(event.checked ? 1 : 0);
-	}
 
 	makePresenceSiteClientRequired(event) {
 		this.pdpForm.get('presence_site_client_frequency_id').setValidators(event.value ? Validators.required : null);
@@ -237,116 +202,6 @@ export class PdpAddClientComponent implements OnInit {
 		console.log('hanzaz', event, this.pdpForm.get('presence_site_client_frequency_id'));
 	}
 
-
-	allowOtherFields(ArrayFormName, index, listFormControls: Array<string>, isDisabled) {
-		const controlGroup = (this.pdpForm.get(ArrayFormName) as FormArray).controls[index];
-		if (isDisabled) {
-			controlGroup.get('comment').enable();
-			listFormControls.map(v => {
-				if (controlGroup.get(v)) {
-					controlGroup.get(v).enable();
-				}
-			});
-		} else {
-
-			controlGroup.get('comment').disable();
-			controlGroup.get('comment').setValue(null);
-			listFormControls.map(v => {
-				if (controlGroup.get(v)) {
-					controlGroup.get(v).setValue(null);
-					controlGroup.get(v).disable();
-				}
-			});
-		}
-	}
-
-	makeAnswerIDUnRequiredinOtherPart(index) {
-		(this.pdpForm.get('epi_disposition') as FormArray).controls[index].get('answer_id').setValidators(null);
-		(this.pdpForm.get('epi_disposition') as FormArray).controls[index].get('answer_id').updateValueAndValidity(); // this is to rerun form validation after removing the validation for a field.
-	}
-
-	allowRisksFields(index, isDisabled) {
-		const controlGroup = (this.pdpForm.get('cat_pdp_risques') as FormArray).controls[index];
-		if (isDisabled) {
-			controlGroup.get('comment').enable();
-			controlGroup.get('is_eu').enable();
-			controlGroup.get('is_piman').enable();
-			controlGroup.get('is_sous_traitant').enable();
-			controlGroup.get('other_cat_pdp_risque').enable();
-			controlGroup.get('other_pdp_moyen_risque').enable();
-			controlGroup.get('other_pdp_situation_risque').enable();
-			if ((controlGroup.get('situation') as FormArray)) {
-				(controlGroup.get('situation') as FormArray).controls.map(v => {
-					v.get('answer').enable();
-					v.get('comment').enable();
-				});
-			}
-			if ((controlGroup.get('moyen') as FormArray)) {
-				(controlGroup.get('moyen') as FormArray).controls.map(v => {
-					v.get('answer').enable();
-					v.get('comment').enable();
-					// (v.get('items') as FormArray).controls.map(r => {
-					// 	r.get('id').enable();
-					// 	r.get('answer').enable();
-					// 	r.get('comment').enable();
-					// });
-				});
-			}
-		} else {
-			controlGroup.get('comment').disable();
-			controlGroup.get('is_eu').disable();
-			controlGroup.get('is_piman').disable();
-			controlGroup.get('is_sous_traitant').disable();
-			controlGroup.get('other_cat_pdp_risque').disable();
-			controlGroup.get('other_pdp_moyen_risque').disable();
-			controlGroup.get('other_pdp_situation_risque').disable();
-			if ((controlGroup.get('situation') as FormArray)) {
-				(controlGroup.get('situation') as FormArray).controls.map(v => {
-					v.get('answer').disable();
-					v.get('comment').disable();
-				});
-
-			}
-			if ((controlGroup.get('moyen') as FormArray)) {
-				(controlGroup.get('moyen') as FormArray).controls.map(v => {
-					v.get('answer').disable();
-					v.get('comment').disable();
-				});
-			}
-		}
-
-	}
-
-	allowSubMoyensFields(control, isDisabled) {
-		if (isDisabled) {
-			if ((control.get('pdp_risque_moyen_filtre') as FormArray)) {
-				(control.get('pdp_risque_moyen_filtre') as FormArray).controls.map(v => {
-					v.get('answer').enable();
-				});
-			}
-		} else {
-			if ((control.get('pdp_risque_moyen_filtre') as FormArray)) {
-				(control.get('pdp_risque_moyen_filtre') as FormArray).controls.map(v => {
-					v.get('answer').disable();
-				});
-			}
-		}
-	}
-
-	allowComment(control, isDisabled) {
-		if (control.get('comment')) {
-			if (isDisabled) {
-				control.get('comment').enable();
-			} else {
-				control.get('comment').disable();
-			}
-		}
-	}
-
-
-	isValueInFormArray(formControlName, id) {
-		return this.getControlsArrayFormName(formControlName).filter(v => v.get('id').value === id).length > 0;
-	}
 
 	addIntervenant() {
 		if (this.intervenants.getValue().length < 9) {
@@ -363,32 +218,6 @@ export class PdpAddClientComponent implements OnInit {
 		}
 	}
 
-	addSousTraitant() {
-		const group = new FormGroup({
-			name: new FormControl(''),
-			mail: new FormControl('', Validators.email),
-			tel: new FormControl(''),
-		});
-		this.getControlsArrayFormName('sous_traitant').push(group);
-	}
-
-	addValidationSousTraitant() {
-		const group = new FormGroup({
-			need_text_area_in_title: new FormControl(true),
-			title: new FormControl('Sous-traitant'),
-			company_name: new FormControl(''),
-			full_name: new FormControl(''),
-			validation_at: new FormControl(null),
-			type: new FormControl('st'),
-			deletable: new FormControl(true),
-			is_part_inspection: new FormControl(null),
-			part_inspection_at: new FormControl({value: null, disabled: true}),
-		});
-		this.getControlsArrayFormName('validations').push(group);
-		this.validations.next(this.getControlsArrayFormName('validations'));
-		console.log(this.getControlsArrayFormName('validations'));
-	}
-
 	deleteElemntInArray(index, formArrayName, array: BehaviorSubject<AbstractControl[]> = null) {
 		this.getControlsArrayFormName(formArrayName).splice(index, 1);
 		if (array) {
@@ -398,13 +227,6 @@ export class PdpAddClientComponent implements OnInit {
 
 	getControlsArrayFormName(formArrayName) {
 		return (this.pdpForm.get(formArrayName) as FormArray).controls;
-	}
-
-	getFormArrayControls(array) {
-		if (array) {
-			return array.controls;
-		}
-		return [];
 	}
 
 	togglePartInspectionAt(event, index, FormArrayName, FormChangeToControlName) {
@@ -439,85 +261,73 @@ export class PdpAddClientComponent implements OnInit {
 		this.pdpForm.updateValueAndValidity();
 	}
 
-	checkIfSelectOnSituation(risk: AbstractControl) {
-		return risk.get('answer').value
-			&& risk.get('is_required_situation').value
-			&& (risk.get('situation') as FormArray).controls.filter(v => v.get('answer').value).length === 0;
-	}
-
-
-	checkIfCheckOneResp(risk: AbstractControl) {
-		return risk.get('answer').value && (!risk.get('is_eu').value && !risk.get('is_piman').value && !risk.get('is_sous_traitant').value);
-	}
-
-
 	checkIfDateLastIsBigger() {
 		return moment(this.pdpForm.get('horaires_fermeture_site').value, 'hh:mm').isAfter(moment(this.pdpForm.get('horaires_ouverture_site').value, 'hh:mm'));
 	}
 
-	deleteDoc(item){
+	deleteDoc(item) {
 		Swal.fire({
-		  icon: 'warning',
-		  title: this.translate.instant("REMONTEES.NOTIF.DOC_DELETE_CONFIRMATION.TITLE"),
-		  html: '<p>'+this.translate.instant("REMONTEES.NOTIF.DOC_DELETE_CONFIRMATION.LABEL")+'</p>',
-		  showConfirmButton: true,
-		  showCancelButton: true,
-		  cancelButtonText: this.translate.instant("ACTION.CANCEL"),
-		  confirmButtonText: this.translate.instant("ACTION.CONFIRM"),
+			icon: 'warning',
+			title: this.translate.instant("REMONTEES.NOTIF.DOC_DELETE_CONFIRMATION.TITLE"),
+			html: '<p>' + this.translate.instant("REMONTEES.NOTIF.DOC_DELETE_CONFIRMATION.LABEL") + '</p>',
+			showConfirmButton: true,
+			showCancelButton: true,
+			cancelButtonText: this.translate.instant("ACTION.CANCEL"),
+			confirmButtonText: this.translate.instant("ACTION.CONFIRM"),
 		}).then(async response => {
-		  if (response.value) {
-			this.documentService.delete(item.id).toPromise()
-			.then((res:any) => {
-			  this.cdr.markForCheck();
-			  this._pdp.documents = this._pdp.documents.filter((p) => p.id !== parseInt(res.result.data));
-			  Swal.fire({
-				icon: 'success',
-				title: this.translate.instant("REMONTEES.NOTIF.DOC_DELETED.TITLE"),
-				showConfirmButton: false,
-				timer: 1500,
-			  })
-		   })
-		  }
+			if (response.value) {
+				this.documentService.delete(item.id).toPromise()
+					.then((res: any) => {
+						this.cdr.markForCheck();
+						this._pdp.documents = this._pdp.documents.filter((p) => p.id !== parseInt(res.result.data));
+						Swal.fire({
+							icon: 'success',
+							title: this.translate.instant("REMONTEES.NOTIF.DOC_DELETED.TITLE"),
+							showConfirmButton: false,
+							timer: 1500,
+						})
+					})
+			}
 		});
-	  }
+	}
 
-	  seeItem(item){
+	seeItem(item) {
 		return item.file.name
-	  }
+	}
 
-	  onFileDrop(event){
+	onFileDrop(event) {
 		var extensions = ['pdf'];
 
 		for (let i = 0; i < event.length; i++) {
 
-		  const droppedFile = event[i];
-		  var name = droppedFile.name.split('.');
-		  var ext = name[name.length -1].toLowerCase();
+			const droppedFile = event[i];
+			var name = droppedFile.name.split('.');
+			var ext = name[name.length - 1].toLowerCase();
 
-		  let error = false;
+			let error = false;
 
-		  if( extensions.indexOf(ext) == -1 ){
-			error = true;
-			Swal.fire({
-			  icon: 'error',
-			  title: this.translate.instant('UPLOAD.EXTENSION')+' '+droppedFile.name,
-			  showConfirmButton: false,
-			  timer: 1500
-			});
-		  } else if (droppedFile.size > 4000000) {
-			error = true;
-			Swal.fire({
-			  icon: 'error',
-			  title: this.translate.instant('UPLOAD.SIZE')+' '+droppedFile.name,
-			  showConfirmButton: false,
-			  timer: 1500
-			});
-		  }
+			if (extensions.indexOf(ext) == -1) {
+				error = true;
+				Swal.fire({
+					icon: 'error',
+					title: this.translate.instant('UPLOAD.EXTENSION') + ' ' + droppedFile.name,
+					showConfirmButton: false,
+					timer: 1500
+				});
+			} else if (droppedFile.size > 4000000) {
+				error = true;
+				Swal.fire({
+					icon: 'error',
+					title: this.translate.instant('UPLOAD.SIZE') + ' ' + droppedFile.name,
+					showConfirmButton: false,
+					timer: 1500
+				});
+			}
 
-		  if(error == true){
-			this.uploader.queue = this.uploader.queue.filter(x=>x.file.name != droppedFile.name);
-		  }
+			if (error == true) {
+				this.uploader.queue = this.uploader.queue.filter(x => x.file.name != droppedFile.name);
+			}
 		}
 
-	  }
+	}
 }

@@ -278,7 +278,6 @@ export class PdpAddFormComponent implements OnInit {
 	}
 
 	showPart(key) {
-		console.log('ihssane', this.pdpForm);
 		if (this.checkPart(key)) {
 			if (!this.parts.includes(key)) {
 				this.parts.push(key);
@@ -294,7 +293,6 @@ export class PdpAddFormComponent implements OnInit {
 
 	checkPart(key) {
 		// this.pdpForm.markAllAsTouched();
-		console.log(key);
 		switch (key) {
 			case 2  : {
 				this.markFirstStepTouched();
