@@ -510,7 +510,7 @@
 												<div class="row">
 													<ul [ngClass]="!risk.situation.length && !risk.other_pdp_situation_risque?'col-md-12 my-2': ''">
 														<ng-container *ngFor="let situation of risk.situation">
-															<li class="pdp-label">
+															<li class="pdp-label" *ngIf="situation?.answer">
 																{{situation.pdp_risque?.label}}
 																<span class="font-italic"
 																	  *ngIf="situation.pdp_risque?.is_with_comment">: {{situation.comment}}</span>
@@ -536,7 +536,7 @@
 												<div class="row">
 													<ul [ngClass]="!risk.moyens.length && !risk.other_pdp_moyen_risque?'col-md-12 my-2': ''">
 														<ng-container *ngFor="let moyen of risk.moyens">
-															<li class="pdp-label">
+															<li class="pdp-label" *ngIf="moyen?.answer">
 																{{moyen.pdp_risque?.label}}
 																<span class="font-italic"
 																	  *ngIf="moyen.pdp_risque?.is_with_comment">: {{moyen.comment}}</span>
