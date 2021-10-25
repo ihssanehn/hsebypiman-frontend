@@ -339,6 +339,7 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 	}
 
 	async onSubmit() {
+		this.pdpForm.markAllAsTouched();
 		console.log('Hello 1  !')
 		if( this.pdpForm.valid){
 			this.pdpForm.patchValue({
@@ -346,7 +347,7 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 			})
 			console.log(this.pdpForm)
 			try {
-				this.pdpForm.markAllAsTouched();
+				// this.pdpForm.markAllAsTouched();
 				console.log(this.pdpForm.valid)
 				if (
 					this.checkIfDateLastIsBigger()

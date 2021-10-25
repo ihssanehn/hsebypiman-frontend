@@ -574,6 +574,11 @@
 												<mat-radio-button
 													[value]="0">{{'PDP.NO' | translate}}</mat-radio-button>
 											</mat-radio-group>
+											<mat-error
+												*ngIf="isControlHasError('answer', 'required', 'consignes', index)"
+												class="w-100 ml-3">
+												{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}
+											</mat-error>
 										</div>
 									</td>
 								</ng-container>
@@ -643,6 +648,11 @@
 												<mat-radio-button
 													[value]="0">{{'PDP.NO' | translate}}</mat-radio-button>
 											</mat-radio-group>
+											<mat-error
+												*ngIf="isControlHasError('answer', 'required', 'epi_disposition', index)"
+												class="w-100 ml-3">
+												{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}
+											</mat-error>
 										</div>
 									</td>
 								</ng-container>
@@ -732,6 +742,11 @@
 												<mat-radio-button
 													[value]="0">{{'PDP.NO' | translate}}</mat-radio-button>
 											</mat-radio-group>
+											<mat-error
+												*ngIf="isControlHasError('answer', 'required', 'moyen_disposition_ees', index)"
+												class="w-100 ml-3">
+												{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}
+											</mat-error>
 										</div>
 									</td>
 								</ng-container>
@@ -792,6 +807,11 @@
 											<mat-radio-button
 												[value]="0">{{'PDP.NO' | translate}}</mat-radio-button>
 										</mat-radio-group>
+										<mat-error
+											*ngIf="isControlHasError('answer', 'required', 'travaux_dangereux', index)"
+											class="w-100 ml-3">
+											{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}
+										</mat-error>
 									</div>
 								</td>
 							</ng-container>
@@ -1076,7 +1096,8 @@
 													   [matDatepicker]="picker3"
 													   formControlName="part_inspection_at"
 													   placeholder="JJ/MM/AAAA">
-												<mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+												<mat-datepicker-toggle matSuffix
+																	   [for]="picker3"></mat-datepicker-toggle>
 												<mat-datepicker #picker3></mat-datepicker>
 												<mat-error
 													*ngIf="isControlHasError('part_inspection_at', 'required', 'validations', index)">

@@ -1,4 +1,15 @@
-import {ChangeDetectorRef, ViewChildren, Component, EventEmitter, Input, NgZone, QueryList, OnInit, Output, ViewChild} from '@angular/core';
+import {
+	ChangeDetectorRef,
+	ViewChildren,
+	Component,
+	EventEmitter,
+	Input,
+	NgZone,
+	QueryList,
+	OnInit,
+	Output,
+	ViewChild
+} from '@angular/core';
 import {AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {FormStatus} from '@app/core/_base/crud/models/form-status';
 import {CdkTextareaAutosize} from '@angular/cdk/text-field';
@@ -16,7 +27,7 @@ import {BehaviorSubject} from 'rxjs';
 import moment from 'moment';
 import {NotifierService} from 'angular-notifier';
 import {TranslateService} from '@ngx-translate/core';
-import { SignaturePad } from 'angular2-signaturepad/signature-pad';
+import {SignaturePad} from 'angular2-signaturepad/signature-pad';
 
 
 @Component({
@@ -51,18 +62,19 @@ export class PdpAddFormComponent implements OnInit {
 			this.formPathValues(this._pdp);
 		}
 	}
+
 	pdpForm: FormGroup;
 	@ViewChildren("signaturePad") signaturePads: QueryList<SignaturePad>;
 	private canvas: Object = {
-    'minWidth': 0.5,
-    'canvasWidth': 500,
-    'canvasHeight': 150
-  }
-  public signaturePadOptions: Object = {
-    'minWidth': this.canvas['minWidth'],
-    'canvasWidth': this.canvas['canvasWidth'],
-    'canvasHeight': this.canvas['canvasHeight'],
-  };
+		'minWidth': 0.5,
+		'canvasWidth': 500,
+		'canvasHeight': 150
+	}
+	public signaturePadOptions: Object = {
+		'minWidth': this.canvas['minWidth'],
+		'canvasWidth': this.canvas['canvasWidth'],
+		'canvasHeight': this.canvas['canvasHeight'],
+	};
 	@Input() formStatus: FormStatus;
 	@Input() adding = true;
 	@ViewChild('autosize', {static: true}) autosize: CdkTextareaAutosize;
@@ -110,9 +122,9 @@ export class PdpAddFormComponent implements OnInit {
 		this.EESMoyenDisposition = res.result.data ? res.result.data.moyen_disposition_ees : [];
 		this.traveauxDangereux = res.result.data ? res.result.data.travaux_dangereux : [];
 
-		if(this.pdpType == "PDP_PIMAN_BUREAU"){
+		if (this.pdpType == "PDP_PIMAN_BUREAU") {
 			this.risques = res.result.data ? res.result.data.risquesByType[0].PDP_PIMAN_BUREAU : [];
-		}else if(this.pdpType == "PDP_PIMAN_TERRAIN"){
+		} else if (this.pdpType == "PDP_PIMAN_TERRAIN") {
 			this.risques = res.result.data ? res.result.data.risquesByType[1].PDP_PIMAN_TERRAIN : [];
 		}
 		this.suivisMedicalIntervenants = res.result.data ? res.result.data.intervenant : [];
@@ -147,7 +159,7 @@ export class PdpAddFormComponent implements OnInit {
 			//Rest array in case of switching type of Pdp
 			while (formArray.length !== 0) {
 				formArray.removeAt(0)
-			  }
+			}
 
 			for (let i = 0; i < this.risques.length; i++) {
 				const group = new FormGroup({
@@ -216,7 +228,6 @@ export class PdpAddFormComponent implements OnInit {
 		}
 
 
-
 		// console.log('here 1 ', this._pdp);
 		// if (this._pdp) {
 		// 	this.formPathValues(this._pdp);
@@ -225,18 +236,16 @@ export class PdpAddFormComponent implements OnInit {
 	}
 
 
-
-
 	patchFormArray(array, formArrayName, listAddedControls: Array<any> = [], commentDisabled = true) {
 		const FormArray = this.pdpForm.get(formArrayName) as FormArray;
 		//Reset array in case of switching type of Pdp
 		while (FormArray.length !== 0) {
 			FormArray.removeAt(0)
-		  }
+		}
 		for (let i = 0; i < array.length; i++) {
 			const group = new FormGroup({
 				id: new FormControl(array[i].id),
-				answer: new FormControl(null),
+				answer: new FormControl(null, Validators.required),
 				comment: new FormControl({value: '', disabled: commentDisabled}),
 			});
 			listAddedControls.map(v => {
@@ -269,6 +278,7 @@ export class PdpAddFormComponent implements OnInit {
 	}
 
 	showPart(key) {
+		console.log('ihssane', this.pdpForm);
 		if (this.checkPart(key)) {
 			if (!this.parts.includes(key)) {
 				this.parts.push(key);
@@ -283,25 +293,58 @@ export class PdpAddFormComponent implements OnInit {
 	}
 
 	checkPart(key) {
-		this.pdpForm.markAllAsTouched();
+		// this.pdpForm.markAllAsTouched();
 		console.log(key);
 		switch (key) {
 			case 2  : {
+				this.markFirstStepTouched();
 				return this.checkSecondPart();
 			}
 			case 3  : {
-				return this.checkSecondPart();
+				this.markSecondStepTouched();
+				return this.checkThirdPart();
 			}
 			case 4 : {
+				this.markThirdStepTouched();
 				return this.checkFourthPart();
 			}
 			case 5 : {
-				return this.checkFourthPart();
+				this.markFourthStepTouched();
+				return this.checkFifthPart();
 			}
 			case 6 : {
-				return this.checkFourthPart() && this.getControlsArrayFormName('cat_pdp_risques').filter(v => this.checkIfSelectOnSituation(v) || this.checkIfCheckOneResp(v)).length === 0;
+				return this.checkFifthPart() && this.getControlsArrayFormName('cat_pdp_risques').filter(v => this.checkIfSelectOnSituation(v) || this.checkIfCheckOneResp(v)).length === 0;
 			}
 		}
+	}
+
+	markFirstStepTouched() {
+		this.pdpForm.get('raison_sociale_eu').markAsTouched();
+		this.pdpForm.get('raison_sociale_tel_eu').markAsTouched();
+		this.pdpForm.get('representant_entreprise_eu_name').markAsTouched();
+		this.pdpForm.get('representant_entreprise_eu_mail').markAsTouched();
+		this.pdpForm.get('representant_entreprise_eu_tel').markAsTouched();
+		this.pdpForm.get('representant_entreprise_ee_mail').markAsTouched();
+		this.pdpForm.get('sauveteurs_secouriste_travail').markAsTouched();
+		this.pdpForm.get('label_intervention').markAsTouched();
+		this.pdpForm.get('lieu_intervention').markAsTouched();
+		this.pdpForm.get('pdp_intervention_at').markAsTouched();
+		this.pdpForm.get('horaires_ouverture_site').markAsTouched();
+		this.pdpForm.get('presence_site_client_frequency_id').markAsTouched();
+		this.pdpForm.get('horaires_fermeture_site').markAsTouched();
+	}
+
+	markSecondStepTouched() {
+		this.pdpForm.get('consignes').markAllAsTouched();
+	}
+
+	markThirdStepTouched() {
+		this.pdpForm.get('epi_disposition').markAllAsTouched();
+		this.pdpForm.get('moyen_disposition_ees').markAllAsTouched();
+	}
+
+	markFourthStepTouched() {
+		this.pdpForm.get('travaux_dangereux').markAllAsTouched();
 	}
 
 	checkSecondPart() {
@@ -320,12 +363,23 @@ export class PdpAddFormComponent implements OnInit {
 			&& this.pdpForm.get('horaires_fermeture_site').valid;
 	}
 
-	checkFourthPart() {
-		return this.checkSecondPart()
-			&& this.EPIDispositionList.filter((v: any, index: number) =>
-				this.isControlHasError('answer_id', 'required', 'epi_disposition', index)
-				|| this.isControlHasError('type', 'required', 'epi_disposition', index)).length === 0;
+	checkThirdPart(){
+		return this.checkSecondPart() && this.pdpForm.get('consignes').valid;
 	}
+
+	checkFourthPart() {
+		return this.checkThirdPart()
+			&& this.pdpForm.get('epi_disposition').valid
+			&& this.pdpForm.get('moyen_disposition_ees').valid;
+			// && this.EPIDispositionList.filter((v: any, index: number) =>
+			// 	this.isControlHasError('answer_id', 'required', 'epi_disposition', index)
+			// 	|| this.isControlHasError('type', 'required', 'epi_disposition', index)).length === 0;
+	}
+
+	checkFifthPart(){
+		return this.checkFourthPart() && this.pdpForm.get('travaux_dangereux').valid;
+	}
+
 
 	isFieldRequired(controlName) {
 		if (this.pdpForm && this.pdpForm.controls[controlName]) {
@@ -340,10 +394,10 @@ export class PdpAddFormComponent implements OnInit {
 	}
 
 	isControlHasError(controlName: string, validationType: string, ArrayFormName = null, index = null): boolean {
-		if(!this.pdpForm ){
+		if (!this.pdpForm) {
 			return false;
 		}
-		if(ArrayFormName && !(this.pdpForm.get(ArrayFormName) as FormArray).controls[index]){
+		if (ArrayFormName && !(this.pdpForm.get(ArrayFormName) as FormArray).controls[index]) {
 			return false
 		}
 
@@ -755,20 +809,21 @@ export class PdpAddFormComponent implements OnInit {
 		return moment(this.pdpForm.get('horaires_fermeture_site').value, 'hh:mm').isAfter(moment(this.pdpForm.get('horaires_ouverture_site').value, 'hh:mm'));
 	}
 
-	clearSignature(index){
+	clearSignature(index) {
 		let signaturePadChild = this.signaturePads.filter((element, i) => index === i);
-    signaturePadChild[0].clear();
-    (this.pdpForm.get('validations') as FormArray).controls[index].get('signature').reset();
+		signaturePadChild[0].clear();
+		(this.pdpForm.get('validations') as FormArray).controls[index].get('signature').reset();
 	}
-	resizeSignaturePad() {
-    var ratio = Math.max(window.devicePixelRatio || 1, 1);
-    this.signaturePads.forEach((child) => {
-      child.set('canvasWidth', this.canvas['canvasWidth'] / ratio);
-    });
-  }
 
-  drawComplete(index:number) {
-    let signaturePadChild = this.signaturePads.filter((element, i) => i === index);
-    (this.pdpForm.get('validations') as FormArray).controls[index].get('signature').setValue(signaturePadChild[0].toDataURL());
-  }
+	resizeSignaturePad() {
+		var ratio = Math.max(window.devicePixelRatio || 1, 1);
+		this.signaturePads.forEach((child) => {
+			child.set('canvasWidth', this.canvas['canvasWidth'] / ratio);
+		});
+	}
+
+	drawComplete(index: number) {
+		let signaturePadChild = this.signaturePads.filter((element, i) => i === index);
+		(this.pdpForm.get('validations') as FormArray).controls[index].get('signature').setValue(signaturePadChild[0].toDataURL());
+	}
 }

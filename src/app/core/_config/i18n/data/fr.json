@@ -463,7 +463,7 @@
 				"TITLE": "Mail envoyé avec succès"
 			},
 			"COMMENTS": "Commentaires",
-			"ERROR_SUBMITTING": "Merci de saisir tous les champs mentionnés par une étoile ou de vérifier le format"
+			"ERROR_SUBMITTING": "Tous les champs obligatoires n'ont pas été remplis"
 		},
 		"CARD": {
 			"TRAVAUX": {
