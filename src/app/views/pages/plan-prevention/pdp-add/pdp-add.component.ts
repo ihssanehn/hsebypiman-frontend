@@ -99,6 +99,8 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 							.get(id)
 							.subscribe(async res => {
 								this.pdp = res.result.data;
+								this.pdp.pdp_intervention_at = moment(this.pdp.pdp_intervention_at, 'DD/MM/YYYY').toDate();
+								this.pdp.pdp_validations.filter(v => v.validation_at).map(v => v.validation_at = moment(v.validation_at, 'DD/MM/YYYY').toDate());
 								console.log(this.pdp);
 								if(this.pdp.type.code =="PDP_CLIENT"){
 									this.pdpClientForm.patchValue(this.pdp);
@@ -112,7 +114,6 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 							});
 					} else {
 						// this.pdp = new Pdp();
-
 						this.typePdp ='PDP_PIMAN_TERRAIN';
 					}
 				}
