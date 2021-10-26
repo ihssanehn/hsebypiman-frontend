@@ -858,4 +858,13 @@ export class PdpAddFormComponent implements OnInit {
 		let signaturePadChild = this.signaturePads.filter((element, i) => i === index);
 		(this.pdpForm.get('validations') as FormArray).controls[index].get('signature').setValue(signaturePadChild[0].toDataURL());
 	}
+
+	changeEpiDispositionAnswerID(e, i) {
+		const iE = this.EPIDispositionList[i].items.filter(v => v.id === e);
+		const control = (this.pdpForm.get('epi_disposition') as FormArray).controls[i].get('comment');
+		if (iE && iE.length > 0) {
+			control.setValidators(iE[0].is_with_comment ? Validators.required : null);
+			control.updateValueAndValidity();
+		}
+	}
 }

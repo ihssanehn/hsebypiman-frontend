@@ -381,7 +381,7 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 					const form = {...this.pdpForm.getRawValue()};
 					form.pdp_intervention_at = moment(form.pdp_intervention_at).format('DD-MM-YYYY');
 					if (form && form.validations) {
-						form.pdp_validations.filter(v => v.validation_at).map(v => v.validation_at = moment(v.validation_at).format('DD-MM-YYYY'));
+						form.validations.filter(v => v.validation_at).map(v => v.validation_at = moment(v.validation_at).format('DD-MM-YYYY'));
 						form.validations = (form.validations as Array<any>).filter(v => v && v.company_name && v.full_name && v.validation_at).map(v => {
 							if (v && !v.is_part_inspection) {
 								delete v.is_part_inspection;
