@@ -32,7 +32,6 @@ export class PdpAddClientComponent implements OnInit {
 	set pdpFormSetter(value) {
 		if (value != null) {
 			this.pdpForm = value;
-
 			if (this.getControlsArrayFormName('intervenants')) {
 				this.intervenants.next(this.getControlsArrayFormName('intervenants'));
 			}
@@ -46,7 +45,7 @@ export class PdpAddClientComponent implements OnInit {
 	set pdpPatcher(value) {
 		if (value != null) {
 			this._pdp = value;
-			this.formPathValues(this._pdp);
+			// this.formPathValues(this._pdp);
 			// this.subPDPFormValidator();
 		}
 	}
@@ -66,6 +65,7 @@ export class PdpAddClientComponent implements OnInit {
 	public validations = new BehaviorSubject<AbstractControl[]>([]);
 	public intervenants = new BehaviorSubject<AbstractControl[]>([]);
 	public suivisMedicalIntervenants: Array<any> = [{}];
+	public defaultValues = null;
 	private risques: Array<RisqueModel>;
 
 	public frequences: Array<PDPFrequences>;
@@ -92,16 +92,51 @@ export class PdpAddClientComponent implements OnInit {
 		this.notifier = notifierService;
 	}
 
-	ngOnInit() {
+	async ngOnInit() {
 		this.triggerResize();
-		this.getPDPConsignes();
-
+		await this.getPDPConsignes();
+		this.setDefaultValues();
+		if (this._pdp != null) {
+			this.formPathValues(this._pdp);
+		}
 	}
+
+	setDefaultValues() {
+		if (!this.pdpForm.get('raison_sociale_ee').value) {
+			this.pdpForm.get('raison_sociale_ee').setValue(this.defaultValues.raison_sociale_ee);
+		}
+		if (!this.pdpForm.get('raison_sociale_tel_ee').value) {
+			this.pdpForm.get('raison_sociale_tel_ee').setValue(this.defaultValues.raison_sociale_tel_ee);
+		}
+		if (!this.pdpForm.get('sauveteurs_secouriste_travail_ee').value) {
+			this.pdpForm.get('sauveteurs_secouriste_travail_ee').setValue(this.defaultValues.sauveteurs_secouriste_travail_ee);
+		}
+		if (!this.pdpForm.get('cse_ee_name').value) {
+			this.pdpForm.get('cse_ee_name').setValue(this.defaultValues.cse_ee_name);
+		}
+		if (!this.pdpForm.get('cse_ee_job').value) {
+			this.pdpForm.get('cse_ee_job').setValue(this.defaultValues.cse_ee_job);
+		}
+		if (!this.pdpForm.get('cse_ee_tel').value) {
+			this.pdpForm.get('cse_ee_tel').setValue(this.defaultValues.cse_ee_tel);
+		}
+		if (!this.pdpForm.get('hse_ee_name').value) {
+			this.pdpForm.get('hse_ee_name').setValue(this.defaultValues.hse_ee_name);
+		}
+		if (!this.pdpForm.get('hse_ee_mail').value) {
+			this.pdpForm.get('hse_ee_mail').setValue(this.defaultValues.hse_ee_mail);
+		}
+		if (!this.pdpForm.get('hse_ee_tel').value) {
+			this.pdpForm.get('hse_ee_tel').setValue(this.defaultValues.hse_ee_tel);
+		}
+	}
+
 
 	async getPDPConsignes() {
 		const res: any = await this.pdpService.getAllPdpFilters().toPromise();
 		this.suivisMedicalIntervenants = res.result.data ? res.result.data.intervenant : [];
 		this.frequences = res.result.data ? res.result.data.frequence : [];
+		this.defaultValues = res.result.data ? res.result.data.default_values : null;
 	}
 
 

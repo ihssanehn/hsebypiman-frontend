@@ -81,6 +81,7 @@ export class PdpAddFormComponent implements OnInit {
 	@Output() onLastStep: EventEmitter<any> = new EventEmitter<any>();
 	public parts = [1];
 	public instructionsList: Array<ConsigneModel>;
+	public defaultValues = null;
 	public EPIDispositionList: Array<DispositionModel>;
 	public EESMoyenDisposition: Array<DispositionModel>;
 	public traveauxDangereux: Array<TraveauxDangereuxModel>;
@@ -112,15 +113,47 @@ export class PdpAddFormComponent implements OnInit {
 	async ngOnInit() {
 		this.triggerResize();
 		await this.getPDPConsignes();
+		this.setDefaultValues();
 		if (this._pdp != null) {
 			this.formPathValues(this._pdp);
 		}
 		console.log(this.pdpForm);
 	}
 
+	setDefaultValues() {
+		if (!this.pdpForm.get('raison_sociale_ee').value) {
+			this.pdpForm.get('raison_sociale_ee').setValue(this.defaultValues.raison_sociale_ee);
+		}
+		if (!this.pdpForm.get('raison_sociale_tel_ee').value) {
+			this.pdpForm.get('raison_sociale_tel_ee').setValue(this.defaultValues.raison_sociale_tel_ee);
+		}
+		if (!this.pdpForm.get('sauveteurs_secouriste_travail_ee').value) {
+			this.pdpForm.get('sauveteurs_secouriste_travail_ee').setValue(this.defaultValues.sauveteurs_secouriste_travail_ee);
+		}
+		if (!this.pdpForm.get('cse_ee_name').value) {
+			this.pdpForm.get('cse_ee_name').setValue(this.defaultValues.cse_ee_name);
+		}
+		if (!this.pdpForm.get('cse_ee_job').value) {
+			this.pdpForm.get('cse_ee_job').setValue(this.defaultValues.cse_ee_job);
+		}
+		if (!this.pdpForm.get('cse_ee_tel').value) {
+			this.pdpForm.get('cse_ee_tel').setValue(this.defaultValues.cse_ee_tel);
+		}
+		if (!this.pdpForm.get('hse_ee_name').value) {
+			this.pdpForm.get('hse_ee_name').setValue(this.defaultValues.hse_ee_name);
+		}
+		if (!this.pdpForm.get('hse_ee_mail').value) {
+			this.pdpForm.get('hse_ee_mail').setValue(this.defaultValues.hse_ee_mail);
+		}
+		if (!this.pdpForm.get('hse_ee_tel').value) {
+			this.pdpForm.get('hse_ee_tel').setValue(this.defaultValues.hse_ee_tel);
+		}
+	}
+
 	async getPDPConsignes() {
 		const res: any = await this.pdpService.getAllPdpFilters().toPromise();
 		this.instructionsList = res.result.data ? res.result.data.consignes : [];
+		this.defaultValues = res.result.data ? res.result.data.default_values : null;
 		this.EPIDispositionList = res.result.data ? res.result.data.epi_disposition : [];
 		this.EESMoyenDisposition = res.result.data ? res.result.data.moyen_disposition_ees : [];
 		this.traveauxDangereux = res.result.data ? res.result.data.travaux_dangereux : [];

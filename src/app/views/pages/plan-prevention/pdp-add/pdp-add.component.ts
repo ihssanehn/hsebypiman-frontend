@@ -10,12 +10,12 @@ import {tap} from 'rxjs/operators';
 import {Ar, Pdp, RisqueModel} from '@app/core/models';
 import {Subscription} from 'rxjs';
 import {RisqueMoyenModel} from "@app/core/models/consigne.model";
-import { Type } from '@app/core/models';
+import {Type} from '@app/core/models';
 import moment from "moment";
-import { FileUploader } from 'ng2-file-upload';
-import {NgbModal,NgbActiveModal, ModalDismissReasons, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
-import { TemplateRef, ViewChild } from '@angular/core';
-import { MenuAsideService } from '@app/core/_base/layout';
+import {FileUploader} from 'ng2-file-upload';
+import {NgbModal, NgbActiveModal, ModalDismissReasons, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
+import {TemplateRef, ViewChild} from '@angular/core';
+import {MenuAsideService} from '@app/core/_base/layout';
 
 
 const options = {
@@ -42,32 +42,33 @@ const options = {
 	 * defaults to false
 	 */
 	allowEmptyArrays: true,
-  };
+};
+
 @Component({
 	selector: 'tf-pdp-add',
 	templateUrl: './pdp-add.component.html',
 	styleUrls: ['./pdp-add.component.scss']
 })
 export class PdpAddComponent implements OnInit, OnDestroy {
-	@ViewChild('content',{static: false})
+	@ViewChild('content', {static: false})
 	private content: TemplateRef<any>;
 
 	pdpForm: FormGroup;
-	pdpClientForm : FormGroup;
+	pdpClientForm: FormGroup;
 	enableBtn = false;
 	formloading = false;
 	pdp: Pdp = null;
 	adding = true;
 	formStatus = new FormStatus();
-	pdpTypes : Type[];
-	typePdp :string ;
+	pdpTypes: Type[];
+	typePdp: string;
 	modalReference;
 
 	private subscriptions: Subscription[] = [];
 
-	public uploader:FileUploader = new FileUploader({
+	public uploader: FileUploader = new FileUploader({
 		isHTML5: true
-	  });
+	});
 
 	constructor(
 		private pdpFB: FormBuilder,
@@ -78,11 +79,11 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 		private pdpService: PdpService,
 		private typeService: TypeService,
 		private modalService: NgbModal,
-		private menuService : MenuAsideService,
+		private menuService: MenuAsideService,
 		config: NgbModalConfig
 	) {
 		config.backdrop = 'static';
-    	config.keyboard = false;
+		config.keyboard = false;
 	}
 
 	ngOnInit() {
@@ -102,9 +103,9 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 								this.pdp.pdp_intervention_at = moment(this.pdp.pdp_intervention_at, 'DD/MM/YYYY').toDate();
 								this.pdp.pdp_validations.filter(v => v.validation_at).map(v => v.validation_at = moment(v.validation_at, 'DD/MM/YYYY').toDate());
 								console.log(this.pdp);
-								if(this.pdp.type.code =="PDP_CLIENT"){
+								if (this.pdp.type.code == "PDP_CLIENT") {
 									this.pdpClientForm.patchValue(this.pdp);
-								}else{
+								} else {
 									this.pdpForm.patchValue(this.pdp);
 								}
 
@@ -114,40 +115,41 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 							});
 					} else {
 						// this.pdp = new Pdp();
-						this.typePdp ='PDP_PIMAN_TERRAIN';
+						this.typePdp = 'PDP_PIMAN_TERRAIN';
 					}
 				}
 			);
 		this.subscriptions.push(routeSubscription);
-		if(this.adding ){
+		if (this.adding) {
 			//Modal Relaod Gestion
-			this.subscriptions.push(this.menuService.pageReloaded.subscribe((value)=>{
-				if(value){
-					this.modalReference = this.modalService.open(this.content,{ size: 'lg' ,  centered: true});
+			this.subscriptions.push(this.menuService.pageReloaded.subscribe((value) => {
+				if (value) {
+					this.modalReference = this.modalService.open(this.content, {size: 'lg', centered: true});
 					this.menuService.pageReloaded.next(false);
 				}
-		}))
+			}))
 		}
 
 
 	}
-	ngAfterViewInit(){
-		if(this.adding){
-			this.modalReference = this.modalService.open(this.content,{  size: 'lg' ,  centered: true });
+
+	ngAfterViewInit() {
+		if (this.adding) {
+			this.modalReference = this.modalService.open(this.content, {size: 'lg', centered: true});
 		}
 	}
 
-	async getTypes(){
+	async getTypes() {
 		var res = await this.typeService.getAllFromModel('PreventionPlan').toPromise();
 		this.pdpTypes = res.result.data;
 		this.cdr.markForCheck();
 	}
 
-	createClientForm(){
+	createClientForm() {
 		this.pdpClientForm = this.pdpFB.group({
 			raison_sociale_eu: [null, Validators.required],
 			raison_sociale_tel_eu: [null, Validators.required],
-			sauveteurs_secouriste_travail: [null,Validators.required],
+			sauveteurs_secouriste_travail: [null, Validators.required],
 			pole_qhse: [null],
 			medecin_travail_eu_name: [null],
 			medecin_travail_eu_tel: [null],
@@ -155,7 +157,7 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 			cse_eu_job: [null],
 			cse_eu_tel: [null],
 			hse_eu_name: [null],
-			hse_eu_mail: [null],
+			hse_eu_mail: [null, Validators.email],
 			hse_eu_tel: [null],
 			representant_entreprise_eu_name: [null, Validators.required],
 			representant_entreprise_eu_mail: [null, Validators.email],
@@ -166,6 +168,16 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 			representant_entreprise_ee_name: [null],
 			representant_entreprise_ee_mail: [null, Validators.email],
 			representant_entreprise_ee_tel: [null],
+
+			raison_sociale_ee: [null, Validators.required],
+			raison_sociale_tel_ee: [null, Validators.required],
+			sauveteurs_secouriste_travail_ee: [null, Validators.required],
+			cse_ee_name: [null, Validators.required],
+			cse_ee_job: [null, Validators.required],
+			cse_ee_tel: [null, Validators.required],
+			hse_ee_name: [null, Validators.required],
+			hse_ee_mail: [null, [Validators.required, Validators.email]],
+			hse_ee_tel: [null, Validators.required],
 
 			is_piman_intervention: [null],
 			sous_traitant1_name: [null],
@@ -203,20 +215,21 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 			documentsToUpload: [null, null],
 		})
 	}
+
 	createForm() {
 		this.pdpForm = this.pdpFB.group({
-			raison_sociale_eu: ['Piman Consultants', Validators.required],
-			raison_sociale_tel_eu: ['0482626210', Validators.required],
-			sauveteurs_secouriste_travail: ['Kremena KOLEVA, Sylvie LANGEVIN, Elodie LEMONNIER',Validators.required],
+			raison_sociale_eu: [null, Validators.required],
+			raison_sociale_tel_eu: [null, Validators.required],
+			sauveteurs_secouriste_travail: [null, Validators.required],
 			pole_qhse: [null],
 			medecin_travail_eu_name: [null],
 			medecin_travail_eu_tel: [null],
-			cse_eu_name: ['Florian Deana'],
-			cse_eu_job: ['Secrétaire du CSE'],
-			cse_eu_tel: ['0482626210'],
-			hse_eu_name: ['Elodie Lemonnier'],
-			hse_eu_mail: ['e.lemonnier@piman-group.fr'],
-			hse_eu_tel: ['0645368421'],
+			cse_eu_name: [null],
+			cse_eu_job: [null],
+			cse_eu_tel: [null],
+			hse_eu_name: [null],
+			hse_eu_mail: [null, Validators.email],
+			hse_eu_tel: [null],
 			representant_entreprise_eu_name: [null, Validators.required],
 			representant_entreprise_eu_mail: [null, Validators.email],
 			representant_entreprise_eu_tel: [null, Validators.required],
@@ -226,6 +239,16 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 			representant_entreprise_ee_name: [null],
 			representant_entreprise_ee_mail: [null, Validators.email],
 			representant_entreprise_ee_tel: [null],
+
+			raison_sociale_ee: [null, Validators.required],
+			raison_sociale_tel_ee: [null, Validators.required],
+			sauveteurs_secouriste_travail_ee: [null, Validators.required],
+			cse_ee_name: [null, Validators.required],
+			cse_ee_job: [null, Validators.required],
+			cse_ee_tel: [null, Validators.required],
+			hse_ee_name: [null, Validators.required],
+			hse_ee_mail: [null, [Validators.required, Validators.email]],
+			hse_ee_tel: [null, Validators.required],
 
 			is_piman_intervention: [null],
 			sous_traitant1_name: [null],
@@ -313,24 +336,25 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 		for (let control of validations.controls) {
 			const read_and_approved = control.get('read_and_approved') as FormControl;
 			const signature = control.get('signature') as FormControl;
-			read_and_approved.valueChanges.subscribe(value=>{
-				if(value){
+			read_and_approved.valueChanges.subscribe(value => {
+				if (value) {
 					signature.setValidators([Validators.required]);
-				}else{
+				} else {
 					signature.clearValidators();
 				}
-				signature.updateValueAndValidity({emitEvent:false})
+				signature.updateValueAndValidity({emitEvent: false})
 			})
 
-			signature.valueChanges.subscribe(value=>{
-				if(value){
+			signature.valueChanges.subscribe(value => {
+				if (value) {
 					read_and_approved.setValidators([Validators.required, Validators.requiredTrue]);
-				}else{
+				} else {
 					read_and_approved.clearValidators();
-				};
-				read_and_approved.updateValueAndValidity({emitEvent:false})
+				}
+				;
+				read_and_approved.updateValueAndValidity({emitEvent: false})
 			})
-	 }
+		}
 
 	}
 
@@ -343,8 +367,7 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 		this.pdpForm.markAllAsTouched();
 		this.pdpClientForm.markAllAsTouched();
 
-		console.log('Hello 1  !')
-		if( this.pdpForm.valid){
+		if (this.pdpForm.valid) {
 			this.pdpForm.patchValue({
 				type_id: this.pdpTypes.find(type => type.code == this.typePdp).id
 			})
@@ -353,12 +376,12 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 				// this.pdpForm.markAllAsTouched();
 				console.log(this.pdpForm.valid)
 				if (
-					this.checkIfDateLastIsBigger()
-					&& (this.pdpForm.get('cat_pdp_risques').value as Array<RisqueModel>).filter(v => v.is_required_situation && v.answer).map(v => v.situation.filter(s => s.answer).length === 0).indexOf(true) === -1 && (this.pdpForm.get('cat_pdp_risques').value as Array<RisqueModel>).findIndex(v => !v.is_eu && !v.is_piman && !v.is_sous_traitant && v.answer) === -1) {
-					console.log('Hello 4  !')
+					this.checkIfDateLastIsBigger() && (this.pdpForm.get('cat_pdp_risques').value as Array<RisqueModel>).filter(v => v.is_required_situation && v.answer).map(v => v.situation.filter(s => s.answer).length === 0).indexOf(true) === -1 && (this.pdpForm.get('cat_pdp_risques').value as Array<RisqueModel>).findIndex(v => !v.is_eu && !v.is_piman && !v.is_sous_traitant && v.answer) === -1) {
 					this.formStatus.onFormSubmitting();
 					const form = {...this.pdpForm.getRawValue()};
+					form.pdp_intervention_at = moment(form.pdp_intervention_at).format('DD-MM-YYYY');
 					if (form && form.validations) {
+						form.pdp_validations.filter(v => v.validation_at).map(v => v.validation_at = moment(v.validation_at).format('DD-MM-YYYY'));
 						form.validations = (form.validations as Array<any>).filter(v => v && v.company_name && v.full_name && v.validation_at).map(v => {
 							if (v && !v.is_part_inspection) {
 								delete v.is_part_inspection;
@@ -376,8 +399,7 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 			} catch (error) {
 				throw error;
 			}
-		}
-		else if( this.pdpClientForm.valid){
+		} else if (this.pdpClientForm.valid) {
 
 			this.pdpClientForm.patchValue({
 				type_id: this.pdpTypes.find(type => type.code == this.typePdp).id
@@ -385,24 +407,25 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 			this.pdpClientForm.patchValue({
 				type_pdp: "Client"
 			})
-
+			const form = this.pdpClientForm.value;
+			form.pdp_intervention_at = moment(form.pdp_intervention_at).format('DD-MM-YYYY');
 			//Need to transform FormGroup into FormData to pass the file with.
-			let formData = this.toFormData(this.pdpClientForm.value);
+			let formData = this.toFormData(form);
 			for (let j = 0; j < this.uploader.queue.length; j++) {
 				let fileItem = this.uploader.queue[j]._file;
 				formData.append('documents[]', fileItem);
-			  }
-			formData.append('type_pdp','Client')
+			}
+			formData.append('type_pdp', 'Client')
 			this.formStatus.onFormSubmitting();
 
 			this.save(formData).then(() => {
-				this.uploader.clearQueue();})
-		}
-		else{
+				this.uploader.clearQueue();
+			})
+		} else {
 			const controls = this.pdpForm.controls;
 			for (const name in controls) {
 				if (controls[name].invalid) {
-						console.log(this.pdpForm.controls[name]);
+					console.log(this.pdpForm.controls[name]);
 				}
 			}
 		}
@@ -437,9 +460,9 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 		console.log('saving....');
 		this.formloading = true;
 		let action;
-		if(this.typePdp == "PDP_CLIENT"){
-			action = !this.adding ? this.pdpService.update(form,this.pdp.id).toPromise() : this.pdpService.create(form).toPromise();
-		}else{
+		if (this.typePdp == "PDP_CLIENT") {
+			action = !this.adding ? this.pdpService.update(form, this.pdp.id).toPromise() : this.pdpService.create(form).toPromise();
+		} else {
 			action = !this.adding ? this.pdpService.update(form).toPromise() : this.pdpService.create(form).toPromise();
 		}
 
@@ -466,8 +489,8 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 		this.cdr.markForCheck();
 	}
 
-	selectPdp(typePdp : string){
-		if(typePdp != this.typePdp){
+	selectPdp(typePdp: string) {
+		if (typePdp != this.typePdp) {
 			this.createForm();
 			// this.createClientForm();
 		}
@@ -476,42 +499,41 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 
 	}
 
-	toFormData<T>( formValue: T ) {
+	toFormData<T>(formValue: T) {
 		const formData = new FormData();
 
-		for ( const key of Object.keys(formValue) ) {
-		if( formValue[key]){
-			if(typeof formValue[key] == 'object'){
-				const value = formValue[key];
-				formData.append(key, JSON.stringify(value));
-			}else{
-				const value = formValue[key];
-				formData.append(key, value);
-			}
+		for (const key of Object.keys(formValue)) {
+			if (formValue[key]) {
+				if (typeof formValue[key] == 'object') {
+					const value = formValue[key];
+					formData.append(key, JSON.stringify(value));
+				} else {
+					const value = formValue[key];
+					formData.append(key, value);
+				}
 
-		}
+			}
 		}
 
 		return formData;
-	  }
+	}
 
 	ngOnDestroy() {
 		this.subscriptions.forEach(sb => sb.unsubscribe());
 	}
 
 
-
-
 	getDismissReason(reason: any): string {
 		if (reason === ModalDismissReasons.ESC) {
-		  return 'by pressing ESC';
+			return 'by pressing ESC';
 		} else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-		  return 'by clicking on a backdrop';
+			return 'by clicking on a backdrop';
 		} else {
-		  return `with: ${reason}`;
+			return `with: ${reason}`;
 		}
-	  }
-	closeModal(){
+	}
+
+	closeModal() {
 		console.log("Test");
 		this.modalService.dismissAll();
 		this.router.navigate(['/plan-de-prevention/list']);

@@ -18,6 +18,32 @@
 						<div class="pl-5 mb-4 row" style="border-bottom: 1px solid #e9ecf0;">
 							<div class="row form-row col-6 align-items-center">
 								<span class="col-12 font-weight-bold">
+									{{'PDP.COMPANY' | translate}} :
+								</span>
+								<mat-form-field class="col-4">
+									<mat-label>{{'PDP.NAME' | translate}}</mat-label>
+									<input class="form-control" matInput type="text" name="raison_sociale_eu"
+										   formControlName="raison_sociale_eu"
+										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
+										   [required]="isFieldRequired('raison_sociale_eu')"/>
+									<mat-error *ngIf="isControlHasError('raison_sociale_eu','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+								<mat-form-field class="col-4 custom-margin-1">
+									<mat-label>{{'PDP.TEL' | translate}}
+									</mat-label>
+									<input class="form-control" matInput type="phone" name="raison_sociale_tel_eu"
+										   formControlName="raison_sociale_tel_eu"
+										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
+										   [required]="isFieldRequired('raison_sociale_tel_eu')"/>
+									<mat-error *ngIf="isControlHasError('raison_sociale_tel_eu','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+							</div>
+							<div class="row form-row col-6 align-items-center">
+								<span class="col-12 font-weight-bold">
 									{{'PDP.OCCUPATIONAL_PHYSICIAN' | translate}} :
 								</span>
 								<mat-form-field class="col-4">
@@ -42,12 +68,173 @@
 									</mat-error>
 								</mat-form-field>
 							</div>
+							<div class="row form-row col-6 align-items-center">
+								<span class="col-12 font-weight-bold">
+									{{'PDP.RESPONSABLE_HSE' | translate}} :
+								</span>
+								<mat-form-field class="col-4">
+									<mat-label>{{'PDP.NAME' | translate}}</mat-label>
+									<input class="form-control" matInput type="text" name="hse_eu_name"
+										   formControlName="hse_eu_name"
+										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
+										   [required]="isFieldRequired('hse_eu_name')"/>
+									<mat-error *ngIf="isControlHasError('hse_eu_name','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+								<mat-form-field class="col-4 custom-margin-1">
+									<mat-label>{{'PDP.MAIL' | translate}}</mat-label>
+									<input class="form-control" matInput type="email" name="hse_eu_mail"
+										   formControlName="hse_eu_mail"
+										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
+										   [required]="isFieldRequired('hse_eu_mail')"/>
+									<mat-error *ngIf="isControlHasError('hse_eu_mail','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+									<mat-error *ngIf="isControlHasError('hse_eu_mail','email')">
+										<strong>{{ 'AUTH.VALIDATION.INVALID_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+								<mat-form-field class="col-4 custom-margin-1">
+									<mat-label>{{'PDP.TEL' | translate}}</mat-label>
+									<input class="form-control" matInput type="phone" name="hse_eu_tel"
+										   formControlName="hse_eu_tel"
+										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
+										   [required]="isFieldRequired('hse_eu_tel')"/>
+									<mat-error *ngIf="isControlHasError('cse_eu_tel','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+							</div>
+							<div class="row form-row col-6 align-items-center">
+								<span class="col-12 font-weight-bold">
+									{{'PDP.CSE' | translate}} :
+								</span>
+								<mat-form-field class="col-4">
+									<mat-label>{{'PDP.NAME' | translate}}</mat-label>
+									<input class="form-control" matInput type="text" name="cse_eu_name"
+										   formControlName="cse_eu_name"
+										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
+										   [required]="isFieldRequired('cse_eu_name')"/>
+									<mat-error *ngIf="isControlHasError('cse_eu_name','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+								<mat-form-field class="col-4 custom-margin-1">
+									<mat-label>{{'PDP.JOB' | translate}}</mat-label>
+									<input class="form-control" matInput type="text" name="cse_eu_job"
+										   formControlName="cse_eu_job"
+										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
+										   [required]="isFieldRequired('cse_eu_job')"/>
+									<mat-error *ngIf="isControlHasError('cse_eu_job','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+								<mat-form-field class="col-4 custom-margin-1">
+									<mat-label>{{'PDP.TEL' | translate}}</mat-label>
+									<input class="form-control" matInput type="phone" name="cse_eu_tel"
+										   formControlName="cse_eu_tel"
+										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
+										   [required]="isFieldRequired('cse_eu_tel')"/>
+									<mat-error *ngIf="isControlHasError('cse_eu_tel','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+							</div>
+							<div class="row form-row col-6 align-items-center">
+								<span class="col-12 font-weight-bold">
+									{{'PDP.RESCUERS_FIRST_AID_WORKER_AT_WORK' | translate}} :
+								</span>
+								<mat-form-field class="col-12">
+									<mat-label>{{'PDP.NAME' | translate}}s</mat-label>
+									<textarea class="form-control no_border" name="sauveteurs_secouriste_travail"
+											  matInput
+											  cdkTextareaAutosize
+											  #autosize="cdkTextareaAutosize"
+											  cdkAutosizeMinRows="2"
+											  cdkAutosizeMaxRows="5"
+											  formControlName="sauveteurs_secouriste_travail"
+											  placeholder="{{'ACTION.ENTER_HERE' | translate}}"
+											  [required]="isFieldRequired('sauveteurs_secouriste_travail')"></textarea>
+									<mat-error *ngIf="isControlHasError('sauveteurs_secouriste_travail','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+							</div>
+							<div class="row form-row col-6 align-items-center">
+								<span class="col-12 font-weight-bold">
+									{{'PDP.COMPANY_REPRESENTATIVE' | translate}} :
+								</span>
+								<mat-form-field class="col-4">
+									<mat-label>{{'PDP.NAME' | translate}}</mat-label>
+									<input class="form-control" matInput type="text"
+										   name="representant_entreprise_eu_name"
+										   formControlName="representant_entreprise_eu_name"
+										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
+										   [required]="isFieldRequired('representant_entreprise_eu_name')"/>
+									<mat-error *ngIf="isControlHasError('representant_entreprise_eu_name','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+								<mat-form-field class="col-4 custom-margin-1">
+									<mat-label>{{'PDP.MAIL' | translate}}
+									</mat-label>
+									<input class="form-control" matInput type="email"
+										   name="representant_entreprise_eu_mail"
+										   formControlName="representant_entreprise_eu_mail"
+										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
+										   [required]="isFieldRequired('representant_entreprise_eu_mail')"/>
+									<mat-error *ngIf="isControlHasError('representant_entreprise_eu_mail','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+									<mat-error *ngIf="isControlHasError('representant_entreprise_eu_mail','email')">
+										<strong>{{ 'AUTH.VALIDATION.INVALID_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+								<mat-form-field class="col-4 custom-margin-1">
+									<mat-label>{{'PDP.TEL' | translate}}</mat-label>
+									<input class="form-control" matInput type="phone"
+										   name="representant_entreprise_eu_tel"
+										   formControlName="representant_entreprise_eu_tel"
+										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
+										   [required]="isFieldRequired('representant_entreprise_eu_tel')"/>
+									<mat-error *ngIf="isControlHasError('representant_entreprise_eu_tel','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+							</div>
 						</div>
 
 						<div class="tf-heading tf-heading--sm">
 							1.2 {{'PDP.OUTSIDE_COMPANY' | translate}}
 						</div>
-						<div class="pl-5 mb-4 row" style="border-bottom: 1px solid #e9ecf0;">
+						<div class="pl-5 mb-4 row">
+							<div class="row form-row col-6 align-items-center">
+								<span class="col-12 font-weight-bold">
+									{{'PDP.COMPANY' | translate}} :
+								</span>
+								<mat-form-field class="col-4">
+									<mat-label>{{'PDP.NAME' | translate}}</mat-label>
+									<input class="form-control" matInput type="text" name="raison_sociale_ee"
+										   formControlName="raison_sociale_ee"
+										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
+										   [required]="isFieldRequired('raison_sociale_ee')"/>
+									<mat-error *ngIf="isControlHasError('raison_sociale_ee','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+								<mat-form-field class="col-4 custom-margin-1">
+									<mat-label>{{'PDP.TEL' | translate}}
+									</mat-label>
+									<input class="form-control" matInput type="phone" name="raison_sociale_tel_ee"
+										   formControlName="raison_sociale_tel_ee"
+										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
+										   [required]="isFieldRequired('raison_sociale_tel_ee')"/>
+									<mat-error *ngIf="isControlHasError('raison_sociale_tel_ee','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+							</div>
 							<div class="row form-row col-6 align-items-center">
 								<span class="col-12 font-weight-bold">
 									{{'PDP.OCCUPATIONAL_PHYSICIAN' | translate}} :
@@ -70,6 +257,99 @@
 										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
 										   [required]="isFieldRequired('medecin_travail_ee_tel')"/>
 									<mat-error *ngIf="isControlHasError('medecin_travail_ee_tel','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+							</div>
+							<div class="row form-row col-6 align-items-center">
+								<span class="col-12 font-weight-bold">
+									{{'PDP.RESPONSABLE_HSE' | translate}} :
+								</span>
+								<mat-form-field class="col-4">
+									<mat-label>{{'PDP.NAME' | translate}}</mat-label>
+									<input class="form-control" matInput type="text" name="hse_ee_name"
+										   formControlName="hse_ee_name"
+										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
+										   [required]="isFieldRequired('hse_ee_name')"/>
+									<mat-error *ngIf="isControlHasError('hse_ee_name','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+								<mat-form-field class="col-4 custom-margin-1">
+									<mat-label>{{'PDP.MAIL' | translate}}</mat-label>
+									<input class="form-control" matInput type="email" name="hse_ee_mail"
+										   formControlName="hse_ee_mail"
+										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
+										   [required]="isFieldRequired('hse_ee_mail')"/>
+									<mat-error *ngIf="isControlHasError('hse_ee_mail','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+									<mat-error *ngIf="isControlHasError('hse_ee_mail','email')">
+										<strong>{{ 'AUTH.VALIDATION.INVALID_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+								<mat-form-field class="col-4 custom-margin-1">
+									<mat-label>{{'PDP.TEL' | translate}}</mat-label>
+									<input class="form-control" matInput type="phone" name="hse_ee_tel"
+										   formControlName="hse_ee_tel"
+										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
+										   [required]="isFieldRequired('hse_ee_tel')"/>
+									<mat-error *ngIf="isControlHasError('hse_ee_tel','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+							</div>
+							<div class="row form-row col-6 align-items-center">
+								<span class="col-12 font-weight-bold">
+									{{'PDP.CSE' | translate}} :
+								</span>
+								<mat-form-field class="col-4">
+									<mat-label>{{'PDP.NAME' | translate}}</mat-label>
+									<input class="form-control" matInput type="text" name="cse_ee_name"
+										   formControlName="cse_ee_name"
+										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
+										   [required]="isFieldRequired('cse_ee_name')"/>
+									<mat-error *ngIf="isControlHasError('cse_ee_name','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+								<mat-form-field class="col-4 custom-margin-1">
+									<mat-label>{{'PDP.JOB' | translate}}</mat-label>
+									<input class="form-control" matInput type="text" name="cse_ee_job"
+										   formControlName="cse_ee_job"
+										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
+										   [required]="isFieldRequired('cse_ee_job')"/>
+									<mat-error *ngIf="isControlHasError('cse_ee_job','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+								<mat-form-field class="col-4 custom-margin-1">
+									<mat-label>{{'PDP.TEL' | translate}}</mat-label>
+									<input class="form-control" matInput type="phone" name="cse_ee_tel"
+										   formControlName="cse_ee_tel"
+										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
+										   [required]="isFieldRequired('cse_ee_tel')"/>
+									<mat-error *ngIf="isControlHasError('cse_ee_tel','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+							</div>
+							<div class="row form-row col-6 align-items-center">
+								<span class="col-12 font-weight-bold">
+									{{'PDP.RESCUERS_FIRST_AID_WORKER_AT_WORK' | translate}} :
+								</span>
+								<mat-form-field class="col-12">
+									<mat-label>{{'PDP.NAME' | translate}}s</mat-label>
+									<textarea class="form-control no_border" name="sauveteurs_secouriste_travail_ee"
+											  matInput
+											  cdkTextareaAutosize
+											  #autosize="cdkTextareaAutosize"
+											  cdkAutosizeMinRows="2"
+											  cdkAutosizeMaxRows="5"
+											  formControlName="sauveteurs_secouriste_travail_ee"
+											  placeholder="{{'ACTION.ENTER_HERE' | translate}}"
+											  [required]="isFieldRequired('sauveteurs_secouriste_travail_ee')"></textarea>
+									<mat-error *ngIf="isControlHasError('sauveteurs_secouriste_travail_ee','required')">
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
 								</mat-form-field>
@@ -119,169 +399,11 @@
 							</div>
 						</div>
 
-						<div class="tf-heading tf-heading--sm">
-							1.3 {{'PDP.INFOS_PIMAN' | translate}}
-						</div>
-						<div class="pl-5 mb-4 row">
-							<div class="row form-row col-6 align-items-center">
-								<span class="col-12 font-weight-bold">
-									{{'PDP.COMPANY' | translate}} :
-								</span>
-								<mat-form-field class="col-4">
-									<mat-label>{{'PDP.NAME' | translate}}</mat-label>
-									<input class="form-control" matInput type="text" name="raison_sociale_eu"
-										   formControlName="raison_sociale_eu"
-										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
-										   [required]="isFieldRequired('raison_sociale_eu')"/>
-									<mat-error *ngIf="isControlHasError('raison_sociale_eu','required')">
-										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-									</mat-error>
-								</mat-form-field>
-								<mat-form-field class="col-4 custom-margin-1">
-									<mat-label>{{'PDP.TEL' | translate}}
-									</mat-label>
-									<input class="form-control" matInput type="phone" name="raison_sociale_tel_eu"
-										   formControlName="raison_sociale_tel_eu"
-										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
-										   [required]="isFieldRequired('raison_sociale_tel_eu')"/>
-									<mat-error *ngIf="isControlHasError('raison_sociale_tel_eu','required')">
-										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-									</mat-error>
-								</mat-form-field>
-							</div>
-							<div class="row form-row col-6 align-items-center">
-								<span class="col-12 font-weight-bold">
-									{{'PDP.RESPONSABLE_HSE' | translate}} :
-								</span>
-								<mat-form-field class="col-4">
-									<mat-label>{{'PDP.NAME' | translate}}</mat-label>
-									<input class="form-control" matInput type="text" name="hse_eu_name"
-										   formControlName="hse_eu_name"
-										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
-										   [required]="isFieldRequired('hse_eu_name')"/>
-									<mat-error *ngIf="isControlHasError('hse_eu_name','required')">
-										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-									</mat-error>
-								</mat-form-field>
-								<mat-form-field class="col-4 custom-margin-1">
-									<mat-label>{{'PDP.MAIL' | translate}}</mat-label>
-									<input class="form-control" matInput type="email" name="hse_eu_mail"
-										   formControlName="hse_eu_mail"
-										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
-										   [required]="isFieldRequired('hse_eu_mail')"/>
-									<mat-error *ngIf="isControlHasError('hse_eu_mail','required')">
-										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-									</mat-error>
-								</mat-form-field>
-								<mat-form-field class="col-4 custom-margin-1">
-									<mat-label>{{'PDP.TEL' | translate}}</mat-label>
-									<input class="form-control" matInput type="phone" name="hse_eu_tel"
-										   formControlName="hse_eu_tel"
-										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
-										   [required]="isFieldRequired('hse_eu_tel')"/>
-									<mat-error *ngIf="isControlHasError('cse_eu_tel','required')">
-										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-									</mat-error>
-								</mat-form-field>
-							</div>
-							<div class="row form-row col-6 align-items-end">
-								<span class="col-12 font-weight-bold">
-									{{'PDP.CSE' | translate}} :
-								</span>
-								<mat-form-field class="col-4">
-									<mat-label>{{'PDP.NAME' | translate}}</mat-label>
-									<input class="form-control" matInput type="text" name="cse_eu_name"
-										   formControlName="cse_eu_name"
-										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
-										   [required]="isFieldRequired('cse_eu_name')"/>
-									<mat-error *ngIf="isControlHasError('cse_eu_name','required')">
-										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-									</mat-error>
-								</mat-form-field>
-								<mat-form-field class="col-4 custom-margin-1">
-									<mat-label>{{'PDP.JOB' | translate}}</mat-label>
-									<input class="form-control" matInput type="text" name="cse_eu_job"
-										   formControlName="cse_eu_job"
-										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
-										   [required]="isFieldRequired('cse_eu_job')"/>
-									<mat-error *ngIf="isControlHasError('cse_eu_job','required')">
-										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-									</mat-error>
-								</mat-form-field>
-								<mat-form-field class="col-4 custom-margin-1">
-									<mat-label>{{'PDP.TEL' | translate}}</mat-label>
-									<input class="form-control" matInput type="phone" name="cse_eu_tel"
-										   formControlName="cse_eu_tel"
-										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
-										   [required]="isFieldRequired('cse_eu_tel')"/>
-									<mat-error *ngIf="isControlHasError('cse_eu_tel','required')">
-										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-									</mat-error>
-								</mat-form-field>
-							</div>
-							<div class="row form-row col-6">
-								<span class="col-12 font-weight-bold">
-									{{'PDP.COMPANY_REPRESENTATIVE' | translate}} :
-								</span>
-								<mat-form-field class="col-4">
-									<mat-label>{{'PDP.NAME' | translate}}</mat-label>
-									<input class="form-control" matInput type="text"
-										   name="representant_entreprise_eu_name"
-										   formControlName="representant_entreprise_eu_name"
-										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
-										   [required]="isFieldRequired('representant_entreprise_eu_name')"/>
-									<mat-error *ngIf="isControlHasError('representant_entreprise_eu_name','required')">
-										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-									</mat-error>
-								</mat-form-field>
-								<mat-form-field class="col-4 custom-margin-1">
-									<mat-label>{{'PDP.MAIL' | translate}}
-									</mat-label>
-									<input class="form-control" matInput type="email"
-										   name="representant_entreprise_eu_mail"
-										   formControlName="representant_entreprise_eu_mail"
-										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
-										   [required]="isFieldRequired('representant_entreprise_eu_mail')"/>
-									<mat-error *ngIf="isControlHasError('representant_entreprise_eu_mail','required')">
-										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-									</mat-error>
-									<mat-error *ngIf="isControlHasError('representant_entreprise_eu_mail','email')">
-										<strong>{{ 'AUTH.VALIDATION.INVALID_FIELD' | translate }}</strong>
-									</mat-error>
-								</mat-form-field>
-								<mat-form-field class="col-4 custom-margin-1">
-									<mat-label>{{'PDP.TEL' | translate}}</mat-label>
-									<input class="form-control" matInput type="phone"
-										   name="representant_entreprise_eu_tel"
-										   formControlName="representant_entreprise_eu_tel"
-										   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
-										   [required]="isFieldRequired('representant_entreprise_eu_tel')"/>
-									<mat-error *ngIf="isControlHasError('representant_entreprise_eu_tel','required')">
-										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-									</mat-error>
-								</mat-form-field>
-							</div>
-							<div class="row form-row col-6 align-items-center">
-								<span class="col-12 font-weight-bold">
-									{{'PDP.RESCUERS_FIRST_AID_WORKER_AT_WORK' | translate}} :
-								</span>
-								<mat-form-field class="col-12">
-									<mat-label>{{'PDP.NAME' | translate}}s</mat-label>
-									<textarea class="form-control no_border" name="sauveteurs_secouriste_travail"
-											  matInput
-											  cdkTextareaAutosize
-											  #autosize="cdkTextareaAutosize"
-											  cdkAutosizeMinRows="2"
-											  cdkAutosizeMaxRows="5"
-											  formControlName="sauveteurs_secouriste_travail"
-											  placeholder="{{'ACTION.ENTER_HERE' | translate}}"
-											  [required]="isFieldRequired('sauveteurs_secouriste_travail')"></textarea>
-									<mat-error *ngIf="isControlHasError('sauveteurs_secouriste_travail','required')">
-										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-									</mat-error>
-								</mat-form-field>
-							</div>
-						</div>
+						<!--						<div class="tf-heading tf-heading&#45;&#45;sm">-->
+						<!--							1.3 {{'PDP.INFOS_PIMAN' | translate}}-->
+						<!--						</div>-->
+						<!--						<div class="pl-5 mb-4 row">-->
+						<!--						</div>-->
 
 					</div>
 				</div>
