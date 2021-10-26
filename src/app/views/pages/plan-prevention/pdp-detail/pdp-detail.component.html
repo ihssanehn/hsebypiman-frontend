@@ -136,6 +136,53 @@
 							<div class="row d-flex">
 								<div class="mb-2 col-md-6 col-sm-12">
 									<div class="card">
+										<h4><b>{{'PDP.COMPANY' | translate}}</b></h4>
+										<div class="box">
+											<p><span class="mr-2 label pull-left">{{'PDP.NAME' | translate}}</span><span
+												class=""
+												*ngIf="pdp.raison_sociale_ee; else noDataFound">{{pdp.raison_sociale_ee}}</span>
+											</p>
+											<p><span class="mr-2 label pull-left">{{'PDP.TEL' | translate}}</span><span
+												class=""
+												*ngIf="pdp.raison_sociale_tel_ee; else noDataFound">{{pdp.raison_sociale_tel_ee}}</span>
+											</p>
+										</div>
+										<div class="mb-3 tf-divider">
+											<span></span>
+										</div>
+
+										<h4><b>{{'PDP.RESPONSABLE_HSE' | translate}}</b></h4>
+										<div class="box" style="flex:1">
+											<p><span class="mr-2 label pull-left">{{'PDP.NAME' | translate}}</span><span
+												class=""
+												*ngIf="pdp.hse_ee_name; else noDataFound">{{pdp.hse_ee_name}}</span></p>
+											<p><span class="mr-2 label pull-left">{{'PDP.MAIL' | translate}}</span><span
+												class=""
+												*ngIf="pdp.hse_ee_mail; else noDataFound">{{pdp.hse_ee_mail}}</span></p>
+											<p><span class="mr-2 label pull-left">{{'PDP.TEL' | translate}}</span><span
+												class=""
+												*ngIf="pdp.hse_ee_tel; else noDataFound">{{pdp.hse_ee_tel}}</span></p>
+										</div>
+										<div class="mb-3 tf-divider">
+											<span></span>
+										</div>
+
+										<h4><b>{{'PDP.CSE' | translate}}</b></h4>
+										<div class="box" style="flex:1">
+											<p><span class="mr-2 label pull-left">{{'PDP.NAME' | translate}}</span><span
+												class=""
+												*ngIf="pdp.cse_ee_name; else noDataFound">{{pdp.cse_ee_name}}</span></p>
+											<p><span class="mr-2 label pull-left">{{'PDP.JOB' | translate}}</span><span
+												class=""
+												*ngIf="pdp.cse_ee_job; else noDataFound">{{pdp.cse_ee_job}}</span></p>
+											<p><span class="mr-2 label pull-left">{{'PDP.TEL' | translate}}</span><span
+												class=""
+												*ngIf="pdp.cse_ee_tel; else noDataFound">{{pdp.cse_ee_tel}}</span></p>
+										</div>
+									</div>
+								</div>
+								<div class="mb-2 col-md-6 col-sm-12">
+									<div class="card">
 										<h4><b>{{'PDP.OCCUPATIONAL_PHYSICIAN' | translate}}</b></h4>
 										<div class="box">
 											<p><span class="mr-2 label pull-left">{{'PDP.NAME' | translate}}</span><span
@@ -147,10 +194,9 @@
 												*ngIf="pdp.medecin_travail_ee_tel; else noDataFound">{{pdp.medecin_travail_ee_tel}}</span>
 											</p>
 										</div>
-									</div>
-								</div>
-								<div class="mb-2 col-md-6 col-sm-12">
-									<div class="card">
+										<div class="mb-3 tf-divider">
+											<span></span>
+										</div>
 										<h4><b>{{'PDP.COMPANY_REPRESENTATIVE' | translate}}</b></h4>
 										<div class="box" style="flex:1">
 											<p><span class="mr-2 label pull-left">{{'PDP.NAME' | translate}}</span><span
@@ -164,6 +210,17 @@
 											<p><span class="mr-2 label pull-left">{{'PDP.TEL' | translate}}</span><span
 												class=""
 												*ngIf="pdp.representant_entreprise_ee_tel; else noDataFound">{{pdp.representant_entreprise_ee_tel}}</span>
+											</p>
+										</div>
+										<div class="mb-3 tf-divider">
+											<span></span>
+										</div>
+										<h4><b>{{'PDP.RESCUERS_FIRST_AID_WORKER_AT_WORK' | translate}}</b></h4>
+										<div class="box" style="flex:1">
+											<p><span
+												class="mr-2 label pull-left">{{'PDP.NAME' | translate}}s</span>
+												<span class=""
+													  *ngIf="pdp.sauveteurs_secouriste_travail_ee; else noDataFound">{{pdp.sauveteurs_secouriste_travail_ee}}</span>
 											</p>
 										</div>
 									</div>

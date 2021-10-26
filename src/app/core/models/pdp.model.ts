@@ -37,6 +37,17 @@ export class Pdp {
 	representant_entreprise_eu_name?: string;
 	representant_entreprise_eu_tel?: string;
 	sauveteurs_secouriste_travail?: string;
+
+	raison_sociale_ee?: string;
+	raison_sociale_tel_ee?: string;
+	sauveteurs_secouriste_travail_ee?: string;
+	cse_ee_name?: string;
+	cse_ee_job?: string;
+	cse_ee_tel?: string;
+	hse_ee_name?: string;
+	hse_ee_mail?: string;
+	hse_ee_tel?: string;
+
 	sous_traitant?: Array<any>;
 	sous_traitant1_name?: string;
 	sous_traitant1_tel?: string;
