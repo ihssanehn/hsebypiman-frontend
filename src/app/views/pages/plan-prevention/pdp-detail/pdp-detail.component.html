@@ -120,7 +120,8 @@
 										<div class="box" style="flex:1">
 											<p><span
 												class="mr-2 label pull-left">{{'PDP.NAME' | translate}}s</span>
-												<span class="" *ngIf="pdp.sauveteurs_secouriste_travail; else noDataFound">{{pdp.sauveteurs_secouriste_travail}}</span>
+												<span class=""
+													  *ngIf="pdp.sauveteurs_secouriste_travail; else noDataFound">{{pdp.sauveteurs_secouriste_travail}}</span>
 											</p>
 										</div>
 									</div>
@@ -547,12 +548,16 @@
 																{{moyen.pdp_risque?.label}}
 																<span class="font-italic"
 																	  *ngIf="moyen.pdp_risque?.is_with_comment">: {{moyen.comment}}</span>
-																<ng-container *ngIf="moyen.moyen_filter.length > 0">:
+																<ng-container *ngIf="moyen.moyen_filter.length > 0">
 																	<ng-container
-																		*ngFor="let subMoyen of moyen.moyen_filter;let index = index">
-																			<span class="font-italic">
+																		*ngFor="let subMoyen of moyen.moyen_filter | pdpFilter ;let index = index">
+																			<span class="font-italic"
+																				  *ngIf="subMoyen?.answer">
 																				<span *ngIf="index!=0">-</span>
 																				{{subMoyen.pdp_risque_moyen_filter?.label}}
+																				<ng-container *ngIf="subMoyen?.comment">
+																					{{subMoyen?.comment}}
+																				</ng-container>
 																			</span>
 																	</ng-container>
 																</ng-container>

@@ -19,7 +19,7 @@ import {
 	OffcanvasDirective,
 	SafePipe,
 	TruncatePipe,
-	DateEnToFrPipe, 
+	DateEnToFrPipe,
 	DateFrToEnPipe,
 	ScrollTopDirective,
 	IfAllModulesDirective,
@@ -28,13 +28,14 @@ import {
 	StickyDirective,
 	TabClickEventDirective,
 	TimeElapsedPipe,
-	DateTimeMessagePipe, 
+	DateTimeMessagePipe,
 	DateMessagePipe,
 	FullNamePipe,
 	InitialesPipe,
 	ToggleDirective,
 	MaskDirective
 } from './_base/layout';
+import {PdpFilterItemsPipe} from "@app/core/_base/layout/pipes/pdp-filter-items.pipe";
 
 
 @NgModule({
@@ -57,18 +58,19 @@ import {
 		MaskDirective,
 		// pipes
 		TimeElapsedPipe,
-		DateTimeMessagePipe, 
+		DateTimeMessagePipe,
 		DateMessagePipe,
 		RecursiveSearchPipe,
 		JoinPipe,
 		GetObjectPipe,
+		PdpFilterItemsPipe,
 		SafePipe,
 		TruncatePipe,
 		FirstLetterPipe,
 		InitialesPipe,
 		FullNamePipe,
 		CustomPercentPipe,
-		DateEnToFrPipe, 
+		DateEnToFrPipe,
 		DateFrToEnPipe
 	],
 	exports: [
@@ -79,6 +81,7 @@ import {
 		IfAllModulesDirective,
 		IfInModulesDirective,
 		ToggleDirective,
+		PdpFilterItemsPipe,
 		MenuDirective,
 		MatInputAmountDirective,
 		TabClickEventDirective,
@@ -89,7 +92,7 @@ import {
 		MaskDirective,
 		// pipes
 		TimeElapsedPipe,
-		DateTimeMessagePipe, 
+		DateTimeMessagePipe,
 		DateMessagePipe,
 		JoinPipe,
 		GetObjectPipe,
@@ -99,13 +102,13 @@ import {
 		FullNamePipe,
 		InitialesPipe,
 		CustomPercentPipe,
-		DateEnToFrPipe, 
+		DateEnToFrPipe,
 		DateFrToEnPipe,
 		RecursiveSearchPipe,
 	],
 	providers: [
 		{provide: 'ParameterService', useClass: environment.isMockEnabled ? HttpParameterService : HttpParameterService},
-		DateEnToFrPipe, 
+		DateEnToFrPipe,
 		DateFrToEnPipe,
 		SafePipe,
 		RecursiveSearchPipe,
