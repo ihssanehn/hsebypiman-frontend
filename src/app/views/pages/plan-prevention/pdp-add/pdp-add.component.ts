@@ -287,11 +287,11 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 			validations: new FormArray([
 				new FormGroup({
 					need_text_area_in_title: new FormControl(true),
-					title: new FormControl('EE'),
+					title: new FormControl('EU'),
 					company_name: new FormControl('', Validators.required),
 					full_name: new FormControl('', Validators.required),
 					validation_at: new FormControl(null, Validators.required),
-					type: new FormControl('ee', Validators.required),
+					type: new FormControl('eu', Validators.required),
 					deletable: new FormControl(false),
 					is_part_inspection: new FormControl(null),
 					part_inspection_at: new FormControl({value: null, disabled: true}),
@@ -300,11 +300,11 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 				}),
 				new FormGroup({
 					need_text_area_in_title: new FormControl(false),
-					title: new FormControl('EU'),
+					title: new FormControl('EE'),
 					company_name: new FormControl('PIMAN Consultants', Validators.required),
 					full_name: new FormControl('', Validators.required),
 					validation_at: new FormControl(null, Validators.required),
-					type: new FormControl('eu', Validators.required),
+					type: new FormControl('ee', Validators.required),
 					deletable: new FormControl(false),
 					is_part_inspection: new FormControl(null),
 					part_inspection_at: new FormControl({value: null, disabled: true}),
