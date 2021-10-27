@@ -42,11 +42,11 @@ export class PdpService extends HttpService {
 	}
 
 	update(pdp, pdp_id = undefined) {
-		if( pdp_id ){
+		if (pdp_id) {
 			const httpHeaders = new HttpHeaders();
 			httpHeaders.set("Content-Type", "multipart/form-data");
-			return this.http.post<JsonResponse<Pdp>>(this.baseUrl + '/' + pdp_id, pdp, { headers: httpHeaders });
-		}else{
+			return this.http.post<JsonResponse<Pdp>>(this.baseUrl + '/' + pdp_id, pdp, {headers: httpHeaders});
+		} else {
 
 			return this.http.put<JsonResponse<Pdp>>(this.baseUrl + '/' + pdp.id, pdp);
 		}
@@ -70,27 +70,33 @@ export class PdpService extends HttpService {
 		window.open(url, '_blank');
 	}
 
+	exportPdpPdf(pdp_id) {
+		const url = this.baseUrl + '/' + pdp_id + '/pdf?token=' + localStorage.getItem(environment.authTokenKey);
+		window.open(url, '_blank');
+	}
+
 	updateOrders(payload) {
 		return this.http.post<any>(`${environment.apiBaseUrl}/updateOrders`, payload)
 	}
 
-	addValidationSignatures(pdp_id, signatures){
-        return this.http.post(this.baseUrl+'/'+pdp_id+'/validations/signatures', signatures);
+	addValidationSignatures(pdp_id, signatures) {
+		return this.http.post(this.baseUrl + '/' + pdp_id + '/validations/signatures', signatures);
 	}
 
-	addIntervenantSignatures(pdp_id, signatures){
-        return this.http.post(this.baseUrl+'/'+pdp_id+'/intervenants/signatures', signatures);
-    }
-
-	removeValidationsSignatures(pdp_id){
-		return this.http.delete(this.baseUrl+'/'+pdp_id+'/validations/signatures');
+	addIntervenantSignatures(pdp_id, signatures) {
+		return this.http.post(this.baseUrl + '/' + pdp_id + '/intervenants/signatures', signatures);
 	}
 
-	getStatus(){
-		return this.http.get(this.baseUrl+'/status');
+	removeValidationsSignatures(pdp_id) {
+		return this.http.delete(this.baseUrl + '/' + pdp_id + '/validations/signatures');
 	}
-	changeStatus(pdp_id, status){
-		return this.http.post(this.baseUrl+'/'+pdp_id+'/status', status);
+
+	getStatus() {
+		return this.http.get(this.baseUrl + '/status');
+	}
+
+	changeStatus(pdp_id, status) {
+		return this.http.post(this.baseUrl + '/' + pdp_id + '/status', status);
 	};
 
 }

@@ -14,7 +14,7 @@ import {MatDialog} from '@angular/material/dialog';
 	styleUrls: ['./pdp-list.component.scss']
 })
 export class PdpListComponent implements OnInit {
-	@ViewChild('sendMailModal',{static: false})
+	@ViewChild('sendMailModal', {static: false})
 	private sendMailModal: TemplateRef<any>;
 
 	private sendMailModalRef;
@@ -34,12 +34,12 @@ export class PdpListComponent implements OnInit {
 		keyword: '',
 	};
 	showFilters = false;
-	displayedArColumns = ['raison_sociale_eu', 'cse', 'created_at', 'validity_at', 'lieu_intervention', 'risque', 'status','type','action'];
+	displayedArColumns = ['raison_sociale_eu', 'cse', 'created_at', 'validity_at', 'lieu_intervention', 'risque', 'status', 'type', 'action'];
 
 	pdp_id: number;
 	status: Status[];
 	newStatus: Status;
-	commentShown:boolean = false;
+	commentShown: boolean = false;
 
 
 	constructor(
@@ -142,42 +142,44 @@ export class PdpListComponent implements OnInit {
 	viewPdp(pdpId) {
 		this.router.navigate(['../detail', pdpId], {relativeTo: this.activatedRoute});
 	}
+
 	signPdp(pdpId) {
 		this.router.navigate(['../sign', pdpId], {relativeTo: this.activatedRoute});
 	}
+
 	// Trigger a PopUp asking to SSE Manager if he wants to accept or refuse the Pdp
 	// Set the state of pdp in function of the response.
-	validatePdp(pdpId){
+	validatePdp(pdpId) {
 		Swal.fire({
 			icon: 'info',
 			title: this.translate.instant("ACTION.VALIDATE"),
 			showConfirmButton: true,
-			showCancelButton:true,
+			showCancelButton: true,
 			confirmButtonText: this.translate.instant("PDP.YES"),
 			cancelButtonText: this.translate.instant("PDP.NO"),
 			showCloseButton: true,
 
-		}).then((result) =>{
+		}).then((result) => {
 			//Yes
-			if(result.isConfirmed){
+			if (result.isConfirmed) {
 				//Set the next Status thanks to the order property.
 				const status = {
-					"status" : this.status.find(status => status.ordre == 3)
+					"status": this.status.find(status => status.ordre == 3)
 				}
-				this.pdpService.changeStatus(pdpId,status ).subscribe((res)=>{
+				this.pdpService.changeStatus(pdpId, status).subscribe((res) => {
 					Swal.fire({
 						title: this.translate.instant("PDP.NOTIF.STATUS_ACCEPTED.TITLE"),
 						showConfirmButton: false,
 						icon: 'success',
 						timer: 1500
-						})
+					})
 					this.getPDPs();
 
 				});
 
 
-			//No
-			}else if(result.dismiss == Swal.DismissReason.cancel ){
+				//No
+			} else if (result.dismiss == Swal.DismissReason.cancel) {
 				console.log(result.dismiss)
 
 				Swal.fire({
@@ -185,36 +187,36 @@ export class PdpListComponent implements OnInit {
 					title: this.translate.instant("PDP.NOTIF.COMMENTS"),
 					showConfirmButton: true,
 					input: 'textarea',
-  					inputPlaceholder: 'Commentaires ...',
+					inputPlaceholder: 'Commentaires ...',
 					cancelButtonText: this.translate.instant("ACTION.UNVALIDATE"),
 					confirmButtonText: this.translate.instant("ACTION.CONFIRM"),
 
-				}).then((result) =>{
-					if(result.value){
-						//TODO -> STORE COMMS wich are currently in result.value
-					}
-					//The Pdp's State is reset to first state and signature are canceled
-					const status = {
-						"status" : this.status.find(status => status.ordre == 1)
-					}
-					this.pdpService.changeStatus(pdpId,status ).subscribe((res)=>{
-						this.getPDPs();
-					});
-					this.pdpService.removeValidationsSignatures(pdpId).subscribe((res)=>{
-						Swal.fire({
-							title: this.translate.instant("PDP.NOTIF.STATUS_REFUSED.TITLE"),
-							showConfirmButton: false,
-							icon: 'success',
-							timer: 1500
+				}).then((result) => {
+						if (result.value) {
+							//TODO -> STORE COMMS wich are currently in result.value
+						}
+						//The Pdp's State is reset to first state and signature are canceled
+						const status = {
+							"status": this.status.find(status => status.ordre == 1)
+						}
+						this.pdpService.changeStatus(pdpId, status).subscribe((res) => {
+							this.getPDPs();
+						});
+						this.pdpService.removeValidationsSignatures(pdpId).subscribe((res) => {
+							Swal.fire({
+								title: this.translate.instant("PDP.NOTIF.STATUS_REFUSED.TITLE"),
+								showConfirmButton: false,
+								icon: 'success',
+								timer: 1500
 							})
 
-					});
-					console.log(result.value);
-				}
-			);
-		}
-	});
-}
+						});
+						console.log(result.value);
+					}
+				);
+			}
+		});
+	}
 
 
 	async deletePdp(pdpId) {
@@ -253,22 +255,26 @@ export class PdpListComponent implements OnInit {
 			}
 		});
 	}
-	getPdp(pdpId){
-			return this.pdpsList.data.find(pdp => pdp.id == pdpId);
+
+	getPdp(pdpId) {
+		return this.pdpsList.data.find(pdp => pdp.id == pdpId);
 	}
-	getStatus(){
-		this.pdpService.getStatus().subscribe((res : any)=>{
+
+	getStatus() {
+		this.pdpService.getStatus().subscribe((res: any) => {
 			this.status = res.result.data;
 		});
 	}
 
-	openMailModal(pdpId){
-		this.sendMailModalRef = this.dialog.open(this.sendMailModal, {data: { name: 'austin' }});
+	openMailModal(pdpId) {
+		this.sendMailModalRef = this.dialog.open(this.sendMailModal, {data: {name: 'austin'}});
 	}
-	closeMailModal(){
+
+	closeMailModal() {
 		this.sendMailModalRef.close();
 	}
-	sendMail(event){
+
+	sendMail(event) {
 		//TODO SEND EMAIL
 		console.log(event);
 		this.sendMailModalRef.close();
@@ -280,6 +286,10 @@ export class PdpListComponent implements OnInit {
 		}).then(() => {
 			this.getPDPs();
 		});
+	}
+
+	downloadPdf(pdpId) {
+		this.pdpService.exportPdpPdf(pdpId);
 	}
 
 }

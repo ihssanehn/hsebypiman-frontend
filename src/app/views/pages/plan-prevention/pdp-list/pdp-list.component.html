@@ -158,7 +158,7 @@
 			</button>
 		</ng-container>
 		<ng-container *ngxPermissionsOnly="['plan_prevention_canSeeAll']">
-			<button mat-icon-button color="primary" matTooltip="{{'ACTION.EXPORT_PDF' | translate}}">
+			<button mat-icon-button color="primary" matTooltip="{{'ACTION.EXPORT_PDF' | translate}}" (click)="downloadPdf(pdp_id)">
 				<mat-icon>picture_as_pdf</mat-icon>
 			</button>
 		</ng-container>

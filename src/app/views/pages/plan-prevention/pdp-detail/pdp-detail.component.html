@@ -11,9 +11,10 @@
 				<mat-icon>more_vert</mat-icon>
 			</button>
 			<div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround "
-				 style="min-width: max-content; padding: 5px;">
-				<button mat-icon-button color="info" matTooltip="{{'ACTION.EXPORT_PDF' | translate}}">
+				 style="padding: 5px;">
+				<button mat-icon-button color="info" (click)="downloadPdf()">
 					<mat-icon>picture_as_pdf</mat-icon>
+					{{'ACTION.EXPORT_PDF' | translate}}
 				</button>
 			</div>
 		</div>
@@ -620,11 +621,12 @@
 																</ng-container>
 															</li>
 														</ng-container>
-														<ng-container *ngIf="risk.other_pdp_moyen_risque && risk.other_pdp_moyen_risque?.length > 0">
+														<ng-container
+															*ngIf="risk.other_pdp_moyen_risque && risk.other_pdp_moyen_risque?.length > 0">
 															<li class="pdp-label font-italic">{{'PDP.OTHER_METHOD' | translate}}
 																:
 																<span class="mx-1"
-																	*ngFor="let otherM of risk.other_pdp_moyen_risque">{{otherM?.comment || '-'}}</span>
+																	  *ngFor="let otherM of risk.other_pdp_moyen_risque">{{otherM?.comment || '-'}}</span>
 															</li>
 														</ng-container>
 														<ng-container
