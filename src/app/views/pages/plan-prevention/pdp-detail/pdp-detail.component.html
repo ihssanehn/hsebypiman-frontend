@@ -579,7 +579,7 @@
 															<li class="pdp-label" *ngIf="situation?.answer">
 																{{situation.pdp_risque?.label}}
 																<span class="font-italic"
-																	  *ngIf="situation.pdp_risque?.is_with_comment">: {{situation.comment}}</span>
+																	  *ngIf="situation.pdp_risque?.is_with_comment"> {{situation.comment}}</span>
 															</li>
 														</ng-container>
 														<ng-container *ngIf="risk.other_pdp_situation_risque">
@@ -605,7 +605,7 @@
 															<li class="pdp-label" *ngIf="moyen?.answer">
 																{{moyen.pdp_risque?.label}}
 																<span class="font-italic"
-																	  *ngIf="moyen.pdp_risque?.is_with_comment">: {{moyen.comment}}</span>
+																	  *ngIf="moyen.pdp_risque?.is_with_comment"> {{moyen.comment}}</span>
 																<ng-container *ngIf="moyen.moyen_filter.length > 0">
 																	<ng-container
 																		*ngFor="let subMoyen of moyen.moyen_filter | pdpFilter ;let index = index">
