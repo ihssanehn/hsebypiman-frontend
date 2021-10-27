@@ -16,6 +16,7 @@ import {FileUploader} from 'ng2-file-upload';
 import {NgbModal, NgbActiveModal, ModalDismissReasons, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
 import {TemplateRef, ViewChild} from '@angular/core';
 import {MenuAsideService} from '@app/core/_base/layout';
+import {AuthService, User} from "@app/core/auth";
 
 
 const options = {
@@ -63,12 +64,14 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 	pdpTypes: Type[];
 	typePdp: string;
 	modalReference;
+	currentUser: User;
 
 	private subscriptions: Subscription[] = [];
 
 	public uploader: FileUploader = new FileUploader({
 		isHTML5: true
 	});
+
 
 	constructor(
 		private pdpFB: FormBuilder,
@@ -78,6 +81,7 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 		private activatedRoute: ActivatedRoute,
 		private pdpService: PdpService,
 		private typeService: TypeService,
+		private authService: AuthService,
 		private modalService: NgbModal,
 		private menuService: MenuAsideService,
 		config: NgbModalConfig
@@ -87,6 +91,9 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnInit() {
+		this.authService.getCurrentUser().subscribe(x => {
+			this.currentUser = x;
+		});
 		this.createForm();
 		this.createClientForm();
 		this.getTypes();
@@ -289,7 +296,7 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 					need_text_area_in_title: new FormControl(true),
 					title: new FormControl('EU'),
 					company_name: new FormControl('', Validators.required),
-					full_name: new FormControl('', Validators.required),
+					full_name: new FormControl(this.currentUser ? (this.currentUser.prenom + ' ' + this.currentUser.nom) : '', Validators.required),
 					validation_at: new FormControl(null, Validators.required),
 					type: new FormControl('eu', Validators.required),
 					deletable: new FormControl(false),
