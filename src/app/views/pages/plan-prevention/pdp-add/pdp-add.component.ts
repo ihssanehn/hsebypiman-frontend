@@ -101,7 +101,15 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 							.subscribe(async res => {
 								this.pdp = res.result.data;
 								this.pdp.pdp_intervention_at = moment(this.pdp.pdp_intervention_at, 'DD/MM/YYYY').toDate();
-								this.pdp.pdp_validations.filter(v => v.validation_at).map(v => v.validation_at = moment(v.validation_at, 'DD/MM/YYYY').toDate());
+								this.pdp.pdp_validations.filter(v => v.validation_at || v.part_inspection_at).map(v => {
+									if (v.validation_at) {
+										v.validation_at = moment(v.validation_at, 'DD/MM/YYYY').toDate();
+									}
+									if (v.part_inspection_at) {
+										v.part_inspection_at = moment(v.part_inspection_at, 'DD/MM/YYYY').toDate();
+									}
+									return v;
+								});
 								console.log(this.pdp);
 								if (this.pdp.type.code == "PDP_CLIENT") {
 									this.pdpClientForm.patchValue(this.pdp);
@@ -381,7 +389,16 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 					const form = {...this.pdpForm.getRawValue()};
 					form.pdp_intervention_at = moment(form.pdp_intervention_at).format('DD-MM-YYYY');
 					if (form && form.validations) {
-						form.validations.filter(v => v.validation_at).map(v => v.validation_at = moment(v.validation_at).format('DD-MM-YYYY'));
+						form.validations.filter(v => v.validation_at || v.part_inspection_at).map(v => {
+							if (v.validation_at) {
+								v.validation_at = moment(v.validation_at).format('DD-MM-YYYY')
+							}
+							if (v.part_inspection_at) {
+								v.part_inspection_at = moment(v.part_inspection_at).format('DD-MM-YYYY')
+							}
+							return v;
+						});
+
 						form.validations = (form.validations as Array<any>).filter(v => v && v.company_name && v.full_name && v.validation_at).map(v => {
 							if (v && !v.is_part_inspection) {
 								delete v.is_part_inspection;

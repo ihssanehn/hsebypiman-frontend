@@ -620,12 +620,15 @@
 																</ng-container>
 															</li>
 														</ng-container>
-														<ng-container *ngIf="risk.other_pdp_moyen_risque">
+														<ng-container *ngIf="risk.other_pdp_moyen_risque && risk.other_pdp_moyen_risque?.length > 0">
 															<li class="pdp-label font-italic">{{'PDP.OTHER_METHOD' | translate}}
-																: {{risk.other_pdp_moyen_risque}}</li>
+																:
+																<span class="mx-1"
+																	*ngFor="let otherM of risk.other_pdp_moyen_risque">{{otherM?.comment || '-'}}</span>
+															</li>
 														</ng-container>
 														<ng-container
-															*ngIf="!risk.moyens.length && !risk.other_pdp_moyen_risque">
+															*ngIf="!risk.moyens.length && !risk.other_pdp_moyen_risque?.length">
 															<div class="pdp-label">
 																<ng-container
 																	*ngTemplateOutlet="noDataFound"></ng-container>
