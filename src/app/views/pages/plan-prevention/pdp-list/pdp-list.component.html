@@ -144,13 +144,13 @@
 				<mat-icon>done</mat-icon>
 			</button>
 		</ng-container>
-		<ng-container *ngxPermissionsOnly="['plan_prevention_canSeeAll']">
-			<button *ngIf="status.ordre == 1" mat-icon-button color="primary"
-					matTooltip="{{'ACTION.SEND_BY_MAIL' | translate}}"
-					(click)="openMailModal()">
-				<mat-icon>email</mat-icon>
-			</button>
-		</ng-container>
+<!--		<ng-container *ngxPermissionsOnly="['plan_prevention_canSeeAll']">-->
+<!--			<button *ngIf="status.ordre == 1" mat-icon-button color="primary"-->
+<!--					matTooltip="{{'ACTION.SEND_BY_MAIL' | translate}}"-->
+<!--					(click)="openMailModal()">-->
+<!--				<mat-icon>email</mat-icon>-->
+<!--			</button>-->
+<!--		</ng-container>-->
 		<ng-container *ngxPermissionsOnly="['plan_prevention_canSeeAll']">
 			<button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}"
 					(click)="viewPdp(pdp_id)">
