@@ -311,19 +311,19 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 					read_and_approved: new FormControl(null),
 					signature: new FormControl(null)
 				}),
-				new FormGroup({
-					need_text_area_in_title: new FormControl(true),
-					title: new FormControl('Sous-traitant'),
-					company_name: new FormControl(''),
-					full_name: new FormControl(''),
-					validation_at: new FormControl(null),
-					type: new FormControl('st'),
-					deletable: new FormControl(true),
-					is_part_inspection: new FormControl(null),
-					part_inspection_at: new FormControl({value: null, disabled: true}),
-					read_and_approved: new FormControl(null),
-					signature: new FormControl(null)
-				})
+				// new FormGroup({
+				// 	need_text_area_in_title: new FormControl(true),
+				// 	title: new FormControl('Sous-traitant'),
+				// 	company_name: new FormControl(''),
+				// 	full_name: new FormControl(''),
+				// 	validation_at: new FormControl(null),
+				// 	type: new FormControl('st'),
+				// 	deletable: new FormControl(true),
+				// 	is_part_inspection: new FormControl(null),
+				// 	part_inspection_at: new FormControl({value: null, disabled: true}),
+				// 	read_and_approved: new FormControl(null),
+				// 	signature: new FormControl(null)
+				// })
 			]),
 			intervenants: new FormArray([
 				new FormGroup({
