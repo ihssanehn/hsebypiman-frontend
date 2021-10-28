@@ -16,6 +16,7 @@ import {FileUploader} from 'ng2-file-upload';
 import {NgbModal, NgbActiveModal, ModalDismissReasons, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
 import {TemplateRef, ViewChild} from '@angular/core';
 import {MenuAsideService} from '@app/core/_base/layout';
+import {AuthService, User} from "@app/core/auth";
 
 
 const options = {
@@ -63,12 +64,14 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 	pdpTypes: Type[];
 	typePdp: string;
 	modalReference;
+	currentUser: User;
 
 	private subscriptions: Subscription[] = [];
 
 	public uploader: FileUploader = new FileUploader({
 		isHTML5: true
 	});
+
 
 	constructor(
 		private pdpFB: FormBuilder,
@@ -78,6 +81,7 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 		private activatedRoute: ActivatedRoute,
 		private pdpService: PdpService,
 		private typeService: TypeService,
+		private authService: AuthService,
 		private modalService: NgbModal,
 		private menuService: MenuAsideService,
 		config: NgbModalConfig
@@ -87,6 +91,9 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnInit() {
+		this.authService.getCurrentUser().subscribe(x => {
+			this.currentUser = x;
+		});
 		this.createForm();
 		this.createClientForm();
 		this.getTypes();
@@ -101,7 +108,15 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 							.subscribe(async res => {
 								this.pdp = res.result.data;
 								this.pdp.pdp_intervention_at = moment(this.pdp.pdp_intervention_at, 'DD/MM/YYYY').toDate();
-								this.pdp.pdp_validations.filter(v => v.validation_at).map(v => v.validation_at = moment(v.validation_at, 'DD/MM/YYYY').toDate());
+								this.pdp.pdp_validations.filter(v => v.validation_at || v.part_inspection_at).map(v => {
+									if (v.validation_at) {
+										v.validation_at = moment(v.validation_at, 'DD/MM/YYYY').toDate();
+									}
+									if (v.part_inspection_at) {
+										v.part_inspection_at = moment(v.part_inspection_at, 'DD/MM/YYYY').toDate();
+									}
+									return v;
+								});
 								console.log(this.pdp);
 								if (this.pdp.type.code == "PDP_CLIENT") {
 									this.pdpClientForm.patchValue(this.pdp);
@@ -279,22 +294,9 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 			validations: new FormArray([
 				new FormGroup({
 					need_text_area_in_title: new FormControl(true),
-					title: new FormControl('EE'),
-					company_name: new FormControl('', Validators.required),
-					full_name: new FormControl('', Validators.required),
-					validation_at: new FormControl(null, Validators.required),
-					type: new FormControl('ee', Validators.required),
-					deletable: new FormControl(false),
-					is_part_inspection: new FormControl(null),
-					part_inspection_at: new FormControl({value: null, disabled: true}),
-					read_and_approved: new FormControl(null),
-					signature: new FormControl(null)
-				}),
-				new FormGroup({
-					need_text_area_in_title: new FormControl(false),
 					title: new FormControl('EU'),
-					company_name: new FormControl('PIMAN Consultants', Validators.required),
-					full_name: new FormControl('', Validators.required),
+					company_name: new FormControl('', Validators.required),
+					full_name: new FormControl(this.currentUser ? (this.currentUser.prenom + ' ' + this.currentUser.nom) : '', Validators.required),
 					validation_at: new FormControl(null, Validators.required),
 					type: new FormControl('eu', Validators.required),
 					deletable: new FormControl(false),
@@ -304,18 +306,31 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 					signature: new FormControl(null)
 				}),
 				new FormGroup({
-					need_text_area_in_title: new FormControl(true),
-					title: new FormControl('Sous-traitant'),
-					company_name: new FormControl(''),
-					full_name: new FormControl(''),
-					validation_at: new FormControl(null),
-					type: new FormControl('st'),
-					deletable: new FormControl(true),
+					need_text_area_in_title: new FormControl(false),
+					title: new FormControl('EE'),
+					company_name: new FormControl('PIMAN Consultants', Validators.required),
+					full_name: new FormControl('', Validators.required),
+					validation_at: new FormControl(null, Validators.required),
+					type: new FormControl('ee', Validators.required),
+					deletable: new FormControl(false),
 					is_part_inspection: new FormControl(null),
 					part_inspection_at: new FormControl({value: null, disabled: true}),
 					read_and_approved: new FormControl(null),
 					signature: new FormControl(null)
-				})
+				}),
+				// new FormGroup({
+				// 	need_text_area_in_title: new FormControl(true),
+				// 	title: new FormControl('Sous-traitant'),
+				// 	company_name: new FormControl(''),
+				// 	full_name: new FormControl(''),
+				// 	validation_at: new FormControl(null),
+				// 	type: new FormControl('st'),
+				// 	deletable: new FormControl(true),
+				// 	is_part_inspection: new FormControl(null),
+				// 	part_inspection_at: new FormControl({value: null, disabled: true}),
+				// 	read_and_approved: new FormControl(null),
+				// 	signature: new FormControl(null)
+				// })
 			]),
 			intervenants: new FormArray([
 				new FormGroup({
@@ -381,7 +396,16 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 					const form = {...this.pdpForm.getRawValue()};
 					form.pdp_intervention_at = moment(form.pdp_intervention_at).format('DD-MM-YYYY');
 					if (form && form.validations) {
-						form.validations.filter(v => v.validation_at).map(v => v.validation_at = moment(v.validation_at).format('DD-MM-YYYY'));
+						form.validations.filter(v => v.validation_at || v.part_inspection_at).map(v => {
+							if (v.validation_at) {
+								v.validation_at = moment(v.validation_at).format('DD-MM-YYYY')
+							}
+							if (v.part_inspection_at) {
+								v.part_inspection_at = moment(v.part_inspection_at).format('DD-MM-YYYY')
+							}
+							return v;
+						});
+
 						form.validations = (form.validations as Array<any>).filter(v => v && v.company_name && v.full_name && v.validation_at).map(v => {
 							if (v && !v.is_part_inspection) {
 								delete v.is_part_inspection;
