@@ -805,7 +805,7 @@ export class PdpAddFormComponent implements OnInit {
 				};
 			}));
 			pdp.pdp_validations.map((v: any, index: number) => {
-				if (v.type === 'st' && index > 2) {
+				if (v.type === 'st' && index > 1) {
 					(this.pdpForm.get('validations') as FormArray).push(this.FB.group({
 						...v,
 						need_text_area_in_title: true,
