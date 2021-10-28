@@ -572,8 +572,10 @@ export class PdpAddFormComponent implements OnInit {
 				formations: new FormControl(null),
 				is_suivi_medical: new FormControl(null),
 				motif_id: new FormControl({value: null, disabled: true}),
+				read_and_approved: new FormControl(false),
+				signature: new FormControl(null)
 			});
-			this.getControlsArrayFormName('intervenants').push(group);
+			(this.pdpForm.get('intervenants') as FormArray).push(group);
 			this.intervenants.next(this.getControlsArrayFormName('intervenants'));
 		}
 	}
@@ -584,7 +586,7 @@ export class PdpAddFormComponent implements OnInit {
 			mail: new FormControl('', Validators.email),
 			tel: new FormControl(''),
 		});
-		this.getControlsArrayFormName('sous_traitant').push(group);
+		(this.pdpForm.get('sous_traitant') as FormArray).push(group);
 	}
 
 	addValidationSousTraitant() {
@@ -597,11 +599,11 @@ export class PdpAddFormComponent implements OnInit {
 			type: new FormControl('st'),
 			deletable: new FormControl(true),
 			is_part_inspection: new FormControl(null),
-			read_and_approved: new FormControl(null),
+			read_and_approved: new FormControl(false),
 			signature: new FormControl(null),
 			part_inspection_at: new FormControl({value: null, disabled: true}),
 		});
-		this.getControlsArrayFormName('validations').push(group);
+		(this.pdpForm.get('validations') as FormArray).push(group);
 		this.validations.next(this.getControlsArrayFormName('validations'));
 	}
 
@@ -637,7 +639,9 @@ export class PdpAddFormComponent implements OnInit {
 			const intervenantsArray: FormArray = this.pdpForm.get('intervenants') as FormArray;
 			intervenantsArray.clear();
 			pdp.intervenants.map(v => {
-				(this.pdpForm.get('intervenants') as FormArray).push(this.FB.group({...v}));
+				(this.pdpForm.get('intervenants') as FormArray).push(this.FB.group({...v,
+					read_and_approved: v.signature ? !!v.signature.read_and_approved : null,
+					signature: v.signature ? v.signature.signature : null,}));
 			});
 			intervenantsArray.controls.map((c: FormGroup) => {
 				c.get('is_suivi_medical').value ? c.get('motif_id').enable() : c.get('motif_id').disable();
@@ -800,8 +804,8 @@ export class PdpAddFormComponent implements OnInit {
 					type: v.type,
 					is_part_inspection: v.is_part_inspection,
 					part_inspection_at: v.part_inspection_at,
-					read_and_approved: v.read_and_approved,
-					signature: v.signature,
+					read_and_approved: v.signature ? !!v.signature.read_and_approved : null,
+					signature: v.signature ? v.signature.signature : null,
 				};
 			}));
 			pdp.pdp_validations.map((v: any, index: number) => {
@@ -810,7 +814,9 @@ export class PdpAddFormComponent implements OnInit {
 						...v,
 						need_text_area_in_title: true,
 						title: 'Sous-traitant',
-						deletable: true
+						deletable: true,
+						read_and_approved: v.signature ? !!v.signature.read_and_approved : null,
+						signature: v.signature ? v.signature.signature : null,
 					}));
 				}
 			});
@@ -843,8 +849,10 @@ export class PdpAddFormComponent implements OnInit {
 
 	clearSignature(index) {
 		let signaturePadChild = this.signaturePads.filter((element, i) => index === i);
-		signaturePadChild[0].clear();
-		(this.pdpForm.get('validations') as FormArray).controls[index].get('signature').reset();
+		if(signaturePadChild && signaturePadChild.length > 0){
+			signaturePadChild[0].clear();
+		}
+		(this.pdpForm.get('validations') as FormArray).controls[index].get('signature').setValue(null);
 	}
 
 	resizeSignaturePad() {
@@ -853,6 +861,7 @@ export class PdpAddFormComponent implements OnInit {
 			child.set('canvasWidth', this.canvas['canvasWidth'] / ratio);
 		});
 	}
+
 
 	drawComplete(index: number) {
 		let signaturePadChild = this.signaturePads.filter((element, i) => i === index);

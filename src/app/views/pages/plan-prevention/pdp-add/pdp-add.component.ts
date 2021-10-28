@@ -302,7 +302,7 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 					deletable: new FormControl(false),
 					is_part_inspection: new FormControl(null),
 					part_inspection_at: new FormControl({value: null, disabled: true}),
-					read_and_approved: new FormControl(null),
+					read_and_approved: new FormControl(false),
 					signature: new FormControl(null)
 				}),
 				new FormGroup({
@@ -315,7 +315,7 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 					deletable: new FormControl(false),
 					is_part_inspection: new FormControl(null),
 					part_inspection_at: new FormControl({value: null, disabled: true}),
-					read_and_approved: new FormControl(null),
+					read_and_approved: new FormControl(false),
 					signature: new FormControl(null)
 				}),
 				// new FormGroup({
@@ -340,6 +340,8 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 					formations: new FormControl(null),
 					is_suivi_medical: new FormControl(null),
 					motif_id: new FormControl({value: null, disabled: true}),
+					read_and_approved: new FormControl(false),
+					signature: new FormControl(null)
 				})
 			]),
 			sous_traitant: new FormArray([]),
@@ -391,9 +393,14 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 				// this.pdpForm.markAllAsTouched();
 				console.log(this.pdpForm.valid)
 				if (
-					this.checkIfDateLastIsBigger() && (this.pdpForm.get('cat_pdp_risques').value as Array<RisqueModel>).filter(v => v.is_required_situation && v.answer).map(v => v.situation.filter(s => s.answer).length === 0).indexOf(true) === -1 && (this.pdpForm.get('cat_pdp_risques').value as Array<RisqueModel>).findIndex(v => !v.is_eu && !v.is_piman && !v.is_sous_traitant && v.answer) === -1) {
+					this.checkIfDateLastIsBigger()
+					&& (this.pdpForm.get('cat_pdp_risques').value as Array<RisqueModel>).filter(v => v.is_required_situation && v.answer).map(v => v.situation.filter(s => s.answer).length === 0).indexOf(true) === -1
+					&& (this.pdpForm.get('cat_pdp_risques').value as Array<RisqueModel>).findIndex(v => !v.is_eu && !v.is_piman && !v.is_sous_traitant && v.answer) === -1) {
 					this.formStatus.onFormSubmitting();
 					const form = {...this.pdpForm.getRawValue()};
+					if (form && !form.intervenants) {
+						form.intervenants = [];
+					}
 					form.pdp_intervention_at = moment(form.pdp_intervention_at).format('DD-MM-YYYY');
 					if (form && form.validations) {
 						form.validations.filter(v => v.validation_at || v.part_inspection_at).map(v => {
