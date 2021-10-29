@@ -1261,10 +1261,11 @@
 											</button>
 										</div>
 										<div class="signature-container">
-											<signature-pad #signaturePad id="signaturePad"
+											<signature-pad #signaturePad id="signaturePad" [hidden]="element.get('signature').value"
 														   (window:resize)="resizeSignaturePad()"
 														   [options]="signaturePadOptions"
 														   (onEndEvent)="drawComplete(index)"></signature-pad>
+											<img class="signature-image" *ngIf="element.get('signature').value" src="{{element.get('signature').value}}" alt="signature"/>
 											<mat-error
 												*ngIf="isControlHasError('signature', 'required', 'validations', index)">
 												<small
