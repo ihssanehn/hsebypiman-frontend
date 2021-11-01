@@ -1,6 +1,6 @@
 <tf-search-list-bar [(ngModel)]="filter" (change)="getPDPs()" [hasAdvancedSearch]="false" [showFilters]="showFilters"
 					class="row row-filters"></tf-search-list-bar>
-<!--<tf-ar-filters [hidden]="!showFilters" (change)="udpateFilters($event)" class="row" ></tf-ar-filters>-->
+<tf-pdp-filters [hidden]="!showFilters" (change)="udpateFilters($event)" class="row" ></tf-pdp-filters>
 
 <tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
 	<tf-portlet-body class="tf-portlet__body--fit" *ngIf="pdpsList">
