@@ -1,0 +1,141 @@
+<div class="col-md-12 tf-form">
+	<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
+		<tf-portlet-body class="tf-portlet__body--fit card-filters px-5 pt-4 pb-3">
+			<form novalidate [formGroup]="filterForm">
+				<div class="row">
+
+					<mat-form-field class="col-xl-3 col-md-4 col-sm-6 col-xs-12 mat-filter-no-head">
+						<mat-label>{{'PDP.RAISON_SOCIALE_EU' | translate}}</mat-label>
+						<input matInput class="form-control" formControlName="raison_sociale_eu"
+							   placeholder="{{'PDP.RAISON_SOCIALE_EU' | translate}}">
+						<button mat-button *ngIf="formHasValue('raison_sociale_eu')" matSuffix mat-icon-button
+								aria-label="Clear" (click)="clearValue('raison_sociale_eu'); $event.stopPropagation()">
+							<mat-icon>clear</mat-icon>
+						</button>
+					</mat-form-field>
+
+					<mat-form-field class="col-xl-3 col-md-4 col-sm-6 col-xs-12 mat-filter-no-head">
+						<mat-label>{{'PDP.PLACE_INTERVENTION' | translate}}</mat-label>
+						<input matInput class="form-control" formControlName="lieu_intervention"
+							   placeholder="{{'PDP.PLACE_INTERVENTION' | translate}}">
+						<button mat-button *ngIf="formHasValue('lieu_intervention')" matSuffix mat-icon-button
+								aria-label="Clear" (click)="clearValue('lieu_intervention'); $event.stopPropagation()">
+							<mat-icon>clear</mat-icon>
+						</button>
+					</mat-form-field>
+
+					<mat-form-field class="col-xl-3 col-md-4 col-sm-6 col-xs-12 mat-filter-no-head">
+						<mat-label>{{'ARS.STATUS' | translate}}</mat-label>
+						<mat-select class="form-control" formControlName="status" name="status">
+							<mat-option>{{'FILTER.SEARCH_ALL' | translate}}</mat-option>
+							<mat-option *ngFor="let statu of status" [value]="statu.id">
+								{{statu?.libelle}}
+							</mat-option>
+						</mat-select>
+						<button mat-button *ngIf="formHasValue('status')" matSuffix mat-icon-button
+								aria-label="Clear" (click)="clearValue('status'); $event.stopPropagation()">
+							<mat-icon>clear</mat-icon>
+						</button>
+					</mat-form-field>
+					<mat-form-field class="col-xl-3 col-md-4 col-sm-6 col-xs-12 mat-filter-no-head">
+						<mat-label>{{'PDP.RISK' | translate}}</mat-label>
+						<mat-select class="form-control" formControlName="risque" name="risque">
+							<mat-option>{{'FILTER.SEARCH_ALL' | translate}}</mat-option>
+							<mat-option *ngFor="let risk of risks" [value]="risk.key">
+								{{risk?.value | translate}}
+							</mat-option>
+						</mat-select>
+						<button mat-button *ngIf="formHasValue('risque')" matSuffix mat-icon-button
+								aria-label="Clear" (click)="clearValue('risque'); $event.stopPropagation()">
+							<mat-icon>clear</mat-icon>
+						</button>
+					</mat-form-field>
+
+
+					<mat-form-field class="col-xl-3 col-md-4 col-sm-6 col-xs-12 mat-filter-no-head">
+						<mat-label>{{'PDP.INTERVENANTS' | translate}}</mat-label>
+						<mat-select class="form-control" formControlName="intervenant" name="intervenant">
+							<mat-option>{{'FILTER.SEARCH_ALL' | translate}}</mat-option>
+							<mat-option *ngFor="let inter of intervenant" [value]="inter?.id">
+								{{inter?.label}}
+							</mat-option>
+						</mat-select>
+						<button mat-button *ngIf="formHasValue('intervenant')" matSuffix mat-icon-button
+								aria-label="Clear" (click)="clearValue('intervenant'); $event.stopPropagation()">
+							<mat-icon>clear</mat-icon>
+						</button>
+					</mat-form-field>
+					<mat-form-field class="col-xl-3 col-md-4 col-sm-6 col-xs-12 mat-filter-no-head">
+						<mat-label>{{'PDP.TYPE' | translate}}</mat-label>
+						<mat-select class="form-control" formControlName="type" name="type">
+							<mat-option>{{'FILTER.SEARCH_ALL' | translate}}</mat-option>
+							<mat-option *ngFor="let type of types" [value]="type?.id">
+								{{type?.libelle}}
+							</mat-option>
+						</mat-select>
+						<button mat-button *ngIf="formHasValue('type')" matSuffix mat-icon-button
+								aria-label="Clear" (click)="clearValue('type'); $event.stopPropagation()">
+							<mat-icon>clear</mat-icon>
+						</button>
+					</mat-form-field>
+					<div class="col-xl-3 col-md-4 col-sm-6 col-xs-12">
+						<h6>{{'COMMON.CREATED_AT.TITLE' | translate}}</h6>
+						<mat-form-field class="col-md-6 col-xl-6">
+							<mat-label>{{'COMMON.DATE_RANGE.BETWEEN.TITLE' | translate}} :</mat-label>
+<!--							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]"-->
+<!--								   [dropSpecialCharacters]="false" formControlName="date_creation_start"-->
+<!--								   placeholder="DD/MM/YYYY">-->
+							<input matInput class="form-control" [matDatepicker]="date_creation_start_picker" formControlName="date_creation_start" placeholder="DD/MM/YYYY">
+								<mat-datepicker-toggle matSuffix [for]="date_creation_start_picker"></mat-datepicker-toggle>
+								<mat-datepicker #date_creation_start_picker></mat-datepicker>
+								<button mat-button *ngIf="formHasValue('date_creation_start')" matSuffix mat-icon-button
+									aria-label="Clear" (click)="clearValue('date_creation_start'); $event.stopPropagation()">
+									<mat-icon>clear</mat-icon>
+								</button>
+						</mat-form-field>
+						<mat-form-field class="col-md-6 col-xl-6">
+							<mat-label>{{'COMMON.DATE_RANGE.AND.TITLE' | translate}} :</mat-label>
+<!--							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]"-->
+<!--								   [dropSpecialCharacters]="false" formControlName="date_creation_end"-->
+<!--								   placeholder="DD/MM/YYYY">-->
+							 <input matInput class="form-control" [matDatepicker]="date_creation_end_picker" formControlName="date_creation_end" placeholder="DD/MM/YYYY">
+								<mat-datepicker-toggle matSuffix [for]="date_creation_end_picker"></mat-datepicker-toggle>
+								<mat-datepicker #date_creation_end_picker></mat-datepicker>
+								<button mat-button *ngIf="formHasValue('date_creation_end')" matSuffix mat-icon-button
+									aria-label="Clear" (click)="clearValue('date_creation_end'); $event.stopPropagation()">
+									<mat-icon>clear</mat-icon>
+								</button>
+						</mat-form-field>
+					</div>
+					<div class="col-xl-3 col-md-4 col-sm-6 col-xs-12">
+						<h6>{{'PDP.VALIDITY_AT' | translate}}</h6>
+						<mat-form-field class="col-md-6 col-xl-6">
+							<mat-label>{{'COMMON.DATE_RANGE.BETWEEN.TITLE' | translate}} :</mat-label>
+<!--							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]"-->
+<!--								   [dropSpecialCharacters]="false" formControlName="date_validity_start"-->
+<!--								   placeholder="DD/MM/YYYY">-->
+							 <input matInput class="form-control" [matDatepicker]="date_validity_start_picker" formControlName="date_validity_start" placeholder="DD/MM/YYYY">
+							<mat-datepicker-toggle matSuffix [for]="date_validity_start_picker"></mat-datepicker-toggle>
+							<mat-datepicker #date_validity_start_picker></mat-datepicker>
+							<button mat-button *ngIf="formHasValue('date_validity_start')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('date_validity_start'); $event.stopPropagation()">
+								<mat-icon>clear</mat-icon>
+							</button>
+						</mat-form-field>
+						<mat-form-field class="col-md-6 col-xl-6">
+							<mat-label>{{'COMMON.DATE_RANGE.AND.TITLE' | translate}} :</mat-label>
+<!--							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]"-->
+<!--								   [dropSpecialCharacters]="false" formControlName="date_validity_end"-->
+<!--								   placeholder="DD/MM/YYYY">-->
+							 <input matInput class="form-control" [matDatepicker]="date_validity_end_picker" formControlName="date_validity_end" placeholder="DD/MM/YYYY">
+							<mat-datepicker-toggle matSuffix [for]="date_validity_end_picker"></mat-datepicker-toggle>
+							<mat-datepicker #date_validity_end_picker></mat-datepicker>
+							<button mat-button *ngIf="formHasValue('date_validity_end')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('date_validity_end'); $event.stopPropagation()">
+								<mat-icon>clear</mat-icon>
+							</button>
+						</mat-form-field>
+					</div>
+				</div>
+			</form>
+		</tf-portlet-body>
+	</tf-portlet>
+</div>
