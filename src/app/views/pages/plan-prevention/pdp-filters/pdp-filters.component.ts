@@ -51,7 +51,7 @@ export class PdpFiltersComponent implements OnInit {
 		var res = await this.pdpService.getAllPdpFilters().toPromise();
 		if (res.result.data) {
 			// this.intervenant = (res.result.data as any).intervenant || [];
-			this.types = (res.result.data as any).types || [];
+			this.types = (res.result.data as any).type || [];
 		}
 	}
 
