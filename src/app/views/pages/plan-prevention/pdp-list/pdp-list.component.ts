@@ -33,7 +33,7 @@ export class PdpListComponent implements OnInit {
 		order_way: 'desc',
 		keyword: '',
 	};
-	showFilters = false;
+	showFilters = true;
 	displayedArColumns = ['raison_sociale_eu', 'cse', 'created_at', 'validity_at', 'lieu_intervention', 'risque', 'status', 'type', 'action'];
 
 	pdp_id: number;
