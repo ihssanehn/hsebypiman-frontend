@@ -38,6 +38,7 @@ export class PdpDetailComponent implements OnInit {
 	validationEditMode: boolean = false;
 	intervenantEditMode: boolean = false;
 
+	allowIntervenantToSign = false;
 
 	constructor(
 		protected activatedRoute: ActivatedRoute,
@@ -96,8 +97,8 @@ export class PdpDetailComponent implements OnInit {
 				x.image = this.documentService.readFile(x.id);
 				x.thumbImage = this.documentService.readFile(x.id);
 			});
-			console.log(pdp.documents)
 			this.pdp = pdp;
+			this.allowIntervenantToSign = this.pdp.pdp_validations.filter(v => v.signature && (v.type === 'ee' || v.type === 'eu')).length === 2;
 
 			this.pdpLoaded = true;
 			this.cdr.markForCheck();

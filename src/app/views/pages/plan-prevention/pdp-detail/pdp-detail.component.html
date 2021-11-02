@@ -781,7 +781,8 @@
 					<div class="row d-flex flex-column flex-nowrap flex-fill">
 						<div class="col-12 flex-fill">
 							<div [ngClass]="pdp.intervenants.length > 0 ?'card':'card pb-0'">
-								<div class="pt-0 pb-0 box" *ngIf="!fromGuest && pdp.intervenants.length > 0">
+								<div class="pt-0 pb-0 box"
+									 *ngIf="!fromGuest && pdp.intervenants.length > 0 && allowIntervenantToSign">
 									<button class="pull-right" mat-raised-button color="info"
 											(click)="showIntervenantSignatureFrom()" *ngIf="!intervenantEditMode">
 										{{'PDP.ACTION.SIGN_PDP' | translate}}
