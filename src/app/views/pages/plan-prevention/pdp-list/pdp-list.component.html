@@ -1,4 +1,5 @@
-<tf-search-list-bar [(ngModel)]="filter" (change)="getPDPs()" [hasAdvancedSearch]="false" [showFilters]="showFilters"
+<tf-search-list-bar [(ngModel)]="filter" (change)="getPDPs()" [hasAdvancedSearch]="true" [showFilters]="showFilters"
+				 	(advancedSearchChange)="advancedSearchChanged($event)"
 					class="row row-filters"></tf-search-list-bar>
 <tf-pdp-filters [hidden]="!showFilters" (change)="udpateFilters($event)" class="row" ></tf-pdp-filters>
 
