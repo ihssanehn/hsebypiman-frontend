@@ -334,8 +334,8 @@ export class PdpAddComponent implements OnInit, OnDestroy {
 			]),
 			intervenants: new FormArray([
 				new FormGroup({
-					first_name: new FormControl(null),
-					last_name: new FormControl(null),
+					// first_name: new FormControl(''),
+					// last_name: new FormControl(''),
 					intervenant_id: new FormControl('', Validators.required),
 					contact: new FormControl('', Validators.required),
 					formations: new FormControl(null),

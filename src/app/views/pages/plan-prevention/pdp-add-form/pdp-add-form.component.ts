@@ -568,8 +568,8 @@ export class PdpAddFormComponent implements OnInit {
 	addIntervenant() {
 		if (this.intervenants.getValue().length < 9) {
 			const group = new FormGroup({
-				first_name: new FormControl(null),
-				last_name: new FormControl(null),
+				// first_name: new FormControl(''),
+				// last_name: new FormControl(''),
 				intervenant_id: new FormControl('', Validators.required),
 				contact: new FormControl('', Validators.required),
 				formations: new FormControl(null),
@@ -642,8 +642,10 @@ export class PdpAddFormComponent implements OnInit {
 			const intervenantsArray: FormArray = this.pdpForm.get('intervenants') as FormArray;
 			intervenantsArray.clear();
 			pdp.intervenants.map(v => {
+				this.consultants.splice(this.consultants.findIndex(c => c.id === v.user_id), 1);
 				(this.pdpForm.get('intervenants') as FormArray).push(this.FB.group({
 					...v,
+					intervenant_id: v.user_id || null,
 					read_and_approved: v.signature ? !!v.signature.read_and_approved : null,
 					signature: v.signature ? v.signature.signature : null,
 				}));
