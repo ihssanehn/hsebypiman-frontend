@@ -54,14 +54,14 @@
 
 					<mat-form-field class="col-xl-3 col-md-4 col-sm-6 col-xs-12 mat-filter-no-head">
 						<mat-label>{{'PDP.INTERVENANTS' | translate}}</mat-label>
-						<mat-select class="form-control" formControlName="intervenant" name="intervenant">
+						<mat-select class="form-control" formControlName="intervenants" name="intervenants">
 							<mat-option>{{'FILTER.SEARCH_ALL' | translate}}</mat-option>
-							<mat-option *ngFor="let inter of intervenant" [value]="inter?.id">
-								{{inter?.label}}
+							<mat-option *ngFor="let inter of intervenants" [value]="inter?.id">
+								{{inter?.nom + ' ' + inter?.prenom}}
 							</mat-option>
 						</mat-select>
-						<button mat-button *ngIf="formHasValue('intervenant')" matSuffix mat-icon-button
-								aria-label="Clear" (click)="clearValue('intervenant'); $event.stopPropagation()">
+						<button mat-button *ngIf="formHasValue('intervenants')" matSuffix mat-icon-button
+								aria-label="Clear" (click)="clearValue('intervenants'); $event.stopPropagation()">
 							<mat-icon>clear</mat-icon>
 						</button>
 					</mat-form-field>
@@ -82,54 +82,64 @@
 						<h6>{{'COMMON.CREATED_AT.TITLE' | translate}}</h6>
 						<mat-form-field class="col-md-6 col-xl-6">
 							<mat-label>{{'COMMON.DATE_RANGE.BETWEEN.TITLE' | translate}} :</mat-label>
-<!--							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]"-->
-<!--								   [dropSpecialCharacters]="false" formControlName="date_creation_start"-->
-<!--								   placeholder="DD/MM/YYYY">-->
-							<input matInput class="form-control" [matDatepicker]="date_creation_start_picker" formControlName="date_creation_start" placeholder="DD/MM/YYYY">
-								<mat-datepicker-toggle matSuffix [for]="date_creation_start_picker"></mat-datepicker-toggle>
-								<mat-datepicker #date_creation_start_picker></mat-datepicker>
-								<button mat-button *ngIf="formHasValue('date_creation_start')" matSuffix mat-icon-button
-									aria-label="Clear" (click)="clearValue('date_creation_start'); $event.stopPropagation()">
-									<mat-icon>clear</mat-icon>
-								</button>
+							<!--							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]"-->
+							<!--								   [dropSpecialCharacters]="false" formControlName="date_creation_start"-->
+							<!--								   placeholder="DD/MM/YYYY">-->
+							<input matInput class="form-control" [matDatepicker]="date_creation_start_picker"
+								   formControlName="date_creation_start" placeholder="DD/MM/YYYY">
+							<mat-datepicker-toggle matSuffix [for]="date_creation_start_picker"></mat-datepicker-toggle>
+							<mat-datepicker #date_creation_start_picker></mat-datepicker>
+							<button mat-button *ngIf="formHasValue('date_creation_start')" matSuffix mat-icon-button
+									aria-label="Clear"
+									(click)="clearValue('date_creation_start'); $event.stopPropagation()">
+								<mat-icon>clear</mat-icon>
+							</button>
 						</mat-form-field>
 						<mat-form-field class="col-md-6 col-xl-6">
 							<mat-label>{{'COMMON.DATE_RANGE.AND.TITLE' | translate}} :</mat-label>
-<!--							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]"-->
-<!--								   [dropSpecialCharacters]="false" formControlName="date_creation_end"-->
-<!--								   placeholder="DD/MM/YYYY">-->
-							 <input matInput class="form-control" [matDatepicker]="date_creation_end_picker" formControlName="date_creation_end" placeholder="DD/MM/YYYY">
-								<mat-datepicker-toggle matSuffix [for]="date_creation_end_picker"></mat-datepicker-toggle>
-								<mat-datepicker #date_creation_end_picker></mat-datepicker>
-								<button mat-button *ngIf="formHasValue('date_creation_end')" matSuffix mat-icon-button
-									aria-label="Clear" (click)="clearValue('date_creation_end'); $event.stopPropagation()">
-									<mat-icon>clear</mat-icon>
-								</button>
+							<!--							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]"-->
+							<!--								   [dropSpecialCharacters]="false" formControlName="date_creation_end"-->
+							<!--								   placeholder="DD/MM/YYYY">-->
+							<input matInput class="form-control" [matDatepicker]="date_creation_end_picker"
+								   formControlName="date_creation_end" placeholder="DD/MM/YYYY">
+							<mat-datepicker-toggle matSuffix [for]="date_creation_end_picker"></mat-datepicker-toggle>
+							<mat-datepicker #date_creation_end_picker></mat-datepicker>
+							<button mat-button *ngIf="formHasValue('date_creation_end')" matSuffix mat-icon-button
+									aria-label="Clear"
+									(click)="clearValue('date_creation_end'); $event.stopPropagation()">
+								<mat-icon>clear</mat-icon>
+							</button>
 						</mat-form-field>
 					</div>
 					<div class="col-xl-3 col-md-4 col-sm-6 col-xs-12">
 						<h6>{{'PDP.VALIDITY_AT' | translate}}</h6>
 						<mat-form-field class="col-md-6 col-xl-6">
 							<mat-label>{{'COMMON.DATE_RANGE.BETWEEN.TITLE' | translate}} :</mat-label>
-<!--							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]"-->
-<!--								   [dropSpecialCharacters]="false" formControlName="date_validity_start"-->
-<!--								   placeholder="DD/MM/YYYY">-->
-							 <input matInput class="form-control" [matDatepicker]="date_validity_start_picker" formControlName="date_validity_start" placeholder="DD/MM/YYYY">
+							<!--							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]"-->
+							<!--								   [dropSpecialCharacters]="false" formControlName="date_validity_start"-->
+							<!--								   placeholder="DD/MM/YYYY">-->
+							<input matInput class="form-control" [matDatepicker]="date_validity_start_picker"
+								   formControlName="date_validity_start" placeholder="DD/MM/YYYY">
 							<mat-datepicker-toggle matSuffix [for]="date_validity_start_picker"></mat-datepicker-toggle>
 							<mat-datepicker #date_validity_start_picker></mat-datepicker>
-							<button mat-button *ngIf="formHasValue('date_validity_start')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('date_validity_start'); $event.stopPropagation()">
+							<button mat-button *ngIf="formHasValue('date_validity_start')" matSuffix mat-icon-button
+									aria-label="Clear"
+									(click)="clearValue('date_validity_start'); $event.stopPropagation()">
 								<mat-icon>clear</mat-icon>
 							</button>
 						</mat-form-field>
 						<mat-form-field class="col-md-6 col-xl-6">
 							<mat-label>{{'COMMON.DATE_RANGE.AND.TITLE' | translate}} :</mat-label>
-<!--							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]"-->
-<!--								   [dropSpecialCharacters]="false" formControlName="date_validity_end"-->
-<!--								   placeholder="DD/MM/YYYY">-->
-							 <input matInput class="form-control" [matDatepicker]="date_validity_end_picker" formControlName="date_validity_end" placeholder="DD/MM/YYYY">
+							<!--							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]"-->
+							<!--								   [dropSpecialCharacters]="false" formControlName="date_validity_end"-->
+							<!--								   placeholder="DD/MM/YYYY">-->
+							<input matInput class="form-control" [matDatepicker]="date_validity_end_picker"
+								   formControlName="date_validity_end" placeholder="DD/MM/YYYY">
 							<mat-datepicker-toggle matSuffix [for]="date_validity_end_picker"></mat-datepicker-toggle>
 							<mat-datepicker #date_validity_end_picker></mat-datepicker>
-							<button mat-button *ngIf="formHasValue('date_validity_end')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('date_validity_end'); $event.stopPropagation()">
+							<button mat-button *ngIf="formHasValue('date_validity_end')" matSuffix mat-icon-button
+									aria-label="Clear"
+									(click)="clearValue('date_validity_end'); $event.stopPropagation()">
 								<mat-icon>clear</mat-icon>
 							</button>
 						</mat-form-field>
