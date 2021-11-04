@@ -642,7 +642,6 @@ export class PdpAddFormComponent implements OnInit {
 			const intervenantsArray: FormArray = this.pdpForm.get('intervenants') as FormArray;
 			intervenantsArray.clear();
 			pdp.intervenants.map(v => {
-				this.consultants.splice(this.consultants.findIndex(c => c.id === v.user_id), 1);
 				(this.pdpForm.get('intervenants') as FormArray).push(this.FB.group({
 					...v,
 					intervenant_id: v.user_id || null,
