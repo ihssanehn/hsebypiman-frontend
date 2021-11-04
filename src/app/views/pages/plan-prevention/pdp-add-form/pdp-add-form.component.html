@@ -1261,11 +1261,13 @@
 											</button>
 										</div>
 										<div class="signature-container">
-											<signature-pad #signaturePad id="signaturePad" [hidden]="element.get('signature').value"
+											<signature-pad #signaturePad id="signaturePad"
+														   [hidden]="element.get('signature').value"
 														   (window:resize)="resizeSignaturePad()"
 														   [options]="signaturePadOptions"
 														   (onEndEvent)="drawComplete(index)"></signature-pad>
-											<img class="signature-image" *ngIf="element.get('signature').value" src="{{element.get('signature').value}}" alt="signature"/>
+											<img class="signature-image" *ngIf="element.get('signature').value"
+												 src="{{element.get('signature').value}}" alt="signature"/>
 											<mat-error
 												*ngIf="isControlHasError('signature', 'required', 'validations', index)">
 												<small
@@ -1308,42 +1310,48 @@
 							<table class="mt-3 inter-array" mat-table [dataSource]="intervenants"
 								   formArrayName="intervenants"
 								   *ngIf="intervenants?.getValue()?.length > 0">
-								<ng-container matColumnDef="last">
-									<th mat-header-cell style="width: 18%" *matHeaderCellDef>
-										<b>{{'PDP.LAST_NAME' | translate}} </b></th>
-									<td mat-cell style="width: 18%" *matCellDef="let element; let index = index"
+								<ng-container matColumnDef="intervenant_id">
+									<th mat-header-cell style="width: 36%" *matHeaderCellDef>
+										<b>{{'PDP.INTERVENANT' | translate}} </b></th>
+									<td mat-cell style="width: 36%" *matCellDef="let element; let index = index"
 										[formGroupName]="index">
-										<mat-form-field [style.fontSize.px]=13>
-											<mat-label>{{'PDP.LAST_NAME' | translate}}</mat-label>
-											<input class="form-control" matInput type="text"
-												   formControlName="last_name"
-												   placeholder="{{'ACTION.ENTER_HERE' | translate}}"/>
+										<mat-form-field [style.fontSize.px]=13 class="w-100">
+											<mat-label>{{'PDP.INTERVENANT' | translate}}</mat-label>
+											<mat-select class="form-control" formControlName="intervenant_id"
+														name="intervenant_id">
+												<mat-option *ngFor="let inter of consultants" [value]="inter?.id">
+													{{inter?.nom + ' ' + inter?.prenom}}
+												</mat-option>
+											</mat-select>
+											<!--											<input class="form-control" matInput type="text"-->
+											<!--												   formControlName="last_name"-->
+											<!--												   placeholder="{{'ACTION.ENTER_HERE' | translate}}"/>-->
 											<mat-error
-												*ngIf="isControlHasError('last_name', 'required', 'intervenants', index)"
+												*ngIf="isControlHasError('intervenant_id', 'required', 'intervenants', index)"
 												class="w-100">
 												{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}
 											</mat-error>
 										</mat-form-field>
 									</td>
 								</ng-container>
-								<ng-container matColumnDef="first">
-									<th mat-header-cell style="width: 18%" *matHeaderCellDef>
-										<b>{{'PDP.FIRST_NAME' | translate}} </b></th>
-									<td mat-cell style="width: 18%" *matCellDef="let element; let index = index"
-										[formGroupName]="index">
-										<mat-form-field [style.fontSize.px]=13>
-											<mat-label>{{'PDP.FIRST_NAME' | translate}}</mat-label>
-											<input class="form-control" matInput type="text"
-												   formControlName="first_name"
-												   placeholder="{{'ACTION.ENTER_HERE' | translate}}"/>
-											<mat-error
-												*ngIf="isControlHasError('first_name', 'required', 'intervenants', index)"
-												class="w-100">
-												{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}
-											</mat-error>
-										</mat-form-field>
-									</td>
-								</ng-container>
+								<!--								<ng-container matColumnDef="first">-->
+								<!--									<th mat-header-cell style="width: 18%" *matHeaderCellDef>-->
+								<!--										<b>{{'PDP.FIRST_NAME' | translate}} </b></th>-->
+								<!--									<td mat-cell style="width: 18%" *matCellDef="let element; let index = index"-->
+								<!--										[formGroupName]="index">-->
+								<!--										<mat-form-field [style.fontSize.px]=13>-->
+								<!--											<mat-label>{{'PDP.FIRST_NAME' | translate}}</mat-label>-->
+								<!--											<input class="form-control" matInput type="text"-->
+								<!--												   formControlName="first_name"-->
+								<!--												   placeholder="{{'ACTION.ENTER_HERE' | translate}}"/>-->
+								<!--											<mat-error-->
+								<!--												*ngIf="isControlHasError('first_name', 'required', 'intervenants', index)"-->
+								<!--												class="w-100">-->
+								<!--												{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}-->
+								<!--											</mat-error>-->
+								<!--										</mat-form-field>-->
+								<!--									</td>-->
+								<!--								</ng-container>-->
 								<ng-container matColumnDef="contact">
 									<th mat-header-cell style="width: 18%" *matHeaderCellDef>
 										<b>{{'PDP.CONTACT' | translate}} </b></th>

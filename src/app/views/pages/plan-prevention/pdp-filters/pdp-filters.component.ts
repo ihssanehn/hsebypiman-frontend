@@ -17,7 +17,7 @@ export class PdpFiltersComponent implements OnInit {
 	@Output() change = new EventEmitter();
 
 	status: Status[];
-	intervenant: any[] = [];
+	intervenants: any[] = [];
 	types: any[] = [];
 	filterForm: FormGroup;
 
@@ -50,7 +50,7 @@ export class PdpFiltersComponent implements OnInit {
 	async getFiltersData() {
 		var res = await this.pdpService.getAllPdpFilters().toPromise();
 		if (res.result.data) {
-			// this.intervenant = (res.result.data as any).intervenant || [];
+			this.intervenants = (res.result.data as any).consultants || [];
 			this.types = (res.result.data as any).type || [];
 		}
 	}
@@ -65,7 +65,7 @@ export class PdpFiltersComponent implements OnInit {
 	initFiltersForm() {
 		this.filterForm = this.fb.group({
 			raison_sociale_eu: [null],
-			intervenant: [null],
+			intervenants: [null],
 			date_creation_start: [null],
 			date_creation_end: [null],
 			date_validity_start: [null],
