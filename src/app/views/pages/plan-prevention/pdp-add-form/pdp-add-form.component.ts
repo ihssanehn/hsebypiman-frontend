@@ -642,17 +642,24 @@ export class PdpAddFormComponent implements OnInit {
 			const intervenantsArray: FormArray = this.pdpForm.get('intervenants') as FormArray;
 			intervenantsArray.clear();
 			pdp.intervenants.map(v => {
-				(this.pdpForm.get('intervenants') as FormArray).push(this.FB.group({
+				intervenantsArray.push(this.FB.group({
 					...v,
-					intervenant_id: v.user_id || null,
+					intervenant_id: new FormControl(v.user_id || null, Validators.required),
+					contact: new FormControl(v.contact || null, Validators.required),
 					read_and_approved: v.signature ? !!v.signature.read_and_approved : null,
 					signature: v.signature ? v.signature.signature : null,
 				}));
 			});
 			intervenantsArray.controls.map((c: FormGroup) => {
-				c.get('is_suivi_medical').value ? c.get('motif_id').enable() : c.get('motif_id').disable();
+				if (c.get('is_suivi_medical').value) {
+					c.get('motif_id').enable();
+					c.get('motif_id').setValidators(Validators.required);
+				} else {
+					c.get('motif_id').disable();
+				}
 				c.updateValueAndValidity();
 			});
+			console.log(intervenantsArray);
 			this.intervenants.next(this.getControlsArrayFormName('intervenants'));
 		}
 		if (pdp.sous_traitant && pdp.sous_traitant.length > 0) {
