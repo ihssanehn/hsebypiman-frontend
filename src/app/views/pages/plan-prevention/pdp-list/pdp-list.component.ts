@@ -131,7 +131,7 @@ export class PdpListComponent implements OnInit {
 
 	exportList() {
 		const filters = {...this.filter};
-		filters.type = "EXCEL";
+		filters.type_file = "EXCEL";
 		return this.pdpService.export(filters);
 	}
 
