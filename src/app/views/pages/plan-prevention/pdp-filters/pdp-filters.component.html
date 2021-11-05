@@ -51,20 +51,34 @@
 						</button>
 					</mat-form-field>
 
-
-					<mat-form-field class="col-xl-3 col-md-4 col-sm-6 col-xs-12 mat-filter-no-head">
-						<mat-label>{{'PDP.INTERVENANTS' | translate}}</mat-label>
-						<mat-select class="form-control" formControlName="intervenants" name="intervenants">
-							<mat-option>{{'FILTER.SEARCH_ALL' | translate}}</mat-option>
-							<mat-option *ngFor="let inter of intervenants" [value]="inter?.id">
-								{{inter?.nom + ' ' + inter?.prenom}}
-							</mat-option>
-						</mat-select>
-						<button mat-button *ngIf="formHasValue('intervenants')" matSuffix mat-icon-button
-								aria-label="Clear" (click)="clearValue('intervenants'); $event.stopPropagation()">
-							<mat-icon>clear</mat-icon>
-						</button>
-					</mat-form-field>
+<div class="col-md-4 col-sm-6 col-xl-3 col-xs-12 mat-filter-no-head mat-form-field mat-form-field-appearance-legacy mat-form-field-can-float mat-form-field-has-label mat-form-field-hide-placeholder mat-form-field-type-mat-select mat-primary mt-3 ">
+	<label style="color: rgba(0, 0, 0, 0.54);font-size: 89%;">{{'PDP.INTERVENANT' | translate}}</label>
+	<ng-select formControlName="intervenants" class="form-control"
+			   placeholder="{{'PDP.INTERVENANT' | translate}}">
+		<ng-option *ngFor="let inter of intervenants"
+				   [value]="inter?.id">
+			{{inter?.nom + ' ' + inter?.prenom}}</ng-option>
+	</ng-select>
+</div>
+<!--					<mat-form-field class="col-xl-3 col-md-4 col-sm-6 col-xs-12 mat-filter-no-head">-->
+<!--						<mat-label>{{'PDP.INTERVENANTS' | translate}}</mat-label>-->
+<!--						<mat-select class="form-control" formControlName="intervenants" name="intervenants">-->
+<!--							<mat-option>{{'FILTER.SEARCH_ALL' | translate}}</mat-option>-->
+<!--							<mat-option *ngFor="let inter of intervenants" [value]="inter?.id">-->
+<!--								{{inter?.nom + ' ' + inter?.prenom}}-->
+<!--							</mat-option>-->
+<!--						</mat-select>-->
+<!--						<ng-select formControlName="intervenant_id" class="form-control"-->
+<!--								   placeholder="{{'PDP.INTERVENANT' | translate}}">-->
+<!--							<ng-option *ngFor="let inter of intervenants"-->
+<!--									   [value]="inter?.id">-->
+<!--								{{inter?.nom + ' ' + inter?.prenom}}</ng-option>-->
+<!--						</ng-select>-->
+<!--						<button mat-button *ngIf="formHasValue('intervenants')" matSuffix mat-icon-button-->
+<!--								aria-label="Clear" (click)="clearValue('intervenants'); $event.stopPropagation()">-->
+<!--							<mat-icon>clear</mat-icon>-->
+<!--						</button>-->
+<!--					</mat-form-field>-->
 					<mat-form-field class="col-xl-3 col-md-4 col-sm-6 col-xs-12 mat-filter-no-head">
 						<mat-label>{{'PDP.TYPE' | translate}}</mat-label>
 						<mat-select class="form-control" formControlName="type" name="type">
