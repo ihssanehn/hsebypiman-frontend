@@ -12,10 +12,27 @@
 			</button>
 			<div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround "
 				 style="padding: 5px;">
-				<button mat-icon-button color="info" (click)="downloadPdf()">
-					<mat-icon>picture_as_pdf</mat-icon>
-					{{'ACTION.EXPORT_PDF' | translate}}
-				</button>
+				<ng-container *ngxPermissionsOnly="['plan_prevention_canUpdate']">
+					<button mat-icon-button color="info"  (click)="editPdp()" matTooltip="{{'ACTION.EDIT' | translate}}">
+						<mat-icon>edit</mat-icon>
+					</button>
+				</ng-container>
+				<ng-container *ngxPermissionsOnly="['plan_prevention_canAdd']">
+					<button mat-icon-button color="info" matTooltip="{{'ACTION.DUPLICATE' | translate}}">
+						<mat-icon>filter_none</mat-icon>
+					</button>
+				</ng-container>
+				<ng-container *ngxPermissionsOnly="['plan_prevention_canSeeAll']">
+					<button mat-icon-button color="primary" (click)="downloadPdf()" matTooltip="{{'ACTION.EXPORT_PDF' | translate}}">
+						<mat-icon>picture_as_pdf</mat-icon>
+					</button>
+				</ng-container>
+				<ng-container *ngxPermissionsOnly="['plan_prevention_canArchieve']">
+					<button mat-icon-button color="warn"
+							(click)="deletePdp()" matTooltip="{{'ACTION.DELETE' | translate}}">
+						<mat-icon>delete</mat-icon>
+					</button>
+				</ng-container>
 			</div>
 		</div>
 	</div>
