@@ -3,7 +3,7 @@
 @import "~material-design-icons/iconfont/material-icons.css";
 @import "~highlight.js/styles/googlecode.css";
 @import "~angular-notifier/styles.scss";
-
+@import "~@ng-select/ng-select/themes/material.theme.css";
 // hide bootstrap dropdown arrow globally
 .dropdown-toggle::after {
 	display: none !important;

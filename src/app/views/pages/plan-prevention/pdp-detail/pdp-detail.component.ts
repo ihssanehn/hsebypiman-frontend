@@ -170,6 +170,46 @@ export class PdpDetailComponent implements OnInit {
 	downloadPdf() {
 		if (this.pdp) this.pdpService.exportPdpPdf(this.pdp.id);
 	}
+	editPdp() {
+		this.router.navigate(['/plan-de-prevention/edit', this.pdp.id], {relativeTo: this.activatedRoute});
+	}
+
+	async deletePdp() {
+		Swal.fire({
+			icon: 'warning',
+			title: this.translate.instant("PDP.NOTIF.PDP_DELETE_CONFIRMATION.TITLE"),
+			text: this.translate.instant("PDP.NOTIF.PDP_DELETE_CONFIRMATION.LABEL"),
+			showConfirmButton: true,
+			showCancelButton: true,
+			cancelButtonText: this.translate.instant("ACTION.CANCEL"),
+			confirmButtonText: this.translate.instant("ACTION.DELETE")
+		}).then(async response => {
+			if (response.value) {
+				try {
+					const res = await this.pdpService.delete(this.pdp.id).toPromise();
+					if (res) {
+						Swal.fire({
+							icon: 'success',
+							title: this.translate.instant("PDP.NOTIF.PDP_DELETED.TITLE"),
+							showConfirmButton: false,
+							timer: 1500
+						}).then(() => {
+							this.router.navigate(['/plan-de-prevention/list']);
+						});
+					} else {
+						throw new Error();
+					}
+				} catch (e) {
+					Swal.fire({
+						icon: 'error',
+						title: this.translate.instant("NOTIF.ERROR_OCCURED.TITLE"),
+						showConfirmButton: false,
+						timer: 1500
+					});
+				}
+			}
+		});
+	}
 }
 
 
