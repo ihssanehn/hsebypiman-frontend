@@ -36,6 +36,7 @@ import {
 	MaskDirective
 } from './_base/layout';
 import {PdpFilterItemsPipe} from "@app/core/_base/layout/pipes/pdp-filter-items.pipe";
+import {addLinePipe} from "@app/core/_base/layout/pipes/addline.pipe";
 
 
 @NgModule({
@@ -70,6 +71,7 @@ import {PdpFilterItemsPipe} from "@app/core/_base/layout/pipes/pdp-filter-items.
 		InitialesPipe,
 		FullNamePipe,
 		CustomPercentPipe,
+		addLinePipe,
 		DateEnToFrPipe,
 		DateFrToEnPipe
 	],
@@ -102,6 +104,7 @@ import {PdpFilterItemsPipe} from "@app/core/_base/layout/pipes/pdp-filter-items.
 		FullNamePipe,
 		InitialesPipe,
 		CustomPercentPipe,
+		addLinePipe,
 		DateEnToFrPipe,
 		DateFrToEnPipe,
 		RecursiveSearchPipe,
