@@ -36,11 +36,11 @@
 						   [ngStyle]="isOrderedBy('cse') && {'opacity': 1}"></i>
 					</th>
 					<td mat-cell *matCellDef="let pdp" (click)="viewPdp(pdp.id)" class="pointer">
-						<div [matTooltipClass]="'custom-tooltip'" matTooltip="{{pdp?.cse_eu_job}}"
+						<div [matTooltipClass]="'custom-tooltip'" matTooltip="{{pdp?.name_consultant}}"
 							 [matTooltipShowDelay]="100"
 							 [matTooltipHideDelay]="100"
 							 [matTooltipPosition]="'above'">
-							{{pdp?.name_consultant || '-'}}
+							{{(pdp?.name_consultant.length > 100 ? (pdp?.name_consultant | slice : 100 )+'...' : pdp?.name_consultant)|| '-'}}
 						</div>
 					</td>
 				</ng-container>
