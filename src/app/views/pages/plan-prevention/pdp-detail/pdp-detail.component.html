@@ -18,7 +18,7 @@
 					</button>
 				</ng-container>
 				<ng-container *ngxPermissionsOnly="['plan_prevention_canAdd']">
-					<button mat-icon-button color="info" matTooltip="{{'ACTION.DUPLICATE' | translate}}">
+					<button mat-icon-button color="info" matTooltip="{{'ACTION.DUPLICATE' | translate}}" (click)="duplicatePdp()">
 						<mat-icon>filter_none</mat-icon>
 					</button>
 				</ng-container>
