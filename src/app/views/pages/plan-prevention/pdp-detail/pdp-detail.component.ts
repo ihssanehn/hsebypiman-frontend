@@ -170,8 +170,31 @@ export class PdpDetailComponent implements OnInit {
 	downloadPdf() {
 		if (this.pdp) this.pdpService.exportPdpPdf(this.pdp.id);
 	}
-	editPdp() {
-		this.router.navigate(['/plan-de-prevention/edit', this.pdp.id], {relativeTo: this.activatedRoute});
+
+	editPdp(pdp_id?) {
+		this.router.navigate(['/plan-de-prevention/edit', pdp_id ? pdp_id : this.pdp.id], {relativeTo: this.activatedRoute});
+	}
+
+	duplicatePdp() {
+		this.pdpService.duplicatePdp(this.pdp.id).toPromise().then((v: any) => {
+			Swal.fire({
+				title: this.translate.instant('PDP.NOTIF.ELEMENT_DUPLICATED.TITLE'),
+				showConfirmButton: false,
+				icon: 'success',
+				timer: 1500
+			}).then(() => {
+				if (v && v.result && v.result.data) {
+					this.editPdp(v.result.data.id);
+				}
+			});
+		}).catch(() => {
+			Swal.fire({
+				icon: 'error',
+				title: this.translate.instant('NOTIF.ERROR_OCCURED.TITLE'),
+				showConfirmButton: false,
+				timer: 1500
+			});
+		});
 	}
 
 	async deletePdp() {

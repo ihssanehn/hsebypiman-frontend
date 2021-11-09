@@ -426,6 +426,9 @@
 			"ELEMENT_ARCHIVED": {
 				"TITLE": "L'élément est archivé avec succès"
 			},
+			"ELEMENT_DUPLICATED": {
+				"TITLE": "L'élément est dupliqué avec succès"
+			},
 			"ELEMENT_NOT_DELETED": {
 				"SUBTITLE": "Impossible de supprimer car la sélection est affectée à un ou plusieurs plans de prévention",
 				"TITLE": "Impossible de supprimer car la sélection comprend un élément affecté à un ou plusieurs plans de prévention"
