@@ -1,7 +1,7 @@
 <tf-search-list-bar [(ngModel)]="filter" (change)="getPDPs()" [hasAdvancedSearch]="true" [showFilters]="showFilters"
-				 	(advancedSearchChange)="advancedSearchChanged($event)"
+					(advancedSearchChange)="advancedSearchChanged($event)"
 					class="row row-filters"></tf-search-list-bar>
-<tf-pdp-filters [hidden]="!showFilters" (change)="udpateFilters($event)" class="row" ></tf-pdp-filters>
+<tf-pdp-filters [hidden]="!showFilters" (change)="udpateFilters($event)" class="row"></tf-pdp-filters>
 
 <tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
 	<tf-portlet-body class="tf-portlet__body--fit" *ngIf="pdpsList">
@@ -36,16 +36,18 @@
 						   [ngStyle]="isOrderedBy('cse') && {'opacity': 1}"></i>
 					</th>
 					<td mat-cell *matCellDef="let pdp" (click)="viewPdp(pdp.id)" class="pointer">
-						<div [matTooltipClass]="'custom-tooltip'" matTooltip="{{pdp?.cse_eu_job}}"
+						<div [matTooltipClass]="'custom-tooltip my-tooltip'"
+							 matTooltip="{{(pdp?.name_consultant | addLine)}}"
 							 [matTooltipShowDelay]="100"
 							 [matTooltipHideDelay]="100"
 							 [matTooltipPosition]="'above'">
-							{{pdp?.name_consultant || '-'}}
+							{{(pdp?.name_consultant.length > 40 ? (pdp?.name_consultant | slice :0: 40) + '...' : pdp?.name_consultant) || '-'}}
 						</div>
 					</td>
 				</ng-container>
 				<ng-container matColumnDef="created_at">
-					<th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('pdp_intervention_at')">
+					<th mat-header-cell *matHeaderCellDef class="text-center th-order"
+						(click)="setOrder('pdp_intervention_at')">
 						{{'COMMON.CREATED_AT.TITLE' | translate}}
 						<i class="fa"
 						   [ngClass]="isOrderedBy('pdp_intervention_at') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'"
@@ -145,13 +147,13 @@
 				<mat-icon>done</mat-icon>
 			</button>
 		</ng-container>
-<!--		<ng-container *ngxPermissionsOnly="['plan_prevention_canSeeAll']">-->
-<!--			<button *ngIf="status.ordre == 1" mat-icon-button color="primary"-->
-<!--					matTooltip="{{'ACTION.SEND_BY_MAIL' | translate}}"-->
-<!--					(click)="openMailModal()">-->
-<!--				<mat-icon>email</mat-icon>-->
-<!--			</button>-->
-<!--		</ng-container>-->
+		<!--		<ng-container *ngxPermissionsOnly="['plan_prevention_canSeeAll']">-->
+		<!--			<button *ngIf="status.ordre == 1" mat-icon-button color="primary"-->
+		<!--					matTooltip="{{'ACTION.SEND_BY_MAIL' | translate}}"-->
+		<!--					(click)="openMailModal()">-->
+		<!--				<mat-icon>email</mat-icon>-->
+		<!--			</button>-->
+		<!--		</ng-container>-->
 		<ng-container *ngxPermissionsOnly="['plan_prevention_canSeeAll']">
 			<button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}"
 					(click)="viewPdp(pdp_id)">
@@ -159,7 +161,8 @@
 			</button>
 		</ng-container>
 		<ng-container *ngxPermissionsOnly="['plan_prevention_canSeeAll']">
-			<button mat-icon-button color="primary" matTooltip="{{'ACTION.EXPORT_PDF' | translate}}" (click)="downloadPdf(pdp_id)">
+			<button mat-icon-button color="primary" matTooltip="{{'ACTION.EXPORT_PDF' | translate}}"
+					(click)="downloadPdf(pdp_id)">
 				<mat-icon>picture_as_pdf</mat-icon>
 			</button>
 		</ng-container>

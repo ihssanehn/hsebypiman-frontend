@@ -57,24 +57,15 @@ export class PdpAddClientComponent implements OnInit {
 	@Output() onLastStep: EventEmitter<any> = new EventEmitter<any>();
 
 	public parts = [1];
-	public instructionsList: Array<ConsigneModel>;
-	public EPIDispositionList: Array<DispositionModel>;
-	public EESMoyenDisposition: Array<DispositionModel>;
-	public traveauxDangereux: Array<TraveauxDangereuxModel>;
-	public validationPlan: Array<any> = [];
 	public validations = new BehaviorSubject<AbstractControl[]>([]);
 	public intervenants = new BehaviorSubject<AbstractControl[]>([]);
 	public suivisMedicalIntervenants: Array<any> = [{}];
 	public defaultValues = null;
-	private risques: Array<RisqueModel>;
+	public consultants: Array<any> = [];
 
 	public frequences: Array<PDPFrequences>;
-	displayedColumnsConsignes: string[] = ['consignes', 'answers', 'comments'];
-	displayedColumnsEPIDisposition: string[] = ['label', 'answers', 'list', 'type', 'comment'];
-	displayedColumnsEESMoyenDisposition: string[] = ['label', 'answers', 'comments'];
 	displayedColumnsTravaux: string[] = ['list', 'answers'];
-	displayedColumnsValidationPlan: string[] = ['company', 'name', 'date', 'participation', 'visa', 'actions'];
-	displayedColumnsIntervenants: string[] = ['last', 'first', 'contact', 'formations', 'suivis_médical', 'actions'];
+	displayedColumnsIntervenants: string[] = ['intervenant_id', 'contact', 'formations', 'suivis_médical', 'actions'];
 
 
 	dataSource = new BehaviorSubject<AbstractControl[]>([]);
@@ -137,6 +128,7 @@ export class PdpAddClientComponent implements OnInit {
 		this.suivisMedicalIntervenants = res.result.data ? res.result.data.intervenant : [];
 		this.frequences = res.result.data ? res.result.data.frequence : [];
 		this.defaultValues = res.result.data ? res.result.data.default_values : null;
+		this.consultants = res.result.data ? res.result.data.consultants : [];
 	}
 
 
@@ -241,8 +233,9 @@ export class PdpAddClientComponent implements OnInit {
 	addIntervenant() {
 		if (this.intervenants.getValue().length < 9) {
 			const group = new FormGroup({
-				first_name: new FormControl('', Validators.required),
-				last_name: new FormControl('', Validators.required),
+				// first_name: new FormControl('', Validators.required),
+				// last_name: new FormControl('', Validators.required),
+				intervenant_id: new FormControl('', Validators.required),
 				contact: new FormControl('', Validators.required),
 				formations: new FormControl(null),
 				is_suivi_medical: new FormControl(null),
@@ -278,11 +271,21 @@ export class PdpAddClientComponent implements OnInit {
 			const intervenantsArray: FormArray = this.pdpForm.get('intervenants') as FormArray;
 			intervenantsArray.clear();
 			pdp.intervenants.map(v => {
-				(this.pdpForm.get('intervenants') as FormArray).push(this.FB.group({...v}));
+				(this.pdpForm.get('intervenants') as FormArray).push(this.FB.group({
+					...v,
+					intervenant_id: new FormControl(v.user_id || null, Validators.required),
+					contact: new FormControl(v.contact || null, Validators.required),
+					read_and_approved: v.signature ? !!v.signature.read_and_approved : null,
+					signature: v.signature ? v.signature.signature : null,
+				}));
 			});
-			intervenantsArray.controls.map((c: FormGroup) => {
-				c.get('is_suivi_medical').value ? c.get('motif_id').enable() : c.get('motif_id').disable();
-				c.updateValueAndValidity();
+			intervenantsArray.controls.map((c: FormGroup) => {if (c.get('is_suivi_medical').value) {
+				c.get('motif_id').enable();
+				c.get('motif_id').setValidators(Validators.required);
+			} else {
+				c.get('motif_id').disable();
+			}
+			c.updateValueAndValidity();
 			});
 			this.intervenants.next(this.getControlsArrayFormName('intervenants'));
 		}

@@ -645,40 +645,23 @@
 							<table class="mt-3 inter-array" mat-table [dataSource]="intervenants"
 								   formArrayName="intervenants"
 								   *ngIf="intervenants?.getValue()?.length > 0">
-								<ng-container matColumnDef="last">
-									<th mat-header-cell style="width: 18%" *matHeaderCellDef>
-										<b>{{'PDP.LAST_NAME' | translate}} </b></th>
-									<td mat-cell style="width: 18%" *matCellDef="let element; let index = index"
+								<ng-container matColumnDef="intervenant_id">
+									<th mat-header-cell style="width: 36%" *matHeaderCellDef>
+										<b>{{'PDP.INTERVENANT' | translate}} </b></th>
+									<td mat-cell class="pt-2" style="width: 36%"
+										*matCellDef="let element; let index = index"
 										[formGroupName]="index">
-										<mat-form-field [style.fontSize.px]=13>
-											<mat-label>{{'PDP.LAST_NAME' | translate}}</mat-label>
-											<input class="form-control" matInput type="text"
-												   formControlName="last_name"
-												   placeholder="{{'ACTION.ENTER_HERE' | translate}}"/>
-											<mat-error
-												*ngIf="isControlHasError('last_name', 'required', 'intervenants', index)"
-												class="w-100">
-												{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}
-											</mat-error>
-										</mat-form-field>
-									</td>
-								</ng-container>
-								<ng-container matColumnDef="first">
-									<th mat-header-cell style="width: 18%" *matHeaderCellDef>
-										<b>{{'PDP.FIRST_NAME' | translate}} </b></th>
-									<td mat-cell style="width: 18%" *matCellDef="let element; let index = index"
-										[formGroupName]="index">
-										<mat-form-field [style.fontSize.px]=13>
-											<mat-label>{{'PDP.FIRST_NAME' | translate}}</mat-label>
-											<input class="form-control" matInput type="text"
-												   formControlName="first_name"
-												   placeholder="{{'ACTION.ENTER_HERE' | translate}}"/>
-											<mat-error
-												*ngIf="isControlHasError('first_name', 'required', 'intervenants', index)"
-												class="w-100">
-												{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}
-											</mat-error>
-										</mat-form-field>
+										<ng-select formControlName="intervenant_id" class="form-control"
+												   placeholder="{{'PDP.INTERVENANT' | translate}}">
+											<ng-option *ngFor="let inter of consultants"
+													   [value]="inter?.id">
+												{{inter?.nom + ' ' + inter?.prenom}}</ng-option>
+										</ng-select>
+										<mat-error
+											*ngIf="isControlHasError('intervenant_id', 'required', 'intervenants', index)"
+											class="w-100">
+											{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}
+										</mat-error>
 									</td>
 								</ng-container>
 								<ng-container matColumnDef="contact">
