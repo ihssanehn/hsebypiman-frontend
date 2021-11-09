@@ -97,7 +97,10 @@ export class PdpService extends HttpService {
 
 	changeStatus(pdp_id, status) {
 		return this.http.post(this.baseUrl + '/' + pdp_id + '/status', status);
-	};
+	}
 
+	duplicatePdp(pdp_id) {
+		return this.http.get(this.baseUrl + '/' + pdp_id + '/duplicate');
+	}
 
 }

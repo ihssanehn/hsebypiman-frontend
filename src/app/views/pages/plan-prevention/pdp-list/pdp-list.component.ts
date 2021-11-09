@@ -139,6 +139,28 @@ export class PdpListComponent implements OnInit {
 		this.router.navigate(['../edit', pdpId], {relativeTo: this.activatedRoute});
 	}
 
+	duplicatePdp(pdpId) {
+		this.pdpService.duplicatePdp(pdpId).toPromise().then((v: any) => {
+			Swal.fire({
+				title: this.translate.instant('PDP.NOTIF.ELEMENT_DUPLICATED.TITLE'),
+				showConfirmButton: false,
+				icon: 'success',
+				timer: 1500
+			}).then(() => {
+				if (v && v.result && v.result.data) {
+					this.editPdp(v.result.data.id);
+				}
+			});
+		}).catch(() => {
+			Swal.fire({
+				icon: 'error',
+				title: this.translate.instant('NOTIF.ERROR_OCCURED.TITLE'),
+				showConfirmButton: false,
+				timer: 1500
+			});
+		});
+	}
+
 	viewPdp(pdpId) {
 		this.router.navigate(['../detail', pdpId], {relativeTo: this.activatedRoute});
 	}
@@ -174,7 +196,6 @@ export class PdpListComponent implements OnInit {
 						timer: 1500
 					})
 					this.getPDPs();
-
 				});
 
 

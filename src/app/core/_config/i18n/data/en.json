@@ -243,6 +243,9 @@
 			"ELEMENT_ARCHIVED": {
 				"TITLE": "Item is archived successfully"
 			},
+			"ELEMENT_DUPLICATED": {
+				"TITLE": "Item is successfully duplicated"
+			},
 			"ELEMENT_NOT_DELETED": {
 				"SUBTITLE": "Unable to delete because the selection is assigned to one or more risk analyzes",
 				"TITLE": "Unable to delete because the selection includes an item assigned to one or more risk analyzes"
