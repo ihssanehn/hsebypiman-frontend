@@ -168,6 +168,7 @@ import { PdpMoyenDispositionComponent } from './layout/admins/pdp-moyen-disposit
 import { PdpCatRisquesComponent } from './layout/admins/pdp-cat-risques/pdp-cat-risques.component';
 import { PdpRisquesComponent } from './layout/admins/pdp-risques/pdp-risques.component';
 import { MultipleMailComponent } from './multiple-mail/multiple-mail.component';
+import { PdpAdminAddModalComponent } from './layout/admins/pdp-admin-add-modal/pdp-admin-add-modal.component';
 
 @NgModule({
 	declarations: [
@@ -279,6 +280,7 @@ import { MultipleMailComponent } from './multiple-mail/multiple-mail.component';
 		PdpCatRisquesComponent,
 		PdpRisquesComponent,
 		MultipleMailComponent,
+		PdpAdminAddModalComponent,
 
 	],
 	exports: [
@@ -455,6 +457,7 @@ import { MultipleMailComponent } from './multiple-mail/multiple-mail.component';
 	],
 	entryComponents: [
 		AdminAddModalComponent,
+		PdpAdminAddModalComponent,
 		PretModalComponent,
 		ShowFlashInfoModalComponent,
 		AddDocModalComponent

@@ -400,6 +400,7 @@
 		"OTHER_SITUATION": "Autre situation",
 		"OTHER_METHOD": "Autre méthode",
 		"OFFICE": "Plan de prévention bureau",
+		"PLAN_GENERAL": "General",
 		"FIELD":"Plan de prévention terrain",
 		"PIMAN":"Plan de prévention Piman",
 		"FIELD_DESC":"Plan de prévention : Terrain",
@@ -971,6 +972,12 @@
 		"SELECT_FILES": {
 			"SHORTTITLE": "Sélect. fichiers",
 			"TITLE": "Sélectionner un fichier"
+		},
+		"ACTIVE": {
+			"TITLE": "C'est actif ?"
+		},
+		"HAS_COMMENT": {
+			"TITLE": "A un commentaire ?"
 		}
 	},
 	"EES": {

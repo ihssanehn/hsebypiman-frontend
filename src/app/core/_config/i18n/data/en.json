@@ -402,6 +402,7 @@
 		"OTHER_SITUATION": "Other situation",
 		"OTHER_METHOD": "Other method",
 		"OFFICE": "Office prevention plan",
+		"PLAN_GENERAL": "General",
 		"FIELD":"Field prevention plan",
 		"PIMAN":"Piman prevention plan ",
 		"FIELD_DESC":"Prevention plan : Field",
@@ -971,6 +972,12 @@
 		"SELECT_FILES": {
 			"SHORTTITLE": "Select. files",
 			"TITLE": "Select a file"
+		},
+		"ACTIVE": {
+			"TITLE": "Is active ?"
+		},
+		"HAS_COMMENT": {
+			"TITLE": "Has an comment ?"
 		}
 	},
 	"EES": {

@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, Injector, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, Injector, Input, OnInit} from '@angular/core';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateService} from '@ngx-translate/core';
 import {AdminTemplateComponent} from '@app/views/partials/layout/admin-template/admin-template.component';
@@ -20,6 +20,7 @@ export class PdpEpiDispositionComponent extends AdminTemplateComponent implement
 	tpl: any;
 
 	list: any[];
+	@Input() title: string;
 
 	constructor(injector: Injector) {
 		super(injector);

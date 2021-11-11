@@ -1,64 +1,85 @@
 <!--begin::Portlet-->
-<div class="tf-portlet tf-portlet--bordered item" [ngClass]="{'collapsed' : collapsed }" data-ktportlet="true" id="kt_portlet_tools_3">
+<div class="tf-portlet tf-portlet--bordered item" [ngClass]="{'collapsed' : collapsed }" data-ktportlet="true"
+	 id="kt_portlet_tools_3">
 
-    <div class="collapse" [ngClass]="{'show' : !collapsed }" data-parent="#group">
+	<div class="collapse" [ngClass]="{'show' : !collapsed }" data-parent="#group">
 
-        <div class="tf-portlet__body" *ngIf="items?.length > 0">
+		<div class="tf-portlet__body" *ngIf="items?.length > 0">
 
-            <nz-table   #virtualTable
-                        nzSize="small"
-                        [nzData]="items"
-                        [nzFrontPagination]="false"
-                        [nzShowPagination]="false" >
-                <thead>
-                <tr>
-                    <th >{{ 'COMMON.NAME.LABEL' | translate }}</th>
-                    <th class="text-center">{{ 'ACTION.SHOW' | translate }}</th>
-                    <th nzWidth="10%" class="text-right">Action</th>
-                </tr>
-                </thead>
-                <tbody cdkDropList (cdkDropListDropped)="dropItem($event)">
-                    <tr cdkDrag [cdkDragData]="data" *ngFor="let data of items">
-                        <ng-container *ngIf="!data.edit; else editTemplate">
-                            <td>{{ data?.libelle || data?.label }}</td>
-                            <td class="text-center">
-                                <i class="fa" [ngClass]="data?.active ? 'fa-eye text-success':'fa-eye-slash'"></i>
-                            </td>
-                            <td class="text-right" >
-                                <a (click)="startEdit(data)" matTooltip="{{'ACTION.EDIT' | translate}}" class="text-primary">
-                                    <i nz-icon nzType="edit" nzTheme="outline" class="pointer"></i>
-                                </a>
-                                <nz-divider nzType="vertical"></nz-divider>
-                                <a nz-popconfirm nzTitle="{{('NOTIF.DELETE_CONFIRMATION.TITLE' | translate)}}" matTooltip="{{'ACTION.DELETE' | translate}}" class="text-danger" (nzOnConfirm)="deleteItem(data)">
-                                    <i class="la la-trash"></i>
-                                </a>
-                            </td>
-                        </ng-container>
-                        <ng-template #editTemplate>
-                            <td>
-                                <input type="text" nz-input [(ngModel)]="data.libelle || data.label" name="name" />
-                            </td>
-                            <td class="text-center">
-                                <a (click)="toggleVisibility(data)" class="btn btn-sm btn-icon btn-clean btn-icon-md">
-                                    <i class="fa" [ngClass]="data?.active ? 'fa-eye':'fa-eye-slash'"></i>
-                                </a>
-                            </td>
-                            <td class="text-right">
-                                <a (click)="saveItem(data)" matTooltip="{{'ACTION.SAVE' | translate}}" class="save" class="text-primary">
-                                    <i nz-icon nzType="check"  nzTheme="outline"></i>
-                                </a>
-                                <nz-divider nzType="vertical"></nz-divider>
-                                <a (click)="cancelEdit(data)" matTooltip="{{'ACTION.CANCEL' | translate}}">
-                                    <i nz-icon nzType="close" nzTheme="outline"></i>
-                                </a>
-                            </td>
-                        </ng-template>
-                    </tr>
-                </tbody>
-            </nz-table>
+			<nz-table #virtualTable
+					  nzSize="small"
+					  [nzData]="items"
+					  [nzFrontPagination]="false"
+					  [nzShowPagination]="false">
+				<thead>
+				<tr>
+					<th>{{ 'COMMON.NAME.LABEL' | translate }}</th>
+					<ng-container *ngFor="let k of addedColumns">
+						<th class="text-center">{{ k?.title | translate }}</th>
+					</ng-container>
+					<th class="text-center">{{ 'ACTION.SHOW' | translate }}</th>
+					<th nzWidth="10%" class="text-right">Action</th>
+				</tr>
+				</thead>
+				<tbody cdkDropList (cdkDropListDropped)="dropItem($event)">
+				<tr cdkDrag [cdkDragData]="data" *ngFor="let data of items">
+					<ng-container *ngIf="!data.edit; else editTemplate">
+						<td>{{ data?.libelle || data?.label }}</td>
+						<ng-container *ngFor="let k of addedColumns">
+							<td class="text-center">{{'PDP.' + (data[k?.key] ? 'YES' : 'NO') | translate}}</td>
+						</ng-container>
+						<td class="text-center">
+							<i class="fa" [ngClass]="data?.active ? 'fa-eye text-success':'fa-eye-slash'"></i>
+						</td>
+						<td class="text-right">
+							<a (click)="startEdit(data)" matTooltip="{{'ACTION.EDIT' | translate}}"
+							   class="text-primary">
+								<i nz-icon nzType="edit" nzTheme="outline" class="pointer"></i>
+							</a>
+							<nz-divider nzType="vertical"></nz-divider>
+							<a nz-popconfirm nzTitle="{{('NOTIF.DELETE_CONFIRMATION.TITLE' | translate)}}"
+							   matTooltip="{{'ACTION.DELETE' | translate}}" class="text-danger"
+							   (nzOnConfirm)="deleteItem(data)">
+								<i class="la la-trash"></i>
+							</a>
+						</td>
+					</ng-container>
+					<ng-template #editTemplate>
+						<td>
+							<input type="text" nz-input [(ngModel)]="data.libelle || data.label" name="name"/>
+						</td>
+						<ng-container *ngFor="let k of addedColumns">
+							<td class="text-center">
+								<mat-radio-group  name="is_with_comment" [(ngModel)]="data[k?.key]">
+									<mat-radio-button
+										[value]="1">{{'PDP.YES' | translate}}</mat-radio-button>
+									<mat-radio-button
+										[value]="0">{{'PDP.NO' | translate}}</mat-radio-button>
+								</mat-radio-group>
+							</td>
+						</ng-container>
+						<td class="text-center">
+							<a (click)="toggleVisibility(data)" class="btn btn-sm btn-icon btn-clean btn-icon-md">
+								<i class="fa" [ngClass]="data?.active ? 'fa-eye':'fa-eye-slash'"></i>
+							</a>
+						</td>
+						<td class="text-right">
+							<a (click)="saveItem(data)" matTooltip="{{'ACTION.SAVE' | translate}}" class="save"
+							   class="text-primary">
+								<i nz-icon nzType="check" nzTheme="outline"></i>
+							</a>
+							<nz-divider nzType="vertical"></nz-divider>
+							<a (click)="cancelEdit(data)" matTooltip="{{'ACTION.CANCEL' | translate}}">
+								<i nz-icon nzType="close" nzTheme="outline"></i>
+							</a>
+						</td>
+					</ng-template>
+				</tr>
+				</tbody>
+			</nz-table>
 
-        </div>
-    </div>
+		</div>
+	</div>
 
 </div>
 <!--end::Portlet-->
