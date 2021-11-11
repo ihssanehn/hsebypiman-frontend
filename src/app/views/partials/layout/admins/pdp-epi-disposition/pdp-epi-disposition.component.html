@@ -23,6 +23,7 @@
 		<div class="col-{{tpl?.childCol}}">
 
 			<tf-admin-basic-list-portlet [items]="list" (onSaveItem)="saveItem($event)"
+										 [addedColumns]="[{title : 'COMMON.HAS_COMMENT.TITLE', key : 'is_with_comment'}]"
 										 (onRefreshItem)="getItem($event)" (onDeleteItem)="deleteItem($event)"
 										 (onUpdateOrders)="updateOrders($event)"></tf-admin-basic-list-portlet>
 

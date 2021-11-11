@@ -12,7 +12,7 @@ export class PdpAdminAddModalComponent implements OnInit {
 
 	label = '';
 	active = true;
-	is_with_comment = true;
+	is_with_comment = false;
 
 	constructor(public activeModal: NgbActiveModal) {
 	}
@@ -21,6 +21,6 @@ export class PdpAdminAddModalComponent implements OnInit {
 	}
 
 	async submit() {
-		this.activeModal.close({libelle: this.label, label: this.label, active : this.active, is_comment_consigne : this.is_with_comment});
+		this.activeModal.close({libelle: this.label, label: this.label, active : this.active, is_comment_consigne : this.is_with_comment, is_with_comment : this.is_with_comment});
 	}
 }

@@ -174,10 +174,11 @@ export class PdpAddFormComponent implements OnInit {
 				isRequired: true
 			}, {name: 'type', needTest: false, isRequired: true}
 			]);
-			const index = this.EPIDispositionList.findIndex(v => v.items && v.items.length === 0);
-			if (index > -1) {
-				this.makeAnswerIDUnRequiredinOtherPart(index);
-			}
+			// const index = this.EPIDispositionList.findIndex(v => v.items && v.items.length === 0);
+			this.EPIDispositionList.map((_, i) => i).filter(e => this.EPIDispositionList[e].items && this.EPIDispositionList[e].items.length === 0).map(i  => this.makeAnswerIDUnRequiredinOtherPart(i));
+			// if (index > -1) {
+			// 	this.makeAnswerIDUnRequiredinOtherPart(index);
+			// }
 		}
 		if (this.instructionsList.length > 0) {
 			this.patchFormArray(this.instructionsList, 'consignes', [{
@@ -702,6 +703,7 @@ export class PdpAddFormComponent implements OnInit {
 						id: pdp.pdp_epi_disposition_ee[index].epi_disposition_ee_id,
 						answer: pdp.pdp_epi_disposition_ee[index].answer,
 						answer_id: pdp.pdp_epi_disposition_ee[index].answer_id,
+						type: pdp.pdp_epi_disposition_ee[index].type,
 						comment: pdp.pdp_epi_disposition_ee[index].comment
 					});
 				}
