@@ -28,6 +28,11 @@ export class CatPdpRisquesService extends HttpService {
 		return this.http.post<JsonResponse<any[]>>(this.baseUrl, {...extendparams});
 	}
 
+	get(item_id) {
+		return this.http.get<any>(this.baseUrl + '/' + item_id)
+			.pipe(map(result => result.result.data));
+	}
+
 	create(payload) {
 		return this.http.post<any>(`${this.baseUrl}/create`, payload)
 			.pipe(map(result => result.result.data));

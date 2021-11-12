@@ -1,8 +1,9 @@
-import {ChangeDetectorRef, Component, Injector, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, Injector, Input, OnInit} from '@angular/core';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateService} from '@ngx-translate/core';
 import {AdminTemplateComponent} from '@app/views/partials/layout/admin-template/admin-template.component';
-import {CatPdpRisquesService} from '@app/core/services';
+import {CatPdpRisquesService, PdpRisquesService, PdpService} from '@app/core/services';
+import {PdpAdminAddModalComponent} from "@app/views/partials/layout/admins/pdp-admin-add-modal/pdp-admin-add-modal.component";
 
 @Component({
 	selector: 'tf-pdp-cat-risques',
@@ -21,12 +22,15 @@ export class PdpCatRisquesComponent extends AdminTemplateComponent implements On
 
 	list: any[];
 
+	@Input() title: string;
 
-	constructor(injector: Injector) {
+	constructor(injector: Injector, private pdpService: PdpService,
+	) {
 		super(injector);
 		this.cdr = injector.get(ChangeDetectorRef);
 		this.modalService = injector.get(NgbModal);
 		this.parentService = injector.get(CatPdpRisquesService);
+		this.childService = injector.get(PdpRisquesService);
 		this.translate = injector.get(TranslateService);
 	}
 
@@ -59,19 +63,24 @@ export class PdpCatRisquesComponent extends AdminTemplateComponent implements On
 
 	async getList() {
 		try {
-			const res = await this.parentService.getAllAsAdmin('cat_pdp_risques').toPromise();
-			this.list = res.result.data;
+			const res = await this.pdpService.getAllPdpFilters().toPromise();
+			this.list = res.result.data ? (res.result.data as any).risques : [];
+			this.list = this.list.map(v => {
+				return {...v, children: [...v.moyen, ...v.situation]};
+			});
 			this.cdr.markForCheck();
 		} catch (error) {
 			console.error(error);
 		}
 	}
 
+
 	async addItem() {
-		await super.addItem(this.translate.instant('PDP.ACTION.ADD_CATEGORIE_PDP_RISQUE'), {
-			ordre: this.generateParentOrdre(),
-			active: 1
-		}, false);
+		const modalRef: any = this.modalService.open(PdpAdminAddModalComponent, {centered: true});
+		modalRef.componentInstance.title = (this.translate.instant('PDP.ACTION.ADD_CATEGORIE_PDP_RISQUE') || '...');
+		modalRef.componentInstance.showCommentOption = false;
+		modalRef.componentInstance.isPdpRiskCategory = true;
+		modalRef.result.then(payload => this.createItem(payload, {ordre: this.generateParentOrdre()}, false), payload => this.createItem(payload, {ordre: this.generateParentOrdre()}, false));
 	}
 
 	async deleteItem({id}) {
@@ -81,6 +90,29 @@ export class PdpCatRisquesComponent extends AdminTemplateComponent implements On
 	async updateOrders(datas) {
 		try {
 			await this.parentService.updateOrders({data: datas, type: 'cat_pdp_risques'}).toPromise();
+			this.cdr.markForCheck();
+		} catch (error) {
+			console.error(error);
+		}
+	}
+
+	async getItem({id}) {
+		try {
+			const item = await this.parentService.get(id).toPromise();
+			const index = this.list.findIndex(v => v.id === id);
+			// todo : need to be more refreshed
+			this.list[index] = {...item, children: [...this.list[index].moyen, ...this.list[index].situation]};
+			this.cdr.markForCheck();
+		} catch (error) {
+			console.error(error);
+		}
+
+	}
+
+	async addChild(payload) {
+		try {
+			await this.childService.create(payload).toPromise();
+			this.getItem({id: payload.cat_pdp_risque_id});
 			this.cdr.markForCheck();
 		} catch (error) {
 			console.error(error);
