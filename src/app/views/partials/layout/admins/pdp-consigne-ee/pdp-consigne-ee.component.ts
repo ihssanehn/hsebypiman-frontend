@@ -24,6 +24,7 @@ export class PdpConsigneEeComponent extends AdminTemplateComponent implements On
 	list: any[];
 
 	@Input() title: string;
+
 	constructor(injector: Injector) {
 		super(injector);
 		this.cdr = injector.get(ChangeDetectorRef);
@@ -70,7 +71,7 @@ export class PdpConsigneEeComponent extends AdminTemplateComponent implements On
 	}
 
 	async addItem() {
-		const modalRef = this.modalService.open(PdpAdminAddModalComponent, {centered: true});
+		const modalRef: any = this.modalService.open(PdpAdminAddModalComponent, {centered: true});
 		modalRef.componentInstance.title = (this.translate.instant('PDP.ACTION.ADD_CONSIGNE') || '...');
 		modalRef.result.then(payload => this.createItem(payload, {ordre: this.generateParentOrdre()}, false), payload => this.createItem(payload, {ordre: this.generateParentOrdre()}, false));
 	}

@@ -14,6 +14,8 @@ export class PdpAdminAddModalComponent implements OnInit {
 	active = true;
 	is_with_comment = false;
 
+	showCommentOption = true;
+
 	constructor(public activeModal: NgbActiveModal) {
 	}
 
@@ -21,6 +23,10 @@ export class PdpAdminAddModalComponent implements OnInit {
 	}
 
 	async submit() {
-		this.activeModal.close({libelle: this.label, label: this.label, active : this.active, is_comment_consigne : this.is_with_comment, is_with_comment : this.is_with_comment});
+		let result: any = {libelle: this.label, label: this.label, active: this.active};
+		if (this.showCommentOption) {
+			result = {...result, is_comment_consigne: this.is_with_comment, is_with_comment: this.is_with_comment}
+		}
+		this.activeModal.close(result);
 	}
 }

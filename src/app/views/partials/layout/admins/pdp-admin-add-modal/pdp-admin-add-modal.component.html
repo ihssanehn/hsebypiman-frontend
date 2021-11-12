@@ -31,7 +31,7 @@
 					[value]="false">{{'PDP.NO' | translate}}</mat-radio-button>
 			</mat-radio-group>
 		</div>
-		<div class="form-group">
+		<div class="form-group" *ngIf="showCommentOption">
 			<label>
 				{{ 'COMMON.HAS_COMMENT.TITLE' | translate }}
 			</label>
