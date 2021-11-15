@@ -94,9 +94,8 @@ export class AdminBasicListPortletComponent implements OnInit {
 		if (item.active == 1) {
 			item.active = 0;
 		} else {
-			item.active = 1
+			item.active = 1;
 		}
-		;
 	}
 
 	generateParentOrdre() {
