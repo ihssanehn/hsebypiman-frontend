@@ -171,6 +171,7 @@ import { MultipleMailComponent } from './multiple-mail/multiple-mail.component';
 import { PdpAdminAddModalComponent } from './layout/admins/pdp-admin-add-modal/pdp-admin-add-modal.component';
 import { PdpCatAdminListPortletComponent } from './layout/admins/pdp-cat-admin-list-portlet/pdp-cat-admin-list-portlet.component';
 import { PdpRisquesTypeComponent } from './layout/admins/pdp-risques-type/pdp-risques-type.component';
+import { PdpTypeComponent } from './layout/admins/pdp-type/pdp-type.component';
 
 @NgModule({
 	declarations: [
@@ -285,6 +286,7 @@ import { PdpRisquesTypeComponent } from './layout/admins/pdp-risques-type/pdp-ri
 		PdpAdminAddModalComponent,
 		PdpCatAdminListPortletComponent,
 		PdpRisquesTypeComponent,
+		PdpTypeComponent,
 
 	],
 	exports: [
@@ -397,6 +399,7 @@ import { PdpRisquesTypeComponent } from './layout/admins/pdp-risques-type/pdp-ri
 		PdpCatRisquesComponent,
 		PdpRisquesComponent,
 		PdpRisquesTypeComponent,
+		PdpTypeComponent,
 		MultipleMailComponent,
 
 	],

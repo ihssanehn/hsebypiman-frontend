@@ -62,7 +62,7 @@ export class PdpConsigneEeComponent extends AdminTemplateComponent implements On
 
 	async getList() {
 		try {
-			var res = await this.parentService.getAllAsAdmin('consigne_ee').toPromise();
+			var res = await this.parentService.getAllAsAdmin().toPromise();
 			this.list = res.result.data;
 			this.cdr.markForCheck();
 		} catch (error) {

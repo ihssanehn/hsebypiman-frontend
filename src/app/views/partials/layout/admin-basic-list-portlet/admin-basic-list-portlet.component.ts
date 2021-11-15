@@ -40,6 +40,7 @@ export class AdminBasicListPortletComponent implements OnInit {
 
 
 	saveItem(data: any): void {
+		console.log(data);
 		this.onSaveItem.emit(data);
 		data.edit = false;
 	}

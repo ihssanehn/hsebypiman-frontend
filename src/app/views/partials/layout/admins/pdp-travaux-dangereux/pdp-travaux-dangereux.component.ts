@@ -62,7 +62,7 @@ export class PdpTravauxDangereuxComponent extends AdminTemplateComponent impleme
 
 	async getList() {
 		try {
-			let res = await this.parentService.getAllAsAdmin('travaux_dangereux').toPromise();
+			let res = await this.parentService.getAllAsAdmin().toPromise();
 			this.list = res.result.data;
 			this.cdr.markForCheck();
 		} catch (error) {

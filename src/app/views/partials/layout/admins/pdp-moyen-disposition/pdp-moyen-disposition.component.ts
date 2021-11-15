@@ -62,7 +62,7 @@ export class PdpMoyenDispositionComponent extends AdminTemplateComponent impleme
 
 	async getList() {
 		try {
-			const res = await this.parentService.getAllAsAdmin('moyen_disposition_ees').toPromise();
+			const res = await this.parentService.getAllAsAdmin().toPromise();
 			this.list = res.result.data;
 			this.cdr.markForCheck();
 		} catch (error) {

@@ -59,7 +59,7 @@ export class PdpEpiDispositionComponent extends AdminTemplateComponent implement
 
 	async getList() {
 		try {
-			const res = await this.parentService.getAllAsAdmin('epi_disposition_ees').toPromise();
+			const res = await this.parentService.getAllAsAdmin().toPromise();
 			this.list = res.result.data;
 			this.cdr.markForCheck();
 		} catch (error) {

@@ -369,6 +369,7 @@
 		"LIST_OF_WORKS": "Liste des travaux",
 		"LIST_OF_HAZARDOUS_WORK_DESC": "Pour rappel, un plan de prévention écrit doit être réalisé entre l’entreprise utilisatrice (EU) et l’entreprise extérieure (EE) avant le commencement des travaux dans le cas où le nombre total d’heures de travail prévu pour réaliser les travaux est au moins de 400 heures sur 12 mois, ou bien si les travaux figurent sur la liste des travaux dangereux fixé par l’arrêté du 19 mars 1993.",
 		"IDENTIFY_THE_RISKS_GENERATED_BY_COACTIVITY": "Identifier les risques générés par la coactivité",
+		"TYPES": "Types",
 		"RISKS_CATEGORIES": "Catégories de risques",
 		"RELATED_SITUATION": "Situation liée",
 		"PREVENTION_METHOD_DEPLOYED": "Moyen(s) de prévention déployé(s)",
@@ -459,6 +460,9 @@
 			"PDP_RISQUE_ARCHIVED": {
 				"TITLE": "Pdp Risque archivé avec succès"
 			},
+			"TYPE_ARCHIVED": {
+				"TITLE": "type archivé avec succès"
+			},
 			"STATUS_REFUSED":{
 				"TITLE": "Pdp refusé avec succès"
 			},
@@ -501,6 +505,11 @@
 				"NO_RISK": "Pas de risque à fournir",
 				"SHORTTITLE": "Risques",
 				"TITLE": "Pdp Risques à fournir sur place"
+			},
+			"TYPE": {
+				"NO_TYPE": "Pas de type à fournir",
+				"SHORTTITLE": "Types (ee)",
+				"TITLE": "Types (ee) à fournir sur place"
 			}
 		},
 		"ACTION": {
@@ -510,6 +519,7 @@
 			"ADD_MOYEN_DISPOSITION": "Ajouter moyen disposition (ees)",
 			"ADD_CATEGORIE_PDP_RISQUE": "Ajouter Categorie Pdp Risque",
 			"ADD_PDP_RISQUE": "Ajouter Pdp Risque",
+			"ADD_TYPE": "Ajouter un type",
 			"SENDFORSIGN": "Envoyer pour signature",
 			"SIGN_PDP": "Signer le plan de prévention"
 		}
