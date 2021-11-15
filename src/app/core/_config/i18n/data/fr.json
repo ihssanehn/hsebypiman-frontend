@@ -369,6 +369,7 @@
 		"LIST_OF_WORKS": "Liste des travaux",
 		"LIST_OF_HAZARDOUS_WORK_DESC": "Pour rappel, un plan de prévention écrit doit être réalisé entre l’entreprise utilisatrice (EU) et l’entreprise extérieure (EE) avant le commencement des travaux dans le cas où le nombre total d’heures de travail prévu pour réaliser les travaux est au moins de 400 heures sur 12 mois, ou bien si les travaux figurent sur la liste des travaux dangereux fixé par l’arrêté du 19 mars 1993.",
 		"IDENTIFY_THE_RISKS_GENERATED_BY_COACTIVITY": "Identifier les risques générés par la coactivité",
+		"RISKS_CATEGORIES": "Catégories de risques",
 		"RELATED_SITUATION": "Situation liée",
 		"PREVENTION_METHOD_DEPLOYED": "Moyen(s) de prévention déployé(s)",
 		"PERSON_IN_CHARGE": "Responsable(s)",
@@ -978,6 +979,27 @@
 		},
 		"HAS_COMMENT": {
 			"TITLE": "A un commentaire ?"
+		},
+		"IS_TITLE": {
+			"TITLE": "Est un titre ?"
+		},
+		"IS_SELECTED": {
+			"TITLE": "Est sélectionné ?"
+		},
+		"PDP_TYPE": {
+			"TITLE": "Type"
+		},
+		"IS_OTHER": {
+			"TITLE": "Permettre de personnaliser"
+		},
+		"IS_ALWAYS_TRUE": {
+			"TITLE": "Sélectionné par défaut"
+		},
+		"IS_REQUIRED_SITUATION": {
+			"TITLE": "Obligatoire sélectionner au moins une situation"
+		},
+		"DEFAULT_RESPONSABLE": {
+			"TITLE": "Responsables par défaut"
 		}
 	},
 	"EES": {

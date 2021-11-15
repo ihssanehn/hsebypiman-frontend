@@ -70,10 +70,14 @@
 
 		<div class="tf-portlet__body">
 			<div class="row pb-4 mb-3 border-bottom">
-				<h6 class="col-6 col-md-3">is_other : <b>{{item?.is_other}}</b></h6>
-				<h6 class="col-6 col-md-3">is_always_true : <b>{{item?.is_always_true}}</b></h6>
-				<h6 class="col-6 col-md-3">is_required_situation : <b>{{item?.is_required_situation}}</b></h6>
-				<h6 class="col-6 col-md-3">default_responsable : <b>{{item?.default_responsable}}</b></h6>
+				<h6 class="col-6">{{'COMMON.IS_OTHER.TITLE' | translate}} :
+					<b>{{ 'PDP.' + (item?.is_other ? 'YES' : 'NO') | translate}}</b></h6>
+				<h6 class="col-6">{{'COMMON.IS_ALWAYS_TRUE.TITLE' | translate}} :
+					<b>{{ 'PDP.' + (item?.is_always_true ? 'YES' : 'NO') | translate}}</b></h6>
+				<h6 class="col-6">{{'COMMON.IS_REQUIRED_SITUATION.TITLE' | translate}} :
+					<b>{{ 'PDP.' + (item?.is_required_situation ? 'YES' : 'NO') | translate}}</b></h6>
+				<h6 class="col-6">{{'COMMON.DEFAULT_RESPONSABLE.TITLE' | translate}} :
+					<b> {{item?.default_responsable}}</b></h6>
 			</div>
 			<nz-table #virtualTable *ngIf="item?.children?.length > 0"
 					  nzSize="small"
@@ -83,21 +87,29 @@
 					  [nzScroll]="{ y: '178px' }">
 				<thead>
 				<tr>
-					<th nzWidth="70%">{{'COMMON.NAME.LABEL' | translate}}</th>
-					<th nzWidth="15%" class="text-center">{{'ACTION.SHOW' | translate}}</th>
+					<th nzWidth="40%"><b>{{'COMMON.NAME.LABEL' | translate}}</b></th>
+					<th nzWidth="15%"><b>{{'COMMON.HAS_COMMENT.TITLE' | translate}}</b></th>
+					<th nzWidth="7%"><b>{{'COMMON.PDP_TYPE.TITLE' | translate}}</b></th>
+					<th nzWidth="10%"><b>{{'COMMON.IS_TITLE.TITLE' | translate}}</b></th>
+					<th nzWidth="13%"><b>{{'COMMON.IS_SELECTED.TITLE' | translate}}</b></th>
+					<th nzWidth="7%" class="text-center"><b>{{'ACTION.SHOW' | translate}}</b></th>
 					<th class="text-right">Action</th>
 				</tr>
 				</thead>
-				<tbody cdkDropList (cdkDropListDropped)="dropChild($event)">
-				<tr cdkDrag [cdkDragData]="data" *ngFor="let data of item?.children">
-					<td>{{ data?.label }}</td>
-					<td class="text-center">
+				<tbody>
+				<tr *ngFor="let data of item?.children">
+					<td width="40%">{{ data?.label }}</td>
+					<td width="15%">{{ 'PDP.' + (data?.is_with_comment ? 'YES' : 'NO') | translate}}</td>
+					<td width="7%">{{ data?.type }}</td>
+					<td width="10%">{{ 'PDP.' + (data?.is_title ? 'YES' : 'NO') | translate}}</td>
+					<td width="13%">{{ 'PDP.' + (data?.is_selected ? 'YES' : 'NO') | translate}}</td>
+					<td width="7%" class="text-center">
 						<i class="fa" [ngClass]="data?.active ? 'fa-eye text-success':'fa-eye-slash'"
 						   matTooltip="{{item?.active ? ('COMMON.VISIBLE' | translate):('COMMON.INVISIBLE' | translate)}}"
 						   [matTooltipPosition]="'above'"></i>
 					</td>
 					<td class="text-right">
-						<a (click)="startEdit(data)" matTooltip="{{'ACTION.EDIT' | translate}}"
+						<a (click)="editChild(data)" matTooltip="{{'ACTION.EDIT' | translate}}"
 						   class="text-primary">
 							<i nz-icon nzType="edit" nzTheme="outline" class="pointer"></i>
 						</a>

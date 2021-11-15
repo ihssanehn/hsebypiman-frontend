@@ -129,6 +129,25 @@ export class PdpCatAdminListPortletComponent implements OnInit {
 		modalRef.result.then(payload => payload ? this.saveItem({...payload, id: data.id}) : null);
 	}
 
+	editChild(data: any): void {
+		const modalRef: any = this.modalService.open(PdpAdminAddModalComponent, {centered: true});
+		modalRef.componentInstance.title = data.label;
+		modalRef.componentInstance.label = data.label;
+		modalRef.componentInstance.is_with_comment = data.is_with_comment;
+		modalRef.componentInstance.showCommentOption = true;
+		modalRef.componentInstance.isPdpRisk = true;
+		modalRef.componentInstance.pdpRiskAddedAttr = {
+			type: data.type,
+			is_title: data.is_title,
+			is_selected: data.is_selected
+		};
+		modalRef.result.then(payload => payload ? this.onSaveChild.emit({
+			...payload,
+			id: data.id,
+			cat_pdp_risque_id: this.item.id
+		}) : null);
+	}
+
 	cancelEdit(data: any): void {
 		if (data.id >= 0) {
 			data.edit = false;

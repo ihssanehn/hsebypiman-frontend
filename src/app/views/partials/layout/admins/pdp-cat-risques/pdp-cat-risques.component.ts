@@ -98,10 +98,11 @@ export class PdpCatRisquesComponent extends AdminTemplateComponent implements On
 
 	async getItem({id}) {
 		try {
-			const item = await this.parentService.get(id).toPromise();
+			const item: Array<any> = await this.parentService.get(id).toPromise();
 			const index = this.list.findIndex(v => v.id === id);
-			// todo : need to be more refreshed
-			this.list[index] = {...item, children: [...this.list[index].moyen, ...this.list[index].situation]};
+			if (item && item.length) {
+				this.list[index] = {...item[0], children: [...item[0].moyen, ...item[0].situation]};
+			}
 			this.cdr.markForCheck();
 		} catch (error) {
 			console.error(error);
@@ -112,7 +113,19 @@ export class PdpCatRisquesComponent extends AdminTemplateComponent implements On
 	async addChild(payload) {
 		try {
 			await this.childService.create(payload).toPromise();
+			console.log('here', payload);
 			this.getItem({id: payload.cat_pdp_risque_id});
+			this.cdr.markForCheck();
+		} catch (error) {
+			console.error(error);
+		}
+	}
+
+	async updateChild(item) {
+		try {
+			await this.childService.update(item).toPromise();
+			console.log('here', item);
+			this.getItem({id: item.cat_pdp_risque_id});
 			this.cdr.markForCheck();
 		} catch (error) {
 			console.error(error);

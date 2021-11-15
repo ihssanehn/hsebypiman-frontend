@@ -51,11 +51,17 @@ export class PdpAdminAddModalComponent implements OnInit {
 	}
 
 	toggleResponsable(value) {
-		const i = this.pdpRiskCategoryAddedAttr.default_responsable.indexOf(value);
-		i > -1 ? this.pdpRiskCategoryAddedAttr.default_responsable.splice(i, 1) : this.pdpRiskCategoryAddedAttr.default_responsable.push(value);
+		if (this.pdpRiskCategoryAddedAttr.default_responsable) {
+			const i = this.pdpRiskCategoryAddedAttr.default_responsable.indexOf(value);
+			i > -1 ? this.pdpRiskCategoryAddedAttr.default_responsable.splice(i, 1) : this.pdpRiskCategoryAddedAttr.default_responsable.push(value);
+		} else {
+			this.pdpRiskCategoryAddedAttr.default_responsable = [value];
+		}
 	}
 
 	isChecked(value) {
-		return this.pdpRiskCategoryAddedAttr.default_responsable.indexOf(value) > -1;
+		if (this.pdpRiskCategoryAddedAttr.default_responsable) {
+			return this.pdpRiskCategoryAddedAttr.default_responsable.indexOf(value) > -1;
+		}
 	}
 }
