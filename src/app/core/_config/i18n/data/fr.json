@@ -29,7 +29,8 @@
 		"SIGN": "Signer",
 		"SELECT": "Selectionner",
 		"VALIDATE": "Valider le plan de prévention",
-		"SEND_BY_MAIL": "Envoyer le Pdp par mail"
+		"SEND_BY_MAIL": "Envoyer le Pdp par mail",
+		"TO_SIGN": "Définir le statut sur 'Pour signer'"
 	},
 	"ARS": {
 		"ACTION": {

@@ -120,7 +120,6 @@ export class PdpCatRisquesComponent extends AdminTemplateComponent implements On
 	async addChild(payload) {
 		try {
 			await this.childService.create(payload).toPromise();
-			console.log('here', payload);
 			this.getItem({id: payload.cat_pdp_risque_id});
 			this.cdr.markForCheck();
 		} catch (error) {

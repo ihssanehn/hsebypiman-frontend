@@ -1,0 +1,180 @@
+<div>
+	<div class="d-flex justify-content-between pointer" (click)="tpl.collapsed = !tpl.collapsed">
+		<h3 class="m-0">{{ title ? (title | translate) : tpl?.title }}</h3>
+		<div class="">
+			<a (click)="$event.stopPropagation(); startEdit()" matTooltip="{{'ACTION.EDIT' | translate}}"
+			   class="btn btn-sm btn-icon btn-clean btn-icon-md" data-ktportlet-tool="add">
+				<i class="la la-edit text-success"></i>
+			</a>
+			<a (click)="$event.stopPropagation(); getList()" matTooltip="{{'ACTION.REFRESH' | translate}}"
+			   data-ktportlet-tool="add" class="btn btn-sm btn-icon btn-clean btn-icon-md">
+				<i class="la la-refresh"></i>
+			</a>
+			<a [ngClass]="{'collapsed' : tpl?.collapsed }" matTooltip="{{'ACTION.REDUCE' | translate}}"
+			   class="btn btn-sm btn-icon btn-clean btn-icon-md accordion" data-toggle="collapse" data-target="#group"
+			   aria-expanded="true">
+				<i class="la la-angle-down"></i>
+			</a>
+		</div>
+	</div>
+	<div class="tf-separator tf-separator--border-dashed my-3"></div>
+	<div class="row collapse" [ngClass]="{'show' : !tpl?.collapsed }" data-parent="#group">
+		<ng-container *ngIf="!isEdit">
+			<div class="mb-2 col-md-6 col-sm-12">
+				<div class="border-bottom mb-4">
+					<h5 class="mb-4"><b>{{'PDP.COMPANY' | translate}}</b></h5>
+					<p><span class="mr-2">{{'PDP.NAME' | translate}} : </span>
+						<b *ngIf="defaultValues?.raison_sociale_ee">{{defaultValues.raison_sociale_ee}}</b>
+					</p>
+					<p><span class="mr-2">{{'PDP.TEL' | translate}}</span>
+						<b class=""
+						   *ngIf="defaultValues?.raison_sociale_tel_ee">{{defaultValues.raison_sociale_tel_ee}}</b>
+					</p>
+				</div>
+				<div class="border-bottom mb-4">
+					<h5 class="mb-4"><b>{{'PDP.CSE' | translate}}</b></h5>
+					<p><span class="mr-2">{{'PDP.NAME' | translate}} : </span>
+						<b *ngIf="defaultValues?.cse_ee_name">{{defaultValues.cse_ee_name}}</b>
+					</p>
+					<p><span class="mr-2">{{'PDP.JOB' | translate}}</span>
+						<b *ngIf="defaultValues?.cse_ee_job">{{defaultValues.cse_ee_job}}</b>
+					</p>
+					<p><span class="mr-2">{{'PDP.TEL' | translate}}</span>
+						<b *ngIf="defaultValues?.cse_ee_tel">{{defaultValues.cse_ee_tel}}</b>
+					</p>
+				</div>
+			</div>
+			<div class="mb-2 col-md-6 col-sm-12">
+				<div class="border-bottom mb-4">
+					<h5 class="mb-4"><b>{{'PDP.RESPONSABLE_HSE' | translate}}</b></h5>
+					<p><span class="mr-2">{{'PDP.NAME' | translate}} : </span>
+						<b *ngIf="defaultValues?.hse_ee_name">{{defaultValues.hse_ee_name}}</b>
+					</p>
+					<p><span class="mr-2">{{'PDP.MAIL' | translate}}</span>
+						<b *ngIf="defaultValues?.hse_ee_mail">{{defaultValues.hse_ee_mail}}</b>
+					</p>
+					<p><span class="mr-2">{{'PDP.TEL' | translate}}</span>
+						<b *ngIf="defaultValues?.hse_ee_tel">{{defaultValues.hse_ee_tel}}</b>
+					</p>
+					<p><span class="mr-2">{{'PDP.JOB' | translate}}</span>
+						<b *ngIf="defaultValues?.hse_ee_job">{{defaultValues.hse_ee_job}}</b>
+					</p>
+				</div>
+				<div class="border-bottom mb-4">
+					<h5 class="mb-4"><b>{{'PDP.RESCUERS_FIRST_AID_WORKER_AT_WORK' | translate}}</b></h5>
+					<p><span class="mr-2">{{'PDP.NAME' | translate}} : </span>
+						<b *ngIf="defaultValues?.sauveteurs_secouriste_travail_ee">{{defaultValues.sauveteurs_secouriste_travail_ee}}</b>
+					</p>
+				</div>
+			</div>
+		</ng-container>
+		<ng-container *ngIf="isEdit" [formGroup]="pdpForm">
+			<div class="row form-row col-6 align-items-center">
+				<span class="col-12 font-weight-bold">
+					{{'PDP.COMPANY' | translate}} :
+				</span>
+				<mat-form-field class="col-4">
+					<mat-label>{{'PDP.NAME' | translate}}</mat-label>
+					<input class="form-control" matInput type="text" name="raison_sociale_ee"
+						   formControlName="raison_sociale_ee"
+						   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
+						   [required]="true"/>
+					<mat-error *ngIf="isControlHasError('raison_sociale_ee','required')">
+						<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+					</mat-error>
+				</mat-form-field>
+				<mat-form-field class="col-4 custom-margin-1">
+					<mat-label>{{'PDP.TEL' | translate}}
+					</mat-label>
+					<input class="form-control" matInput type="phone" name="raison_sociale_tel_ee"
+						   formControlName="raison_sociale_tel_ee"
+						   placeholder="{{'ACTION.ENTER_HERE' | translate}}"
+						   [required]="true"/>
+					<mat-error *ngIf="isControlHasError('raison_sociale_tel_ee','required')">
+						<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+					</mat-error>
+				</mat-form-field>
+			</div>
+			<div class="row form-row col-6 align-items-center">
+								<span class="col-12 font-weight-bold">
+									{{'PDP.RESPONSABLE_HSE' | translate}} :
+								</span>
+				<mat-form-field class="col-4">
+					<mat-label>{{'PDP.NAME' | translate}}</mat-label>
+					<input class="form-control" matInput type="text" name="hse_ee_name"
+						   formControlName="hse_ee_name"
+						   placeholder="{{'ACTION.ENTER_HERE' | translate}}"/>
+				</mat-form-field>
+				<mat-form-field class="col-4 custom-margin-1">
+					<mat-label>{{'PDP.MAIL' | translate}}</mat-label>
+					<input class="form-control" matInput type="email" name="hse_ee_mail"
+						   formControlName="hse_ee_mail"
+						   placeholder="{{'ACTION.ENTER_HERE' | translate}}"/>
+					<mat-error *ngIf="isControlHasError('hse_ee_mail','email')">
+						<strong>{{ 'AUTH.VALIDATION.INVALID_FIELD' | translate }}</strong>
+					</mat-error>
+				</mat-form-field>
+				<mat-form-field class="col-4 custom-margin-1">
+					<mat-label>{{'PDP.TEL' | translate}}</mat-label>
+					<input class="form-control" matInput type="phone" name="hse_ee_tel"
+						   formControlName="hse_ee_tel"
+						   placeholder="{{'ACTION.ENTER_HERE' | translate}}"/>
+				</mat-form-field>
+			</div>
+			<div class="row form-row col-6 align-items-center">
+								<span class="col-12 font-weight-bold">
+									{{'PDP.CSE' | translate}} :
+								</span>
+				<mat-form-field class="col-4">
+					<mat-label>{{'PDP.NAME' | translate}}</mat-label>
+					<input class="form-control" matInput type="text" name="cse_ee_name"
+						   formControlName="cse_ee_name"
+						   placeholder="{{'ACTION.ENTER_HERE' | translate}}"/>
+				</mat-form-field>
+				<mat-form-field class="col-4 custom-margin-1">
+					<mat-label>{{'PDP.JOB' | translate}}</mat-label>
+					<input class="form-control" matInput type="text" name="cse_ee_job"
+						   formControlName="cse_ee_job"
+						   placeholder="{{'ACTION.ENTER_HERE' | translate}}"/>
+				</mat-form-field>
+				<mat-form-field class="col-4 custom-margin-1">
+					<mat-label>{{'PDP.TEL' | translate}}</mat-label>
+					<input class="form-control" matInput type="phone" name="cse_ee_tel"
+						   formControlName="cse_ee_tel"
+						   placeholder="{{'ACTION.ENTER_HERE' | translate}}"/>
+				</mat-form-field>
+			</div>
+			<div class="row form-row col-6 align-items-center">
+								<span class="col-12 font-weight-bold">
+									{{'PDP.RESCUERS_FIRST_AID_WORKER_AT_WORK' | translate}} :
+								</span>
+				<mat-form-field class="col-12">
+					<mat-label>{{'PDP.NAME' | translate}}s</mat-label>
+					<textarea class="form-control no_border" name="sauveteurs_secouriste_travail_ee"
+							  matInput
+							  cdkTextareaAutosize
+							  #autosize="cdkTextareaAutosize"
+							  cdkAutosizeMinRows="2"
+							  cdkAutosizeMaxRows="5"
+							  formControlName="sauveteurs_secouriste_travail_ee"
+							  placeholder="{{'ACTION.ENTER_HERE' | translate}}"
+							  [required]="true"></textarea>
+					<mat-error *ngIf="isControlHasError('sauveteurs_secouriste_travail_ee','required')">
+						<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+					</mat-error>
+				</mat-form-field>
+			</div>
+			<div class="align-items-center d-flex justify-content-end mb-3 ng-star-inserted w-100">
+				<button mat-raised-button [disabled]="formloading" class="float-right mr-4 btn btn-secondary"
+						(click)="stopEdit()">
+					{{'ACTION.CANCEL' | translate}}
+				</button>
+				<button mat-raised-button
+						[ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': formloading}"
+						[disabled]="formloading" class="float-right btn btn-save" (click)="onSubmitEdit()">
+					{{'ACTION.SAVE' | translate}}
+				</button>
+			</div>
+		</ng-container>
+	</div>
+</div>

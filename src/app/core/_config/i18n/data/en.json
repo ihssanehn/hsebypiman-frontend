@@ -388,6 +388,7 @@
 		"VISA_PRECEDED_BY_THE_WORDS_READ_AND_APPROVED": "\"Read and approved\"",
 		"READ_AND_APPROVED": "Read and approved",
 		"INTERVENANTS": "Intervenants",
+		"INTERVENANT": "Intervenant",
 		"LAST_NAME": "Last name",
 		"FIRST_NAME": "First name",
 		"CONTACT": "Contact",
@@ -457,6 +458,9 @@
 			"PDP_RISQUE_ARCHIVED": {
 				"TITLE": "Pdp Risk archived successfully"
 			},
+			"TYPE_ARCHIVED": {
+				"TITLE": "Type archived successfully"
+			},
 			"STATUS_REFUSED":{
 				"TITLE": "Pdp refused successfully"
 			},
@@ -500,6 +504,16 @@
 				"NO_RISK": "No risk to provide",
 				"SHORTTITLE": "Risks",
 				"TITLE": "Pdp Risks to be provided on site"
+			},
+			"TYPE": {
+				"NO_TYPE": "No type to provide",
+				"SHORTTITLE": "Types (ee)",
+				"TITLE": "Types (ee) to be supplied on site"
+			},
+			"DEFAULT_VALUES_PDP": {
+				"NO_DEFAULT_VALUES": "No values to provide",
+				"SHORTTITLE": "Pdp (ee) default values",
+				"TITLE": "Pdp (ee) default values to be supplied on site"
 			}
 		},
 		"ACTION": {
@@ -509,6 +523,8 @@
 			"ADD_MOYEN_DISPOSITION": "Add medium disposition (ees)",
 			"ADD_CATEGORIE_PDP_RISQUE": "Add Pdp Risk Category",
 			"ADD_PDP_RISQUE": "Add Pdp Risk",
+			"ADD_PDP_CAT_TYPE": "Add a category in this type",
+			"ADD_TYPE": "Add a type",
 			"SENDFORSIGN": "Send to signing",
 			"SIGN_PDP": "Sign the prevention plan"
 		}
