@@ -21,13 +21,15 @@
 	<div class="tf-separator tf-separator--border-dashed my-3"></div>
 	<div class="row collapse" [ngClass]="{'show' : !tpl?.collapsed }" data-parent="#group">
 		<div class="col-{{tpl?.childCol}}">
+<!--			<tf-admin-basic-list-portlet [items]="list" (onSaveItem)="saveItem($event)"-->
+<!--										 (onRefreshItem)="getItem($event)" (onDeleteItem)="deleteItem($event)"-->
+<!--										 (onUpdateOrders)="updateOrders($event)"></tf-admin-basic-list-portlet>-->
+
 			<div class="tf-portlet tf-portlet--bordered item" data-ktportlet="true"
 				 id="kt_portlet_tools_3">
 
-				<div class="collapse" data-parent="#group">
-
+				<div class="collapse show" data-parent="#group">
 					<div class="tf-portlet__body" *ngIf="list?.length > 0">
-
 						<nz-table #virtualTable
 								  nzSize="small"
 								  [nzData]="list"

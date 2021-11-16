@@ -461,7 +461,7 @@
 				"TITLE": "Pdp Risque archivé avec succès"
 			},
 			"TYPE_ARCHIVED": {
-				"TITLE": "type archivé avec succès"
+				"TITLE": "Type archivé avec succès"
 			},
 			"STATUS_REFUSED":{
 				"TITLE": "Pdp refusé avec succès"
@@ -519,6 +519,7 @@
 			"ADD_MOYEN_DISPOSITION": "Ajouter moyen disposition (ees)",
 			"ADD_CATEGORIE_PDP_RISQUE": "Ajouter Categorie Pdp Risque",
 			"ADD_PDP_RISQUE": "Ajouter Pdp Risque",
+			"ADD_PDP_CAT_TYPE": "Ajouter une catégorie dans ce type",
 			"ADD_TYPE": "Ajouter un type",
 			"SENDFORSIGN": "Envoyer pour signature",
 			"SIGN_PDP": "Signer le plan de prévention"

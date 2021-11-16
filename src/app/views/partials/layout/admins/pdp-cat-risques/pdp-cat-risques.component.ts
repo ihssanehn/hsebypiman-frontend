@@ -20,9 +20,9 @@ export class PdpCatRisquesComponent extends AdminTemplateComponent implements On
 
 	tpl: any;
 
-	list: any[];
 
 	@Input() title: string;
+	@Input() list: any[];
 
 	constructor(injector: Injector, private pdpService: PdpService,
 	) {
@@ -35,7 +35,6 @@ export class PdpCatRisquesComponent extends AdminTemplateComponent implements On
 	}
 
 	ngOnInit() {
-		super.ngOnInit();
 		this.refreshTranslations();
 		this.tpl = {
 			title: this.translate.instant('PDP.CARD.CATEGORIE_PDP_RISQUE.SHORTTITLE'),
@@ -63,8 +62,8 @@ export class PdpCatRisquesComponent extends AdminTemplateComponent implements On
 
 	async getList() {
 		try {
-			const res = await this.pdpService.getAllPdpFilters().toPromise();
-			this.list = res.result.data ? (res.result.data as any).risques : [];
+			var res = await this.parentService.getAllAsAdmin().toPromise();
+			this.list = res.result.data ? res.result.data : [];
 			this.list = this.list.map(v => {
 				return {...v, children: [...v.moyen, ...v.situation]};
 			});

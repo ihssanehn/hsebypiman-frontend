@@ -8,7 +8,7 @@
 
 	<form #addItemForm="ngForm">
 
-		<div class="form-group">
+		<div class="form-group" *ngIf="showLabelOption">
 			<label>
 				{{ 'COMMON.NAME.LABEL' | translate }}
 			</label>
@@ -20,7 +20,7 @@
 				placeholder="..."
 				required>
 		</div>
-		<div class="form-group">
+		<div class="form-group" *ngIf="showActiveOption">
 			<label>
 				{{ 'COMMON.ACTIVE.TITLE' | translate }}
 			</label>
@@ -89,9 +89,11 @@
 				<mat-radio-group class="ml-3" name="type"
 								 [(ngModel)]="pdpRiskAddedAttr.type">
 					<mat-radio-button
-						[value]="'moyen'">Moyen</mat-radio-button>
+						[value]="'moyen'">Moyen
+					</mat-radio-button>
 					<mat-radio-button
-						[value]="'situation'">Situation</mat-radio-button>
+						[value]="'situation'">Situation
+					</mat-radio-button>
 				</mat-radio-group>
 			</div>
 			<div class="form-group">
@@ -117,6 +119,23 @@
 					<mat-radio-button
 						[value]="0">{{'PDP.NO' | translate}}</mat-radio-button>
 				</mat-radio-group>
+			</div>
+		</ng-container>
+		<ng-container *ngIf="isPdpCategoryRiskByType">
+			<div class="form-group">
+<!--				<label style="color: rgba(0, 0, 0, 0.54);font-size: 89%;">{{'PDP.RISKS_CATEGORIES' | translate}}</label>-->
+				<ng-select class="form-control"
+						   [multiple]="true"
+						   style="height: unset"
+						   [hideSelected]="true"
+						   [clearSearchOnAdd]="true"
+						   placeholder="{{'PDP.RISKS_CATEGORIES' | translate}}"
+						   [ngModelOptions]="{standalone: true}"
+						   [(ngModel)]="selectedCategories">
+					<ng-option *ngFor="let cat of pdpCategoriesToChooseWith"
+							   [value]="cat?.id">
+						{{cat?.label}}</ng-option>
+				</ng-select>
 			</div>
 		</ng-container>
 

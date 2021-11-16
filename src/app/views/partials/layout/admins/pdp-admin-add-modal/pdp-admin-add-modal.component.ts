@@ -15,6 +15,8 @@ export class PdpAdminAddModalComponent implements OnInit {
 	is_with_comment = 0;
 
 	showCommentOption = true;
+	showActiveOption = true;
+	showLabelOption = true;
 
 	isPdpRiskCategory = false;
 	isPdpRisk = false;
@@ -30,6 +32,11 @@ export class PdpAdminAddModalComponent implements OnInit {
 		is_selected: 0,
 	};
 
+	isPdpCategoryRiskByType = false;
+	pdpCategoriesToChooseWith: Array<any> = [];
+	selectedCategories: Array<number> = [];
+
+
 	constructor(public activeModal: NgbActiveModal) {
 	}
 
@@ -37,7 +44,13 @@ export class PdpAdminAddModalComponent implements OnInit {
 	}
 
 	async submit() {
-		let result: any = {libelle: this.label, label: this.label, active: this.active};
+		let result: any = {};
+		if (this.showLabelOption) {
+			result = {...result, libelle: this.label, label: this.label}
+		}
+		if (this.showActiveOption) {
+			result = {...result, active: this.active}
+		}
 		if (this.showCommentOption) {
 			result = {...result, is_comment_consigne: this.is_with_comment, is_with_comment: this.is_with_comment}
 		}
@@ -46,6 +59,9 @@ export class PdpAdminAddModalComponent implements OnInit {
 		}
 		if (this.isPdpRisk) {
 			result = {...result, ...this.pdpRiskAddedAttr};
+		}
+		if (this.isPdpCategoryRiskByType) {
+			result = {...result, categories: this.selectedCategories};
 		}
 		this.activeModal.close(result);
 	}

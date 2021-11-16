@@ -22,7 +22,7 @@ export class PdpTypeComponent extends AdminTemplateComponent implements OnInit {
 
 	tpl: any;
 
-	list: any[];
+	@Input() list: any[];
 
 	@Input() title: string;
 
@@ -35,7 +35,6 @@ export class PdpTypeComponent extends AdminTemplateComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		super.ngOnInit();
 		this.refreshTranslations();
 		this.tpl = {
 			title: this.translate.instant("PDP.CARD.TYPE.SHORTTITLE"),
