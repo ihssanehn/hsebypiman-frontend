@@ -24,7 +24,7 @@
 				<tbody cdkDropList (cdkDropListDropped)="dropItem($event)">
 				<tr cdkDrag [cdkDragData]="data" *ngFor="let data of items">
 					<ng-container *ngIf="!data.edit; else editTemplate">
-						<td>{{ data?.libelle || data?.label }}</td>
+						<td><p class="mb-0" [innerHTML]="data?.libelle || data?.label"></p></td>
 						<ng-container *ngFor="let k of addedColumns">
 							<td class="text-center">{{'PDP.' + (data[k?.key] ? 'YES' : 'NO') | translate}}</td>
 						</ng-container>
