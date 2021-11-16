@@ -21,7 +21,7 @@
 	<div class="tf-separator tf-separator--border-dashed my-3"></div>
 	<div class="row collapse" [ngClass]="{'show' : !tpl?.collapsed }" data-parent="#group">
 		<div class="col-{{tpl?.childCol}}">
-			<tf-admin-basic-list-portlet [items]="list" (onSaveItem)="saveItem($event})"
+			<tf-admin-basic-list-portlet [items]="list" (onSaveItem)="saveItem($event)"
 										 (onRefreshItem)="getItem($event)" (onDeleteItem)="deleteItem($event)"
 										 (onUpdateOrders)="updateOrders($event)"></tf-admin-basic-list-portlet>
 		</div>
