@@ -18,7 +18,7 @@
 		"EXPORT": "Exporter la liste",
 		"EXPORT_PDF": "Exporter en PDF",
 		"FOLLOWING": "Suite",
-		"MAILS_SENDED" : "Email(s) envoyé(s) avec succès",
+		"MAILS_SENDED": "Email(s) envoyé(s) avec succès",
 		"READ": "Consulter",
 		"REDUCE": "Réduire",
 		"REFRESH": "Rafraîchir",
@@ -27,9 +27,9 @@
 		"SHOW_USER": "Voir l'utilisateur",
 		"SHOW_VISIT": "Voir la visite",
 		"SIGN": "Signer",
-		"SELECT":"Selectionner",
+		"SELECT": "Selectionner",
 		"VALIDATE": "Valider le plan de prévention",
-		"SEND_BY_MAIL" : "Envoyer le Pdp par mail"
+		"SEND_BY_MAIL": "Envoyer le Pdp par mail"
 	},
 	"ARS": {
 		"ACTION": {
@@ -403,15 +403,15 @@
 		"OTHER_METHOD": "Autre méthode",
 		"OFFICE": "Plan de prévention bureau",
 		"PLAN_GENERAL": "General",
-		"FIELD":"Plan de prévention terrain",
-		"PIMAN":"Plan de prévention Piman",
-		"FIELD_DESC":"Plan de prévention : Terrain",
-		"OFFICE_DESC":"Plan de prévention : Bureau",
-		"CLIENT":"Plan de prévention Client",
-		"PIMAN_DESC":"Utiliser le formulaire de création de Piman.",
-		"CLIENT_DESC":"Plan de prévention : Client",
-		"ADD_CLIEN_PDP":"Ajouter le plan de prévention",
-		"TYPE":"Type de plan de prévention",
+		"FIELD": "Plan de prévention terrain",
+		"PIMAN": "Plan de prévention Piman",
+		"FIELD_DESC": "Plan de prévention : Terrain",
+		"OFFICE_DESC": "Plan de prévention : Bureau",
+		"CLIENT": "Plan de prévention Client",
+		"PIMAN_DESC": "Utiliser le formulaire de création de Piman.",
+		"CLIENT_DESC": "Plan de prévention : Client",
+		"ADD_CLIEN_PDP": "Ajouter le plan de prévention",
+		"TYPE": "Type de plan de prévention",
 		"NOTIF": {
 			"PDP_DELETED": {
 				"TITLE": "Le plan de prévention a été supprimé avec succès"
@@ -463,13 +463,13 @@
 			"TYPE_ARCHIVED": {
 				"TITLE": "Type archivé avec succès"
 			},
-			"STATUS_REFUSED":{
+			"STATUS_REFUSED": {
 				"TITLE": "Pdp refusé avec succès"
 			},
-			"STATUS_ACCEPTED":{
+			"STATUS_ACCEPTED": {
 				"TITLE": "Pdp accepté avec succès"
 			},
-			"EMAIL_SENT":{
+			"EMAIL_SENT": {
 				"TITLE": "Mail envoyé avec succès"
 			},
 			"COMMENTS": "Commentaires",
@@ -510,6 +510,11 @@
 				"NO_TYPE": "Pas de type à fournir",
 				"SHORTTITLE": "Types (ee)",
 				"TITLE": "Types (ee) à fournir sur place"
+			},
+			"DEFAULT_VALUES_PDP": {
+				"NO_DEFAULT_VALUES": "Pas de valeurs à fournir",
+				"SHORTTITLE": "Pdp (ee) valeurs par défaut",
+				"TITLE": "Pdp (ee) valeurs par défaut à fournir sur place"
 			}
 		},
 		"ACTION": {
