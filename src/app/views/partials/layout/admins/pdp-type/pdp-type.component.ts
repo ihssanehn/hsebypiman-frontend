@@ -84,13 +84,4 @@ export class PdpTypeComponent extends AdminTemplateComponent implements OnInit {
 		super.deleteItem({id}, {title: this.translate.instant("PDP.NOTIF.TYPE_ARCHIVED.TITLE")});
 	}
 
-	async updateOrders(datas) {
-		try {
-			await this.parentService.updateOrders({data: datas, type: 'type_pdp'}).toPromise();
-			this.cdr.markForCheck();
-		} catch (error) {
-			console.error(error);
-		}
-	}
-
 }
