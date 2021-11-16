@@ -33,6 +33,7 @@ export class PdpRisquesTypeComponent extends AdminTemplateComponent implements O
 	set listAllCategoriesRisk(value: Array<any>) {
 		if (value && value.length > 0) {
 			this.listAllCategories = value;
+			this.refreshAddingList();
 		}
 	}
 

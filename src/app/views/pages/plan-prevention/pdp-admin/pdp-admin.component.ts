@@ -57,5 +57,8 @@ export class PdpAdminComponent implements OnInit {
 		}
 	}
 
+	refreshListCategories(e: Array<any>) {
+		this.listCategoriesRisks = [...e];
+	}
 
 }

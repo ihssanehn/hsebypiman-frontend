@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, Injector, Input, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, EventEmitter, Injector, Input, OnInit, Output} from '@angular/core';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateService} from '@ngx-translate/core';
 import {AdminTemplateComponent} from '@app/views/partials/layout/admin-template/admin-template.component';
@@ -23,6 +23,9 @@ export class PdpCatRisquesComponent extends AdminTemplateComponent implements On
 
 	@Input() title: string;
 	@Input() list: any[];
+
+	@Output()
+	refreshCategoriesList = new EventEmitter<any>();
 
 	constructor(injector: Injector, private pdpService: PdpService,
 	) {
@@ -80,6 +83,11 @@ export class PdpCatRisquesComponent extends AdminTemplateComponent implements On
 		modalRef.componentInstance.showCommentOption = false;
 		modalRef.componentInstance.isPdpRiskCategory = true;
 		modalRef.result.then(payload => this.createItem(payload, {ordre: this.generateParentOrdre()}, false), payload => this.createItem(payload, {ordre: this.generateParentOrdre()}, false));
+	}
+
+	async createItem(payload, appends?, up = true) {
+		await super.createItem(payload, appends, up);
+		this.refreshCategoriesList.emit(this.list);
 	}
 
 	async deleteItem({id}) {

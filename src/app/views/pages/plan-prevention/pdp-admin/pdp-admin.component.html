@@ -7,6 +7,7 @@
 			[title]="'PDP.RESOURCES_MADE_AVAILABLE_TO_THE_EXTERNAL_COMPANY'"></tf-pdp-moyen-disposition>
 		<tf-pdp-travaux-dangereux [title]="'PDP.LIST_OF_HAZARDOUS_WORK'"></tf-pdp-travaux-dangereux>
 		<tf-pdp-cat-risques [title]="'PDP.RISKS_CATEGORIES'" [list]="listCategoriesRisks"
+							(refreshCategoriesList)="refreshListCategories($event)"
 							*ngIf="!catRiskLoading"></tf-pdp-cat-risques>
 		<tf-pdp-type *ngIf="!typeLoading" [title]="'PDP.TYPES'" [list]="listPDPTypes"></tf-pdp-type>
 		<h2 class="mb-3 pb-2 border-bottom font-weight-bold">{{"PDP.OFFICE" | translate}}</h2>
@@ -14,6 +15,9 @@
 							 [listAllCategoriesRisk]="listCategoriesRisks"
 							 [typeId]="bureauTypeID"></tf-pdp-risques-type>
 		<h2 class="mb-3 pb-2 border-bottom font-weight-bold">{{"PDP.FIELD" | translate}}</h2>
+		<tf-pdp-risques-type *ngIf="!typeLoading && !catRiskLoading" [title]="'PDP.CARD.PDP_RISK.SHORTTITLE'"
+							 [listAllCategoriesRisk]="listCategoriesRisks"
+							 [typeId]="terrainTypeID"></tf-pdp-risques-type>
 		<!--		<tf-pdp-risques [title]="'PDP.INSTRUCTIONS_GIVEN_BY_THE_EXTERNAL_COMPANY'"></tf-pdp-risques>-->
 	</div>
 </div>
