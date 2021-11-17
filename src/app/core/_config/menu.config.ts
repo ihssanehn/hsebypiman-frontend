@@ -674,6 +674,16 @@ export class MenuConfig {
 						svgIcon: 'analyse'
 					},
 					{
+						title: 'Plan de prévention',
+						root: true,
+						alignment: 'left',
+						page: '/admin/plan-de-prevention',
+						translate: 'MENU.PLANDEPREVENTION',
+						needModule: true,
+						moduleCode: ['PLAN_DE_PREVENTION'],
+						svgIcon: 'plan-daction'
+					},
+					{
 						title: 'Visites de securité',
 						root: true,
 						alignment: 'left',

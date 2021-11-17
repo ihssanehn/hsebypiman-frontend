@@ -1,26 +1,26 @@
 // Angular
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {RouterModule, Routes} from '@angular/router';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 // Core Module
-import { CoreModule } from '../../../core/core.module';
+import {CoreModule} from '../../../core/core.module';
 // NGRX
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
+import {StoreModule} from '@ngrx/store';
+import {EffectsModule} from '@ngrx/effects';
 // Translate
-import { TranslateModule } from '@ngx-translate/core';
-import { PartialsModule } from '../../partials/partials.module';
-import { NgxPermissionsModule, NgxPermissionsGuard } from 'ngx-permissions';
+import {TranslateModule} from '@ngx-translate/core';
+import {PartialsModule} from '../../partials/partials.module';
+import {NgxPermissionsModule, NgxPermissionsGuard} from 'ngx-permissions';
 // Services
-import { HttpUtilsService, TypesUtilsService, InterceptService, LayoutUtilsService} from '../../../core/_base/crud';
+import {HttpUtilsService, TypesUtilsService, InterceptService, LayoutUtilsService} from '../../../core/_base/crud';
 // Shared
-import { ActionNotificationComponent } from '../../partials/content/crud';
+import {ActionNotificationComponent} from '../../partials/content/crud';
 // Components
-import { AdminComponent } from './admin.component';
-import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule, NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgxMaskModule } from 'ngx-mask';
+import {AdminComponent} from './admin.component';
+import {NgbDropdownModule, NgbTabsetModule, NgbTooltipModule, NgbPopoverModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgxMaskModule} from 'ngx-mask';
 
 // Material
 import {
@@ -49,25 +49,26 @@ import {
 	MatAutocompleteModule,
 	MAT_DIALOG_DEFAULT_OPTIONS,
 	MatSnackBarModule,
-	MatTooltipModule,MAT_DATE_LOCALE, 
+	MatTooltipModule, MAT_DATE_LOCALE,
 	MAT_DATE_FORMATS,
 	DateAdapter
 } from '@angular/material';
-import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapter';
+import {CustomDateAdapter} from '@app/core/_base/crud/utils/custom-date.adapter';
 // import { AdminUsersComponent } from './admin-users/admin-users.component';
-import { AdminModulesComponent } from './admin-modules/admin-modules.component';
-import { AdminChantiersComponent } from './admin-chantiers/admin-chantiers.component';
-import { AdminArComponent } from './admin-ar/admin-ar.component';
-import { AdminActionComponent } from './admin-action/admin-action.component';
-import { AdminSalariesComponent } from './admin-salaries/admin-salaries.component';
-import { AdminSuiviHseComponent } from './admin-suivi-hse/admin-suivi-hse.component';
-import { AdminEntrepriseComponent } from './admin-entreprise/admin-entreprise.component';
-import { AdminMaterielComponent } from './admin-materiel/admin-materiel.component';
-import { AdminVisitesComponent } from './admin-visites/admin-visites.component';
-import { AdminVisiteChantierComponent } from './admin-visites/admin-visite-chantier/admin-visite-chantier.component';
-import { AdminVisiteEpiComponent } from './admin-visites/admin-visite-epi/admin-visite-epi.component';
-import { AdminVisiteVehiculeComponent } from './admin-visites/admin-visite-vehicule/admin-visite-vehicule.component';
-import { AdminVisiteOutillageComponent } from './admin-visites/admin-visite-outillage/admin-visite-outillage.component';
+import {AdminModulesComponent} from './admin-modules/admin-modules.component';
+import {AdminChantiersComponent} from './admin-chantiers/admin-chantiers.component';
+import {AdminArComponent} from './admin-ar/admin-ar.component';
+import {AdminActionComponent} from './admin-action/admin-action.component';
+import {AdminSalariesComponent} from './admin-salaries/admin-salaries.component';
+import {AdminSuiviHseComponent} from './admin-suivi-hse/admin-suivi-hse.component';
+import {AdminEntrepriseComponent} from './admin-entreprise/admin-entreprise.component';
+import {AdminMaterielComponent} from './admin-materiel/admin-materiel.component';
+import {AdminVisitesComponent} from './admin-visites/admin-visites.component';
+import {AdminVisiteChantierComponent} from './admin-visites/admin-visite-chantier/admin-visite-chantier.component';
+import {AdminVisiteEpiComponent} from './admin-visites/admin-visite-epi/admin-visite-epi.component';
+import {AdminVisiteVehiculeComponent} from './admin-visites/admin-visite-vehicule/admin-visite-vehicule.component';
+import {AdminVisiteOutillageComponent} from './admin-visites/admin-visite-outillage/admin-visite-outillage.component';
+import {AdminPdpComponent} from './admin-pdp/admin-pdp.component';
 
 const routes: Routes = [
 	{
@@ -80,19 +81,19 @@ const routes: Routes = [
 				pathMatch: 'full'
 			},
 			{
-				path:'users',
+				path: 'users',
 				loadChildren: () => import('./admin-users/admin-users.module').then(m => m.AdminUsersModule),
 			},
 			{
-				path:'flash-infos',
+				path: 'flash-infos',
 				loadChildren: () => import('./admin-flashinfos/admin-flashinfos.module').then(m => m.AdminFlashInfosModule),
 			},
 			{
-				path:'salaries',
+				path: 'salaries',
 				component: AdminSalariesComponent
 			},
 			{
-				path:'chantiers',
+				path: 'chantiers',
 				component: AdminChantiersComponent
 			},
 			{
@@ -100,7 +101,15 @@ const routes: Routes = [
 				component: AdminArComponent
 			},
 			{
-				path:'visites-securite',
+				path: 'plan-de-prevention',
+				component: AdminPdpComponent
+			},
+			{
+				path: 'analyses-risque',
+				component: AdminArComponent
+			},
+			{
+				path: 'visites-securite',
 				component: AdminVisitesComponent
 			},
 			{
@@ -116,11 +125,11 @@ const routes: Routes = [
 				component: AdminEntrepriseComponent
 			},
 			{
-				path:'materiel',
+				path: 'materiel',
 				component: AdminMaterielComponent,
 			},
 			{
-				path:'modules',
+				path: 'modules',
 				component: AdminModulesComponent
 			},
 		]
@@ -141,7 +150,7 @@ const routes: Routes = [
 		MatButtonModule,
 		MatMenuModule,
 		MatSelectModule,
-        MatInputModule,
+		MatInputModule,
 		MatTableModule,
 		MatSlideToggleModule,
 		MatBadgeModule,
@@ -172,8 +181,8 @@ const routes: Routes = [
 	providers: [
 		InterceptService,
 		{
-        	provide: HTTP_INTERCEPTORS,
-       	 	useClass: InterceptService,
+			provide: HTTP_INTERCEPTORS,
+			useClass: InterceptService,
 			multi: true
 		},
 		{
@@ -185,16 +194,16 @@ const routes: Routes = [
 				width: '900px'
 			}
 		},
-		
-		{ provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
-		{ provide: DateAdapter, useClass: CustomDateAdapter },
+
+		{provide: MAT_DATE_LOCALE, useValue: 'fr-FR'},
+		{provide: DateAdapter, useClass: CustomDateAdapter},
 		HttpUtilsService,
 		TypesUtilsService,
 		LayoutUtilsService
 	],
 	entryComponents: [
 		ActionNotificationComponent,
-		// 
+		//
 	],
 	declarations: [
 		AdminComponent,
@@ -212,7 +221,8 @@ const routes: Routes = [
 		AdminVisiteEpiComponent,
 		AdminVisiteVehiculeComponent,
 		AdminVisiteOutillageComponent,
-		
+		AdminPdpComponent,
+
 	]
 })
 export class AdminModule {
