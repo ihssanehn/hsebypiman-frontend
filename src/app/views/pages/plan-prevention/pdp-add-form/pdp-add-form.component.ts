@@ -174,10 +174,11 @@ export class PdpAddFormComponent implements OnInit {
 				isRequired: true
 			}, {name: 'type', needTest: false, isRequired: true}
 			]);
-			const index = this.EPIDispositionList.findIndex(v => v.items && v.items.length === 0);
-			if (index > -1) {
-				this.makeAnswerIDUnRequiredinOtherPart(index);
-			}
+			// const index = this.EPIDispositionList.findIndex(v => v.items && v.items.length === 0);
+			this.EPIDispositionList.map((_, i) => i).filter(e => this.EPIDispositionList[e].items && this.EPIDispositionList[e].items.length === 0).map(i  => this.makeAnswerIDUnRequiredinOtherPart(i));
+			// if (index > -1) {
+			// 	this.makeAnswerIDUnRequiredinOtherPart(index);
+			// }
 		}
 		if (this.instructionsList.length > 0) {
 			this.patchFormArray(this.instructionsList, 'consignes', [{
@@ -671,10 +672,19 @@ export class PdpAddFormComponent implements OnInit {
 		}
 		if (pdp.pdp_consigne_ee) {
 			const consignesArray: FormArray = this.pdpForm.get('consignes') as FormArray;
-			consignesArray.patchValue(pdp.pdp_consigne_ee.map(v => {
-				return {id: v.consigne_ee_id, answer: v.answer, type_operation: v.type_operation, comment: v.comment};
-			}));
+			// consignesArray.patchValue(pdp.pdp_consigne_ee.map(v => {
+			// 	return {id: v.consigne_ee_id, answer: v.answer, type_operation: v.type_operation, comment: v.comment};
+			// }));
 			consignesArray.controls.map((c: FormGroup) => {
+				const index = pdp.pdp_consigne_ee.findIndex(v => v.consigne_ee_id === c.get('id').value);
+				if (index > -1) {
+					c.patchValue({
+						id: pdp.pdp_consigne_ee[index].consigne_ee_id,
+						answer: pdp.pdp_consigne_ee[index].answer,
+						type_operation: pdp.pdp_consigne_ee[index].type_operation,
+						comment: pdp.pdp_consigne_ee[index].comment
+					});
+				}
 				if (c.get('answer').value) {
 					c.get('comment').enable();
 					if (c.get('type_operation')) {
@@ -686,18 +696,17 @@ export class PdpAddFormComponent implements OnInit {
 		}
 		if (pdp.pdp_epi_disposition_ee) {
 			const epiDispositionArray: FormArray = this.pdpForm.get('epi_disposition') as FormArray;
-			epiDispositionArray.patchValue(pdp.pdp_epi_disposition_ee.map(v => {
-				return {
-					id: v.epi_disposition_ee_id,
-					answer: v.answer,
-					answer_id: v.answer_id,
-					type: v.type,
-					// is_eu: v.is_eu,
-					// is_sous_traitant: v.is_sous_traitant,
-					comment: v.comment
-				};
-			}));
 			epiDispositionArray.controls.map((c: FormGroup) => {
+				const index = pdp.pdp_epi_disposition_ee.findIndex(v => v.epi_disposition_ee_id === c.get('id').value);
+				if (index > -1) {
+					c.patchValue({
+						id: pdp.pdp_epi_disposition_ee[index].epi_disposition_ee_id,
+						answer: pdp.pdp_epi_disposition_ee[index].answer,
+						answer_id: pdp.pdp_epi_disposition_ee[index].answer_id,
+						type: pdp.pdp_epi_disposition_ee[index].type,
+						comment: pdp.pdp_epi_disposition_ee[index].comment
+					});
+				}
 				if (c.get('answer').value) {
 					c.get('comment').enable();
 					c.get('type').enable();
@@ -712,14 +721,15 @@ export class PdpAddFormComponent implements OnInit {
 		}
 		if (pdp.pdp_moyen_disposition_ee) {
 			const moyenDisposition: FormArray = this.pdpForm.get('moyen_disposition_ees') as FormArray;
-			moyenDisposition.patchValue(pdp.pdp_moyen_disposition_ee.map(v => {
-				return {
-					id: v.moyen_disposition_ee_id,
-					answer: v.answer,
-					comment: v.comment
-				};
-			}));
 			moyenDisposition.controls.map((c: FormGroup) => {
+				const index = pdp.pdp_moyen_disposition_ee.findIndex(v => v.moyen_disposition_ee_id === c.get('id').value);
+				if (index > -1) {
+					c.patchValue({
+						id: pdp.pdp_moyen_disposition_ee[index].moyen_disposition_ee_id,
+						answer: pdp.pdp_moyen_disposition_ee[index].answer,
+						comment: pdp.pdp_moyen_disposition_ee[index].comment
+					});
+				}
 				if (c.get('answer').value) {
 					c.get('comment').enable();
 					c.updateValueAndValidity();
@@ -728,53 +738,102 @@ export class PdpAddFormComponent implements OnInit {
 		}
 		if (pdp.pdp_travaux_dangereux) {
 			const travauxDangereux: FormArray = this.pdpForm.get('travaux_dangereux') as FormArray;
-			travauxDangereux.patchValue(pdp.pdp_travaux_dangereux.map(v => {
-				return {
-					id: v.travaux_dangereux_id,
-					answer: v.answer
-				};
-			}));
+			travauxDangereux.controls.map((c: FormGroup) => {
+				const index = pdp.pdp_travaux_dangereux.findIndex(v => v.travaux_dangereux_id === c.get('id').value);
+				if (index > -1) {
+					c.patchValue({
+						id: pdp.pdp_travaux_dangereux[index].travaux_dangereux_id,
+						answer: pdp.pdp_travaux_dangereux[index].answer,
+					});
+				}
+			});
 		}
 		if (pdp.pdp_answer_risques) {
 			const risques: FormArray = this.pdpForm.get('cat_pdp_risques') as FormArray;
-			const PdpRisques = pdp.pdp_answer_risques.map(v => {
-				return {
-					id: v.cat_pdp_risque_id,
-					answer: v.answer,
-					comment: v.comment,
-					is_piman: v.is_piman,
-					is_eu: v.is_eu,
-					is_sous_traitant: v.is_sous_traitant,
-					other_cat_pdp_risque: v.other_cat_pdp_risque,
-					other_pdp_moyen_risque: v.other_pdp_moyen_risque !== null ? v.other_pdp_moyen_risque : [],
-					other_pdp_situation_risque: v.other_pdp_situation_risque,
-					moyen: [...v.moyens.map(m => {
-						return {
-							id: m.pdp_risque_id,
-							answer: m.answer,
-							comment: m.comment,
-							pdp_risque_moyen_filtre: m.moyen_filter.map(mf => {
-								return {
-									id: mf.pdp_risque_moyen_filter_id,
-									answer: mf.answer,
-									comment: mf.comment,
-								};
-							}),
-						};
-					})],
-					situation: [...v.situation.map(m => {
-						return {
-							id: m.pdp_risque_id,
-							answer: m.answer,
-							comment: m.comment,
-						};
-					})]
-				};
-			});
-			if (PdpRisques && PdpRisques.length > 0) {
+			// const PdpRisques = pdp.pdp_answer_risques.map(v => {
+			// 	return {
+			// 		id: v.cat_pdp_risque_id,
+			// 		answer: v.answer,
+			// 		comment: v.comment,
+			// 		is_piman: v.is_piman,
+			// 		is_eu: v.is_eu,
+			// 		is_sous_traitant: v.is_sous_traitant,
+			// 		other_cat_pdp_risque: v.other_cat_pdp_risque,
+			// 		other_pdp_moyen_risque: v.other_pdp_moyen_risque !== null ? v.other_pdp_moyen_risque : [],
+			// 		other_pdp_situation_risque: v.other_pdp_situation_risque,
+			// 		moyen: [...v.moyens.map(m => {
+			// 			return {
+			// 				id: m.pdp_risque_id,
+			// 				answer: m.answer,
+			// 				comment: m.comment,
+			// 				pdp_risque_moyen_filtre: m.moyen_filter.map(mf => {
+			// 					return {
+			// 						id: mf.pdp_risque_moyen_filter_id,
+			// 						answer: mf.answer,
+			// 						comment: mf.comment,
+			// 					};
+			// 				}),
+			// 			};
+			// 		})],
+			// 		situation: [...v.situation.map(m => {
+			// 			return {
+			// 				id: m.pdp_risque_id,
+			// 				answer: m.answer,
+			// 				comment: m.comment,
+			// 			};
+			// 		})]
+			// 	};
+			// });
+			if (pdp.pdp_answer_risques && pdp.pdp_answer_risques.length > 0) {
 				// this.pdpForm.setControl('cat_pdp_risques', this.FB.array(PdpRisques || []));
-				(this.pdpForm.get('cat_pdp_risques') as FormArray).patchValue(PdpRisques)
+				// (this.pdpForm.get('cat_pdp_risques') as FormArray).patchValue(PdpRisques)
 				risques.controls.map((c: FormGroup) => {
+					const index = pdp.pdp_answer_risques.findIndex(v => v.cat_pdp_risque_id === c.get('id').value);
+					if (index > -1) {
+						c.patchValue({
+							id: pdp.pdp_answer_risques[index].cat_pdp_risque_id,
+							answer: pdp.pdp_answer_risques[index].answer,
+							comment: pdp.pdp_answer_risques[index].comment,
+							is_piman: pdp.pdp_answer_risques[index].is_piman,
+							is_eu: pdp.pdp_answer_risques[index].is_eu,
+							is_sous_traitant: pdp.pdp_answer_risques[index].is_sous_traitant,
+							other_cat_pdp_risque: pdp.pdp_answer_risques[index].other_cat_pdp_risque,
+							other_pdp_moyen_risque: pdp.pdp_answer_risques[index].other_pdp_moyen_risque !== null ? pdp.pdp_answer_risques[index].other_pdp_moyen_risque : [],
+							other_pdp_situation_risque: pdp.pdp_answer_risques[index].other_pdp_situation_risque
+						});
+						(c.get('moyen') as FormArray).controls.map(m => {
+							const i = c.get('moyen').value.findIndex(v => v.pdp_risque_id === m.get('id').value);
+							if (i > -1) {
+								m.patchValue({
+									id: c.get('moyen').value[i].pdp_risque_id,
+									answer: c.get('moyen').value[i].answer,
+									comment: c.get('moyen').value[i].comment,
+								});
+								(m.get('pdp_risque_moyen_filtre') as FormArray).controls.map(s => {
+									const si = m.get('pdp_risque_moyen_filtre').value.findIndex(v => v.pdp_risque_moyen_filter_id === m.get('id').value);
+									if (si > -1) {
+										s.patchValue({
+											id: m.get('pdp_risque_moyen_filtre').value[si].pdp_risque_moyen_filter_id,
+											answer: m.get('pdp_risque_moyen_filtre').value[si].answer,
+											comment: m.get('pdp_risque_moyen_filtre').value[si].comment,
+										});
+									}
+								});
+							}
+
+						});
+						(c.get('situation') as FormArray).controls.map(m => {
+							const i = c.get('situation').value.findIndex(v => v.pdp_risque_id === m.get('id').value);
+							if (i > -1) {
+								m.patchValue({
+									id: c.get('situation').value[i].pdp_risque_id,
+									answer: c.get('situation').value[i].answer,
+									comment: c.get('situation').value[i].comment,
+								});
+							}
+						});
+					}
+
 					if (c.get('answer').value) {
 						c.get('comment').enable();
 						c.get('is_eu').enable();

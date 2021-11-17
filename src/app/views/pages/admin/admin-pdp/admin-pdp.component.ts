@@ -2,11 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {CatPdpRisquesService, PdpTypeService} from "@app/core/services";
 
 @Component({
-	selector: 'tf-pdp-admin',
-	templateUrl: './pdp-admin.component.html',
-	styleUrls: ['./pdp-admin.component.scss']
+	selector: 'tf-admin-pdp',
+	templateUrl: './../../plan-prevention/pdp-admin/pdp-admin.component.html',
+	styleUrls: ['./../../plan-prevention/pdp-admin/pdp-admin.component.scss']
 })
-export class PdpAdminComponent implements OnInit {
+export class AdminPdpComponent implements OnInit {
 
 	typeLoading = false;
 	catRiskLoading = false;
@@ -60,5 +60,4 @@ export class PdpAdminComponent implements OnInit {
 	refreshListCategories(e: Array<any>) {
 		this.listCategoriesRisks = [...e];
 	}
-
 }

@@ -1,8 +1,9 @@
-import {ChangeDetectorRef, Component, Injector, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, Injector, Input, OnInit} from '@angular/core';
 import {AdminTemplateComponent} from '@app/views/partials/layout/admin-template/admin-template.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateService} from '@ngx-translate/core';
 import {MoyenDispositionService} from '@app/core/services';
+import {PdpAdminAddModalComponent} from "@app/views/partials/layout/admins/pdp-admin-add-modal/pdp-admin-add-modal.component";
 
 @Component({
 	selector: 'tf-pdp-moyen-disposition',
@@ -21,6 +22,7 @@ export class PdpMoyenDispositionComponent extends AdminTemplateComponent impleme
 	tpl: any;
 
 	list: any[];
+	@Input() title: string;
 
 	constructor(injector: Injector) {
 		super(injector);
@@ -60,7 +62,7 @@ export class PdpMoyenDispositionComponent extends AdminTemplateComponent impleme
 
 	async getList() {
 		try {
-			const res = await this.parentService.getAllAsAdmin('moyen_disposition_ees').toPromise();
+			const res = await this.parentService.getAllAsAdmin().toPromise();
 			this.list = res.result.data;
 			this.cdr.markForCheck();
 		} catch (error) {
@@ -69,10 +71,9 @@ export class PdpMoyenDispositionComponent extends AdminTemplateComponent impleme
 	}
 
 	async addItem() {
-		await super.addItem(this.translate.instant('PDP.ACTION.ADD_MOYEN_DISPOSITION'), {
-			ordre: this.generateParentOrdre(),
-			active: 1
-		}, false);
+		const modalRef = this.modalService.open(PdpAdminAddModalComponent, {centered: true});
+		modalRef.componentInstance.title = (this.translate.instant('PDP.ACTION.ADD_MOYEN_DISPOSITION') || '...');
+		modalRef.result.then(payload => this.createItem(payload, {ordre: this.generateParentOrdre()}, false), payload => this.createItem(payload, {ordre: this.generateParentOrdre()}, false));
 	}
 
 	async deleteItem({id}) {

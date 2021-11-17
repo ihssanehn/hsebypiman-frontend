@@ -1,8 +1,9 @@
-import {ChangeDetectorRef, Component, Injector, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, Injector, Input, OnInit} from '@angular/core';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateService} from '@ngx-translate/core';
 import {AdminTemplateComponent} from '@app/views/partials/layout/admin-template/admin-template.component';
 import {EpiDispositionService} from '@app/core/services';
+import {PdpAdminAddModalComponent} from "@app/views/partials/layout/admins/pdp-admin-add-modal/pdp-admin-add-modal.component";
 
 @Component({
 	selector: 'tf-pdp-epi-disposition',
@@ -20,6 +21,7 @@ export class PdpEpiDispositionComponent extends AdminTemplateComponent implement
 	tpl: any;
 
 	list: any[];
+	@Input() title: string;
 
 	constructor(injector: Injector) {
 		super(injector);
@@ -57,7 +59,7 @@ export class PdpEpiDispositionComponent extends AdminTemplateComponent implement
 
 	async getList() {
 		try {
-			const res = await this.parentService.getAllAsAdmin('epi_disposition_ees').toPromise();
+			const res = await this.parentService.getAllAsAdmin().toPromise();
 			this.list = res.result.data;
 			this.cdr.markForCheck();
 		} catch (error) {
@@ -66,10 +68,9 @@ export class PdpEpiDispositionComponent extends AdminTemplateComponent implement
 	}
 
 	async addItem() {
-		await super.addItem(this.translate.instant('PDP.ACTION.ADD_EPI_DISPOSITION'), {
-			ordre: this.generateParentOrdre(),
-			active: 1
-		}, false);
+		const modalRef = this.modalService.open(PdpAdminAddModalComponent, {centered: true});
+		modalRef.componentInstance.title = (this.translate.instant('PDP.ACTION.ADD_EPI_DISPOSITION') || '...');
+		modalRef.result.then(payload => this.createItem(payload, {ordre: this.generateParentOrdre()}, false), payload => this.createItem(payload, {ordre: this.generateParentOrdre()}, false));
 	}
 
 	async deleteItem({id}) {

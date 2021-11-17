@@ -59,7 +59,7 @@ export class PdpRisquesComponent extends AdminTemplateComponent implements OnIni
 
 	async getList() {
 		try {
-			const res = await this.parentService.getAllAsAdmin('pdp_risques').toPromise();
+			const res = await this.parentService.getAllAsAdmin().toPromise();
 			this.list = res.result.data;
 			this.cdr.markForCheck();
 		} catch (error) {

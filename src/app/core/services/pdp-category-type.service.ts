@@ -7,49 +7,44 @@ import {JsonResponse} from '@app/core/_base/layout/models/jsonResponse.model';
 import {map} from 'rxjs/operators';
 
 
-export class CatPdpRisquesService extends HttpService {
+export class PdpCategoryTypeService extends HttpService {
 
-	baseUrl = environment.apiBaseUrl + 'cat_pdp_risques';
+	baseUrl = environment.apiBaseUrl + 'cat_pdp_risques/';
 
 	constructor(
 		private http: HttpClient,
 		private router: Router
 	) {
-		super();
+		super()
 	}
 
 	getAll(params = {}) {
-		return this.http.post<JsonResponse<any[]>>(this.baseUrl, {...params});
+		return this.http.post<JsonResponse<any[]>>(this.baseUrl + 'getCategoriesByType', {...params});
 	}
 
 	getAllAsAdmin(params = {}) {
-		const extendparams = {...params};
+		var extendparams = {...params}
 		extendparams['fromAdmin'] = true;
-		return this.http.post<JsonResponse<any[]>>(this.baseUrl, {...extendparams});
-	}
-
-	get(item_id) {
-		return this.http.get<any>(this.baseUrl + '/' + item_id)
-			.pipe(map(result => result.result.data));
+		return this.http.post<JsonResponse<any[]>>(this.baseUrl + 'getCategoriesByType', {...extendparams});
 	}
 
 	create(payload) {
-		return this.http.post<any>(`${this.baseUrl}/create`, payload)
+		return this.http.post<any>(`${this.baseUrl}linkCategoryWithTypePdp`, payload)
 			.pipe(map(result => result.result.data));
 	}
 
 	update(payload) {
-		return this.http.put<any>(`${this.baseUrl}/${payload.id}`, payload)
+		return this.http.put<any>(`${this.baseUrl}${payload.id}`, payload)
 			.pipe(map(result => result.result.data));
 	}
 
-	delete(id) {
-		return this.http.delete<any>(`${this.baseUrl}/${id}`)
+	delete(payload) {
+		return this.http.post<any>(`${this.baseUrl}disLinkCategoryWithTypePdp`, payload)
 			.pipe(map(result => result.result.data));
 	}
 
 	updateOrders(payload) {
-		return this.http.post<any>(`${environment.apiBaseUrl}updateOrders`, payload);
+		return this.http.post<any>(`${environment.apiBaseUrl}updateOrders`, payload)
 	}
 
 

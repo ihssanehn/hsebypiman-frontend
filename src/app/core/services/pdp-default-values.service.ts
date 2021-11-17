@@ -7,15 +7,15 @@ import {JsonResponse} from '@app/core/_base/layout/models/jsonResponse.model';
 import {map} from 'rxjs/operators';
 
 
-export class CatPdpRisquesService extends HttpService {
+export class PdpDefaultValuesService extends HttpService {
 
-	baseUrl = environment.apiBaseUrl + 'cat_pdp_risques';
+	baseUrl = environment.apiBaseUrl + 'default_pdp_value';
 
 	constructor(
 		private http: HttpClient,
 		private router: Router
 	) {
-		super();
+		super()
 	}
 
 	getAll(params = {}) {
@@ -23,14 +23,9 @@ export class CatPdpRisquesService extends HttpService {
 	}
 
 	getAllAsAdmin(params = {}) {
-		const extendparams = {...params};
+		var extendparams = {...params}
 		extendparams['fromAdmin'] = true;
 		return this.http.post<JsonResponse<any[]>>(this.baseUrl, {...extendparams});
-	}
-
-	get(item_id) {
-		return this.http.get<any>(this.baseUrl + '/' + item_id)
-			.pipe(map(result => result.result.data));
 	}
 
 	create(payload) {
@@ -49,7 +44,7 @@ export class CatPdpRisquesService extends HttpService {
 	}
 
 	updateOrders(payload) {
-		return this.http.post<any>(`${environment.apiBaseUrl}updateOrders`, payload);
+		return this.http.post<any>(`${environment.apiBaseUrl}updateOrders`, payload)
 	}
 
 

@@ -376,7 +376,6 @@
 					</div>
 				</mat-expansion-panel>
 
-
 				<mat-expansion-panel [expanded]="isExpanded" [disabled]="isDisableToggle" *ngIf="this.pdpPiman">
 					<mat-expansion-panel-header>
 						<div class="tf-heading tf-heading--lg col-12">
@@ -586,7 +585,11 @@
 							<ng-container *ngFor="let risk of pdp.pdp_answer_risques">
 								<div class="mb-3 col-md-12 col-lg-6" *ngIf="risk.answer">
 									<div class="card">
-										<h4><b>{{risk.cat_pdp_risque?.label}}</b></h4>
+										<h4><b>{{risk.cat_pdp_risque?.label}}
+										<ng-container *ngIf="risk?.other_cat_pdp_risque">
+											: {{risk?.other_cat_pdp_risque}}
+										</ng-container>
+										</b></h4>
 										<ng-container>
 											<div class="box box-info" style="flex: 1;">
 												<h6><b>{{'PDP.RELATED_SITUATION' | translate}}</b></h6>
@@ -600,8 +603,7 @@
 															</li>
 														</ng-container>
 														<ng-container *ngIf="risk.other_pdp_situation_risque">
-															<li class="pdp-label font-italic">{{'PDP.OTHER_SITUATION' | translate}}
-																: {{risk.other_pdp_situation_risque}}</li>
+															<li class="pdp-label font-italic">{{risk.other_pdp_situation_risque}}</li>
 														</ng-container>
 														<ng-container
 															*ngIf="!risk.situation.length && !risk.other_pdp_situation_risque">
@@ -640,10 +642,7 @@
 														</ng-container>
 														<ng-container
 															*ngIf="risk.other_pdp_moyen_risque && risk.other_pdp_moyen_risque?.length > 0">
-															<li class="pdp-label font-italic">{{'PDP.OTHER_METHOD' | translate}}
-																:
-																<span class="mx-1"
-																	  *ngFor="let otherM of risk.other_pdp_moyen_risque">{{otherM?.comment || '-'}}</span>
+															<li class="pdp-label font-italic"  *ngFor="let otherM of risk.other_pdp_moyen_risque">{{otherM?.comment || '-'}}
 															</li>
 														</ng-container>
 														<ng-container
@@ -661,7 +660,7 @@
 												<h6><b>{{'PDP.PERSON_IN_CHARGE' | translate}}</b></h6>
 												<div class="row">
 													<ul [ngClass]="!risk.is_eu && !risk.is_piman && !risk.is_sous_traitant?'col-md-12 my-2': ''">
-														<li class="pdp-label" *ngIf="risk.is_eu">EE</li>
+														<li class="pdp-label" *ngIf="risk.is_eu">EU</li>
 														<li class="pdp-label" *ngIf="risk.is_piman">PIMAN</li>
 														<li class="pdp-label"
 															*ngIf="risk.is_sous_traitant">{{'PDP.SUBCONTRACTOR' | translate}}</li>

@@ -1,6 +1,6 @@
 <div>
 	<div class="d-flex justify-content-between pointer" (click)="tpl.collapsed = !tpl.collapsed" >
-		<h3 class="m-0">{{ tpl?.title }}</h3>
+		<h3 class="m-0">{{ title ? (title | translate) : tpl?.title }}</h3>
 		<div class="">
 
 			<a (click)="$event.stopPropagation(); addItem()" matTooltip="{{'ACTION.ADD' | translate}}" data-ktportlet-tool="add" class="btn btn-sm btn-icon btn-clean btn-icon-md">

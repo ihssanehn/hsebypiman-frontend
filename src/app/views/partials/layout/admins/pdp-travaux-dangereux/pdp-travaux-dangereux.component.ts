@@ -1,8 +1,9 @@
-import {ChangeDetectorRef, Component, Injector, OnInit} from '@angular/core';
-import {AdminTemplateComponent} from "@app/views/partials/layout/admin-template/admin-template.component";
-import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {CatRisqueService, PdpService, RisqueService, TravauxDangereuxService} from "@app/core/services";
-import {TranslateService} from "@ngx-translate/core";
+import {ChangeDetectorRef, Component, Injector, Input, OnInit} from '@angular/core';
+import {AdminTemplateComponent} from '@app/views/partials/layout/admin-template/admin-template.component';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {TravauxDangereuxService} from '@app/core/services';
+import {TranslateService} from '@ngx-translate/core';
+import {PdpAdminAddModalComponent} from "@app/views/partials/layout/admins/pdp-admin-add-modal/pdp-admin-add-modal.component";
 
 @Component({
 	selector: 'tf-pdp-travaux-dangereux',
@@ -22,6 +23,8 @@ export class PdpTravauxDangereuxComponent extends AdminTemplateComponent impleme
 
 	list: any[];
 
+	@Input() title: string;
+
 	constructor(injector: Injector) {
 		super(injector);
 		this.cdr = injector.get(ChangeDetectorRef);
@@ -34,24 +37,24 @@ export class PdpTravauxDangereuxComponent extends AdminTemplateComponent impleme
 		super.ngOnInit();
 		this.refreshTranslations();
 		this.tpl = {
-			title: this.translate.instant("PDP.CARD.TRAVAUX.SHORTTITLE"),
-			deletedMessage: this.translate.instant("PDP.NOTIF.ELEMENT_NOT_DELETED.TITLE"),
-			deletedChildMessage: this.translate.instant("PDP.NOTIF.ELEMENT_NOT_DELETED.SUBTITLE"),
+			title: this.translate.instant('PDP.CARD.TRAVAUX.SHORTTITLE'),
+			deletedMessage: this.translate.instant('PDP.NOTIF.ELEMENT_NOT_DELETED.TITLE'),
+			deletedChildMessage: this.translate.instant('PDP.NOTIF.ELEMENT_NOT_DELETED.SUBTITLE'),
 			collapsed: true,
 			canUpdateTitle: false,
 			titleOject: null,
 			childCol: 12
-		}
+		};
 	}
 
 	refreshTranslations() {
-		this.translate.stream("PDP.CARD.TRAVAUX.SHORTTITLE").subscribe(x => {
+		this.translate.stream('PDP.CARD.TRAVAUX.SHORTTITLE').subscribe(x => {
 			this.tpl.title = x;
 		});
-		this.translate.stream("PDP.NOTIF.ELEMENT_NOT_DELETED.TITLE").subscribe(x => {
+		this.translate.stream('PDP.NOTIF.ELEMENT_NOT_DELETED.TITLE').subscribe(x => {
 			this.tpl.deletedMessage = x;
 		});
-		this.translate.stream("PDP.NOTIF.ELEMENT_NOT_DELETED.SUBTITLE").subscribe(x => {
+		this.translate.stream('PDP.NOTIF.ELEMENT_NOT_DELETED.SUBTITLE').subscribe(x => {
 			this.tpl.deletedChildMessage = x;
 		});
 	}
@@ -59,7 +62,7 @@ export class PdpTravauxDangereuxComponent extends AdminTemplateComponent impleme
 
 	async getList() {
 		try {
-			var res = await this.parentService.getAllAsAdmin('travaux_dangereux').toPromise();
+			let res = await this.parentService.getAllAsAdmin().toPromise();
 			this.list = res.result.data;
 			this.cdr.markForCheck();
 		} catch (error) {
@@ -68,14 +71,14 @@ export class PdpTravauxDangereuxComponent extends AdminTemplateComponent impleme
 	}
 
 	async addItem() {
-		await super.addItem(this.translate.instant("PDP.ACTION.ADD_TRAVAUX"), {
-			ordre: this.generateParentOrdre(),
-			active: 1
-		}, false);
+		const modalRef = this.modalService.open(PdpAdminAddModalComponent, {centered: true});
+		modalRef.componentInstance.title = (this.translate.instant('PDP.ACTION.ADD_TRAVAUX') || '...');
+		modalRef.componentInstance.showCommentOption = false;
+		modalRef.result.then(payload => this.createItem(payload, {ordre: this.generateParentOrdre()}, false), payload => this.createItem(payload, {ordre: this.generateParentOrdre()}, false));
 	}
 
 	async deleteItem({id}) {
-		super.deleteItem({id}, {title: this.translate.instant("PDP.NOTIF.TRAVAUX_ARCHIVED.TITLE")});
+		super.deleteItem({id}, {title: this.translate.instant('PDP.NOTIF.TRAVAUX_ARCHIVED.TITLE')});
 	}
 
 	async updateOrders(datas) {

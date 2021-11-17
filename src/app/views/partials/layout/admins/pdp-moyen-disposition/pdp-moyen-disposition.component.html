@@ -1,6 +1,6 @@
 <div>
 	<div class="d-flex justify-content-between pointer" (click)="tpl.collapsed = !tpl.collapsed" >
-		<h3 class="m-0">{{ tpl?.title }}</h3>
+		<h3 class="m-0">{{ title ? (title | translate) : tpl?.title }}</h3>
 		<div class="">
 
 			<a (click)="$event.stopPropagation(); addItem()" matTooltip="{{'ACTION.ADD' | translate}}" data-ktportlet-tool="add" class="btn btn-sm btn-icon btn-clean btn-icon-md">
@@ -18,7 +18,7 @@
 	<div class="row collapse" [ngClass]="{'show' : !tpl?.collapsed }" data-parent="#group">
 		<div class="col-{{tpl?.childCol}}">
 
-			<tf-admin-basic-list-portlet [items]="list" (onSaveItem)="saveItem($event)" (onRefreshItem)="getItem($event)" (onDeleteItem)="deleteItem($event)" (onUpdateOrders)="updateOrders($event)"></tf-admin-basic-list-portlet>
+			<tf-admin-basic-list-portlet [items]="list" [addedColumns]="[{title : 'COMMON.HAS_COMMENT.TITLE', key : 'is_with_comment'}]" (onSaveItem)="saveItem($event)" (onRefreshItem)="getItem($event)" (onDeleteItem)="deleteItem($event)" (onUpdateOrders)="updateOrders($event)"></tf-admin-basic-list-portlet>
 
 		</div>
 	</div>

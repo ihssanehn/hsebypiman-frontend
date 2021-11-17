@@ -18,7 +18,7 @@
 		"EXPORT": "Exporter la liste",
 		"EXPORT_PDF": "Exporter en PDF",
 		"FOLLOWING": "Suite",
-		"MAILS_SENDED" : "Email(s) envoyé(s) avec succès",
+		"MAILS_SENDED": "Email(s) envoyé(s) avec succès",
 		"READ": "Consulter",
 		"REDUCE": "Réduire",
 		"REFRESH": "Rafraîchir",
@@ -27,9 +27,10 @@
 		"SHOW_USER": "Voir l'utilisateur",
 		"SHOW_VISIT": "Voir la visite",
 		"SIGN": "Signer",
-		"SELECT":"Selectionner",
+		"SELECT": "Selectionner",
 		"VALIDATE": "Valider le plan de prévention",
-		"SEND_BY_MAIL" : "Envoyer le Pdp par mail"
+		"SEND_BY_MAIL": "Envoyer le Pdp par mail",
+		"TO_SIGN": "Définir le statut sur 'Pour signer'"
 	},
 	"ARS": {
 		"ACTION": {
@@ -369,6 +370,8 @@
 		"LIST_OF_WORKS": "Liste des travaux",
 		"LIST_OF_HAZARDOUS_WORK_DESC": "Pour rappel, un plan de prévention écrit doit être réalisé entre l’entreprise utilisatrice (EU) et l’entreprise extérieure (EE) avant le commencement des travaux dans le cas où le nombre total d’heures de travail prévu pour réaliser les travaux est au moins de 400 heures sur 12 mois, ou bien si les travaux figurent sur la liste des travaux dangereux fixé par l’arrêté du 19 mars 1993.",
 		"IDENTIFY_THE_RISKS_GENERATED_BY_COACTIVITY": "Identifier les risques générés par la coactivité",
+		"TYPES": "Types",
+		"RISKS_CATEGORIES": "Catégories de risques",
 		"RELATED_SITUATION": "Situation liée",
 		"PREVENTION_METHOD_DEPLOYED": "Moyen(s) de prévention déployé(s)",
 		"PERSON_IN_CHARGE": "Responsable(s)",
@@ -400,15 +403,16 @@
 		"OTHER_SITUATION": "Autre situation",
 		"OTHER_METHOD": "Autre méthode",
 		"OFFICE": "Plan de prévention bureau",
-		"FIELD":"Plan de prévention terrain",
-		"PIMAN":"Plan de prévention Piman",
-		"FIELD_DESC":"Plan de prévention : Terrain",
-		"OFFICE_DESC":"Plan de prévention : Bureau",
-		"CLIENT":"Plan de prévention Client",
-		"PIMAN_DESC":"Utiliser le formulaire de création de Piman.",
-		"CLIENT_DESC":"Plan de prévention : Client",
-		"ADD_CLIEN_PDP":"Ajouter le plan de prévention",
-		"TYPE":"Type de plan de prévention",
+		"PLAN_GENERAL": "General",
+		"FIELD": "Plan de prévention terrain",
+		"PIMAN": "Plan de prévention Piman",
+		"FIELD_DESC": "Plan de prévention : Terrain",
+		"OFFICE_DESC": "Plan de prévention : Bureau",
+		"CLIENT": "Plan de prévention Client",
+		"PIMAN_DESC": "Utiliser le formulaire de création de Piman.",
+		"CLIENT_DESC": "Plan de prévention : Client",
+		"ADD_CLIEN_PDP": "Ajouter le plan de prévention",
+		"TYPE": "Type de plan de prévention",
 		"NOTIF": {
 			"PDP_DELETED": {
 				"TITLE": "Le plan de prévention a été supprimé avec succès"
@@ -457,13 +461,16 @@
 			"PDP_RISQUE_ARCHIVED": {
 				"TITLE": "Pdp Risque archivé avec succès"
 			},
-			"STATUS_REFUSED":{
+			"TYPE_ARCHIVED": {
+				"TITLE": "Type archivé avec succès"
+			},
+			"STATUS_REFUSED": {
 				"TITLE": "Pdp refusé avec succès"
 			},
-			"STATUS_ACCEPTED":{
+			"STATUS_ACCEPTED": {
 				"TITLE": "Pdp accepté avec succès"
 			},
-			"EMAIL_SENT":{
+			"EMAIL_SENT": {
 				"TITLE": "Mail envoyé avec succès"
 			},
 			"COMMENTS": "Commentaires",
@@ -499,6 +506,16 @@
 				"NO_RISK": "Pas de risque à fournir",
 				"SHORTTITLE": "Risques",
 				"TITLE": "Pdp Risques à fournir sur place"
+			},
+			"TYPE": {
+				"NO_TYPE": "Pas de type à fournir",
+				"SHORTTITLE": "Types (ee)",
+				"TITLE": "Types (ee) à fournir sur place"
+			},
+			"DEFAULT_VALUES_PDP": {
+				"NO_DEFAULT_VALUES": "Pas de valeurs à fournir",
+				"SHORTTITLE": "Pdp (ee) valeurs par défaut",
+				"TITLE": "Pdp (ee) valeurs par défaut à fournir sur place"
 			}
 		},
 		"ACTION": {
@@ -508,6 +525,8 @@
 			"ADD_MOYEN_DISPOSITION": "Ajouter moyen disposition (ees)",
 			"ADD_CATEGORIE_PDP_RISQUE": "Ajouter Categorie Pdp Risque",
 			"ADD_PDP_RISQUE": "Ajouter Pdp Risque",
+			"ADD_PDP_CAT_TYPE": "Ajouter une catégorie dans ce type",
+			"ADD_TYPE": "Ajouter un type",
 			"SENDFORSIGN": "Envoyer pour signature",
 			"SIGN_PDP": "Signer le plan de prévention"
 		}
@@ -971,6 +990,33 @@
 		"SELECT_FILES": {
 			"SHORTTITLE": "Sélect. fichiers",
 			"TITLE": "Sélectionner un fichier"
+		},
+		"ACTIVE": {
+			"TITLE": "C'est actif ?"
+		},
+		"HAS_COMMENT": {
+			"TITLE": "A un commentaire ?"
+		},
+		"IS_TITLE": {
+			"TITLE": "Est un titre ?"
+		},
+		"IS_SELECTED": {
+			"TITLE": "Est sélectionné ?"
+		},
+		"PDP_TYPE": {
+			"TITLE": "Type"
+		},
+		"IS_OTHER": {
+			"TITLE": "Permettre de personnaliser"
+		},
+		"IS_ALWAYS_TRUE": {
+			"TITLE": "Sélectionné par défaut"
+		},
+		"IS_REQUIRED_SITUATION": {
+			"TITLE": "Obligatoire sélectionner au moins une situation"
+		},
+		"DEFAULT_RESPONSABLE": {
+			"TITLE": "Responsables par défaut"
 		}
 	},
 	"EES": {
