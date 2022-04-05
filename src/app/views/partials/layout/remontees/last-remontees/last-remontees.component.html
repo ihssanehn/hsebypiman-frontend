@@ -1,0 +1,42 @@
+<tf-portlet >
+  <div class="tf-portlet__head">
+      <div class="tf-portlet__head-label">
+          <h3 class="tf-portlet__head-title">
+              {{'REMONTEES.LAST' | translate}}
+          </h3>
+      </div>
+      <div class="tf-portlet__head-toolbar">
+          <button class="pull-right btn btn-sm btn-primary" (click)="addNewRemontee()">{{'REMONTEES.NEW.SHORTBUTTON' | translate}}</button>
+      </div>
+  </div>
+  <tf-portlet-body [class]="'tf-portlet__body--fit'" style="padding: 2em; background:#f7f7ff">
+    <ng-container *ngIf="last_remontees?.length > 0; else noRemontee">
+        <div class="box" *ngFor="let remontee of last_remontees" (click)="goToRemontee(remontee.id)">
+            <div class="first" >
+                <h5 class="text-warning">{{remontee.type?.libelle}}</h5>
+                <p><small class="font-weight-bold">{{remontee.creator | fullName}}</small><small class="pull-right text-right font-weight-bold">{{remontee.created_at | date:'dd/MM/yyyy'}}</small></p>
+                <p class="">{{remontee.description | truncate:200}}</p>
+            </div>
+            <div *ngIf="remontee.photos.length > 0; else noDocument" class="mt-4">
+                <ngb-carousel style="width:60%;margin:auto" (click)="$event.stopPropagation()">
+                    <ng-template ngbSlide *ngFor="let photo of remontee.photos; let i = index">
+                        <div class="picsum-img-wrapper" style="background:rgba(0,0,0,0.8); text-align:center" (click)="openModal(remontee.photos, i); $event.stopPropagation()">
+                            <img [src]="photo.src | safe:'resourceUrl'" [title]="photo.libelle" style="max-width: 100%; max-height: 175px; margin: auto;">
+                          </div>
+                    </ng-template>
+                </ngb-carousel>
+            </div>
+        </div>
+        <ng-template #noDocument>
+          <div class="text-center mt-4 font-italic">
+              {{'REMONTEES.NOTIF.NO_DOCUMENT' | translate}}
+          </div>
+        </ng-template>
+    </ng-container>
+    <ng-template #noRemontee>
+        <div class="text-center mt-4 font-italic">
+            {{'REMONTEES.NOTIF.NO_REMONTEE' | translate}}
+        </div>
+    </ng-template>
+  </tf-portlet-body>
+</tf-portlet>

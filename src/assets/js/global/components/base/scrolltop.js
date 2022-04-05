@@ -1,12 +1,12 @@
 "use strict";
-var KTScrolltop = function(elementId, options) {
+var TFScrolltop = function(elementId, options) {
     // Main object
     var the = this;
     var init = false;
 
     // Get element object
-    var element = KTUtil.get(elementId);
-    var body = KTUtil.get('body');
+    var element = TFUtil.get(elementId);
+    var body = TFUtil.get('body');
 
     if (!element) {
         return;
@@ -29,8 +29,8 @@ var KTScrolltop = function(elementId, options) {
          * @returns {mscrolltop}
          */
         construct: function(options) {
-            if (KTUtil.data(element).has('scrolltop')) {
-                the = KTUtil.data(element).get('scrolltop');
+            if (TFUtil.data(element).has('scrolltop')) {
+                the = TFUtil.data(element).get('scrolltop');
             } else {
                 // reset scrolltop
                 Plugin.init(options);
@@ -38,7 +38,7 @@ var KTScrolltop = function(elementId, options) {
                 // build scrolltop
                 Plugin.build();
 
-                KTUtil.data(element).set('scrolltop', the);
+                TFUtil.data(element).set('scrolltop', the);
             }
 
             return the;
@@ -52,7 +52,7 @@ var KTScrolltop = function(elementId, options) {
             the.events = [];
 
             // merge default and user defined options
-            the.options = KTUtil.deepExtend({}, defaultOptions, options);
+            the.options = TFUtil.deepExtend({}, defaultOptions, options);
         },
 
         build: function() {
@@ -76,7 +76,7 @@ var KTScrolltop = function(elementId, options) {
             }
 
             // handle button click 
-            KTUtil.addEvent(element, 'click', Plugin.scroll);
+            TFUtil.addEvent(element, 'click', Plugin.scroll);
         },
 
         /**
@@ -85,9 +85,9 @@ var KTScrolltop = function(elementId, options) {
         handle: function() {
             var pos = window.pageYOffset; // current vertical position
             if (pos > the.options.offset) {
-                KTUtil.addClass(body, the.options.toggleClass);
+                TFUtil.addClass(body, the.options.toggleClass);
             } else {
-                KTUtil.removeClass(body, the.options.toggleClass);
+                TFUtil.removeClass(body, the.options.toggleClass);
             }
         },
 
@@ -97,7 +97,7 @@ var KTScrolltop = function(elementId, options) {
         scroll: function(e) {
             e.preventDefault();
 
-            KTUtil.scrollTop(0, the.options.speed);
+            TFUtil.scrollTop(0, the.options.speed);
         },
 
 
@@ -173,5 +173,5 @@ var KTScrolltop = function(elementId, options) {
 
 // webpack support
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-    module.exports = KTScrolltop;
+    module.exports = TFScrolltop;
 }

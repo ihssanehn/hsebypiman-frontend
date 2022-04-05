@@ -1,14 +1,14 @@
 "use strict";
 
 // plugin setup
-var KTToggle = function(elementId, options) {
+var TFToggle = function(elementId, options) {
     // Main object
     var the = this;
     var init = false;
 
     // Get element object
-    var element = KTUtil.get(elementId);
-    var body = KTUtil.get('body');  
+    var element = TFUtil.get(elementId);
+    var body = TFUtil.get('body');  
 
     if (!element) {
         return;
@@ -30,8 +30,8 @@ var KTToggle = function(elementId, options) {
          */
 
         construct: function(options) {
-            if (KTUtil.data(element).has('toggle')) {
-                the = KTUtil.data(element).get('toggle');
+            if (TFUtil.data(element).has('toggle')) {
+                the = TFUtil.data(element).get('toggle');
             } else {
                 // reset menu
                 Plugin.init(options);
@@ -39,7 +39,7 @@ var KTToggle = function(elementId, options) {
                 // build menu
                 Plugin.build();
 
-                KTUtil.data(element).set('toggle', the);
+                TFUtil.data(element).set('toggle', the);
             }
 
             return the;
@@ -53,20 +53,20 @@ var KTToggle = function(elementId, options) {
             the.events = [];
 
             // merge default and user defined options
-            the.options = KTUtil.deepExtend({}, defaultOptions, options);
+            the.options = TFUtil.deepExtend({}, defaultOptions, options);
 
-            the.target = KTUtil.get(the.options.target);
+            the.target = TFUtil.get(the.options.target);
             the.targetState = the.options.targetState;
             the.togglerState = the.options.togglerState;
 
-            the.state = KTUtil.hasClasses(the.target, the.targetState) ? 'on' : 'off';
+            the.state = TFUtil.hasClasses(the.target, the.targetState) ? 'on' : 'off';
         },
 
         /**
          * Setup toggle
          */
         build: function() {
-            KTUtil.addEvent(element, 'mouseup', Plugin.toggle);
+            TFUtil.addEvent(element, 'mouseup', Plugin.toggle);
         },
         
         /**
@@ -94,10 +94,10 @@ var KTToggle = function(elementId, options) {
         toggleOn: function() {
             Plugin.eventTrigger('beforeOn');
 
-            KTUtil.addClass(the.target, the.targetState);
+            TFUtil.addClass(the.target, the.targetState);
 
             if (the.togglerState) {
-                KTUtil.addClass(element, the.togglerState);
+                TFUtil.addClass(element, the.togglerState);
             }
 
             the.state = 'on';
@@ -115,10 +115,10 @@ var KTToggle = function(elementId, options) {
         toggleOff: function() {
             Plugin.eventTrigger('beforeOff');
 
-            KTUtil.removeClass(the.target, the.targetState);
+            TFUtil.removeClass(the.target, the.targetState);
 
             if (the.togglerState) {
-                KTUtil.removeClass(element, the.togglerState);
+                TFUtil.removeClass(element, the.togglerState);
             }
 
             the.state = 'off';
@@ -204,7 +204,7 @@ var KTToggle = function(elementId, options) {
 
     /**
      * Attach event
-     * @returns {KTToggle}
+     * @returns {TFToggle}
      */
     the.on = function(name, handler) {
         return Plugin.addEvent(name, handler);
@@ -212,7 +212,7 @@ var KTToggle = function(elementId, options) {
 
     /**
      * Attach event that will be fired once
-     * @returns {KTToggle}
+     * @returns {TFToggle}
      */
     the.one = function(name, handler) {
         return Plugin.addEvent(name, handler, true);
@@ -226,5 +226,5 @@ var KTToggle = function(elementId, options) {
 
 // webpack support
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-    module.exports = KTToggle;
+    module.exports = TFToggle;
 }

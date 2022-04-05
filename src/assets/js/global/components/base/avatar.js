@@ -1,12 +1,12 @@
 // plugin setup
-var KTAvatar = function(elementId, options) {
+var TFAvatar = function(elementId, options) {
     // Main object
     var the = this;
     var init = false;
 
     // Get element object
-    var element = KTUtil.get(elementId);
-    var body = KTUtil.get('body');
+    var element = TFUtil.get(elementId);
+    var body = TFUtil.get('body');
 
     if (!element) {
         return;
@@ -26,8 +26,8 @@ var KTAvatar = function(elementId, options) {
          */
 
         construct: function(options) {
-            if (KTUtil.data(element).has('avatar')) {
-                the = KTUtil.data(element).get('avatar');
+            if (TFUtil.data(element).has('avatar')) {
+                the = TFUtil.data(element).get('avatar');
             } else {
                 // reset menu
                 Plugin.init(options);
@@ -35,7 +35,7 @@ var KTAvatar = function(elementId, options) {
                 // build menu
                 Plugin.build();
 
-                KTUtil.data(element).set('avatar', the);
+                TFUtil.data(element).set('avatar', the);
             }
 
             return the;
@@ -48,13 +48,13 @@ var KTAvatar = function(elementId, options) {
             the.element = element;
             the.events = [];
 
-            the.input = KTUtil.find(element, 'input[type="file"]');
-            the.holder = KTUtil.find(element, '.tf-avatar__holder');
-            the.cancel = KTUtil.find(element, '.tf-avatar__cancel');
-            the.src = KTUtil.css(the.holder, 'backgroundImage');
+            the.input = TFUtil.find(element, 'input[type="file"]');
+            the.holder = TFUtil.find(element, '.tf-avatar__holder');
+            the.cancel = TFUtil.find(element, '.tf-avatar__cancel');
+            the.src = TFUtil.css(the.holder, 'backgroundImage');
 
             // merge default and user defined options
-            the.options = KTUtil.deepExtend({}, defaultOptions, options);
+            the.options = TFUtil.deepExtend({}, defaultOptions, options);
         },
 
         /**
@@ -62,26 +62,26 @@ var KTAvatar = function(elementId, options) {
          */
         build: function() {
             // Handle avatar change
-            KTUtil.addEvent(the.input, 'change', function(e) {
+            TFUtil.addEvent(the.input, 'change', function(e) {
                 e.preventDefault();
 
 	            if (the.input && the.input.files && the.input.files[0]) {
 	                var reader = new FileReader();
 	                reader.onload = function(e) {
-	                    KTUtil.css(the.holder, 'background-image', 'url('+e.target.result +')');
+	                    TFUtil.css(the.holder, 'background-image', 'url('+e.target.result +')');
 	                }
 	                reader.readAsDataURL(the.input.files[0]);
 
-	                KTUtil.addClass(the.element, 'tf-avatar--changed');
+	                TFUtil.addClass(the.element, 'tf-avatar--changed');
 	            }
             });
 
             // Handle avatar cancel
-            KTUtil.addEvent(the.cancel, 'click', function(e) {
+            TFUtil.addEvent(the.cancel, 'click', function(e) {
                 e.preventDefault();
 
-	            KTUtil.removeClass(the.element, 'tf-avatar--changed');
-	            KTUtil.css(the.holder, 'background-image', the.src);
+	            TFUtil.removeClass(the.element, 'tf-avatar--changed');
+	            TFUtil.css(the.holder, 'background-image', the.src);
 	            the.input.value = "";
             });
         },
@@ -90,7 +90,7 @@ var KTAvatar = function(elementId, options) {
          * Trigger events
          */
         eventTrigger: function(name) {
-            //KTUtil.triggerCustomEvent(name);
+            //TFUtil.triggerCustomEvent(name);
             for (var i = 0; i < the.events.length; i++) {
                 var event = the.events[i];
                 if (event.name == name) {
@@ -152,5 +152,5 @@ var KTAvatar = function(elementId, options) {
 
 // webpack support
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-    module.exports = KTAvatar;
+    module.exports = TFAvatar;
 }

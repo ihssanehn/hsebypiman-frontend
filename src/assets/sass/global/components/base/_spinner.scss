@@ -17,7 +17,6 @@ $tf-spinner-config: (
 // Spinner Default
 .tf-spinner {
 	position: relative;
-
 	&:before {
         content: '';
         box-sizing: border-box;
@@ -56,6 +55,7 @@ $tf-spinner-config: (
     // Input mode
     &.tf-spinner--input {
         &.tf-spinner--right {
+            
             &:before {
                 left: auto;
                 right: $input-btn-padding-x;

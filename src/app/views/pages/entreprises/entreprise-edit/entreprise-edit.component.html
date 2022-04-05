@@ -1,0 +1,26 @@
+<!-- <div class="row row-filters" style="height: 69px;">
+</div> -->
+
+<form [formGroup]="entrepriseForm" *ngIf="loaded; else loading" autocomplete="off" class="tf-form tf-form--group-seperator-dashed " novalidate (ngSubmit)="entrepriseForm.valid && onSubmit()" fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+	<tf-portlet class="main-portlet-form" id="portlet-ar">
+		<div class="tf-portlet-header ">
+			<span class="title">
+				<a [routerLink]="['/entreprises/list']">{{'MENU.SUB_ENTREPRISES.LIST' | translate}}</a>
+				<span class="divider">></span>
+				<span class="id-item">{{'MENU.SUB_ENTREPRISES.EDIT' | translate}}</span>
+			</span>
+		</div>
+		<tf-entreprise-form [entrepriseForm]="entrepriseForm" [formStatus]="formStatus" [edit]="true" (onSubmit)="onSubmit()" (onCancel)="cancel()"></tf-entreprise-form>
+	</tf-portlet>
+	<div>
+		<button mat-raised-button [ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': formloading}" [disabled]="formloading || entrepriseForm.invalid" color="success" class="pull-right">
+			{{'ACTION.SAVE' | translate}}
+		</button>
+		<button type="button" mat-raised-button color="info" (click)="cancel()">
+			{{'ACTION.CANCEL' | translate}}
+		</button>
+	</div>
+</form>
+<ng-template #loading>
+	{{'EES.NOTIF.LOADING.TITLE' | translate}}
+</ng-template>

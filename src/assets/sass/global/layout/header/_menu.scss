@@ -55,12 +55,14 @@
 		.tf-header-menu {
 			.tf-menu__nav {
 				> .tf-menu__item {
-					margin: auto 1.25rem;
+					margin-bottom: auto;
 					// Link
 					> .tf-menu__link {
-						padding: 0.75rem 0;
+						padding: 1.5rem 1rem 0.75rem;
+						text-align: center;
 						position: relative;
-						border-bottom: 2.5px solid transparent;
+						// border-bottom: 2.5px solid transparent;
+						border-radius: 0 0 4px 4px;
 						@include tf-rounded {
 							// border-radius: $tf-border-radius;
 						}
@@ -70,7 +72,24 @@
 					&.tf-menu__item--here,
 					&.tf-menu__item--active {
 						> .tf-menu__link{
-							border-image: linear-gradient(to right, #20b1d3 31%, #5adeb9) 1;
+							// border-image: linear-gradient(to right, #20b1d3 31%, #5adeb9) 1;
+
+								position: relative;
+								background: rgba(255, 255, 255, 0.4);
+							
+							// &.tf-menu__item--has-children:after {
+							// 	content: '';
+							// 	position: absolute;
+							// 	bottom: 0;
+							// 	left: 50%;
+							// 	width: 0;
+							// 	height: 0;
+							// 	border: 5px solid transparent;
+							// 	border-top-color: rgba(255, 255, 255, 0.4);
+							// 	border-bottom: 0;
+							// 	margin-left: -5px;
+							// 	margin-bottom: -5px;
+							// }
 							> .tf-menu__link-text{
 								font-weight: 800;
 							}
@@ -82,8 +101,10 @@
 					&.tf-menu__item--open,
 					&.tf-menu__item--hover {
 						> .tf-menu__link {
-							border-bottom: 2.5px solid;
-							border-image: linear-gradient(to right, #20b1d3 31%, #5adeb9) 1;
+							
+							background: rgba(255, 255, 255, 0.4);
+							// border-bottom: 2.5px solid;
+							// border-image: linear-gradient(to right, #20b1d3 31%, #5adeb9) 1;
 						}
 					}
 				}
@@ -135,6 +156,227 @@
 			}
 		}
 	}
+
+
+
+
+	//************************************** SUBHEADER CONF **************************************//
+
+
+	.tf-subheader-menu-wrapper {
+		display: flex;
+		width: 100%;
+		align-items: center;
+		justify-content: space-between;
+		$border: 2.5px;
+		// margin-left: 40px;
+
+		// Menu
+		.tf-header-menu {
+			.tf-menu__nav {
+				> .tf-menu__item {
+					margin: auto 1.25rem;
+					// Link
+					> .tf-menu__link {
+						padding: 0.75rem 0;
+						text-align: center;
+						position: relative;
+						border-bottom: 2.5px solid transparent;
+						@include tf-rounded {
+							// border-radius: $tf-border-radius;
+						}
+					}
+
+					// Active state
+					&.tf-menu__item--here,
+					&.tf-menu__item--active {
+						> .tf-menu__link{
+							border-image: linear-gradient(to right, #20b1d3 31%, #5adeb9) 1;
+							> .tf-menu__link-text{
+								font-weight: 800;
+							}
+						}
+					}
+
+					// Hover state
+					&:hover,
+					&.tf-menu__item--open,
+					&.tf-menu__item--hover {
+						> .tf-menu__link {
+							border-bottom: 2.5px solid;
+							border-image: linear-gradient(to right, #20b1d3 31%, #5adeb9) 1;
+						}
+					}
+				}
+			}
+		}
+	}	
+
+	// Header minimize mode
+	.tf-header--fixed.tf-header--minimize {
+		.tf-subheader-menu-wrapper  {
+			.tf-header-menu {
+				.tf-menu__nav {
+					> .tf-menu__item {
+						// Link
+						> .tf-menu__link {
+							> .tf-menu__link-icon {
+								// color: lighten(#6c7293, 3%);
+							}
+
+							> .tf-menu__link-text {
+								// color: #6c7293;
+							}
+
+							> .tf-menu__link-arrow {
+								// color: lighten(#6c7293, 3%);
+							}
+						}
+
+						// Active state
+						&.tf-menu__item--here,
+						&.tf-menu__item--active {
+							> .tf-menu__link {
+								border-bottom: 2.5px solid;
+								border-image: linear-gradient(to right, #20b1d3 31%, #5adeb9) 1;
+							}
+						}
+
+						// Hover state
+						&:hover,
+						&.tf-menu__item--open,
+						&.tf-menu__item--hover {
+							> .tf-menu__link {
+								border-bottom: 2.5px solid;
+								border-image: linear-gradient(to right, #20b1d3 31%, #5adeb9) 1;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// **********************CUSTOM SUBHEADER********************** // 
+
+	.tf-subheader.tf-custom-subheader{
+		margin-bottom: 0;
+		>.tf-container{
+			margin-left: -15px;
+			>.tf-subheader__main{
+
+				padding-bottom: 0;
+				.tf-custom-subheader-menu-wrapper {
+					display: flex;
+					width: 100%;
+					align-items: center;
+					justify-content: flex-start;
+					// margin-left: 40px;
+			
+					// Menu
+					.tf-header-menu {
+						.tf-menu__nav {
+							> .tf-menu__item {
+								margin: auto;
+								padding: 0;
+								// Link
+								> .tf-menu__link {
+									padding: 0.75rem 1.5rem;
+									text-align: center;
+									position: relative;
+									border-bottom: 2.5px solid transparent;
+									border-radius: 0 5px 0 0;
+									background: #f7f9fc;
+									box-shadow: 1px 1px 8px -4px black;								
+									// @include tf-rounded {
+									// 	border-radius: $tf-border-radius;
+									// }
+									> .tf-menu__link-text{
+										color: #141414
+									}
+								}
+			
+								
+			
+								// Active state
+								&.tf-menu__item--here,
+								&.tf-menu__item--active {
+									> .tf-menu__link{
+										z-index: 10;
+										border-image: linear-gradient(to right, #20b1d3 31%, #5adeb9) 1;
+										> .tf-menu__link-text{
+											font-weight: 800;
+											color: #000000;
+										}
+									}
+								}
+			
+								// Hover state
+								&:hover,
+								&.tf-menu__item--open,
+								&.tf-menu__item--hover {
+									> .tf-menu__link {
+										border-bottom: 2.5px solid;
+										z-index: 10;
+										// border-image: linear-gradient(to right, #20b1d3 31%, #5adeb9) 1;
+										color: #000000;
+									}
+								}
+							}
+						}
+					}
+				}	
+			
+				// Header minimize mode
+				.tf-header--fixed.tf-header--minimize {
+					.tf-custom-subheader-menu-wrapper  {
+						.tf-header-menu {
+							.tf-menu__nav {
+								> .tf-menu__item {
+									// Link
+									> .tf-menu__link {
+										> .tf-menu__link-icon {
+											// color: lighten(#6c7293, 3%);
+										}
+			
+										> .tf-menu__link-text {
+											// color: #6c7293;
+										}
+			
+										> .tf-menu__link-arrow {
+											// color: lighten(#6c7293, 3%);
+										}
+									}
+			
+									// Active state
+									&.tf-menu__item--here,
+									&.tf-menu__item--active {
+										> .tf-menu__link {
+											border-bottom: 2.5px solid;
+											border-image: linear-gradient(to right, #20b1d3 31%, #5adeb9) 1;
+										}
+									}
+			
+									// Hover state
+									&:hover,
+									&.tf-menu__item--open,
+									&.tf-menu__item--hover {
+										> .tf-menu__link {
+											border-bottom: 2.5px solid;
+											border-image: linear-gradient(to right, #20b1d3 31%, #5adeb9) 1;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+	//***************************** END ********************************//
 }
 
 // Media range(above 1024px and below 1200px)

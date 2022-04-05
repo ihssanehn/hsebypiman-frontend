@@ -11,6 +11,7 @@ import {
 	Role,
 	AuthService
 } from '../../../../../core/auth';
+import { UserService } from '@app/core/services';
 import { SubheaderService } from '../../../../../core/_base/layout';
 // import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { Paginate } from '@app/core/_base/layout/models/paginate.model';
@@ -51,6 +52,7 @@ export class UsersListComponent implements OnInit {
 	constructor(
 		private activatedRoute: ActivatedRoute,
 		private authService : AuthService,
+		private userService: UserService,
 		private router: Router,
 		// private notificationService : NzNotificationService,
 		private subheaderService: SubheaderService,
@@ -65,11 +67,13 @@ export class UsersListComponent implements OnInit {
 	}
 
 	async getUsers(){
-		// this.usersResult = await this.authService.getUsersPaginate(this.filter).toPromise();
+		// this.usersResult = await this.userService.getUsersPaginate(this.filter).toPromise();
 		this.pagination = { ...this.pagination, total: this.usersResult.total, page: this.usersResult.current_page };
 		this.filter.page = this.pagination.page;
 		this.filter.per_page = this.pagination.pageSize;
-		this.cdr.detectChanges();
+		if(!this.cdr['destroyed']){ 
+			this.cdr.detectChanges();
+		}
 	}
 
 	changePagination(){
@@ -89,7 +93,7 @@ export class UsersListComponent implements OnInit {
 	async deleteUser(_item: User) {
 
 		const _deleteMessage = `User has been deleted`;
-		this.authService.deleteUser(_item.id).toPromise();
+		this.userService.deleteUser(_item.id).toPromise();
 		// this.notificationService.info("Success", _deleteMessage);
 		this.getUsers();
 	}

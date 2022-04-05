@@ -1,0 +1,90 @@
+<ng-container [formGroup]="visiteForm">
+	<mat-expansion-panel [expanded]="isExpanded" [disabled]="isDisableToggle">
+		<mat-expansion-panel-header>
+			<div class="tf-heading tf-heading--md">| {{'VISITES.CARD.SIGNATURE.TITLE' | translate}}</div>
+		</mat-expansion-panel-header>
+		
+		<div class="row">
+			<div class="col-12 mb-4 text-right" *ngIf="needHseValidation">
+				<button mat-raised-button *ngIf="canValidateHse" (click)="validateHse()" color="{{startSignHse ? 'accent':'success'}}" class="btn-small">
+					{{startSignHse ? 'Annuler':'Validation HSE'}}
+				</button>
+				<button mat-raised-button class="btn-small ml-2" color="success" *ngIf="startSignHse" (click)="validateSignatureHse('signature_resp_hse')">
+					{{'ACTION.SAVE' | translate}}
+				</button>
+			</div>
+			<div [ngClass]="canShowHse() ? 'col-4':'col-6'" >
+				<div class="tf-card-form" >
+					<h5>{{'VISITES.CARD.SIGNATURE.EDITOR_SIGNATURE.TITLE' | translate}}</h5>
+					<div class="row form-row">
+						<div class="col-xl-12">
+							<mat-label>{{'COMMON.DATE.LABEL' | translate}} </mat-label>
+							<span class="ml-2"><strong>{{visiteForm.controls['signature_redacteur'].value.date| date:'dd/MM/yyyy'}}</strong></span>
+						</div>
+						<div class="col-xl-12 form-row-flex">
+							<label>{{'COMMON.SIGNATURE.LABEL' | translate}} </label>
+							<button mat-icon-button *ngIf="origin == 'add'" color="accent" matTooltip="{{'ACTION.CLEAR' | translate}}" (click)="clearSignature('signature_redacteur')">
+								<mat-icon>delete</mat-icon>
+							</button>
+							<div class="signature-container" #signatureContainer1 *ngIf="origin == 'add'">
+								<signature-pad #sign_canvas_redacteur (window:resize)="resizeSignaturePad()" [options]="signaturePadOptions" (onEndEvent)="drawComplete('signature_redacteur')"></signature-pad>
+							</div>
+							<div class="signature-viewer" *ngIf="origin != 'add'">
+								<img [src]="_sanitizer.bypassSecurityTrustResourceUrl(showSignature('signature_redacteur'))" *ngIf="showSignature('signature_redacteur')" width="100%">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div [ngClass]="canShowHse() ? 'col-4':'col-6'">
+				<div class="tf-card-form">
+					<h5>{{'VISITES.CARD.SIGNATURE.VISITED_SIGNATURE.TITLE' | translate}}</h5>
+					<div class="row form-row">
+						<div class="col-xl-12 ">
+							<mat-label>{{'COMMON.DATE.LABEL' | translate}} </mat-label>
+							<span class="ml-2"><strong>{{visiteForm.controls['signature_visite'].value.date| date:'dd/MM/yyyy'}}</strong></span>
+						</div>
+						<div class="col-xl-12 form-row-flex">
+							<label>{{'COMMON.SIGNATURE.LABEL' | translate}} </label>
+							<button mat-icon-button *ngIf="origin == 'add'" color="accent" matTooltip="{{'ACTION.CLEAR' | translate}}" (click)="clearSignature2('signature_visite')">
+								<mat-icon>delete</mat-icon>
+							</button>
+							<div class="signature-container" #signatureContainer2 *ngIf="origin == 'add'">
+								<signature-pad #sign_canvas_visite (window:resize)="resizeSignaturePad2()" [options]="signaturePadOptions" (onEndEvent)="drawComplete2('signature_visite')"></signature-pad>
+							</div>
+							
+							<div class="signature-viewer" *ngIf="origin != 'add'">
+								<img [src]="_sanitizer.bypassSecurityTrustResourceUrl(showSignature('signature_visite'))" *ngIf="showSignature('signature_visite')" width="100%">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<ng-container *ngIf="needHseValidation">
+				<div *ngIf="canShowHse()" class="col-4">
+					<div class="tf-card-form">
+						<h5>{{'VISITES.CARD.SIGNATURE.MANAGER_SIGNATURE.TITLE' | translate}}</h5>
+						<div class="row form-row">
+							<div class="col-xl-12 mb-4">
+								<mat-label>{{'COMMON.DATE.LABEL' | translate}} </mat-label>
+								<span class="ml-2"><strong>{{visiteForm.controls['signature_resp_hse'].controls['date'].value | date:'dd/MM/yyyy'}}</strong></span>
+							</div>
+							<div class="col-xl-12 form-row-flex">
+								<label>{{'COMMON.SIGNATURE.LABEL' | translate}} </label>
+								<button mat-icon-button *ngIf="!isDisabledHseSignature()" color="accent" matTooltip="{{'ACTION.CLEAR' | translate}}" (click)="clearSignature3('signature_resp_hse')">
+									<mat-icon>delete</mat-icon>
+								</button>
+								<div class="signature-container" #signatureContainer3 *ngIf="!isDisabledHseSignature()">
+									<signature-pad #sign_canvas_resp_hse (window:resize)="resizeSignaturePad3()" [options]="signaturePadOptions" (onEndEvent)="drawComplete3('signature_resp_hse')"></signature-pad>
+								</div>
+								<div class="signature-viewer" *ngIf="isDisabledHseSignature()">
+									<img [src]="_sanitizer.bypassSecurityTrustResourceUrl(showSignature('signature_resp_hse'))" *ngIf="showSignature('signature_resp_hse')" width="100%">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</ng-container>
+		</div>
+	</mat-expansion-panel>
+</ng-container>

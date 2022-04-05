@@ -1,0 +1,30 @@
+:host {
+
+   
+
+    background-color: #f7f9fc;
+
+    .tf-portlet.item {
+        min-height : 330px;
+    }
+
+    
+
+    .tf-separator.tf-separator--border-dashed, .tf-separator.tf-separator--dashed {
+        border-bottom: 1px dashed #dadcde;
+    }
+
+    .accordion {
+        .la {
+            transition: all .3s;
+            transform: rotate(0);
+        }
+        &.collapsed {
+            .la {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+
+}

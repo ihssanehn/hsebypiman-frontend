@@ -1,0 +1,23 @@
+<form [formGroup]="arForm" class="tf-form tf-form--group-seperator-dashed" *ngIf="ar">
+
+	<tf-portlet class="main-portlet-form" id="portlet-ar">
+		<div class="tf-portlet-header " >
+			<span class="title">
+			  <a [routerLink]="['/analyses-risque/list']">{{'MENU.SUB_ANALYSERISQUE.LIST' | translate}}</a>
+			  <span class="divider">></span>
+			  <span class="id-item">{{'MENU.SUB_ANALYSERISQUE.EDIT' | translate}}</span>
+			</span>
+        </div>
+        
+        <tf-search-chantier-form [parent]="'ar'" [data]="ar.chantier" origin="detail"></tf-search-chantier-form>
+
+	</tf-portlet>
+
+	<tf-ar-form [arForm]="arForm" [formStatus]="formStatus" [edit]="true" origin="edit"></tf-ar-form>
+	
+
+	<button mat-raised-button [ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': formloading}" [disabled]="formloading || arForm.invalid" class="btn float-right btn-save" (click)="arForm.valid && onSubmit(false)">
+		{{'ACTION.SAVE' | translate}}
+	</button>
+
+</form>

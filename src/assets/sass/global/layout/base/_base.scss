@@ -10,6 +10,9 @@ body {
 	background-color: $tf-page-body-bg-color;
 	background-position: auto top;
 	background-repeat: no-repeat;
+	background-image: url('../media/hse-png/bkg-header.png');
+	background-position: center top;
+	background-size: 100% 375px;
 
 	// Container
 	.tf-container {
@@ -19,14 +22,20 @@ body {
 	}
 }
 
+// body.tf-header--minimize{
+	// background-position: center -110px;
+// }
+
 // Subheader
 .tf-subheader {
-	padding: tf-get($tf-page-padding, desktop) 0 !important;
-	height: 120px;
+	// padding-bottom: (2 * tf-get($tf-page-padding, desktop)) !important;
+	padding-bottom: 0px !important;
+    margin-top: -50px;
+	//height: 120px;
 
-	.tf-aside--enabled & {
-		margin-left: tf-get($tf-page-padding, desktop);
-	}
+	// .tf-aside--enabled & {
+	// 	margin-left: tf-get($tf-page-padding, desktop);
+	// }
 
 	// Title
 	.tf-subheader__title {

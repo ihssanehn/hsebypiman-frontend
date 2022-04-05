@@ -26,9 +26,10 @@
 	}
 
 	&.tf-spinner--right {
+		padding-right: 3rem;
 		&:before {
 			left: auto;
-			right: 0;
+			right: $input-btn-padding-x;
 		}
 	}
 }

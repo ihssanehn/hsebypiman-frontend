@@ -1,0 +1,48 @@
+<ng-container>
+    <div class="tf-heading tf-heading--sm mt-4">
+        {{'ARS.CARD.SIGNATURE.SUBTITLE' | translate}}
+    </div>
+
+    <table mat-table [dataSource]="signatures" *ngIf="signatures.length; else noSignatures">
+
+        <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef> {{'COMMON.DATE.LABEL' | translate}} </th>
+            <td mat-cell *matCellDef="let element"> {{element.date| date:'dd/MM/yyyy'}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="fullname">
+            <th mat-header-cell *matHeaderCellDef> {{'COMMON.LASTNAME.LABEL' | translate}}&nbsp;{{'COMMON.FIRSTNAME.LABEL' | translate}} </th>
+            <td mat-cell *matCellDef="let element">
+                <strong *ngIf="element.salarie"> {{element.salarie?.fullname}} </strong>
+                <strong *ngIf="!element.salarie"> {{element.signataire_fullname}} </strong>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="entreprise">
+            <th mat-header-cell *matHeaderCellDef> {{'COMMON.SOCIETE.LABEL' | translate}} </th>
+            <td mat-cell *matCellDef="let element"> {{element.entreprise?.raison_sociale}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="comments">
+            <th mat-header-cell *matHeaderCellDef> {{'COMMON.REMARQUE.LABEL' | translate}} </th>
+            <td mat-cell *matCellDef="let element"> {{element.commentaires}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="signature">
+            <th mat-header-cell *matHeaderCellDef> {{'COMMON.SIGNATURE.LABEL' | translate}} </th>
+            <td mat-cell *matCellDef="let element">
+                <div class="signature-viewer">
+                    <img [src]="_sanitizer.bypassSecurityTrustResourceUrl(element.signature)" width="100%">
+                </div>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+    </table>
+
+    <ng-template #noSignatures>
+        <div class="col-md-12">Aucun signataire</div>
+    </ng-template>
+
+</ng-container>

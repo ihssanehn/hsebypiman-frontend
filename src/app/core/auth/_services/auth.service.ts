@@ -4,11 +4,12 @@ import { Observable, of, BehaviorSubject } from 'rxjs';
 import { User } from '../_models/user.model';
 import { Permission } from '../_models/permission.model';
 import { Role } from '../_models/role.model';
-import { catchError, map, distinctUntilChanged } from 'rxjs/operators';
+import { catchError, map, distinctUntilChanged, timeout } from 'rxjs/operators';
 import { QueryParamsModel, QueryResultsModel } from '../../_base/crud';
 import { environment } from '../../../../environments/environment';
 import { HttpService } from '@app/core/services/http-service';
-import { NgxPermissionsService } from 'ngx-permissions';
+import { NgxRolesService, NgxPermissionsService } from 'ngx-permissions';
+import { JsonResponse } from '@app/core/_base/layout/models/jsonResponse.model';
 import { Router } from '@angular/router';
 
 
@@ -21,54 +22,90 @@ const API_ROLES_URL = environment.apiBaseUrl + "roles";
 export class AuthService extends HttpService {
     constructor(
         private http: HttpClient,
-        private permissionsService: NgxPermissionsService,
+		private permissionsService: NgxPermissionsService,
+		private rolesService: NgxRolesService,
         private router: Router
     ) {
         super();
     }
 
     
-	private currentUserSubject = new BehaviorSubject<User>(null);
+	private currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
 	public currentUser = this.currentUserSubject
-		.asObservable()
-		.pipe(distinctUntilChanged());
+		.asObservable();
 
+	public getCurrentUser():Observable<any> {
+		return this.currentUserSubject.asObservable();
+	}
+
+	public get currentUserValue(): User{
+		return this.currentUserSubject.value;
+	}
 	// Authentication/Authorization
-	login(email: string, password: string): Observable<User> {
-		return this.http.post<User>(`${this.baseUrl}auth/login`, {
-			email,
-			password
-		});
+	login(email: string, password: string): Observable<JsonResponse<User>> {
+		return this.http.post<JsonResponse<User>>(`${this.baseUrl}auth/login`, {email,password});
 	}
 
-	getUserByToken(): Observable<User> {
-		return this.http.get<User>(`${this.baseUrl}auth/user`);
+	reloadUser(){
+			return this.http.get<JsonResponse<User>>(`${this.baseUrl}auth/user`)
+			.pipe(
+				map(res=> {
+					var user = res.result.data;
+					localStorage.setItem('currentUser', JSON.stringify(user))
+					this.currentUserSubject.next(user);
+					return res;
+				})
+			)
 	}
 
-	updateProfile(payload): Observable<User> {
+	getUserByToken(){
+		return this.http.get<JsonResponse<User>>(`${this.baseUrl}auth/user`)
+		.pipe(
+			map(res=> {
+				var user = res.result.data;
+				localStorage.setItem('currentUser', JSON.stringify(user))
+				this.currentUserSubject.next(user);
+				var permissions = user.role.permissions.map(x => x.code);
+				
+				this.loadUserPermissions(permissions);
+				this.loadUserRole(user.role.code,permissions);
+				return res;
+			})
+		);
+
+		
+	}
+
+	updateProfile(payload): Observable<JsonResponse<User>> {
 		return this.http
 			.put<any>(`${this.baseUrl}auth/user`, payload)
 			.pipe(map(result => result));
 	}
 
 	logout(): Observable<any> {
-		return this.http.post(`${this.baseUrl}auth/logout`, {});
+		return this.http.post(`${this.baseUrl}auth/logout`, {}).pipe(
+			map(res=>{
+				localStorage.removeItem('currentUser');
+				this.permissionsService.flushPermissions();
+				this.rolesService.flushRoles();
+			})
+		);
 	}
 
-	register(user: User): Observable<any> {
-		const httpHeaders = new HttpHeaders();
-		httpHeaders.set("Content-Type", "application/json");
-		return this.http
-			.post<User>(API_USERS_URL, user, { headers: httpHeaders })
-			.pipe(
-				map((res: User) => {
-					return res;
-				}),
-				catchError(err => {
-					return null;
-				})
-			);
-	}
+	// register(user: User): Observable<any> {
+	// 	const httpHeaders = new HttpHeaders();
+	// 	httpHeaders.set("Content-Type", "application/json");
+	// 	return this.http
+	// 		.post<JsonResponse<User>>(API_USERS_URL, user, { headers: httpHeaders })
+	// 		.pipe(
+	// 			map((res: JsonResponse<User>) => {
+	// 				return res;
+	// 			}),
+	// 			catchError(err => {
+	// 				return null;
+	// 			})
+	// 		);
+	// }
 
 	/*
 	 * Submit forgot password request
@@ -78,44 +115,9 @@ export class AuthService extends HttpService {
 	 */
 	public requestPassword(email: string): Observable<any> {
 		return this.http
-			.get(API_USERS_URL + "/forgot?=" + email)
-			.pipe(catchError(this.handleError("forgot-password", [])));
+			.post(this.baseUrl+ "auth/password-forgot", {"email":email});
 	}
 
-	getAllUsers(): Observable<User[]> {
-        return this.http.get<User[]>(API_USERS_URL);
-        // .pipe(
-		// 	map((res: any) =>
-		// 		// res.items.map((user: User) => new User().deserialize(user))
-		// 	),
-		// 	catchError(err => {
-		// 		return null;
-		// 	})
-		// );
-	}
-
-	// getUsersPaginate(filter = {}): Observable<Paginate<User>> {
-	// 	return this.http.post<Paginate<User>>(`${this.baseUrl}users/paginate`, { ...filter });
-	// }
-
-	getUserById(userId: number): Observable<User> {
-		return this.http.get<User>(API_USERS_URL + `/${userId}`)
-	}
-
-	// DELETE => delete the user from the server
-	deleteUser(userId: number) {
-		const url = `${API_USERS_URL}/${userId}`;
-		return this.http.delete(url);
-	}
-
-	updateUser(_user: User): Observable<any> {
-		return this.http.put<any>(`${this.baseUrl}users/` + _user.id, _user).pipe(map(result => result));
-	}
-
-	// CREATE =>  POST: add a new user to the server
-	createUser(user: User): Observable<User> {
-		return this.http.post<User>(`${this.baseUrl}users`, user);
-	}
 
 	// Method from server should return QueryResultsModel(items: any[], totalsCount: number)
 	// items => filtered/sorted result
@@ -181,20 +183,33 @@ export class AuthService extends HttpService {
 		);
 	}
 
+	loadUserPermissions(array){
+		this.permissionsService.addPermission(array);
+	}
 
-
-	registerPermissions(user: User) {
-		this.currentUserSubject.next(user);
-		// this.permissionsService.loadPermissions([user.role.slug]);
+	loadUserRole(role, permissions){
+		this.rolesService.addRole(role,permissions);
+	}
+	
+	registerPermissions(res: JsonResponse<User>) {
+		var user = res.result.data;
+		this.loadUserPermissions([user.role.code]);
 	}
 
 
+	registerNewToken(res: JsonResponse<User>){
+		if(res.result.data.refresh_token){
+			localStorage.setItem(environment.authTokenKey, res.result.data.refresh_token);
+		}
+
+	}
 
 	async populate() {
 		const userToken = localStorage.getItem(environment.authTokenKey);
 		if (userToken) {
-			let user = await this.getUserByToken().toPromise();
-			this.registerPermissions(user);
+			let res = await this.getUserByToken().toPromise();
+			this.registerPermissions(res);
+			this.registerNewToken(res);
 			return true;
 		} else {
 			localStorage.removeItem(environment.authTokenKey);

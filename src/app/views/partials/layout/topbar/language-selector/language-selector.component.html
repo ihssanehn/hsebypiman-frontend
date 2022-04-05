@@ -9,14 +9,15 @@
 		<ul class="tf-nav tf-margin-t-10 tf-margin-b-10">
 			<ng-container *ngFor="let language of languages">
 				<li class="tf-nav__item" [ngClass]="{'tf-nav__item--active': language.active}">
-					<a href="javascript:;" (click)="setLanguage(language.lang)" [ngClass]="{'tf-nav__link--active': language.active}" class="tf-nav__link">
+					<button mat-button (click)="setLanguage(language.lang)" [ngClass]="{'tf-nav__link--active': language.active}" class="tf-nav__link">
 						<span class="tf-nav__link-icon">
 							<img src="{{language.flag}}">
 						</span>
 						<span class="tf-nav__link-text">{{language.name}}</span>
-					</a>
+					</button>
 				</li>
 			</ng-container>
 		</ul>
 	</div>
 </div>
+

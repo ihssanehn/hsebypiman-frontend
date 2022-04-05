@@ -1,0 +1,119 @@
+<ng-container [formGroup]="visiteForm">
+	<div class="row sticky-top justify-content-md-center">
+		<div class="col-10">
+			<div class="tf-card-form">
+				<div class="row">
+					<div class="col-xl-6 st-group">
+						<span class="st-label">{{'VISITES.PRESENCE_NC.LABEL' | translate}}</span>
+						<mat-slide-toggle color="accent" [disabled]="true" [checked]="getPresenceNc()">
+						</mat-slide-toggle>
+					</div>
+					<div class="col-xl-6 st-group">
+						<span class="st-label">{{'VISITES.HAS_RECTIF.LABEL' | translate}}<br>{{'VISITES.HAS_RECTIF.LABEL_COMP' | translate}}</span>
+						<mat-slide-toggle color="accent" [disabled]="true" [checked]="getHasRectifImmediate()">
+						</mat-slide-toggle>
+					</div>
+				</div>
+				<div class="row mt-4">
+					<div class="col-4 text-center">{{'COMMON.NUMBER_OF.SHORTTITLE' | translate}} <b>OK</b> : <b>{{getNotes().ok}}</b></div>
+					<div class="col-4 text-center">{{'COMMON.NUMBER_OF.SHORTTITLE' | translate}} <b>KO</b> : <b>{{getNotes().ko}}</b></div>
+					<div class="col-4 text-center">{{'COMMON.NUMBER_OF.SHORTTITLE' | translate}} <b>SO</b> : <b>{{getNotes().so}}</b></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row" *ngIf="etats && model && model != 'VsChantier'">
+		<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12" *ngIf="origin == 'add'; else showEtat">
+			<mat-label>{{'VISITES.ETAT.TITLE' | translate}}
+			</mat-label>
+			<mat-select class="form-control" formControlName="etat_id" name="etat_id">
+				<mat-option *ngFor="let etat of etats" [value]="etat.id">
+					{{etat.libelle}}
+				</mat-option>
+			</mat-select>
+		</mat-form-field>
+		<ng-template #showEtat>
+
+			<div class="tf-heading tf-heading--md">{{'VISITES.ETAT.TITLE' | translate}} : {{getEtat()}}</div>
+			
+		</ng-template>
+	</div>
+	<div class="row" *ngFor="let catQuestion of catQuestionsList; let i = index">
+		<div class="col-12">
+			<mat-expansion-panel [expanded]="isExpanded" [disabled]="isDisableToggle">
+				<mat-expansion-panel-header>
+					<div class="tf-heading tf-heading--md">| {{i+1}} {{catQuestion.libelle}}</div>
+				</mat-expansion-panel-header>
+				<div class="row">
+					<div class="col-12">
+						<div class="tf-card-form">
+							<div class="row mb-2">
+								<div class="col-3">{{'VISITES.QUESTION.TITLE' | translate}}</div>
+								<div class="col-3 text-center">{{'VISITES.NOTE.TITLE' | translate}}</div>
+								<div class="col-3">{{'VISITES.COMMENT.TITLE' | translate}}</div>
+								<div class="col-3">{{'VISITES.COMPLIANCE_DATE.TITLE' | translate}}</div>
+							</div>
+							<div class="row align-items-center" *ngFor="let question of catQuestion.questions; let j = index; let last = last" [ngClass]="{'text-danger':getPivot(question.id, i).invalid}">
+								<ng-container [formGroup]="getPivot(question.id, i)" >
+									<div class="col-3">
+										<span class="p2-pl-12">
+											{{(i+1) +'.'+(j+1)}} - {{question.libelle}}
+										</span>
+									</div>
+									<div class="col-3 d-inline-flex" style="justify-content: space-around;">
+										<mat-radio-group aria-label="Select an option" formControlName="note">
+											<mat-radio-button [value]="1">OK</mat-radio-button>
+											<mat-radio-button [value]="2">KO</mat-radio-button>
+											<mat-radio-button [value]="3">SO</mat-radio-button>
+										</mat-radio-group>
+									</div>
+									<div class="col-3">
+										<textarea class="form-control" rows="2" formControlName="observation" *ngIf="!getPivot(question.id,i).get('observation').disabled; else observationValue"></textarea>
+										<ng-template #observationValue>
+											{{getPivotObs(question.id, i)}}
+										</ng-template>
+									</div>
+									<div class="col-3">
+										<div class="dropdown">
+											<ng-container *ngIf="origin == 'add'; else detailMode" >
+												<div class="d-flex">
+													<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" placeholder="DD/MM/YYYY" formControlName="date_remise_conf">
+													<a class="pl-2" [ngClass]="getPivot(question.id,i).controls['note'].value == 2 ? 'text-primary':'disabled'" (click)="getPivot(question.id,i).controls['note'].value == 2 && getPivot(question.id,i).controls['date_remise_conf'].setValue(today)">
+														<i>{{'COMMON.TODAY_DATE.TITLE' | translate}}</i>
+													</a>
+												</div>
+												<div>
+													<mat-checkbox formControlName="action_to_visited" [checked]="isChecked(question.id,i)" (change)="toggleActionToVisited($event.checked, question.id, i)">
+														{{'VISITES.ASSIGNED_ACTION.TITLE' | translate}}
+													</mat-checkbox>
+												</div>
+											</ng-container>
+											<ng-template #detailMode>
+												<div class="edit-date-block">
+													<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" placeholder="DD/MM/YYYY" formControlName="date_remise_conf">
+												</div>
+											</ng-template>
+										</div>
+									</div>
+								</ng-container>
+								<div class="col-12 my-2">
+									<div class="tf-divider" *ngIf="!last">
+										<span></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</mat-expansion-panel>
+		</div>
+	</div>
+
+	<div class="row">		
+		<div class="col-xl-12 st-group">
+			<span class="st-label">{{'VISITES.AVERT.LABEL' | translate}}<br>{{'VISITES.AVERT.LABEL_COMP' | translate}}</span>
+			<mat-slide-toggle color="accent" formControlName="avertissement">
+			</mat-slide-toggle>
+		</div>
+	</div>
+</ng-container>

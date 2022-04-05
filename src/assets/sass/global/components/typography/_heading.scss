@@ -6,7 +6,7 @@
 
 .tf-heading {
 	font-size: 1.3rem;
-	font-weight: 500;
+	font-weight: bold;
 	padding: 0;
 	margin: 1.75rem 0;
 	color: tf-base-color(label, 4);
@@ -39,6 +39,10 @@
 		margin-bottom: 3rem;
 	}
 
+	&.tf-heading--xs {
+		font-size: 1rem;
+	}
+
 	&.tf-heading--sm {
 		font-size: 1.2rem;
 	}
@@ -59,23 +63,27 @@
 		font-size: 3rem;
 	}
 
-	&.tf-heading--medium{
+	&.tf-heading--medium {
 		font-weight: 600;
 	}
-	&.tf-heading--bold{
+
+	&.tf-heading--bold {
 		font-weight: 700;
 	}
-	&.tf-heading--bolder{
+
+	&.tf-heading--bolder {
 		font-weight: 900;
 	}
-	&.tf-heading--thin{
+
+	&.tf-heading--thin {
 		font-weight: 300;
 	}
 
-	&.tf-heading--no-top-margin{
+	&.tf-heading--no-top-margin {
 		margin-top: 0;
 	}
-	&.tf-heading--no-bottok-margin{
+
+	&.tf-heading--no-bottok-margin {
 		margin-bottom: 0;
 	}
 }

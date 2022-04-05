@@ -1,0 +1,101 @@
+:host::ng-deep {
+    #portlet-chantier{
+        color: black;
+        font-size:1em;
+        font-weight: bolder;
+        .tf-portlet{
+            background-color: #f7f9fc;
+            .tf-portlet-header{
+                padding: 25px 0 0 20px;
+                .title{
+                    a{
+                        color: #525252;
+                    }
+                    .divider{
+                        font-weight: bolder;
+                        color:#e49819;
+                        margin-left: 0.5em;
+                        margin-right: 0.5em;
+                    }
+                    .id-item{
+                        color: #171717;
+                        font-weight: bolder;
+                        text-transform: uppercase;
+                        padding-bottom: 0.2em;
+                        border-bottom: 2px solid #55cec7 ;
+                    }
+                }
+                .status-box{
+                    .status-icon{
+                        width:20px;
+                        height:20px; 
+                        line-height: 0;
+                    }
+                }
+            }
+            
+            .tf-portlet__body{
+                padding: 20px;
+                font-weight: bold;
+                .card{
+                    padding: 2em 2em 0;    
+                    height: 100%;
+                    // justify-content: space-between;
+                    p{
+                        text-align: right;
+                    }
+                    .label{
+                        color: #c9c9c9;
+                        text-align: left;
+                    }
+                    .blue{
+                        color: #33b5ae;
+                    }
+                    .tf-divider.h-5 span{
+                        height: 1em;
+                    }
+                    .box{
+                        padding-top: 1.5em;
+                        padding-bottom: 1.5em;
+                        h5{
+                            padding-bottom: 0.8em;
+                            border-bottom: 1px solid #EBECF1;
+                        }
+                        &.box-status{
+                            display: flex;
+                            flex-flow: column nowrap;
+                            align-items: center;
+                            .mat-icon{
+                                margin-top: 30px;
+                                margin-bottom: 30px;
+                                svg{
+                                    box-shadow: 0 32px 64px 0 rgba(0, 0, 0, 0.16);
+                                    border-radius: 50%;
+                                }
+                            }
+                        }
+                        &.box-ar-vs{
+                            .row{
+                                margin-bottom: 1rem;
+                            }
+                            p{
+                                text-align: left;
+                                margin-bottom: 2px;
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+    .big-popover{
+        width: 500px;
+        max-width: 500px;
+    }
+}
+.badge-pill {
+    padding-right: 0.7em;
+    padding-left: 0.7em;
+    border-radius: 10rem;
+}

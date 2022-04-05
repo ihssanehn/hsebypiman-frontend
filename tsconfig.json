@@ -1,12 +1,13 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "skipLibCheck": true,
+    "baseUrl": "src",
     "paths": {
-      "@app/*": ["src/app/*"],
-      "@env/*": ["src/environments/*"],
-      "@asset/*": ["src/assets/*"]
+      "@app/*": ["app/*"],
+      "@env/*": ["environments/*"],
+      "@asset/*": ["assets/*"]
     },
-    "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
@@ -23,6 +24,8 @@
       "es2018",
       "dom"
     ],
-	"allowSyntheticDefaultImports": true
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   }
 }

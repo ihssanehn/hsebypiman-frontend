@@ -1,0 +1,22 @@
+<ng-container *ngIf="imageObject">
+<div class="row">
+    <div class="col-12">
+        <div class="tf-card-form">
+
+            <div class="slide-carousel">
+                <div class="lightbox-div col-12">
+                    <div class="slide-carousel-content">
+                        <div class="img-carousel col-md-8 offset-md-2 " *ngFor="let image of imageObject; let i = index" >
+                            <img class="col-12" [src]="image.image" (click)="openModal(i)">
+                        </div>
+                    </div>
+                    <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
+                    <a class="next" (click)="plusSlides(1)">&#10095;</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</ng-container>

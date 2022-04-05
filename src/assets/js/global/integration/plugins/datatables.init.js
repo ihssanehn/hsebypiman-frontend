@@ -10,7 +10,7 @@ var defaults = {
 	}
 };
 
-if (KTUtil.isRTL()) {
+if (TFUtil.isRTL()) {
 	defaults = {
 		"language": {
 			"paginate": {
@@ -26,4 +26,4 @@ if (KTUtil.isRTL()) {
 $.extend(true, $.fn.dataTable.defaults, defaults);
 
 // fix dropdown overflow inside datatable
-KTApp.initAbsoluteDropdown('.dataTables_wrapper');
+TFApp.initAbsoluteDropdown('.dataTables_wrapper');

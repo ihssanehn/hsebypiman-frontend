@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="292" height="292" viewBox="0 0 292 292">
+    <defs>
+        <filter id="prefix__bkg" width="292" height="292" x="0" y="0" filterUnits="userSpaceOnUse">
+            <feOffset dy="32"/>
+            <feGaussianBlur result="blur" stdDeviation="32"/>
+            <feFlood flood-opacity=".161"/>
+            <feComposite in2="blur" operator="in"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+    </defs>
+    <g id="prefix__element-design" transform="translate(96 64)">
+        <g transform="translate(-96 -64)">
+            <g id="prefix__bkg-2" data-name="bkg" transform="translate(96 64)" style="fill:#55cec7;stroke:#f7f9fc;stroke-width:6px">
+                <circle cx="50" cy="50" r="50" style="stroke:none"/>
+                <circle cx="50" cy="50" r="47" style="fill:none"/>
+            </g>
+        </g>
+        <rect id="prefix__Rectangle_649" width="30" height="30" data-name="Rectangle 649" rx="3" transform="translate(35 35)" style="fill:#fff"/>
+    </g>
+</svg>

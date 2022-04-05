@@ -1,0 +1,68 @@
+.pointer{
+  cursor: pointer;
+}
+button:disabledgi{
+  cursor: not-allowed;
+}
+// MatSuccess
+.mat-button.mat-success,
+.mat-stroked-button.mat-success {
+    color: tf-get($tf-state-colors, success, base);
+}
+.mat-button.mat-success:hover,
+.mat-stroked-button.mat-success:hover {
+  background-color: #f0fff3;
+}
+
+.mat-raised-button.mat-success,
+.mat-flat-button.mat-success,
+.mat-fab.mat-success,
+.mat-mini-fab.mat-success {
+  color: #f0fff3;
+  background-color: tf-get($tf-state-colors, success, base);
+}
+
+.mat-icon-button.mat-success {
+  color:tf-get($tf-state-colors, success, base);
+}
+
+// MatInfo
+.mat-button.mat-info,
+.mat-stroked-button.mat-info {
+    color: tf-get($tf-state-colors, info, optional);
+}
+.mat-button.mat-info:hover,
+.mat-stroked-button.mat-info:hover {
+  background-color: #f0fff3;
+}
+
+.mat-raised-button.mat-info,
+.mat-flat-button.mat-info,
+.mat-fab.mat-info,
+.mat-mini-fab.mat-info {
+  color: tf-get($tf-state-colors, success, base);
+  background-color: tf-get($tf-state-colors, info, base);
+}
+
+.mat-icon-button.mat-info {
+  color:tf-get($tf-state-colors, info, optional);
+}
+// NEXT
+
+.chip-item{
+  font-size: 11px;
+  min-height: 23px!important;
+  padding: 12px 10px;
+}
+
+button.mat-button-base.btn-small{
+  line-height: 2rem;
+  .mat-button-wrapper{
+    font-size: 1rem;
+  }
+}
+
+.mat-button .mat-button-wrapper .mat-icon{
+  height: 20px;
+  width: 20px;
+}

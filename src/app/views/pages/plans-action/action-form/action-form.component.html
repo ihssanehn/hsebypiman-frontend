@@ -1,0 +1,156 @@
+<ng-container [formGroup]="actionForm">
+	<form [formGroup]="actionForm" autocomplete="off" class="tf-form tf-form--group-seperator-dashed " novalidate (ngSubmit)="submitForm(actionForm.valid)" fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+
+		<tf-portlet class="main-portlet-form">
+			<div class="tf-portlet-header">
+				<span class="title">
+				  	<a [routerLink]="['/plan-actions/list']">{{'MENU.SUB_PLANACTION.LIST' | translate}}</a>
+				  	<span class="divider">></span>
+					<span class="id-item" *ngIf="edit">{{'MENU.SUB_PLANACTION.EDIT' | translate}}</span>
+				  	<span class="id-item" *ngIf="!edit">{{'MENU.SUB_PLANACTION.ADD' | translate}}</span>
+				</span>
+			</div>
+			<tf-portlet-body>
+				<div class="tf-wizard-v4__content" data-tfwizard-type="step-content" data-tfwizard-state="current">
+					<div class="tf-form__section tf-form__section--first">
+						<div class="tf-wizard-v4__form row">
+							<div class="col-6">
+								<div class="tf-heading tf-heading--md">{{'PLANACTIONS.CARD.ORIGIN.TITLE' | translate}}</div>
+								<div class="row form-row">
+									<mat-form-field class="col-md-4 col-sm-12">
+										<mat-label>{{'PLANACTIONS.ORIGINE.LABEL' | translate}}</mat-label>
+										<mat-select class="form-control" placeholder="" formControlName="type_id" [required]="isFieldRequired('type_id')">
+											<mat-option *ngFor="let type of typesList" [value]="type.id">
+												{{ type.libelle }}
+											</mat-option>
+										</mat-select>
+										<mat-error *ngIf="isControlHasError('type_id','required')">
+											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+										</mat-error>
+									</mat-form-field>
+									<mat-form-field class="col-md-4 col-sm-12" *ngIf="selectedTypeHasCode() == 'VISITE_SECURITE'">
+										<mat-label>{{'VISITES.TYPE.LABEL' | translate}}</mat-label>
+										<mat-select class="form-control" formControlName="visite_type" [required]="isFieldRequired('visite_type')">
+											<mat-option *ngFor="let visiteType of visiteTypesList" [value]="visiteType">
+												{{ visiteType.value | translate }}
+											</mat-option>
+										</mat-select>
+										<mat-error *ngIf="isControlHasError('visite_type','required')">
+											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+										</mat-error>
+									</mat-form-field>
+									<mat-form-field class="col-md-4 col-sm-12" *ngIf="selectedTypeHasCode() == 'VISITE_SECURITE' && visitesList">
+										<mat-label>{{'VISITES.CODE.LABEL' | translate}}</mat-label>
+										<input class="form-control" matInput type="text" name="actionable" formControlName="actionable" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('actionable')" [matAutocomplete]="auto" />
+										<mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+											<mat-option *ngFor="let visite of filteredVisites | async" [value]="visite" (click)="initFilteredVisites()" style="height: 2em;line-height: 2em;">
+												{{visite.code}}
+											</mat-option>
+										</mat-autocomplete>
+										<mat-error *ngIf="isControlHasError('actionable','required')">
+											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+										</mat-error>
+									</mat-form-field>
+								</div>
+								<div class="tf-heading tf-heading--md">{{'PLANACTIONS.CARD.GENERAL_INFOS.TITLE' | translate}}</div>
+								<div class="row form-row">
+									<mat-form-field class="col-xl-12">
+										<mat-label>{{'PLANACTIONS.NAME.LABEL' | translate}}</mat-label>
+										<input class="form-control" matInput type="text" name="libelle" formControlName="libelle" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('libelle')" />
+										<mat-error *ngIf="isControlHasError('libelle','required')">
+											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+										</mat-error>
+									</mat-form-field>
+									<mat-form-field class="col-xl-12">
+										<mat-label>{{'PLANACTIONS.RISQUE.LABEL' | translate}}</mat-label>
+										<input class="form-control" matInput type="text" name="risque" formControlName="risque" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('risque')" />
+										<mat-error *ngIf="isControlHasError('risque','required')">
+											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+										</mat-error>
+									</mat-form-field>
+									<mat-form-field class="col-xl-12">
+										<mat-label>{{'PLANACTIONS.OBJECTIF.LABEL' | translate}}</mat-label>
+										<input class="form-control" matInput type="text" name="objectif" formControlName="objectif" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('objectif')" />
+										<mat-error *ngIf="isControlHasError('objectif','required')">
+											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+										</mat-error>
+									</mat-form-field>
+								</div>
+							</div>
+							<div class="col-6">
+								<div class="tf-heading tf-heading--md">{{'PLANACTIONS.CARD.ALLOCATION_DEADLINE.TITLE' | translate}}</div>
+								<div class="row form-row">
+									<mat-form-field class="col-md-6 col-sm-12">
+										<mat-label>{{'PLANACTIONS.PILOTE.LABEL' | translate}}</mat-label>
+										<mat-select class="form-control" [required]="isFieldRequired('pilote_id')" placeholder="" formControlName="pilote_id">
+											<mat-option *ngFor="let user of usersList" [value]="user.id">
+												{{ user.fullname }}
+											</mat-option>
+										</mat-select>
+										<mat-error *ngIf="isControlHasError('pilote_id','required')">
+											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+										</mat-error>
+									</mat-form-field>
+									<mat-form-field class="col-md-6 col-sm-12">
+										<mat-label>{{'PLANACTIONS.DELAI.LABEL' | translate}}</mat-label>
+										<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" formControlName="delai" [required]="isFieldRequired('delai')" placeholder="DD/MM/YYYY">
+									</mat-form-field>
+								</div>
+								<div class="tf-heading tf-heading--md">{{'PLANACTIONS.CARD.RESOLUTION.TITLE' | translate}}</div>
+								<div class="row form-row">
+									<mat-form-field class="col-md-6 col-sm-12">
+										<mat-label>{{'PLANACTIONS.REALISATION.LABEL' | translate}}</mat-label>
+										<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" formControlName="date_realisation" [required]="isFieldRequired('date_realisation')" placeholder="DD/MM/YYYY">
+									</mat-form-field>
+									<mat-form-field class="col-md-6 col-sm-12">
+										<mat-label>{{'PLANACTIONS.COMMENT.LABEL' | translate}}</mat-label>
+										<textarea class="form-control" matInput name="commentaires" formControlName="commentaires" [cdkTextareaAutosize]="true" [cdkAutosizeMinRows]="2"  [cdkAutosizeMaxRows]="20" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('commentaires')" rows="2"></textarea>
+										<mat-error *ngIf="isControlHasError('commentaires','required')">
+											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+										</mat-error>
+									</mat-form-field>
+								</div>
+								<div class="tf-heading tf-heading--md">{{'PLANACTIONS.CARD.EFFICIENCY.TITLE' | translate}}</div>
+								<div class="row form-row">
+									<mat-form-field class="col-xl-12">
+										<mat-label>{{'PLANACTIONS.EFFICACITE.LABEL' | translate}}</mat-label>
+										<input matInput class="form-control" type="string" name="efficacite" formControlName="efficacite" [required]="isFieldRequired('efficacite')" placeholder="{{'ACTION.ENTER_HERE' | translate}}" />
+										<mat-error *ngIf="isControlHasError('efficacite','required')">
+											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+										</mat-error>
+									</mat-form-field>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</tf-portlet-body>
+		</tf-portlet>
+
+		<ng-container *ngIf="formStatus">
+			<div *ngIf="formStatus.canShowErrors()" class="alert alert-danger alert-dismissible fade show" role="alert">
+				<div><strong>{{'COMMON.NOTIF.ERROR.TITLE' | translate}}</strong></div>
+				<div>
+					<ul *ngFor="let errors of formStatus.errors  |  keyvalue">
+						<li *ngFor="let error of errors.value">
+							{{error}}
+						</li>
+					</ul>
+				</div>
+			</div>			
+			<div *ngIf="formStatus.canShowSuccess()" class="alert alert-success" role="alert">
+				<div><strong>{{'COMMON.NOTIF.SUCCESS.TITLE' | translate}}</strong></div>
+				<div *ngFor="let message of formStatus.messages">{{ message }}</div>
+			</div>
+		</ng-container>
+
+		<div>
+			<button mat-raised-button [disabled]="formloading || actionForm.invalid" [ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': formloading}" color="success" class="pull-right">
+				{{'ACTION.SAVE' | translate}}
+			</button>
+			<button type="button" mat-raised-button color="info" (click)="cancelForm()">
+				{{'ACTION.CANCEL' | translate}}
+			</button>
+		</div>
+	</form>
+</ng-container>

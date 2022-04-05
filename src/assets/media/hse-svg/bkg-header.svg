@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="prefix__bkg-header-2" width="1920" height="372" data-name="bkg-header" viewBox="0 0 1920 372">
+    <defs>
+        <linearGradient id="prefix__linear-gradient" x1="1.006" x2=".381" y1="-1.329" y2="1.258" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#4cbfc6"/>
+            <stop offset=".308" stop-color="#0b50b9"/>
+            <stop offset="1" stop-color="#032989"/>
+        </linearGradient>
+        <linearGradient id="prefix__linear-gradient-3" x1=".078" x2="1.795" y1=".936" y2="-1.867" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#eaecf0" stop-opacity="0"/>
+            <stop offset=".597" stop-color="#eaecf0" stop-opacity=".227"/>
+            <stop offset=".729" stop-color="#eaecf0" stop-opacity=".4"/>
+            <stop offset="1" stop-color="#eaecf0"/>
+        </linearGradient>
+        <clipPath id="prefix__clip-path">
+            <path id="prefix__bkg-header" d="M0 0H1920V372H0z" class="prefix__cls-1"/>
+        </clipPath>
+        <style>
+            .prefix__cls-1{fill:url(#prefix__linear-gradient)}.prefix__cls-3{fill:url(#prefix__linear-gradient-3)}
+        </style>
+    </defs>
+    <g id="prefix__bkg-header-3" data-name="bkg-header">
+        <path id="prefix__bkg-header-4" d="M0 0H1920V372H0z" class="prefix__cls-1" data-name="bkg-header"/>
+        <path id="prefix__Tracé_485" d="M575.253 295.915s-6.1-109.7-195.023 0c0 0-202.059 134.085-503.271 134.085 0 0-8.671 100.553 12.658 115.791 0 0 277.3 94.469 685.635-182.834z" class="prefix__cls-3" data-name="Tracé 485" transform="translate(1450.784 -48.927)"/>
+        <path id="prefix__Tracé_486" d="M-124.363 531.607S95.506 534.656 278.347 428s182.834-103.612 234.638-103.612c0 0-188.932-170.645-420.521-60.945s-216.827 268.164-216.827 268.164z" class="prefix__cls-3" data-name="Tracé 486" transform="translate(1452.107 -165.772)"/>
+    </g>
+</svg>

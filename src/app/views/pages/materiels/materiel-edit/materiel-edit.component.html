@@ -1,0 +1,26 @@
+<!-- <div class="row row-filters" style="height: 69px;">
+</div> -->
+
+<form [formGroup]="materielForm" *ngIf="loaded; else loading" autocomplete="off" class="tf-form tf-form--group-seperator-dashed " novalidate (ngSubmit)="materielForm.valid && onSubmit()" fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+	<tf-portlet class="main-portlet-form" id="portlet-ar">
+		<div class="tf-portlet-header ">
+			<span class="title">
+				<a [routerLink]="['/materiel/list']">{{'MENU.SUB_MATERIELS.LIST' | translate}}</a>
+				<span class="divider">></span>
+				<span class="id-item">{{'MENU.SUB_MATERIELS.EDIT' | translate}}</span>
+			</span>
+		</div>
+		<tf-materiel-form [materielForm]="materielForm" [formStatus]="formStatus" [edit]="true" (onSubmit)="onSubmit()" (onCancel)="cancel()"></tf-materiel-form>
+	</tf-portlet>
+	<div>
+		<button mat-raised-button [ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': formloading}" [disabled]="formloading || materielForm.invalid" color="success" class="pull-right">
+			{{'ACTION.SAVE' | translate}}
+		</button>
+		<button type="button" mat-raised-button color="info" (click)="cancel()">
+			{{'ACTION.CANCEL' | translate}}
+		</button>
+	</div>
+</form>
+<ng-template #loading>
+	{{'MATERIELS.NOTIF.LOADING.TITLE' | translate}}
+</ng-template>

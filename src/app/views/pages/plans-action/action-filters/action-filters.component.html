@@ -1,0 +1,103 @@
+<div class="col-md-12 tf-form">
+	<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
+		<tf-portlet-body class="tf-portlet__body--fit card-filters px-5 pt-4 pb-3" >
+			<form novalidate [formGroup]="filterForm">
+				<div class="row">
+
+					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
+						<mat-label>{{'PLANACTIONS.ORIGINE.TITLE' | translate}}</mat-label>
+						<mat-select class="form-control" formControlName="type_id" name="type_id">
+							<mat-option>{{'FILTER.SEARCH_ALL' | translate}}</mat-option>
+							<mat-option *ngFor="let type of types" [value]="type.id">
+								{{type.libelle}}
+							</mat-option>
+						</mat-select>
+						<button mat-button *ngIf="formHasValue('type_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('type_id'); $event.stopPropagation()">
+							<mat-icon>clear</mat-icon>
+						</button>
+					</mat-form-field>
+
+					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
+						<mat-label>{{'PLANACTIONS.PILOTE.TITLE' | translate}}
+						</mat-label>
+						<mat-select class="form-control" formControlName="pilote_id" name="pilote_id">
+							<mat-option *ngFor="let user of users" [value]="user.id">
+								{{user.trigramme}} - {{user.fullname}}
+							</mat-option>
+						</mat-select>
+						<button mat-button *ngIf="formHasValue('pilote_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('pilote_id'); $event.stopPropagation()">
+							<mat-icon>clear</mat-icon>
+						</button>
+					</mat-form-field>
+
+					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
+						<mat-label>{{'PLANACTIONS.STATUS.TITLE' | translate}}</mat-label>
+						<mat-select class="form-control" formControlName="status_id" name="status_id">
+							<mat-option [value]="'all'">{{'FILTER.SEARCH_ALL' | translate}}</mat-option>
+							<mat-option *ngFor="let statu of status" [value]="statu.id">
+								{{statu.libelle}}
+							</mat-option>
+						</mat-select>
+						<button mat-button *ngIf="formHasValue('status_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('status_id'); $event.stopPropagation()">
+							<mat-icon>clear</mat-icon>
+						</button>
+					</mat-form-field>
+
+					<div class="col-xl-6 col-md-6 col-sm-6 col-xs-12">
+						<h6>{{'PLANACTIONS.EFFICACITE.TITLE' | translate}}</h6>
+						<mat-form-field class="col-md-6 col-xl-6">
+							<mat-label>{{'FILTER.MIN' | translate}} :</mat-label>
+							<input matInput class="form-control" type="string" formControlName="efficacite_min" name="efficacite_min">
+							<button mat-button *ngIf="formHasValue('efficacite_min')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('efficacite_min'); $event.stopPropagation()">
+								<mat-icon>clear</mat-icon>
+							</button>
+						</mat-form-field>
+						<mat-form-field class="col-md-6 col-xl-6">
+							<mat-label>{{'FILTER.MAX' | translate}} :</mat-label>
+							<input matInput class="form-control" type="string" formControlName="efficacite_max" name="efficacite_max">
+							<button mat-button *ngIf="formHasValue('efficacite_max')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('efficacite_max'); $event.stopPropagation()">
+								<mat-icon>clear</mat-icon>
+							</button>
+						</mat-form-field>
+					</div>
+
+					<div class="col-xl-6 col-md-6 col-sm-6 col-xs-12">
+						<h6>{{'COMMON.CREATED_AT.TITLE' | translate}}</h6>
+						<mat-form-field class="col-md-6 col-xl-6">
+							<mat-label>{{'COMMON.DATE_RANGE.BETWEEN.TITLE' | translate}} :</mat-label>
+							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="created_at_start" placeholder="DD/MM/YYYY">
+						</mat-form-field>
+						<mat-form-field class="col-md-6 col-xl-6">
+							<mat-label>{{'COMMON.DATE_RANGE.AND.TITLE' | translate}} :</mat-label>
+							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="created_at_end" placeholder="DD/MM/YYYY">
+						</mat-form-field>
+					</div>
+
+					<div class="col-xl-6 col-md-6 col-sm-6 col-xs-12">
+						<h6>{{'PLANACTIONS.DELAI.SHORTTITLE' | translate}}</h6>
+						<mat-form-field class="col-md-6 col-xl-6">
+							<mat-label>{{'COMMON.DATE_RANGE.BETWEEN.TITLE' | translate}} :</mat-label>
+							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="delai_start" placeholder="DD/MM/YYYY">
+						</mat-form-field>
+						<mat-form-field class="col-md-6 col-xl-6">
+							<mat-label>{{'COMMON.DATE_RANGE.AND.TITLE' | translate}} :</mat-label>
+							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="delai_end" placeholder="DD/MM/YYYY">
+						</mat-form-field>
+					</div>
+
+					<div class="col-xl-6 col-md-6 col-sm-6 col-xs-12">
+						<h6>{{'PLANACTIONS.REALISATION.TITLE' | translate}}</h6>
+						<mat-form-field class="col-md-6 col-xl-6">
+							<mat-label>{{'COMMON.DATE_RANGE.BETWEEN.TITLE' | translate}} :</mat-label>
+							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_realisation_start" placeholder="DD/MM/YYYY">
+						</mat-form-field>
+						<mat-form-field class="col-md-6 col-xl-6">
+							<mat-label>{{'COMMON.DATE_RANGE.AND.TITLE' | translate}} :</mat-label>
+							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_realisation_end" placeholder="DD/MM/YYYY">
+						</mat-form-field>
+					</div>
+				</div>
+			</form>
+		</tf-portlet-body>
+	</tf-portlet>
+</div>

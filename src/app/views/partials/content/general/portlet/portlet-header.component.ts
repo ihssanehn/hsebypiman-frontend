@@ -26,11 +26,15 @@ import { Observable, Subscription } from 'rxjs';
 				<i *ngIf="icon" [ngClass]="icon"></i>
 			</span>
 			<ng-content *ngIf="!title" select="[tfPortletTitle]"></ng-content>
-			<h3 *ngIf="title" class="tf-portlet__head-title" [innerHTML]="title"></h3>
+			<h3 *ngIf="title" class="tf-portlet__head-title" [innerHTML]="title">
+			</h3>
+		</div>
+		<div class="pull-right" class="tf-portlet__head-stats" #refStats [hidden]="!stats" [innerHtml]="stats">
 		</div>
 		<div class="tf-portlet__head-toolbar" #refTools [hidden]="hideTools">
 			<ng-content select="[tfPortletTools]"></ng-content>
 		</div>`
+
 })
 export class PortletHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
 	// Public properties
@@ -38,6 +42,8 @@ export class PortletHeaderComponent implements OnInit, AfterViewInit, OnDestroy 
 	@Input() class: string;
 	// a simple title text
 	@Input() title: string;
+	// a simple title text
+	@Input() stats: string;
 	// icon name to be added to the i tag
 	@Input() icon: string;
 	// remove title container

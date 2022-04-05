@@ -6,44 +6,136 @@ import { BaseComponent } from './views/theme/base/base.component';
 import { ErrorPageComponent } from './views/theme/content/error-page/error-page.component';
 // Auth
 import { NgxPermissionsGuard } from 'ngx-permissions';
+import { ModuleGuard } from './core/guards/module.guard';
 import { AuthGuard } from './core/auth';
+
 
 const routes: Routes = [
 	{path: 'auth', loadChildren: () => import('@app/views/pages/auth/auth.module').then(m => m.AuthModule)},
-
+	{
+		path: 'guest',
+		loadChildren: () => import('@app/views/pages/guest/guest.module').then(m => m.GuestModule),
+	},
 	{
 		path: '',
 		component: BaseComponent,
 		canActivate: [AuthGuard],
 		children: [
 			{
-				path: 'dashboard',
-				loadChildren: () => import('@app/views/pages/dashboard/dashboard.module').then(m => m.DashboardModule)
+				path: 'home',
+				loadChildren: () => import('@app/views/pages/home/home.module').then(m => m.HomeModule),
+			},
+			{
+				path: 'remontees',
+				loadChildren: () => import('@app/views/pages/remontees/remontees.module').then(m => m.RemonteesModule),
+				canActivate: [ModuleGuard],
+				data: {
+					moduleCodes: ['REMONTEE']
+				}
 			},
 			{
 				path: 'chantiers',
-				loadChildren: () => import('@app/views/pages/chantiers/chantiers.module').then(m => m.ChantiersModule)
+				loadChildren: () => import('@app/views/pages/chantiers/chantiers.module').then(m => m.ChantiersModule),
+				canActivate: [ModuleGuard],
+				data: {
+					moduleCodes: ['CHANTIER']
+				}
+			},
+			{
+				path: 'analyses-risque',
+				loadChildren: () => import('@app/views/pages/analyses-risque/ars.module').then(m => m.ArsModule),
+				canActivate: [ModuleGuard],
+				data: {
+					moduleCodes:['ANALYSE']
+				}
+			},
+			{
+				path: 'plan-de-prevention',
+				loadChildren: () => import('@app/views/pages/plan-prevention/plan-prevention.module').then(m => m.PlanPreventionModule),
+				canActivate: [ModuleGuard],
+				data: {
+					moduleCodes:['ANALYSE']
+				}
+			},
+			{
+				path: 'visites-securite',
+				loadChildren: () => import('@app/views/pages/visites-securite/visites-securite.module').then(m => m.VisitesSecuriteModule),
+				canActivate: [ModuleGuard],
+				data: {
+					moduleCodes:['VISITE']
+				}
+			},
+			{
+				path: 'plan-actions',
+				loadChildren: () => import('@app/views/pages/plans-action/plans-action.module').then(m => m.PlansActionModule),
+				canActivate: [ModuleGuard],
+				data: {
+					moduleCodes:['PLANACTION']
+				}
+			},
+			{
+				path: 'suivi-hse',
+				loadChildren: () => import('@app/views/pages/suivi-hse/suivi-hse.module').then(m => m.SuiviHseModule),
+				canActivate: [ModuleGuard],
+				data: {
+					moduleCodes:['SALARIE']
+				}
+			},
+			{
+				path: 'materiel',
+				loadChildren: () => import('@app/views/pages/materiels/materiels.module').then(m => m.MaterielsModule),
+				canActivate: [ModuleGuard],
+				data: {
+					moduleCodes:['MATERIEL']
+				}
+			},
+			{
+				path: 'entreprises',
+				loadChildren: () => import('@app/views/pages/entreprises/entreprises.module').then(m => m.EntreprisesModule),
+				canActivate: [ModuleGuard],
+				data: {
+					moduleCodes:['ENTREPRISE']
+				}
+			},
+			{
+				path: 'discuss',
+				loadChildren: () => import('@app/views/pages/discuss/discuss.module').then(m => m.DiscussModule),
+				canActivate: [ModuleGuard],
+				data: {
+					moduleCodes:['DISCUSS']
+				}
+			},
+			{
+				path: 'profile',
+				loadChildren: () => import('@app/views/pages/profile/profile.module').then(m => m.ProfileModule),
+
+			},
+			{
+				path: 'admin',
+				loadChildren: () => import('@app/views/pages/admin/admin.module').then(m => m.AdminModule),
+				canActivate: [ModuleGuard, NgxPermissionsGuard],
+				data: {
+					moduleCodes:['PARAMS'],
+					permissions: {
+						only: ['ROOT', 'ADMIN']
+					}
+				}
 			},
 			{
 				path: 'mail',
-				loadChildren: () => import('@app/views/pages/apps/mail/mail.module').then(m => m.MailModule)
-			},
-			{
-				path: 'ngbootstrap',
-				loadChildren: () => import('@app/views/pages/ngbootstrap/ngbootstrap.module').then(m => m.NgbootstrapModule)
-			},
-			{
-				path: 'material',
-				loadChildren: () => import('@app/views/pages/material/material.module').then(m => m.MaterialModule)
+				loadChildren: () => import('@app/views/pages/apps/mail/mail.module').then(m => m.MailModule),
+				canActivate: [ModuleGuard, NgxPermissionsGuard],
+				data: {
+					moduleCodes:[],
+					permissions: {
+						only: 'ADMIN'
+					}
+				}
 			},
 			// {
 			// 	path: 'user-management',
 			// 	loadChildren: () => import('@app/views/pages/user-management/user-management.module').then(m => m.UserManagementModule)
 			// },
-			{
-				path: 'wizard',
-				loadChildren: () => import('@app/views/pages/wizard/wizard.module').then(m => m.WizardModule)
-			},
 			{
 				path: 'builder',
 				loadChildren: () => import('@app/views/theme/content/builder/builder.module').then(m => m.BuilderModule)
@@ -59,8 +151,8 @@ const routes: Routes = [
 				}
 			},
 			{path: 'error/:type', component: ErrorPageComponent},
-			{path: '', redirectTo: 'dashboard', pathMatch: 'full'},
-			{path: '**', redirectTo: 'dashboard', pathMatch: 'full'}
+			{path: '', redirectTo: 'home', pathMatch: 'full'},
+			{path: '**', redirectTo: 'home', pathMatch: 'full'}
 		]
 	},
 
@@ -69,7 +161,7 @@ const routes: Routes = [
 
 @NgModule({
 	imports: [
-		RouterModule.forRoot(routes)
+		RouterModule.forRoot(routes,{onSameUrlNavigation: 'reload'})
 	],
 	exports: [RouterModule]
 })
