@@ -1,0 +1,60 @@
+<tf-search-list-bar [(ngModel)]="filter" (change)="getEntreprisesDash()" [hasAdvancedSearch]="true" [showFilters]="showFilters" (advancedSearchChange)="advancedSearchChanged($event)" class="row row-filters"></tf-search-list-bar>
+<tf-entreprise-filters [hidden]="!showFilters" (change)="udpateFilters($event)" class="row"></tf-entreprise-filters>
+<div class="row px-2 d-flex dash-row-container">
+	<div class="col-xl-3 flex-fill" >
+		<tf-portlet class="tf-portlet--height-fluid">
+			<tf-portlet-header title="{{'EES.DASH.TOP_SUBCONTRACTORS.TITLE' | translate}}"></tf-portlet-header>
+			<tf-portlet-body  [class]="'tf-portlet__body--fit'" *ngIf="stats">
+				<ng-container>
+					<tf-widget2 [label]="'raison_sociale'" (onGoTo)="goToEntreprise($event)" [data]="stats.top_budget.up"*ngIf="stats; else loading">
+						<ng-template #actionTemplate let-item="item">
+							<span class="tf-widget4__number" >{{item.chiffre_affaire | currency:'EUR':'€'}}</span>
+						</ng-template>
+					</tf-widget2>
+				</ng-container>
+			</tf-portlet-body> 
+		</tf-portlet>
+	</div>
+	<div class="col-xl-3 flex-fill" >
+		<tf-portlet class="tf-portlet--height-fluid">
+			<tf-portlet-header title="{{'EES.DASH.TOP_INTERIM.TITLE' | translate}}"></tf-portlet-header>
+			<tf-portlet-body  [class]="'tf-portlet__body--fit'" *ngIf="stats">
+				<ng-container>
+					<tf-widget2 [label]="'raison_sociale'" (onGoTo)="goToEntreprise($event)" [data]="stats.top_interimaires.up"*ngIf="stats; else loading">
+						<ng-template #actionTemplate let-item="item" >
+							<span class="tf-widget4__number" >{{item.nbr_interimaires}} {{'EES.DASH.TOP_INTERIM.MISSION' | translate}}</span>
+						</ng-template>
+					</tf-widget2 >
+				</ng-container>
+			</tf-portlet-body> 
+		</tf-portlet>
+	</div>
+	<div class="col-xl-3 flex-fill" >
+		<tf-portlet class="tf-portlet--height-fluid">
+			<tf-portlet-header title="{{'EES.DASH.TOP_VISITS.TITLE' | translate}}"></tf-portlet-header>
+			<tf-portlet-body  [class]="'tf-portlet__body--fit'" *ngIf="stats">
+				<ng-container>
+					<tf-widget2 [label]="'raison_sociale'" (onGoTo)="goToEntreprise($event)" [data]="stats.top_visites.up"*ngIf="stats; else loading">
+						<ng-template #actionTemplate let-item="item" >
+							<span class="tf-widget4__number" >{{item.visites_count}}</span>
+						</ng-template>
+					</tf-widget2 >
+				</ng-container>
+			</tf-portlet-body> 
+		</tf-portlet>
+	</div>
+	<div class="col-xl-3 flex-fill" >
+		<tf-portlet class="tf-portlet--height-fluid">
+			<tf-portlet-header title="{{'EES.DASH.TOP_NC.TITLE' | translate}}"></tf-portlet-header>
+			<tf-portlet-body  [class]="'tf-portlet__body--fit'" *ngIf="stats">
+				<ng-container>
+					<tf-widget2 [label]="'raison_sociale'" (onGoTo)="goToEntreprise($event)" [data]="stats.top_taux_nc.up"*ngIf="stats; else loading">
+						<ng-template #actionTemplate let-item="item" >
+							<span class="tf-widget4__number" >{{item.taux_nc}}% ({{item.nc_count}} {{'EES.DASH.TOP_NC.NC' | translate}} / {{item.visites_count}} {{'EES.DASH.TOP_NC.VS' | translate}})</span>
+						</ng-template>
+					</tf-widget2 >
+				</ng-container>
+			</tf-portlet-body> 
+		</tf-portlet>
+	</div>
+</div>

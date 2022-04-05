@@ -1,0 +1,255 @@
+<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8" id="portlet-chantier" *ngIf="chantier">
+  <div class="tf-portlet-header ">
+    <span class="title">
+      <a [routerLink]="['/chantiers/list']">{{'MENU.SUB_CHANTIER.LIST' | translate}}</a><span class="divider">></span><span class="id-item">{{chantier.nom}}</span>
+    </span>
+    <div ngbDropdown placement="bottom-right" class="d-inline-block pull-right" *ngIf="chantier.status.code != 'TERMINE'">
+      <button ngbDropdownToggle mat-icon-button color="primary" matTooltip="Actions" style="line-height: 0;height: 0;">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
+        <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editChantier(chantier.id)" *ngxPermissionsOnly="['chantier_canUpdate']">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteChantier(chantier.id)" *ngxPermissionsOnly="['chantier_canArchieve']">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="status-box mx-4 px-2 d-inline-block pull-right" [ngStyle]="chantier.status && chantier.status.color && {'color':chantier.status.color}">
+      <mat-icon svgIcon="{{chantier.status?.code == 'ENCOURS' ? 'status-encours':'status-termine'}}" class="status-icon mr-2"></mat-icon>
+      {{chantier.status?.libelle}}
+    </div>
+  </div>
+  <tf-portlet-body class="tf-portlet__body--fit">
+    <div class="row justify-content-between">
+      <div class="col-md-4">
+        <div class="card">
+          <h3>{{'CHANTIERS.CARD.GENERAL_INFOS.TITLE' | translate}}</h3>
+          <div class="box" style="flex:1">
+            <p><span class="label pull-left mr-2">{{'CHANTIERS.NAME.SHORTTITLE' | translate}}</span><span class="">{{chantier.nom}}</span></p>
+            <p><span class="label pull-left mr-2">{{'CHANTIERS.TYPE.SHORTTITLE' | translate}}</span><span class="">{{chantier.type?.libelle}}</span></p>
+            <p><span class="label pull-left mr-2">{{'CHANTIERS.DATE_DEMARRAGE.TITLE' | translate}}</span><span class="">{{chantier.date_demarrage | date:'dd/MM/yyyy'}}</span></p>
+            <p><span class="label pull-left mr-2">{{'CHANTIERS.CHIEF.TITLE' | translate}}</span><span class="">{{chantier.charge_affaire | fullName}}</span></p>
+            <p><span class="label pull-left mr-2">{{'CHANTIERS.CHIEF.TITLE' | translate}} 2</span><span class="">{{(chantier.charge_affaire2 | fullName) || '-'}}</span></p>
+            <p><span class="label pull-left mr-2">{{'CHANTIERS.BUDGET.SHORTTITLE' | translate}}</span><span class="">{{chantier.montant | currency:'EUR':'€'}}</span></p>
+            <p><span class="label pull-left mr-2">{{'CHANTIERS.RESP_CHIFFRAGE.TITLE' | translate}}</span><span class="">{{chantier.responsable_chiffrage | fullName}}</span></p>
+          </div>
+          <div class="tf-divider">
+            <span></span>
+          </div>
+          <div class="box box-coords" style="flex:1">
+            <h5><b>{{'CHANTIERS.CARD.SITE_COORDINATES.TITLE' | translate}}</b></h5>
+            <p><span class="label pull-left mr-2">{{'CHANTIERS.CLIENT.SHORTTITLE' | translate}}</span><span class="">{{chantier.client}}</span></p>
+            <p><span class="label pull-left mr-2">{{'CHANTIERS.ADRESS.SHORTTITLE' | translate}}</span><span class="">{{chantier.adresse}}</span></p>
+            <p><span class="label pull-left mr-2">{{'COMMON.CITY.SHORTTITLE' | translate}}</span><span class="">{{chantier.ville}}</span></p>
+            <p><span class="label pull-left mr-2">{{'COMMON.POSTCODE.SHORTTITLE' | translate}}</span><span class="">{{chantier.code_postal}}</span></p>
+            <p><span class="label pull-left mr-2">{{'COMMON.COUNTRY.SHORTTITLE' | translate}}</span><span class="">{{chantier.pays}}</span></p>
+          </div>
+          <div class="tf-divider">
+            <span></span>
+          </div>
+          <div class="box text-center">
+            <small>{{'COMMON.CREATED_AT.TITLE' | translate}} : {{chantier.created_at | date:'dd/MM/yyyy'}}</small><br>
+            <small>{{'COMMON.UPDATED_AT.TITLE' | translate}} : {{chantier.updated_at | date:'dd/MM/yyyy'}}</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3" *ifAllModules="['ANALYSE']">
+        <div class="card" >
+          <h3>{{'CHANTIERS.CARD.SECURITY_INFOS.TITLE' | translate}}</h3>
+          <div *ngIf="chantier.latest_ar; else noAr" >
+              <div class="box" style="flex: 1;">
+                <p><span class="label pull-left">{{'ARS.PREVOIR_COMPAGNONS.TITLE' | translate}}</span><br>{{chantier.latest_ar?.a_prevoir_compagnons ? 'Oui':'Non'}}</p>
+                <p *ngIf="chantier.latest_ar?.a_prevoir_compagnons"><span class="label pull-left">{{'ARS.REALISATEUR.TITLE' | translate}}</span><br>{{chantier.latest_ar?.realisateur}}</p>
+                <p *ngIf="chantier.latest_ar?.a_prevoir_compagnons"><span class="label pull-left">{{'ARS.DATE_ACCUEIL_SECU.TITLE' | translate}}</span><br>{{chantier.latest_ar?.date_accueil_secu | date:'dd/MM/yyyy'}}</p>
+                <p *ngIf="chantier.latest_ar?.a_prevoir_compagnons"><span class="label pull-left">{{'ARS.DATE_VALIDITE.TITLE' | translate}}</span><br>{{chantier.latest_ar?.date_validite | date:'dd/MM/yyyy'}}</p>
+                <div class="row" *ngIf="chantier.latest_ar?.a_prevoir_compagnons">
+                  <div class="col-12 ">
+                    <span class="label pull-left">{{'ARS.AS_DAYS.LABEL' | translate}}</span><br>
+                  </div>
+                  <div class="col-12 my-3">
+                    <mat-chip-list *ngIf="chantier.latest_ar.accueil_secu_days; else noSecuDays">
+                      <mat-chip *ngFor="let as_day of chantier.latest_ar.accueil_secu_days" class="chip-item">
+                        {{as_day}}
+                      </mat-chip>
+                    </mat-chip-list>
+                  </div>
+                </div>
+                <p><span class="label pull-left">{{'ARS.CARD.MONITORING.WORKS.TITLE' | translate}}</span><br>{{chantier.latest_ar?.a_signer_registre_travaux ? 'Oui':'Non'}}</p>
+                <p *ngIf="chantier.latest_ar?.a_signer_registre_travaux"><span class="label pull-left">{{'ARS.ASIGNER.LABEL' | translate}}</span><br>{{chantier.latest_ar?.registre_signing_period}}</p>
+              </div>
+              <div class="box" style="flex: 1;">
+                <h5><b>{{'CHANTIERS.CARD.SECURITY_INFOS.CONTACTS.TITLE' | translate}}</b></h5>
+                <p><span class="label pull-left mr-2">{{'ARS.CONTACT_INTERNE_SECOURS.SHORTTITLE' | translate}}</span><br><span class="blue">{{chantier.latest_ar?.contact_interne_secours}}</span></p>
+                <p><span class="label pull-left mr-2">{{'ARS.TEL_CONTACT_INTERNE_SECOURS.SHORTTITLE' | translate}}</span><br><span class="blue">{{chantier.latest_ar?.tel_contact_interne_secours}}</span></p>
+                <p class="mt-3"><span class="label pull-left mr-2">{{'ARS.CONTACT_CLIENT_HSE.SHORTTITLE' | translate}}</span><br><span class="blue">{{chantier.latest_ar?.contact_client_hse}}</span></p>
+                <p><span class="label pull-left mr-2">{{'ARS.TEL_CONTACT_CLIENT_HSE.SHORTTITLE' | translate}}</span><br><span class="blue">{{chantier.latest_ar?.tel_contact_client_hse}}</span></p>
+              </div>
+          </div>
+          <ng-template #noAr>
+            <div class="box">
+              {{'CHANTIERS.CARD.SITE_SUPERVISION.AR_SUPERVISION.NO_AR' | translate}}
+            </div>
+          </ng-template>
+        </div>
+      </div>
+      <div class="col-5" *ifInModules="['ANALYSE', 'VISITE']">
+        <div class="card">
+          <h3>{{'CHANTIERS.CARD.SITE_SUPERVISION.TITLE' | translate}}</h3>
+          <div class="box box-ar-vs" style="flex: 1;" *ifAllModules="['ANALYSE']">
+            <h5><b>{{'CHANTIERS.CARD.SITE_SUPERVISION.AR_SUPERVISION.TITLE' | translate}}</b><small class="pull-right">{{'CHANTIERS.AR_COUNT.SHORTTITLE' | translate}} : <span class="blue">{{chantier.ars.length}}</span></small></h5>
+            <ng-container *ngIf="chantier.ars.length > 0; else noArs">
+              <div class="row">
+                <div class="col-12 my-2"><p><span class="label">{{'CHANTIERS.AR_INPROGRESS.TITLE' | translate}}</span></p></div>
+                <ng-container *ngIf="chantier.ar_inprogress; else noArInProgress">
+                  <div class="col-5"><p class="blue">{{chantier.ar_inprogress?.code}}</p></div>
+                  <div class="col-5"><p class="blue">{{chantier.ar_inprogress?.created_at | date:'dd/MM/yyyy'}}</p></div>
+                  <div class="col-2" ><a (click)="goToArDetail(chantier.ar_inprogress.id)" alt="voir l'analyse de risque"><mat-icon color="primary">visibility</mat-icon></a></div>
+                </ng-container>
+                <ng-template #noArInProgress>
+                  <div class="col-12">{{'CHANTIERS.CARD.SITE_SUPERVISION.AR_SUPERVISION.NO_AR_IN_PROGRESS' | translate}}</div>
+                </ng-template>
+              </div>
+              <div class="row">
+                <div class="col-12 my-2"><p><span class="label">{{'CHANTIERS.ARS_HISTORY.TITLE' | translate}}</span></p></div>
+                <ng-container *ngIf="chantier.ars_historique.length > 0; else noArHistorique">
+                  <ng-container *ngFor="let ar of chantier.ars_historique">
+                    <div class="col-5"><p>{{ar.code}}</p></div>
+                    <div class="col-5"><p>{{ar.created_at | date:'dd/MM/yyyy'}}</p></div>
+                    <div class="col-2" ><a (click)="goToArDetail(ar.id)" alt="voir l'analyse de risque"><mat-icon color="primary">visibility</mat-icon></a></div>
+                  </ng-container>
+                </ng-container>
+                <ng-template #noArHistorique>
+                  {{'CHANTIERS.CARD.SITE_SUPERVISION.AR_SUPERVISION.NO_HISTORY' | translate}}
+                </ng-template>
+              </div>
+            </ng-container>
+            <ng-template #noArs>
+              <div class="row">
+                <div class="col-12">
+                  <p>{{'CHANTIERS.CARD.SITE_SUPERVISION.VISITES_SUPERVISION.NO_VISITES' | translate}}</p>
+                </div>
+              </div>
+            </ng-template>
+          </div>
+          <div class="box box-ar-vs" style="flex: 1;" *ifAllModules="['VISITE']">
+            <h5><b>{{'CHANTIERS.CARD.SITE_SUPERVISION.VISITES_SUPERVISION.TITLE' | translate}}</b><small class="pull-right">{{'CHANTIERS.VS_COUNT.SHORTTITLE' | translate}} : <span class="blue">{{chantier.vss.length}}</span></small></h5>
+            <div class="row">
+              <div class="col-md-12 my-2"><p><span class="label">{{'CHANTIERS.VSS.TITLE' | translate}}</span></p></div>
+              <ng-container *ngIf="chantier.vss.length > 0; else noVss">
+                <ng-container *ngFor="let vs of chantier.vss">
+                  <div class="col-md-5"><p>{{vs.code}}</p></div>
+                  <div class="col-md-5"><p>{{vs.date_visite | date:'dd/MM/yyyy'}}</p></div>
+                  <div class="col-md-2"><a (click)="goToVsDetail(vs.id)" alt="voir la visite"><mat-icon color="primary">visibility</mat-icon></a></div>
+                </ng-container>
+              </ng-container>
+              <ng-template #noVss>
+                <div class="row">
+                  <div class="col-12">
+                    <p>{{'CHANTIERS.CARD.SITE_SUPERVISION.VISITES_SUPERVISION.NO_VISITES' | translate}}</p>
+                  </div>
+                </div>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 mt-4" *ifAllModules="['ENTREPRISE']">
+        <div class="card" *ngIf="chantier.entreprises.length > 0; else noEntreprises">
+          <h5>{{'CHANTIERS.EES.TITLE' | translate}}<small class="pull-right">{{'CHANTIERS.EECOUNT.SHORTTITLE' | translate}} : <span class="blue">{{chantier.entreprises.length}}</span></small></h5>
+          <div class="px-5">
+            <table class="table table-borderless table-sm table-striped px-4">
+              <thead>
+                <tr>
+                  <th scope="col">{{'EES.RAISON_SOCIALE.TITLE' | translate}}</th>
+                  <th class="text-center" scope="col">{{'EES.TYPE.TITLE' | translate}}</th>
+                  <th class="text-center" scope="col">{{'EES.CA.TITLE' | translate}}</th>
+                  <th class="text-center" scope="col">{{'EES.INTERIMAIRES_COUNT.SHORTTITLE' | translate}}</th>
+                  <th class="text-center" scope="col">{{'EES.DATE_DEMARRAGE.TITLE' | translate}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let entreprise of chantier.entreprises">
+                  <th scope="row">{{entreprise.raison_sociale}}</th>
+                  <td class="text-center">{{entreprise.type.libelle}}</td>
+                  <td class="text-center"><span *ngIf="entreprise.type?.code == 'SOUS_TRAITANT'; else noData">{{entreprise.pivot.chiffre_affaire | currency:'EUR':'€'}}</span></td>
+                  <td class="text-center"><span *ngIf="entreprise.type?.code == 'INTERIM'; else noData" style="cursor:pointer" [ngbPopover]="popContent" popoverClass="big-popover" [popoverTitle]="('EES.INTERIMAIRES.TITLE' | translate)">{{entreprise.pivot.interimaires.length}}</span></td>
+                  <td class="text-center">{{entreprise.pivot.date_demarrage | date:'dd/MM/yyyy'}}</td>
+                  <ng-template #popContent >
+                    <div class="row">
+                        <div class="col-12">
+                            <table class="table table-borderless table-sm table-striped px-4">
+                              <thead>
+                                <tr>
+                                  <th style="background:white; font-weight: bolder;" >{{'EES.INTERIMAIRE.TITLE' | translate}}</th>
+                                  <th style="background:white; font-weight: bolder;" class="text-center">{{'EES.INTERIMAIRES_DEBUT_MISSION.TITLE' | translate}}</th>
+                                  <th style="background:white; font-weight: bolder;" class="text-center">{{'EES.INTERIMAIRES_FIN_MISSION.TITLE' | translate}}</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let interimaire of entreprise.pivot.interimaires">
+                                  <td>{{interimaire | fullName}}</td>
+                                  <td class="text-center">{{(interimaire.pivot.date_debut_mission | date:'dd/MM/yyyy') || '-'}}</td>
+                                  <td class="text-center">{{(interimaire.pivot.date_fin_mission | date:'dd/MM/yyyy') || '-'}}</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                        </div>
+                    </div>
+                  </ng-template>
+                </tr>
+              </tbody>
+            </table>
+            <ng-template #noData>
+              <span>-</span>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 mt-4">
+        <div class="card" *ngIf="!chantier.no_hab_required; else noHabRequired">
+          <h5> {{'CHANTIERS.CARD.HABILITATION.TITLE' | translate}} <small class="pull-right">{{'CHANTIERS.HABCOUNT.SHORTTITLE' | translate}} : <span class="blue">{{chantier.habilitations.length}}</span></small></h5>
+          <ul>
+            <li *ngFor="let hab of chantier.habilitations">
+              {{hab.libelle}}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4" *ngIf="chantier.status.code != 'TERMINE'">
+      <div class="col-12">
+        <button mat-raised-button color="info" (click)="closeChantier(chantier.id)" *ngxPermissionsOnly="['chantier_canUpdate']">
+          <mat-icon  svgIcon="status-termine" inline="true" style="width: 21px; margin-top: -6px; margin-right: 6px;"></mat-icon>
+          {{'CHANTIERS.ACTION.CLOSE_SITE' | translate}}
+        </button>
+        <ng-container *ngxPermissionsOnly="['analyse_risque_canAdd']">
+          <span class="pull-right" *ifAllModules="['ANALYSE']"
+            matTooltip="Le montant du chantier est inférieur ou égal à 20K€, vous ne pouvez pas créer d\'analyse de risque" 
+            [matTooltipDisabled]="this.chantier.montant > 20000">
+            <button mat-raised-button color="info" (click)="addAr(chantier.id)" [disabled]="this.chantier.montant <= 20000">
+              <mat-icon inline="true" style="width: 21px; margin-top: -6px; margin-right: 6px;">add</mat-icon>
+              {{'CHANTIERS.ACTION.CREATE_AR' | translate}}
+            </button>
+          </span>
+        </ng-container>
+      </div>
+    </div>
+  </tf-portlet-body>
+</tf-portlet>
+
+<ng-template #noEntreprises>
+  <div class="card">
+    <h5 class="mb-4">{{'CHANTIERS.CARD.ENTREPRISE.NO_ENTREPRISES' | translate}}</h5>
+  </div>
+</ng-template>
+
+<ng-template #noHabRequired>
+  <div class="card">
+    <h5 class="mb-4">{{'CHANTIERS.CARD.HABILITATION.NO_HABILITATION_REQUIRED.TITLE' | translate}}</h5>
+  </div>
+</ng-template>
+<ng-template #noSecuDays>
+  -
+</ng-template>

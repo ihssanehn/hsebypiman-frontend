@@ -1,0 +1,18 @@
+@import "../../../../../../../assets/sass/config";
+@import "../../../../../../../assets/sass/global/init";
+@import "sass/pages/wizard/wizard-1";
+
+.col-actions{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+.block-eex.bg-grey{
+    background: #f7f7f7;
+}
+.tf-divider span{
+    background: tf-get($tf-state-colors, info, optional);
+    margin: 1em 0;
+    opacity: 0.7;
+}

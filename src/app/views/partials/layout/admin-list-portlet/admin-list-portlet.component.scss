@@ -1,0 +1,62 @@
+:host {
+
+    &>.tf-portlet{
+
+        .tf-portlet__head .tf-portlet__head-label {
+            max-width: 90%;
+        }
+
+        &.collapsed {
+            min-height : 0;
+        }
+
+        min-height : 330px;
+
+        .anticon {
+            vertical-align: 0;
+        }
+        ::ng-deep .ant-table.ant-table-small{
+            border: 0;
+        }
+        .ant-table-tbody > tr > td {
+            font-weight: 500;
+            font-size: 13px;
+        }
+    
+        ::ng-deep nz-divider{
+            .ant-divider-inner-text {
+                font-size: 1.5rem;
+            }
+        }
+        
+    }
+
+    .accordion {
+        .la {
+            transition: all .3s;
+            transform: rotate(0);
+        }
+        &.collapsed {
+            .la {
+                transform: rotate(180deg);
+            }
+        }
+    }
+    
+}
+:host::ng-deep {
+    .cdk-drag {
+        cursor : grab;
+    }
+
+    .cdk-drag-preview {
+        display: table;
+    }
+
+    .cdk-drag-placeholder {
+        opacity: 0;
+    }
+}
+
+
+

@@ -1,0 +1,112 @@
+<tf-portlet-body>
+    <div class="row">
+        <div class="col-md-12" *ngIf="origin=='detail'">
+            <div class="tf-heading tf-heading--sm">
+                <span>{{'ARS.HEAD.DETAIL.LABEL' | translate}}</span>
+            </div>
+        </div>
+        <div class="col-md-12 search-box" *ngIf="origin!='detail'">
+            <!-- <div class="mr-4">
+                <b>{{'FILTER.SEARCH_SALARIE' | translate}}</b>
+            </div> -->
+            <!-- <div class="search-layout ml-4">
+                <div class="form-group form-group-sm row col">
+                    <div class="input-group search-input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text search-icon-container">
+                                <mat-icon svgIcon="search"></mat-icon>
+                            </span>
+                        </div>
+                        <input #searchInput type="text" class="form-control search-input" name="keyword"
+                            placeholder="{{'FILTER.SEARCH_SALARIE' | translate}}" [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                            <mat-option *ngFor="let salarie of filteredSalaries | async" [value]="salarie"
+                                (click)="onSubmit()" style="height: 2em;line-height: 2em;">
+                                {{salarie.nom}} {{salarie.prenom}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </div>
+
+                </div>
+            </div> -->
+        </div>
+        <div class="col-12">
+            <form [formGroup]="form" autocomplete="off" class="tf-form tf-form--group-seperator-dashed " novalidate
+                fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px" *ngIf="form">
+                <div class="tf-wizard-v4__content" data-tfwizard-type="step-content" data-tfwizard-state="current">
+                    <div class="tf-form__section tf-form__section--first">
+                        <div class="tf-wizard-v4__form">
+                            <div class="row form-row justify-content-md-center">
+                                <!-- SALARIE -->
+                                <mat-form-field class="col-xl-3" [matTooltipDisabled]="formHasMateriel()" matTooltip="{{'VISITES.NOTIF.CANNOT_SELECT_EMPLOYEE.MATERIEL_SELECTED.TITLE' | translate}}">
+                                    <mat-label>{{'VISITES.VISITED.LABEL' | translate}}</mat-label>
+                                    <mat-select class="form-control" placeholder="" formControlName="salarie_id" [required]="isFieldRequired('salarie_id')">
+                                        <mat-option *ngFor="let user of salaries" [value]="user.id">
+                                            {{ user | fullName }}
+                                        </mat-option>
+                                    </mat-select>
+                                    <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="form.get('salarie_id').value"
+                                        (click)="clearValue('salarie_id'); $event.stopPropagation()">
+                                        <mat-icon>clear</mat-icon>
+                                    </button>
+                                    <mat-error *ngIf="isControlHasError('salarie_id','required')">
+                                        <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                    
+                                <!-- MATERIEL -->
+                                <mat-form-field class="col-xl-3" [ngClass]="{'order-first' :  model == 'VsVehicule'}" [matTooltipDisabled]="materiels.length > 0" matTooltip="{{'VISITES.NOTIF.NO_MATERIEL_ASSOCIATED_TO_EMPLOYEE.TITLE' | translate}}">
+                                    <mat-label>{{'VISITES.MATERIEL.LABEL' | translate}}</mat-label>
+                                    <mat-select class="form-control" placeholder="" formControlName="visitable_id"
+                                        [required]="isFieldRequired('visitable_id')">
+                                        <mat-option *ngFor="let materiel of materiels" [value]="materiel.id">
+                                            <span>
+                                                {{materiel.numero_serie+' - '+materiel.libelle+' - '+materiel.categorie.libelle}}
+                                            </span>
+                                        </mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="isControlHasError('visitable_id','required')">
+                                        <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                                    </mat-error>
+                                </mat-form-field>
+
+                                <!-- TYPE -->
+                                <mat-form-field class="col-xl-3">
+                                    <mat-label>{{'VISITES.TYPE.LABEL' | translate}}</mat-label>
+                                    <mat-select class="form-control" placeholder="" formControlName="type_id"
+                                        [required]="isFieldRequired('type_id')">
+                                        <mat-option *ngFor="let type of types" [value]="type.id">
+                                            {{ type.libelle }}
+                                        </mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="isControlHasError('type_id','required')">
+                                        <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                                
+                                <mat-form-field class="col-xl-3" *ngIf="model=='VsVehicule'">
+                                    <mat-label>{{'VISITES.VEHICULE_KM.LABEL' | translate}}</mat-label>
+                                    <input matInput class="form-control text-right pr-4" type="text" formControlName="vehicule_km" mask="separator" [required]="isFieldRequired('vehicule_km')">
+                                    <span matSuffix>Km</span>
+                                    <mat-error *ngIf="isControlHasError('type_id','required')">
+                                        <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                                    </mat-error>
+                                </mat-form-field>
+
+                                <mat-form-field class="col-xl-3 text-center" floatLabel="always" appearance="none">
+                                    <mat-slide-toggle formControlName="is_externe" [checked]="isExterne()" (change)="toggleExterne($event.checked)">
+                                        <span class="slider-label">{{'VISITES.EXTERNAL_VISIT.TITLE' | translate}}</span>
+                                    </mat-slide-toggle>
+                                    <textarea matInput hidden></textarea>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <button class="btn btn-brand btn-sm btn-search mr-4 float-right" [disabled]="cantDisplayQuestions()" (click)="onSubmit()">
+                {{'VISITES.ACTION.START_VISIT.TITLE' | translate}}
+            </button>
+        </div>
+    </div>
+</tf-portlet-body>

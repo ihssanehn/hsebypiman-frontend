@@ -20,9 +20,13 @@ import { ActionNotificationComponent } from '../../partials/content/crud';
 // Components
 import { ChantiersComponent } from './chantiers.component';
 import { ChantiersListComponent } from './chantiers-list/chantiers-list.component';
+import { ChantiersDashComponent } from './chantiers-dash/chantiers-dash.component';
 import { ChantierEditComponent } from './chantier-edit/chantier-edit.component';
 import { ChantierAddComponent } from './chantier-add/chantier-add.component';
-import {NgbDropdownModule, NgbTabsetModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
+import { ChantierDetailComponent } from './chantier-detail/chantier-detail.component';
+import { ChantierFiltersComponent } from './chantier-filters/chantier-filters.component';
+import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule, NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxMaskModule } from 'ngx-mask';
 
 // Material
 import {
@@ -35,6 +39,8 @@ import {
 	MatMenuModule,
 	MatProgressBarModule,
 	MatButtonModule,
+	MatBadgeModule,
+	MatChipsModule,
 	MatCheckboxModule,
 	MatDialogModule,
 	MatTabsModule,
@@ -42,13 +48,19 @@ import {
 	MatCardModule,
 	MatRadioModule,
 	MatIconModule,
+	MatListModule,
 	MatDatepickerModule,
 	MatExpansionModule,
 	MatAutocompleteModule,
 	MAT_DIALOG_DEFAULT_OPTIONS,
 	MatSnackBarModule,
-	MatTooltipModule
+	MatTooltipModule,MAT_DATE_LOCALE, 
+	MAT_DATE_FORMATS,
+	DateAdapter
 } from '@angular/material';
+import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapter';
+import { ChantierAdminComponent } from './chantier-admin/chantier-admin.component';
+
 
 
 const routes: Routes = [
@@ -57,33 +69,94 @@ const routes: Routes = [
 		component: ChantiersComponent,
 		children: [
 			{
+				path: '',
+				redirectTo: 'list',
+				pathMatch: 'full'
+			},
+			{
+				path:'detail/:id',
+				component: ChantierDetailComponent
+			},
+			{
 				path: 'list',
-				component: ChantiersListComponent
+				component: ChantiersListComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['chantier_canSeeAll']
+					}
+				}
 			},
 			{
 				path: 'list:id',
-				component: ChantiersListComponent
+				component: ChantiersListComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['chantier_canSeeAll']
+					}
+				}
 			},
 			{
 				path: 'add',
-				component: ChantierAddComponent
+				component: ChantierAddComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['chantier_canAdd']
+					}
+				}
 			},
 			{
 				path: 'add:id',
-				component: ChantierAddComponent
+				component: ChantierAddComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['chantier_canAdd']
+					}
+				}
 			},
 			{
 				path: 'edit',
-				component: ChantierEditComponent
+				component: ChantierEditComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['chantier_canUpdate']
+					}
+				}
 			},
 			{
 				path: 'edit/:id',
-				component: ChantierEditComponent
+				component: ChantierEditComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['chantier_canUpdate']
+					}
+				}
+			},
+			{
+				path: 'admin',
+				component: ChantierAdminComponent,
+				canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['ADMIN','ROOT']
+					}
+				}
+			},
+			{
+				path: 'dashboard',
+				component: ChantiersDashComponent,
+				
 			},
 		]
 	}
 ];
 
+		
 @NgModule({
 	imports: [
 		CommonModule,
@@ -100,6 +173,8 @@ const routes: Routes = [
 		MatSelectModule,
         MatInputModule,
 		MatTableModule,
+		MatBadgeModule,
+		MatChipsModule,
 		MatAutocompleteModule,
 		MatRadioModule,
 		MatIconModule,
@@ -108,6 +183,7 @@ const routes: Routes = [
 		MatDatepickerModule,
 		MatCardModule,
 		MatPaginatorModule,
+		MatListModule,
 		MatSortModule,
 		MatCheckboxModule,
 		MatProgressSpinnerModule,
@@ -118,7 +194,9 @@ const routes: Routes = [
 		MatDialogModule,
 		NgbDropdownModule,
 		NgbTabsetModule,
-		NgbTooltipModule
+		NgbTooltipModule,
+		NgbPopoverModule,
+		NgxMaskModule,
 	],
 	providers: [
 		InterceptService,
@@ -136,18 +214,26 @@ const routes: Routes = [
 				width: '900px'
 			}
 		},
+		
+		{ provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
+		{ provide: DateAdapter, useClass: CustomDateAdapter },
 		HttpUtilsService,
 		TypesUtilsService,
 		LayoutUtilsService
 	],
 	entryComponents: [
-		ActionNotificationComponent,
+		ActionNotificationComponent
+		// 
 	],
 	declarations: [
 		ChantiersComponent,
 		ChantiersListComponent,
 		ChantierEditComponent,
 		ChantierAddComponent,
+		ChantierDetailComponent,
+		ChantierFiltersComponent,
+		ChantierAdminComponent,
+		ChantiersDashComponent
 	]
 })
 export class ChantiersModule {}

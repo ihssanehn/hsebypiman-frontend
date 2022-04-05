@@ -4,126 +4,50 @@
 		{{user?.prenom|firstLetter}}
 	</span>
 
-	<div ngbDropdown placement="bottom-left" class="tf-aside__userside-item tf-aside__userside-item--user">
-		<div ngbDropdownToggle class="tf-aside__userside-wrapper">
+	<div ngbDropdown placement="bottom-left" class="tf-aside__userside-formal">
+		<div ngbDropdownToggle class="tf-aside__userside-wrapper dropdown-toggle">
 			<div class="tf-aside__userside-user">
-				<span class="tf-aside__userside-welcome">Paramètres
+				<span class="tf-aside__userside-welcome" style="font-size: 1.4rem">
+					{{user?.prenom+' '+user?.nom}}
 					<mat-icon>keyboard_arrow_down</mat-icon>
-				</span>
+				</span>				
 			</div>
 		</div>
-		<div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-xl">
-			<!--begin: Head -->
-			<!-- <div class="tf-user-card tf-user-card--skin-dark tf-notification-item-padding-x" style="background-image: url(./assets/media/misc/bg-1.jpg)">
-				<div class="tf-user-card__avatar">
-					
-				</div>
-				<div class="tf-user-card__name">
-					{{user?.nom}}
-				</div>
-				<div class="tf-user-card__badge">
-					<span class="btn btn-success btn-sm btn-bold btn-font-md">{{user?.role?.libelle}}</span>
-				</div>
-			</div> -->
-			<!--end: Head -->
-	
+		<div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-sm">
 			<!--begin: Navigation -->
-			<div class="tf-notification">
-				<a ngbDropdownItem routerLink="profile" href="javascript:;" class="tf-notification__item">
-					<div class="tf-notification__item-icon">
-						<i class="flaticon2-calendar-3 tf-font-success"></i>
-					</div>
+			<div class="tf-notification" style="padding: 0 12px;">
+				<a ngbDropdownItem (click)="goToParams()" *ngIf="hasPermission(['ROOT','ADMIN'])" href="javascript:;" class="mb-2">
 					<div class="tf-notification__item-details">
 						<div class="tf-notification__item-title tf-font-bold">
-							My Profile
-						</div>
-						<div class="tf-notification__item-time">
-							Account settings and more
+							{{'MENU.ROOT' | translate}}
 						</div>
 					</div>
 				</a>
-				<a ngbDropdownItem routerLink="profile" href="javascript:;" class="tf-notification__item">
-					<div class="tf-notification__item-icon">
-						<i class="flaticon2-mail tf-font-warning"></i>
-					</div>
+				<a ngbDropdownItem (click)="goToProfileDetail()" href="javascript:;" class="mb-2">
 					<div class="tf-notification__item-details">
 						<div class="tf-notification__item-title tf-font-bold">
-							My Messages
-						</div>
-						<div class="tf-notification__item-time">
-							Inbox and tasks
+							{{'MENU.MY_PROFILE' | translate}}
 						</div>
 					</div>
 				</a>
-				<a ngbDropdownItem routerLink="profile" href="javascript:;" class="tf-notification__item">
-					<div class="tf-notification__item-icon">
-						<i class="flaticon2-rocket-1 tf-font-danger"></i>
-					</div>
+				<a ngbDropdownItem (click)="goToEdit()" href="javascript:;" class="mb-2">
 					<div class="tf-notification__item-details">
 						<div class="tf-notification__item-title tf-font-bold">
-							My Activities
-						</div>
-						<div class="tf-notification__item-time">
-							Logs and notifications
+							{{'MENU.EDIT_PROFILE' | translate}}
 						</div>
 					</div>
 				</a>
-				<a ngbDropdownItem routerLink="profile" href="javascript:;" class="tf-notification__item">
-					<div class="tf-notification__item-icon">
-						<i class="flaticon2-hourglass tf-font-brand"></i>
-					</div>
+				<a ngbDropdownItem (click)="logout()" href="javascript:;" class="mb-2">
 					<div class="tf-notification__item-details">
 						<div class="tf-notification__item-title tf-font-bold">
-							My Tasks
-						</div>
-						<div class="tf-notification__item-time">
-							latest tasks and projects
+							{{'AUTH.LOGOUT' | translate}}
 						</div>
 					</div>
 				</a>
-				<div class="tf-notification__custom">
-					<a href="javascript:;" (click)="logout()" class="btn btn-outline-brand btn-upper btn-sm btn-bold">Sign Out</a>
-				</div>
 			</div>
-			<!--end: Navigation -->
-	
-			<!--begin: Navigation(alternative) -->
-			<ul class="tf-nav tf-margin-b-10 tf-hidden">
-				<li class="tf-nav__item">
-					<a ngbDropdownItem routerLink="profile" class="tf-nav__link">
-						<span class="tf-nav__link-icon"><i class="flaticon2-calendar-3"></i></span>
-						<span class="tf-nav__link-text">My Profile</span>
-					</a>
-				</li>
-				<li class="tf-nav__item">
-					<a ngbDropdownItem routerLink="profile" class="tf-nav__link">
-						<span class="tf-nav__link-icon"><i class="flaticon2-browser-2"></i></span>
-						<span class="tf-nav__link-text">My Tasks</span>
-					</a>
-				</li>
-				<li class="tf-nav__item">
-					<a ngbDropdownItem routerLink="profile" class="tf-nav__link">
-						<span class="tf-nav__link-icon"><i class="flaticon2-mail"></i></span>
-						<span class="tf-nav__link-text">Messages</span>
-					</a>
-				</li>
-				<li class="tf-nav__item">
-					<a ngbDropdownItem routerLink="profile" class="tf-nav__link">
-						<span class="tf-nav__link-icon"><i class="flaticon2-gear"></i></span>
-						<span class="tf-nav__link-text">Settings</span>
-					</a>
-				</li>
-				<li class="tf-nav__item tf-nav__item--custom tf-margin-t-15">
-					<a (click)="logout()" class="btn btn-outline-brand btn-upper btn-sm btn-bold">Sign Out</a>
-				</li>
-			</ul>
-			<!--end: Navigation(alternative) -->
 		</div>
-	</div>
-	<div class="tf-aside__userside-formal">
-		{{user?.prenom+' '+user?.nom}}
 	</div>
 	<div class="tf-aside__userside-job">
-		{{user?.prenom+' '+user?.nom}}
+		{{user?.fonction?.libelle}}
 	</div>
 </div>

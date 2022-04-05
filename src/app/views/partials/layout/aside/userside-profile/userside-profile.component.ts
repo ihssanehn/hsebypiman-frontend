@@ -9,15 +9,21 @@ import { AppState } from '../../../../../core/reducers';
 import { User, AuthService } from '../../../../../core/auth';
 import { Router } from '@angular/router';
 import { environment } from '@env/environment';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import Swal from 'sweetalert2';
+import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
+
+	
 
 
 @Component({
 	selector: 'tf-userside-profile',
 	templateUrl: './userside-profile.component.html',
+  styleUrls: ['./userside-profile.component.scss']
 })
 export class UserSideProfileComponent implements OnInit {
 	// Public properties
-	user$: Observable<User>;
+	user$: User;
 	user: User;
 
 	@Input() avatar = true;
@@ -33,8 +39,12 @@ export class UserSideProfileComponent implements OnInit {
 	constructor(
 		private authService:AuthService,
 		private cdr : ChangeDetectorRef,
-		private router: Router,
+		private router: Router,	
+		private ngxRolesService: NgxRolesService,
+
 	) {
+		this.authService.getCurrentUser().subscribe(x=> {this.user = x;});
+		this.ngxRolesService.roles$.subscribe((event) => {this.cdr.markForCheck();});
 	}
 
 	/**
@@ -45,20 +55,42 @@ export class UserSideProfileComponent implements OnInit {
 	 * On init
 	 */
 	async ngOnInit() {
-		this.user = await this.authService.getUserByToken().toPromise();
-		this.cdr.detectChanges();
+
+		if(!this.cdr['destroyed']){ 
+			this.cdr.detectChanges();
+		}
 	}
 
-	viewProfile(){
-		console.log(this.user);
-		this.router.navigate([`profile/${this.user.id}`]);
+	goToProfileDetail(){
+		this.router.navigateByUrl('profile/detail');
+	}
+	goToEdit(){
+		this.router.navigateByUrl('profile/edit');
+	}
+	goToParams(){
+		this.router.navigateByUrl('/admin');
 	}
 	/**
 	 * Log out
 	 */
 	logout() {
 		this.authService.logout().toPromise();
-		localStorage.removeItem(environment.authTokenKey);
-		this.router.navigate(['/auth/login']);
+		
+		Swal.fire({
+			icon: 'success', 
+            title:"Vous avez bien été déconnecté", 
+            showConfirmButton: false, 
+            timer: 1500 
+		}).then(()=>{
+			localStorage.removeItem(environment.authTokenKey);
+			this.router.navigate(['/auth/login']);
+		})
 	}
+
+	hasPermission(test){
+
+		return test.filter(permission =>  this.ngxRolesService.getRole(permission)).length > 0;
+		
+	}
+	
 }

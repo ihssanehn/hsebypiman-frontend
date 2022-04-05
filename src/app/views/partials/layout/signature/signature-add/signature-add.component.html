@@ -1,0 +1,70 @@
+<form [formGroup]="signaturesForm" class="tf-form tf-form--group-seperator-dashed">
+    <ng-container >
+        <div class="tf-heading tf-heading--xs">
+            {{'ARS.CARD.SIGNATURE.LABEL' | translate}}
+        </div>
+
+        <div>
+            <div *ngxPermissionsOnly="['ADMIN','ROOT']">
+                <p class="font-weight-bold text-right add-signature-line-btn"><a (click)="addSignatures()">+ {{'ACTION.ADD_SIGNER' | translate}}</a></p>
+            </div>
+            <div class="row form-row signature-line" *ngFor="let signature of signaturesForm.controls; let i=index" [formGroupName]="i" >
+
+                <div class="col-xl-1 ">
+                    <mat-label>{{'COMMON.DATE.LABEL' | translate}} </mat-label>
+                    <p class="mt-2"><strong>{{signaturesForm.controls[i].value.date| date:'dd/MM/yyyy'}}</strong></p>
+                </div>
+                <div class="col-xl-2 " *ngIf="signaturesForm.controls[i].controls['personnel'].value">
+                    <mat-label>{{'COMMON.LASTNAME.LABEL' | translate}}&nbsp;{{'COMMON.FIRSTNAME.LABEL' | translate}} </mat-label>
+                    <p class="mt-2"><strong>{{signaturesForm.controls[i].controls['personnel'].value?.fullname}}</strong></p>
+                </div>
+
+                <mat-form-field class="col-xl-2 " *ngIf="!signaturesForm.controls[i].controls['personnel'].value">
+                    <mat-label>{{'COMMON.LASTNAME.LABEL' | translate}}&nbsp;{{'COMMON.FIRSTNAME.LABEL' | translate}} </mat-label>
+                    <input class="form-control" matInput type="text" name="signataire_fullname" formControlName="signataire_fullname" placeholder="{{'ACTION.ENTER_HERE' | translate}}" />
+                </mat-form-field>
+
+                <mat-form-field class="col-xl-2 " *ngIf="!signaturesForm.controls[i].controls['personnel'].value">
+                    <mat-label>{{'COMMON.SOCIETE.LABEL' | translate}} </mat-label>
+                    <mat-select class="form-control" formControlName="entreprise_id" name="entreprise_id">
+                        <mat-option *ngFor="let entreprise of entreprisesList" [value]="entreprise.id">
+                            {{entreprise.raison_sociale}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field [ngClass]="signaturesForm.controls[i].controls['personnel'].value ? 'col-xl-4':'col-xl-2'">
+                    <mat-label>{{'COMMON.REMARQUE.LABEL' | translate}} </mat-label>
+                    <input class="form-control" matInput type="text" name="commentaires" formControlName="commentaires" placeholder="{{'ACTION.ENTER_HERE' | translate}}" />
+                </mat-form-field>
+
+                <div class="col-xl-4 form-row-flex">
+                    <label>{{'COMMON.SIGNATURE.LABEL' | translate}} </label>
+                    <button *ngIf="signaturesForm.controls[i].value.personnel" mat-icon-button color="accent" matTooltip="{{'ACTION.CLEAR' | translate}}" (click)="clearSignature(i)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                    <div class="signature-container">
+                        <signature-pad id="sign_canvas" (window:resize)="resizeSignaturePad()" [options]="signaturePadOptions" (onEndEvent)="drawComplete(i)"></signature-pad>
+                    </div>
+                </div>
+
+                <div class="col-xl-1" *ngIf="!signaturesForm.controls[i].value.personnel">
+                    <div class="sign-line-options">
+                        <div ngbDropdown placement="bottom-right" class="d-inline-block">
+                            <button ngbDropdownToggle mat-icon-button color="secondary" matTooltip="Actions">
+                                <mat-icon>more_vert</mat-icon>
+                            </button>
+                            <div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
+                                <button mat-icon-button color="accent" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="removeSignature(i)">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+    </ng-container>
+</form>

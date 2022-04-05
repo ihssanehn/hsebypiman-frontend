@@ -13,12 +13,15 @@
 
 // Login Base
 .tf-login.tf-login--v1 {
+    background: white;
+    .tf-grid__item.tf-grid__item--fluid{
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
     // Aside
     .tf-login__aside {
         width: 605px;
         padding: 3rem 3.5rem;
-        background-repeat: no-repeat;
-        background-size: cover;
 
         .tf-login__logo {
             display: flex;
@@ -65,7 +68,8 @@
     // Wrapper
     .tf-login__wrapper {
         padding: 3rem 3rem;
-        background: #fff;
+        // background: #fff;
+        background: transparent;
 
         // Head
         .tf-login__head {
@@ -93,6 +97,8 @@
             .tf-login__form {
                 width: 100%;
                 max-width: 450px;
+                padding: 20px;
+                background: white;
 
                 .tf-login__title {
                     display: block;
@@ -108,25 +114,67 @@
 
                 // Form
                 .tf-form {
-                    margin: 4rem auto;
-
-                    .form-group {
-                        margin: 0;
-                        padding: 0;
-                        margin: 0 auto;
-
-                        .form-control {
-                            border: none;
-                            height: 50px;
-                            margin-top: 1.25rem;
-                            background-color: rgba(#f7f7f9, 0.7);
-                            padding-left: 1.25rem;
-                            padding-right: 1.25rem;
-                            transition: background-color 0.3s ease;
-
-                            &:focus {
+                    .tf-form-block{
+                        border-radius: 8px;
+                        border: solid 1px #eaecf0;
+                        p{
+                            margin: 2.5rem 2.5rem 1rem;
+                        }
+                        .mat-form-field-appearance-legacy {
+                            .mat-form-field-underline{
+                                opacity: 0;
+                            }
+                            .mat-form-field-wrapper{
+                                padding-bottom: 0;
+                            }
+                            .mat-form-field-subscript-wrapper{
+                                top: calc(100% - 0.4em);
+                                *>div{
+                                    display: flex;
+                                    flex-flow: row wrap;
+                                    justify-content: flex-start;
+                                }
+                            }
+                            .mat-form-field-suffix{
+                                font-size: 1.5em;
+                            }
+                        }
+                        .form-group {
+                            margin: 1rem 2.5rem 1.5rem;
+                            padding: 0;
+                            .form-control {
+                                border: none;
+                                height: 30px;
+                                font-weight: bolder;
+                                margin-top: 1.25rem;
+                                // background-color: rgba(#f7f7f9, 0.7);
+                                background-color: transparent;
                                 transition: background-color 0.3s ease;
-                                background-color: #f7f7f9;
+                                
+                                &::placeholder{
+                                    font-weight: lighter;
+                                }
+                                // &:focus {
+                                //     transition: background-color 0.3s ease;
+                                //     background-color: #f7f7f9;
+                                // }
+                            }
+                        }
+                    }
+                    .mat-form-field-label-wrapper{
+                        top: -1.3em;
+                    }
+                    .mat-form-field-appearance-legacy{
+                        
+                        &.mat-form-field-can-float{
+                            .mat-form-field-autofill-control:-webkit-autofill + .mat-form-field-label-wrapper .mat-form-field-label, 
+                            .mat-input-server:focus + .mat-form-field-label-wrapper .mat-form-field-label{
+                                transform: none;
+                            }
+                        }
+                        &.mat-form-field-can-float.mat-form-field-should-float{
+                            .mat-form-field-label{
+                                transform: none;
                             }
                         }
                     }
@@ -156,7 +204,7 @@
 
                 // Divider
                 .tf-login__divider {
-                    margin: 1rem 0 2rem 0;
+                    margin: 1rem 0;
 
                     &:not(:first-child):not(:last-child) {
                         font-weight: 400;

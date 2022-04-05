@@ -1,12 +1,12 @@
 "use strict";
-var KTOffcanvas = function(elementId, options) {
+var TFOffcanvas = function(elementId, options) {
     // Main object
     var the = this;
     var init = false;
 
     // Get element object
-    var element = KTUtil.get(elementId);
-    var body = KTUtil.get('body');
+    var element = TFUtil.get(elementId);
+    var body = TFUtil.get('body');
 
     if (!element) {
         return;
@@ -21,8 +21,8 @@ var KTOffcanvas = function(elementId, options) {
 
     var Plugin = {
         construct: function(options) {
-            if (KTUtil.data(element).has('offcanvas')) {
-                the = KTUtil.data(element).get('offcanvas');
+            if (TFUtil.data(element).has('offcanvas')) {
+                the = TFUtil.data(element).get('offcanvas');
             } else {
                 // reset offcanvas
                 Plugin.init(options);
@@ -30,7 +30,7 @@ var KTOffcanvas = function(elementId, options) {
                 // build offcanvas
                 Plugin.build();
 
-                KTUtil.data(element).set('offcanvas', the);
+                TFUtil.data(element).set('offcanvas', the);
             }
 
             return the;
@@ -40,35 +40,35 @@ var KTOffcanvas = function(elementId, options) {
             the.events = [];
 
             // merge default and user defined options
-            the.options = KTUtil.deepExtend({}, defaultOptions, options);
+            the.options = TFUtil.deepExtend({}, defaultOptions, options);
             the.overlay;
 
             the.classBase = the.options.baseClass;
             the.classShown = the.classBase + '--on';
             the.classOverlay = the.classBase + '-overlay';
 
-            the.state = KTUtil.hasClass(element, the.classShown) ? 'shown' : 'hidden';
+            the.state = TFUtil.hasClass(element, the.classShown) ? 'shown' : 'hidden';
         },
 
         build: function() {
             // offcanvas toggle
             if (the.options.toggleBy) {
                 if (typeof the.options.toggleBy === 'string') {
-                    KTUtil.addEvent( the.options.toggleBy, 'click', function(e) {
+                    TFUtil.addEvent( the.options.toggleBy, 'click', function(e) {
                         e.preventDefault();
                         Plugin.toggle();
                     });
                 } else if (the.options.toggleBy && the.options.toggleBy[0]) {
                     if (the.options.toggleBy[0].target) {
                         for (var i in the.options.toggleBy) {
-                            KTUtil.addEvent( the.options.toggleBy[i].target, 'click', function(e) {
+                            TFUtil.addEvent( the.options.toggleBy[i].target, 'click', function(e) {
                                 e.preventDefault();
                                 Plugin.toggle();
                             });
                         }
                     } else {
                         for (var i in the.options.toggleBy) {
-                            KTUtil.addEvent( the.options.toggleBy[i], 'click', function(e) {
+                            TFUtil.addEvent( the.options.toggleBy[i], 'click', function(e) {
                                 e.preventDefault();
                                 Plugin.toggle();
                             });
@@ -76,7 +76,7 @@ var KTOffcanvas = function(elementId, options) {
                     }
 
                 } else if (the.options.toggleBy && the.options.toggleBy.target) {
-                    KTUtil.addEvent( the.options.toggleBy.target, 'click', function(e) {
+                    TFUtil.addEvent( the.options.toggleBy.target, 'click', function(e) {
                         e.preventDefault();
                         Plugin.toggle();
                     });
@@ -84,9 +84,9 @@ var KTOffcanvas = function(elementId, options) {
             }
 
             // offcanvas close
-            var closeBy = KTUtil.get(the.options.closeBy);
+            var closeBy = TFUtil.get(the.options.closeBy);
             if (closeBy) {
-                KTUtil.addEvent(closeBy, 'click', function(e) {
+                TFUtil.addEvent(closeBy, 'click', function(e) {
                     e.preventDefault();
                     Plugin.hide();
                 });
@@ -94,9 +94,9 @@ var KTOffcanvas = function(elementId, options) {
 
             // Window resize
             /*
-            KTUtil.addResizeHandler(function() {
-                if (parseInt(KTUtil.css(element, 'left')) >= 0 || parseInt(KTUtil.css(element, 'right') >= 0) || KTUtil.css(element, 'position') != 'fixed') {
-                    KTUtil.css(element, 'opacity', '1');
+            TFUtil.addResizeHandler(function() {
+                if (parseInt(TFUtil.css(element, 'left')) >= 0 || parseInt(TFUtil.css(element, 'right') >= 0) || TFUtil.css(element, 'position') != 'fixed') {
+                    TFUtil.css(element, 'opacity', '1');
                 }
             });
             */
@@ -126,16 +126,16 @@ var KTOffcanvas = function(elementId, options) {
             Plugin.togglerClass(target, 'show');
 
             // Offcanvas panel
-            KTUtil.addClass(body, the.classShown);
-            KTUtil.addClass(element, the.classShown);
-            //KTUtil.css(element, 'opacity', '1');
+            TFUtil.addClass(body, the.classShown);
+            TFUtil.addClass(element, the.classShown);
+            //TFUtil.css(element, 'opacity', '1');
 
             the.state = 'shown';
 
             if (the.options.overlay) {
-                the.overlay = KTUtil.insertAfter(document.createElement('DIV') , element );
-                KTUtil.addClass(the.overlay, the.classOverlay);
-                KTUtil.addEvent(the.overlay, 'click', function(e) {
+                the.overlay = TFUtil.insertAfter(document.createElement('DIV') , element );
+                TFUtil.addClass(the.overlay, the.classOverlay);
+                TFUtil.addEvent(the.overlay, 'click', function(e) {
                     e.stopPropagation();
                     e.preventDefault();
                     Plugin.hide(target);
@@ -154,18 +154,18 @@ var KTOffcanvas = function(elementId, options) {
 
             Plugin.togglerClass(target, 'hide');
 
-            KTUtil.removeClass(body, the.classShown);
-            KTUtil.removeClass(element, the.classShown);
+            TFUtil.removeClass(body, the.classShown);
+            TFUtil.removeClass(element, the.classShown);
 
             the.state = 'hidden';
 
             if (the.options.overlay && the.overlay) {
-                KTUtil.remove(the.overlay);
+                TFUtil.remove(the.overlay);
             }
 
             /*
-            KTUtil.transitionEnd(element, function() {
-                KTUtil.css(element, 'opacity', '0');
+            TFUtil.transitionEnd(element, function() {
+                TFUtil.css(element, 'opacity', '0');
             });
             */
 
@@ -174,7 +174,7 @@ var KTOffcanvas = function(elementId, options) {
 
         togglerClass: function(target, mode) {
             // Toggler
-            var id = KTUtil.attr(target, 'id');
+            var id = TFUtil.attr(target, 'id');
             var toggleBy;
 
             if (the.options.toggleBy && the.options.toggleBy[0] && the.options.toggleBy[0].target) {
@@ -188,14 +188,14 @@ var KTOffcanvas = function(elementId, options) {
             }
 
             if (toggleBy) {
-                var el = KTUtil.get(toggleBy.target);
+                var el = TFUtil.get(toggleBy.target);
 
                 if (mode === 'show') {
-                    KTUtil.addClass(el, toggleBy.state);
+                    TFUtil.addClass(el, toggleBy.state);
                 }
 
                 if (mode === 'hide') {
-                    KTUtil.removeClass(el, toggleBy.state);
+                    TFUtil.removeClass(el, toggleBy.state);
                 }
             }
         },
@@ -269,5 +269,5 @@ var KTOffcanvas = function(elementId, options) {
 
 // webpack support
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-    module.exports = KTOffcanvas;
+    module.exports = TFOffcanvas;
 }

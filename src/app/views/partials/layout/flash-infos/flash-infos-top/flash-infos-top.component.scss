@@ -1,0 +1,15 @@
+:host{
+    ::ng-deep{
+        .flash-content{		
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 3px -2px rgb(15, 12, 39);
+            width: 100%;
+            border-radius: 5px;
+            height: 100%;
+            img{
+                max-width: 100%;
+            }
+        }
+    }
+}

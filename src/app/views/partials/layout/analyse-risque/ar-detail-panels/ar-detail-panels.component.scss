@@ -1,0 +1,44 @@
+.horaire-box{
+    display:flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    margin-top: 2px;
+    span{
+        padding: 1em;
+    }
+}
+:host {
+
+    .mat-checkbox-disabled.mat-checkbox-checked .mat-checkbox-background{
+        background-color: #e49819;
+    }
+    .mat-radio-button.mat-radio-disabled.mat-radio-checked .mat-radio-outer-circle{
+        border-color:  #e49819;
+    }
+    .mat-radio-button.mat-radio-disabled .mat-radio-inner-circle{
+        background-color: #e49819;
+    }
+    .mat-row:hover{
+        background-color: transparent!important;
+    }
+    .mat-table {
+        th.mat-header-cell {
+            width: 33%;
+        }
+        .risk-list{
+            white-space: nowrap;
+        }
+    }
+    .mat-slide-toggle.mat-disabled{
+        opacity: 1;
+    }
+    .tf-card-form{
+        .tf-heading{
+            margin-bottom: 0;
+        }
+        mat-radio-button{
+            padding: 0.8rem 0 0 1rem;
+        }
+    }
+
+}

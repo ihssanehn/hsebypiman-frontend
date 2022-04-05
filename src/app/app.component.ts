@@ -3,17 +3,17 @@ import { Subscription } from 'rxjs';
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 // Layout
-import { LayoutConfigService, SplashScreenService, TranslationService } from './core/_base/layout';
+import { LayoutConfigService, SplashScreenService, TranslationService, VersionCheckService } from './core/_base/layout';
 // language list
+import { locale as frLang } from './core/_config/i18n/fr';
 import { locale as enLang } from './core/_config/i18n/en';
 import { locale as chLang } from './core/_config/i18n/ch';
 import { locale as esLang } from './core/_config/i18n/es';
 import { locale as jpLang } from './core/_config/i18n/jp';
 import { locale as deLang } from './core/_config/i18n/de';
-import { locale as frLang } from './core/_config/i18n/fr';
 import { environment } from '@env/environment';
-import { NgxPermissionsService } from 'ngx-permissions';
 import { AuthService } from './core/auth';
+import { NgxRolesService, NgxPermissionsService } from 'ngx-permissions';
 
 @Component({
 	// tslint:disable-next-line:component-selector
@@ -24,7 +24,7 @@ import { AuthService } from './core/auth';
 })
 export class AppComponent implements OnInit, OnDestroy {
 	// Public properties
-	title = 'CTA - HSE';
+	title = 'PIMAN - HSE';
 	loader: boolean;
 	private unsubscribe: Subscription[] = []; // Read more: => https://brianflove.com/2016/12/11/anguar-2-unsubscribe-observables/
 
@@ -40,10 +40,14 @@ export class AppComponent implements OnInit, OnDestroy {
 				         private router: Router,
 				         private layoutConfigService: LayoutConfigService,
 						 private splashScreenService: SplashScreenService,
-						 private authService : AuthService) {
+						 private authService : AuthService,
+						 private versionCheckService : VersionCheckService,
+						 private ngxRolesService : NgxRolesService,
+						 private ngxPermService:NgxPermissionsService
+	) {
 
 		// register translations
-		this.translationService.loadTranslations(enLang, chLang, esLang, jpLang, deLang, frLang);
+		this.translationService.loadTranslations(frLang, enLang, chLang, esLang, jpLang, deLang);
 	}
 
 	/**
@@ -57,6 +61,16 @@ export class AppComponent implements OnInit, OnDestroy {
 		// enable/disable loader
 		this.loader = this.layoutConfigService.getConfig('loader.enabled');
 
+		// Load permissions
+		this.authService.currentUser.subscribe((user) => {
+			if(user){
+				var permissions = user.role.permissions.map(x => x.code);
+				this.authService.loadUserPermissions(permissions);
+				this.authService.loadUserRole(user.role.code,permissions);
+			}
+		});
+		
+
 		const routerSubscription = this.router.events.subscribe(event => {
 			if (event instanceof NavigationEnd) {
 				// hide splash screen
@@ -64,7 +78,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
 				// scroll to top on every route change
 				window.scrollTo(0, 0);
-
+				
+				this.versionCheckService.checkVersion(environment.versionCheckURL)
 				// to display back the body content
 				setTimeout(() => {
 					document.body.classList.add('tf-page--loaded');
@@ -72,7 +87,7 @@ export class AppComponent implements OnInit, OnDestroy {
 			}
 		});
 		this.unsubscribe.push(routerSubscription);
-		await this.authService.populate();
+		// await this.authService.populate();
 	}
 
 	/**

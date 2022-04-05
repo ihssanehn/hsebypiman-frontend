@@ -1,0 +1,38 @@
+:host::ng-deep {
+    .block-header-filters{
+        display: flex;
+        flex-grow: 1;
+        flex-direction: column;
+        margin-bottom: 20px;
+        border-radius: 4px;
+    }
+    .search-input-group{
+        background-color: #022a88;
+        border-radius: 10px;
+        .input-group-text, .form-control{
+            background: transparent;
+            border: none;
+            height: 49px;
+            color: white;
+        }
+        .input-group-text{
+            
+            cursor: pointer;
+            i{
+                color:white;
+                &.fa.pl-2{
+                    font-size:13px;
+                    width: 13px;
+                    height: 13px;
+                }
+            }
+            .mat-icon{
+                color:#23b3d1;
+                width: 14.9px;
+                height: 14.9px;
+            }
+        }
+        .form-control::placeholder{color:white}
+        
+    }
+}

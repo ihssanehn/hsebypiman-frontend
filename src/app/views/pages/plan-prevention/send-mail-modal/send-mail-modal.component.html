@@ -1,0 +1,11 @@
+<div class="modal-header">
+    <h4 class="text-center modal-title font-weight-bold" id="modal-basic-title">
+        Envoyer par mail le plan de prévention
+    </h4>
+    <button type="button" class="pull-right close" aria-label="Close" (click)="closeMailModal()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<div class="modal-body">
+    <tf-multiple-mail (mailSent)="sendMail($event)"></tf-multiple-mail>
+</div>

@@ -1,19 +1,14 @@
-import {
-	AfterViewInit,
-	ChangeDetectionStrategy,
-	ChangeDetectorRef,
-	Component,
-	ElementRef,
-	OnInit,
-	Renderer2,
-	ViewChild
-} from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { filter } from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
 import * as objectPath from 'object-path';
 // Layout
 import { LayoutConfigService, MenuAsideService, MenuOptions, OffcanvasOptions } from '../../../core/_base/layout';
 import { HtmlClassService } from '../html-class.service';
+import { MatIconRegistry } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
+import { ModuleService } from '@app/core/services';
+import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
 
 @Component({
 	selector: 'tf-aside-left',
@@ -24,7 +19,6 @@ import { HtmlClassService } from '../html-class.service';
 export class AsideLeftComponent implements OnInit, AfterViewInit {
 
 	@ViewChild('asideMenu', {static: true}) asideMenu: ElementRef;
-
 	currentRouteUrl = '';
 	insideTm: any;
 	outsideTm: any;
@@ -78,10 +72,33 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 		public htmlClassService: HtmlClassService,
 		public menuAsideService: MenuAsideService,
 		public layoutConfigService: LayoutConfigService,
+		public moduleService: ModuleService,
+		private ngxPermissionsService: NgxPermissionsService,
+		private ngxRolesService: NgxRolesService,
 		private router: Router,
 		private render: Renderer2,
-		private cdr: ChangeDetectorRef
+		private cdr: ChangeDetectorRef,
+		iconRegistry: MatIconRegistry,
+		sanitizer: DomSanitizer
 	) {
+		this.moduleService.currentModules.subscribe((event) => {
+			this.cdr.markForCheck();
+		})
+		this.ngxPermissionsService.permissions$.subscribe((event) => {
+			this.cdr.markForCheck();
+		})
+		this.ngxRolesService.roles$.subscribe((event) => {
+			this.cdr.markForCheck();
+		})
+		// iconRegistry.addSvgIcon('close-eye',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-close-see.svg'));
+		iconRegistry.addSvgIcon('dashboard',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-dashboard.svg'));
+		iconRegistry.addSvgIcon('chantier',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-chantier.svg'));
+		iconRegistry.addSvgIcon('visite-de-securite',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-visite-de-securite.svg'));
+		iconRegistry.addSvgIcon('plan-daction',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-plan-daction.svg'));
+		iconRegistry.addSvgIcon('administration',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-administration.svg'));
+		iconRegistry.addSvgIcon('analyse',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-design.svg'));
+		iconRegistry.addSvgIcon('business',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-business.svg'));
+		iconRegistry.addSvgIcon('construction',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-construction.svg'));
 	}
 
 	ngAfterViewInit(): void {
@@ -100,13 +117,13 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 		const config = this.layoutConfigService.getConfig();
 
 		if (objectPath.get(config, 'aside.menu.dropdown') !== true && objectPath.get(config, 'aside.self.fixed')) {
-			this.render.setAttribute(this.asideMenu.nativeElement, 'data-ktmenu-scroll', '1');
+			this.render.setAttribute(this.asideMenu.nativeElement, 'data-tfmenu-scroll', '1');
 		}
 
 		if (objectPath.get(config, 'aside.menu.dropdown')) {
-			this.render.setAttribute(this.asideMenu.nativeElement, 'data-ktmenu-dropdown', '1');
+			this.render.setAttribute(this.asideMenu.nativeElement, 'data-tfmenu-dropdown', '1');
 			// tslint:disable-next-line:max-line-length
-			this.render.setAttribute(this.asideMenu.nativeElement, 'data-ktmenu-dropdown-timeout', objectPath.get(config, 'aside.menu.submenu.dropdown.hover-timeout'));
+			this.render.setAttribute(this.asideMenu.nativeElement, 'data-tfmenu-dropdown-timeout', objectPath.get(config, 'aside.menu.submenu.dropdown.hover-timeout'));
 		}
 	}
 
@@ -157,7 +174,7 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 
 			this.insideTm = setTimeout(() => {
 				// if the left aside menu is minimized
-				if (document.body.classList.contains('tf-aside--minimize') && KTUtil.isInResponsiveRange('desktop')) {
+				if (document.body.classList.contains('tf-aside--minimize') && TFUtil.isInResponsiveRange('desktop')) {
 					// show the left aside menu
 					this.render.removeClass(document.body, 'tf-aside--minimize');
 					this.render.addClass(document.body, 'tf-aside--minimize-hover');
@@ -179,7 +196,7 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 
 			this.outsideTm = setTimeout(() => {
 				// if the left aside menu is expand
-				if (document.body.classList.contains('tf-aside--minimize-hover') && KTUtil.isInResponsiveRange('desktop')) {
+				if (document.body.classList.contains('tf-aside--minimize-hover') && TFUtil.isInResponsiveRange('desktop')) {
 					// hide back the left aside menu
 					this.render.removeClass(document.body, 'tf-aside--minimize-hover');
 					this.render.addClass(document.body, 'tf-aside--minimize');
@@ -232,4 +249,41 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 
 		return toggle;
 	}
+
+	goToAdd(){
+		//Reload modal on init
+		this.router.navigateByUrl(this.menuAsideService.menuBtnAdd.value['page']);
+		this.menuAsideService.reload();
+
+	}
+
+	needPermission(item){
+		if(!item.permissionOnly){
+			return true;
+		}else{
+
+			var hasPerm = item.permissionOnly.filter(permission =>  this.ngxPermissionsService.getPermission(permission));
+			var hasRole = item.permissionOnly.filter(permission =>  this.ngxRolesService.getRole(permission));
+
+			if(hasPerm.length > 0 || hasRole.length > 0){
+				return true;
+			}else{
+				return false;
+			}
+		}
+	}
+
+	hasButton(){
+		if(this.menuAsideService.menuBtnAdd.value['title']){
+
+			if(this.menuAsideService.menuBtnAdd.value['permissionOnly']){
+				return this.needPermission(this.menuAsideService.menuBtnAdd.value);
+			}else{
+				return true
+			}
+		}else{
+			return false
+		}
+	}
+
 }

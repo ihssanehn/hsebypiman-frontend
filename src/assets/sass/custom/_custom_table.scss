@@ -1,0 +1,129 @@
+.mat-table {
+    // min-width: auto !important;
+    // width: 100% !important; 
+    // overflow: scroll;
+    tr.mat-header-row{
+        height: auto;
+        min-height: 30px;
+    }
+    th.mat-header-cell{
+        padding: 0 12px 12px;
+    }
+    td.mat-cell, td.mat-footer-cell{
+        padding: 0 12px;
+    }
+    td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type, th.mat-header-cell:first-of-type{
+        padding-left:12px;
+    }
+    td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type, th.mat-header-cell:last-of-type{
+        padding-right:12px;
+    }
+    th.mat-header-cell{
+        vertical-align: bottom;
+    }
+
+    &.table-sm{
+        .mat-cell, .mat-footer-cell{
+            font-size: 0.9em;
+        }
+        .tr.mat-footer-row, tr.mat-row{
+            height: 35px !important;
+        }
+    }
+    &.table-xs{
+        .mat-cell, .mat-footer-cell{
+            font-size: 0.9em;
+        }
+        th.mat-header-cell{
+            padding: 0 2px;
+            vertical-align: middle;
+        }
+        td.mat-cell, td.mat-footer-cell{
+            padding: 0 2px;
+            vertical-align: middle;
+        }
+        .tr.mat-footer-row, tr.mat-row{
+            height: 25px !important;
+        }
+
+        .th-order {
+            i.fa{
+                right: 6px;
+                bottom: 3.5px;
+            }
+        }
+    }
+}
+
+.mat-menu-panel.action-menu {
+    min-height: auto;
+    min-width: auto;
+    .mat-menu-content{
+        padding: 2px;
+    }
+}
+.th-order {
+    cursor: pointer;
+    position: relative;
+    i.fa{
+        opacity: 0;
+        padding-left: 0.5em;
+        position: absolute;
+        right: 0;
+        bottom: 14.5px;
+    }
+
+    &:hover {
+        i.fa{
+            opacity: 0.5;
+        }
+    }
+}
+.mat-cell.pointer{
+    cursor: pointer;
+}
+
+// .mat-header-row {
+//     // width: 100%;
+// }
+
+.mat-row {
+    &:hover{
+        background: #EEE !important ;
+    }
+}
+
+
+.table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+
+    .mat-table {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 1rem;
+        display: table;
+        border-collapse: collapse;
+        overflow-x: scroll;
+        margin: 0px;
+    }
+
+    .mat-row,
+    .mat-header-row {
+        display: table-row;
+        overflow-x: scroll;
+
+    }
+    // .mat-cell,
+    // .mat-header-cell {
+    //     word-wrap: initial;
+    //     display: table-cell;
+    //     padding: 0px 5px;
+    //     line-break: unset;
+    //     width: 100%;
+    //     white-space: nowrap;
+    //     overflow: hidden;
+    //     vertical-align: middle;
+    // }
+}

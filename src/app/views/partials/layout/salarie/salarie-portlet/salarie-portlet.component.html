@@ -1,0 +1,15 @@
+<div class="col-md-12 mt-4" *ngIf="metricsTree">
+    <div class="card">
+        <h5>
+            <tf-salarie-score [type]="'ovale'" [score]="calculateGlobalRating()"></tf-salarie-score>
+            <b>{{metricsTree.libelle}}</b>
+        </h5>
+        <div class="row d-flex">
+            <tf-salarie-portlet-box 
+                class="col-md-6"
+                *ngFor="let item of metricsTree.catMetricsList"
+                [catMetric]="item"
+            ></tf-salarie-portlet-box>
+        </div>
+    </div>
+</div>

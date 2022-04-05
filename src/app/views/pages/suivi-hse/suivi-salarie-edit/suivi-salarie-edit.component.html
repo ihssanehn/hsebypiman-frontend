@@ -1,0 +1,67 @@
+<div class="modal-header">
+	<h4 class="modal-title">{{'SUIVI_HSE.MODIFICATION.TITLE' | translate}}</h4>
+	<button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="metricForm" *ngIf="metricForm" autocomplete="off" class="tf-form tf-form--group-seperator-dashed " novalidate (ngSubmit)="metricForm.valid && onSubmit()" fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+        <div class="row" *ngIf="salarie">
+            <div class="col-md-12">
+                <div class="col-md-12">
+                    <div class="col-md-12 mt-4" *ngFor="let item of salarie.metricsTree; let i = index">
+                        <div class="card">
+                            <h5>
+                                <tf-salarie-score [type]="'ovale'" [score]="calculateGlobalRating(item.catMetricsList)"></tf-salarie-score>
+                                <b>{{item.libelle}}</b>
+                            </h5>
+                            <div class="row d-flex">
+                                <ng-container *ngFor="let catMetric of item.catMetricsList; let j = index">
+                                    <div class="col-md-4" *ngIf="catMetric.is_editable">
+                                        <div class="box col-md-12" >
+                                            <h6>
+                                                <tf-salarie-score [type]="'round'" [score]="catMetric.rating"></tf-salarie-score>
+                                                <b>{{catMetric.libelle}}</b>
+                                            </h6>
+                                            <div class="tf-divider"><span></span></div>
+                                            <div class="box box-coords" style="flex:1">
+                                                <ng-container *ngFor="let metric of catMetric.metrics">
+                                                    <ng-container *ngIf="metric.is_editable" [formGroup]="getPivot(metric.id,j,i)">
+                                                        <mat-form-field class="col-xl-12" *ngIf="!metric.is_bool; else boolField">
+                                                            <mat-label>{{metric.libelle}}</mat-label>
+                                                            <input *ngIf="metric.unit; else withoutUnit" matInput  class="form-control" formControlName="value" type="string" name="metric" [suffix]=" ' '+metric.unit" mask="separator.2" placeholder="{{'ACTION.ENTER_HERE' | translate}}" />
+                                                            <ng-template #withoutUnit>
+                                                                <input matInput  class="form-control" formControlName="value" type="number" name="metric" placeholder="{{'ACTION.ENTER_HERE' | translate}}" />
+                                                            </ng-template>
+                                                        </mat-form-field>
+                                                    </ng-container>
+                                                    <ng-template #boolField>
+                                                        <ng-container *ngIf="metric.is_editable" [formGroup]="getPivot(metric.id,j,i)">
+                                                            <p class="col-xl-12 mb-4">
+                                                                <span class="label pull-left mr-2">{{metric.libelle}}</span>
+                                                                <span class="pull-right">
+                                                                    <mat-radio-group formControlName="value" >
+                                                                        <mat-radio-button class="metric-radio" [value]="1">{{'COMMON.YES' | translate}}</mat-radio-button>
+                                                                        <mat-radio-button class="metric-radio" [value]="0">{{'COMMON.NO' | translate}}</mat-radio-button>
+                                                                    </mat-radio-group>
+                                                                </span>
+                                                            </p>
+                                                        </ng-container>
+                                                    </ng-template>
+                                                </ng-container>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="onCancel()">{{ 'ACTION.CANCEL' | translate }}</button>
+	<button type="button" type="button" mat-raised-button [ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': formloading}" color="success" [disabled]="formloading || metricForm.invalid" (click)="onSubmit()">{{ 'ACTION.SAVE' | translate }}</button>
+</div>

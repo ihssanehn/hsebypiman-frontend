@@ -1,0 +1,29 @@
+.col-actions{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+.slider-label{
+    color:rgba(0, 0, 0, 0.54);
+    font-size: 1.1em;
+}
+.row.vertical-divider {
+    overflow: hidden;
+}
+.row.vertical-divider > *[class^="col-"] {
+    padding-bottom: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: -100px;
+    border-left: 2px solid #F2F7F9;
+    border-right: 2px solid #F2F7F9;
+}
+.row.vertical-divider > *[class^="col-"]:first-child {
+    border-left: none;
+    padding-left: 5px;
+}
+.row.vertical-divider > *[class^="col-"]:last-child {
+    border-right: none;
+    padding-right: 5px;
+}

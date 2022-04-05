@@ -1,0 +1,12 @@
+<div class="modal-header">
+	<h4 class="modal-title">{{'MENU.FLASHINFOS' | translate}} : {{flashInfo?.title}}</h4>
+	<button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+<div class="modal-body" style="background:#f7f7ff">
+    <div class="row">
+        <div class="col-12 flash-content" [innerHtml]="flashInfo?.content">
+        </div>
+    </div>
+</div>

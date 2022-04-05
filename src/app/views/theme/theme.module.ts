@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 // Angular Material
-import { MatButtonModule, MatProgressBarModule, MatTabsModule, MatTooltipModule } from '@angular/material';
+import { MatButtonModule, MatProgressBarModule, MatTabsModule, MatTooltipModule, MatIconModule, } from '@angular/material';
 // NgBootstrap
 import { NgbProgressbarModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 // Translation
@@ -16,7 +16,8 @@ import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 // Ngx DatePicker
-import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
+// import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
+import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_LOCALE } from 'ng-pick-datetime';
 // Perfect Scrollbar
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 // SVG inline
@@ -86,6 +87,10 @@ import { ErrorPageComponent } from './content/error-page/error-page.component';
 	],
 	providers: [
 		HtmlClassService,
+		{ 
+			provide: OWL_DATE_TIME_LOCALE, 
+			useValue: 'fr' 
+		},
 	],
 	imports: [
 		CommonModule,
@@ -98,12 +103,15 @@ import { ErrorPageComponent } from './content/error-page/error-page.component';
 		FormsModule,
 		MatProgressBarModule,
 		MatTabsModule,
+		MatIconModule,
 		MatButtonModule,
 		MatTooltipModule,
 		TranslateModule.forChild(),
 		LoadingBarModule,
-		NgxDaterangepickerMd,
+		// NgxDaterangepickerMd,
 		InlineSVGModule,
+		OwlDateTimeModule,
+		OwlNativeDateTimeModule,
 
 		// ng-bootstrap modules
 		NgbProgressbarModule,

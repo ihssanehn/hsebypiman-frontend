@@ -1,0 +1,116 @@
+:host::ng-deep {
+    #portlet-remonte{
+        color: black;
+        font-size:1em;
+        .tf-portlet{
+            background-color: #f7f9fc;
+            .tf-portlet-header{
+                font-weight: bolder;
+
+                padding: 25px 0 0 20px;
+                .title{
+                    a{
+                        color: #525252;
+                    }
+                    .divider{
+                        font-weight: bolder;
+                        color:#e49819;
+                        margin-left: 0.5em;
+                        margin-right: 0.5em;
+                    }
+                    .id-item{
+                        color: #171717;
+                        font-weight: bolder;
+                        text-transform: uppercase;
+                        padding-bottom: 0.2em;
+                        border-bottom: 2px solid #55cec7 ;
+                    }
+                }
+                .status-box{
+                    .status-icon{
+                        width:20px;
+                        height:20px;
+                        line-height: 0;
+                    }
+                }
+            }
+
+            .tf-portlet__body{
+                padding: 20px;
+                .card{
+                    padding: 2em 2em 0;
+                    height: 100%;
+                    // justify-content: space-between;
+                    p, .box-line{
+                        font-weight: bold;
+                        text-align: right;
+                    }
+                    .label{
+                        color: #c9c9c9;
+                        text-align: left;
+                    }
+                    .pdp-label{
+                        font-weight: 500;
+                    }
+                    .no-data-label{
+                        font-weight: 100;
+                        font-style: italic;
+                    }
+                    .blue{
+                        color: #33b5ae;
+                    }
+                    .tf-divider.h-5 span{
+                        height: 1em;
+                    }
+                    .box{
+                        padding-top: 1.5em;
+                        padding-bottom: 1.5em;
+                        h6{
+                            padding-bottom: 0.8em;
+                            border-bottom: 1px solid #EBECF1;
+                            color: #c9c9c9;
+                        }
+                        h5{
+                            padding-bottom: 0.8em;
+                            border-bottom: 1px solid #EBECF1;
+                        }
+                        &.box-chantiers{
+                            .row{
+                                margin-bottom: 1rem;
+                            }
+                        }
+                        &.box-info{
+                            .row{
+                                margin-bottom: 0;
+                                padding-bottom: 0;
+                            }
+                            p{
+                                text-align: left;
+                                margin-bottom: 2px;
+                            }
+                        }
+                    }
+                    .card-editor{
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                    }
+                }
+
+            }
+        }
+    }
+	#signaturePad{
+		canvas{
+			background-image: url('../../../../../assets/media/images/signer.png');
+			background-repeat: no-repeat;
+			background-position: bottom;
+			background-size: contain;
+		}
+	}
+}
+.badge-pill {
+    padding-right: 0.7em;
+    padding-left: 0.7em;
+    border-radius: 10rem;
+}

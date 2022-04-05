@@ -1,0 +1,90 @@
+<ng-container [formGroup]="remonteeForm">
+
+	<tf-portlet-body>
+		<div class="tf-heading tf-heading--lg" style="margin-top: 0;">
+			<div *ngIf="edit">
+				{{'MENU.SUB_REMONTEES.EDIT' | translate}}
+			</div>
+			<span *ngIf="!edit">{{'MENU.SUB_REMONTEES.ADD' | translate}}</span>
+		</div>
+		<div>
+			<div class="tf-wizard-v4__content" data-tfwizard-type="step-content" data-tfwizard-state="current">
+				<div class="tf-form__section tf-form__section--first">
+					<div class="tf-wizard-v4__form">
+						<div class="row form-row">
+							<mat-form-field class="col-xl-3">
+								<mat-label>{{'REMONTEES.TYPE.LABEL' | translate}}</mat-label>
+								<mat-select class="form-control" placeholder="" formControlName="type_id" [required]="isFieldRequired('type_id')">
+									<mat-option *ngFor="let type of typesList" [value]="type.id">
+										{{ type.libelle }}
+									</mat-option>
+								</mat-select>
+								<mat-error *ngIf="isControlHasError('type_id','required')">
+									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+								</mat-error>
+							</mat-form-field>
+							<mat-form-field class="col-xl-12">
+								<mat-label>{{'REMONTEES.DESCRIPTION.LABEL' | translate}}</mat-label>
+								<textarea matInput class="form-control" name="description" formControlName="description" placeholder="{{ 'ACTION.ENTER_HERE' | translate }}" [required]="isFieldRequired('description')" id="description" rows="10"></textarea>
+								<mat-error *ngIf="isControlHasError('description','required')">
+									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+								</mat-error>
+							</mat-form-field>
+						</div>
+
+
+						<div class="row form-row">
+							<div class="col-12">
+								<form [formGroup]="remonteeForm" (ngSubmit)="uploadSubmit()" *ngIf="uploader">
+									<h4>{{'REMONTEES.CARD.DOC.TITLE' | translate}}</h4>
+									<div class="row">
+										<div class="col-4">
+
+											<div class="upload-btn-wrapper">
+												<button class="btnr" title="{{'COMMON.SELECT_FILES.TITLE' | translate}}">{{'COMMON.SELECT_FILES.SHORTTITLE' | translate}}</button>
+												<span>{{'COMMON.NOTIF.NO_FILE_CHOSEN.TITLE' | translate}}</span>
+												<input formControlName="documentsToUpload" (onFileSelected)="onFileDrop($event)" class="mb-2" type="file" 
+													ng2FileSelect title="{{'COMMON.SELECT_FILES.TITLE' | translate}}" accept=".png, .bmp, .jpeg, .jpg, .gif, .tif, .PNG, .BMP, .JPEG, .JPG, .GIF, .TIF" [uploader]="uploader" multiple/>
+											</div>
+											  
+											<div ng2FileDrop [uploader]="uploader" 
+											(onFileDrop)="onFileDrop($event)"
+											class="drop-zone">
+												{{'UPLOAD.DROPZONE.PLACEHOLDER' | translate}} <br>
+												{{'UPLOAD.LIST_EXT' | translate}} : jpg, bmp, jpeg, gif, png, tif<br>
+												{{'UPLOAD.MAX_SIZE' | translate}} : 4 Mo
+											</div>
+										</div>
+										<div class="col-8">
+											<div class="row">
+												<div class="col-12" *ngIf="edit">
+													<h6>{{'REMONTEES.CARD.DOC.LABEL' | translate}} : </h6>
+													
+													<ul >
+														<li class="mb-3" *ngFor="let item of remonteeForm.get('documents').value" >
+															{{item.libelle}}
+																<mat-icon color="warn" class="pull-right pointer" (click)="deleteDoc(item)" matTooltip="{{'REMONTEES.CARD.DOC.ACTION.REMOVE_DOC' | translate}}">delete</mat-icon>
+														</li>
+													</ul>
+												</div>
+												<div class="col-12">
+													<h6>{{'REMONTEES.CARD.DOC.FILE_AWAIT_UPLOAD' | translate}} : </h6>
+													<ul>
+														<li class="mb-3" *ngFor="let item of uploader.queue">
+															{{seeItem(item)}}
+																<mat-icon color="accent" class="pull-right pointer" (click)="item.remove()" matTooltip="{{'REMONTEES.CARD.DOC.ACTION.REMOVE_DOC' | translate}}">delete</mat-icon>
+														</li>
+													</ul>
+												</div>
+											</div>	
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</tf-portlet-body>
+</ng-container>

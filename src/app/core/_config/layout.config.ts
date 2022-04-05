@@ -2,22 +2,24 @@ import {LayoutConfigModel} from '../_base/layout';
 
 export class LayoutConfig {
 	public defaults: LayoutConfigModel = {
-		demo: 'CVTI - HSE',
+		demo: 'HSE By Piman',
 		// == Base Layout
 		self: {
 			layout: 'fluid', // fluid|boxed
 			body: {
-				'background-image': './assets/media/cta-hse/bkg-header.png',
+				'background-image': './assets/media/hse-png/bkg-header.png',
 				'background-position': 'center top',
 				'background-size': '100% 375px',
 			},
-			logo: './assets/media/cta-hse/logo-cvti-white.png',
+			logo: './assets/media/hse-png/logo-by-piman-circle.png',
+			// logo: './assets/media/hse-png/logo.png',
 		},
 		// == Page Splash Screen loading
 		loader: {
 			enabled: true,
 			type: 'spinner-logo',
-			logo: './assets/media/cta-hse/logo.png',
+			logo: './assets/media/hse-svg/Logo_HSEbyPIMAN.svg',
+			// logo: './assets/media/hse-svg/logo.svg',
 			message: 'Please wait...',
 		},
 		// == Colors for javascript
@@ -52,7 +54,7 @@ export class LayoutConfig {
 				width: 'fixed',
 				fixed: {
 					desktop: {
-						enabled: true,
+						enabled: false,
 						mode: 'menu',
 					},
 					mobile: true,

@@ -1,0 +1,79 @@
+<tf-portlet  >
+	<tf-portlet-header title="{{'MENU.CHANTIER' | translate}}" [stats]="stats ? getHeaderStats() : ''"></tf-portlet-header>
+	<tf-portlet-body [class]="'tf-portlet__body--fit'" style="height: 100%" *ngIf="stats; else loading">
+		<div class="row row-no-padding">
+			<div class="col-12" style="padding:1em">
+				<div class="table-responsive">
+					<table mat-table #chantierSort="matSort" matSort [dataSource]="chantierListData" class="table table-striped table-xs" matSortDisableClear>
+	
+						<!-- number Column -->
+						<ng-container matColumnDef="number" >
+							<th mat-header-cell *matHeaderCellDef mat-sort-header>
+								{{'CHANTIERS.NUMBER.SHORTTITLE' | translate}}
+							</th>
+							<td mat-cell *matCellDef="let chantier" (click)="viewChantier(chantier.id)" class="pointer"> {{chantier.numero}} </td>
+						</ng-container>
+			
+						<!-- nom Column -->
+						<ng-container matColumnDef="nom">
+							<th mat-header-cell *matHeaderCellDef mat-sort-header>
+								{{'CHANTIERS.NAME.TITLE' | translate}}
+							</th>
+							<td mat-cell *matCellDef="let chantier" (click)="viewChantier(chantier.id)" class="pointer"> {{chantier.nom}} </td>
+						</ng-container>
+			
+						<!-- client Column -->
+						<ng-container matColumnDef="client">
+							<th mat-header-cell *matHeaderCellDef mat-sort-header>
+								{{'CHANTIERS.CLIENT.TITLE' | translate}}
+							</th>
+							<td mat-cell *matCellDef="let chantier" (click)="viewChantier(chantier.id)" class="pointer"> {{chantier.client | truncate:35}} </td>
+						</ng-container>
+			
+						<!-- ars_count Column -->
+						<ng-container matColumnDef="ars_count">
+							<th mat-header-cell *matHeaderCellDef mat-sort-header>
+								{{'CHANTIERS.AR_COUNT.TITLE' | translate}}
+							</th>
+							<td mat-cell *matCellDef="let chantier" (click)="viewChantier(chantier.id)" class="pointer"> {{chantier.montant > 20000 ? chantier.ars_count : '-'}} </td>
+						</ng-container>
+			
+						<!-- vss_count Column -->
+						<ng-container matColumnDef="vss_count">
+							<th mat-header-cell *matHeaderCellDef mat-sort-header>
+								{{'CHANTIERS.VS_COUNT.TITLE' | translate}}
+							</th>
+							<td mat-cell *matCellDef="let chantier" (click)="viewChantier(chantier.id)" class="pointer"> {{chantier.vss_count}} </td>
+						</ng-container>
+
+						<!-- remontes_count Column -->
+						<ng-container matColumnDef="remontes_count">
+							<th mat-header-cell *matHeaderCellDef class="text mat-sort-header-center">
+								{{'CHANTIERS.REMONTES_COUNT.TITLE' | translate}}
+							</th>
+							<td mat-cell *matCellDef="let chantier" (click)="viewChantier(chantier.id)" class="pointer"> {{chantier.remontes_count ? chantier.remontes_count:0}} </td>
+						</ng-container>
+			
+						<!-- <ng-container matColumnDef="action">
+							<th mat-header-cell *matHeaderCellDef></th>
+							<td mat-cell *matCellDef="let chantier" class="text-right">
+								<button mat-icon-button color="primary" matTooltip="Actions" [matMenuTriggerFor]="actionMenu" [matMenuTriggerData]="chantier" (click)="selectedChantier = chantier">
+									<mat-icon>more_vert</mat-icon>
+								</button>
+							</td>
+						</ng-container>	 -->
+						<tr mat-header-row *matHeaderRowDef="displayedChantierColumns; sticky: true"></tr>
+						<tr mat-row class="highlight-row" *matRowDef="let row; columns: displayedChantierColumns;"></tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</tf-portlet-body>
+</tf-portlet>
+
+<ng-template #loading>
+	<!-- <span class="tf-widget12__value"></span> -->
+	<div class="loading-card">
+		<mat-spinner color="accent" diameter="30"></mat-spinner>
+	</div>
+</ng-template>

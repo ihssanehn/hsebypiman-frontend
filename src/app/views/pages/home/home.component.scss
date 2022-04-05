@@ -1,0 +1,45 @@
+:host {
+	::ng-deep {
+		ngb-tabset > .nav-tabs {
+			display: none;
+		}
+		.home-title{
+			font-size: 1.2rem;
+			color: #74788d;
+			padding-bottom: 1rem;
+			font-weight: 500;
+			text-align: center;
+		}
+		
+		.tf-portlet{
+			// background-color: #f7f9fc;
+			margin-bottom: 0px;
+			
+		}
+
+		tf-home .tf-portlet{
+			height: 100%
+		}
+
+		.table-responsive{
+			height: calc(163px - 2em);
+			// height: 137px;
+		}
+
+		tf-dash-materiel .tf-portlet__body, tf-salarie-suivi .tf-portlet__body{
+			height: 163px;
+			overflow-y: scroll;
+			overflow-x: none;
+		}
+
+		tf-last-remontees .tf-portlet__body, tf-flash-infos-top .tf-portlet__body{
+			// height: calc(100vh - 460px);
+			height: calc(100vh - 217px);
+			overflow-y: scroll;
+			overflow-x: none;
+		}
+	}
+}
+.dash-title{
+	color: white;
+}

@@ -1,0 +1,94 @@
+.tf-portlet__body{
+    padding: 20px;
+    font-weight: bolder;
+    margin-top: 1em;
+    > div:first-child{
+        padding-left: 0;
+    }
+    .tf-heading{
+        margin: 0;
+        margin-top: 0;
+        span{
+            color: #33b5ae;
+        }
+    }
+    .search-box{
+        display:flex; 
+        flex-flow: row nowrap; 
+        justify-content: space-between; 
+        align-items: center;
+        .search-layout{
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            flex: 1;      
+            .form-group.form-group-sm{
+                margin-bottom: 0;
+                .search-input-group{
+                    flex:1;
+                    .search-icon-container{
+                        background: transparent;
+                        border: 1px solid #e2e5ec;
+                        border-right: none;
+                        border-top-left-radius: 8px;
+                        border-bottom-left-radius: 8px;
+                        // padding: 10px;
+                    }
+                    .input-group-text, .form-control{
+                        background: transparent;
+                        // border: none;
+                        height: 31px;
+                    }
+                    .input-group-prepend{
+                        
+                        .mat-icon{
+                            color:#23b3d1;
+                            width: 10px;
+                        }
+                    }
+                    .search-input{
+                        border: 1px solid #e2e5ec;
+                        border-top-right-radius: 8px;
+                        border-bottom-right-radius: 8px;
+                        border-left: none;
+                        padding-left: 0;
+                        background: transparent;
+                    }
+                    
+                }
+            }       
+            .btn-search{
+                // width: 79px;
+                height: 30px;
+                border-radius: 8px;
+                background-color: #ddf5f4;
+                font-size: 1em;
+                font-weight: bold;
+                font-stretch: normal;
+                font-style: normal;
+                color: #33b5ae;
+                border: none;
+            }
+        }
+    }
+    .search-result-block{
+        mat-label{
+            font-weight: bold;
+            color: #c6c9cc;
+            font-size: 0.9em;
+        }
+    }
+    .result-msg{
+        font-size: 1em;
+        color: #171717;
+        span{
+            font-weight: bold;
+            color: #33b5ae;
+        }
+    }
+}
+
+
+.tf-form__section input{
+    font-weight: bold;
+}

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="410" height="222" viewBox="0 0 410 222">
+    <defs>
+        <linearGradient id="prefix__linear-gradient" x1="1.109" x2="-.402" y1=".5" y2=".5" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#61e3b6"/>
+            <stop offset=".484" stop-color="#35c1c9"/>
+            <stop offset="1" stop-color="#079dde"/>
+        </linearGradient>
+        <filter id="prefix__bkg-content" width="410" height="222" x="0" y="0" filterUnits="userSpaceOnUse">
+            <feOffset dx="20" dy="23"/>
+            <feGaussianBlur result="blur" stdDeviation="27"/>
+            <feFlood flood-opacity=".161"/>
+            <feComposite in2="blur" operator="in"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+    </defs>
+    <g id="prefix__btn" transform="translate(61 58)">
+        <g transform="translate(-61 -58)">
+            <rect id="prefix__bkg-content-2" width="248" height="60" data-name="bkg-content" rx="10" transform="translate(61 58)"/>
+        </g>
+        <text id="prefix__Nouveau_chantier" data-name="Nouveau chantier" transform="translate(124 36)" style="fill:#fff;font-size:15px;font-family:OpenSans-Bold,Open Sans;letter-spacing:.02em;font-weight:700">
+            <tspan x="-66.787" y="0">Nouveau </tspan><tspan y="0" style="font-family:OpenSans,Open Sans;font-weight:400">chantier</tspan>
+        </text>
+    </g>
+</svg>

@@ -1,0 +1,257 @@
+<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8" id="portlet-materiel" *ngIf="materiel">
+	<div class="tf-portlet-header ">
+		<span class="title">
+			<a [routerLink]="['/materiel/list']">{{'MENU.SUB_MATERIELS.LIST' | translate}}</a><span class="divider">></span><span class="id-item">{{materiel.code}}</span>
+		</span>
+		<div ngbDropdown placement="bottom-right" class="d-inline-block pull-right">
+			<button ngbDropdownToggle mat-icon-button color="primary" matTooltip="Actions" style="line-height: 0;height: 0;">
+				<mat-icon>more_vert</mat-icon>
+			</button>
+			<div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
+				<ng-container *ngxPermissionsOnly="['materiel_canUpdate']">
+					<button *ngIf="materiel.main_categorie?.code != 'VEHICULE'" mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editMateriel(materiel.id)">
+						<mat-icon>edit</mat-icon>
+					</button>
+				</ng-container>
+				<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteMateriel(materiel.id)" *ngxPermissionsOnly="['materiel_canArchieve']">
+					<mat-icon>delete</mat-icon>
+				</button>
+			</div>
+		</div>
+	</div>
+	<tf-portlet-body class="tf-portlet__body--fit" *ngIf="materiel">
+		<div class="row">
+			<div class="col-md-5">
+				<div class="card">
+					<h3>{{'MATERIELS.CARD.GENERAL_INFOS.TITLE' | translate}}</h3>
+					<div class="box" style="flex:1">
+						<p><span class="label pull-left mr-2">{{'MATERIELS.LIBELLE.TITLE' | translate}}</span><span *ngIf="materiel.libelle; else noData">{{materiel.libelle}}</span></p>
+						<p><span class="label pull-left mr-2">{{'MATERIELS.NUMERO_SERIE.TITLE' | translate}}</span><span *ngIf="materiel.numero_serie; else noData">{{materiel.numero_serie}}</span></p>
+						<p><span class="label pull-left mr-2">{{'MATERIELS.CATEGORIE.TITLE' | translate}}</span><span *ngIf="materiel.flat_categories; else noData">
+								<span *ngFor="let cat of materiel.flat_categories; let last = last;">
+									{{cat.libelle}}<span *ngIf="!last"> / </span>
+								</span>
+							</span></p>
+						<p><span class="label pull-left mr-2">{{'MATERIELS.MARQUE.TITLE' | translate}}</span><span *ngIf="materiel.marque; else noData">{{materiel.marque}}</span></p>
+						<p><span class="label pull-left mr-2">{{'MATERIELS.FOURNISSEUR.TITLE' | translate}}</span><span *ngIf="materiel.fournisseur; else noData">{{materiel.fournisseur}}</span></p>
+						<p><span class="label pull-left mr-2">{{'MATERIELS.DATE_ENTREE.TITLE' | translate}}</span><span *ngIf="materiel.date_entree; else noData">{{materiel.date_entree | date:'dd/MM/yyyy'}}</span></p>
+						<p><span class="label pull-left mr-2">{{'MATERIELS.DATE_SORTIE.TITLE' | translate}}</span><span *ngIf="materiel.date_sortie; else noData">{{materiel.date_sortie | date:'dd/MM/yyyy'}}</span></p>
+						<p><span class="label pull-left mr-2">{{'MATERIELS.IS_ACTIVE.TITLE' | translate}}</span><span>{{materiel.is_active == 1 ? 'oui': 'non'}}</span></p>
+						<p><span class="label pull-left mr-2">{{'MATERIELS.IS_STOCK_COMMUN.TITLE' | translate}}</span><span>{{materiel.is_stock_commun == 1 ? 'oui': 'non'}}</span></p>
+						<p><span class="label pull-left mr-2">{{'MATERIELS.FORMATION_REQUISE.TITLE' | translate}}</span><span>{{materiel.formation_requise == 1 ? 'oui': 'non'}}</span></p>
+						<p><span class="label pull-left mr-2">{{'MATERIELS.HABILITATION_REQUISE.TITLE' | translate}}</span><span>{{materiel.habilitation_requise == 1 ? 'oui': 'non'}}</span></p>
+						<p><span class="label pull-left mr-2">{{'MATERIELS.HAS_CONTROLE.TITLE' | translate}}</span><span>{{materiel.has_controle == 1 ? 'oui': 'non'}}</span></p>
+						<p><span class="label pull-left mr-2">{{'MATERIELS.FREQUENCE_CONTROLE.TITLE' | translate}}</span><span *ngIf="materiel.has_controle == 1; else noData">{{materiel.frequence_controle+' mois'}}</span></p>
+						<p><span class="label pull-left mr-2">{{'MATERIELS.IS_LOCATION.TITLE' | translate}}</span><span>{{materiel.is_location == 1 ? 'oui':'non'}}</span></p>
+						<p><span class="label pull-left mr-2">{{'MATERIELS.COUT.TITLE' | translate}}</span><span *ngIf="materiel.cout; else noData">{{materiel.cout | currency:'EUR':'€'}}</span></p>
+						<p><span class="label pull-left mr-2">{{'MATERIELS.DATE_FIN_GARANTIE.TITLE' | translate}}</span><span *ngIf="materiel.date_fin_garantie; else noData">{{materiel.date_fin_garantie | date:'dd/MM/yyyy'}}</span></p>
+						<p><span class="label pull-left mr-2">{{'MATERIELS.DESCRIPTION.TITLE' | translate}}</span><span *ngIf="materiel.description; else noData">{{materiel.description}}</span></p>
+						<ng-template #noData>
+							<span>-</span>
+						</ng-template>
+					</div>
+					<div class="tf-divider">
+						<span></span>
+					</div>
+					<div class="box text-center">
+						<small>{{'COMMON.CREATED_AT.TITLE' | translate}} : {{materiel.created_at | date:'dd/MM/yyyy'}}</small><br>
+						<small>{{'COMMON.UPDATED_AT.TITLE' | translate}} : {{materiel.updated_at | date:'dd/MM/yyyy'}}</small>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-7">
+				<div class="cards">
+					<div class="card">
+						<div class="box box-ar-vs" style="flex: 1;">
+							<h5><b>{{'MATERIELS.CARD.USER_TRACKING.TITLE' | translate}}</b><small class="pull-right">{{'MATERIELS.PERSONNELS_COUNT.SHORTTITLE' | translate}} : <span class="blue">{{materiel.salaries.length}}</span></small></h5>
+							<ng-container *ngIf="materiel.salaries.length > 0; else noSalaries">
+								<div class="row">
+									<div class="col-12 my-2">
+										<p><span class="label">{{'MATERIELS.ACTUAL_USER.TITLE' | translate}}</span></p>
+									</div>
+									<ng-container *ngIf="materiel.actual_user; else noUserInProgress">
+										<div class="col-4">
+											<p class="blue text-left">{{materiel.actual_user | fullName}}</p>
+										</div>
+										<div class="col-3">
+											<p class="blue text-center">{{'MATERIELS.READY.TITLE' | translate}} : {{materiel.actual_user?.pivot.date_pret | date:'dd/MM/yyyy'}}</p>
+										</div>
+										<div class="col-3">
+	
+										</div>
+										<div class="col-2">
+											<a class="pull-right" (click)="goToUserDetail(materiel.actual_user.id)" matTooltip="{{'ACTION.SHOW_USER' | translate}}">
+												<mat-icon color="primary">visibility</mat-icon>
+											</a>
+										</div>
+	
+										<div class="col-12" *ngIf="materiel.main_categorie?.code != 'VEHICULE'">
+											<button mat-raised-button class="btn-small pull-right" color="info" (click)="$event.stopPropagation(); openPretModal('return', materiel.actual_user.pivot)">{{'MATERIELS.ACTION.RETURN-MATERIEL' | translate}}</button>
+										</div>
+									</ng-container>
+									<ng-template #noUserInProgress>
+										<div class="col-12">{{'MATERIELS.CARD.USER_TRACKING.NO_CURRENT_USER' | translate}}</div>
+										<div class="col-12" *ngIf="materiel.main_categorie?.code != 'VEHICULE'">
+											<button mat-raised-button class="btn-small pull-right" color="info" (click)="$event.stopPropagation(); openPretModal('add')">{{'MATERIELS.ACTION.ASSIGN_MATERIEL' | translate}}</button>
+										</div>
+									</ng-template>
+								</div>
+								<div class="row mt-2">
+									<div class="col-12 my-2">
+										<p><span class="label">{{'MATERIELS.PERSONNELS_HISTORY.TITLE' | translate}}</span></p>
+									</div>
+									<ng-container *ngIf="materiel.salaries.length > 0; else noArHistorique">
+										<ng-container *ngFor="let salarie of materiel.salaries">
+											<ng-container *ngIf="salarie.id != materiel.actual_user?.id">
+												<div class="col-4">
+													<p class="text-left">{{salarie | fullName}}</p>
+												</div>
+												<div class="col-3">
+													<p class="text-center">{{'MATERIELS.READY.TITLE' | translate}} : {{salarie.pivot.date_pret | date:'dd/MM/yyyy'}}</p>
+												</div>
+												<div class="col-3">
+													<p class="text-center">{{'MATERIELS.RETURN.TITLE' | translate}}: {{salarie.pivot.date_retour | date:'dd/MM/yyyy'}}</p>
+												</div>
+												<div class="col-2">
+													<a class="pull-right" (click)="goToUserDetail(salarie.id)" matTooltip="{{'ACTION.SHOW_USER' | translate}}">
+														<mat-icon color="primary">visibility</mat-icon>
+													</a>
+													<a *ngIf="materiel.main_categorie?.code != 'VEHICULE'" class="pull-right" (click)="$event.stopPropagation(); openPretModal('update', salarie.pivot)" matTooltip="{{'MATERIELS.ACTION.MODIFY_LOAN' | translate}}">
+														<mat-icon color="accent">edit</mat-icon>
+													</a>
+												</div>
+											</ng-container>
+										</ng-container>
+									</ng-container>
+									<ng-template #noArHistorique>
+										{{'MATERIELS.CARD.USER_TRACKING.NO_HISTORY' | translate}}
+									</ng-template>
+								</div>
+							</ng-container>
+							<ng-template #noSalaries>
+								<div class="row">
+									<div class="col-12">
+										<p>{{'MATERIELS.CARD.USER_TRACKING.NO_LOAN' | translate}}</p>
+									</div>
+									<div class="col-12" *ngIf="materiel.main_categorie?.code != 'VEHICULE'">
+										<button mat-raised-button color="info" class="btn-small" (click)="$event.stopPropagation(); openPretModal('add')">{{'MATERIELS.ACTION.ASSIGN_MATERIEL' | translate}}</button>
+									</div>
+								</div>
+							</ng-template>
+						</div>
+					</div>
+					<div class="card">
+						<div class="box box-ar-vs" style="flex: 1;" *ngIf="materiel.vss">
+							<h5><b>{{'MATERIELS.CARD.VISITS_MONITORING.TITLE' | translate}}</b><small class="pull-right">{{'MATERIELS.VS_COUNT.SHORTTITLE' | translate}} : <span class="blue">{{materiel.vss.length}}</span></small></h5>
+							<div class="row">
+								<div class="col-md-12 my-2">
+									<ng-container *ngIf="materiel.vss.length > 0; else noVss">
+										
+										<table mat-table [dataSource]="materiel.vss" style="width: 100%;">
+	
+											<!-- code Column -->
+											<ng-container matColumnDef="code">
+												<th mat-header-cell *matHeaderCellDef >
+													{{'VISITES.CODE.TITLE' | translate}} 
+												</th>
+												<td mat-cell *matCellDef="let visite" class="pointer"> {{visite.code}} </td>
+											</ng-container>
+							
+											<!-- redacteur Column -->
+											<ng-container matColumnDef="redacteur">
+												<th mat-header-cell *matHeaderCellDef> 
+													{{'VISITES.REDACTEUR.TITLE' | translate}} 
+												</th>
+												<td mat-cell *matCellDef="let visite" class="pointer" > {{visite.redacteur ? visite.redacteur.fullname : visite.creator?.fullname }} </td>
+											</ng-container>
+							
+											<!-- visite Column -->
+											<ng-container matColumnDef="visite">
+												<th mat-header-cell *matHeaderCellDef>
+													{{'VISITES.VISITED.TITLE' | translate}}
+												</th>
+												<td mat-cell *matCellDef="let visite" class="pointer" > 
+													<span *ngIf="visite.visited?.type != 'societe'; else societe_ee">{{visite.visited?.fullname}}</span>
+													<ng-template #societe_ee>
+														{{visite.visited}}
+													</ng-template>
+							
+												</td>
+											</ng-container>
+											
+											<!-- date_visite Column -->
+											<ng-container matColumnDef="date_visite">
+												<th mat-header-cell *matHeaderCellDef class="text-center"> 
+													{{'VISITES.DATE_VISITE.SHORTTITLE' | translate}} 
+												</th>
+												<td mat-cell *matCellDef="let visite" class="pointer text-center"> {{visite.date_visite | date:'dd/MM/yyyy'}} </td>
+											</ng-container>
+							
+											<!-- status Column -->
+											<ng-container matColumnDef="etat">
+												<th mat-header-cell *matHeaderCellDef class="text-center"> 
+														{{'VISITES.ETAT.SHORTTITLE' | translate}} 
+												</th>
+												<td mat-cell *matCellDef="let visite" class="pointer text-center"> {{visite.etat?.libelle}} </td>
+											</ng-container>
+							
+											<!-- ko_solved Column -->
+											<ng-container matColumnDef="ko_solved_count">
+												<th mat-header-cell *matHeaderCellDef class="text-center"> 
+													{{'VISITES.KO_SOLVED_COUNT.SHORTTITLE' | translate}} 
+												</th>
+												<td mat-cell *matCellDef="let visite" class="pointer text-center"> {{visite.ko_solved_count}} </td>
+											</ng-container>
+							
+											<!-- ko_unsolved Column -->
+											<ng-container matColumnDef="ko_unsolved_count">
+												<th mat-header-cell *matHeaderCellDef class="text-center"> 
+													{{'VISITES.KO_UNSOLVED_COUNT.SHORTTITLE' | translate}} 
+												</th>
+												<td mat-cell *matCellDef="let visite" class="pointer text-center"> {{visite.ko_unsolved_count}} </td>
+											</ng-container>
+							
+											<!-- docs Column -->
+											<ng-container matColumnDef="docs">
+												<th mat-header-cell *matHeaderCellDef class="text-center"> 
+													{{'REMONTEES.CARD.DOC.TITLE' | translate}} 
+												</th>
+												<td mat-cell *matCellDef="let visite" class="pointer text-center" >
+													<button mat-icon-button type="button" [disabled]="!visite.img_canvas && visite.photos.length == 0" matTooltip="{{'REMONTEES.CARD.DOC.TITLE' | translate}}" (click)="openDocsModal(visite)">
+														<mat-icon>perm_media</mat-icon>
+													</button>
+												</td>
+											</ng-container>
+							
+											<ng-container matColumnDef="action">
+												<th mat-header-cell *matHeaderCellDef></th>
+												<td mat-cell *matCellDef="let visite" class="text-right"> 
+													<a (click)="goToVsDetail(visite.id)" matTooltip="{{'ACTION.SHOW_VISIT' | translate}}">
+														<mat-icon color="primary">visibility</mat-icon>
+													</a>
+												</td>
+											</ng-container> 
+											<tr mat-header-row *matHeaderRowDef="displayedVisiteColumns"></tr>
+											<tr mat-row *matRowDef="let row; columns: displayedVisiteColumns;"></tr>
+										</table>
+	
+									</ng-container>
+									
+									<ng-template #noVss>
+										<div class="row">
+											<div class="col-12">
+												<p>{{'MATERIELS.CARD.VISITS_MONITORING.NO_VISITS' | translate}}</p>
+											</div>
+										</div>
+									</ng-template>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</tf-portlet-body>
+</tf-portlet>

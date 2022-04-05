@@ -1,0 +1,96 @@
+<!-- <div  style="height: 69px;"> -->
+	<tf-search-list-bar [(ngModel)]="filter" (change)="getFlashInfos()" [hasAdvancedSearch]="true" [showFilters]="showFilters" (advancedSearchChange)="advancedSearchChanged($event)" class="row row-filters"></tf-search-list-bar>
+	<tf-flashinfo-filters [hidden]="!showFilters" (change)="udpateFilters($event)" class="row"></tf-flashinfo-filters>
+	
+	<!-- </div> -->
+	<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
+		<tf-portlet-body class="tf-portlet__body--fit" style="padding: 20px 15px;" *ngIf="flashinfosList">
+			<div class="row px-2">
+				<div class="col">
+					<p>{{pagination.total}} {{'NOTIF.RESULT_FOUND.TITLE' | translate}}</p>
+				</div>
+				<div class="col">
+					<button class="pull-right btn-small mb-4" mat-raised-button color="info" (click)="addFlashInfo()">{{'MENU.SUB_FLASHINFOS.ADD' | translate}}</button>
+				</div>
+			</div>
+			<div class="table-responsive">
+				<table mat-table [dataSource]="flashinfosList.data">
+
+					<!-- title Column -->
+					<ng-container matColumnDef="title">
+						<th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('title')">
+							{{'FLASHINFOS.TITLE.TITLE' | translate}}
+							<i class="fa" [ngClass]="isOrderedBy('title') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('title') && {opacity:1}"></i>
+						</th>
+						<td mat-cell *matCellDef="let flashinfo" (click)="viewFlashInfo(flashinfo.id)" class="pointer"> {{flashinfo.title}} </td>
+					</ng-container>
+
+					<!-- created_at Column -->
+					<ng-container matColumnDef="created_at">
+						<th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('created_at')">
+							{{'FLASHINFOS.CREATED_AT.SHORTTITLE' | translate}}
+							<i class="fa" [ngClass]="isOrderedBy('created_at') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('created_at') && {opacity:1}"></i>
+						</th>
+						<td mat-cell *matCellDef="let flashinfo" (click)="viewFlashInfo(flashinfo.id)" class="pointer"> {{flashinfo.created_at | date:'dd/MM/yyyy'}} </td>
+					</ng-container>
+
+					<!-- creator Column -->
+					<ng-container matColumnDef="creator">
+						<th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('creator')">
+							{{'FLASHINFOS.CREATOR.TITLE' | translate}}
+							<i class="fa" [ngClass]="isOrderedBy('creator') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('creator') && {opacity:1}"></i>
+						</th>
+						<td mat-cell *matCellDef="let flashinfo" (click)="viewFlashInfo(flashinfo.id)" class="pointer"> {{flashinfo.creator | fullName}} </td>
+					</ng-container>
+
+					<!-- is_visible Column -->
+					<ng-container matColumnDef="is_visible">
+						<th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('is_visible')">
+							{{'FLASHINFOS.VISIBLE.TITLE' | translate}}
+							<i class="fa" [ngClass]="isOrderedBy('is_visible') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('is_visible') && {opacity:1}"></i>
+						</th>
+						<td mat-cell *matCellDef="let flashinfo" (click)="viewFlashInfo(flashinfo.id)" class="pointer"> {{flashinfo.is_visible == 1 ? ('COMMON.YES' | translate) : ('COMMON.NO' | translate)}} </td>
+					</ng-container>
+
+					<!-- on_top Column -->
+					<ng-container matColumnDef="on_top">
+						<th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('on_top')">
+							{{'FLASHINFOS.ONTOP.TITLE' | translate}}
+							<i class="fa" [ngClass]="isOrderedBy('on_top') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('on_top') && {opacity:1}"></i>
+						</th>
+						<td mat-cell *matCellDef="let flashinfo" (click)="viewFlashInfo(flashinfo.id)" class="pointer"> {{flashinfo.on_top == 1 ? ('COMMON.YES' | translate) : ('COMMON.NO' | translate)}} </td>
+					</ng-container>
+
+					<ng-container matColumnDef="action" stickyEnd >
+						<th mat-header-cell *matHeaderCellDef></th>
+						<td mat-cell *matCellDef="let flashinfo" class="text-right">
+							<button mat-icon-button color="primary" matTooltip="Actions" [matMenuTriggerFor]="actionMenu" [matMenuTriggerData]="flashinfo" (click)="selectedFlashInfo = flashinfo">
+								<mat-icon>more_vert</mat-icon>
+							</button>
+						</td>
+					</ng-container>	
+					<tr mat-header-row *matHeaderRowDef="displayedFlashInfosColumns"></tr>
+					<tr mat-row class="highlight-row" *matRowDef="let row; columns: displayedFlashInfosColumns;"></tr>
+				</table>
+	
+			</div>
+	
+			<tf-pagination (change)="changePagination()" [(ngModel)]="pagination" ngDefaultControl></tf-pagination>
+	
+		</tf-portlet-body>
+	</tf-portlet>
+	
+	<mat-menu #actionMenu="matMenu" class="action-menu">
+		<!-- *ngxPermissionsOnly="['ROOT']" -->
+		<button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}" (click)="viewFlashInfo(selectedFlashInfo.id)">
+			<mat-icon>visibility</mat-icon>
+		</button>
+		<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" *ngxPermissionsOnly="['flashinfo_canUpdate']" (click)="editFlashInfo(selectedFlashInfo.id)">
+			<mat-icon>edit</mat-icon>
+		</button>
+		<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" *ngxPermissionsOnly="['flashinfo_canArchieve']" (click)="deleteFlashInfo(selectedFlashInfo.id)">
+			<mat-icon>delete</mat-icon>
+		</button>
+		
+	</mat-menu>
+	
