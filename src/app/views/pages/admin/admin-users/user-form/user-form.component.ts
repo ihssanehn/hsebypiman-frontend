@@ -2,8 +2,9 @@ import { Component, OnInit, Input, Output, ChangeDetectorRef, EventEmitter } fro
 import { FormGroup, FormControl } from '@angular/forms';
 import { FormStatus } from '@app/core/_base/crud/models/form-status';
 import { Type } from '@app/core/models/type.model';
-import { FonctionService, RoleService } from '@app/core/services';
+import { BuService, EntityService, EntrepriseService, FonctionService, PersonnelService, RoleService } from '@app/core/services';
 import { Role } from '@app/core/auth';
+import { Entreprise, Personnel } from '@app/core/models';
 
 @Component({
   selector: 'tf-user-form',
@@ -19,21 +20,42 @@ export class UserFormComponent implements OnInit {
   @Output() onSubmit = new EventEmitter();
 
   fonctions: Type[];
-  fonctionsLoaded: boolean = false;
-  rolesLoaded: boolean = false;
+  entities: Type[];
+  bu: Type[];
+  profitCenters: Personnel[];
+  clients: Entreprise[];
   roles: Role[];
   civilites = [
     'Mme', 'Mlle', 'M.'
   ]
 
+  fonctionsLoaded: boolean = false;
+  entitiesLoaded: boolean = false;
+  buLoaded: boolean = false;
+  profitCentersLoaded: boolean = false;
+  clientsLoaded: boolean = false;
+
+  rolesLoaded: boolean = false;
+
+
+
   constructor(
     private fonctionService: FonctionService,
+    private entityService: EntityService,
+    private buService: BuService,
     private cdr: ChangeDetectorRef,
-    private roleService: RoleService
+    private roleService: RoleService,
+    private personnelService: PersonnelService,
+    private entrepriseService: EntrepriseService
+
   ) { }
 
   ngOnInit() {
     this.getFonctions();
+    //this.getEntities();
+    //this.getBu();
+    this.getProfitCenters();
+    this.getClients();
     this.getRoles();
   }
 
@@ -46,6 +68,48 @@ export class UserFormComponent implements OnInit {
     }
     this.cdr.markForCheck();
   }
+
+  async getEntities(){
+    this.entitiesLoaded = false;
+    var res = await this.entityService.getList().toPromise();
+    if(res){
+      this.entities = res.result.data;
+      this.entitiesLoaded = true;
+    }
+    this.cdr.markForCheck();
+  }
+
+  async getBu(){
+    this.buLoaded = false;
+    var res = await this.buService.getList().toPromise();
+    if(res){
+      this.bu = res.result.data;
+      this.buLoaded = true;
+    }
+    this.cdr.markForCheck();
+  }
+
+  async getProfitCenters(){
+    this.profitCentersLoaded = false;
+    var res = await this.personnelService.getList().toPromise();
+    if(res){
+      this.profitCenters = res.result.data;
+      this.profitCentersLoaded = true;
+    }
+    this.cdr.markForCheck();
+  }
+
+  async getClients(){
+    this.clientsLoaded = false;
+    var res = await this.entrepriseService.getList().toPromise();
+    if(res){
+      this.clients = res.result.data;
+      this.clientsLoaded = true;
+    }
+    this.cdr.markForCheck();
+  }
+  
+
   async getRoles(){
     this.rolesLoaded = false;
     var res = await this.roleService.getList().toPromise();

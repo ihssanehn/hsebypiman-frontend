@@ -1017,6 +1017,18 @@
 		},
 		"DEFAULT_RESPONSABLE": {
 			"TITLE": "Responsible by default"
+		},
+		"PIMAN_ENTITY": {
+			"LABEL": "Piman entity"
+		},
+		"BU": {
+			"LABEL": "BU"
+		},
+		"PROFIT_CENTER": {
+			"LABEL": "Profit center"
+		},
+		"CLIENT": {
+			"LABEL": "Client"
 		}
 	},
 	"EES": {
