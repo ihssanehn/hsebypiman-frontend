@@ -36,7 +36,7 @@ export class HeaderDirective implements AfterViewInit {
 	ngAfterViewInit(): void {
 		this.setupOptions();
 
-		const header = new KTHeader(this.el.nativeElement, this.options);
+		const header = new TFHeader(this.el.nativeElement, this.options);
 	}
 
 	/**
@@ -50,7 +50,7 @@ export class HeaderDirective implements AfterViewInit {
 			},
 		};
 
-		if (this.el.nativeElement.getAttribute('data-ktheader-minimize') == '1') {
+		if (this.el.nativeElement.getAttribute('data-tfheader-minimize') == '1') {
 			objectPath.set(this.options, 'minimize', {
 				desktop: {
 					on: 'tf-header--minimize'

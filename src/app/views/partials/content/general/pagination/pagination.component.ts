@@ -28,7 +28,7 @@ export class PaginationComponent implements ControlValueAccessor {
   disabled = false;
   constructor() { }
 
-  onChange = any => { console.log(any); };
+  onChange = any => { };
   onTouched = () => { };
   registerOnChange(fn: (data_obj: any) => void): void {
     this.onChange = fn;

@@ -26,6 +26,7 @@ export class SubheaderService {
 	title$: BehaviorSubject<BreadcrumbTitle> = new BehaviorSubject<BreadcrumbTitle>({title: '', desc: ''});
 	breadcrumbs$: BehaviorSubject<Breadcrumb[]> = new BehaviorSubject<Breadcrumb[]>([]);
 	disabled$: Subject<boolean> = new Subject<boolean>();
+	subHeaderList$: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
 
 	// Private properties
 	private manualBreadcrumbs: any = {};
@@ -35,6 +36,8 @@ export class SubheaderService {
 	private asideMenus: any;
 	private headerMenus: any;
 	private pageConfig: any;
+	private subheaderMenus: any;
+	private subheaderConfig: any;
 
 	/**
 	 * Service Constructor
@@ -50,9 +53,11 @@ export class SubheaderService {
 		const initBreadcrumb = () => {
 			// get updated title current page config
 			this.pageConfig = this.pageConfigService.getCurrentPageConfig();
-
+			
 			this.headerMenus = objectPath.get(this.menuConfigService.getMenus(), 'header');
 			this.asideMenus = objectPath.get(this.menuConfigService.getMenus(), 'aside');
+			this.subheaderMenus = objectPath.get(this.menuConfigService.getMenus(), 'subheader');
+			this.subheaderConfig = this.getCurrentSubheaderConfig();
 
 			// update breadcrumb on initial page load
 			this.updateBreadcrumbs();
@@ -60,24 +65,32 @@ export class SubheaderService {
 			if (objectPath.get(this.manualTitle, this.router.url)) {
 				this.setTitle(this.manualTitle[this.router.url]);
 			} else {
+				
 				// get updated page title on every route changed
-				this.title$.next(objectPath.get(this.pageConfig, 'page'));
+				if(typeof this.subheaderConfig == 'undefined'){
+					this.disabled$.next(true);
+				}else{
 
-				// subheader enable/disable
-				const hideSubheader = objectPath.get(this.pageConfig, 'page.subheader');
-				this.disabled$.next(typeof hideSubheader !== 'undefined' && !hideSubheader);
+					this.title$.next(objectPath.get(this.pageConfig, 'page'));
 
-				if (objectPath.get(this.manualBreadcrumbs, this.router.url)) {
-					// breadcrumbs was set manually
-					this.setBreadcrumbs(this.manualBreadcrumbs[this.router.url]);
-				} else {
-					// get updated breadcrumbs on every route changed
-					this.updateBreadcrumbs();
-					// breadcrumbs was appended before, reuse it for this page
-					if (objectPath.get(this.appendingBreadcrumbs, this.router.url)) {
-						this.appendBreadcrumbs(this.appendingBreadcrumbs[this.router.url]);
+					// subheader enable/disable
+					const hideSubheader = objectPath.get(this.pageConfig, 'page.subheader');
+					this.disabled$.next(typeof hideSubheader !== 'undefined' && !hideSubheader);
+
+					if (objectPath.get(this.manualBreadcrumbs, this.router.url)) {
+						// breadcrumbs was set manually
+						this.setBreadcrumbs(this.manualBreadcrumbs[this.router.url]);
+					} else {
+						// get updated breadcrumbs on every route changed
+						this.updateBreadcrumbs();
+						// breadcrumbs was appended before, reuse it for this page
+						if (objectPath.get(this.appendingBreadcrumbs, this.router.url)) {
+							this.appendBreadcrumbs(this.appendingBreadcrumbs[this.router.url]);
+						}
 					}
+
 				}
+				
 			}
 		};
 
@@ -87,6 +100,47 @@ export class SubheaderService {
 		this.router.events
 			.pipe(filter(event => event instanceof NavigationEnd))
 			.subscribe(initBreadcrumb);
+	}
+
+
+	loadSubheader(path: string) {
+		const subHeaderItems: any[] = objectPath.get(this.menuConfigService.getMenus(), path+'.items');
+		this.subHeaderList$.next(subHeaderItems);
+	}
+
+	getCurrentSubheaderConfig(): any {
+		let moduleName = this.getCurrentModuleName();
+		return objectPath.get(this.subheaderMenus, moduleName);
+	}
+
+	getCurrentModuleName(){
+		let configPath = this.cleanUrl(this.router.url);
+		const urls = configPath.split('.');
+		let name = urls[0];
+
+		return name;
+	}
+
+	cleanUrl(url: string): string {
+		// remove first route (demo name) from url router
+		if (new RegExp(/^\/demo/).test(url)) {
+			const urls = url.split('/');
+			urls.splice(0, 2);
+			url = urls.join('/');
+		}
+
+		if (url.charAt(0) == '/') {
+			url = url.substr(1);
+		}
+
+		// we get the page title from config, using url path.
+		// we need to remove query from url ?id=1 before we use the path to search in array config.
+		let finalUrl = url.replace(/\//g, '.');
+		if (finalUrl.indexOf('?') !== -1) {
+			finalUrl = finalUrl.substring(0, finalUrl.indexOf('?'));
+		}
+
+		return finalUrl;
 	}
 
 	/**

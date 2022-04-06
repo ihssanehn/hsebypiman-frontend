@@ -7,34 +7,44 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { DataTableComponent } from './general/data-table/data-table.component';
 // General widgets
 import { Widget1Component } from './widget1/widget1.component';
+import { Widget2Component } from './widget2/widget2.component';
 import { Widget4Component } from './widget4/widget4.component';
 import { Widget5Component } from './widget5/widget5.component';
 import { Widget12Component } from './widget12/widget12.component';
 import { Widget14Component } from './widget14/widget14.component';
 import { Widget26Component } from './widget26/widget26.component';
+import { WidgetIndicatorComponent } from './widget-indicator/widget-indicator.component';
+import { WidgetIndicatorListComponent } from './widget-indicator-list/widget-indicator-list.component';
 import { Timeline2Component } from './timeline2/timeline2.component';
+import { PortletModule } from '../general/portlet/portlet.module';
 
 @NgModule({
 	declarations: [
 		DataTableComponent,
 		// Widgets
 		Widget1Component,
+		Widget2Component,
 		Widget4Component,
 		Widget5Component,
 		Widget12Component,
 		Widget14Component,
 		Widget26Component,
+		WidgetIndicatorComponent,
+		WidgetIndicatorListComponent,
 		Timeline2Component,
 	],
 	exports: [
 		DataTableComponent,
 		// Widgets
 		Widget1Component,
+		Widget2Component,
 		Widget4Component,
 		Widget5Component,
 		Widget12Component,
 		Widget14Component,
 		Widget26Component,
+		WidgetIndicatorComponent,
+		WidgetIndicatorListComponent,
 		Timeline2Component,
 	],
 	imports: [
@@ -47,6 +57,7 @@ import { Timeline2Component } from './timeline2/timeline2.component';
 		MatProgressSpinnerModule,
 		MatPaginatorModule,
 		MatSortModule,
+		PortletModule
 	]
 })
 export class WidgetModule {

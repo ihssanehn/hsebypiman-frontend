@@ -91,17 +91,17 @@ export class HtmlClassService {
 			}
 		}
 
-		if (objectPath.has(this.config, 'self.body.background-image')) {
-			document.body.style.backgroundImage = 'url("' + objectPath.get(this.config, 'self.body.background-image') + '")';
-		}
+		// if (objectPath.has(this.config, 'self.body.background-image')) {
+		// 	document.body.style.backgroundImage = 'url("' + objectPath.get(this.config, 'self.body.background-image') + '")';
+		// }
 
-		if (objectPath.has(this.config, 'self.body.background-position')) {
-			document.body.style.backgroundPosition = objectPath.get(this.config, 'self.body.background-position');
-		}
+		// if (objectPath.has(this.config, 'self.body.background-position')) {
+		// 	document.body.style.backgroundPosition = objectPath.get(this.config, 'self.body.background-position');
+		// }
 
-		if (objectPath.has(this.config, 'self.body.background-size')) {
-			document.body.style.backgroundSize = objectPath.get(this.config, 'self.body.background-size');
-		}
+		// if (objectPath.has(this.config, 'self.body.background-size')) {
+		// 	document.body.style.backgroundSize = objectPath.get(this.config, 'self.body.background-size');
+		// }
 
 		if (objectPath.has(this.config, 'width')) {
 			document.body.classList.add('tf-page--' + objectPath.get(this.config, 'width'));

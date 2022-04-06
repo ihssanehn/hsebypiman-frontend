@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 // Material
-import { MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatButtonModule, MatIconModule, MatCheckboxModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 // Translate
 import { TranslateModule } from '@ngx-translate/core';
 // NGRX
@@ -20,6 +20,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { AuthNoticeComponent } from './auth-notice/auth-notice.component';
 // Auth
 import { AuthGuard, AuthService } from '../../../core/auth';
+import { EditPasswordComponent } from './edit-password/edit-password.component';
 
 const routes: Routes = [
 	{
@@ -39,6 +40,10 @@ const routes: Routes = [
 			{
 				path: 'forgot-password',
 				component: ForgotPasswordComponent,
+			},
+			{
+				path: 'edit-password',
+				component: EditPasswordComponent,
 			}
 		]
 	}
@@ -54,6 +59,7 @@ const routes: Routes = [
 		RouterModule.forChild(routes),
 		MatInputModule,
 		MatFormFieldModule,
+		MatIconModule,
 		MatCheckboxModule,
 		TranslateModule.forChild(),
 	],
@@ -70,7 +76,8 @@ const routes: Routes = [
 		AuthComponent,
 		LoginComponent,
 		ForgotPasswordComponent,
-		AuthNoticeComponent
+		AuthNoticeComponent,
+		EditPasswordComponent
 	]
 })
 

@@ -39,7 +39,7 @@ export class MenuDirective implements AfterViewInit {
 	 */
 	ngAfterViewInit(): void {
 		this.setupOptions();
-		this.menu = new KTMenu(this.el.nativeElement, this.options);
+		this.menu = new TFMenu(this.el.nativeElement, this.options);
 	}
 
 	/**
@@ -55,7 +55,7 @@ export class MenuDirective implements AfterViewInit {
 	private setupOptions() {
 		// init aside menu
 		let menuDesktopMode = 'accordion';
-		if (this.el.nativeElement.getAttribute('data-ktmenu-dropdown') === '1') {
+		if (this.el.nativeElement.getAttribute('data-tfmenu-dropdown') === '1') {
 			menuDesktopMode = 'dropdown';
 		}
 

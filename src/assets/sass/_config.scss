@@ -53,7 +53,7 @@ $tf-action-bold-icons: (
 ) !default;
 
 // Elevate shadow
-$tf-elevate-shadow: 0px 0px 13px 0px rgba(82,63,105,0.05) !default;
+$tf-elevate-shadow: 4px 3px 11px 2px rgba(0, 0, 0, 0.16) !default;
 $tf-elevate-shadow-2: 0px 0px 13px 0px rgba(82,63,105,0.1) !default;
 
 // Dropdown shadow
@@ -89,23 +89,28 @@ $tf-state-colors: (
 
     // Bootstrap states
     primary: (
-        base: #5867dd,
+        // base: #5867dd,
+        base: #004FC2,
         inverse: #ffffff
     ),
     success: (
-        base: #0abb87, //1dc9b7,
+        // base: #0abb87, //1dc9b7,
+        base: #55CEC7, //1dc9b7,
         inverse: #ffffff
     ),
     info: (
-        base: #5578eb,
+        // base: #5578eb,
+        base: #DDF5F4,
         inverse: #ffffff
     ),
     warning: (
-        base: #ffb822,
+        // base: #e49819,
+        base: #E49819,
         inverse: #111111
     ),
     danger: (
-        base: #fd397a,
+        // base: #fd397a,
+        base: #DD153E,
         inverse: #ffffff
     )
 ) !default;
@@ -117,7 +122,7 @@ $tf-base-colors: (
         1: #a2a5b9,
         2: #74788d,
         3: #595d6e,
-        4: #48465b
+        4: #171717
     ),
     shape: (
         1: #f0f3ff,
@@ -167,8 +172,8 @@ $tf-social-colors: (
 
 // Root Font Settings
 $tf-font-families: (
-    regular: unquote('Poppins, Helvetica, sans-serif'),
-    heading: unquote('Poppins, Helvetica, sans-serif')
+    regular: unquote('Open Sans, Helvetica, sans-serif'),
+    heading: unquote('Open Sans, Helvetica, sans-serif')
 ) !default;
 
 // Root Font Settings

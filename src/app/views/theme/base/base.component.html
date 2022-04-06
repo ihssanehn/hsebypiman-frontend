@@ -5,13 +5,13 @@
 	<!-- end:: Header Mobile -->
 
 	<div class="tf-grid tf-grid--hor tf-grid--root" >
-		<!-- begin::Body -->
+	<!-- begin::Body -->
 		<!-- begin:: Header -->
 		<tf-header></tf-header>
 		<!-- end:: Header -->
 		<div class="tf-grid__item tf-grid__item--fluid tf-grid tf-grid--ver tf-page">
 			<!-- begin:: Aside Left -->
-			<ng-container *ngIf="asideDisplay">
+			<ng-container *ngIf="asideDisplay && currentRouteUrl != '/discuss'">
 				<button class="tf-aside-close" id="tf_aside_close_btn"><i class="la la-close"></i></button>
 				<tf-aside-left></tf-aside-left>
 			</ng-container>
@@ -24,7 +24,7 @@
 				<div class="tf-content tf-grid__item tf-grid__item--fluid tf-grid tf-grid--hor" id="tf_body">
 					<div class="tf-content tf-grid__item tf-grid__item--fluid tf-grid tf-grid--hor" id="tf_content">
 						<!-- begin:: Content Head -->
-						<!-- <tf-subheader *ngIf="subheaderDisplay"></tf-subheader> -->
+						<tf-subheader *ngIf="subheaderDisplay"></tf-subheader>
 						<!-- end:: Content Head -->
 
 						<!-- begin:: Content Body -->
@@ -39,11 +39,11 @@
 				<!-- <tf-footer></tf-footer> -->
 			</div>
 		</div>
-		<!-- end:: Body -->
+	<!-- end:: Body -->
 
 		<tf-quick-panel></tf-quick-panel>
 		<tf-scroll-top></tf-scroll-top>
-		<tf-sticky-toolbar></tf-sticky-toolbar>
+		<!-- <tf-sticky-toolbar></tf-sticky-toolbar> -->
 	</div>
 </ng-container>
 <!-- end:: Page -->

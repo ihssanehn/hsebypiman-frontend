@@ -1,0 +1,81 @@
+<form class="tf-form tf-form--group-seperator-dashed" *ngIf="ar">
+
+	<tf-portlet id="portlet-chantier">
+		<div class="tf-portlet-header ">
+			<span class="title">
+				<a [routerLink]="['/analyses-risque/list']">{{'MENU.SUB_ANALYSERISQUE.LIST' | translate}}</a>
+				<span class="divider">></span>
+				<span class="id-item">{{'MENU.SUB_ANALYSERISQUE.DETAIL' | translate}} n° {{ar.code}}</span>
+			</span>
+			<!-- <div ngbDropdown placement="bottom-right" class="d-inline-block pull-right">
+				<button ngbDropdownToggle mat-icon-button color="primary" matTooltip="Actions" style="line-height: 0;height: 0;">
+					<mat-icon>more_vert</mat-icon>
+				</button>
+				 <div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
+					<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editAr(ar.id)">
+						<mat-icon>edit</mat-icon>
+					</button>
+					<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteAr(ar.id)">
+						<mat-icon>delete</mat-icon>
+					</button>
+				</div>
+			</div> -->
+		</div>
+
+		<tf-search-chantier-form [parent]="'ar'" [data]="chantier" origin="detail"></tf-search-chantier-form>
+
+	</tf-portlet>
+
+	<mat-accordion [multi]="true" [hideToggle]="isDisableToggle"  displayMode='flat'>
+
+		<tf-ar-detail-panels 
+			[ar]="ar" 
+			[isExpanded]="isExpanded" 
+			[isDisableToggle]="isDisableToggle" 
+		></tf-ar-detail-panels>
+
+		<mat-expansion-panel [expanded]="true" [disabled]="isDisableToggle">
+			<mat-expansion-panel-header>
+				<div class="tf-heading tf-heading--md">| 5 {{'ARS.CARD.SIGNATURE.TITLE' | translate}}</div>
+            </mat-expansion-panel-header>
+            
+            <form [formGroup]="signaturesForm" class="tf-form tf-form--group-seperator-dashed">
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="tf-card-form">
+                            <div class="tf-heading tf-heading--sm">
+                                {{'ARS.CARD.OBSERVATION.LABEL' | translate}}
+                            </div>
+        
+                            <div class="row form-row" *ngIf="ar?.observations_signature; else noObservation">
+                                <div class="col-md-12 textarea-viewer">
+                                    <p class="mt-2">{{ar?.observations_signature}}</p>
+								</div>
+							</div>
+
+							<ng-template #noObservation>
+								<div class="col-md-12 mb-4">{{'ARS.CARD.OBSERVATION.NO_OBSERVATION' | translate}}</div>
+							</ng-template>
+
+                            <tf-signature-add 
+                                [signaturesForm]="signaturesForm"
+                                [isSigned]="ar?.is_signed"
+							></tf-signature-add>
+
+                        </div>
+                    </div>
+                </div>
+            
+                <button mat-raised-button [ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': formloading}" [disabled]="formloading || signaturesForm?.invalid" class="btn float-right btn-save" (click)="signaturesForm?.valid && onSubmit(false)">
+                    {{'ACTION.SAVE' | translate}}
+                </button>
+
+            </form>
+
+		</mat-expansion-panel>
+
+    </mat-accordion>
+
+</form>
+

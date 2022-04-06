@@ -1,0 +1,15 @@
+<div class="tf-portlet" style="border-radius: 0 0 4px 4px;">
+	<div class="tf-portlet__body">
+		<mat-tab-group mat-align-tabs="start" animationDuration="0ms" dynamicHeight="true"  (selectedIndexChange)="selectTab($event)">
+			<ng-container>
+				<mat-tab *ngFor="let item of subnav">
+					<ng-template mat-tab-label>{{item.translation | translate}}</ng-template>
+					<tf-admin-visite-chantier [hidden]="selectedTab != 'VsChantier'"></tf-admin-visite-chantier>
+					<tf-admin-visite-epi [hidden]="selectedTab != 'VsEpi'"></tf-admin-visite-epi>
+					<tf-admin-visite-outillage [hidden]="selectedTab != 'VsOutillage'"></tf-admin-visite-outillage>
+					<tf-admin-visite-vehicule [hidden]="selectedTab != 'VsVehicule'"></tf-admin-visite-vehicule>
+				</mat-tab>
+			</ng-container>
+		</mat-tab-group>
+	</div>
+</div>

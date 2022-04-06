@@ -1,0 +1,60 @@
+<div class="card" id="portlet-comment">
+	<h4>
+		{{'PLANACTIONS.COMMENT.TITLE' | translate}}
+	</h4>
+	<div class="box d-flex tf-portlet__body--fit">
+		<div class="chat-block" #scrollMe style="flex: 1;">
+			<div class="row chat-row" *ngFor="let comment of comments">			
+				<ng-container *ngIf="!authIsCreator(comment)">
+					<div class="col-md-1 flex-centered">
+							<ngx-avatar class="user-avatar" [round]="true" value="28%" cornerRadius="5" name="{{comment.creator.fullname}}" ></ngx-avatar>
+					</div>
+					<div class="card col-md-11" [ngClass]="{'auth-comment':authIsCreator(comment)}">
+						<p class="text-left comment-title"><small>{{comment.creator.fullname}}, {{comment.updated_at | date:'d MMM y, hh:mm'}}</small></p>
+						<p class="text-left">{{comment.comment}}</p>
+					</div>
+				</ng-container>
+	
+				<ng-container *ngIf="authIsCreator(comment)">
+					<div class="card col-md-11" [ngClass]="{'auth-comment':authIsCreator(comment)}">
+						<p class="comment-title"><small>{{'COMMENTS.AUTH' | translate}}, {{comment.updated_at | date:'d MMM y, hh:mm'}}</small></p>
+						<p>{{comment.comment}}</p>
+					</div>
+					<div class="col-md-1 flex-centered">
+						<ngx-avatar class="user-avatar" [round]="true" value="28%" cornerRadius="5" name="{{comment.creator.fullname}}" *ngIf="authIsCreator(comment); else blankDiv"></ngx-avatar>
+					</div>
+				</ng-container>
+			</div>
+		</div>
+		
+		<div class="input-block"  *ngIf="commentForm">
+			<div class="tf-divider mt-3">
+				<span></span>
+			</div>
+			<form [formGroup]="commentForm" autocomplete="off" class="tf-form tf-form--group-seperator-dashed mt-3" novalidate (ngSubmit)="commentForm.valid && onSubmit()" fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+				<div class="row chat-row">
+					<div class="col-md-11 card">
+						<textarea matInput class="form-control" rows="2" formControlName="comment" placeholder="{{'COMMENTS.ADD' | translate}}"></textarea>
+					</div>
+					<div class="col-md-1 flex-centered" >
+						<button type="button" mat-mini-fab color="info"
+						[ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': formloading}" 
+						[title]="'COMMENTS.SEND' | translate" [disabled]="formloading || commentForm.invalid" (click)="onSubmit()" ><mat-icon>send</mat-icon></button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<!-- <tf-portlet class="tf-portlet--height-fluid mat-elevation-z8" id="portlet-comment" >
+	<div class="tf-portlet-header" [ngStyle]="{'padding': comments.length ? '20px 20px 0 20px': '20px'}">
+		<span class="title">
+			<span class="id-item">Commentaires</span>
+		</span>
+	</div> -->
+	
+<!-- </tf-portlet> -->
+
+<!-- <ng-template #creatorCard>
+	
+</ng-template> -->

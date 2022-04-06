@@ -1,0 +1,31 @@
+
+<ng-container>
+<div class="row">
+    <div class="col-12">
+        <div class="tf-card-form">
+            <!-- <h5>Conformité du véhicule</h5> -->
+            <div class="row form-row">
+                <div class="col-xl-12 form-row-flex">
+                    <div>
+                        <label *ngIf="origin == 'add'">Veuillez indiquer sur la photos ci-dessous les défauts de conformité en utilisant les signes suivants :</label>
+                        <label><strong>X</strong> : Choc</label> 
+                        <label><strong>/</strong> : Rayure légère</label> 
+                        <label><strong>//</strong> : Rayure profonde</label>
+                    </div>
+                    <button mat-icon-button class="clean-btn" color="accent" *ngIf="origin == 'add'" matTooltip="{{'ACTION.CLEAR' | translate}}" (click)="clearSignature()">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                    <div class="signature-container col-12" style="padding:1em">
+                        <div class="col-md-8 offset-md-2" #imgCanvasContainer *ngIf="origin == 'add'">
+                            <signature-pad #img_canvas [options]="signaturePadOptions" (onEndEvent)="drawComplete()"></signature-pad>
+                        </div>
+                        <div class="col-md-8 offset-md-2" *ngIf="origin != 'add'">
+                            <img [src]="_sanitizer.bypassSecurityTrustResourceUrl(showSignature())" *ngIf="showSignature()" width="100%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</ng-container>

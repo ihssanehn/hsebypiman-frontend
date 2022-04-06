@@ -1,0 +1,2526 @@
+{
+	"ACTION": {
+		"ADD": "Add",
+		"ADD_DOCUMENT": "Add a document",
+		"ADD_DOCUMENTS": "Add documents",
+		"ADD_PICTURE": "Add a picture",
+		"ADD_PICTURES": "Add pictures",
+		"ADD_SIGNER": "Add a signer",
+		"CANCEL": "Cancel",
+		"CLEAR": "Empty",
+		"CONFIRM": "Confirm",
+		"DELETE": "Remove",
+		"DETAIL": "Detail",
+		"DOWNLOAD": "Download",
+		"DUPLICATE": "Duplicate",
+		"EDIT": "Edit",
+		"ENTER_HERE": "Enter here",
+		"EXPORT": "Export list",
+		"EXPORT_PDF": "Export in PDF",
+		"FOLLOWING": "Follow",
+		"MAILS_SENDED": "Mail(s) succesfully sent",
+		"READ": "Consult",
+		"TO_SIGN": "Set status to 'To sign'",
+		"REDUCE": "Reduce",
+		"REFRESH": "Refresh",
+		"SAVE": "Save",
+		"SHOW": "Show",
+		"SHOW_USER": "View user",
+		"SHOW_VISIT": "View the visit",
+		"SIGN": "Sign",
+		"SELECT": "Select",
+		"VALIDATE": "Validate the prevention plan",
+		"SEND_BY_MAIL": "Mail the Pdp"
+	},
+	"ARS": {
+		"ACTION": {
+			"ADD_EQUIPEMENT": "Add equipment",
+			"ADD_RISK": "Add a risk",
+			"ADD_ZONE": "Add a zone"
+		},
+		"ADRESS": "Site address",
+		"AR": "Risk analysis",
+		"ASIGNER": {
+			"LABEL": "To sign",
+			"SHORTTITLE": "To sign",
+			"TITLE": "To sign"
+		},
+		"AS_DAYS": {
+			"LABEL": "Security reception days",
+			"SHORTTITLE": "Security reception days",
+			"TITLE": "Security reception days"
+		},
+		"AS_HORAIRES": {
+			"LABEL": "Security reception hours",
+			"SHORTTITLE": "Security reception hours",
+			"TITLE": "Security reception hours"
+		},
+		"BUDGET": "Budget",
+		"CARD": {
+			"EQUIPEMENT": {
+				"NO_EQUIPEMENT": "No equipment to provide",
+				"SHORTTITLE": "Amenities",
+				"TITLE": "Equipment to be provided on site"
+			},
+			"MONITORING": {
+				"MARKUP": {
+					"TITLE": "Signposting to be provided in the area"
+				},
+				"TITLE": "Monitoring of works",
+				"WORKS": {
+					"TITLE": "Work register to be signed"
+				}
+			},
+			"OBSERVATION": {
+				"LABEL": "Additional observations",
+				"NO_OBSERVATION": "No observations",
+				"TITLE": "Observation"
+			},
+			"RISKS": {
+				"LABEL": "Standard PPE must be worn at CVTI: helmet, gloves, covering clothing, shoes. Cap tolerated for work in false ceilings (depending on customer's PDP). If noise is wearing noise-canceling headphones for other risks, adopt the following attitude and check the actions to be taken:",
+				"NO_RISK": "Standard PPE must be worn at CVTI: helmet, gloves, covering clothing, shoes. Cap tolerated for work in false ceilings (depending on customer's PDP). If noise, wearing noise-canceling headphones.",
+				"SHORTTITLE": "Risks",
+				"SUBLABEL": "Standard PPE must be worn at CVTI: helmet, gloves, covering clothing, shoes. Cap tolerated for work in false ceilings (depending on customer's PDP). If wearing noise-canceling headphones for other risks, adopt the following attitude:",
+				"TITLE": "Risks related to the site and means of prevention"
+			},
+			"SIGNATURE": {
+				"ACTION": {
+					"SIGN_AR": "Sign the risk analysis",
+					"SIGN_AR_FOR_OTHERS": "Have the risk analysis signed"
+				},
+				"LABEL": "I have read the site risk analysis, the PPSPS or the PDP and apply the necessary preventive measures",
+				"SUBTITLE": "The petitioners",
+				"TITLE": "Observation and signatures"
+			},
+			"SITE_RULES": {
+				"CONDITIONS": {
+					"TITLE": "General site conditions"
+				},
+				"CONTACTS": {
+					"TITLE": "Contacts in the event of an accident"
+				},
+				"SECURITY": {
+					"TITLE": "Customer specific security reception"
+				},
+				"SITE_NOT_CONCERNED": "Site not concerned",
+				"TITLE": "General site rules"
+			},
+			"ZONE": {
+				"SHORTTITLE": "Zones"
+			}
+		},
+		"CHIEF": "Responsible business",
+		"CLIENT": "Customer",
+		"CONTACT": "Contact",
+		"CONTACT_CLIENT_CHEF_CHANTIER": {
+			"LABEL": "Name Client site manager",
+			"SHORTTITLE": "Name Client site manager",
+			"TITLE": "Name Client site manager"
+		},
+		"CONTACT_CLIENT_HSE": {
+			"LABEL": "HSE or SPS contact",
+			"SHORTTITLE": "HSE or SPS contact",
+			"TITLE": "HSE or SPS contact"
+		},
+		"CONTACT_INTERNE_SECOURS": {
+			"LABEL": "CVTI person",
+			"SHORTTITLE": "CVTI person in case of an accident",
+			"TITLE": "CVTI person"
+		},
+		"COURANT": {
+			"LABEL": "Current provided",
+			"SHORTTITLE": "Current provided",
+			"TITLE": "Current provided"
+		},
+		"DASH": {
+			"AR_AVAILABLE": {
+				"TITLE": "Available analyzes"
+			},
+			"AR_EVOLUTION": {
+				"TITLE": "Evolution of ars"
+			},
+			"AVG_SIGNATURES": {
+				"TITLE": "Average number of signatures per Ar"
+			},
+			"NBR_SIGNATURES": {
+				"TITLE": "Number of signatures"
+			}
+		},
+		"DATE": {
+			"LABEL": "Date of risk analysis",
+			"SHORTTITLE": "Date of risk analysis",
+			"TITLE": "Date of risk analysis"
+		},
+		"DATE_ACCUEIL_SECU": {
+			"LABEL": "Date of security reception",
+			"SHORTTITLE": "Date of security reception",
+			"TITLE": "Date of security reception"
+		},
+		"DATE_DEMARRAGE": "Construction start date for CVTI",
+		"DATE_VALIDITE": {
+			"LABEL": "Security reception validity date",
+			"SHORTTITLE": "Security reception validity date",
+			"TITLE": "Security reception validity date"
+		},
+		"DAYS": {
+			"FRI": "Friday",
+			"MON": "Monday",
+			"SAT": "Saturday",
+			"SUN": "Sunday",
+			"THU": "Thursday",
+			"TUE": "Tuesday",
+			"WED": "Wednesday"
+		},
+		"DEMIJOURNEE": {
+			"LABEL": "By 1/2 day",
+			"SHORTTITLE": "By 1/2 day",
+			"TITLE": "By 1/2 day"
+		},
+		"DEUXHEURES": {
+			"LABEL": "Every 2h",
+			"SHORTTITLE": "Every 2h",
+			"TITLE": "Every 2h"
+		},
+		"EMPLOYEE": "Name of CVTI employee carrying out the joint visit",
+		"FORM": {
+			"ACTION": "Preventive action to be taken",
+			"CA_ASSISTANT": "CA Assistant",
+			"COMMENT": "Details to bring",
+			"CREATE": "Create a new risk analysis",
+			"CVTI_RESPONSIBLE": "Name of CVTI account manager",
+			"REGISTRAR": "Name of the person in charge of the register",
+			"RISKS": "The risks"
+		},
+		"HEAD": {
+			"ADRESS": "Address",
+			"BUDGET": "Site budget",
+			"DATE_DEMARRAGE": "Construction start date",
+			"DETAIL": {
+				"LABEL": "Site Information"
+			},
+			"EMPLOYEE": "CVTI employee carrying out the joint visit",
+			"NAME": "Site Name",
+			"NOTIF": {
+				"AR_ARCHIVED": {
+					"LABEL": "The risk analysis in progress on this site will be archived",
+					"SUBLABEL": "Do you want to continue ?",
+					"TITLE": "You will duplicate this Risk Analysis"
+				},
+				"CHANTIER_FOUND": "A site found"
+			},
+			"NUMBER": "Site number",
+			"SEARCH": {
+				"LABEL": "Find a site"
+			}
+		},
+		"HORAIRES": {
+			"LABEL": "Site working hours",
+			"SHORTTITLE": "Site working hours",
+			"TITLE": "Site working hours"
+		},
+		"NAME": "Site name",
+		"NOTIF": {
+			"ARS_CREATED": {
+				"TITLE": "Successfully created risk analysis"
+			},
+			"AR_DELETED": {
+				"TITLE": "Risk analysis has been deleted successfully"
+			},
+			"AR_DELETE_CONFIRMATION": {
+				"LABEL": "The risk analysis will be permanently deleted.",
+				"TITLE": "Are you sure you want to delete this risk analysis?"
+			},
+			"AR_UPDATED": {
+				"TITLE": "Successfully updated risk analysis"
+			},
+			"PDP_CREATED": {
+				"TITLE": "Successfully created prevention plan "
+			},
+			"CHANTIER_UNSELECTED": {
+				"TITLE": "Failure! Please select a site"
+			},
+			"ELEMENT_ARCHIVED": {
+				"TITLE": "Item is archived successfully"
+			},
+			"ELEMENT_DUPLICATED": {
+				"TITLE": "Item is successfully duplicated"
+			},
+			"ELEMENT_NOT_DELETED": {
+				"SUBTITLE": "Unable to delete because the selection is assigned to one or more risk analyzes",
+				"TITLE": "Unable to delete because the selection includes an item assigned to one or more risk analyzes"
+			},
+			"EQUIPEMENT_ARCHIVED": {
+				"TITLE": "Equipment archived successfully"
+			},
+			"INCOMPLETE_FORM": {
+				"TITLE": "Failure! the form is incomplete"
+			},
+			"RISK_ARCHIVED": {
+				"TITLE": "Risk successfully archived"
+			},
+			"ZONE_ARCHIVED": {
+				"TITLE": "Successfully archived area"
+			}
+		},
+		"NUMBER": "Number",
+		"NUM_SECOURS": {
+			"LABEL": "Number in case of accident or fire",
+			"SHORTTITLE": "Number in case of accident or fire",
+			"TITLE": "Number in case of accident or fire"
+		},
+		"OBSERVATION": "Observations",
+		"PREVOIR_COMPAGNONS": {
+			"LABEL": "To provide for companions",
+			"SHORTTITLE": "To provide for companions",
+			"TITLE": "To provide for companions"
+		},
+		"QUOTIDIENNEMENT": {
+			"LABEL": "Daily",
+			"SHORTTITLE": "Daily",
+			"TITLE": "Daily"
+		},
+		"REALISATEUR": {
+			"LABEL": "Person in charge of hosting",
+			"SHORTTITLE": "Person in charge of hosting",
+			"TITLE": "Person in charge of hosting"
+		},
+		"SIGNATAIRECOUNT": {
+			"LABEL": "Number of signatories",
+			"SHORTTITLE": "Signatories",
+			"TITLE": "Number of signatories"
+		},
+		"SIGNATAIRES": {
+			"LABEL": "Signatories (with / without)",
+			"SHORTTITLE": "Signatories",
+			"TITLE": "Signatories"
+		},
+		"SIGNATURECOUNT": "Signatures",
+		"STATUS": "Status",
+		"TEL_CONTACT_CLIENT_CHEF_CHANTIER": {
+			"LABEL": "Phone number",
+			"SHORTTITLE": "Phone number",
+			"TITLE": "Phone number"
+		},
+		"TEL_CONTACT_CLIENT_HSE": {
+			"LABEL": "Phone number",
+			"SHORTTITLE": "Phone number",
+			"TITLE": "Phone number"
+		},
+		"TEL_CONTACT_INTERNE_SECOURS": {
+			"LABEL": "Phone number",
+			"SHORTTITLE": "Phone number",
+			"TITLE": "Phone number"
+		},
+		"TEL_REALISATEUR": {
+			"LABEL": "Phone number",
+			"SHORTTITLE": "Phone number",
+			"TITLE": "Phone number"
+		},
+		"TYPE": "Type"
+	},
+	"PDP": {
+		"COMPANY": "Company",
+		"BEFORE_STEP_1_DESC": "As a reminder: User company (EU) = Client / External company (EE) = PIMAN",
+		"EMERGENCY_CONTACTS_AND_NUMBERS_IN_THE_EVENT_OF_AN_ACCIDENT": "Emergency contacts and numbers in the event of an accident",
+		"RAISON_SOCIALE_EU": "Corporate name",
+		"CSE_NAME": "Nom du consultant",
+		"CSE_TEL": "CSE phone",
+		"CSE_JOB": "CSE job",
+		"RESPONSABLE_HSE": "HSE Responsible",
+		"INTERVENTION_AT": "Intervention at",
+		"LABEL_INTERVENTION": "Intervention label",
+		"PLACE_INTERVENTION": "Intervention place",
+		"AVERAGE_WORKFORCE": "Average workforce:",
+		"VALIDITY_AT": "PDP validity",
+		"RISK": "Risk",
+		"STATUS": "Status",
+		"USER_COMPANY": "User Company",
+		"OUTSIDE_COMPANY": "Outside company",
+		"INFOS_PIMAN": "Piman Informations",
+		"COMPANY_NAME_AND_CONTACT": "Company name and contact",
+		"RESCUERS_FIRST_AID_WORKER_AT_WORK": "Rescuers First aid worker at work",
+		"QHSE_POLE": "QHSE pole",
+		"OCCUPATIONAL_PHYSICIAN": "Occupational physician",
+		"COMPANY_REPRESENTATIVE": "Company representative",
+		"INTERVENTION_OF_PIMAN_SUBCONTRACTORS": "Intervention of PIMAN subcontractors",
+		"NAME_OF_SUBCONTRACTOR": "Name of Subcontractor",
+		"DETAILS_OF_THE_INTERVENTION": "Details of the intervention",
+		"INTERVENTION_NAME": "Name of the intervention",
+		"INTERVENTION_PLACE": "Place of intervention",
+		"PDP_ESTABLISHED_ON": "PDP established on",
+		"DAYTIME_SITE_OPENING_HOURS": "Daytime site opening hours",
+		"DEBUT": "Debut",
+		"END": "End",
+		"NIGHT_WORK": "Night work",
+		"MORE_THAN_400H": "More than 400h",
+		"PENALTY": "Penalty",
+		"TELEWORKING": "Teleworking",
+		"PRESENCE_ON_CUSTOMER_SITE": "Presence on customer site",
+		"HOW_OFTEN": "How often",
+		"SELECT_AN_ITEM": "Select an item",
+		"PREDICTABLE_AVERAGE_WORKFORCE": "Predictable average workforce",
+		"CSE": "CSE",
+		"TEL": "Tel",
+		"MAIL": "Mail",
+		"JOB": "Job",
+		"NAME": "Name",
+		"INSTRUCTIONS_GIVEN_BY_THE_EXTERNAL_COMPANY": "Instructions given by the external company",
+		"TYPE_OPERATION": "Type of operation",
+		"COMMENT_TYPE_OPERATION": "Comment / Type of operation",
+		"PPE_MADE_AVAILABLE_TO_THE_EXTERNAL_COMPANY": "PPE made available to the external company",
+		"RESOURCES_MADE_AVAILABLE_TO_THE_EXTERNAL_COMPANY": "Resources made available to the external company",
+		"LIST_OF_HAZARDOUS_WORK": "List of hazardous work",
+		"LIST_OF_WORKS": "List of works",
+		"LIST_OF_HAZARDOUS_WORK_DESC": "As a reminder, a written prevention plan must be drawn up between the user company (EU) and the external company (EE) before the start of the work in the event that the total number of working hours planned to carry out the work is at least 400 hours over 12 months, or if the work appears on the list of hazardous work set by the decree of March 19, 1993.",
+		"IDENTIFY_THE_RISKS_GENERATED_BY_COACTIVITY": "Identify the risks generated by coactivity",
+		"TYPES": "Types",
+		"RISKS_CATEGORIES": "Risk categories",
+		"RELATED_SITUATION": "Related situation",
+		"PREVENTION_METHOD_DEPLOYED": "Prevention method (s) deployed",
+		"PERSON_IN_CHARGE": "Person (s) in charge",
+		"VALIDATION_OF_THE_PREVENTION_PLAN": "Validation of the Prevention Plan",
+		"COMPANIES": "Companies",
+		"GENERAL": "General",
+		"SPECIFY": "Specify",
+		"FULLNAME": "Full Name",
+		"DATE": "Date",
+		"HEAD_OF_ESTABLISHMENT_OR_HIS_DELEGATE": "Head of establishment or his delegate",
+		"PARTICIPATION_IN_THE_PRIOR_JOINT_INSPECTION": "Participation in the prior joint inspection",
+		"VISA_PRECEDED_BY_THE_WORDS_READ_AND_APPROVED": "\"Read and approved\"",
+		"READ_AND_APPROVED": "Read and approved",
+		"INTERVENANTS": "Intervenants",
+		"INTERVENANT": "Intervenant",
+		"LAST_NAME": "Last name",
+		"FIRST_NAME": "First name",
+		"CONTACT": "Contact",
+		"PHONE": "Phone",
+		"TRAINING_AUTHORIZATIONS": "Training / Authorizations",
+		"REINFORCED_MEDICAL_FOLLOW_UP": "Reinforced medical follow-up",
+		"ADD_ROW": "Add row",
+		"SUBCONTRACTOR": "Subcontractor",
+		"ONE_SITUATION_REQUIRED": "you have to select at least one situation",
+		"ONE_RESP_REQUIRED": "You must select at least one manager",
+		"ENDTIME_MUST_BIGGER_THAN_START_TIME": "The end time must be later than the start time",
+		"YES": "Yes",
+		"NO": "No",
+		"OTHER_SITUATION": "Other situation",
+		"OTHER_METHOD": "Other method",
+		"OFFICE": "Office prevention plan",
+		"PLAN_GENERAL": "General",
+		"FIELD": "Field prevention plan",
+		"PIMAN": "Piman prevention plan ",
+		"FIELD_DESC": "Prevention plan : Field",
+		"OFFICE_DESC": "Prevention plan : Office",
+		"CLIENT": "Client prevention plan ",
+		"PIMAN_DESC": "Use the Piman creation form.",
+		"CLIENT_DESC": "Prevention plan : Client",
+		"ADD_CLIEN_PDP": "Add prevention plan",
+		"TYPE": "Type of prevention plan",
+		"NOTIF": {
+			"PDP_DELETED": {
+				"TITLE": "Prevention plan has been deleted successfully"
+			},
+			"PDP_DELETE_CONFIRMATION": {
+				"LABEL": "The prevention plan will be permanently deleted.",
+				"TITLE": "Are you sure you want to delete this prevention plan?"
+			},
+			"PDP_UPDATED": {
+				"TITLE": "Successfully updated prevention plan"
+			},
+			"PDP_CREATED": {
+				"TITLE": "Successfully created prevention plan "
+			},
+			"ELEMENT_ARCHIVED": {
+				"TITLE": "Item is archived successfully"
+			},
+			"ELEMENT_NOT_DELETED": {
+				"SUBTITLE": "Unable to delete because the selection is assigned to one or more prevention plans",
+				"TITLE": "Unable to delete because the selection includes an item assigned to one or more prevention plans"
+			},
+			"INCOMPLETE_FORM": {
+				"TITLE": "Failure! the form is incomplete"
+			},
+			"PLAN_ARCHIVED": {
+				"TITLE": "Plan successfully archived"
+			},
+			"TRAVAUX_ARCHIVED": {
+				"TITLE": "Hazardous work archived successfully"
+			},
+			"CONSIGNE_ARCHIVED": {
+				"TITLE": "Instruction (ee) archived successfully"
+			},
+			"EPI_DISPOSITION_ARCHIVED": {
+				"TITLE": "Epi Disposition (ees) archived successfully"
+			},
+			"MOYEN_DISPOSITION_ARCHIVED": {
+				"TITLE": "Medium Disposition (ees) archived successfully"
+			},
+			"CATEGORIE_PDP_RISQUE_ARCHIVED": {
+				"TITLE": "Pdp Risk Category archived successfully"
+			},
+			"PDP_RISQUE_ARCHIVED": {
+				"TITLE": "Pdp Risk archived successfully"
+			},
+			"TYPE_ARCHIVED": {
+				"TITLE": "Type archived successfully"
+			},
+			"STATUS_REFUSED": {
+				"TITLE": "Pdp refused successfully"
+			},
+			"STATUS_ACCEPTED": {
+				"TITLE": "Pdp accepted successfully"
+			},
+			"EMAIL_SENT": {
+				"TITLE": "Email successfully sent"
+			},
+			"COMMENTS": "Comments",
+			"ERROR_SUBMITTING": "Please enter all fields marked with a star or check the format"
+		},
+		"CARD": {
+			"TRAVAUX": {
+				"NO_TRAVAUX": "No hazardous to provide",
+				"SHORTTITLE": "Hazardous work",
+				"TITLE": "Hazardous to be provided on site"
+			},
+			"CONSIGNE": {
+				"NO_CONSIGNE": "No instructions (ee) to provide",
+				"SHORTTITLE": "instructions (ee)",
+				"TITLE": "instructions (ee) to be provided on site"
+			},
+			"EPI_DISPOSITION_EES": {
+				"NO_DISPOSITION": "No disposition (ees) to provide",
+				"SHORTTITLE": "Epi Dispositions (ees)",
+				"TITLE": "Epi Dispositions (ees) to be provided on site"
+			},
+			"MOYEN_DISPOSITION_EES": {
+				"NO_DISPOSITION": "No disposition (ees) to provide",
+				"SHORTTITLE": "Medium Dispositions (ees)",
+				"TITLE": "Medium Dispositions (ees) to be provided on site"
+			},
+			"CATEGORIE_PDP_RISQUE": {
+				"NO_CATEGORIE": "No category to provide",
+				"SHORTTITLE": "Pdp Risk Categories",
+				"TITLE": "Pdp Risk Categories to be provided on site"
+			},
+			"PDP_RISK": {
+				"NO_RISK": "No risk to provide",
+				"SHORTTITLE": "Risks",
+				"TITLE": "Pdp Risks to be provided on site"
+			},
+			"TYPE": {
+				"NO_TYPE": "No type to provide",
+				"SHORTTITLE": "Types (ee)",
+				"TITLE": "Types (ee) to be supplied on site"
+			},
+			"DEFAULT_VALUES_PDP": {
+				"NO_DEFAULT_VALUES": "No values to provide",
+				"SHORTTITLE": "Pdp (ee) default values",
+				"TITLE": "Pdp (ee) default values to be supplied on site"
+			}
+		},
+		"ACTION": {
+			"ADD_TRAVAUX": "Add hazardous work",
+			"ADD_CONSIGNE": "Add instruction (ee)",
+			"ADD_EPI_DISPOSITION": "Add epi disposition (ees)",
+			"ADD_MOYEN_DISPOSITION": "Add medium disposition (ees)",
+			"ADD_CATEGORIE_PDP_RISQUE": "Add Pdp Risk Category",
+			"ADD_PDP_RISQUE": "Add Pdp Risk",
+			"ADD_PDP_CAT_TYPE": "Add a category in this type",
+			"ADD_TYPE": "Add a type",
+			"SENDFORSIGN": "Send to signing",
+			"SIGN_PDP": "Sign the prevention plan"
+		}
+	},
+	"AUTH": {
+		"EDIT": {
+			"DESC": "Enter a new password",
+			"SUCCESS": "Your password has been successfully changed.",
+			"TITLE": "Please change your password"
+		},
+		"FORGOT": {
+			"DESC": "Enter your email to reset your password",
+			"SUCCESS": "Your password has been successfully reset.",
+			"TITLE": "Forgot your password ?"
+		},
+		"GENERAL": {
+			"BACK_BUTTON": "Return",
+			"CONTACT": "Contact",
+			"FORGOT_BUTTON": "Forgot your password",
+			"LEGAL": "Legal",
+			"NO_ACCOUNT": "No account",
+			"OR": "Or",
+			"PRIVACY": "Privacy",
+			"SIGNUP_BUTTON": "Register",
+			"SUBMIT_BUTTON": "Submit"
+		},
+		"INPUT": {
+			"CONFIRM_PASSWORD": "Confirmation",
+			"EMAIL": "Email",
+			"FULLNAME": "Fullname",
+			"NEW_PASSWORD": "New Password",
+			"PASSWORD": "Password",
+			"USERNAME": "Username"
+		},
+		"LOGIN": {
+			"BUTTON": "Login",
+			"TITLE": "Access the <b> platform </b>"
+		},
+		"LOGOUT": "Sign out",
+		"REGISTER": {
+			"DESC": "Enter your details to create your account",
+			"SUCCESS": "Your account has been successfuly registered.",
+			"TITLE": "Create an account"
+		},
+		"VALIDATION": {
+			"AGREEMENT_REQUIRED": "You must accept the terms and conditions",
+			"INVALID": "{{name}} is not valid",
+			"INVALID_FIELD": "invalid field",
+			"INVALID_LOGIN": "Login information is incorrect",
+			"MAX_LENGTH_FIELD": "Maximum field length:",
+			"MIN_LENGTH": "{{name}} must have a minimum length of {{min}}",
+			"MIN_LENGTH_FIELD": "Minimum field length:",
+			"NOT_FOUND": "The required {{name}} was not found",
+			"NOT_SAME": "Passwords must match",
+			"REQUIRED": "{{name}} is required",
+			"REQUIRED_FIELD": "Required field"
+		}
+	},
+	"CHANTIERS": {
+		"ACTION": {
+			"ADD_HABILITATION": "Add an accreditation",
+			"CLOSE_SITE": "Close the site",
+			"CREATE_AR": "Create Risk Analysis"
+		},
+		"ADRESS": {
+			"LABEL": "Site address",
+			"SHORTTITLE": "Address",
+			"TITLE": "Site address"
+		},
+		"AR": "Risk analysis",
+		"ARS": {
+			"LABEL": "Risk analysis",
+			"SHORTTITLE": "Next analysis",
+			"TITLE": "Past analyzes"
+		},
+		"ARS_HISTORY": {
+			"SHORTTITLE": "History of A.R.",
+			"TITLE": "History of risk analyzes"
+		},
+		"AR_COUNT": {
+			"LABEL": "Quantity A.R",
+			"SHORTTITLE": "Number of analyzes",
+			"TITLE": "Quantity A.R"
+		},
+		"AR_INPROGRESS": {
+			"LABEL": "A.R in progress",
+			"SHORTTITLE": "A.R in progress",
+			"TITLE": "Risk analysis in progress"
+		},
+		"BUDGET": {
+			"LABEL": "Budget",
+			"SHORTTITLE": "Amount",
+			"TITLE": "Budget"
+		},
+		"CARD": {
+			"ENTREPRISE": {
+				"NO_ENTREPRISES": "No External Company",
+				"TITLE": "External companies"
+			},
+			"GENERAL_INFOS": {
+				"TITLE": "General informations"
+			},
+			"HABILITATION": {
+				"NO_HABILITATION_REQUIRED": {
+					"SHORTTILE": "No accreditation required",
+					"TITLE": "No accreditation required to access the site"
+				},
+				"SHORTTITLE": "Accreditation",
+				"TITLE": "Mandatory accreditation to access the site"
+			},
+			"SECURITY_INFOS": {
+				"CONTACTS": {
+					"TITLE": "In case of emergency"
+				},
+				"TITLE": "Safety information"
+			},
+			"SITE_COORDINATES": {
+				"TITLE": "Site coordinates"
+			},
+			"SITE_SUPERVISION": {
+				"AR_SUPERVISION": {
+					"NO_AR": "No risk analysis for the moment",
+					"NO_AR_IN_PROGRESS": "No Risk analysis in progress",
+					"NO_HISTORY": "No history",
+					"TITLE": "Risk analyzes monitoring"
+				},
+				"TITLE": "Site monitoring",
+				"VISITES_SUPERVISION": {
+					"NO_VISITES": "No analysis",
+					"TITLE": "Security visits monitoring"
+				}
+			}
+		},
+		"CHIEF": {
+			"LABEL": "Responsible business",
+			"SHORTTITLE": "Last name",
+			"TITLE": "Responsible business"
+		},
+		"CLIENT": {
+			"LABEL": "Customer",
+			"SHORTTITLE": "Customer",
+			"TITLE": "Customer"
+		},
+		"CONTACT": {
+			"LABEL": "Client contact",
+			"SHORTTITLE": "Contact",
+			"TITLE": "Client contact"
+		},
+		"DASH": {
+			"AR_AVG_PER_SITE": {
+				"TITLE": "Average RA per Site"
+			},
+			"BUDGET_AVG": {
+				"TITLE": "Medium budget"
+			},
+			"BUDGET_TOTAL": {
+				"TITLE": "Total budget"
+			},
+			"EVOL_CREATION_SITE": {
+				"TITLE": "Evolution of site creations"
+			},
+			"SITES_IN_PROGRESS": {
+				"TITLE": "Site in progress"
+			},
+			"SITE_PER_TYPES": {
+				"TITLE": "Sites by type"
+			},
+			"VISITES_NUMBER": {
+				"TITLE": "Number of visits"
+			}
+		},
+		"DATE_DEMARRAGE": {
+			"LABEL": "Construction start date",
+			"SHORTTITLE": "Start date",
+			"TITLE": "Construction start date"
+		},
+		"EECOUNT": {
+			"LABEL": "Number of E.E.",
+			"SHORTTITLE": "Number of external companies",
+			"TITLE": "Number of E.E."
+		},
+		"EES": {
+			"LABEL": "External companies",
+			"SHORTTITLE": "External companies",
+			"TITLE": "External companies"
+		},
+		"EE_PRESENCE": {
+			"LABEL": "Presence of E.E.",
+			"SHORTTITLE": "Presence of external companies",
+			"TITLE": "Presence of E.E."
+		},
+		"FORM": {
+			"CREATE": "Create a new site"
+		},
+		"HABCOUNT": {
+			"LABEL": "Number of authorizations",
+			"SHORTTITLE": "Number of authorizations",
+			"TITLE": "Number of authorizations"
+		},
+		"LASTAR": {
+			"LABEL": "Last A.R",
+			"SHORTTITLE": "Last A.R",
+			"TITLE": "Last A.R"
+		},
+		"LAST_VS": {
+			"LABEL": "Last V.S",
+			"SHORTTITLE": "Last V.S",
+			"TITLE": "Last V.S"
+		},
+		"NAME": {
+			"LABEL": "Site name",
+			"SHORTTITLE": "Name",
+			"TITLE": "Site name"
+		},
+		"NOTIF": {
+			"AR_CREATION_CONFIRMATION": {
+				"LABEL": "The risk analysis in progress on this site will be archived",
+				"SUBLABEL": "Do you want to continue ?",
+				"TITLE": "You will create a Risk Analysis"
+			},
+			"AR_CREATION_FAILURE": {
+				"TITLE": "The amount of the site is less than or equal to 20K€, you cannot create a risk analysis"
+			},
+			"ELEMENT_ARCHIVED": {
+				"TITLE": "Element is archived successfully"
+			},
+			"ELEMENT_NOT_DELETED": {
+				"SUBTITLE": "Unable to delete because the selection is assigned to one or more sites",
+				"TITLE": "Unable to delete because the selection includes an element assigned to one or more sites"
+			},
+			"HABILITATION_ARCHIVED": {
+				"TITLE": "Accreditation successfully archived"
+			},
+			"LOADING": {
+				"TITLE": "Loading Site"
+			},
+			"SITE_CLOSED": {
+				"TITLE": "the site was successfully closed"
+			},
+			"SITE_CLOSE_CONFIRMATION": {
+				"SUBTITLE": "Risk analyzes and site visits will be archived",
+				"TITLE": "Do you really want to close this work?"
+			},
+			"SITE_CREATED": {
+				"TITLE": "Site successfully created"
+			},
+			"SITE_UPDATED": {
+				"TITLE": "Site successfully updated"
+			}
+		},
+		"NUMBER": {
+			"LABEL": "Number",
+			"SHORTTITLE": "Number",
+			"TITLE": "Site number"
+		},
+		"REMONTES_COUNT": {
+			"SHORTTITLE": "Number of lifts",
+			"TITLE": "Number of lifts"
+		},
+		"RESP_CHIFFRAGE": {
+			"LABEL": "Costing manager",
+			"SHORTTITLE": "Last name",
+			"TITLE": "Costing manager"
+		},
+		"STATUS": {
+			"LABEL": "Status",
+			"SHORTTITLE": "Status",
+			"TITLE": "Current status of the site"
+		},
+		"TYPE": {
+			"LABEL": "Type",
+			"SHORTTITLE": "Type",
+			"TITLE": "Type"
+		},
+		"VSS": {
+			"LABEL": "Security Visits",
+			"SHORTTITLE": "Past visits",
+			"TITLE": "Past visits"
+		},
+		"VS_COUNT": {
+			"LABEL": "V.S quantity",
+			"SHORTTITLE": "V.S quantity",
+			"TITLE": "V.S quantity"
+		}
+	},
+	"COMMENTS": {
+		"ADD": "add a comment",
+		"AUTH": "You",
+		"SEND": "Send"
+	},
+	"COMMON": {
+		"ADRESS": {
+			"LABEL": "Address",
+			"SHORTTITLE": "Address",
+			"TITLE": "Address"
+		},
+		"ARCHIEVED_AT": {
+			"SHORTTITLE": "Archived on",
+			"TITLE": "Archived on"
+		},
+		"BIRTHDAY": {
+			"LABEL": "Date of Birth",
+			"SHORTTITLE": "Date of Birth",
+			"TITLE": "Date of Birth"
+		},
+		"CITY": {
+			"LABEL": "City",
+			"SHORTTITLE": "City",
+			"TITLE": "City"
+		},
+		"CIVILITE": {
+			"LABEL": "Civility",
+			"TITLE": "Civility"
+		},
+		"COUNTRY": {
+			"LABEL": "Country",
+			"SHORTTITLE": "Country",
+			"TITLE": "Country"
+		},
+		"CREATED_AT": {
+			"LABEL": "Creation date",
+			"SHORTTITLE": "Created the",
+			"TITLE": "Creation date"
+		},
+		"DASH": {
+			"IN_PROGRESS": "In progress",
+			"LATE": "Late",
+			"NC_NUMBER": "Number of NC",
+			"TOTAL": "Total",
+			"TO_ASSIGN": "To assign",
+			"TO_VISIT": "To visit",
+			"VISITS_NUMBER": {
+				"SHORTTITLE": "No. of SV",
+				"TITLE": "Number of SV"
+			}
+		},
+		"DATE": {
+			"LABEL": "Date",
+			"TITLE": "Date"
+		},
+		"DATE_RANGE": {
+			"AND": {
+				"TITLE": "And"
+			},
+			"BETWEEN": {
+				"TITLE": "Between"
+			}
+		},
+		"EMAIL": {
+			"LABEL": "Mail address",
+			"TITLE": "Mail address"
+		},
+		"FIRSTNAME": {
+			"LABEL": "First name",
+			"TITLE": "First name"
+		},
+		"FONCTION": {
+			"LABEL": "Function",
+			"TITLE": "Function"
+		},
+		"INVISIBLE": "Invisible",
+		"LASTNAME": {
+			"LABEL": "Last name",
+			"TITLE": "Last name"
+		},
+		"MANAGER": {
+			"LABEL": "Manager",
+			"TITLE": "Manager"
+		},
+		"NAME": {
+			"LABEL": "Name",
+			"TITLE": "Name"
+		},
+		"NO": "No",
+		"NOTIF": {
+			"ERROR": {
+				"TITLE": "Oops!"
+			},
+			"SUCCESS": {
+				"TITLE": "Success!"
+			},
+			"NO_FILE_CHOSEN": {
+				"TITLE": "No file chosen"
+			}
+		},
+		"NO_DATA_FOUND": {
+			"TITLE": "-"
+		},
+		"NUMBER_OF": {
+			"SHORTTITLE": "No. of",
+			"TITLE": "Number of"
+		},
+		"PAGINATION": {
+			"DE": {
+				"TITLE": "of"
+			},
+			"DISPLAY_BY": {
+				"TITLE": "display by"
+			},
+			"SUR": {
+				"TITLE": "of"
+			}
+		},
+		"PHONE": {
+			"LABEL": "Phone number",
+			"TITLE": "Phone number"
+		},
+		"PHONENUMBER": {
+			"LABEL": "Phone number",
+			"TITLE": "Phone number"
+		},
+		"POSTCODE": {
+			"LABEL": "Postal code",
+			"SHORTTITLE": "Postal code",
+			"TITLE": "Postal code"
+		},
+		"PROFIL": {
+			"LABEL": "Profile",
+			"TITLE": "Profile"
+		},
+		"REMARQUE": {
+			"LABEL": "Notes",
+			"TITLE": "Notes"
+		},
+		"SCORE": {
+			"LABEL": "Employee score",
+			"TITLE": "Employee score"
+		},
+		"SIGNATURE": {
+			"LABEL": "Signature",
+			"TITLE": "Signature"
+		},
+		"SOCIETE": {
+			"LABEL": "Society",
+			"TITLE": "Society"
+		},
+		"TODAY_DATE": {
+			"TITLE": "Today's date"
+		},
+		"UPDATED_AT": {
+			"SHORTTITLE": "Updated",
+			"TITLE": "Updating information"
+		},
+		"VISIBLE": "Visible",
+		"YES": "Yes",
+		"TYPE": {
+			"TITLE": "Type"
+		},
+		"UNIT": {
+			"TITLE": "Unit"
+		},
+		"BOOL": {
+			"TITLE": "Boolean"
+		},
+		"EDITABLE": {
+			"TITLE": "Editable"
+		},
+		"GOAL": {
+			"TITLE": "Goals"
+		},
+		"SELECT_FILES": {
+			"SHORTTITLE": "Select. files",
+			"TITLE": "Select a file"
+		},
+		"ACTIVE": {
+			"TITLE": "Is active ?"
+		},
+		"HAS_COMMENT": {
+			"TITLE": "Has an comment ?"
+		},
+		"IS_TITLE": {
+			"TITLE": "Is a title?"
+		},
+		"IS_SELECTED": {
+			"TITLE": "Is selected?"
+		},
+		"PDP_TYPE": {
+			"TITLE": "Type"
+		},
+		"IS_OTHER": {
+			"TITLE": "Allow to customize"
+		},
+		"IS_ALWAYS_TRUE": {
+			"TITLE": "Selected by default"
+		},
+		"IS_REQUIRED_SITUATION": {
+			"TITLE": "Mandatory select at least one situation"
+		},
+		"DEFAULT_RESPONSABLE": {
+			"TITLE": "Responsible by default"
+		}
+	},
+	"EES": {
+		"ACTION": {
+			"ADD_COMPANY_TYPE": "Add a company type",
+			"ADD_EE": "Add a company"
+		},
+		"CA": {
+			"LABEL": "Turnover",
+			"PLACEHOLDER": "Enter here ...",
+			"SHORTTITLE": "CA",
+			"SUBLABEL": "Turnover of the EE",
+			"TITLE": "Turnover"
+		},
+		"CARD": {
+			"COMPANY_DETAILS": {
+				"TITLE": "Company details"
+			},
+			"COMPANY_MONITORING": {
+				"LABEL": "Site monitoring",
+				"NO_CHANTIER": "This company has not been assigned to any site",
+				"NO_INTERIMAIRE": "This company does not have any interim",
+				"TITLE": "Company monitoring"
+			},
+			"GENERAL_INFOS": {
+				"TITLE": "General informations"
+			}
+		},
+		"CHANTIERS": {
+			"LABEL": "Construction sites",
+			"SHORTTITLE": "Construction sites",
+			"TITLE": "Construction sites"
+		},
+		"CHANTIERS_COUNT": {
+			"LABEL": "Number of sites",
+			"SHORTTITLE": "Number of sites",
+			"TITLE": "Number of sites"
+		},
+		"DASH": {
+			"TOP_INTERIM": {
+				"MISSION": "missions",
+				"TITLE": "Top 5 Interim"
+			},
+			"TOP_NC": {
+				"NC": "nc",
+				"TITLE": "Top 5 Nc",
+				"VS": "SV"
+			},
+			"TOP_SUBCONTRACTORS": {
+				"TITLE": "Top 5 subcontractors"
+			},
+			"TOP_VISITS": {
+				"TITLE": "Top 5 visits"
+			}
+		},
+		"DATE_DEMARRAGE": {
+			"LABEL": "Starting date",
+			"PLACEHOLDER": "Enter here ...",
+			"SHORTTITLE": "Starting date",
+			"SUBLABEL": "Start date of the EE",
+			"TITLE": "Starting date"
+		},
+		"INTERIMAIRE": {
+			"LABEL": "Temp worker",
+			"SHORTTITLE": "Temp worker",
+			"TITLE": "Temp worker"
+		},
+		"INTERIMAIRE_ADD": {
+			"LABEL": "Add a Temp worker",
+			"SHORTTITLE": "Add a Temp worker",
+			"TITLE": "Add a Temp worker"
+		},
+		"INTERIMAIRES": {
+			"LABEL": "Temp workers",
+			"SHORTTITLE": "Temp workers",
+			"TITLE": "Temp workers"
+		},
+		"INTERIMAIRES_COUNT": {
+			"LABEL": "Number of Temp workers",
+			"SHORTTITLE": "Number of Temp workers",
+			"TITLE": "Number of Temp workers"
+		},
+		"INTERIMAIRES_DEBUT_MISSION": {
+			"LABEL": "Start date of the mission",
+			"SHORTTITLE": "Start date of the mission",
+			"TITLE": "Start date of the mission"
+		},
+		"INTERIMAIRES_FIN_MISSION": {
+			"LABEL": "End date of the mission",
+			"SHORTTITLE": "End date of the mission",
+			"TITLE": "End date of the mission"
+		},
+		"NOTIF": {
+			"COMPANY_CREATED": {
+				"TITLE": "Company successfully created"
+			},
+			"COMPANY_TYPE_ARCHIVED": {
+				"TITLE": "Company type successfully archived"
+			},
+			"COMPANY_UPDATED": {
+				"TITLE": "Company updated successfully"
+			},
+			"ELEMENT_NOT_DELETED": {
+				"LABEL": "Unable to delete because the selection is assigned to one or more companies",
+				"SHORTTITLE": "Company types",
+				"TITLE": "Unable to delete because the selection includes an element assigned to one or more companies"
+			},
+			"EE_NOT_DELETED": {
+				"LABEL": "Unable to delete because the selection is assigned to one or more chantiers",
+				"SHORTTITLE": "Company types",
+				"TITLE": "Unable to delete because the selection includes an element assigned to one or more chantiers"
+			},
+			"EE_DELETED": {
+				"LABEL": "Company deleted successfully",
+				"SHORTTITLE": "Company deleted successfully",
+				"TITLE": "Company deleted successfully"
+			},
+			"LOADING": {
+				"TITLE": "Loading Company"
+			}
+		},
+		"RAISON_SOCIALE": {
+			"LABEL": "Social media",
+			"PLACEHOLDER": "Enter here ...",
+			"SHORTTITLE": "Social media",
+			"TITLE": "Social media"
+		},
+		"TYPE": {
+			"LABEL": "Type of company",
+			"PLACEHOLDER": "Enter here ...",
+			"SHORTTITLE": "Type",
+			"TITLE": "Type of company"
+		}
+	},
+	"EPIS": {
+		"CATEGORIE": {
+			"LABEL": "Category",
+			"SHORTTITLE": "Category",
+			"TITLE": "Category"
+		},
+		"CODE": {
+			"LABEL": "Code",
+			"SHORTTITLE": "Code",
+			"TITLE": "Code"
+		}
+	},
+	"FILTER": {
+		"ADD_VEHICULE": "Vehicle identification number",
+		"ADVANCED_SEACH": "Advanced search",
+		"CREATION_DATE": "Creation date",
+		"HIDE": "Hide",
+		"KEYWORD": "Search",
+		"LAUNCH": "Launch",
+		"MAX": "Maximum",
+		"MIN": "Minimum",
+		"SEARCH": "Search",
+		"SEARCH_ALL": "All",
+		"SEARCH_CHANTIER": "Find a site",
+		"SEARCH_KEYWORD": "Search by keyword",
+		"SEARCH_OUTILLAGE": "Tool identification number",
+		"SEARCH_SALARIE": "Find an employee",
+		"SEARCH_WITH": "With",
+		"SEARCH_WITHOUT": "Without",
+		"SELECT_ROLE": "Select a role",
+		"SELECT_STATUS": "Select a status",
+		"SHOW": "Pin up",
+		"STATUS": "Status",
+		"TITLE": "Filters"
+	},
+	"FLASHINFOS": {
+		"CONTENT": {
+			"LABEL": "Content",
+			"SHORTTITLE": "Contenu",
+			"TITLE": "Content"
+		},
+		"CREATED_AT": {
+			"LABEL": "Creation date",
+			"SHORTTITLE": "Created at",
+			"TITLE": "Created at"
+		},
+		"CREATOR": {
+			"LABEL": "Creator",
+			"SHORTTITLE": "Creator",
+			"TITLE": "Creator"
+		},
+		"HISTORY": {
+			"LABEL": "Flash info history",
+			"SHORTTITLE": "View history",
+			"TITLE": "See old news flash"
+		},
+		"NOTIF": {
+			"NO_FLASH": "No Flash Info",
+			"FLASH_UPDATED": {
+				"TITLE": "Flash info updated successfully"
+			},
+			"FLASH_CREATED": {
+				"TITLE": "Flash Info successfully created"
+			},
+			"FLASHINFO_DELETE_CONFIRMATION": {
+				"TITLE": "You will permanently delete this flash info",
+				"LABEL": "Are you sure you want to continue ?"
+			},
+			"FLASHINFO_DELETED": {
+				"TITLE": "Flash info deleted successfully"
+			}
+		},
+		"ONTOP": {
+			"LABEL": "On headlines",
+			"SHORTTITLE": "On headlines",
+			"TITLE": "On headlines"
+		},
+		"RECENTLY": {
+			"LABEL": "recently",
+			"SHORTTITLE": "recently",
+			"TITLE": "recently"
+		},
+		"TITLE": {
+			"LABEL": "Title",
+			"SHORTTITLE": "Title",
+			"TITLE": "Title"
+		},
+		"VISIBLE": {
+			"LABEL": "Visible",
+			"SHORTTITLE": "Visible",
+			"TITLE": "Visible"
+		},
+		"NEW": {
+			"SHORTBUTTON": "New flash info"
+		}
+	},
+	"MATERIELS": {
+		"ACTION": {
+			"ADD_MATERIAL_TYPE": "Add an equipment's type",
+			"ASSIGN_MATERIEL": "Assign equipment",
+			"MODIFY_LOAN": "modify the loan",
+			"RETURN-MATERIEL": "Return equipment"
+		},
+		"ACTUAL_USER": {
+			"LABEL": "Current user",
+			"SHORTTITLE": "Current user",
+			"TITLE": "Current user"
+		},
+		"ASSIGN_USER": {
+			"LABEL": "New user",
+			"SHORTTITLE": "New user",
+			"TITLE": "New user"
+		},
+		"CARD": {
+			"GENERAL_INFOS": {
+				"TITLE": "General informations"
+			},
+			"USER_TRACKING": {
+				"NO_CURRENT_USER": "No current user",
+				"NO_HISTORY": "No history",
+				"NO_LOAN": "No loan",
+				"TITLE": "User tracking"
+			},
+			"VISITS_MONITORING": {
+				"NO_VISITS": "No visits",
+				"TITLE": "Monitoring of visits"
+			}
+		},
+		"CATEGORIE": {
+			"LABEL": "Category",
+			"PLACEHOLDER": "Select a category",
+			"SHORTTITLE": "Category",
+			"TITLE": "Category"
+		},
+		"CODE": {
+			"LABEL": "Code",
+			"SHORTTITLE": "Code",
+			"TITLE": "Code"
+		},
+		"COUT": {
+			"LABEL": "Cost",
+			"SHORTTITLE": "Cost",
+			"TITLE": "Cost"
+		},
+		"DASH": {
+			"LATE_MATERIAL": {
+				"TITLE": "Late equipment"
+			},
+			"MATERIEL": {
+				"AVAILABLE": {
+					"TITLE": "Equipment available"
+				}
+			},
+			"MATERIELS_BY_TYPE": {
+				"TITLE": "Equipments by type"
+			},
+			"MATERIEL_ENTRY_EVOLUTION": {
+				"TITLE": "Evolution of equipment entry"
+			},
+			"MATERIEL_LOAN": {
+				"TITLE": "Equipment on loan"
+			},
+			"MATERIEL_NO": {
+				"TITLE": "Equipment"
+			},
+			"VISITS_NO": {
+				"TITLE": "Number of visits"
+			}
+		},
+		"DATE_ENTREE": {
+			"LABEL": "Entry date",
+			"SHORTTITLE": "Entry date",
+			"TITLE": "Entry date"
+		},
+		"DATE_FIN_GARANTIE": {
+			"LABEL": "End of warranty date",
+			"SHORTTITLE": "End of warranty date",
+			"TITLE": "End of warranty date"
+		},
+		"DATE_PRET": {
+			"LABEL": "Loan date",
+			"SHORTTITLE": "Loan date",
+			"TITLE": "Loan date"
+		},
+		"DATE_RETOUR": {
+			"LABEL": "Return date",
+			"SHORTTITLE": "Return date",
+			"TITLE": "Return date"
+		},
+		"DATE_SORTIE": {
+			"LABEL": "Release date",
+			"SHORTTITLE": "Release date",
+			"TITLE": "Release date"
+		},
+		"DATE_VS": {
+			"LABEL": "Next V.S",
+			"SHORTTITLE": "Next visit",
+			"TITLE": "Next V.S"
+		},
+		"DESCRIPTION": {
+			"LABEL": "Description",
+			"SHORTTITLE": "Description",
+			"TITLE": "Description"
+		},
+		"FORMATION_REQUISE": {
+			"LABEL": "Required training",
+			"SHORTTITLE": "Required training",
+			"TITLE": "Required training"
+		},
+		"FOURNISSEUR": {
+			"LABEL": "Supplier",
+			"SHORTTITLE": "Supplier",
+			"TITLE": "Supplier"
+		},
+		"FREQUENCE_CONTROLE": {
+			"LABEL": "Control frequency (in months)",
+			"SHORTTITLE": "Control frequency",
+			"TITLE": "Control frequency"
+		},
+		"HABILITATION_REQUISE": {
+			"LABEL": "Authorization required",
+			"SHORTTITLE": "Authorization required",
+			"TITLE": "Authorization required"
+		},
+		"HAS_CONTROLE": {
+			"LABEL": "Must be controlled",
+			"SHORTTITLE": "Must be controlled",
+			"TITLE": "Must be controlled"
+		},
+		"IS_ACTIVE": {
+			"LABEL": "Active",
+			"SHORTTITLE": "Active",
+			"TITLE": "Active"
+		},
+		"SHOW_INACTIVES": {
+			"LABEL": "Show inactive equipments",
+			"SHORTITLE": "Inactive equipments",
+			"TITLE": "Inactive equipments"
+		},
+		"IS_STOCK_COMMUN": {
+			"LABEL": "Common stock",
+			"SHORTTITLE": "Common stock",
+			"TITLE": "Common stock"
+		},
+		"ONLY_COMMON_STOCK": {
+			"LABEL": "Common stock only",
+			"SHORTITLE": "Common stock only",
+			"TITLE": "Common stock only"
+		},
+		"IS_LOCATION": {
+			"LABEL": "Rental",
+			"SHORTTITLE": "Rental",
+			"TITLE": "Rental"
+		},
+		"LAST_VS": {
+			"LABEL": "Last V.S",
+			"SHORTTITLE": "last visit",
+			"TITLE": "Last V.S"
+		},
+		"LIBELLE": {
+			"LABEL": "Wording",
+			"SHORTTITLE": "Wording",
+			"TITLE": "Wording"
+		},
+		"MAIN_CATEGORIE": {
+			"LABEL": "Type",
+			"SHORTTITLE": "Type",
+			"TITLE": "Type"
+		},
+		"MARQUE": {
+			"LABEL": "Brand",
+			"SHORTTITLE": "Brand",
+			"TITLE": "Brand"
+		},
+		"NOTIF": {
+			"ELEMENT_NOT_DELETED": {
+				"LABEL": "Unable to delete because the selection is assigned to one or more equipment",
+				"SHORTTITLE": "Types of equipment",
+				"TITLE": "Unable to delete because the selection includes an element assigned to one or more equipment"
+			},
+			"LOADING": {
+				"TITLE": "Loading Equipment"
+			},
+			"LOAN_CREATED": {
+				"TITLE": "Loan created successfully"
+			},
+			"LOAN_UPDATED": {
+				"TITLE": "Loan updated successfully"
+			},
+			"MATERIEL_CREATED": {
+				"TITLE": "Equipment successfully created"
+			},
+			"MATERIEL_UPDATED": {
+				"TITLE": "Equipment updated successfully"
+			},
+			"MATERIEL_TYPE_ARCHIVED": {
+				"TITLE": "Type of equipment successfully archived"
+			},
+			"ELEMENT_ARCHIVED": {
+				"TITLE": "Item is archived successfully"
+			},
+			"NOTHING_FOUND": {
+				"TITLE": "Nothing has been found."
+			}
+		},
+		"NUMERO_SERIE": {
+			"LABEL": "Serial number",
+			"SHORTTITLE": "Serial number",
+			"TITLE": "Serial number"
+		},
+		"PERSONNELS": {
+			"LABEL": "Users",
+			"SHORTTITLE": "Users",
+			"TITLE": "Users"
+		},
+		"PERSONNELS_COUNT": {
+			"LABEL": "Number of users",
+			"SHORTTITLE": "Number of users",
+			"TITLE": "Number of users"
+		},
+		"PERSONNELS_HISTORY": {
+			"LABEL": "User history",
+			"SHORTTITLE": "User history",
+			"TITLE": "User history"
+		},
+		"READY": {
+			"TITLE": "ready"
+		},
+		"RETURN": {
+			"TITLE": "return"
+		},
+		"SUB_CATEGORIE": {
+			"LABEL": "Sub-category",
+			"SHORTTITLE": "Sub-category",
+			"TITLE": "Sub-category"
+		},
+		"TYPE": {
+			"LABEL": "Type",
+			"SHORTTITLE": "Type",
+			"TITLE": "Type"
+		},
+		"VSS": {
+			"LABEL": "Security Visits",
+			"SHORTTITLE": "Past visits",
+			"TITLE": "Past visits"
+		},
+		"VSS_HISTORY": {
+			"LABEL": "History of visits",
+			"SHORTTITLE": "History of visits",
+			"TITLE": "History of visits"
+		},
+		"VS_COUNT": {
+			"LABEL": "V.S quantity",
+			"SHORTTITLE": "Number of visits",
+			"TITLE": "V.S quantity"
+		},
+		"VS_RETARD": {
+			"LABEL": "Late visit",
+			"SHORTTITLE": "Delay",
+			"TITLE": "V.S late"
+		}
+	},
+	"MENU": {
+		"ANALYSERISQUE": "Risk analyzes",
+		"PLANDEPREVENTION": "Prevention plan",
+		"BTN": {
+			"NEWACTION": "New Action",
+			"NEWAR": "New risk analysis",
+			"NEWPDP": "New prevention plan",
+			"NEWCHANTIER": "New site",
+			"NEWENTREPRISE": "New business",
+			"NEWMATERIEL": "New equipment",
+			"NEWREMONTEE": "New QHSE lift",
+			"NEWVS": "New safety visit"
+		},
+		"CHANTIER": "Construction sites",
+		"DASHBOARD": "Dashboard",
+		"DISCUSS": "Discuss",
+		"EDIT_MY_PASSWORD": "Change my password",
+		"EDIT_PROFILE": "Edit my profile",
+		"ENTREPRISES": "External companies",
+		"FLASHINFOS": "Flash Info",
+		"GOALS": "Goals",
+		"HOME": "Home",
+		"LIST": "List",
+		"MATERIELS": "Equipment",
+		"MODULES": "Modules",
+		"MY_PASSWORD": "my password",
+		"MY_PROFILE": "My profile",
+		"NEW": "New",
+		"PLANACTION": "Action plan",
+		"REMONTEES": "QHSE lifts",
+		"ROOT": "Administration",
+		"SALARIES": "Employees",
+		"SUBHEADER": {
+			"VISITS": {
+				"VS_CHANTIER": "Site security visits",
+				"VS_EPI": "PPE security visits",
+				"VS_OUTILLAGE": "Tools security visits",
+				"VS_VEHICULE": "Vehicle security visits"
+			}
+		},
+		"SUB_ANALYSERISQUE": {
+			"ADD": "New site risk analysis",
+			"DETAIL": "Detailed risk analysis",
+			"EDIT": "Modify the risk analysis",
+			"LIST": "List of risk analyzes"
+		},
+		"SUB_PDP": {
+			"ADD": "New prevention plan",
+			"DETAIL": "Detailed prevention plan",
+			"EDIT": "Modify the prevention plan",
+			"LIST": "List of prevention plans"
+		},
+		"SUB_CHANTIER": {
+			"ADD": "Add a new site",
+			"DETAIL": "Site detail",
+			"EDIT": "Modify the site",
+			"LIST": "List of sites"
+		},
+		"SUB_ENTREPRISES": {
+			"ADD": "Add a company",
+			"DETAIL": "Company detail",
+			"EDIT": "Change company",
+			"LIST": "List of companies"
+		},
+		"SUB_FLASHINFOS": {
+			"ADD": "Add a new info flash",
+			"DETAIL": "Flash info detail",
+			"EDIT": "Modify the news flash",
+			"LIST": "List of news flashes"
+		},
+		"SUB_MATERIELS": {
+			"ADD": "Add equipment",
+			"DETAIL": "Equipment detail",
+			"EDIT": "Modify the equipment",
+			"LIST": "Equipment list"
+		},
+		"SUB_MODULES": {
+			"ADD": "Add a module",
+			"DETAIL": "Module detail",
+			"EDIT": "Modify the module",
+			"LIST": "Module List"
+		},
+		"SUB_PLANACTION": {
+			"ADD": "Add action",
+			"DETAIL": "Detail of the action",
+			"EDIT": "Edit action",
+			"LIST": "List of actions"
+		},
+		"SUB_REMONTEES": {
+			"ADD": "Add a lift",
+			"DETAIL": "Detail of the lift",
+			"EDIT": "Modify the lift",
+			"LIST": "List of QHSE lifts"
+		},
+		"SUB_SALARIES": {
+			"ADD": "Add an employee",
+			"DETAIL": "Employee detail",
+			"EDIT": "Modifier le salarié",
+			"LIST": "List of employees"
+		},
+		"SUB_SUIVI_HSE": {
+			"ADD": "Add an employee",
+			"DETAIL": "Employee detail",
+			"EDIT": "Edit tracking info",
+			"LIST": "Hse tracking"
+		},
+		"SUB_USERS": {
+			"ADD": "Add user",
+			"DETAIL": "User detail",
+			"EDIT": "Edit User",
+			"LIST": "Users list"
+		},
+		"SUB_VISITESECURITE": {
+			"ADD": "Add a Safety visit",
+			"DETAIL": "Detail of the Safety visit",
+			"EDIT": "Modify the Security visit",
+			"LIST": "List of security visits"
+		},
+		"SUIVI_HSE": "Hse tracking",
+		"USERS": "Users",
+		"VISITESECURITE": "Security Visits"
+	},
+	"NOTIF": {
+		"DELETE_CONFIRMATION": {
+			"TITLE": "Are you sure delete this item ?"
+		},
+		"ELEMENT_NOT_DELETED": {
+			"LABEL": "Cannot delete because the selection contains an element assigned to an element",
+			"SUBLABEL": "Cannot delete because the selection is assigned to an element"
+		},
+		"ERROR_OCCURED": {
+			"TITLE": "Failure! An error has occurred"
+		},
+		"FEATURE_NOT_IMPLEMENTED": {
+			"TITLE": "Sorry this feature has not yet been implemented"
+		},
+		"FORM_DELETE_CONFIRMATION": {
+			"TITLE": "Are you sure you want to delete this form?"
+		},
+		"INCOMPLETE_FORM": {
+			"TITLE": "Failure! the form is incomplete"
+		},
+		"RESULT_FOUND": {
+			"TITLE": "Results Found"
+		}
+	},
+	"OUTILLAGE": {
+		"LABEL": {
+			"LABEL": "Equipment",
+			"SHORTTITLE": "Equipment",
+			"TITLE": "Equipment"
+		},
+		"OUTIL": {
+			"LABEL": "Tool identification",
+			"TITLE": "Tool identification"
+		},
+		"PROPRIETAIRE": {
+			"LABEL": "Owner",
+			"SHORTTITLE": "Owner",
+			"TITLE": "Owner"
+		}
+	},
+	"PLANACTIONS": {
+		"ACTION": {
+			"ABANDON_ACTION": "Abandon the action",
+			"ADD_ORIGIN": "Add an origin",
+			"ASSIGN_ACTION": "Assign action",
+			"CLOSE_ACTION": "Close the action"
+		},
+		"CARD": {
+			"ALLOCATION_DEADLINE": {
+				"TITLE": "Allocation and deadline"
+			},
+			"EFFICIENCY": {
+				"TITLE": "Efficiency"
+			},
+			"GENERAL_INFOS": {
+				"TITLE": "General informations"
+			},
+			"ORIGIN": {
+				"TITLE": "Origin of the action"
+			},
+			"RESOLUTION": {
+				"TITLE": "Resolution"
+			}
+		},
+		"COMMENT": {
+			"LABEL": "Comments",
+			"SHORTTITLE": "Comments",
+			"TITLE": "Comments"
+		},
+		"DASH": {
+			"ACTION_BY_STATUS": {
+				"TYPE": "Actions by Status"
+			},
+			"ACTION_BY_TYPE": {
+				"TITLE": "Actions by types"
+			},
+			"ACTION_EVOLUTION": {
+				"TITLE": "Evolution of actions"
+			},
+			"ACTION_NUMBER_PER_MONTH": {
+				"TITLE": "Number of actions per month"
+			},
+			"AR_NUMBER_PER_MONTH": {
+				"TITLE": "Number of risk analyzes per month"
+			},
+			"ASSIGNED_ACTION": {
+				"TITLE": "Actions to be assigned"
+			},
+			"DELAY_RATE": {
+				"TITLE": "Delay rate"
+			},
+			"FINISH_RATE": {
+				"TITLE": "Finish rate"
+			},
+			"NC_DISTRIBUTION": {
+				"TITLE": "Distribution of non-conformities"
+			},
+			"SUCCESS_RATE": {
+				"TITLE": "Success rate"
+			},
+			"VS_NUMBER_PER_MONTH_TYPE": {
+				"TITLE": "Number of security visits per month and per type"
+			}
+		},
+		"DELAI": {
+			"LABEL": "Time limit",
+			"SHORTTITLE": "Time limit",
+			"TITLE": "Time limit"
+		},
+		"EFFICACITE": {
+			"LABEL": "Efficiency",
+			"SHORTTITLE": "Efficiency",
+			"TITLE": "Efficiency"
+		},
+		"FORM": {
+			"CREATE": "Create a new action plan"
+		},
+		"LIFT_CONCERNED": {
+			"TITLE": "Lift concerned "
+		},
+		"NAME": {
+			"LABEL": "Action decided",
+			"SHORTTITLE": "Actions",
+			"TITLE": "Action decided"
+		},
+		"NOTIF": {
+			"ABANDON_ACTION_CONFIRMATION": {
+				"TITLE": "Are you sure you want to abandon this action?"
+			},
+			"ACTION_ABANDONED": {
+				"TITLE": "The action was successfully abandoned"
+			},
+			"ACTION_CREATED": {
+				"TITLE": "Action created successfully"
+			},
+			"ACTION_UPDATED": {
+				"TITLE": "Action updated successfully"
+			},
+			"CLOSE_ACTION_CONFIRMATION": {
+				"LABEL": "Risk analyzes and action visits will be archived.",
+				"TITLE": "Are you sure you want to end this action?"
+			},
+			"ELEMENT_NOT_DELETED": {
+				"LABEL": "Unable to delete because the selection is assigned to one or more actions",
+				"SHORTTILE": "Origins",
+				"TITLE": "Unable to delete because the selection includes an element assigned to one or more actions"
+			},
+			"LOADING": {
+				"TITLE": "Loading Action"
+			},
+			"ORIGIN_ARCHIVED": {
+				"TITLE": "Origin successfully archived"
+			}
+		},
+		"NUMBER": {
+			"LABEL": "Number",
+			"SHORTTITLE": "Number",
+			"TITLE": "Action N°"
+		},
+		"OBJECTIF": {
+			"LABEL": "Goal",
+			"SHORTTITLE": "Goal",
+			"TITLE": "Goal"
+		},
+		"ORIGINE": {
+			"LABEL": "Origin",
+			"SHORTTITLE": "Origin",
+			"TITLE": "Origin"
+		},
+		"PILOTE": {
+			"LABEL": "Pilot",
+			"SHORTTITLE": "Pilot",
+			"TITLE": "Pilot"
+		},
+		"REALISATION": {
+			"LABEL": "Date of completion",
+			"SHORTTITLE": "Production",
+			"TITLE": "Date of completion"
+		},
+		"RISQUE": {
+			"LABEL": "Risk",
+			"SHORTTITLE": "Risk",
+			"TITLE": "Risk"
+		},
+		"STATUS": {
+			"LABEL": "Advancement",
+			"SHORTTITLE": "Advancement",
+			"TITLE": "Advancement"
+		},
+		"VS_CONCERNED": {
+			"TITLE": "Security visit concerned"
+		}
+	},
+	"ETATS": {
+		"NOTIF": {
+			"LOADING": {
+				"TITLE": "Loading list"
+			},
+			"ETAT_DELETE_CONFIRMATION": {
+				"TITLE": "You will permanently delete this element",
+				"LABEL": "Are you sure you want to continue ?"
+			},
+			"LIFT_UPDATED": {
+				"TITLE": "Element deleted successfully"
+			},
+			"LIFT_CREATED": {
+				"TITLE": "Element created successfully"
+			},
+			"LIFT_TYPE_ARCHIVED": {
+				"TITLE": "Element archieved successfully"
+			},
+			"ELEMENT_NOT_DELETED": {
+				"TITLE": "Unable to delete because the selection includes an element assigned to one or more equipments",
+				"SHORTTITLE": "Unable to delete",
+				"LABEL": "Unable to delete because the selection includes an element assigned to one or more equipments"
+			},
+			"ETAT_DELETED": {
+				"TITLE": "Element deleted successfully"
+			},
+			"NO_ETAT": "No element"
+		}
+	},
+	"REMONTEES": {
+		"NOTIF": {
+			"LOADING": {
+				"TITLE": "Loading Lifts"
+			},
+			"NO_CHANTIER": {
+				"TITLE": "This lift has not been assigned to any site"
+			},
+			"REMONTEE_DELETE_CONFIRMATION": {
+				"TITLE": "You will permanently delete this lift",
+				"LABEL": "Are you sure you want to continue ?"
+			},
+			"DOC_DELETE_CONFIRMATION": {
+				"TITLE": "You will permanently delete this document",
+				"LABEL": "Are you sure you want to continue ?"
+			},
+			"DOC_DELETED": {
+				"TITLE": "Document deleted successfully"
+			},
+			"LIFT_UPDATED": {
+				"TITLE": "QHSE lift successfully updated"
+			},
+			"FILE_SIZE_ALERT": {
+				"TITLE": "Each File should be less than 10 MB of size."
+			},
+			"LIFT_CREATED": {
+				"TITLE": "QHSE lift created successfully"
+			},
+			"LIFT_TYPE_ARCHIVED": {
+				"TITLE": "Type of lift successfully archived"
+			},
+			"ELEMENT_NOT_DELETED": {
+				"TITLE": "Unable to delete because the selection includes an element assigned to one or more lifts",
+				"SHORTTITLE": "Types of lift",
+				"LABEL": "Unable to delete because the selection is assigned to one or more lifts"
+			},
+			"REMONTEE_DELETED": {
+				"TITLE": "Lift deleted succesfully"
+			},
+			"NO_DOCUMENT": "No document",
+			"NO_REMONTEE": "No remontee"
+		},
+		"CARD": {
+			"DOC": {
+				"TITLE": "Documents",
+				"LABEL": "List of documents",
+				"FILE_AWAIT_UPLOAD": "Pending files for upload",
+				"ACTION": {
+					"REMOVE_DOC": "Remove the document",
+					"DOWNLOAD_DOCS": "Download the document"
+				}
+			},
+			"GENERAL_INFOS": {
+				"TITLE": "General informations"
+			}
+		},
+		"DASH": {
+			"TOP_COLLABORATOR": {
+				"TITLE": "Top 5 collaborators"
+			},
+			"LIFTS_BY_TYPE": {
+				"TITLE": "Lifts by type"
+			},
+			"LIFTS_EVOLUTION": {
+				"TITLE": "Evolution of lifts"
+			}
+		},
+		"ADD_LIFT_TYPE": {
+			"TITLE": "Add a lift typology"
+		},
+		"ACTION": {
+			"LABEL": "Action",
+			"SHORTTITLE": "Action",
+			"TITLE": "Action"
+		},
+		"ACTION_STATUS": {
+			"LABEL": "Action status",
+			"SHORTTITLE": "Status",
+			"TITLE": "Action status"
+		},
+		"CREATED_AT": {
+			"LABEL": "Date of recovery",
+			"SHORTTITLE": "Date",
+			"TITLE": "Creation date"
+		},
+		"CREATOR": {
+			"LABEL": "Collaborater",
+			"SHORTTITLE": "Collaborater",
+			"TITLE": "Collaborater"
+		},
+		"DESCRIPTION": {
+			"LABEL": "Description",
+			"SHORTTITLE": "Description",
+			"TITLE": "Description"
+		},
+		"DOCUMENTS": {
+			"LABEL": "Related documents",
+			"SHORTTITLE": "Documents",
+			"TITLE": "Related documents"
+		},
+		"DOCUMENTS_COUNT": {
+			"LABEL": "Related documents",
+			"SHORTTITLE": "Number of docs",
+			"TITLE": "Number of documents"
+		},
+		"LAST": "Latest lifts",
+		"NEW": {
+			"SHORTBUTTON": "New Lift"
+		},
+		"SEE_ACTION": {
+			"LABEL": "Display action",
+			"SHORTTITLE": "Action",
+			"TITLE": "Display action"
+		},
+		"TYPE": {
+			"LABEL": "Typology",
+			"SHORTTITLE": "Typology",
+			"TITLE": "Typology"
+		}
+	},
+	"SALARIES": {
+		"ACTION": {
+			"ADD_FONCTION": "Add function"
+		},
+		"NOTIF": {
+			"FONCTION_ARCHIVED": {
+				"TITLE": "Function archived successfully"
+			},
+			"ELEMENT_NOT_DELETED": {
+				"SHORTTITLE": "Functions of employees",
+				"TITLE": "Unable to delete because the selection includes an element assigned to one or more employees",
+				"LABEL": "Unable to delete because the selection is assigned to one or more employees"
+			}
+		},
+		"ACCIDENTOLOGIE": {
+			"LABEL": "Accidentology",
+			"SHORTTITLE": "Accidentology",
+			"TITLE": "Accidentology"
+		},
+		"ANIMATIONHSE": {
+			"LABEL": "HSE animation",
+			"SHORTTITLE": "HSE animation",
+			"TITLE": "HSE animation"
+		},
+		"ENTRY_AT": {
+			"LABEL": "Entry date",
+			"SHORTTITLE": "Entry date",
+			"TITLE": "Entry date"
+		},
+		"EPI": {
+			"LABEL": "EPI",
+			"SHORTTITLE": "EPI",
+			"TITLE": "EPI"
+		},
+		"EXIT_AT": {
+			"LABEL": "Release date",
+			"SHORTTITLE": "Release date",
+			"TITLE": "Release date"
+		},
+		"FORMATION": {
+			"LABEL": "Training",
+			"SHORTTITLE": "Training",
+			"TITLE": "Training"
+		},
+		"LIEN_PARENTE": {
+			"LABEL": "Relationship",
+			"SHORTTITLE": "Relationship",
+			"TITLE": "Relationship"
+		},
+		"OUTILLAGE": {
+			"LABEL": "Tools",
+			"SHORTTITLE": "Tools",
+			"TITLE": "Tools"
+		},
+		"RQTH": {
+			"LABEL": "RSDW",
+			"SHORTTITLE": "RSDW",
+			"TITLE": "RSDW"
+		},
+		"VEHICULE": {
+			"LABEL": "Vehicle",
+			"SHORTTITLE": "Vehicle",
+			"TITLE": "Vehicle"
+		},
+		"VM": {
+			"NEXT": {
+				"LABEL": "To renew on",
+				"SHORTTITLE": "Renewal date",
+				"TITLE": "Renewal date"
+			},
+			"PASSED": {
+				"LABEL": "Carried out on",
+				"SHORTTITLE": "Date of completion",
+				"TITLE": "Date of completion"
+			}
+		}
+	},
+	"TRANSLATOR": {
+		"SELECT": "Choose your language"
+	},
+	"UPLOAD": {
+		"DROPZONE": {
+			"PLACEHOLDER": "Drop your files here"
+		},
+		"EXTENSION": "This type of file cannot be imported",
+		"LIST_EXT": "List of extensions",
+		"MAX_SIZE": "Maximum size",
+		"SIZE": "You cannot upload files larger than 1MB"
+	},
+	"USERS": {
+		"ACTION": {
+			"UPDATE_USER": "Edit User",
+			"ADD_USER": "Add user"
+		},
+		"NOTIF": {
+			"USER_CREATED": {
+				"TITLE": "User created successfully"
+			},
+			"USER_UPDATED": {
+				"TITLE": "User updated successfully"
+			}
+		},
+		"CARD": {
+			"ABOUT_USER": {
+				"TITLE": "About the user"
+			},
+			"USER_INFOS": {
+				"TITLE": "User information",
+				"EMERGENCY_CASE": "In case of emergency",
+				"MEDICAL_VISIT": "Medical visit"
+			},
+			"USER_ACCOUNT_INFOS": {
+				"TITLE": "User Account Information"
+			},
+			"EMPLOYEE_INFOS": {
+				"TITLE": "Employee Information"
+			}
+		},
+		"VIRTUEL_PROFILE_ONLY": {
+			"YES": "Virtual profiles only",
+			"NO": "Non-virtual profiles only"
+		},
+		"VIRTUEL_PROFILE": {
+			"TITLE": "Virtual Profile"
+		},
+		"CONTRACT": {
+			"LABEL": "Type of Contract",
+			"SHORTTITLE": "Type of Contract",
+			"TITLE": "Type of Contract"
+		},
+		"GRANT_ACCESS": {
+			"LABEL": "Give access to the application",
+			"SHORTTITLE": "Give access to the app",
+			"TITLE": "Give access to the application"
+		},
+		"VIRTUEL": {
+			"LABEL": "Virtual Account",
+			"SHORTTITLE": "Virtual user",
+			"TITLE": "Virtual user (does not appear in the list of employees)"
+		},
+		"ACCOUNT": {
+			"LABEL": "User account",
+			"SHORTTITLE": "User account",
+			"TITLE": "User account"
+		},
+		"VIRTUELS": {
+			"LABEL": "Virtual Account",
+			"SHORTTITLE": "Virtual Account",
+			"TITLE": "Show virtual accounts"
+		}
+	},
+	"VISITES": {
+		"ACTION": {
+			"ADD_FORM": {
+				"LABEL": "New form",
+				"TITLE": "Add Form"
+			},
+			"ADD_QUESTION_CATEGORY": {
+				"TITLE": "Add a question category"
+			},
+			"CATEGORY_ARCHIVED": {
+				"TITLE": "Category archived successfully"
+			},
+			"NEW_VISIT": {
+				"TITLE": "New visit"
+			},
+			"QUESTION_ARCHIVED": {
+				"TITLE": "The question is archived successfully"
+			},
+			"START_VISIT": {
+				"TITLE": "Start the visit"
+			}
+		},
+		"ADD_VEHICULE": {
+			"LABEL": "Vehicle identification number",
+			"SHORTTITLE": "ID number",
+			"TITLE": "Vehicle identification number"
+		},
+		"ETAT": {
+			"LABEL": "Condition of the equipment",
+			"SHORTTITLE": "Condition",
+			"TITLE": "Condition of the equipment"
+		},
+		"VEHICULE_KM": {
+			"LABEL": "Number of kilometers traveled",
+			"SHORTTITLE": "Kilometers traveled",
+			"TITLE": "Number of kilometers traveled"
+		},
+		"ASSIGNED_ACTION": {
+			"TITLE": "Action assigned to the person visited"
+		},
+		"AVERT": {
+			"LABEL": "Warning",
+			"LABEL_COMP": "(when unsafe attitude)"
+		},
+		"CARD": {
+			"SIGNATURE": {
+				"EDITOR_SIGNATURE": {
+					"TITLE": "Signature of the editor"
+				},
+				"MANAGER_SIGNATURE": {
+					"TITLE": "Signature of the hse manager"
+				},
+				"TITLE": "Signatures",
+				"VISITED_SIGNATURE": {
+					"TITLE": "Signature of the person visited"
+				}
+			}
+		},
+		"CHANTIER": {
+			"LABEL": "Site name",
+			"SHORTTITLE": "Name",
+			"TITLE": "Site name"
+		},
+		"CLIENT": {
+			"LABEL": "Customer",
+			"SHORTTITLE": "Customer",
+			"TITLE": "Customer"
+		},
+		"CODE": {
+			"LABEL": "Number",
+			"SHORTTITLE": "Number",
+			"TITLE": "Number"
+		},
+		"COMMENT": {
+			"TITLE": "Comment"
+		},
+		"COMPLIANCE_DATE": {
+			"TITLE": "Date of compliance"
+		},
+		"DASH": {
+			"NC_ACTIONS": "Actions resulting from non-conformities",
+			"NC_EVOLUTION": "Evolution of non-conformities",
+			"NC_EVOLUTION_PER_CATEGORY": "Evolution of non-conformities by category",
+			"NC_PER_CATEGORY": "Non-conformities by category",
+			"NC_RESOLVED": "Non-conformities immediately resolved",
+			"VISITS_BY_CATEGORY": "Visits by categories",
+			"VISITS_IN_PROGRESS": "Current visits",
+			"WARN_NO": "Number of warnings"
+		},
+		"DATE_VISITE": {
+			"LABEL": "Date of the visit",
+			"SHORTTITLE": "Date of the visit",
+			"TITLE": "Date of the visit"
+		},
+		"DETAIL_VEHICULE": {
+			"LABEL": "Vehicle identification number",
+			"SHORTTITLE": "Vehicle identification number",
+			"SUBTITLE": "",
+			"TITLE": "Vehicle identification number"
+		},
+		"ENTREPRISE": {
+			"LABEL": "Company visited",
+			"SHORTTITLE": "Name",
+			"TITLE": "Company visited"
+		},
+		"EXTERNAL_VISIT": {
+			"TITLE": "External visit"
+		},
+		"FORM": {
+			"CREATE": "Create a new visit"
+		},
+		"HAS_RECTIF": {
+			"LABEL": "Immediate rectification made",
+			"LABEL_COMP": "(No internal CVTI action)"
+		},
+		"KO_SOLVED_COUNT": {
+			"SHORTTITLE": "NC processed",
+			"TITLE": "Number of non-compliance processed"
+		},
+		"KO_UNSOLVED_COUNT": {
+			"SHORTTITLE": "NC to be processed",
+			"TITLE": "Number of non-compliance to be addressed"
+		},
+		"MATERIEL": {
+			"LABEL": "Equipment visited",
+			"SHORTTITLE": "Equipment visited",
+			"TITLE": "Equipment visited"
+		},
+		"NOTE": {
+			"TITLE": "Score"
+		},
+		"NOTIF": {
+			"CANNOT_SELECT_EMPLOYEE": {
+				"COMPANY_SELECTED": {
+					"TITLE": "You cannot select an employee if a company is already selected"
+				},
+				"MATERIEL_SELECTED": {
+					"TITLE": "You cannot select an employee if an equipment is already selected"
+				}
+			},
+			"CANNOT_SELECT_ENTREPRISE": {
+				"TITLE": "You cannot select a company if an employee is already selected"
+			},
+			"DOCS_ADDED": {
+				"TITLE": "Documents successfully added"
+			},
+			"ELEMENT_NOT_DELETED": {
+				"CHANTIER": {
+					"LABEL": "Unable to delete because the selection is assigned to one or more sites",
+					"SHORTTITLE": "Questions",
+					"SUBLABEL": "Deletion impossible because the form is assigned to one or more visits",
+					"TITLE": "Unable to delete because the selection includes an element assigned to one or more sites"
+				},
+				"EPI": {
+					"LABEL": "Unable to delete because the selection is assigned to one or more personal protective equipment",
+					"SHORTTITLE": "Questions",
+					"SUBLABEL": "",
+					"TITLE": "Cannot be deleted because the selection includes an item assigned to one or more personal protective equipment"
+				},
+				"OUTILLAGE": {
+					"LABEL": "Unable to delete because the selection is assigned to one or more tools",
+					"SHORTTITLE": "Questions",
+					"SUBLABEL": "",
+					"TITLE": "Unable to delete because the selection includes an element assigned to one or more tools"
+				},
+				"TITLE": "Forms",
+				"VEHICULE": {
+					"LABEL": "Unable to delete because the selection is assigned to one or more vehicles",
+					"SHORTTITLE": "Questions",
+					"SUBLABEL": "",
+					"TITLE": "Unable to delete because the selection includes an element assigned to one or more vehicles"
+				}
+			},
+			"FORM_ARCHIVED": {
+				"TITLE": "The form has been archived"
+			},
+			"FORM_NOT_ARCHIVED": {
+				"TITLE": "Deletion impossible because the form is assigned to one or more visits"
+			},
+			"NO_MATERIEL_ASSOCIATED_TO_EMPLOYEE": {
+				"TITLE": "No equipment associated with this employee"
+			},
+			"VISIT_CREATED": {
+				"TITLE": "Visit successfully created"
+			},
+			"VISIT_DELETED": {
+				"TITLE": "The visit has been successfully deleted"
+			},
+			"VISIT_NOT_DELETED": {
+				"TITLE": "The visit could not be deleted"
+			},
+			"VISIT_UPDATED": {
+				"TITLE": "Visit successfully updated"
+			},
+			"LATE_VISIT": {
+				"TITLE": "Late visit"
+			},
+			"UPCOMING_VISIT": {
+				"TITLE": "Upcoming visit"
+			}
+		},
+		"PRESENCE_NC": {
+			"LABEL": "Presence of non-compliance",
+			"LABEL_COMP": "Presence of non-compliance"
+		},
+		"QUESTION": {
+			"TITLE": "Question"
+		},
+		"REDACTEUR": {
+			"LABEL": "Editor",
+			"SHORTTITLE": "Editor",
+			"TITLE": "Editor"
+		},
+		"STATUS": {
+			"LABEL": "Status",
+			"SHORTTITLE": "Status",
+			"TITLE": "Visit status"
+		},
+		"TYPE": {
+			"LABEL": "Survey",
+			"SHORTTITLE": "Survey",
+			"TITLE": "Survey"
+		},
+		"VEHICULE": {
+			"LABEL": "Vehicle name",
+			"SHORTTITLE": "Vehicle",
+			"TITLE": "Vehicle name"
+		},
+		"VEHICLE_CONFORMITY": {
+			"TITLE": "Conformité du véhicule",
+			"SHORTTITLE": "Conformité du véhicule",
+			"LABEL": "Conformité du véhicule"
+		},
+		"VEHICULE_FOUND": {
+			"LABEL": "Vehicle identification number entered ",
+			"SHORTTITLE": "Vehicle identification number entered ",
+			"TITLE": "Vehicle identification number entered "
+		},
+		"VISITED": {
+			"LABEL": "Person visited",
+			"SHORTTITLE": "Person visited",
+			"TITLE": "Person visited"
+		},
+		"VISIT_NO": {
+			"TITLE": "Security visit N °"
+		},
+		"VS_CHANTIER": {
+			"TITLE": "Site visit"
+		},
+		"VS_EPI": {
+			"TITLE": "PPE visit"
+		},
+		"VS_OUTILLAGE": {
+			"TITLE": "Tooling visit"
+		},
+		"VS_VEHICULE": {
+			"TITLE": "Vehicle visit"
+		}
+	},
+	"SUIVI_HSE": {
+		"ACTION": {
+			"NEW_PERIOD": {
+				"SHORTTILE": "New period",
+				"TITLE": "Add a new period",
+				"LABEL": "Add a period"
+			},
+			"EDIT_GOAL": {
+				"TITLE": "Edit goals"
+			},
+			"ADD_CATEGORY": {
+				"TITLE": "Add category"
+			}
+		},
+		"NOTIF": {
+			"SELECT_PERIOD": {
+				"TITLE": "Please select a start and end date for the period"
+			},
+			"DATAS_UPDATED": {
+				"TITLE": "Data updated successfully"
+			},
+			"NO_PERIOD_SELECTED": {
+				"TITLE": "No period has been selected! Please add one from the Objectives tab"
+			},
+			"GOAL_UPDATED": {
+				"TITLE": "Objective updated successfully"
+			},
+			"PERIOD_ADDED": {
+				"TITLE": "Period successfully added"
+			},
+			"ELEMENT_NOT_DELETED": {
+				"TITLE": "Unable to delete because the selection includes an element assigned to one or more elements",
+				"LABEL": "Unable to delete because the selection is assigned to one or more elements"
+			},
+			"ELEMENT_ARCHIVED": {
+				"TITLE": "Item archived successfully"
+			}
+		},
+		"DASH": {
+			"EMPLOYEE_NO": {
+				"TITLE": "Number of employees"
+			},
+			"GOAL_ACHEI_RATE": {
+				"TITLE": "Goal achievement rate"
+			},
+			"FAIL_RATE": {
+				"TITLE": "Failure rate"
+			},
+			"AVG_SCORE_PER_EMPLOYEE": {
+				"TITLE": "Average score per employee"
+			},
+			"RATING_PER_TYPE": {
+				"TITLE": "Distribution of ratings by type of monitoring"
+			},
+			"SCORES_BY_EMPLOYEE": {
+				"TITLE": "Distribution of score per employee"
+			}
+		},
+		"CARD": {
+			"ABOUT_EMPLOYEE": {
+				"TITLE": "About the employee"
+			},
+			"INFOS_EMPLOYEE": {
+				"TITLE": "Employer information",
+				"EMERGENCY_CASE": "In case of emergency",
+				"MEDICAL_VISIT": "Medical visit"
+			},
+			"TRAINING": {
+				"TITLE": "Training",
+				"TRAINING_MONITORING": "Training follow-ups"
+			}
+		},
+		"PERIOD": {
+			"TITLE": "Period"
+		},
+		"START_DATE": {
+			"TITLE": "Start date"
+		},
+		"END_DATE": {
+			"TITLE": "End date"
+		},
+		"MOBILE": {
+			"TITLE": "Phone"
+		},
+		"RELATIONSHIP": {
+			"TITLE": "Relationship"
+		},
+		"RQTH": {
+			"TITLE": "RQTH"
+		},
+		"REALIZED": {
+			"TITLE": "Achieved"
+		},
+		"TO_RENEW": {
+			"TITLE": "To renew"
+		},
+		"TRAINING": {
+			"TITLE": "Training"
+		},
+		"NO_TRAINING": {
+			"TITLE": "No training fund"
+		},
+		"COMPLETION_DATE": {
+			"TITLE": "Date of completion"
+		},
+		"RENEWAL_DATE": {
+			"TITLE": "Renewal date"
+		},
+		"EMPLOYER_AUTH": {
+			"TITLE": "Employer authorization"
+		},
+		"SKILLS": {
+			"TITLE": "Skills"
+		},
+		"MODIFICATION": {
+			"TITLE": "Modification"
+		},
+		"VISION_360": {
+			"TITLE": "Vision 360"
+		}
+	},
+	"HOME": {
+		"WELCOME": {
+			"TITLE": "Welcome to HSE"
+		}
+	},
+	"MODULE": {
+		"CARD": {
+			"TITLE": "Activate / Deactivate application modules"
+		},
+		"NOTIF": {
+			"MODULE_UPDATED": {
+				"TITLE": "Modules updated successfully"
+			}
+		}
+	}
+}

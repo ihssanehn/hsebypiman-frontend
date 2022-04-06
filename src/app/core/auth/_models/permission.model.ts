@@ -4,6 +4,7 @@ export class Permission extends BaseModel {
     id: number;
     title: string;
     level: number;
+    code: any;
     parentId: number;
     isSelected: boolean;
     name: string;

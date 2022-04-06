@@ -1,13 +1,13 @@
 "use strict";
 
 // plugin setup
-var KTDialog = function(options) {
+var TFDialog = function(options) {
     // Main object
     var the = this;
 
     // Get element object
     var element;
-    var body = KTUtil.get('body');  
+    var body = TFUtil.get('body');  
 
     // Default options
     var defaultOptions = {
@@ -40,7 +40,7 @@ var KTDialog = function(options) {
             the.events = [];
 
             // merge default and user defined options
-            the.options = KTUtil.deepExtend({}, defaultOptions, options);
+            the.options = TFUtil.deepExtend({}, defaultOptions, options);
 
             the.state = false;
         },
@@ -52,14 +52,14 @@ var KTDialog = function(options) {
             Plugin.eventTrigger('show');
 
             element = document.createElement("DIV");
-            KTUtil.setHTML(element, the.options.message);
+            TFUtil.setHTML(element, the.options.message);
             
-            KTUtil.addClass(element, 'tf-dialog tf-dialog--shown');
-            KTUtil.addClass(element, 'tf-dialog--' + the.options.state);
-            KTUtil.addClass(element, 'tf-dialog--' + the.options.type); 
+            TFUtil.addClass(element, 'tf-dialog tf-dialog--shown');
+            TFUtil.addClass(element, 'tf-dialog--' + the.options.state);
+            TFUtil.addClass(element, 'tf-dialog--' + the.options.type); 
 
             if (the.options.placement == 'top center') {
-                KTUtil.addClass(element, 'tf-dialog--top-center');
+                TFUtil.addClass(element, 'tf-dialog--top-center');
             }
 
             body.appendChild(element);
@@ -161,7 +161,7 @@ var KTDialog = function(options) {
 
     /**
      * Attach event
-     * @returns {KTToggle}
+     * @returns {TFToggle}
      */
     the.on = function(name, handler) {
         return Plugin.addEvent(name, handler);
@@ -169,7 +169,7 @@ var KTDialog = function(options) {
 
     /**
      * Attach event that will be fired once
-     * @returns {KTToggle}
+     * @returns {TFToggle}
      */
     the.one = function(name, handler) {
         return Plugin.addEvent(name, handler, true);
@@ -183,5 +183,5 @@ var KTDialog = function(options) {
 
 // webpack support
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-    module.exports = KTDialog;
+    module.exports = TFDialog;
 }

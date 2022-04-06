@@ -27,12 +27,18 @@
 			cursor: pointer;
 			@include tf-transition(); // menu item link's text part
 
+			&:disabled {
+				cursor:default;
+			}
 			.tf-nav__link-text {
 				flex-grow: 1;
 				font-size: 1rem;
 				color: tf-base-color(label, 3);
 				font-weight: 400;
 			} 
+			&:enabled{
+				color: tf-base-color(label, 3);
+			}
 			
 			// menu item link's icon
 			.tf-nav__link-icon {
@@ -133,8 +139,8 @@
 		}
 		
 		// Hover & active state
-		&.tf-nav__item--active,
-		&.active,
+		&.tf-nav__item--active:enabled,
+		&.active:enabled,
 		&:hover:not(.tf-nav__item--disabled):not(.tf-nav__item--sub) {
 			>.tf-nav__link {
 				background-color: tf-base-color(grey, 1);

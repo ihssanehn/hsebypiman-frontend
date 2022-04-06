@@ -1,0 +1,30 @@
+<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8" id="portlet-flashinfo" *ngIf="flashinfo">
+	<div class="tf-portlet-header ">
+		<span class="title">
+			<a (click)="goBack()">{{'MENU.SUB_FLASHINFOS.LIST' | translate}}</a><span class="divider">></span><span class="id-item">{{flashinfo.title}}</span>
+		</span>
+		<div ngbDropdown placement="bottom-right" class="d-inline-block pull-right">
+			<button ngbDropdownToggle mat-icon-button color="primary" matTooltip="Actions" style="line-height: 0;height: 0;">
+				<mat-icon>more_vert</mat-icon>
+			</button>
+			<div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
+				<button mat-icon-button color="info" matTooltip="{{'MENU.SUB_FLASHINFOS.EDIT' | translate}}" (click)="editFlashInfo()" *ngxPermissionsOnly="['flashinfo_canUpdate']">
+					<mat-icon>edit</mat-icon>
+				</button>
+				<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteFlashInfo()" *ngxPermissionsOnly="['flashinfo_canArchieve']">
+					<mat-icon>delete</mat-icon>
+				</button>
+			</div>
+		</div>
+	</div>
+	<tf-portlet-body class="tf-portlet__body--fit">
+		<div class="card">
+			<div class="row">
+				<div class="col-12" >
+					<div [innerHtml]="flashinfo.content"></div>
+				</div>
+			</div>
+		</div>
+	</tf-portlet-body>
+</tf-portlet>
+

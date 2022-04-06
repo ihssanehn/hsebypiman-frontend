@@ -96,21 +96,24 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
 		this.loading = true;
 
 		const email = controls.email.value;
-		this.authService.requestPassword(email).pipe(
-			tap(response => {
-				if (response) {
-					this.authNoticeService.setNotice(this.translate.instant('AUTH.FORGOT.SUCCESS'), 'success');
-					this.router.navigateByUrl('/auth/login');
-				} else {
+			this.authService.requestPassword(email)
+			.subscribe(
+				res=>{
+				
+					if(res){
+						this.authNoticeService.setNotice(this.translate.instant('AUTH.FORGOT.SUCCESS'), 'success');
+						this.router.navigateByUrl('/auth/login');
+						this.loading = false;
+					}
+				},
+				err => {
 					this.authNoticeService.setNotice(this.translate.instant('AUTH.VALIDATION.NOT_FOUND', {name: this.translate.instant('AUTH.INPUT.EMAIL')}), 'danger');
+					// this.notificationService.error('Bad credentials', this.translate.instant('AUTH.VALIDATION.INVALID_LOGIN'));
+					this.loading = false;
+					this.cdr.markForCheck();
 				}
-			}),
-			takeUntil(this.unsubscribe),
-			finalize(() => {
-				this.loading = false;
-				this.cdr.markForCheck();
-			})
-		).subscribe();
+			);
+		
 	}
 
 	/**

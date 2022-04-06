@@ -1,0 +1,40 @@
+:host {
+
+    .disabled{
+        color:grey;
+        cursor: not-allowed;
+    }    
+    .mat-table {
+        th.mat-header-cell {
+            width: 33%;
+        }
+    }
+    .mat-slide-toggle.mat-disabled{
+        opacity: 1;
+    }
+    .tf-card-form{
+        .tf-heading{
+            margin-bottom: 0;
+        }
+        mat-radio-button{
+            padding: 0.8rem 0 0 1rem;
+        }
+    }
+
+    .edit-date-block{
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        input{
+            flex: 1;
+        }
+    }
+
+    .st-group {
+        justify-content: center;
+        
+        .st-label{
+           width: auto;
+        }
+    }
+}

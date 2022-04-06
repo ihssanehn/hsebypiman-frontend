@@ -1,13 +1,13 @@
 "use strict";
 // plugin setup
-var KTPortlet = function(elementId, options) {
+var TFPortlet = function(elementId, options) {
     // Main object
     var the = this;
     var init = false;
 
     // Get element object
-    var element = KTUtil.get(elementId);
-    var body = KTUtil.get('body');
+    var element = TFUtil.get(elementId);
+    var body = TFUtil.get('body');
 
     if (!element) {
         return;
@@ -45,8 +45,8 @@ var KTPortlet = function(elementId, options) {
          */
 
         construct: function(options) {
-            if (KTUtil.data(element).has('portlet')) {
-                the = KTUtil.data(element).get('portlet');
+            if (TFUtil.data(element).has('portlet')) {
+                the = TFUtil.data(element).get('portlet');
             } else {
                 // reset menu
                 Plugin.init(options);
@@ -54,7 +54,7 @@ var KTPortlet = function(elementId, options) {
                 // build menu
                 Plugin.build();
 
-                KTUtil.data(element).set('portlet', the);
+                TFUtil.data(element).set('portlet', the);
             }
 
             return the;
@@ -68,14 +68,14 @@ var KTPortlet = function(elementId, options) {
             the.events = [];
 
             // merge default and user defined options
-            the.options = KTUtil.deepExtend({}, defaultOptions, options);
-            the.head = KTUtil.child(element, '.tf-portlet__head');
-            the.foot = KTUtil.child(element, '.tf-portlet__foot');
+            the.options = TFUtil.deepExtend({}, defaultOptions, options);
+            the.head = TFUtil.child(element, '.tf-portlet__head');
+            the.foot = TFUtil.child(element, '.tf-portlet__foot');
 
-            if (KTUtil.child(element, '.tf-portlet__body')) {
-                the.body = KTUtil.child(element, '.tf-portlet__body');
-            } else if (KTUtil.child(element, '.tf-form')) {
-                the.body = KTUtil.child(element, '.tf-form');
+            if (TFUtil.child(element, '.tf-portlet__body')) {
+                the.body = TFUtil.child(element, '.tf-portlet__body');
+            } else if (TFUtil.child(element, '.tf-form')) {
+                the.body = TFUtil.child(element, '.tf-form');
             }
         },
 
@@ -84,36 +84,36 @@ var KTPortlet = function(elementId, options) {
          */
         build: function() {
             // Remove
-            var remove = KTUtil.find(the.head, '[data-ktportlet-tool=remove]');
+            var remove = TFUtil.find(the.head, '[data-tfportlet-tool=remove]');
             if (remove) {
-                KTUtil.addEvent(remove, 'click', function(e) {
+                TFUtil.addEvent(remove, 'click', function(e) {
                     e.preventDefault();
                     Plugin.remove();
                 });
             }
 
             // Reload
-            var reload = KTUtil.find(the.head, '[data-ktportlet-tool=reload]');
+            var reload = TFUtil.find(the.head, '[data-tfportlet-tool=reload]');
             if (reload) {
-                KTUtil.addEvent(reload, 'click', function(e) {
+                TFUtil.addEvent(reload, 'click', function(e) {
                     e.preventDefault();
                     Plugin.reload();
                 });
             }
 
             // Toggle
-            var toggle = KTUtil.find(the.head, '[data-ktportlet-tool=toggle]');
+            var toggle = TFUtil.find(the.head, '[data-tfportlet-tool=toggle]');
             if (toggle) {
-                KTUtil.addEvent(toggle, 'click', function(e) {
+                TFUtil.addEvent(toggle, 'click', function(e) {
                     e.preventDefault();
                     Plugin.toggle();
                 });
             }
 
             //== Fullscreen
-            var fullscreen = KTUtil.find(the.head, '[data-ktportlet-tool=fullscreen]');
+            var fullscreen = TFUtil.find(the.head, '[data-tfportlet-tool=fullscreen]');
             if (fullscreen) {
-                KTUtil.addEvent(fullscreen, 'click', function(e) {
+                TFUtil.addEvent(fullscreen, 'click', function(e) {
                     e.preventDefault();
                     Plugin.fullscreen();
                 });
@@ -144,22 +144,22 @@ var KTPortlet = function(elementId, options) {
 
 		    if(isNaN(offset)) return;
 
-		    var st = KTUtil.getScrollTop();
+		    var st = TFUtil.getScrollTop();
 
-		    if (st >= offset && KTUtil.hasClass(body, 'tf-portlet--sticky') === false) {
+		    if (st >= offset && TFUtil.hasClass(body, 'tf-portlet--sticky') === false) {
 			    Plugin.eventTrigger('stickyOn');
 
-			    KTUtil.addClass(body, 'tf-portlet--sticky');
-			    KTUtil.addClass(element, 'tf-portlet--sticky');
+			    TFUtil.addClass(body, 'tf-portlet--sticky');
+			    TFUtil.addClass(element, 'tf-portlet--sticky');
 
 			    Plugin.updateSticky();
 
-		    } else if ((st*1.5) <= offset && KTUtil.hasClass(body, 'tf-portlet--sticky')) {
+		    } else if ((st*1.5) <= offset && TFUtil.hasClass(body, 'tf-portlet--sticky')) {
 			    // back scroll mode
 			    Plugin.eventTrigger('stickyOff');
 
-			    KTUtil.removeClass(body, 'tf-portlet--sticky');
-			    KTUtil.removeClass(element, 'tf-portlet--sticky');
+			    TFUtil.removeClass(body, 'tf-portlet--sticky');
+			    TFUtil.removeClass(element, 'tf-portlet--sticky');
 
 			    Plugin.resetSticky();
 		    }
@@ -172,7 +172,7 @@ var KTPortlet = function(elementId, options) {
 
             var top;
 
-            if (KTUtil.hasClass(body, 'tf-portlet--sticky')) {
+            if (TFUtil.hasClass(body, 'tf-portlet--sticky')) {
                 if (the.options.sticky.position.top instanceof Function) {
                     top = parseInt(the.options.sticky.position.top.call(this, the));
                 } else {
@@ -193,10 +193,10 @@ var KTPortlet = function(elementId, options) {
                     right = parseInt(the.options.sticky.position.right);
                 }
 
-                KTUtil.css(the.head, 'z-index', the.options.sticky.zIndex);
-                KTUtil.css(the.head, 'top', top + 'px');
-                KTUtil.css(the.head, 'left', left + 'px');
-                KTUtil.css(the.head, 'right', right + 'px');
+                TFUtil.css(the.head, 'z-index', the.options.sticky.zIndex);
+                TFUtil.css(the.head, 'top', top + 'px');
+                TFUtil.css(the.head, 'left', left + 'px');
+                TFUtil.css(the.head, 'right', right + 'px');
             }
         },
 
@@ -205,11 +205,11 @@ var KTPortlet = function(elementId, options) {
                 return;
             }
 
-            if (KTUtil.hasClass(body, 'tf-portlet--sticky') === false) {
-                KTUtil.css(the.head, 'z-index', '');
-                KTUtil.css(the.head, 'top', '');
-                KTUtil.css(the.head, 'left', '');
-                KTUtil.css(the.head, 'right', '');
+            if (TFUtil.hasClass(body, 'tf-portlet--sticky') === false) {
+                TFUtil.css(the.head, 'z-index', '');
+                TFUtil.css(the.head, 'top', '');
+                TFUtil.css(the.head, 'left', '');
+                TFUtil.css(the.head, 'right', '');
             }
         },
 
@@ -221,13 +221,13 @@ var KTPortlet = function(elementId, options) {
                 return;
             }
 
-            if (KTUtil.hasClass(body, 'tf-portlet--fullscreen') && KTUtil.hasClass(element, 'tf-portlet--fullscreen')) {
+            if (TFUtil.hasClass(body, 'tf-portlet--fullscreen') && TFUtil.hasClass(element, 'tf-portlet--fullscreen')) {
                 Plugin.fullscreen('off');
             }
 
             Plugin.removeTooltips();
 
-            KTUtil.remove(element);
+            TFUtil.remove(element);
 
             Plugin.eventTrigger('afterRemove');
         },
@@ -260,11 +260,11 @@ var KTPortlet = function(elementId, options) {
          */
         setupTooltips: function() {
             if (the.options.tooltips) {
-                var collapsed = KTUtil.hasClass(element, 'tf-portlet--collapse') || KTUtil.hasClass(element, 'tf-portlet--collapsed');
-                var fullscreenOn = KTUtil.hasClass(body, 'tf-portlet--fullscreen') && KTUtil.hasClass(element, 'tf-portlet--fullscreen');
+                var collapsed = TFUtil.hasClass(element, 'tf-portlet--collapse') || TFUtil.hasClass(element, 'tf-portlet--collapsed');
+                var fullscreenOn = TFUtil.hasClass(body, 'tf-portlet--fullscreen') && TFUtil.hasClass(element, 'tf-portlet--fullscreen');
 
                 //== Remove
-                var remove = KTUtil.find(the.head, '[data-ktportlet-tool=remove]');
+                var remove = TFUtil.find(the.head, '[data-tfportlet-tool=remove]');
                 if (remove) {
                     var placement = (fullscreenOn ? 'bottom' : 'top');
                     var tip = new Tooltip(remove, {
@@ -278,11 +278,11 @@ var KTPortlet = function(elementId, options) {
                         </div>'
                     });
 
-                    KTUtil.data(remove).set('tooltip', tip);
+                    TFUtil.data(remove).set('tooltip', tip);
                 }
 
                 //== Reload
-                var reload = KTUtil.find(the.head, '[data-ktportlet-tool=reload]');
+                var reload = TFUtil.find(the.head, '[data-tfportlet-tool=reload]');
                 if (reload) {
                     var placement = (fullscreenOn ? 'bottom' : 'top');
                     var tip = new Tooltip(reload, {
@@ -296,11 +296,11 @@ var KTPortlet = function(elementId, options) {
                         </div>'
                     });
 
-                    KTUtil.data(reload).set('tooltip', tip);
+                    TFUtil.data(reload).set('tooltip', tip);
                 }
 
                 //== Toggle
-                var toggle = KTUtil.find(the.head, '[data-ktportlet-tool=toggle]');
+                var toggle = TFUtil.find(the.head, '[data-tfportlet-tool=toggle]');
                 if (toggle) {
                     var placement = (fullscreenOn ? 'bottom' : 'top');
                     var tip = new Tooltip(toggle, {
@@ -314,11 +314,11 @@ var KTPortlet = function(elementId, options) {
                         </div>'
                     });
 
-                    KTUtil.data(toggle).set('tooltip', tip);
+                    TFUtil.data(toggle).set('tooltip', tip);
                 }
 
                 //== Fullscreen
-                var fullscreen = KTUtil.find(the.head, '[data-ktportlet-tool=fullscreen]');
+                var fullscreen = TFUtil.find(the.head, '[data-tfportlet-tool=fullscreen]');
                 if (fullscreen) {
                     var placement = (fullscreenOn ? 'bottom' : 'top');
                     var tip = new Tooltip(fullscreen, {
@@ -332,7 +332,7 @@ var KTPortlet = function(elementId, options) {
                         </div>'
                     });
 
-                    KTUtil.data(fullscreen).set('tooltip', tip);
+                    TFUtil.data(fullscreen).set('tooltip', tip);
                 }
             }
         },
@@ -343,27 +343,27 @@ var KTPortlet = function(elementId, options) {
         removeTooltips: function() {
             if (the.options.tooltips) {
                 //== Remove
-                var remove = KTUtil.find(the.head, '[data-ktportlet-tool=remove]');
-                if (remove && KTUtil.data(remove).has('tooltip')) {
-                    KTUtil.data(remove).get('tooltip').dispose();
+                var remove = TFUtil.find(the.head, '[data-tfportlet-tool=remove]');
+                if (remove && TFUtil.data(remove).has('tooltip')) {
+                    TFUtil.data(remove).get('tooltip').dispose();
                 }
 
                 //== Reload
-                var reload = KTUtil.find(the.head, '[data-ktportlet-tool=reload]');
-                if (reload && KTUtil.data(reload).has('tooltip')) {
-                    KTUtil.data(reload).get('tooltip').dispose();
+                var reload = TFUtil.find(the.head, '[data-tfportlet-tool=reload]');
+                if (reload && TFUtil.data(reload).has('tooltip')) {
+                    TFUtil.data(reload).get('tooltip').dispose();
                 }
 
                 //== Toggle
-                var toggle = KTUtil.find(the.head, '[data-ktportlet-tool=toggle]');
-                if (toggle && KTUtil.data(toggle).has('tooltip')) {
-                    KTUtil.data(toggle).get('tooltip').dispose();
+                var toggle = TFUtil.find(the.head, '[data-tfportlet-tool=toggle]');
+                if (toggle && TFUtil.data(toggle).has('tooltip')) {
+                    TFUtil.data(toggle).get('tooltip').dispose();
                 }
 
                 //== Fullscreen
-                var fullscreen = KTUtil.find(the.head, '[data-ktportlet-tool=fullscreen]');
-                if (fullscreen && KTUtil.data(fullscreen).has('tooltip')) {
-                    KTUtil.data(fullscreen).get('tooltip').dispose();
+                var fullscreen = TFUtil.find(the.head, '[data-tfportlet-tool=fullscreen]');
+                if (fullscreen && TFUtil.data(fullscreen).has('tooltip')) {
+                    TFUtil.data(fullscreen).get('tooltip').dispose();
                 }
             }
         },
@@ -379,7 +379,7 @@ var KTPortlet = function(elementId, options) {
          * Toggle
          */
         toggle: function() {
-            if (KTUtil.hasClass(element, 'tf-portlet--collapse') || KTUtil.hasClass(element, 'tf-portlet--collapsed')) {
+            if (TFUtil.hasClass(element, 'tf-portlet--collapse') || TFUtil.hasClass(element, 'tf-portlet--collapsed')) {
                 Plugin.expand();
             } else {
                 Plugin.collapse();
@@ -394,15 +394,15 @@ var KTPortlet = function(elementId, options) {
                 return;
             }
 
-            KTUtil.slideUp(the.body, the.options.bodyToggleSpeed, function() {
+            TFUtil.slideUp(the.body, the.options.bodyToggleSpeed, function() {
                 Plugin.eventTrigger('afterCollapse');
             });
 
-            KTUtil.addClass(element, 'tf-portlet--collapse');
+            TFUtil.addClass(element, 'tf-portlet--collapse');
 
-            var toggle = KTUtil.find(the.head, '[data-ktportlet-tool=toggle]');
-            if (toggle && KTUtil.data(toggle).has('tooltip')) {
-                KTUtil.data(toggle).get('tooltip').updateTitleContent(the.options.tools.toggle.expand);
+            var toggle = TFUtil.find(the.head, '[data-tfportlet-tool=toggle]');
+            if (toggle && TFUtil.data(toggle).has('tooltip')) {
+                TFUtil.data(toggle).get('tooltip').updateTitleContent(the.options.tools.toggle.expand);
             }
         },
 
@@ -414,16 +414,16 @@ var KTPortlet = function(elementId, options) {
                 return;
             }
 
-            KTUtil.slideDown(the.body, the.options.bodyToggleSpeed, function() {
+            TFUtil.slideDown(the.body, the.options.bodyToggleSpeed, function() {
                 Plugin.eventTrigger('afterExpand');
             });
 
-            KTUtil.removeClass(element, 'tf-portlet--collapse');
-            KTUtil.removeClass(element, 'tf-portlet--collapsed');
+            TFUtil.removeClass(element, 'tf-portlet--collapse');
+            TFUtil.removeClass(element, 'tf-portlet--collapsed');
 
-            var toggle = KTUtil.find(the.head, '[data-ktportlet-tool=toggle]');
-            if (toggle && KTUtil.data(toggle).has('tooltip')) {
-                KTUtil.data(toggle).get('tooltip').updateTitleContent(the.options.tools.toggle.collapse);
+            var toggle = TFUtil.find(the.head, '[data-tfportlet-tool=toggle]');
+            if (toggle && TFUtil.data(toggle).has('tooltip')) {
+                TFUtil.data(toggle).get('tooltip').updateTitleContent(the.options.tools.toggle.collapse);
             }
         },
 
@@ -434,36 +434,36 @@ var KTPortlet = function(elementId, options) {
             var d = {};
             var speed = 300;
 
-            if (mode === 'off' || (KTUtil.hasClass(body, 'tf-portlet--fullscreen') && KTUtil.hasClass(element, 'tf-portlet--fullscreen'))) {
+            if (mode === 'off' || (TFUtil.hasClass(body, 'tf-portlet--fullscreen') && TFUtil.hasClass(element, 'tf-portlet--fullscreen'))) {
                 Plugin.eventTrigger('beforeFullscreenOff');
 
-                KTUtil.removeClass(body, 'tf-portlet--fullscreen');
-                KTUtil.removeClass(element, 'tf-portlet--fullscreen');
+                TFUtil.removeClass(body, 'tf-portlet--fullscreen');
+                TFUtil.removeClass(element, 'tf-portlet--fullscreen');
 
                 Plugin.removeTooltips();
                 Plugin.setupTooltips();
 
                 if (the.foot) {
-                    KTUtil.css(the.body, 'margin-bottom', '');
-                    KTUtil.css(the.foot, 'margin-top', '');
+                    TFUtil.css(the.body, 'margin-bottom', '');
+                    TFUtil.css(the.foot, 'margin-top', '');
                 }
 
                 Plugin.eventTrigger('afterFullscreenOff');
             } else {
                 Plugin.eventTrigger('beforeFullscreenOn');
 
-                KTUtil.addClass(element, 'tf-portlet--fullscreen');
-                KTUtil.addClass(body, 'tf-portlet--fullscreen');
+                TFUtil.addClass(element, 'tf-portlet--fullscreen');
+                TFUtil.addClass(body, 'tf-portlet--fullscreen');
 
                 Plugin.removeTooltips();
                 Plugin.setupTooltips();
 
 
                 if (the.foot) {
-                    var height1 = parseInt(KTUtil.css(the.foot, 'height'));
-                    var height2 = parseInt(KTUtil.css(the.foot, 'height')) + parseInt(KTUtil.css(the.head, 'height'));
-                    KTUtil.css(the.body, 'margin-bottom', height1 + 'px');
-                    KTUtil.css(the.foot, 'margin-top', '-' + height2 + 'px');
+                    var height1 = parseInt(TFUtil.css(the.foot, 'height'));
+                    var height2 = parseInt(TFUtil.css(the.foot, 'height')) + parseInt(TFUtil.css(the.head, 'height'));
+                    TFUtil.css(the.body, 'margin-bottom', height1 + 'px');
+                    TFUtil.css(the.foot, 'margin-top', '-' + height2 + 'px');
                 }
 
                 Plugin.eventTrigger('afterFullscreenOn');
@@ -474,7 +474,7 @@ var KTPortlet = function(elementId, options) {
          * Trigger events
          */
         eventTrigger: function(name) {
-            //KTUtil.triggerCustomEvent(name);
+            //TFUtil.triggerCustomEvent(name);
             for (var i = 0; i < the.events.length; i++) {
                 var event = the.events[i];
                 if (event.name == name) {
@@ -516,7 +516,7 @@ var KTPortlet = function(elementId, options) {
 
     /**
      * Remove portlet
-     * @returns {KTPortlet}
+     * @returns {TFPortlet}
      */
     the.remove = function() {
         return Plugin.remove(html);
@@ -524,7 +524,7 @@ var KTPortlet = function(elementId, options) {
 
     /**
      * Remove portlet
-     * @returns {KTPortlet}
+     * @returns {TFPortlet}
      */
     the.initSticky = function() {
         return Plugin.initSticky();
@@ -532,7 +532,7 @@ var KTPortlet = function(elementId, options) {
 
     /**
      * Remove portlet
-     * @returns {KTPortlet}
+     * @returns {TFPortlet}
      */
     the.updateSticky = function() {
         return Plugin.updateSticky();
@@ -540,7 +540,7 @@ var KTPortlet = function(elementId, options) {
 
     /**
      * Remove portlet
-     * @returns {KTPortlet}
+     * @returns {TFPortlet}
      */
     the.resetSticky = function() {
         return Plugin.resetSticky();
@@ -556,7 +556,7 @@ var KTPortlet = function(elementId, options) {
 
     /**
      * Reload portlet
-     * @returns {KTPortlet}
+     * @returns {TFPortlet}
      */
     the.reload = function() {
         return Plugin.reload();
@@ -564,7 +564,7 @@ var KTPortlet = function(elementId, options) {
 
     /**
      * Set portlet content
-     * @returns {KTPortlet}
+     * @returns {TFPortlet}
      */
     the.setContent = function(html) {
         return Plugin.setContent(html);
@@ -572,7 +572,7 @@ var KTPortlet = function(elementId, options) {
 
     /**
      * Toggle portlet
-     * @returns {KTPortlet}
+     * @returns {TFPortlet}
      */
     the.toggle = function() {
         return Plugin.toggle();
@@ -580,7 +580,7 @@ var KTPortlet = function(elementId, options) {
 
     /**
      * Collapse portlet
-     * @returns {KTPortlet}
+     * @returns {TFPortlet}
      */
     the.collapse = function() {
         return Plugin.collapse();
@@ -588,7 +588,7 @@ var KTPortlet = function(elementId, options) {
 
     /**
      * Expand portlet
-     * @returns {KTPortlet}
+     * @returns {TFPortlet}
      */
     the.expand = function() {
         return Plugin.expand();
@@ -648,5 +648,5 @@ var KTPortlet = function(elementId, options) {
 
 // webpack support
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-    module.exports = KTPortlet;
+    module.exports = TFPortlet;
 }

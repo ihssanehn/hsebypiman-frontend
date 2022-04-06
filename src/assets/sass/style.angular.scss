@@ -22,9 +22,10 @@
 
 // Material Angular
 @import "~@angular/material/theming";
+@import "~ng-pick-datetime/assets/style/picker.min.css";
 @import "global/integration/frameworks/angular/material/angular-material";
 @import "global/integration/frameworks/angular/material/include";
-
+@import "~@ng-select/ng-select/themes/material.theme.css";
 // 3: Components include
 @import "global/include.angular";
 ////////////////////////////////////////////////////////////////
@@ -53,3 +54,10 @@
 @import "global/layout/content/content";
 
 @import "global/layout/footer/footer";
+
+@import "custom/custom_form";
+@import "custom/custom_table";
+@import "custom/custom_button";
+@import "custom/custom_tooltip"; 
+@import "custom/custom_progress_bar"; 
+@import "custom/custom_modal"; 

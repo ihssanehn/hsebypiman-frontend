@@ -1,0 +1,150 @@
+<div class="modal-header">
+	<h4 class="modal-title">{{ title | translate }}</h4>
+	<button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+<div class="modal-body">
+
+	<form #addItemForm="ngForm">
+
+		<div class="form-group" *ngIf="showLabelOption">
+			<label>
+				{{ 'COMMON.NAME.LABEL' | translate }}
+			</label>
+			<input
+				class="form-control text-center"
+				[(ngModel)]="label"
+				name="value"
+				aria-describedby="basic-addon2"
+				placeholder="..."
+				required>
+		</div>
+		<div class="form-group" *ngIf="showActiveOption">
+			<label>
+				{{ 'COMMON.ACTIVE.TITLE' | translate }}
+			</label>
+			<mat-radio-group class="ml-3" name="active" [(ngModel)]="active">
+				<mat-radio-button
+					[value]="1">{{'PDP.YES' | translate}}</mat-radio-button>
+				<mat-radio-button
+					[value]="0">{{'PDP.NO' | translate}}</mat-radio-button>
+			</mat-radio-group>
+		</div>
+		<div class="form-group" *ngIf="showCommentOption">
+			<label>
+				{{ 'COMMON.HAS_COMMENT.TITLE' | translate }}
+			</label>
+			<mat-radio-group class="ml-3" name="is_with_comment" [(ngModel)]="is_with_comment">
+				<mat-radio-button
+					[value]="1">{{'PDP.YES' | translate}}</mat-radio-button>
+				<mat-radio-button
+					[value]="0">{{'PDP.NO' | translate}}</mat-radio-button>
+			</mat-radio-group>
+		</div>
+
+		<ng-container *ngIf="isPdpRiskCategory">
+			<div class="form-group">
+				<label>
+					{{ 'COMMON.IS_ALWAYS_TRUE.TITLE' | translate }}
+				</label>
+				<mat-radio-group class="ml-3" name="is_always_true"
+								 [(ngModel)]="pdpRiskCategoryAddedAttr.is_always_true">
+					<mat-radio-button
+						[value]="1">{{'PDP.YES' | translate}}</mat-radio-button>
+					<mat-radio-button
+						[value]="0">{{'PDP.NO' | translate}}</mat-radio-button>
+				</mat-radio-group>
+			</div>
+			<div class="form-group">
+				<label>
+					{{ 'COMMON.IS_REQUIRED_SITUATION.TITLE' | translate }}
+				</label>
+				<mat-radio-group class="ml-3" name="is_required_situation"
+								 [(ngModel)]="pdpRiskCategoryAddedAttr.is_required_situation">
+					<mat-radio-button
+						[value]="1">{{'PDP.YES' | translate}}</mat-radio-button>
+					<mat-radio-button
+						[value]="0">{{'PDP.NO' | translate}}</mat-radio-button>
+				</mat-radio-group>
+			</div>
+			<div class="form-group">
+				<label>
+					{{ 'COMMON.IS_REQUIRED_SITUATION.TITLE' | translate }}
+				</label>
+				<mat-checkbox class="ml-2 mr-2" [checked]="isChecked('eu')" (change)="toggleResponsable('eu')">EU
+				</mat-checkbox>
+				<mat-checkbox class="ml-2 mr-2" [checked]="isChecked('piman')" (change)="toggleResponsable('piman')">
+					PIMAN
+				</mat-checkbox>
+				<mat-checkbox class="ml-2 mr-2" [checked]="isChecked('sous_traitant')"
+							  (change)="toggleResponsable('sous_traitant')">{{'PDP.SUBCONTRACTOR' | translate}}</mat-checkbox>
+			</div>
+		</ng-container>
+		<ng-container *ngIf="isPdpRisk">
+			<div class="form-group">
+				<label>
+					{{ 'COMMON.TYPE.TITLE' | translate }}
+				</label>
+				<mat-radio-group class="ml-3" name="type"
+								 [(ngModel)]="pdpRiskAddedAttr.type">
+					<mat-radio-button
+						[value]="'moyen'">Moyen
+					</mat-radio-button>
+					<mat-radio-button
+						[value]="'situation'">Situation
+					</mat-radio-button>
+				</mat-radio-group>
+			</div>
+			<div class="form-group">
+				<label>
+					{{ 'COMMON.IS_TITLE.TITLE' | translate }}
+				</label>
+				<mat-radio-group class="ml-3" name="is_title"
+								 [(ngModel)]="pdpRiskAddedAttr.is_title">
+					<mat-radio-button
+						[value]="1">{{'PDP.YES' | translate}}</mat-radio-button>
+					<mat-radio-button
+						[value]="0">{{'PDP.NO' | translate}}</mat-radio-button>
+				</mat-radio-group>
+			</div>
+			<div class="form-group">
+				<label>
+					{{ 'COMMON.IS_SELECTED.TITLE' | translate }}
+				</label>
+				<mat-radio-group class="ml-3" name="is_selected"
+								 [(ngModel)]="pdpRiskAddedAttr.is_selected">
+					<mat-radio-button
+						[value]="1">{{'PDP.YES' | translate}}</mat-radio-button>
+					<mat-radio-button
+						[value]="0">{{'PDP.NO' | translate}}</mat-radio-button>
+				</mat-radio-group>
+			</div>
+		</ng-container>
+		<ng-container *ngIf="isPdpCategoryRiskByType">
+			<div class="form-group">
+<!--				<label style="color: rgba(0, 0, 0, 0.54);font-size: 89%;">{{'PDP.RISKS_CATEGORIES' | translate}}</label>-->
+				<ng-select class="form-control"
+						   [multiple]="true"
+						   style="height: unset"
+						   [hideSelected]="true"
+						   [clearSearchOnAdd]="true"
+						   placeholder="{{'PDP.RISKS_CATEGORIES' | translate}}"
+						   [ngModelOptions]="{standalone: true}"
+						   [(ngModel)]="selectedCategories">
+					<ng-option *ngFor="let cat of pdpCategoriesToChooseWith"
+							   [value]="cat?.id">
+						{{cat?.label}}</ng-option>
+				</ng-select>
+			</div>
+		</ng-container>
+
+	</form>
+
+</div>
+<div class="modal-footer">
+	<button type="button" class="btn btn-secondary"
+			(click)="activeModal.close()">{{ 'ACTION.CANCEL' | translate }}</button>
+	<button type="button" class="btn btn-primary" [disabled]="!addItemForm?.form.valid"
+			(click)="submit()">{{ 'ACTION.SAVE' | translate }}</button>
+</div>

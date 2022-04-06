@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="prefix__favicon" width="15" height="15" viewBox="0 0 15 15">
+    <defs>
+        <linearGradient id="prefix__linear-gradient" x1=".5" x2=".5" y1="-.521" y2=".931" gradientUnits="objectBoundingBox">
+            <stop offset=".427" stop-color="#0586d6"/>
+            <stop offset=".906" stop-color="#004fc2"/>
+        </linearGradient>
+        <linearGradient id="prefix__linear-gradient-2" x1=".5" x2=".5" y1="-2.304" y2="1.07" gradientUnits="objectBoundingBox">
+            <stop offset=".592" stop-color="#61e3b6"/>
+            <stop offset=".768" stop-color="#0586d6"/>
+            <stop offset=".786" stop-color="#047dd3"/>
+            <stop offset=".852" stop-color="#0164c9"/>
+            <stop offset=".912" stop-color="#0054c3"/>
+            <stop offset=".959" stop-color="#004fc2"/>
+        </linearGradient>
+    </defs>
+    <g id="prefix__Groupe_74" data-name="Groupe 74">
+        <path id="prefix__Tracé_586" d="M8.422 4.677c1.4-.6 2.44-1.131 3.279-1.555a7.824 7.824 0 0 1 2.367-.954A8.5 8.5 0 0 0 8.64.266 7.887 7.887 0 0 0 .787 5.973a19.973 19.973 0 0 0 7.635-1.296z" data-name="Tracé 586" transform="translate(-.624 -.266)"/>
+        <path id="prefix__Tracé_587" d="M15.182 3.521a7.259 7.259 0 0 1 .442.689 4.251 4.251 0 0 0-1.562-.3A3.77 3.77 0 0 0 10.13 7.5v.141c-.212.1-.427.2-.649.3C6.1 9.417.767 8.559.714 8.55H.708A6.628 6.628 0 0 1 .624 7.5c0-.208.012-.414.031-.618A20.4 20.4 0 0 0 8.775 5.5c1.407-.616 2.453-1.152 3.295-1.582a12.542 12.542 0 0 1 1.723-.8s.7-.315.841-.184l.186.172a2.84 2.84 0 0 1 .362.415z" data-name="Tracé 587" transform="translate(-.624 -.102)" style="fill:#ddf5f4"/>
+        <path id="prefix__Tracé_588" d="M10.3 8.581c-.131.059-.262.119-.4.178a14.728 14.728 0 0 1-5.683.964 25.783 25.783 0 0 1-3.309-.217 7.88 7.88 0 0 0 7.637 5.228 8.065 8.065 0 0 0 7.079-3.944 4.266 4.266 0 0 1-1.565.3A3.917 3.917 0 0 1 10.3 8.581z" data-name="Tracé 588" transform="translate(-.624 .266)"/>
+    </g>
+</svg>

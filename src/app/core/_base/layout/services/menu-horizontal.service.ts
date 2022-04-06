@@ -10,6 +10,7 @@ import { MenuConfigService } from './menu-config.service';
 @Injectable()
 export class MenuHorizontalService {
 	// Public properties
+	modules: any;
 	menuList$: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
 
 	/**
@@ -27,6 +28,8 @@ export class MenuHorizontalService {
 	loadMenu() {
 		// get menu list
 		const menuItems: any[] = objectPath.get(this.menuConfigService.getMenus(), 'header.items');
+		
 		this.menuList$.next(menuItems);
 	}
+
 }

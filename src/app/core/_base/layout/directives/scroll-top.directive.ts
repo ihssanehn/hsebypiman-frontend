@@ -32,7 +32,7 @@ export class ScrollTopDirective implements AfterViewInit {
 	 * After view init
 	 */
 	ngAfterViewInit(): void {
-		this.scrollTop = new KTScrolltop(this.el.nativeElement, this.options);
+		this.scrollTop = new TFScrolltop(this.el.nativeElement, this.options);
 	}
 
 	/**

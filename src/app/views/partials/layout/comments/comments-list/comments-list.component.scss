@@ -1,0 +1,113 @@
+:host::ng-deep {
+    #portlet-comment{
+        color: black;
+        font-size:1em;
+        height: 100%;
+        // .tf-portlet{
+        //     background-color: #f7f9fc;
+        //     margin-bottom: 0;
+        //     .tf-portlet-header{
+        //         font-weight: bolder;
+        //         padding: 20px 20px 0 20px;
+                .title{
+                    a{
+                        color: #525252;
+                    }
+                    .divider{
+                        font-weight: bolder;
+                        color:#e49819;
+                        margin-left: 0.5em;
+                        margin-right: 0.5em;
+                    }
+                    .id-item{
+                        color: #171717;
+                        font-weight: bolder;
+                        text-transform: uppercase;
+                        padding-bottom: 0.2em;
+                        border-bottom: 2px solid #55cec7 ;
+                    }
+                }
+            // }
+            
+            .box{
+                display: flex;
+                flex-direction: column;
+                padding: 20px;
+                margin-bottom: 76px;
+
+                .input-block{
+                    .chat-row{
+                        padding: 0 1em 0;
+                        .card{
+                            padding: 0;
+                            border-color: transparent;
+                        }
+                    }
+                }   
+                .flex-centered{
+                    display: flex;
+                    flex-flow: row nowrap;
+                    justify-content: center;
+                    align-items: center;
+                }
+                .chat-block{
+                    flex: 1;
+                    max-height: 60vh;
+                    overflow-y: scroll;
+                    overflow-x: hidden;
+                    
+                    .chat-row{
+                        padding: 1em 1em 0;
+                        
+                        .card{
+                            padding: 1em 1em 0;
+                            .comment-title{
+                                font-weight: bold;
+                                margin-bottom: 0rem;
+                            }
+                            .label{
+                                color: #c9c9c9;
+                                text-align: left;
+                            }
+                            .blue{
+                                color: #33b5ae;
+                            }
+                            .tf-divider.h-5 span{
+                                height: 1em;
+                            }
+                            .box{
+                                padding-top: 1.5em;
+                                padding-bottom: 1.5em;
+                                h5{
+                                    padding-bottom: 0.8em;
+                                    border-bottom: 1px solid #EBECF1;
+                                }
+                                &.box-chantiers{
+                                    .row{
+                                        margin-bottom: 1rem;
+                                    }
+                                }
+                            }
+                        }
+    
+                    }
+                }
+                .input-block{
+                    position: absolute;
+                    bottom: 10px;
+                    left: 3.5em;
+                    width: calc(100% - 7em);
+                }
+                .user-avatar {
+                    .avatar-content{
+                        background-color: #ebedf2 !important;
+                        color: #525252 !important;
+                    }
+                    .avatar-container{
+                        float: right;
+                    }
+                }
+            }
+    //     }
+    }
+}

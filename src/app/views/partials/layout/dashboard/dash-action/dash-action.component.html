@@ -1,0 +1,19 @@
+<tf-portlet >
+	<tf-portlet-header title="{{'MENU.PLANACTION' | translate}}" [stats]="stats ? getHeaderStats() : ''"></tf-portlet-header>
+	<tf-portlet-body [class]="'tf-portlet__body--fit'">
+		<div class="row row-no-padding row-col-separator-xl"  style="height: 100%">
+			<div class="col-12" style="padding:1em">
+				<div class="dash-title">{{'PLANACTIONS.DASH.ACTION_NUMBER_PER_MONTH.TITLE' | translate}}</div>
+				<div echarts class="demo-chart" #evolActions></div>
+			</div>
+		</div>
+	</tf-portlet-body>
+</tf-portlet>
+
+
+<ng-template #loading>
+	<!-- <span class="tf-widget12__value"></span> -->
+	<div class="loading-card">
+		<mat-spinner color="accent" diameter="30"></mat-spinner>
+	</div>
+</ng-template>

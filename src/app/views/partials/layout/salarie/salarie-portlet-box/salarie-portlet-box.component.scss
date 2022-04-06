@@ -1,0 +1,17 @@
+:host::ng-deep {
+    .box{
+        padding-top: 1.5em;
+        padding-bottom: 1.5em;
+        .blue{
+            color: #33b5ae;
+        }
+        h6{
+            align-items: center;
+            display: flex;
+        }
+        .tf-divider.h-5 span{
+            height: 1em;
+        }
+    }
+
+}

@@ -1,0 +1,36 @@
+
+<tf-portlet  >
+	<tf-portlet-header title="{{'MENU.ANALYSERISQUE' | translate}}"  [stats]="stats ? getHeaderStats() : ''"></tf-portlet-header>
+	<tf-portlet-body [class]="'tf-portlet__body--fit'" style="height: 100%">
+		<div class="row row-no-padding">
+			<!-- <div class="col-xl-4" style="padding: 1.5em 1.5em 0 1.5em;">
+				<div class="row">
+					<div class="col-12">
+						<tf-widget-indicator [value]="stats.total_ars" [valueClass]="'text-success'" [desc]="'Total Analyse de risque'" *ngIf="stats; else loading"></tf-widget-indicator>
+					</div>
+					<div class="col-12">
+						<tf-widget-indicator [value]="stats.total_ars_in_progress" [valueClass]="'text-warning'" [desc]="'Total Analyse de risque en cours'"  *ngIf="stats; else loading"></tf-widget-indicator>
+					</div>
+					<div class="col-12">
+						<tf-widget-indicator [value]="stats.total_ars_archived_without_signature" [valueClass]="'text-danger'" [desc]="'Total Analyse de risque archivée sans signature'" *ngIf="stats; else loading"></tf-widget-indicator>
+					</div>
+					<div class="col-12">
+						<tf-widget-indicator [value]="stats.total_signatures" [valueClass]="'text-success'" [desc]="'Total signataires'" *ngIf="stats; else loading"></tf-widget-indicator>
+					</div>
+				</div>
+			</div> -->
+			<div class="col-12" style="padding:1em">
+				<div class="dash-title">{{'PLANACTIONS.DASH.AR_NUMBER_PER_MONTH.TITLE' | translate}}</div>
+				<div echarts class="demo-chart" #evolArs></div>
+			</div>
+		</div>
+	</tf-portlet-body>
+</tf-portlet>
+
+
+<ng-template #loading>
+	<!-- <span class="tf-widget12__value"></span> -->
+	<div class="loading-card">
+		<mat-spinner color="accent" diameter="30"></mat-spinner>
+	</div>
+</ng-template>

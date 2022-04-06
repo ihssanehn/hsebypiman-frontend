@@ -1,0 +1,60 @@
+:host::ng-deep {
+    #portlet-salarie{
+        color: black;
+        font-size:1em;
+        font-weight: bolder;
+        .tf-portlet{
+            background-color: #f7f9fc;
+            .tf-portlet-header{
+                padding: 25px 20px 0 20px;
+                .title{
+                    a{
+                        color: #525252;
+                    }
+                    .divider{
+                        font-weight: bolder;
+                        color:#e49819;
+                        margin-left: 0.5em;
+                        margin-right: 0.5em;
+                    }
+                    .id-item{
+                        color: #171717;
+                        font-weight: bolder;
+                        text-transform: uppercase;
+                        padding-bottom: 0.2em;
+                        border-bottom: 2px solid #55cec7 ;
+                    }
+                    .h-center{
+                        justify-content: center;
+                        align-items: center;
+                    }
+                }
+                .date-range-selector .mat-form-field-flex{
+                    background-color: #f7f9fc;
+                }
+                .mat-form-field-infix{
+                    width: 200px!important;
+                }
+            }
+            .tf-portlet__body{
+                padding: 0px 20px 20px 20px;
+                font-weight: bold;
+                .card{
+                    padding: 2em 2em 0;    
+                    height: 100%;
+                    .tf-divider.h-5 span{
+                        height: 1em;
+                    }
+                    .box{
+                        padding-top: 1.5em;
+                        padding-bottom: 1.5em;
+                        h5{
+                            padding-bottom: 0.8em;
+                            border-bottom: 1px solid #EBECF1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

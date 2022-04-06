@@ -1,0 +1,6 @@
+<form [formGroup]="actionForm" *ngIf="loaded; else loading" class="tf-form tf-form--group-seperator-dashed">
+	<tf-action-form [actionForm]="actionForm" [formloading]="formloading" [formStatus]="formStatus" [edit]="true" (onSubmit)="onSubmit()" (onCancel)="cancel()"></tf-action-form>
+</form>
+<ng-template #loading>
+	{{'PLANACTIONS.NOTIF.LOADING.TITLE' | translate}}
+</ng-template>

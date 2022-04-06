@@ -1,0 +1,32 @@
+<tf-search-list-bar [(ngModel)]="filter" (change)="getRemonteesDash()" [hasAdvancedSearch]="true" [showFilters]="showFilters" (advancedSearchChange)="advancedSearchChanged($event)" class="row row-filters"></tf-search-list-bar>
+<tf-remontee-filters [hidden]="!showFilters" (change)="udpateFilters($event)" class="row"></tf-remontee-filters>
+<div class="row px-2 d-flex dash-row-container">
+	<div class="col-xl-6 flex-fill" >
+		<tf-portlet class="tf-portlet--height-fluid">
+			<tf-portlet-header title="{{'REMONTEES.DASH.TOP_COLLABORATOR.TITLE' | translate}}"></tf-portlet-header>
+			<tf-portlet-body  [class]="'tf-portlet__body--fit'" *ngIf="stats">
+				<ng-container>
+					<tf-widget2 [label]="'fullname'" [hasLink]="false" [data]="stats.top_creators"*ngIf="stats; else loading">
+						<ng-template #actionTemplate let-item="item">
+							<span class="tf-widget4__number" >{{item.remontees_count}}</span>
+						</ng-template>
+					</tf-widget2>
+				</ng-container>
+			</tf-portlet-body> 
+		</tf-portlet>
+	</div>
+	<div class="col-xl-6 flex-fill" >
+		<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
+			<tf-portlet-body class="tf-portlet__body--fit" style="padding: 20px 15px;">
+				<div echarts class="demo-chart" #pieType></div>
+			</tf-portlet-body>
+		</tf-portlet>
+	</div>
+	<div class="col-xl-12 flex-fill" >
+		<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
+			<tf-portlet-body class="tf-portlet__body--fit" style="padding: 20px 15px;">
+				<div echarts class="demo-chart" #evolAll></div>
+			</tf-portlet-body>
+		</tf-portlet>
+	</div>
+</div>

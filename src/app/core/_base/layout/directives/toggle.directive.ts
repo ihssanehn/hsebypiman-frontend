@@ -33,6 +33,6 @@ export class ToggleDirective implements AfterViewInit {
 	 * After view init
 	 */
 	ngAfterViewInit(): void {
-		this.toggle = new KTToggle(this.el.nativeElement, this.options);
+		this.toggle = new TFToggle(this.el.nativeElement, this.options);
 	}
 }

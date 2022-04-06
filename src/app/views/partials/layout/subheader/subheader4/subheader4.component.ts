@@ -1,10 +1,16 @@
 // Angular
-import { AfterViewInit, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnDestroy, OnInit, ChangeDetectorRef } from '@angular/core';
 // RxJS
 import { Subscription } from 'rxjs';
 // Layout
 import { SubheaderService } from '../../../../../core/_base/layout';
 import { Breadcrumb } from '../../../../../core/_base/layout/services/subheader.service';
+import { Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
+import objectPath from 'object-path';
+import { HtmlClassService } from '@app/views/theme/html-class.service';
+import { ModuleService } from '@app/core/services/module.service';
+import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
 
 @Component({
 	selector: 'tf-subheader4',
@@ -20,6 +26,7 @@ export class Subheader4Component implements OnInit, OnDestroy, AfterViewInit {
 	title = '';
 	desc = '';
 	breadcrumbs: Breadcrumb[] = [];
+	currentRouteUrl: any = '';
 
 	// Private properties
 	private subscriptions: Subscription[] = [];
@@ -29,7 +36,24 @@ export class Subheader4Component implements OnInit, OnDestroy, AfterViewInit {
 	 *
 	 * @param subheaderService: SubheaderService
 	 */
-	constructor(public subheaderService: SubheaderService) {
+	constructor(
+		public subheaderService: SubheaderService,
+		public htmlClassService: HtmlClassService,
+		private router: Router,
+		private moduleService: ModuleService,
+		private cdr: ChangeDetectorRef,
+		private ngxPermissionsService: NgxPermissionsService,
+		private ngxRolesService: NgxRolesService,
+	) {
+		this.moduleService.currentModules.subscribe((event) => {
+			this.cdr.markForCheck();
+		})
+		this.ngxPermissionsService.permissions$.subscribe((event) => {
+			this.cdr.markForCheck();
+		})
+		this.ngxRolesService.roles$.subscribe((event) => {
+			this.cdr.markForCheck();
+		})
 	}
 
 	/**
@@ -40,6 +64,66 @@ export class Subheader4Component implements OnInit, OnDestroy, AfterViewInit {
 	 * On init
 	 */
 	ngOnInit() {
+
+		this.currentRouteUrl = this.router.url;
+		this.router.events
+			.pipe(filter(event => event instanceof NavigationEnd))
+			.subscribe(event => {
+				this.currentRouteUrl = this.router.url;
+				this.cdr.markForCheck();
+			});
+	}
+
+	/**
+	 * Return Css Class Name
+	 * @param item: any
+	 */
+	getItemCssClasses(item) {
+		let classes = 'tf-menu__item';
+
+		if (this.isMenuItemIsActive(item)) {
+			classes += ' tf-menu__item--active tf-menu__item--here';
+		}
+
+		classes += ' tf-menu__item--rel';
+
+		const customClass = objectPath.get(item, 'custom-class');
+		if (customClass) {
+			classes += ' ' + customClass;
+		}
+
+		if (objectPath.get(item, 'icon-only')) {
+			classes += ' tf-menu__item--icon-only';
+		}
+
+		return classes;
+	}
+
+	/**
+	 * Check Menu is active
+	 * @param item: any
+	 */
+	isMenuItemIsActive(item): boolean {
+
+		if (!item.page) {
+			return false;
+		}
+
+		let urlPath = this.clearUrl(this.currentRouteUrl);
+		let submodulePath = this.clearUrl(item.page);
+		
+		return submodulePath == urlPath;
+	}
+
+	/**
+	 * Clear URL
+	 */
+	clearUrl(path){
+		var urls = path.split('/');
+		var url = urls.splice(0, 3);
+		let urlPath = url.join('/');
+
+		return urlPath;
 	}
 
 	/**
@@ -69,4 +153,25 @@ export class Subheader4Component implements OnInit, OnDestroy, AfterViewInit {
 	ngOnDestroy(): void {
 		this.subscriptions.forEach(sb => sb.unsubscribe());
 	}
+	
+	isActiveModule(codes){
+		return this.moduleService.isActived(codes);
+	}
+
+	needPermission(item){
+		if(!item.permissionOnly){
+			return true;
+		}else{
+			
+			var hasPerm = item.permissionOnly.filter(permission =>  this.ngxPermissionsService.getPermission(permission));
+			var hasRole = item.permissionOnly.filter(permission =>  this.ngxRolesService.getRole(permission));
+			
+			if(hasPerm.length > 0 || hasRole.length > 0){
+				return true;
+			}else{
+				return false;
+			}
+		}
+	}
+
 }

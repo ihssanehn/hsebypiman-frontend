@@ -1,0 +1,24 @@
+<tf-search-list-bar [(ngModel)]="filter" (change)="getArsDash()" [hasAdvancedSearch]="true" [showFilters]="showFilters" (advancedSearchChange)="advancedSearchChanged($event)" class="row row-filters"></tf-search-list-bar>
+<tf-ar-filters [hidden]="!showFilters" (change)="udpateFilters($event)" class="row"></tf-ar-filters>
+<div class="row px-2">
+	<div class="col-4">
+		<tf-widget-indicator [value]="stats.total_vs_in_progress+' / '+stats.total_vs" [valueClass]="getClass('down', stats.retard_percent)" desc="{{'ARS.DASH.AR_AVAILABLE.TITLE' | translate}}" *ngIf="stats; else loading"></tf-widget-indicator>
+	</div>
+	<div class="col-4">
+		<tf-widget-indicator [value]="stats.total_signatures" desc="{{'ARS.DASH.NBR_SIGNATURES.TITLE' | translate}}"  *ngIf="stats; else loading"></tf-widget-indicator>
+	</div>
+	<div class="col-4">
+		<tf-widget-indicator [value]="stats.average_signatures" [valueClass]="getClass('up', stats.finished_percent)" desc="{{'ARS.DASH.NBR_SIGNATURES.TITLE' | translate}}" *ngIf="stats; else loading"></tf-widget-indicator>
+	</div>
+	<div class="col-12">
+		<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
+			<tf-portlet-body class="tf-portlet__body--fit" style="padding: 20px 15px;">
+				<div echarts class="demo-chart" #evolAll></div>
+			</tf-portlet-body>
+		</tf-portlet>
+	</div>
+</div>
+
+<ng-template #loading>
+	<tf-widget-indicator [value]="null" [desc]="null"></tf-widget-indicator>
+</ng-template>

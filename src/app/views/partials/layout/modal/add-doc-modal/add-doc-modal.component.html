@@ -1,0 +1,42 @@
+<div class="modal-header">
+	<h4 class="modal-title">{{'ACTION.ADD_PICTURES' | translate}}</h4>
+	<button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+<div class="modal-body">
+    <ng-container [formGroup]="documentForm">
+        <div class="row">
+            <div class="col-6">
+                <div class="upload-btn-wrapper">
+                    <button class="btnr" title="{{'COMMON.SELECT_FILES.TITLE' | translate}}">{{'COMMON.SELECT_FILES.SHORTTITLE' | translate}}</button>
+                    <span>{{'COMMON.NOTIF.NO_FILE_CHOSEN.TITLE' | translate}}</span>
+                    <input formControlName="documentsToUpload" (onFileSelected)="onFileDrop($event)" class="mb-2" type="file" 
+                        ng2FileSelect title="{{'COMMON.SELECT_FILES.TITLE' | translate}}" accept=".png, .bmp, .jpeg, .jpg, .gif, .tif, .PNG, .BMP, .JPEG, .JPG, .GIF, .TIF" [uploader]="uploader" multiple/>
+                </div>              
+                <div ng2FileDrop [uploader]="uploader" 
+                (onFileDrop)="onFileDrop($event)"
+                class="drop-zone">
+                    {{'UPLOAD.DROPZONE.PLACEHOLDER' | translate}} <br>
+                    {{'UPLOAD.LIST_EXT' | translate}} : jpg, bmp, jpeg, gif, png, tif<br>
+                    {{'UPLOAD.MAX_SIZE' | translate}} : 4 Mo
+                </div>
+            </div>
+            <div class="col-6">
+                <h6>{{'REMONTEES.CARD.DOC.FILE_AWAIT_UPLOAD' | translate}} : </h6>
+                <ul>
+                    <li class="mb-3" *ngFor="let item of uploader.queue">
+                        {{seeItem(item)}}
+                            <mat-icon color="accent" class="pull-right pointer" (click)="item.remove()" matTooltip="{{'REMONTEES.CARD.DOC.ACTION.REMOVE_DOC' | translate}}">delete</mat-icon>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-12 col-actions">
+                <button mat-raised-button type="button" (click)="activeModal.dismiss()" class="btn-small" color="warn">{{'ACTION.CANCEL' | translate}}</button>
+                <button mat-raised-button type="button" (click)="saveDocuments()" class="btn-small" color="success" [disabled]="uploader.queue.length == 0">{{'ACTION.SAVE' | translate}}</button>
+            </div>
+        </div>
+    </ng-container>
+</div>

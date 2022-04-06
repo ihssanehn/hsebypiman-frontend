@@ -11,8 +11,13 @@ import { TranslateService } from '@ngx-translate/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../../core/reducers';
 // Auth
+import { DomSanitizer } from '@angular/platform-browser';
 import {environment} from '@env/environment';
+import { MatIconRegistry } from '@angular/material';
 import { AuthNoticeService, AuthService} from '../../../../core/auth';
+import { ModuleService } from '@app/core/services';
+import { VersionCheckService } from '@app/core/_base/layout';
+import Swal from 'sweetalert2';
 
 @Component({
 	selector: 'tf-login',
@@ -26,6 +31,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 	isLoggedIn$: Observable<boolean>;
 	errors: any = [];
 	logo: string;
+	hide: boolean = true;
 
 	private unsubscribe: Subject<any>;
 	private returnUrl: any;
@@ -46,14 +52,24 @@ export class LoginComponent implements OnInit, OnDestroy {
 	constructor(
 		private router: Router,
 		private auth: AuthService,
+		private moduleService: ModuleService,
 		private authNoticeService: AuthNoticeService,
 		private translate: TranslateService,
 		private store: Store<AppState>,
 		private fb: FormBuilder,
 		private cdr: ChangeDetectorRef,
-		private route: ActivatedRoute
+		private route: ActivatedRoute,
+		private versionCheckService:VersionCheckService,		
+		iconRegistry: MatIconRegistry, 
+		sanitizer: DomSanitizer
+
 	) {
 		this.unsubscribe = new Subject();
+		
+		iconRegistry.addSvgIcon(
+			'close-eye',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-close-see.svg'));
+		iconRegistry.addSvgIcon(
+			'open-eye',sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-open-see.svg'));
 	}
 
 	/**
@@ -64,6 +80,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 	 * On init
 	 */
 	ngOnInit(): void {
+		this.versionCheckService.checkVersion(environment.versionCheckURL);
 		this.initLoginForm();
 
 		// redirect back to the returnUrl before login
@@ -125,19 +142,43 @@ export class LoginComponent implements OnInit, OnDestroy {
 			email: controls.email.value,
 			password: controls.password.value
 		};
+		this.moduleService.getModules().toPromise();
 		this.auth
 			.login(authData.email, authData.password)
-			.subscribe(user=>{
+			.subscribe(res=>{
 				
-				if(user){
-					localStorage.setItem(environment.authTokenKey, user.access_token);
+				if(res){
+					localStorage.setItem(environment.authTokenKey, res.result.data.access_token);
+					localStorage.setItem('user_connection', res.result.data.user_connection);
+
 					this.loading = false;
-					this.router.navigateByUrl(this.returnUrl);
-					this.cdr.markForCheck();
+				
+					this.auth
+						.getUserByToken()
+						.subscribe(res=>{
+							
+							if(res.result.data.is_firstConnexion){
+								this.router.navigateByUrl('/auth/edit-password');
+							}else{
+								this.router.navigateByUrl(this.returnUrl);
+							}
+							this.cdr.markForCheck();
+						})
 				}
 			},
 			err => {
-				// this.notificationService.error('Bad credentials', this.translate.instant('AUTH.VALIDATION.INVALID_LOGIN'));
+				if(err.error.code == 401){
+					this.authNoticeService.setNotice(this.translate.instant('AUTH.VALIDATION.INVALID_LOGIN'), 'danger');
+				}else{
+					
+					Swal.fire({
+						icon: 'error',
+						title: 'Accès non autorisé',
+						showConfirmButton: false,
+						html: err.error.message.content,
+						timer: 3000
+					});
+				}
 				this.loading = false;
 				this.cdr.markForCheck();
 			});

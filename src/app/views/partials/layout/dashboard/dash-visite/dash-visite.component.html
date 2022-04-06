@@ -1,0 +1,19 @@
+<tf-portlet  >
+	<tf-portlet-header title="{{'MENU.VISITESECURITE' | translate}}" [stats]="stats ? getHeaderStats() : ''"></tf-portlet-header>
+	<tf-portlet-body [class]="'tf-portlet__body--fit'" style="height: 100%">
+		<div class="row row-no-padding row-col-separator-xl">
+			<!-- <div class="col-xl-4" style="padding:1em">
+				<div class="dash-title">Nombre de visites sécurité par Type</div>
+				<div echarts class="demo-chart" #pieVssType></div>
+			</div> -->
+			<div class="col-xl-6" style="padding:1em">
+				<div class="dash-title">{{'PLANACTIONS.DASH.VS_NUMBER_PER_MONTH_TYPE.TITLE' | translate}}</div>
+				<div echarts class="demo-chart" #evolVss></div>
+			</div>
+			<div class="col-xl-6" style="padding:1em">
+				<div class="dash-title">{{'PLANACTIONS.DASH.NC_DISTRIBUTION.TITLE' | translate}}</div>
+				<div echarts class="demo-chart" #pieNcCat></div>
+			</div>
+		</div>
+	</tf-portlet-body>
+</tf-portlet>

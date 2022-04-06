@@ -1,0 +1,88 @@
+<form class="tf-form tf-form--group-seperator-dashed" *ngIf="ar">
+
+	<tf-portlet id="portlet-chantier">
+		<div class="tf-portlet-header ">
+			<span class="title">
+				<a [routerLink]="['/analyses-risque/list']">{{'MENU.SUB_ANALYSERISQUE.LIST' | translate}}</a>
+				<span class="divider">></span>
+				<span class="id-item">{{'MENU.SUB_ANALYSERISQUE.DETAIL' | translate}} n° {{ar.code}}</span>
+			</span>
+
+			<div ngbDropdown placement="bottom-right" class="d-inline-block pull-right" *ngIf="ar.chantier?.status.code != 'TERMINE'">
+				<button ngbDropdownToggle mat-icon-button color="primary" matTooltip="Actions" style="line-height: 0;height: 0;">
+					<mat-icon>more_vert</mat-icon>
+				</button>
+				<div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
+					<!-- <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editAr(ar.id)">
+						<mat-icon>edit</mat-icon>
+					</button>
+					<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteAr(ar.id)">
+						<mat-icon>delete</mat-icon>
+					</button> -->
+					<button mat-icon-button color="info" matTooltip="{{'ACTION.DUPLICATE' | translate}}" (click)="duplicateAr(ar.id)" *ngxPermissionsOnly="['analyse_risque_canAdd']">
+						<mat-icon>filter_none</mat-icon>
+					</button>
+					<button mat-icon-button color="info" matTooltip="{{'ACTION.DOWNLOAD' | translate}}" (click)="exportPDF(ar.id)">
+						<mat-icon>cloud_download</mat-icon>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<tf-search-chantier-form [parent]="'ar'" [data]="chantier" origin="detail"></tf-search-chantier-form>
+
+	</tf-portlet>
+
+	<mat-accordion [multi]="true" [hideToggle]="isDisableToggle"  displayMode='flat'>
+
+		<tf-ar-detail-panels 
+			[ar]="ar" 
+			[isExpanded]="isExpanded" 
+			[isDisableToggle]="isDisableToggle" 
+		></tf-ar-detail-panels>
+
+		<mat-expansion-panel [expanded]="true" [disabled]="isDisableToggle">
+			<mat-expansion-panel-header>
+				<div class="tf-heading tf-heading--md">| 5 {{'ARS.CARD.SIGNATURE.TITLE' | translate}}</div>
+			</mat-expansion-panel-header>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="tf-card-form">
+						<div class="tf-heading tf-heading--sm">
+							{{'ARS.CARD.OBSERVATION.LABEL' | translate}}
+						</div>
+	
+						<div class="row form-row" *ngIf="ar?.observations_signature; else noObservation">
+							<div class="col-md-12 textarea-viewer">
+								<p class="mt-2">{{ar?.observations_signature}}</p>
+							</div>
+						</div>
+						
+						<ng-template #noObservation>
+							<div class="col-md-12">{{'ARS.CARD.OBSERVATION.NO_OBSERVATION' | translate}}</div>
+						</ng-template>
+
+						<div *ngIf="ar.status.code != 'ARCHIV'" class="col-12">
+							<button class="pull-right" *ngIf="!ar?.is_signed" mat-raised-button color="info" (click)="signAr(ar?.id)">
+								{{'ARS.CARD.SIGNATURE.ACTION.SIGN_AR' | translate}}
+							</button>
+							<ng-container *ngxPermissionsOnly="['ADMIN','ROOT']">
+								<button class="pull-right" *ngIf="ar?.is_signed" mat-raised-button color="info" (click)="signAr(ar?.id)">
+									{{'ARS.CARD.SIGNATURE.ACTION.SIGN_AR_FOR_OTHERS' | translate}}
+								</button>
+							</ng-container>
+
+						</div>
+
+						<tf-signature-list 
+							[dataSource]="ar?.signatures"
+						></tf-signature-list>
+
+					</div>
+				</div>
+			</div>
+		</mat-expansion-panel>
+	
+	</mat-accordion>
+
+</form>
