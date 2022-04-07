@@ -2,8 +2,8 @@ import { Component, OnInit, Input, Output, ChangeDetectorRef, EventEmitter } fro
 import { FormGroup, FormControl } from '@angular/forms';
 import { FormStatus } from '@app/core/_base/crud/models/form-status';
 import { Type } from '@app/core/models/type.model';
-import { BuService, EntityService, EntrepriseService, FonctionService, PersonnelService, RoleService } from '@app/core/services';
-import { Role } from '@app/core/auth';
+import { BuService, EntityService, EntrepriseService, FonctionService, PersonnelService, RoleService, UserService } from '@app/core/services';
+import { Role, User } from '@app/core/auth';
 import { Entreprise, Personnel } from '@app/core/models';
 
 @Component({
@@ -21,8 +21,8 @@ export class UserFormComponent implements OnInit {
 
   fonctions: Type[];
   entities: Type[];
-  bu: Type[];
-  profitCenters: Personnel[];
+  buList: Type[];
+  profitCenters: User[];
   clients: Entreprise[];
   roles: Role[];
   civilites = [
@@ -45,15 +45,15 @@ export class UserFormComponent implements OnInit {
     private buService: BuService,
     private cdr: ChangeDetectorRef,
     private roleService: RoleService,
-    private personnelService: PersonnelService,
+    private userService: UserService,
     private entrepriseService: EntrepriseService
 
   ) { }
 
   ngOnInit() {
     this.getFonctions();
-    //this.getEntities();
-    //this.getBu();
+    this.getEntities();
+    this.getBu();
     this.getProfitCenters();
     this.getClients();
     this.getRoles();
@@ -83,7 +83,7 @@ export class UserFormComponent implements OnInit {
     this.buLoaded = false;
     var res = await this.buService.getList().toPromise();
     if(res){
-      this.bu = res.result.data;
+      this.buList = res.result.data;
       this.buLoaded = true;
     }
     this.cdr.markForCheck();
@@ -91,7 +91,7 @@ export class UserFormComponent implements OnInit {
 
   async getProfitCenters(){
     this.profitCentersLoaded = false;
-    var res = await this.personnelService.getList().toPromise();
+    var res = await this.userService.getAll({'role': 'MANAGER' ,'paginate':false}).toPromise();
     if(res){
       this.profitCenters = res.result.data;
       this.profitCentersLoaded = true;

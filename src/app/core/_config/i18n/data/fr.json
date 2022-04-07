@@ -2100,7 +2100,8 @@
 			"USER_INFOS": {
 				"TITLE": "Informations utilisateur",
 				"EMERGENCY_CASE": "En cas d'urgence",
-				"MEDICAL_VISIT": "Visite médicale"
+				"MEDICAL_VISIT": "Visite médicale",
+				"EMPLOYEE_INFOS": "Informations salarié"
 			},
 			"USER_ACCOUNT_INFOS": {
 				"TITLE": "Informations Compte Utilisateur"

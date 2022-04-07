@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 
 export class EntityService extends HttpService{
 
-    baseUrl = environment.apiBaseUrl+'entity';
+    baseUrl = environment.apiBaseUrl+'entities';
 
     constructor(
         private http: HttpClient,

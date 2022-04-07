@@ -150,48 +150,48 @@
 
 					<mat-form-field class="col-xl-3">
 						<mat-label>{{'COMMON.PIMAN_ENTITY.LABEL' | translate}}</mat-label>
-						<mat-select class="form-control" placeholder="" formControlName="fonction_id" [required]="isFieldRequired('fonction_id')">
-							<mat-option *ngFor="let type of fonctions" [value]="type.id">
-								{{ type.libelle }}
+						<mat-select class="form-control" placeholder="" formControlName="entity_id" [required]="isFieldRequired('entity_id')">
+							<mat-option *ngFor="let entity of entities" [value]="entity.id">
+								{{ entity.libelle }}
 							</mat-option>
 						</mat-select>
-						<mat-error *ngIf="isControlHasError('fonction_id','required')">
+						<mat-error *ngIf="isControlHasError('entity_id','required')">
 							<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 						</mat-error>
 					</mat-form-field>
 
 					<mat-form-field class="col-xl-3">
 						<mat-label>{{'COMMON.BU.LABEL' | translate}}</mat-label>
-						<mat-select class="form-control" placeholder="" formControlName="fonction_id" [required]="isFieldRequired('fonction_id')">
-							<mat-option *ngFor="let type of fonctions" [value]="type.id">
-								{{ type.libelle }}
+						<mat-select class="form-control" placeholder="" formControlName="bu_id" [required]="isFieldRequired('bu_id')">
+							<mat-option *ngFor="let bu of buList" [value]="bu.id">
+								{{ bu.libelle }}
 							</mat-option>
 						</mat-select>
-						<mat-error *ngIf="isControlHasError('fonction_id','required')">
+						<mat-error *ngIf="isControlHasError('bu_id','required')">
 							<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 						</mat-error>
 					</mat-form-field>
 
 					<mat-form-field class="col-xl-3">
 						<mat-label>{{'COMMON.PROFIT_CENTER.LABEL' | translate}}</mat-label>
-						<mat-select class="form-control" placeholder="" formControlName="fonction_id" [required]="isFieldRequired('fonction_id')">
+						<mat-select class="form-control" placeholder="" formControlName="profit_center_id" [required]="isFieldRequired('profit_center_id')">
 							<mat-option *ngFor="let profitCenter of profitCenters" [value]="profitCenter.id">
 								{{ profitCenter.fullname }}
 							</mat-option>
 						</mat-select>
-						<mat-error *ngIf="isControlHasError('fonction_id','required')">
+						<mat-error *ngIf="isControlHasError('profit_center_id','required')">
 							<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 						</mat-error>
 					</mat-form-field>
 
 					<mat-form-field class="col-xl-3">
 						<mat-label>{{'COMMON.CLIENT.LABEL' | translate}}</mat-label>
-						<mat-select class="form-control" placeholder="" formControlName="fonction_id" [required]="isFieldRequired('fonction_id')">
+						<mat-select class="form-control" placeholder="" formControlName="client_id" [required]="isFieldRequired('client_id')">
 							<mat-option *ngFor="let client of clients" [value]="client.id">
 								{{ client.raison_sociale }}
 							</mat-option>
 						</mat-select>
-						<mat-error *ngIf="isControlHasError('fonction_id','required')">
+						<mat-error *ngIf="isControlHasError('client_id','required')">
 							<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 						</mat-error>
 					</mat-form-field>
