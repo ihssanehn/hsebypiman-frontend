@@ -22,7 +22,7 @@ export class UserFormComponent implements OnInit {
   fonctions: Type[];
   entities: Type[];
   buList: Type[];
-  profitCenters: User[];
+  profitCenters: any;
   clients: Entreprise[];
   roles: Role[];
   civilites = [
