@@ -28,6 +28,13 @@ export class User extends BaseModel {
     date_visite_medicale_next: Date;
     latest_visite_medicale?: any;
     entreprise_interim?: string;
+    manager?: any;
+    is_virtual?: any;
+    is_blocked?: any;
+    entity?: any;
+    bu?: any;
+    profit_center?: any;
+    client?: any;
 
     clear?(): void {
         this.id = undefined;

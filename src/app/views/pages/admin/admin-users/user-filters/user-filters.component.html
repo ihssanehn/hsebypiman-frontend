@@ -43,7 +43,7 @@
 						<mat-label>{{'COMMON.PROFIL.LABEL' | translate}}</mat-label>
 						<mat-select class="form-control" formControlName="role" name="role">
 							<mat-option>{{'FILTER.SEARCH_ALL' | translate}}</mat-option>
-							<mat-option *ngFor="let role of roles" [value]="role">
+							<mat-option *ngFor="let role of roles" [value]="role.code">
 								{{role.libelle}}
 							</mat-option>
 						</mat-select>

@@ -361,7 +361,7 @@
 		"MAIL": "Email",
 		"JOB": "Fonction",
 		"NAME": "Nom",
-		"INSTRUCTIONS_GIVEN_BY_THE_EXTERNAL_COMPANY": "Consignes remises par l'entreprise extérieure",
+		"INSTRUCTIONS_GIVEN_BY_THE_EXTERNAL_COMPANY": "Consignes remises par le client",
 		"TYPE_OPERATION": "Type d'opération",
 		"COMMENT_TYPE_OPERATION": "Commentaire / Type d'opération",
 		"PPE_MADE_AVAILABLE_TO_THE_EXTERNAL_COMPANY": "EPI mis à disposition",
@@ -624,7 +624,7 @@
 		"CARD": {
 			"ENTREPRISE": {
 				"NO_ENTREPRISES": "Aucune Entreprise Externe",
-				"TITLE": "Entreprises externes"
+				"TITLE": "Clients"
 			},
 			"GENERAL_INFOS": {
 				"TITLE": "Informations générales"
@@ -1017,13 +1017,25 @@
 		},
 		"DEFAULT_RESPONSABLE": {
 			"TITLE": "Responsables par défaut"
+		},
+		"PIMAN_ENTITY": {
+			"LABEL": "Entité Piman"
+		},
+		"BU": {
+			"LABEL": "BU"
+		},
+		"PROFIT_CENTER": {
+			"LABEL": "Centre de profit"
+		},
+		"CLIENT": {
+			"LABEL": "Client"
 		}
 	},
 	"EES": {
 		"ACTION": {
-			"ADD_COMPANY_TYPE": "Ajouter un type d'entreprise",
-			"ADD_EE": "Ajouter une entreprise",
-			"DELETE_EE": "Supprimer l'entreprise"
+			"ADD_COMPANY_TYPE": "Ajouter un type du client",
+			"ADD_EE": "Ajouter un client",
+			"DELETE_EE": "Supprimer le client"
 		},
 		"CA": {
 			"LABEL": "Chiffre d'affaire",
@@ -1034,13 +1046,13 @@
 		},
 		"CARD": {
 			"COMPANY_DETAILS": {
-				"TITLE": "Coordonnées entreprise"
+				"TITLE": "Coordonnées client"
 			},
 			"COMPANY_MONITORING": {
 				"LABEL": "Suivis chantiers",
-				"NO_CHANTIER": "Cette entreprise n'a été affectée à aucun chantier",
-				"NO_INTERIMAIRE": "Cette entreprise n'a pas d'intérimaire",
-				"TITLE": "Suivi de l'entreprise"
+				"NO_CHANTIER": "Ce client n'a été affectée à aucun chantier",
+				"NO_INTERIMAIRE": "Ce client n'a pas d'intérimaire",
+				"TITLE": "Suivi du client"
 			},
 			"GENERAL_INFOS": {
 				"TITLE": "Informations générales"
@@ -1115,25 +1127,25 @@
 				"TITLE": "Entreprise créée avec succès"
 			},
 			"COMPANY_TYPE_ARCHIVED": {
-				"TITLE": "Type d'entreprise archivé avec succès"
+				"TITLE": "Type du client archivé avec succès"
 			},
 			"COMPANY_UPDATED": {
 				"TITLE": "Entreprise mise à jour avec succès"
 			},
 			"ELEMENT_NOT_DELETED": {
 				"LABEL": "Suppression impossible car la sélection est affectée à une ou plusieurs entreprises",
-				"SHORTTITLE": "Types d'entreprise",
+				"SHORTTITLE": "Types du client",
 				"TITLE": "Suppression impossible car la sélection comprend un élément affecté à une ou plusieurs entreprises"
 			},
 			"EE_NOT_DELETED": {
 				"LABEL": "Suppression impossible car la sélection est affectée à un ou plusieurs chantiers",
-				"SHORTTITLE": "Types d'entreprise",
+				"SHORTTITLE": "Types du client",
 				"TITLE": "Suppression impossible car la sélection comprend un élément affecté à un ou plusieurs chantiers"
 			},
 			"EE_DELETED": {
-				"LABEL": "L'entreprise a bien été supprimée",
-				"SHORTTITLE": "L'entreprise a bien été supprimée",
-				"TITLE": "L'entreprise a bien été supprimée"
+				"LABEL": "Le client a bien été supprimé",
+				"SHORTTITLE": "Le client a bien été supprimé",
+				"TITLE": "Le client a bien été supprimé"
 			},
 			"LOADING": {
 				"TITLE": "Loading Entreprise"
@@ -1146,10 +1158,10 @@
 			"TITLE": "Raison sociale"
 		},
 		"TYPE": {
-			"LABEL": "Type d'entreprise",
+			"LABEL": "Type du client",
 			"PLACEHOLDER": "Saisir ici...",
 			"SHORTTITLE": "Type",
-			"TITLE": "Type d'entreprise"
+			"TITLE": "Type du client"
 		}
 	},
 	"EPIS": {
@@ -1522,7 +1534,7 @@
 			"NEWAR": "Nouvelle analyse de risque",
 			"NEWPDP": "Nouveau plan de prévention",
 			"NEWCHANTIER": "Nouveau chantier",
-			"NEWENTREPRISE": "Nouvelle entreprise",
+			"NEWENTREPRISE": "Nouveau client",
 			"NEWMATERIEL": "Nouveau matériel",
 			"NEWREMONTEE": "Nouvelle remontée QHSE",
 			"NEWVS": "Nouvelle visite de sécurité"
@@ -1532,7 +1544,7 @@
 		"DISCUSS": "Discuss",
 		"EDIT_MY_PASSWORD": "Modifier mon mot de passe",
 		"EDIT_PROFILE": "Modifier mon profil",
-		"ENTREPRISES": "Entreprises Externes",
+		"ENTREPRISES": "Clients",
 		"FLASHINFOS": "Flash Infos",
 		"GOALS": "Objectifs",
 		"HOME": "Accueil",
@@ -1573,10 +1585,10 @@
 			"LIST": "Liste des chantiers"
 		},
 		"SUB_ENTREPRISES": {
-			"ADD": "Ajouter une entreprise",
-			"DETAIL": "Détail de l'entreprise",
-			"EDIT": "Modifier l'entreprise",
-			"LIST": "Liste des entreprises"
+			"ADD": "Ajouter un client",
+			"DETAIL": "Détail du client",
+			"EDIT": "Modifier le client",
+			"LIST": "Liste des clients"
 		},
 		"SUB_FLASHINFOS": {
 			"ADD": "Ajouter un nouveau flash info",
@@ -2088,7 +2100,8 @@
 			"USER_INFOS": {
 				"TITLE": "Informations utilisateur",
 				"EMERGENCY_CASE": "En cas d'urgence",
-				"MEDICAL_VISIT": "Visite médicale"
+				"MEDICAL_VISIT": "Visite médicale",
+				"EMPLOYEE_INFOS": "Informations salarié"
 			},
 			"USER_ACCOUNT_INFOS": {
 				"TITLE": "Informations Compte Utilisateur"

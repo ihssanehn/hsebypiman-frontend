@@ -140,7 +140,6 @@
 						</mat-error>
 					</mat-form-field>
 
-
 					<mat-form-field class="col-xl-3">
 						<mat-label>{{'SALARIES.EXIT_AT.LABEL' | translate}}</mat-label>
 						<input matInput class="form-control" type="text" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" name="date_sortie" formControlName="date_sortie" [required]="isFieldRequired('date_sortie')" placeholder="DD/MM/YYYY" />
@@ -148,7 +147,56 @@
 							<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 						</mat-error>
 					</mat-form-field>
+
+					<mat-form-field class="col-xl-3">
+						<mat-label>{{'COMMON.PIMAN_ENTITY.LABEL' | translate}}</mat-label>
+						<mat-select class="form-control" placeholder="" formControlName="entity_id" [required]="isFieldRequired('entity_id')">
+							<mat-option *ngFor="let entity of entities" [value]="entity.id">
+								{{ entity.libelle }}
+							</mat-option>
+						</mat-select>
+						<mat-error *ngIf="isControlHasError('entity_id','required')">
+							<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+						</mat-error>
+					</mat-form-field>
+
+					<mat-form-field class="col-xl-3">
+						<mat-label>{{'COMMON.BU.LABEL' | translate}}</mat-label>
+						<mat-select class="form-control" placeholder="" formControlName="bu_id" [required]="isFieldRequired('bu_id')">
+							<mat-option *ngFor="let bu of buList" [value]="bu.id">
+								{{ bu.libelle }}
+							</mat-option>
+						</mat-select>
+						<mat-error *ngIf="isControlHasError('bu_id','required')">
+							<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+						</mat-error>
+					</mat-form-field>
+
+					<mat-form-field class="col-xl-3">
+						<mat-label>{{'COMMON.PROFIT_CENTER.LABEL' | translate}}</mat-label>
+						<mat-select class="form-control" placeholder="" formControlName="profit_center_id" [required]="isFieldRequired('profit_center_id')">
+							<mat-option *ngFor="let profitCenter of profitCenters" [value]="profitCenter.id">
+								{{ profitCenter.fullname }}
+							</mat-option>
+						</mat-select>
+						<mat-error *ngIf="isControlHasError('profit_center_id','required')">
+							<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+						</mat-error>
+					</mat-form-field>
+
+					<mat-form-field class="col-xl-3">
+						<mat-label>{{'COMMON.CLIENT.LABEL' | translate}}</mat-label>
+						<mat-select class="form-control" placeholder="" formControlName="client_id" [required]="isFieldRequired('client_id')">
+							<mat-option *ngFor="let client of clients" [value]="client.id">
+								{{ client.raison_sociale }}
+							</mat-option>
+						</mat-select>
+						<mat-error *ngIf="isControlHasError('client_id','required')">
+							<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+						</mat-error>
+					</mat-form-field>
 				</div>
+
 				<h5 class="subtitle">{{'USERS.CARD.USER_INFOS.EMERGENCY_CASE' | translate}}</h5>
 				<div class="row form-row mx-5">
 					<mat-form-field class="col-xl-4">
@@ -176,6 +224,7 @@
 					</mat-form-field>
 
 				</div>
+
 				<h5 class="subtitle">{{'USERS.CARD.USER_INFOS.MEDICAL_VISIT' | translate}}</h5>
 				<div class="row form-row mx-5">
 					<div class="col-xl-4 d-inline-flex" style="justify-content: space-between;align-items: center;">

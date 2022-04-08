@@ -58,6 +58,18 @@
 								<div class="card" *ngIf="user.is_virtual == 0; else virtualUser">
 									<h5><b>{{'USERS.CARD.USER_INFOS.TITLE' | translate}}</b></h5>
 									<div class="row d-flex">
+
+										<div class="box col-md-6">
+											<h6><b>{{'USERS.CARD.USER_INFOS.EMPLOYEE_INFOS' | translate}}</b></h6>
+											<div class="tf-divider"><span></span></div>
+											<div class="box box-coords" style="flex:1">
+												<p><span class="label pull-left mr-2">{{'COMMON.PIMAN_ENTITY.LABEL' | translate}}</span><span class="blue" *ngIf="user.entity; else noDataFound">{{user.entity.libelle}}</span></p>
+												<p><span class="label pull-left mr-2">{{'COMMON.BU.LABEL' | translate}}</span><span class="blue" *ngIf="user.bu; else noDataFound">{{user.bu.libelle}}</span></p>
+												<p><span class="label pull-left mr-2">{{'COMMON.PROFIT_CENTER.LABEL' | translate}}</span><span class="blue" *ngIf="user.profit_center; else noDataFound">{{user.profit_center.fullname}}</span></p>
+												<p><span class="label pull-left mr-2">{{'COMMON.CLIENT.LABEL' | translate}}</span><span class="blue" *ngIf="user.client; else noDataFound">{{user.client.raison_sociale}}</span></p>
+											</div>
+										</div>
+
 										<div class="box col-md-6">
 											<h6><b>{{'USERS.CARD.USER_INFOS.EMERGENCY_CASE' | translate}}</b></h6>
 											<div class="tf-divider"><span></span></div>
