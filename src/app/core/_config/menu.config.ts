@@ -86,7 +86,7 @@ export class MenuConfig {
 					moduleCode: ['MATERIEL']
 				},
 				{
-					title: 'Entreprises Externes',
+					title: 'Clients',
 					root: true,
 					alignment: 'left',
 					page: '/entreprises',
@@ -714,7 +714,7 @@ export class MenuConfig {
 						svgIcon: 'administration'
 					},
 					{
-						title: 'Entreprises externes',
+						title: 'Clients',
 						root: true,
 						alignment: 'left',
 						page: '/admin/entreprises',

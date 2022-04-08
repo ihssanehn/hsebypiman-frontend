@@ -624,7 +624,7 @@
 		"CARD": {
 			"ENTREPRISE": {
 				"NO_ENTREPRISES": "Aucune Entreprise Externe",
-				"TITLE": "Entreprises externes"
+				"TITLE": "Clients"
 			},
 			"GENERAL_INFOS": {
 				"TITLE": "Informations générales"
@@ -1544,7 +1544,7 @@
 		"DISCUSS": "Discuss",
 		"EDIT_MY_PASSWORD": "Modifier mon mot de passe",
 		"EDIT_PROFILE": "Modifier mon profil",
-		"ENTREPRISES": "Entreprises Externes",
+		"ENTREPRISES": "Clients",
 		"FLASHINFOS": "Flash Infos",
 		"GOALS": "Objectifs",
 		"HOME": "Accueil",
