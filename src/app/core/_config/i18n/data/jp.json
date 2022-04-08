@@ -1265,7 +1265,7 @@
 			"NEWACTION": "Nouvelle Action",
 			"NEWAR": "Nouvelle analyse de risque",
 			"NEWCHANTIER": "Nouveau chantier",
-			"NEWENTREPRISE": "Nouvelle entreprise",
+			"NEWENTREPRISE": "Nouveau client",
 			"NEWMATERIEL": "Nouveau matériel",
 			"NEWREMONTEE": "Nouvelle remontée QHSE",
 			"NEWVS": "Nouveau visite de sécurité"
@@ -1275,7 +1275,7 @@
 		"DISCUSS": "Discuss",
 		"EDIT_MY_PASSWORD": "Modifier mon mot de passe",
 		"EDIT_PROFILE": "Modifier mon profil",
-		"ENTREPRISES": "Entreprises Externes",
+		"ENTREPRISES": "Clients",
 		"FLASHINFOS": "Flash info",
 		"GOALS": "Goals",
 		"HOME": "Accueil",
