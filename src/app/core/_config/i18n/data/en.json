@@ -1017,6 +1017,18 @@
 		},
 		"DEFAULT_RESPONSABLE": {
 			"TITLE": "Responsible by default"
+		},
+		"PIMAN_ENTITY": {
+			"LABEL": "Piman entity"
+		},
+		"BU": {
+			"LABEL": "BU"
+		},
+		"PROFIT_CENTER": {
+			"LABEL": "Profit center"
+		},
+		"CLIENT": {
+			"LABEL": "Client"
 		}
 	},
 	"EES": {
@@ -2086,7 +2098,8 @@
 			"USER_INFOS": {
 				"TITLE": "User information",
 				"EMERGENCY_CASE": "In case of emergency",
-				"MEDICAL_VISIT": "Medical visit"
+				"MEDICAL_VISIT": "Medical visit",
+				"EMPLOYEE_INFOS": "Employee informations"
 			},
 			"USER_ACCOUNT_INFOS": {
 				"TITLE": "User Account Information"

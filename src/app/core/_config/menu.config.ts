@@ -86,13 +86,14 @@ export class MenuConfig {
 					moduleCode: ['MATERIEL']
 				},
 				{
-					title: 'Entreprises Externes',
+					title: 'Clients',
 					root: true,
 					alignment: 'left',
 					page: '/entreprises',
 					translate: 'MENU.ENTREPRISES',
 					needModule: true,
-					moduleCode: ['ENTREPRISE']
+					moduleCode: ['ENTREPRISE'],
+					permissionOnly: ['ROOT', 'ADMIN', 'MANAGER']
 				},
 				{
 					title: 'Suivi Hse',
@@ -496,7 +497,7 @@ export class MenuConfig {
 			},
 			entreprises: {
 				btnAdd: {
-					title: 'Nouvelle entreprise',
+					title: 'Nouveau client',
 					root: true,
 					alignment: 'left',
 					page: '/entreprises/add',
@@ -505,14 +506,14 @@ export class MenuConfig {
 				},
 
 				items: [
-					{
-						icon: 'dashboard',
-						title: 'Dashboards',
-						root: true,
-						alignment: 'left',
-						page: '/entreprises/dashboard',
-						translate: 'MENU.DASHBOARD',
-					},
+					// {
+					// 	icon: 'dashboard',
+					// 	title: 'Dashboards',
+					// 	root: true,
+					// 	alignment: 'left',
+					// 	page: '/entreprises/dashboard',
+					// 	translate: 'MENU.DASHBOARD',
+					// },
 					{
 						title: 'Liste',
 						root: true,
@@ -714,7 +715,7 @@ export class MenuConfig {
 						svgIcon: 'administration'
 					},
 					{
-						title: 'Entreprises externes',
+						title: 'Clients',
 						root: true,
 						alignment: 'left',
 						page: '/admin/entreprises',
