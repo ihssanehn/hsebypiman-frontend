@@ -1989,6 +1989,31 @@
 			"LABEL": "Typologie",
 			"SHORTTITLE": "Typologie",
 			"TITLE": "Typologie"
+		},
+		"EVENT_DATE": {
+			"LABEL": "Date événement",
+			"SHORTTITLE": "Date événement",
+			"TITLE": "Date événement"
+		},
+		"EVENT_PLACE": {
+			"LABEL": "Lieu événement",
+			"SHORTTITLE": "Lieu événement",
+			"TITLE": "Lieu événement"
+		},
+		"IS_VICTIMS": {
+			"LABEL": "Victimes",
+			"SHORTTITLE": "Victimes",
+			"TITLE": "Victimes"
+		},
+		"FACTS": {
+			"LABEL": "Déroulé des faits",
+			"SHORTTITLE": "Déroulé des faits",
+			"TITLE": "Déroulé des faits"
+		},
+		"ACTIONS": {
+			"LABEL": "Actions mises en place",
+			"SHORTTITLE": "Actions mises en place",
+			"TITLE": "Actions mises en place"
 		}
 	},
 	"SALARIES": {
