@@ -1987,6 +1987,31 @@
 			"LABEL": "Typology",
 			"SHORTTITLE": "Typology",
 			"TITLE": "Typology"
+		},
+		"EVENT_DATE": {
+			"LABEL": "Event date",
+			"SHORTTITLE": "Event date",
+			"TITLE": "Event date"
+		},
+		"EVENT_PLACE": {
+			"LABEL": "Event location",
+			"SHORTTITLE": "Event location",
+			"TITLE": "Event location"
+		},
+		"IS_VICTIMS": {
+			"LABEL": "Victims",
+			"SHORTTITLE": "Victims",
+			"TITLE": "Victims"
+		},
+		"FACTS": {
+			"LABEL": "Unfolding of the facts",
+			"SHORTTITLE": "Unfolding of the facts",
+			"TITLE": "Unfolding of the facts"
+		},
+		"ACTIONS": {
+			"LABEL": "Actions implemented",
+			"SHORTTITLE": "Actions implemented",
+			"TITLE": "Actions implemented"
 		}
 	},
 	"SALARIES": {

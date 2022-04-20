@@ -149,4 +149,12 @@ export class RemonteeFormComponent implements OnInit {
     }
 
   }
+
+  formHasValue(key){
+    return this.remonteeForm.get(key).value ? true:false;
+  }
+  
+  clearValue(key){
+    this.remonteeForm.get(key).patchValue(null);
+  }
 }

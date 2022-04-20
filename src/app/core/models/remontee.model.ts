@@ -12,4 +12,9 @@ export class Remontee {
     creator_id?:number;
     creator?:User;
     action?:Action;
+    event_date?: Date;
+    event_place?: string;
+    facts?: string;
+    actions?: string;
+    is_victims?: boolean;
 }
