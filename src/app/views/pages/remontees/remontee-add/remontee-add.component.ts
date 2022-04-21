@@ -89,15 +89,18 @@ export class RemonteeAddComponent implements OnInit {
       this.formStatus.onFormSubmitting();
       let formData = new FormData();
       let form = {...this.remonteeForm.getRawValue()};
-			formData = {
-				...form,
-				'event_date': this.dateFrToEnPipe.transform(form.event_date)
-			};
 			
       for (let j = 0; j < this.uploader.queue.length; j++) {
         let fileItem = this.uploader.queue[j]._file;
         formData.append('documents[]', fileItem);
       }
+
+      Object.keys(form).map(function (key) {
+        if(form[key])
+          return formData.append(key, form[key]);
+      })
+
+      formData.set('event_date', this.dateFrToEnPipe.transform(form.event_date));
 
 			this.remonteeService.create(formData)
         .toPromise()
