@@ -24,7 +24,7 @@
 					<h4>{{'REMONTEES.CARD.GENERAL_INFOS.TITLE' | translate}}</h4>
 					<div class="box">
 						<p><span class="label pull-left mr-2">{{'REMONTEES.CREATOR.TITLE' | translate}}</span><span class="">{{remontee.creator | fullName}}</span></p>
-						<p><span class="label pull-left mr-2">{{'COMMON.CREATED_AT.TITLE' | translate}}</span><span class="">{{remontee.created_at | date:'dd/MM/yyyy'}}</span></p>
+						<p><span class="label pull-left mr-2">{{'COMMON.CREATED_AT.TITLE' | translate}}</span><span class="">{{remontee.created_at ? (remontee.created_at | date:'dd/MM/yyyy') : '-'}}</span></p>
 						<p><span class="label pull-left mr-2">{{'REMONTEES.TYPE.TITLE' | translate}}</span><span class="">{{remontee.type?.libelle}}</span></p>
 						<p><span class="label pull-left mr-2">{{'REMONTEES.DESCRIPTION.TITLE' | translate}}</span><span class="">{{remontee.description}}</span></p>
 					</div>
@@ -34,22 +34,22 @@
 					<h4>{{'REMONTEES.CARD.EVENT.TITLE' | translate}}</h4>
 					<div class="box">
 						<p><span class="label pull-left mr-2">{{'REMONTEES.IS_VICTIMS.TITLE' | translate}}</span><span class="">{{remontee.is_victims == 1 ? ('COMMON.YES' | translate) : ('COMMON.NO' | translate)}}</span></p>
-						<p><span class="label pull-left mr-2">{{'REMONTEES.EVENT_DATE.TITLE' | translate}}</span><span class="">{{remontee.event_date | date:'dd/MM/yyyy'}}</span></p>
-						<p><span class="label pull-left mr-2">{{'REMONTEES.EVENT_PLACE.TITLE' | translate}}</span><span class="">{{remontee.event_place}}</span></p>
-						<p><span class="label pull-left mr-2">{{'REMONTEES.EVENT_TYPE.TITLE' | translate}}</span><span class="">{{remontee.event_type?.libelle}}</span></p>
+						<p><span class="label pull-left mr-2">{{'REMONTEES.EVENT_DATE.TITLE' | translate}}</span><span class="">{{remontee.event_date ? (remontee.event_date | date:'dd/MM/yyyy') : '-'}}</span></p>
+						<p><span class="label pull-left mr-2">{{'REMONTEES.EVENT_PLACE.TITLE' | translate}}</span><span class="">{{remontee.event_place ? remontee.event_place : '-'}}</span></p>
+						<p><span class="label pull-left mr-2">{{'REMONTEES.EVENT_TYPE.TITLE' | translate}}</span><span class="">{{remontee.event_type?.libelle ? remontee.event_type?.libelle : '-'}}</span></p>
 					</div>
 					<div class="tf-divider mb-3">
 						<span></span>
 					</div>
 					<h4>
 						{{'REMONTEES.ACTION.TITLE' | translate}}
-						<button mat-icon-button (click)="goToAction()" class="pull-right" title="{{'REMONTEES.SEE_ACTION.TITLE' | translate}}"><mat-icon color="primary">visibility</mat-icon></button>
+						<button mat-icon-button *ifAllModules="['PLANACTION']" (click)="goToAction()" class="pull-right" title="{{'REMONTEES.SEE_ACTION.TITLE' | translate}}"><mat-icon color="primary">visibility</mat-icon></button>
 					</h4>
 					<div class="box" style="flex:1">
-						<p><span class="label pull-left mr-2">{{'REMONTEES.FACTS.TITLE' | translate}}</span><span class="">{{remontee.facts}}</span></p>
-						<p><span class="label pull-left mr-2">{{'PLANACTIONS.NAME.TITLE' | translate}}</span><span class="">{{remontee.actions}}</span></p>
-						<p><span class="label pull-left mr-2">{{'PLANACTIONS.STATUS.TITLE' | translate}}</span><span class="">{{remontee.action_status}}</span></p>
-						<p><span class="label pull-left mr-2">{{'PLANACTIONS.PILOTE.TITLE' | translate}}</span><span class="">{{remontee.action?.pilote ? (remontee.action.pilote | fullName) : '-'}}</span></p>
+						<p><span class="label pull-left mr-2">{{'REMONTEES.FACTS.TITLE' | translate}}</span><span class="">{{remontee.facts? remontee.facts : '-'}}</span></p>
+						<p><span class="label pull-left mr-2">{{'PLANACTIONS.NAME.TITLE' | translate}}</span><span class="">{{remontee.actions ? remontee.actions : '-'}}</span></p>
+						<p *ifAllModules="['PLANACTION']"><span class="label pull-left mr-2">{{'PLANACTIONS.STATUS.TITLE' | translate}}</span><span class="">{{remontee.action_status ? remontee.action_status : '-'}}</span></p>
+						<p *ifAllModules="['PLANACTION']"><span class="label pull-left mr-2">{{'PLANACTIONS.PILOTE.TITLE' | translate}}</span><span class="">{{remontee.action?.pilote ? (remontee.action.pilote | fullName) : '-'}}</span></p>
 					</div>
 					<div class="tf-divider mb-3">
 						<span></span>
