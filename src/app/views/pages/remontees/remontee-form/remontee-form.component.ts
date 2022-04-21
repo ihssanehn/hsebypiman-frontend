@@ -17,14 +17,19 @@ import { drop } from 'lodash';
 export class RemonteeFormComponent implements OnInit {
 
   typesList: Type[];
+  eventTypesList: Type[];
+
   typesLoaded: boolean = false;
+  eventTypesLoaded: boolean = false;
 
   @Input() remonteeForm: FormGroup;
   @Input() formStatus: FormStatus;
   @Input() edit: Boolean;
   @Input() uploader: FileUploader;
+
   @Output() onCancel = new EventEmitter();
   @Output() onSubmit = new EventEmitter();
+
   constructor(
     private typeService:TypeService,
     private documentService:DocumentService,
@@ -34,6 +39,7 @@ export class RemonteeFormComponent implements OnInit {
 
   ngOnInit() {
     this.getTypes();
+    this.getEventTypes();
   }
 
   async getTypes(){
@@ -42,6 +48,16 @@ export class RemonteeFormComponent implements OnInit {
     if(res){
       this.typesList = res.result.data;
       this.typesLoaded = true;
+    }
+    this.cdr.markForCheck();
+  }
+
+  async getEventTypes(){
+    this.eventTypesLoaded = false;
+    var res = await this.typeService.getAllFromModel('Remonteevent').toPromise();
+    if(res){
+      this.eventTypesList = res.result.data;
+      this.eventTypesLoaded = true;
     }
     this.cdr.markForCheck();
   }

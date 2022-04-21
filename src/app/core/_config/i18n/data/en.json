@@ -1898,7 +1898,7 @@
 				"TITLE": "QHSE lift created successfully"
 			},
 			"LIFT_TYPE_ARCHIVED": {
-				"TITLE": "Type of lift successfully archived"
+				"TITLE": "Type successfully archived"
 			},
 			"ELEMENT_NOT_DELETED": {
 				"TITLE": "Unable to delete because the selection includes an element assigned to one or more lifts",
@@ -1923,6 +1923,9 @@
 			},
 			"GENERAL_INFOS": {
 				"TITLE": "General informations"
+			},
+			"EVENT": {
+				"TITLE": "Event"
 			}
 		},
 		"DASH": {
@@ -1937,7 +1940,7 @@
 			}
 		},
 		"ADD_LIFT_TYPE": {
-			"TITLE": "Add a lift typology"
+			"TITLE": "Add a new typology"
 		},
 		"ACTION": {
 			"LABEL": "Action",
@@ -2012,6 +2015,11 @@
 			"LABEL": "Actions implemented",
 			"SHORTTITLE": "Actions implemented",
 			"TITLE": "Actions implemented"
+		},
+		"EVENT_TYPE": {
+			"LABEL": "Event type",
+			"SHORTTITLE": "Event type",
+			"TITLE": "Event type"
 		}
 	},
 	"SALARIES": {
