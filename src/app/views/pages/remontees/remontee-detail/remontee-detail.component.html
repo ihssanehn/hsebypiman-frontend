@@ -26,10 +26,17 @@
 						<p><span class="label pull-left mr-2">{{'REMONTEES.CREATOR.TITLE' | translate}}</span><span class="">{{remontee.creator | fullName}}</span></p>
 						<p><span class="label pull-left mr-2">{{'COMMON.CREATED_AT.TITLE' | translate}}</span><span class="">{{remontee.created_at | date:'dd/MM/yyyy'}}</span></p>
 						<p><span class="label pull-left mr-2">{{'REMONTEES.TYPE.TITLE' | translate}}</span><span class="">{{remontee.type?.libelle}}</span></p>
+						<p><span class="label pull-left mr-2">{{'REMONTEES.DESCRIPTION.TITLE' | translate}}</span><span class="">{{remontee.description}}</span></p>
+					</div>
+					<div class="tf-divider mb-3">
+						<span></span>
+					</div>
+					<h4>{{'REMONTEES.CARD.EVENT.TITLE' | translate}}</h4>
+					<div class="box">
+						<p><span class="label pull-left mr-2">{{'REMONTEES.IS_VICTIMS.TITLE' | translate}}</span><span class="">{{remontee.is_victims == 1 ? ('COMMON.YES' | translate) : ('COMMON.NO' | translate)}}</span></p>
 						<p><span class="label pull-left mr-2">{{'REMONTEES.EVENT_DATE.TITLE' | translate}}</span><span class="">{{remontee.event_date | date:'dd/MM/yyyy'}}</span></p>
 						<p><span class="label pull-left mr-2">{{'REMONTEES.EVENT_PLACE.TITLE' | translate}}</span><span class="">{{remontee.event_place}}</span></p>
-						<p><span class="label pull-left mr-2">{{'REMONTEES.IS_VICTIMS.TITLE' | translate}}</span><span class="">{{remontee.is_victims == 1 ? ('COMMON.YES' | translate) : ('COMMON.NO' | translate)}}</span></p>
-						<p><span class="label pull-left mr-2">{{'REMONTEES.DESCRIPTION.TITLE' | translate}}</span><span class="">{{remontee.description}}</span></p>
+						<p><span class="label pull-left mr-2">{{'REMONTEES.EVENT_TYPE.TITLE' | translate}}</span><span class="">{{remontee.event_type?.libelle}}</span></p>
 					</div>
 					<div class="tf-divider mb-3">
 						<span></span>

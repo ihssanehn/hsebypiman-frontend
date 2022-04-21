@@ -14,6 +14,7 @@ export class Remontee {
     action?:Action;
     event_date?: Date;
     event_place?: string;
+    event_type?: Type;
     facts?: string;
     actions?: string;
     is_victims?: boolean;

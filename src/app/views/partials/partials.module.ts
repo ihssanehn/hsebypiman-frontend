@@ -107,6 +107,7 @@ import {
 	VisiteQuestionsEpiAdminComponent,
 	VisiteQuestionsChantierAdminComponent,
 	SalarieFonctionsAdminComponent,
+	RemonteeEventTypesAdminComponent,
 } from './layout';
 // General
 import { NoticeComponent } from './content/general/notice/notice.component';
@@ -259,6 +260,7 @@ import { PdpDefaultValuesComponent } from './layout/admins/pdp-default-values/pd
 		SalarieAdminListPortletComponent,
 		EntrepriseTypesAdminComponent,
 		RemonteeTypesAdminComponent,
+		RemonteeEventTypesAdminComponent,
 		MaterielEtatsAdminComponent,
 		MaterielTypesAdminComponent,
 		MaterielTypesAdminPortletComponent,
@@ -376,6 +378,7 @@ import { PdpDefaultValuesComponent } from './layout/admins/pdp-default-values/pd
 		SalarieAdminListPortletComponent,
 		EntrepriseTypesAdminComponent,
 		RemonteeTypesAdminComponent,
+		RemonteeEventTypesAdminComponent,
 		MaterielEtatsAdminComponent,
 		MaterielTypesAdminComponent,
 		MaterielTypesAdminPortletComponent,

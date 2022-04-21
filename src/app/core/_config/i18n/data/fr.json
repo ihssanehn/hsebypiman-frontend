@@ -1900,7 +1900,7 @@
 				"TITLE": "Remontée QHSE créée avec succès"
 			},
 			"LIFT_TYPE_ARCHIVED": {
-				"TITLE": "Typologie de remontée archivée avec succès"
+				"TITLE": "Typologie archivée avec succès"
 			},
 			"ELEMENT_NOT_DELETED": {
 				"TITLE": "Suppression impossible car la selection comprend un élément affecté à une ou plusieurs remontées",
@@ -1925,6 +1925,9 @@
 			},
 			"GENERAL_INFOS": {
 				"TITLE": "Informations générales"
+			},
+			"EVENT": {
+				"TITLE": "Évènement"
 			}
 		},
 		"DASH": {
@@ -1939,7 +1942,7 @@
 			}
 		},
 		"ADD_LIFT_TYPE": {
-			"TITLE": "Ajouter une typologie de remontée"
+			"TITLE": "Ajouter une nouvelle typologie"
 		},
 		"ACTION": {
 			"LABEL": "Action",
@@ -1991,14 +1994,14 @@
 			"TITLE": "Typologie"
 		},
 		"EVENT_DATE": {
-			"LABEL": "Date événement",
-			"SHORTTITLE": "Date événement",
-			"TITLE": "Date événement"
+			"LABEL": "Date de l'évènement",
+			"SHORTTITLE": "Date de l'évènement",
+			"TITLE": "Date de l'évènement"
 		},
 		"EVENT_PLACE": {
-			"LABEL": "Lieu événement",
-			"SHORTTITLE": "Lieu événement",
-			"TITLE": "Lieu événement"
+			"LABEL": "Lieu de l'évènement",
+			"SHORTTITLE": "Lieu de l'évènement",
+			"TITLE": "Lieu de l'évènement"
 		},
 		"IS_VICTIMS": {
 			"LABEL": "Victimes",
@@ -2014,6 +2017,11 @@
 			"LABEL": "Actions mises en place",
 			"SHORTTITLE": "Actions mises en place",
 			"TITLE": "Actions mises en place"
+		},
+		"EVENT_TYPE": {
+			"LABEL": "Type de l'évènement",
+			"SHORTTITLE": "Types de l'évènement",
+			"TITLE": "Type de l'évènement"
 		}
 	},
 	"SALARIES": {

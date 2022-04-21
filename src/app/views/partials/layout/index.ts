@@ -101,6 +101,7 @@ export { VisiteQuestionsEpiAdminComponent } from './admins/visite-questions-epi-
 export { VisiteQuestionsChantierAdminComponent } from './admins/visite-questions-chantier-admin/visite-questions-chantier-admin.component';
 export { SalarieFonctionsAdminComponent } from './admins/salarie-fonctions-admin/salarie-fonctions-admin.component';
 export { LastRemonteesComponent } from './remontees/last-remontees/last-remontees.component';
+export { RemonteeEventTypesAdminComponent } from './admins/remontee-event-types-admin/remontee-event-types-admin.component';
 
 export { DashAnalyseRisqueComponent } from './dashboard/dash-analyse-risque/dash-analyse-risque.component';
 export { DashChantierComponent } from './dashboard/dash-chantier/dash-chantier.component';
