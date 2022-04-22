@@ -1,0 +1,117 @@
+<!--begin::Body-->
+<div class="tf-login__body">
+	<!--begin::Signin-->
+	<div class="tf-login__form">
+		<div class="tf-login__title">
+            <h3 innerHtml="{{'AUTH.REQUEST_ACCESS.TITLE' | translate}}"></h3>
+		</div>
+
+		<tf-auth-notice></tf-auth-notice>
+
+		<form class="tf-form" [formGroup]="signupForm" autocomplete="off">
+            <div class="tf-form-block">
+                <p>{{ 'AUTH.REQUEST_ACCESS.DESC' | translate }}</p>
+
+                <!-- Lastname -->
+                <div class="form-group">
+                    <mat-form-field>
+                        <mat-label>{{ 'COMMON.LASTNAME.LABEL' | translate }}</mat-label>
+                        <input matInput class="form-control" type="text" placeholder="{{ 'COMMON.LASTNAME.LABEL' | translate }}" formControlName="lastname" autocomplete="off" [required]="isFieldRequired('lastname')"/>
+                        <mat-error *ngIf="isControlHasError('lastname','required')">
+                            <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="tf-login__divider">
+					<div class="tf-divider">
+						<span></span>
+					</div>
+				</div>
+
+                <!-- Firstname -->
+                <div class="form-group">
+                    <mat-form-field>
+                        <mat-label>{{ 'COMMON.FIRSTNAME.LABEL' | translate }}</mat-label>
+                        <input matInput class="form-control" type="text" placeholder="{{ 'COMMON.FIRSTNAME.LABEL' | translate }}" formControlName="firstname" autocomplete="off" [required]="isFieldRequired('firstname')"/>
+                        <mat-error *ngIf="isControlHasError('firstname','required')">
+                            <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="tf-login__divider">
+					<div class="tf-divider">
+						<span></span>
+					</div>
+				</div>
+
+                <!-- Email -->
+                <div class="form-group">
+                    <mat-form-field>
+                        <mat-label>{{ 'AUTH.INPUT.EMAIL' | translate }}</mat-label>
+                        <input matInput class="form-control" type="email" placeholder="{{ 'AUTH.INPUT.EMAIL' | translate }}" formControlName="email" autocomplete="off" [required]="isFieldRequired('email')"/>
+                        <mat-error *ngIf="isControlHasError('email','required')">
+                            <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                        </mat-error>
+                        <mat-error *ngIf="isControlHasError('email','email')">
+                            <strong>{{ 'AUTH.VALIDATION.INVALID_FIELD' | translate }}</strong>
+                        </mat-error>
+                        <mat-error *ngIf="isControlHasError('email','minLength')">
+                            <strong>{{ 'AUTH.VALIDATION.MIN_LENGTH_FIELD' | translate }} 3</strong>
+                        </mat-error>
+                        <mat-error *ngIf="isControlHasError('email','maxLength')">
+                            <strong>{{ 'AUTH.VALIDATION.MAX_LENGTH_FIELD' | translate }} 320</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="tf-login__divider">
+					<div class="tf-divider">
+						<span></span>
+					</div>
+				</div>
+
+                <!-- Entity_id -->
+                <div class="form-group">
+                    <mat-form-field>
+                        <mat-label>{{ 'COMMON.PIMAN_ENTITY.LABEL' | translate }}</mat-label>
+						<mat-select class="form-control" placeholder="{{ 'COMMON.PIMAN_ENTITY.LABEL' | translate }}" formControlName="entity_id" [required]="isFieldRequired('entity_id')">
+							<mat-option *ngFor="let entity of entities" [value]="entity.id">
+								{{ entity.libelle }}
+							</mat-option>
+						</mat-select>
+						<mat-error *ngIf="isControlHasError('entity_id','required')">
+							<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+						</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="tf-login__divider">
+					<div class="tf-divider">
+						<span></span>
+					</div>
+				</div>
+
+                <!-- Bu -->
+                <div class="form-group">
+                    <mat-form-field>
+                        <mat-label>{{ 'COMMON.BU.LABEL' | translate }}</mat-label>
+						<mat-select class="form-control" placeholder="{{ 'COMMON.BU.LABEL' | translate }}" formControlName="bu_id" [required]="isFieldRequired('bu_id')">
+							<mat-option *ngFor="let bu of buList" [value]="bu.id">
+								{{ bu.libelle }}
+							</mat-option>
+						</mat-select>
+						<mat-error *ngIf="isControlHasError('bu_id','required')">
+							<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+						</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+			<!--begin::Action-->
+			<div class="tf-login__actions">
+				<button routerLink="/auth/login" [disabled]="loading" id="tf_login_signup_cancel" class="btn btn-secondary btn-elevate tf-login__btn-secondary">{{ 'AUTH.GENERAL.BACK_BUTTON' | translate }}</button>
+				<button (click)="submit()" id="tf_login_signin_submit" class="btn btn-primary btn-elevate tf-login__btn-primary" [ngClass]="{'tf-spinner tf-spinner--right tf-spinner--md tf-spinner--light': loading}">{{ 'AUTH.GENERAL.SUBMIT_BUTTON' | translate }}</button>
+			</div>
+			<!--end::Action-->
+		</form>
+	</div>
+</div>
+
