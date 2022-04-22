@@ -419,7 +419,7 @@ $tf-aside-config: (
 							// link icon
 							icon: (
 								font-color:	(
-									default: #004fc2,
+									default: $color-default,
 									open: tf-brand-color(),
 									expanded: tf-brand-color(),
 									active: #33b5ae,
@@ -431,7 +431,7 @@ $tf-aside-config: (
 							bullet:	(
 								dot: (
 									bg-color: (
-										default: #004fc2,
+										default: $color-default,
 										open: tf-brand-color(),
 										expanded: tf-brand-color(),
 										active: #33b5ae,
@@ -440,7 +440,7 @@ $tf-aside-config: (
 								),
 								line: (
 									bg-color: (
-										default: #004fc2,
+										default: $color-default,
 										open: tf-brand-color(),
 										expanded: tf-brand-color(),
 										active: #33b5ae,

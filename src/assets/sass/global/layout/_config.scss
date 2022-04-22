@@ -11,7 +11,7 @@
 $tf-state-colors: (
     // CVTI - HSE states
     brand: (
-        base: #5d78ff,
+        base: $color-default,
         inverse: #ffffff
     ),
     light: (
@@ -26,7 +26,7 @@ $tf-state-colors: (
     // Bootstrap states
     primary: (
         // base: #5867dd,
-        base: #004FC2,
+        base: #308677,
         inverse: #ffffff
     ),
     success: (

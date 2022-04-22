@@ -22,7 +22,7 @@ export class DateFrToEnPipe implements PipeTransform {
 			return null
 		}
 
-		return moment(value, ['D/M/YYYY', 'DD/MM/YYYY']).format('YYYY-MM-DD') ;
+		return moment(value).format('YYYY-MM-DD') ;
 	}
 }
 /**
@@ -44,6 +44,6 @@ export class DateEnToFrPipe implements PipeTransform {
 			return null
 		}
 		
-		return moment(value, 'YYYY-MM-DD').format('DD/MM/YYYY');
+		return moment(value).format('DD/MM/YYYY');
 	}
 }

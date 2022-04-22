@@ -1898,7 +1898,7 @@
 				"TITLE": "QHSE lift created successfully"
 			},
 			"LIFT_TYPE_ARCHIVED": {
-				"TITLE": "Type of lift successfully archived"
+				"TITLE": "Type successfully archived"
 			},
 			"ELEMENT_NOT_DELETED": {
 				"TITLE": "Unable to delete because the selection includes an element assigned to one or more lifts",
@@ -1923,6 +1923,9 @@
 			},
 			"GENERAL_INFOS": {
 				"TITLE": "General informations"
+			},
+			"EVENT": {
+				"TITLE": "Event"
 			}
 		},
 		"DASH": {
@@ -1937,7 +1940,7 @@
 			}
 		},
 		"ADD_LIFT_TYPE": {
-			"TITLE": "Add a lift typology"
+			"TITLE": "Add a new typology"
 		},
 		"ACTION": {
 			"LABEL": "Action",
@@ -1987,6 +1990,36 @@
 			"LABEL": "Typology",
 			"SHORTTITLE": "Typology",
 			"TITLE": "Typology"
+		},
+		"EVENT_DATE": {
+			"LABEL": "Event date",
+			"SHORTTITLE": "Event date",
+			"TITLE": "Event date"
+		},
+		"EVENT_PLACE": {
+			"LABEL": "Event location",
+			"SHORTTITLE": "Event location",
+			"TITLE": "Event location"
+		},
+		"IS_VICTIMS": {
+			"LABEL": "Victims",
+			"SHORTTITLE": "Victims",
+			"TITLE": "Victims"
+		},
+		"FACTS": {
+			"LABEL": "Unfolding of the facts",
+			"SHORTTITLE": "Unfolding of the facts",
+			"TITLE": "Unfolding of the facts"
+		},
+		"ACTIONS": {
+			"LABEL": "Actions implemented",
+			"SHORTTITLE": "Actions implemented",
+			"TITLE": "Actions implemented"
+		},
+		"EVENT_TYPE": {
+			"LABEL": "Event type",
+			"SHORTTITLE": "Event type",
+			"TITLE": "Event type"
 		}
 	},
 	"SALARIES": {

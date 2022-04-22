@@ -1,3 +1,5 @@
+@import "../../../../../assets/sass/config";
+
 :host::ng-deep {
     .block-header-filters{
         display: flex;
@@ -7,7 +9,7 @@
         border-radius: 4px;
     }
     .search-input-group{
-        background-color: #022a88;
+        background-color: $bg-color-default;
         border-radius: 10px;
         .input-group-text, .form-control{
             background: transparent;
