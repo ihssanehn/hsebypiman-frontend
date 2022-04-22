@@ -26,6 +26,14 @@ $tf-media-breakpoints: (
     xl: 1399px
 ) !default;
 
+// Global colors
+$color-default: #2f8274;
+$bg-color-default: #133630;
+$bg-color-base: #399d8c;
+$bg-color-base-lighten: #41b4a1;
+$bg-color-base-darken: #308677;
+$bg-color-hover: #b8ebe3;
+
 // Global rounded border mode
 $tf-rounded: true !default;
 
@@ -75,7 +83,7 @@ $tf-dropdown-zindex: 95 !default;
 $tf-state-colors: (
     // CVTI - HSE states
     brand: (
-        base: #5d78ff,
+        base: $color-default,
         inverse: #ffffff
     ),
     light: (
@@ -90,7 +98,7 @@ $tf-state-colors: (
     // Bootstrap states
     primary: (
         // base: #5867dd,
-        base: #004FC2,
+        base: #308677,
         inverse: #ffffff
     ),
     success: (
@@ -239,3 +247,5 @@ $tf-page-container-width: 1380px !default;
 
 // Custom Scroll(Perfect Scrollbar) size
 $tf-custom-scroll-size: 4px !default;
+
+

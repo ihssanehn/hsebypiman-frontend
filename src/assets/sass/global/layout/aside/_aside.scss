@@ -29,7 +29,7 @@ $tf-aside-mobile-icon-size: 34px;
 		border-radius: 10px;
 		border: 0;
 		box-shadow: 20px 23px 54px 0 rgba(0, 0, 0, 0.16);
-		background-image: linear-gradient(to right, #079dde -40%, #35c1c9 38%, #61e3b6 111%);
+		background-image: linear-gradient(to right, $bg-color-base-darken -40%, $bg-color-base 38%, $bg-color-base-lighten 111%);
 		span{
 			font-weight: bold;
 		}

@@ -16,6 +16,7 @@ import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
 import {FormStatus} from '@app/core/_base/crud/models/form-status';
 import {FileUploader} from "ng2-file-upload";
 import { TranslateService } from '@ngx-translate/core';
+import { DateEnToFrPipe, DateFrToEnPipe } from '@app/core/_base/layout';
 
 
 @Component({
@@ -59,7 +60,9 @@ export class RemonteeEditComponent implements OnInit, OnDestroy {
 		private permissionsService: NgxPermissionsService,
 		private location: Location,
 		private subheaderService:SubheaderService,
-		private translate:TranslateService
+		private translate:TranslateService,
+		private dateFrToEnPipe:DateFrToEnPipe,
+    	private dateEnToFrPipe:DateEnToFrPipe
 	) {	}
 	
 	ngOnInit() {
@@ -116,6 +119,12 @@ export class RemonteeEditComponent implements OnInit, OnDestroy {
 			id: [null, Validators.required],
 			description: ['', Validators.required],
 			type_id: [null, Validators.required],
+			event_date: [new Date(), null],
+			event_place: ['', null],
+			event_type_id: [null, null],
+			facts: ['', null],
+			is_victims: [0, null],
+			actions: ['', null],
 			documentsToUpload: [null, null],
 			documents: new FormArray([]),
 		});
@@ -141,19 +150,23 @@ export class RemonteeEditComponent implements OnInit, OnDestroy {
 
 	async onSubmit(event) {
 		try {
+
 			this.formloading = true;
 			this.formStatus.onFormSubmitting();
 			let formData = new FormData();
-			let form = {...this.remonteeForm.getRawValue()};
+			let form = {...this.remonteeForm.getRawValue()}
 			
-      for (let j = 0; j < this.uploader.queue.length; j++) {
-        let fileItem = this.uploader.queue[j]._file;
-        formData.append('documents[]', fileItem);
-      }
+			for (let j = 0; j < this.uploader.queue.length; j++) {
+				let fileItem = this.uploader.queue[j]._file;
+				formData.append('documents[]', fileItem);
+			}
 
-      formData.append('type_id', this.remonteeForm.get('type_id').value);
-      formData.append('description', this.remonteeForm.get('description').value);
-			
+			Object.keys(form).map(function (key) {
+				if(form[key] && key != "documents")
+				  return formData.append(key, form[key]);
+			  })
+		
+			formData.set('event_date', this.dateFrToEnPipe.transform(form.event_date));
 			
 			this.remonteeService.update(this.remontee.id, formData)
 				.toPromise()

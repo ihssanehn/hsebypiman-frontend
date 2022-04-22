@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
 import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
 import {FormStatus} from '@app/core/_base/crud/models/form-status';
 import {FileUploader} from "ng2-file-upload";
+import { DateEnToFrPipe, DateFrToEnPipe } from '@app/core/_base/layout';
 
 @Component({
   selector: 'tf-remontee-add',
@@ -51,6 +52,8 @@ export class RemonteeAddComponent implements OnInit {
 		private permissionsService : NgxPermissionsService,
     private translate:TranslateService,
     public snackBar: MatSnackBar,
+    private dateFrToEnPipe:DateFrToEnPipe,
+    private dateEnToFrPipe:DateEnToFrPipe
   ) { }
 
   ngOnInit() {
@@ -63,6 +66,12 @@ export class RemonteeAddComponent implements OnInit {
 		this.remonteeForm = this.remonteFB.group({
       description: ['', Validators.required],
       type_id: [null, Validators.required],
+      event_date: [new Date(), null],
+      event_place: ['', null],
+      event_type_id: [null, null],
+      facts: ['', null],
+      is_victims: [0, null],
+      actions: ['', null],
       documentsToUpload: [null, null],
     });
 		this.loaded = true;
@@ -77,18 +86,22 @@ export class RemonteeAddComponent implements OnInit {
     try {
       let result;
       this.formloading = true;
+      this.formStatus.onFormSubmitting();
       let formData = new FormData();
       let form = {...this.remonteeForm.getRawValue()};
-      this.formStatus.onFormSubmitting();
-
+			
       for (let j = 0; j < this.uploader.queue.length; j++) {
         let fileItem = this.uploader.queue[j]._file;
         formData.append('documents[]', fileItem);
       }
 
-      formData.append('type_id', this.remonteeForm.get('type_id').value);
-      formData.append('description', this.remonteeForm.get('description').value);
-      
+      Object.keys(form).map(function (key) {
+        if(form[key])
+          return formData.append(key, form[key]);
+      })
+
+      formData.set('event_date', this.dateFrToEnPipe.transform(form.event_date));
+
 			this.remonteeService.create(formData)
         .toPromise()
         .then((res) => {
