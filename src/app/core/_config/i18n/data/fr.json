@@ -1872,6 +1872,8 @@
 		}
 	},
 	"REMONTEES": {
+		"APPROVE": "Approuver",
+		"REJECT": "Rejeter",
 		"NOTIF": {
 			"LOADING": {
 				"TITLE": "Loading Remonte"

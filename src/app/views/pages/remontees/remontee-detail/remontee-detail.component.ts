@@ -1,20 +1,14 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
-import { BehaviorSubject, Observable, of, Subscription } from "rxjs";
-
+import { Subscription } from "rxjs";
+import { Location } from '@angular/common';
 import { RemonteeService, DocumentService, ModuleService } from '@app/core/services';
-import { Paginate } from '@app/core/_base/layout/models/paginate.model';
 import { Remontee } from '@app/core/models';
-import { NgxPermissionsService } from 'ngx-permissions';
-
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import Swal from 'sweetalert2';
 import { MatDialog } from '@angular/material';
 import { ShowDocumentModalComponent } from '@app/views/partials/layout/modal/show-document-modal/show-document-modal.component';
-import { ThrowStmt } from '@angular/compiler';
-import { User, AuthService } from '@app/core/auth';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
 import { ImageLightboxContentDialogComponent } from '@app/views/partials/layout/modal/image-lightbox-content-dialog/image-lightbox-content-dialog.component';
@@ -45,13 +39,12 @@ export class RemonteeDetailComponent implements OnInit, OnDestroy {
 	constructor(
 		private activatedRoute: ActivatedRoute,
 		private router: Router,
-		// private notificationService: NzNotificationService,
-    	public dialog: MatDialog,
+		public dialog: MatDialog,
 		private remonteeService: RemonteeService,
 		private documentService: DocumentService,
 		private moduleService: ModuleService,
-		private authService: AuthService,
-    	private modalService: NgbModal,
+		private location: Location,
+		private modalService: NgbModal,
 		private cdr: ChangeDetectorRef,
 		iconRegistry: MatIconRegistry, 
 		sanitizer: DomSanitizer,
@@ -122,7 +115,7 @@ export class RemonteeDetailComponent implements OnInit, OnDestroy {
 		this.router.navigateByUrl(url, { relativeTo: this.activatedRoute });
 	}
 
-  	editRemonte(id){
+	editRemonte(id){
 		this.router.navigateByUrl('remontees/edit/'+id);
 	}
 	deleteRemonte(remonteId) {
@@ -209,4 +202,61 @@ export class RemonteeDetailComponent implements OnInit, OnDestroy {
       data: { images : photos, selectedImgIndex: index}
     });
   }
+
+	denyRemontee(){
+		Swal.fire({
+			icon: 'warning',
+			title: this.translate.instant("REMONTEES.NOTIF.REMONTEE_DELETE_CONFIRMATION.TITLE"),
+			text: this.translate.instant("REMONTEES.NOTIF.REMONTEE_DELETE_CONFIRMATION.LABEL"),
+			showConfirmButton: true,
+			showCancelButton: true,
+			cancelButtonText: this.translate.instant("ACTION.CANCEL"),
+			confirmButtonText: this.translate.instant("ACTION.DELETE")
+		}).then(async response => {
+			if (response.value) {
+				try {
+					const res = await this.remonteeService.delete(this.remontee.id).toPromise();
+					if (res) {
+						Swal.fire({
+							icon: 'success',
+							title: this.translate.instant("REMONTEES.NOTIF.REMONTEE_DELETED.TITLE"),
+							showConfirmButton: false,
+							timer: 1500
+						}).then(() => {
+							this.location.back()
+						});
+					} else {
+						throw new Error();
+					}
+				} catch (e) {
+					Swal.fire({
+						icon: 'error',
+						title: this.translate.instant("NOTIF.ERROR_OCCURED.TITLE"),
+						showConfirmButton: false,
+						timer: 1500
+					});
+				}
+			}
+		});
+	}
+	approveRemontee(){
+		var _remontee = {
+			id:this.remontee.id,
+			is_approved: true
+		};
+
+		this.remonteeService.update(_remontee.id, _remontee).toPromise().then(res=>{
+			this.remontee.is_approved = res.result.data.is_approved
+			Swal.fire({
+				icon: 'success',
+				title: this.translate.instant("REMONTEES.NOTIF.LIFT_UPDATED.TITLE"),
+				showConfirmButton: false,
+				timer: 1500
+			}).then(() => {
+				this.cdr.markForCheck();
+			});
+		}).catch(err=>{
+			console.log(err)
+		})
+	}
 }

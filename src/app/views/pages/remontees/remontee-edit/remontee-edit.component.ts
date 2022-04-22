@@ -1,16 +1,11 @@
 import { Component,OnInit,OnDestroy,ChangeDetectorRef } from '@angular/core';
 import { Router,ActivatedRoute } from '@angular/router';
 import { FormBuilder,FormGroup,Validators,FormControl, FormArray } from "@angular/forms";
-import { BehaviorSubject,Observable,of ,Subscription } from "rxjs";
-import { finalize, takeUntil, tap } from 'rxjs/operators';
-
+import { Subscription } from "rxjs";
+import { tap } from 'rxjs/operators';
 import { Location } from '@angular/common';
-import { RemonteeService,TypeService } from '@app/core/services';
-import { Paginate } from '@app/core/_base/layout/models/paginate.model';
+import { RemonteeService } from '@app/core/services';
 import { Remontee } from '@app/core/models';
-import { NgxPermissionsService } from 'ngx-permissions';
-import { SubheaderService } from '@app/core/_base/layout/services/subheader.service';
-import moment from 'moment';
 import Swal from 'sweetalert2';
 import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
 import {FormStatus} from '@app/core/_base/crud/models/form-status';
@@ -54,20 +49,16 @@ export class RemonteeEditComponent implements OnInit, OnDestroy {
 		private activatedRoute: ActivatedRoute,
 		private router: Router,
 		private remonteFB: FormBuilder,
-		// private notificationService: NzNotificationService,
 		private remonteeService: RemonteeService,
 		private cdr: ChangeDetectorRef,
-		private permissionsService: NgxPermissionsService,
 		private location: Location,
-		private subheaderService:SubheaderService,
 		private translate:TranslateService,
 		private dateFrToEnPipe:DateFrToEnPipe,
-    	private dateEnToFrPipe:DateEnToFrPipe
 	) {	}
 	
 	ngOnInit() {
 		this.createForm();
-    	this.setDynamicValidators();
+		this.setDynamicValidators();
 		const routeSubscription = this.activatedRoute.params.subscribe(
 			async params => {
 				const id = params.id;
