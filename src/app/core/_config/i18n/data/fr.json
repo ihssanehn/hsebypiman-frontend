@@ -571,6 +571,12 @@
 			"SUCCESS": "Your account has been successfuly registered.",
 			"TITLE": "Créer un compte"
 		},
+		"REQUEST_ACCESS": {
+			"DESC": "Entrez vos coordonnées pour créer votre compte",
+			"SUCCESS": "Votre demande a bien été enregistrée.",
+			"TITLE": "Demander un <b>accès</b>",
+			"LABEL": "Demander un accès"
+		},
 		"VALIDATION": {
 			"AGREEMENT_REQUIRED": "Vous devez accepter les termes et conditions",
 			"INVALID": "{{name}} n'est pas valide",
