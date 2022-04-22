@@ -1870,6 +1870,8 @@
 		}
 	},
 	"REMONTEES": {
+		"APPROVE": "Approve",
+		"REJECT": "Reject",
 		"NOTIF": {
 			"LOADING": {
 				"TITLE": "Loading Lifts"
