@@ -1,3 +1,6 @@
+@import "../../../../assets/sass/config";
+
+
 :host {
 	::ng-deep {
 		.tf-loading-bar {
@@ -8,7 +11,7 @@
 			width: 100%;
 
 			.progress-bar {
-				background-color: #2f8274;
+				background-color: $color-default;
 			}
 		}
 
