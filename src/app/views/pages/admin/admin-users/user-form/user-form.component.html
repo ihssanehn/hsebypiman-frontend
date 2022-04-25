@@ -134,7 +134,7 @@
 
 					<mat-form-field class="col-xl-3">
 						<mat-label>{{'SALARIES.ENTRY_AT.LABEL' | translate}}</mat-label>
-						<input matInput class="form-control" type="text" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" name="date_entree" formControlName="date_entree" [required]="isFieldRequired('date_entree')" placeholder="DD/MM/YYYY" />
+						<input matInput class="form-control" type="text" mask="d0/M0/0000" [dropSpecialCharacters]="false" [specialCharacters]="[ '/' ]" name="date_entree" formControlName="date_entree" [required]="isFieldRequired('date_entree')" placeholder="DD/MM/YYYY" />
 						<mat-error *ngIf="isControlHasError('date_entree','required')">
 							<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 						</mat-error>
