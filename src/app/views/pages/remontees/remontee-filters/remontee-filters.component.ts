@@ -26,6 +26,16 @@ export class RemonteeFiltersComponent implements OnInit, AfterViewInit
   data: boolean = false;
   users: User[];
   types: Type[];
+  publication_states = [
+    {
+      libelle: "En attente d'approbation",
+      value: 0
+    },
+    {
+      libelle: "Publiée",
+      value: 1
+    }
+  ]
 
   @Output() change = new EventEmitter();
   constructor(
@@ -69,6 +79,7 @@ export class RemonteeFiltersComponent implements OnInit, AfterViewInit
     this.filterForm = this.fb.group({
       type_id:[null],
       creator_id:[null],
+      publication_state:[null],
       date_creation_start:[null],
       date_creation_end:[null],
     })

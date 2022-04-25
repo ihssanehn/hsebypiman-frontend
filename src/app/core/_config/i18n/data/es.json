@@ -1671,6 +1671,11 @@
 			"SHORTTITLE": "Status",
 			"TITLE": "Action status"
 		},
+		"PUBLICATION_STATUS": {
+			"LABEL": "Publish status",
+			"SHORTTITLE": "Statut",
+			"TITLE": "Publish"
+		},
 		"CREATED_AT": {
 			"LABEL": "Date de la remontée",
 			"SHORTTITLE": "Date",

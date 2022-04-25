@@ -52,8 +52,20 @@
 									<mat-icon>clear</mat-icon>
 								</button> -->
 						</mat-form-field>
+						
 					</div>
-					
+					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
+						<mat-label>{{'REMONTEES.PUBLICATION_STATUS.LABEL' | translate}}</mat-label>
+						<mat-select class="form-control" formControlName="publication_state" name="publication_state">
+							<mat-option>{{'FILTER.SEARCH_ALL' | translate}}</mat-option>
+							<mat-option *ngFor="let publication of publication_states" [value]="publication.value">
+								{{publication.libelle}}
+							</mat-option>
+						</mat-select>
+						<button mat-button *ngIf="formHasValue('publication_state')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('publication_state'); $event.stopPropagation()">
+							<mat-icon>clear</mat-icon>
+						</button>
+					</mat-form-field>
 				</div>
 			</form>
 		</tf-portlet-body>

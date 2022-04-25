@@ -1872,6 +1872,8 @@
 		}
 	},
 	"REMONTEES": {
+		"APPROVE": "Approuver",
+		"REJECT": "Rejeter",
 		"NOTIF": {
 			"LOADING": {
 				"TITLE": "Loading Remonte"
@@ -1953,6 +1955,11 @@
 			"LABEL": "Statut de l'action",
 			"SHORTTITLE": "Statut",
 			"TITLE": "Action statut"
+		},
+		"PUBLICATION_STATUS": {
+			"LABEL": "Statut de la publication",
+			"SHORTTITLE": "Statut",
+			"TITLE": "Publication"
 		},
 		"CREATED_AT": {
 			"LABEL": "Date de la remontée",
