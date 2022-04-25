@@ -85,7 +85,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
       date_naissance: [{value:'', disabled:false}, [Validators]],
       email: [{value:'', disabled:false}, Validators.required],
       telephone: [{value:'', disabled:false}, [Validators]],
-      date_entree: [{value:'', disabled:false}, Validators.required],
+      date_entree: [{value:'', disabled:false}, [Validators]],
       date_sortie: [{value:'', disabled:false}, [Validators]],
       role_id: [{value:'', disabled:false}, [Validators]],
       fonction_id: [{value:'', disabled:false}, [Validators]],
@@ -132,7 +132,6 @@ export class UserEditComponent implements OnInit, OnDestroy {
         date_visite_medicale_next.disable();
       }else{
         date_naissance.enable();
-        date_naissance.setValidators([Validators.required]);
         date_entree.enable();
         date_sortie.enable();
         fonction_id.enable();
