@@ -1956,6 +1956,11 @@
 			"SHORTTITLE": "Statut",
 			"TITLE": "Action statut"
 		},
+		"PUBLICATION_STATUS": {
+			"LABEL": "Statut de la publication",
+			"SHORTTITLE": "Statut",
+			"TITLE": "Publication"
+		},
 		"CREATED_AT": {
 			"LABEL": "Date de la remontée",
 			"SHORTTITLE": "Date",
