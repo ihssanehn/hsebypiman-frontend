@@ -77,7 +77,7 @@
 
 		    .alert-text {
 		        color: tf-get($tf-state-colors, $name, inverse);
-
+                font-weight: 600;
 		        hr {
 				    border-top-color: tf-get($tf-state-colors, $name, inverse);
 				    opacity: 0.4;

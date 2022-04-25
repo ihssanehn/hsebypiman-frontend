@@ -53,6 +53,10 @@ export class UserService extends HttpService{
     return this.http.put<JsonResponse<User>>(`${this.baseUrl}/`+_user.id+'/update-pass', _user)
   }
 
+  updateAccess(_user: User){
+		return this.http.put<any>(`${this.baseUrl}/` + _user.id+'/update-access', _user);
+	}
+
 
 
 

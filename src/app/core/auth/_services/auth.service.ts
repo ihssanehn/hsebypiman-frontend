@@ -46,6 +46,12 @@ export class AuthService extends HttpService {
 		return this.http.post<JsonResponse<User>>(`${this.baseUrl}auth/login`, {email,password});
 	}
 
+	signup(item) {
+		const httpHeaders = new HttpHeaders();
+		httpHeaders.set("Content-Type", "multipart/form-data");
+		return this.http.post<JsonResponse<User>>(`${this.baseUrl}auth/signup`, item, { headers: httpHeaders });
+	}
+
 	reloadUser(){
 			return this.http.get<JsonResponse<User>>(`${this.baseUrl}auth/user`)
 			.pipe(
