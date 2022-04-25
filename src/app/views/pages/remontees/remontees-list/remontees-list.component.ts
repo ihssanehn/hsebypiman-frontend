@@ -33,7 +33,7 @@ export class RemonteesListComponent implements OnInit, AfterViewInit {
 	};
 	showFilters:Boolean = false;
 	displayedRemonteColumns = [
-		'creator','description','type','created_at','documents_count','action_status','action'
+		'creator','description','type','created_at','documents_count','publication_status','action'
 	];
 
 	constructor(
