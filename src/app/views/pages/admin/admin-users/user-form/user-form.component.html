@@ -114,7 +114,7 @@
 				<div class="row form-row mx-5">
 					<mat-form-field class="col-xl-3">
 						<mat-label>{{'COMMON.BIRTHDAY.LABEL' | translate}}</mat-label>
-						<input class="form-control" matInput mask="d0/M0/0000" [specialCharacters]="[ '/' ]" type="text" name="date_naissance" formControlName="date_naissance" [required]="isFieldRequired('date_naissance')" placeholder="DD/MM/YYYY" />
+						<input class="form-control" matInput mask="d0/M0/0000" [dropSpecialCharacters]="false" [specialCharacters]="[ '/' ]" type="text" name="date_naissance" formControlName="date_naissance" [required]="isFieldRequired('date_naissance')" placeholder="DD/MM/YYYY" />
 						<mat-error *ngIf="isControlHasError('date_naissance','required')">
 							<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 						</mat-error>
@@ -142,7 +142,7 @@
 
 					<mat-form-field class="col-xl-3">
 						<mat-label>{{'SALARIES.EXIT_AT.LABEL' | translate}}</mat-label>
-						<input matInput class="form-control" type="text" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" name="date_sortie" formControlName="date_sortie" [required]="isFieldRequired('date_sortie')" placeholder="DD/MM/YYYY" />
+						<input matInput class="form-control" type="text" mask="d0/M0/0000" [dropSpecialCharacters]="false" [specialCharacters]="[ '/' ]" name="date_sortie" formControlName="date_sortie" [required]="isFieldRequired('date_sortie')" placeholder="DD/MM/YYYY" />
 						<mat-error *ngIf="isControlHasError('date_sortie','required')">
 							<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 						</mat-error>
@@ -239,7 +239,7 @@
 					</div>
 					<mat-form-field class="col-xl-4">
 						<mat-label>{{'SALARIES.VM.PASSED.LABEL' | translate}}</mat-label>
-						<input matInput class="form-control" type="text" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" name="date_visite_medicale_passed" formControlName="date_visite_medicale_passed" [required]="isFieldRequired('date_visite_medicale_passed')" placeholder="DD/MM/YYYY" />
+						<input matInput class="form-control" type="text" mask="d0/M0/0000" [dropSpecialCharacters]="false" [specialCharacters]="[ '/' ]" name="date_visite_medicale_passed" formControlName="date_visite_medicale_passed" [required]="isFieldRequired('date_visite_medicale_passed')" placeholder="DD/MM/YYYY" />
 						<mat-error *ngIf="isControlHasError('date_visite_medicale_passed','required')">
 							<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 						</mat-error>
@@ -247,7 +247,7 @@
 
 					<mat-form-field class="col-xl-4">
 						<mat-label>{{'SALARIES.VM.NEXT.LABEL' | translate}}</mat-label>
-						<input matInput class="form-control" type="text" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" name="date_visite_medicale_next" formControlName="date_visite_medicale_next" [required]="isFieldRequired('date_visite_medicale_next')" placeholder="DD/MM/YYYY" />
+						<input matInput class="form-control" type="text" mask="d0/M0/0000" [dropSpecialCharacters]="false" [specialCharacters]="[ '/' ]" name="date_visite_medicale_next" formControlName="date_visite_medicale_next" [required]="isFieldRequired('date_visite_medicale_next')" placeholder="DD/MM/YYYY" />
 						<mat-error *ngIf="isControlHasError('date_visite_medicale_next','required')">
 							<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 						</mat-error>
