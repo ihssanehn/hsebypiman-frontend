@@ -74,8 +74,6 @@ export class UserEditComponent implements OnInit, OnDestroy {
 		}
   }
 
-  
-
   createForm() {
     this.userForm = this.fb.group({
       is_virtual: [0, [Validators]],
@@ -169,11 +167,9 @@ export class UserEditComponent implements OnInit, OnDestroy {
 		this.subscriptions.forEach(sb => sb.unsubscribe());
 	}
 
-
   patchForm(item){
     this.userForm.patchValue(item);
   }
-
       
   onSubmit(){
     this.formloading = true;
@@ -183,7 +179,6 @@ export class UserEditComponent implements OnInit, OnDestroy {
     this.UserService.updateUser(form)
       .toPromise()
       .then((res) => {
-        
         this.formloading = false;
         var code = res.message.code as SweetAlertIcon;
         var message = res.message.content != 'done' ? '<b class="text-'+code+'">'+res.message.content+'</b>' : null; 
@@ -201,6 +196,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
       .catch(err => {
         
         this.formloading = false;
+
         Swal.fire({
           icon: 'error',
           title: this.translate.instant("ARS.NOTIF.INCOMPLETE_FORM.TITLE"),
