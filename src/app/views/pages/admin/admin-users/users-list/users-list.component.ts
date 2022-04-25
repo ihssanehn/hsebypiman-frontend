@@ -1,12 +1,8 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { UserService } from '@app/core/services';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { AdminAddModalComponent } from '@app/views/partials/layout/admin-add-modal/admin-add-modal.component';
 import Swal, { SweetAlertIcon } from 'sweetalert2';
-import { AuthService } from '@app/core/auth';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-
 
 @Component({
   selector: 'tf-users-list',
@@ -41,8 +37,6 @@ export class UsersListComponent implements OnInit {
 
 
   constructor(
-    
-    private authService:AuthService,
     private UserService:UserService,
     private cdr:ChangeDetectorRef,
 	private router: Router,

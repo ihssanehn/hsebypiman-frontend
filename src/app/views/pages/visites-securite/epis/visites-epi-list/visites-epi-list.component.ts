@@ -1,10 +1,9 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef, ElementRef, Input, AfterContentInit, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { VisiteEpiService } from '@app/core/services';
 import { Paginate } from '@app/core/_base/layout/models/paginate.model';
 import { VisiteEpi } from '@app/core/models';
 import { TranslateService } from '@ngx-translate/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { fromEvent, Subscription } from 'rxjs';
 import Swal from 'sweetalert2';
 
 

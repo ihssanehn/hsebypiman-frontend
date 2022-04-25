@@ -1,10 +1,9 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef, TemplateRef, ContentChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
-import { BehaviorSubject, Observable, of, Subscription } from "rxjs";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Observable, Subscription } from "rxjs";
 
 import { ActionService, TypeService, PersonnelService, VisiteVehiculeService, VisiteOutillageService, VisiteEpiService, VisiteChantierService } from '@app/core/services';
-import { Paginate } from '@app/core/_base/layout/models/paginate.model';
 import { Type, Action, Visite } from '@app/core/models';
 import { NgxPermissionsService } from 'ngx-permissions';
 

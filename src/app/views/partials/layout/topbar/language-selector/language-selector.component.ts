@@ -29,11 +29,11 @@ export class LanguageSelectorComponent implements OnInit {
 			name: 'French',
 			flag: './assets/media/flags/195-france.svg'
 		},
-		{
-			lang: 'en',
-			name: 'English',
-			flag: './assets/media/flags/260-united-kingdom.svg'
-		},
+		// {
+		// 	lang: 'en',
+		// 	name: 'English',
+		// 	flag: './assets/media/flags/260-united-kingdom.svg'
+		// },
 		// {
 		// 	lang: 'ch',
 		// 	name: 'Mandarin',

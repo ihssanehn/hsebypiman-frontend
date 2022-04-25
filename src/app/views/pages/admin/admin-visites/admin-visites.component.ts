@@ -1,19 +1,14 @@
 // Angular
 import { Component, ChangeDetectionStrategy, OnInit, ChangeDetectorRef } from '@angular/core';
-import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
-import { MenuAsideService, SubheaderService, MenuConfigService, LayoutConfigService } from '@app/core/_base/layout';
+import { Router, ActivatedRoute } from '@angular/router';
+import { MenuConfigService, LayoutConfigService } from '@app/core/_base/layout';
 // Object path
 import * as objectPath from 'object-path';
-import { filter } from 'rxjs/operators';
 import { HtmlClassService } from '@app/views/theme/html-class.service';
 import { ModuleService, TypeService } from '@app/core/services';
 
 import {ThemePalette} from '@angular/material/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { AdminAddModalComponent } from '@app/views/partials/layout/admin-add-modal/admin-add-modal.component';
-
-import Swal from 'sweetalert2';
-
 
 @Component({
 	selector: 'tf-admin-visites',

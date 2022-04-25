@@ -1,19 +1,16 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from "@angular/forms";
-import { BehaviorSubject, Observable, of, Subscription } from "rxjs";
+import { Subscription } from "rxjs";
 
-import { ArService, TypeService, ChantierService } from '@app/core/services';
-import { Paginate } from '@app/core/_base/layout/models/paginate.model';
-import { Ar, Chantier } from '@app/core/models';
+import { ArService, ChantierService } from '@app/core/services';
+import { Ar } from '@app/core/models';
 import { NgxPermissionsService } from 'ngx-permissions';
-import { tap, startWith, map, distinctUntilChanged } from 'rxjs/operators';
+import { tap, distinctUntilChanged } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 import { Location } from '@angular/common';
-import moment from 'moment';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
-import { JsonResponse } from '@app/core/_base/layout/models/jsonResponse.model';
 import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
 import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
 import {FormStatus} from '@app/core/_base/crud/models/form-status';

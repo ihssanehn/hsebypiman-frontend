@@ -1,9 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ModuleService } from '@app/core/services/module.service';
-import { Router, ActivatedRoute } from '@angular/router';
 import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';;
 import {FormStatus} from '@app/core/_base/crud/models/form-status';
-import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from "@angular/forms";
 import Swal from 'sweetalert2';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -16,7 +14,6 @@ export class AdminModulesComponent implements OnInit {
 
   constructor(
     private moduleService:ModuleService,
-    private fb: FormBuilder,
     private cdr: ChangeDetectorRef,
     private translate: TranslateService
   ){

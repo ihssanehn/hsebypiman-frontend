@@ -1,19 +1,15 @@
-import { Component,OnInit,OnDestroy,ChangeDetectorRef } from '@angular/core';
-import { Router,ActivatedRoute } from '@angular/router';
-import { FormBuilder,FormGroup,Validators,FormControl, FormArray } from "@angular/forms";
-import { BehaviorSubject,Observable,of ,Subscription } from "rxjs";
-import { finalize, takeUntil, tap } from 'rxjs/operators';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Subscription } from "rxjs";
+import { tap } from 'rxjs/operators';
 
 import { Location } from '@angular/common';
-import { EntrepriseService,TypeService } from '@app/core/services';
-import { Paginate } from '@app/core/_base/layout/models/paginate.model';
+import { EntrepriseService, } from '@app/core/services';
 import { Entreprise } from '@app/core/models';
-import { NgxPermissionsService } from 'ngx-permissions';
-import { SubheaderService } from '@app/core/_base/layout/services/subheader.service';
-import moment from 'moment';
 import Swal from 'sweetalert2';
-import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
-import {FormStatus} from '@app/core/_base/crud/models/form-status';
+import { extractErrorMessagesFromErrorResponse } from '@app/core/_base/crud';
+import { FormStatus } from '@app/core/_base/crud/models/form-status';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -51,9 +47,7 @@ export class EntrepriseEditComponent implements OnInit, OnDestroy {
 		private entrepriseService: EntrepriseService,
 		private translate: TranslateService,
 		private cdr: ChangeDetectorRef,
-		private permissionsService: NgxPermissionsService,
 		private location: Location,
-		private subheaderService:SubheaderService,
 	) {	}
 	
 	ngOnInit() {

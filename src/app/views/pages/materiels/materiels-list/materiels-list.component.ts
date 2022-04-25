@@ -1,10 +1,9 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef, AfterViewInit, ElementRef, Input, AfterContentInit, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { MaterielService } from '@app/core/services';
 import { Paginate } from '@app/core/_base/layout/models/paginate.model';
 import { Materiel } from '@app/core/models';
 import { TranslateService } from '@ngx-translate/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { fromEvent, Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import moment from 'moment';
 
@@ -40,7 +39,6 @@ export class MaterielsListComponent implements OnInit, AfterViewInit {
 
 	constructor(
 		private router: Router,
-		private activatedRoute: ActivatedRoute,
 		protected materielService: MaterielService,
 		protected cdr: ChangeDetectorRef,
 		private translate: TranslateService,

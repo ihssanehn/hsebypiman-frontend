@@ -29,7 +29,6 @@ export class MaterielAddComponent implements OnInit {
   errors;
   
   constructor(
-		private activatedRoute: ActivatedRoute,
 		private router: Router,
 		private materielFB: FormBuilder,
 		// private notificationService: NzNotificationService,

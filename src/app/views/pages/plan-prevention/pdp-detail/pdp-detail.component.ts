@@ -1,12 +1,9 @@
 import {ChangeDetectorRef, Component, OnInit, Input} from '@angular/core';
-import {Pipe, PipeTransform} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Pdp} from '@app/core/models';
 import {DocumentService, PdpService} from '@app/core/services';
-import {DateEnToFrPipe, DateFrToEnPipe} from '@app/core/_base/layout';
 import Swal from "sweetalert2";
-import {SafePipe} from '@app/core/_base/layout';
 
 import moment from 'moment';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';

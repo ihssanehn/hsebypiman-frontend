@@ -1,12 +1,12 @@
 import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from "@angular/forms";
+import { FormBuilder, FormGroup, FormArray } from "@angular/forms";
 import { Location } from '@angular/common';
 import moment from 'moment';
 import { Subscription } from "rxjs";
 import { tap } from 'rxjs/operators';
 
-import { VisiteChantierService, ChantierService, CatQuestionService } from '@app/core/services';
+import { VisiteChantierService, ChantierService } from '@app/core/services';
 import { VisiteChantier, Chantier , CatQuestion} from '@app/core/models';
 import { AuthService, User } from '@app/core/auth';
 import { MatSnackBar } from '@angular/material';

@@ -21,10 +21,10 @@ const API_ROLES_URL = environment.apiBaseUrl + "roles";
 @Injectable()
 export class AuthService extends HttpService {
     constructor(
-        private http: HttpClient,
-		private permissionsService: NgxPermissionsService,
-		private rolesService: NgxRolesService,
-        private router: Router
+			private http: HttpClient,
+			private permissionsService: NgxPermissionsService,
+			private rolesService: NgxRolesService,
+			private router: Router
     ) {
         super();
     }

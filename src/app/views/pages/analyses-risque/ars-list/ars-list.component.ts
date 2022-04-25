@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef, Input, AfterContentInit, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ArService } from '@app/core/services';
 import { Paginate } from '@app/core/_base/layout/models/paginate.model';
 import { Ar } from '@app/core/models';
