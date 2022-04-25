@@ -571,6 +571,12 @@
 			"SUCCESS": "Your account has been successfuly registered.",
 			"TITLE": "Create an account"
 		},
+		"REQUEST_ACCESS": {
+			"DESC": "Enter your details to create your account",
+			"SUCCESS": "Your request has been successfuly registered.",
+			"TITLE": "Request <b>access</b>",
+			"LABEL": "Request access"
+		},
 		"VALIDATION": {
 			"AGREEMENT_REQUIRED": "You must accept the terms and conditions",
 			"INVALID": "{{name}} is not valid",
@@ -1029,6 +1035,9 @@
 		},
 		"CLIENT": {
 			"LABEL": "Client"
+		},
+		"ALLOW_REVOKE_ACCESS": {
+			"TITLE": "Allow / revoke access"
 		}
 	},
 	"EES": {

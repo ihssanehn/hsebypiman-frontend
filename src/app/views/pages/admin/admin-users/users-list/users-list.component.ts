@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { UserService } from '@app/core/services';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AdminAddModalComponent } from '@app/views/partials/layout/admin-add-modal/admin-add-modal.component';
-import Swal from 'sweetalert2';
+import Swal, { SweetAlertIcon } from 'sweetalert2';
 import { AuthService } from '@app/core/auth';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
@@ -35,7 +35,7 @@ export class UsersListComponent implements OnInit {
 	showFilters:Boolean = false;
 
 	displayedUsersColumns = [
-		'prenom', 'nom', 'email', 'fonction', 'role'
+		'prenom', 'nom', 'email', 'fonction', 'role', 'acces'
 	];
 
 
@@ -153,6 +153,32 @@ export class UsersListComponent implements OnInit {
 			this.filter[key] = value;
 		}
 		this.getUsers();
+	}
+
+	onAccessCheckChange(userId: number, checked: boolean){
+		console.log(userId, checked);
+
+		var userData = {
+			'id': userId,
+			'is_blocked': !checked
+		}
+
+		this.UserService
+			.updateAccess(userData)
+			.toPromise()
+			.then((res) => {
+				var code = res.message.code as SweetAlertIcon;
+				var message = res.message.content != 'done' ? '<b class="text-'+code+'">'+res.message.content+'</b>' : null; 
+				Swal.fire({
+					icon: code,
+					title: this.translate.instant("USERS.NOTIF.USER_UPDATED.TITLE"),
+					showConfirmButton: false,
+					html: message,
+					timer: code == 'success' ? 1500 : 3000
+				});
+				this.cdr.markForCheck();
+			});
+    	this.cdr.markForCheck();
 	}
 
 }
