@@ -1035,6 +1035,9 @@
 		},
 		"CLIENT": {
 			"LABEL": "Client"
+		},
+		"ALLOW_REVOKE_ACCESS": {
+			"TITLE": "Autoriser / revoquer l’accès"
 		}
 	},
 	"EES": {

@@ -16,8 +16,8 @@
                 <div class="form-group">
                     <mat-form-field>
                         <mat-label>{{ 'COMMON.LASTNAME.LABEL' | translate }}</mat-label>
-                        <input matInput class="form-control" type="text" placeholder="{{ 'COMMON.LASTNAME.LABEL' | translate }}" formControlName="lastname" autocomplete="off" [required]="isFieldRequired('lastname')"/>
-                        <mat-error *ngIf="isControlHasError('lastname','required')">
+                        <input matInput class="form-control" type="text" placeholder="{{ 'COMMON.LASTNAME.LABEL' | translate }}" formControlName="nom" autocomplete="off" [required]="isFieldRequired('nom')"/>
+                        <mat-error *ngIf="isControlHasError('nom','required')">
                             <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
                         </mat-error>
                     </mat-form-field>
@@ -32,8 +32,8 @@
                 <div class="form-group">
                     <mat-form-field>
                         <mat-label>{{ 'COMMON.FIRSTNAME.LABEL' | translate }}</mat-label>
-                        <input matInput class="form-control" type="text" placeholder="{{ 'COMMON.FIRSTNAME.LABEL' | translate }}" formControlName="firstname" autocomplete="off" [required]="isFieldRequired('firstname')"/>
-                        <mat-error *ngIf="isControlHasError('firstname','required')">
+                        <input matInput class="form-control" type="text" placeholder="{{ 'COMMON.FIRSTNAME.LABEL' | translate }}" formControlName="prenom" autocomplete="off" [required]="isFieldRequired('prenom')"/>
+                        <mat-error *ngIf="isControlHasError('prenom','required')">
                             <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
                         </mat-error>
                     </mat-form-field>

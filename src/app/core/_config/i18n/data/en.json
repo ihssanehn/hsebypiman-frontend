@@ -1035,6 +1035,9 @@
 		},
 		"CLIENT": {
 			"LABEL": "Client"
+		},
+		"ALLOW_REVOKE_ACCESS": {
+			"TITLE": "Allow / revoke access"
 		}
 	},
 	"EES": {
