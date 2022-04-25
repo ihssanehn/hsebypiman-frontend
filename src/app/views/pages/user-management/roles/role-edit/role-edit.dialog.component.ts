@@ -3,23 +3,14 @@ import { Component, OnInit, Inject, ChangeDetectionStrategy, OnDestroy } from '@
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 // RxJS
 import { Observable, of, Subscription} from 'rxjs';
-// Lodash
-import { each, find, some } from 'lodash';
 // NGRX
 import { Update } from '@ngrx/entity';
-import { Store, select } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 // State
 import { AppState } from '../../../../../core/reducers';
 // Services and Models
 import {
 	Role,
-	AuthService,
-	// selectRoleById,
-	// RoleUpdated,
-	// selectAllPermissions,
-	// selectAllRoles,
-	// selectLastCreatedRoleId,
-	// RoleOnServerCreated
 } from '../../../../../core/auth';
 import { delay } from 'rxjs/operators';
 

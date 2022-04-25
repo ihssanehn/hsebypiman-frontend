@@ -74,14 +74,18 @@
 		<!--end::Form-->
 
 		<!--begin::Divider-->
-		<!-- <div class="tf-login__divider">
+		<div class="tf-login__divider">
 			<div class="tf-divider">
 				<span></span>
-				<span>OR</span>
+				<span>{{'AUTH.GENERAL.OR' | translate}}</span>
 				<span></span>
 			</div>
-		</div> -->
+		</div>
 		<!--end::Divider-->
+
+		<div class="tf-login__actions">
+			<button routerLink="/auth/signup" id="tf_login_signin_submit" class="btn btn-primary btn-elevate tf-login__btn-primary btn-register">{{ 'AUTH.REQUEST_ACCESS.LABEL' | translate }}</button>
+		</div>
 
 	</div>
 	<!--end::Signin-->

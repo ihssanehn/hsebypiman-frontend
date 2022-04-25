@@ -6,8 +6,8 @@ import { EventEmitter } from '@angular/core';
 import { StatusService, ChantierService, PersonnelService } from '@app/core/services';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
-import { debounceTime, map } from 'rxjs/operators';
-import { DateEnToFrPipe, DateFrToEnPipe } from '@app/core/_base/layout';
+import { debounceTime } from 'rxjs/operators';
+import { DateFrToEnPipe } from '@app/core/_base/layout';
 
 @Component({
   selector: 'tf-ar-filters',

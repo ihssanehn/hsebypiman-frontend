@@ -1,15 +1,9 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { FormGroup, FormBuilder, ControlContainer, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '@app/core/services';
-import { NgxPermissionsService } from 'ngx-permissions';
-import { MatIconRegistry } from '@angular/material';
-import { DomSanitizer } from '@angular/platform-browser';
-import {MatDatepicker} from '@angular/material/datepicker';
 import { User } from '@app/core/auth/_models/user.model';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-// import { SalarieEditComponent } from '../salarie-edit/salarie-edit.component';
 
 @Component({
   selector: 'tf-user-detail',
@@ -29,12 +23,8 @@ export class UserDetailComponent implements OnInit, OnDestroy {
   constructor(
     private activatedRoute: ActivatedRoute,
 		private router: Router,
-		private salarieFB: FormBuilder,
     private UserService: UserService,
 		private cdr: ChangeDetectorRef,
-		private permissionsService : NgxPermissionsService,
-		iconRegistry: MatIconRegistry, 
-		sanitizer: DomSanitizer
   ) {}
 
   ngOnInit() {

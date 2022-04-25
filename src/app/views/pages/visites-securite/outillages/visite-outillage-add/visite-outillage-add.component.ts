@@ -1,13 +1,12 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from "@angular/forms";
-import { CommonModule, Location } from '@angular/common';
+import { Location } from '@angular/common';
 import moment from 'moment';
 
 import { TranslateService } from '@ngx-translate/core';
-import { VisiteOutillageService, TypeService, OutillageService, CatQuestionService } from '@app/core/services';
-import { VisiteOutillage, Type, Outillage, CatQuestion } from '@app/core/models';
-import { NgxPermissionsService } from 'ngx-permissions';
+import { VisiteOutillageService, CatQuestionService } from '@app/core/services';
+import { VisiteOutillage, Outillage, CatQuestion } from '@app/core/models';
 import { AuthService, User } from '@app/core/auth';
 import { MatSnackBar } from '@angular/material';
 import Swal from 'sweetalert2';
@@ -45,7 +44,6 @@ export class VisiteOutillageAddComponent implements OnInit {
 		private visiteFB: FormBuilder,
 		// private notificationService: NzNotificationService,
 		private visiteService: VisiteOutillageService,
-    private outillageService: OutillageService,
     private catQuestionsService : CatQuestionService,
     private translate: TranslateService,
     private location: Location,

@@ -1,17 +1,13 @@
 import { Component,OnInit,OnDestroy,ChangeDetectorRef } from '@angular/core';
 import { Router,ActivatedRoute } from '@angular/router';
-import { FormBuilder,FormGroup,Validators,FormControl, FormArray } from "@angular/forms";
-import { BehaviorSubject,Observable,of ,Subscription } from "rxjs";
-import { finalize, takeUntil, tap } from 'rxjs/operators';
+import { FormBuilder,FormGroup,Validators } from "@angular/forms";
+import { Subscription } from "rxjs";
+import { tap } from 'rxjs/operators';
 
 import { Location } from '@angular/common';
-import { ActionService,TypeService } from '@app/core/services';
-import { Paginate } from '@app/core/_base/layout/models/paginate.model';
+import { ActionService } from '@app/core/services';
 import { Action } from '@app/core/models';
-import { NgxPermissionsService } from 'ngx-permissions';
-import { SubheaderService } from '@app/core/_base/layout/services/subheader.service';
 import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
-import moment from 'moment';
 import Swal, { SweetAlertIcon } from 'sweetalert2';
 import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
 import {FormStatus} from '@app/core/_base/crud/models/form-status';
@@ -47,15 +43,12 @@ export class ActionEditComponent implements OnInit, OnDestroy {
 		private activatedRoute: ActivatedRoute,
 		private router: Router,
 		private actionFB: FormBuilder,
-		// private notificationService: NzNotificationService,
 		private actionService: ActionService,
 		private cdr: ChangeDetectorRef,
-		private permissionsService: NgxPermissionsService,
 		private translate: TranslateService,
 		private location: Location,
 		private dateFrToEnPipe:DateFrToEnPipe,
 		private dateEnToFrPipe:DateEnToFrPipe,
-		private subheaderService:SubheaderService,
 	) {	}
 	
 	ngOnInit() {

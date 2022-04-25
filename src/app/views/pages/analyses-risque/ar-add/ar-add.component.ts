@@ -1,17 +1,14 @@
-import { Component, OnInit, ChangeDetectorRef, ViewChild, ElementRef, OnDestroy } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, FormControl, FormArray, NgModel, FormControlName } from "@angular/forms";
-import { CommonModule } from '@angular/common';
-import moment from 'moment';
+import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from "@angular/forms";
 
 import { TranslateService } from '@ngx-translate/core';
 import { ArService, TypeService, ChantierService, ParamsService, PersonnelService } from '@app/core/services';
-import { Observable, Subscription } from 'rxjs';
-import { map, startWith, tap, distinctUntilChanged } from 'rxjs/operators';
-import { Paginate } from '@app/core/_base/layout/models/paginate.model';
+import { Subscription } from 'rxjs';
+import { tap, distinctUntilChanged } from 'rxjs/operators';
 import { Ar, Type, Chantier } from '@app/core/models';
 import { NgxPermissionsService } from 'ngx-permissions';
-import { AuthService, User } from '@app/core/auth';
+import { User } from '@app/core/auth';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import Swal, { SweetAlertIcon } from 'sweetalert2';

@@ -1,20 +1,17 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from "@angular/forms";
-import { CommonModule, Location } from '@angular/common';
-import moment from 'moment';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Location } from '@angular/common';
 
 import { TranslateService } from '@ngx-translate/core';
-import { RemonteeService, TypeService } from '@app/core/services';
-import { Remontee, Type } from '@app/core/models';
-import { NgxPermissionsService } from 'ngx-permissions';
-import { AuthService, User } from '@app/core/auth';
+import { RemonteeService } from '@app/core/services';
+import { Remontee } from '@app/core/models';
 import { MatSnackBar } from '@angular/material';
 import Swal from 'sweetalert2';
 import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
 import {FormStatus} from '@app/core/_base/crud/models/form-status';
 import {FileUploader} from "ng2-file-upload";
-import { DateEnToFrPipe, DateFrToEnPipe } from '@app/core/_base/layout';
+import { DateFrToEnPipe } from '@app/core/_base/layout';
 
 @Component({
   selector: 'tf-remontee-add',
@@ -40,20 +37,15 @@ export class RemonteeAddComponent implements OnInit {
 
   
   constructor(
-		private activatedRoute: ActivatedRoute,
 		private router: Router,
 		private remonteFB: FormBuilder,
 		// private notificationService: NzNotificationService,
 		private remonteeService: RemonteeService,
-		private typeService: TypeService,
-		private authService: AuthService,
     private cdr: ChangeDetectorRef,
     private location: Location,
-		private permissionsService : NgxPermissionsService,
     private translate:TranslateService,
     public snackBar: MatSnackBar,
     private dateFrToEnPipe:DateFrToEnPipe,
-    private dateEnToFrPipe:DateEnToFrPipe
   ) { }
 
   ngOnInit() {

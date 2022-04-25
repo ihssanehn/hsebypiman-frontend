@@ -1,10 +1,9 @@
-import { Component, OnInit, ChangeDetectorRef, Optional, Inject } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CatMetricService, GoalService, PeriodService } from '@app/core/services';
 import { CatMetric, FollowUpPeriod } from '@app/core/models';
-import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import Swal from 'sweetalert2';
-import {MatDatepicker} from '@angular/material/datepicker';
 import * as _moment from 'moment';
 import { default as _rollupMoment } from 'moment';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';

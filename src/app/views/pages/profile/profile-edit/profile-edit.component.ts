@@ -1,14 +1,8 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
-import { BehaviorSubject, Observable, of, Subscription } from "rxjs";
-
-import { ActionService, TypeService, PersonnelService, UserService } from '@app/core/services';
-import { Paginate } from '@app/core/_base/layout/models/paginate.model';
-import { Action } from '@app/core/models';
-import { NgxPermissionsService } from 'ngx-permissions';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Subscription } from "rxjs";
+import { UserService } from '@app/core/services';
 import { Location } from '@angular/common';
-
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import Swal, { SweetAlertIcon } from 'sweetalert2';
@@ -61,10 +55,6 @@ export class ProfileEditComponent implements OnInit, OnDestroy {
 			private fb: FormBuilder,
 			private UserService: UserService,
 			private location: Location,
-			private permissionsService : NgxPermissionsService,
-			private activatedRoute: ActivatedRoute,
-			private router: Router,
-			// private notificationService: NzNotificationService,
 			private cdr: ChangeDetectorRef,
 			private authService: AuthService,
 			iconRegistry: MatIconRegistry, 

@@ -1,13 +1,7 @@
-import { Component, OnInit, ChangeDetectorRef, AfterViewInit, OnDestroy, ElementRef, OnChanges, ViewChild } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, AfterViewInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
 import { ChantierService } from '@app/core/services';
-import { Action } from '@app/core/models';
 import { TranslateService } from '@ngx-translate/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { fromEvent, Subscription } from 'rxjs';
-import Swal from 'sweetalert2';
-import { EChartOption } from 'echarts';
 import * as echarts from 'echarts';
-import { LayoutConfigService, SparklineChartOptions } from '@app/core/_base/layout';
 
 
 @Component({
@@ -98,13 +92,9 @@ export class ChantiersDashComponent implements OnInit, AfterViewInit, OnDestroy 
 	};
 
 	constructor(
-		private router: Router,
-		private activatedRoute: ActivatedRoute,
 		protected ChantierService: ChantierService,
 		protected cdr: ChangeDetectorRef,
 		private translate: TranslateService,
-		private el: ElementRef,
-		private layoutConfigService: LayoutConfigService
 	) {
 		
 	}

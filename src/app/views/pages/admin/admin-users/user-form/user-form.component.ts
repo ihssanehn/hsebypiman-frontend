@@ -2,9 +2,9 @@ import { Component, OnInit, Input, Output, ChangeDetectorRef, EventEmitter } fro
 import { FormGroup, FormControl } from '@angular/forms';
 import { FormStatus } from '@app/core/_base/crud/models/form-status';
 import { Type } from '@app/core/models/type.model';
-import { BuService, EntityService, EntrepriseService, FonctionService, PersonnelService, RoleService, UserService } from '@app/core/services';
-import { Role, User } from '@app/core/auth';
-import { Entreprise, Personnel } from '@app/core/models';
+import { BuService, EntityService, EntrepriseService, FonctionService, RoleService, UserService } from '@app/core/services';
+import { Role } from '@app/core/auth';
+import { Entreprise } from '@app/core/models';
 
 @Component({
   selector: 'tf-user-form',

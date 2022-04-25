@@ -1,14 +1,13 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from "@angular/forms";
-import { CommonModule, Location } from '@angular/common';
-import moment from 'moment';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Location } from '@angular/common';
 
 import { TranslateService } from '@ngx-translate/core';
 import { ActionService, TypeService } from '@app/core/services';
-import { Action, Type } from '@app/core/models';
+import { Action } from '@app/core/models';
 import { NgxPermissionsService } from 'ngx-permissions';
-import { AuthService, User } from '@app/core/auth';
+import { AuthService } from '@app/core/auth';
 import { MatSnackBar } from '@angular/material';
 import { DateEnToFrPipe, DateFrToEnPipe } from '@app/core/_base/layout';
 import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';

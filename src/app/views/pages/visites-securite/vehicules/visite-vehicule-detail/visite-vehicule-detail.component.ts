@@ -1,15 +1,14 @@
 import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators, FormArray } from "@angular/forms";
 import {FileUploader} from "ng2-file-upload";
-import { Location } from '@angular/common';
 import moment from 'moment';
 import { Subscription } from "rxjs";
 import { tap } from 'rxjs/operators';
 
 import { VisiteVehiculeService } from '@app/core/services';
 import { VisiteVehicule, Vehicule, CatQuestion, Document } from '@app/core/models';
-import { AuthService, User } from '@app/core/auth';
+import { User } from '@app/core/auth';
 import { MatSnackBar } from '@angular/material';
 import Swal from 'sweetalert2';
 import { extractErrorMessagesFromErrorResponse } from '@app/core/_base/crud';
@@ -60,8 +59,6 @@ export class VisiteVehiculeDetailComponent implements OnInit, OnDestroy {
 		private visiteFB: FormBuilder,
 		// private notificationService: NzNotificationService,
 		private visiteService: VisiteVehiculeService,
-		private location: Location,
-		private authService: AuthService,
 		private cdr: ChangeDetectorRef,
 		public snackBar: MatSnackBar,
 		private dateFrToEnPipe: DateFrToEnPipe,

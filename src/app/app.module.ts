@@ -14,14 +14,10 @@ import localeFr from '@angular/common/locales/fr';
 registerLocaleData(localeFr);
 
 import { OverlayModule } from '@angular/cdk/overlay';
-// Angular in memory
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 // Perfect Scroll bar
 import { PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 // SVG inline
 import { InlineSVGModule } from 'ng-inline-svg';
-// Env
-import { environment } from '../environments/environment';
 // Hammer JS
 import 'hammerjs';
 // NGX Permissions

@@ -1,12 +1,8 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { FormGroup, FormBuilder, ControlContainer, FormControl } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PersonnelService, PeriodService } from '@app/core/services';
-import { NgxPermissionsService } from 'ngx-permissions';
-import { MatIconRegistry } from '@angular/material';
-import { DomSanitizer } from '@angular/platform-browser';
-import {MatDatepicker} from '@angular/material/datepicker';
 import * as _moment from 'moment';
 import { default as _rollupMoment } from 'moment';
 import { Personnel, FollowUpPeriod } from '@app/core/models';
@@ -27,23 +23,17 @@ export class SuiviSalarieDetailComponent implements OnInit, OnDestroy {
   selectedPeriodId: Number;
   periodList: FollowUpPeriod[];
 	salarieForm: FormGroup;
-	// allRoles: Role[];
 	loaded = false;
 	editMode: boolean = false;
-	// Private properties
   private subscriptions: Subscription[] = [];
 
   constructor(
     private activatedRoute: ActivatedRoute,
 		private router: Router,
-		private salarieFB: FormBuilder,
     private personnelService: PersonnelService,
     private periodService: PeriodService,
     private modalService: NgbModal,
 		private cdr: ChangeDetectorRef,
-		private permissionsService : NgxPermissionsService,
-		iconRegistry: MatIconRegistry, 
-    sanitizer: DomSanitizer,
     public translate: TranslateService
   ) {}
 

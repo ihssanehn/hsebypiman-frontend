@@ -5,14 +5,13 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { MatPaginator, MatSort, MatSnackBar, MatDialog } from '@angular/material';
 // RXJS
 import { debounceTime, distinctUntilChanged, tap, skip, take, delay } from 'rxjs/operators';
-import { fromEvent, merge, Observable, of, Subscription } from 'rxjs';
-import { TranslateService } from '@ngx-translate/core';
+import { fromEvent, merge, of, Subscription } from 'rxjs';
 // NGRX
 import { Store } from '@ngrx/store';
 // Services
 import { LayoutUtilsService, MessageType } from '../../../../../core/_base/crud';
 // Models
-import { Role, AuthService} from '../../../../../core/auth';
+import { Role } from '../../../../../core/auth';
 import { AppState } from '../../../../../core/reducers';
 import { QueryParamsModel } from '../../../../../core/_base/crud';
 

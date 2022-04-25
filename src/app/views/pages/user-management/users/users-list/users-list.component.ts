@@ -1,18 +1,14 @@
-import { Component, OnInit, ElementRef, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit,  ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 // Material
 import { SelectionModel } from '@angular/cdk/collections';
 
-// Services
-import { LayoutUtilsService, MessageType, QueryParamsModel } from '../../../../../core/_base/crud';
 // Models
 import {
 	User,
-	Role,
-	AuthService
+	Role
 } from '../../../../../core/auth';
 import { UserService } from '@app/core/services';
-import { SubheaderService } from '../../../../../core/_base/layout';
 // import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { Paginate } from '@app/core/_base/layout/models/paginate.model';
 
@@ -51,11 +47,9 @@ export class UsersListComponent implements OnInit {
 	 */
 	constructor(
 		private activatedRoute: ActivatedRoute,
-		private authService : AuthService,
 		private userService: UserService,
 		private router: Router,
 		// private notificationService : NzNotificationService,
-		private subheaderService: SubheaderService,
 		private cdr: ChangeDetectorRef) {}
 
 	/**

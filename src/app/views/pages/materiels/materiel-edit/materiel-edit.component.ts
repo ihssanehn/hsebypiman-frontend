@@ -1,16 +1,12 @@
 import { Component,OnInit,OnDestroy,ChangeDetectorRef } from '@angular/core';
 import { Router,ActivatedRoute } from '@angular/router';
-import { FormBuilder,FormGroup,Validators,FormControl, FormArray } from "@angular/forms";
-import { BehaviorSubject,Observable,of ,Subscription } from "rxjs";
-import { finalize, takeUntil, tap } from 'rxjs/operators';
+import { FormBuilder,FormGroup,Validators } from "@angular/forms";
+import { Subscription } from "rxjs";
+import { tap } from 'rxjs/operators';
 
 import { Location } from '@angular/common';
-import { MaterielService,TypeService } from '@app/core/services';
-import { Paginate } from '@app/core/_base/layout/models/paginate.model';
+import { MaterielService, } from '@app/core/services';
 import { Materiel } from '@app/core/models';
-import { NgxPermissionsService } from 'ngx-permissions';
-import { SubheaderService } from '@app/core/_base/layout/services/subheader.service';
-import moment from 'moment';
 import Swal from 'sweetalert2';
 import { DateEnToFrPipe, DateFrToEnPipe } from '@app/core/_base/layout';
 import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
@@ -48,13 +44,10 @@ export class MaterielEditComponent implements OnInit, OnDestroy {
 		private activatedRoute: ActivatedRoute,
 		private router: Router,
 		private materielFB: FormBuilder,
-		// private notificationService: NzNotificationService,
 		private materielService: MaterielService,
 		private cdr: ChangeDetectorRef,
-		private permissionsService: NgxPermissionsService,
 		private translate: TranslateService,
 		private location: Location,
-		private subheaderService:SubheaderService,
 		private dateFrToEnPipe:DateFrToEnPipe,
 		private dateEnToFrPipe:DateEnToFrPipe,
 	) {	}

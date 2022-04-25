@@ -7,8 +7,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { PartialsModule } from '../partials/partials.module';
 // Pages
 import { CoreModule } from '../../core/core.module';
-// import { MailModule } from './apps/mail/mail.module';
-// import { UserManagementModule } from './user-management/user-management.module';
 
 @NgModule({
 	declarations: [],
@@ -18,9 +16,7 @@ import { CoreModule } from '../../core/core.module';
 		HttpClientModule,
 		FormsModule,
 		CoreModule,
-		PartialsModule,
-		// MailModule,
-		// UserManagementModule,
+		PartialsModule
 	],
 	providers: []
 })
