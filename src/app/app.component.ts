@@ -13,7 +13,6 @@ import { locale as jpLang } from './core/_config/i18n/jp';
 import { locale as deLang } from './core/_config/i18n/de';
 import { environment } from '@env/environment';
 import { AuthService } from './core/auth';
-import { NgxRolesService, NgxPermissionsService } from 'ngx-permissions';
 
 @Component({
 	// tslint:disable-next-line:component-selector
@@ -36,18 +35,17 @@ export class AppComponent implements OnInit, OnDestroy {
 	 * @param layoutConfigService: LayoutCongifService
 	 * @param splashScreenService: SplashScreenService
 	 */
-	constructor(private translationService: TranslationService,
-				         private router: Router,
-				         private layoutConfigService: LayoutConfigService,
-						 private splashScreenService: SplashScreenService,
-						 private authService : AuthService,
-						 private versionCheckService : VersionCheckService,
-						 private ngxRolesService : NgxRolesService,
-						 private ngxPermService:NgxPermissionsService
+	constructor(
+		private translationService: TranslationService,
+		private router: Router,
+		private layoutConfigService: LayoutConfigService,
+		private splashScreenService: SplashScreenService,
+		private authService : AuthService,
+		private versionCheckService : VersionCheckService,
 	) {
-
 		// register translations
-		this.translationService.loadTranslations(frLang, enLang, chLang, esLang, jpLang, deLang);
+		// this.translationService.loadTranslations(frLang, enLang, chLang, esLang, jpLang, deLang);
+		this.translationService.loadTranslations(frLang);
 	}
 
 	/**

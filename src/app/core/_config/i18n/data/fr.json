@@ -571,6 +571,12 @@
 			"SUCCESS": "Your account has been successfuly registered.",
 			"TITLE": "Créer un compte"
 		},
+		"REQUEST_ACCESS": {
+			"DESC": "Entrez vos coordonnées pour créer votre compte",
+			"SUCCESS": "Votre demande a bien été enregistrée.",
+			"TITLE": "Demander un <b>accès</b>",
+			"LABEL": "Demander un accès"
+		},
 		"VALIDATION": {
 			"AGREEMENT_REQUIRED": "Vous devez accepter les termes et conditions",
 			"INVALID": "{{name}} n'est pas valide",
@@ -1029,6 +1035,9 @@
 		},
 		"CLIENT": {
 			"LABEL": "Client"
+		},
+		"ALLOW_REVOKE_ACCESS": {
+			"TITLE": "Autoriser / revoquer l’accès"
 		}
 	},
 	"EES": {
@@ -2154,6 +2163,10 @@
 			"YES": "Profils virtuels uniquement",
 			"NO": "Profils non virtuels uniquement"
 		},
+		"ACCESS_GRANTED_ONLY": {
+			"YES": "Accès accordé uniquement",
+			"NO": "Accès non accordé uniquement"
+		},
 		"VIRTUEL_PROFILE": {
 			"TITLE": "Profil virtuel"
 		},
@@ -2181,6 +2194,11 @@
 			"LABEL": "Comptes virtuels",
 			"SHORTTITLE": "Comptes virtuels",
 			"TITLE": "Afficher comptes virtuels"
+		},
+		"ACCESS": {
+			"LABEL": "Accès à l'application",
+			"SHORTTITLE": "Accès à l'application",
+			"TITLE": "Accès à l'application"
 		}
 	},
 	"VISITES": {

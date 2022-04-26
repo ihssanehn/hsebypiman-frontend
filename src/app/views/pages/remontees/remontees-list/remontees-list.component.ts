@@ -1,10 +1,9 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef, AfterViewInit, ElementRef, Input, AfterContentInit, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { RemonteeService } from '@app/core/services';
 import { Paginate } from '@app/core/_base/layout/models/paginate.model';
 import { Remontee } from '@app/core/models';
 import { TranslateService } from '@ngx-translate/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { fromEvent, Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 
@@ -38,7 +37,6 @@ export class RemonteesListComponent implements OnInit, AfterViewInit {
 
 	constructor(
 		private router: Router,
-		private activatedRoute: ActivatedRoute,
 		protected remonteeService: RemonteeService,
 		protected cdr: ChangeDetectorRef,
 		private translate: TranslateService,

@@ -1,7 +1,5 @@
-import { Component, OnInit, ChangeDetectorRef, Injector } from '@angular/core';
+import { Component, OnInit, Injector } from '@angular/core';
 import { ArDetailComponent } from '../ar-detail/ar-detail.component';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ArService, ChantierService } from '@app/core/services';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import moment from 'moment';
 import Swal from 'sweetalert2';

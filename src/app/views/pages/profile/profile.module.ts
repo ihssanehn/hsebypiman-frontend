@@ -6,13 +6,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 // Core Module
 import { CoreModule } from '../../../core/core.module';
-// NGRX
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
 // Translate
 import { TranslateModule } from '@ngx-translate/core';
 import { PartialsModule } from '../../partials/partials.module';
-import { NgxPermissionsModule, NgxPermissionsGuard } from 'ngx-permissions';
+import { NgxPermissionsModule } from 'ngx-permissions';
 // Services
 import { HttpUtilsService, TypesUtilsService, InterceptService, LayoutUtilsService} from '../../../core/_base/crud';
 // Shared

@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef, } from '@angular/core';
-import { CatHabilitationService, HabilitationService, TypeService } from '@app/core/services';
+import { TypeService } from '@app/core/services';
 import { Type } from '@app/core/models';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AdminAddModalComponent } from '@app/views/partials/layout/admin-add-modal/admin-add-modal.component';

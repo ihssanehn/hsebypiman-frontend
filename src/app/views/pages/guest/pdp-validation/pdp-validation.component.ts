@@ -1,11 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { Pipe, PipeTransform } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
-import { ActivatedRoute, Router, ActivatedRouteSnapshot } from '@angular/router';
-import { Pdp } from '@app/core/models';
-import { DocumentService, PdpService } from '@app/core/services';
-import { DateEnToFrPipe, DateFrToEnPipe } from '@app/core/_base/layout';
-import { SafePipe } from '@app/core/_base/layout';
+import { ActivatedRoute } from '@angular/router';
 
 import moment from 'moment';
 import { GuestService } from '@app/core/auth/_services/guest.service';

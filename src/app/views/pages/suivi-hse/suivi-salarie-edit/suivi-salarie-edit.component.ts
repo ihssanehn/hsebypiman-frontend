@@ -1,13 +1,8 @@
 import { Component, OnInit, ChangeDetectorRef, Input } from '@angular/core';
-import { Personnel, FollowUpPeriod } from '@app/core/models';
-import { FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms';
+import { Personnel } from '@app/core/models';
+import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import moment from 'moment';
-import { Router, ActivatedRoute } from '@angular/router';
 import { PersonnelService } from '@app/core/services';
-import { NgxPermissionsService } from 'ngx-permissions';
-import { MatIconRegistry } from '@angular/material';
-import { DomSanitizer } from '@angular/platform-browser';
 import Swal from 'sweetalert2';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
@@ -30,13 +25,10 @@ export class SuiviSalarieEditComponent implements OnInit {
   private subscriptions: Subscription[] = [];
 
   constructor(
-    private activatedRoute: ActivatedRoute,
-		private router: Router,
 		private fb: FormBuilder,
     private salarieService: PersonnelService,
     public activeModal: NgbActiveModal,
 		private cdr: ChangeDetectorRef,
-    private permissionsService : NgxPermissionsService,
     private translate: TranslateService
   ) {}
 

@@ -1,21 +1,17 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
-import { BehaviorSubject, Observable, of, Subscription } from "rxjs";
+import { FormGroup } from "@angular/forms";
+import { Subscription } from "rxjs";
 
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { MaterielService, TypeService, DocumentService } from '@app/core/services';
-import { Paginate } from '@app/core/_base/layout/models/paginate.model';
+import { MaterielService,  DocumentService } from '@app/core/services';
 import { Materiel, Document } from '@app/core/models';
-import { NgxPermissionsService } from 'ngx-permissions';
 import {PretModalComponent, ImageLightboxContentDialogComponent} from '@app/views/partials/layout';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
 
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import Swal from 'sweetalert2';
 import { TranslateService } from '@ngx-translate/core';
-import { da_DK } from 'ng-zorro-antd';
 
 
 @Component({
@@ -58,15 +54,11 @@ export class MaterielDetailComponent implements OnInit, OnDestroy {
 	constructor(
 		private activatedRoute: ActivatedRoute,
 		private router: Router,
-		private materielFB: FormBuilder,
-		private modalService: NgbModal,
 		public dialog: MatDialog,
-		// private notificationService: NzNotificationService,
 		private materielService: MaterielService,
 		private documentService : DocumentService,
 		private translate: TranslateService,
 		private cdr: ChangeDetectorRef,
-		private permissionsService : NgxPermissionsService,
 		iconRegistry: MatIconRegistry, 
 		private _sanitizer: DomSanitizer,
 	) {

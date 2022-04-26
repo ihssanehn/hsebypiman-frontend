@@ -1,13 +1,11 @@
-import { ChangeDetectorRef, Component, OnInit, EventEmitter, Output, Input, forwardRef, AfterViewInit } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormBuilder, FormGroup } from '@angular/forms';
+import { ChangeDetectorRef, Component, OnInit, EventEmitter, Output, AfterViewInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
-import { EntrepriseService, TypeService, StatusService } from '@app/core/services';
-import { Entreprise, Type, Status } from '@app/core/models';
-import { AuthService, User } from '@app/core/auth';
-import moment from 'moment';
-import { debounceTime, map } from 'rxjs/operators';
-import { DateEnToFrPipe, DateFrToEnPipe } from '@app/core/_base/layout';
+import { TypeService } from '@app/core/services';
+import { Type, Status } from '@app/core/models';
+import { User } from '@app/core/auth';
+import { debounceTime } from 'rxjs/operators';
 
 
 @Component({
@@ -31,13 +29,9 @@ export class EntrepriseFiltersComponent implements OnInit, AfterViewInit
 
   @Output() change = new EventEmitter();
   constructor(
-    private statusService: StatusService,
-    private entrepriseService:EntrepriseService, 
     private typeService:TypeService,
-    private authService:AuthService,
     private fb: FormBuilder,
     private cdr: ChangeDetectorRef,
-    private dateFrToEnPipe:DateFrToEnPipe,
 		iconRegistry: MatIconRegistry, 
     sanitizer: DomSanitizer,
   ) {

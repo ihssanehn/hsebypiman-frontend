@@ -8,7 +8,7 @@ import { tap } from 'rxjs/operators';
 
 import { VisiteVehiculeService} from '@app/core/services';
 import { VisiteVehicule, Vehicule } from '@app/core/models';
-import { AuthService, User } from '@app/core/auth';
+import { User } from '@app/core/auth';
 import { MatSnackBar } from '@angular/material';
 import Swal from 'sweetalert2';
 import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
@@ -45,7 +45,6 @@ export class VisiteVehiculeEditComponent implements OnInit, OnDestroy {
     private visiteService: VisiteVehiculeService,
     private translate: TranslateService,
     private location: Location,
-    private authService:AuthService,
     private cdr: ChangeDetectorRef,
     public snackBar: MatSnackBar,
     private dateFrToEnPipe:DateFrToEnPipe,

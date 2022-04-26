@@ -1,12 +1,10 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
-import { BehaviorSubject, Observable, of, Subscription } from "rxjs";
+import { FormGroup } from "@angular/forms";
+import { Subscription } from "rxjs";
 
-import { ChantierService, TypeService } from '@app/core/services';
-import { Paginate } from '@app/core/_base/layout/models/paginate.model';
+import { ChantierService } from '@app/core/services';
 import { Chantier } from '@app/core/models';
-import { NgxPermissionsService } from 'ngx-permissions';
 
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
@@ -39,11 +37,8 @@ export class ChantierDetailComponent implements OnInit, OnDestroy {
 	constructor(
 		private activatedRoute: ActivatedRoute,
 		private router: Router,
-		private chantierFB: FormBuilder,
-		// private notificationService: NzNotificationService,
 		private chantierService: ChantierService,
 		private cdr: ChangeDetectorRef,
-		private permissionsService : NgxPermissionsService,
 		private translate: TranslateService,
 		iconRegistry: MatIconRegistry, 
 		sanitizer: DomSanitizer

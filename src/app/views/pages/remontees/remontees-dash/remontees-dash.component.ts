@@ -1,13 +1,8 @@
-import { Component, OnInit, ChangeDetectorRef, AfterViewInit, OnDestroy, ElementRef, OnChanges, ViewChild } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, AfterViewInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
 import { RemonteeService } from '@app/core/services';
-import { Remontee } from '@app/core/models';
 import { TranslateService } from '@ngx-translate/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { fromEvent, Subscription } from 'rxjs';
-import Swal from 'sweetalert2';
-import { EChartOption } from 'echarts';
+import { Router } from '@angular/router';
 import * as echarts from 'echarts';
-import { LayoutConfigService, SparklineChartOptions } from '@app/core/_base/layout';
 
 
 
@@ -98,12 +93,9 @@ export class RemonteesDashComponent implements OnInit, AfterViewInit, OnDestroy 
 
 	constructor(
 		private router: Router,
-		private activatedRoute: ActivatedRoute,
 		protected remonteeService: RemonteeService,
 		protected cdr: ChangeDetectorRef,
 		private translate: TranslateService,
-		private el: ElementRef,
-		private layoutConfigService: LayoutConfigService
 	) {
 		
 	}

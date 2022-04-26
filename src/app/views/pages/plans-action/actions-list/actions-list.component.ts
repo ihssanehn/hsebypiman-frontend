@@ -1,10 +1,9 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef, AfterViewInit, OnDestroy, Input, AfterContentInit, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, AfterViewInit, OnDestroy } from '@angular/core';
 import { ActionService } from '@app/core/services';
 import { Paginate } from '@app/core/_base/layout/models/paginate.model';
 import { Action } from '@app/core/models';
 import { TranslateService } from '@ngx-translate/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { fromEvent, Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 
@@ -39,7 +38,6 @@ export class ActionsListComponent implements OnInit, AfterViewInit, OnDestroy {
 
 	constructor(
 		private router: Router,
-		private activatedRoute: ActivatedRoute,
 		protected actionService: ActionService,
 		protected cdr: ChangeDetectorRef,
 		private translate: TranslateService,

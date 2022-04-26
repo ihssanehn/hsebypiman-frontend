@@ -1,12 +1,6 @@
-import { Component, OnInit, Input, ChangeDetectorRef, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
-import { Subscription, fromEvent } from 'rxjs';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { PeriodService } from '@app/core/services';
-import Swal from 'sweetalert2';
-import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
-import { FollowUpPeriod } from '@app/core/models';
-import { MatInput, MatDatepickerInput, DateAdapter } from '@angular/material';
 import { TranslateService } from '@ngx-translate/core';
 import { GuestService } from '@app/core/auth/_services/guest.service';
 
