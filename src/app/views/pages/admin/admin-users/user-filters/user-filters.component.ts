@@ -36,6 +36,16 @@ export class UserFiltersComponent implements OnInit, AfterViewInit
       code:'NO',
     }
   ]
+  accessOptions = [
+    {
+      libelle: 'USERS.ACCESS_GRANTED_ONLY.YES',
+      code:'YES'
+    },
+    {
+      libelle: 'USERS.ACCESS_GRANTED_ONLY.NO',
+      code:'NO',
+    }
+  ]
   statuses;
 
   @Output() change = new EventEmitter();
@@ -92,6 +102,7 @@ export class UserFiltersComponent implements OnInit, AfterViewInit
       contrat:[null],
       role:[null],
       is_virtual:[''],
+      is_access_granted:[''],
       date_entree_start:[null],
       date_entree_end:[null],
       date_sortie_start:[null],

@@ -40,6 +40,18 @@
 						</button>
 					</mat-form-field>
 					<mat-form-field class="col-xl-3 col-md-6 col-sm-6 col-xs-12 mat-filter-no-head">
+						<mat-label>{{'USERS.ACCESS.TITLE' | translate}}</mat-label>
+						<mat-select class="form-control" formControlName="is_access_granted" name="is_access_granted">
+							<mat-option>{{'FILTER.SEARCH_ALL' | translate}}</mat-option>
+							<mat-option *ngFor="let access of accessOptions" [value]="access.code">
+								{{access.libelle | translate}}
+							</mat-option>
+						</mat-select>
+						<button mat-button *ngIf="formHasValue('is_access_granted')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('is_access_granted'); $event.stopPropagation()">
+							<mat-icon>clear</mat-icon>
+						</button>
+					</mat-form-field>
+					<mat-form-field class="col-xl-3 col-md-6 col-sm-6 col-xs-12 mat-filter-no-head">
 						<mat-label>{{'COMMON.PROFIL.LABEL' | translate}}</mat-label>
 						<mat-select class="form-control" formControlName="role" name="role">
 							<mat-option>{{'FILTER.SEARCH_ALL' | translate}}</mat-option>
