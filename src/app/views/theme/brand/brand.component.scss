@@ -1,5 +1,16 @@
 :host {
 	.tf-header__brand {
 		height: 100%;
+		.tf-header__brand-logo-default {
+			max-width: 279px;
+			margin-top: 10px;
+			color: #fff;
+			font-weight: 400;
+			font-size: 22px;
+			span {
+				font-weight: bold;
+				font-size: 27px;
+			}
+		}
 	}
 }
