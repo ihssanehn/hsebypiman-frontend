@@ -200,6 +200,18 @@
                         padding-left: 2.75rem;
                         padding-right: 2.75rem;
                     }
+
+                    .btn-register {
+                        width: 100%;
+                        background-color: transparent;
+                        border-color: #308677;
+                        color: #308677;
+
+                        &:hover {
+                            background-color: #308677;
+                            color: #fff;
+                        }
+                    }
                 }
 
                 // Divider

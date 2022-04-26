@@ -1,18 +1,7 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
-import { BehaviorSubject, Observable, of, Subscription } from "rxjs";
-
-import { ActionService, TypeService, PersonnelService, UserService } from '@app/core/services';
-import { Paginate } from '@app/core/_base/layout/models/paginate.model';
-import { Action } from '@app/core/models';
-import { NgxPermissionsService } from 'ngx-permissions';
-
-import { DomSanitizer } from '@angular/platform-browser';
-import { MatIconRegistry } from '@angular/material';
-import Swal, { SweetAlertIcon } from 'sweetalert2';
+import { Router } from '@angular/router';
+import { Subscription } from "rxjs";
 import { User, AuthService } from '@app/core/auth';
-import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
 
 @Component({
   selector: 'tf-profile-detail',
@@ -35,13 +24,9 @@ export class ProfileDetailComponent implements OnInit, OnDestroy {
 	 * @param layoutUtilsService: LayoutUtilsService
 	 */
 	constructor(
-		private activatedRoute: ActivatedRoute,
 		private router: Router,
 		private authService: AuthService,
-		private UserService: UserService,
 		private cdr: ChangeDetectorRef,
-		iconRegistry: MatIconRegistry, 
-		sanitizer: DomSanitizer
 	) {
 		this.authService.currentUser.subscribe(x=> this.user$ = x);
 	}

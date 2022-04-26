@@ -4,12 +4,8 @@ import {FormStatus} from '@app/core/_base/crud/models/form-status';
 import {CdkTextareaAutosize} from '@angular/cdk/text-field';
 import {take} from 'rxjs/operators';
 import {
-	ConsigneModel,
-	DispositionModel,
 	Pdp,
-	PDPFrequences,
-	RisqueModel,
-	TraveauxDangereuxModel
+	PDPFrequences
 } from '@app/core/models';
 import {DocumentService, PdpService} from '@app/core/services';
 import {BehaviorSubject} from 'rxjs';

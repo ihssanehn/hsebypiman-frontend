@@ -1,9 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FlashInfoService } from '@app/core/services';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { AdminAddModalComponent } from '@app/views/partials/layout/admin-add-modal/admin-add-modal.component';
 import Swal from 'sweetalert2';
-import { AuthService } from '@app/core/auth';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -40,10 +37,8 @@ export class FlashInfosListComponent implements OnInit {
 
 
   constructor(
-    
-    private authService:AuthService,
-    private FlashInfoService:FlashInfoService,
-    private cdr:ChangeDetectorRef,
+	private FlashInfoService:FlashInfoService,
+	private cdr:ChangeDetectorRef,
 	private router: Router,
 	private translate: TranslateService
 

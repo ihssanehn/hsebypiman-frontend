@@ -1,6 +1,6 @@
 import { Component, forwardRef, Output, EventEmitter } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-import { Role, AuthService } from '@app/core/auth';
+import { AuthService } from '@app/core/auth';
 
 @Component({
     selector: 'tf-user-filter',

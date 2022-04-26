@@ -1,14 +1,11 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from "@angular/forms";
-import { CommonModule, Location } from '@angular/common';
-import moment from 'moment';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Location } from '@angular/common';
 
 import { TranslateService } from '@ngx-translate/core';
 import { ChantierService, TypeService } from '@app/core/services';
-import { Chantier, Type } from '@app/core/models';
-import { NgxPermissionsService } from 'ngx-permissions';
-import { AuthService, User } from '@app/core/auth';
+import { Chantier } from '@app/core/models';
 import { MatSnackBar } from '@angular/material';
 import { DateEnToFrPipe, DateFrToEnPipe } from '@app/core/_base/layout';
 import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
@@ -32,16 +29,12 @@ export class ChantierAddComponent implements OnInit {
   formStatus = new FormStatus();
   
   constructor(
-		private activatedRoute: ActivatedRoute,
 		private router: Router,
 		private chantierFB: FormBuilder,
 		// private notificationService: NzNotificationService,
 		private chantierService: ChantierService,
-		private typeService: TypeService,
-		private authService: AuthService,
     private cdr: ChangeDetectorRef,
     private location: Location,
-		private permissionsService : NgxPermissionsService,
     private translate:TranslateService,
     private dateFrToEnPipe:DateFrToEnPipe,
     private dateEnToFrPipe:DateEnToFrPipe,

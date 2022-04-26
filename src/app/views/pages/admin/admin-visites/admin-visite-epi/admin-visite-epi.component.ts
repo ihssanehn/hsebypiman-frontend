@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { TypeService } from '@app/core/services';
-import { Type } from '@app/core/models';import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Type } from '@app/core/models';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AdminAddModalComponent } from '@app/views/partials/layout/admin-add-modal/admin-add-modal.component';
 import Swal from 'sweetalert2';
 

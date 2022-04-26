@@ -1,5 +1,5 @@
 // Angular
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { User, AuthService } from '@app/core/auth';
 import { FormBuilder, Validators } from '@angular/forms';
 // import { NzNotificationService } from 'ng-zorro-antd/notification';
@@ -10,7 +10,6 @@ import { FormBuilder, Validators } from '@angular/forms';
 	selector: 'tf-change-password',
 	templateUrl: './change-password.component.html',
 	styleUrls: ['./change-password.component.scss']
-	// changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChangePasswordComponent implements OnInit {
 	hasFormErrors = false;

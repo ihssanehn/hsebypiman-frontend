@@ -1,14 +1,11 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from "@angular/forms";
-import { CommonModule, Location } from '@angular/common';
-import moment from 'moment';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Location } from '@angular/common';
 
 import { TranslateService } from '@ngx-translate/core';
-import { EntrepriseService, TypeService } from '@app/core/services';
-import { Entreprise, Type } from '@app/core/models';
-import { NgxPermissionsService } from 'ngx-permissions';
-import { AuthService, User } from '@app/core/auth';
+import { EntrepriseService } from '@app/core/services';
+import { Entreprise } from '@app/core/models';
 import { MatSnackBar } from '@angular/material';
 import Swal from 'sweetalert2';
 import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
@@ -32,16 +29,12 @@ export class EntrepriseAddComponent implements OnInit {
   errors;
   
   constructor(
-		private activatedRoute: ActivatedRoute,
 		private router: Router,
 		private entrepriseFB: FormBuilder,
 		// private notificationService: NzNotificationService,
 		private entrepriseService: EntrepriseService,
-		private typeService: TypeService,
-		private authService: AuthService,
     private cdr: ChangeDetectorRef,
     private location: Location,
-		private permissionsService : NgxPermissionsService,
     private translate:TranslateService,
     public snackBar: MatSnackBar,
   ) { }

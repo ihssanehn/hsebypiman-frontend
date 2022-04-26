@@ -1,14 +1,9 @@
-import { Component, OnInit, ChangeDetectorRef, Input, OnDestroy } from '@angular/core';
-import { Personnel } from '@app/core/models';
-import { FormGroup, FormControl, FormBuilder, FormArray, Validators } from '@angular/forms';
+import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Location } from '@angular/common';
-import moment from 'moment';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '@app/core/services';
-import { NgxPermissionsService } from 'ngx-permissions';
-import { MatIconRegistry } from '@angular/material';
-import { DomSanitizer } from '@angular/platform-browser';
 import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
 import Swal, { SweetAlertIcon } from 'sweetalert2';
 import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
@@ -41,7 +36,6 @@ export class UserEditComponent implements OnInit, OnDestroy {
 		private dateFrToEnPipe:DateFrToEnPipe,
 		private dateEnToFrPipe:DateEnToFrPipe,
 		private location: Location,
-    private permissionsService : NgxPermissionsService,
     private translate: TranslateService
   ) {}
 

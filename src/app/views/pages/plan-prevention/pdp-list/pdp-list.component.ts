@@ -2,7 +2,7 @@ import {ChangeDetectorRef, Component, OnInit, TemplateRef, ViewChild} from '@ang
 import {Paginate} from '@app/core/_base/layout/models/paginate.model';
 import {Pdp, Status} from '@app/core/models';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ArService, PdpService} from '@app/core/services';
+import {PdpService} from '@app/core/services';
 import {TranslateService} from '@ngx-translate/core';
 import Swal from "sweetalert2";
 import {MatDialog} from '@angular/material/dialog';

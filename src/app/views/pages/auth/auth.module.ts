@@ -5,12 +5,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 // Material
-import { MatButtonModule, MatIconModule, MatCheckboxModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatButtonModule, MatIconModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatSelectModule } from '@angular/material';
 // Translate
 import { TranslateModule } from '@ngx-translate/core';
-// NGRX
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
 // CRUD
 import { InterceptService } from '../../../core/_base/crud/';
 // Module components
@@ -21,6 +18,7 @@ import { AuthNoticeComponent } from './auth-notice/auth-notice.component';
 // Auth
 import { AuthGuard, AuthService } from '../../../core/auth';
 import { EditPasswordComponent } from './edit-password/edit-password.component';
+import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
 	{
@@ -44,6 +42,10 @@ const routes: Routes = [
 			{
 				path: 'edit-password',
 				component: EditPasswordComponent,
+			},
+			{
+				path: 'signup',
+				component: SignupComponent,
 			}
 		]
 	}
@@ -61,6 +63,7 @@ const routes: Routes = [
 		MatFormFieldModule,
 		MatIconModule,
 		MatCheckboxModule,
+		MatSelectModule,
 		TranslateModule.forChild(),
 	],
 	providers: [
@@ -77,7 +80,8 @@ const routes: Routes = [
 		LoginComponent,
 		ForgotPasswordComponent,
 		AuthNoticeComponent,
-		EditPasswordComponent
+		EditPasswordComponent,
+		SignupComponent
 	]
 })
 

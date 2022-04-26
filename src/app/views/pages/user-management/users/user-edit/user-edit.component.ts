@@ -1,15 +1,10 @@
 // Angular
-import { Component, OnInit, OnDestroy, ChangeDetectorRef } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
-import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { FormGroup  } from "@angular/forms";
 // RxJS
-import { BehaviorSubject, Observable, of, Subscription } from "rxjs";
-// Layout
-import { SubheaderService, LayoutConfigService } from "../../../../../core/_base/layout";
+import { Subscription } from "rxjs";
 // Services and Models
-import { User, Role, AuthService } from "../../../../../core/auth";
-// import { NzNotificationService } from 'ng-zorro-antd/notification';
-import { NgxPermissionsService } from 'ngx-permissions';
+import { User, Role } from "../../../../../core/auth";
 @Component({
 	selector: "tf-user-edit",
 	templateUrl: "./user-edit.component.html",
@@ -34,14 +29,6 @@ export class UserEditComponent implements OnInit, OnDestroy {
 	 * @param layoutUtilsService: LayoutUtilsService
 	 */
 	constructor(
-		private activatedRoute: ActivatedRoute,
-		private router: Router,
-		private userFB: FormBuilder,
-		private subheaderService: SubheaderService,
-		// private notificationService: NzNotificationService,
-		private authService: AuthService,
-		private cdr: ChangeDetectorRef,
-		private permissionsService : NgxPermissionsService
 	) { }
 
 	/**

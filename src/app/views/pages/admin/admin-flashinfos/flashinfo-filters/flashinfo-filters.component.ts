@@ -1,12 +1,11 @@
-import { ChangeDetectorRef, Component, OnInit, EventEmitter, Output, Input, forwardRef, AfterViewInit } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormBuilder, FormGroup } from '@angular/forms';
+import { ChangeDetectorRef, Component, OnInit, EventEmitter, Output, AfterViewInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import { PersonnelService } from '@app/core/services';
-import { AuthService, User, Role } from '@app/core/auth';
-import moment from 'moment';
-import { debounceTime, map } from 'rxjs/operators';
-import { DateEnToFrPipe, DateFrToEnPipe } from '@app/core/_base/layout';
+import { User } from '@app/core/auth';
+import { debounceTime } from 'rxjs/operators';
+import {  DateFrToEnPipe } from '@app/core/_base/layout';
 
 
 @Component({

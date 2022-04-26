@@ -1,6 +1,6 @@
 import { Component,OnInit,OnDestroy,ChangeDetectorRef } from '@angular/core';
 import { Router,ActivatedRoute } from '@angular/router';
-import { FormBuilder,FormGroup,Validators,FormControl, FormArray } from "@angular/forms";
+import { FormBuilder,FormGroup,Validators, FormArray } from "@angular/forms";
 import { Subscription } from "rxjs";
 import { tap } from 'rxjs/operators';
 import { Location } from '@angular/common';
@@ -11,7 +11,7 @@ import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
 import {FormStatus} from '@app/core/_base/crud/models/form-status';
 import {FileUploader} from "ng2-file-upload";
 import { TranslateService } from '@ngx-translate/core';
-import { DateEnToFrPipe, DateFrToEnPipe } from '@app/core/_base/layout';
+import { DateFrToEnPipe } from '@app/core/_base/layout';
 
 
 @Component({
@@ -24,13 +24,11 @@ export class RemonteeEditComponent implements OnInit, OnDestroy {
 
 	errors;
 	remonteeForm: FormGroup;
-  	formStatus = new FormStatus();
+	formStatus = new FormStatus();
 	remontee: Remontee;
-	// allRoles: Role[];
 	loaded: boolean = false;
 	formloading: boolean = false;
 	editMode: boolean = false;
-	// Private properties
 	private subscriptions: Subscription[] = [];
 
 	public uploader:FileUploader = new FileUploader({

@@ -1,14 +1,9 @@
 import { Component, OnInit, ChangeDetectorRef, OnDestroy, Injector } from '@angular/core';
-import { Ar, Chantier, CatRisque, Equipement, Zone } from '@app/core/models';
-import { FormGroup, FormBuilder, FormArray, FormControl, Validators } from '@angular/forms';
+import { Ar, Chantier } from '@app/core/models';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ArService, ChantierService, CatRisqueService, EquipementService, ZoneService } from '@app/core/services';
-import { NgxPermissionsService } from 'ngx-permissions';
-import { tap } from 'rxjs/operators';
-import { Location } from '@angular/common';
+import { ArService, ChantierService } from '@app/core/services';
 import Swal from 'sweetalert2';
-import { union } from 'lodash';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({

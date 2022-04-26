@@ -1,13 +1,12 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from "@angular/forms";
-import { CommonModule, Location } from '@angular/common';
+import { Location } from '@angular/common';
 import moment from 'moment';
 
 import { TranslateService } from '@ngx-translate/core';
-import { VisiteEpiService, TypeService, MaterielService, CatQuestionService } from '@app/core/services';
-import { VisiteEpi, Type, Materiel, CatQuestion } from '@app/core/models';
-import { NgxPermissionsService } from 'ngx-permissions';
+import { VisiteEpiService, MaterielService, CatQuestionService } from '@app/core/services';
+import { VisiteEpi, Materiel } from '@app/core/models';
 import { AuthService, User } from '@app/core/auth';
 import { MatSnackBar } from '@angular/material';
 import Swal from 'sweetalert2';

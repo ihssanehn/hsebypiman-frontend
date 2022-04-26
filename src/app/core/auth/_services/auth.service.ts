@@ -21,10 +21,10 @@ const API_ROLES_URL = environment.apiBaseUrl + "roles";
 @Injectable()
 export class AuthService extends HttpService {
     constructor(
-        private http: HttpClient,
-		private permissionsService: NgxPermissionsService,
-		private rolesService: NgxRolesService,
-        private router: Router
+			private http: HttpClient,
+			private permissionsService: NgxPermissionsService,
+			private rolesService: NgxRolesService,
+			private router: Router
     ) {
         super();
     }
@@ -44,6 +44,12 @@ export class AuthService extends HttpService {
 	// Authentication/Authorization
 	login(email: string, password: string): Observable<JsonResponse<User>> {
 		return this.http.post<JsonResponse<User>>(`${this.baseUrl}auth/login`, {email,password});
+	}
+
+	signup(item) {
+		const httpHeaders = new HttpHeaders();
+		httpHeaders.set("Content-Type", "multipart/form-data");
+		return this.http.post<JsonResponse<User>>(`${this.baseUrl}auth/signup`, item, { headers: httpHeaders });
 	}
 
 	reloadUser(){
