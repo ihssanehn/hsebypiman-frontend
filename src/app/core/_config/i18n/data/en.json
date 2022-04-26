@@ -2161,6 +2161,10 @@
 			"YES": "Virtual profiles only",
 			"NO": "Non-virtual profiles only"
 		},
+		"ACCESS_GRANTED_ONLY": {
+			"YES": "Access granted only",
+			"NO": "Access not granted only"
+		},
 		"VIRTUEL_PROFILE": {
 			"TITLE": "Virtual Profile"
 		},
@@ -2188,6 +2192,11 @@
 			"LABEL": "Virtual Account",
 			"SHORTTITLE": "Virtual Account",
 			"TITLE": "Show virtual accounts"
+		},
+		"ACCESS": {
+			"LABEL": "Access to the application",
+			"SHORTTITLE": "Access to the application",
+			"TITLE": "Access to the application"
 		}
 	},
 	"VISITES": {
