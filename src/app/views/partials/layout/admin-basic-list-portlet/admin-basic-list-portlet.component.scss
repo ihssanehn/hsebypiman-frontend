@@ -56,6 +56,45 @@
         opacity: 0;
     }
 
+    .upload-content {
+        display: flex;
+        text-align: left;
+        align-items: center;
+        
+        .mat-icon {
+            color: #ff4343;
+            cursor: pointer;
+        }
+    }
+
+    .image-container {
+        width: 55px;
+        height: 55px;
+        border: 1px dashed #d9d9d9;
+        padding: 8px;
+        border-radius: 2px;
+        img {
+            width: 100%;
+        }
+    }
+
+    .upload-img {
+        display: flex;
+        align-items: center;
+        .img-format {
+            font-size: 10px;
+            font-style: italic;
+        }
+    }
+
+    .upload-img ::ng-deep .ant-upload.ant-upload-drag{
+        width: 55px;
+        height: 55px;
+    }
+
+    .upload-img ::ng-deep .ant-upload.ant-upload-drag p.ant-upload-drag-icon .anticon {
+        font-size: 25px
+    }
 
 }
 

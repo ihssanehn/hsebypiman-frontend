@@ -107,7 +107,7 @@ import {
 	VisiteQuestionsEpiAdminComponent,
 	VisiteQuestionsChantierAdminComponent,
 	SalarieFonctionsAdminComponent,
-	RemonteeEventTypesAdminComponent,
+	RemonteeEventTypesAdminComponent
 } from './layout';
 // General
 import { NoticeComponent } from './content/general/notice/notice.component';
@@ -128,7 +128,9 @@ import {
 		NzPopconfirmModule,
 		NzDividerModule,
 		NzIconModule,
-		NzCheckboxModule
+		NzCheckboxModule,
+		NzUploadModule,
+		NzGridModule
 } from 'ng-zorro-antd';
 import { AdminAddModalComponent } from './layout/admin-add-modal/admin-add-modal.component';
 import { ScrollDispatchModule, ScrollingModule } from '@angular/cdk/scrolling';
@@ -468,6 +470,8 @@ import { PdpDefaultValuesComponent } from './layout/admins/pdp-default-values/pd
 		MatExpansionModule,
 		FileUploadModule,
 		NgxPermissionsModule.forChild(),
+		NzUploadModule,
+		NzGridModule
 	],
 	entryComponents: [
 		AdminAddModalComponent,
