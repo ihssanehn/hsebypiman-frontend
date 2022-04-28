@@ -78,6 +78,15 @@
         }
     }
 
+    .upload-img {
+        display: flex;
+        align-items: center;
+        .img-format {
+            font-size: 10px;
+            font-style: italic;
+        }
+    }
+
     .upload-img ::ng-deep .ant-upload.ant-upload-drag{
         width: 55px;
         height: 55px;
