@@ -1,0 +1,23 @@
+:host {
+    .upload-content {
+        display: flex;
+        justify-content: center;
+
+        .image-container {
+            width: 104px;
+            height: 104px;
+            margin: 0 8px 8px 0;
+            border: 1px dashed #d9d9d9;
+            padding: 8px;
+            border-radius: 2px;
+        }
+
+        .upload-actions {
+            .mat-icon {
+                color: #ff4343;
+                cursor: pointer;
+            }
+        }
+    }
+
+}

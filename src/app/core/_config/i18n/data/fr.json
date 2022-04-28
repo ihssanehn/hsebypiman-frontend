@@ -1038,6 +1038,12 @@
 		},
 		"ALLOW_REVOKE_ACCESS": {
 			"TITLE": "Autoriser / revoquer l’accès"
+		},
+		"IMAGE": {
+			"TITLE": "Image"
+		},
+		"CLICK_OR_DRAG_TO_UPLOAD": {
+			"LABEL": "Cliquez ou faites glisser l'image dans cette zone pour le télécharger"
 		}
 	},
 	"EES": {

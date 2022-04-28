@@ -66,7 +66,7 @@ export class RemonteeTypesAdminComponent extends AdminTemplateComponent implemen
   }
 
   async addItem(){
-    super.addItem(this.translate.instant("REMONTEES.ADD_LIFT_TYPE.TITLE"), {ordre: this.generateParentOrdre()});  
+    super.addItem(this.translate.instant("REMONTEES.ADD_LIFT_TYPE.TITLE"), {ordre: this.generateParentOrdre()}, true, true);  
   }
 
   async createItem(payload){
