@@ -1038,6 +1038,12 @@
 		},
 		"ALLOW_REVOKE_ACCESS": {
 			"TITLE": "Allow / revoke access"
+		},
+		"IMAGE": {
+			"TITLE": "Image"
+		},
+		"CLICK_OR_DRAG_TO_UPLOAD": {
+			"LABEL": "Click or drag file to this area to upload"
 		}
 	},
 	"EES": {
@@ -1678,6 +1684,9 @@
 		},
 		"RESULT_FOUND": {
 			"TITLE": "Results Found"
+		},
+		"ACCOUNT_ALREADY_EXISTS": {
+			"TITLE": "You already have an account. You can login or reset your password."
 		}
 	},
 	"OUTILLAGE": {

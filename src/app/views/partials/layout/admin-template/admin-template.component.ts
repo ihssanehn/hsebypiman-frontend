@@ -72,10 +72,17 @@ export class AdminTemplateComponent implements OnInit {
 		this.getList();
 	}
 
-	async addItem(title?, appends?, up = true) {
+	async addItem(title?, appends?, up = true, withImage = false) {
 		const modalRef = this.modalService.open(AdminAddModalComponent, {centered: true});
 		modalRef.componentInstance.title = (title || '...');
-		modalRef.result.then(payload => this.createItem(payload, appends, up), payload => this.createItem(payload, appends, up));
+		modalRef.componentInstance.withImage = withImage;
+		modalRef.result.then((payload) => {
+			if (payload) {
+				this.createItem(payload, appends, up)
+			}
+		}, (reason) => {
+
+		});
 	}
 
 	async createItem(payload, appends?, up = true) {

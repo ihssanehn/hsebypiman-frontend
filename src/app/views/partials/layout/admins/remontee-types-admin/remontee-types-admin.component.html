@@ -17,7 +17,12 @@
 	<div class="row collapse" [ngClass]="{'show' : !tpl?.collapsed }" data-parent="#group">
 		<div class="col-{{tpl?.childCol}}">
 
-			<tf-admin-basic-list-portlet [items]="list" (onSaveItem)="saveItem($event)" (onRefreshItem)="getItem($event)" (onDeleteItem)="deleteItem($event)"  (onUpdateOrders)="updateOrders($event)"></tf-admin-basic-list-portlet>
+			<tf-admin-basic-list-portlet [items]="list" 
+										[imageColumn]="{title : 'COMMON.IMAGE.TITLE', key : 'icon'}"
+										(onSaveItem)="saveItem($event)" 
+										(onRefreshItem)="getItem($event)" 
+										(onDeleteItem)="deleteItem($event)"  
+										(onUpdateOrders)="updateOrders($event)"></tf-admin-basic-list-portlet>
 
 		</div>
 	</div>
