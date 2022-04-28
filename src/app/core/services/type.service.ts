@@ -38,7 +38,9 @@ export class TypeService extends HttpService{
                         .pipe(map(result => result.result.data));
     }
     create(item){
-        return this.http.post<any>(this.baseUrl+'/create', item)
+		const httpHeaders = new HttpHeaders();
+		httpHeaders.set("Content-Type", "multipart/form-data");
+        return this.http.post<any>(this.baseUrl+'/create', item, { headers: httpHeaders })
                         .pipe(map(result => result.result.data));
     }
     update(item){

@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef} from '@angular/core';
 import {NzTableComponent} from 'ng-zorro-antd';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 
@@ -18,6 +18,9 @@ export class AdminBasicListPortletComponent implements OnInit {
 	@Input()
 	addedColumns: any;
 
+	@Input()
+	imageColumn: any;
+
 	@Output()
 	onSaveItem = new EventEmitter<any>();
 
@@ -31,16 +34,15 @@ export class AdminBasicListPortletComponent implements OnInit {
 	onUpdateOrders = new EventEmitter<any>();
 
 	collapsed: boolean = false;
+	disableUpload: boolean = false;
 
-	constructor() {
+	constructor(private cdr : ChangeDetectorRef) {
 	}
 
 	ngOnInit() {
 	}
 
-
 	saveItem(data: any): void {
-		console.log(data);
 		this.onSaveItem.emit(data);
 		data.edit = false;
 	}
@@ -82,12 +84,15 @@ export class AdminBasicListPortletComponent implements OnInit {
 
 
 	startEdit(data: any): void {
+		this.items.map(item => item.edit = false);
 		data.old = data.libelle;
 		data.edit = true;
+		data.disableUpload = data.icon? true: false;
 	}
 
 	cancelEdit(data: any): void {
 		data.edit = false;
+		data.disableUpload = false;
 		data.libelle = data.old;
 	}
 
@@ -101,5 +106,27 @@ export class AdminBasicListPortletComponent implements OnInit {
 
 	generateParentOrdre() {
 		return this.items.length;
+	}
+
+	beforeUpload = (file): boolean => {
+		var data = this.items.filter(item => item.edit)[0];
+		var reader = new FileReader();
+		reader.onloadend = (e) => {
+			data.image = data.icon = reader.result;
+			if(data.image) data.disableUpload = true;
+			this.cdr.detectChanges();
+		}
+		
+		reader.onerror = function (error) {
+			console.log('Error: ', error);
+		};
+
+		reader.readAsDataURL(file);
+
+		return false;
+	}
+
+	deleteFile(data) {
+		data.disableUpload = false;
 	}
 }

@@ -55,7 +55,9 @@ import {
 	NzPopconfirmModule, 
 	NzDividerModule, 
 	NzIconModule,
-	NzCheckboxModule
+	NzCheckboxModule,
+	NzUploadModule,
+	NzGridModule
 } from 'ng-zorro-antd';
 // DateAdapter
 import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapter';
@@ -212,6 +214,8 @@ const routes: Routes = [
 		NzDividerModule, 
 		NzIconModule,
 		NzCheckboxModule,
+		NzUploadModule,
+		NzGridModule
 	],
 	providers: [
 		InterceptService,

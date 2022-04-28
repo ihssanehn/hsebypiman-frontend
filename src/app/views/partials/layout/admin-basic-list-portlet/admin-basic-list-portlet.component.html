@@ -13,6 +13,9 @@
 					  [nzShowPagination]="false">
 				<thead>
 				<tr>
+					<ng-container *ngIf="imageColumn">
+						<th nzWidth="10%">{{ imageColumn?.title | translate }}</th>
+					</ng-container>
 					<th>{{ 'COMMON.NAME.LABEL' | translate }}</th>
 					<ng-container *ngFor="let k of addedColumns">
 						<th class="text-center">{{ k?.title | translate }}</th>
@@ -24,6 +27,13 @@
 				<tbody cdkDropList (cdkDropListDropped)="dropItem($event)">
 				<tr cdkDrag [cdkDragData]="data" *ngFor="let data of items">
 					<ng-container *ngIf="!data.edit; else editTemplate">
+						<ng-container *ngIf="imageColumn">
+							<td class="text-center">
+								<div class="image-container">
+									<img [src]="data[imageColumn?.key]">
+								</div>
+							</td>
+						</ng-container>
 						<td><p class="mb-0" [innerHTML]="data?.libelle || data?.label"></p></td>
 						<ng-container *ngFor="let k of addedColumns">
 							<td class="text-center">{{'PDP.' + (data[k?.key] ? 'YES' : 'NO') | translate}}</td>
@@ -45,6 +55,35 @@
 						</td>
 					</ng-container>
 					<ng-template #editTemplate>
+						<ng-container *ngIf="imageColumn">
+							<td class="text-center">
+								<div class="upload-img">
+									<nz-upload 
+										nzType="drag" 
+										[nzBeforeUpload]="beforeUpload" 
+										[nzLimit]="1" 
+										nzAccept="image/*" 
+										[nzFileType]="'image/png,image/jpeg,image/jpg,image/bmp'" 
+										[nzShowUploadList]="false" 
+										*ngIf="!data.disableUpload"
+									>
+									  <p class="ant-upload-drag-icon" *ngIf="!data.disableUpload">
+										<i nz-icon nzType="upload" nzTheme="outline"></i>
+									  </p>
+									</nz-upload>
+									<div *ngIf="data.disableUpload">
+									  <div class="upload-content">
+										<div class="image-container" *ngIf="data[imageColumn?.key]">
+										  <img [src]="data[imageColumn?.key]" alt="">
+										</div>
+										<div class="upload-actions">
+											<mat-icon class="material-icons" (click)="deleteFile(data)">delete</mat-icon>
+										</div>
+									  </div>
+									</div>
+								</div>
+							</td>
+						</ng-container>
 						<td>
 							<input type="text" nz-input [(ngModel)]="data.label" name="name" *ngIf="data?.label"/>
 							<input type="text" nz-input [(ngModel)]="data.libelle" name="name" *ngIf="data?.libelle"/>
