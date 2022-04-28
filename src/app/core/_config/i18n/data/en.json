@@ -1684,6 +1684,9 @@
 		},
 		"RESULT_FOUND": {
 			"TITLE": "Results Found"
+		},
+		"ACCOUNT_ALREADY_EXISTS": {
+			"TITLE": "You already have an account. You can login or reset your password."
 		}
 	},
 	"OUTILLAGE": {

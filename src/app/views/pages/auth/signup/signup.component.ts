@@ -140,9 +140,7 @@ export class SignupComponent implements OnInit {
 
 		this.loading = true;
 
-    let formData = {...this.signupForm.getRawValue()};
-    console.log(formData)
-
+    	let formData = {...this.signupForm.getRawValue()};
 			this.authService.signup(formData)
 			.subscribe(
 				res=>{
@@ -154,7 +152,7 @@ export class SignupComponent implements OnInit {
 					}
 				},
 				err => {
-					this.authNoticeService.setNotice(this.translate.instant('NOTIF.ERROR_OCCURED.TITLE'), 'danger');
+					this.authNoticeService.setNotice(this.translate.instant('NOTIF.ACCOUNT_ALREADY_EXISTS.TITLE'), 'danger');
 					this.loading = false;
 					this.cdr.markForCheck();
 				}
