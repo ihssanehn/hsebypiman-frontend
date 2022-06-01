@@ -31,7 +31,6 @@ export class RefreshTokenIntercept implements HttpInterceptor {
 					if (event instanceof HttpResponse) {
 						var refreshedToken = event.headers.get("Authorization");
 						if(refreshedToken) {
-							console.log("TOKEN : ", refreshedToken);
 							localStorage.setItem(environment.authTokenKey, refreshedToken)
 						}
 				   }
