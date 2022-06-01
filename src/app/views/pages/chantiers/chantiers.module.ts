@@ -11,7 +11,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { PartialsModule } from '../../partials/partials.module';
 import { NgxPermissionsModule, NgxPermissionsGuard } from 'ngx-permissions';
 // Services
-import { HttpUtilsService, TypesUtilsService, InterceptService, LayoutUtilsService} from '../../../core/_base/crud';
+import { HttpUtilsService, TypesUtilsService, InterceptService, LayoutUtilsService, RefreshTokenIntercept} from '../../../core/_base/crud';
 // Shared
 import { ActionNotificationComponent } from '../../partials/content/crud';
 // Components
@@ -200,6 +200,12 @@ const routes: Routes = [
 		{
         	provide: HTTP_INTERCEPTORS,
        	 	useClass: InterceptService,
+			multi: true
+		},
+		RefreshTokenIntercept,
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: RefreshTokenIntercept,
 			multi: true
 		},
 		{

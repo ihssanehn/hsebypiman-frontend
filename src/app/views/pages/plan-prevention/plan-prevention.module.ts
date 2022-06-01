@@ -24,7 +24,7 @@ import {
 	MatSelectModule,
 	MatSlideToggleModule, MatSnackBarModule, MatSortModule, MatTableModule, MatTabsModule, MatTooltipModule
 } from '@angular/material';
-import {HttpUtilsService, InterceptService, LayoutUtilsService, TypesUtilsService} from '@app/core/_base/crud';
+import {HttpUtilsService, InterceptService, LayoutUtilsService, RefreshTokenIntercept, TypesUtilsService} from '@app/core/_base/crud';
 import {CustomDateAdapter} from '@app/core/_base/crud/utils/custom-date.adapter';
 import {ActionNotificationComponent} from '@app/views/partials/content/crud';
 import {PartialsModule} from '@app/views/partials/partials.module';
@@ -161,6 +161,12 @@ const routes: Routes = [
 		{
 			provide: HTTP_INTERCEPTORS,
 			useClass: InterceptService,
+			multi: true
+		},
+		RefreshTokenIntercept,
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: RefreshTokenIntercept,
 			multi: true
 		},
 		{
