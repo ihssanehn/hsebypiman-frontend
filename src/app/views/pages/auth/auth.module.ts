@@ -9,7 +9,7 @@ import { MatButtonModule, MatIconModule, MatCheckboxModule, MatFormFieldModule, 
 // Translate
 import { TranslateModule } from '@ngx-translate/core';
 // CRUD
-import { InterceptService } from '../../../core/_base/crud/';
+import { InterceptService, RefreshTokenIntercept } from '../../../core/_base/crud/';
 // Module components
 import { AuthComponent } from './auth.component';
 import { LoginComponent } from './login/login.component';
@@ -71,6 +71,12 @@ const routes: Routes = [
 		{
 			provide: HTTP_INTERCEPTORS,
 			useClass: InterceptService,
+			multi: true
+		},
+		RefreshTokenIntercept,
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: RefreshTokenIntercept,
 			multi: true
 		},
 	],

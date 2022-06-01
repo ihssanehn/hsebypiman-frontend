@@ -1,9 +1,9 @@
 // Angular
 import { Injectable } from '@angular/core';
-import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpResponse } from '@angular/common/http';
+import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 // RxJS
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { Observable, of, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 
 import { environment } from '@env/environment';
 import { Router } from '@angular/router';
@@ -14,6 +14,7 @@ import { TranslateService } from '@ngx-translate/core';
  */
 @Injectable()
 export class InterceptService implements HttpInterceptor {
+
 	// intercept request and add token
 	public constructor(private router: Router,
 		private translate: TranslateService,
@@ -35,54 +36,52 @@ export class InterceptService implements HttpInterceptor {
 				//  "Content-Type": "application/json"
 		   }
 	   });
-	   // console.log('----request----');
-	   // console.log(request);
-	   // console.log('--- end of request---');
 
-	   return next.handle(request).pipe(
-		   tap(
-			   event => {
-					if (event instanceof HttpResponse) {
-					   // console.log('all looks good');
-					   // http response status code
-					   // console.log(event.status);
-				   }
-			   },
-			   error => {
-				   if (error.status === 401 ) {
-					   switch (error.error.message.content) {
-						   case "token_expired":
-							   localStorage.removeItem(environment.authTokenKey);
-							   this.router.navigate(['/auth/login']);
-							   break;
-							case "token_invalid":
-							   localStorage.removeItem(environment.authTokenKey);
-							   this.router.navigate(['/auth/login']);
-							   break;
-						   case "token_absent":
-							   localStorage.removeItem(environment.authTokenKey);
-							   this.router.navigate(['/auth/login']);
-							   break;
-						   case "token_blacklisted":
-							   localStorage.removeItem(environment.authTokenKey);
-							   this.router.navigate(['/auth/login']);
-							   break;
-						   case "Unauthenticated.":
-							   localStorage.removeItem(environment.authTokenKey);
-							   this.router.navigate(['/auth/login']);
-							   break;
-							default:
-								localStorage.removeItem(environment.authTokenKey);
-								this.router.navigate(['/auth/login']);
-								break;
-					   }
-						   
-					//    
-				   } else if(error.status === 403){
-					//    this.notificationService.warning("Unauthorized", "Not allowed area");
-				   }
+	   return next.handle(request).pipe(catchError((errorResponse: HttpErrorResponse) => {
+			const error = (typeof errorResponse.error !== 'object') ? JSON.parse(errorResponse.error) : errorResponse;
+
+			if (errorResponse.status === 401 ) {
+				if(error.error.message.content == "token_cannot_be_refreshed") {
+					const cloneRequest = request.clone({
+						setHeaders: {
+							Authorization: `Bearer ${localStorage.getItem(environment.authTokenKey)}`,
+							"Accept-Language": localStorage.getItem('language') || this.translate.getDefaultLang(),
+						}
+					});
+					return next.handle(cloneRequest);
+
+				} else {
+					switch (error.error.message.content) {
+						case "token_expired":
+							console.log("token_expired");
+							localStorage.removeItem(environment.authTokenKey);
+							this.router.navigate(['/auth/login']);
+							break;
+						case "token_invalid":
+							localStorage.removeItem(environment.authTokenKey);
+							this.router.navigate(['/auth/login']);
+							break;
+						case "token_absent":
+							localStorage.removeItem(environment.authTokenKey);
+							this.router.navigate(['/auth/login']);
+							break;
+						case "token_blacklisted":
+							localStorage.removeItem(environment.authTokenKey);
+							this.router.navigate(['/auth/login']);
+							break;
+						case "Unauthenticated.":
+							localStorage.removeItem(environment.authTokenKey);
+							this.router.navigate(['/auth/login']);
+							break;
+						default:
+							localStorage.removeItem(environment.authTokenKey);
+							this.router.navigate(['/auth/login']);
+							break;
+					}
 			   }
-		   )
-	   );
+			}
+
+			return throwError(error);
+		}));
    }
 }
