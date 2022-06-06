@@ -16,9 +16,11 @@ export class RemonteeFormComponent implements OnInit {
 
   typesList: Type[];
   eventTypesList: Type[];
+  eventLocationTypesList: Type[];
 
   typesLoaded: boolean = false;
   eventTypesLoaded: boolean = false;
+  eventLocationTypesLoaded: boolean = false;
 
   @Input() remonteeForm: FormGroup;
   @Input() formStatus: FormStatus;
@@ -38,6 +40,7 @@ export class RemonteeFormComponent implements OnInit {
   ngOnInit() {
     this.getTypes();
     this.getEventTypes();
+    this.getEventLocationTypes();
   }
 
   async getTypes(){
@@ -56,6 +59,16 @@ export class RemonteeFormComponent implements OnInit {
     if(res){
       this.eventTypesList = res.result.data;
       this.eventTypesLoaded = true;
+    }
+    this.cdr.markForCheck();
+  }
+
+  async getEventLocationTypes(){
+    this.eventLocationTypesLoaded = false;
+    var res = await this.typeService.getAllFromModel('Remontelocationtype').toPromise();
+    if(res){
+      this.eventLocationTypesList = res.result.data;
+      this.eventLocationTypesLoaded = true;
     }
     this.cdr.markForCheck();
   }
