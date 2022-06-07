@@ -28,7 +28,7 @@
 	
 								<mat-form-field class="col-xl-12">
 									<mat-label>{{'REMONTEES.DESCRIPTION.LABEL' | translate}}</mat-label>
-									<textarea matInput class="form-control" name="description" formControlName="description" placeholder="{{ 'ACTION.ENTER_HERE' | translate }}" [required]="isFieldRequired('description')" id="description" rows="9"></textarea>
+									<textarea matInput class="form-control" name="description" formControlName="description" placeholder="{{ 'ACTION.ENTER_HERE' | translate }}" [required]="isFieldRequired('description')" id="description" rows="6"></textarea>
 									<mat-error *ngIf="isControlHasError('description','required')">
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
@@ -36,59 +36,53 @@
 							</div>
 						</div>
 
-						<div class="col-4">
+						<div class="col-8">
 							<div class="tf-heading tf-heading--md">{{'REMONTEES.CARD.EVENT.TITLE' | translate}}</div>
-							<div class="row form-row">
-								<div class="col-xl-12 d-inline-flex pt-3 pb-4 align-items-center">
-									<mat-label>{{'REMONTEES.IS_VICTIMS.TITLE' | translate}}</mat-label>
-									<mat-radio-group formControlName="is_victims" class="pl-5">
-										<mat-radio-button class="metric-radio" [value]="1">{{'COMMON.YES' | translate}}</mat-radio-button>
-										<mat-radio-button class="metric-radio" [value]="0">{{'COMMON.NO' | translate}}</mat-radio-button>
-									</mat-radio-group>
+							
+							<div class="d-flex">
+								<div class="col-6">
+									<div class="row form-row">
+										<div class="col-xl-12 d-inline-flex pt-3 pb-5 align-items-center">
+											<mat-label>{{'REMONTEES.IS_VICTIMS.TITLE' | translate}}</mat-label>
+											<mat-radio-group formControlName="is_victims" class="pl-5">
+												<mat-radio-button class="metric-radio" [value]="1">{{'COMMON.YES' | translate}}</mat-radio-button>
+												<mat-radio-button class="metric-radio" [value]="0">{{'COMMON.NO' | translate}}</mat-radio-button>
+											</mat-radio-group>
+										</div>
+										<mat-form-field class="col-xl-12">
+											<mat-label>{{'REMONTEES.EVENT_DATE.TITLE' | translate}}</mat-label>
+											<input matInput class="form-control" [matDatepicker]="event_date_picker" formControlName="event_date" placeholder="DD/MM/YYYY">
+											<mat-datepicker-toggle matSuffix [for]="event_date_picker"></mat-datepicker-toggle>
+											<mat-datepicker #event_date_picker></mat-datepicker>
+											<button mat-button *ngIf="formHasValue('event_date')" matSuffix mat-icon-button 
+												aria-label="Clear" (click)="clearValue('event_date'); $event.stopPropagation()">
+												<mat-icon>clear</mat-icon>
+											</button>
+										</mat-form-field>
+		
+										<mat-form-field class="col-xl-12">
+											<mat-label>{{'REMONTEES.EVENT_TYPE.LABEL' | translate}}</mat-label>
+											<mat-select class="form-control" placeholder="" formControlName="event_type_id" [required]="isFieldRequired('event_type_id')">
+												<mat-option *ngFor="let type of eventTypesList" [value]="type.id">
+													{{ type.libelle }}
+												</mat-option>
+											</mat-select>
+											<mat-error *ngIf="isControlHasError('event_type_id','required')">
+												<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+											</mat-error>
+										</mat-form-field>
+									</div>
 								</div>
-
-								<mat-form-field class="col-xl-12">
-									<mat-label>{{'REMONTEES.EVENT_DATE.TITLE' | translate}}</mat-label>
-									<input matInput class="form-control" [matDatepicker]="event_date_picker" formControlName="event_date" placeholder="DD/MM/YYYY">
-									<mat-datepicker-toggle matSuffix [for]="event_date_picker"></mat-datepicker-toggle>
-									<mat-datepicker #event_date_picker></mat-datepicker>
-									<button mat-button *ngIf="formHasValue('event_date')" matSuffix mat-icon-button 
-										aria-label="Clear" (click)="clearValue('event_date'); $event.stopPropagation()">
-										<mat-icon>clear</mat-icon>
-									</button>
-								</mat-form-field>
-
-								<mat-form-field class="col-xl-12">
-									<mat-label>{{'REMONTEES.EVENT_TYPE.LABEL' | translate}}</mat-label>
-									<mat-select class="form-control" placeholder="" formControlName="event_type_id" [required]="isFieldRequired('event_type_id')">
-										<mat-option *ngFor="let type of eventTypesList" [value]="type.id">
-											{{ type.libelle }}
-										</mat-option>
-									</mat-select>
-									<mat-error *ngIf="isControlHasError('event_type_id','required')">
-										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-									</mat-error>
-								</mat-form-field>
-
-								<mat-form-field class="col-xl-12">
-									<mat-label>{{'REMONTEES.EVENT_PLACE.TITLE' | translate}}</mat-label>
-									<input class="form-control" matInput type="text" name="event_place" formControlName="event_place" placeholder="{{'ACTION.ENTER_HERE' | translate}}" />
-								</mat-form-field>
-							</div>
-						</div>
-
-						<div class="col-4">
-							<div class="tf-heading tf-heading--md">{{'REMONTEES.ACTION.TITLE' | translate}}</div>
-							<div class="row form-row">
-								<mat-form-field class="col-xl-12">
-									<mat-label>{{'REMONTEES.FACTS.TITLE' | translate}}</mat-label>
-									<textarea matInput class="form-control" name="facts" formControlName="facts" placeholder="{{ 'ACTION.ENTER_HERE' | translate }}" rows="5"></textarea>
-								</mat-form-field>
-	
-								<mat-form-field class="col-xl-12">
-									<mat-label>{{'REMONTEES.ACTIONS.TITLE' | translate}}</mat-label>
-									<textarea matInput class="form-control" name="actions" formControlName="actions" placeholder="{{ 'ACTION.ENTER_HERE' | translate }}" rows="6"></textarea>
-								</mat-form-field>
+								<div class="col-6">
+									<div class="row form-row">
+										<div class="col-xl-12 pt-3 pb-4 align-items-center">
+											<mat-label>{{'REMONTEES.EVENT_PLACE.TITLE' | translate}}</mat-label>
+											<mat-radio-group formControlName="event_location_type_id" class="pl-5 radio-group-column">
+												<mat-radio-button *ngFor="let location of eventLocationTypesList" class="metric-radio" [value]="location.id">{{location.libelle}}</mat-radio-button>
+											</mat-radio-group>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 
@@ -97,7 +91,6 @@
 							<div class="row form-row">
 								<div class="col-12">
 									<form [formGroup]="remonteeForm" (ngSubmit)="uploadSubmit()" *ngIf="uploader">
-										<h4>{{'REMONTEES.CARD.DOC.TITLE' | translate}}</h4>
 										<div class="row">
 											<div class="col-4">
 	
@@ -144,7 +137,6 @@
 								</div>
 							</div>
 						</div>
-
 
 					</div>
 				</div>
