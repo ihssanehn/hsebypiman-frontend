@@ -1935,8 +1935,8 @@
 		},
 		"CARD": {
 			"DOC": {
-				"TITLE": "Documents",
-				"LABEL": "Liste des documents",
+				"TITLE": "Pièces jointes",
+				"LABEL": "Liste des pièces jointes",
 				"FILE_AWAIT_UPLOAD": "Fichiers en attente d'upload",
 				"ACTION": {
 					"REMOVE_DOC": "Retirer le document",
@@ -2014,9 +2014,9 @@
 			"TITLE": "Voir l'action"
 		},
 		"TYPE": {
-			"LABEL": "Typologie",
-			"SHORTTITLE": "Typologie",
-			"TITLE": "Typologie"
+			"LABEL": "Type de remontée",
+			"SHORTTITLE": "Type de remontée",
+			"TITLE": "Type de remontée"
 		},
 		"EVENT_DATE": {
 			"LABEL": "Date de l'évènement",
@@ -2024,14 +2024,14 @@
 			"TITLE": "Date de l'évènement"
 		},
 		"EVENT_PLACE": {
-			"LABEL": "Lieu de l'évènement",
-			"SHORTTITLE": "Lieu de l'évènement",
-			"TITLE": "Lieu de l'évènement"
+			"LABEL": "Localisation",
+			"SHORTTITLE": "Localisation",
+			"TITLE": "Localisation"
 		},
 		"IS_VICTIMS": {
-			"LABEL": "Victimes",
-			"SHORTTITLE": "Victimes",
-			"TITLE": "Victimes"
+			"LABEL": "Dommage corporel",
+			"SHORTTITLE": "Dommage corporel",
+			"TITLE": "Dommage corporel"
 		},
 		"FACTS": {
 			"LABEL": "Déroulé des faits",

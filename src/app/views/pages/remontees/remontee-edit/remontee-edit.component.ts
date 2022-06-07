@@ -109,7 +109,7 @@ export class RemonteeEditComponent implements OnInit, OnDestroy {
 			description: ['', Validators.required],
 			type_id: [null, Validators.required],
 			event_date: [new Date(), null],
-			event_place: ['', null],
+      		event_location_type_id: [null, null],
 			event_type_id: [null, null],
 			facts: ['', null],
 			is_victims: [0, null],
