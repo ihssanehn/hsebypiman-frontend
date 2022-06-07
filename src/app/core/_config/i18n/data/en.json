@@ -1933,8 +1933,8 @@
 		},
 		"CARD": {
 			"DOC": {
-				"TITLE": "Documents",
-				"LABEL": "List of documents",
+				"TITLE": "Attachments",
+				"LABEL": "List of attachments",
 				"FILE_AWAIT_UPLOAD": "Pending files for upload",
 				"ACTION": {
 					"REMOVE_DOC": "Remove the document",
@@ -2012,9 +2012,9 @@
 			"TITLE": "Display action"
 		},
 		"TYPE": {
-			"LABEL": "Typology",
-			"SHORTTITLE": "Typology",
-			"TITLE": "Typology"
+			"LABEL": "Type",
+			"SHORTTITLE": "Type",
+			"TITLE": "Type"
 		},
 		"EVENT_DATE": {
 			"LABEL": "Event date",
@@ -2022,14 +2022,14 @@
 			"TITLE": "Event date"
 		},
 		"EVENT_PLACE": {
-			"LABEL": "Event location",
-			"SHORTTITLE": "Event location",
-			"TITLE": "Event location"
+			"LABEL": "Location",
+			"SHORTTITLE": "Location",
+			"TITLE": "Location"
 		},
 		"IS_VICTIMS": {
-			"LABEL": "Victims",
-			"SHORTTITLE": "Victims",
-			"TITLE": "Victims"
+			"LABEL": "Bodily harm",
+			"SHORTTITLE": "Bodily harm",
+			"TITLE": "Bodily harm"
 		},
 		"FACTS": {
 			"LABEL": "Unfolding of the facts",
