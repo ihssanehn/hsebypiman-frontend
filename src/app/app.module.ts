@@ -9,7 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms'
 import { GestureConfig, MatProgressSpinnerModule,MAT_DATE_LOCALE, MAT_DATE_FORMATS, DateAdapter } from '@angular/material';
 import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapter';
 
-import { registerLocaleData } from '@angular/common';
+import { registerLocaleData, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 registerLocaleData(localeFr);
 
@@ -200,6 +200,7 @@ export function hljsLanguages(): HighlightLanguage[] {
 			provide: LOCALE_ID,
 			useValue: 'fr-FR'
 		},
+		{provide: LocationStrategy, useClass: PathLocationStrategy},
 		// WORK
 		ModuleGuard,
 		AuthService,
