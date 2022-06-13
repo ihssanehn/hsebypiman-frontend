@@ -2149,6 +2149,13 @@
 			},
 			"USER_UPDATED": {
 				"TITLE": "Utilisateur mis à jour avec succès"
+			},
+			"USER_DELETED": {
+				"TITLE": "Utilisateur a bien été supprimé"
+			},
+			"USER_DELETE_CONFIRMATION": {
+				"TITLE": "Vous allez supprimer cet utilisateur de façon définitive",
+				"LABEL": "Êtes-vous sûr de vouloir continuer ?"
 			}
 		},
 		"CARD": {

@@ -31,7 +31,7 @@ export class UsersListComponent implements OnInit {
 	showFilters:Boolean = false;
 
 	displayedUsersColumns = [
-		'prenom', 'nom', 'email', 'fonction', 'role', 'acces'
+		'prenom', 'nom', 'email', 'fonction', 'role', 'acces', 'actions'
 	];
 
 
@@ -90,13 +90,31 @@ export class UsersListComponent implements OnInit {
 	editUser(userId) {
 		this.router.navigateByUrl('admin/users/edit/' + userId);
 	}
+
 	deleteUser(userId) {
 		Swal.fire({
-			title: this.translate.instant("NOTIF.FEATURE_NOT_IMPLEMENTED.TITLE"),
-			showConfirmButton: false,
-			timer: 1500
+			icon: 'warning',
+			title: this.translate.instant("USERS.NOTIF.USER_DELETE_CONFIRMATION.TITLE"),
+			text: this.translate.instant("USERS.NOTIF.USER_DELETE_CONFIRMATION.LABEL"),
+			showConfirmButton: true,
+			showCancelButton: true,
+			cancelButtonText: this.translate.instant("ACTION.CANCEL"),
+			confirmButtonText: this.translate.instant("ACTION.DELETE"),
+		}).then(async response => {
+			if (response.value) {
+				this.UserService.deleteUser(userId).toPromise().then(res=>{
+					this.getUsers();
+					Swal.fire({
+						title: this.translate.instant("USERS.NOTIF.USER_DELETED.TITLE"),
+						showConfirmButton: false,
+						icon: 'success',
+						timer: 1500
+					});
+				})
+			}
 		})
 	}
+
 	addUser(){
 		this.router.navigateByUrl('admin/users/add')
 	}

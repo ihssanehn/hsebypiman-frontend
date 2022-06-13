@@ -2147,6 +2147,13 @@
 			},
 			"USER_UPDATED": {
 				"TITLE": "User updated successfully"
+			},
+			"USER_DELETED": {
+				"TITLE": "User has been successfully deleted"
+			},
+			"USER_DELETE_CONFIRMATION": {
+				"LABEL": "The user will be permanently deleted.",
+				"TITLE": "Are you sure you want to delete this user?"
 			}
 		},
 		"CARD": {
