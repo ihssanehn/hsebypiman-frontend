@@ -155,7 +155,9 @@ export class RemonteeEditComponent implements OnInit, OnDestroy {
 				  return formData.append(key, form[key]);
 			  })
 		
-			formData.set('event_date', this.dateFrToEnPipe.transform(form.event_date));
+			if(form.event_date)
+				formData.set('event_date', this.dateFrToEnPipe.transform(form.event_date));
+			else formData.set('event_date', '');
 			
 			this.remonteeService.update(this.remontee.id, formData)
 				.toPromise()

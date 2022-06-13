@@ -58,7 +58,7 @@ export class RemonteeAddComponent implements OnInit {
 		this.remonteeForm = this.remonteFB.group({
       description: ['', Validators.required],
       type_id: [null, Validators.required],
-      event_date: [new Date(), null],
+      event_date: [new Date()],
       event_location_type_id: [null, null],
       event_type_id: [null, null],
       facts: ['', null],
@@ -92,7 +92,8 @@ export class RemonteeAddComponent implements OnInit {
           return formData.append(key, form[key]);
       })
 
-      formData.set('event_date', this.dateFrToEnPipe.transform(form.event_date));
+      if(form.event_date)
+        formData.set('event_date', this.dateFrToEnPipe.transform(form.event_date));
 
 			this.remonteeService.create(formData)
         .toPromise()
