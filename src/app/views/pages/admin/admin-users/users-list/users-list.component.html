@@ -75,17 +75,7 @@
 						</td>
 					</ng-container>
 		
-
-					<!-- status Column -->
-					<!-- <ng-container matColumnDef="status">
-						<th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('status.libelle')">
-							{{'PERSONNELS.STATUS.TITLE' | translate}}
-							<i class="fa" [ngClass]="isOrderedBy('status.libelle') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('status.libelle') && {opacity:1}"></i>
-						</th>
-						<td mat-cell *matCellDef="let user" (click)="viewUser(user.id)" class="text-center pointer" [ngStyle]="user.status && user.status.color && {'color':user.status.color}"> {{user.status?.libelle}} </td>
-					</ng-container> -->
-		
-					<ng-container matColumnDef="action" stickyEnd >
+					<ng-container matColumnDef="actions" stickyEnd >
 						<th mat-header-cell *matHeaderCellDef></th>
 						<td mat-cell *matCellDef="let user" class="text-right">
 							<button mat-icon-button color="primary" matTooltip="Actions" [matMenuTriggerFor]="actionMenu" [matMenuTriggerData]="user" (click)="selectedUser = user">
@@ -112,6 +102,11 @@
 		<ng-container *ngxPermissionsOnly="['user_canUpdate']">
 			<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editUser(selectedUser.id)">
 				<mat-icon>edit</mat-icon>
+			</button>
+		</ng-container>
+		<ng-container>
+			<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteUser(selectedUser.id)">
+				<mat-icon>delete</mat-icon>
 			</button>
 		</ng-container>
 	</mat-menu>
