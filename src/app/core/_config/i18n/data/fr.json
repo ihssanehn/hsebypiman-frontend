@@ -1044,6 +1044,9 @@
 		},
 		"CLICK_OR_DRAG_TO_UPLOAD": {
 			"LABEL": "Cliquez ou faites glisser l'image dans cette zone pour le télécharger"
+		},
+		"UPDATE_DATE": {
+			"LABEL": "Date de la dernière modification"
 		}
 	},
 	"EES": {
