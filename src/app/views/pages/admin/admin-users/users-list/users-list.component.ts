@@ -31,7 +31,7 @@ export class UsersListComponent implements OnInit {
 	showFilters:Boolean = false;
 
 	displayedUsersColumns = [
-		'prenom', 'nom', 'email', 'fonction', 'role', 'acces', 'actions'
+		'prenom', 'nom', 'email', 'fonction', 'role', 'acces', 'date_last_update', 'actions'
 	];
 
 
