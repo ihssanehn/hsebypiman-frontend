@@ -1044,6 +1044,9 @@
 		},
 		"CLICK_OR_DRAG_TO_UPLOAD": {
 			"LABEL": "Click or drag file to this area to upload"
+		},
+		"UPDATE_DATE": {
+			"LABEL": "Last updated date"
 		}
 	},
 	"EES": {
