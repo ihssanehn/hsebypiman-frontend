@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultComponent implements OnInit {
 
+  success: boolean = false;
+
   constructor() { }
 
   ngOnInit() {

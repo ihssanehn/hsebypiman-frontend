@@ -1,0 +1,30 @@
+@import "../../../../../assets/sass/pages/quizz/quizz.scss";
+
+.tf-quizz-chapter {
+    &__content {
+        color: #41b6a3;
+        font-weight: bold;
+        font-size: 2.3em;
+        margin: 2em 0 10em 0;
+    }
+
+    &__actions {
+        display: flex;
+        justify-content: space-evenly;
+    
+        button {
+            width: 90px;
+            height: 90px;
+            border-radius: 10px;
+            background-color: #e2e2e2;
+            border: 2px solid #f2f1f1;
+            color: #c7c7c7;
+    
+            &.btn-selected {
+                background-color: #b8ebe3;
+                border: 2px solid #e5f8f5;
+                color: #41b6a3;
+            }
+        }
+    }
+}
