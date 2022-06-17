@@ -6,10 +6,11 @@
         </div>
     
         <div class="tf-quizz-chapter__actions">
-            <button routerLink="/quizz/chapter" class="btn btn-selected"></button>
-            <button routerLink="/home" class="btn"></button>
-            <button routerLink="/home" class="btn"></button>
-            <button routerLink="/home" class="btn"></button>
+            <!-- <button routerLink="/quizz/chapter" class="btn btn-selected"></button> -->
+            <div *ngFor="let chapter of chapters">
+                <button (click)="goToQuestions(chapter.id)" class="btn">**</button>
+                <span>{{chapter.label}}</span>
+            </div>
         </div>
     </div>
 </div>

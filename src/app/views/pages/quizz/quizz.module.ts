@@ -13,7 +13,7 @@ const routes: Routes = [
 		path: '',
 		component: QuizzComponent,
 		children: [
-      {
+      		{
 				path: '',
 				redirectTo: 'home',
 				pathMatch: 'full'
@@ -23,11 +23,11 @@ const routes: Routes = [
 				component: HomeComponent
 			},
 			{
-				path: 'chapter',
+				path: ':id/chapter',
 				component: ChapterComponent,
 			},
 			{
-				path: 'question',
+				path: ':id/chapter/:idChapter/question',
 				component: QuestionComponent,
 			},
 			{

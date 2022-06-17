@@ -12,6 +12,16 @@
         display: flex;
         justify-content: space-evenly;
     
+         div {
+            display: flex;
+            flex-direction: column;
+            // font-weight: bold;
+            // color: #41b6a3;
+            color: #000000;
+            text-align: center;
+            width: 90px;
+        }
+
         button {
             width: 90px;
             height: 90px;
@@ -25,6 +35,10 @@
                 border: 2px solid #e5f8f5;
                 color: #41b6a3;
             }
+        }
+
+        span {
+            margin-top: 1rem;
         }
     }
 }
