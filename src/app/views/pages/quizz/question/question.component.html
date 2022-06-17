@@ -1,26 +1,27 @@
 <div class="tf-quizz__body">
     <div class="tf-quizz__container">
 
-        <div class="tf-quizz__content">
-            <div class="tf-quizz-question__head">
-                <p>{{chapter?.label}} <b>{{counter}}/{{chapter?.questions.length}}</b></p>
+        <swiper [config]="config" #questionSwiper>
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" *ngFor="let question of chapter?.questions; let index = index">
+                    <tf-question-slide
+                        [question]="question"
+                        [chapterTitle]="chapter?.label"
+                        [currentIndex]="index+1"
+                        [totalQuestions]="chapter?.questions.length"
+                    ></tf-question-slide>
+                </div>
             </div>
-    
-            <div class="tf-quizz-question__label">
-                <p>Quelle est la date de création de l'entreprise ?</p>
-            </div>
-    
-            <div class="tf-quizz-question__items">
-                <div class="item item__selected">2008</div>
-                <div class="item">2009</div>
-                <div class="item">2010</div>
-            </div>
-        </div>
+          
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>  
+        </swiper>
 
 
         <div class="tf-quizz__actions">
-            <button routerLink="/quizz/chapter" id="tf_login_signin_submit" class="btn btn-primary btn-elevate tf-quizz__actions-primary">Suivant</button>
-            <button routerLink="/home" id="tf_login_signin_submit" class="btn btn-primary btn-elevate tf-quizz__actions-secondary">Question précédente</button>
+            <button (click)="nextSlide()" class="btn btn-primary btn-elevate tf-quizz__actions-primary">Suivant</button>
+            <button (click)="previousSlide()" class="btn btn-primary btn-elevate tf-quizz__actions-secondary">Question précédente</button>
         </div>
     </div>
 </div>

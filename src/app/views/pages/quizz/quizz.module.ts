@@ -6,6 +6,8 @@ import { HomeComponent } from './home/home.component';
 import { ChapterComponent } from './chapter/chapter.component';
 import { QuestionComponent } from './question/question.component';
 import { ResultComponent } from './result/result.component';
+import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
+import { QuestionSlideComponent } from './question/question-slide/question-slide.component';
 
 
 const routes: Routes = [
@@ -45,11 +47,13 @@ const routes: Routes = [
     HomeComponent,
     ChapterComponent,
     QuestionComponent,
-    ResultComponent
+    ResultComponent,
+    QuestionSlideComponent
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+	NgxUsefulSwiperModule
   ]
 })
 export class QuizzModule { }
