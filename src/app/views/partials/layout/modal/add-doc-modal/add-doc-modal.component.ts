@@ -87,7 +87,7 @@ export class AddDocModalComponent implements OnInit{
   }
   
   onFileDrop(event){
-    var extensions = ['jpg','bmp','jpeg','gif','png','tif'];
+    var extensions = ['jpg','bmp','jpeg','gif','png','tif','heic'];
 
     for (let i = 0; i < event.length; i++) {
       
