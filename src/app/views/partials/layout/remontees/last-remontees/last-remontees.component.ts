@@ -36,7 +36,7 @@ export class LastRemonteesComponent implements OnInit {
 		var res = await this.remonteeService.getAll({limit:3}).toPromise();
 		var _remontees = res.result.data;
 		_remontees.forEach(remontee=>{
-			remontee.photos = remontee.documents.filter(x => ['jpg','bmp','jpeg','gif','png','tif'].indexOf(x.extension.toLowerCase()) != -1);
+			remontee.photos = remontee.documents.filter(x => ['jpg','bmp','jpeg','gif','png','tif','heic'].indexOf(x.extension.toLowerCase()) != -1);
 			remontee.photos.forEach(x=>{
 				x.src = this.documentService.readFile(x.id);
 				x.image = this.documentService.readFile(x.id);

@@ -14,7 +14,7 @@ export class ShowDocumentModalComponent implements OnInit{
   slideIndex = 0;
   document:any;
   image_extensions = [
-    'jpg','bmp','jpeg','gif','png','tif',
+    'jpg','bmp','jpeg','gif','png','tif','heic',
   ]
 
   constructor(

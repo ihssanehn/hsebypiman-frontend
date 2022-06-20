@@ -71,7 +71,7 @@ export class RemonteeDetailComponent implements OnInit, OnDestroy {
 		try {
 			var res = await this.remonteeService.get(remonteId).toPromise();
 			var remontee = res.result.data;
-			remontee.photos = remontee.documents.filter(x => ['jpg','bmp','jpeg','gif','png','tif'].indexOf(x.extension.toLowerCase()) != -1);
+			remontee.photos = remontee.documents.filter(x => ['jpg','bmp','jpeg','gif','png','tif','heic'].indexOf(x.extension.toLowerCase()) != -1);
 			remontee.photos.forEach(x=>{
 				x.src = this.documentService.readFile(x.id);
 				x.image = this.documentService.readFile(x.id);
