@@ -6,6 +6,7 @@ export class QcmSession {
     user_id?: number;
     qcm_id?: number;
     score?: number;
+    is_success?: boolean;
     user?: User;
     qcm?: any;
     answers?: any;

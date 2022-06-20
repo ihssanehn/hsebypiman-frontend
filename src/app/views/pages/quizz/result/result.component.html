@@ -1,7 +1,7 @@
 <div class="tf-quizz__body">
     <div class="tf-quizz__container">
         <div class="tf-quizz-result__head text-center">
-            <p>9 Bonnes réponses</p>
+            <p>{{score}} Bonnes réponses</p>
             <p *ngIf="success">Félicitations</p>
             <p *ngIf="!success">Aiiie</p>
         </div>
@@ -24,7 +24,7 @@
         </div>
 
         <div class="tf-quizz__actions" *ngIf="!success">
-            <button routerLink="/quizz/chapter" class="btn btn-primary btn-elevate tf-quizz__actions-primary">Je retente ma chance</button>
+            <button routerLink="/quizz" class="btn btn-primary btn-elevate tf-quizz__actions-primary">Je retente ma chance</button>
             <button routerLink="/home" class="btn btn-primary btn-elevate tf-quizz__actions-secondary">Je réessaierai plus tard</button>
         </div>
     </div>

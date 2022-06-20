@@ -113,6 +113,15 @@ export class MenuConfig {
 					needModule: true,
 					moduleCode: ['DISCUSS']
 				},
+				{
+					title: 'Quizz',
+					root: true,
+					alignment: 'left',
+					page: '/quizz',
+					translate: 'MENU.QUIZ',
+					// needModule: true,
+					// moduleCode: ['DISCUSS']
+				}
 
 			]
 		},

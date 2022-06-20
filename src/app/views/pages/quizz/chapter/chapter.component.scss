@@ -15,8 +15,6 @@
          div {
             display: flex;
             flex-direction: column;
-            // font-weight: bold;
-            // color: #41b6a3;
             color: #000000;
             text-align: center;
             width: 90px;
@@ -34,6 +32,10 @@
                 background-color: #b8ebe3;
                 border: 2px solid #e5f8f5;
                 color: #41b6a3;
+                + span {
+                    font-weight: bold;
+                    color: #41b6a3;
+                }
             }
         }
 

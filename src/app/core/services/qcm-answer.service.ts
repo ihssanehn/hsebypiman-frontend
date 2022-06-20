@@ -28,7 +28,7 @@ export class QcmAnswerService extends HttpService{
         return this.http.get<JsonResponse<QcmAnswer>>(this.baseUrl+'/'+qcm_answer_id);
     }
     create(qcmAnswer){
-        return this.http.post<JsonResponse<QcmAnswer>>(this.baseUrl+'/'+'create', qcmAnswer);
+        return this.http.post<JsonResponse<any>>(this.baseUrl+'/'+'create', qcmAnswer);
     }
     update(qcmAnswer){
         return this.http.put<JsonResponse<QcmAnswer>>(this.baseUrl+'/'+qcmAnswer.id, qcmAnswer);

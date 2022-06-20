@@ -8,7 +8,7 @@
         <div class="tf-quizz-chapter__actions">
             <!-- <button routerLink="/quizz/chapter" class="btn btn-selected"></button> -->
             <div *ngFor="let chapter of chapters">
-                <button (click)="goToQuestions(chapter.id)" class="btn">**</button>
+                <button (click)="goToQuestions(chapter.id)" class="btn" [class.btn-selected]="isChapterFilled(chapter)" >**</button>
                 <span>{{chapter.label}}</span>
             </div>
         </div>

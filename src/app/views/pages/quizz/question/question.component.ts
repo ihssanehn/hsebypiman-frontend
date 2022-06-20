@@ -60,13 +60,7 @@ export class QuestionComponent implements OnInit {
         const idQcmSession = params.id;
         const idChapter = params.idChapter;
         if (idQcmSession && idChapter) {
-          if(!this.currentQcmSession) {
             this.getQuizz(idQcmSession, idChapter);
-          } else {
-            this.chapter = this.qcmSessionService.getChapterQuestions(idChapter);
-            console.log(this.chapter);
-          }
-          
         } else {
           this.router.navigateByUrl('/quizz/home');
         }
@@ -95,13 +89,18 @@ export class QuestionComponent implements OnInit {
     var selectedResponses = question.responses.filter(res => res.isSelected);
 
     if (selectedResponses.length) {
-      this.setAnswer(selectedResponses);
-      if (this.questionSwiper.swiper.isEnd) {
-        this.goToChapter();
-      } else {
-        this.questionSwiper.swiper.slideNext();
-        this.currentSlideIndex++;
-      }
+      this.setAnswer(selectedResponses).then(res => {
+        if(res.result.data.question_answered_count < res.result.data.question_count) {
+          if (this.questionSwiper.swiper.isEnd) {
+            this.goToChapter();
+          } else {
+            this.questionSwiper.swiper.slideNext();
+            this.currentSlideIndex++;
+          }
+        } else {
+          this.goToResult();
+        }
+      });
     } else {
       console.log("Veuillez sélectionner une réponse !")
     }
@@ -109,8 +108,12 @@ export class QuestionComponent implements OnInit {
   }
 
   previousSlide() {
-    this.questionSwiper.swiper.slidePrev();
-    this.currentSlideIndex--;
+    if(this.currentSlideIndex) {
+      this.questionSwiper.swiper.slidePrev();
+      this.currentSlideIndex--;
+    } else {
+      this.router.navigateByUrl('/quizz/'+this.currentQcmSession.id+'/chapter');
+    }
   }
   
   slideToThis(index) {
@@ -121,16 +124,17 @@ export class QuestionComponent implements OnInit {
     this.router.navigateByUrl('/quizz/'+this.currentQcmSession.id+'/chapter');
   }
 
-  setAnswer(responses: any[]) {
+  goToResult() {
+    this.router.navigateByUrl('/quizz/'+this.currentQcmSession.id+'/result');
+  }
+
+  async setAnswer(responses: any[]) {
     var idResponses = responses.map(res => res.id);
     var params = {
       'qcm_session_id': this.currentQcmSession.id,
-      //'response_ids': idResponses
-      'response_id': idResponses[0]
+      'response_ids': idResponses
     }
-    this.qcmAnswerService.create(params).toPromise().then(res => {
-      console.log(res);
-    });
+    return await this.qcmAnswerService.create(params).toPromise();
   }
 
 

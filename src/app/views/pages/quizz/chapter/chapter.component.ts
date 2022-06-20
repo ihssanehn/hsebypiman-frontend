@@ -60,4 +60,13 @@ export class ChapterComponent implements OnInit {
     this.router.navigateByUrl('/quizz/'+ this.currentQcmSession.id +'/chapter/'+ idChapter +'/question');
   }
 
+  isChapterFilled(chapter: any) {
+    var questionsNotFilled = chapter.questions.find(question => {
+      var questionFilled = question.responses.find(response => response.isSelected == true);
+      return !questionFilled;
+    })
+
+    return questionsNotFilled? false: true;
+  }
+
 }

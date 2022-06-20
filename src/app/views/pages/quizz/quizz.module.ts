@@ -33,7 +33,7 @@ const routes: Routes = [
 				component: QuestionComponent,
 			},
 			{
-				path: 'result',
+				path: ':id/result',
 				component: ResultComponent,
 			}
 		]
