@@ -1,4 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { MatIconRegistry } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QcmSession } from '@app/core/models';
 import { QcmSessionService } from '@app/core/services';
@@ -17,8 +19,12 @@ export class ResultComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private cdr: ChangeDetectorRef,
-    private qcmSessionService: QcmSessionService
-  ) { }
+    private qcmSessionService: QcmSessionService,
+    private iconRegistry: MatIconRegistry, 
+		private sanitizer: DomSanitizer
+  ) { 
+    this.iconRegistry.addSvgIcon('picto-medaille',this.sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-medaille.svg'));
+  }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(

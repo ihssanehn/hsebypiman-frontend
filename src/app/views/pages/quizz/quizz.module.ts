@@ -8,6 +8,7 @@ import { QuestionComponent } from './question/question.component';
 import { ResultComponent } from './result/result.component';
 import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 import { QuestionSlideComponent } from './question/question-slide/question-slide.component';
+import { MatIconModule } from '@angular/material';
 
 
 const routes: Routes = [
@@ -53,7 +54,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-	NgxUsefulSwiperModule
+	NgxUsefulSwiperModule,
+	MatIconModule
   ]
 })
 export class QuizzModule { }

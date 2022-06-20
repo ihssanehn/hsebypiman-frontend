@@ -1,7 +1,10 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { MatIconRegistry } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QcmSession } from '@app/core/models';
 import { QcmSessionService } from '@app/core/services';
+import { environment } from '@env/environment';
 
 @Component({
   selector: 'tf-chapter',
@@ -12,13 +15,17 @@ export class ChapterComponent implements OnInit {
 
   currentQcmSession: QcmSession;
   chapters: any[];
+  storageUrl: string = environment.storageBaseUrl;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private cdr: ChangeDetectorRef,
-    private qcmSessionService: QcmSessionService
+    private qcmSessionService: QcmSessionService,
+    private iconRegistry: MatIconRegistry, 
+		public sanitizer: DomSanitizer
   ) {
+    this.iconRegistry.addSvgIcon('picto-piman-vert',this.sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-piman-vert.svg'));
 
   }
 

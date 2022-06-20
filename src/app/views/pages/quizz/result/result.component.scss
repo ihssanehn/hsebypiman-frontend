@@ -14,4 +14,13 @@
             font-size: 2rem;
         }
     }
+
+    &__icon {
+        margin: 3rem 0;
+
+        .mat-icon {
+            height: 60px;
+            width: 60px;
+        }
+    }
 }

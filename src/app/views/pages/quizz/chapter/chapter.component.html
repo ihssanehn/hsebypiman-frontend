@@ -1,14 +1,17 @@
 <div class="tf-quizz__body">
     <div class="tf-quizz__container">
         <div class="tf-quizz-chapter__content text-center">
-            <div style="margin: 2rem 0">ICONS</div>
+            <div class="tf-quizz-chapter__icon">
+                <mat-icon svgIcon="picto-piman-vert"></mat-icon>
+            </div>
             <div>PIMAN GROUP</div>
         </div>
     
         <div class="tf-quizz-chapter__actions">
-            <!-- <button routerLink="/quizz/chapter" class="btn btn-selected"></button> -->
             <div *ngFor="let chapter of chapters">
-                <button (click)="goToQuestions(chapter.id)" class="btn" [class.btn-selected]="isChapterFilled(chapter)" >**</button>
+                <button (click)="goToQuestions(chapter.id)" class="btn" [class.btn-selected]="isChapterFilled(chapter)" >
+                    <img [src]="sanitizer.bypassSecurityTrustResourceUrl(storageUrl + chapter.img)"/>
+                </button>
                 <span>{{chapter.label}}</span>
             </div>
         </div>

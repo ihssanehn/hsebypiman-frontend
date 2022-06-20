@@ -1,4 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { MatIconRegistry } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AuthService, User } from '@app/core/auth';
 import { QcmSessionService } from '@app/core/services';
@@ -16,9 +18,14 @@ export class HomeComponent implements OnInit {
     private authService: AuthService,
     private qcmSessionService: QcmSessionService,
     private cdr: ChangeDetectorRef,
-    private router: Router
+    private router: Router,
+    private iconRegistry: MatIconRegistry, 
+		private sanitizer: DomSanitizer
   ) {
     this.authService.currentUser.subscribe(x=> this.user = x);
+    this.iconRegistry.addSvgIcon('picto-secu-mixte',this.sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-secu-mixte.svg'));
+    this.iconRegistry.addSvgIcon('picto-care',this.sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-care.svg'));
+    this.iconRegistry.addSvgIcon('picto-feuille',this.sanitizer.bypassSecurityTrustResourceUrl('./assets/media/hse-svg/picto-feuille.svg'));
   }
 
   ngOnInit() {
