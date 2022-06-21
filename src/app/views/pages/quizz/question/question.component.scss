@@ -1,0 +1,10 @@
+@import "../../../../../assets/sass/pages/quizz/quizz.scss";
+
+
+.tf-quizz__container {
+    ::ng-deep .swiper-container {
+        padding-bottom: 3em;
+    }
+}
+
+

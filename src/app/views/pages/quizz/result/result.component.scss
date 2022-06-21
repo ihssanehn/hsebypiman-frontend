@@ -1,0 +1,26 @@
+@import "../../../../../assets/sass/pages/quizz/quizz.scss";
+
+
+.tf-quizz-result {
+    &__head {
+        font-weight: bold;
+        color: #171717;
+
+        > p:nth-child(1) {
+            font-size: 1.5rem;
+        }
+
+        > p:nth-child(2) {
+            font-size: 2rem;
+        }
+    }
+
+    &__icon {
+        margin: 3rem 0;
+
+        .mat-icon {
+            height: 60px;
+            width: 60px;
+        }
+    }
+}

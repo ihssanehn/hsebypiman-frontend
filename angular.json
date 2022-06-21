@@ -38,7 +38,8 @@
               "src/assets/plugins/flaticon/flaticon.css",
               "src/assets/plugins/flaticon2/flaticon.css",
               "src/assets/theme.less",
-              "src/assets/sass/style.angular.scss"
+              "src/assets/sass/style.angular.scss",
+              "node_modules/swiper/swiper.scss"
             ],
             "scripts": [
               "node_modules/popper.js/dist/umd/popper.js",
