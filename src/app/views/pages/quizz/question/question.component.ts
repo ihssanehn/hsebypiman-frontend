@@ -22,7 +22,7 @@ export class QuestionComponent implements OnInit {
   config: SwiperOptions = {
     pagination: { el: '.swiper-pagination', clickable: true },
     autoHeight: true,
-    //allowTouchMove: true,
+    allowTouchMove: false,
     breakpoints: {
       1024: {
         slidesPerView: 1
@@ -121,10 +121,12 @@ export class QuestionComponent implements OnInit {
   }
 
   goToChapter() {
+    this.qcmSessionService.currentChapterIndex++;
     this.router.navigateByUrl('/quizz/'+this.currentQcmSession.id+'/chapter');
   }
 
   goToResult() {
+    this.qcmSessionService.currentChapterIndex = 0;
     this.router.navigateByUrl('/quizz/'+this.currentQcmSession.id+'/result');
   }
 

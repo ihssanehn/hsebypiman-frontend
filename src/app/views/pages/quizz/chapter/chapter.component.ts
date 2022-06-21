@@ -14,6 +14,8 @@ import { environment } from '@env/environment';
 export class ChapterComponent implements OnInit {
 
   currentQcmSession: QcmSession;
+  currentChapterIndex: number;
+
   chapters: any[];
   storageUrl: string = environment.storageBaseUrl;
 
@@ -31,6 +33,7 @@ export class ChapterComponent implements OnInit {
 
   ngOnInit() {
     this.currentQcmSession = this.qcmSessionService.currentQcmSession;
+    this.currentChapterIndex = this.qcmSessionService.currentChapterIndex;
     if(this.currentQcmSession) {
       console.log(this.currentQcmSession);
       this.chapters = this.currentQcmSession.qcm.chapters;

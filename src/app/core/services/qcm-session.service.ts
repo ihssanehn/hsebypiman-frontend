@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 export class QcmSessionService extends HttpService{
 
     private _currentQcmSession = new BehaviorSubject<QcmSession>(null);
+    private _currentChapterIndex = new BehaviorSubject<number>(0);
+
     baseUrl = environment.apiBaseUrl+'qcm-sessions';
 
     constructor(
@@ -25,6 +27,14 @@ export class QcmSessionService extends HttpService{
 
     get currentQcmSession() {
         return this._currentQcmSession.getValue();
+    }
+
+    set currentChapterIndex(value) {
+        this._currentChapterIndex.next(value);
+    }
+
+    get currentChapterIndex() {
+        return this._currentChapterIndex.getValue();
     }
 
     getChapterQuestions(idChapter: number) {
