@@ -1,0 +1,82 @@
+@import "sass/pages/login/login-1";
+
+:host {
+    height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    .mat-form-field {
+        width: 100%;
+    }
+
+    .tf-quizz__aside {
+        flex: 0 0 auto !important;
+    }
+
+    .tf-quizz__wrapper {
+        flex: 1 !important;
+    }
+        
+    
+
+    @media (max-width: 450px ) {
+        .tf-login.tf-login--v1 .tf-login__aside {
+            padding: 0rem 1.5rem 6rem 1.5rem !important;
+        }
+    }
+    @media (max-width: 500px) and (min-width: 451px){
+        .tf-login.tf-login--v1 .tf-login__aside {
+            padding: 0rem 1.5rem 8rem 1.5rem !important;
+        }
+    }
+    @media (max-width: 600px) and (min-width: 501px){
+        .tf-login.tf-login--v1 .tf-login__aside {
+            padding: 0rem 1.5rem 12rem 1.5rem !important;
+        }
+    }
+    @media (max-width: 680px) and (min-width: 601px){
+        .tf-login.tf-login--v1 .tf-login__aside {
+            padding: 0rem 1.5rem 16rem 1.5rem !important;
+        }
+    }
+    @media (max-width: 680px) {
+        .tf-login.tf-login--v1 .tf-logo__container {
+            background-image: url('../../../../assets/media/hse-png/header-logo-mobile.png');
+        }
+    }
+    @media (max-width: 1023px) and (min-width: 681px){
+        .tf-login.tf-login--v1 .tf-logo__container {
+            background-image: url('../../../../assets/media/hse-png/header-logo-mobile@2x.png');
+        }
+
+    }
+    @media (min-width: 1024px) {
+        .tf-login.tf-login--v1 .tf-logo__container {
+            background-image: url('../../../../assets/media/hse-png/elemenyts-design@2x.png');
+        }
+    }
+
+    // add extra right padding when displaying spinner in button
+    .tf-spinner {
+        padding-right: 3rem !important;
+    }
+
+  .tf-login {
+        height: 100%;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        .mat-form-field {
+            width: 100%;
+        }
+    
+        // add extra right padding when displaying spinner in button
+        .tf-spinner {
+            padding-right: 3rem !important;
+        }
+    }
+}

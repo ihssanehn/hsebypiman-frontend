@@ -1,0 +1,18 @@
+<div class="tf-quizz__content">
+    <div class="tf-quizz-question__head">
+        <p>{{chapterTitle}} <b>{{currentIndex}}/{{totalQuestions}}</b></p>
+    </div>
+
+    <div class="tf-quizz-question__label">
+        <p>{{question.label}}</p>
+    </div>
+
+    <div class="tf-quizz-question__items">
+        <div 
+            class="item" 
+            *ngFor="let response of question.responses" 
+            (click)="selectAnswer(response)"
+            [class.item__selected]="response.isSelected"
+        >{{response.label}}</div>
+    </div>
+</div>

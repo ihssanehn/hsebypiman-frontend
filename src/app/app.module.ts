@@ -94,7 +94,7 @@ import {
 	VisiteService,
 	PeriodService,
 	FlashInfoService,
-	PdpService, CatPdpRisquesService, PdpRisquesService, PdpTypeService, PdpCategoryTypeService, PdpDefaultValuesService, EntityService, BuService
+	PdpService, CatPdpRisquesService, PdpRisquesService, PdpTypeService, PdpCategoryTypeService, PdpDefaultValuesService, EntityService, BuService, QcmSessionService, QcmAnswerService
 } from './core/services';
 // CRUD
 import { HttpUtilsService, LayoutUtilsService, TypesUtilsService } from './core/_base/crud';
@@ -113,6 +113,7 @@ import { NZ_I18N,en_US } from 'ng-zorro-antd';
 
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { GuestService } from './core/auth/_services/guest.service';
+import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 
 // tslint:disable-next-line:class-name
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -184,6 +185,7 @@ export function hljsLanguages(): HighlightLanguage[] {
 		AvatarModule,
 		FileUploadModule,
 		AngularEditorModule,
+		NgxUsefulSwiperModule
 		// NgxEchartsModule.forRoot({
 		// 	echarts:{
 		// 		init,
@@ -256,6 +258,8 @@ export function hljsLanguages(): HighlightLanguage[] {
 		PeriodService,
 		EntityService,
 		BuService,
+		QcmSessionService,
+		QcmAnswerService,
 
 		// CONFIG & Helpers
 		LayoutConfigService,

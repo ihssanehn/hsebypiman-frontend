@@ -1,0 +1,31 @@
+<div class="tf-quizz__body">
+    <div class="tf-quizz__container">
+        <div class="tf-quizz-home__head text-center">
+            <p>
+                Nous te remecions d'avoir participé à l'accueil sécurité Piman.<br>
+                Ce quizz est la dernière étape pour le valider.
+            </p>
+        </div>
+
+        <div class="tf-quizz__content text-center">
+            <div class="tf-quizz-home__icons">
+                <mat-icon svgIcon="picto-secu-mixte" class="status-icon mr-2"></mat-icon>
+                <mat-icon svgIcon="picto-feuille" class="status-icon mr-2"></mat-icon>
+                <mat-icon svgIcon="picto-care" class="status-icon mr-2"></mat-icon>
+            </div>
+            <p>L'objectif est de tester tes connaissances sur la sécurité au sein de ton environnement chez Piman ou le client.</p>
+            <br>
+            <p>
+                <b>
+                    Une note minimale de 13/20 est requise pour valider le quizz.<br>
+                    Une bonne réponse équivaut à 1 point
+                </b>
+            </p>
+        </div>
+    
+        <div class="tf-quizz__actions">
+            <button (click)="startQuizz()" class="btn btn-primary btn-elevate tf-quizz__actions-primary">Répondre au quizz</button>
+            <button routerLink="/home" class="btn btn-primary btn-elevate tf-quizz__actions-secondary">Accéder à l'application</button>
+        </div>
+    </div>
+</div>
