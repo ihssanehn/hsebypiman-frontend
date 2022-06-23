@@ -1,6 +1,7 @@
 @import "sass/pages/login/login-1";
 
 :host {
+    position: fixed;
     height: 100%;
     top: 0;
     right: 0;
@@ -20,6 +21,9 @@
     }
         
     
+    .tf-grid.tf-grid--hor:not(.tf-grid--desktop):not(.tf-grid--desktop-and-tablet):not(.tf-grid--tablet):not(.tf-grid--tablet-and-mobile):not(.tf-grid--mobile) {
+        flex-direction: unset;
+    }
 
     @media (max-width: 450px ) {
         .tf-login.tf-login--v1 .tf-login__aside {
@@ -50,11 +54,15 @@
         .tf-login.tf-login--v1 .tf-logo__container {
             background-image: url('../../../../assets/media/hse-png/header-logo-mobile@2x.png');
         }
-
+    }
+    @media (max-width: 1023px){
+        .tf-login.tf-login--v1 .tf-login__wrapper {
+            padding: 12rem 3rem;
+        }
     }
     @media (min-width: 1024px) {
         .tf-login.tf-login--v1 .tf-logo__container {
-            background-image: url('../../../../assets/media/hse-png/elemenyts-design@2x.png');
+            background-image: url('../../../../assets/media/hse-png/quizz_page.png');
         }
     }
 
@@ -64,6 +72,7 @@
     }
 
   .tf-login {
+        position: fixed;
         height: 100%;
         top: 0;
         right: 0;

@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit {
     this.qcmSessionService.get(id).toPromise().then((res) => {
       var qcmSession = res.result.data;
       this.qcmSessionService.currentQcmSession = qcmSession;
-      this.router.navigateByUrl('/quizz/'+qcmSession.id+'/chapter');
+      this.router.navigateByUrl('/quizz/'+qcmSession.id+'/questions');
     });
   }
 

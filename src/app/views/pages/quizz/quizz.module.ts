@@ -9,6 +9,7 @@ import { ResultComponent } from './result/result.component';
 import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 import { QuestionSlideComponent } from './question/question-slide/question-slide.component';
 import { MatIconModule } from '@angular/material';
+import { ChapterNavComponent } from './question/chapter-nav/chapter-nav.component';
 
 
 const routes: Routes = [
@@ -25,12 +26,12 @@ const routes: Routes = [
 				path: 'home',
 				component: HomeComponent
 			},
+			// {
+			// 	path: ':id/chapter',
+			// 	component: ChapterComponent,
+			// },
 			{
-				path: ':id/chapter',
-				component: ChapterComponent,
-			},
-			{
-				path: ':id/chapter/:idChapter/question',
+				path: ':id/questions',
 				component: QuestionComponent,
 			},
 			{
@@ -49,7 +50,8 @@ const routes: Routes = [
     ChapterComponent,
     QuestionComponent,
     ResultComponent,
-    QuestionSlideComponent
+    QuestionSlideComponent,
+    ChapterNavComponent
   ],
   imports: [
     CommonModule,
