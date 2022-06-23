@@ -259,4 +259,20 @@ export class RemonteeDetailComponent implements OnInit, OnDestroy {
 			console.log(err)
 		})
 	}
+
+	async createActionFromRemontee() {
+		const res = await this.remonteeService.createAction(this.remontee.id).toPromise();
+		if (res) {
+			Swal.fire({
+				icon: 'success',
+				title: this.translate.instant("PLANACTIONS.NOTIF.ACTION_CREATED.TITLE"),
+				showConfirmButton: false,
+				timer: 1500
+			}).then(() => {
+				this.getRemonte(this.remontee.id);
+			});
+		} else {
+			throw new Error();
+		}
+	}
 }
