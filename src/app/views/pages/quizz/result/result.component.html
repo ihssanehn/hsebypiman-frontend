@@ -1,9 +1,10 @@
 <div class="tf-quizz__body">
     <div class="tf-quizz__container">
         <div class="tf-quizz-result__head text-center">
-            <p>{{score}} Bonnes réponses</p>
+            <p>{{score}} bonnes réponses sur {{question_count}}</p>
+            <div class="divider"></div>
             <p *ngIf="success">Félicitations</p>
-            <p *ngIf="!success">Aiiie</p>
+            <p *ngIf="!success">Aiiiiiie</p>
         </div>
 
         <div class="tf-quizz__content text-center">
@@ -15,9 +16,9 @@
                 <p>Tu peux maintenant te servir pleinement des fonctionnalités de ton application d'anticipation des risques.</p>
             </div>
             <div class="mt-5" *ngIf="!success">
-                <p>Il semblerait que tu n'aies pas obtenu les 13 points nécessaires pour valider le quizz accueil sécurité.</p>
-                <p>Pas d'inquiétude, tu peux retenter ta chance quand tu le souhaites.</p>
-                <p>N'oublie pas que la validation de ce quizz est obligatoire pour valider ton accueil sécurité. N'hésite pas à contacter l'&quipe HSE Piman si tu as besoin d'aide.</p>
+                <p><b>Votre nombre de bonne réponses n'est malheureusement pas suffisant pour valider le quizz.</b></p>
+                <p>Mais pas d'inquiétude, vous peuvez retenter votre chance quand vous le souhaitez. Attention, la validation de ce quizz est obligatoire pour obtenir votre passeport sécurité.</p>
+                <p>L'équipe HSE se tient à votre disposition pour vous apporter de l'aide.</p>
             </div>
         </div>
     

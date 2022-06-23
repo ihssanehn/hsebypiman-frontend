@@ -1,14 +1,19 @@
 <div class="tf-quizz__body">
     <div class="tf-quizz__container">
 
-        <swiper [config]="config" #questionSwiper>
+        <tf-chapter-nav
+            [currentChapterIndex]="currentChapterIndex"
+            (onSelectChapter)="displayChapterQuestions($event)"
+        ></tf-chapter-nav>
+        
+        <swiper [config]="config" #questionSwiper style="margin-top: 5em">
             <div class="swiper-wrapper">
-                <div class="swiper-slide" *ngFor="let question of chapter?.questions; let index = index">
+                <div class="swiper-slide" *ngFor="let question of questions; let index = index">
                     <tf-question-slide
                         [question]="question"
-                        [chapterTitle]="chapter?.label"
-                        [currentIndex]="index+1"
-                        [totalQuestions]="chapter?.questions.length"
+                        [chapterTitle]="question.chapter?.label"
+                        [currentIndex]="questionCounter"
+                        [totalQuestions]="question.chapter?.questions_count"
                     ></tf-question-slide>
                 </div>
             </div>
