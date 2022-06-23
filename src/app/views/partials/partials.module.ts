@@ -176,6 +176,7 @@ import { PdpCatAdminListPortletComponent } from './layout/admins/pdp-cat-admin-l
 import { PdpRisquesTypeComponent } from './layout/admins/pdp-risques-type/pdp-risques-type.component';
 import { PdpTypeComponent } from './layout/admins/pdp-type/pdp-type.component';
 import { PdpDefaultValuesComponent } from './layout/admins/pdp-default-values/pdp-default-values.component';
+import { QuizModalComponent } from './layout/modal/quiz-modal/quiz-modal.component';
 
 @NgModule({
 	declarations: [
@@ -293,6 +294,7 @@ import { PdpDefaultValuesComponent } from './layout/admins/pdp-default-values/pd
 		PdpRisquesTypeComponent,
 		PdpTypeComponent,
 		PdpDefaultValuesComponent,
+		QuizModalComponent,
 
 	],
 	exports: [
@@ -408,7 +410,8 @@ import { PdpDefaultValuesComponent } from './layout/admins/pdp-default-values/pd
 		PdpRisquesTypeComponent,
 		PdpTypeComponent,
 		MultipleMailComponent,
-		PdpDefaultValuesComponent
+		PdpDefaultValuesComponent,
+		QuizModalComponent
 
 	],
 	imports: [
@@ -478,7 +481,8 @@ import { PdpDefaultValuesComponent } from './layout/admins/pdp-default-values/pd
 		PdpAdminAddModalComponent,
 		PretModalComponent,
 		ShowFlashInfoModalComponent,
-		AddDocModalComponent
+		AddDocModalComponent,
+		QuizModalComponent
 	],
 })
 export class PartialsModule {

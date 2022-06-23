@@ -17,3 +17,13 @@
         }
     }
 }
+
+.tf-quizz {
+	&__body {
+	    align-items: center;
+        
+        .tf-quizz__container .tf-quizz__actions {
+            margin-top: 8rem;
+        }
+    }
+}

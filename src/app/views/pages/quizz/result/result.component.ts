@@ -14,6 +14,7 @@ export class ResultComponent implements OnInit {
 
   success: boolean = false;
   score: number;
+  question_count: number;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -43,6 +44,7 @@ export class ResultComponent implements OnInit {
     this.qcmSessionService.get(id).toPromise().then((res) => {
       var qcmSession = res.result.data;
       this.score = qcmSession.score;
+      this.question_count = qcmSession.question_count;
       this.success = qcmSession.is_success;
       this.cdr.detectChanges();
     });

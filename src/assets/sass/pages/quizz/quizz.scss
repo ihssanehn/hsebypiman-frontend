@@ -17,29 +17,32 @@
 	&__body {
 		display: flex;
 		justify-content: center;
-		align-items: center;
 		height: 100%;
 	
 		.tf-quizz__container {
 			width: 100%;
-			max-width: 60%;
+			max-width: 60em;
 			padding: 20px;
 			background: transparent;
 	
 			.tf-quizz__content {
 				font-size: 1.3rem;
-				padding: 0 8em;
 				color: #171717;
 			}
 	
 			.tf-quizz__actions {
-				margin-top: 6rem;
+				margin-top: 2rem;
 				text-align: center;
 			
 				&-secondary{
 					background-color: transparent;
 					border-color: #308677;
 					color: #308677;
+					background-color: #f7f9fc;
+				}
+
+				&-primary {
+					background: linear-gradient(135deg, #308677,#40b3a0);
 				}
 			
 				&-secondary, 
@@ -49,8 +52,26 @@
 					height: 50px;
 					width: 60%;
 					margin-bottom: 1em;
+					border-radius: 8px;
+					border: 0;
 				}
 			}
 		}
 	}	
+}
+
+@media (min-width: 1400px ) {
+    .tf-quizz__content {
+        padding: 0 8em;
+    }
+}
+@media (max-width: 1399px) and (min-width: 1251px){
+    .tf-quizz__content {
+        padding: 0 4em;
+    }
+}
+@media (max-width: 1250px ) {
+    .tf-quizz__content {
+        padding: 0 2em;
+    }
 }

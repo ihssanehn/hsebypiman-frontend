@@ -1,0 +1,75 @@
+:host {
+
+    .tf-quizz-modal {
+        &__head {
+            display: flex;
+            flex-direction: column;
+            padding: 0.5rem 1.5rem;
+        
+            button {
+                text-align: right;
+                font-size: 3rem;
+                font-weight: 300;
+                color: #e49819;
+            }
+
+            h3 {
+                text-align: center;
+                font-weight: bold;
+            }
+
+            .divider{
+                border: 0.5px solid #e49819;
+                margin-left: 30%;
+                margin-right: 30%;
+                margin-top: 2rem;
+            }
+        }
+    
+        &__body {
+            padding: 3rem;
+            color: black;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+    
+        &__icons {
+            margin: 3rem 8rem;
+            display: flex;
+            justify-content: space-between;
+            .mat-icon {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    
+        &__footer {
+            margin: 2rem 0 3rem 0;
+            text-align: center;
+        
+            &-primary {
+                font-weight: 500;
+                font-size: 1rem;
+                height: 50px;
+                width: 60%;
+                margin-bottom: 1em;
+                border-radius: 8px;
+                background: linear-gradient(135deg, #308677,#40b3a0);
+                border: 0;
+            }
+        }
+    }
+}
+
+::ng-deep {
+    .tf-quizz-modal {
+        &__window {
+            .modal-content {
+                border-radius: 22px;
+            }
+        }
+    }
+}
+
+
+
