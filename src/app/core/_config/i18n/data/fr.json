@@ -1714,7 +1714,8 @@
 			"ABANDON_ACTION": "Abandonner l'action",
 			"ADD_ORIGIN": "Ajouter une origine",
 			"ASSIGN_ACTION": "Attribuer l'action",
-			"CLOSE_ACTION": "Clore le action"
+			"CLOSE_ACTION": "Clore le action",
+			"CREATE_ACTION": "Créer une action"
 		},
 		"CARD": {
 			"ALLOCATION_DEADLINE": {

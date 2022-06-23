@@ -1713,7 +1713,8 @@
 			"ABANDON_ACTION": "Abandon the action",
 			"ADD_ORIGIN": "Add an origin",
 			"ASSIGN_ACTION": "Assign action",
-			"CLOSE_ACTION": "Close the action"
+			"CLOSE_ACTION": "Close the action",
+			"CREATE_ACTION": "Create an action"
 		},
 		"CARD": {
 			"ALLOCATION_DEADLINE": {

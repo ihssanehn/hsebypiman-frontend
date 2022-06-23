@@ -43,7 +43,9 @@
 					</div>
 					<h4>
 						{{'REMONTEES.ACTION.TITLE' | translate}}
-						<button mat-icon-button *ifAllModules="['PLANACTION']" (click)="goToAction()" class="pull-right" title="{{'REMONTEES.SEE_ACTION.TITLE' | translate}}"><mat-icon color="primary">visibility</mat-icon></button>
+						<ng-container *ngIf="remontee.action" >
+							<button mat-icon-button *ifAllModules="['PLANACTION']" (click)="goToAction()" class="pull-right" title="{{'REMONTEES.SEE_ACTION.TITLE' | translate}}"><mat-icon color="primary">visibility</mat-icon></button>
+						</ng-container>
 					</h4>
 					<div class="box" style="flex:1">
 						<p><span class="label pull-left mr-2">{{'PLANACTIONS.NAME.TITLE' | translate}}</span><span class="">{{remontee.action?.libelle ? remontee.action?.libelle : '-'}}</span></p>
@@ -80,14 +82,22 @@
 				<tf-comments-list *ngIf="remontee" [comments]="remontee.comments" (onAddComment)="onAddComment($event)"></tf-comments-list>
 			</div>			
 		</div>
-		<ng-container *ngxPermissionsOnly="['remontee_canApprove']">
-			<div class="row mt-4 d-flex justify-content-around px-6" *ngIf="!remontee?.is_approved" >
-				<button type="button" mat-raised-button color="info" (click)="denyRemontee()">
-					{{'REMONTEES.REJECT' | translate}}
+		<ng-container>
+			<div class="row mt-4 px-6 extra-actions" >
+				<button type="button" *ngIf="!remontee.action" mat-raised-button color="info" (click)="createActionFromRemontee()">
+					{{'PLANACTIONS.ACTION.CREATE_ACTION' | translate}}
 				</button>
-				<button mat-raised-button color="success" (click)="approveRemontee()">
-					{{'REMONTEES.APPROVE' | translate}}
-				</button>
+
+				<div *ngxPermissionsOnly="['remontee_canApprove']">
+					<ng-container *ngIf="!remontee?.is_approved">
+						<button type="button" mat-raised-button color="warn" (click)="denyRemontee()">
+							{{'REMONTEES.REJECT' | translate}}
+						</button>
+						<button class="ml-3" mat-raised-button color="success" (click)="approveRemontee()">
+							{{'REMONTEES.APPROVE' | translate}}
+						</button>
+					</ng-container>
+				</div>
 			</div>
 		</ng-container>
 	</tf-portlet-body>
