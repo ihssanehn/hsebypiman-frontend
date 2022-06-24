@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { QuizzComponent } from './quizz.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { ChapterComponent } from './chapter/chapter.component';
 import { QuestionComponent } from './question/question.component';
 import { ResultComponent } from './result/result.component';
 import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
@@ -26,10 +25,6 @@ const routes: Routes = [
 				path: 'home',
 				component: HomeComponent
 			},
-			// {
-			// 	path: ':id/chapter',
-			// 	component: ChapterComponent,
-			// },
 			{
 				path: ':id/questions',
 				component: QuestionComponent,
@@ -47,7 +42,6 @@ const routes: Routes = [
   declarations: [
     QuizzComponent,
     HomeComponent,
-    ChapterComponent,
     QuestionComponent,
     ResultComponent,
     QuestionSlideComponent,
