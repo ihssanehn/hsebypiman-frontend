@@ -1,0 +1,37 @@
+@import "../../../../../../assets/sass/pages/quizz/quizz.scss";
+
+.tf-quizz-chapter {
+    &__actions {
+        display: flex;
+        justify-content: space-evenly;
+        padding: 0 6em;
+    
+         div {
+            display: flex;
+            flex-direction: column;
+            color: #000000;
+            text-align: center;
+            width: 50px;
+        }
+
+        .chapter-img {
+    
+            &.btn-selected {
+                + span {
+                    font-weight: bold;
+                    color: #41b6a3;
+                }
+            }
+
+            img {
+                height: 100%;
+                width: 100%;
+            }
+        }
+
+        span {
+            margin-top: 1rem;
+            font-size: 0.8rem;
+        }
+    }
+}

@@ -1560,6 +1560,7 @@
 		"CHANTIER": "Chantiers",
 		"DASHBOARD": "Tableau de Bord",
 		"DISCUSS": "Discuss",
+		"QUIZ": "Quizz",
 		"EDIT_MY_PASSWORD": "Modifier mon mot de passe",
 		"EDIT_PROFILE": "Modifier mon profil",
 		"ENTREPRISES": "Clients",
@@ -1714,7 +1715,8 @@
 			"ABANDON_ACTION": "Abandonner l'action",
 			"ADD_ORIGIN": "Ajouter une origine",
 			"ASSIGN_ACTION": "Attribuer l'action",
-			"CLOSE_ACTION": "Clore le action"
+			"CLOSE_ACTION": "Clore le action",
+			"CREATE_ACTION": "Créer une action"
 		},
 		"CARD": {
 			"ALLOCATION_DEADLINE": {

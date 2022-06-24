@@ -61,6 +61,10 @@ export class RemonteeService{
 		httpHeaders.set("Content-Type", "multipart/form-data");
         return this.http.post<JsonResponse<any>>(this.baseUrl+'/'+id+'/comment', comment, { headers: httpHeaders });
     }
+
+    createAction(remontee_id){
+        return this.http.post<JsonResponse<any>>(this.baseUrl+'/'+remontee_id+'/action', {});
+    }
     
 
 }

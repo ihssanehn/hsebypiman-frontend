@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 		private fb: FormBuilder,
 		private cdr: ChangeDetectorRef,
 		private route: ActivatedRoute,
-		private versionCheckService:VersionCheckService,		
+		private versionCheckService:VersionCheckService,  
 		iconRegistry: MatIconRegistry, 
 		sanitizer: DomSanitizer
 

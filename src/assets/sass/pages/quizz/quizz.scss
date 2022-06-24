@@ -1,0 +1,77 @@
+//
+// Page - Inbox
+// Pages SASS files are compiled into separate css files
+//
+
+
+
+// Global config
+@import "../../config";
+
+// Layout config
+@import "../../global/layout/config.scss";
+
+
+
+.tf-quizz {
+	&__body {
+		display: flex;
+		justify-content: center;
+		height: 100%;
+	
+		.tf-quizz__container {
+			width: 100%;
+			max-width: 60em;
+			padding: 20px;
+			background: transparent;
+	
+			.tf-quizz__content {
+				font-size: 1.3rem;
+				color: #171717;
+			}
+	
+			.tf-quizz__actions {
+				margin-top: 2rem;
+				text-align: center;
+			
+				&-secondary{
+					background-color: transparent;
+					border-color: #308677;
+					color: #308677;
+					background-color: #f7f9fc;
+				}
+
+				&-primary {
+					background: linear-gradient(135deg, #308677,#40b3a0);
+				}
+			
+				&-secondary, 
+				&-primary {
+					font-weight: 500;
+					font-size: 1rem;
+					height: 50px;
+					width: 60%;
+					margin-bottom: 1em;
+					border-radius: 8px;
+					border: 0;
+				}
+			}
+		}
+	}	
+}
+
+@media (min-width: 1400px ) {
+    .tf-quizz__content {
+        padding: 0 8em;
+    }
+}
+@media (max-width: 1399px) and (min-width: 1251px){
+    .tf-quizz__content {
+        padding: 0 4em;
+    }
+}
+@media (max-width: 1250px ) {
+    .tf-quizz__content {
+        padding: 0 2em;
+    }
+}

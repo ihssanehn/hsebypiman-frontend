@@ -3,7 +3,8 @@
 		<tf-portlet-body class="tf-portlet__body--fit card-filters px-5 pt-4 pb-3" >
 			<form novalidate [formGroup]="filterForm">
 				<div class="row">
-					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
+
+					<mat-form-field class="col-xl-4 col-md-4 col-sm-6 col-xs-12 mat-filter-no-head">
 						<mat-label>{{'REMONTEES.TYPE.TITLE' | translate}}</mat-label>
 						<mat-select class="form-control" formControlName="type_id" name="type_id">
 							<mat-option>{{'FILTER.SEARCH_ALL' | translate}}</mat-option>
@@ -15,7 +16,8 @@
 							<mat-icon>clear</mat-icon>
 						</button>
 					</mat-form-field>
-					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
+
+					<mat-form-field class="col-xl-4 col-md-4 col-sm-6 col-xs-12 mat-filter-no-head">
 						<mat-label>{{'REMONTEES.CREATOR.TITLE' | translate}}</mat-label>
 						<mat-select class="form-control" formControlName="creator_id" name="creator_id">
 							<mat-option>{{'FILTER.SEARCH_ALL' | translate}}</mat-option>
@@ -28,7 +30,7 @@
 						</button>
 					</mat-form-field>
 
-					<div class="col-xl-3 col-md-4 col-sm-6 col-xs-12">
+					<div class="col-xl-4 col-md-4 col-sm-6 col-xs-12">
 						<h6>{{'COMMON.CREATED_AT.TITLE' | translate}}</h6>
 						<mat-form-field class="col-md-6 col-xl-6">
 							<mat-label>{{'COMMON.DATE_RANGE.BETWEEN.TITLE' | translate}} :</mat-label>
@@ -54,7 +56,8 @@
 						</mat-form-field>
 						
 					</div>
-					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
+
+					<mat-form-field class="col-xl-4 col-md-4 col-sm-6 col-xs-12 mat-filter-no-head">
 						<mat-label>{{'REMONTEES.PUBLICATION_STATUS.LABEL' | translate}}</mat-label>
 						<mat-select class="form-control" formControlName="publication_state" name="publication_state">
 							<mat-option>{{'FILTER.SEARCH_ALL' | translate}}</mat-option>
@@ -66,6 +69,20 @@
 							<mat-icon>clear</mat-icon>
 						</button>
 					</mat-form-field>
+
+					<mat-form-field class="col-xl-4 col-md-4 col-sm-6 col-xs-12 mat-filter-no-head">
+						<mat-label>{{'PLANACTIONS.STATUS.TITLE' | translate}}</mat-label>
+						<mat-select class="form-control" formControlName="status_id" name="status_id">
+							<mat-option [value]="'all'">{{'FILTER.SEARCH_ALL' | translate}}</mat-option>
+							<mat-option *ngFor="let statu of status" [value]="statu.id">
+								{{statu.libelle}}
+							</mat-option>
+						</mat-select>
+						<button mat-button *ngIf="formHasValue('status_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('status_id'); $event.stopPropagation()">
+							<mat-icon>clear</mat-icon>
+						</button>
+					</mat-form-field>
+
 				</div>
 			</form>
 		</tf-portlet-body>

@@ -1559,6 +1559,7 @@
 		"CHANTIER": "Construction sites",
 		"DASHBOARD": "Dashboard",
 		"DISCUSS": "Discuss",
+		"QUIZ": "Quiz",
 		"EDIT_MY_PASSWORD": "Change my password",
 		"EDIT_PROFILE": "Edit my profile",
 		"ENTREPRISES": "External companies",
@@ -1713,7 +1714,8 @@
 			"ABANDON_ACTION": "Abandon the action",
 			"ADD_ORIGIN": "Add an origin",
 			"ASSIGN_ACTION": "Assign action",
-			"CLOSE_ACTION": "Close the action"
+			"CLOSE_ACTION": "Close the action",
+			"CREATE_ACTION": "Create an action"
 		},
 		"CARD": {
 			"ALLOCATION_DEADLINE": {

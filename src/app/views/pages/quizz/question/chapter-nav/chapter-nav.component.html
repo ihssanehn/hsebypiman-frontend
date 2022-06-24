@@ -1,0 +1,13 @@
+<div class="tf-quizz-chapter__actions">
+    <div *ngFor="let chapter of chapters; let index = index">
+        <div class="chapter-img" [class.btn-selected]="isSelected(index)">
+            <img *ngIf="isSelected(index); else selectedChapterImg" [src]="sanitizer.bypassSecurityTrustResourceUrl(chapter.img_green)"/>
+        </div>
+
+        <ng-template #selectedChapterImg>
+            <img [src]="sanitizer.bypassSecurityTrustResourceUrl(chapter.img_grey)"/>
+        </ng-template>
+        
+        <span>{{chapter.label}}</span>
+    </div>
+</div>

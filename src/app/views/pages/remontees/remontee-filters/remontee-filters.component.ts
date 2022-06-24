@@ -2,8 +2,8 @@ import { ChangeDetectorRef, Component, OnInit, EventEmitter, Output, AfterViewIn
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
-import { TypeService, PersonnelService } from '@app/core/services';
-import { Type } from '@app/core/models';
+import { TypeService, PersonnelService, StatusService } from '@app/core/services';
+import { Status, Type } from '@app/core/models';
 import { User } from '@app/core/auth';
 import { debounceTime, } from 'rxjs/operators';
 import { DateFrToEnPipe } from '@app/core/_base/layout';
@@ -23,6 +23,7 @@ export class RemonteeFiltersComponent implements OnInit, AfterViewInit
   data: boolean = false;
   users: User[];
   types: Type[];
+  status: Status[];
   publication_states = [
     {
       libelle: "En attente d'approbation",
@@ -37,6 +38,7 @@ export class RemonteeFiltersComponent implements OnInit, AfterViewInit
   @Output() change = new EventEmitter();
   constructor(
     private typeService:TypeService,
+    private statusService: StatusService,
     private fb: FormBuilder,
     private cdr: ChangeDetectorRef,
     private userService:PersonnelService,
@@ -49,6 +51,7 @@ export class RemonteeFiltersComponent implements OnInit, AfterViewInit
   }
 
   ngOnInit(){
+    this.getStatus();
     this.getUsers();
     this.getTypes();
     this.initFiltersForm();
@@ -61,11 +64,18 @@ export class RemonteeFiltersComponent implements OnInit, AfterViewInit
   }
 
   // Load ressources needed
+  async getStatus(){
+    var res = await this.statusService.getAllFromModel('Action').toPromise();
+    this.status = res.result.data;
+    this.cdr.markForCheck();
+  }
+
   async getUsers(){
     var res = await this.userService.getList().toPromise();
     this.users = res.result.data;
     this.cdr.markForCheck();
   }
+
   async getTypes(){
     var res = await this.typeService.getAllFromModel('Remontee').toPromise();
     this.types = res.result.data;
@@ -76,6 +86,7 @@ export class RemonteeFiltersComponent implements OnInit, AfterViewInit
     this.filterForm = this.fb.group({
       type_id:[null],
       creator_id:[null],
+      status_id:[null],
       publication_state:[null],
       date_creation_start:[null],
       date_creation_end:[null],

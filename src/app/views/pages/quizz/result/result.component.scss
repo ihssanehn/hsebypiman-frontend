@@ -1,0 +1,44 @@
+@import "../../../../../assets/sass/pages/quizz/quizz.scss";
+
+
+.tf-quizz-result {
+    &__head {
+        font-weight: bold;
+        color: #171717;
+
+        > p:nth-child(1) {
+            font-size: 1.5rem;
+        }
+        
+        .divider{
+            border: 0.5px solid #e49819;
+            margin-left: 35%;
+            margin-right: 35%;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        > p:nth-child(3) {
+            font-size: 2rem;
+        }
+    }
+
+    &__icon {
+        margin: 3rem 0;
+
+        .mat-icon {
+            height: 60px;
+            width: 60px;
+        }
+    }
+}
+
+.tf-quizz {
+	&__body {
+	    align-items: center;
+        
+        .tf-quizz__container .tf-quizz__actions {
+            margin-top: 8rem;
+        }
+    }
+}
