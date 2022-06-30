@@ -119,6 +119,8 @@ export class MenuConfig {
 					alignment: 'left',
 					page: '/quizz',
 					translate: 'MENU.QUIZ',
+					needModule: true,
+					moduleCode: ['QUIZ'],
 					flag: 'is_quiz_approved'
 				}
 
