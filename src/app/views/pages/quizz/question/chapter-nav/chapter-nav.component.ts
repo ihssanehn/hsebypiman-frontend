@@ -1,10 +1,10 @@
-import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
-import { MatIconRegistry } from '@angular/material';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QcmSession } from '@app/core/models';
-import { QcmSessionService } from '@app/core/services';
+import { QcmSessionService, DocumentService } from '@app/core/services';
 import { environment } from '@env/environment';
+import { MatIconRegistry } from '@angular/material';
 
 @Component({
   selector: 'tf-chapter-nav',
@@ -25,9 +25,10 @@ export class ChapterNavComponent implements OnInit {
     private router: Router,
     private cdr: ChangeDetectorRef,
     public qcmSessionService: QcmSessionService,
-		public sanitizer: DomSanitizer
-  ) {
-  }
+		public sanitizer: DomSanitizer,
+    private documentService: DocumentService
+  ) 
+  {}
 
   ngOnInit() {
     this.currentQcmSession = this.qcmSessionService.currentQcmSession;
@@ -54,6 +55,9 @@ export class ChapterNavComponent implements OnInit {
       this.qcmSessionService.currentQcmSession = qcmSession;
       this.currentQcmSession = qcmSession;
       this.chapters = this.currentQcmSession.qcm.chapters;
+      this.chapters.forEach(chapter=>{
+        // console.log(this.sanitizer.bypassSecurityTrustResourceUrl(this.storageUrl+chapter.img));
+      })
       this.cdr.detectChanges();
     });
   }
@@ -69,5 +73,9 @@ export class ChapterNavComponent implements OnInit {
   isSelected(index: number) {
     var currentChapterIndex = this.currentChapterIndex;
     return index <= currentChapterIndex;
+  }
+
+  retrieveSvg(chapter){
+    return this.documentService.getFileByPath(chapter.img);
   }
 }

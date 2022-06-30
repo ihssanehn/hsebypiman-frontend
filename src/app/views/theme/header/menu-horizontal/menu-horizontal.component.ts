@@ -27,6 +27,8 @@ import { HtmlClassService } from '../../html-class.service';
 
 import { ModuleService } from '@app/core/services/module.service';
 import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
+import { UserService } from '@app/core/services';
+import { AuthService } from '@app/core/auth';
 
 @Component({
 	selector: 'tf-menu-horizontal',
@@ -64,7 +66,7 @@ export class MenuHorizontalComponent implements OnInit, AfterViewInit {
 			state: 'tf-header-mobile__toolbar-toggler--active'
 		}
 	};
-
+	currentUser;
 	permissions;
 	roles;
 
@@ -93,16 +95,12 @@ export class MenuHorizontalComponent implements OnInit, AfterViewInit {
 		private cdr: ChangeDetectorRef,
 		private ngxPermissionsService: NgxPermissionsService,
 		private ngxRolesService: NgxRolesService,
+		private authService: AuthService,
 	) {
-		this.moduleService.currentModules.subscribe((event) => {
-			this.cdr.markForCheck();
-		})
-		this.ngxPermissionsService.permissions$.subscribe((event) => {
-			this.cdr.markForCheck();
-		})
-		this.ngxRolesService.roles$.subscribe((event) => {
-			this.cdr.markForCheck();
-		})
+		this.moduleService.currentModules.subscribe((event) => {this.cdr.markForCheck();})
+		this.ngxPermissionsService.permissions$.subscribe((event) => {this.cdr.markForCheck();})
+		this.ngxRolesService.roles$.subscribe((event) => {this.cdr.markForCheck();})
+		this.authService.currentUser.subscribe(x=> this.currentUser = x);
 	}
 
 	/**
@@ -209,7 +207,6 @@ export class MenuHorizontalComponent implements OnInit, AfterViewInit {
 		if (alignment) {
 			classes += ' tf-menu__submenu--' + alignment;
 		}
-
 		const type = objectPath.get(item, 'type') || 'classic';
 		if (type === 'classic') {
 			classes += ' tf-menu__submenu--classic';

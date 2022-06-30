@@ -16,6 +16,7 @@ export class QuestionComponent implements OnInit {
   currentChapterIndex: number = 0;
   questions: any;
   questionCounter: number = 1;
+  totalQuestions: number = 0;
 
   currentSlideIndex: number = 0;
   chapter: any;
@@ -82,6 +83,8 @@ export class QuestionComponent implements OnInit {
       this.qcmSessionService.currentQcmSession = qcmSession;
       this.currentQcmSession = qcmSession;
       this.questions = this.currentQcmSession.qcm.questions;
+      this.totalQuestions = this.questions.length
+      console.log(this.questions, this.totalQuestions);
       this.cdr.detectChanges();
     });
   }
@@ -100,7 +103,7 @@ export class QuestionComponent implements OnInit {
         this.currentSlideIndex++;
 
         if(this.isChapterChanged()) {
-          this.questionCounter = 1;
+          // this.questionCounter = 1;
           this.currentChapterIndex++;
         }
       }
@@ -115,6 +118,10 @@ export class QuestionComponent implements OnInit {
     var currentQuestion = this.questions[this.currentSlideIndex];
 
     return lastQuestion.chapter_id != currentQuestion.chapter_id;
+  }
+
+  markForCheck(){
+    return this.cdr.markForCheck();
   }
 
   previousSlide() {

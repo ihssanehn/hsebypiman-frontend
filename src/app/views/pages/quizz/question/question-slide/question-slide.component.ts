@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectorRef, Output } from '@angular/core';
+import { DocumentService } from '@app/core/services';
+import { EventEmitter } from 'events';
 
 @Component({
   selector: 'tf-question-slide',
@@ -11,8 +13,12 @@ export class QuestionSlideComponent implements OnInit {
   @Input() chapterTitle: string;
   @Input() currentIndex: number;
   @Input() totalQuestions: number;
+  // @Output() answerd = new EventEmitter();
 
-  constructor() { }
+  constructor(
+    private documentService:DocumentService,
+    private cdr:ChangeDetectorRef
+  ) { }
 
   ngOnInit() {
     if(this.question)
@@ -23,6 +29,11 @@ export class QuestionSlideComponent implements OnInit {
   }
 
   selectAnswer(response: any) {
-    response.isSelected = !response.isSelected;
+    this.question.responses.forEach(x=>x.isSelected = x.id == response.id);
+    // this.answerd.emit('done');
+  }
+
+  retrieveResponseImg(response){
+    return this.documentService.getFileByPath(response.img_path)
   }
 }
