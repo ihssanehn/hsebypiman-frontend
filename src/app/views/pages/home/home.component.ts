@@ -76,7 +76,9 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy  {
 	}
 
 	openQuizModal(){
-		const modalRef = this.modalService.open(QuizModalComponent, {size: 'xs',scrollable: true,centered : true, windowClass: 'tf-quizz-modal__window'});
+		if(this.isActive(['QUIZ'])){
+			const modalRef = this.modalService.open(QuizModalComponent, {size: 'xs',scrollable: true,centered : true, windowClass: 'tf-quizz-modal__window'});
+		}
 	}
 
 	openFlashInfoModal(flash_id){
