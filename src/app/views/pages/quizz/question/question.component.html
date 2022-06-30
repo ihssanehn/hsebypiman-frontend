@@ -13,8 +13,9 @@
                         [question]="question"
                         [chapterTitle]="question.chapter?.label"
                         [currentIndex]="questionCounter"
-                        [totalQuestions]="question.chapter?.questions_count"
-                    ></tf-question-slide>
+                        [totalQuestions]="totalQuestions"
+                        ></tf-question-slide>
+                        <!-- (answerd)="markForCheck()" -->
                 </div>
             </div>
           
@@ -23,9 +24,9 @@
             <div class="swiper-button-prev"></div>  
         </swiper>
 
-
-        <div class="tf-quizz__actions">
-            <button (click)="nextSlide()" class="btn btn-primary btn-elevate tf-quizz__actions-primary">Suivant</button>
+<!-- [disabled]="questions[currentSlideIndex].answers?.length == 0" -->
+        <div class="tf-quizz__actions" *ngIf="questions">
+            <button (click)="nextSlide()"  class="btn btn-primary btn-elevate tf-quizz__actions-primary">Suivant</button>
             <button (click)="previousSlide()" class="btn btn-primary btn-elevate tf-quizz__actions-secondary">Question précédente</button>
         </div>
     </div>

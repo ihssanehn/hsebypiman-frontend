@@ -201,6 +201,7 @@ export class RemonteeDetailComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(ImageLightboxContentDialogComponent, {
       data: { images : photos, selectedImgIndex: index}
     });
+		// this.remontee.documents.map(x=>x.id).indexOf(id)
   }
 
 	denyRemontee(){

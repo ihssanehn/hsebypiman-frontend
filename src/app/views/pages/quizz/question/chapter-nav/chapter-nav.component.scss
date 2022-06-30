@@ -16,22 +16,47 @@
 
         .chapter-img {
     
+            width: 50px;
+            height: 50px;
+            background: #E1E1E1 0% 0% no-repeat padding-box;
+            box-shadow: 0px 32px 64px #00000029;
+            border: 4px solid #FCFCFC;
+            border-radius: 10px;
+            color: #FFF;
+
             &.btn-selected {
-                + span {
+                background: #B8EBE3 0% 0% no-repeat padding-box;
+                color: #338B7C;
+
+                + span.chapter-label {
                     font-weight: bold;
                     color: #41b6a3;
                 }
+
             }
 
-            img {
-                height: 100%;
+            span.chapter-svg{
                 width: 100%;
+                height: 100%;
+                svg{
+                    color: #FFF;
+                }
             }
         }
 
-        span {
+        
+
+        span.chapter-label {
             margin-top: 1rem;
             font-size: 0.8rem;
         }
+    }
+
+}
+::ng-deep {
+    .chapter-img span svg{
+        margin-top: 10px;
+        max-width: 25px;
+        max-height: 25px;       
     }
 }
