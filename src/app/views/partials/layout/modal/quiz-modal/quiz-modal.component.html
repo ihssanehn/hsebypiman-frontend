@@ -1,0 +1,20 @@
+<div class="tf-quizz-modal__head">
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
+		<span aria-hidden="true">&times;</span>
+	</button>
+	<h3 class="tf-quizz-modal__title">Quizz accueil sécurité</h3>
+    <div class="divider"></div>
+</div>
+<div class="tf-quizz-modal__body">
+    <p>Nous vous remecions d'avoir participé à l'accueil sécurité Piman. La dernière étape est de valider 13 réponses juste au quizz sécurité.</p>
+    <div class="tf-quizz-modal__icons">
+        <mat-icon svgIcon="picto-secu-mixte" class="status-icon mr-2"></mat-icon>
+        <mat-icon svgIcon="picto-feuille" class="status-icon mr-2"></mat-icon>
+        <mat-icon svgIcon="picto-care" class="status-icon mr-2"></mat-icon>
+    </div>
+    <p>L'objectif est de tester vos connaissances sur la sécurité au sein de votre environnement chez Piman ou votre client.</p>
+</div>
+
+<div class="tf-quizz-modal__footer">
+    <button (click)="goToQuiz()" class="btn btn-primary btn-elevate tf-quizz-modal__footer-primary">Répondre au quizz</button>
+</div>

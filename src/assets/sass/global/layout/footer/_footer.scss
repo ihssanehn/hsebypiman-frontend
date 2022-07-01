@@ -9,8 +9,9 @@
     padding: 0;
     margin: 0;  
     background-size: cover;
-	background-position: center center;     
-	background-color: #1e1e2d;      
+		background-position: center center;     
+		background-color: #1e1e2d;     
+		color: #fff;
 
     .tf-footer__top {
 		padding: 4rem 0;
@@ -82,54 +83,47 @@
 	}	
 
     .tf-footer__bottom {
-		padding: 2rem 0; 
+		padding: 1rem 0; 
 		background-color: #181824;
 
 		.tf-footer__wrapper {
 			display: flex;  
   			align-items: center;
   			justify-content: space-between;
+				> div{
+					flex: 1;
+				}
 		}			
 
 		.tf-footer__logo {
 			display: flex;   			
-			align-items: center;			
+			align-items: center;
+			justify-content: center;
 
 			.tf-footer__copyright {
 				margin: 0;
 				padding: 0 1.25rem 0 1rem;
 				font-size: 1rem;
 				font-weight: 400;
-				color: #6f7286;								
-
+				color: white;
+				
 				> a {
-					transition: color 0.3s ease;
-
-					&:hover {
-						transition: color 0.3s ease;
-						color: tf-brand-color();
-					}
-				}			
+					color: white;		
+				}
 			}
 		}
 
 		.tf-footer__menu {
 			display: flex;
-			justify-content: flex-end;			
+			justify-content: flex-end;
 			margin: 0;	
 
-			a {	
+			a,span {	
 				margin-left: 1rem;		
 				padding: 0;
 				font-size: 1rem;
 				font-weight: 400;
-				color: #a9a7bc;			
-				transition: color 0.3s ease;
-
-				&:hover {
-					transition: color 0.3s ease;
-					color: tf-brand-color();
-				}
+				color: #fff;
 			}
 		}
 	}	
@@ -201,15 +195,15 @@
 
 				.tf-footer__logo {
 					justify-content: center;
-					order: 2;				 
-					padding: 0;					
+					order: 2;	 
+					padding: 0;		
 				}			
 
 				.tf-footer__menu {
-					justify-content: center;			 
+					justify-content: center; 
 					order: 1;
 					padding: 0;	
-					margin-bottom: 1rem;				
+					margin-bottom: 1rem;	
 
 					a {	
 						&:first-child {

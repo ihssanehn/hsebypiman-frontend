@@ -1,0 +1,34 @@
+<div class="tf-quizz__body">
+    <div class="tf-quizz__container">
+        <div class="tf-quizz-result__head text-center">
+            <p>{{score}} bonnes réponses sur {{question_count}}</p>
+            <div class="divider"></div>
+            <p *ngIf="success">Félicitations</p>
+            <p *ngIf="!success">Aiiiiiie</p>
+        </div>
+
+        <div class="tf-quizz__content text-center">
+            <div *ngIf="success">
+                <div class="tf-quizz-result__icon">
+                    <mat-icon svgIcon="picto-medaille"></mat-icon>
+                </div>
+                <p>Vos connaissances sécurité au travail ont permis de valider le quizz ainsi que votre accueil sécurité Piman.</p>
+                <p>Vous pouvez maintenant vous servir pleinement des fonctionnalités de votre application d'anticipation des risques.</p>
+            </div>
+            <div class="mt-5" *ngIf="!success">
+                <p><b>Votre nombre de bonne réponses n'est malheureusement pas suffisant pour valider le quizz.</b></p>
+                <p>Mais pas d'inquiétude, vous peuvez retenter votre chance quand vous le souhaitez. Attention, la validation de ce quizz est obligatoire pour obtenir votre passeport sécurité.</p>
+                <p>L'équipe HSE se tient à votre disposition pour vous apporter de l'aide.</p>
+            </div>
+        </div>
+    
+        <div class="tf-quizz__actions" *ngIf="success">
+            <button routerLink="/home" class="btn btn-primary btn-elevate tf-quizz__actions-primary">Accéder à l'application</button>
+        </div>
+
+        <div class="tf-quizz__actions" *ngIf="!success">
+            <button routerLink="/quizz" class="btn btn-primary btn-elevate tf-quizz__actions-primary">Je retente ma chance</button>
+            <button routerLink="/home" class="btn btn-primary btn-elevate tf-quizz__actions-secondary">Je réessaierai plus tard</button>
+        </div>
+    </div>
+</div>

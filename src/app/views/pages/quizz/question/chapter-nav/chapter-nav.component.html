@@ -1,0 +1,15 @@
+<div class="tf-quizz-chapter__actions">
+    <div *ngFor="let chapter of chapters; let index = index">
+        <div class="chapter-img" [ngClass]="isSelected(index) ? 'green':'grey'" [class.btn-selected]="isSelected(index)">
+            <!-- <mat-icon svgIcon="{{'chapter_'+chapter.id}}" class=""></mat-icon> -->
+            <span class="chapter-svg" [inlineSVG]="retrieveSvg(chapter)"></span>
+            <!-- <img [src]="sanitizer.bypassSecurityTrustResourceUrl(storageUrl+chapter.img)"/> -->
+        </div>
+
+        <!-- <ng-template #selectedChapterImg>
+            <img [src]="sanitizer.bypassSecurityTrustResourceUrl(chapter.img_grey)"/>
+        </ng-template> -->
+        
+        <span  class="chapter-label">{{chapter.label}}</span>
+    </div>
+</div>

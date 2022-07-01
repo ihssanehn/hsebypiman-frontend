@@ -9,6 +9,9 @@ import { ModuleService, FlashInfoService } from '@app/core/services';
 import { FlashInfo } from '@app/core/models/';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService, User } from '@app/core/auth';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { QuizModalComponent } from '@app/views/partials/layout/modal/quiz-modal/quiz-modal.component';
+import { ShowFlashInfoModalComponent } from '@app/views/partials/layout';
 
 @Component({
 	selector: 'tf-home',
@@ -22,7 +25,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy  {
 	};
 	user: User;
 	flashOnTop : FlashInfo
-	oldFlashList : FlashInfo[];
 
 	constructor(
 		private menuAsideService: MenuAsideService,
@@ -32,7 +34,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy  {
 		private authService: AuthService,
 		private layoutConfigService: LayoutConfigService,
 		private router: Router,
-		protected cdr: ChangeDetectorRef
+		protected cdr: ChangeDetectorRef,
+		private modalService: NgbModal
 	) {
 		this.authService.currentUser.subscribe(x=> this.user = x);
 		this.menuAsideService.loadMenuAside('aside.dashboard');
@@ -42,14 +45,21 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy  {
 	}
 
 	ngOnInit(): void {
-		this.getFlashInfos()
+		console.log(this.user)
+		if(this.user.is_quiz_approved) {
+			this.getFlashInfos()
+		} else {
+			this.openQuizModal();
+		}
 	}
 
 	async getFlashInfos(){
 		var res = await this.flashInfoService.getAll({top:true, limit:5}).toPromise()
 		
 		this.flashOnTop = res.result.data['top'];
-		this.oldFlashList = res.result.data['others'];
+		if(this.flashOnTop){
+			this.openFlashInfoModal(this.flashOnTop.id)
+		}
 		this.cdr.markForCheck();
 	}
 
@@ -63,6 +73,17 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy  {
 
 	isActive(moduleName: string[]){
 		return this.moduleService.isActived(moduleName);
+	}
+
+	openQuizModal(){
+		if(this.isActive(['QUIZ'])){
+			const modalRef = this.modalService.open(QuizModalComponent, {size: 'xs',scrollable: true,centered : true, windowClass: 'tf-quizz-modal__window'});
+		}
+	}
+
+	openFlashInfoModal(flash_id){
+		const modalRef = this.modalService.open(ShowFlashInfoModalComponent, {size: 'xl',scrollable: true, centered : true});
+		modalRef.componentInstance.flashInfoId = flash_id;
 	}
 
 }

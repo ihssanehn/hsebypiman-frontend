@@ -1,0 +1,33 @@
+<div class="tf-quizz__body">
+    <div class="tf-quizz__container">
+
+        <tf-chapter-nav
+            [currentChapterIndex]="currentChapterIndex"
+            (onSelectChapter)="displayChapterQuestions($event)"
+        ></tf-chapter-nav>
+        
+        <swiper [config]="config" #questionSwiper style="margin-top: 5em">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" *ngFor="let question of questions; let index = index">
+                    <tf-question-slide
+                        [question]="question"
+                        [chapterTitle]="question.chapter?.label"
+                        [currentIndex]="questionCounter"
+                        [totalQuestions]="totalQuestions"
+                        ></tf-question-slide>
+                        <!-- (answerd)="markForCheck()" -->
+                </div>
+            </div>
+          
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>  
+        </swiper>
+
+<!-- [disabled]="questions[currentSlideIndex].answers?.length == 0" -->
+        <div class="tf-quizz__actions" *ngIf="questions">
+            <button (click)="nextSlide()"  class="btn btn-primary btn-elevate tf-quizz__actions-primary">Suivant</button>
+            <button (click)="previousSlide()" class="btn btn-primary btn-elevate tf-quizz__actions-secondary">Question précédente</button>
+        </div>
+    </div>
+</div>

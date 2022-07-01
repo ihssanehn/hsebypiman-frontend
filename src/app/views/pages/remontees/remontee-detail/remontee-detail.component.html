@@ -19,7 +19,7 @@
 	</div>
 	<tf-portlet-body class="tf-portlet__body--fit">
 		<div class="row">
-			<div  [ngClass]="isActiveModule(['REMONTEE_COMMENTS']) ? 'col-md-4':'col-md-12'">
+			<div [ngClass]="isActiveModule(['REMONTEE_COMMENTS']) ? 'col-md-4':'col-md-12'">
 				<div class="card">
 					<h4>{{'REMONTEES.CARD.GENERAL_INFOS.TITLE' | translate}}</h4>
 					<div class="box">
@@ -43,8 +43,10 @@
 					</div>
 					<h4>
 						{{'REMONTEES.ACTION.TITLE' | translate}}
-						<ng-container *ngIf="remontee.action" >
-							<button mat-icon-button *ifAllModules="['PLANACTION']" (click)="goToAction()" class="pull-right" title="{{'REMONTEES.SEE_ACTION.TITLE' | translate}}"><mat-icon color="primary">visibility</mat-icon></button>
+						<ng-container *ngIf="remontee.action">
+							<button mat-icon-button *ifAllModules="['PLANACTION']" (click)="goToAction()" class="pull-right" title="{{'REMONTEES.SEE_ACTION.TITLE' | translate}}">
+								<mat-icon color="primary">visibility</mat-icon>
+							</button>
 						</ng-container>
 					</h4>
 					<div class="box" style="flex:1">
@@ -52,35 +54,41 @@
 						<p *ifAllModules="['PLANACTION']"><span class="label pull-left mr-2">{{'PLANACTIONS.STATUS.TITLE' | translate}}</span><span class="">{{remontee.action_status ? remontee.action_status : '-'}}</span></p>
 						<p *ifAllModules="['PLANACTION']"><span class="label pull-left mr-2">{{'PLANACTIONS.PILOTE.TITLE' | translate}}</span><span class="">{{remontee.action?.pilote ? (remontee.action.pilote | fullName) : '-'}}</span></p>
 					</div>
-					<div class="tf-divider mb-3">
-						<span></span>
-					</div>
-					<h4>{{'REMONTEES.CARD.DOC.TITLE' | translate}}</h4>
-					<div class="box" style="flex:1">
-						<!-- <ul>
-							<li class="mb-3 pointer" *ngFor="let document of remontee.documents" (click)="showDocument(document)">
-								{{document.libelle}}
-								<mat-icon color="info" class="pull-right pointer" (click)="$event.stopPropagation(); downloadDoc(document)" matTooltip="{{'REMONTEES.CARD.DOC.ACTION.DOWNLOAD_DOCS' | translate}}">cloud_download</mat-icon>
-							</li>
-						</ul> -->
-						<ngb-carousel style="width:60%;margin:auto" (click)="$event.stopPropagation()" *ngIf="remontee.photos.length > 0; else noDocument">
-							<ng-template ngbSlide *ngFor="let photo of remontee.photos; let i = index">
-									<div class="picsum-img-wrapper pointer" style="background:rgba(0,0,0,0.8); text-align:center" (click)="openModal(remontee.photos, i); $event.stopPropagation()">
-											<img [src]="photo.src | safe:'resourceUrl'" [title]="photo.libelle" style="max-width: 100%; max-height: 175px; margin: auto;">
-										</div>
-							</ng-template>
-					</ngb-carousel>
-					<ng-template #noDocument>
-						<div class="text-center mt-4 font-italic">
-								{{'REMONTEES.NOTIF.NO_DOCUMENT' | translate}}
-						</div>
-					</ng-template>
-					</div>
 				</div>
 			</div>
-			<div class="col-md-8" *ifAllModules="['REMONTEE_COMMENTS']">
-				<tf-comments-list *ngIf="remontee" [comments]="remontee.comments" (onAddComment)="onAddComment($event)"></tf-comments-list>
-			</div>			
+			<div class="col-md-8" >
+
+				<div class="card pb-2">
+			
+				<h4>{{'REMONTEES.CARD.DOC.TITLE' | translate}}</h4>
+				<div class="box" style="flex:1">
+					<!-- <ul>
+						<li class="mb-3 pointer" *ngFor="let document of remontee.documents" (click)="showDocument(document)">
+							{{document.libelle}}
+							<mat-icon color="info" class="pull-right pointer" (click)="$event.stopPropagation(); downloadDoc(document)" matTooltip="{{'REMONTEES.CARD.DOC.ACTION.DOWNLOAD_DOCS' | translate}}">cloud_download</mat-icon>
+						</li>
+					</ul> -->
+					<!-- <ngb-carousel style="width:60%;margin:auto" (click)="$event.stopPropagation()" *ngIf="remontee.photos.length > 0; else noDocument">
+						<ng-template ngbSlide   let i = index"> -->
+							<div class="picsum-img-wrapper pointer d-flex">
+								<img [src]="photo.src | safe:'resourceUrl'" (click)="openModal(remontee.photos, i); $event.stopPropagation()" [title]="photo.libelle" style="max-width: 100%; max-height: 175px; margin: auto;" *ngFor="let photo of remontee.photos; let i = index">
+							</div>
+						<!-- </ng-template>
+					</ngb-carousel> -->
+					<ng-template #noDocument>
+						<div class="text-center mt-4 font-italic">
+							{{'REMONTEES.NOTIF.NO_DOCUMENT' | translate}}
+						</div>
+					</ng-template>
+				</div>
+				<div class="tf-divider my-3">
+					<span></span>
+				</div>
+				<ng-container *ifAllModules="['REMONTEE_COMMENTS']">
+					<tf-comments-list *ngIf="remontee" [comments]="remontee.comments" (onAddComment)="onAddComment($event)"></tf-comments-list>
+				</ng-container>
+				</div>
+			</div>
 		</div>
 		<ng-container>
 			<div class="row mt-4 px-6 extra-actions" >

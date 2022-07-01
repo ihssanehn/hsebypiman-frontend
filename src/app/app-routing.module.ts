@@ -11,7 +11,14 @@ import { AuthGuard } from './core/auth';
 
 
 const routes: Routes = [
-	{path: 'auth', loadChildren: () => import('@app/views/pages/auth/auth.module').then(m => m.AuthModule)},
+	{
+		path: 'auth', 
+		loadChildren: () => import('@app/views/pages/auth/auth.module').then(m => m.AuthModule)
+	},
+	{
+		path: 'quizz', 
+		loadChildren: () => import('@app/views/pages/quizz/quizz.module').then(m => m.QuizzModule)
+	},
 	{
 		path: 'guest',
 		loadChildren: () => import('@app/views/pages/guest/guest.module').then(m => m.GuestModule),

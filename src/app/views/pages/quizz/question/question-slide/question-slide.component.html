@@ -1,0 +1,26 @@
+<div class="tf-quizz__content">
+    <div class="tf-quizz-question__head d-flex justify-content-between">
+        <b style="color:#41b6a3;">{{chapterTitle}} </b>
+        <b>{{currentIndex}}/{{totalQuestions}}</b> 
+    </div>
+
+    <div class="tf-quizz-question__label">
+        <p>{{question.label}}</p>
+    </div>
+
+    <div class="tf-quizz-question__items">
+        <div 
+            class="item" 
+            *ngFor="let response of question.responses" 
+            (click)="selectAnswer(response)"
+            [class.item__selected]="response.isSelected"
+        >
+            <span *ngIf="!response.img_path; else imgResponse">
+                {{response.label}}
+            </span>
+            <ng-template #imgResponse>
+                <img src="{{retrieveResponseImg(response)}}" alt="{{response.label}}">
+            </ng-template>
+        </div>
+    </div>
+</div>

@@ -1,75 +1,34 @@
 <!-- begin:: Footer -->
-<div class="tf-footer tf-footer--extended tf-grid__item" id="tf_footer" style="background-image: url('./assets/media/bg/bg-2.jpg');">
-	<div class="tf-footer__top">
-		<div class="tf-container" [ngClass]="{'tf-container--fluid': fluid}">
-			<div class="row">
-				<div class="col-lg-4">
-					<div class="tf-footer__section">
-						<h3 class="tf-footer__title">About</h3>
-						<div class="tf-footer__content">
-							Lorem Ipsum is simply dummy text of the printing<br>
-							and typesetting and typesetting industry has been the <br>
-							industry's standard dummy text ever since the 1500s,<br>
-							when an unknown printer took a galley of type.
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4">
-					<div class="tf-footer__section">
-						<h3 class="tf-footer__title">Quick Links</h3>
-						<div class="tf-footer__content">
-							<div class="tf-footer__nav">
-								<div class="tf-footer__nav-section">
-									<a href="javascript:;">General Reports</a>
-									<a href="javascript:;">Dashboart Widgets</a>
-									<a href="javascript:;">Custom Pages</a>
-								</div>
-								<div class="tf-footer__nav-section">
-									<a href="javascript:;">User Setting</a>
-									<a href="javascript:;">Custom Pages</a>
-									<a href="javascript:;">Intranet Settings</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4">
-					<div class="tf-footer__section">
-						<h3 class="tf-footer__title">Get In Touch</h3>
-						<div class="tf-footer__content">
-							<form action="" class="tf-footer__subscribe">
-								<div class="input-group">
-									<input type="text" class="form-control" placeholder="Enter Your Email">
-									<div class="input-group-append">
-										<button class="btn btn-brand" type="button">Join</button>
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<div class="tf-footer tf-footer--extended tf-grid__item" id="tf_footer" style="background-image: url('./assets/media/hse-png/bkg-header.png');">
 	<div class="tf-footer__bottom">
 		<div class="tf-container" [ngClass]="{'tf-container--fluid': fluid}">
 			<div class="tf-footer__wrapper">
+				<div class="tf-footer__logo"></div>
 				<div class="tf-footer__logo">
-					<a class="tf-header__brand-logo" routerLink="/">
-						<img alt="Logo" src="./assets/media/logos/logo-4-sm.png" class="tf-header__brand-logo-sticky">
-					</a>
 					<div class="tf-footer__copyright">
-						{{today | date:'yyyy'}}&nbsp;©&nbsp;
-						<a href="http://keenthemes.com/metronic" target="_blank">Keenthemes</a>
+						{{today | date:'yyyy'}} © Piman. Tout droits réservés
 					</div>
 				</div>
 				<div class="tf-footer__menu">
-					<a href="http://keenthemes.com/metronic" target="_blank">Purchase Lisence</a>
-					<a href="http://keenthemes.com/metronic" target="_blank">Team</a>
-					<a href="http://keenthemes.com/metronic" target="_blank">Contact</a>
+					<span class="pointer" (click)="openCguModal(cguModal)">CGU</span>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
+
+<ng-template #cguModal let-modal>
+  <div class="tf-cgu-modal__head">
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+			<span aria-hidden="true">&times;</span>
+		</button>
+		<h3 class="tf-cgu-modal__title">Conditions Générales d'Utilisation</h3>
+    <div class="divider"></div>
+	</div>
+	<div class="tf-cgu-modal__body">
+		<iframe id="cgu" [src]="cguPath" width="100%" [height]="iframeHeight+'px'"></iframe>
+	</div>
+</ng-template>
+
 <!-- end:: Footer -->
