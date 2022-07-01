@@ -14,7 +14,6 @@
 			<div class="col-md-3">
 				<div class="card">
 					<div class="box">
-						<!-- TODO photo -->
 						<ngx-avatar class="user-avatar" [round]="false" [size]="200" cornerRadius="4" name="{{user | fullName}}"></ngx-avatar>
 					</div>
 					<div class="tf-divider">
@@ -33,13 +32,11 @@
 					</div>
 					<div class="box box-coords">
 						<p *ngIf="user.is_blocked == 0; else noAccount"><span class="label pull-left mr-2">{{'COMMON.PROFIL.TITLE' | translate}}</span><span class="" *ngIf="user.role; else noDataFound">{{user.role.libelle}}</span></p>
-
 						<ng-template #noAccount>
 							<p class="text-center">
 								<button mat-raised-button color="info" class="btn-small" (click)="giveAccess()"> {{'USERS.GRANT_ACCESS.LABEL' | translate}}</button>
 							</p>
 						</ng-template>
-
 					</div>
 					<div class="tf-divider">
 						<span></span>
@@ -49,7 +46,6 @@
 					</div>
 				</div>
 			</div>
-
 			<div class="col-md-9">
 				<mat-tab-group mat-align-tabs="start" animationDuration="1000ms">
 					<mat-tab label="Détails">
@@ -62,10 +58,22 @@
 											<h6><b>{{'USERS.CARD.USER_INFOS.EMPLOYEE_INFOS' | translate}}</b></h6>
 											<div class="tf-divider"><span></span></div>
 											<div class="box box-coords" style="flex:1">
-												<p><span class="label pull-left mr-2">{{'COMMON.PIMAN_ENTITY.LABEL' | translate}}</span><span class="blue" *ngIf="user.entity; else noDataFound">{{user.entity.libelle}}</span></p>
-												<p><span class="label pull-left mr-2">{{'COMMON.BU.LABEL' | translate}}</span><span class="blue" *ngIf="user.bu; else noDataFound">{{user.bu.libelle}}</span></p>
-												<p><span class="label pull-left mr-2">{{'COMMON.PROFIT_CENTER.LABEL' | translate}}</span><span class="blue" *ngIf="user.profit_center; else noDataFound">{{user.profit_center.fullname}}</span></p>
-												<p><span class="label pull-left mr-2">{{'COMMON.CLIENT.LABEL' | translate}}</span><span class="blue" *ngIf="user.client; else noDataFound">{{user.client.raison_sociale}}</span></p>
+												<p>
+													<span class="label pull-left mr-2">{{'COMMON.PIMAN_ENTITY.LABEL' | translate}}</span>
+													<span class="blue" *ngIf="user.entity; else noDataFound">{{user.entity.libelle}}</span>
+												</p>
+												<p>
+													<span class="label pull-left mr-2">{{'COMMON.BU.LABEL' | translate}}</span>
+													<span class="blue" *ngIf="user.bu; else noDataFound">{{user.bu.libelle}}</span>
+												</p>
+												<p>
+													<span class="label pull-left mr-2">{{'COMMON.PROFIT_CENTER.LABEL' | translate}}</span>
+													<span class="blue" *ngIf="user.profit_center; else noDataFound">{{user.profit_center.fullname}}</span>
+												</p>
+												<p>
+													<span class="label pull-left mr-2">{{'COMMON.CLIENT.LABEL' | translate}}</span>
+													<span class="blue" *ngIf="user.client; else noDataFound">{{user.client.raison_sociale}}</span>
+												</p>
 											</div>
 										</div>
 
@@ -82,9 +90,18 @@
 											<h6><b>Visite médicale</b></h6>
 											<div class="tf-divider"><span></span></div>
 											<div class="box box-coords" style="flex:1">
-												<p><span class="label pull-left mr-2">RQTH</span><span class="blue">{{user.rqth ? 'Oui' : 'Non'}}</span></p>
-												<p><span class="label pull-left mr-2">Réalisée</span><span class="blue" *ngIf="user.date_visite_medicale_passed; else noDataFound">{{user.date_visite_medicale_passed | date:'dd/MM/yyyy'}}</span></p>
-												<p><span class="label pull-left mr-2">À renouveler</span><span class="blue" *ngIf="user.date_visite_medicale_next; else noDataFound">{{user.date_visite_medicale_next | date:'dd/MM/yyyy'}}</span></p>
+												<p>
+													<span class="label pull-left mr-2">RQTH</span>
+													<span class="blue">{{user.rqth ? 'Oui' : 'Non'}}</span>
+												</p>
+												<p>
+													<span class="label pull-left mr-2">Réalisée</span>
+													<span class="blue" *ngIf="user.date_visite_medicale_passed; else noDataFound">{{user.date_visite_medicale_passed | date:'dd/MM/yyyy'}}</span>
+												</p>
+												<p>
+													<span class="label pull-left mr-2">À renouveler</span>
+													<span class="blue" *ngIf="user.date_visite_medicale_next; else noDataFound">{{user.date_visite_medicale_next | date:'dd/MM/yyyy'}}</span>
+												</p>
 											</div>
 										</div>
 										<!-- <div class="box box-ar-vs col-md-3">
@@ -116,9 +133,9 @@
 
 <ng-template #noDataFound>
 	<span class="no-data-label">
-		Non renseigné
+		{{'COMMON.NO_DATA_FOUND.TITLE' | translate}}
 	</span>
 </ng-template>
 <ng-template #virtualUser>
-	Utilisateur virtuel
+	{{'USERS.VIRTUEL.SHORTTITLE' | translate}}
 </ng-template>

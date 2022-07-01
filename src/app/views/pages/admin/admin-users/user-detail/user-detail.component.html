@@ -11,7 +11,7 @@
 	</div>
 	<tf-portlet-body class="tf-portlet__body--fit">
 		<div class="row">
-			<div class="col-md-3">
+			<div class="col-3">
 				<div class="card">
 					<div class="box">
 						<ngx-avatar class="user-avatar" [round]="false" [size]="200" cornerRadius="4" name="{{user | fullName}}"></ngx-avatar>
@@ -26,20 +26,17 @@
 						<p *ngIf="user.is_virtual == 0"><span class="label pull-left mr-2">{{'COMMON.BIRTHDAY.LABEL' | translate}}</span><span class="" *ngIf="user.date_naissance; else noDataFound">{{user.date_naissance | date:'dd/MM/yyyy'}}</span></p>
 						<p *ngIf="user.is_virtual == 0"><span class="label pull-left mr-2">{{'COMMON.FONCTION.LABEL' | translate}}</span><span class="" *ngIf="user.fonction; else noDataFound">{{user.fonction?.libelle}}</span></p>
 						<p *ngIf="user.is_virtual == 0 && user.manager"><span class="label pull-left mr-2">{{'COMMON.MANAGER.LABEL' | translate}}</span><span class="" >{{user.manager | fullName}}</span></p>
-						
 					</div>
 					<div class="tf-divider">
 						<span></span>
 					</div>
 					<div class="box box-coords">
 						<p *ngIf="user.is_blocked == 0; else noAccount"><span class="label pull-left mr-2">{{'COMMON.PROFIL.TITLE' | translate}}</span><span class="" *ngIf="user.role; else noDataFound">{{user.role.libelle}}</span></p>
-
 						<ng-template #noAccount>
-                            <p class="text-center">
-                                <button mat-raised-button color="info" class="btn-small" (click)="giveAccess()"> {{'USERS.GRANT_ACCESS.LABEL' | translate}}</button>
-                            </p>
+							<p class="text-center">
+									<button mat-raised-button color="info" class="btn-small" (click)="giveAccess()"> {{'USERS.GRANT_ACCESS.LABEL' | translate}}</button>
+							</p>
 						</ng-template>
-
 					</div>
 					<div class="tf-divider">
 						<span></span>
@@ -49,68 +46,137 @@
 					</div>
 				</div>
 			</div>
-
-			<div class="col-md-9">
-				<mat-tab-group mat-align-tabs="start" animationDuration="1000ms">
-					<mat-tab label="{{'ACTION.DETAIL' | translate}}">
-						<div class="col-md-12">
-							<div class="col-md-12">
-								<div class="card" *ngIf="user.is_virtual == 0; else virtualUser">
-									<h5><b>{{'USERS.CARD.USER_INFOS.TITLE' | translate}}</b></h5>
-									<div class="row d-flex">
-
-										<div class="box col-md-6">
-											<h6><b>{{'USERS.CARD.USER_INFOS.EMPLOYEE_INFOS' | translate}}</b></h6>
-											<div class="tf-divider"><span></span></div>
-											<div class="box box-coords" style="flex:1">
-												<p><span class="label pull-left mr-2">{{'COMMON.PIMAN_ENTITY.LABEL' | translate}}</span><span class="blue" *ngIf="user.entity; else noDataFound">{{user.entity.libelle}}</span></p>
-												<p><span class="label pull-left mr-2">{{'COMMON.BU.LABEL' | translate}}</span><span class="blue" *ngIf="user.bu; else noDataFound">{{user.bu.libelle}}</span></p>
-												<p><span class="label pull-left mr-2">{{'COMMON.PROFIT_CENTER.LABEL' | translate}}</span><span class="blue" *ngIf="user.profit_center; else noDataFound">{{user.profit_center.fullname}}</span></p>
-												<p><span class="label pull-left mr-2">{{'COMMON.CLIENT.LABEL' | translate}}</span><span class="blue" *ngIf="user.client; else noDataFound">{{user.client.raison_sociale}}</span></p>
-											</div>
-										</div>
-
-										<!-- <div class="box col-md-6">
-											<h6><b>{{'USERS.CARD.USER_INFOS.EMERGENCY_CASE' | translate}}</b></h6>
-											<div class="tf-divider"><span></span></div>
-											<div class="box box-coords" style="flex:1">
-												<p><span class="label pull-left mr-2">{{'COMMON.LASTNAME.LABEL' | translate}}</span><span class="blue" *ngIf="user.nom_urgence; else noDataFound">{{user.nom_urgence}}</span></p>
-												<p><span class="label pull-left mr-2">{{'SUIVI_HSE.MOBILE.TITLE' | translate}}</span><span class="blue" *ngIf="user.telephone_urgence; else noDataFound">{{user.telephone_urgence}}</span></p>
-												<p><span class="label pull-left mr-2">{{'SUIVI_HSE.RELATIONSHIP.TITLE' | translate}}</span><span class="blue" *ngIf="user.lien_parente_urgence; else noDataFound">{{user.lien_parente_urgence}}</span></p>
-											</div>
-										</div> -->
-
-										<div class="box col-md-6">
-											<h6><b>{{'USERS.CARD.USER_INFOS.MEDICAL_VISIT' | translate}}</b></h6>
-											<div class="tf-divider"><span></span></div>
-											<div class="box box-coords" style="flex:1">
-												<p><span class="label pull-left mr-2">{{'SUIVI_HSE.RQTH.TITLE' | translate}}</span><span class="blue">{{user.rqth ? 'Oui' : 'Non'}}</span></p>
-												<p><span class="label pull-left mr-2">{{'SUIVI_HSE.REALIZED.TITLE' | translate}}</span><span class="blue" *ngIf="user.date_visite_medicale_passed; else noDataFound">{{user.date_visite_medicale_passed | date:'dd/MM/yyyy'}}</span></p>
-												<p><span class="label pull-left mr-2">{{'SUIVI_HSE.TO_RENEW.TITLE' | translate}}</span><span class="blue" *ngIf="user.date_visite_medicale_next; else noDataFound">{{user.date_visite_medicale_next | date:'dd/MM/yyyy'}}</span></p>
-											</div>
-										</div>
-										<!-- <div class="box box-ar-vs col-md-3">
-                                        <h6><b>Ouvrage concerné</b></h6>
-                                        <div class="tf-divider"><span></span></div>
-                                        <div class="box box-coords" style="flex:1">
-                                            <p><span class="label pull-left mr-2">Type</span><span class="blue" *ngIf="user.ouvrage; else noDataFound">{{user.ouvrage}}</span></p>
-                                        </div>
-                                    </div>
-                                    <div class="box box-ar-vs col-md-3">
-                                        <h6><b>Indications complémentaires</b></h6>
-                                        <div class="tf-divider"><span></span></div>
-                                        <div class="box box-coords" style="flex:1">
-                                            <p><span class="label pull-left mr-2">Indication</span><span class="blue" *ngIf="user.indication; else noDataFound">{{user.indication}}</span></p>
-                                        </div>
-                                    </div> -->
+			<div class="col-9" *ngIf="user.is_virtual == 0; else virtualUser">
+				<div class="row mb-3">
+					<!-- ACCUEIL SECU -->
+					<div class="col-4">
+						<div class="card pt-2">
+							<div class="box box-secu">
+								<h5><b>Mon accueil Sécurité Piman</b></h5>
+								<div class="row mt-3">
+									<div class="col-3">
+										<img src="./assets/media/hse-svg/secu_undone.svg" alt="undone" class="shdw-5">
+									</div>
+									<div class="col-9 d-flex flex-column justify-content-center">
+										<span>Accueil sécurité</span>
+										<span class="font-weight-normal">---</span>
+									</div>
+								</div>
+								<div class="row mt-3">
+									<div class="col-3">
+										<img src="./assets/media/hse-svg/secu_done.svg" alt="undone" class="shdw-5">
+									</div>
+									<div class="col-9 d-flex flex-column justify-content-center">
+										<span>Livret d'accueil</span>
+										<span class="font-weight-normal">---</span>
+									</div>
+								</div>
+								<div class="row mt-3">
+									<div class="col-3">
+										<img src="./assets/media/hse-svg/secu_done.svg" alt="done" class="shdw-5">
+									</div>
+									<div class="col-9 d-flex flex-column justify-content-center">
+										<span>Quiz Sécurité</span>
+										<span class="font-weight-normal">14/20</span>
 									</div>
 								</div>
 							</div>
 						</div>
-					</mat-tab>
-				</mat-tab-group>
+					</div>
+					<!-- PRET EPI -->
+					<div class="col-8">
+						<div class="card pt-2">
+							<div class="box">
+								<h5><b>Prêt EPI</b></h5>
+								<div class="row">
+									<div class="col-12">
+										<span class="d-block my-3">Casque de chantier</span>
+										<table class="table table-sm table-epi">
+											<thead>
+												<tr>
+													<th>Réf.</th>
+													<th>Type</th>
+													<th>Date de prêt</th>
+													<th>Date de remise</th>
+													<th>Vérification</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>34569</td>
+													<td>Achat</td>
+													<td>12/04/2022</td>
+													<td>12/06/2022</td>
+													<td>Valable</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<div class="tf-divider">
+									<span></span>
+								</div>
+								<div class="row">
+									<div class="col-12">
+										<span class="d-block my-3">Casque de chantier</span>
+										<table class="table table-sm table-epi">
+											<thead>
+												<tr>
+													<th>Réf.</th>
+													<th>Type</th>
+													<th>Date de prêt</th>
+													<th>Date de remise</th>
+													<th>Vérification</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>34569</td>
+													<td>Achat</td>
+													<td>12/04/2022</td>
+													<td>12/06/2022</td>
+													<td>Valable</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row mt-3">
+					<!-- REMONTEES SECU -->
+					<div class="col-4">
+						<div class="card pt-2">
+							<div class="box">
+								<h5><b>Remontées sécurité</b></h5>
+								<div class="row mt-3" *ngFor="let remontee of remontees">
+									<div class="col-3">
+										<img src="{{remontee.type.icon}}" alt="{{remontee.type.libelle}}" width="60px">
+									</div>
+									<div class="col-9 d-flex flex-column justify-content-center">
+										<span>{{remontee.type.libelle}}</span>
+										<span class="font-weight-normal">{{remontee.description}}</span>
+										<small>{{remontee.created_at | date:'dd/MM/yyyy'}}</small>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- REMONTEES SECU -->
+					<div class="col-8">
+						<div class="card pt-2">
+							<div class="box">
+								<h5><b>Causeries</b></h5>
+								<div class="row mt-3" *ngFor="let remontee of remontees">
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-
 		</div>
 	</tf-portlet-body>
 </tf-portlet>

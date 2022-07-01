@@ -92,6 +92,9 @@
                                 margin-bottom: 2px;
                             }
                         }
+                        &.box-secu{
+                            
+                        }
                     }
                     .user-avatar {
                         .avatar-content{
@@ -113,4 +116,27 @@
     padding-right: 0.7em;
     padding-left: 0.7em;
     border-radius: 10rem;
+}
+
+img.shdw-5{
+    box-shadow: 0 4px 13px -3px rgb(0 0 0 / 23%);
+    border-radius: 5px;
+}
+
+.table.table-sm.table-epi{
+    thead{
+        tr{
+            th{
+                padding: 0.3rem;
+                border-bottom-width: 0;
+            }
+        }
+    }
+    tbody{
+        tr{
+            td{
+                border-top-width: 0;
+            }
+        }
+    }
 }
