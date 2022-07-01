@@ -5,9 +5,9 @@
 			<a [ngClass]="{'collapsed' : tpl?.collapsed }" class="btn btn-sm btn-icon btn-clean btn-icon-md accordion" data-toggle="collapse" data-target="#group" aria-expanded="true">
 				<i class="la la-angle-down"></i>
 			</a>
-			<a (click)="$event.stopPropagation(); addItem()" data-ktportlet-tool="add" class="btn btn-sm btn-icon btn-clean btn-icon-md">
+			<!-- <a (click)="$event.stopPropagation(); addItem()" data-ktportlet-tool="add" class="btn btn-sm btn-icon btn-clean btn-icon-md">
 				<i class="la la-plus"></i>
-			</a>
+			</a> -->
 			<a (click)="$event.stopPropagation(); getList()" matTooltip="{{'ACTION.REFRESH' | translate}}" data-ktportlet-tool="add" class="btn btn-sm btn-icon btn-clean btn-icon-md">
 				<i class="la la-refresh"></i>
 			</a>
@@ -18,12 +18,11 @@
 		<div class="col-{{tpl?.childCol}}">
 
 			<tf-admin-basic-list-portlet [items]="list" 
-										[imageColumn]="{title : 'COMMON.IMAGE.TITLE', key : 'icon'}"
-										(onSaveItem)="saveItem($event)" 
-										(onRefreshItem)="getItem($event)" 
-										(onDeleteItem)="deleteItem($event)"  
-										(onUpdateOrders)="updateOrders($event)"></tf-admin-basic-list-portlet>
-
+				[imageColumn]="{title : 'COMMON.IMAGE.TITLE', key : 'icon'}"
+				(onSaveItem)="saveItem($event)" 
+				(onRefreshItem)="getItem($event)" 
+				(onDeleteItem)="deleteItem($event)"  
+				(onUpdateOrders)="updateOrders($event)"></tf-admin-basic-list-portlet>
 		</div>
 	</div>
 </div>
