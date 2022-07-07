@@ -46,4 +46,5 @@ export class ProfileDetailComponent implements OnInit, OnDestroy {
 		this.subscriptions.forEach(sb => sb.unsubscribe());
 	}
 
+
 }

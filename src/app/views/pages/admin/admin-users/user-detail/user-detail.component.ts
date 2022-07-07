@@ -19,6 +19,7 @@ export class UserDetailComponent implements OnInit, OnDestroy {
 	loaded = false;
 	editMode: boolean = false;
   remontees = [];
+  causeries = [];
 	// Private properties
   private subscriptions: Subscription[] = [];
 
