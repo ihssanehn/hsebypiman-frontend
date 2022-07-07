@@ -1807,7 +1807,7 @@
 				"TITLE": "Action créé avec succès"
 			},
 			"ACTION_UPDATED": {
-				"TITLE": "Action mis à jour avec succès"
+				"TITLE": "Action mise à jour avec succès"
 			},
 			"CLOSE_ACTION_CONFIRMATION": {
 				"LABEL": "Les analyses de risque et visites de action seront archivés.",
