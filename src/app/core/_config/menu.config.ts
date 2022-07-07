@@ -195,15 +195,15 @@ export class MenuConfig {
 						translate: 'MENU.LIST',
 						icon: 'view_list',
 					},
-					{
-						title: 'Admin',
-						root: true,
-						alignment: 'left',
-						page: '/remontees/admin',
-						translate: 'MENU.ROOT',
-						icon: 'settings',
-						permissionOnly: ['ROOT', 'ADMIN'],
-					}
+					// {
+					// 	title: 'Admin',
+					// 	root: true,
+					// 	alignment: 'left',
+					// 	page: '/remontees/admin',
+					// 	translate: 'MENU.ROOT',
+					// 	icon: 'settings',
+					// 	permissionOnly: ['ROOT', 'ADMIN'],
+					// }
 				]
 			},
 			chantiers: {
