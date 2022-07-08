@@ -107,7 +107,9 @@ import {
 	VisiteQuestionsEpiAdminComponent,
 	VisiteQuestionsChantierAdminComponent,
 	SalarieFonctionsAdminComponent,
-	RemonteeEventTypesAdminComponent
+	RemonteeEventTypesAdminComponent,
+	CustomUserProfileComponent,
+	AddPhotoProfilModalComponent
 } from './layout';
 // General
 import { NoticeComponent } from './content/general/notice/notice.component';
@@ -295,6 +297,8 @@ import { QuizModalComponent } from './layout/modal/quiz-modal/quiz-modal.compone
 		PdpTypeComponent,
 		PdpDefaultValuesComponent,
 		QuizModalComponent,
+		CustomUserProfileComponent,
+		AddPhotoProfilModalComponent,
 
 	],
 	exports: [
@@ -411,7 +415,9 @@ import { QuizModalComponent } from './layout/modal/quiz-modal/quiz-modal.compone
 		PdpTypeComponent,
 		MultipleMailComponent,
 		PdpDefaultValuesComponent,
-		QuizModalComponent
+		QuizModalComponent,
+		CustomUserProfileComponent,
+		AddPhotoProfilModalComponent,
 
 	],
 	imports: [
@@ -482,7 +488,8 @@ import { QuizModalComponent } from './layout/modal/quiz-modal/quiz-modal.compone
 		PretModalComponent,
 		ShowFlashInfoModalComponent,
 		AddDocModalComponent,
-		QuizModalComponent
+		QuizModalComponent,
+		AddPhotoProfilModalComponent,
 	],
 })
 export class PartialsModule {

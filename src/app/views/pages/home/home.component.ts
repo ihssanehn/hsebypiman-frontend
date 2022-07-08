@@ -45,8 +45,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy  {
 	}
 
 	ngOnInit(): void {
-		console.log(this.user)
-		if(this.user.is_quiz_approved) {
+		if(this.user.is_quiz_approved || !this.isActive(['QUIZ'])) {
 			this.getFlashInfos()
 		} else {
 			this.openQuizModal();

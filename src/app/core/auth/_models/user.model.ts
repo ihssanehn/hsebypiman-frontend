@@ -36,6 +36,8 @@ export class User extends BaseModel {
     bu?: any;
     profit_center?: any;
     client?: any;
+    photo_profil_id?: Number;
+    photo_profil?: any;
 
     clear?(): void {
         this.id = undefined;
