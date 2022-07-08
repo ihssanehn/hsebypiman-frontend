@@ -993,6 +993,10 @@
 		"GOAL": {
 			"TITLE": "Goals"
 		},
+		"SELECT_FILE": {
+			"SHORTTITLE": "Select. file",
+			"TITLE": "Select a file"
+		},
 		"SELECT_FILES": {
 			"SHORTTITLE": "Select. files",
 			"TITLE": "Select a file"
@@ -2134,7 +2138,8 @@
 	},
 	"UPLOAD": {
 		"DROPZONE": {
-			"PLACEHOLDER": "Drop your files here"
+			"PLACEHOLDER": "Drop your files here",
+			"PLACEHOLDER_ONLY_ONE": "Drop your file here"
 		},
 		"EXTENSION": "This type of file cannot be imported",
 		"LIST_EXT": "List of extensions",
@@ -2159,6 +2164,9 @@
 			"USER_DELETE_CONFIRMATION": {
 				"LABEL": "The user will be permanently deleted.",
 				"TITLE": "Are you sure you want to delete this user?"
+			},
+			"PHOTO_PROFIL_UPDATED":{
+				"TITLE": "Profil picture has been succesfully updated"
 			}
 		},
 		"CARD": {
