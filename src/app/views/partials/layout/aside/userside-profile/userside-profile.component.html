@@ -1,9 +1,11 @@
 
-<div class="tf-aside-user-block">
-	<span class="tf-badge tf-badge--lg tf-badge--outline tf-badge--light tf-badge--bold tf-font-success">
+<div class="tf-aside-user-block" *ngIf="user">
+	<span class="tf-badge tf-badge--lg tf-badge--outline tf-badge--light tf-badge--bold tf-font-success" *ngIf="!user.photo_profil; else photoProfil">
 		{{user?.prenom|firstLetter}}
 	</span>
-
+	<ng-template #photoProfil>
+		<img src="{{user.photo_profil?.src}}" alt="{{user | fullName}}" class="tf-badge tf-badge--lg tf-badge--outline tf-badge--light tf-badge--bold tf-font-success">
+	</ng-template>
 	<div ngbDropdown placement="bottom-left" class="tf-aside__userside-formal">
 		<div ngbDropdownToggle class="tf-aside__userside-wrapper dropdown-toggle">
 			<div class="tf-aside__userside-user">

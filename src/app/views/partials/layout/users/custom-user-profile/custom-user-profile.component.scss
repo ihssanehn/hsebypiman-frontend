@@ -1,3 +1,5 @@
+@import "../../../../../../assets/sass/config";
+
 :host::ng-deep {
 	#portlet-user{
 			color: black;
@@ -105,14 +107,44 @@
 													}
 											}
 									}
-									.user-avatar {
-											.avatar-content{
-													background-color: #f7f9fc!important;
-													color: #525252!important;
+									.box-avatar{
+										position: relative;
+										cursor: pointer;
+										i.edit-avatar{
+											position: absolute;
+											left: 50%;
+											top: 50%;
+											transform: translate(-50%,-50%);
+											font-size: 3em;
+											opacity: 0;
+											z-index: 5;
+											color: $color-default;
+										}
+										.user-avatar {
+												.avatar-content{
+														background-color: #f7f9fc!important;
+														color: #525252!important;
+												}
+												.avatar-container{
+														width: 100%!important;
+														text-align: center;
+												}
+										}
+
+										&:hover{
+											i.edit-avatar{
+												opacity: 1;
 											}
-											.avatar-container{
-													width: 100%!important;
+											.user-avatar .avatar-container:before {
+												content:'';
+												position:absolute;
+												top:0;
+												bottom:0;
+												left:0;
+												right:0;
+												background-color: rgb(255 255 255 / 50%);
 											}
+										}
 									}
 							}
 

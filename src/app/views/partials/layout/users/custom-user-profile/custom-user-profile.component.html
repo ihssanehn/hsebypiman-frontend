@@ -16,8 +16,11 @@
 		<div class="row">
 			<div class="col-3">
 				<div class="card">
-					<div class="box">
-						<ngx-avatar class="user-avatar" [round]="false" [size]="200" cornerRadius="4" name="{{user | fullName}}"></ngx-avatar>
+					<div class="box box-avatar" (click)="updatePhotoProfil()">
+						<i class="fa fa-edit edit-avatar" ></i>
+						<!-- user.photo_profil ? null :  -->
+						<!--  -->
+						<ngx-avatar class="user-avatar" [round]="false" [size]="200" cornerRadius="4" src="{{user.photo_profil ? user.photo_profil.src : null}}"  name="{{(user | fullName)}}"></ngx-avatar>
 					</div>
 					<div class="tf-divider">
 						<span></span>

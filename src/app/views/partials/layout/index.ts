@@ -110,6 +110,7 @@ export { DashActionComponent } from './dashboard/dash-action/dash-action.compone
 export { DashMaterielComponent } from './dashboard/dash-materiel/dash-materiel.component';
 export { DashEntrepriseComponent } from './dashboard/dash-entreprise/dash-entreprise.component';
 export { CustomUserProfileComponent } from './users/custom-user-profile/custom-user-profile.component';
+export { AddPhotoProfilModalComponent } from './users/add-photo-profil-modal/add-photo-profil-modal.component';
 
 
 

@@ -57,6 +57,15 @@ export class UserService extends HttpService{
 		return this.http.put<any>(`${this.baseUrl}/` + _user.id+'/update-access', _user);
 	}
 
+  addPhotoProfile(user_id: number, datas){
+
+    const httpHeaders = new HttpHeaders();
+		
+    httpHeaders.set("Content-Type", "multipart/form-data");
+    
+    return this.http.post<JsonResponse<User>>(this.baseUrl+'/'+user_id+'/photo-profil', datas, { headers: httpHeaders });
+
+  }
 
 
 
