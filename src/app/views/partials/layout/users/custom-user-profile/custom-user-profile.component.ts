@@ -5,9 +5,10 @@ import { FileUploader } from "ng2-file-upload";
 import { AddPhotoProfilModalComponent } from '../add-photo-profil-modal/add-photo-profil-modal.component';
 import { FormStatus } from '@app/core/_base/crud/models/form-status';
 import { TranslateService } from '@ngx-translate/core';
-import { UserService, DocumentService } from '@app/core/services';
+import { UserService, DocumentService, RemonteeService, QcmSessionService } from '@app/core/services';
 import Swal from 'sweetalert2';
 import { extractErrorMessagesFromErrorResponse } from '@app/core/_base/crud';
+import { QcmSession, Remontee } from '@app/core/models';
 
 
 
@@ -25,9 +26,26 @@ export class CustomUserProfileComponent implements OnInit{
   @Output() onGoBack = new EventEmitter();
   @Output() onGiveAccess = new EventEmitter();
 
+  SECU_DONE_ICON = "./assets/media/hse-svg/secu_done.svg";
+  SECU_UNDONE_ICON = "./assets/media/hse-svg/secu_undone.svg";
+
+  qcmSession: QcmSession;
+  remontees: Remontee[];
+  causeries: Remontee[];
+  epis: any[];
+  formations: any[];
+
+
+  quizSecuStatusIcon: String = this.SECU_UNDONE_ICON;
+  livretSecuStatusIcon: String = this.SECU_UNDONE_ICON;
+  accueilSecuStatusIcon: String = this.SECU_UNDONE_ICON;
+
 	formStatus = new FormStatus();
   formDocloading: boolean = false;
 	errors: any;
+
+
+
   public uploader:FileUploader = new FileUploader({
     isHTML5: true
   });
@@ -38,11 +56,50 @@ export class CustomUserProfileComponent implements OnInit{
     private userService: UserService,
     private cdr: ChangeDetectorRef,
     private documentService: DocumentService,
-  ) { }
-
-
-  ngOnInit(){
+    private remonteeService: RemonteeService,
+    private qcmSessionService: QcmSessionService
+  ) {
   }
+
+
+	ngOnInit() {
+	  this.getUserRemontees();
+    this.getUserPretEpi();
+    this.getUserFormations();
+
+    if(this.user) {
+      if(this.user.is_quiz_approved) {
+        this.quizSecuStatusIcon = this.SECU_DONE_ICON
+      } else {
+        this.quizSecuStatusIcon = this.SECU_UNDONE_ICON
+      }
+    }
+  }
+  
+	async getUserRemontees() {
+		var res = await this.remonteeService.getAll({creator_id: this.user.id}).toPromise();
+		this.remontees = res.result.data;
+		this.causeries = this.remontees.filter(remontee => remontee.type && remontee.type.code == 'CAUSERIE');
+    console.log(this.causeries);
+
+    this.cdr.markForCheck();
+	}
+
+  async getUserPretEpi() {
+		var res = await this.userService.getPretEpi(this.user).toPromise();
+		this.epis = res.result.data;
+
+    this.cdr.markForCheck();
+	}
+
+  async getUserFormations() {
+		var res = await this.userService.getFormations(this.user).toPromise();
+		this.formations = res.result.data;
+    console.log(this.formations);
+
+    this.cdr.markForCheck();
+	}
+
 
   editUser(){
     this.onEditUser.emit('go');

@@ -146,6 +146,15 @@
 											}
 										}
 									}
+									.card-title {
+										display: flex;
+										justify-content: space-between;
+										button {
+											height: 0;
+											width: auto;
+											line-height: 0;
+										}
+									}
 							}
 
 					}
