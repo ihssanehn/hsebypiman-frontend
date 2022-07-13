@@ -107,7 +107,7 @@
 							</div>
 						</div>
 					</mat-tab>
-					<mat-tab label="Hse">
+					<mat-tab label="HSE">
 						<div class="row h-100">
 							<!-- ACCUEIL SECU -->
 							<div class="col-4 h-100">
@@ -146,11 +146,11 @@
 							</div>
 							<!-- REMONTEES SECU -->
 							<div class="col-4 h-100" style="max-height: 500px !important;">
-								<div class="card h-100 pt-2" style="overflow-y: scroll">
+								<div class="card h-100 pt-2" style="overflow-y: auto">
 									<div class="box">
 										<h5><b>Remontées sécurité</b></h5>
 										<div>
-											<div class="row mt-3" *ngFor="let remontee of remontees">
+											<div class="row mt-3"  *ngFor="let remontee of remontees" (click)="goToRemonteeDetail(remontee.id)" style="cursor: pointer;">
 												<div class="col-3">
 													<img src="{{remontee.type.icon}}" alt="{{remontee.type.libelle}}" width="60px">
 												</div>
@@ -166,11 +166,11 @@
 							</div>
 							<!-- CAUSERIES SECU -->
 							<div class="col-4 h-100" style="max-height: 500px !important;">
-								<div class="card h-100 pt-2" style="overflow-y: scroll">
+								<div class="card h-100 pt-2" style="overflow-y: auto">
 									<div class="box">
 										<h5><b>Causeries</b></h5>
 										<div>
-											<div class="row mt-3" *ngFor="let causerie of causeries">
+											<div class="row mt-3" *ngFor="let causerie of causeries" (click)="goToRemonteeDetail(causerie.id)" style="cursor: pointer;">
 												<div class="col-3">
 													<img src="{{causerie.type.icon}}" alt="{{causerie.type.libelle}}" width="60px">
 												</div>
@@ -202,7 +202,7 @@
 									<div class="tf-divider">
 										<span></span>
 									</div>
-									<div class="box" style="overflow-y: scroll; overflow-x: hidden">
+									<div class="box" style="overflow-y: auto; overflow-x: hidden">
 										<ng-container *ngFor="let epi of epis">
 											<div class="row">
 												<div class="col-12">
@@ -238,34 +238,34 @@
 						<!-- Formations -->
 						<div class="row h-100">
 							<div class="col-12 h-100">
-								<div class="card h-100" style="height: 500px">
+								<div class="card" style="height: 500px">
 									<div class="card-title">
 										<h5><b>Formations</b></h5>
 										<span>
-											<button mat-icon-button color="info" matTooltip="{{'USERS.ACTION.UPDATE_USER' | translate}}" (click)="editUser()" *ngxPermissionsOnly="['salarie_canUpdate']">
-												<mat-icon>edit</mat-icon>
+											<button mat-icon-button color="info" matTooltip="S'inscrire à une formation" (click)="showAssignFormationModal()">
+												<mat-icon>add</mat-icon>
 											</button>
 										</span>
 									</div>
 									<div class="tf-divider">
 										<span></span>
 									</div>
-									<div class="box" style="overflow-y: scroll; overflow-x: hidden">
-										<table class="table table-sm table-formations">
+									<div class="box" style="overflow-y: auto; overflow-x: hidden">
+										<table class="table table-formations">
 											<thead>
 												<tr>
 													<th>Label</th>
-													<th>Date de formation</th>
-													<th>Date de fin</th>
-													<th>Date de renouvellement</th>
+													<th class="text-center">Date de formation</th>
+													<th class="text-center">Date de fin</th>
+													<th class="text-center">Date de renouvellement</th>
 												</tr>
 											</thead>
 											<tbody>
 												<tr *ngFor="let formation of formations">
 													<td>{{formation.libelle}}</td>
-													<td>{{formation.date_debut | date: 'dd/mm/yyyy'}}</td>
-													<td>{{formation.date_fin | date: 'dd/mm/yyyy'}}</td>
-													<td>{{formation.date_renouvellement | date: 'dd/mm/yyyy'}}</td>
+													<td class="text-center">{{formation.date_debut | date: 'dd/mm/yyyy'}}</td>
+													<td class="text-center">{{formation.date_fin ? (formation.date_fin | date: 'dd/mm/yyyy') : '-'}}</td>
+													<td class="text-center">{{formation.date_renouvellement ? (formation.date_renouvellement | date: 'dd/mm/yyyy') : '-'}}</td>
 												</tr>
 											</tbody>
 										</table>

@@ -5,10 +5,12 @@ import { FileUploader } from "ng2-file-upload";
 import { AddPhotoProfilModalComponent } from '../add-photo-profil-modal/add-photo-profil-modal.component';
 import { FormStatus } from '@app/core/_base/crud/models/form-status';
 import { TranslateService } from '@ngx-translate/core';
-import { UserService, DocumentService, RemonteeService, QcmSessionService } from '@app/core/services';
+import { UserService, DocumentService, RemonteeService, QcmSessionService, FormationService } from '@app/core/services';
 import Swal from 'sweetalert2';
 import { extractErrorMessagesFromErrorResponse } from '@app/core/_base/crud';
 import { QcmSession, Remontee } from '@app/core/models';
+import { Router } from '@angular/router';
+import { AssignFormationModalComponent } from '../assign-formation-modal/assign-formation-modal.component';
 
 
 
@@ -57,7 +59,8 @@ export class CustomUserProfileComponent implements OnInit{
     private cdr: ChangeDetectorRef,
     private documentService: DocumentService,
     private remonteeService: RemonteeService,
-    private qcmSessionService: QcmSessionService
+    private formationService: FormationService,
+    private router: Router
   ) {
   }
 
@@ -109,8 +112,29 @@ export class CustomUserProfileComponent implements OnInit{
     this.onGoBack.emit('go')
   }
 
+  goToRemonteeDetail(id){
+		this.router.navigateByUrl('remontees/detail/'+id);
+	}
+
   giveAccess(){
     this.onGiveAccess.emit('go')
+  }
+
+  showAssignFormationModal() {
+    const modalRef = this.modalService.open(AssignFormationModalComponent, {size: 'lg',scrollable: true,centered : true});
+		modalRef.result.then(form => {
+      if(form){
+        this.assignFormation(form.value.formation_id)
+      }
+    });
+  }
+
+  async assignFormation(formation_id) {
+    var res = await this.formationService.assignUsers(formation_id, [this.user.id]).toPromise();
+    if(res) {
+      this.getUserFormations();
+    }
+    this.cdr.markForCheck();
   }
 
   updatePhotoProfil(){
