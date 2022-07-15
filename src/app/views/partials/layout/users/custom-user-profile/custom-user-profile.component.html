@@ -194,8 +194,8 @@
 									<div class="card-title">
 										<h5><b>Prêt EPI</b></h5>
 										<span>
-											<button mat-icon-button color="info" matTooltip="{{'USERS.ACTION.UPDATE_USER' | translate}}" (click)="editUser()" *ngxPermissionsOnly="['salarie_canUpdate']">
-												<mat-icon>edit</mat-icon>
+											<button mat-icon-button color="info" matTooltip="Ajouter un prêt EPI" (click)="showAssignEpiModal()">
+												<mat-icon>add</mat-icon>
 											</button>
 										</span>
 									</div>
@@ -203,23 +203,31 @@
 										<span></span>
 									</div>
 									<div class="box" style="overflow-y: auto; overflow-x: hidden">
-										<ng-container *ngFor="let epi of epis">
+										<ng-container *ngFor="let item of epis  | keyvalue">
 											<div class="row">
 												<div class="col-12">
-													<span class="d-block my-3">{{epi.categorie.libelle}}</span>
+													<span class="d-block my-3" style="color: #2f8274">{{item.key}}</span>
 													<table class="table table-sm table-epi">
 														<thead>
 															<tr>
 																<th>Réf.</th>
-																<th>Date de prêt</th>
-																<th>Date de remise</th>
+																<th class="text-center">Date de prêt</th>
+																<th class="text-center">Date de remise</th>
+																<th class="text-center"></th>
 															</tr>
 														</thead>
 														<tbody>
-															<tr>
+															<tr *ngFor="let epi of item.value">
 																<td>{{epi.code}}</td>
-																<td>{{epi.actual_user.pivot.date_pret | date:'dd/MM/yyyy'}}</td>
-																<td>{{epi.actual_user.pivot.date_retour | date:'dd/MM/yyyy'}}</td>
+																<td class="text-center">{{epi.actual_user.pivot.date_pret ? (epi.actual_user.pivot.date_pret | date:'dd/MM/yyyy') : '-'}}</td>
+																<td class="text-center">{{epi.actual_user.pivot.date_retour ? (epi.actual_user.pivot.date_retour | date:'dd/MM/yyyy') : '-'}}</td>
+																<td class="text-center">
+																	<span>
+																		<button mat-icon-button color="info" matTooltip="Modifier" (click)="showEditAssignedEpiModal(epi)">
+																			<mat-icon>edit</mat-icon>
+																		</button>
+																	</span>
+																</td>
 															</tr>
 														</tbody>
 													</table>

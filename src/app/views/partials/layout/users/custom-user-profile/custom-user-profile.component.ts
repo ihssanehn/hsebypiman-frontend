@@ -5,12 +5,13 @@ import { FileUploader } from "ng2-file-upload";
 import { AddPhotoProfilModalComponent } from '../add-photo-profil-modal/add-photo-profil-modal.component';
 import { FormStatus } from '@app/core/_base/crud/models/form-status';
 import { TranslateService } from '@ngx-translate/core';
-import { UserService, DocumentService, RemonteeService, QcmSessionService, FormationService } from '@app/core/services';
+import { UserService, DocumentService, RemonteeService, QcmSessionService, FormationService, MaterielService } from '@app/core/services';
 import Swal from 'sweetalert2';
 import { extractErrorMessagesFromErrorResponse } from '@app/core/_base/crud';
 import { QcmSession, Remontee } from '@app/core/models';
 import { Router } from '@angular/router';
 import { AssignFormationModalComponent } from '../assign-formation-modal/assign-formation-modal.component';
+import { AssignEpiModalComponent } from '../assign-epi-modal/assign-epi-modal.component';
 
 
 
@@ -60,6 +61,7 @@ export class CustomUserProfileComponent implements OnInit{
     private documentService: DocumentService,
     private remonteeService: RemonteeService,
     private formationService: FormationService,
+    private materielService: MaterielService,
     private router: Router
   ) {
   }
@@ -133,6 +135,67 @@ export class CustomUserProfileComponent implements OnInit{
     var res = await this.formationService.assignUsers(formation_id, [this.user.id]).toPromise();
     if(res) {
       this.getUserFormations();
+    }
+    this.cdr.markForCheck();
+  }
+
+  showAssignEpiModal() {
+    const modalRef = this.modalService.open(AssignEpiModalComponent, {size: 'lg',scrollable: true,centered : true});
+    modalRef.componentInstance.editMode = false;
+		modalRef.result.then(form => {
+      if(form){
+        this.assignNewEpi(
+          form.materiel_id, 
+          form.date_pret, 
+          form.date_retour
+        )
+      }
+    });
+  }
+
+  showEditAssignedEpiModal(epi) {
+    const modalRef = this.modalService.open(AssignEpiModalComponent, {size: 'lg',scrollable: true,centered : true});
+    modalRef.componentInstance.editMode = true;
+    modalRef.componentInstance.pret = {
+      'materiel_id': epi.id,
+      'date_pret': epi.actual_user.pivot.date_pret,
+      'date_retour': epi.actual_user.pivot.date_retour
+    };
+		modalRef.result.then(form => {
+      if(form){
+        this.updateAssignedEpi(
+          form.materiel_id, 
+          form.date_pret, 
+          form.date_retour
+        )
+      }
+    });
+  }
+
+  async updateAssignedEpi(epi_id: number, date_pret, date_retour) {
+    var params = {
+      'salarie_id': this.user.id,
+      'date_pret': date_pret,
+      'date_retour': date_retour
+    }
+
+    var res = await this.materielService.updatePret(epi_id, params).toPromise();
+    if(res) {
+      this.getUserPretEpi();
+    }
+    this.cdr.markForCheck();
+  }
+
+  async assignNewEpi(epi_id: number, date_pret: Date, date_retour: Date) {
+    var params = {
+      'salarie_id': this.user.id,
+      'date_pret': date_pret,
+      'date_retour': date_retour
+    }
+
+    var res = await this.materielService.createPret(epi_id, params).toPromise();
+    if(res) {
+      this.getUserPretEpi();
     }
     this.cdr.markForCheck();
   }

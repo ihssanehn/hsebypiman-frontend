@@ -179,6 +179,10 @@ img.shdw-5{
 					th{
 							padding: 0.3rem;
 							border-bottom-width: 0;
+							width: 30%;
+					}
+					th:nth-child(4) {
+						width: 10%;
 					}
 			}
 	}
@@ -186,6 +190,13 @@ img.shdw-5{
 			tr{
 					td{
 							border-top-width: 0;
+					}
+					td:nth-child(4) {
+						button {
+							height: 0;
+							width: auto;
+							line-height: 0;
+						}
 					}
 			}
 	}

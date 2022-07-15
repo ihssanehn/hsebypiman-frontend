@@ -112,6 +112,7 @@ export { DashEntrepriseComponent } from './dashboard/dash-entreprise/dash-entrep
 export { CustomUserProfileComponent } from './users/custom-user-profile/custom-user-profile.component';
 export { AddPhotoProfilModalComponent } from './users/add-photo-profil-modal/add-photo-profil-modal.component';
 export { AssignFormationModalComponent } from './users/assign-formation-modal/assign-formation-modal.component';
+export { AssignEpiModalComponent } from './users/assign-epi-modal/assign-epi-modal.component';
 
 
 
