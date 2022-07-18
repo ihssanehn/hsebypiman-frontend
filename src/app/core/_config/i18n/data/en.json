@@ -1670,7 +1670,13 @@
 		"SUIVI_HSE": "Hse tracking",
 		"USERS": "Users",
 		"VISITESECURITE": "Security Visits",
-		"FORMATION": "Training"
+		"FORMATION": "Training",
+		"SUB_FORMATION": {
+			"ADD": "Add a Training",
+			"DETAIL": "Detail of the Training",
+			"EDIT": "Modify the Training",
+			"LIST": "List of Trainings"
+		}
 	},
 	"NOTIF": {
 		"DELETE_CONFIRMATION": {
@@ -2632,6 +2638,9 @@
 		"TRAINING_ORGANIZATION": {
 			"TITLE": "Training organization"
 		},
+		"DESC": {
+			"TITLE": "Description"
+		},
 		"START_DATE": {
 			"TITLE": "Start date"
 		},
@@ -2639,10 +2648,32 @@
 			"TITLE": "End date"
 		},
 		"HABILITATION": {
-			"TITLE": "Accreditation"
+			"TITLE": "Qualification"
 		},
 		"RENEWAL_DATE": {
 			"TITLE": "Renewal date"
+		},
+		"NOTIF": {
+			"FORMATION_CREATED": {
+				"TITLE": "Formation created successfully"
+			},
+			"FORMATION_UPDATED": {
+				"TITLE": "Formation updated successfully"
+			},
+			"LOADING": {
+				"TITLE": "Loading Formation"
+			}
+		},
+		"CARD": {
+			"GENERAL_INFOS": {
+				"TITLE": "General informations"
+			},
+			"PERIOD": {
+				"TITLE": "Training period"
+			},
+			"HABILITATIONS": {
+				"TITLE": "Training qualification"
+			}
 		}
 	}
 }

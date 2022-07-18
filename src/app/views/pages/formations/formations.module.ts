@@ -31,6 +31,7 @@ import {
 	MatTooltipModule,MAT_DATE_LOCALE, 
 	MAT_DATE_FORMATS,
 	DateAdapter,
+  MatSlideToggleModule,
 } from '@angular/material';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -46,6 +47,8 @@ import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapte
 import { ActionNotificationComponent } from '@app/views/partials/content/crud';
 import { FormationsListComponent } from './formations-list/formations-list.component';
 import { FormationFiltersComponent } from './formation-filters/formation-filters.component';
+import { FormationAddComponent } from './formation-add/formation-add.component';
+import { FormationFormComponent } from './formation-form/formation-form.component';
 
 
 const routes: Routes = [
@@ -72,36 +75,36 @@ const routes: Routes = [
 					// }
 				}
 			},
-      // {
-			// 	path: 'list:id',
-			// 	component: ActionsListComponent,
-			// 	canActivate: [NgxPermissionsGuard],
-			// 	data: {
-			// 		permissions: {
-			// 			only: ['action_canSeeAll']
-			// 		}
-			// 	}
-			// },
-			// {
-			// 	path: 'add',
-			// 	component: ActionAddComponent,
-			// 	canActivate: [NgxPermissionsGuard],
-			// 	data: {
-			// 		permissions: {
-			// 			only: ['action_canAdd']
-			// 		}
-			// 	}
-			// },
-			// {
-			// 	path: 'add:id',
-			// 	component: ActionAddComponent,
-			// 	canActivate: [NgxPermissionsGuard],
-			// 	data: {
-			// 		permissions: {
-			// 			only: ['action_canAdd']
-			// 		}
-			// 	}
-			// },
+      {
+				path: 'list:id',
+				component: FormationsListComponent,
+				//canActivate: [NgxPermissionsGuard],
+				data: {
+					// permissions: {
+					// 	only: ['action_canSeeAll']
+					// }
+				}
+			},
+			{
+				path: 'add',
+				component: FormationAddComponent,
+				//canActivate: [NgxPermissionsGuard],
+				data: {
+					// permissions: {
+					// 	only: ['action_canAdd']
+					// }
+				}
+			},
+			{
+				path: 'add:id',
+				component: FormationAddComponent,
+				//canActivate: [NgxPermissionsGuard],
+				data: {
+					// permissions: {
+					// 	only: ['action_canAdd']
+					// }
+				}
+			},
 			// {
 			// 	path: 'edit',
 			// 	component: ActionEditComponent,
@@ -145,7 +148,9 @@ const routes: Routes = [
   declarations: [
     FormationsComponent,
     FormationsListComponent,
-    FormationFiltersComponent
+    FormationFiltersComponent,
+    FormationAddComponent,
+    FormationFormComponent
   ],
   imports: [
     CommonModule,
@@ -186,6 +191,7 @@ const routes: Routes = [
 		NgbTooltipModule,
 		NgbPopoverModule,
 		NgxMaskModule,
+    MatSlideToggleModule
   ],
   providers: [
 		InterceptService,
