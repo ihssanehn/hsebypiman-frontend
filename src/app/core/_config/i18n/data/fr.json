@@ -1559,7 +1559,8 @@
 			"NEWENTREPRISE": "Nouveau client",
 			"NEWMATERIEL": "Nouveau matériel",
 			"NEWREMONTEE": "Nouvelle remontée QHSE",
-			"NEWVS": "Nouvelle visite de sécurité"
+			"NEWVS": "Nouvelle visite de sécurité",
+			"NEWFORMATION": "Nouvelle formation"
 		},
 		"CHANTIER": "Chantiers",
 		"DASHBOARD": "Tableau de Bord",
@@ -1669,7 +1670,8 @@
 		},
 		"SUIVI_HSE": "Suivi Hse",
 		"USERS": "Utilisateurs",
-		"VISITESECURITE": "Visites de Sécurité"
+		"VISITESECURITE": "Visites de Sécurité",
+		"FORMATION": "Formation"
 	},
 	"NOTIF": {
 		"DELETE_CONFIRMATION": {
@@ -2623,6 +2625,26 @@
 			"MODULE_UPDATED": {
 				"TITLE": "Modules mis à jour avec succès"
 			}
+		}
+	},
+	"FORMATIONS": {
+		"LABEL": {
+			"TITLE": "Libelle"
+		},
+		"TRAINING_ORGANIZATION": {
+			"TITLE": "Organisme de formation"
+		},
+		"START_DATE": {
+			"TITLE": "Date début"
+		},
+		"END_DATE": {
+			"TITLE": "Date fin"
+		},
+		"HABILITATION": {
+			"TITLE": "Habilitation"
+		},
+		"RENEWAL_DATE": {
+			"TITLE": "Date de renouvellement"
 		}
 	}
 }

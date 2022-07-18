@@ -1558,7 +1558,8 @@
 			"NEWENTREPRISE": "New business",
 			"NEWMATERIEL": "New equipment",
 			"NEWREMONTEE": "New QHSE lift",
-			"NEWVS": "New safety visit"
+			"NEWVS": "New safety visit",
+			"NEWFORMATION": "New training"
 		},
 		"CHANTIER": "Construction sites",
 		"DASHBOARD": "Dashboard",
@@ -1668,7 +1669,8 @@
 		},
 		"SUIVI_HSE": "Hse tracking",
 		"USERS": "Users",
-		"VISITESECURITE": "Security Visits"
+		"VISITESECURITE": "Security Visits",
+		"FORMATION": "Training"
 	},
 	"NOTIF": {
 		"DELETE_CONFIRMATION": {
@@ -2621,6 +2623,26 @@
 			"MODULE_UPDATED": {
 				"TITLE": "Modules updated successfully"
 			}
+		}
+	},
+	"FORMATIONS": {
+		"LABEL": {
+			"TITLE": "Name"
+		},
+		"TRAINING_ORGANIZATION": {
+			"TITLE": "Training organization"
+		},
+		"START_DATE": {
+			"TITLE": "Start date"
+		},
+		"END_DATE": {
+			"TITLE": "End date"
+		},
+		"HABILITATION": {
+			"TITLE": "Accreditation"
+		},
+		"RENEWAL_DATE": {
+			"TITLE": "Renewal date"
 		}
 	}
 }

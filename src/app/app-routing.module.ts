@@ -139,6 +139,17 @@ const routes: Routes = [
 					}
 				}
 			},
+			{
+				path: 'formations',
+				loadChildren: () => import('@app/views/pages/formations/formations.module').then(m => m.FormationsModule),
+				//canActivate: [ModuleGuard, NgxPermissionsGuard],
+				data: {
+					//moduleCodes:['FORMATIONS'],
+					permissions: {
+						only: ['ROOT', 'ADMIN']
+					}
+				}
+			},
 			// {
 			// 	path: 'user-management',
 			// 	loadChildren: () => import('@app/views/pages/user-management/user-management.module').then(m => m.UserManagementModule)
