@@ -142,9 +142,9 @@ const routes: Routes = [
 			{
 				path: 'formations',
 				loadChildren: () => import('@app/views/pages/formations/formations.module').then(m => m.FormationsModule),
-				//canActivate: [ModuleGuard, NgxPermissionsGuard],
+				canActivate: [ModuleGuard, NgxPermissionsGuard],
 				data: {
-					//moduleCodes:['FORMATIONS'],
+					moduleCodes:['FORMATIONS'],
 					permissions: {
 						only: ['ROOT', 'ADMIN']
 					}

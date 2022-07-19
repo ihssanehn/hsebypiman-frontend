@@ -119,7 +119,7 @@ export class MenuConfig {
 					alignment: 'left',
 					page: '/formations',
 					translate: 'MENU.FORMATION',
-					needModule: false,
+					needModule: true,
 					moduleCode: ['FORMATIONS'],
 					permissionOnly: ['ROOT', 'ADMIN', 'MANAGER']
 				},
