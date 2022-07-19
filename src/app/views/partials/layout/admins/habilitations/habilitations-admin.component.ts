@@ -7,7 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'habilitations-admin',
-  templateUrl: '../../../../partials/layout/admin-template/admin-template.component.html',
+  templateUrl: './habilitations-admin.component.html',
   styleUrls: ['../../../../partials/layout/admin-template/admin-template.component.scss']
 })
 export class HabilitationsAdminComponent extends AdminTemplateComponent implements OnInit {

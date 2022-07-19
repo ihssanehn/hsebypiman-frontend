@@ -6,6 +6,7 @@ export class Habilitation {
     id?: number;
     cat_risque?:CatHabilitation;
     libelle?:string;
+    duree_validite?:number;
     code?:string;
     ordre?:number;
     active?:boolean;

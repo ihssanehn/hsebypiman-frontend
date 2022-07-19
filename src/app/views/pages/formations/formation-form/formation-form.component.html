@@ -64,14 +64,17 @@
 									<mat-form-field class="col-md-6 col-sm-12">
 										<mat-label>{{'FORMATIONS.HABILITATION.TITLE' | translate}}</mat-label>
 										<mat-select class="form-control" [required]="isFieldRequired('habilitation_id')" placeholder="" formControlName="habilitation_id">
-											<mat-option *ngFor="let hab of habilitations" [value]="hab.id">
-												{{ hab.libelle }}
+											<mat-option>---</mat-option>
+											<mat-optgroup *ngFor="let group of habilitations | keyvalue" [label]="group.key">
+											<mat-option *ngFor="let hab of group.value" [value]="hab.id">
+											  {{hab.libelle}}
 											</mat-option>
+										  </mat-optgroup>
 										</mat-select>
 										<mat-error *ngIf="isControlHasError('habilitation_id','required')">
 											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 										</mat-error>
-									</mat-form-field>
+									  </mat-form-field>
 								</div>
 							</div>
 						</div>

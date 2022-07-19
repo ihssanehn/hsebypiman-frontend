@@ -1,4 +1,5 @@
 import {User} from '../auth';
+import { Habilitation } from './habilitation.model';
 
 export class Formation {
     id?: number;
@@ -10,7 +11,7 @@ export class Formation {
     date_renouvellement?: Date;
     to_habilitation?: boolean;
     habilitation_id?: number;
-    habilitation?: any;
+    habilitation?: Habilitation;
     creator_id?: number;
     creator: User;
     created_at?: Date;

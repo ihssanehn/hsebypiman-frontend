@@ -181,6 +181,7 @@ import { PdpDefaultValuesComponent } from './layout/admins/pdp-default-values/pd
 import { QuizModalComponent } from './layout/modal/quiz-modal/quiz-modal.component';
 import { AssignFormationModalComponent } from './layout/users/assign-formation-modal/assign-formation-modal.component';
 import { AssignEpiModalComponent } from './layout/users/assign-epi-modal/assign-epi-modal.component';
+import { HabilitationsAdminListPortletComponent } from './layout/admins/habilitations-admin-list-portlet/habilitations-admin-list-portlet.component';
 
 @NgModule({
 	declarations: [
@@ -302,7 +303,8 @@ import { AssignEpiModalComponent } from './layout/users/assign-epi-modal/assign-
 		CustomUserProfileComponent,
 		AddPhotoProfilModalComponent,
 		AssignFormationModalComponent,
-		AssignEpiModalComponent
+		AssignEpiModalComponent,
+		HabilitationsAdminListPortletComponent
 
 	],
 	exports: [
@@ -423,7 +425,8 @@ import { AssignEpiModalComponent } from './layout/users/assign-epi-modal/assign-
 		CustomUserProfileComponent,
 		AddPhotoProfilModalComponent,
 		AssignFormationModalComponent,
-		AssignEpiModalComponent
+		AssignEpiModalComponent,
+		HabilitationsAdminListPortletComponent
 
 	],
 	imports: [

@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import { User } from '@app/core/auth';
-import { PersonnelService } from '@app/core/services';
+import { HabilitationService, PersonnelService } from '@app/core/services';
 import { DateFrToEnPipe } from '@app/core/_base/layout';
 import { debounceTime } from 'rxjs/operators';
 
@@ -20,13 +20,14 @@ export class FormationFiltersComponent implements OnInit {
   loading: boolean = false;
   hidden: boolean = true;
   data: boolean = false;
-  users: User[];
+  habilitations: any[];
+  habLoaded: boolean = false;
 
   constructor(
-    private userService: PersonnelService,
     private fb: FormBuilder,
     private cdr: ChangeDetectorRef,
     private dateFrToEnPipe: DateFrToEnPipe,
+    private habilitationService: HabilitationService,
 		iconRegistry: MatIconRegistry, 
     sanitizer: DomSanitizer,
   ) { 
@@ -35,6 +36,7 @@ export class FormationFiltersComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getHabilitations();
     this.initFiltersForm();
     this.filterForm.valueChanges.pipe(
       debounceTime(500)
@@ -49,6 +51,16 @@ export class FormationFiltersComponent implements OnInit {
     })
   }
 
+  async getHabilitations(){
+    this.habLoaded = false;
+    var res = await this.habilitationService.getAll().toPromise();
+    if(res){
+      this.habilitations = res.result.data;
+      this.habLoaded = true;
+    }
+    this.cdr.markForCheck();
+  }
+
   search(filters: any): void {
     var filter = {...this.filterForm.getRawValue()}
     filter.date_debut = this.dateFrToEnPipe.transform(filter.date_debut);
@@ -57,7 +69,7 @@ export class FormationFiltersComponent implements OnInit {
   }
 
   formHasValue(key){
-    return this.filterForm.get(key).value ? true:false;
+    return this.filterForm.get(key)? this.filterForm.get(key).value ? true:false: false;
   }
   
   clearValue(key){

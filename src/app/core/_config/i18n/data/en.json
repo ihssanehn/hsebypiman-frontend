@@ -2678,5 +2678,10 @@
 				"TITLE": "Training qualification"
 			}
 		}
+	},
+	"HABILITATIONS": {
+		"PERIOD_VALIDITY": {
+			"TITLE": "Period of validity"
+		}
 	}
 }

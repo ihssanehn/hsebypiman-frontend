@@ -51,6 +51,7 @@ import { FormationAddComponent } from './formation-add/formation-add.component';
 import { FormationFormComponent } from './formation-form/formation-form.component';
 import { FormationEditComponent } from './formation-edit/formation-edit.component';
 import { FormationDetailComponent } from './formation-detail/formation-detail.component';
+import { FormationAdminComponent } from './formation-admin/formation-admin.component';
 
 
 const routes: Routes = [
@@ -127,20 +128,16 @@ const routes: Routes = [
 					// }
 				}
 			},
-			// {
-			// 	path: 'admin',
-			// 	component: ActionAdminComponent,
-			// 	canActivate: [NgxPermissionsGuard],
-			// 	data: {
-			// 		permissions: {
-			// 			only: ['ADMIN','ROOT']
-			// 		}
-			// 	}
-			// },
-			// {
-			// 	path: 'dashboard',
-			// 	component: ActionsDashComponent
-			// },
+			{
+				path: 'admin',
+				component: FormationAdminComponent,
+				//canActivate: [NgxPermissionsGuard],
+				data: {
+					permissions: {
+						only: ['ADMIN','ROOT']
+					}
+				}
+			}
     ]
   }
 ];
@@ -154,7 +151,8 @@ const routes: Routes = [
     FormationAddComponent,
     FormationFormComponent,
     FormationEditComponent,
-    FormationDetailComponent
+    FormationDetailComponent,
+    FormationAdminComponent
   ],
   imports: [
     CommonModule,

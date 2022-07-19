@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { HabilitationService } from '@app/core/services';
 import { FormStatus } from '@app/core/_base/crud/models/form-status';
 
 @Component({
@@ -17,13 +18,26 @@ export class FormationFormComponent implements OnInit {
   @Output() onSubmit = new EventEmitter();
 
   habilitations: any[];
+  habLoaded: boolean = false;
 
   constructor(
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private habilitationService: HabilitationService
   ) { }
 
   ngOnInit() {
+    this.getHabilitations();
     this.setDynamicValidators();
+  }
+
+  async getHabilitations(){
+    this.habLoaded = false;
+    var res = await this.habilitationService.getAll().toPromise();
+    if(res){
+      this.habilitations = res.result.data;
+      this.habLoaded = true;
+    }
+    this.cdr.markForCheck();
   }
 
   isFieldRequired(controlName){

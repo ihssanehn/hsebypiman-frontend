@@ -2680,5 +2680,10 @@
 				"TITLE": "Habilitation de la formation"
 			}
 		}
+	},
+	"HABILITATIONS": {
+		"PERIOD_VALIDITY": {
+			"TITLE": "Durée de validité"
+		}
 	}
 }

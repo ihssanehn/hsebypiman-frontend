@@ -3,19 +3,20 @@
 		<tf-portlet-body class="tf-portlet__body--fit card-filters px-5 pt-4 pb-3" >
 			<form novalidate [formGroup]="filterForm">
 				<div class="row">
-
-					<!-- <mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
-						<mat-label>{{'PLANACTIONS.ORIGINE.TITLE' | translate}}</mat-label>
-						<mat-select class="form-control" formControlName="type_id" name="type_id">
-							<mat-option>{{'FILTER.SEARCH_ALL' | translate}}</mat-option>
-							<mat-option *ngFor="let hab of habilitations" [value]="hab.id">
-								{{hab.libelle}}
+					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
+						<mat-label>{{'FORMATIONS.HABILITATION.TITLE' | translate}}</mat-label>
+						<mat-select class="form-control" formControlName="habilitation_id" name="habilitation_id">
+							<mat-option>---</mat-option>
+							<mat-optgroup *ngFor="let group of habilitations | keyvalue" [label]="group.key">
+							<mat-option *ngFor="let hab of group.value" [value]="hab.id">
+							  {{hab.libelle}}
 							</mat-option>
+						  </mat-optgroup>
 						</mat-select>
-						<button mat-button *ngIf="formHasValue('habilitations_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('habilitations_id'); $event.stopPropagation()">
+						<button mat-button *ngIf="formHasValue('habilitation_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('habilitation_id'); $event.stopPropagation()">
 							<mat-icon>clear</mat-icon>
 						</button>
-					</mat-form-field> -->
+					</mat-form-field>
 
 					<div class="col-xl-6 col-md-6 col-sm-6 col-xs-12">
 						<h6>{{'COMMON.DATE.TITLE' | translate}}</h6>
