@@ -50,6 +50,7 @@ import { FormationFiltersComponent } from './formation-filters/formation-filters
 import { FormationAddComponent } from './formation-add/formation-add.component';
 import { FormationFormComponent } from './formation-form/formation-form.component';
 import { FormationEditComponent } from './formation-edit/formation-edit.component';
+import { FormationDetailComponent } from './formation-detail/formation-detail.component';
 
 
 const routes: Routes = [
@@ -62,10 +63,10 @@ const routes: Routes = [
 				redirectTo: 'list',
 				pathMatch: 'full'
 			},
-			// {
-			// 	path:'detail/:id',
-			// 	component: ActionDetailComponent
-			// },
+			{
+				path:'detail/:id',
+				component: FormationDetailComponent
+			},
 			{
 				path: 'list',
 				component: FormationsListComponent,
@@ -152,7 +153,8 @@ const routes: Routes = [
     FormationFiltersComponent,
     FormationAddComponent,
     FormationFormComponent,
-    FormationEditComponent
+    FormationEditComponent,
+    FormationDetailComponent
   ],
   imports: [
     CommonModule,

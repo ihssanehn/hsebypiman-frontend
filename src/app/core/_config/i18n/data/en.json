@@ -2653,6 +2653,9 @@
 		"RENEWAL_DATE": {
 			"TITLE": "Renewal date"
 		},
+		"PROVIDES_HABILITATION": {
+			"TITLE": "Training provides qualification ?"
+		},
 		"NOTIF": {
 			"FORMATION_CREATED": {
 				"TITLE": "Formation created successfully"

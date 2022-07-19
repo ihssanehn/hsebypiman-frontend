@@ -56,7 +56,7 @@
 								<div class="tf-heading tf-heading--md">{{'FORMATIONS.CARD.HABILITATIONS.TITLE' | translate}}</div>
 								<div class="row form-row">
                                     <mat-form-field class="col-md-6 col-sm-12 st-group" floatLabel="always" appearance="none" >
-                                        <span class="st-label pointer" (click)="toggleCheck('to_habilitation')">{{'FORMATIONS.HABILITATION.TITLE' | translate}}</span>
+                                        <span class="st-label pointer" (click)="toggleCheck('to_habilitation')">{{'FORMATIONS.PROVIDES_HABILITATION.TITLE' | translate}}</span>
                                         <mat-slide-toggle id="show_inactives" [checked]="form.get('to_habilitation').value == 1" (change)="onCheckChange($event, 'to_habilitation')"></mat-slide-toggle>
                                         <textarea matInput hidden></textarea>
                                     </mat-form-field>

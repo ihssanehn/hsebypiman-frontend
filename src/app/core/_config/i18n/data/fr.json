@@ -2655,6 +2655,9 @@
 		"RENEWAL_DATE": {
 			"TITLE": "Date de renouvellement"
 		},
+		"PROVIDES_HABILITATION": {
+			"TITLE": "La formation apporte une habilitation ?"
+		},
 		"NOTIF": {
 			"FORMATION_CREATED": {
 				"TITLE": "Formation créée avec succès"
