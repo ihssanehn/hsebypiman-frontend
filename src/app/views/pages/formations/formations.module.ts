@@ -49,6 +49,7 @@ import { FormationsListComponent } from './formations-list/formations-list.compo
 import { FormationFiltersComponent } from './formation-filters/formation-filters.component';
 import { FormationAddComponent } from './formation-add/formation-add.component';
 import { FormationFormComponent } from './formation-form/formation-form.component';
+import { FormationEditComponent } from './formation-edit/formation-edit.component';
 
 
 const routes: Routes = [
@@ -56,7 +57,7 @@ const routes: Routes = [
 		path: '',
 		component: FormationsComponent,
 		children: [
-      {
+      		{
 				path: '',
 				redirectTo: 'list',
 				pathMatch: 'full'
@@ -75,7 +76,7 @@ const routes: Routes = [
 					// }
 				}
 			},
-      {
+      		{
 				path: 'list:id',
 				component: FormationsListComponent,
 				//canActivate: [NgxPermissionsGuard],
@@ -105,26 +106,26 @@ const routes: Routes = [
 					// }
 				}
 			},
-			// {
-			// 	path: 'edit',
-			// 	component: ActionEditComponent,
-			// 	canActivate: [NgxPermissionsGuard],
-			// 	data: {
-			// 		permissions: {
-			// 			only: ['action_canUpdate']
-			// 		}
-			// 	}
-			// },
-			// {
-			// 	path: 'edit/:id',
-			// 	component: ActionEditComponent,
-			// 	canActivate: [NgxPermissionsGuard],
-			// 	data: {
-			// 		permissions: {
-			// 			only: ['action_canUpdate']
-			// 		}
-			// 	}
-			// },
+			{
+				path: 'edit',
+				component: FormationEditComponent,
+				//canActivate: [NgxPermissionsGuard],
+				data: {
+					// permissions: {
+					// 	only: ['action_canUpdate']
+					// }
+				}
+			},
+			{
+				path: 'edit/:id',
+				component: FormationEditComponent,
+				//canActivate: [NgxPermissionsGuard],
+				data: {
+					// permissions: {
+					// 	only: ['action_canUpdate']
+					// }
+				}
+			},
 			// {
 			// 	path: 'admin',
 			// 	component: ActionAdminComponent,
@@ -150,7 +151,8 @@ const routes: Routes = [
     FormationsListComponent,
     FormationFiltersComponent,
     FormationAddComponent,
-    FormationFormComponent
+    FormationFormComponent,
+    FormationEditComponent
   ],
   imports: [
     CommonModule,
@@ -191,7 +193,7 @@ const routes: Routes = [
 		NgbTooltipModule,
 		NgbPopoverModule,
 		NgxMaskModule,
-    MatSlideToggleModule
+    	MatSlideToggleModule
   ],
   providers: [
 		InterceptService,
