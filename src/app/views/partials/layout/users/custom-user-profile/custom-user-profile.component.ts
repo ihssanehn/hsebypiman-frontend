@@ -8,7 +8,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { UserService, DocumentService, RemonteeService, QcmSessionService, FormationService, MaterielService } from '@app/core/services';
 import Swal from 'sweetalert2';
 import { extractErrorMessagesFromErrorResponse } from '@app/core/_base/crud';
-import { QcmSession, Remontee } from '@app/core/models';
+import { Formation, QcmSession, Remontee } from '@app/core/models';
 import { Router } from '@angular/router';
 import { AssignFormationModalComponent } from '../assign-formation-modal/assign-formation-modal.component';
 import { AssignEpiModalComponent } from '../assign-epi-modal/assign-epi-modal.component';
@@ -36,7 +36,7 @@ export class CustomUserProfileComponent implements OnInit{
   remontees: Remontee[];
   causeries: Remontee[];
   epis: any[];
-  formations: any[];
+  formations: Formation[];
 
   quizSecuStatusIcon: String = this.SECU_UNDONE_ICON;
   livretSecuStatusIcon: String = this.SECU_UNDONE_ICON;

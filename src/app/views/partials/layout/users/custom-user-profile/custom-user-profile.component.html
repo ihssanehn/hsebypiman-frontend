@@ -263,7 +263,7 @@
 											<thead>
 												<tr>
 													<th>Label</th>
-													<th class="text-center">Date de formation</th>
+													<th class="text-center">Date de début</th>
 													<th class="text-center">Date de fin</th>
 													<th class="text-center">Date de renouvellement</th>
 												</tr>
@@ -271,9 +271,9 @@
 											<tbody>
 												<tr *ngFor="let formation of formations">
 													<td>{{formation.libelle}}</td>
-													<td class="text-center">{{formation.date_debut | date: 'dd/mm/yyyy'}}</td>
-													<td class="text-center">{{formation.date_fin ? (formation.date_fin | date: 'dd/mm/yyyy') : '-'}}</td>
-													<td class="text-center">{{formation.date_renouvellement ? (formation.date_renouvellement | date: 'dd/mm/yyyy') : '-'}}</td>
+													<td class="text-center">{{formation.date_debut | date: 'dd/MM/yyyy'}}</td>
+													<td class="text-center">{{formation.date_fin ? (formation.date_fin | date: 'dd/MM/yyyy') : '-'}}</td>
+													<td class="text-center">{{formation.date_renouvellement ? (formation.date_renouvellement | date: 'dd/MM/yyyy') : '-'}}</td>
 												</tr>
 											</tbody>
 										</table>
