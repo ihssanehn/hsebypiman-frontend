@@ -34,7 +34,7 @@
 						<p *ngIf="user.is_blocked == 0; else noAccount"><span class="label pull-left mr-2">{{'COMMON.PROFIL.TITLE' | translate}}</span><span class="" *ngIf="user.role; else noDataFound">{{user.role.libelle}}</span></p>
 						<ng-template #noAccount>
 							<p class="text-center" *ngIf="source == 'admin'">
-									<button mat-raised-button color="info" class="btn-small" (click)="giveAccess()"> {{'USERS.GRANT_ACCESS.LABEL' | translate}}</button>
+								<button mat-raised-button color="info" class="btn-small" (click)="giveAccess()"> {{'USERS.GRANT_ACCESS.LABEL' | translate}}</button>
 							</p>
 						</ng-template>
 					</div>
@@ -42,7 +42,7 @@
 						<span></span>
 					</div>
 					<div class="box text-center">
-						<small>{{'SALARIES.ENTRY_AT.LABEL' | translate}} : {{user.date_entree | date:'dd/MM/yyyy'}}</small><br>
+						<small>{{'SALARIES.ENTRY_AT.LABEL' | translate}} : {{user.date_entree? (user.date_entree | date:'dd/MM/yyyy') : '-'}}</small><br>
 					</div>
 				</div>
 			</div>
@@ -145,12 +145,12 @@
 								</div>
 							</div>
 							<!-- REMONTEES SECU -->
-							<div class="col-4 h-100" style="max-height: 500px !important;">
-								<div class="card h-100 pt-2" style="overflow-y: auto">
+							<div class="col-4 list-view">
+								<div class="card h-100 pt-2">
 									<div class="box">
 										<h5><b>Remontées sécurité</b></h5>
-										<div>
-											<div class="row mt-3"  *ngFor="let remontee of remontees" (click)="goToRemonteeDetail(remontee.id)" style="cursor: pointer;">
+										<div class="list-container">
+											<div class="row mt-3"  *ngFor="let remontee of remontees" (click)="goToRemonteeDetail(remontee.id)">
 												<div class="col-3">
 													<img src="{{remontee.type.icon}}" alt="{{remontee.type.libelle}}" width="60px">
 												</div>
@@ -165,12 +165,12 @@
 								</div>
 							</div>
 							<!-- CAUSERIES SECU -->
-							<div class="col-4 h-100" style="max-height: 500px !important;">
-								<div class="card h-100 pt-2" style="overflow-y: auto">
+							<div class="col-4 list-view">
+								<div class="card h-100 pt-2">
 									<div class="box">
 										<h5><b>Causeries</b></h5>
-										<div>
-											<div class="row mt-3" *ngFor="let causerie of causeries" (click)="goToRemonteeDetail(causerie.id)" style="cursor: pointer;">
+										<div class="list-container">
+											<div class="row mt-3" *ngFor="let causerie of causeries" (click)="goToRemonteeDetail(causerie.id)">
 												<div class="col-3">
 													<img src="{{causerie.type.icon}}" alt="{{causerie.type.libelle}}" width="60px">
 												</div>
@@ -295,5 +295,7 @@
 	</span>
 </ng-template>
 <ng-template #virtualUser>
-	{{'USERS.VIRTUEL.SHORTTITLE' | translate}}
+	<div class="col-9">
+		<div class="card">{{'USERS.VIRTUEL.SHORTTITLE' | translate}}</div>
+	</div>
 </ng-template>

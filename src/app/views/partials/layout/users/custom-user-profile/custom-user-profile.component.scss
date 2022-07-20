@@ -201,3 +201,17 @@ img.shdw-5{
 			}
 	}
 }
+
+.list-view {
+	max-height: 500px !important;
+
+	.list-container {
+		overflow-y: auto;
+		overflow-x: hidden;
+		max-height: 410px !important;
+
+		.row {
+			cursor: pointer;
+		}
+	}
+}

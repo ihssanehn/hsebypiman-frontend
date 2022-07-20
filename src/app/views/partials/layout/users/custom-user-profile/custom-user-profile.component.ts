@@ -38,7 +38,6 @@ export class CustomUserProfileComponent implements OnInit{
   epis: any[];
   formations: any[];
 
-
   quizSecuStatusIcon: String = this.SECU_UNDONE_ICON;
   livretSecuStatusIcon: String = this.SECU_UNDONE_ICON;
   accueilSecuStatusIcon: String = this.SECU_UNDONE_ICON;
@@ -46,8 +45,6 @@ export class CustomUserProfileComponent implements OnInit{
 	formStatus = new FormStatus();
   formDocloading: boolean = false;
 	errors: any;
-
-
 
   public uploader:FileUploader = new FileUploader({
     isHTML5: true
