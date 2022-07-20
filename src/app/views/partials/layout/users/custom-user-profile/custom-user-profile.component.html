@@ -136,9 +136,14 @@
 											<div class="col-3">
 												<img [src]="quizSecuStatusIcon" alt="done" class="shdw-5">
 											</div>
-											<div class="col-9 d-flex flex-column justify-content-center">
-												<span>Quiz Sécurité</span>
-												<span class="font-weight-normal">{{user.quiz_score}}</span>
+											<div class="col-9 d-flex justify-content-between">
+												<div>
+													<div>Quiz Sécurité</div>
+													<div class="font-weight-normal">{{user.quiz_score}}</div>
+												</div>
+												<button mat-icon-button color="primary" matTooltip="Options" [matMenuTriggerFor]="actionMenu" >
+													<mat-icon>more_vert</mat-icon>
+												</button>
 											</div>
 										</div>
 									</div>
@@ -299,3 +304,9 @@
 		<div class="card">{{'USERS.VIRTUEL.SHORTTITLE' | translate}}</div>
 	</div>
 </ng-template>
+
+<mat-menu #actionMenu="matMenu" class="action-menu">
+	<button mat-icon-button color="info" matTooltip="Demander de repasser le quiz" (click)="retakeTheQuiz()">
+		<mat-icon>edit</mat-icon>
+	</button>
+</mat-menu>

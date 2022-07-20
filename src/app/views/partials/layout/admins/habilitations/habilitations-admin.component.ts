@@ -37,7 +37,7 @@ export class HabilitationsAdminComponent extends AdminTemplateComponent implemen
       title : this.translate.instant("CHANTIERS.CARD.HABILITATION.SHORTTITLE"),
       deletedMessage: this.translate.instant("CHANTIERS.NOTIF.ELEMENT_NOT_DELETED.TITLE"),
       deletedChildMessage: this.translate.instant("CHANTIERS.NOTIF.ELEMENT_NOT_DELETED.SUBTITLE"),
-      collapsed : true,
+      collapsed : false,
       canUpdateTitle: false,
       titleOject: null,
       childCol : 6

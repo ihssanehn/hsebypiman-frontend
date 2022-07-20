@@ -261,4 +261,28 @@ export class CustomUserProfileComponent implements OnInit{
     showPhotoProfil(){
 
     }
+
+  async reloadUser() {
+    var res = await this.userService.getUserById(this.user.id).toPromise();
+    if(res) {
+      this.user = res.result.data;
+    }
+    this.cdr.markForCheck();
+  }
+
+  async retakeTheQuiz() {
+    var res = await this.userService.requestToRetakeQuiz(this.user.id).toPromise();
+    if(res) {
+      this.reloadUser();
+      Swal.fire({
+        icon: 'success',
+        title: "Votre demande a été prise en compte",
+        showConfirmButton: false,
+        timer: 1500,
+          
+      })
+    }
+    this.cdr.markForCheck();
+  }
+
 }
