@@ -2681,7 +2681,10 @@
 	},
 	"HABILITATIONS": {
 		"PERIOD_VALIDITY": {
-			"TITLE": "Period of validity"
+			"TITLE": "Period of validity (Number of years)"
+		},
+		"NUMBER_YEARS": {
+			"TITLE": "Number of years"
 		}
 	}
 }
