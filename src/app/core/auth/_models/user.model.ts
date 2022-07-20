@@ -15,6 +15,7 @@ export class User extends BaseModel {
     personnel_id?: string;
     is_firstConnexion?: boolean;
     is_quiz_approved?: boolean;
+    quiz_score?: string;
     role?: Role;
     user_connection?: string;
     

@@ -6,11 +6,6 @@
 		<span class="title" *ngIf="source == 'my-profile'">
 			{{'MENU.MY_PROFILE' | translate}}
 		</span>
-		<span class="pull-right">
-			<button mat-icon-button color="info" matTooltip="{{'USERS.ACTION.UPDATE_USER' | translate}}" (click)="editUser()" *ngxPermissionsOnly="['salarie_canUpdate']">
-				<mat-icon>edit</mat-icon>
-			</button>
-		</span>
 	</div>
 	<tf-portlet-body class="tf-portlet__body--fit">
 		<div class="row">
@@ -39,7 +34,7 @@
 						<p *ngIf="user.is_blocked == 0; else noAccount"><span class="label pull-left mr-2">{{'COMMON.PROFIL.TITLE' | translate}}</span><span class="" *ngIf="user.role; else noDataFound">{{user.role.libelle}}</span></p>
 						<ng-template #noAccount>
 							<p class="text-center" *ngIf="source == 'admin'">
-									<button mat-raised-button color="info" class="btn-small" (click)="giveAccess()"> {{'USERS.GRANT_ACCESS.LABEL' | translate}}</button>
+								<button mat-raised-button color="info" class="btn-small" (click)="giveAccess()"> {{'USERS.GRANT_ACCESS.LABEL' | translate}}</button>
 							</p>
 						</ng-template>
 					</div>
@@ -47,7 +42,7 @@
 						<span></span>
 					</div>
 					<div class="box text-center">
-						<small>{{'SALARIES.ENTRY_AT.LABEL' | translate}} : {{user.date_entree | date:'dd/MM/yyyy'}}</small><br>
+						<small>{{'SALARIES.ENTRY_AT.LABEL' | translate}} : {{user.date_entree? (user.date_entree | date:'dd/MM/yyyy') : '-'}}</small><br>
 					</div>
 				</div>
 			</div>
@@ -57,7 +52,15 @@
 						<div class="row h-100">
 							<div class="col-md-12 h-100">
 								<div class="card h-100" *ngIf="user.is_virtual == 0; else virtualUser">
-									<h5><b>Information employeur</b></h5>
+
+									<div class="card-title">
+										<h5><b>Information employeur</b></h5>
+										<span>
+											<button mat-icon-button color="info" matTooltip="{{'USERS.ACTION.UPDATE_USER' | translate}}" (click)="editUser()" *ngxPermissionsOnly="['salarie_canUpdate']">
+												<mat-icon>edit</mat-icon>
+											</button>
+										</span>
+									</div>
 									<div class="row d-flex">
 										<div class="box col-md-6">
 											<h6><b>{{'USERS.CARD.USER_INFOS.EMPLOYEE_INFOS' | translate}}</b></h6>
@@ -104,7 +107,7 @@
 							</div>
 						</div>
 					</mat-tab>
-					<mat-tab label="Hse">
+					<mat-tab label="HSE">
 						<div class="row h-100">
 							<!-- ACCUEIL SECU -->
 							<div class="col-4 h-100">
@@ -113,7 +116,7 @@
 										<h5><b>Mon accueil Sécurité Piman</b></h5>
 										<div class="row mt-3">
 											<div class="col-3">
-												<img src="./assets/media/hse-svg/secu_undone.svg" alt="undone" class="shdw-5">
+												<img [src]="accueilSecuStatusIcon" alt="undone" class="shdw-5">
 											</div>
 											<div class="col-9 d-flex flex-column justify-content-center">
 												<span>Accueil sécurité</span>
@@ -122,7 +125,7 @@
 										</div>
 										<div class="row mt-3">
 											<div class="col-3">
-												<img src="./assets/media/hse-svg/secu_done.svg" alt="undone" class="shdw-5">
+												<img [src]="livretSecuStatusIcon" alt="undone" class="shdw-5">
 											</div>
 											<div class="col-9 d-flex flex-column justify-content-center">
 												<span>Livret d'accueil</span>
@@ -131,107 +134,109 @@
 										</div>
 										<div class="row mt-3">
 											<div class="col-3">
-												<img src="./assets/media/hse-svg/secu_done.svg" alt="done" class="shdw-5">
+												<img [src]="quizSecuStatusIcon" alt="done" class="shdw-5">
 											</div>
 											<div class="col-9 d-flex flex-column justify-content-center">
 												<span>Quiz Sécurité</span>
-												<span class="font-weight-normal">14/20</span>
+												<span class="font-weight-normal">{{user.quiz_score}}</span>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 							<!-- REMONTEES SECU -->
-							<div class="col-4 h-100">
+							<div class="col-4 list-view">
 								<div class="card h-100 pt-2">
 									<div class="box">
 										<h5><b>Remontées sécurité</b></h5>
-										<div class="row mt-3" *ngFor="let remontee of remontees">
-											<div class="col-3">
-												<img src="{{remontee.type.icon}}" alt="{{remontee.type.libelle}}" width="60px">
-											</div>
-											<div class="col-9 d-flex flex-column justify-content-center">
-												<span>{{remontee.type.libelle}}</span>
-												<span class="font-weight-normal">{{remontee.description}}</span>
-												<small>{{remontee.created_at | date:'dd/MM/yyyy'}}</small>
+										<div class="list-container">
+											<div class="row mt-3"  *ngFor="let remontee of remontees" (click)="goToRemonteeDetail(remontee.id)">
+												<div class="col-3">
+													<img src="{{remontee.type.icon}}" alt="{{remontee.type.libelle}}" width="60px">
+												</div>
+												<div class="col-9 d-flex flex-column justify-content-center">
+													<span>{{remontee.type.libelle}}</span>
+													<span class="font-weight-normal">{{remontee.description}}</span>
+													<small>{{remontee.created_at | date:'dd/MM/yyyy'}}</small>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-							<!-- REMONTEES SECU -->
-							<div class="col-4 h-100">
+							<!-- CAUSERIES SECU -->
+							<div class="col-4 list-view">
 								<div class="card h-100 pt-2">
 									<div class="box">
 										<h5><b>Causeries</b></h5>
-										<div class="row mt-3" *ngFor="let causerie of causeries">
-											
+										<div class="list-container">
+											<div class="row mt-3" *ngFor="let causerie of causeries" (click)="goToRemonteeDetail(causerie.id)">
+												<div class="col-3">
+													<img src="{{causerie.type.icon}}" alt="{{causerie.type.libelle}}" width="60px">
+												</div>
+												<div class="col-9 d-flex flex-column justify-content-center">
+													<span>{{causerie.type.libelle}}</span>
+													<span class="font-weight-normal">{{causerie.description}}</span>
+													<small>{{causerie.created_at | date:'dd/MM/yyyy'}}</small>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</mat-tab>
-					<mat-tab label="Epis">
+					<mat-tab label="EPI">
 						<!-- PRET EPI -->
 						<div class="row h-100">
 							<div class="col-12 h-100">
-								<div class="card h-100 pt-2">
-									<div class="box">
+								<div class="card" style="height: 500px">
+									<div class="card-title">
 										<h5><b>Prêt EPI</b></h5>
-										<div class="row">
-											<div class="col-12">
-												<span class="d-block my-3">Casque de chantier</span>
-												<table class="table table-sm table-epi">
-													<thead>
-														<tr>
-															<th>Réf.</th>
-															<th>Type</th>
-															<th>Date de prêt</th>
-															<th>Date de remise</th>
-															<th>Vérification</th>
-														</tr>
-													</thead>
-													<tbody>
-														<tr>
-															<td>34569</td>
-															<td>Achat</td>
-															<td>12/04/2022</td>
-															<td>12/06/2022</td>
-															<td>Valable</td>
-														</tr>
-													</tbody>
-												</table>
+										<span>
+											<button mat-icon-button color="info" matTooltip="Ajouter un prêt EPI" (click)="showAssignEpiModal()">
+												<mat-icon>add</mat-icon>
+											</button>
+										</span>
+									</div>
+									<div class="tf-divider">
+										<span></span>
+									</div>
+									<div class="box" style="overflow-y: auto; overflow-x: hidden">
+										<ng-container *ngFor="let item of epis  | keyvalue">
+											<div class="row">
+												<div class="col-12">
+													<span class="d-block my-3" style="color: #2f8274">{{item.key}}</span>
+													<table class="table table-sm table-epi">
+														<thead>
+															<tr>
+																<th>Réf.</th>
+																<th class="text-center">Date de prêt</th>
+																<th class="text-center">Date de remise</th>
+																<th class="text-center"></th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr *ngFor="let epi of item.value">
+																<td>{{epi.code}}</td>
+																<td class="text-center">{{epi.pivot.date_pret ? (epi.pivot.date_pret | date:'dd/MM/yyyy') : '-'}}</td>
+																<td class="text-center">{{epi.pivot.date_retour ? (epi.pivot.date_retour | date:'dd/MM/yyyy') : '-'}}</td>
+																<td class="text-center">
+																	<span>
+																		<button mat-icon-button color="info" matTooltip="Modifier" (click)="showEditAssignedEpiModal(epi)">
+																			<mat-icon>edit</mat-icon>
+																		</button>
+																	</span>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
 											</div>
-										</div>
-										<div class="tf-divider">
-											<span></span>
-										</div>
-										<div class="row">
-											<div class="col-12">
-												<span class="d-block my-3">Casque de chantier</span>
-												<table class="table table-sm table-epi">
-													<thead>
-														<tr>
-															<th>Réf.</th>
-															<th>Type</th>
-															<th>Date de prêt</th>
-															<th>Date de remise</th>
-															<th>Vérification</th>
-														</tr>
-													</thead>
-													<tbody>
-														<tr>
-															<td>34569</td>
-															<td>Achat</td>
-															<td>12/04/2022</td>
-															<td>12/06/2022</td>
-															<td>Valable</td>
-														</tr>
-													</tbody>
-												</table>
+											<div class="tf-divider">
+												<span></span>
 											</div>
-										</div>
+										</ng-container>
 									</div>
 								</div>
 							</div>
@@ -241,29 +246,34 @@
 						<!-- Formations -->
 						<div class="row h-100">
 							<div class="col-12 h-100">
-								<div class="card h-100 pt-2">
-									<div class="box">
-										<table class="table table-sm table-formations">
+								<div class="card" style="height: 500px">
+									<div class="card-title">
+										<h5><b>Formations</b></h5>
+										<span>
+											<button mat-icon-button color="info" matTooltip="S'inscrire à une formation" (click)="showAssignFormationModal()">
+												<mat-icon>add</mat-icon>
+											</button>
+										</span>
+									</div>
+									<div class="tf-divider">
+										<span></span>
+									</div>
+									<div class="box" style="overflow-y: auto; overflow-x: hidden">
+										<table class="table table-formations">
 											<thead>
 												<tr>
 													<th>Label</th>
-													<th>Date de formation</th>
-													<th>Date de renouvellement</th>
-													<th>Vérification</th>
+													<th class="text-center">Date de début</th>
+													<th class="text-center">Date de fin</th>
+													<th class="text-center">Date de renouvellement</th>
 												</tr>
 											</thead>
 											<tbody>
-												<tr>
-													<td>Incendie</td>
-													<td>12/04/2022</td>
-													<td>12/04/2024</td>
-													<td>Valable</td>
-												</tr>
-												<tr>
-													<td>Risque Chimique Niveau 1</td>
-													<td>03/07/2020</td>
-													<td>03/07/2024</td>
-													<td>Valable</td>
+												<tr *ngFor="let formation of formations">
+													<td>{{formation.libelle}}</td>
+													<td class="text-center">{{formation.date_debut | date: 'dd/MM/yyyy'}}</td>
+													<td class="text-center">{{formation.date_fin ? (formation.date_fin | date: 'dd/MM/yyyy') : '-'}}</td>
+													<td class="text-center">{{formation.date_renouvellement ? (formation.date_renouvellement | date: 'dd/MM/yyyy') : '-'}}</td>
 												</tr>
 											</tbody>
 										</table>
@@ -285,5 +295,7 @@
 	</span>
 </ng-template>
 <ng-template #virtualUser>
-	{{'USERS.VIRTUEL.SHORTTITLE' | translate}}
+	<div class="col-9">
+		<div class="card">{{'USERS.VIRTUEL.SHORTTITLE' | translate}}</div>
+	</div>
 </ng-template>

@@ -7,6 +7,7 @@ export class Type {
     code?:string;
     color?:string;
     model?:string;
+    icon?:string;
     ordre?:number;
     active?:boolean;
     creator_id?:number;

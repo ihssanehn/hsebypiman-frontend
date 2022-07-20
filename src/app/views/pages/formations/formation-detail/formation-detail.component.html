@@ -1,0 +1,65 @@
+<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8" id="portlet-materiel" *ngIf="formation">
+	<div class="tf-portlet-header">
+		<span class="title">
+			<a [routerLink]="['/formations/list']">{{'MENU.SUB_FORMATION.LIST' | translate}}</a><span class="divider">></span><span class="id-item">{{formation.libelle}}</span>
+		</span>
+		<div ngbDropdown placement="bottom-right" class="d-inline-block pull-right">
+			<button ngbDropdownToggle mat-icon-button color="primary" matTooltip="Actions" style="line-height: 0;height: 0;">
+				<mat-icon>more_vert</mat-icon>
+			</button>
+			<div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
+				<ng-container *ngxPermissionsOnly="['materiel_canUpdate']">
+					<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editFormation(formation.id)">
+						<mat-icon>edit</mat-icon>
+					</button>
+				</ng-container>
+				<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteFormation(formation.id)">
+					<mat-icon>delete</mat-icon>
+				</button>
+			</div>
+		</div>
+	</div>
+	<tf-portlet-body class="tf-portlet__body--fit" *ngIf="formation">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="card">
+					<h3>{{'FORMATIONS.CARD.GENERAL_INFOS.TITLE' | translate}}</h3>
+					<div class="box" style="flex:1">
+						<p><span class="label pull-left mr-2">{{'FORMATIONS.LABEL.TITLE' | translate}}</span><span *ngIf="formation.libelle; else noData">{{formation.libelle}}</span></p>
+						<p><span class="label pull-left mr-2">{{'FORMATIONS.TRAINING_ORGANIZATION.TITLE' | translate}}</span><span *ngIf="formation.organisme_formation; else noData">{{formation.organisme_formation}}</span></p>
+						<p><span class="label pull-left mr-2">{{'FORMATIONS.DESC.TITLE' | translate}}</span><span *ngIf="formation.description; else noData">{{formation.description}}</span></p>
+						<ng-template #noData>
+							<span>-</span>
+						</ng-template>
+					</div>
+					<div class="tf-divider">
+						<span></span>
+					</div>
+					<div class="box text-center">
+						<small>{{'COMMON.CREATED_AT.TITLE' | translate}} : {{formation.created_at | date:'dd/MM/yyyy'}}</small><br>
+						<small>{{'COMMON.UPDATED_AT.TITLE' | translate}} : {{formation.updated_at | date:'dd/MM/yyyy'}}</small>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="cards">
+					<div class="card">
+                        <h3>{{'FORMATIONS.CARD.PERIOD.TITLE' | translate}}</h3>
+                        <div class="box" style="flex:1">
+                            <p><span class="label pull-left mr-2">{{'FORMATIONS.START_DATE.TITLE' | translate}}</span><span *ngIf="formation.date_debut; else noData">{{formation.date_debut | date:'dd/MM/yyyy'}}</span></p>
+                            <p><span class="label pull-left mr-2">{{'FORMATIONS.END_DATE.TITLE' | translate}}</span><span *ngIf="formation.date_fin; else noData">{{formation.date_fin | date:'dd/MM/yyyy'}}</span></p>
+                        </div>
+					</div>
+					<div class="card">
+                        <h3>{{'FORMATIONS.CARD.HABILITATIONS.TITLE' | translate}}</h3>
+                        <div class="box" style="flex:1">
+                            <p><span class="label pull-left mr-2">{{'FORMATIONS.PROVIDES_HABILITATION.TITLE' | translate}}</span><span>{{formation.to_habilitation? 'Oui': 'Non'}}</span></p>
+                            <p><span class="label pull-left mr-2">{{'FORMATIONS.HABILITATION.TITLE' | translate}}</span><span *ngIf="formation.habilitation; else noData">{{formation.habilitation.libelle}}</span></p>
+                            <p><span class="label pull-left mr-2">{{'FORMATIONS.RENEWAL_DATE.TITLE' | translate}}</span><span *ngIf="formation.date_renouvellement; else noData">{{formation.date_renouvellement | date:'dd/MM/yyyy'}}</span></p>
+                        </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</tf-portlet-body>
+</tf-portlet>

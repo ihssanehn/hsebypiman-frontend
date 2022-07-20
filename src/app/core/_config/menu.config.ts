@@ -114,6 +114,16 @@ export class MenuConfig {
 					moduleCode: ['DISCUSS']
 				},
 				{
+					title: 'Formations',
+					root: true,
+					alignment: 'left',
+					page: '/formations',
+					translate: 'MENU.FORMATION',
+					needModule: true,
+					moduleCode: ['FORMATIONS'],
+					permissionOnly: ['ROOT', 'ADMIN', 'MANAGER']
+				},
+				{
 					title: 'Quizz',
 					root: true,
 					alignment: 'left',
@@ -622,6 +632,36 @@ export class MenuConfig {
 						root: true,
 						alignment: 'left',
 						page: '/suivi-hse/admin',
+						translate: 'MENU.ROOT',
+						icon: 'settings',
+						permissionOnly: ['ROOT', 'ADMIN'],
+					}
+				]
+			},
+			formations: {
+				btnAdd: {
+					title: 'Nouvelle Formation',
+					root: true,
+					alignment: 'left',
+					page: '/formations/add',
+					translate: 'MENU.BTN.NEWFORMATION',
+					permissionOnly: ['ROOT', 'ADMIN']
+				},
+
+				items: [
+					{
+						title: 'Liste',
+						root: true,
+						alignment: 'left',
+						page: '/formations/list',
+						translate: 'MENU.LIST',
+						icon: 'view_list',
+					},
+					{
+						title: 'Admin',
+						root: true,
+						alignment: 'left',
+						page: '/formations/admin',
 						translate: 'MENU.ROOT',
 						icon: 'settings',
 						permissionOnly: ['ROOT', 'ADMIN'],
