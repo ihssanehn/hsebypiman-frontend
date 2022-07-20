@@ -1,0 +1,36 @@
+<div class="col-md-12 tf-form">
+	<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
+		<tf-portlet-body class="tf-portlet__body--fit card-filters px-5 pt-4 pb-3" >
+			<form novalidate [formGroup]="filterForm">
+				<div class="row">
+					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
+						<mat-label>{{'FORMATIONS.HABILITATION.TITLE' | translate}}</mat-label>
+						<mat-select class="form-control" formControlName="habilitation_id" name="habilitation_id">
+							<mat-option>---</mat-option>
+							<mat-optgroup *ngFor="let group of habilitations | keyvalue" [label]="group.key">
+							<mat-option *ngFor="let hab of group.value" [value]="hab.id">
+							  {{hab.libelle}}
+							</mat-option>
+						  </mat-optgroup>
+						</mat-select>
+						<button mat-button *ngIf="formHasValue('habilitation_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('habilitation_id'); $event.stopPropagation()">
+							<mat-icon>clear</mat-icon>
+						</button>
+					</mat-form-field>
+
+					<div class="col-xl-6 col-md-6 col-sm-6 col-xs-12">
+						<h6>{{'COMMON.DATE.TITLE' | translate}}</h6>
+						<mat-form-field class="col-md-6 col-xl-6">
+							<mat-label>{{'COMMON.DATE_RANGE.BETWEEN.TITLE' | translate}} :</mat-label>
+							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_debut" placeholder="DD/MM/YYYY">
+						</mat-form-field>
+						<mat-form-field class="col-md-6 col-xl-6">
+							<mat-label>{{'COMMON.DATE_RANGE.AND.TITLE' | translate}} :</mat-label>
+							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_fin" placeholder="DD/MM/YYYY">
+						</mat-form-field>
+					</div>
+				</div>
+			</form>
+		</tf-portlet-body>
+	</tf-portlet>
+</div>

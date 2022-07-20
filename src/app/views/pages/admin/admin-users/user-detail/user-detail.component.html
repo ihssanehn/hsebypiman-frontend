@@ -1,4 +1,5 @@
 <tf-custom-user-profile 
+  *ngIf="user"
   [user]="user" 
 	[source]="'admin'"
   (onEditUser)="editUser()" 

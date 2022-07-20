@@ -67,6 +67,17 @@ export class UserService extends HttpService{
 
   }
 
+  getPretEpi(_user: User){
+		return this.http.get<any>(`${this.baseUrl}/` + _user.id+'/epi');
+	}
+
+  getFormations(_user: User){
+		return this.http.get<any>(`${this.baseUrl}/` + _user.id+'/formations');
+	}
+
+  requestToRetakeQuiz(user_id: number){
+		return this.http.put<any>(`${this.baseUrl}/` + user_id+'/retake-quiz', user_id);
+	}
 
 
 }

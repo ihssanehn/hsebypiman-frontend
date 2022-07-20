@@ -146,6 +146,15 @@
 											}
 										}
 									}
+									.card-title {
+										display: flex;
+										justify-content: space-between;
+										button {
+											height: 0;
+											width: auto;
+											line-height: 0;
+										}
+									}
 							}
 
 					}
@@ -170,6 +179,10 @@ img.shdw-5{
 					th{
 							padding: 0.3rem;
 							border-bottom-width: 0;
+							width: 30%;
+					}
+					th:nth-child(4) {
+						width: 10%;
 					}
 			}
 	}
@@ -178,6 +191,27 @@ img.shdw-5{
 					td{
 							border-top-width: 0;
 					}
+					td:nth-child(4) {
+						button {
+							height: 0;
+							width: auto;
+							line-height: 0;
+						}
+					}
 			}
+	}
+}
+
+.list-view {
+	max-height: 500px !important;
+
+	.list-container {
+		overflow-y: auto;
+		overflow-x: hidden;
+		max-height: 410px !important;
+
+		.row {
+			cursor: pointer;
+		}
 	}
 }

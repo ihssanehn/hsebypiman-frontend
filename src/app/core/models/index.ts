@@ -32,3 +32,4 @@ export {Pdp} from './pdp.model';
 export {ConsigneModel, TraveauxDangereuxModel, DispositionModel, RisqueModel, PDPFrequences} from './consigne.model';
 export {QcmSession} from './qcmSession.model';
 export {QcmAnswer} from './qcmAnswer.model';
+export {Formation} from './formation.model';

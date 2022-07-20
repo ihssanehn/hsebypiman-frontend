@@ -179,6 +179,9 @@ import { PdpRisquesTypeComponent } from './layout/admins/pdp-risques-type/pdp-ri
 import { PdpTypeComponent } from './layout/admins/pdp-type/pdp-type.component';
 import { PdpDefaultValuesComponent } from './layout/admins/pdp-default-values/pdp-default-values.component';
 import { QuizModalComponent } from './layout/modal/quiz-modal/quiz-modal.component';
+import { AssignFormationModalComponent } from './layout/users/assign-formation-modal/assign-formation-modal.component';
+import { AssignEpiModalComponent } from './layout/users/assign-epi-modal/assign-epi-modal.component';
+import { HabilitationsAdminListPortletComponent } from './layout/admins/habilitations-admin-list-portlet/habilitations-admin-list-portlet.component';
 
 @NgModule({
 	declarations: [
@@ -299,6 +302,9 @@ import { QuizModalComponent } from './layout/modal/quiz-modal/quiz-modal.compone
 		QuizModalComponent,
 		CustomUserProfileComponent,
 		AddPhotoProfilModalComponent,
+		AssignFormationModalComponent,
+		AssignEpiModalComponent,
+		HabilitationsAdminListPortletComponent
 
 	],
 	exports: [
@@ -418,6 +424,9 @@ import { QuizModalComponent } from './layout/modal/quiz-modal/quiz-modal.compone
 		QuizModalComponent,
 		CustomUserProfileComponent,
 		AddPhotoProfilModalComponent,
+		AssignFormationModalComponent,
+		AssignEpiModalComponent,
+		HabilitationsAdminListPortletComponent
 
 	],
 	imports: [
@@ -490,6 +499,8 @@ import { QuizModalComponent } from './layout/modal/quiz-modal/quiz-modal.compone
 		AddDocModalComponent,
 		QuizModalComponent,
 		AddPhotoProfilModalComponent,
+		AssignFormationModalComponent,
+		AssignEpiModalComponent
 	],
 })
 export class PartialsModule {

@@ -7,7 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'habilitations-admin',
-  templateUrl: '../../../../partials/layout/admin-template/admin-template.component.html',
+  templateUrl: './habilitations-admin.component.html',
   styleUrls: ['../../../../partials/layout/admin-template/admin-template.component.scss']
 })
 export class HabilitationsAdminComponent extends AdminTemplateComponent implements OnInit {
@@ -37,7 +37,7 @@ export class HabilitationsAdminComponent extends AdminTemplateComponent implemen
       title : this.translate.instant("CHANTIERS.CARD.HABILITATION.SHORTTITLE"),
       deletedMessage: this.translate.instant("CHANTIERS.NOTIF.ELEMENT_NOT_DELETED.TITLE"),
       deletedChildMessage: this.translate.instant("CHANTIERS.NOTIF.ELEMENT_NOT_DELETED.SUBTITLE"),
-      collapsed : true,
+      collapsed : false,
       canUpdateTitle: false,
       titleOject: null,
       childCol : 6

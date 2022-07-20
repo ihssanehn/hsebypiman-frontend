@@ -1559,7 +1559,8 @@
 			"NEWENTREPRISE": "Nouveau client",
 			"NEWMATERIEL": "Nouveau matériel",
 			"NEWREMONTEE": "Nouvelle remontée QHSE",
-			"NEWVS": "Nouvelle visite de sécurité"
+			"NEWVS": "Nouvelle visite de sécurité",
+			"NEWFORMATION": "Nouvelle formation"
 		},
 		"CHANTIER": "Chantiers",
 		"DASHBOARD": "Tableau de Bord",
@@ -1669,7 +1670,14 @@
 		},
 		"SUIVI_HSE": "Suivi Hse",
 		"USERS": "Utilisateurs",
-		"VISITESECURITE": "Visites de Sécurité"
+		"VISITESECURITE": "Visites de Sécurité",
+		"FORMATION": "Formation",
+		"SUB_FORMATION": {
+			"ADD": "Ajouter une formation",
+			"DETAIL": "Détail de la formation",
+			"EDIT": "Modifier la formation",
+			"LIST": "Liste des formations"
+		}
 	},
 	"NOTIF": {
 		"DELETE_CONFIRMATION": {
@@ -2623,6 +2631,62 @@
 			"MODULE_UPDATED": {
 				"TITLE": "Modules mis à jour avec succès"
 			}
+		}
+	},
+	"FORMATIONS": {
+		"LABEL": {
+			"TITLE": "Libelle"
+		},
+		"TRAINING_ORGANIZATION": {
+			"TITLE": "Organisme de formation"
+		},
+		"DESC": {
+			"TITLE": "Description"
+		},
+		"START_DATE": {
+			"TITLE": "Date début"
+		},
+		"END_DATE": {
+			"TITLE": "Date fin"
+		},
+		"HABILITATION": {
+			"TITLE": "Habilitation"
+		},
+		"RENEWAL_DATE": {
+			"TITLE": "Date de renouvellement"
+		},
+		"PROVIDES_HABILITATION": {
+			"TITLE": "La formation apporte une habilitation ?"
+		},
+		"NOTIF": {
+			"FORMATION_CREATED": {
+				"TITLE": "Formation créée avec succès"
+			},
+			"FORMATION_UPDATED": {
+				"TITLE": "Formation mise à jour avec succès"
+			},
+			"LOADING": {
+				"TITLE": "Loading Formation"
+			}
+		},
+		"CARD": {
+			"GENERAL_INFOS": {
+				"TITLE": "Informations générales"
+			},
+			"PERIOD": {
+				"TITLE": "Période de la formation"
+			},
+			"HABILITATIONS": {
+				"TITLE": "Habilitation de la formation"
+			}
+		}
+	},
+	"HABILITATIONS": {
+		"PERIOD_VALIDITY": {
+			"TITLE": "Durée de validité"
+		},
+		"NUMBER_YEARS": {
+			"TITLE": "Nbr d'années"
 		}
 	}
 }
