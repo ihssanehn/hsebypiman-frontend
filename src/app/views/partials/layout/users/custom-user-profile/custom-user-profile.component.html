@@ -219,8 +219,8 @@
 														<tbody>
 															<tr *ngFor="let epi of item.value">
 																<td>{{epi.code}}</td>
-																<td class="text-center">{{epi.actual_user.pivot.date_pret ? (epi.actual_user.pivot.date_pret | date:'dd/MM/yyyy') : '-'}}</td>
-																<td class="text-center">{{epi.actual_user.pivot.date_retour ? (epi.actual_user.pivot.date_retour | date:'dd/MM/yyyy') : '-'}}</td>
+																<td class="text-center">{{epi.pivot.date_pret ? (epi.pivot.date_pret | date:'dd/MM/yyyy') : '-'}}</td>
+																<td class="text-center">{{epi.pivot.date_retour ? (epi.pivot.date_retour | date:'dd/MM/yyyy') : '-'}}</td>
 																<td class="text-center">
 																	<span>
 																		<button mat-icon-button color="info" matTooltip="Modifier" (click)="showEditAssignedEpiModal(epi)">

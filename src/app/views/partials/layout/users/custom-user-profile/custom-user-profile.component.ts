@@ -140,7 +140,7 @@ export class CustomUserProfileComponent implements OnInit{
   }
 
   showAssignEpiModal() {
-    const modalRef = this.modalService.open(AssignEpiModalComponent, {size: 'lg',scrollable: true,centered : true});
+    const modalRef = this.modalService.open(AssignEpiModalComponent, {size: 'md',scrollable: true,centered : true});
     modalRef.componentInstance.editMode = false;
 		modalRef.result.then(form => {
       if(form){
@@ -154,12 +154,13 @@ export class CustomUserProfileComponent implements OnInit{
   }
 
   showEditAssignedEpiModal(epi) {
-    const modalRef = this.modalService.open(AssignEpiModalComponent, {size: 'lg',scrollable: true,centered : true});
+    const modalRef = this.modalService.open(AssignEpiModalComponent, {size: 'md',scrollable: true,centered : true});
     modalRef.componentInstance.editMode = true;
     modalRef.componentInstance.pret = {
       'materiel_id': epi.id,
-      'date_pret': epi.actual_user.pivot.date_pret,
-      'date_retour': epi.actual_user.pivot.date_retour
+      'materiel_label': epi.categorie.libelle + " " + epi.code,
+      'date_pret': epi.pivot.date_pret,
+      'date_retour': epi.pivot.date_retour
     };
 		modalRef.result.then(form => {
       if(form){

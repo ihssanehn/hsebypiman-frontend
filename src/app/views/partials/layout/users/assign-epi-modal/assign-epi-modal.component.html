@@ -15,22 +15,30 @@
 <div class="modal-body">
     <ng-container [formGroup]="form">
         <div class="row">
-            <div class="col-6 offset-3">
+            <div class="col-12">
                 <!-- MATERIEL -->
-                <mat-form-field class="col-12">
-                    <mat-label>Matériels</mat-label>
-                    <mat-select class="form-control" formControlName="materiel_id" name="materiel_id">
-                        <mat-option *ngFor="let materiel of materiels" [value]="materiel.id">
-                            {{materiel.libelle}} 
-                        </mat-option>
-                    </mat-select>
-                    <button mat-button *ngIf="formHasValue('materiel_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('materiel_id'); $event.stopPropagation()">
-                        <mat-icon>clear</mat-icon>
-                    </button>
-                    <mat-error *ngIf="isControlHasError('materiel_id','required')">
-						<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-					</mat-error>
-                </mat-form-field>
+                <ng-container *ngIf="editMode else materielControl">
+                    <div class="epi-label">
+                        {{pret.materiel_label}}
+                    </div>
+                </ng-container>
+                <ng-template #materielControl>
+                    <mat-form-field class="col-12">
+                        <mat-label>Matériels</mat-label>
+                        <mat-select class="form-control" formControlName="materiel_id" name="materiel_id">
+                            <mat-option *ngFor="let materiel of materiels" [value]="materiel.id">
+                                {{materiel.libelle}} 
+                            </mat-option>
+                        </mat-select>
+                        <button mat-button *ngIf="formHasValue('materiel_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('materiel_id'); $event.stopPropagation()">
+                            <mat-icon>clear</mat-icon>
+                        </button>
+                        <mat-error *ngIf="isControlHasError('materiel_id','required')">
+                            <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </ng-template>
+                
                 <!-- DATE PRET -->
 				<mat-form-field class="col-12">
 					<mat-label>{{'MATERIELS.DATE_PRET.LABEL' | translate}}</mat-label>

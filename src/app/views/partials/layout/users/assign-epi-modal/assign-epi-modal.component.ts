@@ -43,7 +43,7 @@ export class AssignEpiModalComponent implements OnInit{
     this.formloading = true;
 		this.form = this.fb.group({
       materiel_id: [null, Validators.required],
-      date_pret: [null, Validators.required],
+      date_pret: [moment().format('DD/MM/YYYY'), Validators.required],
       date_retour: [null, null],
     });
 
