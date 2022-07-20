@@ -123,7 +123,7 @@ export class CustomUserProfileComponent implements OnInit{
   }
 
   showAssignFormationModal() {
-    const modalRef = this.modalService.open(AssignFormationModalComponent, {size: 'lg',scrollable: true,centered : true});
+    const modalRef = this.modalService.open(AssignFormationModalComponent, {size: 'md',scrollable: true,centered : true});
 		modalRef.result.then(form => {
       if(form){
         this.assignFormation(form.value.formation_id)
