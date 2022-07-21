@@ -1745,6 +1745,12 @@
 			},
 			"RESOLUTION": {
 				"TITLE": "Résolution"
+			},
+			"ASSIGN_ACTION": {
+				"TITLE": "Attribution de l'action"
+			},
+			"CLOSURE_ACTION": {
+				"TITLE": "Clôture de l'action"
 			}
 		},
 		"COMMENT": {

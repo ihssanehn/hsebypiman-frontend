@@ -182,6 +182,8 @@ import { QuizModalComponent } from './layout/modal/quiz-modal/quiz-modal.compone
 import { AssignFormationModalComponent } from './layout/users/assign-formation-modal/assign-formation-modal.component';
 import { AssignEpiModalComponent } from './layout/users/assign-epi-modal/assign-epi-modal.component';
 import { HabilitationsAdminListPortletComponent } from './layout/admins/habilitations-admin-list-portlet/habilitations-admin-list-portlet.component';
+import { AssignActionModalComponent } from './layout/plans-action/modal/assign-action-modal/assign-action-modal.component';
+import { CloseActionModalComponent } from './layout/plans-action/modal/close-action-modal/close-action-modal.component';
 
 @NgModule({
 	declarations: [
@@ -304,7 +306,9 @@ import { HabilitationsAdminListPortletComponent } from './layout/admins/habilita
 		AddPhotoProfilModalComponent,
 		AssignFormationModalComponent,
 		AssignEpiModalComponent,
-		HabilitationsAdminListPortletComponent
+		HabilitationsAdminListPortletComponent,
+		AssignActionModalComponent,
+		CloseActionModalComponent
 
 	],
 	exports: [
@@ -426,7 +430,9 @@ import { HabilitationsAdminListPortletComponent } from './layout/admins/habilita
 		AddPhotoProfilModalComponent,
 		AssignFormationModalComponent,
 		AssignEpiModalComponent,
-		HabilitationsAdminListPortletComponent
+		HabilitationsAdminListPortletComponent,
+		AssignActionModalComponent,
+		CloseActionModalComponent
 
 	],
 	imports: [
@@ -500,7 +506,9 @@ import { HabilitationsAdminListPortletComponent } from './layout/admins/habilita
 		QuizModalComponent,
 		AddPhotoProfilModalComponent,
 		AssignFormationModalComponent,
-		AssignEpiModalComponent
+		AssignEpiModalComponent,
+		AssignActionModalComponent,
+		CloseActionModalComponent
 	],
 })
 export class PartialsModule {
