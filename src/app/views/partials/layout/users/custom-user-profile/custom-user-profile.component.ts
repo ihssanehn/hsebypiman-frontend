@@ -80,9 +80,9 @@ export class CustomUserProfileComponent implements OnInit{
   
 	async getUserRemontees() {
 		var res = await this.remonteeService.getAll({creator_id: this.user.id}).toPromise();
-		this.remontees = res.result.data;
-		this.causeries = this.remontees.filter(remontee => remontee.type && remontee.type.code == 'CAUSERIE');
-    console.log(this.causeries);
+    var remontees = res.result.data;
+		this.remontees = remontees.filter(remontee => remontee.type && remontee.type.code != 'CAUSERIE');
+		this.causeries = remontees.filter(remontee => remontee.type && remontee.type.code == 'CAUSERIE');
 
     this.cdr.markForCheck();
 	}
