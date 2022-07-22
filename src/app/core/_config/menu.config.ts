@@ -114,16 +114,6 @@ export class MenuConfig {
 					moduleCode: ['DISCUSS']
 				},
 				{
-					title: 'Formations',
-					root: true,
-					alignment: 'left',
-					page: '/formations',
-					translate: 'MENU.FORMATION',
-					needModule: true,
-					moduleCode: ['FORMATIONS'],
-					permissionOnly: ['ROOT', 'ADMIN', 'MANAGER']
-				},
-				{
 					title: 'Quizz',
 					root: true,
 					alignment: 'left',
@@ -782,6 +772,26 @@ export class MenuConfig {
 						translate: 'MENU.MATERIELS',
 						needModule: true,
 						moduleCode: ['MATERIEL'],
+						svgIcon: 'construction'
+					},
+					{
+						title: 'Formations',
+						root: true,
+						alignment: 'left',
+						page: '/admin/formations',
+						translate: 'MENU.FORMATION',
+						needModule: true,
+						moduleCode: ['FORMATIONS'],
+						svgIcon: 'construction'
+					},
+					{
+						title: 'Habilitations',
+						root: true,
+						alignment: 'left',
+						page: '/admin/habilitations',
+						translate: 'MENU.HABILITATION',
+						needModule: true,
+						moduleCode: ['FORMATIONS'],
 						svgIcon: 'construction'
 					},
 					{

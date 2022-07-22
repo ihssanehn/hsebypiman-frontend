@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormationsComponent } from './formations.component';
 
 // Material
 import {
@@ -52,12 +51,13 @@ import { FormationFormComponent } from './formation-form/formation-form.componen
 import { FormationEditComponent } from './formation-edit/formation-edit.component';
 import { FormationDetailComponent } from './formation-detail/formation-detail.component';
 import { FormationAdminComponent } from './formation-admin/formation-admin.component';
+import { AdminFormationsComponent } from './admin-formations.component';
 
 
 const routes: Routes = [
 	{
 		path: '',
-		component: FormationsComponent,
+		component: AdminFormationsComponent,
 		children: [
       		{
 				path: '',
@@ -145,7 +145,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    FormationsComponent,
+    AdminFormationsComponent,
     FormationsListComponent,
     FormationFiltersComponent,
     FormationAddComponent,
@@ -228,4 +228,4 @@ const routes: Routes = [
 		// 
 	]
 })
-export class FormationsModule { }
+export class AdminFormationsModule { }

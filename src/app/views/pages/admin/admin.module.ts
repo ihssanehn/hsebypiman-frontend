@@ -126,6 +126,10 @@ const routes: Routes = [
 				component: AdminMaterielComponent,
 			},
 			{
+				path: 'formations',
+				loadChildren: () => import('./admin-formations/admin-formations.module').then(m => m.AdminFormationsModule),
+			},
+			{
 				path: 'modules',
 				component: AdminModulesComponent
 			},

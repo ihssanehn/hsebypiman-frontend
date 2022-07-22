@@ -7,6 +7,10 @@
 			<div class="col">
 				<p>{{pagination.total}} {{'NOTIF.RESULT_FOUND.TITLE' | translate}}</p>
 			</div>
+
+			<div class="col">
+				<button class="pull-right btn-small mb-4" mat-raised-button color="info" (click)="addFormation()">Nouvelle formation</button>
+			</div>
 		</div>
 		<div class="table-responsive">
 			<table mat-table [dataSource]="formationsList.data">

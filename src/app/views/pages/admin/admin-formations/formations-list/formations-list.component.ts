@@ -84,11 +84,15 @@ export class FormationsListComponent implements OnInit, AfterViewInit, OnDestroy
 	}
 
   viewFormation(formationId) {
-		this.router.navigateByUrl('formations/detail/' + formationId);
+		this.router.navigateByUrl('admin/formations/detail/' + formationId);
+	}
+
+	addFormation(){
+		this.router.navigateByUrl('admin/formations/add')
 	}
 
 	editFormation(formationId) {
-		this.router.navigateByUrl('formations/edit/' + formationId);
+		this.router.navigateByUrl('admin/formations/edit/' + formationId);
 	}
 
 	deleteFormation(formationId) {

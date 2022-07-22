@@ -71,7 +71,7 @@ export class FormationDetailComponent implements OnInit, OnDestroy {
 	}
 
   editFormation(id){
-		this.router.navigateByUrl('formations/edit/'+id);
+		this.router.navigateByUrl('admin/formations/edit/'+id);
 	}
 
 	deleteFormation(id){
