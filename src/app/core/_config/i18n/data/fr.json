@@ -1677,6 +1677,12 @@
 			"DETAIL": "Détail de la formation",
 			"EDIT": "Modifier la formation",
 			"LIST": "Liste des formations"
+		},
+		"SUB_HABILITATION": {
+			"ADD": "Ajouter une habilitation",
+			"DETAIL": "Détail de l'habilitation",
+			"EDIT": "Modifier l'habilitation",
+			"LIST": "Liste des habilitations"
 		}
 	},
 	"NOTIF": {
@@ -2688,11 +2694,39 @@
 		}
 	},
 	"HABILITATIONS": {
+		"LABEL": {
+			"TITLE": "Libelle"
+		},
+		"CATEGORY": {
+			"TITLE": "Catégorie"
+		},
 		"PERIOD_VALIDITY": {
-			"TITLE": "Durée de validité"
+			"TITLE": "Durée de validité (Nbr d'années)"
 		},
 		"NUMBER_YEARS": {
 			"TITLE": "Nbr d'années"
+		},
+		"TYPE_HAB": {
+			"TITLE": "Type d'habilitation"
+		},
+		"ACTIVE": {
+			"TITLE": "Active"
+		},
+		"ACTION": {
+			"NEW_HAB": {
+				"LABEL": "Nouvelle habilitation"
+			}
+		},
+		"CARD": {
+			"GENERAL_INFOS": {
+				"TITLE": "Informations générales"
+			},
+			"USERS": {
+				"TITLE": "Utilisateurs"
+			},
+			"FORMATIONS": {
+				"TITLE": "Formations"
+			}
 		}
 	}
 }

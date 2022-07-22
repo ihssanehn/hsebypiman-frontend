@@ -1676,6 +1676,12 @@
 			"DETAIL": "Detail of the Training",
 			"EDIT": "Modify the Training",
 			"LIST": "List of Trainings"
+		},
+		"SUB_HABILITATION": {
+			"ADD": "Add a qualification",
+			"DETAIL": "Detail of the qualification",
+			"EDIT": "Modify the qualification",
+			"LIST": "List of qualifications"
 		}
 	},
 	"NOTIF": {
@@ -2686,11 +2692,39 @@
 		}
 	},
 	"HABILITATIONS": {
+		"LABEL": {
+			"TITLE": "Name"
+		},
+		"CATEGORY": {
+			"TITLE": "Category"
+		},
 		"PERIOD_VALIDITY": {
 			"TITLE": "Period of validity (Number of years)"
 		},
 		"NUMBER_YEARS": {
 			"TITLE": "Number of years"
+		},
+		"TYPE_HAB": {
+			"TITLE": "Qualification type"
+		},
+		"ACTIVE": {
+			"TITLE": "Active"
+		},
+		"ACTION": {
+			"NEW_ACTION": {
+				"LABEL": "New qualification"
+			}
+		},
+		"CARD": {
+			"GENERAL_INFOS": {
+				"TITLE": "General informations"
+			},
+			"USERS": {
+				"TITLE": "Users"
+			},
+			"FORMATIONS": {
+				"TITLE": "Trainings"
+			}
 		}
 	}
 }

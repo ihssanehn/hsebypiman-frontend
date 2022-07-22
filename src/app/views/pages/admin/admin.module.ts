@@ -130,6 +130,10 @@ const routes: Routes = [
 				loadChildren: () => import('./admin-formations/admin-formations.module').then(m => m.AdminFormationsModule),
 			},
 			{
+				path: 'habilitations',
+				loadChildren: () => import('./admin-habilitations/admin-habilitations.module').then(m => m.AdminHabilitationsModule),
+			},
+			{
 				path: 'modules',
 				component: AdminModulesComponent
 			},
