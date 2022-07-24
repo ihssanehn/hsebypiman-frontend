@@ -69,6 +69,10 @@
                             }
                         }
                     }
+                    .table-container {
+                        overflow-y: auto;
+                        max-height: 500px;
+                    }
                 }
                 .cards{
                     height: 100%;

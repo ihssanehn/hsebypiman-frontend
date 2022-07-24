@@ -45,23 +45,33 @@
 				</div>
 			</div>
 			<div class="col-md-6">
-				<div class="cards">
-					<div class="card">
-						<h3>{{'HABILITATIONS.CARD.USERS.TITLE' | translate}}</h3>
-						<!-- <div class="box" style="flex:1">
-							<p><span class="label pull-left mr-2">{{'FORMATIONS.START_DATE.TITLE' | translate}}</span><span *ngIf="formation.date_debut; else noData">{{formation.date_debut | date:'dd/MM/yyyy'}}</span></p>
-							<p><span class="label pull-left mr-2">{{'FORMATIONS.END_DATE.TITLE' | translate}}</span><span *ngIf="formation.date_fin; else noData">{{formation.date_fin | date:'dd/MM/yyyy'}}</span></p>
-						</div> -->
+				<div class="card">
+					<h3>{{'HABILITATIONS.CARD.FORMATIONS.TITLE' | translate}}</h3>
+					<div class="table-container">
+						<table class="table table-formations" *ngIf="habilitation.formations.length; else noFormations">
+							<thead>
+								<tr>
+									<th>{{'FORMATIONS.LABEL.TITLE' | translate}}</th>
+									<th class="text-center">{{'FORMATIONS.VALIDITY_DATE.TITLE' | translate}}</th>
+									<th class="text-center">{{'FORMATIONS.RENEWAL_DATE.TITLE' | translate}}</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let formation of habilitation.formations">
+									<td>{{formation.libelle}}</td>
+									<td class="text-center">{{formation.date_fin ? (formation.date_fin | date: 'dd/MM/yyyy') : '-'}}</td>
+									<td class="text-center">{{formation.date_renouvellement ? (formation.date_renouvellement | date: 'dd/MM/yyyy') : '-'}}</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
-					<div class="card">
-						<h3>{{'HABILITATIONS.CARD.FORMATIONS.TITLE' | translate}}</h3>
-						<!-- <div class="box" style="flex:1">
-							<p><span class="label pull-left mr-2">{{'FORMATIONS.START_DATE.TITLE' | translate}}</span><span *ngIf="formation.date_debut; else noData">{{formation.date_debut | date:'dd/MM/yyyy'}}</span></p>
-							<p><span class="label pull-left mr-2">{{'FORMATIONS.END_DATE.TITLE' | translate}}</span><span *ngIf="formation.date_fin; else noData">{{formation.date_fin | date:'dd/MM/yyyy'}}</span></p>
-						</div> -->
-					</div>
+
 				</div>
 			</div>
 		</div>
 	</tf-portlet-body>
 </tf-portlet>
+
+<ng-template #noFormations>
+	<div class="h-100 text-center">Pas de formations</div>
+</ng-template>

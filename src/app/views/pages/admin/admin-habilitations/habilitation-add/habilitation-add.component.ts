@@ -70,7 +70,7 @@ export class HabilitationAddComponent implements OnInit {
         this.formloading=false;
         Swal.fire({
           icon: 'success',
-          title: this.translate.instant("HABILITATIONS.NOTIF.FORMATION_CREATED.TITLE"),
+          title: this.translate.instant("HABILITATIONS.NOTIF.HABILITATION_CREATED.TITLE"),
           showConfirmButton: false,
           timer: 1500
         }).then(() => {

@@ -1682,7 +1682,8 @@
 			"DETAIL": "Detail of the qualification",
 			"EDIT": "Modify the qualification",
 			"LIST": "List of qualifications"
-		}
+		},
+		"HABILITATION": "Qualifications"
 	},
 	"NOTIF": {
 		"DELETE_CONFIRMATION": {
@@ -2659,6 +2660,9 @@
 		"END_DATE": {
 			"TITLE": "End date"
 		},
+		"VALIDITY_DATE": {
+			"TITLE": "Validity date"
+		},
 		"HABILITATION": {
 			"TITLE": "Qualification"
 		},
@@ -2713,6 +2717,17 @@
 		"ACTION": {
 			"NEW_ACTION": {
 				"LABEL": "New qualification"
+			}
+		},
+		"NOTIF": {
+			"HABILITATION_CREATED": {
+				"TITLE": "Habilitation created successfully"
+			},
+			"HABILITATION_UPDATED": {
+				"TITLE": "Habilitation updated successfully"
+			},
+			"LOADING": {
+				"TITLE": "Loading Habilitation"
 			}
 		},
 		"CARD": {

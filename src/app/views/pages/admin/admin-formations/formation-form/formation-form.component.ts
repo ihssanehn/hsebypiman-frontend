@@ -32,7 +32,7 @@ export class FormationFormComponent implements OnInit {
 
   async getHabilitations(){
     this.habLoaded = false;
-    var res = await this.habilitationService.getAll().toPromise();
+    var res = await this.habilitationService.getAllList().toPromise();
     if(res){
       this.habilitations = res.result.data;
       this.habLoaded = true;

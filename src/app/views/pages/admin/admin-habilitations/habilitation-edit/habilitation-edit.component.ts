@@ -101,7 +101,7 @@ export class HabilitationEditComponent implements OnInit, OnDestroy {
         this.formloading=false;
         Swal.fire({
           icon: 'success',
-          title: this.translate.instant("HABILITATIONS.NOTIF.FORMATION_UPDATED.TITLE"),
+          title: this.translate.instant("HABILITATIONS.NOTIF.HABILITATION_UPDATED.TITLE"),
           showConfirmButton: false,
           timer: 1500
         }).then(() => {
