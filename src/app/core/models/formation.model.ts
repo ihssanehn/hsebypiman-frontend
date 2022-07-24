@@ -9,6 +9,7 @@ export class Formation {
     to_habilitation?: boolean;
     habilitation_id?: number;
     habilitation?: Habilitation;
+    users?: User[];
     pivot?: any;
     creator_id?: number;
     creator: User;

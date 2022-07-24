@@ -42,18 +42,41 @@
 				</div>
 			</div>
 			<div class="col-md-6">
-				<div class="card">
-					<h3>{{'FORMATIONS.CARD.HABILITATIONS.TITLE' | translate}}</h3>
-					<div class="box" style="flex:1">
-						<p><span class="label pull-left mr-2">{{'FORMATIONS.PROVIDES_HABILITATION.TITLE' | translate}}</span><span>{{formation.to_habilitation? 'Oui': 'Non'}}</span></p>
-						<p><span class="label pull-left mr-2">{{'FORMATIONS.HABILITATION.TITLE' | translate}}</span><span *ngIf="formation.habilitation; else noData">{{formation.habilitation.libelle}}</span></p>
-						<p><span class="label pull-left mr-2">{{'HABILITATIONS.PERIOD_VALIDITY.TITLE' | translate}}</span><span *ngIf="formation.habilitation; else noData">
-							{{
-								formation.habilitation.duree_validite ? 
-								((formation.habilitation.duree_validite == 1) ? formation.habilitation.duree_validite+' an' : formation.habilitation.duree_validite+' ans')
-								: '-'
-							}} 
-						</span></p>
+				<div class="cards">
+					<div class="card">
+						<h3>{{'FORMATIONS.CARD.HABILITATIONS.TITLE' | translate}}</h3>
+						<div class="box" style="flex:1">
+							<p><span class="label pull-left mr-2">{{'FORMATIONS.PROVIDES_HABILITATION.TITLE' | translate}}</span><span>{{formation.to_habilitation? 'Oui': 'Non'}}</span></p>
+							<p><span class="label pull-left mr-2">{{'FORMATIONS.HABILITATION.TITLE' | translate}}</span><span *ngIf="formation.habilitation; else noData">{{formation.habilitation.libelle}}</span></p>
+							<p><span class="label pull-left mr-2">{{'HABILITATIONS.PERIOD_VALIDITY.TITLE' | translate}}</span><span *ngIf="formation.habilitation; else noData">
+								{{
+									formation.habilitation.duree_validite ? 
+									((formation.habilitation.duree_validite == 1) ? formation.habilitation.duree_validite+' an' : formation.habilitation.duree_validite+' ans')
+									: '-'
+								}} 
+							</span></p>
+						</div>
+					</div>
+					<div class="card">
+						<h3>{{'FORMATIONS.CARD.USERS.TITLE' | translate}}</h3>
+						<div class="box table-container" style="flex:1">
+							<table class="table table-formations">
+								<thead>
+									<tr>
+										<th>Nom</th>
+										<th class="text-center">{{'FORMATIONS.VALIDITY_DATE.TITLE' | translate}}</th>
+										<th class="text-center">{{'FORMATIONS.RENEWAL_DATE.TITLE' | translate}}</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr *ngFor="let user of formation.users">
+										<td>{{user.fullname}}</td>
+										<td class="text-center">{{user.pivot.date_validite ? (user.pivot.date_validite | date: 'dd/MM/yyyy') : '-'}}</td>
+										<td class="text-center">{{user.pivot.date_renouvellement ? (user.pivot.date_renouvellement | date: 'dd/MM/yyyy') : '-'}}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>
