@@ -63,8 +63,6 @@ export class FormationFiltersComponent implements OnInit {
 
   search(filters: any): void {
     var filter = {...this.filterForm.getRawValue()}
-    filter.date_debut = this.dateFrToEnPipe.transform(filter.date_debut);
-    filter.date_fin = this.dateFrToEnPipe.transform(filter.date_fin);
     this.change.emit(filter);
   }
 

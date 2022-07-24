@@ -52,15 +52,13 @@
 							<thead>
 								<tr>
 									<th>{{'FORMATIONS.LABEL.TITLE' | translate}}</th>
-									<th class="text-center">{{'FORMATIONS.VALIDITY_DATE.TITLE' | translate}}</th>
-									<th class="text-center">{{'FORMATIONS.RENEWAL_DATE.TITLE' | translate}}</th>
+									<th class="text-center">{{'FORMATIONS.TRAINING_ORGANIZATION.TITLE' | translate}}</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr *ngFor="let formation of habilitation.formations">
 									<td>{{formation.libelle}}</td>
-									<td class="text-center">{{formation.date_fin ? (formation.date_fin | date: 'dd/MM/yyyy') : '-'}}</td>
-									<td class="text-center">{{formation.date_renouvellement ? (formation.date_renouvellement | date: 'dd/MM/yyyy') : '-'}}</td>
+									<td class="text-center">{{formation.organisme_formation ? formation.organisme_formation : '-'}}</td>
 								</tr>
 							</tbody>
 						</table>

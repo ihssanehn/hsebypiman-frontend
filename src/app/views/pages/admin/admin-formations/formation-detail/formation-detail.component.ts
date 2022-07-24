@@ -70,7 +70,7 @@ export class FormationDetailComponent implements OnInit, OnDestroy {
 		this.router.navigateByUrl(url, { relativeTo: this.activatedRoute });
 	}
 
-  editFormation(id){
+    editFormation(id){
 		this.router.navigateByUrl('admin/formations/edit/'+id);
 	}
 

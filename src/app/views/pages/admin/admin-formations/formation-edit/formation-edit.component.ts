@@ -47,7 +47,6 @@ export class FormationEditComponent implements OnInit, OnDestroy {
         if (id) {
           this.formationService.get(id).pipe(
             tap(res=>{
-              this.parseDate(res.result.data, 'EnToFr');
               this.formationForm.patchValue(res.result.data);						
             })
           ).subscribe( async res => {
@@ -81,8 +80,6 @@ export class FormationEditComponent implements OnInit, OnDestroy {
       libelle: ['', Validators.required],
       description: [''],
       organisme_formation: [''],
-      date_debut: [''],
-      date_fin: [''],
       to_habilitation: [0],
 		});
 	}
@@ -97,7 +94,6 @@ export class FormationEditComponent implements OnInit, OnDestroy {
 
   saveForm(form){
     this.formloading = true;
-    this.parseDate(form, 'FrToEn');
     form.id = this.formation.id;
 
     this.formationService.update(form)
@@ -139,11 +135,6 @@ export class FormationEditComponent implements OnInit, OnDestroy {
 		this.formStatus.onFormSubmitting();
 		let form = {...this.formationForm.getRawValue()};
 		this.saveForm(form)
-	}
-
-  parseDate(item, direction){
-		item.date_debut = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.date_debut) : this.dateEnToFrPipe.transform(item.date_debut);
-		item.date_fin = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.date_fin) : this.dateEnToFrPipe.transform(item.date_fin);
 	}
 
 	cancel() {

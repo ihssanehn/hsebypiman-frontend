@@ -17,18 +17,6 @@
 							<mat-icon>clear</mat-icon>
 						</button>
 					</mat-form-field>
-
-					<div class="col-xl-6 col-md-6 col-sm-6 col-xs-12">
-						<h6>{{'COMMON.DATE.TITLE' | translate}}</h6>
-						<mat-form-field class="col-md-6 col-xl-6">
-							<mat-label>{{'COMMON.DATE_RANGE.BETWEEN.TITLE' | translate}} :</mat-label>
-							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_debut" placeholder="DD/MM/YYYY">
-						</mat-form-field>
-						<mat-form-field class="col-md-6 col-xl-6">
-							<mat-label>{{'COMMON.DATE_RANGE.AND.TITLE' | translate}} :</mat-label>
-							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_fin" placeholder="DD/MM/YYYY">
-						</mat-form-field>
-					</div>
 				</div>
 			</form>
 		</tf-portlet-body>

@@ -29,7 +29,7 @@ export class FormationsListComponent implements OnInit, AfterViewInit, OnDestroy
 		keyword: "",
 	};
 	showFilters: Boolean = false;
-	displayedFormationColumns = ['libelle', 'organisme_formation', 'date_debut', 'date_fin', 'habilitation', 'date_renouvellement', 'action'];
+	displayedFormationColumns = ['libelle', 'organisme_formation', 'habilitation', 'action'];
   
   constructor(
     private router: Router,

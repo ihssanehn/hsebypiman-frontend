@@ -53,8 +53,6 @@ export class FormationAddComponent implements OnInit {
       libelle: ['', Validators.required],
       description: [''],
       organisme_formation: [''],
-      date_debut: [''],
-      date_fin: [''],
       to_habilitation: [0],
       errors: this.fb.array([]),
     });
@@ -71,7 +69,6 @@ export class FormationAddComponent implements OnInit {
     this.cdr.markForCheck();
 
     let form = {...this.formationForm.getRawValue()};
-    this.parseDate(form, 'FrToEn');
 
     this.formationService.create(form)
       .toPromise()
@@ -85,7 +82,7 @@ export class FormationAddComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         }).then(() => {
-          this.router.navigate(['/formations/detail/' + formation.id]);
+          this.router.navigate(['/admin/formations/detail/' + formation.id]);
         });
       })
       .catch(err =>{ 
@@ -105,11 +102,6 @@ export class FormationAddComponent implements OnInit {
         }
       });
   
-  }
-  
-  parseDate(item, direction){
-    item.date_debut = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.date_debut) : this.dateEnToFrPipe.transform(item.date_debut);
-    item.date_fin = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.date_fin) : this.dateEnToFrPipe.transform(item.date_fin);
   }
   
 	onCancel() {

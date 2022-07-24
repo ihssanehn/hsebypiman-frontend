@@ -9,6 +9,8 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2';
 import { MatSnackBar } from '@angular/material';
 import { FormationService } from '@app/core/services';
+import moment from 'moment';
+import { DateEnToFrPipe, DateFrToEnPipe } from '@app/core/_base/layout';
 
 @Component({
   selector: 'tf-assign-formation-modal',
@@ -19,14 +21,16 @@ export class AssignFormationModalComponent implements OnInit{
 
   form: FormGroup;
   formations: Formation[];
-	loaded = false;
   errors;
+	formloading: boolean = false;
 
   constructor(
     private formationService: FormationService,
     public activeModal: NgbActiveModal,
 		private fb: FormBuilder,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private dateFrToEnPipe: DateFrToEnPipe,
+    private dateEnToFrPipe: DateEnToFrPipe
   ) {}
 
   ngOnInit() {
@@ -35,10 +39,12 @@ export class AssignFormationModalComponent implements OnInit{
   }
 
   createForm() {
+    this.formloading = true;
 		this.form = this.fb.group({
-      formation_id: [null, null],
+      formation_id: [null, Validators.required],
+      date_validite: [moment().format('DD/MM/YYYY'), Validators.required]
     });
-		this.loaded = true;
+		this.formloading = false;
   }
 
   async loadFormations(){
@@ -50,7 +56,10 @@ export class AssignFormationModalComponent implements OnInit{
   }
 
   save(){
-    this.activeModal.close(this.form);
+    this.formloading = true
+    var form = { ...this.form.getRawValue() };
+    this.formatDates(form, 'FrToEn');
+    this.activeModal.close(form);
   }
 
 
@@ -66,6 +75,9 @@ export class AssignFormationModalComponent implements OnInit{
     this.form.get(key).patchValue(null);
   }
 
+  formatDates(item, direction) {
+    item.date_validite = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.date_validite) : this.dateEnToFrPipe.transform(item.date_validite);
+  }
 
   /**
 	 * Checking control validation
@@ -85,6 +97,19 @@ export class AssignFormationModalComponent implements OnInit{
 
   seeItem(item){
     return item.file.name
+  }
+
+  isFieldRequired(controlName) {
+    if (this.form && this.form.controls[controlName]) {
+      const control = this.form.controls[controlName]
+      const { validator } = control
+      if (validator) {
+        const validation = validator(new FormControl())
+        return validation !== null && validation.required === true
+      } else {
+        return false;
+      }
+    }
   }
 
 }

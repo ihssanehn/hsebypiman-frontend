@@ -42,21 +42,18 @@
 				</div>
 			</div>
 			<div class="col-md-6">
-				<div class="cards">
-					<div class="card">
-                        <h3>{{'FORMATIONS.CARD.PERIOD.TITLE' | translate}}</h3>
-                        <div class="box" style="flex:1">
-                            <p><span class="label pull-left mr-2">{{'FORMATIONS.START_DATE.TITLE' | translate}}</span><span *ngIf="formation.date_debut; else noData">{{formation.date_debut | date:'dd/MM/yyyy'}}</span></p>
-                            <p><span class="label pull-left mr-2">{{'FORMATIONS.END_DATE.TITLE' | translate}}</span><span *ngIf="formation.date_fin; else noData">{{formation.date_fin | date:'dd/MM/yyyy'}}</span></p>
-                        </div>
-					</div>
-					<div class="card">
-                        <h3>{{'FORMATIONS.CARD.HABILITATIONS.TITLE' | translate}}</h3>
-                        <div class="box" style="flex:1">
-                            <p><span class="label pull-left mr-2">{{'FORMATIONS.PROVIDES_HABILITATION.TITLE' | translate}}</span><span>{{formation.to_habilitation? 'Oui': 'Non'}}</span></p>
-                            <p><span class="label pull-left mr-2">{{'FORMATIONS.HABILITATION.TITLE' | translate}}</span><span *ngIf="formation.habilitation; else noData">{{formation.habilitation.libelle}}</span></p>
-                            <p><span class="label pull-left mr-2">{{'FORMATIONS.RENEWAL_DATE.TITLE' | translate}}</span><span *ngIf="formation.date_renouvellement; else noData">{{formation.date_renouvellement | date:'dd/MM/yyyy'}}</span></p>
-                        </div>
+				<div class="card">
+					<h3>{{'FORMATIONS.CARD.HABILITATIONS.TITLE' | translate}}</h3>
+					<div class="box" style="flex:1">
+						<p><span class="label pull-left mr-2">{{'FORMATIONS.PROVIDES_HABILITATION.TITLE' | translate}}</span><span>{{formation.to_habilitation? 'Oui': 'Non'}}</span></p>
+						<p><span class="label pull-left mr-2">{{'FORMATIONS.HABILITATION.TITLE' | translate}}</span><span *ngIf="formation.habilitation; else noData">{{formation.habilitation.libelle}}</span></p>
+						<p><span class="label pull-left mr-2">{{'HABILITATIONS.PERIOD_VALIDITY.TITLE' | translate}}</span><span *ngIf="formation.habilitation; else noData">
+							{{
+								formation.habilitation.duree_validite ? 
+								((formation.habilitation.duree_validite == 1) ? formation.habilitation.duree_validite+' an' : formation.habilitation.duree_validite+' ans')
+								: '-'
+							}} 
+						</span></p>
 					</div>
 				</div>
 			</div>
