@@ -19,6 +19,7 @@ export class User extends BaseModel {
     quiz_date?: Date;
     role?: Role;
     user_connection?: string;
+    pivot?: any;
     
     date_entree?: Date;
     date_naissance?: Date;

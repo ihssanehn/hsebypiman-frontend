@@ -271,6 +271,7 @@
 													<th>Label</th>
 													<th class="text-center">Date de validite</th>
 													<th class="text-center">Date de renouvellement</th>
+													<th class="text-center"></th>
 												</tr>
 											</thead>
 											<tbody>
@@ -278,6 +279,16 @@
 													<td>{{formation.libelle}}</td>
 													<td class="text-center">{{formation.pivot.date_validite ? (formation.pivot.date_validite | date: 'dd/MM/yyyy') : '-'}}</td>
 													<td class="text-center">{{formation.pivot.date_renouvellement ? (formation.pivot.date_renouvellement | date: 'dd/MM/yyyy') : '-'}}</td>
+													<td class="text-center">
+														<span class="d-flex pointer" [ngbPopover]="popIntContent" popoverClass="big-popover" [popoverTitle]="('REMONTEES.DOCUMENTS.SHORTTITLE' | translate)">
+															<mat-icon>attachment</mat-icon> {{formation.pivot.docs_count}}
+														</span>
+														<ng-template #popIntContent >
+															<div class="row">
+																<tf-doc-list-tooltip [documents]="formation.pivot.docs"></tf-doc-list-tooltip>
+															</div>
+														</ng-template>
+													</td>
 												</tr>
 											</tbody>
 										</table>

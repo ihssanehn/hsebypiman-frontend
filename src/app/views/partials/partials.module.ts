@@ -184,6 +184,7 @@ import { AssignEpiModalComponent } from './layout/users/assign-epi-modal/assign-
 import { HabilitationsAdminListPortletComponent } from './layout/admins/habilitations-admin-list-portlet/habilitations-admin-list-portlet.component';
 import { AssignActionModalComponent } from './layout/plans-action/modal/assign-action-modal/assign-action-modal.component';
 import { CloseActionModalComponent } from './layout/plans-action/modal/close-action-modal/close-action-modal.component';
+import { DocListTooltipComponent } from './layout/tooltip/doc-list-tooltip/doc-list-tooltip.component';
 
 @NgModule({
 	declarations: [
@@ -308,7 +309,8 @@ import { CloseActionModalComponent } from './layout/plans-action/modal/close-act
 		AssignEpiModalComponent,
 		HabilitationsAdminListPortletComponent,
 		AssignActionModalComponent,
-		CloseActionModalComponent
+		CloseActionModalComponent,
+		DocListTooltipComponent
 
 	],
 	exports: [
@@ -432,7 +434,8 @@ import { CloseActionModalComponent } from './layout/plans-action/modal/close-act
 		AssignEpiModalComponent,
 		HabilitationsAdminListPortletComponent,
 		AssignActionModalComponent,
-		CloseActionModalComponent
+		CloseActionModalComponent,
+		DocListTooltipComponent
 
 	],
 	imports: [
