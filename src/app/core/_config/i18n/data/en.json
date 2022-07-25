@@ -1676,7 +1676,14 @@
 			"DETAIL": "Detail of the Training",
 			"EDIT": "Modify the Training",
 			"LIST": "List of Trainings"
-		}
+		},
+		"SUB_HABILITATION": {
+			"ADD": "Add a qualification",
+			"DETAIL": "Detail of the qualification",
+			"EDIT": "Modify the qualification",
+			"LIST": "List of qualifications"
+		},
+		"HABILITATION": "Qualifications"
 	},
 	"NOTIF": {
 		"DELETE_CONFIRMATION": {
@@ -1744,6 +1751,12 @@
 			},
 			"RESOLUTION": {
 				"TITLE": "Resolution"
+			},
+			"ASSIGN_ACTION": {
+				"TITLE": "Allocation of the action"
+			},
+			"CLOSURE_ACTION": {
+				"TITLE": "Closure action"
 			}
 		},
 		"COMMENT": {
@@ -2647,6 +2660,9 @@
 		"END_DATE": {
 			"TITLE": "End date"
 		},
+		"VALIDITY_DATE": {
+			"TITLE": "Validity date"
+		},
 		"HABILITATION": {
 			"TITLE": "Qualification"
 		},
@@ -2680,11 +2696,50 @@
 		}
 	},
 	"HABILITATIONS": {
+		"LABEL": {
+			"TITLE": "Name"
+		},
+		"CATEGORY": {
+			"TITLE": "Category"
+		},
 		"PERIOD_VALIDITY": {
 			"TITLE": "Period of validity (Number of years)"
 		},
 		"NUMBER_YEARS": {
 			"TITLE": "Number of years"
+		},
+		"TYPE_HAB": {
+			"TITLE": "Qualification type"
+		},
+		"ACTIVE": {
+			"TITLE": "Active"
+		},
+		"ACTION": {
+			"NEW_ACTION": {
+				"LABEL": "New qualification"
+			}
+		},
+		"NOTIF": {
+			"HABILITATION_CREATED": {
+				"TITLE": "Habilitation created successfully"
+			},
+			"HABILITATION_UPDATED": {
+				"TITLE": "Habilitation updated successfully"
+			},
+			"LOADING": {
+				"TITLE": "Loading Habilitation"
+			}
+		},
+		"CARD": {
+			"GENERAL_INFOS": {
+				"TITLE": "General informations"
+			},
+			"USERS": {
+				"TITLE": "Users"
+			},
+			"FORMATIONS": {
+				"TITLE": "Trainings"
+			}
 		}
 	}
 }

@@ -80,9 +80,9 @@ export class CustomUserProfileComponent implements OnInit{
   
 	async getUserRemontees() {
 		var res = await this.remonteeService.getAll({creator_id: this.user.id}).toPromise();
-		this.remontees = res.result.data;
-		this.causeries = this.remontees.filter(remontee => remontee.type && remontee.type.code == 'CAUSERIE');
-    console.log(this.causeries);
+    var remontees = res.result.data;
+		this.remontees = remontees.filter(remontee => remontee.type && remontee.type.code != 'CAUSERIE');
+		this.causeries = remontees.filter(remontee => remontee.type && remontee.type.code == 'CAUSERIE');
 
     this.cdr.markForCheck();
 	}
@@ -123,13 +123,16 @@ export class CustomUserProfileComponent implements OnInit{
     const modalRef = this.modalService.open(AssignFormationModalComponent, {size: 'md',scrollable: true,centered : true});
 		modalRef.result.then(form => {
       if(form){
-        this.assignFormation(form.value.formation_id)
+        this.assignFormation(
+          form.formation_id,
+          form.date_validite
+        )
       }
     });
   }
 
-  async assignFormation(formation_id) {
-    var res = await this.formationService.assignUsers(formation_id, [this.user.id]).toPromise();
+  async assignFormation(formation_id, date_validite) {
+    var res = await this.formationService.assignUsers(formation_id, this.user.id, date_validite).toPromise();
     if(res) {
       this.getUserFormations();
     }

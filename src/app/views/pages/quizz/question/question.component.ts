@@ -21,6 +21,7 @@ export class QuestionComponent implements OnInit {
   currentSlideIndex: number = 0;
   chapter: any;
   counter: number = 1;
+  isResponseEmpty: boolean = false;
 
   @ViewChild('questionSwiper', { static: false }) questionSwiper: SwiperComponent;
 
@@ -94,6 +95,7 @@ export class QuestionComponent implements OnInit {
     var selectedResponses = question.responses.filter(res => res.isSelected);
 
     if (selectedResponses.length) {
+      this.isResponseEmpty = false;
       this.setAnswer(selectedResponses);
       if(this.questionSwiper.swiper.isEnd) {
         this.goToResult();
@@ -109,6 +111,7 @@ export class QuestionComponent implements OnInit {
       }
     } else {
       console.log("Veuillez sélectionner une réponse !")
+      this.isResponseEmpty = true;
     }
     
   }

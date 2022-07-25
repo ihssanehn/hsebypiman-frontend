@@ -8,9 +8,10 @@
     <ng-container [formGroup]="form">
         <div class="row">
             <div class="col-12">
+                <!-- DATE FORMATION -->
                 <mat-form-field class="col-12">
                     <mat-label>Formations</mat-label>
-                    <mat-select class="form-control" formControlName="formation_id" name="formation_id">
+                    <mat-select class="form-control" formControlName="formation_id" name="formation_id" [required]="isFieldRequired('formation_id')">
                         <mat-option *ngFor="let formation of formations" [value]="formation.id">
                             {{formation.libelle}} 
                         </mat-option>
@@ -19,12 +20,21 @@
                         <mat-icon>clear</mat-icon>
                     </button>
                 </mat-form-field>
+
+                <!-- DATE VALIDITE -->
+				<mat-form-field class="col-12">
+					<mat-label>{{'FORMATIONS.VALIDITY_DATE.TITLE' | translate}}</mat-label>
+					<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" formControlName="date_validite" [required]="isFieldRequired('date_validite')" placeholder="DD/MM/YYYY">
+					<mat-error *ngIf="isControlHasError('date_validite','required')">
+						<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+					</mat-error>
+				</mat-form-field>
             </div>
         </div>
         <div class="row mt-4">
             <div class="col-12 col-actions">
                 <button mat-raised-button type="button" (click)="activeModal.dismiss()" class="btn-small" color="warn">{{'ACTION.CANCEL' | translate}}</button>
-                <button mat-raised-button type="button" (click)="save()" class="btn-small" color="success">{{'ACTION.SAVE' | translate}}</button>
+                <button mat-raised-button type="button" (click)="save()" class="btn-small" color="success" [ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': formloading}" [disabled]="formloading || !form?.valid">{{'ACTION.SAVE' | translate}}</button>
             </div>
         </div>
     </ng-container>
