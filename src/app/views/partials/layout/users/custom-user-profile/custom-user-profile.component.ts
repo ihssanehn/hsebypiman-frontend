@@ -124,15 +124,16 @@ export class CustomUserProfileComponent implements OnInit{
 		modalRef.result.then(form => {
       if(form){
         this.assignFormation(
-          form.formation_id,
-          form.date_validite
+          form.get('formation_id'),
+          form
         )
       }
     });
   }
 
-  async assignFormation(formation_id, date_validite) {
-    var res = await this.formationService.assignUsers(formation_id, this.user.id, date_validite).toPromise();
+  async assignFormation(formation_id, formData) {
+    formData.append('id_user', this.user.id)
+    var res = await this.formationService.assignUsers(formation_id, formData).toPromise();
     if(res) {
       this.getUserFormations();
     }

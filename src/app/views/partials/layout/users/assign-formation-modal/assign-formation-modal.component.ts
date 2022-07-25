@@ -21,14 +21,17 @@ export class AssignFormationModalComponent implements OnInit{
 
   form: FormGroup;
   formations: Formation[];
-  errors;
 	formloading: boolean = false;
+  uploader: FileUploader = new FileUploader({
+    isHTML5: true
+  });
 
   constructor(
     private formationService: FormationService,
     public activeModal: NgbActiveModal,
 		private fb: FormBuilder,
     private cdr: ChangeDetectorRef,
+    private translate:TranslateService,
     private dateFrToEnPipe: DateFrToEnPipe,
     private dateEnToFrPipe: DateEnToFrPipe
   ) {}
@@ -42,7 +45,8 @@ export class AssignFormationModalComponent implements OnInit{
     this.formloading = true;
 		this.form = this.fb.group({
       formation_id: [null, Validators.required],
-      date_validite: [moment().format('DD/MM/YYYY'), Validators.required]
+      date_validite: [moment().format('DD/MM/YYYY'), Validators.required],
+      documentsToUpload: [null, null]
     });
 		this.formloading = false;
   }
@@ -57,9 +61,21 @@ export class AssignFormationModalComponent implements OnInit{
 
   save(){
     this.formloading = true
-    var form = { ...this.form.getRawValue() };
+    let formData = new FormData();
+    let form = { ...this.form.getRawValue() };
     this.formatDates(form, 'FrToEn');
-    this.activeModal.close(form);
+
+    for (let j = 0; j < this.uploader.queue.length; j++) {
+      let fileItem = this.uploader.queue[j]._file;
+      formData.append('documents[]', fileItem);
+    }
+
+    Object.keys(form).map(function (key) {
+      if(form[key])
+        return formData.append(key, form[key]);
+    })
+
+    this.activeModal.close(formData);
   }
 
 
@@ -79,12 +95,17 @@ export class AssignFormationModalComponent implements OnInit{
     item.date_validite = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.date_validite) : this.dateEnToFrPipe.transform(item.date_validite);
   }
 
-  /**
-	 * Checking control validation
-	 *
-	 * @param controlName: string => Equals to formControlName
-	 * @param validationType: string => Equals to valitors name
-	 */
+  controlDocuments(){
+    for (let i = 0; i < this.uploader.queue.length; i++) {
+      let fileItem = this.uploader.queue[i]._file;
+      if(fileItem.size > 10000000){
+        alert(this.translate.instant("REMONTEES.NOTIF.FILE_SIZE_ALERT.TITLE"));
+        return true;
+      }
+    }
+    return false;
+  }
+
 	isControlHasError(controlName: string, validationType: string): boolean {
 		const control = this.form.controls[controlName];
 		if (!control) {
@@ -108,6 +129,41 @@ export class AssignFormationModalComponent implements OnInit{
         return validation !== null && validation.required === true
       } else {
         return false;
+      }
+    }
+  }
+
+  onFileDrop(event){
+    var extensions = ['pdf'];
+
+    for (let i = 0; i < event.length; i++) {
+      
+      const droppedFile = event[i];
+      var name = droppedFile.name.split('.');
+      var ext = name[name.length -1].toLowerCase();
+      
+      let error = false;
+
+      if( extensions.indexOf(ext) == -1 ){
+        error = true;
+        Swal.fire({
+          icon: 'error',
+          title: this.translate.instant('UPLOAD.EXTENSION')+' '+droppedFile.name,
+          showConfirmButton: false,
+          timer: 1500
+        });
+      } else if (droppedFile.size > 4000000) {
+        error = true;
+        Swal.fire({
+          icon: 'error',
+          title: this.translate.instant('UPLOAD.SIZE')+' '+droppedFile.name,
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
+
+      if(error == true){
+        this.uploader.queue = this.uploader.queue.filter(x=>x.file.name != droppedFile.name);
       }
     }
   }
