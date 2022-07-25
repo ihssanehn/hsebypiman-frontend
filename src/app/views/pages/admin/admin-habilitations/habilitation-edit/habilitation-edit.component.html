@@ -1,0 +1,6 @@
+<form [formGroup]="habilitationForm" *ngIf="loaded; else loading" class="tf-form tf-form--group-seperator-dashed">
+	<tf-habilitation-form [form]="habilitationForm" [formloading]="formloading" [formStatus]="formStatus" [edit]="true" (onSubmit)="onSubmit()" (onCancel)="cancel()"></tf-habilitation-form>
+</form>
+<ng-template #loading>
+	{{'HABILITATIONS.NOTIF.LOADING.TITLE' | translate}}
+</ng-template>

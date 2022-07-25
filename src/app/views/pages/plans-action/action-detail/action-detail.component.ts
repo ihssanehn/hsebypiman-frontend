@@ -14,6 +14,9 @@ import { User } from '@app/core/auth';
 import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
 import { startWith, map } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
+import { AssignActionModalComponent } from '@app/views/partials/layout/plans-action/modal/assign-action-modal/assign-action-modal.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CloseActionModalComponent } from '@app/views/partials/layout/plans-action/modal/close-action-modal/close-action-modal.component';
 
 @Component({
   selector: 'tf-action-detail',
@@ -76,6 +79,7 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 		private translate: TranslateService,
 		private cdr: ChangeDetectorRef,
 		private permissionsService : NgxPermissionsService,
+		private modalService: NgbModal,
 		private dateFrToEnPipe: DateFrToEnPipe,
 		private dateEnToFrPipe: DateEnToFrPipe,
 		iconRegistry: MatIconRegistry, 
@@ -123,7 +127,7 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 			objectif: ['', Validators.required],
 			pilote_id: [''],
 			delai: [''],
-			date_realisation: [''],
+			date_realisation: ['', Validators.required],
 			efficacite: [''],
 			commentaires: [''],
 			status_id: [null],
@@ -321,10 +325,6 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 		})
 	}
 
-	cloreAction(){
-		this.setCloreMode(true);
-	}
-
 	abandonAction(actionId){
 		
 		Swal.fire({
@@ -362,8 +362,24 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 		});
 	}
 
-	attributeAction(){
-		this.setAttribMode(true);
+	assignAction() {
+		const modalRef = this.modalService.open(AssignActionModalComponent, {size: 'md',scrollable: true,centered : true});
+		modalRef.componentInstance.form = this.actionForm;
+		modalRef.result.then(form => {
+		  if(form){
+			this.save(form)
+		  }
+		});
+	}
+
+	cloreAction() {
+		const modalRef = this.modalService.open(CloseActionModalComponent, {size: 'md',scrollable: true,centered : true});
+		modalRef.componentInstance.form = this.actionForm;
+		modalRef.result.then(form => {
+		  if(form){
+			this.save(form)
+		  }
+		});
 	}
 
 	parseActionDate(item, direction){
@@ -371,19 +387,15 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 		item.date_realisation = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.date_realisation) : this.dateEnToFrPipe.transform(item.date_realisation);
 	}
 
-	async save(from: string){
-		let form = {...this.actionForm.getRawValue()};
+	async save(actionform){
+		let form = {...actionform.getRawValue()};
 		this.formloading = true;
 		this.parseActionDate(form, 'FrToEn');
 		form.id = this.action.id;
-		if(from == 'origine'){
-			form.actionable_id = form.actionable ? form.actionable.id : null;
-    		form.actionable_type = form.visite_type ? form.visite_type.key : form.actionable_type; 
-		}
+
 		const res = await this.actionService.update(form)
 		.toPromise()
 		.then((res) => {
-			
 			this.formloading = false;
 			var code = res.message.code as SweetAlertIcon;
 			var message = res.message.content != 'done' ? '<b class="text-'+code+'">'+res.message.content+'</b>' : null; 
@@ -394,7 +406,6 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 				html: message,
 				timer: code == 'success' ? 1500 : 3000
 			}).then(() => {
-				this.close(from);
 				this.getAction(this.action.id);
 			})
 			this.cdr.markForCheck();

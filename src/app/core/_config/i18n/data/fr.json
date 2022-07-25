@@ -1677,7 +1677,14 @@
 			"DETAIL": "Détail de la formation",
 			"EDIT": "Modifier la formation",
 			"LIST": "Liste des formations"
-		}
+		},
+		"SUB_HABILITATION": {
+			"ADD": "Ajouter une habilitation",
+			"DETAIL": "Détail de l'habilitation",
+			"EDIT": "Modifier l'habilitation",
+			"LIST": "Liste des habilitations"
+		},
+		"HABILITATION": "Habilitation"
 	},
 	"NOTIF": {
 		"DELETE_CONFIRMATION": {
@@ -1745,6 +1752,12 @@
 			},
 			"RESOLUTION": {
 				"TITLE": "Résolution"
+			},
+			"ASSIGN_ACTION": {
+				"TITLE": "Attribution de l'action"
+			},
+			"CLOSURE_ACTION": {
+				"TITLE": "Clôture de l'action"
 			}
 		},
 		"COMMENT": {
@@ -2649,6 +2662,9 @@
 		"END_DATE": {
 			"TITLE": "Date fin"
 		},
+		"VALIDITY_DATE": {
+			"TITLE": "Date de validité"
+		},
 		"HABILITATION": {
 			"TITLE": "Habilitation"
 		},
@@ -2678,15 +2694,57 @@
 			},
 			"HABILITATIONS": {
 				"TITLE": "Habilitation de la formation"
+			},
+			"USERS": {
+				"TITLE": "Utilisateurs"
 			}
 		}
 	},
 	"HABILITATIONS": {
+		"LABEL": {
+			"TITLE": "Libelle"
+		},
+		"CATEGORY": {
+			"TITLE": "Catégorie"
+		},
 		"PERIOD_VALIDITY": {
-			"TITLE": "Durée de validité"
+			"TITLE": "Durée de validité (Nbr d'années)"
 		},
 		"NUMBER_YEARS": {
 			"TITLE": "Nbr d'années"
+		},
+		"TYPE_HAB": {
+			"TITLE": "Type d'habilitation"
+		},
+		"ACTIVE": {
+			"TITLE": "Active"
+		},
+		"ACTION": {
+			"NEW_HAB": {
+				"LABEL": "Nouvelle habilitation"
+			}
+		},
+		"NOTIF": {
+			"HABILITATION_CREATED": {
+				"TITLE": "Habilitation créée avec succès"
+			},
+			"HABILITATION_UPDATED": {
+				"TITLE": "Habilitation mise à jour avec succès"
+			},
+			"LOADING": {
+				"TITLE": "Loading Habilitation"
+			}
+		},
+		"CARD": {
+			"GENERAL_INFOS": {
+				"TITLE": "Informations générales"
+			},
+			"USERS": {
+				"TITLE": "Utilisateurs"
+			},
+			"FORMATIONS": {
+				"TITLE": "Formations"
+			}
 		}
 	}
 }

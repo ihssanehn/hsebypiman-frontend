@@ -25,6 +25,10 @@
         </swiper>
 
 <!-- [disabled]="questions[currentSlideIndex].answers?.length == 0" -->
+        <div *ngIf="isResponseEmpty" class="tf-quizz__error">
+            Veuillez répondre à la question pour accéder à la suivante
+        </div>
+
         <div class="tf-quizz__actions" *ngIf="questions">
             <button (click)="nextSlide()"  class="btn btn-primary btn-elevate tf-quizz__actions-primary">Suivant</button>
             <button (click)="previousSlide()" class="btn btn-primary btn-elevate tf-quizz__actions-secondary">Question précédente</button>
