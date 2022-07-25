@@ -126,17 +126,7 @@ const routes: Routes = [
 					// 	only: ['action_canUpdate']
 					// }
 				}
-			},
-			// {
-			// 	path: 'admin',
-			// 	component: FormationAdminComponent,
-			// 	//canActivate: [NgxPermissionsGuard],
-			// 	data: {
-			// 		permissions: {
-			// 			only: ['ADMIN','ROOT']
-			// 		}
-			// 	}
-			// }
+			}
     ]
   }
 ];
