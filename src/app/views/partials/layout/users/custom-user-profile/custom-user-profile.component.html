@@ -140,6 +140,7 @@
 												<div>
 													<div>Quizz Sécurité</div>
 													<div class="font-weight-normal">{{user.quiz_score}}</div>
+													<div class="font-weight-normal" *ngIf="user.quiz_date">{{user.quiz_date | date:'dd/MM/yyyy hh:mm'}}</div>
 												</div>
 												<button mat-icon-button color="primary" matTooltip="Options" [matMenuTriggerFor]="actionMenu" >
 													<mat-icon>more_vert</mat-icon>
