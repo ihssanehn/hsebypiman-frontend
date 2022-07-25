@@ -782,7 +782,7 @@ export class MenuConfig {
 						translate: 'MENU.FORMATION',
 						needModule: true,
 						moduleCode: ['FORMATIONS'],
-						svgIcon: 'construction'
+						svgIcon: 'business'
 					},
 					{
 						title: 'Habilitations',
@@ -792,7 +792,7 @@ export class MenuConfig {
 						translate: 'MENU.HABILITATION',
 						needModule: true,
 						moduleCode: ['FORMATIONS'],
-						svgIcon: 'construction'
+						svgIcon: 'chantier'
 					},
 					{
 						title: 'Modules',
