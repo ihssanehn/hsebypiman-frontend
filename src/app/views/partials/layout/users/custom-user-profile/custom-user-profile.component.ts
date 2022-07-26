@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, ChangeDetectorRef, SimpleChanges } from '@angular/core';
 import { User } from '@app/core/auth/_models/user.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FileUploader } from "ng2-file-upload";
@@ -12,6 +12,7 @@ import { Formation, QcmSession, Remontee } from '@app/core/models';
 import { Router } from '@angular/router';
 import { AssignFormationModalComponent } from '../assign-formation-modal/assign-formation-modal.component';
 import { AssignEpiModalComponent } from '../assign-epi-modal/assign-epi-modal.component';
+import { EditAccueilSecuModalComponent } from '../edit-accueil-secu-modal/edit-accueil-secu-modal.component';
 
 
 
@@ -38,9 +39,9 @@ export class CustomUserProfileComponent implements OnInit{
   epis: any[];
   formations: Formation[];
 
+  accueilSecuStatusIcon: String = this.SECU_UNDONE_ICON;
   quizSecuStatusIcon: String = this.SECU_UNDONE_ICON;
   livretSecuStatusIcon: String = this.SECU_UNDONE_ICON;
-  accueilSecuStatusIcon: String = this.SECU_UNDONE_ICON;
 
 	formStatus = new FormStatus();
   formDocloading: boolean = false;
@@ -63,12 +64,37 @@ export class CustomUserProfileComponent implements OnInit{
   ) {
   }
 
-
 	ngOnInit() {
 	  this.getUserRemontees();
     this.getUserPretEpi();
     this.getUserFormations();
 
+    this.resetAccueilSecuStatusIcon();
+    this.resetLivretSecuStatusIcon();
+    this.resetQuizSecuStatusIcon();
+  }
+
+  resetAccueilSecuStatusIcon() {
+    if(this.user) {
+      if(this.user.date_realisation_accueil_secu) {
+        this.accueilSecuStatusIcon = this.SECU_DONE_ICON
+      } else {
+        this.accueilSecuStatusIcon = this.SECU_UNDONE_ICON
+      }
+    }
+  }
+
+  resetLivretSecuStatusIcon() {
+    if(this.user) {
+      if(this.user.date_realisation_livret_accueil) {
+        this.livretSecuStatusIcon = this.SECU_DONE_ICON
+      } else {
+        this.livretSecuStatusIcon = this.SECU_UNDONE_ICON
+      }
+    }
+  }
+
+  resetQuizSecuStatusIcon() {
     if(this.user) {
       if(this.user.is_quiz_approved) {
         this.quizSecuStatusIcon = this.SECU_DONE_ICON
@@ -97,7 +123,6 @@ export class CustomUserProfileComponent implements OnInit{
   async getUserFormations() {
 		var res = await this.userService.getFormations(this.user).toPromise();
 		this.formations = res.result.data;
-    console.log(this.formations);
 
     this.cdr.markForCheck();
 	}
@@ -124,15 +149,16 @@ export class CustomUserProfileComponent implements OnInit{
 		modalRef.result.then(form => {
       if(form){
         this.assignFormation(
-          form.formation_id,
-          form.date_validite
+          form.get('formation_id'),
+          form
         )
       }
     });
   }
 
-  async assignFormation(formation_id, date_validite) {
-    var res = await this.formationService.assignUsers(formation_id, this.user.id, date_validite).toPromise();
+  async assignFormation(formation_id, formData) {
+    formData.append('id_user', this.user.id)
+    var res = await this.formationService.assignUsers(formation_id, formData).toPromise();
     if(res) {
       this.getUserFormations();
     }
@@ -206,7 +232,6 @@ export class CustomUserProfileComponent implements OnInit{
 		modalRef.componentInstance.uploader = this.uploader;
 		modalRef.result.then( payload => {
       if(payload){
-        console.log(payload);
         this.saveDocument(payload)
       }
     });
@@ -269,6 +294,9 @@ export class CustomUserProfileComponent implements OnInit{
     var res = await this.userService.getUserById(this.user.id).toPromise();
     if(res) {
       this.user = res.result.data;
+      this.resetAccueilSecuStatusIcon();
+      this.resetLivretSecuStatusIcon();
+      this.resetQuizSecuStatusIcon();
     }
     this.cdr.markForCheck();
   }
@@ -279,7 +307,51 @@ export class CustomUserProfileComponent implements OnInit{
       this.reloadUser();
       Swal.fire({
         icon: 'success',
-        title: "Votre demande a été prise en compte",
+        title: "Votre demande a été bien prise en compte",
+        showConfirmButton: false,
+        timer: 1500,
+          
+      })
+    }
+    this.cdr.markForCheck();
+  }
+
+  showEditAccueilSecuModal() {
+    const modalRef = this.modalService.open(EditAccueilSecuModalComponent, {size: 'md',scrollable: true,centered : true});
+		modalRef.result.then(form => {
+      if(form){
+        this.validateAccueilSecu(form.date_realisation)
+      }
+    });
+  }
+
+  async validateAccueilSecu(date_realisation) {
+    var params = {
+      'date_realisation_accueil_secu': date_realisation
+    }
+
+    var res = await this.userService.validateAccueilSecu(this.user.id, params).toPromise();
+    if(res) {
+      this.reloadUser();
+      Swal.fire({
+        icon: 'success',
+        title: "L'accueil sécurité a bien été enregistrée.",
+        showConfirmButton: false,
+        timer: 1500,
+          
+      })
+    }
+    this.cdr.markForCheck();
+  }
+
+
+  async retakeLivretAccueil() {
+    var res = await this.userService.requestToRetakeLivretAccueil(this.user.id).toPromise();
+    if(res) {
+      this.reloadUser();
+      Swal.fire({
+        icon: 'success',
+        title: "Votre demande a été bien prise en compte",
         showConfirmButton: false,
         timer: 1500,
           

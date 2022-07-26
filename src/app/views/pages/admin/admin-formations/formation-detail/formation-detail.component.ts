@@ -4,6 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Formation } from '@app/core/models';
 import { FormationService } from '@app/core/services';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import Swal from 'sweetalert2';
@@ -78,7 +79,7 @@ export class FormationDetailComponent implements OnInit, OnDestroy {
 		Swal.fire({
 			title: this.translate.instant("NOTIF.FEATURE_NOT_IMPLEMENTED.TITLE"),
 			showConfirmButton: false,
-      timer: 1500
+      		timer: 1500
 		})
 	}
 

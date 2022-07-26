@@ -118,18 +118,28 @@
 											<div class="col-3">
 												<img [src]="accueilSecuStatusIcon" alt="undone" class="shdw-5">
 											</div>
-											<div class="col-9 d-flex flex-column justify-content-center">
-												<span>Accueil sécurité</span>
-												<span class="font-weight-normal">---</span>
+											<div class="col-9 d-flex justify-content-between">
+												<div>
+													<div>Accueil sécurité</div>
+													<div class="font-weight-normal" *ngIf="user.date_realisation_accueil_secu; else invalid">{{user.date_realisation_accueil_secu | date:'dd/MM/yyyy'}}</div>
+												</div>
+												<button mat-icon-button color="primary" matTooltip="Options" [matMenuTriggerFor]="accueilSecuActionMenu" >
+													<mat-icon>more_vert</mat-icon>
+												</button>
 											</div>
 										</div>
 										<div class="row mt-3">
 											<div class="col-3">
 												<img [src]="livretSecuStatusIcon" alt="undone" class="shdw-5">
 											</div>
-											<div class="col-9 d-flex flex-column justify-content-center">
-												<span>Livret d'accueil</span>
-												<span class="font-weight-normal">---</span>
+											<div class="col-9 d-flex justify-content-between">
+												<div>
+													<div>Livret d'accueil</div>
+													<div class="font-weight-normal" *ngIf="user.date_realisation_livret_accueil; else invalid">{{user.date_realisation_livret_accueil | date:'dd/MM/yyyy'}}</div>
+												</div>
+												<button mat-icon-button color="primary" matTooltip="Options" [matMenuTriggerFor]="livretAccueilActionMenu" >
+													<mat-icon>more_vert</mat-icon>
+												</button>
 											</div>
 										</div>
 										<div class="row mt-3">
@@ -139,9 +149,14 @@
 											<div class="col-9 d-flex justify-content-between">
 												<div>
 													<div>Quizz Sécurité</div>
-													<div class="font-weight-normal">{{user.quiz_score}}</div>
+													<div class="font-weight-normal">
+														<span>{{user.quiz_score}}</span>
+														<span *ngIf="user.quiz_score && !user.is_quiz_approved"> - </span>
+														<span *ngIf="!user.quiz_score || !user.is_quiz_approved"><ng-container *ngTemplateOutlet="invalid"></ng-container></span>
+													</div>
+													<div class="font-weight-normal" *ngIf="user.quiz_date">{{user.quiz_date | date:'dd/MM/yyyy hh:mm'}}</div>
 												</div>
-												<button mat-icon-button color="primary" matTooltip="Options" [matMenuTriggerFor]="actionMenu" >
+												<button mat-icon-button color="primary" matTooltip="Options" [matMenuTriggerFor]="quizActionMenu" >
 													<mat-icon>more_vert</mat-icon>
 												</button>
 											</div>
@@ -270,6 +285,7 @@
 													<th>Label</th>
 													<th class="text-center">Date de validite</th>
 													<th class="text-center">Date de renouvellement</th>
+													<th class="text-center"></th>
 												</tr>
 											</thead>
 											<tbody>
@@ -277,6 +293,16 @@
 													<td>{{formation.libelle}}</td>
 													<td class="text-center">{{formation.pivot.date_validite ? (formation.pivot.date_validite | date: 'dd/MM/yyyy') : '-'}}</td>
 													<td class="text-center">{{formation.pivot.date_renouvellement ? (formation.pivot.date_renouvellement | date: 'dd/MM/yyyy') : '-'}}</td>
+													<td class="text-center">
+														<span class="d-flex pointer" [ngbPopover]="popIntContent" popoverClass="big-popover" [popoverTitle]="('REMONTEES.DOCUMENTS.SHORTTITLE' | translate)">
+															<mat-icon>attachment</mat-icon> {{formation.pivot.docs_count}}
+														</span>
+														<ng-template #popIntContent >
+															<div class="row">
+																<tf-doc-list-tooltip [documents]="formation.pivot.docs"></tf-doc-list-tooltip>
+															</div>
+														</ng-template>
+													</td>
 												</tr>
 											</tbody>
 										</table>
@@ -297,14 +323,33 @@
 		{{'COMMON.NO_DATA_FOUND.TITLE' | translate}}
 	</span>
 </ng-template>
+
 <ng-template #virtualUser>
 	<div class="col-9">
 		<div class="card">{{'USERS.VIRTUEL.SHORTTITLE' | translate}}</div>
 	</div>
 </ng-template>
 
-<mat-menu #actionMenu="matMenu" class="action-menu">
-	<button mat-icon-button color="info" matTooltip="Demander de repasser le quiz" (click)="retakeTheQuiz()">
+<ng-template #invalid>
+	<span class="no-data-label invalid">
+		{{'COMMON.INVALID.LABEL' | translate}}
+	</span>
+</ng-template>
+
+<mat-menu #accueilSecuActionMenu="matMenu" class="action-menu">
+	<button mat-icon-button color="info" matTooltip="Ajouter une date de réalisation" (click)="showEditAccueilSecuModal()">
+		<mat-icon>edit</mat-icon>
+	</button>
+</mat-menu>
+
+<mat-menu #livretAccueilActionMenu="matMenu" class="action-menu">
+	<button mat-icon-button color="info" matTooltip="Demander de relire le livret d'accueil" (click)="retakeLivretAccueil()" *ngxPermissionsOnly="['ADMIN','ROOT', 'MANAGER']">
+		<mat-icon>edit</mat-icon>
+	</button>
+</mat-menu>
+
+<mat-menu #quizActionMenu="matMenu" class="action-menu">
+	<button mat-icon-button color="info" matTooltip="Demander de repasser le quiz" (click)="retakeTheQuiz()" *ngxPermissionsOnly="['ADMIN','ROOT', 'MANAGER']">
 		<mat-icon>edit</mat-icon>
 	</button>
 </mat-menu>
