@@ -45,8 +45,10 @@ export class FormationService extends HttpService{
     delete(id){
         return this.http.delete(this.baseUrl+'/'+id);
     }
-    assignUsers(formation_id, id_user, date_validite){
-        return this.http.post<JsonResponse<Formation>>(this.baseUrl+'/'+formation_id+'/users/create', {'id_user': id_user, 'date_validite': date_validite});
+    assignUsers(formation_id, params){
+        const httpHeaders = new HttpHeaders();
+		httpHeaders.set("Content-Type", "multipart/form-data");
+        return this.http.post<JsonResponse<Formation>>(this.baseUrl+'/'+formation_id+'/users/create', params, { headers: httpHeaders });
     }
 
 }

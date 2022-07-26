@@ -79,5 +79,17 @@ export class UserService extends HttpService{
 		return this.http.put<any>(`${this.baseUrl}/` + user_id+'/retake-quiz', user_id);
 	}
 
+  validateAccueilSecu(user_id: number, params){
+		return this.http.put<any>(`${this.baseUrl}/` + user_id+'/accueil-secu', params);
+	}
+
+  validateLivretAccueil(user_id: number){
+		return this.http.put<any>(`${this.baseUrl}/` + user_id+'/livret-accueil/validate', {});
+	}
+
+  requestToRetakeLivretAccueil(user_id: number){
+		return this.http.put<any>(`${this.baseUrl}/` + user_id+'/livret-accueil/init', {});
+	}
+
 
 }

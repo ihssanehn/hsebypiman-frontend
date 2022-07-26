@@ -16,8 +16,10 @@ export class User extends BaseModel {
     is_firstConnexion?: boolean;
     is_quiz_approved?: boolean;
     quiz_score?: string;
+    quiz_date?: Date;
     role?: Role;
     user_connection?: string;
+    pivot?: any;
     
     date_entree?: Date;
     date_naissance?: Date;
@@ -39,6 +41,8 @@ export class User extends BaseModel {
     client?: any;
     photo_profil_id?: Number;
     photo_profil?: any;
+    date_realisation_accueil_secu?: Date;
+    date_realisation_livret_accueil?: Date;
 
     clear?(): void {
         this.id = undefined;
