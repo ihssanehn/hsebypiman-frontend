@@ -121,7 +121,7 @@
 											<div class="col-9 d-flex justify-content-between">
 												<div>
 													<div>Accueil sécurité</div>
-													<div class="font-weight-normal" *ngIf="user.date_realisation_accueil_secu; else invalid">{{user.date_realisation_accueil_secu | date:'dd/MM/yyyy hh:mm'}}</div>
+													<div class="font-weight-normal" *ngIf="user.date_realisation_accueil_secu; else invalid">{{user.date_realisation_accueil_secu | date:'dd/MM/yyyy'}}</div>
 												</div>
 												<button mat-icon-button color="primary" matTooltip="Options" [matMenuTriggerFor]="accueilSecuActionMenu" >
 													<mat-icon>more_vert</mat-icon>
@@ -135,7 +135,7 @@
 											<div class="col-9 d-flex justify-content-between">
 												<div>
 													<div>Livret d'accueil</div>
-													<div class="font-weight-normal" *ngIf="user.date_realisation_livret_accueil; else invalid">{{user.date_realisation_livret_accueil | date:'dd/MM/yyyy hh:mm'}}</div>
+													<div class="font-weight-normal" *ngIf="user.date_realisation_livret_accueil; else invalid">{{user.date_realisation_livret_accueil | date:'dd/MM/yyyy'}}</div>
 												</div>
 												<button mat-icon-button color="primary" matTooltip="Options" [matMenuTriggerFor]="livretAccueilActionMenu" >
 													<mat-icon>more_vert</mat-icon>

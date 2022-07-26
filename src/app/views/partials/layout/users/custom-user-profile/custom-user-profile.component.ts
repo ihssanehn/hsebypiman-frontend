@@ -320,17 +320,17 @@ export class CustomUserProfileComponent implements OnInit{
     const modalRef = this.modalService.open(EditAccueilSecuModalComponent, {size: 'md',scrollable: true,centered : true});
 		modalRef.result.then(form => {
       if(form){
-        this.saveAccueilSecuInfos(form.date_realisation)
+        this.validateAccueilSecu(form.date_realisation)
       }
     });
   }
 
-  async saveAccueilSecuInfos(date_realisation) {
+  async validateAccueilSecu(date_realisation) {
     var params = {
       'date_realisation_accueil_secu': date_realisation
     }
 
-    var res = await this.userService.saveAccueilSecuInfos(this.user.id, params).toPromise();
+    var res = await this.userService.validateAccueilSecu(this.user.id, params).toPromise();
     if(res) {
       this.reloadUser();
       Swal.fire({

@@ -1,0 +1,12 @@
+<div class="tf-livret__container">
+	<div class="tf-livret__body">
+		<iframe id="livret-iframe" #livretIframe [src]="livretAccueilPath" width="100%" [height]="iframeHeight+'px'" (load)="onFrameLoad()"></iframe>
+	</div>
+	<div class="tf-livret__actions">
+		<section class="example-section">
+			<mat-checkbox class="example-margin" [(ngModel)]="checked">Je reconnais avoir pris connaissance du document et m’engage a le respecter.</mat-checkbox>
+		  </section>
+		<button (click)="validate()" class="btn btn-primary btn-elevate tf-livret__actions-primary" [disabled]="!checked">J'ai lu le document</button>
+	</div>
+	
+</div>
