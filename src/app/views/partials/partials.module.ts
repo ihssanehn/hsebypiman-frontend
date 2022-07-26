@@ -185,6 +185,7 @@ import { HabilitationsAdminListPortletComponent } from './layout/admins/habilita
 import { AssignActionModalComponent } from './layout/plans-action/modal/assign-action-modal/assign-action-modal.component';
 import { CloseActionModalComponent } from './layout/plans-action/modal/close-action-modal/close-action-modal.component';
 import { DocListTooltipComponent } from './layout/tooltip/doc-list-tooltip/doc-list-tooltip.component';
+import { EditAccueilSecuModalComponent } from './layout/users/edit-accueil-secu-modal/edit-accueil-secu-modal.component';
 
 @NgModule({
 	declarations: [
@@ -310,7 +311,8 @@ import { DocListTooltipComponent } from './layout/tooltip/doc-list-tooltip/doc-l
 		HabilitationsAdminListPortletComponent,
 		AssignActionModalComponent,
 		CloseActionModalComponent,
-		DocListTooltipComponent
+		DocListTooltipComponent,
+		EditAccueilSecuModalComponent
 
 	],
 	exports: [
@@ -435,7 +437,8 @@ import { DocListTooltipComponent } from './layout/tooltip/doc-list-tooltip/doc-l
 		HabilitationsAdminListPortletComponent,
 		AssignActionModalComponent,
 		CloseActionModalComponent,
-		DocListTooltipComponent
+		DocListTooltipComponent,
+		EditAccueilSecuModalComponent
 
 	],
 	imports: [
@@ -511,7 +514,8 @@ import { DocListTooltipComponent } from './layout/tooltip/doc-list-tooltip/doc-l
 		AssignFormationModalComponent,
 		AssignEpiModalComponent,
 		AssignActionModalComponent,
-		CloseActionModalComponent
+		CloseActionModalComponent,
+		EditAccueilSecuModalComponent
 	],
 })
 export class PartialsModule {
