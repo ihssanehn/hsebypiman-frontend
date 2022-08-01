@@ -146,23 +146,12 @@ export class CustomUserProfileComponent implements OnInit{
 
   showAssignFormationModal() {
     const modalRef = this.modalService.open(AssignFormationModalComponent, {size: 'md',scrollable: true,centered : true});
+    modalRef.componentInstance.user_id = this.user.id
 		modalRef.result.then(form => {
       if(form){
-        this.assignFormation(
-          form.get('formation_id'),
-          form
-        )
+        this.getUserFormations();
       }
     });
-  }
-
-  async assignFormation(formation_id, formData) {
-    formData.append('id_user', this.user.id)
-    var res = await this.formationService.assignUsers(formation_id, formData).toPromise();
-    if(res) {
-      this.getUserFormations();
-    }
-    this.cdr.markForCheck();
   }
 
   showAssignEpiModal() {

@@ -1,19 +1,16 @@
 import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ActivatedRoute, Router } from '@angular/router';
-import { AuthNoticeService, AuthService, User } from '@app/core/auth';
+import { AuthService, User } from '@app/core/auth';
 import { UserService } from '@app/core/services';
-import { LayoutConfigService, SplashScreenService, TranslationService } from '@app/core/_base/layout';
 import { environment } from '@env/environment';
-import { Observable } from 'rxjs';
-import { fromEvent } from 'rxjs';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'tf-livret-accueil',
-  templateUrl: './livret-accueil.component.html',
-  styleUrls: ['./livret-accueil.component.scss']
+  selector: 'tf-livret-accueil-modal',
+  templateUrl: './livret-accueil-modal.component.html',
+  styleUrls: ['./livret-accueil-modal.component.scss']
 })
-export class livretAccueilComponent implements OnInit {
+export class LivretAccueilModalComponent implements OnInit {
 
   user: User;
   checked: boolean = false;
@@ -26,9 +23,10 @@ export class livretAccueilComponent implements OnInit {
 	constructor(
     private sanitize: DomSanitizer,
     private cdr: ChangeDetectorRef,
-    private router: Router,
+    private activeModal: NgbActiveModal,
     private userService: UserService,
     private authService: AuthService
+
   ) {
     this.livretAccueilPath = this.sanitize.bypassSecurityTrustResourceUrl(environment.apiBaseUrl+"livret-accueil")
 	}
@@ -50,13 +48,13 @@ export class livretAccueilComponent implements OnInit {
   }
 
   async validate() {
-    var res = await this.userService.validateLivretAccueil(this.user.id).toPromise();
-    if(this.user.is_firstConnexion){
-      this.router.navigateByUrl('/auth/edit-password');
-    }else{
-      this.router.navigateByUrl('/');
-    }
-    this.cdr.markForCheck();
+    await this.userService.validateLivretAccueil(this.user.id).toPromise().then(res=>{
+      this.authService.reloadUser().toPromise().then( res =>{
+        console.log(res)
+        this.cdr.markForCheck();
+        this.activeModal.close();
+      });
+    });
   }
 
 }

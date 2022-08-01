@@ -15,10 +15,10 @@ const routes: Routes = [
 		path: 'auth', 
 		loadChildren: () => import('@app/views/pages/auth/auth.module').then(m => m.AuthModule)
 	},
-	{
-		path: 'livret-accueil', 
-		loadChildren: () => import('@app/views/pages/livret-accueil/livret-accueil.module').then(m => m.LivretAccueilModule)
-	},
+	// {
+	// 	path: 'livret-accueil', 
+	// 	loadChildren: () => import('@app/views/pages/livret-accueil/livret-accueil.module').then(m => m.LivretAccueilModule)
+	// },
 	{
 		path: 'quizz', 
 		loadChildren: () => import('@app/views/pages/quizz/quizz.module').then(m => m.QuizzModule)

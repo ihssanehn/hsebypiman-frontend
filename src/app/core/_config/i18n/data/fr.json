@@ -1737,7 +1737,7 @@
 			"ABANDON_ACTION": "Abandonner l'action",
 			"ADD_ORIGIN": "Ajouter une origine",
 			"ASSIGN_ACTION": "Attribuer l'action",
-			"CLOSE_ACTION": "Clore le action",
+			"CLOSE_ACTION": "Clore l'action",
 			"CREATE_ACTION": "Créer une action"
 		},
 		"CARD": {
@@ -1811,7 +1811,8 @@
 		"EFFICACITE": {
 			"LABEL": "Efficacité",
 			"SHORTTITLE": "Efficacité",
-			"TITLE": "Efficacité"
+			"TITLE": "Efficacité",
+			"ERROR": "L'efficacité doit être comprise entre 0 et 100"
 		},
 		"FORM": {
 			"CREATE": "Créer un nouveau plan d'action"

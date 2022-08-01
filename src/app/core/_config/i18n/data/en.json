@@ -1810,7 +1810,8 @@
 		"EFFICACITE": {
 			"LABEL": "Efficiency",
 			"SHORTTITLE": "Efficiency",
-			"TITLE": "Efficiency"
+			"TITLE": "Efficiency",
+			"ERROR": "Efficiency may be beetwen 0 and 100"
 		},
 		"FORM": {
 			"CREATE": "Create a new action plan"

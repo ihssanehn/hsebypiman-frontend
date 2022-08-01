@@ -1485,7 +1485,8 @@
 		"EFFICACITE": {
 			"LABEL": "Efficacité",
 			"SHORTTITLE": "Efficacité",
-			"TITLE": "Efficacité"
+			"TITLE": "Efficacité",
+			"ERROR": "L'efficacité doit être comprise entre 0 et 100"
 		},
 		"FORM": {
 			"CREATE": "Créer un nouveau plan d'action"

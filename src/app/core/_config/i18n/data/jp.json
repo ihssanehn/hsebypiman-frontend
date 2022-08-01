@@ -1489,7 +1489,8 @@
 		"EFFICACITE": {
 			"LABEL": "Efficacité",
 			"SHORTTITLE": "Efficacité",
-			"TITLE": "Efficacité"
+			"TITLE": "Efficacité",
+			"ERROR": "Efficiency may be beetwen 0 and 100"
 		},
 		"FORM": {
 			"CREATE": "Créer un nouveau plan d'action"
