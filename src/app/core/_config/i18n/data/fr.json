@@ -1741,6 +1741,11 @@
 			"CLOSE_ACTION": "Clore l'action",
 			"CREATE_ACTION": "Créer une action"
 		},
+		"ACTOR": {
+			"LABEL": "Acteur",
+			"SHORTTITLE": "Acteur",
+			"TITLE": "Acteur"
+		},
 		"CARD": {
 			"ALLOCATION_DEADLINE": {
 				"TITLE": "Attribution et délai"

@@ -1424,6 +1424,11 @@
 			"ASSIGN_ACTION": "",
 			"CLOSE_ACTION": ""
 		},
+		"ACTOR": {
+			"LABEL": "Acteur",
+			"SHORTTITLE": "Acteur",
+			"TITLE": "Acteur"
+		},
 		"CARD": {
 			"ALLOCATION_DEADLINE": {
 				"TITLE": ""

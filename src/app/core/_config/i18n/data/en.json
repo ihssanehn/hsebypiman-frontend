@@ -1740,6 +1740,11 @@
 			"CLOSE_ACTION": "Close the action",
 			"CREATE_ACTION": "Create an action"
 		},
+		"ACTOR": {
+			"LABEL": "Actor",
+			"SHORTTITLE": "Actor",
+			"TITLE": "Actor"
+		},
 		"CARD": {
 			"ALLOCATION_DEADLINE": {
 				"TITLE": "Allocation and deadline"
