@@ -114,7 +114,7 @@ export class MenuConfig {
 					moduleCode: ['DISCUSS']
 				},
 				{
-					title: 'Quizz',
+					title: 'Quiz',
 					root: true,
 					alignment: 'left',
 					page: '/quizz',
