@@ -1,0 +1,11 @@
+<div class="modal-header">
+	<h4 class="modal-title">{{'MENU.SUB_REMONTEES.DETAIL' | translate}}</h4>
+	<button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+<div class="modal-body">
+	<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8" id="portlet-remonte" *ngIf="id">
+    <tf-remontee-detail-base *ngIf="id" [id]="id" ></tf-remontee-detail-base>
+	</tf-portlet>
+</div>

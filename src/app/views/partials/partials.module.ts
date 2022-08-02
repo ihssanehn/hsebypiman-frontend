@@ -187,6 +187,9 @@ import { CloseActionModalComponent } from './layout/plans-action/modal/close-act
 import { DocListTooltipComponent } from './layout/tooltip/doc-list-tooltip/doc-list-tooltip.component';
 import { EditAccueilSecuModalComponent } from './layout/users/edit-accueil-secu-modal/edit-accueil-secu-modal.component';
 import { LivretAccueilModalComponent } from './layout/modal/livret-accueil-modal/livret-accueil-modal.component';
+import { RemonteeDetailModalComponent } from './layout/modal/remontee-detail-modal/remontee-detail-modal.component';
+import { RemonteeDetailBaseComponent } from './layout/remontees/details/remontee-detail-base/remontee-detail-base.component';
+
 
 
 @NgModule({
@@ -316,7 +319,9 @@ import { LivretAccueilModalComponent } from './layout/modal/livret-accueil-modal
 		AssignActionModalComponent,
 		CloseActionModalComponent,
 		DocListTooltipComponent,
-		EditAccueilSecuModalComponent
+		EditAccueilSecuModalComponent,
+		RemonteeDetailModalComponent,
+		RemonteeDetailBaseComponent,
 
 	],
 	exports: [
@@ -445,6 +450,8 @@ import { LivretAccueilModalComponent } from './layout/modal/livret-accueil-modal
 		DocListTooltipComponent,
 		EditAccueilSecuModalComponent,
 		LivretAccueilModalComponent,
+		RemonteeDetailModalComponent,
+		RemonteeDetailBaseComponent
 
 	],
 	imports: [
@@ -524,7 +531,7 @@ import { LivretAccueilModalComponent } from './layout/modal/livret-accueil-modal
 		CloseActionModalComponent,
 		EditAccueilSecuModalComponent,
 		LivretAccueilModalComponent,
-
+		RemonteeDetailModalComponent
 	],
 })
 export class PartialsModule {
