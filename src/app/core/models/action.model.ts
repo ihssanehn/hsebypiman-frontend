@@ -10,6 +10,8 @@ export class Action {
     risque?: string;
     libelle?: string;
     objectif?: string;
+    actor_id?: number;
+    actor?: User;
     pilote_id?: number;
     pilote?: User;
     delai?: Date;
