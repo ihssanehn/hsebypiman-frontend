@@ -1,17 +1,7 @@
-import { Component, OnInit, ChangeDetectorRef, Inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from "@angular/forms";
-import { TranslateService } from '@ngx-translate/core';
-import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
-import {FormStatus} from '@app/core/_base/crud/models/form-status';
-import {FileUploader} from "ng2-file-upload";
-import { Materiel } from '@app/core/models';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { FormGroup, FormControl } from "@angular/forms";
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import Swal from 'sweetalert2';
-import { MatSnackBar } from '@angular/material';
-import { MaterielService, PersonnelService } from '@app/core/services';
-import { DateEnToFrPipe, DateFrToEnPipe } from '@app/core/_base/layout';
-import moment from 'moment';
-import { User } from '@app/core/auth';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'tf-close-action-modal',
@@ -23,7 +13,8 @@ export class CloseActionModalComponent implements OnInit{
   form: FormGroup;
 
   constructor(
-    public activeModal: NgbActiveModal
+    public activeModal: NgbActiveModal,
+    private cdr: ChangeDetectorRef,
   ) {}
 
   ngOnInit() {

@@ -146,23 +146,12 @@ export class CustomUserProfileComponent implements OnInit{
 
   showAssignFormationModal() {
     const modalRef = this.modalService.open(AssignFormationModalComponent, {size: 'md',scrollable: true,centered : true});
+    modalRef.componentInstance.user_id = this.user.id
 		modalRef.result.then(form => {
       if(form){
-        this.assignFormation(
-          form.get('formation_id'),
-          form
-        )
+        this.getUserFormations();
       }
     });
-  }
-
-  async assignFormation(formation_id, formData) {
-    formData.append('id_user', this.user.id)
-    var res = await this.formationService.assignUsers(formation_id, formData).toPromise();
-    if(res) {
-      this.getUserFormations();
-    }
-    this.cdr.markForCheck();
   }
 
   showAssignEpiModal() {
@@ -294,6 +283,9 @@ export class CustomUserProfileComponent implements OnInit{
     var res = await this.userService.getUserById(this.user.id).toPromise();
     if(res) {
       this.user = res.result.data;
+      if(this.user.photo_profil){
+        this.user.photo_profil.src = this.documentService.readFile(this.user.photo_profil_id);
+      }
       this.resetAccueilSecuStatusIcon();
       this.resetLivretSecuStatusIcon();
       this.resetQuizSecuStatusIcon();
@@ -301,19 +293,29 @@ export class CustomUserProfileComponent implements OnInit{
     this.cdr.markForCheck();
   }
 
-  async retakeTheQuiz() {
-    var res = await this.userService.requestToRetakeQuiz(this.user.id).toPromise();
-    if(res) {
-      this.reloadUser();
-      Swal.fire({
-        icon: 'success',
-        title: "Votre demande a été bien prise en compte",
-        showConfirmButton: false,
-        timer: 1500,
-          
-      })
-    }
-    this.cdr.markForCheck();
+  retakeTheQuiz() {
+    Swal.fire({
+      icon: 'warning',
+      title: this.translate.instant("USERS.NOTIF.QUIZ_RETAKE_CONFIRMATION.TITLE"),
+      text: this.translate.instant("USERS.NOTIF.QUIZ_RETAKE_CONFIRMATION.LABEL"),
+      showConfirmButton: true,
+      showCancelButton: true,
+      cancelButtonText: this.translate.instant("ACTION.CANCEL"),
+      confirmButtonText: this.translate.instant("ACTION.VALIDATE"),
+    }).then(async response => {
+      if (response.value) {
+        this.userService.requestToRetakeQuiz(this.user.id).toPromise().then(res=>{
+          this.reloadUser();
+          Swal.fire({
+            icon: 'success',
+            title: this.translate.instant("USERS.NOTIF.QUIZ_RETAKE_CONFIRMATION.DONE"),
+            showConfirmButton: false,
+            timer: 1500,  
+          })
+          this.cdr.markForCheck();
+        })
+      }
+    })
   }
 
   showEditAccueilSecuModal() {
@@ -346,18 +348,30 @@ export class CustomUserProfileComponent implements OnInit{
 
 
   async retakeLivretAccueil() {
-    var res = await this.userService.requestToRetakeLivretAccueil(this.user.id).toPromise();
-    if(res) {
-      this.reloadUser();
-      Swal.fire({
-        icon: 'success',
-        title: "Votre demande a été bien prise en compte",
-        showConfirmButton: false,
-        timer: 1500,
-          
-      })
-    }
-    this.cdr.markForCheck();
+
+
+    Swal.fire({
+      icon: 'warning',
+      title: this.translate.instant("USERS.NOTIF.LIVRET_RETAKE_CONFIRMATION.TITLE"),
+      text: this.translate.instant("USERS.NOTIF.LIVRET_RETAKE_CONFIRMATION.LABEL"),
+      showConfirmButton: true,
+      showCancelButton: true,
+      cancelButtonText: this.translate.instant("ACTION.CANCEL"),
+      confirmButtonText: this.translate.instant("ACTION.VALIDATE"),
+    }).then(async response => {
+      if (response.value) {
+        this.userService.requestToRetakeLivretAccueil(this.user.id).toPromise().then(res=>{
+          this.reloadUser();
+          Swal.fire({
+            icon: 'success',
+            title: this.translate.instant("USERS.NOTIF.LIVRET_RETAKE_CONFIRMATION.DONE"),
+            showConfirmButton: false,
+            timer: 1500,  
+          })
+          this.cdr.markForCheck();
+        })
+      }
+    })
   }
 
 }

@@ -103,7 +103,7 @@ export class QuestionComponent implements OnInit {
         this.questionSwiper.swiper.slideNext();
         this.questionCounter++;
         this.currentSlideIndex++;
-
+        
         if(this.isChapterChanged()) {
           // this.questionCounter = 1;
           this.currentChapterIndex++;

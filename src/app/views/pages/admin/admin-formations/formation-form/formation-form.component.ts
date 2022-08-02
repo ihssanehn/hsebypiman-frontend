@@ -75,8 +75,11 @@ export class FormationFormComponent implements OnInit {
     this.form.get('to_habilitation').valueChanges.subscribe(to_hab => {
       if (to_hab){
         this.form.get('habilitation_id').setValidators(Validators.required);
+        this.form.get('habilitation_id').enable();
       }else{
         this.form.get('habilitation_id').setValidators(null);
+        this.form.get('habilitation_id').setValue(null);
+        this.form.get('habilitation_id').disable();
       }
       this.form.get('habilitation_id').updateValueAndValidity();
     })

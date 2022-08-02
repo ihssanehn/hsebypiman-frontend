@@ -12,6 +12,7 @@ import { AuthService, User } from '@app/core/auth';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { QuizModalComponent } from '@app/views/partials/layout/modal/quiz-modal/quiz-modal.component';
 import { ShowFlashInfoModalComponent } from '@app/views/partials/layout';
+import { LivretAccueilModalComponent } from '@app/views/partials/layout/modal/livret-accueil-modal/livret-accueil-modal.component';
 
 @Component({
 	selector: 'tf-home',
@@ -30,10 +31,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy  {
 		private menuAsideService: MenuAsideService,
 		private moduleService : ModuleService,
     private flashInfoService: FlashInfoService,
-    private activatedRoute: ActivatedRoute,
 		private authService: AuthService,
-		private layoutConfigService: LayoutConfigService,
-		private router: Router,
 		protected cdr: ChangeDetectorRef,
 		private modalService: NgbModal
 	) {
@@ -45,6 +43,13 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy  {
 	}
 
 	ngOnInit(): void {
+		this.launchModals()
+	}
+
+	launchModals(){
+		// if(!this.user.date_realisation_livret_accueil){
+		// 	this.getLivretAccueilModal();
+		// }else 
 		if(this.user.is_quiz_approved || !this.isActive(['QUIZ'])) {
 			this.getFlashInfos()
 		} else {
@@ -78,6 +83,11 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy  {
 		if(this.isActive(['QUIZ'])){
 			const modalRef = this.modalService.open(QuizModalComponent, {size: 'xs',scrollable: true,centered : true, windowClass: 'tf-quizz-modal__window'});
 		}
+	}
+
+	getLivretAccueilModal(){
+		const modalRef = this.modalService.open(LivretAccueilModalComponent, {size: 'xl',scrollable: true, centered : true, backdrop: 'static', keyboard: false});
+		modalRef.result.then(()=>this.launchModals());
 	}
 
 	openFlashInfoModal(flash_id){
