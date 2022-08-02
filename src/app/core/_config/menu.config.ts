@@ -780,8 +780,8 @@ export class MenuConfig {
 						alignment: 'left',
 						page: '/admin/formations',
 						translate: 'MENU.FORMATION',
-						needModule: true,
-						moduleCode: ['FORMATIONS'],
+						needModule: false,
+						// moduleCode: ['FORMATIONS'],
 						svgIcon: 'business'
 					},
 					{
@@ -790,8 +790,8 @@ export class MenuConfig {
 						alignment: 'left',
 						page: '/admin/habilitations',
 						translate: 'MENU.HABILITATION',
-						needModule: true,
-						moduleCode: ['FORMATIONS'],
+						needModule: false,
+						// moduleCode: ['FORMATIONS'],
 						svgIcon: 'chantier'
 					},
 					{
