@@ -186,6 +186,8 @@ import { AssignActionModalComponent } from './layout/plans-action/modal/assign-a
 import { CloseActionModalComponent } from './layout/plans-action/modal/close-action-modal/close-action-modal.component';
 import { DocListTooltipComponent } from './layout/tooltip/doc-list-tooltip/doc-list-tooltip.component';
 import { EditAccueilSecuModalComponent } from './layout/users/edit-accueil-secu-modal/edit-accueil-secu-modal.component';
+import { LivretAccueilModalComponent } from './layout/modal/livret-accueil-modal/livret-accueil-modal.component';
+
 
 @NgModule({
 	declarations: [
@@ -196,6 +198,8 @@ import { EditAccueilSecuModalComponent } from './layout/users/edit-accueil-secu-
 		FetchEntityDialogComponent,
 		UpdateStatusDialogComponent,
 		AlertComponent,
+		LivretAccueilModalComponent,
+		
 
 		// topbar components
 		ContextMenu2Component,
@@ -436,9 +440,11 @@ import { EditAccueilSecuModalComponent } from './layout/users/edit-accueil-secu-
 		AssignEpiModalComponent,
 		HabilitationsAdminListPortletComponent,
 		AssignActionModalComponent,
+		
 		CloseActionModalComponent,
 		DocListTooltipComponent,
-		EditAccueilSecuModalComponent
+		EditAccueilSecuModalComponent,
+		LivretAccueilModalComponent,
 
 	],
 	imports: [
@@ -510,12 +516,15 @@ import { EditAccueilSecuModalComponent } from './layout/users/edit-accueil-secu-
 		ShowFlashInfoModalComponent,
 		AddDocModalComponent,
 		QuizModalComponent,
+		
 		AddPhotoProfilModalComponent,
 		AssignFormationModalComponent,
 		AssignEpiModalComponent,
 		AssignActionModalComponent,
 		CloseActionModalComponent,
-		EditAccueilSecuModalComponent
+		EditAccueilSecuModalComponent,
+		LivretAccueilModalComponent,
+
 	],
 })
 export class PartialsModule {

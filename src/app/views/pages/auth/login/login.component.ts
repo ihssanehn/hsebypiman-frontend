@@ -155,17 +155,11 @@ export class LoginComponent implements OnInit, OnDestroy {
 					this.auth
 						.getUserByToken()
 						.subscribe(res=>{
-
-							if(res.result.data.date_realisation_livret_accueil){
-								if(res.result.data.is_firstConnexion){
-									this.router.navigateByUrl('/auth/edit-password');
-								}else{
-									this.router.navigateByUrl(this.returnUrl);
-								}
-							} else {
-								this.router.navigateByUrl('/livret-accueil');
+							if(res.result.data.is_firstConnexion){
+								this.router.navigateByUrl('/auth/edit-password');
+							}else{
+								this.router.navigateByUrl(this.returnUrl);
 							}
-
 							this.cdr.markForCheck();
 						})
 				}

@@ -29,7 +29,7 @@
 		"SHOW_VISIT": "View the visit",
 		"SIGN": "Sign",
 		"SELECT": "Select",
-		"VALIDATE": "Validate the prevention plan",
+		"VALIDATE": "Validate",
 		"SEND_BY_MAIL": "Mail the Pdp"
 	},
 	"ARS": {
@@ -528,7 +528,8 @@
 			"ADD_PDP_CAT_TYPE": "Add a category in this type",
 			"ADD_TYPE": "Add a type",
 			"SENDFORSIGN": "Send to signing",
-			"SIGN_PDP": "Sign the prevention plan"
+			"SIGN_PDP": "Sign the prevention plan",
+			"VALIDATE": "Validate the prevention plan"
 		}
 	},
 	"AUTH": {
@@ -1810,7 +1811,8 @@
 		"EFFICACITE": {
 			"LABEL": "Efficiency",
 			"SHORTTITLE": "Efficiency",
-			"TITLE": "Efficiency"
+			"TITLE": "Efficiency",
+			"ERROR": "Efficiency may be beetwen 0 and 100"
 		},
 		"FORM": {
 			"CREATE": "Create a new action plan"
@@ -2191,6 +2193,16 @@
 			},
 			"PHOTO_PROFIL_UPDATED":{
 				"TITLE": "Profil picture has been succesfully updated"
+			},
+			"QUIZZ_RETAKE_CONFIRMATION": {
+				"TITLE": "Vous allez réinitialiser le quiz de cet utilisateur de façon définitive.",
+				"LABEL": "Êtes-vous sûr de vouloir continuer ?",
+				"DONE": "Le quiz a bien été réinitialisé."
+			},
+			"LIVRET_RETAKE_CONFIRMATION": {
+				"TITLE": "Vous allez réinitialiser le livret d'accueil de cet utilisateur de façon définitive.",
+				"LABEL": "Êtes-vous sûr de vouloir continuer ?",
+				"DONE": "Le livret d'accueil a bien été réinitialisé."
 			}
 		},
 		"CARD": {

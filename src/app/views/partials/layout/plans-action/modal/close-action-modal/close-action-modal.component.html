@@ -33,10 +33,14 @@
                 <!-- EFFICACITE -->
                 <mat-form-field class="col-12">
 					<mat-label>{{'PLANACTIONS.EFFICACITE.LABEL' | translate}}</mat-label>
-                    <input matInput class="form-control" [formControl]="form.get('efficacite')" type="string" name="efficacite" placeholder="{{'ACTION.ENTER_HERE' | translate}}" />
+                    <input matInput class="form-control" [formControl]="form.get('efficacite')" type="number" min="0" max="100" name="efficacite" placeholder="{{'ACTION.ENTER_HERE' | translate}}" />
+                    <span matSuffix>%</span>
 					<mat-error *ngIf="isControlHasError('efficacite','required')">
 						<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 					</mat-error>
+					<mat-error *ngIf="isControlHasError('efficacite','min') || isControlHasError('efficacite','max')">
+                        <strong>{{ 'PLANACTIONS.EFFICACITE.ERROR' | translate }}</strong>
+                    </mat-error>
 				</mat-form-field>
             </div>
         </div>
@@ -44,7 +48,7 @@
         <div class="row mt-4">
             <div class="col-12 col-actions">
                 <button mat-raised-button type="button" (click)="activeModal.dismiss()" class="btn-small" color="warn">{{'ACTION.CANCEL' | translate}}</button>
-                <button mat-raised-button type="button" (click)="save()" class="btn-small" color="success" [disabled]="!formHasValue('date_realisation')">{{'ACTION.SAVE' | translate}}</button>
+                <button mat-raised-button type="button" (click)="save()" class="btn-small" color="success" [disabled]="!formHasValue('date_realisation') || isControlHasError('efficacite','min') || isControlHasError('efficacite','max')">{{'ACTION.SAVE' | translate}}</button>
             </div>
         </div>
     </ng-container>

@@ -20,6 +20,7 @@ import { DateEnToFrPipe, DateFrToEnPipe } from '@app/core/_base/layout';
 export class AssignFormationModalComponent implements OnInit{
 
   form: FormGroup;
+  user_id;
   formations: Formation[];
 	formloading: boolean = false;
   uploader: FileUploader = new FileUploader({
@@ -59,7 +60,7 @@ export class AssignFormationModalComponent implements OnInit{
     this.cdr.markForCheck();
   }
 
-  save(){
+  async save(){
     this.formloading = true
     let formData = new FormData();
     let form = { ...this.form.getRawValue() };
@@ -75,9 +76,14 @@ export class AssignFormationModalComponent implements OnInit{
         return formData.append(key, form[key]);
     })
 
-    this.activeModal.close(formData);
+    formData.append('id_user', this.user_id)
+    
+    var res = await this.formationService.assignUsers(form.formation_id, formData).toPromise();
+    if(res) {
+      this.activeModal.close(res);
+    }
+    
   }
-
 
   closeModal(){
     this.activeModal.close();

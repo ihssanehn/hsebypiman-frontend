@@ -123,8 +123,8 @@
 													<div>Accueil sécurité</div>
 													<div class="font-weight-normal" *ngIf="user.date_realisation_accueil_secu; else invalid">{{user.date_realisation_accueil_secu | date:'dd/MM/yyyy'}}</div>
 												</div>
-												<button mat-icon-button color="primary" matTooltip="Options" [matMenuTriggerFor]="accueilSecuActionMenu" >
-													<mat-icon>more_vert</mat-icon>
+												<button mat-icon-button color="info" matTooltip="Ajouter une date de réalisation" (click)="showEditAccueilSecuModal()">
+													<mat-icon>edit</mat-icon>
 												</button>
 											</div>
 										</div>
@@ -137,8 +137,8 @@
 													<div>Livret d'accueil</div>
 													<div class="font-weight-normal" *ngIf="user.date_realisation_livret_accueil; else invalid">{{user.date_realisation_livret_accueil | date:'dd/MM/yyyy'}}</div>
 												</div>
-												<button mat-icon-button color="primary" matTooltip="Options" [matMenuTriggerFor]="livretAccueilActionMenu" >
-													<mat-icon>more_vert</mat-icon>
+												<button mat-icon-button color="warn" matTooltip="Demander de relire le livret d'accueil" (click)="retakeLivretAccueil()" *ngxPermissionsOnly="['ADMIN','ROOT', 'MANAGER']">
+													<mat-icon>replay</mat-icon>
 												</button>
 											</div>
 										</div>
@@ -148,7 +148,7 @@
 											</div>
 											<div class="col-9 d-flex justify-content-between">
 												<div>
-													<div>Quizz Sécurité</div>
+													<div>Quiz Sécurité</div>
 													<div class="font-weight-normal">
 														<span>{{user.quiz_score}}</span>
 														<span *ngIf="user.quiz_score && !user.is_quiz_approved"> - </span>
@@ -156,8 +156,8 @@
 													</div>
 													<div class="font-weight-normal" *ngIf="user.quiz_date">{{user.quiz_date | date:'dd/MM/yyyy hh:mm'}}</div>
 												</div>
-												<button mat-icon-button color="primary" matTooltip="Options" [matMenuTriggerFor]="quizActionMenu" >
-													<mat-icon>more_vert</mat-icon>
+												<button mat-icon-button color="warn" matTooltip="Demander de repasser le quiz" (click)="retakeTheQuiz()" *ngxPermissionsOnly="['ADMIN','ROOT', 'MANAGER']">
+													<mat-icon>replay</mat-icon>
 												</button>
 											</div>
 										</div>
@@ -335,21 +335,3 @@
 		{{'COMMON.INVALID.LABEL' | translate}}
 	</span>
 </ng-template>
-
-<mat-menu #accueilSecuActionMenu="matMenu" class="action-menu">
-	<button mat-icon-button color="info" matTooltip="Ajouter une date de réalisation" (click)="showEditAccueilSecuModal()">
-		<mat-icon>edit</mat-icon>
-	</button>
-</mat-menu>
-
-<mat-menu #livretAccueilActionMenu="matMenu" class="action-menu">
-	<button mat-icon-button color="info" matTooltip="Demander de relire le livret d'accueil" (click)="retakeLivretAccueil()" *ngxPermissionsOnly="['ADMIN','ROOT', 'MANAGER']">
-		<mat-icon>edit</mat-icon>
-	</button>
-</mat-menu>
-
-<mat-menu #quizActionMenu="matMenu" class="action-menu">
-	<button mat-icon-button color="info" matTooltip="Demander de repasser le quiz" (click)="retakeTheQuiz()" *ngxPermissionsOnly="['ADMIN','ROOT', 'MANAGER']">
-		<mat-icon>edit</mat-icon>
-	</button>
-</mat-menu>

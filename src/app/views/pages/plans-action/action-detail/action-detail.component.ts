@@ -128,7 +128,7 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 			pilote_id: [''],
 			delai: [''],
 			date_realisation: ['', Validators.required],
-			efficacite: [''],
+			efficacite: ['', Validators.compose([Validators.min(0), Validators.max(100)])],
 			commentaires: [''],
 			status_id: [null],
 			visite_type: [null],
@@ -137,6 +137,7 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 			actionable: [null],
 			type: [null],
 		});
+
 	}
 
 	async getTypes(){
