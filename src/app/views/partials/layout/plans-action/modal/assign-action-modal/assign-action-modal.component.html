@@ -27,6 +27,22 @@
                         <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
                     </mat-error>
                 </mat-form-field>
+            
+                <!-- ACTOR -->
+                <mat-form-field class="col-12">
+                    <mat-label>{{'PLANACTIONS.ACTOR.LABEL' | translate}}</mat-label>
+                    <mat-select class="form-control" formControlName="actor_id" name="actor_id">
+                        <mat-option *ngFor="let user of usersList" [value]="user.id">
+                            {{ user.fullname }}
+                        </mat-option>
+                    </mat-select>
+                    <button mat-button *ngIf="formHasValue('actor_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('actor_id'); $event.stopPropagation()">
+                        <mat-icon>clear</mat-icon>
+                    </button>
+                    <mat-error *ngIf="isControlHasError('actor_id','required')">
+                        <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                    </mat-error>
+                </mat-form-field>
                 
                 <!-- DELAI -->
 				<mat-form-field class="col-12">

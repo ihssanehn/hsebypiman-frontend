@@ -125,6 +125,7 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 			libelle: ['', Validators.required],
 			risque: [''],
 			objectif: ['', Validators.required],
+			actor_id: [''],
 			pilote_id: [''],
 			delai: [''],
 			date_realisation: ['', Validators.required],

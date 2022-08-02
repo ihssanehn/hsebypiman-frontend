@@ -116,6 +116,7 @@
                 <div class="box" style="flex:1">
                   <ng-container>
                     <p class="mt-3"><span class="label pull-left mr-2">{{'PLANACTIONS.PILOTE.LABEL' | translate}}</span><span class="" *ngIf="action.pilote; else noDataFound">{{action.pilote | fullName}}</span></p>
+                    <p class="mt-3"><span class="label pull-left mr-2">{{'PLANACTIONS.ACTOR.LABEL' | translate}}</span><span class="" *ngIf="action.actor; else noDataFound">{{action.actor | fullName}}</span></p>
                     <p><span class="label pull-left mr-2">{{'PLANACTIONS.DELAI.LABEL' | translate}}</span><span class="" *ngIf="action.delai; else noDataFound">{{action.delai}}</span></p>
                   </ng-container>
                 </div>
