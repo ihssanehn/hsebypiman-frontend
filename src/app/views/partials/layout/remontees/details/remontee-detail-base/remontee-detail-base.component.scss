@@ -1,0 +1,47 @@
+:host::ng-deep {
+           
+    .tf-portlet__body{
+        padding: 20px;
+        .card{
+            padding: 2em 2em 0;    
+            height: 100%;
+            // justify-content: space-between;
+            p{
+                font-weight: bold;
+                text-align: right;
+            }
+            .label{
+                color: #c9c9c9;
+                text-align: left;
+            }
+            .blue{
+                color: #33b5ae;
+            }
+            .tf-divider.h-5 span{
+                height: 1em;
+            }
+            .box{
+                padding-top: 1.5em;
+                padding-bottom: 1.5em;
+                h5{
+                    padding-bottom: 0.8em;
+                    border-bottom: 1px solid #EBECF1;
+                }
+                &.box-chantiers{
+                    .row{
+                        margin-bottom: 1rem;
+                    }
+                }
+            }
+        }
+
+    }
+}
+.badge-pill {
+    padding-right: 0.7em;
+    padding-left: 0.7em;
+    border-radius: 10rem;
+}
+.picsum-img-wrapper{
+    overflow-y: scroll;
+}

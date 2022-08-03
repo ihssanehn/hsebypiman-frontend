@@ -17,6 +17,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { AssignActionModalComponent } from '@app/views/partials/layout/plans-action/modal/assign-action-modal/assign-action-modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CloseActionModalComponent } from '@app/views/partials/layout/plans-action/modal/close-action-modal/close-action-modal.component';
+import { RemonteeDetailModalComponent } from '@app/views/partials/layout/modal/remontee-detail-modal/remontee-detail-modal.component';
 
 @Component({
   selector: 'tf-action-detail',
@@ -309,6 +310,11 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 
 	goToRemonteeDetail(id){
 		this.router.navigateByUrl('remontees/detail/'+id);
+	}
+	
+	openRemonteeDetailModal(id){
+		const modalRef = this.modalService.open(RemonteeDetailModalComponent, {size: 'xl',scrollable: true,centered : true});
+		modalRef.componentInstance.id = id;
 	}
 
 	goToVsChantierDetail(id){
