@@ -1,0 +1,13 @@
+.col-actions{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.epi-label {
+  font-weight: bold;
+  padding: 0.5em 0.5em 1.5em 0.5em;
+  color: #33b5ae;
+  font-size: 1.1em;
+}

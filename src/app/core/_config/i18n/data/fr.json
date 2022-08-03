@@ -28,7 +28,7 @@
 		"SHOW_VISIT": "Voir la visite",
 		"SIGN": "Signer",
 		"SELECT": "Selectionner",
-		"VALIDATE": "Valider le plan de prévention",
+		"VALIDATE": "Valider",
 		"SEND_BY_MAIL": "Envoyer le Pdp par mail",
 		"TO_SIGN": "Définir le statut sur 'Pour signer'"
 	},
@@ -528,7 +528,8 @@
 			"ADD_PDP_CAT_TYPE": "Ajouter une catégorie dans ce type",
 			"ADD_TYPE": "Ajouter un type",
 			"SENDFORSIGN": "Envoyer pour signature",
-			"SIGN_PDP": "Signer le plan de prévention"
+			"SIGN_PDP": "Signer le plan de prévention",
+			"VALIDATE": "Valider le plan de prévention"
 		}
 	},
 	"AUTH": {
@@ -993,9 +994,13 @@
 		"GOAL": {
 			"TITLE": "Objectifs"
 		},
+		"SELECT_FILE": {
+			"SHORTTITLE": "Sélect. fichier",
+			"TITLE": "Sélectionner un fichier"
+		},
 		"SELECT_FILES": {
 			"SHORTTITLE": "Sélect. fichiers",
-			"TITLE": "Sélectionner un fichier"
+			"TITLE": "Sélectionner un ou plusieurs fichiers"
 		},
 		"ACTIVE": {
 			"TITLE": "C'est actif ?"
@@ -1047,6 +1052,9 @@
 		},
 		"UPDATE_DATE": {
 			"LABEL": "Date de la dernière modification"
+		},
+		"INVALID": {
+			"LABEL": "Non valide"
 		}
 	},
 	"EES": {
@@ -1555,7 +1563,8 @@
 			"NEWENTREPRISE": "Nouveau client",
 			"NEWMATERIEL": "Nouveau matériel",
 			"NEWREMONTEE": "Nouvelle remontée QHSE",
-			"NEWVS": "Nouvelle visite de sécurité"
+			"NEWVS": "Nouvelle visite de sécurité",
+			"NEWFORMATION": "Nouvelle formation"
 		},
 		"CHANTIER": "Chantiers",
 		"DASHBOARD": "Tableau de Bord",
@@ -1665,7 +1674,21 @@
 		},
 		"SUIVI_HSE": "Suivi Hse",
 		"USERS": "Utilisateurs",
-		"VISITESECURITE": "Visites de Sécurité"
+		"VISITESECURITE": "Visites de Sécurité",
+		"FORMATION": "Formation",
+		"SUB_FORMATION": {
+			"ADD": "Ajouter une formation",
+			"DETAIL": "Détail de la formation",
+			"EDIT": "Modifier la formation",
+			"LIST": "Liste des formations"
+		},
+		"SUB_HABILITATION": {
+			"ADD": "Ajouter une habilitation",
+			"DETAIL": "Détail de l'habilitation",
+			"EDIT": "Modifier l'habilitation",
+			"LIST": "Liste des habilitations"
+		},
+		"HABILITATION": "Habilitation"
 	},
 	"NOTIF": {
 		"DELETE_CONFIRMATION": {
@@ -1715,8 +1738,13 @@
 			"ABANDON_ACTION": "Abandonner l'action",
 			"ADD_ORIGIN": "Ajouter une origine",
 			"ASSIGN_ACTION": "Attribuer l'action",
-			"CLOSE_ACTION": "Clore le action",
+			"CLOSE_ACTION": "Clore l'action",
 			"CREATE_ACTION": "Créer une action"
+		},
+		"ACTOR": {
+			"LABEL": "Acteur",
+			"SHORTTITLE": "Acteur",
+			"TITLE": "Acteur"
 		},
 		"CARD": {
 			"ALLOCATION_DEADLINE": {
@@ -1733,6 +1761,12 @@
 			},
 			"RESOLUTION": {
 				"TITLE": "Résolution"
+			},
+			"ASSIGN_ACTION": {
+				"TITLE": "Attribution de l'action"
+			},
+			"CLOSURE_ACTION": {
+				"TITLE": "Clôture de l'action"
 			}
 		},
 		"COMMENT": {
@@ -1783,7 +1817,8 @@
 		"EFFICACITE": {
 			"LABEL": "Efficacité",
 			"SHORTTITLE": "Efficacité",
-			"TITLE": "Efficacité"
+			"TITLE": "Efficacité",
+			"ERROR": "L'efficacité doit être comprise entre 0 et 100"
 		},
 		"FORM": {
 			"CREATE": "Créer un nouveau plan d'action"
@@ -1807,7 +1842,7 @@
 				"TITLE": "Action créé avec succès"
 			},
 			"ACTION_UPDATED": {
-				"TITLE": "Action mis à jour avec succès"
+				"TITLE": "Action mise à jour avec succès"
 			},
 			"CLOSE_ACTION_CONFIRMATION": {
 				"LABEL": "Les analyses de risque et visites de action seront archivés.",
@@ -2136,7 +2171,8 @@
 	},
 	"UPLOAD": {
 		"DROPZONE": {
-			"PLACEHOLDER": "Déposez vos fichier ici"
+			"PLACEHOLDER": "Déposez vos fichier ici",
+			"PLACEHOLDER_ONLY_ONE": "Déposez votre fichier ici"
 		},
 		"EXTENSION": "Ce type de fichier ne peut pas être importé",
 		"LIST_EXT": "Liste des extensions",
@@ -2161,6 +2197,19 @@
 			"USER_DELETE_CONFIRMATION": {
 				"TITLE": "Vous allez supprimer cet utilisateur de façon définitive",
 				"LABEL": "Êtes-vous sûr de vouloir continuer ?"
+			},
+			"PHOTO_PROFIL_UPDATED":{
+				"TITLE": "La photo de profil a bien été mise a jour"
+			},
+			"QUIZ_RETAKE_CONFIRMATION": {
+				"TITLE": "Vous allez réinitialiser le quiz de cet utilisateur de façon définitive.",
+				"LABEL": "Êtes-vous sûr de vouloir continuer ?",
+				"DONE": "Le quiz a bien été réinitialisé."
+			},
+			"LIVRET_RETAKE_CONFIRMATION": {
+				"TITLE": "Vous allez réinitialiser le livret d'accueil de cet utilisateur de façon définitive.",
+				"LABEL": "Êtes-vous sûr de vouloir continuer ?",
+				"DONE": "Le livret d'accueil a bien été réinitialisé."
 			}
 		},
 		"CARD": {
@@ -2614,6 +2663,107 @@
 		"NOTIF": {
 			"MODULE_UPDATED": {
 				"TITLE": "Modules mis à jour avec succès"
+			}
+		}
+	},
+	"FORMATIONS": {
+		"LABEL": {
+			"TITLE": "Libelle"
+		},
+		"TRAINING_ORGANIZATION": {
+			"TITLE": "Organisme de formation"
+		},
+		"DESC": {
+			"TITLE": "Description"
+		},
+		"START_DATE": {
+			"TITLE": "Date début"
+		},
+		"END_DATE": {
+			"TITLE": "Date fin"
+		},
+		"VALIDITY_DATE": {
+			"TITLE": "Date de validité"
+		},
+		"HABILITATION": {
+			"TITLE": "Habilitation"
+		},
+		"RENEWAL_DATE": {
+			"TITLE": "Date de renouvellement"
+		},
+		"PROVIDES_HABILITATION": {
+			"TITLE": "La formation apporte une habilitation ?"
+		},
+		"NOTIF": {
+			"FORMATION_CREATED": {
+				"TITLE": "Formation créée avec succès"
+			},
+			"FORMATION_UPDATED": {
+				"TITLE": "Formation mise à jour avec succès"
+			},
+			"LOADING": {
+				"TITLE": "Loading Formation"
+			}
+		},
+		"CARD": {
+			"GENERAL_INFOS": {
+				"TITLE": "Informations générales"
+			},
+			"PERIOD": {
+				"TITLE": "Période de la formation"
+			},
+			"HABILITATIONS": {
+				"TITLE": "Habilitation de la formation"
+			},
+			"USERS": {
+				"TITLE": "Utilisateurs"
+			}
+		}
+	},
+	"HABILITATIONS": {
+		"LABEL": {
+			"TITLE": "Libelle"
+		},
+		"CATEGORY": {
+			"TITLE": "Catégorie"
+		},
+		"PERIOD_VALIDITY": {
+			"TITLE": "Durée de validité (Nbr d'années)"
+		},
+		"NUMBER_YEARS": {
+			"TITLE": "Nbr d'années"
+		},
+		"TYPE_HAB": {
+			"TITLE": "Type d'habilitation"
+		},
+		"ACTIVE": {
+			"TITLE": "Active"
+		},
+		"ACTION": {
+			"NEW_HAB": {
+				"LABEL": "Nouvelle habilitation"
+			}
+		},
+		"NOTIF": {
+			"HABILITATION_CREATED": {
+				"TITLE": "Habilitation créée avec succès"
+			},
+			"HABILITATION_UPDATED": {
+				"TITLE": "Habilitation mise à jour avec succès"
+			},
+			"LOADING": {
+				"TITLE": "Loading Habilitation"
+			}
+		},
+		"CARD": {
+			"GENERAL_INFOS": {
+				"TITLE": "Informations générales"
+			},
+			"USERS": {
+				"TITLE": "Utilisateurs"
+			},
+			"FORMATIONS": {
+				"TITLE": "Formations"
 			}
 		}
 	}

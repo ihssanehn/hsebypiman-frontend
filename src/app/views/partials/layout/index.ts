@@ -109,7 +109,10 @@ export { DashVisiteComponent } from './dashboard/dash-visite/dash-visite.compone
 export { DashActionComponent } from './dashboard/dash-action/dash-action.component';
 export { DashMaterielComponent } from './dashboard/dash-materiel/dash-materiel.component';
 export { DashEntrepriseComponent } from './dashboard/dash-entreprise/dash-entreprise.component';
-
+export { CustomUserProfileComponent } from './users/custom-user-profile/custom-user-profile.component';
+export { AddPhotoProfilModalComponent } from './users/add-photo-profil-modal/add-photo-profil-modal.component';
+export { AssignFormationModalComponent } from './users/assign-formation-modal/assign-formation-modal.component';
+export { AssignEpiModalComponent } from './users/assign-epi-modal/assign-epi-modal.component';
 
 
 

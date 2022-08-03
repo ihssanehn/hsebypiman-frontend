@@ -762,6 +762,10 @@
 		"GOAL": {
 			"TITLE": "Goals"
 		},
+		"SELECT_FILE": {
+			"SHORTTITLE": "Select. file",
+			"TITLE": "Select a file"
+		},
 		"SELECT_FILES": {
 			"SHORTTITLE": "Select. files",
 			"TITLE": "Select a file"
@@ -1420,6 +1424,11 @@
 			"ASSIGN_ACTION": "",
 			"CLOSE_ACTION": ""
 		},
+		"ACTOR": {
+			"LABEL": "Acteur",
+			"SHORTTITLE": "Acteur",
+			"TITLE": "Acteur"
+		},
 		"CARD": {
 			"ALLOCATION_DEADLINE": {
 				"TITLE": ""
@@ -1485,7 +1494,8 @@
 		"EFFICACITE": {
 			"LABEL": "Efficacité",
 			"SHORTTITLE": "Efficacité",
-			"TITLE": "Efficacité"
+			"TITLE": "Efficacité",
+			"ERROR": "Efficiency may be beetwen 0 and 100"
 		},
 		"FORM": {
 			"CREATE": "Créer un nouveau plan d'action"
@@ -1802,7 +1812,8 @@
 	},
 	"UPLOAD": {
 		"DROPZONE": {
-			"PLACEHOLDER": "Déposez vos fichier ici"
+			"PLACEHOLDER": "Déposez vos fichier ici",
+			"PLACEHOLDER_ONLY_ONE": "Déposez votre fichier ici"
 		},
 		"EXTENSION": "Ce type de fichier ne peut pas être importé",
 		"LIST_EXT": "Liste des extensions",
@@ -1820,6 +1831,26 @@
 			},
 			"USER_UPDATED": {
 				"TITLE": "User updated successfully"
+			},
+			"USER_DELETED": {
+				"TITLE": "User has been successfully deleted"
+			},
+			"USER_DELETE_CONFIRMATION": {
+				"LABEL": "The user will be permanently deleted.",
+				"TITLE": "Are you sure you want to delete this user?"
+			},
+			"PHOTO_PROFIL_UPDATED":{
+				"TITLE": "Profil picture has been succesfully updated"
+			},
+			"QUIZZ_RETAKE_CONFIRMATION": {
+				"TITLE": "Vous allez réinitialiser le quiz de cet utilisateur de façon définitive.",
+				"LABEL": "Êtes-vous sûr de vouloir continuer ?",
+				"DONE": "Le quiz a bien été réinitialisé."
+			},
+			"LIVRET_RETAKE_CONFIRMATION": {
+				"TITLE": "Vous allez réinitialiser le livret d'accueil de cet utilisateur de façon définitive.",
+				"LABEL": "Êtes-vous sûr de vouloir continuer ?",
+				"DONE": "Le livret d'accueil a bien été réinitialisé."
 			}
 		},
 		"CARD":{

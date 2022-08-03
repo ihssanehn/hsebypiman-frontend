@@ -2,8 +2,9 @@ import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserService } from '@app/core/services';
+import { UserService, DocumentService } from '@app/core/services';
 import { User } from '@app/core/auth/_models/user.model';
+import { Remontee } from '@app/core/models';
 
 @Component({
   selector: 'tf-user-detail',
@@ -16,14 +17,13 @@ export class UserDetailComponent implements OnInit, OnDestroy {
 	userForm: FormGroup;
 	// allRoles: Role[];
 	loaded = false;
-	editMode: boolean = false;
-	// Private properties
   private subscriptions: Subscription[] = [];
 
   constructor(
     private activatedRoute: ActivatedRoute,
 		private router: Router,
     private UserService: UserService,
+    private documentService: DocumentService,
 		private cdr: ChangeDetectorRef,
   ) {}
 
@@ -48,6 +48,9 @@ export class UserDetailComponent implements OnInit, OnDestroy {
 		try {
       var res = await this.UserService.getUserById(userId).toPromise();
 			this.user = res.result.data;
+      if(this.user.photo_profil){
+				this.user.photo_profil.src = this.documentService.readFile(this.user.photo_profil.id);
+			}
 			this.cdr.markForCheck();
 		} catch (error) {
 			console.error(error);

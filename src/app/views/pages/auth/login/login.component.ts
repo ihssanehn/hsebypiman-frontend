@@ -155,7 +155,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 					this.auth
 						.getUserByToken()
 						.subscribe(res=>{
-							
 							if(res.result.data.is_firstConnexion){
 								this.router.navigateByUrl('/auth/edit-password');
 							}else{

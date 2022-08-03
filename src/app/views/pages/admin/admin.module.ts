@@ -20,6 +20,7 @@ import {NgbDropdownModule, NgbTabsetModule, NgbTooltipModule, NgbPopoverModule} 
 import {NgxMaskModule} from 'ngx-mask';
 
 // Material
+
 import {
 	MatInputModule,
 	MatPaginatorModule,
@@ -123,6 +124,14 @@ const routes: Routes = [
 			{
 				path: 'materiel',
 				component: AdminMaterielComponent,
+			},
+			{
+				path: 'formations',
+				loadChildren: () => import('./admin-formations/admin-formations.module').then(m => m.AdminFormationsModule),
+			},
+			{
+				path: 'habilitations',
+				loadChildren: () => import('./admin-habilitations/admin-habilitations.module').then(m => m.AdminHabilitationsModule),
 			},
 			{
 				path: 'modules',

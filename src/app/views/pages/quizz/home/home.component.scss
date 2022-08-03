@@ -5,10 +5,11 @@
     &__head {
         color: #308677;
         font-size: 1.5rem;
+        margin-top: 2rem;
     }
 
     &__icons {
-        margin: 8rem;
+        margin: 6rem 8rem;
         display: flex;
         justify-content: space-between;
         .mat-icon {
@@ -21,9 +22,5 @@
 .tf-quizz {
 	&__body {
 	    align-items: center;
-        
-        .tf-quizz__container .tf-quizz__actions {
-            margin-top: 8rem;
-        }
     }
 }

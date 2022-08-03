@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="60"
+   height="60"
+   viewBox="0 0 60 60"
+   version="1.1"
+   id="svg1194"
+   sodipodi:docname="secu_undone.svg"
+   inkscape:version="1.1 (c4e8f9e, 2021-05-24)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1198" />
+  <sodipodi:namedview
+     id="namedview1196"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="7.8529412"
+     inkscape:cx="49.47191"
+     inkscape:cy="51.509363"
+     inkscape:window-width="1732"
+     inkscape:window-height="1027"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg1194" />
+  <g
+     id="picto"
+     transform="translate(-19.756554,-111.91386)">
+    <g
+       transform="translate(-1,103)"
+       filter="url(#bkg)"
+       id="g1190">
+      <rect
+         id="bkg-2"
+         data-name="bkg"
+         width="60"
+         height="60"
+         rx="7"
+         transform="translate(21,9)"
+         fill="#ffffff"
+         x="0"
+         y="0" />
+    </g>
+    <line
+       id="Ligne_535"
+       data-name="Ligne 535"
+       x2="16.754999"
+       transform="translate(41.622,142)"
+       fill="none"
+       stroke="#246459"
+       stroke-linecap="round"
+       stroke-width="3"
+       x1="0"
+       y1="0"
+       y2="0" />
+  </g>
+</svg>

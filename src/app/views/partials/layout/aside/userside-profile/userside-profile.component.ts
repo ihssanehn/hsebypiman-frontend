@@ -12,6 +12,7 @@ import { environment } from '@env/environment';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import Swal from 'sweetalert2';
 import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
+import { DocumentService } from '@app/core/services';
 
 	
 
@@ -41,9 +42,18 @@ export class UserSideProfileComponent implements OnInit {
 		private cdr : ChangeDetectorRef,
 		private router: Router,	
 		private ngxRolesService: NgxRolesService,
+		private documentService: DocumentService,
 
 	) {
-		this.authService.getCurrentUser().subscribe(x=> {this.user = x;});
+		this.authService.getCurrentUser().subscribe(x=> {
+			if(x.photo_profil_id)(
+				x.photo_profil = {
+					id: x.photo_profil_id,
+					src: this.documentService.readFile(x.photo_profil_id)
+				} 
+			)
+			this.user = x;
+		});
 		this.ngxRolesService.roles$.subscribe((event) => {this.cdr.markForCheck();});
 	}
 

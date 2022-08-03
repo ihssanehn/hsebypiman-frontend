@@ -78,6 +78,7 @@ export class ActionsListComponent implements OnInit, AfterViewInit, OnDestroy {
 			console.error(error);
 		}
 	}
+	
 	exportList(){
 		var filters = {...this.filter};
 		filters.type="EXCEL";

@@ -107,7 +107,9 @@ import {
 	VisiteQuestionsEpiAdminComponent,
 	VisiteQuestionsChantierAdminComponent,
 	SalarieFonctionsAdminComponent,
-	RemonteeEventTypesAdminComponent
+	RemonteeEventTypesAdminComponent,
+	CustomUserProfileComponent,
+	AddPhotoProfilModalComponent
 } from './layout';
 // General
 import { NoticeComponent } from './content/general/notice/notice.component';
@@ -177,6 +179,18 @@ import { PdpRisquesTypeComponent } from './layout/admins/pdp-risques-type/pdp-ri
 import { PdpTypeComponent } from './layout/admins/pdp-type/pdp-type.component';
 import { PdpDefaultValuesComponent } from './layout/admins/pdp-default-values/pdp-default-values.component';
 import { QuizModalComponent } from './layout/modal/quiz-modal/quiz-modal.component';
+import { AssignFormationModalComponent } from './layout/users/assign-formation-modal/assign-formation-modal.component';
+import { AssignEpiModalComponent } from './layout/users/assign-epi-modal/assign-epi-modal.component';
+import { HabilitationsAdminListPortletComponent } from './layout/admins/habilitations-admin-list-portlet/habilitations-admin-list-portlet.component';
+import { AssignActionModalComponent } from './layout/plans-action/modal/assign-action-modal/assign-action-modal.component';
+import { CloseActionModalComponent } from './layout/plans-action/modal/close-action-modal/close-action-modal.component';
+import { DocListTooltipComponent } from './layout/tooltip/doc-list-tooltip/doc-list-tooltip.component';
+import { EditAccueilSecuModalComponent } from './layout/users/edit-accueil-secu-modal/edit-accueil-secu-modal.component';
+import { LivretAccueilModalComponent } from './layout/modal/livret-accueil-modal/livret-accueil-modal.component';
+import { RemonteeDetailModalComponent } from './layout/modal/remontee-detail-modal/remontee-detail-modal.component';
+import { RemonteeDetailBaseComponent } from './layout/remontees/details/remontee-detail-base/remontee-detail-base.component';
+
+
 
 @NgModule({
 	declarations: [
@@ -187,6 +201,8 @@ import { QuizModalComponent } from './layout/modal/quiz-modal/quiz-modal.compone
 		FetchEntityDialogComponent,
 		UpdateStatusDialogComponent,
 		AlertComponent,
+		LivretAccueilModalComponent,
+		
 
 		// topbar components
 		ContextMenu2Component,
@@ -295,6 +311,17 @@ import { QuizModalComponent } from './layout/modal/quiz-modal/quiz-modal.compone
 		PdpTypeComponent,
 		PdpDefaultValuesComponent,
 		QuizModalComponent,
+		CustomUserProfileComponent,
+		AddPhotoProfilModalComponent,
+		AssignFormationModalComponent,
+		AssignEpiModalComponent,
+		HabilitationsAdminListPortletComponent,
+		AssignActionModalComponent,
+		CloseActionModalComponent,
+		DocListTooltipComponent,
+		EditAccueilSecuModalComponent,
+		RemonteeDetailModalComponent,
+		RemonteeDetailBaseComponent,
 
 	],
 	exports: [
@@ -411,7 +438,20 @@ import { QuizModalComponent } from './layout/modal/quiz-modal/quiz-modal.compone
 		PdpTypeComponent,
 		MultipleMailComponent,
 		PdpDefaultValuesComponent,
-		QuizModalComponent
+		QuizModalComponent,
+		CustomUserProfileComponent,
+		AddPhotoProfilModalComponent,
+		AssignFormationModalComponent,
+		AssignEpiModalComponent,
+		HabilitationsAdminListPortletComponent,
+		AssignActionModalComponent,
+		
+		CloseActionModalComponent,
+		DocListTooltipComponent,
+		EditAccueilSecuModalComponent,
+		LivretAccueilModalComponent,
+		RemonteeDetailModalComponent,
+		RemonteeDetailBaseComponent
 
 	],
 	imports: [
@@ -482,7 +522,16 @@ import { QuizModalComponent } from './layout/modal/quiz-modal/quiz-modal.compone
 		PretModalComponent,
 		ShowFlashInfoModalComponent,
 		AddDocModalComponent,
-		QuizModalComponent
+		QuizModalComponent,
+		
+		AddPhotoProfilModalComponent,
+		AssignFormationModalComponent,
+		AssignEpiModalComponent,
+		AssignActionModalComponent,
+		CloseActionModalComponent,
+		EditAccueilSecuModalComponent,
+		LivretAccueilModalComponent,
+		RemonteeDetailModalComponent
 	],
 })
 export class PartialsModule {

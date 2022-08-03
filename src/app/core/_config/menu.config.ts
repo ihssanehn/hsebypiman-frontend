@@ -114,7 +114,7 @@ export class MenuConfig {
 					moduleCode: ['DISCUSS']
 				},
 				{
-					title: 'Quizz',
+					title: 'Quiz',
 					root: true,
 					alignment: 'left',
 					page: '/quizz',
@@ -195,15 +195,15 @@ export class MenuConfig {
 						translate: 'MENU.LIST',
 						icon: 'view_list',
 					},
-					{
-						title: 'Admin',
-						root: true,
-						alignment: 'left',
-						page: '/remontees/admin',
-						translate: 'MENU.ROOT',
-						icon: 'settings',
-						permissionOnly: ['ROOT', 'ADMIN'],
-					}
+					// {
+					// 	title: 'Admin',
+					// 	root: true,
+					// 	alignment: 'left',
+					// 	page: '/remontees/admin',
+					// 	translate: 'MENU.ROOT',
+					// 	icon: 'settings',
+					// 	permissionOnly: ['ROOT', 'ADMIN'],
+					// }
 				]
 			},
 			chantiers: {
@@ -628,6 +628,36 @@ export class MenuConfig {
 					}
 				]
 			},
+			formations: {
+				btnAdd: {
+					title: 'Nouvelle Formation',
+					root: true,
+					alignment: 'left',
+					page: '/formations/add',
+					translate: 'MENU.BTN.NEWFORMATION',
+					permissionOnly: ['ROOT', 'ADMIN']
+				},
+
+				items: [
+					{
+						title: 'Liste',
+						root: true,
+						alignment: 'left',
+						page: '/formations/list',
+						translate: 'MENU.LIST',
+						icon: 'view_list',
+					},
+					{
+						title: 'Admin',
+						root: true,
+						alignment: 'left',
+						page: '/formations/admin',
+						translate: 'MENU.ROOT',
+						icon: 'settings',
+						permissionOnly: ['ROOT', 'ADMIN'],
+					}
+				]
+			},
 			params: {
 				btnAdd: {
 					// title: 'Nouveau salarie',
@@ -743,6 +773,26 @@ export class MenuConfig {
 						needModule: true,
 						moduleCode: ['MATERIEL'],
 						svgIcon: 'construction'
+					},
+					{
+						title: 'Formations',
+						root: true,
+						alignment: 'left',
+						page: '/admin/formations',
+						translate: 'MENU.FORMATION',
+						needModule: false,
+						// moduleCode: ['FORMATIONS'],
+						svgIcon: 'business'
+					},
+					{
+						title: 'Habilitations',
+						root: true,
+						alignment: 'left',
+						page: '/admin/habilitations',
+						translate: 'MENU.HABILITATION',
+						needModule: false,
+						// moduleCode: ['FORMATIONS'],
+						svgIcon: 'chantier'
 					},
 					{
 						title: 'Modules',

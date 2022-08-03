@@ -10,7 +10,7 @@
 							<ngx-avatar class="user-avatar" [round]="true" value="28%" cornerRadius="5" name="{{comment.creator.fullname}}" ></ngx-avatar>
 					</div>
 					<div class="card col-md-11" [ngClass]="{'auth-comment':authIsCreator(comment)}">
-						<p class="text-left comment-title"><small>{{comment.creator.fullname}}, {{comment.updated_at | date:'d MMM y, hh:mm'}}</small></p>
+						<p class="text-left comment-title"><small>{{comment.creator?.fullname}}, {{comment.updated_at | date:'d MMM y, hh:mm'}}</small></p>
 						<p class="text-left">{{comment.comment}}</p>
 					</div>
 				</ng-container>

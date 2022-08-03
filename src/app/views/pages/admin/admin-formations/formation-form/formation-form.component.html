@@ -1,0 +1,100 @@
+<ng-container [formGroup]="form">
+	<form [formGroup]="form" autocomplete="off" class="tf-form tf-form--group-seperator-dashed " novalidate (ngSubmit)="submitForm(form.valid)" fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+
+		<tf-portlet class="main-portlet-form">
+			<div class="tf-portlet-header">
+				<span class="title">
+				  	<a [routerLink]="['/formations/list']">{{'MENU.SUB_FORMATION.LIST' | translate}}</a>
+				  	<span class="divider">></span>
+					<span class="id-item" *ngIf="edit">{{'MENU.SUB_FORMATION.EDIT' | translate}}</span>
+				  	<span class="id-item" *ngIf="!edit">{{'MENU.SUB_FORMATION.ADD' | translate}}</span>
+				</span>
+			</div>
+			<tf-portlet-body>
+				<div class="tf-wizard-v4__content" data-tfwizard-type="step-content" data-tfwizard-state="current">
+					<div class="tf-form__section tf-form__section--first">
+						<div class="tf-wizard-v4__form row">
+							<div class="col-6">
+								<div class="tf-heading tf-heading--md">{{'FORMATIONS.CARD.GENERAL_INFOS.TITLE' | translate}}</div>
+								<div class="row form-row">
+									<mat-form-field class="col-xl-12">
+										<mat-label>{{'FORMATIONS.LABEL.TITLE' | translate}}</mat-label>
+										<input class="form-control" matInput type="text" name="libelle" formControlName="libelle" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('libelle')" />
+										<mat-error *ngIf="isControlHasError('libelle','required')">
+											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+										</mat-error>
+									</mat-form-field>
+									<mat-form-field class="col-xl-12">
+										<mat-label>{{'FORMATIONS.TRAINING_ORGANIZATION.TITLE' | translate}}</mat-label>
+										<input class="form-control" matInput type="text" name="organisme_formation" formControlName="organisme_formation" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('organisme_formation')" />
+										<mat-error *ngIf="isControlHasError('organisme_formation','required')">
+											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+										</mat-error>
+									</mat-form-field>
+									<mat-form-field class="col-xl-12">
+										<mat-label>{{'FORMATIONS.DESC.TITLE' | translate}}</mat-label>
+                                        <textarea class="form-control" matInput name="description" formControlName="description" [cdkTextareaAutosize]="true" [cdkAutosizeMinRows]="2"  [cdkAutosizeMaxRows]="20" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('description')" rows="3"></textarea>
+                                        <mat-error *ngIf="isControlHasError('description','required')">
+											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+										</mat-error>
+									</mat-form-field>
+								</div>
+							</div>
+							<div class="col-6">
+								<div class="tf-heading tf-heading--md">{{'FORMATIONS.CARD.HABILITATIONS.TITLE' | translate}}</div>
+								<div class="row form-row">
+                                    <mat-form-field class="col-md-6 col-sm-12 st-group" floatLabel="always" appearance="none" >
+                                        <span class="st-label pointer" (click)="toggleCheck('to_habilitation')">{{'FORMATIONS.PROVIDES_HABILITATION.TITLE' | translate}}</span>
+                                        <mat-slide-toggle id="show_inactives" [checked]="form.get('to_habilitation').value == 1" (change)="onCheckChange($event, 'to_habilitation')"></mat-slide-toggle>
+                                        <textarea matInput hidden></textarea>
+                                    </mat-form-field>
+
+									<mat-form-field class="col-md-6 col-sm-12">
+										<mat-label>{{'FORMATIONS.HABILITATION.TITLE' | translate}}</mat-label>
+										<mat-select class="form-control" [required]="isFieldRequired('habilitation_id')" placeholder="" formControlName="habilitation_id">
+											<mat-option>---</mat-option>
+											<mat-optgroup *ngFor="let group of habilitations | keyvalue" [label]="group.key">
+											<mat-option *ngFor="let hab of group.value" [value]="hab.id">
+											  {{hab.libelle}}
+											</mat-option>
+										  </mat-optgroup>
+										</mat-select>
+										<mat-error *ngIf="isControlHasError('habilitation_id','required')">
+											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+										</mat-error>
+									  </mat-form-field>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</tf-portlet-body>
+		</tf-portlet>
+
+		<ng-container *ngIf="formStatus">
+			<div *ngIf="formStatus.canShowErrors()" class="alert alert-danger alert-dismissible fade show" role="alert">
+				<div><strong>{{'COMMON.NOTIF.ERROR.TITLE' | translate}}</strong></div>
+				<div>
+					<ul *ngFor="let errors of formStatus.errors  |  keyvalue">
+						<li *ngFor="let error of errors.value">
+							{{error}}
+						</li>
+					</ul>
+				</div>
+			</div>			
+			<div *ngIf="formStatus.canShowSuccess()" class="alert alert-success" role="alert">
+				<div><strong>{{'COMMON.NOTIF.SUCCESS.TITLE' | translate}}</strong></div>
+				<div *ngFor="let message of formStatus.messages">{{ message }}</div>
+			</div>
+		</ng-container>
+
+		<div>
+			<button mat-raised-button [disabled]="formloading || form.invalid" [ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': formloading}" color="success" class="pull-right">
+				{{'ACTION.SAVE' | translate}}
+			</button>
+			<button type="button" mat-raised-button color="info" (click)="cancelForm()">
+				{{'ACTION.CANCEL' | translate}}
+			</button>
+		</div>
+	</form>
+</ng-container>

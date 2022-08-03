@@ -16,9 +16,6 @@
         flex: 0 0 auto !important;
     }
 
-    .tf-quizz__wrapper {
-        flex: 1 !important;
-    }
         
     
     .tf-grid.tf-grid--hor:not(.tf-grid--desktop):not(.tf-grid--desktop-and-tablet):not(.tf-grid--tablet):not(.tf-grid--tablet-and-mobile):not(.tf-grid--mobile) {
@@ -88,4 +85,10 @@
             padding-right: 3rem !important;
         }
     }
+}
+
+
+.tf-quizz__wrapper {
+    flex: 1 !important;
+    overflow-x: scroll;
 }

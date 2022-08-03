@@ -4,8 +4,10 @@ import { HttpService } from '@app/core/services/http-service';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import {JsonResponse} from '@app/core/_base/layout/models/jsonResponse.model';
 import { Router } from '@angular/router';
-import { CatHabilitation } from '@app/core/models/';
+import { Habilitation } from '@app/core/models/';
 import { map } from 'rxjs/operators';
+import { Paginate } from '../_base/layout/models/paginate.model';
+import { Observable } from 'rxjs';
 
 
 export class HabilitationService extends HttpService{
@@ -20,8 +22,19 @@ export class HabilitationService extends HttpService{
   }
 
   getAll(params = {}){
-    return this.http.post<JsonResponse<any>>(this.baseUrl, {...params});
+    params = {...params, paginate: true}
+    return this.http.post<JsonResponse<Paginate<Habilitation>>>(this.baseUrl, {...params});
   }
+
+  getAllList(params = {}){
+    params = {...params, paginate: false}
+    return this.http.post<JsonResponse<Habilitation[]>>(`${this.baseUrl}/list`, {...params});
+  }
+
+  get(id): Observable<JsonResponse<Habilitation>>{
+    return this.http.get<JsonResponse<Habilitation>>(this.baseUrl+'/'+id);
+  }
+
   getAllAsAdmin(params = {}){
     var extendparams = {...params}
     extendparams['fromAdmin'] = true;

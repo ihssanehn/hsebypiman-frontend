@@ -15,6 +15,10 @@ const routes: Routes = [
 		path: 'auth', 
 		loadChildren: () => import('@app/views/pages/auth/auth.module').then(m => m.AuthModule)
 	},
+	// {
+	// 	path: 'livret-accueil', 
+	// 	loadChildren: () => import('@app/views/pages/livret-accueil/livret-accueil.module').then(m => m.LivretAccueilModule)
+	// },
 	{
 		path: 'quizz', 
 		loadChildren: () => import('@app/views/pages/quizz/quizz.module').then(m => m.QuizzModule)
@@ -139,6 +143,17 @@ const routes: Routes = [
 					}
 				}
 			},
+			// {
+			// 	path: 'formations',
+			// 	loadChildren: () => import('@app/views/pages/formations/formations.module').then(m => m.FormationsModule),
+			// 	canActivate: [ModuleGuard, NgxPermissionsGuard],
+			// 	data: {
+			// 		moduleCodes:['FORMATIONS'],
+			// 		permissions: {
+			// 			only: ['ROOT', 'ADMIN']
+			// 		}
+			// 	}
+			// },
 			// {
 			// 	path: 'user-management',
 			// 	loadChildren: () => import('@app/views/pages/user-management/user-management.module').then(m => m.UserManagementModule)
