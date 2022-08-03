@@ -313,7 +313,6 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 	}
 	
 	openRemonteeDetailModal(id){
-		console.log('here')
 		const modalRef = this.modalService.open(RemonteeDetailModalComponent, {size: 'xl',scrollable: true,centered : true});
 		modalRef.componentInstance.id = id;
 	}
