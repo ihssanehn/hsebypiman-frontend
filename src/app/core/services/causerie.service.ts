@@ -20,7 +20,7 @@ export class CauserieService{
     ){}
 
     getAll(params){
-        return this.http.post<JsonResponse<Paginate<Causerie>>>(this.baseUrl, {...params});
+        return this.http.post<JsonResponse<any>>(this.baseUrl, {...params});
     }
     getList(){
         return this.http.get<JsonResponse<Causerie[]>>(this.baseUrl+'/mini');

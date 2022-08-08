@@ -25,8 +25,9 @@ export class CauseriesListComponent implements OnInit, AfterViewInit {
 	filter: any = {
 		per_page: this.pagination.pageSize,
 		page: this.pagination.page,
-		order_by: ['libelle'],
-		order_way: 'asc',
+		paginate: true,
+		order_by: ['created_at'],
+		order_way: 'desc',
 		keyword: "",
 	};
 	showFilters:Boolean = false;

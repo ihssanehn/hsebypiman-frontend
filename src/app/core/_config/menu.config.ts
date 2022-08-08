@@ -647,15 +647,15 @@ export class MenuConfig {
 						translate: 'MENU.LIST',
 						icon: 'view_list',
 					},
-					{
-						title: 'Objectifs',
-						root: true,
-						alignment: 'left',
-						page: '/suivi-hse/goal',
-						translate: 'MENU.GOALS',
-						icon: 'filter_center_focus',
-						permissionOnly: ['ADMIN', 'ROOT']
-					},
+					// {
+					// 	title: 'Objectifs',
+					// 	root: true,
+					// 	alignment: 'left',
+					// 	page: '/suivi-hse/goal',
+					// 	translate: 'MENU.GOALS',
+					// 	icon: 'filter_center_focus',
+					// 	permissionOnly: ['ADMIN', 'ROOT']
+					// },
 					{
 						title: 'Admin',
 						root: true,

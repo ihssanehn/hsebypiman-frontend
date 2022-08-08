@@ -137,16 +137,16 @@ const routes: Routes = [
 					}
 				}
 			},
-			{
-				path: 'goal',
-				component: SuiviHseGoalsComponent,
-				canActivate: [NgxPermissionsGuard],
-				data: {
-					permissions: {
-						only: ['ADMIN','ROOT']
-					}
-				}
-			},
+			// {
+			// 	path: 'goal',
+			// 	component: SuiviHseGoalsComponent,
+			// 	canActivate: [NgxPermissionsGuard],
+			// 	data: {
+			// 		permissions: {
+			// 			only: ['ADMIN','ROOT']
+			// 		}
+			// 	}
+			// },
 			{
 				path: 'dashboard',
 				component: SuiviSalarieDashComponent
