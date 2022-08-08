@@ -88,6 +88,7 @@ import {
 	ArDetailPanelsComponent,
 	TreeSelectComponent,
 	PretModalComponent,
+	RevisionModalComponent,
 	AddVehiculeFormComponent,
 	SalarieScoreComponent,
 	HabilitationsAdminComponent,
@@ -109,7 +110,8 @@ import {
 	SalarieFonctionsAdminComponent,
 	RemonteeEventTypesAdminComponent,
 	CustomUserProfileComponent,
-	AddPhotoProfilModalComponent
+	AddPhotoProfilModalComponent,
+	ParticipateCauserieModalComponent
 } from './layout';
 // General
 import { NoticeComponent } from './content/general/notice/notice.component';
@@ -252,6 +254,7 @@ import { RemonteeDetailBaseComponent } from './layout/remontees/details/remontee
 		TreeSelectComponent,
 
 		PretModalComponent,
+			RevisionModalComponent,
 		SearchOutillageFormComponent,
 
 		SearchMaterielFormComponent,
@@ -322,6 +325,7 @@ import { RemonteeDetailBaseComponent } from './layout/remontees/details/remontee
 		EditAccueilSecuModalComponent,
 		RemonteeDetailModalComponent,
 		RemonteeDetailBaseComponent,
+		ParticipateCauserieModalComponent
 
 	],
 	exports: [
@@ -383,6 +387,7 @@ import { RemonteeDetailBaseComponent } from './layout/remontees/details/remontee
 		TreeSelectComponent,
 
 		PretModalComponent,
+			RevisionModalComponent,
 		SearchOutillageFormComponent,
 		SearchMaterielFormComponent,
 		VisiteQuestionOutillageAdminComponent,
@@ -451,7 +456,8 @@ import { RemonteeDetailBaseComponent } from './layout/remontees/details/remontee
 		EditAccueilSecuModalComponent,
 		LivretAccueilModalComponent,
 		RemonteeDetailModalComponent,
-		RemonteeDetailBaseComponent
+		RemonteeDetailBaseComponent,
+		ParticipateCauserieModalComponent
 
 	],
 	imports: [
@@ -520,6 +526,7 @@ import { RemonteeDetailBaseComponent } from './layout/remontees/details/remontee
 		AdminAddModalComponent,
 		PdpAdminAddModalComponent,
 		PretModalComponent,
+			RevisionModalComponent,
 		ShowFlashInfoModalComponent,
 		AddDocModalComponent,
 		QuizModalComponent,
@@ -531,7 +538,8 @@ import { RemonteeDetailBaseComponent } from './layout/remontees/details/remontee
 		CloseActionModalComponent,
 		EditAccueilSecuModalComponent,
 		LivretAccueilModalComponent,
-		RemonteeDetailModalComponent
+		RemonteeDetailModalComponent,
+		ParticipateCauserieModalComponent
 	],
 })
 export class PartialsModule {

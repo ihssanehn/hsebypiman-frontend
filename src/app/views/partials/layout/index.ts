@@ -61,6 +61,7 @@ export { SignatureListComponent } from './signature/signature-list/signature-lis
 
 // Materiel
 export { PretModalComponent } from './materiel/pret-modal/pret-modal.component';
+export { RevisionModalComponent } from './materiel/revision-modal/revision-modal.component';
 
 // AR
 export { ArDetailPanelsComponent } from './analyse-risque/ar-detail-panels/ar-detail-panels.component'
@@ -113,6 +114,7 @@ export { CustomUserProfileComponent } from './users/custom-user-profile/custom-u
 export { AddPhotoProfilModalComponent } from './users/add-photo-profil-modal/add-photo-profil-modal.component';
 export { AssignFormationModalComponent } from './users/assign-formation-modal/assign-formation-modal.component';
 export { AssignEpiModalComponent } from './users/assign-epi-modal/assign-epi-modal.component';
+export { ParticipateCauserieModalComponent } from './modal/participate-causerie-modal/participate-causerie-modal.component';
 
 
 

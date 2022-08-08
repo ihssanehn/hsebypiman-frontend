@@ -23,35 +23,7 @@ export class MaterielFiltersComponent implements OnInit, AfterViewInit
   hidden = true;
   data: boolean = false;
   users: User[];
-  status: Status[];
   categories: Categorie[];
-  clients: String[];
-  statuses;
-  listActives = [
-    {
-      label:"Actifs",
-      value:""
-    },
-    {
-      label:"Inactifs",
-      value:""
-    },
-  ];
-
-  listStocks = [
-    {
-      label:"Tout",
-      value:null
-    },
-    {
-      label:"Non",
-      value:""
-    },
-    {
-      label:"Seulement",
-      value:""
-    },
-  ];
 
 
   @Output() change = new EventEmitter();
@@ -107,10 +79,6 @@ export class MaterielFiltersComponent implements OnInit, AfterViewInit
       actual_user_id:[null],
       date_entree_start:[null],
       date_entree_end:[null],
-      date_sortie_start:[null],
-      date_sortie_end:[null],
-      show_inactives:[null],
-      only_common_stock:[null],
     })
   }
  
@@ -118,8 +86,6 @@ export class MaterielFiltersComponent implements OnInit, AfterViewInit
     var filter = {...this.filterForm.getRawValue()}
     filter.date_entree_start = this.dateFrToEnPipe.transform(filter.date_entree_start);
     filter.date_entree_end = this.dateFrToEnPipe.transform(filter.date_entree_end);
-    filter.date_sortie_start = this.dateFrToEnPipe.transform(filter.date_sortie_start);
-    filter.date_sortie_end = this.dateFrToEnPipe.transform(filter.date_sortie_end);
     this.change.emit(filter);
   }
 
