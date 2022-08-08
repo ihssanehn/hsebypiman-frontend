@@ -1547,6 +1547,15 @@
 			},
 			"NOTHING_FOUND": {
 				"TITLE": "Aucun matériel ne correspond aux critères de recherche."
+			},
+			"LATE_CONTROLE":{
+				"TITLE": "Contrôle en retard"
+			},
+			"UPCOMING_CONTROLE":{
+				"TITLE": "Contrôle à venir"
+			},
+			"NEVER_CONTROLED":{
+				"TITLE": "Jamais contrôlé"
 			}
 		},
 		"NUMERO_SERIE": {

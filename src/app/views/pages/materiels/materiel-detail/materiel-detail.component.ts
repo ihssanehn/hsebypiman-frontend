@@ -220,6 +220,12 @@ export class MaterielDetailComponent implements OnInit, OnDestroy {
 	
 		dialogRef.afterClosed().subscribe(result => {
 			if(result){
+				Swal.fire({
+					icon: 'success',
+					title: this.translate.instant("MATERIELS.NOTIF.MATERIEL_UPDATED.TITLE"),
+					showConfirmButton: false,
+					timer: 1500
+				})
 				this.getMateriel(this.materiel.id)
 			}
 		});

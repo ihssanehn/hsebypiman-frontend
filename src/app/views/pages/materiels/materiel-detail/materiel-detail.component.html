@@ -130,7 +130,7 @@
 						</div>
 					</div>
 					
-					<div class="card">
+					<div class="card" *ngIf="materiel.has_controle">
 						<div class="box box-ar-vs" style="flex: 1;">
 							<h5><b>{{'MATERIELS.CARD.VISITE.TITLE' | translate}}</b><mat-icon color="primary" class="pull-right pointer" (click)="openRevisionModal()">edit</mat-icon></h5>
 							<div class="box" style="flex:1">
