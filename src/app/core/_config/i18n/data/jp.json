@@ -1067,6 +1067,9 @@
 				"NO_LOAN": "",
 				"TITLE": ""
 			},
+			"DOCUMENTS": {
+				"TITLE": "Documents"
+			},
 			"VISITS_MONITORING": {
 				"NO_VISITS": "",
 				"TITLE": ""
@@ -1257,6 +1260,22 @@
 			},
 			"NOTHING_FOUND": {
 				"TITLE" : "Nothing has been found."
+			},
+			"LATE_CONTROLE":{
+				"TITLE": "Contrôle en retard"
+			},
+			"UPCOMING_CONTROLE":{
+				"TITLE": "Contrôle à venir"
+			},
+			"NEVER_CONTROLED":{
+				"TITLE": "Jamais contrôlé"
+			},
+			"DELETE_DOC_CONFIRMATION":{
+				"TITLE":"Ce document sera supprimé de façon définitive.",
+				"LABEL": "Êtes-vous sûr de vouloir continuer ?"
+			},
+			"DOCUMENT_DELETED":{
+				"DONE":"Le document a bien été supprimé"
 			}
 		},
 		"NUMERO_SERIE": {

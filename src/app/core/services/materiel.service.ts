@@ -63,4 +63,10 @@ export class MaterielService extends HttpService{
     getStats(params){
         return this.http.post<JsonResponse<any>>(this.baseUrl+'/stats', params);
     }
+    addDocuments(materiel_id, params){
+        const httpHeaders = new HttpHeaders();
+		httpHeaders.set("Content-Type", "multipart/form-data");
+        return this.http.post(this.baseUrl+'/'+materiel_id+'/add-documents', params, { headers: httpHeaders });
+    }
+
 }
