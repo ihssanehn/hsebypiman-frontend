@@ -54,7 +54,6 @@ export class MaterielEditComponent implements OnInit, OnDestroy {
 	
 	ngOnInit() {
 		this.createForm();
-    	this.setDynamicValidators();
 		const routeSubscription = this.activatedRoute.params.subscribe(
 			async params => {
 				const id = params.id;
@@ -97,38 +96,15 @@ export class MaterielEditComponent implements OnInit, OnDestroy {
 	createForm() {
 		this.materielForm = this.materielFB.group({
 			libelle: ['', Validators.required],
-			code: [null],
 			numero_serie: [''],
 			categorie_id: [null, Validators.required],
-			marque: [''],
 			description: [''],
-			fournisseur: [''],
 			date_entree: [null],
-			date_sortie: [null],
-			is_active: [null],
-			is_stock_commun: [null],
-			formation_requise: [''],
-			habilitation_requise: [0],
 			has_controle: [0],
-			frequence_controle: [null],
-			is_location: [0],
-			cout: [null],
-			date_fin_garantie: [null]
+			etat: [0],
 		});
 	}
 
-	setDynamicValidators(){
-		const has_controle = this.materielForm.get('has_controle');
-		const frequence_controle = this.materielForm.get('frequence_controle');
-		
-		has_controle.valueChanges.subscribe(x=>{
-		if(x == 1){
-			frequence_controle.enable();
-		}else{
-			frequence_controle.disable();
-		}
-		})
-	}
   
 	/**
 	 * Refresh user
@@ -201,7 +177,5 @@ export class MaterielEditComponent implements OnInit, OnDestroy {
 	
 	formatDates(item, direction){
 		item.date_entree = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.date_entree) : this.dateEnToFrPipe.transform(item.date_entree);
-		item.date_sortie = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.date_sortie) : this.dateEnToFrPipe.transform(item.date_sortie);
-		item.date_fin_garantie = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.date_fin_garantie) : this.dateEnToFrPipe.transform(item.date_fin_garantie);
 	  }
 }
