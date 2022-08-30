@@ -97,7 +97,7 @@
                             <td>
                                 <div class="d-flex" *ngIf="!data.id">
                                     <input type="text" nz-input [(ngModel)]="data.libelle" name="name" />
-                                    <button type="button" class="btn btn-secondary btn-lang" (click)="translate()">
+                                    <button type="button" class="btn btn-secondary btn-lang" (click)="toTranslate = true">
                                         <span class="material-icons">translate</span>
                                     </button>
                                 </div>

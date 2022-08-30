@@ -44,11 +44,6 @@ export class AdminListPortletComponent implements OnInit {
 
   ngOnInit() {
   }
-  
-  translate() {
-    this.toTranslate = true
-  }
-
 
   saveItem(data : any): void {
     this.onSaveItem.emit( data );
