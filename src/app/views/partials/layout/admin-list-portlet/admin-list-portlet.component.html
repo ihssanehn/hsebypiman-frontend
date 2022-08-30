@@ -95,7 +95,19 @@
                         </ng-container>
                         <ng-template #editTemplate>
                             <td>
-                                <input type="text" nz-input [(ngModel)]="data.libelle" name="name" />
+                                <div class="d-flex" *ngIf="!data.id">
+                                    <input type="text" nz-input [(ngModel)]="data.libelle" name="name" />
+                                    <button type="button" class="btn btn-secondary btn-lang" (click)="translate()">
+                                        <span class="material-icons">translate</span>
+                                    </button>
+                                </div>
+                                <div class="mt-2 d-flex" *ngIf="toTranslate">
+                                    <input type="text" nz-input [(ngModel)]="data.libelle_en" name="nameEn" />
+                                    <button type="button" class="btn btn-secondary btn-lang">
+                                        <img class="h-100" src="./assets/media/flags/260-united-kingdom.svg" alt=""/>
+                                    </button>
+                                </div>
+                                <input type="text" nz-input [(ngModel)]="data.libelle" name="name" *ngIf="data.id" />
                             </td>
                             <td class="text-center">
                                 <a (click)="toggleVisibility(data)" class="btn btn-sm btn-icon btn-clean btn-icon-md">

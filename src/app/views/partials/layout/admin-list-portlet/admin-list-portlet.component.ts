@@ -38,10 +38,15 @@ export class AdminListPortletComponent implements OnInit {
 
   collapsed : boolean = false;
   selectedItem;
+  toTranslate : boolean = false;
 
   constructor() { }
 
   ngOnInit() {
+  }
+  
+  translate() {
+    this.toTranslate = true
   }
 
 
@@ -67,7 +72,11 @@ export class AdminListPortletComponent implements OnInit {
 
   saveChild(data : any): void {
     if(!data.id)
-      this.onAddChild.emit( { ...data, parent_id : this.item.id} );
+      this.onAddChild.emit( { 
+        ...data, 
+        parent_id : this.item.id,
+        translations : {en : data.libelle_en}
+      });
     else
       this.onSaveChild.emit( data );
     data.edit = false;
