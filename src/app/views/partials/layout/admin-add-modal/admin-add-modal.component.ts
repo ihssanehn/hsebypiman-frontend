@@ -16,11 +16,18 @@ export class AdminAddModalComponent implements OnInit {
   image: any;
   disableUpload: boolean;
 
+  toTranslate: boolean = false;
+  labelEn: string;
+
   constructor(
     public activeModal: NgbActiveModal
   ) { }
 
   ngOnInit() {
+  }
+
+  translate() {
+    this.toTranslate = true
   }
 
   handleChange({ file, fileList }): void {
@@ -37,10 +44,14 @@ export class AdminAddModalComponent implements OnInit {
 
 
   async submit() {
+    console.log(this.labelEn)
     this.activeModal.close({ 
       libelle: this.label, 
       label : this.label,
-      image : this.image  
+      image : this.image ,
+      translations:
+        {'en': this.labelEn}
+       
     });
   }
 

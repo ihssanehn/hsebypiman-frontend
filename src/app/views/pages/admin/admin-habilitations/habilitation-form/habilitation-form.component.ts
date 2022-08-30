@@ -20,6 +20,7 @@ export class HabilitationFormComponent implements OnInit {
 
   catHabilitations: CatHabilitation[];
   catHabLoaded: boolean = false;
+  toTranslate: boolean = false;
 
   constructor(
     private cdr: ChangeDetectorRef,
@@ -28,6 +29,10 @@ export class HabilitationFormComponent implements OnInit {
 
   ngOnInit() {
     this.getCatHabilitations();
+  }
+
+  translate() {
+    this.toTranslate = true
   }
 
   async getCatHabilitations(){

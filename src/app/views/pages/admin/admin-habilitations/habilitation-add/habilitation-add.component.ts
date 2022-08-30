@@ -48,6 +48,7 @@ export class HabilitationAddComponent implements OnInit {
   createForm() {
 		this.habilitationForm = this.fb.group({
       libelle: ['', Validators.required],
+      libelle_en: ['', Validators.required],
       cat_hab_id: [null, Validators.required],
       duree_validite: [null],
       active: [1],
@@ -60,7 +61,10 @@ export class HabilitationAddComponent implements OnInit {
     this.formloading = true;
     this.formStatus.onFormSubmitting();
     this.cdr.markForCheck();
-    let form = {...this.habilitationForm.getRawValue()};
+    let form = {
+      ...this.habilitationForm.getRawValue(),
+      translations: { en: this.habilitationForm.get('libelle_en').value}
+    };
 
     this.habilitationService.create(form)
       .toPromise()
