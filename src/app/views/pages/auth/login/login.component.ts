@@ -118,6 +118,12 @@ export class LoginComponent implements OnInit, OnDestroy {
 				Validators.minLength(3),
 				Validators.maxLength(100)
 			])
+			],
+			entity: [null, Validators.compose([
+				Validators.required,
+				Validators.minLength(3),
+				Validators.maxLength(100)
+			])
 			]
 		});
 	}
@@ -139,8 +145,12 @@ export class LoginComponent implements OnInit, OnDestroy {
 
 		const authData = {
 			email: controls.email.value,
-			password: controls.password.value
+			password: controls.password.value,
+			entity: controls.entity.value
 		};
+		
+		localStorage.setItem(environment.entity, authData.entity);
+
 		this.moduleService.getModules().toPromise();
 		this.auth
 			.login(authData.email, authData.password)

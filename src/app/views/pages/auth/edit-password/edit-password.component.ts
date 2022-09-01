@@ -73,6 +73,7 @@ export class EditPasswordComponent implements OnInit, OnDestroy {
 			this.user = res.result.data;
 		} else {
 			localStorage.removeItem(environment.authTokenKey);
+			localStorage.removeItem(environment.entity);
 			this.router.navigate(['/auth/login']);
 			return false;
 		}

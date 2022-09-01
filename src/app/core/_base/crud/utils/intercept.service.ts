@@ -34,8 +34,10 @@ export class InterceptService implements HttpInterceptor {
 			   // We could have used translationService.getSelectedLang but injecting that service causes a circular dependency
 			   "Accept-Language": localStorage.getItem('language') || this.translate.getDefaultLang(),
 				//  "Content-Type": "application/json"
+				"Entity": `${localStorage.getItem(environment.entity)}`
 		   }
 	   });
+
 
 	   return next.handle(request).pipe(catchError((errorResponse: HttpErrorResponse) => {
 			const error = (typeof errorResponse.error !== 'object') ? JSON.parse(errorResponse.error) : errorResponse;
@@ -55,26 +57,32 @@ export class InterceptService implements HttpInterceptor {
 						case "token_expired":
 							console.log("token_expired");
 							localStorage.removeItem(environment.authTokenKey);
+							localStorage.removeItem(environment.entity);
 							this.router.navigate(['/auth/login']);
 							break;
 						case "token_invalid":
 							localStorage.removeItem(environment.authTokenKey);
+							localStorage.removeItem(environment.entity);
 							this.router.navigate(['/auth/login']);
 							break;
 						case "token_absent":
 							localStorage.removeItem(environment.authTokenKey);
+							localStorage.removeItem(environment.entity);
 							this.router.navigate(['/auth/login']);
 							break;
 						case "token_blacklisted":
 							localStorage.removeItem(environment.authTokenKey);
+							localStorage.removeItem(environment.entity);
 							this.router.navigate(['/auth/login']);
 							break;
 						case "Unauthenticated.":
 							localStorage.removeItem(environment.authTokenKey);
+							localStorage.removeItem(environment.entity);
 							this.router.navigate(['/auth/login']);
 							break;
 						default:
 							localStorage.removeItem(environment.authTokenKey);
+							localStorage.removeItem(environment.entity);
 							this.router.navigate(['/auth/login']);
 							break;
 					}
