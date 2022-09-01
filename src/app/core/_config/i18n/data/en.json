@@ -320,7 +320,7 @@
 	},
 	"CAUSERIES": {
 		"ACTION":{
-			"ADD_PARTICIPANT": "S'inscrire"
+			"ADD_PARTICIPANT": "S'enregistrer"
 		},
 		"LIBELLE":"Libelle",
 		"LIEU":"Lieu",

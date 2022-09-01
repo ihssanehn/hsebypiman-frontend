@@ -317,7 +317,7 @@
 	},
 	"CAUSERIES": {
 		"ACTION":{
-			"ADD_PARTICIPANT": "S'inscrire"
+			"ADD_PARTICIPANT": "S'enregistrer"
 		},
 		"LIBELLE":"Libelle",
 		"LIEU":"Lieu",
@@ -604,7 +604,7 @@
 			"NEW_PASSWORD": "Nouveau mot de passe",
 			"PASSWORD": "Mot de passe",
 			"USERNAME": "Nom d'utilisateur",
-			"ENTITY": "Entité"
+			"ENTITY": "Entreprise"
 		},
 		"LOGIN": {
 			"BUTTON": "Se Connecter",
@@ -617,10 +617,10 @@
 			"TITLE": "Créer un compte"
 		},
 		"REQUEST_ACCESS": {
-			"DESC": "Entrez vos coordonnées pour créer votre compte",
+			"DESC": "Demande de création de compte",
 			"SUCCESS": "Votre demande a bien été enregistrée.<br>Un mail vous sera envoyé dès validation par un administrateur.<br>En cas de problème, contacter le service HSE.",
 			"TITLE": "Demander un <b>accès</b>",
-			"LABEL": "Demander un accès"
+			"LABEL": "Salarié Piman : Demander un accès"
 		},
 		"VALIDATION": {
 			"AGREEMENT_REQUIRED": "Vous devez accepter les termes et conditions",
