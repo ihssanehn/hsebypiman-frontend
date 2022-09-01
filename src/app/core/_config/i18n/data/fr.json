@@ -603,7 +603,8 @@
 			"FULLNAME": "Nom complet",
 			"NEW_PASSWORD": "Nouveau mot de passe",
 			"PASSWORD": "Mot de passe",
-			"USERNAME": "Nom d'utilisateur"
+			"USERNAME": "Nom d'utilisateur",
+			"ENTITY": "Entité"
 		},
 		"LOGIN": {
 			"BUTTON": "Se Connecter",

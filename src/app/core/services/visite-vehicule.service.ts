@@ -52,7 +52,7 @@ export class VisiteVehiculeService extends HttpService{
 
     export(filters){
         var queryString = Object.keys(filters).map(key => key + '=' + filters[key]).join('&');
-        var url = this.baseUrl+'/export?'+queryString+'&token='+localStorage.getItem(environment.authTokenKey);
+        var url = this.baseUrl+'/export?'+queryString+'&entity='+localStorage.getItem(environment.entity)+'&token='+localStorage.getItem(environment.authTokenKey);
         window.open(url, '_blank');
     }
 }

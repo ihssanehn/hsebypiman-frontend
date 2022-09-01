@@ -11,6 +11,7 @@ import { HttpService } from '@app/core/services/http-service';
 import { NgxRolesService, NgxPermissionsService } from 'ngx-permissions';
 import { JsonResponse } from '@app/core/_base/layout/models/jsonResponse.model';
 import { Router } from '@angular/router';
+import { StoreRootModule } from '@ngrx/store';
 
 
 
@@ -219,6 +220,7 @@ export class AuthService extends HttpService {
 			return true;
 		} else {
 			localStorage.removeItem(environment.authTokenKey);
+			localStorage.removeItem(environment.entity);
 			this.router.navigate(['/auth/login']);
 			return false;
 		}

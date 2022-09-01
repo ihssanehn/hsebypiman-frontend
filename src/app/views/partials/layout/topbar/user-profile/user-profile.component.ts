@@ -60,6 +60,7 @@ export class UserProfileComponent implements OnInit {
 	logout() {
 		// this.authService.logout().toPromise();
 		// localStorage.removeItem(environment.authTokenKey);
+		// localStorage.removeItem(environment.entity);
 		// this.router.navigate(['/auth/login']);
 	}
 }
