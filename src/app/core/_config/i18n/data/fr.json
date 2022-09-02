@@ -1099,6 +1099,21 @@
 		},
 		"INVALID": {
 			"LABEL": "Non valide"
+		},
+		"NUMBER_OF_EPI": {
+			"TITLE": "Nombre d'Epi"
+		},
+		"NUMBER_OF_TRAINING": {
+			"TITLE": "Nombre de formation"
+		},
+		"PASSEPORT_HSE": {
+			"TITLE": "Passeport HSE"
+		},
+		"REMONTEES_SECURITE": {
+			"TITLE": "Remontées Sécurité"
+		},
+		"CAUSERIES": {
+			"TITLE": "Causeries"
 		}
 	},
 	"EES": {
@@ -1656,7 +1671,7 @@
 		"MATERIELS": "Matériel",
 		"MODULES": "Modules",
 		"MY_PASSWORD": "Mon mot de passe",
-		"MY_PROFILE": "Mon profil",
+		"MY_PROFILE": "Mon passeport HSE",
 		"NEW": "Nouveau",
 		"PLANACTION": "Plan d'actions",
 		"REMONTEES": "Remontées QHSE",

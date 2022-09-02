@@ -1098,6 +1098,21 @@
 		},
 		"INVALID": {
 			"LABEL": "Invalid"
+		},
+		"NUMBER_OF_EPI": {
+			"TITLE": "Number of PPE"
+		},
+		"NUMBER_OF_TRAINING": {
+			"TITLE": "Number of training"
+		},
+		"PASSEPORT_HSE": {
+			"TITLE": "HSE passport"
+		},
+		"REMONTEES_SECURITE": {
+			"TITLE": "Safety lifts"
+		},
+		"CAUSERIES": {
+			"TITLE": "Talks"
 		}
 	},
 	"EES": {
@@ -1653,7 +1668,7 @@
 		"MATERIELS": "Equipment",
 		"MODULES": "Modules",
 		"MY_PASSWORD": "my password",
-		"MY_PROFILE": "My profile",
+		"MY_PROFILE": "My HSE passport",
 		"NEW": "New",
 		"PLANACTION": "Action plan",
 		"REMONTEES": "QHSE lifts",

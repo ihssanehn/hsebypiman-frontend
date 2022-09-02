@@ -1,0 +1,287 @@
+<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8" id="portlet-user" *ngIf="user">
+    <div class="tf-portlet-header mb-2">
+        <span class="title">
+            <a [routerLink]="['/suivi-hse/list']">{{'MENU.SUB_SUIVI_HSE.LIST' | translate}}</a><span class="divider">></span><span class="id-item">{{user | fullName}}</span>
+        </span>
+        <div class="pull-right">
+            <mat-form-field class="date-range-selector pull-right" appearance="fill" *ngIf="selectedPeriodId">
+                <mat-label>{{'SUIVI_HSE.PERIOD.TITLE' | translate}}</mat-label>
+                <mat-select [(value)]="selectedPeriodId" (selectionChange)="changePeriod($event.value)">
+                  <mat-option *ngFor="let item of periodList" [value]="item.id">
+                    {{item.start_date | date:'d MMM y' : undefined : translate.currentLang}} <span class="divider">-</span> {{item.end_date | date:'d MMM y' : undefined : translate.currentLang}}
+                  </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+        </div>
+        <span>
+            <button mat-icon-button color="info" matTooltip="{{'SUIVI_HSE.ACTION.EDIT_GOAL.TITLE' | translate}}" (click)="editMetrics()" *ngxPermissionsOnly="['user_canUpdate']">
+                <mat-icon>edit</mat-icon>
+              </button>
+        </span>
+    </div>
+    <tf-portlet-body class="tf-portlet__body--fit">
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card">
+              <div class="box">
+                    <!-- TODO photo -->
+                    <ngx-avatar class="user-avatar" [round]="false" [size]="200" cornerRadius="4" src="{{user.photo_profil ? user.photo_profil.src : null}}" name="{{user | fullName}}"></ngx-avatar>
+              </div>
+              <div class="tf-divider">
+                <span></span>
+              </div>
+              <div class="box box-coords" style="flex:1">
+                <h5><b>{{'SUIVI_HSE.CARD.ABOUT_EMPLOYEE.TITLE' | translate}}</b></h5>
+                <p><span class="label pull-left mr-2">{{'COMMON.LASTNAME.LABEL' | translate}}</span><span class="" *ngIf="user.nom; else noDataFound">{{user.nom}}</span></p>
+                <p><span class="label pull-left mr-2">{{'COMMON.FIRSTNAME.LABEL' | translate}}</span><span class="" *ngIf="user.prenom; else noDataFound">{{user.prenom}}</span></p>
+                <p><span class="label pull-left mr-2">{{'COMMON.BIRTHDAY.LABEL' | translate}}</span><span class="" *ngIf="user.date_naissance; else noDataFound">{{user.date_naissance | date:'dd/MM/yyyy'}}</span></p>
+                <p><span class="label pull-left mr-2">{{'COMMON.FONCTION.LABEL' | translate}}</span><span class="" *ngIf="user.fonction; else noDataFound">{{user.fonction?.libelle}}</span></p>
+              </div>
+              <div class="tf-divider">
+                <span></span>
+              </div>
+              <div class="box text-center">
+                <small>{{'SALARIES.ENTRY_AT.LABEL' | translate}} : {{user.date_entree | date:'dd/MM/yyyy'}}</small><br>
+              </div>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <mat-tab-group mat-align-tabs="start" animationDuration="1000ms" class="profil-mat-tab-group">
+                <mat-tab label="HSE">
+                    <div class="row h-100">
+                        <!-- ACCUEIL SECU -->
+                        <div class="col-4 h-100">
+                            <div class="card h-100 pt-2">
+                                <div class="box box-secu">
+                                    <h5><b>Mon accueil Sécurité Piman</b></h5>
+                                    <div class="row mt-3">
+                                        <div class="col-3">
+                                            <img [src]="accueilSecuStatusIcon" alt="undone" class="shdw-5">
+                                        </div>
+                                        <div class="col-9 d-flex justify-content-between">
+                                            <div>
+                                                <div>Accueil sécurité</div>
+                                                <div class="font-weight-normal" *ngIf="user.date_realisation_accueil_secu; else invalid">{{user.date_realisation_accueil_secu | date:'dd/MM/yyyy'}}</div>
+                                            </div>
+                                            <button mat-icon-button color="info" matTooltip="Ajouter une date de réalisation" (click)="showEditAccueilSecuModal()">
+                                                <mat-icon>edit</mat-icon>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-3">
+                                            <img [src]="livretSecuStatusIcon" alt="undone" class="shdw-5">
+                                        </div>
+                                        <div class="col-9 d-flex justify-content-between">
+                                            <div>
+                                                <div>Livret d'accueil</div>
+                                                <div class="font-weight-normal" *ngIf="user.date_realisation_livret_accueil; else invalid">{{user.date_realisation_livret_accueil | date:'dd/MM/yyyy'}}</div>
+                                            </div>
+                                            <button mat-icon-button color="warn" matTooltip="Demander de relire le livret d'accueil" (click)="retakeLivretAccueil()" *ngxPermissionsOnly="['ADMIN','ROOT', 'MANAGER']">
+                                                <mat-icon>replay</mat-icon>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-3">
+                                            <img [src]="quizSecuStatusIcon" alt="done" class="shdw-5">
+                                        </div>
+                                        <div class="col-9 d-flex justify-content-between">
+                                            <div>
+                                                <div>Quiz Sécurité</div>
+                                                <div class="font-weight-normal">
+                                                    <span>{{user.quiz_score}}</span>
+                                                    <span *ngIf="user.quiz_score && !user.is_quiz_approved"> - </span>
+                                                    <span *ngIf="!user.quiz_score || !user.is_quiz_approved"><ng-container *ngTemplateOutlet="invalid"></ng-container></span>
+                                                </div>
+                                                <div class="font-weight-normal" *ngIf="user.quiz_date">{{user.quiz_date | date:'dd/MM/yyyy hh:mm'}}</div>
+                                            </div>
+                                            <button mat-icon-button color="warn" matTooltip="Demander de repasser le quiz" (click)="retakeTheQuiz()" *ngxPermissionsOnly="['ADMIN','ROOT', 'MANAGER']">
+                                                <mat-icon>replay</mat-icon>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- REMONTEES SECU -->
+                        <div class="col-8 list-view">
+                            <div class="card h-100 pt-2">
+                                <div class="box">
+                                    <h5><b>Remontées sécurité</b></h5>
+                                    <div class="list-container">
+                                        <div class="d-flex justify-content-start mt-2 pointer hover-selected p-2"  *ngFor="let remontee of remontees" (click)="goToRemonteeDetail(remontee.id)">
+                                            <img src="{{remontee.type.icon}}" alt="{{remontee.type.libelle}}" width="60px">
+                                            <div class="col-10 d-flex flex-column justify-content-center ml-4">
+                                                <span>{{remontee.type.libelle}}</span>
+                                                <span class="font-weight-normal">{{remontee.description}}</span>
+                                                <small>{{remontee.created_at | date:'dd/MM/yyyy'}}</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="CAUSERIES">
+                    <div class="row h-100">
+                        <!-- CAUSERIES ANIMEES -->
+                        <div class="col-6 h-100">
+                            <div class="card h-100 pt-2">
+                                <div class="box">
+                                    <h5><b>Causeries animées</b><small class="pull-right text-primary">{{causeries_animees.length}}</small></h5>
+                                    <div class="list-container" *ngIf="causeries_animees.length > 0 ; else noDataFound">
+                                        <div class="d-flex justify-content-start mt-2 pointer hover-selected p-2" *ngFor="let causerie of causeries_animees" (click)="goToCauserieDetail(causerie.id)">
+                                            <img src="./assets/media/hse-png/causeries.png" alt="" width="60px">
+                                            <div class="d-flex flex-column justify-content-center ml-4">
+                                                <span>{{causerie.libelle}}</span>
+                                                <span class="font-weight-normal">{{causerie.description}}</span>
+                                                <small>{{causerie.created_at | date:'dd/MM/yyyy'}}</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- CAUSERIES PARTICIPEES -->
+                        <div class="col-6 list-view">
+                            <div class="card h-100 pt-2">
+                                <div class="box">
+                                    <h5><b>Causeries participées</b><small class="pull-right text-primary">{{causeries_participees.length}}</small></h5>
+                                    <div class="list-container" *ngIf="causeries_participees.length > 0 ; else noDataFound">
+                                        <div class="d-flex justify-content-start mt-2 pointer hover-selected p-2" *ngFor="let causerie of causeries_participees" (click)="goToRemonteeDetail(causerie.id)">
+                                            <img src="./assets/media/hse-png/causeries.png" alt="" width="60px">
+                                            <div class="d-flex flex-column justify-content-center ml-4">
+                                                <span>{{causerie.libelle}}</span>
+                                                <span class="font-weight-normal">{{causerie.description}}</span>
+                                                <small>{{causerie.created_at | date:'dd/MM/yyyy'}}</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="EPI">
+                    <!-- PRET EPI -->
+                    <div class="row h-100">
+                        <div class="col-12 h-100">
+                            <div class="card" style="height: 500px">
+                                <div class="card-title">
+                                    <h5><b>Prêt EPI</b></h5>
+                                    <span>
+                                        <button mat-icon-button color="info" matTooltip="Ajouter un prêt EPI" (click)="showAssignEpiModal()">
+                                            <mat-icon>add</mat-icon>
+                                        </button>
+                                    </span>
+                                </div>
+                                <div class="tf-divider">
+                                    <span></span>
+                                </div>
+                                <div class="box" style="overflow-y: auto; overflow-x: hidden">
+                                    <ng-container *ngFor="let item of epis  | keyvalue">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <span class="d-block my-3" style="color: #2f8274">{{item.key}}</span>
+                                                <table class="table table-sm table-epi">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Réf.</th>
+                                                            <th class="text-center">Date de prêt</th>
+                                                            <th class="text-center">Date de remise</th>
+                                                            <th class="text-center"></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let epi of item.value">
+                                                            <td>{{epi.numero_serie}}</td>
+                                                            <td class="text-center">{{epi.pivot.date_pret ? (epi.pivot.date_pret | date:'dd/MM/yyyy') : '-'}}</td>
+                                                            <td class="text-center">{{epi.pivot.date_retour ? (epi.pivot.date_retour | date:'dd/MM/yyyy') : '-'}}</td>
+                                                            <td class="text-center">
+                                                                <span>
+                                                                    <button mat-icon-button color="info" matTooltip="Modifier" (click)="showEditAssignedEpiModal(epi)">
+                                                                        <mat-icon>edit</mat-icon>
+                                                                    </button>
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="tf-divider">
+                                            <span></span>
+                                        </div>
+                                    </ng-container>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="FORMATIONS">
+                    <!-- Formations -->
+                    <div class="row h-100">
+                        <div class="col-12 h-100">
+                            <div class="card" style="height: 500px">
+                                <div class="card-title">
+                                    <h5><b>Formations</b></h5>
+                                    <span>
+                                        <button mat-icon-button color="info" matTooltip="S'inscrire à une formation" (click)="showAssignFormationModal()">
+                                            <mat-icon>add</mat-icon>
+                                        </button>
+                                    </span>
+                                </div>
+                                <div class="tf-divider">
+                                    <span></span>
+                                </div>
+                                <div class="box" style="overflow-y: auto; overflow-x: hidden">
+                                    <table class="table table-formations">
+                                        <thead>
+                                            <tr>
+                                                <th>Label</th>
+                                                <th class="text-center">Date de validite</th>
+                                                <th class="text-center">Date de renouvellement</th>
+                                                <th class="text-center"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let formation of formations">
+                                                <td>{{formation.libelle}}</td>
+                                                <td class="text-center">{{formation.pivot.date_validite ? (formation.pivot.date_validite | date: 'dd/MM/yyyy') : '-'}}</td>
+                                                <td class="text-center">{{formation.pivot.date_renouvellement ? (formation.pivot.date_renouvellement | date: 'dd/MM/yyyy') : '-'}}</td>
+                                                <td class="text-center">
+                                                    <span class="d-flex pointer" [ngbPopover]="popIntContent" popoverClass="big-popover" [popoverTitle]="('REMONTEES.DOCUMENTS.SHORTTITLE' | translate)">
+                                                        <mat-icon>attachment</mat-icon> {{formation.pivot.docs_count}}
+                                                    </span>
+                                                    <ng-template #popIntContent >
+                                                        <div class="row">
+                                                            <tf-doc-list-tooltip [documents]="formation.pivot.docs"></tf-doc-list-tooltip>
+                                                        </div>
+                                                    </ng-template>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+
+    </div>
+    </tf-portlet-body>
+  </tf-portlet>
+
+
+  <ng-template #noDataFound>
+    <span class="no-data-label">
+        {{'COMMON.NO_DATA_FOUND.TITLE' | translate}}
+    </span>
+  </ng-template>
