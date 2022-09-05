@@ -20,4 +20,12 @@ export class Personnel {
     catMetricsList?: Array<any>;
     period_id: Number;
     formations?: any;
+    photo_profil_id?: Number;
+    photo_profil?: any;
+    passeport_hse?: number;
+    remontees?: number;
+    causerie?: number;
+    epi?: number;
+    formation?: number;
+
 }

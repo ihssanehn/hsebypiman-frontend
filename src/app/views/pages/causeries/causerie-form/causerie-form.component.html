@@ -1,0 +1,71 @@
+<ng-container [formGroup]="causerieForm">
+		<tf-portlet-body>
+			<div class="tf-heading tf-heading--lg" style="margin-top: 0;">
+				<div *ngIf="edit">
+					{{'MENU.SUB_CAUSERIES.EDIT' | translate}} {{causerieForm.get('libelle').value}}
+				</div>
+				<span *ngIf="!edit">{{'MENU.SUB_CAUSERIES.ADD' | translate}}</span>
+			</div>
+			<div>
+				<div class="tf-wizard-v4__content" data-tfwizard-type="step-content" data-tfwizard-state="current">
+					<div class="tf-form__section tf-form__section--first">
+						<div class="tf-wizard-v4__form">
+							<div class="row form-row">
+								<mat-form-field class="col-xl-3">
+									<mat-label>{{'CAUSERIES.LIBELLE' | translate}}</mat-label>
+									<input class="form-control" matInput type="text" name="libelle" formControlName="libelle" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('libelle')" />
+									<mat-error *ngIf="isControlHasError('libelle','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+								<mat-form-field class="col-xl-3">
+									<mat-label>{{'CAUSERIES.ORGANISATEUR' | translate}}</mat-label>
+									<mat-select class="form-control" placeholder="{{'ACTION.ENTER_HERE' | translate}}" formControlName="organisateur_id" [required]="isFieldRequired('organisateur_id')">
+										<mat-option *ngFor="let organisateur of usersList" [value]="organisateur.id">
+											{{ organisateur | fullName }}
+										</mat-option>
+									</mat-select>
+									<mat-error *ngIf="isControlHasError('organisateur_id','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+								<mat-form-field class="col-xl-3">
+									<mat-label>{{'CAUSERIES.LIEU' | translate}}</mat-label>
+									<input matInput class="form-control" type="text" name="lieu" formControlName="lieu" [required]="isFieldRequired('lieu')" placeholder="{{'ACTION.ENTER_HERE' | translate}}" />
+									<mat-error *ngIf="isControlHasError('lieu','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+								<mat-form-field class="col-xl-3">
+									<mat-label>{{'CAUSERIES.DATE' | translate}}</mat-label>
+									<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" formControlName="date" [required]="isFieldRequired('date')" placeholder="DD/MM/YYYY">
+									<mat-error *ngIf="isControlHasError('date','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+							</div>
+							<div class="row form-row">
+
+								<mat-form-field class="col-xl-12">
+									<mat-label>{{'CAUSERIES.SUJET' | translate}}</mat-label>
+									<textarea class="form-control" matInput
+										name="sujet"
+										formControlName="sujet"
+										placeholder="{{'ACTION.ENTER_HERE' | translate}}"
+										[required]="isFieldRequired('sujet')"
+										cdkTextareaAutosize
+										#autosize="cdkTextareaAutosize"
+										cdkAutosizeMinRows="4"
+										cdkAutosizeMaxRows="7"
+									></textarea>
+									<mat-error *ngIf="isControlHasError('sujet','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</tf-portlet-body>
+</ng-container>

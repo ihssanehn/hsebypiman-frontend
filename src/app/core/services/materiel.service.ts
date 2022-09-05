@@ -50,7 +50,7 @@ export class MaterielService extends HttpService{
     }
     export(filters){
         var queryString = Object.keys(filters).map(key => key + '=' + filters[key]).join('&');
-        var url = this.baseUrl+'/export?'+queryString+'&token='+localStorage.getItem(environment.authTokenKey);
+        var url = this.baseUrl+'/export?'+queryString+'&entity='+localStorage.getItem(environment.entity)+'&token='+localStorage.getItem(environment.authTokenKey);
         window.open(url, '_blank');
     }
 
@@ -63,4 +63,10 @@ export class MaterielService extends HttpService{
     getStats(params){
         return this.http.post<JsonResponse<any>>(this.baseUrl+'/stats', params);
     }
+    addDocuments(materiel_id, params){
+        const httpHeaders = new HttpHeaders();
+		httpHeaders.set("Content-Type", "multipart/form-data");
+        return this.http.post(this.baseUrl+'/'+materiel_id+'/add-documents', params, { headers: httpHeaders });
+    }
+
 }

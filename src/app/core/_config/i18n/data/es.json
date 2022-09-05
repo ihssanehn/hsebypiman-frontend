@@ -306,6 +306,49 @@
 		},
 		"TYPE": "Type"
 	},
+	"CAUSERIES": {
+		"ACTION":{
+			"ADD_PARTICIPANT": "S'enregistrer"
+		},
+		"LIBELLE":"Libelle",
+		"LIEU":"Lieu",
+		"ORGANISATEUR":"Organisateur",
+		"PARTICIPANTS":"Participants",
+		"PARTICIPANTS_COUNT":{
+			"TITLE":"Nombre de participants", 
+			"SHORTTITLE":"Nbr de participants"
+		},
+		"RETOUR_PARTICIPANT": {
+			"TITLE":"Retour sur la causerie",
+			"FORM":"Que retenez vous de cette causerie ?",
+			"SHORTTITLE":"Retour sur la causerie"
+		},
+		"SUJET":"Sujet",
+		"DATE":"Date",
+		"CARD": {
+			"NO_PARTICIPANTS":"Aucun participant"
+		},
+		"NOTIF": {
+			"CAUSERIE_CREATED": {
+				"TITLE":"La causerie a bien été créée"
+			},
+			"CAUSERIE_UPDATED": {
+				"TITLE":"La causerie a bien été mise à jour"
+			},
+			"CAUSERIE_NOT_DELETED": {
+				"LABEL": "Suppression impossible car la causerie est affectée à un ou plusieurs participants",
+				"TITLE": "Suppression impossible car la causerie est affectée à un ou plusieurs participants"
+			},
+			"CAUSERIE_DELETED": {
+				"LABEL": "La causerie a bien été supprimé",
+				"SHORTTITLE": "La causerie a bien été supprimé",
+				"TITLE": "La causerie a bien été supprimé"
+			},
+			"LOADING": {
+				"TITLE": "Loading Entreprise"
+			}
+		}
+	},
 	"AUTH": {
 		"EDIT": {
 			"DESC": "Saisissez un nouveau mot de passe",
@@ -1020,9 +1063,22 @@
 				"NO_LOAN": "",
 				"TITLE": ""
 			},
+			"DOCUMENTS": {
+				"TITLE": "Documents"
+			},
 			"VISITS_MONITORING": {
 				"NO_VISITS": "",
 				"TITLE": ""
+			},
+			"VISITE": {
+				"COMMENT_REVISION": "Commentaire",
+				"DATE_DERNIERE_REVISION": "Date de la dernière révision",
+				"DATE_PROCHAINE_REVISION": "Date de la prochaine révision",
+				"DATE_DERNIER_CONTROLE": "Date du dernier contrôle",
+				"DATE_PROCHAIN_CONTROLE": "Date du prochain contrôle",
+				"ETAT": "Etat du matériel",
+				"TITLE":"Révision / Contrôle matériel",
+				"REVISION": "Nom du contrôle"
 			}
 		},
 		"CATEGORIE": {
@@ -1200,6 +1256,22 @@
 			},
 			"NOTHING_FOUND": {
 				"TITLE" : "Nothing has been found."
+			},
+			"LATE_CONTROLE":{
+				"TITLE": "Contrôle en retard"
+			},
+			"UPCOMING_CONTROLE":{
+				"TITLE": "Contrôle à venir"
+			},
+			"NEVER_CONTROLED":{
+				"TITLE": "Jamais contrôlé"
+			},
+			"DELETE_DOC_CONFIRMATION":{
+				"TITLE":"Ce document sera supprimé de façon définitive.",
+				"LABEL": "Êtes-vous sûr de vouloir continuer ?"
+			},
+			"DOCUMENT_DELETED":{
+				"DONE":"Le document a bien été supprimé"
 			}
 		},
 		"NUMERO_SERIE": {
@@ -1264,12 +1336,14 @@
 		"BTN": {
 			"NEWACTION": "Nouvelle Action",
 			"NEWAR": "Nouvelle analyse de risque",
+			"NEWCAUSERIE": "Nouvelle causerie",
 			"NEWCHANTIER": "Nouveau chantier",
 			"NEWENTREPRISE": "Nouvelle entreprise",
 			"NEWMATERIEL": "Nouveau matériel",
 			"NEWREMONTEE": "Nouvelle remontée QHSE",
 			"NEWVS": "Nouveau visite de sécurité"
 		},
+		"CAUSERIES": "Causeries",
 		"CHANTIER": "Chantiers",
 		"DASHBOARD": "Tableau de Bord",
 		"DISCUSS": "Discuss",
@@ -1302,6 +1376,12 @@
 			"DETAIL": "Détail de l'analyse de risque",
 			"EDIT": "Modifier l'analyse de risque",
 			"LIST": "Liste des analyses de risque"
+		},
+		"SUB_CAUSERIES": {
+			"ADD": "Ajouter une nouvelle causerie",
+			"DETAIL": "Détail de la causerie",
+			"EDIT": "Modifier la causerie",
+			"LIST": "Liste des causeries"
 		},
 		"SUB_CHANTIER": {
 			"ADD": "Ajouter un nouveau chantier",

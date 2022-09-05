@@ -1,0 +1,252 @@
+@import "../../../../../../assets/sass/config";
+
+:host::ng-deep {
+	#portlet-user {
+		color: black;
+		font-size: 1em;
+		font-weight: bolder;
+
+		.tf-portlet {
+			background-color: #f7f9fc;
+
+			.tf-portlet-header {
+				padding: 25px 0 0 20px;
+
+				.title {
+					a {
+						color: #525252;
+					}
+
+					.divider {
+						font-weight: bolder;
+						color: #e49819;
+						margin-left: 0.5em;
+						margin-right: 0.5em;
+					}
+
+					.id-item {
+						color: #171717;
+						font-weight: bolder;
+						text-transform: uppercase;
+						padding-bottom: 0.2em;
+						border-bottom: 2px solid #55cec7;
+					}
+				}
+
+				.form-control[readonly] {
+					background-color: #f7f9fc;
+				}
+
+				.status-box {
+					.status-icon {
+						width: 20px;
+						height: 20px;
+						line-height: 0;
+					}
+				}
+			}
+
+			.tf-portlet__body {
+				padding: 0px 20px 20px 20px;
+				font-weight: bold;
+
+				.profil-mat-tab-group.mat-tab-group {
+					height: 100%;
+
+					.mat-tab-body-wrapper {
+						flex: 1;
+
+						.mat-tab-body-content {
+							flex: 1;
+
+							.mat-tab-body {
+								height: 100%;
+							}
+						}
+					}
+				}
+
+				.card {
+					padding: 2em 2em 0;
+					height: 100%;
+
+					p {
+						text-align: right;
+					}
+
+					.label {
+						color: #7c7c7c;
+						text-align: left;
+					}
+
+					.no-bold {
+						font-weight: 100;
+					}
+
+					.blue {
+						color: #33b5ae;
+					}
+
+					.tf-divider.h-5 span {
+						height: 1em;
+					}
+
+					.no-data-label {
+						font-weight: 100;
+						font-style: italic;
+					}
+
+					.box {
+						padding-top: 1.5em;
+						padding-bottom: 1.5em;
+
+						h5 {
+							padding-bottom: 0.8em;
+							border-bottom: 1px solid #EBECF1;
+						}
+
+						&.box-status {
+							display: flex;
+							flex-flow: column nowrap;
+							align-items: center;
+
+							.mat-icon {
+								margin-top: 30px;
+								margin-bottom: 30px;
+
+								svg {
+									box-shadow: 0 32px 64px 0 rgba(0, 0, 0, 0.16);
+									border-radius: 50%;
+								}
+							}
+						}
+
+						&.box-ar-vs {
+							.row {
+								margin-bottom: 1rem;
+							}
+
+							p {
+								text-align: left;
+								margin-bottom: 2px;
+							}
+						}
+					}
+
+					.box-avatar {
+						position: relative;
+						cursor: pointer;
+						i.edit-avatar {
+							position: absolute;
+							left: 50%;
+							top: 50%;
+							transform: translate(-50%, -50%);
+							font-size: 3em;
+							opacity: 0;
+							z-index: 5;
+							color: $color-default;
+						}
+						.user-avatar {
+							.avatar-content {
+								background-color: #f7f9fc !important;
+								color: #525252 !important;
+							}
+							.avatar-container {
+								width: 100% !important;
+								text-align: center;
+							}
+						}
+						&:hover {
+							i.edit-avatar {
+								opacity: 1;
+							}
+							.user-avatar .avatar-container:before {
+								content: '';
+								position: absolute;
+								top: 0;
+								bottom: 0;
+								left: 0;
+								right: 0;
+								background-color: rgba(255, 255, 255, 0.5);
+							}
+						}
+					}
+					.card-title {
+						display: flex;
+						justify-content: space-between;
+						button {
+							height: 0;
+							width: auto;
+							line-height: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.badge-pill {
+	padding-right: 0.7em;
+	padding-left: 0.7em;
+	border-radius: 10rem;
+}
+
+img.shdw-5 {
+	box-shadow: 0 4px 13px -3px rgba(0, 0, 0, 0.23);
+	border-radius: 5px;
+}
+
+.table.table-sm.table-epi {
+	thead {
+		tr {
+			th {
+				padding: 0.3rem;
+				border-bottom-width: 0;
+				width: 30%;
+			}
+
+			th:nth-child(4) {
+				width: 10%;
+			}
+		}
+	}
+
+	tbody {
+		tr {
+			td {
+				border-top-width: 0;
+			}
+
+			td:nth-child(4) {
+				button {
+					height: 0;
+					width: auto;
+					line-height: 0;
+				}
+			}
+		}
+	}
+}
+
+.list-view {
+	max-height: 500px !important;
+
+	.list-container {
+		overflow-y: auto;
+		overflow-x: hidden;
+		max-height: 410px !important;
+
+		.row {
+			cursor: pointer;
+		}
+	}
+}
+
+.invalid {
+	color: #e49819;
+}
+
+.hover-selected:hover {
+	background-color: #f7f9fc;
+}

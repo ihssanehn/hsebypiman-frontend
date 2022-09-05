@@ -40,7 +40,7 @@ export class ActionService extends HttpService{
             .filter(key => filters[key])
             .map(key => key + '=' + filters[key])
             .join('&');
-        var url = this.baseUrl+'/export?'+queryString+'&token='+localStorage.getItem(environment.authTokenKey);
+        var url = this.baseUrl+'/export?'+queryString+'&entity='+localStorage.getItem(environment.entity)+'&token='+localStorage.getItem(environment.authTokenKey);
         window.open(url, '_blank');
     }
     getStats(params){

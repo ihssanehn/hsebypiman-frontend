@@ -19,6 +19,7 @@ export class AddDocModalComponent implements OnInit{
   document: Document;
   documentForm: FormGroup;
   uploader:FileUploader;
+  accept: string = '.png, .bmp, .jpeg, .jpg, .gif, .tif, .heic'
 	// allRoles: Role[];
 	loaded = false;
 	editMode: boolean = false;
@@ -87,7 +88,9 @@ export class AddDocModalComponent implements OnInit{
   }
   
   onFileDrop(event){
-    var extensions = ['jpg','bmp','jpeg','gif','png','tif','heic'];
+    var extensions = this.accept.split(', .');
+    extensions[0] = extensions[0].slice(1);
+    console.log(extensions)
 
     for (let i = 0; i < event.length; i++) {
       

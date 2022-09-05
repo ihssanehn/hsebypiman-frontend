@@ -1,4 +1,9 @@
 :host {
+    .btn-lang {
+        height: calc(1.5em + 1.3rem + 2px);
+        margin-left: 0.5em;
+    }
+
     .upload-content {
         display: flex;
         justify-content: center;

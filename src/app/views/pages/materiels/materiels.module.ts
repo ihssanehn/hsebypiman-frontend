@@ -18,6 +18,7 @@ import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule, NgbPopoverModule 
 import { NgxMaskModule } from 'ngx-mask';
 
 import {PretModalComponent} from '@app/views/partials/layout';
+import {RevisionModalComponent} from '@app/views/partials/layout';
 // Material
 import {
 	MatInputModule,
@@ -248,7 +249,8 @@ const routes: Routes = [
 	],
 	entryComponents: [
 		ActionNotificationComponent,
-		PretModalComponent
+		PretModalComponent,
+		RevisionModalComponent
 		// 
 	],
 	declarations: [

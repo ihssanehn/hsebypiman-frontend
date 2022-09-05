@@ -93,6 +93,7 @@ export class UserSideProfileComponent implements OnInit {
             timer: 1500 
 		}).then(()=>{
 			localStorage.removeItem(environment.authTokenKey);
+			localStorage.removeItem(environment.entity);
 			this.router.navigate(['/auth/login']);
 		})
 	}

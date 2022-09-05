@@ -11,6 +11,7 @@ export {Remontee} from './remontee.model';
 export {CatRisque} from './catRisque.model';
 export {CatRisqueComment} from './catRisqueComment.model';
 export {Entreprise} from './entreprise.model';
+export {Causerie} from './causerie.model';
 export {Habilitation} from './habilitation.model';
 export {CatHabilitation} from './catHabilitation.model';
 export {Question} from './question.model';

@@ -1,0 +1,105 @@
+<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8" id="portlet-causerie" *ngIf="causerie">
+	<div class="tf-portlet-header ">
+		<span class="title">
+			<a [routerLink]="['/causeries/list']">{{'MENU.SUB_CAUSERIES.LIST' | translate}}</a><span class="divider">></span><span class="id-item">{{causerie.libelle}}</span>
+		</span>
+		<div ngbDropdown placement="bottom-right" class="d-inline-block pull-right">
+			<button ngbDropdownToggle mat-icon-button color="primary" matTooltip="Actions" style="line-height: 0;height: 0;">
+				<mat-icon>more_vert</mat-icon>
+			</button>
+			<div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
+				<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editCauserie(causerie.id)" *ngxPermissionsOnly="['causerie_canUpdate']">
+					<mat-icon>edit</mat-icon>
+				</button>
+				<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteCauserie(causerie.id)" *ngxPermissionsOnly="['causerie_canArchieve']">
+					<mat-icon>delete</mat-icon>
+				</button>
+			</div>
+		</div>
+	</div>
+	<tf-portlet-body class="tf-portlet__body--fit">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="card">
+					<h3>{{'EES.CARD.GENERAL_INFOS.TITLE' | translate}}</h3>
+					<div class="box" style="flex:1">
+						<p><span class="label pull-left mr-2">{{'CAUSERIES.LIBELLE' | translate}}</span><span class="">{{causerie.libelle}}</span></p>
+						<p><span class="label pull-left mr-2">{{'CAUSERIES.DATE' | translate}}</span><span class="">{{causerie.date ? (causerie.date | date:'dd/MM/yyyy') : '&nbsp;'}}</span></p>
+						<p><span class="label pull-left mr-2">{{'CAUSERIES.LIEU' | translate}}</span><span class="">{{causerie.lieu ? causerie.lieu : '&nbsp;'}}</span></p>
+					</div>
+					<div class="tf-divider">
+						<span></span>
+					</div>
+					<div class="box text-center">
+						<small>{{'COMMON.CREATED_AT.TITLE' | translate}} : {{causerie.created_at | date:'dd/MM/yyyy'}}</small><br>
+						<small>{{'COMMON.UPDATED_AT.TITLE' | translate}} : {{causerie.updated_at | date:'dd/MM/yyyy'}}</small>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="card">
+					<h3>{{'CAUSERIES.SUJET' | translate}}</h3>
+					<div class="box" style="flex:1">
+						<p class="text-justify">{{causerie.sujet}}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row mt-4">
+			<div class="col-md-12">
+				<div class="card">
+					<h3>
+						{{'CAUSERIES.PARTICIPANTS' | translate}} : 
+						<span class="blue">{{causerie.participants ? causerie.participants.length : 0}}</span>  
+						<button (click)="participate()" class="btn btn-primary btn-elevate pull-right" [disabled]="hasParticipate()">{{'CAUSERIES.ACTION.ADD_PARTICIPANT' | translate}}</button></h3>
+					<div class="box box-chantiers " style="flex: 1;">
+						<div class="row mt-4" *ngIf="causerie.participants.length > 0; else	noParticipants">
+							<div class="col-md-12">
+								<div class="table-responsive">
+									<table mat-table [dataSource]="causerie.participants" class="table-sm">
+										<!-- prenom Column -->
+										<ng-container matColumnDef="prenom">
+											<th mat-header-cell *matHeaderCellDef>{{'COMMON.FIRSTNAME.TITLE' | translate}}</th>
+											<td mat-cell *matCellDef="let participant"> {{participant.prenom}} </td>
+										</ng-container>
+	
+										<!-- prenom Column -->
+										<ng-container matColumnDef="nom">
+											<th mat-header-cell *matHeaderCellDef>{{'COMMON.LASTNAME.TITLE' | translate}}</th>
+											<td mat-cell *matCellDef="let participant"> {{participant.nom}} </td>
+										</ng-container>
+	
+										<!-- email Column -->
+										<ng-container matColumnDef="email">
+											<th mat-header-cell *matHeaderCellDef>{{'COMMON.EMAIL.TITLE' | translate}}</th>
+											<td mat-cell *matCellDef="let participant"> {{participant.email}} </td>
+										</ng-container>
+	
+										<!-- retour_participant Column -->
+										<ng-container matColumnDef="retour_participant">
+											<th mat-header-cell *matHeaderCellDef class="text-center">{{'CAUSERIES.RETOUR_PARTICIPANT.TITLE' | translate}}</th>
+											<td mat-cell *matCellDef="let participant" class="text-center"> 
+												<mat-icon *ngIf="participant.pivot.retour_participant" container="body" triggers="mouseenter:mouseleave" [ngbPopover]="participant.pivot.retour_participant" popoverClass="big-popover" [popoverTitle]="('CAUSERIES.RETOUR_PARTICIPANT.TITLE' | translate)+' - '+(participant | fullName)">textsms</mat-icon>
+											</td>
+										</ng-container>
+	
+										<tr mat-header-row *matHeaderRowDef="displayedParticipantsColumns"></tr>
+										<tr mat-row class="highlight-row" *matRowDef="let row; columns: displayedParticipantsColumns;"></tr>
+										
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</tf-portlet-body>
+</tf-portlet>
+
+
+<ng-template #noParticipants>
+	<p class="text-left">
+		{{'CAUSERIES.CARD.NO_PARTICIPANTS' | translate}}
+	</p>
+</ng-template>

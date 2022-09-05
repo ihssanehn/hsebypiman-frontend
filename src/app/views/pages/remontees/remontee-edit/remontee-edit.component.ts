@@ -12,6 +12,7 @@ import {FormStatus} from '@app/core/_base/crud/models/form-status';
 import {FileUploader} from "ng2-file-upload";
 import { TranslateService } from '@ngx-translate/core';
 import { DateFrToEnPipe } from '@app/core/_base/layout';
+import moment from 'moment';
 
 
 @Component({
@@ -108,7 +109,7 @@ export class RemonteeEditComponent implements OnInit, OnDestroy {
 			id: [null, Validators.required],
 			description: ['', Validators.required],
 			type_id: [null, Validators.required],
-			event_date: [new Date(), null],
+			event_date: [null, null],
       		event_location_type_id: [null, null],
 			event_type_id: [null, null],
 			facts: ['', null],
@@ -156,7 +157,7 @@ export class RemonteeEditComponent implements OnInit, OnDestroy {
 			  })
 		
 			if(form.event_date)
-				formData.set('event_date', this.dateFrToEnPipe.transform(form.event_date));
+				formData.set('event_date', moment(form.event_date).format('YYYY-MM-DD'));
 			else formData.set('event_date', '');
 			
 			this.remonteeService.update(this.remontee.id, formData)

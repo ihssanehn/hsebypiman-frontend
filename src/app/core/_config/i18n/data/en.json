@@ -318,6 +318,49 @@
 		},
 		"TYPE": "Type"
 	},
+	"CAUSERIES": {
+		"ACTION":{
+			"ADD_PARTICIPANT": "S'enregistrer"
+		},
+		"LIBELLE":"Libelle",
+		"LIEU":"Lieu",
+		"ORGANISATEUR":"Organisateur",
+		"PARTICIPANTS":"Participants",
+		"PARTICIPANTS_COUNT":{
+			"TITLE":"Nombre de participants", 
+			"SHORTTITLE":"Nbr de participants"
+		},
+		"RETOUR_PARTICIPANT": {
+			"TITLE":"Retour sur la causerie",
+			"FORM":"Que retenez vous de cette causerie ?",
+			"SHORTTITLE":"Retour sur la causerie"
+		},
+		"SUJET":"Sujet",
+		"DATE":"Date",
+		"CARD": {
+			"NO_PARTICIPANTS":"Aucun participant"
+		},
+		"NOTIF": {
+			"CAUSERIE_CREATED": {
+				"TITLE":"La causerie a bien été créée"
+			},
+			"CAUSERIE_UPDATED": {
+				"TITLE":"La causerie a bien été mise à jour"
+			},
+			"CAUSERIE_NOT_DELETED": {
+				"LABEL": "Suppression impossible car la causerie est affectée à un ou plusieurs participants",
+				"TITLE": "Suppression impossible car la causerie est affectée à un ou plusieurs participants"
+			},
+			"CAUSERIE_DELETED": {
+				"LABEL": "La causerie a bien été supprimé",
+				"SHORTTITLE": "La causerie a bien été supprimé",
+				"TITLE": "La causerie a bien été supprimé"
+			},
+			"LOADING": {
+				"TITLE": "Loading Entreprise"
+			}
+		}
+	},
 	"PDP": {
 		"COMPANY": "Company",
 		"BEFORE_STEP_1_DESC": "As a reminder: User company (EU) = Client / External company (EE) = PIMAN",
@@ -1055,6 +1098,21 @@
 		},
 		"INVALID": {
 			"LABEL": "Invalid"
+		},
+		"NUMBER_OF_EPI": {
+			"TITLE": "Number of PPE"
+		},
+		"NUMBER_OF_TRAINING": {
+			"TITLE": "Number of training"
+		},
+		"PASSEPORT_HSE": {
+			"TITLE": "HSE passport"
+		},
+		"REMONTEES_SECURITE": {
+			"TITLE": "Safety lifts"
+		},
+		"CAUSERIES": {
+			"TITLE": "Talks"
 		}
 	},
 	"EES": {
@@ -1312,9 +1370,22 @@
 				"NO_LOAN": "No loan",
 				"TITLE": "User tracking"
 			},
+			"DOCUMENTS": {
+				"TITLE": "Documents"
+			},
 			"VISITS_MONITORING": {
 				"NO_VISITS": "No visits",
 				"TITLE": "Monitoring of visits"
+			},
+			"VISITE": {
+				"COMMENT_REVISION": "Commentaire",
+				"DATE_DERNIERE_REVISION": "Date de la dernière révision",
+				"DATE_PROCHAINE_REVISION": "Date de la prochaine révision",
+				"DATE_DERNIER_CONTROLE": "Date du dernier contrôle",
+				"DATE_PROCHAIN_CONTROLE": "Date du prochain contrôle",
+				"ETAT": "Etat du matériel",
+				"TITLE":"Révision / Contrôle matériel",
+				"REVISION": "Nom du contrôle"
 			}
 		},
 		"CATEGORIE": {
@@ -1492,6 +1563,22 @@
 			},
 			"NOTHING_FOUND": {
 				"TITLE": "Nothing has been found."
+			},
+			"LATE_CONTROLE":{
+				"TITLE": "Contrôle en retard"
+			},
+			"UPCOMING_CONTROLE":{
+				"TITLE": "Contrôle à venir"
+			},
+			"NEVER_CONTROLED":{
+				"TITLE": "Jamais contrôlé"
+			},
+			"DELETE_DOC_CONFIRMATION":{
+				"TITLE":"Ce document sera supprimé de façon définitive.",
+				"LABEL": "Êtes-vous sûr de vouloir continuer ?"
+			},
+			"DOCUMENT_DELETED":{
+				"DONE":"Le document a bien été supprimé"
 			}
 		},
 		"NUMERO_SERIE": {
@@ -1558,6 +1645,7 @@
 			"NEWACTION": "New Action",
 			"NEWAR": "New risk analysis",
 			"NEWPDP": "New prevention plan",
+			"NEWCAUSERIE": "New causerie",
 			"NEWCHANTIER": "New site",
 			"NEWENTREPRISE": "New business",
 			"NEWMATERIEL": "New equipment",
@@ -1565,6 +1653,7 @@
 			"NEWVS": "New safety visit",
 			"NEWFORMATION": "New training"
 		},
+		"CAUSERIES": "Causeries",
 		"CHANTIER": "Construction sites",
 		"DASHBOARD": "Dashboard",
 		"DISCUSS": "Discuss",
@@ -1579,7 +1668,7 @@
 		"MATERIELS": "Equipment",
 		"MODULES": "Modules",
 		"MY_PASSWORD": "my password",
-		"MY_PROFILE": "My profile",
+		"MY_PROFILE": "My HSE passport",
 		"NEW": "New",
 		"PLANACTION": "Action plan",
 		"REMONTEES": "QHSE lifts",
@@ -1598,6 +1687,12 @@
 			"DETAIL": "Detailed risk analysis",
 			"EDIT": "Modify the risk analysis",
 			"LIST": "List of risk analyzes"
+		},
+		"SUB_CAUSERIES": {
+			"ADD": "Ajouter une nouvelle causerie",
+			"DETAIL": "Détail de la causerie",
+			"EDIT": "Modifier la causerie",
+			"LIST": "Liste des causeries"
 		},
 		"SUB_PDP": {
 			"ADD": "New prevention plan",

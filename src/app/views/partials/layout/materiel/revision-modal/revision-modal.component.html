@@ -1,0 +1,65 @@
+<div class="py-2 px-4">
+	<!--  class="modal-title" -->
+	<h4 mat-dialog-title>
+		<span >{{'MATERIELS.ACTION.UPDATE_REVISION' | translate}}</span>
+	</h4>
+	<!-- class="modal-body"  -->
+	<mat-dialog-content >
+		<form [formGroup]="form" autocomplete="off" class="tf-form tf-form--group-seperator-dashed " novalidate >
+			<div class="row">
+				<!-- DATE_DERNIERE_REVISION -->
+				<mat-form-field class="col-12">
+					<mat-label>{{'MATERIELS.CARD.VISITE.DATE_DERNIERE_REVISION' | translate}}</mat-label>
+					<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" formControlName="date_derniere_revision" [required]="isFieldRequired('date_derniere_revision')" placeholder="DD/MM/YYYY">
+					<mat-error *ngIf="isControlHasError('date_derniere_revision','required')">
+						<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+					</mat-error>
+				</mat-form-field>
+				<!-- DATE_NEXT_REVISION -->
+				<mat-form-field class="col-12">
+					<mat-label>{{'MATERIELS.CARD.VISITE.DATE_PROCHAINE_REVISION' | translate}}</mat-label>
+					<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" formControlName="date_prochaine_revision" [required]="isFieldRequired('date_prochaine_revision')" placeholder="DD/MM/YYYY">
+					<mat-error *ngIf="isControlHasError('date_prochaine_revision','required')">
+						<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+					</mat-error>
+				</mat-form-field>
+				<!-- TYPE REVISION -->
+				<mat-form-field class="col-12" *ngIf="data.materiel.main_categorie?.code == 'BATIMENT'">
+					<mat-label>{{'MATERIELS.CARD.VISITE.REVISION' | translate}}</mat-label>
+					<input matInput class="form-control" formControlName="revision" [required]="isFieldRequired('revision')"  placeholder="{{'ACTION.ENTER_HERE' | translate}}">
+					<mat-error *ngIf="isControlHasError('revision','required')">
+						<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+					</mat-error>
+				</mat-form-field>
+				<!-- ETAT -->
+				<div class="col-12 d-inline-flex pt-3 pb-5 ">
+					<mat-label class="">{{data.materiel.main_categorie?.code == 'BATIMENT' ? ('MATERIELS.CARD.VISITE.PRESENCE_NC' | translate) : ('MATERIELS.CARD.VISITE.ETAT' | translate)}}</mat-label>
+					<mat-radio-group class="pl-5" formControlName="etat" >
+						<mat-radio-button *ngFor="let etat of etatOptions" [value]="etat.value">{{etat.title}}</mat-radio-button>
+					</mat-radio-group>
+					<mat-error *ngIf="isControlHasError('etat','required')">
+						<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+					</mat-error>
+				</div>
+				<!-- COMMENT_REVISION -->
+				<mat-form-field class="col-12">
+					<mat-label>{{'MATERIELS.CARD.VISITE.COMMENT_REVISION' | translate}}</mat-label>
+					<textarea matInput rows="18" class="form-control" type="text" name="comment_revision" formControlName="comment_revision" [required]="isFieldRequired('comment_revision')" placeholder="{{'ACTION.ENTER_HERE' | translate}}"></textarea>
+					<mat-error *ngIf="isControlHasError('comment_revision','required')">
+						<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+					</mat-error>
+				</mat-form-field>
+				
+			</div>
+		</form>
+	</mat-dialog-content>
+	<!-- class="modal-footer" -->
+	<mat-dialog-actions class="justify-content-between">
+		<button mat-raised-button (click)="cancel()" type="button" color="warn" class="btn-small mr-2">
+			{{ 'ACTION.CANCEL' | translate }}
+		</button>
+		<button mat-raised-button type="button" color="info" class="btn-small pull-right" (click)="submitForm()" [ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': formloading}" [disabled]="formloading || !form?.valid">
+			{{'ACTION.SAVE' | translate}}
+		</button>
+	</mat-dialog-actions>
+</div>

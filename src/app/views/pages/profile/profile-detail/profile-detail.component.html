@@ -1,7 +1,1 @@
-<tf-custom-user-profile 
-  *ngIf="user"
-  [user]="user" 
-	[source]="'my-profile'"
-  (onEditUser)="editUser()"
-	>
-</tf-custom-user-profile>
+<tf-user-hse-passport *ngIf="userId" [userId]="userId"></tf-user-hse-passport>

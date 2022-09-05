@@ -47,8 +47,8 @@
 				</div>
 			</div>
 			<div class="col-9" *ngIf="user.is_virtual == 0; else virtualUser">
-				<mat-tab-group mat-align-tabs="start" animationDuration="1000ms" class="profil-mat-tab-group">
-					<mat-tab label="Détails">
+				<!-- <mat-tab-group mat-align-tabs="start" animationDuration="1000ms" class="profil-mat-tab-group">
+					<mat-tab label="Détails"> -->
 						<div class="row h-100">
 							<div class="col-md-12 h-100">
 								<div class="card h-100" *ngIf="user.is_virtual == 0; else virtualUser">
@@ -106,10 +106,9 @@
 								</div>
 							</div>
 						</div>
-					</mat-tab>
-					<mat-tab label="HSE">
+					<!-- </mat-tab> -->
+					<!-- <mat-tab label="HSE">
 						<div class="row h-100">
-							<!-- ACCUEIL SECU -->
 							<div class="col-4 h-100">
 								<div class="card h-100 pt-2">
 									<div class="box box-secu">
@@ -164,7 +163,6 @@
 									</div>
 								</div>
 							</div>
-							<!-- REMONTEES SECU -->
 							<div class="col-4 list-view">
 								<div class="card h-100 pt-2">
 									<div class="box">
@@ -184,7 +182,6 @@
 									</div>
 								</div>
 							</div>
-							<!-- CAUSERIES SECU -->
 							<div class="col-4 list-view">
 								<div class="card h-100 pt-2">
 									<div class="box">
@@ -207,7 +204,6 @@
 						</div>
 					</mat-tab>
 					<mat-tab label="EPI">
-						<!-- PRET EPI -->
 						<div class="row h-100">
 							<div class="col-12 h-100">
 								<div class="card" style="height: 500px">
@@ -263,7 +259,6 @@
 						</div>
 					</mat-tab>
 					<mat-tab label="Formations">
-						<!-- Formations -->
 						<div class="row h-100">
 							<div class="col-12 h-100">
 								<div class="card" style="height: 500px">
@@ -310,8 +305,8 @@
 								</div>
 							</div>
 						</div>
-					</mat-tab>
-				</mat-tab-group>
+					</mat-tab> -->
+				<!-- </mat-tab-group> -->
 			</div>
 		</div>
 	</tf-portlet-body>

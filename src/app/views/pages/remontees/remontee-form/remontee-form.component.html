@@ -51,7 +51,7 @@
 										</div>
 										<mat-form-field class="col-xl-12">
 											<mat-label>{{'REMONTEES.EVENT_DATE.TITLE' | translate}}</mat-label>
-											<input matInput class="form-control" [matDatepicker]="event_date_picker" formControlName="event_date" placeholder="DD/MM/YYYY">
+											<input matInput class="form-control" [matDatepicker]="event_date_picker" formControlName="event_date" placeholder="DD/MM/YYYY" [required]="isFieldRequired('event_date')">
 											<mat-datepicker-toggle matSuffix [for]="event_date_picker"></mat-datepicker-toggle>
 											<mat-datepicker #event_date_picker></mat-datepicker>
 											<button mat-button *ngIf="formHasValue('event_date')" matSuffix mat-icon-button 

@@ -324,9 +324,5 @@ export class VisiteVehiculeDetailComponent implements OnInit, OnDestroy {
 			});
 			
 		this.cdr.markForCheck();
-	} catch (error) {
-		this.formDocloading = false;
-		console.error(error);
-		throw error;
 	}
 }

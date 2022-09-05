@@ -1,0 +1,19 @@
+
+<div class="modal-body">
+	<form [formGroup]="participationForm">
+
+		<mat-form-field class="col-xl-12">
+			<mat-label>{{'CAUSERIES.RETOUR_PARTICIPANT.FORM' | translate}}</mat-label>
+			<textarea class="form-control" matInput
+				name="retour_participant"
+				formControlName="retour_participant"
+				placeholder="{{'ACTION.ENTER_HERE' | translate}}"
+				cdkTextareaAutosize
+				#autosize="cdkTextareaAutosize"
+				cdkAutosizeMinRows="4"
+				cdkAutosizeMaxRows="7"
+			></textarea>
+		</mat-form-field>
+	</form>
+	<button (click)="validate()" class="btn btn-primary btn-elevate pull-right" >{{'ACTION.SAVE' | translate}}</button>
+</div>
