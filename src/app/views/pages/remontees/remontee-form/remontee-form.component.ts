@@ -184,4 +184,8 @@ export class RemonteeFormComponent implements OnInit {
   clearValue(key){
     this.remonteeForm.get(key).patchValue(null);
   }
+
+  uploadSubmit() {
+    
+  }
 }

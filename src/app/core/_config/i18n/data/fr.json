@@ -315,6 +315,49 @@
 		},
 		"TYPE": "Type"
 	},
+	"CAUSERIES": {
+		"ACTION":{
+			"ADD_PARTICIPANT": "S'enregistrer"
+		},
+		"LIBELLE":"Libelle",
+		"LIEU":"Lieu",
+		"ORGANISATEUR":"Organisateur",
+		"PARTICIPANTS":"Participants",
+		"PARTICIPANTS_COUNT":{
+			"TITLE":"Nombre de participants", 
+			"SHORTTITLE":"Nbr de participants"
+		},
+		"RETOUR_PARTICIPANT": {
+			"TITLE":"Retour sur la causerie",
+			"FORM":"Que retenez vous de cette causerie ?",
+			"SHORTTITLE":"Retour sur la causerie"
+		},
+		"SUJET":"Sujet",
+		"DATE":"Date",
+		"CARD": {
+			"NO_PARTICIPANTS":"Aucun participant"
+		},
+		"NOTIF": {
+			"CAUSERIE_CREATED": {
+				"TITLE":"La causerie a bien été créée"
+			},
+			"CAUSERIE_UPDATED": {
+				"TITLE":"La causerie a bien été mise à jour"
+			},
+			"CAUSERIE_NOT_DELETED": {
+				"LABEL": "Suppression impossible car la causerie est affectée à un ou plusieurs participants",
+				"TITLE": "Suppression impossible car la causerie est affectée à un ou plusieurs participants"
+			},
+			"CAUSERIE_DELETED": {
+				"LABEL": "La causerie a bien été supprimé",
+				"SHORTTITLE": "La causerie a bien été supprimé",
+				"TITLE": "La causerie a bien été supprimé"
+			},
+			"LOADING": {
+				"TITLE": "Loading Entreprise"
+			}
+		}
+	},
 	"PDP": {
 		"COMPANY": "Entreprise",
 		"BEFORE_STEP_1_DESC": "Pour rappel : Entreprise utilisatrice (EU) = Client / Entreprise Extérieure (EE) = PIMAN",
@@ -560,7 +603,8 @@
 			"FULLNAME": "Nom complet",
 			"NEW_PASSWORD": "Nouveau mot de passe",
 			"PASSWORD": "Mot de passe",
-			"USERNAME": "Nom d'utilisateur"
+			"USERNAME": "Nom d'utilisateur",
+			"ENTITY": "Entreprise"
 		},
 		"LOGIN": {
 			"BUTTON": "Se Connecter",
@@ -573,10 +617,10 @@
 			"TITLE": "Créer un compte"
 		},
 		"REQUEST_ACCESS": {
-			"DESC": "Entrez vos coordonnées pour créer votre compte",
-			"SUCCESS": "Votre demande a bien été enregistrée.",
+			"DESC": "Demande de création de compte",
+			"SUCCESS": "Votre demande a bien été enregistrée.<br>Un mail vous sera envoyé dès validation par un administrateur.<br>En cas de problème, contacter le service HSE.",
 			"TITLE": "Demander un <b>accès</b>",
-			"LABEL": "Demander un accès"
+			"LABEL": "Salarié Piman : Demander un accès"
 		},
 		"VALIDATION": {
 			"AGREEMENT_REQUIRED": "Vous devez accepter les termes et conditions",
@@ -1036,7 +1080,7 @@
 			"LABEL": "BU"
 		},
 		"PROFIT_CENTER": {
-			"LABEL": "Centre de profit"
+			"LABEL": "Manager"
 		},
 		"CLIENT": {
 			"LABEL": "Client"
@@ -1055,6 +1099,21 @@
 		},
 		"INVALID": {
 			"LABEL": "Non valide"
+		},
+		"NUMBER_OF_EPI": {
+			"TITLE": "Nombre d'Epi"
+		},
+		"NUMBER_OF_TRAINING": {
+			"TITLE": "Nombre de formation"
+		},
+		"PASSEPORT_HSE": {
+			"TITLE": "Passeport HSE"
+		},
+		"REMONTEES_SECURITE": {
+			"TITLE": "Remontées Sécurité"
+		},
+		"CAUSERIES": {
+			"TITLE": "Causeries"
 		}
 	},
 	"EES": {
@@ -1313,9 +1372,23 @@
 				"NO_LOAN": "Aucun prêt",
 				"TITLE": "Suivi des utilisateurs"
 			},
+			"DOCUMENTS": {
+				"TITLE": "Documents"
+			},
 			"VISITS_MONITORING": {
 				"NO_VISITS": "Aucune visites",
 				"TITLE": "Suivi des visites"
+			},
+			"VISITE": {
+				"COMMENT_REVISION": "Commentaire",
+				"DATE_DERNIERE_REVISION": "Date de la dernière révision",
+				"DATE_PROCHAINE_REVISION": "Date de la prochaine révision",
+				"DATE_DERNIER_CONTROLE": "Date du dernier contrôle",
+				"DATE_PROCHAIN_CONTROLE": "Date du prochain contrôle",
+				"ETAT": "Etat du matériel",
+				"PRESENCE_NC": "Présence de non conformité",
+				"TITLE":"Révision / Contrôle matériel",
+				"REVISION": "Nom du contrôle"
 			}
 		},
 		"CATEGORIE": {
@@ -1493,6 +1566,22 @@
 			},
 			"NOTHING_FOUND": {
 				"TITLE": "Aucun matériel ne correspond aux critères de recherche."
+			},
+			"LATE_CONTROLE":{
+				"TITLE": "Contrôle en retard"
+			},
+			"UPCOMING_CONTROLE":{
+				"TITLE": "Contrôle à venir"
+			},
+			"NEVER_CONTROLED":{
+				"TITLE": "Jamais contrôlé"
+			},
+			"DELETE_DOC_CONFIRMATION":{
+				"TITLE":"Ce document sera supprimé de façon définitive.",
+				"LABEL": "Êtes-vous sûr de vouloir continuer ?"
+			},
+			"DOCUMENT_DELETED":{
+				"DONE":"Le document a bien été supprimé"
 			}
 		},
 		"NUMERO_SERIE": {
@@ -1559,6 +1648,7 @@
 			"NEWACTION": "Nouvelle Action",
 			"NEWAR": "Nouvelle analyse de risque",
 			"NEWPDP": "Nouveau plan de prévention",
+			"NEWCAUSERIE": "Nouvelle causerie",
 			"NEWCHANTIER": "Nouveau chantier",
 			"NEWENTREPRISE": "Nouveau client",
 			"NEWMATERIEL": "Nouveau matériel",
@@ -1567,6 +1657,7 @@
 			"NEWFORMATION": "Nouvelle formation"
 		},
 		"CHANTIER": "Chantiers",
+		"CAUSERIES": "Causeries",
 		"DASHBOARD": "Tableau de Bord",
 		"DISCUSS": "Discuss",
 		"QUIZ": "Quizz",
@@ -1580,7 +1671,7 @@
 		"MATERIELS": "Matériel",
 		"MODULES": "Modules",
 		"MY_PASSWORD": "Mon mot de passe",
-		"MY_PROFILE": "Mon profil",
+		"MY_PROFILE": "Mon passeport HSE",
 		"NEW": "Nouveau",
 		"PLANACTION": "Plan d'actions",
 		"REMONTEES": "Remontées QHSE",
@@ -1605,6 +1696,12 @@
 			"DETAIL": "Plan de prévention détaillé",
 			"EDIT": "Modifier le plan de prévention",
 			"LIST": "Liste des plans de prévention"
+		},
+		"SUB_CAUSERIES": {
+			"ADD": "Ajouter une nouvelle causerie",
+			"DETAIL": "Détail de la causerie",
+			"EDIT": "Modifier la causerie",
+			"LIST": "Liste des causeries"
 		},
 		"SUB_CHANTIER": {
 			"ADD": "Ajouter un nouveau chantier",

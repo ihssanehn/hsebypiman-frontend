@@ -11,6 +11,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { AuthNoticeService, AuthService } from '../../../../core/auth';
 import { Type } from '@app/core/models';
 import { BuService, EntityService } from '@app/core/services';
+import { environment } from '@env/environment';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -24,7 +26,7 @@ export class SignupComponent implements OnInit {
 	signupForm: FormGroup;
 	loading = false;
 	errors: any = [];
-
+	notPimanError:boolean = false;
   entities: Type[];
   buList: Type[];
   entitiesLoaded: boolean = false;
@@ -59,6 +61,7 @@ export class SignupComponent implements OnInit {
 	 * On init
 	 */
 	ngOnInit() {
+		localStorage.setItem(environment.entity, 'piman');
 		this.initRegistrationForm();
     this.getEntities();
     this.getBu();
@@ -130,6 +133,7 @@ export class SignupComponent implements OnInit {
 	 */
 	submit() {
 		const controls = this.signupForm.controls;
+
 		/** check form */
 		if (this.signupForm.invalid) {
 			Object.keys(controls).forEach(controlName =>
@@ -138,27 +142,32 @@ export class SignupComponent implements OnInit {
 			return;
 		}
 
-		this.loading = true;
+		var email = controls['email'].value;
+		email = email.split('@');
+		if(email[1] != 'piman-group.fr'){
+			this.notPimanError = true;
+			return;
+		}
 
-    	let formData = {...this.signupForm.getRawValue()};
-			this.authService.signup(formData)
-			.subscribe(
-				res=>{
-				
-					if(res){
-						this.authNoticeService.setNotice(this.translate.instant('AUTH.REQUEST_ACCESS.SUCCESS'), 'success');
-						this.router.navigateByUrl('/auth/login');
-						this.loading = false;
-					}
-				},
-				err => {
-					this.authNoticeService.setNotice(this.translate.instant('NOTIF.ACCOUNT_ALREADY_EXISTS.TITLE'), 'danger');
+		this.loading = true;
+		let formData = {...this.signupForm.getRawValue()};
+		this.authService.signup(formData)
+		.subscribe(
+			res=>{
+			
+				if(res){
+					this.authNoticeService.setNotice(this.translate.instant('AUTH.REQUEST_ACCESS.SUCCESS'), 'success');
+					this.router.navigateByUrl('/auth/login');
 					this.loading = false;
-					this.cdr.markForCheck();
 				}
-			);
-		
-	}
+			},
+			err => {
+				this.authNoticeService.setNotice(this.translate.instant('NOTIF.ACCOUNT_ALREADY_EXISTS.TITLE'), 'danger');
+				this.loading = false;
+				this.cdr.markForCheck();
+			}
+		);
+	}		
 
 	/**
 	 * Checking control validation

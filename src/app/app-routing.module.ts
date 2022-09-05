@@ -109,6 +109,14 @@ const routes: Routes = [
 				}
 			},
 			{
+				path: 'causeries',
+				loadChildren: () => import('@app/views/pages/causeries/causeries.module').then(m => m.CauseriesModule),
+				// canActivate: [ModuleGuard],
+				// data: {
+				// 	moduleCodes:['CAUSERIE']
+				// }
+			},
+			{
 				path: 'discuss',
 				loadChildren: () => import('@app/views/pages/discuss/discuss.module').then(m => m.DiscussModule),
 				canActivate: [ModuleGuard],

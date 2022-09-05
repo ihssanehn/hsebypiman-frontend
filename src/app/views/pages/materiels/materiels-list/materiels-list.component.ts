@@ -33,7 +33,7 @@ export class MaterielsListComponent implements OnInit, AfterViewInit {
 	};
 	showFilters:Boolean = false;
 	displayedMaterielColumns = [
-		"vs_retard", "code", "libelle", "numero_serie", "main_categorie",  "actual_user",  "common_stock", "marque", "action", 
+		"vs_retard", "libelle", "numero_serie", "main_categorie",  "actual_user", "action", 
 	];
 	selectedMateriel: Materiel = null;
 
@@ -150,13 +150,27 @@ export class MaterielsListComponent implements OnInit, AfterViewInit {
 	}
 
 	getNextVisiteTooltip(materiel){
-		var _date = moment(materiel.next_visite).format('DD/MM/YYYY');
-		if(materiel.vs_retard){
-			return this.translate.instant("VISITES.NOTIF.LATE_VISIT.TITLE")+' : '+_date;
-		}else if(materiel.vs_a_prevoir){
-			return this.translate.instant("VISITES.NOTIF.UPCOMING_VISIT.TITLE")+' : '+_date;
+		if(materiel.date_prochaine_revision){
+			var _date = moment(materiel.date_prochaine_revision).format('DD/MM/YYYY');
+			if(moment(materiel.date_prochaine_revision).isBefore(moment())){
+				return this.translate.instant("MATERIELS.NOTIF.LATE_CONTROLE.TITLE")+' : '+_date;
+			}else if(moment(materiel.date_prochaine_revision).isBefore(moment().add(7, 'days'))){
+				return this.translate.instant("MATERIELS.NOTIF.UPCOMING_CONTROLE.TITLE")+' : '+_date;
+			}else{
+				return null
+			}
 		}else{
-			return null
+			return this.translate.instant("MATERIELS.NOTIF.NEVER_CONTROLED.TITLE")
+		}
+	}
+
+	isRetardVisite(materiel){
+		if(!materiel.has_controle){
+			return null;
+		}else if(!materiel.date_prochaine_revision || moment(materiel.date_prochaine_revision).isBefore(moment())){
+			return "retard"
+		}else if(moment(materiel.date_prochaine_revision).isBefore(moment().add(7, 'days'))){
+			return "a_venir"
 		}
 	}
 }

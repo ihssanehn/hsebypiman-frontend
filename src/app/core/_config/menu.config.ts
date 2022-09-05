@@ -96,13 +96,24 @@ export class MenuConfig {
 					permissionOnly: ['ROOT', 'ADMIN', 'MANAGER']
 				},
 				{
+					title: 'Causeries',
+					root: true,
+					alignment: 'left',
+					page: '/causeries',
+					translate: 'MENU.CAUSERIES',
+					needModule: true,
+					moduleCode: ['CAUSERIE'],
+					svgIcon: 'business'
+				},
+				{
 					title: 'Suivi Hse',
 					root: true,
 					alignment: 'left',
 					page: '/suivi-hse',
 					translate: 'MENU.SUIVI_HSE',
 					needModule: true,
-					moduleCode: ['SALARIES']
+					moduleCode: ['SALARIES'],
+					permissionOnly: ['ROOT', 'ADMIN', 'MANAGER']
 				},
 				{
 					title: 'Discuss',
@@ -543,6 +554,35 @@ export class MenuConfig {
 					}
 				]
 			},
+			causeries: {
+				btnAdd: {
+					title: 'Nouvelle causerie',
+					root: true,
+					alignment: 'left',
+					page: '/causeries/add',
+					translate: 'MENU.BTN.NEWCAUSERIE',
+					permissionOnly: ["causerie_canAdd"]
+				},
+
+				items: [
+					// {
+					// 	icon: 'dashboard',
+					// 	title: 'Dashboards',
+					// 	root: true,
+					// 	alignment: 'left',
+					// 	page: '/entreprises/dashboard',
+					// 	translate: 'MENU.DASHBOARD',
+					// },
+					{
+						title: 'Liste',
+						root: true,
+						alignment: 'left',
+						page: '/causeries/list',
+						translate: 'MENU.LIST',
+						icon: 'view_list',
+					}
+				]
+			},
 			actions: {
 				btnAdd: {
 					title: 'Nouvelle Action',
@@ -592,14 +632,14 @@ export class MenuConfig {
 				} : {},
 
 				items: [
-					{
-						icon: 'dashboard',
-						title: 'Dashboards',
-						root: true,
-						alignment: 'left',
-						page: '/suivi-hse/dashboard',
-						translate: 'MENU.DASHBOARD',
-					},
+					// // {
+					// // 	icon: 'dashboard',
+					// // 	title: 'Dashboards',
+					// // 	root: true,
+					// // 	alignment: 'left',
+					// // 	page: '/suivi-hse/dashboard',
+					// // 	translate: 'MENU.DASHBOARD',
+					// // },
 					{
 						title: 'Liste',
 						root: true,
@@ -608,24 +648,24 @@ export class MenuConfig {
 						translate: 'MENU.LIST',
 						icon: 'view_list',
 					},
-					{
-						title: 'Objectifs',
-						root: true,
-						alignment: 'left',
-						page: '/suivi-hse/goal',
-						translate: 'MENU.GOALS',
-						icon: 'filter_center_focus',
-						permissionOnly: ['ADMIN', 'ROOT']
-					},
-					{
-						title: 'Admin',
-						root: true,
-						alignment: 'left',
-						page: '/suivi-hse/admin',
-						translate: 'MENU.ROOT',
-						icon: 'settings',
-						permissionOnly: ['ROOT', 'ADMIN'],
-					}
+					// {
+					// 	title: 'Objectifs',
+					// 	root: true,
+					// 	alignment: 'left',
+					// 	page: '/suivi-hse/goal',
+					// 	translate: 'MENU.GOALS',
+					// 	icon: 'filter_center_focus',
+					// 	permissionOnly: ['ADMIN', 'ROOT']
+					// },
+					// {
+					// 	title: 'Admin',
+					// 	root: true,
+					// 	alignment: 'left',
+					// 	page: '/suivi-hse/admin',
+					// 	translate: 'MENU.ROOT',
+					// 	icon: 'settings',
+					// 	permissionOnly: ['ROOT', 'ADMIN'],
+					// }
 				]
 			},
 			formations: {

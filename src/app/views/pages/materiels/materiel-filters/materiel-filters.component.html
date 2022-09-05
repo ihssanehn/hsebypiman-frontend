@@ -17,7 +17,7 @@
 							<mat-icon>clear</mat-icon>
 						</button>
 					</mat-form-field>
-					<mat-form-field class="col-3 st-group" floatLabel="always" appearance="none" >
+					<!-- <mat-form-field class="col-3 st-group" floatLabel="always" appearance="none" >
 						<span class="st-label pointer" (click)="toggleCheck('show_inactives')">{{'MATERIELS.SHOW_INACTIVES.SHORTITLE' | translate}}</span>
 						<mat-slide-toggle id="show_inactives" [checked]="filterForm.get('show_inactives').value == 1" (change)="onCheckChange($event, 'show_inactives')"></mat-slide-toggle>
 						<textarea matInput hidden></textarea>
@@ -26,7 +26,7 @@
 						<span class="st-label pointer" (click)="toggleCheck('only_common_stock')">{{'MATERIELS.ONLY_COMMON_STOCK.TITLE' | translate}}</span>
 						<mat-slide-toggle id="only_common_stock" [checked]="filterForm.get('only_common_stock').value == 1" (change)="onCheckChange($event, 'only_common_stock')"></mat-slide-toggle>
 						<textarea matInput hidden></textarea>
-					</mat-form-field>
+					</mat-form-field> -->
 				</div>
 				<div class="row">
 					<div class="col-xl-6 col-md-6 col-sm-6 col-xs-12">
@@ -40,7 +40,7 @@
 							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_entree_end" placeholder="DD/MM/YYYY">
 						</mat-form-field>
 					</div>
-					<div class="col-xl-6 col-md-6 col-sm-6 col-xs-12">
+					<!-- <div class="col-xl-6 col-md-6 col-sm-6 col-xs-12">
 						<h6>{{'MATERIELS.DATE_SORTIE.TITLE' | translate}}</h6>
 						<mat-form-field class="col-md-6 col-xl-6">
 							<mat-label>{{'COMMON.DATE_RANGE.BETWEEN.TITLE' | translate}} :</mat-label>
@@ -50,7 +50,7 @@
 							<mat-label>{{'COMMON.DATE_RANGE.AND.TITLE' | translate}} :</mat-label>
 							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_sortie_end" placeholder="DD/MM/YYYY">
 						</mat-form-field>
-					</div>
+					</div> -->
 				</div>
 			</form>
 		</tf-portlet-body>

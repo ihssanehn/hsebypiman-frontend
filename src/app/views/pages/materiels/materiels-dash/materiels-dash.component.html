@@ -1,19 +1,19 @@
 <tf-search-list-bar [(ngModel)]="filter" (change)="getMaterielsDash()" [hasAdvancedSearch]="true" [showFilters]="showFilters" (advancedSearchChange)="advancedSearchChanged($event)" class="row row-filters"></tf-search-list-bar>
 <tf-materiel-filters [hidden]="!showFilters" (change)="udpateFilters($event)" class="row"></tf-materiel-filters>
 <div class="row px-2">
-	<div class="col-3">
+	<div class="col-4">
 		<tf-widget-indicator [value]="stats.total_materiels" desc="{{'MATERIELS.DASH.MATERIEL_NO.TITLE' | translate}}" *ngIf="stats; else loading"></tf-widget-indicator>
 	</div>
-	<div class="col-3">
+	<div class="col-4">
 		<tf-widget-indicator [value]="stats.total_prets" [valueClass]="getClass('down', stats.total_prets)" desc="{{'MATERIELS.DASH.MATERIEL_LOAN.TITLE' | translate}}" *ngIf="stats; else loading"></tf-widget-indicator>
 	</div>
-	<div class="col-3">
+	<div class="col-4">
 		<tf-widget-indicator [value]="stats.total_dispo" [valueClass]="getClass('up', stats.total_dispo)" desc="{{'MATERIELS.DASH.MATERIEL.AVAILABLE.TITLE' | translate}}" *ngIf="stats; else loading"></tf-widget-indicator>
 	</div>
-	<div class="col-3">
+	<!-- <div class="col-3">
 		<tf-widget-indicator [value]="stats.total_vss" [valueClass]="getClass('up', stats.total_vss)" desc="{{'MATERIELS.DASH.VISITS_NO.TITLE' | translate}}" *ngIf="stats; else loading"></tf-widget-indicator>
-	</div>
-	<div class="col-12">
+	</div> -->
+	<!-- <div class="col-12">
 		<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8" *ngIf="stats; else loading">
 			<tf-portlet-body class="tf-portlet__body--fit " style="padding: 20px 15px;">
 				<span class="tf-subtitle">{{'MATERIELS.DASH.LATE_MATERIAL.TITLE' | translate}} : {{stats.retards.length}}</span>
@@ -49,7 +49,7 @@
 				</div>
 			</tf-portlet-body>
 		</tf-portlet>
-	</div>
+	</div> -->
 	<div class="col-4">
 		<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
 			<tf-portlet-body class="tf-portlet__body--fit" style="padding: 20px 15px;">
