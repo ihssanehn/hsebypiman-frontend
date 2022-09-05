@@ -112,7 +112,8 @@ export class MenuConfig {
 					page: '/suivi-hse',
 					translate: 'MENU.SUIVI_HSE',
 					needModule: true,
-					moduleCode: ['SALARIES']
+					moduleCode: ['SALARIES'],
+					permissionOnly: ['ROOT', 'ADMIN', 'MANAGER']
 				},
 				{
 					title: 'Discuss',
@@ -631,14 +632,14 @@ export class MenuConfig {
 				} : {},
 
 				items: [
-					{
-						icon: 'dashboard',
-						title: 'Dashboards',
-						root: true,
-						alignment: 'left',
-						page: '/suivi-hse/dashboard',
-						translate: 'MENU.DASHBOARD',
-					},
+					// // {
+					// // 	icon: 'dashboard',
+					// // 	title: 'Dashboards',
+					// // 	root: true,
+					// // 	alignment: 'left',
+					// // 	page: '/suivi-hse/dashboard',
+					// // 	translate: 'MENU.DASHBOARD',
+					// // },
 					{
 						title: 'Liste',
 						root: true,
@@ -656,15 +657,15 @@ export class MenuConfig {
 					// 	icon: 'filter_center_focus',
 					// 	permissionOnly: ['ADMIN', 'ROOT']
 					// },
-					{
-						title: 'Admin',
-						root: true,
-						alignment: 'left',
-						page: '/suivi-hse/admin',
-						translate: 'MENU.ROOT',
-						icon: 'settings',
-						permissionOnly: ['ROOT', 'ADMIN'],
-					}
+					// {
+					// 	title: 'Admin',
+					// 	root: true,
+					// 	alignment: 'left',
+					// 	page: '/suivi-hse/admin',
+					// 	translate: 'MENU.ROOT',
+					// 	icon: 'settings',
+					// 	permissionOnly: ['ROOT', 'ADMIN'],
+					// }
 				]
 			},
 			formations: {
