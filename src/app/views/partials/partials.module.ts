@@ -191,6 +191,7 @@ import { EditAccueilSecuModalComponent } from './layout/users/edit-accueil-secu-
 import { LivretAccueilModalComponent } from './layout/modal/livret-accueil-modal/livret-accueil-modal.component';
 import { RemonteeDetailModalComponent } from './layout/modal/remontee-detail-modal/remontee-detail-modal.component';
 import { RemonteeDetailBaseComponent } from './layout/remontees/details/remontee-detail-base/remontee-detail-base.component';
+import { UserHsePassportComponent } from './layout/users/user-hse-passport/user-hse-passport.component';
 
 
 
@@ -325,7 +326,8 @@ import { RemonteeDetailBaseComponent } from './layout/remontees/details/remontee
 		EditAccueilSecuModalComponent,
 		RemonteeDetailModalComponent,
 		RemonteeDetailBaseComponent,
-		ParticipateCauserieModalComponent
+		ParticipateCauserieModalComponent,
+		UserHsePassportComponent
 
 	],
 	exports: [
@@ -457,7 +459,8 @@ import { RemonteeDetailBaseComponent } from './layout/remontees/details/remontee
 		LivretAccueilModalComponent,
 		RemonteeDetailModalComponent,
 		RemonteeDetailBaseComponent,
-		ParticipateCauserieModalComponent
+		ParticipateCauserieModalComponent,
+		UserHsePassportComponent
 
 	],
 	imports: [

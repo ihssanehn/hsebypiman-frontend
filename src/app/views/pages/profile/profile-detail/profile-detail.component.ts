@@ -1,9 +1,10 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { Router } from '@angular/router';
-import { Subscription } from "rxjs";
-import { User as User, AuthService } from '@app/core/auth';
-import { UserService, DocumentService } from '@app/core/services';
-import { map } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import * as _moment from 'moment';
+import { default as _rollupMoment } from 'moment';
+import { UserService } from '@app/core/services';
+import { AuthService, User } from '@app/core/auth';
 
 @Component({
   selector: 'tf-profile-detail',
@@ -12,53 +13,20 @@ import { map } from 'rxjs/operators';
 })
 export class ProfileDetailComponent implements OnInit, OnDestroy {
   
-	// Private properties
+	userId: number;
 	private subscriptions: Subscription[] = [];
-	user$: User;
-	user: User;
-
-	/**
-	 * Component constructor
-	 *
-	 * @param activatedRoute: ActivatedRoute
-	 * @param router: Router
-	 * @param actionFB: FormBuilder
-	 * @param layoutUtilsService: LayoutUtilsService
-	 */
+  
 	constructor(
-		private router: Router,
-		private authService: AuthService,
-		private userService: UserService,
-		private documentService: DocumentService,
-		private cdr: ChangeDetectorRef,
+		private authService: AuthService
 	) {
-		this.authService.currentUser.subscribe(x=> this.user$ = x);
+		this.authService.currentUser.subscribe(user => this.userId = user.id);
 	}
-
+  
 	ngOnInit() {
-		this.getUser()
-		if(!this.cdr['destroyed']){ 
-			this.cdr.detectChanges();
-		}
-	}
 
-	async getUser(){
-		await this.userService.getUserById(this.user$.id).toPromise().then(res=>{
-			this.user = res.result.data;
-			if(this.user.photo_profil){
-				this.user.photo_profil.src = this.documentService.readFile(this.user.photo_profil.id);
-			}
-			this.cdr.markForCheck();
-		});
-	}
-		
-	editUser(){
-		this.router.navigateByUrl('profile/edit');
 	}
 
 	ngOnDestroy() {
 		this.subscriptions.forEach(sb => sb.unsubscribe());
 	}
-
-
 }

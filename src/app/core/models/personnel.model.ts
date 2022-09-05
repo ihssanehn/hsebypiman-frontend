@@ -22,5 +22,10 @@ export class Personnel {
     formations?: any;
     photo_profil_id?: Number;
     photo_profil?: any;
+    passeport_hse?: number;
+    remontees?: number;
+    causerie?: number;
+    epi?: number;
+    formation?: number;
 
 }
