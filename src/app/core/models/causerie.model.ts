@@ -9,6 +9,7 @@ export class Causerie {
     sujet?:string;
     date: Date;
     lieu: string;
+    description?: string;
     organisateur_id: number;
     organisateur: User;
     created_at: Date;

@@ -7,11 +7,11 @@ import { UserService } from '@app/core/services';
 import { AuthService, User } from '@app/core/auth';
 
 @Component({
-  selector: 'tf-profile-detail',
-  templateUrl: './profile-detail.component.html',
-  styleUrls: ['./profile-detail.component.scss']
+  selector: 'tf-profile-hse-detail',
+  templateUrl: './profile-hse-detail.component.html',
+  styleUrls: ['./profile-hse-detail.component.scss']
 })
-export class ProfileDetailComponent implements OnInit, OnDestroy {
+export class ProfileHseDetailComponent implements OnInit, OnDestroy {
   
 	userId: number;
 	private subscriptions: Subscription[] = [];

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProfileDetailComponent } from './profile-detail.component';
+import { ProfileHseDetailComponent } from './profile-hse-detail.component';
 
-describe('ProfileDetailComponent', () => {
-  let component: ProfileDetailComponent;
-  let fixture: ComponentFixture<ProfileDetailComponent>;
+describe('ProfileHseDetailComponent', () => {
+  let component: ProfileHseDetailComponent;
+  let fixture: ComponentFixture<ProfileHseDetailComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProfileDetailComponent ]
+      declarations: [ ProfileHseDetailComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProfileDetailComponent);
+    fixture = TestBed.createComponent(ProfileHseDetailComponent);
     component = fixture.componentInstance;
     // fixture.markForCheck();
   });

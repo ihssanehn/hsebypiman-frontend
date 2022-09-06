@@ -54,8 +54,9 @@ import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapte
 
 
 import { ProfileComponent } from './profile.component';
-import { ProfileDetailComponent } from './profile-detail/profile-detail.component'
-import { ProfileEditComponent } from './profile-edit/profile-edit.component'
+import { ProfileHseDetailComponent } from './profile-hse/profile-hse-detail/profile-hse-detail.component'
+import { ProfileUserEditComponent } from './profile-user/profile-user-edit/profile-user-edit.component';
+import { ProfileUserDetailComponent } from './profile-user/profile-user-detail/profile-user-detail.component'
 
 
 
@@ -70,13 +71,18 @@ const routes: Routes = [
 				pathMatch: 'full'
 			},
 			{
-				path: 'detail',
-				component: ProfileDetailComponent,
+				path: 'user/detail',
+				component: ProfileUserDetailComponent,
 				pathMatch: 'full'
 			},
 			{
-				path: 'edit',
-				component: ProfileEditComponent,
+				path: 'user/edit',
+				component: ProfileUserEditComponent,
+				pathMatch: 'full'
+			},
+			{
+				path: 'hse/detail',
+				component: ProfileHseDetailComponent,
 				pathMatch: 'full'
 			}
 		]
@@ -162,8 +168,9 @@ const routes: Routes = [
 	],
 	declarations: [
 		ProfileComponent,
-		ProfileDetailComponent,
-		ProfileEditComponent,
+		ProfileHseDetailComponent,
+		ProfileUserEditComponent,
+		ProfileUserDetailComponent,
 	]
 })
 export class ProfileModule {}
