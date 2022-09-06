@@ -2324,6 +2324,12 @@
 			},
 			"EMPLOYEE_INFOS": {
 				"TITLE": "Informations Salarié"
+			},
+			"GENERAL_INFOS": {
+				"TITLE": "Informations générales"
+			},
+			"EMPLOYER_INFOS": {
+				"TITLE": "Informations employeur"
 			}
 		},
 		"VIRTUEL_PROFILE_ONLY": {

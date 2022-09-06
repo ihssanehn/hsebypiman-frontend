@@ -2320,6 +2320,12 @@
 			},
 			"EMPLOYEE_INFOS": {
 				"TITLE": "Employee Information"
+			},
+			"GENERAL_INFOS": {
+				"TITLE": "General informations"
+			},
+			"EMPLOYER_INFOS": {
+				"TITLE": "Employer information"
 			}
 		},
 		"VIRTUEL_PROFILE_ONLY": {

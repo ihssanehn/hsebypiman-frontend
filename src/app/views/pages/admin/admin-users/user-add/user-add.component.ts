@@ -72,7 +72,8 @@ export class UserAddComponent implements OnInit {
       rqth: [{value:0, disabled:false}, [Validators]],
       date_visite_medicale_passed: [{value:'', disabled:false}, [Validators]],
       date_visite_medicale_next: [{value:'', disabled:false}, [Validators]],
-      is_blocked: [{value:0, disabled:false}, [Validators]]
+      is_blocked: [{value:0, disabled:false}, [Validators]],
+      is_internal: [{value:0, disabled:false}, [Validators]]
     });
     this.loaded = true;
     this.setDynamicForm();

@@ -159,6 +159,7 @@ export class UserFormComponent implements OnInit {
       is_blocked.setValue(1);
     }
   }
+
   onVirtuelCheckChange(event){
     const is_virtual = this.userForm.get('is_virtual') as FormControl;
     if(event.checked){
@@ -167,5 +168,19 @@ export class UserFormComponent implements OnInit {
       is_virtual.setValue(0);
     }
   }
+
+  onInternalCheckChange(event){
+    const is_internal = this.userForm.get('is_internal') as FormControl;
+    if(event.checked){
+      is_internal.setValue(1);
+    }else{
+      is_internal.setValue(0);
+    }
+  }
+
+  isInternal() {
+    return this.userForm.get('is_internal').value;
+  }
+
 
 }
