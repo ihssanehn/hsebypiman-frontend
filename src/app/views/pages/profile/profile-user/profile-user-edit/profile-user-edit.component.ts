@@ -12,11 +12,11 @@ import { FormStatus } from '@app/core/_base/crud/models/form-status';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'tf-profile-edit',
-  templateUrl: './profile-edit.component.html',
-  styleUrls: ['./profile-edit.component.scss']
+  selector: 'tf-profile-user-edit',
+  templateUrl: './profile-user-edit.component.html',
+  styleUrls: ['./profile-user-edit.component.scss']
 })
-export class ProfileEditComponent implements OnInit, OnDestroy {
+export class ProfileUserEditComponent implements OnInit, OnDestroy {
   
   	
 	

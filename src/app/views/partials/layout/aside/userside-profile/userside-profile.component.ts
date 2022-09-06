@@ -71,12 +71,14 @@ export class UserSideProfileComponent implements OnInit {
 		}
 	}
 
-	goToProfileDetail(){
-		this.router.navigateByUrl('profile/detail');
+	goToHseProfileDetail(){
+		this.router.navigateByUrl('profile/hse/detail');
 	}
-	goToEdit(){
-		this.router.navigateByUrl('profile/edit');
+
+	goToUserProfileDetail(){
+		this.router.navigateByUrl('profile/user/detail');
 	}
+	
 	goToParams(){
 		this.router.navigateByUrl('/admin');
 	}
