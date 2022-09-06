@@ -282,8 +282,14 @@
   </tf-portlet>
 
 
-  <ng-template #noDataFound>
+<ng-template #noDataFound>
     <span class="no-data-label">
         {{'COMMON.NO_DATA_FOUND.TITLE' | translate}}
     </span>
-  </ng-template>
+</ng-template>
+
+<ng-template #invalid>
+	<span class="no-data-label invalid">
+		{{'COMMON.INVALID.LABEL' | translate}}
+	</span>
+</ng-template>
