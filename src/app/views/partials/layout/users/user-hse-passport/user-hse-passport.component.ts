@@ -22,6 +22,7 @@ import { AssignEpiModalComponent, AssignFormationModalComponent } from '@app/vie
 export class UserHsePassportComponent implements OnInit {
 
   @Input() userId: number;
+  @Input() source: string;
 
   user: User;
 	userForm: FormGroup;
