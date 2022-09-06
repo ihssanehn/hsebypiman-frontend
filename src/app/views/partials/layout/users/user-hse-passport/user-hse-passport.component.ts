@@ -182,7 +182,7 @@ export class UserHsePassportComponent implements OnInit {
     modalRef.componentInstance.editMode = true;
     modalRef.componentInstance.pret = {
       'materiel_id': epi.id,
-      'materiel_label': epi.categorie.libelle + " " + epi.code,
+      'materiel_label': epi.categorie.libelle + " " + epi.numero_serie,
       'date_pret': epi.pivot.date_pret,
       'date_retour': epi.pivot.date_retour
     };
