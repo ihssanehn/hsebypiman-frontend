@@ -1659,7 +1659,7 @@
 		"DISCUSS": "Discuss",
 		"QUIZ": "Quiz",
 		"EDIT_MY_PASSWORD": "Change my password",
-		"EDIT_PROFILE": "Edit my profile",
+		"EDIT_PROFILE": "Edit my user profile",
 		"ENTREPRISES": "External companies",
 		"FLASHINFOS": "Flash Info",
 		"GOALS": "Goals",
@@ -1668,7 +1668,9 @@
 		"MATERIELS": "Equipment",
 		"MODULES": "Modules",
 		"MY_PASSWORD": "my password",
-		"MY_PROFILE": "My HSE passport",
+		"MY_PROFILE": "My profile",
+		"MY_HSE_PROFILE": "My HSE profile",
+		"MY_USER_PROFILE": "My User profile",
 		"NEW": "New",
 		"PLANACTION": "Action plan",
 		"REMONTEES": "QHSE lifts",
@@ -2320,6 +2322,12 @@
 			},
 			"EMPLOYEE_INFOS": {
 				"TITLE": "Employee Information"
+			},
+			"GENERAL_INFOS": {
+				"TITLE": "General informations"
+			},
+			"EMPLOYER_INFOS": {
+				"TITLE": "Employer information"
 			}
 		},
 		"VIRTUEL_PROFILE_ONLY": {

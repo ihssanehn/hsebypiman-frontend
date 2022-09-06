@@ -93,7 +93,8 @@ export class UserEditComponent implements OnInit, OnDestroy {
       rqth: [{value:0, disabled:false}, [Validators]],
       date_visite_medicale_passed: [{value:'', disabled:false}, [Validators]],
       date_visite_medicale_next: [{value:'', disabled:false}, [Validators]],
-      is_blocked: [{value:0, disabled:false}, [Validators]]
+      is_blocked: [{value:0, disabled:false}, [Validators]],
+      is_internal: [{value:0, disabled:false}, [Validators]]
     });
     this.loaded = true;
     
@@ -162,9 +163,11 @@ export class UserEditComponent implements OnInit, OnDestroy {
 		this.subscriptions.forEach(sb => sb.unsubscribe());
 	}
 
-
-  patchForm(item){
+  patchForm(item) {
     this.userForm.patchValue(item);
+    if(item.entity_id || item.bu_id || item.profit_center_id || item.client_id) {
+      this.userForm.get('is_internal').setValue(1);
+    }
   }
 
       

@@ -1,9 +1,12 @@
 <tf-portlet class="tf-portlet--height-fluid mat-elevation-z8" id="portlet-user" *ngIf="user">
-    <div class="tf-portlet-header mb-2">
-        <span class="title">
+    <div class="tf-portlet-header mb-3">
+        <span class="title" *ngIf="source == 'admin'">
             <a [routerLink]="['/suivi-hse/list']">{{'MENU.SUB_SUIVI_HSE.LIST' | translate}}</a><span class="divider">></span><span class="id-item">{{user | fullName}}</span>
         </span>
-        <div class="pull-right">
+        <span class="title" *ngIf="source == 'my-profile'">
+            {{'MENU.MY_HSE_PROFILE' | translate}}
+        </span>
+        <!-- <div class="pull-right">
             <mat-form-field class="date-range-selector pull-right" appearance="fill" *ngIf="selectedPeriodId">
                 <mat-label>{{'SUIVI_HSE.PERIOD.TITLE' | translate}}</mat-label>
                 <mat-select [(value)]="selectedPeriodId" (selectionChange)="changePeriod($event.value)">
@@ -12,13 +15,12 @@
                   </mat-option>
                 </mat-select>
             </mat-form-field>
-
-        </div>
-        <span>
+        </div> -->
+        <!-- <span>
             <button mat-icon-button color="info" matTooltip="{{'SUIVI_HSE.ACTION.EDIT_GOAL.TITLE' | translate}}" (click)="editMetrics()" *ngxPermissionsOnly="['user_canUpdate']">
                 <mat-icon>edit</mat-icon>
               </button>
-        </span>
+        </span> -->
     </div>
     <tf-portlet-body class="tf-portlet__body--fit">
 
@@ -280,8 +282,14 @@
   </tf-portlet>
 
 
-  <ng-template #noDataFound>
+<ng-template #noDataFound>
     <span class="no-data-label">
         {{'COMMON.NO_DATA_FOUND.TITLE' | translate}}
     </span>
-  </ng-template>
+</ng-template>
+
+<ng-template #invalid>
+	<span class="no-data-label invalid">
+		{{'COMMON.INVALID.LABEL' | translate}}
+	</span>
+</ng-template>

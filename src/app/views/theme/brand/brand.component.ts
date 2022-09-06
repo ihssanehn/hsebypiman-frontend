@@ -3,6 +3,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 // Layout
 import { LayoutConfigService } from '../../../core/_base/layout';
 import { HtmlClassService } from '../html-class.service';
+import { AuthService } from '@app/core/auth';
 
 @Component({
 	selector: 'tf-brand',
@@ -15,7 +16,11 @@ export class BrandComponent implements OnInit, AfterViewInit {
 	headerStickyLogo: string;
 	menuHeaderDisplay: boolean;
 
-	constructor(private layoutConfigService: LayoutConfigService, public htmlClassService: HtmlClassService) {
+	constructor(
+		private layoutConfigService: LayoutConfigService, 
+		public htmlClassService: HtmlClassService,
+		public authService: AuthService
+	) {
 	}
 
 	/**
@@ -40,4 +45,5 @@ export class BrandComponent implements OnInit, AfterViewInit {
 	 */
 	ngAfterViewInit(): void {
 	}
+
 }

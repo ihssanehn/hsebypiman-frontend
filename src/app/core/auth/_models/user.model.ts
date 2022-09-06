@@ -43,6 +43,7 @@ export class User extends BaseModel {
     photo_profil?: any;
     date_realisation_accueil_secu?: Date;
     date_realisation_livret_accueil?: Date;
+    base_name?: string;
 
     clear?(): void {
         this.id = undefined;
