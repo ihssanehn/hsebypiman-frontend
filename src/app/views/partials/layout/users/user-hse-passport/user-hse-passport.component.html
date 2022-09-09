@@ -73,7 +73,7 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <div class="row mt-3">
+                                    <div class="row mt-3" *ngIf="isActiveModule(['LIVRET_ACCUEIL'])">
                                         <div class="col-3">
                                             <img [src]="livretSecuStatusIcon" alt="undone" class="shdw-5">
                                         </div>
@@ -87,7 +87,7 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <div class="row mt-3">
+                                    <div class="row mt-3" *ngIf="isActiveModule(['QUIZ'])">
                                         <div class="col-3">
                                             <img [src]="quizSecuStatusIcon" alt="done" class="shdw-5">
                                         </div>
@@ -110,7 +110,7 @@
                             </div>
                         </div>
                         <!-- REMONTEES SECU -->
-                        <div class="col-8 list-view">
+                        <div class="col-8 list-view" *ngIf="isActiveModule(['REMONTEE'])">
                             <div class="card h-100 pt-2">
                                 <div class="box">
                                     <h5><b>Remontées sécurité</b></h5>
@@ -129,7 +129,7 @@
                         </div>
                     </div>
                 </mat-tab>
-                <mat-tab label="CAUSERIES">
+                <mat-tab label="CAUSERIES"  *ngIf="isActiveModule(['CAUSERIE'])">
                     <div class="row h-100">
                         <!-- CAUSERIES ANIMEES -->
                         <div class="col-6 h-100">
@@ -169,7 +169,7 @@
                         </div>
                     </div>
                 </mat-tab>
-                <mat-tab label="EPI">
+                <mat-tab label="EPI" *ngIf="isActiveModule(['MATERIEL'])">
                     <!-- PRET EPI -->
                     <div class="row h-100">
                         <div class="col-12 h-100">

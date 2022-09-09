@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, ChangeDetectorRef, Input } from '@angular
 import { FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PersonnelService, PeriodService, DocumentService, UserService, RemonteeService, MaterielService, CauserieService } from '@app/core/services';
+import { PersonnelService, PeriodService, DocumentService, UserService, RemonteeService, MaterielService, CauserieService, ModuleService } from '@app/core/services';
 import * as _moment from 'moment';
 import { default as _rollupMoment } from 'moment';
 import { Personnel, FollowUpPeriod, QcmSession, Remontee, Causerie, Formation, Materiel } from '@app/core/models';
@@ -56,6 +56,7 @@ export class UserHsePassportComponent implements OnInit {
     private causerieService: CauserieService,
     private remonteeService: RemonteeService,
     private materielService: MaterielService,
+    private moduleService: ModuleService,
 		private cdr: ChangeDetectorRef,
     public translate: TranslateService
   ) {}
@@ -325,5 +326,7 @@ export class UserHsePassportComponent implements OnInit {
 		this.router.navigateByUrl('causeries/detail/'+id);
   }
   
-
+  isActiveModule(modules){
+    return this.moduleService.isActived(modules);
+  }
 }
