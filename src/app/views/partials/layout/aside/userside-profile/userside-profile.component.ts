@@ -12,7 +12,7 @@ import { environment } from '@env/environment';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import Swal from 'sweetalert2';
 import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
-import { DocumentService } from '@app/core/services';
+import { DocumentService, ModuleService } from '@app/core/services';
 
 	
 
@@ -43,7 +43,7 @@ export class UserSideProfileComponent implements OnInit {
 		private router: Router,	
 		private ngxRolesService: NgxRolesService,
 		private documentService: DocumentService,
-
+		private moduleService: ModuleService,
 	) {
 		this.authService.getCurrentUser().subscribe(x=> {
 			if(x.photo_profil_id)(
@@ -101,9 +101,11 @@ export class UserSideProfileComponent implements OnInit {
 	}
 
 	hasPermission(test){
-
 		return test.filter(permission =>  this.ngxRolesService.getRole(permission)).length > 0;
-		
+	}
+
+	isActiveModule(codes){
+		return this.moduleService.isActived(codes);
 	}
 	
 }
