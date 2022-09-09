@@ -25,17 +25,17 @@
 						</div>
 					</div>
 				</a>
-				<a ngbDropdownItem (click)="goToHseProfileDetail()" href="javascript:;" class="mb-2">
-					<div class="tf-notification__item-details">
-						<div class="tf-notification__item-title tf-font-bold">
-							{{'MENU.MY_HSE_PROFILE' | translate}}
-						</div>
-					</div>
-				</a>
 				<a ngbDropdownItem (click)="goToUserProfileDetail()" href="javascript:;" class="mb-2">
 					<div class="tf-notification__item-details">
 						<div class="tf-notification__item-title tf-font-bold">
 							{{'MENU.MY_USER_PROFILE' | translate}}
+						</div>
+					</div>
+				</a>
+				<a ngbDropdownItem (click)="goToHseProfileDetail()" *ngIf="isActiveModule(['SALARIES'])" href="javascript:;" class="mb-2">
+					<div class="tf-notification__item-details">
+						<div class="tf-notification__item-title tf-font-bold">
+							{{'MENU.MY_HSE_PROFILE' | translate}}
 						</div>
 					</div>
 				</a>
