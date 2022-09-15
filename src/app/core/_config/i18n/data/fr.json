@@ -2705,6 +2705,9 @@
 			"TRAINING": {
 				"TITLE": "Formations",
 				"TRAINING_MONITORING": "Suivis des formations"
+			},
+			"DELEGATION_SIGNATURE": {
+				"TITLE": "Délégation de signature"
 			}
 		},
 		"PERIOD": {

@@ -193,8 +193,33 @@
 }
 
 img.shdw-5 {
-	box-shadow: 0 4px 13px -3px rgba(0, 0, 0, 0.23);
-	border-radius: 5px;
+    box-shadow: -6px 10px 19px -6px rgba(0, 0, 0, 0.10);
+    border-radius: 13px;
+}
+
+.doc-box {
+	flex: 1;
+
+	.doc-picto {
+		width: 60px;
+		height: 60px;
+		padding: 1.2em;
+		filter: invert(43%) sepia(7%) saturate(3421%) hue-rotate(120deg) brightness(98%) contrast(86%);
+	}
+
+	.doc-action {
+		font-weight: normal;
+		font-size: 14px;
+		cursor: pointer;
+
+		&__show {
+			text-decoration: underline;
+		}
+
+		&__add {
+			justify-content: center;
+		}
+	}
 }
 
 .table.table-sm.table-epi {
