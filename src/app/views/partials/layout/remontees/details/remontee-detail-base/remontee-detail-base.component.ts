@@ -12,6 +12,7 @@ import { ShowDocumentModalComponent } from '@app/views/partials/layout/modal/sho
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
 import { ImageLightboxContentDialogComponent } from '@app/views/partials/layout/modal/image-lightbox-content-dialog/image-lightbox-content-dialog.component';
+import { ActionFormModalComponent } from '../../../modal/action-form-modal/action-form-modal.component';
 
 @Component({
   selector: 'tf-remontee-detail-base',
@@ -259,20 +260,23 @@ export class RemonteeDetailBaseComponent implements OnInit {
 		})
 	}
 
-	async createActionFromRemontee() {
-		const res = await this.remonteeService.createAction(this.remontee.id).toPromise();
-		if (res) {
-			Swal.fire({
-				icon: 'success',
-				title: this.translate.instant("PLANACTIONS.NOTIF.ACTION_CREATED.TITLE"),
-				showConfirmButton: false,
-				timer: 1500
-			}).then(() => {
-				this.getRemonte(this.remontee.id);
-			});
-		} else {
-			throw new Error();
-		}
+	async openActionFromModal() {
+		const modalRef = this.modalService.open(ActionFormModalComponent, {size: 'xl',scrollable: true,centered : true});
+		modalRef.componentInstance.idRemontee = this.remontee.id;
+		modalRef.result.then((res) => {
+			if (res) {
+				Swal.fire({
+					icon: 'success',
+					title: this.translate.instant("PLANACTIONS.NOTIF.ACTION_CREATED.TITLE"),
+					showConfirmButton: false,
+					timer: 1500
+				}).then(() => {
+					this.getRemonte(this.remontee.id);
+				});
+			} else {
+				throw new Error();
+			}
+		});
 	}
 
 }
