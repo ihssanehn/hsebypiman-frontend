@@ -201,8 +201,8 @@ img.shdw-5 {
 	flex: 1;
 
 	.doc-picto {
-		width: 60px;
-		height: 60px;
+		width: 55px;
+		height: 55px;
 		padding: 1.2em;
 		filter: invert(43%) sepia(7%) saturate(3421%) hue-rotate(120deg) brightness(98%) contrast(86%);
 	}
@@ -262,12 +262,12 @@ img.shdw-5 {
 }
 
 .list-view {
-	max-height: 500px !important;
+	max-height: 610px !important;
 
 	.list-container {
 		overflow-y: auto;
 		overflow-x: hidden;
-		max-height: 410px !important;
+		max-height: 510px !important;
 
 		.row {
 			cursor: pointer;

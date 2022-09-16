@@ -82,11 +82,11 @@
                 <mat-tab label="HSE">
                     <div class="row h-100">
                         <!-- ACCUEIL SECU -->
-                        <div class="col-4 h-100">
+                        <div class="col-4 h-100" *ngIf="isActiveModule(['QUIZ']) || isActiveModule(['ACCUEIL_SECURITE'])">
                             <div class="card h-100 pt-2">
                                 <div class="box box-secu">
-                                    <h5><b>Mon accueil Sécurité Piman</b></h5>
-                                    <div class="row mt-3">
+                                    <h5><b>Mon accueil Sécurité</b></h5>
+                                    <div class="row mt-3" *ngIf="isActiveModule(['ACCUEIL_SECURITE'])">
                                         <div class="col-3">
                                             <img [src]="accueilSecuStatusIcon" alt="undone" class="shdw-5">
                                         </div>
@@ -100,7 +100,7 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <div class="row mt-3" *ngIf="isActiveModule(['LIVRET_ACCUEIL'])">
+                                    <div class="row mt-3" *ngIf="isActiveModule(['LIVRET_ACCUEIL', 'ACCUEIL_SECURITE'])">
                                         <div class="col-3">
                                             <img [src]="livretSecuStatusIcon" alt="undone" class="shdw-5">
                                         </div>
@@ -137,7 +137,7 @@
                             </div>
                         </div>
                         <!-- REMONTEES SECU -->
-                        <div class="col-8 list-view" *ngIf="isActiveModule(['REMONTEE'])">
+                        <div class="list-view" *ngIf="isActiveModule(['REMONTEE'])" [ngClass]="!isActiveModule(['QUIZ']) && !isActiveModule(['ACCUEIL_SECURITE'])?'col-12':'col-8'">
                             <div class="card h-100 pt-2">
                                 <div class="box">
                                     <h5><b>Remontées sécurité</b></h5>
@@ -200,7 +200,7 @@
                     <!-- PRET EPI -->
                     <div class="row h-100">
                         <div class="col-12 h-100">
-                            <div class="card" style="height: 500px">
+                            <div class="card" style="height: 605px">
                                 <div class="card-title">
                                     <h5><b>Prêt EPI</b></h5>
                                     <span>
@@ -256,7 +256,7 @@
                     <!-- Formations -->
                     <div class="row h-100">
                         <div class="col-12 h-100">
-                            <div class="card" style="height: 500px">
+                            <div class="card" style="height: 605px">
                                 <div class="card-title">
                                     <h5><b>Formations</b></h5>
                                     <span>
