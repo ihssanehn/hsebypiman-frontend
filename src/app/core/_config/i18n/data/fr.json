@@ -604,7 +604,8 @@
 			"NEW_PASSWORD": "Nouveau mot de passe",
 			"PASSWORD": "Mot de passe",
 			"USERNAME": "Nom d'utilisateur",
-			"ENTITY": "Entreprise"
+			"ENTITY": "Entreprise",
+			"MOBILE_PHONE_NUMBER": "Tél. mobile"
 		},
 		"LOGIN": {
 			"BUTTON": "Se Connecter",
@@ -620,7 +621,7 @@
 			"DESC": "Demande de création de compte",
 			"SUCCESS": "Votre demande a bien été enregistrée.<br>Un mail vous sera envoyé dès validation par un administrateur.<br>En cas de problème, contacter le service HSE.",
 			"TITLE": "Demander un <b>accès</b>",
-			"LABEL": "Salarié Piman : Demander un accès"
+			"LABEL": "Demander un accès"
 		},
 		"VALIDATION": {
 			"AGREEMENT_REQUIRED": "Vous devez accepter les termes et conditions",
@@ -2705,6 +2706,9 @@
 			"TRAINING": {
 				"TITLE": "Formations",
 				"TRAINING_MONITORING": "Suivis des formations"
+			},
+			"DELEGATION_SIGNATURE": {
+				"TITLE": "Délégation de signature"
 			}
 		},
 		"PERIOD": {

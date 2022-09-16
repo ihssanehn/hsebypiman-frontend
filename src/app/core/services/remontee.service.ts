@@ -62,8 +62,8 @@ export class RemonteeService{
         return this.http.post<JsonResponse<any>>(this.baseUrl+'/'+id+'/comment', comment, { headers: httpHeaders });
     }
 
-    createAction(remontee_id){
-        return this.http.post<JsonResponse<any>>(this.baseUrl+'/'+remontee_id+'/action', {});
+    createAction(remontee_id, formData){
+        return this.http.post<JsonResponse<any>>(this.baseUrl+'/'+remontee_id+'/action', formData);
     }
     
 

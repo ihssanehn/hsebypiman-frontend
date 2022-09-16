@@ -29,6 +29,7 @@ export class UserHsePassportComponent implements OnInit {
 	loaded = false;
   SECU_DONE_ICON = "./assets/media/hse-svg/secu_done.svg";
   SECU_UNDONE_ICON = "./assets/media/hse-svg/secu_undone.svg";
+  FILE_ICON = "./assets/media/hse-svg/picto-file.svg";
 
   qcmSession: QcmSession;
   remontees: Remontee[] = [];
@@ -328,5 +329,17 @@ export class UserHsePassportComponent implements OnInit {
   
   isActiveModule(modules){
     return this.moduleService.isActived(modules);
+  }
+
+  showDelSignationDoc() {
+    // TODO
+  }
+
+  downloadDelSignationDoc() {
+    // TODO
+  }
+
+  uploadDelSignationDoc() {
+    // TODO
   }
 }

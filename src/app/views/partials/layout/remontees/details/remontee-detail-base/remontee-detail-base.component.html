@@ -61,7 +61,7 @@
 		</div>
 		<ng-container>
 			<div class="row mt-4 px-6 extra-actions">
-				<button type="button" *ngIf="!remontee.action" mat-raised-button color="info" (click)="createActionFromRemontee()">
+				<button type="button" *ngIf="!remontee.action" mat-raised-button color="info" (click)="openActionFromModal()">
 					{{'PLANACTIONS.ACTION.CREATE_ACTION' | translate}}
 				</button>
 

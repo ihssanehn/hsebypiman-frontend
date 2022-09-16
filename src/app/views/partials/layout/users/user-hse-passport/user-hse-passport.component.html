@@ -28,7 +28,6 @@
         <div class="col-md-3">
             <div class="card">
               <div class="box">
-                    <!-- TODO photo -->
                     <ngx-avatar class="user-avatar" [round]="false" [size]="200" cornerRadius="4" src="{{user.photo_profil ? user.photo_profil.src : null}}" name="{{user | fullName}}"></ngx-avatar>
               </div>
               <div class="tf-divider">
@@ -41,6 +40,28 @@
                 <p><span class="label pull-left mr-2">{{'COMMON.BIRTHDAY.LABEL' | translate}}</span><span class="" *ngIf="user.date_naissance; else noDataFound">{{user.date_naissance | date:'dd/MM/yyyy'}}</span></p>
                 <p><span class="label pull-left mr-2">{{'COMMON.FONCTION.LABEL' | translate}}</span><span class="" *ngIf="user.fonction; else noDataFound">{{user.fonction?.libelle}}</span></p>
               </div>
+              <div class="tf-divider">
+                <span></span>
+              </div>
+
+              <div class="box box-coords doc-box" style="">
+                <h5><b>{{'SUIVI_HSE.CARD.DELEGATION_SIGNATURE.TITLE' | translate}}</b></h5>
+                <div class="row mt-3">
+                    <div class="col-3">
+                        <img [src]="FILE_ICON" alt="doc" class="doc-picto shdw-5">
+                    </div>
+                    <div class="col-9 d-flex justify-content-between align-items-center">
+                        <div class="doc-action doc-action__show" (click)="showDelSignationDoc()">Voir le document</div>
+                        <button mat-icon-button color="info" matTooltip="{{'ACTION.DOWNLOAD' | translate}}" (click)="downloadDelSignationDoc()">
+                            <mat-icon>file_download</mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <div class="row mt-3 doc-action doc-action__add" (click)="uploadDelSignationDoc()">
+                   + Ajouter le document
+                </div>
+              </div>
+
               <div class="tf-divider">
                 <span></span>
               </div>
