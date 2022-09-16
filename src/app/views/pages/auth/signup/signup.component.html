@@ -130,8 +130,8 @@
                         <div class="form-group">
                             <mat-form-field>
                                 <mat-label>{{ 'AUTH.INPUT.MOBILE_PHONE_NUMBER' | translate }}</mat-label>                               
-                                <input matInput class="form-control" type="text" placeholder="{{ 'AUTH.INPUT.MOBILE_PHONE_NUMBER' | translate }}" formControlName="mobile_phone_number" autocomplete="off" [required]="isFieldRequired('mobile_phone_number')"/>
-                                <mat-error *ngIf="isControlHasError('mobile_phone_number','required')">
+                                <input matInput class="form-control" type="text" placeholder="{{ 'AUTH.INPUT.MOBILE_PHONE_NUMBER' | translate }}" formControlName="telephone" autocomplete="off" [required]="isFieldRequired('telephone')"/>
+                                <mat-error *ngIf="isControlHasError('telephone','required')">
                                     <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
                                 </mat-error>
                             </mat-form-field>

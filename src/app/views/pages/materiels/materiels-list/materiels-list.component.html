@@ -82,10 +82,22 @@
 				<tr mat-header-row *matHeaderRowDef="displayedMaterielColumns"></tr>
 				<tr mat-row class="highlight-row" *matRowDef="let row; columns: displayedMaterielColumns;"></tr>
 			</table>
+
+			<ng-container *ngIf="materielsList.data.length == 0">
+				<div class="row" style="margin: 150px">
+					<div class="col-12 text-center">
+						<div style="font-size: 90px">
+							<i class="fa fa-folder-open"></i> 
+						</div>
+						<h5>Rien à afficher ...</h5>	
+					</div>
+				</div>
+			</ng-container>
+
 		</div>
-		<ng-template #noMaterielFind>
+		<!-- <ng-template #noMaterielFind>
 			<h6>{{'MATERIELS.NOTIF.NOTHING_FOUND.TITLE' | translate}}</h6>
-		</ng-template>
+		</ng-template> -->
 
 		<tf-pagination (change)="changePagination()" [(ngModel)]="pagination" ngDefaultControl></tf-pagination>
 

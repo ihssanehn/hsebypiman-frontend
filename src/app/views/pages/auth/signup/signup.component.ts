@@ -113,7 +113,7 @@ export class SignupComponent implements OnInit {
 			bu_id: ['', Validators.required],
 			entreprise_autre: ['', Validators.required],
 			fonction_autre: [''],
-			mobile_phone_number: ['']
+			telephone: ['']
 		});
 
 		const email = this.signupForm.get('email') as FormControl;
@@ -121,7 +121,7 @@ export class SignupComponent implements OnInit {
 		const bu_id = this.signupForm.get('bu_id') as FormControl;
 		const entreprise_autre = this.signupForm.get('entreprise_autre') as FormControl;
 		const fonction_autre = this.signupForm.get('fonction_autre') as FormControl;
-		const mobile_phone_number = this.signupForm.get('mobile_phone_number') as FormControl;
+		const telephone = this.signupForm.get('telephone') as FormControl;
 
 		email.valueChanges.pipe(
       debounceTime(200)
@@ -143,7 +143,7 @@ export class SignupComponent implements OnInit {
 				entreprise_autre.disable();
 				entreprise_autre.setValidators([]);
 				fonction_autre.disable();
-				mobile_phone_number.disable();
+				telephone.disable();
 			
 
 			}else{
@@ -151,7 +151,7 @@ export class SignupComponent implements OnInit {
 				entreprise_autre.enable();
 				entreprise_autre.setValidators([Validators.required]);
 				fonction_autre.enable();
-				mobile_phone_number.enable();
+				telephone.enable();
 
 				entity_id.disable();
 				entity_id.setValidators([]);
