@@ -193,6 +193,7 @@ import { RemonteeDetailModalComponent } from './layout/modal/remontee-detail-mod
 import { RemonteeDetailBaseComponent } from './layout/remontees/details/remontee-detail-base/remontee-detail-base.component';
 import { UserHsePassportComponent } from './layout/users/user-hse-passport/user-hse-passport.component';
 import { ActionFormModalComponent } from './layout/modal/action-form-modal/action-form-modal.component';
+import { UploadDelSignatureDocModalComponent } from './layout/modal/upload-del-signature-doc-modal/upload-del-signature-doc-modal.component';
 
 
 
@@ -329,7 +330,8 @@ import { ActionFormModalComponent } from './layout/modal/action-form-modal/actio
 		RemonteeDetailBaseComponent,
 		ParticipateCauserieModalComponent,
 		UserHsePassportComponent,
-		ActionFormModalComponent
+		ActionFormModalComponent,
+		UploadDelSignatureDocModalComponent
 
 	],
 	exports: [
@@ -544,7 +546,8 @@ import { ActionFormModalComponent } from './layout/modal/action-form-modal/actio
 		LivretAccueilModalComponent,
 		RemonteeDetailModalComponent,
 		ParticipateCauserieModalComponent,
-		ActionFormModalComponent
+		ActionFormModalComponent,
+		UploadDelSignatureDocModalComponent
 	],
 })
 export class PartialsModule {
