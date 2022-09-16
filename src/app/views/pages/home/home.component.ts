@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy  {
 	}
 
 	launchModals(){
-		if(!this.user.date_realisation_livret_accueil && this.isActive(['LIVRET_ACCUEIL'])){
+		if(!this.user.date_realisation_livret_accueil && this.isActive(['LIVRET_ACCUEIL']) && this.isActive(['ACCUEIL_SECURITE'])){
 			this.getLivretAccueilModal();
 		}else if(this.user.is_quiz_approved || !this.isActive(['QUIZ'])) {
 			this.getFlashInfos()
