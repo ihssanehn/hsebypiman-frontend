@@ -36,13 +36,29 @@
 											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 										</mat-error>
 									</mat-form-field>
+
+									<mat-form-field class="col-12">
+										<mat-label>{{'COMMON.PHONE.LABEL' | translate}}</mat-label>
+										<input matInput class="form-control" type="text" name="telephone" formControlName="telephone" placeholder="{{'ACTION.ENTER_HERE' | translate}}" />
+										<mat-error *ngIf="isControlHasError(userForm, 'telephone','required')">
+											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+										</mat-error>
+									</mat-form-field>
+									
+									<mat-form-field class="col-12">
+										<mat-label>{{'COMMON.FONCTION.LABEL' | translate}}</mat-label>
+										<input matInput class="form-control" type="text" name="fonction_autre" formControlName="fonction_autre" placeholder="{{'ACTION.ENTER_HERE' | translate}}" />
+										<mat-error *ngIf="isControlHasError(userForm, 'fonction_autre','required')">
+											<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+										</mat-error>
+									</mat-form-field>
 		
 
 
 
 
 
-									
+
 									<div class="col-12">
 										<button mat-raised-button [ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': userFormloading}" [disabled]="userFormloading || userForm.invalid" color="success" class="pull-right">
 											{{'ACTION.SAVE' | translate}}
