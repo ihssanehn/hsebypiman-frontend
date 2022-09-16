@@ -91,5 +91,12 @@ export class UserService extends HttpService{
 		return this.http.put<any>(`${this.baseUrl}/` + user_id+'/livret-accueil/init', {});
 	}
 
+  saveDelegationSignatureDoc(user_id: number, datas) {
+    const httpHeaders = new HttpHeaders();
+    httpHeaders.set("Content-Type", "multipart/form-data");
+    
+    return this.http.post<JsonResponse<User>>(this.baseUrl+'/'+user_id+'/delegation-signature-doc', datas, { headers: httpHeaders });
+  }
+
 
 }

@@ -13,6 +13,7 @@ import { User } from '@app/core/auth';
 import { FormStatus } from '@app/core/_base/crud/models/form-status';
 import { EditAccueilSecuModalComponent } from '@app/views/partials/layout/users/edit-accueil-secu-modal/edit-accueil-secu-modal.component';
 import { AssignEpiModalComponent, AssignFormationModalComponent } from '@app/views/partials/layout';
+import { UploadDelSignatureDocModalComponent } from '../../modal/upload-del-signature-doc-modal/upload-del-signature-doc-modal.component';
 
 @Component({
   selector: 'tf-user-hse-passport',
@@ -332,14 +333,32 @@ export class UserHsePassportComponent implements OnInit {
   }
 
   showDelSignationDoc() {
-    // TODO
+    if(this.user.delegation_signature_doc) {
+      var url = this.documentService.readFile(this.user.delegation_signature_doc.id);
+      window.open(url, '_blank');
+    }
   }
 
   downloadDelSignationDoc() {
-    // TODO
+    if(this.user.delegation_signature_doc) {
+      return this.documentService.downloadFile(this.user.delegation_signature_doc.id);
+    }
   }
 
   uploadDelSignationDoc() {
-    // TODO
+    const modalRef = this.modalService.open(UploadDelSignatureDocModalComponent, {size: 'md',scrollable: true,centered : true});
+    modalRef.componentInstance.userId = this.user.id;
+		modalRef.result.then(res => {
+      if(res){
+        this.reloadUser();
+        Swal.fire({
+          icon: 'success',
+          title: "Le document a bien été enregistré.",
+          showConfirmButton: false,
+          timer: 1500,
+            
+        })
+      }
+    });
   }
 }
