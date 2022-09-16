@@ -77,6 +77,8 @@ export class UserEditComponent implements OnInit, OnDestroy {
       date_naissance: [{value:'', disabled:false}, [Validators]],
       email: [{value:'', disabled:false}, Validators.required],
       telephone: [{value:'', disabled:false}, [Validators]],
+      entreprise_autre: [{value:'', disabled:false}, [Validators]],
+      fonction_autre: [{value:'', disabled:false}, [Validators]],
       date_entree: [{value:'', disabled:false}, [Validators]],
       date_sortie: [{value:'', disabled:false}, [Validators]],
       role_id: [{value:'', disabled:false}, [Validators]],
@@ -102,8 +104,8 @@ export class UserEditComponent implements OnInit, OnDestroy {
   setDynamicForm(){
     this.userForm.get('is_virtual').valueChanges.subscribe((value)=>{
       const date_entree = this.userForm.get('date_entree') as FormControl;
-      const fonction_id = this.userForm.get('date_sortie') as FormControl;
-      const date_sortie = this.userForm.get('fonction_id') as FormControl;
+      const date_sortie = this.userForm.get('date_sortie') as FormControl;
+      const fonction = this.userForm.get('fonction_autre') as FormControl;
       const telephone_urgence = this.userForm.get('nom_urgence') as FormControl;
       const nom_urgence = this.userForm.get('telephone_urgence') as FormControl;
       const rqth = this.userForm.get('lien_parente_urgence') as FormControl;
@@ -116,7 +118,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
         date_naissance.setValidators([]);
         date_entree.disable();
         date_sortie.disable();
-        fonction_id.disable();
+        fonction.disable();
         nom_urgence.disable();
         telephone_urgence.disable();
         lien_parente_urgence.disable();
@@ -127,7 +129,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
         date_naissance.enable();
         date_entree.enable();
         date_sortie.enable();
-        fonction_id.enable();
+        fonction.enable();
         nom_urgence.enable();
         telephone_urgence.enable();
         lien_parente_urgence.enable();
@@ -137,7 +139,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
       }
 
       date_entree.updateValueAndValidity();
-      fonction_id.updateValueAndValidity();
+      fonction.updateValueAndValidity();
       date_sortie.updateValueAndValidity();
       telephone_urgence.updateValueAndValidity();
       nom_urgence.updateValueAndValidity();

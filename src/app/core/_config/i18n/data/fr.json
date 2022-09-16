@@ -931,6 +931,10 @@
 			"LABEL": "Adresse mail",
 			"TITLE": "Adresse mail"
 		},
+		"ENTITY": {
+			"LABEL": "Entité",
+			"TITLE": "Entité"
+		},
 		"FIRSTNAME": {
 			"LABEL": "Prénom",
 			"TITLE": "Prénom"

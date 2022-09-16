@@ -929,6 +929,10 @@
 			"LABEL": "Mail address",
 			"TITLE": "Mail address"
 		},
+		"ENTITY": {
+			"LABEL": "Entité",
+			"TITLE": "Entité"
+		},
 		"FIRSTNAME": {
 			"LABEL": "First name",
 			"TITLE": "First name"
