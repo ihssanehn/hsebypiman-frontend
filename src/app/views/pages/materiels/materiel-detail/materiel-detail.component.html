@@ -8,11 +8,9 @@
 				<mat-icon>more_vert</mat-icon>
 			</button>
 			<div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
-				<ng-container *ngxPermissionsOnly="['materiel_canUpdate']">
-					<button *ngIf="materiel.main_categorie?.code != 'VEHICULE'" mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editMateriel(materiel.id)">
-						<mat-icon>edit</mat-icon>
-					</button>
-				</ng-container>
+				<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editMateriel(materiel.id)" *ngxPermissionsOnly="['materiel_canUpdate']">
+					<mat-icon>edit</mat-icon>
+				</button>
 				<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteMateriel(materiel.id)" *ngxPermissionsOnly="['materiel_canArchieve']">
 					<mat-icon>delete</mat-icon>
 				</button>
@@ -49,7 +47,7 @@
 						</div>
 					</div>
 					<div class="card" *ngIf="materiel.has_controle">
-						<h5>{{'MATERIELS.CARD.VISITE.TITLE' | translate}}<mat-icon color="primary" class="pull-right pointer" (click)="openRevisionModal()">edit</mat-icon></h5>
+						<h5>{{'MATERIELS.CARD.VISITE.TITLE' | translate}}<mat-icon color="primary" class="pull-right pointer" (click)="openRevisionModal()" *ngxPermissionsOnly="['materiel_canUpdate']">edit</mat-icon></h5>
 						<div class="box box-ar-vs pt-0" style="flex: 1;">
 							<div class="box" style="flex:1">
 								<p><span class="label pull-left mr-2">{{materiel.main_categorie?.code == 'BATIMENT' ? ('MATERIELS.CARD.VISITE.DATE_DERNIER_CONTROLE' | translate) : ('MATERIELS.CARD.VISITE.DATE_DERNIERE_REVISION' | translate)}}</span><span *ngIf="materiel.date_derniere_revision; else noData">{{materiel.date_derniere_revision | date:'dd/MM/yyyy'}}</span></p>
@@ -68,7 +66,7 @@
 			<div class="col-md-7">
 				<div class="cards">
 					<div class="card">
-						<h5>{{'MATERIELS.CARD.DOCUMENTS.TITLE' | translate}}<mat-icon color="primary" class="pull-right pointer" (click)="openAddDocumentModal()">add</mat-icon></h5>
+						<h5>{{'MATERIELS.CARD.DOCUMENTS.TITLE' | translate}}<mat-icon color="primary" class="pull-right pointer" (click)="openAddDocumentModal()" *ngxPermissionsOnly="['materiel_canUpdate']">add</mat-icon></h5>
 						<div class="box box-ar-vs pt-0" style="flex: 1;">
 							<div class="box" style="flex:1" *ngIf="materiel.documents.length > 0; else noDocument">
 								<div class="pointer" (click)="openDocumentModal(doc)" *ngFor="let doc of materiel.documents; let i = index">
@@ -100,7 +98,7 @@
 											<p class="blue text-center">{{'MATERIELS.READY.TITLE' | translate}} : {{materiel.actual_user?.pivot.date_pret | date:'dd/MM/yyyy'}}</p>
 										</div>
 										<div class="col-3">
-	
+
 										</div>
 										<div class="col-2">
 											<a class="pull-right" (click)="goToUserDetail(materiel.actual_user.id)" matTooltip="{{'ACTION.SHOW_USER' | translate}}">
@@ -108,13 +106,13 @@
 											</a>
 										</div>
 	
-										<div class="col-12" *ngIf="materiel.main_categorie?.code != 'VEHICULE'">
+										<div class="col-12" *ngxPermissionsOnly="['materiel_canUpdate']">
 											<button mat-raised-button class="btn-small pull-right" color="info" (click)="$event.stopPropagation(); openPretModal('return', materiel.actual_user.pivot)">{{'MATERIELS.ACTION.RETURN-MATERIEL' | translate}}</button>
 										</div>
 									</ng-container>
 									<ng-template #noUserInProgress>
 										<div class="col-12">{{'MATERIELS.CARD.USER_TRACKING.NO_CURRENT_USER' | translate}}</div>
-										<div class="col-12" *ngIf="materiel.main_categorie?.code != 'VEHICULE'">
+										<div class="col-12" *ngxPermissionsOnly="['materiel_canUpdate']">
 											<button mat-raised-button class="btn-small pull-right" color="info" (click)="$event.stopPropagation(); openPretModal('add')">{{'MATERIELS.ACTION.ASSIGN_MATERIEL' | translate}}</button>
 										</div>
 									</ng-template>
@@ -136,10 +134,7 @@
 													<p class="text-center">{{'MATERIELS.RETURN.TITLE' | translate}}: {{salarie.pivot.date_retour | date:'dd/MM/yyyy'}}</p>
 												</div>
 												<div class="col-2">
-													<a class="pull-right" (click)="goToUserDetail(salarie.id)" matTooltip="{{'ACTION.SHOW_USER' | translate}}">
-														<mat-icon color="primary">visibility</mat-icon>
-													</a>
-													<a *ngIf="materiel.main_categorie?.code != 'VEHICULE'" class="pull-right" (click)="$event.stopPropagation(); openPretModal('update', salarie.pivot)" matTooltip="{{'MATERIELS.ACTION.MODIFY_LOAN' | translate}}">
+													<a class="pull-right" *ngxPermissionsOnly="['materiel_canUpdate']" (click)="$event.stopPropagation(); openPretModal('update', salarie.pivot)" matTooltip="{{'MATERIELS.ACTION.MODIFY_LOAN' | translate}}">
 														<mat-icon color="accent">edit</mat-icon>
 													</a>
 												</div>
@@ -156,7 +151,7 @@
 									<div class="col-12">
 										<p>{{'MATERIELS.CARD.USER_TRACKING.NO_LOAN' | translate}}</p>
 									</div>
-									<div class="col-12" *ngIf="materiel.main_categorie?.code != 'VEHICULE'">
+									<div class="col-12" *ngxPermissionsOnly="['materiel_canUpdate']">
 										<button mat-raised-button color="info" class="btn-small" (click)="$event.stopPropagation(); openPretModal('add')">{{'MATERIELS.ACTION.ASSIGN_MATERIEL' | translate}}</button>
 									</div>
 								</div>
