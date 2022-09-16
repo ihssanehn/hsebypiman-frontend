@@ -619,7 +619,7 @@
 		},
 		"REQUEST_ACCESS": {
 			"DESC": "Demande de création de compte",
-			"SUCCESS": "Votre demande a bien été enregistrée.<br>Un mail vous sera envoyé dès validation par un administrateur.<br>En cas de problème, contacter le service HSE.",
+			"SUCCESS": "Demande enregistrée.<br><br>Votre mot de passe vous sera envoyé par mail dès validation par un administrateur.<br><br>En cas de problème, merci de contacter support-pds@piman-group.fr",
 			"TITLE": "Demander un <b>accès</b>",
 			"LABEL": "Demander un accès"
 		},
