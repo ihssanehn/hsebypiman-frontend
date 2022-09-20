@@ -13,6 +13,7 @@ import { User } from '@app/core/auth';
 import { FormStatus } from '@app/core/_base/crud/models/form-status';
 import { EditAccueilSecuModalComponent } from '@app/views/partials/layout/users/edit-accueil-secu-modal/edit-accueil-secu-modal.component';
 import { AssignEpiModalComponent, AssignFormationModalComponent } from '@app/views/partials/layout';
+import { UploadDelSignatureDocModalComponent } from '../../modal/upload-del-signature-doc-modal/upload-del-signature-doc-modal.component';
 
 @Component({
   selector: 'tf-user-hse-passport',
@@ -29,6 +30,7 @@ export class UserHsePassportComponent implements OnInit {
 	loaded = false;
   SECU_DONE_ICON = "./assets/media/hse-svg/secu_done.svg";
   SECU_UNDONE_ICON = "./assets/media/hse-svg/secu_undone.svg";
+  FILE_ICON = "./assets/media/hse-svg/picto-file.svg";
 
   qcmSession: QcmSession;
   remontees: Remontee[] = [];
@@ -328,5 +330,35 @@ export class UserHsePassportComponent implements OnInit {
   
   isActiveModule(modules){
     return this.moduleService.isActived(modules);
+  }
+
+  showDelSignationDoc() {
+    if(this.user.delegation_signature_doc) {
+      var url = this.documentService.readFile(this.user.delegation_signature_doc.id);
+      window.open(url, '_blank');
+    }
+  }
+
+  downloadDelSignationDoc() {
+    if(this.user.delegation_signature_doc) {
+      return this.documentService.downloadFile(this.user.delegation_signature_doc.id);
+    }
+  }
+
+  uploadDelSignationDoc() {
+    const modalRef = this.modalService.open(UploadDelSignatureDocModalComponent, {size: 'md',scrollable: true,centered : true});
+    modalRef.componentInstance.userId = this.user.id;
+		modalRef.result.then(res => {
+      if(res){
+        this.reloadUser();
+        Swal.fire({
+          icon: 'success',
+          title: "Le document a bien été enregistré.",
+          showConfirmButton: false,
+          timer: 1500,
+            
+        })
+      }
+    });
   }
 }

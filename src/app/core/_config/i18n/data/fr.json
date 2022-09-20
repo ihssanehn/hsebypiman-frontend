@@ -604,7 +604,8 @@
 			"NEW_PASSWORD": "Nouveau mot de passe",
 			"PASSWORD": "Mot de passe",
 			"USERNAME": "Nom d'utilisateur",
-			"ENTITY": "Entreprise"
+			"ENTITY": "Entreprise",
+			"MOBILE_PHONE_NUMBER": "Tél. mobile"
 		},
 		"LOGIN": {
 			"BUTTON": "Se Connecter",
@@ -618,9 +619,9 @@
 		},
 		"REQUEST_ACCESS": {
 			"DESC": "Demande de création de compte",
-			"SUCCESS": "Votre demande a bien été enregistrée.<br>Un mail vous sera envoyé dès validation par un administrateur.<br>En cas de problème, contacter le service HSE.",
+			"SUCCESS": "Demande enregistrée.<br><br>Votre mot de passe vous sera envoyé par mail dès validation par un administrateur.<br><br>En cas de problème, merci de contacter support-pds@piman-group.fr",
 			"TITLE": "Demander un <b>accès</b>",
-			"LABEL": "Salarié Piman : Demander un accès"
+			"LABEL": "Demander un accès"
 		},
 		"VALIDATION": {
 			"AGREEMENT_REQUIRED": "Vous devez accepter les termes et conditions",
@@ -929,6 +930,10 @@
 		"EMAIL": {
 			"LABEL": "Adresse mail",
 			"TITLE": "Adresse mail"
+		},
+		"ENTITY": {
+			"LABEL": "Entité",
+			"TITLE": "Entité"
 		},
 		"FIRSTNAME": {
 			"LABEL": "Prénom",
@@ -1938,7 +1943,7 @@
 				"TITLE": "L'action a été abandonnée avec succès"
 			},
 			"ACTION_CREATED": {
-				"TITLE": "Action créé avec succès"
+				"TITLE": "Action créée avec succès"
 			},
 			"ACTION_UPDATED": {
 				"TITLE": "Action mise à jour avec succès"
@@ -2705,6 +2710,9 @@
 			"TRAINING": {
 				"TITLE": "Formations",
 				"TRAINING_MONITORING": "Suivis des formations"
+			},
+			"DELEGATION_SIGNATURE": {
+				"TITLE": "Délégation de signature"
 			}
 		},
 		"PERIOD": {

@@ -6,21 +6,6 @@
         <span class="title" *ngIf="source == 'my-profile'">
             {{'MENU.MY_HSE_PROFILE' | translate}}
         </span>
-        <!-- <div class="pull-right">
-            <mat-form-field class="date-range-selector pull-right" appearance="fill" *ngIf="selectedPeriodId">
-                <mat-label>{{'SUIVI_HSE.PERIOD.TITLE' | translate}}</mat-label>
-                <mat-select [(value)]="selectedPeriodId" (selectionChange)="changePeriod($event.value)">
-                  <mat-option *ngFor="let item of periodList" [value]="item.id">
-                    {{item.start_date | date:'d MMM y' : undefined : translate.currentLang}} <span class="divider">-</span> {{item.end_date | date:'d MMM y' : undefined : translate.currentLang}}
-                  </mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div> -->
-        <!-- <span>
-            <button mat-icon-button color="info" matTooltip="{{'SUIVI_HSE.ACTION.EDIT_GOAL.TITLE' | translate}}" (click)="editMetrics()" *ngxPermissionsOnly="['user_canUpdate']">
-                <mat-icon>edit</mat-icon>
-              </button>
-        </span> -->
     </div>
     <tf-portlet-body class="tf-portlet__body--fit">
 
@@ -28,7 +13,6 @@
         <div class="col-md-3">
             <div class="card">
               <div class="box">
-                    <!-- TODO photo -->
                     <ngx-avatar class="user-avatar" [round]="false" [size]="200" cornerRadius="4" src="{{user.photo_profil ? user.photo_profil.src : null}}" name="{{user | fullName}}"></ngx-avatar>
               </div>
               <div class="tf-divider">
@@ -44,6 +28,49 @@
               <div class="tf-divider">
                 <span></span>
               </div>
+
+              <div class="box box-coords doc-box" style="">
+                <h5><b>{{'SUIVI_HSE.CARD.DELEGATION_SIGNATURE.TITLE' | translate}}</b></h5>
+                <div class="row mt-3" *ngIf="user.delegation_signature_doc">
+                    <div class="col-3">
+                        <img [src]="FILE_ICON" alt="doc" class="doc-picto shdw-5">
+                    </div>
+                    <div class="col-9 d-flex justify-content-between align-items-center">
+                        <div class="doc-action doc-action__show" (click)="showDelSignationDoc()">Voir le document</div>
+                        <div ngbDropdown placement="bottom-right" class="d-inline-block" *ngxPermissionsOnly="['ROOT']">
+							<button mat-icon-button color="primary" matTooltip="Actions" [matMenuTriggerFor]="actionMenu">
+								<mat-icon>more_vert</mat-icon>
+							</button>
+                            <mat-menu #actionMenu="matMenu" class="action-menu">
+                                <button mat-icon-button color="info" matTooltip="{{'ACTION.DOWNLOAD' | translate}}" (click)="downloadDelSignationDoc()">
+                                    <mat-icon>file_download</mat-icon>
+                                </button>
+                                <button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="uploadDelSignationDoc()" >
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+                            </mat-menu>
+						</div>
+                        <button mat-icon-button color="info" matTooltip="{{'ACTION.DOWNLOAD' | translate}}" (click)="downloadDelSignationDoc()" *ngxPermissionsOnly="['ROOT']"> 
+                            <mat-icon>file_download</mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <ng-container *ngxPermissionsExcept="['ROOT']">
+                    <div class="row mt-3 no-doc" *ngIf="!user.delegation_signature_doc">
+                        Aucun document trouvé
+                     </div>
+                </ng-container>
+                <ng-container *ngxPermissionsOnly="['ROOT']">
+                    <div class="row mt-3 doc-action doc-action__add" (click)="uploadDelSignationDoc()" *ngIf="!user.delegation_signature_doc">
+                        + Ajouter le document
+                     </div>
+                </ng-container>
+                
+              </div>
+
+              <div class="tf-divider">
+                <span></span>
+              </div>
               <div class="box text-center">
                 <small>{{'SALARIES.ENTRY_AT.LABEL' | translate}} : {{user.date_entree | date:'dd/MM/yyyy'}}</small><br>
               </div>
@@ -55,11 +82,11 @@
                 <mat-tab label="HSE">
                     <div class="row h-100">
                         <!-- ACCUEIL SECU -->
-                        <div class="col-4 h-100">
+                        <div class="col-4 h-100" *ngIf="isActiveModule(['QUIZ']) || isActiveModule(['ACCUEIL_SECURITE'])">
                             <div class="card h-100 pt-2">
                                 <div class="box box-secu">
-                                    <h5><b>Mon accueil Sécurité Piman</b></h5>
-                                    <div class="row mt-3">
+                                    <h5><b>Mon accueil Sécurité</b></h5>
+                                    <div class="row mt-3" *ngIf="isActiveModule(['ACCUEIL_SECURITE'])">
                                         <div class="col-3">
                                             <img [src]="accueilSecuStatusIcon" alt="undone" class="shdw-5">
                                         </div>
@@ -68,12 +95,12 @@
                                                 <div>Accueil sécurité</div>
                                                 <div class="font-weight-normal" *ngIf="user.date_realisation_accueil_secu; else invalid">{{user.date_realisation_accueil_secu | date:'dd/MM/yyyy'}}</div>
                                             </div>
-                                            <button mat-icon-button color="info" matTooltip="Ajouter une date de réalisation" (click)="showEditAccueilSecuModal()">
+                                            <button mat-icon-button color="info" matTooltip="Ajouter une date de réalisation" (click)="showEditAccueilSecuModal()"  *ngxPermissionsOnly="['ROOT', 'ADMIN']">
                                                 <mat-icon>edit</mat-icon>
                                             </button>
                                         </div>
                                     </div>
-                                    <div class="row mt-3" *ngIf="isActiveModule(['LIVRET_ACCUEIL'])">
+                                    <div class="row mt-3" *ngIf="isActiveModule(['LIVRET_ACCUEIL', 'ACCUEIL_SECURITE'])">
                                         <div class="col-3">
                                             <img [src]="livretSecuStatusIcon" alt="undone" class="shdw-5">
                                         </div>
@@ -82,7 +109,7 @@
                                                 <div>Livret d'accueil</div>
                                                 <div class="font-weight-normal" *ngIf="user.date_realisation_livret_accueil; else invalid">{{user.date_realisation_livret_accueil | date:'dd/MM/yyyy'}}</div>
                                             </div>
-                                            <button mat-icon-button color="warn" matTooltip="Demander de relire le livret d'accueil" (click)="retakeLivretAccueil()" *ngxPermissionsOnly="['ADMIN','ROOT', 'MANAGER']">
+                                            <button mat-icon-button color="warn" matTooltip="Demander de relire le livret d'accueil" (click)="retakeLivretAccueil()" *ngxPermissionsOnly="['ROOT', 'ADMIN']">
                                                 <mat-icon>replay</mat-icon>
                                             </button>
                                         </div>
@@ -101,7 +128,7 @@
                                                 </div>
                                                 <div class="font-weight-normal" *ngIf="user.quiz_date">{{user.quiz_date | date:'dd/MM/yyyy hh:mm'}}</div>
                                             </div>
-                                            <button mat-icon-button color="warn" matTooltip="Demander de repasser le quiz" (click)="retakeTheQuiz()" *ngxPermissionsOnly="['ADMIN','ROOT', 'MANAGER']">
+                                            <button mat-icon-button color="warn" matTooltip="Demander de repasser le quiz" (click)="retakeTheQuiz()" *ngxPermissionsOnly="['ROOT', 'ADMIN']">
                                                 <mat-icon>replay</mat-icon>
                                             </button>
                                         </div>
@@ -110,7 +137,7 @@
                             </div>
                         </div>
                         <!-- REMONTEES SECU -->
-                        <div class="col-8 list-view" *ngIf="isActiveModule(['REMONTEE'])">
+                        <div class="list-view" *ngIf="isActiveModule(['REMONTEE'])" [ngClass]="!isActiveModule(['QUIZ']) && !isActiveModule(['ACCUEIL_SECURITE'])?'col-12':'col-8'">
                             <div class="card h-100 pt-2">
                                 <div class="box">
                                     <h5><b>Remontées sécurité</b></h5>
@@ -173,11 +200,11 @@
                     <!-- PRET EPI -->
                     <div class="row h-100">
                         <div class="col-12 h-100">
-                            <div class="card" style="height: 500px">
+                            <div class="card" style="height: 605px">
                                 <div class="card-title">
                                     <h5><b>Prêt EPI</b></h5>
                                     <span>
-                                        <button mat-icon-button color="info" matTooltip="Ajouter un prêt EPI" (click)="showAssignEpiModal()">
+                                        <button mat-icon-button color="info" matTooltip="Ajouter un prêt EPI" (click)="showAssignEpiModal()" *ngxPermissionsOnly="['ROOT', 'ADMIN', 'MANAGER']">
                                             <mat-icon>add</mat-icon>
                                         </button>
                                     </span>
@@ -229,11 +256,11 @@
                     <!-- Formations -->
                     <div class="row h-100">
                         <div class="col-12 h-100">
-                            <div class="card" style="height: 500px">
+                            <div class="card" style="height: 605px">
                                 <div class="card-title">
                                     <h5><b>Formations</b></h5>
                                     <span>
-                                        <button mat-icon-button color="info" matTooltip="S'inscrire à une formation" (click)="showAssignFormationModal()">
+                                        <button mat-icon-button color="info" matTooltip="S'inscrire à une formation" (click)="showAssignFormationModal()" *ngxPermissionsOnly="['ROOT', 'ADMIN', 'MANAGER']">
                                             <mat-icon>add</mat-icon>
                                         </button>
                                     </span>

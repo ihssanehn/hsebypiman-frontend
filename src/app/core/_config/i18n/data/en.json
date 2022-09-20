@@ -929,6 +929,10 @@
 			"LABEL": "Mail address",
 			"TITLE": "Mail address"
 		},
+		"ENTITY": {
+			"LABEL": "Entité",
+			"TITLE": "Entité"
+		},
 		"FIRSTNAME": {
 			"LABEL": "First name",
 			"TITLE": "First name"
@@ -2701,6 +2705,9 @@
 			"TRAINING": {
 				"TITLE": "Training",
 				"TRAINING_MONITORING": "Training follow-ups"
+			},
+			"DELEGATION_SIGNATURE": {
+				"TITLE": "Delegation of signature"
 			}
 		},
 		"PERIOD": {
