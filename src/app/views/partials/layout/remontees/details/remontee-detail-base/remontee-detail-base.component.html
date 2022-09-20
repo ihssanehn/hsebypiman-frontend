@@ -25,15 +25,18 @@
 					<h4>
 						{{'REMONTEES.ACTION.TITLE' | translate}}
 						<ng-container *ngIf="remontee.action">
-							<button mat-icon-button *ifAllModules="['PLANACTION']" (click)="goToAction()" class="pull-right" title="{{'REMONTEES.SEE_ACTION.TITLE' | translate}}">
-								<mat-icon color="primary">visibility</mat-icon>
+							<button mat-raised-button color="info" *ifAllModules="['PLANACTION']" (click)="goToAction()" class="pull-right" title="{{'REMONTEES.SEE_ACTION.TITLE' | translate}}">
+								<!-- <mat-icon color="primary">visibility</mat-icon> -->
+								Consulter
 							</button>
 						</ng-container>
 					</h4>
 					<div class="box" style="flex:1">
 						<p><span class="label pull-left mr-2">{{'PLANACTIONS.NAME.TITLE' | translate}}</span><span class="">{{remontee.action?.libelle ? remontee.action?.libelle : '-'}}</span></p>
-						<p *ifAllModules="['PLANACTION']"><span class="label pull-left mr-2">{{'PLANACTIONS.STATUS.TITLE' | translate}}</span><span class="">{{remontee.action_status ? remontee.action_status : '-'}}</span></p>
 						<p *ifAllModules="['PLANACTION']"><span class="label pull-left mr-2">{{'PLANACTIONS.PILOTE.TITLE' | translate}}</span><span class="">{{remontee.action?.pilote ? (remontee.action.pilote | fullName) : '-'}}</span></p>
+						<p *ifAllModules="['PLANACTION']"><span class="label pull-left mr-2">{{'PLANACTIONS.OBJECTIF.TITLE' | translate}}</span><span class="">{{remontee.action?.objectif ? remontee.action.objectif : '-'}}</span></p>
+						<p *ifAllModules="['PLANACTION']"><span class="label pull-left mr-2">{{'PLANACTIONS.DELAI.TITLE' | translate}}</span><span class="">{{remontee.action?.delai ? remontee.action.delai : '-'}}</span></p>
+						<p *ifAllModules="['PLANACTION']"><span class="label pull-left mr-2">{{'PLANACTIONS.STATUS.TITLE' | translate}}</span><span class="">{{remontee.action_status ? remontee.action_status : '-'}}</span></p>
 					</div>
 				</div>
 			</div>
