@@ -13,7 +13,7 @@
 				<button class="pull-right btn-small mb-4" mat-raised-button color="info" (click)="exportList()">{{'ACTION.EXPORT' | translate}}</button>
 			</div>
 		</div>
-		<div class="table-responsive" *ngIf="materielsList.data.length > 0; else noMaterielFind">
+		<div class="table-responsive">
 			<table mat-table [dataSource]="materielsList.data">
 
 				<!-- vs_retard Column -->
@@ -83,6 +83,8 @@
 				<tr mat-row class="highlight-row" *matRowDef="let row; columns: displayedMaterielColumns;"></tr>
 			</table>
 
+
+			
 			<ng-container *ngIf="materielsList.data.length == 0">
 				<div class="row" style="margin: 150px">
 					<div class="col-12 text-center">
