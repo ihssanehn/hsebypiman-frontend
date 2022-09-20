@@ -57,6 +57,7 @@ export class MaterielsListComponent implements OnInit, AfterViewInit {
 		try {
 			var res = await this.materielService.getAll(this.filter).toPromise();
 			this.materielsList = res.result.data;
+			console.log(this.materielsList);
 			this.pagination = {
 				...this.pagination,
 				total: this.materielsList.total,
