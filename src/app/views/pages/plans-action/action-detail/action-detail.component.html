@@ -28,16 +28,15 @@
   <tf-portlet-body class="tf-portlet__body--fit">
     <div class="row">
 
-      <div class="col-6 d-flex">
-        <div class="row d-flex flex-column flex-nowrap flex-fill">
-
+      <div class="col-12">
+        <div class="row">
           <div class="col-12 flex-fill">
             <div class="card">
               <h5><b>{{'PLANACTIONS.CARD.ORIGIN.TITLE' | translate}}</b></h5>
               <ng-container>
                 <div class="box box-info" style="flex: 1;">
-                  <p style="text-align:right"><span class="label pull-left mr-2">{{'PLANACTIONS.ORIGINE.LABEL' | translate}}</span><span class="">{{action.type?.libelle}}</span></p>
                   <ng-container *ngIf="action.type?.code== 'VISITE_SECURITE'">
+                    <p style="text-align:right"><span class="label pull-left mr-2">{{'PLANACTIONS.ORIGINE.LABEL' | translate}}</span><span class="">{{action.type?.libelle}}</span></p>
                     <div class="row">
                       <div class="col-12 my-2"><p><span class="label">{{'PLANACTIONS.VS_CONCERNED.TITLE' | translate}}</span></p></div>
                       <ng-container *ngIf="action.actionable">
@@ -58,21 +57,45 @@
                   </ng-container>
                   <ng-container *ngIf="action.type?.code == 'REMONTE_D_INFORMATION'">
                     <div class="row">
-                      <div class="col-12 my-2"><p><span class="label">{{'PLANACTIONS.LIFT_CONCERNED.TITLE' | translate}}</span></p></div>
-                      <ng-container *ngIf="action.actionable">
-                        <div class="col-12 vs-line" >
-                          <div class="col-5"><p class="blue">{{action.actionable?.creator | fullName}}</p></div>
-                          <div class="col-5"><p class="blue">{{action.actionable?.created_at | date:'dd/MM/yyyy'}}</p></div>
-                          <div class="col-2" ><p class="blue"><a (click)="openRemonteeDetailModal(action.actionable?.id)" alt="voir la remontee"><mat-icon color="primary">visibility</mat-icon></a></p></div>
+                      <div class="col-6 pr-4">
+                        <p style="text-align:right">
+                          <span class="label pull-left mr-2">{{'PLANACTIONS.ORIGINE.LABEL' | translate}}</span>
+                          <span class="">{{action.type?.libelle}}</span>
+                        </p>
+                        <p style="text-align:right">
+                          <span class="label pull-left mr-2">{{'REMONTEES.CREATOR.TITLE' | translate}}</span>
+                          <span class="">{{action.actionable.creator | fullName}}</span>
+                        </p>
+                        <p style="text-align:right">
+                          <span class="label pull-left mr-2">{{'COMMON.CREATED_AT.TITLE' | translate}}</span>
+                          <span class="">{{action.actionable.created_at ? (action.actionable.created_at | date:'dd/MM/yyyy') : '-'}}</span>
+                        </p>
+                        <p style="text-align:right">
+                          <span class="label pull-left mr-2">{{'REMONTEES.TYPE.TITLE' | translate}}</span>
+                          <span class="">{{action.actionable.type?.libelle}}</span>
+                        </p>
+                      </div>
+                      <div class="col-6 pl-4">
+                        <div class="col-12 my-2">
+                          <p class="d-flex">
+                            <span class="label pull-left mr-4">{{'REMONTEES.DESCRIPTION.TITLE' | translate}}</span>
+                            <span class="text-justify">{{action.actionable.description}}</span>
+                          </p>
                         </div>
-                      </ng-container>
+                      </div>
                     </div>
+                    <button class="mt-4 pull-right" mat-raised-button color="info" (click)="openRemonteeDetailModal(action.actionable?.id)">
+                      Consulter
+                    </button>
                   </ng-container>
                 </div>
               </ng-container>
             </div>  
           </div>
-
+        </div>
+      </div>
+      <div class="col-6 d-flex">
+        <div class="row d-flex flex-column flex-nowrap flex-fill">
           <div class="col-12 mt-4 flex-fill">
             <div class="card">
               <h5><b>{{'PLANACTIONS.CARD.GENERAL_INFOS.TITLE' | translate}}</b></h5>
@@ -110,7 +133,7 @@
 
       <div class="col-6 d-flex">
         <div class="row d-flex flex-column flex-nowrap flex-fill">
-            <div class="col-12 flex-fill">
+            <div class="col-12 mt-4 flex-fill">
               <div class="card">
                 <h5><b>{{'PLANACTIONS.CARD.ALLOCATION_DEADLINE.TITLE' | translate}}</b></h5>
                 <div class="box" style="flex:1">
