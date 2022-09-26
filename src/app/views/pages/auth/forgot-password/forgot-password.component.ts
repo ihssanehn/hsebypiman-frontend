@@ -7,6 +7,7 @@ import { Subject } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 // Auth
 import { AuthNoticeService, AuthService } from '../../../../core/auth';
+import { environment } from '@env/environment';
 
 @Component({
 	selector: 'tf-forgot-password',
@@ -74,6 +75,12 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
 				Validators.minLength(3),
 				Validators.maxLength(320) // https://stackoverflow.com/questions/386294/what-is-the-maximum-length-of-a-valid-email-address
 			])
+			],
+			entity: [null, Validators.compose([
+				Validators.required,
+				Validators.minLength(3),
+				Validators.maxLength(100)
+			])
 			]
 		});
 	}
@@ -92,6 +99,10 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
 		}
 
 		this.loading = true;
+		
+		const entity = controls.entity.value;
+		localStorage.setItem(environment.entity, entity);
+
 
 		const email = controls.email.value;
 			this.authService.requestPassword(email)
