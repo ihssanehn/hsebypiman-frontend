@@ -561,7 +561,7 @@ export class MenuConfig {
 					alignment: 'left',
 					page: '/causeries/add',
 					translate: 'MENU.BTN.NEWCAUSERIE',
-					permissionOnly: ["causerie_canAdd"]
+					permissionOnly: ['ROOT', 'ADMIN']
 				},
 
 				items: [
