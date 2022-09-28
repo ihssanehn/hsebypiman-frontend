@@ -37,7 +37,10 @@
 								</mat-form-field>
 
 								<div class="col-xl-12">
-									<angular-editor [config]="editorConfig" formControlName="content"></angular-editor>
+									<tf-flashinfo-editor
+										[data]="flashinfoForm.get('content').value"
+										(change)="onChangeEditor($event)"
+									></tf-flashinfo-editor>
 								</div>
 							</div>
 						</div>

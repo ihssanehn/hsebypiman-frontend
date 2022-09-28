@@ -15,7 +15,7 @@
 			<div class="col-12 pointer" *ngIf="flashOnTop" (click)="openFlashInfoModal(flashOnTop.id)">
 				<div class="flash-content">
 					<h4>{{'FLASHINFOS.ONTOP.TITLE' | translate}}</h4>
-					<div [innerHtml]="flashOnTop.content"></div>
+					<tf-flashinfo-reader [data]="flashOnTop.content"></tf-flashinfo-reader>
 				</div>
 			</div>
 			<div class="col-12 mt-4">

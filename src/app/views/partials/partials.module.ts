@@ -194,6 +194,9 @@ import { RemonteeDetailBaseComponent } from './layout/remontees/details/remontee
 import { UserHsePassportComponent } from './layout/users/user-hse-passport/user-hse-passport.component';
 import { ActionFormModalComponent } from './layout/modal/action-form-modal/action-form-modal.component';
 import { UploadDelSignatureDocModalComponent } from './layout/modal/upload-del-signature-doc-modal/upload-del-signature-doc-modal.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { FlashinfoReaderComponent } from './layout/flash-infos/flashinfo-reader/flashinfo-reader.component';
+import { FlashinfoEditorComponent } from './layout/flash-infos/flashinfo-editor/flashinfo-editor.component';
 
 
 
@@ -331,7 +334,9 @@ import { UploadDelSignatureDocModalComponent } from './layout/modal/upload-del-s
 		ParticipateCauserieModalComponent,
 		UserHsePassportComponent,
 		ActionFormModalComponent,
-		UploadDelSignatureDocModalComponent
+		UploadDelSignatureDocModalComponent,
+		FlashinfoReaderComponent,
+		FlashinfoEditorComponent
 
 	],
 	exports: [
@@ -464,7 +469,9 @@ import { UploadDelSignatureDocModalComponent } from './layout/modal/upload-del-s
 		RemonteeDetailModalComponent,
 		RemonteeDetailBaseComponent,
 		ParticipateCauserieModalComponent,
-		UserHsePassportComponent
+		UserHsePassportComponent,
+		FlashinfoReaderComponent,
+		FlashinfoEditorComponent
 
 	],
 	imports: [
@@ -527,7 +534,8 @@ import { UploadDelSignatureDocModalComponent } from './layout/modal/upload-del-s
 		FileUploadModule,
 		NgxPermissionsModule.forChild(),
 		NzUploadModule,
-		NzGridModule
+		NzGridModule,
+		CKEditorModule
 	],
 	entryComponents: [
 		AdminAddModalComponent,

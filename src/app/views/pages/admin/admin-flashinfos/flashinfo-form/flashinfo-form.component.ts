@@ -4,7 +4,6 @@ import { FormStatus } from '@app/core/_base/crud/models/form-status';
 import { Type } from '@app/core/models/type.model';
 import { FonctionService, RoleService } from '@app/core/services';
 import { Role } from '@app/core/auth';
-import { AngularEditorConfig } from '@kolkov/angular-editor';
 
 @Component({
   selector: 'tf-flashinfo-form',
@@ -27,24 +26,6 @@ export class FlashInfoFormComponent implements OnInit {
     'Mme', 'Mlle', 'M.'
   ]
 
-  editorConfig: AngularEditorConfig = {
-    editable: true,
-    spellcheck: true,
-    height: 'auto',
-    minHeight: '300px',
-    maxHeight: 'auto',
-    width: 'auto',
-    enableToolbar: true,
-    showToolbar: true,
-    placeholder: 'Enter text here...',
-    sanitize: true,
-    toolbarPosition: 'top',
-    toolbarHiddenButtons: [
-      ['toggleEditorMode'],
-    ],
-  };
-
-
   constructor(
     private fonctionService: FonctionService,
     private cdr: ChangeDetectorRef,
@@ -54,6 +35,10 @@ export class FlashInfoFormComponent implements OnInit {
   ngOnInit() {
     this.getFonctions();
     this.getRoles();
+  }
+
+  onChangeEditor(content) {
+    this.flashinfoForm.get('content').setValue(content);
   }
 
   async getFonctions(){
