@@ -145,4 +145,7 @@ export class CauserieDetailComponent implements OnInit, OnDestroy {
 		})
 	}
 
+	isUserOrganizer() {
+		return this.authUser.id == this.causerie.organisateur.id;
+	}
 }

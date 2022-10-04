@@ -26,6 +26,7 @@
 						<p><span class="label pull-left mr-2">{{'CAUSERIES.LIBELLE' | translate}}</span><span class="">{{causerie.libelle}}</span></p>
 						<p><span class="label pull-left mr-2">{{'CAUSERIES.DATE' | translate}}</span><span class="">{{causerie.date ? (causerie.date | date:'dd/MM/yyyy') : '&nbsp;'}}</span></p>
 						<p><span class="label pull-left mr-2">{{'CAUSERIES.LIEU' | translate}}</span><span class="">{{causerie.lieu ? causerie.lieu : '&nbsp;'}}</span></p>
+						<p><span class="label pull-left mr-2">{{'CAUSERIES.ORGANISATEUR' | translate}}</span><span class="">{{causerie.organisateur ? causerie.organisateur.fullname : '&nbsp;'}}</span></p>
 					</div>
 					<div class="tf-divider">
 						<span></span>
@@ -51,7 +52,7 @@
 					<h3>
 						{{'CAUSERIES.PARTICIPANTS' | translate}} : 
 						<span class="blue">{{causerie.participants ? causerie.participants.length : 0}}</span>  
-						<button (click)="participate()" class="btn btn-primary btn-elevate pull-right" [disabled]="hasParticipate()">{{'CAUSERIES.ACTION.ADD_PARTICIPANT' | translate}}</button></h3>
+						<button (click)="participate()" class="btn btn-primary btn-elevate pull-right" [disabled]="hasParticipate()" *ngIf="!isUserOrganizer()">{{'CAUSERIES.ACTION.ADD_PARTICIPANT' | translate}}</button></h3>
 					<div class="box box-chantiers " style="flex: 1;">
 						<div class="row mt-4" *ngIf="causerie.participants.length > 0; else	noParticipants">
 							<div class="col-md-12">
