@@ -3,7 +3,7 @@
 		<tf-portlet-body>
 			<div class="tf-heading tf-heading--lg" style="margin-top: 0;">
 				<div *ngIf="edit">
-					{{'MENU.SUB_MATERIELS.EDIT' | translate}} {{materielForm.get('code').value}}
+					{{'MENU.SUB_MATERIELS.EDIT' | translate}} {{materielForm.get('libelle')?.value}}
 
 				</div>
 				<span *ngIf="!edit">{{'MENU.SUB_MATERIELS.ADD' | translate}}</span>
@@ -46,13 +46,6 @@
 										<mat-form-field class="col-xl-6" floatLabel="always" appearance="none">
 											<mat-slide-toggle [checked]="isChecked('has_controle')" (change)="updateToggleValue($event, 'has_controle')"><span class="slider-label">{{'MATERIELS.HAS_CONTROLE.LABEL' | translate}}</span></mat-slide-toggle>
 											<textarea matInput hidden></textarea>
-										</mat-form-field>
-										<mat-form-field class="col-xl-6">
-											<mat-label>{{'MATERIELS.FREQUENCE_CONTROLE.LABEL' | translate}}</mat-label>
-											<input class="form-control" matInput type="number" name="frequence_controle" formControlName="frequence_controle" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('frequence_controle')" />
-											<mat-error *ngIf="isControlHasError('frequence_controle','required')">
-												<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-											</mat-error>
 										</mat-form-field>
 		
 										
