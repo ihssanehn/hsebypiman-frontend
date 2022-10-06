@@ -61,7 +61,7 @@ export class DashMaterielComponent implements OnInit {
           this.materielListData.sortingDataAccessor = (item, property) => {
             switch(property) {
               case 'categorie': return item.main_categorie.libelle;
-              case 'actual_user': return item.actual_user ? item.actual_user.prenom : '';
+              case 'actual_user': return item.actual_user ? item.actual_user.length : '';
               default: return item[property];
             }
           };
