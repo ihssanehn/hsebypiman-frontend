@@ -43,7 +43,7 @@
 							<th mat-header-cell *matHeaderCellDef mat-sort-header>
 								{{'MATERIELS.ACTUAL_USER.TITLE' | translate}}
 							</th>
-							<td mat-cell *matCellDef="let materiel" (click)="viewMateriel(materiel.id)" class="pointer"> {{materiel.actual_user ? (materiel.actual_user | fullName) : 'Disponible'}} </td>
+							<td mat-cell *matCellDef="let materiel" (click)="viewMateriel(materiel.id)" class="pointer"> {{materiel.actual_user.length ? (materiel.actual_user.length) : 'Disponible'}} </td>
 						</ng-container>
 
 						<!-- next_visite Column -->
