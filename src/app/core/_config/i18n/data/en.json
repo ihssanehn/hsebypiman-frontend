@@ -1359,6 +1359,11 @@
 			"SHORTTITLE": "Current user",
 			"TITLE": "Current user"
 		},
+		"ACTUAL_USERS": {
+			"LABEL": "Current users",
+			"SHORTTITLE": "Current users",
+			"TITLE": "Current users"
+		},
 		"ASSIGN_USER": {
 			"LABEL": "New user",
 			"SHORTTITLE": "New user",
@@ -1553,6 +1558,9 @@
 			"LOAN_UPDATED": {
 				"TITLE": "Loan updated successfully"
 			},
+			"MATERIAL_QUANTITY_NOT_AVAILABLE": {
+				"TITLE": "Stock not available"
+			},
 			"MATERIEL_CREATED": {
 				"TITLE": "Equipment successfully created"
 			},
@@ -1595,10 +1603,20 @@
 			"SHORTTITLE": "Users",
 			"TITLE": "Users"
 		},
+		"ONE_USER": {
+			"LABEL": "One user",
+			"SHORTTITLE": "One user",
+			"TITLE": "One user"
+		},
 		"PERSONNELS_COUNT": {
 			"LABEL": "Number of users",
 			"SHORTTITLE": "Number of users",
 			"TITLE": "Number of users"
+		},
+		"AVAILABLE_QUANTITY": {
+			"LABEL": "Available quantity",
+			"SHORTTITLE": "Available quantity",
+			"TITLE": "Available quantity"
 		},
 		"PERSONNELS_HISTORY": {
 			"LABEL": "User history",

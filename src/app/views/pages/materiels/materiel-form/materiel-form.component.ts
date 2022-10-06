@@ -27,6 +27,19 @@ export class MaterielFormComponent implements OnInit {
 
   ngOnInit() {
     this.getCategories();
+    this.setDynamicValidators();
+  }
+
+  setDynamicValidators(){
+    this.materielForm.get('stock_disponible').valueChanges.subscribe(stock => {
+      if (stock > 1){
+        this.materielForm.get('numero_serie').disable();
+      }else{
+        this.materielForm.get('numero_serie').enable();
+
+      }
+      this.materielForm.get('numero_serie').updateValueAndValidity();
+    })
   }
 
   async getCategories(){
