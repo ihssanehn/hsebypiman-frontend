@@ -12,7 +12,9 @@ export class Materiel {
     description?: string;
     date_entree?: Date;
     has_controle?: boolean;
-    actual_user?:User;
+    actual_user?: User[];
+    salaries?: User[];
+    stock_disponible?: number;
     date_derniere_revision?: Date;
     date_prochaine_revision: Visite;
     comment_revision?:string;

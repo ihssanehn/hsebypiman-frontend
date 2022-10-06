@@ -17,11 +17,19 @@
 									<tf-tree-select [itemsList]="categoriesList" [fromId]="materielForm.get('categorie_id').value" [required]="true" [withAll]="false" [translateTitle]="'MATERIELS.CATEGORIE'" (onChangedItem)="categorieChanged($event)" *ngIf="categoriesList"></tf-tree-select>
 								</div>
 							</div>
+
 							<div class="row form-row">
 								<mat-form-field class="col-xl-3">
 									<mat-label>{{'MATERIELS.LIBELLE.LABEL' | translate}}</mat-label>
 									<input class="form-control" matInput type="text" name="libelle" formControlName="libelle" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('libelle')" />
 									<mat-error *ngIf="isControlHasError('libelle','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+								<mat-form-field class="col-xl-3">
+									<mat-label>{{'MATERIELS.AVAILABLE_QUANTITY.LABEL' | translate}}</mat-label>
+									<input class="form-control" matInput type="number" name="stock_disponible" formControlName="stock_disponible" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('stock_disponible')" />
+									<mat-error *ngIf="isControlHasError('stock_disponible','required')">
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
 								</mat-form-field>
@@ -33,33 +41,27 @@
 									</mat-error>
 								</mat-form-field>
 							</div>
-							<div class="row form-row vertical-divider">
-								<div class="col-xl-6">
-									<div class="row form-row">
-								
-										<mat-form-field class="col-xl-6">
-											<mat-label>{{'MATERIELS.DATE_ENTREE.LABEL' | translate}}</mat-label>
-											<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" formControlName="date_entree" [required]="isFieldRequired('date_entree')" placeholder="DD/MM/YYYY">
-										</mat-form-field>
 
+							<div class="row form-row">
+								<mat-form-field class="col-xl-3">
+									<mat-label>{{'MATERIELS.DATE_ENTREE.LABEL' | translate}}</mat-label>
+									<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" formControlName="date_entree" [required]="isFieldRequired('date_entree')" placeholder="DD/MM/YYYY">
+								</mat-form-field>
 
-										<mat-form-field class="col-xl-6" floatLabel="always" appearance="none">
-											<mat-slide-toggle [checked]="isChecked('has_controle')" (change)="updateToggleValue($event, 'has_controle')"><span class="slider-label">{{'MATERIELS.HAS_CONTROLE.LABEL' | translate}}</span></mat-slide-toggle>
-											<textarea matInput hidden></textarea>
-										</mat-form-field>
-		
-										
-									</div>
-								</div>
-								<mat-form-field class="col-xl-6">
+								<mat-form-field class="col-xl-3" floatLabel="always" appearance="none">
+									<mat-slide-toggle [checked]="isChecked('has_controle')" (change)="updateToggleValue($event, 'has_controle')"><span class="slider-label">{{'MATERIELS.HAS_CONTROLE.LABEL' | translate}}</span></mat-slide-toggle>
+									<textarea matInput hidden></textarea>
+								</mat-form-field>
+							</div>
+							<div class="row form-row">
+								<mat-form-field class="col-xl-9">
 									<mat-label>{{'MATERIELS.DESCRIPTION.LABEL' | translate}}</mat-label>
-									<textarea matInput rows="18" class="form-control" type="text" name="description" formControlName="description" [required]="isFieldRequired('description')" placeholder="{{'ACTION.ENTER_HERE' | translate}}"></textarea>
+									<textarea matInput rows="3" class="form-control" type="text" name="description" formControlName="description" [required]="isFieldRequired('description')" placeholder="{{'ACTION.ENTER_HERE' | translate}}"></textarea>
 									<mat-error *ngIf="isControlHasError('description','required')">
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
 								</mat-form-field>
 							</div>
-							
 						</div>
 					</div>
 				</div>
