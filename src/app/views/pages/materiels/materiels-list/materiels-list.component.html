@@ -54,9 +54,9 @@
 				
 				<!-- Current user Column -->
 				<ng-container matColumnDef="actual_user">
-					<th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('actual_user.prenom')">
+					<th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('actual_user')">
 						{{'MATERIELS.ACTUAL_USERS.TITLE' | translate}}
-						<i class="fa" [ngClass]="isOrderedBy('actual_user.prenom') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('actual_user.prenom') && {opacity:1}"></i>
+						<i class="fa" [ngClass]="isOrderedBy('actual_user') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('actual_user') && {opacity:1}"></i>
 					</th>
 					<td 
 						mat-cell 
