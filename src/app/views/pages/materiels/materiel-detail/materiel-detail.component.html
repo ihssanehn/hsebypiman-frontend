@@ -123,7 +123,7 @@
 									</div>
 									<ng-container *ngIf="materiel.salaries.length > 0; else noArHistorique">
 										<ng-container *ngFor="let salarie of materiel.salaries">
-											<ng-container *ngIf="!isCurrentUser(salarie.id)">
+											<ng-container *ngIf="!isCurrentUser(salarie.pivot.id)">
 												<div class="col-4">
 													<p class="text-left">{{salarie | fullName}}</p>
 												</div>

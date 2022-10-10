@@ -86,9 +86,9 @@ export class MaterielDetailComponent implements OnInit, OnDestroy {
 		}
 	}
 
-	isCurrentUser(userId: number) {
-		var currentUsersId = this.materiel.actual_user.map(user => user.id);
-		return currentUsersId.includes(userId);
+	isCurrentUser(pretId: number) {
+		var currentPretId = this.materiel.actual_user.map(user => user.pivot.id);
+		return currentPretId.includes(pretId);
 	}
 
 	ngOnDestroy() {
