@@ -84,14 +84,14 @@
 						</div>
 					</div>
 					<div class="card">
-						<h5>{{'MATERIELS.CARD.USER_TRACKING.TITLE' | translate}}<small class="pull-right">{{'MATERIELS.PERSONNELS_COUNT.SHORTTITLE' | translate}} / {{'MATERIELS.AVAILABLE_QUANTITY.SHORTTITLE' | translate}} : <span class="blue">{{materiel.salaries.length}} / {{materiel.stock_disponible}}</span></small></h5>
+						<h5>{{'MATERIELS.CARD.USER_TRACKING.TITLE' | translate}}<small class="pull-right">{{'MATERIELS.PERSONNELS_COUNT.SHORTTITLE' | translate}} / {{'MATERIELS.AVAILABLE_QUANTITY.SHORTTITLE' | translate}} : <span class="blue">{{materiel.actual_user.length}} / {{materiel.stock_disponible}}</span></small></h5>
 						<div class="box box-ar-vs pt-0" style="flex: 1;">
 							<ng-container *ngIf="materiel.salaries.length > 0; else noSalaries">
 								<div class="row">
 									<div class="col-12 my-2 d-flex justify-content-between">
 										<p style="text-align: left;"><span class="label">{{'MATERIELS.ACTUAL_USER.TITLE' | translate}}</span></p>
 										<div *ngxPermissionsOnly="['materiel_canUpdate']">
-											<button mat-raised-button color="info" class="btn-small" *ngIf="materiel.stock_disponible" (click)="$event.stopPropagation(); openPretModal('add')"> + {{'MATERIELS.ACTION.ASSIGN_MATERIEL' | translate}}</button>
+											<button mat-raised-button color="info" class="btn-small" *ngIf="materiel.actual_user.length < materiel.stock_disponible" (click)="$event.stopPropagation(); openPretModal('add')"> + {{'MATERIELS.ACTION.ASSIGN_MATERIEL' | translate}}</button>
 										</div>
 									</div>
 									<ng-container *ngIf="materiel.actual_user; else noUserInProgress">

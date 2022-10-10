@@ -11,13 +11,15 @@ export class Materiel {
     main_categorie?: Categorie;
     description?: string;
     date_entree?: Date;
-    has_controle?: boolean;
+    has_controle?: any;
     actual_user?: User[];
     salaries?: User[];
     stock_disponible?: number;
     date_derniere_revision?: Date;
     date_prochaine_revision: Visite;
     comment_revision?:string;
+    documents?: any[];
+    flat_categories?: any[];
     revision?:string
     etat?:number;
     creator_id?: number;
