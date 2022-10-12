@@ -86,6 +86,15 @@
 					</td>
 				</ng-container>
 				
+				<!-- Quantité disponible Column -->
+				<ng-container matColumnDef="quantite_disponible">
+					<th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('stock_disponible')">
+						{{'MATERIELS.AVAILABLE_QUANTITY.LABEL' | translate}}
+						<i class="fa" [ngClass]="isOrderedBy('stock_disponible') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('stock_disponible') && {opacity:1}"></i>
+					</th>
+					<td mat-cell *matCellDef="let materiel" (click)="viewMateriel(materiel.id)" class="text-center pointer"> {{materiel.stock_disponible}} </td>
+				</ng-container>
+
 				<ng-container matColumnDef="action" class="actionCol" stickyEnd>
 					<th mat-header-cell *matHeaderCellDef></th>
 					<td mat-cell *matCellDef="let materiel" class="text-right">
