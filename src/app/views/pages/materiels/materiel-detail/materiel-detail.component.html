@@ -25,6 +25,7 @@
 						<h3>{{'MATERIELS.CARD.GENERAL_INFOS.TITLE' | translate}}</h3>
 						<div class="box" style="flex:1">
 							<p><span class="label pull-left mr-2">{{'MATERIELS.LIBELLE.TITLE' | translate}}</span><span *ngIf="materiel.libelle; else noData">{{materiel.libelle}}</span></p>
+							<p><span class="label pull-left mr-2">{{'MATERIELS.AVAILABLE_QUANTITY.TITLE' | translate}}</span><span *ngIf="materiel.stock_disponible else noData">{{materiel.stock_disponible}}</span></p>
 							<p><span class="label pull-left mr-2">{{'MATERIELS.NUMERO_SERIE.TITLE' | translate}}</span><span *ngIf="materiel.numero_serie; else noData">{{materiel.numero_serie}}</span></p>
 							<p><span class="label pull-left mr-2">{{'MATERIELS.CATEGORIE.TITLE' | translate}}</span><span *ngIf="materiel.flat_categories; else noData">
 									<span *ngFor="let cat of materiel.flat_categories; let last = last;">
@@ -83,31 +84,30 @@
 						</div>
 					</div>
 					<div class="card">
-						<h5>{{'MATERIELS.CARD.USER_TRACKING.TITLE' | translate}}<small class="pull-right">{{'MATERIELS.PERSONNELS_COUNT.SHORTTITLE' | translate}} : <span class="blue">{{materiel.salaries.length}}</span></small></h5>
+						<h5>{{'MATERIELS.CARD.USER_TRACKING.TITLE' | translate}}<small class="pull-right">{{'MATERIELS.PERSONNELS_COUNT.SHORTTITLE' | translate}} / {{'MATERIELS.AVAILABLE_QUANTITY.SHORTTITLE' | translate}} : <span class="blue">{{materiel.actual_user.length}} / {{materiel.stock_disponible}}</span></small></h5>
 						<div class="box box-ar-vs pt-0" style="flex: 1;">
 							<ng-container *ngIf="materiel.salaries.length > 0; else noSalaries">
 								<div class="row">
-									<div class="col-12 my-2">
-										<p><span class="label">{{'MATERIELS.ACTUAL_USER.TITLE' | translate}}</span></p>
+									<div class="col-12 my-2 d-flex justify-content-between">
+										<p style="text-align: left;"><span class="label">{{'MATERIELS.ACTUAL_USER.TITLE' | translate}}</span></p>
+										<div *ngxPermissionsOnly="['materiel_canUpdate']">
+											<button mat-raised-button color="info" class="btn-small" *ngIf="materiel.actual_user.length < materiel.stock_disponible" (click)="$event.stopPropagation(); openPretModal('add')"> + {{'MATERIELS.ACTION.ASSIGN_MATERIEL' | translate}}</button>
+										</div>
 									</div>
 									<ng-container *ngIf="materiel.actual_user; else noUserInProgress">
-										<div class="col-4">
-											<p class="blue text-left">{{materiel.actual_user | fullName}}</p>
-										</div>
-										<div class="col-3">
-											<p class="blue text-center">{{'MATERIELS.READY.TITLE' | translate}} : {{materiel.actual_user?.pivot.date_pret | date:'dd/MM/yyyy'}}</p>
-										</div>
-										<div class="col-3">
-
-										</div>
-										<div class="col-2">
-											<a class="pull-right" (click)="goToUserDetail(materiel.actual_user.id)" matTooltip="{{'ACTION.SHOW_USER' | translate}}">
-												<mat-icon color="primary">visibility</mat-icon>
-											</a>
-										</div>
+										<div class="row col-12" *ngFor="let actual_user of materiel.actual_user">
+											<div class="col-4">
+												<p class="blue text-left">{{actual_user | fullName}}</p>
+											</div>
+											<div class="col-3">
+												<p class="blue text-center">{{'MATERIELS.READY.TITLE' | translate}} : {{actual_user?.pivot.date_pret | date:'dd/MM/yyyy'}}</p>
+											</div>
+											<div class="col-3">
 	
-										<div class="col-12" *ngxPermissionsOnly="['materiel_canUpdate']">
-											<button mat-raised-button class="btn-small pull-right" color="info" (click)="$event.stopPropagation(); openPretModal('return', materiel.actual_user.pivot)">{{'MATERIELS.ACTION.RETURN-MATERIEL' | translate}}</button>
+											</div>
+											<div class="col-2" *ngxPermissionsOnly="['materiel_canUpdate']">
+												<button mat-raised-button class="btn-small pull-right" color="info" (click)="$event.stopPropagation(); openPretModal('return', actual_user.pivot)">{{'MATERIELS.ACTION.RETURN-MATERIEL' | translate}}</button>
+											</div>
 										</div>
 									</ng-container>
 									<ng-template #noUserInProgress>
@@ -119,11 +119,11 @@
 								</div>
 								<div class="row mt-2">
 									<div class="col-12 my-2">
-										<p><span class="label">{{'MATERIELS.PERSONNELS_HISTORY.TITLE' | translate}}</span></p>
+										<p style="text-align: left;"><span class="label">{{'MATERIELS.PERSONNELS_HISTORY.TITLE' | translate}}</span></p>
 									</div>
 									<ng-container *ngIf="materiel.salaries.length > 0; else noArHistorique">
 										<ng-container *ngFor="let salarie of materiel.salaries">
-											<ng-container *ngIf="salarie.id != materiel.actual_user?.id">
+											<ng-container *ngIf="!isCurrentUser(salarie.pivot.id)">
 												<div class="col-4">
 													<p class="text-left">{{salarie | fullName}}</p>
 												</div>

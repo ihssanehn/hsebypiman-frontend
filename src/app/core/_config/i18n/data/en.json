@@ -1359,6 +1359,11 @@
 			"SHORTTITLE": "Current user",
 			"TITLE": "Current user"
 		},
+		"ACTUAL_USERS": {
+			"LABEL": "Current users",
+			"SHORTTITLE": "Current users",
+			"TITLE": "Current users"
+		},
 		"ASSIGN_USER": {
 			"LABEL": "New user",
 			"SHORTTITLE": "New user",
@@ -1503,6 +1508,11 @@
 			"SHORTITLE": "Inactive equipments",
 			"TITLE": "Inactive equipments"
 		},
+		"LATE_CHECK": {
+			"LABEL": "Late check",
+			"SHORTITLE": "Late check",
+			"TITLE": "Late check"
+		},
 		"IS_STOCK_COMMUN": {
 			"LABEL": "Common stock",
 			"SHORTTITLE": "Common stock",
@@ -1553,6 +1563,9 @@
 			"LOAN_UPDATED": {
 				"TITLE": "Loan updated successfully"
 			},
+			"MATERIAL_QUANTITY_NOT_AVAILABLE": {
+				"TITLE": "Stock not available"
+			},
 			"MATERIEL_CREATED": {
 				"TITLE": "Equipment successfully created"
 			},
@@ -1595,10 +1608,20 @@
 			"SHORTTITLE": "Users",
 			"TITLE": "Users"
 		},
+		"ONE_USER": {
+			"LABEL": "1 user",
+			"SHORTTITLE": "1 user",
+			"TITLE": "1 user"
+		},
 		"PERSONNELS_COUNT": {
 			"LABEL": "Number of users",
 			"SHORTTITLE": "Number of users",
 			"TITLE": "Number of users"
+		},
+		"AVAILABLE_QUANTITY": {
+			"LABEL": "Available quantity",
+			"SHORTTITLE": "Available quantity",
+			"TITLE": "Available quantity"
 		},
 		"PERSONNELS_HISTORY": {
 			"LABEL": "User history",

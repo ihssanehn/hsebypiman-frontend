@@ -56,6 +56,7 @@ export class MaterielAddComponent implements OnInit {
       date_entree: [null],
       has_controle: [0],
       etat: [0],
+      stock_disponible: [1]
     });
 
 		this.loaded = true;

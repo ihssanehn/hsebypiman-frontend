@@ -1362,6 +1362,11 @@
 			"SHORTTITLE": "Utilisateur actuel",
 			"TITLE": "Utilisateur actuel"
 		},
+		"ACTUAL_USERS": {
+			"LABEL": "Utilisateurs actuel",
+			"SHORTTITLE": "Utilisateurs actuel",
+			"TITLE": "Utilisateurs actuel"
+		},
 		"ASSIGN_USER": {
 			"LABEL": "Nouvel utilisateur",
 			"SHORTTITLE": "Nouvel utilisateur",
@@ -1507,6 +1512,11 @@
 			"SHORTITLE": "Matériel inactif",
 			"TITLE": "Matériel inactif"
 		},
+		"LATE_CHECK": {
+			"LABEL": "Contrôle en retard",
+			"SHORTITLE": "Contrôle en retard",
+			"TITLE": "Contrôle en retard"
+		},
 		"IS_STOCK_COMMUN": {
 			"LABEL": "Stock commun",
 			"SHORTTITLE": "Stock commun",
@@ -1557,6 +1567,9 @@
 			"LOAN_UPDATED": {
 				"TITLE": "Prêt mis à jour avec succès"
 			},
+			"MATERIAL_QUANTITY_NOT_AVAILABLE": {
+				"TITLE": "Rupture de stock"
+			},
 			"MATERIEL_CREATED": {
 				"TITLE": "Matériel créé avec succès"
 			},
@@ -1599,10 +1612,20 @@
 			"SHORTTITLE": "utilisateurs",
 			"TITLE": "utilisateurs"
 		},
+		"ONE_USER": {
+			"LABEL": "1 utilisateur",
+			"SHORTTITLE": "1 utilisateur",
+			"TITLE": "1 utilisateur"
+		},
 		"PERSONNELS_COUNT": {
-			"LABEL": "Nombre d'utilisateurs",
-			"SHORTTITLE": "Nombre d'utilisateurs",
-			"TITLE": "Nombre d'utilisateurs"
+			"LABEL": "Nombre d'utilisateurs actuels",
+			"SHORTTITLE": "Nombre d'utilisateurs actuels",
+			"TITLE": "Nombre d'utilisateurs actuels"
+		},
+		"AVAILABLE_QUANTITY": {
+			"LABEL": "Quantité disponible",
+			"SHORTTITLE": "Quantité disponible",
+			"TITLE": "Quantité disponible"
 		},
 		"PERSONNELS_HISTORY": {
 			"LABEL": "historique des utilisateurs",

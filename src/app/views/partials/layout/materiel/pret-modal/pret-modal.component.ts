@@ -37,6 +37,7 @@ export class PretModalComponent implements OnInit {
   async ngOnInit() {
     this.form = this.fb.group({
       salarie_id: [null, Validators.required],
+      pret_id: [null],
       date_pret: [moment().format('DD/MM/YYYY')],
       date_retour: [null],
     })
@@ -49,6 +50,7 @@ export class PretModalComponent implements OnInit {
       }
       this.formatDates(pivot, 'EnToFr');
       this.form.patchValue(pivot);
+      this.form.get('pret_id').setValue(pivot.id);
 
       this.form.get('salarie_id').disable();
 
