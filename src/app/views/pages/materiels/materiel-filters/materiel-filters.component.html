@@ -17,12 +17,17 @@
 							<mat-icon>clear</mat-icon>
 						</button>
 					</mat-form-field>
-					<!-- <mat-form-field class="col-3 st-group" floatLabel="always" appearance="none" >
+					 <mat-form-field class="col-3 st-group" floatLabel="always" appearance="none" >
+						<span class="st-label pointer" (click)="toggleCheck('late_check')">{{'MATERIELS.LATE_CHECK.SHORTITLE' | translate}}</span>
+						<mat-slide-toggle id="show_inactives" [checked]="filterForm.get('late_check').value == 1" (change)="onCheckChange($event, 'late_check')"></mat-slide-toggle>
+						<textarea matInput hidden></textarea>
+					</mat-form-field>
+					<!--<mat-form-field class="col-3 st-group" floatLabel="always" appearance="none" >
 						<span class="st-label pointer" (click)="toggleCheck('show_inactives')">{{'MATERIELS.SHOW_INACTIVES.SHORTITLE' | translate}}</span>
 						<mat-slide-toggle id="show_inactives" [checked]="filterForm.get('show_inactives').value == 1" (change)="onCheckChange($event, 'show_inactives')"></mat-slide-toggle>
 						<textarea matInput hidden></textarea>
 					</mat-form-field>
-					<mat-form-field class="col-3 st-group" floatLabel="always" appearance="none" >
+						<mat-form-field class="col-3 st-group" floatLabel="always" appearance="none" >
 						<span class="st-label pointer" (click)="toggleCheck('only_common_stock')">{{'MATERIELS.ONLY_COMMON_STOCK.TITLE' | translate}}</span>
 						<mat-slide-toggle id="only_common_stock" [checked]="filterForm.get('only_common_stock').value == 1" (change)="onCheckChange($event, 'only_common_stock')"></mat-slide-toggle>
 						<textarea matInput hidden></textarea>
