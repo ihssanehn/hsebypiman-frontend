@@ -1508,6 +1508,11 @@
 			"SHORTITLE": "Inactive equipments",
 			"TITLE": "Inactive equipments"
 		},
+		"LATE_CHECK": {
+			"LABEL": "Late check",
+			"SHORTITLE": "Late check",
+			"TITLE": "Late check"
+		},
 		"IS_STOCK_COMMUN": {
 			"LABEL": "Common stock",
 			"SHORTTITLE": "Common stock",
