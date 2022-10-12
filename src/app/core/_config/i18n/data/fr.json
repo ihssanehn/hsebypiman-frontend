@@ -1613,9 +1613,9 @@
 			"TITLE": "utilisateurs"
 		},
 		"ONE_USER": {
-			"LABEL": "Un utilisateur",
-			"SHORTTITLE": "Un utilisateur",
-			"TITLE": "Un utilisateur"
+			"LABEL": "1 utilisateur",
+			"SHORTTITLE": "1 utilisateur",
+			"TITLE": "1 utilisateur"
 		},
 		"PERSONNELS_COUNT": {
 			"LABEL": "Nombre d'utilisateurs actuels",

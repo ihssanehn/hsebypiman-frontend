@@ -1609,9 +1609,9 @@
 			"TITLE": "Users"
 		},
 		"ONE_USER": {
-			"LABEL": "One user",
-			"SHORTTITLE": "One user",
-			"TITLE": "One user"
+			"LABEL": "1 user",
+			"SHORTTITLE": "1 user",
+			"TITLE": "1 user"
 		},
 		"PERSONNELS_COUNT": {
 			"LABEL": "Number of users",
