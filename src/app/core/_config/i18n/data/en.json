@@ -2062,7 +2062,7 @@
 				"TITLE": "This lift has not been assigned to any site"
 			},
 			"REMONTEE_DELETE_CONFIRMATION": {
-				"TITLE": "You will permanently delete this lift",
+				"TITLE": "You will permanently delete this lift with related action plan",
 				"LABEL": "Are you sure you want to continue ?"
 			},
 			"DOC_DELETE_CONFIRMATION": {
