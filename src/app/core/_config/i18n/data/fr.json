@@ -2067,7 +2067,7 @@
 				"TITLE": "Cette remontée n'a été attribuée à aucun chantier"
 			},
 			"REMONTEE_DELETE_CONFIRMATION": {
-				"TITLE": "Vous allez supprimer cette remontée de façon définitive",
+				"TITLE": "Vous allez supprimer cette remontée QHSE ainsi que le plan d'action associé de façon définitive",
 				"LABEL": "Êtes-vous sûr de vouloir continuer ?"
 			},
 			"DOC_DELETE_CONFIRMATION": {
