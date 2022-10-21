@@ -1916,6 +1916,12 @@
 			"ASSIGNED_ACTION": {
 				"TITLE": "Actions to be assigned"
 			},
+			"FINISHED_ACTION": {
+				"TITLE": "Finished actions"
+			},
+			"INPROGRESS_ACTION": {
+				"TITLE": "In progress actions"
+			},
 			"DELAY_RATE": {
 				"TITLE": "Delay rate"
 			},
