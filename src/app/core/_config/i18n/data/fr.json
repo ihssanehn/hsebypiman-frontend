@@ -1920,6 +1920,12 @@
 			"ASSIGNED_ACTION": {
 				"TITLE": "Actions à attribuer"
 			},
+			"FINISHED_ACTION": {
+				"TITLE": "Actions terminées"
+			},
+			"INPROGRESS_ACTION": {
+				"TITLE": "Actions en cours"
+			},
 			"DELAY_RATE": {
 				"TITLE": "Taux de retard"
 			},
