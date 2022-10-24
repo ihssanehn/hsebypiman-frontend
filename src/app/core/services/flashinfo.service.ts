@@ -21,9 +21,15 @@ export class FlashInfoService extends HttpService{
   get(flashinfo_id){
     return this.http.get<JsonResponse<FlashInfo>>(this.baseUrl+'/'+flashinfo_id);
   }
-  getAll(params = {}){
+
+  getList(params = {}){
     return this.http.post<JsonResponse<any>>(this.baseUrl, {...params});
   }
+
+  getAll(){
+    return this.http.get<JsonResponse<any>>(this.baseUrl);
+  }
+
   getAllAsAdmin(params = {}){
     var extendparams = {...params}
     extendparams['fromAdmin'] = true;
