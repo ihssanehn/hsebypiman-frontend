@@ -13,7 +13,8 @@ export class FlashInfosTopComponent implements OnInit {
 
 	flashOnTop : FlashInfo
 	oldFlashList : FlashInfo[];
-	
+	flashinfosLoaded: boolean = false;
+
   constructor(
 		private flashInfoService: FlashInfoService,
 		private modalService: NgbModal,
@@ -24,11 +25,14 @@ export class FlashInfosTopComponent implements OnInit {
 		this.getFlashInfos();
   }
 
-	async getFlashInfos(){
-		var res = await this.flashInfoService.getAll({top:true, limit:5}).toPromise()
+	async getFlashInfos() {
+		this.flashinfosLoaded = false;
+		var res = await this.flashInfoService.getAll().toPromise()
 		
 		this.flashOnTop = res.result.data['top'];
 		this.oldFlashList = res.result.data['others'];
+
+		this.flashinfosLoaded = true;
 		this.cdr.markForCheck();
 	}
 

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import Editor from "@asset/js/global/integration/plugins/ckeditor/ckeditor";
+import Editor from 'ckeditor5-custom-build/build/ckeditor';
 import { ChangeEvent } from '@ckeditor/ckeditor5-angular';
+import { environment } from '@env/environment';
 
 @Component({
   selector: 'tf-flashinfo-editor',
@@ -14,6 +15,16 @@ export class FlashinfoEditorComponent implements OnInit {
   @ViewChild("editor", {static: true}) editor: any;
 
   public Editor = Editor;
+  public config: any = {
+    simpleUpload: {
+      uploadUrl: environment.apiBaseUrl + 'flash-infos/upload',
+      withCredentials: true, 
+      headers: {
+        "Entity": `${localStorage.getItem(environment.entity)}`,
+        Authorization: `Bearer ${localStorage.getItem(environment.authTokenKey)}`
+      }
+    }
+  };
 
   constructor() { }
 
