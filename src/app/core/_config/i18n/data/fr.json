@@ -317,12 +317,14 @@
 	},
 	"CAUSERIES": {
 		"ACTION":{
-			"ADD_PARTICIPANT": "S'enregistrer"
+			"ADD_PARTICIPANT": "S'enregistrer",
+			"EDIT_FEEDBACK_PARTICIPANT": "Editer le retour"
 		},
 		"LIBELLE":"Libelle",
 		"LIEU":"Lieu",
 		"ORGANISATEUR":"Organisateur",
 		"PARTICIPANTS":"Participants",
+		"INSCRIPTIONS":"Inscriptions",
 		"PARTICIPANTS_COUNT":{
 			"TITLE":"Nombre de participants", 
 			"SHORTTITLE":"Nbr de participants"
@@ -335,7 +337,8 @@
 		"SUJET":"Sujet",
 		"DATE":"Date",
 		"CARD": {
-			"NO_PARTICIPANTS":"Aucun participant"
+			"NO_PARTICIPANTS":"Aucun participant",
+			"NO_INSCRIPTIONS":"Aucune inscription"
 		},
 		"NOTIF": {
 			"CAUSERIE_CREATED": {
