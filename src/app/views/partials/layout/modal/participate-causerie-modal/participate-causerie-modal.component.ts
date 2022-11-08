@@ -21,7 +21,7 @@ export class ParticipateCauserieModalComponent implements OnInit {
 
 	constructor(
     private cdr: ChangeDetectorRef,
-    private activeModal: NgbActiveModal,
+    public activeModal: NgbActiveModal,
     private userService: UserService,
     private authService: AuthService,
     private causerieService: CauserieService,
