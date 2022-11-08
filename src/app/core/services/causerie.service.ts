@@ -41,8 +41,12 @@ export class CauserieService{
         return this.http.delete<JsonResponse<Causerie>>(this.baseUrl+'/'+item_id);
     }
     
-    addParticipant(params){
-        return this.http.post<JsonResponse<any>>(this.baseUrl+'/add-participant', params);
+    addParticipant(causerieId: number, params: any){
+        return this.http.post<JsonResponse<any>>(this.baseUrl+'/'+causerieId+'/participants', params);
+    }
+
+    addFeedBackParticipant(causerieId: number, userId: number, params: any){
+        return this.http.put<JsonResponse<any>>(this.baseUrl+'/'+causerieId+'/participants/'+userId, params);
     }
     
     export(filters){

@@ -1,12 +1,17 @@
-
+<div class="modal-header">
+	<h4 class="modal-title">{{'CAUSERIES.INSCRIPTIONS' | translate}}</h4>
+	<button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
 <div class="modal-body">
 	<form [formGroup]="participationForm">
 
 		<mat-form-field class="col-xl-12">
 			<mat-label>{{'CAUSERIES.RETOUR_PARTICIPANT.FORM' | translate}}</mat-label>
 			<textarea class="form-control" matInput
-				name="retour_participant"
-				formControlName="retour_participant"
+				name="feedback_participant"
+				formControlName="feedback_participant"
 				placeholder="{{'ACTION.ENTER_HERE' | translate}}"
 				cdkTextareaAutosize
 				#autosize="cdkTextareaAutosize"

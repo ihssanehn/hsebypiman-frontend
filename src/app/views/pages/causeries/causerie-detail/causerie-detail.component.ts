@@ -31,8 +31,7 @@ export class CauserieDetailComponent implements OnInit, OnDestroy {
 	displayedParticipantsColumns: Array<any> = [
 		'prenom',
 		'nom',
-		'email',
-		'retour_participant'
+		'email'
 	];
 	// Private properties
 	private subscriptions: Subscription[] = [];
@@ -133,16 +132,78 @@ export class CauserieDetailComponent implements OnInit, OnDestroy {
 	}
 
 	hasParticipate(){
-		return this.causerie.participants.find(x=>x.id == this.authUser.id)
+		return this.causerie.participants.find(x => x.id == this.authUser.id)
 	}
 
 	participate(){
-		const modalRef = this.modalService.open(ParticipateCauserieModalComponent, {size: 'xl',scrollable: true, centered : true});
+		const modalRef = this.modalService.open(ParticipateCauserieModalComponent, {size: 'md',scrollable: true, centered : true});
 		modalRef.componentInstance.causerie = this.causerie;
 		modalRef.componentInstance.user = this.authUser;
-		modalRef.result.then(()=>{
-			this.getCauserie();
-		})
+		modalRef.result.then((payload)=>{
+			this.addParticipant(payload);
+		}, (err) => {});
+	}
+
+	editFeedBackParticipant(){
+		var participant = this.hasParticipate();
+		if(participant) {
+			console.log(participant)
+			const modalRef = this.modalService.open(ParticipateCauserieModalComponent, {size: 'md',scrollable: true, centered : true});
+			modalRef.componentInstance.causerie = this.causerie;
+			modalRef.componentInstance.user = this.authUser;
+			modalRef.componentInstance.retourParticipant = participant.pivot.retour_participant;
+	
+			modalRef.result.then((payload)=>{
+				this.addFeedBackParticipant(payload);
+			}, (err) => {});
+		}
+
+	}
+
+	addParticipant(data) {
+		try {
+			this.causerieService.addParticipant(this.causerie.id, data)
+			.toPromise()
+			.then(res => {
+				this.cdr.markForCheck();
+				this.getCauserie();
+			}).catch(err =>{ 
+				Swal.fire({
+				  icon: 'error',
+				  title: this.translate.instant("NOTIF.INCOMPLETE_FORM.TITLE"),
+				  showConfirmButton: false,
+				  timer: 1500
+				});
+			});
+
+			this.cdr.markForCheck();
+		} catch (error) {
+			console.error(error);
+			throw error;
+		}
+	}
+
+	addFeedBackParticipant(data) {
+		try {
+			this.causerieService.addFeedBackParticipant(this.causerie.id, this.authUser.id, data)
+			.toPromise()
+			.then(res => {
+				this.cdr.markForCheck();
+				this.getCauserie();
+			}).catch(err =>{ 
+				Swal.fire({
+				  icon: 'error',
+				  title: this.translate.instant("NOTIF.INCOMPLETE_FORM.TITLE"),
+				  showConfirmButton: false,
+				  timer: 1500
+				});
+			});
+
+			this.cdr.markForCheck();
+		} catch (error) {
+			console.error(error);
+			throw error;
+		}
 	}
 
 	isUserOrganizer() {
