@@ -15,6 +15,7 @@ export class FlashInfoFormComponent implements OnInit {
   @Input() flashinfoForm: FormGroup;
   @Input() formStatus: FormStatus;
   @Input() edit: Boolean;
+  @Output() onLoading = new EventEmitter();
   @Output() onCancel = new EventEmitter();
   @Output() onSubmit = new EventEmitter();
 
@@ -38,7 +39,12 @@ export class FlashInfoFormComponent implements OnInit {
   }
 
   onChangeEditor(content) {
-    this.flashinfoForm.get('content').setValue(content);
+    if(content) {
+      this.onLoading.emit(false);
+      this.flashinfoForm.get('content').setValue(content);
+    } else {
+      this.onLoading.emit(true);
+    }
   }
 
   async getFonctions(){
