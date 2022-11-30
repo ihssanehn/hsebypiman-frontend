@@ -42,8 +42,26 @@ export class FlashinfoEditorComponent implements OnInit {
 
   onChange({ editor }: ChangeEvent) {
     if(editor) {
-      const data = editor.getData();
-      this.change.emit(data);
+      const changes = editor.model.document.differ.getChanges();
+      for (const change of changes) {
+        if(change.attributeKey == "uploadStatus") {
+          switch (change.attributeNewValue) {
+            case "uploading":
+              this.change.emit(false);
+              break;
+          
+            case "complete":
+              this.change.emit(editor.getData());
+              break;
+
+            default:
+              this.change.emit(editor.getData());
+              break;
+          }
+        } else {
+          this.change.emit(editor.getData());
+        }
+      }
     }
   }
 

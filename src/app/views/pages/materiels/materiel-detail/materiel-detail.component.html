@@ -73,7 +73,7 @@
 								<div class="pointer" (click)="openDocumentModal(doc)" *ngFor="let doc of materiel.documents; let i = index">
 									<mat-icon color="primary" class="pr-2" >attach_file</mat-icon>
 									{{doc.libelle}}
-									<mat-icon color="warn" class="pull-right" (click)="deleteDocument(doc.id); $event.stopPropagation()" >delete</mat-icon>
+									<mat-icon color="warn" class="pull-right" (click)="deleteDocument(doc.id); $event.stopPropagation()" *ngxPermissionsOnly="['materiel_canUpdate']">delete</mat-icon>
 								</div>
 							</div>
 							<ng-template #noDocument>
