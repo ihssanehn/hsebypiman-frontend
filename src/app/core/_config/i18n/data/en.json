@@ -1290,6 +1290,9 @@
 		"TITLE": "Filters"
 	},
 	"FLASHINFOS": {
+		"ACTIONS": {
+			"NEW": "New flash info"
+		},
 		"CONTENT": {
 			"LABEL": "Content",
 			"SHORTTITLE": "Contenu",
@@ -1326,6 +1329,11 @@
 				"TITLE": "Flash info deleted successfully"
 			}
 		},
+		"NEW": {
+			"LABEL": "New",
+			"SHORTTITLE": "New",
+			"TITLE": "New"
+		},
 		"ONTOP": {
 			"LABEL": "On headlines",
 			"SHORTTITLE": "On headlines",
@@ -1345,9 +1353,6 @@
 			"LABEL": "Visible",
 			"SHORTTITLE": "Visible",
 			"TITLE": "Visible"
-		},
-		"NEW": {
-			"SHORTBUTTON": "New flash info"
 		}
 	},
 	"MATERIELS": {

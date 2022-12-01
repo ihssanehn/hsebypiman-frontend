@@ -1293,6 +1293,9 @@
 		"TITLE": "Filtres"
 	},
 	"FLASHINFOS": {
+		"ACTIONS": {
+			"NEW": "Creer Flash info"
+		},
 		"CONTENT": {
 			"LABEL": "Contenu",
 			"SHORTTITLE": "Contenu",
@@ -1329,6 +1332,11 @@
 				"TITLE": "Le flash info a bien été supprimée"
 			}
 		},
+		"NEW": {
+			"LABEL": "Nouveau",
+			"SHORTTITLE": "Nouveau",
+			"TITLE": "Nouveau"
+		},
 		"ONTOP": {
 			"LABEL": "En une",
 			"SHORTTITLE": "En une",
@@ -1348,9 +1356,6 @@
 			"LABEL": "Visible",
 			"SHORTTITLE": "Visible",
 			"TITLE": "Visible"
-		},
-		"NEW": {
-			"SHORTBUTTON": "Creer Flash info"
 		}
 	},
 	"MATERIELS": {
