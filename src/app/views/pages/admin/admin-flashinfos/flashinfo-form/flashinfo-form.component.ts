@@ -38,12 +38,10 @@ export class FlashInfoFormComponent implements OnInit {
     this.getRoles();
   }
 
-  onChangeEditor(content) {
+  onChangeEditor(content: any) {
     if(content) {
-      this.onLoading.emit(false);
-      this.flashinfoForm.get('content').setValue(content);
-    } else {
-      this.onLoading.emit(true);
+      this.onLoading.emit(content.isUploading);
+      this.flashinfoForm.get('content').setValue(content.data);
     }
   }
 
