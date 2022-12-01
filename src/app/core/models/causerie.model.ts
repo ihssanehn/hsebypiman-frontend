@@ -1,7 +1,6 @@
 
 import {User} from '@app/core/auth'
-import { Chantier } from './chantier.model';
-import { Type } from './type.model';
+import { Document } from './';
 
 export class Causerie {
     id?: number;
@@ -12,8 +11,11 @@ export class Causerie {
     description?: string;
     organisateur_id: number;
     organisateur: User;
+    creator_id?: number;
+    creator?: User;
     created_at: Date;
     updated_at: Date;
     participants?: Array<any>;
     participants_count?: number;
+    documents?: Document[];
 }

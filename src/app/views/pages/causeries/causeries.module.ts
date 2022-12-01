@@ -56,6 +56,7 @@ import { CauserieFormComponent } from './causerie-form/causerie-form.component';
 import { CauserieEditComponent } from './causerie-edit/causerie-edit.component';
 import { CauserieAddComponent } from './causerie-add/causerie-add.component';
 import { CauserieDetailComponent } from './causerie-detail/causerie-detail.component';
+import { FileUploadModule } from 'ng2-file-upload';
 
 
 
@@ -178,6 +179,7 @@ const routes: Routes = [
 		NgbTooltipModule,
 		NgbPopoverModule,
 		NgxMaskModule,
+		FileUploadModule
 	],
 	providers: [
 		InterceptService,

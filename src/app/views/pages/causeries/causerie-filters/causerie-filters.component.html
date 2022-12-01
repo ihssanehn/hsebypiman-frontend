@@ -4,7 +4,7 @@
 			<form novalidate [formGroup]="filterForm">
 				<div class="row">
 					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
-						<mat-label>{{'CAUSERIES.ORGANISATEUR' | translate}}</mat-label>
+						<mat-label>{{'CAUSERIES.ANIMATOR' | translate}}</mat-label>
 						<mat-select class="form-control" formControlName="organisateur_id" name="organisateur_id">
 							<mat-option>{{'FILTER.SEARCH_ALL' | translate}}</mat-option>
 							<mat-option *ngFor="let organisateur of users" [value]="organisateur.id">

@@ -318,13 +318,15 @@
 	"CAUSERIES": {
 		"ACTION":{
 			"ADD_PARTICIPANT": "S'enregistrer",
-			"EDIT_FEEDBACK_PARTICIPANT": "Editer le retour"
+			"EDIT_FEEDBACK_PARTICIPANT": "Editer le retour",
+			"ENTER_HERE": "Saisir ici description, objectifs de la causerie, lien de la visio,…"
 		},
 		"LIBELLE":"Libelle",
 		"LIEU":"Lieu",
-		"ORGANISATEUR":"Organisateur",
+		"ANIMATOR":"Animateur",
 		"PARTICIPANTS":"Participants",
 		"INSCRIPTIONS":"Inscriptions",
+		"CREATOR": "Créateur",
 		"PARTICIPANTS_COUNT":{
 			"TITLE":"Nombre de participants", 
 			"SHORTTITLE":"Nbr de participants"

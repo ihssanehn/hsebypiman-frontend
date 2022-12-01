@@ -26,7 +26,8 @@
 						<p><span class="label pull-left mr-2">{{'CAUSERIES.LIBELLE' | translate}}</span><span class="">{{causerie.libelle}}</span></p>
 						<p><span class="label pull-left mr-2">{{'CAUSERIES.DATE' | translate}}</span><span class="">{{causerie.date ? (causerie.date | date:'dd/MM/yyyy') : '&nbsp;'}}</span></p>
 						<p><span class="label pull-left mr-2">{{'CAUSERIES.LIEU' | translate}}</span><span class="">{{causerie.lieu ? causerie.lieu : '&nbsp;'}}</span></p>
-						<p><span class="label pull-left mr-2">{{'CAUSERIES.ORGANISATEUR' | translate}}</span><span class="">{{causerie.organisateur ? causerie.organisateur.fullname : '&nbsp;'}}</span></p>
+						<p><span class="label pull-left mr-2">{{'CAUSERIES.CREATOR' | translate}}</span><span class="">{{causerie.creator ? causerie.creator.fullname : '&nbsp;'}}</span></p>
+						<p><span class="label pull-left mr-2">{{'CAUSERIES.ANIMATOR' | translate}}</span><span class="">{{causerie.organisateur ? causerie.organisateur.fullname : '&nbsp;'}}</span></p>
 						<p><span class="label pull-left mr-2">{{'CAUSERIES.PARTICIPANTS' | translate}}</span><span class="">{{causerie.participants_count}}</span></p>
 					</div>
 

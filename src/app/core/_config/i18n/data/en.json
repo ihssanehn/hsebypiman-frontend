@@ -321,13 +321,15 @@
 	"CAUSERIES": {
 		"ACTION":{
 			"ADD_PARTICIPANT": "S'enregistrer",
-			"EDIT_FEEDBACK_PARTICIPANT": "Editer le retour"
+			"EDIT_FEEDBACK_PARTICIPANT": "Editer le retour",
+			"ENTER_HERE": "Enter here description, objectives of the talk, video link,…"
 		},
 		"LIBELLE":"Libelle",
 		"LIEU":"Lieu",
-		"ORGANISATEUR":"Organisateur",
+		"ANIMATOR":"Animator",
 		"PARTICIPANTS":"Participants",
 		"INSCRIPTIONS":"Inscriptions",
+		"CREATOR": "Creator",
 		"PARTICIPANTS_COUNT":{
 			"TITLE":"Nombre de participants", 
 			"SHORTTITLE":"Nbr de participants"

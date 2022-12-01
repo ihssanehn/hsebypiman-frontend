@@ -5,6 +5,17 @@
 					{{'MENU.SUB_CAUSERIES.EDIT' | translate}} {{causerieForm.get('libelle').value}}
 				</div>
 				<span *ngIf="!edit">{{'MENU.SUB_CAUSERIES.ADD' | translate}}</span>
+				<div class="tf-heading__right">
+					<mat-form-field>
+						<mat-label>{{'FLASHINFOS.CREATOR.TITLE' | translate}}
+						</mat-label>
+						<mat-select class="form-control" formControlName="creator_id" name="creator_id">
+							<mat-option *ngFor="let user of usersList" [value]="user.id">
+								{{user.trigramme}} - {{user.fullname}}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</div>
 			</div>
 			<div>
 				<div class="tf-wizard-v4__content" data-tfwizard-type="step-content" data-tfwizard-state="current">
@@ -19,7 +30,7 @@
 									</mat-error>
 								</mat-form-field>
 								<mat-form-field class="col-xl-3">
-									<mat-label>{{'CAUSERIES.ORGANISATEUR' | translate}}</mat-label>
+									<mat-label>{{'CAUSERIES.ANIMATOR' | translate}}</mat-label>
 									<mat-select class="form-control" placeholder="{{'ACTION.ENTER_HERE' | translate}}" formControlName="organisateur_id" [required]="isFieldRequired('organisateur_id')">
 										<mat-option *ngFor="let organisateur of usersList" [value]="organisateur.id">
 											{{ organisateur | fullName }}
@@ -45,13 +56,12 @@
 								</mat-form-field>
 							</div>
 							<div class="row form-row">
-
 								<mat-form-field class="col-xl-12">
 									<mat-label>{{'CAUSERIES.SUJET' | translate}}</mat-label>
 									<textarea class="form-control" matInput
 										name="sujet"
 										formControlName="sujet"
-										placeholder="{{'ACTION.ENTER_HERE' | translate}}"
+										placeholder="{{'CAUSERIES.ACTION.ENTER_HERE' | translate}}"
 										[required]="isFieldRequired('sujet')"
 										cdkTextareaAutosize
 										#autosize="cdkTextareaAutosize"
@@ -62,6 +72,58 @@
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
 								</mat-form-field>
+							</div>
+
+							<div class="col-12">
+								<div class="tf-heading tf-heading--md">{{'REMONTEES.CARD.DOC.TITLE' | translate}}</div>
+								<div class="row form-row">
+									<div class="col-12">
+										<form [formGroup]="causerieForm" (ngSubmit)="uploadSubmit()" *ngIf="uploader">
+											<div class="row">
+												<div class="col-4">
+		
+													<div class="upload-btn-wrapper">
+														<button class="btnr" title="{{'COMMON.SELECT_FILES.TITLE' | translate}}">{{'COMMON.SELECT_FILES.SHORTTITLE' | translate}}</button>
+														<span>{{'COMMON.NOTIF.NO_FILE_CHOSEN.TITLE' | translate}}</span>
+														<input formControlName="documentsToUpload" (onFileSelected)="onFileDrop($event)" class="mb-2" type="file" 
+															ng2FileSelect title="{{'COMMON.SELECT_FILES.TITLE' | translate}}" accept=".png, .bmp, .jpeg, .jpg, .gif, .tif, .PNG, .BMP, .JPEG, .JPG, .GIF, .TIF" [uploader]="uploader" multiple/>
+													</div>
+													  
+													<div ng2FileDrop [uploader]="uploader" 
+													(onFileDrop)="onFileDrop($event)"
+													class="drop-zone">
+														{{'UPLOAD.DROPZONE.PLACEHOLDER' | translate}} <br>
+														{{'UPLOAD.LIST_EXT' | translate}} : jpg, bmp, jpeg, gif, png, tif, pdf<br>
+														{{'UPLOAD.MAX_SIZE' | translate}} : 4 Mo
+													</div>
+												</div>
+												<div class="col-8">
+													<div class="row">
+														<div class="col-12" *ngIf="edit">
+															<h6>{{'REMONTEES.CARD.DOC.LABEL' | translate}} : </h6>
+															
+															<ul >
+																<li class="mb-3" *ngFor="let item of causerieForm.get('documents').value" >
+																	{{item.libelle}}
+																		<mat-icon color="warn" class="pull-right pointer" (click)="deleteDoc(item)" matTooltip="{{'REMONTEES.CARD.DOC.ACTION.REMOVE_DOC' | translate}}">delete</mat-icon>
+																</li>
+															</ul>
+														</div>
+														<div class="col-12">
+															<h6>{{'REMONTEES.CARD.DOC.FILE_AWAIT_UPLOAD' | translate}} : </h6>
+															<ul>
+																<li class="mb-3" *ngFor="let item of uploader.queue">
+																	{{seeItem(item)}}
+																		<mat-icon color="accent" class="pull-right pointer" (click)="item.remove()" matTooltip="{{'REMONTEES.CARD.DOC.ACTION.REMOVE_DOC' | translate}}">delete</mat-icon>
+																</li>
+															</ul>
+														</div>
+													</div>	
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>

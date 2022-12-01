@@ -31,11 +31,15 @@ export class CauserieService{
     get(item_id){
         return this.http.get<JsonResponse<Causerie>>(this.baseUrl+'/'+item_id);
     }
-    create(item){
-        return this.http.post<JsonResponse<Causerie>>(this.baseUrl+'/'+'create', item);
+    create(formData){
+        const httpHeaders = new HttpHeaders();
+		httpHeaders.set("Content-Type", "multipart/form-data");
+        return this.http.post<JsonResponse<Causerie>>(this.baseUrl+'/'+'create', formData, { headers: httpHeaders });
     }
-    update(item){
-        return this.http.put<JsonResponse<Causerie>>(this.baseUrl+'/'+item.id, item);
+    update(id: number, formData){
+        const httpHeaders = new HttpHeaders();
+		httpHeaders.set("Content-Type", "multipart/form-data");
+        return this.http.put<JsonResponse<Causerie>>(this.baseUrl+'/'+id, formData, { headers: httpHeaders });
     }
     delete(item_id){
         return this.http.delete<JsonResponse<Causerie>>(this.baseUrl+'/'+item_id);

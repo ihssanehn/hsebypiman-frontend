@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Subscription } from "rxjs";
 import { tap } from 'rxjs/operators';
 
@@ -12,6 +12,8 @@ import { extractErrorMessagesFromErrorResponse } from '@app/core/_base/crud';
 import { FormStatus } from '@app/core/_base/crud/models/form-status';
 import { TranslateService } from '@ngx-translate/core';
 import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
+import { FileUploader } from 'ng2-file-upload';
+import moment from 'moment';
 
 @Component({
 	selector: 'tf-causerie-edit',
@@ -31,6 +33,10 @@ export class CauserieEditComponent implements OnInit, OnDestroy {
 	editMode: boolean = false;
 	// Private properties
 	private subscriptions: Subscription[] = [];
+
+	public uploader:FileUploader = new FileUploader({
+		isHTML5: true
+	});
 
 	/**
 	 * Component constructor
@@ -65,6 +71,15 @@ export class CauserieEditComponent implements OnInit, OnDestroy {
 							var causerie = res.result.data;
 							this.parseCauserieDate(causerie, 'EnToFr');
 							this.causerieForm.patchValue(causerie);
+							const documentArray = this.causerieForm.get('documents') as FormArray;
+							for (let i = 0; i < res.result.data.documents.length; i++) {
+								const item = res.result.data.documents[i];
+								var document = this.causerieFB.group({
+									libelle: [item.libelle],
+									id: [item.id, Validators.required],
+								});
+								documentArray.push(document);
+							}
 						})
 					).subscribe( async res => {
 						this.causerie = res.result.data;
@@ -100,8 +115,11 @@ export class CauserieEditComponent implements OnInit, OnDestroy {
 			libelle: [null, Validators.required],
 			sujet: [null, [Validators.required]],
 			organisateur_id: [null, Validators.required],
+			creator_id:[{value: null, disabled: true}],
 			date: [null, [Validators.required]],
 			lieu: [null, [Validators.required]],
+			documentsToUpload: [null, null],
+			documents: new FormArray([])
 		});
 	}
   
@@ -123,12 +141,26 @@ export class CauserieEditComponent implements OnInit, OnDestroy {
 		try {
 			this.formloading = true;
 			this.formStatus.onFormSubmitting();
+			let formData = new FormData();
 			let form = {...this.causerieForm.getRawValue()};
-			this.parseCauserieDate(form, 'FrToEn');
 
-			form.id = this.causerie.id;
+			for (let j = 0; j < this.uploader.queue.length; j++) {
+				let fileItem = this.uploader.queue[j]._file;
+				formData.append('documents[]', fileItem);
+			}
+
+			Object.keys(form).map(function (key) {
+				if(form[key] && key != "documents")
+				  return formData.append(key, form[key]);
+			})
+
+			if(form.date)
+				formData.set('date', moment(form.date).format('YYYY-MM-DD'));
+			else formData.set('date', '');
+
+			formData.set('id', ''+this.causerie.id);
 			
-			this.causerieService.update(form)
+			this.causerieService.update(this.causerie.id, formData)
 				.toPromise()
 				.then((causerie) => {
 					this.formloading = false;
@@ -141,6 +173,7 @@ export class CauserieEditComponent implements OnInit, OnDestroy {
 						timer: 1500
 					}).then(() => {
             			this.location.back();
+						this.uploader.clearQueue();
 					});
 				})
 				.catch(err => {
@@ -175,6 +208,18 @@ export class CauserieEditComponent implements OnInit, OnDestroy {
 
 	parseCauserieDate(item, direction){
 		item.date = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.date) : this.dateEnToFrPipe.transform(item.date);
+	}
+
+	controlDocuments() {
+		for (let i = 0; i < this.uploader.queue.length; i++) {
+		  let fileItem = this.uploader.queue[i]._file;
+		  if(fileItem.size > 10000000){
+			alert(this.translate.instant("REMONTEES.NOTIF.FILE_SIZE_ALERT.TITLE"));
+			return true;
+		  }
+		}
+			
+		return false
 	}
 
 }
