@@ -130,12 +130,8 @@ export class FlashInfoEditComponent implements OnInit, OnDestroy {
     this.location.back();
   }
 
-  onLoading(loading) {
-    if(loading) {
-      this.formloading = true;
-    } else {
-      this.formloading = false;
-    }
+  onLoading(loading: boolean) {
+    this.formloading = loading;
   }
 
 

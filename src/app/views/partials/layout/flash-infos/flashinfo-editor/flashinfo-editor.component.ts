@@ -14,6 +14,8 @@ export class FlashinfoEditorComponent implements OnInit {
   @Output() change = new EventEmitter();
   @ViewChild("editor", {static: true}) editor: any;
 
+  isUploading: boolean = false;
+
   public Editor = Editor;
   public config: any = {
     simpleUpload: {
@@ -40,26 +42,36 @@ export class FlashinfoEditorComponent implements OnInit {
       );
   }
 
+  emitChanges(data: any) {
+    this.change.emit({
+      "isUploading": this.isUploading,
+      "data": data
+    });
+  }
+
   onChange({ editor }: ChangeEvent) {
     if(editor) {
       const changes = editor.model.document.differ.getChanges();
       for (const change of changes) {
+        console.log(change);
         if(change.attributeKey == "uploadStatus") {
           switch (change.attributeNewValue) {
             case "uploading":
-              this.change.emit(false);
+              this.isUploading = true;
+              this.emitChanges(editor.getData());
               break;
           
             case "complete":
-              this.change.emit(editor.getData());
+              this.isUploading = false;
+              this.emitChanges(editor.getData());
               break;
 
             default:
-              this.change.emit(editor.getData());
+              this.emitChanges(editor.getData());
               break;
           }
         } else {
-          this.change.emit(editor.getData());
+          this.emitChanges(editor.getData());
         }
       }
     }

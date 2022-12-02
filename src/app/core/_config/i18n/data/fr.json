@@ -5,6 +5,7 @@
 		"ADD_DOCUMENTS": "Ajouter des documents",
 		"ADD_PICTURE": "Ajouter une photo",
 		"ADD_PICTURES": "Ajouter des photos",
+		"ADD_FILES": "Ajouter des fichiers",
 		"ADD_SIGNER": "Ajouter un signataire",
 		"CANCEL": "Annuler",
 		"CLEAR": "Vider",
@@ -318,13 +319,15 @@
 	"CAUSERIES": {
 		"ACTION":{
 			"ADD_PARTICIPANT": "S'enregistrer",
-			"EDIT_FEEDBACK_PARTICIPANT": "Editer le retour"
+			"EDIT_FEEDBACK_PARTICIPANT": "Editer le retour",
+			"ENTER_HERE": "Saisir ici description, objectifs de la causerie, lien de la visio,…"
 		},
 		"LIBELLE":"Libelle",
 		"LIEU":"Lieu",
-		"ORGANISATEUR":"Organisateur",
+		"ANIMATOR":"Animateur",
 		"PARTICIPANTS":"Participants",
 		"INSCRIPTIONS":"Inscriptions",
+		"CREATOR": "Créateur",
 		"PARTICIPANTS_COUNT":{
 			"TITLE":"Nombre de participants", 
 			"SHORTTITLE":"Nbr de participants"
@@ -338,7 +341,9 @@
 		"DATE":"Date",
 		"CARD": {
 			"NO_PARTICIPANTS":"Aucun participant",
-			"NO_INSCRIPTIONS":"Aucune inscription"
+			"NO_INSCRIPTIONS":"Aucune inscription",
+			"IMAGES":"Images associées",
+			"DOCS":"Documents associés"
 		},
 		"NOTIF": {
 			"CAUSERIE_CREATED": {
@@ -358,6 +363,29 @@
 			},
 			"LOADING": {
 				"TITLE": "Loading Entreprise"
+			},
+			"NO_IMAGE": {
+				"TITLE":"Aucune Image"
+			},
+			"NO_DOCUMENT": {
+				"TITLE":"Aucun document"
+			},
+			"IMAGE_DELETE_CONFIRMATION": {
+				"TITLE": "Vous allez supprimer cette image de façon définitive",
+				"LABEL": "Êtes-vous sûr de vouloir continuer ?"
+			},
+			"IMAGE_DELETED": {
+				"TITLE": "Image supprimée avec succès"
+			},
+			"DOC_DELETE_CONFIRMATION": {
+				"TITLE": "Vous allez supprimer ce document de façon définitive",
+				"LABEL": "Êtes-vous sûr de vouloir continuer ?"
+			},
+			"DOC_DELETED": {
+				"TITLE": "Document supprimé avec succès"
+			},
+			"DOCS_ADDED": {
+				"TITLE": "Documents ajoutés avec succès"
 			}
 		}
 	},
@@ -969,6 +997,10 @@
 			},
 			"NO_FILE_CHOSEN": {
 				"TITLE": "Aucun fichier choisi"
+			},
+			"UPLOADING": {
+				"SHORTTITLE": "Téléchargement",
+				"TITLE": "Veuillez patienter, téléchargement en cours"
 			}
 		},
 		"NO_DATA_FOUND": {
@@ -1293,6 +1325,9 @@
 		"TITLE": "Filtres"
 	},
 	"FLASHINFOS": {
+		"ACTIONS": {
+			"NEW": "Creer Flash info"
+		},
 		"CONTENT": {
 			"LABEL": "Contenu",
 			"SHORTTITLE": "Contenu",
@@ -1329,6 +1364,11 @@
 				"TITLE": "Le flash info a bien été supprimée"
 			}
 		},
+		"NEW": {
+			"LABEL": "Nouveau",
+			"SHORTTITLE": "Nouveau",
+			"TITLE": "Nouveau"
+		},
 		"ONTOP": {
 			"LABEL": "En une",
 			"SHORTTITLE": "En une",
@@ -1348,9 +1388,6 @@
 			"LABEL": "Visible",
 			"SHORTTITLE": "Visible",
 			"TITLE": "Visible"
-		},
-		"NEW": {
-			"SHORTBUTTON": "Creer Flash info"
 		}
 	},
 	"MATERIELS": {

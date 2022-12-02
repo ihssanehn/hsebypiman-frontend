@@ -5,6 +5,7 @@
 		"ADD_DOCUMENTS": "Add documents",
 		"ADD_PICTURE": "Add a picture",
 		"ADD_PICTURES": "Add pictures",
+		"ADD_FILES": "Add files",
 		"ADD_SIGNER": "Add a signer",
 		"CANCEL": "Cancel",
 		"CLEAR": "Empty",
@@ -321,13 +322,15 @@
 	"CAUSERIES": {
 		"ACTION":{
 			"ADD_PARTICIPANT": "S'enregistrer",
-			"EDIT_FEEDBACK_PARTICIPANT": "Editer le retour"
+			"EDIT_FEEDBACK_PARTICIPANT": "Editer le retour",
+			"ENTER_HERE": "Enter here description, objectives of the talk, video link,…"
 		},
 		"LIBELLE":"Libelle",
 		"LIEU":"Lieu",
-		"ORGANISATEUR":"Organisateur",
+		"ANIMATOR":"Animator",
 		"PARTICIPANTS":"Participants",
 		"INSCRIPTIONS":"Inscriptions",
+		"CREATOR": "Creator",
 		"PARTICIPANTS_COUNT":{
 			"TITLE":"Nombre de participants", 
 			"SHORTTITLE":"Nbr de participants"
@@ -341,7 +344,9 @@
 		"DATE":"Date",
 		"CARD": {
 			"NO_PARTICIPANTS":"Aucun participant",
-			"NO_INSCRIPTIONS":"Aucune inscription"
+			"NO_INSCRIPTIONS":"Aucune inscription",
+			"IMAGES":"Images",
+			"DOCS":"Documents"
 		},
 		"NOTIF": {
 			"CAUSERIE_CREATED": {
@@ -361,6 +366,29 @@
 			},
 			"LOADING": {
 				"TITLE": "Loading Entreprise"
+			},
+			"NO_IMAGE": {
+				"TITLE":"No Image"
+			},
+			"NO_DOCUMENT": {
+				"TITLE":"No document"
+			},
+			"IMAGE_DELETE_CONFIRMATION": {
+				"TITLE": "Vous allez supprimer cette image de façon définitive",
+				"LABEL": "Êtes-vous sûr de vouloir continuer ?"
+			},
+			"IMAGE_DELETED": {
+				"TITLE": "Image supprimée avec succès"
+			},
+			"DOC_DELETE_CONFIRMATION": {
+				"TITLE": "Vous allez supprimer ce document de façon définitive",
+				"LABEL": "Êtes-vous sûr de vouloir continuer ?"
+			},
+			"DOC_DELETED": {
+				"TITLE": "Document supprimé avec succès"
+			},
+			"DOCS_ADDED": {
+				"TITLE": "Documents successfully added"
 			}
 		}
 	},
@@ -967,6 +995,10 @@
 			},
 			"NO_FILE_CHOSEN": {
 				"TITLE": "No file chosen"
+			},
+			"UPLOADING": {
+				"SHORTTITLE": "Uploading",
+				"TITLE": "Uploading in progress, please wait"
 			}
 		},
 		"NO_DATA_FOUND": {
@@ -1290,6 +1322,9 @@
 		"TITLE": "Filters"
 	},
 	"FLASHINFOS": {
+		"ACTIONS": {
+			"NEW": "New flash info"
+		},
 		"CONTENT": {
 			"LABEL": "Content",
 			"SHORTTITLE": "Contenu",
@@ -1326,6 +1361,11 @@
 				"TITLE": "Flash info deleted successfully"
 			}
 		},
+		"NEW": {
+			"LABEL": "New",
+			"SHORTTITLE": "New",
+			"TITLE": "New"
+		},
 		"ONTOP": {
 			"LABEL": "On headlines",
 			"SHORTTITLE": "On headlines",
@@ -1345,9 +1385,6 @@
 			"LABEL": "Visible",
 			"SHORTTITLE": "Visible",
 			"TITLE": "Visible"
-		},
-		"NEW": {
-			"SHORTBUTTON": "New flash info"
 		}
 	},
 	"MATERIELS": {

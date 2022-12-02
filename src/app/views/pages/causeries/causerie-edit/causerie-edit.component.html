@@ -1,7 +1,7 @@
 <!-- <div class="row row-filters" style="height: 69px;">
 </div> -->
 
-<form [formGroup]="causerieForm" *ngIf="loaded && causerieForm; else loading" autocomplete="off" class="tf-form tf-form--group-seperator-dashed " novalidate (ngSubmit)="causerieForm.valid && onSubmit()" fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+<form [formGroup]="causerieForm" *ngIf="loaded && causerieForm; else loading" autocomplete="off" class="tf-form tf-form--group-seperator-dashed " novalidate (ngSubmit)="!controlDocuments() && causerieForm.valid && onSubmit()" fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
 	<tf-portlet class="main-portlet-form" id="portlet-ar">
 		<div class="tf-portlet-header ">
 			<span class="title">
@@ -10,10 +10,10 @@
 				<span class="id-item">{{'MENU.SUB_CAUSERIES.EDIT' | translate}}</span>
 			</span>
 		</div>
-		<tf-causerie-form [causerieForm]="causerieForm" [formStatus]="formStatus" [edit]="true" (onSubmit)="onSubmit()" (onCancel)="cancel()"></tf-causerie-form>
+		<tf-causerie-form [causerieForm]="causerieForm" [formStatus]="formStatus" [uploader]="uploader" [edit]="true" (onSubmit)="onSubmit()" (onCancel)="cancel()"></tf-causerie-form>
 	</tf-portlet>
 	<div>
-		<button mat-raised-button [ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': formloading}" [disabled]="formloading || causerieForm.invalid" color="success" class="pull-right">
+		<button mat-raised-button [ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': formloading}" [disabled]="controlDocuments() || formloading || causerieForm.invalid" color="success" class="pull-right">
 			{{'ACTION.SAVE' | translate}}
 		</button>
 		<button type="button" mat-raised-button color="info" (click)="cancel()">

@@ -11,7 +11,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class FlashInfosTopComponent implements OnInit {
 
-	flashOnTop : FlashInfo
+	flashOnTop : FlashInfo;
+	lastFlash : FlashInfo;
 	oldFlashList : FlashInfo[];
 	flashinfosLoaded: boolean = false;
 
@@ -30,6 +31,7 @@ export class FlashInfosTopComponent implements OnInit {
 		var res = await this.flashInfoService.getAll().toPromise()
 		
 		this.flashOnTop = res.result.data['top'];
+		this.lastFlash = res.result.data['last'];
 		this.oldFlashList = res.result.data['others'];
 
 		this.flashinfosLoaded = true;

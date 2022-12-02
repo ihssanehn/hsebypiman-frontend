@@ -106,9 +106,7 @@ export class RemonteeAddComponent implements OnInit {
             icon: 'success',
             title: this.translate.instant("REMONTEES.NOTIF.LIFT_CREATED.TITLE"),
             showConfirmButton: false,
-            timer: 1500,
-
-    
+            timer: 1500
           }).then(() => {
             this.uploader.clearQueue();
             this.router.navigate(['/remontees/list']);
