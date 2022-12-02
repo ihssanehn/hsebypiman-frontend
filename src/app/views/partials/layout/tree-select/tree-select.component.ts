@@ -119,8 +119,10 @@ export class TreeSelectComponent implements OnInit {
     this.onChangedItem.emit( data );
   }
 
-  handleSelection(code: string) {
-    if(this.itemsToHandle.indexOf(code) == -1) {
+  handleSelection(item: any) {
+    if(
+      (this.itemsToHandle.indexOf(item.code) == -1) && 
+      ((item.parent && this.itemsToHandle.indexOf(item.parent.code) == -1) || (!item.parent))) {
       this.onSelectedItemsToHandle.emit(false);
     } else {
       this.onSelectedItemsToHandle.emit(true);
@@ -129,7 +131,8 @@ export class TreeSelectComponent implements OnInit {
 
   itemChange($event, i){
     if($event.value){
-      this.handleSelection($event.value.code);
+      console.log($event.value)
+      this.handleSelection($event.value);
       if(i + 1 < this.items.value.length){
         if($event.value.children && $event.value.children.length > 0){
           this.clearTreeValue(i+1)
