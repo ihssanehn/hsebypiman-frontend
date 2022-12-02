@@ -69,7 +69,6 @@ export class CauserieEditComponent implements OnInit, OnDestroy {
 					this.causerieService.get(id).pipe(
 						tap(res=>{
 							var causerie = res.result.data;
-							this.parseCauserieDate(causerie, 'EnToFr');
 							this.causerieForm.patchValue(causerie);
 							const documentArray = this.causerieForm.get('documents') as FormArray;
 							for (let i = 0; i < res.result.data.documents.length; i++) {

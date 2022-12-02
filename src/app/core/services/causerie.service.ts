@@ -39,7 +39,7 @@ export class CauserieService{
     update(id: number, formData){
         const httpHeaders = new HttpHeaders();
 		httpHeaders.set("Content-Type", "multipart/form-data");
-        return this.http.put<JsonResponse<Causerie>>(this.baseUrl+'/'+id, formData, { headers: httpHeaders });
+        return this.http.post<JsonResponse<Causerie>>(this.baseUrl+'/update/'+id, formData, { headers: httpHeaders });
     }
     delete(item_id){
         return this.http.delete<JsonResponse<Causerie>>(this.baseUrl+'/'+item_id);
