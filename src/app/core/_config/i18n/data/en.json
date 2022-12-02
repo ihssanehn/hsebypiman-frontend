@@ -5,6 +5,7 @@
 		"ADD_DOCUMENTS": "Add documents",
 		"ADD_PICTURE": "Add a picture",
 		"ADD_PICTURES": "Add pictures",
+		"ADD_FILES": "Add files",
 		"ADD_SIGNER": "Add a signer",
 		"CANCEL": "Cancel",
 		"CLEAR": "Empty",
@@ -343,7 +344,9 @@
 		"DATE":"Date",
 		"CARD": {
 			"NO_PARTICIPANTS":"Aucun participant",
-			"NO_INSCRIPTIONS":"Aucune inscription"
+			"NO_INSCRIPTIONS":"Aucune inscription",
+			"IMAGES":"Images",
+			"DOCS":"Documents"
 		},
 		"NOTIF": {
 			"CAUSERIE_CREATED": {
@@ -363,6 +366,29 @@
 			},
 			"LOADING": {
 				"TITLE": "Loading Entreprise"
+			},
+			"NO_IMAGE": {
+				"TITLE":"No Image"
+			},
+			"NO_DOCUMENT": {
+				"TITLE":"No document"
+			},
+			"IMAGE_DELETE_CONFIRMATION": {
+				"TITLE": "Vous allez supprimer cette image de façon définitive",
+				"LABEL": "Êtes-vous sûr de vouloir continuer ?"
+			},
+			"IMAGE_DELETED": {
+				"TITLE": "Image supprimée avec succès"
+			},
+			"DOC_DELETE_CONFIRMATION": {
+				"TITLE": "Vous allez supprimer ce document de façon définitive",
+				"LABEL": "Êtes-vous sûr de vouloir continuer ?"
+			},
+			"DOC_DELETED": {
+				"TITLE": "Document supprimé avec succès"
+			},
+			"DOCS_ADDED": {
+				"TITLE": "Documents successfully added"
 			}
 		}
 	},
@@ -969,6 +995,10 @@
 			},
 			"NO_FILE_CHOSEN": {
 				"TITLE": "No file chosen"
+			},
+			"UPLOADING": {
+				"SHORTTITLE": "Uploading",
+				"TITLE": "Uploading in progress, please wait"
 			}
 		},
 		"NO_DATA_FOUND": {

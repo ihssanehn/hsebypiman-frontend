@@ -19,7 +19,7 @@
 	</div>
 	<tf-portlet-body class="tf-portlet__body--fit">
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-4">
 				<div class="card">
 					<h3>{{'EES.CARD.GENERAL_INFOS.TITLE' | translate}}</h3>
 					<div class="box">
@@ -48,7 +48,81 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-6">
+
+			<div class="col-md-4 d-flex flex-column">
+				<div class="row flex-1">
+					<div class="col-12 pb-2">
+						<div class="card">
+							<span class="card-editor">
+								<button mat-icon-button matTooltip="{{'ACTION.ADD_DOCUMENT' | translate}}" (click)="openAddImageModal()">
+									<mat-icon color="primary">add</mat-icon>
+								</button>
+							</span>
+							<h4>
+								{{'CAUSERIES.CARD.IMAGES' | translate}}
+							</h4>
+							<div class="box" style="flex:1">
+								<div class="picsum-img-wrapper pointer d-flex flex-wrap" *ngIf="causerie.images.length; else noImages">
+									<ng-container *ngFor="let image of causerie.images; let i = index">
+										<div class="img-card m-2 mr-3">
+											<img 
+												[src]="image.src | safe:'resourceUrl'" 
+												(click)="openModal(causerie.images, i); $event.stopPropagation()" 
+												[title]="image.libelle">
+											<button mat-icon-button matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteImage(image.id)">
+												<mat-icon color="primary">close</mat-icon>
+											</button>
+										</div>
+									</ng-container>
+								</div>
+								<ng-template #noImages>
+									<div class="text-center mt-4 font-italic">
+										{{'CAUSERIES.NOTIF.NO_IMAGE.TITLE' | translate}}
+									</div>
+								</ng-template>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row flex-1">
+					<div class="col-12">
+						<div class="card pb-2">
+							<span class="card-editor">
+								<button mat-icon-button matTooltip="{{'ACTION.ADD_DOCUMENT' | translate}}" (click)="openAddDocumentModal()">
+									<mat-icon color="primary">add</mat-icon>
+								</button>
+							</span>
+							<h4>
+								{{'CAUSERIES.CARD.DOCS' | translate}}
+							</h4>
+							<div class="box" style="flex:1">
+								<div class="picsum-img-wrapper d-flex flex-wrap" *ngIf="causerie.docs.length; else noDocument">
+									<ng-container *ngFor="let doc of causerie.docs; let i = index">
+										<div class="doc-card m-2 mr-3 pointer" matTooltip="{{doc.libelle}}">
+											<img 
+												alt="doc" 
+												class="shdw-5" 
+												(click)="showDocument(doc)"
+												src="./assets/media/hse-svg/picto-file.svg">
+											<div class="mt-2">{{doc.libelle | truncate:15}}</div>
+											<button mat-icon-button matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteDocument(doc.id)">
+												<mat-icon color="primary">close</mat-icon>
+											</button>
+										</div>
+									</ng-container>
+								</div>
+								<ng-template #noDocument>
+									<div class="text-center mt-4 font-italic">
+										{{'CAUSERIES.NOTIF.NO_DOCUMENT.TITLE' | translate}}
+									</div>
+								</ng-template>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4">
 				<div class="card">
 					<h3>
 						{{'CAUSERIES.INSCRIPTIONS' | translate}}

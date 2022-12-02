@@ -17,5 +17,6 @@ export class Causerie {
     updated_at: Date;
     participants?: Array<any>;
     participants_count?: number;
-    documents?: Document[];
-}
+    docs?: Document[];
+    images?: Document[];
+    documents?: Document[];}

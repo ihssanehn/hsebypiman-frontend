@@ -62,6 +62,12 @@ export class CauserieService{
     getStats(params){
         return this.http.post<JsonResponse<any>>(this.baseUrl+'/stats', params);
     }
+
+    addDocuments(id:number, documents){
+		const httpHeaders = new HttpHeaders();
+		httpHeaders.set("Content-Type", "multipart/form-data");
+        return this.http.post<JsonResponse<any>>(this.baseUrl+'/'+id+'/documents', documents, { headers: httpHeaders });
+    }
     
 
 }
