@@ -44,6 +44,7 @@
         "bootstrap": "^4.3.1",
         "chart.js": "^2.9.2",
         "chartist": "^0.11.4",
+        "ckeditor5-custom-build": "file:vendor/custom-ckeditor5",
         "classlist.js": "^1.1.20150312",
         "core-js": "^3.3.6",
         "echarts": "^4.8.0",

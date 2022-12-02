@@ -50,7 +50,7 @@ export class FlashInfosListComponent implements OnInit {
 
   async getFlashInfos(){
     try {
-      var res = await this.FlashInfoService.getAll(this.filter).toPromise();
+      var res = await this.FlashInfoService.getList(this.filter).toPromise();
 			this.flashinfosList = res.result.data;
 			this.pagination = {
 				...this.pagination,

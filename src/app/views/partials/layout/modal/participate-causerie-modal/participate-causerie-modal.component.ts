@@ -19,11 +19,9 @@ export class ParticipateCauserieModalComponent implements OnInit {
   participationForm: FormGroup;
   retourParticipant: string;
 
-  @ViewChild('livretIframe', {static: true}) frame : ElementRef;
-
 	constructor(
     private cdr: ChangeDetectorRef,
-    private activeModal: NgbActiveModal,
+    public activeModal: NgbActiveModal,
     private userService: UserService,
     private authService: AuthService,
     private causerieService: CauserieService,
@@ -39,17 +37,13 @@ export class ParticipateCauserieModalComponent implements OnInit {
     this.participationForm = this.fb.group({
       user_id: [this.user ? this.user.id : null, Validators.required],
       causerie_id: [this.causerie ? this.causerie.id : null, Validators.required],
-      retour_participant: [this.retourParticipant]
+      feedback_participant: [this.retourParticipant]
     })
   }
 
   async validate() {
-
     var form = this.participationForm.getRawValue();
-    console.log(form)
-    await this.causerieService.addParticipant(form).toPromise().then(res=>{
-      this.activeModal.close('done');
-    });
+    this.activeModal.close(form);
   }
 
 }

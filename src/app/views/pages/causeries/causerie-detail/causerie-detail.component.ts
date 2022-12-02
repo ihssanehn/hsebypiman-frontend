@@ -3,16 +3,21 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup } from "@angular/forms";
 import { Subscription } from "rxjs";
 
-import { CauserieService } from '@app/core/services';
+import { CauserieService, DocumentService } from '@app/core/services';
 import { Causerie } from '@app/core/models';
 
 import { DomSanitizer } from '@angular/platform-browser';
-import { MatIconRegistry } from '@angular/material';
+import { MatDialog, MatIconRegistry } from '@angular/material';
 import Swal from 'sweetalert2';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService, User } from '@app/core/auth';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ParticipateCauserieModalComponent } from '@app/views/partials/layout/modal/participate-causerie-modal/participate-causerie-modal.component';
+import { ImageLightboxContentDialogComponent, ShowDocumentModalComponent } from '@app/views/partials/layout';
+import { AddDocModalComponent } from '@app/views/partials/layout/modal/add-doc-modal/add-doc-modal.component';
+import { FileUploader } from 'ng2-file-upload';
+import { FormStatus } from '@app/core/_base/crud/models/form-status';
+import { extractErrorMessagesFromErrorResponse } from '@app/core/_base/crud';
 
 @Component({
   selector: 'tf-causerie-detail',
@@ -22,8 +27,8 @@ import { ParticipateCauserieModalComponent } from '@app/views/partials/layout/mo
 export class CauserieDetailComponent implements OnInit, OnDestroy {
   
 	authUser: User;
-  causerie: Causerie;
-  causerie_id: number;
+  	causerie: Causerie;
+  	causerie_id: number;
 	causerieForm: FormGroup;
 	// allRoles: Role[];
 	loaded = false;
@@ -31,10 +36,11 @@ export class CauserieDetailComponent implements OnInit, OnDestroy {
 	displayedParticipantsColumns: Array<any> = [
 		'prenom',
 		'nom',
-		'email',
-		'retour_participant'
+		'email'
 	];
-	// Private properties
+	formDocStatus = new FormStatus();
+	formDocloading: Boolean = false;
+	public uploader: FileUploader = new FileUploader({isHTML5: true});
 	private subscriptions: Subscription[] = [];
 
 	/**
@@ -53,7 +59,8 @@ export class CauserieDetailComponent implements OnInit, OnDestroy {
 		private modalService: NgbModal,
 		private cdr: ChangeDetectorRef,
 		private authService: AuthService,
-		
+		private documentService: DocumentService,
+		public dialog: MatDialog,
 		iconRegistry: MatIconRegistry, 
 		sanitizer: DomSanitizer
 	) {
@@ -77,7 +84,13 @@ export class CauserieDetailComponent implements OnInit, OnDestroy {
 	async getCauserie(){
 		try {
 			var res = await this.causerieService.get(this.causerie_id).toPromise();
-			this.causerie = res.result.data;
+			var causerie = res.result.data;
+			causerie.images.forEach(x => {
+				x.src = this.documentService.readFile(x.id);
+				x.image = this.documentService.readFile(x.id);
+				x.thumbImage = this.documentService.readFile(x.id);
+			});
+			this.causerie = causerie;
 			this.cdr.markForCheck();
 		} catch (error) {
 			console.error(error);
@@ -133,19 +146,255 @@ export class CauserieDetailComponent implements OnInit, OnDestroy {
 	}
 
 	hasParticipate(){
-		return this.causerie.participants.find(x=>x.id == this.authUser.id)
+		return this.causerie.participants.find(x => x.id == this.authUser.id)
 	}
 
 	participate(){
-		const modalRef = this.modalService.open(ParticipateCauserieModalComponent, {size: 'xl',scrollable: true, centered : true});
+		const modalRef = this.modalService.open(ParticipateCauserieModalComponent, {size: 'md',scrollable: true, centered : true});
 		modalRef.componentInstance.causerie = this.causerie;
 		modalRef.componentInstance.user = this.authUser;
-		modalRef.result.then(()=>{
-			this.getCauserie();
-		})
+		modalRef.result.then((payload)=>{
+			this.addParticipant(payload);
+		}, (err) => {});
+	}
+
+	editFeedBackParticipant(){
+		var participant = this.hasParticipate();
+		if(participant) {
+			console.log(participant)
+			const modalRef = this.modalService.open(ParticipateCauserieModalComponent, {size: 'md',scrollable: true, centered : true});
+			modalRef.componentInstance.causerie = this.causerie;
+			modalRef.componentInstance.user = this.authUser;
+			modalRef.componentInstance.retourParticipant = participant.pivot.retour_participant;
+	
+			modalRef.result.then((payload)=>{
+				this.addFeedBackParticipant(payload);
+			}, (err) => {});
+		}
+
+	}
+
+	addParticipant(data) {
+		try {
+			this.causerieService.addParticipant(this.causerie.id, data)
+			.toPromise()
+			.then(res => {
+				this.cdr.markForCheck();
+				this.getCauserie();
+			}).catch(err =>{ 
+				Swal.fire({
+				  icon: 'error',
+				  title: this.translate.instant("NOTIF.INCOMPLETE_FORM.TITLE"),
+				  showConfirmButton: false,
+				  timer: 1500
+				});
+			});
+
+			this.cdr.markForCheck();
+		} catch (error) {
+			console.error(error);
+			throw error;
+		}
+	}
+
+	addFeedBackParticipant(data) {
+		try {
+			this.causerieService.addFeedBackParticipant(this.causerie.id, this.authUser.id, data)
+			.toPromise()
+			.then(res => {
+				this.cdr.markForCheck();
+				this.getCauserie();
+			}).catch(err =>{ 
+				Swal.fire({
+				  icon: 'error',
+				  title: this.translate.instant("NOTIF.INCOMPLETE_FORM.TITLE"),
+				  showConfirmButton: false,
+				  timer: 1500
+				});
+			});
+
+			this.cdr.markForCheck();
+		} catch (error) {
+			console.error(error);
+			throw error;
+		}
 	}
 
 	isUserOrganizer() {
 		return this.authUser.id == this.causerie.organisateur.id;
+	}
+
+	openAddImageModal(){
+		const modalRef = this.modalService.open(AddDocModalComponent, {size: 'lg',scrollable: true,centered : true});
+		modalRef.componentInstance.uploader = this.uploader;
+		modalRef.componentInstance.accept = '.png, .bmp, .jpeg, .jpg, .gif, .tif, .heic';
+
+		modalRef.result.then( 
+			payload => {
+				if(payload){
+					this.saveDocuments(payload), payload => this.saveDocuments(payload)
+				}
+			}, (err) => {}
+		);
+	}
+
+	openAddDocumentModal() {
+		const modalRef = this.modalService.open(AddDocModalComponent, {size: 'lg',scrollable: true,centered : true});
+		modalRef.componentInstance.uploader = this.uploader;
+		modalRef.componentInstance.accept = '.pdf';
+
+		modalRef.result.then( 
+			payload => {
+				if(payload){
+					this.saveDocuments(payload), payload => this.saveDocuments(payload)
+				}
+			}, (err) => {}
+		);
+	}
+
+	saveDocuments(payloads){
+		Swal.fire({
+			title: this.translate.instant("COMMON.NOTIF.UPLOADING.SHORTTITLE"),
+			html: this.translate.instant("COMMON.NOTIF.UPLOADING.TITLE"),
+			allowEscapeKey: false,
+			allowOutsideClick: false,
+			timerProgressBar: true,
+			onOpen: () => {
+				Swal.showLoading();
+			}
+		});
+
+		this.formDocloading = true;
+		let formData = new FormData();
+		this.formDocStatus.onFormSubmitting();
+
+		for (let j = 0; j < this.uploader.queue.length; j++) {
+			let fileItem = this.uploader.queue[j]._file;
+			formData.append('documents[]', fileItem);
+		}
+
+		this.causerieService.addDocuments(this.causerie.id, formData)
+			.toPromise()
+			.then((res) => {
+				this.formDocloading = false;
+				
+				Swal.fire({
+					icon: 'success',
+					title: this.translate.instant("CAUSERIES.NOTIF.DOCS_ADDED.TITLE"),
+					showConfirmButton: false,
+					timer: 1500,
+						
+				}).then(() => {
+					this.uploader.clearQueue();
+					this.getCauserie();
+				});
+			})
+			.catch(err =>{ 
+				this.formDocloading = false;
+
+				Swal.fire({
+					icon: 'error',
+					title: this.translate.instant("COMMON.NOTIF.INCOMPLETE_FORM.TITLE"),
+					showConfirmButton: false,
+					timer: 1500
+				});
+
+				if(err.status === 422){
+					var messages = extractErrorMessagesFromErrorResponse(err);
+					this.formDocStatus.onFormSubmitResponse({success: false, messages: messages});
+					this.cdr.markForCheck();
+				}
+			});
+			
+		this.cdr.markForCheck();
+	} catch (error) {
+		this.formDocloading = false;
+		console.error(error);
+		throw error;
+	}
+
+	openModal(photos: any, index: number) {
+		const dialogRef = this.dialog.open(ImageLightboxContentDialogComponent, {
+			data: { images : photos, selectedImgIndex: index}
+		});
+	}
+
+	showDocument(doc: any){
+		const modalRef = this.modalService.open(ShowDocumentModalComponent, {size: 'lg',scrollable: true,centered : true, windowClass:'doc-modal'});
+		modalRef.componentInstance.document = doc;
+	}
+
+	deleteImage(id: number) {
+		Swal.fire({
+			icon: 'warning',
+			title: this.translate.instant("CAUSERIES.NOTIF.IMAGE_DELETE_CONFIRMATION.TITLE"),
+			text: this.translate.instant("CAUSERIES.NOTIF.IMAGE_DELETE_CONFIRMATION.LABEL"),
+			showConfirmButton: true,
+			showCancelButton: true,
+			cancelButtonText: this.translate.instant("ACTION.CANCEL"),
+			confirmButtonText: this.translate.instant("ACTION.DELETE")
+		}).then(async response => {
+			if (response.value) {
+				try {
+					const res = await this.documentService.delete(id).toPromise();
+					if (res) {
+						Swal.fire({
+							icon: 'success',
+							title: this.translate.instant("CAUSERIES.NOTIF.IMAGE_DELETED.TITLE"),
+							showConfirmButton: false,
+							timer: 1500
+						}).then(() => {
+							this.getCauserie();
+						});
+					} else {
+						throw new Error();
+					}
+				} catch (e) {
+					Swal.fire({
+						icon: 'error',
+						title: this.translate.instant("NOTIF.ERROR_OCCURED.TITLE"),
+						showConfirmButton: false,
+						timer: 1500
+					});
+				}
+			}
+		});
+	}
+
+	deleteDocument(id: number) {
+		Swal.fire({
+			icon: 'warning',
+			title: this.translate.instant("CAUSERIES.NOTIF.DOC_DELETE_CONFIRMATION.TITLE"),
+			text: this.translate.instant("CAUSERIES.NOTIF.DOC_DELETE_CONFIRMATION.LABEL"),
+			showConfirmButton: true,
+			showCancelButton: true,
+			cancelButtonText: this.translate.instant("ACTION.CANCEL"),
+			confirmButtonText: this.translate.instant("ACTION.DELETE")
+		}).then(async response => {
+			if (response.value) {
+				try {
+					const res = await this.documentService.delete(id).toPromise();
+					if (res) {
+						Swal.fire({
+							icon: 'success',
+							title: this.translate.instant("CAUSERIES.NOTIF.DOC_DELETED.TITLE"),
+							showConfirmButton: false,
+							timer: 1500
+						}).then(() => {
+							this.getCauserie();
+						});
+					} else {
+						throw new Error();
+					}
+				} catch (e) {
+					Swal.fire({
+						icon: 'error',
+						title: this.translate.instant("NOTIF.ERROR_OCCURED.TITLE"),
+						showConfirmButton: false,
+						timer: 1500
+					});
+				}
+			}
+		});
 	}
 }

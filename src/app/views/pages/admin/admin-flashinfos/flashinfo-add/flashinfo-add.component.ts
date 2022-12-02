@@ -105,4 +105,8 @@ export class FlashInfoAddComponent implements OnInit {
 		this.location.back();
   }
 
+  onLoading(loading: boolean) {
+    this.formloading = loading;
+  }
+
 }

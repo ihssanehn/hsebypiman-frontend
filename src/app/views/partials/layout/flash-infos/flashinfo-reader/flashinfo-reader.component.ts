@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import Editor from "@asset/js/global/integration/plugins/ckeditor/ckeditor";
+import { environment } from '@env/environment';
+import Editor from 'ckeditor5-custom-build/build/ckeditor';
 
 @Component({
   selector: 'tf-flashinfo-reader',
@@ -8,10 +9,21 @@ import Editor from "@asset/js/global/integration/plugins/ckeditor/ckeditor";
 })
 export class FlashinfoReaderComponent implements OnInit {
 
-  public Editor = Editor;
-
   @Input() data: any;
 
+  public Editor = Editor;
+  public config: any = {
+    isReadOnly: true, 
+    toolbar: [],
+    simpleUpload: {
+      uploadUrl: environment.apiBaseUrl + 'flash-infos/upload',
+      withCredentials: true, 
+      headers: {
+        "Entity": `${localStorage.getItem(environment.entity)}`,
+        Authorization: `Bearer ${localStorage.getItem(environment.authTokenKey)}`
+      }
+    }
+  };
   constructor() { }
 
   ngOnInit() {

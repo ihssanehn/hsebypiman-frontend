@@ -57,7 +57,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy  {
 	}
 
 	async getFlashInfos(){
-		var res = await this.flashInfoService.getAll({top:true, limit:5}).toPromise()
+		var res = await this.flashInfoService.getAll().toPromise()
 		
 		this.flashOnTop = res.result.data['top'];
 		if(this.flashOnTop){

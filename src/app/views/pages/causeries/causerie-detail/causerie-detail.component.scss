@@ -78,10 +78,108 @@
         width: 500px;
         max-width: 500px;
     }
+
+    .chat-row{
+        padding: 1em 1em 0;
+        
+        .card{
+            padding: 1em 1em 0 !important;
+            .comment-title{
+                font-weight: bold;
+                margin-bottom: 0rem;
+            }
+            .label{
+                color: #c9c9c9;
+                text-align: left;
+            }
+            .blue{
+                color: #33b5ae;
+            }
+            .tf-divider.h-5 span{
+                height: 1em;
+            }
+            .box{
+                padding-top: 1.5em;
+                padding-bottom: 1.5em;
+                h5{
+                    padding-bottom: 0.8em;
+                    border-bottom: 1px solid #EBECF1;
+                }
+                &.box-chantiers{
+                    .row{
+                        margin-bottom: 1rem;
+                    }
+                }
+            }
+        }
+
+    }
 }
 
 .badge-pill {
     padding-right: 0.7em;
     padding-left: 0.7em;
     border-radius: 10rem;
+}
+
+:host {
+    .card-editor {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    
+    .doc-card {
+        position: relative;
+
+        width: 130px;
+        height: 100px;
+        box-shadow: 0px 0px 11px -5px rgba(0, 0, 0, 0.6);
+        border-radius: 13px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        img {
+            width: 35px;
+            height: 35px;
+            filter: invert(43%) sepia(7%) saturate(3421%) hue-rotate(120deg) brightness(98%) contrast(86%);
+        }
+
+        button {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+
+            .mat-icon {
+                border-radius: 50%;
+                background-color: #e02d52ba;
+                color: white;
+            }
+        }
+    }
+
+    .img-card {
+        position: relative;
+
+        img {
+            margin: auto; 
+            max-width: 100px; 
+            max-height: 100px; 
+            object-fit: cover;
+        }
+
+        button {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+
+            .mat-icon {
+                border-radius: 50%;
+                background-color: #e02d52ba;
+                color: white;
+            }
+        }
+    }
 }
