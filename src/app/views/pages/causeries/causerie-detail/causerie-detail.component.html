@@ -98,11 +98,10 @@
 							<div class="box" style="flex:1">
 								<div class="picsum-img-wrapper d-flex flex-wrap" *ngIf="causerie.docs.length; else noDocument">
 									<ng-container *ngFor="let doc of causerie.docs; let i = index">
-										<div class="doc-card m-2 mr-3 pointer" matTooltip="{{doc.libelle}}">
+										<div class="doc-card m-2 mr-3 pointer" matTooltip="{{doc.libelle}}" (click)="showDocument(doc)">
 											<img 
 												alt="doc" 
 												class="shdw-5" 
-												(click)="showDocument(doc)"
 												src="./assets/media/hse-svg/picto-file.svg">
 											<div class="mt-2">{{doc.libelle | truncate:15}}</div>
 											<button mat-icon-button matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteDocument(doc.id)">
