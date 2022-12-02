@@ -98,6 +98,8 @@ export class MaterielEditComponent implements OnInit, OnDestroy {
 			libelle: ['', Validators.required],
 			numero_serie: [''],
 			categorie_id: [null, Validators.required],
+			size: [null],
+			criteria_id: [null],
 			description: [''],
 			date_entree: [null],
 			has_controle: [0],

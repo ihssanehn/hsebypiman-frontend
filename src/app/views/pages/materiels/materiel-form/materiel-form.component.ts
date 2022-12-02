@@ -13,6 +13,8 @@ export class MaterielFormComponent implements OnInit {
 
   categoriesList: Categorie[];
   categoriesLoaded: boolean = false;
+  displayExtraFields: boolean = false;
+  itemsToHandle: string[] = ['EPI_VET', 'EPI_GANTS', 'EPI_CHAUSS'];
 
   @Input() materielForm: FormGroup;
   @Input() formStatus: FormStatus;
@@ -93,6 +95,11 @@ export class MaterielFormComponent implements OnInit {
     if(data != this.materielForm.get('categorie_id').value){
       this.materielForm.get('categorie_id').setValue(data);
     }
+  }
+
+  itemsToHandleSelected(isSelected: boolean) {
+    this.displayExtraFields = isSelected;
+    console.log(this.displayExtraFields);
   }
 
   isChecked(controlName: string){
