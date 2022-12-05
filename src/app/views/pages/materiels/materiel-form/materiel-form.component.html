@@ -14,8 +14,33 @@
 						<div class="tf-wizard-v4__form">
 							<div class="row form-row">
 								<div class="col-12">
-									<tf-tree-select [itemsList]="categoriesList" [fromId]="materielForm.get('categorie_id').value" [required]="true" [withAll]="false" [translateTitle]="'MATERIELS.CATEGORIE'" (onChangedItem)="categorieChanged($event)" *ngIf="categoriesList"></tf-tree-select>
+									<tf-tree-select [itemsList]="categoriesList" [fromId]="materielForm.get('categorie_id').value" [required]="true" [withAll]="false" [translateTitle]="'MATERIELS.CATEGORIE'" [itemsToHandle]="itemsToHandle" (onChangedItem)="categorieChanged($event)" (onSelectedItemsToHandle)="itemsToHandleSelected($event)" *ngIf="categoriesList"></tf-tree-select>
 								</div>
+							</div>
+
+							<div class="row form-row" *ngIf="displayExtraFields">
+								<mat-form-field class="col-xl-3">
+									<mat-label>{{'MATERIELS.SIZE.LABEL' | translate}}</mat-label>
+									<input class="form-control" matInput type="number" name="size" formControlName="size" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('size')" />
+									<mat-error *ngIf="isControlHasError('size','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+
+								<mat-form-field class="col-xl-3">
+									<mat-label>{{'MATERIELS.CRITERIA.LABEL' | translate}}</mat-label>
+									<mat-select class="form-control" formControlName="criteria_id" name="criteria_id" placeholder="{{'ACTION.ENTER_HERE' | translate}}">
+										<mat-option *ngFor="let item of criteriasList" [value]="item.id">
+											{{item.libelle}}
+										</mat-option>
+									</mat-select>
+									<button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('criteria_id')">
+										<mat-icon>clear</mat-icon>
+									</button>
+									<mat-error *ngIf="isControlHasError('criteria_id','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
 							</div>
 
 							<div class="row form-row">

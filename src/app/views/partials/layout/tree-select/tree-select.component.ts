@@ -27,8 +27,14 @@ export class TreeSelectComponent implements OnInit {
   @Input()
   fromId: number= null;
 
+  @Input()
+  itemsToHandle: string[] = [];
+
   @Output() 
   onChangedItem = new EventEmitter<any>();
+
+  @Output() 
+  onSelectedItemsToHandle = new EventEmitter<boolean>();
 
   searchForm: FormGroup;
   lastItem:number = null;
@@ -43,7 +49,7 @@ export class TreeSelectComponent implements OnInit {
 
   ngOnInit() {
     this.initForm();
-    
+    console.log(this.itemsList);
     this.cdr.markForCheck();
   }
 
@@ -113,8 +119,20 @@ export class TreeSelectComponent implements OnInit {
     this.onChangedItem.emit( data );
   }
 
+  handleSelection(item: any) {
+    if(
+      (this.itemsToHandle.indexOf(item.code) == -1) && 
+      ((item.parent && this.itemsToHandle.indexOf(item.parent.code) == -1) || (!item.parent))) {
+      this.onSelectedItemsToHandle.emit(false);
+    } else {
+      this.onSelectedItemsToHandle.emit(true);
+    }
+  }
+
   itemChange($event, i){
     if($event.value){
+      console.log($event.value)
+      this.handleSelection($event.value);
       if(i + 1 < this.items.value.length){
         if($event.value.children && $event.value.children.length > 0){
           this.clearTreeValue(i+1)

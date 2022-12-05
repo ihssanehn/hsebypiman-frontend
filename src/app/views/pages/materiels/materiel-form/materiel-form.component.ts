@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ChangeDetectorRef, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Categorie,  } from '@app/core/models';
-import { CategorieService, } from '@app/core/services';
+import { Categorie, Type,  } from '@app/core/models';
+import { CategorieService, TypeService, } from '@app/core/services';
 import { FormStatus } from '@app/core/_base/crud/models/form-status';
 
 @Component({
@@ -12,7 +12,11 @@ import { FormStatus } from '@app/core/_base/crud/models/form-status';
 export class MaterielFormComponent implements OnInit {
 
   categoriesList: Categorie[];
+  criteriasList: Type[];
   categoriesLoaded: boolean = false;
+  displayExtraFields: boolean = false;
+  criteriaLoaded: boolean = false;
+  itemsToHandle: string[] = ['EPI_VET', 'EPI_GANTS', 'EPI_CHAUSS'];
 
   @Input() materielForm: FormGroup;
   @Input() formStatus: FormStatus;
@@ -22,12 +26,27 @@ export class MaterielFormComponent implements OnInit {
   
   constructor(
     private categorieService:CategorieService,
+    private typeService: TypeService,
     private cdr: ChangeDetectorRef,
   ) { }
 
   ngOnInit() {
     this.getCategories();
+    this.getCriterias();
     this.setDynamicValidators();
+    if(this.materielForm.get('size').value || this.materielForm.get('criteria_id').value) {
+      this.displayExtraFields = true;
+    }
+  }
+
+  async getCriterias() {
+    this.criteriaLoaded = false;
+    var res = await this.typeService.getAllFromModel('Materiel').toPromise();
+    if(res){
+      this.criteriasList = res.result.data;
+      this.criteriaLoaded = true;
+    }
+    this.cdr.markForCheck();
   }
 
   setDynamicValidators(){
@@ -95,6 +114,15 @@ export class MaterielFormComponent implements OnInit {
     }
   }
 
+  itemsToHandleSelected(isSelected: boolean) {
+    if(!isSelected) {
+      this.materielForm.get('size').setValue(null);
+      this.materielForm.get('criteria_id').setValue(null);
+    }
+
+    this.displayExtraFields = isSelected;
+  }
+
   isChecked(controlName: string){
     return this.materielForm.get(controlName).value == '1';
   }
@@ -105,5 +133,9 @@ export class MaterielFormComponent implements OnInit {
     }else{
       this.materielForm.controls[controlName].setValue('0');
     }
+  }
+
+  clearValue(key){
+    this.materielForm.get(key).patchValue(null);
   }
 }

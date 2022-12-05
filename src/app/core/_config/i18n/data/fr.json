@@ -1707,6 +1707,16 @@
 			"LABEL": "Retard de visite",
 			"SHORTTITLE": "Retard",
 			"TITLE": "V.S en retard"
+		},
+		"SIZE": {
+			"LABEL": "Taille",
+			"SHORTTITLE": "Taille",
+			"TITLE": "Taille"
+		},
+		"CRITERIA": {
+			"LABEL": "Critères spécifiques",
+			"SHORTTITLE": "Critères spécifiques",
+			"TITLE": "Critères spécifiques"
 		}
 	},
 	"MENU": {

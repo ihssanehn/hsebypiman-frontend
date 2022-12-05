@@ -1703,6 +1703,16 @@
 			"LABEL": "Late visit",
 			"SHORTTITLE": "Delay",
 			"TITLE": "V.S late"
+		},
+		"SIZE": {
+			"LABEL": "Size",
+			"SHORTTITLE": "Size",
+			"TITLE": "Size"
+		},
+		"CRITERIA": {
+			"LABEL": "Specific criteria",
+			"SHORTTITLE": "Specific criteria",
+			"TITLE": "Specific criteria"
 		}
 	},
 	"MENU": {
