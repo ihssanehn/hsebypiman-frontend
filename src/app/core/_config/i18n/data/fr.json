@@ -1712,6 +1712,11 @@
 			"LABEL": "Taille",
 			"SHORTTITLE": "Taille",
 			"TITLE": "Taille"
+		},
+		"CRITERIA": {
+			"LABEL": "Critères spécifiques",
+			"SHORTTITLE": "Critères spécifiques",
+			"TITLE": "Critères spécifiques"
 		}
 	},
 	"MENU": {

@@ -28,7 +28,7 @@
 								</mat-form-field>
 
 								<mat-form-field class="col-xl-3">
-									<mat-label>Critères spécifiques</mat-label>
+									<mat-label>{{'MATERIELS.CRITERIA.LABEL' | translate}}</mat-label>
 									<mat-select class="form-control" formControlName="criteria_id" name="criteria_id" placeholder="{{'ACTION.ENTER_HERE' | translate}}">
 										<mat-option *ngFor="let item of criteriasList" [value]="item.id">
 											{{item.libelle}}

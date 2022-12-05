@@ -32,6 +32,8 @@
 										{{cat.libelle}}<span *ngIf="!last"> / </span>
 									</span>
 								</span></p>
+							<p *ngIf="materiel.size"><span class="label pull-left mr-2">{{'MATERIELS.SIZE.TITLE' | translate}}</span><span>{{materiel.size}}</span></p>
+							<p *ngIf="materiel.criteria"><span class="label pull-left mr-2">{{'MATERIELS.CRITERIA.TITLE' | translate}}</span><span>{{materiel.criteria.libelle}}</span></p>
 							<p><span class="label pull-left mr-2">{{'MATERIELS.DATE_ENTREE.TITLE' | translate}}</span><span *ngIf="materiel.date_entree; else noData">{{materiel.date_entree | date:'dd/MM/yyyy'}}</span></p>
 							<p><span class="label pull-left mr-2">{{'MATERIELS.HAS_CONTROLE.TITLE' | translate}}</span><span>{{materiel.has_controle == 1 ? 'oui': 'non'}}</span></p>
 							<p><span class="label pull-left mr-2">{{'MATERIELS.DESCRIPTION.TITLE' | translate}}</span><span *ngIf="materiel.description; else noData">{{materiel.description}}</span></p>

@@ -115,8 +115,12 @@ export class MaterielFormComponent implements OnInit {
   }
 
   itemsToHandleSelected(isSelected: boolean) {
+    if(!isSelected) {
+      this.materielForm.get('size').setValue(null);
+      this.materielForm.get('criteria_id').setValue(null);
+    }
+
     this.displayExtraFields = isSelected;
-    console.log(this.displayExtraFields);
   }
 
   isChecked(controlName: string){

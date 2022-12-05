@@ -1708,6 +1708,11 @@
 			"LABEL": "Size",
 			"SHORTTITLE": "Size",
 			"TITLE": "Size"
+		},
+		"CRITERIA": {
+			"LABEL": "Specific criteria",
+			"SHORTTITLE": "Specific criteria",
+			"TITLE": "Specific criteria"
 		}
 	},
 	"MENU": {
