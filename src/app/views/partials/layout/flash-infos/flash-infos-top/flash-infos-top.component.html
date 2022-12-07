@@ -13,21 +13,21 @@
 	<tf-portlet-body [class]="'tf-portlet__body--fit'" style="padding: 2em; background:#f7f7ff">
 		<div class="row" *ngIf="flashinfosLoaded; else loading">
 			<ng-container *ngIf="(flashOnTop || lastFlash || oldFlashList.length > 0);else noFlashInfo">
-				<div class="col-12 pointer" *ngIf="flashOnTop" (click)="openFlashInfoModal(flashOnTop.id)">
+				<div class="col-12 pointer mb-4" *ngIf="flashOnTop" (click)="openFlashInfoModal(flashOnTop.id)">
 					<div class="flash-content">
 						<h4>{{'FLASHINFOS.ONTOP.TITLE' | translate}}</h4>
 						<tf-flashinfo-reader [data]="flashOnTop.content"></tf-flashinfo-reader>
 					</div>
 				</div>
 	
-				<div class="col-12 pointer mt-4" *ngIf="lastFlash" (click)="openFlashInfoModal(lastFlash.id)">
+				<div class="col-12 pointer mb-4" *ngIf="lastFlash" (click)="openFlashInfoModal(lastFlash.id)">
 					<div class="flash-content">
 						<h4>{{'FLASHINFOS.NEW.TITLE' | translate}}</h4>
 						<tf-flashinfo-reader [data]="lastFlash.content"></tf-flashinfo-reader>
 					</div>
 				</div>
 	
-				<div class="col-12 mt-4">
+				<div class="col-12">
 					<div class="flash-content" *ngIf="oldFlashList?.length > 0">
 						<h4>{{'FLASHINFOS.RECENTLY.TITLE' | translate}}</h4>
 						<div *ngFor="let flash of oldFlashList" class="pointer" (click)="openFlashInfoModal(flash.id)">
