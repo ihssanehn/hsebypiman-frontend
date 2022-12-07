@@ -34,7 +34,7 @@
 											{{item.libelle}}
 										</mat-option>
 									</mat-select>
-									<button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('criteria_id')">
+									<button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('criteria_id'); $event.stopPropagation()">
 										<mat-icon>clear</mat-icon>
 									</button>
 									<mat-error *ngIf="isControlHasError('criteria_id','required')">
