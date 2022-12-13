@@ -107,7 +107,7 @@
 				</ng-container>	
 
 				<tr mat-header-row *matHeaderRowDef="displayedSalarieColumns"></tr>
-				<tr mat-row class="highlight-row" *matRowDef="let row; columns: displayedSalarieColumns;"></tr>
+				<tr mat-row class="highlight-row" *matRowDef="let row; columns: displayedSalarieColumns;" [ngClass]="row.is_archived? 'deleted-row':''"></tr>
 			</table>
 
 		</div>
