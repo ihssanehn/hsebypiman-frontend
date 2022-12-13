@@ -1152,6 +1152,9 @@
 		},
 		"CAUSERIES": {
 			"TITLE": "Talks"
+		},
+		"ARCHIVED": {
+			"TITLE": "Archived"
 		}
 	},
 	"EES": {
