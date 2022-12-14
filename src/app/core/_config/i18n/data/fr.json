@@ -1666,7 +1666,7 @@
 			"TITLE": "Nombre d'utilisateurs actuels"
 		},
 		"AVAILABLE_QUANTITY": {
-			"LABEL": "Quantité disponible",
+			"LABEL": "QTE Prêt / Dispo",
 			"SHORTTITLE": "Quantité disponible",
 			"TITLE": "Quantité disponible"
 		},
