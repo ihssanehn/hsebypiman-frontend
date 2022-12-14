@@ -117,22 +117,12 @@ const routes: Routes = [
 			{
 				path: 'edit',
 				component: CauserieEditComponent,
-				canActivate: [NgxPermissionsGuard],
-				data: {
-					permissions: {
-						only: ['causerie_canUpdate']
-					}
-				}
+				canActivate: [NgxPermissionsGuard]
 			},
 			{
 				path: 'edit/:id',
 				component: CauserieEditComponent,
-				canActivate: [NgxPermissionsGuard],
-				data: {
-					permissions: {
-						only: ['causerie_canUpdate']
-					}
-				}
+				canActivate: [NgxPermissionsGuard]
 			},
 		]
 	}
