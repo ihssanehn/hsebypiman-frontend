@@ -16,7 +16,7 @@ export class MaterielFormComponent implements OnInit {
   categoriesLoaded: boolean = false;
   displayExtraFields: boolean = false;
   criteriaLoaded: boolean = false;
-  itemsToHandle: string[] = ['EPI_VET', 'EPI_GANTS', 'EPI_CHAUSS'];
+  itemsToHandle: string[] = ['EPI_TETE', 'EPI_BRUIT', 'EPI_RESP', 'EPI_GANTS', 'EPI_CHAUSS'];
 
   @Input() materielForm: FormGroup;
   @Input() formStatus: FormStatus;
@@ -39,9 +39,21 @@ export class MaterielFormComponent implements OnInit {
     }
   }
 
-  async getCriterias() {
+  async getCriterias(EPI_code: string = null) {
     this.criteriaLoaded = false;
-    var res = await this.typeService.getAllFromModel('Materiel').toPromise();
+    var params;
+    if(EPI_code) {
+      params = {
+        'model': 'Materiel',
+        'code': EPI_code
+      }
+    } else  {
+      params = {
+        'model': 'Materiel'
+      }
+    }
+
+    var res = await this.typeService.getAll(params).toPromise();
     if(res){
       this.criteriasList = res.result.data;
       this.criteriaLoaded = true;
@@ -114,13 +126,15 @@ export class MaterielFormComponent implements OnInit {
     }
   }
 
-  itemsToHandleSelected(isSelected: boolean) {
-    if(!isSelected) {
+  itemsToHandleSelected(selected: any) {
+    if(!selected) {
       this.materielForm.get('size').setValue(null);
       this.materielForm.get('criteria_id').setValue(null);
+      this.displayExtraFields = false;
+    } else {
+      this.getCriterias(selected);
+      this.displayExtraFields = true;
     }
-
-    this.displayExtraFields = isSelected;
   }
 
   isChecked(controlName: string){

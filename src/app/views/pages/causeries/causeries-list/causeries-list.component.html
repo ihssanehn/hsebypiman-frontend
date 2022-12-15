@@ -104,11 +104,17 @@
 	<button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}" (click)="viewCauserie(causerie_id)">
 		<mat-icon>visibility</mat-icon>
 	</button>
-	<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editCauserie(causerie_id)" *ngxPermissionsOnly="['causerie_canUpdate']">
+	<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editCauserie(causerie_id)" *ngIf="canUpdateCauserie(causerie_id); else editCauseriePermission">
 		<mat-icon>edit</mat-icon>
 	</button>
 	<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteCauserie(causerie_id)" *ngxPermissionsOnly="['causerie_canArchieve']">
 		<mat-icon>delete</mat-icon>
 	</button>
+	<ng-template #editCauseriePermission>
+		<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editCauserie(causerie_id)" *ngxPermissionsOnly="['causerie_canUpdate']">
+			<mat-icon>edit</mat-icon>
+		</button>
+	</ng-template>
+	
 </mat-menu>
 

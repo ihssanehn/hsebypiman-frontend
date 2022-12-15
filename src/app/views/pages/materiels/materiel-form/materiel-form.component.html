@@ -52,7 +52,7 @@
 									</mat-error>
 								</mat-form-field>
 								<mat-form-field class="col-xl-3">
-									<mat-label>{{'MATERIELS.AVAILABLE_QUANTITY.LABEL' | translate}}</mat-label>
+									<mat-label>{{'MATERIELS.AVAILABLE_QUANTITY.TITLE' | translate}}</mat-label>
 									<input class="form-control" matInput type="number" name="stock_disponible" formControlName="stock_disponible" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('stock_disponible')" />
 									<mat-error *ngIf="isControlHasError('stock_disponible','required')">
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
