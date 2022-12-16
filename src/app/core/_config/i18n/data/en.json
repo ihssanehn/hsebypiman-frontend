@@ -1726,6 +1726,11 @@
 			"LABEL": "Specific criteria",
 			"SHORTTITLE": "Specific criteria",
 			"TITLE": "Specific criteria"
+		},
+		"SUB_CATEGORY": {
+			"LABEL": "Sub-category",
+			"SHORTTITLE": "Sub-category",
+			"TITLE": "Sub-category"
 		}
 	},
 	"MENU": {

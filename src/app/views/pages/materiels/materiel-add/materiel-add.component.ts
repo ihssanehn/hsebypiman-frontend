@@ -54,6 +54,7 @@ export class MaterielAddComponent implements OnInit {
       categorie_id: [null, Validators.required],
       size: [null],
       criteria_id: [null],
+      subcategory_id: [null],
       description: [''],
       date_entree: [null],
       has_controle: [0],

@@ -100,6 +100,7 @@ export class MaterielEditComponent implements OnInit, OnDestroy {
 			categorie_id: [null, Validators.required],
 			size: [null],
 			criteria_id: [null],
+			subcategory_id: [null],
 			description: [''],
 			date_entree: [null],
 			has_controle: [0],

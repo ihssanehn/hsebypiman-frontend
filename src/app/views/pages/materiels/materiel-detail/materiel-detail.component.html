@@ -31,7 +31,9 @@
 									<span *ngFor="let cat of materiel.flat_categories; let last = last;">
 										{{cat.libelle}}<span *ngIf="!last"> / </span>
 									</span>
-								</span></p>
+								</span>
+							</p>
+							<p *ngIf="materiel.subcategory"><span class="label pull-left mr-2">{{'MATERIELS.SUB_CATEGORY.TITLE' | translate}}</span><span>{{materiel.subcategory.libelle}}</span></p>
 							<p *ngIf="materiel.size"><span class="label pull-left mr-2">{{'MATERIELS.SIZE.TITLE' | translate}}</span><span>{{materiel.size}}</span></p>
 							<p *ngIf="materiel.criteria"><span class="label pull-left mr-2">{{'MATERIELS.CRITERIA.TITLE' | translate}}</span><span>{{materiel.criteria.libelle}}</span></p>
 							<p><span class="label pull-left mr-2">{{'MATERIELS.DATE_ENTREE.TITLE' | translate}}</span><span *ngIf="materiel.date_entree; else noData">{{materiel.date_entree | date:'dd/MM/yyyy'}}</span></p>
