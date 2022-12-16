@@ -1730,6 +1730,11 @@
 			"LABEL": "Critères spécifiques",
 			"SHORTTITLE": "Critères spécifiques",
 			"TITLE": "Critères spécifiques"
+		},
+		"SUB_CATEGORY": {
+			"LABEL": "Sous catégorie",
+			"SHORTTITLE": "Sous catégorie",
+			"TITLE": "Sous catégorie"
 		}
 	},
 	"MENU": {

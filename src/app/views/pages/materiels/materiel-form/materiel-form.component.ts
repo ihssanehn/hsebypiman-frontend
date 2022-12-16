@@ -14,8 +14,11 @@ export class MaterielFormComponent implements OnInit {
   categoriesList: Categorie[];
   criteriasList: Type[];
   categoriesLoaded: boolean = false;
+  subcategoriesList: Type[];
+  subcategoriesLoaded: boolean = false;
   displayExtraFields: boolean = false;
   criteriaLoaded: boolean = false;
+  subcategoryDisplayed: boolean = false;
   itemsToHandle: string[] = ['EPI_TETE', 'EPI_BRUIT', 'EPI_RESP', 'EPI_GANTS', 'EPI_CHAUSS'];
 
   @Input() materielForm: FormGroup;
@@ -33,9 +36,15 @@ export class MaterielFormComponent implements OnInit {
   ngOnInit() {
     this.getCategories();
     this.getCriterias();
+    this.getSubcategories();
     this.setDynamicValidators();
+
     if(this.materielForm.get('size').value || this.materielForm.get('criteria_id').value) {
       this.displayExtraFields = true;
+    }
+
+    if(this.materielForm.get('subcategory_id').value) {
+      this.subcategoryDisplayed = true;
     }
   }
 
@@ -44,12 +53,12 @@ export class MaterielFormComponent implements OnInit {
     var params;
     if(EPI_code) {
       params = {
-        'model': 'Materiel',
+        'model': 'CriteriaMateriel',
         'code': EPI_code
       }
     } else  {
       params = {
-        'model': 'Materiel'
+        'model': 'CriteriaMateriel'
       }
     }
 
@@ -57,6 +66,28 @@ export class MaterielFormComponent implements OnInit {
     if(res){
       this.criteriasList = res.result.data;
       this.criteriaLoaded = true;
+    }
+    this.cdr.markForCheck();
+  }
+
+  async getSubcategories(EPI_code: string = null) {
+    this.subcategoriesLoaded = false;
+    var params;
+    if(EPI_code) {
+      params = {
+        'model': 'SubMateriel',
+        'code': EPI_code
+      }
+    } else  {
+      params = {
+        'model': 'SubMateriel'
+      }
+    }
+
+    var res = await this.typeService.getAll(params).toPromise();
+    if(res){
+      this.subcategoriesList = res.result.data;
+      this.subcategoriesLoaded = true;
     }
     this.cdr.markForCheck();
   }
@@ -126,13 +157,20 @@ export class MaterielFormComponent implements OnInit {
     }
   }
 
+  displaySubcategory(code: string) {
+    this.subcategoryDisplayed = (code == 'EPI_CHAUSS');
+  }
+
   itemsToHandleSelected(selected: any) {
+    this.displaySubcategory(selected);
+
     if(!selected) {
       this.materielForm.get('size').setValue(null);
       this.materielForm.get('criteria_id').setValue(null);
       this.displayExtraFields = false;
     } else {
       this.getCriterias(selected);
+      this.getSubcategories(selected);
       this.displayExtraFields = true;
     }
   }

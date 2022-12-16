@@ -27,7 +27,7 @@
 									</mat-error>
 								</mat-form-field>
 
-								<mat-form-field class="col-xl-6">
+								<mat-form-field class="col-xl-3">
 									<mat-label>{{'MATERIELS.CRITERIA.LABEL' | translate}}</mat-label>
 									<mat-select class="form-control" formControlName="criteria_id" name="criteria_id" placeholder="{{'ACTION.ENTER_HERE' | translate}}">
 										<mat-option *ngFor="let item of criteriasList" [value]="item.id">
@@ -38,6 +38,21 @@
 										<mat-icon>clear</mat-icon>
 									</button>
 									<mat-error *ngIf="isControlHasError('criteria_id','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+
+								<mat-form-field class="col-xl-3" *ngIf="subcategoryDisplayed">
+									<mat-label>{{'MATERIELS.SUB_CATEGORY.LABEL' | translate}}</mat-label>
+									<mat-select class="form-control" formControlName="subcategory_id" name="subcategory_id" placeholder="{{'ACTION.ENTER_HERE' | translate}}">
+										<mat-option *ngFor="let item of subcategoriesList" [value]="item.id">
+											{{item.libelle}}
+										</mat-option>
+									</mat-select>
+									<button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('subcategory_id'); $event.stopPropagation()">
+										<mat-icon>clear</mat-icon>
+									</button>
+									<mat-error *ngIf="isControlHasError('subcategory_id','required')">
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
 								</mat-form-field>
