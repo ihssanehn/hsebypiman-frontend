@@ -1550,6 +1550,11 @@
 			"SHORTTITLE": "ATEX",
 			"TITLE": "ATEX"
 		},
+		"IS_AVAILABLE": {
+			"LABEL": "Disponible",
+			"SHORTTITLE": "Disponible",
+			"TITLE": "Disponible"
+		},
 		"IS_ACTIVE": {
 			"LABEL": "Actif",
 			"SHORTTITLE": "Actif",

@@ -79,7 +79,9 @@ export class MaterielFiltersComponent implements OnInit, AfterViewInit
       actual_user_id:[null],
       date_entree_start:[null],
       date_entree_end:[null],
-      late_check:[null]
+      late_check:[null],
+      only_atex:[null],
+      only_available:[null]
     })
   }
  
