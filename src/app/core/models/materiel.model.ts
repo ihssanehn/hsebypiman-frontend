@@ -12,6 +12,7 @@ export class Materiel {
     description?: string;
     date_entree?: Date;
     has_controle?: any;
+    has_atex?: any;
     actual_user?: User[];
     salaries?: User[];
     stock_disponible?: number;

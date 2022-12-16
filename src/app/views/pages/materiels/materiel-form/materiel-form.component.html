@@ -27,7 +27,7 @@
 									</mat-error>
 								</mat-form-field>
 
-								<mat-form-field class="col-xl-3">
+								<mat-form-field class="col-xl-6">
 									<mat-label>{{'MATERIELS.CRITERIA.LABEL' | translate}}</mat-label>
 									<mat-select class="form-control" formControlName="criteria_id" name="criteria_id" placeholder="{{'ACTION.ENTER_HERE' | translate}}">
 										<mat-option *ngFor="let item of criteriasList" [value]="item.id">
@@ -75,6 +75,11 @@
 
 								<mat-form-field class="col-xl-3" floatLabel="always" appearance="none">
 									<mat-slide-toggle [checked]="isChecked('has_controle')" (change)="updateToggleValue($event, 'has_controle')"><span class="slider-label">{{'MATERIELS.HAS_CONTROLE.LABEL' | translate}}</span></mat-slide-toggle>
+									<textarea matInput hidden></textarea>
+								</mat-form-field>
+
+								<mat-form-field class="col-xl-3" floatLabel="always" appearance="none">
+									<mat-slide-toggle [checked]="isChecked('has_atex')" (change)="updateToggleValue($event, 'has_atex')"><span class="slider-label">{{'MATERIELS.HAS_ATEX.LABEL' | translate}}</span></mat-slide-toggle>
 									<textarea matInput hidden></textarea>
 								</mat-form-field>
 							</div>
