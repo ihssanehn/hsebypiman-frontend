@@ -57,6 +57,7 @@ export class MaterielAddComponent implements OnInit {
       description: [''],
       date_entree: [null],
       has_controle: [0],
+      has_atex: [0],
       etat: [0],
       stock_disponible: [1]
     });
