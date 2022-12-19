@@ -1152,6 +1152,9 @@
 		},
 		"CAUSERIES": {
 			"TITLE": "Talks"
+		},
+		"ARCHIVED": {
+			"TITLE": "Archived"
 		}
 	},
 	"EES": {
@@ -1538,6 +1541,16 @@
 			"SHORTTITLE": "Must be controlled",
 			"TITLE": "Must be controlled"
 		},
+		"HAS_ATEX": {
+			"LABEL": "ATEX",
+			"SHORTTITLE": "ATEX",
+			"TITLE": "ATEX"
+		},
+		"IS_AVAILABLE": {
+			"LABEL": "Available",
+			"SHORTTITLE": "Available",
+			"TITLE": "Available"
+		},
 		"IS_ACTIVE": {
 			"LABEL": "Active",
 			"SHORTTITLE": "Active",
@@ -1703,6 +1716,21 @@
 			"LABEL": "Late visit",
 			"SHORTTITLE": "Delay",
 			"TITLE": "V.S late"
+		},
+		"SIZE": {
+			"LABEL": "Size",
+			"SHORTTITLE": "Size",
+			"TITLE": "Size"
+		},
+		"CRITERIA": {
+			"LABEL": "Specific criteria",
+			"SHORTTITLE": "Specific criteria",
+			"TITLE": "Specific criteria"
+		},
+		"SUB_CATEGORY": {
+			"LABEL": "Sub-category",
+			"SHORTTITLE": "Sub-category",
+			"TITLE": "Sub-category"
 		}
 	},
 	"MENU": {

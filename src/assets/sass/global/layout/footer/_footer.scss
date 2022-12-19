@@ -95,6 +95,13 @@
 				}
 		}			
 
+		.tf-footer__version {
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+			margin: 0;
+		}
+
 		.tf-footer__logo {
 			display: flex;   			
 			align-items: center;

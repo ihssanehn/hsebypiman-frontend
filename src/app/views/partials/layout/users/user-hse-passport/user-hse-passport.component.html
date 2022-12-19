@@ -6,6 +6,9 @@
         <span class="title" *ngIf="source == 'my-profile'">
             {{'MENU.MY_HSE_PROFILE' | translate}}
         </span>
+        <span class="title mr-4 archived-tag" *ngIf="user.is_archived">
+            {{'COMMON.ARCHIVED.TITLE' | translate}}
+        </span>
     </div>
     <tf-portlet-body class="tf-portlet__body--fit">
 

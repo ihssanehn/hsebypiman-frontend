@@ -17,11 +17,25 @@
 							<mat-icon>clear</mat-icon>
 						</button>
 					</mat-form-field>
+
 					 <mat-form-field class="col-3 st-group" floatLabel="always" appearance="none" >
 						<span class="st-label pointer" (click)="toggleCheck('late_check')">{{'MATERIELS.LATE_CHECK.SHORTITLE' | translate}}</span>
 						<mat-slide-toggle id="show_inactives" [checked]="filterForm.get('late_check').value == 1" (change)="onCheckChange($event, 'late_check')"></mat-slide-toggle>
 						<textarea matInput hidden></textarea>
 					</mat-form-field>
+
+					<mat-form-field class="col-3 st-group" floatLabel="always" appearance="none" >
+						<span class="st-label pointer" (click)="toggleCheck('only_available')">{{'MATERIELS.IS_AVAILABLE.SHORTTITLE' | translate}}</span>
+						<mat-slide-toggle id="only_available" [checked]="filterForm.get('only_available').value == 1" (change)="onCheckChange($event, 'only_available')"></mat-slide-toggle>
+						<textarea matInput hidden></textarea>
+					</mat-form-field>
+
+					<mat-form-field class="col-3 st-group" floatLabel="always" appearance="none" >
+						<span class="st-label pointer" (click)="toggleCheck('only_atex')">{{'MATERIELS.HAS_ATEX.SHORTTITLE' | translate}}</span>
+						<mat-slide-toggle id="only_atex" [checked]="filterForm.get('only_atex').value == 1" (change)="onCheckChange($event, 'only_atex')"></mat-slide-toggle>
+						<textarea matInput hidden></textarea>
+					</mat-form-field>
+
 					<!--<mat-form-field class="col-3 st-group" floatLabel="always" appearance="none" >
 						<span class="st-label pointer" (click)="toggleCheck('show_inactives')">{{'MATERIELS.SHOW_INACTIVES.SHORTITLE' | translate}}</span>
 						<mat-slide-toggle id="show_inactives" [checked]="filterForm.get('show_inactives').value == 1" (change)="onCheckChange($event, 'show_inactives')"></mat-slide-toggle>

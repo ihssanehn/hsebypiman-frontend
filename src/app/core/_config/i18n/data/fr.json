@@ -1154,6 +1154,9 @@
 		},
 		"CAUSERIES": {
 			"TITLE": "Causeries"
+		},
+		"ARCHIVED": {
+			"TITLE": "Archivé"
 		}
 	},
 	"EES": {
@@ -1542,6 +1545,16 @@
 			"SHORTTITLE": "Doit être controlé",
 			"TITLE": "Doit être controlé"
 		},
+		"HAS_ATEX": {
+			"LABEL": "ATEX",
+			"SHORTTITLE": "ATEX",
+			"TITLE": "ATEX"
+		},
+		"IS_AVAILABLE": {
+			"LABEL": "Disponible",
+			"SHORTTITLE": "Disponible",
+			"TITLE": "Disponible"
+		},
 		"IS_ACTIVE": {
 			"LABEL": "Actif",
 			"SHORTTITLE": "Actif",
@@ -1663,7 +1676,7 @@
 			"TITLE": "Nombre d'utilisateurs actuels"
 		},
 		"AVAILABLE_QUANTITY": {
-			"LABEL": "Quantité disponible",
+			"LABEL": "QTE Prêt / Dispo",
 			"SHORTTITLE": "Quantité disponible",
 			"TITLE": "Quantité disponible"
 		},
@@ -1707,6 +1720,21 @@
 			"LABEL": "Retard de visite",
 			"SHORTTITLE": "Retard",
 			"TITLE": "V.S en retard"
+		},
+		"SIZE": {
+			"LABEL": "Taille",
+			"SHORTTITLE": "Taille",
+			"TITLE": "Taille"
+		},
+		"CRITERIA": {
+			"LABEL": "Critères spécifiques",
+			"SHORTTITLE": "Critères spécifiques",
+			"TITLE": "Critères spécifiques"
+		},
+		"SUB_CATEGORY": {
+			"LABEL": "Sous catégorie",
+			"SHORTTITLE": "Sous catégorie",
+			"TITLE": "Sous catégorie"
 		}
 	},
 	"MENU": {

@@ -8,9 +8,14 @@
 				<mat-icon>more_vert</mat-icon>
 			</button>
 			<div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
-				<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editCauserie(causerie.id)" *ngxPermissionsOnly="['causerie_canUpdate']">
+				<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editCauserie(causerie.id)" *ngIf="canUpdateCauserie(); else editCauseriePermission">
 					<mat-icon>edit</mat-icon>
 				</button>
+				<ng-template #editCauseriePermission>
+					<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editCauserie(causerie.id)" *ngxPermissionsOnly="['causerie_canUpdate']">
+						<mat-icon>edit</mat-icon>
+					</button>
+				</ng-template>
 				<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteCauserie(causerie.id)" *ngxPermissionsOnly="['causerie_canArchieve']">
 					<mat-icon>delete</mat-icon>
 				</button>

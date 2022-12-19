@@ -5,6 +5,7 @@ import { Causerie } from '@app/core/models';
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { AuthService, User } from '@app/core/auth';
 
 
 @Component({
@@ -16,6 +17,7 @@ export class CauseriesListComponent implements OnInit, AfterViewInit {
 
 	public causeriesList: Paginate < Causerie > ;
 	causerie_id: number;
+	currentUser: User;
 	pagination: any = {
 		page: 1,
 		total: 10,
@@ -38,6 +40,7 @@ export class CauseriesListComponent implements OnInit, AfterViewInit {
 	constructor(
 		private router: Router,
 		protected causerieService: CauserieService,
+		protected authService: AuthService,
 		protected cdr: ChangeDetectorRef,
 		private translate: TranslateService,
 	) {
@@ -45,6 +48,9 @@ export class CauseriesListComponent implements OnInit, AfterViewInit {
 	}
 
 	ngOnInit() {
+		this.authService.getCurrentUser().subscribe(x => {
+			this.currentUser = x;
+		});
 	}
 
 	ngAfterViewInit(){
@@ -157,4 +163,13 @@ export class CauseriesListComponent implements OnInit, AfterViewInit {
 		}
 		this.getCauseries();
 	}
+
+	canUpdateCauserie(causerieId: number) {
+		if(!this.causeriesList) {
+			return false;
+		}
+		var causerie = this.causeriesList.data.filter(c => c.id == causerieId)[0];
+		return causerie && causerie.organisateur_id == this.currentUser.id;
+	}
+
 }

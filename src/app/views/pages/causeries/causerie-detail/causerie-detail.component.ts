@@ -397,4 +397,8 @@ export class CauserieDetailComponent implements OnInit, OnDestroy {
 			}
 		});
 	}
+
+	canUpdateCauserie() {
+		return this.isUserOrganizer()
+	}
 }
