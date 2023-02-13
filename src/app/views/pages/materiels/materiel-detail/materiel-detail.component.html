@@ -74,18 +74,34 @@
 					<div class="card">
 						<h5>{{'MATERIELS.CARD.DOCUMENTS.TITLE' | translate}}<mat-icon color="primary" class="pull-right pointer" (click)="openAddDocumentModal()" *ngxPermissionsOnly="['materiel_canUpdate']">add</mat-icon></h5>
 						<div class="box box-ar-vs pt-0" style="flex: 1;">
-							<div class="box" style="flex:1" *ngIf="materiel.documents.length > 0; else noDocument">
+							<div class="picsum-img-wrapper d-flex flex-wrap" *ngIf="materiel.documents.length; else noDocument">
+								<ng-container *ngFor="let doc of materiel.documents; let i = index">
+									<div class="doc-card m-2 mr-3 pointer" matTooltip="{{doc.libelle}}">
+										<img 
+											alt="doc" 
+											class="shdw-5" 
+											(click)="openDocumentModal(doc)"
+											src="./assets/media/hse-svg/picto-file.svg">
+										<div class="mt-2">{{doc.libelle | truncate:15}}</div>
+										<button mat-icon-button matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteDocument(doc.id); $event.stopPropagation()">
+											<mat-icon color="primary">close</mat-icon>
+										</button>
+									</div>
+								</ng-container>
+							</div>
+							<!-- <div class="box" style="flex:1" *ngIf="materiel.documents.length > 0; else noDocument">
 								<div class="pointer" (click)="openDocumentModal(doc)" *ngFor="let doc of materiel.documents; let i = index">
 									<mat-icon color="primary" class="pr-2" >attach_file</mat-icon>
 									{{doc.libelle}}
 									<mat-icon color="warn" class="pull-right" (click)="deleteDocument(doc.id); $event.stopPropagation()" *ngxPermissionsOnly="['materiel_canUpdate']">delete</mat-icon>
 								</div>
-							</div>
+							</div> -->
 							<ng-template #noDocument>
 								<div class="text-center mt-4 font-italic">
 									{{'REMONTEES.NOTIF.NO_DOCUMENT' | translate}}
 								</div>
 							</ng-template>
+							
 						</div>
 					</div>
 					<div class="card">
