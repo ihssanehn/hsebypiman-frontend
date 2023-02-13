@@ -107,6 +107,37 @@
 									</mat-error>
 								</mat-form-field>
 							</div>
+							<div class="row form-row" *ngIf="!edit">
+								<div class="col-xl-9">
+									<mat-label>{{'MATERIELS.CARD.DOCUMENTS.TITLE' | translate}}</mat-label>
+									<div class="row">
+										<div class="col-6">
+												<div class="upload-btn-wrapper">
+														<button class="btnr" title="{{'COMMON.SELECT_FILES.TITLE' | translate}}">{{'COMMON.SELECT_FILES.SHORTTITLE' | translate}}</button>
+														<span>{{'COMMON.NOTIF.NO_FILE_CHOSEN.TITLE' | translate}}</span>
+														<input formControlName="documentsToUpload" (onFileSelected)="onFileDrop($event)" class="mb-2" type="file" 
+																ng2FileSelect title="{{'COMMON.SELECT_FILES.TITLE' | translate}}" accept="{{accept+', '+(accept | uppercase)}}" [uploader]="uploader" multiple/>
+												</div>              
+												<div ng2FileDrop [uploader]="uploader" 
+												(onFileDrop)="onFileDrop($event)"
+												class="drop-zone">
+														{{'UPLOAD.DROPZONE.PLACEHOLDER' | translate}} <br>
+														{{'UPLOAD.LIST_EXT' | translate}} : {{accept}}<br>
+														{{'UPLOAD.MAX_SIZE' | translate}} : 4 Mo
+												</div>
+										</div>
+										<div class="col-6">
+												<h6>{{'REMONTEES.CARD.DOC.FILE_AWAIT_UPLOAD' | translate}} : </h6>
+												<ul>
+														<li class="mb-3" *ngFor="let item of uploader.queue">
+																{{seeItem(item)}}
+																		<mat-icon color="accent" class="pull-right pointer" (click)="item.remove()" matTooltip="{{'REMONTEES.CARD.DOC.ACTION.REMOVE_DOC' | translate}}">delete</mat-icon>
+														</li>
+												</ul>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
