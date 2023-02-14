@@ -61,7 +61,7 @@ export class MenuConfig {
 					title: 'Visites sécurité',
 					root: true,
 					alignment: 'left',
-					page: '/visites-securite/chantiers/list',
+					page: '/visites-securite/revues/list',
 					translate: 'MENU.VISITESECURITE',
 					needModule: true,
 					moduleCode: ['VISITE'],
@@ -141,6 +141,11 @@ export class MenuConfig {
 		subheader: {
 			'visites-securite': {
 				items: [
+					{
+						title: 'Revues Sécurité',
+						page: '/visites-securite/revues/list',
+						translate: 'MENU.SUBHEADER.VISITS.VS_REVUES',
+					},
 					{
 						title: 'Visites sécurité Chantier',
 						page: '/visites-securite/chantiers/list',
@@ -510,6 +515,43 @@ export class MenuConfig {
 						root: true,
 						alignment: 'left',
 						page: '/visites-securite/outillages/admin',
+						translate: 'MENU.ROOT',
+						icon: 'settings',
+						permissionOnly: ['ROOT', 'ADMIN'],
+					}
+				]
+			},
+			vss_revue: {
+				btnAdd: {
+					title: 'Nouvelle revue sécurité',
+					root: true,
+					alignment: 'left',
+					page: '/visites-securite/revues/add',
+					translate: 'MENU.BTN.NEWVS',
+					permissionOnly: ['visite_securite_canAdd']
+				},
+				items: [
+					{
+						icon: 'dashboard',
+						title: 'Dashboards',
+						root: true,
+						alignment: 'left',
+						page: '/visites-securite/dashboard',
+						translate: 'MENU.DASHBOARD',
+					},
+					{
+						title: 'Liste',
+						root: true,
+						alignment: 'left',
+						page: '/visites-securite/revues/list',
+						translate: 'MENU.LIST',
+						icon: 'view_list',
+					},
+					{
+						title: 'Admin',
+						root: true,
+						alignment: 'left',
+						page: '/visites-securite/revues/admin',
 						translate: 'MENU.ROOT',
 						icon: 'settings',
 						permissionOnly: ['ROOT', 'ADMIN'],

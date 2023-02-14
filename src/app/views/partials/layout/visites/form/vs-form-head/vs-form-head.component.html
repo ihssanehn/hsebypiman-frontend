@@ -31,7 +31,7 @@
                                         </mat-option>
                                     </mat-select>
                                     <ng-template #showSalarie> 
-                                        <input type="text" matInput class="form-control" [value]="(data.salarie | fullName)">
+                                        <input type="text" matInput class="form-control" disabled [value]="(data.salarie | fullName)">
                                     </ng-template>
                                     <button mat-button
                                         *ngIf="formHasValue('salarie_id') && !visiteForm.get('salarie_id').disabled"
@@ -139,27 +139,6 @@
                                         <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
                                     </mat-error>
                                 </mat-form-field>
-                                <!-- OUTILLAGE -->
-                                <!-- <mat-form-field class="col-xl-3" *ngIf="origin == 'detail' && formHasValue('outillage_code')"
-                                    matTooltip=""
-                                    [matTooltipDisabled]="formHasValue('outillage_code')">
-                                    <mat-label>{{'OUTILLAGE.OUTIL.LABEL' | translate}}</mat-label>
-                                    <mat-select class="form-control" placeholder="" formControlName="outillage_code"
-                                        [required]="isFieldRequired('outillage_code')">
-                                        <mat-option [value]="visiteForm.get('outillage_code').value">
-                                            {{ visiteForm.get('outillage_code').value}}
-                                        </mat-option>
-                                    </mat-select>
-                                    <button mat-button
-                                        *ngIf="formHasValue('salarie_id') && !visiteForm.get('salarie_id').disabled"
-                                        matSuffix mat-icon-button aria-label="Clear"
-                                        (click)="clearValue('salarie_id'); $event.stopPropagation()">
-                                        <mat-icon>clear</mat-icon>
-                                    </button>
-                                    <mat-error *ngIf="isControlHasError('salarie_id','required')">
-                                        <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-                                    </mat-error>
-                                </mat-form-field> -->
                                 
                                 <mat-form-field class="col-xl-3 " *ngIf="model=='VsVehicule'" floatLabel="always" appearance="none">
                                     <mat-label>{{'VISITES.VEHICULE_KM.LABEL' | translate}}</mat-label>
@@ -171,11 +150,71 @@
                                 </mat-form-field>
 
                                 <!-- VISITE EXTERNE/INTERNE -->
-                                <mat-form-field class="col-xl-3 text-center" floatLabel="always" appearance="none" *ngIf="model != 'VsChantier'">
+                                <mat-form-field class="col-xl-3 text-center" floatLabel="always" appearance="none" *ngIf="model != 'VsChantier' && model != 'VsRevue'">
                                     <mat-slide-toggle formControlName="is_externe" [checked]="isExterne()" (change)="toggleExterne($event.checked)">
                                         <span class="slider-label">{{'VISITES.EXTERNAL_VISIT.TITLE' | translate}}</span>
                                     </mat-slide-toggle>
                                     <textarea matInput hidden></textarea>
+                                </mat-form-field>
+                            </div>
+                            <div class="row form-row align-items-end" *ngIf="model == 'VsRevue'">
+
+                                <!-- ENVIRONNEMENT -->
+                                <div class="col-xl-6" *ngIf="origin == 'add' || formHasValue('environnement')"
+                                    matTooltip="{{'VISITES.NOTIF.CANNOT_SELECT_EMPLOYEE.COMPANY_SELECTED.TITLE' | translate}}"
+                                    [matTooltipDisabled]="formHasValue('environnement')">
+                                    <div><mat-label>{{'VISITES.ENVIRONMENT.LABEL' | translate}}</mat-label></div>
+                                    <div class="row px-5 align-items-center" [ngClass]="{'mt-4': origin != 'add' && data.environnement != 'Autre'}">
+                                        <div>
+                                            <mat-radio-group formControlName="environnement" >
+                                                <mat-radio-button class="metric-radio" [value]="'Bureau'">Bureau</mat-radio-button>
+                                                <mat-radio-button class="metric-radio" [value]="'Chantier'">Chantier</mat-radio-button>
+                                                <mat-radio-button class="metric-radio" [value]="'Production'">Production</mat-radio-button>
+                                                <mat-radio-button class="metric-radio" [value]="'Autre'">Autre</mat-radio-button>
+                                            </mat-radio-group>
+                                            <ng-template #showEnvironement> 
+                                                <input type="text" matInput class="form-control" [value]="data.environnement">
+                                            </ng-template>
+                                            <mat-error *ngIf="isControlHasError('environnement','required')">
+                                                <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                                            </mat-error>
+                                        </div>
+                                        <div class="flex-1" *ngIf="origin == 'add' || data.environnement == 'Autre'">
+                                            <mat-form-field class="w-100">
+                                                <input matInput class="form-control pr-4" type="text" formControlName="environnement_autre" [required]="isFieldRequired('environnement_autre')" placeholder="Autre environnment">
+                                                <mat-error *ngIf="isControlHasError('environnement_autre','required')">
+                                                    <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <mat-form-field class="col-xl-3" *ngIf="origin == 'add' || formHasValue('entreprise')" >
+                                    <mat-label>{{'VISITES.ENTREPRISE.LABEL' | translate}}</mat-label>
+                                    <input matInput class="form-control pr-4" type="text" formControlName="entreprise" [required]="isFieldRequired('entreprise')">
+                                    <ng-template #showEntreprise>
+                                        <input type="text" matInput class="form-control" [value]="data.entreprise">
+                                    </ng-template>
+                                    <button mat-button *ngIf="formHasValue('entreprise') && !visiteForm.get('entreprise').disabled" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('entreprise'); $event.stopPropagation()">
+                                        <mat-icon>clear</mat-icon>
+                                    </button>
+                                    <mat-error *ngIf="isControlHasError('entreprise','required')">
+                                        <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                                <mat-form-field class="col-xl-3" *ngIf="origin == 'add' || formHasValue('lieu_mission')" matTooltip="{{'VISITES.NOTIF.CANNOT_SELECT_EMPLOYEE.COMPANY_SELECTED.TITLE' | translate}}" [matTooltipDisabled]="formHasValue('salarie_id')">
+                                    <mat-label>{{'VISITES.LIEU_MISSION.LABEL' | translate}}</mat-label>
+                                    <input matInput class="form-control pr-4" type="text" formControlName="lieu_mission" [required]="isFieldRequired('lieu_mission')">
+                                    <ng-template #showEntreprise>
+                                        <input type="text" matInput class="form-control" [value]="data.lieu_mission">
+                                    </ng-template>
+                                    <button mat-button *ngIf="formHasValue('lieu_mission') && !visiteForm.get('lieu_mission').disabled" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('lieu_mission'); $event.stopPropagation()">
+                                        <mat-icon>clear</mat-icon>
+                                    </button>
+                                    <mat-error *ngIf="isControlHasError('lieu_mission','required')">
+                                        <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+                                    </mat-error>
                                 </mat-form-field>
                             </div>
                         </div>

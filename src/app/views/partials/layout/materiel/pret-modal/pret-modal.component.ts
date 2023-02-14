@@ -46,6 +46,7 @@ export class PretModalComponent implements OnInit {
     this.form.get('is_given').valueChanges.subscribe(val=>{
       if(val == 1){
         this.form.get('date_retour').disable();
+        this.form.get('date_retour').setValue(null);
       }else{
         this.form.get('date_retour').enable();
       }

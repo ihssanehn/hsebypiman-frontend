@@ -1786,7 +1786,8 @@
 				"VS_CHANTIER": "Site security visits",
 				"VS_EPI": "PPE security visits",
 				"VS_OUTILLAGE": "Tools security visits",
-				"VS_VEHICULE": "Vehicle security visits"
+				"VS_VEHICULE": "Vehicle security visits",
+				"VS_REVUES": "Revues sécurité"
 			}
 		},
 		"SUB_ANALYSERISQUE": {

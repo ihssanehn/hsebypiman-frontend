@@ -42,6 +42,10 @@ const routes: Routes = [
 				loadChildren: () => import('@app/views/pages/visites-securite/vehicules/visites-vehicule.module').then(m => m.VisitesVehiculeModule)
 			},
 			{
+				path: 'revues',
+				loadChildren: () => import('@app/views/pages/visites-securite/revues/visites-revue.module').then(m => m.VisitesRevueModule)
+			},
+			{
 				path: 'outillages',
 				loadChildren: () => import('@app/views/pages/visites-securite/outillages/visites-outillage.module').then(m => m.VisitesOutillageModule)
 			},

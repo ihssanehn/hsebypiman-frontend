@@ -1790,7 +1790,8 @@
 				"VS_CHANTIER": "Visites sécurité Chantier",
 				"VS_EPI": "Visites sécurité EPI",
 				"VS_OUTILLAGE": "Visites sécurité Outillage",
-				"VS_VEHICULE": "Visites sécurité Véhicule"
+				"VS_VEHICULE": "Visites sécurité Véhicule",
+				"VS_REVUES": "Revues sécurité"
 			}
 		},
 		"SUB_ANALYSERISQUE": {
@@ -2589,9 +2590,14 @@
 			"TITLE": "Numéro d'identification du véhicule"
 		},
 		"ENTREPRISE": {
-			"LABEL": "Entreprise visitée",
+			"LABEL": "Entreprise",
 			"SHORTTITLE": "Nom",
-			"TITLE": "Entreprise visitée"
+			"TITLE": "Entreprise"
+		},
+		"ENVIRONMENT": {
+			"LABEL": "Environnement",
+			"SHORTTITLE": "Nom",
+			"TITLE": "Environnement"
 		},
 		"EXTERNAL_VISIT": {
 			"TITLE": "Visite Externe"
@@ -2610,6 +2616,11 @@
 		"KO_UNSOLVED_COUNT": {
 			"SHORTTITLE": "NC à traiter",
 			"TITLE": "Nombre de non conformité à traiter"
+		},
+		"LIEU_MISSION": {
+			"LABEL": "Lieu de la mission",
+			"SHORTTITLE": "Lieu",
+			"TITLE": "Lieu de la mission"
 		},
 		"MATERIEL": {
 			"LABEL": "Matériel visité",
@@ -2742,6 +2753,9 @@
 		},
 		"VS_OUTILLAGE": {
 			"TITLE": "Visite Outillage"
+		},
+		"VS_REVUES":{
+			"TITLE": "Revue Sécurité"
 		},
 		"VS_VEHICULE": {
 			"TITLE": "Visite Véhicule"
