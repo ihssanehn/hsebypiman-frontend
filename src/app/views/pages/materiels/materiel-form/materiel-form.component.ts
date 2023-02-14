@@ -3,6 +3,10 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Categorie, Type,  } from '@app/core/models';
 import { CategorieService, TypeService, } from '@app/core/services';
 import { FormStatus } from '@app/core/_base/crud/models/form-status';
+import { FileUploader } from "ng2-file-upload";
+import { TranslateService } from '@ngx-translate/core';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'tf-materiel-form',
@@ -20,15 +24,18 @@ export class MaterielFormComponent implements OnInit {
   criteriaLoaded: boolean = false;
   subcategoryDisplayed: boolean = false;
   itemsToHandle: string[] = ['EPI_TETE', 'EPI_BRUIT', 'EPI_RESP', 'EPI_GANTS', 'EPI_CHAUSS'];
-
+  accept: string = '.png, .bmp, .jpeg, .jpg, .gif, .tif, .heic'
+  
   @Input() materielForm: FormGroup;
   @Input() formStatus: FormStatus;
   @Input() edit: Boolean;
+  @Input() uploader:FileUploader = null;
   @Output() onCancel = new EventEmitter();
   @Output() onSubmit = new EventEmitter();
   
   constructor(
     private categorieService:CategorieService,
+    private translate:TranslateService,
     private typeService: TypeService,
     private cdr: ChangeDetectorRef,
   ) { }
@@ -189,5 +196,60 @@ export class MaterielFormComponent implements OnInit {
 
   clearValue(key){
     this.materielForm.get(key).patchValue(null);
+  }
+
+  // DOCUMENTS
+
+  controlDocuments(){
+    for (let i = 0; i < this.uploader.queue.length; i++) {
+      let fileItem = this.uploader.queue[i]._file;
+      if(fileItem.size > 10000000){
+        alert(this.translate.instant("REMONTEES.NOTIF.FILE_SIZE_ALERT.TITLE"));
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  seeItem(item){
+    return item.file.name
+  }
+  
+  onFileDrop(event){
+    var extensions = this.accept.split(', .');
+    extensions[0] = extensions[0].slice(1);
+    console.log(extensions)
+
+    for (let i = 0; i < event.length; i++) {
+      
+      const droppedFile = event[i];
+      var name = droppedFile.name.split('.');
+      var ext = name[name.length -1].toLowerCase();
+      
+      let error = false;
+
+      if( extensions.indexOf(ext) == -1 ){
+        error = true;
+        Swal.fire({
+          icon: 'error',
+          title: this.translate.instant('UPLOAD.EXTENSION')+' '+droppedFile.name,
+          showConfirmButton: false,
+          timer: 1500
+        });
+      } else if (droppedFile.size > 4000000) {
+        error = true;
+        Swal.fire({
+          icon: 'error',
+          title: this.translate.instant('UPLOAD.SIZE')+' '+droppedFile.name,
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
+
+      if(error == true){
+        this.uploader.queue = this.uploader.queue.filter(x=>x.file.name != droppedFile.name);
+      }
+    }
+
   }
 }

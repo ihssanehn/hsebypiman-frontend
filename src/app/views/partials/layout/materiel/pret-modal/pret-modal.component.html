@@ -29,6 +29,25 @@
 						<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 					</mat-error>
 				</mat-form-field>
+				<!-- DON DE MATERIEL -->
+				
+				<div class="col-12">
+					<div>
+						<mat-label>{{'MATERIELS.LOAN_TYPE.LABEL' | translate}}</mat-label>
+					</div>
+					<div class="mt-4" >
+						<mat-radio-group formControlName="is_given">
+							<mat-radio-button class="metric-radio" [value]="0">{{'MATERIELS.LOAN_TYPE.LOAN' | translate}}</mat-radio-button>
+							<mat-radio-button class="metric-radio" [value]="1">{{'MATERIELS.LOAN_TYPE.IS_GIVEN' | translate}}</mat-radio-button>
+						</mat-radio-group>
+					</div>
+					<div>
+						<mat-error *ngIf="isControlHasError('is_given','required')">
+							<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+						</mat-error>
+					</div>
+				</div>
+
 				<!-- DATE RETOUR -->
 				<mat-form-field class="col-12">
 					<mat-label>{{'MATERIELS.DATE_RETOUR.LABEL' | translate}}</mat-label>

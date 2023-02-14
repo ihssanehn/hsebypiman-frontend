@@ -106,7 +106,8 @@ export class MaterielEditComponent implements OnInit, OnDestroy {
 			has_controle: [0],
 			has_atex: [0],
 			etat: [0],
-			stock_disponible: [1]
+			stock_disponible: [1],
+			stock_min: [null]
 		});
 	}
 

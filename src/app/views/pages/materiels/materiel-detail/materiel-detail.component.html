@@ -26,6 +26,7 @@
 						<div class="box" style="flex:1">
 							<p><span class="label pull-left mr-2">{{'MATERIELS.LIBELLE.TITLE' | translate}}</span><span *ngIf="materiel.libelle; else noData">{{materiel.libelle}}</span></p>
 							<p><span class="label pull-left mr-2">{{'MATERIELS.AVAILABLE_QUANTITY.TITLE' | translate}}</span><span *ngIf="materiel.stock_disponible else noData">{{materiel.stock_disponible}}</span></p>
+							<p><span class="label pull-left mr-2">{{'MATERIELS.MINIMAL_QUANTITY.TITLE' | translate}}</span><span *ngIf="materiel.stock_min else noData">{{materiel.stock_min}}</span></p>
 							<p><span class="label pull-left mr-2">{{'MATERIELS.NUMERO_SERIE.TITLE' | translate}}</span><span *ngIf="materiel.numero_serie; else noData">{{materiel.numero_serie}}</span></p>
 							<p><span class="label pull-left mr-2">{{'MATERIELS.CATEGORIE.TITLE' | translate}}</span><span *ngIf="materiel.flat_categories; else noData">
 									<span *ngFor="let cat of materiel.flat_categories; let last = last;">
@@ -74,12 +75,20 @@
 					<div class="card">
 						<h5>{{'MATERIELS.CARD.DOCUMENTS.TITLE' | translate}}<mat-icon color="primary" class="pull-right pointer" (click)="openAddDocumentModal()" *ngxPermissionsOnly="['materiel_canUpdate']">add</mat-icon></h5>
 						<div class="box box-ar-vs pt-0" style="flex: 1;">
-							<div class="box" style="flex:1" *ngIf="materiel.documents.length > 0; else noDocument">
-								<div class="pointer" (click)="openDocumentModal(doc)" *ngFor="let doc of materiel.documents; let i = index">
-									<mat-icon color="primary" class="pr-2" >attach_file</mat-icon>
-									{{doc.libelle}}
-									<mat-icon color="warn" class="pull-right" (click)="deleteDocument(doc.id); $event.stopPropagation()" *ngxPermissionsOnly="['materiel_canUpdate']">delete</mat-icon>
-								</div>
+							<div class="picsum-img-wrapper d-flex flex-wrap" *ngIf="materiel.documents.length; else noDocument">
+								<ng-container *ngFor="let doc of materiel.documents; let i = index">
+									<div class="doc-card m-2 mr-3 pointer" matTooltip="{{doc.libelle}}">
+										<img 
+											alt="doc" 
+											class="shdw-5" 
+											(click)="openDocumentModal(doc)"
+											src="./assets/media/hse-svg/picto-file.svg">
+										<div class="mt-2">{{doc.libelle | truncate:15}}</div>
+										<button mat-icon-button matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteDocument(doc.id); $event.stopPropagation()">
+											<mat-icon color="primary">close</mat-icon>
+										</button>
+									</div>
+								</ng-container>
 							</div>
 							<ng-template #noDocument>
 								<div class="text-center mt-4 font-italic">
@@ -105,13 +114,13 @@
 												<p class="blue text-left">{{actual_user | fullName}}</p>
 											</div>
 											<div class="col-3">
-												<p class="blue text-center">{{'MATERIELS.READY.TITLE' | translate}} : {{actual_user?.pivot.date_pret | date:'dd/MM/yyyy'}}</p>
+												<p class="blue text-center">{{actual_user.pivot.is_given ? ('MATERIELS.LOAN_TYPE.IS_GIVEN' | translate) : ('MATERIELS.LOAN_TYPE.LOAN' | translate)}} : {{actual_user?.pivot.date_pret | date:'dd/MM/yyyy'}}</p>
 											</div>
 											<div class="col-3">
 	
 											</div>
 											<div class="col-2" *ngxPermissionsOnly="['materiel_canUpdate']">
-												<button mat-raised-button class="btn-small pull-right" color="info" (click)="$event.stopPropagation(); openPretModal('return', actual_user.pivot)">{{'MATERIELS.ACTION.RETURN-MATERIEL' | translate}}</button>
+												<button mat-raised-button class="btn-small pull-right" color="info" [disabled]="actual_user.pivot.is_given == 1" (click)="$event.stopPropagation(); openPretModal('return', actual_user.pivot)">{{'MATERIELS.ACTION.RETURN-MATERIEL' | translate}}</button>
 											</div>
 										</div>
 									</ng-container>

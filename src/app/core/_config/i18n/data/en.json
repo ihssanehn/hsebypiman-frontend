@@ -1591,6 +1591,11 @@
 			"SHORTTITLE": "Wording",
 			"TITLE": "Wording"
 		},
+		"LOAN_TYPE": {
+			"LABEL" : "Affectation's Type",
+			"LOAN" : "Loan",
+			"IS_GIVEN": "Given"
+		},
 		"MAIN_CATEGORIE": {
 			"LABEL": "Type",
 			"SHORTTITLE": "Type",
@@ -1675,6 +1680,11 @@
 			"LABEL": "Available quantity",
 			"SHORTTITLE": "Available quantity",
 			"TITLE": "Available quantity"
+		},
+		"MINIMAL_QUANTITY": {
+			"LABEL": "Minimale quantity",
+			"SHORTTITLE": "Minimale quantity",
+			"TITLE": "Minimale quantity"
 		},
 		"PERSONNELS_HISTORY": {
 			"LABEL": "User history",
