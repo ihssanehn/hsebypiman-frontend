@@ -63,6 +63,7 @@ import {FlashInfoAddComponent} from './flashinfo-add/flashinfo-add.component';
 import {FlashInfoEditComponent} from './flashinfo-edit/flashinfo-edit.component';
 import {FlashInfoFormComponent} from './flashinfo-form/flashinfo-form.component';
 import {FlashInfoFiltersComponent} from './flashinfo-filters/flashinfo-filters.component';
+import { CKEditorModule } from "@ckeditor/ckeditor5-angular";
 
 
 const routes: Routes = [
@@ -150,7 +151,7 @@ const routes: Routes = [
 		AvatarModule,
 		MatSlideToggleModule,
 		AngularEditorModule,
-
+		CKEditorModule
 	],
 	providers: [
 		InterceptService,

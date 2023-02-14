@@ -31,18 +31,26 @@ export class CauserieService{
     get(item_id){
         return this.http.get<JsonResponse<Causerie>>(this.baseUrl+'/'+item_id);
     }
-    create(item){
-        return this.http.post<JsonResponse<Causerie>>(this.baseUrl+'/'+'create', item);
+    create(formData){
+        const httpHeaders = new HttpHeaders();
+		httpHeaders.set("Content-Type", "multipart/form-data");
+        return this.http.post<JsonResponse<Causerie>>(this.baseUrl+'/'+'create', formData, { headers: httpHeaders });
     }
-    update(item){
-        return this.http.put<JsonResponse<Causerie>>(this.baseUrl+'/'+item.id, item);
+    update(id: number, formData){
+        const httpHeaders = new HttpHeaders();
+		httpHeaders.set("Content-Type", "multipart/form-data");
+        return this.http.post<JsonResponse<Causerie>>(this.baseUrl+'/update/'+id, formData, { headers: httpHeaders });
     }
     delete(item_id){
         return this.http.delete<JsonResponse<Causerie>>(this.baseUrl+'/'+item_id);
     }
     
-    addParticipant(params){
-        return this.http.post<JsonResponse<any>>(this.baseUrl+'/add-participant', params);
+    addParticipant(causerieId: number, params: any){
+        return this.http.post<JsonResponse<any>>(this.baseUrl+'/'+causerieId+'/participants', params);
+    }
+
+    addFeedBackParticipant(causerieId: number, userId: number, params: any){
+        return this.http.put<JsonResponse<any>>(this.baseUrl+'/'+causerieId+'/participants/'+userId, params);
     }
     
     export(filters){
@@ -53,6 +61,12 @@ export class CauserieService{
 
     getStats(params){
         return this.http.post<JsonResponse<any>>(this.baseUrl+'/stats', params);
+    }
+
+    addDocuments(id:number, documents){
+		const httpHeaders = new HttpHeaders();
+		httpHeaders.set("Content-Type", "multipart/form-data");
+        return this.http.post<JsonResponse<any>>(this.baseUrl+'/'+id+'/documents', documents, { headers: httpHeaders });
     }
     
 

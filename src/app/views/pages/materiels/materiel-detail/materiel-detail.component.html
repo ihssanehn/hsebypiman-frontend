@@ -8,11 +8,9 @@
 				<mat-icon>more_vert</mat-icon>
 			</button>
 			<div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
-				<ng-container *ngxPermissionsOnly="['materiel_canUpdate']">
-					<button *ngIf="materiel.main_categorie?.code != 'VEHICULE'" mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editMateriel(materiel.id)">
-						<mat-icon>edit</mat-icon>
-					</button>
-				</ng-container>
+				<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editMateriel(materiel.id)" *ngxPermissionsOnly="['materiel_canUpdate']">
+					<mat-icon>edit</mat-icon>
+				</button>
 				<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteMateriel(materiel.id)" *ngxPermissionsOnly="['materiel_canArchieve']">
 					<mat-icon>delete</mat-icon>
 				</button>
@@ -27,14 +25,21 @@
 						<h3>{{'MATERIELS.CARD.GENERAL_INFOS.TITLE' | translate}}</h3>
 						<div class="box" style="flex:1">
 							<p><span class="label pull-left mr-2">{{'MATERIELS.LIBELLE.TITLE' | translate}}</span><span *ngIf="materiel.libelle; else noData">{{materiel.libelle}}</span></p>
+							<p><span class="label pull-left mr-2">{{'MATERIELS.AVAILABLE_QUANTITY.TITLE' | translate}}</span><span *ngIf="materiel.stock_disponible else noData">{{materiel.stock_disponible}}</span></p>
+							<p><span class="label pull-left mr-2">{{'MATERIELS.MINIMAL_QUANTITY.TITLE' | translate}}</span><span *ngIf="materiel.stock_min else noData">{{materiel.stock_min}}</span></p>
 							<p><span class="label pull-left mr-2">{{'MATERIELS.NUMERO_SERIE.TITLE' | translate}}</span><span *ngIf="materiel.numero_serie; else noData">{{materiel.numero_serie}}</span></p>
 							<p><span class="label pull-left mr-2">{{'MATERIELS.CATEGORIE.TITLE' | translate}}</span><span *ngIf="materiel.flat_categories; else noData">
 									<span *ngFor="let cat of materiel.flat_categories; let last = last;">
 										{{cat.libelle}}<span *ngIf="!last"> / </span>
 									</span>
-								</span></p>
+								</span>
+							</p>
+							<p *ngIf="materiel.subcategory"><span class="label pull-left mr-2">{{'MATERIELS.SUB_CATEGORY.TITLE' | translate}}</span><span>{{materiel.subcategory.libelle}}</span></p>
+							<p *ngIf="materiel.size"><span class="label pull-left mr-2">{{'MATERIELS.SIZE.TITLE' | translate}}</span><span>{{materiel.size}}</span></p>
+							<p *ngIf="materiel.criteria"><span class="label pull-left mr-2">{{'MATERIELS.CRITERIA.TITLE' | translate}}</span><span>{{materiel.criteria.libelle}}</span></p>
 							<p><span class="label pull-left mr-2">{{'MATERIELS.DATE_ENTREE.TITLE' | translate}}</span><span *ngIf="materiel.date_entree; else noData">{{materiel.date_entree | date:'dd/MM/yyyy'}}</span></p>
 							<p><span class="label pull-left mr-2">{{'MATERIELS.HAS_CONTROLE.TITLE' | translate}}</span><span>{{materiel.has_controle == 1 ? 'oui': 'non'}}</span></p>
+							<p><span class="label pull-left mr-2">{{'MATERIELS.HAS_ATEX.TITLE' | translate}}</span><span>{{materiel.has_atex == 1 ? 'oui': 'non'}}</span></p>
 							<p><span class="label pull-left mr-2">{{'MATERIELS.DESCRIPTION.TITLE' | translate}}</span><span *ngIf="materiel.description; else noData">{{materiel.description}}</span></p>
 							<ng-template #noData>
 								<span>-</span>
@@ -49,7 +54,7 @@
 						</div>
 					</div>
 					<div class="card" *ngIf="materiel.has_controle">
-						<h5>{{'MATERIELS.CARD.VISITE.TITLE' | translate}}<mat-icon color="primary" class="pull-right pointer" (click)="openRevisionModal()">edit</mat-icon></h5>
+						<h5>{{'MATERIELS.CARD.VISITE.TITLE' | translate}}<mat-icon color="primary" class="pull-right pointer" (click)="openRevisionModal()" *ngxPermissionsOnly="['materiel_canUpdate']">edit</mat-icon></h5>
 						<div class="box box-ar-vs pt-0" style="flex: 1;">
 							<div class="box" style="flex:1">
 								<p><span class="label pull-left mr-2">{{materiel.main_categorie?.code == 'BATIMENT' ? ('MATERIELS.CARD.VISITE.DATE_DERNIER_CONTROLE' | translate) : ('MATERIELS.CARD.VISITE.DATE_DERNIERE_REVISION' | translate)}}</span><span *ngIf="materiel.date_derniere_revision; else noData">{{materiel.date_derniere_revision | date:'dd/MM/yyyy'}}</span></p>
@@ -68,14 +73,22 @@
 			<div class="col-md-7">
 				<div class="cards">
 					<div class="card">
-						<h5>{{'MATERIELS.CARD.DOCUMENTS.TITLE' | translate}}<mat-icon color="primary" class="pull-right pointer" (click)="openAddDocumentModal()">add</mat-icon></h5>
+						<h5>{{'MATERIELS.CARD.DOCUMENTS.TITLE' | translate}}<mat-icon color="primary" class="pull-right pointer" (click)="openAddDocumentModal()" *ngxPermissionsOnly="['materiel_canUpdate']">add</mat-icon></h5>
 						<div class="box box-ar-vs pt-0" style="flex: 1;">
-							<div class="box" style="flex:1" *ngIf="materiel.documents.length > 0; else noDocument">
-								<div class="pointer" (click)="openDocumentModal(doc)" *ngFor="let doc of materiel.documents; let i = index">
-									<mat-icon color="primary" class="pr-2" >attach_file</mat-icon>
-									{{doc.libelle}}
-									<mat-icon color="warn" class="pull-right" (click)="deleteDocument(doc.id); $event.stopPropagation()" >delete</mat-icon>
-								</div>
+							<div class="picsum-img-wrapper d-flex flex-wrap" *ngIf="materiel.documents.length; else noDocument">
+								<ng-container *ngFor="let doc of materiel.documents; let i = index">
+									<div class="doc-card m-2 mr-3 pointer" matTooltip="{{doc.libelle}}">
+										<img 
+											alt="doc" 
+											class="shdw-5" 
+											(click)="openDocumentModal(doc)"
+											src="./assets/media/hse-svg/picto-file.svg">
+										<div class="mt-2">{{doc.libelle | truncate:15}}</div>
+										<button mat-icon-button matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteDocument(doc.id); $event.stopPropagation()">
+											<mat-icon color="primary">close</mat-icon>
+										</button>
+									</div>
+								</ng-container>
 							</div>
 							<ng-template #noDocument>
 								<div class="text-center mt-4 font-italic">
@@ -85,47 +98,46 @@
 						</div>
 					</div>
 					<div class="card">
-						<h5>{{'MATERIELS.CARD.USER_TRACKING.TITLE' | translate}}<small class="pull-right">{{'MATERIELS.PERSONNELS_COUNT.SHORTTITLE' | translate}} : <span class="blue">{{materiel.salaries.length}}</span></small></h5>
+						<h5>{{'MATERIELS.CARD.USER_TRACKING.TITLE' | translate}}<small class="pull-right">{{'MATERIELS.PERSONNELS_COUNT.SHORTTITLE' | translate}} / {{'MATERIELS.AVAILABLE_QUANTITY.SHORTTITLE' | translate}} : <span class="blue">{{materiel.actual_user.length}} / {{materiel.stock_disponible}}</span></small></h5>
 						<div class="box box-ar-vs pt-0" style="flex: 1;">
 							<ng-container *ngIf="materiel.salaries.length > 0; else noSalaries">
 								<div class="row">
-									<div class="col-12 my-2">
-										<p><span class="label">{{'MATERIELS.ACTUAL_USER.TITLE' | translate}}</span></p>
+									<div class="col-12 my-2 d-flex justify-content-between">
+										<p style="text-align: left;"><span class="label">{{'MATERIELS.ACTUAL_USER.TITLE' | translate}}</span></p>
+										<div *ngxPermissionsOnly="['materiel_canUpdate']">
+											<button mat-raised-button color="info" class="btn-small" *ngIf="materiel.actual_user.length < materiel.stock_disponible" (click)="$event.stopPropagation(); openPretModal('add')"> + {{'MATERIELS.ACTION.ASSIGN_MATERIEL' | translate}}</button>
+										</div>
 									</div>
 									<ng-container *ngIf="materiel.actual_user; else noUserInProgress">
-										<div class="col-4">
-											<p class="blue text-left">{{materiel.actual_user | fullName}}</p>
-										</div>
-										<div class="col-3">
-											<p class="blue text-center">{{'MATERIELS.READY.TITLE' | translate}} : {{materiel.actual_user?.pivot.date_pret | date:'dd/MM/yyyy'}}</p>
-										</div>
-										<div class="col-3">
+										<div class="row col-12" *ngFor="let actual_user of materiel.actual_user">
+											<div class="col-4">
+												<p class="blue text-left">{{actual_user | fullName}}</p>
+											</div>
+											<div class="col-3">
+												<p class="blue text-center">{{actual_user.pivot.is_given ? ('MATERIELS.LOAN_TYPE.IS_GIVEN' | translate) : ('MATERIELS.LOAN_TYPE.LOAN' | translate)}} : {{actual_user?.pivot.date_pret | date:'dd/MM/yyyy'}}</p>
+											</div>
+											<div class="col-3">
 	
-										</div>
-										<div class="col-2">
-											<a class="pull-right" (click)="goToUserDetail(materiel.actual_user.id)" matTooltip="{{'ACTION.SHOW_USER' | translate}}">
-												<mat-icon color="primary">visibility</mat-icon>
-											</a>
-										</div>
-	
-										<div class="col-12" *ngIf="materiel.main_categorie?.code != 'VEHICULE'">
-											<button mat-raised-button class="btn-small pull-right" color="info" (click)="$event.stopPropagation(); openPretModal('return', materiel.actual_user.pivot)">{{'MATERIELS.ACTION.RETURN-MATERIEL' | translate}}</button>
+											</div>
+											<div class="col-2" *ngxPermissionsOnly="['materiel_canUpdate']">
+												<button mat-raised-button class="btn-small pull-right" color="info" [disabled]="actual_user.pivot.is_given == 1" (click)="$event.stopPropagation(); openPretModal('return', actual_user.pivot)">{{'MATERIELS.ACTION.RETURN-MATERIEL' | translate}}</button>
+											</div>
 										</div>
 									</ng-container>
 									<ng-template #noUserInProgress>
 										<div class="col-12">{{'MATERIELS.CARD.USER_TRACKING.NO_CURRENT_USER' | translate}}</div>
-										<div class="col-12" *ngIf="materiel.main_categorie?.code != 'VEHICULE'">
+										<div class="col-12" *ngxPermissionsOnly="['materiel_canUpdate']">
 											<button mat-raised-button class="btn-small pull-right" color="info" (click)="$event.stopPropagation(); openPretModal('add')">{{'MATERIELS.ACTION.ASSIGN_MATERIEL' | translate}}</button>
 										</div>
 									</ng-template>
 								</div>
 								<div class="row mt-2">
 									<div class="col-12 my-2">
-										<p><span class="label">{{'MATERIELS.PERSONNELS_HISTORY.TITLE' | translate}}</span></p>
+										<p style="text-align: left;"><span class="label">{{'MATERIELS.PERSONNELS_HISTORY.TITLE' | translate}}</span></p>
 									</div>
 									<ng-container *ngIf="materiel.salaries.length > 0; else noArHistorique">
 										<ng-container *ngFor="let salarie of materiel.salaries">
-											<ng-container *ngIf="salarie.id != materiel.actual_user?.id">
+											<ng-container *ngIf="!isCurrentUser(salarie.pivot.id)">
 												<div class="col-4">
 													<p class="text-left">{{salarie | fullName}}</p>
 												</div>
@@ -136,10 +148,7 @@
 													<p class="text-center">{{'MATERIELS.RETURN.TITLE' | translate}}: {{salarie.pivot.date_retour | date:'dd/MM/yyyy'}}</p>
 												</div>
 												<div class="col-2">
-													<a class="pull-right" (click)="goToUserDetail(salarie.id)" matTooltip="{{'ACTION.SHOW_USER' | translate}}">
-														<mat-icon color="primary">visibility</mat-icon>
-													</a>
-													<a *ngIf="materiel.main_categorie?.code != 'VEHICULE'" class="pull-right" (click)="$event.stopPropagation(); openPretModal('update', salarie.pivot)" matTooltip="{{'MATERIELS.ACTION.MODIFY_LOAN' | translate}}">
+													<a class="pull-right" *ngxPermissionsOnly="['materiel_canUpdate']" (click)="$event.stopPropagation(); openPretModal('update', salarie.pivot)" matTooltip="{{'MATERIELS.ACTION.MODIFY_LOAN' | translate}}">
 														<mat-icon color="accent">edit</mat-icon>
 													</a>
 												</div>
@@ -156,7 +165,7 @@
 									<div class="col-12">
 										<p>{{'MATERIELS.CARD.USER_TRACKING.NO_LOAN' | translate}}</p>
 									</div>
-									<div class="col-12" *ngIf="materiel.main_categorie?.code != 'VEHICULE'">
+									<div class="col-12" *ngxPermissionsOnly="['materiel_canUpdate']">
 										<button mat-raised-button color="info" class="btn-small" (click)="$event.stopPropagation(); openPretModal('add')">{{'MATERIELS.ACTION.ASSIGN_MATERIEL' | translate}}</button>
 									</div>
 								</div>

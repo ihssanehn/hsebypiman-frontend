@@ -7,6 +7,7 @@ import * as objectPath from 'object-path';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { environment } from '@env/environment';
 import { DomSanitizer } from '@angular/platform-browser';
+import { version } from '@app/../../package.json';
 
 @Component({
 	selector: 'tf-footer',
@@ -16,6 +17,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class FooterComponent implements OnInit {
 	// Public properties
+	version = version;
 	today: number = Date.now();
 	fluid: boolean;
 	cguPath;

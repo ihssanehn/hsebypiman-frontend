@@ -44,6 +44,7 @@ export class User extends BaseModel {
     date_realisation_accueil_secu?: Date;
     date_realisation_livret_accueil?: Date;
     base_name?: string;
+    delegation_signature_doc?: any;
 
     clear?(): void {
         this.id = undefined;

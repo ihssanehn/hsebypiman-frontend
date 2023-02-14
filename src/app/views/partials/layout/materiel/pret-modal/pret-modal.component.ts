@@ -37,21 +37,32 @@ export class PretModalComponent implements OnInit {
   async ngOnInit() {
     this.form = this.fb.group({
       salarie_id: [null, Validators.required],
+      pret_id: [null],
       date_pret: [moment().format('DD/MM/YYYY')],
+      is_given: [0],
       date_retour: [null],
+    })
+
+    this.form.get('is_given').valueChanges.subscribe(val=>{
+      if(val == 1){
+        this.form.get('date_retour').disable();
+        this.form.get('date_retour').setValue(null);
+      }else{
+        this.form.get('date_retour').enable();
+      }
     })
 
     if (this.data.origin != 'add' && this.data.pivot != {}) {
       var pivot = { ... this.data.pivot }
 
-      if (!pivot.date_retour) {
+      if (!pivot.date_retour && !pivot.is_given) {
         pivot.date_retour = moment().format()
       }
+      
       this.formatDates(pivot, 'EnToFr');
       this.form.patchValue(pivot);
-
+      this.form.get('pret_id').setValue(pivot.id);
       this.form.get('salarie_id').disable();
-
 
       if (this.data.origin == 'return') {
         this.form.get('date_pret').disable();
@@ -109,7 +120,9 @@ export class PretModalComponent implements OnInit {
 
   formatDates(item, direction) {
     item.date_pret = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.date_pret) : this.dateEnToFrPipe.transform(item.date_pret);
-    item.date_retour = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.date_retour) : this.dateEnToFrPipe.transform(item.date_retour);
+    if(!item.is_given){
+      item.date_retour = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.date_retour) : this.dateEnToFrPipe.transform(item.date_retour);
+    }
   }
 
 }

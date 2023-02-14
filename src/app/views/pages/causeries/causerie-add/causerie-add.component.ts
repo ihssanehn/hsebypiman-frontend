@@ -11,6 +11,8 @@ import Swal from 'sweetalert2';
 import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
 import {FormStatus} from '@app/core/_base/crud/models/form-status';
 import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
+import { AuthService, User } from '@app/core/auth';
+import { FileUploader } from 'ng2-file-upload';
 
 @Component({
   selector: 'tf-causerie-add',
@@ -19,6 +21,7 @@ import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
 })
 export class CauserieAddComponent implements OnInit {
   
+  currentUser: User;
   causerie: Causerie;
   causerieForm: FormGroup;
   formStatus = new FormStatus();
@@ -29,11 +32,16 @@ export class CauserieAddComponent implements OnInit {
   // Private properties
   errors;
   
+  public uploader:FileUploader = new FileUploader({
+    isHTML5: true
+  });
+
   constructor(
 		private router: Router,
 		private causerieFB: FormBuilder,
 		// private notificationService: NzNotificationService,
 		private causerieService: CauserieService,
+    private authService: AuthService,
     private cdr: ChangeDetectorRef,
     private location: Location,
     private translate:TranslateService,
@@ -52,22 +60,46 @@ export class CauserieAddComponent implements OnInit {
       libelle: ['', Validators.required],
       sujet: ['', [Validators.required]],
       organisateur_id: [null, Validators.required],
+      creator_id:[{value: null, disabled: true}],
       date: ['', [Validators.required]],
       lieu: ['', [Validators.required]],
+      documentsToUpload: [null, null]
     });
+    
+    this.setCreator();
+
 		this.loaded = true;
+  }
+
+  setCreator() {
+    this.authService.currentUser.subscribe(user => {
+      this.currentUser = user;
+      this.causerieForm.controls['creator_id'].setValue(this.currentUser.id);
+    });
   }
 
   async onSubmit(){
     try {
       let result;
       this.formloading = true;
-      let form = {...this.causerieForm.getRawValue()};
-			this.parseCauserieDate(form, 'FrToEn');
-
       this.formStatus.onFormSubmitting();
+      let formData = new FormData();
+      let form = {...this.causerieForm.getRawValue()};
+
+      for (let j = 0; j < this.uploader.queue.length; j++) {
+        let fileItem = this.uploader.queue[j]._file;
+        formData.append('documents[]', fileItem);
+      }
+
+      Object.keys(form).map(function (key) {
+        if(form[key])
+          return formData.append(key, form[key]);
+      })
+
+      if(form.date)
+        formData.set('date', this.dateFrToEnPipe.transform(form.date));
   
-			this.causerieService.create(form)
+			this.causerieService.create(formData)
         .toPromise()
         .then((res) => {
           this.formloading = false;
@@ -80,6 +112,7 @@ export class CauserieAddComponent implements OnInit {
             showConfirmButton: false,
             timer: 1500
           }).then(() => {
+            this.uploader.clearQueue();
             this.router.navigate(['/causeries/detail/' + causerie.id]);
           });
         })
@@ -113,9 +146,19 @@ export class CauserieAddComponent implements OnInit {
 	onCancel() {
 		this.location.back();
   }
-  
 
 	parseCauserieDate(item, direction){
 		item.date = direction == 'FrToEn' ? this.dateFrToEnPipe.transform(item.date) : this.dateEnToFrPipe.transform(item.date);
 	}
+
+  controlDocuments(){
+    for (let i = 0; i < this.uploader.queue.length; i++) {
+      let fileItem = this.uploader.queue[i]._file;
+      if(fileItem.size > 10000000){
+        alert(this.translate.instant("REMONTEES.NOTIF.FILE_SIZE_ALERT.TITLE"));
+        return true;
+      }
+    }
+    return false;
+  }
 }

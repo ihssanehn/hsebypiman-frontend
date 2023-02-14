@@ -13,7 +13,7 @@
 				<button class="pull-right btn-small mb-4" mat-raised-button color="info" (click)="exportList()">{{'ACTION.EXPORT' | translate}}</button>
 			</div>
 		</div>
-		<div class="table-responsive" *ngIf="materielsList.data.length > 0; else noMaterielFind">
+		<div class="table-responsive">
 			<table mat-table [dataSource]="materielsList.data">
 
 				<!-- vs_retard Column -->
@@ -52,20 +52,49 @@
 					<td mat-cell *matCellDef="let materiel" (click)="viewMateriel(materiel.id)" class="text-center pointer"> {{materiel.main_categorie?.libelle+' - '+materiel.categorie?.libelle}} </td>
 				</ng-container>
 				
-				<!-- marque Column -->
+				<!-- Current user Column -->
 				<ng-container matColumnDef="actual_user">
-					<th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('actual_user.prenom')">
-						{{'MATERIELS.ACTUAL_USER.TITLE' | translate}}
-						<i class="fa" [ngClass]="isOrderedBy('actual_user.prenom') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('actual_user.prenom') && {opacity:1}"></i>
+					<th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('actual_user')">
+						{{'MATERIELS.ACTUAL_USERS.TITLE' | translate}}
+						<i class="fa" [ngClass]="isOrderedBy('actual_user') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('actual_user') && {opacity:1}"></i>
 					</th>
-					<td mat-cell *matCellDef="let materiel" (click)="viewMateriel(materiel.id)" class="text-center pointer"> 
-						<span *ngIf="materiel.actual_user; else materielDispo">{{materiel.actual_user | fullName}}</span>
+					<td 
+						mat-cell 
+						*matCellDef="let materiel" 
+						(click)="viewMateriel(materiel.id)" 
+						class="pointer text-center"
+						container="body" 						
+						triggers="mouseenter:mouseleave" 
+						[ngbPopover]="currentUsersList" 
+						popoverClass="big-popover" 
+						[popoverTitle]="('MATERIELS.ACTUAL_USERS.TITLE' | translate)+' : '+materiel.actual_user.length"
+					> 
+						<span *ngIf="materiel.actual_user.length else materielDispo">
+							<ng-container *ngIf="materiel.actual_user.length > 1 else oneUser">
+								{{materiel.actual_user.length}} {{'MATERIELS.PERSONNELS.LABEL' | translate}}
+							</ng-container>
+						</span>
+						<ng-template #currentUsersList>
+							<span *ngFor="let currentUser of materiel.actual_user" class="d-block"><i class="fa fa-user mr-2"></i>{{currentUser | fullName}}</span>
+						</ng-template>
 						<ng-template #materielDispo>
 							<b class="text-success" >Disponible</b>
+						</ng-template>
+						<ng-template #oneUser>
+							{{'MATERIELS.ONE_USER.TITLE' | translate}}
 						</ng-template>
 					</td>
 				</ng-container>
 				
+				<!-- Quantité disponible Column -->
+				<ng-container matColumnDef="quantite_disponible">
+					<th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('stock_disponible')">
+						{{'MATERIELS.AVAILABLE_QUANTITY.LABEL' | translate}}
+						<i class="fa" [ngClass]="isOrderedBy('stock_disponible') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('stock_disponible') && {opacity:1}"></i>
+					</th>
+					<td mat-cell *matCellDef="let materiel" (click)="viewMateriel(materiel.id)" class="text-center pointer"> {{materiel.actual_user.length}} / {{materiel.stock_disponible}} </td>
+				</ng-container>
+
 				<ng-container matColumnDef="action" class="actionCol" stickyEnd>
 					<th mat-header-cell *matHeaderCellDef></th>
 					<td mat-cell *matCellDef="let materiel" class="text-right">
@@ -82,10 +111,24 @@
 				<tr mat-header-row *matHeaderRowDef="displayedMaterielColumns"></tr>
 				<tr mat-row class="highlight-row" *matRowDef="let row; columns: displayedMaterielColumns;"></tr>
 			</table>
+
+
+			
+			<ng-container *ngIf="materielsList.data.length == 0">
+				<div class="row" style="margin: 150px">
+					<div class="col-12 text-center">
+						<div style="font-size: 90px">
+							<i class="fa fa-folder-open"></i> 
+						</div>
+						<h5>Rien à afficher ...</h5>	
+					</div>
+				</div>
+			</ng-container>
+
 		</div>
-		<ng-template #noMaterielFind>
+		<!-- <ng-template #noMaterielFind>
 			<h6>{{'MATERIELS.NOTIF.NOTHING_FOUND.TITLE' | translate}}</h6>
-		</ng-template>
+		</ng-template> -->
 
 		<tf-pagination (change)="changePagination()" [(ngModel)]="pagination" ngDefaultControl></tf-pagination>
 

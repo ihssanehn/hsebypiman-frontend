@@ -6,7 +6,14 @@
 </div>
 <div class="modal-body" style="background:#f7f7ff">
     <div class="row">
-        <div class="col-12 flash-content" [innerHtml]="flashInfo?.content">
+        <div class="col-12 flash-content">
+            <tf-flashinfo-reader *ngIf="flashInfo; else loading" [data]="flashInfo.content"></tf-flashinfo-reader>
         </div>
     </div>
 </div>
+
+<ng-template #loading>
+	<div class="loading-card">
+		<mat-spinner color="accent" diameter="30"></mat-spinner>
+	</div>
+</ng-template>

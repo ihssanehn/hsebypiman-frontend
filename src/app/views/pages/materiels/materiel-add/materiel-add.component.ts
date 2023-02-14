@@ -10,6 +10,7 @@ import {FormStatus} from '@app/core/_base/crud/models/form-status';
 import { DateEnToFrPipe, DateFrToEnPipe } from '@app/core/_base/layout';
 import Swal from 'sweetalert2';
 import { TranslateService } from '@ngx-translate/core';
+import { FileUploader } from 'ng2-file-upload';
 
 @Component({
   selector: 'tf-materiel-add',
@@ -27,6 +28,9 @@ export class MaterielAddComponent implements OnInit {
 	editMode: boolean = false;
   // Private properties
   errors;
+  public uploader:FileUploader = new FileUploader({
+    isHTML5: true
+  });
   
   constructor(
 		private router: Router,
@@ -48,14 +52,20 @@ export class MaterielAddComponent implements OnInit {
   
   createForm() {
 		this.materielForm = this.materielFB.group({
-      
       libelle: ['', Validators.required],
       numero_serie: [''],
       categorie_id: [null, Validators.required],
+      size: [null],
+      criteria_id: [null],
+      subcategory_id: [null],
       description: [''],
       date_entree: [null],
       has_controle: [0],
+      has_atex: [0],
       etat: [0],
+      stock_disponible: [1],
+      stock_min: [null],
+      documentsToUpload:[null, null],
     });
 
 		this.loaded = true;
@@ -77,6 +87,9 @@ export class MaterielAddComponent implements OnInit {
           this.errors = false; 
           this.cdr.markForCheck();
           var materiel = res.result.data;
+          if(this.uploader.queue.length > 0){
+            this.saveDocuments(materiel.id);
+          }
           Swal.fire({
             icon: 'success',
             title: this.translate.instant("MATERIELS.NOTIF.MATERIEL_CREATED.TITLE"),
@@ -113,6 +126,41 @@ export class MaterielAddComponent implements OnInit {
 
   }
   
+
+	saveDocuments(materiel_id){
+
+		let formData = new FormData();
+		this.formStatus.onFormSubmitting();
+
+		for (let j = 0; j < this.uploader.queue.length; j++) {
+			let fileItem = this.uploader.queue[j]._file;
+			formData.append('documents[]', fileItem);
+		}
+
+		this.materielService.addDocuments(materiel_id, formData)
+			.toPromise()
+			.then((res) => {
+			
+			})
+			.catch(err =>{ 
+				Swal.fire({
+					icon: 'error',
+					title: this.translate.instant("NOTIF.INCOMPLETE_FORM.TITLE"),
+					showConfirmButton: false,
+					timer: 1500
+				});
+
+				if(err.status === 422){
+					var messages = extractErrorMessagesFromErrorResponse(err);
+					this.formStatus.onFormSubmitResponse({success: false, messages: messages});
+					this.cdr.markForCheck();
+				}
+
+			});
+			
+		this.cdr.markForCheck();
+	}
+
 	onCancel() {
 		this.location.back();
   }

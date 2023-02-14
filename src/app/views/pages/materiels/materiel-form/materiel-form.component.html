@@ -3,7 +3,7 @@
 		<tf-portlet-body>
 			<div class="tf-heading tf-heading--lg" style="margin-top: 0;">
 				<div *ngIf="edit">
-					{{'MENU.SUB_MATERIELS.EDIT' | translate}} {{materielForm.get('code').value}}
+					{{'MENU.SUB_MATERIELS.EDIT' | translate}} {{materielForm.get('libelle')?.value}}
 
 				</div>
 				<span *ngIf="!edit">{{'MENU.SUB_MATERIELS.ADD' | translate}}</span>
@@ -14,14 +14,69 @@
 						<div class="tf-wizard-v4__form">
 							<div class="row form-row">
 								<div class="col-12">
-									<tf-tree-select [itemsList]="categoriesList" [fromId]="materielForm.get('categorie_id').value" [required]="true" [withAll]="false" [translateTitle]="'MATERIELS.CATEGORIE'" (onChangedItem)="categorieChanged($event)" *ngIf="categoriesList"></tf-tree-select>
+									<tf-tree-select [itemsList]="categoriesList" [fromId]="materielForm.get('categorie_id').value" [required]="true" [withAll]="false" [translateTitle]="'MATERIELS.CATEGORIE'" [itemsToHandle]="itemsToHandle" (onChangedItem)="categorieChanged($event)" (onSelectedItemsToHandle)="itemsToHandleSelected($event)" *ngIf="categoriesList"></tf-tree-select>
 								</div>
 							</div>
+
+							<div class="row form-row" *ngIf="displayExtraFields">
+								<mat-form-field class="col-xl-3">
+									<mat-label>{{'MATERIELS.SIZE.LABEL' | translate}}</mat-label>
+									<input class="form-control" matInput type="number" name="size" formControlName="size" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('size')" />
+									<mat-error *ngIf="isControlHasError('size','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+
+								<mat-form-field class="col-xl-3">
+									<mat-label>{{'MATERIELS.CRITERIA.LABEL' | translate}}</mat-label>
+									<mat-select class="form-control" formControlName="criteria_id" name="criteria_id" placeholder="{{'ACTION.ENTER_HERE' | translate}}">
+										<mat-option *ngFor="let item of criteriasList" [value]="item.id">
+											{{item.libelle}}
+										</mat-option>
+									</mat-select>
+									<button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('criteria_id'); $event.stopPropagation()">
+										<mat-icon>clear</mat-icon>
+									</button>
+									<mat-error *ngIf="isControlHasError('criteria_id','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+
+								<mat-form-field class="col-xl-3" *ngIf="subcategoryDisplayed">
+									<mat-label>{{'MATERIELS.SUB_CATEGORY.LABEL' | translate}}</mat-label>
+									<mat-select class="form-control" formControlName="subcategory_id" name="subcategory_id" placeholder="{{'ACTION.ENTER_HERE' | translate}}">
+										<mat-option *ngFor="let item of subcategoriesList" [value]="item.id">
+											{{item.libelle}}
+										</mat-option>
+									</mat-select>
+									<button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('subcategory_id'); $event.stopPropagation()">
+										<mat-icon>clear</mat-icon>
+									</button>
+									<mat-error *ngIf="isControlHasError('subcategory_id','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+							</div>
+
 							<div class="row form-row">
 								<mat-form-field class="col-xl-3">
 									<mat-label>{{'MATERIELS.LIBELLE.LABEL' | translate}}</mat-label>
 									<input class="form-control" matInput type="text" name="libelle" formControlName="libelle" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('libelle')" />
 									<mat-error *ngIf="isControlHasError('libelle','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+								<mat-form-field class="col-xl-3">
+									<mat-label>{{'MATERIELS.AVAILABLE_QUANTITY.TITLE' | translate}}</mat-label>
+									<input class="form-control" matInput type="number" name="stock_disponible" formControlName="stock_disponible" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('stock_disponible')" />
+									<mat-error *ngIf="isControlHasError('stock_disponible','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+								<mat-form-field class="col-xl-3">
+									<mat-label>{{'MATERIELS.MINIMAL_QUANTITY.TITLE' | translate}}</mat-label>
+									<input class="form-control" matInput type="number" name="stock_min" formControlName="stock_min" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('stock_min')" />
+									<mat-error *ngIf="isControlHasError('stock_min','required')">
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
 								</mat-form-field>
@@ -33,40 +88,63 @@
 									</mat-error>
 								</mat-form-field>
 							</div>
-							<div class="row form-row vertical-divider">
-								<div class="col-xl-6">
-									<div class="row form-row">
-								
-										<mat-form-field class="col-xl-6">
-											<mat-label>{{'MATERIELS.DATE_ENTREE.LABEL' | translate}}</mat-label>
-											<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" formControlName="date_entree" [required]="isFieldRequired('date_entree')" placeholder="DD/MM/YYYY">
-										</mat-form-field>
 
+							<div class="row form-row">
+								<mat-form-field class="col-xl-3">
+									<mat-label>{{'MATERIELS.DATE_ENTREE.LABEL' | translate}}</mat-label>
+									<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" formControlName="date_entree" [required]="isFieldRequired('date_entree')" placeholder="DD/MM/YYYY">
+								</mat-form-field>
 
-										<mat-form-field class="col-xl-6" floatLabel="always" appearance="none">
-											<mat-slide-toggle [checked]="isChecked('has_controle')" (change)="updateToggleValue($event, 'has_controle')"><span class="slider-label">{{'MATERIELS.HAS_CONTROLE.LABEL' | translate}}</span></mat-slide-toggle>
-											<textarea matInput hidden></textarea>
-										</mat-form-field>
-										<mat-form-field class="col-xl-6">
-											<mat-label>{{'MATERIELS.FREQUENCE_CONTROLE.LABEL' | translate}}</mat-label>
-											<input class="form-control" matInput type="number" name="frequence_controle" formControlName="frequence_controle" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('frequence_controle')" />
-											<mat-error *ngIf="isControlHasError('frequence_controle','required')">
-												<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-											</mat-error>
-										</mat-form-field>
-		
-										
-									</div>
-								</div>
-								<mat-form-field class="col-xl-6">
+								<mat-form-field class="col-xl-3" floatLabel="always" appearance="none">
+									<mat-slide-toggle [checked]="isChecked('has_controle')" (change)="updateToggleValue($event, 'has_controle')"><span class="slider-label">{{'MATERIELS.HAS_CONTROLE.LABEL' | translate}}</span></mat-slide-toggle>
+									<textarea matInput hidden></textarea>
+								</mat-form-field>
+
+								<mat-form-field class="col-xl-3" floatLabel="always" appearance="none">
+									<mat-slide-toggle [checked]="isChecked('has_atex')" (change)="updateToggleValue($event, 'has_atex')"><span class="slider-label">{{'MATERIELS.HAS_ATEX.LABEL' | translate}}</span></mat-slide-toggle>
+									<textarea matInput hidden></textarea>
+								</mat-form-field>
+							</div>
+							<div class="row form-row">
+								<mat-form-field class="col-xl-9">
 									<mat-label>{{'MATERIELS.DESCRIPTION.LABEL' | translate}}</mat-label>
-									<textarea matInput rows="18" class="form-control" type="text" name="description" formControlName="description" [required]="isFieldRequired('description')" placeholder="{{'ACTION.ENTER_HERE' | translate}}"></textarea>
+									<textarea matInput rows="3" class="form-control" type="text" name="description" formControlName="description" [required]="isFieldRequired('description')" placeholder="{{'ACTION.ENTER_HERE' | translate}}"></textarea>
 									<mat-error *ngIf="isControlHasError('description','required')">
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
 								</mat-form-field>
 							</div>
-							
+							<div class="row form-row" *ngIf="!edit">
+								<div class="col-xl-9">
+									<mat-label>{{'MATERIELS.CARD.DOCUMENTS.TITLE' | translate}}</mat-label>
+									<div class="row">
+										<div class="col-6">
+												<div class="upload-btn-wrapper">
+														<button class="btnr" title="{{'COMMON.SELECT_FILES.TITLE' | translate}}">{{'COMMON.SELECT_FILES.SHORTTITLE' | translate}}</button>
+														<span>{{'COMMON.NOTIF.NO_FILE_CHOSEN.TITLE' | translate}}</span>
+														<input formControlName="documentsToUpload" (onFileSelected)="onFileDrop($event)" class="mb-2" type="file" 
+																ng2FileSelect title="{{'COMMON.SELECT_FILES.TITLE' | translate}}" accept="{{accept+', '+(accept | uppercase)}}" [uploader]="uploader" multiple/>
+												</div>              
+												<div ng2FileDrop [uploader]="uploader" 
+												(onFileDrop)="onFileDrop($event)"
+												class="drop-zone">
+														{{'UPLOAD.DROPZONE.PLACEHOLDER' | translate}} <br>
+														{{'UPLOAD.LIST_EXT' | translate}} : {{accept}}<br>
+														{{'UPLOAD.MAX_SIZE' | translate}} : 4 Mo
+												</div>
+										</div>
+										<div class="col-6">
+												<h6>{{'REMONTEES.CARD.DOC.FILE_AWAIT_UPLOAD' | translate}} : </h6>
+												<ul>
+														<li class="mb-3" *ngFor="let item of uploader.queue">
+																{{seeItem(item)}}
+																		<mat-icon color="accent" class="pull-right pointer" (click)="item.remove()" matTooltip="{{'REMONTEES.CARD.DOC.ACTION.REMOVE_DOC' | translate}}">delete</mat-icon>
+														</li>
+												</ul>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

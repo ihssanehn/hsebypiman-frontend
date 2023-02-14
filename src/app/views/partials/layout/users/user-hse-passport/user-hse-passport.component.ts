@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PersonnelService, PeriodService, DocumentService, UserService, RemonteeService, MaterielService, CauserieService, ModuleService } from '@app/core/services';
 import * as _moment from 'moment';
 import { default as _rollupMoment } from 'moment';
-import { Personnel, FollowUpPeriod, QcmSession, Remontee, Causerie, Formation, Materiel } from '@app/core/models';
+import { Personnel, FollowUpPeriod, QcmSession, Remontee, Causerie, Formation, Materiel, Revue } from '@app/core/models';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2';
 import { TranslateService } from '@ngx-translate/core';
@@ -13,6 +13,7 @@ import { User } from '@app/core/auth';
 import { FormStatus } from '@app/core/_base/crud/models/form-status';
 import { EditAccueilSecuModalComponent } from '@app/views/partials/layout/users/edit-accueil-secu-modal/edit-accueil-secu-modal.component';
 import { AssignEpiModalComponent, AssignFormationModalComponent } from '@app/views/partials/layout';
+import { UploadDelSignatureDocModalComponent } from '../../modal/upload-del-signature-doc-modal/upload-del-signature-doc-modal.component';
 
 @Component({
   selector: 'tf-user-hse-passport',
@@ -29,6 +30,7 @@ export class UserHsePassportComponent implements OnInit {
 	loaded = false;
   SECU_DONE_ICON = "./assets/media/hse-svg/secu_done.svg";
   SECU_UNDONE_ICON = "./assets/media/hse-svg/secu_undone.svg";
+  FILE_ICON = "./assets/media/hse-svg/picto-file.svg";
 
   qcmSession: QcmSession;
   remontees: Remontee[] = [];
@@ -36,6 +38,8 @@ export class UserHsePassportComponent implements OnInit {
   formations: Formation[] = [];
   causeries_animees: Causerie[] = [];
   causeries_participees: Causerie[] = [];
+  revues: Revue[] = [];
+
 
   accueilSecuStatusIcon: String = this.SECU_UNDONE_ICON;
   quizSecuStatusIcon: String = this.SECU_UNDONE_ICON;
@@ -77,6 +81,7 @@ export class UserHsePassportComponent implements OnInit {
       this.getUserPretEpi();
       this.getUserFormations();
       this.getUserCauseries();
+      this.getUserRevues();
   
       this.resetAccueilSecuStatusIcon();
       this.resetLivretSecuStatusIcon();
@@ -130,7 +135,12 @@ export class UserHsePassportComponent implements OnInit {
     this.causeries_participees = res2.result.data;
     this.cdr.markForCheck();
 	}
+  async getUserRevues(){
+    var res = await this.userService.getRevues(this.user).toPromise();
+    this.revues = res.result.data;
+    this.cdr.markForCheck();
 
+  }
   async getUserPretEpi() {
 		var res = await this.userService.getPretEpi(this.user).toPromise();
 		this.epis = res.result.data;
@@ -328,5 +338,41 @@ export class UserHsePassportComponent implements OnInit {
   
   isActiveModule(modules){
     return this.moduleService.isActived(modules);
+  }
+
+  showDelSignationDoc() {
+    if(this.user.delegation_signature_doc) {
+      var url = this.documentService.readFile(this.user.delegation_signature_doc.id);
+      window.open(url, '_blank');
+    }
+  }
+
+  downloadDelSignationDoc() {
+    if(this.user.delegation_signature_doc) {
+      return this.documentService.downloadFile(this.user.delegation_signature_doc.id);
+    }
+  }
+
+  uploadDelSignationDoc() {
+    const modalRef = this.modalService.open(UploadDelSignatureDocModalComponent, {size: 'md',scrollable: true,centered : true});
+    modalRef.componentInstance.userId = this.user.id;
+		modalRef.result.then(res => {
+      if(res){
+        this.reloadUser();
+        Swal.fire({
+          icon: 'success',
+          title: "Le document a bien été enregistré.",
+          showConfirmButton: false,
+          timer: 1500,
+            
+        })
+      }
+    });
+  }
+  goToDetailRevue(revue_id){
+    return this.router.navigateByUrl(`/visites-securite/revues/detail/${revue_id}`)
+  }
+  getMoyenneRevue(){
+    return this.revues.reduce((acc, obj)=> acc + obj.note, 0) / this.revues.length
   }
 }

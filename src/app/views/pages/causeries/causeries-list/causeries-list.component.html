@@ -37,7 +37,7 @@
 				<!-- organisateur Column -->
 				<ng-container matColumnDef="organisateur" sticky>
 					<th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('organisateur')">
-						{{'CAUSERIES.ORGANISATEUR' | translate}}
+						{{'CAUSERIES.ANIMATOR' | translate}}
 						<i class="fa" [ngClass]="isOrderedBy('organisateur') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('organisateur') && {opacity:1}"></i>
 					</th>
 					<td mat-cell *matCellDef="let causerie" (click)="viewCauserie(causerie.id)" class="pointer"> {{causerie.organisateur | fullName}} </td>
@@ -80,6 +80,18 @@
 				<tr mat-header-row *matHeaderRowDef="displayedCauserieColumns"></tr>
 				<tr mat-row class="highlight-row" *matRowDef="let row; columns: displayedCauserieColumns;"></tr>
 			</table>
+
+			<ng-container *ngIf="causeriesList.data.length == 0">
+				<div class="row" style="margin: 150px">
+					<div class="col-12 text-center">
+						<div style="font-size: 90px">
+							<i class="fa fa-folder-open"></i> 
+						</div>
+						<h5>Rien à afficher ...</h5>	
+					</div>
+				</div>
+			</ng-container>
+
 		</div>
 
 		<tf-pagination (change)="changePagination()" [(ngModel)]="pagination" ngDefaultControl></tf-pagination>
@@ -92,11 +104,17 @@
 	<button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}" (click)="viewCauserie(causerie_id)">
 		<mat-icon>visibility</mat-icon>
 	</button>
-	<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editCauserie(causerie_id)" *ngxPermissionsOnly="['causerie_canUpdate']">
+	<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editCauserie(causerie_id)" *ngIf="canUpdateCauserie(causerie_id); else editCauseriePermission">
 		<mat-icon>edit</mat-icon>
 	</button>
 	<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteCauserie(causerie_id)" *ngxPermissionsOnly="['causerie_canArchieve']">
 		<mat-icon>delete</mat-icon>
 	</button>
+	<ng-template #editCauseriePermission>
+		<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editCauserie(causerie_id)" *ngxPermissionsOnly="['causerie_canUpdate']">
+			<mat-icon>edit</mat-icon>
+		</button>
+	</ng-template>
+	
 </mat-menu>
 

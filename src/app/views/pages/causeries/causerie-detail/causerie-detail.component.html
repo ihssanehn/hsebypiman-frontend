@@ -8,9 +8,14 @@
 				<mat-icon>more_vert</mat-icon>
 			</button>
 			<div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
-				<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editCauserie(causerie.id)" *ngxPermissionsOnly="['causerie_canUpdate']">
+				<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editCauserie(causerie.id)" *ngIf="canUpdateCauserie(); else editCauseriePermission">
 					<mat-icon>edit</mat-icon>
 				</button>
+				<ng-template #editCauseriePermission>
+					<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editCauserie(causerie.id)" *ngxPermissionsOnly="['causerie_canUpdate']">
+						<mat-icon>edit</mat-icon>
+					</button>
+				</ng-template>
 				<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteCauserie(causerie.id)" *ngxPermissionsOnly="['causerie_canArchieve']">
 					<mat-icon>delete</mat-icon>
 				</button>
@@ -19,14 +24,26 @@
 	</div>
 	<tf-portlet-body class="tf-portlet__body--fit">
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-4">
 				<div class="card">
 					<h3>{{'EES.CARD.GENERAL_INFOS.TITLE' | translate}}</h3>
-					<div class="box" style="flex:1">
+					<div class="box">
 						<p><span class="label pull-left mr-2">{{'CAUSERIES.LIBELLE' | translate}}</span><span class="">{{causerie.libelle}}</span></p>
 						<p><span class="label pull-left mr-2">{{'CAUSERIES.DATE' | translate}}</span><span class="">{{causerie.date ? (causerie.date | date:'dd/MM/yyyy') : '&nbsp;'}}</span></p>
 						<p><span class="label pull-left mr-2">{{'CAUSERIES.LIEU' | translate}}</span><span class="">{{causerie.lieu ? causerie.lieu : '&nbsp;'}}</span></p>
+						<p><span class="label pull-left mr-2">{{'CAUSERIES.CREATOR' | translate}}</span><span class="">{{causerie.creator ? causerie.creator.fullname : '&nbsp;'}}</span></p>
+						<p><span class="label pull-left mr-2">{{'CAUSERIES.ANIMATOR' | translate}}</span><span class="">{{causerie.organisateur ? causerie.organisateur.fullname : '&nbsp;'}}</span></p>
+						<p><span class="label pull-left mr-2">{{'CAUSERIES.PARTICIPANTS' | translate}}</span><span class="">{{causerie.participants_count}}</span></p>
 					</div>
+
+					<div class="tf-divider mb-3">
+						<span></span>
+					</div>
+					<h3>{{'CAUSERIES.SUJET' | translate}}</h3>
+					<div class="box" style="flex:1">
+						<p class="text-justify">{{causerie.sujet}}</p>
+					</div>
+
 					<div class="tf-divider">
 						<span></span>
 					</div>
@@ -36,57 +53,92 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-6">
-				<div class="card">
-					<h3>{{'CAUSERIES.SUJET' | translate}}</h3>
-					<div class="box" style="flex:1">
-						<p class="text-justify">{{causerie.sujet}}</p>
+
+			<div class="col-md-4 d-flex flex-column">
+				<div class="row flex-1">
+					<div class="col-12 pb-2">
+						<div class="card">
+							<span class="card-editor">
+								<button mat-icon-button matTooltip="{{'ACTION.ADD_DOCUMENT' | translate}}" (click)="openAddImageModal()">
+									<mat-icon color="primary">add</mat-icon>
+								</button>
+							</span>
+							<h4>
+								{{'CAUSERIES.CARD.IMAGES' | translate}}
+							</h4>
+							<div class="box" style="flex:1">
+								<div class="picsum-img-wrapper pointer d-flex flex-wrap" *ngIf="causerie.images.length; else noImages">
+									<ng-container *ngFor="let image of causerie.images; let i = index">
+										<div class="img-card m-2 mr-3">
+											<img 
+												[src]="image.src | safe:'resourceUrl'" 
+												(click)="openModal(causerie.images, i); $event.stopPropagation()" 
+												[title]="image.libelle">
+											<button mat-icon-button matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteImage(image.id)">
+												<mat-icon color="primary">close</mat-icon>
+											</button>
+										</div>
+									</ng-container>
+								</div>
+								<ng-template #noImages>
+									<div class="text-center mt-4 font-italic">
+										{{'CAUSERIES.NOTIF.NO_IMAGE.TITLE' | translate}}
+									</div>
+								</ng-template>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row flex-1">
+					<div class="col-12">
+						<div class="card pb-2">
+							<span class="card-editor">
+								<button mat-icon-button matTooltip="{{'ACTION.ADD_DOCUMENT' | translate}}" (click)="openAddDocumentModal()">
+									<mat-icon color="primary">add</mat-icon>
+								</button>
+							</span>
+							<h4>
+								{{'CAUSERIES.CARD.DOCS' | translate}}
+							</h4>
+							<div class="box" style="flex:1">
+								<div class="picsum-img-wrapper d-flex flex-wrap" *ngIf="causerie.docs.length; else noDocument">
+									<ng-container *ngFor="let doc of causerie.docs; let i = index">
+										<div class="doc-card m-2 mr-3 pointer" matTooltip="{{doc.libelle}}" (click)="showDocument(doc)">
+											<img 
+												alt="doc" 
+												class="shdw-5" 
+												src="./assets/media/hse-svg/picto-file.svg">
+											<div class="mt-2">{{doc.libelle | truncate:15}}</div>
+											<button mat-icon-button matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteDocument(doc.id)">
+												<mat-icon color="primary">close</mat-icon>
+											</button>
+										</div>
+									</ng-container>
+								</div>
+								<ng-template #noDocument>
+									<div class="text-center mt-4 font-italic">
+										{{'CAUSERIES.NOTIF.NO_DOCUMENT.TITLE' | translate}}
+									</div>
+								</ng-template>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="row mt-4">
-			<div class="col-md-12">
+
+			<div class="col-md-4">
 				<div class="card">
 					<h3>
-						{{'CAUSERIES.PARTICIPANTS' | translate}} : 
-						<span class="blue">{{causerie.participants ? causerie.participants.length : 0}}</span>  
-						<button (click)="participate()" class="btn btn-primary btn-elevate pull-right" [disabled]="hasParticipate()">{{'CAUSERIES.ACTION.ADD_PARTICIPANT' | translate}}</button></h3>
+						{{'CAUSERIES.INSCRIPTIONS' | translate}}
+						<button (click)="participate()" class="btn btn-primary btn-elevate pull-right" *ngIf="!isUserOrganizer() && !hasParticipate()">{{'CAUSERIES.ACTION.ADD_PARTICIPANT' | translate}}</button>
+						<button (click)="editFeedBackParticipant()" class="btn btn-primary btn-elevate pull-right" *ngIf="!isUserOrganizer() && hasParticipate()">{{'CAUSERIES.ACTION.EDIT_FEEDBACK_PARTICIPANT' | translate}}</button>
+					</h3>
 					<div class="box box-chantiers " style="flex: 1;">
-						<div class="row mt-4" *ngIf="causerie.participants.length > 0; else	noParticipants">
-							<div class="col-md-12">
-								<div class="table-responsive">
-									<table mat-table [dataSource]="causerie.participants" class="table-sm">
-										<!-- prenom Column -->
-										<ng-container matColumnDef="prenom">
-											<th mat-header-cell *matHeaderCellDef>{{'COMMON.FIRSTNAME.TITLE' | translate}}</th>
-											<td mat-cell *matCellDef="let participant"> {{participant.prenom}} </td>
-										</ng-container>
-	
-										<!-- prenom Column -->
-										<ng-container matColumnDef="nom">
-											<th mat-header-cell *matHeaderCellDef>{{'COMMON.LASTNAME.TITLE' | translate}}</th>
-											<td mat-cell *matCellDef="let participant"> {{participant.nom}} </td>
-										</ng-container>
-	
-										<!-- email Column -->
-										<ng-container matColumnDef="email">
-											<th mat-header-cell *matHeaderCellDef>{{'COMMON.EMAIL.TITLE' | translate}}</th>
-											<td mat-cell *matCellDef="let participant"> {{participant.email}} </td>
-										</ng-container>
-	
-										<!-- retour_participant Column -->
-										<ng-container matColumnDef="retour_participant">
-											<th mat-header-cell *matHeaderCellDef class="text-center">{{'CAUSERIES.RETOUR_PARTICIPANT.TITLE' | translate}}</th>
-											<td mat-cell *matCellDef="let participant" class="text-center"> 
-												<mat-icon *ngIf="participant.pivot.retour_participant" container="body" triggers="mouseenter:mouseleave" [ngbPopover]="participant.pivot.retour_participant" popoverClass="big-popover" [popoverTitle]="('CAUSERIES.RETOUR_PARTICIPANT.TITLE' | translate)+' - '+(participant | fullName)">textsms</mat-icon>
-											</td>
-										</ng-container>
-	
-										<tr mat-header-row *matHeaderRowDef="displayedParticipantsColumns"></tr>
-										<tr mat-row class="highlight-row" *matRowDef="let row; columns: displayedParticipantsColumns;"></tr>
-										
-									</table>
+						<div class="chat-block" #scrollMe style="flex: 1;" *ngIf="causerie.participants.length > 0; else noParticipants">
+							<div class="row chat-row" *ngFor="let participant of causerie.participants">
+								<div class="card col-md-12">
+									<p class="text-left comment-title"><small>{{participant.fullname}}, {{participant.pivot.updated_at | date:'d MMM y, hh:mm'}}</small></p>
+									<p class="text-left">{{participant.pivot.retour_participant ? participant.pivot.retour_participant : 'Aucun retour sur la causerie'}}</p>
 								</div>
 							</div>
 						</div>
@@ -100,6 +152,6 @@
 
 <ng-template #noParticipants>
 	<p class="text-left">
-		{{'CAUSERIES.CARD.NO_PARTICIPANTS' | translate}}
+		{{'CAUSERIES.CARD.NO_INSCRIPTIONS' | translate}}
 	</p>
 </ng-template>

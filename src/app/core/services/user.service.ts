@@ -70,7 +70,9 @@ export class UserService extends HttpService{
   getPretEpi(_user: User){
 		return this.http.get<any>(`${this.baseUrl}/` + _user.id+'/epi');
 	}
-
+  getRevues(_user: User){
+    return this.http.get<any>(`${this.baseUrl}/` + _user.id+'/revues');
+  }
   getFormations(_user: User){
 		return this.http.get<any>(`${this.baseUrl}/` + _user.id+'/formations');
 	}
@@ -90,6 +92,13 @@ export class UserService extends HttpService{
   requestToRetakeLivretAccueil(user_id: number){
 		return this.http.put<any>(`${this.baseUrl}/` + user_id+'/livret-accueil/init', {});
 	}
+
+  saveDelegationSignatureDoc(user_id: number, datas) {
+    const httpHeaders = new HttpHeaders();
+    httpHeaders.set("Content-Type", "multipart/form-data");
+    
+    return this.http.post<JsonResponse<User>>(this.baseUrl+'/'+user_id+'/delegation-signature-doc', datas, { headers: httpHeaders });
+  }
 
 
 }

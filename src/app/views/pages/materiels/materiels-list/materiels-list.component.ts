@@ -33,7 +33,7 @@ export class MaterielsListComponent implements OnInit, AfterViewInit {
 	};
 	showFilters:Boolean = false;
 	displayedMaterielColumns = [
-		"vs_retard", "libelle", "numero_serie", "main_categorie",  "actual_user", "action", 
+		"vs_retard", "libelle", "numero_serie", "main_categorie",  "actual_user", "quantite_disponible", "action"
 	];
 	selectedMateriel: Materiel = null;
 
@@ -57,6 +57,7 @@ export class MaterielsListComponent implements OnInit, AfterViewInit {
 		try {
 			var res = await this.materielService.getAll(this.filter).toPromise();
 			this.materielsList = res.result.data;
+			console.log(this.materielsList);
 			this.pagination = {
 				...this.pagination,
 				total: this.materielsList.total,

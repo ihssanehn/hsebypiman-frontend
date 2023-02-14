@@ -107,6 +107,8 @@ export class ProfileUserEditComponent implements OnInit, OnDestroy {
 		  nom: [null, Validators.required],
 		  prenom: [null, Validators.required],
 		  email: [null, Validators.required],
+			fonction_autre: [null, Validators.required],
+			telephone: [null, Validators.required]
 		})
 		this.userForm.patchValue(this.user$);
 

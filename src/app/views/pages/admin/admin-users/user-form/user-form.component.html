@@ -57,6 +57,14 @@
 								</mat-form-field>
 
 								<mat-form-field class="col-xl-3">
+									<mat-label>{{'AUTH.INPUT.ENTITY' | translate}}</mat-label>
+									<input matInput class="form-control" type="text" name="entreprise_autre" formControlName="entreprise_autre" [required]="isFieldRequired('entreprise_autre')" placeholder="{{'ACTION.ENTER_HERE' | translate}}" />
+									<mat-error *ngIf="isControlHasError('entreprise_autre','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+
+								<mat-form-field class="col-xl-3">
 									<mat-label>{{'COMMON.PHONE.LABEL' | translate}}</mat-label>
 									<input matInput class="form-control" type="text" name="telephone" formControlName="telephone" [required]="isFieldRequired('telephone')" placeholder="{{'ACTION.ENTER_HERE' | translate}}" />
 									<mat-error *ngIf="isControlHasError('telephone','required')">
@@ -74,7 +82,7 @@
 
 	<div class="row">
 		<div class="col-12">
-			<div class="tf-heading tf-heading--md">| 1 {{'USERS.CARD.USER_ACCOUNT_INFOS.TITLE' | translate}}</div>
+			<div class="tf-heading tf-heading--md">| {{'USERS.CARD.USER_ACCOUNT_INFOS.TITLE' | translate}}</div>
 			<div class="row">
 				<div class="col-md-12">
 					<div class="tf-card-form">
@@ -100,7 +108,7 @@
 			</div>
 		</div>
 		<div class="col-12" *ngIf="userForm.get('is_virtual').value == 0">
-			<div class="tf-heading tf-heading--md">| 2 {{'USERS.CARD.EMPLOYEE_INFOS.TITLE' | translate}}</div>
+			<!-- <div class="tf-heading tf-heading--md">| 2 {{'USERS.CARD.EMPLOYEE_INFOS.TITLE' | translate}}</div> -->
 			<div class="row">
 				<div class="col-6">
 					<div class="tf-card-form">
@@ -116,12 +124,8 @@
 		
 							<mat-form-field class="col-xl-6">
 								<mat-label>{{'COMMON.FONCTION.LABEL' | translate}}</mat-label>
-								<mat-select class="form-control" placeholder="" formControlName="fonction_id" [required]="isFieldRequired('fonction_id')">
-									<mat-option *ngFor="let type of fonctions" [value]="type.id">
-										{{ type.libelle }}
-									</mat-option>
-								</mat-select>
-								<mat-error *ngIf="isControlHasError('fonction_id','required')">
+								<input matInput class="form-control" type="text" name="fonction_autre" formControlName="fonction_autre" [required]="isFieldRequired('fonction_autre')" placeholder="{{'ACTION.ENTER_HERE' | translate}}" />
+								<mat-error *ngIf="isControlHasError('fonction_autre','required')">
 									<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 								</mat-error>
 							</mat-form-field>

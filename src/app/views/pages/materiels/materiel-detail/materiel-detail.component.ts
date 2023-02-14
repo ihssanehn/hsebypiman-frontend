@@ -81,10 +81,14 @@ export class MaterielDetailComponent implements OnInit, OnDestroy {
 			var res = await this.materielService.get(materielId).toPromise();
 			this.materiel = res.result.data;
 			this.cdr.markForCheck();
-
 		} catch (error) {
 			console.error(error);
 		}
+	}
+
+	isCurrentUser(pretId: number) {
+		var currentPretId = this.materiel.actual_user.map(user => user.pivot.id);
+		return currentPretId.includes(pretId);
 	}
 
 	ngOnDestroy() {
@@ -152,14 +156,26 @@ export class MaterielDetailComponent implements OnInit, OnDestroy {
 	async updatePret(params){
 		try {
 			var res = await this.materielService.updatePret(this.materiel.id, params).toPromise();
-			this.materiel = res.result.data;
+			var data = res.result.data;
+
+			if(data) {
+				this.materiel = data;
+				Swal.fire({
+					icon: 'success',
+					title: this.translate.instant("MATERIELS.NOTIF.LOAN_UPDATED.TITLE"),
+					showConfirmButton: false,
+					timer: 1500
+				});
+			} else {
+				Swal.fire({
+					icon: 'error',
+					title: this.translate.instant("MATERIELS.NOTIF.MATERIAL_QUANTITY_NOT_AVAILABLE.TITLE"),
+					showConfirmButton: false,
+					timer: 1500
+				});
+			}
 			this.cdr.markForCheck();
-			Swal.fire({
-				icon: 'success',
-				title: this.translate.instant("MATERIELS.NOTIF.LOAN_UPDATED.TITLE"),
-				showConfirmButton: false,
-				timer: 1500
-			});
+
 		} catch (error) {
 			console.error(error);
 		}
@@ -168,14 +184,26 @@ export class MaterielDetailComponent implements OnInit, OnDestroy {
 	async assignUser(params){
 		try {
 			var res = await this.materielService.createPret(this.materiel.id, params).toPromise();
-			this.materiel = res.result.data;
+			var data = res.result.data;
+
+			if(data) {
+				this.materiel = data;
+				Swal.fire({
+					icon: 'success',
+					title: this.translate.instant("MATERIELS.NOTIF.LOAN_CREATED.TITLE"),
+					showConfirmButton: false,
+					timer: 1500
+				});
+			} else {
+				Swal.fire({
+					icon: 'error',
+					title: this.translate.instant("MATERIELS.NOTIF.MATERIAL_QUANTITY_NOT_AVAILABLE.TITLE"),
+					showConfirmButton: false,
+					timer: 1500
+				});
+			}
 			this.cdr.markForCheck();
-			Swal.fire({
-				icon: 'success',
-				title: this.translate.instant("MATERIELS.NOTIF.LOAN_CREATED.TITLE"),
-				showConfirmButton: false,
-				timer: 1500
-			});
+
 		} catch (error) {
 			console.error(error);
 		}

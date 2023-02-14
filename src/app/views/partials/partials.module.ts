@@ -192,6 +192,11 @@ import { LivretAccueilModalComponent } from './layout/modal/livret-accueil-modal
 import { RemonteeDetailModalComponent } from './layout/modal/remontee-detail-modal/remontee-detail-modal.component';
 import { RemonteeDetailBaseComponent } from './layout/remontees/details/remontee-detail-base/remontee-detail-base.component';
 import { UserHsePassportComponent } from './layout/users/user-hse-passport/user-hse-passport.component';
+import { ActionFormModalComponent } from './layout/modal/action-form-modal/action-form-modal.component';
+import { UploadDelSignatureDocModalComponent } from './layout/modal/upload-del-signature-doc-modal/upload-del-signature-doc-modal.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { FlashinfoReaderComponent } from './layout/flash-infos/flashinfo-reader/flashinfo-reader.component';
+import { FlashinfoEditorComponent } from './layout/flash-infos/flashinfo-editor/flashinfo-editor.component';
 
 
 
@@ -327,7 +332,11 @@ import { UserHsePassportComponent } from './layout/users/user-hse-passport/user-
 		RemonteeDetailModalComponent,
 		RemonteeDetailBaseComponent,
 		ParticipateCauserieModalComponent,
-		UserHsePassportComponent
+		UserHsePassportComponent,
+		ActionFormModalComponent,
+		UploadDelSignatureDocModalComponent,
+		FlashinfoReaderComponent,
+		FlashinfoEditorComponent
 
 	],
 	exports: [
@@ -460,7 +469,9 @@ import { UserHsePassportComponent } from './layout/users/user-hse-passport/user-
 		RemonteeDetailModalComponent,
 		RemonteeDetailBaseComponent,
 		ParticipateCauserieModalComponent,
-		UserHsePassportComponent
+		UserHsePassportComponent,
+		FlashinfoReaderComponent,
+		FlashinfoEditorComponent
 
 	],
 	imports: [
@@ -523,17 +534,17 @@ import { UserHsePassportComponent } from './layout/users/user-hse-passport/user-
 		FileUploadModule,
 		NgxPermissionsModule.forChild(),
 		NzUploadModule,
-		NzGridModule
+		NzGridModule,
+		CKEditorModule
 	],
 	entryComponents: [
 		AdminAddModalComponent,
 		PdpAdminAddModalComponent,
 		PretModalComponent,
-			RevisionModalComponent,
+		RevisionModalComponent,
 		ShowFlashInfoModalComponent,
 		AddDocModalComponent,
 		QuizModalComponent,
-		
 		AddPhotoProfilModalComponent,
 		AssignFormationModalComponent,
 		AssignEpiModalComponent,
@@ -542,7 +553,9 @@ import { UserHsePassportComponent } from './layout/users/user-hse-passport/user-
 		EditAccueilSecuModalComponent,
 		LivretAccueilModalComponent,
 		RemonteeDetailModalComponent,
-		ParticipateCauserieModalComponent
+		ParticipateCauserieModalComponent,
+		ActionFormModalComponent,
+		UploadDelSignatureDocModalComponent
 	],
 })
 export class PartialsModule {

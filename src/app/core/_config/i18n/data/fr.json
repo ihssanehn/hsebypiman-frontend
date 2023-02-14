@@ -5,6 +5,7 @@
 		"ADD_DOCUMENTS": "Ajouter des documents",
 		"ADD_PICTURE": "Ajouter une photo",
 		"ADD_PICTURES": "Ajouter des photos",
+		"ADD_FILES": "Ajouter des fichiers",
 		"ADD_SIGNER": "Ajouter un signataire",
 		"CANCEL": "Annuler",
 		"CLEAR": "Vider",
@@ -317,12 +318,16 @@
 	},
 	"CAUSERIES": {
 		"ACTION":{
-			"ADD_PARTICIPANT": "S'enregistrer"
+			"ADD_PARTICIPANT": "S'enregistrer",
+			"EDIT_FEEDBACK_PARTICIPANT": "Editer le retour",
+			"ENTER_HERE": "Saisir ici description, objectifs de la causerie, lien de la visio,…"
 		},
 		"LIBELLE":"Libelle",
 		"LIEU":"Lieu",
-		"ORGANISATEUR":"Organisateur",
+		"ANIMATOR":"Animateur",
 		"PARTICIPANTS":"Participants",
+		"INSCRIPTIONS":"Inscriptions",
+		"CREATOR": "Créateur",
 		"PARTICIPANTS_COUNT":{
 			"TITLE":"Nombre de participants", 
 			"SHORTTITLE":"Nbr de participants"
@@ -335,7 +340,10 @@
 		"SUJET":"Sujet",
 		"DATE":"Date",
 		"CARD": {
-			"NO_PARTICIPANTS":"Aucun participant"
+			"NO_PARTICIPANTS":"Aucun participant",
+			"NO_INSCRIPTIONS":"Aucune inscription",
+			"IMAGES":"Images associées",
+			"DOCS":"Documents associés"
 		},
 		"NOTIF": {
 			"CAUSERIE_CREATED": {
@@ -355,6 +363,29 @@
 			},
 			"LOADING": {
 				"TITLE": "Loading Entreprise"
+			},
+			"NO_IMAGE": {
+				"TITLE":"Aucune Image"
+			},
+			"NO_DOCUMENT": {
+				"TITLE":"Aucun document"
+			},
+			"IMAGE_DELETE_CONFIRMATION": {
+				"TITLE": "Vous allez supprimer cette image de façon définitive",
+				"LABEL": "Êtes-vous sûr de vouloir continuer ?"
+			},
+			"IMAGE_DELETED": {
+				"TITLE": "Image supprimée avec succès"
+			},
+			"DOC_DELETE_CONFIRMATION": {
+				"TITLE": "Vous allez supprimer ce document de façon définitive",
+				"LABEL": "Êtes-vous sûr de vouloir continuer ?"
+			},
+			"DOC_DELETED": {
+				"TITLE": "Document supprimé avec succès"
+			},
+			"DOCS_ADDED": {
+				"TITLE": "Documents ajoutés avec succès"
 			}
 		}
 	},
@@ -604,7 +635,8 @@
 			"NEW_PASSWORD": "Nouveau mot de passe",
 			"PASSWORD": "Mot de passe",
 			"USERNAME": "Nom d'utilisateur",
-			"ENTITY": "Entreprise"
+			"ENTITY": "Entreprise",
+			"MOBILE_PHONE_NUMBER": "Tél. mobile"
 		},
 		"LOGIN": {
 			"BUTTON": "Se Connecter",
@@ -618,9 +650,9 @@
 		},
 		"REQUEST_ACCESS": {
 			"DESC": "Demande de création de compte",
-			"SUCCESS": "Votre demande a bien été enregistrée.<br>Un mail vous sera envoyé dès validation par un administrateur.<br>En cas de problème, contacter le service HSE.",
+			"SUCCESS": "Demande enregistrée.<br><br>Votre mot de passe vous sera envoyé par mail dès validation par un administrateur.<br><br>En cas de problème, merci de contacter support-pds@piman-group.fr",
 			"TITLE": "Demander un <b>accès</b>",
-			"LABEL": "Salarié Piman : Demander un accès"
+			"LABEL": "Demander un accès"
 		},
 		"VALIDATION": {
 			"AGREEMENT_REQUIRED": "Vous devez accepter les termes et conditions",
@@ -930,6 +962,10 @@
 			"LABEL": "Adresse mail",
 			"TITLE": "Adresse mail"
 		},
+		"ENTITY": {
+			"LABEL": "Entité",
+			"TITLE": "Entité"
+		},
 		"FIRSTNAME": {
 			"LABEL": "Prénom",
 			"TITLE": "Prénom"
@@ -961,6 +997,10 @@
 			},
 			"NO_FILE_CHOSEN": {
 				"TITLE": "Aucun fichier choisi"
+			},
+			"UPLOADING": {
+				"SHORTTITLE": "Téléchargement",
+				"TITLE": "Veuillez patienter, téléchargement en cours"
 			}
 		},
 		"NO_DATA_FOUND": {
@@ -1114,6 +1154,9 @@
 		},
 		"CAUSERIES": {
 			"TITLE": "Causeries"
+		},
+		"ARCHIVED": {
+			"TITLE": "Archivé"
 		}
 	},
 	"EES": {
@@ -1285,6 +1328,9 @@
 		"TITLE": "Filtres"
 	},
 	"FLASHINFOS": {
+		"ACTIONS": {
+			"NEW": "Creer Flash info"
+		},
 		"CONTENT": {
 			"LABEL": "Contenu",
 			"SHORTTITLE": "Contenu",
@@ -1321,6 +1367,11 @@
 				"TITLE": "Le flash info a bien été supprimée"
 			}
 		},
+		"NEW": {
+			"LABEL": "Nouveau",
+			"SHORTTITLE": "Nouveau",
+			"TITLE": "Nouveau"
+		},
 		"ONTOP": {
 			"LABEL": "En une",
 			"SHORTTITLE": "En une",
@@ -1340,9 +1391,6 @@
 			"LABEL": "Visible",
 			"SHORTTITLE": "Visible",
 			"TITLE": "Visible"
-		},
-		"NEW": {
-			"SHORTBUTTON": "Creer Flash info"
 		}
 	},
 	"MATERIELS": {
@@ -1356,6 +1404,11 @@
 			"LABEL": "Utilisateur actuel",
 			"SHORTTITLE": "Utilisateur actuel",
 			"TITLE": "Utilisateur actuel"
+		},
+		"ACTUAL_USERS": {
+			"LABEL": "Utilisateurs actuel",
+			"SHORTTITLE": "Utilisateurs actuel",
+			"TITLE": "Utilisateurs actuel"
 		},
 		"ASSIGN_USER": {
 			"LABEL": "Nouvel utilisateur",
@@ -1492,6 +1545,16 @@
 			"SHORTTITLE": "Doit être controlé",
 			"TITLE": "Doit être controlé"
 		},
+		"HAS_ATEX": {
+			"LABEL": "ATEX",
+			"SHORTTITLE": "ATEX",
+			"TITLE": "ATEX"
+		},
+		"IS_AVAILABLE": {
+			"LABEL": "Disponible",
+			"SHORTTITLE": "Disponible",
+			"TITLE": "Disponible"
+		},
 		"IS_ACTIVE": {
 			"LABEL": "Actif",
 			"SHORTTITLE": "Actif",
@@ -1501,6 +1564,11 @@
 			"LABEL": "Voir le matériel inactif",
 			"SHORTITLE": "Matériel inactif",
 			"TITLE": "Matériel inactif"
+		},
+		"LATE_CHECK": {
+			"LABEL": "Contrôle en retard",
+			"SHORTITLE": "Contrôle en retard",
+			"TITLE": "Contrôle en retard"
 		},
 		"IS_STOCK_COMMUN": {
 			"LABEL": "Stock commun",
@@ -1527,6 +1595,11 @@
 			"SHORTTITLE": "Libellé",
 			"TITLE": "Libellé"
 		},
+		"LOAN_TYPE": {
+			"LABEL" : "Type d'affectation",
+			"LOAN" : "Prêt",
+			"IS_GIVEN": "Don"
+		},
 		"MAIN_CATEGORIE": {
 			"LABEL": "Type",
 			"SHORTTITLE": "Type",
@@ -1551,6 +1624,9 @@
 			},
 			"LOAN_UPDATED": {
 				"TITLE": "Prêt mis à jour avec succès"
+			},
+			"MATERIAL_QUANTITY_NOT_AVAILABLE": {
+				"TITLE": "Rupture de stock"
 			},
 			"MATERIEL_CREATED": {
 				"TITLE": "Matériel créé avec succès"
@@ -1594,10 +1670,25 @@
 			"SHORTTITLE": "utilisateurs",
 			"TITLE": "utilisateurs"
 		},
+		"ONE_USER": {
+			"LABEL": "1 utilisateur",
+			"SHORTTITLE": "1 utilisateur",
+			"TITLE": "1 utilisateur"
+		},
 		"PERSONNELS_COUNT": {
-			"LABEL": "Nombre d'utilisateurs",
-			"SHORTTITLE": "Nombre d'utilisateurs",
-			"TITLE": "Nombre d'utilisateurs"
+			"LABEL": "Nombre d'utilisateurs actuels",
+			"SHORTTITLE": "Nombre d'utilisateurs actuels",
+			"TITLE": "Nombre d'utilisateurs actuels"
+		},
+		"AVAILABLE_QUANTITY": {
+			"LABEL": "QTE Prêt / Dispo",
+			"SHORTTITLE": "Quantité disponible",
+			"TITLE": "Quantité disponible"
+		},
+		"MINIMAL_QUANTITY": {
+			"LABEL": "QTE mini",
+			"SHORTTITLE": "Quantité minimale",
+			"TITLE": "Quantité minimale"
 		},
 		"PERSONNELS_HISTORY": {
 			"LABEL": "historique des utilisateurs",
@@ -1639,6 +1730,21 @@
 			"LABEL": "Retard de visite",
 			"SHORTTITLE": "Retard",
 			"TITLE": "V.S en retard"
+		},
+		"SIZE": {
+			"LABEL": "Taille",
+			"SHORTTITLE": "Taille",
+			"TITLE": "Taille"
+		},
+		"CRITERIA": {
+			"LABEL": "Critères spécifiques",
+			"SHORTTITLE": "Critères spécifiques",
+			"TITLE": "Critères spécifiques"
+		},
+		"SUB_CATEGORY": {
+			"LABEL": "Sous catégorie",
+			"SHORTTITLE": "Sous catégorie",
+			"TITLE": "Sous catégorie"
 		}
 	},
 	"MENU": {
@@ -1684,7 +1790,8 @@
 				"VS_CHANTIER": "Visites sécurité Chantier",
 				"VS_EPI": "Visites sécurité EPI",
 				"VS_OUTILLAGE": "Visites sécurité Outillage",
-				"VS_VEHICULE": "Visites sécurité Véhicule"
+				"VS_VEHICULE": "Visites sécurité Véhicule",
+				"VS_REVUES": "Revues sécurité"
 			}
 		},
 		"SUB_ANALYSERISQUE": {
@@ -1892,6 +1999,12 @@
 			"ASSIGNED_ACTION": {
 				"TITLE": "Actions à attribuer"
 			},
+			"FINISHED_ACTION": {
+				"TITLE": "Actions terminées"
+			},
+			"INPROGRESS_ACTION": {
+				"TITLE": "Actions en cours"
+			},
 			"DELAY_RATE": {
 				"TITLE": "Taux de retard"
 			},
@@ -1938,7 +2051,7 @@
 				"TITLE": "L'action a été abandonnée avec succès"
 			},
 			"ACTION_CREATED": {
-				"TITLE": "Action créé avec succès"
+				"TITLE": "Action créée avec succès"
 			},
 			"ACTION_UPDATED": {
 				"TITLE": "Action mise à jour avec succès"
@@ -2039,7 +2152,7 @@
 				"TITLE": "Cette remontée n'a été attribuée à aucun chantier"
 			},
 			"REMONTEE_DELETE_CONFIRMATION": {
-				"TITLE": "Vous allez supprimer cette remontée de façon définitive",
+				"TITLE": "Vous allez supprimer cette remontée QHSE ainsi que le plan d'action associé de façon définitive",
 				"LABEL": "Êtes-vous sûr de vouloir continuer ?"
 			},
 			"DOC_DELETE_CONFIRMATION": {
@@ -2477,9 +2590,14 @@
 			"TITLE": "Numéro d'identification du véhicule"
 		},
 		"ENTREPRISE": {
-			"LABEL": "Entreprise visitée",
+			"LABEL": "Entreprise",
 			"SHORTTITLE": "Nom",
-			"TITLE": "Entreprise visitée"
+			"TITLE": "Entreprise"
+		},
+		"ENVIRONMENT": {
+			"LABEL": "Environnement",
+			"SHORTTITLE": "Nom",
+			"TITLE": "Environnement"
 		},
 		"EXTERNAL_VISIT": {
 			"TITLE": "Visite Externe"
@@ -2498,6 +2616,11 @@
 		"KO_UNSOLVED_COUNT": {
 			"SHORTTITLE": "NC à traiter",
 			"TITLE": "Nombre de non conformité à traiter"
+		},
+		"LIEU_MISSION": {
+			"LABEL": "Lieu de la mission",
+			"SHORTTITLE": "Lieu",
+			"TITLE": "Lieu de la mission"
 		},
 		"MATERIEL": {
 			"LABEL": "Matériel visité",
@@ -2631,6 +2754,9 @@
 		"VS_OUTILLAGE": {
 			"TITLE": "Visite Outillage"
 		},
+		"VS_REVUES":{
+			"TITLE": "Revue Sécurité"
+		},
 		"VS_VEHICULE": {
 			"TITLE": "Visite Véhicule"
 		}
@@ -2705,6 +2831,9 @@
 			"TRAINING": {
 				"TITLE": "Formations",
 				"TRAINING_MONITORING": "Suivis des formations"
+			},
+			"DELEGATION_SIGNATURE": {
+				"TITLE": "Délégation de signature"
 			}
 		},
 		"PERIOD": {

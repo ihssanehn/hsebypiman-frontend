@@ -7,30 +7,47 @@
 		</div>
 		<div class="tf-portlet__head-toolbar">
 			<button class="pull-right btn btn-sm btn-primary" *ngxPermissionsOnly="['ROOT', 'ADMIN']"
-					routerLink="/admin/flash-infos/add">{{'FLASHINFOS.NEW.SHORTBUTTON' | translate}}</button>
+					routerLink="/admin/flash-infos/add">{{'FLASHINFOS.ACTIONS.NEW' | translate}}</button>
 		</div>
 	</div>
 	<tf-portlet-body [class]="'tf-portlet__body--fit'" style="padding: 2em; background:#f7f7ff">
-		<div class="row" *ngIf="flashOnTop || oldFlashList?.length > 0; else noFlashInfo">
-			<div class="col-12 pointer" *ngIf="flashOnTop" (click)="openFlashInfoModal(flashOnTop.id)">
-				<div class="flash-content">
-					<h4>{{'FLASHINFOS.ONTOP.TITLE' | translate}}</h4>
-					<div [innerHtml]="flashOnTop.content"></div>
-				</div>
-			</div>
-			<div class="col-12 mt-4">
-				<div class="flash-content">
-					<h4>{{'FLASHINFOS.RECENTLY.TITLE' | translate}}</h4>
-					<div *ngFor="let flash of oldFlashList" class="pointer" (click)="openFlashInfoModal(flash.id)">
-						<p>{{flash.title}}</p>
+		<div class="row" *ngIf="flashinfosLoaded; else loading">
+			<ng-container *ngIf="(flashOnTop || lastFlash || oldFlashList.length > 0);else noFlashInfo">
+				<div class="col-12 pointer mb-4" *ngIf="flashOnTop" (click)="openFlashInfoModal(flashOnTop.id)">
+					<div class="flash-content">
+						<h4>{{'FLASHINFOS.ONTOP.TITLE' | translate}}</h4>
+						<tf-flashinfo-reader [data]="flashOnTop.content"></tf-flashinfo-reader>
 					</div>
 				</div>
-			</div>
+	
+				<div class="col-12 pointer mb-4" *ngIf="lastFlash" (click)="openFlashInfoModal(lastFlash.id)">
+					<div class="flash-content">
+						<h4>{{'FLASHINFOS.NEW.TITLE' | translate}}</h4>
+						<tf-flashinfo-reader [data]="lastFlash.content"></tf-flashinfo-reader>
+					</div>
+				</div>
+	
+				<div class="col-12">
+					<div class="flash-content" *ngIf="oldFlashList?.length > 0">
+						<h4>{{'FLASHINFOS.RECENTLY.TITLE' | translate}}</h4>
+						<div *ngFor="let flash of oldFlashList" class="pointer" (click)="openFlashInfoModal(flash.id)">
+							<p>{{flash.title}}</p>
+						</div>
+					</div>
+				</div>
+			</ng-container>
 		</div>
 	</tf-portlet-body>
 </tf-portlet>
+
 <ng-template #noFlashInfo>
-	<div class="text-center mt-4 font-italic">
+	<div class="col-12 text-center mt-4 font-italic">
 		{{'FLASHINFOS.NOTIF.NO_FLASH' | translate}}
+	</div>
+</ng-template>
+
+<ng-template #loading>
+	<div class="loading-card">
+		<mat-spinner color="accent" diameter="30"></mat-spinner>
 	</div>
 </ng-template>
