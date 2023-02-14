@@ -1595,6 +1595,11 @@
 			"SHORTTITLE": "Libellé",
 			"TITLE": "Libellé"
 		},
+		"LOAN_TYPE": {
+			"LABEL" : "Type d'affectation",
+			"LOAN" : "Prêt",
+			"IS_GIVEN": "Don"
+		},
 		"MAIN_CATEGORIE": {
 			"LABEL": "Type",
 			"SHORTTITLE": "Type",
@@ -1679,6 +1684,11 @@
 			"LABEL": "QTE Prêt / Dispo",
 			"SHORTTITLE": "Quantité disponible",
 			"TITLE": "Quantité disponible"
+		},
+		"MINIMAL_QUANTITY": {
+			"LABEL": "QTE mini",
+			"SHORTTITLE": "Quantité minimale",
+			"TITLE": "Quantité minimale"
 		},
 		"PERSONNELS_HISTORY": {
 			"LABEL": "historique des utilisateurs",

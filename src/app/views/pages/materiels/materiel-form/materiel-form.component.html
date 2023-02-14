@@ -74,6 +74,13 @@
 									</mat-error>
 								</mat-form-field>
 								<mat-form-field class="col-xl-3">
+									<mat-label>{{'MATERIELS.MINIMAL_QUANTITY.TITLE' | translate}}</mat-label>
+									<input class="form-control" matInput type="number" name="stock_min" formControlName="stock_min" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('stock_min')" />
+									<mat-error *ngIf="isControlHasError('stock_min','required')">
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+								<mat-form-field class="col-xl-3">
 									<mat-label>{{'MATERIELS.NUMERO_SERIE.LABEL' | translate}}</mat-label>
 									<input class="form-control" matInput type="text" name="numero_serie" formControlName="numero_serie" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('numero_serie')" />
 									<mat-error *ngIf="isControlHasError('numero_serie','required')">

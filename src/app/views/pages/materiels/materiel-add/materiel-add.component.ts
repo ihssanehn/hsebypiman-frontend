@@ -64,6 +64,7 @@ export class MaterielAddComponent implements OnInit {
       has_atex: [0],
       etat: [0],
       stock_disponible: [1],
+      stock_min: [null],
       documentsToUpload:[null, null],
     });
 
