@@ -24,7 +24,7 @@ export class MaterielFormComponent implements OnInit {
   criteriaLoaded: boolean = false;
   subcategoryDisplayed: boolean = false;
   itemsToHandle: string[] = ['EPI_TETE', 'EPI_BRUIT', 'EPI_RESP', 'EPI_GANTS', 'EPI_CHAUSS'];
-  accept: string = '.png, .bmp, .jpeg, .jpg, .gif, .tif, .heic'
+  accept: string = '.png, .bmp, .jpeg, .jpg, .gif, .tif, .doc, .docx, .pdf';
   
   @Input() materielForm: FormGroup;
   @Input() formStatus: FormStatus;

@@ -303,6 +303,7 @@ export class ActionDetailComponent implements OnInit, OnDestroy {
 			case 'App\\Models\\VsEpi': var path = 'epis';break;
 			case 'App\\Models\\VsOutillage': var path = 'outillages';break;
 			case 'App\\Models\\VsVehicule': var path = 'vehicules';break;
+			case 'App\\Models\\VsRevue': var path = 'revues';break;
 		}
 
 		this.router.navigateByUrl('visites-securite/'+path+'/detail/'+id);

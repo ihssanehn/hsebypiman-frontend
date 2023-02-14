@@ -88,7 +88,7 @@ export class MaterielAddComponent implements OnInit {
           this.cdr.markForCheck();
           var materiel = res.result.data;
           if(this.uploader.queue.length > 0){
-            this.saveDocuments(materiel.id)
+            this.saveDocuments(materiel.id);
           }
           Swal.fire({
             icon: 'success',

@@ -304,6 +304,44 @@
                         </div>
                     </div>
                 </mat-tab>
+                <mat-tab label="REVUES SECURITE">
+                    <!-- Formations -->
+                    <div class="row h-100">
+                        <div class="col-12 h-100">
+                            <div class="card" style="height: 605px">
+                                <div class="card-title">
+                                    <h5><b>Revues sécurité</b> </h5>
+                                    <span class="text-right"><b>Moyenne : </b> {{getMoyenneRevue()}} / 100</span>
+                                </div>
+                                <div class="tf-divider">
+                                    <span></span>
+                                </div>
+                                <div class="box" style="overflow-y: auto; overflow-x: hidden">
+                                    <table class="table table-revues">
+                                        <thead>
+                                            <tr>
+                                                <th>Code</th>
+                                                <th class="text-center">Nombre de OK</th>
+                                                <th class="text-center">Nombre de KO</th>
+                                                <th class="text-center">Note</th>
+                                                <th class="text-center"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let revue of revues">
+                                                <td>{{revue.code}}</td>
+                                                <td class="text-center">{{revue.oks_count}}</td>
+                                                <td class="text-center">{{revue.kos_count}}</td>
+                                                <td class="text-center">{{revue.note}} / 100</td>
+                                                <td><i class="fa fa-eye text-primary pointer" (click)="goToDetailRevue(revue.id)"></i></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
             </mat-tab-group>
         </div>
 

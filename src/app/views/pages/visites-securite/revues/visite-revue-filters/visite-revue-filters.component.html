@@ -1,0 +1,58 @@
+<div class="col-md-12 tf-form">
+	<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
+		<tf-portlet-body class="tf-portlet__body--fit card-filters px-5 pt-4 pb-3" >
+			<form novalidate [formGroup]="filterForm">
+				<div class="row">
+					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
+						<mat-label>{{'VISITES.VISITED.TITLE' | translate}}
+						</mat-label>
+						<mat-select class="form-control" formControlName="personnel_id" name="personnel_id">
+							<mat-option *ngFor="let user of users" [value]="user.id">
+								{{user.trigramme}} - {{user.fullname}}
+							</mat-option>
+						</mat-select>
+						<button mat-button *ngIf="formHasValue('personnel_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('personnel_id'); $event.stopPropagation()">
+							<mat-icon>clear</mat-icon>
+						</button>
+					</mat-form-field>
+					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
+						<mat-label>{{'VISITES.TYPE.TITLE' | translate}}</mat-label>
+						<mat-select class="form-control" formControlName="type_id" name="type_id">
+							<mat-option>{{'FILTER.SEARCH_ALL' | translate}}</mat-option>
+							<mat-option *ngFor="let type of types" [value]="type.id">
+								{{type.libelle}}
+							</mat-option>
+						</mat-select>
+						<button mat-button *ngIf="formHasValue('type_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('type_id'); $event.stopPropagation()">
+							<mat-icon>clear</mat-icon>
+						</button>
+					</mat-form-field>
+					<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12 mat-filter-no-head">
+						<mat-label>{{'VISITES.REDACTEUR.TITLE' | translate}}
+						</mat-label>
+						<mat-select class="form-control" formControlName="redacteur_id" name="redacteur_id">
+							<mat-option *ngFor="let user of users" [value]="user.id">
+								{{user.trigramme}} - {{user.fullname}}
+							</mat-option>
+						</mat-select>
+						<button mat-button *ngIf="formHasValue('redacteur_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('redacteur_id'); $event.stopPropagation()">
+							<mat-icon>clear</mat-icon>
+						</button>
+					</mat-form-field>
+									
+					<div class="col-xl-6 col-md-6 col-sm-6 col-xs-12">
+						<h6>{{'VISITES.DATE_VISITE.TITLE' | translate}}</h6>
+						<mat-form-field class="col-md-6 col-xl-6">
+							<mat-label>{{'COMMON.DATE_RANGE.BETWEEN.TITLE' | translate}} :</mat-label>
+							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_visite_start" placeholder="DD/MM/YYYY">
+						</mat-form-field>
+						<mat-form-field class="col-md-6 col-xl-6">
+							<mat-label>{{'COMMON.DATE_RANGE.AND.TITLE' | translate}} :</mat-label>
+							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_visite_end" placeholder="DD/MM/YYYY">
+						</mat-form-field>
+					</div>
+				</div>
+			</form>
+		</tf-portlet-body>
+	</tf-portlet>
+</div>

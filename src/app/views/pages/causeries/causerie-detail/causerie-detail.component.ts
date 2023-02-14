@@ -221,7 +221,7 @@ export class CauserieDetailComponent implements OnInit, OnDestroy {
 	}
 
 	isUserOrganizer() {
-		return this.authUser.id == this.causerie.organisateur.id;
+		return this.authUser.id == this.causerie.organisateur.id || this.authUser.id == this.causerie.creator_id;
 	}
 
 	openAddImageModal(){
