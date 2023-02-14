@@ -70,7 +70,9 @@ export class UserService extends HttpService{
   getPretEpi(_user: User){
 		return this.http.get<any>(`${this.baseUrl}/` + _user.id+'/epi');
 	}
-
+  getRevues(_user: User){
+    return this.http.get<any>(`${this.baseUrl}/` + _user.id+'/revues');
+  }
   getFormations(_user: User){
 		return this.http.get<any>(`${this.baseUrl}/` + _user.id+'/formations');
 	}

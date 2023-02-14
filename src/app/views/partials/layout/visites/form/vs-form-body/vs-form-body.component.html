@@ -22,7 +22,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="row" *ngIf="etats && model && model != 'VsChantier'">
+	<div class="row" *ngIf="etats && model && model != 'VsChantier' && model != 'VsRevue'">
 		<mat-form-field class="col-xl-3 col-md-3 col-sm-6 col-xs-12" *ngIf="origin == 'add'; else showEtat">
 			<mat-label>{{'VISITES.ETAT.TITLE' | translate}}
 			</mat-label>

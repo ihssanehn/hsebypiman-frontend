@@ -19,6 +19,8 @@ import { NgxMaskModule } from 'ngx-mask';
 
 import {PretModalComponent} from '@app/views/partials/layout';
 import {RevisionModalComponent} from '@app/views/partials/layout';
+import { FileUploadModule } from 'ng2-file-upload';
+
 // Material
 import {
 	MatInputModule,
@@ -48,7 +50,7 @@ import {
 	MatTooltipModule,MAT_DATE_LOCALE, 
 	MatSlideToggleModule,
 	MAT_DATE_FORMATS,
-	DateAdapter
+	DateAdapter,
 } from '@angular/material';
 import { 
 	NzTableModule, 
@@ -208,6 +210,7 @@ const routes: Routes = [
 		NgbTooltipModule,
 		NgbPopoverModule,
 		NgxMaskModule,
+		FileUploadModule,
 		
 		NzTableModule, 
 		NzInputModule, 

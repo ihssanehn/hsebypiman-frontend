@@ -1,9 +1,11 @@
 <!-- begin: Header -->
+<div style="width: 100%; background: yellow; color: black; text-transform: uppercase; font-weight: bolder; font-size:1.5em; text-align: center;">
+	environnement demo GYMA
+</div>
 <div tfHeader #tfHeader class="tf-header tf-header--fixed" [ngClass]="htmlClassService.getClasses('header', true)" id="tf_header">
 	<ngb-progressbar class="tf-loading-bar" *ngIf="(loader.progress$|async) > 0" [value]="loader.progress$|async" height="3px"></ngb-progressbar>
 	
 	<div class="tf-container" [ngClass]="{'tf-container--fluid': fluid}" >
-		
 		<!-- begin:: Brand -->
 		<tf-brand></tf-brand>
 		<!-- end:: Brand -->
