@@ -561,9 +561,7 @@ export class MenuConfig {
 					alignment: 'left',
 					page: '/causeries/add',
 					translate: 'MENU.BTN.NEWCAUSERIE',
-					permissionOnly: ['ROOT', 'ADMIN']
 				},
-
 				items: [
 					// {
 					// 	icon: 'dashboard',
