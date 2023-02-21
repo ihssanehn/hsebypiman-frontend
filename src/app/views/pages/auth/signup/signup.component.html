@@ -31,7 +31,7 @@
                     </mat-form-field>
                 </div>
 
-                <ng-container *ngIf="!signupForm.controls['email'].invalid">
+                <ng-container *ngIf="loadPimanGroup || loadDemoGroup">
                     
                     <div class="tf-login__divider"><div class="tf-divider"><span></span></div></div>
 
@@ -63,7 +63,7 @@
 
                     <!-- IF EMAIL HAS @piman-group.fr -->
 
-                    <ng-container *ngIf="isPimanEmail(signupForm.controls['email'].value)">   
+                    <ng-container *ngIf="loadPimanGroup">   
                         <!-- Entity_id -->
                         <div class="form-group">
                             <mat-form-field>
@@ -98,7 +98,7 @@
                     </ng-container>
 
                     <!-- IF EMAIL DOENSNT HAVE @piman-group.fr -->
-                    <ng-container *ngIf="!isPimanEmail(signupForm.controls['email'].value)">   
+                    <ng-container *ngIf="loadDemoGroup">   
                         
                         <!-- Entreprise -->
                         <div class="form-group">

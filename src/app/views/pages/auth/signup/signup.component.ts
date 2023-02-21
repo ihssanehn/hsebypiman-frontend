@@ -3,7 +3,7 @@ import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewEncapsulation } fr
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 // RxJS
-import { finalize, takeUntil, tap, debounceTime } from 'rxjs/operators';
+import { finalize, takeUntil, tap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 // Translate
 import { TranslateService } from '@ngx-translate/core';
@@ -29,6 +29,8 @@ export class SignupComponent implements OnInit {
 	notPimanError:boolean = false;
   entities: Type[];
   buList: Type[];
+	loadPimanGroup: boolean = false;
+	loadDemoGroup: boolean = false;
   entitiesLoaded: boolean = false;
   buLoaded: boolean = false;
 
@@ -124,43 +126,75 @@ export class SignupComponent implements OnInit {
 		const telephone = this.signupForm.get('telephone') as FormControl;
 
 		email.valueChanges.pipe(
-      debounceTime(200)
+      debounceTime(300),
+			distinctUntilChanged()
 		).subscribe(value=>{
-			if(this.signupForm.controls['email'].invalid) return;
-
-			if(this.isPimanEmail(value)){
-
-				localStorage.setItem(environment.entity, 'piman');
-				this.getEntities();
-    		this.getBu();
-				this.cdr.markForCheck();
-
-				entity_id.enable();
-				entity_id.setValidators([Validators.required]);
-				bu_id.enable();
-				bu_id.setValidators([Validators.required]);
-
-				entreprise_autre.disable();
-				entreprise_autre.setValidators([]);
-				fonction_autre.disable();
-				telephone.disable();
 			
-
-			}else{
-
-				entreprise_autre.enable();
-				entreprise_autre.setValidators([Validators.required]);
-				fonction_autre.enable();
-				telephone.enable();
-
+			if(this.signupForm.controls['email'].invalid){
 				entity_id.disable();
 				entity_id.setValidators([]);
 				bu_id.disable();
 				bu_id.setValidators([]);
+				entreprise_autre.disable();
+				entreprise_autre.setValidators([]);
+				fonction_autre.disable();
+				telephone.disable();
+				entity_id.setValue(null);
+				bu_id.setValue(null);
+				entreprise_autre.setValue(null);
+				fonction_autre.setValue(null);
+				telephone.setValue(null);
 
-				localStorage.setItem(environment.entity, 'demo');
+				this.loadPimanGroup = false;
+				this.loadDemoGroup = false;
 
+				this.signupForm.updateValueAndValidity();
+				
+			}else{
+				if(this.isPimanEmail(value)){
+
+					localStorage.setItem(environment.entity, 'piman');
+					
+					this.getEntities();
+					this.getBu();
+					this.cdr.markForCheck();
+					
+					entity_id.enable();
+					entity_id.setValidators([Validators.required]);
+					bu_id.enable();
+					bu_id.setValidators([Validators.required]);
+					
+					entreprise_autre.disable();
+					entreprise_autre.setValidators([]);
+					fonction_autre.disable();
+					telephone.disable();
+					
+					this.loadPimanGroup = true;
+					this.loadDemoGroup = false;
+	
+				}else{
+	
+					localStorage.setItem(environment.entity, 'demo');
+	
+					entreprise_autre.enable();
+					entreprise_autre.setValidators([Validators.required]);
+					fonction_autre.enable();
+					telephone.enable();
+	
+					entity_id.disable();
+					entity_id.setValidators([]);
+					bu_id.disable();
+					bu_id.setValidators([]);
+	
+	
+	
+					this.loadPimanGroup = false;
+					this.loadDemoGroup = true;
+	
+				}
 			}
+
+			
 			this.signupForm.updateValueAndValidity();
 		})
 
@@ -180,7 +214,10 @@ export class SignupComponent implements OnInit {
   }
 
 
-	isPimanEmail = (email)=>email.includes('@piman-group.fr')
+	isPimanEmail(email){
+		console.log(email.includes('piman'));
+	 return email.includes('piman')	
+	}
 
 	/**
 	 * Form Submit
