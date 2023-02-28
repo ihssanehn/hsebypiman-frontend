@@ -325,4 +325,29 @@ export class MaterielDetailComponent implements OnInit, OnDestroy {
       }
     })
 	}
+
+	deletePretMateriel(pret_id){
+		Swal.fire({
+      icon: 'warning',
+      title: this.translate.instant("MATERIELS.NOTIF.DELETE_PRET_CONFIRMATION.TITLE"),
+      text: this.translate.instant("MATERIELS.NOTIF.DELETE_PRET_CONFIRMATION.LABEL"),
+      showConfirmButton: true,
+      showCancelButton: true,
+      cancelButtonText: this.translate.instant("ACTION.CANCEL"),
+      confirmButtonText: this.translate.instant("ACTION.VALIDATE"),
+    }).then(async response => {
+      if (response.value) {
+        this.materielService.deletePret(pret_id).toPromise().then(res=>{
+          this.getMateriel(this.materiel.id);
+          Swal.fire({
+            icon: 'success',
+            title: this.translate.instant("MATERIELS.NOTIF.PRET_DELETED.DONE"),
+            showConfirmButton: false,
+            timer: 1500,  
+          })
+          this.cdr.markForCheck();
+        })
+      }
+    })
+	}
 }

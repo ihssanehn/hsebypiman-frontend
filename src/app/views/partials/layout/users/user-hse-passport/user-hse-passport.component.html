@@ -205,7 +205,7 @@
                         <div class="col-12 h-100">
                             <div class="card" style="height: 605px">
                                 <div class="card-title">
-                                    <h5><b>Prêt EPI</b></h5>
+                                    <h5><b>Prêt / Don EPI</b></h5>
                                     <span>
                                         <button mat-icon-button color="info" matTooltip="Ajouter un prêt EPI" (click)="showAssignEpiModal()" *ngxPermissionsOnly="['ROOT', 'ADMIN', 'MANAGER']">
                                             <mat-icon>add</mat-icon>
@@ -224,7 +224,8 @@
                                                     <thead>
                                                         <tr>
                                                             <th>Réf.</th>
-                                                            <th class="text-center">Date de prêt</th>
+                                                            <th class="text-center">Type prêt / don</th>
+                                                            <th class="text-center">Date de prêt / don</th>
                                                             <th class="text-center">Date de remise</th>
                                                             <th class="text-center"></th>
                                                         </tr>
@@ -232,6 +233,7 @@
                                                     <tbody>
                                                         <tr *ngFor="let epi of item.value">
                                                             <td>{{epi.numero_serie}}</td>
+                                                            <td class="text-center">{{epi.pivot.is_given ? 'don' : 'pret'}}</td>
                                                             <td class="text-center">{{epi.pivot.date_pret ? (epi.pivot.date_pret | date:'dd/MM/yyyy') : '-'}}</td>
                                                             <td class="text-center">{{epi.pivot.date_retour ? (epi.pivot.date_retour | date:'dd/MM/yyyy') : '-'}}</td>
                                                             <td class="text-center">

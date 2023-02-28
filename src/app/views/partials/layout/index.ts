@@ -115,6 +115,5 @@ export { AddPhotoProfilModalComponent } from './users/add-photo-profil-modal/add
 export { AssignFormationModalComponent } from './users/assign-formation-modal/assign-formation-modal.component';
 export { AssignEpiModalComponent } from './users/assign-epi-modal/assign-epi-modal.component';
 export { ParticipateCauserieModalComponent } from './modal/participate-causerie-modal/participate-causerie-modal.component';
-
-
+export { AddUsersModalComponent } from './modal/add-users-modal/add-users-modal.component';
 

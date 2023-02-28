@@ -92,7 +92,7 @@ export class VisiteRevueDetailComponent implements OnInit, OnDestroy {
 			'id': [{value: null, disabled: true}],
 			'code': [{value:null, disabled:true}],
 			'salarie_id': [{value: null, disabled: true}],
-			'entreprise': [{value: null, disabled: true}],
+			'entreprise_id': [{value: null, disabled: true}],
 			'environnement': [{value: null, disabled: true}],
 			'environnement_autre': [{value: null, disabled: true}],
 			'lieu_mission': [{value: null, disabled: true}],

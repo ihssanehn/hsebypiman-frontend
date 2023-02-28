@@ -318,7 +318,8 @@
 	},
 	"CAUSERIES": {
 		"ACTION":{
-			"ADD_PARTICIPANT": "S'enregistrer",
+			"ADD_PARTICIPANTS": "Enregistrer des participants",
+			"ADD_SELF_AS_PARTICIPANT": "S'enregistrer",
 			"EDIT_FEEDBACK_PARTICIPANT": "Editer le retour",
 			"ENTER_HERE": "Saisir ici description, objectifs de la causerie, lien de la visio,…"
 		},
@@ -361,6 +362,10 @@
 				"SHORTTITLE": "La causerie a bien été supprimé",
 				"TITLE": "La causerie a bien été supprimé"
 			},
+			"DELETE_PARTICIPANT_CONFIRMATION":{
+				"TITLE": "Vous allez supprimer ce participant de façon définitive",
+				"LABEL": "Êtes-vous sûr de vouloir continuer ?"
+			},
 			"LOADING": {
 				"TITLE": "Loading Entreprise"
 			},
@@ -369,6 +374,12 @@
 			},
 			"NO_DOCUMENT": {
 				"TITLE":"Aucun document"
+			},
+			"PARTICIPANT_DELETED":{
+				"DONE": "Le participant a bien été supprimé"
+			},
+			"PARTICIPANTS_ADDED":{
+				"DONE":"Les participants on bien été ajoutés"
 			},
 			"IMAGE_DELETE_CONFIRMATION": {
 				"TITLE": "Vous allez supprimer cette image de façon définitive",
@@ -1255,7 +1266,7 @@
 				"TITLE": "Entreprise créée avec succès"
 			},
 			"COMPANY_TYPE_ARCHIVED": {
-				"TITLE": "Type du client archivé avec succès"
+				"TITLE": "Type de client archivé avec succès"
 			},
 			"COMPANY_UPDATED": {
 				"TITLE": "Entreprise mise à jour avec succès"
@@ -1286,10 +1297,10 @@
 			"TITLE": "Raison sociale"
 		},
 		"TYPE": {
-			"LABEL": "Type du client",
+			"LABEL": "Type de client",
 			"PLACEHOLDER": "Saisir ici...",
 			"SHORTTITLE": "Type",
-			"TITLE": "Type du client"
+			"TITLE": "Type de client"
 		}
 	},
 	"EPIS": {
@@ -1398,7 +1409,7 @@
 			"ADD_MATERIAL_TYPE": "Ajouter un type de matériel",
 			"ASSIGN_MATERIEL": "Assigner le matériel",
 			"MODIFY_LOAN": "modifier le prêt",
-			"RETURN-MATERIEL": "Retourner le matériel"
+			"RETURN_MATERIEL": "Retourner le matériel"
 		},
 		"ACTUAL_USER": {
 			"LABEL": "Utilisateur actuel",
@@ -1642,6 +1653,13 @@
 			},
 			"NOTHING_FOUND": {
 				"TITLE": "Aucun matériel ne correspond aux critères de recherche."
+			},
+			"DELETE_PRET_CONFIRMATION":{
+				"TITLE": "Ce prêt sera supprimé de façon définitive.",
+				"LABEL": "Êtes-vous sûr de vouloir continuer ?"
+			},
+			"PRET_DELETED":{
+				"DONE": "Le prêt a bien été supprimé"
 			},
 			"LATE_CONTROLE":{
 				"TITLE": "Contrôle en retard"
