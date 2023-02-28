@@ -9,7 +9,7 @@ export class Revue {
     redacteur_id?:Number;
     etat_id?:Number;
     etat?:Etat;
-    entreprise?:String;
+    entreprise_id?:Number;
     lieu_mission?:String;
     environnement?:String;
     environnement_autre?:String;

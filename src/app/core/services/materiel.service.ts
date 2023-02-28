@@ -60,6 +60,9 @@ export class MaterielService extends HttpService{
     updatePret(materiel_id, params){
         return this.http.put<JsonResponse<Materiel>>(this.baseUrl+'/'+materiel_id+'/pret/update', params);
     }
+    deletePret(pret_id){
+        return this.http.delete<JsonResponse<Materiel>>(this.baseUrl+'/pret/'+pret_id+'/delete');
+    }
     getStats(params){
         return this.http.post<JsonResponse<any>>(this.baseUrl+'/stats', params);
     }

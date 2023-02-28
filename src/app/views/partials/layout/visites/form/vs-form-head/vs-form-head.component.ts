@@ -59,8 +59,12 @@ export class VsFormHeadComponent implements OnInit {
       this.redacteur = this.currentUser;
     }
     if(this.model == 'VsChantier'){
-      this.getEntreprises();
+      this.getChantierEntreprises();
       this.setDynamicEntreprise();
+    }
+    if(this.model == 'VsRevue'){
+      console.log('here');
+      this.getEntreprises();
     }
     
   }
@@ -84,7 +88,15 @@ export class VsFormHeadComponent implements OnInit {
     this.status = res.result.data;
     this.cdr.markForCheck();
   }
+
   async getEntreprises(){
+    await this.entrepriseService.getList().toPromise().then(res=>{
+      this.entreprises = res.result.data;
+      this.cdr.markForCheck();
+    });
+  }
+
+  async getChantierEntreprises(){
     var res = await this.entrepriseService.getList().toPromise();
     this.entreprises = res.result.data;
     if(this.visiteForm.get('entreprise_id').value){

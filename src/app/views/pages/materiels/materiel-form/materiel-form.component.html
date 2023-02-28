@@ -34,7 +34,7 @@
 											{{item.libelle}}
 										</mat-option>
 									</mat-select>
-									<button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('criteria_id'); $event.stopPropagation()">
+									<button type="button" mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('criteria_id'); $event.stopPropagation()">
 										<mat-icon>clear</mat-icon>
 									</button>
 									<mat-error *ngIf="isControlHasError('criteria_id','required')">
@@ -49,7 +49,7 @@
 											{{item.libelle}}
 										</mat-option>
 									</mat-select>
-									<button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('subcategory_id'); $event.stopPropagation()">
+									<button type="button" mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('subcategory_id'); $event.stopPropagation()">
 										<mat-icon>clear</mat-icon>
 									</button>
 									<mat-error *ngIf="isControlHasError('subcategory_id','required')">
@@ -120,7 +120,7 @@
 									<div class="row">
 										<div class="col-6">
 												<div class="upload-btn-wrapper">
-														<button class="btnr" title="{{'COMMON.SELECT_FILES.TITLE' | translate}}">{{'COMMON.SELECT_FILES.SHORTTITLE' | translate}}</button>
+														<button type="button" class="btnr" title="{{'COMMON.SELECT_FILES.TITLE' | translate}}">{{'COMMON.SELECT_FILES.SHORTTITLE' | translate}}</button>
 														<span>{{'COMMON.NOTIF.NO_FILE_CHOSEN.TITLE' | translate}}</span>
 														<input formControlName="documentsToUpload" (onFileSelected)="onFileDrop($event)" class="mb-2" type="file" 
 																ng2FileSelect title="{{'COMMON.SELECT_FILES.TITLE' | translate}}" accept="{{accept+', '+(accept | uppercase)}}" [uploader]="uploader" multiple/>

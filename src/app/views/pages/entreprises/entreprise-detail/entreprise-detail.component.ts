@@ -67,7 +67,7 @@ export class EntrepriseDetailComponent implements OnInit, OnDestroy {
 		try {
 			var res = await this.entrepriseService.get(entrepriseId).toPromise();
 			this.entreprise = res.result.data;
-			if(this.entreprise.type.code == 'INTERIM'){
+			if(this.entreprise.type && this.entreprise.type.code == 'INTERIM'){
 				this.displayedEEChantiersColumns = [
 					'number', 'name', 'client', 'status', 'charge_affaire', 
 					'date_demarrage', 'date_demarrage_ee', 'interimaire'

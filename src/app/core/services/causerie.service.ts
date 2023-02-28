@@ -46,11 +46,18 @@ export class CauserieService{
     }
     
     addParticipant(causerieId: number, params: any){
+        return this.http.post<JsonResponse<any>>(this.baseUrl+'/'+causerieId+'/participant', params);
+    }
+    addParticipants(causerieId: number, params: any){
         return this.http.post<JsonResponse<any>>(this.baseUrl+'/'+causerieId+'/participants', params);
     }
 
     addFeedBackParticipant(causerieId: number, userId: number, params: any){
-        return this.http.put<JsonResponse<any>>(this.baseUrl+'/'+causerieId+'/participants/'+userId, params);
+        return this.http.put<JsonResponse<any>>(this.baseUrl+'/'+causerieId+'/participant/'+userId, params);
+    }
+
+    detachParticipant(causerieId: number, userId: number){
+        return this.http.delete<JsonResponse<any>>(this.baseUrl+'/'+causerieId+'/participant/'+userId);
     }
     
     export(filters){

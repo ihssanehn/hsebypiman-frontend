@@ -111,7 +111,8 @@ import {
 	RemonteeEventTypesAdminComponent,
 	CustomUserProfileComponent,
 	AddPhotoProfilModalComponent,
-	ParticipateCauserieModalComponent
+	ParticipateCauserieModalComponent,
+	AddUsersModalComponent
 } from './layout';
 // General
 import { NoticeComponent } from './content/general/notice/notice.component';
@@ -326,6 +327,7 @@ import { FlashinfoEditorComponent } from './layout/flash-infos/flashinfo-editor/
 		AssignEpiModalComponent,
 		HabilitationsAdminListPortletComponent,
 		AssignActionModalComponent,
+		AddUsersModalComponent,
 		CloseActionModalComponent,
 		DocListTooltipComponent,
 		EditAccueilSecuModalComponent,
@@ -461,6 +463,7 @@ import { FlashinfoEditorComponent } from './layout/flash-infos/flashinfo-editor/
 		AssignEpiModalComponent,
 		HabilitationsAdminListPortletComponent,
 		AssignActionModalComponent,
+		AddUsersModalComponent,
 		
 		CloseActionModalComponent,
 		DocListTooltipComponent,
@@ -549,6 +552,7 @@ import { FlashinfoEditorComponent } from './layout/flash-infos/flashinfo-editor/
 		AssignFormationModalComponent,
 		AssignEpiModalComponent,
 		AssignActionModalComponent,
+		AddUsersModalComponent,
 		CloseActionModalComponent,
 		EditAccueilSecuModalComponent,
 		LivretAccueilModalComponent,
