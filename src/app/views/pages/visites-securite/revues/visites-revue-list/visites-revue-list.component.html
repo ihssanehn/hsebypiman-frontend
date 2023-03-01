@@ -87,7 +87,9 @@
             <i class="fa" [ngClass]="isOrderedBy('environnement') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('environnement') && {opacity:1}"></i>
           </th>
           <td mat-cell *matCellDef="let visite"  (click)="viewVisite(visite.id)" class="pointer" > 
-            {{visite.environnement == 'Autre' ? visite.environnement_autre : visite.environnement}}
+            <span *ngFor="let env of visite.environnement; let last = last" [matTooltip]="visite.environnement_autre" [matTooltipDisabled]="env != 'Autre'">
+              {{env + (!last ? ', ':'')}}
+            </span>
           </td>
         </ng-container>
         

@@ -164,14 +164,13 @@
                                     matTooltip="{{'VISITES.NOTIF.CANNOT_SELECT_EMPLOYEE.COMPANY_SELECTED.TITLE' | translate}}"
                                     [matTooltipDisabled]="formHasValue('environnement')">
                                     <div><mat-label>{{'VISITES.ENVIRONMENT.LABEL' | translate}}</mat-label></div>
-                                    <div class="row px-5 align-items-center" [ngClass]="{'mt-4': origin != 'add' && data.environnement != 'Autre'}">
-                                        <div>
-                                            <mat-radio-group formControlName="environnement" >
-                                                <mat-radio-button class="metric-radio" [value]="'Bureau'">Bureau</mat-radio-button>
-                                                <mat-radio-button class="metric-radio" [value]="'Chantier'">Chantier</mat-radio-button>
-                                                <mat-radio-button class="metric-radio" [value]="'Production'">Production</mat-radio-button>
-                                                <mat-radio-button class="metric-radio" [value]="'Autre'">Autre</mat-radio-button>
-                                            </mat-radio-group>
+                                    <div class="row pr-5 align-items-center" [ngClass]="{'mt-4': origin != 'add' && data.environnement != 'Autre'}">
+                                        <div class="col-12">
+                                            <mat-checkbox class="ml-2" (change)="toggleEnvironnement($event, 'Bureau')" [checked]="environnement.includes('Bureau')" [value]="'Bureau'">Bureau</mat-checkbox>
+                                            <mat-checkbox class="ml-2" (change)="toggleEnvironnement($event, 'Chantier')" [checked]="environnement.includes('Chantier')" [value]="'Chantier'">Chantier</mat-checkbox>
+                                            <mat-checkbox class="ml-2" (change)="toggleEnvironnement($event, 'Production')" [checked]="environnement.includes('Production')" [value]="'Production'">Production</mat-checkbox>
+                                            <mat-checkbox class="ml-2" (change)="toggleEnvironnement($event, 'Télétravail')" [checked]="environnement.includes('Télétravail')" [value]="'Télétravail'">Télétravail</mat-checkbox>
+                                            <mat-checkbox class="ml-2" (change)="toggleEnvironnement($event, 'Autre')" [checked]="environnement.includes('Autre')" [value]="'Autre'">Autre</mat-checkbox>
                                             <ng-template #showEnvironement> 
                                                 <input type="text" matInput class="form-control" [value]="data.environnement">
                                             </ng-template>
@@ -179,7 +178,7 @@
                                                 <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
                                             </mat-error>
                                         </div>
-                                        <div class="flex-1" *ngIf="origin == 'add' || data.environnement == 'Autre'">
+                                        <div class="col-12" *ngIf="origin == 'add' || data.environnement.includes('Autre')">
                                             <mat-form-field class="w-100">
                                                 <input matInput class="form-control pr-4" type="text" formControlName="environnement_autre" [required]="isFieldRequired('environnement_autre')" placeholder="Autre environnment">
                                                 <mat-error *ngIf="isControlHasError('environnement_autre','required')">

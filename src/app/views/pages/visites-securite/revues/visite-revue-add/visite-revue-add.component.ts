@@ -147,7 +147,7 @@ export class VisiteRevueAddComponent implements OnInit {
       'salarie_id': [{value:null, disabled:false}, Validators.required],
       'entreprise_id': [{value:null, disabled:false}, Validators.required],
       'lieu_mission': [{value:null, disabled:false}, Validators.required],
-      'environnement': [{value:null, disabled:false}, Validators.required],
+      'environnement': [{value:[], disabled:false}, Validators.required],
       'environnement_autre': [{value:null, disabled:true}, Validators.compose([])],
       'redacteur_id': [{value:this.currentUser.id, disabled:true}, Validators.required],
       'date_visite': [moment().format('DD/MM/YYYY'), Validators.required],
@@ -176,7 +176,7 @@ export class VisiteRevueAddComponent implements OnInit {
     const environnement = this.visiteForm.get('environnement');
     const environnement_autre = this.visiteForm.get('environnement_autre');
     environnement.valueChanges.subscribe(val=>{
-      if(val == 'Autre'){
+      if(val.includes('Autre')){
         environnement_autre.enable();
         environnement_autre.setValidators(Validators.required);
       }else{
