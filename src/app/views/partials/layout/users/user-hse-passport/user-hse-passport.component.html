@@ -25,6 +25,7 @@
                 <h5><b>{{'SUIVI_HSE.CARD.ABOUT_EMPLOYEE.TITLE' | translate}}</b></h5>
                 <p><span class="label pull-left mr-2">{{'COMMON.LASTNAME.LABEL' | translate}}</span><span class="" *ngIf="user.nom; else noDataFound">{{user.nom}}</span></p>
                 <p><span class="label pull-left mr-2">{{'COMMON.FIRSTNAME.LABEL' | translate}}</span><span class="" *ngIf="user.prenom; else noDataFound">{{user.prenom}}</span></p>
+                <p><span class="label pull-left mr-2">{{'COMMON.EMAIL.LABEL' | translate}}</span><span class="" *ngIf="user.email; else noDataFound">{{user.email}}</span></p>
                 <p><span class="label pull-left mr-2">{{'COMMON.BIRTHDAY.LABEL' | translate}}</span><span class="" *ngIf="user.date_naissance; else noDataFound">{{user.date_naissance | date:'dd/MM/yyyy'}}</span></p>
                 <p><span class="label pull-left mr-2">{{'COMMON.FONCTION.LABEL' | translate}}</span><span class="" *ngIf="user.fonction; else noDataFound">{{user.fonction?.libelle}}</span></p>
               </div>
