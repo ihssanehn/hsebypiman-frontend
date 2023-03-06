@@ -138,8 +138,9 @@ export class MaterielDetailComponent implements OnInit, OnDestroy {
 	}
 
 	openPretModal(origin = 'add',data = {}): void {
+		const max_qte_pret = this.materiel.stock_disponible - this.materiel.actual_user.length;
 		const dialogRef = this.dialog.open(PretModalComponent, {
-		  data: {origin: origin, pivot: data}
+		  data: {origin: origin, pivot: data, max_qte_pret: max_qte_pret}
 		});
 	
 		dialogRef.afterClosed().subscribe(result => {
