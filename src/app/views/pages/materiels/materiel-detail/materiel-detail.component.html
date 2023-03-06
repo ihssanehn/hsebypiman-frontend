@@ -109,18 +109,18 @@
 										</div>
 									</div>
 									<ng-container *ngIf="materiel.actual_user; else noUserInProgress">
-										<div class="row col-12" *ngFor="let actual_user of materiel.actual_user">
-											<div class="col-4">
-												<p class="blue text-left">{{actual_user | fullName}}</p>
-											</div>
-											<div class="col-3">
-												<p class="blue text-center">{{actual_user.pivot.is_given ? ('MATERIELS.LOAN_TYPE.IS_GIVEN' | translate) : ('MATERIELS.LOAN_TYPE.LOAN' | translate)}} : {{actual_user?.pivot.date_pret | date:'dd/MM/yyyy'}}</p>
-											</div>
-											<div class="col-3">
-	
-											</div>
-											<div class="col-2" *ngxPermissionsOnly="['materiel_canUpdate']">
-												<button mat-raised-button class="btn-small pull-right" color="info" [disabled]="actual_user.pivot.is_given == 1" (click)="$event.stopPropagation(); openPretModal('return', actual_user.pivot)">{{'MATERIELS.ACTION.RETURN-MATERIEL' | translate}}</button>
+										<div class="col-12 mb-3" *ngFor="let actual_user of materiel.actual_user">
+											<div class="row align-items-center">
+												<div class="col-4">
+													<p class="mb-0 blue text-left">{{actual_user | fullName}}</p>
+												</div>
+												<div class="col-4">
+													<p class="mb-0 blue text-center">{{actual_user.pivot.is_given ? ('MATERIELS.LOAN_TYPE.IS_GIVEN' | translate) : ('MATERIELS.LOAN_TYPE.LOAN' | translate)}} : {{actual_user?.pivot.date_pret | date:'dd/MM/yyyy'}}</p>
+												</div>
+												<div class="col-4 d-flex justify-content-end" *ngxPermissionsOnly="['materiel_canUpdate']">
+													<button mat-raised-button class="btn-small ml-4" color="info" [disabled]="actual_user.pivot.is_given == 1" (click)="$event.stopPropagation(); openPretModal('return', actual_user.pivot)">{{'MATERIELS.ACTION.RETURN_MATERIEL' | translate}}</button>
+													<mat-icon class="btn-small ml-4 pointer pt-1" color="warn" (click)="$event.stopPropagation(); deletePretMateriel(actual_user.pivot.id)">delete</mat-icon>
+												</div>
 											</div>
 										</div>
 									</ng-container>
@@ -135,26 +135,27 @@
 									<div class="col-12 my-2">
 										<p style="text-align: left;"><span class="label">{{'MATERIELS.PERSONNELS_HISTORY.TITLE' | translate}}</span></p>
 									</div>
-									<ng-container *ngIf="materiel.salaries.length > 0; else noArHistorique">
-										<ng-container *ngFor="let salarie of materiel.salaries">
+									<div class="col-12" *ngIf="materiel.salaries.length > 0; else noArHistorique">
+										<div class="row align-items-center" *ngFor="let salarie of materiel.salaries">
 											<ng-container *ngIf="!isCurrentUser(salarie.pivot.id)">
 												<div class="col-4">
-													<p class="text-left">{{salarie | fullName}}</p>
+													<p class="mb-0 text-left">{{salarie | fullName}}</p>
 												</div>
 												<div class="col-3">
-													<p class="text-center">{{'MATERIELS.READY.TITLE' | translate}} : {{salarie.pivot.date_pret | date:'dd/MM/yyyy'}}</p>
+													<p class="mb-0 text-center">{{'MATERIELS.READY.TITLE' | translate}} : {{salarie.pivot.date_pret | date:'dd/MM/yyyy'}}</p>
 												</div>
 												<div class="col-3">
-													<p class="text-center">{{'MATERIELS.RETURN.TITLE' | translate}}: {{salarie.pivot.date_retour | date:'dd/MM/yyyy'}}</p>
+													<p class="mb-0 text-center">{{'MATERIELS.RETURN.TITLE' | translate}}: {{salarie.pivot.date_retour | date:'dd/MM/yyyy'}}</p>
 												</div>
-												<div class="col-2">
-													<a class="pull-right" *ngxPermissionsOnly="['materiel_canUpdate']" (click)="$event.stopPropagation(); openPretModal('update', salarie.pivot)" matTooltip="{{'MATERIELS.ACTION.MODIFY_LOAN' | translate}}">
-														<mat-icon color="accent">edit</mat-icon>
-													</a>
+												<div class="col-2 d-flex justify-content-end">
+													<button mat-icon-button *ngxPermissionsOnly="['materiel_canUpdate']" (click)="$event.stopPropagation(); openPretModal('update', salarie.pivot)" matTooltip="{{'MATERIELS.ACTION.MODIFY_LOAN' | translate}}"><mat-icon color="accent">edit</mat-icon></button>
+													<!-- <button *ngxPermissionsOnly="['materiel_canUpdate']" mat-icon-button class="btn-small" color="warn" (click)="$event.stopPropagation(); deletePretMateriel(salarie.pivot.id)"><mat-icon>delete</mat-icon></button> -->
+													<mat-icon class="btn-small ml-4 pointer pt-1" color="warn" (click)="$event.stopPropagation(); deletePretMateriel(actual_user.pivot.id)">delete</mat-icon>
+
 												</div>
 											</ng-container>
-										</ng-container>
-									</ng-container>
+										</div>
+									</div>
 									<ng-template #noArHistorique>
 										{{'MATERIELS.CARD.USER_TRACKING.NO_HISTORY' | translate}}
 									</ng-template>

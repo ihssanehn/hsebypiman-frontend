@@ -136,7 +136,7 @@ export class VisiteRevueAddComponent implements OnInit {
     this.visiteForm.get('has_rectification_imm').setValue(_vs.has_rectification_imm);
     this.visiteForm.get('avertissement').setValue(_vs.avertissement);
     this.visiteForm.get('type_id').setValue(_vs.type_id);
-    this.visiteForm.get('entreprise').setValue(_vs.entreprise);
+    this.visiteForm.get('entreprise_id').setValue(_vs.entreprise_id);
     this.visiteForm.get('lieu_mission').setValue(_vs.lieu_mission);
     this.visiteForm.get('environnement').setValue(_vs.environnement);
     this.visiteForm.get('environnement_autre').setValue(_vs.environnement_autre);
@@ -145,9 +145,9 @@ export class VisiteRevueAddComponent implements OnInit {
   createForm() {
 		this.visiteForm = this.visiteFB.group({
       'salarie_id': [{value:null, disabled:false}, Validators.required],
-      'entreprise': [{value:null, disabled:false}, Validators.required],
+      'entreprise_id': [{value:null, disabled:false}, Validators.required],
       'lieu_mission': [{value:null, disabled:false}, Validators.required],
-      'environnement': [{value:null, disabled:false}, Validators.required],
+      'environnement': [{value:[], disabled:false}, Validators.required],
       'environnement_autre': [{value:null, disabled:true}, Validators.compose([])],
       'redacteur_id': [{value:this.currentUser.id, disabled:true}, Validators.required],
       'date_visite': [moment().format('DD/MM/YYYY'), Validators.required],
@@ -176,7 +176,7 @@ export class VisiteRevueAddComponent implements OnInit {
     const environnement = this.visiteForm.get('environnement');
     const environnement_autre = this.visiteForm.get('environnement_autre');
     environnement.valueChanges.subscribe(val=>{
-      if(val == 'Autre'){
+      if(val.includes('Autre')){
         environnement_autre.enable();
         environnement_autre.setValidators(Validators.required);
       }else{
@@ -244,7 +244,7 @@ export class VisiteRevueAddComponent implements OnInit {
       this.visiteForm.get('salarie_id').invalid || 
       this.visiteForm.get('environnement').invalid || 
       this.visiteForm.get('environnement_autre').invalid || 
-      this.visiteForm.get('entreprise').invalid || 
+      this.visiteForm.get('entreprise_id').invalid || 
       this.visiteForm.get('lieu_mission').invalid;
      
     return test;  

@@ -1,0 +1,24 @@
+<div class="modal-header">
+	<h4 class="modal-title">{{'CAUSERIES.ACTION.ADD_PARTICIPANTS' | translate}}</h4>
+	<button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+<div class="modal-body" *ngIf="usersList.length > 0">
+	<div class="row">
+		<mat-form-field class="col-12">
+			<mat-label>{{'CAUSERIES.PARTICIPANTS' | translate}}</mat-label>
+			<mat-select multiple class="form-control" placeholder="" [(ngModel)]="usersToAdd">
+				<mat-option *ngFor="let user of usersList" [value]="user.id">
+						{{ user | fullName }}
+				</mat-option>
+			</mat-select>
+		</mat-form-field>
+	</div>
+	<div class="row mt-4">
+		<div class="col-12 col-actions">
+				<button mat-raised-button type="button" (click)="activeModal.dismiss()" class="btn-small" color="warn">{{'ACTION.CANCEL' | translate}}</button>
+				<button mat-raised-button type="button" (click)="addUsers()" class="btn-small" color="success" [disabled]="usersToAdd.length == 0">{{'ACTION.SAVE' | translate}}</button>
+		</div>
+</div>
+</div>

@@ -8,14 +8,15 @@
 				<mat-icon>more_vert</mat-icon>
 			</button>
 			<div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
-				<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editCauserie(causerie.id)" *ngIf="canUpdateCauserie(); else editCauseriePermission">
+				
+				<button mat-icon-button color="primary" matTooltip="{{'CAUSERIES.ACTION.ADD_PARTICIPANTS' | translate}}" (click)="openAddParticipants()" *ngIf="isUserOrganizer() || hasPermission('causerie_canUpdate')">
+					<mat-icon>group_add</mat-icon>
+				</button>
+
+				<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editCauserie(causerie.id)" *ngIf="isUserOrganizer() || hasPermission('causerie_canUpdate')">
 					<mat-icon>edit</mat-icon>
 				</button>
-				<ng-template #editCauseriePermission>
-					<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editCauserie(causerie.id)" *ngxPermissionsOnly="['causerie_canUpdate']">
-						<mat-icon>edit</mat-icon>
-					</button>
-				</ng-template>
+				
 				<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteCauserie(causerie.id)" *ngxPermissionsOnly="['causerie_canArchieve']">
 					<mat-icon>delete</mat-icon>
 				</button>
@@ -130,13 +131,18 @@
 				<div class="card">
 					<h3>
 						{{'CAUSERIES.INSCRIPTIONS' | translate}}
-						<button (click)="participate()" class="btn btn-primary btn-elevate pull-right" *ngIf="!isUserOrganizer() && !hasParticipate()">{{'CAUSERIES.ACTION.ADD_PARTICIPANT' | translate}}</button>
+						<button (click)="participate()" class="btn btn-primary btn-elevate pull-right" *ngIf="!isUserOrganizer() && !hasParticipate()">{{'CAUSERIES.ACTION.ADD_SELF_AS_PARTICIPANT' | translate}}</button>
 						<button (click)="editFeedBackParticipant()" class="btn btn-primary btn-elevate pull-right" *ngIf="!isUserOrganizer() && hasParticipate()">{{'CAUSERIES.ACTION.EDIT_FEEDBACK_PARTICIPANT' | translate}}</button>
 					</h3>
 					<div class="box box-chantiers " style="flex: 1;">
 						<div class="chat-block" #scrollMe style="flex: 1;" *ngIf="causerie.participants.length > 0; else noParticipants">
 							<div class="row chat-row" *ngFor="let participant of causerie.participants">
 								<div class="card col-md-12">
+									<span class="text-right" *ngIf="isUserOrganizer() || hasPermission('causerie_canUpdate')">
+										<button mat-icon-button color="warn" class="btn-small" (click)="removeParticipant(participant.id)">
+											<mat-icon>delete</mat-icon>
+										</button>
+									</span>
 									<p class="text-left comment-title"><small>{{participant.fullname}}, {{participant.pivot.updated_at | date:'d MMM y, hh:mm'}}</small></p>
 									<p class="text-left">{{participant.pivot.retour_participant ? participant.pivot.retour_participant : 'Aucun retour sur la causerie'}}</p>
 								</div>

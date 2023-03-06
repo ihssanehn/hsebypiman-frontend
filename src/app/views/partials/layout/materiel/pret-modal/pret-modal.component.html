@@ -30,6 +30,15 @@
 					</mat-error>
 				</mat-form-field>
 				<!-- DON DE MATERIEL -->
+
+				<mat-form-field class="col-12" *ngIf="data.origin == 'add'">
+					<mat-label>{{'MATERIELS.QTE_PRET.LABEL' | translate}}</mat-label>
+					<input matInput class="form-control" type="number" min="1" formControlName="qte_pret" [required]="isFieldRequired('qte_pret')" >
+					<mat-error *ngIf="isControlHasError('qte_pret','required')">
+						<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+					</mat-error>
+				</mat-form-field>
+				<!-- DON DE MATERIEL -->
 				
 				<div class="col-12">
 					<div>
