@@ -39,6 +39,7 @@ export class PretModalComponent implements OnInit {
       salarie_id: [null, Validators.required],
       pret_id: [null],
       date_pret: [moment().format('DD/MM/YYYY')],
+      qte_pret: [1, Validators.required],
       is_given: [0],
       date_retour: [null],
     })
