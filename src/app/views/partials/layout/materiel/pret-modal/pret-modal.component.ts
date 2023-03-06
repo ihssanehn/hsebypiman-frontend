@@ -58,7 +58,7 @@ export class PretModalComponent implements OnInit {
 
     this.form.get('qte_pret').valueChanges.subscribe(val=>{
       if(val > this.data.max_qte_pret){
-        this.form.get('qte_pret').setValue(this.data.max_qte_pret);
+        this.form.get('qte_pret').setValue(this.data.max_qte_pret ? this.data.max_qte_pret : 1);
       }
     })
 
