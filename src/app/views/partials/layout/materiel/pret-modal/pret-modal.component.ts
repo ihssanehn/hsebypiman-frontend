@@ -9,6 +9,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 export interface DialogData {
   origin: string;
   pivot: any;
+  max_qte_pret;
 }
 
 @Component({
@@ -19,7 +20,6 @@ export interface DialogData {
 export class PretModalComponent implements OnInit {
 
   form: FormGroup;
-
   salaries: any;
   formloading: Boolean = false;
 
@@ -35,6 +35,9 @@ export class PretModalComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
+
+    console.log(this.data.max_qte_pret);
+
     this.form = this.fb.group({
       salarie_id: [null, Validators.required],
       pret_id: [null],
@@ -50,6 +53,12 @@ export class PretModalComponent implements OnInit {
         this.form.get('date_retour').setValue(null);
       }else{
         this.form.get('date_retour').enable();
+      }
+    })
+
+    this.form.get('qte_pret').valueChanges.subscribe(val=>{
+      if(val > this.data.max_qte_pret){
+        this.form.get('qte_pret').setValue(this.data.max_qte_pret);
       }
     })
 
