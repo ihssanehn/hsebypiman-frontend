@@ -448,7 +448,7 @@ export class CauserieDetailComponent implements OnInit, OnDestroy {
 		});
 	}
 
-	canUpdateCauserie() {
-		return this.isUserOrganizer()
+	hasPermission(right){
+		return this.authService.hasPermission(right);
 	}
 }

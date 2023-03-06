@@ -211,6 +211,10 @@ export class AuthService extends HttpService {
 
 	}
 
+	hasPermission(right){
+		return this.currentUserValue.role.permissions.map(x => x.code).includes(right)
+	}
+
 	async populate() {
 		const userToken = localStorage.getItem(environment.authTokenKey);
 		if (userToken) {
@@ -242,4 +246,6 @@ export class AuthService extends HttpService {
 			return of(result);
 		};
 	}
+
+	
 }

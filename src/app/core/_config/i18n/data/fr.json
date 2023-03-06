@@ -1698,6 +1698,9 @@
 			"SHORTTITLE": "Nombre d'utilisateurs actuels",
 			"TITLE": "Nombre d'utilisateurs actuels"
 		},
+		"QTE_PRET":{
+			"LABEL": "Quantité"
+		},
 		"AVAILABLE_QUANTITY": {
 			"LABEL": "QTE Prêt / Dispo",
 			"SHORTTITLE": "Quantité disponible",
