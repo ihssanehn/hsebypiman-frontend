@@ -363,6 +363,14 @@ export class MenuConfig {
 						icon: 'view_list',
 					},
 					{
+						title: 'Demandes d\'epis',
+						root: true,
+						alignment: 'left',
+						page: '/materiel/demandes-epis/list',
+						translate: 'MENU.DEMANDES_EPIS',
+						icon: 'view_list',
+					},
+					{
 						title: 'Admin',
 						root: true,
 						alignment: 'left',

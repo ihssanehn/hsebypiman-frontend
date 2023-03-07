@@ -112,7 +112,8 @@ import {
 	CustomUserProfileComponent,
 	AddPhotoProfilModalComponent,
 	ParticipateCauserieModalComponent,
-	AddUsersModalComponent
+	AddUsersModalComponent,
+	UpdateStatusModalComponent
 } from './layout';
 // General
 import { NoticeComponent } from './content/general/notice/notice.component';
@@ -338,7 +339,8 @@ import { FlashinfoEditorComponent } from './layout/flash-infos/flashinfo-editor/
 		ActionFormModalComponent,
 		UploadDelSignatureDocModalComponent,
 		FlashinfoReaderComponent,
-		FlashinfoEditorComponent
+		FlashinfoEditorComponent,
+		UpdateStatusModalComponent,
 
 	],
 	exports: [
@@ -474,6 +476,7 @@ import { FlashinfoEditorComponent } from './layout/flash-infos/flashinfo-editor/
 		ParticipateCauserieModalComponent,
 		UserHsePassportComponent,
 		FlashinfoReaderComponent,
+		UpdateStatusModalComponent,
 		FlashinfoEditorComponent
 
 	],
@@ -559,7 +562,8 @@ import { FlashinfoEditorComponent } from './layout/flash-infos/flashinfo-editor/
 		RemonteeDetailModalComponent,
 		ParticipateCauserieModalComponent,
 		ActionFormModalComponent,
-		UploadDelSignatureDocModalComponent
+		UploadDelSignatureDocModalComponent,
+		UpdateStatusModalComponent,
 	],
 })
 export class PartialsModule {

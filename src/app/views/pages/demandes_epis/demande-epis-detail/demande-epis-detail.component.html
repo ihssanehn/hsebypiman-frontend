@@ -1,0 +1,70 @@
+<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8" id="portlet-remonte" *ngIf="demande_epi">
+	<div class="tf-portlet-header">
+		<span class="title">
+			<a [routerLink]="['/materiel/demandes-epis/list']">{{'MENU.SUB_DEMANDES_EPIS.LIST' | translate}}</a><span class="divider">></span><span class="id-item">{{'MENU.SUB_DEMANDES_EPIS.DETAIL' | translate}}</span>
+		</span>
+		<div ngbDropdown placement="bottom-right" class="d-inline-block pull-right">
+			<button ngbDropdownToggle mat-icon-button color="primary" matTooltip="Actions" style="line-height: 0;height: 0;">
+				<mat-icon>more_vert</mat-icon>
+			</button>
+			<div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
+				<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editDemandeEpis()">
+					<mat-icon>edit</mat-icon>
+				</button>
+				<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="cancelDemandeEpis()">
+					<mat-icon>delete</mat-icon>
+				</button>
+			</div>
+		</div>
+		<tf-portlet-body class="tf-portlet__body--fit mb-4">
+			<div class="row justify-content-between">
+				<div class="col-md-4">
+					<div class="card">
+						<h3>{{'CHANTIERS.CARD.GENERAL_INFOS.TITLE' | translate}}</h3>
+						<div class="box" style="flex:1">
+							<p><span class="label pull-left mr-2">{{'DEMANDES_EPIS.ID.SHORTTITLE' | translate}}</span><span class="">#{{demande_epi.id}}</span></p>
+							<p><span class="label pull-left mr-2">{{'DEMANDES_EPIS.CREATOR.SHORTTITLE' | translate}}</span><span class="">{{demande_epi.creator | fullName}}</span></p>
+							<p><span class="label pull-left mr-2">{{'DEMANDES_EPIS.STATUS.TITLE' | translate}}</span><span class="">{{demande_epi.status.libelle}}</span></p>
+						</div>
+						<div class="tf-divider">
+							<span></span>
+						</div>
+						<div class="box">
+							<p><span class="label pull-left mr-2">{{'COMMON.CREATED_AT.SHORTTITLE' | translate}}</span><span class="">{{demande_epi.created_at | date:'dd/MM/yyyy'}}</span></p>
+							<p><span class="label pull-left mr-2">{{'COMMON.UPDATED_AT.SHORTTITLE' | translate}}</span><span class="">{{demande_epi.updated_at | date:'dd/MM/yyyy'}}</span></p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-8">
+					<div class="card" >
+						<h3>{{'DEMANDES_EPIS.EPI_LIST.TITLE' | translate}}</h3>
+						<div *ngIf="demande_epi?.epis; else noEpis" >
+							<table class="table">
+								<thead>
+									<tr>
+										<th>Catégorie</th>
+										<th>Quantité</th>
+										<th>Commentaire</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr *ngFor="let epi of demande_epi.epis">
+										<td>{{epi.libelle}}</td>
+										<td>{{epi.pivot.qte}}</td>
+										<td>{{epi.pivot.comment}}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<ng-template #noEpis>
+							<div class="box">
+								{{'DEMANDES_EPIS.CARD.NO_EPIS' | translate}}
+							</div>
+						</ng-template>
+					</div>
+				</div>
+			</div>
+		</tf-portlet-body>
+	</div>
+	
+</tf-portlet>
