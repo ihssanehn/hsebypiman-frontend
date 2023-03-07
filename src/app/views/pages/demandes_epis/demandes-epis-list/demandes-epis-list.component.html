@@ -1,4 +1,4 @@
-<tf-search-list-bar [(ngModel)]="filter" (change)="getDemandes()" [hasAdvancedSearch]="true" [showFilters]="showFilters" (advancedSearchChange)="advancedSearchChanged($event)" class="row row-filters"></tf-search-list-bar>
+<tf-search-list-bar [(ngModel)]="filter" (change)="getDemandesEpis()" [hasAdvancedSearch]="true" [showFilters]="showFilters" (advancedSearchChange)="advancedSearchChanged($event)" class="row row-filters"></tf-search-list-bar>
 <tf-demande-epis-filters [hidden]="!showFilters" (change)="udpateFilters($event)" class="row"></tf-demande-epis-filters>
 
 <!-- </div> -->
