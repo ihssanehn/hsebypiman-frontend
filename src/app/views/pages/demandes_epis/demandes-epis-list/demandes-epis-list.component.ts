@@ -17,7 +17,7 @@ import { UpdateStatusModalComponent } from '@app/views/partials/layout';
 export class DemandesEpisListComponent implements OnInit, AfterViewInit {
 
 	public demandesEpisList: Paginate < DemandeEpis > ;
-	demandeEpi_id: number;
+	demandeEpis_id: number;
 	pagination: any = {
 		page: 1,
 		total: 10,
