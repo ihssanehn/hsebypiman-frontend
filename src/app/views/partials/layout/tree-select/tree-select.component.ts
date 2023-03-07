@@ -16,6 +16,9 @@ export class TreeSelectComponent implements OnInit {
   itemsList: any;
 
   @Input()
+  fromSource: boolean = true;
+
+  @Input()
   translateTitle: any;
   
   @Input()
@@ -49,7 +52,6 @@ export class TreeSelectComponent implements OnInit {
 
   ngOnInit() {
     this.initForm();
-    console.log(this.itemsList);
     this.cdr.markForCheck();
   }
 

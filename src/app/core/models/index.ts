@@ -35,3 +35,4 @@ export {QcmSession} from './qcmSession.model';
 export {QcmAnswer} from './qcmAnswer.model';
 export {Formation} from './formation.model';
 export {Revue} from './revue.model';
+export {DemandeEpis} from './demandeEpis.model';
