@@ -912,6 +912,9 @@
 		"SEND": "Envoyer"
 	},
 	"COMMON": {
+		"ACTION":{
+			"UPDATE_STATUS":"Modifier le statut"
+		},
 		"ADRESS": {
 			"LABEL": "Adresse",
 			"SHORTTITLE": "Adresse",
@@ -1064,6 +1067,9 @@
 		"SOCIETE": {
 			"LABEL": "Société",
 			"TITLE": "Société"
+		},
+		"STATUS":{
+			"TITLE": "Statut"
 		},
 		"TODAY_DATE": {
 			"TITLE": "Date du jour"
