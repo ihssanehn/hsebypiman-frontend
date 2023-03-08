@@ -53,6 +53,11 @@ export class DemandeEpisAddComponent implements OnInit {
           categorie_id: [null, Validators.required],
           qte: [1, Validators.compose([Validators.required, Validators.min(1)])],
           comment: [null],
+          criteria_id: null,
+          subcategory_id: null,
+          size: null,
+          displayExtraFields: false,
+          displaySubcategory: false,
         })
       ])
     });

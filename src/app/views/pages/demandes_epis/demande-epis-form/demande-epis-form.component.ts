@@ -15,10 +15,16 @@ export class DemandeEpisFormComponent implements OnInit {
 
   categoriesList: Categorie[];
   categoriesLoaded: boolean = false;
-  subcategoryDisplayed: boolean = false;
-  displayExtraFields: boolean = false;
+  
+  // subcategoryDisplayed: boolean = false;
+  // displayExtraFields: boolean = false;
+  
   criteriaLoaded: boolean = false;
   criteriasList: Type[];
+  
+  subcategoriesLoaded: boolean = false;
+  subcategoriesList: Type[];
+  
   itemsToHandle: string[] = ['EPI_TETE', 'EPI_BRUIT', 'EPI_RESP', 'EPI_GANTS', 'EPI_CHAUSS'];
 
 
@@ -38,6 +44,8 @@ export class DemandeEpisFormComponent implements OnInit {
 
   ngOnInit() {
     this.getCategories();
+    this.getCriterias();
+    this.getSubcategories();
   }
 
 
@@ -51,15 +59,49 @@ export class DemandeEpisFormComponent implements OnInit {
     this.cdr.markForCheck();
   }
 
-  categorieChanged(data, index){
-    if(data != this.epis.at(index).get('categorie_id').value){
-      this.epis.at(index).get('categorie_id').setValue(data);
+
+  async getCriterias(EPI_code: string = null) {
+    this.criteriaLoaded = false;
+    var params;
+    if(EPI_code) {
+      params = {
+        'model': 'CriteriaMateriel',
+        'code': EPI_code
+      }
+    } else  {
+      params = {
+        'model': 'CriteriaMateriel'
+      }
     }
+
+    var res = await this.typeService.getAll(params).toPromise();
+    if(res){
+      this.criteriasList = res.result.data;
+      this.criteriaLoaded = true;
+    }
+    this.cdr.markForCheck();
   }
 
+  async getSubcategories(EPI_code: string = null) {
+    this.subcategoriesLoaded = false;
+    var params;
+    if(EPI_code) {
+      params = {
+        'model': 'SubMateriel',
+        'code': EPI_code
+      }
+    } else  {
+      params = {
+        'model': 'SubMateriel'
+      }
+    }
 
-  itemsToHandleSelected(selected: any) {
-   
+    var res = await this.typeService.getAll(params).toPromise();
+    if(res){
+      this.subcategoriesList = res.result.data;
+      this.subcategoriesLoaded = true;
+    }
+    this.cdr.markForCheck();
   }
 
   isFieldRequired(controlName){
@@ -127,6 +169,51 @@ export class DemandeEpisFormComponent implements OnInit {
       categorie_id: [null, Validators.required],
       qte: [1, Validators.compose([Validators.required, Validators.min(1)])],
       comment: null,
+			criteria_id: null,
+			subcategory_id: null,
+			size: null,
+      displayExtraFields: false,
+      displaySubcategory: false,
     }))
   }
+
+  subcategoryDisplayed(i){
+    let epi_cat_value = this.epis.at(i).get('categorie_id').value;
+    let cat = epi_cat_value && this.categoriesList ? this.categoriesList.find(x=> x.id == this.epis.at(i).get('categorie_id').value) : null;
+    return cat ? cat.code == 'EPI_CHAUSS' : false;
+  }
+
+  displayExtraFields(i){
+    return false;
+  }
+
+
+  categorieChanged(data, index){
+    if(data != this.epis.at(index).get('categorie_id').value){
+      this.epis.at(index).get('categorie_id').setValue(data);
+    }
+  }
+
+  displaySubcategory(code: string, i) {
+    this.epis.at(i).get('displaySubcategory').setValue(code == 'EPI_CHAUSS');
+    if(code != 'EPI_CHAUSS'){
+      this.epis.at(i).get('subcategory_id').setValue(null);
+    }
+  }
+
+  itemsToHandleSelected(selected: any, i) {
+   this.displaySubcategory(selected, i);
+    console.log(selected);
+    if(!selected) {
+      this.epis.at(i).get('size').setValue(null);
+      this.epis.at(i).get('criteria_id').setValue(null);
+      this.epis.at(i).get('displayExtraFields').setValue(false);
+    } else {
+      this.getCriterias(selected);
+      this.getSubcategories(selected);
+      this.epis.at(i).get('displayExtraFields').setValue(true);
+    }
+  }
+
+
 }

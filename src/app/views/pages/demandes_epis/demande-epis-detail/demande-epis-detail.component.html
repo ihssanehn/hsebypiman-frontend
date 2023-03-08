@@ -43,6 +43,9 @@
 								<thead>
 									<tr>
 										<th>Catégorie</th>
+										<th>Taille</th>
+										<th>Critère</th>
+										<th>Sous-catégorie</th>
 										<th>Quantité</th>
 										<th>Commentaire</th>
 									</tr>
@@ -50,8 +53,11 @@
 								<tbody>
 									<tr *ngFor="let epi of demande_epi.epis">
 										<td>{{epi.libelle}}</td>
+										<td>{{epi.pivot.size ? epi.pivot.size : '-'}}</td>
+										<td>{{epi.pivot.criteria?.libelle ? epi.pivot.criteria?.libelle : '-'}}</td>
+										<td>{{epi.pivot.subcategory?.libelle ? epi.pivot.subcategory?.libelle : '-'}}</td>
 										<td>{{epi.pivot.qte}}</td>
-										<td>{{epi.pivot.comment}}</td>
+										<td nz-popover [nzPopoverContent]="epi.pivot.comment">{{epi.pivot.comment | truncate}}</td>
 									</tr>
 								</tbody>
 							</table>

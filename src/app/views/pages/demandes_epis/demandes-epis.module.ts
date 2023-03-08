@@ -58,6 +58,7 @@ import { DemandeEpisFormComponent } from './demande-epis-form/demande-epis-form.
 import { DemandeEpisEditComponent } from './demande-epis-edit/demande-epis-edit.component';
 import { DemandeEpisAddComponent } from './demande-epis-add/demande-epis-add.component';
 import { DemandeEpisDetailComponent } from './demande-epis-detail/demande-epis-detail.component';
+import { NzPopoverModule } from 'ng-zorro-antd';
 
 
 
@@ -180,6 +181,7 @@ const routes: Routes = [
 		NgbTooltipModule,
 		NgbPopoverModule,
 		NgxMaskModule,
+		NzPopoverModule,
 	],
 	providers: [
 		InterceptService,

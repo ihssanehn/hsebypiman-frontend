@@ -82,10 +82,18 @@ export class DemandeEpisEditComponent implements OnInit, OnDestroy {
 	}
 
 	loadEpis(epi){
+		let displayExtraFields = epi.pivot.size || epi.pivot.criteria_id;
+		let displaySubcategory = epi.pivot.subcategory_id;
+
 		let epiForm = this.demandeFB.group({
 			categorie_id: [epi.id, Validators.required],
 			qte: [epi.pivot.qte, Validators.compose([Validators.required, Validators.min(1)])],
 			comment: epi.pivot.comment,
+			criteria_id: epi.pivot.criteria_id,
+			subcategory_id: epi.pivot.subcategory_id,
+			size: epi.pivot.size,
+      displayExtraFields: displayExtraFields,
+      displaySubcategory: displaySubcategory,
 		})
 		const epis = this.demandeEpisForm.controls['epis'] as FormArray;
 		epis.push(epiForm);

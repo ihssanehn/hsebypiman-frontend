@@ -4,7 +4,7 @@
 			<div *ngIf="edit">
 				{{'MENU.SUB_DEMANDES_EPIS.EDIT' | translate}}
 			</div>
-			<span *ngIf="!edit">{{'MENU.SUB_DEMANDEs_EPIS.ADD' | translate}}</span>
+			<span *ngIf="!edit">{{'MENU.SUB_DEMANDES_EPIS.ADD' | translate}}</span>
 		</div>
 		<div>
 			<div class="tf-wizard-v4__content" data-tfwizard-type="step-content" data-tfwizard-state="current">
@@ -19,12 +19,14 @@
 												<mat-icon>delete</mat-icon>
 											</button>
 										</div>
-										<div class="row form-row">
-											<ng-container [formGroupName]="i">
-												<div class="col-6">
-													<tf-tree-select [itemsList]="categoriesList" [fromId]="epi.get('categorie_id').value" [required]="true" [withAll]="false" [translateTitle]="'MATERIELS.CATEGORIE'" [itemsToHandle]="itemsToHandle" (onChangedItem)="categorieChanged($event, i)" (onSelectedItemsToHandle)="itemsToHandleSelected($event, i)" *ngIf="categoriesList" [fromSource]="false"></tf-tree-select>
+										<ng-container [formGroupName]="i">
+											<div class="row form-row">
+												<div class="col-12">
+													<tf-tree-select [itemsList]="categoriesList" [fromId]="epi.get('categorie_id').value" [required]="true" [withAll]="false" [translateTitle]="'MATERIELS.CATEGORIE'" [itemsToHandle]="itemsToHandle" (onChangedItem)="categorieChanged($event, i)" (onSelectedItemsToHandle)="itemsToHandleSelected($event, i)" *ngIf="categoriesList" [fromSource]="true"></tf-tree-select>
 												</div>
-												<mat-form-field class="col-2 offset-2">
+											</div>
+											<div class="row form-row">
+												<mat-form-field class="col-3">
 													<mat-label>{{'DEMANDES_EPIS.QTE' | translate}}</mat-label>
 													<input class="form-control" matInput type="number" min="1" name="qte" formControlName="qte" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('qte')" />
 													<mat-error *ngIf="isControlHasError('qte','required')">
@@ -34,15 +36,54 @@
 														<strong>{{ 'AUTH.VALIDATION.MINIMAL_QUANTITY' | translate }}</strong>
 													</mat-error>
 												</mat-form-field>
+												<mat-form-field class="col-xl-3" *ngIf="epi?.get('displayExtraFields')?.value">
+													<mat-label>{{'MATERIELS.SIZE.LABEL' | translate}}</mat-label>
+													<input class="form-control" matInput type="number" name="size" formControlName="size" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('size')" />
+													<mat-error *ngIf="isControlHasError('size','required')">
+														<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+													</mat-error>
+												</mat-form-field>
+
+												<mat-form-field class="col-xl-3" *ngIf="epi?.get('displayExtraFields')?.value">
+													<mat-label>{{'MATERIELS.CRITERIA.LABEL' | translate}}</mat-label>
+													<mat-select class="form-control" formControlName="criteria_id" name="criteria_id" placeholder="{{'ACTION.ENTER_HERE' | translate}}">
+														<mat-option *ngFor="let item of criteriasList" [value]="item.id">
+															{{item.libelle}}
+														</mat-option>
+													</mat-select>
+													<button type="button" mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('criteria_id'); $event.stopPropagation()">
+														<mat-icon>clear</mat-icon>
+													</button>
+													<mat-error *ngIf="isControlHasError('criteria_id','required')">
+														<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+													</mat-error>
+												</mat-form-field>
+
+												<mat-form-field class="col-xl-3" *ngIf="epi?.get('displaySubcategory')?.value">
+													<mat-label>{{'MATERIELS.SUB_CATEGORY.LABEL' | translate}}</mat-label>
+													<mat-select class="form-control" formControlName="subcategory_id" name="subcategory_id" placeholder="{{'ACTION.ENTER_HERE' | translate}}">
+														<mat-option *ngFor="let item of subcategoriesList" [value]="item.id">
+															{{item.libelle}}
+														</mat-option>
+													</mat-select>
+													<button type="button" mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('subcategory_id'); $event.stopPropagation()">
+														<mat-icon>clear</mat-icon>
+													</button>
+													<mat-error *ngIf="isControlHasError('subcategory_id','required')">
+														<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+													</mat-error>
+												</mat-form-field>
+											</div>	
+											<div class="row form-row">
 												<mat-form-field class="col-12">
 													<mat-label>{{'DEMANDES_EPIS.COMMENT' | translate}}</mat-label>
-													<textarea class="form-control" matInput type="text" name="comment" formControlName="comment" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('comment')" ></textarea>
+													<textarea class="form-control" matInput rows="3" type="text" name="comment" formControlName="comment" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('comment')" ></textarea>
 													<mat-error *ngIf="isControlHasError('comment','required')">
 														<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 													</mat-error>
 												</mat-form-field>
-											</ng-container>
-										</div>
+											</div>
+										</ng-container>
 									</div>
 								</ng-container>
 							</div>
