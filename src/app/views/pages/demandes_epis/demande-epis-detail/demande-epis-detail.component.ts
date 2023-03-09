@@ -5,6 +5,8 @@ import { TranslateService } from '@ngx-translate/core';
 import Swal from 'sweetalert2';
 import { DemandeEpisService } from '@app/core/services';
 import { DemandeEpis } from '@app/core/models';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { UpdateStatusModalComponent } from '@app/views/partials/layout';
 
 @Component({
   selector: 'tf-demande-epis-detail',
@@ -21,6 +23,7 @@ export class DemandeEpisDetailComponent implements OnInit, OnDestroy {
 		private translate:TranslateService,
 		private cdr: ChangeDetectorRef,
 		private demandeEpisService: DemandeEpisService,
+		private modalService: NgbModal,
 	) {}
 
 	ngOnInit() {
@@ -70,5 +73,23 @@ export class DemandeEpisDetailComponent implements OnInit, OnDestroy {
 					})
 				}
 			})
+	}
+
+	updateStatus(){
+		const modalRef = this.modalService.open(UpdateStatusModalComponent);
+		modalRef.result.then(res=>{
+			this.demandeEpisService.update(this.demande_epi.id, {status_id:res}).toPromise().then(res=>{
+				Swal.fire({
+          icon: 'success',
+          title: this.translate.instant("DEMANDES_EPIS.NOTIF.UPDATED.TITLE"),
+          showConfirmButton: false,
+          timer: 1500
+        }).then(() => {
+          this.getDemandeEpi(this.demande_epi.id);
+        });
+			}).catch(error=>{
+				console.log(error);
+			});
+		})
 	}
 }

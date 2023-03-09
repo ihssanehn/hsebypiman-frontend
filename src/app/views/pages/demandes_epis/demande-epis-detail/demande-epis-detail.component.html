@@ -24,7 +24,15 @@
 						<div class="box" style="flex:1">
 							<p><span class="label pull-left mr-2">{{'DEMANDES_EPIS.ID.SHORTTITLE' | translate}}</span><span class="">#{{demande_epi.id}}</span></p>
 							<p><span class="label pull-left mr-2">{{'DEMANDES_EPIS.CREATOR.SHORTTITLE' | translate}}</span><span class="">{{demande_epi.creator | fullName}}</span></p>
-							<p><span class="label pull-left mr-2">{{'DEMANDES_EPIS.STATUS.TITLE' | translate}}</span><span class="">{{demande_epi.status.libelle}}</span></p>
+							<p>
+								<span class="label pull-left mr-2">{{'DEMANDES_EPIS.STATUS.TITLE' | translate}}</span>
+								<span [ngStyle]="{'color': demande_epi.status.color}">{{demande_epi.status.libelle}}</span>
+								<span>
+								<!-- <button mat-icon-button > -->
+									<mat-icon class="pointer text-primary" color="info" matTooltip="{{'DEMANDES_EPIS.ACTION.UPDATE_STATUS' | translate}}" (click)="updateStatus()" *ngxPermissionsOnly="['ROOT','ADMIN']">edit</mat-icon>
+								<!-- </button> -->
+							</span>
+							</p>
 						</div>
 						<div class="tf-divider">
 							<span></span>
