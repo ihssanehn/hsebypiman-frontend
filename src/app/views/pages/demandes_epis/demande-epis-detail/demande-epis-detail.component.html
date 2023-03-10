@@ -1,7 +1,7 @@
-<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8" id="portlet-remonte" *ngIf="demande_epi">
+<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8" id="portlet-demande" *ngIf="demande_epi">
 	<div class="tf-portlet-header">
 		<span class="title">
-			<a [routerLink]="['/materiel/demandes-epis/list']">{{'MENU.SUB_DEMANDES_EPIS.LIST' | translate}}</a><span class="divider">></span><span class="id-item">{{'MENU.SUB_DEMANDES_EPIS.DETAIL' | translate}}</span>
+			<a [routerLink]="['/materiel/demandes-epis/list']">{{'MENU.SUB_DEMANDES_EPI.LIST' | translate}}</a><span class="divider">></span><span class="id-item">{{'MENU.SUB_DEMANDES_EPI.DETAIL' | translate}}</span>
 		</span>
 		<div ngbDropdown placement="bottom-right" class="d-inline-block pull-right">
 			<button ngbDropdownToggle mat-icon-button color="primary" matTooltip="Actions" style="line-height: 0;height: 0;">
@@ -22,14 +22,14 @@
 					<div class="card">
 						<h3>{{'CHANTIERS.CARD.GENERAL_INFOS.TITLE' | translate}}</h3>
 						<div class="box" style="flex:1">
-							<p><span class="label pull-left mr-2">{{'DEMANDES_EPIS.ID.SHORTTITLE' | translate}}</span><span class="">#{{demande_epi.id}}</span></p>
-							<p><span class="label pull-left mr-2">{{'DEMANDES_EPIS.CREATOR.SHORTTITLE' | translate}}</span><span class="">{{demande_epi.creator | fullName}}</span></p>
+							<p><span class="label pull-left mr-2">{{'DEMANDES_EPI.ID.SHORTTITLE' | translate}}</span><span class="">#{{demande_epi.id}}</span></p>
+							<p><span class="label pull-left mr-2">{{'DEMANDES_EPI.CREATOR.SHORTTITLE' | translate}}</span><span class="">{{demande_epi.creator | fullName}}</span></p>
 							<p>
-								<span class="label pull-left mr-2">{{'DEMANDES_EPIS.STATUS.TITLE' | translate}}</span>
+								<span class="label pull-left mr-2">{{'DEMANDES_EPI.STATUS.TITLE' | translate}}</span>
 								<span [ngStyle]="{'color': demande_epi.status.color}">{{demande_epi.status.libelle}}</span>
 								<span>
 								<!-- <button mat-icon-button > -->
-									<mat-icon class="pointer text-primary" color="info" matTooltip="{{'DEMANDES_EPIS.ACTION.UPDATE_STATUS' | translate}}" (click)="updateStatus()" *ngxPermissionsOnly="['ROOT','ADMIN']">edit</mat-icon>
+									<mat-icon class="pointer text-primary" color="info" matTooltip="{{'DEMANDES_EPI.ACTION.UPDATE_STATUS' | translate}}" (click)="updateStatus()" *ngxPermissionsOnly="['ROOT','ADMIN']">edit</mat-icon>
 								<!-- </button> -->
 							</span>
 							</p>
@@ -41,11 +41,17 @@
 							<p><span class="label pull-left mr-2">{{'COMMON.CREATED_AT.SHORTTITLE' | translate}}</span><span class="">{{demande_epi.created_at | date:'dd/MM/yyyy'}}</span></p>
 							<p><span class="label pull-left mr-2">{{'COMMON.UPDATED_AT.SHORTTITLE' | translate}}</span><span class="">{{demande_epi.updated_at | date:'dd/MM/yyyy'}}</span></p>
 						</div>
+						<div class="tf-divider">
+							<span></span>
+						</div>
+						<div class="box pt-2">
+							<tf-comments-list	tf-comments-list *ngIf="demande_epi" [showUserTag]="false" [comments]="demande_epi.comments" (onAddComment)="onAddComment($event)"></tf-comments-list>
+						</div>
 					</div>
 				</div>
 				<div class="col-md-8">
 					<div class="card" >
-						<h3>{{'DEMANDES_EPIS.EPI_LIST.TITLE' | translate}}</h3>
+						<h3>{{'DEMANDES_EPI.EPI_LIST.TITLE' | translate}}</h3>
 						<div *ngIf="demande_epi?.epis; else noEpis" >
 							<table class="table">
 								<thead>
@@ -72,7 +78,7 @@
 						</div>
 						<ng-template #noEpis>
 							<div class="box">
-								{{'DEMANDES_EPIS.CARD.NO_EPIS' | translate}}
+								{{'DEMANDES_EPI.CARD.NO_EPIS' | translate}}
 							</div>
 						</ng-template>
 					</div>

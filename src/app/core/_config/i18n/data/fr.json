@@ -606,7 +606,7 @@
 		"ACTION": {
 			"ADD_TRAVAUX": "Ajouter un travail dangereux",
 			"ADD_CONSIGNE": "Ajouter consigne (ee)",
-			"ADD_EPI_DISPOSITION": "Ajouter epi disposition (ees)",
+			"ADD_EPI_DISPOSITION": "Ajouter EPI disposition (ees)",
 			"ADD_MOYEN_DISPOSITION": "Ajouter moyen disposition (ees)",
 			"ADD_CATEGORIE_PDP_RISQUE": "Ajouter Categorie Pdp Risque",
 			"ADD_PDP_RISQUE": "Ajouter Pdp Risque",
@@ -1176,7 +1176,7 @@
 			"TITLE": "Archivé"
 		}
 	},
-	"DEMANDES_EPIS":{
+	"DEMANDES_EPI":{
 		"ACTION": {
 			"CREATE":{
 				"TITLE": "Nouvelle demande d'EPI"
@@ -1199,8 +1199,8 @@
 			"TITLE": "Statut de la demande"
 		},
 		"EPI_LIST": {
-			"SHORTTITLE": "EPIs",
-			"TITLE": "Liste des EPIs"
+			"SHORTTITLE": "EPI",
+			"TITLE": "Liste des EPI"
 		},
 		"QTE": "Quantité",
 		"COMMENT": "Commentaire",
@@ -1843,7 +1843,7 @@
 		"CAUSERIES": "Causeries",
 		"DASHBOARD": "Tableau de Bord",
 		"DISCUSS": "Discuss",
-		"DEMANDES_EPIS": "Demandes d'EPIs",
+		"DEMANDES_EPI": "Demandes d'EPI",
 		"QUIZ": "Quizz",
 		"EDIT_MY_PASSWORD": "Modifier mon mot de passe",
 		"EDIT_PROFILE": "Modifier mon profil utilisateur",
@@ -1896,7 +1896,7 @@
 			"EDIT": "Modifier le chantier",
 			"LIST": "Liste des chantiers"
 		},
-		"SUB_DEMANDES_EPIS":{
+		"SUB_DEMANDES_EPI":{
 			"ADD": "Nouvelle demande",
 			"DETAIL": "Détail de la demande",
 			"EDIT": "Modifier la demande",

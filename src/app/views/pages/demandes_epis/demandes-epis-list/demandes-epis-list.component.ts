@@ -107,8 +107,8 @@ export class DemandesEpisListComponent implements OnInit, AfterViewInit {
 	// deleteDemandeEpis(demandeId) {
 	// 	Swal.fire({
 	// 			icon: 'warning',
-	// 			title: this.translate.instant("DEMANDES_EPIS.NOTIF.DEMANDE_CANCEL_CONFIRMATION.TITLE"),
-	// 			text: this.translate.instant("DEMANDES_EPIS.NOTIF.DEMANDE_CANCEL_CONFIRMATION.LABEL"),
+	// 			title: this.translate.instant("DEMANDES_EPI.NOTIF.DEMANDE_CANCEL_CONFIRMATION.TITLE"),
+	// 			text: this.translate.instant("DEMANDES_EPI.NOTIF.DEMANDE_CANCEL_CONFIRMATION.LABEL"),
 	// 			showConfirmButton: true,
 	// 			showCancelButton: true,
 	// 			cancelButtonText: this.translate.instant("ACTION.CANCEL"),
@@ -119,7 +119,7 @@ export class DemandesEpisListComponent implements OnInit, AfterViewInit {
 	// 				this.demandeEpisService.delete(demandeId).toPromise().then(res=>{
 	// 					this.getDemandesEpis();
 	// 					Swal.fire({
-	// 						title: this.translate.instant("DEMANDES_EPIS.NOTIF.DEMANDE_CANCELED.TITLE"),
+	// 						title: this.translate.instant("DEMANDES_EPI.NOTIF.DEMANDE_CANCELED.TITLE"),
 	// 						showConfirmButton: false,
 	// 						icon: 'success',
 	// 						timer: 1500
@@ -175,7 +175,7 @@ export class DemandesEpisListComponent implements OnInit, AfterViewInit {
 			this.demandeEpisService.update(demandeEpis_id, {status_id:res}).toPromise().then(res=>{
 				Swal.fire({
           icon: 'success',
-          title: this.translate.instant("DEMANDES_EPIS.NOTIF.UPDATED.TITLE"),
+          title: this.translate.instant("DEMANDES_EPI.NOTIF.UPDATED.TITLE"),
           showConfirmButton: false,
           timer: 1500
         }).then(() => {

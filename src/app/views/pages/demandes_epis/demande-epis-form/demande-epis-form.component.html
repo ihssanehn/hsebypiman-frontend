@@ -2,9 +2,9 @@
 	<tf-portlet-body>
 		<div class="tf-heading tf-heading--lg" style="margin-top: 0;">
 			<div *ngIf="edit">
-				{{'MENU.SUB_DEMANDES_EPIS.EDIT' | translate}}
+				{{'MENU.SUB_DEMANDES_EPI.EDIT' | translate}}
 			</div>
-			<span *ngIf="!edit">{{'MENU.SUB_DEMANDES_EPIS.ADD' | translate}}</span>
+			<span *ngIf="!edit">{{'MENU.SUB_DEMANDES_EPI.ADD' | translate}}</span>
 		</div>
 		<div>
 			<div class="tf-wizard-v4__content" data-tfwizard-type="step-content" data-tfwizard-state="current">
@@ -14,20 +14,20 @@
 							<div class="col-12">
 								<ng-container formArrayName="epis">
 									<div class="card card-custom p-4 mb-4"  *ngFor="let epi of epis.controls; index as i">
-										<div class="row d-flex justify-content-end">
-											<button mat-icon-button color="warn" type="button" (click)="removeEpi(i)">
-												<mat-icon>delete</mat-icon>
-											</button>
-										</div>
 										<ng-container [formGroupName]="i">
 											<div class="row form-row">
-												<div class="col-12">
+												<div class="col-11">
 													<tf-tree-select [itemsList]="categoriesList" [fromId]="epi.get('categorie_id').value" [required]="true" [withAll]="false" [translateTitle]="'MATERIELS.CATEGORIE'" [itemsToHandle]="itemsToHandle" (onChangedItem)="categorieChanged($event, i)" (onSelectedItemsToHandle)="itemsToHandleSelected($event, i)" *ngIf="categoriesList" [fromSource]="true"></tf-tree-select>
+												</div>
+												<div class="col-1 text-right">
+													<button mat-icon-button color="warn" type="button" (click)="removeEpi(i)">
+														<mat-icon>delete</mat-icon>
+													</button>
 												</div>
 											</div>
 											<div class="row form-row">
 												<mat-form-field class="col-3">
-													<mat-label>{{'DEMANDES_EPIS.QTE' | translate}}</mat-label>
+													<mat-label>{{'DEMANDES_EPI.QTE' | translate}}</mat-label>
 													<input class="form-control" matInput type="number" min="1" name="qte" formControlName="qte" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('qte')" />
 													<mat-error *ngIf="isControlHasError('qte','required')">
 														<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
@@ -76,7 +76,7 @@
 											</div>	
 											<div class="row form-row">
 												<mat-form-field class="col-12">
-													<mat-label>{{'DEMANDES_EPIS.COMMENT' | translate}}</mat-label>
+													<mat-label>{{'DEMANDES_EPI.COMMENT' | translate}}</mat-label>
 													<textarea class="form-control" matInput rows="3" type="text" name="comment" formControlName="comment" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('comment')" ></textarea>
 													<mat-error *ngIf="isControlHasError('comment','required')">
 														<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
@@ -87,8 +87,8 @@
 									</div>
 								</ng-container>
 							</div>
-							<div class="col-12 text-center">
-								<button type="button" mat-raised-button color="info" (click)="addEpi()">Ajouter un EPI</button>
+							<div class="col-12 mt-4">
+								<button type="button" class="p-2 w-100" mat-raised-button color="success" (click)="addEpi()"><mat-icon class="mr-2">add</mat-icon>Ajouter un EPI</button>
 							</div>
 						</div>
 					</div>

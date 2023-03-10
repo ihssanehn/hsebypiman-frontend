@@ -139,7 +139,7 @@ export class DemandeEpisEditComponent implements OnInit, OnDestroy {
 		await this.demandeEpisService.update(this.demandeEpis.id, _datas).toPromise().then(res=>{
 			Swal.fire({
 				icon: 'success',
-				title: this.translate.instant("DEMANDES_EPIS.NOTIF.UPDATED.TITLE"),
+				title: this.translate.instant("DEMANDES_EPI.NOTIF.UPDATED.TITLE"),
 				showConfirmButton: false,
 				timer: 1500
 			}).then(() => {

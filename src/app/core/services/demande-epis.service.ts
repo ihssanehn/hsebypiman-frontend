@@ -43,5 +43,10 @@ export class DemandeEpisService extends HttpService{
     var url = this.baseUrl+'/export?'+queryString+'&entity='+localStorage.getItem(environment.entity)+'&token='+localStorage.getItem(environment.authTokenKey);
     window.open(url, '_blank');
   }
+  addComment(id, comment){
+		const httpHeaders = new HttpHeaders();
+		httpHeaders.set("Content-Type", "multipart/form-data");
+    return this.http.post<JsonResponse<any>>(this.baseUrl+'/'+id+'/comment', comment, { headers: httpHeaders });
+  }
 
 }

@@ -5,7 +5,7 @@
 				<div class="row">
 
 					<mat-form-field class="col-xl-3 col-md-4 col-sm-6 col-xs-12 mat-filter-no-head">
-						<mat-label>{{'DEMANDES_EPIS.CREATOR.TITLE' | translate}}</mat-label>
+						<mat-label>{{'DEMANDES_EPI.CREATOR.TITLE' | translate}}</mat-label>
 						<mat-select class="form-control" formControlName="creator_id" name="creator_id">
 							<mat-option>{{'FILTER.SEARCH_ALL' | translate}}</mat-option>
 							<mat-option *ngFor="let user of users" [value]="user.id">
@@ -46,7 +46,7 @@
 
 		
 					<mat-form-field class="col-xl-3 col-md-4 col-sm-6 col-xs-12 mat-filter-no-head">
-						<mat-label>{{'DEMANDES_EPIS.STATUS.TITLE' | translate}}</mat-label>
+						<mat-label>{{'DEMANDES_EPI.STATUS.TITLE' | translate}}</mat-label>
 						<mat-select class="form-control" formControlName="status_id" name="status_id">
 							<mat-option [value]="'all'">{{'FILTER.SEARCH_ALL' | translate}}</mat-option>
 							<mat-option *ngFor="let statu of status" [value]="statu.id">

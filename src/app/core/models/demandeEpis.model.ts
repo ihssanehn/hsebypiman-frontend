@@ -8,5 +8,6 @@ export class DemandeEpis {
     statut_id?:number;
     creator?:User;
     status?:Status;
+    comments?:Comment[];
     epis?:Array<any>;
 }

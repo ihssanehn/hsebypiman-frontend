@@ -363,11 +363,11 @@ export class MenuConfig {
 						icon: 'view_list',
 					},
 					{
-						title: 'Demandes d\'epis',
+						title: 'Demandes d\'EPI',
 						root: true,
 						alignment: 'left',
 						page: '/materiel/demandes-epis/list',
-						translate: 'MENU.DEMANDES_EPIS',
+						translate: 'MENU.DEMANDES_EPI',
 						icon: 'view_list',
 					},
 					{
