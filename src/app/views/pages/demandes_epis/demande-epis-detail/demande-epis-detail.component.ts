@@ -52,8 +52,8 @@ export class DemandeEpisDetailComponent implements OnInit, OnDestroy {
 	cancelDemandeEpis() {
 		Swal.fire({
 				icon: 'warning',
-				title: this.translate.instant("DEMANDES_EPIS.NOTIF.DEMANDE_CANCEL_CONFIRMATION.TITLE"),
-				text: this.translate.instant("DEMANDES_EPIS.NOTIF.DEMANDE_CANCEL_CONFIRMATION.LABEL"),
+				title: this.translate.instant("DEMANDES_EPI.NOTIF.DEMANDE_CANCEL_CONFIRMATION.TITLE"),
+				text: this.translate.instant("DEMANDES_EPI.NOTIF.DEMANDE_CANCEL_CONFIRMATION.LABEL"),
 				showConfirmButton: true,
 				showCancelButton: true,
 				cancelButtonText: this.translate.instant("ACTION.CANCEL"),
@@ -63,7 +63,7 @@ export class DemandeEpisDetailComponent implements OnInit, OnDestroy {
 
 					this.demandeEpisService.delete(this.demande_epi.id).toPromise().then(res=>{
 						Swal.fire({
-							title: this.translate.instant("DEMANDES_EPIS.NOTIF.DEMANDE_CANCELED.TITLE"),
+							title: this.translate.instant("DEMANDES_EPI.NOTIF.DEMANDE_CANCELED.TITLE"),
 							showConfirmButton: false,
 							icon: 'success',
 							timer: 1500
@@ -81,7 +81,7 @@ export class DemandeEpisDetailComponent implements OnInit, OnDestroy {
 			this.demandeEpisService.update(this.demande_epi.id, {status_id:res}).toPromise().then(res=>{
 				Swal.fire({
           icon: 'success',
-          title: this.translate.instant("DEMANDES_EPIS.NOTIF.UPDATED.TITLE"),
+          title: this.translate.instant("DEMANDES_EPI.NOTIF.UPDATED.TITLE"),
           showConfirmButton: false,
           timer: 1500
         }).then(() => {
@@ -92,4 +92,36 @@ export class DemandeEpisDetailComponent implements OnInit, OnDestroy {
 			});
 		})
 	}
+
+
+	onAddComment(newComment: string){
+		try {
+			let comment = {
+				'comment': newComment
+			};
+	  
+			this.demandeEpisService.addComment(this.demande_epi.id, comment)
+			  .toPromise()
+			  .then((res) => {
+				this.cdr.markForCheck();
+				this.demande_epi.comments.push(res.result.data);
+			  })
+			  .catch(err =>{ 
+	  
+				Swal.fire({
+				  icon: 'error',
+				  title: this.translate.instant("NOTIF.INCOMPLETE_FORM.TITLE"),
+				  showConfirmButton: false,
+				  timer: 1500
+				});
+	  
+			  });
+			  
+			this.cdr.markForCheck();
+		  } catch (error) {
+			console.error(error);
+			throw error;
+		  }
+	}
+
 }

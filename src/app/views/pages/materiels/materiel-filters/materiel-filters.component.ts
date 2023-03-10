@@ -4,7 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import { CategorieService, PersonnelService } from '@app/core/services';
 import { Categorie, Status } from '@app/core/models';
-import { User } from '@app/core/auth';
+import { User, AuthService } from '@app/core/auth';
 import { debounceTime } from 'rxjs/operators';
 import { DateFrToEnPipe, RecursiveSearchPipe } from '@app/core/_base/layout';
 
@@ -31,6 +31,7 @@ export class MaterielFiltersComponent implements OnInit, AfterViewInit
     private categorieService:CategorieService,
     private userService:PersonnelService,
     private fb: FormBuilder,
+    private authService: AuthService,
     private cdr: ChangeDetectorRef,
     private dateFrToEnPipe:DateFrToEnPipe,
     private recursiveSearchPipe:RecursiveSearchPipe,
@@ -83,6 +84,11 @@ export class MaterielFiltersComponent implements OnInit, AfterViewInit
       only_atex:[null],
       only_available:[null]
     })
+
+    if(this.authService.currentUserValue.role.code == 'USER'){
+      this.filterForm.get('actual_user_id').disable();
+      this.filterForm.get('actual_user_id').setValue(this.authService.currentUserValue.id);
+    }
   }
  
   search(filters: any): void {

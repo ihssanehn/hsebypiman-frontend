@@ -10,7 +10,7 @@
 			</div>
 			
 			<div class="col d-flex justify-content-end">
-				<button class="btn-small ml-4 mb-4" mat-raised-button color="info" (click)="createDemandeEpis()">{{'DEMANDES_EPIS.ACTION.CREATE.TITLE' | translate}}</button>
+				<button class="btn-small ml-4 mb-4" mat-raised-button color="info" (click)="createDemandeEpis()">{{'DEMANDES_EPI.ACTION.CREATE.TITLE' | translate}}</button>
 				<button class="btn-small ml-4 mb-4" mat-raised-button color="info" (click)="exportList()">{{'ACTION.EXPORT' | translate}}</button>
 			</div>
 		</div>
@@ -19,7 +19,7 @@
 				<!-- creator Column -->
 				<ng-container matColumnDef="id">
 					<th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('id')">
-						{{'DEMANDES_EPIS.ID.SHORTTITLE' | translate}}
+						{{'DEMANDES_EPI.ID.SHORTTITLE' | translate}}
 						<i class="fa" [ngClass]="isOrderedBy('id') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('id') && {opacity:1}"></i>
 					</th>
 					<td mat-cell *matCellDef="let demandeEpis" (click)="viewDemandeEpis(demandeEpis.id)" class="pointer"> #{{demandeEpis.id}} </td>
@@ -28,7 +28,7 @@
 				<!-- creator Column -->
 				<ng-container matColumnDef="creator">
 					<th mat-header-cell *matHeaderCellDef class="th-order" (click)="setOrder('creator')">
-						{{'DEMANDES_EPIS.CREATOR.TITLE' | translate}}
+						{{'DEMANDES_EPI.CREATOR.TITLE' | translate}}
 						<i class="fa" [ngClass]="isOrderedBy('creator') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('creator') && {opacity:1}"></i>
 					</th>
 					<td mat-cell *matCellDef="let demandeEpis" (click)="viewDemandeEpis(demandeEpis.id)" class="pointer"> {{demandeEpis.creator | fullName}} </td>
@@ -56,7 +56,7 @@
 				<!-- status Column -->
 				<ng-container matColumnDef="status">
 					<th mat-header-cell *matHeaderCellDef class="text-center th-order" (click)="setOrder('status')">
-						{{'DEMANDES_EPIS.STATUS.SHORTTITLE' | translate}}
+						{{'DEMANDES_EPI.STATUS.SHORTTITLE' | translate}}
 						<i class="fa" [ngClass]="isOrderedBy('status') && filter.order_way == 'desc'?'fa-caret-down':'fa-caret-up'" [ngStyle]="isOrderedBy('status') && {opacity:1}"></i>
 					</th>
 					<td mat-cell *matCellDef="let demandeEpis" (click)="viewDemandeEpis(demandeEpis.id)" class="text-center pointer" [ngStyle]="demandeEpis.status?.color && {'color':demandeEpis.status.color}"> 
@@ -103,7 +103,7 @@
 	<button mat-icon-button color="primary" matTooltip="{{'ACTION.READ' | translate}}" (click)="viewDemandeEpis(demandeEpis_id)">
 		<mat-icon>visibility</mat-icon>
 	</button>
-	<button mat-icon-button color="info" matTooltip="{{'DEMANDES_EPIS.ACTION.UPDATE_STATUS' | translate}}" (click)="updateStatus(demandeEpis_id)" *ngxPermissionsOnly="['ROOT','ADMIN']">
+	<button mat-icon-button color="info" matTooltip="{{'DEMANDES_EPI.ACTION.UPDATE_STATUS' | translate}}" (click)="updateStatus(demandeEpis_id)" *ngxPermissionsOnly="['ROOT','ADMIN']">
 		<mat-icon>edit</mat-icon>
 	</button>
 </mat-menu>

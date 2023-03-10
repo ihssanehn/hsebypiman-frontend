@@ -13,6 +13,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class CommentsListComponent implements OnInit, AfterViewChecked {
 
   @Input() comments: Comment[];
+  @Input() showUserTag: boolean = true;
   @Output() onAddComment = new EventEmitter();
   
   @ViewChild('scrollMe', {static: true}) private myScrollContainer: ElementRef;

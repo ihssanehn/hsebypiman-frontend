@@ -73,7 +73,7 @@ export class DemandeEpisAddComponent implements OnInit {
       await this.demandeEpisService.create(_datas).toPromise().then(res=>{
         Swal.fire({
           icon: 'success',
-          title: this.translate.instant("DEMANDES_EPIS.NOTIF.CREATED.TITLE"),
+          title: this.translate.instant("DEMANDES_EPI.NOTIF.CREATED.TITLE"),
           showConfirmButton: false,
           timer: 1500
         }).then(() => {

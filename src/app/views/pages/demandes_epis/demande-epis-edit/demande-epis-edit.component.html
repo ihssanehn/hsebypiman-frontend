@@ -1,10 +1,10 @@
 <form [formGroup]="demandeEpisForm" *ngIf="loaded; else loading" autocomplete="off" class="tf-form tf-form--group-seperator-dashed " novalidate (ngSubmit)="demandeEpisForm.valid && onSubmit()" fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
-	<tf-portlet class="main-portlet-form" id="portlet-ar">
+	<tf-portlet class="main-portlet-form" id="portlet-demande">
 		<div class="tf-portlet-header ">
 			<span class="title">
-				<a [routerLink]="['/materiels/demande-epis/list']">{{'MENU.SUB_DEMANDES_EPIS.LIST' | translate}}</a>
+				<a [routerLink]="['/materiels/demande-epis/list']">{{'MENU.SUB_DEMANDES_EPI.LIST' | translate}}</a>
 				<span class="divider">></span>
-				<span class="id-item">{{'MENU.SUB_DEMANDES_EPIS.EDIT' | translate}}</span>
+				<span class="id-item">{{'MENU.SUB_DEMANDES_EPI.EDIT' | translate}}</span>
 			</span>
 		</div>
 		<tf-demande-epis-form [demandeEpisForm]="demandeEpisForm" [formStatus]="formStatus" [edit]="true" (onSubmit)="onSubmit()" (onCancel)="cancel()"></tf-demande-epis-form>
@@ -19,5 +19,5 @@
 	</div>
 </form>
 <ng-template #loading>
-	{{'DEMANDES_EPIS.NOTIF.LOADING.TITLE' | translate}}
+	{{'DEMANDES_EPI.NOTIF.LOADING.TITLE' | translate}}
 </ng-template>
