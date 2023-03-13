@@ -10,14 +10,14 @@
 							<ngx-avatar class="user-avatar" [round]="true" value="28%" cornerRadius="5" name="{{comment.creator.fullname}}" ></ngx-avatar>
 					</div>
 					<div class="card" [ngClass]="{'auth-comment':authIsCreator(comment), 'col-md-11':showUserTag, 'col-md-12':!showUserTag}">
-						<p class="text-left comment-title"><small><b>{{comment.creator?.fullname}}</b>, {{comment.updated_at | date:'d MMM y, hh:mm'}}</small></p>
+						<p class="text-left comment-title"><small><b>{{comment.creator?.fullname}}</b>, {{comment.updated_at | date:'d MMM y, HH:mm'}}</small></p>
 						<p class="text-left">{{comment.comment}}</p>
 					</div>
 				</ng-container>
 	
 				<ng-container *ngIf="authIsCreator(comment)">
 					<div class="card" [ngClass]="{'auth-comment':authIsCreator(comment), 'col-md-11':showUserTag, 'col-md-12':!showUserTag}">
-						<p class="comment-title"><small><b>{{'COMMENTS.AUTH' | translate}}</b>, {{comment.updated_at | date:'d MMM y, hh:mm'}}</small></p>
+						<p class="comment-title"><small><b>{{'COMMENTS.AUTH' | translate}}</b>, {{comment.updated_at | date:'d MMM y, HH:mm'}}</small></p>
 						<p>{{comment.comment}}</p>
 					</div>
 					<div class="col-md-1 flex-centered" *ngIf="showUserTag">
