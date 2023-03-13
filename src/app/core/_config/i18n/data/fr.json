@@ -1181,6 +1181,9 @@
 			"CREATE":{
 				"TITLE": "Nouvelle demande d'EPI"
 			},
+			"SEND":{
+				"TITLE": "Envoyer la demande"
+			},
 			"UPDATE":{
 				"TITLE": "Éditer la demande"
 			},
