@@ -113,7 +113,7 @@ export class MenuConfig {
 					translate: 'MENU.SUIVI_HSE',
 					needModule: true,
 					moduleCode: ['SALARIES'],
-					permissionOnly: ['ROOT', 'ADMIN', 'MANAGER']
+					permissionOnly: ['ROOT', 'ADMIN']
 				},
 				{
 					title: 'Discuss',

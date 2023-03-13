@@ -3,7 +3,7 @@
 		<span class="title">
 			<a [routerLink]="['/materiel/list']">{{'MENU.SUB_MATERIELS.LIST' | translate}}</a><span class="divider">></span><span class="id-item">{{materiel.libelle}}</span>
 		</span>
-		<div ngbDropdown placement="bottom-right" class="d-inline-block pull-right">
+		<div ngbDropdown placement="bottom-right" class="d-inline-block pull-right"  *ngxPermissionsOnly="['materiel_canUpdate', 'materiel_canArchieve']">
 			<button ngbDropdownToggle mat-icon-button color="primary" matTooltip="Actions" style="line-height: 0;height: 0;">
 				<mat-icon>more_vert</mat-icon>
 			</button>
@@ -150,7 +150,7 @@
 												<div class="col-2 d-flex justify-content-end">
 													<button mat-icon-button *ngxPermissionsOnly="['materiel_canUpdate']" (click)="$event.stopPropagation(); openPretModal('update', salarie.pivot)" matTooltip="{{'MATERIELS.ACTION.MODIFY_LOAN' | translate}}"><mat-icon color="accent">edit</mat-icon></button>
 													<!-- <button *ngxPermissionsOnly="['materiel_canUpdate']" mat-icon-button class="btn-small" color="warn" (click)="$event.stopPropagation(); deletePretMateriel(salarie.pivot.id)"><mat-icon>delete</mat-icon></button> -->
-													<mat-icon class="btn-small ml-4 pointer pt-1" color="warn" (click)="$event.stopPropagation(); deletePretMateriel(actual_user.pivot.id)">delete</mat-icon>
+													<mat-icon class="btn-small ml-4 pointer pt-1" *ngxPermissionsOnly="['materiel_canUpdate']" color="warn" (click)="$event.stopPropagation(); deletePretMateriel(actual_user.pivot.id)">delete</mat-icon>
 
 												</div>
 											</ng-container>
