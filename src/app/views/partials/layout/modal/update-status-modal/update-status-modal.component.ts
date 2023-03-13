@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { StatusService } from '@app/core/services';
 import { Status } from '@app/core/models';
+import { AuthService } from '@app/core/auth';
 
 @Component({
   selector: 'tf-update-status-modal',
@@ -16,6 +17,7 @@ export class UpdateStatusModalComponent implements OnInit {
   constructor(
     public statusService: StatusService,
     public activeModal: NgbActiveModal,
+    public authService: AuthService,
     private cdr: ChangeDetectorRef
   ) { }
 
@@ -25,7 +27,11 @@ export class UpdateStatusModalComponent implements OnInit {
 
   async getStatus(){
     await this.statusService.getAllFromModel('Demande').toPromise().then(res=>{
-      this.statusList = res.result.data;
+      if(this.authService.currentUserValue.role.code == 'MANAGER'){
+        this.statusList = res.result.data.filter(x=>['VALIDEE', 'REFUSEE', 'ENVOYEE'].includes(x.code));
+      }else{
+        this.statusList = res.result.data;
+      }
       this.cdr.markForCheck();
     })
   }

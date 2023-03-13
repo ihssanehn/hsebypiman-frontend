@@ -7,6 +7,7 @@ import { DemandeEpisService } from '@app/core/services';
 import { DemandeEpis } from '@app/core/models';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UpdateStatusModalComponent } from '@app/views/partials/layout';
+import { AuthService } from '@app/core/auth';
 
 @Component({
   selector: 'tf-demande-epis-detail',
@@ -23,6 +24,7 @@ export class DemandeEpisDetailComponent implements OnInit, OnDestroy {
 		private translate:TranslateService,
 		private cdr: ChangeDetectorRef,
 		private demandeEpisService: DemandeEpisService,
+		private authService: AuthService,
 		private modalService: NgbModal,
 	) {}
 
@@ -92,7 +94,9 @@ export class DemandeEpisDetailComponent implements OnInit, OnDestroy {
 			});
 		})
 	}
-
+	cannotEditDemande(){
+		return this.authService.currentUserValue.role.code == 'USER' && this.demande_epi.status.code != 'ENVOYEE';
+	}
 
 	onAddComment(newComment: string){
 		try {

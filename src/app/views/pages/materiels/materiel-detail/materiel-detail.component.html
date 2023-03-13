@@ -84,7 +84,7 @@
 											(click)="openDocumentModal(doc)"
 											src="./assets/media/hse-svg/picto-file.svg">
 										<div class="mt-2">{{doc.libelle | truncate:15}}</div>
-										<button mat-icon-button matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteDocument(doc.id); $event.stopPropagation()">
+										<button mat-icon-button matTooltip="{{'ACTION.DELETE' | translate}}" (click)="deleteDocument(doc.id); $event.stopPropagation()" *ngxPermissionsOnly="['ROOT', 'ADMIN']">
 											<mat-icon color="primary">close</mat-icon>
 										</button>
 									</div>

@@ -8,7 +8,7 @@
 				<mat-icon>more_vert</mat-icon>
 			</button>
 			<div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
-				<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editDemandeEpis()">
+				<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" [disabled]="cannotEditDemande()" (click)="editDemandeEpis()">
 					<mat-icon>edit</mat-icon>
 				</button>
 				<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="cancelDemandeEpis()">
@@ -29,7 +29,7 @@
 								<span [ngStyle]="{'color': demande_epi.status.color}">{{demande_epi.status.libelle}}</span>
 								<span>
 								<!-- <button mat-icon-button > -->
-									<mat-icon class="pointer text-primary" color="info" matTooltip="{{'DEMANDES_EPI.ACTION.UPDATE_STATUS' | translate}}" (click)="updateStatus()" *ngxPermissionsOnly="['ROOT','ADMIN']">edit</mat-icon>
+									<mat-icon class="pointer text-primary" color="info" matTooltip="{{'DEMANDES_EPI.ACTION.UPDATE_STATUS' | translate}}" (click)="updateStatus()" *ngxPermissionsOnly="['ROOT','ADMIN', 'MANAGER']">edit</mat-icon>
 								<!-- </button> -->
 							</span>
 							</p>
