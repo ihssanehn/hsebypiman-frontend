@@ -11,7 +11,7 @@
 	</tf-portlet>
 	<div>
 		<button mat-raised-button [ngClass]="{'tf-btn-loading tf-spinner tf-spinner--sm tf-spinner--right tf-spinner--md tf-spinner--light': formloading}" [disabled]="formloading || demandeEpisForm.invalid" color="success" class="pull-right">
-			{{'ACTION.SAVE' | translate}}
+			{{'DEMANDES_EPI.ACTION.SEND.TITLE' | translate}}
 		</button>
 		<button type="button" mat-raised-button color="info" (click)="onCancel()">
 			{{'ACTION.CANCEL' | translate}}
