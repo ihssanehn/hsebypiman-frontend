@@ -10,10 +10,10 @@
 			<div class="tf-wizard-v4__content" data-tfwizard-type="step-content" data-tfwizard-state="current">
 				<div class="tf-form__section tf-form__section--first">
 					<div class="tf-wizard-v4__form">
-						<div class="row form-row">
-							<div class="col-12">
-								<ng-container formArrayName="epis">
-									<div class="card card-custom p-4 mb-4"  *ngFor="let epi of epis.controls; index as i">
+						<ng-container formArrayName="epis">
+							<div class="row mt-4" *ngFor="let epi of epis.controls; index as i">
+								<div class="col-12">
+									<div class="card card-custom p-4 mb-4"  >
 										<ng-container [formGroupName]="i">
 											<div class="row form-row">
 												<div class="col-11">
@@ -43,7 +43,7 @@
 														<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 													</mat-error>
 												</mat-form-field>
-
+		
 												<mat-form-field class="col-xl-3" *ngIf="epi?.get('displayExtraFields')?.value">
 													<mat-label>{{'MATERIELS.CRITERIA.LABEL' | translate}}</mat-label>
 													<mat-select class="form-control" formControlName="criteria_id" name="criteria_id" placeholder="{{'ACTION.ENTER_HERE' | translate}}">
@@ -58,7 +58,7 @@
 														<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 													</mat-error>
 												</mat-form-field>
-
+		
 												<mat-form-field class="col-xl-3" *ngIf="epi?.get('displaySubcategory')?.value">
 													<mat-label>{{'MATERIELS.SUB_CATEGORY.LABEL' | translate}}</mat-label>
 													<mat-select class="form-control" formControlName="subcategory_id" name="subcategory_id" placeholder="{{'ACTION.ENTER_HERE' | translate}}">
@@ -73,8 +73,6 @@
 														<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 													</mat-error>
 												</mat-form-field>
-											</div>	
-											<div class="row form-row">
 												<mat-form-field class="col-12">
 													<mat-label>{{'DEMANDES_EPI.COMMENT' | translate}}</mat-label>
 													<textarea class="form-control" matInput rows="3" type="text" name="comment" formControlName="comment" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('comment')" ></textarea>
@@ -85,8 +83,10 @@
 											</div>
 										</ng-container>
 									</div>
-								</ng-container>
+								</div>
 							</div>
+						</ng-container>	
+						<div class="row">
 							<div class="col-12 mt-4">
 								<button type="button" class="p-2 w-100" mat-raised-button color="success" (click)="addEpi()"><mat-icon class="mr-2">add</mat-icon>Ajouter un EPI</button>
 							</div>
