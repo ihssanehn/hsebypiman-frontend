@@ -606,7 +606,7 @@
 		"ACTION": {
 			"ADD_TRAVAUX": "Ajouter un travail dangereux",
 			"ADD_CONSIGNE": "Ajouter consigne (ee)",
-			"ADD_EPI_DISPOSITION": "Ajouter epi disposition (ees)",
+			"ADD_EPI_DISPOSITION": "Ajouter EPI disposition (ees)",
 			"ADD_MOYEN_DISPOSITION": "Ajouter moyen disposition (ees)",
 			"ADD_CATEGORIE_PDP_RISQUE": "Ajouter Categorie Pdp Risque",
 			"ADD_PDP_RISQUE": "Ajouter Pdp Risque",
@@ -912,6 +912,9 @@
 		"SEND": "Envoyer"
 	},
 	"COMMON": {
+		"ACTION":{
+			"UPDATE_STATUS":"Modifier le statut"
+		},
 		"ADRESS": {
 			"LABEL": "Adresse",
 			"SHORTTITLE": "Adresse",
@@ -1065,6 +1068,9 @@
 			"LABEL": "Société",
 			"TITLE": "Société"
 		},
+		"STATUS":{
+			"TITLE": "Statut"
+		},
 		"TODAY_DATE": {
 			"TITLE": "Date du jour"
 		},
@@ -1168,6 +1174,59 @@
 		},
 		"ARCHIVED": {
 			"TITLE": "Archivé"
+		}
+	},
+	"DEMANDES_EPI":{
+		"ACTION": {
+			"CREATE":{
+				"TITLE": "Nouvelle demande d'EPI"
+			},
+			"SEND":{
+				"TITLE": "Envoyer la demande"
+			},
+			"UPDATE":{
+				"TITLE": "Éditer la demande"
+			},
+			"UPDATE_STATUS":"Éditer le statut"
+		},
+		"ID": {
+			"SHORTTITLE": "Numéro",
+			"TITLE": "Numéro de demande"
+		},
+		"CREATOR": {
+			"SHORTTITLE": "Demandeur",
+			"TITLE": "Créateur de la demande"
+		},
+		"STATUS": {
+			"SHORTTITLE": "Statut",
+			"TITLE": "Statut de la demande"
+		},
+		"EPI_LIST": {
+			"SHORTTITLE": "EPI",
+			"TITLE": "Liste des EPI"
+		},
+		"QTE": "Quantité",
+		"COMMENT": "Commentaire",
+		"CARD":{
+			"NO_EPIS": "Aucun EPI demandé"
+		},
+		"NOTIF": {
+			"LOADING":{
+				"TITLE": "En cours de chargement"
+			},
+			"CREATED":{
+				"TITLE": "La demande a bien été créée"
+			},
+			"DEMANDE_CANCEL_CONFIRMATION":{
+				"TITLE": "Vous êtes sur le point d'annuler la demande.",
+				"LABEL": "Êtes-vous sûr de vouloir continuer ?"
+			},
+			"UPDATED":{
+				"TITLE": "La demande a bien été mise à jour"
+			},
+			"DEMANDE_CANCELED":{
+				"TITLE": "La demande a bien été annulée"
+			}
 		}
 	},
 	"EES": {
@@ -1787,6 +1846,7 @@
 		"CAUSERIES": "Causeries",
 		"DASHBOARD": "Tableau de Bord",
 		"DISCUSS": "Discuss",
+		"DEMANDES_EPI": "Demandes d'EPI",
 		"QUIZ": "Quizz",
 		"EDIT_MY_PASSWORD": "Modifier mon mot de passe",
 		"EDIT_PROFILE": "Modifier mon profil utilisateur",
@@ -1838,6 +1898,12 @@
 			"DETAIL": "Détail du chantier",
 			"EDIT": "Modifier le chantier",
 			"LIST": "Liste des chantiers"
+		},
+		"SUB_DEMANDES_EPI":{
+			"ADD": "Nouvelle demande",
+			"DETAIL": "Détail de la demande",
+			"EDIT": "Modifier la demande",
+			"LIST": "Liste des demandes d'EPI"
 		},
 		"SUB_ENTREPRISES": {
 			"ADD": "Ajouter un client",

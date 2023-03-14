@@ -113,7 +113,7 @@ export class MenuConfig {
 					translate: 'MENU.SUIVI_HSE',
 					needModule: true,
 					moduleCode: ['SALARIES'],
-					permissionOnly: ['ROOT', 'ADMIN', 'MANAGER']
+					permissionOnly: ['ROOT', 'ADMIN']
 				},
 				{
 					title: 'Discuss',
@@ -360,6 +360,14 @@ export class MenuConfig {
 						alignment: 'left',
 						page: '/materiel/list',
 						translate: 'MENU.LIST',
+						icon: 'view_list',
+					},
+					{
+						title: 'Demandes d\'EPI',
+						root: true,
+						alignment: 'left',
+						page: '/materiel/demandes-epis/list',
+						translate: 'MENU.DEMANDES_EPI',
 						icon: 'view_list',
 					},
 					{

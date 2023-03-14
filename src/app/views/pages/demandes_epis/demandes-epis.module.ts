@@ -13,14 +13,8 @@ import { NgxPermissionsModule, NgxPermissionsGuard } from 'ngx-permissions';
 // Services
 import { HttpUtilsService, TypesUtilsService, InterceptService, LayoutUtilsService, RefreshTokenIntercept} from '../../../core/_base/crud';
 // Shared
-import { ActionNotificationComponent } from '../../partials/content/crud';
 import { NgbDropdownModule, NgbTabsetModule, NgbTooltipModule, NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxMaskModule } from 'ngx-mask';
-
-import {PretModalComponent} from '@app/views/partials/layout';
-import {RevisionModalComponent} from '@app/views/partials/layout';
-import { FileUploadModule } from 'ng2-file-upload';
-
 // Material
 import {
 	MatInputModule,
@@ -48,38 +42,30 @@ import {
 	MAT_DIALOG_DEFAULT_OPTIONS,
 	MatSnackBarModule,
 	MatTooltipModule,MAT_DATE_LOCALE, 
-	MatSlideToggleModule,
 	MAT_DATE_FORMATS,
-	DateAdapter,
+	DateAdapter
 } from '@angular/material';
-import { 
-	NzTableModule, 
-	NzInputModule, 
-	NzPopconfirmModule, 
-	NzDividerModule, 
-	NzIconModule,
-	NzCheckboxModule,
-	NzUploadModule,
-	NzGridModule
-} from 'ng-zorro-antd';
+// FileUpload
+import { FileUploadModule } from 'ng2-file-upload';
+
 // DateAdapter
 import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapter';
 // Components
-import { MaterielsComponent } from './materiels.component';
-import { MaterielsListComponent } from './materiels-list/materiels-list.component';
-import { MaterielsDashComponent } from './materiels-dash/materiels-dash.component';
-import { MaterielFiltersComponent } from './materiel-filters/materiel-filters.component';
-import { MaterielFormComponent } from './materiel-form/materiel-form.component';
-import { MaterielEditComponent } from './materiel-edit/materiel-edit.component';
-import { MaterielAddComponent } from './materiel-add/materiel-add.component';
-import { MaterielDetailComponent } from './materiel-detail/materiel-detail.component';
-import { MaterielAdminComponent } from './materiel-admin/materiel-admin.component';
+import { DemandesEpisComponent } from './demandes-epis.component';
+import { DemandesEpisListComponent } from './demandes-epis-list/demandes-epis-list.component';
+import { DemandeEpisFiltersComponent } from './demande-epis-filters/demande-epis-filters.component';
+import { DemandeEpisFormComponent } from './demande-epis-form/demande-epis-form.component';
+import { DemandeEpisEditComponent } from './demande-epis-edit/demande-epis-edit.component';
+import { DemandeEpisAddComponent } from './demande-epis-add/demande-epis-add.component';
+import { DemandeEpisDetailComponent } from './demande-epis-detail/demande-epis-detail.component';
+import { NzPopoverModule } from 'ng-zorro-antd';
+
 
 
 const routes: Routes = [
 	{
 		path: '',
-		component: MaterielsComponent,
+		component: DemandesEpisComponent,
 		children: [
 			{
 				path: '',
@@ -88,85 +74,67 @@ const routes: Routes = [
 			},
 			{
 				path:'detail/:id',
-				component: MaterielDetailComponent
+				component: DemandeEpisDetailComponent
 			},
 			{
 				path: 'list',
-				component: MaterielsListComponent,
-				canActivate: [NgxPermissionsGuard],
-				data: {
-					permissions: {
-						only: ['materiel_canSeeAll']
-					}
-				}
+				component: DemandesEpisListComponent,
+				// canActivate: [NgxPermissionsGuard],
+				// data: {
+				// 	permissions: {
+				// 		only: ['demande-epis_canSeeAll']
+				// 	}
+				// }
 			},
 			{
 				path: 'list:id',
-				component: MaterielsListComponent,
-				canActivate: [NgxPermissionsGuard],
-				data: {
-					permissions: {
-						only: ['materiel_canSeeAll']
-					}
-				}
+				component: DemandesEpisListComponent,
+				// canActivate: [NgxPermissionsGuard],
+				// data: {
+				// 	permissions: {
+				// 		only: ['demande-epis_canSeeAll']
+				// 	}
+				// }
 			},
 			{
 				path: 'add',
-				component: MaterielAddComponent,
-				canActivate: [NgxPermissionsGuard],
-				data: {
-					permissions: {
-						only: ['materiel_canAdd']
-					}
-				}
+				component: DemandeEpisAddComponent,
+				// canActivate: [NgxPermissionsGuard],
+				// data: {
+				// 	permissions: {
+				// 		only: ['demande-epis_canAdd']
+				// 	}
+				// }
 			},
 			{
 				path: 'add:id',
-				component: MaterielAddComponent,
-				canActivate: [NgxPermissionsGuard],
-				data: {
-					permissions: {
-						only: ['materiel_canAdd']
-					}
-				}
+				component: DemandeEpisAddComponent,
+				// canActivate: [NgxPermissionsGuard],
+				// data: {
+				// 	permissions: {
+				// 		only: ['demande-epis_canAdd']
+				// 	}
+				// }
 			},
 			{
 				path: 'edit',
-				component: MaterielEditComponent,
-				canActivate: [NgxPermissionsGuard],
-				data: {
-					permissions: {
-						only: ['materiel_canUpdate']
-					}
-				}
+				component: DemandeEpisEditComponent,
+				// canActivate: [NgxPermissionsGuard],
+				// data: {
+				// 	permissions: {
+				// 		only: ['demande-epis_canUpdate']
+				// 	}
+				// }
 			},
 			{
 				path: 'edit/:id',
-				component: MaterielEditComponent,
-				canActivate: [NgxPermissionsGuard],
-				data: {
-					permissions: {
-						only: ['materiel_canUpdate']
-					}
-				}
-			},
-			{
-				path: 'demandes-epis',
-				loadChildren: () => import('@app/views/pages/demandes_epis/demandes-epis.module').then(m => m.DemandesEpisModule)
-			},
-			{
-				path: 'dashboard',
-				component: MaterielsDashComponent
-			},
-			{
-				path: 'admin',
-				component: MaterielAdminComponent,
-				canActivate: [NgxPermissionsGuard],
-				data: {
-					permissions: {
-						only: ['ADMIN','ROOT']
-					}
-				}
+				component: DemandeEpisEditComponent,
+				// canActivate: [NgxPermissionsGuard],
+				// data: {
+				// 	permissions: {
+				// 		only: ['demande-epis_canUpdate']
+				// 	}
+				// }
 			},
 		]
 	}
@@ -187,7 +155,7 @@ const routes: Routes = [
 		MatButtonModule,
 		MatMenuModule,
 		MatSelectModule,
-        MatInputModule,
+		MatInputModule,
 		MatTableModule,
 		MatBadgeModule,
 		MatChipsModule,
@@ -206,7 +174,6 @@ const routes: Routes = [
 		MatSnackBarModule,
 		MatExpansionModule,
 		MatTabsModule,
-		MatSlideToggleModule,
 		MatTooltipModule,
 		MatDialogModule,
 		NgbDropdownModule,
@@ -214,16 +181,7 @@ const routes: Routes = [
 		NgbTooltipModule,
 		NgbPopoverModule,
 		NgxMaskModule,
-		FileUploadModule,
-		
-		NzTableModule, 
-		NzInputModule, 
-		NzPopconfirmModule, 
-		NzDividerModule, 
-		NzIconModule,
-		NzCheckboxModule,
-		NzUploadModule,
-		NzGridModule
+		NzPopoverModule,
 	],
 	providers: [
 		InterceptService,
@@ -254,22 +212,14 @@ const routes: Routes = [
 		TypesUtilsService,
 		LayoutUtilsService
 	],
-	entryComponents: [
-		ActionNotificationComponent,
-		PretModalComponent,
-		RevisionModalComponent
-		// 
-	],
 	declarations: [
-		MaterielsComponent,
-		MaterielsListComponent,
-		MaterielsDashComponent,
-		MaterielFiltersComponent,
-		MaterielEditComponent,
-		MaterielAddComponent,
-		MaterielDetailComponent,
-		MaterielAdminComponent,
-		MaterielFormComponent,
+		DemandesEpisComponent,
+		DemandesEpisListComponent,
+		DemandeEpisFiltersComponent,
+		DemandeEpisEditComponent,
+		DemandeEpisAddComponent,
+		DemandeEpisDetailComponent,
+		DemandeEpisFormComponent,
 	]
 })
-export class MaterielsModule {}
+export class DemandesEpisModule {}
