@@ -151,6 +151,10 @@ const routes: Routes = [
 				}
 			},
 			{
+				path: 'demandes-epis',
+				loadChildren: () => import('@app/views/pages/demandes_epis/demandes-epis.module').then(m => m.DemandesEpisModule)
+			},
+			{
 				path: 'dashboard',
 				component: MaterielsDashComponent
 			},

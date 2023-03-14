@@ -1,0 +1,65 @@
+<div class="col-md-12 tf-form">
+	<tf-portlet class="tf-portlet--height-fluid mat-elevation-z8">
+		<tf-portlet-body class="tf-portlet__body--fit card-filters px-5 pt-4 pb-3" >
+			<form novalidate [formGroup]="filterForm">
+				<div class="row">
+
+					<mat-form-field class="col-xl-3 col-md-4 col-sm-6 col-xs-12 mat-filter-no-head">
+						<mat-label>{{'DEMANDES_EPI.CREATOR.TITLE' | translate}}</mat-label>
+						<mat-select class="form-control" formControlName="creator_id" name="creator_id">
+							<mat-option>{{'FILTER.SEARCH_ALL' | translate}}</mat-option>
+							<mat-option *ngFor="let user of users" [value]="user.id">
+								{{user | fullName}}
+							</mat-option>
+						</mat-select>
+						<button mat-button *ngIf="formHasValue('creator_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('creator_id'); $event.stopPropagation()">
+							<mat-icon>clear</mat-icon>
+						</button>
+					</mat-form-field>
+
+					<div class="col-xl-3 col-md-4 col-sm-6 col-xs-12">
+						<h6>{{'COMMON.CREATED_AT.TITLE' | translate}}</h6>
+						<mat-form-field class="col-md-6 col-xl-6">
+							<mat-label>{{'COMMON.DATE_RANGE.BETWEEN.TITLE' | translate}} :</mat-label>
+							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_creation_start" placeholder="DD/MM/YYYY">
+							<!-- <input matInput class="form-control" [matDatepicker]="date_creation_start_picker" formControlName="date_creation_start" placeholder="DD/MM/YYYY">
+								<mat-datepicker-toggle matSuffix [for]="date_creation_start_picker"></mat-datepicker-toggle>
+								<mat-datepicker #date_creation_start_picker></mat-datepicker>
+								<button mat-button *ngIf="formHasValue('date_creation_start')" matSuffix mat-icon-button 
+									aria-label="Clear" (click)="clearValue('date_creation_start'); $event.stopPropagation()">
+									<mat-icon>clear</mat-icon>
+								</button> -->
+						</mat-form-field>
+						<mat-form-field class="col-md-6 col-xl-6">
+							<mat-label>{{'COMMON.DATE_RANGE.AND.TITLE' | translate}} :</mat-label>
+							<input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false"  formControlName="date_creation_end" placeholder="DD/MM/YYYY">
+							<!-- <input matInput class="form-control" [matDatepicker]="date_creation_end_picker" formControlName="date_creation_end" placeholder="DD/MM/YYYY">
+								<mat-datepicker-toggle matSuffix [for]="date_creation_end_picker"></mat-datepicker-toggle>
+								<mat-datepicker #date_creation_end_picker></mat-datepicker>
+								<button mat-button *ngIf="formHasValue('date_creation_end')" matSuffix mat-icon-button 
+									aria-label="Clear" (click)="clearValue('date_creation_end'); $event.stopPropagation()">
+									<mat-icon>clear</mat-icon>
+								</button> -->
+						</mat-form-field>
+						
+					</div>
+
+		
+					<mat-form-field class="col-xl-3 col-md-4 col-sm-6 col-xs-12 mat-filter-no-head">
+						<mat-label>{{'DEMANDES_EPI.STATUS.TITLE' | translate}}</mat-label>
+						<mat-select class="form-control" formControlName="status_id" name="status_id">
+							<mat-option [value]="'all'">{{'FILTER.SEARCH_ALL' | translate}}</mat-option>
+							<mat-option *ngFor="let statu of status" [value]="statu.id">
+								{{statu.libelle}}
+							</mat-option>
+						</mat-select>
+						<button mat-button *ngIf="formHasValue('status_id')" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue('status_id'); $event.stopPropagation()">
+							<mat-icon>clear</mat-icon>
+						</button>
+					</mat-form-field>
+
+				</div>
+			</form>
+		</tf-portlet-body>
+	</tf-portlet>
+</div>

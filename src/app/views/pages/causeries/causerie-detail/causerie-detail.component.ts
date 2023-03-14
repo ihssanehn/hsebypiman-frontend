@@ -13,7 +13,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { AuthService, User } from '@app/core/auth';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ParticipateCauserieModalComponent } from '@app/views/partials/layout/modal/participate-causerie-modal/participate-causerie-modal.component';
-import { ImageLightboxContentDialogComponent, ShowDocumentModalComponent } from '@app/views/partials/layout';
+import { ImageLightboxContentDialogComponent, ShowDocumentModalComponent, AddUsersModalComponent } from '@app/views/partials/layout';
 import { AddDocModalComponent } from '@app/views/partials/layout/modal/add-doc-modal/add-doc-modal.component';
 import { FileUploader } from 'ng2-file-upload';
 import { FormStatus } from '@app/core/_base/crud/models/form-status';
@@ -174,6 +174,31 @@ export class CauserieDetailComponent implements OnInit, OnDestroy {
 
 	}
 
+	openAddParticipants(){
+		const modalRef = this.modalService.open(AddUsersModalComponent, {size: 'lg',scrollable: true,centered : true});
+		modalRef.componentInstance.users_already_subscribed = this.causerie.participants;
+
+		modalRef.result.then( 
+			payload => {
+				if(payload){
+					this.causerieService.addParticipants(this.causerie.id, {user_ids: payload})
+					.toPromise()
+					.then(res=>{
+						Swal.fire({
+							icon:'success',
+							title: this.translate.instant("CAUSERIES.NOTIF.PARTICIPANTS_ADDED.DONE"),
+							showConfirmButton: false,
+							timer: 1500
+						})
+						this.cdr.markForCheck();
+						this.getCauserie();
+					})
+					// this.saveDocuments(payload), payload => this.saveDocuments(payload)
+				}
+			}, (err) => {}
+		);
+	}
+
 	addParticipant(data) {
 		try {
 			this.causerieService.addParticipant(this.causerie.id, data)
@@ -218,6 +243,31 @@ export class CauserieDetailComponent implements OnInit, OnDestroy {
 			console.error(error);
 			throw error;
 		}
+	}
+
+	removeParticipant(participant_id){
+		Swal.fire({
+      icon: 'warning',
+      title: this.translate.instant("CAUSERIES.NOTIF.DELETE_PARTICIPANT_CONFIRMATION.TITLE"),
+      text: this.translate.instant("CAUSERIES.NOTIF.DELETE_PARTICIPANT_CONFIRMATION.LABEL"),
+      showConfirmButton: true,
+      showCancelButton: true,
+      cancelButtonText: this.translate.instant("ACTION.CANCEL"),
+      confirmButtonText: this.translate.instant("ACTION.VALIDATE"),
+    }).then(async response => {
+      if (response.value) {
+        this.causerieService.detachParticipant(this.causerie.id, participant_id).toPromise().then(res=>{
+          this.getCauserie();
+          Swal.fire({
+            icon: 'success',
+            title: this.translate.instant("CAUSERIES.NOTIF.PARTICIPANT_DELETED.DONE"),
+            showConfirmButton: false,
+            timer: 1500,  
+          })
+          this.cdr.markForCheck();
+        })
+      }
+    })
 	}
 
 	isUserOrganizer() {
@@ -398,7 +448,7 @@ export class CauserieDetailComponent implements OnInit, OnDestroy {
 		});
 	}
 
-	canUpdateCauserie() {
-		return this.isUserOrganizer()
+	hasPermission(right){
+		return this.authService.hasPermission(right);
 	}
 }

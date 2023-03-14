@@ -53,14 +53,19 @@ export class VsFormHeadComponent implements OnInit {
     this.getStatus();
     this.getInterimaires();
     this.getMateriels();
+    console.log(this.visiteForm.get('environnement').value);
     if(this.data){
       this.redacteur = this.data.redacteur ? this.data.redacteur : this.data.creator;
     }else{
       this.redacteur = this.currentUser;
     }
     if(this.model == 'VsChantier'){
-      this.getEntreprises();
+      this.getChantierEntreprises();
       this.setDynamicEntreprise();
+    }
+    if(this.model == 'VsRevue'){
+      console.log('here');
+      this.getEntreprises();
     }
     
   }
@@ -84,7 +89,15 @@ export class VsFormHeadComponent implements OnInit {
     this.status = res.result.data;
     this.cdr.markForCheck();
   }
+
   async getEntreprises(){
+    await this.entrepriseService.getList().toPromise().then(res=>{
+      this.entreprises = res.result.data;
+      this.cdr.markForCheck();
+    });
+  }
+
+  async getChantierEntreprises(){
     var res = await this.entrepriseService.getList().toPromise();
     this.entreprises = res.result.data;
     if(this.visiteForm.get('entreprise_id').value){
@@ -227,5 +240,27 @@ export class VsFormHeadComponent implements OnInit {
     }else{
       this.visiteForm.get('is_externe').setValue(0);
     }
+  }
+
+  hasEnvironnement(type){
+    let array = this.visiteForm.get('environnement').value;
+    console.log(array);
+    return array.includes(type);
+  }
+
+  toggleEnvironnement(event, type){
+    if(this.environnement.includes(type)){
+      let index = this.environnement.findIndex(x=>x==type);
+      this.environnement.splice(index, 1);
+      this.visiteForm.get('environnement').setValue(this.environnement);
+    }else{
+      this.environnement.push(type);
+      this.visiteForm.get('environnement').setValue(this.environnement);
+    }
+  }
+
+  public get environnement(){
+    let value = this.visiteForm.get('environnement').value
+    return<string[]>value;
   }
 }

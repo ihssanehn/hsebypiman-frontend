@@ -46,7 +46,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-12 mt-4" *ngIf="entreprise.type.code == 'INTERIM'">
+			<div class="col-md-12 mt-4" *ngIf="entreprise.type?.code == 'INTERIM'">
 				<div class="card">
 					<div class="box box-chantiers " style="flex: 1;">
 						<h5><b>{{'EES.INTERIMAIRES.LABEL' | translate}}</b><small class="pull-right">{{'EES.INTERIMAIRES_COUNT.SHORTTITLE' | translate}} : <span class="blue">{{entreprise.interimaires ? entreprise.interimaires.length : 0}}</span></small></h5>

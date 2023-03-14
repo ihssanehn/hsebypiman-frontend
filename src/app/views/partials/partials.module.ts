@@ -111,7 +111,9 @@ import {
 	RemonteeEventTypesAdminComponent,
 	CustomUserProfileComponent,
 	AddPhotoProfilModalComponent,
-	ParticipateCauserieModalComponent
+	ParticipateCauserieModalComponent,
+	AddUsersModalComponent,
+	UpdateStatusModalComponent
 } from './layout';
 // General
 import { NoticeComponent } from './content/general/notice/notice.component';
@@ -326,6 +328,7 @@ import { FlashinfoEditorComponent } from './layout/flash-infos/flashinfo-editor/
 		AssignEpiModalComponent,
 		HabilitationsAdminListPortletComponent,
 		AssignActionModalComponent,
+		AddUsersModalComponent,
 		CloseActionModalComponent,
 		DocListTooltipComponent,
 		EditAccueilSecuModalComponent,
@@ -336,7 +339,8 @@ import { FlashinfoEditorComponent } from './layout/flash-infos/flashinfo-editor/
 		ActionFormModalComponent,
 		UploadDelSignatureDocModalComponent,
 		FlashinfoReaderComponent,
-		FlashinfoEditorComponent
+		FlashinfoEditorComponent,
+		UpdateStatusModalComponent,
 
 	],
 	exports: [
@@ -461,6 +465,7 @@ import { FlashinfoEditorComponent } from './layout/flash-infos/flashinfo-editor/
 		AssignEpiModalComponent,
 		HabilitationsAdminListPortletComponent,
 		AssignActionModalComponent,
+		AddUsersModalComponent,
 		
 		CloseActionModalComponent,
 		DocListTooltipComponent,
@@ -471,6 +476,7 @@ import { FlashinfoEditorComponent } from './layout/flash-infos/flashinfo-editor/
 		ParticipateCauserieModalComponent,
 		UserHsePassportComponent,
 		FlashinfoReaderComponent,
+		UpdateStatusModalComponent,
 		FlashinfoEditorComponent
 
 	],
@@ -549,13 +555,15 @@ import { FlashinfoEditorComponent } from './layout/flash-infos/flashinfo-editor/
 		AssignFormationModalComponent,
 		AssignEpiModalComponent,
 		AssignActionModalComponent,
+		AddUsersModalComponent,
 		CloseActionModalComponent,
 		EditAccueilSecuModalComponent,
 		LivretAccueilModalComponent,
 		RemonteeDetailModalComponent,
 		ParticipateCauserieModalComponent,
 		ActionFormModalComponent,
-		UploadDelSignatureDocModalComponent
+		UploadDelSignatureDocModalComponent,
+		UpdateStatusModalComponent,
 	],
 })
 export class PartialsModule {

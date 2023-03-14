@@ -318,7 +318,8 @@
 	},
 	"CAUSERIES": {
 		"ACTION":{
-			"ADD_PARTICIPANT": "S'enregistrer",
+			"ADD_PARTICIPANTS": "Enregistrer des participants",
+			"ADD_SELF_AS_PARTICIPANT": "S'enregistrer",
 			"EDIT_FEEDBACK_PARTICIPANT": "Editer le retour",
 			"ENTER_HERE": "Saisir ici description, objectifs de la causerie, lien de la visio,…"
 		},
@@ -361,6 +362,10 @@
 				"SHORTTITLE": "La causerie a bien été supprimé",
 				"TITLE": "La causerie a bien été supprimé"
 			},
+			"DELETE_PARTICIPANT_CONFIRMATION":{
+				"TITLE": "Vous allez supprimer ce participant de façon définitive",
+				"LABEL": "Êtes-vous sûr de vouloir continuer ?"
+			},
 			"LOADING": {
 				"TITLE": "Loading Entreprise"
 			},
@@ -369,6 +374,12 @@
 			},
 			"NO_DOCUMENT": {
 				"TITLE":"Aucun document"
+			},
+			"PARTICIPANT_DELETED":{
+				"DONE": "Le participant a bien été supprimé"
+			},
+			"PARTICIPANTS_ADDED":{
+				"DONE":"Les participants on bien été ajoutés"
 			},
 			"IMAGE_DELETE_CONFIRMATION": {
 				"TITLE": "Vous allez supprimer cette image de façon définitive",
@@ -595,7 +606,7 @@
 		"ACTION": {
 			"ADD_TRAVAUX": "Ajouter un travail dangereux",
 			"ADD_CONSIGNE": "Ajouter consigne (ee)",
-			"ADD_EPI_DISPOSITION": "Ajouter epi disposition (ees)",
+			"ADD_EPI_DISPOSITION": "Ajouter EPI disposition (ees)",
 			"ADD_MOYEN_DISPOSITION": "Ajouter moyen disposition (ees)",
 			"ADD_CATEGORIE_PDP_RISQUE": "Ajouter Categorie Pdp Risque",
 			"ADD_PDP_RISQUE": "Ajouter Pdp Risque",
@@ -901,6 +912,9 @@
 		"SEND": "Envoyer"
 	},
 	"COMMON": {
+		"ACTION":{
+			"UPDATE_STATUS":"Modifier le statut"
+		},
 		"ADRESS": {
 			"LABEL": "Adresse",
 			"SHORTTITLE": "Adresse",
@@ -1054,6 +1068,9 @@
 			"LABEL": "Société",
 			"TITLE": "Société"
 		},
+		"STATUS":{
+			"TITLE": "Statut"
+		},
 		"TODAY_DATE": {
 			"TITLE": "Date du jour"
 		},
@@ -1159,6 +1176,59 @@
 			"TITLE": "Archivé"
 		}
 	},
+	"DEMANDES_EPI":{
+		"ACTION": {
+			"CREATE":{
+				"TITLE": "Nouvelle demande d'EPI"
+			},
+			"SEND":{
+				"TITLE": "Envoyer la demande"
+			},
+			"UPDATE":{
+				"TITLE": "Éditer la demande"
+			},
+			"UPDATE_STATUS":"Éditer le statut"
+		},
+		"ID": {
+			"SHORTTITLE": "Numéro",
+			"TITLE": "Numéro de demande"
+		},
+		"CREATOR": {
+			"SHORTTITLE": "Demandeur",
+			"TITLE": "Créateur de la demande"
+		},
+		"STATUS": {
+			"SHORTTITLE": "Statut",
+			"TITLE": "Statut de la demande"
+		},
+		"EPI_LIST": {
+			"SHORTTITLE": "EPI",
+			"TITLE": "Liste des EPI"
+		},
+		"QTE": "Quantité",
+		"COMMENT": "Commentaire",
+		"CARD":{
+			"NO_EPIS": "Aucun EPI demandé"
+		},
+		"NOTIF": {
+			"LOADING":{
+				"TITLE": "En cours de chargement"
+			},
+			"CREATED":{
+				"TITLE": "La demande a bien été créée"
+			},
+			"DEMANDE_CANCEL_CONFIRMATION":{
+				"TITLE": "Vous êtes sur le point d'annuler la demande.",
+				"LABEL": "Êtes-vous sûr de vouloir continuer ?"
+			},
+			"UPDATED":{
+				"TITLE": "La demande a bien été mise à jour"
+			},
+			"DEMANDE_CANCELED":{
+				"TITLE": "La demande a bien été annulée"
+			}
+		}
+	},
 	"EES": {
 		"ACTION": {
 			"ADD_COMPANY_TYPE": "Ajouter un type du client",
@@ -1255,7 +1325,7 @@
 				"TITLE": "Entreprise créée avec succès"
 			},
 			"COMPANY_TYPE_ARCHIVED": {
-				"TITLE": "Type du client archivé avec succès"
+				"TITLE": "Type de client archivé avec succès"
 			},
 			"COMPANY_UPDATED": {
 				"TITLE": "Entreprise mise à jour avec succès"
@@ -1286,10 +1356,10 @@
 			"TITLE": "Raison sociale"
 		},
 		"TYPE": {
-			"LABEL": "Type du client",
+			"LABEL": "Type de client",
 			"PLACEHOLDER": "Saisir ici...",
 			"SHORTTITLE": "Type",
-			"TITLE": "Type du client"
+			"TITLE": "Type de client"
 		}
 	},
 	"EPIS": {
@@ -1398,7 +1468,7 @@
 			"ADD_MATERIAL_TYPE": "Ajouter un type de matériel",
 			"ASSIGN_MATERIEL": "Assigner le matériel",
 			"MODIFY_LOAN": "modifier le prêt",
-			"RETURN-MATERIEL": "Retourner le matériel"
+			"RETURN_MATERIEL": "Retourner le matériel"
 		},
 		"ACTUAL_USER": {
 			"LABEL": "Utilisateur actuel",
@@ -1643,6 +1713,13 @@
 			"NOTHING_FOUND": {
 				"TITLE": "Aucun matériel ne correspond aux critères de recherche."
 			},
+			"DELETE_PRET_CONFIRMATION":{
+				"TITLE": "Ce prêt sera supprimé de façon définitive.",
+				"LABEL": "Êtes-vous sûr de vouloir continuer ?"
+			},
+			"PRET_DELETED":{
+				"DONE": "Le prêt a bien été supprimé"
+			},
 			"LATE_CONTROLE":{
 				"TITLE": "Contrôle en retard"
 			},
@@ -1679,6 +1756,9 @@
 			"LABEL": "Nombre d'utilisateurs actuels",
 			"SHORTTITLE": "Nombre d'utilisateurs actuels",
 			"TITLE": "Nombre d'utilisateurs actuels"
+		},
+		"QTE_PRET":{
+			"LABEL": "Quantité"
 		},
 		"AVAILABLE_QUANTITY": {
 			"LABEL": "QTE Prêt / Dispo",
@@ -1766,6 +1846,7 @@
 		"CAUSERIES": "Causeries",
 		"DASHBOARD": "Tableau de Bord",
 		"DISCUSS": "Discuss",
+		"DEMANDES_EPI": "Demandes d'EPI",
 		"QUIZ": "Quizz",
 		"EDIT_MY_PASSWORD": "Modifier mon mot de passe",
 		"EDIT_PROFILE": "Modifier mon profil utilisateur",
@@ -1817,6 +1898,12 @@
 			"DETAIL": "Détail du chantier",
 			"EDIT": "Modifier le chantier",
 			"LIST": "Liste des chantiers"
+		},
+		"SUB_DEMANDES_EPI":{
+			"ADD": "Nouvelle demande",
+			"DETAIL": "Détail de la demande",
+			"EDIT": "Modifier la demande",
+			"LIST": "Liste des demandes d'EPI"
 		},
 		"SUB_ENTREPRISES": {
 			"ADD": "Ajouter un client",

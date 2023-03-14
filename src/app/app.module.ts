@@ -94,6 +94,7 @@ import {
 	RoleService,
 	DashboardService,
 	VisiteService,
+	DemandeEpisService,
 	PeriodService,
 	FlashInfoService,
 	PdpService, CatPdpRisquesService, PdpRisquesService, PdpTypeService, PdpCategoryTypeService, PdpDefaultValuesService, EntityService, BuService, QcmSessionService, QcmAnswerService, FormationService
@@ -265,6 +266,7 @@ export function hljsLanguages(): HighlightLanguage[] {
 		QcmSessionService,
 		QcmAnswerService,
 		FormationService,
+		DemandeEpisService,
 
 		// CONFIG & Helpers
 		LayoutConfigService,
