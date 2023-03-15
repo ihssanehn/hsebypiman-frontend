@@ -13,8 +13,8 @@
 		position: relative;
     	z-index: 2;
 		height: tf-get($tf-header-config, base, desktop, default, height);
+		margin-bottom: 30px;
 		
-		// margin-bottom: 30px;
     	// border-bottom: 1px solid rgba(#fff, 0.1);
 
 		.tf-container {
