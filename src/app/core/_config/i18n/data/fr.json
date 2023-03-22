@@ -1197,6 +1197,63 @@
 			"SHORTTITLE": "Demandeur",
 			"TITLE": "Créateur de la demande"
 		},
+		"DELIVERY_TYPE":{
+			"TITLE": "Lieu de la livraison",
+			"SHORTTITLE": "Livraison",
+			"ENTREPRISE":{
+				"TITLE":"En entreprise"
+			},
+			"DOMICILE":{
+				"TITLE":"À domicile"
+			},
+			"AGENCE":{
+				"TITLE":"En agence"
+			}
+		},
+		"DELIVERY_SOCIETE_NOM":{
+			"TITLE": "Nom société",
+			"SHORTTITLE": "Nom société"
+		},
+		"DELIVERY_ATTENTION":{
+			"TITLE": "À l'attention de",
+			"SHORTTITLE": "À l'attention de"
+		},
+		"DELIVERY_NOM":{
+			"TITLE": "Nom",
+			"SHORTTITLE": "Nom"
+		},
+		"DELIVERY_PRENOM":{
+			"TITLE": "Prénom",
+			"SHORTTITLE": "Prénom"
+		},
+		"DELIVERY_NUMERO":{
+			"TITLE": "N°",
+			"SHORTTITLE": "N°"
+		},
+		"DELIVERY_RUE":{
+			"TITLE": "Rue",
+			"SHORTTITLE": "Rue"
+		},
+		"DELIVERY_CP":{
+			"TITLE": "Code Postal",
+			"SHORTTITLE": "CP"
+		},
+		"DELIVERY_VILLE":{
+			"TITLE": "Ville",
+			"SHORTTITLE": "Ville"
+		},
+		"DELIVERY_PAYS":{
+			"TITLE": "Pays",
+			"SHORTTITLE": "Pays"
+		},
+		"BU":{
+			"TITLE": "Agence",
+			"SHORTTITLE": "Agence"
+		},
+		"BU_AUTRE":{
+			"TITLE": "Autre agence",
+			"SHORTTITLE": "Autre agence"
+		},
 		"STATUS": {
 			"SHORTTITLE": "Statut",
 			"TITLE": "Statut de la demande"

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ChangeDetectorRef, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl, FormArray, FormBuilder, Validators } from '@angular/forms';
 import { Type, Categorie,  } from '@app/core/models';
-import { TypeService, DocumentService, CategorieService } from '@app/core/services';
+import { TypeService, DocumentService, CategorieService, BuService } from '@app/core/services';
 import { FormStatus } from '@app/core/_base/crud/models/form-status';
 import { TranslateService } from '@ngx-translate/core';
 import Swal from 'sweetalert2';
@@ -15,6 +15,9 @@ export class DemandeEpisFormComponent implements OnInit {
 
   categoriesList: Categorie[];
   categoriesLoaded: boolean = false;
+
+  busList: any[];
+  busLoaded: boolean = false;
   
   // subcategoryDisplayed: boolean = false;
   // displayExtraFields: boolean = false;
@@ -38,16 +41,35 @@ export class DemandeEpisFormComponent implements OnInit {
   constructor(
     private categorieService:CategorieService,
     private typeService:TypeService,
+    private buService:BuService,
     private formBuilder: FormBuilder,
     private cdr: ChangeDetectorRef,
   ) { }
 
   ngOnInit() {
+    this.demandeEpisForm.get('bu_id').valueChanges.subscribe(value=>{
+      if(value && this.getBuCode() == 'Autres'){
+        this.demandeEpisForm.get('bu_autre').enable();
+        this.demandeEpisForm.get('bu_autre').setValidators([Validators.required]);
+      }else{
+        this.demandeEpisForm.get('bu_autre').disable();
+        this.demandeEpisForm.get('bu_autre').setValidators([]);
+      }
+    })
+    this.getBus();
     this.getCategories();
     this.getCriterias();
     this.getSubcategories();
   }
 
+  async getBus(){
+    this.busLoaded = false;
+    await this.buService.getList().toPromise().then(res=>{
+      this.busList = res.result.data;
+      this.busLoaded = true;
+      this.cdr.markForCheck();
+    })
+  } 
 
   async getCategories(){
     this.categoriesLoaded = false;
@@ -215,5 +237,9 @@ export class DemandeEpisFormComponent implements OnInit {
     }
   }
 
+  getBuCode(){
+    let bu_id = this.demandeEpisForm.get('bu_id').value;
+    return this.busList.find(x=>x.id == bu_id) ? this.busList.find(x=>x.id == bu_id).libelle : null;
+  }
 
 }
