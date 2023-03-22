@@ -13,7 +13,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class SuiviHseListComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  	salariesList: Paginate<Personnel>;
+	salariesList: Paginate<Personnel>;
 	selectedSalarie: Personnel;
 	pagination: any = {
 		page: 1,

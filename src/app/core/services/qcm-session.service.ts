@@ -59,5 +59,8 @@ export class QcmSessionService extends HttpService{
     delete(qcm_session_id){
         return this.http.delete(this.baseUrl+'/'+qcm_session_id);
     }
+    createUserFakeQuizzSession(data){
+        return this.http.post<JsonResponse<QcmSession>>(this.baseUrl+'/'+'create-user-fake-quizz', data);
+    }
     
 }

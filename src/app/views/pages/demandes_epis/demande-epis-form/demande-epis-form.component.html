@@ -10,6 +10,126 @@
 			<div class="tf-wizard-v4__content" data-tfwizard-type="step-content" data-tfwizard-state="current">
 				<div class="tf-form__section tf-form__section--first">
 					<div class="tf-wizard-v4__form">
+
+						<div class="row">
+							<div class="col-12">
+								<div class="card card-custom p-4 mb-4">
+									<h3>Livraison : </h3>
+
+									<div class="row mt-4">
+										<div class="col-3">
+											<mat-label>{{'DEMANDES_EPI.DELIVERY_TYPE.TITLE' | translate}}</mat-label>
+										</div>
+										<div class="col-9">
+											<mat-radio-group formControlName="delivery_type">
+												<mat-radio-button [value]="1">{{'DEMANDES_EPI.DELIVERY_TYPE.ENTREPRISE.TITLE' | translate}}</mat-radio-button>
+												<mat-radio-button [value]="2">{{'DEMANDES_EPI.DELIVERY_TYPE.DOMICILE.TITLE' | translate}}</mat-radio-button>
+												<mat-radio-button [value]="3">{{'DEMANDES_EPI.DELIVERY_TYPE.AGENCE.TITLE' | translate}}</mat-radio-button>
+											</mat-radio-group>
+										</div>
+									</div>
+
+									<div class="row mt-4"  *ngIf="demandeEpisForm.get('delivery_type').value && [1,2].includes(demandeEpisForm.get('delivery_type').value)">
+
+										<mat-form-field class="col-3" *ngIf="demandeEpisForm.get('delivery_type').value == 1">
+											<mat-label>{{'DEMANDES_EPI.DELIVERY_SOCIETE_NOM.TITLE' | translate}}</mat-label>
+											<input class="form-control" matInput name="delivery_societe_nom" formControlName="delivery_societe_nom" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('delivery_societe_nom')" />
+											<mat-error *ngIf="isControlHasError('delivery_societe_nom','required')">
+												<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+											</mat-error>
+										</mat-form-field>
+	
+										<mat-form-field class="col-3" *ngIf="demandeEpisForm.get('delivery_type').value == 1">
+											<mat-label>{{'DEMANDES_EPI.DELIVERY_ATTENTION.TITLE' | translate}}</mat-label>
+											<input class="form-control" matInput name="delivery_attention" formControlName="delivery_attention" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('delivery_attention')" />
+											<mat-error *ngIf="isControlHasError('delivery_attention','required')">
+												<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+											</mat-error>
+										</mat-form-field>
+	
+										<mat-form-field class="col-3" *ngIf="demandeEpisForm.get('delivery_type').value == 2">
+											<mat-label>{{'DEMANDES_EPI.DELIVERY_NOM.TITLE' | translate}}</mat-label>
+											<input class="form-control" matInput name="delivery_nom" formControlName="delivery_nom" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('delivery_nom')" />
+											<mat-error *ngIf="isControlHasError('delivery_nom','required')">
+												<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+											</mat-error>
+										</mat-form-field>
+	
+										<mat-form-field class="col-3" *ngIf="demandeEpisForm.get('delivery_type').value == 2">
+											<mat-label>{{'DEMANDES_EPI.DELIVERY_PRENOM.TITLE' | translate}}</mat-label>
+											<input class="form-control" matInput name="delivery_prenom" formControlName="delivery_prenom" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('delivery_prenom')" />
+											<mat-error *ngIf="isControlHasError('delivery_prenom','required')">
+												<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+											</mat-error>
+										</mat-form-field>
+
+									</div>
+									<div class="row mt-4" *ngIf="demandeEpisForm.get('delivery_type').value && [1,2].includes(demandeEpisForm.get('delivery_type').value)">	
+										<mat-form-field class="col-3"  >
+											<mat-label>{{'DEMANDES_EPI.DELIVERY_NUMERO.TITLE' | translate}}</mat-label>
+											<input class="form-control" matInput name="delivery_numero" formControlName="delivery_numero" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('delivery_numero')" />
+											<mat-error *ngIf="isControlHasError('delivery_numero','required')">
+												<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+											</mat-error>
+										</mat-form-field>
+	
+										<mat-form-field class="col-3">
+											<mat-label>{{'DEMANDES_EPI.DELIVERY_RUE.TITLE' | translate}}</mat-label>
+											<input class="form-control" matInput name="delivery_rue" formControlName="delivery_rue" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('delivery_rue')" />
+											<mat-error *ngIf="isControlHasError('delivery_rue','required')">
+												<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+											</mat-error>
+										</mat-form-field>
+	
+										<mat-form-field class="col-3">
+											<mat-label>{{'DEMANDES_EPI.DELIVERY_CP.TITLE' | translate}}</mat-label>
+											<input class="form-control" matInput name="delivery_cp" formControlName="delivery_cp" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('delivery_cp')" />
+											<mat-error *ngIf="isControlHasError('delivery_cp','required')">
+												<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+											</mat-error>
+										</mat-form-field>
+	
+										<mat-form-field class="col-3" *ngIf="demandeEpisForm.get('delivery_type').value && [1,2].includes(demandeEpisForm.get('delivery_type').value)">
+											<mat-label>{{'DEMANDES_EPI.DELIVERY_VILLE.TITLE' | translate}}</mat-label>
+											<input class="form-control" matInput name="delivery_ville" formControlName="delivery_ville" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('delivery_ville')" />
+											<mat-error *ngIf="isControlHasError('delivery_ville','required')">
+												<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+											</mat-error>
+										</mat-form-field>
+	
+										<mat-form-field class="col-3">
+											<mat-label>{{'DEMANDES_EPI.DELIVERY_PAYS.TITLE' | translate}}</mat-label>
+											<input class="form-control" matInput name="delivery_pays" formControlName="delivery_pays" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('delivery_pays')" />
+											<mat-error *ngIf="isControlHasError('delivery_pays','required')">
+												<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+											</mat-error>
+										</mat-form-field>
+									</div>
+									
+									<div class="row mt-4" *ngIf="demandeEpisForm.get('delivery_type').value && demandeEpisForm.get('delivery_type').value == 3">
+
+										<mat-form-field class="col-3">
+											<mat-label>{{'DEMANDES_EPI.BU.TITLE' | translate}}</mat-label>
+											<mat-select  class="form-control" placeholder="{{'ACTION.ENTER_HERE' | translate}}" formControlName="bu_id">
+												<mat-option *ngFor="let bu of busList" [value]="bu.id">{{bu.libelle}}</mat-option>
+											</mat-select>
+											<mat-error *ngIf="isControlHasError('bu_id','required')">
+												<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+											</mat-error>
+										</mat-form-field>
+										
+										<mat-form-field class="col-3" *ngIf="demandeEpisForm.get('bu_id').value && getBuCode() == 'Autres'">
+											<mat-label>{{'DEMANDES_EPI.BU_AUTRE.TITLE' | translate}}</mat-label>
+											<input class="form-control" matInput name="bu_autre" formControlName="bu_autre" placeholder="{{'ACTION.ENTER_HERE' | translate}}" [required]="isFieldRequired('bu_autre')" />
+											<mat-error *ngIf="isControlHasError('bu_autre','required')">
+												<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+											</mat-error>
+										</mat-form-field>
+
+									</div>
+								</div>
+							</div>
+						</div>
 						<ng-container formArrayName="epis">
 							<div class="row mt-4" *ngFor="let epi of epis.controls; index as i">
 								<div class="col-12">
