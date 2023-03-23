@@ -4,11 +4,11 @@
 			<a [routerLink]="['/materiel/demandes-epis/list']">{{'MENU.SUB_DEMANDES_EPI.LIST' | translate}}</a><span class="divider">></span><span class="id-item">{{'MENU.SUB_DEMANDES_EPI.DETAIL' | translate}}</span>
 		</span>
 		<div ngbDropdown placement="bottom-right" class="d-inline-block pull-right">
-			<button ngbDropdownToggle mat-icon-button color="primary" matTooltip="Actions" style="line-height: 0;height: 0;">
+			<button ngbDropdownToggle mat-icon-button color="primary" matTooltip="Actions" style="line-height: 0;height: 0;" *ngxPermissionsOnly="['ROOT','ADMIN']">
 				<mat-icon>more_vert</mat-icon>
 			</button>
 			<div ngbDropdownMenu class="dropdown-menu dropdown-menu-anim dropdown-menu-top-unround " style="min-width: max-content; padding: 5px;">
-				<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" [disabled]="cannotEditDemande()" (click)="editDemandeEpis()">
+				<button mat-icon-button color="info" matTooltip="{{'ACTION.EDIT' | translate}}" (click)="editDemandeEpis()">
 					<mat-icon>edit</mat-icon>
 				</button>
 				<button mat-icon-button color="warn" matTooltip="{{'ACTION.DELETE' | translate}}" (click)="cancelDemandeEpis()">
@@ -18,7 +18,7 @@
 		</div>
 		<tf-portlet-body class="tf-portlet__body--fit mb-4">
 			<div class="row justify-content-between">
-				<div class="col-md-4">
+				<div class="col-md-3">
 					<div class="card">
 						<h3>{{'CHANTIERS.CARD.GENERAL_INFOS.TITLE' | translate}}</h3>
 						<div class="box" style="flex:1">
@@ -29,11 +29,37 @@
 								<span [ngStyle]="{'color': demande_epi.status.color}">{{demande_epi.status.libelle}}</span>
 								<span>
 								<!-- <button mat-icon-button > -->
-									<mat-icon class="pointer text-primary" color="info" matTooltip="{{'DEMANDES_EPI.ACTION.UPDATE_STATUS' | translate}}" (click)="updateStatus()" *ngxPermissionsOnly="['ROOT','ADMIN', 'MANAGER']">edit</mat-icon>
+									<mat-icon class="pointer text-primary" color="info" matTooltip="{{'DEMANDES_EPI.ACTION.UPDATE_STATUS' | translate}}" (click)="updateStatus()" *ngxPermissionsOnly="['ROOT','ADMIN']">edit</mat-icon>
 								<!-- </button> -->
 							</span>
 							</p>
 						</div>
+						<div class="tf-divider">
+							<span></span>
+						</div>
+						<ng-container [ngSwitch]="demande_epi?.delivery_type">
+							<div class="box" *ngSwitchCase="1">
+								<h4>Livraison : <small>{{getLivraisonType()}}</small></h4>
+								<p class="text-center mt-4">
+									{{demande_epi.delivery_societe_nom}}<br>
+									{{'DEMANDES_EPI.DELIVERY_ATTENTION.SHORTTITLE' | translate}} {{demande_epi.delivery_attention}}<br>
+									{{demande_epi.delivery_numero+" "+demande_epi.delivery_rue}}<br>
+									{{demande_epi.delivery_cp+" "+demande_epi.delivery_ville}}<br>
+									{{demande_epi.delivery_pays}}
+								</p>
+							</div>
+							<div class="box" *ngSwitchCase="2">
+								<h4>Livraison : {{getLivraisonType()}}</h4>
+								<p>{{demande_epi.prenom+" "+demande_epi_nom}}</p>
+								<p>{{demande_epi.delivery_numero+" "+demande_epi.delivery_rue}}</p>
+								<p>{{demande_epi.delivery_cp+" "+demande_epi.delivery_ville}}</p>
+								<p>{{demande_epi.delivery_pays}}</p>
+							</div>
+							<div class="box" *ngSwitchCase="3">
+								<h4 class="py-4">Livraison : {{getLivraisonType()}}</h4>
+								<p><span class="label pull-left mr-2">{{'DEMANDES_EPI.BU.SHORTTITLE' | translate}}</span><span class="">{{demande_epi.bu?.libelle == 'Autres' ? demande_epi.bu_autre : demande_epi.bu?.libelle}}</span></p>
+							</div>
+						</ng-container>
 						<div class="tf-divider">
 							<span></span>
 						</div>
@@ -44,12 +70,9 @@
 						<div class="tf-divider">
 							<span></span>
 						</div>
-						<div class="box pt-2">
-							<tf-comments-list	tf-comments-list *ngIf="demande_epi" [showUserTag]="false" [comments]="demande_epi.comments" (onAddComment)="onAddComment($event)"></tf-comments-list>
-						</div>
 					</div>
 				</div>
-				<div class="col-md-8">
+				<div class="col-md-6">
 					<div class="card" >
 						<h3>{{'DEMANDES_EPI.EPI_LIST.TITLE' | translate}}</h3>
 						<div *ngIf="demande_epi?.epis; else noEpis" >
@@ -81,6 +104,11 @@
 								{{'DEMANDES_EPI.CARD.NO_EPIS' | translate}}
 							</div>
 						</ng-template>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="card">
+						<tf-comments-list	tf-comments-list *ngIf="demande_epi" [showUserTag]="false" [comments]="demande_epi.comments" (onAddComment)="onAddComment($event)"></tf-comments-list>
 					</div>
 				</div>
 			</div>

@@ -33,7 +33,7 @@
                 <span></span>
               </div>
 
-              <div class="box box-coords doc-box" style="">
+              <div class="box box-coords doc-box">
                 <h5><b>{{'SUIVI_HSE.CARD.DELEGATION_SIGNATURE.TITLE' | translate}}</b></h5>
                 <div class="row mt-3" *ngIf="user.delegation_signature_doc">
                     <div class="col-3">
@@ -132,6 +132,9 @@
                                                 </div>
                                                 <div class="font-weight-normal" *ngIf="user.quiz_date">{{user.quiz_date | date:'dd/MM/yyyy hh:mm'}}</div>
                                             </div>
+                                            <button mat-icon-button color="warn" matTooltip="Valider le quiz" (click)="validateQuiz()" *ngxPermissionsOnly="['ROOT', 'ADMIN']">
+                                                <mat-icon>check</mat-icon>
+                                            </button>
                                             <button mat-icon-button color="warn" matTooltip="Demander de repasser le quiz" (click)="retakeTheQuiz()" *ngxPermissionsOnly="['ROOT', 'ADMIN']">
                                                 <mat-icon>replay</mat-icon>
                                             </button>

@@ -113,7 +113,8 @@ import {
 	AddPhotoProfilModalComponent,
 	ParticipateCauserieModalComponent,
 	AddUsersModalComponent,
-	UpdateStatusModalComponent
+	UpdateStatusModalComponent,
+	ValidateQuizzModalComponent
 } from './layout';
 // General
 import { NoticeComponent } from './content/general/notice/notice.component';
@@ -341,6 +342,7 @@ import { FlashinfoEditorComponent } from './layout/flash-infos/flashinfo-editor/
 		FlashinfoReaderComponent,
 		FlashinfoEditorComponent,
 		UpdateStatusModalComponent,
+		ValidateQuizzModalComponent,
 
 	],
 	exports: [
@@ -477,7 +479,8 @@ import { FlashinfoEditorComponent } from './layout/flash-infos/flashinfo-editor/
 		UserHsePassportComponent,
 		FlashinfoReaderComponent,
 		UpdateStatusModalComponent,
-		FlashinfoEditorComponent
+		FlashinfoEditorComponent,
+		ValidateQuizzModalComponent,
 
 	],
 	imports: [
@@ -564,6 +567,7 @@ import { FlashinfoEditorComponent } from './layout/flash-infos/flashinfo-editor/
 		ActionFormModalComponent,
 		UploadDelSignatureDocModalComponent,
 		UpdateStatusModalComponent,
+		ValidateQuizzModalComponent,
 	],
 })
 export class PartialsModule {

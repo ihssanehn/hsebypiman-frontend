@@ -85,7 +85,7 @@ export class MaterielFiltersComponent implements OnInit, AfterViewInit
       only_available:[null]
     })
 
-    if(this.authService.currentUserValue.role.code == 'USER'){
+    if(['MANAGER', 'USER'].includes(this.authService.currentUserValue.role.code)){
       this.filterForm.get('actual_user_id').disable();
       this.filterForm.get('actual_user_id').setValue(this.authService.currentUserValue.id);
     }
