@@ -94,8 +94,9 @@ export class DemandeEpisDetailComponent implements OnInit, OnDestroy {
 			});
 		})
 	}
+	
 	cannotEditDemande(){
-		return this.authService.currentUserValue.role.code == 'USER' && this.demande_epi.status.code != 'ENVOYEE';
+		return ['MANAGER', 'USER'].includes(this.authService.currentUserValue.role.code) && this.demande_epi.status.code != 'ENVOYEE';
 	}
 
 	onAddComment(newComment: string){
@@ -127,5 +128,14 @@ export class DemandeEpisDetailComponent implements OnInit, OnDestroy {
 			throw error;
 		  }
 	}
-
+	getLivraisonType(){
+		switch(this.demande_epi.delivery_type){
+			case 1:
+				return this.translate.instant('DEMANDES_EPI.DELIVERY_TYPE.ENTREPRISE.TITLE')
+			case 2:
+				return this.translate.instant('DEMANDES_EPI.DELIVERY_TYPE.DOMICILE.TITLE')
+			case 3:
+				return this.translate.instant('DEMANDES_EPI.DELIVERY_TYPE.AGENCE.TITLE')
+		}
+	}
 }

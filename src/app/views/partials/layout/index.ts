@@ -117,4 +117,5 @@ export { AssignEpiModalComponent } from './users/assign-epi-modal/assign-epi-mod
 export { ParticipateCauserieModalComponent } from './modal/participate-causerie-modal/participate-causerie-modal.component';
 export { AddUsersModalComponent } from './modal/add-users-modal/add-users-modal.component';
 export { UpdateStatusModalComponent } from './modal/update-status-modal/update-status-modal.component';
+export { ValidateQuizzModalComponent } from './users/validate-quizz-modal/validate-quizz-modal.component';
 

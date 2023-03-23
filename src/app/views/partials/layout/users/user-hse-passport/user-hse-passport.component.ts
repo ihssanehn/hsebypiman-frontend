@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, ChangeDetectorRef, Input } from '@angular
 import { FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PersonnelService, PeriodService, DocumentService, UserService, RemonteeService, MaterielService, CauserieService, ModuleService } from '@app/core/services';
+import { PersonnelService, PeriodService, DocumentService, UserService, RemonteeService, MaterielService, CauserieService, ModuleService, QcmSessionService } from '@app/core/services';
 import * as _moment from 'moment';
 import { default as _rollupMoment } from 'moment';
 import { Personnel, FollowUpPeriod, QcmSession, Remontee, Causerie, Formation, Materiel, Revue } from '@app/core/models';
@@ -14,6 +14,7 @@ import { FormStatus } from '@app/core/_base/crud/models/form-status';
 import { EditAccueilSecuModalComponent } from '@app/views/partials/layout/users/edit-accueil-secu-modal/edit-accueil-secu-modal.component';
 import { AssignEpiModalComponent, AssignFormationModalComponent } from '@app/views/partials/layout';
 import { UploadDelSignatureDocModalComponent } from '../../modal/upload-del-signature-doc-modal/upload-del-signature-doc-modal.component';
+import { ValidateQuizzModalComponent } from '../validate-quizz-modal/validate-quizz-modal.component';
 
 @Component({
   selector: 'tf-user-hse-passport',
@@ -60,6 +61,7 @@ export class UserHsePassportComponent implements OnInit {
     private causerieService: CauserieService,
     private remonteeService: RemonteeService,
     private materielService: MaterielService,
+    private qcmSessionService: QcmSessionService,
     private moduleService: ModuleService,
 		private cdr: ChangeDetectorRef,
     public translate: TranslateService
@@ -275,6 +277,19 @@ export class UserHsePassportComponent implements OnInit {
         })
       }
     })
+  }
+
+  validateQuiz(){
+    const modalRef = this.modalService.open(ValidateQuizzModalComponent, {size: 'md',scrollable: true,centered : true});
+		modalRef.result.then(form => {
+      if(form){
+        let data = {...form, user_id: this.userId}
+        this.qcmSessionService.createUserFakeQuizzSession(data).toPromise().then(res=>{
+          this.getUser(this.userId);
+        });
+        // this.createQuizz(form.date_realisation)
+      }
+    });
   }
 
   showEditAccueilSecuModal() {
