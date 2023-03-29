@@ -1,6 +1,6 @@
-import {Directive, ElementRef, forwardRef, HostListener, Input, OnDestroy, Optional, Self} from '@angular/core';
+import {Directive, ElementRef, HostListener, Input, Optional, Self} from '@angular/core';
 import {MAT_INPUT_VALUE_ACCESSOR} from '@angular/material';
-import {NG_VALUE_ACCESSOR, ControlValueAccessor, ValidationErrors, Validator, NgControl} from '@angular/forms';
+import { ControlValueAccessor, NgControl} from '@angular/forms';
 
 @Directive({
   selector: 'input[matInputAmount]',

@@ -1,7 +1,5 @@
 // Angular
 import { Component, Input, OnInit } from '@angular/core';
-// Lodash
-import { shuffle } from 'lodash';
 
 export interface WidgetIndicatorItemData {
 	title: string;

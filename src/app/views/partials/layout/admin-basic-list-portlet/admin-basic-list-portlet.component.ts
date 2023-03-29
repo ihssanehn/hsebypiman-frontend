@@ -1,5 +1,4 @@
 import {Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef} from '@angular/core';
-import {NzTableComponent} from 'ng-zorro-antd';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 
 @Component({

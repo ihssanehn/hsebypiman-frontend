@@ -1,13 +1,10 @@
-import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { Outillage } from '@app/core/models';
-import { ActivatedRoute, Router } from '@angular/router';
 import { OutillageService } from '@app/core/services';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
-import { map } from 'rxjs/operators';
-import Swal from 'sweetalert2';
 
 @Component({
   selector: 'tf-search-outillage-form',

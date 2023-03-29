@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of, BehaviorSubject } from 'rxjs';
-import { catchError, map, distinctUntilChanged } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
+import { map, distinctUntilChanged } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { HttpService } from '@app/core/services/http-service';
 import { NgxPermissionsService } from 'ngx-permissions';
-import { JsonResponse } from '@app/core/_base/layout/models/jsonResponse.model';
 import { Router } from '@angular/router';
-import { isSuccess } from 'angular-in-memory-web-api';
 
 @Injectable()
 export class ModuleService extends HttpService {

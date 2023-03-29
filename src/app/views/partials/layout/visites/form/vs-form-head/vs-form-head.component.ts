@@ -1,10 +1,9 @@
 
 import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
-import { FormGroup, FormBuilder, AbstractControl, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService, User } from '@app/core/auth';
 import { Type, Status, Entreprise, Materiel } from '@app/core/models';
 import { TypeService, StatusService, EntrepriseService, PersonnelService, MaterielService } from '@app/core/services';
-import { first } from 'rxjs/operators';
 import { SelectOptionModel } from '@app/core/_base/layout';
 
 

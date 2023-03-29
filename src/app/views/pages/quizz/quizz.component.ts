@@ -1,6 +1,4 @@
-import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
-import { AuthNoticeService } from '@app/core/auth';
-import { LayoutConfigService, SplashScreenService, TranslationService } from '@app/core/_base/layout';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'tf-quizz',

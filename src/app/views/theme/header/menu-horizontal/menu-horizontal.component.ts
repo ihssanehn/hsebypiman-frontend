@@ -19,15 +19,13 @@ import {
 	MenuConfigService,
 	MenuHorizontalService,
 	MenuOptions,
-	OffcanvasOptions,
-	SubheaderService
+	OffcanvasOptions
 } from '../../../../core/_base/layout';
 // HTML Class
 import { HtmlClassService } from '../../html-class.service';
 
 import { ModuleService } from '@app/core/services/module.service';
 import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
-import { UserService } from '@app/core/services';
 import { AuthService } from '@app/core/auth';
 
 @Component({

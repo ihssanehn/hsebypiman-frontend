@@ -1,4 +1,4 @@
-import {User} from '@app/core/auth'
+
 
 export class ConsigneModel {
 	id?: number;

@@ -49,7 +49,6 @@ import {
 	MatSnackBarModule,
 	MatTooltipModule,MAT_DATE_LOCALE, 
 	MatSlideToggleModule,
-	MAT_DATE_FORMATS,
 	DateAdapter,
 } from '@angular/material';
 import { 

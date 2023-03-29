@@ -42,8 +42,7 @@ import {
 	MatAutocompleteModule,
 	MAT_DIALOG_DEFAULT_OPTIONS,
 	MatSnackBarModule,
-	MatTooltipModule,MAT_DATE_LOCALE, 
-	MAT_DATE_FORMATS,
+	MatTooltipModule,MAT_DATE_LOCALE,
 	DateAdapter
 } from '@angular/material';
 // DateAdapter

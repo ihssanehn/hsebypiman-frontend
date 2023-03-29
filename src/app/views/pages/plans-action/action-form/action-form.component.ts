@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, ChangeDetectorRef, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Type, Status, Visite } from '@app/core/models';
-import { User } from '@app/core/auth';
 import { 
   TypeService, 
   StatusService,

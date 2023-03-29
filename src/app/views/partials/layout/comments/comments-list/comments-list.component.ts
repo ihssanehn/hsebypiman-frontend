@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, AfterViewChecked, ElementRef, ViewChild,  } from '@angular/core';
 import {Comment} from '@app/core/models';
-import { CommentsAddComponent } from '../comments-add/comments-add.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService, User } from '@app/core/auth';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';

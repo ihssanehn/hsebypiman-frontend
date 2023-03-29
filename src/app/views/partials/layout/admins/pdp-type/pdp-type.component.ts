@@ -2,7 +2,7 @@ import {ChangeDetectorRef, Component, Injector, Input, OnInit} from '@angular/co
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {TranslateService} from "@ngx-translate/core";
 import {AdminTemplateComponent} from "@app/views/partials/layout/admin-template/admin-template.component";
-import {ConsigneEEService, PdpTypeService} from "@app/core/services";
+import { PdpTypeService} from "@app/core/services";
 import {PdpAdminAddModalComponent} from "@app/views/partials/layout/admins/pdp-admin-add-modal/pdp-admin-add-modal.component";
 
 @Component({

@@ -1,9 +1,8 @@
 import { Component, OnInit, Input, ChangeDetectorRef, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormArray, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Type, Status, CatHabilitation, Entreprise } from '@app/core/models';
-import { AuthService, User } from '@app/core/auth';
+import { User } from '@app/core/auth';
 import { TypeService, StatusService, CatHabilitationService, EntrepriseService, PersonnelService } from '@app/core/services';
-import { first } from 'rxjs/operators';
 import { FormStatus } from '@app/core/_base/crud/models/form-status';
 import { SelectOptionModel } from '@app/core/_base/layout';
 

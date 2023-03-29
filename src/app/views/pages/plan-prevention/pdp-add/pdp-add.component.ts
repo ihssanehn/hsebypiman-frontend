@@ -6,7 +6,7 @@ import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
 import {PdpService, TypeService} from '@app/core/services';
 import {TranslateService} from '@ngx-translate/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Ar, Pdp, RisqueModel} from '@app/core/models';
+import { Pdp, RisqueModel} from '@app/core/models';
 import {Subscription} from 'rxjs';
 import {Type} from '@app/core/models';
 import moment from "moment";

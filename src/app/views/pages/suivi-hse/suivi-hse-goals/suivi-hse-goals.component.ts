@@ -4,8 +4,6 @@ import { CatMetric, FollowUpPeriod } from '@app/core/models';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import Swal from 'sweetalert2';
-import * as _moment from 'moment';
-import { default as _rollupMoment } from 'moment';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SuiviHsePeriodsAddComponent } from './suivi-hse-periods-add/suivi-hse-periods-add.component';
 import { TranslateService } from '@ngx-translate/core';

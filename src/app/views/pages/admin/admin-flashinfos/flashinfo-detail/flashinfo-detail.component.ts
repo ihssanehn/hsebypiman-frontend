@@ -6,9 +6,7 @@ import { FlashInfoService } from '@app/core/services';
 import { NgxPermissionsService } from 'ngx-permissions';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
-import {MatDatepicker} from '@angular/material/datepicker';
 import { FlashInfo } from '@app/core/models/flashinfo.model';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2';
 import { TranslateService } from '@ngx-translate/core';
 

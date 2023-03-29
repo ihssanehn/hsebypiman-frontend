@@ -1,7 +1,7 @@
 import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Formation, Habilitation } from '@app/core/models';
-import { FormationService, HabilitationService } from '@app/core/services';
+import { Habilitation } from '@app/core/models';
+import { HabilitationService } from '@app/core/services';
 import { Paginate } from '@app/core/_base/layout/models/paginate.model';
 import { TranslateService } from '@ngx-translate/core';
 import Swal from 'sweetalert2';

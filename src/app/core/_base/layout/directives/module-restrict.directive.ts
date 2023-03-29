@@ -1,7 +1,6 @@
 import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ModuleService } from '@app/core/services';
-import {tap, filter} from 'rxjs/internal/operators'; 
+import { ModuleService } from '@app/core/services'; 
 
 @Directive({selector: '[ifAllModules]'})
 

@@ -1,7 +1,7 @@
 
 import { Component, OnInit, Input, ChangeDetectorRef, EventEmitter, Output, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
-import { FormGroup, FormBuilder, AbstractControl, FormControl, Validators, FormArray } from '@angular/forms';
-import { AuthService, User } from '@app/core/auth';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { AuthService } from '@app/core/auth';
 import { CatQuestion } from '@app/core/models';
 import { CatQuestionService } from '@app/core/services';
 import { SignaturePad } from 'angular2-signaturepad/signature-pad';

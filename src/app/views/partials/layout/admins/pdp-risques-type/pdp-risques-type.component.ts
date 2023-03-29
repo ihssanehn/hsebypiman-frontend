@@ -1,11 +1,9 @@
-import {AfterViewInit, ChangeDetectorRef, Component, Injector, Input, OnInit} from '@angular/core';
+import { ChangeDetectorRef, Component, Injector, Input, OnInit} from '@angular/core';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {TranslateService} from "@ngx-translate/core";
 import {PdpCategoryTypeService} from "@app/core/services";
 import {AdminTemplateComponent} from "@app/views/partials/layout/admin-template/admin-template.component";
-import {AdminAddModalComponent} from "@app/views/partials/layout/admin-add-modal/admin-add-modal.component";
 import {PdpAdminAddModalComponent} from "@app/views/partials/layout/admins/pdp-admin-add-modal/pdp-admin-add-modal.component";
-import {coerceBooleanProperty} from "@angular/cdk/coercion";
 import Swal from "sweetalert2";
 
 @Component({

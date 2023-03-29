@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
-import { ModuleService, PersonnelService, PeriodService } from '@app/core/services';
+import { PersonnelService, PeriodService } from '@app/core/services';
 import { FollowUpPeriod, Personnel } from '@app/core/models/';
 
 @Component({

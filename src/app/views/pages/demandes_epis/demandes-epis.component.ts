@@ -1,7 +1,6 @@
 // Angular
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MenuAsideService } from '../../../core/_base/layout';
 
 
 @Component({

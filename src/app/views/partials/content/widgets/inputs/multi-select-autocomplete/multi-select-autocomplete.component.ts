@@ -2,10 +2,9 @@ import { Component, ElementRef, Input, OnInit, SimpleChanges, ViewChild } from '
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { MatAutocomplete, MatAutocompleteSelectedEvent, MatAutocompleteTrigger } from '@angular/material/autocomplete';
-import { map, startWith, debounceTime, tap, switchMap, finalize } from 'rxjs/operators';
+import { MatAutocomplete, MatAutocompleteTrigger } from '@angular/material/autocomplete';
+import { map, startWith, debounceTime } from 'rxjs/operators';
 import { SelectOptionModel } from '@app/core/_base/layout';
-import { MatInput } from '@angular/material';
 
 @Component({
   selector: 'tf-multi-select-autocomplete',

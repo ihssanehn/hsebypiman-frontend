@@ -3,7 +3,6 @@ import { FormGroup, FormControl } from "@angular/forms";
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { PersonnelService } from '@app/core/services';
 import { SelectOptionModel } from '@app/core/_base/layout';
-import { User } from '@app/core/auth';
 
 @Component({
   selector: 'tf-assign-action-modal',

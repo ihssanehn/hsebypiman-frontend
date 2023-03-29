@@ -1,5 +1,4 @@
 import { BaseModel } from '../../_base/crud';
-import { Permission } from './permission.model';
 
 export class Role extends BaseModel {
     id: number;
