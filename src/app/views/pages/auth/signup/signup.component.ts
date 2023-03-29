@@ -1,9 +1,9 @@
 // Angular
-import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 // RxJS
-import { finalize, takeUntil, tap, debounceTime } from 'rxjs/operators';
+import { debounceTime } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 // Translate
 import { TranslateService } from '@ngx-translate/core';
@@ -12,7 +12,6 @@ import { AuthNoticeService, AuthService } from '../../../../core/auth';
 import { Type } from '@app/core/models';
 import { BuService, EntityService } from '@app/core/services';
 import { environment } from '@env/environment';
-import Swal from 'sweetalert2';
 
 
 @Component({

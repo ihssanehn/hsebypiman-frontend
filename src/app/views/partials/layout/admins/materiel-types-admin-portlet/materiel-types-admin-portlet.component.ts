@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Injector, ChangeDetectorRef } from '@angular/core';
-import { AdminTemplateComponent } from '@app/views/partials/layout/admin-template/admin-template.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CategorieService } from '@app/core/services';
 import { AdminListPortletComponent } from '@app/views/partials/layout/admin-list-portlet/admin-list-portlet.component';

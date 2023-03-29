@@ -4,7 +4,6 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Formation } from '@app/core/models';
 import { FormationService } from '@app/core/services';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import Swal from 'sweetalert2';

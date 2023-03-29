@@ -1,10 +1,10 @@
 // Angular
-import { Component, ChangeDetectionStrategy, OnInit, OnDestroy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 // RxJS
 import { Observable } from 'rxjs';
 // NGRX
-import { Store, select } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 // AppState
 import { AppState } from '../../../core/reducers';
 // Auth

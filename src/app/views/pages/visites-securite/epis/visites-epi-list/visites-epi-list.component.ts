@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { VisiteEpiService } from '@app/core/services';
 import { Paginate } from '@app/core/_base/layout/models/paginate.model';
 import { VisiteEpi } from '@app/core/models';

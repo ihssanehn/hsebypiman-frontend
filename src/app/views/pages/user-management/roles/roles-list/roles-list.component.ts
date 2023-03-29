@@ -4,7 +4,7 @@ import { Component, OnInit, ElementRef, ViewChild, ChangeDetectionStrategy, OnDe
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatPaginator, MatSort, MatSnackBar, MatDialog } from '@angular/material';
 // RXJS
-import { debounceTime, distinctUntilChanged, tap, skip, take, delay } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, tap, take, delay } from 'rxjs/operators';
 import { fromEvent, merge, of, Subscription } from 'rxjs';
 // NGRX
 import { Store } from '@ngrx/store';

@@ -27,8 +27,7 @@ import {
 	MatAutocompleteModule,
 	MAT_DIALOG_DEFAULT_OPTIONS,
 	MatSnackBarModule,
-	MatTooltipModule,MAT_DATE_LOCALE, 
-	MAT_DATE_FORMATS,
+	MatTooltipModule,MAT_DATE_LOCALE,
 	DateAdapter,
   MatSlideToggleModule,
 } from '@angular/material';
@@ -38,7 +37,7 @@ import { PartialsModule } from '@app/views/partials/partials.module';
 import { CoreModule } from '@app/core/core.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { NgxPermissionsGuard, NgxPermissionsModule } from 'ngx-permissions';
+import { NgxPermissionsModule } from 'ngx-permissions';
 import { NgbDropdownModule, NgbPopoverModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxMaskModule } from 'ngx-mask';
 import { HttpUtilsService, InterceptService, LayoutUtilsService, RefreshTokenIntercept, TypesUtilsService } from '@app/core/_base/crud';

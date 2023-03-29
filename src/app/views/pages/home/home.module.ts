@@ -32,11 +32,8 @@ import {
 	MatDatepickerModule,
 	MatExpansionModule,
 	MatAutocompleteModule,
-	MAT_DIALOG_DEFAULT_OPTIONS,
 	MatSnackBarModule,
-	MatTooltipModule,MAT_DATE_LOCALE,
-	MAT_DATE_FORMATS,
-	DateAdapter
+	MatTooltipModule
 } from '@angular/material';
 
 

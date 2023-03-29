@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Location } from '@angular/common';
 
 import { TranslateService } from '@ngx-translate/core';
-import { ChantierService, TypeService } from '@app/core/services';
+import { ChantierService } from '@app/core/services';
 import { Chantier } from '@app/core/models';
 import { MatSnackBar } from '@angular/material';
 import { DateEnToFrPipe, DateFrToEnPipe } from '@app/core/_base/layout';

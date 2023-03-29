@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { SelectOptionModel } from '@app/core/_base/layout';
-import { BehaviorSubject, Observable, of, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
 @Component({

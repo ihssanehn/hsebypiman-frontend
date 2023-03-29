@@ -1,6 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild, ChangeDetectorRef } from '@angular/core';
-import { WidgetIndicatorItemData } from '@app/views/partials/content/widgets/widget-indicator-list/widget-indicator-list.component';
-import * as echarts from 'echarts';
+import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { ChantierService, DashboardService } from '@app/core/services';
 import { Router } from '@angular/router';
 import { Chantier } from '@app/core/models';

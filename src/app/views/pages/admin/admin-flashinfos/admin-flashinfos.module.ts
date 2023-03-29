@@ -6,9 +6,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 // Core Module
 import {CoreModule} from '@app/core/core.module';
-// NGRX
-import {StoreModule} from '@ngrx/store';
-import {EffectsModule} from '@ngrx/effects';
 // Translate
 import {TranslateModule} from '@ngx-translate/core';
 import {PartialsModule} from '../../../partials/partials.module';
@@ -49,7 +46,6 @@ import {
 	MAT_DIALOG_DEFAULT_OPTIONS,
 	MatSnackBarModule,
 	MatTooltipModule, MAT_DATE_LOCALE,
-	MAT_DATE_FORMATS,
 	MatSlideToggleModule,
 	DateAdapter
 } from '@angular/material';

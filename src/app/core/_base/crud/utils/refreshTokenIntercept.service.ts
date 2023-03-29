@@ -7,7 +7,6 @@ import { tap } from 'rxjs/operators';
 
 import { environment } from '@env/environment';
 import { Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
 
 /**
  * More information there => https://medium.com/@MetonymyQT/angular-http-interceptors-what-are-they-and-how-to-use-them-52e060321088

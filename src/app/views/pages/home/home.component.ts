@@ -1,13 +1,10 @@
 // Angular
-import { Component, OnInit, ChangeDetectorRef, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
-// Lodash
-import { shuffle } from 'lodash';
+import { Component, OnInit, ChangeDetectorRef, AfterViewInit, OnDestroy } from '@angular/core';
 // Services
 // Widgets model
-import { LayoutConfigService, SparklineChartOptions, MenuAsideService } from '../../../core/_base/layout';
+import { MenuAsideService } from '../../../core/_base/layout';
 import { ModuleService, FlashInfoService } from '@app/core/services';
 import { FlashInfo } from '@app/core/models/';
-import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService, User } from '@app/core/auth';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { QuizModalComponent } from '@app/views/partials/layout/modal/quiz-modal/quiz-modal.component';

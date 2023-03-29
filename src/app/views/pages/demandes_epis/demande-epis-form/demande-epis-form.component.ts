@@ -1,10 +1,8 @@
 import { Component, OnInit, Input, ChangeDetectorRef, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl, FormArray, FormBuilder, Validators } from '@angular/forms';
 import { Type, Categorie,  } from '@app/core/models';
-import { TypeService, DocumentService, CategorieService, BuService } from '@app/core/services';
+import { TypeService, CategorieService, BuService } from '@app/core/services';
 import { FormStatus } from '@app/core/_base/crud/models/form-status';
-import { TranslateService } from '@ngx-translate/core';
-import Swal from 'sweetalert2';
 
 @Component({
   selector: 'tf-demande-epis-form',

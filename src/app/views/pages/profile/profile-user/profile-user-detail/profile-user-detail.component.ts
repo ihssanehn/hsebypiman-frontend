@@ -1,9 +1,8 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from "rxjs";
 import { User as User, AuthService } from '@app/core/auth';
 import { UserService, DocumentService } from '@app/core/services';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'tf-profile-user-detail',

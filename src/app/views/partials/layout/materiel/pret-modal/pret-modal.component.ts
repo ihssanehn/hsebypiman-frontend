@@ -1,13 +1,9 @@
-import { Component, OnInit, Input, Inject, Output, EventEmitter, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { Component, OnInit, Inject, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { PersonnelService } from '@app/core/services';
-import { Type, Materiel } from '@app/core/models';
 import moment from 'moment';
 import { DateEnToFrPipe, DateFrToEnPipe, SelectOptionModel } from '@app/core/_base/layout';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { takeUntil } from 'rxjs/operators';
-import { Subject, ReplaySubject } from 'rxjs';
-import { User } from '@app/core/auth';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 export interface DialogData {
   origin: string;

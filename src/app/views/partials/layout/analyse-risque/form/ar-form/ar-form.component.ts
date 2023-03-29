@@ -1,15 +1,11 @@
 import { Component, OnInit, Input, ChangeDetectorRef, ViewChild, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormArray } from '@angular/forms';
 import { CatRisqueService, EquipementService, ZoneService } from '@app/core/services';
-import { CatRisque, Equipement, Zone } from '@app/core/models';
+import { CatRisque, Equipement } from '@app/core/models';
 import { User, AuthService } from '@app/core/auth';
 import { SignaturePad } from 'angular2-signaturepad/signature-pad';
 import { Observable } from 'rxjs';
 import { EventEmitter } from '@angular/core';
-import { startWith, map } from 'rxjs/operators';
-import { elementEventFullName } from '@angular/compiler/src/view_compiler/view_compiler';
-import { ParseTreeResult } from '@angular/compiler';
-import { NgxMaskModule} from 'ngx-mask';
 import { FormStatus } from '@app/core/_base/crud/models/form-status';
 
 

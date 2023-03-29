@@ -1,6 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { User } from '@app/core/auth';
 import { PersonnelService, RemonteeService } from '@app/core/services';
 import { DateFrToEnPipe, SelectOptionModel } from '@app/core/_base/layout';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';

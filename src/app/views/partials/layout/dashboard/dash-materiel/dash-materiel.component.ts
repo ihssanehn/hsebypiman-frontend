@@ -1,10 +1,9 @@
-import { Component, OnInit, ChangeDetectorRef, ElementRef, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewChild, Input } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import {MatSort} from '@angular/material/sort';
 import { Router } from '@angular/router';
 import { Materiel } from '@app/core/models';
 import { DashboardService } from '@app/core/services';
-import * as echarts from 'echarts';
 import { TranslateService } from '@ngx-translate/core';
 
 
