@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { environment } from '@env/environment';
 import { HttpService } from '@app/core/services/http-service';
 import { QcmAnswer } from '@app/core/models';

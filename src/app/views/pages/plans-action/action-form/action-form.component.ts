@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, ChangeDetectorRef, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Type, Status, Visite } from '@app/core/models';
-import { User } from '@app/core/auth';
 import { 
   TypeService, 
   StatusService,
@@ -14,6 +13,7 @@ import {
 import { startWith, map } from 'rxjs/operators';
 import { FormStatus } from '@app/core/_base/crud/models/form-status';
 import { Observable } from 'rxjs';
+import { SelectOptionModel } from '@app/core/_base/layout';
 
 
 @Component({
@@ -43,7 +43,7 @@ export class ActionFormComponent implements OnInit {
   visiteTypesSelected: String;
   visiteTypesLoaded: boolean = false;
 
-  usersList: User[];
+  usersList: SelectOptionModel[] = [];
   usersLoaded: boolean = false;
   statusList: Status[];
   statusLoaded: boolean = false;
@@ -98,7 +98,7 @@ export class ActionFormComponent implements OnInit {
     this.usersLoaded = false;
     var res = await this.userService.getList().toPromise();
     if(res){
-      this.usersList = res.result.data;
+      this.usersList = res.result.data.map(user=>new SelectOptionModel(user.id, user.fullname));
       this.usersLoaded = true;
     }
     this.cdr.markForCheck();

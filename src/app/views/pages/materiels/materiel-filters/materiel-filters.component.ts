@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import { CategorieService, PersonnelService } from '@app/core/services';
-import { Categorie, Status } from '@app/core/models';
+import { Categorie } from '@app/core/models';
 import { User, AuthService } from '@app/core/auth';
 import { debounceTime } from 'rxjs/operators';
 import { DateFrToEnPipe, RecursiveSearchPipe } from '@app/core/_base/layout';

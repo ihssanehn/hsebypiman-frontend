@@ -1,11 +1,9 @@
-import { Component, OnInit, Input, ChangeDetectorRef, Output } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Vehicule } from '@app/core/models';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
-import { Router, ActivatedRoute } from '@angular/router';
-import { startWith, map } from 'rxjs/operators';
 import { EventEmitter } from '@angular/core';
 
 @Component({

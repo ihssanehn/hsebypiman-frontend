@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { SignaturePad } from 'angular2-signaturepad/signature-pad';
-import moment from 'moment';
 import { DomSanitizer } from '@angular/platform-browser';
 import { TypeService } from '@app/core/services';
 import { tap } from 'rxjs/operators';

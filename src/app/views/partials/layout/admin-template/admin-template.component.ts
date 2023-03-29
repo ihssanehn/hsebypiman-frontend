@@ -1,15 +1,11 @@
 import {
 	Component,
 	OnInit,
-	Input,
 	Output,
 	EventEmitter,
-	ViewChild,
-	ElementRef,
 	ChangeDetectorRef,
 	Injector
 } from '@angular/core';
-import {NzTableComponent} from 'ng-zorro-antd';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {AdminAddModalComponent} from '../admin-add-modal/admin-add-modal.component';
 import Swal from 'sweetalert2';

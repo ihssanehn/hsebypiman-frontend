@@ -44,8 +44,7 @@ import {
 	MatAutocompleteModule,
 	MAT_DIALOG_DEFAULT_OPTIONS,
 	MatSnackBarModule,
-	MatTooltipModule,MAT_DATE_LOCALE, 
-	MAT_DATE_FORMATS,
+	MatTooltipModule,MAT_DATE_LOCALE,
 	DateAdapter
 } from '@angular/material';
 import { 
@@ -59,8 +58,6 @@ import {
 import {DragDropModule} from '@angular/cdk/drag-drop';
 // DateAdapter
 import { DateMomentAdapter } from '@app/core/_base/crud/utils/date-adapter.component';
-import { CustomMomentDateAdapter } from '@app/core/_base/crud/utils/custom-moment-date.adapter';
-import { YEAR_FORMATS } from '@app/core/_base/crud/utils/custom-moment-date.adapter';
 // Components
 import { SuiviHseComponent } from './suivi-hse.component';
 import { SuiviHseListComponent } from './suivi-hse-list/suivi-hse-list.component';

@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef, Injector } from '@angular/core';
 import { AdminTemplateComponent } from '@app/views/partials/layout/admin-template/admin-template.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { CatHabilitationService, HabilitationService, TypeService } from '@app/core/services';
+import { TypeService } from '@app/core/services';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({

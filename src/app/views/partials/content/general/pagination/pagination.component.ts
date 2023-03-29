@@ -1,4 +1,4 @@
-import { Component, forwardRef, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, forwardRef, Output, EventEmitter } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 

@@ -1,6 +1,6 @@
 // Angular
-import { Component, ChangeDetectionStrategy, OnInit, ChangeDetectorRef } from '@angular/core';
-import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
+import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({

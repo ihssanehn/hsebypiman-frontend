@@ -2,7 +2,6 @@ import { Component, OnInit, ChangeDetectorRef, Injector } from '@angular/core';
 import { ZoneService, TypeService } from '@app/core/services';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AdminTemplateComponent } from '@app/views/partials/layout/admin-template/admin-template.component';
-import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({

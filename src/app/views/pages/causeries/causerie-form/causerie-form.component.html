@@ -29,8 +29,8 @@
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
 									</mat-error>
 								</mat-form-field>
-								<mat-form-field class="col-xl-3">
-									<mat-label>{{'CAUSERIES.ANIMATOR' | translate}}</mat-label>
+								<div class="col-xl-3">
+									<!-- <mat-label>{{'CAUSERIES.ANIMATOR' | translate}}</mat-label>
 									<mat-select class="form-control" placeholder="{{'ACTION.ENTER_HERE' | translate}}" formControlName="organisateur_id" [required]="isFieldRequired('organisateur_id')">
 										<mat-option *ngFor="let organisateur of usersList" [value]="organisateur.id">
 											{{ organisateur | fullName }}
@@ -38,8 +38,13 @@
 									</mat-select>
 									<mat-error *ngIf="isControlHasError('organisateur_id','required')">
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-									</mat-error>
-								</mat-form-field>
+									</mat-error> -->
+									<tf-select-autocomplete
+										[options]="usersList"
+										label="{{'CAUSERIES.ANIMATOR' | translate}}"
+										[control]="causerieForm.controls['organisateur_id']" >
+									</tf-select-autocomplete>		
+								</div>
 								<mat-form-field class="col-xl-3">
 									<mat-label>{{'CAUSERIES.LIEU' | translate}}</mat-label>
 									<input matInput class="form-control" type="text" name="lieu" formControlName="lieu" [required]="isFieldRequired('lieu')" placeholder="{{'ACTION.ENTER_HERE' | translate}}" />

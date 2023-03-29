@@ -2,7 +2,6 @@ import { Component, OnInit, ChangeDetectorRef, Injector, Input } from '@angular/
 import { AdminTemplateComponent } from '@app/views/partials/layout/admin-template/admin-template.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CatQuestionService, QuestionService, TypeService  } from '@app/core/services';
-import { Type } from '@app/core/models';
 import { TranslateService } from '@ngx-translate/core';
 
 

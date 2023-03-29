@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { QcmSession } from '@app/core/models';
 import { QcmSessionService, DocumentService } from '@app/core/services';
 import { environment } from '@env/environment';
-import { MatIconRegistry } from '@angular/material';
 
 @Component({
   selector: 'tf-chapter-nav',

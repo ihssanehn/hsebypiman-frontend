@@ -2,8 +2,7 @@ import { ChangeDetectorRef, Component, EventEmitter, OnInit, Output } from '@ang
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
-import { User } from '@app/core/auth';
-import { HabilitationService, PersonnelService } from '@app/core/services';
+import { HabilitationService } from '@app/core/services';
 import { DateFrToEnPipe } from '@app/core/_base/layout';
 import { debounceTime } from 'rxjs/operators';
 

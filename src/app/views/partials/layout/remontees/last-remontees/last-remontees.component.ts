@@ -1,11 +1,9 @@
-import { Component, OnInit, Input, Inject, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { RemonteeService, DocumentService } from '@app/core/services';
 import { Remontee } from '@app/core/models';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { ImageLightboxContentDialogComponent } from '@app/views/partials/layout/modal/image-lightbox-content-dialog/image-lightbox-content-dialog.component';
-import moment from 'moment';
 
 
 

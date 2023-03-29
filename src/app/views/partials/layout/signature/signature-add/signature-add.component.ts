@@ -4,9 +4,8 @@ import { FormArray, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { User, AuthService } from '@app/core/auth';
 import { Entreprise } from '@app/core/models';
 import { EntrepriseService } from '@app/core/services';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
-import Swal from 'sweetalert2';
 import moment from 'moment';
 
 @Component({

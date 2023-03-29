@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
-import { ModuleService, FlashInfoService } from '@app/core/services';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { FlashInfoService } from '@app/core/services';
 import { FlashInfo } from '@app/core/models/';
 import { ShowFlashInfoModalComponent } from '@app/views/partials/layout/flash-infos/show-flash-info-modal/show-flash-info-modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';

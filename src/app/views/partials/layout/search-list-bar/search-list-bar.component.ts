@@ -1,7 +1,7 @@
-import { ChangeDetectorRef, Component, OnInit, AfterViewInit, EventEmitter, Output, OnDestroy, forwardRef, ViewChild, ElementRef, ContentChild, Input } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-import { fromEvent, of, Subscription } from 'rxjs';
-import { debounceTime,map,distinctUntilChanged,filter, tap } from 'rxjs/operators';
+import { ChangeDetectorRef, Component, OnInit, AfterViewInit, EventEmitter, Output, OnDestroy, forwardRef, ViewChild, ElementRef, Input } from '@angular/core';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { fromEvent, Subscription } from 'rxjs';
+import { debounceTime,distinctUntilChanged,filter } from 'rxjs/operators';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 

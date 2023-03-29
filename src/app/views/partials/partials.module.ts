@@ -1,6 +1,6 @@
 // Angular
 import { RouterModule } from '@angular/router';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignaturePadModule } from 'angular2-signaturepad';
@@ -137,10 +137,11 @@ import {
 		NzIconModule,
 		NzCheckboxModule,
 		NzUploadModule,
-		NzGridModule
+		NzGridModule,
+		NzSelectModule,
+		NzFormModule
 } from 'ng-zorro-antd';
 import { AdminAddModalComponent } from './layout/admin-add-modal/admin-add-modal.component';
-import { ScrollDispatchModule, ScrollingModule } from '@angular/cdk/scrolling';
 import { AdminBasicListPortletComponent } from './layout/admin-basic-list-portlet/admin-basic-list-portlet.component';
 import { AdminTemplateComponent } from './layout/admin-template/admin-template.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
@@ -530,13 +531,14 @@ import { FlashinfoEditorComponent } from './layout/flash-infos/flashinfo-editor/
 		MatSlideToggleModule,
 		MatChipsModule,
 		NgbModalModule,
-
+		NzFormModule,
 		NzTableModule,
 		NzInputModule,
 		NzPopconfirmModule,
 		NzDividerModule,
 		NzIconModule,
 		NzCheckboxModule,
+		NzSelectModule,
 		NgbModule,
 		DragDropModule,
 		MatExpansionModule,

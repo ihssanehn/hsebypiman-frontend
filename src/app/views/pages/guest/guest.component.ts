@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {MenuAsideService} from "@app/core/_base/layout";
 
 @Component({
 	selector: 'tf-guest',

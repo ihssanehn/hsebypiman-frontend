@@ -1,10 +1,10 @@
 import { Component, OnInit, Input, ChangeDetectorRef, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormArray, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Type, Status, CatHabilitation, Entreprise } from '@app/core/models';
-import { AuthService, User } from '@app/core/auth';
+import { User } from '@app/core/auth';
 import { TypeService, StatusService, CatHabilitationService, EntrepriseService, PersonnelService } from '@app/core/services';
-import { first } from 'rxjs/operators';
 import { FormStatus } from '@app/core/_base/crud/models/form-status';
+import { SelectOptionModel } from '@app/core/_base/layout';
 
 
 @Component({
@@ -16,7 +16,7 @@ export class ChantierFormComponent implements OnInit {
 
   typesList: Type[];
   typesLoaded: boolean = false;
-  usersList: User[];
+  usersList: SelectOptionModel[] = [];
   usersLoaded: boolean = false;
   statusList: Status[];
   statusLoaded: boolean = false;
@@ -69,7 +69,7 @@ export class ChantierFormComponent implements OnInit {
     this.usersLoaded = false;
     var res = await this.userService.getList().toPromise();
     if(res){
-      this.usersList = res.result.data;
+      this.usersList = res.result.data.map(user=>new SelectOptionModel(user.id, user.fullname));
       this.usersLoaded = true;
     }
     this.cdr.markForCheck();

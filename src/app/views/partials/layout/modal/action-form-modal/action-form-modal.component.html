@@ -39,28 +39,20 @@
                     <div class="card px-4">
                         <div class="tf-heading tf-heading--md">{{'PLANACTIONS.CARD.ALLOCATION_DEADLINE.TITLE' | translate}}</div>
                         <div class="row form-row">
-                            <mat-form-field class="col-xl-12">
-                                <mat-label>{{'PLANACTIONS.PILOTE.LABEL' | translate}}</mat-label>
-                                <mat-select class="form-control" [required]="isFieldRequired('pilote_id')" placeholder="" formControlName="pilote_id">
-                                    <mat-option *ngFor="let user of usersList" [value]="user.id">
-                                        {{ user.fullname }}
-                                    </mat-option>
-                                </mat-select>
-                                <mat-error *ngIf="isControlHasError('pilote_id','required')">
-                                    <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-                                </mat-error>
-                            </mat-form-field>
-                            <mat-form-field class="col-xl-12">
-                                <mat-label>{{'PLANACTIONS.ACTOR.LABEL' | translate}}</mat-label>
-                                <mat-select class="form-control" [required]="isFieldRequired('actor_id')" placeholder="" formControlName="actor_id">
-                                    <mat-option *ngFor="let user of usersList" [value]="user.id">
-                                        {{ user.fullname }}
-                                    </mat-option>
-                                </mat-select>
-                                <mat-error *ngIf="isControlHasError('pilote_id','required')">
-                                    <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-                                </mat-error>
-                            </mat-form-field>
+                            <div class="col-xl-12">
+                                <tf-select-autocomplete
+                                    [options]="usersList"
+                                    label="{{'PLANACTIONS.PILOTE.LABEL' | translate}}"
+                                    [control]="form.controls['pilote_id']" >
+                                </tf-select-autocomplete>
+                            </div>
+                            <div class="col-xl-12">
+                                <tf-select-autocomplete
+                                    [options]="usersList"
+                                    label="{{'PLANACTIONS.ACTOR.LABEL' | translate}}"
+                                    [control]="form.controls['actor_id']" >
+                                </tf-select-autocomplete>
+                            </div>
                             <mat-form-field class="col-xl-12">
                                 <mat-label>{{'PLANACTIONS.DELAI.LABEL' | translate}}</mat-label>
                                 <input matInput class="form-control" mask="d0/M0/0000" [specialCharacters]="[ '/' ]" [dropSpecialCharacters]="false" formControlName="delai" [required]="isFieldRequired('delai')" placeholder="DD/MM/YYYY">

@@ -1,10 +1,9 @@
-import { Component, OnInit, Input, Inject, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Inject, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { PersonnelService, MaterielService } from '@app/core/services';
-import { Type, Materiel } from '@app/core/models';
-import moment from 'moment';
+import { MaterielService } from '@app/core/services';
+import { Materiel } from '@app/core/models';
 import { DateEnToFrPipe, DateFrToEnPipe } from '@app/core/_base/layout';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 export interface DialogData {
   materiel: Materiel;

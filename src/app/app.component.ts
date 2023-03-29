@@ -6,11 +6,6 @@ import { NavigationEnd, Router } from '@angular/router';
 import { LayoutConfigService, SplashScreenService, TranslationService, VersionCheckService } from './core/_base/layout';
 // language list
 import { locale as frLang } from './core/_config/i18n/fr';
-import { locale as enLang } from './core/_config/i18n/en';
-import { locale as chLang } from './core/_config/i18n/ch';
-import { locale as esLang } from './core/_config/i18n/es';
-import { locale as jpLang } from './core/_config/i18n/jp';
-import { locale as deLang } from './core/_config/i18n/de';
 import { environment } from '@env/environment';
 import { AuthService } from './core/auth';
 

@@ -1,6 +1,5 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DocumentService } from '@app/core/services';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { SafePipe } from '@app/core/_base/layout/pipes/safe.pipe';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { DomSanitizer } from '@angular/platform-browser';

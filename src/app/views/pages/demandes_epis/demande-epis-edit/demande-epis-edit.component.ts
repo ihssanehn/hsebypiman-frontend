@@ -7,11 +7,9 @@ import { Location } from '@angular/common';
 import { DemandeEpisService } from '@app/core/services';
 import { DemandeEpis } from '@app/core/models';
 import Swal from 'sweetalert2';
-import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
 import {FormStatus} from '@app/core/_base/crud/models/form-status';
 import { TranslateService } from '@ngx-translate/core';
 import { DateFrToEnPipe } from '@app/core/_base/layout';
-import moment from 'moment';
 
 
 @Component({

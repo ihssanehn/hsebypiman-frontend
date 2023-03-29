@@ -4,12 +4,11 @@ import { FormGroup } from "@angular/forms";
 import { Subscription } from "rxjs";
 
 import { MaterielService,  DocumentService } from '@app/core/services';
-import { Materiel, Document } from '@app/core/models';
-import {PretModalComponent, ImageLightboxContentDialogComponent, RevisionModalComponent, ShowDocumentModalComponent} from '@app/views/partials/layout';
+import { Materiel } from '@app/core/models';
+import {PretModalComponent, RevisionModalComponent, ShowDocumentModalComponent} from '@app/views/partials/layout';
 import {MatDialog} from '@angular/material/dialog';
 
 import { DomSanitizer } from '@angular/platform-browser';
-import { MatIconRegistry } from '@angular/material';
 import Swal from 'sweetalert2';
 import { TranslateService } from '@ngx-translate/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';

@@ -57,8 +57,8 @@
 								</mat-form-field>
 							</div>
 							<div class="row form-row">
-								<mat-form-field class="col-xl-3">
-									<mat-label>{{'CHANTIERS.CHIEF.LABEL' | translate}}</mat-label>
+								<div class="col-xl-3">
+									<!-- <mat-label>{{'CHANTIERS.CHIEF.LABEL' | translate}}</mat-label>
 									<mat-select class="form-control" [required]="isFieldRequired('charge_affaire_id')" placeholder="" formControlName="charge_affaire_id">
 										<mat-option *ngFor="let user of usersList" [value]="user.id">
 											{{ user.fullname }}
@@ -66,10 +66,15 @@
 									</mat-select>
 									<mat-error *ngIf="isControlHasError('charge_affaire_id','required')">
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-									</mat-error>
-								</mat-form-field>
-								<mat-form-field class="col-xl-3">
-									<mat-label>{{'CHANTIERS.CHIEF.LABEL' | translate}} 2</mat-label>
+									</mat-error> -->
+									<tf-select-autocomplete
+										[options]="usersList"
+										label="{{'CHANTIERS.CHIEF.LABEL' | translate}}"
+										[control]="chantierForm.controls['charge_affaire_id']" >
+									</tf-select-autocomplete>		
+								</div>
+								<div class="col-xl-3">
+									<!-- <mat-label>{{'CHANTIERS.CHIEF.LABEL' | translate}} 2</mat-label>
 									<mat-select class="form-control" [required]="isFieldRequired('charge_affaire_2_id')" placeholder="" formControlName="charge_affaire_2_id">
 										<mat-option *ngFor="let user of usersList" [value]="user.id">
 											{{ user.fullname }}
@@ -80,10 +85,15 @@
 									</button>
 									<mat-error *ngIf="isControlHasError('charge_affaire_2_id','required')">
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-									</mat-error>
-								</mat-form-field>
-								<mat-form-field class="col-xl-2">
-									<mat-label>{{'CHANTIERS.RESP_CHIFFRAGE.LABEL' | translate}}</mat-label>
+									</mat-error> -->
+									<tf-select-autocomplete
+										[options]="usersList"
+										label="{{('CHANTIERS.CHIEF.LABEL' | translate)+' 2'}}"
+										[control]="chantierForm.controls['charge_affaire_2_id']" >
+									</tf-select-autocomplete>		
+								</div>
+								<div class="col-xl-2">
+									<!-- <mat-label>{{'CHANTIERS.RESP_CHIFFRAGE.LABEL' | translate}}</mat-label>
 									<mat-select class="form-control" [required]="isFieldRequired('resp_chiffrage_id')" placeholder="" formControlName="resp_chiffrage_id">
 										<mat-option *ngFor="let user of usersList" [value]="user.id">
 											{{ user.fullname }}
@@ -91,8 +101,13 @@
 									</mat-select>
 									<mat-error *ngIf="isControlHasError('resp_chiffrage_id','required')">
 										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-									</mat-error>
-								</mat-form-field>
+									</mat-error> -->
+									<tf-select-autocomplete
+											[options]="usersList"
+											label="{{'CHANTIERS.RESP_CHIFFRAGE.LABEL' | translate}}"
+											[control]="chantierForm.controls['resp_chiffrage_id']" >
+										</tf-select-autocomplete>	
+								</div>
 								<mat-form-field class="col-xl-2">
 									<mat-label>{{'CHANTIERS.CLIENT.LABEL' | translate}}</mat-label>
 									<input matInput class="form-control" type="text" name="client" formControlName="client" [required]="isFieldRequired('client')" placeholder="{{'ACTION.ENTER_HERE' | translate}}" />

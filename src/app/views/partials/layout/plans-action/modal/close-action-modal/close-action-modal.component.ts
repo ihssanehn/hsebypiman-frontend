@@ -1,7 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormControl } from "@angular/forms";
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'tf-close-action-modal',

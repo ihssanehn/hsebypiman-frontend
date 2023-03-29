@@ -1,7 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
-import moment from 'moment';
 import { GuestService } from '@app/core/auth/_services/guest.service';
 
 @Component({

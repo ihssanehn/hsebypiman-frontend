@@ -13,9 +13,9 @@
                         <div class="tf-wizard-v4__form">
                             <div class="row form-row justify-content-md-center">
                                 <!-- SALARIE -->
-                                <mat-form-field class="col-xl-3"
+                                <div class="col-xl-3"
                                     matTooltip="Vous ne pouvez pas sélectionner un salarié si une entreprise est déjà sélectionnée">
-                                    <mat-label>{{'VISITES.VISITED.LABEL' | translate}}</mat-label>
+                                    <!-- <mat-label>{{'VISITES.VISITED.LABEL' | translate}}</mat-label>
                                     <mat-select class="form-control" placeholder="" formControlName="salarie_id" [required]="isFieldRequired('salarie_id')">
                                         <mat-option *ngFor="let user of salaries" [value]="user.id">
                                             {{ user | fullName }}
@@ -27,8 +27,13 @@
                                     </button>
                                     <mat-error *ngIf="isControlHasError('salarie_id','required')">
                                         <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-                                    </mat-error>
-                                </mat-form-field>
+                                    </mat-error> -->
+                                    <tf-select-autocomplete
+										[options]="salaries"
+										label="{{'VISITES.VISITED.LABEL' | translate}}"
+										[control]="form.controls['salarie_id']" >
+									</tf-select-autocomplete>
+                                </div>
                                 <!-- TYPE -->
                                 <mat-form-field class="col-xl-3">
                                     <mat-label>{{'VISITES.TYPE.LABEL' | translate}}</mat-label>

@@ -1,18 +1,15 @@
-import { Component, Input, OnInit, Output, EventEmitter, ChangeDetectorRef, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { User } from '@app/core/auth/_models/user.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FileUploader } from "ng2-file-upload";
 import { AddPhotoProfilModalComponent } from '../add-photo-profil-modal/add-photo-profil-modal.component';
 import { FormStatus } from '@app/core/_base/crud/models/form-status';
 import { TranslateService } from '@ngx-translate/core';
-import { UserService, DocumentService, RemonteeService, QcmSessionService, FormationService, MaterielService } from '@app/core/services';
+import { UserService, DocumentService, RemonteeService, FormationService, MaterielService } from '@app/core/services';
 import Swal from 'sweetalert2';
 import { extractErrorMessagesFromErrorResponse } from '@app/core/_base/crud';
 import { Formation, QcmSession, Remontee } from '@app/core/models';
 import { Router } from '@angular/router';
-import { AssignFormationModalComponent } from '../assign-formation-modal/assign-formation-modal.component';
-import { AssignEpiModalComponent } from '../assign-epi-modal/assign-epi-modal.component';
-import { EditAccueilSecuModalComponent } from '../edit-accueil-secu-modal/edit-accueil-secu-modal.component';
 
 
 
