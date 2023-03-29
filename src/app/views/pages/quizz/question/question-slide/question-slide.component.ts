@@ -1,6 +1,5 @@
-import { Component, Input, OnInit, ChangeDetectorRef, Output } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectorRef } from '@angular/core';
 import { DocumentService } from '@app/core/services';
-import { EventEmitter } from 'events';
 
 @Component({
   selector: 'tf-question-slide',

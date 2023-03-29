@@ -1,9 +1,8 @@
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
-import { MatDialog, MatIconRegistry } from '@angular/material';
-import { DomSanitizer } from '@angular/platform-browser';
+import { MatDialog } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Formation, Habilitation } from '@app/core/models';
-import { FormationService, HabilitationService } from '@app/core/services';
+import { Habilitation } from '@app/core/models';
+import { HabilitationService } from '@app/core/services';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import Swal from 'sweetalert2';

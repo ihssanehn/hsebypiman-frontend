@@ -1,6 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, Injector } from '@angular/core';
-import { NzTableComponent } from 'ng-zorro-antd';
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { Component, OnInit } from '@angular/core';
 import { AdminListPortletComponent } from '@app/views/partials/layout/admin-list-portlet/admin-list-portlet.component';
 
 @Component({

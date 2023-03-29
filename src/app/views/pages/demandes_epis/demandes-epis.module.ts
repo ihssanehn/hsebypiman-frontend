@@ -9,7 +9,7 @@ import { CoreModule } from '../../../core/core.module';
 // Translate
 import { TranslateModule } from '@ngx-translate/core';
 import { PartialsModule } from '../../partials/partials.module';
-import { NgxPermissionsModule, NgxPermissionsGuard } from 'ngx-permissions';
+import { NgxPermissionsModule } from 'ngx-permissions';
 // Services
 import { HttpUtilsService, TypesUtilsService, InterceptService, LayoutUtilsService, RefreshTokenIntercept} from '../../../core/_base/crud';
 // Shared
@@ -41,12 +41,9 @@ import {
 	MatAutocompleteModule,
 	MAT_DIALOG_DEFAULT_OPTIONS,
 	MatSnackBarModule,
-	MatTooltipModule,MAT_DATE_LOCALE, 
-	MAT_DATE_FORMATS,
+	MatTooltipModule,MAT_DATE_LOCALE,
 	DateAdapter
 } from '@angular/material';
-// FileUpload
-import { FileUploadModule } from 'ng2-file-upload';
 
 // DateAdapter
 import { CustomDateAdapter } from '@app/core/_base/crud/utils/custom-date.adapter';

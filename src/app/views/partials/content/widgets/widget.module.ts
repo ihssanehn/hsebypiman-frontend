@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatButtonModule, MatIconModule, MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatTableModule, } from '@angular/material';
+import { MatButtonModule, MatIconModule, MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatTableModule, MatSelectModule, MatInputModule, MatChipsModule, MatAutocompleteModule, } from '@angular/material';
 import { CoreModule } from '../../../../core/core.module';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 // Datatable
@@ -17,6 +17,10 @@ import { WidgetIndicatorComponent } from './widget-indicator/widget-indicator.co
 import { WidgetIndicatorListComponent } from './widget-indicator-list/widget-indicator-list.component';
 import { Timeline2Component } from './timeline2/timeline2.component';
 import { PortletModule } from '../general/portlet/portlet.module';
+import { SelectAutocompleteComponent } from './inputs/select-autocomplete/select-autocomplete.component';
+import { MultiSelectAutocompleteComponent } from './inputs/multi-select-autocomplete/multi-select-autocomplete.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
 	declarations: [
@@ -32,6 +36,8 @@ import { PortletModule } from '../general/portlet/portlet.module';
 		WidgetIndicatorComponent,
 		WidgetIndicatorListComponent,
 		Timeline2Component,
+		SelectAutocompleteComponent,
+		MultiSelectAutocompleteComponent
 	],
 	exports: [
 		DataTableComponent,
@@ -46,6 +52,8 @@ import { PortletModule } from '../general/portlet/portlet.module';
 		WidgetIndicatorComponent,
 		WidgetIndicatorListComponent,
 		Timeline2Component,
+		SelectAutocompleteComponent,
+		MultiSelectAutocompleteComponent
 	],
 	imports: [
 		CommonModule,
@@ -57,7 +65,14 @@ import { PortletModule } from '../general/portlet/portlet.module';
 		MatProgressSpinnerModule,
 		MatPaginatorModule,
 		MatSortModule,
-		PortletModule
+		PortletModule,
+		MatSelectModule,
+		MatInputModule,
+		MatChipsModule,
+		MatAutocompleteModule,
+		TranslateModule,
+		ReactiveFormsModule,
+		FormsModule,
 	]
 })
 export class WidgetModule {

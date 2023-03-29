@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import { TypeService, PersonnelService, StatusService } from '@app/core/services';
-import { Status, Type } from '@app/core/models';
+import { Status } from '@app/core/models';
 import { User } from '@app/core/auth';
 import { debounceTime, } from 'rxjs/operators';
 import { DateFrToEnPipe } from '@app/core/_base/layout';

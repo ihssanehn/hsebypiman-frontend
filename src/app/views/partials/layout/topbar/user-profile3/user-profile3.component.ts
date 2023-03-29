@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 // RxJS
 import { Observable } from 'rxjs';
 // NGRX
-import { select, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 // State
 import { AppState } from '../../../../../core/reducers';
 import { User } from '../../../../../core/auth';

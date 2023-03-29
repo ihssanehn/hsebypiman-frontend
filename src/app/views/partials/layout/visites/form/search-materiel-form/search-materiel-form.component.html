@@ -38,8 +38,13 @@
                         <div class="tf-wizard-v4__form">
                             <div class="row form-row justify-content-md-center">
                                 <!-- SALARIE -->
-                                <mat-form-field class="col-xl-3" [matTooltipDisabled]="formHasMateriel()" matTooltip="{{'VISITES.NOTIF.CANNOT_SELECT_EMPLOYEE.MATERIEL_SELECTED.TITLE' | translate}}">
-                                    <mat-label>{{'VISITES.VISITED.LABEL' | translate}}</mat-label>
+                                <div class="col-xl-3" [matTooltipDisabled]="formHasMateriel()" matTooltip="{{'VISITES.NOTIF.CANNOT_SELECT_EMPLOYEE.MATERIEL_SELECTED.TITLE' | translate}}">
+                                    <tf-select-autocomplete
+										[options]="salaries"
+										label="{{'VISITES.VISITED.LABEL' | translate}}"
+										[control]="form.controls['salarie_id']" >
+									</tf-select-autocomplete>
+                                    <!-- <mat-label>{{'VISITES.VISITED.LABEL' | translate}}</mat-label>
                                     <mat-select class="form-control" placeholder="" formControlName="salarie_id" [required]="isFieldRequired('salarie_id')">
                                         <mat-option *ngFor="let user of salaries" [value]="user.id">
                                             {{ user | fullName }}
@@ -51,8 +56,8 @@
                                     </button>
                                     <mat-error *ngIf="isControlHasError('salarie_id','required')">
                                         <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-                                    </mat-error>
-                                </mat-form-field>
+                                    </mat-error> -->
+                                </div>
                     
                                 <!-- MATERIEL -->
                                 <mat-form-field class="col-xl-3" [ngClass]="{'order-first' :  model == 'VsVehicule'}" [matTooltipDisabled]="materiels.length > 0" matTooltip="{{'VISITES.NOTIF.NO_MATERIEL_ASSOCIATED_TO_EMPLOYEE.TITLE' | translate}}">

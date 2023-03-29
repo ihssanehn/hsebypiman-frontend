@@ -1,9 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Type, Metric } from '@app/core/models';
+import { Component, OnInit, Input } from '@angular/core';
+import { Metric } from '@app/core/models';
 import { PersonnelService } from '@app/core/services';
-import Swal, { SweetAlertIcon } from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormControl } from '@angular/forms';
 
 
 @Component({

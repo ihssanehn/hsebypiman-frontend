@@ -1,13 +1,10 @@
-import { Component, OnInit, ChangeDetectorRef, Inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from "@angular/forms";
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
 import { TranslateService } from '@ngx-translate/core';
-import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
-import {FormStatus} from '@app/core/_base/crud/models/form-status';
 import {FileUploader} from "ng2-file-upload";
-import { Document, Formation } from '@app/core/models';
+import { Formation } from '@app/core/models';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2';
-import { MatSnackBar } from '@angular/material';
 import { FormationService } from '@app/core/services';
 import moment from 'moment';
 import { DateEnToFrPipe, DateFrToEnPipe } from '@app/core/_base/layout';

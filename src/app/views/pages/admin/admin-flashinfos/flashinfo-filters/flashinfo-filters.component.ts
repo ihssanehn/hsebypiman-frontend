@@ -5,7 +5,7 @@ import { MatIconRegistry } from '@angular/material';
 import { PersonnelService } from '@app/core/services';
 import { User } from '@app/core/auth';
 import { debounceTime } from 'rxjs/operators';
-import {  DateFrToEnPipe } from '@app/core/_base/layout';
+import {  DateFrToEnPipe, SelectOptionModel } from '@app/core/_base/layout';
 
 
 @Component({
@@ -22,6 +22,7 @@ export class FlashInfoFiltersComponent implements OnInit, AfterViewInit
   hidden = true;
   data: boolean = false;
   users: User[];
+  usersOptions: SelectOptionModel[] = [];
 
   @Output() change = new EventEmitter();
   constructor(
@@ -51,6 +52,7 @@ export class FlashInfoFiltersComponent implements OnInit, AfterViewInit
   async getUsers(){
     var res = await this.userService.getList().toPromise();
     this.users = res.result.data;
+    this.usersOptions = this.users.map(user=> new SelectOptionModel(user.id, user.trigramme+' '+user.fullname))
     this.cdr.markForCheck();
   }
   

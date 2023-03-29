@@ -1,7 +1,5 @@
 // Angular
 import { Component, ContentChild, Input, OnInit, TemplateRef } from '@angular/core';
-// Lodash
-import { shuffle } from 'lodash';
 // Layout
 import { LayoutConfigService } from '../../../../../core/_base/layout';
 

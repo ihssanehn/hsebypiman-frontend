@@ -13,8 +13,8 @@
         <div class="row">
             <div class="col-12">
                 <!-- PILOTE -->
-                <mat-form-field class="col-12">
-                    <mat-label>{{'PLANACTIONS.PILOTE.LABEL' | translate}}</mat-label>
+                <div class="col-12">
+                    <!-- <mat-label>{{'PLANACTIONS.PILOTE.LABEL' | translate}}</mat-label>
                     <mat-select class="form-control" formControlName="pilote_id" name="pilote_id">
                         <mat-option *ngFor="let user of usersList" [value]="user.id">
                             {{ user.fullname }}
@@ -25,12 +25,17 @@
                     </button>
                     <mat-error *ngIf="isControlHasError('pilote_id','required')">
                         <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-                    </mat-error>
-                </mat-form-field>
+                    </mat-error> -->
+                    <tf-select-autocomplete
+                        [options]="usersList"
+                        label="{{'PLANACTIONS.PILOTE.LABEL' | translate}}"
+                        [control]="form.controls['pilote_id']" >
+                    </tf-select-autocomplete>
+                </div>
             
                 <!-- ACTOR -->
-                <mat-form-field class="col-12">
-                    <mat-label>{{'PLANACTIONS.ACTOR.LABEL' | translate}}</mat-label>
+                <div class="col-12">
+                    <!-- <mat-label>{{'PLANACTIONS.ACTOR.LABEL' | translate}}</mat-label>
                     <mat-select class="form-control" formControlName="actor_id" name="actor_id">
                         <mat-option *ngFor="let user of usersList" [value]="user.id">
                             {{ user.fullname }}
@@ -41,8 +46,13 @@
                     </button>
                     <mat-error *ngIf="isControlHasError('actor_id','required')">
                         <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
-                    </mat-error>
-                </mat-form-field>
+                    </mat-error> -->
+                    <tf-select-autocomplete
+                        [options]="usersList"
+                        label="{{'PLANACTIONS.ACTOR.LABEL' | translate}}"
+                        [control]="form.controls['actor_id']" >
+                    </tf-select-autocomplete>
+                </div>
                 
                 <!-- DELAI -->
 				<mat-form-field class="col-12">

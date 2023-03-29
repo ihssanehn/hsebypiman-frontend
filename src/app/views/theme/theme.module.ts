@@ -12,9 +12,6 @@ import { NgbProgressbarModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstr
 import { TranslateModule } from '@ngx-translate/core';
 // Loading bar
 import { LoadingBarModule } from '@ngx-loading-bar/core';
-// NGRX
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
 // Ngx DatePicker
 // import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_LOCALE } from 'ng-pick-datetime';

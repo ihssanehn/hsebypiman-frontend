@@ -1,11 +1,9 @@
 
 import { Component, OnInit, Input, ChangeDetectorRef, EventEmitter, Output } from '@angular/core';
-import { FormGroup, FormBuilder, AbstractControl, FormControl, Validators, FormArray } from '@angular/forms';
-import { AuthService, User } from '@app/core/auth';
+import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
+import { AuthService } from '@app/core/auth';
 import { CatQuestion, Etat } from '@app/core/models';
 import { CatQuestionService, EtatService } from '@app/core/services';
-import { first, pluck } from 'rxjs/operators';
-import { FakeApiService } from '@app/core/_base/layout/server/fake-api/fake-api.service';
 import moment from 'moment';
 
 

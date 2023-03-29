@@ -1,17 +1,10 @@
 // Angular
 import { Component, Input, OnInit, ChangeDetectorRef } from '@angular/core';
-// RxJS
-import { Observable } from 'rxjs';
-// NGRX
-import { select, Store } from '@ngrx/store';
-// State
-import { AppState } from '../../../../../core/reducers';
 import { User, AuthService } from '../../../../../core/auth';
 import { Router } from '@angular/router';
 import { environment } from '@env/environment';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import Swal from 'sweetalert2';
-import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
+import { NgxRolesService } from 'ngx-permissions';
 import { DocumentService, ModuleService } from '@app/core/services';
 
 	

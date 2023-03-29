@@ -2,8 +2,8 @@ import { ChangeDetectorRef, Component, OnInit, EventEmitter, Output, AfterViewIn
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
-import { ChantierService, TypeService, StatusService, EntrepriseService, PersonnelService } from '@app/core/services';
-import { Type, Status, Entreprise } from '@app/core/models';
+import { TypeService, StatusService, PersonnelService } from '@app/core/services';
+import { Type, Status } from '@app/core/models';
 import { User } from '@app/core/auth';
 import { debounceTime } from 'rxjs/operators';
 import { DateFrToEnPipe } from '@app/core/_base/layout';

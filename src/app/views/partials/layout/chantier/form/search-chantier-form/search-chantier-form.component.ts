@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, ChangeDetectorRef, Input, Sanitizer, Output } from '@angular/core';
+import { Component, OnChanges, ChangeDetectorRef, Input, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Chantier } from '@app/core/models';
 import { Observable, BehaviorSubject } from 'rxjs';

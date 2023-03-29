@@ -2,13 +2,8 @@
 import { Component, Input, OnInit, ChangeDetectorRef } from '@angular/core';
 // RxJS
 import { Observable } from 'rxjs';
-// NGRX
-import { select, Store } from '@ngrx/store';
-// State
-import { AppState } from '../../../../../core/reducers';
 import { User, AuthService } from '../../../../../core/auth';
 import { Router } from '@angular/router';
-import { environment } from '@env/environment';
 
 
 @Component({

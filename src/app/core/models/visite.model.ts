@@ -1,5 +1,5 @@
 
-import {Ar, Chantier, Type, Status, Etat, Question, Signature, Materiel, Outillage, Vehicule, CatQuestion, Document } from './'
+import { Chantier, Type, Status, Etat, Question, Signature, Materiel, Outillage, Vehicule, CatQuestion, Document } from './'
 import { User } from '../auth';
 
 export class VisiteChantier {

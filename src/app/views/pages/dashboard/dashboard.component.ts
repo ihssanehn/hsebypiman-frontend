@@ -1,15 +1,10 @@
 // Angular
-import { Component, OnInit, ChangeDetectorRef, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
-// Lodash
-import { shuffle } from 'lodash';
+import { Component, OnInit, ChangeDetectorRef, AfterViewInit, OnDestroy } from '@angular/core';
 // Services
 // Widgets model
-import { LayoutConfigService, SparklineChartOptions, MenuAsideService } from '../../../core/_base/layout';
-import { Widget4Data } from '../../partials/content/widgets/widget4/widget4.component';
+import { LayoutConfigService, MenuAsideService } from '../../../core/_base/layout';
 import { DashboardService, ModuleService } from '@app/core/services';
 import { Router } from '@angular/router';
-import * as echarts from 'echarts';
-import { WidgetIndicatorItemData } from '@app/views/partials/content/widgets/widget-indicator-list/widget-indicator-list.component';
 
 @Component({
 	selector: 'tf-dashboard',

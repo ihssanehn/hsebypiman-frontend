@@ -1,10 +1,10 @@
 
 import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
-import { FormGroup, FormBuilder, AbstractControl, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService, User } from '@app/core/auth';
 import { Type, Status, Entreprise, Materiel } from '@app/core/models';
 import { TypeService, StatusService, EntrepriseService, PersonnelService, MaterielService } from '@app/core/services';
-import { first } from 'rxjs/operators';
+import { SelectOptionModel } from '@app/core/_base/layout';
 
 
 @Component({
@@ -15,7 +15,7 @@ import { first } from 'rxjs/operators';
 export class VsFormHeadComponent implements OnInit {
 
   types: Type[];
-  users: User[];
+  users: SelectOptionModel[] = [];
   status: Status[];
   entreprises: Entreprise[];
   entreprisesGrouped: any;
@@ -53,7 +53,6 @@ export class VsFormHeadComponent implements OnInit {
     this.getStatus();
     this.getInterimaires();
     this.getMateriels();
-    console.log(this.visiteForm.get('environnement').value);
     if(this.data){
       this.redacteur = this.data.redacteur ? this.data.redacteur : this.data.creator;
     }else{
@@ -81,7 +80,7 @@ export class VsFormHeadComponent implements OnInit {
   }
   async getUsers(){
     var res = await this.userService.getList().toPromise();
-    this.users = res.result.data;
+    this.users = res.result.data.map(user=>new SelectOptionModel(user.id, user.fullname));
     this.cdr.markForCheck();
   }
   async getStatus(){

@@ -8,7 +8,6 @@ import { DemandeEpisService } from '@app/core/services';
 import { DemandeEpis } from '@app/core/models';
 import { MatSnackBar } from '@angular/material';
 import Swal from 'sweetalert2';
-import {extractErrorMessagesFromErrorResponse} from '@app/core/_base/crud';
 import {FormStatus} from '@app/core/_base/crud/models/form-status';
 import { DateFrToEnPipe } from '@app/core/_base/layout';
 

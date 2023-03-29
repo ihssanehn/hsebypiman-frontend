@@ -1,8 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { DashboardService } from '@app/core/services';
 import { Widget4Data } from '@app/views/partials/content/widgets/widget4/widget4.component';
-import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
-import { Observable } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'tf-dash-entreprise',

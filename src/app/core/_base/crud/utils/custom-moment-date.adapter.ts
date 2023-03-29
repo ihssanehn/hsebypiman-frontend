@@ -1,4 +1,4 @@
-import { NativeDateAdapter, MAT_DATE_LOCALE } from '@angular/material';
+import { MAT_DATE_LOCALE } from '@angular/material';
 import {Injectable, Optional, Inject} from '@angular/core';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import moment from 'moment';

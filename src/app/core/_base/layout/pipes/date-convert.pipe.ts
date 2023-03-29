@@ -1,7 +1,6 @@
 // Angular
 import { Pipe, PipeTransform } from '@angular/core';
 import moment from 'moment';
-import { MatExpansionPanelDescription } from '@angular/material';
 
 /**
  * Returns only first letter of string

@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component, EventEmitter, OnInit, Output } from '@ang
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
-import { CatHabilitationService, HabilitationService, PersonnelService } from '@app/core/services';
+import { CatHabilitationService } from '@app/core/services';
 import { debounceTime } from 'rxjs/operators';
 
 @Component({

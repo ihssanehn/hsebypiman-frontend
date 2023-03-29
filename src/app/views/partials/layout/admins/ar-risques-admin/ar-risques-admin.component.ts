@@ -1,6 +1,6 @@
 import { Component, OnInit, Injector, ChangeDetectorRef } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { TypeService, ZoneService, CatRisqueService, RisqueService } from '@app/core/services';
+import { CatRisqueService, RisqueService } from '@app/core/services';
 import { AdminTemplateComponent } from '@app/views/partials/layout/admin-template/admin-template.component';
 import { TranslateService } from '@ngx-translate/core';
 

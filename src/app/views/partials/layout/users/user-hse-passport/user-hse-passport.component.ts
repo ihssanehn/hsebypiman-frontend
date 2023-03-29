@@ -1,11 +1,9 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef, Input } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PersonnelService, PeriodService, DocumentService, UserService, RemonteeService, MaterielService, CauserieService, ModuleService, QcmSessionService } from '@app/core/services';
-import * as _moment from 'moment';
-import { default as _rollupMoment } from 'moment';
-import { Personnel, FollowUpPeriod, QcmSession, Remontee, Causerie, Formation, Materiel, Revue } from '@app/core/models';
+import { DocumentService, UserService, RemonteeService, MaterielService, CauserieService, ModuleService, QcmSessionService } from '@app/core/services';
+import { QcmSession, Remontee, Causerie, Formation, Materiel, Revue } from '@app/core/models';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2';
 import { TranslateService } from '@ngx-translate/core';

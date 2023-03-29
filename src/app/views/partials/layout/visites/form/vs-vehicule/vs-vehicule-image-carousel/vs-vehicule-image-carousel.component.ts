@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, ChangeDetectionStrategy, ChangeDetectorRef, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, ChangeDetectionStrategy, ChangeDetectorRef, SimpleChanges } from '@angular/core';
 import { Document } from '@app/core/models';
 import { DocumentService } from '@app/core/services';
 import { DomSanitizer } from '@angular/platform-browser';

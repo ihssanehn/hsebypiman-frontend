@@ -1,7 +1,7 @@
 // Angular
 import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 // RxJS
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 // Object-Path
 import * as objectPath from 'object-path';
 // Layout
@@ -12,9 +12,6 @@ import { MenuConfig } from '../../../core/_config/menu.config';
 import { PageConfig } from '../../../core/_config/page.config';
 // User permissions
 import { NgxPermissionsService } from 'ngx-permissions';
-import { Permission } from '../../../core/auth';
-import { select, Store } from '@ngrx/store';
-import { AppState } from '../../../core/reducers';
 import { NavigationEnd, Router} from '@angular/router';
 import {filter} from 'rxjs/operators';
 

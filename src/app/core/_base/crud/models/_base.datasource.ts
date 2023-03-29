@@ -1,7 +1,7 @@
 // Angular
 import { CollectionViewer, DataSource } from '@angular/cdk/collections';
 // RxJS
-import { Observable, BehaviorSubject, combineLatest, Subscription, of } from 'rxjs';
+import { Observable, BehaviorSubject, Subscription, of } from 'rxjs';
 // CRUD
 import { HttpExtenstionsModel } from './http-extentsions-model';
 import { QueryParamsModel } from './query-models/query-params.model';

@@ -1,10 +1,9 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService, DocumentService } from '@app/core/services';
 import { User } from '@app/core/auth/_models/user.model';
-import { Remontee } from '@app/core/models';
 
 @Component({
   selector: 'tf-user-detail',
