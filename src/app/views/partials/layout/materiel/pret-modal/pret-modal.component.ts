@@ -1,10 +1,13 @@
-import { Component, OnInit, Input, Inject, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, Inject, Output, EventEmitter, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { PersonnelService } from '@app/core/services';
 import { Type, Materiel } from '@app/core/models';
 import moment from 'moment';
-import { DateEnToFrPipe, DateFrToEnPipe } from '@app/core/_base/layout';
+import { DateEnToFrPipe, DateFrToEnPipe, SelectOptionModel } from '@app/core/_base/layout';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { takeUntil } from 'rxjs/operators';
+import { Subject, ReplaySubject } from 'rxjs';
+import { User } from '@app/core/auth';
 
 export interface DialogData {
   origin: string;
@@ -22,6 +25,8 @@ export class PretModalComponent implements OnInit {
   form: FormGroup;
   salaries: any;
   formloading: Boolean = false;
+  userFilterModel: string = "";
+  salariesOptions: SelectOptionModel[] = [];
 
   constructor(
     public dialogRef: MatDialogRef<PretModalComponent>,
@@ -46,6 +51,7 @@ export class PretModalComponent implements OnInit {
       is_given: [0],
       date_retour: [null],
     })
+
 
     this.form.get('is_given').valueChanges.subscribe(val=>{
       if(val == 1){
@@ -79,7 +85,13 @@ export class PretModalComponent implements OnInit {
       }
     }
 
-    this.salaries = (await this.salarieService.getList().toPromise()).result.data;
+    await this.salarieService.getList().toPromise().then(res=>{
+      this.salaries = res.result.data;
+      this.salariesOptions = this.salaries.map(user => {
+        return new SelectOptionModel(user.id, user.fullname); 
+      });
+    });
+
 
     this.cdr.markForCheck();
 
@@ -99,6 +111,8 @@ export class PretModalComponent implements OnInit {
       }
     }
   }
+
+ 
 
   /**
   * Checking control validation

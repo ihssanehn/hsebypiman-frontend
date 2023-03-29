@@ -1,0 +1,9 @@
+:host {
+    ::ng-deep .mat-chip-list-wrapper input.mat-input-element {
+        height: 2em;
+    }
+
+    ::ng-deep .mat-chip-list-wrapper {
+        margin: 5px;
+    }
+}

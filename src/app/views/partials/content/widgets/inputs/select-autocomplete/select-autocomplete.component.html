@@ -1,0 +1,40 @@
+<mat-form-field [class]="class+' mat-form-field mat-form-field-autocomplete'" appearance="fill" *ngIf="options.length">
+    <mat-label>{{label}}</mat-label>
+    <input 
+        type="text" 
+        matInput 
+        [formControl]="control"
+        [matAutocomplete]="auto" 
+        [required]="isFieldRequired()">
+
+    <mat-autocomplete 
+        #auto="matAutocomplete" 
+        [displayWith]="displayFn.bind(this)">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option.id">
+        {{option.name}}
+      </mat-option>
+    </mat-autocomplete>
+
+    <button mat-button *ngIf="formHasValue() && allowClear" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue(); $event.stopPropagation()">
+        <mat-icon>clear</mat-icon>
+    </button>
+    <mat-error *ngIf="isControlHasError()">
+        <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+    </mat-error>
+</mat-form-field>
+
+<mat-form-field class="col-xl-4" appearance="fill" *ngIf="!options.length">
+    <mat-label>{{label}}</mat-label>
+    <input type="text" matInput [matAutocomplete]="noOptions" [formControl]="control" [required]="isFieldRequired()">
+
+    <mat-autocomplete #noOptions="matAutocomplete" [displayWith]="displayFn.bind(this)">
+        <mat-option>{{'COMMON.NO_OPTION_FOUND.TITLE' | translate}}</mat-option>
+    </mat-autocomplete>
+
+    <button mat-button *ngIf="formHasValue()" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue(); $event.stopPropagation()">
+        <mat-icon>clear</mat-icon>
+    </button>
+    <mat-error *ngIf="isControlHasError()">
+        <strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+    </mat-error>
+</mat-form-field>

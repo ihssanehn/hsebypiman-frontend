@@ -6,6 +6,7 @@ import { User } from '@app/core/auth';
 import { FileUploader } from 'ng2-file-upload';
 import Swal from 'sweetalert2';
 import { TranslateService } from '@ngx-translate/core';
+import { SelectOptionModel } from '@app/core/_base/layout';
 
 
 @Component({
@@ -15,7 +16,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class CauserieFormComponent implements OnInit {
 
-  usersList: User[];
+  usersList: SelectOptionModel[] = [];
   usersLoaded: boolean = false;
 
   @Input() causerieForm: FormGroup;
@@ -40,7 +41,7 @@ export class CauserieFormComponent implements OnInit {
     this.usersLoaded = false;
     var res = await this.userService.getList().toPromise();
     if(res){
-      this.usersList = res.result.data;
+      this.usersList = res.result.data.map(user=> new SelectOptionModel(user.id, user.fullname));
       this.usersLoaded = true;
     }
     this.cdr.markForCheck();

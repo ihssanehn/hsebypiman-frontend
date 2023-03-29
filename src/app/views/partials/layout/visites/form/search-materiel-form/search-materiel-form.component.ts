@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 import { TypeService, PersonnelService, MaterielService } from '@app/core/services';
 import { Type, Materiel } from '@app/core/models';
+import { SelectOptionModel } from '@app/core/_base/layout';
 
 @Component({
   selector: 'tf-search-materiel-form',
@@ -22,7 +23,7 @@ export class SearchMaterielFormComponent implements OnInit {
 
   searchControl: FormControl = new FormControl();
   filteredSalaries : Observable<User[]>
-  salaries: User[];
+  salaries: SelectOptionModel[] = [];
   materiels: Materiel[] = [];
   salarie : User;
   types : Type[];
@@ -43,7 +44,7 @@ export class SearchMaterielFormComponent implements OnInit {
     }else{
       this.getMateriel(null);
     }
-    this.salaries = (await this.salarieService.getList().toPromise()).result.data;
+    this.salaries = (await this.salarieService.getList().toPromise()).result.data.map(user=>new SelectOptionModel(user.id, user.fullname));
     this.initFilteredSalaries();
     this.getTypes();
   }
@@ -87,7 +88,7 @@ export class SearchMaterielFormComponent implements OnInit {
 
   async initFilteredSalaries(){
     var res = await this.salarieService.getList().toPromise();
-    this.salaries = res.result.data;
+    this.salaries = res.result.data.map(user=>new SelectOptionModel(user.id, user.fullname));
     this.filteredSalaries = this.searchControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value))
@@ -98,7 +99,7 @@ export class SearchMaterielFormComponent implements OnInit {
   private _filter(value: string): Array<User> {
     const filterValue = value;
     return this.salaries.filter(user => 
-      this._normalizeValue(user.nom + user.prenom).includes(filterValue)
+      this._normalizeValue(user.name).includes(filterValue)
     );
   }
 

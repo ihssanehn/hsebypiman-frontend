@@ -137,7 +137,9 @@ import {
 		NzIconModule,
 		NzCheckboxModule,
 		NzUploadModule,
-		NzGridModule
+		NzGridModule,
+		NzSelectModule,
+		NzFormModule
 } from 'ng-zorro-antd';
 import { AdminAddModalComponent } from './layout/admin-add-modal/admin-add-modal.component';
 import { ScrollDispatchModule, ScrollingModule } from '@angular/cdk/scrolling';
@@ -530,13 +532,14 @@ import { FlashinfoEditorComponent } from './layout/flash-infos/flashinfo-editor/
 		MatSlideToggleModule,
 		MatChipsModule,
 		NgbModalModule,
-
+		NzFormModule,
 		NzTableModule,
 		NzInputModule,
 		NzPopconfirmModule,
 		NzDividerModule,
 		NzIconModule,
 		NzCheckboxModule,
+		NzSelectModule,
 		NgbModule,
 		DragDropModule,
 		MatExpansionModule,
