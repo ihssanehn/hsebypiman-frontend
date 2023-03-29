@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef } fro
 import { FormGroup, FormControl } from '@angular/forms';
 import { TypeService, PersonnelService, MaterielService } from '@app/core/services';
 import { Type, Materiel } from '@app/core/models';
+import { SelectOptionModel } from '@app/core/_base/layout';
 
 @Component({
   selector: 'tf-search-epi-form',
@@ -16,7 +17,7 @@ export class SearchEpiFormComponent implements OnInit {
 
   @Output() onEpiSelected = new EventEmitter();
   types: Type[];
-  salaries: any;
+  salaries: SelectOptionModel[] = [];
   epis: Materiel[];
   constructor(private typeService : TypeService,
     private salarieService : PersonnelService,
@@ -26,7 +27,7 @@ export class SearchEpiFormComponent implements OnInit {
   async ngOnInit() {
     var res = await this.typeService.getAllFromModel('VsEpi').toPromise(); 
     this.types = res.result.data
-    this.salaries = (await this.salarieService.getList().toPromise()).result.data;
+    this.salaries = (await this.salarieService.getList().toPromise()).result.data.map(user=>new SelectOptionModel(user.id, user.fullname));
     this.epis = (await this.materielService.getAllList({'categorie_code':'EPI'}).toPromise()).result.data;
     this.cdr.detectChanges();
     this.cdr.markForCheck();

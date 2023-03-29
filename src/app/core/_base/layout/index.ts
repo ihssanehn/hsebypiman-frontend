@@ -21,7 +21,7 @@ export { ExternalCodeExample } from './models/external-code-example';
 export { OffcanvasOptions } from './directives/offcanvas.directive';
 export { ScrollTopOptions } from './directives/scroll-top.directive';
 export { ToggleOptions } from './directives/toggle.directive';
-
+export { SelectOptionModel } from './models/select-option.model';
 export { LayoutConfigModel } from './models/layout-config.model';
 export { MenuOptions } from './directives/menu.directive';
 

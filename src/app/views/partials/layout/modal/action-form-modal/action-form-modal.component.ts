@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from '@app/core/auth';
 import { PersonnelService, RemonteeService } from '@app/core/services';
-import { DateFrToEnPipe } from '@app/core/_base/layout';
+import { DateFrToEnPipe, SelectOptionModel } from '@app/core/_base/layout';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -15,7 +15,7 @@ export class ActionFormModalComponent implements OnInit {
   idRemontee: number;
   form: FormGroup;
   formloading: boolean = false;
-  usersList: User[];
+  usersList: SelectOptionModel[];
   usersLoaded: boolean = false;
 
   constructor(
@@ -68,7 +68,7 @@ export class ActionFormModalComponent implements OnInit {
     this.usersLoaded = false;
     var res = await this.userService.getList().toPromise();
     if(res){
-      this.usersList = res.result.data;
+      this.usersList = res.result.data.map(user=>new SelectOptionModel(user.id, user.fullname));
       this.usersLoaded = true;
     }
     this.cdr.markForCheck();
