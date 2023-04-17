@@ -76,9 +76,6 @@ export class MultiSelectAutocompleteComponent implements OnInit {
   }
 
   selected(event): void {
-    console.log(this.autoTrigger)
-    // event.stopPropagation();
-    console.log(event.option.value)
     var selected = event.option.value;
     this.selectedOptions.push(selected);
     this.input.nativeElement.value = '';
