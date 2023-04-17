@@ -66,7 +66,6 @@ export class ValidateQuizzModalComponent implements OnInit {
 
 	isControlHasError(controlName: string, validationType: string): boolean {
 		const control = this.form.controls[controlName];
-    console.log(this.form.controls[controlName])
 		if (!control) {
 			return false;
 		}
