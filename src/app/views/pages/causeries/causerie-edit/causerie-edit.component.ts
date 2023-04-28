@@ -1,19 +1,17 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Subscription } from "rxjs";
-import { tap } from 'rxjs/operators';
-
 import { Location } from '@angular/common';
-import { CauserieService, } from '@app/core/services';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { ActivatedRoute, Router } from '@angular/router';
 import { Causerie } from '@app/core/models';
-import Swal from 'sweetalert2';
+import { CauserieService } from '@app/core/services';
 import { extractErrorMessagesFromErrorResponse } from '@app/core/_base/crud';
 import { FormStatus } from '@app/core/_base/crud/models/form-status';
+import { DateEnToFrPipe, DateFrToEnPipe } from '@app/core/_base/layout';
 import { TranslateService } from '@ngx-translate/core';
-import { DateFrToEnPipe, DateEnToFrPipe } from '@app/core/_base/layout';
 import { FileUploader } from 'ng2-file-upload';
-import moment from 'moment';
+import { Subscription } from "rxjs";
+import { tap } from 'rxjs/operators';
+import Swal from 'sweetalert2';
 
 @Component({
 	selector: 'tf-causerie-edit',
@@ -139,7 +137,7 @@ export class CauserieEditComponent implements OnInit, OnDestroy {
 
 	async onSubmit(event) {
 		try {
-			this.formloading = true;
+			// this.formloading = true;
 			this.formStatus.onFormSubmitting();
 			let formData = new FormData();
 			let form = {...this.causerieForm.getRawValue()};
@@ -150,12 +148,12 @@ export class CauserieEditComponent implements OnInit, OnDestroy {
 			}
 
 			Object.keys(form).map(function (key) {
-				if(form[key] && key != "documents")
+				if(form[key] && key != "documents" && key != "date")
 				  return formData.append(key, form[key]);
 			})
 
 			if(form.date)
-				formData.set('date', moment(form.date).format('YYYY-MM-DD'));
+				formData.set('date', this.dateFrToEnPipe.transform(form.date));
 			else formData.set('date', '');
 
 			formData.set('id', ''+this.causerie.id);
